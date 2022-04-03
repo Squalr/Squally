@@ -24,7 +24,7 @@ def main():
 	
 	if (continueStr != "y"):
 		print("Script canceled by user")
-		return
+		return False
 
 	print("Generating resource paths...")
 	
@@ -211,6 +211,7 @@ def main():
 	), "Strings")
 
 	print("Resource generation complete.")
+	return True
 
 def createResourceFile(outputFileBase, extensions, searchPath):
 	projectRoot = abspath(join(realpath(__file__), ".."))
@@ -279,5 +280,5 @@ def createResourceFile(outputFileBase, extensions, searchPath):
 		h.write("};" + "\n")
 
 if __name__ == '__main__':
-    main()
-    CopyResources.main()
+    if main():
+    	CopyResources.main()

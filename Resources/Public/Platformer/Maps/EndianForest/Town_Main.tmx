@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="94" nextobjectid="1048">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="94" nextobjectid="1048">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -110,7 +110,6 @@
   <object id="770" name="Generic/TownHomeEmpty4" type="decor" x="4154.93" y="390.803" width="1950" height="2190"/>
   <object id="881" name="Generic/SkyTower" type="decor" x="2312.33" y="-611.433" width="2395" height="3180"/>
   <object id="938" name="Generic/TownHomeEmpty3" type="decor" x="3610.68" y="3808.94" width="2135" height="1850"/>
-  <object id="1047" name="Generic/TownHome2" type="decor" x="1439.57" y="-3349.27" width="1668" height="2632"/>
  </objectgroup>
  <objectgroup id="91" name="objects -12">
   <properties>

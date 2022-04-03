@@ -37,6 +37,7 @@ private:
 	Squally* squally = nullptr;
 	Portal* cutscenePortal = nullptr;
 
+	static const std::string MapEventElrielRescued;
 	static const std::string TagElrielExit;
 	static const std::string TagCutscenePortal;
 };

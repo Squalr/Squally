@@ -7,6 +7,11 @@
 namespace ObjectResources
 {
 	extern const std::string Box;
+	extern const std::string Breakables_CageBottom;
+	extern const std::string Breakables_CageSide;
+	extern const std::string Breakables_CageTallSideBottom;
+	extern const std::string Breakables_CageTallSideTop;
+	extern const std::string Breakables_CageTop;
 	extern const std::string Breakables_VaseBlue;
 	extern const std::string Breakables_VaseBlueBroken;
 	extern const std::string Breakables_VaseBrown;
@@ -43,9 +48,6 @@ namespace ObjectResources
 	extern const std::string Collectables_Animals_Bull_Locked;
 	extern const std::string Collectables_Animals_Bunny;
 	extern const std::string Collectables_Animals_Bunny_Locked;
-	extern const std::string Collectables_Animals_CageBottom;
-	extern const std::string Collectables_Animals_CageSide;
-	extern const std::string Collectables_Animals_CageTop;
 	extern const std::string Collectables_Animals_Cat;
 	extern const std::string Collectables_Animals_Cat_Locked;
 	extern const std::string Collectables_Animals_Chicken;

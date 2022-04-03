@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="36" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="787">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="8" name="decor -2304">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="9" name="decor -2048">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="7" name="decor -1792">
+  <properties>
+   <property name="depth" type="float" value="-1792"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="14" name="decor -768">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="85" name="rocks-bg">
+  <properties>
+   <property name="depth" type="float" value="-3200"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="758" name="Forest/Background/LakeSideRocks1" type="decor" x="-5323.82" y="-1824.89" width="21589.2" height="4560">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="15" name="rocks">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="601" name="Forest/Background/LakeSideRocks2" type="decor" x="-5339.82" y="-1392.89" width="21589.2" height="4560">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="19" name="ship layer">
+  <properties>
+   <property name="depth" type="float" value="-312"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="784" name="airship" type="object" x="1858.24" y="1202.91" width="1024" height="1024">
+   <properties>
+    <property name="speed" type="float" value="0"/>
+    <property name="variant" type="int" value="0"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="65" name="plank -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="756" name="ship-alt" type="terrain" x="1760.75" y="1555.5" width="1182.5" height="363"/>
+ </objectgroup>
+ <objectgroup id="88" name="objects -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="771" name="solid-npc" type="collision" x="2942.56" y="780.622" width="126.878" height="778.756"/>
+  <object id="772" name="solid-npc" type="collision" x="1633.56" y="797.622" width="126.878" height="778.756"/>
+ </objectgroup>
+ <objectgroup id="87" name="entities -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="769" name="seagull" type="entity" x="2573.66" y="1427.67" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="770" name="seagull" type="entity" x="1828.34" y="1427.66" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="773" name="seagull" type="entity" x="1969.33" y="1429.33" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="20" name="plank -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="755" name="ship-alt" type="terrain" x="2147.42" y="1580.5" width="414.5" height="363">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="68" name="plank -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="754" name="ship-alt" type="terrain" x="2148.08" y="1604.5" width="414.5" height="363"/>
+ </objectgroup>
+ <objectgroup id="90" name="objects -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="781" name="solid-npc" type="collision" x="2554.08" y="826.895" width="126.878" height="778.756"/>
+  <object id="782" name="solid-npc" type="collision" x="2024.56" y="829.622" width="126.878" height="778.756"/>
+ </objectgroup>
+ <objectgroup id="89" name="entities -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="774" name="seagull" type="entity" x="2303" y="1477" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="69" name="plank -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="753" name="ship-alt" type="terrain" x="2147.42" y="1631.17" width="414.5" height="363">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="64" name="plank -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="752" name="ship-alt" type="terrain" x="2144.75" y="1661.17" width="414.5" height="363">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="18" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="84" name="objects midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="785" name="airship" type="object" x="914.788" y="1429.45" width="256" height="256">
+   <properties>
+    <property name="speed" type="float" value="0"/>
+    <property name="variant" type="int" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="746" name="ship-alt" type="terrain" x="1143.58" y="1686" width="3479.92" height="536"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="783" name="Generic/TownHome2" type="decor" x="4218" y="336" width="1668" height="2632"/>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="694" name="portal" type="object" x="2219.28" y="1442.6" width="256.687" height="235.919">
+   <properties>
+    <property name="components" value="disabled-portal"/>
+    <property name="map" value="EndianForest/Zone_2_8"/>
+    <property name="tag" value="sky-ship-portal"/>
+    <property name="transition" value="sky-ship-temple"/>
+   </properties>
+  </object>
+  <object id="708" name="edge-portal" type="object" x="4394.04" y="1200.75" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="EndianForest/Town_Liana"/>
+    <property name="transition" value="sky-dock-1"/>
+   </properties>
+  </object>
+  <object id="717" name="solid" type="collision" x="1018.59" y="5.05909" width="126.878" height="2842.39"/>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="692" name="minos" type="entity" x="2673.67" y="1560.79" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pick-pocket"/>
+    <property name="pocket-pool" value="ef-generic"/>
+    <property name="quest" value="sky-ship-unlocked"/>
+    <property name="quest-line" value="sky-ship-to-temple"/>
+   </properties>
+  </object>
+  <object id="760" name="seagull" type="entity" x="3469.33" y="1562.67" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="761" name="seagull" type="entity" x="3288" y="1561.33" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="762" name="seagull" type="entity" x="3574.66" y="1563.34" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="763" name="seagull" type="entity" x="3393.34" y="1562" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="764" name="seagull" type="entity" x="1421.33" y="1564" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="765" name="seagull" type="entity" x="2732.73" y="1563.94" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="766" name="seagull" type="entity" x="2551.4" y="1562.6" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="767" name="seagull" type="entity" x="1902.42" y="1563.94" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="768" name="seagull" type="entity" x="1319.76" y="1561.27" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="786" name="finch" type="entity" x="1278" y="1558" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pick-pocket"/>
+    <property name="pocket-pool" value="ef-generic"/>
+    <property name="quest" value="sky-ship-unlocked"/>
+    <property name="quest-line" value="sky-ship-to-temple"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="3919.82" y="1553.34" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="709" name="spawn" type="object" x="4084.99" y="1554.72" width="128" height="128">
+   <properties>
+    <property name="transition" value="sky-dock-1"/>
+   </properties>
+  </object>
+  <object id="745" name="spawn" type="object" x="2284" y="1548.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="sky-ship-temple"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="74" name="plank +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="751" name="ship-alt" type="terrain" x="2992.75" y="1708.5" width="414.5" height="363">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="75" name="plank +2">
+  <properties>
+   <property name="depth" type="float" value="128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="750" name="ship-alt" type="terrain" x="2992.75" y="1715.17" width="414.5" height="363">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="76" name="plank +3">
+  <properties>
+   <property name="depth" type="float" value="192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="749" name="ship-alt" type="terrain" x="2993.42" y="1723.17" width="414.5" height="363">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="plank +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="748" name="ship-alt" type="terrain" x="2992.08" y="1738.5" width="414.5" height="363">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="78" name="plank +5">
+  <properties>
+   <property name="depth" type="float" value="320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="747" name="ship-alt" type="terrain" x="2993.25" y="1748" width="414.5" height="363">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="28" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="31" name="rain">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="32" name="decor +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="33" name="decor +8">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

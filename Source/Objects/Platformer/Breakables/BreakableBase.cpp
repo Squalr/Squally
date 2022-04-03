@@ -82,6 +82,8 @@ void BreakableBase::onBreak()
 	{
 		spawnPool->trySpawnCollectable();
 	}
+	
+	this->broadcastMapEvent(this->getSendEvent(), ValueMap());
 }
 
 SpawnPool* BreakableBase::getSpawnPool()

@@ -32,6 +32,7 @@
 using namespace cocos2d;
 
 const std::string TalkToElriel::MapKeyQuest = "talk-to-elriel";
+const std::string TalkToElriel::MapEventElrielRescued = "elriel-rescued";
 const std::string TalkToElriel::TagElrielExit = "elriel-exit";
 const std::string TalkToElriel::TagCutscenePortal = "cutscene-portal";
 
@@ -82,33 +83,15 @@ void TalkToElriel::onLoad(QuestState questState)
 
 void TalkToElriel::onActivate(bool isActiveThroughSkippable)
 {
-	this->defer([=]()
+	this->listenForMapEventOnce(TalkToElriel::MapEventElrielRescued, [=](ValueMap)
 	{
 		this->runCinematicSequencePart1();
-		PlatformerEvents::TriggerHideMiniMap();
 	});
 }
 
 void TalkToElriel::onComplete()
 {
 	Objectives::SetCurrentObjective(ObjectiveKeys::EFReturnToQueen);
-	PlatformerEvents::TriggerShowMiniMap();
-
-	if (this->cutscenePortal)
-	{
-		/*
-		PlatformerEvents::TriggerCinematicHijack();
-		PlatformerEvents::TriggerFadeOut();
-
-		this->runAction(Sequence::create(
-			DelayTime::create(FadeHud::AnimationTimeBudget),
-			CallFunc::create([=]()
-			{
-				this->cutscenePortal->loadMap();
-			}),
-			nullptr
-		));*/
-	}
 }
 
 void TalkToElriel::onSkipped()
@@ -121,20 +104,20 @@ void TalkToElriel::runCinematicSequencePart1()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Elriel_A_GratefulYouAreHere::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->elriel, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->elriel, true)
 		),
 		[=]()
 		{
 			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 				Strings::Platformer_Ellipses::create(),
 				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Top,
+					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Right,
-					DialogueEvents::BuildPreviewNode(&this->elriel, false),
-					DialogueEvents::BuildPreviewNode(&this->squally, true),
+					DialogueEvents::BuildPreviewNode(&this->squally, false),
+					DialogueEvents::BuildPreviewNode(&this->elriel, true),
 					true
 				),
 				[=]()
@@ -155,10 +138,10 @@ void TalkToElriel::runCinematicSequencePart2()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Elriel_B_AliveAndWell::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
-			DialogueEvents::BuildPreviewNode(&this->elriel, false),
-			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+			DialogueEvents::BuildPreviewNode(&this->elriel, true)
 		),
 		[=]()
 		{
@@ -175,10 +158,10 @@ void TalkToElriel::runCinematicSequencePart3()
 		Strings::Platformer_Quests_EndianForest_FindElriel_Elriel_C_MeetMeInTown::create()
 			->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_Elbridge::create()),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->elriel, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->elriel, true)
 		),
 		[=]()
 		{
@@ -196,13 +179,16 @@ void TalkToElriel::runCinematicSequencePart4()
 		return;
 	}
 
-	this->complete();
-
-	/*
 	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
 	{
 		this->elriel->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords3D(this->elriel).x));
 		this->elriel->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(marker).x));
+
+		this->elriel->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
+		{
+			this->elriel->despawn();
+		});
 	}, TalkToElriel::TagElrielExit);
-	*/
+
+	this->complete();
 }

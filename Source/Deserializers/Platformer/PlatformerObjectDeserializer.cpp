@@ -38,6 +38,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Brazier::MapKey] = [=](ValueMap properties) { return (GameObject*)Brazier::create(properties); };
 	this->deserializers[BreakableBarrel::MapKey] = [=](ValueMap properties) { return (GameObject*)BreakableBarrel::create(properties); };
 	this->deserializers[BreakableCage::MapKey] = [=](ValueMap properties) { return (GameObject*)BreakableCage::create(properties); };
+	this->deserializers[BreakableCageTall::MapKey] = [=](ValueMap properties) { return (GameObject*)BreakableCageTall::create(properties); };
 	this->deserializers[CagedBat::MapKey] = [=](ValueMap properties) { return (GameObject*)CagedBat::create(properties); };
 	this->deserializers[CagedBear::MapKey] = [=](ValueMap properties) { return (GameObject*)CagedBear::create(properties); };
 	this->deserializers[CagedBeaver::MapKey] = [=](ValueMap properties) { return (GameObject*)CagedBeaver::create(properties); };

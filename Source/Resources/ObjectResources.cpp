@@ -6,6 +6,11 @@
 #include <string>
 
 const std::string ObjectResources::Box = "Private/Platformer/Objects/Box.png";
+const std::string ObjectResources::Breakables_CageBottom = "Private/Platformer/Objects/Breakables/CageBottom.png";
+const std::string ObjectResources::Breakables_CageSide = "Private/Platformer/Objects/Breakables/CageSide.png";
+const std::string ObjectResources::Breakables_CageTallSideBottom = "Private/Platformer/Objects/Breakables/CageTallSideBottom.png";
+const std::string ObjectResources::Breakables_CageTallSideTop = "Private/Platformer/Objects/Breakables/CageTallSideTop.png";
+const std::string ObjectResources::Breakables_CageTop = "Private/Platformer/Objects/Breakables/CageTop.png";
 const std::string ObjectResources::Breakables_VaseBlue = "Private/Platformer/Objects/Breakables/VaseBlue.png";
 const std::string ObjectResources::Breakables_VaseBlueBroken = "Private/Platformer/Objects/Breakables/VaseBlueBroken.png";
 const std::string ObjectResources::Breakables_VaseBrown = "Private/Platformer/Objects/Breakables/VaseBrown.png";
@@ -42,9 +47,6 @@ const std::string ObjectResources::Collectables_Animals_Bull = "Private/Platform
 const std::string ObjectResources::Collectables_Animals_Bull_Locked = "Private/Platformer/Objects/Collectables/Animals/Bull_Locked.png";
 const std::string ObjectResources::Collectables_Animals_Bunny = "Private/Platformer/Objects/Collectables/Animals/Bunny.png";
 const std::string ObjectResources::Collectables_Animals_Bunny_Locked = "Private/Platformer/Objects/Collectables/Animals/Bunny_Locked.png";
-const std::string ObjectResources::Collectables_Animals_CageBottom = "Private/Platformer/Objects/Collectables/Animals/CageBottom.png";
-const std::string ObjectResources::Collectables_Animals_CageSide = "Private/Platformer/Objects/Collectables/Animals/CageSide.png";
-const std::string ObjectResources::Collectables_Animals_CageTop = "Private/Platformer/Objects/Collectables/Animals/CageTop.png";
 const std::string ObjectResources::Collectables_Animals_Cat = "Private/Platformer/Objects/Collectables/Animals/Cat.png";
 const std::string ObjectResources::Collectables_Animals_Cat_Locked = "Private/Platformer/Objects/Collectables/Animals/Cat_Locked.png";
 const std::string ObjectResources::Collectables_Animals_Chicken = "Private/Platformer/Objects/Collectables/Animals/Chicken.png";

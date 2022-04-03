@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="1040">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="1042">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -462,16 +462,12 @@
    </properties>
   </object>
   <object id="1003" name="solid" type="collision" x="154.864" y="-16.7719" width="126.878" height="1843.48"/>
-  <object id="1022" name="cinematic-marker" type="object" x="2992.57" y="1790.97" width="78.7879" height="88">
-   <properties>
-    <property name="tag" value="elriel-exit"/>
-   </properties>
-  </object>
-  <object id="1024" name="portal" type="object" x="1260.98" y="1190.81" width="256" height="256">
+  <object id="1024" name="portal" type="object" x="964.313" y="1188.81" width="256" height="256">
    <properties>
     <property name="components" value="disabled-portal"/>
-    <property name="map" value="EndianForest/Town_Liana"/>
-    <property name="transition" value="main"/>
+    <property name="map" value="EndianForest/SkyDock_1"/>
+    <property name="tag" value="sky-ship-portal"/>
+    <property name="transition" value="sky-ship-temple"/>
    </properties>
   </object>
   <object id="1031" name="edge-portal" type="object" x="275.515" y="1442.42" width="552" height="200">
@@ -479,11 +475,6 @@
     <property name="direction" value="down"/>
     <property name="map" value="EndianForest/Zone_2_1"/>
     <property name="transition" value="fall"/>
-   </properties>
-  </object>
-  <object id="1035" name="mini-map-relocator" type="object" x="1912.06" y="-134.03" width="1375.88" height="3360.06">
-   <properties>
-    <property name="position" value="bottom-right"/>
    </properties>
   </object>
   <object id="1036" name="portal" type="object" x="1161.24" y="4531.49" width="237.527" height="233.023">
@@ -505,11 +496,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="872" name="elriel" type="entity" x="1205.67" y="1319.21" width="128" height="128">
+  <object id="1041" name="minos" type="entity" x="1309.33" y="1316" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,run"/>
-    <property name="quest" value="talk-to-elriel"/>
-    <property name="quest-line" value="find-elriel"/>
+    <property name="components" value="friendly,pick-pocket"/>
+    <property name="pocket-pool" value="ef-generic"/>
+    <property name="quest" value="sky-ship-unlocked"/>
+    <property name="quest-line" value="sky-ship-to-temple"/>
    </properties>
   </object>
  </objectgroup>
@@ -528,6 +520,12 @@
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="transition" value="main"/>
+   </properties>
+  </object>
+  <object id="1040" name="spawn" type="object" x="1031.33" y="1318.67" width="128" height="128">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="transition" value="sky-ship-temple"/>
    </properties>
   </object>
  </objectgroup>
