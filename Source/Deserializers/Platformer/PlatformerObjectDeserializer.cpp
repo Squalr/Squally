@@ -141,6 +141,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[HelpTotemSwimHack::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemSwimHack::create(properties); };
 	this->deserializers[HeavenHug::MapKey] = [=](ValueMap properties) { return (GameObject*)HeavenHug::create(properties); };
 	this->deserializers[Laser::MapKey] = [=](ValueMap properties) { return (GameObject*)Laser::create(properties); };
+	this->deserializers[Lava::MapKey] = [=](ValueMap properties) { return (GameObject*)Lava::create(properties); };
 	this->deserializers[Lever::MapKey] = [=](ValueMap properties) { return (GameObject*)Lever::create(properties); };
 	this->deserializers[LifeStone::MapKey] = [=](ValueMap properties) { return (GameObject*)LifeStone::create(properties); };
 	this->deserializers[PullyHorizontal::MapKey] = [=](ValueMap properties) { return (GameObject*)PullyHorizontal::create(properties); };
@@ -197,6 +198,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[TrapDoorFrame::MapKey] = [=](ValueMap properties) { return (GameObject*)TrapDoorFrame::create(properties); };
 	this->deserializers[Trigger::MapKey] = [=](ValueMap properties) { return (GameObject*)Trigger::create(properties); };
 	this->deserializers[Vase::MapKey] = [=](ValueMap properties) { return (GameObject*)Vase::create(properties); };
+	this->deserializers[VikingShip::MapKey] = [=](ValueMap properties) { return (GameObject*)VikingShip::create(properties); };
 	this->deserializers[Warp::MapKey] = [=](ValueMap properties) { return (GameObject*)Warp::create(properties); };
 	this->deserializers[WarpGateBP::MapKey] = [=](ValueMap properties) { return (GameObject*)WarpGateBP::create(properties); };
 	this->deserializers[WarpGateCV::MapKey] = [=](ValueMap properties) { return (GameObject*)WarpGateCV::create(properties); };

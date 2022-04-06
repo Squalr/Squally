@@ -26,6 +26,9 @@
 
 using namespace cocos2d;
 
+const std::string MountBase::PropertyDirection = "direction";
+const std::string MountBase::PropertySpeed = "speed";
+
 MountBase::MountBase(ValueMap& properties, CSize size) : super(properties, InteractObject::InteractType::Input, size)
 {
 	this->reparentNode = Node::create();
@@ -143,3 +146,87 @@ void MountBase::setToMountPosition()
 
 	this->mountedEntity->setPosition(this->getReparentPosition());
 }
+
+void MountBase::moveMount(float dt)
+{
+	if (!this->isMoving || !this->canMoveOverride)
+	{
+		return;
+	}
+
+	switch(this->mountDirection)
+	{
+		case MountDirection::Left:
+		{
+			this->setPosition(this->getPosition() - Vec2(this->mountSpeed * dt, 0.0f));
+			break;
+		}
+		default:
+		case MountDirection::Right:
+		{
+			this->setPosition(this->getPosition() + Vec2(this->mountSpeed * dt, 0.0f));
+			break;
+		}
+	}
+}
+
+void MountBase::faceEntityTowardsDirection()
+{
+	if (this->mountedEntity == nullptr)
+	{
+		return;
+	}
+
+	switch(this->mountDirection)
+	{
+		case MountDirection::Left:
+		{
+			this->mountedEntity->getAnimations()->setFlippedX(true);
+			break;
+		}
+		default:
+		case MountDirection::Right:
+		{
+			this->mountedEntity->getAnimations()->setFlippedX(false);
+			break;
+		}
+	}
+}
+
+void MountBase::setMountDirection(MountDirection mountDirection)
+{
+	this->mountDirection = mountDirection;
+}
+
+void MountBase::reverse()
+{
+	switch(this->mountDirection)
+	{
+		case MountDirection::Left:
+		{
+			this->setMountDirection(MountDirection::Right);
+			break;
+		}
+		default:
+		case MountDirection::Right:
+		{
+			this->setMountDirection(MountDirection::Left);
+			break;
+		}
+	}
+}
+
+void MountBase::parseDirection()
+{
+	std::string direction = GameUtils::getKeyOrDefault(this->properties, MountBase::PropertyDirection, Value("")).asString();
+
+	if (direction == "left")
+	{
+		this->mountDirection = MountDirection::Left;
+	}
+	else
+	{
+		this->mountDirection = MountDirection::Right;
+	}
+}
+

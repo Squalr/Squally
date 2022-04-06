@@ -416,6 +416,9 @@ namespace ObjectResources
 	extern const std::string Transportation_Ship_Sail3;
 	extern const std::string Transportation_Ship_Sail4;
 	extern const std::string Transportation_Ship_Sail5;
+	extern const std::string Transportation_VikingShip_Animations;
+	extern const std::string Transportation_VikingShip_VikingBoat;
+	extern const std::string Transportation_VikingShip_VikingBoatSail;
 	extern const std::string Traps_BARRICADE;
 	extern const std::string Traps_Ballista_ARROW_1;
 	extern const std::string Traps_Ballista_BODY;

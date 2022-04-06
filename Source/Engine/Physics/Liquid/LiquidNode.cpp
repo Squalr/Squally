@@ -16,24 +16,22 @@ using namespace cocos2d;
 const std::string LiquidNode::PropertyDisableWaves = "disable-waves";
 const std::string LiquidNode::PropertyDisableEdges = "disable-edges";
 const float LiquidNode::SplashSpacing = 192.0f;
-const float LiquidNode::WaterGravity = 0.0f;
-const float LiquidNode::WaterCollisionOffset = 128.0f;
+const float LiquidNode::CollisionOffset = 128.0f;
 
-LiquidNode* LiquidNode::create(ValueMap& properties, float surfaceDepth, CollisionType collisionType, Color4B surfaceColor, Color4B bodyColor)
+LiquidNode* LiquidNode::create(ValueMap& properties, float surfaceDepth, CollisionType collisionType, Color4B surfaceColor, Color4B bodyColor,
+	float kTension, float kDampening, float kSpread)
 {
-    LiquidNode* instance = new LiquidNode(properties, surfaceDepth, collisionType, surfaceColor, bodyColor);
+    LiquidNode* instance = new LiquidNode(properties, surfaceDepth, collisionType, surfaceColor, bodyColor, kTension, kDampening, kSpread);
 
     instance->autorelease();
 
     return instance;
 }
 
-LiquidNode::LiquidNode(ValueMap& properties, float surfaceDepth, CollisionType collisionType, Color4B surfaceColor, Color4B bodyColor) : super(properties)
+LiquidNode::LiquidNode(ValueMap& properties, float surfaceDepth, CollisionType collisionType, Color4B surfaceColor, Color4B bodyColor,
+        float kTension, float kDampening, float kSpread)
+	: super(properties)
 {
-    const float kTension = 0.015f;
-    const float kDampening = 0.005f;
-    const float kSpread = 0.05f;
-    
 	this->liquidSize = CSize(
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
@@ -41,7 +39,7 @@ LiquidNode::LiquidNode(ValueMap& properties, float surfaceDepth, CollisionType c
 	this->splashes = int(std::round(this->liquidSize.width / LiquidNode::SplashSpacing));
 	this->noSplashDelay = 1.0f;
 
-	float waterCollisionHeight = MathUtils::clamp(this->liquidSize.height - LiquidNode::WaterCollisionOffset, 0.0f, this->liquidSize.height);
+	float waterCollisionHeight = MathUtils::clamp(this->liquidSize.height - LiquidNode::CollisionOffset, 0.0f, this->liquidSize.height);
 	float effectiveOffset = this->liquidSize.height - waterCollisionHeight;
 	CSize collisionSize = CSize(this->liquidSize.width, waterCollisionHeight);
 

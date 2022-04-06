@@ -7,10 +7,18 @@ class PlatformerEntity;
 class MountBase : public InteractObject
 {
 public:
-	cocos2d::Node* getReparentNode();
+	enum class MountDirection
+	{
+		Left,
+		Right
+	};
 
+	cocos2d::Node* getReparentNode();
 	virtual void mount(PlatformerEntity* interactingEntity);
 	virtual void dismount();
+	void setMountDirection(MountDirection mountDirection);
+	void reverse();
+	void parseDirection();
 
 protected:
 	MountBase(cocos2d::ValueMap& properties, cocos2d::CSize size);
@@ -24,9 +32,19 @@ protected:
 	
 	void setToMountPositionX();
 	void setToMountPosition();
+
+	void faceEntityTowardsDirection();
+	void moveMount(float dt);
 	
 	cocos2d::Node* frontNode = nullptr;
 	PlatformerEntity* mountedEntity = nullptr;
+	MountDirection mountDirection = MountDirection::Left;
+	float mountSpeed = 0.0f;
+	bool isMoving = false;
+	bool canMoveOverride = true;
+
+	static const std::string PropertyDirection;
+	static const std::string PropertySpeed;
 
 private:
 	typedef InteractObject super;

@@ -2,17 +2,13 @@
 
 #include "Objects/Platformer/Interactables/Mounts/MountBase.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class CollisionObject;
+class SmartAnimationNode;
 
-class MineCart : public MountBase
+class VikingShip : public MountBase
 {
 public:
-	static MineCart* create(cocos2d::ValueMap& properties);
+	static VikingShip* create(cocos2d::ValueMap& properties);
 
 	void mount(PlatformerEntity* interactingEntity) override;
 	void dismount() override;
@@ -20,17 +16,13 @@ public:
 	static const std::string MapKey;
 
 protected:
-	MineCart(cocos2d::ValueMap& properties);
-	virtual ~MineCart();
+	VikingShip(cocos2d::ValueMap& properties);
+	virtual ~VikingShip();
 
 	void onEnter() override;
 	void update(float dt) override;
 	void initializePositions() override;
 	void initializeListeners() override;
-
-	cocos2d::Vec2 getButtonOffset() override;
-	void registerHackables() override;
-	HackablePreview* createDefaultPreview() override;
 	
 	cocos2d::Vec2 getReparentPosition() override;
 
@@ -43,14 +35,8 @@ private:
 		Blue
 	};
 
-	void updateCanMove();
-	void parseColor();
-
-	CartColor cartColor = CartColor::Brown;
 	CollisionObject* bottomCollision = nullptr;
-	cocos2d::Sprite* body = nullptr;
-	cocos2d::Sprite* wheelFront = nullptr;
-	cocos2d::Sprite* wheelBack = nullptr;
+	SmartAnimationNode* ship = nullptr;
 
 	static const std::string PropertyColor;
 };

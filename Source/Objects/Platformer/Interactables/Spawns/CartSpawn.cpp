@@ -49,11 +49,11 @@ void CartSpawn::enterCart(PlatformerEntity* entity)
 
 		if (this->direction == "left")
 		{
-			mineCart->setCartDirection(MineCart::CartDirection::Left);
+			mineCart->setMountDirection(MountBase::MountDirection::Left);
 		}
 		else
 		{
-			mineCart->setCartDirection(MineCart::CartDirection::Right);
+			mineCart->setMountDirection(MountBase::MountDirection::Right);
 		}
 	}, this->linkTag);
 }

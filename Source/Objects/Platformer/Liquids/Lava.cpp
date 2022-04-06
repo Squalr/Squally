@@ -1,4 +1,4 @@
-#include "Water.h"
+#include "Lava.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -12,29 +12,29 @@
 
 using namespace cocos2d;
 
-const std::string Water::MapKey = "water";
-const Color4B Water::SurfaceColor = Color4B(105, 190, 206, 212);
-const Color4B Water::BodyColor = Color4B(98, 186, 209, 64);
-const float Water::WaterGravity = 0.0f;
+const std::string Lava::MapKey = "lava";
+const Color4B Lava::SurfaceColor = Color4B(224, 224, 0, 255);
+const Color4B Lava::BodyColor = Color4B(212, 12, 12, 224);
+const float Lava::LavaGravity = 0.0f;
 
-Water* Water::create(ValueMap& properties)
+Lava* Lava::create(ValueMap& properties)
 {
-	Water* instance = new Water(properties);
+	Lava* instance = new Lava(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Water::Water(ValueMap& properties) : super(properties, 192.0f, (CollisionType)PlatformerCollisionType::Water, Water::SurfaceColor, Water::BodyColor, 0.015f, 0.005f, 0.05f)
+Lava::Lava(ValueMap& properties) : super(properties, 8.0f, (CollisionType)PlatformerCollisionType::KillPlane, Lava::SurfaceColor, Lava::BodyColor, 0.025f, 0.015f, 0.15f)
 {
 }
 
-Water::~Water()
+Lava::~Lava()
 {
 }
 
-void Water::initializeListeners()
+void Lava::initializeListeners()
 {
 	super::initializeListeners();
 
@@ -54,13 +54,13 @@ void Water::initializeListeners()
 
 	this->liquidCollision->whileCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
 	{
-		this->applyWaterForce(collisionData.other, collisionData.dt);
+		this->applyLavaForce(collisionData.other, collisionData.dt);
 
 		return CollisionResult::DoNothing;
 	});
 }
 
-void Water::applyWaterForce(CollisionObject* target, float dt)
+void Lava::applyLavaForce(CollisionObject* target, float dt)
 {
-	target->setVelocity(target->getVelocity() + Vec2(0.0f, Water::WaterGravity * dt));
+	target->setVelocity(target->getVelocity() + Vec2(0.0f, Lava::LavaGravity * dt));
 }

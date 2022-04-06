@@ -23,8 +23,6 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_CAN_MOVE 1
 
 const std::string MineCart::MapKey = "mine-cart";
-const std::string MineCart::PropertyDirection = "direction";
-const std::string MineCart::PropertySpeed = "speed";
 
 MineCart* MineCart::create(cocos2d::ValueMap& properties)
 {
@@ -39,7 +37,7 @@ MineCart::MineCart(cocos2d::ValueMap& properties) : super(properties, CSize(240.
 {
 	this->parseColor();
 	this->parseDirection();
-	this->cartSpeed = GameUtils::getKeyOrDefault(this->properties, MineCart::PropertySpeed, Value(512.0f)).asFloat();
+	this->mountSpeed = GameUtils::getKeyOrDefault(this->properties, MineCart::PropertySpeed, Value(512.0f)).asFloat();
 	this->body = Sprite::create(this->cartColor == CartColor::Brown ? ObjectResources::Interactive_MineCarts_Body1 : ObjectResources::Interactive_MineCarts_Body2);
 	this->wheelFront = Sprite::create(ObjectResources::Interactive_MineCarts_WheelFront);
 	this->wheelBack = Sprite::create(ObjectResources::Interactive_MineCarts_WheelBack);
@@ -94,7 +92,7 @@ void MineCart::update(float dt)
 	super::update(dt);
 
 	this->updateCanMove();
-	this->moveCart(dt);
+	this->moveMount(dt);
 	this->faceEntityTowardsDirection();
 }
 
@@ -159,29 +157,11 @@ void MineCart::dismount()
 	this->isMoving = false;
 }
 
-void MineCart::reverse()
-{
-	switch(this->cartDirection)
-	{
-		case CartDirection::Left:
-		{
-			this->setCartDirection(CartDirection::Right);
-			break;
-		}
-		default:
-		case CartDirection::Right:
-		{
-			this->setCartDirection(CartDirection::Left);
-			break;
-		}
-	}
-}
-
 NO_OPTIMIZE void MineCart::updateCanMove()
 {
 	static volatile int canMoveLocal = 0;
 
-	this->canMoveHack = true;
+	this->canMoveOverride = true;
 	canMoveLocal = 1;
 
 	ASM_PUSH_EFLAGS();
@@ -204,80 +184,15 @@ NO_OPTIMIZE void MineCart::updateCanMove()
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
-	this->canMoveHack = bool(canMoveLocal);
+	this->canMoveOverride = bool(canMoveLocal);
 
 	HACKABLES_STOP_SEARCH();
 }
 END_NO_OPTIMIZE
 
-void MineCart::faceEntityTowardsDirection()
-{
-	if (this->mountedEntity == nullptr)
-	{
-		return;
-	}
-
-	switch(this->cartDirection)
-	{
-		case CartDirection::Left:
-		{
-			this->mountedEntity->getAnimations()->setFlippedX(true);
-			break;
-		}
-		default:
-		case CartDirection::Right:
-		{
-			this->mountedEntity->getAnimations()->setFlippedX(false);
-			break;
-		}
-	}
-}
-
-void MineCart::setCartDirection(CartDirection cartDirection)
-{
-	this->cartDirection = cartDirection;
-}
-
 Vec2 MineCart::getReparentPosition()
 {
 	return Vec2(0.0f, 128.0f);
-}
-
-void MineCart::moveCart(float dt)
-{
-	if (!this->isMoving || !this->canMoveHack)
-	{
-		return;
-	}
-
-	switch(this->cartDirection)
-	{
-		case CartDirection::Left:
-		{
-			this->setPosition(this->getPosition() - Vec2(this->cartSpeed * dt, 0.0f));
-			break;
-		}
-		default:
-		case CartDirection::Right:
-		{
-			this->setPosition(this->getPosition() + Vec2(this->cartSpeed * dt, 0.0f));
-			break;
-		}
-	}
-}
-
-void MineCart::parseDirection()
-{
-	std::string direction = GameUtils::getKeyOrDefault(this->properties, MineCart::PropertyDirection, Value("")).asString();
-
-	if (direction == "left")
-	{
-		this->cartDirection = CartDirection::Left;
-	}
-	else // if (color == "right")
-	{
-		this->cartDirection = CartDirection::Right;
-	}
 }
 
 void MineCart::parseColor()

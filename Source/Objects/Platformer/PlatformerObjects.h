@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Engine/Sound/Sound.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Objects/Camera/CameraFocus.h"
@@ -89,6 +90,7 @@
 #include "Objects/Platformer/Interactables/Spawns/CartSpawn.h"
 #include "Objects/Platformer/Interactables/Spawns/PortalSpawn.h"
 #include "Objects/Platformer/Interactables/Spawns/WoodDoorSpawn.h"
+#include "Objects/Platformer/Liquids/Lava.h"
 #include "Objects/Platformer/Liquids/Water.h"
 #include "Objects/Platformer/MiniMap/MiniMapObject.h"
 #include "Objects/Platformer/MiniMap/MiniMapRelocator.h"
@@ -118,6 +120,7 @@
 #include "Objects/Platformer/Switches/Trigger.h"
 #include "Objects/Platformer/Transportation/Airship.h"
 #include "Objects/Platformer/Transportation/Ship.h"
+#include "Objects/Platformer/Transportation/VikingShip.h"
 #include "Objects/Platformer/Traps/ElectricityBeam/ElectricityBeam.h"
 #include "Objects/Platformer/Traps/FloatingBomb/FloatingBomb.h"
 #include "Objects/Platformer/Traps/HeavenHug/HeavenHug.h"

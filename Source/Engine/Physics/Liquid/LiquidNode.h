@@ -21,7 +21,10 @@ public:
         float surfaceDepth,
         CollisionType collisionType,
         cocos2d::Color4B surfaceColor,
-        cocos2d::Color4B bodyColor
+        cocos2d::Color4B bodyColor,
+        float kTension = 0.015f,
+        float kDampening = 0.005f,
+        float kSpread = 0.05f
     );
 
     void splash(float x, float speed, float splashRadius = 64.0f, float decay = 0.05f);
@@ -29,8 +32,7 @@ public:
     static const std::string PropertyDisableWaves;
     static const std::string PropertyDisableEdges;
 	static const float SplashSpacing;
-	static const float WaterGravity;
-	static const float WaterCollisionOffset;
+	static const float CollisionOffset;
 
 protected:
     LiquidNode(
@@ -38,7 +40,10 @@ protected:
         float surfaceDepth,
         CollisionType collisionType,
         cocos2d::Color4B surfaceColor,
-        cocos2d::Color4B bodyColor
+        cocos2d::Color4B bodyColor,
+        float kTension = 0.015f,
+        float kDampening = 0.005f,
+        float kSpread = 0.05f
     );
     virtual ~LiquidNode();
     
