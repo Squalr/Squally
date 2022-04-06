@@ -28,11 +28,16 @@ VikingShip* VikingShip::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-VikingShip::VikingShip(cocos2d::ValueMap& properties) : super(properties, CSize(240.0f, 184.0f))
+VikingShip::VikingShip(cocos2d::ValueMap& properties) : super(properties, CSize(1083.0f, 931.0f))
 {
 	this->parseDirection();
-	this->mountSpeed = GameUtils::getKeyOrDefault(this->properties, VikingShip::PropertySpeed, Value(0.0f)).asFloat();
+	this->mountSpeed = GameUtils::getKeyOrDefault(this->properties, VikingShip::PropertySpeed, Value(512.0f)).asFloat();
 	this->ship = SmartAnimationNode::create(ObjectResources::Transportation_VikingShip_Animations);
+	this->bottomCollision = CollisionObject::create(
+		CollisionObject::createBox(CSize(800.0f, 48.0f)),
+		int(PlatformerCollisionType::PassThrough),
+		CollisionObject::Properties(false, false)
+	);
 
 	this->frontNode->addChild(this->bottomCollision);
 	this->frontNode->addChild(this->ship);
@@ -53,14 +58,13 @@ void VikingShip::initializePositions()
 {
 	super::initializePositions();
 
-	this->bottomCollision->setPositionY(-108.0f);
+	this->bottomCollision->setPositionY(-420.0f);
 }
 
 void VikingShip::initializeListeners()
 {
 	super::initializeListeners();
 	
-
 	this->interactCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::CartStop }, [=](CollisionData collisionData)
 	{
 		this->reverse();
@@ -76,6 +80,7 @@ void VikingShip::update(float dt)
 
 	this->moveMount(dt);
 	this->faceEntityTowardsDirection();
+	this->ship->setFlippedX(this->mountDirection == MountDirection::Left);
 }
 
 void VikingShip::mount(PlatformerEntity* interactingEntity)
@@ -96,5 +101,5 @@ void VikingShip::dismount()
 
 Vec2 VikingShip::getReparentPosition()
 {
-	return Vec2(0.0f, 128.0f);
+	return Vec2(0.0f, -224.0f);
 }

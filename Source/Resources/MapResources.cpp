@@ -37,6 +37,7 @@ const std::string MapResources::DataMines_Zone_4_0 = "Public/Platformer/Maps/Dat
 const std::string MapResources::DataMines_Zone_4_1 = "Public/Platformer/Maps/DataMines/Zone_4_1.tmx";
 const std::string MapResources::DataMines_Zone_4_2 = "Public/Platformer/Maps/DataMines/Zone_4_2.tmx";
 const std::string MapResources::DataMines_Zone_4_3 = "Public/Platformer/Maps/DataMines/Zone_4_3.tmx";
+const std::string MapResources::DataMines_Zone_5_0 = "Public/Platformer/Maps/DataMines/Zone_5_0.tmx";
 const std::string MapResources::Dev_AnimSeq = "Public/Platformer/Maps/Dev/AnimSeq.tmx";
 const std::string MapResources::Dev_Bounds = "Public/Platformer/Maps/Dev/Bounds.tmx";
 const std::string MapResources::Dev_Cages = "Public/Platformer/Maps/Dev/Cages.tmx";

@@ -174,6 +174,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Inn (DM)", MapResources::DataMines_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (DM)", MapResources::DataMines_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (DM)", MapResources::DataMines_Town_Main));
+		mapList.push_back(this->buildDebugButton("Zone_5_0 (DM)", MapResources::DataMines_Zone_5_0));
 		mapList.push_back(this->buildDebugButton("Zone_4_3 (DM)", MapResources::DataMines_Zone_4_3));
 		mapList.push_back(this->buildDebugButton("Zone_4_2 (DM)", MapResources::DataMines_Zone_4_2));
 		mapList.push_back(this->buildDebugButton("Zone_4_1 (DM)", MapResources::DataMines_Zone_4_1));

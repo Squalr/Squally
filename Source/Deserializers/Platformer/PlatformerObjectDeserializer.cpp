@@ -131,6 +131,8 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[IOUDrop5::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop5::create(properties); };
 	this->deserializers[IOUDrop10::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop10::create(properties); };
 	this->deserializers[IOUDrop25::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop25::create(properties); };
+	this->deserializers[HeavenHug::MapKey] = [=](ValueMap properties) { return (GameObject*)HeavenHug::create(properties); };
+	this->deserializers[HellGate::MapKey] = [=](ValueMap properties) { return (GameObject*)HellGate::create(properties); };
 	this->deserializers[HelpTotemAttacking::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemAttacking::create(properties); };
 	this->deserializers[HelpTotemEndOfDemo::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemEndOfDemo::create(properties); };
 	this->deserializers[HelpTotemEquipment::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemEquipment::create(properties); };
@@ -139,7 +141,6 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[HelpTotemPickPocket::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemPickPocket::create(properties); };
 	this->deserializers[HelpTotemPotions::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemPotions::create(properties); };
 	this->deserializers[HelpTotemSwimHack::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemSwimHack::create(properties); };
-	this->deserializers[HeavenHug::MapKey] = [=](ValueMap properties) { return (GameObject*)HeavenHug::create(properties); };
 	this->deserializers[Laser::MapKey] = [=](ValueMap properties) { return (GameObject*)Laser::create(properties); };
 	this->deserializers[Lava::MapKey] = [=](ValueMap properties) { return (GameObject*)Lava::create(properties); };
 	this->deserializers[Lever::MapKey] = [=](ValueMap properties) { return (GameObject*)Lever::create(properties); };

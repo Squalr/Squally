@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="36" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="83" nextobjectid="864">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="52" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="875">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,11 +17,11 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="832" name="mines" type="terrain" x="1849" y="1647.08">
+  <object id="832" name="mines" type="terrain" x="3056.98" y="1647.08">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="-2191.66,-2227.83 3265.8,-2222.92 3259.49,1294.45 -2182.09,1280.13"/>
+   <polygon points="-3399.64,-2227.83 5065.82,-2222.92 5056.03,1294.45 -3384.8,1280.13"/>
   </object>
  </objectgroup>
  <objectgroup id="76" name="water bg -4">
@@ -46,12 +46,7 @@
    </properties>
    <polygon points="-726.663,-2136.75 1082.8,-2132.04 1080.71,1241.53 -723.491,1227.8"/>
   </object>
-  <object id="829" name="mines" type="terrain" x="2448" y="1240">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="-726.663,-2136.75 1082.8,-2132.04 1080.71,1241.53 -723.491,1227.8"/>
-  </object>
+  <object id="874" name="mines" type="terrain" x="1725.4" y="-898" width="1809.2" height="3380"/>
  </objectgroup>
  <objectgroup id="69" name="objects -4">
   <properties>
@@ -71,6 +66,7 @@
    </properties>
   </object>
   <object id="852" name="solid" type="collision" x="-178.419" y="1293.88" width="2661.63" height="642.545"/>
+  <object id="869" name="cart-stop" type="collision" x="3411.19" y="-169.942" width="121.63" height="1281.22"/>
  </objectgroup>
  <objectgroup id="71" name="water -4">
   <properties>
@@ -79,7 +75,7 @@
   </properties>
   <object id="824" name="water" type="object" x="875.231" y="1011.66" width="1021.11" height="1338.2"/>
   <object id="847" name="water" type="object" x="-1109.68" y="1022.02" width="1984.75" height="1327.53"/>
-  <object id="848" name="lava" type="object" x="1759.14" y="1022.05" width="3269.59" height="1327.53"/>
+  <object id="848" name="lava" type="object" x="1759.14" y="1022.05" width="6309.59" height="1327.53"/>
  </objectgroup>
  <objectgroup id="68" name="terrain -4">
   <properties>
@@ -115,7 +111,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="825" name="lava" type="object" x="869.625" y="1062.24" width="4133.66" height="1327.53"/>
+  <object id="825" name="lava" type="object" x="869.625" y="1062.24" width="7157.66" height="1327.53"/>
   <object id="846" name="water" type="object" x="-1056.04" y="1062.57" width="1942.75" height="1327.53"/>
  </objectgroup>
  <objectgroup id="67" name="terrain -3">
@@ -139,7 +135,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="826" name="lava" type="object" x="2223.63" y="1096.23" width="2751.78" height="1327.53"/>
+  <object id="826" name="lava" type="object" x="2223.63" y="1096.23" width="5759.78" height="1327.53"/>
   <object id="845" name="water" type="object" x="-846.981" y="1096.9" width="3060.02" height="1327.53"/>
  </objectgroup>
  <objectgroup id="66" name="terrain -2">
@@ -163,7 +159,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="827" name="lava" type="object" x="2215.63" y="1126.24" width="2730.93" height="1327.53"/>
+  <object id="827" name="lava" type="object" x="2215.63" y="1126.24" width="5738.93" height="1327.53"/>
   <object id="844" name="water" type="object" x="-532.375" y="1126.57" width="2750.75" height="1327.53"/>
  </objectgroup>
  <objectgroup id="70" name="objects -1">
@@ -227,6 +223,13 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
+  <object id="872" name="edge-portal" type="object" x="6456.04" y="691.999" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="DataMines/Zone_5_0"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -256,7 +259,7 @@
   </object>
   <object id="851" name="drak" type="entity" x="3375.39" y="884.485" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pick-pocket"/>
+    <property name="components" value="friendly"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="quest" value="boat-unlocked"/>
@@ -287,12 +290,27 @@
     <property name="to" value="bridge-back-A"/>
    </properties>
   </object>
+  <object id="873" name="spawn" type="object" x="2981.33" y="869.333" width="128" height="128">
+   <properties>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="83" name="objects fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="865" name="viking-ship" type="object" x="3528.48" y="256.485" width="1083" height="931">
+   <properties>
+    <property name="direction" value="right"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="82" name="water fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="860" name="lava" type="object" x="3463.08" y="1160.23" width="2421.84" height="1327.53"/>
+  <object id="860" name="lava" type="object" x="3463.08" y="1160.23" width="4393.84" height="1327.53"/>
  </objectgroup>
  <objectgroup id="81" name="terrain fg">
   <properties>

@@ -120,6 +120,8 @@ MiniMapObjectDeserializer::MiniMapObjectDeserializer() : super(MiniMapObjectDese
 	this->deserializers[IOUDrop5::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[IOUDrop10::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[IOUDrop25::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
+	this->deserializers[HeavenHug::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
+	this->deserializers[HellGate::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::PortalColor); };
 	this->deserializers[HelpTotemAttacking::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[HelpTotemEndOfDemo::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[HelpTotemEquipment::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
@@ -128,7 +130,6 @@ MiniMapObjectDeserializer::MiniMapObjectDeserializer() : super(MiniMapObjectDese
 	this->deserializers[HelpTotemPickPocket::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[HelpTotemPotions::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[HelpTotemSwimHack::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
-	this->deserializers[HeavenHug::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[Laser::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[Lever::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::InteractableColor); };
 	this->deserializers[LifeStone::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::ShrineColor); };

@@ -43,6 +43,7 @@
 #include "Objects/Platformer/Interactables/Doors/Dragon/DragonDoor.h"
 #include "Objects/Platformer/Interactables/Doors/EdgePortal.h"
 #include "Objects/Platformer/Interactables/Doors/Gate/Gate.h"
+#include "Objects/Platformer/Interactables/Doors/HellGate/HellGate.h"
 #include "Objects/Platformer/Interactables/Doors/LanternGate/EdgeLanternGate.h"
 #include "Objects/Platformer/Interactables/Doors/LanternGate/LanternGate.h"
 #include "Objects/Platformer/Interactables/Doors/MagePortals/MagePortal.h"

@@ -217,6 +217,7 @@ const std::string ObjectResources::Doors_Dragon_DragonDoorTop = "Private/Platfor
 const std::string ObjectResources::Doors_EdgePortal_EdgeArrow = "Private/Platformer/Objects/Doors/EdgePortal/EdgeArrow.png";
 const std::string ObjectResources::Doors_Gate_GateLeft = "Private/Platformer/Objects/Doors/Gate/GateLeft.png";
 const std::string ObjectResources::Doors_Gate_GateRight = "Private/Platformer/Objects/Doors/Gate/GateRight.png";
+const std::string ObjectResources::Doors_HellGate_HellGateFrame = "Private/Platformer/Objects/Doors/HellGate/HellGateFrame.png";
 const std::string ObjectResources::Doors_LanternGate_LanternLeft = "Private/Platformer/Objects/Doors/LanternGate/LanternLeft.png";
 const std::string ObjectResources::Doors_LanternGate_LanternOrangeLeft = "Private/Platformer/Objects/Doors/LanternGate/LanternOrangeLeft.png";
 const std::string ObjectResources::Doors_LanternGate_LanternOrangeRight = "Private/Platformer/Objects/Doors/LanternGate/LanternOrangeRight.png";

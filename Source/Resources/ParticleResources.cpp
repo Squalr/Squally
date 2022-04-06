@@ -84,6 +84,7 @@ const std::string ParticleResources::Platformer_Hacking_HackerRainOrange4 = "Pub
 const std::string ParticleResources::Platformer_Hacking_HackerRainOrange5 = "Public/Particles/Platformer/Hacking/HackerRainOrange5.plist";
 const std::string ParticleResources::Poison = "Public/Particles/Poison.plist";
 const std::string ParticleResources::Portals_DarkPortal = "Public/Particles/Portals/DarkPortal.plist";
+const std::string ParticleResources::Portals_HellPortal = "Public/Particles/Portals/HellPortal.plist";
 const std::string ParticleResources::Portals_PortalEdge = "Public/Particles/Portals/PortalEdge.plist";
 const std::string ParticleResources::Portals_PortalEdgeDark = "Public/Particles/Portals/PortalEdgeDark.plist";
 const std::string ParticleResources::Portals_PortalEye = "Public/Particles/Portals/PortalEye.plist";

@@ -218,6 +218,7 @@ namespace ObjectResources
 	extern const std::string Doors_EdgePortal_EdgeArrow;
 	extern const std::string Doors_Gate_GateLeft;
 	extern const std::string Doors_Gate_GateRight;
+	extern const std::string Doors_HellGate_HellGateFrame;
 	extern const std::string Doors_LanternGate_LanternLeft;
 	extern const std::string Doors_LanternGate_LanternOrangeLeft;
 	extern const std::string Doors_LanternGate_LanternOrangeRight;
