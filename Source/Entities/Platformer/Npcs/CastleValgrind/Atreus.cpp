@@ -22,8 +22,8 @@ Atreus* Atreus::deserialize(ValueMap& properties)
 
 Atreus::Atreus(ValueMap& properties) : super(properties,
 	Atreus::MapKey,
-	EntityResources::Npcs_VoidStar_Atreus_Animations,
-	EntityResources::Npcs_VoidStar_Atreus_Emblem,
+	EntityResources::Npcs_CastleValgrind_Atreus_Animations,
+	EntityResources::Npcs_CastleValgrind_Atreus_Emblem,
 	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

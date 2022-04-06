@@ -22,8 +22,8 @@ Appolo* Appolo::deserialize(ValueMap& properties)
 
 Appolo::Appolo(ValueMap& properties) : super(properties,
 	Appolo::MapKey,
-	EntityResources::Npcs_VoidStar_Appolo_Animations,
-	EntityResources::Npcs_VoidStar_Appolo_Emblem,
+	EntityResources::Npcs_UnderflowRuins_Appolo_Animations,
+	EntityResources::Npcs_UnderflowRuins_Appolo_Emblem,
 	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

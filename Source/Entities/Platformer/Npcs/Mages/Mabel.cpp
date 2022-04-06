@@ -22,8 +22,8 @@ Mabel* Mabel::deserialize(ValueMap& properties)
 
 Mabel::Mabel(ValueMap& properties) : super(properties,
 	Mabel::MapKey,
-	EntityResources::Npcs_CastleValgrind_Mabel_Animations,
-	EntityResources::Npcs_CastleValgrind_Mabel_Emblem,
+	EntityResources::Npcs_Mages_Mabel_Animations,
+	EntityResources::Npcs_Mages_Mabel_Emblem,
 	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

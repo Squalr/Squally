@@ -22,8 +22,8 @@ Aster* Aster::deserialize(ValueMap& properties)
 
 Aster::Aster(ValueMap& properties) : super(properties,
 	Aster::MapKey,
-	EntityResources::Npcs_BallmerPeaks_Aster_Animations,
-	EntityResources::Npcs_BallmerPeaks_Aster_Emblem,
+	EntityResources::Npcs_Mages_Aster_Animations,
+	EntityResources::Npcs_Mages_Aster_Emblem,
 	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

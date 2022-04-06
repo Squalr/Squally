@@ -22,8 +22,8 @@ Rusty* Rusty::deserialize(ValueMap& properties)
 
 Rusty::Rusty(ValueMap& properties) : super(properties,
 	Rusty::MapKey,
-	EntityResources::Npcs_DaemonsHallow_Rusty_Animations,
-	EntityResources::Npcs_DaemonsHallow_Rusty_Emblem,
+	EntityResources::Npcs_DataMines_Rusty_Animations,
+	EntityResources::Npcs_DataMines_Rusty_Emblem,
 	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

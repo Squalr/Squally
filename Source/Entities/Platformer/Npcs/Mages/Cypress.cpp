@@ -22,8 +22,8 @@ Cypress* Cypress::deserialize(ValueMap& properties)
 
 Cypress::Cypress(ValueMap& properties) : super(properties,
 	Cypress::MapKey,
-	EntityResources::Npcs_DataMines_Cypress_Animations,
-	EntityResources::Npcs_DataMines_Cypress_Emblem,
+	EntityResources::Npcs_Mages_Cypress_Animations,
+	EntityResources::Npcs_Mages_Cypress_Emblem,
 	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

@@ -22,8 +22,8 @@ Bancroft* Bancroft::deserialize(ValueMap& properties)
 
 Bancroft::Bancroft(ValueMap& properties) : super(properties,
 	Bancroft::MapKey,
-	EntityResources::Npcs_VoidStar_Bancroft_Animations,
-	EntityResources::Npcs_VoidStar_Bancroft_Emblem,
+	EntityResources::Npcs_DataMines_Bancroft_Animations,
+	EntityResources::Npcs_DataMines_Bancroft_Emblem,
 	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

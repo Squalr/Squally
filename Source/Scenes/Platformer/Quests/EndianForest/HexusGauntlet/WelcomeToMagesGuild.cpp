@@ -8,7 +8,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
-#include "Entities/Platformer/Npcs/EndianForest/Marcel.h"
+#include "Entities/Platformer/Npcs/Mages/Marcel.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"

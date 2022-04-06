@@ -22,8 +22,8 @@ Sarude* Sarude::deserialize(ValueMap& properties)
 
 Sarude::Sarude(ValueMap& properties) : super(properties,
 	Sarude::MapKey,
-	EntityResources::Npcs_DataMines_Sarude_Animations,
-	EntityResources::Npcs_DataMines_Sarude_Emblem,
+	EntityResources::Npcs_Mages_Sarude_Animations,
+	EntityResources::Npcs_Mages_Sarude_Emblem,
 	CSize(112.0f, 160.0f),
 	1.05f,
 	Vec2(0.0f, 0.0f))

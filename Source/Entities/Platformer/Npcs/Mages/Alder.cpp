@@ -22,8 +22,8 @@ Alder* Alder::deserialize(ValueMap& properties)
 
 Alder::Alder(ValueMap& properties) : super(properties,
 	Alder::MapKey,
-	EntityResources::Npcs_DataMines_Alder_Animations,
-	EntityResources::Npcs_DataMines_Alder_Emblem,
+	EntityResources::Npcs_Mages_Alder_Animations,
+	EntityResources::Npcs_Mages_Alder_Emblem,
 	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

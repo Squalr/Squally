@@ -12,7 +12,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Save/SaveManager.h"
-#include "Entities/Platformer/Npcs/EndianForest/Marcel.h"
+#include "Entities/Platformer/Npcs/Mages/Marcel.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"

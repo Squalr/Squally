@@ -22,8 +22,8 @@ Merlin* Merlin::deserialize(ValueMap& properties)
 
 Merlin::Merlin(ValueMap& properties) : super(properties,
 	Merlin::MapKey,
-	EntityResources::Npcs_CastleValgrind_Merlin_Animations,
-	EntityResources::Npcs_CastleValgrind_Merlin_Emblem,
+	EntityResources::Npcs_Mages_Merlin_Animations,
+	EntityResources::Npcs_Mages_Merlin_Emblem,
 	CSize(112.0f, 160.0f),
 	1.05f,
 	Vec2(0.0f, 0.0f))

@@ -22,8 +22,8 @@ Marcel* Marcel::deserialize(ValueMap& properties)
 
 Marcel::Marcel(ValueMap& properties) : super(properties,
 	Marcel::MapKey,
-	EntityResources::Npcs_EndianForest_Marcel_Animations,
-	EntityResources::Npcs_EndianForest_Marcel_Emblem,
+	EntityResources::Npcs_Mages_Marcel_Animations,
+	EntityResources::Npcs_Mages_Marcel_Emblem,
 	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

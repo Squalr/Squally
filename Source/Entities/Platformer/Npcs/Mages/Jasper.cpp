@@ -22,8 +22,8 @@ Jasper* Jasper::deserialize(ValueMap& properties)
 
 Jasper::Jasper(ValueMap& properties) : super(properties,
 	Jasper::MapKey,
-	EntityResources::Npcs_DataMines_Jasper_Animations,
-	EntityResources::Npcs_DataMines_Jasper_Emblem,
+	EntityResources::Npcs_Mages_Jasper_Animations,
+	EntityResources::Npcs_Mages_Jasper_Emblem,
 	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

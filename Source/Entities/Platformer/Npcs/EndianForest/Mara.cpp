@@ -22,8 +22,8 @@ Mara* Mara::deserialize(ValueMap& properties)
 
 Mara::Mara(ValueMap& properties) : super(properties,
 	Mara::MapKey,
-	EntityResources::Npcs_VoidStar_Mara_Animations,
-	EntityResources::Npcs_VoidStar_Mara_Emblem,
+	EntityResources::Npcs_EndianForest_Mara_Animations,
+	EntityResources::Npcs_EndianForest_Mara_Emblem,
 	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
