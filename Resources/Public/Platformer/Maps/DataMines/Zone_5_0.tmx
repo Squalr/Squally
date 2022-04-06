@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="40" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="877">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="44" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="885">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -41,18 +41,21 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="877" name="hell-gate" type="object" x="4213.33" y="543.636" width="512" height="512"/>
  </objectgroup>
  <objectgroup id="71" name="water -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="883" name="lava" type="object" x="-444.89" y="1035.23" width="6293.23" height="1327.53"/>
  </objectgroup>
  <objectgroup id="68" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="880" name="mines" type="terrain" x="4029.57" y="1057" width="903.867" height="844"/>
  </objectgroup>
  <objectgroup id="78" name="player_layer -4">
   <properties>
@@ -65,6 +68,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="882" name="lava" type="object" x="-446.89" y="1064.24" width="6247.78" height="1327.53"/>
  </objectgroup>
  <objectgroup id="67" name="terrain -3">
   <properties>
@@ -72,6 +76,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="863" name="mines" type="terrain" x="179.615" y="941.939" width="271.08" height="1088"/>
+  <object id="881" name="mines" type="terrain" x="4111.57" y="1071" width="727.867" height="844"/>
  </objectgroup>
  <objectgroup id="65" name="fireflies -3">
   <properties>
@@ -85,13 +90,14 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="826" name="lava" type="object" x="-428.37" y="1096.23" width="5947.78" height="1327.53"/>
+  <object id="826" name="lava" type="object" x="-445.37" y="1095.23" width="6214.45" height="1327.53"/>
  </objectgroup>
  <objectgroup id="66" name="terrain -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="879" name="mines" type="terrain" x="4222.82" y="1085.58" width="486.867" height="844"/>
  </objectgroup>
  <objectgroup id="64" name="fireflies -2">
   <properties>
@@ -105,7 +111,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="827" name="lava" type="object" x="-360.37" y="1126.24" width="5790.93" height="1327.53"/>
+  <object id="827" name="lava" type="object" x="-369.37" y="1126.24" width="6112.93" height="1327.53"/>
  </objectgroup>
  <objectgroup id="70" name="objects -1">
   <properties>
@@ -118,6 +124,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="878" name="mines" type="terrain" x="4184.49" y="1102.3" width="561.867" height="844"/>
  </objectgroup>
  <objectgroup id="63" name="fireflies -1">
   <properties>
@@ -136,7 +143,8 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="850" name="mines" type="terrain" x="3260.01" y="1021.15" width="354.413" height="1233.45"/>
-  <object id="874" name="mines" type="terrain" x="3409.4" y="1122" width="2085.2" height="844"/>
+  <object id="874" name="mines" type="terrain" x="3409.4" y="1122" width="1905.2" height="844"/>
+  <object id="884" name="mines" type="terrain" x="5317.22" y="-159.634" width="354.413" height="2769.45"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -166,7 +174,6 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="875" name="hell-gate" type="object" x="4218.5" y="590.5" width="512" height="512"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -218,7 +225,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="860" name="lava" type="object" x="-304.92" y="1160.23" width="5653.84" height="1327.53"/>
+  <object id="860" name="lava" type="object" x="-304.92" y="1160.23" width="6015.9" height="1327.53"/>
  </objectgroup>
  <objectgroup id="81" name="terrain fg">
   <properties>
