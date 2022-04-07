@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="66" nextobjectid="808">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="34" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="821">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -20,6 +20,67 @@
   <object id="712" name="mines" type="texture" x="1527.09" y="1626.75">
    <polygon points="-2095.29,-2086.15 3122.17,-2081.55 3116.15,1212.13 -2086.14,1198.72"/>
   </object>
+ </objectgroup>
+ <objectgroup id="66" name="terrain -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="813" name="mines" type="terrain" x="1575.46" y="1592" width="2903.63" height="844">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="819" name="mines" type="terrain" x="832.185" y="-290" width="747.63" height="2728">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="68" name="decor -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="817" name="screaming-door" type="object" x="2039.39" y="479.364" width="800" height="1114">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="map" value="DataMines/Town_Main"/>
+    <property name="transition" value="goa"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="69" name="entities -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="820" name="rhinoman" type="entity" x="2408" y="1464" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="dm-generic"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="67" name="decor fg -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="814" name="Ruins/Walls1" type="decor" x="1706.52" y="1173.53" width="333" height="416">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="815" name="Ruins/Walls2" type="decor" x="3185.45" y="1457.82" width="689" height="132">
+   <properties>
+    <property name="flip-y" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="816" name="Ruins/Walls5" type="decor" x="2796.28" y="813" width="386" height="778"/>
  </objectgroup>
  <objectgroup id="65" name="firefliex -3">
   <properties>
@@ -51,12 +112,17 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
+  <object id="818" name="mines" type="terrain" x="4138.85" y="-94.5656" width="634.43" height="2313.01">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="786" name="mines" type="terrain" x="-134.54" y="1658" width="4385.08" height="844">
+  <object id="786" name="mines" type="terrain" x="-134.54" y="1658" width="4673.08" height="844">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -82,7 +148,7 @@
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="802" name="Ruins/Walls5" type="decor" x="1923.3" y="883.727" width="386" height="778"/>
+  <object id="802" name="Ruins/Walls5" type="decor" x="1380.88" y="883.727" width="386" height="778"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
@@ -103,14 +169,14 @@
    </properties>
   </object>
   <object id="797" name="pass-through" type="collision" x="207.76" y="1102.04" width="807" height="106.19"/>
-  <object id="804" name="edge-portal" type="object" x="3900.04" y="1180" width="199.918" height="488.002">
+  <object id="804" name="edge-portal" type="object" x="4140.04" y="1176" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="DataMines/Zone_1_1"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="806" name="life-stone" type="object" x="1515" y="1236.5" width="146" height="423"/>
+  <object id="806" name="life-stone" type="object" x="1969.55" y="1236.5" width="146" height="423"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -122,12 +188,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="807" name="olive" type="entity" x="2724" y="1532" width="128" height="128">
-   <properties>
-    <property name="components" value="olive-hexus,friendly,pick-pocket,face-squally"/>
-    <property name="pocket-pool" value="dm-generic"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

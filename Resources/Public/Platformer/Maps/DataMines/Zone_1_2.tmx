@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="24" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="841">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="62" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1949">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -12,21 +12,37 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="58" name="tiled bg -8" visible="0">
+ <objectgroup id="82" name="tiled bg -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="712" name="mines" type="texture" x="1103.97" y="1432.75">
-   <polygon points="-1912.17,-2086.15 2849.29,-2081.55 2843.8,1212.13 -1903.81,1198.72"/>
+  <object id="837" name="mines" type="texture" x="-966.54" y="-1095.82" width="9917.1" height="6823.64"/>
+ </objectgroup>
+ <objectgroup id="115" name="decor -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1933" name="Mines/MineDoorOpen" type="decor" x="3594.62" y="1411.56" width="435" height="389"/>
+ </objectgroup>
+ <objectgroup id="116" name="terrain -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1934" name="dark-grass" type="terrain" x="3529.58" y="1804.24">
+   <polygon points="63.2344,-0.534154 -38.2041,104.694 9.22169,339.722 587.553,350.405 560.547,90.2721 492.023,0.404662"/>
   </object>
  </objectgroup>
- <objectgroup id="88" name="water -8">
+ <objectgroup id="114" name="terrain -7">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="839" name="water" type="object" x="-685.666" y="1880.23" width="4323.79" height="823.714"/>
+  <object id="1932" name="dark-grass" type="terrain" x="3543.84" y="1841.96">
+   <polygon points="63.2344,-0.534154 -38.2041,104.694 9.22169,339.722 587.553,350.405 560.547,90.2721 492.023,0.404662"/>
+  </object>
  </objectgroup>
  <objectgroup id="78" name="fireflies -8">
   <properties>
@@ -35,47 +51,47 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="86" name="water -7">
-  <object id="837" name="water" type="object" x="-717.96" y="1892.84" width="4390.54" height="823.714"/>
- </objectgroup>
- <objectgroup id="69" name="terrain -7">
-  <properties>
-   <property name="depth" type="float" value="-448"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="818" name="mines" type="terrain" x="1071.46" y="1896.67" width="758.413" height="412">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="823" name="mines" type="terrain" x="2652.79" y="1884" width="396.413" height="412">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="77" name="fireflies -7">
-  <properties>
-   <property name="depth" type="float" value="-448"/>
-   <property name="type" value="weather"/>
-   <property name="weather" value="fireflies"/>
-  </properties>
- </objectgroup>
- <objectgroup id="85" name="water -6">
-  <properties>
-   <property name="depth" type="float" value="-384"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="836" name="water" type="object" x="-754.56" y="1904.99" width="4448.67" height="823.714"/>
- </objectgroup>
  <objectgroup id="68" name="terrain -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="817" name="mines" type="terrain" x="978.13" y="1914" width="942.413" height="412">
+  <object id="1913" name="dark-grass" type="terrain" x="1680" y="1184">
    <properties>
-    <property name="top-only" type="bool" value="true"/>
+    <property name="components" value="z-fade"/>
+   </properties>
+   <polygon points="-4.24242,1022.79 246.14,1070.41 658.793,1068.87 1424.64,874.515 1854.93,685.543 2406.27,676.204 2598.97,-74.3632 2693.39,-906.865 3215.92,-1185.02 3765.83,-1193.9 3071.86,-701.25 2919.94,28.287 2913.42,467.308 3183.62,461.073 4347.35,-91.1387 5402.46,-864.086 5974.59,-1460.96 6509.78,-1464.31 5728.99,-643.76 5020.72,-214.628 4323.13,381.02 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 3658.23,2091.24 5082.16,3525.6 4428.06,3506.62 3719.95,2691.79 2979.56,2204.36 2244.39,1661.19 2048.93,1771.8 1734.04,2076.44 1445.1,2541.32 832.23,3468.08 163.87,3450.62 1194.83,2028.96 1586.71,1605.49 1562.66,1385.24 1200.95,1405.81 89.0912,1357.17 -845.635,969.034 -1242.78,949.202 -2063.6,598.746 -2098.17,232.572 -1149.64,581.928 -445.965,882.377 588.302,327.546 1271.75,-282.16 1636.73,-762.36 1953.85,-1256.45 2328.02,-1254.29 1595.68,-266.187 1092.41,303.095"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="111" name="objects -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1929" name="portal" type="object" x="3696" y="1607.59" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Zone_1_4"/>
+    <property name="transition" value="door"/>
+   </properties>
+  </object>
+  <object id="1930" name="spawn" type="object" x="3757.5" y="1736.41" width="128" height="128">
+   <properties>
+    <property name="transition" value="door"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="110" name="player_layer -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.85"/>
+  </properties>
+  <object id="1928" name="warp" type="object" x="1989" y="2000" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-C"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-C"/>
    </properties>
   </object>
  </objectgroup>
@@ -86,31 +102,62 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="84" name="water -5">
-  <object id="835" name="water" type="object" x="-793.313" y="1918.29" width="4506.08" height="823.714"/>
+ <objectgroup id="92" name="objects -5 bg bg">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="91" name="objects -5 bg">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="88" name="terrain -5 bg bg">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="94" name="terrain -5 bg">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="89" name="decor -5 bg">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="62" name="terrain -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="811" name="mines" type="terrain" x="940.19" y="1927.94" width="1017.08" height="412">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
+  <object id="1926" name="dark-grass" type="terrain" x="1855.82" y="2266.65">
+   <polygon points="0,0 -39,178.008 97.5,382.718 360.75,394.956 503.4,343.766 585,248.099 534.404,-0.134855"/>
   </object>
-  <object id="822" name="mines" type="terrain" x="67.46" y="1907" width="301.08" height="412">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
+ </objectgroup>
+ <objectgroup id="93" name="rails -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="90" name="terrain -5 fg">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="63" name="objects -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="840" name="Mines/WarpTower" type="decor" x="970.5" y="-316.5" width="979" height="2249"/>
  </objectgroup>
  <objectgroup id="75" name="fireflies -5">
   <properties>
@@ -119,21 +166,94 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="83" name="water -4">
+ <objectgroup id="117" name="terrain -4 bg">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="834" name="water" type="object" x="-821.302" y="1933.36" width="4561.34" height="823.714"/>
+  <object id="1944" name="dark-grass" type="terrain" x="4779.46" y="1998" width="905.08" height="2448">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="67" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="816" name="mines" type="terrain" x="979.63" y="1937.17" width="942.413" height="412">
+  <object id="1882" name="dark-grass" type="terrain" x="-56" y="1544">
    <properties>
-    <property name="top-only" type="bool" value="true"/>
+    <property name="components" value="z-fade"/>
+   </properties>
+   <polygon points="2432,737 2770.27,684.204 2510.2,322.705 2432.36,-297.132 1781.39,-1222.87 1119.92,-1689.02 1873.31,-1690.6 2435.86,-1157.25 2723.94,-587.713 2897.42,171.308 3183.62,461.073 5758.59,203.035 6961.39,-72.3128 7735.52,-314.012 8274.73,-261.808 8269.04,128.881 7658.6,69.0824 6724.86,322.674 5004.72,785.372 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 2540.41,1846.57 2709.1,1917.32 3688.23,1916.08 4109.41,1976.8 4252.12,1975.54 4557.69,2097.02 4841.89,2096.19 4839.91,2332.64 2347.87,2330.62 2018.71,1333.49 1685.53,1147.1 686.106,1431.01 -452.248,1181.84 -434.152,-1680.45 142.021,-1679.9 168.02,737.709"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="108" name="objects -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1946" name="chest" type="object" x="4560" y="3508" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="dm-generic"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="109" name="entities -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.5"/>
+  </properties>
+  <object id="1920" name="earth-golem" type="entity" x="1712.42" y="2150.37" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-tag" value="group-b"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="dm-generic"/>
+   </properties>
+  </object>
+  <object id="1921" name="earth-golem" type="entity" x="1695.58" y="1929.63" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-b"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="95" name="player_layer -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.5"/>
+  </properties>
+  <object id="1896" name="warp" type="object" x="3029.33" y="3206.67" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-A"/>
+   </properties>
+  </object>
+  <object id="1899" name="warp" type="object" x="804" y="2028" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-B"/>
+   </properties>
+  </object>
+  <object id="1927" name="warp" type="object" x="1991" y="2026" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-C"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-C"/>
    </properties>
   </object>
  </objectgroup>
@@ -144,27 +264,27 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="82" name="water -3">
+ <objectgroup id="107" name="water -4" visible="0">
   <properties>
-   <property name="depth" type="float" value="-192"/>
+   <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="833" name="water" type="object" x="-446.689" y="1943.05" width="4216.86" height="823.714"/>
+  <object id="1893" name="water" type="object" x="-1063.16" y="2335.9" width="9870.33" height="2202.2">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="66" name="terrain -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="815" name="mines" type="terrain" x="1069.46" y="1947" width="758.413" height="412">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
+  <object id="1885" name="dark-grass" type="terrain" x="512" y="2301.33">
+   <polygon points="148,-2 -44,504 160,688 640,696 873,535 740.97,1.75758"/>
   </object>
-  <object id="824" name="mines" type="terrain" x="2224.79" y="1954" width="378.413" height="412">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
+  <object id="1886" name="dark-grass" type="terrain" x="2704.91" y="3484.85">
+   <polygon points="0,0 -64,320 160,688 592,710 826.092,617.977 960,446 876.97,-0.242424"/>
   </object>
  </objectgroup>
  <objectgroup id="73" name="fireflies -3">
@@ -174,22 +294,27 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="81" name="water -2">
+ <objectgroup id="106" name="water -3" visible="0">
   <properties>
-   <property name="depth" type="float" value="-128"/>
+   <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="832" name="water" type="object" x="-853.596" y="1964.58" width="4655.35" height="823.714"/>
+  <object id="1892" name="water" type="object" x="-919.165" y="2363.9" width="9550.33" height="2202.2">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="65" name="terrain -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="814" name="mines" type="terrain" x="1194.79" y="1957" width="503.747" height="412">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
+  <object id="1884" name="dark-grass" type="terrain" x="512.121" y="2321.03">
+   <polygon points="212,-5 -18,310 80,696 766,708 906,366 664.97,-1.24242"/>
+  </object>
+  <object id="1887" name="dark-grass" type="terrain" x="2738" y="3517.27">
+   <polygon points="96,-1 -58,196 14,636 892,656 851,169 746.97,0.757576"/>
   </object>
  </objectgroup>
  <objectgroup id="72" name="fireflies -2">
@@ -199,22 +324,27 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="79" name="water -1">
+ <objectgroup id="105" name="water -2" visible="0">
   <properties>
-   <property name="depth" type="float" value="-64"/>
+   <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="830" name="water" type="object" x="-883.737" y="1994.72" width="4722.81" height="823.714"/>
+  <object id="1891" name="water" type="object" x="-799.165" y="2385.9" width="9310.33" height="2202.2">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="64" name="terrain -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="812" name="mines" type="terrain" x="1263.43" y="1965.98" width="371.747" height="412">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
+  <object id="1883" name="dark-grass" type="terrain" x="511.879" y="2341.88">
+   <polygon points="96,-1 -58,196 14,636 892,656 851,169 746.97,0.757576"/>
+  </object>
+  <object id="1888" name="dark-grass" type="terrain" x="2720.06" y="3573.82">
+   <polygon points="212,-5 -18,310 80,696 766,708 906,366 664.97,-1.24242"/>
   </object>
  </objectgroup>
  <objectgroup id="71" name="fireflies -1">
@@ -224,22 +354,85 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
+ <objectgroup id="83" name="objects -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="96" name="objects -1 bg">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="104" name="water -1" visible="0">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1890" name="water" type="object" x="-599.165" y="2412.9" width="8998.33" height="2202.2">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="79" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1691" name="dark-grass" type="terrain" x="-144.54" y="418" width="1161.08" height="1388">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="80" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="786" name="mines" type="terrain" x="-206.54" y="1975" width="3493.08" height="412">
+  <object id="1623" name="mines" type="terrain" x="-291.025" y="-569.394" width="8553.08" height="1116"/>
+  <object id="1875" name="dark-grass" type="terrain" x="-108" y="1648">
    <properties>
-    <property name="top-only" type="bool" value="true"/>
+    <property name="components" value="z-fade"/>
    </properties>
+   <polygon points="0,0 1652,-4 1944,16 2308,100 2720,260 3284,484 3652,784 3868,1072 3948,1296 3852,1472 3644,1520 3048,1292 2824,952 2801.04,535.248 2336.37,354.077 1792,292 907.833,303.378 260,544 113.53,1318.75 572,1920 924,2104 1732,1976 2580,1824 3059.59,1958.53 3484,1960 4324.65,1961.6 4724.71,2267.66 4996,2640 8164,2648 8172,2872 -596,2848 -564,-64"/>
+  </object>
+  <object id="1876" name="dark-grass" type="terrain" x="7308" y="28">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+   <polygon points="760,1736 -2041.38,1734.4 -2646.13,2044.95 -3228.02,2072.4 -3696.61,1561.7 -4527.81,-65.7399 780.483,-66.8"/>
+  </object>
+  <object id="1878" name="dark-grass" type="terrain" x="512" y="2365">
+   <polygon points="0,0 -64,320 160,688 592,710 826.092,617.977 960,446 876.97,-0.242424"/>
+  </object>
+  <object id="1879" name="dark-grass" type="terrain" x="8344" y="1976">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+   <polygon points="-249.38,186.4 -276.141,1821.37 -983.367,1821.91 -1268.17,1733.56 -1368.31,1638.45 -3224.85,1634.67 -3372.62,1735.52 -3483.16,1700.62 -3605.95,1568.23 -3719.04,1298.11 -3897.6,696.559 -3079.81,198.26"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1948" name="screaming-door" type="object" x="86" y="533" width="800" height="1114">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="map" value="DataMines/Town_Main"/>
+    <property name="transition" value="goa"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="60" name="decor fg">
+ <objectgroup id="81" name="rails">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -249,30 +442,201 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1924" name="camera-target" type="object" x="5976.85" y="3904.71" width="128" height="128">
+   <properties>
+    <property name="tag" value="target-A"/>
+    <property name="zoom" type="float" value="2.5"/>
+   </properties>
+  </object>
+  <object id="1925" name="camera-control" type="object" x="4600.06" y="1599.29" width="3399.88" height="2975.45">
+   <properties>
+    <property name="target" value="target-A"/>
+   </properties>
+  </object>
+  <object id="1947" name="mini-map-relocator" type="object" x="4612.06" y="1657.97" width="3327.88" height="2828.06">
+   <properties>
+    <property name="position" value="bottom-right"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="804" name="edge-portal" type="object" x="2864.04" y="1488" width="199.918" height="488.002">
+  <object id="1874" name="edge-portal" type="object" x="7515.07" y="3805.24" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="DataMines/Zone_1_5"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="1880" name="edge-portal" type="object" x="7724.04" y="1700" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="DataMines/Zone_1_3"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="808" name="edge-portal" type="object" x="72.041" y="1497" width="199.918" height="488.002">
+  <object id="1900" name="logic-torch" type="object" x="5217.66" y="3149.43" width="101" height="111">
    <properties>
-    <property name="direction" value="left"/>
-    <property name="map" value="DataMines/Zone_1_1"/>
-    <property name="transition" value="left"/>
+    <property name="color" value="red"/>
+    <property name="components" value="z-fade"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="save-key" value="SAVE_KEY_XOR_RED_1"/>
+    <property name="tag" value="xor-puzzle"/>
    </properties>
   </object>
-  <object id="819" name="portal" type="object" x="1322.3" y="1718.06" width="256" height="256">
+  <object id="1901" name="logic-torch" type="object" x="6241.96" y="3155.49" width="101" height="111">
    <properties>
-    <property name="map" value="DataMines/Mages_Warp"/>
-    <property name="transition" value="warp-room"/>
+    <property name="color" value="green"/>
+    <property name="components" value="z-fade"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="true"/>
+    <property name="save-key" value="SAVE_KEY_XOR_GREEN_1"/>
+    <property name="tag" value="xor-puzzle"/>
+   </properties>
+  </object>
+  <object id="1902" name="logic-torch" type="object" x="5729.16" y="3149.43" width="101" height="111">
+   <properties>
+    <property name="color" value="blue"/>
+    <property name="components" value="z-fade"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="true"/>
+    <property name="save-key" value="SAVE_KEY_XOR_BLUE_1"/>
+    <property name="tag" value="xor-puzzle"/>
+   </properties>
+  </object>
+  <object id="1903" name="logic-torch" type="object" x="5219.22" y="2942.4" width="101" height="111">
+   <properties>
+    <property name="color" value="red"/>
+    <property name="components" value="z-fade"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="tag" value="xor-puzzle"/>
+   </properties>
+  </object>
+  <object id="1904" name="logic-torch" type="object" x="6243.52" y="2948.46" width="101" height="111">
+   <properties>
+    <property name="color" value="green"/>
+    <property name="components" value="z-fade"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="tag" value="xor-puzzle"/>
+   </properties>
+  </object>
+  <object id="1905" name="logic-torch" type="object" x="5730.72" y="2942.4" width="101" height="111">
+   <properties>
+    <property name="color" value="blue"/>
+    <property name="components" value="z-fade"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="true"/>
+    <property name="tag" value="xor-puzzle"/>
+   </properties>
+  </object>
+  <object id="1906" name="logic-torch" type="object" x="6755.88" y="2945.43" width="101" height="111">
+   <properties>
+    <property name="color" value="purple"/>
+    <property name="components" value="z-fade"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="tag" value="xor-puzzle"/>
+   </properties>
+  </object>
+  <object id="1907" name="logic-gate" type="object" x="5128.51" y="3614.76" width="285" height="676">
+   <properties>
+    <property name="answer" type="bool" value="false"/>
+    <property name="color" value="red"/>
+    <property name="components" value="z-fade"/>
+    <property name="delta" type="float" value="456"/>
+    <property name="gate-color" value="gray"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="tag" value="xor-puzzle"/>
+   </properties>
+  </object>
+  <object id="1908" name="logic-torch" type="object" x="6754.32" y="3152.46" width="101" height="111">
+   <properties>
+    <property name="color" value="purple"/>
+    <property name="components" value="z-fade"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="save-key" value="SAVE_KEY_XOR_PURPLE_1"/>
+    <property name="tag" value="xor-puzzle"/>
+   </properties>
+  </object>
+  <object id="1909" name="logic-gate" type="object" x="5642.49" y="3614.76" width="285" height="676">
+   <properties>
+    <property name="answer" type="bool" value="true"/>
+    <property name="color" value="blue"/>
+    <property name="components" value="z-fade"/>
+    <property name="delta" type="float" value="456"/>
+    <property name="gate-color" value="gray"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="tag" value="xor-puzzle"/>
+   </properties>
+  </object>
+  <object id="1910" name="logic-gate" type="object" x="6150.49" y="3614.76" width="285" height="676">
+   <properties>
+    <property name="answer" type="bool" value="false"/>
+    <property name="color" value="green"/>
+    <property name="components" value="z-fade"/>
+    <property name="delta" type="float" value="456"/>
+    <property name="gate-color" value="gray"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="tag" value="xor-puzzle"/>
+   </properties>
+  </object>
+  <object id="1911" name="logic-gate" type="object" x="6682.49" y="3614.76" width="285" height="676">
+   <properties>
+    <property name="answer" type="bool" value="true"/>
+    <property name="color" value="purple"/>
+    <property name="components" value="z-fade"/>
+    <property name="delta" type="float" value="456"/>
+    <property name="gate-color" value="gray"/>
+    <property name="interactable" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="tag" value="xor-puzzle"/>
+   </properties>
+  </object>
+  <object id="1935" name="glass-display-item" type="object" x="3839.74" y="3276.92" width="169" height="331">
+   <properties>
+    <property name="delay" type="float" value="1"/>
+    <property name="item-name" value="special-xor"/>
+    <property name="listen-event" value="solve-torches"/>
+    <property name="tutorial" value="xor-hint"/>
+   </properties>
+  </object>
+  <object id="1939" name="logic-puzzle-controller" type="object" x="5973.5" y="3336.5" width="101" height="111">
+   <properties>
+    <property name="operation" value="xor"/>
+    <property name="send-event" value="solve-torches"/>
+    <property name="tag" value="xor-puzzle"/>
+   </properties>
+  </object>
+  <object id="1941" name="logic-torch" type="object" x="6957.5" y="2056.5" width="101" height="111">
+   <properties>
+    <property name="color" value="green"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="is-one-use" type="bool" value="false"/>
+    <property name="save-key" value="SAVE_KEY_XOR_GREEN_1"/>
+   </properties>
+  </object>
+  <object id="1945" name="logic-torch" type="object" x="6637.5" y="2052.5" width="101" height="111">
+   <properties>
+    <property name="color" value="red"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="is-one-use" type="bool" value="false"/>
+    <property name="save-key" value="SAVE_KEY_XOR_RED_1"/>
    </properties>
   </object>
  </objectgroup>
@@ -286,7 +650,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="827" name="shaman" type="entity" x="2004.42" y="1843.7" width="128" height="128">
+  <object id="1865" name="forest-golem" type="entity" x="2704.42" y="1520.37" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
@@ -295,10 +659,26 @@
     <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>
-  <object id="828" name="shaman" type="entity" x="2011.58" y="1454.96" width="128" height="128">
+  <object id="1866" name="forest-golem" type="entity" x="2711.58" y="1131.63" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="1916" name="earth-elemental" type="entity" x="6184" y="2050.37" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-tag" value="group-c"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="dm-generic"/>
+   </properties>
+  </object>
+  <object id="1917" name="earth-elemental" type="entity" x="6191.16" y="1757.63" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-c"/>
     <property name="components" value="ally"/>
    </properties>
   </object>
@@ -309,24 +689,50 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.5"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="799.9" y="1848.62" width="128" height="128">
+  <object id="864" name="squally" type="entity" x="721" y="1521.88" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="805" name="spawn" type="object" x="2474" y="1844" width="128" height="128">
+  <object id="1698" name="spawn" type="object" x="7270.61" y="4005.61" width="128" height="128">
    <properties>
-    <property name="transition" value="left"/>
+    <property name="transition" value="left-bottom"/>
    </properties>
   </object>
-  <object id="807" name="spawn" type="object" x="540" y="1853" width="128" height="128">
+  <object id="1705" name="spawn" type="object" x="398.545" y="1517.79" width="128" height="128">
    <properties>
-    <property name="transition" value="right"/>
+    <property name="transition" value="goa"/>
    </properties>
   </object>
-  <object id="821" name="spawn" type="object" x="1386.67" y="1846.67" width="128" height="128">
+  <object id="1881" name="spawn" type="object" x="7400" y="1972" width="128" height="128">
    <properties>
-    <property name="transition" value="warp-room"/>
+    <property name="transition" value="left-top"/>
+   </properties>
+  </object>
+  <object id="1897" name="warp" type="object" x="3030.67" y="3352" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-A"/>
+   </properties>
+  </object>
+  <object id="1898" name="warp" type="object" x="805.333" y="2111.39" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-B"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="103" name="water" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1877" name="water" type="object" x="-471.165" y="2434.9" width="8758.33" height="2202.2">
+   <properties>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>

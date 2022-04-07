@@ -237,6 +237,7 @@ const std::string ItemResources::Error_MissingNo = "Private/Platformer/Items/Err
 const std::string ItemResources::Keys_BlueGem = "Private/Platformer/Items/Keys/BlueGem.png";
 const std::string ItemResources::Keys_CryptKey = "Private/Platformer/Items/Keys/CryptKey.png";
 const std::string ItemResources::Keys_FrostKey = "Private/Platformer/Items/Keys/FrostKey.png";
+const std::string ItemResources::Keys_HellGateCrystal = "Private/Platformer/Items/Keys/HellGateCrystal.png";
 const std::string ItemResources::Keys_KEY_1 = "Private/Platformer/Items/Keys/KEY 1.png";
 const std::string ItemResources::Keys_KEY_2 = "Private/Platformer/Items/Keys/KEY 2.png";
 const std::string ItemResources::Keys_KEY_3 = "Private/Platformer/Items/Keys/KEY 3.png";

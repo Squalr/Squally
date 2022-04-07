@@ -175,10 +175,6 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Smith (DM)", MapResources::DataMines_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (DM)", MapResources::DataMines_Town_Main));
 		mapList.push_back(this->buildDebugButton("Zone_5_0 (DM)", MapResources::DataMines_Zone_5_0));
-		mapList.push_back(this->buildDebugButton("Zone_4_3 (DM)", MapResources::DataMines_Zone_4_3));
-		mapList.push_back(this->buildDebugButton("Zone_4_2 (DM)", MapResources::DataMines_Zone_4_2));
-		mapList.push_back(this->buildDebugButton("Zone_4_1 (DM)", MapResources::DataMines_Zone_4_1));
-		mapList.push_back(this->buildDebugButton("Zone_4_0 (DM)", MapResources::DataMines_Zone_4_0));
 		mapList.push_back(this->buildDebugButton("Zone_3_3 (DM)", MapResources::DataMines_Zone_3_3));
 		mapList.push_back(this->buildDebugButton("Zone_3_2 (DM)", MapResources::DataMines_Zone_3_2));
 		mapList.push_back(this->buildDebugButton("Zone_3_1 (DM)", MapResources::DataMines_Zone_3_1));
@@ -187,6 +183,10 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_2_2 (DM)", MapResources::DataMines_Zone_2_2));
 		mapList.push_back(this->buildDebugButton("Zone_2_1 (DM)", MapResources::DataMines_Zone_2_1));
 		mapList.push_back(this->buildDebugButton("Zone_2_0 (DM)", MapResources::DataMines_Zone_2_0));
+		mapList.push_back(this->buildDebugButton("Zone_1_7 (DM)", MapResources::DataMines_Zone_1_7));
+		mapList.push_back(this->buildDebugButton("Zone_1_6 (DM)", MapResources::DataMines_Zone_1_6));
+		mapList.push_back(this->buildDebugButton("Zone_1_5 (DM)", MapResources::DataMines_Zone_1_5));
+		mapList.push_back(this->buildDebugButton("Zone_1_4 (DM)", MapResources::DataMines_Zone_1_4));
 		mapList.push_back(this->buildDebugButton("Zone_1_3 (DM)", MapResources::DataMines_Zone_1_3));
 		mapList.push_back(this->buildDebugButton("Zone_1_2 (DM)", MapResources::DataMines_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (DM)", MapResources::DataMines_Zone_1_1));

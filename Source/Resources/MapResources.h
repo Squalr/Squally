@@ -26,6 +26,10 @@ namespace MapResources
 	extern const std::string DataMines_Zone_1_1;
 	extern const std::string DataMines_Zone_1_2;
 	extern const std::string DataMines_Zone_1_3;
+	extern const std::string DataMines_Zone_1_4;
+	extern const std::string DataMines_Zone_1_5;
+	extern const std::string DataMines_Zone_1_6;
+	extern const std::string DataMines_Zone_1_7;
 	extern const std::string DataMines_Zone_2_0;
 	extern const std::string DataMines_Zone_2_1;
 	extern const std::string DataMines_Zone_2_2;
@@ -34,10 +38,6 @@ namespace MapResources
 	extern const std::string DataMines_Zone_3_1;
 	extern const std::string DataMines_Zone_3_2;
 	extern const std::string DataMines_Zone_3_3;
-	extern const std::string DataMines_Zone_4_0;
-	extern const std::string DataMines_Zone_4_1;
-	extern const std::string DataMines_Zone_4_2;
-	extern const std::string DataMines_Zone_4_3;
 	extern const std::string DataMines_Zone_5_0;
 	extern const std::string Dev_AnimSeq;
 	extern const std::string Dev_Bounds;

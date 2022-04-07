@@ -4,6 +4,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Objects/Platformer/Interactables/Doors/Screaming/TrackingEye.h"
+#include "Objects/Platformer/Interactables/Doors/Screaming/TrackingEyeController.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -25,15 +26,19 @@ ScreamingDoor::ScreamingDoor(ValueMap& properties) : super(properties, CSize(256
 	ValueMap trackingEyeProperties = ValueMap();
 
 	this->screamingDoor = Sprite::create(ObjectResources::Doors_ScreamingDoor_ScreamingDoor);
+	this->screamingDoorLocked = Sprite::create(ObjectResources::Doors_ScreamingDoor_ScreamingDoorLocked);
 	this->leftEye = TrackingEye::create(trackingEyeProperties);
 	this->rightEye = TrackingEye::create(trackingEyeProperties);
+	this->eyeController = TrackingEyeController::create(trackingEyeProperties);
 
 	this->leftEye->pair(this->rightEye);
 	this->rightEye->pair(this->leftEye);
 
 	this->contentNode->addChild(this->screamingDoor);
+	this->contentNode->addChild(this->screamingDoorLocked);
 	this->contentNode->addChild(this->leftEye);
 	this->contentNode->addChild(this->rightEye);
+	this->contentNode->addChild(this->eyeController);
 }
 
 ScreamingDoor::~ScreamingDoor()
@@ -57,4 +62,20 @@ void ScreamingDoor::initializePositions()
 void ScreamingDoor::initializeListeners()
 {
 	super::initializeListeners();
+}
+
+void ScreamingDoor::lock(bool animate)
+{
+	super::lock(animate);
+
+	this->screamingDoor->setVisible(false);
+	this->screamingDoorLocked->setVisible(true);
+}
+
+void ScreamingDoor::unlock(bool animate)
+{
+	super::unlock(animate);
+
+	this->screamingDoor->setVisible(true);
+	this->screamingDoorLocked->setVisible(false);
 }

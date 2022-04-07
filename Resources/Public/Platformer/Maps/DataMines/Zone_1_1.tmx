@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="66" nextobjectid="811">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="18" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="66" nextobjectid="812">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -131,18 +131,24 @@
   </properties>
   <object id="808" name="tiki-golem" type="entity" x="1438" y="1530.85" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>
   <object id="809" name="tiki-golem" type="entity" x="1445.16" y="1142.11" width="128" height="128">
    <properties>
-    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="811" name="olive" type="entity" x="757.212" y="1532.97" width="128" height="128">
+   <properties>
+    <property name="components" value="olive-hexus,friendly,pick-pocket,face-squally"/>
+    <property name="pocket-pool" value="dm-generic"/>
    </properties>
   </object>
  </objectgroup>

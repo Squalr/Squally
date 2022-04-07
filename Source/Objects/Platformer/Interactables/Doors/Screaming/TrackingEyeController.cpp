@@ -63,6 +63,14 @@ void TrackingEyeController::updateEyeTracking(float dt)
 {
 	Vec2 squallyCoords = GameUtils::getWorldCoords(this->squally, false);
 	
+	std::for_each(this->eyes.begin(), this->eyes.end(), [=](const EyeData& eyeData)
+		{
+			eyeData.eye->updateSingleEyeTracking(dt, eyeData.coords, squallyCoords);
+		}
+    );
+
+	/*
+	// Vestige of an idea where I thought it might be cool to have a room full of tracking eyes, and performance was a concern
 	TRY_PARALLELIZE(
 		this->eyes.begin(),
 		this->eyes.end(),
@@ -71,4 +79,5 @@ void TrackingEyeController::updateEyeTracking(float dt)
 			eyeData.eye->updateSingleEyeTracking(dt, eyeData.coords, squallyCoords);
 		}
 	);
+	*/
 }

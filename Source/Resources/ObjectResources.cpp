@@ -261,6 +261,7 @@ const std::string ObjectResources::Doors_ScreamingDoor_EyeInner = "Private/Platf
 const std::string ObjectResources::Doors_ScreamingDoor_EyePupil = "Private/Platformer/Objects/Doors/ScreamingDoor/EyePupil.png";
 const std::string ObjectResources::Doors_ScreamingDoor_EyeRing = "Private/Platformer/Objects/Doors/ScreamingDoor/EyeRing.png";
 const std::string ObjectResources::Doors_ScreamingDoor_ScreamingDoor = "Private/Platformer/Objects/Doors/ScreamingDoor/ScreamingDoor.png";
+const std::string ObjectResources::Doors_ScreamingDoor_ScreamingDoorLocked = "Private/Platformer/Objects/Doors/ScreamingDoor/ScreamingDoorLocked.png";
 const std::string ObjectResources::Doors_Temple_DownArrow = "Private/Platformer/Objects/Doors/Temple/DownArrow.png";
 const std::string ObjectResources::Doors_Temple_Scarab = "Private/Platformer/Objects/Doors/Temple/Scarab.png";
 const std::string ObjectResources::Doors_Temple_Skull = "Private/Platformer/Objects/Doors/Temple/Skull.png";

@@ -262,6 +262,7 @@ namespace ObjectResources
 	extern const std::string Doors_ScreamingDoor_EyePupil;
 	extern const std::string Doors_ScreamingDoor_EyeRing;
 	extern const std::string Doors_ScreamingDoor_ScreamingDoor;
+	extern const std::string Doors_ScreamingDoor_ScreamingDoorLocked;
 	extern const std::string Doors_Temple_DownArrow;
 	extern const std::string Doors_Temple_Scarab;
 	extern const std::string Doors_Temple_Skull;
