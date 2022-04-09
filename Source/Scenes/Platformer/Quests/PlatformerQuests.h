@@ -13,3 +13,5 @@
 #include "Scenes/Platformer/Quests/Global/RestoreWarpGatesLine.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CleansePyramid/CleansePyramidLine.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/CureTownLine.h"
+#include "Scenes/Platformer/Quests/DataMines/DefeatRhinoman/DefeatRhinomanLine.h"
+#include "Scenes/Platformer/Quests/DataMines/RestorePower/RestorePowerLine.h"

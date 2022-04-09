@@ -42,6 +42,10 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	// UNDERFLOW RUINS QUESTS
 	this->lineDeserializers[CleansePyramidLine::MapKeyQuestLine] = [=]() { return (QuestLine*)CleansePyramidLine::create(); };
 	this->lineDeserializers[CureTownLine::MapKeyQuestLine] = [=]() { return (QuestLine*)CureTownLine::create(); };
+
+	// DATA MINES QUESTS
+	this->lineDeserializers[DefeatRhinomanLine::MapKeyQuestLine] = [=]() { return (QuestLine*)DefeatRhinomanLine::create(); };
+	this->lineDeserializers[RestorePowerLine::MapKeyQuestLine] = [=]() { return (QuestLine*)RestorePowerLine::create(); };
 }
 
 PlatformerQuestDeserializer::~PlatformerQuestDeserializer()

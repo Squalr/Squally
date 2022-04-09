@@ -4,7 +4,7 @@
 
 class QuestLine;
 class Rhinoman;
-class Sarcophagus;
+class ScreamingDoor;
 class Squally;
 class WorldSound;
 
@@ -29,13 +29,11 @@ private:
 
 	void runCinematicSequencePt1();
 	void runCinematicSequencePt2();
-	void runCinematicSequencePt3();
 
 	Rhinoman* rhinoman = nullptr;
 	Squally* squally = nullptr;
-	Sarcophagus* sarcophagus = nullptr;
+	ScreamingDoor* screamingDoor = nullptr;
 	WorldSound* rumbleSound = nullptr;
 
 	static const std::string MapEventAwakenRhinoman;
-	static const std::string TagExitPortal;
 };

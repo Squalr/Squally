@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="34" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="70" nextobjectid="821">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="34" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="72" nextobjectid="824">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -26,7 +26,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="813" name="mines" type="terrain" x="1575.46" y="1592" width="2903.63" height="844">
+  <object id="813" name="mines" type="terrain" x="1575.46" y="1592" width="3182.75" height="844">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -45,8 +45,26 @@
   <object id="817" name="screaming-door" type="object" x="2039.39" y="479.364" width="800" height="1114">
    <properties>
     <property name="components" value="z-fade"/>
-    <property name="map" value="DataMines/Town_Main"/>
-    <property name="transition" value="goa"/>
+    <property name="map" value="DataMines/Zone_1_1"/>
+    <property name="transition" value="screaming-door"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="70" name="objects -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="821" name="trigger" type="object" x="2902.51" y="-39.3002" width="118.944" height="1629.75">
+   <properties>
+    <property name="send-event" value="awaken-rhinoman"/>
+   </properties>
+  </object>
+  <object id="822" name="edge-portal" type="object" x="4149.58" y="1100.38" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="DataMines/Zone_1_1"/>
+    <property name="transition" value="right-back"/>
    </properties>
   </object>
  </objectgroup>
@@ -62,6 +80,19 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="dm-generic"/>
+    <property name="quest" value="defeat-rhinoman"/>
+    <property name="quest-line" value="defeat-rhinoman"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="71" name="player_layer -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="823" name="spawn" type="object" x="3837.42" y="1462.88" width="128" height="128">
+   <properties>
+    <property name="transition" value="left-back"/>
    </properties>
   </object>
  </objectgroup>
@@ -82,7 +113,7 @@
   </object>
   <object id="816" name="Ruins/Walls5" type="decor" x="2796.28" y="813" width="386" height="778"/>
  </objectgroup>
- <objectgroup id="65" name="firefliex -3">
+ <objectgroup id="65" name="fireflies -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="weather"/>
@@ -108,11 +139,6 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="771" name="mines" type="terrain" x="-70.365" y="-0.505" width="1446.43" height="2313.01">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="818" name="mines" type="terrain" x="4138.85" y="-94.5656" width="634.43" height="2313.01">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -205,7 +231,7 @@
     <property name="transition" value="zone-transition"/>
    </properties>
   </object>
-  <object id="805" name="spawn" type="object" x="3516" y="1528" width="128" height="128">
+  <object id="805" name="spawn" type="object" x="3830.51" y="1530.23" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
    </properties>
