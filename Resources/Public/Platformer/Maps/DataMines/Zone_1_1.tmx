@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="829">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="837">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,8 +17,8 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="712" name="mines" type="texture" x="1695.72" y="1634.1">
-   <polygon points="-2095.29,-2086.15 3122.17,-2081.55 3116.15,1212.13 -2086.14,1198.72"/>
+  <object id="712" name="mines" type="texture" x="1079.11" y="1634.1">
+   <polygon points="-1478.68,-2086.15 2203.37,-2081.55 2199.12,1212.13 -1472.23,1198.72"/>
   </object>
  </objectgroup>
  <objectgroup id="66" name="terrain -4">
@@ -26,7 +26,12 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="813" name="mines" type="terrain" x="-448.244" y="1592" width="3391.33" height="844">
+  <object id="813" name="mines" type="terrain" x="-448.244" y="1592" width="3771.8" height="844">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="834" name="mines" type="terrain" x="-470.426" y="-144.239" width="3705.08" height="956">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -56,6 +61,22 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="832" name="tiki-golem" type="entity" x="882.356" y="1465.41" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="dm-generic"/>
+   </properties>
+  </object>
+  <object id="833" name="tiki-golem" type="entity" x="889.516" y="1076.67" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="player_layer -4">
   <properties>
@@ -93,6 +114,16 @@
    </properties>
   </object>
   <object id="816" name="Ruins/Walls5" type="decor" x="1260.28" y="813" width="386" height="778"/>
+  <object id="835" name="Ruins/Walls3" type="decor" x="998.245" y="812.966" width="262" height="130">
+   <properties>
+    <property name="flip-y" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="836" name="Ruins/Walls4" type="decor" x="733.765" y="811.42" width="262" height="130">
+   <properties>
+    <property name="flip-y" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="74" name="terrain -3">
   <properties>
@@ -212,6 +243,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="831" name="olive" type="entity" x="1008.37" y="1534.94" width="128" height="128">
+   <properties>
+    <property name="components" value="olive-hexus,friendly,pick-pocket,face-squally"/>
+    <property name="pocket-pool" value="dm-generic"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
