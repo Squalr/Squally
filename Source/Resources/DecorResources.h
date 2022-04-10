@@ -73,6 +73,7 @@ namespace DecorResources
 	extern const std::string Crypts_Coffin4;
 	extern const std::string Crypts_Coffin5;
 	extern const std::string Crypts_Coffin6;
+	extern const std::string Crypts_CryptDoor;
 	extern const std::string Crypts_Dirt1;
 	extern const std::string Crypts_FlowerBlack1;
 	extern const std::string Crypts_FlowerBlackBud1;

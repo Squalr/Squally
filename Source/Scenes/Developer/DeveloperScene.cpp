@@ -202,7 +202,9 @@ DeveloperScene::DeveloperScene()
 		ScrollPane* scrollPane = this->buildScrollPane();
 
 		mapList.push_back(this->buildDebugButton("Warp Room (CV)", MapResources::CastleValgrind_Mages_Warp));
-		mapList.push_back(this->buildDebugButton("Castle Main (CV)", MapResources::CastleValgrind_Castle_Main));
+		mapList.push_back(this->buildDebugButton("Throne Room (CV)", MapResources::CastleValgrind_Throne_Room));
+		mapList.push_back(this->buildDebugButton("Zone_2_0 (CV)", MapResources::CastleValgrind_Zone_2_0));
+		mapList.push_back(this->buildDebugButton("Zone_1_1 (CV)", MapResources::CastleValgrind_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (CV)", MapResources::CastleValgrind_Zone_1_0));
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));

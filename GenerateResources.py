@@ -9,8 +9,8 @@ from os import listdir
 from os import path
 from os.path import isfile, join, splitext, abspath, realpath, basename, relpath
 import os
+import re
 import sys
-import CopyResources
 
 def main():
 	continueStr = "n"
@@ -213,6 +213,12 @@ def main():
 	print("Resource generation complete.")
 	return True
 
+# TODO: Maybe use this, but this needs some debugging
+def natural_sort(l): 
+    convert = lambda text: int(text) if text.isdigit() else text.lower()
+    alphanum_key = lambda key: [convert(c) for c in re.split('([0-9]+)', key)]
+    return sorted(l, key=alphanum_key)
+
 def createResourceFile(outputFileBase, extensions, searchPath):
 	projectRoot = abspath(join(realpath(__file__), ".."))
 
@@ -237,6 +243,7 @@ def createResourceFile(outputFileBase, extensions, searchPath):
 					files.append((join(root, filename), searchPathPrivate))
 					continue
 
+	# TODO: Windows/OSX prioritize underscores vs alphanumeric differently. Should probably do a custom sort for consistency.
 	files.sort()
 			
 	with open(generatedClassFolder + outputHeader,'w+') as h, open(generatedClassFolder + outputClass,'w+') as cpp:
@@ -281,4 +288,7 @@ def createResourceFile(outputFileBase, extensions, searchPath):
 
 if __name__ == '__main__':
     if main():
-    	CopyResources.main()
+		# Upon successful regen, call the CopyResources script.
+		# We defer the import to CopyResourcces, so that if a nested import is missing, it will not effect this script
+        import CopyResources
+        CopyResources.main()
