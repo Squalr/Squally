@@ -128,7 +128,7 @@ void DefeatRhinoman::runCinematicSequencePt1()
 		CallFunc::create([=]()
 		{
 			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_FindElriel_Grogg_C_SpreadForcesThin::create(),
+				Strings::Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="34" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="72" nextobjectid="825">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="34" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="72" nextobjectid="826">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -31,11 +31,7 @@
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="819" name="mines" type="terrain" x="832.185" y="-290" width="747.63" height="2728">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
+  <object id="819" name="mines" type="terrain" x="832.185" y="-290" width="747.63" height="2728"/>
  </objectgroup>
  <objectgroup id="68" name="decor -4">
   <properties>

@@ -262,10 +262,10 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="808" name="edge-portal" type="object" x="72.041" y="1497" width="199.918" height="488.002">
+  <object id="808" name="edge-portal" type="object" x="2.70767" y="1486.33" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="DataMines/Zone_1_1"/>
+    <property name="map" value="DataMines/Zone_1_5"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
@@ -309,17 +309,17 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.5"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="799.9" y="1848.62" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="609.233" y="1845.95" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="805" name="spawn" type="object" x="2474" y="1844" width="128" height="128">
+  <object id="805" name="spawn" type="object" x="2535.33" y="1842.67" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="807" name="spawn" type="object" x="540" y="1853" width="128" height="128">
+  <object id="807" name="spawn" type="object" x="388" y="1843.67" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
    </properties>

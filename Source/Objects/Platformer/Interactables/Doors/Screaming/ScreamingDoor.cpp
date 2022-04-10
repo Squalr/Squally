@@ -34,6 +34,8 @@ ScreamingDoor::ScreamingDoor(ValueMap& properties) : super(properties, CSize(256
 	this->leftEye->pair(this->rightEye);
 	this->rightEye->pair(this->leftEye);
 
+	this->screamingDoorLocked->setVisible(false);
+
 	this->contentNode->addChild(this->screamingDoor);
 	this->contentNode->addChild(this->screamingDoorLocked);
 	this->contentNode->addChild(this->leftEye);

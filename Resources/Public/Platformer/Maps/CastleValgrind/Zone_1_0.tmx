@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="769">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="770">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -249,7 +249,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -264,7 +264,7 @@
   </object>
   <object id="736" name="portal" type="object" x="2842.33" y="1621.81" width="450.603" height="423.038">
    <properties>
-    <property name="map" value="CastleValgrind/Castle_Main"/>
+    <property name="map" value="CastleValgrind/Zone_1_1"/>
     <property name="transition" value="main"/>
    </properties>
   </object>

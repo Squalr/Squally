@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="62" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1949">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="62" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1956">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -24,15 +24,21 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1933" name="Mines/MineDoorOpen" type="decor" x="3594.62" y="1411.56" width="435" height="389"/>
+  <object id="1949" name="screaming-door" type="object" x="3384" y="695" width="800" height="1114">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="map" value="DataMines/Zone_1_0"/>
+    <property name="transition" value="screaming-door"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="116" name="terrain -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1934" name="dark-grass" type="terrain" x="3529.58" y="1804.24">
-   <polygon points="63.2344,-0.534154 -38.2041,104.694 9.22169,339.722 587.553,350.405 560.547,90.2721 492.023,0.404662"/>
+  <object id="1934" name="dark-grass" type="terrain" x="3314.89" y="1804.24">
+   <polygon points="111.74,-0.534154 -15.4303,25.4246 -67.5093,104.694 16.2954,339.722 958.248,346.405 1010.53,158.272 961.655,37.0323 869.439,0.404662"/>
   </object>
  </objectgroup>
  <objectgroup id="114" name="terrain -7">
@@ -68,17 +74,6 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1929" name="portal" type="object" x="3696" y="1607.59" width="256" height="256">
-   <properties>
-    <property name="map" value="DataMines/Zone_1_4"/>
-    <property name="transition" value="door"/>
-   </properties>
-  </object>
-  <object id="1930" name="spawn" type="object" x="3757.5" y="1736.41" width="128" height="128">
-   <properties>
-    <property name="transition" value="door"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="110" name="player_layer -6">
   <properties>
@@ -92,6 +87,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-C"/>
+   </properties>
+  </object>
+  <object id="1951" name="spawn" type="object" x="3770" y="1733" width="128" height="128">
+   <properties>
+    <property name="transition" value="screaming-door"/>
    </properties>
   </object>
  </objectgroup>
@@ -183,11 +183,11 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1882" name="dark-grass" type="terrain" x="-56" y="1544">
+  <object id="1882" name="dark-grass" type="terrain" x="-65.0909" y="1540.97">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="2432,737 2770.27,684.204 2510.2,322.705 2432.36,-297.132 1781.39,-1222.87 1119.92,-1689.02 1873.31,-1690.6 2435.86,-1157.25 2723.94,-587.713 2897.42,171.308 3183.62,461.073 5758.59,203.035 6961.39,-72.3128 7735.52,-314.012 8274.73,-261.808 8269.04,128.881 7658.6,69.0824 6724.86,322.674 5004.72,785.372 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 2540.41,1846.57 2709.1,1917.32 3688.23,1916.08 4109.41,1976.8 4252.12,1975.54 4557.69,2097.02 4841.89,2096.19 4839.91,2332.64 2347.87,2330.62 2018.71,1333.49 1685.53,1147.1 686.106,1431.01 -452.248,1181.84 -434.152,-1680.45 142.021,-1679.9 168.02,737.709"/>
+   <polygon points="2432,737 2770.27,684.204 2510.2,322.705 2432.36,-297.132 1781.39,-1222.87 1119.92,-1689.02 1873.31,-1690.6 2435.86,-1157.25 2723.94,-587.713 2897.42,171.308 3183.62,461.073 4431.37,597.572 5758.59,203.035 6961.39,-72.3128 7735.52,-314.012 8274.73,-261.808 8269.04,128.881 7658.6,69.0824 6724.86,322.674 5004.72,785.372 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 2540.41,1846.57 2709.1,1917.32 3688.23,1916.08 4109.41,1976.8 4252.12,1975.54 4557.69,2097.02 4841.89,2096.19 4839.91,2332.64 2347.87,2330.62 2018.71,1333.49 1685.53,1147.1 686.106,1431.01 -452.248,1181.84 -434.152,-1680.45 142.021,-1679.9 168.02,737.709"/>
   </object>
  </objectgroup>
  <objectgroup id="108" name="objects -4">
@@ -213,7 +213,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,agro,z-fade"/>
     <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>
@@ -381,10 +381,9 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1691" name="dark-grass" type="terrain" x="-144.54" y="418" width="1161.08" height="1388">
+  <object id="1954" name="dark-grass" type="terrain" x="17.46" y="344" width="945.08" height="1348">
    <properties>
-    <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
+    <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -392,6 +391,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1955" name="Mines/MineDoorOpen" type="decor" x="251.5" y="1245.5" width="435" height="389"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -408,7 +408,7 @@
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="760,1736 -2041.38,1734.4 -2646.13,2044.95 -3228.02,2072.4 -3696.61,1561.7 -4527.81,-65.7399 780.483,-66.8"/>
+   <polygon points="760,1736 -2041.38,1734.4 -2702.13,1808.95 -3000.02,1540.4 -3072.84,852.423 -3346.89,711.661 -3621.12,779.516 -4136.61,749.7 -4527.81,-65.7399 780.483,-66.8"/>
   </object>
   <object id="1878" name="dark-grass" type="terrain" x="512" y="2365">
    <polygon points="0,0 -64,320 160,688 592,710 826.092,617.977 960,446 876.97,-0.242424"/>
@@ -424,13 +424,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1948" name="screaming-door" type="object" x="86" y="533" width="800" height="1114">
-   <properties>
-    <property name="components" value="z-fade"/>
-    <property name="map" value="DataMines/Town_Main"/>
-    <property name="transition" value="goa"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="81" name="rails">
   <properties>
@@ -639,6 +632,12 @@
     <property name="save-key" value="SAVE_KEY_XOR_RED_1"/>
    </properties>
   </object>
+  <object id="1953" name="portal" type="object" x="341.697" y="1393.21" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Zone_1_4"/>
+    <property name="transition" value="door"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -655,7 +654,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,agro,z-fade"/>
     <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>
@@ -699,11 +698,6 @@
     <property name="transition" value="left-bottom"/>
    </properties>
   </object>
-  <object id="1705" name="spawn" type="object" x="398.545" y="1517.79" width="128" height="128">
-   <properties>
-    <property name="transition" value="goa"/>
-   </properties>
-  </object>
   <object id="1881" name="spawn" type="object" x="7400" y="1972" width="128" height="128">
    <properties>
     <property name="transition" value="left-top"/>
@@ -723,6 +717,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-B"/>
+   </properties>
+  </object>
+  <object id="1952" name="spawn" type="object" x="402.667" y="1520.85" width="128" height="128">
+   <properties>
+    <property name="transition" value="door"/>
    </properties>
   </object>
  </objectgroup>

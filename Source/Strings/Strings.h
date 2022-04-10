@@ -26484,6 +26484,36 @@ namespace Strings
 		virtual ~Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_Yep() = default;
 	};
 
+	class Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass();
+		virtual ~Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_A_OliveIntro : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_A_OliveIntro* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_A_OliveIntro();
+		virtual ~Platformer_Quests_DataMines_RestorePower_A_OliveIntro() = default;
+	};
+
 	class Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks : public LocalizedString
 	{
 	public:
