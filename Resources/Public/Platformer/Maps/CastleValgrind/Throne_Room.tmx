@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="815">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="815">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -205,18 +205,18 @@
   <object id="810" name="Castle/Window1" type="decor" x="2632.07" y="481.887" width="293" height="575"/>
   <object id="811" name="Castle/Emblem1" type="decor" x="581.106" y="662.208" width="129" height="148"/>
   <object id="812" name="Castle/Emblem1" type="decor" x="3294.35" y="699.054" width="129" height="148"/>
-  <object id="813" name="Castle/Emblem2" type="decor" x="4249.62" y="364.341" width="309" height="339"/>
+  <object id="813" name="Castle/Emblem2" type="decor" x="4249.62" y="364.341" width="286" height="338"/>
   <object id="814" name="Castle/Window1" type="decor" x="3721.09" y="502.091" width="293" height="575"/>
  </objectgroup>
  <objectgroup id="18" name="decor bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="799" name="Castle/KnightSuit1" type="decor" x="2936.32" y="640.414" width="389" height="553"/>
-  <object id="800" name="Castle/KnightSuit1" type="decor" x="718.077" y="643.745" width="389" height="553"/>
-  <object id="801" name="Castle/KnightSuit1" type="decor" x="242.617" y="643.745" width="389" height="553"/>
-  <object id="802" name="Castle/KnightSuit1" type="decor" x="3432.8" y="636.077" width="389" height="553"/>
-  <object id="805" name="Castle/KnightSuit1" type="decor" x="3952.38" y="640.121" width="389" height="553"/>
+  <object id="799" name="Castle/KnightSuit1" type="decor" x="2948.44" y="643.444" width="327" height="553"/>
+  <object id="800" name="Castle/KnightSuit1" type="decor" x="722.077" y="643.745" width="327" height="553"/>
+  <object id="801" name="Castle/KnightSuit1" type="decor" x="246.617" y="643.745" width="327" height="553"/>
+  <object id="802" name="Castle/KnightSuit1" type="decor" x="3444.92" y="639.107" width="327" height="553"/>
+  <object id="805" name="Castle/KnightSuit1" type="decor" x="3955.41" y="640.121" width="327" height="553"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>

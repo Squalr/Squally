@@ -28,6 +28,11 @@ MineCartLootable::MineCartLootable(cocos2d::ValueMap& properties) : super(proper
 
 	Node* chestOpenFrontSprite = this->buildCart(false);
 	Node* chestClosedSprite = this->buildCart(true);
+
+	if (this->cartFill == Fill::None)
+	{
+		this->setInteractType(InteractObject::InteractType::None);
+	}
 	
 	this->chestOpen->addChild(chestOpenFrontSprite);
 	this->chestClosed->addChild(chestClosedSprite);
