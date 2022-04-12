@@ -112,7 +112,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="760" name="griffin" type="entity" x="1421.5" y="850.554" width="128" height="167">
+  <object id="760" name="leopold" type="entity" x="1421.5" y="850.554" width="128" height="167">
    <properties>
     <property name="components" value="shopkeeper"/>
     <property name="flip-x" type="bool" value="true"/>

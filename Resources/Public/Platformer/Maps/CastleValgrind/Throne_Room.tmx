@@ -248,7 +248,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="721" name="Generic/DiningTable1" type="decor" x="-337.801" y="891.805" width="610" height="301"/>
+  <object id="721" name="Generic/DiningTable1" type="decor" x="340.987" y="894.835" width="610" height="301"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>

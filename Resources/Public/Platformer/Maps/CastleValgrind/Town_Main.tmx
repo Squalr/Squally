@@ -788,15 +788,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="garin" type="entity" x="2364.53" y="1305.38" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
   <object id="782" name="gaunt" type="entity" x="2115.67" y="2602" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
@@ -806,7 +797,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="784" name="king-redsong-slime" type="entity" x="2889.33" y="1304.67" width="128" height="128">
+  <object id="786" name="leroy" type="entity" x="2775" y="1307.67" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -815,7 +806,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="785" name="leopold" type="entity" x="2310" y="1298" width="128" height="128">
+  <object id="787" name="mabel" type="entity" x="2277" y="1306.33" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -824,7 +815,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="786" name="leroy" type="entity" x="3509.33" y="1306" width="128" height="128">
+  <object id="790" name="raven" type="entity" x="3177.33" y="1306.67" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -833,43 +824,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="787" name="mabel" type="entity" x="3021.33" y="1298" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
-  <object id="788" name="merlin" type="entity" x="3578.67" y="1306" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
-  <object id="790" name="raven" type="entity" x="3140" y="1306" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
-  <object id="791" name="rogas" type="entity" x="2865.79" y="1306.64" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
-  <object id="792" name="thurstan" type="entity" x="2362.24" y="2602.7" width="128" height="128">
+  <object id="791" name="rogas" type="entity" x="4476.46" y="2602.64" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>

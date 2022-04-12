@@ -25,7 +25,7 @@ Thurstan::Thurstan(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_CastleValgrind_Thurstan_Animations,
 	EntityResources::Npcs_CastleValgrind_Thurstan_Emblem,
 	CSize(124.0f, 160.0f),
-	1.05f,
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 }

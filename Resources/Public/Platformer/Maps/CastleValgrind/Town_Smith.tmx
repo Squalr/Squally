@@ -111,7 +111,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="760" name="geryon" type="entity" x="1037.5" y="850.554" width="128" height="167">
+  <object id="760" name="thurstan" type="entity" x="1037.5" y="850.554" width="128" height="167">
    <properties>
     <property name="components" value="shopkeeper"/>
     <property name="tag" value="shopkeeper"/>

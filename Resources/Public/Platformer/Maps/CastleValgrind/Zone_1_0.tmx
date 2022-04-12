@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="850">
- <objectgroup id="1" name="meta" visible="0">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="851">
+ <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
    <property name="crack-color" value=""/>
@@ -12,7 +12,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="75" name="rocks" visible="0">
+ <objectgroup id="75" name="rocks">
   <properties>
    <property name="depth" type="float" value="-3200"/>
    <property name="type" value="objects"/>
@@ -23,27 +23,27 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="74" name="trees-far1" visible="0">
+ <objectgroup id="74" name="trees-far1">
   <properties>
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="77" name="decor -x" visible="0">
+ <objectgroup id="77" name="decor -x">
   <properties>
    <property name="depth" type="float" value="-1440"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="773" name="Castle/WarpTower" type="decor" x="3318.5" y="-536.5" width="979" height="2249"/>
  </objectgroup>
- <objectgroup id="69" name="decor -14" visible="0">
+ <objectgroup id="69" name="decor -14">
   <properties>
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="772" name="Castle/CastleValgrind" type="decor" x="2020.79" y="-36.1212" width="2301" height="1860"/>
  </objectgroup>
- <objectgroup id="71" name="terrain -13" visible="0">
+ <objectgroup id="71" name="terrain -13">
   <properties>
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
@@ -67,7 +67,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="7912" name="bridge -12" visible="0">
+ <objectgroup id="7912" name="bridge -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
@@ -78,7 +78,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="7911" name="bridge -11" visible="0">
+ <objectgroup id="7911" name="bridge -11">
   <properties>
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
@@ -89,7 +89,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="791" name="bridge -10" visible="0">
+ <objectgroup id="791" name="bridge -10">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
@@ -100,7 +100,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="trees-mid" visible="0">
+ <objectgroup id="16" name="trees-mid">
   <properties>
    <property name="depth" type="float" value="-612"/>
    <property name="type" value="objects"/>
@@ -111,7 +111,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="781" name="bridge -9" visible="0">
+ <objectgroup id="781" name="bridge -9">
   <properties>
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
@@ -122,7 +122,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="771" name="bridge -8" visible="0">
+ <objectgroup id="771" name="bridge -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -133,7 +133,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="761" name="bridge -7" visible="0">
+ <objectgroup id="761" name="bridge -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
@@ -144,7 +144,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="81" name="decor -7" visible="0">
+ <objectgroup id="81" name="decor -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
@@ -165,7 +165,7 @@
   <object id="804" name="Forest/Tree1" type="decor" x="1862.5" y="1234.17" width="499" height="881"/>
   <object id="836" name="Forest/Tree1" type="decor" x="30.5" y="1258.17" width="499" height="881"/>
  </objectgroup>
- <objectgroup id="751" name="bridge -6" visible="0">
+ <objectgroup id="751" name="bridge -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -176,7 +176,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="73" name="decor -6" visible="0">
+ <objectgroup id="73" name="decor -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -191,7 +191,7 @@
   <object id="814" name="Forest/Tree2" type="decor" x="807.833" y="1434.17" width="679" height="712"/>
   <object id="834" name="Forest/Tree2" type="decor" x="3381.83" y="1438.17" width="679" height="712"/>
  </objectgroup>
- <objectgroup id="79" name="bridge -5" visible="0">
+ <objectgroup id="79" name="bridge -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
@@ -202,13 +202,13 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="84" name="decor -5" visible="0">
+ <objectgroup id="84" name="decor -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="78" name="bridge -4" visible="0">
+ <objectgroup id="78" name="bridge -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -219,7 +219,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="83" name="decor -4" visible="0">
+ <objectgroup id="83" name="decor -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -234,7 +234,7 @@
   <object id="813" name="Forest/Tree1" type="decor" x="557.833" y="1262.83" width="499" height="881"/>
   <object id="833" name="Forest/Tree1" type="decor" x="2101.83" y="1222.83" width="499" height="881"/>
  </objectgroup>
- <objectgroup id="77" name="bridge -3" visible="0">
+ <objectgroup id="77" name="bridge -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -245,7 +245,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="82" name="decor -3" visible="0">
+ <objectgroup id="82" name="decor -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -263,7 +263,7 @@
   <object id="837" name="Forest/Tree2" type="decor" x="-2.16667" y="1406.67" width="679" height="712"/>
   <object id="803" name="Forest/Tree2" type="decor" x="1137.83" y="1350.67" width="679" height="712"/>
  </objectgroup>
- <objectgroup id="76" name="bridge -2" visible="0">
+ <objectgroup id="76" name="bridge -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -274,7 +274,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="85" name="decor -2" visible="0">
+ <objectgroup id="85" name="decor -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -289,7 +289,7 @@
   <object id="812" name="Forest/Tree1" type="decor" x="887.833" y="1260.84" width="499" height="881"/>
   <object id="832" name="Forest/Tree1" type="decor" x="275.833" y="1276.84" width="499" height="881"/>
  </objectgroup>
- <objectgroup id="75" name="bridge -1" visible="0">
+ <objectgroup id="75" name="bridge -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
@@ -300,28 +300,28 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="67" name="water bg" visible="0">
+ <objectgroup id="67" name="water bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="68" name="decor bg" visible="0">
+ <objectgroup id="68" name="decor bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="20" name="terrain 2" visible="0">
+ <objectgroup id="20" name="terrain 2">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="21" name="terrain" visible="0">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="754" name="dark-grass" type="terrain" x="-105.15" y="2034.97" width="7974.18" height="1234.06"/>
  </objectgroup>
- <objectgroup id="76" name="terrain rails" visible="0">
+ <objectgroup id="76" name="terrain rails">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -336,20 +336,20 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor midground" visible="0">
+ <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="500" name="Forest/Flower10" type="decor" x="2608.41" y="1926.33" width="199" height="133"/>
   <object id="741" name="Forest/Flower11" type="decor" x="2158" y="1938" width="92" height="116"/>
  </objectgroup>
- <objectgroup id="57" name="objects back" visible="0">
+ <objectgroup id="57" name="objects back">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -376,18 +376,27 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="42" name="no hack objects" visible="0">
+ <objectgroup id="42" name="no hack objects">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="24" name="entities" visible="0">
+ <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="850" name="garin" type="entity" x="2087.33" y="1905.33" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="25" name="player_layer" visible="0">
+ <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -408,31 +417,31 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="66" name="water" visible="0">
+ <objectgroup id="66" name="water">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="28" name="fireflies" visible="0">
+ <objectgroup id="28" name="fireflies">
   <properties>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="31" name="rain" visible="0">
+ <objectgroup id="31" name="rain">
   <properties>
    <property name="type" value="weather"/>
    <property name="weather" value="rain"/>
   </properties>
  </objectgroup>
- <objectgroup id="78" name="terrain +1" visible="0">
+ <objectgroup id="78" name="terrain +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="774" name="dark-grass" type="terrain" x="-276.97" y="2166.97" width="8305.94" height="1234.06"/>
  </objectgroup>
- <objectgroup id="79" name="terrain rails +1" visible="0">
+ <objectgroup id="79" name="terrain rails +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
@@ -443,7 +452,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="80" name="object +1" visible="0">
+ <objectgroup id="80" name="object +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
@@ -477,7 +486,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="32" name="decor +4" visible="0">
+ <objectgroup id="32" name="decor +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
@@ -487,7 +496,7 @@
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1569.57" y="1922.1" width="242" height="738"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="4774.63" y="1925.91" width="270" height="748"/>
  </objectgroup>
- <objectgroup id="33" name="decor +8" visible="0">
+ <objectgroup id="33" name="decor +8">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>
