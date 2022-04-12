@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="106" nextobjectid="946">
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="107" nextobjectid="977">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -57,18 +57,19 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="890" name="Generic/MoonDoor" type="decor" x="1823.79" y="650.97" width="648" height="667"/>
-  <object id="892" name="Generic/MoonDoor" type="decor" x="3682.06" y="654.379" width="648" height="667"/>
-  <object id="898" name="Generic/BlueRug" type="decor" x="3254" y="1312.5" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="899" name="Generic/BlueRug" type="decor" x="2522" y="1311.5" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
+  <object id="890" name="Generic/MoonDoor" type="decor" x="2741.97" y="654.122" width="648" height="667"/>
+  <object id="898" name="Generic/BlueRug" type="decor" x="3860.67" y="1309.83" width="332" height="21"/>
+  <object id="899" name="Generic/BlueRug" type="decor" x="1962.33" y="1310.5" width="332" height="21"/>
+  <object id="955" name="Castle/Window1" type="decor" x="1668.65" y="303.409" width="293" height="575"/>
+  <object id="956" name="Castle/Window1" type="decor" x="4114.11" y="318.561" width="293" height="575"/>
+  <object id="959" name="Castle/Window1" type="decor" x="311.076" y="451.894" width="293" height="575"/>
+  <object id="960" name="Castle/Window1" type="decor" x="5550.47" y="442.803" width="293" height="575"/>
+  <object id="961" name="Castle/Window1" type="decor" x="326.227" y="1779.17" width="293" height="575"/>
+  <object id="962" name="Castle/Window1" type="decor" x="5544.41" y="1788.26" width="293" height="575"/>
+  <object id="971" name="Castle/Banner2" type="decor" x="3818.61" y="771.03" width="184" height="424"/>
+  <object id="972" name="Castle/Banner2" type="decor" x="2040.54" y="770" width="184" height="424"/>
+  <object id="974" name="Castle/KnightSuit1" type="decor" x="2335.83" y="770.167" width="327" height="553"/>
+  <object id="975" name="Castle/KnightSuit1" type="decor" x="3448.5" y="765.5" width="327" height="553"/>
  </objectgroup>
  <objectgroup id="95" name="objects -6">
   <properties>
@@ -76,13 +77,10 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="746" name="Castle/CastleGate" type="decor" x="2822.81" y="1987.31" width="412" height="699"/>
-  <object id="889" name="clock-door" type="object" x="2911.5" y="591.076" width="257" height="729">
+  <object id="976" name="portal" type="object" x="2950.24" y="935.295" width="237.527" height="375.411">
    <properties>
-    <property name="door-style" value="old"/>
-    <property name="map" value="Castle_Valgrind/Town_Main_Haunted"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="transition" value="clock"/>
+    <property name="map" value="CastleValgrind/Throne_Room"/>
+    <property name="transition" value="throne-room"/>
    </properties>
   </object>
  </objectgroup>
@@ -92,12 +90,12 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.5"/>
   </properties>
-  <object id="904" name="spawn" type="object" x="2978.67" y="1190.67" width="128" height="128">
+  <object id="904" name="spawn-wood-door" type="object" x="3005.67" y="1191.67" width="128" height="128">
    <properties>
-    <property name="transition" value="clock-door"/>
+    <property name="transition" value="throne-room"/>
    </properties>
   </object>
-  <object id="912" name="warp" type="object" x="3285.33" y="1062.67" width="256" height="256">
+  <object id="912" name="warp" type="object" x="3892" y="1060" width="256" height="256">
    <properties>
     <property name="from" value="warp-6-D"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -105,7 +103,7 @@
     <property name="to" value="warp-3-D"/>
    </properties>
   </object>
-  <object id="913" name="warp" type="object" x="2558.67" y="1064" width="256" height="256">
+  <object id="913" name="warp" type="object" x="1999" y="1063" width="256" height="256">
    <properties>
     <property name="from" value="warp-6-C"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -321,7 +319,7 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="924" name="marble" type="terrain" x="524.088" y="-276" width="421.52" height="3600">
+  <object id="924" name="marble" type="terrain" x="596.816" y="-276" width="348.793" height="3600">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -369,26 +367,10 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="896" name="Generic/BlueRug" type="decor" x="2521" y="1365.5" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="897" name="Generic/BlueRug" type="decor" x="3257" y="1366.5" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="900" name="Generic/BlueRug" type="decor" x="1956" y="1367.5" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="901" name="Generic/BlueRug" type="decor" x="3839" y="1365.5" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
+  <object id="896" name="Generic/BlueRug" type="decor" x="1961.33" y="1364.5" width="332" height="21"/>
+  <object id="897" name="Generic/BlueRug" type="decor" x="3863.67" y="1363.83" width="332" height="21"/>
+  <object id="900" name="Generic/BlueRug" type="decor" x="2452" y="1371.5" width="332" height="21"/>
+  <object id="901" name="Generic/BlueRug" type="decor" x="3353.67" y="1365.5" width="332" height="21"/>
   <object id="942" name="Generic/SignSmith" type="decor" x="1426.5" y="655.5" width="523" height="265">
    <properties>
     <property name="components" value="z-fade"/>
@@ -399,6 +381,36 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
+  <object id="946" name="Generic/RedRug" type="decor" x="1458" y="1364.83" width="332" height="21">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="947" name="Generic/RedRug" type="decor" x="4372.67" y="1364.83" width="332" height="21">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="106" name="objects -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="949" name="portal" type="object" x="1552.24" y="1000.63" width="237.527" height="375.411">
+   <properties>
+    <property name="map" value="CastleValgrind/Town_Smith"/>
+    <property name="transition" value="smith"/>
+   </properties>
+  </object>
+  <object id="950" name="portal" type="object" x="4373.24" y="999.294" width="237.527" height="375.411">
+   <properties>
+    <property name="map" value="CastleValgrind/Town_Alch"/>
+    <property name="transition" value="alch"/>
+   </properties>
+  </object>
+  <object id="951" name="solid" type="collision" x="4594.24" y="-778.675" width="204.194" height="2360.26"/>
+  <object id="952" name="solid" type="collision" x="1349.9" y="-856.13" width="204.194" height="2360.26"/>
  </objectgroup>
  <objectgroup id="100" name="entities -3">
   <properties>
@@ -430,7 +442,7 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.5"/>
   </properties>
-  <object id="906" name="warp" type="object" x="1993" y="1119" width="256" height="256">
+  <object id="906" name="warp" type="object" x="2489" y="1123" width="256" height="256">
    <properties>
     <property name="from" value="warp-3-A"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -438,7 +450,7 @@
     <property name="to" value="warp-0-A"/>
    </properties>
   </object>
-  <object id="907" name="warp" type="object" x="3878.67" y="1118.67" width="256" height="256">
+  <object id="907" name="warp" type="object" x="3393.33" y="1118.67" width="256" height="256">
    <properties>
     <property name="from" value="warp-3-B"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -446,7 +458,7 @@
     <property name="to" value="warp-0-B"/>
    </properties>
   </object>
-  <object id="910" name="warp" type="object" x="2558.67" y="1119.33" width="256" height="256">
+  <object id="910" name="warp" type="object" x="1999" y="1118.33" width="256" height="256">
    <properties>
     <property name="from" value="warp-3-C"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -454,12 +466,22 @@
     <property name="to" value="warp-6-C"/>
    </properties>
   </object>
-  <object id="911" name="warp" type="object" x="3285.33" y="1118.67" width="256" height="256">
+  <object id="911" name="warp" type="object" x="3892" y="1116" width="256" height="256">
    <properties>
     <property name="from" value="warp-3-D"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="warp-6-D"/>
+   </properties>
+  </object>
+  <object id="965" name="spawn-wood-door" type="object" x="1605" y="1255" width="128" height="128">
+   <properties>
+    <property name="transition" value="smith"/>
+   </properties>
+  </object>
+  <object id="966" name="spawn-wood-door" type="object" x="4421" y="1249" width="128" height="128">
+   <properties>
+    <property name="transition" value="alch"/>
    </properties>
   </object>
  </objectgroup>
@@ -681,6 +703,8 @@
   </properties>
   <object id="713" name="Castle/Banner2" type="decor" x="2477.45" y="1987.11" width="184" height="424"/>
   <object id="714" name="Castle/Banner2" type="decor" x="3419.6" y="1971.15" width="184" height="424"/>
+  <object id="967" name="Castle/Banner2" type="decor" x="1047.39" y="1988" width="184" height="424"/>
+  <object id="968" name="Castle/Banner2" type="decor" x="4953.45" y="1972.85" width="184" height="424"/>
  </objectgroup>
  <objectgroup id="18" name="decor bg">
   <properties>
@@ -688,6 +712,10 @@
   </properties>
   <object id="709" name="Castle/Window1" type="decor" x="2131.06" y="2024" width="293" height="575"/>
   <object id="711" name="Castle/Window1" type="decor" x="3656.07" y="2017.89" width="293" height="575"/>
+  <object id="953" name="Castle/Window1" type="decor" x="1315.5" y="2028.5" width="293" height="575"/>
+  <object id="954" name="Castle/Window1" type="decor" x="4609.5" y="2022.5" width="293" height="575"/>
+  <object id="963" name="Castle/KnightSuit1" type="decor" x="4124.38" y="2171.98" width="327" height="553"/>
+  <object id="964" name="Castle/KnightSuit1" type="decor" x="1703.17" y="2171.98" width="327" height="553"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -718,21 +746,8 @@
   </properties>
   <object id="484" name="Generic/LesserMoonDoor" type="decor" x="4765.19" y="944.62" width="310" height="492"/>
   <object id="844" name="Generic/LesserMoonDoor" type="decor" x="1085.19" y="940.62" width="310" height="492"/>
-  <object id="893" name="Generic/BlueRug" type="decor" x="1954.67" y="1425.71" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="894" name="Generic/BlueRug" type="decor" x="2894" y="1425.5" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="895" name="Generic/BlueRug" type="decor" x="3839.33" y="1425.5" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
+  <object id="893" name="Generic/BlueRug" type="decor" x="2450.67" y="1429.71" width="332" height="21"/>
+  <object id="895" name="Generic/BlueRug" type="decor" x="3354" y="1425.5" width="332" height="21"/>
   <object id="945" name="Generic/SignBar" type="decor" x="1102.5" y="625.5" width="252" height="265">
    <properties>
     <property name="components" value="z-fade"/>
@@ -762,15 +777,6 @@
     <property name="transition" value="castle-main"/>
    </properties>
   </object>
-  <object id="796" name="clock-door" type="object" x="2916.74" y="-744.893" width="288" height="743">
-   <properties>
-    <property name="clock-style" value="haunted"/>
-    <property name="map" value="Castle_Valgrind/Castle_Main"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="transition" value="clock"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -782,7 +788,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="garin" type="entity" x="2487.53" y="1294.38" width="128" height="128">
+  <object id="692" name="garin" type="entity" x="2364.53" y="1305.38" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -818,7 +824,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="786" name="leroy" type="entity" x="3428" y="1306" width="128" height="128">
+  <object id="786" name="leroy" type="entity" x="3509.33" y="1306" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -845,7 +851,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="790" name="raven" type="entity" x="3276" y="1308.67" width="128" height="128">
+  <object id="790" name="raven" type="entity" x="3140" y="1306" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -854,7 +860,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="791" name="rogas" type="entity" x="2746.79" y="1293.64" width="128" height="128">
+  <object id="791" name="rogas" type="entity" x="2865.79" y="1306.64" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -931,7 +937,7 @@
     <property name="to" value="stairs-bottom-B"/>
    </properties>
   </object>
-  <object id="905" name="warp" type="object" x="1993.15" y="1179.21" width="256" height="256">
+  <object id="905" name="warp" type="object" x="2489.15" y="1183.21" width="256" height="256">
    <properties>
     <property name="from" value="warp-0-A"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -939,7 +945,7 @@
     <property name="to" value="warp-3-A"/>
    </properties>
   </object>
-  <object id="908" name="warp" type="object" x="3880" y="1179.33" width="256" height="256">
+  <object id="908" name="warp" type="object" x="3394.67" y="1179.33" width="256" height="256">
    <properties>
     <property name="from" value="warp-0-B"/>
     <property name="no-warp-camera" type="bool" value="true"/>
