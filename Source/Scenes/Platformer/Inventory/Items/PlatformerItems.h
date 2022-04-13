@@ -186,6 +186,7 @@
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/Wand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/WitchesWand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/WoodenWand.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Keys/CastleValgrind/MageTowerKey.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/MagesGuildPrisonKey.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/MayanGemBlueItem.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/EndianForest/MayanGemPurpleItem.h"

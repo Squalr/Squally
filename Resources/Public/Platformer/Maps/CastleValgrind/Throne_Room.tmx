@@ -294,7 +294,7 @@
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
+    <property name="quest" value="cure-king"/>
     <property name="quest-line" value=""/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
@@ -303,8 +303,8 @@
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
+    <property name="quest" value="cure-king"/>
+    <property name="quest-line" value="talk-to-princess-opal"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>

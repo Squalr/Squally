@@ -1,4 +1,6 @@
 #pragma once
+#include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/CureKingLine.h"
+#include "Scenes/Platformer/Quests/CastleValgrind/SkyShipToCastle/SkyShipToCastleLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/BusinessHours/BusinessHoursLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/FindElrielLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/HexusGauntlet/HexusGauntletLine.h"
@@ -10,8 +12,8 @@
 #include "Scenes/Platformer/Quests/EndianForest/SneakIntoLianasHouse/SneakIntoLianasHouseLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/WaterSpellbook/WaterSpellbookLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/WindSpellbook/WindSpellbookLine.h"
+#include "Scenes/Platformer/Quests/DataMines/DefeatRhinoman/DefeatRhinomanLine.h"
+#include "Scenes/Platformer/Quests/DataMines/RestorePower/RestorePowerLine.h"
 #include "Scenes/Platformer/Quests/Global/RestoreWarpGatesLine.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CleansePyramid/CleansePyramidLine.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CureTown/CureTownLine.h"
-#include "Scenes/Platformer/Quests/DataMines/DefeatRhinoman/DefeatRhinomanLine.h"
-#include "Scenes/Platformer/Quests/DataMines/RestorePower/RestorePowerLine.h"

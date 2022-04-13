@@ -46,6 +46,18 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	// DATA MINES QUESTS
 	this->lineDeserializers[DefeatRhinomanLine::MapKeyQuestLine] = [=]() { return (QuestLine*)DefeatRhinomanLine::create(); };
 	this->lineDeserializers[RestorePowerLine::MapKeyQuestLine] = [=]() { return (QuestLine*)RestorePowerLine::create(); };
+
+	// CASTLE VALGRIND QUESTS
+	this->lineDeserializers[CureKingLine::MapKeyQuestLine] = [=]() { return (QuestLine*)CureKingLine::create(); };
+	this->lineDeserializers[SkyShipToCastleLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SkyShipToCastleLine::create(); };
+	
+	// BALLMER PEAKS QUESTS
+	
+	// DAEMONS HALLOW QUESTS
+	
+	// LAMBDA CRYPTS QUESTS
+	
+	// VOID STAR QUESTS
 }
 
 PlatformerQuestDeserializer::~PlatformerQuestDeserializer()
