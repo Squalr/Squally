@@ -18,7 +18,7 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="800" name="ruins-gray-dark" type="terrain" x="2805.03" y="-443.455" width="1212.12" height="1581.82">
+  <object id="800" name="castle" type="terrain" x="2805.03" y="-443.455" width="1212.12" height="1581.82">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -169,12 +169,12 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="801" name="ruins-gray-dark" type="terrain" x="3554" y="-44.7874" width="1118.67" height="1318.18">
+  <object id="801" name="castle" type="terrain" x="3554" y="-44.7874" width="1118.67" height="1318.18">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="802" name="ruins-gray-dark" type="terrain" x="-67.335" y="-43.09" width="3274.67" height="1318.18">
+  <object id="802" name="castle" type="terrain" x="-67.335" y="-43.09" width="3274.67" height="1318.18">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -201,9 +201,9 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="760" name="ares" type="entity" x="2210.93" y="851.352" width="128" height="167">
+  <object id="760" name="raven" type="entity" x="2210.93" y="851.352" width="128" height="167">
    <properties>
-    <property name="components" value="petrified,shopkeeper,face-squally"/>
+    <property name="components" value="shopkeeper,face-squally"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
@@ -249,7 +249,7 @@
   </object>
   <object id="794" name="portal" type="object" x="3202.21" y="690.527" width="335.878" height="375.411">
    <properties>
-    <property name="map" value="UnderflowRuins/Town_Inn_Upstairs"/>
+    <property name="map" value="CastleValgrind/Town_Inn_Upstairs"/>
     <property name="transition" value="inn"/>
    </properties>
   </object>

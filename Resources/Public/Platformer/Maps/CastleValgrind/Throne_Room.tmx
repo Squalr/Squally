@@ -18,21 +18,21 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="756" name="marble" type="texture" x="1418" y="-182" width="1188" height="1128"/>
+  <object id="756" name="marble" type="texture" x="1418" y="-182" width="1188" height="1464"/>
  </objectgroup>
  <objectgroup id="95" name="objects -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="746" name="Generic/MoonDoor" type="decor" x="1679.75" y="173.677" width="648" height="667"/>
+  <object id="746" name="Generic/MoonDoor" type="decor" x="1679.08" y="380.344" width="648" height="667"/>
  </objectgroup>
  <objectgroup id="87" name="stairs -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="762" name="marble" type="terrain" x="1570.52" y="837.303" width="856.967" height="139.393">
+  <object id="762" name="marble" type="terrain" x="1569.85" y="1043.97" width="856.967" height="139.393">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -59,7 +59,7 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="761" name="marble" type="terrain" x="1571.52" y="900.303" width="856.967" height="139.393">
+  <object id="761" name="marble" type="terrain" x="1561.52" y="1068.3" width="856.967" height="139.393">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -86,7 +86,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="760" name="marble" type="terrain" x="1573.18" y="964.97" width="856.967" height="139.393">
+  <object id="760" name="marble" type="terrain" x="1571.18" y="1091.64" width="856.967" height="139.393">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -113,7 +113,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="759" name="marble" type="terrain" x="1573.52" y="1025.3" width="856.967" height="139.393">
+  <object id="759" name="marble" type="terrain" x="1570.85" y="1115.3" width="856.967" height="139.393">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -140,7 +140,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="758" name="marble" type="terrain" x="1574.18" y="1079.64" width="856.967" height="139.393">
+  <object id="758" name="marble" type="terrain" x="1568.18" y="1140.97" width="856.967" height="139.393">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -167,7 +167,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="757" name="marble" type="terrain" x="1571.52" y="1140.97" width="856.967" height="139.393">
+  <object id="757" name="marble" type="terrain" x="1570.85" y="1167.64" width="856.967" height="139.393">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -257,10 +257,8 @@
   </properties>
   <object id="775" name="portal" type="object" x="1890.63" y="731.182" width="237.527" height="464.666">
    <properties>
-    <property name="map" value="EndianForest/Town_Liana_Back"/>
-    <property name="quest" value="liana-door-locked"/>
-    <property name="quest-line" value="sneak-liana-line"/>
-    <property name="transition" value="inner"/>
+    <property name="map" value="CastleValgrind/Town_Main"/>
+    <property name="transition" value="throne-room"/>
    </properties>
   </object>
   <object id="815" name="clock-door" type="object" x="3447.32" y="466.18" width="257" height="729">
@@ -323,7 +321,7 @@
   </object>
   <object id="779" name="spawn-wood-door" type="object" x="1942.93" y="1067.25" width="128" height="128">
    <properties>
-    <property name="transition" value="inner"/>
+    <property name="transition" value="throne-room"/>
    </properties>
   </object>
  </objectgroup>

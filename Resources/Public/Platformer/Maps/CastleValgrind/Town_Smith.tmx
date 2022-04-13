@@ -88,7 +88,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="808" name="ruins-gray-dark" type="texture" x="-42" y="-70" width="2284" height="1264"/>
+  <object id="808" name="castle" type="texture" x="-42" y="-70" width="2284" height="1264"/>
  </objectgroup>
  <objectgroup id="95" name="columns -0">
   <properties>

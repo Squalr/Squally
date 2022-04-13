@@ -7644,6 +7644,36 @@ namespace Strings
 		virtual ~Items_Misc_Keys_BlueGem() = default;
 	};
 
+	class Items_Misc_Keys_CryptKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_CryptKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_CryptKey();
+		virtual ~Items_Misc_Keys_CryptKey() = default;
+	};
+
+	class Items_Misc_Keys_DemonKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_DemonKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_DemonKey();
+		virtual ~Items_Misc_Keys_DemonKey() = default;
+	};
+
 	class Items_Misc_Keys_FountainRoomKey : public LocalizedString
 	{
 	public:
@@ -7657,6 +7687,96 @@ namespace Strings
 	private:
 		Items_Misc_Keys_FountainRoomKey();
 		virtual ~Items_Misc_Keys_FountainRoomKey() = default;
+	};
+
+	class Items_Misc_Keys_FrostKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_FrostKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_FrostKey();
+		virtual ~Items_Misc_Keys_FrostKey() = default;
+	};
+
+	class Items_Misc_Keys_FrozenKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_FrozenKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_FrozenKey();
+		virtual ~Items_Misc_Keys_FrozenKey() = default;
+	};
+
+	class Items_Misc_Keys_HellGateCrystal : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_HellGateCrystal* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_HellGateCrystal();
+		virtual ~Items_Misc_Keys_HellGateCrystal() = default;
+	};
+
+	class Items_Misc_Keys_HellKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_HellKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_HellKey();
+		virtual ~Items_Misc_Keys_HellKey() = default;
+	};
+
+	class Items_Misc_Keys_IceKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_IceKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_IceKey();
+		virtual ~Items_Misc_Keys_IceKey() = default;
+	};
+
+	class Items_Misc_Keys_MageTowerKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_MageTowerKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_MageTowerKey();
+		virtual ~Items_Misc_Keys_MageTowerKey() = default;
 	};
 
 	class Items_Misc_Keys_MagesGuildPrisonKey : public LocalizedString
@@ -7747,6 +7867,21 @@ namespace Strings
 	private:
 		Items_Misc_Keys_RedGem();
 		virtual ~Items_Misc_Keys_RedGem() = default;
+	};
+
+	class Items_Misc_Keys_RustyKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_RustyKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_RustyKey();
+		virtual ~Items_Misc_Keys_RustyKey() = default;
 	};
 
 	class Items_Misc_Keys_TownKey : public LocalizedString

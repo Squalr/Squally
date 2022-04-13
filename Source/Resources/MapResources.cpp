@@ -11,6 +11,7 @@ const std::string MapResources::CastleValgrind_Mages_Warp = "Public/Platformer/M
 const std::string MapResources::CastleValgrind_Throne_Room = "Public/Platformer/Maps/CastleValgrind/Throne_Room.tmx";
 const std::string MapResources::CastleValgrind_Town_Alch = "Public/Platformer/Maps/CastleValgrind/Town_Alch.tmx";
 const std::string MapResources::CastleValgrind_Town_Inn = "Public/Platformer/Maps/CastleValgrind/Town_Inn.tmx";
+const std::string MapResources::CastleValgrind_Town_Inn_Upstairs = "Public/Platformer/Maps/CastleValgrind/Town_Inn_Upstairs.tmx";
 const std::string MapResources::CastleValgrind_Town_Main = "Public/Platformer/Maps/CastleValgrind/Town_Main.tmx";
 const std::string MapResources::CastleValgrind_Town_Smith = "Public/Platformer/Maps/CastleValgrind/Town_Smith.tmx";
 const std::string MapResources::CastleValgrind_Zone_1_0 = "Public/Platformer/Maps/CastleValgrind/Zone_1_0.tmx";

@@ -38,7 +38,6 @@ TrackDeserializer::TrackDeserializer()
 	this->deserializers[Medieval2::TrackKey] = [=]() { return (Track*)Medieval2::create(); };
 	this->deserializers[Solace::TrackKey] = [=]() { return (Track*)Solace::create(); };
 	this->deserializers[TrickOrTreat::TrackKey] = [=]() { return (Track*)TrickOrTreat::create(); };
-	this->deserializers[TwoSteps::TrackKey] = [=]() { return (Track*)TwoSteps::create(); };
 	this->deserializers[WeWillGetThereTogether::TrackKey] = [=]() { return (Track*)WeWillGetThereTogether::create(); };
 }
 

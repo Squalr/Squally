@@ -12,6 +12,7 @@ namespace MapResources
 	extern const std::string CastleValgrind_Throne_Room;
 	extern const std::string CastleValgrind_Town_Alch;
 	extern const std::string CastleValgrind_Town_Inn;
+	extern const std::string CastleValgrind_Town_Inn_Upstairs;
 	extern const std::string CastleValgrind_Town_Main;
 	extern const std::string CastleValgrind_Town_Smith;
 	extern const std::string CastleValgrind_Zone_1_0;

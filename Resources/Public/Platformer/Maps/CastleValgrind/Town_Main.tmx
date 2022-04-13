@@ -262,12 +262,12 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="851" name="marble" type="terrain" x="216.756" y="1441.45" width="844.3" height="80.7263">
+  <object id="851" name="marble" type="terrain" x="218.089" y="1466.78" width="844.3" height="80.7263">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="918" name="marble" type="terrain" x="5108.51" y="1440" width="844.3" height="80.7263">
+  <object id="918" name="marble" type="terrain" x="5106.51" y="1464.67" width="844.3" height="80.7263">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -650,7 +650,7 @@
   <object id="840" name="castle" type="texture" x="-1430.85" y="-154.606" width="1710.18" height="3012"/>
   <object id="841" name="castle" type="texture" x="5878.91" y="-716.303" width="1033.94" height="3604"/>
   <object id="854" name="castle" type="texture" x="944.91" y="-534" width="560.18" height="2084"/>
-  <object id="855" name="castle" type="texture" x="4656.91" y="-482" width="534.18" height="2084"/>
+  <object id="855" name="castle" type="texture" x="4638.24" y="-482" width="552.847" height="2084"/>
  </objectgroup>
  <objectgroup id="81" name="columns -0">
   <properties>
@@ -748,11 +748,7 @@
   <object id="844" name="Generic/LesserMoonDoor" type="decor" x="1085.19" y="940.62" width="310" height="492"/>
   <object id="893" name="Generic/BlueRug" type="decor" x="2450.67" y="1429.71" width="332" height="21"/>
   <object id="895" name="Generic/BlueRug" type="decor" x="3354" y="1425.5" width="332" height="21"/>
-  <object id="945" name="Generic/SignBar" type="decor" x="1102.5" y="625.5" width="252" height="265">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
+  <object id="945" name="Generic/SignBar" type="decor" x="1102.5" y="625.5" width="252" height="265"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -767,8 +763,8 @@
   </object>
   <object id="845" name="portal" type="object" x="1115.16" y="981.189" width="237.527" height="464.666">
    <properties>
-    <property name="map" value="CastleValgrind/Zone_1_0"/>
-    <property name="transition" value="main"/>
+    <property name="map" value="CastleValgrind/Town_Inn"/>
+    <property name="transition" value="inn"/>
    </properties>
   </object>
   <object id="775" name="portal" type="object" x="2914.63" y="2267.18" width="237.527" height="464.666">
@@ -807,15 +803,6 @@
    </properties>
   </object>
   <object id="787" name="mabel" type="entity" x="2277" y="1306.33" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
-  <object id="790" name="raven" type="entity" x="3177.33" y="1306.67" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
