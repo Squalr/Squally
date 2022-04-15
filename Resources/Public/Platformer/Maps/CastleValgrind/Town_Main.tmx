@@ -758,7 +758,7 @@
   <object id="694" name="portal" type="object" x="4795.16" y="985.189" width="237.527" height="464.666">
    <properties>
     <property name="map" value="CastleValgrind/Zone_1_0"/>
-    <property name="transition" value="main"/>
+    <property name="transition" value="tbd"/>
    </properties>
   </object>
   <object id="845" name="portal" type="object" x="1115.16" y="981.189" width="237.527" height="464.666">
@@ -833,12 +833,12 @@
   </object>
   <object id="778" name="spawn-wood-door" type="object" x="4847.46" y="1321.26" width="128" height="128">
    <properties>
-    <property name="transition" value="main"/>
+    <property name="transition" value="tbd"/>
    </properties>
   </object>
   <object id="843" name="spawn-wood-door" type="object" x="1167.46" y="1317.26" width="128" height="128">
    <properties>
-    <property name="transition" value="main"/>
+    <property name="transition" value="inn"/>
    </properties>
   </object>
   <object id="779" name="spawn-wood-door" type="object" x="2966.93" y="2603.25" width="128" height="128">

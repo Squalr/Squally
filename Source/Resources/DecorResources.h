@@ -175,7 +175,6 @@ namespace DecorResources
 	extern const std::string Crypts_Tree7;
 	extern const std::string Crypts_Tree8;
 	extern const std::string Crypts_Tree9;
-	extern const std::string Crypts_WarpTower;
 	extern const std::string Forest_Background_Clouds1;
 	extern const std::string Forest_Background_Clouds2;
 	extern const std::string Forest_Background_Clouds3;

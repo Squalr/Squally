@@ -174,7 +174,6 @@ const std::string DecorResources::Crypts_Tree6 = "Private/Platformer/Decor/Crypt
 const std::string DecorResources::Crypts_Tree7 = "Private/Platformer/Decor/Crypts/Tree7.png";
 const std::string DecorResources::Crypts_Tree8 = "Private/Platformer/Decor/Crypts/Tree8.png";
 const std::string DecorResources::Crypts_Tree9 = "Private/Platformer/Decor/Crypts/Tree9.png";
-const std::string DecorResources::Crypts_WarpTower = "Private/Platformer/Decor/Crypts/WarpTower.png";
 const std::string DecorResources::Forest_Background_Clouds1 = "Private/Platformer/Decor/Forest/Background/Clouds1.png";
 const std::string DecorResources::Forest_Background_Clouds2 = "Private/Platformer/Decor/Forest/Background/Clouds2.png";
 const std::string DecorResources::Forest_Background_Clouds3 = "Private/Platformer/Decor/Forest/Background/Clouds3.png";

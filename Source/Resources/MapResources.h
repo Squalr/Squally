@@ -17,6 +17,7 @@ namespace MapResources
 	extern const std::string CastleValgrind_Town_Smith;
 	extern const std::string CastleValgrind_Zone_1_0;
 	extern const std::string CastleValgrind_Zone_1_1;
+	extern const std::string CastleValgrind_Zone_1_2;
 	extern const std::string DaemonsHallow_Mages_Warp;
 	extern const std::string DaemonsHallow_Volcano;
 	extern const std::string DataMines_Combat_Caves;
@@ -115,8 +116,13 @@ namespace MapResources
 	extern const std::string EndianForest_Zone_3_6;
 	extern const std::string EndianForest_Zone_3_7;
 	extern const std::string EndianForest_Zone_3_Dev;
-	extern const std::string LambdaCrypts_Crypts;
 	extern const std::string LambdaCrypts_Mages_Warp;
+	extern const std::string LambdaCrypts_Town_Alch;
+	extern const std::string LambdaCrypts_Town_Inn;
+	extern const std::string LambdaCrypts_Town_Inn_Upstairs;
+	extern const std::string LambdaCrypts_Town_Main;
+	extern const std::string LambdaCrypts_Town_Smith;
+	extern const std::string LambdaCrypts_Zone_1_0;
 	extern const std::string PerilousSea_Zone_UR_1_0;
 	extern const std::string TileMap;
 	extern const std::string TileMap3Q;

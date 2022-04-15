@@ -214,12 +214,17 @@ DeveloperScene::DeveloperScene()
 
 	// CHAPTER 5
 	{
-		ClickableTextNode* titleButton = this->buildTitleButton("Ballmer Peaks");
+		ClickableTextNode* titleButton = this->buildTitleButton("Lambda Crypts");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (BP)", MapResources::BallmerPeaks_Mages_Warp));
-		mapList.push_back(this->buildDebugButton("Town Main (BP)", MapResources::BallmerPeaks_Town_Main));
+		mapList.push_back(this->buildDebugButton("Warp Room (LC)", MapResources::LambdaCrypts_Mages_Warp));
+		mapList.push_back(this->buildDebugButton("Alch (LC)", MapResources::LambdaCrypts_Town_Alch));
+		mapList.push_back(this->buildDebugButton("Inn (LC)", MapResources::LambdaCrypts_Town_Inn));
+		mapList.push_back(this->buildDebugButton("Smith (LC)", MapResources::LambdaCrypts_Town_Smith));
+		mapList.push_back(this->buildDebugButton("Town (LC)", MapResources::LambdaCrypts_Town_Main));
+		mapList.push_back(this->buildDebugButton("Zone_1_0 (LC)", MapResources::LambdaCrypts_Zone_1_0));
+
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
@@ -237,11 +242,12 @@ DeveloperScene::DeveloperScene()
 
 	// CHAPTER 7
 	{
-		ClickableTextNode* titleButton = this->buildTitleButton("Lambda Crypts");
+		ClickableTextNode* titleButton = this->buildTitleButton("Ballmer Peaks");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (LC)", MapResources::LambdaCrypts_Mages_Warp));
+		mapList.push_back(this->buildDebugButton("Warp Room (BP)", MapResources::BallmerPeaks_Mages_Warp));
+		mapList.push_back(this->buildDebugButton("Town Main (BP)", MapResources::BallmerPeaks_Town_Main));
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
