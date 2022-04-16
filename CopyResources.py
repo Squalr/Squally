@@ -13,17 +13,22 @@ import os
 from sys import platform as _platform
 
 def main():
-    if _platform == "win32" or _platform == "win64":
+    print(_platform)
+    if _platform == "win32" or _platform == "win64" or _platform == "darwin":
         copyResources()
     else:
-        print("This script is currently Windows only.");
+        print("This script is currently Windows/OSX only.")
 
 def copyResources():
     projectRoot = abspath(join(realpath(__file__), ".."))
     sourcePathPublic = join(projectRoot, "Resources/Public/")
     sourcePathPrivate = join(projectRoot, "Resources/Private/")
 
-    binRoot = abspath(join(realpath(__file__), "../build/bin/"))
+    if _platform == "win32" or _platform == "win64":
+        binRoot = abspath(join(realpath(__file__), "../build/bin/"))
+    elif _platform ==  "darwin":
+        binRoot = abspath(join(realpath(__file__), "../build/bin/Squally.app/Contents/"))
+    
     destPathPublic = join(binRoot, "Resources/Public/")
     destPathPrivate = join(binRoot, "Resources/Private/")
     
