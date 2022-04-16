@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="93" nextobjectid="959">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="98" nextobjectid="994">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="746" name="Crypts/Background/Background3" type="decor" x="-4957.69" y="837.3" width="17309.3" height="1774">
+  <object id="965" name="Crypts/Background/Background1" type="decor" x="-6734.6" y="248.321" width="20857.6" height="2048">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -34,7 +34,7 @@
    <property name="depth" type="float" value="-1080"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="853" name="Crypts/Background/Background1" type="decor" x="-6716.8" y="1060" width="20857.6" height="2048">
+  <object id="966" name="Crypts/Background/Background3" type="decor" x="-4893.49" y="1155.41" width="17309.3" height="1774">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -69,21 +69,33 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="876" name="shade-grass" type="terrain" x="-1082.97" y="1788.97" width="8305.94" height="1234.06"/>
+  <object id="876" name="shade-grass" type="terrain" x="-1082.97" y="1788.97" width="9523.57" height="1234.06"/>
+ </objectgroup>
+ <objectgroup id="94" name="decor -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="964" name="Crypts/RailingLong" type="decor" x="-1056.55" y="1481.15" width="9506.02" height="307">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="7911" name="bridge -11">
   <properties>
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="874" name="shade-grass" type="terrain" x="-1088.97" y="1804.97" width="8305.94" height="1234.06"/>
+  <object id="874" name="shade-grass" type="terrain" x="-1088.97" y="1804.97" width="9530.57" height="1234.06"/>
  </objectgroup>
+ <objectgroup id="95" name="decor -11"/>
  <objectgroup id="791" name="bridge -10">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="873" name="shade-grass" type="terrain" x="-1086.97" y="1824.97" width="8305.94" height="1234.06"/>
+  <object id="873" name="shade-grass" type="terrain" x="-1086.97" y="1824.97" width="9551.57" height="1234.06"/>
  </objectgroup>
  <objectgroup id="92" name="decor -10">
   <properties>
@@ -99,13 +111,15 @@
   <object id="940" name="Crypts/Grave11" type="decor" x="3965.48" y="1562.08" width="248" height="239"/>
   <object id="941" name="Crypts/Grave1" type="decor" x="5049.63" y="1560.08" width="132" height="248"/>
   <object id="942" name="Crypts/Grave17" type="decor" x="5234.65" y="1493.7" width="762" height="314"/>
-  <object id="945" name="Crypts/Grave18" type="decor" x="1309.59" y="1457.83" width="570" height="365"/>
-  <object id="953" name="Crypts/Grave3" type="decor" x="2223.81" y="1582.47" width="164" height="243">
+  <object id="953" name="Crypts/Grave3" type="decor" x="2079.65" y="1582.47" width="164" height="243">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="957" name="Crypts/Statue4" type="decor" x="4147.45" y="1274.95" width="514" height="531">
+  <object id="970" name="Crypts/Grave18" type="decor" x="1086.44" y="1460.97" width="570" height="365"/>
+  <object id="976" name="Crypts/Grave13" type="decor" x="2268.04" y="1482.5" width="363" height="342"/>
+  <object id="978" name="Crypts/Grave16" type="decor" x="2536.28" y="1785.24" width="141" height="60"/>
+  <object id="989" name="Crypts/Statue2" type="decor" x="4278.09" y="1260.3" width="347" height="546">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -122,7 +136,7 @@
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="872" name="shade-grass" type="terrain" x="-1086.97" y="1842.97" width="8305.94" height="1234.06"/>
+  <object id="872" name="shade-grass" type="terrain" x="-1086.97" y="1842.97" width="9516.58" height="1234.06"/>
  </objectgroup>
  <objectgroup id="91" name="decor -9">
   <properties>
@@ -143,12 +157,17 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="946" name="Crypts/Grave1" type="decor" x="2072.27" y="1593.24" width="132" height="248"/>
+  <object id="946" name="Crypts/Grave1" type="decor" x="2019.62" y="1594.5" width="132" height="248"/>
   <object id="948" name="Crypts/Grave15" type="decor" x="2280.76" y="1662.35" width="158" height="181"/>
-  <object id="952" name="Crypts/Statue6" type="decor" x="1698.01" y="1329.43" width="329" height="513"/>
-  <object id="958" name="Crypts/Statue2" type="decor" x="5941.7" y="1280.18" width="347" height="546">
+  <object id="974" name="Crypts/Grave11" type="decor" x="977.918" y="1602.95" width="248" height="239"/>
+  <object id="990" name="Crypts/Statue6" type="decor" x="5904.33" y="1313.17" width="329" height="513">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="991" name="Crypts/Statue2" type="decor" x="1724.66" y="1300.25" width="347" height="546">
+   <properties>
+    <property name="flip-x" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
@@ -157,41 +176,40 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="871" name="shade-grass" type="terrain" x="-1084.97" y="1860.97" width="8305.94" height="1234.06"/>
+  <object id="871" name="shade-grass" type="terrain" x="-1084.97" y="1860.97" width="9523.57" height="1234.06"/>
  </objectgroup>
- <objectgroup id="90" name="decor -8" visible="0">
+ <objectgroup id="90" name="decor -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="914" name="Crypts/Grave11" type="decor" x="502.285" y="1615.82" width="248" height="239"/>
-  <object id="915" name="Crypts/Grave12" type="decor" x="1043.38" y="1620.34" width="182" height="240"/>
+  <object id="915" name="Crypts/Grave12" type="decor" x="399.599" y="1622.99" width="182" height="240"/>
   <object id="917" name="Crypts/Grave14" type="decor" x="5166.9" y="1601.5" width="156" height="259"/>
   <object id="918" name="Crypts/Grave15" type="decor" x="5405.73" y="1677" width="158" height="181"/>
   <object id="919" name="Crypts/Grave18" type="decor" x="4514.05" y="1493.8" width="570" height="365"/>
   <object id="920" name="Crypts/Grave16" type="decor" x="4214.82" y="1800.33" width="141" height="60"/>
   <object id="921" name="Crypts/Grave17" type="decor" x="1771.46" y="1547.44" width="762" height="314"/>
-  <object id="923" name="Crypts/Grave2" type="decor" x="1341.74" y="1645.27" width="138" height="214">
+  <object id="923" name="Crypts/Grave2" type="decor" x="1588.99" y="1649.27" width="138" height="214">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="924" name="Crypts/Grave1" type="decor" x="1586.44" y="1613.82" width="132" height="248"/>
+  <object id="973" name="Crypts/Grave9" type="decor" x="1154.79" y="1615" width="155" height="245"/>
  </objectgroup>
  <objectgroup id="761" name="bridge -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="870" name="shade-grass" type="terrain" x="-1076.97" y="1882.97" width="8305.94" height="1234.06"/>
+  <object id="870" name="shade-grass" type="terrain" x="-1076.97" y="1882.97" width="9502.58" height="1234.06"/>
  </objectgroup>
  <objectgroup id="81" name="decor -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="849" name="Forest/Tree1" type="decor" x="7021.17" y="1295.5" width="499" height="881"/>
-  <object id="843" name="Forest/Tree1" type="decor" x="6770.5" y="1306.17" width="499" height="881"/>
+  <object id="849" name="Forest/Tree1" type="decor" x="7021.17" y="1211.9" width="499" height="881"/>
+  <object id="843" name="Forest/Tree1" type="decor" x="6768.6" y="1241.57" width="499" height="881"/>
   <object id="880" name="Crypts/CryptDoor" type="decor" x="2545.92" y="818.108" width="1077" height="1064"/>
   <object id="907" name="Crypts/Grave4" type="decor" x="1741.53" y="1526.13" width="238" height="359"/>
   <object id="908" name="Crypts/Grave5" type="decor" x="2113.79" y="1688.29" width="192" height="193"/>
@@ -200,14 +218,13 @@
   <object id="911" name="Crypts/Grave8" type="decor" x="4843.54" y="1638.39" width="403" height="247"/>
   <object id="912" name="Crypts/Grave9" type="decor" x="5324.53" y="1637.05" width="155" height="245"/>
   <object id="913" name="Crypts/Grave10" type="decor" x="5639.98" y="1663.58" width="192" height="212"/>
-  <object id="922" name="Crypts/Grave13" type="decor" x="1208.89" y="1539.96" width="363" height="342"/>
  </objectgroup>
  <objectgroup id="751" name="terrain -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="855" name="shade-grass" type="terrain" x="-1085.64" y="1918.97" width="8305.94" height="1234.06"/>
+  <object id="855" name="shade-grass" type="terrain" x="-1085.64" y="1918.97" width="9537.57" height="1234.06"/>
  </objectgroup>
  <objectgroup id="87" name="bridge -6">
   <properties>
@@ -225,24 +242,52 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="96" name="decor -6 bg">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="981" name="Crypts/Grave17" type="decor" x="451.298" y="1603.87" width="762" height="314">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="983" name="Crypts/Grave17" type="decor" x="5771.17" y="1606.98" width="762" height="314">
+   <properties>
+    <property name="flip-x" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="73" name="decor -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="848" name="Forest/Tree2" type="decor" x="7171.83" y="1430.17" width="679" height="712"/>
-  <object id="864" name="Crypts/Statue1" type="decor" x="2059.72" y="1104.38" width="424" height="808"/>
+  <object id="848" name="Forest/Tree2" type="decor" x="7171.83" y="1367.47" width="679" height="712"/>
   <object id="866" name="Crypts/Statue3" type="decor" x="272.811" y="1131.21" width="364" height="781"/>
-  <object id="868" name="Crypts/Statue5" type="decor" x="3684.16" y="1169.94" width="370" height="754">
+  <object id="868" name="Crypts/Statue5" type="decor" x="2133.21" y="1167.58" width="370" height="754">
+   <properties>
+    <property name="flip-x" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="984" name="Crypts/Statue1" type="decor" x="6309.53" y="1114" width="424" height="808">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="949" name="Crypts/Statue3" type="decor" x="6325.34" y="1139.87" width="364" height="781">
+  <object id="986" name="Crypts/Statue3" type="decor" x="3696.56" y="1101.62" width="364" height="781">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup id="97" name="objects -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="992" name="solid" type="collision" x="6307.1" y="-8.79392" width="171.617" height="1932.84"/>
+  <object id="993" name="solid" type="collision" x="466.125" y="-10.314" width="171.617" height="1932.84"/>
  </objectgroup>
  <objectgroup id="89" name="player_layer -6">
   <properties>
@@ -268,28 +313,39 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="88" name="decor -6 fg">
+ <objectgroup id="88" name="decor -6 fg" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="877" name="Crypts/RailingLong" type="decor" x="-26.653" y="1611.45" width="1563.52" height="307">
+  <object id="877" name="Crypts/RailingLong" type="decor" x="-1052.97" y="1611.45" width="2560.68" height="307">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="878" name="Crypts/RailingLong" type="decor" x="4495.45" y="1613.41" width="2736.77" height="307">
+  <object id="878" name="Crypts/RailingLong" type="decor" x="4599.58" y="1613.41" width="2632.64" height="307">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="879" name="Crypts/RailingLong" type="decor" x="1892.67" y="1614.08" width="2357.89" height="307">
+  <object id="879" name="Crypts/RailingLong" type="decor" x="1937.1" y="1614.08" width="2238.05" height="307">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="79" name="bridge -5">
+ <objectgroup id="93" name="decor -6 fg fg" visible="0">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="959" name="Crypts/Post1" type="decor" x="1421.95" y="1618.28" width="127" height="301"/>
+  <object id="960" name="Crypts/Post2" type="decor" x="1876.08" y="1617.64" width="127" height="310"/>
+  <object id="961" name="Crypts/Post2" type="decor" x="4548.54" y="1610.69" width="127" height="310"/>
+  <object id="962" name="Crypts/Post2" type="decor" x="4111.98" y="1614.1" width="127" height="310"/>
+  <object id="963" name="Crypts/Post3" type="decor" x="4111.98" y="1614.1" width="127" height="305"/>
+ </objectgroup>
+ <objectgroup id="79" name="bridge -5" visible="0">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
@@ -305,13 +361,13 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="84" name="decor -5">
+ <objectgroup id="84" name="decor -5" visible="0">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="78" name="bridge -4">
+ <objectgroup id="78" name="bridge -4" visible="0">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -332,9 +388,9 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="847" name="Forest/Tree1" type="decor" x="7045.83" y="1278.83" width="499" height="881"/>
+  <object id="847" name="Forest/Tree1" type="decor" x="7043.93" y="1322.53" width="499" height="881"/>
  </objectgroup>
- <objectgroup id="77" name="bridge -3">
+ <objectgroup id="77" name="bridge -3" visible="0">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -355,8 +411,8 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="846" name="Forest/Tree2" type="decor" x="6692.5" y="1414.67" width="679" height="712"/>
-  <object id="844" name="Forest/Tree2" type="decor" x="7349.83" y="1398.67" width="679" height="712"/>
+  <object id="846" name="Forest/Tree2" type="decor" x="6684.9" y="1395.67" width="679" height="712"/>
+  <object id="844" name="Forest/Tree2" type="decor" x="7342.23" y="1379.67" width="679" height="712"/>
  </objectgroup>
  <objectgroup id="76" name="bridge -2">
   <properties>
@@ -379,7 +435,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="845" name="Forest/Tree1" type="decor" x="7099.83" y="1212.84" width="499" height="881"/>
+  <object id="845" name="Forest/Tree1" type="decor" x="7293.64" y="1172.94" width="499" height="881"/>
  </objectgroup>
  <objectgroup id="75" name="bridge -1">
   <properties>
