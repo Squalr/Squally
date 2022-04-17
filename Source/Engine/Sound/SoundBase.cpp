@@ -22,13 +22,20 @@ using namespace cocos_experimental;
 const int SoundBase::INVALID_ID = -1;
 const std::string SoundBase::KeyScheduleFadeOutAudio = "SCHEDULE_KEY_FADE_OUT_AUDIO";
 
-SoundBase::SoundBase(ValueMap& properties, std::string soundResource) : super(properties)
+SoundBase::SoundBase(ValueMap& properties, std::string soundResource, bool initializeSoundBuffer) : super(properties)
 {
 	this->soundBuffer = new sf::SoundBuffer();
 	this->sound = new sf::Sound();
 	this->activeTrackId = SoundBase::INVALID_ID;
 
-	this->setSoundResource(soundResource);
+	if (initializeSoundBuffer)
+	{
+		this->setSoundResource(soundResource);
+	}
+	else
+	{
+		this->soundResource = soundResource;
+	}
 }
 
 SoundBase::~SoundBase()

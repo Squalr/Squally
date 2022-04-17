@@ -2,6 +2,11 @@
 
 #include "Engine/Sound/SoundBase.h"
 
+namespace sf
+{
+	class Music;
+}
+
 class Track;
 
 class Music : public SoundBase
@@ -9,6 +14,7 @@ class Music : public SoundBase
 public:
 	void unfreeze() override;
 	
+	virtual void setSoundResource(std::string soundResource) override;
 	Track* getOwner();
 
 protected:
@@ -36,4 +42,5 @@ private:
 
 	Track* owner = nullptr;
 	bool orphaned = false;
+	sf::Music* music = nullptr;
 };

@@ -19,11 +19,11 @@ public:
 	virtual void stopAndFadeOut(std::function<void()> onFadeOutCallback = nullptr, bool hasPriority = false);
 
 	void setCustomMultiplier(float customMultiplier);
-	void setSoundResource(std::string soundResource);
+	virtual void setSoundResource(std::string soundResource);
 	std::string getSoundResource();
 
 protected:
-	SoundBase(cocos2d::ValueMap& properties, std::string soundResource);
+	SoundBase(cocos2d::ValueMap& properties, std::string soundResource, bool initializeSoundBuffer = true);
 	virtual ~SoundBase();
 
 	void onEnter() override;

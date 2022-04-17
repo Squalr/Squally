@@ -27,13 +27,19 @@ Music* Music::createAndAddGlobally(Track* owner, std::string musicResource)
 	return instance;
 }
 
-Music::Music(ValueMap& properties, Track* owner, std::string musicResource) : super(properties, musicResource)
+Music::Music(ValueMap& properties, Track* owner, std::string musicResource) : super(properties, musicResource, false)
 {
+	this->music = new sf::Music();
 	this->owner = owner;
+	this->setSoundResource(musicResource);
 }
 
 Music::~Music()
 {
+	if (this->music != nullptr)
+	{
+		delete(this->music);
+	}
 }
 
 void Music::initializeListeners()
@@ -68,6 +74,29 @@ void Music::pause()
 	// Do nothing -- music never gets paused via node trees (pause is an engine function -- use freeze to pause music!)
 }
 
+void Music::setSoundResource(std::string soundResource)
+{
+	this->soundResource = soundResource;
+
+	if (this->music != nullptr)
+	{
+		if (!this->soundResource.empty())
+		{
+			std::string fullPath = FileUtils::getInstance()->fullPathForFilename(this->soundResource);
+			bool loadSuccess = this->music->openFromFile(fullPath);
+
+			if (!loadSuccess)
+			{
+				LogUtils::logError("Error loading sound resource: " + this->soundResource);
+			}
+		}
+		else
+		{
+			this->music->openFromFile("");
+		}
+	}
+}
+
 void Music::orphanMusic()
 {
 	this->orphaned = true;
@@ -90,32 +119,26 @@ float Music::getConfigVolume()
 
 void Music::play(bool repeat, float startDelay)
 {
-	/*
-	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
+	sf::SoundSource::Status status = this->sound->getStatus();
 
-	switch (state)
+	switch (status)
 	{
 		default:
-		case AudioEngine::AudioState::ERROR:
-		case AudioEngine::AudioState::INITIALIZING:
-		case AudioEngine::AudioState::PLAYING:
+		case sf::SoundSource::Status::Playing:
+		case sf::SoundSource::Status::Stopped:
 		{
 			this->stop();
-
 			super::play(repeat, startDelay);
-			
 			SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
-
 			break;
 		}
-		case AudioEngine::AudioState::PAUSED:
+		case sf::SoundSource::Status::Paused:
 		{
 			this->unfreeze();
 			SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
 			break;
 		}
 	}
-	*/
 }
 
 void Music::copyStateFrom(Music* music)
@@ -149,51 +172,45 @@ void Music::unfreeze()
 {
 	super::unfreeze();
 
-	/*
-	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
+	sf::SoundSource::Status status = this->sound->getStatus();
 
-	switch (state)
+	switch (status)
 	{
 		default:
-		case AudioEngine::AudioState::ERROR:
-		case AudioEngine::AudioState::INITIALIZING:
-		case AudioEngine::AudioState::PAUSED:
+		case sf::SoundSource::Status::Paused:
+		case sf::SoundSource::Status::Stopped:
 		{
 			// Unpause failed, play new sound
 			this->play();
 			break;
 		}
-		case AudioEngine::AudioState::PLAYING:
+		case sf::SoundSource::Status::Playing:
 		{
 			break;
 		}
 	}
-	*/
 
 	SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
 }
 
 void Music::cancelIfDelayed()
 {
-	/*
-	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
 
-	switch (state)
+	sf::SoundSource::Status status = this->sound->getStatus();
+
+	switch (status)
 	{
 		default:
-		case AudioEngine::AudioState::ERROR:
-		case AudioEngine::AudioState::INITIALIZING:
-		case AudioEngine::AudioState::PAUSED:
+		case sf::SoundSource::Status::Paused:
+		case sf::SoundSource::Status::Stopped:
 		{
 			this->stopAllActions();
 			this->stop();
-
 			break;
 		}
-		case AudioEngine::AudioState::PLAYING:
+		case sf::SoundSource::Status::Playing:
 		{
 			break;
 		}
 	}
-	*/
 }
