@@ -98,7 +98,7 @@ void LogicPuzzleController::computeIsOpen(bool isInstant)
 
 	for (const auto&[torchColor, logicGate] : this->logicGates)
 	{
-		if (!this->braziers.contains(torchColor))
+		if (this->braziers.find(torchColor) == this->braziers.end())
 		{
 			continue;
 		}

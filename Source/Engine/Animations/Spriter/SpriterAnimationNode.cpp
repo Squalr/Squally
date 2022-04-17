@@ -79,7 +79,7 @@ SpriterAnimationPart* SpriterAnimationNode::getPartByName(const std::string& nam
 
 SpriterAnimationBone* SpriterAnimationNode::getBoneByName(const std::string& name)
 {
-	if (this->entityBonesByName != nullptr && this->entityBonesByName->contains(name))
+	if (this->entityBonesByName != nullptr && this->entityBonesByName->find(name) != this->entityBonesByName->end())
 	{
 		return (*this->entityBonesByName)[name];
 	}
@@ -89,7 +89,7 @@ SpriterAnimationBone* SpriterAnimationNode::getBoneByName(const std::string& nam
 
 SpriterAnimationSprite* SpriterAnimationNode::getSpriteByName(const std::string& name)
 {
-	if (this->entitySpritesByName != nullptr && this->entitySpritesByName->contains(name))
+	if (this->entitySpritesByName != nullptr && this->entitySpritesByName->find(name) != this->entitySpritesByName->end())
 	{
 		return (*this->entitySpritesByName)[name];
 	}
@@ -113,7 +113,7 @@ SpriterAnimationPart* SpriterAnimationNode::getPartByHash(int id)
 
 SpriterAnimationBone* SpriterAnimationNode::getBoneByHash(int id)
 {
-	if (this->entityBonesByHash != nullptr && this->entityBonesByHash->contains(id))
+	if (this->entityBonesByHash != nullptr && this->entityBonesByHash->find(id) != this->entityBonesByHash->end())
 	{
 		return (*this->entityBonesByHash)[id];
 	}
@@ -123,7 +123,7 @@ SpriterAnimationBone* SpriterAnimationNode::getBoneByHash(int id)
 
 SpriterAnimationSprite* SpriterAnimationNode::getSpriteByHash(int id)
 {
-	if (this->entitySpritesByHash != nullptr && this->entitySpritesByHash->contains(id))
+	if (this->entitySpritesByHash != nullptr && this->entitySpritesByHash->find(id) != this->entitySpritesByHash->end())
 	{
 		return (*this->entitySpritesByHash)[id];
 	}
@@ -156,22 +156,22 @@ void SpriterAnimationNode::setCurrentEntity(const std::string& currentEntityName
 	this->entitySpritesByName = nullptr;
 	this->entitySpritesByHash = nullptr;
 	
-	if (this->bonesByName.contains(this->currentEntityName))
+	if (this->bonesByName.find(this->currentEntityName) != this->bonesByName.end())
 	{
 		this->entityBonesByName = &this->bonesByName[this->currentEntityName];
 	}
 	
-	if (this->bonesByHash.contains(this->currentEntityName))
+	if (this->bonesByHash.find(this->currentEntityName) != this->bonesByHash.end())
 	{
 		this->entityBonesByHash = &this->bonesByHash[this->currentEntityName];
 	}
 	
-	if (this->spritesByName.contains(this->currentEntityName))
+	if (this->spritesByName.find(this->currentEntityName) != this->spritesByName.end())
 	{
 		this->entitySpritesByName = &this->spritesByName[this->currentEntityName];
 	}
 	
-	if (this->spritesByHash.contains(this->currentEntityName))
+	if (this->spritesByHash.find(this->currentEntityName) != this->spritesByHash.end())
 	{
 		this->entitySpritesByHash = &this->spritesByHash[this->currentEntityName];
 	}
@@ -189,7 +189,7 @@ const std::string& SpriterAnimationNode::getCurrentAnimation()
 
 const std::map<std::string, SpriterAnimationBone*>& SpriterAnimationNode::getCurrentBoneMap()
 {
-	if (!this->bonesByName.contains(this->currentEntityName))
+	if (this->bonesByName.find(this->currentEntityName) == this->bonesByName.end())
 	{
 		this->bonesByName[this->currentEntityName] = std::map<std::string, SpriterAnimationBone*>();
 	}
@@ -199,7 +199,7 @@ const std::map<std::string, SpriterAnimationBone*>& SpriterAnimationNode::getCur
 
 const std::map<std::string, SpriterAnimationSprite*>& SpriterAnimationNode::getCurrentSpriteMap()
 {
-	if (!this->spritesByName.contains(this->currentEntityName))
+	if (this->spritesByName.find(this->currentEntityName) == this->spritesByName.end())
 	{
 		this->spritesByName[this->currentEntityName] = std::map<std::string, SpriterAnimationSprite*>();
 	}
@@ -263,7 +263,7 @@ void SpriterAnimationNode::buildSprites(const SpriterData& spriterData, const st
 
 					uint64_t folderFileKey = uint64_t(key.object.folderId) << 32 | uint64_t(key.object.fileId);
 
-					if (!folderFileIdMap.contains(folderFileKey) || this->spritesByName[entity.name].contains(timeline.name))
+					if (folderFileIdMap.find(folderFileKey) == folderFileIdMap.end() || this->spritesByName[entity.name].find(timeline.name) != this->spritesByName[entity.name].end())
 					{
 						continue;
 					}

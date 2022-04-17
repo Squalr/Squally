@@ -169,13 +169,13 @@ def main():
 
 	# MusicResources
 	createResourceFile("MusicResources", (
-		'.mp3',
+		'.ogg',
 		'.wav',
 	), "Music")
 
 	# SoundResources
 	createResourceFile("SoundResources", (
-		'.mp3',
+		'.ogg',
 		'.wav',
 	), "Sounds")
 

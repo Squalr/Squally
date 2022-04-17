@@ -160,7 +160,7 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 
 	for (auto attack : deckCards)
 	{
-		if (!addedCards.contains(attack))
+		if (addedCards.find(attack) == addedCards.end())
 		{
 			// Start zero-indexed counter
 			addedCards[attack] = 0;

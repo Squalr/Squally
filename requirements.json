@@ -5,10 +5,7 @@
         "freetype",
         "glew",
         "glfw3",
-        "libogg",
         "libpng",
-        "libvorbis",
-        "mpg123", 
         "tinyxml2",
         "tiff"
     ],

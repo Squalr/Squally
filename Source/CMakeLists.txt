@@ -15,6 +15,11 @@ add_executable(${PROJECT_NAME}
     ${GAME_HEADERS}
 )
 
+set(SFML_DIR "${PROJECT_SOURCE_DIR}/Source/Engine/External/SFML-2.5.1/lib/cmake/SFML")
+include_directories(${PROJECT_NAME} PRIVATE ${SFML_DIR})
+include_directories(${PROJECT_SOURCE_DIR}/Source/Engine/External/SFML-2.5.1/include/SFML)
+find_package(SFML 2.5.1 COMPONENTS audio) # graphics audio window system
+
 # target_precompile_headers(${PROJECT_NAME} PUBLIC
   # "$<$<COMPILE_LANGUAGE:CXX>:precheader_squally.h>"
 # )
@@ -37,6 +42,11 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
+    # sfml-graphics
+    sfml-audio
+    # sfml-window
+    # sfml-system
+
     # vcpkg resources
     tinyxml2::tinyxml2
 

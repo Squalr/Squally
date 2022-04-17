@@ -60,7 +60,7 @@ void CurrencyInventory::initializeListeners()
 
 int CurrencyInventory::getCurrencyCount(std::string currencyKey)
 {
-	if (this->currencyMap.contains(currencyKey))
+	if (this->currencyMap.find(currencyKey) != this->currencyMap.end())
 	{
 		return this->currencyMap.at(currencyKey).asInt();
 	}
@@ -70,7 +70,7 @@ int CurrencyInventory::getCurrencyCount(std::string currencyKey)
 
 void CurrencyInventory::removeCurrency(std::string currencyKey, int count)
 {
-	if (this->currencyMap.contains(currencyKey))
+	if (this->currencyMap.find(currencyKey) != this->currencyMap.end())
 	{
 		this->currencyMap[currencyKey] = Value(this->currencyMap.at(currencyKey).asInt() - count);
 	}
@@ -84,7 +84,7 @@ void CurrencyInventory::removeCurrency(std::string currencyKey, int count)
 
 void CurrencyInventory::addCurrency(std::string currencyKey, int count)
 {
-	if (this->currencyMap.contains(currencyKey))
+	if (this->currencyMap.find(currencyKey) != this->currencyMap.end())
 	{
 		this->currencyMap[currencyKey] = Value(this->currencyMap.at(currencyKey).asInt() + count);
 	}

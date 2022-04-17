@@ -40,7 +40,7 @@ void ObjectDeserializer::deserialize(ObjectDeserializer::ObjectDeserializationRe
 {
 	const std::string name = GameUtils::getKeyOrDefault(args->properties, GameObject::MapKeyName, Value("")).asString();
 
-	if (this->deserializers.contains(name))
+	if (this->deserializers.find(name) != this->deserializers.end())
 	{
 		GameObject* object = this->deserializers[name](args->properties);
 

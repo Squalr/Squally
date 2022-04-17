@@ -107,7 +107,7 @@ void PlatformerTerrainDeserializer::deserialize(ObjectDeserializer::ObjectDeseri
 	ValueMap properties = args->properties;
 	std::string name = GameUtils::getKeyOrDefault(properties, GameObject::PropertyName, Value("")).asString();
 
-	if (this->deserializers.contains(name))
+	if (this->deserializers.find(name) != this->deserializers.end())
 	{
 		GameObject* terrain = this->deserializers[name](properties);
 

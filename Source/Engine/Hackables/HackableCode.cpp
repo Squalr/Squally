@@ -73,7 +73,7 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hack
 	{
 		std::string cacheIdentifier = this->getHackableIdentifier() + "_" + (hackableCodeInfo.functionName == nullptr ? "" : hackableCodeInfo.functionName->getStringIdentifier());
 
-		if (!HackableCode::OriginalCodeCache.contains(cacheIdentifier))
+		if (HackableCode::OriginalCodeCache.find(cacheIdentifier) == HackableCode::OriginalCodeCache.end())
 		{
 			HackableCode::OriginalCodeCache[cacheIdentifier] = std::vector<unsigned char>();
 
@@ -227,7 +227,7 @@ std::vector<HackableCode*> HackableCode::parseHackables(void* functionStart, Cod
 		HackableCodeMarkers markers = marker.second;
 
 		// Fetch the late-bind data for this function from the map
-		if (hackableCodeInfoMap.contains(funcId))
+		if (hackableCodeInfoMap.find(funcId) != hackableCodeInfoMap.end())
 		{
 			extractedHackableCode.push_back(HackableCode::create(markers.start, markers.end, hackableCodeInfoMap[funcId]));
 		}
@@ -242,7 +242,7 @@ std::vector<HackableCode*> HackableCode::parseHackables(void* functionStart, Cod
 
 HackableCode::MarkerMap& HackableCode::parseHackableMarkers(void* functionStart, CodeInfoMap& hackableCodeInfoMap)
 {
-	if (HackableCode::HackableCodeCache.contains(functionStart))
+	if (HackableCode::HackableCodeCache.find(functionStart) == HackableCode::HackableCodeCache.end())
 	{
 		return HackableCode::HackableCodeCache[functionStart];
 	}

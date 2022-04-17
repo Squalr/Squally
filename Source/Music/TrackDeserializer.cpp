@@ -69,7 +69,7 @@ void TrackDeserializer::deserialize(SoundEvents::RequestTrackDeserializationArgs
 {
 	std::string serializationKey = args.trackSerializationKey;
 
-	if (args.onTrackDeserializedCallback != nullptr && this->deserializers.contains(serializationKey))
+	if (args.onTrackDeserializedCallback != nullptr && this->deserializers.find(serializationKey) != this->deserializers.end())
 	{
 		args.onTrackDeserializedCallback(this->deserializers[serializationKey]());
 	}

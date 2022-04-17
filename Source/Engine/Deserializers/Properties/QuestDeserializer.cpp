@@ -15,7 +15,7 @@ QuestDeserializer::~QuestDeserializer()
 
 QuestLine* QuestDeserializer::deserialize(QuestDeserializer::QuestLineDeserializationRequestArgs args)
 {
-	if (this->lineDeserializers.contains(args.questLine))
+	if (this->lineDeserializers.find(args.questLine) != this->lineDeserializers.end())
 	{
 		return this->lineDeserializers[args.questLine]();
 	}

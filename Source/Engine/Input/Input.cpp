@@ -193,7 +193,7 @@ void Input::onKeyPressed(InputEvents::KeyCode keyCode)
 	Input::PressedKeys[(int)keyCode] = true;
 
 	// Check if previously not pressed or if previously up
-	if (!Input::PressedKeysPrevious.contains((int)keyCode) || !Input::PressedKeysPrevious[(int)keyCode])
+	if (Input::PressedKeysPrevious.find((int)keyCode) == Input::PressedKeysPrevious.end() || !Input::PressedKeysPrevious[(int)keyCode])
 	{
 		InputEvents::TriggerKeyJustPressed(InputEvents::KeyboardEventArgs(keyCode));
 	}
@@ -231,7 +231,7 @@ InputEvents::KeyCode Input::GetActiveModifiers()
 
 bool Input::IsPressed(InputEvents::KeyCode keyCode)
 {
-	if (Input::PressedKeys.contains((int)keyCode))
+	if (Input::PressedKeys.find((int)keyCode) != Input::PressedKeys.end())
 	{
 		return Input::PressedKeys[(int)keyCode];
 	}
@@ -241,7 +241,7 @@ bool Input::IsPressed(InputEvents::KeyCode keyCode)
 
 bool Input::IsReleased(InputEvents::KeyCode keyCode)
 {
-	if (Input::PressedKeys.contains((int)keyCode))
+	if (Input::PressedKeys.find((int)keyCode) != Input::PressedKeys.end())
 	{
 		return !Input::PressedKeys[(int)keyCode];
 	}

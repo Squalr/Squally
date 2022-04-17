@@ -93,19 +93,19 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 		SpriterAnimationBone* childBone = part.second;
 		childBone->setLocalZOrder(0);
 		
-		if (this->boneIdMap.contains(part.first))
+		if (this->boneIdMap.find(part.first) != this->boneIdMap.end())
 		{
 			int boneId = this->boneIdMap[part.first];
 
-			if (this->boneParentTable.contains(boneId))
+			if (this->boneParentTable.find(boneId) != this->boneParentTable.end())
 			{
 				int parentBoneId = this->boneParentTable[boneId];
 
-				if (this->boneNameMap.contains(parentBoneId))
+				if (this->boneNameMap.find(parentBoneId) != this->boneNameMap.end())
 				{
 					const std::string& parentBoneName = this->boneNameMap[parentBoneId];
 
-					if (boneMap.contains(parentBoneName))
+					if (boneMap.find(parentBoneName) != boneMap.end())
 					{
 						SpriterAnimationBone* parentBone = boneMap.at(parentBoneName);
 
@@ -134,12 +134,12 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 	{
 		SpriterAnimationSprite* childSprite = part.second;
 
-		if (this->objectZMap.contains(part.first))
+		if (this->objectZMap.find(part.first) != this->objectZMap.end())
 		{
 			int objectId = this->objectIdMap[part.first];
 			int zOrder = this->objectZMap[part.first];
 
-			if (this->objectParentTable.contains(objectId))
+			if (this->objectParentTable.find(objectId) != this->objectParentTable.end())
 			{
 				animation->addAnimationPartChild(childSprite);
 				childSprite->setLocalZOrder(zOrder);
@@ -164,19 +164,19 @@ void SpriterAnimationTimelineEventMainline::buildAnimationHeirarchy()
 	// Parent all timeline events
 	for (const auto& [childObjectName, animationEvent] : this->registeredAnimationEventsByPartName)
 	{
-		if (this->boneIdMap.contains(childObjectName) && this->registeredAnimationEventsByPartName.contains(childObjectName))
+		if (this->boneIdMap.find(childObjectName) != this->boneIdMap.end() && this->registeredAnimationEventsByPartName.find(childObjectName) != this->registeredAnimationEventsByPartName.end())
 		{
 			int boneId = this->boneIdMap[childObjectName];
 
-			if (this->boneParentTable.contains(boneId))
+			if (this->boneParentTable.find(boneId) != this->boneParentTable.end())
 			{
 				int parentBoneId = this->boneParentTable[boneId];
 
-				if (this->boneNameMap.contains(parentBoneId))
+				if (this->boneNameMap.find(parentBoneId) != this->boneNameMap.end())
 				{
 					const std::string& parentBoneName = this->boneNameMap[parentBoneId];
 
-					if (registeredAnimationEventsByPartName.contains(parentBoneName))
+					if (registeredAnimationEventsByPartName.find(parentBoneName) != registeredAnimationEventsByPartName.end())
 					{
 						SpriterAnimationTimelineEventAnimation* parentEvent = this->registeredAnimationEventsByPartName[parentBoneName];
 
@@ -186,19 +186,19 @@ void SpriterAnimationTimelineEventMainline::buildAnimationHeirarchy()
 				}
 			}
 		}
-		else if (this->objectIdMap.contains(childObjectName) && this->registeredAnimationEventsByPartName.contains(childObjectName))
+		else if (this->objectIdMap.find(childObjectName) != this->objectIdMap.end() && this->registeredAnimationEventsByPartName.find(childObjectName) != this->registeredAnimationEventsByPartName.end())
 		{
 			int objectId = this->objectIdMap[childObjectName];
 
-			if (this->objectParentTable.contains(objectId))
+			if (this->objectParentTable.find(objectId) != this->objectParentTable.end())
 			{
 				int parentBoneId = this->objectParentTable[objectId];
 
-				if (this->boneNameMap.contains(parentBoneId))
+				if (this->boneNameMap.find(parentBoneId) != this->boneNameMap.end())
 				{
 					const std::string& parentBoneName = this->boneNameMap[parentBoneId];
 
-					if (registeredAnimationEventsByPartName.contains(parentBoneName))
+					if (registeredAnimationEventsByPartName.find(parentBoneName) != registeredAnimationEventsByPartName.end())
 					{
 						SpriterAnimationTimelineEventAnimation* parentEvent = this->registeredAnimationEventsByPartName[parentBoneName];
 
@@ -230,7 +230,7 @@ int SpriterAnimationTimelineEventMainline::getBoneDepth(int boneId)
 {
 	int depth = 0;
 	
-	while (this->boneParentTable.contains(boneId))
+	while (this->boneParentTable.find(boneId) != this->boneParentTable.end())
 	{
 		boneId = boneParentTable[boneId];
 		depth++;

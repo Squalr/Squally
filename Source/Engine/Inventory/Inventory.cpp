@@ -100,7 +100,7 @@ void Inventory::deserialize(const ValueMap& valueMap)
 
 bool Inventory::hasItemOfName(std::string itemName)
 {
-	return this->itemLookup.contains(itemName);
+	return this->itemLookup.find(itemName) != this->itemLookup.end();
 }
 
 void Inventory::clearItems()
@@ -156,7 +156,7 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 	}
 
 	// Quick O(1) check using the set
-	if (!this->itemLookup.contains(item->getIdentifier()))
+	if (this->itemLookup.find(item->getIdentifier()) == this->itemLookup.end())
 	{
 		if (onRemoveFailed != nullptr)
 		{
@@ -364,7 +364,7 @@ bool Inventory::canInsertItemIfUnique(Item* item)
 		// Optimization for the case where the unique count is 1
 		if (uniqueCount == 1)
 		{
-			if (this->itemLookup.contains(item->getIdentifier()))
+			if (this->itemLookup.find(item->getIdentifier()) != this->itemLookup.end())
 			{
 				foundCount++;
 			}

@@ -2,6 +2,12 @@
 
 #include "Engine/Maps/GameObject.h"
 
+namespace sf
+{
+	class Sound;
+	class SoundBuffer;
+}
+
 class SoundBase : public GameObject
 {
 public:
@@ -38,6 +44,8 @@ protected:
 	bool isFading = false;
 	bool destroyOnFadeOut = false;
 	std::function<void()> onFadeOutCallback = nullptr;
+    sf::SoundBuffer* soundBuffer = nullptr;
+	sf::Sound* sound = nullptr;
 	
 	static const int INVALID_ID;
 

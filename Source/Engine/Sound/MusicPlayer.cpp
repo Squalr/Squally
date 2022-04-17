@@ -1,5 +1,7 @@
 #include "MusicPlayer.h"
 
+#include <SFML/Audio.hpp>
+
 #include "Engine/Events/SoundEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/GlobalHud.h"

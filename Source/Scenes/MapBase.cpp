@@ -202,7 +202,7 @@ bool MapBase::loadMap(std::string mapResource)
 		return this->loadMapFromTmx(this->mapResource, GameMap::parse(this->mapResource));
 	}
 
-	if (!MapBase::MapCache.contains(mapResource))
+	if (MapBase::MapCache.find(mapResource) == MapBase::MapCache.end())
 	{
 		MapBase::MapCache[this->mapResource] = GameMap::parse(this->mapResource);
 		MapBase::MapCache[this->mapResource]->retain();

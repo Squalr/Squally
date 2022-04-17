@@ -106,13 +106,13 @@ namespace DecorResources
 	extern const std::string Crypts_Grave13;
 	extern const std::string Crypts_Grave14;
 	extern const std::string Crypts_Grave15;
+	extern const std::string Crypts_Grave16;
 	extern const std::string Crypts_Grave17;
 	extern const std::string Crypts_Grave18;
-	extern const std::string Crypts_Grave19;
 	extern const std::string Crypts_Grave2;
-	extern const std::string Crypts_Grave20;
 	extern const std::string Crypts_Grave3;
 	extern const std::string Crypts_Grave4;
+	extern const std::string Crypts_Grave5;
 	extern const std::string Crypts_Grave6;
 	extern const std::string Crypts_Grave7;
 	extern const std::string Crypts_Grave8;

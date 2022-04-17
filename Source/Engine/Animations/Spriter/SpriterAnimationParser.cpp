@@ -34,7 +34,7 @@ SpriterData SpriterAnimationParser::Parse(std::string animationResource)
 	}
 
 	// Check if data has already been parsed in cache
-	if (SpriterAnimationParser::SpriterDataCache.contains(animationResource))
+	if (SpriterAnimationParser::SpriterDataCache.find(animationResource) != SpriterAnimationParser::SpriterDataCache.end())
 	{
 		return SpriterAnimationParser::SpriterDataCache[animationResource];
 	}

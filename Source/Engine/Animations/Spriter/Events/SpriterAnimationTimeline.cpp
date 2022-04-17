@@ -14,7 +14,7 @@ std::map<std::string, SpriterAnimationTimeline*> SpriterAnimationTimeline::Timel
 
 SpriterAnimationTimeline* SpriterAnimationTimeline::getInstance(const std::string& animationResource)
 {
-	if (!SpriterAnimationTimeline::TimelineCache.contains(animationResource))
+	if (SpriterAnimationTimeline::TimelineCache.find(animationResource) == SpriterAnimationTimeline::TimelineCache.end())
 	{
 		SpriterAnimationTimeline* timeline = new SpriterAnimationTimeline(animationResource);
 
@@ -54,7 +54,7 @@ void SpriterAnimationTimeline::update(float dt)
 		const std::string& entityName = animationNode->getCurrentEntityName();
 		const std::string& animationName = animationNode->getCurrentAnimation();
 
-		if (!this->mainlineEvents.contains(entityName) || !this->mainlineEvents[entityName].contains(animationName))
+		if (this->mainlineEvents.find(entityName) == this->mainlineEvents.end() || this->mainlineEvents[entityName].find(animationName) == this->mainlineEvents[entityName].end())
 		{
 			continue;
 		}
@@ -138,7 +138,8 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 
 				std::copy_if(timeline.keys.begin(), timeline.keys.end(), std::back_inserter(filteredKeys), [&](const SpriterTimelineKey& key)
 				{
-					return mainlineTimelineRefKeys.contains(uint64_t(key.id) << 48 | uint64_t(timeline.id) << 32 | uint64_t(key.time));
+					uint64_t hashKey = uint64_t(key.id) << 48 | uint64_t(timeline.id) << 32 | uint64_t(key.time);
+					return mainlineTimelineRefKeys.find(hashKey) != mainlineTimelineRefKeys.end();
 				});
 
 				// Sort by time ascending
@@ -155,7 +156,7 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 				// Fill in missing times. Our particular implementation expects an event for each object at each frame.
 				for (const auto& [time, value] : mainlinesByTime)
 				{
-					if (!filteredKeyTimes.contains(time))
+					if (filteredKeyTimes.find(time) == filteredKeyTimes.end())
 					{
 						for (int index = int(filteredKeys.size() - 1); index >= 0; index--)
 						{
@@ -184,7 +185,7 @@ void SpriterAnimationTimeline::buildTimelines(const SpriterData& spriterData)
 					float endTime = index + 1 < int(filteredKeys.size()) ? filteredKeys[index + 1].time : animation.length;
 					SpriterAnimationTimelineEventAnimation* animationTimeline = SpriterAnimationTimelineEventAnimation::create(this, endTime, timeline, timelineKey);
 
-					if (mainlinesByTime.contains(timelineKey.time))
+					if (mainlinesByTime.find(timelineKey.time) != mainlinesByTime.end())
 					{
 						mainlinesByTime[timelineKey.time]->registerAnimation(animationTimeline);
 					}

@@ -1,8 +1,9 @@
 #include "Music.h"
 
-#include "cocos/audio/include/AudioEngine.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+
+#include <SFML/Audio.hpp>
 
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Events/SceneEvents.h"
@@ -89,6 +90,7 @@ float Music::getConfigVolume()
 
 void Music::play(bool repeat, float startDelay)
 {
+	/*
 	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
 
 	switch (state)
@@ -113,6 +115,7 @@ void Music::play(bool repeat, float startDelay)
 			break;
 		}
 	}
+	*/
 }
 
 void Music::copyStateFrom(Music* music)
@@ -146,6 +149,7 @@ void Music::unfreeze()
 {
 	super::unfreeze();
 
+	/*
 	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
 
 	switch (state)
@@ -164,12 +168,14 @@ void Music::unfreeze()
 			break;
 		}
 	}
+	*/
 
 	SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
 }
 
 void Music::cancelIfDelayed()
 {
+	/*
 	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
 
 	switch (state)
@@ -189,4 +195,5 @@ void Music::cancelIfDelayed()
 			break;
 		}
 	}
+	*/
 }

@@ -424,7 +424,7 @@ void PlatformerItemDeserializer::deserialize(InventoryEvents::RequestItemDeseria
 {
 	std::string serializationKey = args.itemSerializationKey;
 
-	if (args.onItemDeserializedCallback != nullptr && this->deserializers.contains(serializationKey))
+	if (args.onItemDeserializedCallback != nullptr && this->deserializers.find(serializationKey) != this->deserializers.end())
 	{
 		args.onItemDeserializedCallback(this->deserializers[serializationKey]());
 	}

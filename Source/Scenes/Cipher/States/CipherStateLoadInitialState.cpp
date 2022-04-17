@@ -121,7 +121,7 @@ void CipherStateLoadInitialState::spawnBlocks(CipherState* cipherState)
 	{
 		std::string token = cipherState->tokens[index];
 
-		if (this->spawnMap.contains(token))
+		if (this->spawnMap.find(token) != this->spawnMap.end())
 		{
 			this->spawnMap[token](index, total);
 		}

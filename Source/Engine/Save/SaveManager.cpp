@@ -109,7 +109,7 @@ void SaveManager::SoftSaveProfileData(const std::string& key, const Value& data)
 {
 	SaveManager::InitializeSaveData();
 
-	if (!SaveManager::ProfileSaveData.contains(key)
+	if (SaveManager::ProfileSaveData.find(key) == SaveManager::ProfileSaveData.end()
 		|| SaveManager::ProfileSaveData[key] != data
 		// Always save for collection types, as checking unsaved changes for these is tedious
 		|| data.getType() == Value::Type::INT_KEY_MAP
@@ -253,7 +253,7 @@ ValueMap SaveManager::LoadSaveFile(const std::string& localSavePath, const std::
 	ValueMap cloudValueMap = ValueMap();
 	ValueMap localValueMap = ValueMap();
 	
-	if (!SaveManager::SaveFileCache.contains(cloudSavePath))
+	if (SaveManager::SaveFileCache.find(cloudSavePath) == SaveManager::SaveFileCache.end())
 	{
 		bool cloudReadSuccess = false;
 
@@ -297,7 +297,7 @@ ValueMap SaveManager::LoadSaveFile(const std::string& localSavePath, const std::
 		cloudValueMap = SaveManager::SaveFileCache[cloudSavePath];
 	}
 
-	if (!SaveManager::SaveFileCache.contains(localSavePath))
+	if (SaveManager::SaveFileCache.find(localSavePath) == SaveManager::SaveFileCache.end())
 	{
 		// Access local storage if steam is not available, the file does not exist in the cloud, or the cloud read failed
 		try
@@ -385,7 +385,7 @@ void SaveManager::BatchDeleteProfileData(const std::vector<std::string>& keys)
 
 void SaveManager::SoftDeleteProfileData(const std::string& key)
 {
-	if (SaveManager::ProfileSaveData.contains(key))
+	if (SaveManager::ProfileSaveData.find(key) != SaveManager::ProfileSaveData.end())
 	{
 		SaveManager::ProfileSaveData.erase(key);
 		SaveManager::HasUnsavedChanges = true;
@@ -445,7 +445,7 @@ const std::string& SaveManager::GetLocalProfileSaveFilePath(int profileId)
 {
 	static std::map<int, std::string> LocalProfileFilePathCache = std::map<int, std::string>();
 
-	if (!LocalProfileFilePathCache.contains(profileId))
+	if (LocalProfileFilePathCache.find(profileId) == LocalProfileFilePathCache.end())
 	{
 		std::string fileName = StrUtils::replaceAll(SaveManager::ProfileSaveFileTemplate.c_str(), "%d", std::to_string(profileId));
 		std::string fullPath = FileUtils::getInstance()->getWritablePath() + fileName;
@@ -466,7 +466,7 @@ const std::string& SaveManager::GetCloudProfileSaveFilePath(int profileId)
 {
 	static std::map<int, std::string> CloudProfileFilePathCache = std::map<int, std::string>();
 
-	if (!CloudProfileFilePathCache.contains(profileId))
+	if (CloudProfileFilePathCache.find(profileId) == CloudProfileFilePathCache.end())
 	{
 		std::string fileName = StrUtils::replaceAll(SaveManager::ProfileSaveFileTemplate.c_str(), "%d", std::to_string(profileId));
 		

@@ -112,7 +112,7 @@ void PlatformerTextureDeserializer::deserialize(ObjectDeserializer::ObjectDeseri
 	ValueMap properties = args->properties;
 	std::string name = GameUtils::getKeyOrDefault(properties, GameObject::PropertyName, Value("")).asString();
 
-	if (PlatformerTextureDeserializer::Deserializers.contains(name))
+	if (PlatformerTextureDeserializer::Deserializers.find(name) != PlatformerTextureDeserializer::Deserializers.end())
 	{
 		args->onDeserializeCallback(ObjectDeserializer::ObjectDeserializationArgs(PlatformerTextureDeserializer::Deserializers[name](properties)));
 	}

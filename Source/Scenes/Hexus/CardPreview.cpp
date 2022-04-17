@@ -113,7 +113,7 @@ void CardPreview::previewCardData(CardData* cardData, Card* card)
 		this->currentPreviewData.previewNode->setVisible(false);
 	}
 
-	if (this->previewCache.contains(cardData->getCardKey()))
+	if (this->previewCache.find(cardData->getCardKey()) != this->previewCache.end())
 	{
 		this->currentPreviewData = this->previewCache[cardData->getCardKey()];
 	}

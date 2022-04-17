@@ -202,7 +202,7 @@ AnimationPart* SmartAnimationNode::getAnimationPart(std::string partName)
 		return nullptr;
 	}
 
-	if (this->animationParts.contains(partName))
+	if (this->animationParts.find(partName) != this->animationParts.end())
 	{
 		return this->animationParts[partName];
 	}

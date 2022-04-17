@@ -85,7 +85,7 @@ void GlobalHackAttributeContainer::initializeListeners()
 
 HackableCode* GlobalHackAttributeContainer::GetHackableCode(void* startAddress)
 {
-	if (GlobalHackAttributeContainer::Instance->codeMap.contains(startAddress))
+	if (GlobalHackAttributeContainer::Instance->codeMap.find(startAddress) != GlobalHackAttributeContainer::Instance->codeMap.end())
 	{
 		return GlobalHackAttributeContainer::Instance->codeMap[startAddress];
 	}
@@ -100,7 +100,7 @@ void GlobalHackAttributeContainer::RegisterHackableCode(HackableCode* hackableCo
 		return;
 	}
 
-	if (!GlobalHackAttributeContainer::Instance->codeMap.contains(hackableCode->codePointer))
+	if (GlobalHackAttributeContainer::Instance->codeMap.find(hackableCode->codePointer) == GlobalHackAttributeContainer::Instance->codeMap.end())
 	{
 		GlobalHackAttributeContainer::Instance->codeMap[hackableCode->codePointer] = hackableCode;
 		GlobalHackAttributeContainer::Instance->hackableCodeContainer->addChild(hackableCode);
@@ -109,7 +109,7 @@ void GlobalHackAttributeContainer::RegisterHackableCode(HackableCode* hackableCo
 
 HackActivatedAbility* GlobalHackAttributeContainer::GetHackActivatedAbility(std::string identifier)
 {
-	if (GlobalHackAttributeContainer::Instance->abilityMap.contains(identifier))
+	if (GlobalHackAttributeContainer::Instance->abilityMap.find(identifier) != GlobalHackAttributeContainer::Instance->abilityMap.end())
 	{
 		return GlobalHackAttributeContainer::Instance->abilityMap[identifier];
 	}
@@ -126,7 +126,7 @@ void GlobalHackAttributeContainer::RegisterHackActivatedAbility(HackActivatedAbi
 
 	const std::string& identifier = hackActivatedAbility->getHackableIdentifier();
 
-	if (!GlobalHackAttributeContainer::Instance->abilityMap.contains(identifier))
+	if (GlobalHackAttributeContainer::Instance->abilityMap.find(identifier) == GlobalHackAttributeContainer::Instance->abilityMap.end())
 	{
 		GlobalHackAttributeContainer::Instance->abilityMap[identifier] = hackActivatedAbility;
 		GlobalHackAttributeContainer::Instance->hackableAbilityContainer->addChild(hackActivatedAbility);

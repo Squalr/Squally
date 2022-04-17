@@ -178,7 +178,7 @@ void PointerTraceMap::tryResumeMovement(PointerTraceEvents::PointerTraceRequestM
 
 	RegisterState::setRegisterEip(sourceIndex);
 
-	if (this->collisionMap.contains(sourceIndex) || this->segfaultMap.contains(sourceIndex))
+	if (this->collisionMap.find(sourceIndex) != this->collisionMap.end() || this->segfaultMap.find(sourceIndex) != this->segfaultMap.end())
 	{
 		args.gridEntity->lockMovement();
 		this->doSegfault();
@@ -268,7 +268,7 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 		}
 
 		// Segfault!
-		if (outOfBounds || this->segfaultMap.contains(destinationIndex))
+		if (outOfBounds || this->segfaultMap.find(destinationIndex) != this->segfaultMap.end())
 		{
 			args.gridEntity->lockMovement();
 
@@ -286,7 +286,7 @@ void PointerTraceMap::moveGridEntity(PointerTraceEvents::PointerTraceRequestMove
 		}
 
 		// Collision detection
-		if (this->collisionMap.contains(destinationIndex))
+		if (this->collisionMap.find(destinationIndex) != this->collisionMap.end())
 		{
 			return;
 		}

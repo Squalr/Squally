@@ -38,7 +38,7 @@ std::string Quests::getCurrentQuestTaskForLine(std::string questLine)
 {
 	ValueMap questData = Quests::getQuestData();
 
-	if (questData.contains(questLine))
+	if (questData.find(questLine) == questData.end())
 	{
 		return questData[questLine].asString();
 	}

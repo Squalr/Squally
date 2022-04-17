@@ -166,7 +166,7 @@ void Cipher::openCipher(CipherPuzzleData* cipherPuzzleData)
 
 	const std::string tutorialKey = cipherPuzzleData->getTutorial();
 
-	if (this->cipherTutorialMap.contains(tutorialKey))
+	if (this->cipherTutorialMap.find(tutorialKey) != this->cipherTutorialMap.end())
 	{
 		this->tutorialNode->addChild(this->cipherTutorialMap[tutorialKey]());
 	}

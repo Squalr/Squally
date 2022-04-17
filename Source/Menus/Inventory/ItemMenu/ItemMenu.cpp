@@ -195,7 +195,7 @@ ItemEntry* ItemMenu::pushVisibleItem(Item* visibleItem, std::function<void()> on
 		}
 	}
 
-	if (!this->itemEntryMapping.contains(visibleItem))
+	if (this->itemEntryMapping.find(visibleItem) == this->itemEntryMapping.end())
 	{
 		if (dynamic_cast<HexusCard*>(visibleItem) != nullptr)
 		{

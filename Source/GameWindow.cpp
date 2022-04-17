@@ -2,7 +2,6 @@
 
 #include <GLFW/glfw3.h>
 
-#include "cocos/audio/include/AudioEngine.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/platform/desktop/CCGLViewImpl-desktop.h"
 
@@ -21,7 +20,6 @@
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
-using namespace cocos2d::cocos_experimental;
 
 GameWindow::GameWindow()
 {
@@ -45,7 +43,6 @@ GameWindow::GameWindow()
 
 GameWindow::~GameWindow()
 {
-	AudioEngine::end();
 }
 
 // If you want a different context, modify the value of glContextAttrs it will affect all platforms
@@ -102,12 +99,18 @@ bool GameWindow::applicationDidFinishLaunching()
 void GameWindow::applicationDidEnterBackground()
 {
 	Director::getInstance()->stopAnimation();
+	
+	/*
 	AudioEngine::pauseAll();
+	*/
 }
 
 // This function will be called when the app is active again
 void GameWindow::applicationWillEnterForeground()
 {
 	Director::getInstance()->startAnimation();
+	
+	/*
 	AudioEngine::resumeAll();
+	*/
 }

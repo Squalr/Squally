@@ -17,7 +17,7 @@ GameComponentDeserializer::~GameComponentDeserializer()
 
 GameComponent* GameComponentDeserializer::deserialize(GameComponentDeserializer::ComponentDeserializationRequestArgs args)
 {
-	if (this->componentDeserializers.contains(args.component))
+	if (this->componentDeserializers.find(args.component) != this->componentDeserializers.end())
 	{
 		return this->componentDeserializers[args.component](args.owner);
 	}

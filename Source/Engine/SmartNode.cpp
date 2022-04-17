@@ -267,7 +267,7 @@ EventListenerCustom* SmartNode::whenKeyPressed(std::set<cocos2d::InputEvents::Ke
 		{
 			InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
-			if (args != nullptr && !args->isHandled() && keyCodes.contains(args->keycode))
+			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 			{
 				if (!requireVisible || GameUtils::isVisible(this))
 				{
@@ -288,7 +288,7 @@ EventListenerCustom* SmartNode::whenKeyPressedIgnorePause(std::set<cocos2d::Inpu
 	{
 		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
-		if (args != nullptr && !args->isHandled() && keyCodes.contains(args->keycode))
+		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 		{
 			if (!requireVisible || GameUtils::isVisible(this))
 			{
@@ -310,7 +310,7 @@ EventListenerCustom* SmartNode::whenKeyPressedHackerMode(std::set<cocos2d::Input
 		{
 			InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
-			if (args != nullptr && !args->isHandled() && keyCodes.contains(args->keycode))
+			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 			{
 				if (!requireVisible || GameUtils::isVisible(this))
 				{
@@ -333,7 +333,7 @@ EventListenerCustom* SmartNode::whenKeyReleased(std::set<cocos2d::InputEvents::K
 		{
 			InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
-			if (args != nullptr && !args->isHandled() && keyCodes.contains(args->keycode))
+			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 			{
 				if (!requireVisible || GameUtils::isVisible(this))
 				{
@@ -354,7 +354,7 @@ EventListenerCustom* SmartNode::whenKeyReleasedIgnorePause(std::set<cocos2d::Inp
 	{
 		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
-		if (args != nullptr && !args->isHandled() && keyCodes.contains(args->keycode))
+		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 		{
 			if (!requireVisible || GameUtils::isVisible(this))
 			{
@@ -376,7 +376,7 @@ EventListenerCustom* SmartNode::whenKeyReleasedHackerMode(std::set<cocos2d::Inpu
 		{
 			InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
-			if (args != nullptr && !args->isHandled() && keyCodes.contains(args->keycode))
+			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 			{
 				if (!requireVisible || GameUtils::isVisible(this))
 				{

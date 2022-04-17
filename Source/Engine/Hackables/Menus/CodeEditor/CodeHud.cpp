@@ -283,7 +283,7 @@ void CodeHud::open(HackableObjectEditArgs* args)
 
 		this->clippyNode->removeAllChildren();
 
-		if (args->hackableObject != nullptr && args->hackableObject->clippyMap.contains(hackableCode->getHackableIdentifier()))
+		if (args->hackableObject != nullptr && args->hackableObject->clippyMap.find(hackableCode->getHackableIdentifier()) != args->hackableObject->clippyMap.end())
 		{
 			Clippy* clippy = args->hackableObject->clippyMap[hackableCode->getHackableIdentifier()]();
 
@@ -488,7 +488,7 @@ void CodeHud::buildRegisterWindow()
 
 	auto tryPrintRegisterHint = [=](HackableCode::Register reg)
 	{
-		if (this->activeHackableCode->registerHints.contains(reg))
+		if (this->activeHackableCode->registerHints.find(reg) != this->activeHackableCode->registerHints.end())
 		{
 			LocalizedLabel* registerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, getRegisterLabel(reg));
 
