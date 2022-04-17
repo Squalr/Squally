@@ -15,10 +15,15 @@ add_executable(${PROJECT_NAME}
     ${GAME_HEADERS}
 )
 
-set(SFML_DIR "${PROJECT_SOURCE_DIR}/Source/Engine/External/SFML-2.5.1/lib/cmake/SFML")
-include_directories(${PROJECT_NAME} PRIVATE ${SFML_DIR})
-include_directories(${PROJECT_SOURCE_DIR}/Source/Engine/External/SFML-2.5.1/include/SFML)
-find_package(SFML 2.5.1 COMPONENTS audio) # graphics audio window system
+# Fetches and compiles SFML from source in a cross-platform way. Technology is great sometimes.
+include(FetchContent)
+set(BUILD_SHARED_LIBS OFF)
+FetchContent_Declare(
+ SFML
+ GIT_REPOSITORY https://github.com/SFML/SFML.git
+ GIT_TAG 2.5.1
+)
+FetchContent_MakeAvailable(SFML)
 
 # target_precompile_headers(${PROJECT_NAME} PUBLIC
   # "$<$<COMPILE_LANGUAGE:CXX>:precheader_squally.h>"
