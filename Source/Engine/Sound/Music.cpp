@@ -1,5 +1,7 @@
 #include "Music.h"
 
+#include "cocos/2d/CCActionInstant.h"
+#include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
@@ -128,7 +130,35 @@ void Music::play(bool repeat, float startDelay)
 		case sf::SoundSource::Status::Stopped:
 		{
 			this->stop();
-			super::play(repeat, startDelay);
+
+			if (!this->soundResource.empty())
+			{
+				this->isFading = false;
+				this->fadeMultiplier = 1.0f;
+
+				if (startDelay <= 0.0f)
+				{
+					this->music->stop();
+					this->music->setLoop(repeat);
+					this->music->setVolume(this->getVolume());
+					this->music->play();
+				}
+				else
+				{
+					this->runAction(Sequence::create(
+						DelayTime::create(startDelay),
+						CallFunc::create([=]()
+						{
+							this->music->stop();
+							this->music->setLoop(repeat);
+							this->music->setVolume(this->getVolume());
+							this->music->play();
+						}),
+						nullptr
+					));
+				}
+			}
+
 			SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
 			break;
 		}
