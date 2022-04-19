@@ -12,7 +12,6 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Sound/Music.h"
-#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/MusicOverlay/MusicOverlay.h"
 #include "Menus/Options/OptionsScene.h"
@@ -175,7 +174,7 @@ void TitleScreen::onEnter()
 {
 	super::onEnter();
 
-	this->music->play();
+	this->music->pushTrack();
 
 	this->etherParticles->accelerate(5.0f);
 	

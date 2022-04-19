@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/Sound/Track.h"
+#include "Engine/Sound/Music.h"
 
-class TrickOrTreat : public Track
+class TrickOrTreat : public Music
 {
 public:
 	static TrickOrTreat* create();
@@ -14,5 +14,5 @@ protected:
 	virtual ~TrickOrTreat();
 
 private:
-	typedef Track super;
+	typedef Music super;
 };

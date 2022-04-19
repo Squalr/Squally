@@ -10,38 +10,41 @@
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Events/SoundEvents.h"
-#include "Engine/SmartScene.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Sound/MusicPlayer.h"
+#include "Engine/SmartScene.h"
 #include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
-using namespace cocos_experimental;
 
-Music* Music::createAndAddGlobally(Track* owner, std::string musicResource)
+Music* Music::clone()
 {
-	ValueMap valueMap = ValueMap();
-	Music* instance = new Music(valueMap, owner, musicResource);
+	Music* clone = new Music(this->getSoundResource(), this->musicName != nullptr ? this->musicName->clone() : nullptr, this->artistName != nullptr ? this->artistName->clone() : nullptr);
 
-	instance->autorelease();
+	clone->autorelease();
 
-	MusicPlayer::registerMusic(instance);
-
-	return instance;
+	return clone;
 }
 
-Music::Music(ValueMap& properties, Track* owner, std::string musicResource) : super(properties, musicResource, false)
+Music::Music(std::string musicResource, LocalizedString* musicName, LocalizedString* artistName) : super(ValueMap(), musicResource)
 {
-	this->music = new sf::Music();
-	this->owner = owner;
+	this->musicName = musicName;
+	this->artistName = artistName;
 	this->setSoundResource(musicResource);
+
+	if (this->musicName != nullptr)
+	{
+		this->addChild(this->musicName);
+	}
+
+	if (this->artistName != nullptr)
+	{
+		this->addChild(this->artistName);
+	}
 }
 
 Music::~Music()
 {
-	if (this->music != nullptr)
-	{
-		delete(this->music);
-	}
 }
 
 void Music::initializeListeners()
@@ -50,7 +53,7 @@ void Music::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
-		// Cancel the track if it was still waiting for its start delay before the scene changed
+		// Cancel the music if it was still waiting for its start delay before the scene changed
 		this->cancelIfDelayed();
 	}));
 
@@ -58,7 +61,7 @@ void Music::initializeListeners()
 	{
 		SoundEvents::FadeOutMusicArgs* args = static_cast<SoundEvents::FadeOutMusicArgs*>(eventCustom->getData());
 
-		if (args != nullptr && args->trackId != this->activeTrackId && args->trackId != SoundBase::INVALID_ID && this->activeTrackId != SoundBase::INVALID_ID)
+		if (args != nullptr && args->musicResource == this->getSoundResource())
 		{
 			this->stopAndFadeOut();
 		}
@@ -76,27 +79,14 @@ void Music::pause()
 	// Do nothing -- music never gets paused via node trees (pause is an engine function -- use freeze to pause music!)
 }
 
-void Music::setSoundResource(std::string soundResource)
+void Music::pushTrack(float delay)
 {
-	this->soundResource = soundResource;
+	MusicPlayer::getInstance()->pushTrack(this, delay);
+}
 
-	if (this->music != nullptr)
-	{
-		if (!this->soundResource.empty())
-		{
-			std::string fullPath = FileUtils::getInstance()->fullPathForFilename(this->soundResource);
-			bool loadSuccess = this->music->openFromFile(fullPath);
-
-			if (!loadSuccess)
-			{
-				LogUtils::logError("Error loading sound resource: " + this->soundResource);
-			}
-		}
-		else
-		{
-			this->music->openFromFile("");
-		}
-	}
+void Music::popTrack()
+{
+	MusicPlayer::getInstance()->removeTrack(this);
 }
 
 void Music::orphanMusic()
@@ -108,11 +98,6 @@ bool Music::isOrphaned()
 {
 	return this->orphaned;
 }
-
-Track* Music::getOwner()
-{
-	return this->owner;
-} 
 
 float Music::getConfigVolume()
 {
@@ -130,72 +115,16 @@ void Music::play(bool repeat, float startDelay)
 		case sf::SoundSource::Status::Stopped:
 		{
 			this->stop();
-
-			if (!this->soundResource.empty())
-			{
-				this->isFading = false;
-				this->fadeMultiplier = 1.0f;
-
-				if (startDelay <= 0.0f)
-				{
-					this->music->stop();
-					this->music->setLoop(repeat);
-					this->music->setVolume(this->getVolume());
-					this->music->play();
-				}
-				else
-				{
-					this->runAction(Sequence::create(
-						DelayTime::create(startDelay),
-						CallFunc::create([=]()
-						{
-							this->music->stop();
-							this->music->setLoop(repeat);
-							this->music->setVolume(this->getVolume());
-							this->music->play();
-						}),
-						nullptr
-					));
-				}
-			}
-
-			SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
+			super::play(repeat, startDelay);
 			break;
 		}
 		case sf::SoundSource::Status::Paused:
 		{
 			this->unfreeze();
-			SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
+			SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->getSoundResource()));
 			break;
 		}
 	}
-}
-
-void Music::copyStateFrom(Music* music)
-{
-	this->activeTrackId = music->activeTrackId;
-	this->soundResource = music->soundResource;
-	this->enableCameraDistanceFade = music->enableCameraDistanceFade;
-	this->isFading = music->isFading;
-	this->hasVolumeOverride = music->hasVolumeOverride;
-	this->fadeMultiplier = music->fadeMultiplier;
-	this->distanceMultiplier = music->distanceMultiplier;
-	this->customMultiplier = music->customMultiplier;
-	this->onFadeOutCallback = music->onFadeOutCallback;
-	this->destroyOnFadeOut = music->destroyOnFadeOut;
-}
-
-void Music::clearState()
-{
-	this->activeTrackId = SoundBase::INVALID_ID;
-	this->enableCameraDistanceFade = false;
-	this->isFading = false;
-	this->hasVolumeOverride = false;
-	this->fadeMultiplier = 1.0f;
-	this->distanceMultiplier = 1.0f;
-	this->customMultiplier = 1.0f;
-	this->onFadeOutCallback = nullptr;
-	this->destroyOnFadeOut = false;
 }
 
 void Music::unfreeze()
@@ -220,12 +149,11 @@ void Music::unfreeze()
 		}
 	}
 
-	SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->activeTrackId));
+	SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->getSoundResource()));
 }
 
 void Music::cancelIfDelayed()
 {
-
 	sf::SoundSource::Status status = this->sound->getStatus();
 
 	switch (status)

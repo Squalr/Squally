@@ -69,7 +69,7 @@ void GlobalDirector::RegisterGlobalNode(GlobalNode* node)
 {
 	if (node != nullptr)
 	{
-		GlobalDirector::getInstance()->addChild(node);
+		GameUtils::changeParent(node, GlobalDirector::getInstance(), false);
 		GlobalDirector::getInstance()->globalNodes.push_back(node);
 	}
 }
@@ -78,7 +78,7 @@ void GlobalDirector::RegisterGlobalNode(GlobalHud* node)
 {
 	if (node != nullptr)
 	{
-		GlobalDirector::getInstance()->addChild(node);
+		GameUtils::changeParent(node, GlobalDirector::getInstance(), false);
 		GlobalDirector::getInstance()->globalNodes.push_back(node);
 	}
 }
@@ -88,7 +88,6 @@ void GlobalDirector::RegisterGlobalScene(GlobalScene* scene)
 	if (scene != nullptr)
 	{
 		scene->retain();
-
 		GlobalDirector::getInstance()->globalScenes.push_back(scene);
 	}
 }

@@ -61,15 +61,15 @@ class RowTotals;
 class ScoreTotal;
 class DebugDisplay;
 
+class AssemblyHelpText;
 class Avatars;
 class CardPreviewComponent;
 class Deck;
-class AssemblyHelpText;
-class StagingHelperText;
 class GameState;
 class HexusOpponentData;
 class HelpMenu;
-class Track;
+class Music;
+class StagingHelperText;
 
 class Hexus : public SmartNode
 {
@@ -159,8 +159,8 @@ private:
 	cocos2d::LayerColor* menuBackDrop = nullptr;
 	HelpMenu* helpMenu = nullptr;
 
-	Track* musicA = nullptr;
-	Track* musicB = nullptr;
+	Music* musicA = nullptr;
+	Music* musicB = nullptr;
 
 	static Hexus* Instance;
 };

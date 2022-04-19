@@ -20,10 +20,10 @@ public:
 
 	void setCustomMultiplier(float customMultiplier);
 	virtual void setSoundResource(std::string soundResource);
-	std::string getSoundResource();
+	std::string getSoundResource() const;
 
 protected:
-	SoundBase(cocos2d::ValueMap& properties, std::string soundResource, bool initializeSoundBuffer = true);
+	SoundBase(cocos2d::ValueMap& properties, std::string soundResource);
 	virtual ~SoundBase();
 
 	void onEnter() override;
@@ -34,7 +34,6 @@ protected:
 	void clearVolumeOverride();
 	float getVolume();
 
-	int activeTrackId = 0;
 	std::string soundResource;
 	float fadeMultiplier = 1.0f;
 	float distanceMultiplier = 1.0f;
@@ -47,8 +46,6 @@ protected:
     sf::SoundBuffer* soundBuffer = nullptr;
 	sf::Sound* sound = nullptr;
 	
-	static const int INVALID_ID;
-
 private:
 	typedef GameObject super;
 

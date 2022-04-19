@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Engine/Sound/Track.h"
+#include "Engine/Sound/Music.h"
 
-class WeWillGetThereTogether : public Track
+class WeWillGetThereTogether : public Music
 {
 public:
 	static WeWillGetThereTogether* create();
@@ -14,5 +14,5 @@ protected:
 	virtual ~WeWillGetThereTogether();
 
 private:
-	typedef Track super;
+	typedef Music super;
 };

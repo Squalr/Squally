@@ -5,26 +5,26 @@
 
 using namespace cocos2d;
 
-const std::string SoundEvents::EventTrackPlayed = "EVENT_TRACK_PLAYED";
-const std::string SoundEvents::EventRequestTrackDeserialization = "EVENT_REQUEST_TRACK_DESERIALIZATION";
+const std::string SoundEvents::EventMusicPlayed = "EVENT_MUSIC_PLAYED";
+const std::string SoundEvents::EventRequestMusicDeserialization = "EVENT_REQUEST_MUSIC_DESERIALIZATION";
 const std::string SoundEvents::EventDestroyOrphanedMusic = "EVENT_DESTROY_ORPHANED_MUSIC";
 const std::string SoundEvents::EventOnMusicDestroyed = "EVENT_ON_MUSIC_DESTROYED";
 const std::string SoundEvents::EventFadeOutMusic = "EVENT_FADE_OUT_MUSIC";
 const std::string SoundEvents::EventMusicVolumeUpdated = "EVENT_MUSIC_VOLUME_UPDATED";
 const std::string SoundEvents::EventSoundVolumeUpdated = "EVENT_SOUND_VOLUME_UPDATED";
 
-void SoundEvents::TriggerTrackPlayed(TrackPlayedArgs args)
+void SoundEvents::TriggerMusicPlayed(MusicPlayedArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
-		SoundEvents::EventTrackPlayed,
+		SoundEvents::EventMusicPlayed,
 		&args
 	);
 }
 
-void SoundEvents::TriggerRequestTrackDeserialization(RequestTrackDeserializationArgs args)
+void SoundEvents::TriggerRequestMusicDeserialization(RequestMusicDeserializationArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
-		SoundEvents::EventRequestTrackDeserialization,
+		SoundEvents::EventRequestMusicDeserialization,
 		&args
 	);
 }

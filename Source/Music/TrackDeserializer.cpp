@@ -33,12 +33,12 @@ void TrackDeserializer::RegisterGlobalNode()
 
 TrackDeserializer::TrackDeserializer()
 {
-	this->deserializers[Heartbeat::TrackKey] = [=]() { return (Track*)Heartbeat::create(); };
-	this->deserializers[Medieval::TrackKey] = [=]() { return (Track*)Medieval::create(); };
-	this->deserializers[Medieval2::TrackKey] = [=]() { return (Track*)Medieval2::create(); };
-	this->deserializers[Solace::TrackKey] = [=]() { return (Track*)Solace::create(); };
-	this->deserializers[TrickOrTreat::TrackKey] = [=]() { return (Track*)TrickOrTreat::create(); };
-	this->deserializers[WeWillGetThereTogether::TrackKey] = [=]() { return (Track*)WeWillGetThereTogether::create(); };
+	this->deserializers[Heartbeat::TrackKey] = [=]() { return (Music*)Heartbeat::create(); };
+	this->deserializers[Medieval::TrackKey] = [=]() { return (Music*)Medieval::create(); };
+	this->deserializers[Medieval2::TrackKey] = [=]() { return (Music*)Medieval2::create(); };
+	this->deserializers[Solace::TrackKey] = [=]() { return (Music*)Solace::create(); };
+	this->deserializers[TrickOrTreat::TrackKey] = [=]() { return (Music*)TrickOrTreat::create(); };
+	this->deserializers[WeWillGetThereTogether::TrackKey] = [=]() { return (Music*)WeWillGetThereTogether::create(); };
 }
 
 TrackDeserializer::~TrackDeserializer()
@@ -50,10 +50,10 @@ void TrackDeserializer::initializeListeners()
 	super::initializeListeners();
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		SoundEvents::EventRequestTrackDeserialization,
+		SoundEvents::EventRequestMusicDeserialization,
 		[=](EventCustom* eventCustom)
 		{
-			SoundEvents::RequestTrackDeserializationArgs* args = static_cast<SoundEvents::RequestTrackDeserializationArgs*>(eventCustom->getData());
+			SoundEvents::RequestMusicDeserializationArgs* args = static_cast<SoundEvents::RequestMusicDeserializationArgs*>(eventCustom->getData());
 			
 			if (args != nullptr)
 			{
@@ -65,13 +65,13 @@ void TrackDeserializer::initializeListeners()
 	this->addGlobalEventListener(deserializationRequestListener);
 }
 
-void TrackDeserializer::deserialize(SoundEvents::RequestTrackDeserializationArgs args)
+void TrackDeserializer::deserialize(SoundEvents::RequestMusicDeserializationArgs args)
 {
-	std::string serializationKey = args.trackSerializationKey;
+	std::string serializationKey = args.MusicSerializationKey;
 
-	if (args.onTrackDeserializedCallback != nullptr && this->deserializers.find(serializationKey) != this->deserializers.end())
+	if (args.onMusicDeserializedCallback != nullptr && this->deserializers.find(serializationKey) != this->deserializers.end())
 	{
-		args.onTrackDeserializedCallback(this->deserializers[serializationKey]());
+		args.onMusicDeserializedCallback(this->deserializers[serializationKey]());
 	}
 	else
 	{

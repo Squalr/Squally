@@ -35,7 +35,6 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Save/SaveManager.h"
-#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/UI/HUD/Hud.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"

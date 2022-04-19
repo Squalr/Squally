@@ -11,7 +11,6 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/RenderUtils.h"
 #include "Events/CipherEvents.h"

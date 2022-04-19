@@ -11,7 +11,6 @@
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Sound/Music.h"
-#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -247,8 +246,8 @@ void Hexus::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->musicA->pop();
-			this->musicB->pop();
+			this->musicA->popTrack();
+			this->musicB->popTrack();
 		}
 	}));
 }
@@ -307,11 +306,11 @@ void Hexus::open(HexusOpponentData* opponentData)
 
 	if (RandomHelper::random_real(0.0f, 1.0f) < 0.5f)
 	{
-		this->musicA->push();
+		this->musicA->pushTrack();
 	}
 	else
 	{
-		this->musicB->push();
+		this->musicB->pushTrack();
 	}
 	
 	this->defer([=]()

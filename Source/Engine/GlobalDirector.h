@@ -17,6 +17,21 @@ public:
 	static void RegisterGlobalNode(GlobalHud* node);
 	static void RegisterGlobalScene(GlobalScene* node);
 
+	template <class T>
+	std::vector<T*> getGlobalNodesOfType()
+	{
+		std::vector<T*> instances;
+		for (SmartNode* node : globalNodes)
+		{
+			if (dynamic_cast<T*>(node) != nullptr)
+			{
+				instances.push_back(dynamic_cast<T*>(node));
+			}
+		}
+
+		return instances;
+	}
+
 protected:
 	GlobalDirector();
 	virtual ~GlobalDirector();

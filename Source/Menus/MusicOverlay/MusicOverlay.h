@@ -9,7 +9,7 @@ namespace cocos2d
 
 class LocalizedLabel;
 class LocalizedString;
-class Track;
+class Music;
 
 class MusicOverlay : public Hud
 {
@@ -26,16 +26,16 @@ protected:
 private:
 	typedef Hud super;
 
-	void showOverlayForTrack(Track* track);
+	void showOverlayForMusic(Music* music);
 
 	cocos2d::Node* contentNode = nullptr;
-	LocalizedLabel* trackLabel = nullptr;
+	LocalizedLabel* musicLabel = nullptr;
 	LocalizedLabel* artistLabel = nullptr;
 	cocos2d::Sprite* note = nullptr;
-	LocalizedString* trackString = nullptr;
+	LocalizedString* musicString = nullptr;
 	LocalizedString* artistString = nullptr;
 
-	static std::string CachedLastPlayedTrack;
+	static std::string CachedLastPlayedMusic;
 
 	static const cocos2d::Vec2 ScrollOutDelta;
 };

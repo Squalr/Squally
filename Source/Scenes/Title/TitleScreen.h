@@ -8,9 +8,9 @@ namespace cocos2d
 }
 
 class ClickableTextNode;
+class Music;
 class MusicOverlay;
 class TitleScreenBackground;
-class Track;
 class SmartParticles;
 
 class TitleScreen : public GlobalScene
@@ -42,7 +42,7 @@ private:
 	cocos2d::Sprite* titleBar = nullptr;
 	cocos2d::Sprite* title = nullptr;
 	MusicOverlay* musicOverlay = nullptr;
-	Track* music = nullptr;
+	Music* music = nullptr;
 
 	static TitleScreen* Instance;
 };

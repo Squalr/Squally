@@ -2,45 +2,39 @@
 
 #include "Engine/Sound/SoundBase.h"
 
-namespace sf
-{
-	class Music;
-}
-
-class Track;
+class LocalizedString;
 
 class Music : public SoundBase
 {
 public:
-	void unfreeze() override;
+	Music* clone();
 	
-	virtual void setSoundResource(std::string soundResource) override;
-	Track* getOwner();
+	void unfreeze() override;
+
+	void pushTrack(float delay = 0.5f);
+	void popTrack();
+
+	LocalizedString* getMusicName() const { return musicName; }
+	LocalizedString* getArtistName() const { return artistName; }
 
 protected:
-	friend class MusicPlayer;
-	friend class Track;
-
-	static Music* createAndAddGlobally(Track* owner, std::string musicResource);
-
-	Music(cocos2d::ValueMap& properties, Track* owner, std::string musicResource);
+	Music(std::string musicResource, LocalizedString* musicName, LocalizedString* artistName);
 	virtual ~Music();
 	
 	void initializeListeners() override;
 	void pause() override;
 	void play(bool repeat = true, float startDelay = 0.0f) override;
-	void copyStateFrom(Music* music);
-	void clearState();
 	float getConfigVolume() override;
 	void orphanMusic();
 	bool isOrphaned();
 
 private:
 	typedef SoundBase super;
+	friend class MusicPlayer;
 
 	void cancelIfDelayed();
 
-	Track* owner = nullptr;
 	bool orphaned = false;
-	sf::Music* music = nullptr;
+	LocalizedString* musicName = nullptr;
+	LocalizedString* artistName = nullptr;
 };
