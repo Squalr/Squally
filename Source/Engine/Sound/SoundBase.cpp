@@ -21,12 +21,19 @@ using namespace cocos_experimental;
 
 const std::string SoundBase::KeyScheduleFadeOutAudio = "SCHEDULE_KEY_FADE_OUT_AUDIO";
 
-SoundBase::SoundBase(ValueMap& properties, std::string soundResource) : super(properties)
+SoundBase::SoundBase(ValueMap& properties, std::string soundResource, bool initializeSoundBuffers) : super(properties)
 {
 	this->soundBuffer = new sf::SoundBuffer();
 	this->sound = new sf::Sound();
 
-	this->setSoundResource(soundResource);
+	if (initializeSoundBuffers)
+	{
+		this->setSoundResource(soundResource);
+	}
+	else
+	{
+		this->soundResource = soundResource;
+	}
 }
 
 SoundBase::~SoundBase()
@@ -35,7 +42,7 @@ SoundBase::~SoundBase()
 	{
 		delete(this->soundBuffer);
 	}
-	if (this->soundBuffer != nullptr)
+	if (this->sound != nullptr)
 	{
 		delete(this->sound);
 	}
@@ -105,7 +112,7 @@ void SoundBase::play(bool repeat, float startDelay)
 
 	if (startDelay <= 0.0f)
 	{
-		this->sound->stop();
+		this->stop();
 		this->sound->setLoop(repeat);
 		this->sound->setVolume(this->getVolume());
 		this->sound->play();
@@ -116,7 +123,7 @@ void SoundBase::play(bool repeat, float startDelay)
 			DelayTime::create(startDelay),
 			CallFunc::create([=]()
 			{
-				this->sound->stop();
+				this->stop();
 				this->sound->setLoop(repeat);
 				this->sound->setVolume(this->getVolume());
 				this->sound->play();
@@ -145,7 +152,10 @@ void SoundBase::freeze()
 
 void SoundBase::stop()
 {
-	this->sound->stop();
+	if (this->sound->getStatus() == sf::Sound::Status::Playing)
+	{
+		this->sound->stop();
+	}
 }
 
 void SoundBase::stopAndFadeOut(std::function<void()> onFadeOutCallback, bool hasPriority)

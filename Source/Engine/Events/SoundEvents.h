@@ -47,8 +47,6 @@ public:
 
 	static void TriggerMusicPlayed(MusicPlayedArgs args);
 	static void TriggerRequestMusicDeserialization(RequestMusicDeserializationArgs args);
-	static void TriggerDestroyOrphanedMusic();
-	static void TriggerMusicDestroyed(MusicDestroyedArgs args);
 	static void TriggerMusicVolumeUpdated();
 	static void TriggerSoundVolumeUpdated();
 	static void TriggerFadeOutMusic(FadeOutMusicArgs args);

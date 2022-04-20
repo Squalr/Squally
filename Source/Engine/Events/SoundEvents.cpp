@@ -29,21 +29,6 @@ void SoundEvents::TriggerRequestMusicDeserialization(RequestMusicDeserialization
 	);
 }
 
-void SoundEvents::TriggerDestroyOrphanedMusic()
-{
-	Director::getInstance()->getEventDispatcher()->dispatchEvent(
-		SoundEvents::EventDestroyOrphanedMusic
-	);
-}
-
-void SoundEvents::TriggerMusicDestroyed(MusicDestroyedArgs args)
-{
-	Director::getInstance()->getEventDispatcher()->dispatchEvent(
-		SoundEvents::EventOnMusicDestroyed,
-		&args
-	);
-}
-
 void SoundEvents::TriggerMusicVolumeUpdated()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(

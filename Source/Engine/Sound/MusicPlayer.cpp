@@ -54,6 +54,15 @@ void MusicPlayer::pushTrack(Music* music, float delay)
 	{
 		return;
 	}
+	
+	// If the song is the same as the current one, do nothing
+	if (Music* currentSong = this->getCurrentSong())
+	{
+		if (music->getSoundResource() == currentSong->getSoundResource())
+		{
+			return;
+		}
+	}
 
 	// Check if this track is already in the stack / move the track to the top.
 	for (Music* next : this->songStack)
@@ -68,12 +77,13 @@ void MusicPlayer::pushTrack(Music* music, float delay)
 		}
 	}
 	
-	Music* globalClone = music->clone();
-
 	this->stopAndFadeOutCurrentSong();
-	globalClone->play(true, delay);
 
+	Music* globalClone = music->clone();
+	
+	this->addChild(globalClone);
 	this->songStack.push_back(globalClone);
+	globalClone->play(true, delay);
 }
 
 void MusicPlayer::stopAndFadeOutCurrentSong()
@@ -82,33 +92,32 @@ void MusicPlayer::stopAndFadeOutCurrentSong()
 
 	if (currentSong != nullptr)
 	{
+		std::string currentSongResource = currentSong->getSoundResource();
 		currentSong->stopAndFadeOut([=]()
 		{
-			this->songStack.erase(std::remove_if(this->songStack.begin(), this->songStack.end(), [=](const Music* track)
-			{
-				return track == currentSong;
-			}), this->songStack.end());
-
-			currentSong->removeFromParent();
+			this->removeTrack(currentSongResource, false);
 		}, true);
 	}
 }
 
-void MusicPlayer::removeTrack(Music* music, bool unpauseNext)
+void MusicPlayer::removeTrack(std::string musicResource, bool unpauseNext)
 {
-	if (music == nullptr || this->songStack.empty())
+	if (musicResource.empty() || this->songStack.empty())
 	{
 		return;
 	}
 
 	Music* currentSong = this->getCurrentSong();
-	bool isCurrentSong = currentSong != nullptr && music->getSoundResource() == currentSong->getSoundResource();
+	bool isCurrentSong = currentSong != nullptr && musicResource == currentSong->getSoundResource();
 	std::vector<Music*> toDelete = std::vector<Music*>();
 
 	for (Music* next : this->songStack)
 	{
-		next->removeFromParent();
-		toDelete.push_back(next);
+		if (next != nullptr && next->getSoundResource() == musicResource)
+		{
+			next->removeFromParent();
+			toDelete.push_back(next);
+		}
 	}
 
 	for (Music* next : toDelete)
@@ -127,7 +136,10 @@ void MusicPlayer::removeTrack(Music* music, bool unpauseNext)
 
 void MusicPlayer::purgueQueue()
 {
-	SoundEvents::TriggerDestroyOrphanedMusic();
-	
-	this->songStack.clear();
+	int maxIterFailSafe = 256;
+
+	while (!this->songStack.empty() && maxIterFailSafe-- >= 0)
+	{
+		this->removeTrack(this->songStack.back()->getSoundResource(), false);
+	}
 }

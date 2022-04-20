@@ -12,7 +12,7 @@ public:
 
 	Music* getCurrentSong();
 	void pushTrack(Music* music, float delay = 0.5f);
-	void removeTrack(Music* music, bool unpauseNext = true);
+	void removeTrack(std::string musicResource, bool unpauseNext = true);
 	void purgueQueue();
 
 protected:

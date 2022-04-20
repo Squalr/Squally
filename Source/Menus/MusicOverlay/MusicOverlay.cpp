@@ -101,8 +101,8 @@ void MusicOverlay::showOverlayForMusic(Music* music)
 
 	MusicOverlay::CachedLastPlayedMusic = musicResource;
 
-	this->musicLabel->setStringReplacementVariables(music->getMusicName());
-	this->artistLabel->setStringReplacementVariables(music->getArtistName());
+	this->musicLabel->setStringReplacementVariables(music->cloneMusicName());
+	this->artistLabel->setStringReplacementVariables(music->cloneArtistName());
 
 	this->contentNode->runAction(Sequence::create(
 		MoveTo::create(0.5f, Vec2::ZERO),

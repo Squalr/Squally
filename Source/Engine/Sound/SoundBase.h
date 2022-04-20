@@ -23,7 +23,7 @@ public:
 	std::string getSoundResource() const;
 
 protected:
-	SoundBase(cocos2d::ValueMap& properties, std::string soundResource);
+	SoundBase(cocos2d::ValueMap& properties, std::string soundResource, bool initializeSoundBuffers = true);
 	virtual ~SoundBase();
 
 	void onEnter() override;

@@ -19,18 +19,22 @@ using namespace cocos2d;
 
 Music* Music::clone()
 {
-	Music* clone = new Music(this->getSoundResource(), this->musicName != nullptr ? this->musicName->clone() : nullptr, this->artistName != nullptr ? this->artistName->clone() : nullptr);
+	Music* clone = new Music(
+		this->getSoundResource(),
+		this->musicName != nullptr ? this->musicName->clone() : nullptr,
+		this->artistName != nullptr ? this->artistName->clone() : nullptr,
+		true);
 
 	clone->autorelease();
 
 	return clone;
 }
 
-Music::Music(std::string musicResource, LocalizedString* musicName, LocalizedString* artistName) : super(ValueMap(), musicResource)
+Music::Music(std::string musicResource, LocalizedString* musicName, LocalizedString* artistName, bool initializeSoundBuffers)
+	: super(ValueMap(), musicResource, initializeSoundBuffers)
 {
 	this->musicName = musicName;
 	this->artistName = artistName;
-	this->setSoundResource(musicResource);
 
 	if (this->musicName != nullptr)
 	{
@@ -54,7 +58,7 @@ void Music::initializeListeners()
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
 		// Cancel the music if it was still waiting for its start delay before the scene changed
-		this->cancelIfDelayed();
+		this->stopAllActions();
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventFadeOutMusic, [=](EventCustom* eventCustom)
@@ -86,17 +90,7 @@ void Music::pushTrack(float delay)
 
 void Music::popTrack()
 {
-	MusicPlayer::getInstance()->removeTrack(this);
-}
-
-void Music::orphanMusic()
-{
-	this->orphaned = true;
-}
-
-bool Music::isOrphaned()
-{
-	return this->orphaned;
+	MusicPlayer::getInstance()->removeTrack(this->getSoundResource());
 }
 
 float Music::getConfigVolume()
@@ -116,6 +110,7 @@ void Music::play(bool repeat, float startDelay)
 		{
 			this->stop();
 			super::play(repeat, startDelay);
+			SoundEvents::TriggerMusicPlayed(SoundEvents::MusicPlayedArgs(this));
 			break;
 		}
 		case sf::SoundSource::Status::Paused:
@@ -150,25 +145,4 @@ void Music::unfreeze()
 	}
 
 	SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->getSoundResource()));
-}
-
-void Music::cancelIfDelayed()
-{
-	sf::SoundSource::Status status = this->sound->getStatus();
-
-	switch (status)
-	{
-		default:
-		case sf::SoundSource::Status::Paused:
-		case sf::SoundSource::Status::Stopped:
-		{
-			this->stopAllActions();
-			this->stop();
-			break;
-		}
-		case sf::SoundSource::Status::Playing:
-		{
-			break;
-		}
-	}
 }
