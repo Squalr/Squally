@@ -4,8 +4,6 @@
 
 #include "Engine/Events/SoundEvents.h"
 #include "Engine/GlobalDirector.h"
-#include "Engine/GlobalHud.h"
-#include "Engine/GlobalScene.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Sound/Music.h"
 
@@ -80,7 +78,7 @@ void MusicPlayer::pushTrack(Music* music, float delay)
 	this->stopAndFadeOutCurrentSong();
 
 	Music* globalClone = music->clone();
-	
+
 	this->addChild(globalClone);
 	this->songStack.push_back(globalClone);
 	globalClone->play(true, delay);
@@ -136,7 +134,7 @@ void MusicPlayer::removeTrack(std::string musicResource, bool unpauseNext)
 
 void MusicPlayer::purgueQueue()
 {
-	int maxIterFailSafe = 256;
+	int maxIterFailSafe = 16;
 
 	while (!this->songStack.empty() && maxIterFailSafe-- >= 0)
 	{

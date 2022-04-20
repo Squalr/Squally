@@ -5,12 +5,13 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCDirector.h"
-#include "cocos/platform/CCFileUtils.h"
 
 #include <SFML/Audio.hpp>
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/SceneEvents.h"
+#include "Engine/Events/SoundEvents.h"
+#include "Engine/Sound/SoundPool.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
@@ -21,31 +22,13 @@ using namespace cocos_experimental;
 
 const std::string SoundBase::KeyScheduleFadeOutAudio = "SCHEDULE_KEY_FADE_OUT_AUDIO";
 
-SoundBase::SoundBase(ValueMap& properties, std::string soundResource, bool initializeSoundBuffers) : super(properties)
+SoundBase::SoundBase(ValueMap& properties, std::string soundResource) : super(properties)
 {
-	this->soundBuffer = new sf::SoundBuffer();
-	this->sound = new sf::Sound();
-
-	if (initializeSoundBuffers)
-	{
-		this->setSoundResource(soundResource);
-	}
-	else
-	{
-		this->soundResource = soundResource;
-	}
+	this->setSoundResource(soundResource);
 }
 
 SoundBase::~SoundBase()
 {
-	if (this->soundBuffer != nullptr)
-	{
-		delete(this->soundBuffer);
-	}
-	if (this->sound != nullptr)
-	{
-		delete(this->sound);
-	}
 }
 
 void SoundBase::onEnter()
@@ -55,13 +38,29 @@ void SoundBase::onEnter()
 	this->scheduleUpdate();
 }
 
+void SoundBase::initializeListeners()
+{
+	super::initializeListeners();
+
+	// TODO: This can potentially be set up to be O(k) instead of O(n) where n is number of sound instances
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventInvalidateSoundRef, [=](EventCustom* eventCustom)
+	{
+		SoundEvents::InvalidateSoundRefArgs* args = static_cast<SoundEvents::InvalidateSoundRefArgs*>(eventCustom->getData());
+
+		if (args != nullptr && args->sound == this->soundRef)
+		{
+			this->soundRef = nullptr;
+		}
+	}));
+}
+
 void SoundBase::update(float dt)
 {
 	super::update(dt);
 
-	if (this->sound != nullptr && this->isFading)
+	if (this->soundRef != nullptr && this->isFading)
 	{
-		sf::SoundSource::Status status = this->sound->getStatus();
+		sf::SoundSource::Status status = this->soundRef->getStatus();
 
 		switch (status)
 		{
@@ -110,64 +109,68 @@ void SoundBase::play(bool repeat, float startDelay)
 	this->isFading = false;
 	this->fadeMultiplier = 1.0f;
 
-	if (startDelay <= 0.0f)
-	{
-		this->stop();
-		this->sound->setLoop(repeat);
-		this->sound->setVolume(this->getVolume());
-		this->sound->play();
-	}
-	else
-	{
-		this->runAction(Sequence::create(
-			DelayTime::create(startDelay),
-			CallFunc::create([=]()
+	this->runAction(Sequence::create(
+		DelayTime::create(startDelay),
+		CallFunc::create([=]()
+		{
+			this->stop();
+			
+			if (this->soundRef == nullptr)
 			{
-				this->stop();
-				this->sound->setLoop(repeat);
-				this->sound->setVolume(this->getVolume());
-				this->sound->play();
-			}),
-			nullptr
-		));
-	}
+				this->soundRef = SoundPool::getInstance()->allocSound(this->getSoundResource());
+			}
+			
+			if (this->soundRef != nullptr)
+			{
+				this->soundRef->setLoop(repeat);
+				this->soundRef->setVolume(this->getVolume());
+				this->soundRef->play();
+			}
+		}),
+		nullptr
+	));
 }
 
 void SoundBase::unfreeze()
 {
 	this->fadeMultiplier = 1.0f;
-	this->sound->setVolume(this->getVolume());
-	this->sound->play();
+
+	if (this->soundRef != nullptr)
+	{
+		this->soundRef->setVolume(this->getVolume());
+		this->soundRef->play();
+	}
 }
 
 bool SoundBase::isPlaying()
 {
-	return this->sound != nullptr && this->sound->getStatus() == sf::SoundSource::Status::Playing;
+	return this->soundRef != nullptr && this->soundRef->getStatus() == sf::SoundSource::Status::Playing;
 }
 
 void SoundBase::freeze()
 {
-	this->sound->pause();
+	if (this->soundRef != nullptr)
+	{
+		this->soundRef->pause();
+	}
 }
 
 void SoundBase::stop()
 {
-	if (this->sound->getStatus() == sf::Sound::Status::Playing)
+	if (this->soundRef != nullptr && this->soundRef->getStatus() == sf::Sound::Status::Playing)
 	{
-		this->sound->stop();
+		this->soundRef->stop();
 	}
 }
 
 void SoundBase::stopAndFadeOut(std::function<void()> onFadeOutCallback, bool hasPriority)
 {
-	if (this->isFading && !hasPriority)
+	if (this->soundRef == nullptr || (this->isFading && !hasPriority))
 	{
 		return;
 	}
 
-	sf::SoundSource::Status status = this->sound->getStatus();
-
-	switch (status)
+	switch (this->soundRef->getStatus())
 	{
 		default:
 		case sf::SoundSource::Status::Paused:
@@ -197,29 +200,6 @@ void SoundBase::setCustomMultiplier(float customMultiplier)
 void SoundBase::setSoundResource(std::string soundResource)
 {
 	this->soundResource = soundResource;
-	
-	if (this->soundBuffer != nullptr)
-	{
-		if (!soundResource.empty())
-		{
-			std::string fullPath = FileUtils::getInstance()->fullPathForFilename(this->soundResource);
-			bool loadSuccess = this->soundBuffer->loadFromFile(fullPath);
-
-			if (!loadSuccess)
-			{
-				LogUtils::logError("Error loading sound resource: " + this->soundResource);
-			}
-		}
-		else
-		{
-			this->soundBuffer->loadFromFile("");
-		}
-	}
-
-	if (this->sound != nullptr)
-	{
-		this->sound->setBuffer(*this->soundBuffer);
-	}
 }
 
 std::string SoundBase::getSoundResource() const
@@ -229,21 +209,21 @@ std::string SoundBase::getSoundResource() const
 
 void SoundBase::updateVolume()
 {
-	if (this->sound == nullptr || this->hasVolumeOverride)
+	if (this->soundRef == nullptr || this->hasVolumeOverride)
 	{
 		return;
 	}
 
-	this->sound->setVolume(this->getVolume());
+	this->soundRef->setVolume(this->getVolume());
 }
 
 void SoundBase::setVolumeOverride(float volume)
 {
 	this->hasVolumeOverride = true;
 
-	if (this->sound != nullptr)
+	if (this->soundRef != nullptr)
 	{
-		this->sound->setVolume(volume);
+		this->soundRef->setVolume(volume);
 	}
 }
 
@@ -257,6 +237,7 @@ float SoundBase::getVolume()
 {
 	float configVolume = this->getConfigVolume();
 	static const float VolumeScale = 100.0f;
+	float volume =  MathUtils::clamp(configVolume * this->fadeMultiplier * this->distanceMultiplier * this->customMultiplier, 0.0f, configVolume) * VolumeScale;
 
-	return MathUtils::clamp(configVolume * this->fadeMultiplier * this->distanceMultiplier * this->customMultiplier, 0.0f, configVolume) * VolumeScale;
+	return volume;
 }

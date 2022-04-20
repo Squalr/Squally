@@ -48,9 +48,9 @@ void Sound::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventSoundVolumeUpdated, [=](EventCustom* eventCustom)
 	{
-		if (this->sound != nullptr)
+		if (this->soundRef != nullptr)
 		{
-			this->sound->setVolume(this->getVolume());
+			this->soundRef->setVolume(this->getVolume());
 		}
 	}));
 
@@ -58,18 +58,18 @@ void Sound::initializeListeners()
 	{
 		// This needs more thought. Most sounds are brief and should just play out. However, if long sounds are added, then it makes sense to fade them out or something.
 		// May need to add a special global node that can handle fading out a given audio ID.
-		if (this->sound != nullptr)
+		if (this->soundRef != nullptr)
 		{
-			this->sound->stop();
+			this->soundRef->stop();
 		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
 		// Let the audio play out -- cancel looping if it loops
-		if (this->sound != nullptr)
+		if (this->soundRef != nullptr)
 		{
-			this->sound->setLoop(false);
+			this->soundRef->setLoop(false);
 		}
 
 		this->stopAllActions();
@@ -88,9 +88,12 @@ void Sound::freeze()
 {
 	super::freeze();
 
-	sf::SoundSource::Status status = this->sound->getStatus();
+	if (this->soundRef == nullptr)
+	{
+		return;
+	}
 
-	switch (status)
+	switch (this->soundRef->getStatus())
 	{
 		default:
 		case sf::SoundSource::Status::Paused:
@@ -101,9 +104,9 @@ void Sound::freeze()
 		}
 		case sf::SoundSource::Status::Playing:
 		{
-			if (this->sound != nullptr)
+			if (this->soundRef != nullptr)
 			{
-				this->sound->pause();
+				this->soundRef->pause();
 			}
 			break;
 		}
@@ -114,9 +117,12 @@ void Sound::unfreeze()
 {
 	super::unfreeze();
 
-	sf::SoundSource::Status status = this->sound->getStatus();
+	if (this->soundRef == nullptr)
+	{
+		return;
+	}
 
-	switch (status)
+	switch (this->soundRef->getStatus())
 	{
 		default:
 		case sf::SoundSource::Status::Paused:
@@ -127,9 +133,9 @@ void Sound::unfreeze()
 		}
 		case sf::SoundSource::Status::Playing:
 		{
-			if (this->sound != nullptr)
+			if (this->soundRef != nullptr)
 			{
-				this->sound->play();
+				this->soundRef->play();
 			}
 			break;
 		}

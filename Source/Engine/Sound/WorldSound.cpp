@@ -62,12 +62,12 @@ void WorldSound::enableZDepth()
 
 void WorldSound::updateDistanceFade()
 {
-	if (this->soundResource.empty())
+	if (this->soundResource.empty() || this->soundRef == nullptr)
 	{
 		return;
 	}
 
-	sf::SoundSource::Status status = this->sound->getStatus();
+	sf::SoundSource::Status status = this->soundRef->getStatus();
 
 	switch (status)
 	{

@@ -8,6 +8,7 @@
 #include "Engine/Hackables/GlobalHackAttributeContainer.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Sound/MusicPlayer.h"
+#include "Engine/Sound/SoundPool.h"
 #include "Engine/UI/Mouse.h"
 
 using namespace cocos2d;
@@ -24,6 +25,7 @@ void EngineBootstrapper::initialize()
 	Input::RegisterGlobalNode();
 	Mouse::RegisterGlobalNode();
 	MusicPlayer::RegisterGlobalNode();
+	SoundPool::RegisterGlobalNode();
 }
 
 void EngineBootstrapper::shutDown()

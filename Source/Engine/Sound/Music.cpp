@@ -12,6 +12,7 @@
 #include "Engine/Events/SoundEvents.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Sound/MusicPlayer.h"
+#include "Engine/Sound/SoundPool.h"
 #include "Engine/SmartScene.h"
 #include "Engine/Utils/MathUtils.h"
 
@@ -22,16 +23,14 @@ Music* Music::clone()
 	Music* clone = new Music(
 		this->getSoundResource(),
 		this->musicName != nullptr ? this->musicName->clone() : nullptr,
-		this->artistName != nullptr ? this->artistName->clone() : nullptr,
-		true);
+		this->artistName != nullptr ? this->artistName->clone() : nullptr);
 
 	clone->autorelease();
 
 	return clone;
 }
 
-Music::Music(std::string musicResource, LocalizedString* musicName, LocalizedString* artistName, bool initializeSoundBuffers)
-	: super(ValueMap(), musicResource, initializeSoundBuffers)
+Music::Music(std::string musicResource, LocalizedString* musicName, LocalizedString* artistName) : super(ValueMap(), musicResource)
 {
 	this->musicName = musicName;
 	this->artistName = artistName;
@@ -100,9 +99,17 @@ float Music::getConfigVolume()
 
 void Music::play(bool repeat, float startDelay)
 {
-	sf::SoundSource::Status status = this->sound->getStatus();
+	if (this->soundRef == nullptr)
+	{
+		this->soundRef = SoundPool::getInstance()->allocSound(this->getSoundResource());
+	}
+	
+	if (this->soundRef == nullptr)
+	{
+		return;
+	}
 
-	switch (status)
+	switch (this->soundRef->getStatus())
 	{
 		default:
 		case sf::SoundSource::Status::Playing:
@@ -125,22 +132,23 @@ void Music::play(bool repeat, float startDelay)
 void Music::unfreeze()
 {
 	super::unfreeze();
-
-	sf::SoundSource::Status status = this->sound->getStatus();
-
-	switch (status)
+	
+	if (this->soundRef != nullptr)
 	{
-		default:
-		case sf::SoundSource::Status::Paused:
-		case sf::SoundSource::Status::Stopped:
+		switch (this->soundRef->getStatus())
 		{
-			// Unpause failed, play new sound
-			this->play();
-			break;
-		}
-		case sf::SoundSource::Status::Playing:
-		{
-			break;
+			default:
+			case sf::SoundSource::Status::Paused:
+			case sf::SoundSource::Status::Stopped:
+			{
+				// Unpause failed, play new sound
+				this->play();
+				break;
+			}
+			case sf::SoundSource::Status::Playing:
+			{
+				break;
+			}
 		}
 	}
 

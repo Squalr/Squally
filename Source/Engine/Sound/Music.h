@@ -17,7 +17,7 @@ public:
 	LocalizedString* cloneArtistName() const { return artistName != nullptr ? artistName->clone() : nullptr; }
 
 protected:
-	Music(std::string musicResource, LocalizedString* musicName, LocalizedString* artistName, bool initializeSoundBuffers = false);
+	Music(std::string musicResource, LocalizedString* musicName, LocalizedString* artistName);
 	virtual ~Music();
 	
 	void initializeListeners() override;

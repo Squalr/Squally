@@ -5,7 +5,6 @@
 namespace sf
 {
 	class Sound;
-	class SoundBuffer;
 }
 
 class SoundBase : public GameObject
@@ -23,10 +22,11 @@ public:
 	std::string getSoundResource() const;
 
 protected:
-	SoundBase(cocos2d::ValueMap& properties, std::string soundResource, bool initializeSoundBuffers = true);
+	SoundBase(cocos2d::ValueMap& properties, std::string soundResource);
 	virtual ~SoundBase();
 
 	void onEnter() override;
+	void initializeListeners() override;
 	void update(float dt) override;
 	virtual float getConfigVolume() = 0;
 	void updateVolume();
@@ -43,8 +43,7 @@ protected:
 	bool isFading = false;
 	bool destroyOnFadeOut = false;
 	std::function<void()> onFadeOutCallback = nullptr;
-    sf::SoundBuffer* soundBuffer = nullptr;
-	sf::Sound* sound = nullptr;
+	sf::Sound* soundRef = nullptr;
 	
 private:
 	typedef GameObject super;
