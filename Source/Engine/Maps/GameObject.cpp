@@ -354,6 +354,11 @@ ValueMap& GameObject::getStateVariables()
 	return this->stateVariables;
 }
 
+const std::vector<cocos2d::Vec2>& GameObject::getPolylinePoints() const
+{
+	return this->polylinePoints;
+}
+
 bool GameObject::hasRuntimeState(std::string key)
 {
 	return GameUtils::keyExists(this->stateVariables, key);

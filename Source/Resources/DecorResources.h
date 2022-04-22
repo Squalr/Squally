@@ -787,6 +787,7 @@ namespace DecorResources
 	extern const std::string Void_Platform7;
 	extern const std::string Void_Platform8;
 	extern const std::string Void_Platform9;
+	extern const std::string Void_VoidDoor;
 	extern const std::string Void_WarpTower;
 	extern const std::string Volcano_Background_lava_sea;
 	extern const std::string Volcano_Background_moutain_1;

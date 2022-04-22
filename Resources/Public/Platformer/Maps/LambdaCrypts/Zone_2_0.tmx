@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="825">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="heartbeat"/>
+   <property name="rubber-band" type="int" value="5"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="58" name="background">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="823" name="stone-dark" type="texture" x="-406.156" y="-500.85" width="10106.7" height="4879.22"/>
+ </objectgroup>
+ <objectgroup id="59" name="terrain2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="771" name="stone-dark" type="terrain" x="-70.365" y="983.495" width="1658.43" height="2609.01">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="782" name="stone-dark" type="terrain" x="7458.67" y="98.0405" width="1902.43" height="1953.01">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="674" name="stone-dark" type="terrain" x="4895.47" y="3680.45">
+   <polygon points="-5159.98,-738.503 -3878.89,-743.321 -3069.01,-1241.76 -2297.4,-1240.68 -1864.69,-1549.73 -843.118,-1570.62 -222.747,-1569.12 34.8249,-1230.6 401.568,-1115.64 748.88,-1249.69 1007.56,-1572.09 1876.55,-1573.49 2345.34,-1970.06 4783.3,-1981.26 4812.13,453.605 -5151.84,490.768"/>
+  </object>
+  <object id="680" name="stone-dark" type="terrain" x="4180" y="452">
+   <polygon points="-379.152,995.273 -430.061,724.485 -413.455,484 174.61,432.635 741.238,411.505 1680.86,435.384 1767.94,99.1256 1612.38,-216.973 -722.434,-209.382 -4261.62,-264.916 -4342.09,-615.276 2553.5,-598.117 2496.64,159.82 2315.46,658.908 2042.84,993.932 1322.7,991.331 1284.81,1190.07 1296.94,1626.86 1080.78,1694.23 892.63,1595.86 907.936,1281.62 884.491,1057.89 798.137,990.82"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="57" name="objects back">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="720" name="Generic/WoodCaveDoor1" type="decor" x="94.6667" y="2526.5" width="388" height="403"/>
+  <object id="721" name="portal" type="object" x="164" y="2686" width="256" height="256">
+   <properties>
+    <property name="map" value="EndianForest/Zone_3_0"/>
+    <property name="transition" value="entrance"/>
+   </properties>
+  </object>
+  <object id="774" name="portal" type="object" x="8804.06" y="1443.82" width="256" height="256">
+   <properties>
+    <property name="map" value="EndianForest/Zone_3_0"/>
+    <property name="transition" value="exit"/>
+   </properties>
+  </object>
+  <object id="817" name="camera-control" type="object" x="3338" y="-421.666" width="1404.36" height="3171.45">
+   <properties>
+    <property name="target" value="target-A"/>
+   </properties>
+  </object>
+  <object id="822" name="camera-control" type="object" x="4657.82" y="-801.725" width="1488.36" height="1687.45">
+   <properties>
+    <property name="target" value="target-A"/>
+   </properties>
+  </object>
+  <object id="824" name="Crypts/CryptDoor" type="decor" x="8737.39" y="968.288" width="388" height="733"/>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="816" name="ogre" type="entity" x="7749.33" y="1578.67" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,ef-puzzle-G"/>
+    <property name="scale" type="float" value="0.75"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="823.9" y="2807.62" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="779" name="spawn" type="object" x="224" y="2818" width="128" height="128">
+   <properties>
+    <property name="transition" value="entrance"/>
+   </properties>
+  </object>
+  <object id="780" name="spawn" type="object" x="8864.06" y="1575.82" width="128" height="128">
+   <properties>
+    <property name="transition" value="exit"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

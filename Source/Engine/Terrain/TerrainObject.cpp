@@ -15,11 +15,13 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/DeveloperMode/DeveloperModeController.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/TerrainEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Terrain/TerrainHole.h"
 #include "Engine/Terrain/TextureObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
@@ -47,6 +49,7 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
 	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
 	this->enableHackerModeEvents = true;
+	this->terrainHoleTag = GameUtils::getKeyOrDefault(this->properties, TerrainHole::TerrainHoleTag, Value("")).asString();
 
 	this->addTag(TerrainObject::MapKey);
 
@@ -105,44 +108,55 @@ void TerrainObject::onEnter()
 	super::onEnter();
 
 	this->initResources();
-
-	if (this->polylinePoints.empty())
-	{
-		CSize size = CSize(
-			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
-			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
-		);
-
-		this->setPoints(std::vector<Vec2>({
-			Vec2(-size.width / 2.0f, -size.height / 2.0f),
-			Vec2(-size.width / 2.0f, size.height / 2.0f),
-			Vec2(size.width / 2.0f, size.height / 2.0f),
-			Vec2(size.width / 2.0f, -size.height / 2.0f)
-		}));
-	}
-	else
-	{
-		this->setPoints(this->polylinePoints);
-	}
-
-	this->cullCollision();
-	this->optimizationHideOffscreenTerrain();
 }
 
 void TerrainObject::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	// Should get called right after this is terrain is added to the map
-	if (!this->isInactive)
-	{
-		TerrainEvents::TriggerResolveOverlapConflicts(TerrainEvents::TerrainOverlapArgs(this));
-	}
-	
-	// This gets built as a deferred step since we may be waiting on masking until this point
 	this->defer([=]()
 	{
-		this->buildCollision();
+		if (!this->terrainHoleTag.empty())
+		{
+			ObjectEvents::QueryObjects<TerrainHole>([&](TerrainHole* terrainHole)
+			{
+				this->holes.push_back(terrainHole->getPolylinePoints());
+			}, this->terrainHoleTag);
+		}
+
+		if (this->polylinePoints.empty())
+		{
+			CSize size = CSize(
+				GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
+				GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
+			);
+
+			this->setPoints(std::vector<Vec2>({
+				Vec2(-size.width / 2.0f, -size.height / 2.0f),
+				Vec2(-size.width / 2.0f, size.height / 2.0f),
+				Vec2(size.width / 2.0f, size.height / 2.0f),
+				Vec2(size.width / 2.0f, -size.height / 2.0f)
+			}));
+		}
+		else
+		{
+			this->setPoints(this->polylinePoints);
+		}
+
+		this->cullCollision();
+
+		// Should get called right after this is terrain is added to the map
+		if (!this->isInactive)
+		{
+			TerrainEvents::TriggerResolveOverlapConflicts(TerrainEvents::TerrainOverlapArgs(this));
+		}
+		
+		// This gets built as a deferred step since we may be waiting on masking / terrain holes until this point
+		this->defer([=]()
+		{
+			this->buildCollision();
+			this->optimizationHideOffscreenTerrain();
+		});
 	});
 }
 
@@ -186,7 +200,7 @@ void TerrainObject::update(float dt)
 {
 	super::update(dt);
 	
-	this->optimizationHideOffscreenTerrain();
+	// this->optimizationHideOffscreenTerrain();
 }
 
 void TerrainObject::onHackerModeEnable()

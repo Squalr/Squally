@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="98" nextobjectid="994">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="999">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -203,6 +203,15 @@
   </properties>
   <object id="870" name="shade-grass" type="terrain" x="-1076.97" y="1882.97" width="9502.58" height="1234.06"/>
  </objectgroup>
+ <objectgroup id="98" name="terrain -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="998" name="marble" type="terrain" x="1014.3" y="999.515">
+   <polygon points="1704.86,185.384 2041.94,15.1256 2356.64,183.82 2365.46,960.908 1710.84,957.932"/>
+  </object>
+ </objectgroup>
  <objectgroup id="81" name="decor -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
@@ -210,7 +219,7 @@
   </properties>
   <object id="849" name="Forest/Tree1" type="decor" x="7021.17" y="1211.9" width="499" height="881"/>
   <object id="843" name="Forest/Tree1" type="decor" x="6768.6" y="1241.57" width="499" height="881"/>
-  <object id="880" name="Crypts/CryptDoor" type="decor" x="2545.92" y="818.108" width="1077" height="1064"/>
+  <object id="880" name="Crypts/CryptDoor" type="decor" x="2858.04" y="1181.74" width="388" height="733"/>
   <object id="907" name="Crypts/Grave4" type="decor" x="1741.53" y="1526.13" width="238" height="359"/>
   <object id="908" name="Crypts/Grave5" type="decor" x="2113.79" y="1688.29" width="192" height="193"/>
   <object id="909" name="Crypts/Grave6" type="decor" x="3869.73" y="1564" width="316" height="317"/>
@@ -288,6 +297,18 @@
   </properties>
   <object id="992" name="solid" type="collision" x="6307.1" y="-8.79392" width="171.617" height="1932.84"/>
   <object id="993" name="solid" type="collision" x="466.125" y="-10.314" width="171.617" height="1932.84"/>
+  <object id="994" name="portal" type="object" x="650.82" y="1500.84" width="450.603" height="423.038">
+   <properties>
+    <property name="map" value="LambdaCrypts/Zone_1_1"/>
+    <property name="transition" value="grave"/>
+   </properties>
+  </object>
+  <object id="995" name="portal" type="object" x="5449.7" y="1402.48" width="450.603" height="423.038">
+   <properties>
+    <property name="map" value="LambdaCrypts/Zone_2_0"/>
+    <property name="transition" value="grave"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="89" name="player_layer -6">
   <properties>
@@ -310,6 +331,16 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-B"/>
+   </properties>
+  </object>
+  <object id="996" name="spawn" type="object" x="5610.67" y="1698.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="grave-right"/>
+   </properties>
+  </object>
+  <object id="997" name="spawn" type="object" x="817" y="1792" width="128" height="128">
+   <properties>
+    <property name="transition" value="grave-left"/>
    </properties>
   </object>
  </objectgroup>
@@ -496,12 +527,6 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="623" name="life-stone" type="object" x="4083.94" y="1612.25" width="146" height="423"/>
-  <object id="736" name="portal" type="object" x="2842.33" y="1621.81" width="450.603" height="423.038">
-   <properties>
-    <property name="map" value="CastleValgrind/Zone_1_1"/>
-    <property name="transition" value="bridge"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -527,11 +552,6 @@
   <object id="716" name="spawn" type="object" x="4449.94" y="1905.7" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
-   </properties>
-  </object>
-  <object id="738" name="spawn" type="object" x="3004" y="1920" width="128" height="128">
-   <properties>
-    <property name="transition" value="bridge"/>
    </properties>
   </object>
   <object id="881" name="warp" type="object" x="1580.13" y="1778.65" width="256" height="256">

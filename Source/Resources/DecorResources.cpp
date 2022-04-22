@@ -786,6 +786,7 @@ const std::string DecorResources::Void_Platform6 = "Private/Platformer/Decor/Voi
 const std::string DecorResources::Void_Platform7 = "Private/Platformer/Decor/Void/Platform7.png";
 const std::string DecorResources::Void_Platform8 = "Private/Platformer/Decor/Void/Platform8.png";
 const std::string DecorResources::Void_Platform9 = "Private/Platformer/Decor/Void/Platform9.png";
+const std::string DecorResources::Void_VoidDoor = "Private/Platformer/Decor/Void/VoidDoor.png";
 const std::string DecorResources::Void_WarpTower = "Private/Platformer/Decor/Void/WarpTower.png";
 const std::string DecorResources::Volcano_Background_lava_sea = "Private/Platformer/Decor/Volcano/Background/lava-sea.png";
 const std::string DecorResources::Volcano_Background_moutain_1 = "Private/Platformer/Decor/Volcano/Background/moutain-1.png";

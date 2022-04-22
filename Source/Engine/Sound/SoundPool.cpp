@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const int SoundPool::MaxConcurrentSounds = 16;
+const int SoundPool::MaxConcurrentSounds = 8;
 SoundPool* SoundPool::Instance = nullptr;
 
 void SoundPool::RegisterGlobalNode()
@@ -65,7 +65,9 @@ sf::Sound* SoundPool::allocSound(const std::string& soundResource)
 	static int CachedSearchIndex = 0;
 	int startIndex = CachedSearchIndex;
 
-	// First search for a reusable slot with an already loaded buffer
+	// TODO: A potential optimization would be to cache which buffers have loaded which files
+	// And search for buffers that have loaded this resource already but are stopped
+
 	for (int index = startIndex; index < MaxConcurrentSounds; index++)
 	{
 		if (this->allocSoundInternal(soundResource, index))
@@ -98,6 +100,7 @@ bool SoundPool::allocSoundInternal(const std::string& soundResource, int index)
 			if (this->buffers[index]->loadFromFile(fullPath))
 			{
 				SoundEvents::TriggerInvalidateSoundRef(SoundEvents::InvalidateSoundRefArgs(this->sounds[index]));
+				this->sounds[index]->setBuffer(*this->buffers[index]);
 			}
 			return true;
 		}
