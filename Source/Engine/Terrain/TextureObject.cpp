@@ -41,37 +41,41 @@ TextureObject::TextureObject(ValueMap& properties, TextureData terrainData) : su
 	this->terrainHoleTag = GameUtils::getKeyOrDefault(this->properties, TerrainHole::TerrainHoleTag, Value("")).asString();
 
 	this->addChild(this->infillTexturesNode);
+}
+
+TextureObject::~TextureObject()
+{ 
+}
+
+void TextureObject::onEnter()
+{
+	super::onEnter();
+
+	bool isPolygon = GameUtils::keyExists(this->properties, GameObject::MapKeyPolyLinePoints) || GameUtils::keyExists(this->properties, GameObject::MapKeyPoints);
 	
+	CRect sizeRect = AlgoUtils::getPolygonRect(this->polylinePoints);
+	this->boundsRect = CRect(sizeRect.origin + this->getPosition(), sizeRect.size);
+
 	if (!this->terrainHoleTag.empty())
 	{
 		ObjectEvents::QueryObjects<TerrainHole>([&](TerrainHole* terrainHole)
 		{
-			this->holes.push_back(terrainHole->getPolylinePoints());
+			// Get the hole points (relative to zero)
+			CRect holeSizeRect = AlgoUtils::getPolygonRect(terrainHole->getPolylinePoints());
+			Vec2 holeCenter = holeSizeRect.origin + holeSizeRect.size / 2.0f;
+
+			// Get the terrain points (relative to zero)
+			Vec2 terrainCenter = sizeRect.origin + sizeRect.size / 2.0f;
+
+			// Center the hole points onto the terrain
+			std::vector<Vec2> holePoints = terrainHole->getPolylinePoints();
+			AlgoUtils::offsetPoints(holePoints, terrainCenter - holeCenter);
+
+			this->holes.push_back(holePoints);
 		}, this->terrainHoleTag);
 	}
 
-	// Build the terrain from the parsed points
-	if (this->polylinePoints.empty())
-	{
-		CSize size = CSize(
-			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
-			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
-		);
-
-		this->setPoints(std::vector<Vec2>({
-			Vec2(-size.width / 2.0f, -size.height / 2.0f),
-			Vec2(-size.width / 2.0f, size.height / 2.0f),
-			Vec2(size.width / 2.0f, size.height / 2.0f),
-			Vec2(size.width / 2.0f, -size.height / 2.0f)
-		}));
-
-	}
-	else
-	{
-		this->setPoints(this->polylinePoints);
-	}
-
-	if (!this->polylinePoints.empty() || !this->holes.empty())
+	if (isPolygon || !this->holes.empty())
 	{
 		this->useClipping = true;
 	}
@@ -83,34 +87,10 @@ TextureObject::TextureObject(ValueMap& properties, TextureData terrainData) : su
 	this->buildTextures();
 }
 
-TextureObject::~TextureObject()
-{ 
-}
-
-void TextureObject::setPoints(std::vector<Vec2> points)
-{
-	this->points = points;
-	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
-
-	CRect drawRect = AlgoUtils::getPolygonRect(this->points);
-	this->boundsRect = CRect(drawRect.origin + this->getPosition(), drawRect.size);
-
-	// TODO: Inverted because HoLeS
-	this->textureTriangles = AlgoUtils::trianglefyPolygon({
-		this->boundsRect.origin + Vec2(this->boundsRect.size.width, this->boundsRect.size.height),
-		this->boundsRect.origin + Vec2(this->boundsRect.size.width, -this->boundsRect.size.height),
-		this->boundsRect.origin + Vec2(-this->boundsRect.size.width, -this->boundsRect.size.height),
-		this->boundsRect.origin + Vec2(-this->boundsRect.size.width, this->boundsRect.size.height),
-	}, { this->points });
-
-	for (const std::vector<cocos2d::Vec2>& hole : this->holes)
-	{
-		this->holeTriangles.push_back(AlgoUtils::trianglefyPolygon(hole));
-	}
-}
-
 void TextureObject::buildTextures()
 {
+	this->segments = AlgoUtils::buildSegmentsFromPoints(this->polylinePoints);
+	this->textureTriangles = AlgoUtils::trianglefyPolygon(this->polylinePoints, this->holes);
 	this->infillTexturesNode->removeAllChildren();
 
 	if (this->textureTriangles.empty())
@@ -126,7 +106,7 @@ void TextureObject::buildTextures()
 	params.wrapT = GL_REPEAT;
 
 	Sprite* texture = Sprite::create(this->terrainData.textureResource);
-	CRect drawRect = AlgoUtils::getPolygonRect(this->points);
+	CRect drawRect = AlgoUtils::getPolygonRect(this->polylinePoints);
 
 	this->boundsRect = CRect(drawRect.origin + this->getPosition(), drawRect.size);
 
@@ -159,17 +139,8 @@ void TextureObject::buildTextures()
 			stencil->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F::GREEN);
 		}
 
-		for (auto triangleSet : this->holeTriangles)
-		{
-			for (auto triangle : triangleSet)
-			{
-				stencil->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F::GREEN);
-			}
-		}
-
 		ClippingNode* clip = ClippingNode::create(stencil);
 
-		clip->setInverted(true);
 		clip->addChild(texture);
 
 		this->infillTexturesNode->addChild(clip);

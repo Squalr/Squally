@@ -124,25 +124,7 @@ void TerrainObject::onEnterTransitionDidFinish()
 			}, this->terrainHoleTag);
 		}
 
-		if (this->polylinePoints.empty())
-		{
-			CSize size = CSize(
-				GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
-				GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
-			);
-
-			this->setPoints(std::vector<Vec2>({
-				Vec2(-size.width / 2.0f, -size.height / 2.0f),
-				Vec2(-size.width / 2.0f, size.height / 2.0f),
-				Vec2(size.width / 2.0f, size.height / 2.0f),
-				Vec2(size.width / 2.0f, -size.height / 2.0f)
-			}));
-		}
-		else
-		{
-			this->setPoints(this->polylinePoints);
-		}
-
+		this->setPoints(this->polylinePoints);
 		this->cullCollision();
 
 		// Should get called right after this is terrain is added to the map

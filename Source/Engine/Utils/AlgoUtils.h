@@ -36,6 +36,7 @@ public:
 	static cocos2d::Vec2 pointOnEllipse(cocos2d::Vec2 center, float rx, float ry, cocos2d::Vec2 closestPoint);
 	static std::vector<int> subsetSum(const std::vector<int>& numbers, int sum, int requiredLength);
 	
+	static void offsetPoints(std::vector<cocos2d::Vec2>& points, const cocos2d::Vec2& delta);
 	static std::vector<Triangle> trianglefyPolygon(const std::vector<cocos2d::Vec2>& polygonPoints, const std::vector<std::vector<cocos2d::Vec2>>& holes = { });
 	static bool isPointInTriangle(const Triangle& triangle, cocos2d::Vec2 point);
 	static bool isPointInPolygon(const std::vector<cocos2d::Vec2>& points, cocos2d::Vec2 point);

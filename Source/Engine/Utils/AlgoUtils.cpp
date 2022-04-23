@@ -153,6 +153,14 @@ std::vector<int> AlgoUtils::subsetSum(const std::vector<int>& numbers, int sum, 
 	return result;
 }
 
+void AlgoUtils::offsetPoints(std::vector<cocos2d::Vec2>& points, const cocos2d::Vec2& delta)
+{
+	for (int index = 0; index < (int)points.size(); index++)
+	{
+		points[index] += delta;
+	}
+}
+
 std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<Vec2>& polygonPoints, const std::vector<std::vector<cocos2d::Vec2>>& holes)
 {
 	std::vector<Triangle> triangles = std::vector<Triangle>();

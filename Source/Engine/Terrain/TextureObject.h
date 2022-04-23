@@ -34,24 +34,23 @@ public:
 	static std::string PropertyKeyClearAnchor;
 
 protected:
-	TextureObject(cocos2d::ValueMap& properties, TextureData terrainData);
+	TextureObject(cocos2d::ValueMap& properties, TextureData textureData);
 	virtual ~TextureObject();
+	
+	void onEnter() override;
 
 	TextureData terrainData;
 	std::string terrainHoleTag;
 
 	cocos2d::CRect boundsRect;
-	std::vector<cocos2d::Vec2> points;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
 	std::vector<AlgoUtils::Triangle> textureTriangles;
 
 	std::vector<std::vector<cocos2d::Vec2>> holes;
-	std::vector<std::vector<AlgoUtils::Triangle>> holeTriangles;
 
 private:
 	typedef HackableObject super;
 
-	void setPoints(std::vector<cocos2d::Vec2> points);
 	void buildTextures();
 
 	bool useClipping = false;

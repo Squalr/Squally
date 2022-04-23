@@ -194,6 +194,21 @@ GameObject::GameObject(const ValueMap& properties) : super()
 
 			this->polylinePoints.push_back(convertedDelta);
 		}
+	
+		if (this->polylinePoints.empty())
+		{
+			CSize size = CSize(
+				GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
+				GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
+			);
+
+			this->polylinePoints = std::vector<Vec2>({
+				Vec2(-size.width / 2.0f, -size.height / 2.0f),
+				Vec2(-size.width / 2.0f, size.height / 2.0f),
+				Vec2(size.width / 2.0f, size.height / 2.0f),
+				Vec2(size.width / 2.0f, -size.height / 2.0f)
+			});
+		}
 	}
 
 	this->setPositionZ(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyDepth, Value(0.0f)).asFloat());

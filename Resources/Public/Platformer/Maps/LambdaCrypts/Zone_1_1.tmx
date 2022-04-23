@@ -28,7 +28,7 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="828" name="stone-dark" type="terrain" x="-152" y="2016">
+  <object id="828" name="stone-dark" type="terrain" x="560" y="1232">
    <properties>
     <property name="collision" value="none"/>
     <property name="hole-tag" value="hole-A"/>
@@ -46,17 +46,12 @@
   <object id="680" name="stone-dark" type="terrain" x="4340" y="508">
    <polygon points="-123.152,963.273 -413.455,484 -389.026,-137.062 -328.869,-595.354 323.672,-732.675 1938.43,-682.159 2472.89,-478.602 2496.64,159.82 2315.46,658.908 2042.84,993.932 1404.05,1038.03 658.7,1027.33"/>
   </object>
-  <object id="831" name="terrain-hole" type="object" x="602.788" y="2305.49" width="270.43" height="277.01">
-   <properties>
-    <property name="hole-tag" value="hole-A"/>
-   </properties>
-  </object>
-  <object id="834" name="terrain-hole" type="object" x="1268.26" y="1942.36">
+  <object id="834" name="terrain-hole" type="object" x="2225.47" y="1813.39">
    <properties>
     <property name="collision" value="none"/>
     <property name="hole-tag" value="hole-A"/>
    </properties>
-   <polygon points="-46.978,330.051 -157.718,165.835 -148.399,-46.9622 -125.452,-203.989 123.469,-251.04 739.44,-233.731 943.317,-163.986 952.377,54.7599 883.263,225.765 779.269,340.556 535.594,355.665 251.27,351.999"/>
+   <polygon points="299.73,137.628 -212.26,137.619 43.7251,-246.343"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
