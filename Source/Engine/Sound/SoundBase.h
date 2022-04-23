@@ -20,13 +20,14 @@ public:
 	void setCustomMultiplier(float customMultiplier);
 	virtual void setSoundResource(std::string soundResource);
 	std::string getSoundResource() const;
+	
+	static const int InvalidSoundId;
 
 protected:
 	SoundBase(cocos2d::ValueMap& properties, std::string soundResource);
 	virtual ~SoundBase();
 
 	void onEnter() override;
-	void initializeListeners() override;
 	void update(float dt) override;
 	virtual float getConfigVolume() = 0;
 	void updateVolume();
@@ -44,6 +45,7 @@ protected:
 	bool destroyOnFadeOut = false;
 	std::function<void()> onFadeOutCallback = nullptr;
 	sf::Sound* soundRef = nullptr;
+	int soundId = -1;
 	
 private:
 	typedef GameObject super;

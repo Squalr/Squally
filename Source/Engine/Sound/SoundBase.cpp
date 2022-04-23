@@ -20,6 +20,7 @@
 using namespace cocos2d;
 using namespace cocos_experimental;
 
+const int SoundBase::InvalidSoundId = -1;;
 const std::string SoundBase::KeyScheduleFadeOutAudio = "SCHEDULE_KEY_FADE_OUT_AUDIO";
 
 SoundBase::SoundBase(ValueMap& properties, std::string soundResource) : super(properties)
@@ -36,22 +37,6 @@ void SoundBase::onEnter()
 	super::onEnter();
 
 	this->scheduleUpdate();
-}
-
-void SoundBase::initializeListeners()
-{
-	super::initializeListeners();
-
-	// TODO: This can potentially be set up to be O(k) instead of O(n) where n is number of sound instances
-	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventInvalidateSoundRef, [=](EventCustom* eventCustom)
-	{
-		SoundEvents::InvalidateSoundRefArgs* args = static_cast<SoundEvents::InvalidateSoundRefArgs*>(eventCustom->getData());
-
-		if (args != nullptr && args->sound == this->soundRef)
-		{
-			this->soundRef = nullptr;
-		}
-	}));
 }
 
 void SoundBase::update(float dt)
@@ -114,10 +99,12 @@ void SoundBase::play(bool repeat, float startDelay)
 		CallFunc::create([=]()
 		{
 			this->stop();
+
+			this->soundId = SoundPool::getInstance()->validateSoundId(soundId, soundRef);
 			
 			if (this->soundRef == nullptr)
 			{
-				this->soundRef = SoundPool::getInstance()->allocSound(this->getSoundResource());
+				this->soundId = SoundPool::getInstance()->allocSound(this->getSoundResource(), this->soundRef);
 			}
 			
 			if (this->soundRef != nullptr)

@@ -16,7 +16,6 @@ class SoundEvents
 public:
 	static const std::string EventMusicPlayed;
 	static const std::string EventRequestMusicDeserialization;
-	static const std::string EventInvalidateSoundRef;
 	static const std::string EventOnMusicDestroyed;
 	static const std::string EventFadeOutMusic;
 	static const std::string EventMusicVolumeUpdated;
@@ -52,15 +51,7 @@ public:
 		MusicPlayedArgs(Music* music) : music(music) { }
 	};
 
-	struct InvalidateSoundRefArgs
-	{
-		sf::Sound* sound = nullptr;
-
-		InvalidateSoundRefArgs(sf::Sound* sound) : sound(sound) { }
-	};
-
 	static void TriggerMusicPlayed(MusicPlayedArgs args);
-	static void TriggerInvalidateSoundRef(InvalidateSoundRefArgs args);
 	static void TriggerRequestMusicDeserialization(RequestMusicDeserializationArgs args);
 	static void TriggerMusicVolumeUpdated();
 	static void TriggerSoundVolumeUpdated();

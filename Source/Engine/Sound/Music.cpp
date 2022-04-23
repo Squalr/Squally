@@ -99,9 +99,11 @@ float Music::getConfigVolume()
 
 void Music::play(bool repeat, float startDelay)
 {
+	this->soundId = SoundPool::getInstance()->validateSoundId(soundId, soundRef);
+	
 	if (this->soundRef == nullptr)
 	{
-		this->soundRef = SoundPool::getInstance()->allocSound(this->getSoundResource());
+		this->soundId = SoundPool::getInstance()->allocSound(this->getSoundResource(), this->soundRef);
 	}
 	
 	if (this->soundRef == nullptr)

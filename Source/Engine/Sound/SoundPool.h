@@ -14,7 +14,8 @@ public:
 	static void RegisterGlobalNode();
 	static SoundPool* getInstance();
 
-	sf::Sound* allocSound(const std::string& soundResource);
+	int validateSoundId(int soundId, sf::Sound*& outSound);
+	int allocSound(const std::string& soundResource, sf::Sound*& outSound);
 
 protected:
 	SoundPool();
@@ -27,7 +28,7 @@ private:
 
 	std::vector<sf::SoundBuffer*> buffers;
 	std::vector<sf::Sound*> sounds;
-	std::map<sf::Sound*, int> soundIds;
+	std::map<sf::Sound*, int> assignedSoundIds;
 
 	static const int MaxConcurrentSounds;
 };

@@ -6,6 +6,8 @@
 
 #include "Engine/Events/SoundEvents.h"
 #include "Engine/GlobalDirector.h"
+#include "Engine/Utils/MathUtils.h"
+#include "Engine/Sound/SoundBase.h"
 
 using namespace cocos2d;
 
@@ -60,31 +62,40 @@ SoundPool::~SoundPool()
 	}
 }
 
-sf::Sound* SoundPool::allocSound(const std::string& soundResource)
+int SoundPool::validateSoundId(int soundId, sf::Sound*& outSound)
 {
+	if (assignedSoundIds.find(outSound) != assignedSoundIds.end() && assignedSoundIds[outSound] == soundId)
+	{
+		return soundId;
+	}
+
+	outSound = nullptr;
+	return -1;
+}
+
+int SoundPool::allocSound(const std::string& soundResource, sf::Sound*& outSound)
+{
+	static int SoundId = 1;
 	static int CachedSearchIndex = 0;
-	int startIndex = CachedSearchIndex;
-
-	// First search for a reusable slot with an already loaded buffer
-	for (int index = startIndex; index < MaxConcurrentSounds; index++)
+	
+	for (int index = 0; index < MaxConcurrentSounds; index++)
 	{
-		if (this->allocSoundInternal(soundResource, index))
+		// Map the index from [0 .. max) to [[previous + 1 .. max) [0 .. previous)]
+		// This allows us to start iterating from our previously allocated sound index as a heuristic
+		int searchIndex = MathUtils::wrappingNormalize(CachedSearchIndex + index + 1, 0, MaxConcurrentSounds - 1);
+
+		if (this->allocSoundInternal(soundResource, searchIndex))
 		{
-			CachedSearchIndex = index;
-			return this->sounds[index];
+			CachedSearchIndex = searchIndex;
+			outSound = this->sounds[searchIndex];
+			this->assignedSoundIds[outSound] = SoundId++;
+			return this->assignedSoundIds[outSound];
 		}
 	}
 
-	for (int index = 0; index < CachedSearchIndex; index++)
-	{
-		if (this->allocSoundInternal(soundResource, index))
-		{
-			CachedSearchIndex = index;
-			return this->sounds[index];
-		}
-	}
-
-	return nullptr;
+	outSound = nullptr;
+	this->assignedSoundIds[outSound] = SoundBase::InvalidSoundId;
+	return SoundBase::InvalidSoundId ;
 }
 
 bool SoundPool::allocSoundInternal(const std::string& soundResource, int index)
@@ -94,11 +105,8 @@ bool SoundPool::allocSoundInternal(const std::string& soundResource, int index)
 		case sf::SoundSource::Status::Stopped:
 		{
 			std::string fullPath = FileUtils::getInstance()->fullPathForFilename(soundResource);
-
-			if (this->buffers[index]->loadFromFile(fullPath))
-			{
-				SoundEvents::TriggerInvalidateSoundRef(SoundEvents::InvalidateSoundRefArgs(this->sounds[index]));
-			}
+			this->buffers[index]->loadFromFile(fullPath);
+			this->sounds[index]->setBuffer(*this->buffers[index]);
 			return true;
 		}
 		default:
