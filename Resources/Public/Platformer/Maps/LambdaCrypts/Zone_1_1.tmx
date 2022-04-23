@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="835">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="61" nextobjectid="845">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -12,28 +12,35 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="58" name="background">
+ <objectgroup id="58" name="bg -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="823" name="stone-dark" type="texture" x="-891.593" y="-1044.54" width="10902.8" height="5772.42"/>
+ </objectgroup>
+ <objectgroup id="60" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="823" name="stone-dark" type="texture" x="-406.156" y="-500.85" width="10106.7" height="4879.22"/>
- </objectgroup>
- <objectgroup id="59" name="terrain2">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="782" name="stone-dark" type="terrain" x="-37.33" y="-3633.96" width="9614.43" height="3513.01">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="828" name="stone-dark" type="terrain" x="560" y="1232">
+  <object id="838" name="stone-dark" type="terrain" x="-489.948" y="-583.88" width="10078.8" height="4022.25">
    <properties>
     <property name="collision" value="none"/>
     <property name="hole-tag" value="hole-A"/>
    </properties>
-   <polygon points="-123.152,963.273 -413.455,484 -389.026,-137.062 -328.869,-595.354 323.672,-732.675 1938.43,-682.159 2472.89,-478.602 2496.64,159.82 2315.46,658.908 2042.84,993.932 1404.05,1038.03 658.7,1027.33"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="59" name="terrain -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="782" name="stone-dark" type="terrain" x="-206.822" y="-346.055" width="9614.43" height="4044.9">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
@@ -46,12 +53,26 @@
   <object id="680" name="stone-dark" type="terrain" x="4340" y="508">
    <polygon points="-123.152,963.273 -413.455,484 -389.026,-137.062 -328.869,-595.354 323.672,-732.675 1938.43,-682.159 2472.89,-478.602 2496.64,159.82 2315.46,658.908 2042.84,993.932 1404.05,1038.03 658.7,1027.33"/>
   </object>
-  <object id="834" name="terrain-hole" type="object" x="2388.96" y="1197.59">
+  <object id="835" name="terrain-hole" type="object" x="8099.99" y="1155.87" width="312" height="312">
    <properties>
-    <property name="collision" value="none"/>
     <property name="hole-tag" value="hole-A"/>
    </properties>
-   <polygon points="299.73,137.628 -212.26,137.619 43.7251,-246.343"/>
+  </object>
+  <object id="836" name="terrain-hole" type="object" x="7501.8" y="1142.9" width="312" height="312">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="837" name="terrain-hole" type="object" x="6907.12" y="1137.69" width="312" height="312">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="844" name="terrain-hole" type="object" x="7314.27" y="496.384">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+   <polygon points="0,0 332.018,-170.94 483.235,161.078 121.631,253.123"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -117,11 +138,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="645.9" y="2795.62" width="128" height="128">
-   <properties>
-    <property name="components" value="squally"/>
-   </properties>
-  </object>
   <object id="779" name="spawn" type="object" x="224" y="2818" width="128" height="128">
    <properties>
     <property name="transition" value="entrance"/>
@@ -130,6 +146,11 @@
   <object id="780" name="spawn" type="object" x="8864.06" y="1575.82" width="128" height="128">
    <properties>
     <property name="transition" value="grave"/>
+   </properties>
+  </object>
+  <object id="839" name="squally" type="entity" x="8337.58" y="1581.11" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
    </properties>
   </object>
  </objectgroup>

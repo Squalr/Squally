@@ -102,6 +102,7 @@ void TextureObject::buildTextures()
 
 	Sprite* texture = Sprite::create(this->terrainData.textureResource);
 	CRect drawRect = AlgoUtils::getPolygonRect(this->polylinePoints);
+	bool isPolygon = GameUtils::keyExists(this->properties, GameObject::MapKeyPolyLinePoints) || GameUtils::keyExists(this->properties, GameObject::MapKeyPoints);
 
 	this->boundsRect = CRect(drawRect.origin + this->getPosition(), drawRect.size);
 
@@ -124,6 +125,12 @@ void TextureObject::buildTextures()
 	
 	texture->setPosition(drawRect.origin);
 	texture->setTextureRect(CRect(TilingOffset.x, TilingOffset.y, drawRect.size.width, drawRect.size.height));
+
+	// TODO: ??
+	if (!isPolygon)
+	{
+		texture->setPosition(texture->getPosition() - drawRect.size / 2.0f);
+	}
 
 	if (this->useClipping)
 	{

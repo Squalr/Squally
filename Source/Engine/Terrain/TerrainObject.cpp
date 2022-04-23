@@ -953,13 +953,14 @@ bool TerrainObject::isTopCollisionFriendly(std::tuple<Vec2, Vec2>* previousSegme
 
 ValueMap TerrainObject::transformPropertiesForTexture(ValueMap properties)
 {
+	bool isPolygon = GameUtils::keyExists(this->properties, GameObject::MapKeyPolyLinePoints) || GameUtils::keyExists(this->properties, GameObject::MapKeyPoints);
 	ValueMap textureProperties = properties;
-
+	
 	textureProperties[GameObject::MapKeyType] = TextureObject::MapKeyTypeTexture;
 	textureProperties[GameObject::MapKeyXPosition] = Value(0.0f);
 	textureProperties[GameObject::MapKeyYPosition] = Value(0.0f);
 	textureProperties[GameObject::MapKeyDepth] = Value(0.0f);
-	textureProperties[TextureObject::PropertyKeyClearAnchor] = Value(!this->polylinePoints.empty());
+	textureProperties[TextureObject::PropertyKeyClearAnchor] = Value(isPolygon);
 
 	return textureProperties;
 }
@@ -1006,7 +1007,7 @@ void TerrainObject::buildTerrain()
 
 	this->buildSurfaceTextures(this->segments, this->textureTriangles);
 
-	// Temporarily resources when building holes
+	// Temporarily swap resources when building holes -- there may be a better way to do this (ie inverting normals in buildSurfaceTextures)
 	this->swapResourcesHorizontal(true);
 	this->swapResourcesVertical(false);
 	for (int index = 0; index < std::min(this->holeSegments.size(), this->holeTriangles.size()); index++)
