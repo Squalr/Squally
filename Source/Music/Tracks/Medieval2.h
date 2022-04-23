@@ -5,12 +5,12 @@
 class Medieval2 : public Music
 {
 public:
-	static Medieval2* create();
+	static Medieval2* create(cocos2d::ValueMap& properties);
 
 	static const std::string TrackKey;
 
 protected:
-	Medieval2();
+	Medieval2(cocos2d::ValueMap& properties);
 	virtual ~Medieval2();
 
 private:

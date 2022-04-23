@@ -48,11 +48,12 @@ TitleScreen* TitleScreen::getInstance()
 
 TitleScreen::TitleScreen()
 {
+	ValueMap emptyProperties;
 	this->titleBar = Sprite::create(UIResources::Menus_TitleScreen_TitleBar);
 	this->title = Sprite::create(UIResources::Menus_TitleScreen_Title);
 	this->background = TitleScreenBackground::create();
 	this->musicOverlay = MusicOverlay::create();
-	this->music = WeWillGetThereTogether::create();
+	this->music = WeWillGetThereTogether::create(emptyProperties);
 	
 	const CSize ShadowSize = CSize(-2.0f, -2.0f);
 	const int ShadowBlur = 2;

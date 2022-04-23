@@ -33,12 +33,12 @@ void TrackDeserializer::RegisterGlobalNode()
 
 TrackDeserializer::TrackDeserializer()
 {
-	this->deserializers[Heartbeat::TrackKey] = [=]() { return (Music*)Heartbeat::create(); };
-	this->deserializers[Medieval::TrackKey] = [=]() { return (Music*)Medieval::create(); };
-	this->deserializers[Medieval2::TrackKey] = [=]() { return (Music*)Medieval2::create(); };
-	this->deserializers[Solace::TrackKey] = [=]() { return (Music*)Solace::create(); };
-	this->deserializers[TrickOrTreat::TrackKey] = [=]() { return (Music*)TrickOrTreat::create(); };
-	this->deserializers[WeWillGetThereTogether::TrackKey] = [=]() { return (Music*)WeWillGetThereTogether::create(); };
+	this->deserializers[Heartbeat::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Heartbeat::create(properties); };
+	this->deserializers[Medieval::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Medieval::create(properties); };
+	this->deserializers[Medieval2::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Medieval2::create(properties); };
+	this->deserializers[Solace::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Solace::create(properties); };
+	this->deserializers[TrickOrTreat::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)TrickOrTreat::create(properties); };
+	this->deserializers[WeWillGetThereTogether::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)WeWillGetThereTogether::create(properties); };
 }
 
 TrackDeserializer::~TrackDeserializer()
@@ -71,7 +71,7 @@ void TrackDeserializer::deserialize(SoundEvents::RequestMusicDeserializationArgs
 
 	if (args.onMusicDeserializedCallback != nullptr && this->deserializers.find(serializationKey) != this->deserializers.end())
 	{
-		args.onMusicDeserializedCallback(this->deserializers[serializationKey]());
+		args.onMusicDeserializedCallback(this->deserializers[serializationKey](args.properties));
 	}
 	else
 	{

@@ -22,7 +22,7 @@ protected:
 private:
 	typedef GlobalNode super;
 
-	std::map<std::string, std::function<Music*()>> deserializers;
+	std::map<std::string, std::function<Music*(cocos2d::ValueMap&)>> deserializers;
 
 	static TrackDeserializer* Instance;
 };

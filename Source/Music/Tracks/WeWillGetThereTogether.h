@@ -5,12 +5,12 @@
 class WeWillGetThereTogether : public Music
 {
 public:
-	static WeWillGetThereTogether* create();
+	static WeWillGetThereTogether* create(cocos2d::ValueMap& properties);
 
 	static const std::string TrackKey;
 
 protected:
-	WeWillGetThereTogether();
+	WeWillGetThereTogether(cocos2d::ValueMap& properties);
 	virtual ~WeWillGetThereTogether();
 
 private:

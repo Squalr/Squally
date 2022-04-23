@@ -21,6 +21,7 @@ using namespace cocos2d;
 Music* Music::clone()
 {
 	Music* clone = new Music(
+		this->properties,
 		this->getSoundResource(),
 		this->musicName != nullptr ? this->musicName->clone() : nullptr,
 		this->artistName != nullptr ? this->artistName->clone() : nullptr);
@@ -30,7 +31,7 @@ Music* Music::clone()
 	return clone;
 }
 
-Music::Music(std::string musicResource, LocalizedString* musicName, LocalizedString* artistName) : super(ValueMap(), musicResource)
+Music::Music(cocos2d::ValueMap& properties, std::string musicResource, LocalizedString* musicName, LocalizedString* artistName) : super(properties, musicResource)
 {
 	this->musicName = musicName;
 	this->artistName = artistName;

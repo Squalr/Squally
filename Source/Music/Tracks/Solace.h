@@ -5,12 +5,12 @@
 class Solace : public Music
 {
 public:
-	static Solace* create();
+	static Solace* create(cocos2d::ValueMap& properties);
 
 	static const std::string TrackKey;
 
 protected:
-	Solace();
+	Solace(cocos2d::ValueMap& properties);
 	virtual ~Solace();
 
 private:

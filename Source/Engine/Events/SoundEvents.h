@@ -3,6 +3,8 @@
 #include <functional>
 #include <string>
 
+#include "cocos/base/CCValue.h"
+
 namespace sf
 {
 	class Sound;
@@ -25,6 +27,7 @@ public:
 	{
 		std::string MusicSerializationKey;
 		std::function<void(Music*)> onMusicDeserializedCallback = nullptr;
+		cocos2d::ValueMap properties;
 
 		RequestMusicDeserializationArgs(std::string MusicSerializationKey, std::function<void(Music*)> onMusicDeserializedCallback)
 			: MusicSerializationKey(MusicSerializationKey), onMusicDeserializedCallback(onMusicDeserializedCallback) { }

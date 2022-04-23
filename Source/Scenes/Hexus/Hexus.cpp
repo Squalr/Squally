@@ -53,6 +53,7 @@ Hexus* Hexus::create()
 
 Hexus::Hexus()
 {
+	ValueMap emptyProperties;
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->gameBackground = Sprite::create(HexusResources::Gameboard);
@@ -115,8 +116,8 @@ Hexus::Hexus()
 	this->relocateLayer = Node::create();
 	this->helpMenu = HelpMenu::create();
 	this->menuBackDrop = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
-	this->musicA = Medieval::create();
-	this->musicB = Medieval2::create();
+	this->musicA = Medieval::create(emptyProperties);
+	this->musicB = Medieval2::create(emptyProperties);
 
 	// Set up node pointers to be focused in tutorials -- a little hacky but avoids a cyclic dependency / refactor
 	this->gameState->boardSelection = this->boardSelection;

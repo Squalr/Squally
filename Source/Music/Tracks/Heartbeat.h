@@ -5,12 +5,12 @@
 class Heartbeat : public Music
 {
 public:
-	static Heartbeat* create();
+	static Heartbeat* create(cocos2d::ValueMap& properties);
 
 	static const std::string TrackKey;
 
 protected:
-	Heartbeat();
+	Heartbeat(cocos2d::ValueMap& properties);
 	virtual ~Heartbeat();
 
 private:

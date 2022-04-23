@@ -5,12 +5,12 @@
 class TrickOrTreat : public Music
 {
 public:
-	static TrickOrTreat* create();
+	static TrickOrTreat* create(cocos2d::ValueMap& properties);
 
 	static const std::string TrackKey;
 
 protected:
-	TrickOrTreat();
+	TrickOrTreat(cocos2d::ValueMap& properties);
 	virtual ~TrickOrTreat();
 
 private:

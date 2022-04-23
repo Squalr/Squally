@@ -17,7 +17,7 @@ public:
 	LocalizedString* cloneArtistName() const;
 
 protected:
-	Music(std::string musicResource, LocalizedString* musicName, LocalizedString* artistName);
+	Music(cocos2d::ValueMap& properties, std::string musicResource, LocalizedString* musicName, LocalizedString* artistName);
 	virtual ~Music();
 	
 	void initializeListeners() override;
