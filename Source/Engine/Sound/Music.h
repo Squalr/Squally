@@ -13,8 +13,8 @@ public:
 	void pushTrack(float delay = 0.5f);
 	void popTrack();
 
-	LocalizedString* cloneMusicName() const { return musicName != nullptr ? musicName->clone() : nullptr; }
-	LocalizedString* cloneArtistName() const { return artistName != nullptr ? artistName->clone() : nullptr; }
+	LocalizedString* cloneMusicName() const;
+	LocalizedString* cloneArtistName() const;
 
 protected:
 	Music(std::string musicResource, LocalizedString* musicName, LocalizedString* artistName);

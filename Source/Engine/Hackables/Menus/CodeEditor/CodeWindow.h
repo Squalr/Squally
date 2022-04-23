@@ -9,19 +9,15 @@ namespace cocos2d
 {
 	class LayerColor;
 	class Sprite;
-
-	namespace ui
-	{
-		class RichText;
-		class RichElement;
-		class RichElementText;
-	}
 }
 
 class ClickableNode;
 class InputText;
 class LocalizedLabel;
 class LocalizedString;
+class RichText;
+class RichElement;
+class RichElementText;
 class ScriptEntry;
 class ScrollPane;
 	
@@ -73,17 +69,17 @@ private:
 	cocos2d::Sprite* copyButtonGlow = nullptr;
 	ClickableNode* copyButton = nullptr;
 	ScrollPane* contentPane = nullptr;
-	cocos2d::ui::RichText* displayedText = nullptr;
+	RichText* displayedText = nullptr;
 	InputText* editableText = nullptr;
-	cocos2d::ui::RichText* lineNumbers = nullptr;
+	RichText* lineNumbers = nullptr;
 	cocos2d::LayerColor* deletePanel = nullptr;
 	LocalizedLabel* deleteLabel = nullptr;
 	cocos2d::LayerColor* copyPanel = nullptr;
 	LocalizedLabel* copyLabel = nullptr;
 
 	std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>> textInfo;
-	std::vector<cocos2d::ui::RichElementText*> textElements;
-	std::vector<cocos2d::ui::RichElement*> lineNumberElements;
+	std::vector<RichElementText*> textElements;
+	std::vector<RichElement*> lineNumberElements;
 
 	bool hasScriptChanges = false;
 	ScriptEntry* script = nullptr;

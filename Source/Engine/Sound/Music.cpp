@@ -82,6 +82,16 @@ void Music::pause()
 	// Do nothing -- music never gets paused via node trees (pause is an engine function -- use freeze to pause music!)
 }
 
+LocalizedString* Music::cloneMusicName() const
+{
+	return this->musicName != nullptr ? this->musicName->clone() : nullptr;
+}
+
+LocalizedString* Music::cloneArtistName() const
+{
+	return this->artistName != nullptr ? this->artistName->clone() : nullptr;
+}
+
 void Music::pushTrack(float delay)
 {
 	MusicPlayer::getInstance()->pushTrack(this, delay);
@@ -100,7 +110,7 @@ float Music::getConfigVolume()
 void Music::play(bool repeat, float startDelay)
 {
 	this->soundId = SoundPool::getInstance()->validateSoundId(soundId, soundRef);
-	
+
 	if (this->soundRef == nullptr)
 	{
 		this->soundId = SoundPool::getInstance()->allocSound(this->getSoundResource(), this->soundRef);

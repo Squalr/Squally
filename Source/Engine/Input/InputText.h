@@ -1,13 +1,12 @@
 #pragma once
 
-#include "cocos/ui/UITextField.h"
-
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/UITextField.h"
 
 class ConstantString;
 class ClickableNode;
 
-class InputText : public cocos2d::ui::UICCTextField
+class InputText : public UICCTextField
 {
 public:
 	static InputText* create(cocos2d::CSize minimumInputSize, LocalizedLabel::FontStyle fontStyle, LocalizedLabel::FontSize fontSize, bool unfuck = false);

@@ -4,9 +4,9 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/ui/UIRichText.h"
 
 #include "Engine/UI/Controls/ScrollPane.h"
+#include "Engine/UI/Controls/UIRichText.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Hackables/Menus/CodeEditor/ScriptEntry.h"
