@@ -39,6 +39,8 @@
 #include "cocos/platform/CCFileUtils.h"
 #include "cocos/platform/CCSAXParser.h"
 
+#include "Engine/Utils/StrUtils.h"
+
 using namespace cocos2d;
 
 bool RichElement::init(int tag, const Color3B &color, GLubyte opacity)
@@ -1455,7 +1457,7 @@ int RichText::findSplitPositionForWord(cocos2d::Label* label, const std::string&
         if (newidx >= 0)
         {
             idx = newidx;
-            auto leftStr = UIHelper::getSubStringOfUTF8String(text, 0, idx);
+            auto leftStr = StrUtils::getSubStringOfUTF8String(text, 0, idx);
             label->setString(leftStr);
             if (label->getContentSize().width <= originalLeftSpaceWidth)
                 return idx;
@@ -1487,7 +1489,7 @@ int RichText::findSplitPositionForChar(cocos2d::Label* label, const std::string&
 
     // The adjustment of the new line position
     auto originalLeftSpaceWidth = _leftSpaceWidth + textRendererWidth;
-    std::string leftStr = UIHelper::getSubStringOfUTF8String(curText, 0, leftLength);
+    std::string leftStr = StrUtils::getSubStringOfUTF8String(curText, 0, leftLength);
     label->setString(leftStr);
     auto leftWidth = label->getContentSize().width;
 
@@ -1497,7 +1499,7 @@ int RichText::findSplitPositionForChar(cocos2d::Label* label, const std::string&
         for (;;)
         {
             leftLength--;
-            leftStr = UIHelper::getSubStringOfUTF8String(curText, 0, leftLength);
+            leftStr = StrUtils::getSubStringOfUTF8String(curText, 0, leftLength);
             label->setString(leftStr);
             leftWidth = label->getContentSize().width;
             if (leftWidth <= originalLeftSpaceWidth)
@@ -1516,7 +1518,7 @@ int RichText::findSplitPositionForChar(cocos2d::Label* label, const std::string&
         for (;;)
         {
             leftLength++;
-            leftStr = UIHelper::getSubStringOfUTF8String(curText, 0, leftLength);
+            leftStr = StrUtils::getSubStringOfUTF8String(curText, 0, leftLength);
             label->setString(leftStr);
             leftWidth = label->getContentSize().width;
             if (originalLeftSpaceWidth < leftWidth)
@@ -1610,7 +1612,7 @@ void RichText::handleTextRenderer(RichElementText* elmtText, const std::string& 
 
         //The minimum cut length is 1, otherwise will cause the infinite loop.
         //if (0 == leftLength) leftLength = 1;
-        std::string leftWords = UIHelper::getSubStringOfUTF8String(text, 0, leftLength);
+        std::string leftWords = StrUtils::getSubStringOfUTF8String(text, 0, leftLength);
         int rightStart = leftLength;
 
         if (std::isspace(text[rightStart], std::locale()))
@@ -1618,18 +1620,18 @@ void RichText::handleTextRenderer(RichElementText* elmtText, const std::string& 
             rightStart++;
         }
 
-        std::string cutWords = UIHelper::getSubStringOfUTF8String(text, rightStart, text.length() - leftLength);
+        std::string cutWords = StrUtils::getSubStringOfUTF8String(text, rightStart, text.length() - leftLength);
 
         if (leftLength > 0)
         {
             Label* leftRenderer = nullptr;
             if (fileExist)
             {
-                leftRenderer = Label::createWithTTF(UIHelper::getSubStringOfUTF8String(leftWords, 0, leftLength), fontName, fontSize);
+                leftRenderer = Label::createWithTTF(StrUtils::getSubStringOfUTF8String(leftWords, 0, leftLength), fontName, fontSize);
             }
             else
             {
-                leftRenderer = Label::createWithSystemFont(UIHelper::getSubStringOfUTF8String(leftWords, 0, leftLength), fontName, fontSize);
+                leftRenderer = Label::createWithSystemFont(StrUtils::getSubStringOfUTF8String(leftWords, 0, leftLength), fontName, fontSize);
             }
             if (leftRenderer)
             {

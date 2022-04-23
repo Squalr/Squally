@@ -24,7 +24,6 @@ THE SOFTWARE.
 ****************************************************************************/
 
 #include "Engine/UI/Controls/UIWidget.h"
-#include "Engine/UI/Controls/UIHelper.h"
 
 #include "cocos/2d/CCCamera.h"
 #include "cocos/2d/CCSprite.h"

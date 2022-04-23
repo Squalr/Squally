@@ -29,6 +29,8 @@ THE SOFTWARE.
 #include "cocos/base/ccUTF8.h"
 #include "cocos/platform/CCFileUtils.h"
 
+#include "Engine/Utils/StrUtils.h"
+
 using namespace cocos2d;
 
 UICCTextField::UICCTextField()
@@ -132,7 +134,7 @@ void UICCTextField::insertText(const char*  text, size_t len)
             {
                 long length = _maxLength - text_count;
                 
-                input_text = UIHelper::getSubStringOfUTF8String(input_text, 0, length);
+                input_text = StrUtils::getSubStringOfUTF8String(input_text, 0, length);
                 len  = input_text.length();
             }
         }
@@ -365,7 +367,7 @@ void TextField::setString(const std::string& text)
         long text_count = StringUtils::getCharacterCountInUTF8String(text);
         if (text_count > max)
         {
-            strText = UIHelper::getSubStringOfUTF8String(strText, 0, max);
+            strText = StrUtils::getSubStringOfUTF8String(strText, 0, max);
         }
     }
     

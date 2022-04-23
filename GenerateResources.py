@@ -35,7 +35,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Platformer/Backgrounds")
+	), "Platformer/Backgrounds", False)
 
 	# DecorResources
 	createResourceFile("DecorResources", (
@@ -44,7 +44,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Platformer/Decor")
+	), "Platformer/Decor", False)
 
 	# EntityResources
 	createResourceFile("EntityResources", (
@@ -53,7 +53,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Platformer/Entities")
+	), "Platformer/Entities", False)
 
 	# IsometricEntityResources
 	createResourceFile("IsometricEntityResources", (
@@ -62,7 +62,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Isometric/Entities")
+	), "Isometric/Entities", False)
 
 	# HexusResources
 	createResourceFile("HexusResources", (
@@ -71,7 +71,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Hexus")
+	), "Hexus", False)
 
 	# PointerTraceResources
 	createResourceFile("PointerTraceResources", (
@@ -80,7 +80,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "PointerTrace")
+	), "PointerTrace", False)
 
 	# CipherResources
 	createResourceFile("CipherResources", (
@@ -89,7 +89,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Cipher")
+	), "Cipher", False)
 
 	# ObjectResources
 	createResourceFile("ObjectResources", (
@@ -98,7 +98,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Platformer/Objects")
+	), "Platformer/Objects", False)
 
 	# ItemResources
 	createResourceFile("ItemResources", (
@@ -107,7 +107,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Platformer/Items")
+	), "Platformer/Items", False)
 
 	# FXResources
 	createResourceFile("FXResources", (
@@ -116,7 +116,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Platformer/FX")
+	), "Platformer/FX", False)
 
 	# IsometricObjectResources
 	createResourceFile("IsometricObjectResources", (
@@ -125,7 +125,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Isometric/Objects")
+	), "Isometric/Objects", False)
 
 	# TerrainResources
 	createResourceFile("TerrainResources", (
@@ -133,7 +133,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Platformer/Terrain")
+	), "Platformer/Terrain", False)
 
 	# TextureResources
 	createResourceFile("TextureResources", (
@@ -141,7 +141,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Platformer/Textures")
+	), "Platformer/Textures", False)
 
 	# CutsceneResources
 	createResourceFile("CutsceneResources", (
@@ -150,7 +150,7 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "Cutscenes")
+	), "Cutscenes", False)
 
 	# UIResources
 	createResourceFile("UIResources", (
@@ -159,42 +159,42 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "UI")
+	), "UI", False)
 	
 	# ShaderResources
 	createResourceFile("ShaderResources", (
 		'.frag',
 		'.vert',
-	), "Shaders")
+	), "Shaders", False)
 
 	# MusicResources
 	createResourceFile("MusicResources", (
 		'.ogg',
 		'.wav',
-	), "Music")
+	), "Music", False)
 
 	# SoundResources
 	createResourceFile("SoundResources", (
 		'.ogg',
 		'.wav',
-	), "Sounds")
+	), "Sounds", False)
 
 	# MapResources
 	createResourceFile("MapResources", (
 		'.tmx',
 		'.png',
-	), "Platformer/Maps")
+	), "Platformer/Maps", False)
 
 	# IsometricMapResources
 	createResourceFile("IsometricMapResources", (
 		'.tmx',
 		'.png',
-	), "Isometric/Maps")
+	), "Isometric/Maps", False)
 
 	# ParticleResources
 	createResourceFile("ParticleResources", (
 		'.plist',
-	), "Particles")
+	), "Particles", False)
 
 	# FontResources
 	createResourceFile("FontResources", (
@@ -203,12 +203,12 @@ def main():
 		'.jpg',
 		'.bmp',
 		'.tif',
-	), "UI/Fonts")
+	), "UI/Fonts", False)
 
 	# StringResources
 	createResourceFile("StringResources", (
 		'.json',
-	), "Strings")
+	), "Strings", False)
 
 	print("Resource generation complete.")
 	return True
@@ -219,7 +219,7 @@ def natural_sort(l):
     alphanum_key = lambda key: [convert(c) for c in re.split('([0-9]+)', key)]
     return sorted(l, key=alphanum_key)
 
-def createResourceFile(outputFileBase, extensions, searchPath):
+def createResourceFile(outputFileBase, extensions, searchPath, asBytes):
 	projectRoot = abspath(join(realpath(__file__), ".."))
 
 	searchPathPublic = join(projectRoot, "Resources/Public/" + searchPath)
@@ -253,19 +253,27 @@ def createResourceFile(outputFileBase, extensions, searchPath):
 			"////////////////////////////////////////////////////////////////////////////////////////////" + "\n")
 
 		h.write(warning)
-		h.write("#pragma once" + "\n");
-		h.write("#include <string>" + "\n");
-		h.write("\n");
+		h.write("#pragma once" + "\n")
+		h.write("#include <string>" + "\n")
+		if asBytes:
+			h.write("#include <vector>" + "\n")
+		h.write("\n")
 		#h.write("class " + outputFileBase + "\n");
-		h.write("namespace " + outputFileBase + "\n");
-		h.write("{" + "\n");
+		h.write("namespace " + outputFileBase + "\n")
+		h.write("{" + "\n")
 		# h.write("public:" + "\n");
 
-		cpp.write(warning);
-		cpp.write("\n");
-		cpp.write("#include \"" + outputHeader + "\"" + "\n");
-		cpp.write("#include <string>" + "\n");
-		cpp.write("\n");
+		#h.write("\ttemplate<typename... Ts>\n")
+		#h.write("\tstd::vector<std::byte> make_bytes(Ts&&... args) noexcept\n");
+		#h.write("\t{\n")
+		#h.write("\t\treturn{std::byte(std::forward<Ts>(args))...};\n")
+		#h.write("\t}\n\n")
+
+		cpp.write(warning)
+		cpp.write("\n")
+		cpp.write("#include \"" + outputHeader + "\"" + "\n")
+		cpp.write("#include <string>" + "\n")
+		cpp.write("\n")
 
 		for file in files:
 			resourceRelativeFilePath = relpath(file[0], resourcePath).replace("\\", "/")
@@ -280,11 +288,62 @@ def createResourceFile(outputFileBase, extensions, searchPath):
 				.replace("(", "_") \
 				.replace(")", "_")
 			variableNameNoExtension = splitext(variableName)[0]
-		
-			h.write("\textern const std::string " + variableNameNoExtension + ";" + "\n");
-			cpp.write("const std::string " + outputFileBase + "::" + variableNameNoExtension + " = \"" + resourceRelativeFilePath + "\";" + "\n")
+			
+			if asBytes:
+				print("Embedding " + variableNameNoExtension + "...")
+				fullPath = path.abspath(path.join(resourcePath, resourceRelativeFilePath))
+				
+				h.write("\tstatic const std::vector<unsigned char> " + variableNameNoExtension + " = {")
+				readBytes(fullPath, h)
+				h.write("};\n")
+				# fileLength = getFileLength(fullPath)
+
+				#h.write("\textern const unsigned char " + variableNameNoExtension + "[" + str(fileLength) + "];" + "\n")
+				#cpp.write("const unsigned char " + outputFileBase + "::" + variableNameNoExtension + "[" + str(fileLength) + "] = {\n\t")
+				#readBytes(fullPath, cpp)
+				#cpp.write("};\n\n")
+			else:
+				h.write("\textern const std::string " + variableNameNoExtension + ";" + "\n");
+				cpp.write("const std::string " + outputFileBase + "::" + variableNameNoExtension + " = \"" + resourceRelativeFilePath + "\";" + "\n")
 
 		h.write("};" + "\n")
+
+def getFileLength(fullPath):
+	if (sys.version_info > (3, 0)):
+		return os.stat(fullPath).st_size
+	else:
+		# Not sure if different in Py2
+		return os.stat(fullPath).st_size
+
+def readBytes(fullPath, file):
+	grouping = { 'v': 0 }
+
+	def writeByte(byte, file):
+		file.write("," + hex(byte[0]))
+		grouping['v'] = grouping['v'] + 1
+		if grouping['v'] > 16:
+			# file.write("\n\t")
+			grouping['v'] = 0
+
+	if (sys.version_info > (3, 0)):
+		with open(fullPath, "rb") as f:
+			byte = f.read(1)
+			if byte != b"":
+				file.write(hex(byte[0]))
+				byte = f.read(1)
+			while byte != b"":
+				writeByte(byte, file)
+				byte = f.read(1)
+
+	else:
+		with open(fullPath, "rb") as f:
+			byte = f.read(1)
+			if byte != "":
+				file.write(hex(byte[0]))
+				byte = f.read(1)
+			while byte != "":
+				writeByte(byte, file)
+				byte = f.read(1)
 
 if __name__ == '__main__':
     if main():

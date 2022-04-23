@@ -29,4 +29,5 @@ public:
 	static bool contains(const std::string& str, const std::string & toFind, bool ignoreCase);
 	static std::string replaceAll(std::string str, const std::string& from, const std::string& to);
 	static std::string replaceFirstOccurence(std::string str, const std::string& from, const std::string& to);
+    static std::string getSubStringOfUTF8String(const std::string& str, std::string::size_type start, std::string::size_type length);
 };
