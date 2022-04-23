@@ -38,11 +38,15 @@ protected:
 	virtual ~TextureObject();
 
 	TextureData terrainData;
+	std::string terrainHoleTag;
 
 	cocos2d::CRect boundsRect;
 	std::vector<cocos2d::Vec2> points;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
 	std::vector<AlgoUtils::Triangle> textureTriangles;
+
+	std::vector<std::vector<cocos2d::Vec2>> holes;
+	std::vector<std::vector<AlgoUtils::Triangle>> holeTriangles;
 
 private:
 	typedef HackableObject super;

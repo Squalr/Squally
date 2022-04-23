@@ -14,11 +14,13 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Config/ConfigManager.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/TerrainEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Terrain/TerrainHole.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -36,8 +38,17 @@ TextureObject::TextureObject(ValueMap& properties, TextureData terrainData) : su
 	this->terrainData = terrainData;
 	this->infillTexturesNode = Node::create();
 	this->boundsRect = CRect::ZERO;
+	this->terrainHoleTag = GameUtils::getKeyOrDefault(this->properties, TerrainHole::TerrainHoleTag, Value("")).asString();
 
 	this->addChild(this->infillTexturesNode);
+	
+	if (!this->terrainHoleTag.empty())
+	{
+		ObjectEvents::QueryObjects<TerrainHole>([&](TerrainHole* terrainHole)
+		{
+			this->holes.push_back(terrainHole->getPolylinePoints());
+		}, this->terrainHoleTag);
+	}
 
 	// Build the terrain from the parsed points
 	if (this->polylinePoints.empty())
@@ -54,12 +65,19 @@ TextureObject::TextureObject(ValueMap& properties, TextureData terrainData) : su
 			Vec2(size.width / 2.0f, -size.height / 2.0f)
 		}));
 
-		this->useClipping = false;
 	}
 	else
 	{
 		this->setPoints(this->polylinePoints);
+	}
+
+	if (!this->polylinePoints.empty() || !this->holes.empty())
+	{
 		this->useClipping = true;
+	}
+	else
+	{
+		this->useClipping = false;
 	}
 
 	this->buildTextures();
@@ -73,7 +91,22 @@ void TextureObject::setPoints(std::vector<Vec2> points)
 {
 	this->points = points;
 	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
-	this->textureTriangles = AlgoUtils::trianglefyPolygon(this->points);
+
+	CRect drawRect = AlgoUtils::getPolygonRect(this->points);
+	this->boundsRect = CRect(drawRect.origin + this->getPosition(), drawRect.size);
+
+	// TODO: Inverted because HoLeS
+	this->textureTriangles = AlgoUtils::trianglefyPolygon({
+		this->boundsRect.origin + Vec2(this->boundsRect.size.width, this->boundsRect.size.height),
+		this->boundsRect.origin + Vec2(this->boundsRect.size.width, -this->boundsRect.size.height),
+		this->boundsRect.origin + Vec2(-this->boundsRect.size.width, -this->boundsRect.size.height),
+		this->boundsRect.origin + Vec2(-this->boundsRect.size.width, this->boundsRect.size.height),
+	}, { this->points });
+
+	for (const std::vector<cocos2d::Vec2>& hole : this->holes)
+	{
+		this->holeTriangles.push_back(AlgoUtils::trianglefyPolygon(hole));
+	}
 }
 
 void TextureObject::buildTextures()
@@ -126,8 +159,17 @@ void TextureObject::buildTextures()
 			stencil->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F::GREEN);
 		}
 
+		for (auto triangleSet : this->holeTriangles)
+		{
+			for (auto triangle : triangleSet)
+			{
+				stencil->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F::GREEN);
+			}
+		}
+
 		ClippingNode* clip = ClippingNode::create(stencil);
 
+		clip->setInverted(true);
 		clip->addChild(texture);
 
 		this->infillTexturesNode->addChild(clip);

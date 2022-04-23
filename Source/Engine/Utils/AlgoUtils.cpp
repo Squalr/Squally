@@ -153,16 +153,22 @@ std::vector<int> AlgoUtils::subsetSum(const std::vector<int>& numbers, int sum, 
 	return result;
 }
 
-std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<Vec2>& polygonPoints, const std::vector<Vec2>& holePoints)
+std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<Vec2>& polygonPoints, const std::vector<std::vector<cocos2d::Vec2>>& holes)
 {
 	std::vector<Triangle> triangles = std::vector<Triangle>();
 
-	uint32_t MaxPointCount = polygonPoints.size();
-	size_t MemoryRequired = MPE_PolyMemoryRequired(MaxPointCount);
-	void* memory = calloc(MemoryRequired, 1);
+	uint32_t maxPointCount = polygonPoints.size();
+
+	for (const std::vector<cocos2d::Vec2>& holePoints : holes)
+	{
+		maxPointCount += holePoints.size();
+	}
+
+	size_t memoryRequired = MPE_PolyMemoryRequired(maxPointCount);
+	void* memory = calloc(memoryRequired, 1);
 	MPEPolyContext polyContext;
 
-	if (!MPE_PolyInitContext(&polyContext, memory, MaxPointCount))
+	if (!MPE_PolyInitContext(&polyContext, memory, maxPointCount))
 	{
 		LogUtils::logError("Error trianglefying polygon. Possible error condition: duplicate point cordinates, bounds checking assert failures");
 
@@ -182,17 +188,20 @@ std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<
 	// Add the polyline for the edge. This will consume all points added so far.
 	MPE_PolyAddEdge(&polyContext);
 
-	if (!holePoints.empty())
+	for (const std::vector<cocos2d::Vec2>& holePoints : holes)
 	{
-		MPEPolyPoint* holes = MPE_PolyPushPointArray(&polyContext, holePoints.size());
-
-		for (int index = 0; index < int(holePoints.size()); index++)
+		if (!holePoints.empty())
 		{
-			holes[index].X = holePoints[index].x;
-			holes[index].Y = holePoints[index].y;
-		}
+			MPEPolyPoint* hole = MPE_PolyPushPointArray(&polyContext, holePoints.size());
 
-		MPE_PolyAddHole(&polyContext);
+			for (int index = 0; index < int(holePoints.size()); index++)
+			{
+				hole[index].X = holePoints[index].x;
+				hole[index].Y = holePoints[index].y;
+			}
+
+			MPE_PolyAddHole(&polyContext);
+		}
 	}
 
 	// Triangulate the shape

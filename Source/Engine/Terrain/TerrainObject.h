@@ -202,6 +202,7 @@ private:
 	bool hasBuiltTerrain = false;
 	bool isDynamic = false;
 	unsigned int terrainObjectId = 0;
+	std::string terrainHoleTag;
 
 	cocos2d::CRect drawRect;
 	cocos2d::CRect boundsRect;
@@ -212,6 +213,7 @@ private:
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> collisionSegments;
 	std::vector<AlgoUtils::Triangle> textureTriangles;
 	std::vector<AlgoUtils::Triangle> infillTriangles;
+	std::vector<std::vector<cocos2d::Vec2>> holes;
 
 	cocos2d::Node* rootNode = nullptr;
 	cocos2d::Node* collisionNode = nullptr;
