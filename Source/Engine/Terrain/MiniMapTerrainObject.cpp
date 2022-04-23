@@ -59,14 +59,8 @@ void MiniMapTerrainObject::onEnter()
 {
 	super::onEnter();
 
-	this->setPoints(this->polylinePoints);
+	this->infillTriangles = AlgoUtils::trianglefyPolygon(this->polylinePoints);
 	this->buildInfill(terrainData.infillData);
-}
-
-void MiniMapTerrainObject::setPoints(std::vector<Vec2> points)
-{
-	this->points = points;
-	this->infillTriangles = AlgoUtils::trianglefyPolygon(this->points);
 }
 
 void MiniMapTerrainObject::buildInfill(TerrainObject::InfillData infillData)

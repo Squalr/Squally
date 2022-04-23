@@ -60,16 +60,11 @@ void TextureObject::onEnter()
 	{
 		ObjectEvents::QueryObjects<TerrainHole>([&](TerrainHole* terrainHole)
 		{
-			// Get the hole points (relative to zero)
-			CRect holeSizeRect = AlgoUtils::getPolygonRect(terrainHole->getPolylinePoints());
-			Vec2 holeCenter = holeSizeRect.origin + holeSizeRect.size / 2.0f;
-
-			// Get the terrain points (relative to zero)
-			Vec2 terrainCenter = sizeRect.origin + sizeRect.size / 2.0f;
-
-			// Center the hole points onto the terrain
+			Vec2 holeCoords = GameUtils::getWorldCoords(terrainHole, false);
+			Vec2 terrainCoords = GameUtils::getWorldCoords(GameUtils::GetFirstParentOfType<TerrainObject>(this), false);
+			
 			std::vector<Vec2> holePoints = terrainHole->getPolylinePoints();
-			AlgoUtils::offsetPoints(holePoints, terrainCenter - holeCenter);
+			AlgoUtils::offsetPoints(holePoints, holeCoords - terrainCoords);
 
 			this->holes.push_back(holePoints);
 		}, this->terrainHoleTag);

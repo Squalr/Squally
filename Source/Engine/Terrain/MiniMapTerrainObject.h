@@ -24,11 +24,9 @@ protected:
 private:
 	typedef HackableObject super;
 
-	void setPoints(std::vector<cocos2d::Vec2> points);
 	void buildInfill(TerrainObject::InfillData infillData);
 
 	TerrainObject::TerrainData terrainData;
-	std::vector<cocos2d::Vec2> points;
 	std::vector<AlgoUtils::Triangle> infillTriangles;
 
 	cocos2d::Node* rootNode = nullptr;

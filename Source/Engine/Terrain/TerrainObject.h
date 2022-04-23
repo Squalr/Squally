@@ -176,21 +176,24 @@ private:
 		None
 	};
 
-	void initResources();
-	void setPoints(const std::vector<cocos2d::Vec2>& points);
+	void swapResources(std::string* resourceA, cocos2d::Vec2* offsetA, std::string* resourceB, cocos2d::Vec2* offsetB, bool flipX, bool flipY);
+	void swapResourcesHorizontal(bool flip);
+	void swapResourcesVertical(bool flip);
 	void cullCollision();
 	void buildCollision();
 	void buildInnerTextures();
 	void buildInfill(InfillData infillData);
-	void buildSurfaceShadow();
-	void buildSurfaceTextures();
-	void buildSegment(cocos2d::Node* parent, cocos2d::Sprite* sprite, cocos2d::Vec2 anchor, cocos2d::Vec2 position, float rotation, float segmentLength, TerrainObject::TileMethod tileMethod);
+	void buildSurfaceTextures(const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& sourceSegments,
+		const std::vector<AlgoUtils::Triangle>& sourceTriangles);
+	void buildSegment(cocos2d::Node* parent, cocos2d::Sprite* sprite, cocos2d::Vec2 anchor, cocos2d::Vec2 position,
+		float rotation, float segmentLength, TerrainObject::TileMethod tileMethod);
 	void maskAgainstOther(TerrainObject* other);
 	bool isTopAngle(float normalAngle);
 	bool isBottomAngle(float normalAngle);
 	bool isLeftAngle(float normalAngle);
 	bool isRightAngle(float normalAngle);
-	bool isTopCollisionFriendly(std::tuple<cocos2d::Vec2, cocos2d::Vec2>* previousSegment, std::tuple<cocos2d::Vec2, cocos2d::Vec2>* segment, std::tuple<cocos2d::Vec2, cocos2d::Vec2>* nextSegment);
+	bool isTopCollisionFriendly(std::tuple<cocos2d::Vec2, cocos2d::Vec2>* previousSegment, std::tuple<cocos2d::Vec2, cocos2d::Vec2>* segment,
+		std::tuple<cocos2d::Vec2, cocos2d::Vec2>* nextSegment);
 	void buildTerrain();
 	void updateCachedCoords(bool force = false);
 	void optimizationHideOffscreenTerrain();
@@ -207,13 +210,14 @@ private:
 	cocos2d::CRect drawRect;
 	cocos2d::CRect boundsRect;
 	cocos2d::Vec3 cachedCoords;
-	std::vector<cocos2d::Vec2> points;
 	std::vector<cocos2d::Vec2> intersectionPoints;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> collisionSegments;
 	std::vector<AlgoUtils::Triangle> textureTriangles;
 	std::vector<AlgoUtils::Triangle> infillTriangles;
 	std::vector<std::vector<cocos2d::Vec2>> holes;
+	std::vector<std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>> holeSegments;
+	std::vector<std::vector<AlgoUtils::Triangle>> holeTriangles;
 
 	cocos2d::Node* rootNode = nullptr;
 	cocos2d::Node* collisionNode = nullptr;
