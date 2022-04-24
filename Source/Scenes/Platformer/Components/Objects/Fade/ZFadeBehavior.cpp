@@ -68,6 +68,6 @@ void ZFadeBehavior::update(float dt)
 	}
 	else
 	{
-		this->object->setOpacity(GLubyte(255.0f * this->multiplier));
+		this->object->setOpacity(GLubyte(255.0f));
 	}
 }
