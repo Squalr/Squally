@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="1003">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1007">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -76,11 +76,23 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="964" name="Crypts/RailingLong" type="decor" x="-1056.55" y="1481.15" width="9506.02" height="307">
+  <object id="964" name="Crypts/RailingLong" type="decor" x="-1056.55" y="1481.15" width="6935.32" height="307">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="1003" name="Crypts/RailingLong" type="decor" x="6296.94" y="1482.32" width="1725.21" height="307">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="100" name="decor fg -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1005" name="gate" type="object" x="5856.66" y="1365.29" width="450.603" height="423.038"/>
  </objectgroup>
  <objectgroup id="7911" name="bridge -11">
   <properties>
@@ -110,7 +122,6 @@
   <object id="939" name="Crypts/Grave12" type="decor" x="4608.15" y="1564.57" width="182" height="240"/>
   <object id="940" name="Crypts/Grave11" type="decor" x="3965.48" y="1562.08" width="248" height="239"/>
   <object id="941" name="Crypts/Grave1" type="decor" x="5049.63" y="1560.08" width="132" height="248"/>
-  <object id="942" name="Crypts/Grave17" type="decor" x="5234.65" y="1493.7" width="762" height="314"/>
   <object id="953" name="Crypts/Grave3" type="decor" x="2079.65" y="1582.47" width="164" height="243">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
@@ -120,6 +131,11 @@
   <object id="976" name="Crypts/Grave13" type="decor" x="2268.04" y="1482.5" width="363" height="342"/>
   <object id="978" name="Crypts/Grave16" type="decor" x="2536.28" y="1785.24" width="141" height="60"/>
   <object id="989" name="Crypts/Statue2" type="decor" x="4278.09" y="1260.3" width="347" height="546">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1006" name="Crypts/Grave17" type="decor" x="5165.32" y="1493.83" width="762" height="314">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -160,7 +176,7 @@
   <object id="946" name="Crypts/Grave1" type="decor" x="2019.62" y="1594.5" width="132" height="248"/>
   <object id="948" name="Crypts/Grave15" type="decor" x="2280.76" y="1662.35" width="158" height="181"/>
   <object id="974" name="Crypts/Grave11" type="decor" x="977.918" y="1602.95" width="248" height="239"/>
-  <object id="990" name="Crypts/Statue6" type="decor" x="5904.33" y="1313.17" width="329" height="513">
+  <object id="990" name="Crypts/Statue6" type="decor" x="6305.32" y="1311.62" width="329" height="513">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -299,11 +315,6 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="983" name="Crypts/Grave17" type="decor" x="5771.17" y="1606.98" width="762" height="314">
-   <properties>
-    <property name="flip-x" type="bool" value="false"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="73" name="decor -6">
   <properties>
@@ -341,10 +352,10 @@
     <property name="transition" value="grave"/>
    </properties>
   </object>
-  <object id="995" name="portal" type="object" x="5449.7" y="1402.48" width="450.603" height="423.038">
+  <object id="995" name="portal" type="object" x="5858.36" y="1400.86" width="450.603" height="423.038">
    <properties>
-    <property name="map" value="LambdaCrypts/Zone_2_0"/>
-    <property name="transition" value="grave"/>
+    <property name="map" value="LambdaCrypts/Town_Main"/>
+    <property name="transition" value="gate"/>
    </properties>
   </object>
  </objectgroup>
@@ -582,7 +593,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="2329.92" y="1915.62" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="4940.19" y="1907.88" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>

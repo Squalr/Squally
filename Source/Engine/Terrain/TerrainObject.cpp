@@ -420,6 +420,12 @@ void TerrainObject::buildInnerTextures()
 	if (this->terrainData.textureFactory != nullptr)
 	{
 		TextureObject* textureObject = this->terrainData.textureFactory(this->properties);
+		
+		if (textureObject == nullptr)
+		{
+			return;
+		}
+
 		bool isPolygon = GameUtils::keyExists(this->properties, GameObject::MapKeyPolyLinePoints) || GameUtils::keyExists(this->properties, GameObject::MapKeyPoints);
 		
 		if (!isPolygon && this->holes.empty())
