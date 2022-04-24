@@ -419,13 +419,19 @@ void TerrainObject::buildInnerTextures()
 {
 	if (this->terrainData.textureFactory != nullptr)
 	{
-		TextureObject* textures = this->terrainData.textureFactory(this->properties);
+		TextureObject* textureObject = this->terrainData.textureFactory(this->properties);
+		bool isPolygon = GameUtils::keyExists(this->properties, GameObject::MapKeyPolyLinePoints) || GameUtils::keyExists(this->properties, GameObject::MapKeyPoints);
+		
+		if (!isPolygon && this->holes.empty())
+		{
+			textureObject->setPosition(textureObject->getPosition() - Vec2(this->boundsRect.size) / 2.0f);
+		}
 
 		this->infillTexturesNode->removeAllChildren();
 
-		if (textures != nullptr)
+		if (textureObject != nullptr)
 		{
-			this->infillTexturesNode->addChild(textures);
+			this->infillTexturesNode->addChild(textureObject);
 		}
 	}
 }
