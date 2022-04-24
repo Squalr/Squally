@@ -203,6 +203,13 @@ GameObject::GameObject(const ValueMap& properties) : super()
 			);
 
 			this->polylinePoints = std::vector<Vec2>({
+				Vec2(0.0f, 0.0f),
+				Vec2(size.width, 0.0f),
+				Vec2(size.width, -size.height),
+				Vec2(0.0f, -size.height),
+			});
+
+			this->polylinePoints = std::vector<Vec2>({
 				Vec2(-size.width / 2.0f, -size.height / 2.0f),
 				Vec2(-size.width / 2.0f, size.height / 2.0f),
 				Vec2(size.width / 2.0f, size.height / 2.0f),

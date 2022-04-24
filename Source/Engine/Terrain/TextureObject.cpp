@@ -53,9 +53,6 @@ void TextureObject::onEnter()
 
 	bool isPolygon = GameUtils::keyExists(this->properties, GameObject::MapKeyPolyLinePoints) || GameUtils::keyExists(this->properties, GameObject::MapKeyPoints);
 	
-	CRect sizeRect = AlgoUtils::getPolygonRect(this->polylinePoints);
-	this->boundsRect = CRect(sizeRect.origin + this->getPosition(), sizeRect.size);
-
 	if (!this->terrainHoleTag.empty())
 	{
 		ObjectEvents::QueryObjects<TerrainHole>([&](TerrainHole* terrainHole)
@@ -101,15 +98,11 @@ void TextureObject::buildTextures()
 	params.wrapT = GL_REPEAT;
 
 	Sprite* texture = Sprite::create(this->terrainData.textureResource);
-	CRect drawRect = AlgoUtils::getPolygonRect(this->polylinePoints);
+	CRect sizeRect = AlgoUtils::getPolygonRect(this->polylinePoints);
+	this->boundsRect = CRect(sizeRect.origin + this->getPosition(), sizeRect.size);
 	bool isPolygon = GameUtils::keyExists(this->properties, GameObject::MapKeyPolyLinePoints) || GameUtils::keyExists(this->properties, GameObject::MapKeyPoints);
 
-	this->boundsRect = CRect(drawRect.origin + this->getPosition(), drawRect.size);
-
-	if (GameUtils::getKeyOrDefault(this->properties, TextureObject::PropertyKeyClearAnchor, Value(true)).asBool())
-	{
-		texture->setAnchorPoint(Vec2::ZERO);
-	}
+	texture->setAnchorPoint(Vec2::ZERO);
 
 	if (texture->getTexture() != nullptr)
 	{
@@ -123,14 +116,8 @@ void TextureObject::buildTextures()
 	TilingOffset.x = MathUtils::wrappingNormalize(TilingOffset.x + 757.0f, 0.0f, 1024.0f);
 	TilingOffset.y = MathUtils::wrappingNormalize(TilingOffset.y + 359.0f, 0.0f, 1024.0f);
 	
-	texture->setPosition(drawRect.origin);
-	texture->setTextureRect(CRect(TilingOffset.x, TilingOffset.y, drawRect.size.width, drawRect.size.height));
-
-	// TODO: ??
-	if (!isPolygon)
-	{
-		texture->setPosition(texture->getPosition() - drawRect.size / 2.0f);
-	}
+	texture->setPosition(sizeRect.origin);
+	texture->setTextureRect(CRect(TilingOffset.x, TilingOffset.y, sizeRect.size.width, sizeRect.size.height));
 
 	if (this->useClipping)
 	{
@@ -144,6 +131,12 @@ void TextureObject::buildTextures()
 		ClippingNode* clip = ClippingNode::create(stencil);
 
 		clip->addChild(texture);
+
+		// Not entirely sure why this correction is needed. The fallback polyline for square objects might be constructed wrong.
+		if (!isPolygon)
+		{
+			clip->setPosition(-Vec2(sizeRect.size) / 2.0f);
+		}
 
 		this->infillTexturesNode->addChild(clip);
 	}

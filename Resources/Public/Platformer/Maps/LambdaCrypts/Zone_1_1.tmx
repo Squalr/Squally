@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="61" nextobjectid="845">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="61" nextobjectid="846">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -36,11 +36,20 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="782" name="stone-dark" type="terrain" x="-206.822" y="-346.055" width="9614.43" height="4044.9">
+  <object id="782" name="stone-dark" type="terrain" x="-206.822" y="-434.055" width="9614.43" height="4044.9">
    <properties>
     <property name="collision" value="none"/>
     <property name="hole-tag" value="hole-A"/>
+    <property name="square-test" value=""/>
    </properties>
+  </object>
+  <object id="845" name="stone-dark" type="terrain" x="-8712" y="380">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="hole-tag" value=""/>
+    <property name="poly-test" value=""/>
+   </properties>
+   <polygon points="-2045,-880 -2046,3163 7576,3160 7555.88,-880.97"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">

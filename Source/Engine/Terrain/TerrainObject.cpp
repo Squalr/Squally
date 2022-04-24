@@ -161,6 +161,7 @@ void TerrainObject::onEnterTransitionDidFinish()
 		this->defer([=]()
 		{
 			this->buildCollision();
+			this->buildTerrain();
 			this->optimizationHideOffscreenTerrain();
 		});
 	});
@@ -206,7 +207,7 @@ void TerrainObject::update(float dt)
 {
 	super::update(dt);
 	
-	// this->optimizationHideOffscreenTerrain();
+	this->optimizationHideOffscreenTerrain();
 }
 
 void TerrainObject::onHackerModeEnable()
@@ -988,7 +989,6 @@ void TerrainObject::buildTerrain()
 		case ConfigManager::GraphicsSetting::SlowHighQuality:
 		{
 			// Zac: Disabled for now since this is pretty slow
-			// this->buildInfill(terrainData.infillColor);
 			// this->buildSurfaceShadow();
 			break;
 		}
@@ -1010,7 +1010,8 @@ void TerrainObject::buildTerrain()
 	// Temporarily swap resources when building holes -- there may be a better way to do this (ie inverting normals in buildSurfaceTextures)
 	this->swapResourcesHorizontal(true);
 	this->swapResourcesVertical(false);
-	for (int index = 0; index < std::min(this->holeSegments.size(), this->holeTriangles.size()); index++)
+
+	for (int index = 0; index < (int)std::min(this->holeSegments.size(), this->holeTriangles.size()); index++)
 	{
 		this->buildSurfaceTextures(this->holeSegments[index], this->holeTriangles[index]);
 	}
@@ -1030,6 +1031,12 @@ void TerrainObject::updateCachedCoords(bool force)
 
 void TerrainObject::optimizationHideOffscreenTerrain()
 {
+	if (!this->hasBuiltTerrain)
+	{
+		this->rootNode->setVisible(false);
+		return;
+	}
+
 	// A little padding otherwise surface textures will pop into existence, as they can hang outside terrain bounds
 	static const CSize Padding = CSize(768.0f, 768.0f);
 	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
@@ -1039,7 +1046,6 @@ void TerrainObject::optimizationHideOffscreenTerrain()
 
 	if (CameraRect.intersectsRect(thisRect))
 	{
-		this->buildTerrain();
 		this->rootNode->setVisible(true);
 	}
 	else
