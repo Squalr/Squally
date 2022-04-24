@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="61" nextobjectid="846">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="63" nextobjectid="853">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -12,12 +12,24 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="58" name="bg -6">
+ <objectgroup id="58" name="bg -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="823" name="stone-dark" type="texture" x="-891.593" y="-1044.54" width="10902.8" height="5772.42"/>
+ </objectgroup>
+ <objectgroup id="61" name="terrain -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="823" name="stone-dark" type="texture" x="-891.593" y="-1044.54" width="10902.8" height="5772.42"/>
+  <object id="849" name="stone-dark" type="terrain" x="-489.948" y="-583.88" width="10078.8" height="4022.25">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="60" name="terrain -4">
   <properties>
@@ -62,26 +74,45 @@
   <object id="680" name="stone-dark" type="terrain" x="4340" y="508">
    <polygon points="-123.152,963.273 -413.455,484 -389.026,-137.062 -328.869,-595.354 323.672,-732.675 1938.43,-682.159 2472.89,-478.602 2496.64,159.82 2315.46,658.908 2042.84,993.932 1404.05,1038.03 658.7,1027.33"/>
   </object>
-  <object id="835" name="terrain-hole" type="object" x="8099.99" y="1155.87" width="312" height="312">
+  <object id="835" name="terrain-hole" type="object" x="8319.87" y="832.718" width="312" height="312">
    <properties>
     <property name="hole-tag" value="hole-A"/>
    </properties>
   </object>
-  <object id="836" name="terrain-hole" type="object" x="7501.8" y="1142.9" width="312" height="312">
+  <object id="836" name="terrain-hole" type="object" x="7871.56" y="834.9" width="312" height="312">
    <properties>
     <property name="hole-tag" value="hole-A"/>
    </properties>
   </object>
-  <object id="837" name="terrain-hole" type="object" x="6907.12" y="1137.69" width="312" height="312">
+  <object id="837" name="terrain-hole" type="object" x="7423.79" y="836.72" width="312" height="312">
    <properties>
     <property name="hole-tag" value="hole-A"/>
    </properties>
   </object>
-  <object id="844" name="terrain-hole" type="object" x="7314.27" y="496.384">
+  <object id="846" name="terrain-hole" type="object" x="8325.46" y="1274.3" width="312" height="312">
    <properties>
     <property name="hole-tag" value="hole-A"/>
    </properties>
-   <polygon points="0,0 332.018,-170.94 483.235,161.078 121.631,253.123"/>
+  </object>
+  <object id="847" name="terrain-hole" type="object" x="7877.15" y="1276.48" width="312" height="312">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="848" name="terrain-hole" type="object" x="7429.38" y="1278.3" width="312" height="312">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="851" name="terrain-hole" type="object" x="6977.2" y="833.21" width="312" height="312">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="852" name="terrain-hole" type="object" x="6982.8" y="1274.79" width="312" height="312">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">

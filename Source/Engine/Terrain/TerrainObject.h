@@ -177,14 +177,14 @@ private:
 	};
 
 	void swapResources(std::string* resourceA, cocos2d::Vec2* offsetA, std::string* resourceB, cocos2d::Vec2* offsetB, bool flipX, bool flipY);
-	void swapResourcesHorizontal(bool flip);
+	void swapResourcesForHole();
 	void swapResourcesVertical(bool flip);
 	void cullCollision();
 	void buildCollision();
 	void buildInnerTextures();
 	void buildInfill(InfillData infillData);
 	void buildSurfaceTextures(const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& sourceSegments,
-		const std::vector<AlgoUtils::Triangle>& sourceTriangles);
+		const std::vector<AlgoUtils::Triangle>& sourceTriangles, bool isHole);
 	void buildSegment(cocos2d::Node* parent, cocos2d::Sprite* sprite, cocos2d::Vec2 anchor, cocos2d::Vec2 position,
 		float rotation, float segmentLength, TerrainObject::TileMethod tileMethod);
 	void maskAgainstOther(TerrainObject* other);

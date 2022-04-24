@@ -252,19 +252,19 @@ void TerrainObject::swapResources(std::string* resourceA, Vec2* offsetA, std::st
 	}
 }
 
-void TerrainObject::swapResourcesHorizontal(bool flip)
+void TerrainObject::swapResourcesForHole()
 {
 	this->swapResources(
-		&this->terrainData.leftResource, &this->terrainData.leftOffset,
-		&this->terrainData.rightResource, &this->terrainData.rightOffset,
-		flip,
+		&this->terrainData.topCornerRightResource, &this->terrainData.topRightCornerOffset,
+		&this->terrainData.topCornerLeftResource, &this->terrainData.topLeftCornerOffset,
+		true,
 		false
 	);
 
 	this->swapResources(
-		&this->terrainData.leftConnectorResource, &this->terrainData.leftOffset,
-		&this->terrainData.rightConnectorResource, &this->terrainData.rightOffset,
-		flip,
+		&this->terrainData.bottomCornerRightResource, &this->terrainData.bottomRightCornerOffset,
+		&this->terrainData.bottomCornerLeftResource, &this->terrainData.bottomLeftCornerOffset,
+		true,
 		false
 	);
 }
@@ -488,7 +488,7 @@ void TerrainObject::buildInfill(InfillData infillData)
 }
 
 void TerrainObject::buildSurfaceTextures(const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& sourceSegments,
-	const std::vector<AlgoUtils::Triangle>& sourceTriangles)
+	const std::vector<AlgoUtils::Triangle>& sourceTriangles, bool isHole)
 {
 	std::tuple<Vec2, Vec2>* previousSegment = nullptr;
 
@@ -508,6 +508,14 @@ void TerrainObject::buildSurfaceTextures(const std::vector<std::tuple<cocos2d::V
 		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, sourceTriangles);
 		float nextAngle = AlgoUtils::getSegmentAngle(nextSegment, sourceTriangles);
 		float nextSegmentNormalAngle = AlgoUtils::getSegmentNormalAngle(nextSegment, sourceTriangles);
+
+		if (isHole)
+		{
+			normalAngle = MathUtils::wrappingNormalize(normalAngle *= -1.0f, 0.0f, 2.0f * float(M_PI));
+			nextAngle = MathUtils::wrappingNormalize(nextAngle *= -1.0f, 0.0f,  2.0f * float(M_PI));
+			nextSegmentNormalAngle = MathUtils::wrappingNormalize(nextSegmentNormalAngle *= -1.0f, 0.0f,  2.0f * float(M_PI));
+		}
+
 		float bisectingAngle = (nextAngle + angle) / 2.0f;
 		float angleDelta = nextAngle - angle;
 
@@ -1005,18 +1013,17 @@ void TerrainObject::buildTerrain()
 	this->topsNode->removeAllChildren();
 	this->topCornersNode->removeAllChildren();
 
-	this->buildSurfaceTextures(this->segments, this->textureTriangles);
+	this->buildSurfaceTextures(this->segments, this->textureTriangles, false);
 
-	// Temporarily swap resources when building holes -- there may be a better way to do this (ie inverting normals in buildSurfaceTextures)
-	this->swapResourcesHorizontal(true);
-	this->swapResourcesVertical(false);
-
+	// Temporarily swap certain resources when building holes, and build surface textures with inverted normals
+	this->isFlipped = !this->isFlipped;
+	this->swapResourcesForHole();
 	for (int index = 0; index < (int)std::min(this->holeSegments.size(), this->holeTriangles.size()); index++)
 	{
-		this->buildSurfaceTextures(this->holeSegments[index], this->holeTriangles[index]);
+		this->buildSurfaceTextures(this->holeSegments[index], this->holeTriangles[index], true);
 	}
-	this->swapResourcesVertical(false);
-	this->swapResourcesHorizontal(true);
+	this->swapResourcesForHole();
+	this->isFlipped = !this->isFlipped;
 }
 
 void TerrainObject::updateCachedCoords(bool force)
