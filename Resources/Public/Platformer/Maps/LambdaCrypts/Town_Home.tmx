@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="829">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="831">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -189,7 +189,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="770" name="Generic/ShelfBar1" type="decor" x="1565.59" y="115.752" width="1135" height="753"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -201,18 +200,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="760" name="garrick" type="entity" x="2210.93" y="851.352" width="128" height="167">
-   <properties>
-    <property name="components" value="shopkeeper,face-squally"/>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="102" name="decor bg bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="769" name="Generic/Counter" type="decor" x="1617.54" y="898.353" width="1080" height="167"/>
   <object id="826" name="Ruins/ArchDoorGray1" type="decor" x="404.379" y="617.152" width="235" height="452"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
@@ -244,7 +236,7 @@
   <object id="694" name="portal" type="object" x="401.862" y="696.711" width="237.527" height="375.411">
    <properties>
     <property name="map" value="LambdaCrypts/Town_Main"/>
-    <property name="transition" value="inn"/>
+    <property name="transition" value="home"/>
    </properties>
   </object>
   <object id="794" name="portal" type="object" x="3202.21" y="690.527" width="335.878" height="375.411">
@@ -264,6 +256,18 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="829" name="princess-nebea" type="entity" x="2116" y="936" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pick-pocket"/>
+    <property name="pocket-pool" value="lc-generic"/>
+   </properties>
+  </object>
+  <object id="830" name="elric" type="entity" x="1788" y="942" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pick-pocket"/>
+    <property name="pocket-pool" value="lc-generic"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

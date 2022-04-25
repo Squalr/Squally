@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="818">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="18" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="818">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -209,7 +209,7 @@
   </properties>
   <object id="694" name="portal" type="object" x="907.21" y="690.475" width="335.878" height="375.411">
    <properties>
-    <property name="map" value="UnderflowRuins/Town_Inn"/>
+    <property name="map" value="LambdaCrypts/Town_Inn"/>
     <property name="transition" value="inn-upstairs"/>
    </properties>
   </object>
