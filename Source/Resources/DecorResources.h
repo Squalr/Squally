@@ -118,6 +118,16 @@ namespace DecorResources
 	extern const std::string Crypts_Grave8;
 	extern const std::string Crypts_Grave9;
 	extern const std::string Crypts_Lantern1;
+	extern const std::string Crypts_Mosiac1;
+	extern const std::string Crypts_Mosiac10;
+	extern const std::string Crypts_Mosiac2;
+	extern const std::string Crypts_Mosiac3;
+	extern const std::string Crypts_Mosiac4;
+	extern const std::string Crypts_Mosiac5;
+	extern const std::string Crypts_Mosiac6;
+	extern const std::string Crypts_Mosiac7;
+	extern const std::string Crypts_Mosiac8;
+	extern const std::string Crypts_Mosiac9;
 	extern const std::string Crypts_Mushroom1;
 	extern const std::string Crypts_Mushroom2;
 	extern const std::string Crypts_Mushroom3;
@@ -509,6 +519,7 @@ namespace DecorResources
 	extern const std::string Generic_ThroneBronze;
 	extern const std::string Generic_ThroneMetal;
 	extern const std::string Generic_TownAlchemist;
+	extern const std::string Generic_TownChurch;
 	extern const std::string Generic_TownFence;
 	extern const std::string Generic_TownFencePost;
 	extern const std::string Generic_TownHome1;

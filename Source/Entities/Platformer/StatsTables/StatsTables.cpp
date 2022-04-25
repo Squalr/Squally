@@ -285,7 +285,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Rupert::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Rusty::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Scaldor::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[PrincessMittens::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[Mittens::MapKey] = StatsIncrements(Stats(16, 8, 32));
 
 	/***********
 		LC
@@ -334,7 +334,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Gargoyle::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[LightningGolem::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Shade::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[VoidArcher::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[DemonArcher::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[VoidDemon::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Warlock::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	

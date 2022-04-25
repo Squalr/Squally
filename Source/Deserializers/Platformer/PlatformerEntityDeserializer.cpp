@@ -114,7 +114,7 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[Lucifer::MapKey] = [=](ValueMap properties) { return (GameObject*)Lucifer::deserialize(properties); };
 	this->deserializers[Magnus::MapKey] = [=](ValueMap properties) { return (GameObject*)Magnus::deserialize(properties); };
 	this->deserializers[Pan::MapKey] = [=](ValueMap properties) { return (GameObject*)Pan::deserialize(properties); };
-	this->deserializers[PrincessMittens::MapKey] = [=](ValueMap properties) { return (GameObject*)PrincessMittens::deserialize(properties); };
+	this->deserializers[Mittens::MapKey] = [=](ValueMap properties) { return (GameObject*)Mittens::deserialize(properties); };
 	this->deserializers[Ragnis::MapKey] = [=](ValueMap properties) { return (GameObject*)Ragnis::deserialize(properties); };
 	this->deserializers[Rupert::MapKey] = [=](ValueMap properties) { return (GameObject*)Rupert::deserialize(properties); };
 	this->deserializers[Rusty::MapKey] = [=](ValueMap properties) { return (GameObject*)Rusty::deserialize(properties); };
@@ -238,7 +238,7 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[Exterminator::MapKey] = [=](ValueMap properties) { return (GameObject*)Exterminator::deserialize(properties); };
 	this->deserializers[Gargoyle::MapKey] = [=](ValueMap properties) { return (GameObject*)Gargoyle::deserialize(properties); };
 	this->deserializers[Shade::MapKey] = [=](ValueMap properties) { return (GameObject*)Shade::deserialize(properties); };
-	this->deserializers[VoidArcher::MapKey] = [=](ValueMap properties) { return (GameObject*)VoidArcher::deserialize(properties); };
+	this->deserializers[DemonArcher::MapKey] = [=](ValueMap properties) { return (GameObject*)DemonArcher::deserialize(properties); };
 	this->deserializers[VoidDemon::MapKey] = [=](ValueMap properties) { return (GameObject*)VoidDemon::deserialize(properties); };
 	this->deserializers[Warlock::MapKey] = [=](ValueMap properties) { return (GameObject*)Warlock::deserialize(properties); };
 	this->deserializers[Professor::MapKey] = [=](ValueMap properties) { return (GameObject*)Professor::deserialize(properties); };

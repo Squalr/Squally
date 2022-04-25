@@ -118,12 +118,13 @@ namespace MapResources
 	extern const std::string EndianForest_Zone_3_Dev;
 	extern const std::string LambdaCrypts_Mages_Warp;
 	extern const std::string LambdaCrypts_Town_Alch;
+	extern const std::string LambdaCrypts_Town_Church;
+	extern const std::string LambdaCrypts_Town_Home;
 	extern const std::string LambdaCrypts_Town_Inn;
 	extern const std::string LambdaCrypts_Town_Inn_Upstairs;
 	extern const std::string LambdaCrypts_Town_Main;
 	extern const std::string LambdaCrypts_Town_Smith;
 	extern const std::string LambdaCrypts_Zone_1_0;
-	extern const std::string LambdaCrypts_Zone_1_1;
 	extern const std::string LambdaCrypts_Zone_2_0;
 	extern const std::string LambdaCrypts_Zone_3_0;
 	extern const std::string PerilousSea_Zone_UR_1_0;

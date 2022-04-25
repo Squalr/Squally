@@ -23259,6 +23259,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_VoidStar_DarkTiger() = default;
 	};
 
+	class Platformer_Entities_Names_Enemies_VoidStar_DemonArcher : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_VoidStar_DemonArcher* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_VoidStar_DemonArcher();
+		virtual ~Platformer_Entities_Names_Enemies_VoidStar_DemonArcher() = default;
+	};
+
 	class Platformer_Entities_Names_Enemies_VoidStar_EvilEye : public LocalizedString
 	{
 	public:
@@ -23332,21 +23347,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Enemies_VoidStar_Shade();
 		virtual ~Platformer_Entities_Names_Enemies_VoidStar_Shade() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_VoidStar_VoidArcher : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_VoidStar_VoidArcher* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_VoidStar_VoidArcher();
-		virtual ~Platformer_Entities_Names_Enemies_VoidStar_VoidArcher() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_VoidStar_VoidDemon : public LocalizedString
@@ -24084,6 +24084,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Magnus() = default;
 	};
 
+	class Platformer_Entities_Names_Npcs_DaemonsHallow_Mittens : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DaemonsHallow_Mittens* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DaemonsHallow_Mittens();
+		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Mittens() = default;
+	};
+
 	class Platformer_Entities_Names_Npcs_DaemonsHallow_Pan : public LocalizedString
 	{
 	public:
@@ -24097,21 +24112,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_DaemonsHallow_Pan();
 		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Pan() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_PrincessMittens : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_PrincessMittens* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_PrincessMittens();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_PrincessMittens() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_DaemonsHallow_Ragnis : public LocalizedString
