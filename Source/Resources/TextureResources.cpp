@@ -41,4 +41,5 @@ const std::string TextureResources::TempleGreenDarkTexture = "Private/Platformer
 const std::string TextureResources::TempleGreenTexture = "Private/Platformer/Textures/TempleGreenTexture.png";
 const std::string TextureResources::TempleTexture = "Private/Platformer/Textures/TempleTexture.png";
 const std::string TextureResources::TrailTexture = "Private/Platformer/Textures/TrailTexture.png";
+const std::string TextureResources::VoidTexture = "Private/Platformer/Textures/VoidTexture.png";
 const std::string TextureResources::WoodTexture = "Private/Platformer/Textures/WoodTexture.png";

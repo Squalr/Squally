@@ -776,13 +776,7 @@ namespace DecorResources
 	extern const std::string Snow_detail_1;
 	extern const std::string Snow_detail_3;
 	extern const std::string Snow_stone_1;
-	extern const std::string Void_Background_Midground1;
-	extern const std::string Void_Background_Midground2;
-	extern const std::string Void_Background_Midground3;
-	extern const std::string Void_Background_Midground4;
-	extern const std::string Void_Background_Midground5;
-	extern const std::string Void_Background_Midground6;
-	extern const std::string Void_Background_Midground7;
+	extern const std::string Void_Background_Midground;
 	extern const std::string Void_Chain1;
 	extern const std::string Void_Gear1;
 	extern const std::string Void_Pillar1;

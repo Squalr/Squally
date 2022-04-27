@@ -43,6 +43,7 @@
 #include "Scenes/Platformer/Terrain/TempleTerrain.h"
 #include "Scenes/Platformer/Terrain/TrailTerrain.h"
 #include "Scenes/Platformer/Terrain/WoodTerrain.h"
+#include "Scenes/Platformer/Terrain/VoidTerrain.h"
 
 using namespace cocos2d;
 
@@ -96,6 +97,7 @@ PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(Platforme
 	this->deserializers[TempleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleTerrain::create(properties); };
 	this->deserializers[TrailTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)TrailTerrain::create(properties); };
 	this->deserializers[WoodTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)WoodTerrain::create(properties); };
+	this->deserializers[VoidTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)VoidTerrain::create(properties); };
 }
 
 PlatformerTerrainDeserializer::~PlatformerTerrainDeserializer()
