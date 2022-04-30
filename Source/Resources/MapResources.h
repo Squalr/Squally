@@ -178,8 +178,9 @@ namespace MapResources
 	extern const std::string UnderflowRuins_Zone_3_7;
 	extern const std::string UnderflowRuins_Zone_3_8;
 	extern const std::string VoidStar_Mages_Warp;
-	extern const std::string VoidStar_VoidStar;
-	extern const std::string VoidStar_Zone_1_0;
+	extern const std::string VoidStar_Town_Alch;
+	extern const std::string VoidStar_Town_Main;
+	extern const std::string VoidStar_Town_Smith;
 	extern const std::string WarpGatePreviewMaps_EndianForest;
 	extern const std::string WarpGatePreviewMaps_UnderflowRuins;
 };

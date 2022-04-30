@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="42" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="79" nextobjectid="887">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="Void"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="5"/>
+   <property name="show-cracks" type="bool" value="false"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="76" name="stars3">
+  <properties>
+   <property name="depth" type="float" value="-12000"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="817" name="Void/Planet2" type="decor" x="7457.83" y="-483.547" width="1673" height="1143"/>
+  <object id="818" name="Void/Planet5" type="decor" x="8388.83" y="-3351.55" width="820" height="820"/>
+  <object id="822" name="Void/Planet13" type="decor" x="3850.83" y="-57.5471" width="1024" height="1024"/>
+  <object id="823" name="Void/Galaxy1" type="decor" x="4098.11" y="-2894.9" width="2615" height="1918"/>
+ </objectgroup>
+ <objectgroup id="75" name="stars2">
+  <properties>
+   <property name="depth" type="float" value="-8000"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="792" name="Void/Planet1" type="decor" x="-6631.67" y="-1101.55" width="1674" height="1036"/>
+  <object id="797" name="Void/Planet6" type="decor" x="3039.32" y="-3768.94" width="820" height="820"/>
+  <object id="798" name="Void/Planet7" type="decor" x="9508.83" y="1048.45" width="820" height="780"/>
+  <object id="799" name="Void/Planet8" type="decor" x="-4243.17" y="-1703.55" width="1024" height="1024"/>
+  <object id="802" name="Void/Planet12" type="decor" x="-1584.08" y="179.665" width="1024" height="1024"/>
+  <object id="804" name="Void/Planet14" type="decor" x="2068.16" y="-2060.71" width="1024" height="1024"/>
+  <object id="807" name="Void/Planet17" type="decor" x="-4773.17" y="-3253.55" width="528" height="510"/>
+  <object id="808" name="Void/Planet18" type="decor" x="1454.83" y="691.453" width="1024" height="1024"/>
+  <object id="811" name="Void/Star1" type="decor" x="-235.169" y="-1959.55" width="512" height="512"/>
+  <object id="812" name="Void/Star2" type="decor" x="5931.07" y="-11.6081" width="512" height="512"/>
+  <object id="813" name="Void/Star3" type="decor" x="7158.83" y="-3621.55" width="512" height="512"/>
+  <object id="814" name="Void/Star4" type="decor" x="-1943.11" y="-4308.41" width="512" height="512"/>
+  <object id="815" name="Void/Sun1" type="decor" x="-7062.57" y="-2928.53" width="1024" height="1024"/>
+  <object id="816" name="Void/Sun2" type="decor" x="702.831" y="-3549.55" width="1024" height="1024"/>
+ </objectgroup>
+ <objectgroup id="77" name="stars1">
+  <properties>
+   <property name="depth" type="float" value="-6000"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="825" name="Void/Planet4" type="decor" x="6901.61" y="-2474.4" width="820" height="820"/>
+  <object id="826" name="Void/Planet3" type="decor" x="4440.95" y="-3639.03" width="1751" height="1094"/>
+  <object id="827" name="Void/Planet15" type="decor" x="678.831" y="-573.547" width="1024" height="1024"/>
+  <object id="828" name="Void/Planet16" type="decor" x="-6073.1" y="680.074" width="1124" height="887"/>
+  <object id="830" name="Void/Planet10" type="decor" x="-3693.17" y="690.453" width="1024" height="1024"/>
+  <object id="831" name="Void/Planet11" type="decor" x="-2049.17" y="-2949.55" width="1024" height="1024"/>
+  <object id="832" name="Void/Nebula1" type="decor" x="7927.83" y="-1237.69" width="2000" height="1624"/>
+ </objectgroup>
+ <objectgroup id="74" name="trees-far1">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="765" name="Void/Background/Midground" type="decor" x="-6729.81" y="1241.6" width="16681.6" height="2048">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="71" name="terrain -13">
+  <properties>
+   <property name="depth" type="float" value="-832"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="729" name="void" type="terrain" x="3004" y="4516.61">
+   <polygon points="-564.707,-2731.26 -419.141,-1979.27 334.93,-1709.84 1060.54,-1976.28 1187.07,-2731.7"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="72" name="decor -13">
+  <properties>
+   <property name="depth" type="float" value="-832"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="833" name="Void/VoidDoor" type="decor" x="2793.08" y="722.903" width="1077" height="1064"/>
+ </objectgroup>
+ <objectgroup id="7912" name="bridge -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="764" name="void" type="terrain" x="3140.3" y="1791.11" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="7911" name="bridge -11">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="763" name="void" type="terrain" x="3141.33" y="1805.53" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="791" name="bridge -10">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="762" name="void" type="terrain" x="3143.39" y="1828.19" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="16" name="trees-mid">
+  <properties>
+   <property name="depth" type="float" value="-612"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="781" name="bridge -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="761" name="void" type="terrain" x="3142.36" y="1850.84" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="771" name="bridge -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="760" name="void" type="terrain" x="3141.33" y="1873.5" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="761" name="bridge -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="759" name="void" type="terrain" x="3140.3" y="1897.19" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="751" name="bridge -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="758" name="void" type="terrain" x="3141.33" y="1920.87" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="875" name="void" type="terrain" x="953.003" y="2297.65">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="25.4454,10.044 29.563,867.588 284.294,865.029 284.455,9.67755 324.812,-697.412 285.472,-1392.81 278.646,-2714.91 26.2499,-2710.52 29.8746,-1391.73 -16.1326,-693.709"/>
+  </object>
+  <object id="876" name="void" type="terrain" x="1881.37" y="2284.6">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="25.4454,10.044 29.563,867.588 284.294,865.029 284.455,9.67755 324.812,-697.412 285.472,-1392.81 278.646,-2714.91 26.2499,-2710.52 29.8746,-1391.73 -16.1326,-693.709"/>
+  </object>
+  <object id="877" name="void" type="terrain" x="4399.48" y="2291.12">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="25.4454,10.044 29.563,867.588 284.294,865.029 284.455,9.67755 324.812,-697.412 285.472,-1392.81 278.646,-2714.91 26.2499,-2710.52 29.8746,-1391.73 -16.1326,-693.709"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="73" name="decor -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="79" name="bridge -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="757" name="void" type="terrain" x="3142.36" y="1945.59" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="78" name="bridge -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="756" name="void" type="terrain" x="3142.36" y="1963.1" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="bridge -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="755" name="void" type="terrain" x="3143.39" y="1986.79" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="868" name="void" type="terrain" x="948.98" y="2299.69">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="25.4454,10.044 29.563,867.588 284.294,865.029 284.455,9.67755 324.812,-697.412 285.472,-1392.81 278.646,-2714.91 26.2499,-2710.52 29.8746,-1391.73 -16.1326,-693.709"/>
+  </object>
+  <object id="872" name="void" type="terrain" x="1886.42" y="2291.12">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="25.4454,10.044 29.563,867.588 284.294,865.029 284.455,9.67755 324.812,-697.412 285.472,-1392.81 278.646,-2714.91 26.2499,-2710.52 29.8746,-1391.73 -16.1326,-693.709"/>
+  </object>
+  <object id="873" name="void" type="terrain" x="4406.01" y="2291.12">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="25.4454,10.044 29.563,867.588 284.294,865.029 284.455,9.67755 324.812,-697.412 285.472,-1392.81 278.646,-2714.91 26.2499,-2710.52 29.8746,-1391.73 -16.1326,-693.709"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="76" name="bridge -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="753" name="void" type="terrain" x="3143.39" y="2010.47" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="75" name="bridge -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="752" name="void" type="terrain" x="3143.39" y="2035.19" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="67" name="water bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="68" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="20" name="terrain 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="861" name="void" type="terrain" x="1807.2" y="2293.48">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="39.2171,10.044 45.5633,867.588 438.161,865.029 438.41,9.67755 500.609,-697.412 439.977,-1392.81 429.456,-2714.91 40.457,-2710.52 46.0435,-1391.73 -24.864,-693.709"/>
+  </object>
+  <object id="863" name="void" type="terrain" x="4327.07" y="2295.77">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="39.2171,10.044 45.5633,867.588 438.161,865.029 438.41,9.67755 500.609,-697.412 439.977,-1392.81 429.456,-2714.91 40.457,-2710.52 46.0435,-1391.73 -24.864,-693.709"/>
+  </object>
+  <object id="866" name="void" type="terrain" x="949.766" y="2295.2">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="25.4454,10.044 29.563,867.588 284.294,865.029 284.455,9.67755 324.812,-697.412 285.472,-1392.81 278.646,-2714.91 26.2499,-2710.52 29.8746,-1391.73 -16.1326,-693.709"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="78" name="decor midterrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="881" name="Generic/WoodDoor" type="decor" x="4431.92" y="1672.87" width="273" height="370"/>
+  <object id="882" name="Generic/WoodDoor" type="decor" x="1908.39" y="1669.72" width="273" height="370"/>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="834" name="void" type="terrain" x="-50.2396" y="2052.32" width="5761.04" height="398.729"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="864" name="Generic/SignSmithFlat" type="decor" x="1917.81" y="1429" width="256" height="200"/>
+  <object id="865" name="Generic/SignAlchFlat" type="decor" x="4449.94" y="1393.05" width="256" height="200"/>
+ </objectgroup>
+ <objectgroup id="57" name="objects back">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="623" name="life-stone" type="object" x="2609.58" y="1626.66" width="146" height="423"/>
+  <object id="707" name="edge-portal" type="object" x="-2564" y="1420.57" width="199.918" height="640.851">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="EndianForest/Zone_3_0"/>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="736" name="portal" type="object" x="3162.22" y="1630.93" width="312" height="423.038">
+   <properties>
+    <property name="map" value="VoidStar/Zone_1_0"/>
+    <property name="transition" value="void-door"/>
+   </properties>
+  </object>
+  <object id="883" name="portal" type="object" x="4438.82" y="1629.06" width="256" height="423.038">
+   <properties>
+    <property name="map" value="VoidStar/Town_Alch"/>
+    <property name="transition" value="alch"/>
+   </properties>
+  </object>
+  <object id="884" name="portal" type="object" x="1917.56" y="1630.43" width="256" height="423.038">
+   <properties>
+    <property name="map" value="VoidStar/Town_Smith"/>
+    <property name="transition" value="smith"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="2205.92" y="1915.62" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="738" name="spawn" type="object" x="3253.47" y="1924.9" width="128" height="128">
+   <properties>
+    <property name="transition" value="void-door"/>
+   </properties>
+  </object>
+  <object id="885" name="spawn-wood-door" type="object" x="4498.31" y="1917.76" width="128" height="128">
+   <properties>
+    <property name="transition" value="alch"/>
+   </properties>
+  </object>
+  <object id="886" name="spawn-wood-door" type="object" x="1969.43" y="1917.76" width="128" height="128">
+   <properties>
+    <property name="transition" value="smith"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="66" name="water">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="28" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="31" name="rain">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="32" name="decor +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="33" name="decor +8">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

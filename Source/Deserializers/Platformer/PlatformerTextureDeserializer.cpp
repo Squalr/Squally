@@ -40,6 +40,7 @@
 #include "Scenes/Platformer/Textures/TempleGreenTexture.h"
 #include "Scenes/Platformer/Textures/TempleTexture.h"
 #include "Scenes/Platformer/Textures/TrailTexture.h"
+#include "Scenes/Platformer/Textures/VoidTexture.h"
 #include "Scenes/Platformer/Textures/WoodTexture.h"
 
 using namespace cocos2d;
@@ -99,6 +100,7 @@ PlatformerTextureDeserializer::PlatformerTextureDeserializer() : super(Platforme
 		PlatformerTextureDeserializer::Deserializers[TempleGreenDarkTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleGreenDarkTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[TempleTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[TrailTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)TrailTexture::create(properties); };
+		PlatformerTextureDeserializer::Deserializers[VoidTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)VoidTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[WoodTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)WoodTexture::create(properties); };
 	}
 }
