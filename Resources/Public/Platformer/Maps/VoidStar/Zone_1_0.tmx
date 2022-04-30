@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="767">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="834">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Void"/>
@@ -12,11 +12,48 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="75" name="rocks">
+ <objectgroup id="76" name="stars3">
   <properties>
-   <property name="depth" type="float" value="-3200"/>
+   <property name="depth" type="float" value="-12000"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="817" name="Void/Planet2" type="decor" x="6451" y="-358" width="1673" height="1143"/>
+  <object id="818" name="Void/Planet5" type="decor" x="7382" y="-3226" width="820" height="820"/>
+  <object id="822" name="Void/Planet13" type="decor" x="2844" y="68" width="1024" height="1024"/>
+  <object id="823" name="Void/Galaxy1" type="decor" x="1288" y="-2824" width="2615" height="1918"/>
+ </objectgroup>
+ <objectgroup id="75" name="stars2">
+  <properties>
+   <property name="depth" type="float" value="-8000"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="792" name="Void/Planet1" type="decor" x="-7638.5" y="-976" width="1674" height="1036"/>
+  <object id="797" name="Void/Planet6" type="decor" x="838" y="-4746" width="820" height="820"/>
+  <object id="798" name="Void/Planet7" type="decor" x="8502" y="1174" width="820" height="780"/>
+  <object id="799" name="Void/Planet8" type="decor" x="-5250" y="-1578" width="1024" height="1024"/>
+  <object id="802" name="Void/Planet12" type="decor" x="-2590.91" y="305.212" width="1024" height="1024"/>
+  <object id="804" name="Void/Planet14" type="decor" x="10228" y="-504" width="1024" height="1024"/>
+  <object id="807" name="Void/Planet17" type="decor" x="-5780" y="-3128" width="528" height="510"/>
+  <object id="808" name="Void/Planet18" type="decor" x="448" y="817" width="1024" height="1024"/>
+  <object id="811" name="Void/Star1" type="decor" x="-1242" y="-1834" width="512" height="512"/>
+  <object id="812" name="Void/Star2" type="decor" x="4924.24" y="113.939" width="512" height="512"/>
+  <object id="813" name="Void/Star3" type="decor" x="6152" y="-3496" width="512" height="512"/>
+  <object id="814" name="Void/Star4" type="decor" x="-2904" y="-4336" width="512" height="512"/>
+  <object id="815" name="Void/Sun1" type="decor" x="11656" y="-3192" width="1024" height="1024"/>
+  <object id="816" name="Void/Sun2" type="decor" x="-304" y="-3424" width="1024" height="1024"/>
+ </objectgroup>
+ <objectgroup id="77" name="stars1">
+  <properties>
+   <property name="depth" type="float" value="-6000"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="825" name="Void/Planet4" type="decor" x="4091.5" y="-2403.5" width="820" height="820"/>
+  <object id="826" name="Void/Planet3" type="decor" x="2867.5" y="-5075.5" width="1751" height="1094"/>
+  <object id="827" name="Void/Planet15" type="decor" x="-328" y="-448" width="1024" height="1024"/>
+  <object id="828" name="Void/Planet16" type="decor" x="12672" y="-220" width="1124" height="887"/>
+  <object id="830" name="Void/Planet10" type="decor" x="-4700" y="816" width="1024" height="1024"/>
+  <object id="831" name="Void/Planet11" type="decor" x="-3056" y="-2824" width="1024" height="1024"/>
+  <object id="832" name="Void/Nebula1" type="decor" x="8764.5" y="-3327" width="2000" height="1624"/>
  </objectgroup>
  <objectgroup id="74" name="trees-far1">
   <properties>
@@ -28,12 +65,6 @@
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="69" name="decor -14">
-  <properties>
-   <property name="depth" type="float" value="-896"/>
-   <property name="type" value="objects"/>
-  </properties>
  </objectgroup>
  <objectgroup id="71" name="terrain -13">
   <properties>
@@ -49,7 +80,7 @@
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="766" name="Void/VoidDoor" type="decor" x="5297.72" y="723.74" width="1077" height="1064"/>
+  <object id="833" name="Void/VoidDoor" type="decor" x="5332.5" y="738.152" width="1077" height="1064"/>
  </objectgroup>
  <objectgroup id="7912" name="bridge -12">
   <properties>
@@ -225,8 +256,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="500" name="Forest/Flower10" type="decor" x="7478.08" y="1940.57" width="199" height="133"/>
-  <object id="741" name="Forest/Flower11" type="decor" x="4642" y="1930" width="92" height="116"/>
   <object id="742" name="Forest/Flower9" type="decor" x="2284.5" y="1899.5" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
@@ -299,22 +328,17 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="25" name="player_layer" visible="0">
+ <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="713.92" y="1923.62" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="4765.92" y="1915.62" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="650" name="spawn" type="object" x="7311.02" y="1929.5" width="128" height="128">
-   <properties>
-    <property name="transition" value="left"/>
-   </properties>
-  </object>
-  <object id="716" name="spawn" type="object" x="424" y="1912" width="128" height="128">
+  <object id="716" name="spawn" type="object" x="4476" y="1904" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
    </properties>
@@ -347,19 +371,11 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="5350.39" y="1962.93" width="270" height="748"/>
-  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="6779.03" y="1962.5" width="270" height="748"/>
-  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="9515.62" y="1911.9" width="242" height="738"/>
-  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="277.57" y="1890.1" width="242" height="738"/>
-  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="7408.81" y="1935" width="270" height="748"/>
  </objectgroup>
  <objectgroup id="33" name="decor +8">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="62.81" y="1882.6" width="242" height="738"/>
-  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="6202.38" y="1937.9" width="242" height="738"/>
-  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="6996.23" y="2033.92" width="242" height="738"/>
  </objectgroup>
 </map>

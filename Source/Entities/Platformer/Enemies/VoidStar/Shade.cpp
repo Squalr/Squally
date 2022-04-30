@@ -22,8 +22,8 @@ Shade* Shade::deserialize(ValueMap& properties)
 
 Shade::Shade(ValueMap& properties) : super(properties,
 	Shade::MapKey,
-	EntityResources::Enemies_VoidStar_Shade_Animations,
-	EntityResources::Enemies_VoidStar_Shade_Emblem,
+	EntityResources::Enemies__Deprecated_Shade_Animations,
+	EntityResources::Enemies__Deprecated_Shade_Emblem,
 	CSize(284.0f, 256.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

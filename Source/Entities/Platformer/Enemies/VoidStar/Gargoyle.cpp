@@ -22,8 +22,8 @@ Gargoyle* Gargoyle::deserialize(ValueMap& properties)
 
 Gargoyle::Gargoyle(ValueMap& properties) : super(properties,
 	Gargoyle::MapKey,
-	EntityResources::Enemies_VoidStar_Gargoyle_Animations,
-	EntityResources::Enemies_VoidStar_Gargoyle_Emblem,
+	EntityResources::Enemies__Deprecated_Gargoyle_Animations,
+	EntityResources::Enemies__Deprecated_Gargoyle_Emblem,
 	CSize(256.0f, 256.0f),
 	0.9f,
 	Vec2(-32.0f, 0.0f))

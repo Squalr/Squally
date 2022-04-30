@@ -22,8 +22,8 @@ LightningGolem* LightningGolem::deserialize(ValueMap& properties)
 
 LightningGolem::LightningGolem(ValueMap& properties) : super(properties,
 	LightningGolem::MapKey,
-	EntityResources::Enemies_VoidStar_LightningGolem_Animations,
-	EntityResources::Enemies_VoidStar_LightningGolem_Emblem,
+	EntityResources::Enemies__Deprecated_LightningGolem_Animations,
+	EntityResources::Enemies__Deprecated_LightningGolem_Emblem,
 	CSize(768.0f, 840.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
