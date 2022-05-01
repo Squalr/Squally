@@ -8,7 +8,7 @@
 #include "Engine/Physics/Liquid/LiquidNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Objects/Platformer/Decor/LavaBubbles.h"
+#include "Objects/Platformer/Decor/LavaFX.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/UIResources.h"
@@ -19,7 +19,7 @@ const std::string Lava::MapKey = "lava";
 const Color4B Lava::SurfaceColor = Color4B(224, 224, 0, 255);
 const Color4B Lava::BodyColor = Color4B(212, 12, 12, 224);
 const float Lava::LavaGravity = 0.0f;
-const float Lava::BubbleDensityPer1024Px = 4.0f;
+const float Lava::BubbleDensityPer1024Px = 1.0f;
 
 Lava* Lava::create(ValueMap& properties)
 {
@@ -37,7 +37,8 @@ Lava::Lava(ValueMap& properties) : super(properties, 8.0f, (CollisionType)Platfo
 
 	for (int index = 0; index < bubbleInstances; index++)
 	{
-		LavaBubbles* instance = LavaBubbles::create(bubbleProperties);
+		LavaFX* instance = LavaFX::create(bubbleProperties);
+		instance->setPositionY(this->liquidSize.height / 2.0f);
 		this->bubbles.push_back(instance);
 		this->addChild(instance);
 	}
@@ -87,31 +88,45 @@ void Lava::applyLavaForce(CollisionObject* target, float dt)
 
 void Lava::runBubbles()
 {
-	for (int index = 0; index < this->splashes; index++)
+	for (int index = 0; index < int(this->bubbles.size()); index++)
 	{
-		this->runSplash(index);
+		this->runAction(Sequence::create(
+			DelayTime::create(RandomHelper::random_real(0.0f, 8.0f)),
+			CallFunc::create([=]()
+			{
+				this->runBubble(index);
+				this->runBubbleLoop(index);
+			}),
+			nullptr
+		));
 	}
 }
 
-void Lava::runBubble(int index)
+void Lava::runBubbleLoop(int index)
 {
-    if (this->wavesDisabled)
+    if (this->bubblesDisabled)
     {
         return;
     }
 
 	this->runAction(Sequence::create(
-		DelayTime::create(RandomHelper::random_real(1.0f, 2.0f)),
+		DelayTime::create(RandomHelper::random_real(8.0f, 16.0f)),
 		CallFunc::create([=]()
 		{
-			float bucketStart = float(index) / float(this->bubbles.size()) * this->liquidSize.width;
-			float bucketSize = this->liquidSize.width / float(this->bubbles.size());
-			float x = bucketStart + RandomHelper::random_real(std::min(32.0f, bucketSize), bucketSize);
-
-			this->bubbles[index]->setPositionX(x);
-			this->bubbles[index]->runAnimation();
 			this->runBubble(index);
+			this->runBubbleLoop(index);
 		}),
 		nullptr
 	));
+}
+
+void Lava::runBubble(int index)
+{
+	float bucketStart = float(index) / float(this->bubbles.size()) * this->liquidSize.width;
+	float bucketSize = this->liquidSize.width / float(this->bubbles.size());
+	float x = bucketStart + RandomHelper::random_real(std::min(64.0f, bucketSize), bucketSize) - this->liquidSize.width / 2.0f;
+
+	this->bubbles[index]->setScale(RandomHelper::random_real(0.25f, 1.0f));
+	this->bubbles[index]->setPositionX(x);
+	this->bubbles[index]->runAnimation();
 }

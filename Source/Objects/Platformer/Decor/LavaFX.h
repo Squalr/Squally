@@ -4,23 +4,23 @@
 
 class SmartAnimationSequenceNode;
 
-class LavaBubbles : public GameObject
+class LavaFX : public GameObject
 {
 public:
-	static LavaBubbles* create(cocos2d::ValueMap& properties);
+	static LavaFX* create(cocos2d::ValueMap& properties);
 
 	void runAnimation();
 
 	static const std::string MapKey;
 
 protected:
-	LavaBubbles(cocos2d::ValueMap& properties);
-	virtual ~LavaBubbles();
+	LavaFX(cocos2d::ValueMap& properties);
+	virtual ~LavaFX();
 
 	void initializePositions() override;
 
 private:
 	typedef GameObject super;
 
-	SmartAnimationSequenceNode* bubbleAnimations = nullptr;
+	SmartAnimationSequenceNode* fxAnimations = nullptr;
 };

@@ -3,7 +3,7 @@
 
 #include "Engine/Physics/Liquid/LiquidNode.h"
 
-class LavaBubbles;
+class LavaFX;
 
 class Lava : public LiquidNode
 {
@@ -24,9 +24,11 @@ private:
 	typedef LiquidNode super;
 
 	void runBubbles();
+	void runBubbleLoop(int index);
 	void runBubble(int index);
 
-	std::vector<LavaBubbles*> bubbles;
+	std::vector<LavaFX*> bubbles;
+	bool bubblesDisabled = false;
 
 	static const cocos2d::Color4B SurfaceColor;
 	static const cocos2d::Color4B BodyColor;
