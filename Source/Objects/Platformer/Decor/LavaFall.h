@@ -17,10 +17,12 @@ protected:
 	LavaFall(cocos2d::ValueMap& properties);
 	virtual ~LavaFall();
 
+	void onEnter() override;
 	void initializePositions() override;
 
 private:
 	typedef GameObject super;
 
-	std::vector<SmartAnimationSequenceNode*> animationLinks;
+	SmartAnimationSequenceNode* baseAnimation = nullptr;
+	SmartAnimationSequenceNode* fallAnimation = nullptr;
 };

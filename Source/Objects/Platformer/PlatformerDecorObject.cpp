@@ -151,7 +151,11 @@ Sprite* PlatformerDecorObject::buildSprite()
 			params.wrapT = GL_REPEAT;
 		}
 
-		if (repeatX && !repeatY)
+		if (repeatX && repeatY)
+		{
+			instance->setTextureRect(CRect(0.0f, 0.0f, this->objectSize.width, this->objectSize.height));
+		}
+		else if (repeatX)
 		{
 			float scale = this->objectSize.height / instance->getContentSize().height;
 
@@ -160,16 +164,12 @@ Sprite* PlatformerDecorObject::buildSprite()
 
 			instance->setTextureRect(CRect(0.0f, 0.0f, this->objectSize.width / scale, instance->getContentSize().height));
 		}
-		if (repeatY && !repeatX)
+		else if (repeatY)
 		{
 			instance->setTextureRect(CRect(0.0f, 0.0f, instance->getContentSize().width, this->objectSize.height));
 
 			// Y is repeating -- set the scale based on the width
 			instance->setScale(this->objectSize.width / instance->getContentSize().width);
-		}
-		else if (repeatX && repeatY)
-		{
-			instance->setTextureRect(CRect(0.0f, 0.0f, this->objectSize.width, this->objectSize.height));
 		}
 
 		Texture2D* texture = instance->getTexture();

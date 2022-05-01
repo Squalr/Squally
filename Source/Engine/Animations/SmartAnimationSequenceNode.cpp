@@ -289,6 +289,18 @@ void SmartAnimationSequenceNode::setFlippedY(bool isFlipped)
 	this->sprite->setFlippedY(this->isFlippedY);
 }
 
+void SmartAnimationSequenceNode::setRepeatX(bool isRepeated)
+{
+	this->isRepeatedX = isRepeated;
+	this->updateRepeating();
+}
+
+void SmartAnimationSequenceNode::setRepeatY(bool isRepeated)
+{
+	this->isRepeatedY = isRepeated;
+	this->updateRepeating();
+}
+
 void SmartAnimationSequenceNode::setSpriteChangeCallback(std::function<void(const std::string&)> spriteChangeCallback)
 {
 	this->spriteChangeCallback = spriteChangeCallback;
@@ -300,10 +312,51 @@ void SmartAnimationSequenceNode::setNewSpriteImage(const std::string& spriteImag
 	this->sprite->setFlippedX(this->isFlippedX);
 	this->sprite->setFlippedY(this->isFlippedY);
 	this->sprite->setAnchorPoint(this->animationAnchor);
+	this->updateRepeating();
 
 	if (this->spriteChangeCallback != nullptr)
 	{
 		this->spriteChangeCallback(spriteImage);
+	}
+}
+
+void SmartAnimationSequenceNode::updateRepeating()
+{
+	if (this->isRepeatedX || this->isRepeatedY)
+	{
+		Texture2D::TexParams params = Texture2D::TexParams();
+		params.minFilter = GL_LINEAR;
+		params.magFilter = GL_LINEAR;
+
+		if (this->isRepeatedX)
+		{
+			params.wrapS = GL_REPEAT;
+		}
+		
+		if (this->isRepeatedY)
+		{
+			params.wrapT = GL_REPEAT;
+		}
+
+		if (this->isRepeatedX && this->isRepeatedY)
+		{
+			this->sprite->setTextureRect(CRect(0.0f, 0.0f, this->getContentSize().width, this->getContentSize().height));
+		}
+		else if (this->isRepeatedX)
+		{
+			this->sprite->setTextureRect(CRect(0.0f, 0.0f, this->getContentSize().width, this->sprite->getContentSize().height));
+		}
+		else if (this->isRepeatedY)
+		{
+			this->sprite->setTextureRect(CRect(0.0f, 0.0f, this->sprite->getContentSize().width, this->getContentSize().height));
+		}
+
+		Texture2D* texture = this->sprite->getTexture();
+
+		if (texture != nullptr)
+		{
+			texture->setTexParameters(params);
+		}
 	}
 }
 

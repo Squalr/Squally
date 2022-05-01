@@ -23,6 +23,8 @@
 #include "Objects/Platformer/Collectables/ManaOrb.h"
 #include "Objects/Platformer/Collectables/SpawnPools/SpawnPoolEF.h"
 #include "Objects/Platformer/Collectables/SpawnPools/SpawnPoolUR.h"
+#include "Objects/Platformer/Decor/LavaFall.h"
+#include "Objects/Platformer/Decor/LavaGeyser.h"
 #include "Objects/Platformer/Decor/FireplaceFire.h"
 #include "Objects/Platformer/Decor/MagicWall.h"
 #include "Objects/Platformer/Decor/MineClaw.h"

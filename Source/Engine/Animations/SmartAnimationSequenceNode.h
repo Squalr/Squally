@@ -31,6 +31,8 @@ public:
 	void setAnimationAnchor(cocos2d::Vec2 anchor);
 	void setFlippedX(bool isFlipped);
 	void setFlippedY(bool isFlipped);
+	void setRepeatX(bool isRepeated);
+	void setRepeatY(bool isRepeated);
 	void setSpriteChangeCallback(std::function<void(const std::string&)> spriteChangeCallback);
 
 	static void PrimeCache(const std::string& initialSequenceResourceFile);
@@ -46,11 +48,14 @@ protected:
 private:
 	typedef SmartNode super;
 
+	void updateRepeating();
 	void setNewSpriteImage(const std::string& spriteImage);
 
 	cocos2d::Vec2 animationAnchor;
 	bool isFlippedX = false;
 	bool isFlippedY = false;
+	bool isRepeatedX = false;
+	bool isRepeatedY = false;
 	std::string defaultSprite;
 	bool hasPlayingAnimation = false;
 	int repeatIndex = 0;

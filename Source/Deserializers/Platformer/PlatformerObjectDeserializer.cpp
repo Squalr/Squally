@@ -143,6 +143,8 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[HelpTotemSwimHack::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemSwimHack::create(properties); };
 	this->deserializers[Laser::MapKey] = [=](ValueMap properties) { return (GameObject*)Laser::create(properties); };
 	this->deserializers[Lava::MapKey] = [=](ValueMap properties) { return (GameObject*)Lava::create(properties); };
+	this->deserializers[LavaFall::MapKey] = [=](ValueMap properties) { return (GameObject*)LavaFall::create(properties); };
+	this->deserializers[LavaGeyser::MapKey] = [=](ValueMap properties) { return (GameObject*)LavaGeyser::create(properties); };
 	this->deserializers[Lever::MapKey] = [=](ValueMap properties) { return (GameObject*)Lever::create(properties); };
 	this->deserializers[LifeStone::MapKey] = [=](ValueMap properties) { return (GameObject*)LifeStone::create(properties); };
 	this->deserializers[PullyHorizontal::MapKey] = [=](ValueMap properties) { return (GameObject*)PullyHorizontal::create(properties); };
