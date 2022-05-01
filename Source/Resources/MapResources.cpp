@@ -180,5 +180,6 @@ const std::string MapResources::VoidStar_Mages_Warp = "Public/Platformer/Maps/Vo
 const std::string MapResources::VoidStar_Town_Alch = "Public/Platformer/Maps/VoidStar/Town_Alch.tmx";
 const std::string MapResources::VoidStar_Town_Main = "Public/Platformer/Maps/VoidStar/Town_Main.tmx";
 const std::string MapResources::VoidStar_Town_Smith = "Public/Platformer/Maps/VoidStar/Town_Smith.tmx";
+const std::string MapResources::VoidStar_Zone_1_0 = "Public/Platformer/Maps/VoidStar/Zone_1_0.tmx";
 const std::string MapResources::WarpGatePreviewMaps_EndianForest = "Public/Platformer/Maps/WarpGatePreviewMaps/EndianForest.tmx";
 const std::string MapResources::WarpGatePreviewMaps_UnderflowRuins = "Public/Platformer/Maps/WarpGatePreviewMaps/UnderflowRuins.tmx";

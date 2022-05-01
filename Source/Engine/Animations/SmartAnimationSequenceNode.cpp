@@ -346,21 +346,16 @@ void SmartAnimationSequenceNode::updateRepeating()
 
 		if (this->isRepeatedX && this->isRepeatedY)
 		{
-			this->sprite->setTextureRect(CRect(this->repeatTilingOffset.x, this->repeatTilingOffset.y,
-				this->getContentSize().width + this->repeatTilingOffset.x, this->getContentSize().height));
+			this->sprite->setTextureRect(CRect(this->repeatTilingOffset.x, this->repeatTilingOffset.y, this->getContentSize().width, this->getContentSize().height));
 		}
 		else if (this->isRepeatedX)
 		{
-			this->sprite->setTextureRect(CRect(this->repeatTilingOffset.x, this->repeatTilingOffset.y,
-				this->getContentSize().width + this->repeatTilingOffset.x, this->sprite->getContentSize().height + this->repeatTilingOffset.y));
+			this->sprite->setTextureRect(CRect(this->repeatTilingOffset.x, this->repeatTilingOffset.y, this->getContentSize().width, this->sprite->getContentSize().height));
 		}
 		else if (this->isRepeatedY)
 		{
-			this->sprite->setTextureRect(CRect(this->repeatTilingOffset.x, this->repeatTilingOffset.y,
-				this->sprite->getContentSize().width + this->repeatTilingOffset.x, this->getContentSize().height + this->repeatTilingOffset.y));
+			this->sprite->setTextureRect(CRect(this->repeatTilingOffset.x, this->repeatTilingOffset.y, this->sprite->getContentSize().width, this->getContentSize().height));
 		}
-
-		this->sprite->setPosition(this->repeatTilingOffset);
 
 		Texture2D* texture = this->sprite->getTexture();
 

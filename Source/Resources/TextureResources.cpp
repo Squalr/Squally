@@ -28,6 +28,7 @@ const std::string TextureResources::MarbleDarkTexture = "Private/Platformer/Text
 const std::string TextureResources::MarbleGrassTexture = "Private/Platformer/Textures/MarbleGrassTexture.png";
 const std::string TextureResources::MarbleTexture = "Private/Platformer/Textures/MarbleTexture.png";
 const std::string TextureResources::MinesTexture = "Private/Platformer/Textures/MinesTexture.png";
+const std::string TextureResources::ObsideanTexture = "Private/Platformer/Textures/ObsideanTexture.png";
 const std::string TextureResources::RuinsGrayDarkTexture = "Private/Platformer/Textures/RuinsGrayDarkTexture.png";
 const std::string TextureResources::RuinsGrayTexture = "Private/Platformer/Textures/RuinsGrayTexture.png";
 const std::string TextureResources::RuinsTexture = "Private/Platformer/Textures/RuinsTexture.png";

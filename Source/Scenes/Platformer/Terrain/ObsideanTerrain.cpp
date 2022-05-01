@@ -2,7 +2,7 @@
 
 #include "cocos/base/CCValue.h"
 
-#include "Scenes/Platformer/Textures/MagmaTexture.h"
+#include "Scenes/Platformer/Textures/ObsideanTexture.h"
 
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
@@ -29,11 +29,11 @@ ObsideanTerrain::ObsideanTerrain(ValueMap& properties) : super(
 		{
 			ValueMap transformedProps = this->transformPropertiesForTexture(props);
 			
-			return MagmaTexture::create(transformedProps);
+			return ObsideanTexture::create(transformedProps);
 		},
 		0.5f,
 		ObsideanTerrain::MapKey,
-		TextureResources::MagmaTexture,
+		TextureResources::ObsideanTexture,
 		TerrainResources::Obsidean_Top,
 		TerrainResources::Obsidean_TopLeft,
 		TerrainResources::Obsidean_TopRight,
