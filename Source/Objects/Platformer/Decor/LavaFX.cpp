@@ -42,7 +42,7 @@ void LavaFX::runAnimation()
 	if (RandomHelper::random_real(0.0f, 1.0f) < 0.65f) // Controls the ratio of bubbles to whisps
 	{
 		const std::vector<std::string>& animationFiles = SmartAnimationSequenceNode::GetAllAnimationFiles(ObjectResources::Decor_LavaBubble_Bubble_0000);
-		this->fxAnimations->playAnimation(animationFiles, RandomHelper::random_real(0.05f, 0.15f), true);
+		this->fxAnimations->playAnimation(animationFiles, RandomHelper::random_real(0.045f, 0.11f), true);
 	}
 	else
 	{
