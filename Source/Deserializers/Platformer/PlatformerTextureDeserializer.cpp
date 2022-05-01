@@ -25,6 +25,7 @@
 #include "Scenes/Platformer/Textures/MarbleDarkTexture.h"
 #include "Scenes/Platformer/Textures/MarbleGrassTexture.h"
 #include "Scenes/Platformer/Textures/MarbleTexture.h"
+#include "Scenes/Platformer/Textures/MagmaTexture.h"
 #include "Scenes/Platformer/Textures/MinesTexture.h"
 #include "Scenes/Platformer/Textures/RuinsGrayDarkTexture.h"
 #include "Scenes/Platformer/Textures/RuinsGrayTexture.h"
@@ -86,6 +87,7 @@ PlatformerTextureDeserializer::PlatformerTextureDeserializer() : super(Platforme
 		PlatformerTextureDeserializer::Deserializers[MarbleGrassTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleGrassTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[MarbleTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[MinesTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)MinesTexture::create(properties); };
+		PlatformerTextureDeserializer::Deserializers[MagmaTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)MagmaTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[RuinsGrayDarkTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayDarkTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[RuinsGrayTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[RuinsTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsTexture::create(properties); };

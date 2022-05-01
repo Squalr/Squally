@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="117" nextobjectid="844">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="850">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -17,9 +17,6 @@
    <property name="depth" type="float" value="-1536"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="833" name="caverns" type="terrain" x="323.101" y="4549.82">
-   <polygon points="-1141.99,-2729.26 -847.616,-1979.27 677.319,-1709.84 2144.7,-1976.28 2400.58,-2731.7"/>
-  </object>
  </objectgroup>
  <objectgroup id="99" name="lava -24">
   <properties>
@@ -33,9 +30,6 @@
    <property name="depth" type="float" value="-1472"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="831" name="caverns" type="terrain" x="323.101" y="4549.82">
-   <polygon points="-1141.99,-2729.26 -847.616,-1979.27 677.319,-1709.84 2144.7,-1976.28 2400.58,-2731.7"/>
-  </object>
  </objectgroup>
  <objectgroup id="98" name="lava -23">
   <properties>
@@ -49,9 +43,6 @@
    <property name="depth" type="float" value="-1408"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="829" name="caverns" type="terrain" x="323.101" y="4549.82">
-   <polygon points="-1141.99,-2729.26 -847.616,-1979.27 677.319,-1709.84 2144.7,-1976.28 2400.58,-2731.7"/>
-  </object>
  </objectgroup>
  <objectgroup id="97" name="lava -22">
   <properties>
@@ -65,9 +56,6 @@
    <property name="depth" type="float" value="-1344"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="827" name="caverns" type="terrain" x="323.101" y="4549.82">
-   <polygon points="-1141.99,-2729.26 -847.616,-1979.27 677.319,-1709.84 2144.7,-1976.28 2400.58,-2731.7"/>
-  </object>
  </objectgroup>
  <objectgroup id="96" name="lava -21">
   <properties>
@@ -84,7 +72,7 @@
   <object id="794" name="caverns" type="terrain" x="323.101" y="4549.82">
    <polygon points="-1141.99,-2729.26 -847.616,-1979.27 677.319,-1709.84 2144.7,-1976.28 2400.58,-2731.7"/>
   </object>
-  <object id="795" name="caverns" type="terrain" x="4999.96" y="4554">
+  <object id="795" name="obsidean" type="terrain" x="4999.96" y="4554">
    <polygon points="-805.17,-2736.26 -597.619,-1979.27 477.55,-1709.84 1512.13,-1976.28 1692.55,-2731.7"/>
   </object>
  </objectgroup>
@@ -96,9 +84,9 @@
   <object id="796" name="Generic/TownFence" type="decor" x="-273.235" y="871.53" width="538" height="948"/>
   <object id="797" name="Generic/TownFence" type="decor" x="185.295" y="870.3" width="538" height="948"/>
   <object id="798" name="Generic/TownFence" type="decor" x="684.595" y="870.3" width="538" height="948"/>
-  <object id="799" name="Generic/TownFence" type="decor" x="1197.95" y="870.3" width="538" height="948"/>
-  <object id="800" name="Generic/TownFence" type="decor" x="1690.69" y="868.47" width="538" height="948"/>
-  <object id="801" name="Generic/TownFence" type="decor" x="2167.23" y="868.47" width="538" height="948"/>
+  <object id="799" name="Generic/FancyGate1" type="decor" x="1140.86" y="1008.6" width="538" height="816"/>
+  <object id="800" name="Generic/TownFence" type="decor" x="1642.69" y="872.47" width="538" height="948"/>
+  <object id="801" name="Generic/TownFence" type="decor" x="2119.23" y="872.47" width="538" height="948"/>
   <object id="802" name="Generic/TownFence" type="decor" x="-749" y="874" width="538" height="948"/>
   <object id="823" name="hell-gate" type="object" x="5703" y="1281" width="512" height="512"/>
  </objectgroup>
@@ -129,6 +117,14 @@
   <object id="825" name="squally" type="entity" x="5539.03" y="1687.18" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="844" name="warp" type="object" x="4369.67" y="1562.33" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-A"/>
    </properties>
   </object>
  </objectgroup>
@@ -254,8 +250,34 @@
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="729" name="caverns" type="terrain" x="3702.95" y="4628.11">
+  <object id="729" name="obsidean" type="terrain" x="3702.95" y="4628.11">
    <polygon points="-564.707,-2723.26 -419.141,-1979.27 334.93,-1709.84 1060.54,-1976.28 1187.07,-2731.7"/>
+  </object>
+  <object id="849" name="caverns" type="terrain" x="7116.61" y="4631.76">
+   <polygon points="-564.707,-2723.26 -419.141,-1979.27 334.93,-1709.84 1060.54,-1976.28 1187.07,-2731.7"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="117" name="player_layer-13">
+  <properties>
+   <property name="depth" type="float" value="-832"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="0.25"/>
+  </properties>
+  <object id="845" name="warp" type="object" x="4368.67" y="1645.33" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-A"/>
+   </properties>
+  </object>
+  <object id="847" name="warp" type="object" x="4039" y="1644" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-B"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="72" name="decor -13">
@@ -460,10 +482,10 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="715" name="caverns" type="terrain" x="2321.06" y="4748">
+  <object id="715" name="obsidean" type="terrain" x="2321.06" y="4748">
    <polygon points="-564.707,-2723.26 -419.141,-1979.27 334.93,-1709.84 1060.54,-1976.28 1187.07,-2731.7"/>
   </object>
-  <object id="792" name="caverns" type="terrain" x="6420" y="4776">
+  <object id="792" name="obsidean" type="terrain" x="6420" y="4776">
    <polygon points="-564.707,-2723.26 -419.141,-1979.27 334.93,-1709.84 1060.54,-1976.28 1187.07,-2731.7"/>
   </object>
   <object id="805" name="wood" type="terrain" x="3504.56" y="2040.11" width="2357" height="142.5"/>
@@ -521,6 +543,14 @@
   <object id="738" name="spawn" type="object" x="6658" y="1922" width="128" height="128">
    <properties>
     <property name="transition" value="hut"/>
+   </properties>
+  </object>
+  <object id="848" name="warp" type="object" x="4044" y="1824" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-B"/>
    </properties>
   </object>
  </objectgroup>
