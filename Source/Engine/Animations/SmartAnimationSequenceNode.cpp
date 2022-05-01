@@ -136,11 +136,11 @@ void SmartAnimationSequenceNode::playAnimation(const std::vector<std::string>& a
 {
 	Vector<FiniteTimeAction*> animationSequence = Vector<FiniteTimeAction*>();
 
-	for (const auto& animationFile : animationFiles)
+	for (int index = 0; index < int(animationFiles.size()); index++)
 	{
 		animationSequence.pushBack(CallFunc::create([=]()
 		{
-			this->setNewSpriteImage(animationFile);
+			this->setNewSpriteImage(animationFiles[index], index);
 		}));
 
 		animationSequence.pushBack(DelayTime::create(animationSpeed));
@@ -301,12 +301,12 @@ void SmartAnimationSequenceNode::setRepeatY(bool isRepeated)
 	this->updateRepeating();
 }
 
-void SmartAnimationSequenceNode::setSpriteChangeCallback(std::function<void(const std::string&)> spriteChangeCallback)
+void SmartAnimationSequenceNode::setSpriteChangeCallback(std::function<void(const std::string&, int)> spriteChangeCallback)
 {
 	this->spriteChangeCallback = spriteChangeCallback;
 }
 
-void SmartAnimationSequenceNode::setNewSpriteImage(const std::string& spriteImage)
+void SmartAnimationSequenceNode::setNewSpriteImage(const std::string& spriteImage, int index)
 {
 	this->sprite->initWithFile(spriteImage);
 	this->sprite->setFlippedX(this->isFlippedX);
@@ -316,7 +316,7 @@ void SmartAnimationSequenceNode::setNewSpriteImage(const std::string& spriteImag
 
 	if (this->spriteChangeCallback != nullptr)
 	{
-		this->spriteChangeCallback(spriteImage);
+		this->spriteChangeCallback(spriteImage, index);
 	}
 }
 

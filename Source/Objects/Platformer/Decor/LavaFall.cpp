@@ -3,6 +3,8 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Physics/CollisionObject.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -23,11 +25,21 @@ LavaFall* LavaFall::create(ValueMap& properties)
 
 LavaFall::LavaFall(ValueMap& properties) : super(properties)
 {
+	CSize objectSize = CSize(
+		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
+		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
+	);
 	this->baseAnimation = SmartAnimationSequenceNode::create();
 	this->fallAnimation = SmartAnimationSequenceNode::create();
+	this->hitbox = CollisionObject::create(CollisionObject::createBox(CSize(320.0f, objectSize.height)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+
+	this->fallAnimation->setContentSize(objectSize);
+	this->fallAnimation->setRepeatY(true);
+	
 
 	this->addChild(this->baseAnimation);
 	this->addChild(this->fallAnimation);
+	this->addChild(this->hitbox);
 }
 
 LavaFall::~LavaFall()
@@ -50,9 +62,7 @@ void LavaFall::initializePositions()
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 	);
 
-	this->fallAnimation->setContentSize(objectSize);
-	this->fallAnimation->setRepeatY(true);
-	this->baseAnimation->setPositionY(-objectSize.height / 2.0f - 32.0f);
+	this->baseAnimation->setPositionY(-objectSize.height / 2.0f - 30.0f);
 }
 
 void LavaFall::runAnimation()
@@ -62,5 +72,5 @@ void LavaFall::runAnimation()
 
 	float baseSpeed = RandomHelper::random_real(0.05f, 0.07f);
 	this->fallAnimation->playAnimationRepeat(fallAnimationFiles, baseSpeed);
-	this->baseAnimation->playAnimationRepeat(baseAnimationFiles, baseSpeed);
+	this->baseAnimation->playAnimationRepeat(baseAnimationFiles, baseSpeed + 0.10f);
 }

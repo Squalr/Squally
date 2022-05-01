@@ -2,6 +2,7 @@
 
 #include "Engine/Maps/GameObject.h"
 
+class CollisionObject;
 class SmartAnimationSequenceNode;
 
 class LavaGeyser : public GameObject
@@ -17,12 +18,16 @@ protected:
 	LavaGeyser(cocos2d::ValueMap& properties);
 	virtual ~LavaGeyser();
 
+	void onEnter() override;
 	void initializePositions() override;
 
 private:
 	typedef GameObject super;
 
+	static const float BaseSize;
+
 	SmartAnimationSequenceNode* baseAnimation = nullptr;
-	std::vector<SmartAnimationSequenceNode*> midAnimations;
+	SmartAnimationSequenceNode* midAnimation = nullptr;
 	SmartAnimationSequenceNode* topAnimation = nullptr;
+	CollisionObject* hitbox = nullptr;
 };

@@ -2,6 +2,7 @@
 
 #include "Engine/Maps/GameObject.h"
 
+class CollisionObject;
 class SmartAnimationSequenceNode;
 
 class LavaFall : public GameObject
@@ -25,4 +26,5 @@ private:
 
 	SmartAnimationSequenceNode* baseAnimation = nullptr;
 	SmartAnimationSequenceNode* fallAnimation = nullptr;
+	CollisionObject* hitbox = nullptr;
 };

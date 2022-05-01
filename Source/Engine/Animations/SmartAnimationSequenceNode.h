@@ -33,7 +33,7 @@ public:
 	void setFlippedY(bool isFlipped);
 	void setRepeatX(bool isRepeated);
 	void setRepeatY(bool isRepeated);
-	void setSpriteChangeCallback(std::function<void(const std::string&)> spriteChangeCallback);
+	void setSpriteChangeCallback(std::function<void(const std::string&, int)> spriteChangeCallback);
 
 	static void PrimeCache(const std::string& initialSequenceResourceFile);
 	static int GetAnimationLength(const std::string& initialSequenceResourceFile);
@@ -49,7 +49,7 @@ private:
 	typedef SmartNode super;
 
 	void updateRepeating();
-	void setNewSpriteImage(const std::string& spriteImage);
+	void setNewSpriteImage(const std::string& spriteImage, int index = -1);
 
 	cocos2d::Vec2 animationAnchor;
 	bool isFlippedX = false;
@@ -59,7 +59,7 @@ private:
 	std::string defaultSprite;
 	bool hasPlayingAnimation = false;
 	int repeatIndex = 0;
-	std::function<void(const std::string&)> spriteChangeCallback = nullptr;
+	std::function<void(const std::string&, int)> spriteChangeCallback = nullptr;
 
 	static std::map<std::string, std::vector<std::string>> AnimationFileCache;
 	static std::map<std::string, std::map<int, std::vector<std::string>>> SingleFrameCache;
