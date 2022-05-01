@@ -56,9 +56,7 @@ protected:
 
 	CollisionObject* liquidCollision = nullptr;
 
-private:
-    typedef GameObject super;
-
+protected:
     cocos2d::CSize liquidSize;
     float surfaceDepth = 0.0f;
 	int splashes = 0;
@@ -68,4 +66,7 @@ private:
     cocos2d::LayerColor* liquidBody = nullptr;
     LiquidTop* liquidTop = nullptr;
     cocos2d::DrawNode* edges = nullptr;
+
+private:
+    typedef GameObject super;
 };

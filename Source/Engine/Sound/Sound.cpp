@@ -1,5 +1,7 @@
 #include "Sound.h"
 
+#include <SFML/Audio.hpp>
+
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 

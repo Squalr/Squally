@@ -29,7 +29,7 @@ THE SOFTWARE.
 
 #include "cocos/2d/CCTextFieldTTF.h"
 
-class UICCTextField: public TextFieldTTF, public TextFieldDelegate
+class UICCTextField: public cocos2d::TextFieldTTF, public cocos2d::TextFieldDelegate
 {
 public:
     UICCTextField();
@@ -39,12 +39,12 @@ public:
     static UICCTextField* create(const std::string& placeholder,
                                  const std::string& fontName,
                                  float fontSize);
-    virtual bool onTextFieldAttachWithIME(TextFieldTTF *pSender) override;
-    virtual bool onTextFieldDetachWithIME(TextFieldTTF * pSender) override;
-    virtual bool onTextFieldInsertText(TextFieldTTF * pSender,
+    virtual bool onTextFieldAttachWithIME(cocos2d::TextFieldTTF *pSender) override;
+    virtual bool onTextFieldDetachWithIME(cocos2d::TextFieldTTF * pSender) override;
+    virtual bool onTextFieldInsertText(cocos2d::TextFieldTTF * pSender,
                                        const char * text,
                                        size_t nLen) override;
-    virtual bool onTextFieldDeleteBackward(TextFieldTTF * pSender,
+    virtual bool onTextFieldDeleteBackward(cocos2d::TextFieldTTF * pSender,
                                            const char * delText,
                                            size_t nLen) override;
     void insertText(const char* text, size_t len) override;
@@ -113,17 +113,17 @@ public:
                              const std::string& fontName,
                              int fontSize);
     
-    virtual bool hitTest(const cocos2d::Vec2 &pt, const Camera* camera, cocos2d::Vec3* p) const override;
+    virtual bool hitTest(const cocos2d::Vec2 &pt, const cocos2d::Camera* camera, cocos2d::Vec3* p) const override;
     void setPlaceHolder(const std::string& value);
     
     const std::string& getPlaceHolder() const;
     const cocos2d::Color4B& getPlaceHolderColor() const;
     
-    void setPlaceHolderColor(const Color3B& color);
-    void setPlaceHolderColor(const Color4B& color);
+    void setPlaceHolderColor(const cocos2d::Color3B& color);
+    void setPlaceHolderColor(const cocos2d::Color4B& color);
     
     const cocos2d::Color4B& getTextColor() const;
-    void setTextColor(const Color4B& textColor);
+    void setTextColor(const cocos2d::Color4B& textColor);
      
     void setFontSize(int size);
     int getFontSize() const;
@@ -161,23 +161,23 @@ public:
     void addEventListener(const ccTextFieldCallback& callback);
     virtual std::string getDescription() const override;
     
-    virtual CSize getAutoRenderSize();
-    virtual CSize getVirtualRendererSize() const override;
+    virtual cocos2d::CSize getAutoRenderSize();
+    virtual cocos2d::CSize getVirtualRendererSize() const override;
     virtual Node* getVirtualRenderer() override;
     virtual void onEnter() override;
     
     void attachWithIME();
     
-    void setTextAreaSize(const CSize &size);
-    void setTextHorizontalAlignment(TextHAlignment alignment);
-    TextHAlignment getTextHorizontalAlignment() const;
-    void setTextVerticalAlignment(TextVAlignment alignment);
-    TextVAlignment getTextVerticalAlignment() const;
+    void setTextAreaSize(const cocos2d::CSize &size);
+    void setTextHorizontalAlignment(cocos2d::TextHAlignment alignment);
+    cocos2d::TextHAlignment getTextHorizontalAlignment() const;
+    void setTextVerticalAlignment(cocos2d::TextVAlignment alignment);
+    cocos2d::TextVAlignment getTextVerticalAlignment() const;
     
     void setCursorEnabled(bool enabled);
     void setCursorChar(char cursor);
     void setCursorPosition(std::size_t cursorPosition);
-    void setCursorFromPoint(const cocos2d::Vec2 &point, const Camera* camera);
+    void setCursorFromPoint(const cocos2d::Vec2 &point, const cocos2d::Camera* camera);
 
     virtual bool init() override;
     

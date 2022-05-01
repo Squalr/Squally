@@ -33,7 +33,7 @@ namespace cocos2d
     class Label;
 }
 
-class RichElement : public Ref
+class RichElement : public cocos2d::Ref
 {
 public:
     enum class Type
@@ -47,15 +47,15 @@ public:
     RichElement() {};
     virtual ~RichElement() {};
 
-    bool init(int tag, const Color3B& color, GLubyte opacity);
+    bool init(int tag, const cocos2d::Color3B& color, GLubyte opacity);
     
     bool equalType(Type type);
-    void setColor(const Color3B& color);
+    void setColor(const cocos2d::Color3B& color);
 
 protected:
     Type _type;             /*!< Rich element type. */
     int _tag;               /*!< A integer tag value. */
-    Color3B _color;         /*!< A color in `Color3B`. */
+    cocos2d::Color3B _color;         /*!< A color in `cocos2d::Color3B`. */
     GLubyte _opacity;       /*!< A opacity value in `GLubyte`. */
     friend class RichText;
 };
@@ -82,17 +82,17 @@ public:
     
     virtual ~RichElementText(){};
     
-    bool init(int tag, const Color3B& color, GLubyte opacity, const std::string& text,
+    bool init(int tag, const cocos2d::Color3B& color, GLubyte opacity, const std::string& text,
               const std::string& fontName, float fontSize, uint32_t flags, const std::string& url,
-              const Color3B& outlineColor = Color3B::WHITE, int outlineSize = -1,
-              const Color3B& shadowColor = Color3B::BLACK, const cocos2d::CSize& shadowOffset = CSize(2.0, -2.0), int shadowBlurRadius = 0,
-              const Color3B& glowColor = Color3B::WHITE);
+              const cocos2d::Color3B& outlineColor = cocos2d::Color3B::WHITE, int outlineSize = -1,
+              const cocos2d::Color3B& shadowColor = cocos2d::Color3B::BLACK, const cocos2d::CSize& shadowOffset = cocos2d::CSize(2.0, -2.0), int shadowBlurRadius = 0,
+              const cocos2d::Color3B& glowColor = cocos2d::Color3B::WHITE);
     
-    static RichElementText* create(int tag, const Color3B& color, GLubyte opacity, const std::string& text,
+    static RichElementText* create(int tag, const cocos2d::Color3B& color, GLubyte opacity, const std::string& text,
                                    const std::string& fontName, float fontSize, uint32_t flags=0, const std::string& url="",
-                                   const Color3B& outlineColor = Color3B::WHITE, int outlineSize = -1,
-                                   const Color3B& shadowColor = Color3B::BLACK, const cocos2d::CSize& shadowOffset = CSize(2.0, -2.0), int shadowBlurRadius = 0,
-                                   const Color3B& glowColor = Color3B::WHITE);
+                                   const cocos2d::Color3B& outlineColor = cocos2d::Color3B::WHITE, int outlineSize = -1,
+                                   const cocos2d::Color3B& shadowColor = cocos2d::Color3B::BLACK, const cocos2d::CSize& shadowOffset = cocos2d::CSize(2.0, -2.0), int shadowBlurRadius = 0,
+                                   const cocos2d::Color3B& glowColor = cocos2d::Color3B::WHITE);
 
                                    
     int getNewlineCount() { return _newlineCount; }
@@ -103,12 +103,12 @@ protected:
     float _fontSize;
     uint32_t _flags;
     std::string _url;
-    Color3B _outlineColor;                  /*!< the color of the outline */
+    cocos2d::Color3B _outlineColor;                  /*!< the color of the outline */
     int _outlineSize;                       /*!< the outline effect size value */
-    Color3B _shadowColor;                   /*!< the shadow effect color value */
+    cocos2d::Color3B _shadowColor;                   /*!< the shadow effect color value */
     cocos2d::CSize _shadowOffset;            /*!< shadow effect offset value */
     int _shadowBlurRadius;                  /*!< the shadow effect blur radius */
-    Color3B _glowColor;                     /*!< attributes of glow tag */
+    cocos2d::Color3B _glowColor;                     /*!< attributes of glow tag */
     int _newlineCount;
     friend class RichText;
 };
@@ -274,8 +274,8 @@ public:
     void setDefaults(const cocos2d::ValueMap& defaults);         /*!< set the default values */
     cocos2d::ValueMap getDefaults() const;                       /*!< returns the default values */
 
-    cocos2d::Color3B color3BWithString(const std::string& color);   /*!< convert a color string into a Color3B. */
-    std::string stringWithColor3B(const cocos2d::Color3B& color3b); /*!< convert a Color3B into a color string. */
+    cocos2d::Color3B color3BWithString(const std::string& color);   /*!< convert a color string into a color3B. */
+    std::string stringWithColor3B(const cocos2d::Color3B& color3B); /*!< convert a color3B into a color string. */
     std::string stringWithColor4B(const cocos2d::Color4B& color4b); /*!< convert a Color4B into a color string. */
 
     static void setTagDescription(const std::string& tag, bool isFontElement, VisitEnterHandler handleVisitEnter);

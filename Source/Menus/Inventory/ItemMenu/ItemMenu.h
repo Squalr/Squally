@@ -13,6 +13,7 @@ namespace cocos2d
 class Item;
 class ItemEntry;
 class ItemPreview;
+class LocalizedLabel;
 class SmartClippingNode;
 
 class ItemMenu : public SmartNode

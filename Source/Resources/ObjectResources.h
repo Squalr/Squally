@@ -134,6 +134,15 @@ namespace ObjectResources
 	extern const std::string Collectables_Animals_Zebra;
 	extern const std::string Collectables_Animals_Zebra_Locked;
 	extern const std::string Decor_Fireplace_FireplaceGlow;
+	extern const std::string Decor_LavaBubble_Bubble_0000;
+	extern const std::string Decor_LavaBubble_Bubble_0001;
+	extern const std::string Decor_LavaBubble_Bubble_0002;
+	extern const std::string Decor_LavaBubble_Bubble_0003;
+	extern const std::string Decor_LavaBubble_Bubble_0004;
+	extern const std::string Decor_LavaBubble_Bubble_0005;
+	extern const std::string Decor_LavaBubble_Bubble_0006;
+	extern const std::string Decor_LavaBubble_Bubble_0007;
+	extern const std::string Decor_LavaBubble_Bubble_0008;
 	extern const std::string Decor_MineClaw_Animations;
 	extern const std::string Decor_MineClaw_ClawLeft;
 	extern const std::string Decor_MineClaw_ClawRight;

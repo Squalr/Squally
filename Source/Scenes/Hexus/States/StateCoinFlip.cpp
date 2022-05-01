@@ -7,6 +7,7 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/GameState.h"
 #include "Scenes/Hexus/HexusConfig.h"
 

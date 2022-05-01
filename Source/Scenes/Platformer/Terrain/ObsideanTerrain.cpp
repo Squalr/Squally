@@ -2,6 +2,8 @@
 
 #include "cocos/base/CCValue.h"
 
+#include "Scenes/Platformer/Textures/MagmaTexture.h"
+
 #include "Resources/TerrainResources.h"
 #include "Resources/TextureResources.h"
 
@@ -25,7 +27,9 @@ ObsideanTerrain::ObsideanTerrain(ValueMap& properties) : super(
 	TerrainObject::TerrainData(
 		[=](ValueMap props)
 		{
-			return nullptr;
+			ValueMap transformedProps = this->transformPropertiesForTexture(props);
+			
+			return MagmaTexture::create(transformedProps);
 		},
 		0.5f,
 		ObsideanTerrain::MapKey,
@@ -55,9 +59,9 @@ ObsideanTerrain::ObsideanTerrain(ValueMap& properties) : super(
 		// Right
 		Vec2::ZERO,
 		// TopLeft
-		Vec2(-58.0f, -7.0f),
+		Vec2(-20.0f, 0.0f),
 		// TopRight
-		Vec2(39.0f, 6.0f),
+		Vec2(20.0f, 4.0f),
 		// BottomLeft
 		Vec2::ZERO,
 		// BottomRight
