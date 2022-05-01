@@ -14,6 +14,7 @@ using namespace cocos2d;
 
 const std::string LavaGeyser::MapKey = "lava-geyser";
  const float LavaGeyser::BaseSize = 252.0f;
+ const float LavaGeyser::MidSize = 350.0f;
 
 LavaGeyser* LavaGeyser::create(ValueMap& properties)
 {
@@ -35,10 +36,13 @@ LavaGeyser::LavaGeyser(ValueMap& properties) : super(properties)
 	this->topAnimation = SmartAnimationSequenceNode::create();
 	this->hitbox = CollisionObject::create(CollisionObject::createBox(CSize(320.0f, objectSize.height)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
-	// TODO: There will be seams unless the geyser is a multiple of 350.0f * numLinks + 252.0f
-	// To fix this, the tiling will need to start offset from the bottom instead of the middle
-	this->midAnimation->setContentSize(CSize(objectSize.width, objectSize.height - LavaGeyser::BaseSize));
 	this->midAnimation->setRepeatY(true);
+
+	float midRange = objectSize.height - LavaGeyser::BaseSize;
+	float overflow = std::fmodf(midRange, LavaGeyser::MidSize);
+
+	this->midAnimation->setContentSize(CSize(objectSize.width, objectSize.height - LavaGeyser::BaseSize));
+	this->midAnimation->setRepeatTilingOffset(Vec2(0.0f, -overflow / 2.0f));
 
 	this->addChild(this->baseAnimation);
 	this->addChild(this->midAnimation);

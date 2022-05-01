@@ -25,6 +25,7 @@ private:
 	typedef GameObject super;
 
 	static const float BaseSize;
+	static const float MidSize;
 
 	SmartAnimationSequenceNode* baseAnimation = nullptr;
 	SmartAnimationSequenceNode* midAnimation = nullptr;

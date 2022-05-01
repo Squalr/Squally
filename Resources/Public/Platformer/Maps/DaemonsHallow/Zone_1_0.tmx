@@ -288,7 +288,7 @@
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="872" name="lava-geyser" type="object" x="3206.8" y="579.059" width="350" height="1302"/>
+  <object id="872" name="lava-geyser" type="object" x="3206.8" y="513.265" width="350" height="1366"/>
  </objectgroup>
  <objectgroup id="112" name="terrain -20">
   <properties>

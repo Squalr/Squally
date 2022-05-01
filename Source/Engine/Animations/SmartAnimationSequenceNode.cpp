@@ -301,6 +301,12 @@ void SmartAnimationSequenceNode::setRepeatY(bool isRepeated)
 	this->updateRepeating();
 }
 
+void SmartAnimationSequenceNode::setRepeatTilingOffset(Vec2 offset)
+{
+	this->repeatTilingOffset = offset;
+	this->updateRepeating();
+}
+
 void SmartAnimationSequenceNode::setSpriteChangeCallback(std::function<void(const std::string&, int)> spriteChangeCallback)
 {
 	this->spriteChangeCallback = spriteChangeCallback;
@@ -340,16 +346,21 @@ void SmartAnimationSequenceNode::updateRepeating()
 
 		if (this->isRepeatedX && this->isRepeatedY)
 		{
-			this->sprite->setTextureRect(CRect(0.0f, 0.0f, this->getContentSize().width, this->getContentSize().height));
+			this->sprite->setTextureRect(CRect(this->repeatTilingOffset.x, this->repeatTilingOffset.y,
+				this->getContentSize().width + this->repeatTilingOffset.x, this->getContentSize().height));
 		}
 		else if (this->isRepeatedX)
 		{
-			this->sprite->setTextureRect(CRect(0.0f, 0.0f, this->getContentSize().width, this->sprite->getContentSize().height));
+			this->sprite->setTextureRect(CRect(this->repeatTilingOffset.x, this->repeatTilingOffset.y,
+				this->getContentSize().width + this->repeatTilingOffset.x, this->sprite->getContentSize().height + this->repeatTilingOffset.y));
 		}
 		else if (this->isRepeatedY)
 		{
-			this->sprite->setTextureRect(CRect(0.0f, 0.0f, this->sprite->getContentSize().width, this->getContentSize().height));
+			this->sprite->setTextureRect(CRect(this->repeatTilingOffset.x, this->repeatTilingOffset.y,
+				this->sprite->getContentSize().width + this->repeatTilingOffset.x, this->getContentSize().height + this->repeatTilingOffset.y));
 		}
+
+		this->sprite->setPosition(this->repeatTilingOffset);
 
 		Texture2D* texture = this->sprite->getTexture();
 

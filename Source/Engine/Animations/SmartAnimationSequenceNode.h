@@ -33,6 +33,7 @@ public:
 	void setFlippedY(bool isFlipped);
 	void setRepeatX(bool isRepeated);
 	void setRepeatY(bool isRepeated);
+	void setRepeatTilingOffset(cocos2d::Vec2 offset);
 	void setSpriteChangeCallback(std::function<void(const std::string&, int)> spriteChangeCallback);
 
 	static void PrimeCache(const std::string& initialSequenceResourceFile);
@@ -56,6 +57,7 @@ private:
 	bool isFlippedY = false;
 	bool isRepeatedX = false;
 	bool isRepeatedY = false;
+	cocos2d::Vec2 repeatTilingOffset;
 	std::string defaultSprite;
 	bool hasPlayingAnimation = false;
 	int repeatIndex = 0;
