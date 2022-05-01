@@ -236,6 +236,7 @@ DeveloperScene::DeveloperScene()
 		ScrollPane* scrollPane = this->buildScrollPane();
 
 		mapList.push_back(this->buildDebugButton("Warp Room (DH)", MapResources::DaemonsHallow_Mages_Warp));
+		mapList.push_back(this->buildDebugButton("Zone_1_0 (DH)", MapResources::DaemonsHallow_Zone_1_0));
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}

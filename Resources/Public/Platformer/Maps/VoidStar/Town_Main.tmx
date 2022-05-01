@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="42" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="79" nextobjectid="887">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="79" nextobjectid="887">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Void"/>
@@ -126,7 +126,7 @@
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="761" name="void" type="terrain" x="3142.36" y="1850.84" width="346.05" height="391">
+  <object id="761" name="void" type="terrain" x="3134.36" y="1850.84" width="367.383" height="391">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -137,7 +137,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="760" name="void" type="terrain" x="3141.33" y="1873.5" width="346.05" height="391">
+  <object id="760" name="void" type="terrain" x="3116" y="1873.5" width="401.383" height="391">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -148,7 +148,7 @@
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="759" name="void" type="terrain" x="3140.3" y="1897.19" width="346.05" height="391">
+  <object id="759" name="void" type="terrain" x="3099.63" y="1897.19" width="441.383" height="391">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -159,7 +159,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="758" name="void" type="terrain" x="3141.33" y="1920.87" width="346.05" height="391">
+  <object id="758" name="void" type="terrain" x="3115.33" y="1920.87" width="402.717" height="391">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -194,7 +194,7 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="757" name="void" type="terrain" x="3142.36" y="1945.59" width="346.05" height="391">
+  <object id="757" name="void" type="terrain" x="3130.36" y="1945.59" width="373.383" height="391">
    <properties>
     <property name="collision" value="none"/>
    </properties>

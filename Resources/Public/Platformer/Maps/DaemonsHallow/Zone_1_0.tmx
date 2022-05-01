@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="62" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="765">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="117" nextobjectid="844">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="WaterfallSky"/>
+   <property name="background" value="SkyDark"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
@@ -12,41 +12,249 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="75" name="rocks">
+ <objectgroup id="116" name="terrain -24">
   <properties>
-   <property name="depth" type="float" value="-3200"/>
+   <property name="depth" type="float" value="-1536"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="746" name="Forest/Background/GreenForestRocks1" type="decor" x="-4717.69" y="397.3" width="17685.3" height="4560">
+  <object id="833" name="caverns" type="terrain" x="323.101" y="4549.82">
+   <polygon points="-1141.99,-2729.26 -847.616,-1979.27 677.319,-1709.84 2144.7,-1976.28 2400.58,-2731.7"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="99" name="lava -24">
+  <properties>
+   <property name="depth" type="float" value="-1536"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="791" name="lava" type="object" x="-122.777" y="1850.64" width="8449" height="2085.35"/>
+ </objectgroup>
+ <objectgroup id="115" name="terrain -23">
+  <properties>
+   <property name="depth" type="float" value="-1472"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="831" name="caverns" type="terrain" x="323.101" y="4549.82">
+   <polygon points="-1141.99,-2729.26 -847.616,-1979.27 677.319,-1709.84 2144.7,-1976.28 2400.58,-2731.7"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="98" name="lava -23">
+  <properties>
+   <property name="depth" type="float" value="-1472"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="790" name="lava" type="object" x="-122.277" y="1857.64" width="8449" height="2085.35"/>
+ </objectgroup>
+ <objectgroup id="114" name="terrain -22">
+  <properties>
+   <property name="depth" type="float" value="-1408"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="829" name="caverns" type="terrain" x="323.101" y="4549.82">
+   <polygon points="-1141.99,-2729.26 -847.616,-1979.27 677.319,-1709.84 2144.7,-1976.28 2400.58,-2731.7"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="97" name="lava -22">
+  <properties>
+   <property name="depth" type="float" value="-1408"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="789" name="lava" type="object" x="-122.617" y="1865.1" width="8449" height="2085.35"/>
+ </objectgroup>
+ <objectgroup id="113" name="terrain -21">
+  <properties>
+   <property name="depth" type="float" value="-1344"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="827" name="caverns" type="terrain" x="323.101" y="4549.82">
+   <polygon points="-1141.99,-2729.26 -847.616,-1979.27 677.319,-1709.84 2144.7,-1976.28 2400.58,-2731.7"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="96" name="lava -21">
+  <properties>
+   <property name="depth" type="float" value="-1344"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="788" name="lava" type="object" x="-122.379" y="1871.97" width="8449" height="2085.35"/>
+ </objectgroup>
+ <objectgroup id="100" name="terrain -20">
+  <properties>
+   <property name="depth" type="float" value="-1280"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="794" name="caverns" type="terrain" x="323.101" y="4549.82">
+   <polygon points="-1141.99,-2729.26 -847.616,-1979.27 677.319,-1709.84 2144.7,-1976.28 2400.58,-2731.7"/>
+  </object>
+  <object id="795" name="caverns" type="terrain" x="4999.96" y="4554">
+   <polygon points="-805.17,-2736.26 -597.619,-1979.27 477.55,-1709.84 1512.13,-1976.28 1692.55,-2731.7"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="101" name="decor -20">
+  <properties>
+   <property name="depth" type="float" value="-1280"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="796" name="Generic/TownFence" type="decor" x="-273.235" y="871.53" width="538" height="948"/>
+  <object id="797" name="Generic/TownFence" type="decor" x="185.295" y="870.3" width="538" height="948"/>
+  <object id="798" name="Generic/TownFence" type="decor" x="684.595" y="870.3" width="538" height="948"/>
+  <object id="799" name="Generic/TownFence" type="decor" x="1197.95" y="870.3" width="538" height="948"/>
+  <object id="800" name="Generic/TownFence" type="decor" x="1690.69" y="868.47" width="538" height="948"/>
+  <object id="801" name="Generic/TownFence" type="decor" x="2167.23" y="868.47" width="538" height="948"/>
+  <object id="802" name="Generic/TownFence" type="decor" x="-749" y="874" width="538" height="948"/>
+  <object id="823" name="hell-gate" type="object" x="5703" y="1281" width="512" height="512"/>
+ </objectgroup>
+ <objectgroup id="104" name="objects -20">
+  <properties>
+   <property name="depth" type="float" value="-1280"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="822" name="portal" type="object" x="5728.7" y="1398.48" width="450.603" height="423.038">
    <properties>
-    <property name="repeat-x" type="bool" value="true"/>
+    <property name="map" value="DataMines/Zone_5_0"/>
+    <property name="transition" value="hell-gate"/>
+   </properties>
+  </object>
+  <object id="826" name="life-stone" type="object" x="4989.67" y="1400.5" width="146" height="423"/>
+ </objectgroup>
+ <objectgroup id="105" name="player_layer -20">
+  <properties>
+   <property name="depth" type="float" value="-1280"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="0.25"/>
+  </properties>
+  <object id="824" name="spawn" type="object" x="5892" y="1688" width="128" height="128">
+   <properties>
+    <property name="transition" value="hell-gate"/>
+   </properties>
+  </object>
+  <object id="825" name="squally" type="entity" x="5539.03" y="1687.18" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="74" name="trees-far1">
+ <objectgroup id="102" name="entities -20">
   <properties>
-   <property name="depth" type="float" value="-2560"/>
+   <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="745" name="Forest/Background/GreenForestGround2" type="decor" x="-3581.69" y="-770.7" width="15157.3" height="4560">
+  <object id="803" name="brine" type="entity" x="1948" y="1688" width="128" height="128">
    <properties>
-    <property name="repeat-x" type="bool" value="true"/>
+    <property name="components" value="friendly,brine-hexus,pick-pocket"/>
+    <property name="pocket-pool" value="dh-generic"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="69" name="decor -14">
+ <objectgroup id="95" name="lava -20">
+  <properties>
+   <property name="depth" type="float" value="-1280"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="787" name="lava" type="object" x="-122.686" y="1879.36" width="8449" height="2085.35"/>
+ </objectgroup>
+ <objectgroup id="112" name="terrain -20">
+  <properties>
+   <property name="depth" type="float" value="-1280"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="842" name="wood" type="terrain" x="4416.86" y="1876" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="94" name="lava -19">
+  <properties>
+   <property name="depth" type="float" value="-1216"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="786" name="lava" type="object" x="-122.742" y="1886.96" width="8449" height="2085.35"/>
+ </objectgroup>
+ <objectgroup id="111" name="terrain -19">
+  <properties>
+   <property name="depth" type="float" value="-1216"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="841" name="wood" type="terrain" x="4416.86" y="1883.25" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="93" name="lava -18">
+  <properties>
+   <property name="depth" type="float" value="-1152"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="785" name="lava" type="object" x="-122.867" y="1894.75" width="8449" height="2085.35"/>
+ </objectgroup>
+ <objectgroup id="110" name="terrain -18">
+  <properties>
+   <property name="depth" type="float" value="-1152"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="840" name="wood" type="terrain" x="4417.11" y="1890.75" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="92" name="lava -17">
+  <properties>
+   <property name="depth" type="float" value="-1088"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="784" name="lava" type="object" x="-122.379" y="1902.86" width="8449" height="2085.35"/>
+ </objectgroup>
+ <objectgroup id="109" name="terrain -17">
+  <properties>
+   <property name="depth" type="float" value="-1088"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="839" name="wood" type="terrain" x="4416.61" y="1898.25" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="91" name="lava -16">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="783" name="lava" type="object" x="-122.231" y="1912.25" width="8449" height="2085.35"/>
+ </objectgroup>
+ <objectgroup id="108" name="terrain -16">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="838" name="wood" type="terrain" x="4416.86" y="1907.5" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="90" name="lava -15">
+  <properties>
+   <property name="depth" type="float" value="-960"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="782" name="lava" type="object" x="-122.405" y="1920.03" width="8449" height="2085.35"/>
+  <object id="837" name="wood" type="terrain" x="4416.45" y="1914.5" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="107" name="terrain -15">
+  <properties>
+   <property name="depth" type="float" value="-960"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="89" name="lava -14">
   <properties>
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="726" name="Forest/Hut1" type="decor" x="5146.2" y="881.316" width="1458" height="909"/>
+  <object id="781" name="lava" type="object" x="-122.973" y="1927.95" width="8449" height="2085.35"/>
+ </objectgroup>
+ <objectgroup id="106" name="terrain -14">
+  <properties>
+   <property name="depth" type="float" value="-896"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="836" name="wood" type="terrain" x="4416.53" y="1922.75" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="88" name="lava -13">
+  <properties>
+   <property name="depth" type="float" value="-832"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="780" name="lava" type="object" x="-122.78" y="1936.35" width="8449" height="2085.35"/>
  </objectgroup>
  <objectgroup id="71" name="terrain -13">
   <properties>
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="729" name="dark-grass" type="terrain" x="5564" y="4516.61">
+  <object id="729" name="caverns" type="terrain" x="3702.95" y="4628.11">
    <polygon points="-564.707,-2723.26 -419.141,-1979.27 334.93,-1709.84 1060.54,-1976.28 1187.07,-2731.7"/>
   </object>
  </objectgroup>
@@ -55,196 +263,193 @@
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="750" name="Forest/Totem" type="decor" x="5560.17" y="1264.5" width="181" height="527">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="751" name="Forest/Totem" type="decor" x="6018.83" y="1261.83" width="181" height="527"/>
  </objectgroup>
- <objectgroup id="7912" name="bridge -12">
+ <objectgroup id="103" name="objects -13"/>
+ <objectgroup id="87" name="lava -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="764" name="wood" type="terrain" x="5700.3" y="1791.11" width="346.05" height="391">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="779" name="lava" type="object" x="-122.042" y="1946.37" width="8449" height="2037.35"/>
  </objectgroup>
- <objectgroup id="7911" name="bridge -11">
+ <objectgroup id="7912" name="terrain -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="817" name="wood" type="terrain" x="4075.36" y="1942.75" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="86" name="lava -11">
   <properties>
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="763" name="wood" type="terrain" x="5701.33" y="1805.53" width="346.05" height="391">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="778" name="lava" type="object" x="-121.917" y="1952.07" width="8449" height="2037.35"/>
  </objectgroup>
- <objectgroup id="791" name="bridge -10">
+ <objectgroup id="7911" name="terrain -11">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="816" name="wood" type="terrain" x="4075.61" y="1949.25" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="85" name="lava -10">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="762" name="wood" type="terrain" x="5703.39" y="1828.19" width="346.05" height="391">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="777" name="lava" type="object" x="-121.958" y="1958.66" width="8449" height="2037.35"/>
  </objectgroup>
- <objectgroup id="16" name="trees-mid">
+ <objectgroup id="791" name="terrain -10">
   <properties>
-   <property name="depth" type="float" value="-612"/>
+   <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="602" name="Forest/Background/GreenForestGround3" type="decor" x="-4225.81" y="793.6" width="16681.6" height="1953">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-   </properties>
-  </object>
+  <object id="815" name="wood" type="terrain" x="4075.61" y="1955.75" width="164.273" height="142.5"/>
  </objectgroup>
- <objectgroup id="781" name="bridge -9">
+ <objectgroup id="84" name="lava -9">
   <properties>
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="761" name="wood" type="terrain" x="5702.36" y="1850.84" width="346.05" height="391">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="776" name="lava" type="object" x="-122.167" y="1967.32" width="8449" height="2037.35"/>
  </objectgroup>
- <objectgroup id="771" name="bridge -8">
+ <objectgroup id="781" name="terrain -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="814" name="wood" type="terrain" x="4075.86" y="1963.25" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="83" name="lava -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="760" name="wood" type="terrain" x="5701.33" y="1873.5" width="346.05" height="391">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="775" name="lava" type="object" x="-121.708" y="1974.78" width="8449" height="2037.35"/>
  </objectgroup>
- <objectgroup id="761" name="bridge -7">
+ <objectgroup id="771" name="terrain -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="813" name="wood" type="terrain" x="4076.11" y="1970.5" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="82" name="lava -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="759" name="wood" type="terrain" x="5700.3" y="1897.19" width="346.05" height="391">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="774" name="lava" type="object" x="-121.875" y="1984.28" width="8449" height="2037.35"/>
  </objectgroup>
- <objectgroup id="751" name="bridge -6">
+ <objectgroup id="761" name="terrain -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="812" name="wood" type="terrain" x="4075.86" y="1979" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="81" name="lava -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="758" name="wood" type="terrain" x="5701.33" y="1920.87" width="346.05" height="391">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="773" name="lava" type="object" x="-121.833" y="1991.99" width="8449" height="2037.35"/>
+ </objectgroup>
+ <objectgroup id="751" name="terrain -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="811" name="wood" type="terrain" x="4076.36" y="1988" width="164.273" height="142.5"/>
  </objectgroup>
  <objectgroup id="73" name="decor -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="732" name="Generic/TownFencePost" type="decor" x="5548.64" y="1271.65" width="263" height="1118">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="733" name="Generic/TownFencePost" type="decor" x="5958.36" y="1270.35" width="263" height="1118">
-   <properties>
-    <property name="flip-x" type="bool" value="false"/>
-   </properties>
-  </object>
  </objectgroup>
- <objectgroup id="79" name="bridge -5">
+ <objectgroup id="80" name="lava -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="757" name="wood" type="terrain" x="5702.36" y="1945.59" width="346.05" height="391">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="772" name="lava" type="object" x="-121.167" y="1999.32" width="8449" height="2037.35"/>
  </objectgroup>
- <objectgroup id="78" name="bridge -4">
+ <objectgroup id="79" name="terrain -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="810" name="wood" type="terrain" x="4075.61" y="1994.75" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="79" name="lava -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="756" name="wood" type="terrain" x="5702.36" y="1963.1" width="346.05" height="391">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="771" name="lava" type="object" x="-121.75" y="2008.28" width="8449" height="2037.35"/>
  </objectgroup>
- <objectgroup id="77" name="bridge -3">
+ <objectgroup id="78" name="terrain -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="809" name="wood" type="terrain" x="4075.86" y="2002.88" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="78" name="lava -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="755" name="wood" type="terrain" x="5703.39" y="1986.79" width="346.05" height="391">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="770" name="lava" type="object" x="-121.042" y="2016.62" width="8449" height="2037.35"/>
  </objectgroup>
- <objectgroup id="76" name="bridge -2">
+ <objectgroup id="77" name="terrain -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="807" name="wood" type="terrain" x="4075.53" y="2010.75" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="77" name="lava -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="753" name="wood" type="terrain" x="5703.39" y="2010.47" width="346.05" height="391">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="769" name="lava" type="object" x="-120.5" y="2023.99" width="8449" height="2037.35"/>
  </objectgroup>
- <objectgroup id="75" name="bridge -1">
+ <objectgroup id="76" name="terrain -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="806" name="wood" type="terrain" x="4075.89" y="2020.25" width="164.273" height="142.5"/>
+  <object id="808" name="wood" type="terrain" x="4075.7" y="2029.08" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="76" name="lava -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="752" name="wood" type="terrain" x="5703.39" y="2035.19" width="346.05" height="391">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="768" name="lava" type="object" x="-119.5" y="2033.07" width="8449" height="2037.35"/>
  </objectgroup>
- <objectgroup id="67" name="water bg">
+ <objectgroup id="75" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="819" name="wood" type="terrain" x="4075.68" y="2036.39" width="164.273" height="142.5"/>
+ </objectgroup>
+ <objectgroup id="67" name="lava bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="719" name="water" type="object" x="985.5" y="2069.32" width="3317" height="2085.35">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="766" name="lava" type="object" x="-121.5" y="2044.83" width="8449" height="2037.35"/>
  </objectgroup>
  <objectgroup id="68" name="decor bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="722" name="Generic/TownFencePost" type="decor" x="5544.64" y="1269.65" width="263" height="1118">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="723" name="Generic/TownFencePost" type="decor" x="5960.36" y="1268.35" width="263" height="1118">
-   <properties>
-    <property name="flip-x" type="bool" value="false"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="20" name="terrain 2">
   <properties>
@@ -255,20 +460,19 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="667" name="dark-grass" type="terrain" x="6727.16" y="4770.75">
-   <polygon points="-2627.65,-2739.26 305.553,-2711.27 1536.13,-2739.7 1542.8,-659.749 -6862.03,-658.69 -6810.77,-2714.44 -5503.05,-2737.6 -5015.36,-1385.84 -4288.81,-1156.38 -3881.51,-1153.24 -3131.26,-1389.27"/>
-  </object>
-  <object id="715" name="dark-grass" type="terrain" x="2321.06" y="4748">
+  <object id="715" name="caverns" type="terrain" x="2321.06" y="4748">
    <polygon points="-564.707,-2723.26 -419.141,-1979.27 334.93,-1709.84 1060.54,-1976.28 1187.07,-2731.7"/>
   </object>
+  <object id="792" name="caverns" type="terrain" x="6420" y="4776">
+   <polygon points="-564.707,-2723.26 -419.141,-1979.27 334.93,-1709.84 1060.54,-1976.28 1187.07,-2731.7"/>
+  </object>
+  <object id="805" name="wood" type="terrain" x="3504.56" y="2040.11" width="2357" height="142.5"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="500" name="Forest/Flower10" type="decor" x="7478.08" y="1940.57" width="199" height="133"/>
-  <object id="741" name="Forest/Flower11" type="decor" x="4642" y="1930" width="92" height="116"/>
-  <object id="742" name="Forest/Flower9" type="decor" x="2284.5" y="1899.5" width="199" height="133"/>
+  <object id="741" name="Lava/Stone1" type="decor" x="1898.97" y="1903.79" width="165" height="120"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
@@ -281,37 +485,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="623" name="life-stone" type="object" x="6745.94" y="1642.25" width="146" height="423"/>
-  <object id="641" name="edge-portal" type="object" x="7713.18" y="1413.65" width="199.918" height="640.851">
-   <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="EndianForest/Zone_3_3"/>
-    <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="707" name="edge-portal" type="object" x="-4" y="1420.57" width="199.918" height="640.851">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="map" value="EndianForest/Zone_3_0"/>
-    <property name="transition" value="left"/>
-   </properties>
-  </object>
-  <object id="736" name="portal" type="object" x="5658.33" y="1621.81" width="450.603" height="423.038">
-   <properties>
-    <property name="map" value="EndianForest/Home_Hut"/>
-    <property name="transition" value="hut"/>
-   </properties>
-  </object>
-  <object id="739" name="chest" type="object" x="2576" y="3488" width="128" height="128">
-   <properties>
-    <property name="data-type" value="decimal"/>
-    <property name="inputs" value="255,252,253,0"/>
-    <property name="reward-pool" value="ef-generic"/>
-    <property name="rule" value="{i}+5"/>
-    <property name="tokens" value="+,1,4,+"/>
-    <property name="tutorial" value="overflow"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -323,7 +496,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="orc-bomber" type="entity" x="2533.82" y="1892.34" width="128" height="128">
+  <object id="692" name="demon-swordsman" type="entity" x="4436.85" y="1901.43" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
@@ -332,7 +505,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="693" name="orc-bomber" type="entity" x="2535.4" y="1647.91" width="128" height="128">
+  <object id="693" name="demon-swordsman" type="entity" x="4438.43" y="1657" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
@@ -345,63 +518,22 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="713.92" y="1923.62" width="128" height="128">
-   <properties>
-    <property name="components" value="squally"/>
-   </properties>
-  </object>
-  <object id="650" name="spawn" type="object" x="7311.02" y="1929.5" width="128" height="128">
-   <properties>
-    <property name="transition" value="left"/>
-   </properties>
-  </object>
-  <object id="716" name="spawn" type="object" x="424" y="1912" width="128" height="128">
-   <properties>
-    <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="738" name="spawn" type="object" x="5820" y="1920" width="128" height="128">
+  <object id="738" name="spawn" type="object" x="6658" y="1922" width="128" height="128">
    <properties>
     <property name="transition" value="hut"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="66" name="water">
+ <objectgroup id="66" name="lava">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="718" name="water" type="object" x="-122.5" y="2097.32" width="8449" height="2085.35"/>
+  <object id="718" name="lava" type="object" x="-122" y="2081.32" width="8449" height="2085.35"/>
  </objectgroup>
  <objectgroup id="28" name="fireflies">
   <properties>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
   </properties>
- </objectgroup>
- <objectgroup id="31" name="rain">
-  <properties>
-   <property name="type" value="weather"/>
-   <property name="weather" value="rain"/>
-  </properties>
- </objectgroup>
- <objectgroup id="32" name="decor +4">
-  <properties>
-   <property name="depth" type="float" value="256"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="5350.39" y="1962.93" width="270" height="748"/>
-  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="6779.03" y="1962.5" width="270" height="748"/>
-  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="9515.62" y="1911.9" width="242" height="738"/>
-  <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="277.57" y="1890.1" width="242" height="738"/>
-  <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="7408.81" y="1935" width="270" height="748"/>
- </objectgroup>
- <objectgroup id="33" name="decor +8">
-  <properties>
-   <property name="depth" type="float" value="512"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="62.81" y="1882.6" width="242" height="738"/>
-  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="6202.38" y="1937.9" width="242" height="738"/>
-  <object id="405" name="Forest/Foreground/ForegroundTree1" type="decor" x="6996.23" y="2033.92" width="242" height="738"/>
  </objectgroup>
 </map>
