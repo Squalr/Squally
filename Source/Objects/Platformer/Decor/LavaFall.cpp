@@ -4,6 +4,7 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -31,7 +32,7 @@ LavaFall::LavaFall(ValueMap& properties) : super(properties)
 	);
 	this->baseAnimation = SmartAnimationSequenceNode::create();
 	this->fallAnimation = SmartAnimationSequenceNode::create();
-	this->hitbox = CollisionObject::create(CollisionObject::createBox(CSize(320.0f, objectSize.height)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->hitbox = CollisionObject::create(CollisionObject::createBox(CSize(280.0f, objectSize.height)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
 	this->fallAnimation->setContentSize(objectSize);
 	this->fallAnimation->setRepeatY(true);
