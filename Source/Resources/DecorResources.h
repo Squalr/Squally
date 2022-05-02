@@ -633,17 +633,14 @@ namespace DecorResources
 	extern const std::string Lava_Stone6;
 	extern const std::string Lava_Stone7;
 	extern const std::string Lava_Stone8;
+	extern const std::string Lava_TownAlch;
 	extern const std::string Lava_TownHome1;
 	extern const std::string Lava_TownHome2;
 	extern const std::string Lava_TownHome3;
 	extern const std::string Lava_TownHome4;
 	extern const std::string Lava_TownHome5;
 	extern const std::string Lava_TownHome6;
-	extern const std::string Lava_TownHome7;
-	extern const std::string Lava_TownHome8;
-	extern const std::string Lava_TownHome9;
 	extern const std::string Lava_TownInn;
-	extern const std::string Lava_TownMisc;
 	extern const std::string Lava_TownPrison;
 	extern const std::string Lava_TownSmith;
 	extern const std::string Lava_Volcano1;
