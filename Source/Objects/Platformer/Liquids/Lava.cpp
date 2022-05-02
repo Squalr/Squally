@@ -17,7 +17,7 @@ using namespace cocos2d;
 
 const std::string Lava::MapKey = "lava";
 const Color4B Lava::SurfaceColor = Color4B(224, 224, 0, 255);
-const Color4B Lava::BodyColor = Color4B(212, 12, 12, 224);
+const Color4B Lava::BodyColor = Color4B(212, 12, 12, 240);
 const float Lava::LavaGravity = 0.0f;
 const float Lava::BubbleDensityPer1024Px = 1.0f;
 

@@ -4,6 +4,7 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
 
 #include "Resources/ObjectResources.h"
@@ -34,7 +35,7 @@ LavaGeyser::LavaGeyser(ValueMap& properties) : super(properties)
 	this->baseAnimation = SmartAnimationSequenceNode::create();
 	this->midAnimation = SmartAnimationSequenceNode::create();
 	this->topAnimation = SmartAnimationSequenceNode::create();
-	this->hitbox = CollisionObject::create(CollisionObject::createBox(CSize(320.0f, objectSize.height)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->hitbox = CollisionObject::create(CollisionObject::createBox(CSize(224.0f, objectSize.height)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
 	this->midAnimation->setRepeatY(true);
 
