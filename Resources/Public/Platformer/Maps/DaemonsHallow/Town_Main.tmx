@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1108">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1118">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -187,6 +187,24 @@
     <property name="mini-map-visible" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="1111" name="portal" type="object" x="4311" y="2821" width="256" height="419">
+   <properties>
+    <property name="map" value="DaemonsHallow/Town_Smith"/>
+    <property name="transition" value="smith"/>
+   </properties>
+  </object>
+  <object id="1113" name="portal" type="object" x="6785.39" y="2819.39" width="256" height="406">
+   <properties>
+    <property name="map" value="DaemonsHallow/Town_Alch"/>
+    <property name="transition" value="alch"/>
+   </properties>
+  </object>
+  <object id="1115" name="portal" type="object" x="1384.33" y="2760.48" width="256" height="467">
+   <properties>
+    <property name="map" value="DaemonsHallow/Town_Home1"/>
+    <property name="transition" value="home1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="94" name="entities -6">
   <properties>
@@ -216,6 +234,21 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-A"/>
+   </properties>
+  </object>
+  <object id="1110" name="spawn-wood-door" type="object" x="4373.67" y="3112" width="128" height="128">
+   <properties>
+    <property name="transition" value="smith"/>
+   </properties>
+  </object>
+  <object id="1112" name="spawn-wood-door" type="object" x="6848.06" y="3097.39" width="128" height="128">
+   <properties>
+    <property name="transition" value="alch"/>
+   </properties>
+  </object>
+  <object id="1114" name="spawn-wood-door" type="object" x="1445" y="3101.48" width="128" height="128">
+   <properties>
+    <property name="transition" value="home1"/>
    </properties>
   </object>
  </objectgroup>
@@ -354,7 +387,7 @@
   </properties>
   <object id="1102" name="caverns" type="terrain" x="-371.757" y="3314.43" width="8790.18" height="1281.81"/>
  </objectgroup>
- <objectgroup id="63" name="decor bg">
+ <objectgroup id="63" name="decor bg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -371,7 +404,7 @@
   </properties>
   <object id="945" name="caverns" type="terrain" x="-179.094" y="3321.58" width="8422.18" height="1281.81"/>
  </objectgroup>
- <objectgroup id="22" name="decor midground">
+ <objectgroup id="22" name="decor midground" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -404,6 +437,28 @@
    </properties>
   </object>
   <object id="913" name="life-stone" type="object" x="6298.03" y="2897.35" width="146" height="423"/>
+  <object id="1108" name="portal" type="object" x="3947.88" y="2974.33" width="256" height="338">
+   <properties>
+    <property name="map" value="DaemonsHallow/Town_Inn"/>
+    <property name="transition" value="inn"/>
+   </properties>
+  </object>
+  <object id="1117" name="portal" type="object" x="1628.18" y="2845.33" width="256" height="479">
+   <properties>
+    <property name="map" value="DaemonsHallow/Town_Home2"/>
+    <property name="transition" value="home2"/>
+   </properties>
+  </object>
+  <object id="1109" name="spawn-wood-door" type="object" x="4011" y="3187" width="128" height="128">
+   <properties>
+    <property name="transition" value="inn"/>
+   </properties>
+  </object>
+  <object id="1116" name="spawn-wood-door" type="object" x="1684.64" y="3196.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="home2"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -415,7 +470,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="883" name="mittens" type="entity" x="4784.59" y="3184.97" width="128" height="128">
+  <object id="883" name="mittens" type="entity" x="5872.47" y="3197.09" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="dh-generic"/>

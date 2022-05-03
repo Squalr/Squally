@@ -237,7 +237,11 @@ DeveloperScene::DeveloperScene()
 
 		mapList.push_back(this->buildDebugButton("Warp Room (DH)", MapResources::DaemonsHallow_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("Town Main (DH)", MapResources::DaemonsHallow_Town_Main));
+		mapList.push_back(this->buildDebugButton("Alch (DH)", MapResources::DaemonsHallow_Town_Alch));
+		mapList.push_back(this->buildDebugButton("Inn (DH)", MapResources::DaemonsHallow_Town_Inn));
+		mapList.push_back(this->buildDebugButton("Smith (DH)", MapResources::DaemonsHallow_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DH)", MapResources::DaemonsHallow_Zone_1_0));
+		mapList.push_back(this->buildDebugButton("Zone_1_1 (DH)", MapResources::DaemonsHallow_Zone_1_1));
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
