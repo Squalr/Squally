@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1008">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="SkyYellow"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="mini-map-item" value="temple-map"/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="3"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="72" name="bg -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="991" name="magma" type="texture" x="-493.815" y="-418" width="3440.11" height="8964.24"/>
+ </objectgroup>
+ <objectgroup id="74" name="terrain -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="73" name="decor -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="75" name="bridge -5">
+  <properties>
+   <property name="depth" type="float" value="-312"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="76" name="bridge -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="77" name="bridge -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="78" name="bridge -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="79" name="bridge -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="984" name="obsidean" type="terrain" x="-140.875" y="7817.06" width="2949.75" height="529.88">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="994" name="obsidean" type="terrain" x="-2784" y="6384">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+   <polygon points="2464,-6624 3839.39,-6620.48 3838.3,-6177.95 3742.56,-5751.54 4033.59,-5744.82 4040.37,-5103.04 3604.01,-5063.18 3540.95,-4723.73 3657.61,-4456.6 3983.97,-4418.18 4297.57,-4445.14 4337.46,-4260.15 4289.23,-4069.98 3529.22,-3890.77 3385.28,-3544.16 3511.95,-3153.95 3859.95,-3159.13 4156.02,-3156.08 4229.33,-2915.73 4517.23,-2680.72 4499.71,-2042.28 4418.03,-1811.1 4456.57,-1097.59 4362.27,-801.52 4170.36,-797.885 4066.53,-1075.91 4114.57,-1490.04 3882.54,-1989.81 3902.42,-2593.84 3471.67,-2700.02 3116.73,-2553.49 3075.16,-1988.48 3186.9,-1493.43 3053.29,-944.226 2887.41,-229.302 3026.22,551.254 3575.25,631.874 3895.77,630.315 4048.6,665.293 4075.93,846.416 3844.39,911.527 3457.4,918.279 2873.78,910.123 2460,912"/>
+  </object>
+  <object id="995" name="obsidean" type="terrain" x="-112" y="6972.56">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+   <polygon points="1661.33,-7209.77 3016,-7212.56 3001.78,993.39 2460,995.438 2500.31,427.871 2415.32,-87.1935 2563.79,-1004.27 2390.62,-1806.72 2483.12,-2357.49 2402.24,-3048.09 2493.8,-4026.62 1745.16,-3991.61 1262.33,-4155.87 1962.06,-4386.93 2466.29,-4412.85 2457.93,-4880.5 2511.98,-5368.61 1858.88,-5585.87 1812.52,-5965.16 2112.06,-5973.28 2076.03,-6579.59 1659.38,-6781.26"/>
+  </object>
+  <object id="996" name="obsidean" type="terrain" x="-2428.98" y="11256.8">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+   <polygon points="2889.74,-5180.88 4548.98,-5181.41 4523.1,-4949.53 4069.43,-4811.68 3708.27,-4732.44 3325.03,-4819.84 2887.03,-4971"/>
+  </object>
+  <object id="999" name="lava" type="object" x="-403.165" y="7968" width="3470.33" height="2800">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1001" name="edge-portal" type="object" x="1058.83" y="2.18082" width="488" height="200">
+   <properties>
+    <property name="direction" value="up"/>
+    <property name="map" value="DataMines/Zone_1_0"/>
+    <property name="transition" value="up"/>
+   </properties>
+  </object>
+  <object id="1002" name="edge-portal" type="object" x="-4.60606" y="7324.24" width="200" height="488">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="DataMines/Zone_1_0"/>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1003" name="tnt" type="entity" x="2139.03" y="7690.55" width="128" height="128"/>
+  <object id="1004" name="tnt" type="entity" x="1957.21" y="7687.52" width="128" height="128"/>
+  <object id="1005" name="tnt" type="entity" x="1757.21" y="7684.48" width="128" height="128"/>
+  <object id="1006" name="tnt" type="entity" x="1563.27" y="7687.52" width="128" height="128"/>
+  <object id="1007" name="tnt" type="entity" x="1354.18" y="7684.48" width="128" height="128"/>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="309.292" y="7693.83" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="982" name="spawn" type="object" x="226.36" y="7690.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="lava-room"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

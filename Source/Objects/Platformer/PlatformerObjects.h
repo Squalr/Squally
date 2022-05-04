@@ -126,6 +126,7 @@
 #include "Objects/Platformer/Transportation/Ship.h"
 #include "Objects/Platformer/Transportation/VikingShip.h"
 #include "Objects/Platformer/Traps/ElectricityBeam/ElectricityBeam.h"
+#include "Objects/Platformer/Traps/FireBird/FireBird.h"
 #include "Objects/Platformer/Traps/FloatingBomb/FloatingBomb.h"
 #include "Objects/Platformer/Traps/HeavenHug/HeavenHug.h"
 #include "Objects/Platformer/Traps/Icicle/Icicle.h"

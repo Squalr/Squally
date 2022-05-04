@@ -17589,6 +17589,126 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_UpdateCountDown() = default;
 	};
 
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_CommentAddss : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_CommentAddss* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_CommentAddss();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_CommentAddss() = default;
+	};
+
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_CommentChangeTo : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_CommentChangeTo* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_CommentChangeTo();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_CommentChangeTo() = default;
+	};
+
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt1 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt1();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt1() = default;
+	};
+
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt2 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt2();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt2() = default;
+	};
+
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt3 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt3* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt3();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt3() = default;
+	};
+
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm2 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm2();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm2() = default;
+	};
+
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm4 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm4* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm4();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm4() = default;
+	};
+
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_UpdateTimer : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_UpdateTimer* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_UpdateTimer();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_UpdateTimer() = default;
+	};
+
 	class Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity : public LocalizedString
 	{
 	public:
