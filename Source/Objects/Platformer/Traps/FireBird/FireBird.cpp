@@ -184,7 +184,7 @@ NO_OPTIMIZE void FireBird::updateSpikes(float dt)
 
 	if (this->currentElapsedTimeForSpikeTrigger >= this->totalTimeUntilSpikesTrigger)
 	{
-		const float StayUpDuration = 1.5f;
+		const float StayUpDuration = 0.0f;
 
 		this->isRunningAnimation = true;
 		this->currentElapsedTimeForSpikeTrigger = 0.0f;
