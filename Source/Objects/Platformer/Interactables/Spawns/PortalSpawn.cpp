@@ -78,6 +78,7 @@ void PortalSpawn::onPlayerSpawn(PlatformerEntity* entity)
 {
 	this->doRelayer(entity);
 	this->applyZoomOverride();
+	this->broadcastMapEvent(this->getSendEvent(), ValueMap());
 
 	PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(entity, GameUtils::getWorldCoords3D(this)));
 	

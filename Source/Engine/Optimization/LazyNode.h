@@ -23,8 +23,11 @@ public:
 		if (lazyInstance == nullptr && createFunc != nullptr)
 		{
 			lazyInstance = createFunc();
-
-			this->addChild(lazyInstance);
+			
+			if (lazyInstance != nullptr)
+			{
+				this->addChild(lazyInstance);
+			}
 		}
 
 		return lazyInstance;

@@ -54,6 +54,7 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	// BALLMER PEAKS QUESTS
 	
 	// DAEMONS HALLOW QUESTS
+	this->lineDeserializers[ReleasePressureLine::MapKeyQuestLine] = [=]() { return (QuestLine*)ReleasePressureLine::create(); };
 	
 	// LAMBDA CRYPTS QUESTS
 	

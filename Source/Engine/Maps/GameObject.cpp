@@ -616,12 +616,17 @@ void GameObject::despawn(float despawnDelay)
 
 void GameObject::onDespawn()
 {
-	std::vector<GameComponent*> componentsclone = this->components;
+	std::vector<GameComponent*> componentsClone = this->components;
 
-	for (GameComponent* component : componentsclone)
+	for (GameComponent* component : componentsClone)
 	{
 		this->detachComponent(component);
 	}
+
+	GameUtils::getChildrenOfType<GameObject>(this, [=](GameObject* child)
+	{
+		child->onDespawn();
+	}, true);
 	
 	this->removeAllListeners();
 	this->unscheduleUpdate();

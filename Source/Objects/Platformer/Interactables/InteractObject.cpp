@@ -86,6 +86,10 @@ InteractObject::InteractObject(
 	{
 		this->lockedMenu = LazyNode<InteractMenu>::create([=](){ return InteractMenu::create(Strings::Platformer_Objects_Doors_Closed::create(), interactColor, offset); });
 	}
+	else if (lockedText == "")
+	{
+		this->lockedMenu = LazyNode<InteractMenu>::create([=](){ return nullptr; });
+	}
 	else
 	{
 		this->lockedMenu = LazyNode<InteractMenu>::create([=](){ return InteractMenu::create(Strings::Platformer_Objects_Doors_Locked::create(), interactColor, offset); });
@@ -354,19 +358,29 @@ void InteractObject::updateInteractMenuVisibility()
 {
 	if (this->interactType != InteractType::Input || this->disabled)
 	{
+
 		if (this->interactMenu->isBuilt())
 		{
-			this->interactMenu->lazyGet()->hide();
+			if (InteractMenu* menu = this->interactMenu->lazyGet())
+			{
+				menu->hide();
+			}
 		}
 
 		if (this->lockedMenu->isBuilt())
 		{
-			this->lockedMenu->lazyGet()->hide();
+			if (InteractMenu* menu = this->lockedMenu->lazyGet())
+			{
+				menu->hide();
+			}
 		}
 
 		if (this->unlockMenu->isBuilt())
 		{
-			this->unlockMenu->lazyGet()->hide();
+			if (InteractMenu* menu = this->unlockMenu->lazyGet())
+			{
+				menu->hide();
+			}
 		}
 		return;
 	}
@@ -375,37 +389,54 @@ void InteractObject::updateInteractMenuVisibility()
 	{
 		if (this->isUnlockable)
 		{
-			this->unlockMenu->lazyGet()->show();
-			this->lockedMenu->lazyGet()->hide();
+			if (InteractMenu* menu = this->unlockMenu->lazyGet())
+			{
+				menu->show();
+			}
+
+			if (InteractMenu* menu = this->lockedMenu->lazyGet())
+			{
+				menu->hide();
+			}
 		}
 		else
 		{
-			this->unlockMenu->lazyGet()->hide();
-			this->lockedMenu->lazyGet()->show();
+			if (InteractMenu* menu = this->unlockMenu->lazyGet())
+			{
+				menu->hide();
+			}
+
+			if (InteractMenu* menu = this->lockedMenu->lazyGet())
+			{
+				menu->show();
+			}
 		}
 	}
 	else
 	{
-		if (this->lockedMenu->isBuilt())
+		if (InteractMenu* menu = this->lockedMenu->lazyGet())
 		{
-			this->lockedMenu->lazyGet()->hide();
+			menu->hide();
 		}
 
-		if (this->unlockMenu->isBuilt())
+		if (InteractMenu* menu = this->unlockMenu->lazyGet())
 		{
-			this->unlockMenu->lazyGet()->hide();
+			menu->hide();
 		}
 	}
 
 	if (!this->isLocked && this->canInteract)
 	{
-		this->interactMenu->lazyGet()->show();
+		if (InteractMenu* menu = this->interactMenu->lazyGet())
+		{
+			menu->show();
+		}
 	}
 	else
 	{
-		if (this->interactMenu->isBuilt())
+		if (InteractMenu* menu = this->interactMenu->lazyGet())
 		{
-			this->interactMenu->lazyGet()->hide();
+			menu->hide();
 		}
 	}
 }

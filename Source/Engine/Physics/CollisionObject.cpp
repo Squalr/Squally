@@ -192,6 +192,11 @@ void CollisionObject::runPhysics(float dt)
 	{
 		for (auto collisionObject : CollisionObject::CollisionObjects[collisionType])
 		{
+			if (collisionObject->isDespawned())
+			{
+				continue;
+			}
+			
 			CollisionResolver::resolveCollision(this, collisionObject, [=]()
 			{
 				CollisionResult collisionResult = CollisionResult::DoNothing;

@@ -12,6 +12,7 @@
 #include "Scenes/Platformer/Quests/EndianForest/SneakIntoLianasHouse/SneakIntoLianasHouseLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/WaterSpellbook/WaterSpellbookLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/WindSpellbook/WindSpellbookLine.h"
+#include "Scenes/Platformer/Quests/DaemonsHallow/ReleasePressure/ReleasePressureLine.h"
 #include "Scenes/Platformer/Quests/DataMines/DefeatRhinoman/DefeatRhinomanLine.h"
 #include "Scenes/Platformer/Quests/DataMines/RestorePower/RestorePowerLine.h"
 #include "Scenes/Platformer/Quests/Global/RestoreWarpGatesLine.h"
