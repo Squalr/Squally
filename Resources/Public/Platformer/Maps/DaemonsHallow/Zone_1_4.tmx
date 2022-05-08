@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="20" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="1011">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="20" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="1012">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -117,11 +117,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1003" name="tnt" type="entity" x="2139.03" y="7690.55" width="128" height="128"/>
-  <object id="1004" name="tnt" type="entity" x="1957.21" y="7687.52" width="128" height="128"/>
-  <object id="1005" name="tnt" type="entity" x="1757.21" y="7684.48" width="128" height="128"/>
-  <object id="1006" name="tnt" type="entity" x="1563.27" y="7687.52" width="128" height="128"/>
-  <object id="1007" name="tnt" type="entity" x="1354.18" y="7684.48" width="128" height="128"/>
   <object id="1008" name="trigger" type="object" x="1103.84" y="7126.18" width="146" height="753.996">
    <properties>
     <property name="send-event" value="begin-lava-event"/>
