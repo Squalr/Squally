@@ -102,6 +102,7 @@ void Portal::loadMap()
 	}
 
 	this->wasTripped = true;
+	this->broadcastMapEvent(this->getSendEvent(), ValueMap());
 
 	// Load new map after a short delay -- changing scenes in the middle of a collision causes a crash
 	// (not sure why, changing to a combat map is fine)

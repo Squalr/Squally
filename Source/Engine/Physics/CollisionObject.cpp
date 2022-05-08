@@ -147,7 +147,7 @@ void CollisionObject::update(float dt)
 
 void CollisionObject::runPhysics(float dt)
 {
-	if (!this->physicsEnabled)
+	if (!this->physicsEnabled || this->isDespawned())
 	{
 		return;
 	}

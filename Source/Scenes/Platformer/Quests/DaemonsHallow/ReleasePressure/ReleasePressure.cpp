@@ -53,30 +53,27 @@ ReleasePressure::~ReleasePressure()
 
 void ReleasePressure::onLoad(QuestState questState)
 {
-	this->defer([=]()
+	switch (questState)
 	{
-		switch (questState)
+		case QuestState::Active:
+		case QuestState::ActiveThroughSkippable:
+		default:
 		{
-			case QuestState::Active:
-			case QuestState::ActiveThroughSkippable:
-			default:
+			ObjectEvents::QueryObjects<GameObject>([=](GameObject* object)
 			{
-				ObjectEvents::QueryObjects<GameObject>([=](GameObject* object)
-				{
-					object->despawn();
-				}, ReleasePressure::MapTagPressureRaised);
-				break;
-			}
-			case QuestState::Complete:
-			{
-				ObjectEvents::QueryObjects<GameObject>([=](GameObject* object)
-				{
-					object->despawn();
-				}, ReleasePressure::MapTagPressureLowered);
-				break;
-			}
+				object->despawn();
+			}, ReleasePressure::MapTagPressureRaised);
+			break;
 		}
-	});
+		case QuestState::Complete:
+		{
+			ObjectEvents::QueryObjects<GameObject>([=](GameObject* object)
+			{
+				object->despawn();
+			}, ReleasePressure::MapTagPressureLowered);
+			break;
+		}
+	}
 }
 
 void ReleasePressure::onActivate(bool isActiveThroughSkippable)

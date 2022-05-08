@@ -72,6 +72,9 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->drawRect = CRect::ZERO;
 	this->boundsRect = CRect::ZERO;
 
+	this->rootNode->setName("rootNode");
+	this->collisionNode->setName("collisionRoot");
+
 	if (DeveloperModeController::IsDeveloperBuild)
 	{
 		this->debugLabelsNode->setVisible(false);
@@ -119,6 +122,11 @@ void TerrainObject::onEnterTransitionDidFinish()
 
 	this->defer([=]()
 	{
+		if (this->isDespawned())
+		{
+			return;
+		}
+		
 		if (!this->terrainHoleTag.empty())
 		{
 			ObjectEvents::QueryObjects<TerrainHole>([&](TerrainHole* terrainHole)
@@ -160,6 +168,11 @@ void TerrainObject::onEnterTransitionDidFinish()
 		// This gets built as a deferred step since we may be waiting on masking / terrain holes until this point
 		this->defer([=]()
 		{
+			if (this->isDespawned())
+			{
+				return;
+			}
+
 			this->buildCollision();
 			this->buildTerrain();
 			this->optimizationHideOffscreenTerrain();

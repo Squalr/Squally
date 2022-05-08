@@ -623,10 +623,17 @@ void GameObject::onDespawn()
 		this->detachComponent(component);
 	}
 
-	GameUtils::getChildrenOfType<GameObject>(this, [=](GameObject* child)
+	std::vector<GameObject*> children;
+
+	GameUtils::getChildrenOfType<GameObject>(this, [&](GameObject* child)
+	{
+		children.push_back(child);
+	}, true);
+
+	for (GameObject* child : children)
 	{
 		child->onDespawn();
-	}, true);
+	}
 	
 	this->removeAllListeners();
 	this->unscheduleUpdate();
