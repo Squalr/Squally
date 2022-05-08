@@ -2,6 +2,7 @@
 #include "ReleasePressureLine.h"
 
 #include "Engine/Quests/QuestTask.h"
+#include "Scenes/Platformer/Quests/DaemonsHallow/ReleasePressure/LavaEscape.h"
 #include "Scenes/Platformer/Quests/DaemonsHallow/ReleasePressure/ReleasePressure.h"
 
 using namespace cocos2d;
@@ -18,6 +19,7 @@ ReleasePressureLine* ReleasePressureLine::create()
 }
 
 ReleasePressureLine::ReleasePressureLine() : super(ReleasePressureLine::MapKeyQuestLine, {
+	QuestData(LavaEscape::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return LavaEscape::create(owner, questLine); }),
 	QuestData(ReleasePressure::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return ReleasePressure::create(owner, questLine); }),
 })
 {

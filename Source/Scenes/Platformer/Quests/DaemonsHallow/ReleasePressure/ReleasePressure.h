@@ -3,10 +3,6 @@
 #include "Engine/Quests/QuestTask.h"
 
 class QuestLine;
-class Rhinoman;
-class ScreamingDoor;
-class Squally;
-class WorldSound;
 
 class ReleasePressure : public QuestTask
 {

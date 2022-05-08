@@ -82,6 +82,11 @@ void ReleasePressure::onActivate(bool isActiveThroughSkippable)
 	{
 		this->complete();
 	});
+
+	if (!isActiveThroughSkippable)
+	{
+		this->complete();
+	}
 }
 
 void ReleasePressure::onComplete()

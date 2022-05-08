@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1008">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="20" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="1011">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -89,15 +89,13 @@
    </properties>
    <polygon points="2889.74,-5180.88 4548.98,-5181.41 4523.1,-4949.53 4069.43,-4811.68 3708.27,-4732.44 3325.03,-4819.84 2887.03,-4971"/>
   </object>
-  <object id="999" name="lava" type="object" x="-403.165" y="7968" width="3470.33" height="2800">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
   <object id="1001" name="edge-portal" type="object" x="1058.83" y="2.18082" width="488" height="200">
    <properties>
     <property name="direction" value="up"/>
     <property name="map" value="DataMines/Zone_1_0"/>
+    <property name="quest" value="lava-escape,release-pressure"/>
+    <property name="quest-line" value="release-pressure"/>
+    <property name="send-event" value="pressure-released"/>
     <property name="transition" value="up"/>
    </properties>
   </object>
@@ -124,6 +122,11 @@
   <object id="1005" name="tnt" type="entity" x="1757.21" y="7684.48" width="128" height="128"/>
   <object id="1006" name="tnt" type="entity" x="1563.27" y="7687.52" width="128" height="128"/>
   <object id="1007" name="tnt" type="entity" x="1354.18" y="7684.48" width="128" height="128"/>
+  <object id="1008" name="trigger" type="object" x="1103.84" y="7126.18" width="146" height="753.996">
+   <properties>
+    <property name="send-event" value="begin-lava-event"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
@@ -145,6 +148,20 @@
    <properties>
     <property name="transition" value="lava-room"/>
    </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="80" name="objects fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1009" name="lava" type="object" x="-403.165" y="7968" width="3470.33" height="2800">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="tag" value="rising-lava"/>
+   </properties>
+  </object>
+  <object id="1010" x="-1509.3" y="4468.08" width="89.5469" height="18.8438">
+   <text wrap="1">Hello World</text>
   </object>
  </objectgroup>
 </map>
