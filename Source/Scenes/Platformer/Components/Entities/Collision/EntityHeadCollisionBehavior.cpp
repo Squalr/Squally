@@ -45,7 +45,7 @@ void EntityHeadCollisionBehavior::onLoad()
 {
 	this->defer([=]()
 	{
-		this->buildHeadCollisionDetector();
+		// this->buildHeadCollisionDetector();
 		this->toggleQueryable(true);
 	});
 }
@@ -62,6 +62,11 @@ void EntityHeadCollisionBehavior::onDisable()
 
 bool EntityHeadCollisionBehavior::hasHeadCollisionWith(CollisionObject* collisonObject)
 {
+	if (this->headCollision == nullptr)
+	{
+		return false;
+	}
+
 	Node* currentCollisionGroup = collisonObject->getParent();
 
 	for (auto next : this->headCollision->getCurrentCollisions())

@@ -43,7 +43,7 @@ EntityDialogueBehavior::EntityDialogueBehavior(GameObject* owner) : super(owner)
 		nullptr,
 		InputEvents::KeyCode::KEY_V,
 		Color3B(28, 42, 46),
-		Color4F::ORANGE,
+		Color4F::TRANSPARENT_WHITE,
 		true
 	);
 	this->pretextNode = Node::create();

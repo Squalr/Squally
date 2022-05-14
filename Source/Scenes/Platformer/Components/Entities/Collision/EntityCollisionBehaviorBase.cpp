@@ -233,7 +233,7 @@ bool EntityCollisionBehaviorBase::hasRightWallCollisionWith(CollisionObject* col
 
 bool EntityCollisionBehaviorBase::isOnGround()
 {
-	return this->groundCollision->isOnGround();
+	return this->groundCollision != nullptr && this->groundCollision->isOnGround();
 }
 
 void EntityCollisionBehaviorBase::buildEntityCollision()
@@ -279,7 +279,7 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 		CollisionObject::createCapsulePolygon(this->entity->getEntitySize(), 8.0f),
 		(CollisionType)this->collisionTypeMovement,
 		CollisionObject::Properties(true, false),
-		Color4F::TRANSPARENT_WHITE
+		Color4F::ORANGE
 	);
 
 	Vec2 collisionOffset = this->entity->getCollisionOffset();
@@ -297,17 +297,7 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 	
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
 	{
-		if (this->groundCollision == nullptr || this->headCollision == nullptr)
-		{
-			return CollisionResult::CollideWithPhysics;
-		}
-
-		if (this->groundCollision->isStandingOn(collisionData.other))
-		{
-			return CollisionResult::DoNothing;
-		}
-
-		if (this->headCollision->hasHeadCollisionWith(collisionData.other))
+		if (this->movementCollision->getVelocity().y  > 0.0f)
 		{
 			return CollisionResult::CollideWithPhysics;
 		}
@@ -325,8 +315,8 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 		// Non-swimming rules
 		if (this->entity->controlState != PlatformerEntity::ControlState::Swimming)
 		{
-			// No collision when not standing on anything
-			if (!this->groundCollision->isOnGround())
+			// No collision when not standing on the pass-through object
+			if (!this->groundCollision->isStandingOn(collisionData.other))
 			{
 				return CollisionResult::DoNothing;
 			}
@@ -337,21 +327,6 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 		{
 			return CollisionResult::DoNothing;
 		}
-
-		/*
-		if (this->groundCollision->isStandingOn(collisionData.other))
-		{
-			return CollisionResult::CollideWithPhysics;
-		}
-
-		// Catch an edge case when jamming the he player into a corner consisting of two objects
-		// This causes the ground detector to hit both, resulting in the above cases to fail.
-		// Just using wall detectors as a backup seems to work fine.
-		if (this->hasLeftWallCollision() || this->hasRightWallCollision())
-		{
-			return CollisionResult::CollideWithPhysics;
-		}
-		*/
 		
 		// This is how we allow platforms to overlap -- the oldest-touched platform tends to be the correct collision target
 		if (!this->groundCollision->isStandingOnSomethingOtherThan(collisionData.other))
@@ -364,8 +339,7 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 
 	this->movementCollision->whenCollidesWith({ (int)PlatformerCollisionType::Water, }, [=](CollisionData collisionData)
 	{
-		if (this->groundCollision != nullptr
-			&& !this->groundCollision->isOnGround()
+		if (!this->isOnGround()
 			&& this->noEmergeSubmergeSoundCooldown <= 0.0f
 			&& !this->submergeSound->isPlaying()
 			&& !this->movementCollision->wasCollidingWithType((int)PlatformerCollisionType::Water))
@@ -390,8 +364,7 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 	{
 		this->entity->controlState = PlatformerEntity::ControlState::Normal;
 
-		if (this->groundCollision != nullptr
-			&& !this->groundCollision->isOnGround()
+		if (!this->isOnGround()
 			&& this->noEmergeSubmergeSoundCooldown <= 0.0f
 			&& !this->emergeSound->isPlaying()
 			&& !this->movementCollision->isCollidingWithType((int)PlatformerCollisionType::Water))

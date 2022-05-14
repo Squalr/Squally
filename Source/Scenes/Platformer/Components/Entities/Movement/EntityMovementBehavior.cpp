@@ -111,7 +111,7 @@ void EntityMovementBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (this->entityCollision == nullptr || this->groundCollision == nullptr || this->jumpBehavior == nullptr)
+	if (this->entityCollision == nullptr)
 	{
 		return;
 	}
@@ -155,7 +155,7 @@ void EntityMovementBehavior::update(float dt)
 			bool movingIntoLeftWall = (movement.x < 0.0f && hasLeftCollision);
 			bool movingIntoRightWall = (movement.x > 0.0f && hasRightCollision);
 
-			if (this->entityCollision->isOnGround())
+			if (this->entityCollision->isOnGround() && movement == Vec2::ZERO)
 			{
 				// Prevents obnoxious drifting down slopes. Ideally this would be solved with friction, but that is not implemented as of writing this.
 				this->entityCollision->disableGravity();
@@ -185,7 +185,8 @@ void EntityMovementBehavior::update(float dt)
 				{
 					this->entity->getAnimations()->playAnimation("Walk", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(0.65f));
 
-					if (this->groundCollision->isOnGround()
+					if (this->groundCollision != nullptr
+						&& this->groundCollision->isOnGround()
 						&& !this->walkSounds.empty()
 						&& !std::any_of(this->walkSounds.begin(), this->walkSounds.end(), [=](WorldSound* walkSound)
 						{
