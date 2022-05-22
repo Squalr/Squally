@@ -22,7 +22,7 @@ EntityCollisionBehaviorGroup* EntityCollisionBehaviorGroup::create(GameObject* o
 
 EntityCollisionBehaviorGroup::EntityCollisionBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityGroundCollisionBehavior::create(owner),
-	EntityHeadCollisionBehavior::create(owner),
+	// EntityHeadCollisionBehavior::create(owner),
 	EntityJumpCollisionBehavior::create(owner),
 	EntityHoverCollisionBehavior::create(owner),
 	})

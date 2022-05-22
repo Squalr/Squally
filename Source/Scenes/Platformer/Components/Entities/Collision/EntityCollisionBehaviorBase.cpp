@@ -249,7 +249,7 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 		// CollisionObject::createBox(this->entity->getEntitySize() * ScaleFactor),
 		CollisionObject::createCapsulePolygon(this->entity->getEntitySize() * ScaleFactor, 8.0f),
 		(CollisionType)this->collisionType,
-		CollisionObject::Properties(false, false),
+		CollisionObject::Properties(false, false, 1.0f, 0.0f),
 		Color4F::TRANSPARENT_WHITE
 	);
 

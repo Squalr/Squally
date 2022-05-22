@@ -154,10 +154,15 @@ void EntityMovementBehavior::update(float dt)
 			bool hasRightCollision = this->entityCollision->hasRightWallCollision();
 			bool movingIntoLeftWall = (movement.x < 0.0f && hasLeftCollision);
 			bool movingIntoRightWall = (movement.x > 0.0f && hasRightCollision);
-
-			if (this->entityCollision->isOnGround() && movement == Vec2::ZERO)
+  
+			// Prevents obnoxious drifting down slopes. Ideally this would be solved with friction, but that is not implemented as of writing this.
+			if (this->entityCollision->isOnGround()
+				// && !(hasLeftCollision || hasRightCollision)
+				&& std::abs(movement.x) < 0.01f
+				// && std::abs(movement.y) < 0.01f
+				// && std::abs(velocity.x) < 1.0f
+				)
 			{
-				// Prevents obnoxious drifting down slopes. Ideally this would be solved with friction, but that is not implemented as of writing this.
 				this->entityCollision->disableGravity();
 			}
 

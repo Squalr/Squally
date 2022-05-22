@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="20" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="1012">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="20" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="82" nextobjectid="1015">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -25,6 +25,12 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1013" name="obsidean" type="terrain" x="-116.297" y="1846.87">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+   <polygon points="-65.241,1938.92 268.025,2071.48 1243.04,2190.75 1954.73,2010.23 2620.21,1308.6 2830.05,-143.909 2932.86,-1754.98 3501.85,-2293.28 4100.65,-2310.46 3344.98,-1357.07 3179.55,54.7416 3172.45,904.344 3564.9,1524.12 3943.67,1711.74 3917.3,2442.09 3130.47,1783.03 2741.9,2068.98 2490.93,2451.19 3180.42,3086.74 3861.87,3357.21 3844.85,4006.95 3055.91,3664.84 2443.94,3214.77 2231.1,3428.82 1888.21,4018.37 1573.59,4918.01 906.224,6711.5 178.44,6677.71 1301.06,3926.49 1727.79,3106.98 1701.6,2680.74 1307.73,2720.55 97.0124,2626.42 -1237.68,1634.48 -1251.86,1126.16 -485.616,1707.59 -48.9593,458.802 -388.351,-869.253 -710.8,-1475.33 -1062.63,-1879.36 -412.707,-1861.71 -73.5093,-1175.02 302.95,478.818"/>
+  </object>
  </objectgroup>
  <objectgroup id="73" name="decor -6">
   <properties>
@@ -43,6 +49,18 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+ </objectgroup>
+ <objectgroup id="81" name="terrain -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1014" name="obsidean" type="terrain" x="-1572.58" y="5251.95">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+   <polygon points="1157.9,1005.31 1424.64,1362.12 1854.93,1067.79 2406.27,1053.24 2598.97,-115.826 3190.74,-1359.6 3848.53,-1771.11 4575.89,-1991.89 4588.78,-1543.26 3956.48,-1369.99 3502.06,-989.882 2919.94,44.0592 2913.42,727.868 3183.62,718.157 4600.84,-179.978 4576.62,555.445 2874.86,1435.08 2518.02,1665.24 2343.68,2002.37 3658.23,3458.88 2979.56,3433.46 2244.39,2587.43 2048.93,2759.71 1734.04,3234.21 1235.15,3281.23 1586.71,2500.67 1562.66,2157.62 1300.82,1689.16 990.193,1198.89 790.467,398.304 1274.78,-509.217 1636.73,-1187.43 2173.77,-2622.87 1775.76,-3897.81 1890.66,-5074.49 2270.71,-5898.72 2644.88,-5895.35 2315.14,-5049.15 2200.52,-3925.52 2529.98,-2577.6 3293.73,-2470.14 3858.46,-2586.78 4006.65,-3116.78 3777.84,-4205.24 3984.87,-4842.64 3759.69,-5901.77 4230.2,-5906.25 4425.18,-4905.14 4264.42,-4165.06 4389.65,-3141.15 4376.83,-2188.39 3130.75,-2035.03 2339.05,-2126.15 2012.06,-1164.92 1595.68,-414.607 1092.41,472.094"/>
+  </object>
  </objectgroup>
  <objectgroup id="77" name="bridge -3">
   <properties>
@@ -102,7 +120,7 @@
   <object id="1002" name="edge-portal" type="object" x="-4.60606" y="7324.24" width="200" height="488">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="DataMines/Zone_1_0"/>
+    <property name="map" value="DaemonsHallow/Zone_1_3"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
@@ -134,7 +152,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="309.292" y="7693.83" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="373.512" y="7693.83" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
