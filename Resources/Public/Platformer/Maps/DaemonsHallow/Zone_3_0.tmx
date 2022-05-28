@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="162" nextobjectid="957">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="164" nextobjectid="972">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -26,14 +26,101 @@
   </properties>
   <object id="864" name="lava" type="object" x="-3406.14" y="2267.61" width="15353" height="1024"/>
  </objectgroup>
- <objectgroup id="132" name="decor -36">
+ <objectgroup id="162" name="terrain -36">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="961" name="obsidean" type="terrain" x="3347.6" y="5946.99">
+   <polygon points="-805.348,-3723.06 -686.275,-2696.02 548.393,-2329.02 1736.46,-2691.95 1943.63,-3720.93"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="132" name="decor -36" visible="0">
   <properties>
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="869" name="lava-fall" type="object" x="980.028" y="-1048.23" width="371" height="3310.29"/>
  </objectgroup>
- <objectgroup id="154" name="decor bg -35">
+ <objectgroup id="163" name="entities -36">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="962" name="demon-grunt" type="entity" x="3464.16" y="2097.21" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="orc-bomber,enemy,agro"/>
+    <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="963" name="demon-warrior" type="entity" x="3612.64" y="2099.56" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="orc-bomber,enemy,agro"/>
+    <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="965" name="demon-archer" type="entity" x="4098.15" y="2094.85" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="orc-bomber,enemy,agro"/>
+    <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="966" name="demon-rogue" type="entity" x="3261.48" y="2090.14" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="orc-bomber,enemy,agro"/>
+    <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="968" name="demon-shaman" type="entity" x="4406.89" y="2094.85" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="orc-bomber,enemy,agro"/>
+    <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="969" name="fire-tiger" type="entity" x="3018.72" y="2099.56" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="orc-bomber,enemy,agro"/>
+    <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="970" name="fire-tiger" type="entity" x="4661.43" y="2097.21" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="orc-bomber,enemy,agro"/>
+    <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="971" name="asmodeus" type="entity" x="3848.33" y="2094.85" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="orc-bomber,enemy,agro"/>
+    <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="154" name="decor bg -35" visible="0">
   <properties>
    <property name="depth" type="float" value="-2240"/>
    <property name="type" value="objects"/>
@@ -78,7 +165,7 @@
   </properties>
   <object id="861" name="lava" type="object" x="-3118.41" y="2290.16" width="14775" height="1024"/>
  </objectgroup>
- <objectgroup id="153" name="decor bg -32">
+ <objectgroup id="153" name="decor bg -32" visible="0">
   <properties>
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
@@ -92,7 +179,7 @@
   </properties>
   <object id="860" name="lava" type="object" x="-3018.38" y="2297.81" width="14575" height="1024"/>
  </objectgroup>
- <objectgroup id="131" name="decor -32">
+ <objectgroup id="131" name="decor -32" visible="0">
   <properties>
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
@@ -113,7 +200,7 @@
   </properties>
   <object id="859" name="lava" type="object" x="-2917.44" y="2306.43" width="14373" height="1024"/>
  </objectgroup>
- <objectgroup id="141" name="decor bg -30">
+ <objectgroup id="141" name="decor bg -30" visible="0">
   <properties>
    <property name="depth" type="float" value="-1920"/>
    <property name="type" value="objects"/>
@@ -256,7 +343,7 @@
   <object id="795" name="obsidean" type="terrain" x="5343.37" y="5066">
    <polygon points="-913.913,-2736.26 -678.331,-1979.27 542.046,-1709.84 1716.35,-1976.28 1921.14,-2731.7"/>
   </object>
-  <object id="933" name="caverns" type="terrain" x="562.545" y="4125.49">
+  <object id="933" name="caverns" type="terrain" x="7000" y="4125.49">
    <polygon points="-1141.99,-3135.23 -1072.75,-2347.11 -879.616,-1409.68 645.319,-1100.18 2300.7,-1362.25 2339.22,-2407.64 2400.58,-3138.04"/>
   </object>
  </objectgroup>
@@ -265,47 +352,37 @@
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="796" name="Generic/TownFence" type="decor" x="34.765" y="31.53" width="538" height="948"/>
-  <object id="797" name="Generic/TownFence" type="decor" x="493.295" y="30.3" width="538" height="948"/>
-  <object id="798" name="Generic/TownFence" type="decor" x="992.595" y="30.3" width="538" height="948"/>
-  <object id="800" name="Generic/TownFence" type="decor" x="1920.38" y="35.5" width="538" height="948"/>
-  <object id="801" name="Generic/TownFence" type="decor" x="2396.93" y="35.5" width="538" height="948"/>
-  <object id="802" name="Generic/TownFence" type="decor" x="-441" y="34" width="538" height="948"/>
-  <object id="823" name="hell-gate" type="object" x="5703" y="1783" width="512" height="512"/>
+  <object id="796" name="Generic/TownFence" type="decor" x="6425.67" y="40.6209" width="538" height="948"/>
+  <object id="797" name="Generic/TownFence" type="decor" x="6884.2" y="39.3909" width="538" height="948"/>
+  <object id="798" name="Generic/TownFence" type="decor" x="7383.5" y="39.3909" width="538" height="948"/>
+  <object id="800" name="Generic/TownFence" type="decor" x="8311.29" y="44.5909" width="538" height="948"/>
+  <object id="801" name="Generic/TownFence" type="decor" x="8787.84" y="44.5909" width="538" height="948"/>
+  <object id="802" name="Generic/TownFence" type="decor" x="5949.91" y="43.0909" width="538" height="948"/>
+  <object id="959" name="Lava/Hole2" type="decor" x="6302.72" y="2232.51" width="541" height="100"/>
  </objectgroup>
  <objectgroup id="118" name="decor -20 fg">
   <properties>
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="852" name="Generic/FancyGate1" type="decor" x="1448.86" y="168.6" width="538" height="816"/>
+  <object id="852" name="Generic/FancyGate1" type="decor" x="7839.77" y="177.691" width="538" height="816"/>
  </objectgroup>
  <objectgroup id="104" name="objects -20">
   <properties>
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="822" name="portal" type="object" x="5728.7" y="1910.48" width="450.603" height="423.038">
-   <properties>
-    <property name="map" value="DataMines/Zone_5_0"/>
-    <property name="transition" value="hell-gate"/>
-   </properties>
-  </object>
   <object id="826" name="life-stone" type="object" x="5162.17" y="1902.5" width="146" height="423"/>
-  <object id="850" name="portal" type="object" x="1598.7" y="664.48" width="256" height="320">
+  <object id="850" name="portal" type="object" x="7989.61" y="673.571" width="256" height="320">
    <properties>
     <property name="map" value="DaemonsHallow/Town_Main"/>
     <property name="transition" value="main-gate"/>
    </properties>
   </object>
-  <object id="956" name="portal" type="object" x="6666.22" y="1913.1" width="450.603" height="423.038">
+  <object id="958" name="portal" type="object" x="6420.29" y="2075.46" width="256" height="256">
    <properties>
-    <property name="components" value="locked-portal"/>
-    <property name="item-required" value="missing-no"/>
-    <property name="locked-text-key" value=""/>
-    <property name="map" value="DaemonsHallow/Zone_1_0"/>
-    <property name="send-event" value="pressure-released"/>
-    <property name="transition" value="pressure"/>
+    <property name="map" value="DaemonsHallow/Zone_2_3"/>
+    <property name="transition" value="hole"/>
    </properties>
   </object>
  </objectgroup>
@@ -315,9 +392,9 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="0.25"/>
   </properties>
-  <object id="824" name="spawn" type="object" x="5892" y="2200" width="128" height="128">
+  <object id="824" name="spawn" type="object" x="6483.23" y="2198.69" width="128" height="128">
    <properties>
-    <property name="transition" value="hell-gate"/>
+    <property name="transition" value="secret-tunnel"/>
    </properties>
   </object>
   <object id="825" name="squally" type="entity" x="5539.03" y="2199.18" width="128" height="128">
@@ -333,16 +410,9 @@
     <property name="to" value="bridge-front-A"/>
    </properties>
   </object>
-  <object id="851" name="spawn" type="object" x="1660" y="852" width="128" height="128">
+  <object id="851" name="spawn" type="object" x="8050.91" y="861.091" width="128" height="128">
    <properties>
     <property name="transition" value="main-gate"/>
-   </properties>
-  </object>
-  <object id="955" name="spawn" type="object" x="4173.95" y="1511.3" width="128" height="128">
-   <properties>
-    <property name="quest" value="release-pressure"/>
-    <property name="quest-line" value="release-pressure"/>
-    <property name="transition" value="pressure"/>
    </properties>
   </object>
  </objectgroup>
@@ -351,12 +421,6 @@
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="803" name="brine" type="entity" x="2290.42" y="854.545" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,brine-hexus,pick-pocket"/>
-    <property name="pocket-pool" value="dh-generic"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="95" name="lava -20">
   <properties>
@@ -394,56 +458,12 @@
    </properties>
    <polygon points="-93.8626,-649.121 -69.6674,-470.813 55.6703,-406.723 176.277,-470.102 197.309,-649.796"/>
   </object>
-  <object id="946" name="obsidean" type="terrain" x="4190" y="2588">
-   <properties>
-    <property name="tag" value="pressure-raised"/>
-   </properties>
-   <polygon points="-93.8626,-649.121 -69.6674,-470.813 55.6703,-406.723 176.277,-470.102 197.309,-649.796"/>
-  </object>
-  <object id="947" name="obsidean" type="terrain" x="3808" y="2304">
-   <properties>
-    <property name="tag" value="pressure-raised"/>
-   </properties>
-   <polygon points="-93.8626,-649.121 -69.6674,-470.813 55.6703,-406.723 176.277,-470.102 197.309,-649.796"/>
-  </object>
-  <object id="948" name="obsidean" type="terrain" x="3438" y="1998">
-   <properties>
-    <property name="tag" value="pressure-raised"/>
-   </properties>
-   <polygon points="-93.8626,-649.121 -69.6674,-470.813 55.6703,-406.723 176.277,-470.102 197.309,-649.796"/>
-  </object>
-  <object id="949" name="obsidean" type="terrain" x="3054" y="1696">
-   <properties>
-    <property name="tag" value="pressure-raised"/>
-   </properties>
-   <polygon points="-93.8626,-649.121 -69.6674,-470.813 55.6703,-406.723 176.277,-470.102 197.309,-649.796"/>
-  </object>
  </objectgroup>
- <objectgroup id="133" name="decor fg -20" visible="0">
+ <objectgroup id="133" name="decor fg -20">
   <properties>
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="938" name="lava-geyser" type="object" x="4069.47" y="1991.93" width="350" height="400">
-   <properties>
-    <property name="tag" value="pressure-raised"/>
-   </properties>
-  </object>
-  <object id="940" name="lava-geyser" type="object" x="3689.47" y="1699.93" width="350" height="700">
-   <properties>
-    <property name="tag" value="pressure-raised"/>
-   </properties>
-  </object>
-  <object id="942" name="lava-geyser" type="object" x="3313.47" y="1397.93" width="350" height="1000">
-   <properties>
-    <property name="tag" value="pressure-raised"/>
-   </properties>
-  </object>
-  <object id="944" name="lava-geyser" type="object" x="2939.47" y="1098.93" width="350" height="1300">
-   <properties>
-    <property name="tag" value="pressure-raised"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="112" name="terrain -20">
   <properties>
@@ -519,7 +539,7 @@
   </properties>
   <object id="783" name="lava" type="object" x="-1434.35" y="2424.25" width="11237.1" height="1024"/>
  </objectgroup>
- <objectgroup id="134" name="decor -16">
+ <objectgroup id="134" name="decor -16" visible="0">
   <properties>
    <property name="depth" type="float" value="-1024"/>
    <property name="type" value="objects"/>
@@ -711,7 +731,7 @@
   </properties>
   <object id="775" name="lava" type="object" x="-833.708" y="2486.78" width="9999" height="1024"/>
  </objectgroup>
- <objectgroup id="135" name="decor -8">
+ <objectgroup id="135" name="decor -8" visible="0">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -772,7 +792,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="150" name="decor bg -5">
+ <objectgroup id="150" name="decor bg -5" visible="0">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
@@ -820,7 +840,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="148" name="decor bg -2">
+ <objectgroup id="148" name="decor bg -2" visible="0">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -866,30 +886,6 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="161" name="terrain bg bg bg">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="930" name="obsidean" type="terrain" x="2153.4" y="4812.4">
-   <polygon points="-183.631,-2372.3 -47.9522,-1700.61 124.403,-1570.82 358.119,-1716.54 400.846,-2372.68"/>
-  </object>
- </objectgroup>
- <objectgroup id="160" name="terrain bg bg">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="929" name="obsidean" type="terrain" x="2128.84" y="5202">
-   <polygon points="-223.733,-2731.26 -58.4238,-1957.94 151.57,-1808.51 436.324,-1976.28 488.381,-2731.7"/>
-  </object>
- </objectgroup>
- <objectgroup id="20" name="terrain bg">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="927" name="obsidean" type="terrain" x="2094.44" y="5229">
-   <polygon points="-245.854,-2731.26 -63.7926,-1957.94 165.498,-1808.51 476.419,-1976.28 533.259,-2731.7"/>
-  </object>
- </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
@@ -907,7 +903,6 @@
   </properties>
   <object id="741" name="Lava/Stone1" type="decor" x="2437.64" y="2378.46" width="165" height="120"/>
   <object id="902" name="Lava/LavaPool1" type="decor" x="2752.17" y="2490.67" width="213" height="44"/>
-  <object id="926" name="Lava/Hole2" type="decor" x="1937.5" y="2414.67" width="541" height="100"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
@@ -920,12 +915,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="931" name="portal" type="object" x="2153.33" y="2272" width="256" height="256">
-   <properties>
-    <property name="map" value="DaemonsHallow/Zone_1_1"/>
-    <property name="transition" value="hole"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -937,22 +926,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="demon-ghost" type="entity" x="4436.85" y="2413.43" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
-   </properties>
-  </object>
-  <object id="693" name="demon-ghost" type="entity" x="4438.43" y="2169" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
