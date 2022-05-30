@@ -6,7 +6,7 @@
  </tileset>
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value=""/>
+   <property name="background" value="Laboratory"/>
    <property name="music" value="trick-or-treat"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
@@ -17,7 +17,6 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="589" name="void" type="texture" x="-407.423" y="-111.273" width="3462.47" height="2851.9"/>
  </objectgroup>
  <objectgroup id="40" name="bg -420">
   <properties>
@@ -62,7 +61,7 @@
     <property name="spawn-type" value="player"/>
    </properties>
   </object>
-  <object id="556" name="void" type="terrain" x="1454.65" y="1609.34">
+  <object id="556" name="marble" type="terrain" x="1454.65" y="1609.34">
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" type="float" value="-128"/>
@@ -83,14 +82,14 @@
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="560" name="void" type="terrain" x="1771.09" y="1302.77">
+  <object id="560" name="marble" type="terrain" x="1771.09" y="1302.77">
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" type="float" value="-192"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
-  <object id="561" name="void" type="terrain" x="451.697" y="1564.3">
+  <object id="561" name="marble" type="terrain" x="451.697" y="1564.3">
    <properties>
     <property name="collision" value="none"/>
     <property name="depth" type="float" value="-128"/>
@@ -117,8 +116,8 @@
     <property name="depth" type="float" value="-48"/>
    </properties>
   </object>
-  <object id="583" name="void" type="terrain" x="-85.2899" y="1739.58" width="1241.17" height="634.306"/>
-  <object id="585" name="void" type="terrain" x="1478.1" y="1744.79" width="1327.9" height="634.306"/>
+  <object id="583" name="marble" type="terrain" x="-85.2899" y="1739.58" width="1241.17" height="634.306"/>
+  <object id="585" name="marble" type="terrain" x="1478.1" y="1744.79" width="1327.9" height="634.306"/>
   <object id="588" name="Void/Pillar1" type="decor" x="279.117" y="622.119" width="512" height="1305">
    <properties>
     <property name="depth" type="float" value="-48"/>

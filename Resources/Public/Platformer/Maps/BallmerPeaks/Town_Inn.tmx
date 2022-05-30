@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="19" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="839">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="19" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="839">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -17,7 +17,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="802" name="stone-dark" type="terrain" x="-67.335" y="-55.09" width="2522.67" height="2482.18">
+  <object id="802" name="ship" type="terrain" x="-67.335" y="-55.09" width="2522.67" height="2482.18">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -39,7 +39,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="760" name="shen" type="entity" x="1570.93" y="2007.35" width="128" height="167">
+  <object id="760" name="nessie" type="entity" x="1570.93" y="2007.35" width="128" height="167">
    <properties>
     <property name="components" value="shopkeeper,face-squally"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -51,22 +51,22 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="769" name="Generic/Counter" type="decor" x="977.54" y="2054.35" width="1080" height="167"/>
-  <object id="826" name="Mines/CaveDoor2" type="decor" x="319.046" y="1798.49" width="411" height="419"/>
+  <object id="826" name="Snow/WoodDoor1" type="decor" x="355.247" y="1847.82" width="316" height="380"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="803" name="stone" type="terrain" x="-128.665" y="2218.61" width="2610.3" height="245.455"/>
-  <object id="832" name="stone" type="terrain" x="-93.15" y="849.515" width="2610.3" height="421.213"/>
-  <object id="833" name="stone" type="terrain" x="-58.1197" y="-92.4245" width="2610.3" height="245.455"/>
+  <object id="803" name="wood" type="terrain" x="-128.665" y="2218.61" width="2610.3" height="245.455"/>
+  <object id="832" name="wood" type="terrain" x="-93.15" y="849.515" width="2610.3" height="345.646"/>
+  <object id="833" name="wood" type="terrain" x="-58.1197" y="-92.4245" width="2610.3" height="245.455"/>
  </objectgroup>
  <objectgroup id="113" name="terrain fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="830" name="stone" type="terrain" x="-97.15" y="-67.4548" width="326.3" height="2498.18"/>
-  <object id="831" name="stone" type="terrain" x="2304.85" y="-73.6341" width="326.3" height="2488.36"/>
+  <object id="830" name="wood" type="terrain" x="-97.15" y="-67.4548" width="139.182" height="2498.18"/>
+  <object id="831" name="wood" type="terrain" x="2394.81" y="-73.6341" width="236.34" height="2488.36"/>
  </objectgroup>
  <objectgroup id="112" name="decor bg">
   <properties>
@@ -90,7 +90,7 @@
   </properties>
   <object id="694" name="portal" type="object" x="401.862" y="1848.71" width="237.527" height="375.411">
    <properties>
-    <property name="map" value="DataMines/Town_Main"/>
+    <property name="map" value="BallmerPeaks/Town_Main"/>
     <property name="transition" value="inn"/>
    </properties>
   </object>
@@ -122,10 +122,10 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="829" name="bonnie" type="entity" x="2130" y="2094" width="128" height="128">
+  <object id="829" name="cooper" type="entity" x="2130" y="2094" width="128" height="128">
    <properties>
-    <property name="components" value="jasper-hexus,friendly,pick-pocket,pacing"/>
-    <property name="pocket-pool" value="dm-generic"/>
+    <property name="components" value="nessie-hexus,friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="bp-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
