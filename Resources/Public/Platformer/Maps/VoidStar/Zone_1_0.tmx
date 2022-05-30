@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="32" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="899">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="32" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="900">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -151,6 +151,15 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="899" name="evil-eye" type="entity" x="3507.73" y="933.126" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="VoidStar/Combat_FinalBoss"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy"/>
+    <property name="drop-pool" value="vs-generic"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

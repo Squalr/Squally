@@ -209,6 +209,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Inn (CV)", MapResources::CastleValgrind_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (CV)", MapResources::CastleValgrind_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (CV)", MapResources::CastleValgrind_Town_Main));
+		mapList.push_back(this->buildDebugButton("Zone_1_2 (CV)", MapResources::CastleValgrind_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (CV)", MapResources::CastleValgrind_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (CV)", MapResources::CastleValgrind_Zone_1_0));
 
@@ -299,9 +300,11 @@ DeveloperScene::DeveloperScene()
 
 		// Santa asset map
 		// Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
-		// 1_x typical EF style outdoors (viking, penguin grunt, penguin warrior)
+		// 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior)
 		// 2_x for blizzard environment? (yeti, goblin elf, toy soldier goblin, snow fiend) => santa
 		// 3_x for some frost caverns (ice golem, water elemental, frost fiend) => cryogen
+
+		// TODO: If 1_x leads to town, but we'd prefer the sky tower in town, how would we reconcile these
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
