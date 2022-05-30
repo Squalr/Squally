@@ -7,7 +7,27 @@
 namespace MapResources
 {
 	extern const std::string BallmerPeaks_Mages_Warp;
+	extern const std::string BallmerPeaks_Town_Alch;
+	extern const std::string BallmerPeaks_Town_Inn;
 	extern const std::string BallmerPeaks_Town_Main;
+	extern const std::string BallmerPeaks_Town_Smith;
+	extern const std::string BallmerPeaks_Zone_1_0;
+	extern const std::string BallmerPeaks_Zone_1_1;
+	extern const std::string BallmerPeaks_Zone_1_2;
+	extern const std::string BallmerPeaks_Zone_1_3;
+	extern const std::string BallmerPeaks_Zone_2_0;
+	extern const std::string BallmerPeaks_Zone_2_1;
+	extern const std::string BallmerPeaks_Zone_2_2;
+	extern const std::string BallmerPeaks_Zone_2_3;
+	extern const std::string BallmerPeaks_Zone_2_4;
+	extern const std::string BallmerPeaks_Zone_2_5;
+	extern const std::string BallmerPeaks_Zone_2_6;
+	extern const std::string BallmerPeaks_Zone_2_7;
+	extern const std::string BallmerPeaks_Zone_3_0;
+	extern const std::string BallmerPeaks_Zone_3_1;
+	extern const std::string BallmerPeaks_Zone_3_2;
+	extern const std::string BallmerPeaks_Zone_3_3;
+	extern const std::string BallmerPeaks_Zone_3_4;
 	extern const std::string CastleValgrind_Mages_Warp;
 	extern const std::string CastleValgrind_Throne_Room;
 	extern const std::string CastleValgrind_Town_Alch;
@@ -30,6 +50,11 @@ namespace MapResources
 	extern const std::string DaemonsHallow_Zone_1_2;
 	extern const std::string DaemonsHallow_Zone_1_3;
 	extern const std::string DaemonsHallow_Zone_1_4;
+	extern const std::string DaemonsHallow_Zone_2_0;
+	extern const std::string DaemonsHallow_Zone_2_1;
+	extern const std::string DaemonsHallow_Zone_2_2;
+	extern const std::string DaemonsHallow_Zone_2_3;
+	extern const std::string DaemonsHallow_Zone_3_0;
 	extern const std::string DataMines_Combat_Caves;
 	extern const std::string DataMines_Home_Dawn;
 	extern const std::string DataMines_Home_Finch;
