@@ -1,36 +1,231 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="823">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="951">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="WaterfallSky"/>
+   <property name="background" value="BrightSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="heartbeat"/>
-   <property name="rubber-band" type="int" value="5"/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="3"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="58" name="background">
+ <objectgroup id="8" name="decor -2304">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="9" name="decor -2048">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="7" name="decor -1792">
+  <properties>
+   <property name="depth" type="float" value="-1792"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="14" name="decor -768">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="15" name="WaterfallRocks">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="945" name="Forest/Background/WaterfallRocks" type="decor" x="-5961.69" y="1101.3" width="21461.3" height="4560">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="16" name="WaterfallGround">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="947" name="Forest/Background/WaterfallGround" type="decor" x="-4509.81" y="705.6" width="18345.6" height="2565">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="18" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="19" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="72" name="terrain -6">
+  <properties>
+   <property name="depth" type="float" value="-352"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="71" name="terrain -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="70" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="712" name="caverns" type="texture" x="3788.86" y="2692.56">
-   <polygon points="-4357.06,-3335.96 6492.4,-3328.61 6479.87,1938.32 -4338.04,1916.87"/>
-  </object>
  </objectgroup>
- <objectgroup id="59" name="terrain2">
+ <objectgroup id="55" name="terrain -3">
   <properties>
+   <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="771" name="caverns" type="terrain" x="-70.365" y="983.495" width="1658.43" height="2609.01">
+ </objectgroup>
+ <objectgroup id="20" name="terrain bg2 -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="58" name="terrain bg1 -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="74" name="terrain -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="912" name="blue-grass" type="terrain" x="1816.05" y="2208">
+   <polygon points="1998.17,713.28 2000.58,-74.622 7206.54,-75.375 7207.69,720.94"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="decor -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="921" name="torch" type="object" x="6043.45" y="1701" width="42" height="130"/>
+  <object id="922" name="torch" type="object" x="6869.64" y="1697" width="42" height="130"/>
+  <object id="923" name="torch" type="object" x="7794.55" y="1701" width="42" height="130"/>
+ </objectgroup>
+ <objectgroup id="75" name="objects -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="913" name="chest" type="object" x="4365.26" y="2001.55" width="128" height="128">
+   <properties>
+    <property name="data-type" value="decimal"/>
+    <property name="inputs" value="255,252,253,0"/>
+    <property name="reward-pool" value="ef-generic"/>
+    <property name="rule" value="{i}+5"/>
+    <property name="tokens" value="+,1,4,+"/>
+    <property name="tutorial" value="overflow"/>
+   </properties>
+  </object>
+  <object id="928" name="solid" type="collision" x="3710.18" y="-36.4848" width="107.515" height="2862.06"/>
+  <object id="930" name="solid" type="collision" x="9022.24" y="-55.03" width="107.515" height="3150.06"/>
+  <object id="931" name="iou" type="object" x="8260.5" y="2044.5" width="87" height="87"/>
+  <object id="932" name="iou" type="object" x="8681.83" y="2047.17" width="87" height="87"/>
+  <object id="933" name="vase" type="object" x="8460.35" y="1974.42" width="113" height="160">
+   <properties>
+    <property name="color" value="tan"/>
+    <property name="spawn-pool" value="spawn-pool-ef"/>
+   </properties>
+  </object>
+  <object id="949" name="portal" type="object" x="4928.73" y="1877.08" width="256" height="256">
+   <properties>
+    <property name="map" value="EndianForest/Zone_2_8"/>
+    <property name="transition" value="back"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="76" name="entities -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="916" name="frost-fiend" type="entity" x="6493.78" y="1999.23" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_Temple"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="917" name="frost-fiend" type="entity" x="6499.36" y="1590.79" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="81" name="player_layer -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="935" name="warp" type="object" x="6940.12" y="1872.24" width="256" height="256">
+   <properties>
+    <property name="from" value="end"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="start"/>
+   </properties>
+  </object>
+  <object id="950" name="spawn" type="object" x="4992.73" y="2006.42" width="128" height="128">
+   <properties>
+    <property name="transition" value="back"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="79" name="bridge -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="925" name="wood" type="terrain" x="6891.83" y="2134.42" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="782" name="caverns" type="terrain" x="7458.67" y="98.0405" width="1902.43" height="1953.01">
+ </objectgroup>
+ <objectgroup id="78" name="bridge -1.5">
+  <properties>
+   <property name="depth" type="float" value="-96"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="924" name="wood" type="terrain" x="6891.83" y="2146.08" width="347" height="356.5">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="80" name="bridge -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="926" name="wood" type="terrain" x="6892.5" y="2164.75" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -40,233 +235,54 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="674" name="caverns" type="terrain" x="4895.47" y="3680.45">
-   <polygon points="-5159.98,-738.503 -3878.89,-743.321 -3069.01,-1241.76 -2297.4,-1240.68 -1864.69,-1549.73 -843.118,-1570.62 -222.747,-1569.12 34.8249,-1230.6 401.568,-1115.64 748.88,-1249.69 1007.56,-1572.09 1876.55,-1573.49 2345.34,-1970.06 4783.3,-1981.26 4812.13,453.605 -5151.84,490.768"/>
+  <object id="805" name="frost" type="terrain" x="-7042" y="-418">
+   <polygon points="7973.06,6388.97 6373.99,6381.11 6420.11,4130.83 7427.88,4323.35 7972.22,4315.4 8836.44,3898 9697.97,3199.56 10749.1,2743.55 11773.5,2611.44 14498.7,2608.42 16516.2,2601.85 16511.5,3657.99 16494.3,6370.01"/>
   </object>
-  <object id="680" name="caverns" type="terrain" x="4180" y="452">
-   <polygon points="-379.152,995.273 -430.061,724.485 -413.455,484 174.61,432.635 741.238,411.505 1680.86,435.384 1767.94,99.1256 1612.38,-216.973 -722.434,-209.382 -4261.62,-264.916 -4342.09,-615.276 2553.5,-598.117 2496.64,159.82 2315.46,658.908 2042.84,993.932 1322.7,991.331 1284.81,1190.07 1296.94,1626.86 1080.78,1694.23 892.63,1595.86 907.936,1281.62 884.491,1057.89 798.137,990.82"/>
-  </object>
+ </objectgroup>
+ <objectgroup id="60" name="terrain +1">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
- </objectgroup>
- <objectgroup id="57" name="objects back">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
+  <object id="500" name="Forest/Flower10" type="decor" x="4806.57" y="2091.73" width="199" height="133"/>
+  <object id="907" name="Forest/Flower11" type="decor" x="3808.79" y="2204.85" width="92" height="116"/>
+  <object id="908" name="Forest/Flower11" type="decor" x="8069.15" y="2090.48" width="92" height="116"/>
+  <object id="909" name="Forest/Flower9" type="decor" x="6121.59" y="2072.17" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="720" name="Generic/WoodCaveDoor1" type="decor" x="94.6667" y="2526.5" width="388" height="403"/>
-  <object id="721" name="portal" type="object" x="164" y="2686" width="256" height="256">
+  <object id="816" name="edge-portal" type="object" x="-11.959" y="3247.57" width="199.918" height="640.851">
    <properties>
-    <property name="map" value="EndianForest/Zone_3_0"/>
-    <property name="transition" value="entrance"/>
+    <property name="direction" value="left"/>
+    <property name="map" value="EndianForest/Zone_2_0"/>
+    <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="773" name="Generic/WoodCaveDoor1" type="decor" x="8734.06" y="1316.32" width="388" height="403"/>
-  <object id="774" name="portal" type="object" x="8804.06" y="1443.82" width="256" height="256">
+  <object id="828" name="camera-stop" type="object" x="5236" y="2320" width="3584" height="1008">
    <properties>
-    <property name="map" value="EndianForest/Zone_3_0"/>
-    <property name="transition" value="exit"/>
+    <property name="no-x" type="bool" value="true"/>
+    <property name="soft" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="799" name="logic-torch" type="object" x="4032.52" y="1218.97" width="101" height="111">
+  <object id="883" name="edge-portal" type="object" x="9012.45" y="1454.58" width="199.918" height="734.959">
    <properties>
-    <property name="color" value="red"/>
-    <property name="interactable" type="bool" value="false"/>
-    <property name="is-global-save" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="true"/>
-    <property name="save-key" value="SAVE_KEY_AND_RED_1"/>
-    <property name="tag" value="and-puzzle"/>
+    <property name="direction" value="right"/>
+    <property name="map" value="EndianForest/Zone_2_2"/>
+    <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="800" name="logic-torch" type="object" x="5229.55" y="1222" width="101" height="111">
-   <properties>
-    <property name="color" value="green"/>
-    <property name="interactable" type="bool" value="false"/>
-    <property name="is-global-save" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="true"/>
-    <property name="save-key" value="SAVE_KEY_AND_GREEN_1"/>
-    <property name="tag" value="and-puzzle"/>
-   </properties>
-  </object>
-  <object id="801" name="logic-torch" type="object" x="4628.87" y="1215.94" width="101" height="111">
-   <properties>
-    <property name="color" value="blue"/>
-    <property name="interactable" type="bool" value="false"/>
-    <property name="is-global-save" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="false"/>
-    <property name="save-key" value="SAVE_KEY_AND_BLUE_1"/>
-    <property name="tag" value="and-puzzle"/>
-   </properties>
-  </object>
-  <object id="802" name="logic-torch" type="object" x="4034.07" y="1011.94" width="101" height="111">
-   <properties>
-    <property name="color" value="red"/>
-    <property name="interactable" type="bool" value="false"/>
-    <property name="is-on" type="bool" value="true"/>
-    <property name="tag" value="and-puzzle"/>
-   </properties>
-  </object>
-  <object id="803" name="logic-torch" type="object" x="5231.1" y="1014.97" width="101" height="111">
-   <properties>
-    <property name="color" value="green"/>
-    <property name="interactable" type="bool" value="false"/>
-    <property name="is-on" type="bool" value="true"/>
-    <property name="tag" value="and-puzzle"/>
-   </properties>
-  </object>
-  <object id="804" name="logic-torch" type="object" x="4630.42" y="1008.91" width="101" height="111">
-   <properties>
-    <property name="color" value="blue"/>
-    <property name="interactable" type="bool" value="false"/>
-    <property name="is-on" type="bool" value="true"/>
-    <property name="tag" value="and-puzzle"/>
-   </properties>
-  </object>
-  <object id="805" name="logic-torch" type="object" x="5819.23" y="1014.97" width="101" height="111">
-   <properties>
-    <property name="color" value="purple"/>
-    <property name="interactable" type="bool" value="false"/>
-    <property name="is-on" type="bool" value="true"/>
-    <property name="tag" value="and-puzzle"/>
-   </properties>
-  </object>
-  <object id="806" name="logic-gate" type="object" x="3940.34" y="1432.78" width="285" height="676">
-   <properties>
-    <property name="answer" type="bool" value="true"/>
-    <property name="color" value="red"/>
-    <property name="delta" type="float" value="640"/>
-    <property name="gate-color" value="gray"/>
-    <property name="interactable" type="bool" value="false"/>
-    <property name="is-on" type="bool" value="false"/>
-    <property name="tag" value="and-puzzle"/>
-   </properties>
-  </object>
-  <object id="807" name="glass-display-item" type="object" x="4826.5" y="533.765" width="169" height="331">
-   <properties>
-    <property name="delay" type="float" value="1"/>
-    <property name="item-name" value="special-and"/>
-    <property name="listen-event" value="solve-torches"/>
-    <property name="tutorial" value="and-hint"/>
-   </properties>
-  </object>
-  <object id="808" name="logic-torch" type="object" x="5817.67" y="1222" width="101" height="111">
-   <properties>
-    <property name="color" value="purple"/>
-    <property name="interactable" type="bool" value="false"/>
-    <property name="is-global-save" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="false"/>
-    <property name="save-key" value="SAVE_KEY_AND_PURPLE_1"/>
-    <property name="tag" value="and-puzzle"/>
-   </properties>
-  </object>
-  <object id="809" name="logic-torch" type="object" x="2161.72" y="2325.58" width="101" height="111">
-   <properties>
-    <property name="color" value="red"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="true"/>
-    <property name="is-one-use" type="bool" value="false"/>
-    <property name="save-key" value="SAVE_KEY_AND_RED_1"/>
-   </properties>
-  </object>
-  <object id="810" name="logic-torch" type="object" x="5599.16" y="770.796" width="101" height="111">
-   <properties>
-    <property name="color" value="purple"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="is-global-save" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="false"/>
-    <property name="is-one-use" type="bool" value="false"/>
-    <property name="save-key" value="SAVE_KEY_AND_PURPLE_1"/>
-   </properties>
-  </object>
-  <object id="811" name="logic-gate" type="object" x="4539.17" y="1429.75" width="285" height="676">
-   <properties>
-    <property name="answer" type="bool" value="true"/>
-    <property name="color" value="blue"/>
-    <property name="delta" type="float" value="640"/>
-    <property name="gate-color" value="gray"/>
-    <property name="interactable" type="bool" value="false"/>
-    <property name="is-on" type="bool" value="false"/>
-    <property name="tag" value="and-puzzle"/>
-   </properties>
-  </object>
-  <object id="812" name="logic-gate" type="object" x="5135.05" y="1429.75" width="285" height="676">
-   <properties>
-    <property name="answer" type="bool" value="false"/>
-    <property name="color" value="green"/>
-    <property name="delta" type="float" value="640"/>
-    <property name="gate-color" value="gray"/>
-    <property name="interactable" type="bool" value="false"/>
-    <property name="is-on" type="bool" value="false"/>
-    <property name="tag" value="and-puzzle"/>
-   </properties>
-  </object>
-  <object id="813" name="logic-gate" type="object" x="5742.81" y="1432.78" width="285" height="676">
-   <properties>
-    <property name="answer" type="bool" value="true"/>
-    <property name="color" value="purple"/>
-    <property name="delta" type="float" value="640"/>
-    <property name="gate-color" value="gray"/>
-    <property name="interactable" type="bool" value="false"/>
-    <property name="is-on" type="bool" value="false"/>
-    <property name="tag" value="and-puzzle"/>
-   </properties>
-  </object>
-  <object id="814" name="logic-puzzle-controller" type="object" x="3701.6" y="1612.55" width="101" height="111">
-   <properties>
-    <property name="operation" value="and"/>
-    <property name="send-event" value="solve-torches"/>
-    <property name="tag" value="and-puzzle"/>
-   </properties>
-  </object>
-  <object id="815" name="camera-target" type="object" x="4964" y="1232" width="128" height="128">
-   <properties>
-    <property name="tag" value="target-A"/>
-    <property name="zoom" type="float" value="2"/>
-   </properties>
-  </object>
-  <object id="817" name="camera-control" type="object" x="3338" y="-421.666" width="1404.36" height="3171.45">
-   <properties>
-    <property name="target" value="target-A"/>
-   </properties>
-  </object>
-  <object id="818" name="cart-lift" type="object" x="3442.73" y="908.288" width="72" height="1093"/>
-  <object id="820" name="logic-torch" type="object" x="4344.41" y="773.955" width="101" height="111">
-   <properties>
-    <property name="color" value="blue"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="is-global-save" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="false"/>
-    <property name="is-one-use" type="bool" value="false"/>
-    <property name="save-key" value="SAVE_KEY_AND_BLUE_1"/>
-   </properties>
-  </object>
-  <object id="821" name="logic-torch" type="object" x="5249.74" y="762.076" width="101" height="111">
-   <properties>
-    <property name="color" value="green"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="is-global-save" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="true"/>
-    <property name="is-one-use" type="bool" value="false"/>
-    <property name="save-key" value="SAVE_KEY_AND_GREEN_1"/>
-   </properties>
-  </object>
-  <object id="822" name="camera-control" type="object" x="4657.82" y="-801.725" width="1488.36" height="1687.45">
-   <properties>
-    <property name="target" value="target-A"/>
-   </properties>
-  </object>
+  <object id="911" name="life-stone" type="object" x="7565.67" y="1769.47" width="146" height="423"/>
  </objectgroup>
- <objectgroup id="42" name="no hack objects">
+ <objectgroup id="42" name="objects +1">
   <properties>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
@@ -275,10 +291,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="816" name="ogre" type="entity" x="7749.33" y="1578.67" width="128" height="128">
+  <object id="827" name="nessie" type="entity" x="6600" y="2056" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,ef-puzzle-G"/>
-    <property name="scale" type="float" value="0.75"/>
+    <property name="components" value="chiron-hexus,friendly,face-squally,pick-pocket"/>
+    <property name="pocket-pool" value="ef-generic"/>
+    <property name="quest" value="talk-to-chiron"/>
+    <property name="quest-line" value="find-elriel"/>
    </properties>
   </object>
  </objectgroup>
@@ -287,26 +305,83 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="823.9" y="2807.62" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="537.292" y="3638.49" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="779" name="spawn" type="object" x="224" y="2818" width="128" height="128">
+  <object id="934" name="warp" type="object" x="6940" y="1932" width="256" height="256">
    <properties>
-    <property name="transition" value="entrance"/>
+    <property name="from" value="start"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="end"/>
    </properties>
   </object>
-  <object id="780" name="spawn" type="object" x="8864.06" y="1575.82" width="128" height="128">
+  <object id="941" name="spawn" type="object" x="320.364" y="3644.97" width="128" height="128">
    <properties>
-    <property name="transition" value="exit"/>
+    <property name="transition" value="right"/>
    </properties>
   </object>
+  <object id="943" name="spawn" type="object" x="8671.55" y="2065.87" width="128" height="128">
+   <properties>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="27" name="terrain foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="69" name="water">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="781" name="water" type="object" x="-138.317" y="3951.2" width="9603.3" height="3384.42"/>
  </objectgroup>
  <objectgroup id="28" name="fireflies">
   <properties>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
   </properties>
+ </objectgroup>
+ <objectgroup id="68" name="decor_foreground +1">
+  <properties>
+   <property name="depth" type="float" value="128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="29" name="decor_foreground +2">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="30" name="objects_foreground">
+  <properties>
+   <property name="is-elevate-target" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="31" name="rain">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="32" name="decor +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="4618.26" y="2435.98" width="242" height="738"/>
+ </objectgroup>
+ <objectgroup id="33" name="decor +8">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="5452.26" y="2442.98" width="242" height="738"/>
  </objectgroup>
 </map>

@@ -389,7 +389,7 @@
   <object id="1963" name="edge-portal" type="object" x="12.0982" y="1679.45" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="DataMines/Zone_1_2"/>
+    <property name="map" value="DaemonsHallow/Zone_1_2"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
