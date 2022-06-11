@@ -210,7 +210,6 @@ private:
 	cocos2d::CRect drawRect;
 	cocos2d::CRect boundsRect;
 	cocos2d::Vec3 cachedCoords;
-	std::vector<cocos2d::Vec2> intersectionPoints;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> collisionSegments;
 	std::vector<AlgoUtils::Triangle> textureTriangles;

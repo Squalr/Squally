@@ -132,17 +132,6 @@ bool EntityGroundCollisionBehavior::isStandingOn(CollisionObject* collisonObject
 
 	Node* currentCollisionGroup = collisonObject->getParent();
 
-	/*
-	// Special case for intersection points -- just return false
-	for (auto next : this->groundCollision->getCurrentCollisions())
-	{
-		if (next->hasCollisionType(CollisionType(PlatformerCollisionType::Intersection)))
-		{
-			return false;
-		}
-	}
-	*/
-
 	for (auto next : this->groundCollision->getCurrentCollisions())
 	{
 		if (next->hasCollisionType(CollisionType(PlatformerCollisionType::Solid))
@@ -167,17 +156,6 @@ bool EntityGroundCollisionBehavior::isStandingOnSomethingOtherThan(CollisionObje
 	}
 
 	Node* currentCollisionGroup = collisonObject->getParent();
-
-	// Special case when standing on an intersection -- The owner of the intersection point has collision priority, as it is the lower of the platforms.
-	for (auto next : this->groundCollision->getCurrentCollisions())
-	{
-		const Node* otherCollisionGroup = next->getParent();
-
-		if (next->hasCollisionType(CollisionType(PlatformerCollisionType::Intersection)))
-		{
-			return currentCollisionGroup == otherCollisionGroup;
-		}
-	}
 
 	// Greedy search for the oldest collision. This works out as being the object that is the true "ground".
 	for (auto next : this->groundCollision->getCurrentCollisions())
@@ -226,11 +204,6 @@ void EntityGroundCollisionBehavior::buildGroundCollisionDetector()
 	{
 		this->onCollideWithGround();
 		
-		return CollisionResult::DoNothing;
-	});
-
-	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Intersection }, [=](CollisionData collisionData)
-	{
 		return CollisionResult::DoNothing;
 	});
 }

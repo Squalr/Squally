@@ -415,17 +415,6 @@ void TerrainObject::buildCollision()
 
 		previousSegment = &(*it);
 	}
-
-	for (auto intersectionPoint : this->intersectionPoints)
-	{
-		const float Radius = 32.0f;
-
-		CollisionObject* collisionObject = CollisionObject::create(CollisionObject::createCircle(Radius), (CollisionType)EngineCollisionTypes::Intersection, CollisionObject::Properties(false, false));
-
-		collisionObject->setPosition(intersectionPoint);
-
-		this->collisionNode->addChild(collisionObject);
-	}
 }
 
 void TerrainObject::buildInnerTextures()
@@ -850,6 +839,8 @@ void TerrainObject::buildSegment(Node* parent, Sprite* sprite, Vec2 anchor, Vec2
 
 void TerrainObject::maskAgainstOther(TerrainObject* other)
 {
+	// Pretty sure we dont need this anymore, but leaving it here for now
+	/*
 	if (this->isInactive
 		|| !this->boundsRect.intersectsRect(other->boundsRect)
 		|| (std::abs(GameUtils::getDepth(this) - GameUtils::getDepth(other))) > CollisionObject::CollisionZThreshold)
@@ -920,12 +911,6 @@ void TerrainObject::maskAgainstOther(TerrainObject* other)
 					{
 						std::get<1>(segment) = intersectionPoint;	
 					}
-					
-					if (((!this->isFlipped && this->isTopAngle(normalAngle)) || (this->isFlipped && this->isBottomAngle(normalAngle))) &&
-						((!other->isFlipped && other->isTopAngle(otherNormalAngle)) || (other->isFlipped && other->isBottomAngle(otherNormalAngle))))
-					{
-						this->intersectionPoints.push_back(intersectionPoint);
-					}
 				}
 			}
 
@@ -938,6 +923,7 @@ void TerrainObject::maskAgainstOther(TerrainObject* other)
 	}
 
 	this->collisionSegments = rebuiltSegments;
+	*/
 }
 
 bool TerrainObject::isTopAngle(float normalAngle)

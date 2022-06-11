@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="883">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="883">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -325,6 +325,9 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="826" name="blue-grass" type="terrain" x="3220" y="2972">
+   <properties>
+    <property name="pass-through" type="bool" value="false"/>
+   </properties>
    <polygon points="-417.69,-343.98 -720.721,-597.871 -1264.93,-925.752 -1976.22,-927.197 -1955.1,-1366.39 -1717.4,-1609.52 -1487.78,-3098.19 -3295.44,-3114.95 -3301.53,319.88 -424.36,313.63"/>
   </object>
   <object id="875" name="caverns" type="terrain" x="2710.19" y="4870" width="5267.63" height="684">

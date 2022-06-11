@@ -166,10 +166,12 @@ void EntityMovementBehavior::update(float dt)
 				this->entityCollision->disableGravity();
 			}
 
-			// Only apply movement velocity if not running into a wall. Prevents visual jitter.
-			if ((!movingIntoLeftWall && !movingIntoRightWall) || (hasLeftCollision && hasRightCollision))
+			velocity.x += movement.x * this->moveAcceleration * dt;
+
+			// Cancel x velocity if moving into a wall. Prevents visual jitter.
+			if (movingIntoLeftWall || movingIntoRightWall)
 			{
-				velocity.x += movement.x * this->moveAcceleration * dt;
+				velocity.x = 0.0f;
 			}
 
 			if (movement.y > 0.0f && canJump)

@@ -38,12 +38,11 @@ enum class PlatformerCollisionType
 	Cinematic			= 1 << 24,
 	CartStop			= 1 << 25,
 	
-	// WARNING: Max is 26 due to 27-31 reserved by engine
+	// WARNING: Max is 27  due to 28-31 reserved by engine
 	
 	// Engine (keep in sync with EngineCollisionTypes)
 	KillPlane			= (int)EngineCollisionTypes::KillPlane,
 	Solid				= (int)EngineCollisionTypes::Solid,
 	SolidRoof			= (int)EngineCollisionTypes::SolidRoof,
 	PassThrough			= (int)EngineCollisionTypes::PassThrough,
-	Intersection		= (int)EngineCollisionTypes::Intersection,
 };

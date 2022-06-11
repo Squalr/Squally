@@ -107,9 +107,7 @@ void EntityHoverCollisionBehavior::update(float dt)
 		&& this->entityCollision->movementCollision != nullptr)
 	{
 		// Update anti-gravity to avoid jitter
-		if (this->hoverAntiGravityCollisionDetector->hasCollisions()
-			&& (this->hoverAntiGravityCollisionDetector->isCollidingWithType((CollisionType)EngineCollisionTypes::Intersection)
-				|| !this->hoverAntiGravityTopCollisionDetector->hasCollisions()))
+		if (this->hoverAntiGravityCollisionDetector->hasCollisions() && !this->hoverAntiGravityTopCollisionDetector->hasCollisions())
 		{
 			this->entityCollision->movementCollision->setGravityDisabledOverride(true);
 
@@ -350,7 +348,7 @@ void EntityHoverCollisionBehavior::buildHoverAntiGravityCollision()
 		return CollisionResult::DoNothing;
 	});
 
-	this->hoverAntiGravityCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Intersection }, [=](CollisionData collisionData)
+	this->hoverAntiGravityCollisionDetector->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
 	{
 		// See update(float dt) for anti-gravity logic
 

@@ -16,5 +16,4 @@ enum class CombatCollisionType
 	Solid				= (int)EngineCollisionTypes::Solid,
 	SolidRoof			= (int)EngineCollisionTypes::SolidRoof,
 	PassThrough			= (int)EngineCollisionTypes::PassThrough,
-	Intersection		= (int)EngineCollisionTypes::Intersection,
 };

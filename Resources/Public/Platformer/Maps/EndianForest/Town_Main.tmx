@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="95" nextobjectid="1060">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="1074">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -506,22 +506,88 @@
   </object>
   <object id="1054" name="wood" type="terrain" x="46.6667" y="2814.67" width="336" height="286.667"/>
  </objectgroup>
+ <objectgroup id="96" name="decor background -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1063" name="Generic/TownFence" type="decor" x="6447.59" y="4954.39" width="538" height="948"/>
+  <object id="1064" name="Generic/TownFence" type="decor" x="6906.12" y="4953.16" width="538" height="948"/>
+  <object id="1065" name="Generic/TownFence" type="decor" x="7405.42" y="4953.16" width="538" height="948"/>
+  <object id="1066" name="Generic/TownFence" type="decor" x="7918.78" y="4953.16" width="538" height="948"/>
+  <object id="1067" name="Generic/TownFence" type="decor" x="8411.51" y="4951.33" width="538" height="948"/>
+  <object id="1068" name="Generic/TownFence" type="decor" x="8888.06" y="4951.33" width="538" height="948"/>
+ </objectgroup>
+ <objectgroup id="98" name="objects -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1069" name="solid" type="collision" x="6674.08" y="3770.63" width="97.0303" height="2128.77">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1070" name="edge-lantern-gate" type="object" x="10006.7" y="4935.28" width="356" height="320">
+   <properties>
+    <property name="map" value="EndianForest/Zone_2_0"/>
+    <property name="tag" value="blocked-exit"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="97" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1062" name="blue-grass" type="terrain" x="7038.48" y="7409.95">
+   <polygon points="-260.15,762.159 -266.235,-1563.02 8.89944,-1552.66 925.715,-1757.79 1723.83,-1968.03 2567.54,-2158.11 3329.4,-2158.11 3851.06,-2159.93 3848.88,-1434.47 3854.78,-41.3223 3848.88,413.223 3848.88,749.705 1322.31,773.318"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="99" name="entities -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1072" name="chiron" type="entity" x="9960.24" y="5122.06" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly"/>
+    <property name="quest" value="town-exit-blocked"/>
+    <property name="quest-line" value="find-elriel"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="95" name="player_layer -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1061" name="warp" type="object" x="6777.07" y="5583.85" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-F"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-F"/>
+   </properties>
+  </object>
+  <object id="1071" name="spawn" type="object" x="9788.54" y="5120.95" width="128" height="128">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="18" name="decor background">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="714" name="Generic/TownFence" type="decor" x="6447.59" y="4954.39" width="538" height="948"/>
   <object id="717" name="Generic/TownFence" type="decor" x="1620.47" y="4935.59" width="538" height="948"/>
   <object id="718" name="Generic/TownFence" type="decor" x="1150.57" y="4934.26" width="538" height="948"/>
-  <object id="719" name="Generic/TownFence" type="decor" x="6906.12" y="4953.16" width="538" height="948"/>
-  <object id="720" name="Generic/TownFence" type="decor" x="7405.42" y="4953.16" width="538" height="948"/>
-  <object id="721" name="Generic/TownFence" type="decor" x="7918.78" y="4953.16" width="538" height="948"/>
   <object id="723" name="Generic/TownFence" type="decor" x="658.301" y="4929.29" width="538" height="948"/>
   <object id="727" name="Generic/TownFence" type="decor" x="1247.74" y="1854.12" width="538" height="948"/>
   <object id="729" name="Generic/TownFence" type="decor" x="-533.356" y="1867.28" width="538" height="948"/>
   <object id="760" name="Generic/TownFence" type="decor" x="2105.63" y="4932.77" width="538" height="948"/>
-  <object id="842" name="Generic/TownFence" type="decor" x="8411.51" y="4951.33" width="538" height="948"/>
-  <object id="843" name="Generic/TownFence" type="decor" x="8888.06" y="4951.33" width="538" height="948"/>
   <object id="890" name="Generic/TownFencePost" type="decor" x="-113.238" y="1701.92" width="263" height="1118">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
@@ -546,9 +612,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="710" name="blue-grass" type="terrain" x="7038.48" y="7409.95">
-   <polygon points="23.6128,767.414 0,-1528.93 925.715,-1757.79 1723.83,-1968.03 2567.54,-2158.11 3329.4,-2158.11 3851.06,-2159.93 3848.88,-1434.47 3854.78,-41.3223 3848.88,413.223 3848.88,749.705 1322.31,773.318 242.031,761.511"/>
-  </object>
  </objectgroup>
  <objectgroup id="85" name="water -1">
   <properties>
@@ -766,13 +829,6 @@
     <property name="send-event" value="town-arrival"/>
    </properties>
   </object>
-  <object id="929" name="edge-lantern-gate" type="object" x="10006.7" y="4935.28" width="356" height="320">
-   <properties>
-    <property name="map" value="EndianForest/Zone_2_0"/>
-    <property name="tag" value="blocked-exit"/>
-    <property name="transition" value="right"/>
-   </properties>
-  </object>
   <object id="931" name="wind" type="object" x="3468" y="3553.7" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
@@ -802,7 +858,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="24" name="entities" visible="0">
+ <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -811,13 +867,6 @@
    <properties>
     <property name="components" value="friendly,bard-hexus,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>
-   </properties>
-  </object>
-  <object id="928" name="chiron" type="entity" x="9960.24" y="5122.06" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly"/>
-    <property name="quest" value="town-exit-blocked"/>
-    <property name="quest-line" value="find-elriel"/>
    </properties>
   </object>
  </objectgroup>
@@ -887,10 +936,12 @@
     <property name="transition" value="docks"/>
    </properties>
   </object>
-  <object id="1029" name="spawn" type="object" x="9788.54" y="5120.95" width="128" height="128">
+  <object id="1060" name="warp" type="object" x="6779.96" y="5620.44" width="256" height="256">
    <properties>
-    <property name="flip-x" type="bool" value="true"/>
-    <property name="transition" value="left"/>
+    <property name="from" value="bridge-front-F"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-F"/>
    </properties>
   </object>
  </objectgroup>
