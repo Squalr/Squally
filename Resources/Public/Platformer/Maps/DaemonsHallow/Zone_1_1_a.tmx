@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="995">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="SkyYellow"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="mini-map-item" value="temple-map"/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="3"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="72" name="bg -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="991" name="magma" type="texture" x="-493.815" y="-274" width="2960.11" height="2676.24"/>
+ </objectgroup>
+ <objectgroup id="74" name="terrain -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="73" name="decor -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="75" name="bridge -5">
+  <properties>
+   <property name="depth" type="float" value="-312"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="76" name="bridge -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="77" name="bridge -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="78" name="bridge -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="79" name="bridge -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="984" name="obsidean" type="terrain" x="-140.875" y="1673.06" width="2373.75" height="529.88">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="973" name="vase" type="object" x="199.743" y="1513.21" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-dh"/>
+   </properties>
+  </object>
+  <object id="974" name="vase" type="object" x="548.228" y="1513.21" width="113" height="160">
+   <properties>
+    <property name="color" value="clay"/>
+    <property name="spawn-pool" value="spawn-pool-dh"/>
+   </properties>
+  </object>
+  <object id="993" name="egyptian-chest" type="object" x="369.333" y="1545.09" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="dh-generic"/>
+   </properties>
+  </object>
+  <object id="994" name="edge-portal" type="object" x="1841.2" y="1185.48" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="DaemonsHallow/Zone_1_1"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="970" name="demon-ghost" type="entity" x="754.182" y="1539.03" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,dh-puzzle-B"/>
+    <property name="scale" type="float" value="0.75"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="1319.05" y="1541.83" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="982" name="spawn" type="object" x="1560.62" y="1541.53" width="128" height="128">
+   <properties>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

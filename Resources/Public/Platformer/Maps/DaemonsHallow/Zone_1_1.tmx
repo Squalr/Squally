@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="62" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1961">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="62" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1964">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -169,7 +169,7 @@
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="2468,737 2783.62,645.073 3904.89,594.76 4431.37,597.572 5758.59,203.035 6961.39,-72.3128 7735.52,-314.012 8274.73,-261.808 8269.04,128.881 7658.6,69.0824 6724.86,322.674 5004.72,785.372 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 2540.41,1846.57 2709.1,1917.32 3688.23,1916.08 4109.41,1976.8 4252.12,1975.54 4557.69,2097.02 4841.89,2096.19 4839.91,2332.64 2347.87,2330.62 2018.71,1333.49 1685.53,1147.1 686.106,1431.01 -452.248,1181.84 -434.152,-1680.45 142.021,-1679.9 168.02,737.709"/>
+   <polygon points="2468,737 2783.62,645.073 3904.89,594.76 4431.37,597.572 5758.59,203.035 6690.07,31.0464 7729.06,299.683 8268.27,351.887 8262.58,742.576 7652.14,682.777 6724.86,393.733 5004.72,785.372 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 2540.41,1846.57 2709.1,1917.32 3688.23,1916.08 4109.41,1976.8 4252.12,1975.54 4557.69,2097.02 4841.89,2096.19 4839.91,2332.64 2347.87,2330.62 2018.71,1333.49 1685.53,1147.1 686.106,1431.01 -452.248,1181.84 -434.152,-1680.45 -113.162,-1679.9 -87.1634,737.709"/>
   </object>
  </objectgroup>
  <objectgroup id="108" name="objects -4">
@@ -177,6 +177,13 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1962" name="edge-portal" type="object" x="-5.7886" y="1791.87" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="DaemonsHallow/Zone_1_1_a"/>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="109" name="entities -4">
   <properties>
@@ -207,6 +214,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-A"/>
+   </properties>
+  </object>
+  <object id="1963" name="spawn" type="object" x="388.915" y="2146.76" width="128" height="128">
+   <properties>
+    <property name="transition" value="right"/>
    </properties>
   </object>
  </objectgroup>
@@ -355,13 +367,13 @@
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="0,0 1652,-4 1944,16 2308,100 2720,260 3284,484 3921.11,565.192 4428,564 6608.51,518.944 8207.8,518.134 8208,1552 3948,1296 2801.04,535.248 2336.37,354.077 1792,292 907.833,303.378 260,544 225.53,1318.75 4,1312"/>
+   <polygon points="0,0 1652,-4 1944,16 2308,100 2720,260 3284,484 3921.11,565.192 4428,564 6622.37,306.375 8221.66,305.565 8208,1552 3948,1296 2801.04,535.248 2336.37,354.077 1792,292 907.833,303.378 260,544 225.53,1318.75 4,1312"/>
   </object>
   <object id="1876" name="obsidean" type="terrain" x="7308" y="28">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="760,1736 -2041.38,1734.4 -2702.13,1808.95 -3000.02,1540.4 -3072.84,852.423 -3346.89,711.661 -3621.12,779.516 -4136.61,749.7 -4527.81,-65.7399 780.483,-66.8"/>
+   <polygon points="773.863,1431.01 -779.827,1480.24 -2702.13,1808.95 -3000.02,1540.4 -3072.84,852.423 -3346.89,711.661 -3621.12,779.516 -4136.61,749.7 -4527.81,-65.7399 780.483,-66.8"/>
   </object>
   <object id="1878" name="obsidean" type="terrain" x="567.25" y="2365.04">
    <polygon points="0,0 -119.25,368.659 298.125,792.618 1103.06,817.963 1539.24,711.947 1788.75,513.819 1634.04,-0.279287"/>
@@ -388,7 +400,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1880" name="edge-portal" type="object" x="7724.04" y="1700" width="199.918" height="488.002">
+  <object id="1880" name="edge-portal" type="object" x="7728.66" y="1473.57" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="DaemonsHallow/Zone_1_2"/>
@@ -399,6 +411,11 @@
    <properties>
     <property name="map" value="DaemonsHallow/Zone_1_0"/>
     <property name="transition" value="hole"/>
+   </properties>
+  </object>
+  <object id="1961" name="chest" type="object" x="1737.94" y="2237.61" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="dh-generic"/>
    </properties>
   </object>
  </objectgroup>
@@ -440,7 +457,7 @@
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="1881" name="spawn" type="object" x="7400" y="1972" width="128" height="128">
+  <object id="1881" name="spawn" type="object" x="7386.14" y="1833.37" width="128" height="128">
    <properties>
     <property name="transition" value="left-top"/>
    </properties>

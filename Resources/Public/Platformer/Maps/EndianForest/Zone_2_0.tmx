@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="886">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="887">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -329,6 +329,17 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="885" name="solid" type="collision" x="2880.49" y="482.416" width="97.0303" height="2072.31"/>
+  <object id="886" name="warp" type="object" x="1467.59" y="1790.49" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-A"/>
+    <property name="listen-event" value="bridge-group-A"/>
+    <property name="locked-text-key" value="closed"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-A"/>
+    <property name="zoom" type="float" value="1"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="84" name="player_layer -1">
   <properties>
@@ -450,17 +461,6 @@
   <object id="823" name="life-stone" type="object" x="4871.36" y="1627.53" width="146" height="423"/>
   <object id="824" name="solid-npc" type="collision" x="11585.5" y="1967.08" width="121.03" height="777.836"/>
   <object id="825" name="solid-npc" type="collision" x="12597.5" y="1967.08" width="121.03" height="777.836"/>
-  <object id="855" name="warp" type="object" x="1467.59" y="1790.49" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-front-A"/>
-    <property name="listen-event" value="bridge-group-A"/>
-    <property name="locked-text-key" value="closed"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-back-A"/>
-    <property name="zoom" type="float" value="1"/>
-   </properties>
-  </object>
   <object id="880" name="life-stone" type="object" x="1255" y="2134.5" width="146" height="423"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">

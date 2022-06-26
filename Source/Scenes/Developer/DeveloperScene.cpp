@@ -260,6 +260,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_3 (DH)", MapResources::DaemonsHallow_Zone_1_3));
 		mapList.push_back(this->buildDebugButton("Zone_1_2 (DH)", MapResources::DaemonsHallow_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (DH)", MapResources::DaemonsHallow_Zone_1_1));
+		mapList.push_back(this->buildDebugButton("Zone_1_0_a (DH)", MapResources::DaemonsHallow_Zone_1_0_a));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DH)", MapResources::DaemonsHallow_Zone_1_0));
 
 		// 1_x should be the initial overworld + caves (Dragon, Ghost, Elemental, Golem)
@@ -280,22 +281,15 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Inn (BP)", MapResources::BallmerPeaks_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (BP)", MapResources::BallmerPeaks_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town Main (BP)", MapResources::BallmerPeaks_Town_Main));
-		mapList.push_back(this->buildDebugButton("Zone_3_4 (BP)", MapResources::BallmerPeaks_Zone_3_4));
 		mapList.push_back(this->buildDebugButton("Zone_3_3 (BP)", MapResources::BallmerPeaks_Zone_3_3));
 		mapList.push_back(this->buildDebugButton("Zone_3_2 (BP)", MapResources::BallmerPeaks_Zone_3_2));
 		mapList.push_back(this->buildDebugButton("Zone_3_1 (BP)", MapResources::BallmerPeaks_Zone_3_1));
 		mapList.push_back(this->buildDebugButton("Zone_3_0 (BP)", MapResources::BallmerPeaks_Zone_3_0));
-		mapList.push_back(this->buildDebugButton("Zone_2_7 (BP)", MapResources::BallmerPeaks_Zone_2_7));
-		mapList.push_back(this->buildDebugButton("Zone_2_6 (BP)", MapResources::BallmerPeaks_Zone_2_6));
-		mapList.push_back(this->buildDebugButton("Zone_2_5 (BP)", MapResources::BallmerPeaks_Zone_2_5));
 		mapList.push_back(this->buildDebugButton("Zone_2_4 (BP)", MapResources::BallmerPeaks_Zone_2_4));
 		mapList.push_back(this->buildDebugButton("Zone_2_3 (BP)", MapResources::BallmerPeaks_Zone_2_3));
 		mapList.push_back(this->buildDebugButton("Zone_2_2 (BP)", MapResources::BallmerPeaks_Zone_2_2));
 		mapList.push_back(this->buildDebugButton("Zone_2_1 (BP)", MapResources::BallmerPeaks_Zone_2_1));
 		mapList.push_back(this->buildDebugButton("Zone_2_0 (BP)", MapResources::BallmerPeaks_Zone_2_0));
-		mapList.push_back(this->buildDebugButton("Zone_1_3 (BP)", MapResources::BallmerPeaks_Zone_1_3));
-		mapList.push_back(this->buildDebugButton("Zone_1_2 (BP)", MapResources::BallmerPeaks_Zone_1_2));
-		mapList.push_back(this->buildDebugButton("Zone_1_1 (BP)", MapResources::BallmerPeaks_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (BP)", MapResources::BallmerPeaks_Zone_1_0));
 
 		// Santa asset map

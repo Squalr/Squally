@@ -876,9 +876,9 @@ namespace DecorResources
 	extern const std::string Snow_Tree4;
 	extern const std::string Snow_Tree5;
 	extern const std::string Snow_WarpTower;
+	extern const std::string Snow_WoodDoor1;
 	extern const std::string Snow_WoodDoor2;
 	extern const std::string Snow_WoodDoor3;
-	extern const std::string Snow_WoodDoor4;
 	extern const std::string Snow_detail_1;
 	extern const std::string Snow_detail_3;
 	extern const std::string Snow_stone_1;
