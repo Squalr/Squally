@@ -135,6 +135,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[HeavenHug::MapKey] = [=](ValueMap properties) { return (GameObject*)HeavenHug::create(properties); };
 	this->deserializers[HellGate::MapKey] = [=](ValueMap properties) { return (GameObject*)HellGate::create(properties); };
 	this->deserializers[HelpTotemAttacking::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemAttacking::create(properties); };
+	this->deserializers[HelpTotemColdWater::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemColdWater::create(properties); };
 	this->deserializers[HelpTotemEndOfDemo::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemEndOfDemo::create(properties); };
 	this->deserializers[HelpTotemEquipment::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemEquipment::create(properties); };
 	this->deserializers[HelpTotemHacking::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemHacking::create(properties); };

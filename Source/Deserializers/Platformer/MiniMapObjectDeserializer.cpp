@@ -123,6 +123,7 @@ MiniMapObjectDeserializer::MiniMapObjectDeserializer() : super(MiniMapObjectDese
 	this->deserializers[HeavenHug::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[HellGate::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::PortalColor); };
 	this->deserializers[HelpTotemAttacking::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
+	this->deserializers[HelpTotemColdWater::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[HelpTotemEndOfDemo::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[HelpTotemEquipment::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[HelpTotemHacking::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };

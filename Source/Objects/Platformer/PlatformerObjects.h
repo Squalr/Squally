@@ -74,6 +74,7 @@
 #include "Objects/Platformer/Interactables/Doors/WarpGates/WarpGateVS.h"
 #include "Objects/Platformer/Interactables/Doors/WoodenGate/WoodenGate.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemAttacking.h"
+#include "Objects/Platformer/Interactables/HelpTotems/HelpTotemColdWater.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemEndOfDemo.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemEquipment.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemHacking.h"

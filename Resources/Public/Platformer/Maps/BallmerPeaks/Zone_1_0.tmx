@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="888">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="72" height="80" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="916">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -36,23 +36,23 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="15" name="WaterfallRocks">
+ <objectgroup id="15" name="WaterfallRocks" visible="0">
   <properties>
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="882" name="Forest/Background/WaterfallRocks" type="decor" x="-5961.69" y="1101.3" width="25717.3" height="4560">
+  <object id="882" name="Forest/Background/WaterfallRocks" type="decor" x="-5961.69" y="5965.3" width="21505" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="WaterfallGround">
+ <objectgroup id="16" name="WaterfallGround" visible="0">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="881" name="Forest/Background/WaterfallGround" type="decor" x="-4301.81" y="1105.6" width="22377.6" height="2565">
+  <object id="881" name="Forest/Background/WaterfallGround" type="decor" x="-4301.81" y="5969.6" width="17378.6" height="2565">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -74,8 +74,41 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="846" name="ice" type="terrain" x="1020" y="1824">
-   <polygon points="1672.09,83.4198 2798.27,72.3774 3764.8,82.8646 4656,-35.2916 5510.55,-8.03728 6144.01,-45.179 7678.13,-23.451 7814.69,779.395 7633.48,1369.36 7541.06,1736.97 61.22,1704.73 82.341,300.331 135.161,97.878 1160.02,99.7514"/>
+  <object id="846" name="ice" type="terrain" x="1032.41" y="6688">
+   <polygon points="1333.22,83.4198 2231.16,72.3774 3001.81,82.8646 3712.4,-35.2916 4393.76,-8.03728 5328.23,119.195 5910.71,120.796 6324.03,-898.367 6362.66,-1588.25 6171.84,-1773.75 5909.74,-1800.83 5487.01,-1746.15 5480.04,-2026.23 5683.36,-2081.78 5926.42,-2117.39 6085.52,-2232.74 6482.97,-2450.53 6964.71,-2447.33 8652.38,-2456.79 8639.47,-1369.9 8648.52,-955.433 8547.49,672.331 8564.04,1392.3 6012.76,1736.97 48.8129,1704.73 -1218.27,1634.57 -1139.5,-2312.18 -599.212,-2334.62 -62.3919,-2311.33 294.927,-2083.7 773.755,-2035.54 774.043,-1957.88 557.444,-1890.96 394.821,-1714.36 123.648,-1308.11 107.769,97.878 924.926,99.7514"/>
+  </object>
+  <object id="891" name="ice" type="terrain" x="2716.18" y="4015.41">
+   <polygon points="639.349,1180.29 206.072,1266.32 34.7012,1111.81 -10.2366,878.236 10.3896,741.658 35.8159,717.03 34.7269,636.198 972.171,635.878 975.624,730.367 1005.24,854.212 976.74,1087.97 856.393,1257.61"/>
+  </object>
+  <object id="893" name="ice" type="terrain" x="4602.54" y="4028.28">
+   <polygon points="651.47,1359.08 312.133,1275.41 34.7012,1111.81 -10.2366,878.236 32.846,723.495 30.9533,626.764 970.196,633.337 969.057,720.298 1005.24,854.212 976.74,1087.97 856.393,1257.61"/>
+  </object>
+  <object id="896" name="wood" type="terrain" x="5571.2" y="4661.38" width="943.206" height="87.433">
+   <properties>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="2"/>
+    <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
+   </properties>
+  </object>
+  <object id="897" name="wood" type="terrain" x="3690.14" y="4651.86" width="943.206" height="87.433">
+   <properties>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="2"/>
+    <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
+   </properties>
+  </object>
+  <object id="899" name="wood" type="terrain" x="1808.21" y="4646.7" width="943.206" height="87.433">
+   <properties>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="2"/>
+    <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
+   </properties>
+  </object>
+  <object id="912" name="ice" type="terrain" x="-786.892" y="-267.651">
+   <polygon points="5223.19,4515.02 3857.18,4530.09 2813.38,4917.54 1380.92,4948.15 688.694,4930.85 710.777,4663.81 1353.3,4645.72 2119.77,4546.74 2961.94,4236.89 3801.49,3966.47 4351.75,3968.09 4985.44,3773.61 5229.64,3768.74"/>
   </object>
  </objectgroup>
  <objectgroup id="82" name="decor -4">
@@ -83,20 +116,19 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="863" name="Forest/Flower10" type="decor" x="2820.5" y="1786.83" width="199" height="133"/>
-  <object id="865" name="Forest/Flower9" type="decor" x="5259.5" y="1718.5" width="199" height="133"/>
+  <object id="863" name="Forest/Flower10" type="decor" x="2820.5" y="6650.83" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="80" name="objects -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="853" name="lever" type="object" x="7592.47" y="1578.83" width="177" height="205">
+  <object id="853" name="lever" type="object" x="8197.11" y="4037.27" width="177" height="205">
    <properties>
     <property name="send-event" value="bridge-group-A"/>
    </properties>
   </object>
-  <object id="854" name="warp" type="object" x="1463.59" y="1664.49" width="256" height="256">
+  <object id="854" name="warp" type="object" x="1463.59" y="6528.49" width="256" height="256">
    <properties>
     <property name="from" value="bridge-back-A"/>
     <property name="listen-event" value="bridge-group-A"/>
@@ -107,15 +139,20 @@
     <property name="zoom" type="float" value="2"/>
    </properties>
   </object>
-  <object id="873" name="solid" type="collision" x="8683.48" y="-256.155" width="97.0303" height="2072.31"/>
-  <object id="874" name="solid" type="collision" x="1075.73" y="-66.458" width="97.0303" height="2072.31"/>
+  <object id="914" name="camera-stop" type="object" x="4351.7" y="2245.94" width="1023.53" height="1728.76">
+   <properties>
+    <property name="no-x" type="bool" value="false"/>
+    <property name="no-y" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="915" name="blizzard" type="object" x="-11.765" y="2030.36" width="5155.11" height="2597.18"/>
  </objectgroup>
  <objectgroup id="81" name="entities -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="856" name="ogre" type="entity" x="6207.21" y="1668.21" width="128" height="128">
+  <object id="856" name="penguin-grunt" type="entity" x="3478.56" y="6627.65" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
@@ -124,7 +161,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="857" name="orc-grunt" type="entity" x="6208.79" y="1399.78" width="128" height="128">
+  <object id="857" name="penguin-grunt" type="entity" x="3480.14" y="6359.22" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
@@ -138,7 +175,7 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="2"/>
   </properties>
-  <object id="878" name="warp" type="object" x="4365.15" y="1647.97" width="256" height="256">
+  <object id="878" name="warp" type="object" x="6518.79" y="6552.22" width="256" height="256">
    <properties>
     <property name="from" value="bridge-back-B"/>
     <property name="locked-text-key" value="closed"/>
@@ -147,23 +184,13 @@
     <property name="to" value="bridge-front-B"/>
    </properties>
   </object>
-  <object id="879" name="warp" type="object" x="8096" y="1538" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-back-C"/>
-    <property name="listen-event" value="bridge-group-A"/>
-    <property name="locked-text-key" value="closed"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-front-C"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="76" name="bridge -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="847" name="wood" type="terrain" x="1426.09" y="1934.91" width="347" height="356.5">
+  <object id="847" name="wood" type="terrain" x="1426.09" y="6798.91" width="347" height="356.5">
    <properties>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="0"/>
@@ -171,7 +198,12 @@
     <property name="components" value="bridge"/>
    </properties>
   </object>
-  <object id="859" name="wood" type="terrain" x="8046.83" y="1819.14" width="347" height="356.5">
+  <object id="866" name="wood" type="terrain" x="6468.14" y="6832" width="347" height="356.5">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="906" name="wood" type="terrain" x="3289.9" y="4669.63" width="347" height="356.5">
    <properties>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="0"/>
@@ -179,9 +211,12 @@
     <property name="components" value="bridge"/>
    </properties>
   </object>
-  <object id="866" name="wood" type="terrain" x="4314.5" y="1927.75" width="347" height="356.5">
+  <object id="910" name="wood" type="terrain" x="4866.51" y="4681.65" width="347" height="356.5">
    <properties>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="0"/>
     <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
  </objectgroup>
@@ -190,7 +225,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="848" name="wood" type="terrain" x="1426.09" y="1962.91" width="347" height="356.5">
+  <object id="848" name="wood" type="terrain" x="1426.09" y="6826.91" width="347" height="356.5">
    <properties>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="1"/>
@@ -198,7 +233,12 @@
     <property name="components" value="bridge"/>
    </properties>
   </object>
-  <object id="860" name="wood" type="terrain" x="8048.83" y="1848.14" width="347" height="356.5">
+  <object id="867" name="wood" type="terrain" x="6469.14" y="6862" width="347" height="356.5">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="905" name="wood" type="terrain" x="3338.95" y="4699.51" width="347" height="356.5">
    <properties>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="1"/>
@@ -206,19 +246,13 @@
     <property name="components" value="bridge"/>
    </properties>
   </object>
-  <object id="867" name="wood" type="terrain" x="4315.5" y="1957.75" width="347" height="356.5">
+  <object id="909" name="wood" type="terrain" x="4738.41" y="4701.85" width="347" height="356.5">
    <properties>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="1"/>
     <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
    </properties>
-  </object>
- </objectgroup>
- <objectgroup id="19" name="caverns bg -3">
-  <properties>
-   <property name="depth" type="float" value="-192"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="738" name="caverns" type="texture" x="2771.94" y="2726.06">
-   <polygon points="-488,-81.9744 107.061,-66.0338 124.06,-50.0397 141.56,-66.0479 155.893,-50.0611 173.394,-66.0705 188.144,-48.8288 203.894,-66.0874 219.644,-48.8459 234.394,-66.1042 247.145,-49.3614 259.895,-66.1184 271.394,-49.1253 283.394,-66.1314 294.645,-49.3875 306.894,-66.1444 318.645,-49.1516 331.895,-66.1582 342.145,-50.4138 351.394,-66.169 362.395,-49.9249 371.895,-66.1804 380.644,-51.4357 390.895,-66.1909 401.395,-51.1959 411.894,-66.2025 422.895,-50.9578 433.394,-66.2144 444.145,-50.7203 455.894,-66.2269 467.395,-51.9836 480.395,-66.2405 492.644,-51.7468 504.395,-66.2538 516.144,-52.0104 528.894,-66.2673 540.394,-52.5231 550.395,-66.2792 560.893,-52.7856 571.894,-66.2911 582.894,-52.5464 593.394,-66.3031 603.894,-52.0591 614.894,-66.315 626.395,-51.8222 638.894,-66.3282 651.894,-52.8338 664.565,-66.9281 677.064,-52.9561 688.564,-66.5026 701.076,-53.3894 713.56,-67.5368 726.563,-53.7356 740.059,-68.0648 753.559,-53.0911 765.873,-68.4325 781.549,-53.1148 793.552,-66.3005 805.05,-53.9756 816.055,-66.5765 828.575,-54.2145 843.059,-67.241 854.566,-54.3065 869.063,-67.3555 883.948,-67.4321 3768.06,-65.887 3788.73,-49.2075 3806.73,-66.5301 3823.39,-50.5144 3840.73,-66.4979 3856.07,-50.2002 3872.55,-67.2855 3889.44,-50.5002 3906.73,-67.8127 3924.06,-51.797 3939.51,-68.1325 3957.39,-51.1175 3974.06,-69.1025 3989.56,-51.8733 4007.39,-68.4179 4024.73,-52.4044 4042.05,-68.1098 4057.96,-51.827 4074.73,-67.7205 4090.76,-52.0228 4107.39,-67.7005 4122.56,-51.1173 4138.9,-67.6805 4155.05,-50.8384 4170.9,-67.6677 4188.01,-50.1207 4203.23,-67.652 4218.99,-51.0246 4236.73,-68.1305 4254.53,-51.3524 4271.89,-68.6184 4289.31,-51.0444 4308.06,-68.602 4327.23,-49.9196 4343.56,-68.5741 4362.02,-51.5052 4377.89,-67.5584 4395.56,-50.8789 4415.56,-68.5355 4433.61,-51.6171 4451.23,-68.0213 4468.98,-52.1466 4488.56,-68.5055 4505.56,-51.6601 4522.56,-68.4841 4541.4,-51.7582 4559.72,-68.4677 4580.06,-51.1222 4598.89,-68.947 4617.72,-51.6619 4634.39,-68.4277 4652.23,-50.5829 4669.23,-67.9055 4688.58,-51.9229 4707.39,-69.3913 4730.89,-69.3784 5350.77,-77.6717 5333.52,3391.82 -500.551,3387.91"/>
   </object>
  </objectgroup>
  <objectgroup id="78" name="bridge -2">
@@ -226,7 +260,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="849" name="wood" type="terrain" x="1426.09" y="1992.24" width="347" height="356.5">
+  <object id="849" name="wood" type="terrain" x="1426.09" y="6856.24" width="347" height="356.5">
    <properties>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="2"/>
@@ -234,7 +268,12 @@
     <property name="components" value="bridge"/>
    </properties>
   </object>
-  <object id="861" name="wood" type="terrain" x="8050.83" y="1878.14" width="347" height="356.5">
+  <object id="868" name="wood" type="terrain" x="6470.14" y="6893" width="347" height="356.5">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="904" name="wood" type="terrain" x="3384.23" y="4725.07" width="347" height="356.5">
    <properties>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="2"/>
@@ -242,9 +281,12 @@
     <property name="components" value="bridge"/>
    </properties>
   </object>
-  <object id="868" name="wood" type="terrain" x="4316.5" y="1988.75" width="347" height="356.5">
+  <object id="908" name="wood" type="terrain" x="4695.11" y="4730.18" width="347" height="356.5">
    <properties>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="2"/>
     <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
  </objectgroup>
@@ -253,36 +295,25 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="830" name="ice" type="terrain" x="10639.4" y="1893.94">
-   <polygon points="639.349,1180.29 206.072,1266.32 34.7012,1111.81 -10.2366,878.236 32.8401,632.424 970.196,643.337 1005.24,854.212 976.74,1087.97 856.393,1257.61"/>
-  </object>
-  <object id="831" name="solid-npc" type="collision" x="10557.7" y="1835.32" width="121.03" height="777.836"/>
-  <object id="832" name="solid-npc" type="collision" x="11569.7" y="1835.32" width="121.03" height="777.836"/>
  </objectgroup>
  <objectgroup id="73" name="decor -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="837" name="Forest/Flower11" type="decor" x="11298" y="2426" width="92" height="116"/>
  </objectgroup>
  <objectgroup id="74" name="entities -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="838" name="horse" type="entity" x="11081.5" y="2405.7" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pacing"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="70" name="water -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="827" name="water" type="object" x="-107.65" y="2690.82" width="14743.3" height="2896.42">
+  <object id="827" name="water" type="object" x="-107.65" y="7554.82" width="9607.68" height="2896.42">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -293,34 +324,34 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="850" name="wood" type="terrain" x="1427.42" y="2021.57" width="347" height="356.5">
+  <object id="850" name="wood" type="terrain" x="1427.42" y="6885.57" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="862" name="wood" type="terrain" x="8050.83" y="1908.14" width="347" height="356.5">
+  <object id="869" name="wood" type="terrain" x="6471.14" y="6921" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="869" name="wood" type="terrain" x="4317.5" y="2016.75" width="347" height="356.5">
+  <object id="903" name="wood" type="terrain" x="3436.51" y="4754.4" width="347" height="356.5">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="907" name="wood" type="terrain" x="4632.5" y="4759.51" width="347" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="58" name="terrain -1">
+ <objectgroup id="58" name="terrain -1" visible="0">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="826" name="ice" type="terrain" x="3211.34" y="3006.63">
-   <polygon points="-334.518,-421.607 -678.307,-426.688 -1003.54,-720.376 -1414.66,-928.777 -1976.22,-927.197 -1955.1,-1366.39 -1717.4,-1609.52 -1487.78,-3098.19 -3295.44,-3114.95 -3301.53,319.88 -424.36,313.63 -284.619,-285.314"/>
-  </object>
-  <object id="875" name="caverns" type="terrain" x="2710.19" y="4870" width="5267.63" height="684">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
+  <object id="826" name="ice" type="terrain" x="3211.34" y="7870.63">
+   <polygon points="-334.518,-460.192 -678.307,-465.273 -1003.54,-720.376 -1414.66,-928.777 -1976.22,-927.197 -1955.1,-1366.39 -1717.4,-1609.52 -1487.78,-3098.19 -2014.49,-3309.06 -2518.68,-3317.71 -3019.35,-3239.95 -3295.44,-3114.95 -3301.53,319.88 -424.36,313.63 -284.619,-285.314"/>
   </object>
  </objectgroup>
  <objectgroup id="85" name="objects -1">
@@ -328,8 +359,8 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="885" name="solid" type="collision" x="2880.49" y="482.416" width="97.0303" height="2072.31"/>
-  <object id="886" name="warp" type="object" x="1467.59" y="1790.49" width="256" height="256">
+  <object id="885" name="solid" type="collision" x="2880.49" y="5346.42" width="97.0303" height="2072.31"/>
+  <object id="886" name="warp" type="object" x="1467.59" y="6654.49" width="256" height="256">
    <properties>
     <property name="from" value="bridge-front-A"/>
     <property name="listen-event" value="bridge-group-A"/>
@@ -346,7 +377,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="884" name="warp" type="object" x="2633.56" y="2286.75" width="256" height="256">
+  <object id="884" name="warp" type="object" x="2633.56" y="7150.75" width="256" height="256">
    <properties>
     <property name="from" value="bridge-back-F"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -361,7 +392,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="828" name="water" type="object" x="-115.65" y="2581.73" width="14743.3" height="2896.42">
+  <object id="828" name="water" type="object" x="-115.65" y="7445.73" width="9589.59" height="2896.42">
    <properties>
     <property name="colllision" value="none"/>
    </properties>
@@ -371,20 +402,17 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="761" name="ice" type="terrain" x="-316.829" y="2551.76">
-   <polygon points="176,8 3208.29,-1.72542 3342.18,379.153 3304.45,745.643 3228.56,1463.99 3318.06,1951.82 3214.55,2279.23 3210.04,2895.52 197.703,2834.16 207.617,633.091"/>
+  <object id="761" name="ice" type="terrain" x="-347.66" y="7415.76">
+   <polygon points="206.831,8 3770.3,-1.72542 3927.65,379.153 3883.31,745.643 3794.12,1463.99 3899.3,1951.82 3777.66,2279.23 3772.36,2895.52 232.336,2834.16 243.986,633.091"/>
   </object>
-  <object id="777" name="ice" type="terrain" x="3490.61" y="1941.55">
-   <polygon points="1668.93,106.571 2351.58,331.579 3109.88,748.632 3141.48,1245.36 3153.06,2468.97 197.22,2468.73 167.3,108.373"/>
+  <object id="777" name="ice" type="terrain" x="6075.9" y="6841.67">
+   <polygon points="1828.74,106.571 2375.82,-178.625 3267.03,-271.046 3247.07,1252 3105.75,2468.97 194.261,2468.73 164.79,108.373"/>
   </object>
-  <object id="805" name="ice" type="terrain" x="6382" y="222">
-   <polygon points="7973.06,5228.97 1086.01,5229.36 1091.93,2248 988.017,2034.56 890.323,1678.24 685.908,1488.48 1028.77,1490 1387.99,1707.11 2123.96,1706.74 2528.24,1795.49 3042,1792.75 3765.08,2199.7 4590.62,2775.09 5366.43,3518 6420.11,4130.83 7427.88,4323.35 7972.22,4315.4"/>
+  <object id="890" name="ice" type="terrain" x="5390.43" y="4077.48">
+   <polygon points="13.0045,4941.57 -3.83623,3903.42 12.307,2810.88 363.587,2814.94 380.873,3896.31 361.886,4943.58 191.047,4996.59"/>
   </object>
-  <object id="811" name="ice" type="terrain" x="11657.8" y="1961.77">
-   <polygon points="651.47,1359.08 312.133,1275.41 34.7012,1111.81 -10.2366,878.236 32.8401,632.424 970.196,633.337 1005.24,854.212 976.74,1087.97 856.393,1257.61"/>
-  </object>
-  <object id="812" name="ice" type="terrain" x="13282.9" y="1349.97">
-   <polygon points="760.85,2549.11 223.608,2491.8 22.2118,1633.28 103.558,973.772 -38.5197,791.653 -383.877,752.581 -381.598,534.92 -162.009,471.941 28.6907,343.511 232.744,173.928 434.973,81.025 1291.52,82.1046 1296.61,2569.23"/>
+  <object id="902" name="ice" type="terrain" x="3360.38" y="3912.67">
+   <polygon points="1678.56,1218.47 1315.99,1577.53 598.077,1706.19 129.458,1493.55 -19.6144,1186.36 62.9248,854.308 1607.12,855.541"/>
   </object>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
@@ -392,29 +420,21 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="22" name="decor midground">
+ <objectgroup id="22" name="decor midground" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="500" name="Forest/Flower10" type="decor" x="4040.75" y="1928.39" width="199" height="133"/>
-  <object id="729" name="Forest/Flower10" type="decor" x="2045.74" y="2435.64" width="199" height="133"/>
-  <object id="834" name="Forest/Flower9" type="decor" x="1730.65" y="2442.86" width="199" height="133"/>
-  <object id="835" name="Forest/Flower11" type="decor" x="9011.33" y="1914" width="92" height="116"/>
-  <object id="839" name="Forest/Flower9" type="decor" x="7152.01" y="1606.23" width="199" height="133"/>
+  <object id="729" name="Forest/Flower10" type="decor" x="2045.74" y="7299.64" width="199" height="133"/>
+  <object id="834" name="Forest/Flower9" type="decor" x="1730.65" y="7306.86" width="199" height="133"/>
+  <object id="835" name="Forest/Flower11" type="decor" x="70.2949" y="212.953" width="92" height="116"/>
+  <object id="888" name="Generic/SkyTower" type="decor" x="-590.799" y="4246.68" width="2395" height="3180"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="673" name="pendulum-blade" type="object" x="4653.61" y="4408.63" width="42.4242" height="210.969"/>
-  <object id="674" name="pendulum-blade" type="object" x="4040.98" y="4407.68" width="42.4242" height="237.751"/>
-  <object id="675" name="pendulum-blade" type="object" x="4223.28" y="4411.34" width="42.4242" height="174.667"/>
-  <object id="676" name="pendulum-blade" type="object" x="4919.83" y="4413.4" width="42.4242" height="243.758"/>
-  <object id="677" name="mechanical-flail" type="object" x="4326.07" y="4681.91" width="42.4242" height="187.636"/>
-  <object id="678" name="mechanical-flail" type="object" x="4574.98" y="4663.87" width="42.4242" height="205.576"/>
-  <object id="687" name="pendulum-blade" type="object" x="4428.65" y="4410.44" width="42.4242" height="220.97"/>
-  <object id="778" name="chest" type="object" x="3738.73" y="1922.06" width="128" height="128">
+  <object id="778" name="chest" type="object" x="5514.03" y="6757.3" width="128" height="128">
    <properties>
     <property name="data-type" value="decimal"/>
     <property name="event" value="open-cipher"/>
@@ -425,43 +445,9 @@
     <property name="tutorial" value="extra-tokens"/>
    </properties>
   </object>
-  <object id="780" name="edge-lantern-gate" type="object" x="-18.2424" y="2243.64" width="356" height="320">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-    <property name="map" value="EndianForest/Town_Main"/>
-    <property name="map-banner" value="sullen-forest"/>
-    <property name="transition" value="left"/>
-   </properties>
-  </object>
-  <object id="782" name="mechanical-flail" type="object" x="4347.36" y="4190.23" width="42.4242" height="215.515"/>
-  <object id="783" name="mechanical-flail" type="object" x="4652.57" y="4096.37" width="42.4242" height="312.303"/>
-  <object id="784" name="mechanical-flail" type="object" x="4795.67" y="4676.54" width="42.4242" height="193.212"/>
-  <object id="785" name="mechanical-flail" type="object" x="5043.91" y="4673.83" width="42.4242" height="194.182"/>
-  <object id="786" name="mechanical-flail" type="object" x="5318.33" y="4665.2" width="42.4242" height="202.545"/>
-  <object id="788" name="pendulum-blade" type="object" x="5162.79" y="4413.18" width="42.4242" height="244.303"/>
-  <object id="790" name="mechanical-flail" type="object" x="4963.82" y="4092.12" width="42.4242" height="316.97"/>
-  <object id="799" name="mechanical-flail" type="object" x="5217.7" y="4235.88" width="42.4242" height="168.97"/>
-  <object id="804" name="mechanical-flail" type="object" x="4128.79" y="4222.18" width="42.4242" height="187.636"/>
-  <object id="806" name="edge-portal" type="object" x="14144.9" y="3910.24" width="199.918" height="640.851">
-   <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="EndianForest/Zone_2_1"/>
-    <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="817" name="iou" type="object" x="7259.17" y="4780.32" width="87" height="87"/>
-  <object id="818" name="iou" type="object" x="12285.5" y="2508.5" width="87" height="87"/>
-  <object id="819" name="edge-portal" type="object" x="14145.6" y="795.696" width="199.918" height="640.851">
-   <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="EndianForest/Zone_2_1"/>
-    <property name="transition" value="right_alt"/>
-   </properties>
-  </object>
-  <object id="823" name="life-stone" type="object" x="4871.36" y="1627.53" width="146" height="423"/>
-  <object id="824" name="solid-npc" type="collision" x="11585.5" y="1967.08" width="121.03" height="777.836"/>
-  <object id="825" name="solid-npc" type="collision" x="12597.5" y="1967.08" width="121.03" height="777.836"/>
-  <object id="880" name="life-stone" type="object" x="1255" y="2134.5" width="146" height="423"/>
+  <object id="823" name="life-stone" type="object" x="7693.66" y="6526.37" width="146" height="423"/>
+  <object id="880" name="life-stone" type="object" x="1255" y="6998.5" width="146" height="423"/>
+  <object id="889" name="help-totem-cold-water" type="object" x="3091.47" y="7165.64" width="248" height="248"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -473,26 +459,9 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="727" name="orc-grunt" type="entity" x="12099.2" y="2468.74" width="128" height="128">
+  <object id="911" name="horse" type="entity" x="4090.44" y="4638.22" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,ef-puzzle-A"/>
-    <property name="scale" type="float" value="0.75"/>
-   </properties>
-  </object>
-  <object id="813" name="orc-warrior" type="entity" x="9157.99" y="1888.22" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
-    <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
-   </properties>
-  </object>
-  <object id="840" name="troll" type="entity" x="9157.09" y="1618.73" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-b"/>
-    <property name="components" value="ally"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
  </objectgroup>
@@ -501,30 +470,17 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="805.292" y="2434.49" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="805.292" y="7298.49" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="841" name="spawn" type="object" x="372.364" y="2428.97" width="128" height="128">
+  <object id="841" name="spawn" type="object" x="492.045" y="7292.97" width="128" height="128">
    <properties>
-    <property name="map-banner" value="sullen-forest"/>
-    <property name="transition" value="right"/>
+    <property name="transition" value="sky-tower"/>
    </properties>
   </object>
-  <object id="842" name="spawn" type="object" x="13711.8" y="4320.85" width="128" height="128">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-    <property name="transition" value="left"/>
-   </properties>
-  </object>
-  <object id="843" name="spawn" type="object" x="13752.9" y="1302.92" width="128" height="128">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-    <property name="transition" value="left_alt"/>
-   </properties>
-  </object>
-  <object id="876" name="warp" type="object" x="4364" y="1790" width="256" height="256">
+  <object id="876" name="warp" type="object" x="6517.64" y="6694.25" width="256" height="256">
    <properties>
     <property name="from" value="bridge-front-B"/>
     <property name="locked-text-key" value="closed"/>
@@ -534,17 +490,7 @@
     <property name="zoom" type="float" value="1"/>
    </properties>
   </object>
-  <object id="877" name="warp" type="object" x="8095.94" y="1672.91" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-front-C"/>
-    <property name="listen-event" value="bridge-group-A"/>
-    <property name="locked-text-key" value="closed"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-back-C"/>
-   </properties>
-  </object>
-  <object id="883" name="warp" type="object" x="2633.3" y="2292.29" width="256" height="256">
+  <object id="883" name="warp" type="object" x="2633.3" y="7156.29" width="256" height="256">
    <properties>
     <property name="from" value="bridge-front-F"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -563,7 +509,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="781" name="water" type="object" x="-143.645" y="2693.12" width="14743.3" height="2896.42"/>
+  <object id="781" name="water" type="object" x="-496.925" y="7557.12" width="9852.46" height="2763.97"/>
  </objectgroup>
  <objectgroup id="28" name="fireflies">
   <properties>
@@ -600,16 +546,16 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="1456.74" y="2451.51" width="270" height="748"/>
-  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="1000" y="2436.92" width="270" height="748"/>
-  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="4790.26" y="2063.98" width="242" height="738"/>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="1456.74" y="7315.51" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="1000" y="7300.92" width="270" height="748"/>
+  <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="7026.65" y="6944.99" width="242" height="738"/>
  </objectgroup>
  <objectgroup id="33" name="decor +8">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="5144.26" y="2042.98" width="242" height="738"/>
-  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="539.718" y="2422.15" width="242" height="738"/>
+  <object id="374" name="Forest/Foreground/ForegroundTree1" type="decor" x="7380.65" y="6923.99" width="242" height="738"/>
+  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="539.718" y="7286.15" width="242" height="738"/>
  </objectgroup>
 </map>

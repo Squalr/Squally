@@ -26,6 +26,10 @@ namespace ObjectResources
 	extern const std::string Breakables_VaseTanBroken;
 	extern const std::string Breakables_VaseYellow;
 	extern const std::string Breakables_VaseYellowBroken;
+	extern const std::string Campfire_CampFire_0000;
+	extern const std::string Campfire_CampFire_0001;
+	extern const std::string Campfire_CampFire_0002;
+	extern const std::string Campfire_CampFire_0003;
 	extern const std::string Cinematic_Sarcophagus_SarcophagusBase;
 	extern const std::string Cinematic_Sarcophagus_SarcophagusLid;
 	extern const std::string Cinematic_ScrappyRope_GuanoRope;
@@ -133,7 +137,17 @@ namespace ObjectResources
 	extern const std::string Collectables_Animals_Yeti_Locked;
 	extern const std::string Collectables_Animals_Zebra;
 	extern const std::string Collectables_Animals_Zebra_Locked;
+	extern const std::string Decor_Candle_Flame_0000;
+	extern const std::string Decor_Candle_Flame_0001;
+	extern const std::string Decor_Candle_Flame_0002;
+	extern const std::string Decor_Candle_Flame_0003;
+	extern const std::string Decor_Candle_candle;
+	extern const std::string Decor_Candle_glow;
 	extern const std::string Decor_Fireplace_FireplaceGlow;
+	extern const std::string Decor_Lantern_Lantern_0000;
+	extern const std::string Decor_Lantern_Lantern_0001;
+	extern const std::string Decor_Lantern_Lantern_0002;
+	extern const std::string Decor_Lantern_Lantern_0003;
 	extern const std::string Decor_LavaBubble_Bubble_0000;
 	extern const std::string Decor_LavaBubble_Bubble_0001;
 	extern const std::string Decor_LavaBubble_Bubble_0002;
