@@ -12,15 +12,14 @@ namespace MapResources
 	extern const std::string BallmerPeaks_Town_Main;
 	extern const std::string BallmerPeaks_Town_Smith;
 	extern const std::string BallmerPeaks_Zone_1_0;
+	extern const std::string BallmerPeaks_Zone_1_1;
+	extern const std::string BallmerPeaks_Zone_1_2;
 	extern const std::string BallmerPeaks_Zone_2_0;
 	extern const std::string BallmerPeaks_Zone_2_1;
 	extern const std::string BallmerPeaks_Zone_2_2;
-	extern const std::string BallmerPeaks_Zone_2_3;
-	extern const std::string BallmerPeaks_Zone_2_4;
 	extern const std::string BallmerPeaks_Zone_3_0;
 	extern const std::string BallmerPeaks_Zone_3_1;
 	extern const std::string BallmerPeaks_Zone_3_2;
-	extern const std::string BallmerPeaks_Zone_3_3;
 	extern const std::string CastleValgrind_Mages_Warp;
 	extern const std::string CastleValgrind_Throne_Room;
 	extern const std::string CastleValgrind_Town_Alch;
