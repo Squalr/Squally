@@ -219,7 +219,7 @@
   <object id="816" name="edge-portal" type="object" x="5.0107" y="2829.39" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="EndianForest/Zone_2_0"/>
+    <property name="map" value="BallmerPeaks/Zone_3_1"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
