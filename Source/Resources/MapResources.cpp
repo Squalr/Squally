@@ -16,6 +16,7 @@ const std::string MapResources::BallmerPeaks_Zone_1_2 = "Public/Platformer/Maps/
 const std::string MapResources::BallmerPeaks_Zone_2_0 = "Public/Platformer/Maps/BallmerPeaks/Zone_2_0.tmx";
 const std::string MapResources::BallmerPeaks_Zone_2_1 = "Public/Platformer/Maps/BallmerPeaks/Zone_2_1.tmx";
 const std::string MapResources::BallmerPeaks_Zone_2_2 = "Public/Platformer/Maps/BallmerPeaks/Zone_2_2.tmx";
+const std::string MapResources::BallmerPeaks_Zone_2_3 = "Public/Platformer/Maps/BallmerPeaks/Zone_2_3.tmx";
 const std::string MapResources::BallmerPeaks_Zone_3_0 = "Public/Platformer/Maps/BallmerPeaks/Zone_3_0.tmx";
 const std::string MapResources::BallmerPeaks_Zone_3_1 = "Public/Platformer/Maps/BallmerPeaks/Zone_3_1.tmx";
 const std::string MapResources::BallmerPeaks_Zone_3_2 = "Public/Platformer/Maps/BallmerPeaks/Zone_3_2.tmx";

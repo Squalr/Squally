@@ -281,24 +281,22 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Inn (BP)", MapResources::BallmerPeaks_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (BP)", MapResources::BallmerPeaks_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town Main (BP)", MapResources::BallmerPeaks_Town_Main));
-		mapList.push_back(this->buildDebugButton("Zone_3_3 (BP)", MapResources::BallmerPeaks_Zone_3_3));
 		mapList.push_back(this->buildDebugButton("Zone_3_2 (BP)", MapResources::BallmerPeaks_Zone_3_2));
 		mapList.push_back(this->buildDebugButton("Zone_3_1 (BP)", MapResources::BallmerPeaks_Zone_3_1));
 		mapList.push_back(this->buildDebugButton("Zone_3_0 (BP)", MapResources::BallmerPeaks_Zone_3_0));
-		mapList.push_back(this->buildDebugButton("Zone_2_4 (BP)", MapResources::BallmerPeaks_Zone_2_4));
 		mapList.push_back(this->buildDebugButton("Zone_2_3 (BP)", MapResources::BallmerPeaks_Zone_2_3));
 		mapList.push_back(this->buildDebugButton("Zone_2_2 (BP)", MapResources::BallmerPeaks_Zone_2_2));
 		mapList.push_back(this->buildDebugButton("Zone_2_1 (BP)", MapResources::BallmerPeaks_Zone_2_1));
 		mapList.push_back(this->buildDebugButton("Zone_2_0 (BP)", MapResources::BallmerPeaks_Zone_2_0));
+		mapList.push_back(this->buildDebugButton("Zone_1_2 (BP)", MapResources::BallmerPeaks_Zone_1_2));
+		mapList.push_back(this->buildDebugButton("Zone_1_1 (BP)", MapResources::BallmerPeaks_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (BP)", MapResources::BallmerPeaks_Zone_1_0));
 
 		// Santa asset map
 		// Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
-		// 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior)
-		// 2_x for blizzard environment? (yeti, goblin elf, toy soldier goblin, snow fiend) => santa
-		// 3_x for some frost caverns (ice golem, water elemental, frost fiend) => cryogen
-
-		// TODO: If 1_x leads to town, but we'd prefer the sky tower in town, how would we reconcile these
+		// 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
+		// 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
+		// 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
