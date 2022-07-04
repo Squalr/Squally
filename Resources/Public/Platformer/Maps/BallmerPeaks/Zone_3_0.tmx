@@ -235,7 +235,6 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="966" name="Generic/SkyTower" type="decor" x="129.652" y="-283.939" width="2395" height="3180"/>
  </objectgroup>
  <objectgroup id="79" name="bridge -1">
   <properties>
@@ -277,14 +276,8 @@
   <object id="920" name="ice" type="terrain" x="-682.892" y="-899.65">
    <polygon points="5623.03,3941.37 4361.18,4178.09 2837.38,4573.54 1724.92,4692.15 640.694,4594.85 702.777,3815.81 3305.3,3805.72 3604.06,3606.53 3905.94,3492.89 4663.75,3486.09 5451.44,2983.61 6687.06,2992.63 7240.32,3093.83 7931.46,3405.64 8343.01,3406.67 8342.25,3559.63 8197.74,3646.35 7912.72,3804.89 7553.64,4088.74"/>
   </object>
-  <object id="938" name="ice" type="terrain" x="2723.12" y="1970.78">
-   <polygon points="78.8635,343.542 1.91777,283.221 0.644437,233.793 14.9971,177.189 419.84,177.1 434.121,237.909 421.813,303.014 359.71,341.116"/>
-  </object>
   <object id="942" name="ice" type="terrain" x="1361.84" y="-149.333">
    <polygon points="9266.68,5779.02 6352.05,5764.15 6338.58,3935.78 6749.05,3918.76 7231.28,3723.76 7686.47,3724.65 8161.08,3492.45 8504.35,3340.64 9215.93,3339.67"/>
-  </object>
-  <object id="962" name="ice" type="terrain" x="2126" y="1722">
-   <polygon points="78.8635,628.379 1.91777,518.044 0.644437,427.635 14.9971,324.1 419.84,323.937 434.121,435.164 421.813,554.248 359.71,623.942"/>
   </object>
   <object id="971" name="ice" type="terrain" x="3903.82" y="3151.38">
    <polygon points="639.349,1180.29 206.072,1266.32 34.7012,1111.81 -10.2366,878.236 10.3896,741.658 35.8159,717.03 34.7269,636.198 972.171,635.878 975.624,730.367 1005.24,854.212 976.74,1087.97 856.393,1257.61"/>
@@ -317,11 +310,6 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="937" name="life-stone" type="object" x="2006.15" y="2501.59" width="146" height="423"/>
-  <object id="939" name="chest" type="object" x="2264" y="1916" width="128" height="128">
-   <properties>
-    <property name="chest-pool" value="bp-generic"/>
-   </properties>
-  </object>
   <object id="983" name="chest" type="object" x="4346.73" y="3660.92" width="128" height="128">
    <properties>
     <property name="chest-pool" value="bp-generic"/>

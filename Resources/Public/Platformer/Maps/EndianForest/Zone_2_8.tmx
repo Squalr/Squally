@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="32" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="106" nextobjectid="1053">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="106" nextobjectid="1053">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -43,9 +43,8 @@
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="500.144,54.7946 679.968,-48.6692 2582.8,-44.7421 2310.8,-200.206 2191.81,-323.907 2149.28,-666.958 2026.88,-1205.09 2031.72,-1587.52 2311.85,-2019.7 2896.48,-2059.82 3787.5,-2018.03 4354.83,-1583.51 4367.11,-303.991 4449.54,520.062 4620.61,1343.8 4764.2,3501.49 400,3503.97 421.645,256.051"/>
+   <polygon points="500.144,54.7946 679.968,-48.6692 2582.8,-44.7421 4481.54,488.062 4620.61,1343.8 4764.2,3501.49 400,3503.97 421.645,256.051"/>
   </object>
-  <object id="1008" name="Generic/TreeHome1" type="decor" x="-1840" y="-5628.5" width="1824" height="1969"/>
  </objectgroup>
  <objectgroup id="96" name="decor top -72">
   <properties>
