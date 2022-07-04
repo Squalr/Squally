@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1118">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1121">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -346,6 +346,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1106" name="Generic/FancyGate1" type="decor" x="7523.67" y="2516.67" width="538" height="816"/>
+  <object id="1118" name="Generic/FancyGate1" type="decor" x="227.898" y="2499.3" width="538" height="816"/>
  </objectgroup>
  <objectgroup id="62" name="terrain 4">
   <properties>
@@ -457,6 +458,17 @@
   <object id="1116" name="spawn-wood-door" type="object" x="1684.64" y="3196.33" width="128" height="128">
    <properties>
     <property name="transition" value="home2"/>
+   </properties>
+  </object>
+  <object id="1119" name="portal" type="object" x="377.258" y="3054.78" width="256" height="256">
+   <properties>
+    <property name="map" value="DaemonsHallow/Zone_3_0"/>
+    <property name="transition" value="back-gate"/>
+   </properties>
+  </object>
+  <object id="1120" name="spawn" type="object" x="442.958" y="3185.04" width="128" height="128">
+   <properties>
+    <property name="transition" value="back-gate"/>
    </properties>
   </object>
  </objectgroup>
