@@ -35,6 +35,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Airship::MapKey] = [=](ValueMap properties) { return (GameObject*)Airship::create(properties); };
 	this->deserializers[AlchemyLab::MapKey] = [=](ValueMap properties) { return (GameObject*)AlchemyLab::create(properties); };
 	this->deserializers[Anvil::MapKey] = [=](ValueMap properties) { return (GameObject*)Anvil::create(properties); };
+	this->deserializers[Blizzard::MapKey] = [=](ValueMap properties) { return (GameObject*)Blizzard::create(properties); };
 	this->deserializers[Brazier::MapKey] = [=](ValueMap properties) { return (GameObject*)Brazier::create(properties); };
 	this->deserializers[BreakableBarrel::MapKey] = [=](ValueMap properties) { return (GameObject*)BreakableBarrel::create(properties); };
 	this->deserializers[BreakableCage::MapKey] = [=](ValueMap properties) { return (GameObject*)BreakableCage::create(properties); };
