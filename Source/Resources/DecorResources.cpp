@@ -565,6 +565,7 @@ const std::string DecorResources::Lava_Cactus1 = "Private/Platformer/Decor/Lava/
 const std::string DecorResources::Lava_Cactus2 = "Private/Platformer/Decor/Lava/Cactus2.png";
 const std::string DecorResources::Lava_Cactus3 = "Private/Platformer/Decor/Lava/Cactus3.png";
 const std::string DecorResources::Lava_Cactus4 = "Private/Platformer/Decor/Lava/Cactus4.png";
+const std::string DecorResources::Lava_CrossDecal = "Private/Platformer/Decor/Lava/CrossDecal.png";
 const std::string DecorResources::Lava_Detail1 = "Private/Platformer/Decor/Lava/Detail1.png";
 const std::string DecorResources::Lava_Detail2 = "Private/Platformer/Decor/Lava/Detail2.png";
 const std::string DecorResources::Lava_Detail3 = "Private/Platformer/Decor/Lava/Detail3.png";

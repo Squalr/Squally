@@ -49,6 +49,7 @@ const std::string MapResources::DaemonsHallow_Zone_2_1 = "Public/Platformer/Maps
 const std::string MapResources::DaemonsHallow_Zone_2_2 = "Public/Platformer/Maps/DaemonsHallow/Zone_2_2.tmx";
 const std::string MapResources::DaemonsHallow_Zone_2_3 = "Public/Platformer/Maps/DaemonsHallow/Zone_2_3.tmx";
 const std::string MapResources::DaemonsHallow_Zone_3_0 = "Public/Platformer/Maps/DaemonsHallow/Zone_3_0.tmx";
+const std::string MapResources::DaemonsHallow_Zone_3_1 = "Public/Platformer/Maps/DaemonsHallow/Zone_3_1.tmx";
 const std::string MapResources::DataMines_Combat_Caves = "Public/Platformer/Maps/DataMines/Combat_Caves.tmx";
 const std::string MapResources::DataMines_Home_Dawn = "Public/Platformer/Maps/DataMines/Home_Dawn.tmx";
 const std::string MapResources::DataMines_Home_Finch = "Public/Platformer/Maps/DataMines/Home_Finch.tmx";

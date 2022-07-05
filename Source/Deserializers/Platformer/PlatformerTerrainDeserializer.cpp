@@ -22,6 +22,7 @@
 #include "Scenes/Platformer/Terrain/JungleTerrain.h"
 #include "Scenes/Platformer/Terrain/LavaTerrain.h"
 #include "Scenes/Platformer/Terrain/LeafTerrain.h"
+#include "Scenes/Platformer/Terrain/MagmaTerrain.h"
 #include "Scenes/Platformer/Terrain/MarbleDarkTerrain.h"
 #include "Scenes/Platformer/Terrain/MarbleGrassTerrain.h"
 #include "Scenes/Platformer/Terrain/MarbleTerrain.h"
@@ -78,6 +79,7 @@ PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(Platforme
 	this->deserializers[JungleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)JungleTerrain::create(properties); };
 	this->deserializers[LavaTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)LavaTerrain::create(properties); };
 	this->deserializers[LeafTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)LeafTerrain::create(properties); };
+	this->deserializers[MagmaTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MagmaTerrain::create(properties); };
 	this->deserializers[MarbleDarkTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleDarkTerrain::create(properties); };
 	this->deserializers[MarbleGrassTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleGrassTerrain::create(properties); };
 	this->deserializers[MarbleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleTerrain::create(properties); };

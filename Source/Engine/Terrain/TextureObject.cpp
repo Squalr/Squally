@@ -112,13 +112,25 @@ void TextureObject::buildTextures()
 
 	// This allows for a determinstic way to make terrain tile differently.
 	// Breaks up the visual sameness of similar sized terrain chunks by starting their tiling at a different position in the texture.
-	static Vec2 TilingOffset = Vec2(0.0f, 0.0f);
+	// Seed the random tiling by the objects unique identifier, which we hash into an unsigned integer
+	Vec2 tilingOffset = Vec2(0.0f, 0.0f);
+	const std::string identifier = this->getUniqueIdentifier();
+	unsigned int seed = 0;
 
-	TilingOffset.x = MathUtils::wrappingNormalize(TilingOffset.x + 757.0f, 0.0f, 1024.0f);
-	TilingOffset.y = MathUtils::wrappingNormalize(TilingOffset.y + 359.0f, 0.0f, 1024.0f);
+    for (int index = 0; index < int(identifier.size()); index++)
+	{
+		seed ^= (identifier[index] << (index % 24));
+    }
+	
+	srand(seed);
+	tilingOffset.x = float(rand() % 4096);
+	tilingOffset.y = float(rand() % 4096);
+
+	tilingOffset.x = MathUtils::wrappingNormalize(tilingOffset.x + 757.0f, 0.0f, 1024.0f);
+	tilingOffset.y = MathUtils::wrappingNormalize(tilingOffset.y + 359.0f, 0.0f, 1024.0f);
 	
 	texture->setPosition(sizeRect.origin);
-	texture->setTextureRect(CRect(TilingOffset.x, TilingOffset.y, sizeRect.size.width, sizeRect.size.height));
+	texture->setTextureRect(CRect(tilingOffset.x, tilingOffset.y, sizeRect.size.width, sizeRect.size.height));
 
 	if (this->useClipping)
 	{

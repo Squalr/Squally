@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="48" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="1125">
- <objectgroup id="1" name="meta" visible="0">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="1125">
+ <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
    <property name="crack-color" value=""/>
@@ -12,7 +12,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="73" name="terrain -12" visible="0">
+ <objectgroup id="73" name="terrain -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
@@ -272,13 +272,13 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="58" name="terrain -8" visible="0">
+ <objectgroup id="58" name="terrain -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="72" name="holes bg" visible="0">
+ <objectgroup id="72" name="holes bg">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -377,7 +377,7 @@
    <polygon points="202.781,5.79374 214.368,1749.71 5150.64,1743.92 5133.26,2676.71 -341.831,2665.12 -348.935,8.96591"/>
   </object>
  </objectgroup>
- <objectgroup id="75" name="decor midground -8" visible="0">
+ <objectgroup id="75" name="decor midground -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -393,7 +393,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="70" name="player_layer -8" visible="0">
+ <objectgroup id="70" name="player_layer -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -408,7 +408,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="67" name="decor -6 bg" visible="0">
+ <objectgroup id="67" name="decor -6 bg">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -422,7 +422,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="61" name="terrain -6" visible="0">
+ <objectgroup id="61" name="terrain -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -436,7 +436,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="65" name="decor -6" visible="0">
+ <objectgroup id="65" name="decor -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -559,7 +559,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="60" name="terrain -4" visible="0">
+ <objectgroup id="60" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -573,7 +573,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="64" name="decor -4" visible="0">
+ <objectgroup id="64" name="decor -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -600,7 +600,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="59" name="terrain -2" visible="0">
+ <objectgroup id="59" name="terrain -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -615,7 +615,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="66" name="holes" visible="0">
+ <objectgroup id="66" name="holes">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -818,7 +818,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="68" name="terrain bg" visible="0">
+ <objectgroup id="68" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -829,7 +829,7 @@
    <polygon points="-129.285,1298.03 -152.035,650.189 -143.052,-184.124 -120.931,-799.778 119.02,-984.251 712.796,-916.389 909.327,-642.938 918.06,214.697 851.437,885.155 751.19,1335.21 516.295,1394.45 242.216,1380.08"/>
   </object>
  </objectgroup>
- <objectgroup id="21" name="terrain" visible="0">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -844,7 +844,7 @@
    <polygon points="-123.152,963.273 -413.455,484 -389.026,-137.062 -328.869,-595.354 323.672,-732.675 1938.43,-682.159 2472.89,-478.602 2496.64,159.82 2315.46,658.908 2042.84,993.932 1404.05,1038.03 658.7,1027.33"/>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor midground" visible="0">
+ <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -884,13 +884,13 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="57" name="objects back" visible="0">
+ <objectgroup id="57" name="objects back">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -910,12 +910,12 @@
   </object>
   <object id="824" name="Crypts/CryptDoor" type="decor" x="5665.39" y="968.288" width="388" height="733"/>
  </objectgroup>
- <objectgroup id="42" name="no hack objects" visible="0">
+ <objectgroup id="42" name="no hack objects">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="24" name="entities" visible="0">
+ <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>

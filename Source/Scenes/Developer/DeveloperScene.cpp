@@ -251,6 +251,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Alch (DH)", MapResources::DaemonsHallow_Town_Alch));
 		mapList.push_back(this->buildDebugButton("Inn (DH)", MapResources::DaemonsHallow_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (DH)", MapResources::DaemonsHallow_Town_Smith));
+		mapList.push_back(this->buildDebugButton("Zone_3_1 (DH)", MapResources::DaemonsHallow_Zone_3_1));
 		mapList.push_back(this->buildDebugButton("Zone_3_0 (DH)", MapResources::DaemonsHallow_Zone_3_0));
 		mapList.push_back(this->buildDebugButton("Zone_2_3 (DH)", MapResources::DaemonsHallow_Zone_2_3));
 		mapList.push_back(this->buildDebugButton("Zone_2_2 (DH)", MapResources::DaemonsHallow_Zone_2_2));

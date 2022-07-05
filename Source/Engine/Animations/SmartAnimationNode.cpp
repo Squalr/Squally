@@ -29,13 +29,25 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 {
 	this->animationResource = animationResource;
 	this->entityName = entityName;
-	this->animationNode = AnimationNode::create(animationResource);
-	this->entity = this->animationNode->play(entityName);
 	this->animationParts = std::map<std::string, AnimationPart*>();
 	this->initialized = false;
 	this->currentAnimation = "";
 	this->currentAnimationPriority = -1.0f;
-	this->spriterAnimation = nullptr; // SpriterAnimationNode::create(animationResource);
+	this->entity = nullptr;
+
+	static const bool UseNewAnimationSystem = false;
+
+	if (UseNewAnimationSystem)
+	{
+		this->spriterAnimation = SpriterAnimationNode::create(animationResource);
+		this->animationNode = nullptr;
+	}
+	else
+	{
+		this->animationNode = AnimationNode::create(animationResource);
+		this->spriterAnimation = nullptr;
+		this->entity = this->animationNode->play(entityName);
+	}
 
 	/*
 	I really want the new implementation of spriter to work, because it will cut load times down by 15%, and reduce ~4-5% of update cycle time consumption.
@@ -91,10 +103,15 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 	3) Solve the Z sorting bug
 	*/
 
-	// animationNode->setPosition(Vec2(256.0f, -0.0f));
+	if (this->animationNode != nullptr)
+	{
+		this->addChild(this->animationNode);
+	}
 
-	this->addChild(this->animationNode);
-	// this->addChild(this->spriterAnimation);
+	if (this->spriterAnimation != nullptr)
+	{
+		this->addChild(this->spriterAnimation);
+	}
 }
 
 SmartAnimationNode::~SmartAnimationNode()

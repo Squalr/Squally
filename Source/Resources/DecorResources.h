@@ -566,6 +566,7 @@ namespace DecorResources
 	extern const std::string Lava_Cactus2;
 	extern const std::string Lava_Cactus3;
 	extern const std::string Lava_Cactus4;
+	extern const std::string Lava_CrossDecal;
 	extern const std::string Lava_Detail1;
 	extern const std::string Lava_Detail2;
 	extern const std::string Lava_Detail3;
