@@ -235,7 +235,14 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_2_0 (LC)", MapResources::LambdaCrypts_Zone_2_0));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (LC)", MapResources::LambdaCrypts_Zone_1_0));
 
-		// Two crypts (left / right) that unlock central crypt or something
+		// 3x more enemies than is standard, which makes this harder
+		// 3 crypts that need to be cleared. Can either be "orderless" or force linearity with keys.
+		//	- town key (rusty?), bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x		
+		// 1_x overworld enemies (zombie, pig, undead)
+		// 2_x assassin, fiend, mystic (left crypt / hole)
+		// 3_x warlock, hunter, knight (right crypt, unlock w/ bone)
+		// 4_x cleaver, knight, priestess (central crypt, unlock w/ demon)
+		// Dual boss with King Zul and Lazarus. Give Lazarus a rez or self rez?
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
@@ -293,7 +300,6 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (BP)", MapResources::BallmerPeaks_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (BP)", MapResources::BallmerPeaks_Zone_1_0));
 
-		// Santa asset map
 		// Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
 		// 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
 		// 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
