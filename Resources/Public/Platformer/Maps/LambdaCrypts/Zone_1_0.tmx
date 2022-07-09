@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="107" nextobjectid="1026">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="107" nextobjectid="1033">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -217,6 +217,13 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1025" name="wood" type="terrain" x="5905.27" y="1836.39" width="358.833" height="1234.06"/>
+  <object id="1026" name="marble" type="terrain" x="1019.16" y="902.243">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.5"/>
+   </properties>
+   <polygon points="1704.86,185.384 2041.94,15.1256 2356.64,183.82 2365.46,960.908 1710.84,957.932"/>
+  </object>
  </objectgroup>
  <objectgroup id="91" name="decor -9">
   <properties>
@@ -244,6 +251,12 @@
   <object id="990" name="Crypts/Statue6" type="decor" x="6305.32" y="1311.62" width="329" height="513">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1027" name="Crypts/CryptDoor" type="decor" x="2849.28" y="1131.59" width="388" height="733">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.5"/>
    </properties>
   </object>
  </objectgroup>
@@ -292,7 +305,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="102" name="objects -8" visible="0">
+ <objectgroup id="102" name="objects -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -300,8 +313,18 @@
   <object id="1011" name="solid" type="collision" x="1901.66" y="-89.9638" width="171.617" height="1932.84"/>
   <object id="1012" name="portal" type="object" x="5859.49" y="1439.36" width="450.603" height="423.038">
    <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="item-required" value="rusty-key"/>
     <property name="map" value="LambdaCrypts/Town_Main"/>
     <property name="transition" value="gate"/>
+   </properties>
+  </object>
+  <object id="1030" name="portal" type="object" x="2935.73" y="1489.8" width="237.527" height="375.411">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="item-required" value="bone-key"/>
+    <property name="map" value="LambdaCrypts/Zone_4_0"/>
+    <property name="transition" value="lesser-crypt"/>
    </properties>
   </object>
  </objectgroup>
@@ -318,6 +341,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-C"/>
+   </properties>
+  </object>
+  <object id="1032" name="spawn" type="object" x="2994.98" y="1736.85" width="128" height="128">
+   <properties>
+    <property name="transition" value="lesser-crypt"/>
    </properties>
   </object>
  </objectgroup>
@@ -343,7 +371,7 @@
   </object>
   <object id="1015" name="wood" type="terrain" x="4888.18" y="1872.09" width="267.799" height="1244.94"/>
  </objectgroup>
- <objectgroup id="81" name="decor -7" visible="0">
+ <objectgroup id="81" name="decor -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
@@ -518,6 +546,14 @@
     <property name="transition" value="grave"/>
    </properties>
   </object>
+  <object id="1029" name="portal" type="object" x="2937.98" y="1541.38" width="237.527" height="375.411">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="item-required" value="demon-key"/>
+    <property name="map" value="LambdaCrypts/Zone_4_0"/>
+    <property name="transition" value="greater-crypt"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="89" name="player_layer -6">
   <properties>
@@ -560,6 +596,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-C"/>
+   </properties>
+  </object>
+  <object id="1031" name="spawn" type="object" x="2994.98" y="1790.68" width="128" height="128">
+   <properties>
+    <property name="transition" value="greater-crypt"/>
    </properties>
   </object>
  </objectgroup>

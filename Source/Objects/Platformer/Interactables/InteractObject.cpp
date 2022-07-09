@@ -86,7 +86,7 @@ InteractObject::InteractObject(
 	{
 		this->lockedMenu = LazyNode<InteractMenu>::create([=](){ return InteractMenu::create(Strings::Platformer_Objects_Doors_Closed::create(), interactColor, offset); });
 	}
-	else if (lockedText == "")
+	else if (lockedText == "none")
 	{
 		this->lockedMenu = LazyNode<InteractMenu>::create([=](){ return nullptr; });
 	}
