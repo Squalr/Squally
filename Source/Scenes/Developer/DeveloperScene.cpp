@@ -246,6 +246,7 @@ DeveloperScene::DeveloperScene()
 		//	- town key (rusty?), bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x		
 		// 1_x overworld enemies (zombie, pig, undead)
 		// 2_x assassin, fiend, mystic (left crypt / hole)
+			// TODO: Maybe redo this as a dirt environment, to differentiate it from crypts and break up LC repetativeness
 		// 3_x warlock, hunter, knight (right crypt, unlock w/ bone)
 		// 4_x cleaver, knight, priestess (central crypt, unlock w/ demon)
 		// Dual boss with King Zul and Lazarus. Give Lazarus a rez or self rez?

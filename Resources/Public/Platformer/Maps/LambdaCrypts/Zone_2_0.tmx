@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="976" name="stone-dark" type="texture" x="-1053.4" y="-1168.21" width="8294.8" height="5388.42">
+  <object id="976" name="cave" type="texture" x="-1053.4" y="-1168.21" width="8294.8" height="5388.42">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -32,19 +32,19 @@
   <object id="1145" name="torch" type="object" x="5275.52" y="1354.64" width="42" height="130"/>
   <object id="1148" name="torch" type="object" x="2814.7" y="1366.75" width="42" height="130"/>
  </objectgroup>
- <objectgroup id="74" name="terrain -10" visible="0">
+ <objectgroup id="74" name="terrain -10">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="978" name="stone-dark" type="terrain" x="-853.59" y="-934.54" width="7814.8" height="4868.42">
+  <object id="978" name="cave" type="terrain" x="-853.59" y="-934.54" width="7814.8" height="4868.42">
    <properties>
     <property name="collision" value="none"/>
     <property name="hole-tag" value="hole-B"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="71" name="decor -10" visible="0">
+ <objectgroup id="71" name="decor -10">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
@@ -287,7 +287,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="72" name="holes bg" visible="0">
+ <objectgroup id="72" name="holes bg">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -382,7 +382,7 @@
     <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="1124" name="stone-dark" type="terrain" x="1013.9" y="-57.9374">
+  <object id="1124" name="cave" type="terrain" x="1013.9" y="-57.9374">
    <polygon points="202.781,5.79374 214.368,1749.71 5150.64,1743.92 5133.26,2676.71 -341.831,2665.12 -348.935,8.96591"/>
   </object>
  </objectgroup>
@@ -424,6 +424,25 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="77" name="objects -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1132" name="edge-portal" type="object" x="5936.73" y="1042.17" width="199.918" height="640.851">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="LambdaCrypts/Zone_2_2"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="1152" name="portal" type="object" x="2672.43" y="1425.59" width="256" height="256">
+   <properties>
+    <property name="map" value="LambdaCrypts/Zone_2_0_a"/>
+    <property name="transition" value="back-room"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="70" name="player_layer -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
@@ -443,32 +462,8 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="1134" name="spawn" type="object" x="4391.94" y="495.387" width="128" height="128">
-   <properties>
-    <property name="transition" value="back-room"/>
-   </properties>
-  </object>
   <object id="1151" name="spawn" type="object" x="2739.66" y="1552.21" width="128" height="128">
    <properties>
-    <property name="transition" value="back-room"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="77" name="objects -8">
-  <properties>
-   <property name="depth" type="float" value="-512"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="1132" name="edge-portal" type="object" x="5936.73" y="1042.17" width="199.918" height="640.851">
-   <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="UnderflowRuins/Zone_2_1"/>
-    <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="1152" name="portal" type="object" x="2672.43" y="1425.59" width="256" height="256">
-   <properties>
-    <property name="map" value="LambdaCrypts/Zone_2_0_a"/>
     <property name="transition" value="back-room"/>
    </properties>
   </object>
@@ -487,12 +482,12 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="61" name="terrain -6" visible="0">
+ <objectgroup id="61" name="terrain -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="849" name="stone-dark" type="terrain" x="-601.948" y="-583.88" width="7118.8" height="4022.25">
+  <object id="849" name="cave" type="terrain" x="-601.948" y="-583.88" width="7118.8" height="4022.25">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -624,12 +619,12 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="60" name="terrain -4" visible="0">
+ <objectgroup id="60" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="838" name="stone-dark" type="terrain" x="-1865.95" y="-583.88" width="8382.8" height="4022.25">
+  <object id="838" name="cave" type="terrain" x="-1865.95" y="-583.88" width="8382.8" height="4022.25">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -665,7 +660,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="76" name="decor bg -2" visible="0">
+ <objectgroup id="76" name="decor bg -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -677,12 +672,12 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="59" name="terrain -2" visible="0">
+ <objectgroup id="59" name="terrain -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="782" name="stone-dark" type="terrain" x="-1542.82" y="-434.055" width="7878.43" height="4044.9">
+  <object id="782" name="cave" type="terrain" x="-1542.82" y="-434.055" width="7878.43" height="4044.9">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -692,7 +687,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="66" name="holes" visible="0">
+ <objectgroup id="66" name="holes">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -906,11 +901,11 @@
   <object id="1140" name="torch" type="object" x="2117.52" y="1187.67" width="42" height="130"/>
   <object id="1143" name="torch" type="object" x="3774.04" y="1167.78" width="42" height="130"/>
  </objectgroup>
- <objectgroup id="68" name="terrain bg" visible="0">
+ <objectgroup id="68" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="893" name="stone-dark" type="terrain" x="5722.58" y="755.576">
+  <object id="893" name="cave" type="terrain" x="5722.58" y="755.576">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -918,7 +913,7 @@
    </properties>
    <polygon points="-129.285,1298.03 -152.035,650.189 -143.052,-184.124 -120.931,-799.778 119.02,-984.251 712.796,-916.389 909.327,-642.938 918.06,214.697 851.437,885.155 751.19,1335.21 516.295,1394.45 242.216,1380.08"/>
   </object>
-  <object id="1131" name="stone-dark" type="terrain" x="-21.2121" y="1824.24">
+  <object id="1131" name="cave" type="terrain" x="-21.2121" y="1824.24">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -929,14 +924,14 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="674" name="stone-dark" type="terrain" x="1823.47" y="3680.45">
+  <object id="674" name="cave" type="terrain" x="1823.47" y="3680.45">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
    <polygon points="-2032.69,-1541.73 -1028.96,-1544.14 -561.889,-1712.81 -263.297,-1979.97 4535.3,-1989.26 4548.13,5.605 -2009.54,37.798"/>
   </object>
-  <object id="680" name="stone-dark" type="terrain" x="-1140" y="632">
+  <object id="680" name="cave" type="terrain" x="-1140" y="632">
    <polygon points="-123.152,963.273 -413.455,484 -389.026,-137.062 -328.869,-595.354 323.672,-732.675 1938.43,-682.159 2472.89,-478.602 2496.64,159.82 2315.46,658.908 2042.84,993.932 1404.05,1038.03 658.7,1027.33"/>
   </object>
  </objectgroup>

@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="976" name="stone-dark" type="texture" x="-692.537" y="-620.706" width="4607.2" height="3501.41">
+  <object id="976" name="cave" type="texture" x="-692.537" y="-620.706" width="4607.2" height="3501.41">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -31,12 +31,12 @@
   <object id="1148" name="torch" type="object" x="962.327" y="1316.01" width="42" height="130"/>
   <object id="1149" name="torch" type="object" x="1825.61" y="1318.1" width="42" height="130"/>
  </objectgroup>
- <objectgroup id="74" name="terrain -10">
+ <objectgroup id="74" name="terrain -10" visible="0">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="978" name="stone-dark" type="terrain" x="-1877.59" y="-934.54" width="6789.99" height="4233.38">
+  <object id="978" name="cave" type="terrain" x="-1877.59" y="-934.54" width="6789.99" height="4233.38">
    <properties>
     <property name="collision" value="none"/>
     <property name="hole-tag" value="hole-B"/>
@@ -305,12 +305,12 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="61" name="terrain -6">
+ <objectgroup id="61" name="terrain -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="849" name="stone-dark" type="terrain" x="-1701.46" y="-734.905" width="6356.93" height="3817.29">
+  <object id="849" name="cave" type="terrain" x="-1701.46" y="-734.905" width="6356.93" height="3817.29">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -439,7 +439,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="838" name="stone-dark" type="terrain" x="-1588.57" y="-583.88" width="6121.33" height="3472.09">
+  <object id="838" name="cave" type="terrain" x="-1588.57" y="-583.88" width="6121.33" height="3472.09">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -486,7 +486,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="782" name="stone-dark" type="terrain" x="-1445.68" y="-434.055" width="5807.99" height="3160.33">
+  <object id="782" name="cave" type="terrain" x="-1445.68" y="-434.055" width="5807.99" height="3160.33">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -690,7 +690,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="893" name="stone-dark" type="terrain" x="2814.01" y="737.908">
+  <object id="893" name="cave" type="terrain" x="2814.01" y="737.908">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -701,7 +701,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1135" name="stone-dark" type="terrain" x="0" y="-66.6667">
+  <object id="1135" name="cave" type="terrain" x="0" y="-66.6667">
    <polygon points="95.5083,5.79374 87.0953,1749.71 5150.64,1743.92 5133.26,2676.71 -341.831,2665.12 -348.935,8.96591"/>
   </object>
  </objectgroup>

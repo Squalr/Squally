@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="976" name="stone-dark" type="texture" x="-2077.4" y="-1168.21" width="8294.8" height="4596.42">
+  <object id="976" name="stone-dark" type="texture" x="-1154.56" y="-1168.21" width="7371.96" height="4596.42">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -756,7 +756,7 @@
   <object id="720" name="Generic/WoodCaveDoor1" type="decor" x="4658.94" y="1290.2" width="388" height="403"/>
   <object id="721" name="portal" type="object" x="4728.27" y="1437.7" width="256" height="256">
    <properties>
-    <property name="map" value="LambdaCrypts/Zone_2_0"/>
+    <property name="map" value="LambdaCrypts/Zone_4_0"/>
     <property name="transition" value="right"/>
    </properties>
   </object>

@@ -756,7 +756,7 @@
   <object id="720" name="Generic/WoodCaveDoor1" type="decor" x="4658.94" y="1290.2" width="388" height="403"/>
   <object id="721" name="portal" type="object" x="4728.27" y="1437.7" width="256" height="256">
    <properties>
-    <property name="map" value="LambdaCrypts/Zone_2_0"/>
+    <property name="map" value="LambdaCrypts/Zone_3_0"/>
     <property name="transition" value="right"/>
    </properties>
   </object>

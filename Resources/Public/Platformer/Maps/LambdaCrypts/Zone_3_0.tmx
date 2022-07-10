@@ -468,7 +468,7 @@
   </object>
   <object id="1152" name="portal" type="object" x="2672.43" y="1425.59" width="256" height="256">
    <properties>
-    <property name="map" value="LambdaCrypts/Zone_2_0_a"/>
+    <property name="map" value="LambdaCrypts/Zone_3_0_a"/>
     <property name="transition" value="back-room"/>
    </properties>
   </object>
@@ -994,7 +994,7 @@
   <object id="720" name="Generic/WoodCaveDoor1" type="decor" x="202.667" y="1734.5" width="388" height="403"/>
   <object id="721" name="portal" type="object" x="272" y="1882" width="256" height="256">
    <properties>
-    <property name="map" value="LambdaCrypts/Zone_2_1"/>
+    <property name="map" value="LambdaCrypts/Zone_3_1"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
