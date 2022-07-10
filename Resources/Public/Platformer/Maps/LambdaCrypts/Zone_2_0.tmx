@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="1125">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="1126">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -908,7 +908,7 @@
     <property name="transition" value="grave-left"/>
    </properties>
   </object>
-  <object id="824" name="Crypts/CryptDoor" type="decor" x="5665.39" y="968.288" width="388" height="733"/>
+  <object id="1125" name="Crypts/CryptDoor2" type="decor" x="5662.67" y="958.833" width="388" height="733"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
