@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="1132">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="48" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1149">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -23,7 +23,16 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="74" name="terrain -10">
+ <objectgroup id="79" name="decor -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1144" name="torch" type="object" x="4346.84" y="1354.64" width="42" height="130"/>
+  <object id="1145" name="torch" type="object" x="5275.52" y="1354.64" width="42" height="130"/>
+  <object id="1148" name="torch" type="object" x="2814.7" y="1366.75" width="42" height="130"/>
+ </objectgroup>
+ <objectgroup id="74" name="terrain -10" visible="0">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
@@ -35,7 +44,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="71" name="decor -10">
+ <objectgroup id="71" name="decor -10" visible="0">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
@@ -278,7 +287,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="72" name="holes bg">
+ <objectgroup id="72" name="holes bg" visible="0">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -407,6 +416,29 @@
     <property name="to" value="bridge-front-A"/>
    </properties>
   </object>
+  <object id="1133" name="spawn" type="object" x="5668.07" y="1550.81" width="128" height="128">
+   <properties>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1134" name="spawn" type="object" x="4391.94" y="495.387" width="128" height="128">
+   <properties>
+    <property name="transition" value="back-room"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="objects -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1132" name="edge-portal" type="object" x="5936.73" y="1042.17" width="199.918" height="640.851">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="UnderflowRuins/Zone_2_1"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="67" name="decor -6 bg">
   <properties>
@@ -422,7 +454,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="61" name="terrain -6">
+ <objectgroup id="61" name="terrain -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -559,7 +591,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="60" name="terrain -4">
+ <objectgroup id="60" name="terrain -4" visible="0">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -612,7 +644,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="59" name="terrain -2">
+ <objectgroup id="59" name="terrain -2" visible="0">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -830,13 +862,26 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="68" name="terrain bg">
+ <objectgroup id="78" name="decor alt -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1135" name="torch" type="object" x="4701.78" y="1158.44" width="42" height="130"/>
+  <object id="1136" name="torch" type="object" x="5630.46" y="1158.44" width="42" height="130"/>
+  <object id="1138" name="torch" type="object" x="3223.88" y="1193.94" width="42" height="130"/>
+  <object id="1140" name="torch" type="object" x="2117.52" y="1187.67" width="42" height="130"/>
+  <object id="1143" name="torch" type="object" x="3774.04" y="1167.78" width="42" height="130"/>
+ </objectgroup>
+ <objectgroup id="68" name="terrain bg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="893" name="stone-dark" type="terrain" x="5722.58" y="755.576">
    <properties>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
    <polygon points="-129.285,1298.03 -152.035,650.189 -143.052,-184.124 -120.931,-799.778 119.02,-984.251 712.796,-916.389 909.327,-642.938 918.06,214.697 851.437,885.155 751.19,1335.21 516.295,1394.45 242.216,1380.08"/>
   </object>
@@ -908,7 +953,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="23" name="objects">
+ <objectgroup id="23" name="objects" visible="0">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -961,7 +1006,7 @@
     <property name="components" value="ally"/>
    </properties>
   </object>
-  <object id="993" name="mystic" type="entity" x="3174.72" y="1572.87" width="128" height="128">
+  <object id="993" name="mystic" type="entity" x="2335.64" y="1569.04" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
@@ -970,7 +1015,7 @@
     <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
-  <object id="994" name="mystic" type="entity" x="3177.28" y="1199.13" width="128" height="128">
+  <object id="994" name="mystic" type="entity" x="2338.2" y="1195.3" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-c"/>
