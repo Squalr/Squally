@@ -31,12 +31,12 @@
   <object id="1148" name="torch" type="object" x="962.327" y="1316.01" width="42" height="130"/>
   <object id="1149" name="torch" type="object" x="1825.61" y="1318.1" width="42" height="130"/>
  </objectgroup>
- <objectgroup id="74" name="terrain -10" visible="0">
+ <objectgroup id="74" name="terrain -10">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="978" name="stone-dark" type="terrain" x="-1877.59" y="-934.54" width="7814.8" height="4028.42">
+  <object id="978" name="stone-dark" type="terrain" x="-1877.59" y="-934.54" width="6789.99" height="4233.38">
    <properties>
     <property name="collision" value="none"/>
     <property name="hole-tag" value="hole-B"/>
@@ -305,12 +305,12 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="61" name="terrain -6" visible="0">
+ <objectgroup id="61" name="terrain -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="849" name="stone-dark" type="terrain" x="-1625.95" y="-583.88" width="7118.8" height="4022.25">
+  <object id="849" name="stone-dark" type="terrain" x="-1701.46" y="-734.905" width="6356.93" height="3817.29">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -434,12 +434,12 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="60" name="terrain -4" visible="0">
+ <objectgroup id="60" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="838" name="stone-dark" type="terrain" x="-4585.95" y="-583.88" width="10078.8" height="4022.25">
+  <object id="838" name="stone-dark" type="terrain" x="-1588.57" y="-583.88" width="6121.33" height="3472.09">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -481,12 +481,12 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="59" name="terrain -2" visible="0">
+ <objectgroup id="59" name="terrain -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="782" name="stone-dark" type="terrain" x="-4302.82" y="-434.055" width="9614.43" height="4044.9">
+  <object id="782" name="stone-dark" type="terrain" x="-1445.68" y="-434.055" width="5807.99" height="3160.33">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -496,7 +496,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="66" name="holes" visible="0">
+ <objectgroup id="66" name="holes">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -683,7 +683,6 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1140" name="torch" type="object" x="2901.84" y="1222" width="42" height="130"/>
   <object id="1143" name="torch" type="object" x="1922.06" y="1222" width="42" height="130"/>
   <object id="1145" name="torch" type="object" x="949.334" y="1222" width="42" height="130"/>
  </objectgroup>
@@ -786,7 +785,7 @@
   <object id="721" name="portal" type="object" x="2843.7" y="1420.03" width="256" height="256">
    <properties>
     <property name="map" value="LambdaCrypts/Zone_2_0"/>
-    <property name="transition" value="right"/>
+    <property name="transition" value="back-room"/>
    </properties>
   </object>
  </objectgroup>
@@ -808,7 +807,7 @@
   </properties>
   <object id="779" name="spawn" type="object" x="2903.7" y="1552.03" width="128" height="128">
    <properties>
-    <property name="transition" value="left"/>
+    <property name="transition" value="back-room"/>
    </properties>
   </object>
   <object id="839" name="squally" type="entity" x="2591.8" y="1553.55" width="128" height="128">

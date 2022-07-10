@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="48" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1149">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="48" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="1153">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -402,6 +402,28 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="80" name="entities -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1149" name="mystic" type="entity" x="4499.46" y="1549.35" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
+    <property name="battle-tag" value="group-c"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="ur-generic"/>
+   </properties>
+  </object>
+  <object id="1150" name="mystic" type="entity" x="4502.02" y="1175.61" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-c"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="70" name="player_layer -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
@@ -426,6 +448,11 @@
     <property name="transition" value="back-room"/>
    </properties>
   </object>
+  <object id="1151" name="spawn" type="object" x="2739.66" y="1552.21" width="128" height="128">
+   <properties>
+    <property name="transition" value="back-room"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="77" name="objects -8">
   <properties>
@@ -437,6 +464,12 @@
     <property name="direction" value="right"/>
     <property name="map" value="UnderflowRuins/Zone_2_1"/>
     <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="1152" name="portal" type="object" x="2672.43" y="1425.59" width="256" height="256">
+   <properties>
+    <property name="map" value="LambdaCrypts/Zone_2_0_a"/>
+    <property name="transition" value="back-room"/>
    </properties>
   </object>
  </objectgroup>
@@ -632,7 +665,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="76" name="decor bg -2">
+ <objectgroup id="76" name="decor bg -2" visible="0">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -659,7 +692,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="66" name="holes">
+ <objectgroup id="66" name="holes" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -953,7 +986,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -1003,22 +1036,6 @@
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
-  <object id="993" name="mystic" type="entity" x="2335.64" y="1569.04" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
-    <property name="battle-tag" value="group-c"/>
-    <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="994" name="mystic" type="entity" x="2338.2" y="1195.3" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-c"/>
     <property name="components" value="ally"/>
    </properties>
   </object>

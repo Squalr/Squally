@@ -777,7 +777,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="991" name="assassin" type="entity" x="3354.72" y="1562.87" width="128" height="128">
+  <object id="991" name="skeletal-knight" type="entity" x="3354.72" y="1562.87" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
@@ -786,7 +786,7 @@
     <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
-  <object id="992" name="assassin" type="entity" x="3351.25" y="1280.44" width="128" height="128">
+  <object id="992" name="skeletal-knight" type="entity" x="3346.79" y="1303.14" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-b"/>
