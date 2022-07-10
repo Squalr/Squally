@@ -24,7 +24,7 @@ BoneKnight::BoneKnight(ValueMap& properties) : super(properties,
 	BoneKnight::MapKey,
 	EntityResources::Enemies_LambdaCrypts_BoneKnight_Animations,
 	EntityResources::Enemies_LambdaCrypts_BoneKnight_Emblem,
-	CSize(540.0f, 340.0f),
+	CSize(224.0f, 278.0f),
 	1.0f,
 	Vec2(-64.0f, 0.0f))
 {

@@ -24,7 +24,7 @@ Hunter::Hunter(ValueMap& properties) : super(properties,
 	Hunter::MapKey,
 	EntityResources::Enemies_LambdaCrypts_Hunter_Animations,
 	EntityResources::Enemies_LambdaCrypts_Hunter_Emblem,
-	CSize(112.0f, 596.0f),
+	CSize(224.0f, 278.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

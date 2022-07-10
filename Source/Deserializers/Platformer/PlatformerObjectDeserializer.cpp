@@ -150,6 +150,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[LavaGeyser::MapKey] = [=](ValueMap properties) { return (GameObject*)LavaGeyser::create(properties); };
 	this->deserializers[Lever::MapKey] = [=](ValueMap properties) { return (GameObject*)Lever::create(properties); };
 	this->deserializers[LifeStone::MapKey] = [=](ValueMap properties) { return (GameObject*)LifeStone::create(properties); };
+	this->deserializers[Portcullus::MapKey] = [=](ValueMap properties) { return (GameObject*)Portcullus::create(properties); };
 	this->deserializers[PullyHorizontal::MapKey] = [=](ValueMap properties) { return (GameObject*)PullyHorizontal::create(properties); };
 	this->deserializers[PullyVertical::MapKey] = [=](ValueMap properties) { return (GameObject*)PullyVertical::create(properties); };
 	this->deserializers[ManaOrb::MapKey] = [=](ValueMap properties) { return (GameObject*)ManaOrb::create(properties); };

@@ -308,8 +308,6 @@ namespace ObjectResources
 	extern const std::string Doors_ClockDoor_Weight3;
 	extern const std::string Doors_ClockDoor_WeightRope;
 	extern const std::string Doors_ClockDoor_WeightSpinner;
-	extern const std::string Doors_Crypt_CryptClosed;
-	extern const std::string Doors_Crypt_CryptOpened;
 	extern const std::string Doors_Demon_DemonGateBack;
 	extern const std::string Doors_Demon_DemonGateFront;
 	extern const std::string Doors_Dragon_DragonDoorBars;
@@ -343,6 +341,9 @@ namespace ObjectResources
 	extern const std::string Doors_OrcGate_GROUND_OBJECTS_GROUND_OBJECTS_6;
 	extern const std::string Doors_OrcGate_P_MIDDLE;
 	extern const std::string Doors_OrcGate_TOP_P;
+	extern const std::string Doors_Portcullus_PortcullusMid;
+	extern const std::string Doors_Portcullus_PortcullusSpikes;
+	extern const std::string Doors_Portcullus_PortcullusTop;
 	extern const std::string Doors_PuzzleDoor_BarLeft;
 	extern const std::string Doors_PuzzleDoor_BarRight;
 	extern const std::string Doors_PuzzleDoor_Gate_Front;

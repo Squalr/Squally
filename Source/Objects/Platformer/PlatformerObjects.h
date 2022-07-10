@@ -55,6 +55,7 @@
 #include "Objects/Platformer/Interactables/Doors/Mayan/StoneStack.h"
 #include "Objects/Platformer/Interactables/Doors/OptionWarp.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
+#include "Objects/Platformer/Interactables/Doors/Portcullus/Portcullus.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/AddDoor/AddDoor.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/MulDoor/MulDoor.h"
 #include "Objects/Platformer/Interactables/Doors/Screaming/ScreamingDoor.h"
