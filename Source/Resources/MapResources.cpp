@@ -157,6 +157,7 @@ const std::string MapResources::LambdaCrypts_Town_Main = "Public/Platformer/Maps
 const std::string MapResources::LambdaCrypts_Town_Smith = "Public/Platformer/Maps/LambdaCrypts/Town_Smith.tmx";
 const std::string MapResources::LambdaCrypts_Zone_1_0 = "Public/Platformer/Maps/LambdaCrypts/Zone_1_0.tmx";
 const std::string MapResources::LambdaCrypts_Zone_2_0 = "Public/Platformer/Maps/LambdaCrypts/Zone_2_0.tmx";
+const std::string MapResources::LambdaCrypts_Zone_2_1 = "Public/Platformer/Maps/LambdaCrypts/Zone_2_1.tmx";
 const std::string MapResources::LambdaCrypts_Zone_3_0 = "Public/Platformer/Maps/LambdaCrypts/Zone_3_0.tmx";
 const std::string MapResources::LambdaCrypts_Zone_4_0 = "Public/Platformer/Maps/LambdaCrypts/Zone_4_0.tmx";
 const std::string MapResources::PerilousSea_Zone_UR_1_0 = "Public/Platformer/Maps/PerilousSea/Zone_UR_1_0.tmx";
