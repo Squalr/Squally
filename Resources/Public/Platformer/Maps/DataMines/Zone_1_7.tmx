@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="52" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="875">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="52" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="875">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -46,7 +46,11 @@
    </properties>
    <polygon points="-726.663,-2136.75 1082.8,-2132.04 1080.71,1241.53 -723.491,1227.8"/>
   </object>
-  <object id="874" name="mines" type="terrain" x="1725.4" y="-898" width="1809.2" height="3380"/>
+  <object id="874" name="mines" type="terrain" x="1725.4" y="-898" width="1809.2" height="3380">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="69" name="objects -4">
   <properties>
@@ -219,7 +223,7 @@
   <object id="806" name="edge-portal" type="object" x="-10.4438" y="659.03" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="DataMines/Zone_1_2"/>
+    <property name="map" value="DataMines/Zone_1_6"/>
     <property name="transition" value="left"/>
    </properties>
   </object>

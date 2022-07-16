@@ -162,6 +162,9 @@ DeveloperScene::DeveloperScene()
 
 		// This zone needs some redoing because the 1_x maps are fucking boring
 		// And the 3_x maps are too confusing and bloated
+		// Too many fucking pyramids
+		// Show the electricity ON/OFF in Lions Cistern water visually somehow
+		// Color the brazier metal to indicate the flame color
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
@@ -194,6 +197,16 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_2 (DM)", MapResources::DataMines_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (DM)", MapResources::DataMines_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
+
+		// Data Mines needs a Van Cleef style room with a ship for Krampus
+		// Needs quest progression
+		// 	- Olive => Dawn => Restore Power. Nothing fancy, bosses need not be quests since they are forced.
+		//	- Need a way to force Dawn / Restore power quests. Dawn for Key, Power Forced via boss kill? Or on Krampus ship (req to escape)?
+		// Needs enemy scripting according to notes on which instructions this zone covers
+		// Needs hexus puzzles TODO: Scrap the "corrupt enemy puzzles", and instead have a shrine. Make it an entity for backwards compat.
+		//	Oh right, I did it this way so that there was a reason to use the entity icon.
+		//	I think the solution is a shrine with an entity icon (use emblem art).
+		//	Or something dumb like sitting animations for all card NPCs and have them at a table. But this is harder and not really different.
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
@@ -233,6 +246,9 @@ DeveloperScene::DeveloperScene()
 		// DS => Vamp lord, Vampiress, Reanim, Werewolf
 		// 2_x => Reaper, Baron, wraith, Abom
 
+		// Needs enemy scripting according to notes on which instructions this zone covers
+		// Needs hexus puzzles
+
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
@@ -267,6 +283,9 @@ DeveloperScene::DeveloperScene()
 		// 4_x cleaver, knight, priestess (central crypt, unlock w/ demon)
 		// Dual boss with King Zul and Lazarus. Give Lazarus a rez or self rez?
 
+		// Needs enemy scripting according to notes on which instructions this zone covers
+		// Needs hexus puzzles
+
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
@@ -298,6 +317,9 @@ DeveloperScene::DeveloperScene()
 		// 2_x should be more caves connecting town to the 3_x maps (Shaman, Swordsman, Rogue)
 		// 3_x is all overworld (Tiger, Warrior, Grunt, Archer)
 
+		// Needs enemy scripting according to notes on which instructions this zone covers
+		// Needs hexus puzzles
+
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
@@ -328,6 +350,26 @@ DeveloperScene::DeveloperScene()
 		// 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
 		// 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
 
+		/*
+		O Aspen
+		O Bodom
+		X Cookie => Santa
+		X Cooper => Inn
+		X Jingles => Santa
+		O Juniper
+		X Kringle => Santa
+		X Luna => alch
+		O Nessie
+		O Princess Pepper
+		X Theldar => smith
+		X Tinsel => Santa
+		O Ysara
+		X Irmik => SkyMaster
+		*/
+
+		// Needs enemy scripting according to notes on which instructions this zone covers
+		// Needs hexus puzzles
+
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
@@ -344,6 +386,8 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (VS)", MapResources::VoidStar_Zone_1_0));
 
 		// Likely just 1-2 interim maps before boss. Keep this zone really short.
+		// Needs enemy scripting according to notes on which instructions this zone covers
+		// Needs hexus puzzles
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}

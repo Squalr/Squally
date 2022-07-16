@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="52" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="1623">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="52" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="1623">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -32,7 +32,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1588" name="mines" type="terrain" x="3925.96" y="3393.5" width="1057.08" height="276"/>
-  <object id="1595" name="mines" type="terrain" x="1312.69" y="2120.53" width="343.08" height="276"/>
+  <object id="1595" name="wood" type="terrain" x="1312.69" y="2120.53" width="343.08" height="276"/>
   <object id="1596" name="mines" type="terrain" x="769.46" y="2113" width="3157.08" height="1561"/>
   <object id="1597" name="mines" type="terrain" x="-866.54" y="-236.5" width="1645.08" height="3897"/>
   <object id="1611" name="mines" type="terrain" x="4985.1" y="-131.53" width="1813.08" height="3809"/>
@@ -103,7 +103,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1587" name="mines" type="terrain" x="4639.46" y="3400.5" width="343.08" height="276"/>
-  <object id="1594" name="mines" type="terrain" x="1312.19" y="2127.53" width="343.08" height="276"/>
+  <object id="1594" name="wood" type="terrain" x="1312.19" y="2127.53" width="343.08" height="276"/>
  </objectgroup>
  <objectgroup id="76" name="fireflies -6">
   <properties>
@@ -124,7 +124,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1586" name="mines" type="terrain" x="4639.46" y="3408" width="343.08" height="276"/>
-  <object id="1593" name="mines" type="terrain" x="1312.19" y="2135.03" width="343.08" height="276"/>
+  <object id="1593" name="wood" type="terrain" x="1312.19" y="2135.03" width="343.08" height="276"/>
  </objectgroup>
  <objectgroup id="75" name="fireflies -5">
   <properties>
@@ -139,7 +139,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1585" name="mines" type="terrain" x="4639.46" y="3415.5" width="343.08" height="276"/>
-  <object id="1592" name="mines" type="terrain" x="1312.19" y="2142.53" width="343.08" height="276"/>
+  <object id="1592" name="wood" type="terrain" x="1312.19" y="2142.53" width="343.08" height="276"/>
  </objectgroup>
  <objectgroup id="74" name="fireflies -4">
   <properties>
@@ -154,7 +154,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1584" name="mines" type="terrain" x="4639.46" y="3423" width="343.08" height="276"/>
-  <object id="1591" name="mines" type="terrain" x="1312.19" y="2150.03" width="343.08" height="276"/>
+  <object id="1591" name="wood" type="terrain" x="1312.19" y="2150.03" width="343.08" height="276"/>
  </objectgroup>
  <objectgroup id="73" name="fireflies -3">
   <properties>
@@ -169,7 +169,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1583" name="mines" type="terrain" x="4639.46" y="3428" width="343.08" height="276"/>
-  <object id="1590" name="mines" type="terrain" x="1312.19" y="2155.03" width="343.08" height="276"/>
+  <object id="1590" name="wood" type="terrain" x="1312.19" y="2155.03" width="343.08" height="276"/>
  </objectgroup>
  <objectgroup id="72" name="fireflies -2">
   <properties>
@@ -184,7 +184,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1582" name="mines" type="terrain" x="4638.46" y="3436" width="343.08" height="276"/>
-  <object id="1589" name="mines" type="terrain" x="1311.19" y="2163.03" width="343.08" height="276"/>
+  <object id="1589" name="wood" type="terrain" x="1311.19" y="2163.03" width="343.08" height="276"/>
  </objectgroup>
  <objectgroup id="71" name="fireflies -1">
   <properties>

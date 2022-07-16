@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="62" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1956">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="62" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1957">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -38,7 +38,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1934" name="dark-grass" type="terrain" x="3314.89" y="1804.24">
-   <polygon points="111.74,-0.534154 -15.4303,25.4246 -67.5093,104.694 16.2954,339.722 958.248,346.405 1010.53,158.272 961.655,37.0323 869.439,0.404662"/>
+   <polygon points="111.74,-0.534154 31.4717,27.8931 -3.32762,107.163 16.2954,339.722 958.248,346.405 1010.53,158.272 961.655,37.0323 869.439,0.404662"/>
   </object>
  </objectgroup>
  <objectgroup id="114" name="terrain -7">
@@ -74,12 +74,18 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1956" name="portal" type="object" x="3705.62" y="1609.84" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Zone_1_0"/>
+    <property name="transition" value="screaming-door"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="110" name="player_layer -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="1.85"/>
+   <property name="zoom" type="float" value="1.8500000000000001"/>
   </properties>
   <object id="1928" name="warp" type="object" x="1989" y="2000" width="256" height="256">
    <properties>
