@@ -21,6 +21,7 @@ const std::string MapResources::BallmerPeaks_Zone_3_0 = "Public/Platformer/Maps/
 const std::string MapResources::BallmerPeaks_Zone_3_1 = "Public/Platformer/Maps/BallmerPeaks/Zone_3_1.tmx";
 const std::string MapResources::BallmerPeaks_Zone_3_2 = "Public/Platformer/Maps/BallmerPeaks/Zone_3_2.tmx";
 const std::string MapResources::CastleValgrind_Mages_Warp = "Public/Platformer/Maps/CastleValgrind/Mages_Warp.tmx";
+const std::string MapResources::CastleValgrind_Study = "Public/Platformer/Maps/CastleValgrind/Study.tmx";
 const std::string MapResources::CastleValgrind_Throne_Room = "Public/Platformer/Maps/CastleValgrind/Throne_Room.tmx";
 const std::string MapResources::CastleValgrind_Town_Alch = "Public/Platformer/Maps/CastleValgrind/Town_Alch.tmx";
 const std::string MapResources::CastleValgrind_Town_Inn = "Public/Platformer/Maps/CastleValgrind/Town_Inn.tmx";

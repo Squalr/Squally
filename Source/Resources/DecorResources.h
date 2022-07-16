@@ -475,6 +475,9 @@ namespace DecorResources
 	extern const std::string Generic_Bone1;
 	extern const std::string Generic_Bone2;
 	extern const std::string Generic_Bone3;
+	extern const std::string Generic_Books1;
+	extern const std::string Generic_Bookshelf1;
+	extern const std::string Generic_BookshelfEmpty1;
 	extern const std::string Generic_Chains1;
 	extern const std::string Generic_Chandilier1;
 	extern const std::string Generic_CoalPile1;
@@ -516,6 +519,7 @@ namespace DecorResources
 	extern const std::string Generic_MoonDoor;
 	extern const std::string Generic_Nightstand;
 	extern const std::string Generic_OpenWindow1;
+	extern const std::string Generic_Pantry1;
 	extern const std::string Generic_RedRug;
 	extern const std::string Generic_Register;
 	extern const std::string Generic_Rope1;
@@ -523,6 +527,7 @@ namespace DecorResources
 	extern const std::string Generic_Shack1;
 	extern const std::string Generic_Shelf1;
 	extern const std::string Generic_ShelfBar1;
+	extern const std::string Generic_ShelfEmpty1;
 	extern const std::string Generic_Shield1;
 	extern const std::string Generic_SignAlch;
 	extern const std::string Generic_SignAlchFlat;

@@ -209,13 +209,20 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Inn (CV)", MapResources::CastleValgrind_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (CV)", MapResources::CastleValgrind_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (CV)", MapResources::CastleValgrind_Town_Main));
+		mapList.push_back(this->buildDebugButton("Study (CV)", MapResources::CastleValgrind_Study));
 		mapList.push_back(this->buildDebugButton("Zone_1_2 (CV)", MapResources::CastleValgrind_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (CV)", MapResources::CastleValgrind_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (CV)", MapResources::CastleValgrind_Zone_1_0));
 
 		// Normal maps
-		// Corresponding "dark" maps
+		// Corresponding "dark" maps (alternatively a game flag that is toggled to load in the correct layers)
 		// Puzzles in dark maps can influence objects in normal maps. Typical inverse world puzzles.
+
+		// WIP flow:
+		// Clock to go to dark side
+		// Study default locked
+		// Key is in the bar or something (maybe the barkeep has a hint about this)
+		// Secret room behind throne room (dark side only, helps make shit easier for me) leading to 2_x zones
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="34" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="797">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="34" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="797">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -63,11 +63,6 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="788" name="Generic/TownFencePost" type="decor" x="6410.74" y="1273.91" width="263" height="1118">
-   <properties>
-    <property name="flip-x" type="bool" value="false"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="7911" name="bridge -11">
   <properties>
@@ -103,11 +98,6 @@
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="787" name="Generic/TownFencePost" type="decor" x="5990.88" y="1278.56" width="263" height="1118">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="771" name="bridge -8">
   <properties>
@@ -132,11 +122,6 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="733" name="Generic/TownFencePost" type="decor" x="6406.6" y="1277.26" width="263" height="1118">
-   <properties>
-    <property name="flip-x" type="bool" value="false"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="79" name="bridge -5">
   <properties>
@@ -155,11 +140,6 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="786" name="Generic/TownFencePost" type="decor" x="5992.88" y="1276.56" width="263" height="1118">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="77" name="bridge -3">
   <properties>
@@ -188,13 +168,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="723" name="Generic/TownFencePost" type="decor" x="6408.6" y="1275.26" width="263" height="1118">
-   <properties>
-    <property name="flip-x" type="bool" value="false"/>
-   </properties>
-  </object>
  </objectgroup>
- <objectgroup id="88" name="decor bg" visible="0">
+ <objectgroup id="88" name="decor bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -242,23 +217,10 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="752" name="portal" type="object" x="6259.04" y="2575.13" width="450.603" height="423.038">
-   <properties>
-    <property name="map" value="CastleValgrind/WarpTower"/>
-    <property name="transition" value="warp-tower"/>
-   </properties>
-  </object>
   <object id="780" name="portal" type="object" x="1109.15" y="1607.54" width="450.603" height="423.038">
    <properties>
     <property name="map" value="CastleValgrind/WarpTower"/>
     <property name="transition" value="warp-tower"/>
-   </properties>
-  </object>
-  <object id="796" name="edge-portal" type="object" x="4150.1" y="1383.57" width="199.918" height="640.851">
-   <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="UnderflowRuins/Zone_1_1"/>
-    <property name="transition" value="right"/>
    </properties>
   </object>
  </objectgroup>
@@ -292,14 +254,9 @@
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="650" name="spawn" type="object" x="3843.02" y="1897.5" width="128" height="128">
+  <object id="650" name="spawn" type="object" x="3212.35" y="1900.17" width="128" height="128">
    <properties>
     <property name="transition" value="gate"/>
-   </properties>
-  </object>
-  <object id="753" name="spawn" type="object" x="5938.89" y="2827.87" width="128" height="128">
-   <properties>
-    <property name="transition" value="warp-tower"/>
    </properties>
   </object>
   <object id="781" name="spawn-wood-door" type="object" x="1262.44" y="1901.56" width="128" height="128">

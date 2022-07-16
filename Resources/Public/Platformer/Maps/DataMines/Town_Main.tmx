@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="143" nextobjectid="1067">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="143" nextobjectid="1068">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -23,6 +23,7 @@
    </properties>
    <polygon points="-5006.03,-380.941 7459.43,-380.1 7445.06,221.339 -4984.18,218.891"/>
   </object>
+  <object id="1067" name="mines" type="texture" x="-2966.54" y="-1853.84" width="15117.1" height="8763.69"/>
  </objectgroup>
  <objectgroup id="67" name="water -12">
   <properties>
