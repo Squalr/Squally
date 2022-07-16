@@ -242,7 +242,7 @@ std::vector<HackableCode*> HackableCode::parseHackables(void* functionStart, Cod
 
 HackableCode::MarkerMap& HackableCode::parseHackableMarkers(void* functionStart, CodeInfoMap& hackableCodeInfoMap)
 {
-	if (HackableCode::HackableCodeCache.find(functionStart) == HackableCode::HackableCodeCache.end())
+	if (HackableCode::HackableCodeCache.find(functionStart) != HackableCode::HackableCodeCache.end())
 	{
 		return HackableCode::HackableCodeCache[functionStart];
 	}

@@ -126,7 +126,7 @@ bool HackableBase::isComplete()
 
 bool HackableBase::isCooldownComplete()
 {
-	return this->getElapsedCooldown() >= this->getCooldown();
+	return this->getCooldown() <= 0.0f || this->getElapsedCooldown() >= this->getCooldown();
 }
 
 float HackableBase::getElapsedCooldown()

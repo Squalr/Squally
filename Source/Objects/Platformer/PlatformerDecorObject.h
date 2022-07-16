@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
 {
@@ -9,7 +9,7 @@ namespace cocos2d
 
 template <class T> class LazyNode;
 
-class PlatformerDecorObject : public HackableObject
+class PlatformerDecorObject : public GameObject
 {
 public:
 	static PlatformerDecorObject* create(cocos2d::ValueMap& properties);
@@ -24,7 +24,7 @@ protected:
 	void onHackerModeDisable() override;
 	
 private:
-	typedef HackableObject super;
+	typedef GameObject super;
 
 	void runBounce();
 	void optimizationHideOffscreenDecor();
