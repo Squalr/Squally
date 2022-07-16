@@ -23,6 +23,7 @@ namespace MapResources
 	extern const std::string BallmerPeaks_Zone_3_2;
 	extern const std::string CastleValgrind_Mages_Warp;
 	extern const std::string CastleValgrind_Study;
+	extern const std::string CastleValgrind_Study_Dark;
 	extern const std::string CastleValgrind_Throne_Room;
 	extern const std::string CastleValgrind_Town_Alch;
 	extern const std::string CastleValgrind_Town_Inn;
@@ -32,6 +33,11 @@ namespace MapResources
 	extern const std::string CastleValgrind_Zone_1_0;
 	extern const std::string CastleValgrind_Zone_1_1;
 	extern const std::string CastleValgrind_Zone_1_2;
+	extern const std::string CastleValgrind_Zone_2_0;
+	extern const std::string CastleValgrind_Zone_2_1;
+	extern const std::string CastleValgrind_Zone_2_2;
+	extern const std::string CastleValgrind_Zone_2_3;
+	extern const std::string CastleValgrind_Zone_2_4;
 	extern const std::string DaemonsHallow_Home_Swag;
 	extern const std::string DaemonsHallow_Mages_Warp;
 	extern const std::string DaemonsHallow_Town_Alch;

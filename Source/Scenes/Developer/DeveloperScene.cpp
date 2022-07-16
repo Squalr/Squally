@@ -209,7 +209,12 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Inn (CV)", MapResources::CastleValgrind_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (CV)", MapResources::CastleValgrind_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (CV)", MapResources::CastleValgrind_Town_Main));
+		mapList.push_back(this->buildDebugButton("Study Dark (CV)", MapResources::CastleValgrind_Study_Dark));
 		mapList.push_back(this->buildDebugButton("Study (CV)", MapResources::CastleValgrind_Study));
+		mapList.push_back(this->buildDebugButton("Zone_2_3 (CV)", MapResources::CastleValgrind_Zone_2_3));
+		mapList.push_back(this->buildDebugButton("Zone_2_2 (CV)", MapResources::CastleValgrind_Zone_2_2));
+		mapList.push_back(this->buildDebugButton("Zone_2_1 (CV)", MapResources::CastleValgrind_Zone_2_1));
+		mapList.push_back(this->buildDebugButton("Zone_2_0 (CV)", MapResources::CastleValgrind_Zone_2_0));
 		mapList.push_back(this->buildDebugButton("Zone_1_2 (CV)", MapResources::CastleValgrind_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (CV)", MapResources::CastleValgrind_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (CV)", MapResources::CastleValgrind_Zone_1_0));
@@ -223,6 +228,10 @@ DeveloperScene::DeveloperScene()
 		// Study default locked
 		// Key is in the bar or something (maybe the barkeep has a hint about this)
 		// Secret room behind throne room (dark side only, helps make shit easier for me) leading to 2_x zones
+
+		// 1_x => Barbarian, Thug
+		// DS => Vamp lord, Vampiress, Reanim, Werewolf
+		// 2_x => Reaper, Baron, wraith, Abom
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
