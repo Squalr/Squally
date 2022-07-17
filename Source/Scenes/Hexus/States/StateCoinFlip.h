@@ -3,6 +3,7 @@
 #include "Scenes/Hexus/States/StateBase.h"
 
 class SmartAnimationSequenceNode;
+class Sound;
 
 class StateCoinFlip : public StateBase
 {
@@ -24,4 +25,5 @@ private:
 	typedef StateBase super;
 
 	SmartAnimationSequenceNode* coinAnimation = nullptr;
+	Sound* coinFlipSound = nullptr;
 };

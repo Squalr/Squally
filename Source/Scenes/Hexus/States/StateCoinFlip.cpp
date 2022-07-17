@@ -7,11 +7,13 @@
 #include "cocos/base/CCDirector.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Sound/Sound.h"
 #include "Scenes/Hexus/CardRow.h"
 #include "Scenes/Hexus/GameState.h"
 #include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
+#include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
@@ -27,8 +29,10 @@ StateCoinFlip* StateCoinFlip::create()
 StateCoinFlip::StateCoinFlip() : super(GameState::StateType::CoinFlip)
 {
 	this->coinAnimation = SmartAnimationSequenceNode::create(HexusResources::CoinFlip_0000);
+	this->coinFlipSound = Sound::create(SoundResources::Hexus_CoinFlip);
 
 	this->addChild(this->coinAnimation);
+	this->addChild(this->coinFlipSound);
 }
 
 StateCoinFlip::~StateCoinFlip()
@@ -136,6 +140,8 @@ void StateCoinFlip::onStateEnter(GameState* gameState)
 	float flipDuration = extraDuration + loopDuration * float(HexusConfig::coinFlipCount) + timingCorrection;
 	this->coinAnimation->setScale(HexusConfig::coinFlipStartScale);
 	this->coinAnimation->runAction(FadeTo::create(0.25f, 255));
+
+	this->coinFlipSound->play(false, HexusConfig::coinFlipStartDelay);
 
 	this->coinAnimation->runAction(Sequence::create(
 		DelayTime::create(HexusConfig::coinFlipStartDelay),

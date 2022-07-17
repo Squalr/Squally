@@ -36,6 +36,7 @@ const std::string SoundResources::Hexus_Attacks_WindReverse = "Private/Sounds/He
 const std::string SoundResources::Hexus_CardMovement = "Private/Sounds/Hexus/CardMovement.ogg";
 const std::string SoundResources::Hexus_CardMovementStrong = "Private/Sounds/Hexus/CardMovementStrong.ogg";
 const std::string SoundResources::Hexus_ClaimVictory = "Private/Sounds/Hexus/ClaimVictory.ogg";
+const std::string SoundResources::Hexus_CoinFlip = "Private/Sounds/Hexus/CoinFlip.ogg";
 const std::string SoundResources::Hexus_Defeat = "Private/Sounds/Hexus/Defeat.ogg";
 const std::string SoundResources::Hexus_LastStand = "Private/Sounds/Hexus/LastStand.ogg";
 const std::string SoundResources::Hexus_Medieval_War_Horn = "Private/Sounds/Hexus/Medieval War Horn.ogg";

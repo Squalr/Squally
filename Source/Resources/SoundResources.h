@@ -37,6 +37,7 @@ namespace SoundResources
 	extern const std::string Hexus_CardMovement;
 	extern const std::string Hexus_CardMovementStrong;
 	extern const std::string Hexus_ClaimVictory;
+	extern const std::string Hexus_CoinFlip;
 	extern const std::string Hexus_Defeat;
 	extern const std::string Hexus_LastStand;
 	extern const std::string Hexus_Medieval_War_Horn;
