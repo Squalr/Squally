@@ -70,9 +70,8 @@ private:
 	MinMaxPool* rewardPool = nullptr;
 	DialogueOption* hexusOption = nullptr;
 	cocos2d::Node* iconNode = nullptr;
-	cocos2d::Node* iconContainer = nullptr;
-	cocos2d::Sprite* cardGlow = nullptr;
-	cocos2d::Sprite* cardSprite = nullptr;
+	cocos2d::Node* undefeatedContainer = nullptr;
+	cocos2d::Node* defeatedContainer = nullptr;
 
 	SmartParticles* hackParticles1 = nullptr;
 	SmartParticles* hackParticles2 = nullptr;

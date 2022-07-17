@@ -25,6 +25,7 @@
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/ObjectResources.h"
 #include "Resources/ItemResources.h"
 #include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
@@ -39,9 +40,8 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 	this->showParticles = showParticles;
 	this->dialogueStringNode = Node::create();
 	this->iconNode = Node::create();
-	this->iconContainer = Node::create();
-	this->cardGlow = Sprite::create(UIResources::HUD_EmblemGlow);
-	this->cardSprite = Sprite::create(ItemResources::Collectables_Cards_CardSpecial);
+	this->undefeatedContainer = Node::create();
+	this->defeatedContainer = Node::create();
 	this->hackParticles1 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange1, SmartParticles::CullInfo(CSize(128.0f, 128.0f))) : nullptr;
 	this->hackParticles2 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange2, SmartParticles::CullInfo(CSize(128.0f, 128.0f))) : nullptr;
 	this->hackParticles3 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange3, SmartParticles::CullInfo(CSize(128.0f, 128.0f))) : nullptr;
@@ -51,6 +51,10 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->dialogueChoiceOverride = dialogueChoiceOverride;
 	this->voiceResource = voiceResource;
+
+	Sprite* cardGlow = Sprite::create(UIResources::HUD_EmblemGlow);
+	Sprite* overheadSprite = Sprite::create(this-> showParticles ? ObjectResources::Hexus_Jigsaw : ItemResources::Collectables_Cards_CardSpecial);
+	Sprite* overheadSpriteDefeated = Sprite::create(this-> showParticles ? ObjectResources::Hexus_JigsawCompleted : "");
 
 	if (this->entity == nullptr)
 	{
@@ -62,9 +66,11 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 		this->addChild(this->dialogueChoiceOverride);
 	}
 
-	this->iconContainer->addChild(this->cardGlow);
-	this->iconContainer->addChild(this->cardSprite);
-	this->iconNode->addChild(this->iconContainer);
+	this->undefeatedContainer->addChild(cardGlow);
+	this->undefeatedContainer->addChild(overheadSprite);
+	this->defeatedContainer->addChild(overheadSpriteDefeated);
+	this->iconNode->addChild(this->undefeatedContainer);
+	this->iconNode->addChild(this->defeatedContainer);
 	this->addChild(this->dialogueStringNode);
 	this->addChild(this->iconNode);
 
@@ -98,20 +104,23 @@ void HexusBehaviorBase::onEnter()
 		this->hackParticles4->accelerate(1.0f);
 	}
 
-	if (this->getWins() > 0)
-	{
-		this->iconContainer->setVisible(false);
-	}
-	else
-	{
-		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->iconNode));
-		
-		this->iconContainer->runAction(RepeatForever::create(Sequence::create(
-			EaseSineInOut::create(MoveTo::create(2.0f, Vec2(0.0f, -16.0f))),
-			EaseSineInOut::create(MoveTo::create(2.0f, Vec2(0.0f, 0.0f))),
-			nullptr
-		)));
-	}
+	bool wasDefeated = this->getWins() > 0;
+
+	this->undefeatedContainer->setVisible(!wasDefeated);
+	this->defeatedContainer->setVisible(wasDefeated);
+
+	ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->iconNode));
+	
+	this->defeatedContainer->runAction(RepeatForever::create(Sequence::create(
+		EaseSineInOut::create(MoveTo::create(2.0f, Vec2(0.0f, -16.0f))),
+		EaseSineInOut::create(MoveTo::create(2.0f, Vec2(0.0f, 0.0f))),
+		nullptr
+	)));
+	this->undefeatedContainer->runAction(RepeatForever::create(Sequence::create(
+		EaseSineInOut::create(MoveTo::create(2.0f, Vec2(0.0f, -16.0f))),
+		EaseSineInOut::create(MoveTo::create(2.0f, Vec2(0.0f, 0.0f))),
+		nullptr
+	)));
 }
 
 void HexusBehaviorBase::initializePositions()
@@ -161,7 +170,8 @@ void HexusBehaviorBase::addWin()
 		this->giveItems();
 	}
 
-	this->iconContainer->setVisible(false);
+	this->undefeatedContainer->setVisible(false);
+	this->defeatedContainer->setVisible(true);
 
 	SaveManager::SaveProfileData("HEXUS_WINS_" + this->getWinLossSaveKey(), Value(wins));
 }
