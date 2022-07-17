@@ -29,6 +29,8 @@ ConfirmationMenu* ConfirmationMenu::create()
 
 ConfirmationMenu::ConfirmationMenu()
 {
+	this->previousFocus = nullptr;
+	
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 
@@ -150,6 +152,9 @@ void ConfirmationMenu::showMessage(LocalizedString* confirmationMessage, std::fu
 	this->onCancelCallback = cancelCallback;
 
 	this->setVisible(true);
+	
+	this->previousFocus = GameUtils::getFocusedNode();
+	GameUtils::focus(this);
 }
 
 void ConfirmationMenu::confirm()
@@ -162,6 +167,7 @@ void ConfirmationMenu::confirm()
 		}
 	}
 
+	GameUtils::focus(this->previousFocus);
 	NotificationEvents::TriggerConfirmationEnd();
 	
 	this->setVisible(false);
@@ -177,6 +183,7 @@ void ConfirmationMenu::close()
 		}
 	}
 	
+	GameUtils::focus(this->previousFocus);
 	NotificationEvents::TriggerConfirmationEnd();
 
 	this->setVisible(false);

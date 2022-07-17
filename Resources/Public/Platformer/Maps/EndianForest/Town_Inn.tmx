@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="26" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="833">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="26" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="833">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -191,7 +191,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="770" name="Generic/ShelfBar1" type="decor" x="797.59" y="115.752" width="1135" height="753"/>
+  <object id="770" name="Generic/Shelf1" type="decor" x="797.59" y="115.752" width="1135" height="753"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -244,32 +244,32 @@
     <property name="transition" value="inn"/>
    </properties>
   </object>
-  <object id="826" name="shop-item" type="object" x="1030.52" y="250.119" width="64" height="64">
+  <object id="826" name="shop-item" type="object" x="1052.52" y="150.119" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-polyphemus"/>
    </properties>
   </object>
-  <object id="827" name="shop-item" type="object" x="1323.85" y="250.119" width="64" height="64">
+  <object id="827" name="shop-item" type="object" x="1345.85" y="150.119" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-polyphemus"/>
    </properties>
   </object>
-  <object id="828" name="shop-item" type="object" x="1605.85" y="250.119" width="64" height="64">
+  <object id="828" name="shop-item" type="object" x="1627.85" y="150.119" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-polyphemus"/>
    </properties>
   </object>
-  <object id="829" name="shop-item" type="object" x="1031.38" y="534.365" width="64" height="64">
+  <object id="829" name="shop-item" type="object" x="1053.38" y="434.365" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-polyphemus"/>
    </properties>
   </object>
-  <object id="830" name="shop-item" type="object" x="1323.85" y="534.365" width="64" height="64">
+  <object id="830" name="shop-item" type="object" x="1345.85" y="434.365" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-polyphemus"/>
    </properties>
   </object>
-  <object id="831" name="shop-item" type="object" x="1605.85" y="534.365" width="64" height="64">
+  <object id="831" name="shop-item" type="object" x="1627.85" y="434.365" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-polyphemus"/>
    </properties>

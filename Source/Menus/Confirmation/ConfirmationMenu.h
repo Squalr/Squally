@@ -38,6 +38,8 @@ private:
 	void confirm();
 	void close();
 
+	cocos2d::Node* previousFocus = nullptr;
+
 	cocos2d::Sprite* confirmWindow = nullptr;
 	LocalizedLabel* confirmationLabel = nullptr;
 	ClickableNode* closeButton = nullptr;
