@@ -2,7 +2,7 @@
 
 #include "Events/CombatEvents.h"
 #include "Engine/Camera/GameCamera.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -33,7 +33,7 @@ Punch::Punch(int damageMin, int damageMax, float attackDuration, float recoverDu
 		recoverDuration
 	)
 {
-	this->punchSound = Sound::create(SoundResources::Platformer_Physical_Punches_Punch7);
+	this->punchSound = WorldSound::create(SoundResources::Platformer_Physical_Punches_Punch7);
 
 	this->addChild(this->punchSound);
 }

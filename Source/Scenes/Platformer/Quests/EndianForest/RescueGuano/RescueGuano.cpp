@@ -171,7 +171,7 @@ void RescueGuano::runRescueSequencePt3()
 				SoundResources::Notifications_NotificationGood1
 			));
 		},
-		Voices::GetNextVoiceMedium(),
+		Voices::GetNextVoiceLong(),
 		true
 	));
 }

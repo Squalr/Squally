@@ -2,7 +2,7 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-class Sound;
+class WorldSound;
 
 class Pound : public PlatformerAttack
 {
@@ -26,7 +26,7 @@ private:
 	
 	PlatformerAttack* cloneInternal() override;
 
-	Sound* punchSound = nullptr;
+	WorldSound* punchSound = nullptr;
 
 	static const float DamageMultiplier;
 };

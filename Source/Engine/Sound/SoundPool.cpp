@@ -11,7 +11,7 @@
 
 using namespace cocos2d;
 
-const int SoundPool::MaxConcurrentSounds = 16;
+const int SoundPool::MaxConcurrentSounds = 64;
 SoundPool* SoundPool::Instance = nullptr;
 
 void SoundPool::RegisterGlobalNode()
@@ -95,7 +95,7 @@ int SoundPool::allocSound(const std::string& soundResource, sf::Sound*& outSound
 
 	outSound = nullptr;
 	this->assignedSoundIds[outSound] = SoundBase::InvalidSoundId;
-	return SoundBase::InvalidSoundId ;
+	return SoundBase::InvalidSoundId;
 }
 
 bool SoundPool::allocSoundInternal(const std::string& soundResource, int index)

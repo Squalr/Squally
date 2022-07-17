@@ -109,8 +109,10 @@ void SoundBase::play(bool repeat, float startDelay)
 			
 			if (this->soundRef != nullptr)
 			{
+				float volume = this->getVolume();
+
 				this->soundRef->setLoop(repeat);
-				this->soundRef->setVolume(this->getVolume());
+				this->soundRef->setVolume(volume);
 				this->soundRef->play();
 			}
 		}),

@@ -3,7 +3,7 @@
 #include "Events/CombatEvents.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Localization/ConstantString.h"
-#include "Engine/Sound/Sound.h"
+#include "Engine/Sound/WorldSound.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -36,7 +36,7 @@ Pound::Pound(int damageMin, int damageMax, float attackDuration, float recoverDu
 		recoverDuration
 	)
 {
-	this->punchSound = Sound::create(SoundResources::Platformer_Physical_Punches_Punch7);
+	this->punchSound = WorldSound::create(SoundResources::Platformer_Physical_Punches_Punch7);
 
 	this->setDamageMultiplier(Pound::DamageMultiplier);
 
