@@ -156,12 +156,14 @@ void EntityCollisionBehaviorBase::warpToPosition(Vec3 position, bool warpCamera)
 void EntityCollisionBehaviorBase::enableNormalPhysics()
 {
 	this->movementCollision->setGravityEnabled(true);
+	this->movementCollision->setPhysicsEnabled(true);
 	this->movementCollision->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
 }
 
 void EntityCollisionBehaviorBase::enableWaterPhysics()
 {
 	this->movementCollision->setGravityEnabled(false);
+	this->movementCollision->setPhysicsEnabled(true);
 	this->movementCollision->setVerticalDampening(EntityCollisionBehaviorBase::SwimVerticalDrag);
 }
 

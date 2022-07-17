@@ -31,7 +31,7 @@ SmartNode::SmartNode()
 
 SmartNode::~SmartNode()
 {
-	this->removeNonGlobalListeners();
+	this->removeAllListeners();
 }
 
 void SmartNode::onEnter()
@@ -55,7 +55,7 @@ void SmartNode::onExit()
 {
 	super::onExit();
 
-	this->removeNonGlobalListeners();
+	this->removeAllListeners();
 }
 
 void SmartNode::onReenter()

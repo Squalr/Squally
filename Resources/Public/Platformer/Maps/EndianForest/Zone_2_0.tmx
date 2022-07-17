@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="887">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="87" nextobjectid="890">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -317,11 +317,6 @@
   <object id="826" name="blue-grass" type="terrain" x="3220" y="2972">
    <polygon points="-334.518,-421.607 -678.307,-426.688 -1003.54,-720.376 -1414.66,-928.777 -1976.22,-927.197 -1955.1,-1366.39 -1717.4,-1609.52 -1487.78,-3098.19 -3295.44,-3114.95 -3301.53,319.88 -424.36,313.63 -284.619,-285.314"/>
   </object>
-  <object id="875" name="caverns" type="terrain" x="2710.19" y="4870" width="5267.63" height="684">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="85" name="objects -1">
   <properties>
@@ -364,6 +359,16 @@
   <object id="828" name="water" type="object" x="-115.65" y="2581.73" width="14743.3" height="2896.42">
    <properties>
     <property name="colllision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="86" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="889" name="caverns" type="terrain" x="2710.19" y="4870" width="5267.63" height="684">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

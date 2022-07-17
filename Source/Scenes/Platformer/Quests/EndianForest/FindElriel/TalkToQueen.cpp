@@ -119,9 +119,9 @@ void TalkToQueen::runCinematicSequence()
 			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_A_HowDoWeGetToTheRuins::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 			),
 			[=]()
 			{
@@ -134,9 +134,9 @@ void TalkToQueen::runCinematicSequence()
 			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_B_HowDareYou::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 			),
 			[=]()
 			{
@@ -150,9 +150,9 @@ void TalkToQueen::runCinematicSequence()
 				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 			),
 			[=]()
 			{
@@ -166,9 +166,9 @@ void TalkToQueen::runCinematicSequence()
 				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 			),
 			[=]()
 			{
@@ -182,9 +182,9 @@ void TalkToQueen::runCinematicSequence()
 				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 			),
 			[=]()
 			{
@@ -198,9 +198,9 @@ void TalkToQueen::runCinematicSequence()
 				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 			),
 			[=]()
 			{
@@ -224,9 +224,9 @@ void TalkToQueen::setPostText()
 					->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-					DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+					DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 				),
 				[=]()
 				{
