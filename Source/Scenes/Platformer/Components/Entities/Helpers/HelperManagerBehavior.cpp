@@ -181,7 +181,7 @@ const std::string& HelperManagerBehavior::getHelperComponent(const std::string& 
 {
 	static const std::string Empty = "";
 
-	if (this->componentMap.find(helperName) == this->componentMap.end())
+	if (this->componentMap.find(helperName) != this->componentMap.end())
 	{
 		return this->componentMap[helperName];
 	}
