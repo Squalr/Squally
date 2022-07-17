@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="1074">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="1074">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -269,7 +269,7 @@
    <properties>
     <property name="map" value="EndianForest/Town_Inn"/>
     <property name="quest" value="business-hours"/>
-    <property name="quest-line" value="find-elriel"/>
+    <property name="quest-line" value="business-hours"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
@@ -780,7 +780,7 @@
    <properties>
     <property name="map" value="EndianForest/Town_Alch"/>
     <property name="quest" value="business-hours"/>
-    <property name="quest-line" value="find-elriel"/>
+    <property name="quest-line" value="business-hours"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
@@ -788,7 +788,7 @@
    <properties>
     <property name="map" value="EndianForest/Town_Smith"/>
     <property name="quest" value="business-hours"/>
-    <property name="quest-line" value="find-elriel"/>
+    <property name="quest-line" value="business-hours"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
