@@ -19,6 +19,7 @@
 using namespace cocos2d;
 
 const std::string Train::MapKey = "train";
+const std::string Train::PropertyColor = "color";
 
 Train* Train::create(cocos2d::ValueMap& properties)
 {
@@ -40,7 +41,7 @@ Train::Train(cocos2d::ValueMap& properties) : super(properties, CSize(1083.0f, 9
 		CollisionObject::Properties(false, false)
 	);
 
-	this->trainHead->playAnimation("Large_Idle", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(0.5f, 0.0f, true));
+	this->trainHead->playAnimation("Large_Idle_On", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(0.5f, 0.0f, true));
 
 	this->frontNode->addChild(this->bottomCollision);
 	this->frontNode->addChild(this->trainHead);

@@ -109,7 +109,10 @@
   </object>
   <object id="1061" name="train" type="object" x="1981.53" y="1876.38" width="1083" height="931">
    <properties>
+    <property name="cabin-size" value="large"/>
+    <property name="color" value="red"/>
     <property name="direction" value="left"/>
+    <property name="segments" value="coal,wagon-l-red,"/>
    </properties>
   </object>
   <object id="1062" name="edge-portal" type="object" x="-934.383" y="-753.941" width="199.918" height="3440">

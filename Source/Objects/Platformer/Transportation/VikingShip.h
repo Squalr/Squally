@@ -37,6 +37,4 @@ private:
 
 	CollisionObject* bottomCollision = nullptr;
 	SmartAnimationNode* ship = nullptr;
-
-	static const std::string PropertyColor;
 };
