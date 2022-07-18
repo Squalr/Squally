@@ -18,7 +18,7 @@ class SpriterAnimationTimeline;
 class SpriterAnimationNode : public SpriterAnimationPart
 {
 public:
-	static SpriterAnimationNode* create(const std::string& animationResource);
+	static SpriterAnimationNode* create(const std::string& animationResource, const std::string& entityName);
 
 	// For use by animation timelines
 	void advanceTimelineTime(float dt, float timelineMax);
@@ -40,8 +40,11 @@ public:
 	const std::map<std::string, SpriterAnimationSprite*>& getCurrentSpriteMap();
 	void setFlippedX(bool isFlippedX);
 
+	static const std::string DefaultAnimationEntityName;
+	static const std::string DefaultAnimationName;
+	
 protected:
-	SpriterAnimationNode(const std::string& animationResource);
+	SpriterAnimationNode(const std::string& animationResource, const std::string& entityName);
 	virtual ~SpriterAnimationNode();
 
 private:
@@ -71,7 +74,4 @@ private:
 	float previousTimelineTime = 0.0f;
 	float timelineTime = 0.0f;
 	bool isRepeating = true;
-	
-	static const std::string DefaultAnimationEntityName;
-	static const std::string DefaultAnimationName;
 };

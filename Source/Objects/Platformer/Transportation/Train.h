@@ -5,6 +5,20 @@
 class CollisionObject;
 class SmartAnimationNode;
 
+enum class LocomotiveSize
+{
+	Large,
+	Medium,
+	Small,
+};
+
+enum class TrainColor
+{
+	Red,
+	Blue,
+	Black,
+};
+
 class Train : public MountBase
 {
 public:
@@ -28,6 +42,8 @@ protected:
 
 private:
 	typedef MountBase super;
+
+	void positionTrainSegments();
 	
 	enum class CartColor
 	{
@@ -36,7 +52,17 @@ private:
 	};
 
 	CollisionObject* bottomCollision = nullptr;
-	SmartAnimationNode* trainHead = nullptr;
+	SmartAnimationNode* locomotive = nullptr;
+	std::vector<std::tuple<SmartAnimationNode*, float>> segments;
 
+	bool isIdling = false;
+	TrainColor color;
+	LocomotiveSize locomotiveSize;
+
+	MountDirection cachedMountDirection = MountDirection::Left;
+	
+	static const std::string PropertyLocomotiveSize;
 	static const std::string PropertyColor;
+	static const std::string PropertySegments;
+	static const std::string PropertyIsIdling;
 };

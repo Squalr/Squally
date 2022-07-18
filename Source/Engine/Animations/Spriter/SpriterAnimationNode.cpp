@@ -16,16 +16,16 @@ using namespace cocos2d;
 const std::string SpriterAnimationNode::DefaultAnimationEntityName = "Entity";
 const std::string SpriterAnimationNode::DefaultAnimationName = "Idle";
 
-SpriterAnimationNode* SpriterAnimationNode::create(const std::string& animationResource)
+SpriterAnimationNode* SpriterAnimationNode::create(const std::string& animationResource, const std::string& entityName)
 {
-	SpriterAnimationNode* instance = new SpriterAnimationNode(animationResource);
+	SpriterAnimationNode* instance = new SpriterAnimationNode(animationResource, entityName);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource)
+SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource, const std::string& entityName)
 {
 	this->timeline = SpriterAnimationTimeline::getInstance(animationResource);
 	this->currentAnimation = SpriterAnimationNode::DefaultAnimationName;
@@ -36,7 +36,7 @@ SpriterAnimationNode::SpriterAnimationNode(const std::string& animationResource)
 
 	this->buildBones(spriterData);
 	this->buildSprites(spriterData, animationResource);
-	this->setCurrentEntity(SpriterAnimationNode::DefaultAnimationEntityName);
+	this->setCurrentEntity(entityName);
 }
 
 SpriterAnimationNode::~SpriterAnimationNode()

@@ -39,7 +39,7 @@ SmartAnimationNode::SmartAnimationNode(std::string animationResource, std::strin
 
 	if (UseNewAnimationSystem)
 	{
-		this->spriterAnimation = SpriterAnimationNode::create(animationResource);
+		this->spriterAnimation = SpriterAnimationNode::create(animationResource, entityName);
 		this->animationNode = nullptr;
 	}
 	else

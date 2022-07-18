@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="143" nextobjectid="1068">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="143" nextobjectid="1069">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -23,7 +23,7 @@
    </properties>
    <polygon points="-5006.03,-380.941 7459.43,-380.1 7445.06,221.339 -4984.18,218.891"/>
   </object>
-  <object id="1067" name="mines" type="texture" x="-2966.54" y="-1853.84" width="15117.1" height="8763.69"/>
+  <object id="1067" name="mines" type="texture" x="-2974.54" y="-1845.84" width="15117.1" height="8763.69"/>
  </objectgroup>
  <objectgroup id="67" name="water -12">
   <properties>
@@ -64,6 +64,11 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
+  <object id="1068" name="rails" type="terrain" x="8372.37" y="1481.27" width="2121.92" height="92">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="82" name="terrain -12 fg">
   <properties>
@@ -86,21 +91,21 @@
   <object id="1004" name="pully-horizontal" type="object" x="7928.03" y="2313.47" width="391" height="124"/>
   <object id="1005" name="mine-wheel" type="object" x="7770.97" y="2156.5" width="414" height="415"/>
   <object id="1006" name="mine-claw" type="object" x="8528" y="1301" width="200" height="1350"/>
-  <object id="1038" name="mine-cart-lootable" type="object" x="2646.39" y="548.121" width="240" height="184">
+  <object id="1038" name="mine-cart-lootable" type="object" x="9177.54" y="1296.36" width="240" height="184">
    <properties>
     <property name="color" value="brown"/>
     <property name="fill" value="coal"/>
     <property name="reward-pool" value="dm-coal"/>
    </properties>
   </object>
-  <object id="1039" name="mine-cart-lootable" type="object" x="3196.39" y="548.121" width="240" height="184">
+  <object id="1039" name="mine-cart-lootable" type="object" x="9727.54" y="1296.36" width="240" height="184">
    <properties>
     <property name="color" value="blue"/>
     <property name="fill" value="none"/>
     <property name="reward-pool" value="none"/>
    </properties>
   </object>
-  <object id="1040" name="mine-cart-lootable" type="object" x="2081.39" y="546.121" width="240" height="184">
+  <object id="1040" name="mine-cart-lootable" type="object" x="8612.54" y="1294.36" width="240" height="184">
    <properties>
     <property name="color" value="blue"/>
     <property name="fill" value="diamond"/>
@@ -109,13 +114,14 @@
   </object>
   <object id="1061" name="train" type="object" x="1981.53" y="1876.38" width="1083" height="931">
    <properties>
-    <property name="cabin-size" value="large"/>
     <property name="color" value="red"/>
     <property name="direction" value="left"/>
-    <property name="segments" value="coal,wagon-l-red,"/>
+    <property name="idling" type="bool" value="true"/>
+    <property name="locomotive-size" value="large"/>
+    <property name="segments" value="coal,wagon-l,coal,"/>
    </properties>
   </object>
-  <object id="1062" name="edge-portal" type="object" x="-934.383" y="-753.941" width="199.918" height="3440">
+  <object id="1062" name="edge-portal" type="object" x="-934.383" y="-753.941" width="199.918" height="6584">
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="CastleValgrind/Zone_1_0"/>
