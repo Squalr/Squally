@@ -148,11 +148,11 @@ Train::Train(cocos2d::ValueMap& properties) : super(properties, CSize(1083.0f, 9
 
 	if (this->isIdling)
 	{
-		this->locomotive->playAnimation("Large_Idle_On", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(0.5f, 0.0f, true));
+		this->locomotive->playAnimation("Idle_On", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(0.5f, 0.0f, true));
 	}
 	else
 	{
-		this->locomotive->playAnimation("Large_Idle", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(0.5f, 0.0f, true));
+		this->locomotive->playAnimation("Idle", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(0.5f, 0.0f, true));
 	}
 
 	this->frontNode->addChild(this->bottomCollision);
@@ -243,7 +243,15 @@ void Train::mount(PlatformerEntity* interactingEntity)
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString()
 	));
 	
-	this->locomotive->playAnimation("Large_Moving_On", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.0f, true));
+	this->locomotive->playAnimation("Moving_On", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.0f, true));
+	
+	for (const auto& segment : this->segments)
+	{
+		SmartAnimationNode* segmentAnimations = std::get<0>(segment);
+		
+		segmentAnimations->playAnimation("Moving", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.0f, true));
+	}
+
 	this->faceEntityTowardsDirection();
 
 	this->isMoving = true;

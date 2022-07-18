@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="143" nextobjectid="1069">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="143" nextobjectid="1070">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -51,15 +51,14 @@
   </properties>
   <object id="934" name="mines" type="terrain" x="8278.31" y="1478" width="2131.38" height="4372"/>
   <object id="1015" name="mines" type="terrain" x="6270.06" y="323.239" width="589.262" height="3923.69"/>
-  <object id="1064" name="mines" type="terrain" x="-99.54" y="2371.15" width="4493.08" height="1475.69"/>
-  <object id="1065" name="mines" type="terrain" x="4401.46" y="-45.845" width="973.08" height="3899.69"/>
+  <object id="1064" name="mines" type="terrain" x="-99.54" y="2371.15" width="5050.66" height="1475.69"/>
  </objectgroup>
  <objectgroup id="136" name="rails -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1013" name="rails" type="terrain" x="-69.0836" y="2355.36" width="4332.44" height="92">
+  <object id="1013" name="rails" type="terrain" x="-69.0836" y="2355.36" width="4956.68" height="92">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -75,6 +74,7 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1069" name="mines" type="terrain" x="4916.61" y="-45.845" width="457.928" height="3899.69"/>
  </objectgroup>
  <objectgroup id="91" name="decor -12">
   <properties>
@@ -117,8 +117,8 @@
     <property name="color" value="red"/>
     <property name="direction" value="left"/>
     <property name="idling" type="bool" value="true"/>
-    <property name="locomotive-size" value="large"/>
-    <property name="segments" value="coal,wagon-l,coal,"/>
+    <property name="locomotive-size" value="medium"/>
+    <property name="segments" value="coal,wagon-s,"/>
    </properties>
   </object>
   <object id="1062" name="edge-portal" type="object" x="-934.383" y="-753.941" width="199.918" height="6584">
@@ -899,7 +899,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor midground">
+ <objectgroup id="22" name="decor midground" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
