@@ -127,6 +127,7 @@
 #include "Objects/Platformer/Switches/Trigger.h"
 #include "Objects/Platformer/Transportation/Airship.h"
 #include "Objects/Platformer/Transportation/Ship.h"
+#include "Objects/Platformer/Transportation/Train.h"
 #include "Objects/Platformer/Transportation/VikingShip.h"
 #include "Objects/Platformer/Traps/ElectricityBeam/ElectricityBeam.h"
 #include "Objects/Platformer/Traps/FireBird/FireBird.h"

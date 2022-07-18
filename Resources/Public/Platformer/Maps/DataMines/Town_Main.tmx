@@ -59,7 +59,7 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1013" name="rails" type="terrain" x="-69.0836" y="2355.36" width="3112.44" height="92">
+  <object id="1013" name="rails" type="terrain" x="-69.0836" y="2355.36" width="4332.44" height="92">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -107,7 +107,7 @@
     <property name="reward-pool" value="dm-diamond"/>
    </properties>
   </object>
-  <object id="1061" name="viking-ship" type="object" x="1993.53" y="1440.38" width="1083" height="931">
+  <object id="1061" name="train" type="object" x="1981.53" y="1876.38" width="1083" height="931">
    <properties>
     <property name="direction" value="left"/>
    </properties>
@@ -633,7 +633,7 @@
   <object id="935" name="mines" type="terrain" x="9258.3" y="1878" width="1651.38" height="3228"/>
   <object id="997" name="ship-alt" type="terrain" x="4647.27" y="3730.91" width="1770.84" height="130.18"/>
  </objectgroup>
- <objectgroup id="62" name="decor -3">
+ <objectgroup id="62" name="decor -3" visible="0">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>

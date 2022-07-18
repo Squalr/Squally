@@ -202,6 +202,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Torch::MapKey] = [=](ValueMap properties) { return (GameObject*)Torch::create(properties); };
 	this->deserializers[TrackingEye::MapKey] = [=](ValueMap properties) { return (GameObject*)TrackingEye::create(properties); };
 	this->deserializers[TrackingEyeController::MapKey] = [=](ValueMap properties) { return (GameObject*)TrackingEyeController::create(properties); };
+	this->deserializers[Train::MapKey] = [=](ValueMap properties) { return (GameObject*)Train::create(properties); };
 	this->deserializers[TrapDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)TrapDoor::create(properties); };
 	this->deserializers[TrapDoorFrame::MapKey] = [=](ValueMap properties) { return (GameObject*)TrapDoorFrame::create(properties); };
 	this->deserializers[Trigger::MapKey] = [=](ValueMap properties) { return (GameObject*)Trigger::create(properties); };
