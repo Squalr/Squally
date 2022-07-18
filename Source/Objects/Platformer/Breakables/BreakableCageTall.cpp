@@ -9,7 +9,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
@@ -43,10 +43,10 @@ BreakableCageTall::BreakableCageTall(ValueMap& properties, int requiredHits) : s
 	this->cageSideTop->addChild(Sprite::create(ObjectResources::Breakables_CageTallSideTop));
 	this->cageTop->addChild(Sprite::create(ObjectResources::Breakables_CageTop));
 
-	this->cageBottom->setPhysicsEnabled(false);
-	this->cageSideBottom->setPhysicsEnabled(false);
-	this->cageSideTop->setPhysicsEnabled(false);
-	this->cageTop->setPhysicsEnabled(false);
+	this->cageBottom->setPhysicsFlagEnabled(false);
+	this->cageSideBottom->setPhysicsFlagEnabled(false);
+	this->cageSideTop->setPhysicsFlagEnabled(false);
+	this->cageTop->setPhysicsFlagEnabled(false);
 
 	this->contentNode->addChild(this->cageBottom);
 	this->contentNode->addChild(this->cagedContentNode);
@@ -107,10 +107,10 @@ void BreakableCageTall::onBreak()
 	super::onBreak();
 	
 	this->explosion->playAnimation(FXResources::ExplosionNormal_Explosion_0000, 0.035f, true);
-	this->cageBottom->setPhysicsEnabled(true);
-	this->cageSideBottom->setPhysicsEnabled(true);
-	this->cageSideTop->setPhysicsEnabled(true);
-	this->cageTop->setPhysicsEnabled(true);
+	this->cageBottom->setPhysicsFlagEnabled(true);
+	this->cageSideBottom->setPhysicsFlagEnabled(true);
+	this->cageSideTop->setPhysicsFlagEnabled(true);
+	this->cageTop->setPhysicsFlagEnabled(true);
 	this->breakSound->play();
 
 	this->cageBottom->setVelocity(Vec2(-12800.0f, 7600.0f));

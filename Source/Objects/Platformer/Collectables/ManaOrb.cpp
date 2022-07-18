@@ -48,7 +48,7 @@ void ManaOrb::onEnter()
 {
 	super::onEnter();
 
-	this->collectableCollision->setGravityEnabled(false);
+	this->collectableCollision->setGravityFlagEnabled(false);
 	this->manaOrb->start();
 }
 

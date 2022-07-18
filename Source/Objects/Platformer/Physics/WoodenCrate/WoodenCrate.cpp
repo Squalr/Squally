@@ -12,7 +12,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"

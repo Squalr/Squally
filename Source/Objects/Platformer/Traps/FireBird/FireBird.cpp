@@ -14,7 +14,7 @@
 #include "Objects/Platformer/Traps/FireBird/FireBirdGenericPreview.h"
 #include "Objects/Platformer/Traps/FireBird/FireBirdUpdateTimerPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -193,14 +193,14 @@ NO_OPTIMIZE void FireBird::updateSpikes(float dt)
 		this->spikeCollision->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
-				this->spikeCollision->setPhysicsEnabled(true);
+				this->spikeCollision->setPhysicsFlagEnabled(true);
 			}),
 			MoveTo::create(0.425f, this->isFlippedY ? -FireBird::SpikesUpPosition : FireBird::SpikesUpPosition),
 			DelayTime::create(StayUpDuration),
 			MoveTo::create(0.425f, this->isFlippedY ? -FireBird::SpikesDownPosition : FireBird::SpikesDownPosition),
 			CallFunc::create([=]()
 			{
-				this->spikeCollision->setPhysicsEnabled(false);
+				this->spikeCollision->setPhysicsFlagEnabled(false);
 			}),
 			nullptr
 		));

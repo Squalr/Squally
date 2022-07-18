@@ -2,10 +2,10 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Physics/EnginePhysicsTypes.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityCollisionBehaviorBase.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/EntityResources.h"
 

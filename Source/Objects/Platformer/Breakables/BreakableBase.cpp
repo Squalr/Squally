@@ -10,7 +10,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Deserializers/Platformer/PlatformerObjectDeserializer.h"
 #include "Objects/Platformer/Collectables/SpawnPools/SpawnPool.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 using namespace cocos2d;
 
@@ -68,7 +68,7 @@ void BreakableBase::initializeListeners()
 			this->onBreak();
 		}
 
-		this->breakableCollision->setPhysicsEnabled(false);
+		this->breakableCollision->setPhysicsFlagEnabled(false);
 
 		return CollisionResult::DoNothing;
 	});

@@ -15,7 +15,7 @@
 #include "Objects/Platformer/Traps/SpikedLog/SpikedLogGenericPreview.h"
 #include "Objects/Platformer/Traps/SpikedLog/SpikedLogSetRotationPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -140,7 +140,7 @@ void SpikedLog::onFrameComplete()
 
 NO_OPTIMIZE int SpikedLog::incrementSpikedLogAnimation(int count, int max)
 {
-	this->spikeCollision->setPhysicsEnabled(true);
+	this->spikeCollision->setPhysicsFlagEnabled(true);
 	float offsetX = 0;
 
 	switch(count)
@@ -177,7 +177,7 @@ NO_OPTIMIZE int SpikedLog::incrementSpikedLogAnimation(int count, int max)
 		}
 		default:
 		{
-			this->spikeCollision->setPhysicsEnabled(false);
+			this->spikeCollision->setPhysicsFlagEnabled(false);
 		}
 	}
 

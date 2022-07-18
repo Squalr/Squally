@@ -14,7 +14,7 @@
 #include "Menus/Interact/InteractMenu.h"
 #include "Objects/Platformer/ItemPools/ChestPools/ChestPoolDeserializer.h"
 #include "Objects/Platformer/ItemPools/ErrorPool.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 

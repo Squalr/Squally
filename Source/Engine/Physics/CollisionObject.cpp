@@ -66,13 +66,14 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	this->currentCollisions = &this->collisionsRed;
 	this->previousCollisions = &this->collisionsBlack;
 	this->collisionProperties = collisionProperties;
-	this->gravityEnabled = collisionProperties.isDynamic;
 	this->gravity = Vec2(0.0f, CollisionObject::DefaultGravity);
 	this->horizontalDampening = CollisionObject::DefaultHorizontalDampening;
 	this->verticalDampening = CollisionObject::DefaultVerticalDampening;
 	this->debugColor = debugColor;
 	this->collisionDepth = CollisionObject::CollisionZThreshold;
 	this->universeId = CollisionObject::UniverseId;
+
+	this->setGravityFlagEnabled(collisionProperties.isDynamic, (int)EngineGravityFlags::Default);
 
 	for (int shift = 0; shift <= sizeof(int) * 8; shift++)
 	{
@@ -147,13 +148,13 @@ void CollisionObject::update(float dt)
 
 void CollisionObject::runPhysics(float dt)
 {
-	if (!this->physicsEnabled || this->isDespawned())
+	if (!this->getPhysicsEnabled() || this->isDespawned())
 	{
 		return;
 	}
 
 	// Apply gravity & accel
-	this->velocity += (this->gravityEnabled && !this->gravityDisabledOverride) ? (this->gravity * dt) : Vec2::ZERO;
+	this->velocity += (this->getGravityEnabled()) ? (this->gravity * dt) : Vec2::ZERO;
 	this->velocity += this->acceleration * dt;
 
 	if (this->velocity != Vec2::ZERO)
@@ -183,7 +184,7 @@ void CollisionObject::runPhysics(float dt)
 	this->previousCollisions = this->currentCollisions;
 	this->currentCollisions = this->previousCollisions == &this->collisionsBlack ? &this->collisionsRed : &this->collisionsBlack;
 	
-	if (!this->collisionEnabled)
+	if (!this->getCollisionEnabled())
 	{
 		return;
 	}
@@ -253,34 +254,49 @@ void CollisionObject::setCollisionDepth(float collisionDepth)
 	this->debugInfoSpawned = false;
 }
 
-void CollisionObject::setPhysicsEnabled(bool enabled)
+void CollisionObject::setGravityFlagEnabled(bool isEnabled, int flagIndex)
 {
-	this->physicsEnabled = enabled;
+	gravityDisabledFlags = MathUtils::setBit(gravityDisabledFlags, flagIndex, !isEnabled);
 }
 
-void CollisionObject::setCollisionEnabled(bool enabled)
+bool CollisionObject::getGravityFlagEnabled(int flagIndex)
 {
-	this->collisionEnabled = enabled;
-}
-
-void CollisionObject::setGravityEnabled(bool isEnabled)
-{
-	this->gravityEnabled = isEnabled;
-}
-
-void CollisionObject::setGravityDisabledOverride(bool isDisabled)
-{
-	this->gravityDisabledOverride = isDisabled;
+	return !MathUtils::getBit(gravityDisabledFlags, flagIndex);
 }
 
 bool CollisionObject::getGravityEnabled()
 {
-	return this->gravityEnabled;
+	return gravityDisabledFlags == 0;
 }
 
-bool CollisionObject::getGravityDisabledOverride()
+void CollisionObject::setPhysicsFlagEnabled(bool isEnabled, int flagIndex)
 {
-	return this->gravityDisabledOverride;
+	physicsDisabledFlags = MathUtils::setBit(physicsDisabledFlags, flagIndex, !isEnabled);
+}
+
+bool CollisionObject::getPhysicsFlagEnabled(int flagIndex)
+{
+	return !MathUtils::getBit(physicsDisabledFlags, flagIndex);
+}
+
+bool CollisionObject::getPhysicsEnabled()
+{
+	return physicsDisabledFlags == 0;
+}
+
+void CollisionObject::setCollisionFlagEnabled(bool isEnabled, int flagIndex)
+{
+	collisionDisabledFlags = MathUtils::setBit(collisionDisabledFlags, flagIndex, !isEnabled);
+}
+
+bool CollisionObject::getCollisionFlagEnabled(int flagIndex)
+{
+	return !MathUtils::getBit(collisionDisabledFlags, flagIndex);
+}
+
+bool CollisionObject::getCollisionEnabled()
+{
+	return collisionDisabledFlags == 0;
 }
 
 Vec2 CollisionObject::getVelocity()

@@ -112,7 +112,7 @@
     <property name="direction" value="left"/>
    </properties>
   </object>
-  <object id="1062" name="edge-portal" type="object" x="0.041" y="1868.12" width="199.918" height="488.002">
+  <object id="1062" name="edge-portal" type="object" x="-934.383" y="-753.941" width="199.918" height="3440">
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="CastleValgrind/Zone_1_0"/>
@@ -577,7 +577,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="99" name="terrain -3 bg">
+ <objectgroup id="99" name="terrain -3 bg" visible="0">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -624,7 +624,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="103" name="terrain -3 fg">
+ <objectgroup id="103" name="terrain -3 fg" visible="0">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -866,7 +866,7 @@
   </object>
   <object id="808" name="mines" type="terrain" x="6169.1" y="3962" width="3233.44" height="844"/>
  </objectgroup>
- <objectgroup id="104" name="terrain fg">
+ <objectgroup id="104" name="terrain fg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>

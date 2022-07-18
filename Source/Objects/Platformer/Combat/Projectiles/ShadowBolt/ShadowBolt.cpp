@@ -13,7 +13,7 @@
 #include "Objects/Platformer/Combat/Projectiles/ShadowBolt/ShadowBoltGenericPreview.h"
 #include "Objects/Platformer/Combat/Projectiles/ShadowBolt/ShadowBoltSpeedPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"

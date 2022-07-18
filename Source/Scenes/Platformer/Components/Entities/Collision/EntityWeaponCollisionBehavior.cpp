@@ -6,12 +6,12 @@
 #include "Engine/Animations/AnimationPart.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Physics/EnginePhysicsTypes.h"
 #include "Events/PlatformerEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -45,7 +45,7 @@ void EntityWeaponCollisionBehavior::onDisable()
 	
 	if (this->weaponCollision != nullptr)
 	{
-		this->weaponCollision->setPhysicsEnabled(false);
+		this->weaponCollision->setPhysicsFlagEnabled(false);
 	}
 }
 
@@ -56,7 +56,7 @@ void EntityWeaponCollisionBehavior::enable()
 		return;
 	}
 
-	this->weaponCollision->setPhysicsEnabled(true);
+	this->weaponCollision->setPhysicsFlagEnabled(true);
 }
 
 void EntityWeaponCollisionBehavior::disable()
@@ -66,7 +66,7 @@ void EntityWeaponCollisionBehavior::disable()
 		return;
 	}
 	
-	this->weaponCollision->setPhysicsEnabled(false);
+	this->weaponCollision->setPhysicsFlagEnabled(false);
 }
 
 void EntityWeaponCollisionBehavior::setWeaponCollisionSize(CSize weaponCollisionSize)
@@ -105,6 +105,6 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType)
 	);
 
 	this->weaponCollision->setPosition(this->weaponCollisionOffset);
-	this->weaponCollision->setPhysicsEnabled(false);
+	this->weaponCollision->setPhysicsFlagEnabled(false);
 	mainhand->addTrackingObject(this->weaponCollision);
 }

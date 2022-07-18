@@ -15,7 +15,7 @@
 #include "Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailGenericPreview.h"
 #include "Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailSetAnglePreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ParticleResources.h"
 #include "Resources/ObjectResources.h"

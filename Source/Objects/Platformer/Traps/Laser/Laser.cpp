@@ -14,7 +14,7 @@
 #include "Objects/Platformer/Traps/Laser/LaserCountDownPreview.h"
 #include "Objects/Platformer/Traps/Laser/LaserGenericPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/UIResources.h"
 
@@ -44,7 +44,7 @@ Laser::Laser(ValueMap& properties) : super(properties)
 	this->laserAnimation = LaserAnimation::create(height);
 	this->laserCollision = CollisionObject::create(CollisionObject::createBox(CSize(21.0f, height)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
-	this->laserCollision->setPhysicsEnabled(false);
+	this->laserCollision->setPhysicsFlagEnabled(false);
 
 	this->addChild(this->laserCollision);
 	this->addChild(this->laserAnimation);
@@ -77,11 +77,11 @@ void Laser::update(float dt)
 		this->laserAnimation->runAnimation(
 		[=]()
 		{
-			this->laserCollision->setPhysicsEnabled(true);
+			this->laserCollision->setPhysicsFlagEnabled(true);
 		},
 		[=]()
 		{
-			this->laserCollision->setPhysicsEnabled(false);
+			this->laserCollision->setPhysicsFlagEnabled(false);
 			this->isRunningAnimation = false;
 		});
 	}

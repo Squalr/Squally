@@ -16,7 +16,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/StoneDoor/StonePuzzleDoorGenericPreview.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"

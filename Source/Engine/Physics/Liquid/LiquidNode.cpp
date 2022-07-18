@@ -47,7 +47,7 @@ LiquidNode::LiquidNode(ValueMap& properties, float surfaceDepth, CollisionType c
 
 	if (GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone)
 	{
-		this->liquidCollision->setPhysicsEnabled(false);
+		this->liquidCollision->setPhysicsFlagEnabled(false);
 	}
 
 	this->liquidCollision->setPositionY(-effectiveOffset / 2.0f);

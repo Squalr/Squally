@@ -97,3 +97,19 @@ bool MathUtils::isInteger(const std::string& str)
 
    return (*p == 0);
 }
+
+int MathUtils::setBit(int value, int bitIndex, bool isSet)
+{
+	// Clear bit
+	value &= ~(1UL << bitIndex);
+
+	// Conditionally set bit
+	value |= (isSet ? 1UL : 0UL) << bitIndex;
+
+	return value;
+}
+
+bool MathUtils::getBit(int value, int bitIndex)
+{
+	return bool((value >> bitIndex) & 1U);
+}

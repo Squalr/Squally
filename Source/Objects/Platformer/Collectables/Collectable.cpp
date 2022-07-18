@@ -10,7 +10,7 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -100,6 +100,6 @@ void Collectable::hideCollectable()
 void Collectable::disableCollection()
 {
 	this->isCollected = true;
-	this->collectableCollision->setPhysicsEnabled(false);
+	this->collectableCollision->setPhysicsFlagEnabled(false);
 	this->hideCollectable();
 }

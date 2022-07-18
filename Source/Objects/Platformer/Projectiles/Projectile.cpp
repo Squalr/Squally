@@ -311,7 +311,7 @@ void Projectile::enable(bool setVisible)
 	this->contentNode->setVisible(setVisible);
 	this->enabled = true;
 	
-	this->collisionObject->setPhysicsEnabled(true);
+	this->collisionObject->setPhysicsFlagEnabled(true);
 }
 
 void Projectile::disable(bool setVisible)
@@ -319,7 +319,7 @@ void Projectile::disable(bool setVisible)
 	this->contentNode->setVisible(setVisible);
 	this->enabled = false;
 
-	this->collisionObject->setPhysicsEnabled(false);
+	this->collisionObject->setPhysicsFlagEnabled(false);
 }
 
 void Projectile::enableUpdate()

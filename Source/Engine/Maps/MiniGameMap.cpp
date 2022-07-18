@@ -14,7 +14,7 @@
 #include "Engine/Maps/MapLayer.h"
 #include "Engine/Maps/TileLayer.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Physics/EnginePhysicsTypes.h"
 #include "Engine/SmartNode.h"
 #include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"

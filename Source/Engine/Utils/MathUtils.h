@@ -14,4 +14,6 @@ public:
 	static int wrappingNormalize(int value, int start, int end);
 	static unsigned char resolveBinaryMathExpression(const std::string& expression);
 	static bool isInteger(const std::string& str);
+	static int setBit(int value, int bitIndex, bool isSet);
+	static bool getBit(int value, int bitIndex);
 };

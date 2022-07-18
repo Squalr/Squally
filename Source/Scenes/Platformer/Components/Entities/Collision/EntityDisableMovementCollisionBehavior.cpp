@@ -43,9 +43,9 @@ void EntityDisableMovementCollisionBehavior::onLoad()
 {
 	this->entity->watchForComponent<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* behavior)
 	{
-		behavior->movementCollision->setPhysicsEnabled(false);
-		behavior->leftCollision->setPhysicsEnabled(false);
-		behavior->rightCollision->setPhysicsEnabled(false);
+		behavior->movementCollision->setPhysicsFlagEnabled(false);
+		behavior->leftCollision->setPhysicsFlagEnabled(false);
+		behavior->rightCollision->setPhysicsFlagEnabled(false);
 	});
 }
 

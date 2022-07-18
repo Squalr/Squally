@@ -16,7 +16,7 @@
 #include "Objects/Platformer/Traps/Icicle/IcicleGenericPreview.h"
 #include "Objects/Platformer/Traps/Icicle/IcicleGetDensityPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"

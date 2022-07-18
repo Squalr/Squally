@@ -16,7 +16,7 @@
 #include "Events/CipherEvents.h"
 #include "Menus/Interact/InteractMenu.h"
 #include "Scenes/Cipher/CipherPuzzleData.h"
-#include "Scenes/Platformer/Level/Physics//PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics//PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/ObjectResources.h"

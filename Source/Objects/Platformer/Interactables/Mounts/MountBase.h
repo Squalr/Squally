@@ -21,7 +21,7 @@ public:
 	void parseDirection();
 
 protected:
-	MountBase(cocos2d::ValueMap& properties, cocos2d::CSize size);
+	MountBase(cocos2d::ValueMap& properties, cocos2d::CSize size, bool updateXOnly = true);
 	virtual ~MountBase();
 
 	void onEnter() override;
@@ -42,6 +42,7 @@ protected:
 	float mountSpeed = 0.0f;
 	bool isMoving = false;
 	bool canMoveOverride = true;
+	bool updateXOnly = true;
 
 	static const std::string PropertyDirection;
 	static const std::string PropertySpeed;

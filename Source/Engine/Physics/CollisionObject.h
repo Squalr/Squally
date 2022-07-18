@@ -5,6 +5,7 @@
 #include "cocos/base/ccTypes.h"
 
 #include "Engine/Events/CollisionMappingEvents.h"
+#include "Engine/Physics/EnginePhysicsTypes.h"
 #include "Engine/Maps/GameObject.h"
 
 typedef int CollisionType;
@@ -83,10 +84,6 @@ public:
 	bool hasCollisionType(CollisionType collisionType);
 	bool hasCollisionWith(CollisionObject* object);
 	bool isCollidingWithSingleGroup();
-	void setGravityEnabled(bool isEnabled);
-	void setGravityDisabledOverride(bool isDisabled);
-	bool getGravityEnabled();
-	bool getGravityDisabledOverride();
 	cocos2d::Vec2 getVelocity();
 	cocos2d::Vec2 getAcceleration();
 	void setVelocity(cocos2d::Vec2 velocity);
@@ -106,8 +103,15 @@ public:
 	bool isCollidingWithType(int collisionType);
 	bool wasCollidingWithType(int collisionType);
 	void setCollisionDepth(float collisionDepth);
-	virtual void setPhysicsEnabled(bool enabled);
-	virtual void setCollisionEnabled(bool enabled);
+	void setGravityFlagEnabled(bool isEnabled, int flagIndex = (int)EngineGravityFlags::Default);
+	bool getGravityFlagEnabled(int flagIndex = (int)EngineGravityFlags::Default);
+	bool getGravityEnabled();
+	void setPhysicsFlagEnabled(bool isEnabled, int flagIndex = (int)EnginePhysicsFlags::Default);
+	bool getPhysicsFlagEnabled(int flagIndex = (int)EnginePhysicsFlags::Default);
+	bool getPhysicsEnabled();
+	void setCollisionFlagEnabled(bool isEnabled, int flagIndex = (int)EngineCollisionFlags::Default);
+	bool getCollisionFlagEnabled(int flagIndex = (int)EngineCollisionFlags::Default);
+	bool getCollisionEnabled();
 	unsigned int getUniverseId();
 
 	static std::vector<cocos2d::Vec2> createCircle(float radius, int segments = 24);
@@ -170,10 +174,13 @@ private:
 	float horizontalDampening = 0.0f;
 	float verticalDampening = 0.0f;
 	float collisionDepth = 0.0f;
-	bool physicsEnabled = true;
-	bool collisionEnabled = true;
-	bool gravityEnabled = true;
-	bool gravityDisabledOverride = false;
+
+	// These are set as flags such that multiple disabled sources can be set (ie disabled from death, mounting, etc).
+	// If any flag is set, the corresponding component is considered to be disabled
+	int physicsDisabledFlags = 0;
+	int collisionDisabledFlags = 0;
+	int gravityDisabledFlags = 0;
+
 	unsigned int universeId = 0;
 	
 	// Shape

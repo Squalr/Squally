@@ -7,7 +7,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Physics/EnginePhysicsTypes.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -16,7 +16,7 @@
 #include "Scenes/Platformer/Components/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityHeadCollisionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityMovementBehavior.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -120,7 +120,7 @@ void EntityCollisionBehaviorBase::onDisable()
 	
 	if (this->movementCollision != nullptr)
 	{
-		this->movementCollision->setPhysicsEnabled(false);
+		this->movementCollision->setPhysicsFlagEnabled(false);
 	}
 }
 void EntityCollisionBehaviorBase::update(float dt)
@@ -155,26 +155,31 @@ void EntityCollisionBehaviorBase::warpToPosition(Vec3 position, bool warpCamera)
 
 void EntityCollisionBehaviorBase::enableNormalPhysics()
 {
-	this->movementCollision->setGravityEnabled(true);
-	this->movementCollision->setPhysicsEnabled(true);
+	this->movementCollision->setGravityFlagEnabled(true, int(GravityFlags::Movement));
+	this->movementCollision->setPhysicsFlagEnabled(true, int(PhysicsFlags::Movement));
 	this->movementCollision->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
 }
 
 void EntityCollisionBehaviorBase::enableWaterPhysics()
 {
-	this->movementCollision->setGravityEnabled(false);
-	this->movementCollision->setPhysicsEnabled(true);
+	this->movementCollision->setGravityFlagEnabled(false, int(GravityFlags::Movement));
+	this->movementCollision->setPhysicsFlagEnabled(true, int(PhysicsFlags::Movement));
 	this->movementCollision->setVerticalDampening(EntityCollisionBehaviorBase::SwimVerticalDrag);
 }
 
-void EntityCollisionBehaviorBase::disableGravity()
+void EntityCollisionBehaviorBase::setIsAlivePhysics(bool isAlive)
 {
 	// Wait until the corpse falls to the ground before turning off physics to prevent sliding
-	if (this->movementCollision->hasCollisions())
-	{
-		this->movementCollision->setGravityEnabled(false);
-		this->movementCollision->setPhysicsEnabled(false);
-	}
+	bool isFalling = !this->movementCollision->hasCollisions();
+
+	this->movementCollision->setGravityFlagEnabled(isAlive || isFalling, int(GravityFlags::IsAlive));
+	this->movementCollision->setPhysicsFlagEnabled(isAlive || isFalling, int(PhysicsFlags::IsAlive));
+}
+
+void EntityCollisionBehaviorBase::setMountPhysics(bool isMounted)
+{
+	this->movementCollision->setGravityFlagEnabled(isMounted, int(GravityFlags::IsMounted));
+	this->movementCollision->setPhysicsFlagEnabled(isMounted, int(PhysicsFlags::IsMounted));
 }
 
 Vec2 EntityCollisionBehaviorBase::getGravity()

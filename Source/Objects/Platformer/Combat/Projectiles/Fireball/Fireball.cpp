@@ -12,7 +12,7 @@
 #include "Objects/Platformer/Combat/Projectiles/Fireball/FireballGenericPreview.h"
 #include "Objects/Platformer/Combat/Projectiles/Fireball/FireballSpeedPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"

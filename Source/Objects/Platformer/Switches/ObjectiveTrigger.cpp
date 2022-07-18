@@ -4,7 +4,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Physics/CollisionObject.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 
 using namespace cocos2d;

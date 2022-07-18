@@ -248,10 +248,7 @@ void EntityMovementBehavior::update(float dt)
 		}
 	}
 	
-	if (!this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
-	{
-		this->entityCollision->disableGravity();
-	}
+	this->entityCollision->setIsAlivePhysics(this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true));
 
 	// Save velocity
 	this->entityCollision->setVelocity(velocity);

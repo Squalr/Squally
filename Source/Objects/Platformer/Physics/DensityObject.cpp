@@ -3,7 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Utils/GameUtils.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 
 using namespace cocos2d;

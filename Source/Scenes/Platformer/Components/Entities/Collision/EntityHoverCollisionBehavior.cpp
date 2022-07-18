@@ -7,7 +7,7 @@
 #include "Scenes/Platformer/Components/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityJumpCollisionBehavior.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -84,7 +84,7 @@ void EntityHoverCollisionBehavior::onDisable()
 	
 	if (this->hoverCollision != nullptr)
 	{
-		this->hoverCollision->setPhysicsEnabled(false);
+		this->hoverCollision->setPhysicsFlagEnabled(false);
 	}
 }
 
@@ -101,24 +101,22 @@ void EntityHoverCollisionBehavior::update(float dt)
 		this->uncrouch(dt);
 	}
 	
-	if (this->hoverAntiGravityCollisionDetector != nullptr
-		&& this->hoverAntiGravityTopCollisionDetector != nullptr
-		&& this->entityCollision != nullptr
-		&& this->entityCollision->movementCollision != nullptr)
+	if (this->entityCollision != nullptr && this->entityCollision->movementCollision != nullptr)
 	{
-		// Update anti-gravity to avoid jitter
-		if (this->hoverAntiGravityCollisionDetector->hasCollisions() && !this->hoverAntiGravityTopCollisionDetector->hasCollisions())
+		this->entityCollision->movementCollision->setGravityFlagEnabled(true, int(GravityFlags::Hover));
+		
+		if (this->hoverAntiGravityCollisionDetector != nullptr && this->hoverAntiGravityTopCollisionDetector != nullptr)
 		{
-			this->entityCollision->movementCollision->setGravityDisabledOverride(true);
-
-			if (this->entityCollision->movementCollision->getVelocity().y < 0.0f)
+			// Update anti-gravity to avoid jitter
+			if (this->hoverAntiGravityCollisionDetector->hasCollisions() && !this->hoverAntiGravityTopCollisionDetector->hasCollisions())
 			{
-				this->entityCollision->movementCollision->setVelocityY(0.0f);
+				this->entityCollision->movementCollision->setGravityFlagEnabled(false, int(GravityFlags::Hover));
+
+				if (this->entityCollision->movementCollision->getVelocity().y < 0.0f)
+				{
+					this->entityCollision->movementCollision->setVelocityY(0.0f);
+				}
 			}
-		}
-		else
-		{
-			this->entityCollision->movementCollision->setGravityDisabledOverride(false);
 		}
 	}
 }
@@ -258,7 +256,7 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 	
 	this->hoverCollision->setName("entity movement");
 	this->hoverCollision->bindTo(this->entity);
-	this->hoverCollision->setGravityEnabled(false);
+	this->hoverCollision->setGravityFlagEnabled(false);
 
 	this->addChild(this->hoverCollision);
 	

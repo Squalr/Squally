@@ -8,7 +8,7 @@
 #include "Engine/Input/Input.h"
 #include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Physics/EnginePhysicsTypes.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/Utils/GameUtils.h"
@@ -20,7 +20,7 @@
 #include "Objects/Platformer/ItemPools/ErrorPool.h"
 #include "Menus/CursorSets.h"
 #include "Scenes/Platformer/Components/Entities/EntitySelectionBehavior.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 

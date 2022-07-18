@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Physics/EnginePhysicsTypes.h"
 
 enum class CombatCollisionType
 {

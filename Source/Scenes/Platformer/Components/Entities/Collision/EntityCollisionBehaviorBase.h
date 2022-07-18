@@ -12,10 +12,10 @@ class WorldSound;
 class EntityCollisionBehaviorBase : public GameComponent
 {
 public:
-
 	void enableNormalPhysics();
 	void enableWaterPhysics();
-	void disableGravity();
+	void setIsAlivePhysics(bool isAlive);
+	void setMountPhysics(bool isMounted);
 	cocos2d::Vec2 getGravity();
 	cocos2d::Vec2 getVelocity();
 	void setVelocity(cocos2d::Vec2 velocity);

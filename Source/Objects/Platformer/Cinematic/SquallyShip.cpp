@@ -23,7 +23,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/SquallyBehaviorGroup.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -85,7 +85,7 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 	this->ship->setFlippedX(true);
 	this->fireAnimation->setFlippedX(true);
 	this->thrustAnimation->setFlippedX(true);
-	this->shipCollision->setGravityEnabled(false);
+	this->shipCollision->setPhysicsFlagEnabled(false);
 
 	this->fireAnimation->addChild(this->fireSound);
 	this->ship->addChild(this->fireRingAnimation);
@@ -255,7 +255,7 @@ void SquallyShip::onCrash()
 
 	GameCamera::getInstance()->setCameraPosition(cameraCoords);
 
-	this->shipCollision->setPhysicsEnabled(false);
+	this->shipCollision->setPhysicsFlagEnabled(false);
 	this->ship->setVisible(false);
 	
 	this->smokeAnimation->stopAnimation();

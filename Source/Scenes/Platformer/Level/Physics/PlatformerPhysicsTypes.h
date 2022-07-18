@@ -1,6 +1,34 @@
 #pragma once
 
-#include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Physics/EnginePhysicsTypes.h"
+
+enum class GravityFlags
+{
+	Default		= (int)EngineGravityFlags::Default,
+
+	// Start from 1 due to reserved engine types
+	Movement	= 1,
+	Hover		= 2,
+	IsAlive		= 3,
+	IsMounted	= 4,
+};
+
+enum class CollisionFlags
+{
+	Default		= (int)EngineCollisionFlags::Default,
+	
+	// Start from 1 due to reserved engine types
+};
+
+enum class PhysicsFlags
+{
+	Default		= (int)EnginePhysicsFlags::Default,
+
+	// Start from 1 due to reserved engine types
+	Movement	= 1,
+	IsAlive		= 2,
+	IsMounted	= 3,
+};
 
 enum class PlatformerCollisionType
 {

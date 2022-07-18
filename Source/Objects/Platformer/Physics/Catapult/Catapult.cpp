@@ -20,7 +20,7 @@
 #include "Objects/Platformer/Physics/Catapult/CatapultApplyPowerPreview.h"
 #include "Objects/Platformer/Physics/Catapult/CatapultGenericPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"

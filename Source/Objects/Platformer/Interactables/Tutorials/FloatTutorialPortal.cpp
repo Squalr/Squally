@@ -14,7 +14,7 @@
 #include "Menus/Tutorials/TutorialSelectMenu.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Tutorials/Save/TutorialSaveKeys.h"
 
 #include "Resources/ObjectResources.h"

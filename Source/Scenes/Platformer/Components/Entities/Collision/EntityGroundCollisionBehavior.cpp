@@ -2,11 +2,11 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Physics/EnginePhysicsTypes.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityHoverCollisionBehavior.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -75,17 +75,17 @@ void EntityGroundCollisionBehavior::onDisable()
 	
 	if (this->groundCollision != nullptr)
 	{
-		this->groundCollision->setPhysicsEnabled(false);
+		this->groundCollision->setPhysicsFlagEnabled(false);
 	}
 	
 	if (this->leftCornerCollision != nullptr)
 	{
-		this->leftCornerCollision->setPhysicsEnabled(false);
+		this->leftCornerCollision->setPhysicsFlagEnabled(false);
 	}
 	
 	if (this->rightCornerCollision != nullptr)
 	{
-		this->rightCornerCollision->setPhysicsEnabled(false);
+		this->rightCornerCollision->setPhysicsFlagEnabled(false);
 	}
 }
 

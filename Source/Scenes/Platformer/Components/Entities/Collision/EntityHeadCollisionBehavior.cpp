@@ -2,10 +2,10 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Physics/EnginePhysicsTypes.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
@@ -56,7 +56,7 @@ void EntityHeadCollisionBehavior::onDisable()
 	
 	if (this->headCollision != nullptr)
 	{
-		this->headCollision->setPhysicsEnabled(false);
+		this->headCollision->setPhysicsFlagEnabled(false);
 	}
 }
 

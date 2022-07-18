@@ -17,7 +17,7 @@
 #include "Events/SqualrEvents.h"
 #include "Objects/Platformer/Projectiles/Dart/Dart.h"
 #include "Objects/Platformer/Projectiles/ProjectilePool.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"

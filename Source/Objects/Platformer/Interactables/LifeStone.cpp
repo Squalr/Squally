@@ -19,7 +19,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Events/SwitchEvents.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FXResources.h"

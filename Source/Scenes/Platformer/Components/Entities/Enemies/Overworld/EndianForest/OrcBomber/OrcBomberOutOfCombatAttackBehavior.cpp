@@ -11,7 +11,7 @@
 #include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityProjectileTargetBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Combat/AgroBehavior.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FXResources.h"

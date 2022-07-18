@@ -11,7 +11,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
@@ -75,7 +75,7 @@ Vase::Vase(ValueMap& properties, int requiredHits) : super(properties, CSize(113
 		this->vaseBroken->addChild(Sprite::create(ObjectResources::Breakables_VaseYellowBroken));
 	}
 
-	this->vaseBroken->setPhysicsEnabled(false);
+	this->vaseBroken->setPhysicsFlagEnabled(false);
 	this->vaseBroken->setVisible(false);
 
 	this->contentNode->addChild(this->vase);
@@ -117,7 +117,7 @@ void Vase::onBreak()
 	
 	this->explosion->playAnimation(FXResources::ExplosionNormal_Explosion_0000, 0.035f, true);
 	this->vase->setVisible(false);
-	this->vaseBroken->setPhysicsEnabled(true);
+	this->vaseBroken->setPhysicsFlagEnabled(true);
 	this->vaseBroken->setVisible(true);
 	this->vaseBroken->setVelocity(Vec2(3200.0f, 9600.0f));
 	this->shardParticles->start();

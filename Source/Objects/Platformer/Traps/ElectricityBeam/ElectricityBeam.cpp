@@ -13,7 +13,7 @@
 #include "Objects/Platformer/Traps/ElectricityBeam/ElectricityBeamCountDownPreview.h"
 #include "Objects/Platformer/Traps/ElectricityBeam/ElectricityBeamGenericPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -52,7 +52,7 @@ ElectricityBeam::ElectricityBeam(ValueMap& properties) : super(properties)
 	this->ballRight = Sprite::create(ObjectResources::Traps_ElectricBeam_Ball);
 
 	this->electricityAnimation->setRotation(this->isVertical ? 90.0f : 0.0f);
-	this->electricityCollision->setPhysicsEnabled(false);
+	this->electricityCollision->setPhysicsFlagEnabled(false);
 
 	this->addChild(this->electricityCollision);
 	this->addChild(this->electricityAnimation);
@@ -128,12 +128,12 @@ void ElectricityBeam::update(float dt)
 			DelayTime::create(0.15f),
 			CallFunc::create([=]()
 			{
-				this->electricityCollision->setPhysicsEnabled(true);
+				this->electricityCollision->setPhysicsFlagEnabled(true);
 			}),
 			DelayTime::create(0.35f),
 			CallFunc::create([=]()
 			{
-				this->electricityCollision->setPhysicsEnabled(false);
+				this->electricityCollision->setPhysicsFlagEnabled(false);
 				this->isRunningAnimation = false;
 			}),
 			nullptr

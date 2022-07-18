@@ -11,7 +11,7 @@
 #include "Engine/Sound/Sound.h"
 #include "Events/NotificationEvents.h"
 
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/FXResources.h"

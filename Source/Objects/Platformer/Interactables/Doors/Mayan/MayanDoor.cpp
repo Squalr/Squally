@@ -17,7 +17,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/RegisterStone.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"

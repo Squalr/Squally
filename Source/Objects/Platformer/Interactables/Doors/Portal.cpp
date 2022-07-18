@@ -13,7 +13,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Menus/Interact/InteractMenu.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/UIResources.h"
 

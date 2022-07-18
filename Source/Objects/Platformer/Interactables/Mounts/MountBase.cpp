@@ -14,10 +14,11 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/ItemPools/RecipePools/RecipePoolDeserializer.h"
+#include "Scenes/Platformer/Components/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityMountBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Recipe.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FXResources.h"
@@ -30,8 +31,9 @@ using namespace cocos2d;
 const std::string MountBase::PropertyDirection = "direction";
 const std::string MountBase::PropertySpeed = "speed";
 
-MountBase::MountBase(ValueMap& properties, CSize size) : super(properties, InteractObject::InteractType::Input, size)
+MountBase::MountBase(ValueMap& properties, CSize size, bool updateXOnly) : super(properties, InteractObject::InteractType::Input, size)
 {
+	this->updateXOnly = updateXOnly;
 	this->reparentNode = Node::create();
 	this->frontNode = Node::create();
 	
@@ -82,7 +84,14 @@ void MountBase::update(float dt)
 {
 	super::update(dt);
 
-	this->setToMountPositionX();
+	if (this->updateXOnly)
+	{
+		this->setToMountPositionX();
+	}
+	else
+	{
+		this->setToMountPosition();
+	}
 }
 
 void MountBase::onInteract(PlatformerEntity* interactingEntity)
@@ -98,6 +107,11 @@ void MountBase::mount(PlatformerEntity* interactingEntity)
 	{
 		return;
 	}
+
+	interactingEntity->watchForComponent<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* entityCollisionBehavior)
+	{
+		entityCollisionBehavior->setMountPhysics(true);
+	});
 
 	interactingEntity->watchForComponent<EntityMountBehavior>([=](EntityMountBehavior* entityMountBehavior)
 	{
@@ -117,6 +131,11 @@ void MountBase::dismount()
 	{
 		return;
 	}
+
+	this->mountedEntity->watchForComponent<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* entityCollisionBehavior)
+	{
+		entityCollisionBehavior->setMountPhysics(false);
+	});
 
 	this->mountedEntity->watchForComponent<EntityMountBehavior>([=](EntityMountBehavior* entityMountBehavior)
 	{

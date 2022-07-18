@@ -16,7 +16,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityMovementBehavior.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/HexusResources.h"
@@ -194,9 +194,9 @@ void BirdBehavior::onHit(EntityCollisionBehaviorBase* collisionBehavior)
 	float movementX = entityPosition.x < squallyPosition.x ? -1.0f : 1.0f;
 
 	collisionBehavior->movementCollision->setGravity(Vec2(0.0f, RandomHelper::random_real(356.0f, 512.0f)));
-	collisionBehavior->movementCollision->setCollisionEnabled(false);
-	collisionBehavior->leftCollision->setCollisionEnabled(false);
-	collisionBehavior->rightCollision->setCollisionEnabled(false);
+	collisionBehavior->movementCollision->setCollisionFlagEnabled(false);
+	collisionBehavior->leftCollision->setCollisionFlagEnabled(false);
+	collisionBehavior->rightCollision->setCollisionFlagEnabled(false);
 
 	this->entity->runAction(Sequence::create(
 		DelayTime::create(0.75f),

@@ -16,7 +16,7 @@
 #include "Objects/Platformer/Physics/FloatingCrate/FloatingCrateGenericPreview.h"
 #include "Objects/Platformer/Physics/FloatingCrate/FloatingCrateGetDensityPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"

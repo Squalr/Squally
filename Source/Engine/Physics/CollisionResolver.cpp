@@ -17,8 +17,8 @@ void CollisionResolver::resolveCollision(CollisionObject* objectA, CollisionObje
 	if (objectA == nullptr
 		|| objectB == nullptr
 		|| objectA == objectB
-		|| !objectA->physicsEnabled
-		|| !objectB->physicsEnabled
+		|| !objectA->getPhysicsEnabled()
+		|| !objectB->getPhysicsEnabled()
 		|| objectA->getUniverseId() != objectB->getUniverseId())
 	{
 		return;

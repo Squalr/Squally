@@ -73,7 +73,7 @@ void CureTown::onLoad(QuestState questState)
 	{
 		ObjectEvents::WatchForObject<CollisionObject>(this, [=](CollisionObject* collisionObject)
 		{
-			collisionObject->setPhysicsEnabled(false);
+			collisionObject->setPhysicsFlagEnabled(false);
 		}, "quest-solid-wall");
 
 		ObjectEvents::WatchForObject<CameraStop>(this, [=](CameraStop* cameraStop)
@@ -127,7 +127,7 @@ void CureTown::onComplete()
 
 	ObjectEvents::WatchForObject<CollisionObject>(this, [=](CollisionObject* collisionObject)
 	{
-		collisionObject->setPhysicsEnabled(false);
+		collisionObject->setPhysicsFlagEnabled(false);
 	}, "quest-solid-wall");
 
 	ObjectEvents::WatchForObject<CameraStop>(this, [=](CameraStop* cameraStop)
