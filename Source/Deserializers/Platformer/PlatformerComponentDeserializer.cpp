@@ -147,6 +147,9 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[PoseidonBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)PoseidonBehavior::create(owner); };
 	this->componentDeserializers[RupertBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)RupertBehavior::create(owner); };
 
+	// Generic
+	this->componentDeserializers[MainhandThrowOutOfCombatAttackBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)MainhandThrowOutOfCombatAttackBehavior::create(owner); };
+
 	/*********************
 		COMBAT / IN-COMBAT
 	*********************/

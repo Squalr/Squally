@@ -33,14 +33,11 @@ OrcBomberOutOfCombatAttackBehavior* OrcBomberOutOfCombatAttackBehavior::create(G
 OrcBomberOutOfCombatAttackBehavior::OrcBomberOutOfCombatAttackBehavior(GameObject* owner) : super(owner)
 {
 	this->orcBomber = dynamic_cast<OrcBomber*>(owner);
-	this->fireBreath = SmartAnimationSequenceNode::create();
 
 	if (this->orcBomber == nullptr)
 	{
 		this->invalidate();
 	}
-
-	this->addChild(this->fireBreath);
 }
 
 OrcBomberOutOfCombatAttackBehavior::~OrcBomberOutOfCombatAttackBehavior()

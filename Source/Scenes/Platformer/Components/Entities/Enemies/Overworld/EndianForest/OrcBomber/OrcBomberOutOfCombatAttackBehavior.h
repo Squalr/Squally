@@ -34,6 +34,5 @@ private:
 	typedef EnemyOutOfCombatAttackBehavior super;
 	
 	AgroBehavior* agroBehavior = nullptr;
-	SmartAnimationSequenceNode* fireBreath = nullptr;
 	OrcBomber* orcBomber = nullptr;
 };

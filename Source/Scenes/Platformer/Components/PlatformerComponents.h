@@ -11,6 +11,7 @@
 #include "Scenes/Platformer/Components/Entities/Enemies/Combat/AgroBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/EndianForest/KingGrogg/KingGroggBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/EndianForest/OrcBomber/OrcBomberBehaviorGroup.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Overworld/Generic/MainhandThrow/MainhandThrowOutOfCombatAttackBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/EnemyBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/EnemyCombatBehaviors.h"
 #include "Scenes/Platformer/Components/Entities/EntityBehaviorGroup.h"

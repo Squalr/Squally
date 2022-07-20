@@ -262,7 +262,7 @@
   </object>
   <object id="792" name="orc-warrior" type="entity" x="6912" y="2408" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,agro,mainhand-throw"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Gorgon"/>
     <property name="battle-tag" value="group-a"/>
