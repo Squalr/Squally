@@ -18,6 +18,7 @@ public:
 
 	static const std::string MapKey;
 	static const std::string PropertySwitch;
+	static const std::string PropertySaveKey;
 
 protected:
 	StoneButton(cocos2d::ValueMap& properties);
@@ -41,6 +42,7 @@ private:
 
 	bool isSwitch = false;
 	bool hasCollided = false;
+	std::string saveKey;
 
 	static const float ButtonPressureSpeed;
 	static const float ButtonPressureOffsetMin;
