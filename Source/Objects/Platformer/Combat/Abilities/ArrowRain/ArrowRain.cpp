@@ -35,7 +35,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_COMPARE_TEAM 11
 
 const int ArrowRain::TickCount = 6;
-const int ArrowRain::Damage = 2;
+const int ArrowRain::Damage = 4;
 const float ArrowRain::TimeBetweenTicks = 0.75f;
 const float ArrowRain::StartDelay = 0.25f;
 const std::string ArrowRain::StateKeyIsCasterOnEnemyTeam = "ANTI_OPTIMIZE_STATE_KEY_DAMAGE_TAKEN";

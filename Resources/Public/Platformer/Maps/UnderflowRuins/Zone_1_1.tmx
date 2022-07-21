@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="142" nextobjectid="1074">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="142" nextobjectid="1074">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -162,11 +162,11 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="1068" name="caverns" type="terrain" x="2100.24" y="284.606">
+  <object id="1068" name="caverns" type="terrain" x="2100.24" y="765.918">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="-121.09,-568 770.526,-578.149 680.489,433.363 601.992,997.8 310.707,1170.93 16.3437,984.311 -64.2571,439.03"/>
+   <polygon points="-30.9176,-1067.58 697.052,-1056.12 738.279,105.737 680.489,794.14 601.992,1828.47 310.707,2145.74 16.3437,1803.76 -64.2571,804.525 -95.6913,105.83"/>
   </object>
  </objectgroup>
  <objectgroup id="126" name="objects -9">
