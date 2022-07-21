@@ -41,6 +41,7 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 	this->moveAcceleration = EntityMovementBehavior::DefaultRunAcceleration;
 	this->swimAcceleration = EntityMovementBehavior::DefaultSwimAcceleration;
 	this->jumpVelocity = EntityMovementBehavior::DefaultJumpVelocity;
+	this->onGroundDuration = 0.0f;
 
 	if (this->entity == nullptr)
 	{
@@ -111,6 +112,15 @@ void EntityMovementBehavior::update(float dt)
 {
 	super::update(dt);
 
+	if (this->groundCollision != nullptr && this->groundCollision->isOnGround())
+	{
+		this->onGroundDuration += dt;
+	}
+	else
+	{
+		this->onGroundDuration = 0.0f;
+	}
+
 	if (this->entityCollision == nullptr)
 	{
 		return;
@@ -173,6 +183,10 @@ void EntityMovementBehavior::update(float dt)
 				}
 
 				this->entity->getAnimations()->playAnimation(this->entity->getJumpAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(0.85f));
+			}
+			else if (this->onGroundDuration > 0.5f && std::abs(movement.x) < 0.01f && velocity.y <= 0.0f)
+			{
+				this->entityCollision->enableStandingPhysics();
 			}
 
 			if (std::abs(movement.y) < 0.15f)

@@ -12,6 +12,7 @@ class WorldSound;
 class EntityCollisionBehaviorBase : public GameComponent
 {
 public:
+	void enableStandingPhysics();
 	void enableNormalPhysics();
 	void enableWaterPhysics();
 	void setIsAlivePhysics(bool isAlive);

@@ -153,6 +153,13 @@ void EntityCollisionBehaviorBase::warpToPosition(Vec3 position, bool warpCamera)
 	});
 }
 
+void EntityCollisionBehaviorBase::enableStandingPhysics()
+{
+	this->movementCollision->setGravityFlagEnabled(false, int(GravityFlags::Movement));
+	this->movementCollision->setPhysicsFlagEnabled(false, int(PhysicsFlags::Movement));
+	this->movementCollision->setVerticalDampening(CollisionObject::DefaultVerticalDampening);
+}
+
 void EntityCollisionBehaviorBase::enableNormalPhysics()
 {
 	this->movementCollision->setGravityFlagEnabled(true, int(GravityFlags::Movement));

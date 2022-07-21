@@ -37,12 +37,12 @@ protected:
 private:
 	typedef GameComponent super;
 
-	bool isOnGround();
 	void applyCinematicMovement(cocos2d::Vec2* movement);
 	void applyPatrolMovement(cocos2d::Vec2* movement);
 	void checkCinematicMovementComplete();
 	void checkPatrolMovementComplete();
 
+	float onGroundDuration = 0.0f;
 	float moveAcceleration = 0.0f;
 	cocos2d::Vec2 swimAcceleration;
 	float jumpVelocity = 0.0f;

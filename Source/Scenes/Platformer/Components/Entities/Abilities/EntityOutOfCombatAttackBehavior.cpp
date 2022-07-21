@@ -258,10 +258,8 @@ void EntityOutOfCombatAttackBehavior::tryPerformShootProjectile()
 	projectile->enable(true);
 	projectile->runSpawnFX();
 
-	const Vec2 FixedOffset = Vec2(64.0f, -32.0f);
-
 	Vec2 entityCenter = this->entity->getEntityCenterPoint();
-	Vec2 spawnOffset = Vec2(entityCenter.x + (this->entity->isFlippedX() ? -FixedOffset.x : FixedOffset.x), entityCenter.y + FixedOffset.y) + this->getProjectileSpawnOffset();
+	Vec2 spawnOffset = entityCenter + this->getProjectileSpawnOffset();
 
 	GameUtils::setWorldCoords3D(projectile, GameUtils::getWorldCoords3D(this) + Vec3(spawnOffset.x, spawnOffset.y, 0.0f));
 
