@@ -122,9 +122,9 @@
    <property name="depth" type="float" value="-768"/>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="1.75"/>
+   <property name="zoom" type="float" value="3"/>
   </properties>
-  <object id="989" name="warp" type="object" x="3391.45" y="1463.58" width="256" height="256">
+  <object id="989" name="warp" type="object" x="2853.45" y="1461.58" width="256" height="256">
    <properties>
     <property name="from" value="bridge-12-C"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -138,7 +138,7 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1013" name="wood" type="terrain" x="3391.03" y="1727.02" width="256" height="356.5">
+  <object id="1013" name="wood" type="terrain" x="2853.03" y="1725.02" width="256" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -149,7 +149,7 @@
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1012" name="wood" type="terrain" x="3391.19" y="1737.19" width="256" height="356.5">
+  <object id="1012" name="wood" type="terrain" x="2853.19" y="1735.19" width="256" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -160,7 +160,7 @@
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1011" name="wood" type="terrain" x="3390.36" y="1749.52" width="256" height="356.5">
+  <object id="1011" name="wood" type="terrain" x="2852.36" y="1747.52" width="256" height="356.5">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -184,7 +184,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="987" name="life-stone" type="object" x="2643.43" y="1351.05" width="146" height="423"/>
+  <object id="987" name="life-stone" type="object" x="2589.43" y="1363.05" width="146" height="423"/>
   <object id="1002" name="solid" type="collision" x="892.5" y="-37.9233" width="126.878" height="1821.18"/>
  </objectgroup>
  <objectgroup id="141" name="entities -9">
@@ -208,7 +208,7 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.5"/>
   </properties>
-  <object id="988" name="warp" type="object" x="3390.78" y="1520.24" width="256" height="256">
+  <object id="988" name="warp" type="object" x="2852.78" y="1518.24" width="256" height="256">
    <properties>
     <property name="from" value="bridge-9-C"/>
     <property name="no-warp-camera" type="bool" value="true"/>

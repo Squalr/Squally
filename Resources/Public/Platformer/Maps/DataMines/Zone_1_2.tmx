@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="62" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1957">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="128" nextobjectid="1980">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="837" name="mines" type="texture" x="-966.54" y="-1095.82" width="9917.1" height="6823.64"/>
+  <object id="837" name="dark-grass" type="texture" x="-966.54" y="-1095.82" width="9917.1" height="6823.64"/>
  </objectgroup>
  <objectgroup id="115" name="decor -8">
   <properties>
@@ -30,6 +30,18 @@
     <property name="map" value="DataMines/Zone_1_0"/>
     <property name="transition" value="screaming-door"/>
    </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="119" name="vines -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1961" name="vines" type="terrain" x="5960" y="1112">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="-1708,-1200 -4632,-1216 -4320.48,279.088 -3449.92,1908.6 -4773.1,3564.96 178.49,3548.03 -823.206,1953.22 -392.376,512.023 716,-1220"/>
   </object>
  </objectgroup>
  <objectgroup id="116" name="terrain -8">
@@ -57,6 +69,18 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
+ <objectgroup id="127" name="vines -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1979" name="vines" type="terrain" x="4016" y="952">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="-988,-936 -2234.4,-943.2 -1932,-380 -1959.79,286.136 -2112.3,1025.67 -2865.79,2589.76 -3616.11,3639.4 -3079.67,3600.29 -2467.17,2570.15 -1655.37,1389.28 -1401.89,1392.99 -713.527,2652.84 -353.101,3452.96 42.4877,3448.03 -674.893,1210.66 -716.376,304.023 -632,-504 -284,-940"/>
+  </object>
+ </objectgroup>
  <objectgroup id="68" name="terrain -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
@@ -66,7 +90,7 @@
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="-4.24242,1022.79 246.14,1070.41 658.793,1068.87 1424.64,874.515 1854.93,685.543 2406.27,676.204 2598.97,-74.3632 2693.39,-906.865 3215.92,-1185.02 3765.83,-1193.9 3071.86,-701.25 2919.94,28.287 2913.42,467.308 3183.62,461.073 4347.35,-91.1387 5402.46,-864.086 5974.59,-1460.96 6509.78,-1464.31 5728.99,-643.76 5020.72,-214.628 4323.13,381.02 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 3658.23,2091.24 5082.16,3525.6 4428.06,3506.62 3719.95,2691.79 2979.56,2204.36 2244.39,1661.19 2048.93,1771.8 1734.04,2076.44 1445.1,2541.32 832.23,3468.08 163.87,3450.62 1194.83,2028.96 1586.71,1605.49 1562.66,1385.24 1200.95,1405.81 89.0912,1357.17 -845.635,969.034 -1242.78,949.202 -2063.6,598.746 -2098.17,232.572 -1149.64,581.928 -445.965,882.377 588.302,327.546 1271.75,-282.16 1636.73,-762.36 1953.85,-1256.45 2328.02,-1254.29 1595.68,-266.187 1092.41,303.095"/>
+   <polygon points="-4.24242,1022.79 246.14,1070.41 658.793,1068.87 1424.64,874.515 1854.93,685.543 2406.27,676.204 2598.97,-74.3632 2693.39,-906.865 3215.92,-1185.02 3765.83,-1193.9 3071.86,-701.25 2919.94,28.287 2913.42,467.308 3183.62,461.073 4347.35,-91.1387 5402.46,-864.086 5974.59,-1460.96 6509.78,-1464.31 5728.99,-643.76 5020.72,-214.628 4323.13,381.02 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 3658.23,2091.24 5082.16,3525.6 4428.06,3506.62 3719.95,2691.79 2979.56,2204.36 2244.39,1661.19 2048.93,1771.8 1734.04,2076.44 1445.1,2541.32 832.23,3468.08 163.87,3450.62 1194.83,2028.96 1586.71,1605.49 1562.66,1385.24 1200.95,1405.81 89.0912,1357.17 -845.635,969.034 -1242.78,949.202 -2063.6,598.746 -2098.17,232.572 -1149.64,581.928 -357.965,966.377 -314.546,557.67 -106.068,272.145 936.302,91.546 1271.75,-282.16 1636.73,-762.36 1953.85,-1256.45 2328.02,-1254.29 1595.68,-266.187 1092.41,303.095 32.8747,547.428"/>
   </object>
  </objectgroup>
  <objectgroup id="111" name="objects -6">
@@ -85,7 +109,7 @@
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="1.8500000000000001"/>
+   <property name="zoom" type="float" value="1.85"/>
   </properties>
   <object id="1928" name="warp" type="object" x="1989" y="2000" width="256" height="256">
    <properties>
@@ -138,6 +162,18 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
+ <objectgroup id="126" name="vines -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1977" name="vines" type="terrain" x="2000" y="888">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="-740,-952 -956,-288 -1208.11,383.405 -1338.76,1159.77 -1187.42,2255 -675.936,3587.48 4266.49,3692.03 3605.11,3208.88 2400.74,2381.74 411.624,1428.02 576,-72 724,-932"/>
+  </object>
+ </objectgroup>
  <objectgroup id="62" name="terrain -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
@@ -184,6 +220,23 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="118" name="vines -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1960" name="vines" type="terrain" x="6088" y="1152">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="-1708,-1200 -1500,-756 -1456.11,599.405 -1865.4,1970.44 -1749.1,3692.96 1346.49,3596.03 -264.376,800.023 -632,-504 -820,-932"/>
+  </object>
+  <object id="1973" name="vines" type="terrain" x="-1825.52" y="2331.94" width="11885.1" height="2324">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="67" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
@@ -193,7 +246,7 @@
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="2432,737 2770.27,684.204 2510.2,322.705 2432.36,-297.132 1781.39,-1222.87 1119.92,-1689.02 1873.31,-1690.6 2435.86,-1157.25 2723.94,-587.713 2897.42,171.308 3183.62,461.073 4431.37,597.572 5758.59,203.035 6961.39,-72.3128 7735.52,-314.012 8274.73,-261.808 8269.04,128.881 7658.6,69.0824 6724.86,322.674 5004.72,785.372 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 2540.41,1846.57 2709.1,1917.32 3688.23,1916.08 4109.41,1976.8 4252.12,1975.54 4557.69,2097.02 4841.89,2096.19 4839.91,2332.64 2347.87,2330.62 2018.71,1333.49 1685.53,1147.1 686.106,1431.01 -452.248,1181.84 -434.152,-1680.45 142.021,-1679.9 168.02,737.709"/>
+   <polygon points="2432,737 2538.27,732.204 2510.2,322.705 2432.36,-297.132 1781.39,-1222.87 1119.92,-1689.02 1873.31,-1690.6 2435.86,-1157.25 2723.94,-587.713 2897.42,171.308 3183.62,461.073 4431.37,597.572 5758.59,203.035 6961.39,-72.3128 7735.52,-314.012 8274.73,-261.808 8269.04,128.881 7658.6,69.0824 6724.86,322.674 5004.72,785.372 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 2540.41,1846.57 2709.1,1917.32 3688.23,1916.08 4109.41,1976.8 4252.12,1975.54 4557.69,2097.02 4841.89,2096.19 4839.91,2332.64 2347.87,2330.62 2018.71,1333.49 1685.53,1147.1 686.106,1431.01 -452.248,1181.84 -434.152,-1680.45 142.021,-1679.9 168.02,737.709"/>
   </object>
  </objectgroup>
  <objectgroup id="108" name="objects -4">
@@ -270,7 +323,7 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="107" name="water -4" visible="0">
+ <objectgroup id="107" name="water -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -278,6 +331,17 @@
   <object id="1893" name="water" type="object" x="-1063.16" y="2335.9" width="9870.33" height="2202.2">
    <properties>
     <property name="components" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="123" name="vines -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1971" name="vines" type="terrain" x="-1790.48" y="2365.52" width="11709.1" height="2324">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -300,7 +364,7 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="106" name="water -3" visible="0">
+ <objectgroup id="106" name="water -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -310,6 +374,12 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup id="122" name="vines -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="65" name="terrain -2">
   <properties>
@@ -322,6 +392,11 @@
   <object id="1887" name="dark-grass" type="terrain" x="2738" y="3517.27">
    <polygon points="96,-1 -58,196 14,636 892,656 851,169 746.97,0.757576"/>
   </object>
+  <object id="1972" name="vines" type="terrain" x="-1722.49" y="2389.52" width="11497.1" height="2324">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="72" name="fireflies -2">
   <properties>
@@ -330,7 +405,7 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="105" name="water -2" visible="0">
+ <objectgroup id="105" name="water -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -338,6 +413,17 @@
   <object id="1891" name="water" type="object" x="-799.165" y="2385.9" width="9310.33" height="2202.2">
    <properties>
     <property name="components" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="124" name="vines -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1975" name="vines" type="terrain" x="-1632.55" y="2418" width="11330.8" height="2324">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -372,7 +458,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="104" name="water -1" visible="0">
+ <objectgroup id="104" name="water -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
@@ -383,11 +469,51 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="79" name="terrain bg">
+ <objectgroup id="79" name="terrain bg far">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1954" name="dark-grass" type="terrain" x="17.46" y="344" width="945.08" height="1348">
+  <object id="1966" name="dark-grass" type="terrain" x="-291.025" y="-569.394" width="8553.08" height="1116"/>
+ </objectgroup>
+ <objectgroup id="120" name="vines" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1962" name="vines" type="terrain" x="3927.94" y="1088">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="-1383.72,-1200 -4403.94,-1236 -3431.55,491.405 -3202.93,1588.6 -3866.89,3564.96 144.602,3548.03 -427.34,2982.16 -502.915,1929.22 -317.881,512.023 580.062,-1220"/>
+  </object>
+  <object id="1963" name="vines" type="terrain" x="5731.33" y="1168">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="-459.76,-1200 -1463.27,-1236 -1089.67,503.405 -928.653,1908.6 -1284.83,3564.96 48.046,3548.03 -221.592,1953.22 -105.62,512.023 192.733,-1220"/>
+  </object>
+  <object id="1964" name="vines" type="terrain" x="7760" y="1184">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="-459.76,-1200 -1463.27,-1236 -1089.67,503.405 -928.653,1908.6 -1284.83,3564.96 48.046,3548.03 -221.592,1953.22 -105.62,512.023 192.733,-1220"/>
+  </object>
+  <object id="1965" name="vines" type="terrain" x="7464.36" y="1228.15">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="-3707.6,-662.308 -8084.37,-668.115 -8243.21,208.403 -7648.58,1317.58 -7378.98,1740.91 -6966.23,2288.07 -6620.9,2486.88 -4991.97,2206.88 -3576.27,2422.68 1754.82,1869.31 1742.27,-656.491"/>
+  </object>
+  <object id="1974" name="vines" type="terrain" x="-1536.55" y="2442" width="11161.1" height="2324">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="121" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1967" name="dark-grass" type="terrain" x="-6.54" y="344" width="969.08" height="1348">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -403,7 +529,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1623" name="mines" type="terrain" x="-291.025" y="-569.394" width="8553.08" height="1116"/>
   <object id="1875" name="dark-grass" type="terrain" x="-108" y="1648">
    <properties>
     <property name="components" value="z-fade"/>
@@ -731,13 +856,23 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="103" name="water" visible="0">
+ <objectgroup id="103" name="water">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="1877" name="water" type="object" x="-471.165" y="2434.9" width="8758.33" height="2202.2">
    <properties>
     <property name="components" value="z-fade"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="125" name="vines fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1976" name="vines" type="terrain" x="-1536.55" y="2454" width="11161.1" height="2324">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
