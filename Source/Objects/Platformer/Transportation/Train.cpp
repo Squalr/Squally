@@ -140,10 +140,10 @@ Train::Train(cocos2d::ValueMap& properties) : super(properties, CSize(1083.0f, 9
 			segmentName += "Small";
 		}
 
-		SmartAnimationNode* segment = SmartAnimationNode::create(ObjectResources::Transportation_Train_Animations, segmentName);
+		SmartAnimationNode* segmentAnims = SmartAnimationNode::create(ObjectResources::Transportation_Train_Animations, segmentName);
 
-		this->segments.push_back(std::make_tuple(segment, segmentSize));
-		this->frontNode->addChild(segment);
+		this->segments.push_back(std::make_tuple(segmentAnims, segmentSize));
+		this->frontNode->addChild(segmentAnims);
 	}
 
 	if (this->isIdling)
