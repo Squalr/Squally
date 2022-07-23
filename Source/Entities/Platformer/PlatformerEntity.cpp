@@ -277,11 +277,13 @@ void PlatformerEntity::optimizationHideOffscreenEntity()
 	if (CameraRect.intersectsRect(thisRect))
 	{
 		this->animationNode->enableRender();
-		this->animationNode->setVisible(true);
+
+		// animationNode can be set visible by other scripts, use the parent node instead to avoid conflicts
+		this->floatNode->setVisible(true);
 	}
 	else
 	{
 		this->animationNode->disableRender();
-		this->animationNode->setVisible(false);
+		this->floatNode->setVisible(false);
 	}
 }

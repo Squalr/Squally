@@ -117,6 +117,8 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #3", MapResources::EndianForest_Mages_Gauntlet_3));
 		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #4", MapResources::EndianForest_Mages_Gauntlet_4));
 
+		// Shaman out of combat attack (similar to Grogg fireball)
+
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
@@ -161,6 +163,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Docks (UR)", MapResources::UnderflowRuins_Town_Docks));
 
 		// Traps: Spike log railed, water launcher (in sewers)
+		// Inversion and Broken Blade are missing MAX/MIN
 		// And the 3_x maps are too confusing and bloated
 		// Too many fucking pyramids
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
