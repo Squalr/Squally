@@ -854,7 +854,12 @@ namespace ObjectResources
 	extern const std::string Traps_SpikedLog_SpikedLog_07;
 	extern const std::string Traps_SpikedLog_SpikedLog_08;
 	extern const std::string Traps_SpikedLog_SpikedLog_09;
+	extern const std::string Traps_SpikedPendulum_Pendulum;
 	extern const std::string Traps_SpikedPillar_WoodSpike;
+	extern const std::string Traps_SpikedRotatorFlat_RotatorBrown;
+	extern const std::string Traps_SpikedRotatorFlat_RotatorGray;
+	extern const std::string Traps_SpikedRotatorSemiCircle_RotatorBrown;
+	extern const std::string Traps_SpikedRotatorSemiCircle_RotatorGray;
 	extern const std::string Traps_Spikes_spikes_1;
 	extern const std::string Traps_Spikes_spikes_10;
 	extern const std::string Traps_Spikes_spikes_11;

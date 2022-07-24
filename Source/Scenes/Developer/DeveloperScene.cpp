@@ -201,7 +201,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (DM)", MapResources::DataMines_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
 
-		// Data Mines needs a Van Cleef style room with a ship for Krampus
+		// Tiger Door looks like shit
 		// Traps: Crushing stone blocks trap, killing contraptions? (reverse these when they are coming towards you)
 		// Needs quest progression
 		// 	- Olive => Dawn => Restore Power. Nothing fancy, bosses need not be quests since they are forced.

@@ -804,6 +804,7 @@ const std::string DecorResources::Ruins_Cactus1 = "Private/Platformer/Decor/Ruin
 const std::string DecorResources::Ruins_Cactus2 = "Private/Platformer/Decor/Ruins/Cactus2.png";
 const std::string DecorResources::Ruins_Cactus3 = "Private/Platformer/Decor/Ruins/Cactus3.png";
 const std::string DecorResources::Ruins_Cactus4 = "Private/Platformer/Decor/Ruins/Cactus4.png";
+const std::string DecorResources::Ruins_Colosseum = "Private/Platformer/Decor/Ruins/Colosseum.png";
 const std::string DecorResources::Ruins_LionDoor = "Private/Platformer/Decor/Ruins/LionDoor.png";
 const std::string DecorResources::Ruins_LionDoorFront = "Private/Platformer/Decor/Ruins/LionDoorFront.png";
 const std::string DecorResources::Ruins_Obelisk = "Private/Platformer/Decor/Ruins/Obelisk.png";

@@ -805,6 +805,7 @@ namespace DecorResources
 	extern const std::string Ruins_Cactus2;
 	extern const std::string Ruins_Cactus3;
 	extern const std::string Ruins_Cactus4;
+	extern const std::string Ruins_Colosseum;
 	extern const std::string Ruins_LionDoor;
 	extern const std::string Ruins_LionDoorFront;
 	extern const std::string Ruins_Obelisk;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="80" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1969">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="80" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1970">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -328,6 +328,7 @@
   <object id="1816" name="Mines/Rock4" type="decor" x="3375.33" y="1096.85" width="223" height="133" rotation="7"/>
   <object id="1817" name="Mines/Rock4" type="decor" x="3470.67" y="1162.18" width="223" height="133"/>
   <object id="1818" name="Mines/Rock4" type="decor" x="3429.17" y="1014.77" width="223" height="133"/>
+  <object id="1969" name="Mines/CaveDoor4" type="decor" x="283.924" y="1275.08" width="333" height="385"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -505,7 +506,6 @@
   <object id="1954" name="Mines/Rock4" type="decor" x="2619.21" y="1148.57" width="223" height="133"/>
   <object id="1955" name="Mines/Rock2" type="decor" x="2715.05" y="1056.07" width="114" height="86" rotation="15"/>
   <object id="1958" name="Mines/Rock4" type="decor" x="2563.17" y="1388.83" width="223" height="133"/>
-  <object id="1960" name="Mines/CaveDoor4" type="decor" x="283.924" y="1275.08" width="333" height="385"/>
   <object id="1961" name="portal" type="object" x="332.363" y="1401.64" width="256" height="256">
    <properties>
     <property name="map" value="DataMines/Town_Main"/>
