@@ -257,6 +257,9 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[Ralston::MapKey] = [=](ValueMap properties) { return (GameObject*)Ralston::deserialize(properties); };
 	this->deserializers[Xenon::MapKey] = [=](ValueMap properties) { return (GameObject*)Xenon::deserialize(properties); };
 	this->deserializers[Ysara::MapKey] = [=](ValueMap properties) { return (GameObject*)Ysara::deserialize(properties); };
+
+	// Special
+	this->deserializers[KillingMachine1::MapKey] = [=](ValueMap properties) { return (GameObject*)KillingMachine1::deserialize(properties); };
 }
 
 PlatformerEntityDeserializer::~PlatformerEntityDeserializer()

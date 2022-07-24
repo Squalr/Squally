@@ -226,5 +226,6 @@
 #include "Npcs/UnderflowRuins/Zeus.h"
 #include "Npcs/VoidStar/Radon.h"
 #include "Npcs/VoidStar/Xenon.h"
+#include "Special/KillingMachines/KillingMachine1.h"
 #include "Special/Shopkeeper.h"
 #include "Squally/Squally.h"

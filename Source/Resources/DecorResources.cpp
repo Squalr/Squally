@@ -831,7 +831,6 @@ const std::string DecorResources::Ruins_Walls8 = "Private/Platformer/Decor/Ruins
 const std::string DecorResources::Ruins_Walls9 = "Private/Platformer/Decor/Ruins/Walls9.png";
 const std::string DecorResources::Ruins_WarpTower = "Private/Platformer/Decor/Ruins/WarpTower.png";
 const std::string DecorResources::Ruins_Well = "Private/Platformer/Decor/Ruins/Well.png";
-const std::string DecorResources::Ruins_Window = "Private/Platformer/Decor/Ruins/Window.png";
 const std::string DecorResources::Ruins_WindowTransparent = "Private/Platformer/Decor/Ruins/WindowTransparent.png";
 const std::string DecorResources::Snow_Background_Canyon1 = "Private/Platformer/Decor/Snow/Background/Canyon1.png";
 const std::string DecorResources::Snow_Background_Canyon2 = "Private/Platformer/Decor/Snow/Background/Canyon2.png";

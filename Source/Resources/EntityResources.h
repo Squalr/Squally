@@ -2383,15 +2383,19 @@ namespace EntityResources
 	extern const std::string Misc_UnderflowRuins_Gull_flying_wing_down;
 	extern const std::string Misc_UnderflowRuins_Gull_flying_wing_up;
 	extern const std::string Misc_UnderflowRuins_Gull_foot;
+	extern const std::string Misc_UnderflowRuins_Gull_foot_2;
 	extern const std::string Misc_UnderflowRuins_Gull_head;
 	extern const std::string Misc_UnderflowRuins_Gull_head_eyes_closed;
 	extern const std::string Misc_UnderflowRuins_Gull_leg_lower;
+	extern const std::string Misc_UnderflowRuins_Gull_leg_lower_2;
 	extern const std::string Misc_UnderflowRuins_Gull_leg_upper;
+	extern const std::string Misc_UnderflowRuins_Gull_leg_upper_2;
 	extern const std::string Misc_UnderflowRuins_Gull_neck;
 	extern const std::string Misc_UnderflowRuins_Gull_pupil;
 	extern const std::string Misc_UnderflowRuins_Gull_tail;
 	extern const std::string Misc_UnderflowRuins_Gull_wing;
 	extern const std::string Misc_UnderflowRuins_KillingMachine1_Animations;
+	extern const std::string Misc_UnderflowRuins_KillingMachine1_Emblem;
 	extern const std::string Misc_UnderflowRuins_KillingMachine1_axe;
 	extern const std::string Misc_UnderflowRuins_KillingMachine1_back_piston;
 	extern const std::string Misc_UnderflowRuins_KillingMachine1_body;
@@ -2414,6 +2418,7 @@ namespace EntityResources
 	extern const std::string Misc_UnderflowRuins_KillingMachine1_wheel_01;
 	extern const std::string Misc_UnderflowRuins_KillingMachine1_wheel_02;
 	extern const std::string Misc_UnderflowRuins_KillingMachine2_Animations;
+	extern const std::string Misc_UnderflowRuins_KillingMachine2_Emblem;
 	extern const std::string Misc_UnderflowRuins_KillingMachine2_back_shaft;
 	extern const std::string Misc_UnderflowRuins_KillingMachine2_back_wheel;
 	extern const std::string Misc_UnderflowRuins_KillingMachine2_belt;
@@ -2446,6 +2451,7 @@ namespace EntityResources
 	extern const std::string Misc_UnderflowRuins_KillingMachine2_whistle_lever;
 	extern const std::string Misc_UnderflowRuins_KillingMachine2_whistle_lever_line;
 	extern const std::string Misc_UnderflowRuins_KillingMachine3_Animations;
+	extern const std::string Misc_UnderflowRuins_KillingMachine3_Emblem;
 	extern const std::string Misc_UnderflowRuins_KillingMachine3_body_holder;
 	extern const std::string Misc_UnderflowRuins_KillingMachine3_boiler_tank;
 	extern const std::string Misc_UnderflowRuins_KillingMachine3_cat_01;
@@ -2461,7 +2467,6 @@ namespace EntityResources
 	extern const std::string Misc_UnderflowRuins_KillingMachine3_explode_machine_explode_06;
 	extern const std::string Misc_UnderflowRuins_KillingMachine3_explode_machine_explode_07;
 	extern const std::string Misc_UnderflowRuins_KillingMachine3_explode_machine_explode_08;
-	extern const std::string Misc_UnderflowRuins_KillingMachine3_guide;
 	extern const std::string Misc_UnderflowRuins_KillingMachine3_left_arm_back;
 	extern const std::string Misc_UnderflowRuins_KillingMachine3_left_arm_top;
 	extern const std::string Misc_UnderflowRuins_KillingMachine3_pipes;
@@ -2473,6 +2478,7 @@ namespace EntityResources
 	extern const std::string Misc_UnderflowRuins_KillingMachine3_steam_cloud;
 	extern const std::string Misc_UnderflowRuins_KillingMachine3_steam_jet;
 	extern const std::string Misc_UnderflowRuins_KillingMachine4_Animations;
+	extern const std::string Misc_UnderflowRuins_KillingMachine4_Emblem;
 	extern const std::string Misc_UnderflowRuins_KillingMachine4_back_wheel;
 	extern const std::string Misc_UnderflowRuins_KillingMachine4_boiler;
 	extern const std::string Misc_UnderflowRuins_KillingMachine4_chassis;
@@ -2499,6 +2505,7 @@ namespace EntityResources
 	extern const std::string Misc_UnderflowRuins_KillingMachine4_stone;
 	extern const std::string Misc_UnderflowRuins_KillingMachine4_weight_beam;
 	extern const std::string Misc_UnderflowRuins_KillingMachine5_Animations;
+	extern const std::string Misc_UnderflowRuins_KillingMachine5_Emblem;
 	extern const std::string Misc_UnderflowRuins_KillingMachine5_back_wheel;
 	extern const std::string Misc_UnderflowRuins_KillingMachine5_boiler;
 	extern const std::string Misc_UnderflowRuins_KillingMachine5_chassis;
@@ -2526,6 +2533,7 @@ namespace EntityResources
 	extern const std::string Misc_UnderflowRuins_KillingMachine5_wood_2;
 	extern const std::string Misc_UnderflowRuins_KillingMachine5_wood_lever;
 	extern const std::string Misc_UnderflowRuins_KillingMachine6_Animations;
+	extern const std::string Misc_UnderflowRuins_KillingMachine6_Emblem;
 	extern const std::string Misc_UnderflowRuins_KillingMachine6_arm_lower;
 	extern const std::string Misc_UnderflowRuins_KillingMachine6_arm_upper;
 	extern const std::string Misc_UnderflowRuins_KillingMachine6_arm_wheel;

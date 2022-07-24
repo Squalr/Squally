@@ -832,7 +832,6 @@ namespace DecorResources
 	extern const std::string Ruins_Walls9;
 	extern const std::string Ruins_WarpTower;
 	extern const std::string Ruins_Well;
-	extern const std::string Ruins_Window;
 	extern const std::string Ruins_WindowTransparent;
 	extern const std::string Snow_Background_Canyon1;
 	extern const std::string Snow_Background_Canyon2;
