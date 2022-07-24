@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Critters/Gull.h"
 #include "Critters/Horse.h"
 #include "Critters/Seagull.h"
 #include "Enemies/BallmerPeaks/Cryogen.h"

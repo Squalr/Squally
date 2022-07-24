@@ -150,6 +150,7 @@ public:
 
 	static const std::string MapKey;
 	static const std::string PropertyTopOnly;
+	static const std::string PropertySkipSurfaces;
 	static unsigned int NextTerrainId;
 
 protected:
@@ -200,6 +201,7 @@ private:
 
 	TerrainData terrainData;
 	bool isTopOnlyCollision = false;
+	bool skipSurfaces = false;
 	bool isInactive = false;
 	bool isFlipped = false;
 	bool hasBuiltTerrain = false;

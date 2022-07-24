@@ -2377,6 +2377,7 @@ namespace EntityResources
 	extern const std::string Misc_Tutorials_Shopkeeper_R_LEG;
 	extern const std::string Misc_Tutorials_Shopkeeper_TORSO;
 	extern const std::string Misc_UnderflowRuins_Gull_Animations;
+	extern const std::string Misc_UnderflowRuins_Gull_Emblem;
 	extern const std::string Misc_UnderflowRuins_Gull_back_wing;
 	extern const std::string Misc_UnderflowRuins_Gull_body;
 	extern const std::string Misc_UnderflowRuins_Gull_flying_wing_down;

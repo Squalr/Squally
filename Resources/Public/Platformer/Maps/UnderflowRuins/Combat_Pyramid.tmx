@@ -29,10 +29,10 @@
   <object id="582" name="torch" type="object" x="562.091" y="1286.64" width="42" height="130"/>
   <object id="583" name="torch" type="object" x="1341.15" y="1275.7" width="42" height="130"/>
   <object id="584" name="torch" type="object" x="2051.91" y="1296.55" width="42" height="130"/>
-  <object id="585" name="Ruins/Window" type="decor" x="1.864" y="942.409" width="313" height="381"/>
-  <object id="586" name="Ruins/Window" type="decor" x="833.803" y="940.773" width="313" height="381"/>
-  <object id="587" name="Ruins/Window" type="decor" x="1550.17" y="936.167" width="313" height="381"/>
-  <object id="588" name="Ruins/Window" type="decor" x="2257.08" y="944.167" width="313" height="381"/>
+  <object id="585" name="Ruins/WindowTransparent" type="decor" x="1.864" y="942.409" width="313" height="381"/>
+  <object id="586" name="Ruins/WindowTransparent" type="decor" x="833.803" y="940.773" width="313" height="381"/>
+  <object id="587" name="Ruins/WindowTransparent" type="decor" x="1550.17" y="936.167" width="313" height="381"/>
+  <object id="588" name="Ruins/WindowTransparent" type="decor" x="2257.08" y="944.167" width="313" height="381"/>
  </objectgroup>
  <objectgroup id="21" name="all entities and terrain (same layer for z sorting)">
   <properties>

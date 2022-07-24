@@ -174,13 +174,13 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="953" name="seagull" type="entity" x="1465.9" y="1771.24" width="128" height="128">
+  <object id="953" name="gull" type="entity" x="1465.9" y="1771.24" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="954" name="seagull" type="entity" x="1809.41" y="1774.42" width="128" height="128">
+  <object id="954" name="gull" type="entity" x="1809.41" y="1774.42" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
@@ -277,7 +277,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="105" name="decor -2">
+ <objectgroup id="105" name="decor -2" visible="0">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -380,31 +380,31 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="946" name="seagull" type="entity" x="353.563" y="1898.98" width="128" height="128">
+  <object id="946" name="gull" type="entity" x="353.563" y="1898.98" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="947" name="seagull" type="entity" x="293.297" y="1896.83" width="128" height="128">
+  <object id="947" name="gull" type="entity" x="293.297" y="1896.83" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="948" name="seagull" type="entity" x="1182.23" y="1886.06" width="128" height="128">
+  <object id="948" name="gull" type="entity" x="1182.23" y="1886.06" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="950" name="seagull" type="entity" x="1653.61" y="1886.06" width="128" height="128">
+  <object id="950" name="gull" type="entity" x="1653.61" y="1886.06" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="951" name="seagull" type="entity" x="1860.24" y="1896.83" width="128" height="128">
+  <object id="951" name="gull" type="entity" x="1860.24" y="1896.83" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
@@ -421,7 +421,7 @@
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="894" name="spawn" type="object" x="472.179" y="1891.31" width="128" height="128">
+  <object id="894" name="gull" type="object" x="472.179" y="1891.31" width="128" height="128">
    <properties>
     <property name="map-banner" value="underflow-ruins"/>
     <property name="transition" value="docks"/>

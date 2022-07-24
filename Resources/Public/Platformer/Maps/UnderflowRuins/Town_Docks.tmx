@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="789">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="789">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -110,13 +110,13 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="785" name="seagull" type="entity" x="2430.67" y="1426.67" width="128" height="128">
+  <object id="785" name="gull" type="entity" x="2430.67" y="1426.67" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="786" name="seagull" type="entity" x="2065.33" y="1428" width="128" height="128">
+  <object id="786" name="gull" type="entity" x="2065.33" y="1428" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
@@ -319,64 +319,64 @@
     <property name="components" value="friendly"/>
    </properties>
   </object>
-  <object id="775" name="seagull" type="entity" x="1376.73" y="1543.52" width="128" height="128">
+  <object id="775" name="gull" type="entity" x="1376.73" y="1543.52" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="776" name="seagull" type="entity" x="1195.4" y="1542.18" width="128" height="128">
+  <object id="776" name="gull" type="entity" x="1195.4" y="1542.18" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="777" name="seagull" type="entity" x="1482.06" y="1544.19" width="128" height="128">
+  <object id="777" name="gull" type="entity" x="1482.06" y="1544.19" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="778" name="seagull" type="entity" x="1300.74" y="1542.85" width="128" height="128">
+  <object id="778" name="gull" type="entity" x="1300.74" y="1542.85" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="779" name="seagull" type="entity" x="1568.73" y="1544.85" width="128" height="128">
+  <object id="779" name="gull" type="entity" x="1568.73" y="1544.85" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="780" name="seagull" type="entity" x="1897.33" y="1544" width="128" height="128">
+  <object id="780" name="gull" type="entity" x="1897.33" y="1544" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="781" name="seagull" type="entity" x="2012" y="1544" width="128" height="128">
+  <object id="781" name="gull" type="entity" x="2012" y="1544" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="782" name="seagull" type="entity" x="3272" y="1544" width="128" height="128">
+  <object id="782" name="gull" type="entity" x="3272" y="1544" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="783" name="seagull" type="entity" x="3414.67" y="1544" width="128" height="128">
+  <object id="783" name="gull" type="entity" x="3414.67" y="1544" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
-  <object id="784" name="seagull" type="entity" x="3550.67" y="1544" width="128" height="128">
+  <object id="784" name="gull" type="entity" x="3550.67" y="1544" width="128" height="128">
    <properties>
     <property name="components" value="friendly,bird,pacing"/>
     <property name="travel-distance" type="float" value="128"/>

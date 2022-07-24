@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="37" nextobjectid="592">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="37" nextobjectid="599">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
  </tileset>
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="YellowSky"/>
+   <property name="background" value="BrightSky"/>
    <property name="music" value="trick-or-treat"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
@@ -17,7 +17,12 @@
    <property name="depth" type="float" value="-356"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="564" name="temple-dark" type="texture" x="-781.031" y="-415.903">
+  <object id="564" name="temple-dark" type="terrain" x="-781.031" y="-415.903">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="hole-tag" value="hole-A"/>
+    <property name="skip-surfaces" type="bool" value="true"/>
+   </properties>
    <polygon points="140.589,64.0027 3977.72,60.4936 3981.18,3365.35 141.317,3367.84"/>
   </object>
  </objectgroup>
@@ -29,10 +34,30 @@
   <object id="582" name="torch" type="object" x="566.091" y="1294.64" width="42" height="130"/>
   <object id="583" name="torch" type="object" x="1345.15" y="1283.7" width="42" height="130"/>
   <object id="584" name="torch" type="object" x="2055.91" y="1304.55" width="42" height="130"/>
-  <object id="585" name="Ruins/Window" type="decor" x="5.864" y="950.409" width="313" height="381"/>
-  <object id="586" name="Ruins/Window" type="decor" x="837.803" y="948.773" width="313" height="381"/>
-  <object id="587" name="Ruins/Window" type="decor" x="1554.17" y="944.167" width="313" height="381"/>
-  <object id="588" name="Ruins/Window" type="decor" x="2261.08" y="952.167" width="313" height="381"/>
+  <object id="585" name="Ruins/WindowTransparent" type="decor" x="5.864" y="950.409" width="313" height="381"/>
+  <object id="586" name="Ruins/WindowTransparent" type="decor" x="837.803" y="948.773" width="313" height="381"/>
+  <object id="587" name="Ruins/WindowTransparent" type="decor" x="1554.17" y="944.167" width="313" height="381"/>
+  <object id="588" name="Ruins/WindowTransparent" type="decor" x="2261.08" y="952.167" width="313" height="381"/>
+  <object id="592" name="terrain-hole" type="object" x="77.6061" y="1024" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="596" name="terrain-hole" type="object" x="909" y="1024" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="597" name="terrain-hole" type="object" x="1625" y="1024" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="598" name="terrain-hole" type="object" x="2333" y="1024" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="21" name="all entities and terrain (same layer for z sorting)">
   <properties>

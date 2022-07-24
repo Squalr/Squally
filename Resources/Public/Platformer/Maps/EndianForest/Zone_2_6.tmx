@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="83" nextobjectid="1145">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="1153">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="SkyYellow"/>
+   <property name="background" value="BrightSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
@@ -18,17 +18,25 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1065" name="temple-dark" type="texture" x="-881.815" y="-838" width="9923.63" height="7988"/>
+  <object id="1065" name="temple-dark" type="terrain" x="-881.815" y="-838" width="9923.63" height="7988">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="hole-tag" value="hole-A"/>
+    <property name="skip-surfaces" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="79" name="decor -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1033" name="Ruins/Window" type="decor" x="4852.96" y="4297.25" width="313" height="381"/>
-  <object id="1034" name="Ruins/Window" type="decor" x="2485.92" y="2797.62" width="313" height="381"/>
-  <object id="1035" name="Ruins/Window" type="decor" x="2495.02" y="940.05" width="313" height="381"/>
-  <object id="1036" name="Ruins/Window" type="decor" x="646.53" y="1618.83" width="313" height="381"/>
+  <object id="1033" name="Ruins/WindowTransparent" type="decor" x="4852.96" y="4297.25" width="313" height="381"/>
+  <object id="1150" name="Ruins/WindowTransparent" type="decor" x="4464.96" y="2493.25" width="313" height="381"/>
+  <object id="1152" name="Ruins/WindowTransparent" type="decor" x="6492.96" y="3197.25" width="313" height="381"/>
+  <object id="1034" name="Ruins/WindowTransparent" type="decor" x="2485.92" y="2797.62" width="313" height="381"/>
+  <object id="1035" name="Ruins/WindowTransparent" type="decor" x="2495.02" y="940.05" width="313" height="381"/>
+  <object id="1036" name="Ruins/WindowTransparent" type="decor" x="646.53" y="1618.83" width="313" height="381"/>
   <object id="1037" name="torch" type="object" x="412.333" y="1965.55" width="42" height="130"/>
   <object id="1038" name="torch" type="object" x="1142.64" y="1968.58" width="42" height="130"/>
   <object id="1039" name="torch" type="object" x="2263.85" y="1326.15" width="42" height="130"/>
@@ -44,6 +52,42 @@
   <object id="1049" name="torch" type="object" x="4167.73" y="2601.24" width="42" height="130"/>
   <object id="1050" name="torch" type="object" x="5367.73" y="2613.36" width="42" height="130"/>
   <object id="1051" name="torch" type="object" x="4773.79" y="2605.78" width="42" height="130"/>
+ </objectgroup>
+ <objectgroup id="83" name="objects -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1145" name="terrain-hole" type="object" x="715.251" y="1687.04" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1146" name="terrain-hole" type="object" x="2567" y="1007.17" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1147" name="terrain-hole" type="object" x="2553.21" y="2870" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1148" name="terrain-hole" type="object" x="4925.67" y="4372.5" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1149" name="terrain-hole" type="object" x="4537.67" y="2568.5" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1151" name="terrain-hole" type="object" x="6565.67" y="3272.5" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="77" name="terrain -6">
   <properties>
@@ -61,7 +105,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="81" name="objects -6">
+ <objectgroup id="81" name="objects -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="is-hackable" type="bool" value="true"/>
@@ -469,18 +513,18 @@
   </properties>
   <object id="946" name="goblin-grunt-boar" type="entity" x="5029.21" y="4596.22" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Temple"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="947" name="orc-warrior" type="entity" x="5024.73" y="4271.78" width="128" height="128">
    <properties>
-    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
   <object id="1017" name="goblin-grunt-boar" type="entity" x="4613.33" y="1348" width="128" height="128">

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="44" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="987">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="44" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="989">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="SkyYellow"/>
+   <property name="background" value="BrightSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
@@ -18,18 +18,40 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="978" name="temple-dark" type="texture" x="-349.815" y="-358" width="6331.63" height="3540"/>
+  <object id="978" name="temple-dark" type="terrain" x="-349.815" y="-358" width="6331.63" height="3540">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="hole-tag" value="hole-A"/>
+    <property name="skip-surfaces" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="72" name="decor -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="961" name="Ruins/Window" type="decor" x="1759.5" y="1025.5" width="313" height="381"/>
-  <object id="962" name="Ruins/Window" type="decor" x="2887.5" y="1021.5" width="313" height="381"/>
+  <object id="961" name="Ruins/WindowTransparent" type="decor" x="1759.5" y="1025.5" width="313" height="381"/>
+  <object id="962" name="Ruins/WindowTransparent" type="decor" x="2887.5" y="1021.5" width="313" height="381"/>
   <object id="967" name="torch" type="object" x="2429.06" y="1180.42" width="42" height="130"/>
   <object id="968" name="torch" type="object" x="1388.93" y="1185.57" width="42" height="130"/>
   <object id="969" name="torch" type="object" x="3539" y="1187" width="42" height="130"/>
+ </objectgroup>
+ <objectgroup id="73" name="objects -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="987" name="terrain-hole" type="object" x="1834.68" y="1091.29" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="988" name="terrain-hole" type="object" x="2963" y="1091.83" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="58" name="terrain bg">
   <properties>

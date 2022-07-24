@@ -2376,6 +2376,7 @@ const std::string EntityResources::Misc_Tutorials_Shopkeeper_R_ARM = "Private/Pl
 const std::string EntityResources::Misc_Tutorials_Shopkeeper_R_LEG = "Private/Platformer/Entities/Misc/Tutorials/Shopkeeper/R LEG.png";
 const std::string EntityResources::Misc_Tutorials_Shopkeeper_TORSO = "Private/Platformer/Entities/Misc/Tutorials/Shopkeeper/TORSO.png";
 const std::string EntityResources::Misc_UnderflowRuins_Gull_Animations = "Private/Platformer/Entities/Misc/UnderflowRuins/Gull/Animations.scml";
+const std::string EntityResources::Misc_UnderflowRuins_Gull_Emblem = "Private/Platformer/Entities/Misc/UnderflowRuins/Gull/Emblem.png";
 const std::string EntityResources::Misc_UnderflowRuins_Gull_back_wing = "Private/Platformer/Entities/Misc/UnderflowRuins/Gull/back_wing.png";
 const std::string EntityResources::Misc_UnderflowRuins_Gull_body = "Private/Platformer/Entities/Misc/UnderflowRuins/Gull/body.png";
 const std::string EntityResources::Misc_UnderflowRuins_Gull_flying_wing_down = "Private/Platformer/Entities/Misc/UnderflowRuins/Gull/flying_wing_down.png";

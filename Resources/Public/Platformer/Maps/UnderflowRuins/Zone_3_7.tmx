@@ -24,7 +24,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="962" name="Ruins/Window" type="decor" x="1160.11" y="551.015" width="313" height="381"/>
+  <object id="962" name="Ruins/WindowTransparent" type="decor" x="1160.11" y="551.015" width="313" height="381"/>
   <object id="967" name="torch" type="object" x="788.94" y="717.935" width="42" height="130"/>
   <object id="969" name="torch" type="object" x="1811.61" y="716.515" width="42" height="130"/>
  </objectgroup>

@@ -35,6 +35,7 @@ using namespace cocos2d;
 
 const std::string TerrainObject::MapKey = "terrain";
 const std::string TerrainObject::PropertyTopOnly = "top-only";
+const std::string TerrainObject::PropertySkipSurfaces = "skip-surfaces";
 const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
 const float TerrainObject::TopThreshold = float(M_PI) / 6.0f;
@@ -46,6 +47,7 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->terrainObjectId = TerrainObject::NextTerrainId++;
 	this->terrainData = terrainData;
 	this->isTopOnlyCollision = GameUtils::getKeyOrDefault(this->properties, TerrainObject::PropertyTopOnly, Value(false)).asBool();
+	this->skipSurfaces = GameUtils::getKeyOrDefault(this->properties, TerrainObject::PropertySkipSurfaces, Value(false)).asBool();
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
 	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
 	this->enableHackerModeEvents = true;
@@ -504,6 +506,11 @@ void TerrainObject::buildInfill(InfillData infillData)
 void TerrainObject::buildSurfaceTextures(const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& sourceSegments,
 	const std::vector<AlgoUtils::Triangle>& sourceTriangles, bool isHole)
 {
+	if (this->skipSurfaces)
+	{
+		return;
+	}
+	
 	std::tuple<Vec2, Vec2>* previousSegment = nullptr;
 
 	for (auto it = sourceSegments.begin(); it != sourceSegments.end(); it++)

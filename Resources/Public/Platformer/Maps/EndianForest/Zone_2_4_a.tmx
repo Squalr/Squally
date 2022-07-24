@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="994">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="995">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="SkyYellow"/>
+   <property name="background" value="BrightSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
@@ -18,7 +18,13 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="991" name="temple-dark" type="texture" x="-493.815" y="-274" width="2960.11" height="2676.24"/>
+  <object id="991" name="temple-dark" type="terrain" x="-493.815" y="-274" width="2960.11" height="2676.24">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="hole-tag" value="hole-A"/>
+    <property name="skip-surfaces" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="74" name="terrain -6">
   <properties>
@@ -46,11 +52,22 @@
   <object id="975" name="torch" type="object" x="275" y="1151" width="42" height="130"/>
   <object id="976" name="torch" type="object" x="771" y="1151" width="42" height="130"/>
   <object id="977" name="torch" type="object" x="1847" y="1143" width="42" height="130"/>
-  <object id="978" name="Ruins/Window" type="decor" x="389.5" y="845.5" width="313" height="381"/>
+  <object id="978" name="Ruins/WindowTransparent" type="decor" x="389.5" y="845.5" width="313" height="381"/>
   <object id="981" name="vase" type="object" x="1009.5" y="1408" width="113" height="160">
    <properties>
     <property name="color" value="blue"/>
     <property name="spawn-pool" value="spawn-pool-ef"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="80" name="objects -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="994" name="terrain-hole" type="object" x="461.163" y="908.875" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
    </properties>
   </object>
  </objectgroup>
