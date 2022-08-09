@@ -605,7 +605,7 @@
   <object id="1213" name="killing-machine-1" type="entity" x="5169.94" y="1960.75" width="128" height="128">
    <properties>
     <property name="components" value="friendly"/>
-    <property name="flip-x" type="bool" value="false"/>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
    </properties>
@@ -613,7 +613,7 @@
   <object id="1214" name="killing-machine-2" type="entity" x="5484.06" y="1964.76" width="128" height="128">
    <properties>
     <property name="components" value="friendly"/>
-    <property name="flip-x" type="bool" value="false"/>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
    </properties>
@@ -621,7 +621,7 @@
   <object id="1215" name="killing-machine-3" type="entity" x="5723.33" y="1959.6" width="128" height="128">
    <properties>
     <property name="components" value="friendly"/>
-    <property name="flip-x" type="bool" value="false"/>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
    </properties>
@@ -629,7 +629,7 @@
   <object id="1216" name="killing-machine-4" type="entity" x="5949.64" y="1964.1" width="128" height="128">
    <properties>
     <property name="components" value="friendly"/>
-    <property name="flip-x" type="bool" value="false"/>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
    </properties>
@@ -637,7 +637,7 @@
   <object id="1217" name="killing-machine-5" type="entity" x="6188.18" y="1962.27" width="128" height="128">
    <properties>
     <property name="components" value="friendly"/>
-    <property name="flip-x" type="bool" value="false"/>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
    </properties>
@@ -645,7 +645,7 @@
   <object id="1218" name="killing-machine-6" type="entity" x="6407.52" y="1961.6" width="128" height="128">
    <properties>
     <property name="components" value="friendly"/>
-    <property name="flip-x" type="bool" value="false"/>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
    </properties>

@@ -179,6 +179,7 @@ void GauntletIntroduction::runCinematicSequencePt2()
 			this->squally->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(this->squallyDestinationMarker).x));
 			this->squally->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
 			{
+				PlatformerEvents::TriggerCinematicHijack();
 				this->runCinematicSequencePt3();
 			});
 		}),
@@ -188,5 +189,13 @@ void GauntletIntroduction::runCinematicSequencePt2()
 
 void GauntletIntroduction::runCinematicSequencePt3()
 {
-	this->broadcastMapEvent(GauntletIntroduction::MapEventBeginGauntlet, ValueMap());
+	this->runAction(Sequence::create(
+		DelayTime::create(1.0f),
+		CallFunc::create([=]()
+		{
+			PlatformerEvents::TriggerCinematicRestore();
+			this->broadcastMapEvent(GauntletIntroduction::MapEventBeginGauntlet, ValueMap());
+		}),
+		nullptr
+	));
 }

@@ -2,6 +2,7 @@
 
 #include "cocos/math/CCGeometry.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Resources/EntityResources.h"
 
 #include "Strings/Strings.h"
@@ -28,6 +29,7 @@ KillingMachine3::KillingMachine3(ValueMap& properties) : super(properties,
 	Vec2(0.0f, 0.0f))
 {
 	// Hack until animation is fixed
+	this->animationNode->setScaleX(-this->animationNode->getScaleX());
 	this->animationNode->setPosition(Vec2(0.0f, 212.0f));
 }
 

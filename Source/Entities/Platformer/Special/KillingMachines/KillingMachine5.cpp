@@ -2,6 +2,7 @@
 
 #include "cocos/math/CCGeometry.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Resources/EntityResources.h"
 
 #include "Strings/Strings.h"
@@ -27,6 +28,7 @@ KillingMachine5::KillingMachine5(ValueMap& properties) : super(properties,
 	0.25f,
 	Vec2(0.0f, 0.0f))
 {
+	this->animationNode->setScaleX(-this->animationNode->getScaleX());
 }
 
 KillingMachine5::~KillingMachine5()
