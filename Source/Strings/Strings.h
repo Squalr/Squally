@@ -28269,10 +28269,10 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent() = default;
 	};
 
-	class Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_A_YouHaveCleansed : public LocalizedString
+	class Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_A_NewChallengersApproach : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_A_YouHaveCleansed* create();
+		static Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_A_NewChallengersApproach* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28280,14 +28280,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_A_YouHaveCleansed();
-		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_A_YouHaveCleansed() = default;
+		Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_A_NewChallengersApproach();
+		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_A_NewChallengersApproach() = default;
 	};
 
-	class Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_B_TakeThis : public LocalizedString
+	class Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_B_WellDone : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_B_TakeThis* create();
+		static Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_B_WellDone* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28295,14 +28295,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_B_TakeThis();
-		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_B_TakeThis() = default;
+		Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_B_WellDone();
+		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_B_WellDone() = default;
 	};
 
-	class Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_C_BehindMeDataMines : public LocalizedString
+	class Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_C_TakeThis : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_C_BehindMeDataMines* create();
+		static Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_C_TakeThis* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28310,14 +28310,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_C_BehindMeDataMines();
-		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_C_BehindMeDataMines() = default;
+		Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_C_TakeThis();
+		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_C_TakeThis() = default;
 	};
 
-	class Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_D_BestOfLuck : public LocalizedString
+	class Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_D_BestOfLuck : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_D_BestOfLuck* create();
+		static Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_D_BestOfLuck* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28325,8 +28325,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_D_BestOfLuck();
-		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_D_BestOfLuck() = default;
+		Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_D_BestOfLuck();
+		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_D_BestOfLuck() = default;
 	};
 
 	class Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt1 : public LocalizedString

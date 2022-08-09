@@ -28,7 +28,7 @@ KillingMachine3::KillingMachine3(ValueMap& properties) : super(properties,
 	Vec2(0.0f, 0.0f))
 {
 	// Hack until animation is fixed
-	this->animationNode->setPosition(Vec2(0.0f, 232.0f));
+	this->animationNode->setPosition(Vec2(0.0f, 212.0f));
 }
 
 KillingMachine3::~KillingMachine3()

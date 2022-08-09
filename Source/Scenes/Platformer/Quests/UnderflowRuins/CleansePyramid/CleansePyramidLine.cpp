@@ -3,7 +3,6 @@
 #include "Engine/Quests/QuestTask.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CleansePyramid/DefeatOsiris.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CleansePyramid/TalkToHorus.h"
-#include "Scenes/Platformer/Quests/UnderflowRuins/CleansePyramid/TalkToCleopatra.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CleansePyramid/UnlockTomb.h"
 
 using namespace cocos2d;
@@ -23,7 +22,6 @@ CleansePyramidLine::CleansePyramidLine() : super(CleansePyramidLine::MapKeyQuest
 	QuestData(TalkToHorus::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToHorus::create(owner, questLine); }),
 	QuestData(DefeatOsiris::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return DefeatOsiris::create(owner, questLine); }),
 	QuestData(UnlockTomb::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return UnlockTomb::create(owner, questLine); }),
-	QuestData(TalkToCleopatra::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToCleopatra::create(owner, questLine); }),
 })
 {
 }

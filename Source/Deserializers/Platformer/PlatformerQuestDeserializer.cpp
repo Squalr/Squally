@@ -40,6 +40,7 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	this->lineDeserializers[WindSpellbookLine::MapKeyQuestLine] = [=]() { return (QuestLine*)WindSpellbookLine::create(); };
 
 	// UNDERFLOW RUINS QUESTS
+	this->lineDeserializers[ColosseumGauntletLine::MapKeyQuestLine] = [=]() { return (QuestLine*)ColosseumGauntletLine::create(); };
 	this->lineDeserializers[CleansePyramidLine::MapKeyQuestLine] = [=]() { return (QuestLine*)CleansePyramidLine::create(); };
 	this->lineDeserializers[CureTownLine::MapKeyQuestLine] = [=]() { return (QuestLine*)CureTownLine::create(); };
 
