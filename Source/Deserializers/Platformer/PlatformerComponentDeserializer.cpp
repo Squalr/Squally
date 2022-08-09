@@ -273,6 +273,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[WarlockCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)WarlockCombatBehavior::create(owner); };
 
 	// Misc
+	this->componentDeserializers[KillingMachineBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)KillingMachineBehaviorGroup::create(owner); };
 	this->componentDeserializers[RamWeakenedCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)RamWeakenedCombatBehavior::create(owner); };
 	
 	/*********************

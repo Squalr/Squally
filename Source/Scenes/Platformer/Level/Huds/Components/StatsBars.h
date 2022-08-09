@@ -34,6 +34,8 @@ public:
 	void enableInteraction();
 	void disableInteraction(int opacity = 255);
 	int getFrameOpaicty();
+	void toggleManaBarVisibility(bool isVisible);
+	void toggleEmblemVisibility(bool isVisible);
 	void setMouseOverCallback(std::function<void(StatsBars*)> onMouseOverCallback);
 	void setClickCallback(std::function<void(StatsBars*)> onClickCallback);
 

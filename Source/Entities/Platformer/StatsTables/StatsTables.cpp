@@ -353,6 +353,16 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Ralston::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Xenon::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Ysara::MapKey] = StatsIncrements(Stats(16, 8, 32));
+
+	/***********
+		MISC
+	************/
+	StatsTables::StatsTable[KillingMachine1::MapKey] = StatsIncrements(Stats(3, 0, 0));
+	StatsTables::StatsTable[KillingMachine2::MapKey] = StatsIncrements(Stats(3, 0, 0));
+	StatsTables::StatsTable[KillingMachine3::MapKey] = StatsIncrements(Stats(3, 0, 0));
+	StatsTables::StatsTable[KillingMachine4::MapKey] = StatsIncrements(Stats(3, 0, 0));
+	StatsTables::StatsTable[KillingMachine5::MapKey] = StatsIncrements(Stats(3, 0, 0));
+	StatsTables::StatsTable[KillingMachine6::MapKey] = StatsIncrements(Stats(3, 0, 0));
 }
 
 StatsTables::~StatsTables()

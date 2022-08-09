@@ -293,6 +293,18 @@ int StatsBars::getFrameOpaicty()
 	return this->frame->getOpacity();
 }
 
+void StatsBars::toggleManaBarVisibility(bool isVisible)
+{
+	this->manaBar->setVisible(isVisible);
+	this->manaSprite->setVisible(isVisible);
+}
+
+void StatsBars::toggleEmblemVisibility(bool isVisible)
+{
+	this->emblemNode->setVisible(isVisible);
+	this->emblemGlow->setVisible(isVisible);
+}
+
 void StatsBars::setMouseOverCallback(std::function<void(StatsBars*)> onMouseOverCallback)
 {
 	if (onMouseOverCallback == nullptr)
