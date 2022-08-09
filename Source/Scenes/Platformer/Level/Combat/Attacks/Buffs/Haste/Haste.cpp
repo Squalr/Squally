@@ -206,7 +206,7 @@ NO_OPTIMIZE void Haste::applyHaste()
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
-	this->currentSpeed += MathUtils::clamp(speedBonus, Haste::MinSpeed, Haste::MaxSpeed);
+	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, Haste::MinSpeed, Haste::MaxSpeed);
 
 	HACKABLES_STOP_SEARCH();
 }

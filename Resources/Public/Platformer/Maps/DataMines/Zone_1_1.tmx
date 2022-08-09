@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="837">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="839">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -36,6 +36,13 @@
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup id="75" name="terrain -4 fg">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="838" name="mines" type="terrain" x="2680.98" y="-151.225" width="545.287" height="2466.73"/>
  </objectgroup>
  <objectgroup id="68" name="decor -4">
   <properties>
@@ -179,11 +186,6 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="59" name="terrain2">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
@@ -193,6 +195,12 @@
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup id="59" name="terrain fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="837" name="mines" type="terrain" x="2683.41" y="-109.225" width="545.287" height="2466.73"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -243,7 +251,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="831" name="olive" type="entity" x="1008.37" y="1534.94" width="128" height="128">
+  <object id="831" name="olive" type="entity" x="1540.06" y="1529.7" width="128" height="128">
    <properties>
     <property name="components" value="olive-hexus,friendly,pick-pocket,face-squally"/>
     <property name="pocket-pool" value="dm-generic"/>

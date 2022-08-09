@@ -207,10 +207,6 @@ DeveloperScene::DeveloperScene()
 		// 	- Olive => Dawn => Restore Power. Nothing fancy, bosses need not be quests since they are forced.
 		//	- Need a way to force Dawn / Restore power quests. Dawn for Key, Power Forced via boss kill? Or on Krampus ship (req to escape)?
 		// Needs enemy scripting according to notes on which instructions this zone covers
-		// Needs hexus puzzles TODO: Scrap the "corrupt enemy puzzles", and instead have a shrine. Make it an entity for backwards compat.
-		//	Oh right, I did it this way so that there was a reason to use the entity icon.
-		//	I think the solution is a shrine with an entity icon (use emblem art).
-		//	Or something dumb like sitting animations for all card NPCs and have them at a table. But this is harder and not really different.
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}

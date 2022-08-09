@@ -260,6 +260,11 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 
 	// Special
 	this->deserializers[KillingMachine1::MapKey] = [=](ValueMap properties) { return (GameObject*)KillingMachine1::deserialize(properties); };
+	this->deserializers[KillingMachine2::MapKey] = [=](ValueMap properties) { return (GameObject*)KillingMachine2::deserialize(properties); };
+	this->deserializers[KillingMachine3::MapKey] = [=](ValueMap properties) { return (GameObject*)KillingMachine3::deserialize(properties); };
+	this->deserializers[KillingMachine4::MapKey] = [=](ValueMap properties) { return (GameObject*)KillingMachine4::deserialize(properties); };
+	this->deserializers[KillingMachine5::MapKey] = [=](ValueMap properties) { return (GameObject*)KillingMachine5::deserialize(properties); };
+	this->deserializers[KillingMachine6::MapKey] = [=](ValueMap properties) { return (GameObject*)KillingMachine6::deserialize(properties); };
 }
 
 PlatformerEntityDeserializer::~PlatformerEntityDeserializer()

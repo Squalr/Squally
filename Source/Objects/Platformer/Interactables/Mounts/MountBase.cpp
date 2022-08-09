@@ -204,10 +204,14 @@ void MountBase::faceEntityTowardsDirection()
 			this->mountedEntity->getAnimations()->setFlippedX(true);
 			break;
 		}
-		default:
 		case MountDirection::Right:
 		{
 			this->mountedEntity->getAnimations()->setFlippedX(false);
+			break;
+		}
+		case MountDirection::None:
+		default:
+		{
 			break;
 		}
 	}

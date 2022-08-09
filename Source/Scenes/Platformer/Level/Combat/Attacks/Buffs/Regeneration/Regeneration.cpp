@@ -97,7 +97,7 @@ void Regeneration::registerHackables()
 			LOCAL_FUNC_ID_RESTORE,
 			HackableCode::HackableCodeInfo(
 				Regeneration::RegenerationIdentifier,
-				Strings::Menus_Hacking_Abilities_Buffs_Reflect_Reflect::create(),
+				Strings::Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration::create(),
 				HackableBase::HackBarColor::Green,
 				UIResources::Menus_Icons_MoonShine,
 				LazyNode<HackablePreview>::create([=](){ return RegenerationGenericPreview::create(); }),

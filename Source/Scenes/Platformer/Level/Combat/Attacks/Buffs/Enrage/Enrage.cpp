@@ -192,7 +192,7 @@ NO_OPTIMIZE void Enrage::applyEnrageSpeed()
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
-	this->currentSpeed += MathUtils::clamp(speedBonus, Enrage::MinSpeed, Enrage::MaxSpeed);
+	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, Enrage::MinSpeed, Enrage::MaxSpeed);
 
 	HACKABLES_STOP_SEARCH();
 }
@@ -220,7 +220,7 @@ NO_OPTIMIZE void Enrage::applyEnrageIncreaseDamageDealt()
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
-	this->currentSpeed += MathUtils::clamp(speedBonus, Enrage::MinSpeed, Enrage::MaxSpeed);
+	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, Enrage::MinSpeed, Enrage::MaxSpeed);
 
 	HACKABLES_STOP_SEARCH();
 }
@@ -248,7 +248,7 @@ NO_OPTIMIZE void Enrage::applyEnrageIncreaseDamageTaken()
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
-	this->currentSpeed += MathUtils::clamp(speedBonus, Enrage::MinSpeed, Enrage::MaxSpeed);
+	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, Enrage::MinSpeed, Enrage::MaxSpeed);
 
 	HACKABLES_STOP_SEARCH();
 }

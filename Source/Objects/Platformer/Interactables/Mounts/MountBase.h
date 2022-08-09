@@ -9,6 +9,7 @@ class MountBase : public InteractObject
 public:
 	enum class MountDirection
 	{
+		None,
 		Left,
 		Right
 	};

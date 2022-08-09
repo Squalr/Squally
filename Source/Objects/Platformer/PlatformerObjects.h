@@ -85,6 +85,7 @@
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemSwimHack.h"
 #include "Objects/Platformer/Interactables/LifeStone.h"
 #include "Objects/Platformer/Interactables/Lights/Torch.h"
+#include "Objects/Platformer/Interactables/Mounts/GatlingGun/GatlingGun.h"
 #include "Objects/Platformer/Interactables/Mounts/MineCart/CartStop.h"
 #include "Objects/Platformer/Interactables/Mounts/MineCart/MineCart.h"
 #include "Objects/Platformer/Interactables/Puzzles/Brazier.h"

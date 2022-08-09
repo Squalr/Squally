@@ -123,6 +123,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[FloatTutorialPortal::MapKey] = [=](ValueMap properties) { return (GameObject*)FloatTutorialPortal::create(properties); };
 	this->deserializers[FloatingWoodenBeam::MapKey] = [=](ValueMap properties) { return (GameObject*)FloatingWoodenBeam::create(properties); };
 	this->deserializers[Gate::MapKey] = [=](ValueMap properties) { return (GameObject*)Gate::create(properties); };
+	this->deserializers[GatlingGun::MapKey] = [=](ValueMap properties) { return (GameObject*)GatlingGun::create(properties); };
 	this->deserializers[GlassDisplayItem::MapKey] = [=](ValueMap properties) { return (GameObject*)GlassDisplayItem::create(properties); };
 	this->deserializers[LanternGate::MapKey] = [=](ValueMap properties) { return (GameObject*)LanternGate::create(properties); };
 	this->deserializers[LogicGate::MapKey] = [=](ValueMap properties) { return (GameObject*)LogicGate::create(properties); };
