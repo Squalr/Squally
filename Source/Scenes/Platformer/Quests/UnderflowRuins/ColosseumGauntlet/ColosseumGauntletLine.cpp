@@ -19,7 +19,7 @@ ColosseumGauntletLine* ColosseumGauntletLine::create()
 }
 
 ColosseumGauntletLine::ColosseumGauntletLine() : super(ColosseumGauntletLine::MapKeyQuestLine, {
-	QuestData(GauntletIntroduction::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return GauntletIntroduction::create(owner, questLine); }),
+	QuestData(GauntletIntroduction::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return GauntletIntroduction::create(owner, questLine); }),
 	QuestData(WinGauntlet::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return WinGauntlet::create(owner, questLine); }),
 	QuestData(TalkToCleopatra::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return TalkToCleopatra::create(owner, questLine); }),
 })

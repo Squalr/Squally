@@ -12,20 +12,24 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Quests/QuestLine.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Npcs/UnderflowRuins/Cleopatra.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/ItemResources.h"
@@ -35,11 +39,12 @@
 
 using namespace cocos2d;
 
-const std::string GauntletIntroduction::MapKeyQuest = "guantlet-introduction";
+const std::string GauntletIntroduction::MapKeyQuest = "gauntlet-introduction";
 const std::string GauntletIntroduction::TagGuard = "guard";
 const std::string GauntletIntroduction::TagGuardTeleport = "guard-teleport";
-const std::string GauntletIntroduction::TagGuardDestination = "guard-destionation";
-const std::string GauntletIntroduction::TagSquallyDestination = "squally-destionation";
+const std::string GauntletIntroduction::TagGuardDestination = "guard-destination";
+const std::string GauntletIntroduction::TagSquallyDestination = "squally-destination";
+const std::string GauntletIntroduction::MapEventBeginGauntlet = "begin-gauntlet";
 
 GauntletIntroduction* GauntletIntroduction::create(GameObject* owner, QuestLine* questLine)
 {
@@ -82,7 +87,7 @@ void GauntletIntroduction::onLoad(QuestState questState)
 		ObjectEvents::QueryObjects<PlatformerEntity>([=](PlatformerEntity* guard)
 		{
 			this->guards.push_back(guard);
-		}, Guano::MapKey);
+		}, GauntletIntroduction::TagGuard);
 	});
 
 	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* guardTeleportMarker)
@@ -157,15 +162,31 @@ void GauntletIntroduction::runCinematicSequencePt2()
 
 		PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(guard, warpPosition, false));
 		guard->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(guard).x));
-		guard->setState(StateKeys::CinematicDestinationX, Value(-4096.0f));
+		guard->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(guardDestinationMarker).x + float(index) * 128.0f));
+
+		guard->getComponent<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
+		{
+			movementBehavior->setMoveAcceleration(12000.0f);
+		});
 	}
 	
 	this->runAction(Sequence::create(
-		DelayTime::create(5.0f),
+		DelayTime::create(1.75f),
 		CallFunc::create([=]()
 		{
-
+			PlatformerEvents::TriggerCinematicRestore();
+			this->squally->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->squally).x));
+			this->squally->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(this->squallyDestinationMarker).x));
+			this->squally->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
+			{
+				this->runCinematicSequencePt3();
+			});
 		}),
 		nullptr
 	));
+}
+
+void GauntletIntroduction::runCinematicSequencePt3()
+{
+	this->broadcastMapEvent(GauntletIntroduction::MapEventBeginGauntlet, ValueMap());
 }

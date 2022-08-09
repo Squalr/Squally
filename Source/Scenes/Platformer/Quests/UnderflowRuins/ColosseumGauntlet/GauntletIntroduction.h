@@ -30,6 +30,7 @@ private:
 
 	void runCinematicSequencePt1();
 	void runCinematicSequencePt2();
+	void runCinematicSequencePt3();
 
 	std::vector<PlatformerEntity*> guards;
 	Guano* guano = nullptr;
@@ -44,4 +45,5 @@ private:
 	static const std::string TagGuardTeleport;
 	static const std::string TagGuardDestination;
 	static const std::string TagSquallyDestination;
+	static const std::string MapEventBeginGauntlet;
 };

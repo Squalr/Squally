@@ -101,6 +101,11 @@ void WinGauntlet::onActivate(bool isActiveThroughSkippable)
 {
 	this->listenForMapEventOnce(WinGauntlet::MapEventBeginGauntlet, [=](ValueMap)
 	{
+		if (this->gatlingGun != nullptr && this->squally != nullptr)
+		{
+			this->gatlingGun->mount(this->squally);
+		}
+		
 		this->runCinematicSequencePt1();
 	});
 }
