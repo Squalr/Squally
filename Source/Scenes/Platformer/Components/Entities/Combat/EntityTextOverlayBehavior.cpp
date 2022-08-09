@@ -110,7 +110,7 @@ void EntityTextOverlayBehavior::onLoad()
 		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaRestoreDelt, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaRestoreDealt, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getData());
 
@@ -120,7 +120,7 @@ void EntityTextOverlayBehavior::onLoad()
 		}
 	}));
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaDrainDelt, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaDrainDealt, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getData());
 

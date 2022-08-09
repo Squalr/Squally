@@ -230,10 +230,12 @@ NO_OPTIMIZE void ManaDrain::runRestoreTick()
 
 	HACKABLES_STOP_SEARCH();
 
+	bool overflowedMin = drainAmount >= 3;
+	bool overflowedMax = drainAmount <= -3;
 	drainAmount = MathUtils::clamp(drainAmount, -3, 3);
 
 	this->healSound->play();
-	CombatEvents::TriggerManaDrain(CombatEvents::ManaRestoreOrDrainArgs(this->caster, this->owner, drainAmount, this->abilityType));
+	CombatEvents::TriggerManaDrain(CombatEvents::ManaRestoreOrDrainArgs(this->caster, this->owner, drainAmount, this->abilityType, true, overflowedMin, overflowedMax));
 
 	HACKABLES_STOP_SEARCH();
 }

@@ -151,7 +151,7 @@ void TimelineEntry::initializeListeners()
 		{
 			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				this->applyDamage(args->caster, args->damageOrHealing, args->disableBuffProcessing, args->abilityType);
+				this->applyDamage(args);
 			}
 		}
 	}));
@@ -164,7 +164,7 @@ void TimelineEntry::initializeListeners()
 		{
 			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				this->applyHealing(args->caster, args->damageOrHealing, args->disableBuffProcessing, args->abilityType);
+				this->applyHealing(args);
 			}
 		}
 	}));
@@ -177,7 +177,7 @@ void TimelineEntry::initializeListeners()
 		{
 			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				this->applyManaRestore(args->caster, args->manaRestoreOrDrain, args->disableBuffProcessing, args->abilityType);
+				this->applyManaRestore(args);
 			}
 		}
 	}));
@@ -190,7 +190,7 @@ void TimelineEntry::initializeListeners()
 		{
 			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				this->applyManaDrain(args->caster, args->manaRestoreOrDrain, args->disableBuffProcessing, args->abilityType);
+				this->applyManaDrain(args);
 			}
 		}
 	}));
@@ -232,21 +232,24 @@ PlatformerEntity* TimelineEntry::getEntity()
 	return this->entity;
 }
 
-void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disableBuffProcessing, AbilityType abilityType)
+void TimelineEntry::applyDamage(CombatEvents::DamageOrHealingArgs* args)
 {
 	PlatformerEntity* target = this->getEntity();
 
-	if (target == nullptr)
+	if (args == nullptr || target == nullptr)
 	{
 		return;
 	}
 
+	PlatformerEntity* caster = args->caster;
+	int damage = args->damageOrHealing;
+	AbilityType abilityType = args->abilityType;
 	int minDamage = TimelineEntry::DefaultMinDamage;
 	int maxDamage = TimelineEntry::DefaultMaxDamage;
 
-	if (!disableBuffProcessing)
+	if (!args->disableBuffProcessing)
 	{
-		int originalDamageBeforeBuffsAndStats = damage;
+		int originalDamageBeforeBuffsAndStats = args->damageOrHealing;
 		int originalDamageBeforeBuffs = originalDamageBeforeBuffsAndStats;
 
 		// Apply stats
@@ -333,9 +336,16 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 
 	int health = target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 
-	// Finally clamp the damage value to the min/max
-	bool isOverflowedMin = damage <= minDamage;
-	bool isOverflowedMax = damage >= maxDamage;
+	// Clamp to the global min/max damage/healing
+	bool isOverflowedMin = args->overflowedMin;
+	bool isOverflowedMax = args->overflowedMax;
+
+	if (!isOverflowedMin && !isOverflowedMax)
+	{
+		isOverflowedMin = damage <= minDamage;
+		isOverflowedMin = damage >= maxDamage;
+	}
+
 	int clampedDamage = MathUtils::clamp(damage, minDamage, maxDamage);
 
 	target->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
@@ -346,7 +356,7 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 	CombatEvents::TriggerDamageDealt(CombatEvents::DamageOrHealingArgs(caster, target, clampedDamage, abilityType, false, isOverflowedMin, isOverflowedMax));
 }
 
-void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool disableBuffProcessing, AbilityType abilityType)
+void TimelineEntry::applyHealing(CombatEvents::DamageOrHealingArgs* args)
 {
 	PlatformerEntity* target = this->getEntity();
 
@@ -355,10 +365,13 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 		return;
 	}
 
+	PlatformerEntity* caster = args->caster;
+	int healing = args->damageOrHealing;
+	AbilityType abilityType = args->abilityType;
 	int minHealing = TimelineEntry::DefaultMinHealing;
 	int maxHealing = TimelineEntry::DefaultMaxHealing;
 
-	if (!disableBuffProcessing)
+	if (!args->disableBuffProcessing)
 	{
 		int originalHealingBeforeBuffsAndStats = healing;
 		int originalHealingBeforeBuffs = originalHealingBeforeBuffsAndStats;
@@ -436,9 +449,16 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 
 	int health = target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 
-	// Finally clamp the healing value to the min/max
-	bool isOverflowedMin = healing <= minHealing;
-	bool isOverflowedMax = healing >= maxHealing;
+	// Clamp to the global min/max damage/healing
+	bool isOverflowedMin = args->overflowedMin;
+	bool isOverflowedMax = args->overflowedMax;
+
+	if (!isOverflowedMin && !isOverflowedMax)
+	{
+		isOverflowedMin = healing <= minHealing;
+		isOverflowedMin = healing >= maxHealing;
+	}
+
 	int clampedHealing = MathUtils::clamp(healing, minHealing, maxHealing);
 
 	target->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
@@ -449,28 +469,28 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 	CombatEvents::TriggerHealingDealt(CombatEvents::DamageOrHealingArgs(caster, target, healing, abilityType, false, isOverflowedMin, isOverflowedMax));
 }
 
-void TimelineEntry::applyManaRestore(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing, AbilityType abilityType)
+void TimelineEntry::applyManaRestore(CombatEvents::ManaRestoreOrDrainArgs* args)
 {
 	int mana = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
 
 	this->getEntity()->getComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
-		manaBehavior->setMana(mana + manaGain);
+		manaBehavior->setMana(mana + args->manaRestoreOrDrain);
 	});
 
-	CombatEvents::TriggerManaRestoreDelt(CombatEvents::ManaRestoreOrDrainArgs(caster, this->getEntity(), manaGain, abilityType));
+	CombatEvents::TriggerManaRestoreDealt(*args);
 }
 
-void TimelineEntry::applyManaDrain(PlatformerEntity* caster, int manaDrain, bool disableBuffProcessing, AbilityType abilityType)
+void TimelineEntry::applyManaDrain(CombatEvents::ManaRestoreOrDrainArgs* args)
 {
 	int mana = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
 
 	this->getEntity()->getComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
-		manaBehavior->setMana(mana - manaDrain);
+		manaBehavior->setMana(mana - args->manaRestoreOrDrain);
 	});
 
-	CombatEvents::TriggerManaDrainDelt(CombatEvents::ManaRestoreOrDrainArgs(caster, this->getEntity(), manaDrain, abilityType));
+	CombatEvents::TriggerManaDrainDealt(CombatEvents::ManaRestoreOrDrainArgs(*args));
 }
 
 void TimelineEntry::stageTargets(std::vector<PlatformerEntity*> targets)

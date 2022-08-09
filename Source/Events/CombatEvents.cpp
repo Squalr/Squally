@@ -41,9 +41,9 @@ const std::string CombatEvents::EventDamage = "EVENT_COMBAT_DAMAGE";
 const std::string CombatEvents::EventHealingDealt = "EVENT_COMBAT_HEALING_DEALT";
 const std::string CombatEvents::EventHealing = "EVENT_COMBAT_HEALING";
 const std::string CombatEvents::EventManaRestore = "EVENT_COMBAT_MANA_RESTORE";
-const std::string CombatEvents::EventManaRestoreDelt = "EVENT_COMBAT_MANA_RESTORE_DEALT";
+const std::string CombatEvents::EventManaRestoreDealt = "EVENT_COMBAT_MANA_RESTORE_DEALT";
 const std::string CombatEvents::EventManaDrain = "EVENT_COMBAT_MANA_DRAIN";
-const std::string CombatEvents::EventManaDrainDelt = "EVENT_COMBAT_MANA_DRAIN_DEALT";
+const std::string CombatEvents::EventManaDrainDealt = "EVENT_COMBAT_MANA_DRAIN_DEALT";
 const std::string CombatEvents::EventModifyTimelineSpeed = "EVENT_COMBAT_OBJECTS_MODIFY_TIMELINE_SPEED";
 const std::string CombatEvents::EventModifyDamageTaken = "EVENT_COMBAT_OBJECTS_MODIFY_DAMAGE_TAKEN";
 const std::string CombatEvents::EventModifyDamageDealt = "EVENT_COMBAT_OBJECTS_MODIFY_DAMAGE_DEALT";
@@ -325,10 +325,10 @@ void CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs args)
 	);
 }
 
-void CombatEvents::TriggerManaRestoreDelt(ManaRestoreOrDrainArgs args)
+void CombatEvents::TriggerManaRestoreDealt(ManaRestoreOrDrainArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
-		CombatEvents::EventManaRestoreDelt,
+		CombatEvents::EventManaRestoreDealt,
 		&args
 	);
 }
@@ -341,10 +341,10 @@ void CombatEvents::TriggerManaRestore(ManaRestoreOrDrainArgs args)
 	);
 }
 
-void CombatEvents::TriggerManaDrainDelt(ManaRestoreOrDrainArgs args)
+void CombatEvents::TriggerManaDrainDealt(ManaRestoreOrDrainArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
-		CombatEvents::EventManaDrainDelt,
+		CombatEvents::EventManaDrainDealt,
 		&args
 	);
 }

@@ -138,7 +138,7 @@ void HealthLink::registerHackables()
 	}
 }
 
-void HealthLink::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+NO_OPTIMIZE void HealthLink::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
@@ -150,7 +150,7 @@ void HealthLink::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs
 	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
 	{
 		std::vector<PlatformerEntity*> targets = timeline->getSameTeamEntities(damageOrHealing->target);
-
+		std::vector<PlatformerEntity*> healthLinkTargets; 
 		for (PlatformerEntity* target : targets)
 		{
 			if (target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
@@ -159,13 +159,21 @@ void HealthLink::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs
 				{
 					entityBuffBehavior->getBuff<HealthLink>([&](HealthLink* healthLink)
 					{
-						CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->caster, target, std::abs(this->healthLinkDamage), AbilityType::Passive, true));
+						healthLinkTargets.push_back(target);
 					});
 				});
 			}
 		}
+
+		// For some incomprehensible reason, this needs to be a separate loop otherwise some enemies do not get it at all.
+		// TODO: Figure out why, if you care enough.
+		for (PlatformerEntity* target : healthLinkTargets)
+		{
+			CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->caster, target, std::abs(this->healthLinkDamage), AbilityType::Passive, true));
+		}
 	}));
 }
+END_NO_OPTIMIZE
 
 NO_OPTIMIZE void HealthLink::applyHealthLink()
 {

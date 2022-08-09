@@ -53,9 +53,9 @@ public:
 	static const std::string EventDamage;
 	static const std::string EventHealing;
 	static const std::string EventManaRestore;
-	static const std::string EventManaRestoreDelt;
+	static const std::string EventManaRestoreDealt;
 	static const std::string EventManaDrain;
-	static const std::string EventManaDrainDelt;
+	static const std::string EventManaDrainDealt;
 	static const std::string EventModifyTimelineSpeed;
 	static const std::string EventModifyDamageTaken;
 	static const std::string EventModifyDamageDealt;
@@ -447,9 +447,9 @@ public:
 	static void TriggerDamage(CombatEvents::DamageOrHealingArgs args);
 	static void TriggerHealing(CombatEvents::DamageOrHealingArgs args);
 	// Functionally, restore/drain are the same, but treat 0 differently. Drain will dislay -0, restore will display +0
-	static void TriggerManaRestoreDelt(ManaRestoreOrDrainArgs args);
+	static void TriggerManaRestoreDealt(ManaRestoreOrDrainArgs args);
 	static void TriggerManaRestore(ManaRestoreOrDrainArgs args);
-	static void TriggerManaDrainDelt(ManaRestoreOrDrainArgs args);
+	static void TriggerManaDrainDealt(ManaRestoreOrDrainArgs args);
 	static void TriggerManaDrain(ManaRestoreOrDrainArgs args);
 	static void TriggerModifyTimelineSpeed(ModifiableTimelineSpeedArgs args);
 	static void TriggerModifyDamageTaken(ModifiableDamageOrHealingArgs args);
