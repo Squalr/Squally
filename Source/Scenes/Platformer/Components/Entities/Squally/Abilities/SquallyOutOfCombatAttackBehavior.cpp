@@ -19,6 +19,7 @@
 #include "Objects/Platformer/Projectiles/Arrows/WoodenArrow.h"
 #include "Objects/Platformer/Projectiles/WandSpells/EnergyBolt.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Movement/EntityMountBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/Wand.h"
@@ -63,7 +64,17 @@ void SquallyOutOfCombatAttackBehavior::onLoad()
 
 	this->squally->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->attack();
+		bool canAttack = true;
+
+		this->squally->getComponent<EntityMountBehavior>([&](EntityMountBehavior* entityMountBehavior)
+		{
+			canAttack = !entityMountBehavior->isMounted();
+		});
+
+		if (canAttack)
+		{
+			this->attack();
+		}
 	});
 }
 

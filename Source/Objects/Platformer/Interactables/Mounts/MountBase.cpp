@@ -147,6 +147,11 @@ void MountBase::dismount()
 	});
 }
 
+bool MountBase::isMounted() const
+{
+	return this->mountedEntity != nullptr;
+}
+
 void MountBase::setToMountPositionX()
 {
 	if (this->mountedEntity == nullptr)

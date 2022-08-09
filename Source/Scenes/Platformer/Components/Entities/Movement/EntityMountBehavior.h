@@ -12,6 +12,7 @@ public:
 
 	bool mount(MountBase* mountTarget);
 	bool dismount();
+	bool isMounted() const;
 
 	static const std::string MapKey;
 

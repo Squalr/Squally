@@ -78,6 +78,14 @@ void GatlingGun::initializeListeners()
 	{
 		return CollisionResult::DoNothing;
 	});
+
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
+	{
+		if (this->isMounted())
+		{
+			// TODO: Attack
+		}
+	});
 }
 
 void GatlingGun::update(float dt)

@@ -17,6 +17,7 @@ public:
 	cocos2d::Node* getReparentNode();
 	virtual void mount(PlatformerEntity* interactingEntity);
 	virtual void dismount();
+	bool isMounted() const;
 	void setMountDirection(MountDirection mountDirection);
 	void reverse();
 	void parseDirection();

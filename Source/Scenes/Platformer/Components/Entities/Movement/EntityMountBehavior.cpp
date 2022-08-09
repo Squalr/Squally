@@ -73,6 +73,11 @@ bool EntityMountBehavior::dismount()
 	return true;
 }
 
+bool EntityMountBehavior::isMounted() const
+{
+	return this->mountTarget != nullptr;
+}
+
 void EntityMountBehavior::onDisable()
 {
 	super::onDisable();
