@@ -26,7 +26,9 @@ private:
 	typedef QuestTask super;
 
 	void runCinematicSequence();
+	void runSleepingCinematicSequence();
 
 	Lycan* lycan = nullptr;
 	Squally* squally = nullptr;
+	SmartAnimationSequenceNode* sleepFx = nullptr;
 };

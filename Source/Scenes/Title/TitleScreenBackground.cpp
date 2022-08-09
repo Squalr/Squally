@@ -65,9 +65,6 @@ TitleScreenBackground::TitleScreenBackground()
 	this->leftEyeController->setVisible(false);
 	this->rightEyeController->setVisible(false);
 
-	this->eyes1->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesA_0000, 0.025f, 1.54f, 0.025f, 2.5f, true);
-	this->eyes2->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesB_0000, 0.025f, 1.25f, 0.025f, 3.25f, true);
-
 	this->windParticles = SmartParticles::create(ParticleResources::Wind);
 	this->fireflyParticles = SmartParticles::create(ParticleResources::Fireflies2);
 
@@ -165,6 +162,9 @@ void TitleScreenBackground::onEnter()
 void TitleScreenBackground::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->eyes1->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesA_0000, 0.025f, 1.54f, 0.025f, 2.5f, true);
+	this->eyes2->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesB_0000, 0.025f, 1.25f, 0.025f, 3.25f, true);
 }
 
 void TitleScreenBackground::initializePositions()

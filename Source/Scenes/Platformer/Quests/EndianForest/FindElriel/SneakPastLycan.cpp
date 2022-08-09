@@ -7,9 +7,14 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
+#include "Engine/Save/SaveManager.h"
+#include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Npcs/EndianForest/Lycan.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
@@ -18,8 +23,10 @@
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/SoundResources.h"
+#include "Resources/FXResources.h"
 
 #include "Strings/Strings.h"
 
@@ -38,6 +45,11 @@ SneakPastLycan* SneakPastLycan::create(GameObject* owner, QuestLine* questLine)
 
 SneakPastLycan::SneakPastLycan(GameObject* owner, QuestLine* questLine) : super(owner, questLine, SneakPastLycan::MapKeyQuest, false)
 {
+	this->sleepFx = SmartAnimationSequenceNode::create(FXResources::Sleep_Sleep_0000);
+
+	this->sleepFx->setVisible(false);
+
+	this->addChild(this->sleepFx);
 }
 
 SneakPastLycan::~SneakPastLycan()
@@ -50,13 +62,20 @@ void SneakPastLycan::onLoad(QuestState questState)
 	{
 		this->lycan = lycan;
 
+		// Hacky, but this is the only real way to add the sleeping state to this quest without reworking the quest line and breaking backwards compatibility
+		bool hasHelper = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString() != "";
+
 		if (questState == QuestState::Complete)
 		{
 			this->lycan->despawn();
 		}
-		else
+		else if (!hasHelper)
 		{
 			this->runCinematicSequence();
+		}
+		else
+		{
+			this->runSleepingCinematicSequence();
 		}
 	}, Lycan::MapKey);
 
@@ -111,4 +130,17 @@ void SneakPastLycan::runCinematicSequence()
 			0.5f
 		);
 	});
+}
+
+void SneakPastLycan::runSleepingCinematicSequence()
+{
+	static const std::vector<std::string>& sleepAnimationFiles = SmartAnimationSequenceNode::GetAllAnimationFiles(FXResources::Sleep_Sleep_0000);
+
+	// TODO: Swap for sleep anim
+	this->lycan->getAnimations()->playAnimation("Sit", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f));
+
+	GameUtils::setWorldCoords(this->sleepFx, GameUtils::getWorldCoords(this->lycan) + Vec2(0.0f, 256.0f));
+	this->sleepFx->setVisible(true);
+
+	this->sleepFx->playAnimationRepeat(sleepAnimationFiles, 0.075f);
 }
