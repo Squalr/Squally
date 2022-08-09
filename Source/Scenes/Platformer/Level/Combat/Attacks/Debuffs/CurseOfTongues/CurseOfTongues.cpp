@@ -205,7 +205,7 @@ NO_OPTIMIZE void CurseOfTongues::applyCurseOfTongues()
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
-	this->currentSpeed += MathUtils::clamp(speedBonus, CurseOfTongues::MinSpeed, CurseOfTongues::MaxSpeed);
+	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, CurseOfTongues::MinSpeed, CurseOfTongues::MaxSpeed);
 
 	HACKABLES_STOP_SEARCH();
 }

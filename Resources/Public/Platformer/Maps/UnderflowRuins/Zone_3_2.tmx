@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1163">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1163">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -530,7 +530,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="1.35"/>
+   <property name="zoom" type="float" value="1.3500000000000001"/>
   </properties>
   <object id="523" name="squally" type="entity" x="3470.5" y="1280.68" width="128" height="128">
    <properties>
@@ -578,15 +578,11 @@
   <object id="1137" name="ruins-thick" type="terrain" x="2471.34" y="1529" width="98" height="1708.24">
    <properties>
     <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
-    <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
   </object>
   <object id="1138" name="ruins-thick" type="terrain" x="3229.17" y="1530" width="98" height="1704.85">
    <properties>
     <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
-    <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
   </object>
   <object id="1139" name="logic-torch" type="object" x="2469.5" y="1418.83" width="101" height="111">
@@ -618,15 +614,11 @@
   <object id="1141" name="ruins-thick" type="terrain" x="2543.34" y="1550.67" width="98" height="1705.45">
    <properties>
     <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
-    <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
   </object>
   <object id="1142" name="ruins-thick" type="terrain" x="3151.84" y="1551" width="98" height="1704.73">
    <properties>
     <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
-    <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
   </object>
   <object id="1143" name="logic-torch" type="object" x="2541.5" y="1440.5" width="101" height="111">

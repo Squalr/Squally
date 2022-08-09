@@ -37,7 +37,7 @@ private:
 	cocos2d::Sprite* bubble = nullptr;
 	cocos2d::Sprite* spellAura = nullptr;
 	
-	static const std::string StateKeyUndyingHealth;
+	static const std::string StateKeyUndyingNewHealth;
 	static const int MinUndying;
 	static const int MaxMultiplier;
 	static const float Duration;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="1221">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="1221">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -278,7 +278,7 @@
     <property name="bridge-delta" type="float" value="-1792"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="17"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
@@ -289,7 +289,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="13"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -301,7 +301,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="12"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -313,7 +313,7 @@
     <property name="bridge-delta" type="float" value="-1408"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="11"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
@@ -324,7 +324,7 @@
     <property name="bridge-delta" type="float" value="-1280"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="10"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
@@ -335,7 +335,7 @@
     <property name="bridge-delta" type="float" value="-1152"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="9"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
@@ -346,7 +346,7 @@
     <property name="bridge-delta" type="float" value="-1024"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="8"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
@@ -357,7 +357,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="8"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -369,7 +369,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="9"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -381,7 +381,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="10"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -393,7 +393,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="11"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -405,7 +405,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="12"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -417,7 +417,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="13"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -429,7 +429,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="14"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -447,7 +447,7 @@
     <property name="bridge-delta" type="float" value="-1664"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="17"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
@@ -458,7 +458,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="15"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -470,7 +470,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="14"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -482,7 +482,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="15"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -494,7 +494,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="16"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -506,7 +506,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="17"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -518,7 +518,7 @@
     <property name="bridge-delta" type="float" value="-640"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="5"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
@@ -529,7 +529,7 @@
     <property name="bridge-delta" type="float" value="-512"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="4"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
@@ -540,7 +540,7 @@
     <property name="bridge-delta" type="float" value="-384"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="3"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
@@ -551,7 +551,7 @@
     <property name="bridge-delta" type="float" value="-256"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="2"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
@@ -562,7 +562,7 @@
     <property name="bridge-delta" type="float" value="0"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="0"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
@@ -573,7 +573,7 @@
     <property name="bridge-delta" type="float" value="-896"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="7"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
@@ -584,7 +584,7 @@
     <property name="bridge-delta" type="float" value="-768"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="6"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
@@ -595,7 +595,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="2"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -607,7 +607,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="3"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -619,7 +619,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="4"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -631,7 +631,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="5"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -643,7 +643,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="6"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -655,7 +655,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="7"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -667,7 +667,7 @@
     <property name="bridge-delta" type="float" value="-128"/>
     <property name="bridge-group" value="bridge-group-A"/>
     <property name="bridge-index" type="int" value="1"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
@@ -678,7 +678,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="1"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -690,7 +690,7 @@
     <property name="bridge-delta" type="float" value="-1536"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="0"/>
-    <property name="bridge-speed" type="float" value="0.1"/>
+    <property name="bridge-speed" type="float" value="0.10000000000000001"/>
     <property name="collision" value="none"/>
     <property name="components" value="bridge,z-fade"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
@@ -1049,21 +1049,16 @@
   <object id="1062" name="ruins-thick" type="terrain" x="3420.01" y="1682" width="98" height="2190.06">
    <properties>
     <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1063" name="ruins-thick" type="terrain" x="4219.84" y="1680" width="98" height="2189.7">
    <properties>
     <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
-    <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
   </object>
   <object id="1198" name="ruins-thick" type="terrain" x="2591" y="1676.97" width="98" height="2190.06">
    <properties>
     <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
-    <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
   </object>
  </objectgroup>

@@ -115,7 +115,7 @@ float CastManaDrain::getUseUtility(PlatformerEntity* caster, PlatformerEntity* t
 	{
 		entityBuffBehavior->getBuff<ManaDrain>([&](ManaDrain* debuff)
 		{
-			utility = 0.0f;
+			utility = -1.0f;
 		});
 	});
 	
