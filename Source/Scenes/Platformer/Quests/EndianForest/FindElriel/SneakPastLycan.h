@@ -4,6 +4,7 @@
 
 class Lycan;
 class QuestLine;
+class SmartAnimationSequenceNode;
 class Squally;
 
 class SneakPastLycan : public QuestTask

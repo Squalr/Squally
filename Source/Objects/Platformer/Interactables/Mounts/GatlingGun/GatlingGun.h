@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class CollisionObject;
+class SmartAnimationNode;
 
 class GatlingGun : public MountBase
 {
@@ -16,6 +17,7 @@ public:
 
 	void mount(PlatformerEntity* interactingEntity) override;
 	void dismount() override;
+	SmartAnimationNode* getAnimations() const;
 
 	static const std::string MapKey;
 
@@ -36,6 +38,7 @@ private:
 	void updateCanMove();
 
 	CollisionObject* bottomCollision = nullptr;
+	SmartAnimationNode* animations = nullptr;
 	cocos2d::Sprite* body = nullptr;
 	cocos2d::Sprite* wheelFront = nullptr;
 	cocos2d::Sprite* wheelBack = nullptr;
