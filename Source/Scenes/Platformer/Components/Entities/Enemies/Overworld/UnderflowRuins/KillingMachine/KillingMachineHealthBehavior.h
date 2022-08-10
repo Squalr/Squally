@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Scenes/Platformer/Components/Entities/Enemies/Stats/EnemyHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 
 class PlatformerEnemy;
 class StatsBars;
 
-class KillingMachineHealthBehavior : public EnemyHealthBehavior
+class KillingMachineHealthBehavior : public EntityHealthBehavior
 {
 public:
 	static KillingMachineHealthBehavior* create(GameObject* owner);
@@ -20,7 +20,7 @@ protected:
 	void onDisable() override;
 
 private:
-	typedef EnemyHealthBehavior super;
+	typedef EntityHealthBehavior super;
 
 	PlatformerEnemy* entity = nullptr;
 	StatsBars* statsBars;

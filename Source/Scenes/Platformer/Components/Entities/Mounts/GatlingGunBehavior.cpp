@@ -20,6 +20,7 @@
 #include "Objects/Platformer/Interactables/Mounts/GatlingGun/GatlingGun.h"
 #include "Objects/Platformer/Projectiles/GatlingGun/Shell.h"
 #include "Objects/Platformer/Projectiles/Projectile.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Overworld/UnderflowRuins/KillingMachine/KillingMachineHealthBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -214,6 +215,19 @@ Projectile* GatlingGunBehavior::createProjectile()
 
 void GatlingGunBehavior::decorateProjectile(Projectile* projectile)
 {
+	projectile->whenCollidesWith({(int)PlatformerCollisionType::Entity }, [=](CollisionData collisionData)
+	{
+		PlatformerEntity* target = GameUtils::GetFirstParentOfType<PlatformerEntity>(collisionData.other);
+
+		if (target != nullptr)
+		{
+			target->getComponent<KillingMachineHealthBehavior>([](KillingMachineHealthBehavior* healthBehavior)
+			{
+				healthBehavior->kill(true);
+			});
+		}
+		return CollisionResult::DoNothing;
+	});
 }
 
 Vec2 GatlingGunBehavior::getProjectileSpawnOffset()
