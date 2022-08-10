@@ -12,7 +12,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="18" name="bg -6">
+ <objectgroup id="18" name="bg -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -349,88 +349,40 @@
     <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="1228" name="ruins-thick" type="terrain" x="3256.03" y="-108.169" width="96" height="256">
+  <object id="1230" name="ruins-thick" type="terrain" x="4514.38" y="1440" width="96" height="192">
    <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
+    <property name="bridge-audio-mode" value="post"/>
+    <property name="bridge-delta" type="float" value="1600"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="1"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
-  <object id="1229" name="ruins-thick" type="terrain" x="4116.64" y="-108.169" width="96" height="256">
+  <object id="1232" name="ruins-thick" type="terrain" x="4249.92" y="1600" width="96" height="192">
    <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
+    <property name="bridge-audio-mode" value="post"/>
+    <property name="bridge-delta" type="float" value="1600"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="3"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
-  <object id="1230" name="ruins-thick" type="terrain" x="4486.33" y="-108.169" width="96" height="256">
+  <object id="1236" name="ruins-thick" type="terrain" x="4379.43" y="1520" width="96" height="192">
    <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
+    <property name="bridge-audio-mode" value="post"/>
+    <property name="bridge-delta" type="float" value="1600"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="2"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
-  <object id="1231" name="ruins-thick" type="terrain" x="3137.51" y="-108.169" width="96" height="256">
+  <object id="1238" name="ruins-thick" type="terrain" x="4110.76" y="1680" width="96" height="192">
    <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1232" name="ruins-thick" type="terrain" x="3998.12" y="-108.169" width="96" height="256">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1233" name="ruins-thick" type="terrain" x="4367.81" y="-108.169" width="96" height="256">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1234" name="ruins-thick" type="terrain" x="3014.94" y="-108.169" width="96" height="256">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1235" name="ruins-thick" type="terrain" x="3875.55" y="-108.169" width="96" height="256">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1236" name="ruins-thick" type="terrain" x="4245.24" y="-108.169" width="96" height="256">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1237" name="ruins-thick" type="terrain" x="2895.08" y="-108.169" width="96" height="256">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1238" name="ruins-thick" type="terrain" x="3755.69" y="-108.169" width="96" height="256">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1240" name="ruins-thick" type="terrain" x="3633.5" y="-108.169" width="96" height="256">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1242" name="ruins-thick" type="terrain" x="3511.31" y="-108.169" width="96" height="256">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1244" name="ruins-thick" type="terrain" x="3378.8" y="-108.169" width="96" height="256">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
+    <property name="bridge-audio-mode" value="post"/>
+    <property name="bridge-delta" type="float" value="1600"/>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="4"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
   <object id="1246" name="ruins-thick" type="terrain" x="5857.45" y="1437.8" width="96" height="256">
@@ -519,7 +471,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="23" name="objects">
+ <objectgroup id="23" name="objects" visible="0">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -533,7 +485,6 @@
   </object>
   <object id="1109" name="solid" type="collision" x="1759.23" y="1436.08" width="731.331" height="1041.49"/>
   <object id="1110" name="solid" type="collision" x="4630.66" y="1437.74" width="1992.05" height="100.513"/>
-  <object id="1194" name="solid" type="collision" x="2867.23" y="-102.821" width="1741.57" height="100.513"/>
   <object id="1166" name="camera-target" type="object" x="3445.89" y="1289.38" width="128" height="128">
    <properties>
     <property name="tag" value="target-A"/>

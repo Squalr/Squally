@@ -185,8 +185,8 @@ void EntityCollisionBehaviorBase::setIsAlivePhysics(bool isAlive)
 
 void EntityCollisionBehaviorBase::setMountPhysics(bool isMounted)
 {
-	this->movementCollision->setGravityFlagEnabled(isMounted, int(GravityFlags::IsMounted));
-	this->movementCollision->setPhysicsFlagEnabled(isMounted, int(PhysicsFlags::IsMounted));
+	this->movementCollision->setGravityFlagEnabled(!isMounted, int(GravityFlags::IsMounted));
+	this->movementCollision->setPhysicsFlagEnabled(!isMounted, int(PhysicsFlags::IsMounted));
 }
 
 Vec2 EntityCollisionBehaviorBase::getGravity()

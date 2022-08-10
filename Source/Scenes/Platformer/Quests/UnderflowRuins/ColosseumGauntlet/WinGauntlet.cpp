@@ -240,6 +240,9 @@ void WinGauntlet::runCinematicSequencePt7()
 	{
 		this->gatlingGun->disable();
 		this->gatlingGun->dismount();
+		PlatformerEvents::TriggerCinematicRestore();
 	}
+
+	this->broadcastMapEvent("bridge-group-A", ValueMap());
 	this->complete();
 }
