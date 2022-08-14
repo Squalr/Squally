@@ -6,6 +6,7 @@
 
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/UnderflowRuins/KillingMachine/KillingMachineHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Overworld/UnderflowRuins/KillingMachine/KillingMachineDamageBehavior.h"
 
 using namespace cocos2d;
 
@@ -22,6 +23,7 @@ KillingMachineBehaviorGroup* KillingMachineBehaviorGroup::create(GameObject* own
 
 KillingMachineBehaviorGroup::KillingMachineBehaviorGroup(GameObject* owner) : super(owner, {
 	KillingMachineHealthBehavior::create(owner),
+	KillingMachineDamageBehavior::create(owner),
 	})
 {
 }

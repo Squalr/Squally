@@ -94,6 +94,7 @@ void WinGauntlet::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<GatlingGun>(this, [=](GatlingGun* gatlingGun)
 	{
 		this->gatlingGun = gatlingGun;
+		this->gatlingGun->disable();
 	}, GatlingGun::MapKey);
 }
 

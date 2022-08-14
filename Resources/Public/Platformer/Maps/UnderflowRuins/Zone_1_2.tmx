@@ -561,48 +561,42 @@
    <properties>
     <property name="components" value="friendly,killing-machine"/>
     <property name="flip-x" type="bool" value="true"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
+    <property name="machine-id" type="int" value="1"/>
    </properties>
   </object>
   <object id="1214" name="killing-machine-2" type="entity" x="5550.56" y="1967.53" width="128" height="128">
    <properties>
     <property name="components" value="friendly,killing-machine"/>
     <property name="flip-x" type="bool" value="true"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
+    <property name="machine-id" type="int" value="2"/>
    </properties>
   </object>
   <object id="1215" name="killing-machine-3" type="entity" x="5726.1" y="1970.68" width="128" height="128">
    <properties>
     <property name="components" value="friendly,killing-machine"/>
     <property name="flip-x" type="bool" value="true"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
+    <property name="machine-id" type="int" value="3"/>
    </properties>
   </object>
   <object id="1216" name="killing-machine-4" type="entity" x="5902.54" y="1966.87" width="128" height="128">
    <properties>
     <property name="components" value="friendly,killing-machine"/>
     <property name="flip-x" type="bool" value="true"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
+    <property name="machine-id" type="int" value="4"/>
    </properties>
   </object>
   <object id="1217" name="killing-machine-5" type="entity" x="6082.89" y="1965.04" width="128" height="128">
    <properties>
     <property name="components" value="friendly,killing-machine"/>
     <property name="flip-x" type="bool" value="true"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
+    <property name="machine-id" type="int" value="5"/>
    </properties>
   </object>
   <object id="1218" name="killing-machine-6" type="entity" x="6255.12" y="1964.37" width="128" height="128">
    <properties>
     <property name="components" value="friendly,killing-machine"/>
     <property name="flip-x" type="bool" value="true"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
+    <property name="machine-id" type="int" value="6"/>
    </properties>
   </object>
   <object id="1264" name="dark-tiger" type="entity" x="-930.517" y="1266.93" width="128" height="128">
