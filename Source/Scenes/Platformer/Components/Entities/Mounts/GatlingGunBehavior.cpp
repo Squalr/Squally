@@ -20,6 +20,7 @@
 #include "Objects/Platformer/Interactables/Mounts/GatlingGun/GatlingGun.h"
 #include "Objects/Platformer/Projectiles/GatlingGun/Shell.h"
 #include "Objects/Platformer/Projectiles/Projectile.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Overworld/UnderflowRuins/KillingMachine/KillingMachineDamageBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/UnderflowRuins/KillingMachine/KillingMachineHealthBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -221,9 +222,13 @@ void GatlingGunBehavior::decorateProjectile(Projectile* projectile)
 
 		if (target != nullptr)
 		{
-			target->getComponent<KillingMachineHealthBehavior>([](KillingMachineHealthBehavior* healthBehavior)
+			target->getComponent<KillingMachineHealthBehavior>([target](KillingMachineHealthBehavior* healthBehavior)
 			{
-				healthBehavior->kill(true);
+				target->getComponent<KillingMachineDamageBehavior>([target, healthBehavior](KillingMachineDamageBehavior* damageBehavior)
+				{
+					int damage = damageBehavior->compare();
+					healthBehavior->addHealth(-damage);
+				});
 			});
 		}
 		return CollisionResult::DoNothing;

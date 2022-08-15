@@ -276,9 +276,12 @@ void CodeHud::open(HackableObjectEditArgs* args)
 		{
 			HackablePreview* preview = hackableCode->getHackablePreview()->lazyClone();
 
-			preview->setAssemblyTextVisible(true);
+			if (preview != nullptr)
+			{
+				preview->setAssemblyTextVisible(true);
 
-			this->previewNode->addChild(preview);
+				this->previewNode->addChild(preview);
+			}
 		}
 
 		this->clippyNode->removeAllChildren();

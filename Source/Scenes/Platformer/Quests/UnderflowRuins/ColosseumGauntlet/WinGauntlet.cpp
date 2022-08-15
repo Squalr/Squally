@@ -59,31 +59,61 @@ void WinGauntlet::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<KillingMachine1>(this, [=](KillingMachine1* killingMachine1)
 	{
 		this->killingMachine1 = killingMachine1;
+		
+		if (questState == QuestState::Complete)
+		{
+			this->killingMachine1->despawn();
+		}
 	}, KillingMachine1::MapKey);
 
 	ObjectEvents::WatchForObject<KillingMachine2>(this, [=](KillingMachine2* killingMachine2)
 	{
 		this->killingMachine2 = killingMachine2;
+		
+		if (questState == QuestState::Complete)
+		{
+			this->killingMachine2->despawn();
+		}
 	}, KillingMachine2::MapKey);
 
 	ObjectEvents::WatchForObject<KillingMachine3>(this, [=](KillingMachine3* killingMachine3)
 	{
 		this->killingMachine3 = killingMachine3;
+		
+		if (questState == QuestState::Complete)
+		{
+			this->killingMachine3->despawn();
+		}
 	}, KillingMachine3::MapKey);
 	
 	ObjectEvents::WatchForObject<KillingMachine4>(this, [=](KillingMachine4* killingMachine4)
 	{
 		this->killingMachine4 = killingMachine4;
+		
+		if (questState == QuestState::Complete)
+		{
+			this->killingMachine4->despawn();
+		}
 	}, KillingMachine4::MapKey);
 	
 	ObjectEvents::WatchForObject<KillingMachine5>(this, [=](KillingMachine5* killingMachine5)
 	{
 		this->killingMachine5 = killingMachine5;
+		
+		if (questState == QuestState::Complete)
+		{
+			this->killingMachine5->despawn();
+		}
 	}, KillingMachine5::MapKey);
 	
 	ObjectEvents::WatchForObject<KillingMachine6>(this, [=](KillingMachine6* killingMachine6)
 	{
 		this->killingMachine6 = killingMachine6;
+		
+		if (questState == QuestState::Complete)
+		{
+			this->killingMachine6->despawn();
+		}
 	}, KillingMachine6::MapKey);
 	
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)

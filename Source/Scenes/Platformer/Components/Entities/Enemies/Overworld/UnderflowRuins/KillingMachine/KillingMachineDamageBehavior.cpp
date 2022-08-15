@@ -40,6 +40,16 @@ const std::string KillingMachineDamageBehavior::HackIdentifierKillingMachineComp
 const std::string KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare4 = "killing-machine-compare-4";
 const std::string KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare5 = "killing-machine-compare-5";
 const std::string KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare6 = "killing-machine-compare-6";
+Value KillingMachineDamageBehavior::DamageStorageAntiOptimize = Value(0);
+std::map<int, KillingMachineDamageBehavior::MachineAsmConstants> KillingMachineDamageBehavior::MachineAsmConstantsMap
+{
+	{ 1, KillingMachineDamageBehavior::MachineAsmConstants("cmovl", "eax", "rax", 50, 5, 4) },
+	{ 2, KillingMachineDamageBehavior::MachineAsmConstants("cmovle", "ebx", "rbx", 75, 7, 5) },
+	{ 3, KillingMachineDamageBehavior::MachineAsmConstants("cmove", "ecx", "rcx", 100, 1, 0) },
+	{ 4, KillingMachineDamageBehavior::MachineAsmConstants("cmovne", "edx", "rdx", 125, 10, 10) },
+	{ 5, KillingMachineDamageBehavior::MachineAsmConstants("cmovg", "edi", "rdi", 150, 15, 20) },
+	{ 6, KillingMachineDamageBehavior::MachineAsmConstants("cmovge", "esi", "rsi", 175, 5, 8) },
+};
 
 KillingMachineDamageBehavior* KillingMachineDamageBehavior::create(GameObject* owner)
 {
@@ -73,305 +83,147 @@ void KillingMachineDamageBehavior::onLoad()
 		return;
 	}
 
-	int machineId = GameUtils::getKeyOrDefault(this->entity->properties, KillingMachineDamageBehavior::PropertyMachineId, Value(0)).asInt();
+	this->machineId = GameUtils::getKeyOrDefault(this->entity->properties, KillingMachineDamageBehavior::PropertyMachineId, Value(1)).asInt();
+	int functionId = 0;
+	void* functionPtr = nullptr;
+	std::string icon = "";
+	std::string functionIdentifier = "";
+	KillingMachineDamageBehavior::MachineAsmConstants machineAsmConstants;
+	LocalizedString* commandComment = nullptr;
 
-	switch(machineId)
+	switch(this->machineId)
 	{
 		default:
 		case 1:
 		{
-			HackableCode::CodeInfoMap codeInfoMap =
-			{
-				{
-					LOCAL_FUNC_ID_COMPARE_TEAM_1,
-					HackableCode::HackableCodeInfo(
-						KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare1,
-						Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CompareTeam::create(),
-						HackableBase::HackBarColor::Purple,
-						UIResources::Menus_Icons_ArrowRain,
-						LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
-						{
-							{
-								HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax::create()
-							},
-						},
-						int(HackFlags::None),
-						15.0f,
-						0.0f,
-						{
-							HackableCode::ReadOnlyScript(
-								Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
-								// x86
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-									->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
-								"cmp eax, 1\n"
-								, // x64
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-									->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
-								"cmp rax, 1\n"
-							),
-						},
-						true
-					)
-				},
-			};
-
+			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_1;
+			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare1;
+			icon = UIResources::Menus_Icons_Tools;
 			auto func = &KillingMachineDamageBehavior::compareDamage1;
-			std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+			functionPtr = (void*&)func;
+			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[1];
+			commandComment = Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle::create();
 
-			for (HackableCode* next : hackables)
-			{
-				this->entity->registerCode(next);
-			}
+			// TODO: Equivalent of this
+			/*
+			COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
+				->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
+			COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
+				->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
+			*/
 			break;
 		}
 		case 2:
 		{
-			HackableCode::CodeInfoMap codeInfoMap =
-			{
-				{
-					LOCAL_FUNC_ID_COMPARE_TEAM_1,
-					HackableCode::HackableCodeInfo(
-						KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare1,
-						Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CompareTeam::create(),
-						HackableBase::HackBarColor::Purple,
-						UIResources::Menus_Icons_ArrowRain,
-						LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
-						{
-							{
-								HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax::create()
-							},
-						},
-						int(HackFlags::None),
-						15.0f,
-						0.0f,
-						{
-							HackableCode::ReadOnlyScript(
-								Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
-								// x86
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-									->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
-								"cmp eax, 1\n"
-								, // x64
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-									->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
-								"cmp rax, 1\n"
-							),
-						},
-						true
-					)
-				},
-			};
-
-			auto func = &KillingMachineDamageBehavior::compareDamage1;
-			std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
-
-			for (HackableCode* next : hackables)
-			{
-				this->entity->registerCode(next);
-			}
+			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_2;
+			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare2;
+			icon = UIResources::Menus_Icons_RobotArm;
+			auto func = &KillingMachineDamageBehavior::compareDamage2;
+			functionPtr = (void*&)func;
+			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[2];
+			commandComment = Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovl::create();
 			break;
 		}
 		case 3:
 		{
-			HackableCode::CodeInfoMap codeInfoMap =
-			{
-				{
-					LOCAL_FUNC_ID_COMPARE_TEAM_1,
-					HackableCode::HackableCodeInfo(
-						KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare1,
-						Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CompareTeam::create(),
-						HackableBase::HackBarColor::Purple,
-						UIResources::Menus_Icons_ArrowRain,
-						LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
-						{
-							{
-								HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax::create()
-							},
-						},
-						int(HackFlags::None),
-						15.0f,
-						0.0f,
-						{
-							HackableCode::ReadOnlyScript(
-								Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
-								// x86
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-									->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
-								"cmp eax, 1\n"
-								, // x64
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-									->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
-								"cmp rax, 1\n"
-							),
-						},
-						true
-					)
-				},
-			};
-
-			auto func = &KillingMachineDamageBehavior::compareDamage1;
-			std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
-
-			for (HackableCode* next : hackables)
-			{
-				this->entity->registerCode(next);
-			}
+			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_3;
+			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare3;
+			icon = UIResources::Menus_Icons_Pickaxe;
+			auto func = &KillingMachineDamageBehavior::compareDamage3;
+			functionPtr = (void*&)func;
+			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[3];
+			commandComment = Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmove::create();
 			break;
 		}
 		case 4:
 		{
-			HackableCode::CodeInfoMap codeInfoMap =
-			{
-				{
-					LOCAL_FUNC_ID_COMPARE_TEAM_1,
-					HackableCode::HackableCodeInfo(
-						KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare1,
-						Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CompareTeam::create(),
-						HackableBase::HackBarColor::Purple,
-						UIResources::Menus_Icons_ArrowRain,
-						LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
-						{
-							{
-								HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax::create()
-							},
-						},
-						int(HackFlags::None),
-						15.0f,
-						0.0f,
-						{
-							HackableCode::ReadOnlyScript(
-								Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
-								// x86
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-									->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
-								"cmp eax, 1\n"
-								, // x64
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-									->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
-								"cmp rax, 1\n"
-							),
-						},
-						true
-					)
-				},
-			};
-
-			auto func = &KillingMachineDamageBehavior::compareDamage1;
-			std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
-
-			for (HackableCode* next : hackables)
-			{
-				this->entity->registerCode(next);
-			}
+			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_4;
+			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare4;
+			icon = UIResources::Menus_Icons_Hammer;
+			auto func = &KillingMachineDamageBehavior::compareDamage4;
+			functionPtr = (void*&)func;
+			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[4];
+			commandComment = Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovne::create();
 			break;
 		}
 		case 5:
 		{
-			HackableCode::CodeInfoMap codeInfoMap =
-			{
-				{
-					LOCAL_FUNC_ID_COMPARE_TEAM_1,
-					HackableCode::HackableCodeInfo(
-						KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare1,
-						Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CompareTeam::create(),
-						HackableBase::HackBarColor::Purple,
-						UIResources::Menus_Icons_ArrowRain,
-						LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
-						{
-							{
-								HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax::create()
-							},
-						},
-						int(HackFlags::None),
-						15.0f,
-						0.0f,
-						{
-							HackableCode::ReadOnlyScript(
-								Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
-								// x86
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-									->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
-								"cmp eax, 1\n"
-								, // x64
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-									->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
-								"cmp rax, 1\n"
-							),
-						},
-						true
-					)
-				},
-			};
-
-			auto func = &KillingMachineDamageBehavior::compareDamage1;
-			std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
-
-			for (HackableCode* next : hackables)
-			{
-				this->entity->registerCode(next);
-			}
+			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_5;
+			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare5;
+			icon = UIResources::Menus_Icons_HammerSmithing;
+			auto func = &KillingMachineDamageBehavior::compareDamage5;
+			functionPtr = (void*&)func;
+			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[5];
+			commandComment = Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovg::create();
 			break;
 		}
 		case 6:
 		{
-			HackableCode::CodeInfoMap codeInfoMap =
-			{
-				{
-					LOCAL_FUNC_ID_COMPARE_TEAM_1,
-					HackableCode::HackableCodeInfo(
-						KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare1,
-						Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CompareTeam::create(),
-						HackableBase::HackBarColor::Purple,
-						UIResources::Menus_Icons_ArrowRain,
-						LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
-						{
-							{
-								HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax::create()
-							},
-						},
-						int(HackFlags::None),
-						15.0f,
-						0.0f,
-						{
-							HackableCode::ReadOnlyScript(
-								Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
-								// x86
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-									->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
-								"cmp eax, 1\n"
-								, // x64
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-								COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-									->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
-								"cmp rax, 1\n"
-							),
-						},
-						true
-					)
-				},
-			};
-
-			auto func = &KillingMachineDamageBehavior::compareDamage1;
-			std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
-
-			for (HackableCode* next : hackables)
-			{
-				this->entity->registerCode(next);
-			}
+			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_6;
+			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare6;
+			icon = UIResources::Menus_Icons_GearBroken;
+			auto func = &KillingMachineDamageBehavior::compareDamage6;
+			functionPtr = (void*&)func;
+			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[6];
+			commandComment = Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge::create();
 			break;
 		}
+	}
+
+	const std::string& command = machineAsmConstants.command;
+	const std::string& reg32 = machineAsmConstants.reg32;
+	const std::string& reg64 = machineAsmConstants.reg64;
+	std::string constant1 = std::to_string(machineAsmConstants.constant1);
+	std::string constant2 = std::to_string(machineAsmConstants.constant2);
+	std::string constant3 = std::to_string(machineAsmConstants.constant3);
+
+	HackableCode::CodeInfoMap codeInfoMap =
+	{
+		{
+			functionId,
+			HackableCode::HackableCodeInfo(
+				functionIdentifier,
+				// TODO: Fix
+				Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CompareTeam::create(),
+				HackableBase::HackBarColor::Purple,
+				icon,
+				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
+				{
+					{
+						// TODO: Fix
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax::create()
+					},
+				},
+				int(HackFlags::None),
+				15.0f,
+				0.0f,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(commandComment) +
+							"mov ebp, " + constant1 + "\n" +
+							"mov " + reg32 + ", " + constant2 + "\n" +
+							"cmp " + reg32 + ", " + constant3 + "\n" +
+							command + " " + reg32 + ", ebp\n"
+						, // x64
+						COMMENT(commandComment == nullptr ? nullptr : commandComment->clone()) +
+							"mov rbp, " + constant1 + "\n" +
+							"mov " + reg64 + ", " + constant2 + "\n" +
+							"cmp " + reg64 + ", " + constant3 + "\n" +
+							command + " " + reg64 + ", rbp\n"
+					),
+				},
+				true
+			)
+		},
+	};
+
+	std::vector<HackableCode*> hackables = HackableCode::create(functionPtr, codeInfoMap);
+
+	for (HackableCode* next : hackables)
+	{
+		this->entity->registerCode(next);
 	}
 }
 
@@ -385,38 +237,259 @@ HackablePreview* KillingMachineDamageBehavior::createDefaultPreview()
 	return nullptr;
 }
 
+NO_OPTIMIZE int KillingMachineDamageBehavior::compare()
+{
+	switch(this->machineId)
+	{
+		default:
+		case 1:
+		{
+			this->compareDamage1();
+			break;
+		}
+		case 2:
+		{
+			this->compareDamage2();
+			break;
+		}
+		case 3:
+		{
+			this->compareDamage3();
+			break;
+		}
+		case 4:
+		{
+			this->compareDamage4();
+			break;
+		}
+		case 5:
+		{
+			this->compareDamage5();
+			break;
+		}
+		case 6:
+		{
+			this->compareDamage6();
+			break;
+		}
+	}
+
+	return KillingMachineDamageBehavior::DamageStorageAntiOptimize.asInt();
+}
+END_NO_OPTIMIZE
+
+// Less than
 NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage1()
 {
-	static volatile int isOnEnemyTeamLocal;
+	static volatile int damage;
 
-	isOnEnemyTeamLocal = 1;
+	damage = 0;
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
-	ASM(push ZBX);
-
-	ASM(MOV ZAX, 0);
-	ASM_MOV_REG_VAR(eax, isOnEnemyTeamLocal);
-
-	ASM(mov ZBX, 1);
+	ASM(push ZBP);
+	
+	// Create a cmp false result condition as the default behavior
+	ASM(mov ZBP, 3);
+	ASM(mov ZAX, 0);
+	ASM(cmp ZAX, ZBP);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_1);
-	ASM(cmp ZAX, 1);
+	ASM(mov ZBP, 50);
+	ASM(mov ZAX, 5);
+	ASM(cmp ZAX, 4);
+	ASM(cmovl ZAX, ZBP);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	// If the compare is true, set zax to 1, else 0
-	ASM(MOV ZAX, 0);
-	ASM(cmove ZAX, ZBX);
+	ASM_MOV_VAR_REG(damage, eax);
 
-	ASM_MOV_VAR_REG(isOnEnemyTeamLocal, eax);
-
-	ASM(pop ZBX);
+	ASM(pop ZBP);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
 	HACKABLES_STOP_SEARCH();
 
-	// this->HackStateStorage[ArrowRain::StateKeyIsCasterOnEnemyTeam] = Value((isOnEnemyTeamLocal == 0) ? false : true);
+	KillingMachineDamageBehavior::DamageStorageAntiOptimize = Value(damage);
+}
+END_NO_OPTIMIZE
+
+// Less than or equal
+NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage2()
+{
+	static volatile int damage;
+
+	damage = 0;
+
+	ASM_PUSH_EFLAGS();
+	ASM(push ZBX);
+	ASM(push ZBP);
+	
+	// Create a cmp false result condition as the default behavior
+	ASM(mov ZBP, 3);
+	ASM(mov ZBX, 0);
+	ASM(cmp ZBX, ZBP);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_2);
+	ASM(mov ZBP, 75);
+	ASM(mov ZBX, 7);
+	ASM(cmp ZBX, 5);
+	ASM(cmovle ZBX, ZBP);
+	ASM_NOP8();
+	HACKABLE_CODE_END();
+
+	ASM_MOV_VAR_REG(damage, ebx);
+
+	ASM(pop ZBP);
+	ASM(pop ZBX);
+	ASM_POP_EFLAGS();
+
+	HACKABLES_STOP_SEARCH();
+
+	KillingMachineDamageBehavior::DamageStorageAntiOptimize = Value(damage);
+}
+END_NO_OPTIMIZE
+
+// Equal
+NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage3()
+{
+	static volatile int damage;
+
+	damage = 0;
+
+	ASM_PUSH_EFLAGS();
+	ASM(push ZCX);
+	ASM(push ZBP);
+	
+	// Create a cmp false result condition as the default behavior
+	ASM(mov ZBP, 3);
+	ASM(mov ZCX, 0);
+	ASM(cmp ZCX, ZBP);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_3);
+	ASM(mov ZBP, 100);
+	ASM(mov ZCX, 1);
+	ASM(cmp ZCX, 0);
+	ASM(cmove ZCX, ZBP);
+	ASM_NOP8();
+	HACKABLE_CODE_END();
+
+	ASM_MOV_VAR_REG(damage, ecx);
+
+	ASM(pop ZBP);
+	ASM(pop ZCX);
+	ASM_POP_EFLAGS();
+
+	HACKABLES_STOP_SEARCH();
+
+	KillingMachineDamageBehavior::DamageStorageAntiOptimize = Value(damage);
+}
+END_NO_OPTIMIZE
+
+// Not equal
+NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage4()
+{
+	static volatile int damage;
+
+	damage = 0;
+
+	ASM_PUSH_EFLAGS();
+	ASM(push ZDX);
+	ASM(push ZBP);
+	
+	// Create a cmp false result condition as the default behavior
+	ASM(mov ZBP, 3);
+	ASM(mov ZDX, 0);
+	ASM(cmp ZDX, ZBP);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_4);
+	ASM(mov ZBP, 125);
+	ASM(mov ZDX, 10);
+	ASM(cmp ZDX, 10);
+	ASM(cmovne ZDX, ZBP);
+	ASM_NOP8();
+	HACKABLE_CODE_END();
+
+	ASM_MOV_VAR_REG(damage, edx);
+
+	ASM(pop ZBP);
+	ASM(pop ZDX);
+	ASM_POP_EFLAGS();
+
+	HACKABLES_STOP_SEARCH();
+
+	KillingMachineDamageBehavior::DamageStorageAntiOptimize = Value(damage);
+}
+END_NO_OPTIMIZE
+
+// Greater than
+NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage5()
+{
+	static volatile int damage;
+
+	damage = 0;
+
+	ASM_PUSH_EFLAGS();
+	ASM(push ZDI);
+	ASM(push ZBP);
+	
+	// Create a cmp false result condition as the default behavior
+	ASM(mov ZBP, 3);
+	ASM(mov ZDI, 0);
+	ASM(cmp ZDI, ZBP);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_5);
+	ASM(mov ZBP, 150);
+	ASM(mov ZDI, 15);
+	ASM(cmp ZDI, 20);
+	ASM(cmovg ZDI, ZBP);
+	ASM_NOP8();
+	HACKABLE_CODE_END();
+
+	ASM_MOV_VAR_REG(damage, edi);
+
+	ASM(pop ZBP);
+	ASM(pop ZDI);
+	ASM_POP_EFLAGS();
+
+	HACKABLES_STOP_SEARCH();
+
+	KillingMachineDamageBehavior::DamageStorageAntiOptimize = Value(damage);
+}
+END_NO_OPTIMIZE
+
+// Greater than or equal
+NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage6()
+{
+	static volatile int damage;
+
+	damage = 0;
+
+	ASM_PUSH_EFLAGS();
+	ASM(push ZSI);
+	ASM(push ZBP);
+	
+	// Create a cmp false result condition as the default behavior
+	ASM(mov ZBP, 3);
+	ASM(mov ZSI, 0);
+	ASM(cmp ZSI, ZBP);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_6);
+	ASM(mov ZBP, 175);
+	ASM(mov ZSI, 5);
+	ASM(cmp ZSI, 8);
+	ASM(cmovge ZSI, ZBP);
+	ASM_NOP8();
+	HACKABLE_CODE_END();
+
+	ASM_MOV_VAR_REG(damage, esi);
+
+	ASM(pop ZBP);
+	ASM(pop ZSI);
+	ASM_POP_EFLAGS();
+
+	HACKABLES_STOP_SEARCH();
+
+	KillingMachineDamageBehavior::DamageStorageAntiOptimize = Value(damage);
 }
 END_NO_OPTIMIZE

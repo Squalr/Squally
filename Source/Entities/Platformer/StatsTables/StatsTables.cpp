@@ -357,12 +357,12 @@ StatsTables::StatsTables()
 	/***********
 		MISC
 	************/
-	StatsTables::StatsTable[KillingMachine1::MapKey] = StatsIncrements(Stats(3, 0, 0));
-	StatsTables::StatsTable[KillingMachine2::MapKey] = StatsIncrements(Stats(3, 0, 0));
-	StatsTables::StatsTable[KillingMachine3::MapKey] = StatsIncrements(Stats(3, 0, 0));
-	StatsTables::StatsTable[KillingMachine4::MapKey] = StatsIncrements(Stats(3, 0, 0));
-	StatsTables::StatsTable[KillingMachine5::MapKey] = StatsIncrements(Stats(3, 0, 0));
-	StatsTables::StatsTable[KillingMachine6::MapKey] = StatsIncrements(Stats(3, 0, 0));
+	StatsTables::StatsTable[KillingMachine1::MapKey] = StatsIncrements(Stats(100, 0, 0));
+	StatsTables::StatsTable[KillingMachine2::MapKey] = StatsIncrements(Stats(150, 0, 0));
+	StatsTables::StatsTable[KillingMachine3::MapKey] = StatsIncrements(Stats(200, 0, 0));
+	StatsTables::StatsTable[KillingMachine4::MapKey] = StatsIncrements(Stats(250, 0, 0));
+	StatsTables::StatsTable[KillingMachine5::MapKey] = StatsIncrements(Stats(300, 0, 0));
+	StatsTables::StatsTable[KillingMachine6::MapKey] = StatsIncrements(Stats(350, 0, 0));
 }
 
 StatsTables::~StatsTables()
