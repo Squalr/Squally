@@ -213,6 +213,149 @@ void HackableCode::restoreState()
 	HackUtils::writeMemory(this->codePointer, this->originalCodeCopy.data(), this->originalCodeCopy.size());
 }
 
+std::string HackableCode::registerToString(HackableCode::Register reg, bool is32Bit)
+{
+	switch (reg)
+	{
+		case HackableCode::Register::zax:
+		{
+			return (is32Bit ? "eax" : "rax");
+		}
+		case HackableCode::Register::zbx:
+		{
+			return (is32Bit ? "ebx" : "rbx");
+		}
+		case HackableCode::Register::zcx:
+		{
+			return (is32Bit ? "ecx" : "rcx");
+		}
+		case HackableCode::Register::zdx:
+		{
+			return (is32Bit ? "edx" : "rdx");
+		}
+		case HackableCode::Register::zdi:
+		{
+			return (is32Bit ? "edi" : "rdi");
+		}
+		case HackableCode::Register::zsi:
+		{
+			return (is32Bit ? "esi" : "rsi");
+		}
+		case HackableCode::Register::zbp:
+		{
+			return (is32Bit ? "ebp" : "rbp");
+		}
+		case HackableCode::Register::zsp:
+		{
+			return (is32Bit ? "esp" : "rsp");
+		}
+		case HackableCode::Register::zip:
+		{
+			return (is32Bit ? "eip" : "rip");
+		}
+		case HackableCode::Register::r8:
+		{
+			return "r8";
+		}
+		case HackableCode::Register::r9:
+		{
+			return "r9";
+		}
+		case HackableCode::Register::r10:
+		{
+			return "r10";
+		}
+		case HackableCode::Register::r11:
+		{
+			return "r11";
+		}
+		case HackableCode::Register::r12:
+		{
+			return "r12";
+		}
+		case HackableCode::Register::r13:
+		{
+			return "r13";
+		}
+		case HackableCode::Register::r14:
+		{
+			return "r14";
+		}
+		case HackableCode::Register::r15:
+		{
+			return "r15";
+		}
+		case HackableCode::Register::st0:
+		{
+			return "st0";
+		}
+		case HackableCode::Register::st1:
+		{
+			return "st1";
+		}
+		case HackableCode::Register::st2:
+		{
+			return "st2";
+		}
+		case HackableCode::Register::st3:
+		{
+			return "st3";
+		}
+		case HackableCode::Register::st4:
+		{
+			return "st4";
+		}
+		case HackableCode::Register::st5:
+		{
+			return "st5";
+		}
+		case HackableCode::Register::st6:
+		{
+			return "st6";
+		}
+		case HackableCode::Register::st7:
+		{
+			return "st7";
+		}
+		case HackableCode::Register::xmm0:
+		{
+			return "xmm0";
+		}
+		case HackableCode::Register::xmm1:
+		{
+			return "xmm1";
+		}
+		case HackableCode::Register::xmm2:
+		{
+			return "xmm2";
+		}
+		case HackableCode::Register::xmm3:
+		{
+			return "xmm3";
+		}
+		case HackableCode::Register::xmm4:
+		{
+			return "xmm4";
+		}
+		case HackableCode::Register::xmm5:
+		{
+			return "xmm5";
+		}
+		case HackableCode::Register::xmm6:
+		{
+			return "xmm6";
+		}
+		case HackableCode::Register::xmm7:
+		{
+			return "xmm7";
+		}
+		default:
+		{
+			return "unk";
+		}
+	}
+}
+
 std::vector<HackableCode*> HackableCode::parseHackables(void* functionStart, CodeInfoMap& hackableCodeInfoMap)
 {
 	// Parse the HACKABLE_CODE_BEGIN/END pairs from the function. There may be multiple.

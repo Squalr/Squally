@@ -2,6 +2,8 @@
 
 #include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 
+#include "Engine/Hackables/HackableCode.h"
+
 class HackablePreview;
 class PlatformerEnemy;
 class StatsBars;
@@ -49,15 +51,14 @@ private:
 	struct MachineAsmConstants
 	{
 		std::string command;
-		std::string reg32;
-		std::string reg64;
+		HackableCode::Register reg = HackableCode::Register::zax;
 		int constant1 = 0;
 		int constant2 = 0;
 		int constant3 = 0;
 
 		MachineAsmConstants() { }
-		MachineAsmConstants(std::string command, std::string reg32, std::string reg64, int constant1, int constant2, int constant3) :
-			command(command), reg32(reg32), reg64(reg64), constant1(constant1), constant2(constant2), constant3(constant3) { }
+		MachineAsmConstants(std::string command, HackableCode::Register reg, int constant1, int constant2, int constant3) :
+			command(command), reg(reg), constant1(constant1), constant2(constant2), constant3(constant3) { }
 	};
 
 	static const std::string PropertyMachineId;

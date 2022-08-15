@@ -232,6 +232,8 @@ public:
 	bool applyCustomCode(std::string newAssembly);
 	void restoreState() override;
 
+	static std::string registerToString(HackableCode::Register reg, bool is32Bit);
+
 	std::map<Register, LocalizedString*> registerHints;
 
 protected:

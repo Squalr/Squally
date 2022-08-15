@@ -6,7 +6,6 @@
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SaveEvents.h"
-#include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Save/SaveManager.h"
@@ -43,12 +42,12 @@ const std::string KillingMachineDamageBehavior::HackIdentifierKillingMachineComp
 Value KillingMachineDamageBehavior::DamageStorageAntiOptimize = Value(0);
 std::map<int, KillingMachineDamageBehavior::MachineAsmConstants> KillingMachineDamageBehavior::MachineAsmConstantsMap
 {
-	{ 1, KillingMachineDamageBehavior::MachineAsmConstants("cmovl", "eax", "rax", 50, 5, 4) },
-	{ 2, KillingMachineDamageBehavior::MachineAsmConstants("cmovle", "ebx", "rbx", 75, 7, 5) },
-	{ 3, KillingMachineDamageBehavior::MachineAsmConstants("cmove", "ecx", "rcx", 100, 1, 0) },
-	{ 4, KillingMachineDamageBehavior::MachineAsmConstants("cmovne", "edx", "rdx", 125, 10, 10) },
-	{ 5, KillingMachineDamageBehavior::MachineAsmConstants("cmovg", "edi", "rdi", 150, 15, 20) },
-	{ 6, KillingMachineDamageBehavior::MachineAsmConstants("cmovge", "esi", "rsi", 175, 5, 8) },
+	{ 1, KillingMachineDamageBehavior::MachineAsmConstants("cmovl", HackableCode::Register::zax, 50, 5, 4) },
+	{ 2, KillingMachineDamageBehavior::MachineAsmConstants("cmovle", HackableCode::Register::zbx, 75, 7, 5) },
+	{ 3, KillingMachineDamageBehavior::MachineAsmConstants("cmove", HackableCode::Register::zcx, 100, 1, 0) },
+	{ 4, KillingMachineDamageBehavior::MachineAsmConstants("cmovne", HackableCode::Register::zdx, 125, 10, 10) },
+	{ 5, KillingMachineDamageBehavior::MachineAsmConstants("cmovg", HackableCode::Register::zdi, 150, 15, 20) },
+	{ 6, KillingMachineDamageBehavior::MachineAsmConstants("cmovge", HackableCode::Register::zsi, 175, 5, 8) },
 };
 
 KillingMachineDamageBehavior* KillingMachineDamageBehavior::create(GameObject* owner)
@@ -89,7 +88,7 @@ void KillingMachineDamageBehavior::onLoad()
 	std::string icon = "";
 	std::string functionIdentifier = "";
 	KillingMachineDamageBehavior::MachineAsmConstants machineAsmConstants;
-	LocalizedString* commandComment = nullptr;
+	std::string commandComment = "";
 
 	switch(this->machineId)
 	{
@@ -102,7 +101,10 @@ void KillingMachineDamageBehavior::onLoad()
 			auto func = &KillingMachineDamageBehavior::compareDamage1;
 			functionPtr = (void*&)func;
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[1];
-			commandComment = Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle::create();
+			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create());
 
 			// TODO: Equivalent of this
 			/*
@@ -121,7 +123,10 @@ void KillingMachineDamageBehavior::onLoad()
 			auto func = &KillingMachineDamageBehavior::compareDamage2;
 			functionPtr = (void*&)func;
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[2];
-			commandComment = Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovl::create();
+			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovl::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentL::create());
 			break;
 		}
 		case 3:
@@ -132,7 +137,10 @@ void KillingMachineDamageBehavior::onLoad()
 			auto func = &KillingMachineDamageBehavior::compareDamage3;
 			functionPtr = (void*&)func;
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[3];
-			commandComment = Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmove::create();
+			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmove::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentE::create());
 			break;
 		}
 		case 4:
@@ -143,7 +151,10 @@ void KillingMachineDamageBehavior::onLoad()
 			auto func = &KillingMachineDamageBehavior::compareDamage4;
 			functionPtr = (void*&)func;
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[4];
-			commandComment = Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovne::create();
+			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovne::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentNe::create());
 			break;
 		}
 		case 5:
@@ -154,7 +165,10 @@ void KillingMachineDamageBehavior::onLoad()
 			auto func = &KillingMachineDamageBehavior::compareDamage5;
 			functionPtr = (void*&)func;
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[5];
-			commandComment = Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovg::create();
+			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovg::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentG::create());
 			break;
 		}
 		case 6:
@@ -165,17 +179,20 @@ void KillingMachineDamageBehavior::onLoad()
 			auto func = &KillingMachineDamageBehavior::compareDamage6;
 			functionPtr = (void*&)func;
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[6];
-			commandComment = Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge::create();
+			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentGe::create());
 			break;
 		}
 	}
 
 	const std::string& command = machineAsmConstants.command;
-	const std::string& reg32 = machineAsmConstants.reg32;
-	const std::string& reg64 = machineAsmConstants.reg64;
-	std::string constant1 = std::to_string(machineAsmConstants.constant1);
-	std::string constant2 = std::to_string(machineAsmConstants.constant2);
-	std::string constant3 = std::to_string(machineAsmConstants.constant3);
+	const std::string reg32 = HackableCode::registerToString(machineAsmConstants.reg, true);
+	const std::string reg64 = HackableCode::registerToString(machineAsmConstants.reg, false);
+	const std::string constant1 = std::to_string(machineAsmConstants.constant1);
+	const std::string constant2 = std::to_string(machineAsmConstants.constant2);
+	const std::string constant3 = std::to_string(machineAsmConstants.constant3);
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
@@ -183,15 +200,17 @@ void KillingMachineDamageBehavior::onLoad()
 			functionId,
 			HackableCode::HackableCodeInfo(
 				functionIdentifier,
-				// TODO: Fix
-				Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CompareTeam::create(),
+				Strings::Menus_Hacking_Objects_KillingMachine_TakeDamage::create(),
 				HackableBase::HackBarColor::Purple,
 				icon,
 				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
-						// TODO: Fix
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax::create()
+						// TODO: Description
+						machineAsmConstants.reg, Strings::Menus_Hacking_Objects_KillingMachine_CommentMaxDamage::create()
+					},
+					{
+						HackableCode::Register::zbp, Strings::Menus_Hacking_Objects_KillingMachine_CommentMaxDamage::create()
 					},
 				},
 				int(HackFlags::None),
@@ -201,17 +220,27 @@ void KillingMachineDamageBehavior::onLoad()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(commandComment) +
-							"mov ebp, " + constant1 + "\n" +
-							"mov " + reg32 + ", " + constant2 + "\n" +
-							"cmp " + reg32 + ", " + constant3 + "\n" +
-							command + " " + reg32 + ", ebp\n"
+						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentMaxDamage::create()) +
+						"mov ebp, " + constant1 + "\n\n" +
+						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentDefaultDamage::create()) +
+						"mov " + reg32 + ", " + constant2 + "\n\n" +
+						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()) +
+						"cmp " + reg32 + ", " + constant3 + "\n\n" +
+						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCmov::create()) +
+						commandComment +
+						command + " " + reg32 + ", ebp\n\n" + 
+						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentHint::create())
 						, // x64
-						COMMENT(commandComment == nullptr ? nullptr : commandComment->clone()) +
-							"mov rbp, " + constant1 + "\n" +
-							"mov " + reg64 + ", " + constant2 + "\n" +
-							"cmp " + reg64 + ", " + constant3 + "\n" +
-							command + " " + reg64 + ", rbp\n"
+						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentMaxDamage::create()) +
+						"mov rbp, " + constant1 + "\n\n" +
+						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentDefaultDamage::create()) +
+						"mov " + reg64 + ", " + constant2 + "\n\n" +
+						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()) +
+						"cmp " + reg64 + ", " + constant3 + "\n\n" +
+						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCmov::create()) +
+						commandComment +
+						command + " " + reg64 + ", rbp\n\n" +
+						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentHint::create())
 					),
 				},
 				true

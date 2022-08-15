@@ -17904,6 +17904,111 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_RegisterEdi() = default;
 	};
 
+	class Menus_Hacking_Objects_KillingMachine_CommentCmov : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_CommentCmov* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_CommentCmov();
+		virtual ~Menus_Hacking_Objects_KillingMachine_CommentCmov() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_CommentCompare : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_CommentCompare* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_CommentCompare();
+		virtual ~Menus_Hacking_Objects_KillingMachine_CommentCompare() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_CommentDefaultDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_CommentDefaultDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_CommentDefaultDamage();
+		virtual ~Menus_Hacking_Objects_KillingMachine_CommentDefaultDamage() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_CommentHint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_CommentHint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_CommentHint();
+		virtual ~Menus_Hacking_Objects_KillingMachine_CommentHint() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_CommentMaxDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_CommentMaxDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_CommentMaxDamage();
+		virtual ~Menus_Hacking_Objects_KillingMachine_CommentMaxDamage() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_Register : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_Register* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_Register();
+		virtual ~Menus_Hacking_Objects_KillingMachine_Register() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_TakeDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_TakeDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_TakeDamage();
+		virtual ~Menus_Hacking_Objects_KillingMachine_TakeDamage() = default;
+	};
+
 	class Menus_Hacking_Objects_Laser_UpdateCountDown_RegisterSt0 : public LocalizedString
 	{
 	public:
