@@ -49,7 +49,6 @@ void SquallyHackingBehavior::onLoad()
 		this->squally->whenKeyPressed({ InputEvents::KeyCode::KEY_TAB }, [=](InputEvents::KeyboardEventArgs* args)
 		{
 			HackerModeQueryArgs queryArgs = HackerModeQueryArgs();
-
 			HackableEvents::TriggerQueryHackerModeAllowed(&queryArgs);
 			
 			if (queryArgs.hackerModeAllowed && runeBehavior->tryUseRune())

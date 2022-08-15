@@ -109,6 +109,16 @@ void RadialMenu::initializeListeners()
 	});
 }
 
+void RadialMenu::onHackerModeDisable()
+{
+	super::onHackerModeDisable();
+
+	if (GameUtils::isVisible(this))
+	{
+		this->close();
+	}
+}
+
 void RadialMenu::onHackableEdit(HackableBase* hackable)
 {
 	if (dynamic_cast<HackActivatedAbility*>(hackable) != nullptr)

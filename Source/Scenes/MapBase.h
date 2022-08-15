@@ -59,6 +59,7 @@ protected:
 
 	bool canPause = false;
 	bool allowHackerMode = false;
+	bool hackerModeEnabled = false;
 	std::string mapResource;
 	std::vector<std::string> mapArgs;
 
@@ -69,7 +70,7 @@ private:
 	CodeHud* buildCodeHud();
 	RadialMenu* buildRadialMenu();
 	OptionsMenu* buildOptionsMenu();
-
+	
 	Hud* hackerModeGlow = nullptr;
 	MatrixRain* hackerModeRain = nullptr;
 	LazyNode<CodeHud>* codeHud = nullptr;

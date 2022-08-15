@@ -160,7 +160,7 @@ void MapBase::initializeListeners()
 
 		if (args != nullptr)
 		{
-			args->hackerModeAllowed = this->allowHackerMode;
+			args->hackerModeAllowed = this->allowHackerMode && !this->hackerModeEnabled;
 		}
 	}));
 
@@ -252,6 +252,8 @@ void MapBase::onHackerModeEnable()
 {
 	super::onHackerModeEnable();
 
+	this->hackerModeEnabled = true;
+
 	GameUtils::pause(this);
 	GameUtils::resume(this->hackerModeVisibleHud);
 
@@ -267,6 +269,8 @@ void MapBase::onHackerModeEnable()
 void MapBase::onHackerModeDisable()
 {
 	super::onHackerModeDisable();
+
+	this->hackerModeEnabled = false;
 
 	this->hud->setVisible(true);
 	this->hackerModeGlow->setVisible(false);

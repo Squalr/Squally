@@ -27,6 +27,7 @@ protected:
 
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onHackerModeDisable() override;
 
 private:
 	typedef SmartNode super;
