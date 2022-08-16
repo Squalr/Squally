@@ -207,10 +207,11 @@ void KillingMachineDamageBehavior::onLoad()
 				{
 					{
 						// TODO: Description
-						machineAsmConstants.reg, Strings::Menus_Hacking_Objects_KillingMachine_CommentMaxDamage::create()
+						machineAsmConstants.reg, Strings::Menus_Hacking_Objects_KillingMachine_Register::create()
 					},
 					{
-						HackableCode::Register::zbp, Strings::Menus_Hacking_Objects_KillingMachine_CommentMaxDamage::create()
+						// TODO: Description
+						HackableCode::Register::zbp, Strings::Menus_Hacking_Objects_KillingMachine_RegisterEbp::create()
 					},
 				},
 				int(HackFlags::None),
@@ -311,22 +312,26 @@ END_NO_OPTIMIZE
 NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage1()
 {
 	static volatile int damage;
+	static int probability;
 
 	damage = 0;
+	probability = RandomHelper::random_int(0, 100);
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
 	ASM(push ZBP);
 	
 	// Create a cmp false result condition as the default behavior
-	ASM(mov ZBP, 3);
+	ASM(mov ZBP, 1);
 	ASM(mov ZAX, 0);
 	ASM(cmp ZAX, ZBP);
 
+	// Load probability into register
+	ASM_MOV_REG_VAR(ebp, probability);
+
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_1);
-	ASM(mov ZBP, 50);
-	ASM(mov ZAX, 5);
-	ASM(cmp ZAX, 4);
+	ASM(mov ZAX, 10);
+	ASM(cmp ZBP, 5);
 	ASM(cmovl ZAX, ZBP);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
@@ -347,22 +352,26 @@ END_NO_OPTIMIZE
 NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage2()
 {
 	static volatile int damage;
+	static int probability;
 
 	damage = 0;
+	probability = RandomHelper::random_int(0, 100);
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZBX);
 	ASM(push ZBP);
 	
 	// Create a cmp false result condition as the default behavior
-	ASM(mov ZBP, 3);
+	ASM(mov ZBP, 1);
 	ASM(mov ZBX, 0);
 	ASM(cmp ZBX, ZBP);
 
+	// Load probability into register
+	ASM_MOV_REG_VAR(ebp, probability);
+
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_2);
-	ASM(mov ZBP, 75);
-	ASM(mov ZBX, 7);
-	ASM(cmp ZBX, 5);
+	ASM(mov ZBX, 10);
+	ASM(cmp ZBP, 4);
 	ASM(cmovle ZBX, ZBP);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
@@ -383,23 +392,27 @@ END_NO_OPTIMIZE
 NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage3()
 {
 	static volatile int damage;
+	static int probability;
 
 	damage = 0;
+	probability = RandomHelper::random_int(0, 100);
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZCX);
 	ASM(push ZBP);
 	
 	// Create a cmp false result condition as the default behavior
-	ASM(mov ZBP, 3);
+	ASM(mov ZBP, 1);
 	ASM(mov ZCX, 0);
 	ASM(cmp ZCX, ZBP);
 
+	// Load probability into register
+	ASM_MOV_REG_VAR(ebp, probability);
+
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_3);
-	ASM(mov ZBP, 100);
-	ASM(mov ZCX, 1);
-	ASM(cmp ZCX, 0);
-	ASM(cmove ZCX, ZBP);
+	ASM(mov ZCX, 10);
+	ASM(cmp ZBP, 1);
+	ASM(cmovle ZCX, ZBP);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
@@ -410,8 +423,6 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage3()
 	ASM_POP_EFLAGS();
 
 	HACKABLES_STOP_SEARCH();
-
-	KillingMachineDamageBehavior::DamageStorageAntiOptimize = Value(damage);
 }
 END_NO_OPTIMIZE
 
@@ -419,23 +430,27 @@ END_NO_OPTIMIZE
 NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage4()
 {
 	static volatile int damage;
+	static int probability;
 
 	damage = 0;
+	probability = RandomHelper::random_int(0, 100);
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZDX);
 	ASM(push ZBP);
 	
 	// Create a cmp false result condition as the default behavior
-	ASM(mov ZBP, 3);
+	ASM(mov ZBP, 1);
 	ASM(mov ZDX, 0);
 	ASM(cmp ZDX, ZBP);
 
+	// Load probability into register
+	ASM_MOV_REG_VAR(ebp, probability);
+
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_4);
-	ASM(mov ZBP, 125);
-	ASM(mov ZDX, 10);
-	ASM(cmp ZDX, 10);
-	ASM(cmovne ZDX, ZBP);
+	ASM(mov ZDX, 2);
+	ASM(cmp ZBP, 50);
+	ASM(cmovle ZDX, ZBP);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
@@ -455,23 +470,27 @@ END_NO_OPTIMIZE
 NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage5()
 {
 	static volatile int damage;
+	static int probability;
 
 	damage = 0;
+	probability = RandomHelper::random_int(0, 100);
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZDI);
 	ASM(push ZBP);
 	
 	// Create a cmp false result condition as the default behavior
-	ASM(mov ZBP, 3);
+	ASM(mov ZBP, 1);
 	ASM(mov ZDI, 0);
 	ASM(cmp ZDI, ZBP);
 
+	// Load probability into register
+	ASM_MOV_REG_VAR(ebp, probability);
+
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_5);
-	ASM(mov ZBP, 150);
-	ASM(mov ZDI, 15);
-	ASM(cmp ZDI, 20);
-	ASM(cmovg ZDI, ZBP);
+	ASM(mov ZDI, 10);
+	ASM(cmp ZBP, 95);
+	ASM(cmovle ZDI, ZBP);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
@@ -491,23 +510,27 @@ END_NO_OPTIMIZE
 NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage6()
 {
 	static volatile int damage;
+	static int probability;
 
 	damage = 0;
+	probability = RandomHelper::random_int(0, 100);
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZSI);
 	ASM(push ZBP);
 	
 	// Create a cmp false result condition as the default behavior
-	ASM(mov ZBP, 3);
+	ASM(mov ZBP, 1);
 	ASM(mov ZSI, 0);
 	ASM(cmp ZSI, ZBP);
 
+	// Load probability into register
+	ASM_MOV_REG_VAR(ebp, probability);
+
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_6);
-	ASM(mov ZBP, 175);
-	ASM(mov ZSI, 5);
-	ASM(cmp ZSI, 8);
-	ASM(cmovge ZSI, ZBP);
+	ASM(mov ZSI, 10);
+	ASM(cmp ZBP, 95);
+	ASM(cmovle ZSI, ZBP);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 

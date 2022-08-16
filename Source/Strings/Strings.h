@@ -17994,6 +17994,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_KillingMachine_Register() = default;
 	};
 
+	class Menus_Hacking_Objects_KillingMachine_RegisterEbp : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_RegisterEbp* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_RegisterEbp();
+		virtual ~Menus_Hacking_Objects_KillingMachine_RegisterEbp() = default;
+	};
+
 	class Menus_Hacking_Objects_KillingMachine_TakeDamage : public LocalizedString
 	{
 	public:
