@@ -36,20 +36,10 @@ GatlingGun::GatlingGun(cocos2d::ValueMap& properties) : super(properties, CSize(
 	this->parseDirection();
 	this->mountSpeed = 0.0f;
 	this->animations = SmartAnimationNode::create(""); // TODO
-	this->body = Sprite::create(ObjectResources::Interactive_MineCarts_Body1);
-	this->wheelFront = Sprite::create(ObjectResources::Interactive_MineCarts_WheelFront);
-	this->wheelBack = Sprite::create(ObjectResources::Interactive_MineCarts_WheelBack);
-	this->bottomCollision = CollisionObject::create(
-		CollisionObject::createBox(CSize(240.0f, 48.0f)),
-		int(PlatformerCollisionType::PassThrough),
-		CollisionObject::Properties(false, false)
-	);
+	this->body = Sprite::create(ObjectResources::Interactive_GatlingGun_GatlingGun);
 
-	this->frontNode->addChild(this->bottomCollision);
 	this->frontNode->addChild(this->animations);
 	this->frontNode->addChild(this->body);
-	this->frontNode->addChild(this->wheelFront);
-	this->frontNode->addChild(this->wheelBack);
 }
 
 GatlingGun::~GatlingGun()
@@ -66,10 +56,6 @@ void GatlingGun::onEnter()
 void GatlingGun::initializePositions()
 {
 	super::initializePositions();
-
-	this->bottomCollision->setPositionY(-108.0f);
-	this->wheelBack->setPosition(Vec2(-32.0f, -64.0f));
-	this->wheelFront->setPosition(Vec2(32.0f, -69.0f));
 }
 
 void GatlingGun::initializeListeners()
@@ -115,5 +101,5 @@ SmartAnimationNode* GatlingGun::getAnimations() const
 
 Vec2 GatlingGun::getReparentPosition()
 {
-	return Vec2(0.0f, 128.0f);
+	return Vec2(-160.0f, 32.0f);
 }

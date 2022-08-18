@@ -237,7 +237,7 @@ void GatlingGunBehavior::decorateProjectile(Projectile* projectile)
 
 Vec2 GatlingGunBehavior::getProjectileSpawnOffset()
 {
-	return Vec2(64.0f, 128.0f);
+	return Vec2(256.0f, 32.0f);
 }
 
 float GatlingGunBehavior::getProjectileLifetime()

@@ -428,6 +428,8 @@ namespace ObjectResources
 	extern const std::string Interactive_Chests_GlassDisplayFront;
 	extern const std::string Interactive_Chests_MetalChestClosed;
 	extern const std::string Interactive_Chests_MetalChestOpen;
+	extern const std::string Interactive_GatlingGun_Bullet;
+	extern const std::string Interactive_GatlingGun_GatlingGun;
 	extern const std::string Interactive_Help_ChatBubble;
 	extern const std::string Interactive_Help_Exclamation;
 	extern const std::string Interactive_Help_HelpTotem;

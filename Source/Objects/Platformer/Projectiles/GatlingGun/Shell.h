@@ -2,8 +2,12 @@
 
 #include "Objects/Platformer/Projectiles/Projectile.h"
 
-class SmartAnimationSequenceNode;
 class WorldSound;
+
+namespace cocos2d
+{
+	class Sprite;
+}
 
 class Shell : public Projectile
 {
@@ -22,5 +26,5 @@ private:
 	typedef Projectile super;
 
 	WorldSound* shootSfx = nullptr;
-	SmartAnimationSequenceNode* shell = nullptr;
+	cocos2d::Sprite* shell = nullptr;
 };
