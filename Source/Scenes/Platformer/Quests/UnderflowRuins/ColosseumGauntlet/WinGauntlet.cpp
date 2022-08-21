@@ -26,6 +26,7 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Objects/Platformer/Interactables/Mounts/GatlingGun/GatlingGun.h"
+#include "Scenes/Platformer/Components/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -168,6 +169,10 @@ void WinGauntlet::runCinematicSequencePt1()
 			this->runCinematicSequencePt2();
 		}
 	});
+	this->killingMachine1->getComponent<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
+	{
+		movementBehavior->setMoveAcceleration(EntityMovementBehavior::DefaultWalkAcceleration);
+	});
 }
 
 void WinGauntlet::runCinematicSequencePt2()
@@ -186,6 +191,10 @@ void WinGauntlet::runCinematicSequencePt2()
 		{
 			this->runCinematicSequencePt3();
 		}
+	});
+	this->killingMachine2->getComponent<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
+	{
+		movementBehavior->setMoveAcceleration(EntityMovementBehavior::DefaultWalkAcceleration);
 	});
 }
 
@@ -206,6 +215,10 @@ void WinGauntlet::runCinematicSequencePt3()
 			this->runCinematicSequencePt4();
 		}
 	});
+	this->killingMachine3->getComponent<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
+	{
+		movementBehavior->setMoveAcceleration(EntityMovementBehavior::DefaultWalkAcceleration);
+	});
 }
 
 void WinGauntlet::runCinematicSequencePt4()
@@ -224,6 +237,10 @@ void WinGauntlet::runCinematicSequencePt4()
 		{
 			this->runCinematicSequencePt5();
 		}
+	});
+	this->killingMachine4->getComponent<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
+	{
+		movementBehavior->setMoveAcceleration(EntityMovementBehavior::DefaultWalkAcceleration);
 	});
 }
 
@@ -244,6 +261,10 @@ void WinGauntlet::runCinematicSequencePt5()
 			this->runCinematicSequencePt6();
 		}
 	});
+	this->killingMachine5->getComponent<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
+	{
+		movementBehavior->setMoveAcceleration(EntityMovementBehavior::DefaultWalkAcceleration);
+	});
 }
 
 void WinGauntlet::runCinematicSequencePt6()
@@ -262,6 +283,10 @@ void WinGauntlet::runCinematicSequencePt6()
 		{
 			this->runCinematicSequencePt7();
 		}
+	});
+	this->killingMachine6->getComponent<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
+	{
+		movementBehavior->setMoveAcceleration(EntityMovementBehavior::DefaultWalkAcceleration);
 	});
 }
 

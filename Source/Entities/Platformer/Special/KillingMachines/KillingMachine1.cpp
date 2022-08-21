@@ -24,7 +24,7 @@ KillingMachine1::KillingMachine1(ValueMap& properties) : super(properties,
 	KillingMachine1::MapKey,
 	EntityResources::Misc_UnderflowRuins_KillingMachine1_Animations,
 	EntityResources::Misc_UnderflowRuins_KillingMachine1_Emblem,
-	CSize(2048.0f, 1536.0f),
+	CSize(2048.0f, 1280.0f),
 	0.33f,
 	Vec2(0.0f, 0.0f))
 {

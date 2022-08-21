@@ -33,7 +33,6 @@ protected:
 	virtual cocos2d::Vec2 getProjectileSpawnOffset();
 	virtual float getProjectileLifetime();
 
-	Projectile* cachedProjectile = nullptr;
 	WorldSound* attackSound = nullptr;
 
 protected:
@@ -50,4 +49,8 @@ private:
 
 	bool isPerformingOutOfCombatAttack = false;
 	GatlingGun* gatlingGun = nullptr;
+	std::vector<Projectile*> projectiles;
+	int nextProjectileIndex = -1;
+
+	static const int MaxProjectiles;
 };

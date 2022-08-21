@@ -17,6 +17,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Interactables/Mounts/GatlingGun/GatlingGun.h"
 #include "Objects/Platformer/Projectiles/GatlingGun/Shell.h"
 #include "Objects/Platformer/Projectiles/Projectile.h"
@@ -31,6 +32,7 @@
 using namespace cocos2d;
 
 const std::string GatlingGunBehavior::MapKey = "gatling-gun";
+const int GatlingGunBehavior::MaxProjectiles = 3;
 
 GatlingGunBehavior* GatlingGunBehavior::create(GameObject* owner)
 {
@@ -128,7 +130,8 @@ std::string GatlingGunBehavior::getOutOfCombatAttackAnimation()
 
 std::string GatlingGunBehavior::getOutOfCombatAttackSound()
 {
-	return SoundResources::Platformer_Physical_Punches_PunchWoosh1;
+	// TODO: This sfx sucks for this
+	return SoundResources::Platformer_FX_Explosions_Explosion1;
 }
 
 float GatlingGunBehavior::getOutOfCombatAttackOnset()
@@ -155,32 +158,33 @@ void GatlingGunBehavior::tryPerformShootProjectile()
 		return;
 	}
 
-	if (projectile != this->cachedProjectile)
+	if (projectile != nullptr && projectile->getParent() != nullptr)
 	{
-		this->decorateProjectile(projectile);
+		projectile->getParent()->removeChild(projectile);
+		projectile = nullptr;
+	}
 
-		if (this->cachedProjectile != nullptr && this->cachedProjectile->getParent() != nullptr)
+	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
+		this,
+		projectile,
+		SpawnMethod::Above,
+		PositionMode::SetToOwner,
+		[&]()
 		{
-			this->cachedProjectile->getParent()->removeChild(this->cachedProjectile);
-			this->cachedProjectile = nullptr;
+		},
+		[&]()
+		{
+			projectile = nullptr;
 		}
+	));
 
-		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
-			this,
-			projectile,
-			SpawnMethod::Above,
-			PositionMode::SetToOwner,
-			[&]()
-			{
-				this->cachedProjectile = projectile;
-			},
-			[&]()
-			{
-				projectile = nullptr;
-			}
-		));
+	// Spawn failure
+	if (projectile == nullptr)
+	{
+		return;
 	}
 	
+	projectile->setOpacity(255);
 	projectile->enable(true);
 	projectile->runSpawnFX();
 
@@ -211,7 +215,16 @@ void GatlingGunBehavior::tryPerformShootProjectile()
 
 Projectile* GatlingGunBehavior::createProjectile()
 {
-	return Shell::create();
+	if (this->projectiles.size() >= GatlingGunBehavior::MaxProjectiles)
+	{
+		nextProjectileIndex = MathUtils::wrappingNormalize(nextProjectileIndex + 1, 0, GatlingGunBehavior::MaxProjectiles - 1);
+		return this->projectiles[nextProjectileIndex];
+	}
+
+	Projectile* projectile = Shell::create();
+	this->decorateProjectile(projectile);
+	this->projectiles.push_back(projectile);
+	return projectile;
 }
 
 void GatlingGunBehavior::decorateProjectile(Projectile* projectile)
@@ -237,7 +250,7 @@ void GatlingGunBehavior::decorateProjectile(Projectile* projectile)
 
 Vec2 GatlingGunBehavior::getProjectileSpawnOffset()
 {
-	return Vec2(256.0f, 32.0f);
+	return Vec2(512.0f, 32.0f);
 }
 
 float GatlingGunBehavior::getProjectileLifetime()
