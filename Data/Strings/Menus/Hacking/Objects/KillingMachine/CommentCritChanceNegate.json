@@ -5,7 +5,7 @@
     "da": "TODO",
     "de": "TODO",
     "el": "TODO",
-    "en": "Load the maximum damage delt by the gatling gun.",
+    "en": "%s1% chance NOT to load the critical hit damage (%s2% critical hit chance), based on the result of the comparison above.",
     "es": "TODO",
     "es-419": "TODO",
     "fi": "TODO",

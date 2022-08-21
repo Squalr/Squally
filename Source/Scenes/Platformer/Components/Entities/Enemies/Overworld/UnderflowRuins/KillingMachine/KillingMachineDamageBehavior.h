@@ -52,16 +52,17 @@ private:
 	{
 		std::string command;
 		HackableCode::Register reg = HackableCode::Register::zax;
-		int constant1 = 0;
-		int constant2 = 0;
-		int constant3 = 0;
+		int probabilityConstant = 0;
 
 		MachineAsmConstants() { }
-		MachineAsmConstants(std::string command, HackableCode::Register reg, int constant1, int constant2, int constant3) :
-			command(command), reg(reg), constant1(constant1), constant2(constant2), constant3(constant3) { }
+		MachineAsmConstants(std::string command, HackableCode::Register reg, int probabilityConstant) :
+			command(command), reg(reg), probabilityConstant(probabilityConstant) { }
 	};
 
 	static const std::string PropertyMachineId;
 	static cocos2d::Value DamageStorageAntiOptimize;
 	static std::map<int, MachineAsmConstants> MachineAsmConstantsMap;
+
+	static const int DefaultDamage;
+	static const int CritDamage;
 };

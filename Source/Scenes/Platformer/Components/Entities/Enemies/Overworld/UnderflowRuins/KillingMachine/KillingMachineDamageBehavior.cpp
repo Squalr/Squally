@@ -7,6 +7,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SaveEvents.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
@@ -31,6 +32,13 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_COMPARE_TEAM_5 5
 #define LOCAL_FUNC_ID_COMPARE_TEAM_6 6
 
+#define CMOVL_PROBABILITY_CONST 10
+#define CMOVLE_PROBABILITY_CONST 7
+#define CMOVE_PROBABILITY_CONST 1
+#define CMOVNE_PROBABILITY_CONST 10
+#define CMOVG_PROBABILITY_CONST 15
+#define CMOVGE_PROBABILITY_CONST 5
+
 const std::string KillingMachineDamageBehavior::MapKey = "killing-machine-damage-behavior";
 const std::string KillingMachineDamageBehavior::PropertyMachineId = "machine-id";
 const std::string KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare1 = "killing-machine-compare-1";
@@ -42,13 +50,15 @@ const std::string KillingMachineDamageBehavior::HackIdentifierKillingMachineComp
 Value KillingMachineDamageBehavior::DamageStorageAntiOptimize = Value(0);
 std::map<int, KillingMachineDamageBehavior::MachineAsmConstants> KillingMachineDamageBehavior::MachineAsmConstantsMap
 {
-	{ 1, KillingMachineDamageBehavior::MachineAsmConstants("cmovl", HackableCode::Register::zax, 50, 5, 4) },
-	{ 2, KillingMachineDamageBehavior::MachineAsmConstants("cmovle", HackableCode::Register::zbx, 75, 7, 5) },
-	{ 3, KillingMachineDamageBehavior::MachineAsmConstants("cmove", HackableCode::Register::zcx, 100, 1, 0) },
-	{ 4, KillingMachineDamageBehavior::MachineAsmConstants("cmovne", HackableCode::Register::zdx, 125, 10, 10) },
-	{ 5, KillingMachineDamageBehavior::MachineAsmConstants("cmovg", HackableCode::Register::zdi, 150, 15, 20) },
-	{ 6, KillingMachineDamageBehavior::MachineAsmConstants("cmovge", HackableCode::Register::zsi, 175, 5, 8) },
+	{ 1, KillingMachineDamageBehavior::MachineAsmConstants("cmovl", HackableCode::Register::zax, CMOVL_PROBABILITY_CONST) },
+	{ 2, KillingMachineDamageBehavior::MachineAsmConstants("cmovle", HackableCode::Register::zbx, CMOVLE_PROBABILITY_CONST) },
+	{ 3, KillingMachineDamageBehavior::MachineAsmConstants("cmove", HackableCode::Register::zcx, CMOVE_PROBABILITY_CONST) },
+	{ 4, KillingMachineDamageBehavior::MachineAsmConstants("cmovne", HackableCode::Register::zdx, CMOVNE_PROBABILITY_CONST) },
+	{ 5, KillingMachineDamageBehavior::MachineAsmConstants("cmovg", HackableCode::Register::zdi, CMOVG_PROBABILITY_CONST) },
+	{ 6, KillingMachineDamageBehavior::MachineAsmConstants("cmovge", HackableCode::Register::zsi, CMOVGE_PROBABILITY_CONST) },
 };
+const int KillingMachineDamageBehavior::DefaultDamage = 3;
+const int KillingMachineDamageBehavior::CritDamage = 10;
 
 KillingMachineDamageBehavior* KillingMachineDamageBehavior::create(GameObject* owner)
 {
@@ -89,6 +99,7 @@ void KillingMachineDamageBehavior::onLoad()
 	std::string functionIdentifier = "";
 	KillingMachineDamageBehavior::MachineAsmConstants machineAsmConstants;
 	std::string commandComment = "";
+	bool defaultAndCritReversed = false;
 
 	switch(this->machineId)
 	{
@@ -105,14 +116,6 @@ void KillingMachineDamageBehavior::onLoad()
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create());
-
-			// TODO: Equivalent of this
-			/*
-			COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-				->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
-			COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-				->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
-			*/
 			break;
 		}
 		case 2:
@@ -155,6 +158,7 @@ void KillingMachineDamageBehavior::onLoad()
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentNe::create());
+			defaultAndCritReversed = true;
 			break;
 		}
 		case 5:
@@ -188,11 +192,28 @@ void KillingMachineDamageBehavior::onLoad()
 	}
 
 	const std::string& command = machineAsmConstants.command;
-	const std::string reg32 = HackableCode::registerToString(machineAsmConstants.reg, true);
-	const std::string reg64 = HackableCode::registerToString(machineAsmConstants.reg, false);
-	const std::string constant1 = std::to_string(machineAsmConstants.constant1);
-	const std::string constant2 = std::to_string(machineAsmConstants.constant2);
-	const std::string constant3 = std::to_string(machineAsmConstants.constant3);
+	const std::string probabilityConstant = std::to_string(machineAsmConstants.probabilityConstant);
+
+	LocalizedString* defaultDamageStr = Strings::Menus_Hacking_Objects_KillingMachine_RegisterEdi::create();
+	LocalizedString* critDamageStr = Strings::Menus_Hacking_Objects_KillingMachine_RegisterEsi::create();
+	LocalizedString* critChanceComment = nullptr;
+
+	if (defaultAndCritReversed)
+	{
+		LocalizedString* tempStr = defaultDamageStr;
+		defaultDamageStr = critDamageStr;
+		critDamageStr = tempStr;
+		critChanceComment = Strings::Menus_Hacking_Objects_KillingMachine_CommentCritChance::create()->setStringReplacementVariables({
+			ConstantString::create(probabilityConstant)
+		});
+	}
+	else
+	{
+		critChanceComment = Strings::Menus_Hacking_Objects_KillingMachine_CommentCritChanceNegate::create()->setStringReplacementVariables({
+			ConstantString::create(probabilityConstant),
+			ConstantString::create(std::to_string(100 - machineAsmConstants.probabilityConstant))
+		});
+	}
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
@@ -206,12 +227,13 @@ void KillingMachineDamageBehavior::onLoad()
 				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
-						// TODO: Description
-						machineAsmConstants.reg, Strings::Menus_Hacking_Objects_KillingMachine_Register::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Objects_KillingMachine_RegisterEax::create()
 					},
 					{
-						// TODO: Description
-						HackableCode::Register::zbp, Strings::Menus_Hacking_Objects_KillingMachine_RegisterEbp::create()
+						HackableCode::Register::zdi, defaultDamageStr
+					},
+					{
+						HackableCode::Register::zsi, critDamageStr
 					},
 				},
 				int(HackFlags::None),
@@ -221,26 +243,18 @@ void KillingMachineDamageBehavior::onLoad()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentMaxDamage::create()) +
-						"mov ebp, " + constant1 + "\n\n" +
-						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentDefaultDamage::create()) +
-						"mov " + reg32 + ", " + constant2 + "\n\n" +
 						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()) +
-						"cmp " + reg32 + ", " + constant3 + "\n\n" +
-						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCmov::create()) +
+						"cmp eax, " + probabilityConstant + "\n\n" +
+						COMMENT(critChanceComment) +
 						commandComment +
-						command + " " + reg32 + ", ebp\n\n" + 
+						command + " esi, edi\n\n" + 
 						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentHint::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentMaxDamage::create()) +
-						"mov rbp, " + constant1 + "\n\n" +
-						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentDefaultDamage::create()) +
-						"mov " + reg64 + ", " + constant2 + "\n\n" +
 						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()) +
-						"cmp " + reg64 + ", " + constant3 + "\n\n" +
-						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCmov::create()) +
+						"cmp rax, " + probabilityConstant + "\n\n" +
+						COMMENT(critChanceComment) +
 						commandComment +
-						command + " " + reg64 + ", rbp\n\n" +
+						command + " rsi, rdi\n\n" + 
 						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentHint::create())
 					),
 				},
@@ -308,37 +322,48 @@ NO_OPTIMIZE int KillingMachineDamageBehavior::compare()
 }
 END_NO_OPTIMIZE
 
+// Creates a cmp failure condition
+#define FAIL_COMPARE() \
+	ASM(push ZAX); \
+	ASM(push ZBX); \
+	ASM(mov ZAX, 1); \
+	ASM(mov ZBX, 0); \
+	ASM(cmp ZAX, ZBX); \
+	ASM(pop ZBX); \
+	ASM(pop ZAX);
+
+
 // Less than
 NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage1()
 {
 	static volatile int damage;
 	static int probability;
 
-	damage = 0;
+	damage = KillingMachineDamageBehavior::DefaultDamage;
 	probability = RandomHelper::random_int(0, 100);
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
-	ASM(push ZBP);
+	ASM(push ZDI);
+	ASM(push ZSI);
 	
-	// Create a cmp false result condition as the default behavior
-	ASM(mov ZBP, 1);
-	ASM(mov ZAX, 0);
-	ASM(cmp ZAX, ZBP);
+	FAIL_COMPARE();
 
 	// Load probability into register
-	ASM_MOV_REG_VAR(ebp, probability);
+	ASM_MOV_REG_VAR(ZAX, probability);
+	ASM_MOV_REG_VAR(ZDI, KillingMachineDamageBehavior::DefaultDamage);
+	ASM_MOV_REG_VAR(ZSI, KillingMachineDamageBehavior::CritDamage);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_1);
-	ASM(mov ZAX, 10);
-	ASM(cmp ZBP, 5);
-	ASM(cmovl ZAX, ZBP);
+	ASM(cmp ZAX, CMOVL_PROBABILITY_CONST);
+	ASM(cmovl ZDI, ZSI);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damage, eax);
+	ASM_MOV_VAR_REG(damage, edi);
 
-	ASM(pop ZBP);
+	ASM(pop ZSI);
+	ASM(pop ZDI);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
@@ -354,32 +379,32 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage2()
 	static volatile int damage;
 	static int probability;
 
-	damage = 0;
+	damage = KillingMachineDamageBehavior::DefaultDamage;
 	probability = RandomHelper::random_int(0, 100);
 
 	ASM_PUSH_EFLAGS();
-	ASM(push ZBX);
-	ASM(push ZBP);
+	ASM(push ZAX);
+	ASM(push ZDI);
+	ASM(push ZSI);
 	
-	// Create a cmp false result condition as the default behavior
-	ASM(mov ZBP, 1);
-	ASM(mov ZBX, 0);
-	ASM(cmp ZBX, ZBP);
+	FAIL_COMPARE();
 
 	// Load probability into register
-	ASM_MOV_REG_VAR(ebp, probability);
+	ASM_MOV_REG_VAR(ZAX, probability);
+	ASM_MOV_REG_VAR(ZDI, KillingMachineDamageBehavior::DefaultDamage);
+	ASM_MOV_REG_VAR(ZSI, KillingMachineDamageBehavior::CritDamage);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_2);
-	ASM(mov ZBX, 10);
-	ASM(cmp ZBP, 4);
-	ASM(cmovle ZBX, ZBP);
+	ASM(cmp ZAX, CMOVL_PROBABILITY_CONST);
+	ASM(cmovl ZDI, ZSI);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damage, ebx);
+	ASM_MOV_VAR_REG(damage, edi);
 
-	ASM(pop ZBP);
-	ASM(pop ZBX);
+	ASM(pop ZSI);
+	ASM(pop ZDI);
+	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
 	HACKABLES_STOP_SEARCH();
@@ -394,35 +419,37 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage3()
 	static volatile int damage;
 	static int probability;
 
-	damage = 0;
+	damage = KillingMachineDamageBehavior::DefaultDamage;
 	probability = RandomHelper::random_int(0, 100);
 
 	ASM_PUSH_EFLAGS();
-	ASM(push ZCX);
-	ASM(push ZBP);
+	ASM(push ZAX);
+	ASM(push ZDI);
+	ASM(push ZSI);
 	
-	// Create a cmp false result condition as the default behavior
-	ASM(mov ZBP, 1);
-	ASM(mov ZCX, 0);
-	ASM(cmp ZCX, ZBP);
+	FAIL_COMPARE();
 
 	// Load probability into register
-	ASM_MOV_REG_VAR(ebp, probability);
+	ASM_MOV_REG_VAR(ZAX, probability);
+	ASM_MOV_REG_VAR(ZDI, KillingMachineDamageBehavior::DefaultDamage);
+	ASM_MOV_REG_VAR(ZSI, KillingMachineDamageBehavior::CritDamage);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_3);
-	ASM(mov ZCX, 10);
-	ASM(cmp ZBP, 1);
-	ASM(cmovle ZCX, ZBP);
+	ASM(cmp ZAX, CMOVE_PROBABILITY_CONST);
+	ASM(cmove ZDI, ZSI);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damage, ecx);
+	ASM_MOV_VAR_REG(damage, edi);
 
-	ASM(pop ZBP);
-	ASM(pop ZCX);
+	ASM(pop ZSI);
+	ASM(pop ZDI);
+	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
 	HACKABLES_STOP_SEARCH();
+
+	KillingMachineDamageBehavior::DamageStorageAntiOptimize = Value(damage);
 }
 END_NO_OPTIMIZE
 
@@ -432,32 +459,34 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage4()
 	static volatile int damage;
 	static int probability;
 
-	damage = 0;
+	damage = KillingMachineDamageBehavior::CritDamage;
 	probability = RandomHelper::random_int(0, 100);
 
 	ASM_PUSH_EFLAGS();
-	ASM(push ZDX);
-	ASM(push ZBP);
+	ASM(push ZAX);
+	ASM(push ZDI);
+	ASM(push ZSI);
 	
-	// Create a cmp false result condition as the default behavior
-	ASM(mov ZBP, 1);
-	ASM(mov ZDX, 0);
-	ASM(cmp ZDX, ZBP);
+	FAIL_COMPARE();
 
 	// Load probability into register
-	ASM_MOV_REG_VAR(ebp, probability);
+	ASM_MOV_REG_VAR(ZAX, probability);
+
+	// Note: reversed from normal.
+	ASM_MOV_REG_VAR(ZDI, KillingMachineDamageBehavior::CritDamage);
+	ASM_MOV_REG_VAR(ZSI, KillingMachineDamageBehavior::DefaultDamage);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_4);
-	ASM(mov ZDX, 2);
-	ASM(cmp ZBP, 50);
-	ASM(cmovle ZDX, ZBP);
+	ASM(cmp ZAX, CMOVNE_PROBABILITY_CONST);
+	ASM(cmovne ZDI, ZSI);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damage, edx);
+	ASM_MOV_VAR_REG(damage, edi);
 
-	ASM(pop ZBP);
-	ASM(pop ZDX);
+	ASM(pop ZSI);
+	ASM(pop ZDI);
+	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
 	HACKABLES_STOP_SEARCH();
@@ -472,32 +501,32 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage5()
 	static volatile int damage;
 	static int probability;
 
-	damage = 0;
+	damage = KillingMachineDamageBehavior::DefaultDamage;
 	probability = RandomHelper::random_int(0, 100);
 
 	ASM_PUSH_EFLAGS();
+	ASM(push ZAX);
 	ASM(push ZDI);
-	ASM(push ZBP);
+	ASM(push ZSI);
 	
-	// Create a cmp false result condition as the default behavior
-	ASM(mov ZBP, 1);
-	ASM(mov ZDI, 0);
-	ASM(cmp ZDI, ZBP);
+	FAIL_COMPARE();
 
 	// Load probability into register
-	ASM_MOV_REG_VAR(ebp, probability);
+	ASM_MOV_REG_VAR(ZAX, probability);
+	ASM_MOV_REG_VAR(ZDI, KillingMachineDamageBehavior::DefaultDamage);
+	ASM_MOV_REG_VAR(ZSI, KillingMachineDamageBehavior::CritDamage);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_5);
-	ASM(mov ZDI, 10);
-	ASM(cmp ZBP, 95);
-	ASM(cmovle ZDI, ZBP);
+	ASM(cmp ZAX, CMOVG_PROBABILITY_CONST);
+	ASM(cmovg ZDI, ZSI);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(damage, edi);
 
-	ASM(pop ZBP);
+	ASM(pop ZSI);
 	ASM(pop ZDI);
+	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
 	HACKABLES_STOP_SEARCH();
@@ -512,32 +541,32 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage6()
 	static volatile int damage;
 	static int probability;
 
-	damage = 0;
+	damage = KillingMachineDamageBehavior::DefaultDamage;
 	probability = RandomHelper::random_int(0, 100);
 
 	ASM_PUSH_EFLAGS();
+	ASM(push ZAX);
+	ASM(push ZDI);
 	ASM(push ZSI);
-	ASM(push ZBP);
 	
-	// Create a cmp false result condition as the default behavior
-	ASM(mov ZBP, 1);
-	ASM(mov ZSI, 0);
-	ASM(cmp ZSI, ZBP);
+	FAIL_COMPARE();
 
 	// Load probability into register
-	ASM_MOV_REG_VAR(ebp, probability);
+	ASM_MOV_REG_VAR(ZAX, probability);
+	ASM_MOV_REG_VAR(ZDI, KillingMachineDamageBehavior::DefaultDamage);
+	ASM_MOV_REG_VAR(ZSI, KillingMachineDamageBehavior::CritDamage);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_6);
-	ASM(mov ZSI, 10);
-	ASM(cmp ZBP, 95);
-	ASM(cmovle ZSI, ZBP);
+	ASM(cmp ZAX, CMOVGE_PROBABILITY_CONST);
+	ASM(cmovge ZDI, ZSI);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damage, esi);
+	ASM_MOV_VAR_REG(damage, edi);
 
-	ASM(pop ZBP);
 	ASM(pop ZSI);
+	ASM(pop ZDI);
+	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
 	HACKABLES_STOP_SEARCH();
