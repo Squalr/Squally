@@ -14,9 +14,10 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityCollisionBehaviorBase.h"
-#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Squally/Movement/SquallyRespawnBehavior.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
+#include "Scenes/Platformer/Level/Huds/FadeHuds/FadeHud.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -93,7 +94,7 @@ void KillingMachineDamageBehavior::onLoad()
 		return;
 	}
 	
-	this->entity->getComponent<EntityCollisionBehaviorBase>([](EntityCollisionBehaviorBase* collisionBehavior)
+	this->entity->watchForComponent<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
 	{
 		if (collisionBehavior->entityCollision == nullptr)
 		{
@@ -104,13 +105,15 @@ void KillingMachineDamageBehavior::onLoad()
 		{
 			PlatformerEntity* target = GameUtils::GetFirstParentOfType<PlatformerEntity>(collisionData.other);
 
+			// Even though we force a map reload on a delay, still kill the player to prevent additional inputs
 			if (target != nullptr)
 			{
-				target->getComponent<EntityHealthBehavior>([target](EntityHealthBehavior* healthBehavior)
+				target->getComponent<SquallyRespawnBehavior>([target](SquallyRespawnBehavior* respawnBehavior)
 				{
-					healthBehavior->kill();
+					respawnBehavior->respawnWithMapReload();
 				});
 			}
+
 			return CollisionResult::DoNothing;
 		});
 	});

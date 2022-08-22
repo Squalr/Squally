@@ -9,6 +9,9 @@ class SquallyRespawnBehavior : public GameComponent
 public:
 	static SquallyRespawnBehavior* create(GameObject* owner);
 
+	void respawn(float delay = 1.5f);
+	void respawnWithMapReload(float delay = 1.5f);
+
 	static const std::string MapKey;
 
 protected:
@@ -21,9 +24,9 @@ protected:
 private:
 	typedef GameComponent super;
 	
-	void respawn(float delay);
 	void doRespawn();
 
 	bool isRespawning = false;
+	bool fullMapReload = false;
 	Squally* squally = nullptr;
 };

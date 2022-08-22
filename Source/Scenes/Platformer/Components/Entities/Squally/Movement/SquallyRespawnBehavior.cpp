@@ -57,18 +57,20 @@ void SquallyRespawnBehavior::onLoad()
 	{
 		this->squally->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 		{
-			if (!value.asBool())
+			if (!this->isRespawning && !value.asBool())
 			{
-				this->respawn(1.5f);
+				fullMapReload = false;
+				this->respawn();
 			}
 		});
 	}
 
 	this->scheduleEvery([=]()
 	{
-		if (!this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		if (!this->isRespawning && !this->squally->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
-			this->respawn(1.5f);
+			fullMapReload = false;
+			this->respawn();
 		}
 	}, 1.0f / 15.0f);
 }
@@ -104,6 +106,24 @@ void SquallyRespawnBehavior::respawn(float duration)
 			nullptr
 		));
 	}
+
+	// Kill Squally during the map reload. Likely Squally is already dead though, unless this was called by another source.
+	this->squally->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	{
+		healthBehavior->kill();
+	});
+}
+
+void SquallyRespawnBehavior::respawnWithMapReload(float delay)
+{
+	fullMapReload = true;
+	this->respawn(1.5f);
+
+	// Kill Squally during the map reload.
+	this->squally->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	{
+		healthBehavior->kill();
+	});
 }
 
 void SquallyRespawnBehavior::doRespawn()
@@ -126,8 +146,16 @@ void SquallyRespawnBehavior::doRespawn()
 		}
 	});
 
-	PlatformerEvents::TriggerLoadRespawn();
+	if (this->fullMapReload)
+	{
+		PlatformerEvents::TriggerUnstuck();
+	}
+	else
+	{
+		PlatformerEvents::TriggerLoadRespawn();
+	}
 
 	this->isRespawning = false;
+	this->fullMapReload = false;
 }
 
