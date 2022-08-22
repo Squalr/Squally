@@ -158,12 +158,6 @@ void GatlingGunBehavior::tryPerformShootProjectile()
 		return;
 	}
 
-	if (projectile != nullptr && projectile->getParent() != nullptr)
-	{
-		projectile->getParent()->removeChild(projectile);
-		projectile = nullptr;
-	}
-
 	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		this,
 		projectile,

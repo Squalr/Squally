@@ -13,6 +13,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Scenes/Platformer/Components/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
@@ -32,12 +33,12 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_COMPARE_TEAM_5 5
 #define LOCAL_FUNC_ID_COMPARE_TEAM_6 6
 
-#define CMOVL_PROBABILITY_CONST 10
-#define CMOVLE_PROBABILITY_CONST 7
+#define CMOVL_PROBABILITY_CONST 5
+#define CMOVLE_PROBABILITY_CONST 5
 #define CMOVE_PROBABILITY_CONST 1
-#define CMOVNE_PROBABILITY_CONST 10
-#define CMOVG_PROBABILITY_CONST 15
-#define CMOVGE_PROBABILITY_CONST 5
+#define CMOVNE_PROBABILITY_CONST 1
+#define CMOVG_PROBABILITY_CONST 95
+#define CMOVGE_PROBABILITY_CONST 95
 
 const std::string KillingMachineDamageBehavior::MapKey = "killing-machine-damage-behavior";
 const std::string KillingMachineDamageBehavior::PropertyMachineId = "machine-id";
@@ -91,6 +92,29 @@ void KillingMachineDamageBehavior::onLoad()
 	{
 		return;
 	}
+	
+	this->entity->getComponent<EntityCollisionBehaviorBase>([](EntityCollisionBehaviorBase* collisionBehavior)
+	{
+		if (collisionBehavior->entityCollision == nullptr)
+		{
+			return;
+		}
+
+		collisionBehavior->entityCollision->whenCollidesWith({(int)PlatformerCollisionType::Player }, [=](CollisionData collisionData)
+		{
+			PlatformerEntity* target = GameUtils::GetFirstParentOfType<PlatformerEntity>(collisionData.other);
+
+			if (target != nullptr)
+			{
+				target->getComponent<EntityHealthBehavior>([target](EntityHealthBehavior* healthBehavior)
+				{
+					healthBehavior->kill();
+				});
+			}
+			return CollisionResult::DoNothing;
+		});
+	});
+	
 
 	this->machineId = GameUtils::getKeyOrDefault(this->entity->properties, KillingMachineDamageBehavior::PropertyMachineId, Value(1)).asInt();
 	int functionId = 0;
@@ -100,6 +124,7 @@ void KillingMachineDamageBehavior::onLoad()
 	KillingMachineDamageBehavior::MachineAsmConstants machineAsmConstants;
 	std::string commandComment = "";
 	bool defaultAndCritReversed = false;
+	bool probabilityReversed = false;
 
 	switch(this->machineId)
 	{
@@ -112,10 +137,10 @@ void KillingMachineDamageBehavior::onLoad()
 			auto func = &KillingMachineDamageBehavior::compareDamage1;
 			functionPtr = (void*&)func;
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[1];
-			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle::create()) +
+			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovl::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create());
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentL::create());
 			break;
 		}
 		case 2:
@@ -126,10 +151,10 @@ void KillingMachineDamageBehavior::onLoad()
 			auto func = &KillingMachineDamageBehavior::compareDamage2;
 			functionPtr = (void*&)func;
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[2];
-			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovl::create()) +
+			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentL::create());
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create());
 			break;
 		}
 		case 3:
@@ -173,6 +198,7 @@ void KillingMachineDamageBehavior::onLoad()
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentG::create());
+			probabilityReversed = true;
 			break;
 		}
 		case 6:
@@ -187,31 +213,35 @@ void KillingMachineDamageBehavior::onLoad()
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentGe::create());
+			probabilityReversed = true;
 			break;
 		}
 	}
 
 	const std::string& command = machineAsmConstants.command;
-	const std::string probabilityConstant = std::to_string(machineAsmConstants.probabilityConstant);
+	const int probabilityConstantPercent = probabilityReversed ? (100 - machineAsmConstants.probabilityConstant) : machineAsmConstants.probabilityConstant;
+	const std::string probabilityConstantStr = std::to_string(machineAsmConstants.probabilityConstant);
+	const std::string probabilityConstantPercentStr = std::to_string(probabilityConstantPercent);
+	const std::string probabilityConstantPercentReverseStr = std::to_string(100 - probabilityConstantPercent);
 
 	LocalizedString* defaultDamageStr = Strings::Menus_Hacking_Objects_KillingMachine_RegisterEdi::create();
 	LocalizedString* critDamageStr = Strings::Menus_Hacking_Objects_KillingMachine_RegisterEsi::create();
 	LocalizedString* critChanceComment = nullptr;
 
-	if (defaultAndCritReversed)
+	if (!defaultAndCritReversed)
 	{
 		LocalizedString* tempStr = defaultDamageStr;
 		defaultDamageStr = critDamageStr;
 		critDamageStr = tempStr;
 		critChanceComment = Strings::Menus_Hacking_Objects_KillingMachine_CommentCritChance::create()->setStringReplacementVariables({
-			ConstantString::create(probabilityConstant)
+			ConstantString::create(probabilityConstantPercentStr)
 		});
 	}
 	else
 	{
 		critChanceComment = Strings::Menus_Hacking_Objects_KillingMachine_CommentCritChanceNegate::create()->setStringReplacementVariables({
-			ConstantString::create(probabilityConstant),
-			ConstantString::create(std::to_string(100 - machineAsmConstants.probabilityConstant))
+			ConstantString::create(probabilityConstantPercentStr),
+			ConstantString::create(probabilityConstantPercentReverseStr)
 		});
 	}
 
@@ -244,17 +274,17 @@ void KillingMachineDamageBehavior::onLoad()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()) +
-						"cmp eax, " + probabilityConstant + "\n\n" +
+						"cmp eax, " + probabilityConstantStr + "\n\n" +
 						COMMENT(critChanceComment) +
-						commandComment +
-						command + " esi, edi\n\n" + 
+						command + " edi, esi\n" + 
+						commandComment + "\n"  +
 						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentHint::create())
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()) +
-						"cmp rax, " + probabilityConstant + "\n\n" +
-						COMMENT(critChanceComment) +
-						commandComment +
-						command + " rsi, rdi\n\n" + 
+						"cmp rax, " + probabilityConstantStr + "\n\n" +
+						COMMENT(critChanceComment->clone()) +
+						command + " rdi, rsi\n" + 
+						commandComment + "\n"  +
 						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentHint::create())
 					),
 				},
@@ -322,17 +352,6 @@ NO_OPTIMIZE int KillingMachineDamageBehavior::compare()
 }
 END_NO_OPTIMIZE
 
-// Creates a cmp failure condition
-#define FAIL_COMPARE() \
-	ASM(push ZAX); \
-	ASM(push ZBX); \
-	ASM(mov ZAX, 1); \
-	ASM(mov ZBX, 0); \
-	ASM(cmp ZAX, ZBX); \
-	ASM(pop ZBX); \
-	ASM(pop ZAX);
-
-
 // Less than
 NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage1()
 {
@@ -347,7 +366,14 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage1()
 	ASM(push ZDI);
 	ASM(push ZSI);
 	
-	FAIL_COMPARE();
+	// Create a cmp failure condition by default
+	ASM(push ZCX);
+	ASM(push ZDX);
+	ASM(mov ZCX, 1);
+	ASM(mov ZDX, 0);
+	ASM(cmp ZCX, ZDX);
+	ASM(pop ZDX);
+	ASM(pop ZCX);
 
 	// Load probability into register
 	ASM_MOV_REG_VAR(ZAX, probability);
@@ -387,7 +413,14 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage2()
 	ASM(push ZDI);
 	ASM(push ZSI);
 	
-	FAIL_COMPARE();
+	// Create a cmp failure condition by default
+	ASM(push ZCX);
+	ASM(push ZDX);
+	ASM(mov ZCX, 1);
+	ASM(mov ZDX, 0);
+	ASM(cmp ZCX, ZDX);
+	ASM(pop ZDX);
+	ASM(pop ZCX);
 
 	// Load probability into register
 	ASM_MOV_REG_VAR(ZAX, probability);
@@ -427,7 +460,14 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage3()
 	ASM(push ZDI);
 	ASM(push ZSI);
 	
-	FAIL_COMPARE();
+	// Create a cmp failure condition by default
+	ASM(push ZCX);
+	ASM(push ZDX);
+	ASM(mov ZCX, 1);
+	ASM(mov ZDX, 0);
+	ASM(cmp ZCX, ZDX);
+	ASM(pop ZDX);
+	ASM(pop ZCX);
 
 	// Load probability into register
 	ASM_MOV_REG_VAR(ZAX, probability);
@@ -467,7 +507,14 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage4()
 	ASM(push ZDI);
 	ASM(push ZSI);
 	
-	FAIL_COMPARE();
+	// Create a cmp failure condition by default
+	ASM(push ZCX);
+	ASM(push ZDX);
+	ASM(mov ZCX, 1);
+	ASM(mov ZDX, 0);
+	ASM(cmp ZCX, ZDX);
+	ASM(pop ZDX);
+	ASM(pop ZCX);
 
 	// Load probability into register
 	ASM_MOV_REG_VAR(ZAX, probability);
@@ -509,7 +556,14 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage5()
 	ASM(push ZDI);
 	ASM(push ZSI);
 	
-	FAIL_COMPARE();
+	// Create a cmp failure condition by default
+	ASM(push ZCX);
+	ASM(push ZDX);
+	ASM(mov ZCX, 1);
+	ASM(mov ZDX, 0);
+	ASM(cmp ZCX, ZDX);
+	ASM(pop ZDX);
+	ASM(pop ZCX);
 
 	// Load probability into register
 	ASM_MOV_REG_VAR(ZAX, probability);
@@ -549,7 +603,14 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage6()
 	ASM(push ZDI);
 	ASM(push ZSI);
 	
-	FAIL_COMPARE();
+	// Create a cmp failure condition by default
+	ASM(push ZCX);
+	ASM(push ZDX);
+	ASM(mov ZCX, 1);
+	ASM(mov ZDX, 0);
+	ASM(cmp ZCX, ZDX);
+	ASM(pop ZDX);
+	ASM(pop ZCX);
 
 	// Load probability into register
 	ASM_MOV_REG_VAR(ZAX, probability);
