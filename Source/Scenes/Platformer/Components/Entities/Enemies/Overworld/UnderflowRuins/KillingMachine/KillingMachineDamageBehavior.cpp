@@ -34,11 +34,11 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_COMPARE_TEAM_6 6
 
 #define CMOVL_PROBABILITY_CONST 5
-#define CMOVLE_PROBABILITY_CONST 5
+#define CMOVLE_PROBABILITY_CONST 3
 #define CMOVE_PROBABILITY_CONST 1
 #define CMOVNE_PROBABILITY_CONST 1
 #define CMOVG_PROBABILITY_CONST 95
-#define CMOVGE_PROBABILITY_CONST 95
+#define CMOVGE_PROBABILITY_CONST 97
 
 const std::string KillingMachineDamageBehavior::MapKey = "killing-machine-damage-behavior";
 const std::string KillingMachineDamageBehavior::PropertyMachineId = "machine-id";
@@ -59,7 +59,7 @@ std::map<int, KillingMachineDamageBehavior::MachineAsmConstants> KillingMachineD
 	{ 6, KillingMachineDamageBehavior::MachineAsmConstants("cmovge", HackableCode::Register::zsi, CMOVGE_PROBABILITY_CONST) },
 };
 const int KillingMachineDamageBehavior::DefaultDamage = 3;
-const int KillingMachineDamageBehavior::CritDamage = 10;
+const int KillingMachineDamageBehavior::CritDamage = 15;
 
 KillingMachineDamageBehavior* KillingMachineDamageBehavior::create(GameObject* owner)
 {
