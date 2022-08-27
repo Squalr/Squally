@@ -540,7 +540,7 @@
   <object id="974" name="spawn" type="object" x="2813.58" y="1279.18" width="128" height="128">
    <properties>
     <property name="map-banner" value=""/>
-    <property name="transition" value="dungeon"/>
+    <property name="transition" value="dragon"/>
    </properties>
   </object>
   <object id="1032" name="warp" type="object" x="2033.64" y="1144.97" width="256" height="256">

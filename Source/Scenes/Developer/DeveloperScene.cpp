@@ -156,7 +156,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Town (UR)", MapResources::UnderflowRuins_Town_Main));
 		mapList.push_back(this->buildDebugButton("Zone_1_5 (UR)", MapResources::UnderflowRuins_Zone_1_5));
 		mapList.push_back(this->buildDebugButton("Zone_1_4 (UR)", MapResources::UnderflowRuins_Zone_1_4));
-		// mapList.push_back(this->buildDebugButton("Zone_1_3 (UR)", MapResources::UnderflowRuins_Zone_1_3));
+		mapList.push_back(this->buildDebugButton("Zone_1_3 (UR)", MapResources::UnderflowRuins_Zone_1_3));
 		mapList.push_back(this->buildDebugButton("Zone_1_2 (UR)", MapResources::UnderflowRuins_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (UR)", MapResources::UnderflowRuins_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (UR)", MapResources::UnderflowRuins_Zone_1_0));
@@ -164,12 +164,13 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Shoreline (UR)", MapResources::UnderflowRuins_Shoreline));
 		mapList.push_back(this->buildDebugButton("Docks (UR)", MapResources::UnderflowRuins_Town_Docks));
 
+		// Fix killing machine art size and redo all anims (so much fun, can't wait to start)
 		// Traps: Spike log railed, water launcher (in sewers)
 		// Inversion and Broken Blade are missing MAX/MIN
 		// And the 3_x maps are too confusing and bloated (less bad than it was. can it be better?)
-		// Too many fucking pyramids
+		// Too many fucking pyramids in bg
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
-		// Color the brazier metal to indicate the flame color
+		// Color the brazier metal to indicate the flame color (this needs to be generally improved throughout the game)
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}

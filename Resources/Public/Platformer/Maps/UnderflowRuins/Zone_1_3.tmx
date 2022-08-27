@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="36" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="1188">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="36" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1190">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -137,6 +137,29 @@
    <polygon points="-2.66667,0 -4,-472 8,-564 44,-648 80,-696 129.333,-738.667 200,-772 273.333,-740 332,-698.667 369.333,-642.667 397.728,-569.859 414.667,-476 412,1.33333"/>
   </object>
  </objectgroup>
+ <objectgroup id="103" name="entities -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1188" name="tiger-man" type="entity" x="1521.92" y="1153.42" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="UnderflowRuins/Combat_Pyramid"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy"/>
+    <property name="drop-pool" value="ur-generic"/>
+   </properties>
+  </object>
+  <object id="1189" name="tiger-man" type="entity" x="1522.79" y="922.424" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="95" name="player_layer -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
@@ -270,12 +293,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1183" name="mummy-priest" type="entity" x="2832.06" y="1208.4" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,disarmed,ur-puzzle-F"/>
-    <property name="scale" type="float" value="0.75"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="74" name="player_layer -3">
   <properties>
