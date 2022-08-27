@@ -106,7 +106,7 @@ void KillingMachineDamageBehavior::onLoad()
 			PlatformerEntity* target = GameUtils::GetFirstParentOfType<PlatformerEntity>(collisionData.other);
 
 			// Even though we force a map reload on a delay, still kill the player to prevent additional inputs
-			if (target != nullptr)
+			if (this->entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool() && target != nullptr)
 			{
 				target->getComponent<SquallyRespawnBehavior>([target](SquallyRespawnBehavior* respawnBehavior)
 				{
@@ -236,9 +236,9 @@ void KillingMachineDamageBehavior::onLoad()
 		LocalizedString* tempStr = defaultDamageStr;
 		defaultDamageStr = critDamageStr;
 		critDamageStr = tempStr;
-		critChanceComment = Strings::Menus_Hacking_Objects_KillingMachine_CommentCritChance::create()->setStringReplacementVariables({
+		critChanceComment = Strings::Menus_Hacking_Objects_KillingMachine_CommentCritChance::create()->setStringReplacementVariables(
 			ConstantString::create(probabilityConstantPercentStr)
-		});
+		);
 	}
 	else
 	{

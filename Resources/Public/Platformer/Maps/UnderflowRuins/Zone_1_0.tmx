@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="143" nextobjectid="1082">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="48" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="143" nextobjectid="1082">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -341,7 +341,7 @@
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Desert"/>
-    <property name="battle-tag" value="group-b"/>
+    <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
@@ -349,7 +349,7 @@
   <object id="963" name="lioness" type="entity" x="1827.31" y="1465.25" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-b"/>
+    <property name="battle-tag" value="group-a"/>
     <property name="components" value="ally"/>
    </properties>
   </object>
@@ -559,15 +559,15 @@
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Desert"/>
-    <property name="battle-tag" value="group-a"/>
+    <property name="battle-tag" value="group-b"/>
     <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
-  <object id="945" name="tigress" type="entity" x="3194.81" y="1466.86" width="128" height="128">
+  <object id="945" name="tigress" type="entity" x="5103.18" y="1174.65" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
+    <property name="battle-tag" value="group-b"/>
     <property name="components" value="ally"/>
    </properties>
   </object>
