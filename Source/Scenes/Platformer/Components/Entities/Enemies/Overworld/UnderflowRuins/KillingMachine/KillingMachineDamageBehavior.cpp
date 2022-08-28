@@ -128,6 +128,8 @@ void KillingMachineDamageBehavior::onLoad()
 	std::string commandComment = "";
 	bool defaultAndCritReversed = false;
 	bool probabilityReversed = false;
+	bool setHintVariables = false;
+	LocalizedString* hintStr = nullptr;
 
 	switch(this->machineId)
 	{
@@ -144,6 +146,7 @@ void KillingMachineDamageBehavior::onLoad()
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentL::create());
+			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			break;
 		}
 		case 2:
@@ -158,6 +161,7 @@ void KillingMachineDamageBehavior::onLoad()
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create());
+			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			break;
 		}
 		case 3:
@@ -172,6 +176,8 @@ void KillingMachineDamageBehavior::onLoad()
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentE::create());
+			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintCmove::create();
+			setHintVariables = true;
 			break;
 		}
 		case 4:
@@ -186,6 +192,8 @@ void KillingMachineDamageBehavior::onLoad()
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentNe::create());
+			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintCmovne::create();
+			setHintVariables = true;
 			defaultAndCritReversed = true;
 			break;
 		}
@@ -201,6 +209,7 @@ void KillingMachineDamageBehavior::onLoad()
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentG::create());
+			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			probabilityReversed = true;
 			break;
 		}
@@ -216,6 +225,7 @@ void KillingMachineDamageBehavior::onLoad()
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentGe::create());
+			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			probabilityReversed = true;
 			break;
 		}
@@ -230,6 +240,24 @@ void KillingMachineDamageBehavior::onLoad()
 	LocalizedString* defaultDamageStr = Strings::Menus_Hacking_Objects_KillingMachine_RegisterEdi::create();
 	LocalizedString* critDamageStr = Strings::Menus_Hacking_Objects_KillingMachine_RegisterEsi::create();
 	LocalizedString* critChanceComment = nullptr;
+	
+	if (setHintVariables)
+	{
+		if (defaultAndCritReversed)
+		{
+			hintStr->setStringReplacementVariables({
+				ConstantString::create(probabilityConstantPercentReverseStr),
+				ConstantString::create(probabilityConstantPercentStr)
+			});
+		}
+		else
+		{
+			hintStr->setStringReplacementVariables({
+				ConstantString::create(probabilityConstantPercentStr),
+				ConstantString::create(probabilityConstantPercentReverseStr)
+			});
+		}
+	}
 
 	if (!defaultAndCritReversed)
 	{
@@ -243,8 +271,8 @@ void KillingMachineDamageBehavior::onLoad()
 	else
 	{
 		critChanceComment = Strings::Menus_Hacking_Objects_KillingMachine_CommentCritChanceNegate::create()->setStringReplacementVariables({
-			ConstantString::create(probabilityConstantPercentStr),
-			ConstantString::create(probabilityConstantPercentReverseStr)
+			ConstantString::create(probabilityConstantPercentReverseStr),
+			ConstantString::create(probabilityConstantPercentStr)
 		});
 	}
 
@@ -281,14 +309,14 @@ void KillingMachineDamageBehavior::onLoad()
 						COMMENT(critChanceComment) +
 						command + " edi, esi\n" + 
 						commandComment + "\n"  +
-						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentHint::create())
+						COMMENT(hintStr)
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()) +
 						"cmp rax, " + probabilityConstantStr + "\n\n" +
 						COMMENT(critChanceComment->clone()) +
 						command + " rdi, rsi\n" + 
 						commandComment + "\n"  +
-						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentHint::create())
+						COMMENT(hintStr->clone())
 					),
 				},
 				true

@@ -166,6 +166,7 @@ DeveloperScene::DeveloperScene()
 
 		// Fix killing machine art size and redo all anims (so much fun, can't wait to start)
 		// Traps: Spike log railed, water launcher (in sewers)
+		// Use the tiger enemy that was migrated from VS
 		// Inversion and Broken Blade are missing MAX/MIN
 		// And the 3_x maps are too confusing and bloated (less bad than it was. can it be better?)
 		// Too many fucking pyramids in bg

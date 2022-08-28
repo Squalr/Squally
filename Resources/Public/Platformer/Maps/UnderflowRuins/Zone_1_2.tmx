@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="36" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1190">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="36" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1192">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -30,8 +30,8 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="967" name="torch" type="object" x="1067.89" y="713.304" width="42" height="130"/>
-  <object id="969" name="torch" type="object" x="1943.41" y="709.569" width="42" height="130"/>
-  <object id="1180" name="torch" type="object" x="3926.71" y="716.046" width="42" height="130"/>
+  <object id="969" name="torch" type="object" x="2178.59" y="695.458" width="42" height="130"/>
+  <object id="1191" name="torch" type="object" x="3436.2" y="696.994" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="101" name="terrain -6 bg">
   <properties>
@@ -39,6 +39,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1161" name="ruins-thick" type="terrain" x="-505.891" y="-144.695" width="1107.85" height="3381.18"/>
+  <object id="1190" name="ruins-thick" type="terrain" x="3739.2" y="-176.009" width="1015.1" height="3381.18"/>
  </objectgroup>
  <objectgroup id="75" name="terrain -6">
   <properties>
@@ -126,15 +127,6 @@
    <polygon points="-2.66667,0 -4,-472 8,-564 44,-648 80,-696 129.333,-738.667 200,-772 273.333,-740 332,-698.667 369.333,-642.667 397.728,-569.859 414.667,-476 412,1.33333"/>
   </object>
   <object id="1177" name="terrain-hole" type="object" x="1306.69" y="981.03">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
-    <property name="fade-multiplier" type="float" value="0.25"/>
-    <property name="hole-tag" value="hole-A"/>
-   </properties>
-   <polygon points="-2.66667,0 -4,-472 8,-564 44,-648 80,-696 129.333,-738.667 200,-772 273.333,-740 332,-698.667 369.333,-642.667 397.728,-569.859 414.667,-476 412,1.33333"/>
-  </object>
-  <object id="1179" name="terrain-hole" type="object" x="4200" y="981.03">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
