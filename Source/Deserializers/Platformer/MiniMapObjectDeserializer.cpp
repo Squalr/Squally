@@ -154,6 +154,7 @@ MiniMapObjectDeserializer::MiniMapObjectDeserializer() : super(MiniMapObjectDese
 	this->deserializers[ShopItem::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[SpikedBall::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[SpikedLog::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
+	this->deserializers[SpikedLogRailed::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[SquallyShip::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[Stalactite::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[StoneButton::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };

@@ -166,11 +166,12 @@ DeveloperScene::DeveloperScene()
 
 		// Fix killing machine art size and redo all anims (so much fun, can't wait to start)
 		// Traps: Spike log railed, water launcher (in sewers)
-		// Use the tiger enemy that was migrated from VS
 		// Inversion and Broken Blade are missing MAX/MIN
+		
 		// And the 3_x maps are too confusing and bloated (less bad than it was. can it be better?)
 		// Too many fucking pyramids in bg
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
+		
 		// Color the brazier metal to indicate the flame color (this needs to be generally improved throughout the game)
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
@@ -206,7 +207,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
 
 		// Tiger Door looks like shit
-		// Traps: Crushing stone blocks trap, killing contraptions? (reverse these when they are coming towards you)
+		// Traps: Crushing stone blocks trap
 		// Needs quest progression
 		// 	- Olive => Dawn => Restore Power. Nothing fancy, bosses need not be quests since they are forced.
 		//	- Need a way to force Dawn / Restore power quests. Dawn for Key, Power Forced via boss kill? Or on Krampus ship (req to escape)?

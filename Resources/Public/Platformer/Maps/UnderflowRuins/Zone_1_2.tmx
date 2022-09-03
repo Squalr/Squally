@@ -147,7 +147,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Pyramid"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
