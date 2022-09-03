@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="36" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1200">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="36" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1205">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -95,6 +95,22 @@
    </properties>
   </object>
   <object id="1171" name="ruins-thick" type="terrain" x="605.613" y="1286.39" width="531.858" height="438.909"/>
+  <object id="1200" name="railed-spiked-log" type="collision" x="669.385" y="475.507" width="1882.6" height="804.712">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1201" name="railed-spiked-log" type="collision" x="2539.62" y="-1409.99" width="1821.53" height="804.712">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1203" name="railed-spiked-log" type="collision" x="2570.15" y="478.051" width="1882.6" height="804.712">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1204" name="ruins-thick" type="terrain" x="569.084" y="-1069.04" width="4276.59" height="1313.66"/>
  </objectgroup>
  <objectgroup id="94" name="objects -6">
   <properties>
@@ -103,7 +119,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1170" name="solid" type="collision" x="1130.84" y="1287.96" width="858.925" height="100.513"/>
-  <object id="1176" name="terrain-hole" type="object" x="2084.91" y="981.03">
+  <object id="1176" name="terrain-hole" type="object" x="2084.91" y="1077.72">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -112,7 +128,7 @@
    </properties>
    <polygon points="-2.66667,0 -4,-472 8,-564 44,-648 80,-696 129.333,-738.667 200,-772 273.333,-740 332,-698.667 369.333,-642.667 397.728,-569.859 414.667,-476 412,1.33333"/>
   </object>
-  <object id="1177" name="terrain-hole" type="object" x="3105.89" y="981.03">
+  <object id="1177" name="terrain-hole" type="object" x="3105.89" y="1077.72">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -121,7 +137,7 @@
    </properties>
    <polygon points="-2.66667,0 -4,-472 8,-564 44,-648 80,-696 129.333,-738.667 200,-772 273.333,-740 332,-698.667 369.333,-642.667 397.728,-569.859 414.667,-476 412,1.33333"/>
   </object>
-  <object id="1179" name="terrain-hole" type="object" x="4200" y="981.03">
+  <object id="1179" name="terrain-hole" type="object" x="4200" y="1077.72">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -306,7 +322,7 @@
     <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="1028" name="ruins-thick" type="terrain" x="-514.82" y="1398" width="1652.45" height="2128">
+  <object id="1028" name="ruins-thick" type="terrain" x="-514.82" y="1398" width="1744.05" height="2128">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>

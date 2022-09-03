@@ -146,6 +146,7 @@
 #include "Objects/Platformer/Traps/PendulumBlade/PendulumBlade.h"
 #include "Objects/Platformer/Traps/SpikedBall/SpikedBall.h"
 #include "Objects/Platformer/Traps/SpikedLog/SpikedLog.h"
+#include "Objects/Platformer/Traps/SpikedLogRailed/SpikedLogRailed.h"
 #include "Objects/Platformer/Traps/Stalactite/Stalactite.h"
 #include "Objects/Platformer/Traps/WoodenSpikes/WoodenSpikes.h"
 #include "Objects/Platformer/Interactables/Tutorials/FloatTutorialPortal.h"
