@@ -173,6 +173,7 @@ DeveloperScene::DeveloperScene()
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
 		
 		// Color the brazier metal to indicate the flame color (this needs to be generally improved throughout the game)
+		// Needs Dark Tiger scripting
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}

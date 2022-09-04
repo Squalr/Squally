@@ -7,15 +7,19 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Traps/SpikedLogRailed/SpikedLogRailedGenericPreview.h"
 #include "Objects/Platformer/Traps/SpikedLogRailed/SpikedLogRailedSetRotationPreview.h"
+#include "Scenes/Platformer/Components/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -41,10 +45,10 @@ SpikedLogRailed::SpikedLogRailed(ValueMap& properties) : super(properties)
 {
 	this->beam = Sprite::create(ObjectResources::Traps_SpikedLogRailed_Beam);
 	this->spikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikedLogRailed_SpikedLog_00);
-	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(CSize(32.0f, 480.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(CSize(192.0f, 480.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 	this->logCollision = CollisionObject::create(CollisionObject::createBox(CSize(128.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
-	this->animationLength = SmartAnimationSequenceNode::GetAnimationLength(ObjectResources::Traps_SpikedLogRailed_SpikedLog_00);
-
+	this->squally = nullptr;
+	
 	this->spikedLog->addChild(this->spikeCollision);
 	this->spikedLog->addChild(this->logCollision);
 	this->addChild(this->beam);
@@ -59,7 +63,17 @@ void SpikedLogRailed::onEnter()
 {
 	super::onEnter();
 
-	this->onFrameComplete();
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+	}, Squally::MapKey);
+
+	this->spikedLog->playAnimationRepeat(ObjectResources::Traps_SpikedLogRailed_SpikedLog_00, 0.05f);
+}
+
+void SpikedLogRailed::update(float dt)
+{
+	this->moveRailedSpikes(dt);
 }
 
 void SpikedLogRailed::initializePositions()
@@ -91,7 +105,8 @@ void SpikedLogRailed::registerHackables()
 				UIResources::Menus_Icons_Banner,
 				LazyNode<HackablePreview>::create([=](){ return SpikedLogRailedSetRotationPreview::create(); }),
 				{
-					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx::create() },
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx::create() },
+					{ HackableCode::Register::zdx, Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx::create() },
 				},
 				int(HackFlags::None),
 				16.0f,
@@ -102,11 +117,11 @@ void SpikedLogRailed::registerHackables()
 						// x86
 						COMMENT(Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
-						"inc ecx\n"
+						"cmp ebx, 0\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())) + 
-						"inc rcx\n"
+						"cmp rbx, 0\n"
 					)
 				},
 				true
@@ -114,8 +129,8 @@ void SpikedLogRailed::registerHackables()
 		},
 	};
 
-	auto incrementAnimationFunc = &SpikedLogRailed::incrementSpikedLogRailedAnimation;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, codeInfoMap);
+	auto moveRailedSpikesFunc = &SpikedLogRailed::moveRailedSpikes;
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)moveRailedSpikesFunc, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{
@@ -128,78 +143,54 @@ HackablePreview* SpikedLogRailed::createDefaultPreview()
 	return SpikedLogRailedGenericPreview::create();
 }
 
-void SpikedLogRailed::onFrameComplete()
+NO_OPTIMIZE void SpikedLogRailed::moveRailedSpikes(float dt)
 {
-	this->currentAnimationIndex = MathUtils::wrappingNormalize(incrementSpikedLogRailedAnimation(this->currentAnimationIndex, this->animationLength), 0, this->animationLength - 1);
+	static volatile int spikeDirectionLocal;
+	static volatile int squallyVelocityXLocal;
 
-	this->spikedLog->playSingleFrame(ObjectResources::Traps_SpikedLogRailed_SpikedLog_00, this->currentAnimationIndex, 0.05f, [=]()
+	spikeDirectionLocal = 0;
+	squallyVelocityXLocal = 0;
+
+	if (this->squally != nullptr)
 	{
-		this->onFrameComplete();
-	});
-}
-
-NO_OPTIMIZE int SpikedLogRailed::incrementSpikedLogRailedAnimation(int count, int max)
-{
-	this->spikeCollision->setPhysicsFlagEnabled(true);
-	float offsetX = 0;
-
-	switch(count)
-	{
-		case 1:
-		{
-			offsetX = 32.0f;
-			break;
-		}
-		case 2:
-		{
-			offsetX = 96.0f;
-			break;
-		}
-		case 3:
-		{
-			offsetX = 72.0f;
-			break;
-		}
-		case 7:
-		{
-			offsetX = -72.0f;
-			break;
-		}
-		case 8:
-		{
-			offsetX = -96.0f;
-			break;
-		}
-		case 9:
-		{
-			offsetX = -32.0f;
-			break;
-		}
-		default:
-		{
-			this->spikeCollision->setPhysicsFlagEnabled(false);
-		}
+		// Compute a fake velocity given movement direction. This was easier than trying to get the true velocity.
+		// For this script velocity is read-only anyways, and we just care about whether it's < or > 0.0f
+		squallyVelocityXLocal = (int)this->squally->getRuntimeStateOrDefaultFloat(StateKeys::MovementX, 0.0f) * EntityMovementBehavior::DefaultRunAcceleration;
 	}
 
-	this->spikeCollision->setPositionX(offsetX);
-
-	static volatile int countLocal;
-
-	countLocal = count;
-
-	ASM(push ZCX)
-	ASM_MOV_REG_VAR(ecx, countLocal);
+	ASM(push ZBX)
+	ASM(push ZAX)
+	ASM(push ZSI)
+	ASM(push ZDI)
+	ASM(mov ZAX, 0)
+	ASM(mov ZSI, 1)
+	ASM(cmp ZDI, -1)
+	ASM_MOV_REG_VAR(ebx, squallyVelocityXLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_MOVE);
-	ASM(inc ZCX)
-	ASM_NOP6();
+	ASM(cmp ZBX, 0)
+	ASM(cmovg ZAX, ZSI)
+	ASM(cmovl ZAX, ZDI)
+	ASM_NOP9();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(countLocal, ecx);
-	ASM(pop ZCX);
+	ASM_MOV_VAR_REG(spikeDirectionLocal, eax);
+	ASM(pop ZDI);
+	ASM(pop ZSI);
+	ASM(pop ZAX);
+	ASM(pop ZBX);
 
 	HACKABLES_STOP_SEARCH();
 
-	return countLocal;
+	static const float MoveSpeed = 128.0f;
+
+	if (spikeDirectionLocal < 0)
+	{
+		this->spikeCollision->setPositionX(this->spikeCollision->getPositionX() + MoveSpeed * dt);
+	}
+	else if (spikeDirectionLocal > 0)
+	{
+		this->spikeCollision->setPositionX(this->spikeCollision->getPositionX() - MoveSpeed * dt);
+	}
 }
 END_NO_OPTIMIZE

@@ -14,6 +14,8 @@ class EntityMovementBehavior : public GameComponent
 public:
 	static EntityMovementBehavior* create(GameObject* owner);
 
+	cocos2d::Vec2 getVelocity() const;
+
 	void setMoveAcceleration(float moveAcceleration);
 	void setSwimAcceleration(cocos2d::Vec2 swimAcceleration);
 	void setJumpVelocity(float jumpVelocity);

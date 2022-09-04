@@ -149,7 +149,7 @@ void EntityMovementBehavior::update(float dt)
 		this->applyCinematicMovement(&movement);
 	}
 
-	Vec2 velocity = this->entityCollision->getVelocity();
+	Vec2 velocity = this->getVelocity();
 
 	bool canJump = this->jumpBehavior == nullptr ? false : this->jumpBehavior->canJump();
 	PlatformerEntity::ControlState controlState = this->entity->getControlState();
@@ -306,6 +306,11 @@ void EntityMovementBehavior::applyCinematicMovement(Vec2* movement)
 			movement->x = 1.0f;
 		}
 	}
+}
+
+Vec2 EntityMovementBehavior::getVelocity() const
+{
+	return this->entityCollision == nullptr ? Vec2::ZERO : this->entityCollision->getVelocity();
 }
 
 void EntityMovementBehavior::setMoveAcceleration(float moveAcceleration)
