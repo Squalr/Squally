@@ -122,11 +122,15 @@ void SpikedLogRailed::registerHackables()
 						// x86
 						COMMENT(Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
-						"cmp ebx, 0\n"
+						"cmp ebx, 0\n" +
+						"cmovg eax, esi\n" +
+						"cmovl eax, edi\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())) + 
-						"cmp rbx, 0\n"
+						"cmp rbx, 0\n" +
+						"cmovg rax, rsi\n" +
+						"cmovl rax, rdi\n"
 					)
 				},
 				true

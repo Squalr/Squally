@@ -165,7 +165,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Docks (UR)", MapResources::UnderflowRuins_Town_Docks));
 
 		// Fix killing machine art size and redo all anims (so much fun, can't wait to start)
-		// Traps: Spike log railed, water launcher (in sewers)
+		// Traps: Water launcher (in sewers)
 		// Inversion and Broken Blade are missing MAX/MIN
 		
 		// And the 3_x maps are too confusing and bloated (less bad than it was. can it be better?)
