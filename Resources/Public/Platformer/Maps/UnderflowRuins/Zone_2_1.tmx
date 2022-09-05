@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="912">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="914">
  <properties>
   <property name="rubber-band" type="int" value="7"/>
  </properties>
@@ -317,27 +317,13 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="889" name="minotaur" type="entity" x="1630.1" y="2091.56" width="128" height="128">
+  <object id="913" name="mermaid" type="entity" x="1614.79" y="2093.58" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="890" name="minotaur" type="entity" x="1452.68" y="1714.5" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
-  <object id="904" name="minotaur" type="entity" x="1802.67" y="1717.82" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>

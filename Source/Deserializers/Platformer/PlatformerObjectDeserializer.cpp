@@ -220,6 +220,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[WarpGateUR::MapKey] = [=](ValueMap properties) { return (GameObject*)WarpGateUR::create(properties); };
 	this->deserializers[WarpGateVS::MapKey] = [=](ValueMap properties) { return (GameObject*)WarpGateVS::create(properties); };
 	this->deserializers[Water::MapKey] = [=](ValueMap properties) { return (GameObject*)Water::create(properties); };
+	this->deserializers[WaterLauncher::MapKey] = [=](ValueMap properties) { return (GameObject*)WaterLauncher::create(properties); };
 	this->deserializers[Wind::MapKey] = [=](ValueMap properties) { return (GameObject*)Wind::create(properties); };
 	this->deserializers[WoodenCrate::MapKey] = [=](ValueMap properties) { return (GameObject*)WoodenCrate::create(properties); };
 	this->deserializers[WoodDoorSpawn::MapKey] = [=](ValueMap properties) { return (GameObject*)WoodDoorSpawn::create(properties); };

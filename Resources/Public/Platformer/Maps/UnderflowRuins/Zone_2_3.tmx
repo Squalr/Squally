@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="30" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="908">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="30" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="120" nextobjectid="909">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -121,15 +121,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="904" name="mermaid" type="entity" x="642.467" y="1525.32" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
+  <object id="904" name="water-launcher" type="object" x="642.467" y="1525.32" width="128" height="128"/>
   <object id="907" name="minotaur" type="entity" x="3464" y="1524" width="128" height="128">
    <properties>
     <property name="components" value="friendly,disarmed,ur-puzzle-C"/>

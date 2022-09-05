@@ -2,6 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 
+class CinematicMarker;
 class Guano;
 class PlatformerEntity;
 class QuestLine;
