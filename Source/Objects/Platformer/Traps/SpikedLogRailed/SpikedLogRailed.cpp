@@ -31,6 +31,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_MOVE 1
 
 const std::string SpikedLogRailed::MapKey = "spiked-log-railed";
+const std::string SpikedLogRailed::PropertyInverse = "inverse";
 
 SpikedLogRailed* SpikedLogRailed::create(ValueMap& properties)
 {
@@ -43,16 +44,19 @@ SpikedLogRailed* SpikedLogRailed::create(ValueMap& properties)
 
 SpikedLogRailed::SpikedLogRailed(ValueMap& properties) : super(properties)
 {
+	this->root = Node::create();
 	this->beam = Sprite::create(ObjectResources::Traps_SpikedLogRailed_Beam);
 	this->spikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikedLogRailed_SpikedLog_00);
 	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(CSize(192.0f, 480.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 	this->logCollision = CollisionObject::create(CollisionObject::createBox(CSize(128.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
 	this->squally = nullptr;
-	
+	this->railSize = CSize(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat());
+	this->inverse = GameUtils::getKeyOrDefault(this->properties, SpikedLogRailed::PropertyInverse, Value(false)).asBool();
 	this->spikedLog->addChild(this->spikeCollision);
 	this->spikedLog->addChild(this->logCollision);
-	this->addChild(this->beam);
-	this->addChild(this->spikedLog);
+	this->root->addChild(this->beam);
+	this->root->addChild(this->spikedLog);
+	this->addChild(this->root);
 }
 
 SpikedLogRailed::~SpikedLogRailed()
@@ -69,6 +73,7 @@ void SpikedLogRailed::onEnter()
 	}, Squally::MapKey);
 
 	this->spikedLog->playAnimationRepeat(ObjectResources::Traps_SpikedLogRailed_SpikedLog_00, 0.05f);
+	this->rootPosition = this->root->getPosition();
 }
 
 void SpikedLogRailed::update(float dt)
@@ -155,7 +160,7 @@ NO_OPTIMIZE void SpikedLogRailed::moveRailedSpikes(float dt)
 	{
 		// Compute a fake velocity given movement direction. This was easier than trying to get the true velocity.
 		// For this script velocity is read-only anyways, and we just care about whether it's < or > 0.0f
-		squallyVelocityXLocal = (int)this->squally->getRuntimeStateOrDefaultFloat(StateKeys::MovementX, 0.0f) * EntityMovementBehavior::DefaultRunAcceleration;
+		squallyVelocityXLocal = int(this->squally->getRuntimeStateOrDefaultFloat(StateKeys::MovementX, 0.0f) * EntityMovementBehavior::DefaultRunAcceleration);
 	}
 
 	ASM(push ZBX)
@@ -164,7 +169,7 @@ NO_OPTIMIZE void SpikedLogRailed::moveRailedSpikes(float dt)
 	ASM(push ZDI)
 	ASM(mov ZAX, 0)
 	ASM(mov ZSI, 1)
-	ASM(cmp ZDI, -1)
+	ASM(mov ZDI, -1)
 	ASM_MOV_REG_VAR(ebx, squallyVelocityXLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_MOVE);
@@ -182,15 +187,21 @@ NO_OPTIMIZE void SpikedLogRailed::moveRailedSpikes(float dt)
 
 	HACKABLES_STOP_SEARCH();
 
-	static const float MoveSpeed = 128.0f;
+	static const float MoveSpeed = 512.0f;
 
-	if (spikeDirectionLocal < 0)
+	float newX = this->root->getPositionX();
+	const float minX = this->rootPosition.x - this->railSize.width / 2.0f;
+	const float maxX = this->rootPosition.x + this->railSize.width / 2.0f;
+
+	if (spikeDirectionLocal != 0 && ((spikeDirectionLocal < 0) ^ this->inverse))
 	{
-		this->spikeCollision->setPositionX(this->spikeCollision->getPositionX() + MoveSpeed * dt);
+		newX += MoveSpeed * dt;
+		this->root->setPositionX(MathUtils::clamp(newX, minX, maxX));
 	}
-	else if (spikeDirectionLocal > 0)
+	else if (spikeDirectionLocal != 0 && ((spikeDirectionLocal > 0) ^ this->inverse))
 	{
-		this->spikeCollision->setPositionX(this->spikeCollision->getPositionX() - MoveSpeed * dt);
+		newX -= MoveSpeed * dt;
+		this->root->setPositionX(MathUtils::clamp(newX, minX, maxX));
 	}
 }
 END_NO_OPTIMIZE

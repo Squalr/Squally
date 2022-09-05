@@ -35,6 +35,8 @@ private:
 
 	void moveRailedSpikes(float dt);
 
+	bool inverse = false;
+	cocos2d::Node* root = nullptr;
 	cocos2d::Sprite* beam = nullptr;
 	SmartAnimationSequenceNode* spikedLog = nullptr;
 	CollisionObject* spikeCollision = nullptr;
@@ -43,4 +45,7 @@ private:
 	Squally* squally = nullptr;
 
 	cocos2d::Vec2 rootPosition;
+	cocos2d::CSize railSize;
+
+	static const std::string PropertyInverse;
 };
