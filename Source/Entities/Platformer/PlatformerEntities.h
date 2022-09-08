@@ -2,6 +2,7 @@
 
 #include "Critters/Gull.h"
 #include "Critters/Horse.h"
+#include "Critters/Lion.h"
 #include "Critters/Seagull.h"
 #include "Enemies/BallmerPeaks/Cryogen.h"
 #include "Enemies/BallmerPeaks/FrostFiend.h"
