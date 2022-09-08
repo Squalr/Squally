@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="59" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="106" nextobjectid="1272">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="59" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1282">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -165,7 +165,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1078" name="ruins-thick" type="terrain" x="2489.7" y="1466.24" width="2209.15" height="340"/>
+  <object id="1078" name="ruins-thick" type="terrain" x="2489.7" y="1466.24" width="2209.15" height="872"/>
  </objectgroup>
  <objectgroup id="103" name="objects -4">
   <properties>
@@ -224,12 +224,58 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
+ <objectgroup id="107" name="terrain -2 bg bg">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1276" name="ruins-thick" type="terrain" x="2444.97" y="2107.87" width="2382.79" height="256.978"/>
+ </objectgroup>
+ <objectgroup id="108" name="entities -2 bg">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1278" name="lion" type="entity" x="3675.33" y="1972.67" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1279" name="lion" type="entity" x="4226" y="1974" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly"/>
+    <property name="flip-x" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="1280" name="lion" type="entity" x="2994" y="1972" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="106" name="terrain -2 bg">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1273" name="Generic/Background/Jail" type="decor" x="2436.41" y="1666.85" width="2152.72" height="993">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="repeat-x" type="bool" value="true"/>
+    <property name="repeat-y" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="91" name="terrain -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1075" name="ruins-thick" type="terrain" x="2399.45" y="1586.61" width="2382.79" height="926"/>
+  <object id="1281" name="ruins-thick" type="terrain" x="2392" y="1584">
+   <polygon points="2856,-44 2872,1120 2200,1124 2200,208 52,204 51.0909,1122.88 -569.152,1123.58 -569.273,-44.1818"/>
+  </object>
  </objectgroup>
  <objectgroup id="101" name="objects -2">
   <properties>
@@ -623,7 +669,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="1.3500000000000001"/>
+   <property name="zoom" type="float" value="1.35"/>
   </properties>
   <object id="523" name="squally" type="entity" x="601.89" y="1275.5" width="128" height="128">
    <properties>
