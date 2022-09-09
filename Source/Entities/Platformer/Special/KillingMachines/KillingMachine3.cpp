@@ -24,13 +24,11 @@ KillingMachine3::KillingMachine3(ValueMap& properties) : super(properties,
 	KillingMachine3::MapKey,
 	EntityResources::Misc_UnderflowRuins_KillingMachine3_Animations,
 	EntityResources::Misc_UnderflowRuins_KillingMachine3_Emblem,
-	CSize(2048.0f, 1280.0f),
-	0.33f,
+	CSize(680.0f, 420.0f),
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
-	// Hack until animation is fixed
 	this->animationNode->setScaleX(-this->animationNode->getScaleX());
-	this->animationNode->setPosition(Vec2(0.0f, 212.0f));
 }
 
 KillingMachine3::~KillingMachine3()
