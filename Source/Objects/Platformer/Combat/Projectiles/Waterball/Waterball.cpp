@@ -71,7 +71,7 @@ void Waterball::update(float dt)
 void Waterball::runSpawnFX()
 {
 	this->breathSound->play();
-	this->waterballAnim->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.05f);
+	this->waterballAnim->playAnimationRepeat(FXResources::WaterBall_WaterBall_0000, 0.05f);
 }
 
 void Waterball::runImpactFX()

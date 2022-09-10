@@ -164,14 +164,10 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Shoreline (UR)", MapResources::UnderflowRuins_Shoreline));
 		mapList.push_back(this->buildDebugButton("Docks (UR)", MapResources::UnderflowRuins_Town_Docks));
 
-		// Fix killing machine art size and redo all anims (so much fun, can't wait to start)
-		// Traps: Water launcher (in sewers)
 		// Inversion and Broken Blade are missing MAX/MIN
-		
 		// And the 3_x maps are too confusing and bloated (less bad than it was. can it be better?)
 		// Too many fucking pyramids in bg
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
-		
 		// Color the brazier metal to indicate the flame color (this needs to be generally improved throughout the game)
 		// Needs Dark Tiger scripting
 

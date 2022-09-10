@@ -2396,6 +2396,7 @@ const std::string EntityResources::Misc_UnderflowRuins_Gull_wing = "Private/Plat
 const std::string EntityResources::Misc_UnderflowRuins_KillingMachine1_Animations = "Private/Platformer/Entities/Misc/UnderflowRuins/KillingMachine1/Animations.scml";
 const std::string EntityResources::Misc_UnderflowRuins_KillingMachine1_Emblem = "Private/Platformer/Entities/Misc/UnderflowRuins/KillingMachine1/Emblem.png";
 const std::string EntityResources::Misc_UnderflowRuins_KillingMachine1_axe = "Private/Platformer/Entities/Misc/UnderflowRuins/KillingMachine1/axe.png";
+const std::string EntityResources::Misc_UnderflowRuins_KillingMachine1_axe_2 = "Private/Platformer/Entities/Misc/UnderflowRuins/KillingMachine1/axe_2.png";
 const std::string EntityResources::Misc_UnderflowRuins_KillingMachine1_back_piston = "Private/Platformer/Entities/Misc/UnderflowRuins/KillingMachine1/back_piston.png";
 const std::string EntityResources::Misc_UnderflowRuins_KillingMachine1_body = "Private/Platformer/Entities/Misc/UnderflowRuins/KillingMachine1/body.png";
 const std::string EntityResources::Misc_UnderflowRuins_KillingMachine1_boiler = "Private/Platformer/Entities/Misc/UnderflowRuins/KillingMachine1/boiler.png";
@@ -2486,6 +2487,8 @@ const std::string EntityResources::Misc_UnderflowRuins_KillingMachine5_tooter_co
 const std::string EntityResources::Misc_UnderflowRuins_KillingMachine5_wheel_bar = "Private/Platformer/Entities/Misc/UnderflowRuins/KillingMachine5/wheel_bar.png";
 const std::string EntityResources::Misc_UnderflowRuins_KillingMachine5_wood_1 = "Private/Platformer/Entities/Misc/UnderflowRuins/KillingMachine5/wood_1.png";
 const std::string EntityResources::Misc_UnderflowRuins_KillingMachine5_wood_2 = "Private/Platformer/Entities/Misc/UnderflowRuins/KillingMachine5/wood_2.png";
+const std::string EntityResources::Misc_UnderflowRuins_KillingMachine5_wood_3 = "Private/Platformer/Entities/Misc/UnderflowRuins/KillingMachine5/wood_3.png";
+const std::string EntityResources::Misc_UnderflowRuins_KillingMachine5_wood_4 = "Private/Platformer/Entities/Misc/UnderflowRuins/KillingMachine5/wood_4.png";
 const std::string EntityResources::Misc_UnderflowRuins_KillingMachine5_wood_lever = "Private/Platformer/Entities/Misc/UnderflowRuins/KillingMachine5/wood_lever.png";
 const std::string EntityResources::Misc_UnderflowRuins_KillingMachine6_Animations = "Private/Platformer/Entities/Misc/UnderflowRuins/KillingMachine6/Animations.scml";
 const std::string EntityResources::Misc_UnderflowRuins_KillingMachine6_Emblem = "Private/Platformer/Entities/Misc/UnderflowRuins/KillingMachine6/Emblem.png";

@@ -855,6 +855,14 @@ namespace FXResources
 	extern const std::string VoidPulse_VoidPulse_0007;
 	extern const std::string VoidPulse_VoidPulse_0008;
 	extern const std::string VoidPulse_VoidPulse_0009;
+	extern const std::string WaterBall_WaterBall_0000;
+	extern const std::string WaterBall_WaterBall_0001;
+	extern const std::string WaterBall_WaterBall_0002;
+	extern const std::string WaterBall_WaterBall_0003;
+	extern const std::string WaterBall_WaterBall_0004;
+	extern const std::string WaterBall_WaterBall_0005;
+	extern const std::string WaterBall_WaterBall_0006;
+	extern const std::string WaterBall_WaterBall_0007;
 	extern const std::string WaveCrash_WaveCrash_0000;
 	extern const std::string WaveCrash_WaveCrash_0001;
 	extern const std::string WaveCrash_WaveCrash_0002;
