@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="80" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1970">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="80" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1975">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -329,6 +329,8 @@
   <object id="1817" name="Mines/Rock4" type="decor" x="3470.67" y="1162.18" width="223" height="133"/>
   <object id="1818" name="Mines/Rock4" type="decor" x="3429.17" y="1014.77" width="223" height="133"/>
   <object id="1969" name="Mines/CaveDoor4" type="decor" x="283.924" y="1275.08" width="333" height="385"/>
+  <object id="1973" name="Mines/StoneWoodDoor" type="decor" x="1664.5" y="1124.5" width="329" height="515"/>
+  <object id="1974" name="Mines/StoneWoodDoor" type="decor" x="4900.83" y="1126.5" width="329" height="515"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -343,7 +345,6 @@
   </properties>
   <object id="858" name="cart-stop" type="object" x="6990.64" y="1481.02" width="188" height="169"/>
   <object id="863" name="Mines/SupportMedium" type="decor" x="7760.32" y="1013.64" width="127" height="634"/>
-  <object id="1694" name="Mines/TigerDoor" type="decor" x="4738" y="1139" width="688" height="528"/>
   <object id="1697" name="Mines/Rock2" type="decor" x="3736" y="1561" width="114" height="86"/>
   <object id="1698" name="Mines/Rock3" type="decor" x="3593.5" y="1543.5" width="142" height="104"/>
   <object id="1699" name="Mines/Rock4" type="decor" x="3628.17" y="1423.83" width="223" height="133"/>
@@ -517,7 +518,6 @@
     <property name="transition" value="passage-exit"/>
    </properties>
   </object>
-  <object id="1964" name="Mines/TigerDoor" type="decor" x="1505.33" y="1145.67" width="688" height="528"/>
  </objectgroup>
  <objectgroup id="81" name="rails">
   <properties>
