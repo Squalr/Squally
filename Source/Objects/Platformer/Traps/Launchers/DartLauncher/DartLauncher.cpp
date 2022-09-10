@@ -34,7 +34,7 @@ DartLauncher* DartLauncher::create(ValueMap& properties)
 	return instance;
 }
 
-DartLauncher::DartLauncher(ValueMap& properties) : super(properties, ObjectResources::Traps_DartLauncher_Animations, 2)
+DartLauncher::DartLauncher(ValueMap& properties) : super(properties, ObjectResources::Traps_DartLauncher_Animations, false, 2)
 {
 }
 

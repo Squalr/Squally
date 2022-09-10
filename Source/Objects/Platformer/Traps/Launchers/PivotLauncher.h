@@ -22,7 +22,7 @@ public:
 	static const std::string HackIdentifierLaunchTimer;
 
 protected:
-	PivotLauncher(cocos2d::ValueMap& properties, std::string animationResource, int projectilePoolCapacity);
+	PivotLauncher(cocos2d::ValueMap& properties, std::string animationResource, bool skipRegisterHackables, int projectilePoolCapacity);
 	virtual ~PivotLauncher();
 
 	void onEnter() override;
@@ -59,6 +59,7 @@ private:
 	bool isFixed = false;
 	bool is3DEnabled = false;
 	bool isAutoLaunch = true;
+	bool skipRegisterHackables = false;
 
 	static const std::string PivotBone;
 	static const std::string PropertyLaunchSpeed;

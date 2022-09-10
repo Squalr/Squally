@@ -37,7 +37,7 @@ DartTripodLauncherSqualr* DartTripodLauncherSqualr::create(ValueMap& properties)
 	return instance;
 }
 
-DartTripodLauncherSqualr::DartTripodLauncherSqualr(ValueMap& properties) : super(properties, ObjectResources::Traps_DartTripodLauncher_Animations, 4)
+DartTripodLauncherSqualr::DartTripodLauncherSqualr(ValueMap& properties) : super(properties, ObjectResources::Traps_DartTripodLauncher_Animations, false, 4)
 {
 	this->setAutoLaunch(false);
 	this->toggleHackable(false);

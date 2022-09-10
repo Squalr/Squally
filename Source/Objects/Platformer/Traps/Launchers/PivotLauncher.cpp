@@ -40,7 +40,7 @@ const float PivotLauncher::DefaultLaunchSpeed = 320.0f;
 const float PivotLauncher::LaunchCooldownMin = 2.0f;
 const float PivotLauncher::LaunchCooldownMax = 4.0f;
 
-PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource, int projectilePoolCapacity) : super(properties)
+PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource, bool skipRegisterHackables, int projectilePoolCapacity) : super(properties)
 {
 	this->containerNode = Node::create();
 	this->launcherAnimations = SmartAnimationNode::create(animationResource);
@@ -52,6 +52,7 @@ PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource
 	this->fixedAngle = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyFixed, Value(0.0f)).asFloat();
 	this->launchSpeed = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyLaunchSpeed, Value(320.0f)).asFloat();
 	this->currentAngle = this->fixedAngle;
+	this->skipRegisterHackables = skipRegisterHackables;
 
 	this->setContentSize(CSize(128.0f, 192.0f));
 
@@ -118,6 +119,11 @@ void PivotLauncher::registerHackables()
 {
 	super::registerHackables();
 
+	if (this->skipRegisterHackables)
+	{
+		return;
+	}
+	
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{

@@ -132,6 +132,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[AnubisWarrior::MapKey] = StatsIncrements(Stats(52, 16, 94));
 	StatsTables::StatsTable[LionMan::MapKey] = StatsIncrements(Stats(42, 12, 67));
 	StatsTables::StatsTable[Lioness::MapKey] = StatsIncrements(Stats(33, 9, 64));
+	StatsTables::StatsTable[DarkTiger::MapKey] = StatsIncrements(Stats(48, 15, 32));
 	StatsTables::StatsTable[Medusa::MapKey] = StatsIncrements(Stats(51, 8, 95));
 	StatsTables::StatsTable[Mermaid::MapKey] = StatsIncrements(Stats(31, 8, 74));
 	StatsTables::StatsTable[Minotaur::MapKey] = StatsIncrements(Stats(42, 8, 68));
@@ -328,7 +329,6 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Abomination::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Assassin::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[BoneKnight::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[DarkTiger::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[EvilEye::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Exterminator::MapKey] = StatsIncrements(Stats(16, 8, 32));
 	StatsTables::StatsTable[Gargoyle::MapKey] = StatsIncrements(Stats(16, 8, 32));
