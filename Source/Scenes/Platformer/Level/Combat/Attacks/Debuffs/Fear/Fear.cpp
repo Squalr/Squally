@@ -62,10 +62,12 @@ Fear::Fear(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura);
+	this->spellFx = SmartAnimationSequenceNode::create();
 
 	this->spellAura->setColor(Color3B::MAGENTA);
 	this->spellAura->setOpacity(0);
 
+	this->addChild(this->spellFx);
 	this->addChild(this->spellEffect);
 	this->addChild(this->spellAura);
 }
@@ -80,6 +82,7 @@ void Fear::onEnter()
 
 	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellEffect->start();
+	this->spellFx->playAnimationRepeat(FXResources::WeakMinded_WeakMinded_0000, 0.05f, true);
 
 	this->spellAura->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),

@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class PlatformerEntity;
+class SmartAnimationSequenceNode;
 class SmartParticles;
 
 class Fear : public Buff
@@ -33,6 +34,7 @@ private:
 	
 	SmartParticles* spellEffect = nullptr;
 	cocos2d::Sprite* spellAura = nullptr;
+	SmartAnimationSequenceNode* spellFx = nullptr;
 	
 	static volatile float currentSpeed;
 
