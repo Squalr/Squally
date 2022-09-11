@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="59" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1282">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="59" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1282">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -511,11 +511,7 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="1266" name="ruins-thick" type="terrain" x="-2564.81" y="-358.346" width="1228.92" height="3017.59">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
+  <object id="1266" name="solid" type="collision" x="-2564.81" y="-358.346" width="1228.92" height="3017.59"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -584,7 +580,7 @@
   </object>
   <object id="1271" name="egyptian-chest" type="object" x="5995.3" y="1967.52" width="128" height="128">
    <properties>
-    <property name="reward-pool" value="ef-dungeon-map"/>
+    <property name="reward-pool" value="ur-rare"/>
    </properties>
   </object>
  </objectgroup>
@@ -669,7 +665,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="1.35"/>
+   <property name="zoom" type="float" value="1.3500000000000001"/>
   </properties>
   <object id="523" name="squally" type="entity" x="601.89" y="1275.5" width="128" height="128">
    <properties>
