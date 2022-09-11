@@ -157,8 +157,8 @@ NO_OPTIMIZE void SpikedLogRailed::moveRailedSpikes(float dt)
 	static volatile int spikeDirectionLocal;
 	static volatile int squallyVelocityXLocal;
 
-	spikeDirectionLocal = 0;
-	squallyVelocityXLocal = 0;
+	spikeDirectionLocal = -1;
+	squallyVelocityXLocal = -1;
 
 	if (this->squally != nullptr)
 	{
@@ -167,6 +167,7 @@ NO_OPTIMIZE void SpikedLogRailed::moveRailedSpikes(float dt)
 		squallyVelocityXLocal = int(this->squally->getRuntimeStateOrDefaultFloat(StateKeys::MovementX, 0.0f) * EntityMovementBehavior::DefaultRunAcceleration);
 	}
 
+	ASM_PUSH_EFLAGS();
 	ASM(push ZBX)
 	ASM(push ZAX)
 	ASM(push ZSI)
@@ -188,8 +189,7 @@ NO_OPTIMIZE void SpikedLogRailed::moveRailedSpikes(float dt)
 	ASM(pop ZSI);
 	ASM(pop ZAX);
 	ASM(pop ZBX);
-
-	HACKABLES_STOP_SEARCH();
+	ASM_POP_EFLAGS();
 
 	static const float MoveSpeed = 512.0f;
 
@@ -197,15 +197,20 @@ NO_OPTIMIZE void SpikedLogRailed::moveRailedSpikes(float dt)
 	const float minX = this->rootPosition.x - this->railSize.width / 2.0f;
 	const float maxX = this->rootPosition.x + this->railSize.width / 2.0f;
 
-	if (spikeDirectionLocal != 0 && ((spikeDirectionLocal < 0) ^ this->inverse))
+	if (spikeDirectionLocal != 0)
 	{
-		newX += MoveSpeed * dt;
+		if ((spikeDirectionLocal < 0) ^ this->inverse)
+		{
+			newX += MoveSpeed * dt;
+		}
+		else
+		{
+			newX -= MoveSpeed * dt;
+		}
+
 		this->root->setPositionX(MathUtils::clamp(newX, minX, maxX));
 	}
-	else if (spikeDirectionLocal != 0 && ((spikeDirectionLocal > 0) ^ this->inverse))
-	{
-		newX -= MoveSpeed * dt;
-		this->root->setPositionX(MathUtils::clamp(newX, minX, maxX));
-	}
+
+	HACKABLES_STOP_SEARCH();
 }
 END_NO_OPTIMIZE
