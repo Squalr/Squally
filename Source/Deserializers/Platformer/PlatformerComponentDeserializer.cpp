@@ -140,6 +140,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[AraBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)AraBehavior::create(owner); };
 	this->componentDeserializers[CypressBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)CypressBehavior::create(owner); };
 	this->componentDeserializers[LycanBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LycanBehavior::create(owner); };
+	this->componentDeserializers[GoblinShamanBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)GoblinShamanBehaviorGroup::create(owner); };
 	this->componentDeserializers[KingGroggBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)KingGroggBehaviorGroup::create(owner); };
 	this->componentDeserializers[OrcBomberBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)OrcBomberBehaviorGroup::create(owner); };
 

@@ -182,7 +182,7 @@
   </properties>
   <object id="914" name="goblin-shaman" type="entity" x="1481.58" y="1783.39" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,goblin-shaman,agro"/>
     <property name="battle-behavior" value="curse-of-tongues-tutorial"/>
     <property name="battle-map" value="EndianForest/Combat_Temple"/>
     <property name="battle-tag" value="group-a"/>
