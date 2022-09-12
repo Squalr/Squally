@@ -119,10 +119,9 @@ Projectile* GoblinShamanOutOfCombatAttackBehavior::createProjectile()
 	OverworldShadowBolt* projectile = OverworldShadowBolt::create();
 	
 	shadowBolt->setPosition3D(Vec3((this->goblinShaman->isFlippedX() ? -276.0f : 276.0f), 144.0f, 0.0f));
-	shadowBolt->setScaleX(-1.0f);
 	
 	projectile->setMovementMode(Projectile::MovementMode::RotationVelocity);
-	projectile->setProjectileRotation(this->goblinShaman->isFlippedX() ? 180.0f : 0.0f);
+	projectile->setProjectileRotation(this->goblinShaman->isFlippedX() ? 180.0f + -10.0f : 10.0f);
 
 	return projectile;
 }

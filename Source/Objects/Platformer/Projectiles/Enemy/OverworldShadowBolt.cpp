@@ -35,6 +35,8 @@ OverworldShadowBolt::OverworldShadowBolt() : super(nullptr, CollisionObject::cre
 	this->shadowBoltSfx = WorldSound::create(SoundResources::Platformer_Spells_Fireball2);
 	this->impactSfx = WorldSound::create(SoundResources::Platformer_Spells_FireHit1);
 
+	this->shadowBolt->setFlippedX(true);
+
 	this->contentNode->addChild(this->shadowBolt);
 	this->contentNode->addChild(this->explosion);
 	this->postFXNode->addChild(this->shadowBoltSfx);
