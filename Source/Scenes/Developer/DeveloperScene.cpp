@@ -68,7 +68,318 @@ DeveloperScene::DeveloperScene()
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 1
+	/*
+	<Get notes from Mac please>
+	- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Bars
+	- Redo all torch puzzles such that the player has control over both top/bottom torches
+	- UR Intro maps are very confusing and trash
+	- Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
+		- Destroy all warp maps as a result (?) can still keep the zone portals for the return location
+	- Kill Limestone temple map, replace with rare reward
+	- Maybe hard code some rewards. It'd be nice to get SHL from the puzzle where you learn it.
+	- Lexicon from menu
+	- Seagulls should blink
+	- Ursula is a lego bitch. Please fix.
+	- Pan is a lego bitch too :^(
+
+	- Just get a few top down replacement maps in. Should be able to do this fairly seamlessly.
+		- Invisible helpers. Some way to pull helpers into combat
+	- 3Q Perspective
+	- Reinstate Cipher with asm or something
+	- Reinstate ball roll game? It wasn't really fixable
+	- More metrovania. Maybe more maps linked to EF? DM Can exit in EF (lower). 
+		- Maybe castle area is a climp hub, connected to EF by boat? Gets confusing and hard
+	- Interchangeable helpers from Inn map.
+		- Helper abilities or something.
+		- Helper equipment? Would fucking blow for menuing.
+
+	- Necron hitbox wrong in Mages guild (inconsistent?)
+	- Guano is behind the EF grass area gate (maybe after a layer xfer)
+	- Maybe some mana gain on enemy kills? Literally any small amount. (maybe less of an issue w/ exp fix?)
+	- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities)
+
+	TRANSITIONS:
+	- EF => EF LimeStone (blimp 1) - ??????
+	- EF => CV (blimp 2) - Finch
+	- CV => BP (blimp 3) - Irmik
+	- CV => LC (train) - Garin
+	- DM => DH (viking ship or smth) - Drak
+	- BP => BP (viking ship or smth) - <Any>
+
+	- RELOCATED:
+		- Abomination			=>  
+		- Assassin				=>  
+		- BoneKnight			=>  
+		- DarkTiger				=>  
+		- Exterminator			=>  
+		- Gargoyle				=>  
+		- LightningGolem		=>  
+		- Shade					=>  
+		- VoidArcher			=>  
+		- VoidDemon				=>  
+
+	- VS - LOOP / CALL / RET
+		- [B] EvilEye			=>  
+
+	======================
+
+
+	Puzzles:
+	A				EF	2_0		orc-grunt
+	B				EF	2_2		
+	C				EF	2_4_a
+	D				EF	2_4
+	E				EF	2_6
+	F				EF	3_0
+	G				EF	3_1
+
+
+	Level order / Mage
+	EF		//	Fraya? Mabel?
+	UR		//	Alder
+	DM		//	Cypress
+	CV		//	Merlin
+	BP		//	Aster
+	DH		//	Igneus
+	LC		//	Necron
+	VS		//	Marcel
+
+	////////// UR //////////
+
+	------------------------
+
+	Lioness			Zone 1_x
+	LionMan			Zone 1_x
+	Tigress			Zone 1_x
+	TigerMan		Zone 1_x
+
+	Medusa			Zone 2_x
+	Mermaid			Zone 2_x
+	Minotaur		Zone 2_x
+
+	Anubis pup		Zone 3_x
+	Anubis warrior	Zone 3_x
+	Mummy priest	Zone 3_x
+	Mummy warrior	Zone 3_x
+
+	Osiris			Zone 3_x (boss)
+
+	Omit these:
+	Alder			_dupe_
+	Cypress			_dupe_ Zone x_x (spellbook)
+	Sarude			_dupe_
+
+	====== SPELLBOOKS ======
+
+	Water - EF
+	Wind - EF
+	Lightning - UR
+	Holy - UR
+	Nature - Mines?
+	<none in castle>
+	Fire - Daemons
+	Frost - Ballmer
+	Shadow - Crypts
+	Arcane - Void?
+
+	===== Animals ====
+
+	// EF
+	Cat				EF	Jail cell
+	Cow				EF	2_2
+	Dog				EF	Inn Upstairs
+	Duck			EF	!!!!!!!! UNPLACED
+	Bear			EF	Shack
+	Fox				EF	Lianna Back
+	Monkey			EF	3_0
+
+	// (Boat)
+	Whale			EF => UR
+
+	// UR
+	Giraffe			UR	Inn upstairs
+	Hippo			UR	1_0
+	Squid			UR	1_2
+	Snail			UR	2_1
+	Zebra			UR	2_2
+	Mouse			UR	3_2
+	Squirrel		UR	3_4
+
+	// DM
+	Bat				DM	1_x
+	Bird			DM	1_x
+	Pig				DM	2_x
+	Raccoon			DM	2_x
+	Rhino			DM	3_x
+	Sheep			DM	3_x
+	Skunk			DM	Town
+
+	// BP
+	Blowfish		BP	??
+	Bunny			BP	??
+	KillerWhale		BP	??
+	Penguin			BP	??
+	Reindeer		BP	??
+	Yeti			BP	??
+	Goat			BP	Town
+
+	// DH
+	Bee				DH 1_x
+	Crocodile		DH 1_x
+	Dinosaur		DH 2_x
+	Ladybug			DH 2_x
+	Lizard			DH 3_x
+	Snake			DH 3_x
+	Tucan			DH Town
+
+	// LC
+	Bull
+	Chicken
+	Lion
+	MountainLion
+	Tiger
+	Wolf
+	Worm
+
+	// VS
+	Beaver
+	Hedgehog
+	Horse
+	Koala
+	Panda
+	Parrot
+	Turtle
+
+	- 1 freebie
+	- 1 swim hax
+	- 1 in Lianna’s house backdoor
+	- 1 by old man
+	- 1 on the path to Gorgon (wind)
+	- 1 in the inn, somehow or another
+
+	- 1 on ship
+
+	50 / 8 = 6 per zone, 2 bonus (probably on ships)
+
+	Spell ideas:
+	- Call of the Dead (skele's attacking from portal under target) - https://www.gamedevmarket.net/asset/skeleton-warrior-mega-game-sprite-pack/
+	- Bat attack AoE (Ch4)
+	- Hot potato health decrease
+	- Blind (details tbd)
+
+	WOOD		- T0 - EF
+	COPPER		- T1 - EF
+	STEEL		- T2 - UR
+	GOLD		- T3 - DM
+	MITHRIL		- T4 - DM
+	CRYSTAL		- T5 - BP
+	DEMONIC		- T6 - DH
+	BONE		- T7 - LC
+	VOID		- T8 - VS
+
+	Ashen		- T7
+	Battle		- T4
+	Blue		- T4
+	Candy		- T5
+	Crystal		- T8
+	Fang		- T4
+	Gladiator	- > T2.5
+	Gladius		- > T2.5
+	Harbinger	- T6
+	Iron		- > T1
+	Katana		- T3
+	Moon		- T3
+	Rapier		- > T1.5
+	Steel		- > T2
+	Viking		- > T1.5
+	War			- > T1.5
+
+	Battle		-> T6
+	Bone		-> T7
+	Crystal		-> T8
+	Flail		-> T5? if implemented? Just due to the fucking additional programming
+	Iron		-> T2
+	Judgement	-> T3
+	Skull		-> T4
+	Spiked		-> T1.5
+	Wooden		-> T1
+
+	Battle		-> T6
+	Blue		-> T4
+	Cleaver		-> T3
+	Fire		-> T6
+	Hand		-> T1
+	HeadSplit	-> T8
+	Hedge		-> T5
+	Iron		-> T2
+	Mithril		-> T5
+	Rend		-> T4
+	Scythe		-> T4
+	Star		-> T3
+	Steel		-> T2
+	WoodC		-> T7
+
+	Impaler		-> T5 due to gap in T5 weapons, I guess
+
+	Arcane		-> T5
+	Chieftains	-> T6
+	Crystal		-> T8
+	Cursed		-> T4
+	Enchanted	-> T2
+	Holy		-> T7
+	Mana		-> T4
+	Necro		-> T7
+	Serpent		-> T3
+	Taser		-> T5
+	Witch		-> T1.5
+	Wooden		-> T1
+
+
+	Archers		-> T6
+	Bone		-> T8
+	Frost		-> T5
+	Hunters		-> T1
+	Composite	-> T2
+	Ivory		-> T7
+	Olympus		-> T3
+	War			-> T4
+
+	// Gems
+	Quartz		- T2
+	Emerald 	- T3
+	Sapphire	- T4
+	Diamond		- T5
+	Ruby		- T6
+	Sulfur		- T7
+
+	// Metals
+	Copper 		- T1		EF/UR
+	Iron 		- T2		UR
+	Tin 		- T2+		?
+	Gold		- T3		DM	
+	Mithril		- T5		CV
+	Crystal		- T4		BP
+	Sulf		- T6		DH
+	Bone		- T7		LC
+	Obsidian	- T8		VS
+
+	// Alchemy
+	Coal 		- T1
+
+	// Weapons
+	Wood/Copper
+	Steel
+	Gold
+	Mithril
+	Crystal
+	Sulf
+	Bone
+	Void
+	
+	Obsidian	- T8
+	*/
+
+	// CHAPTER 1 - Mov/add/sub/inc/dec/div/mul + AND Puzzle
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Endian Forest");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
@@ -120,7 +431,7 @@ DeveloperScene::DeveloperScene()
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 2
+	// CHAPTER 2 - Compare/CMOV/Neg/SHL/SHR + OR Puzzle
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Underflow Ruins");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
@@ -172,7 +483,7 @@ DeveloperScene::DeveloperScene()
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 3
+	// CHAPTER 3 - Push/Pop/and/or/xor/not/(bswap?) + XOR Puzzle
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Data Mines");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
@@ -206,6 +517,62 @@ DeveloperScene::DeveloperScene()
 		// 	- Olive => Dawn => Restore Power. Nothing fancy, bosses need not be quests since they are forced.
 		//	- Need a way to force Dawn / Restore power quests. Dawn for Key, Power Forced via boss kill? Or on Krampus ship (req to escape)?
 		// Needs enemy scripting according to notes on which instructions this zone covers
+		
+		/*
+		- Tiki Golem			=> 1_1 ?? PUSH CONST (curse of the ancients)
+		- Shaman				=> 1_2 AND (Shadow Bomb)
+		
+		- Skeletal Warrior		=> 2_0 PUSH/POP REG (call of the ancients)
+		- Skeletal Archer		=> 2_1 PUSH [REG] / POP (MULTISHOT - X of the ancients)
+		- Skeletal Necromancer	=> 3_0 PUSH [REG] / POP [REG] (pact of the ancients)
+		
+		- Skeletal Pirate		=> 3_2 XOR (BLIND)
+		- [B] Krampus			=> 3_3 <recycle> (different XOR?) NOT?
+		- Forest golem			=> 4_0 ROR
+		- Earth golem			=> 4_1 ROL
+		- Earth Elemental		=> 4_2 OR (REGERATION)
+		- [B] Rhinoman			=> 4_3 <recycle>
+		
+		- Gorilla				=> Cage him and make him a prop (cursed person? again tho?)
+
+		Jasper			?? (H) (swap with Cypress for spellbook)
+		Alder			?
+		Cypress			Technically in mage's guild
+		Sarude			Technically in mage's guild
+
+		Burch			Zone 3_x (H)
+
+		Fraya			Town_Alch
+		Brock			Town_BS
+		Shen			Town_Inn
+		Bonnie			Town_Inn (H) (non-vendor)
+
+		Raka			Zone 2_3 (H)
+
+		Princess Dawn	Town (H)
+		Mildred			Town (H)
+		Olive			Town (H)
+
+		-- Stolen
+		Finch			Flight Master
+
+		Rhinoman		Zone 1_0 (boss)
+		Tiki Golem		Zone 1_1
+		Shaman			Zone 4_x
+		<puzzle>
+
+		? Gorilla		  Zone 2_x
+		Forest Golem	Zone 2_x
+		Jungle Golem	Zone 2_x
+		Earth Elemental	Zone 2_x
+
+		Skele Archer	Zone 3_x
+		Skele Mancer	Zone 3_x
+		Skele Warrior	Zone 3_x
+
+		Barbarian		Zone
+		Lightning Golem	Zone
+		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
@@ -249,10 +616,41 @@ DeveloperScene::DeveloperScene()
 		// Needs enemy scripting according to notes on which instructions this zone covers
 		// Needs hexus puzzles
 
+		/*
+		- CV - Jumps/More compares. See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
+			- Barbarian				1_x		=> jmp 			--
+			- Thug					1_x		=> J[E]CXZ		%[E]CX = 0
+			- ReanimatedFighter		1_x		=> J[N]E/Z		ZF
+			- WereWolf				dark	=> J[N]P[E]		PF		// Odd or even! PF = 0 odd. All combinations valid except JNPE
+			- Wraith				dark	=> J[N]S		SF		// Sign flag set if the FIRST operand is negative. Can be used to block negative damage.
+			- Reaper				dark	=> J[N]O		OF
+			- Vampiress				dark	=> J[N]G[E]		ZF/SF/OF
+			- VampireLord			dark	=> J[N]L[E]		ZF/SF/OF
+			- ScareCrow				2_x		=> J[N]B[E]		ZF/OF
+			- SkeletalBaron			2_x		=> J[N]A[E]		ZF/OF
+			- Jack					2_x		=> J[N]C		CF		// Immortality. Copy undying logic, but include a subtract.
+			- [B] Agnes				2_x 	=> 
+			
+			- Garin					=> Train
+			- King Redsong			=> Dark Throne
+			- King Redsong Slime	=> Throne
+			- Leopold				=> Alch
+			- Mabel					=> Study
+			- Merlin				=> XXXXX nope
+			- Princess Opal			=> Throne
+			- Raven					=> Inn
+			- Thurstan				=> Smith
+			- Gaunt					=> Main
+			- Leroy					=> Main
+			- Rogas					=> Main
+			- Tyracius				=> Main
+			- Zana					=> Main
+		*/
+
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 5
+	// CHAPTER 5 - XMM*
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Lambda Crypts");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
@@ -283,6 +681,21 @@ DeveloperScene::DeveloperScene()
 		// 4_x cleaver, knight, priestess (central crypt, unlock w/ demon)
 		// Dual boss with King Zul and Lazarus. Give Lazarus a rez or self rez?
 
+		/*
+		- BoneFiend				=>  
+		- Hunter				=>  
+		- ZombieElric			=>  
+		- ReanimatedPig			=>  
+		- Mystic				=>  
+		- Zombie				=>  
+		- Undead				=>  
+		- [B] Lazarus			=> 
+		- SkeletalPriestess		=>  
+		- SkeletalKnight		=>  
+		- SkeletalCleaver		=>  
+		- [B] KingZul			=>  
+		*/
+
 		// Traps: guillotine
 		// Needs enemy scripting according to notes on which instructions this zone covers
 		// Needs hexus puzzles
@@ -290,7 +703,7 @@ DeveloperScene::DeveloperScene()
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 6
+	// CHAPTER 6 - FPU
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Daemons' Hallow");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
@@ -318,6 +731,47 @@ DeveloperScene::DeveloperScene()
 		// 2_x should be more caves connecting town to the 3_x maps (Shaman, Swordsman, Rogue)
 		// 3_x is all overworld (Tiger, Warrior, Grunt, Archer)
 
+		/*
+			Surface:
+			- DemonRogue			=>  1_X
+			- DemonShaman			=>  1_X
+			- DemonSwordsman		=>  1_X
+			
+			Caves:
+			- DemonDragon			=>  2_X
+			- DemonGhost			=>  2_X
+			- FireElemental			=>  2_X
+			- LavaGolem				=>  2_X
+			
+			Surface 2?
+			- DemonArcher			=>  3_X
+			- DemonGrunt			=>  3_X
+			- DemonWarrior			=>  3_X
+			- FireTiger				=>  3_X
+			
+			- [B] Asmodeus			=> 	4_X
+			
+			-----------------
+			
+			- Ash				=> 1_x (H)
+			
+			- Hades				=> 2_x (H)
+			
+			- Cindra			=> 3_x (barricade)(H?)
+			- Scaldor			=> 3_x (barricade)(H?)
+			- Magnus			=> 3_x (barricade)(H?)
+			
+			- Mittens			=> 2_x (H)
+			- Celeste			=> 3_x (barricade)(H?)
+			
+			- Lucifer			=> Town (H)
+			- Brine				=> Town_Main (Exterior) (H)
+			- Queen Elise		=> Town_Main
+			- Pan				=> Alch
+			- Ragnis			=> Smith
+			- Thatcher			=> Inn
+		*/
+
 		// Fire bird / fire launcher traps
 		// Needs enemy scripting according to notes on which instructions this zone covers
 		// Needs hexus puzzles
@@ -325,7 +779,7 @@ DeveloperScene::DeveloperScene()
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 7
+	// CHAPTER 7 - Jumps/More compares
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Ballmer Peaks");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
@@ -369,6 +823,20 @@ DeveloperScene::DeveloperScene()
 		X Tinsel => Santa
 		O Ysara
 		X Irmik => SkyMaster
+
+		- PenguinGrunt		1_x		=> jmp 			--
+		- PenguinWarrior	1_x		=> J[E]CXZ		%[E]CX = 0
+		- Viking			1_x		=> J[N]E/Z		ZF
+		- IceGolem			2_x		=> J[N]P[E]		PF		// Odd or even! PF = 0 odd. All combinations valid except JNPE
+		- Yeti				2_x		=> J[N]S		SF		// Sign flag set if the FIRST operand is negative. Can be used to block negative damage.
+		- WaterElemental	2_x		=> J[N]O		OF
+		- FrostFiend		2_x 	=> J[N]G[E]		ZF/SF/OF
+		- GoblinElf			3_x		=> J[N]L[E]		ZF/SF/OF
+		- ToySoldierGoblin	3_x		=> J[N]B[E]		ZF/OF
+		- SnowFiend			3_x		=> J[N]A[E]		ZF/OF
+		- [B?] Santa		3_x		=> J[N]C		CF		// Immortality. Copy undying logic, but include a subtract.
+		- [B] Cryogen		3_x 	=> 
+
 		*/
 
 		// Needs enemy scripting according to notes on which instructions this zone covers
