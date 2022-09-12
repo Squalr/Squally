@@ -174,14 +174,12 @@ void BrokenBlade::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArg
 
 	this->applyBrokenBlade();
 
-	// Bound multiplier in either direction
-	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(MathUtils::clamp(
-		this->HackStateStorage[Buff::StateKeyDamageDealt].asInt(),
-		-std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * BrokenBlade::MaxMultiplier),
-		std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * BrokenBlade::MaxMultiplier)
-	));
+	int min = -std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * BrokenBlade::MaxMultiplier);
+	int max = std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * BrokenBlade::MaxMultiplier);
 
-	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	*damageOrHealing->damageOrHealing = this->HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	*damageOrHealing->damageOrHealingMin = min;
+	*damageOrHealing->damageOrHealingMax = max;
 }
 
 NO_OPTIMIZE void BrokenBlade::applyBrokenBlade()

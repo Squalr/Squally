@@ -71,8 +71,7 @@ DeveloperScene::DeveloperScene()
 	/*
 	<Get notes from Mac please>
 	- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Bars
-	- Redo all torch puzzles such that the player has control over both top/bottom torches
-	- UR Intro maps are very confusing and trash
+	- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 	- Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
 		- Destroy all warp maps as a result (?) can still keep the zone portals for the return location
 	- Kill Limestone temple map, replace with rare reward
@@ -87,8 +86,6 @@ DeveloperScene::DeveloperScene()
 	- 3Q Perspective
 	- Reinstate Cipher with asm or something
 	- Reinstate ball roll game? It wasn't really fixable
-	- More metrovania. Maybe more maps linked to EF? DM Can exit in EF (lower). 
-		- Maybe castle area is a climp hub, connected to EF by boat? Gets confusing and hard
 	- Interchangeable helpers from Inn map.
 		- Helper abilities or something.
 		- Helper equipment? Would fucking blow for menuing.
@@ -375,7 +372,7 @@ DeveloperScene::DeveloperScene()
 	Sulf
 	Bone
 	Void
-	
+
 	Obsidian	- T8
 	*/
 
@@ -473,11 +470,8 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Shoreline (UR)", MapResources::UnderflowRuins_Shoreline));
 		mapList.push_back(this->buildDebugButton("Docks (UR)", MapResources::UnderflowRuins_Town_Docks));
 
-		// Inversion and Broken Blade are missing MAX/MIN
-		// And the 3_x maps are too confusing and bloated (less bad than it was. can it be better?)
-		// Too many fucking pyramids in bg
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
-		// Color the brazier metal to indicate the flame color (this needs to be generally improved throughout the game)
+		// Fix CMOV (spiked logs) on mac
 		// Needs Dark Tiger scripting
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
@@ -517,6 +511,7 @@ DeveloperScene::DeveloperScene()
 		// 	- Olive => Dawn => Restore Power. Nothing fancy, bosses need not be quests since they are forced.
 		//	- Need a way to force Dawn / Restore power quests. Dawn for Key, Power Forced via boss kill? Or on Krampus ship (req to escape)?
 		// Needs enemy scripting according to notes on which instructions this zone covers
+		// Make sure DH is properly gated before release
 		
 		/*
 		- Tiki Golem			=> 1_1 ?? PUSH CONST (curse of the ancients)
@@ -577,7 +572,7 @@ DeveloperScene::DeveloperScene()
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 4
+	// CHAPTER 4 - Jumps/Loop/Test/more compares
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Castle Valgrind");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
@@ -617,7 +612,7 @@ DeveloperScene::DeveloperScene()
 		// Needs hexus puzzles
 
 		/*
-		- CV - Jumps/More compares. See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
+		- CV - See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
 			- Barbarian				1_x		=> jmp 			--
 			- Thug					1_x		=> J[E]CXZ		%[E]CX = 0
 			- ReanimatedFighter		1_x		=> J[N]E/Z		ZF
