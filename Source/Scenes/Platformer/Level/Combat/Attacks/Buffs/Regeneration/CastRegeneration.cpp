@@ -53,7 +53,7 @@ PlatformerAttack* CastRegeneration::cloneInternal()
 
 LocalizedString* CastRegeneration::getString()
 {
-	return Strings::Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude::create();
+	return Strings::Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration::create();
 }
 
 std::string CastRegeneration::getAttackAnimation()

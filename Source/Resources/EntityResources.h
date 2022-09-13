@@ -2480,8 +2480,8 @@ namespace EntityResources
 	extern const std::string Misc_UnderflowRuins_KillingMachine5_front_wheel;
 	extern const std::string Misc_UnderflowRuins_KillingMachine5_funnel;
 	extern const std::string Misc_UnderflowRuins_KillingMachine5_piston;
+	extern const std::string Misc_UnderflowRuins_KillingMachine5_smoke_puff;
 	extern const std::string Misc_UnderflowRuins_KillingMachine5_spikes;
-	extern const std::string Misc_UnderflowRuins_KillingMachine5_steam_cloud;
 	extern const std::string Misc_UnderflowRuins_KillingMachine5_toot_handle;
 	extern const std::string Misc_UnderflowRuins_KillingMachine5_tooter;
 	extern const std::string Misc_UnderflowRuins_KillingMachine5_tooter_cord;
