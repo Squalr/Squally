@@ -234,21 +234,21 @@ DeveloperScene::DeveloperScene()
 		// Make sure DH is properly gated before release
 		
 		/*
-		- Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients - outgoing damage)
-		- Shaman				=> X 1_2 AND (Shadow Bomb)
-		- [B] Rhinoman			=> O 4_3 <recycle> (Name)
+		Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients - outgoing damage)
+		Shaman				=> X 1_2 AND (Shadow Bomb)
+		[B] Rhinoman		=> O 4_3 <recycle> (Name)
 		
-		- Forest golem			=> X 4_0 ROL (REJUVINATE)
-		- Earth golem			=> X 4_1 ROR (ROCKSLIDE)
-		- Earth Elemental		=> X 4_2 OR (REGERATION)
+		Forest golem		=> X 4_0 ROL (REJUVINATE)
+		Earth golem			=> X 4_1 ROR (ROCKSLIDE)
+		Earth Elemental		=> X 4_2 OR (REGERATION)
 		
-		- Skeletal Pirate		=> O 3_2 XOR (BLIND)
-		- Skeletal Archer		=> O 2_1 PUSH / POP REG (MULTISHOT debuff - curse of the ancients - tick on targets)
-		- Skeletal Warrior		=> X 2_0 PUSH [REG PTR] / POP REG (blessing of the ancients - outgoing damage)
-		- Skeletal Necromancer	=> O 3_0 PUSH [REG PTR] / POP [REG PTR] (pact of the ancients - health link)
-		- [B] Krampus			=> O 3_3 NOT (Name?)
-		
-		- Gorilla				=> Cage him and make him a prop (cursed person? again tho?)
+		Skeletal Pirate		=> X 3_2 XOR (BLIND)
+		Skeletal Archer		=> X 2_1 PUSH / POP REG (MULTISHOT debuff - curse of the ancients - tick on targets)
+		Skeletal Warrior	=> X 2_0 PUSH [REG PTR] / POP REG (blessing of the ancients - outgoing damage)
+		Skeletal Necromancer => X 3_0 PUSH [REG PTR] / POP [REG PTR] (pact of the ancients - health link)
+		[B] Krampus			=> O 3_3 NOT (No idea)
+
+		Gorilla				=> Cage him and make him a prop (cursed person? again tho?)
 
 		Jasper			?? (H) (swap with Cypress for spellbook)
 		Alder			?
@@ -270,23 +270,6 @@ DeveloperScene::DeveloperScene()
 
 		-- Stolen
 		Finch			Flight Master
-
-		Rhinoman		Zone 1_0 (boss)
-		Tiki Golem		Zone 1_1
-		Shaman			Zone 4_x
-		<puzzle>
-
-		? Gorilla		  Zone 2_x
-		Forest Golem	Zone 2_x
-		Jungle Golem	Zone 2_x
-		Earth Elemental	Zone 2_x
-
-		Skele Archer	Zone 3_x
-		Skele Mancer	Zone 3_x
-		Skele Warrior	Zone 3_x
-
-		Barbarian		Zone
-		Lightning Golem	Zone
 		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));

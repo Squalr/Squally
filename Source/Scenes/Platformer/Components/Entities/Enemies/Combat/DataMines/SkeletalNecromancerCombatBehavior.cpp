@@ -3,10 +3,11 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/BasicSlash/BasicSlash.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Strength/CastStrength.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/PactOfTheAncients/PactOfTheAncients.h"
 
 #include "Resources/UIResources.h"
 
@@ -49,8 +50,12 @@ void SkeletalNecromancerCombatBehavior::onLoad()
 	
 	this->entity->watchForComponent<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(CastStrength::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
-		attackBehavior->registerAttack(BasicSlash::create(3, 5, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
+		attackBehavior->registerAttack(BasicSlash::create(4, 6, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::IfNecessary));
+	});
+	
+	this->entity->watchForComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	{
+		entityBuffBehavior->applyBuff(PactOfTheAncients::create(this->entity, this->entity));
 	});
 	
 	this->entity->watchForComponent<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
