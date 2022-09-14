@@ -234,18 +234,18 @@ DeveloperScene::DeveloperScene()
 		// Make sure DH is properly gated before release
 		
 		/*
-		- Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients)
+		- Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients - outgoing damage)
 		- Shaman				=> X 1_2 AND (Shadow Bomb)
-		- [B] Rhinoman			=> O 4_3 <recycle> (Name?)
+		- [B] Rhinoman			=> O 4_3 <recycle> (Name)
 		
-		- Forest golem			=> O 4_0 ROL (REJUVINATE)
-		- Earth golem			=> O 4_1 ROR (ROCKSLIDE - AOE)
+		- Forest golem			=> X 4_0 ROL (REJUVINATE)
+		- Earth golem			=> X 4_1 ROR (ROCKSLIDE)
 		- Earth Elemental		=> X 4_2 OR (REGERATION)
 		
-		- Skeletal Pirate		=> ? 3_2 XOR (BLIND)
-		- Skeletal Warrior		=> O 2_0 PUSH/POP REG debuff (curse of the ancients)
-		- Skeletal Archer		=> O 2_1 PUSH [REG] / POP (MULTISHOT - blessing of the ancients)
-		- Skeletal Necromancer	=> O 3_0 PUSH [REG] / POP [REG] (pact of the ancients)
+		- Skeletal Pirate		=> O 3_2 XOR (BLIND)
+		- Skeletal Archer		=> O 2_1 PUSH / POP REG (MULTISHOT debuff - curse of the ancients - tick on targets)
+		- Skeletal Warrior		=> X 2_0 PUSH [REG PTR] / POP REG (blessing of the ancients - outgoing damage)
+		- Skeletal Necromancer	=> O 3_0 PUSH [REG PTR] / POP [REG PTR] (pact of the ancients - health link)
 		- [B] Krampus			=> O 3_3 NOT (Name?)
 		
 		- Gorilla				=> Cage him and make him a prop (cursed person? again tho?)

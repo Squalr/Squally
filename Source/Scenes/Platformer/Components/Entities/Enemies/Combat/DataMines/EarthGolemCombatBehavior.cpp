@@ -5,9 +5,10 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Strength/CastStrength.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/BasicSlash/BasicSlash.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/RockSlide/CastRockSlide.h"
 
+#include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -49,7 +50,7 @@ void EarthGolemCombatBehavior::onLoad()
 	
 	this->entity->watchForComponent<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(CastStrength::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
+		attackBehavior->registerAttack(CastRockSlide::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed, ObjectResources::Traps_Catapult_BALL));
 		attackBehavior->registerAttack(BasicSlash::create(3, 5, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
 	
