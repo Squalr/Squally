@@ -9159,6 +9159,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_WaterballClippy() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients();
+		virtual ~Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients : public LocalizedString
 	{
 	public:
@@ -9622,6 +9637,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Buffs_Inversion_RegisterEax();
 		virtual ~Menus_Hacking_Abilities_Buffs_Inversion_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_PactOfTheAncients_HealthLink : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_PactOfTheAncients_HealthLink* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_PactOfTheAncients_HealthLink();
+		virtual ~Menus_Hacking_Abilities_Buffs_PactOfTheAncients_HealthLink() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate : public LocalizedString
