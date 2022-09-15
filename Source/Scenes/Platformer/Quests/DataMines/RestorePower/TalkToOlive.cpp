@@ -23,6 +23,7 @@
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Keys/DataMines/LetterForThePrincess.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -36,6 +37,7 @@
 using namespace cocos2d;
 
 const std::string TalkToOlive::MapKeyQuest = "talk-to-olive";
+const std::string TalkToOlive::MapEventTalkToOlive = "talk-to-olive";
 
 TalkToOlive* TalkToOlive::create(GameObject* owner, QuestLine* questLine)
 {
@@ -86,7 +88,10 @@ void TalkToOlive::onLoad(QuestState questState)
 
 	if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 	{
-		this->runCinematicSequencePt1();
+		this->listenForMapEventOnce(TalkToOlive::MapEventTalkToOlive, [=](ValueMap)
+		{
+			this->runCinematicSequencePt1();
+		});
 	}
 }
 
@@ -97,6 +102,8 @@ void TalkToOlive::onActivate(bool isActiveThroughSkippable)
 void TalkToOlive::onComplete()
 {	
 	Objectives::SetCurrentObjective(ObjectiveKeys::URLightTorches);
+
+	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ LetterForThePrincess::create() }));
 
 	if (this->olive != nullptr)
 	{
@@ -114,37 +121,214 @@ void TalkToOlive::onSkipped()
 
 void TalkToOlive::runCinematicSequencePt1()
 {
-	this->olive->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-	{
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Menus_StoryMode::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->olive, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceMedium(),
-			false
-		));
+	PlatformerEvents::TriggerCinematicHijack();
 
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Menus_StoryMode::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->olive, true)
-			),
-			[=]()
-			{
-				this->complete();
-			},
-			Voices::GetNextVoiceMedium(),
-			false
-		));
-	});
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_A_OliveIntro::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->olive, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt2();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void TalkToOlive::runCinematicSequencePt2()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Ellipses::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->olive, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt3();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void TalkToOlive::runCinematicSequencePt3()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_B_Power::create()
+			->setStringReplacementVariables({ Strings::Platformer_MapNames_DataMines_Drammol::create() }),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->olive, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt4();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void TalkToOlive::runCinematicSequencePt4()
+{
+	PlatformerEvents::TriggerCinematicHijack();
+
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_C_SeenAnythingUnusual::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->olive, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt5();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void TalkToOlive::runCinematicSequencePt5()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_D_UnusualList::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->guano, false),
+			DialogueEvents::BuildPreviewNode(&this->olive, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt6();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void TalkToOlive::runCinematicSequencePt6()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_E_NothingExplainingOutage::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+			DialogueEvents::BuildPreviewNode(&this->olive, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt7();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void TalkToOlive::runCinematicSequencePt7()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_F_Request::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->olive, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt8();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void TalkToOlive::runCinematicSequencePt8()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_G_Sure::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->guano, false),
+			DialogueEvents::BuildPreviewNode(&this->olive, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt9();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void TalkToOlive::runCinematicSequencePt9()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_H_WeWillDoIt::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+			DialogueEvents::BuildPreviewNode(&this->olive, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt10();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void TalkToOlive::runCinematicSequencePt10()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_I_ThankYou::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+			DialogueEvents::BuildPreviewNode(&this->olive, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt11();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void TalkToOlive::runCinematicSequencePt11()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_J_WasntJoking::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->guano, false),
+			DialogueEvents::BuildPreviewNode(&this->olive, true)
+		),
+		[=]()
+		{
+			this->complete();
+		},
+		Voices::GetNextVoiceMedium(),
+		true
+	));
 }
