@@ -12,6 +12,7 @@ class CollisionObject;
 class LiftBase : public GameObject
 {
 public:
+	void setMoving(bool isMoving);
 
 protected:
 	LiftBase(cocos2d::ValueMap& properties, cocos2d::CSize collisionSize, std::string railArt);
@@ -40,6 +41,7 @@ private:
 
 	float speedPer256px = 0.0f;
 	cocos2d::Sprite* railing = nullptr;
+	bool isMoving = false;
 
 	static const std::string PropertySpeed;
 };

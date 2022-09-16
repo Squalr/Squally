@@ -2,8 +2,9 @@
 
 #include "Engine/Quests/QuestTask.h"
 
+class CartLift;
 class Guano;
-class PrincessDawn;
+class MineDoor;
 class QuestLine;
 class Scrappy;
 class Squally;
@@ -27,10 +28,9 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequencePt1();
-
 	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
-	PrincessDawn* princessDawn = nullptr;
+	MineDoor* mineDoor = nullptr;
+	CartLift* cartLift = nullptr;
 };

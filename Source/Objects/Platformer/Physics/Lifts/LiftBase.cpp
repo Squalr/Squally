@@ -92,8 +92,15 @@ void LiftBase::initializePositions()
 void LiftBase::onEnter()
 {
     super::onEnter();
+
+    this->setMoving(true);
+}
+
+void LiftBase::setMoving(bool isMoving)
+{
+	this->isMoving = isMoving;
     
-    if (this->speedPer256px != 0.0f)
+    if (this->isMoving && this->speedPer256px != 0.0f)
     {
         const float Padding = this->getPadding();
         const float AdjustedSpeed = (this->movementDirection == MovementDirection::LeftRight ? this->width : this->height) / this->speedPer256px / 256.0f;
@@ -104,6 +111,10 @@ void LiftBase::onEnter()
             MoveTo::create(AdjustedSpeed, -StartPosition),
             nullptr
         )));
+    }
+    else
+    {
+        this->liftCollision->stopAllActions();
     }
 }
 
@@ -116,4 +127,3 @@ Vec2 LiftBase::getRailsOffset()
 {
     return Vec2::ZERO;
 }
-

@@ -20,7 +20,7 @@ RestorePowerLine* RestorePowerLine::create()
 
 RestorePowerLine::RestorePowerLine() : super(RestorePowerLine::MapKeyQuestLine, {
 	QuestData(TalkToOlive::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToOlive::create(owner, questLine); }),
-	QuestData(TalkToPrincessDawn::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToPrincessDawn::create(owner, questLine); }),
+	QuestData(TalkToPrincessDawn::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return TalkToPrincessDawn::create(owner, questLine); }),
 	QuestData(RestorePower::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return RestorePower::create(owner, questLine); }),
 })
 {

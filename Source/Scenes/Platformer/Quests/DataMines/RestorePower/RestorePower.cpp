@@ -19,6 +19,8 @@
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
+#include "Objects/Platformer/Interactables/Doors/MineDoor/MineDoor.h"
+#include "Objects/Platformer/Physics/Lifts/CartLift.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
@@ -71,23 +73,29 @@ void RestorePower::onLoad(QuestState questState)
 		this->squally = squally;
 	}, Squally::MapKey);
 
-	ObjectEvents::WatchForObject<PrincessDawn>(this, [=](PrincessDawn* princessDawn)
+	ObjectEvents::WatchForObject<CartLift>(this, [=](CartLift* cartLift)
 	{
-		this->princessDawn = princessDawn;
+		this->cartLift = cartLift;
 
-		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+		if (questState != QuestState::Active && questState != QuestState::ActiveThroughSkippable)
 		{
-			this->princessDawn->watchForComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+			// Delayed by a frame because the lift moves by default, and stopping actions on the same frame as starting them is broken
+			this->defer([=]()
 			{
-				questBehavior->enableNewQuest();
+				this->cartLift->setMoving(false);
 			});
 		}
-	});
+	}, CartLift::MapKey);
 
-	if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+	ObjectEvents::WatchForObject<MineDoor>(this, [=](MineDoor* mineDoor)
 	{
-		this->runCinematicSequencePt1();
-	}
+		this->mineDoor = mineDoor;
+
+		if (questState != QuestState::Active && questState != QuestState::ActiveThroughSkippable)
+		{
+			this->mineDoor->lock();
+		}
+	}, MineDoor::MapKey);
 }
 
 void RestorePower::onActivate(bool isActiveThroughSkippable)
@@ -96,55 +104,9 @@ void RestorePower::onActivate(bool isActiveThroughSkippable)
 
 void RestorePower::onComplete()
 {	
-	Objectives::SetCurrentObjective(ObjectiveKeys::URLightTorches);
-
-	if (this->princessDawn != nullptr)
-	{
-		this->princessDawn->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
-		{
-			questBehavior->disableAll();
-		});
-	}
 }
 
 void RestorePower::onSkipped()
 {
 	this->removeAllListeners();
-}
-
-void RestorePower::runCinematicSequencePt1()
-{
-	this->princessDawn->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-	{
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Menus_StoryMode::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->princessDawn, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceMedium(),
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Menus_StoryMode::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->princessDawn, true)
-			),
-			[=]()
-			{
-				this->complete();
-			},
-			Voices::GetNextVoiceMedium(),
-			false
-		));
-	});
 }
