@@ -208,6 +208,9 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Inn (DM)", MapResources::DataMines_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (DM)", MapResources::DataMines_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (DM)", MapResources::DataMines_Town_Main));
+		mapList.push_back(this->buildDebugButton("Home Dawn (DM)", MapResources::DataMines_Home_Dawn));
+		mapList.push_back(this->buildDebugButton("Home Finch (DM)", MapResources::DataMines_Home_Finch));
+		mapList.push_back(this->buildDebugButton("Home Mildred (DM)", MapResources::DataMines_Home_Mildred));
 		mapList.push_back(this->buildDebugButton("Zone_5_0 (DM)", MapResources::DataMines_Zone_5_0));
 		mapList.push_back(this->buildDebugButton("Zone_3_3 (DM)", MapResources::DataMines_Zone_3_3));
 		mapList.push_back(this->buildDebugButton("Zone_3_2 (DM)", MapResources::DataMines_Zone_3_2));

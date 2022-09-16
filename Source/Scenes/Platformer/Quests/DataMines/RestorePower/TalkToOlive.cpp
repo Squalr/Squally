@@ -124,7 +124,7 @@ void TalkToOlive::runCinematicSequencePt1()
 	PlatformerEvents::TriggerCinematicHijack();
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_A_OliveIntro::create(),
+		Strings::Platformer_Quests_DataMines_RestorePower_Olive_A_OliveIntro::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -162,7 +162,7 @@ void TalkToOlive::runCinematicSequencePt2()
 void TalkToOlive::runCinematicSequencePt3()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_B_Power::create()
+		Strings::Platformer_Quests_DataMines_RestorePower_Olive_B_Power::create()
 			->setStringReplacementVariables({ Strings::Platformer_MapNames_DataMines_Drammol::create() }),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
@@ -184,7 +184,7 @@ void TalkToOlive::runCinematicSequencePt4()
 	PlatformerEvents::TriggerCinematicHijack();
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_C_SeenAnythingUnusual::create(),
+		Strings::Platformer_Quests_DataMines_RestorePower_Olive_C_SeenAnythingUnusual::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -203,7 +203,7 @@ void TalkToOlive::runCinematicSequencePt4()
 void TalkToOlive::runCinematicSequencePt5()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_D_UnusualList::create(),
+		Strings::Platformer_Quests_DataMines_RestorePower_Olive_D_UnusualList::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
@@ -222,7 +222,7 @@ void TalkToOlive::runCinematicSequencePt5()
 void TalkToOlive::runCinematicSequencePt6()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_E_NothingExplainingOutage::create(),
+		Strings::Platformer_Quests_DataMines_RestorePower_Olive_E_NothingExplainingOutage::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
@@ -241,7 +241,7 @@ void TalkToOlive::runCinematicSequencePt6()
 void TalkToOlive::runCinematicSequencePt7()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_F_Request::create(),
+		Strings::Platformer_Quests_DataMines_RestorePower_Olive_F_Request::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -260,7 +260,7 @@ void TalkToOlive::runCinematicSequencePt7()
 void TalkToOlive::runCinematicSequencePt8()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_G_Sure::create(),
+		Strings::Platformer_Quests_DataMines_RestorePower_Olive_G_SureForAPrice::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
@@ -279,7 +279,7 @@ void TalkToOlive::runCinematicSequencePt8()
 void TalkToOlive::runCinematicSequencePt9()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_H_WeWillDoIt::create(),
+		Strings::Platformer_Quests_DataMines_RestorePower_Olive_H_WeWillDoIt::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
@@ -298,7 +298,7 @@ void TalkToOlive::runCinematicSequencePt9()
 void TalkToOlive::runCinematicSequencePt10()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_I_ThankYou::create(),
+		Strings::Platformer_Quests_DataMines_RestorePower_Olive_I_ThankYou::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -317,7 +317,7 @@ void TalkToOlive::runCinematicSequencePt10()
 void TalkToOlive::runCinematicSequencePt11()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_J_WasntJoking::create(),
+		Strings::Platformer_Quests_DataMines_RestorePower_Olive_J_WasntJoking::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,

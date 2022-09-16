@@ -2,6 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 
+class Gecky;
 class Guano;
 class PrincessDawn;
 class QuestLine;
@@ -30,7 +31,10 @@ private:
 	void runCinematicSequencePt1();
 
 	Guano* guano = nullptr;
+	Gecky* gecky = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 	PrincessDawn* princessDawn = nullptr;
+
+	static const std::string MapTagCinematicGecky;
 };

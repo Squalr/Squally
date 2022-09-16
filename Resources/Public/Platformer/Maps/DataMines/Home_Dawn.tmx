@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="833">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="834">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -90,6 +90,12 @@
     <property name="quest" value="talk-to-princess-dawn"/>
     <property name="quest-line" value="restore-power"/>
     <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="833" name="gecky" type="entity" x="1682" y="926.498" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly"/>
+    <property name="tag" value="cinematic-gecky"/>
    </properties>
   </object>
  </objectgroup>

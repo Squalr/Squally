@@ -15,22 +15,26 @@ const std::string SaveKeys::SaveKeySquallyPositionX = "SAVE_KEY_SQUALLY_POSITION
 const std::string SaveKeys::SaveKeySquallyPositionY = "SAVE_KEY_SQUALLY_POSITION_Y";
 const std::string SaveKeys::SaveKeySquallyPositionZ = "SAVE_KEY_SQUALLY_POSITION_Z";
 const std::string SaveKeys::SaveKeySquallyLayerId = "SAVE_KEY_SQUALLY_LAYER_ID";
-const std::string SaveKeys::SaveKeyScrappyFound = "SAVE_KEY_Scrappy_FOUND";
+
+const std::string SaveKeys::SaveKeyScrappyFound = "SAVE_KEY_Scrappy_FOUND"; // Don't fix casing, backwards compat
+const std::string SaveKeys::SaveKeyGuanoFound = "SAVE_KEY_GUANO_FOUND";
+const std::string SaveKeys::SaveKeyGeckyFound = "SAVE_KEY_GECKY_FOUND";
+
 const std::string SaveKeys::SaveKeyHelperName = "SAVE_KEY_HELPER_NAME";
 const std::string SaveKeys::SaveKeyHelperHeath = "SAVE_KEY_HELPER_HEALTH";
 const std::string SaveKeys::SaveKeyHelperMana = "SAVE_KEY_HELPER_MANA";
 const std::string SaveKeys::SaveKeyHasGivenDefaultItems = "SAVE_KEY_HAS_GIVEN_DEFAULT_ITEMS";
 const std::string SaveKeys::SaveKeyCrackProgress = "SAVE_KEY_CRACK_PROGRESS";
 
-const std::string SaveKeys::SaveKeyGeckyHealth = "SAVE_KEY_GECKY_HEALTH";
-const std::string SaveKeys::SaveKeyGeckyMana = "SAVE_KEY_GECKY_MANA";
-const std::string SaveKeys::SaveKeyGeckyEq = "SAVE_KEY_GECKY_EQ";
-const std::string SaveKeys::SaveKeyGeckyEqExperience = "SAVE_KEY_GECKY_EQ_EXPERIENCE";
-
 const std::string SaveKeys::SaveKeyGuanoHealth = "SAVE_KEY_GUANO_HEALTH";
 const std::string SaveKeys::SaveKeyGuanoMana = "SAVE_KEY_GUANO_MANA";
 const std::string SaveKeys::SaveKeyGuanoEq = "SAVE_KEY_GUANO_EQ";
 const std::string SaveKeys::SaveKeyGuanoEqExperience = "SAVE_KEY_GUANO_EQ_EXPERIENCE";
+
+const std::string SaveKeys::SaveKeyGeckyHealth = "SAVE_KEY_GECKY_HEALTH";
+const std::string SaveKeys::SaveKeyGeckyMana = "SAVE_KEY_GECKY_MANA";
+const std::string SaveKeys::SaveKeyGeckyEq = "SAVE_KEY_GECKY_EQ";
+const std::string SaveKeys::SaveKeyGeckyEqExperience = "SAVE_KEY_GECKY_EQ_EXPERIENCE";
 
 const std::string SaveKeys::SaveKeyRespawnMap = "SAVE_KEY_RESPAWN_MAP";
 const std::string SaveKeys::SaveKeyRespawnObjectId = "SAVE_KEY_RESPAWN_OBJECT_ID";

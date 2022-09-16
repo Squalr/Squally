@@ -13,6 +13,7 @@
 #include "Engine/Quests/QuestLine.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
+#include "Entities/Platformer/Helpers/DataMines/Gecky.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Npcs/DataMines/PrincessDawn.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -23,9 +24,11 @@
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Keys/DataMines/LetterForThePrincess.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/ItemResources.h"
@@ -36,6 +39,7 @@
 using namespace cocos2d;
 
 const std::string TalkToPrincessDawn::MapKeyQuest = "talk-to-princess-dawn";
+const std::string TalkToPrincessDawn::MapTagCinematicGecky = "cinematic-gecky";
 
 TalkToPrincessDawn* TalkToPrincessDawn::create(GameObject* owner, QuestLine* questLine)
 {
@@ -60,6 +64,16 @@ void TalkToPrincessDawn::onLoad(QuestState questState)
 	{
 		this->guano = guano;
 	}, Guano::MapKey);
+
+	ObjectEvents::WatchForObject<Gecky>(this, [=](Gecky* gecky)
+	{
+		this->gecky = gecky;
+		
+		if (questState != QuestState::Active && questState != QuestState::ActiveThroughSkippable)
+		{
+			this->gecky->despawn();
+		}
+	}, TalkToPrincessDawn::MapTagCinematicGecky);
 
 	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
@@ -117,11 +131,27 @@ void TalkToPrincessDawn::runCinematicSequencePt1()
 	this->princessDawn->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Menus_StoryMode::create(),
+			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_A_LetterForYou::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->princessDawn, true)
+			),
+			[=]()
+			{
+				PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(LetterForThePrincess::create()));
+			},
+			Voices::GetNextVoiceMedium(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_B_ThankYou::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->princessDawn, true)
 			),
 			[=]()
@@ -132,19 +162,149 @@ void TalkToPrincessDawn::runCinematicSequencePt1()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Menus_StoryMode::create(),
+			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_C_CouldNotFindCause::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->princessDawn, true)
 			),
 			[=]()
 			{
-				this->complete();
 			},
 			Voices::GetNextVoiceMedium(),
 			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_D_WithoutPower::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->princessDawn, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceMedium(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_E_InvestigateCause::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->princessDawn, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceMedium(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_F_Nope::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->princessDawn, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceMedium(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_G_OfCourse::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->princessDawn, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceMedium(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_H_TakeGecky::create()
+				->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Helpers_DataMines_Gecky::create() }),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->princessDawn, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceMedium(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_I_Hi::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->gecky, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceMedium(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_J_WelcomeToTheCrew::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->gecky, true)
+			),
+			[=]()
+			{
+				 // Backwards compat, this field was added mid development, and we want to avoid Guano being inaccessible to old patches
+				SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoFound, Value(true));
+				SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
+				this->squally->setState(StateKeys::CurrentHelper, Value(Gecky::MapKey));
+
+				if (this->gecky != nullptr)
+				{
+					this->gecky->despawn();
+				}
+
+				LocalizedString* hintString = Strings::Platformer_Help_HelpTotemPickPocket::create();
+				LocalizedString* helperNameString = Strings::Platformer_Entities_Names_Helpers_DataMines_Gecky::create();
+				LocalizedString* bracketString1 = Strings::Common_Brackets::create();
+				LocalizedString* shiftString = Strings::Input_Shift::create();
+
+				bracketString1->setStringReplacementVariables(shiftString);
+				hintString->setStringReplacementVariables({ helperNameString, bracketString1 });
+				
+				NotificationEvents::TriggerNotificationTakeover(NotificationEvents::NotificationTakeoverArgs(
+					Strings::Platformer_Notifications_Party_HelperJoinedParty::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_DataMines_Gecky::create()),
+					hintString,
+					SoundResources::Notifications_NotificationGood1
+				));
+
+				this->complete();
+			},
+			Voices::GetNextVoiceMedium(),
+			true
 		));
 	});
 }
