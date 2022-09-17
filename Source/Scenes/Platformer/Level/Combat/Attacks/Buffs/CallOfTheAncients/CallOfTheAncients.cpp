@@ -165,6 +165,9 @@ void CallOfTheAncients::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHeal
 
 	this->applyCallOfTheAncients();
 
+	(*damageOrHealing->damageOrHealingMin) = -CallOfTheAncients::DamageDealt;
+	(*damageOrHealing->damageOrHealingMax) = CallOfTheAncients::DamageDealt;
+
 	*(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer())
 		= GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 }
@@ -176,6 +179,9 @@ void CallOfTheAncients::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHeal
 	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyCallOfTheAncients();
+
+	(*damageOrHealing->damageOrHealingMin) = -CallOfTheAncients::DamageDealt;
+	(*damageOrHealing->damageOrHealingMax) = CallOfTheAncients::DamageDealt;
 
 	*(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer())
 		= GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();

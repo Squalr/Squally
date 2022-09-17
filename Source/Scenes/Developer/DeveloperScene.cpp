@@ -96,7 +96,7 @@ DeveloperScene::DeveloperScene()
 	- Sky masters
 	- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
 	- Enemy should not necessarily prio 0 bin/hex/dec cards when player has passed (unless they can make a 200 iq play)
-	- maybe no interrupt on healing attacks, ever?
+	- No interrupt if damage attack modified to heal
 	- Eliminate Collision Offset parameter entirely
 
 	- Just get a few top down replacement maps in. Should be able to do this fairly seamlessly.
