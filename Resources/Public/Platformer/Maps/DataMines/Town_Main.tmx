@@ -630,7 +630,7 @@
   <object id="1000" name="cart-lift" type="object" x="5119.39" y="2496.41" width="72" height="1157.42">
    <properties>
     <property name="components" value="z-fade"/>
-    <property name="tag" value="cart-lift"/>
+    <property name="tag" value="cart-lift-powered"/>
    </properties>
   </object>
  </objectgroup>

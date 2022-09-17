@@ -38,6 +38,7 @@
 using namespace cocos2d;
 
 const std::string RestorePower::MapKeyQuest = "restore-power";
+const std::string RestorePower::TagCartLiftPowered = "cart-lift-powered";
 
 RestorePower* RestorePower::create(GameObject* owner, QuestLine* questLine)
 {
@@ -81,7 +82,7 @@ void RestorePower::onLoad(QuestState questState)
 		{
 			this->cartLift->setMoving(false);
 		}
-	}, CartLift::MapKey);
+	}, RestorePower::TagCartLiftPowered);
 
 	ObjectEvents::WatchForObject<MineDoor>(this, [=](MineDoor* mineDoor)
 	{

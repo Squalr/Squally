@@ -15,7 +15,6 @@ public:
 	static RestorePower* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
-
 protected:
 	RestorePower(GameObject* owner, QuestLine* questLine);
 	virtual ~RestorePower();
@@ -33,4 +32,6 @@ private:
 	Squally* squally = nullptr;
 	MineDoor* mineDoor = nullptr;
 	CartLift* cartLift = nullptr;
+
+	static const std::string TagCartLiftPowered;
 };
