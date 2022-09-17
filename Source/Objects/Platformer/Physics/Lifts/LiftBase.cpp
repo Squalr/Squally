@@ -94,28 +94,53 @@ void LiftBase::onEnter()
     super::onEnter();
 
     this->setMoving(true);
+    this->scheduleUpdate();
+}
+
+void LiftBase::update(float dt)
+{
+    super::update(dt);
+
+    if (!this->isMoving)
+    {
+        return;
+    }
+
+    float adjustedSpeed = (this->isMovingUp ? -1.0f : 1.0f) * this->getAdjustedSpeed();
+    Vec2 startPosition = (this->isMovingUp ? -1.0f : 1.0f) * this->getStartPosition();
+
+    this->liftCollision->setPositionY(this->liftCollision->getPositionY() + adjustedSpeed * dt);
+
+    if (this->isMovingUp)
+    {
+        if (this->liftCollision->getPositionY() < startPosition.y)
+        {
+            this->isMovingUp = !this->isMovingUp;
+        }
+    }
+    else
+    {
+        if (this->liftCollision->getPositionY() > startPosition.y)
+        {
+            this->isMovingUp = !this->isMovingUp;
+        }
+    }
+}
+
+float LiftBase::getAdjustedSpeed()
+{
+    return this->speedPer256px * 256.0f;
+}
+
+Vec2 LiftBase::getStartPosition()
+{
+    const float Padding = this->getPadding();
+    return this->movementDirection == MovementDirection::LeftRight ? Vec2(this->width / 2.0f - Padding, 0.0f) : Vec2(0.0f, this->height / 2.0f - Padding);
 }
 
 void LiftBase::setMoving(bool isMoving)
 {
 	this->isMoving = isMoving;
-    
-    if (this->isMoving && this->speedPer256px != 0.0f)
-    {
-        const float Padding = this->getPadding();
-        const float AdjustedSpeed = (this->movementDirection == MovementDirection::LeftRight ? this->width : this->height) / this->speedPer256px / 256.0f;
-        const Vec2 StartPosition = this->movementDirection == MovementDirection::LeftRight ? Vec2(this->width / 2.0f - Padding, 0.0f) : Vec2(0.0f, this->height / 2.0f - Padding);
-
-        this->liftCollision->runAction(RepeatForever::create(Sequence::create(
-            MoveTo::create(AdjustedSpeed, StartPosition),
-            MoveTo::create(AdjustedSpeed, -StartPosition),
-            nullptr
-        )));
-    }
-    else
-    {
-        this->liftCollision->stopAllActions();
-    }
 }
 
 float LiftBase::getPadding()

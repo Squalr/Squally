@@ -79,11 +79,7 @@ void RestorePower::onLoad(QuestState questState)
 
 		if (questState != QuestState::Complete)
 		{
-			// Delayed because the lift moves by default, and stopping actions too close to starting them seems to be broken
-			this->defer([=]()
-			{
-				this->cartLift->setMoving(false);
-			}, 5);
+			this->cartLift->setMoving(false);
 		}
 	}, CartLift::MapKey);
 

@@ -26,6 +26,7 @@ protected:
 
 	void initializePositions() override;
 	void onEnter() override;
+    void update(float dt) override;
 	virtual float getPadding();
 	virtual cocos2d::Vec2 getRailsOffset();
 
@@ -39,9 +40,13 @@ protected:
 private:
 	typedef GameObject super;
 
+	float getAdjustedSpeed();
+	Vec2 getStartPosition();
+
 	float speedPer256px = 0.0f;
 	cocos2d::Sprite* railing = nullptr;
 	bool isMoving = false;
+	bool isMovingUp = false;
 
 	static const std::string PropertySpeed;
 };
