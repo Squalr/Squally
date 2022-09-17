@@ -155,7 +155,7 @@ void ShadowBomb::runShadowBomb(TimelineEntry* target)
 			{
 				currentHealth = healthBehavior->getHealth();
 			});
-			onImpact(currentHealth - this->HackStateStorage[CombatObject::HackStorageKeyHealth].asInt());
+			onImpact(currentHealth - CombatObject::HackStateStorage[CombatObject::HackStorageKeyHealth].asInt());
 		})
 	);
 
@@ -195,7 +195,7 @@ NO_OPTIMIZE void ShadowBomb::dealDamage(TimelineEntry* target)
 	ASM_MOV_VAR_REG(health, eax);
 	ASM(pop ZAX);
 
-	this->HackStateStorage[CombatObject::HackStorageKeyHealth] = Value(health);
+	CombatObject::HackStateStorage[CombatObject::HackStorageKeyHealth] = Value(health);
 
 	HACKABLES_STOP_SEARCH();
 }

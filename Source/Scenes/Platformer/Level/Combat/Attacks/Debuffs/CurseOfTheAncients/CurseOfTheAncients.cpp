@@ -145,27 +145,27 @@ void CurseOfTheAncients::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHea
 {
 	super::onBeforeDamageDealt(damageOrHealing);
 
-	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(CurseOfTheAncients::DamageDelt);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(CurseOfTheAncients::DamageDelt);
 
 	this->applyCurseOfTheAncients();
 
 	// No bounding
 	/*
 	// Bound multiplier in either direction
-	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(MathUtils::clamp(
-		this->HackStateStorage[Buff::StateKeyDamageDealt].asInt(),
-		-std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * CurseOfTheAncients::MaxMultiplier),
-		std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * CurseOfTheAncients::MaxMultiplier)
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(MathUtils::clamp(
+		Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt(),
+		-std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * CurseOfTheAncients::MaxMultiplier),
+		std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * CurseOfTheAncients::MaxMultiplier)
 	));*/
 
-	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	*(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 }
 
 NO_OPTIMIZE void CurseOfTheAncients::applyCurseOfTheAncients()
 {
 	static volatile int currentDamageDealtLocal = 0;
 
-	currentDamageDealtLocal = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	currentDamageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
@@ -184,7 +184,7 @@ NO_OPTIMIZE void CurseOfTheAncients::applyCurseOfTheAncients()
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
-	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

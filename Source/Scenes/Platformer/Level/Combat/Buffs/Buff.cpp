@@ -167,46 +167,46 @@ void Buff::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* spee
 
 void Buff::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
 }
 
 void Buff::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
 }
 
 void Buff::onAfterDamageTaken(CombatEvents::DamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
 }
 
 void Buff::onAfterDamageDealt(CombatEvents::DamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
 }
 
 void Buff::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
 }
 
 void Buff::onBeforeHealingDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
 }
 
 void Buff::onAfterHealingTaken(CombatEvents::DamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
 }
 
 void Buff::onAfterHealingDealt(CombatEvents::DamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
 }
 
 void Buff::onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset)

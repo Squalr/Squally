@@ -140,12 +140,12 @@ void Blind::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* dam
 {
 	super::onBeforeDamageDealt(damageOrHealing);
 
-	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyBlind();
 
-	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer())
-		= GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	*(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer())
+		= GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 }
 
 NO_OPTIMIZE void Blind::applyBlind()
@@ -163,7 +163,7 @@ NO_OPTIMIZE void Blind::applyBlind()
 	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
 	ASM(pop ZDI);
 
-	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

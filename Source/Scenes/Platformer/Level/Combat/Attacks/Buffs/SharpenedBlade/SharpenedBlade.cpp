@@ -182,14 +182,14 @@ void SharpenedBlade::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealing
 {
 	super::onBeforeDamageDealt(damageOrHealing);
 
-	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applySharpenedBlade();
 
-	int min = -std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * SharpenedBlade::MaxMultiplier);
-	int max = std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * SharpenedBlade::MaxMultiplier);
+	int min = -std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * SharpenedBlade::MaxMultiplier);
+	int max = std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * SharpenedBlade::MaxMultiplier);
 
-	*damageOrHealing->damageOrHealing = this->HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	*damageOrHealing->damageOrHealing = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 	*damageOrHealing->damageOrHealingMin = min;
 	*damageOrHealing->damageOrHealingMax = max;
 }
@@ -198,7 +198,7 @@ NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 {
 	static volatile int currentDamageDealtLocal = 0;
 
-	currentDamageDealtLocal = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	currentDamageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
@@ -219,7 +219,7 @@ NO_OPTIMIZE void SharpenedBlade::applySharpenedBlade()
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
-	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

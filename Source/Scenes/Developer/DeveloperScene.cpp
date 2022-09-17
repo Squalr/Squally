@@ -69,7 +69,19 @@ DeveloperScene::DeveloperScene()
 	}
 
 	/*
-	<Get notes from Mac please>
+	- Hexus bugs:
+		- Win a hexus puzzle, next one will show massive row score deltas
+		- Leave button stuck visible after losing a puzzle
+		- Enemy should pre-calc the best play when player has passed (hard)
+	- OVERWORLD ATTACKS:
+		- Troll swing if you jump them
+		- Cyclops swing if you jump them	
+	- Camera harsh leaving camera targets (which?)
+	- Can get stuck on roof of maps (see UR 3_1)
+	- Sleeping Lycan face anim
+	- Icons on title screen buttons (at least options, to reduce pains of wrong language selection)
+	- Rerun “TODO” translations
+	- Rhinoman fight too early. Need shaman enemy before, and maybe a puzzle/trap
 	- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Bars
 	- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 	- Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
@@ -80,6 +92,12 @@ DeveloperScene::DeveloperScene()
 	- Seagulls should blink
 	- Ursula is a lego bitch. Please fix.
 	- Pan is a lego bitch too :^(
+	- Torches should flicker by sky tower doors
+	- Sky masters
+	- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
+	- Enemy should not necessarily prio 0 bin/hex/dec cards when player has passed (unless they can make a 200 iq play)
+	- maybe no interrupt on healing attacks, ever?
+	- Eliminate Collision Offset parameter entirely
 
 	- Just get a few top down replacement maps in. Should be able to do this fairly seamlessly.
 		- Invisible helpers. Some way to pull helpers into combat
@@ -191,7 +209,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Docks (UR)", MapResources::UnderflowRuins_Town_Docks));
 
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
-		// Fix CMOV (spiked logs) on mac
+		// Fix CMOV (railed spiked logs) on mac
 		// Needs Dark Tiger scripting (Maybe recycle a SHL or SHR instead of a CMOV)
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
@@ -233,11 +251,13 @@ DeveloperScene::DeveloperScene()
 		// Finish restore power quest
 		// Inn needs sign
 		// Dawn home needs to be more regal
-		// Needs enemy scripting according to notes on which instructions this zone covers
 		// Make sure DH is properly gated before release
+		// Needs Hexus fights
+		// Needs Hexus puzzles
+		// Skleletal archer arrow retrieval anim on shoot does not properly hide arrow
 		
 		/*
-		Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients - outgoing damage)
+		Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients - outgoing AND incoming damage)
 		Shaman				=> X 1_2 AND (Shadow Bomb)
 		[B] Rhinoman		=> O 4_3 <recycle> (Name)
 		

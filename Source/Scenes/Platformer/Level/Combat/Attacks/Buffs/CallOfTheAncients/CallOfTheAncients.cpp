@@ -109,6 +109,9 @@ void CallOfTheAncients::registerHackables()
 				UIResources::Menus_Icons_RuneGreen,
 				LazyNode<HackablePreview>::create([=](){ return CallOfTheAncientsGenericPreview::create(); }),
 				{
+					{
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_RegisterEdx::create()
+					}
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
@@ -125,6 +128,8 @@ void CallOfTheAncients::registerHackables()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create())
+						+ "\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful::create())
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterRdx::create(), ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)) })) + 
@@ -134,6 +139,8 @@ void CallOfTheAncients::registerHackables()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create())
+						+ "\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful::create())
 					),
 				},
 				true
@@ -154,12 +161,24 @@ void CallOfTheAncients::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHeal
 {
 	super::onBeforeDamageDealt(damageOrHealing);
 
-	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyCallOfTheAncients();
 
-	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer())
-		= GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	*(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer())
+		= GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+}
+
+void CallOfTheAncients::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+{
+	super::onBeforeDamageTaken(damageOrHealing);
+
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
+
+	this->applyCallOfTheAncients();
+
+	*(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer())
+		= GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 }
 
 NO_OPTIMIZE void CallOfTheAncients::applyCallOfTheAncients()
@@ -177,7 +196,7 @@ NO_OPTIMIZE void CallOfTheAncients::applyCallOfTheAncients()
 	ASM_MOV_VAR_REG(currentDamageDealtLocal, edx);
 	ASM(pop ZDX);
 
-	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

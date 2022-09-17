@@ -175,19 +175,19 @@ void Reflect::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* d
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->HackStateStorage[Reflect::StateKeyDamageReflected] = Value(damageOrHealing->damageOrHealingValue);
-	this->HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Reflect::StateKeyDamageReflected] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyReflect();
 
-	int minDamage = -std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MinMultiplier);
-	int maxDamage = std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MaxMultiplier);
-	int minReflectedDamage = -std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MinMultiplier);
-	int maxReflectedDamage = std::abs(this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MaxMultiplier);
-	bool reflectedDamageOverflowMin = this->HackStateStorage[Reflect::StateKeyDamageReflected].asInt() <= minReflectedDamage;
-	bool reflectedDamageOverflowMax = this->HackStateStorage[Reflect::StateKeyDamageReflected].asInt() >= maxReflectedDamage;
+	int minDamage = -std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MinMultiplier);
+	int maxDamage = std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MaxMultiplier);
+	int minReflectedDamage = -std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MinMultiplier);
+	int maxReflectedDamage = std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Reflect::MaxMultiplier);
+	bool reflectedDamageOverflowMin = Buff::HackStateStorage[Reflect::StateKeyDamageReflected].asInt() <= minReflectedDamage;
+	bool reflectedDamageOverflowMax = Buff::HackStateStorage[Reflect::StateKeyDamageReflected].asInt() >= maxReflectedDamage;
 	
-	*(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	*(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 	(*damageOrHealing->damageOrHealingMin) = minDamage;
 	(*damageOrHealing->damageOrHealingMax) = maxDamage;
 
@@ -195,7 +195,7 @@ void Reflect::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* d
 	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(
 		damageOrHealing->target,
 		damageOrHealing->caster,
-		GameUtils::getKeyOrDefault(this->HackStateStorage, Reflect::StateKeyDamageReflected, Value(0)).asInt(),
+		GameUtils::getKeyOrDefault(Buff::HackStateStorage, Reflect::StateKeyDamageReflected, Value(0)).asInt(),
 		damageOrHealing->abilityType,
 		true,
 		reflectedDamageOverflowMin,
@@ -208,8 +208,8 @@ NO_OPTIMIZE void Reflect::applyReflect()
 	static volatile int damageDealtLocal = 0;
 	static volatile int damageReflectedLocal = 0;
 
-	damageDealtLocal = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
-	damageReflectedLocal = GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	damageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	damageReflectedLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 	
 	ASM(push ZSI);
 	ASM(push ZBX);
@@ -229,8 +229,8 @@ NO_OPTIMIZE void Reflect::applyReflect()
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
-	this->HackStateStorage[Reflect::StateKeyDamageDealt] = Value(damageDealtLocal);
-	this->HackStateStorage[Reflect::StateKeyDamageReflected] = Value(damageReflectedLocal);
+	Buff::HackStateStorage[Reflect::StateKeyDamageDealt] = Value(damageDealtLocal);
+	Buff::HackStateStorage[Reflect::StateKeyDamageReflected] = Value(damageReflectedLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

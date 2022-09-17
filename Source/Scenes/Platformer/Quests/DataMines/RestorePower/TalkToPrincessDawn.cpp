@@ -238,7 +238,7 @@ void TalkToPrincessDawn::runCinematicSequencePt1()
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_H_TakeGecky::create()
-				->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Helpers_DataMines_Gecky::create() }),
+				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_DataMines_Gecky::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,

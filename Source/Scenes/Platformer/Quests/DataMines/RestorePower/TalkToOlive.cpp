@@ -163,7 +163,7 @@ void TalkToOlive::runCinematicSequencePt3()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_DataMines_RestorePower_Olive_B_Power::create()
-			->setStringReplacementVariables({ Strings::Platformer_MapNames_DataMines_Drammol::create() }),
+			->setStringReplacementVariables(Strings::Platformer_MapNames_DataMines_Drammol::create()),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,

@@ -166,12 +166,12 @@ void Undying::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* d
 		return;
 	}
 	
-	this->HackStateStorage[Undying::StateKeyUndyingNewHealth] = Value(1);
+	Buff::HackStateStorage[Undying::StateKeyUndyingNewHealth] = Value(1);
 
 	this->applyUndying();
 
-	(*damageOrHealing->damageOrHealing) =  (damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - this->HackStateStorage[Undying::StateKeyUndyingNewHealth].asInt());
-	// *(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = this->HackStateStorage[Undying::StateKeyUndyingNewHealth].asInt();
+	(*damageOrHealing->damageOrHealing) =  (damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - Buff::HackStateStorage[Undying::StateKeyUndyingNewHealth].asInt());
+	// *(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = Buff::HackStateStorage[Undying::StateKeyUndyingNewHealth].asInt();
 }
 
 void Undying::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
@@ -183,19 +183,19 @@ void Undying::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* 
 		return;
 	}
 
-	this->HackStateStorage[Undying::StateKeyUndyingNewHealth] = Value(1);
+	Buff::HackStateStorage[Undying::StateKeyUndyingNewHealth] = Value(1);
 
 	this->applyUndying();
 
-	(*damageOrHealing->damageOrHealing) =  (damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - this->HackStateStorage[Undying::StateKeyUndyingNewHealth].asInt());
-	// *(int*)(GameUtils::getKeyOrDefault(this->HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = this->HackStateStorage[Undying::StateKeyUndyingNewHealth].asInt();
+	(*damageOrHealing->damageOrHealing) =  (damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - Buff::HackStateStorage[Undying::StateKeyUndyingNewHealth].asInt());
+	// *(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = Buff::HackStateStorage[Undying::StateKeyUndyingNewHealth].asInt();
 }
 
 NO_OPTIMIZE void Undying::applyUndying()
 {
 	static volatile int newHealthUndying = 0;
 
-	newHealthUndying = GameUtils::getKeyOrDefault(this->HackStateStorage, Undying::StateKeyUndyingNewHealth, Value(0)).asInt();
+	newHealthUndying = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Undying::StateKeyUndyingNewHealth, Value(0)).asInt();
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZBX);
@@ -216,7 +216,7 @@ NO_OPTIMIZE void Undying::applyUndying()
 	ASM(pop ZBX);
 	ASM_POP_EFLAGS();
 
-	this->HackStateStorage[Undying::StateKeyUndyingNewHealth] = newHealthUndying;
+	Buff::HackStateStorage[Undying::StateKeyUndyingNewHealth] = newHealthUndying;
 
 	HACKABLES_STOP_SEARCH();
 }

@@ -162,11 +162,11 @@ void Fortitude::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs*
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageTaken] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyFortitude();
 
-	(*damageOrHealing->damageOrHealing) = this->HackStateStorage[Buff::StateKeyDamageTaken].asInt();
+	(*damageOrHealing->damageOrHealing) = Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
 	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * Fortitude::MaxMultiplier);
 	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * Fortitude::MaxMultiplier);
 }
@@ -175,7 +175,7 @@ NO_OPTIMIZE void Fortitude::applyFortitude()
 {
 	static volatile int currentDamageTakenLocal = 0;
 
-	currentDamageTakenLocal = this->HackStateStorage[Buff::StateKeyDamageTaken].asInt();
+	currentDamageTakenLocal = Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
 
 	ASM(push ZBX);
 	ASM_MOV_REG_VAR(ebx, currentDamageTakenLocal);
@@ -189,7 +189,7 @@ NO_OPTIMIZE void Fortitude::applyFortitude()
 
 	ASM(pop ZBX);
 
-	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(currentDamageTakenLocal);
+	Buff::HackStateStorage[Buff::StateKeyDamageTaken] = Value(currentDamageTakenLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

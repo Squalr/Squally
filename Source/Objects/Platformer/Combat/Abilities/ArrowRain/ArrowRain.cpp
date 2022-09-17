@@ -222,7 +222,7 @@ void ArrowRain::damageOtherTeam()
 
 		for (auto next : timeline->getEntries())
 		{
-			if (next->isPlayerEntry() == this->HackStateStorage[ArrowRain::StateKeyIsCasterOnEnemyTeam].asBool())
+			if (next->isPlayerEntry() == CombatObject::HackStateStorage[ArrowRain::StateKeyIsCasterOnEnemyTeam].asBool())
 			{
 				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, next->getEntity(), std::abs(ArrowRain::Damage), AbilityType::Passive, true));
 			}
@@ -262,6 +262,6 @@ NO_OPTIMIZE void ArrowRain::compareTeam(TimelineEntry* entry)
 
 	HACKABLES_STOP_SEARCH();
 
-	this->HackStateStorage[ArrowRain::StateKeyIsCasterOnEnemyTeam] = Value((isOnEnemyTeamLocal == 0) ? false : true);
+	CombatObject::HackStateStorage[ArrowRain::StateKeyIsCasterOnEnemyTeam] = Value((isOnEnemyTeamLocal == 0) ? false : true);
 }
 END_NO_OPTIMIZE
