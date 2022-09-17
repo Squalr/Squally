@@ -77,13 +77,13 @@ void RestorePower::onLoad(QuestState questState)
 	{
 		this->cartLift = cartLift;
 
-		if (questState != QuestState::Active && questState != QuestState::ActiveThroughSkippable)
+		if (questState != QuestState::Complete)
 		{
-			// Delayed by a frame because the lift moves by default, and stopping actions on the same frame as starting them is broken
+			// Delayed because the lift moves by default, and stopping actions too close to starting them seems to be broken
 			this->defer([=]()
 			{
 				this->cartLift->setMoving(false);
-			});
+			}, 5);
 		}
 	}, CartLift::MapKey);
 

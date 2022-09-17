@@ -29,7 +29,7 @@ HelpTotemPickPocket* HelpTotemPickPocket::create(ValueMap& properties)
 
 HelpTotemPickPocket::HelpTotemPickPocket(ValueMap& properties) : super(properties)
 {
-	LocalizedString* hintString = Strings::Platformer_Help_HelpTotemPickPocket::create();
+	LocalizedString* hintString = Strings::Platformer_Help_HelpTotemGuano::create();
 	LocalizedString* helperNameString = Strings::Platformer_Entities_Names_Helpers_EndianForest_Guano::create();
 	LocalizedString* bracketString1 = Strings::Common_Brackets::create();
 	LocalizedString* shiftString = Strings::Input_Shift::create();

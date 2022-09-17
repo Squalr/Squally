@@ -233,7 +233,7 @@ void TalkToOlive::runCinematicSequencePt6()
 		{
 			this->runCinematicSequencePt7();
 		},
-		Voices::GetNextVoiceMedium(),
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 		false
 	));
 }
@@ -290,7 +290,7 @@ void TalkToOlive::runCinematicSequencePt9()
 		{
 			this->runCinematicSequencePt10();
 		},
-		Voices::GetNextVoiceMedium(),
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 		false
 	));
 }

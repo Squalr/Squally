@@ -41,19 +41,22 @@ void CartSpawn::onPlayerSpawn(PlatformerEntity* entity)
 
 void CartSpawn::enterCart(PlatformerEntity* entity)
 {
-	ObjectEvents::QueryObject<MineCart>([=](MineCart* mineCart)
+	// Hack to avoid some data race where the cart does not properly warp to the player
+	this->defer([=]()
 	{
-		mineCart->setPositionX(this->getPositionX());
-
-		mineCart->mount(entity);
-
-		if (this->direction == "left")
+		ObjectEvents::WatchForObject<MineCart>(this, [=](MineCart* mineCart)
 		{
-			mineCart->setMountDirection(MountBase::MountDirection::Left);
-		}
-		else
-		{
-			mineCart->setMountDirection(MountBase::MountDirection::Right);
-		}
-	}, this->linkTag);
+			mineCart->setPositionX(this->getPositionX());
+			mineCart->mount(entity);
+
+			if (this->direction == "left")
+			{
+				mineCart->setMountDirection(MountBase::MountDirection::Left);
+			}
+			else
+			{
+				mineCart->setMountDirection(MountBase::MountDirection::Right);
+			}
+		}, this->linkTag);
+	}, 1);
 }

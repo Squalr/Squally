@@ -230,9 +230,9 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
 
 		// Traps: Crushing stone blocks trap
-		// Needs quest progression
-		// 	- Olive => Dawn => Restore Power. Nothing fancy, bosses need not be quests since they are forced.
-		//	- Need a way to force Dawn / Restore power quests. Dawn for Key, Power Forced via boss kill? Or on Krampus ship (req to escape)?
+		// Finish restore power quest
+		// Inn needs sign
+		// Dawn home needs to be more regal
 		// Needs enemy scripting according to notes on which instructions this zone covers
 		// Make sure DH is properly gated before release
 		

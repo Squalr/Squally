@@ -26019,6 +26019,36 @@ namespace Strings
 		virtual ~Platformer_Help_HelpTotemEquipment() = default;
 	};
 
+	class Platformer_Help_HelpTotemGecky : public LocalizedString
+	{
+	public:
+		static Platformer_Help_HelpTotemGecky* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Help_HelpTotemGecky();
+		virtual ~Platformer_Help_HelpTotemGecky() = default;
+	};
+
+	class Platformer_Help_HelpTotemGuano : public LocalizedString
+	{
+	public:
+		static Platformer_Help_HelpTotemGuano* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Help_HelpTotemGuano();
+		virtual ~Platformer_Help_HelpTotemGuano() = default;
+	};
+
 	class Platformer_Help_HelpTotemHacking : public LocalizedString
 	{
 	public:
@@ -26047,21 +26077,6 @@ namespace Strings
 	private:
 		Platformer_Help_HelpTotemHexusCards();
 		virtual ~Platformer_Help_HelpTotemHexusCards() = default;
-	};
-
-	class Platformer_Help_HelpTotemPickPocket : public LocalizedString
-	{
-	public:
-		static Platformer_Help_HelpTotemPickPocket* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Help_HelpTotemPickPocket();
-		virtual ~Platformer_Help_HelpTotemPickPocket() = default;
 	};
 
 	class Platformer_Help_HelpTotemPotions : public LocalizedString

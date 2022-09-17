@@ -93,7 +93,7 @@ void TalkToPrincessDawn::onLoad(QuestState questState)
 		{
 			this->princessDawn->watchForComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 			{
-				questBehavior->enableNewQuest();
+				questBehavior->enableTurnIn();
 			});
 		}
 	});
@@ -172,7 +172,7 @@ void TalkToPrincessDawn::runCinematicSequencePt1()
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceMedium(),
+			Voices::GetNextVoiceLong(),
 			false
 		));
 
@@ -202,7 +202,7 @@ void TalkToPrincessDawn::runCinematicSequencePt1()
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceMedium(),
+			Voices::GetNextVoiceLong(),
 			false
 		));
 
@@ -232,7 +232,7 @@ void TalkToPrincessDawn::runCinematicSequencePt1()
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceMedium(),
+			Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 			false
 		));
 
@@ -248,7 +248,7 @@ void TalkToPrincessDawn::runCinematicSequencePt1()
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceMedium(),
+			Voices::GetNextVoiceLong(),
 			false
 		));
 
@@ -263,7 +263,7 @@ void TalkToPrincessDawn::runCinematicSequencePt1()
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceMedium(),
+			Voices::GetNextVoiceShort(),
 			false
 		));
 
@@ -287,7 +287,7 @@ void TalkToPrincessDawn::runCinematicSequencePt1()
 					this->gecky->despawn();
 				}
 
-				LocalizedString* hintString = Strings::Platformer_Help_HelpTotemPickPocket::create();
+				LocalizedString* hintString = Strings::Platformer_Help_HelpTotemGecky::create();
 				LocalizedString* helperNameString = Strings::Platformer_Entities_Names_Helpers_DataMines_Gecky::create();
 				LocalizedString* bracketString1 = Strings::Common_Brackets::create();
 				LocalizedString* shiftString = Strings::Input_Shift::create();
@@ -303,7 +303,7 @@ void TalkToPrincessDawn::runCinematicSequencePt1()
 
 				this->complete();
 			},
-			Voices::GetNextVoiceMedium(),
+			Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 			true
 		));
 	});

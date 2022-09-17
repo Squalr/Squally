@@ -83,7 +83,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="810" name="princess-dawn" type="entity" x="1443.64" y="925.333" width="128" height="128">
+  <object id="810" name="princess-dawn" type="entity" x="1319.34" y="927.275" width="128" height="128">
    <properties>
     <property name="components" value="princess-dawn-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="dm-generic"/>
