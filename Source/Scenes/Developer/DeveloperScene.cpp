@@ -284,11 +284,11 @@ DeveloperScene::DeveloperScene()
 		Shen			Town_Inn
 		Bonnie			Town_Inn (H) (non-vendor)
 
-		Raka			Zone 2_3 (H)
+		Raka			Zone 2_3 (Puzzle) (H)
 
-		Princess Dawn	Town (H)
-		Mildred			Town (H)
-		Olive			Town (H)
+		Princess Dawn	Home_Dawn (H)
+		Mildred			Home_Mildred (H)
+		Olive			Zone 1_1 (H)
 
 		-- Stolen
 		Finch			Flight Master
