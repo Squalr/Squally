@@ -18,11 +18,13 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Interactables/Mounts/GatlingGun/GatlingGun.h"
 #include "Objects/Platformer/Projectiles/GatlingGun/Shell.h"
 #include "Objects/Platformer/Projectiles/Projectile.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/UnderflowRuins/KillingMachine/KillingMachineDamageBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/UnderflowRuins/KillingMachine/KillingMachineHealthBehavior.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
