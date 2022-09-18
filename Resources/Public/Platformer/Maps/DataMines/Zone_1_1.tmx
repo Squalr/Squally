@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="840">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="848">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -42,7 +42,6 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="838" name="mines" type="terrain" x="2680.98" y="-151.225" width="545.287" height="2466.73"/>
  </objectgroup>
  <objectgroup id="68" name="decor -4">
   <properties>
@@ -60,6 +59,13 @@
     <property name="direction" value="left"/>
     <property name="map" value="DataMines/Zone_1_0"/>
     <property name="transition" value="left-back"/>
+   </properties>
+  </object>
+  <object id="842" name="edge-portal" type="object" x="2606.1" y="1104.48" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="DataMines/Zone_1_2"/>
+    <property name="transition" value="right-back"/>
    </properties>
   </object>
  </objectgroup>
@@ -90,18 +96,14 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="824" name="warp" type="object" x="2333.96" y="1332.96" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-4-A"/>
-    <property name="locked-text-key" value="closed"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-0-A"/>
-   </properties>
-  </object>
   <object id="828" name="spawn" type="object" x="375.067" y="1463.39" width="128" height="128">
    <properties>
     <property name="transition" value="right-back"/>
+   </properties>
+  </object>
+  <object id="845" name="spawn" type="object" x="2290.55" y="1463.27" width="128" height="128">
+   <properties>
+    <property name="transition" value="left-back"/>
    </properties>
   </object>
  </objectgroup>
@@ -110,17 +112,17 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="814" name="Ruins/Walls1" type="decor" x="-21.4032" y="1171.53" width="333" height="416">
+  <object id="814" name="Ruins/Walls1" type="decor" x="107.627" y="1175.59" width="333" height="416">
    <properties>
-    <property name="flip-x" type="bool" value="true"/>
+    <property name="flip-x" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="815" name="Ruins/Walls2" type="decor" x="1649.45" y="1457.82" width="689" height="132">
+  <object id="815" name="Ruins/Walls2" type="decor" x="2413.45" y="1461.82" width="689" height="132">
    <properties>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="816" name="Ruins/Walls5" type="decor" x="1260.28" y="813" width="386" height="778"/>
+  <object id="816" name="Ruins/Walls5" type="decor" x="1556.28" y="815" width="386" height="778"/>
   <object id="835" name="Ruins/Walls3" type="decor" x="998.245" y="812.966" width="262" height="130">
    <properties>
     <property name="flip-y" type="bool" value="false"/>
@@ -137,11 +139,6 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="827" name="wood" type="terrain" x="2339.55" y="1593.39" width="252.514" height="327.549">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="65" name="fireflies -3">
   <properties>
@@ -155,11 +152,6 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="826" name="wood" type="terrain" x="2339.55" y="1616.39" width="252.514" height="327.549">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="64" name="fireflies -2">
   <properties>
@@ -173,11 +165,6 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="825" name="wood" type="terrain" x="2338.5" y="1637.21" width="252.514" height="327.549">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="63" name="fireflies -1">
   <properties>
@@ -200,7 +187,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="837" name="mines" type="terrain" x="2683.41" y="-109.225" width="545.287" height="2466.73"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -211,12 +197,17 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="798" name="Ruins/Walls1" type="decor" x="1739.97" y="1244.26" width="333" height="416">
+  <object id="798" name="Ruins/Walls1" type="decor" x="2263.97" y="1242.26" width="333" height="416">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
   <object id="799" name="Ruins/Walls2" type="decor" x="776.47" y="1528.55" width="689" height="132">
+   <properties>
+    <property name="flip-y" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="847" name="Ruins/Walls4" type="decor" x="-103" y="1529" width="262" height="130">
    <properties>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
@@ -243,6 +234,13 @@
   <object id="839" name="trigger" type="object" x="1214.25" y="34.2749" width="118.944" height="1629.75">
    <properties>
     <property name="send-event" value="talk-to-olive"/>
+   </properties>
+  </object>
+  <object id="843" name="edge-portal" type="object" x="2609.13" y="1165.09" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="DataMines/Zone_1_2"/>
+    <property name="transition" value="right"/>
    </properties>
   </object>
  </objectgroup>
@@ -280,13 +278,9 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="823" name="warp" type="object" x="2336.64" y="1402.1" width="256" height="256">
+  <object id="844" name="spawn" type="object" x="2298" y="1528" width="128" height="128">
    <properties>
-    <property name="from" value="bridge-0-A"/>
-    <property name="locked-text-key" value="closed"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-4-A"/>
+    <property name="transition" value="left"/>
    </properties>
   </object>
  </objectgroup>

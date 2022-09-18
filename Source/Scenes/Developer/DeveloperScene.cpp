@@ -230,19 +230,20 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Home Finch (DM)", MapResources::DataMines_Home_Finch));
 		mapList.push_back(this->buildDebugButton("Home Mildred (DM)", MapResources::DataMines_Home_Mildred));
 		mapList.push_back(this->buildDebugButton("Zone_5_0 (DM)", MapResources::DataMines_Zone_5_0));
-		mapList.push_back(this->buildDebugButton("Zone_3_3 (DM)", MapResources::DataMines_Zone_3_3));
-		mapList.push_back(this->buildDebugButton("Zone_3_2 (DM)", MapResources::DataMines_Zone_3_2));
-		mapList.push_back(this->buildDebugButton("Zone_3_1 (DM)", MapResources::DataMines_Zone_3_1));
-		mapList.push_back(this->buildDebugButton("Zone_3_0 (DM)", MapResources::DataMines_Zone_3_0));
+		mapList.push_back(this->buildDebugButton("Zone_3_3 (DM)", MapResources::DataMines_Zone_4_3));
+		mapList.push_back(this->buildDebugButton("Zone_3_2 (DM)", MapResources::DataMines_Zone_4_2));
+		mapList.push_back(this->buildDebugButton("Zone_3_1 (DM)", MapResources::DataMines_Zone_4_1));
+		mapList.push_back(this->buildDebugButton("Zone_3_0 (DM)", MapResources::DataMines_Zone_4_0));
+		mapList.push_back(this->buildDebugButton("Zone_2_3 (DM)", MapResources::DataMines_Zone_3_3));
+		mapList.push_back(this->buildDebugButton("Zone_2_2 (DM)", MapResources::DataMines_Zone_3_2));
+		mapList.push_back(this->buildDebugButton("Zone_2_1 (DM)", MapResources::DataMines_Zone_3_1));
+		mapList.push_back(this->buildDebugButton("Zone_2_0 (DM)", MapResources::DataMines_Zone_3_0));
+		mapList.push_back(this->buildDebugButton("Zone_2_5 (DM)", MapResources::DataMines_Zone_2_5));
+		mapList.push_back(this->buildDebugButton("Zone_2_4 (DM)", MapResources::DataMines_Zone_2_4));
 		mapList.push_back(this->buildDebugButton("Zone_2_3 (DM)", MapResources::DataMines_Zone_2_3));
 		mapList.push_back(this->buildDebugButton("Zone_2_2 (DM)", MapResources::DataMines_Zone_2_2));
 		mapList.push_back(this->buildDebugButton("Zone_2_1 (DM)", MapResources::DataMines_Zone_2_1));
 		mapList.push_back(this->buildDebugButton("Zone_2_0 (DM)", MapResources::DataMines_Zone_2_0));
-		mapList.push_back(this->buildDebugButton("Zone_1_7 (DM)", MapResources::DataMines_Zone_1_7));
-		mapList.push_back(this->buildDebugButton("Zone_1_6 (DM)", MapResources::DataMines_Zone_1_6));
-		mapList.push_back(this->buildDebugButton("Zone_1_5 (DM)", MapResources::DataMines_Zone_1_5));
-		mapList.push_back(this->buildDebugButton("Zone_1_4 (DM)", MapResources::DataMines_Zone_1_4));
-		mapList.push_back(this->buildDebugButton("Zone_1_3 (DM)", MapResources::DataMines_Zone_1_3));
 		mapList.push_back(this->buildDebugButton("Zone_1_2 (DM)", MapResources::DataMines_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (DM)", MapResources::DataMines_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
@@ -319,8 +320,8 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (CV)", MapResources::CastleValgrind_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (CV)", MapResources::CastleValgrind_Zone_1_0));
 
-		// Normal maps
-		// Corresponding "dark" maps (alternatively a game flag that is toggled to load in the correct layers)
+		// Finish normal maps
+		// Finish corresponding "dark" maps (alternatively a game flag that is toggled to load in the correct layers)
 		// Puzzles in dark maps can influence objects in normal maps. Typical inverse world puzzles.
 
 		// WIP flow:
@@ -333,7 +334,7 @@ DeveloperScene::DeveloperScene()
 		// DS => Vamp lord, Vampiress, Reanim, Werewolf
 		// 2_x => Reaper, Baron, wraith, Abom
 
-		// Traps: Organ gun, ballista
+		// Traps: Organ gun, cannon, catapult, ballista, heaven hug
 		// Needs enemy scripting according to notes on which instructions this zone covers
 		// Needs hexus puzzles
 
@@ -392,6 +393,9 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_2_0 (LC)", MapResources::LambdaCrypts_Zone_2_0));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (LC)", MapResources::LambdaCrypts_Zone_1_0));
 
+		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
+		// Needs enemy scripting according to notes on which instructions this zone covers
+		// Needs hexus puzzles
 		// 3x more enemies than is standard, which makes this harder
 		// 3 crypts that need to be cleared. Can either be "orderless" or force linearity with keys.
 		//	- town key (rusty?), bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x		
@@ -416,10 +420,6 @@ DeveloperScene::DeveloperScene()
 		- SkeletalCleaver		=>  
 		- [B] KingZul			=>  
 		*/
-
-		// Traps: guillotine
-		// Needs enemy scripting according to notes on which instructions this zone covers
-		// Needs hexus puzzles
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
@@ -448,6 +448,9 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0_a (DH)", MapResources::DaemonsHallow_Zone_1_0_a));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DH)", MapResources::DaemonsHallow_Zone_1_0));
 
+		// Traps: Fire bird, fire launcher, TNT barrel, mortar
+		// Hexus puzzles
+		// Hexus fights
 		// 1_x should be the initial overworld + caves (Dragon, Ghost, Elemental, Golem)
 		// 2_x should be more caves connecting town to the 3_x maps (Shaman, Swordsman, Rogue)
 		// 3_x is all overworld (Tiger, Warrior, Grunt, Archer)
@@ -493,10 +496,6 @@ DeveloperScene::DeveloperScene()
 			- Thatcher			=> Inn
 		*/
 
-		// Fire bird / fire launcher traps
-		// Needs enemy scripting according to notes on which instructions this zone covers
-		// Needs hexus puzzles
-
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
@@ -522,12 +521,11 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (BP)", MapResources::BallmerPeaks_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (BP)", MapResources::BallmerPeaks_Zone_1_0));
 
+		// Traps: Icicle, bear trap (?), { cannon or catapult or portal } (to VS)
 		// Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
 		// 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
 		// 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
 		// 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
-
-		// Traps: Icicle, bear trap (?), cannon (to VS)
 
 		/*
 		O Aspen
@@ -579,7 +577,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (VS)", MapResources::VoidStar_Zone_1_0));
 
 		// Likely just 1-2 interim maps before boss. Keep this zone really short.
-		// Laser trap?
+		// Traps: Laser
 		// Needs enemy scripting according to notes on which instructions this zone covers
 		// Needs hexus puzzles
 

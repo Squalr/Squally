@@ -149,6 +149,17 @@ namespace DecorResources
 	extern const std::string Crypts_RailingLong;
 	extern const std::string Crypts_RailingShort;
 	extern const std::string Crypts_Skull1;
+	extern const std::string Crypts_Spikes1;
+	extern const std::string Crypts_Spikes10;
+	extern const std::string Crypts_Spikes11;
+	extern const std::string Crypts_Spikes2;
+	extern const std::string Crypts_Spikes3;
+	extern const std::string Crypts_Spikes4;
+	extern const std::string Crypts_Spikes5;
+	extern const std::string Crypts_Spikes6;
+	extern const std::string Crypts_Spikes7;
+	extern const std::string Crypts_Spikes8;
+	extern const std::string Crypts_Spikes9;
 	extern const std::string Crypts_Statue1;
 	extern const std::string Crypts_Statue2;
 	extern const std::string Crypts_Statue3;
@@ -571,6 +582,7 @@ namespace DecorResources
 	extern const std::string Generic_WoodCaveDoor1;
 	extern const std::string Generic_WoodDoor;
 	extern const std::string Generic_WoodDoor1;
+	extern const std::string Generic_WoodSpike;
 	extern const std::string Generic_birds;
 	extern const std::string Lava_Cactus1;
 	extern const std::string Lava_Cactus2;
@@ -1094,6 +1106,10 @@ namespace DecorResources
 	extern const std::string Void_Planet7;
 	extern const std::string Void_Planet8;
 	extern const std::string Void_Planet9;
+	extern const std::string Void_Spike1;
+	extern const std::string Void_Spike1Glow;
+	extern const std::string Void_Spike2;
+	extern const std::string Void_Spike2Glow;
 	extern const std::string Void_Star1;
 	extern const std::string Void_Star2;
 	extern const std::string Void_Star3;
