@@ -10,6 +10,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Traps/Crusher/CrusherGenericPreview.h"
@@ -27,7 +28,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_TRAVEL_HEIGHT 1
 
 const std::string Crusher::MapKey = "crusher";
-const float Crusher::SpeedPer480Px = 2.0f;
+const float Crusher::SpeedPer480Px = 4.0f;
 
 Crusher* Crusher::create(ValueMap& properties)
 {
@@ -40,15 +41,34 @@ Crusher* Crusher::create(ValueMap& properties)
 
 Crusher::Crusher(ValueMap& properties) : super(properties)
 {
-	this->heavenHugContainer = Node::create();
-	this->heavenHug = Sprite::create(ObjectResources::Traps_SpikedCrusher_Pole);
-	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(CSize(212.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
-
 	this->travelDistance = this->properties.at(GameObject::MapKeyHeight).asFloat();
+	this->base = Sprite::create(ObjectResources::Traps_SpikedCrusher_Base);
+	this->pole = Sprite::create(ObjectResources::Traps_SpikedCrusher_Pole);
+	this->crusher = Sprite::create(ObjectResources::Traps_SpikedCrusher_HeadJagged);
+	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(CSize(212.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->poleClip = SmartClippingNode::create(this->pole, CSize(this->pole->getContentSize().width, this->travelDistance - 180.0f));
+	
+	this->base->setAnchorPoint(Vec2(0.5f, 1.0f));
+	this->spikeCollision->setAnchorPoint(Vec2(0.5f, 1.0f));
+	this->base->setFlippedY(true);
+	this->crusher->setFlippedY(true);
+	
+	// Create parameters to repeat the texture
+	Texture2D::TexParams params = Texture2D::TexParams();
+	params.minFilter = GL_LINEAR;
+	params.magFilter = GL_LINEAR;
+	params.wrapT = GL_REPEAT;
+	this->pole->setTextureRect(CRect(0.0f, 0.0f, this->pole->getContentSize().width, this->travelDistance));
+	
+	if (this->pole->getTexture() != nullptr)
+	{
+		this->pole->getTexture()->setTexParameters(params);
+	}
 
-	this->heavenHugContainer->addChild(this->heavenHug);
-	this->heavenHug->addChild(this->spikeCollision);
-	this->addChild(this->heavenHugContainer);
+	this->addChild(this->poleClip);
+	this->addChild(this->base);
+	this->addChild(this->crusher);
+	this->crusher->addChild(this->spikeCollision);
 }
 
 Crusher::~Crusher()
@@ -66,27 +86,35 @@ void Crusher::initializePositions()
 {
 	super::initializePositions();
 
-	this->heavenHugContainer->setPositionY(this->properties.at(GameObject::MapKeyHeight).asFloat() / 2.0f);
-	this->spikeCollision->setPosition(Vec2(this->heavenHug->getContentSize().width / 2.0f, 32.0f));
+	this->poleClip->setPositionY(48.0f);
+	this->base->setPositionY(this->travelDistance / 2.0f);
+	this->spikeCollision->setPosition(Vec2(0.0f, 64.0f));
 }
 
 void Crusher::update(float dt)
 {
-    float adjustedSpeed = (this->isMovingUp ? -1.0f : 1.0f) * this->getSpeed();
-    float startPositionY = (this->isMovingUp ? -1.0f : 0.0f) * this->getTravelHeight();
+	// Stop moving down if there is no player below
+	if (!this->isMovingUp && !this->isPlayerDetected())
+	{
+		return;
+	}
 
-    this->heavenHug->setPositionY(this->heavenHug->getPositionY() + adjustedSpeed * dt);
+    float adjustedSpeed = (this->isMovingUp ? 1.0f : -1.0f) * this->getSpeed();
+    float startPositionY = (this->isMovingUp ? 1.0f : -1.0f) * (std::max(this->travelDistance - 512.0f, 0.0f));
+
+    this->crusher->setPositionY(this->crusher->getPositionY() + adjustedSpeed * dt);
+    this->pole->setPositionY(this->crusher->getPositionY() + this->travelDistance / 2.0f);
 
     if (this->isMovingUp)
     {
-        if (this->heavenHug->getPositionY() < startPositionY)
+        if (this->crusher->getPositionY() > startPositionY)
         {
             this->isMovingUp = !this->isMovingUp;
         }
     }
     else
     {
-        if (this->heavenHug->getPositionY() > startPositionY)
+        if (this->crusher->getPositionY() < startPositionY)
         {
             this->isMovingUp = !this->isMovingUp;
         }
@@ -100,7 +128,7 @@ float Crusher::getSpeed()
 
 Vec2 Crusher::getButtonOffset()
 {
-	return Vec2(0.0f, this->heavenHug->getPositionY() + 196.0f);
+	return Vec2(0.0f, this->crusher->getPositionY() + 196.0f);
 }
 
 void Crusher::registerHackables()
@@ -129,8 +157,8 @@ void Crusher::registerHackables()
 		},
 	};
 
-	auto getHeightFunc = &Crusher::getTravelHeight;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)getHeightFunc, codeInfoMap);
+	auto isPlayerDetectedFunc = &Crusher::isPlayerDetected;
+	std::vector<HackableCode*> hackables = HackableCode::create((void*&)isPlayerDetectedFunc, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{
@@ -143,31 +171,18 @@ HackablePreview* Crusher::createDefaultPreview()
 	return CrusherGenericPreview::create();
 }
 
-NO_OPTIMIZE float Crusher::getTravelHeight()
+NO_OPTIMIZE bool Crusher::isPlayerDetected()
 {
-	static volatile float* travelDistPtr = new float();
-	static volatile float retVal;
-
-	*travelDistPtr = this->travelDistance;
-	retVal = *travelDistPtr;
-
 	ASM(push ZAX)
 
-	ASM_MOV_REG_PTR(ZAX, travelDistPtr);
-
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_TRAVEL_HEIGHT);
-	ASM(fld dword ptr [ZAX])
 	ASM_NOP12();
 	HACKABLE_CODE_END();
-
-	ASM(fstp dword ptr [ZAX])
-	ASM(mov ZAX, [ZAX])
-	ASM_MOV_VAR_REG(retVal, eax);
 
 	ASM(pop ZAX)
 
 	HACKABLES_STOP_SEARCH();
 
-	return retVal;
+	return false;
 }
 END_NO_OPTIMIZE

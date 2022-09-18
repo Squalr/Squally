@@ -52,6 +52,7 @@
  <objectgroup id="70" name="objects -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="822" name="edge-portal" type="object" x="7.9462" y="1100.38" width="199.918" height="488.002">
@@ -72,6 +73,7 @@
  <objectgroup id="69" name="entities -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="832" name="tiki-golem" type="entity" x="882.356" y="1465.41" width="128" height="128">

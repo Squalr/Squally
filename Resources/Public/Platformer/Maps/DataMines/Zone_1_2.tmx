@@ -53,6 +53,7 @@
  <objectgroup id="70" name="objects -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="822" name="edge-portal" type="object" x="7.9462" y="1100.38" width="199.918" height="488.002">
@@ -62,11 +63,12 @@
     <property name="transition" value="left-back"/>
    </properties>
   </object>
-  <object id="855" name="crusher" type="object" x="1017.65" y="813.562" width="341" height="782.937"/>
+  <object id="855" name="crusher" type="object" x="1057.05" y="819.622" width="341" height="782.937"/>
  </objectgroup>
  <objectgroup id="69" name="entities -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
@@ -105,7 +107,7 @@
     <property name="flip-y" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="836" name="Ruins/Walls4" type="decor" x="733.765" y="811.42" width="262" height="130">
+  <object id="836" name="Ruins/Walls4" type="decor" x="497.401" y="817.481" width="262" height="130">
    <properties>
     <property name="flip-y" type="bool" value="false"/>
    </properties>

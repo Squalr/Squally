@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class CollisionObject;
+class SmartClippingNode;
 
 class Crusher : public HackableObject
 {
@@ -30,14 +31,16 @@ protected:
 private:
 	typedef HackableObject super;
 
-	float getTravelHeight();
+	bool isPlayerDetected();
 	float getSpeed();
 
 	volatile float travelDistance = 0.0f;
-	cocos2d::Node* heavenHugContainer = nullptr;
-	cocos2d::Sprite* heavenHug = nullptr;
+	SmartClippingNode* poleClip = nullptr;
+	cocos2d::Sprite* base = nullptr;
+	cocos2d::Sprite* pole = nullptr;
+	cocos2d::Sprite* crusher = nullptr;
 	CollisionObject* spikeCollision = nullptr;
-	bool isMovingUp = false;
+	bool isMovingUp = true;
 
 	static const float SpeedPer480Px;
 };

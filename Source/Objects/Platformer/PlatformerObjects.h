@@ -131,6 +131,7 @@
 #include "Objects/Platformer/Transportation/Ship.h"
 #include "Objects/Platformer/Transportation/Train.h"
 #include "Objects/Platformer/Transportation/VikingShip.h"
+#include "Objects/Platformer/Traps/Crusher/Crusher.h"
 #include "Objects/Platformer/Traps/ElectricityBeam/ElectricityBeam.h"
 #include "Objects/Platformer/Traps/FireBird/FireBird.h"
 #include "Objects/Platformer/Traps/FloatingBomb/FloatingBomb.h"
