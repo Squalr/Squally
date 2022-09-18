@@ -250,7 +250,6 @@ DeveloperScene::DeveloperScene()
 
 		// Traps: Crusher
 		// Finish restore power quest
-		// Dawn home needs to be more regal
 		// Needs Hexus fights
 		// Needs Hexus puzzles
 		// Skleletal archer arrow retrieval anim on shoot does not properly hide arrow
