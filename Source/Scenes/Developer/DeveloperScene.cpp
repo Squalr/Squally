@@ -250,7 +250,6 @@ DeveloperScene::DeveloperScene()
 
 		// Traps: Crusher
 		// Finish restore power quest
-		// Inn needs sign
 		// Dawn home needs to be more regal
 		// Needs Hexus fights
 		// Needs Hexus puzzles

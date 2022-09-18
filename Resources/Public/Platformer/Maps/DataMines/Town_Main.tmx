@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="143" nextobjectid="1072">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="74" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="143" nextobjectid="1074">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -643,7 +643,7 @@
   <object id="935" name="mines" type="terrain" x="9258.3" y="1878" width="1651.38" height="3228"/>
   <object id="997" name="ship-alt" type="terrain" x="4647.27" y="3730.91" width="1770.84" height="130.18"/>
  </objectgroup>
- <objectgroup id="62" name="decor -3" visible="0">
+ <objectgroup id="62" name="decor -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -664,6 +664,7 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
+  <object id="1073" name="Generic/SignBar" type="decor" x="8599" y="3089" width="252" height="265"/>
  </objectgroup>
  <objectgroup id="97" name="objects -3">
   <properties>
@@ -888,12 +889,6 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="891" name="Generic/SignAlch" type="decor" x="1946.05" y="2035.95" width="523" height="265">
-   <properties>
-    <property name="components" value="z-fade"/>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="892" name="Generic/SignSmith" type="decor" x="7639.47" y="3446.95" width="523" height="265">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="flip-x" type="bool" value="true"/>
