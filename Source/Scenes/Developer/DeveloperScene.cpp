@@ -320,22 +320,15 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (CV)", MapResources::CastleValgrind_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (CV)", MapResources::CastleValgrind_Zone_1_0));
 
-		// Finish normal maps
-		// Finish corresponding "dark" maps (alternatively a game flag that is toggled to load in the correct layers)
-		// Puzzles in dark maps can influence objects in normal maps. Typical inverse world puzzles.
-
-		// WIP flow:
-		// Clock to go to dark side
-		// Study default locked
-		// Key is in the bar or something (maybe the barkeep has a hint about this)
-		// Secret room behind throne room (dark side only, helps make shit easier for me) leading to 2_x zones
-
-		// 1_x => Barbarian, Thug
-		// DS => Vamp lord, Vampiress, Reanim, Werewolf
-		// 2_x => Reaper, Baron, wraith, Abom
-
 		// Traps: Organ gun, cannon, catapult, ballista, heaven hug
-		// Needs enemy scripting according to notes on which instructions this zone covers
+		// Finish maps and corresponding "dark" maps (alternatively a game flag that is toggled to load in the correct layers)
+		// Puzzles in dark maps can influence objects in normal maps. Typical inverse world puzzles.
+		// WIP flow:
+		// 	- Clock to go to dark side
+		// 	- Study default locked
+		// 	- Key is in the bar or something (maybe the barkeep has a hint about this)
+		// 	- Secret room behind throne room (dark side only, helps make shit easier for me) leading to 2_x zones
+		// Needs hexus battles
 		// Needs hexus puzzles
 
 		/*
@@ -348,7 +341,7 @@ DeveloperScene::DeveloperScene()
 			- Reaper				dark	=> J[N]O		OF
 			- Vampiress				dark	=> J[N]G[E]		ZF/SF/OF
 			- VampireLord			dark	=> J[N]L[E]		ZF/SF/OF
-			- ScareCrow				2_x		=> J[N]B[E]		ZF/OF
+			- Abomination			2_x		=> J[N]B[E]		ZF/OF
 			- SkeletalBaron			2_x		=> J[N]A[E]		ZF/OF
 			- Jack					2_x		=> J[N]C		CF		// Immortality. Copy undying logic, but include a subtract.
 			- [B] Agnes				2_x 	=> 

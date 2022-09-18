@@ -23,6 +23,7 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void update(float dt) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;
 	HackablePreview* createDefaultPreview() override;
@@ -30,14 +31,14 @@ protected:
 private:
 	typedef HackableObject super;
 
-	void updateHeavenHug();
 	float getTravelHeight();
-	std::vector<cocos2d::Vec2> createSpikeCollision();
+	float getSpeed();
 
 	volatile float travelDistance = 0.0f;
 	cocos2d::Node* heavenHugContainer = nullptr;
 	cocos2d::Sprite* heavenHug = nullptr;
 	CollisionObject* spikeCollision = nullptr;
+	bool isMovingUp = false;
 
 	static const float SpeedPer480Px;
 };
