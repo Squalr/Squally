@@ -230,14 +230,14 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Home Finch (DM)", MapResources::DataMines_Home_Finch));
 		mapList.push_back(this->buildDebugButton("Home Mildred (DM)", MapResources::DataMines_Home_Mildred));
 		mapList.push_back(this->buildDebugButton("Zone_5_0 (DM)", MapResources::DataMines_Zone_5_0));
-		mapList.push_back(this->buildDebugButton("Zone_3_3 (DM)", MapResources::DataMines_Zone_4_3));
-		mapList.push_back(this->buildDebugButton("Zone_3_2 (DM)", MapResources::DataMines_Zone_4_2));
-		mapList.push_back(this->buildDebugButton("Zone_3_1 (DM)", MapResources::DataMines_Zone_4_1));
-		mapList.push_back(this->buildDebugButton("Zone_3_0 (DM)", MapResources::DataMines_Zone_4_0));
-		mapList.push_back(this->buildDebugButton("Zone_2_3 (DM)", MapResources::DataMines_Zone_3_3));
-		mapList.push_back(this->buildDebugButton("Zone_2_2 (DM)", MapResources::DataMines_Zone_3_2));
-		mapList.push_back(this->buildDebugButton("Zone_2_1 (DM)", MapResources::DataMines_Zone_3_1));
-		mapList.push_back(this->buildDebugButton("Zone_2_0 (DM)", MapResources::DataMines_Zone_3_0));
+		mapList.push_back(this->buildDebugButton("Zone_4_3 (DM)", MapResources::DataMines_Zone_4_3));
+		mapList.push_back(this->buildDebugButton("Zone_4_2 (DM)", MapResources::DataMines_Zone_4_2));
+		mapList.push_back(this->buildDebugButton("Zone_4_1 (DM)", MapResources::DataMines_Zone_4_1));
+		mapList.push_back(this->buildDebugButton("Zone_4_0 (DM)", MapResources::DataMines_Zone_4_0));
+		mapList.push_back(this->buildDebugButton("Zone_3_3 (DM)", MapResources::DataMines_Zone_3_3));
+		mapList.push_back(this->buildDebugButton("Zone_3_2 (DM)", MapResources::DataMines_Zone_3_2));
+		mapList.push_back(this->buildDebugButton("Zone_3_1 (DM)", MapResources::DataMines_Zone_3_1));
+		mapList.push_back(this->buildDebugButton("Zone_3_0 (DM)", MapResources::DataMines_Zone_3_0));
 		mapList.push_back(this->buildDebugButton("Zone_2_5 (DM)", MapResources::DataMines_Zone_2_5));
 		mapList.push_back(this->buildDebugButton("Zone_2_4 (DM)", MapResources::DataMines_Zone_2_4));
 		mapList.push_back(this->buildDebugButton("Zone_2_3 (DM)", MapResources::DataMines_Zone_2_3));
@@ -252,7 +252,6 @@ DeveloperScene::DeveloperScene()
 		// Finish restore power quest
 		// Inn needs sign
 		// Dawn home needs to be more regal
-		// Make sure DH is properly gated before release
 		// Needs Hexus fights
 		// Needs Hexus puzzles
 		// Skleletal archer arrow retrieval anim on shoot does not properly hide arrow

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="44" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="886">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="44" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="890">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -41,7 +41,16 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="877" name="hell-gate" type="object" x="4213.33" y="543.636" width="512" height="512"/>
+  <object id="877" name="hell-gate" type="object" x="4643.33" y="547.636" width="512" height="512">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="item-required" value="hell-gate-crystal"/>
+    <property name="map" value="DaemonsHallow/Zone_1_0"/>
+    <property name="transition" value="hell-gate"/>
+   </properties>
+  </object>
+  <object id="888" name="solid" type="collision" x="3938.27" y="-405.71" width="77.455" height="2353.42"/>
+  <object id="889" name="solid" type="collision" x="5286.06" y="-393.68" width="77.455" height="2353.42"/>
  </objectgroup>
  <objectgroup id="71" name="water -4">
   <properties>
@@ -55,13 +64,22 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="880" name="obsidean" type="terrain" x="4013.9" y="1057.33" width="903.867" height="844"/>
+  <object id="880" name="obsidean" type="terrain" x="4013.9" y="1057.33" width="1273.87" height="844"/>
  </objectgroup>
  <objectgroup id="78" name="player_layer -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="887" name="warp" type="object" x="4253.33" y="800" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-4-A"/>
+    <property name="locked-text-key" value="closed"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-0-A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="72" name="water -3">
   <properties>
@@ -76,7 +94,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="863" name="mines" type="terrain" x="179.615" y="941.939" width="271.08" height="1088"/>
-  <object id="881" name="obsidean" type="terrain" x="4101.24" y="1073" width="727.867" height="844"/>
+  <object id="881" name="obsidean" type="terrain" x="4177.24" y="1073" width="533.2" height="844"/>
  </objectgroup>
  <objectgroup id="65" name="fireflies -3">
   <properties>
@@ -97,7 +115,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="879" name="obsidean" type="terrain" x="4222.82" y="1085.58" width="486.867" height="844"/>
+  <object id="879" name="obsidean" type="terrain" x="4240.15" y="1085.58" width="398.2" height="844"/>
  </objectgroup>
  <objectgroup id="64" name="fireflies -2">
   <properties>
@@ -124,7 +142,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="878" name="obsidean" type="terrain" x="4184.49" y="1102.3" width="561.867" height="844"/>
+  <object id="878" name="obsidean" type="terrain" x="4195.16" y="1102.3" width="506.534" height="844"/>
  </objectgroup>
  <objectgroup id="63" name="fireflies -1">
   <properties>
@@ -174,12 +192,6 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="885" name="portal" type="object" x="4242.82" y="699.602" width="450.603" height="423.038">
-   <properties>
-    <property name="map" value="DaemonsHallow/Zone_1_0"/>
-    <property name="transition" value="hell-gate"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -206,7 +218,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="873" name="spawn" type="object" x="4392.66" y="992" width="128" height="128">
+  <object id="873" name="spawn" type="object" x="4366.66" y="997" width="128" height="128">
    <properties>
     <property name="transition" value="hell-gate"/>
    </properties>
@@ -214,6 +226,15 @@
   <object id="876" name="squally" type="entity" x="3950" y="992" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="886" name="warp" type="object" x="4304" y="870" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-0-A"/>
+    <property name="locked-text-key" value="closed"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-4-A"/>
    </properties>
   </object>
  </objectgroup>
