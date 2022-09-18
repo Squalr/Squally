@@ -6,17 +6,17 @@ class PlatformerEntity;
 class Scrappy;
 class Squally;
 
-class CypressBehavior : public GameComponent
+class JasperBehavior : public GameComponent
 {
 public:
-	static CypressBehavior* create(GameObject* owner);
+	static JasperBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 	static const std::string SaveKeyItemGiven;
 
 protected:
-	CypressBehavior(GameObject* owner);
-	virtual ~CypressBehavior();
+	JasperBehavior(GameObject* owner);
+	virtual ~JasperBehavior();
 
 	void onLoad() override;
 	void onDisable() override;

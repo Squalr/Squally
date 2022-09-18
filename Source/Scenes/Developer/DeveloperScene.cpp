@@ -78,7 +78,6 @@ DeveloperScene::DeveloperScene()
 		- Cyclops swing if you jump them	
 	- Camera harsh leaving camera targets (which?)
 	- Can get stuck on roof of maps (see UR 3_1)
-	- Sleeping Lycan face anim
 	- Icons on title screen buttons (at least options, to reduce pains of wrong language selection)
 	- Rerun “TODO” translations
 	- Rhinoman fight too early. Need shaman enemy before, and maybe a puzzle/trap
@@ -164,6 +163,8 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #4", MapResources::EndianForest_Mages_Gauntlet_4));
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
+		
+		// Sleeping Lycan face anim
 	}
 
 	// CHAPTER 2 - Compare/CMOV/Neg/SHL/SHR + OR Puzzle
@@ -269,28 +270,24 @@ DeveloperScene::DeveloperScene()
 		Skeletal Necromancer => X 3_0 PUSH [REG PTR] / POP [REG PTR] (pact of the ancients - health link)
 		[B] Krampus			=> O 3_3 NOT (No idea)
 
-		Gorilla				=> Cage him and make him a prop (cursed person? again tho?)
+		Gorilla			Deprecate
 
-		Jasper			?? (H) (swap with Cypress for spellbook)
-		Alder			?
-		Cypress			Technically in mage's guild
+		Cypress			Home_Cypress, 3_x or 4_x (H, Spellbook)
+		Alder			Home_Alder (H?)
+		Jasper			Technically in mage's guild
 		Sarude			Technically in mage's guild
-
 		Burch			Zone 3_x (H)
-
 		Fraya			Town_Alch
 		Brock			Town_BS
 		Shen			Town_Inn
 		Bonnie			Town_Inn (H) (non-vendor)
-
 		Raka			Zone 2_3 (Puzzle) (H)
-
 		Princess Dawn	Home_Dawn (H)
 		Mildred			Home_Mildred (H)
 		Olive			Zone 1_1 (H)
 
 		-- Stolen
-		Finch			Flight Master
+		Finch			Flight Master (Uh where?)
 		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));

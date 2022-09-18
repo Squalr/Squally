@@ -28584,10 +28584,10 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_Intro_G_HackerModeCombat() = default;
 	};
 
-	class Platformer_Quests_EndianForest_Misc_Cypress_A_Clever : public LocalizedString
+	class Platformer_Quests_EndianForest_Misc_Jasper_A_Clever : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Misc_Cypress_A_Clever* create();
+		static Platformer_Quests_EndianForest_Misc_Jasper_A_Clever* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28595,14 +28595,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_Misc_Cypress_A_Clever();
-		virtual ~Platformer_Quests_EndianForest_Misc_Cypress_A_Clever() = default;
+		Platformer_Quests_EndianForest_Misc_Jasper_A_Clever();
+		virtual ~Platformer_Quests_EndianForest_Misc_Jasper_A_Clever() = default;
 	};
 
-	class Platformer_Quests_EndianForest_Misc_Cypress_B_TakeThis : public LocalizedString
+	class Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Misc_Cypress_B_TakeThis* create();
+		static Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28610,8 +28610,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_Misc_Cypress_B_TakeThis();
-		virtual ~Platformer_Quests_EndianForest_Misc_Cypress_B_TakeThis() = default;
+		Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis();
+		virtual ~Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis() = default;
 	};
 
 	class Platformer_Quests_EndianForest_RescueGuano_A_GetMeOutOfHere : public LocalizedString

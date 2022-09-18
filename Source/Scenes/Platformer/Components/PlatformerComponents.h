@@ -20,7 +20,7 @@
 #include "Scenes/Platformer/Components/Entities/EntitySelectionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/Critters/BirdBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/EndianForest/AraBehavior.h"
-#include "Scenes/Platformer/Components/Entities/Friendly/EndianForest/CypressBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/EndianForest/JasperBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/EndianForest/LycanBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/UnderflowRuins/PoseidonBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/UnderflowRuins/RupertBehavior.h"

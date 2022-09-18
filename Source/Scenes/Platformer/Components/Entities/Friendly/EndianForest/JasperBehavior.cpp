@@ -1,4 +1,4 @@
-#include "CypressBehavior.h"
+#include "JasperBehavior.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/DialogueOption.h"
@@ -19,19 +19,19 @@
 
 using namespace cocos2d;
 
-const std::string CypressBehavior::MapKey = "cypress";
-const std::string CypressBehavior::SaveKeyItemGiven = "CYPRESS_ITEM_GIVEN";
+const std::string JasperBehavior::MapKey = "jasper";
+const std::string JasperBehavior::SaveKeyItemGiven = "JASPER_ITEM_GIVEN";
 
-CypressBehavior* CypressBehavior::create(GameObject* owner)
+JasperBehavior* JasperBehavior::create(GameObject* owner)
 {
-	CypressBehavior* instance = new CypressBehavior(owner);
+	JasperBehavior* instance = new JasperBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CypressBehavior::CypressBehavior(GameObject* owner) : super(owner)
+JasperBehavior::JasperBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
@@ -41,11 +41,11 @@ CypressBehavior::CypressBehavior(GameObject* owner) : super(owner)
 	}
 }
 
-CypressBehavior::~CypressBehavior()
+JasperBehavior::~JasperBehavior()
 {
 }
 
-void CypressBehavior::onLoad()
+void JasperBehavior::onLoad()
 {
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
@@ -57,12 +57,12 @@ void CypressBehavior::onLoad()
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	if (!this->entity->loadObjectStateOrDefault(CypressBehavior::SaveKeyItemGiven, Value(false)).asBool())
+	if (!this->entity->loadObjectStateOrDefault(JasperBehavior::SaveKeyItemGiven, Value(false)).asBool())
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_Misc_Cypress_A_Clever::create(),
+				Strings::Platformer_Quests_EndianForest_Misc_Jasper_A_Clever::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -76,7 +76,7 @@ void CypressBehavior::onLoad()
 				false
 			));
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_Misc_Cypress_B_TakeThis::create(),
+				Strings::Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -86,7 +86,7 @@ void CypressBehavior::onLoad()
 				[=]()
 				{
 					PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
-					this->entity->saveObjectState(CypressBehavior::SaveKeyItemGiven, Value(true));
+					this->entity->saveObjectState(JasperBehavior::SaveKeyItemGiven, Value(true));
 				},
 				Voices::GetNextVoiceMedium(),
 				true
@@ -95,7 +95,7 @@ void CypressBehavior::onLoad()
 	}
 }
 
-void CypressBehavior::onDisable()
+void JasperBehavior::onDisable()
 {
 	super::onDisable();
 }

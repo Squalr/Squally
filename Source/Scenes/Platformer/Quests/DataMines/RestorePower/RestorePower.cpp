@@ -92,6 +92,10 @@ void RestorePower::onLoad(QuestState questState)
 		{
 			this->mineDoor->lock();
 		}
+		else
+		{
+			this->mineDoor->unlock();
+		}
 	}, MineDoor::MapKey);
 }
 

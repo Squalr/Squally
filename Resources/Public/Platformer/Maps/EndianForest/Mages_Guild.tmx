@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="42" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="149" nextobjectid="994">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="149" nextobjectid="994">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -170,7 +170,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="892" name="jasper" type="entity" x="2550.19" y="543.339" width="128" height="128">
+  <object id="892" name="cypress" type="entity" x="2550.19" y="543.339" width="128" height="128">
    <properties>
     <property name="components" value="friendly"/>
     <property name="flip-x" type="bool" value="false"/>
@@ -807,9 +807,9 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="842" name="cypress" type="entity" x="4110.41" y="153.778" width="128" height="128">
+  <object id="842" name="jasper" type="entity" x="4110.41" y="153.778" width="128" height="128">
    <properties>
-    <property name="components" value="cypress,friendly"/>
+    <property name="components" value="jasper,friendly"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
