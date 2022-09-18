@@ -248,7 +248,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (DM)", MapResources::DataMines_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
 
-		// Traps: Crushing stone blocks trap
+		// Traps: Crusher
 		// Finish restore power quest
 		// Inn needs sign
 		// Dawn home needs to be more regal
@@ -365,7 +365,7 @@ DeveloperScene::DeveloperScene()
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 5 - FPU
+	// CHAPTER 5 - FPU (f(i)ld, f(i)st(p), fxch, fcmov, fadd, fsub, fabs, fdiv, fmul, fsqrt, etc)
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Lambda Crypts");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();

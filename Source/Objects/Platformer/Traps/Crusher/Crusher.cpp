@@ -6,6 +6,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Optimization/LazyNode.h"
@@ -13,10 +14,12 @@
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Traps/Crusher/CrusherGenericPreview.h"
 #include "Objects/Platformer/Traps/Crusher/CrusherSetSpeedPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -25,7 +28,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_TRAVEL_HEIGHT 1
+#define LOCAL_FUNC_ID_DETECTOR 1
 
 const std::string Crusher::MapKey = "crusher";
 const float Crusher::SpeedPer480Px = 4.0f;
@@ -78,6 +81,11 @@ Crusher::~Crusher()
 void Crusher::onEnter()
 {
 	super::onEnter();
+	
+	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
+	{
+		this->squally = squally;
+	}, Squally::MapKey);
 
 	this->scheduleUpdate();
 }
@@ -138,7 +146,7 @@ void Crusher::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_TRAVEL_HEIGHT,
+			LOCAL_FUNC_ID_DETECTOR,
 			HackableCode::HackableCodeInfo(
 				Crusher::MapKey,
 				Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_DetectPlayer::create(),
@@ -173,16 +181,66 @@ HackablePreview* Crusher::createDefaultPreview()
 
 NO_OPTIMIZE bool Crusher::isPlayerDetected()
 {
-	ASM(push ZAX)
+	static volatile int squallyPositionXLocal;
+	static volatile int leftBoundLocal;
+	static volatile int rightBoundLocal;
+	static volatile int compareResult;
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_TRAVEL_HEIGHT);
+	squallyPositionXLocal = 0;
+	leftBoundLocal = -200;
+	rightBoundLocal = 200;
+	compareResult = 0;
+
+	if (this->squally != nullptr)
+	{
+		static const Vec3 thisPosition = GameUtils::getWorldCoords3D(this);
+		Vec3 squallyPosition = GameUtils::getWorldCoords3D(this->squally);
+
+		squallyPositionXLocal = int(squallyPosition.x);
+		leftBoundLocal += int(thisPosition.x);
+		rightBoundLocal += int(thisPosition.x);
+
+		// Different Z plane, don't detect player
+		if (std::abs(thisPosition.z - squallyPosition.z) > 24.0f)
+		{
+			return false;
+		}
+	}
+
+	ASM_PUSH_EFLAGS();
+	ASM(push ZAX)
+	ASM(push ZBX)
+	ASM(push ZCX)
+	ASM(push ZDI)
+	ASM(push ZSI)
+
+	ASM(mov ZAX, 0)
+	ASM(mov ZBX, 0)
+	ASM(mov ZCX, 0)
+	ASM_MOV_REG_VAR(ecx, squallyPositionXLocal);
+	ASM_MOV_REG_VAR(esi, leftBoundLocal);
+	ASM_MOV_REG_VAR(edi, rightBoundLocal);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_DETECTOR);
+	ASM(cmp ecx, esi)
+	ASM(setge al)
+	ASM(cmp ecx, edi)
+	ASM(setle bl)
+	ASM(and eax, ebx)
 	ASM_NOP12();
 	HACKABLE_CODE_END();
 
+	ASM_MOV_VAR_REG(compareResult, eax);
+
+	ASM(pop ZSI)
+	ASM(pop ZDI)
+	ASM(pop ZCX)
+	ASM(pop ZBX)
 	ASM(pop ZAX)
+	ASM_POP_EFLAGS();
 
 	HACKABLES_STOP_SEARCH();
 
-	return false;
+	return compareResult != 0;
 }
 END_NO_OPTIMIZE

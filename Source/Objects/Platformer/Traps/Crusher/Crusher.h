@@ -9,6 +9,7 @@ namespace cocos2d
 
 class CollisionObject;
 class SmartClippingNode;
+class Squally;
 
 class Crusher : public HackableObject
 {
@@ -40,6 +41,7 @@ private:
 	cocos2d::Sprite* pole = nullptr;
 	cocos2d::Sprite* crusher = nullptr;
 	CollisionObject* spikeCollision = nullptr;
+	Squally* squally = nullptr;
 	bool isMovingUp = true;
 
 	static const float SpeedPer480Px;
