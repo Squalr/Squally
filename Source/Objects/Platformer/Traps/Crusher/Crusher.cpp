@@ -52,7 +52,6 @@ Crusher::Crusher(ValueMap& properties) : super(properties)
 	this->poleClip = SmartClippingNode::create(this->pole, CSize(this->pole->getContentSize().width, this->travelDistance - 180.0f));
 	
 	this->base->setAnchorPoint(Vec2(0.5f, 1.0f));
-	this->spikeCollision->setAnchorPoint(Vec2(0.5f, 1.0f));
 	this->base->setFlippedY(true);
 	this->crusher->setFlippedY(true);
 	
@@ -96,7 +95,7 @@ void Crusher::initializePositions()
 
 	this->poleClip->setPositionY(48.0f);
 	this->base->setPositionY(this->travelDistance / 2.0f);
-	this->spikeCollision->setPosition(Vec2(0.0f, 64.0f));
+	this->spikeCollision->setPosition(Vec2(this->crusher->getContentSize().width / 2.0f, 64.0f));
 }
 
 void Crusher::update(float dt)
