@@ -163,7 +163,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #4", MapResources::EndianForest_Mages_Gauntlet_4));
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
-		
+
 		// Sleeping Lycan face anim
 	}
 
@@ -230,6 +230,8 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Home Dawn (DM)", MapResources::DataMines_Home_Dawn));
 		mapList.push_back(this->buildDebugButton("Home Finch (DM)", MapResources::DataMines_Home_Finch));
 		mapList.push_back(this->buildDebugButton("Home Mildred (DM)", MapResources::DataMines_Home_Mildred));
+		mapList.push_back(this->buildDebugButton("Home Alder (DM)", MapResources::DataMines_Home_Alder));
+		mapList.push_back(this->buildDebugButton("Home Cypress (DM)", MapResources::DataMines_Home_Cypress));
 		mapList.push_back(this->buildDebugButton("Zone_5_0 (DM)", MapResources::DataMines_Zone_5_0));
 		mapList.push_back(this->buildDebugButton("Zone_4_3 (DM)", MapResources::DataMines_Zone_4_3));
 		mapList.push_back(this->buildDebugButton("Zone_4_2 (DM)", MapResources::DataMines_Zone_4_2));

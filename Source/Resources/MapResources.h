@@ -60,6 +60,8 @@ namespace MapResources
 	extern const std::string DaemonsHallow_Zone_3_1;
 	extern const std::string DaemonsHallow_Zone_3_2;
 	extern const std::string DataMines_Combat_Caves;
+	extern const std::string DataMines_Home_Alder;
+	extern const std::string DataMines_Home_Cypress;
 	extern const std::string DataMines_Home_Dawn;
 	extern const std::string DataMines_Home_Finch;
 	extern const std::string DataMines_Home_Mildred;
