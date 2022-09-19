@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1098">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1106">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -12,7 +12,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="58" name="background -12" visible="0">
+ <objectgroup id="58" name="background -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
@@ -624,7 +624,9 @@
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="812" name="mines" type="terrain" x="6412.79" y="3682" width="3665.54" height="844"/>
+  <object id="1105" name="mines" type="terrain" x="6252" y="4000">
+   <polygon points="59.6667,-311.667 1896,-317.333 2211.44,-505.283 2471.73,-506.901 2775.76,-671.273 3977.09,-669.939 3962,910 161,897"/>
+  </object>
  </objectgroup>
  <objectgroup id="134" name="objects -3 bg">
   <properties>
@@ -669,7 +671,7 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="1082" name="Mines/CaveHouse5" type="decor" x="8602.46" y="2928.07" width="812" height="755">
+  <object id="1082" name="Mines/CaveHouse5" type="decor" x="9038.82" y="2570.49" width="812" height="755">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -726,7 +728,7 @@
     <property name="transition" value="passage-exit"/>
    </properties>
   </object>
-  <object id="1096" name="portal" type="object" x="8889.41" y="3490.9" width="256" height="192">
+  <object id="1096" name="portal" type="object" x="9325.77" y="3133.32" width="256" height="192">
    <properties>
     <property name="map" value="DataMines/Home_Alder"/>
     <property name="transition" value="alder"/>
@@ -803,7 +805,7 @@
     <property name="transition" value="passage-exit"/>
    </properties>
   </object>
-  <object id="1097" name="spawn" type="object" x="8951.41" y="3554.9" width="128" height="128">
+  <object id="1097" name="spawn" type="object" x="9387.77" y="3197.32" width="128" height="128">
    <properties>
     <property name="transition" value="alder"/>
    </properties>
@@ -892,7 +894,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="21" name="terrain" visible="0">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -920,7 +922,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1080" name="Generic/SignSmith" type="decor" x="8318.61" y="3414.92" width="523" height="265">
+  <object id="1080" name="Generic/SignSmith" type="decor" x="8318.61" y="3476.25" width="523" height="265">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -948,10 +950,28 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="60" name="decor fg">
+ <objectgroup id="60" name="decor fg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1099" name="Generic/WeaponRack1" type="decor" x="8680.92" y="3494.77" width="452" height="498">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="flip-x" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="1103" name="Generic/BlackSmithSign" type="decor" x="9105.17" y="3161.44" width="425" height="463" rotation="345">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1104" name="Generic/ArmorRack1" type="decor" x="9561.88" y="3593.42" width="320" height="370">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="flip-x" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
