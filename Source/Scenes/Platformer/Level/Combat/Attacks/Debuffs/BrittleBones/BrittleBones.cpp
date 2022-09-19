@@ -41,7 +41,7 @@ const std::string BrittleBones::HackIdentifierBrittleBones = "brittle-bones";
 
 const int BrittleBones::MaxMultiplier = 4;
 const int BrittleBones::DamageDelt = 1;
-const float BrittleBones::Duration = 12.0f;
+const float BrittleBones::Duration = 24.0f;
 
 BrittleBones* BrittleBones::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
