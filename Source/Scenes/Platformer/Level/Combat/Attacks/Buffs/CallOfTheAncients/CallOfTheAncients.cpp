@@ -39,7 +39,7 @@ using namespace cocos2d;
 const std::string CallOfTheAncients::CallOfTheAncientsIdentifier = "call-of-the-ancients";
 
 const float CallOfTheAncients::Duration = 60.0f;
-const int CallOfTheAncients::DamageDealt = 20;
+const int CallOfTheAncients::DamageDealt = 30;
 
 CallOfTheAncients* CallOfTheAncients::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -51,7 +51,7 @@ CallOfTheAncients* CallOfTheAncients::create(PlatformerEntity* caster, Platforme
 }
 
 CallOfTheAncients::CallOfTheAncients(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_RuneGreen, AbilityType::Physical, BuffData(CallOfTheAncients::Duration, CallOfTheAncients::CallOfTheAncientsIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_RuneStone, AbilityType::Physical, BuffData(CallOfTheAncients::Duration, CallOfTheAncients::CallOfTheAncientsIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
@@ -106,7 +106,7 @@ void CallOfTheAncients::registerHackables()
 				CallOfTheAncients::CallOfTheAncientsIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients::create(),
 				HackableBase::HackBarColor::Green,
-				UIResources::Menus_Icons_RuneGreen,
+				UIResources::Menus_Icons_RuneStone,
 				LazyNode<HackablePreview>::create([=](){ return CallOfTheAncientsGenericPreview::create(); }),
 				{
 					{
@@ -122,7 +122,7 @@ void CallOfTheAncients::registerHackables()
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterEdx::create(), ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)) })) + 
-						"push 20\n" +
+						"push 30\n" +
 						"pop edx\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)))) + 
@@ -133,7 +133,7 @@ void CallOfTheAncients::registerHackables()
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
 							->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterRdx::create(), ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)) })) + 
-						"push 20\n" +
+						"push 30\n" +
 						"pop rdx\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)))) + 
@@ -195,7 +195,7 @@ NO_OPTIMIZE void CallOfTheAncients::applyCallOfTheAncients()
 
 	ASM(push ZDX);
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COTA);
-	ASM(push 20);
+	ASM(push 30);
 	ASM(pop ZDX);
 	ASM_NOP16();
 	HACKABLE_CODE_END();

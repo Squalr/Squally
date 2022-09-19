@@ -38,7 +38,7 @@ void ShadowBombGenericPreview::onEnter()
 {
 	super::onEnter();
 
-	this->animationNode->playAnimationRepeat(FXResources::ShadowBomb_ShadowBomb_0000, 0.05f, 0.75f);
+	this->animationNode->playAnimationRepeat(FXResources::ShadowBomb_ShadowBomb_0000, 0.05f, 0.75f, true);
 }
 
 void ShadowBombGenericPreview::initializePositions()

@@ -31,7 +31,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_DETECTOR 1
 
 const std::string Crusher::MapKey = "crusher";
-const float Crusher::SpeedPer480Px = 4.0f;
+const float Crusher::SpeedPer480Px = 2.0f;
 
 Crusher* Crusher::create(ValueMap& properties)
 {
@@ -103,25 +103,26 @@ void Crusher::update(float dt)
 	// Stop moving down if there is no player below
 	if (!this->isMovingUp && !this->isPlayerDetected())
 	{
-		return;
+		this->isMovingUp = true;
 	}
 
+	float adjustedTravelDistance = std::abs(std::max(this->travelDistance - 512.0f, 0.0f));
     float adjustedSpeed = (this->isMovingUp ? 1.0f : -1.0f) * this->getSpeed();
-    float startPositionY = (this->isMovingUp ? 1.0f : -1.0f) * (std::max(this->travelDistance - 512.0f, 0.0f));
+    float startPositionY = (this->isMovingUp ? 1.0f : -1.0f) * adjustedTravelDistance;
 
-    this->crusher->setPositionY(this->crusher->getPositionY() + adjustedSpeed * dt);
+    this->crusher->setPositionY(MathUtils::clamp(this->crusher->getPositionY() + adjustedSpeed * dt, -adjustedTravelDistance, adjustedTravelDistance));
     this->pole->setPositionY(this->crusher->getPositionY() + this->travelDistance / 2.0f);
 
     if (this->isMovingUp)
     {
-        if (this->crusher->getPositionY() > startPositionY)
+        if (this->crusher->getPositionY() >= startPositionY)
         {
             this->isMovingUp = !this->isMovingUp;
         }
     }
     else
     {
-        if (this->crusher->getPositionY() < startPositionY)
+        if (this->crusher->getPositionY() <= startPositionY)
         {
             this->isMovingUp = !this->isMovingUp;
         }

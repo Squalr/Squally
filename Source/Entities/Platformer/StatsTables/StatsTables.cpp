@@ -83,9 +83,12 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Squally::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
 
 	// HELPERS
+	StatsTables::StatsTable[CritterDemon::MapKey] = StatsIncrements(Stats(14, 4, 48), increments);
 	StatsTables::StatsTable[Gecky::MapKey] = StatsIncrements(Stats(14, 4, 48), increments);
 	StatsTables::StatsTable[Guano::MapKey] = StatsIncrements(Stats(14, 4, 48), increments);
 	StatsTables::StatsTable[GuanoPetrified::MapKey] = StatsIncrements(Stats(20, 0, 10000));
+	StatsTables::StatsTable[Professor::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
+	StatsTables::StatsTable[Robot::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
 	StatsTables::StatsTable[Snowman::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
 	StatsTables::StatsTable[YetiBaby::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
 	
@@ -110,19 +113,20 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Gorgon::MapKey] = StatsIncrements(Stats(220, 48, 88));
 	StatsTables::StatsTable[Orthrus::MapKey] = StatsIncrements(Stats(175, 48, 88));
 
-	StatsTables::StatsTable[Ara::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Bard::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Blackbeard::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Chiron::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Elriel::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Gramps::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[QueenLiana::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Lycan::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Minos::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Polyphemus::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Matu::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Robin::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Toben::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[Ara::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Bard::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Blackbeard::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Chiron::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Elriel::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Gramps::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[QueenLiana::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Lycan::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Mara::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Minos::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Polyphemus::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Matu::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Robin::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Toben::MapKey] = StatsIncrements(Stats(10, 10, 10));
 
 	/***********
 		UR
@@ -142,217 +146,211 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[TigerMan::MapKey] = StatsIncrements(Stats(63, 13, 62));
 	StatsTables::StatsTable[Tigress::MapKey] = StatsIncrements(Stats(38, 11, 58));
 	
-	StatsTables::StatsTable[Appolo::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Ajax::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Angel::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Aphrodite::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Ares::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Athena::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Cleopatra::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Geryon::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Griffin::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Hades::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Hera::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Horus::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Poseidon::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Thor::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Zeus::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[Appolo::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Ajax::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Angel::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Aphrodite::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Ares::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Athena::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Cleopatra::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Geryon::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Griffin::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Hades::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Hera::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Horus::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Poseidon::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Thor::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Zeus::MapKey] = StatsIncrements(Stats(10, 10, 10));
 
 	/***********
 		DM
 	************/
 
-	StatsTables::StatsTable[Barbarian::MapKey] = StatsIncrements(Stats(55, 12, 80));
 	StatsTables::StatsTable[EarthElemental::MapKey] = StatsIncrements(Stats(55, 12, 80));
 	StatsTables::StatsTable[EarthGolem::MapKey] = StatsIncrements(Stats(55, 12, 80));
 	StatsTables::StatsTable[ForestGolem::MapKey] = StatsIncrements(Stats(55, 12, 80));
-	StatsTables::StatsTable[Gorilla::MapKey] = StatsIncrements(Stats(55, 12, 80));
-	StatsTables::StatsTable[Rhinoman::MapKey] = StatsIncrements(Stats(55, 12, 80));
-	StatsTables::StatsTable[Shaman::MapKey] = StatsIncrements(Stats(120, 80, 80));
-	StatsTables::StatsTable[SkeletalArcher::MapKey] = StatsIncrements(Stats(55, 12, 80));
-	StatsTables::StatsTable[SkeletalNecromancer::MapKey] = StatsIncrements(Stats(55, 12, 80));
-	StatsTables::StatsTable[SkeletalWarrior::MapKey] = StatsIncrements(Stats(55, 12, 80));
-	StatsTables::StatsTable[TikiGolem::MapKey] = StatsIncrements(Stats(55, 12, 80));
-	StatsTables::StatsTable[Krampus::MapKey] = StatsIncrements(Stats(55, 12, 80));
+	StatsTables::StatsTable[Rhinoman::MapKey] = StatsIncrements(Stats(75, 12, 240));
+	StatsTables::StatsTable[Shaman::MapKey] = StatsIncrements(Stats(40, 24, 80));
+	StatsTables::StatsTable[SkeletalArcher::MapKey] = StatsIncrements(Stats(55, 12, 96));
+	StatsTables::StatsTable[SkeletalNecromancer::MapKey] = StatsIncrements(Stats(55, 12, 99));
+	StatsTables::StatsTable[SkeletalWarrior::MapKey] = StatsIncrements(Stats(55, 12, 98));
+	StatsTables::StatsTable[TikiGolem::MapKey] = StatsIncrements(Stats(60, 12, 80));
+	StatsTables::StatsTable[Krampus::MapKey] = StatsIncrements(Stats(55, 12, 260));
 
-	StatsTables::StatsTable[Gecky::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Alder::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Bonnie::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Brock::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Burch::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Finch::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Fraya::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Jasper::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Mildred::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Olive::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[PrincessDawn::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Raka::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Sarude::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Shen::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[Bancroft::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Alder::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Bonnie::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Brock::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Burch::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Finch::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Fraya::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Godiva::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Jasper::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Mildred::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Olive::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[PrincessDawn::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Raka::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Ralston::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Sarude::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Shen::MapKey] = StatsIncrements(Stats(10, 10, 10));
 
 	/***********
 		CV
 	************/
 
-	StatsTables::StatsTable[Agnes::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Jack::MapKey] =StatsIncrements(Stats(16, 8, 32)); 
-	StatsTables::StatsTable[Reaper::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Scarecrow::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[SkeletalPirate::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Thug::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[VampireLord::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Vampiress::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Werewolf::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Wraith::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Zombie::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[ZombieElric::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[Agnes::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Barbarian::MapKey] = StatsIncrements(Stats(55, 12, 88));
+	StatsTables::StatsTable[Jack::MapKey] =StatsIncrements(Stats(10, 10, 10)); 
+	StatsTables::StatsTable[Reaper::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[SkeletalPirate::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Thug::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[VampireLord::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Vampiress::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Werewolf::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Wraith::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Zombie::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[ZombieElric::MapKey] = StatsIncrements(Stats(10, 10, 10));
 	
-	StatsTables::StatsTable[Knight::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Elric::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Garin::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Gaunt::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[KingRedsong::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[KingRedsongSlime::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Leopold::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Leroy::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Mabel::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Merlin::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[PrincessOpal::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Raven::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Rogas::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Thurstan::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Tyracius::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[Atreus::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Knight::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Elric::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Garin::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Gaunt::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Illia::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[KingRedsong::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[KingRedsongSlime::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Leon::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Leopold::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Leroy::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Mabel::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Merlin::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[PrincessOpal::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Raven::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Rogas::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Thurstan::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Tyracius::MapKey] = StatsIncrements(Stats(10, 10, 10));
 
 	/***********
 		BP
 	************/
 
-	StatsTables::StatsTable[Cryogen::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[FrostFiend::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[GoblinElf::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[IceGolem::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[PenguinGrunt::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[PenguinWarrior::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Santa::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[SnowFiend::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[ToySoldierGoblin::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[WaterElemental::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Yeti::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[Cryogen::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[FrostFiend::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[GoblinElf::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[IceGolem::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[PenguinGrunt::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[PenguinWarrior::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Santa::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[SnowFiend::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[ToySoldierGoblin::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[WaterElemental::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Yeti::MapKey] = StatsIncrements(Stats(10, 10, 10));
 	
-	StatsTables::StatsTable[Viking::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Snowman::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Aspen::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Aster::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Bodom::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Cookie::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Cooper::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Irmik::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Jingles::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Juniper::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Kringle::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Nessie::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[PrincessPepper::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Thatcher::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Theldar::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Tinsel::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[Viking::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Snowman::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Aspen::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Aster::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Bodom::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Cookie::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Cooper::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Irmik::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Jingles::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Juniper::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Kringle::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Nessie::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[PrincessPepper::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Thatcher::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Theldar::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Tinsel::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Ysara::MapKey] = StatsIncrements(Stats(10, 10, 10));
 
 	/***********
 		DH
 	************/
 
-	StatsTables::StatsTable[Asmodeus::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[DemonDragon::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[DemonGhost::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[DemonGrunt::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[DemonRogue::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[DemonShaman::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[DemonSwordsman::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[DemonWarrior::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[FireElemental::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[FireTiger::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[LavaGolem::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[CritterDemon::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[Asmodeus::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[DemonArcher::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[DemonDragon::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[DemonGhost::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[DemonGrunt::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[DemonRogue::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[DemonShaman::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[DemonSwordsman::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[DemonWarrior::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[FireElemental::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[FireTiger::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[LavaGolem::MapKey] = StatsIncrements(Stats(10, 10, 10));
 
-	StatsTables::StatsTable[Ash::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Brine::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Celeste::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Cindra::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Drak::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Igneus::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Lucifer::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Magnus::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Pan::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Ragnis::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Rupert::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Rusty::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Scaldor::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Mittens::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[Ash::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Brine::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Celeste::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Cindra::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Drak::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Igneus::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Lucifer::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Magnus::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Pan::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[QueenElise::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Ragnis::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Rupert::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Rusty::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Scaldor::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Mittens::MapKey] = StatsIncrements(Stats(10, 10, 10));
 
 	/***********
 		LC
 	************/
+	
+	StatsTables::StatsTable[Abomination::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Assassin::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[BoneKnight::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[BoneFiend::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Hunter::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[KingZul::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Lazarus::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Mystic::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[ReanimatedFighter::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[ReanimatedPig::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[SkeletalBaron::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[SkeletalCleaver::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[SkeletalKnight::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[SkeletalPriestess::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Undead::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Ghost::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Warlock::MapKey] = StatsIncrements(Stats(10, 10, 10));
 
-	StatsTables::StatsTable[BoneFiend::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Hunter::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[KingZul::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Lazarus::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Mystic::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[ReanimatedFighter::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[ReanimatedPig::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[SkeletalBaron::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[SkeletalCleaver::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[SkeletalKnight::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[SkeletalPriestess::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Undead::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Ghost::MapKey] = StatsIncrements(Stats(16, 8, 32));
-
-	StatsTables::StatsTable[Grim::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Amelia::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Azmus::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Dudly::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Garrick::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Johann::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Necron::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[PrincessNebea::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Roger::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Thion::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Ursula::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Vesuvius::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Viper::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Zana::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Zelina::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[Grim::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Amelia::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Azmus::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Dudly::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Garrick::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Johann::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Necron::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[PrincessNebea::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Roger::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Thion::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Ursula::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Vesuvius::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Viper::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Zana::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Zelina::MapKey] = StatsIncrements(Stats(10, 10, 10));
 
 	/***********
 		VS
 	************/
 	
-	StatsTables::StatsTable[Abomination::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Assassin::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[BoneKnight::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[EvilEye::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Exterminator::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Gargoyle::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[LightningGolem::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Shade::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[DemonArcher::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[VoidDemon::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Warlock::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[Exterminator::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[EvilEye::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[VoidDemon::MapKey] = StatsIncrements(Stats(10, 10, 10));
 	
-	StatsTables::StatsTable[Professor::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Robot::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Atreus::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Bancroft::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Godiva::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Illia::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Leon::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Mara::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Marcel::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Piper::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[QueenElise::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Radon::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Ralston::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Xenon::MapKey] = StatsIncrements(Stats(16, 8, 32));
-	StatsTables::StatsTable[Ysara::MapKey] = StatsIncrements(Stats(16, 8, 32));
+	StatsTables::StatsTable[Radon::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Xenon::MapKey] = StatsIncrements(Stats(10, 10, 10));
+
+	/***********
+		MAGES
+	************/
+	StatsTables::StatsTable[Marcel::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Piper::MapKey] = StatsIncrements(Stats(10, 10, 10));
 
 	/***********
 		MISC
@@ -363,6 +361,15 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[KillingMachine4::MapKey] = StatsIncrements(Stats(75, 0, 0));
 	StatsTables::StatsTable[KillingMachine5::MapKey] = StatsIncrements(Stats(75, 0, 0));
 	StatsTables::StatsTable[KillingMachine6::MapKey] = StatsIncrements(Stats(75, 0, 0));
+	
+	/***********
+		DEPRECATED
+	************/
+	StatsTables::StatsTable[Gargoyle::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Gorilla::MapKey] = StatsIncrements(Stats(55, 12, 80));
+	StatsTables::StatsTable[LightningGolem::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Scarecrow::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Shade::MapKey] = StatsIncrements(Stats(10, 10, 10));
 }
 
 StatsTables::~StatsTables()

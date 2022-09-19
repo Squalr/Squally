@@ -69,6 +69,7 @@ DeveloperScene::DeveloperScene()
 	}
 
 	/*
+	- Activate swim cooldown on opening save
 	- Hexus bugs:
 		- Win a hexus puzzle, next one will show massive row score deltas
 		- Leave button stuck visible after losing a puzzle
@@ -79,7 +80,7 @@ DeveloperScene::DeveloperScene()
 	- Camera harsh leaving camera targets (which?)
 	- Can get stuck on roof of maps (see UR 3_1)
 	- Icons on title screen buttons (at least options, to reduce pains of wrong language selection)
-	- Rerun “TODO” translations
+	- Rerun "TODO" translations
 	- Rhinoman fight too early. Need shaman enemy before, and maybe a puzzle/trap
 	- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Bars
 	- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
@@ -253,29 +254,26 @@ DeveloperScene::DeveloperScene()
 
 		// Traps: Crusher
 		// Finish restore power quest
+		// Need rhinoman voice to replace placeholder
 		// Needs Hexus fights
 		// Needs Hexus puzzles
-		// Skleletal archer arrow retrieval anim on shoot does not properly hide arrow
 		
 		/*
-		Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients - outgoing AND incoming damage)
-		Shaman				=> X 1_2 AND (Shadow Bomb)
+		X Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients - outgoing AND incoming damage)
+		X Shaman				=> X 1_2 AND (Shadow Bomb)
 		[B] Rhinoman		=> O 4_3 <recycle> (Name)
-		
 		Forest golem		=> X 4_0 ROL (REJUVINATE)
 		Earth golem			=> X 4_1 ROR (ROCKSLIDE)
 		Earth Elemental		=> X 4_2 OR (REGERATION)
-		
 		Skeletal Pirate		=> X 3_2 XOR (BLIND)
 		Skeletal Archer		=> X 2_1 PUSH / POP REG (MULTISHOT debuff - curse of the ancients - tick on targets)
 		Skeletal Warrior	=> X 2_0 PUSH [REG PTR] / POP REG (blessing of the ancients - outgoing damage)
 		Skeletal Necromancer => X 3_0 PUSH [REG PTR] / POP [REG PTR] (pact of the ancients - health link)
 		[B] Krampus			=> O 3_3 NOT (No idea)
-
 		Gorilla			Deprecate
 
 		Cypress			Home_Cypress, 3_x or 4_x (H, Spellbook)
-		Alder			Home_Alder (H?)
+		Alder			Technically in mage's guild Home_Alder (H?)
 		Jasper			Technically in mage's guild
 		Sarude			Technically in mage's guild
 		Burch			Zone 3_x (H)
@@ -284,12 +282,13 @@ DeveloperScene::DeveloperScene()
 		Shen			Town_Inn
 		Bonnie			Town_Inn (H) (non-vendor)
 		Raka			Zone 2_3 (Puzzle) (H)
+		Ralson
+		Godiva
+		Bancroft
 		Princess Dawn	Home_Dawn (H)
 		Mildred			Home_Mildred (H)
 		Olive			Zone 1_1 (H)
-
-		-- Stolen
-		Finch			Flight Master (Uh where?)
+		Finch			Flight Master (Uh where?) -- Stolen
 		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
@@ -328,34 +327,34 @@ DeveloperScene::DeveloperScene()
 		// Needs hexus puzzles
 
 		/*
-		- CV - See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
-			- Barbarian				1_x		=> jmp 			--
-			- Thug					1_x		=> J[E]CXZ		%[E]CX = 0
-			- ReanimatedFighter		1_x		=> J[N]E/Z		ZF
-			- WereWolf				dark	=> J[N]P[E]		PF		// Odd or even! PF = 0 odd. All combinations valid except JNPE
-			- Wraith				dark	=> J[N]S		SF		// Sign flag set if the FIRST operand is negative. Can be used to block negative damage.
-			- Reaper				dark	=> J[N]O		OF
-			- Vampiress				dark	=> J[N]G[E]		ZF/SF/OF
-			- VampireLord			dark	=> J[N]L[E]		ZF/SF/OF
-			- Abomination			2_x		=> J[N]B[E]		ZF/OF
-			- SkeletalBaron			2_x		=> J[N]A[E]		ZF/OF
-			- Jack					2_x		=> J[N]C		CF		// Immortality. Copy undying logic, but include a subtract.
-			- [B] Agnes				2_x 	=> 
-			
-			- Garin					=> Train
-			- King Redsong			=> Dark Throne
-			- King Redsong Slime	=> Throne
-			- Leopold				=> Alch
-			- Mabel					=> Study
-			- Merlin				=> XXXXX nope
-			- Princess Opal			=> Throne
-			- Raven					=> Inn
-			- Thurstan				=> Smith
-			- Gaunt					=> Main
-			- Leroy					=> Main
-			- Rogas					=> Main
-			- Tyracius				=> Main
-			- Zana					=> Main
+		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
+		- Barbarian				1_x		=> jmp 			--
+		- Thug					1_x		=> J[E]CXZ		%[E]CX = 0
+		- ReanimatedFighter		1_x		=> J[N]E/Z		ZF
+		- WereWolf				dark	=> J[N]P[E]		PF		// Odd or even! PF = 0 odd. All combinations valid except JNPE
+		- Wraith				dark	=> J[N]S		SF		// Sign flag set if the FIRST operand is negative. Can be used to block negative damage.
+		- Reaper				dark	=> J[N]O		OF
+		- Vampiress				dark	=> J[N]G[E]		ZF/SF/OF
+		- VampireLord			dark	=> J[N]L[E]		ZF/SF/OF
+		- Abomination			2_x		=> J[N]B[E]		ZF/OF
+		- SkeletalBaron			2_x		=> J[N]A[E]		ZF/OF
+		- Jack					2_x		=> J[N]C		CF		// Immortality. Copy undying logic, but include a subtract.
+		- [B] Agnes				2_x 	=> 
+		
+		- Garin					=> Train
+		- King Redsong			=> Dark Throne
+		- King Redsong Slime	=> Throne
+		- Leopold				=> Alch
+		- Mabel					=> Study
+		- Merlin				=> XXXXX nope
+		- Princess Opal			=> Throne
+		- Raven					=> Inn
+		- Thurstan				=> Smith
+		- Gaunt					=> Main
+		- Leroy					=> Main
+		- Rogas					=> Main
+		- Tyracius				=> Main
+		- Zana					=> Main
 		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
@@ -553,7 +552,7 @@ DeveloperScene::DeveloperScene()
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 8 - bswap? lol
+	// CHAPTER 8 - bswap? lol. Could retrofit Setz instructions, maybe build out this zone after all.
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Void Star");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();

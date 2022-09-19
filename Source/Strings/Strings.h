@@ -10269,6 +10269,66 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_RegisterXmm3() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_BrittleBones_BrittleBones : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_BrittleBones_BrittleBones* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_BrittleBones_BrittleBones();
+		virtual ~Menus_Hacking_Abilities_Debuffs_BrittleBones_BrittleBones() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentDamageSetToValue : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentDamageSetToValue* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentDamageSetToValue();
+		virtual ~Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentDamageSetToValue() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead();
+		virtual ~Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_BrittleBones_Register : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_BrittleBones_Register* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_BrittleBones_Register();
+		virtual ~Menus_Hacking_Abilities_Debuffs_BrittleBones_Register() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_BrokenBlade_BrokenBlade : public LocalizedString
 	{
 	public:
