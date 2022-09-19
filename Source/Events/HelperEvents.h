@@ -2,6 +2,7 @@
 #include <functional>
 #include <string>
 
+class GameObject;
 class PlatformerEntity;
 class MinMaxPool;
 
@@ -10,6 +11,7 @@ class HelperEvents
 public:
 	static const std::string EventFindScrappy;
 	static const std::string EventRequestPickPocket;
+	static const std::string EventRequestRepair;
 
 	struct RequestPickPocketArgs
 	{
@@ -24,6 +26,19 @@ public:
 		}
 	};
 
+	struct RequestRepairArgs
+	{
+		GameObject* target = nullptr;
+		std::string repairEvent;
+		std::string saveKeyRepaired;
+
+		RequestRepairArgs(GameObject* target, std::string repairEvent, std::string saveKeyRepaired)
+			: target(target), repairEvent(repairEvent), saveKeyRepaired(saveKeyRepaired)
+		{
+		}
+	};
+
 	static void TriggerFindScrappy();
 	static void TriggerRequestPickPocket(RequestPickPocketArgs args);
+	static void TriggerRequestRepair(RequestRepairArgs args);
 };

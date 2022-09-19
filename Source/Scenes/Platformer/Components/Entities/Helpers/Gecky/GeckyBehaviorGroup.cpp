@@ -9,6 +9,7 @@
 #include "Scenes/Platformer/Components/Entities/Helpers/Gecky/GeckyEqBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Gecky/GeckyHealthBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Gecky/GeckyManaBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/Gecky/GeckyRepairBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/HelperFollowMovementBehavior.h"
 
 using namespace cocos2d;
@@ -29,6 +30,7 @@ GeckyBehaviorGroup::GeckyBehaviorGroup(GameObject* owner) : super(owner, {
 	GeckyEqBehavior::create(owner),
 	GeckyHealthBehavior::create(owner),
 	GeckyManaBehavior::create(owner),
+	GeckyRepairBehavior::create(owner),
 	HelperFollowMovementBehavior::create(owner),
 	})
 {

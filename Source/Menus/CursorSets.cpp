@@ -26,6 +26,11 @@ void CursorSets::RegisterCursorSets()
 		Mouse::CursorSet(UIResources::Cursors_MouseIdle, UIResources::Cursors_Store, UIResources::Cursors_Store, UIResources::Cursors_Store)
 	);
 
+	Mouse::getInstance()->registerCursorSet(
+		CursorSet::Repair,
+		Mouse::CursorSet(UIResources::Cursors_MouseIdle, UIResources::Cursors_Craft, UIResources::Cursors_Craft, UIResources::Cursors_Craft)
+	);
+
 	CursorSets::SetActiveCursorSet(CursorSet::Default);
 }
 

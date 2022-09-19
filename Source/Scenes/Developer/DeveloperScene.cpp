@@ -254,7 +254,6 @@ DeveloperScene::DeveloperScene()
 
 		// Traps: Crusher
 		// Finish restore power quest
-		// Need rhinoman voice to replace placeholder
 		// Needs some sort of repair ability on Gecky
 		// Needs Hexus fights
 		// Needs Hexus puzzles
@@ -262,8 +261,7 @@ DeveloperScene::DeveloperScene()
 		/*
 		X Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients - outgoing AND incoming damage)
 		X Shaman				=> X 1_2 AND (Shadow Bomb)
-		X [B] Rhinoman			=> O 4_3 AND debuff (Brittle Bones)
-		
+		X [B] Rhinoman			=> X 4_3 AND debuff (Brittle Bones)
 		Forest golem		=> X 4_0 ROL (REJUVINATE)
 		Earth golem			=> X 4_1 ROR (ROCKSLIDE)
 		Earth Elemental		=> X 4_2 OR (REGERATION)
