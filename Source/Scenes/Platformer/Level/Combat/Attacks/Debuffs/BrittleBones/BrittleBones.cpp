@@ -53,7 +53,7 @@ BrittleBones* BrittleBones::create(PlatformerEntity* caster, PlatformerEntity* t
 }
 
 BrittleBones::BrittleBones(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_RunePurple, AbilityType::Physical, BuffData(BrittleBones::Duration, BrittleBones::BrittleBonesIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_CrossbonesDiseased, AbilityType::Physical, BuffData(BrittleBones::Duration, BrittleBones::BrittleBonesIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 
@@ -95,8 +95,8 @@ void BrittleBones::registerHackables()
 			HackableCode::HackableCodeInfo(
 				BrittleBones::HackIdentifierBrittleBones,
 				Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_BrittleBones::create(),
-				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_RunePurple,
+				HackableBase::HackBarColor::Green,
+				UIResources::Menus_Icons_CrossbonesDiseased,
 				LazyNode<HackablePreview>::create([=](){ return BrittleBonesGenericPreview::create(); }),
 				{
 					{
@@ -110,20 +110,10 @@ void BrittleBones::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterEbx::create(), Strings::Menus_Hacking_RegisterEax::create() })) + 
-						"push eax\n" +
-						"pop ebx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentDamageSetToValue::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(BrittleBones::DamageDelt)))) +
+						"and eax, 7\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterRbx::create(), Strings::Menus_Hacking_RegisterRax::create() })) + 
-						"push rax\n" +
-						"pop rbx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentDamageSetToValue::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(BrittleBones::DamageDelt)))) +
+						"and rax, 7\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead::create())
 					),
 				},
@@ -149,14 +139,12 @@ void BrittleBones::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingAr
 
 	this->applyBrittleBones();
 
-	// No bounding
-	/*
 	// Bound multiplier in either direction
 	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(MathUtils::clamp(
 		Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt(),
 		-std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * BrittleBones::MaxMultiplier),
 		std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * BrittleBones::MaxMultiplier)
-	));*/
+	));
 
 	*(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 }
@@ -169,18 +157,15 @@ NO_OPTIMIZE void BrittleBones::applyBrittleBones()
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
-	ASM(push ZBX);
 
 	ASM_MOV_REG_VAR(eax, currentDamageDealtLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSE_OF_THE_ANCIENTS);
-	ASM(push ZAX);
-	ASM(pop ZBX);
+	ASM(and ZAX, 7);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, ebx);
-	ASM(pop ZBX);
+	ASM_MOV_VAR_REG(currentDamageDealtLocal, eax);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 

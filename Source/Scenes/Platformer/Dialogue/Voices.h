@@ -12,6 +12,7 @@ public:
 		Orc,
 		Demon,
 		Ghost,
+		Rhino,
 	};
 
 	static std::string GetNextVoiceShort(VoiceType voiceType = VoiceType::Human);
@@ -47,4 +48,6 @@ private:
 	static std::string GetNextVoiceGhostMedium();
 	static std::string GetNextVoiceGhostLong();
 	static std::string GetNextVoiceGhostQuestion();
+
+	static std::string GetNextVoiceRhinoShort();
 };

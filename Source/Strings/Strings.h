@@ -10284,21 +10284,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_BrittleBones_BrittleBones() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentDamageSetToValue : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentDamageSetToValue* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentDamageSetToValue();
-		virtual ~Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentDamageSetToValue() = default;
-	};
-
 	class Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead : public LocalizedString
 	{
 	public:

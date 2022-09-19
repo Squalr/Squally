@@ -177,6 +177,7 @@ const std::string SoundResources::Platformer_Entities_Pig_PigGrunt1 = "Private/S
 const std::string SoundResources::Platformer_Entities_Pig_PigGrunt2 = "Private/Sounds/Platformer/Entities/Pig/PigGrunt2.ogg";
 const std::string SoundResources::Platformer_Entities_Pig_PigSqueal1 = "Private/Sounds/Platformer/Entities/Pig/PigSqueal1.ogg";
 const std::string SoundResources::Platformer_Entities_Pig_PigSqueelDeep1 = "Private/Sounds/Platformer/Entities/Pig/PigSqueelDeep1.ogg";
+const std::string SoundResources::Platformer_Entities_Rhino_ChatterShort1 = "Private/Sounds/Platformer/Entities/Rhino/ChatterShort1.ogg";
 const std::string SoundResources::Platformer_Entities_Seagull_FlyAway = "Private/Sounds/Platformer/Entities/Seagull/FlyAway.ogg";
 const std::string SoundResources::Platformer_Entities_Seagull_Squawk1 = "Private/Sounds/Platformer/Entities/Seagull/Squawk1.ogg";
 const std::string SoundResources::Platformer_Entities_Seagull_Squawk2 = "Private/Sounds/Platformer/Entities/Seagull/Squawk2.ogg";

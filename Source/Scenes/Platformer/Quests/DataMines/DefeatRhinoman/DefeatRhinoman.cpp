@@ -141,7 +141,7 @@ void DefeatRhinoman::runCinematicSequencePt1()
 				{
 					this->runCinematicSequencePt2();
 				},
-				Voices::GetNextVoiceMedium(Voices::VoiceType::Demon), // TODO
+				Voices::GetNextVoiceShort(Voices::VoiceType::Rhino),
 				false
 			));
 		}),
