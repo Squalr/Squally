@@ -27174,6 +27174,21 @@ namespace Strings
 		virtual ~Platformer_Objects_Doors_Locked() = default;
 	};
 
+	class Platformer_Objects_Doors_Repairable : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Doors_Repairable* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Doors_Repairable();
+		virtual ~Platformer_Objects_Doors_Repairable() = default;
+	};
+
 	class Platformer_Objects_Doors_Unlock : public LocalizedString
 	{
 	public:

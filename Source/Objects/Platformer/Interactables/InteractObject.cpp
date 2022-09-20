@@ -87,9 +87,13 @@ InteractObject::InteractObject(
 	{
 		this->lockedMenu = LazyNode<InteractMenu>::create([=](){ return InteractMenu::create(Strings::Platformer_Objects_Doors_Closed::create(), interactColor, offset); });
 	}
+	else if (lockedText == "repairable")
+	{
+		this->lockedMenu = LazyNode<InteractMenu>::create([=](){ return InteractMenu::create(Strings::Platformer_Objects_Doors_Repairable::create(), interactColor, offset); });
+	}
 	else if (lockedText == "broken")
 	{
-		this->lockedMenu = LazyNode<InteractMenu>::create([=](){ return nullptr; });
+		this->lockedMenu = LazyNode<InteractMenu>::create([=](){ return InteractMenu::create(Strings::Platformer_Objects_Doors_Broken::create(), interactColor, offset); });
 	}
 	else if (lockedText == "none")
 	{

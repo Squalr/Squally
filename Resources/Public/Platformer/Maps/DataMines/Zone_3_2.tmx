@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="52" height="26" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="1770">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="52" height="26" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="1770">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -360,7 +360,7 @@
   <object id="804" name="edge-portal" type="object" x="3.8" y="2438.27" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="DataMines/Zone_2_1"/>
+    <property name="map" value="DataMines/Zone_3_1"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
@@ -374,7 +374,7 @@
   <object id="1742" name="edge-portal" type="object" x="6454.04" y="2440" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
-    <property name="map" value="DataMines/Zone_2_3"/>
+    <property name="map" value="DataMines/Zone_3_3"/>
     <property name="transition" value="right"/>
    </properties>
   </object>

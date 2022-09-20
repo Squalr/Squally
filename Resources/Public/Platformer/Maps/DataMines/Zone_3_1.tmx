@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="52" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="1623">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="52" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="1623">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -572,7 +572,7 @@
   <object id="804" name="edge-portal" type="object" x="3.8" y="2950.27" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="DataMines/Zone_2_0"/>
+    <property name="map" value="DataMines/Zone_3_0"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
@@ -609,14 +609,16 @@
   <object id="1618" name="mine-cart" type="object" x="2413.58" y="1986.79" width="240" height="184">
    <properties>
     <property name="color" value="blue"/>
+    <property name="components" value="repairable"/>
     <property name="direction" value="right"/>
+    <property name="locked-text-key" value="repairable"/>
     <property name="tag" value="cart-B"/>
    </properties>
   </object>
   <object id="1620" name="edge-portal" type="object" x="6456.04" y="1682.67" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
-    <property name="map" value="DataMines/Zone_2_2"/>
+    <property name="map" value="DataMines/Zone_3_2"/>
     <property name="transition" value="right"/>
    </properties>
   </object>

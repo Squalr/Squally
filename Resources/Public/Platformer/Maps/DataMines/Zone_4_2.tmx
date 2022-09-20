@@ -543,7 +543,7 @@
   <object id="804" name="edge-portal" type="object" x="10038.5" y="1159.6" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
-    <property name="map" value="DataMines/Zone_3_1"/>
+    <property name="map" value="DataMines/Zone_4_1"/>
     <property name="transition" value="cart-right"/>
    </properties>
   </object>

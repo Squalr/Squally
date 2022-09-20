@@ -551,13 +551,13 @@
   </properties>
   <object id="1699" name="portal" type="object" x="4947.21" y="1396.82" width="256" height="256">
    <properties>
-    <property name="map" value="DataMines/Zone_3_2"/>
+    <property name="map" value="DataMines/Zone_4_2"/>
     <property name="transition" value="tiger-right"/>
    </properties>
   </object>
   <object id="1704" name="portal" type="object" x="337.21" y="1390.79" width="256" height="256">
    <properties>
-    <property name="map" value="DataMines/Zone_3_2"/>
+    <property name="map" value="DataMines/Zone_4_2"/>
     <property name="transition" value="tiger-left"/>
    </properties>
   </object>

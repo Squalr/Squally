@@ -470,6 +470,7 @@
   <object id="1106" name="lever" type="object" x="7809.14" y="3404.59" width="177" height="205">
    <properties>
     <property name="components" value="repairable"/>
+    <property name="locked-text-key" value="repairable"/>
     <property name="send-event" value="lever"/>
    </properties>
   </object>

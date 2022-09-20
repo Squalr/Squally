@@ -69,6 +69,7 @@ DeveloperScene::DeveloperScene()
 	}
 
 	/*
+	- Mounts should apply to helpers so they aren't awkwardly lagging behind
 	- Activate swim cooldown on opening save
 	- Hexus bugs:
 		- Win a hexus puzzle, next one will show massive row score deltas
@@ -254,7 +255,8 @@ DeveloperScene::DeveloperScene()
 
 		// Traps: Crusher
 		// Finish restore power quest
-		// Needs some sort of repair ability on Gecky
+		// 	- Add some sort of repairable power generator
+		// Allow helper swapping in all inns
 		// Needs Hexus fights
 		// Needs Hexus puzzles
 		
