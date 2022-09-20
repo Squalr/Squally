@@ -83,6 +83,7 @@
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemHexusCards.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemPickPocket.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemPotions.h"
+#include "Objects/Platformer/Interactables/HelpTotems/HelpTotemRepair.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemSwimHack.h"
 #include "Objects/Platformer/Interactables/LifeStone.h"
 #include "Objects/Platformer/Interactables/Lights/Torch.h"

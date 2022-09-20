@@ -16,6 +16,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Interact/InteractMenu.h"
+#include "Scenes/Platformer/Components/Objects/RepairableBehavior.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -286,7 +287,19 @@ void InteractObject::unlock(bool animate)
 	this->isLocked = false;
 	this->updateInteractMenuVisibility();
 
-	this->broadcastMapEvent(this->sendEvent, ValueMap());
+	bool shouldBroadcastEvent = true;
+
+	// A small work-around for repairable interactable objects. These should not broadcast events when unlocked.
+	// This is a bit hacky, but it was the best way to implement this without potentially damaging other use-cases and having to retest the entire game.
+	this->getComponent<RepairableBehavior>([&](RepairableBehavior* behavior)
+	{
+		shouldBroadcastEvent = false;
+	});
+
+	if (shouldBroadcastEvent)
+	{
+		this->broadcastMapEvent(this->sendEvent, ValueMap());
+	}
 }
 
 void InteractObject::setInteractType(InteractType interactType)

@@ -31,8 +31,12 @@ protected:
 private:
 	typedef Portal super;
 
-	cocos2d::Sprite* doorLocked = nullptr;
+	cocos2d::Sprite* back = nullptr;
+	SmartClippingNode* doorClip = nullptr;
 	cocos2d::Sprite* door = nullptr;
 
+	WorldSound* doorOpenSound = nullptr;
+
+	static const float DoorOpenDelta;
 	static const std::string UnlockedSaveKey;
 };

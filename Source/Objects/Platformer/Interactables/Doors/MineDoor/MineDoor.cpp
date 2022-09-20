@@ -13,11 +13,13 @@
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/DecorResources.h"
+#include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
 
 using namespace cocos2d;
 
 const std::string MineDoor::MapKey = "mine-door";
+const float MineDoor::DoorOpenDelta = 320.0f;
 const std::string MineDoor::UnlockedSaveKey = "MINE_DOOR_UNLOCKED";
 
 MineDoor* MineDoor::create(ValueMap& properties)
@@ -31,11 +33,16 @@ MineDoor* MineDoor::create(ValueMap& properties)
 
 MineDoor::MineDoor(ValueMap& properties) : super(properties, CSize(192.0f, 528.0f), Vec2(0.0f, 0.0f))
 {
-	this->doorLocked = Sprite::create(DecorResources::Mines_MineDoorClosed);
-	this->door = Sprite::create(DecorResources::Mines_MineDoorTunnel);
+	this->doorOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_StoneWall1);
+	this->back = Sprite::create(DecorResources::Mines_MineDoorTunnel);
+	this->door = Sprite::create(DecorResources::Mines_MineDoorClosed);
+	this->doorClip = SmartClippingNode::create(this->door, CSize(212.0f, 386.0f));
+	
 
-	this->contentNode->addChild(this->doorLocked);
-	this->contentNode->addChild(this->door);
+	this->contentNode->addChild(this->back);
+	this->contentNode->addChild(this->doorClip);
+
+	this->addChild(this->doorOpenSound);
 }
 
 MineDoor::~MineDoor()
@@ -59,6 +66,8 @@ void MineDoor::onEnter()
 void MineDoor::initializePositions()
 {
 	super::initializePositions();
+
+	this->doorClip->setPosition(Vec2(0.0f, -66.0f));
 }
 
 void MineDoor::lock(bool animate)
@@ -67,8 +76,19 @@ void MineDoor::lock(bool animate)
 
 	this->saveObjectState(MineDoor::UnlockedSaveKey, Value(false));
 	
-	this->door->setVisible(false);
-	this->doorLocked->setVisible(true);
+	float currentProgress = this->door->getPositionY() / MineDoor::DoorOpenDelta;
+
+	if (animate)
+	{
+		this->door->stopAllActions();
+		this->door->runAction(MoveTo::create(5.0f * currentProgress, Vec2::ZERO));
+
+		this->doorOpenSound->play();
+	}
+	else
+	{
+		this->door->setPosition(Vec2::ZERO);
+	}
 }
 
 void MineDoor::unlock(bool animate)
@@ -77,6 +97,16 @@ void MineDoor::unlock(bool animate)
 
 	this->saveObjectState(MineDoor::UnlockedSaveKey, Value(true));
 
-	this->door->setVisible(true);
-	this->doorLocked->setVisible(false);
+	float currentProgress = 1.0f - this->door->getPositionY() / MineDoor::DoorOpenDelta;
+
+	if (animate)
+	{
+		this->door->stopAllActions();
+		this->door->runAction(MoveTo::create(5.0f * currentProgress, Vec2(0.0f, MineDoor::DoorOpenDelta)));
+		this->doorOpenSound->play();
+	}
+	else
+	{
+		this->door->setPosition(Vec2(0.0f, MineDoor::DoorOpenDelta));
+	}
 }

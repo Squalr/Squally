@@ -83,20 +83,6 @@ void RestorePower::onLoad(QuestState questState)
 			this->cartLift->setMoving(false);
 		}
 	}, RestorePower::TagCartLiftPowered);
-
-	ObjectEvents::WatchForObject<MineDoor>(this, [=](MineDoor* mineDoor)
-	{
-		this->mineDoor = mineDoor;
-
-		if (questState != QuestState::Active && questState != QuestState::ActiveThroughSkippable)
-		{
-			this->mineDoor->lock();
-		}
-		else
-		{
-			this->mineDoor->unlock();
-		}
-	}, MineDoor::MapKey);
 }
 
 void RestorePower::onActivate(bool isActiveThroughSkippable)

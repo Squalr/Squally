@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1107">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1110">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -389,7 +389,21 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="992" name="mines" type="terrain" x="6458.61" y="2925.32" width="3673.34" height="1475.69"/>
+  <object id="992" name="mines" type="terrain" x="6458.61" y="2925.32" width="3673.34" height="1475.69">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1107" name="mines" type="terrain" x="4493.46" y="1240.3" width="522.66" height="3702.55">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1108" name="mines" type="terrain" x="4490.67" y="4103.39" width="2663.87" height="371.883">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="135" name="rails -6 bg">
   <properties>
@@ -410,8 +424,7 @@
   <object id="1071" name="mine-door" type="object" x="8056.26" y="3222.88" width="435" height="389">
    <properties>
     <property name="listen-event" value="lever"/>
-    <property name="map" value="DataMines/Zone_2_0"/>
-    <property name="tag" value="mine-door"/>
+    <property name="map" value="DataMines/Zone_3_0"/>
     <property name="transition" value="passage-right"/>
    </properties>
   </object>
@@ -454,12 +467,13 @@
    </properties>
   </object>
   <object id="1056" name="mines" type="terrain" x="8537.2" y="1547.73" width="229.08" height="3187.69"/>
-  <object id="1106" name="lever" type="object" x="7375.14" y="3406.59" width="177" height="205">
+  <object id="1106" name="lever" type="object" x="7809.14" y="3404.59" width="177" height="205">
    <properties>
     <property name="components" value="repairable"/>
     <property name="send-event" value="lever"/>
    </properties>
   </object>
+  <object id="1109" name="help-totem-repair" type="object" x="7044" y="3362" width="248" height="248"/>
  </objectgroup>
  <objectgroup id="142" name="entities -6">
   <properties>
@@ -473,7 +487,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="2.5"/>
+   <property name="zoom" type="float" value="1"/>
   </properties>
   <object id="991" name="spawn" type="object" x="8202.26" y="3484.88" width="128" height="128">
    <properties>
@@ -662,7 +676,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="62" name="decor -3" visible="0">
+ <objectgroup id="62" name="decor -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -676,6 +690,7 @@
   <object id="882" name="Mines/CaveHouse1" type="decor" x="6729.91" y="2572.83" width="1017" height="1110">
    <properties>
     <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
   </object>
   <object id="1082" name="Mines/CaveHouse5" type="decor" x="9038.82" y="2570.49" width="812" height="755">
@@ -689,7 +704,12 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1077" name="Generic/SignBar" type="decor" x="7098.74" y="3089.86" width="252" height="265"/>
+  <object id="1077" name="Generic/SignBar" type="decor" x="7098.74" y="3089.86" width="252" height="265">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="97" name="objects -3">
   <properties>
@@ -936,7 +956,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor midground" visible="0">
+ <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -957,7 +977,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="60" name="decor fg" visible="0">
+ <objectgroup id="60" name="decor fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>

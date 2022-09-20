@@ -4,7 +4,6 @@
 
 class CartLift;
 class Guano;
-class MineDoor;
 class QuestLine;
 class Scrappy;
 class Squally;
@@ -30,7 +29,6 @@ private:
 	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
-	MineDoor* mineDoor = nullptr;
 	CartLift* cartLift = nullptr;
 
 	static const std::string TagCartLiftPowered;
