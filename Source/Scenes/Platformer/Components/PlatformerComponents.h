@@ -54,7 +54,7 @@
 #include "Scenes/Platformer/Components/Objects/Illusions/DispelIllusionBehavior.h"
 #include "Scenes/Platformer/Components/Objects/Illusions/IllusionBehavior.h"
 #include "Scenes/Platformer/Components/Objects/LockedPortal.h"
-#include "Scenes/Platformer/Components/Objects/RepairableBehaviorGroup.h"
+#include "Scenes/Platformer/Components/Objects/RepairableBehavior.h"
 #include "Scenes/Platformer/Components/Objects/Petrification/PetrificationLinkBehavior.h"
 #include "Scenes/Platformer/Components/IOU/FirstIOUFound.h"
 #include "Scenes/Platformer/Components/Squalr/KnownValueScanDouble/KnownValueBarDoubleBehavior.h"

@@ -2,7 +2,7 @@
 #include <functional>
 #include <string>
 
-class GameObject;
+class InteractObject;
 class PlatformerEntity;
 class MinMaxPool;
 
@@ -28,12 +28,13 @@ public:
 
 	struct RequestRepairArgs
 	{
-		GameObject* target = nullptr;
+		InteractObject* target = nullptr;
+		std::function<void()> onRepaired = nullptr;
 		std::string repairEvent;
 		std::string saveKeyRepaired;
 
-		RequestRepairArgs(GameObject* target, std::string repairEvent, std::string saveKeyRepaired)
-			: target(target), repairEvent(repairEvent), saveKeyRepaired(saveKeyRepaired)
+		RequestRepairArgs(InteractObject* target, std::function<void()> onRepaired, std::string repairEvent, std::string saveKeyRepaired)
+			: target(target), onRepaired(onRepaired), repairEvent(repairEvent), saveKeyRepaired(saveKeyRepaired)
 		{
 		}
 	};

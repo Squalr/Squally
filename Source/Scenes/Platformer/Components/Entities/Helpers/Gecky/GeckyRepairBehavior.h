@@ -2,8 +2,10 @@
 
 #include "Engine/Components/GameComponent.h"
 
+class InteractObject;
 class MinMaxPool;
 class PlatformerEntity;
+class Sound;
 
 class GeckyRepairBehavior : public GameComponent
 {
@@ -23,10 +25,11 @@ protected:
 private:
 	typedef GameComponent super;
 
-	void tryRepair(GameObject* target, std::string repairEvent, std::string repairSaveKey);
+	void tryRepair(InteractObject* target, std::function<void()> onRepaired, std::string repairEvent, std::string repairSaveKey);
 	void endRepair();
 
 	PlatformerEntity* entity = nullptr;
-	GameObject* target = nullptr;
+	InteractObject* target = nullptr;
+	Sound* sound = nullptr;
 	bool isRepairing = false;
 };

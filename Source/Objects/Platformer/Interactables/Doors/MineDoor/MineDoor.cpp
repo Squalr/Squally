@@ -36,7 +36,7 @@ MineDoor::MineDoor(ValueMap& properties) : super(properties, CSize(192.0f, 528.0
 	this->doorOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_StoneWall1);
 	this->back = Sprite::create(DecorResources::Mines_MineDoorTunnel);
 	this->door = Sprite::create(DecorResources::Mines_MineDoorClosed);
-	this->doorClip = SmartClippingNode::create(this->door, CSize(212.0f, 386.0f));
+	this->doorClip = SmartClippingNode::create(this->door, CSize(212.0f, 290.0f));
 	
 
 	this->contentNode->addChild(this->back);
@@ -67,7 +67,8 @@ void MineDoor::initializePositions()
 {
 	super::initializePositions();
 
-	this->doorClip->setPosition(Vec2(0.0f, -66.0f));
+	this->doorClip->setPosition(Vec2(0.0f, -50.0f));
+	this->door->setPosition(Vec2(0.0f, 50.0f));
 }
 
 void MineDoor::lock(bool animate)

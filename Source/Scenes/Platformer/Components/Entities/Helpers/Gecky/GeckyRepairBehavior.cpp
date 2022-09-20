@@ -10,15 +10,18 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/MinMaxPool.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/HelperEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Interactables/InteractObject.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
 
@@ -37,12 +40,15 @@ GeckyRepairBehavior* GeckyRepairBehavior::create(GameObject* owner)
 
 GeckyRepairBehavior::GeckyRepairBehavior(GameObject* owner) : super(owner)
 {
+	this->sound = Sound::create(SoundResources::Notifications_NotificationGood1);
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
 	}
+
+	this->addChild(this->sound);
 }
 
 GeckyRepairBehavior::~GeckyRepairBehavior()
@@ -57,7 +63,7 @@ void GeckyRepairBehavior::onLoad()
 
 		if (args != nullptr && !this->isRepairing)
 		{
-			this->tryRepair(args->target, args->repairEvent, args->saveKeyRepaired);
+			this->tryRepair(args->target, args->onRepaired, args->repairEvent, args->saveKeyRepaired);
 		}
 	}));
 
@@ -75,7 +81,7 @@ void GeckyRepairBehavior::update(float dt)
 	}
 }
 
-void GeckyRepairBehavior::tryRepair(GameObject* target, std::string repairEvent, std::string repairSaveKey)
+void GeckyRepairBehavior::tryRepair(InteractObject* target, std::function<void()> onRepaired, std::string repairEvent, std::string repairSaveKey)
 {
 	if (this->entity->getRuntimeStateOrDefault(StateKeys::PatrolHijacked, Value(false)).asBool())
 	{
@@ -86,7 +92,7 @@ void GeckyRepairBehavior::tryRepair(GameObject* target, std::string repairEvent,
 	this->target = target;
 	this->entity->setState(StateKeys::PatrolHijacked, Value(true));
 	this->entity->setState(StateKeys::PatrolSourceX, Value(GameUtils::getWorldCoords(this->entity).x));
-	this->entity->setState(StateKeys::PatrolDestinationX, Value(GameUtils::getWorldCoords(target).x));
+	this->entity->setState(StateKeys::PatrolDestinationX, Value(GameUtils::getWorldCoords(this->target).x));
 
 	this->entity->listenForStateWriteOnce(StateKeys::PatrolDestinationReached, [=](Value value)
 	{
@@ -96,7 +102,14 @@ void GeckyRepairBehavior::tryRepair(GameObject* target, std::string repairEvent,
 			this->endRepair();
 
 			ObjectEvents::TriggerBroadCastMapObjectState(repairEvent, ValueMap());
-			target->saveObjectState(repairSaveKey, Value(true));
+			this->target->saveObjectState(repairSaveKey, Value(true));
+			this->target->unlock(true);
+			this->sound->play();
+
+			if (onRepaired != nullptr)
+			{
+				onRepaired();
+			}
 		}
 	});
 

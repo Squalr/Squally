@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class InteractObject;
+class SmartParticles;
 class Squally;
 
 class RepairableBehavior : public GameComponent
@@ -38,6 +39,8 @@ private:
 
 	InteractObject* interactObject = nullptr;
 	Squally* squally = nullptr;
+	SmartParticles* smokeParticles = nullptr;
+	cocos2d::Sprite* iconGlow = nullptr;
 	cocos2d::Sprite* repairIcon = nullptr;
 	std::string repairEvent;
 

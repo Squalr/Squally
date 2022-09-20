@@ -14,6 +14,7 @@ public:
 	void setClickableCallback(std::function<bool()> canClickCallback);
 	void clearObjectClickCallbacks();
 	ClickableNode* getHitbox();
+	cocos2d::CSize getObjectSize() const;
 
 	static const std::string MapKey;
 
@@ -30,5 +31,6 @@ private:
 
 	ClickableNode* clickHitbox = nullptr;
 	cocos2d::Vec3 savedWorldCoords;
+	cocos2d::CSize objectSize;
 	std::function<bool()> canClickCallback = nullptr;
 };

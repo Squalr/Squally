@@ -1,6 +1,7 @@
 #include "ObjectSelectionBehavior.h"
 
 #include "cocos/base/CCInputEvents.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Input/ClickableNode.h"
@@ -31,12 +32,15 @@ ObjectSelectionBehavior::ObjectSelectionBehavior(GameObject* owner) : super(owne
 		this->invalidate();
 	}
 
+	this->objectSize = CSize(
+		GameUtils::getKeyOrDefault(this->owner->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
+		GameUtils::getKeyOrDefault(this->owner->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
+	);
+
 	this->clickHitbox = ClickableNode::create(UIResources::EmptyImage, UIResources::EmptyImage);
 	
-	this->clickHitbox->setContentSize(this->owner->getContentSize());
-	this->clickHitbox->setAnchorPoint(Vec2(0.5f, 0.0f));
+	this->clickHitbox->setContentSize(objectSize);
 	this->clickHitbox->disableInteraction();
-	this->clickHitbox->setPosition(Vec2(this->owner->getContentSize() / 2.0f));
 
 	this->addChild(this->clickHitbox);
 }
@@ -128,4 +132,9 @@ void ObjectSelectionBehavior::clearObjectClickCallbacks()
 ClickableNode* ObjectSelectionBehavior::getHitbox()
 {
 	return this->clickHitbox;
+}
+
+CSize ObjectSelectionBehavior::getObjectSize() const
+{
+	return this->objectSize;
 }
