@@ -27114,6 +27114,21 @@ namespace Strings
 		virtual ~Platformer_Objectives_UnderflowRuins_UR_SolvePuzzle() = default;
 	};
 
+	class Platformer_Objects_Doors_Broken : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Doors_Broken* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Doors_Broken();
+		virtual ~Platformer_Objects_Doors_Broken() = default;
+	};
+
 	class Platformer_Objects_Doors_Closed : public LocalizedString
 	{
 	public:

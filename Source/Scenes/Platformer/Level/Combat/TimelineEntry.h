@@ -2,6 +2,7 @@
 
 #include "Engine/SmartNode.h"
 
+#include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/AbilityType.h"
 
 namespace cocos2d

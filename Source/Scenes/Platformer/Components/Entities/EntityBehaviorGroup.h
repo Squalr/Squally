@@ -2,13 +2,6 @@
 
 #include "Engine/Components/GameComponentGroup.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class Squally;
-
 class EntityBehaviorGroup : public GameComponentGroup
 {
 public:
