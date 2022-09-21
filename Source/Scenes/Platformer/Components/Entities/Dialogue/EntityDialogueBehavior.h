@@ -24,6 +24,8 @@ public:
 	void setActiveDialogueSet(DialogueSet* dialogueSet, bool showDialogue = true);
 	void addDialogueSet(DialogueSet* dialogueSet);
 	void removeDialogueSet(DialogueSet* dialogueSet);
+	void enableInteraction();
+	void disableInteraction();
 	DialogueSet* getMainDialogueSet();
 	SpeechBubble* getSpeechBubble();
 

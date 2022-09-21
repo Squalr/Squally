@@ -35,6 +35,7 @@
 #include "Scenes/Platformer/Components/Entities/Helpers/Gecky/GeckyBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Guano/GuanoBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/GuanoPetrified/GuanoPetrifiedBehaviorGroup.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/Recruitable/RecruitableBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Mounts/GatlingGunBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityNoGravityBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityPacingBehavior.h"

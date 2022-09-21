@@ -210,6 +210,16 @@ DialogueSet* EntityDialogueBehavior::getMainDialogueSet()
 	return this->mainDialogueSet;
 }
 
+void EntityDialogueBehavior::enableInteraction()
+{
+	this->dialogueInteraction->enable();
+}
+
+void EntityDialogueBehavior::disableInteraction()
+{
+	this->dialogueInteraction->disable();
+}
+
 void EntityDialogueBehavior::showOptions()
 {
 	std::vector<std::tuple<DialogueOption*, float>> dialogueOptions = this->activeDialogueSet->getDialogueOptions();
