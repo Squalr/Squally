@@ -48,6 +48,7 @@ public:
 	std::string getSendEvent();
 	void despawn(float despawnDelay = 0.0f);
 	bool isDespawned();
+	void setQueryable(bool isQueryable);
 
 	template <class T>
 	T* getComponent()
@@ -176,6 +177,7 @@ private:
 	bool containsProperties();
 
 	bool despawned = false;
+	bool isQueryable = true;
 	std::set<std::string> tags;
 	bool zSorted = false;
 	std::string uniqueIdentifier;

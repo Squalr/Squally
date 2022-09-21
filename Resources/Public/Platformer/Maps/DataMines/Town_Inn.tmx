@@ -27,7 +27,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="770" name="Generic/ShelfBar1" type="decor" x="925.59" y="1271.75" width="1135" height="753"/>
+  <object id="770" name="Generic/ShelfBar1" type="decor" x="919.59" y="1269.75" width="1135" height="753"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>

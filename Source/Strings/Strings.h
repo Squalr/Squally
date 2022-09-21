@@ -22434,6 +22434,66 @@ namespace Strings
 		virtual ~Platformer_Dialogue_Hexus_WellPlayed() = default;
 	};
 
+	class Platformer_Dialogue_Recruitable_GeckyRecruitable : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Recruitable_GeckyRecruitable* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Recruitable_GeckyRecruitable();
+		virtual ~Platformer_Dialogue_Recruitable_GeckyRecruitable() = default;
+	};
+
+	class Platformer_Dialogue_Recruitable_GuanoRecruitable : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Recruitable_GuanoRecruitable* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Recruitable_GuanoRecruitable();
+		virtual ~Platformer_Dialogue_Recruitable_GuanoRecruitable() = default;
+	};
+
+	class Platformer_Dialogue_Recruitable_RecruitableAccept : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Recruitable_RecruitableAccept* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Recruitable_RecruitableAccept();
+		virtual ~Platformer_Dialogue_Recruitable_RecruitableAccept() = default;
+	};
+
+	class Platformer_Dialogue_Recruitable_RecruitableChoose : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Recruitable_RecruitableChoose* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Recruitable_RecruitableChoose();
+		virtual ~Platformer_Dialogue_Recruitable_RecruitableChoose() = default;
+	};
+
 	class Platformer_Dialogue_Rewards_DoYouWantThisReward : public LocalizedString
 	{
 	public:

@@ -3,6 +3,7 @@
 #include "Engine/Components/GameComponent.h"
 
 class PlatformerEntity;
+class Scrappy;
 class Squally;
 
 class RecruitableBehavior : public GameComponent
@@ -22,8 +23,9 @@ protected:
 private:
 	typedef GameComponent super;
 
-	void displayOptions();
+	void updateStateForCurrentHelper(std::string currentHelperName, bool playAnims);
 
 	PlatformerEntity* entity = nullptr;
+	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 };

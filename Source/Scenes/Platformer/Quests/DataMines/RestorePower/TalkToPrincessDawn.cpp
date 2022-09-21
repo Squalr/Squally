@@ -73,6 +73,9 @@ void TalkToPrincessDawn::onLoad(QuestState questState)
 		{
 			this->gecky->despawn();
 		}
+
+		// Disable gecky from appearing on party menu
+		this->gecky->setQueryable(false);
 	}, TalkToPrincessDawn::MapTagCinematicGecky);
 
 	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)

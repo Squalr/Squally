@@ -37,7 +37,7 @@ const std::string GameObject::MapKeyQuestLine = "quest-line";
 const std::string GameObject::MapKeyQuestTag = "quest-tag";
 const std::string GameObject::MapKeyComponent = "components";
 const std::string GameObject::MapKeyArgs = "args";
-const std::string GameObject::MapKeyQueryable = "args";
+const std::string GameObject::MapKeyQueryable = "queryable";
 const std::string GameObject::MapKeyRotation = "rotation";
 const std::string GameObject::MapKeyPoints = "points";
 const std::string GameObject::MapKeyPolyLinePoints = "polylinePoints";
@@ -79,6 +79,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	this->listenEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyListenEvent, Value("")).asString();
 	this->sendEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeySendEvent, Value("")).asString();
 	this->uniqueIdentifier = "";
+	this->isQueryable = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyQueryable, Value(true)).asBool();
 
 	std::vector<std::string> parsedTags = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTags, Value("")).asString(), ", ", false);
 
@@ -244,7 +245,7 @@ void GameObject::initializeListeners()
 	{
 		QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getData());
 
-		if (args != nullptr && GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyQueryable, Value(true)).asBool())
+		if (args != nullptr && this->isQueryable)
 		{
 			args->tryInvoke(this);
 		}
@@ -256,7 +257,7 @@ void GameObject::initializeListeners()
 		{
 			QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getData());
 
-			if (args != nullptr && GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyQueryable, Value(true)).asBool())
+			if (args != nullptr && this->isQueryable)
 			{
 				args->tryInvoke(this);
 			}
@@ -644,6 +645,11 @@ void GameObject::onDespawn()
 bool GameObject::isDespawned()
 {
 	return this->despawned;
+}
+
+void GameObject::setQueryable(bool isQueryable)
+{
+	this->isQueryable = isQueryable;
 }
 
 std::string GameObject::BuildUUID(std::string mapId, std::string objectId)

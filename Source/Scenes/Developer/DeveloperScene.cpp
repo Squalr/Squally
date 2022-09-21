@@ -256,7 +256,6 @@ DeveloperScene::DeveloperScene()
 		// Traps: Crusher
 		// Finish restore power quest
 		// 	- Add some sort of repairable power generator
-		// Allow helper swapping in all inns
 		// Needs Hexus fights
 		// Needs Hexus puzzles
 		
