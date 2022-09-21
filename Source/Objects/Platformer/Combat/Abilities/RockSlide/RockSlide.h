@@ -17,7 +17,7 @@ public:
 
 	static const std::string HackIdentifierRockSlideTeamCompare;
 	static const int TickCount;
-	static const int Damage;
+	static const int MaxDamage;
 	static const float TimeBetweenTicks;
 	static const float StartDelay;
 
@@ -35,8 +35,8 @@ private:
 	typedef CombatObject super;
 
 	void updateAnimation(float dt);
-	void damageOtherTeam();
-	void damageEnemy(PlatformerEntity* entity);
+	void damageEntities();
+	void damagePlayerEntity(PlatformerEntity* entity);
 
 	std::vector<cocos2d::Sprite*> rockPool;
 	std::vector<float> rockCooldowns;

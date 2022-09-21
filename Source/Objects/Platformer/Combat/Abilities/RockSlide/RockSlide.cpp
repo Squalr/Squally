@@ -12,6 +12,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/MathUtils.h"
 #include "Events/CombatEvents.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Combat/Abilities/RockSlide/RockSlideGenericPreview.h"
@@ -35,9 +36,9 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_ROCK_SLIDE 11
 
-const int RockSlide::TickCount = 6;
-const int RockSlide::Damage = 4;
-const float RockSlide::TimeBetweenTicks = 0.75f;
+const int RockSlide::TickCount = 3;
+const int RockSlide::MaxDamage = 20;
+const float RockSlide::TimeBetweenTicks = 1.5f;
 const float RockSlide::StartDelay = 0.25f;
 const std::string RockSlide::StateKeyIsCasterOnEnemyTeam = "ANTI_OPTIMIZE_STATE_KEY_DAMAGE_TAKEN";
 
@@ -102,18 +103,17 @@ void RockSlide::registerHackables()
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
-		/*
 		{
-			LOCAL_FUNC_ID_COMPARE_TEAM,
+			LOCAL_FUNC_ID_ROCK_SLIDE,
 			HackableCode::HackableCodeInfo(
 				RockSlide::HackIdentifierRockSlideTeamCompare,
-				Strings::Menus_Hacking_Abilities_Abilities_RockSlide_CompareTeam::create(),
+				Strings::Menus_Hacking_Abilities_Abilities_RockSlide_RockSlide::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_RockSlide,
+				UIResources::Menus_Icons_RocksDark,
 				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_RockSlide_RegisterEax::create()
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Abilities_RockSlide_RegisterEdi::create()
 					},
 				},
 				int(HackFlags::None),
@@ -123,24 +123,17 @@ void RockSlide::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_RockSlide_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_RockSlide_CommentEval::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
-						"cmp eax, 1\n"
+						"ror edi, 1\n"
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_RockSlide_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_RockSlide_CommentEval::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
-						"cmp rax, 1\n"
+						"ror rdi, 1\n"
 					),
 				},
 				true
 			)
 		},
-		*/
 	};
 
-	auto func = &RockSlide::damageEnemy;
+	auto func = &RockSlide::damagePlayerEntity;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
 
 	for (HackableCode* next : hackables)
@@ -169,7 +162,7 @@ void RockSlide::runRockSlide()
 				icon,
 				RockSlide::TimeBetweenTicks * float(index) + RockSlide::StartDelay, [=]()
 			{
-				this->damageOtherTeam();
+				this->damageEntities();
 			})
 		);
 	}
@@ -210,7 +203,7 @@ void RockSlide::updateAnimation(float dt)
 	}
 }
 
-void RockSlide::damageOtherTeam()
+void RockSlide::damageEntities()
 {
 	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([=](Timeline* timeline)
 	{
@@ -221,25 +214,25 @@ void RockSlide::damageOtherTeam()
 			return;
 		}
 
-		for (auto next : timeline->getEntries())
+		for (TimelineEntry* next : timeline->getEntries())
 		{
-			if (!next->isPlayerEntry())
-			{
-				this->damageEnemy(next->getEntity());
-			}
+			this->damagePlayerEntity(next->getEntity());
 		}
 	}));
 }
 
-NO_OPTIMIZE void RockSlide::damageEnemy(PlatformerEntity* entity)
+NO_OPTIMIZE void RockSlide::damagePlayerEntity(PlatformerEntity* entity)
 {
 	static volatile int originalHealth = 0;
 	static volatile int health = 0;
-
-	this->owner->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
+	
+	if (entity != nullptr)
 	{
-		originalHealth = healthBehavior->getHealth();
-	});
+		entity->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
+		{
+			originalHealth = healthBehavior->getHealth();
+		});
+	}
 
 	health = originalHealth;
 
@@ -248,14 +241,17 @@ NO_OPTIMIZE void RockSlide::damageEnemy(PlatformerEntity* entity)
 	ASM_MOV_REG_VAR(edi, health);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_ROCK_SLIDE);
-	ASM(rol ZDI, 1);
+	ASM(ror ZDI, 1);
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(health, edi);
 
 	ASM(pop ZDI);
 
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, health - originalHealth, AbilityType::Nature));
+	int delta = MathUtils::clamp(originalHealth - health, -RockSlide::MaxDamage, RockSlide::MaxDamage);
+	bool overflowedMin = delta == -RockSlide::MaxDamage;
+	bool overflowedMax = delta == RockSlide::MaxDamage;
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, entity, delta, AbilityType::Nature, true, overflowedMin, overflowedMax));
 
 	HACKABLES_STOP_SEARCH();
 }

@@ -256,6 +256,9 @@ DeveloperScene::DeveloperScene()
 		// Traps: Crusher
 		// Finish restore power quest
 		// 	- Add some sort of repairable power generator
+		// Push/pop puzzle:
+		// 	- Rework to have answers displayed on blocks across the gap
+		// 	- Rework to have answers displayed on blocks across the gap
 		// Needs Hexus fights
 		// Needs Hexus puzzles
 		
@@ -319,6 +322,7 @@ DeveloperScene::DeveloperScene()
 		// Traps: Organ gun, cannon, catapult, ballista, heaven hug
 		// Finish maps and corresponding "dark" maps (alternatively a game flag that is toggled to load in the correct layers)
 		// Puzzles in dark maps can influence objects in normal maps. Typical inverse world puzzles.
+		// Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
 		// WIP flow:
 		// 	- Clock to go to dark side
 		// 	- Study default locked

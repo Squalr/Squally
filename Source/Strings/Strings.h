@@ -8874,6 +8874,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_Rejuvination_Rejuvination() = default;
 	};
 
+	class Menus_Hacking_Abilities_Abilities_RockSlide_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_RockSlide_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_RockSlide_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Abilities_RockSlide_RegisterEdi() = default;
+	};
+
 	class Menus_Hacking_Abilities_Abilities_RockSlide_RockSlide : public LocalizedString
 	{
 	public:
