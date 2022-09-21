@@ -14,6 +14,7 @@ public:
 	static const std::string RejuvinationIdentifier;
 	static const float TimeBetweenTicks;
 	static const int HealTicks;
+	static const int MaxHealing;
 	static const float StartDelay;
 
 protected:

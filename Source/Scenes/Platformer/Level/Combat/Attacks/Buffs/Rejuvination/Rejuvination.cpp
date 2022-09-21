@@ -37,7 +37,8 @@ using namespace cocos2d;
 const std::string Rejuvination::RejuvinationIdentifier = "rejuvination";
 const float Rejuvination::TimeBetweenTicks = 1.0f;
 const int Rejuvination::HealTicks = 3;
-const float Rejuvination::StartDelay = 0.15f;
+const int Rejuvination::MaxHealing = 20;
+const float Rejuvination::StartDelay = 0.5f;
 
 Rejuvination* Rejuvination::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -102,7 +103,7 @@ void Rejuvination::registerHackables()
 				UIResources::Menus_Icons_MoonShine,
 				LazyNode<HackablePreview>::create([=](){ return RejuvinationGenericPreview::create(); }),
 				{
-					// { HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_RejuvinationFlask_Rejuvination_RegisterEdi::create() }
+					{ HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_RegisterEdx::create() }
 				},
 				int(HackFlags::None),
 				(float(Rejuvination::HealTicks) * Rejuvination::TimeBetweenTicks) + 0.1f,
@@ -167,21 +168,24 @@ NO_OPTIMIZE void Rejuvination::runRestoreTick()
 
 	health = originalHealth;
 
-	ASM(push ZDI);
+	ASM(push ZDX);
 
-	ASM_MOV_REG_VAR(edi, health);
+	ASM_MOV_REG_VAR(edx, health);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RESTORE);
-	ASM(rol ZDI, 1);
+	ASM(rol ZDX, 1);
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(health, edi);
+	ASM_MOV_VAR_REG(health, edx);
 
-	ASM(pop ZDI);
+	ASM(pop ZDX);
 
 	this->healSound->play();
 
-	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, health - originalHealth, this->abilityType));
+	int delta = MathUtils::clamp(health - originalHealth, -Rejuvination::MaxHealing, Rejuvination::MaxHealing);
+	bool overflowedMin = delta == -Rejuvination::MaxHealing;
+	bool overflowedMax = delta == Rejuvination::MaxHealing;
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, delta, this->abilityType, true, overflowedMin, overflowedMax));
 
 	HACKABLES_STOP_SEARCH();
 }

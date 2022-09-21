@@ -118,17 +118,7 @@ void RockSlide::registerHackables()
 				},
 				int(HackFlags::None),
 				RockSlide::StartDelay + RockSlide::TimeBetweenTicks * float(RockSlide::TickCount),
-				0.0f,
-				{
-					HackableCode::ReadOnlyScript(
-						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
-						// x86
-						"ror edi, 1\n"
-						, // x64
-						"ror rdi, 1\n"
-					),
-				},
-				true
+				0.0f
 			)
 		},
 	};
