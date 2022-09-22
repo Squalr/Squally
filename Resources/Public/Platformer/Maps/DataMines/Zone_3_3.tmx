@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="58" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="96" nextobjectid="1679">
- <objectgroup id="1" name="meta" locked="1">
+ <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
    <property name="crack-color" value=""/>
@@ -12,39 +12,39 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="78" name="fireflies -8" locked="1">
+ <objectgroup id="78" name="fireflies -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="82" name="tiled bg -8" visible="0" locked="1">
+ <objectgroup id="82" name="tiled bg -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="837" name="mines" type="texture" x="-1494.54" y="-3207.82" width="11277.1" height="7231.64"/>
  </objectgroup>
- <objectgroup id="69" name="terrain -7" locked="1">
+ <objectgroup id="69" name="terrain -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="86" name="objects -7" locked="1">
+ <objectgroup id="86" name="objects -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="85" name="entities -7" locked="1">
+ <objectgroup id="85" name="entities -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="87" name="player_layer -7" locked="1">
+ <objectgroup id="87" name="player_layer -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="is-hackable" type="bool" value="true"/>
@@ -52,34 +52,34 @@
    <property name="zoom" type="float" value="2"/>
   </properties>
  </objectgroup>
- <objectgroup id="77" name="fireflies -7" locked="1">
+ <objectgroup id="77" name="fireflies -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="68" name="terrain -6" locked="1">
+ <objectgroup id="68" name="terrain -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="76" name="fireflies -6" locked="1">
+ <objectgroup id="76" name="fireflies -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="92" name="objects -5 bg bg" locked="1">
+ <objectgroup id="92" name="objects -5 bg bg">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1658" name="pully-horizontal" type="object" x="4240.7" y="1227.47" width="391" height="124"/>
  </objectgroup>
- <objectgroup id="91" name="objects -5 bg" locked="1">
+ <objectgroup id="91" name="objects -5 bg">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
@@ -87,7 +87,7 @@
   <object id="1657" name="mine-wheel" type="object" x="4084.97" y="1071.83" width="414" height="415"/>
   <object id="1667" name="winch" type="object" x="3793.47" y="1204.74" width="251" height="263"/>
  </objectgroup>
- <objectgroup id="88" name="terrain -5 bg bg" locked="1">
+ <objectgroup id="88" name="terrain -5 bg bg">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
@@ -98,28 +98,28 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="94" name="terrain -5 bg" locked="1">
+ <objectgroup id="94" name="terrain -5 bg">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1666" name="mines" type="terrain" x="6400.48" y="-104.5" width="2447.38" height="2384"/>
  </objectgroup>
- <objectgroup id="89" name="decor -5 bg" locked="1">
+ <objectgroup id="89" name="decor -5 bg">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1629" name="Mines/CaveDoor4" type="decor" x="5565.5" y="1085.5" width="333" height="385"/>
  </objectgroup>
- <objectgroup id="62" name="terrain -5" locked="1">
+ <objectgroup id="62" name="terrain -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1626" name="mines" type="terrain" x="3715.64" y="1468" width="2683.38" height="948"/>
  </objectgroup>
- <objectgroup id="93" name="rails -5" locked="1">
+ <objectgroup id="93" name="rails -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
@@ -130,7 +130,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="90" name="terrain -5 fg" locked="1">
+ <objectgroup id="90" name="terrain -5 fg">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
@@ -144,7 +144,7 @@
   <object id="1624" name="mayan-door" type="object" x="5501" y="991" width="478" height="478">
    <properties>
     <property name="is-locked" type="bool" value="true"/>
-    <property name="map" value="DataMines/Zone_4_0"/>
+    <property name="map" value="DataMines/Zone_3_4"/>
     <property name="transition" value="door"/>
    </properties>
   </object>
@@ -169,7 +169,7 @@
   </object>
   <object id="1675" name="solid" type="collision" x="3400.01" y="-168.061" width="315.14" height="2580"/>
  </objectgroup>
- <objectgroup id="95" name="player_layer -5" locked="1">
+ <objectgroup id="95" name="player_layer -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="is-hackable" type="bool" value="true"/>
@@ -185,82 +185,82 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="75" name="fireflies -5" locked="1">
+ <objectgroup id="75" name="fireflies -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="67" name="terrain -4" locked="1">
+ <objectgroup id="67" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1672" name="wood" type="terrain" x="3872.79" y="1492" width="256" height="276"/>
  </objectgroup>
- <objectgroup id="74" name="fireflies -4" locked="1">
+ <objectgroup id="74" name="fireflies -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="66" name="terrain -3" locked="1">
+ <objectgroup id="66" name="terrain -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1671" name="wood" type="terrain" x="3873.13" y="1529.33" width="256" height="276"/>
  </objectgroup>
- <objectgroup id="73" name="fireflies -3" locked="1">
+ <objectgroup id="73" name="fireflies -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="65" name="terrain -2" locked="1">
+ <objectgroup id="65" name="terrain -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1670" name="wood" type="terrain" x="3873.46" y="1569.67" width="256" height="276"/>
  </objectgroup>
- <objectgroup id="72" name="fireflies -2" locked="1">
+ <objectgroup id="72" name="fireflies -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="64" name="terrain -1" locked="1">
+ <objectgroup id="64" name="terrain -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1669" name="wood" type="terrain" x="3874.13" y="1608.67" width="256" height="276"/>
  </objectgroup>
- <objectgroup id="71" name="fireflies -1" locked="1">
+ <objectgroup id="71" name="fireflies -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="83" name="objects -1" locked="1">
+ <objectgroup id="83" name="objects -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1668" name="mine-claw" type="object" x="590.061" y="952.758" width="200" height="1350"/>
  </objectgroup>
- <objectgroup id="79" name="terrain bg" locked="1">
+ <objectgroup id="79" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="80" name="decor bg" locked="1">
+ <objectgroup id="80" name="decor bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -322,14 +322,14 @@
   <object id="983" name="Mines/Plank5" type="decor" x="1537.86" y="1958.86" width="414" height="38"/>
   <object id="985" name="Mines/PlankConnector2" type="decor" x="822.045" y="1816.5" width="164" height="183"/>
  </objectgroup>
- <objectgroup id="21" name="terrain" locked="1">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="852" name="mines" type="terrain" x="2333.55" y="1647.61" width="5206.08" height="948"/>
   <object id="1623" name="mines" type="terrain" x="-527.025" y="-105.394" width="4141.08" height="1116"/>
  </objectgroup>
- <objectgroup id="22" name="decor midground" locked="1">
+ <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -340,7 +340,7 @@
   </object>
   <object id="863" name="Mines/SupportMedium" type="decor" x="2462.44" y="1012.61" width="127" height="634"/>
  </objectgroup>
- <objectgroup id="81" name="rails" locked="1">
+ <objectgroup id="81" name="rails">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -350,13 +350,13 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="57" name="objects back" locked="1">
+ <objectgroup id="57" name="objects back">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0" locked="1">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -364,7 +364,7 @@
   <object id="804" name="edge-portal" type="object" x="3.8" y="1158.27" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="DataMines/Zone_2_2"/>
+    <property name="map" value="DataMines/Zone_3_2"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
@@ -442,12 +442,12 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="42" name="no hack objects" locked="1">
+ <objectgroup id="42" name="no hack objects">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="24" name="entities" locked="1">
+ <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -460,7 +460,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="25" name="player_layer" locked="1">
+ <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -492,7 +492,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="70" name="fireflies" locked="1">
+ <objectgroup id="70" name="fireflies">
   <properties>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>

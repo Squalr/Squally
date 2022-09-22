@@ -168,6 +168,7 @@ NO_OPTIMIZE void Rejuvination::runRestoreTick()
 
 	health = originalHealth;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZDX);
 
 	ASM_MOV_REG_VAR(edx, health);
@@ -179,6 +180,7 @@ NO_OPTIMIZE void Rejuvination::runRestoreTick()
 	ASM_MOV_VAR_REG(health, edx);
 
 	ASM(pop ZDX);
+	ASM_POP_EFLAGS()
 
 	this->healSound->play();
 

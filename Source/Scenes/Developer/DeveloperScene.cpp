@@ -234,11 +234,11 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Home Mildred (DM)", MapResources::DataMines_Home_Mildred));
 		mapList.push_back(this->buildDebugButton("Home Alder (DM)", MapResources::DataMines_Home_Alder));
 		mapList.push_back(this->buildDebugButton("Home Cypress (DM)", MapResources::DataMines_Home_Cypress));
-		mapList.push_back(this->buildDebugButton("Zone_5_0 (DM)", MapResources::DataMines_Zone_5_0));
-		mapList.push_back(this->buildDebugButton("Zone_4_3 (DM)", MapResources::DataMines_Zone_4_3));
-		mapList.push_back(this->buildDebugButton("Zone_4_2 (DM)", MapResources::DataMines_Zone_4_2));
-		mapList.push_back(this->buildDebugButton("Zone_4_1 (DM)", MapResources::DataMines_Zone_4_1));
 		mapList.push_back(this->buildDebugButton("Zone_4_0 (DM)", MapResources::DataMines_Zone_4_0));
+		mapList.push_back(this->buildDebugButton("Zone_3_7 (DM)", MapResources::DataMines_Zone_3_7));
+		mapList.push_back(this->buildDebugButton("Zone_3_6 (DM)", MapResources::DataMines_Zone_3_6));
+		mapList.push_back(this->buildDebugButton("Zone_3_5 (DM)", MapResources::DataMines_Zone_3_5));
+		mapList.push_back(this->buildDebugButton("Zone_3_4 (DM)", MapResources::DataMines_Zone_3_4));
 		mapList.push_back(this->buildDebugButton("Zone_3_3 (DM)", MapResources::DataMines_Zone_3_3));
 		mapList.push_back(this->buildDebugButton("Zone_3_2 (DM)", MapResources::DataMines_Zone_3_2));
 		mapList.push_back(this->buildDebugButton("Zone_3_1 (DM)", MapResources::DataMines_Zone_3_1));
@@ -258,25 +258,25 @@ DeveloperScene::DeveloperScene()
 		// 	- Add some sort of repairable power generator
 		// Push/pop puzzle:
 		// 	- Rework to have answers displayed on blocks across the gap
-		// 	- Rework to have answers displayed on blocks across the gap
+		// 	- Implement reset
 		// Needs Hexus fights
 		// Needs Hexus puzzles
 		
 		/*
 		X Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients - outgoing AND incoming damage)
 		X Shaman				=> X 1_2 AND (Shadow Bomb)
-		X [B] Rhinoman			=> X 4_3 AND debuff (Brittle Bones)
-		X Forest golem			=> X 4_0 ROL (REJUVINATE)
-		X Earth golem			=> X 4_1 ROR (ROCKSLIDE)
-		X Earth Elemental		=> X 4_2 OR (REGERATION)
-		Skeletal Pirate		=> X 3_2 XOR (BLIND)
-		Skeletal Archer		=> X 2_1 PUSH / POP REG (MULTISHOT debuff - curse of the ancients - tick on targets)
-		Skeletal Warrior	=> X 2_0 PUSH [REG PTR] / POP REG (blessing of the ancients - outgoing damage)
-		Skeletal Necromancer => X 3_0 PUSH [REG PTR] / POP [REG PTR] (pact of the ancients - health link)
-		[B] Krampus			=> O 3_3 NOT (No idea)
+		X [B] Rhinoman			=> X 1_x AND debuff (Brittle Bones)
+		X Forest golem			=> X 2_0 ROL (REJUVINATE)
+		X Earth golem			=> X 2_1 ROR (ROCKSLIDE)
+		X Earth Elemental		=> X 2_2 OR (REGERATION)
+		X Skeletal Pirate		=> X 3_2 XOR (BLIND)
+		X Skeletal Archer		=> X 3_1 PUSH / POP REG (MULTISHOT debuff - curse of the ancients - tick on targets)
+		Skeletal Warrior		=> X 3_0 PUSH [REG PTR] / POP REG (blessing of the ancients - outgoing damage)
+		Skeletal Necromancer 	=> X 3_0 PUSH [REG PTR] / POP [REG PTR] (pact of the ancients - health link)
+		[B] Krampus				=> O 3_3 NOT (No idea)
 		Gorilla			Deprecate
 
-		Cypress			Home_Cypress, 3_x or 4_x (H, Spellbook)
+		Cypress			Home_Cypress or 3_x (H, Spellbook)
 		Alder			Technically in mage's guild Home_Alder (H?)
 		Jasper			Technically in mage's guild
 		Sarude			Technically in mage's guild

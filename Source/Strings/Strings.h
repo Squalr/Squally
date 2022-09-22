@@ -9684,10 +9684,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Inversion_RegisterEax() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_PactOfTheAncients_HealthLink : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_PactOfTheAncients_PactOfTheAncients : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_PactOfTheAncients_HealthLink* create();
+		static Menus_Hacking_Abilities_Buffs_PactOfTheAncients_PactOfTheAncients* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9695,8 +9695,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_PactOfTheAncients_HealthLink();
-		virtual ~Menus_Hacking_Abilities_Buffs_PactOfTheAncients_HealthLink() = default;
+		Menus_Hacking_Abilities_Buffs_PactOfTheAncients_PactOfTheAncients();
+		virtual ~Menus_Hacking_Abilities_Buffs_PactOfTheAncients_PactOfTheAncients() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx();
+		virtual ~Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate : public LocalizedString
@@ -10224,36 +10239,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_Blind() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Blind_BlindClippy : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_Blind_BlindClippy* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Blind_BlindClippy();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_BlindClippy() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_Blind_ReduceBlind : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_Blind_ReduceBlind* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Blind_ReduceBlind();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_ReduceBlind() = default;
-	};
-
 	class Menus_Hacking_Abilities_Debuffs_Blind_RegisterEsi : public LocalizedString
 	{
 	public:
@@ -10267,21 +10252,6 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_Blind_RegisterEsi();
 		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_RegisterEsi() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_Blind_RegisterXmm3 : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_Blind_RegisterXmm3* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Blind_RegisterXmm3();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_RegisterXmm3() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_BrittleBones_BrittleBones : public LocalizedString

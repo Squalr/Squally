@@ -8,6 +8,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/Blind/Blind.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -26,7 +27,7 @@ CastBlind* CastBlind::create(float attackDuration, float recoverDuration, Priori
 }
 
 CastBlind::CastBlind(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_EyeStrain, priority, AbilityType::Physical, 0, 0, 3, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_EyeStrain, priority, AbilityType::Physical, 0, 0, 7, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 
@@ -80,21 +81,39 @@ void CastBlind::onCleanup()
 
 bool CastBlind::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	bool hasBuff = false;
+	int uncastableCount = 0;
 
-	caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	for (auto next : otherTeam)
 	{
-		entityBuffBehavior->getBuff<Blind>([&](Blind* buff)
+		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
-			hasBuff = true;
-		});
-	});
+			uncastableCount++;
+			continue;
+		}
 
-	return !hasBuff;
+		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		{
+			entityBuffBehavior->getBuff<Blind>([&](Blind* debuff)
+			{
+				uncastableCount++;
+			});
+		});
+	}
+
+	return uncastableCount != int(otherTeam.size());
 }
 
 float CastBlind::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	// Prioritize self-cast
-	return target == this->owner ? 1.0f : 0.0f;
+	float utility = target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
+
+	target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	{
+		entityBuffBehavior->getBuff<Blind>([&](Blind* debuff)
+		{
+			utility = 0.0f;
+		});
+	});
+	
+	return utility;
 }

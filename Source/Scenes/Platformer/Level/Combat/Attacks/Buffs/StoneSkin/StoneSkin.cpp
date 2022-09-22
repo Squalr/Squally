@@ -211,6 +211,7 @@ NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 
 	currentDamageTakenLocal = this->currentDamageTaken;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZAX);
 	ASM(push ZCX);
 	ASM(push ZDX);
@@ -229,6 +230,7 @@ NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 	ASM(pop ZDX);
 	ASM(pop ZCX);
 	ASM(pop ZAX);
+	ASM_POP_EFLAGS()
 
 	this->currentDamageTaken = currentDamageTakenLocal;
 

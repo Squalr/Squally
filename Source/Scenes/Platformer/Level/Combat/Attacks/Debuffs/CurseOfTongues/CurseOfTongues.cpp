@@ -191,6 +191,7 @@ NO_OPTIMIZE void CurseOfTongues::applyCurseOfTongues()
 	speedBonusPtr = &speedBonus;
 	incrementPtr = &increment;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZSI);
 	ASM(push ZBX);
 	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
@@ -204,6 +205,7 @@ NO_OPTIMIZE void CurseOfTongues::applyCurseOfTongues()
 
 	ASM(pop ZBX);
 	ASM(pop ZSI);
+	ASM_POP_EFLAGS()
 
 	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, CurseOfTongues::MinSpeed, CurseOfTongues::MaxSpeed);
 

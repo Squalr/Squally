@@ -112,17 +112,7 @@ void Blind::registerHackables()
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
-				0.0f,
-				{
-					HackableCode::ReadOnlyScript(
-						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
-						// x86
-						"xor edi, edi\n"
-						, // x64
-						"xor rdi, rdi\n"
-					),
-				},
-				true
+				0.0f
 			)
 		},
 	};
@@ -154,6 +144,7 @@ NO_OPTIMIZE void Blind::applyBlind()
 
 	currentDamageDealtLocal = 0;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZDI);
 	ASM_MOV_REG_VAR(edx, currentDamageDealtLocal);
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_BLIND);
@@ -162,6 +153,7 @@ NO_OPTIMIZE void Blind::applyBlind()
 	HACKABLE_CODE_END();
 	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
 	ASM(pop ZDI);
+	ASM_POP_EFLAGS()
 
 	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 

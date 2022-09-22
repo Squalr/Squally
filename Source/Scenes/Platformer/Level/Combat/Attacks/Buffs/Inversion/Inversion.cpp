@@ -175,6 +175,7 @@ NO_OPTIMIZE void Inversion::applyInversion()
 
 	currentDamageTakenLocal = this->currentDamageTaken;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZAX);
 	ASM_MOV_REG_VAR(eax, currentDamageTakenLocal);
 
@@ -186,6 +187,7 @@ NO_OPTIMIZE void Inversion::applyInversion()
 	ASM_MOV_VAR_REG(currentDamageTakenLocal, eax);
 	
 	ASM(pop ZAX);
+	ASM_POP_EFLAGS()
 
 	this->currentDamageTaken = currentDamageTakenLocal;
 

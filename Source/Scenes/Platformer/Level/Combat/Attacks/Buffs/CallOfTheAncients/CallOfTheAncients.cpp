@@ -193,6 +193,7 @@ NO_OPTIMIZE void CallOfTheAncients::applyCallOfTheAncients()
 
 	currentDamageDealtLocal = 0;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZDX);
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COTA);
 	ASM(push 30);
@@ -201,6 +202,7 @@ NO_OPTIMIZE void CallOfTheAncients::applyCallOfTheAncients()
 	HACKABLE_CODE_END();
 	ASM_MOV_VAR_REG(currentDamageDealtLocal, edx);
 	ASM(pop ZDX);
+	ASM_POP_EFLAGS()
 
 	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 

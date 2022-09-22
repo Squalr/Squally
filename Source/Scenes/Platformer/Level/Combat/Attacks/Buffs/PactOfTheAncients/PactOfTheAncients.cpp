@@ -55,7 +55,7 @@ PactOfTheAncients* PactOfTheAncients::create(PlatformerEntity* caster, Platforme
 }
 
 PactOfTheAncients::PactOfTheAncients(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Clones, AbilityType::Physical, BuffData(PactOfTheAncients::Duration, PactOfTheAncients::PactOfTheAncientsIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_ChainBlade, AbilityType::Physical, BuffData(PactOfTheAncients::Duration, PactOfTheAncients::PactOfTheAncientsIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->healthLinkDamage = 0;
@@ -90,18 +90,17 @@ void PactOfTheAncients::registerHackables()
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
-		/*
 		{
 			LOCAL_FUNC_ID_UNDYING,
 			HackableCode::HackableCodeInfo(
 				PactOfTheAncients::PactOfTheAncientsIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_PactOfTheAncients::create(),
-				HackableBase::HackBarColor::Blue,
-				UIResources::Menus_Icons_Clones,
+				HackableBase::HackBarColor::Purple,
+				UIResources::Menus_Icons_ChainBlade,
 				LazyNode<HackablePreview>::create([=](){ return PactOfTheAncientsGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdi::create(),
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx::create(),
 					},
 				},
 				int(HackFlags::None),
@@ -111,23 +110,16 @@ void PactOfTheAncients::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentShr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentShrBy1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentElaborate::create()) +
-						"shr edi, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint::create())
-						
+						"push 5\n"
+						"pop [edx]\n"
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentShr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentShrBy1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentElaborate::create()) +
-						"shr rdi, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint::create())
+						"push 5\n"
+						"pop [rdx]\n"
 					),
 				},
 				true
 			)
-		},*/
+		},
 	};
 
 	auto func = &PactOfTheAncients::applyPactOfTheAncients;
@@ -179,20 +171,23 @@ END_NO_OPTIMIZE
 NO_OPTIMIZE void PactOfTheAncients::applyPactOfTheAncients()
 {
 	static volatile int healthLinkDamageLocal = 0;
+	static volatile int* healthLinkDamageLocalPtr = nullptr;
 
 	healthLinkDamageLocal = this->healthLinkDamage;
+	healthLinkDamageLocalPtr = &healthLinkDamageLocal;
 
-	ASM(push ZDI);
-	ASM_MOV_REG_VAR(edi, healthLinkDamageLocal);
+	ASM_PUSH_EFLAGS()
+	ASM(push ZDX);
+	ASM_MOV_REG_PTR(ZDX, healthLinkDamageLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_UNDYING);
-	ASM(shr ZDI, 1);
+	ASM(push 5);
+	ASM(pop [ZDX]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(healthLinkDamageLocal, edi);
-
-	ASM(pop ZDI);
+	
+	ASM(pop ZDX);
+	ASM_POP_EFLAGS()
 
 	this->healthLinkDamage = healthLinkDamageLocal;
 

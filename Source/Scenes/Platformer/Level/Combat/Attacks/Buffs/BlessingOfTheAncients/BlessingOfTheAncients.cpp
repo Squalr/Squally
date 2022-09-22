@@ -176,6 +176,7 @@ NO_OPTIMIZE void BlessingOfTheAncients::applyBlessingOfTheAncients()
 
 	currentDamageDealtLocal = this->currentDamageDealt;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZCX);
 	ASM_MOV_REG_VAR(ecx, currentDamageDealtLocal);
 
@@ -187,6 +188,7 @@ NO_OPTIMIZE void BlessingOfTheAncients::applyBlessingOfTheAncients()
 	ASM_MOV_VAR_REG(currentDamageDealtLocal, ecx);
 
 	ASM(pop ZCX);
+	ASM_POP_EFLAGS()
 
 	this->currentDamageDealt = currentDamageDealtLocal;
 

@@ -184,6 +184,7 @@ NO_OPTIMIZE void SiphonLife::runRestoreTick()
 	drainAmount = 0;
 	gainAmount = 0;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZDI);
 	ASM(push ZSI);
 
@@ -200,6 +201,7 @@ NO_OPTIMIZE void SiphonLife::runRestoreTick()
 
 	ASM(pop ZSI);
 	ASM(pop ZDI);
+	ASM_POP_EFLAGS()
 
 	drainAmount = MathUtils::clamp(drainAmount, -8, 8);
 	gainAmount = MathUtils::clamp(gainAmount, -8, 8);

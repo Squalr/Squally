@@ -177,6 +177,7 @@ NO_OPTIMIZE void Fortitude::applyFortitude()
 
 	currentDamageTakenLocal = Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZBX);
 	ASM_MOV_REG_VAR(ebx, currentDamageTakenLocal);
 
@@ -188,6 +189,7 @@ NO_OPTIMIZE void Fortitude::applyFortitude()
 	ASM_MOV_VAR_REG(currentDamageTakenLocal, ebx);
 
 	ASM(pop ZBX);
+	ASM_POP_EFLAGS()
 
 	Buff::HackStateStorage[Buff::StateKeyDamageTaken] = Value(currentDamageTakenLocal);
 

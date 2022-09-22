@@ -177,6 +177,7 @@ NO_OPTIMIZE void Enrage::applyEnrageSpeed()
 	volatile float* speedBonusPtr = &speedBonus;
 	volatile float* incrementPtr = &increment;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZSI);
 	ASM(push ZBX);
 
@@ -191,6 +192,7 @@ NO_OPTIMIZE void Enrage::applyEnrageSpeed()
 
 	ASM(pop ZBX);
 	ASM(pop ZSI);
+	ASM_POP_EFLAGS()
 
 	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, Enrage::MinSpeed, Enrage::MaxSpeed);
 

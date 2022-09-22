@@ -211,6 +211,7 @@ NO_OPTIMIZE void Reflect::applyReflect()
 	damageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 	damageReflectedLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 	
+	ASM_PUSH_EFLAGS()
 	ASM(push ZSI);
 	ASM(push ZBX);
 
@@ -228,6 +229,7 @@ NO_OPTIMIZE void Reflect::applyReflect()
 
 	ASM(pop ZBX);
 	ASM(pop ZSI);
+	ASM_POP_EFLAGS()
 
 	Buff::HackStateStorage[Reflect::StateKeyDamageDealt] = Value(damageDealtLocal);
 	Buff::HackStateStorage[Reflect::StateKeyDamageReflected] = Value(damageReflectedLocal);

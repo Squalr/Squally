@@ -181,6 +181,7 @@ NO_OPTIMIZE void HealthLink::applyHealthLink()
 
 	healthLinkDamageLocal = this->healthLinkDamage;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZDI);
 	ASM_MOV_REG_VAR(edi, healthLinkDamageLocal);
 
@@ -192,6 +193,7 @@ NO_OPTIMIZE void HealthLink::applyHealthLink()
 	ASM_MOV_VAR_REG(healthLinkDamageLocal, edi);
 
 	ASM(pop ZDI);
+	ASM_POP_EFLAGS()
 
 	this->healthLinkDamage = healthLinkDamageLocal;
 

@@ -192,6 +192,7 @@ NO_OPTIMIZE void Haste::applyHaste()
 	speedBonusPtr = &speedBonus;
 	incrementPtr = &increment;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZSI);
 	ASM(push ZBX);
 	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
@@ -205,6 +206,7 @@ NO_OPTIMIZE void Haste::applyHaste()
 
 	ASM(pop ZBX);
 	ASM(pop ZSI);
+	ASM_POP_EFLAGS()
 
 	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, Haste::MinSpeed, Haste::MaxSpeed);
 

@@ -149,16 +149,12 @@ void CurseOfTheAncients::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHea
 
 	this->applyCurseOfTheAncients();
 
-	// No bounding
-	/*
-	// Bound multiplier in either direction
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(MathUtils::clamp(
-		Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt(),
-		-std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * CurseOfTheAncients::MaxMultiplier),
-		std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * CurseOfTheAncients::MaxMultiplier)
-	));*/
+	int min = -std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * CurseOfTheAncients::MaxMultiplier);
+	int max = std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * CurseOfTheAncients::MaxMultiplier);
 
-	*(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	*damageOrHealing->damageOrHealing = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	*damageOrHealing->damageOrHealingMin = min;
+	*damageOrHealing->damageOrHealingMax = max;
 }
 
 NO_OPTIMIZE void CurseOfTheAncients::applyCurseOfTheAncients()
@@ -171,7 +167,7 @@ NO_OPTIMIZE void CurseOfTheAncients::applyCurseOfTheAncients()
 	ASM(push ZAX);
 	ASM(push ZBX);
 
-	ASM_MOV_REG_VAR(eax, currentDamageDealtLocal);
+	ASM(mov ZAX, 1)
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSE_OF_THE_ANCIENTS);
 	ASM(push ZAX);

@@ -167,6 +167,7 @@ NO_OPTIMIZE void Regeneration::runRestoreTick()
 
 	health = originalHealth;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZDI);
 
 	ASM_MOV_REG_VAR(edi, health);
@@ -178,6 +179,7 @@ NO_OPTIMIZE void Regeneration::runRestoreTick()
 	ASM_MOV_VAR_REG(health, edi);
 
 	ASM(pop ZDI);
+	ASM_POP_EFLAGS()
 
 	this->healSound->play();
 
