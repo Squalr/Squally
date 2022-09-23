@@ -113,7 +113,7 @@ void TalkToPrincessDawn::onActivate(bool isActiveThroughSkippable)
 
 void TalkToPrincessDawn::onComplete()
 {	
-	Objectives::SetCurrentObjective(ObjectiveKeys::URLightTorches);
+	Objectives::SetCurrentObjective(ObjectiveKeys::DMInvestigatePowerOutage);
 
 	if (this->princessDawn != nullptr)
 	{

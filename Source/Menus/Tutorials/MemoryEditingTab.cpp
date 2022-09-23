@@ -12,7 +12,7 @@
 #include "Entities/Platformer/Enemies/BallmerPeaks/Cryogen.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/Agnes.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/Asmodeus.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/Krampus.h"
+#include "Entities/Platformer/Enemies/DataMines/Krampus.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/KingZul.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/Lazarus.h"
 #include "Entities/Platformer/Helpers/BallmerPeaks/Snowman.h"

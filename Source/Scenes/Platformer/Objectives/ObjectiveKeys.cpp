@@ -35,3 +35,7 @@ const std::string ObjectiveKeys::URLightTorches = "UR_LIGHT_TORCHES";
 const std::string ObjectiveKeys::UREnterTheMines = "UR_ENTER_THE_MINES";
 
 const std::string ObjectiveKeys::DMDeliverLetter = "DM_DELIVER_LETTER";
+const std::string ObjectiveKeys::DMInvestigatePowerOutage = "DM_INVESTIGATE_POWER_OUTAGE";
+const std::string ObjectiveKeys::DMSailToDrammol = "DM_SAIL_TO_DRAMMOL";
+const std::string ObjectiveKeys::DMRepairTrain = "DM_REPAIR_TRAIN";
+const std::string ObjectiveKeys::DMRideTrainToCastleValgrind = "DM_RIDE_TRAIN_TO_CV";

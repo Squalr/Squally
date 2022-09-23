@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="966">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="967">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -316,7 +316,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="935" name="skeletal-archer" type="entity" x="4220.06" y="1471.24" width="128" height="128">
+  <object id="935" name="skeletal-necromancer" type="entity" x="4220.06" y="1471.24" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
@@ -325,7 +325,14 @@
     <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>
-  <object id="936" name="skeletal-archer" type="entity" x="4231" y="1126" width="128" height="128">
+  <object id="936" name="skeletal-necromancer" type="entity" x="4134.03" y="1132.06" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="966" name="skeletal-necromancer" type="entity" x="4320.85" y="1126.91" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>

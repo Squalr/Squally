@@ -27624,6 +27624,21 @@ namespace Strings
 		virtual ~Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass() = default;
 	};
 
+	class Platformer_Quests_DataMines_RestorePower_Krampus_A_Intruders : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Krampus_A_Intruders* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Krampus_A_Intruders();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Krampus_A_Intruders() = default;
+	};
+
 	class Platformer_Quests_DataMines_RestorePower_Olive_A_OliveIntro : public LocalizedString
 	{
 	public:
