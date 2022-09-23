@@ -44,15 +44,33 @@ void QuestTask::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(QuestEvents::EventQuestTaskComplete + this->questLine->getQuestLine(), [=](EventCustom* eventCustom)
+	if (this->questLine != nullptr)
 	{
-		QuestEvents::QuestTaskCompleteArgs* args = static_cast<QuestEvents::QuestTaskCompleteArgs*>(eventCustom->getData());
-		
-		if (args != nullptr && this->questLine != nullptr && args->questLine == this->questLine->getQuestLine())
+		this->addEventListenerIgnorePause(EventListenerCustom::create(QuestEvents::EventQuestTaskComplete + this->questLine->getQuestLine(), [=](EventCustom* eventCustom)
 		{
-			this->updateState();
+			QuestEvents::QuestTaskCompleteArgs* args = static_cast<QuestEvents::QuestTaskCompleteArgs*>(eventCustom->getData());
+			
+			if (args != nullptr && this->questLine != nullptr && args->questLine == this->questLine->getQuestLine())
+			{
+				this->updateState();
+			}
+		}));
+
+		QuestLine* preReq = this->questLine->getPrereq();
+
+		if (preReq != nullptr)
+		{
+			this->addEventListenerIgnorePause(EventListenerCustom::create(QuestEvents::EventQuestTaskComplete + preReq->getQuestLine(), [=](EventCustom* eventCustom)
+			{
+				QuestEvents::QuestTaskCompleteArgs* args = static_cast<QuestEvents::QuestTaskCompleteArgs*>(eventCustom->getData());
+				
+				if (args != nullptr && this->questLine != nullptr && args->questLine == preReq->getQuestLine())
+				{
+					this->updateState();
+				}
+			}));
 		}
-	}));
+	}
 }
 
 std::string QuestTask::getQuestTaskName()

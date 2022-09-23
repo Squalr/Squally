@@ -59,7 +59,7 @@ void DefeatKrampus::onLoad(QuestState questState)
 			this->complete();
 		}
 
-		this->krampus->listenForStateWriteOnce(StateKeys::IsAlive, [=](Value value)
+		this->krampus->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 		{
 			if (!value.asBool())
 			{
@@ -76,13 +76,16 @@ void DefeatKrampus::onLoad(QuestState questState)
 
 void DefeatKrampus::onActivate(bool isActiveThroughSkippable)
 {
-	this->krampus->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+	if (this->krampus != nullptr)
 	{
-		if (!value.asBool())
+		this->krampus->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 		{
-			this->complete();
-		}
-	});
+			if (!value.asBool())
+			{
+				this->complete();
+			}
+		});
+	}
 
 	this->listenForMapEventOnce(DefeatKrampus::MapEventEngageKrampus, [=](ValueMap)
 	{

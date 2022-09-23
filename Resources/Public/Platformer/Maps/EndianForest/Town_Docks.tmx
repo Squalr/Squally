@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="783">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="92" nextobjectid="784">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -52,7 +52,7 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/LakeSideRocks2" type="decor" x="-5339.82" y="-1392.89" width="21589.2" height="4560">
+  <object id="601" name="Forest/Background/LakeSideRocks2" type="decor" x="-5327.7" y="-1368.65" width="21589.2" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -458,6 +458,19 @@
   <object id="747" name="ship-alt" type="terrain" x="2993.25" y="1748" width="414.5" height="363">
    <properties>
     <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="91" name="objects +6">
+  <properties>
+   <property name="depth" type="float" value="384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="783" name="ship" type="object" x="2082.2" y="1102.06" width="2375" height="1008">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="tag" value="charter-ship"/>
    </properties>
   </object>
  </objectgroup>

@@ -194,3 +194,13 @@ void QuestLine::waiveQuestPrereq()
 		}
 	}
 }
+
+QuestLine* QuestLine::getPrereq() const
+{
+	return this->prereq;
+}
+
+std::string QuestLine::getPrereqTask() const
+{
+	return this->prereqTask;
+}

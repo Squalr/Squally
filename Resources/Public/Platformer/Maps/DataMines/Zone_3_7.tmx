@@ -238,7 +238,7 @@
   <object id="1887" name="portal" type="object" x="762.67" y="1189.64" width="256" height="256">
    <properties>
     <property name="map" value="PerilousSea/Ship_Main"/>
-    <property name="quest" value="board-charter-ship"/>
+    <property name="quest" value="discover-charter-ship,board-charter-ship"/>
     <property name="quest-line" value="charter-ship"/>
     <property name="transition" value="charter-ship"/>
    </properties>
@@ -261,6 +261,8 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy"/>
     <property name="drop-pool" value="dm-generic"/>
+    <property name="quest" value="defeat-krampus"/>
+    <property name="quest-line" value="restore-power"/>
    </properties>
   </object>
   <object id="1732" name="skeletal-necromancer" type="entity" x="1201.64" y="902.837" width="128" height="128">

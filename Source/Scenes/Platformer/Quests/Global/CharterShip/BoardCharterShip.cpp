@@ -44,6 +44,7 @@ BoardCharterShip* BoardCharterShip::create(GameObject* owner, QuestLine* questLi
 
 BoardCharterShip::BoardCharterShip(GameObject* owner, QuestLine* questLine) : super(owner, questLine, BoardCharterShip::MapKeyQuest, false)
 {
+	this->portal = dynamic_cast<Portal*>(owner);
 }
 
 BoardCharterShip::~BoardCharterShip()
@@ -52,12 +53,23 @@ BoardCharterShip::~BoardCharterShip()
 
 void BoardCharterShip::onLoad(QuestState questState)
 {
-	std::string mapResource = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
-	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyCharterShipReturnMap, Value(mapResource));
+	if (questState == QuestState::None)
+	{
+		if (this->portal != nullptr)
+		{
+			this->portal->disable();
+		}
+	}
+	
+	this->setReturnMap();
 }
 
 void BoardCharterShip::onActivate(bool isActiveThroughSkippable)
 {
+	if (this->portal != nullptr)
+	{
+		this->portal->enable();
+	}
 }
 
 void BoardCharterShip::onComplete()
@@ -66,4 +78,10 @@ void BoardCharterShip::onComplete()
 
 void BoardCharterShip::onSkipped()
 {
+}
+
+void BoardCharterShip::setReturnMap()
+{
+	std::string mapResource = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyCharterShipReturnMap, Value(mapResource));
 }
