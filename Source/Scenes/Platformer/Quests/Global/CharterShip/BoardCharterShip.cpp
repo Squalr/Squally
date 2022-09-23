@@ -8,7 +8,6 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
@@ -45,7 +44,6 @@ BoardCharterShip* BoardCharterShip::create(GameObject* owner, QuestLine* questLi
 
 BoardCharterShip::BoardCharterShip(GameObject* owner, QuestLine* questLine) : super(owner, questLine, BoardCharterShip::MapKeyQuest, false)
 {
-	this->portal = dynamic_cast<Portal*>(owner);
 }
 
 BoardCharterShip::~BoardCharterShip()

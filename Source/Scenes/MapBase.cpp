@@ -192,14 +192,14 @@ void MapBase::addLayerDeserializers(std::vector<LayerDeserializer*> layerDeseria
 	}
 }
 
-bool MapBase::loadMap(std::string mapResource)
+bool MapBase::loadMap(std::string mapResource, bool useFallback)
 {
 	this->mapResource = mapResource;
 
 	// No map caching for dev builds to allow for hot reloads of TMX files for faster debugging
 	if (DeveloperModeController::IsDeveloperBuild)
 	{
-		return this->loadMapFromTmx(this->mapResource, GameMap::parse(this->mapResource));
+		return this->loadMapFromTmx(this->mapResource, GameMap::parse(this->mapResource), useFallback);
 	}
 
 	if (MapBase::MapCache.find(mapResource) == MapBase::MapCache.end())
@@ -208,10 +208,10 @@ bool MapBase::loadMap(std::string mapResource)
 		MapBase::MapCache[this->mapResource]->retain();
 	}	
 	
-	return this->loadMapFromTmx(this->mapResource, MapBase::MapCache[this->mapResource]);
+	return this->loadMapFromTmx(this->mapResource, MapBase::MapCache[this->mapResource], useFallback);
 }
 
-bool MapBase::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTiledMap* mapRaw)
+bool MapBase::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTiledMap* mapRaw, bool useFallback)
 {
 	if (this->map != nullptr)
 	{

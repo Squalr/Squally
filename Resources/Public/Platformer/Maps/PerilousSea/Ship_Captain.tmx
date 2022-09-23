@@ -40,7 +40,11 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="484" name="Generic/WoodDoor" type="decor" x="203.888" y="1072.9" width="238.499" height="312.248"/>
-  <object id="696" name="Generic/Sack" type="decor" x="-2.42" y="1257.59" width="162" height="145"/>
+  <object id="696" name="Generic/Sack" type="decor" x="2138.86" y="1255.33" width="162" height="145">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -68,7 +72,7 @@
     <property name="transition" value="ship"/>
    </properties>
   </object>
-  <object id="720" name="steering-wheel" type="object" x="1740.93" y="1164.69" width="243.384" height="236.1"/>
+  <object id="720" name="ship-wheel" type="object" x="1612.32" y="1254.94" width="112" height="149"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>

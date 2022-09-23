@@ -191,6 +191,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[ShopPoolGriffin::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolGriffin::create(properties); };
 	this->deserializers[ShopPoolGeryon::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolGeryon::create(properties); };
 	this->deserializers[Ship::MapKey] = [=](ValueMap properties) { return (GameObject*)Ship::create(properties); };
+	this->deserializers[ShipWheel::MapKey] = [=](ValueMap properties) { return (GameObject*)ShipWheel::create(properties); };
 	this->deserializers[SmeltingPot::MapKey] = [=](ValueMap properties) { return (GameObject*)SmeltingPot::create(properties); };
 	this->deserializers[SpawnPoolEF::MapKey] = [=](ValueMap properties) { return (GameObject*)SpawnPoolEF::create(properties); };
 	this->deserializers[SpawnPoolUR::MapKey] = [=](ValueMap properties) { return (GameObject*)SpawnPoolUR::create(properties); };

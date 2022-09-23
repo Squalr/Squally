@@ -237,7 +237,7 @@
   </object>
   <object id="1887" name="portal" type="object" x="762.67" y="1189.64" width="256" height="256">
    <properties>
-    <property name="map" value="PerilousSea/Ship"/>
+    <property name="map" value="PerilousSea/Ship_Main"/>
     <property name="quest" value="board-charter-ship"/>
     <property name="quest-line" value="charter-ship"/>
     <property name="transition" value="charter-ship"/>

@@ -58,6 +58,14 @@ void DefeatKrampus::onLoad(QuestState questState)
 		{
 			this->complete();
 		}
+
+		this->krampus->listenForStateWriteOnce(StateKeys::IsAlive, [=](Value value)
+		{
+			if (!value.asBool())
+			{
+				this->complete();
+			}
+		});
 	}
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)

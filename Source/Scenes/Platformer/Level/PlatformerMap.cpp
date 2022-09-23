@@ -431,7 +431,7 @@ void PlatformerMap::initializeListeners()
 	}));
 }
 
-bool PlatformerMap::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTiledMap* mapRaw)
+bool PlatformerMap::loadMapFromTmx(std::string mapResource, cocos_experimental::TMXTiledMap* mapRaw, bool useFallback)
 {
 	CollisionObject::UniverseId = 0;
 
@@ -444,6 +444,11 @@ bool PlatformerMap::loadMapFromTmx(std::string mapResource, cocos_experimental::
 		this->loadMiniMap(mapResource, mapRaw);
 
 		return true;
+	}
+
+	if (!useFallback)
+	{
+		return false;
 	}
 
 	// Error loading map! Try parsing the map to look for a reasonable fallback map

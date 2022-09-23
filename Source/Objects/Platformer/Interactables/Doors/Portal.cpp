@@ -121,7 +121,7 @@ void Portal::loadMap()
 				PlatformerMap* map = PlatformerMap::create(this->transition);
 
 				// Attempt to load the map file as a full relative path (rare edge case)
-				if (map->loadMap(this->mapFile))
+				if (map->loadMap(this->mapFile, false))
 				{
 					return map;
 				}
@@ -130,9 +130,9 @@ void Portal::loadMap()
 				std::string mapResourceFallback = "Private/Platformer/Maps/" + this->mapFile + ".tmx";
 
 				// Attempt the public map first, try the private path if that fails
-				if (!map->loadMap(mapResource))
+				if (!map->loadMap(mapResource, false))
 				{
-					map->loadMap(mapResourceFallback);
+					map->loadMap(mapResourceFallback, true);
 				}
 
 				return map;

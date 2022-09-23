@@ -2,7 +2,6 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class Portal;
 class QuestLine;
 
 class BoardCharterShip : public QuestTask
@@ -23,5 +22,4 @@ protected:
 
 private:
 	typedef QuestTask super;
-	Portal* portal = nullptr;
 };

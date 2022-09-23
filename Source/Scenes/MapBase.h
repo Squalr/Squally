@@ -26,7 +26,7 @@ class RadialMenu;
 class MapBase : public GlobalScene
 {
 public:
-	bool loadMap(std::string mapResource);
+	bool loadMap(std::string mapResource, bool useFallback = true);
 
 protected:
 	MapBase(bool allowHackerMode);
@@ -41,7 +41,7 @@ protected:
 	void addLayerDeserializer(LayerDeserializer* layerDeserializer);
 	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);
 	virtual void openPauseMenu(cocos2d::Node* refocusTarget);
-	virtual bool loadMapFromTmx(std::string mapResource, cocos2d::cocos_experimental::TMXTiledMap* mapRaw);
+	virtual bool loadMapFromTmx(std::string mapResource, cocos2d::cocos_experimental::TMXTiledMap* mapRaw, bool useFallback = true);
 
 	cocos2d::Node* hudNode = nullptr;
 	Hud* hud = nullptr;
