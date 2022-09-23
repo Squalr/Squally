@@ -7,12 +7,6 @@ namespace cocos2d
 	class Sprite;
 }
 
-class Item;
-class MinMaxPool;
-class RecipePoolDeserializer;
-class SmartAnimationSequenceNode;
-class WorldSound;
-
 class ShipWheel : public InteractObject
 {
 public:

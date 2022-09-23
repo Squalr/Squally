@@ -3,6 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 
 class CartLift;
+class Computer;
 class Guano;
 class QuestLine;
 class Scrappy;
@@ -26,10 +27,14 @@ protected:
 private:
 	typedef QuestTask super;
 
+	void powerOnComputers();
+
+	Computer* computer = nullptr;
 	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 	CartLift* cartLift = nullptr;
 
+	static const std::string MapEventPowerRestored;
 	static const std::string TagCartLiftPowered;
 };

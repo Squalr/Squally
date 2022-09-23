@@ -41,6 +41,7 @@
 #include "Objects/Platformer/Interactables/Chests/GlassDisplays/GlassDisplayItem.h"
 #include "Objects/Platformer/Interactables/Chests/MetalChest.h"
 #include "Objects/Platformer/Interactables/Chests/MineCartLootable.h"
+#include "Objects/Platformer/Interactables/Computer/Computer.h"
 #include "Objects/Platformer/Interactables/Doors/CastleGate/CastleGate.h"
 #include "Objects/Platformer/Interactables/Doors/ClockDoor/ClockDoor.h"
 #include "Objects/Platformer/Interactables/Doors/Dragon/DragonDoor.h"

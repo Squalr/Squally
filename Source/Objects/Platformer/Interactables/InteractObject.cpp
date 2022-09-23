@@ -111,7 +111,6 @@ InteractObject::InteractObject(
 	this->unlockKeyStr->retain();
 	this->interactKeyStr->retain();
 
-
 	this->interactCollision->setName("Interact");
 	this->interactCollision->setPosition(offset);
 
