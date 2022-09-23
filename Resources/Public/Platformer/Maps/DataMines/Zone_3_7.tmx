@@ -238,7 +238,9 @@
   <object id="1887" name="portal" type="object" x="762.67" y="1189.64" width="256" height="256">
    <properties>
     <property name="map" value="PerilousSea/Ship"/>
-    <property name="transition" value="ship"/>
+    <property name="quest" value="board-charter-ship"/>
+    <property name="quest-line" value="charter-ship"/>
+    <property name="transition" value="charter-ship"/>
    </properties>
   </object>
   <object id="1889" name="trigger" type="object" x="1808" y="-150" width="198" height="2628">
@@ -293,7 +295,7 @@
   </object>
   <object id="1888" name="spawn" type="object" x="831.333" y="1319.33" width="128" height="128">
    <properties>
-    <property name="transition" value="krampus-dock"/>
+    <property name="transition" value="charter-ship"/>
    </properties>
   </object>
  </objectgroup>

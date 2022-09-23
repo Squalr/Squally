@@ -175,6 +175,9 @@ namespace MapResources
 	extern const std::string LambdaCrypts_Zone_3_1;
 	extern const std::string LambdaCrypts_Zone_4_0;
 	extern const std::string LambdaCrypts_Zone_4_1;
+	extern const std::string PerilousSea_Ship_Captain;
+	extern const std::string PerilousSea_Ship_Hull;
+	extern const std::string PerilousSea_Ship_Main;
 	extern const std::string PerilousSea_Zone_UR_1_0;
 	extern const std::string TileMap;
 	extern const std::string TileMap3Q;

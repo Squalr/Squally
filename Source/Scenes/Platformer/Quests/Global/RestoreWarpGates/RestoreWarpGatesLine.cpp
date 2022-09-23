@@ -1,14 +1,14 @@
 #include "RestoreWarpGatesLine.h"
 
 #include "Engine/Quests/QuestTask.h"
-#include "Scenes/Platformer/Quests/Global/PowerWarpGateBP.h"
-#include "Scenes/Platformer/Quests/Global/PowerWarpGateCV.h"
-#include "Scenes/Platformer/Quests/Global/PowerWarpGateDH.h"
-#include "Scenes/Platformer/Quests/Global/PowerWarpGateDM.h"
-#include "Scenes/Platformer/Quests/Global/PowerWarpGateEF.h"
-#include "Scenes/Platformer/Quests/Global/PowerWarpGateLC.h"
-#include "Scenes/Platformer/Quests/Global/PowerWarpGateUR.h"
-#include "Scenes/Platformer/Quests/Global/PowerWarpGateVS.h"
+#include "Scenes/Platformer/Quests/Global/RestoreWarpGates/PowerWarpGateBP.h"
+#include "Scenes/Platformer/Quests/Global/RestoreWarpGates/PowerWarpGateCV.h"
+#include "Scenes/Platformer/Quests/Global/RestoreWarpGates/PowerWarpGateDH.h"
+#include "Scenes/Platformer/Quests/Global/RestoreWarpGates/PowerWarpGateDM.h"
+#include "Scenes/Platformer/Quests/Global/RestoreWarpGates/PowerWarpGateEF.h"
+#include "Scenes/Platformer/Quests/Global/RestoreWarpGates/PowerWarpGateLC.h"
+#include "Scenes/Platformer/Quests/Global/RestoreWarpGates/PowerWarpGateUR.h"
+#include "Scenes/Platformer/Quests/Global/RestoreWarpGates/PowerWarpGateVS.h"
 
 using namespace cocos2d;
 

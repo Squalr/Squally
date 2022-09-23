@@ -11,6 +11,7 @@ class Portal : public InteractObject
 public:
 	static Portal* create(cocos2d::ValueMap& properties);
 	
+	void setMapFile(std::string mapFile);
 	virtual void loadMap();
 
 	static const std::string MapKey;

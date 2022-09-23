@@ -94,6 +94,11 @@ void Portal::onInteract(PlatformerEntity* interactingEntity)
 	this->loadMap();
 }
 
+void Portal::setMapFile(std::string mapFile)
+{
+	this->mapFile = mapFile;
+}
+
 void Portal::loadMap()
 {
 	if (this->disabled || this->mapFile.empty() || this->wasTripped)
@@ -112,11 +117,17 @@ void Portal::loadMap()
 		{
 			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 			{
-				std::string mapResource = "Public/Platformer/Maps/" + this->mapFile + ".tmx";
-				std::string mapResourceFallback = "Private/Platformer/Maps/" + this->mapFile + ".tmx";
-
 				PlatformerEvents::TriggerBeforePlatformerMapChange();
 				PlatformerMap* map = PlatformerMap::create(this->transition);
+
+				// Attempt to load the map file as a full relative path (rare edge case)
+				if (map->loadMap(this->mapFile))
+				{
+					return map;
+				}
+
+				std::string mapResource = "Public/Platformer/Maps/" + this->mapFile + ".tmx";
+				std::string mapResourceFallback = "Private/Platformer/Maps/" + this->mapFile + ".tmx";
 
 				// Attempt the public map first, try the private path if that fails
 				if (!map->loadMap(mapResource))

@@ -24,6 +24,7 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	this->lineDeserializers = std::map<std::string, std::function<QuestLine*()>>();
 
 	// GLOBAL QUESTS
+	this->lineDeserializers[CharterShipLine::MapKeyQuestLine] = [=]() { return (QuestLine*)CharterShipLine::create(); };
 	this->lineDeserializers[RestoreWarpGatesLine::MapKeyQuestLine] = [=]() { return (QuestLine*)RestoreWarpGatesLine::create(); };
 	
 	// ENDIAN FOREST QUESTS
