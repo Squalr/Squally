@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="18" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="721">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="18" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="725">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -73,12 +73,42 @@
    </properties>
   </object>
   <object id="720" name="ship-wheel" type="object" x="1612.32" y="1254.94" width="112" height="149"/>
+  <object id="724" name="trigger" type="object" x="957" y="-394" width="198" height="2628">
+   <properties>
+    <property name="send-event" value="engage-krampus"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="721" name="krampus" type="entity" x="1323.63" y="1274.85" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy"/>
+    <property name="drop-pool" value="dm-generic"/>
+    <property name="quest" value="defeat-krampus"/>
+    <property name="quest-line" value="restore-power"/>
+   </properties>
+  </object>
+  <object id="722" name="skeletal-pirate" type="entity" x="1218.79" y="838.109" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="723" name="skeletal-pirate" type="entity" x="1429.21" y="833.149" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

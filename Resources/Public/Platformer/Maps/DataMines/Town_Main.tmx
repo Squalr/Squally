@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1110">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1111">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -629,11 +629,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1050" name="Mines/CaveDoor4" type="decor" x="505.5" y="2000.83" width="333" height="385">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
+  <object id="1110" name="Mines/StoneWoodDoor" type="decor" x="503.742" y="1886.62" width="329" height="515"/>
  </objectgroup>
  <objectgroup id="61" name="terrain -3">
   <properties>
@@ -752,8 +748,8 @@
   </object>
   <object id="1036" name="portal" type="object" x="538.667" y="2146.55" width="256" height="256">
    <properties>
-    <property name="map" value="DataMines/Zone_3_3"/>
-    <property name="transition" value="passage-exit"/>
+    <property name="map" value="DataMines/Zone_3_8"/>
+    <property name="transition" value="docks"/>
    </properties>
   </object>
   <object id="1096" name="portal" type="object" x="9325.77" y="3133.32" width="256" height="192">
@@ -830,7 +826,7 @@
   </object>
   <object id="1034" name="spawn" type="object" x="601" y="2276" width="128" height="128">
    <properties>
-    <property name="transition" value="passage-exit"/>
+    <property name="transition" value="docks"/>
    </properties>
   </object>
   <object id="1097" name="spawn" type="object" x="9387.77" y="3197.32" width="128" height="128">

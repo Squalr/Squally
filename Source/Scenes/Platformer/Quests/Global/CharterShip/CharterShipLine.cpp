@@ -5,6 +5,7 @@
 #include "Scenes/Platformer/Quests/DataMines/RestorePower/RestorePowerLine.h"
 #include "Scenes/Platformer/Quests/Global/CharterShip/BoardCharterShip.h"
 #include "Scenes/Platformer/Quests/Global/CharterShip/CharterShip.h"
+#include "Scenes/Platformer/Quests/Global/CharterShip/DiscoverCharterShip.h"
 
 using namespace cocos2d;
 
@@ -21,10 +22,10 @@ CharterShipLine* CharterShipLine::create()
 
 CharterShipLine::CharterShipLine() : super(CharterShipLine::MapKeyQuestLine,
 	{
+		QuestData(DiscoverCharterShip::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return DiscoverCharterShip::create(owner, questLine); }),
 		QuestData(BoardCharterShip::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return BoardCharterShip::create(owner, questLine); }),
 		QuestData(CharterShip::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return CharterShip::create(owner, questLine); }),
-	},
-	(QuestLine*)RestorePowerLine::create(), DefeatKrampus::MapKeyQuest)
+	})
 {
 }
 

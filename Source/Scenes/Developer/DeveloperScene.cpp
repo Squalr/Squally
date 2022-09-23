@@ -235,6 +235,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Home Alder (DM)", MapResources::DataMines_Home_Alder));
 		mapList.push_back(this->buildDebugButton("Home Cypress (DM)", MapResources::DataMines_Home_Cypress));
 		mapList.push_back(this->buildDebugButton("Zone_4_0 (DM)", MapResources::DataMines_Zone_4_0));
+		mapList.push_back(this->buildDebugButton("Zone_3_8 (DM)", MapResources::DataMines_Zone_3_8));
 		mapList.push_back(this->buildDebugButton("Zone_3_7 (DM)", MapResources::DataMines_Zone_3_7));
 		mapList.push_back(this->buildDebugButton("Zone_3_6 (DM)", MapResources::DataMines_Zone_3_6));
 		mapList.push_back(this->buildDebugButton("Zone_3_5 (DM)", MapResources::DataMines_Zone_3_5));

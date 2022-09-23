@@ -51,8 +51,10 @@ ShipWheel::~ShipWheel()
 void ShipWheel::initializePositions()
 {
 	super::initializePositions();
-
-	this->wheel->setPosition(Vec2(0.0f, 92.0f));
+	
+	const float offsetY = -24.0f;
+	this->neck->setPosition(Vec2(0.0f, offsetY));
+	this->wheel->setPosition(Vec2(0.0f, 92.0f + offsetY));
 }
 
 void ShipWheel::onInteract(PlatformerEntity* interactingEntity)

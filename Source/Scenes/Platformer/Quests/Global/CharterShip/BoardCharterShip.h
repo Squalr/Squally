@@ -4,6 +4,7 @@
 
 class Portal;
 class QuestLine;
+class Ship;
 
 class BoardCharterShip : public QuestTask
 {
@@ -24,6 +25,9 @@ protected:
 private:
 	typedef QuestTask super;
 	Portal* portal = nullptr;
+	Ship* ship = nullptr;
 
 	void setReturnMap();
+	
+	static const std::string TagDespawnableShip;
 };

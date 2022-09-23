@@ -87,7 +87,7 @@
     <property name="reward-pool" value="dm-gold"/>
    </properties>
   </object>
-  <object id="1863" name="ship" type="object" x="424.91" y="708.844" width="2375" height="1008"/>
+  <object id="1863" name="ship" type="object" x="-247.09" y="692.844" width="2375" height="1008"/>
  </objectgroup>
  <objectgroup id="104" name="water -8">
   <properties>
@@ -243,42 +243,12 @@
     <property name="transition" value="charter-ship"/>
    </properties>
   </object>
-  <object id="1889" name="trigger" type="object" x="1808" y="-150" width="198" height="2628">
-   <properties>
-    <property name="send-event" value="engage-krampus"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="85" name="entities -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1731" name="krampus" type="entity" x="1222.48" y="1319.58" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy"/>
-    <property name="drop-pool" value="dm-generic"/>
-    <property name="quest" value="defeat-krampus"/>
-    <property name="quest-line" value="restore-power"/>
-   </properties>
-  </object>
-  <object id="1732" name="skeletal-necromancer" type="entity" x="1201.64" y="902.837" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
-  <object id="1733" name="skeletal-archer" type="entity" x="1652.06" y="889.877" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="87" name="player_layer -7">
   <properties>
@@ -537,7 +507,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -548,15 +518,7 @@
     <property name="transition" value="tiger-right"/>
    </properties>
   </object>
-  <object id="1734" name="solid" type="collision" x="1041.94" y="553.818" width="1259.03" height="1952.97"/>
-  <object id="1871" name="warp" type="object" x="557.34" y="1390.67" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-front-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-back-A"/>
-   </properties>
-  </object>
+  <object id="1734" name="solid" type="collision" x="2026.79" y="553.818" width="274.182" height="1952.97"/>
   <object id="1872" name="warp" type="object" x="2559.03" y="1388.36" width="256" height="256">
    <properties>
     <property name="from" value="bridge-front-B"/>

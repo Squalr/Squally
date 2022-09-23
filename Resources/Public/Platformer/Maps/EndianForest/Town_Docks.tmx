@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="92" nextobjectid="784">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="92" nextobjectid="786">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -256,6 +256,14 @@
    </properties>
   </object>
   <object id="717" name="solid" type="collision" x="3891.32" y="914.15" width="126.878" height="778.756"/>
+  <object id="785" name="portal" type="object" x="3059.88" y="1435.64" width="256" height="256">
+   <properties>
+    <property name="map" value="PerilousSea/Ship_Main"/>
+    <property name="quest" value="board-charter-ship"/>
+    <property name="quest-line" value="charter-ship"/>
+    <property name="transition" value="charter-ship"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -352,6 +360,11 @@
   <object id="745" name="spawn" type="object" x="2284" y="1548.67" width="128" height="128">
    <properties>
     <property name="transition" value="ship"/>
+   </properties>
+  </object>
+  <object id="784" name="spawn" type="object" x="3123.88" y="1563.27" width="128" height="128">
+   <properties>
+    <property name="transition" value="charter-ship"/>
    </properties>
   </object>
  </objectgroup>
@@ -469,6 +482,7 @@
   <object id="783" name="ship" type="object" x="2082.2" y="1102.06" width="2375" height="1008">
    <properties>
     <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="tag" value="charter-ship"/>
    </properties>

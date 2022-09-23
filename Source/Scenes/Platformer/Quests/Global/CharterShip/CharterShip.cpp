@@ -8,20 +8,10 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Dialogue/SpeechBubble.h"
-#include "Engine/Events/ObjectEvents.h"
-#include "Engine/Events/QuestEvents.h"
 #include "Engine/Save/SaveManager.h"
-#include "Entities/Platformer/Npcs/Transition/Blackbeard.h"
-#include "Entities/Platformer/Squally/Squally.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
-#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/Components/Objects/DisabledPortal.h"
-#include "Scenes/Platformer/Dialogue/DialogueSet.h"
-#include "Scenes/Platformer/Dialogue/Voices.h"
-#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
-#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -54,11 +44,6 @@ CharterShip::~CharterShip()
 
 void CharterShip::onLoad(QuestState questState)
 {
-	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
-	{
-		this->squally = squally;
-	}, Squally::MapKey);
-
 	std::string returnMap = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCharterShipReturnMap, Value("")).asString();
 	this->portal->setMapFile(returnMap);
 }

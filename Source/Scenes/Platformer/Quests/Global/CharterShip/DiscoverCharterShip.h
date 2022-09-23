@@ -5,16 +5,16 @@
 class Portal;
 class QuestLine;
 
-class CharterShip : public QuestTask
+class DiscoverCharterShip : public QuestTask
 {
 public:
-	static CharterShip* create(GameObject* owner, QuestLine* questLine);
+	static DiscoverCharterShip* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	CharterShip(GameObject* owner, QuestLine* questLine);
-	virtual ~CharterShip();
+	DiscoverCharterShip(GameObject* owner, QuestLine* questLine);
+	virtual ~DiscoverCharterShip();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;
@@ -23,7 +23,4 @@ protected:
 
 private:
 	typedef QuestTask super;
-	Portal* portal = nullptr;
-
-	static const std::string QuestTagShipPortal;
 };
