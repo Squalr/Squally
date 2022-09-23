@@ -34,7 +34,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_STRENGTH 1
+#define LOCAL_FUNC_ID_BLESSING 1
 
 const std::string BlessingOfTheAncients::BlessingOfTheAncientsIdentifier = "blessing-of-the-ancients";
 
@@ -56,13 +56,13 @@ BlessingOfTheAncients* BlessingOfTheAncients::create(PlatformerEntity* caster, P
 }
 
 BlessingOfTheAncients::BlessingOfTheAncients(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Gauntlet, AbilityType::Physical, BuffData(BlessingOfTheAncients::Duration, BlessingOfTheAncients::BlessingOfTheAncientsIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_SwordGlowGreen, AbilityType::Physical, BuffData(BlessingOfTheAncients::Duration, BlessingOfTheAncients::BlessingOfTheAncientsIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 	this->currentDamageDealt = 0;
 
-	this->spellAura->setColor(Color3B::YELLOW);
+	this->spellAura->setColor(Color3B::GREEN);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
@@ -106,19 +106,23 @@ void BlessingOfTheAncients::registerHackables()
 
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
-		/*
 		{
-			LOCAL_FUNC_ID_STRENGTH,
+			LOCAL_FUNC_ID_BLESSING,
 			HackableCode::HackableCodeInfo(
 				BlessingOfTheAncients::BlessingOfTheAncientsIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients::create(),
-				HackableBase::HackBarColor::Yellow,
-				UIResources::Menus_Icons_Gauntlet,
+				HackableBase::HackBarColor::Green,
+				UIResources::Menus_Icons_SwordGlowGreen,
 				LazyNode<HackablePreview>::create([=](){ return BlessingOfTheAncientsGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx::create()
-					}
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx4::create()
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx)), true, 4
+					},
+					{
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx8::create()
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx)), true, 8
+					},
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
@@ -127,25 +131,16 @@ void BlessingOfTheAncients::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentDamageIncrease::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(BlessingOfTheAncients::DamageIncrease)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentDecreaseInstead::create()) + 
-						"add ecx, 3\n"
+						"push dword ptr [ecx + 4]\n"
+						"pop dword ptr [ecx + 8]\n"
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentDamageIncrease::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(BlessingOfTheAncients::DamageIncrease)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentDecreaseInstead::create()) + 
-						"add rcx, 3\n"
+						"push dword ptr [rcx + 4]\n"
+						"pop dword ptr [rcx + 8]\n"
 					),
 				},
 				true
 			)
 		},
-		*/
 	};
 
 	auto func = &BlessingOfTheAncients::applyBlessingOfTheAncients;
@@ -172,25 +167,28 @@ void BlessingOfTheAncients::onBeforeDamageDealt(CombatEvents::ModifiableDamageOr
 
 NO_OPTIMIZE void BlessingOfTheAncients::applyBlessingOfTheAncients()
 {
-	static volatile int currentDamageDealtLocal = 0;
+	static volatile int currentDamageDealtLocalArr[3];
+	static volatile int* currentDamageDealtLocalPtr = nullptr;
 
-	currentDamageDealtLocal = this->currentDamageDealt;
+	currentDamageDealtLocalArr[0] = 0;
+	currentDamageDealtLocalArr[1] = this->currentDamageDealt * BlessingOfTheAncients::MaxMultiplier;
+	currentDamageDealtLocalArr[2] = this->currentDamageDealt;
+	currentDamageDealtLocalPtr = currentDamageDealtLocalArr;
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZCX);
-	ASM_MOV_REG_VAR(ecx, currentDamageDealtLocal);
+	ASM_MOV_REG_PTR(ZCX, currentDamageDealtLocalPtr);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_STRENGTH);
-	ASM(add ZCX, 3);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_BLESSING);
+	ASM(push [ZCX + 4]);
+	ASM(pop [ZCX + 8]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, ecx);
-
+	
 	ASM(pop ZCX);
 	ASM_POP_EFLAGS()
 
-	this->currentDamageDealt = currentDamageDealtLocal;
+	this->currentDamageDealt = currentDamageDealtLocalArr[2];
 
 	HACKABLES_STOP_SEARCH();
 }

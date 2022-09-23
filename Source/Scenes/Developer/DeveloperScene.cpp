@@ -271,8 +271,8 @@ DeveloperScene::DeveloperScene()
 		X Earth Elemental		=> X 2_2 OR (REGERATION)
 		X Skeletal Pirate		=> X 3_2 XOR (BLIND)
 		X Skeletal Archer		=> X 3_1 PUSH / POP REG (MULTISHOT debuff - curse of the ancients - tick on targets)
-		Skeletal Warrior		=> X 3_0 PUSH [REG PTR] / POP REG (blessing of the ancients - outgoing damage)
-		Skeletal Necromancer 	=> X 3_0 PUSH [REG PTR] / POP [REG PTR] (pact of the ancients - health link)
+		Skeletal Warrior		=> X 3_0 PUSH [REG PTR + offset] / POP [REG PTR + offset] (blessing of the ancients - outgoing damage)
+		X Skeletal Necromancer 	=> X 3_0 PUSH const / POP [REG PTR] (pact of the ancients - health link)
 		[B] Krampus				=> O 3_3 NOT (No idea)
 		Gorilla			Deprecate
 

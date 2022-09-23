@@ -909,6 +909,21 @@ namespace Strings
 		virtual ~Common_MinusConstant() = default;
 	};
 
+	class Common_MinusPointerOffset : public LocalizedString
+	{
+	public:
+		static Common_MinusPointerOffset* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_MinusPointerOffset();
+		virtual ~Common_MinusPointerOffset() = default;
+	};
+
 	class Common_NativeLanguage : public LocalizedString
 	{
 	public:
@@ -982,6 +997,21 @@ namespace Strings
 	private:
 		Common_PlusConstant();
 		virtual ~Common_PlusConstant() = default;
+	};
+
+	class Common_PlusPointerOffset : public LocalizedString
+	{
+	public:
+		static Common_PlusPointerOffset* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_PlusPointerOffset();
+		virtual ~Common_PlusPointerOffset() = default;
 	};
 
 	class Common_Squally : public LocalizedString
@@ -9202,6 +9232,36 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients();
 		virtual ~Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx4 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx4* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx4();
+		virtual ~Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx4() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx8 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx8* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx8();
+		virtual ~Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx8() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients : public LocalizedString

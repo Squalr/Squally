@@ -18,7 +18,6 @@ protected:
 	virtual ~HackablePreview();
 
 	LocalizedLabel* createRegisterEqualsValueLabel(HackableCode::Register reg, bool isPointer, LocalizedString* value);
-	LocalizedString* getRegisterString(HackableCode::Register reg);
 
 	cocos2d::Node* assemblyTextNode = nullptr;
 	cocos2d::Node* previewNode = nullptr;

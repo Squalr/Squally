@@ -61,12 +61,9 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hack
 	this->originalCodeLength = (int)((unsigned long)codeEnd - (unsigned long)codeStart);
 	this->registerHints = hackableCodeInfo.registerHints;
 
-	for (auto next : this->registerHints)
+	for (const RegisterHintInfo& registerHint : this->registerHints)
 	{
-		if (next.second != nullptr)
-		{
-			this->addChild(next.second);
-		}
+		this->addChild(registerHint.hint);
 	}
 
 	if (codeStart != nullptr)
@@ -106,7 +103,8 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hack
 
 	if (!this->readOnlyScripts.empty())
 	{
-		this->originalAssemblyString = (sizeof(void*) == 4) ? this->readOnlyScripts.front().scriptx86 : this->readOnlyScripts.front().scriptx64;
+		bool is32Bit = sizeof(void*) == 4;
+		this->originalAssemblyString = (is32Bit) ? this->readOnlyScripts.front().scriptx86 : this->readOnlyScripts.front().scriptx64;
 	}
 	
 	this->assemblyString = this->originalAssemblyString;
@@ -127,13 +125,13 @@ HackableCode::~HackableCode()
 HackableCode* HackableCode::clone(CodeInfoMap& hackableCodeInfoMap)
 {
 	HackableCodeInfo clonedData = this->hackableCodeInfo;
-	std::map<Register, LocalizedString*> registerHintsClone = std::map<Register, LocalizedString*>();
+	std::vector<RegisterHintInfo> registerHintsClone = std::vector<RegisterHintInfo>();
 
 	clonedData.functionName = this->hackableCodeInfo.functionName->clone();
 
-	for (auto next : this->hackableCodeInfo.registerHints)
+	for (const RegisterHintInfo& registerHint : this->registerHints)
 	{
-		registerHintsClone[next.first] = next.second == nullptr ? nullptr : next.second->clone();
+		registerHintsClone.push_back(registerHint.clone());
 	}
 
 	clonedData.registerHints = registerHintsClone;
@@ -215,143 +213,145 @@ void HackableCode::restoreState()
 
 std::string HackableCode::registerToString(HackableCode::Register reg, bool is32Bit)
 {
+	return HackableCode::registerToLocalizedString(reg, is32Bit)->getString();
+}
+
+LocalizedString* HackableCode::registerToLocalizedString(HackableCode::Register reg, bool is32Bit)
+{
 	switch (reg)
 	{
+		default:
 		case HackableCode::Register::zax:
 		{
-			return (is32Bit ? "eax" : "rax");
+			return ((is32Bit ? (LocalizedString*)Strings::Menus_Hacking_RegisterEax::create(): (LocalizedString*)Strings::Menus_Hacking_RegisterRax::create()));
 		}
 		case HackableCode::Register::zbx:
 		{
-			return (is32Bit ? "ebx" : "rbx");
+			return ((is32Bit ? (LocalizedString*)Strings::Menus_Hacking_RegisterEbx::create(): (LocalizedString*)Strings::Menus_Hacking_RegisterRbx::create()));
 		}
 		case HackableCode::Register::zcx:
 		{
-			return (is32Bit ? "ecx" : "rcx");
+			return ((is32Bit ? (LocalizedString*)Strings::Menus_Hacking_RegisterEcx::create(): (LocalizedString*)Strings::Menus_Hacking_RegisterRcx::create()));
 		}
 		case HackableCode::Register::zdx:
 		{
-			return (is32Bit ? "edx" : "rdx");
+			return ((is32Bit ? (LocalizedString*)Strings::Menus_Hacking_RegisterEdx::create(): (LocalizedString*)Strings::Menus_Hacking_RegisterRdx::create()));
 		}
 		case HackableCode::Register::zdi:
 		{
-			return (is32Bit ? "edi" : "rdi");
+			return ((is32Bit ? (LocalizedString*)Strings::Menus_Hacking_RegisterEdi::create(): (LocalizedString*)Strings::Menus_Hacking_RegisterRdi::create()));
 		}
 		case HackableCode::Register::zsi:
 		{
-			return (is32Bit ? "esi" : "rsi");
+			return ((is32Bit ? (LocalizedString*)Strings::Menus_Hacking_RegisterEsi::create(): (LocalizedString*)Strings::Menus_Hacking_RegisterRsi::create()));
 		}
 		case HackableCode::Register::zbp:
 		{
-			return (is32Bit ? "ebp" : "rbp");
+			return ((is32Bit ? (LocalizedString*)Strings::Menus_Hacking_RegisterEbp::create(): (LocalizedString*)Strings::Menus_Hacking_RegisterRbp::create()));
 		}
 		case HackableCode::Register::zsp:
 		{
-			return (is32Bit ? "esp" : "rsp");
+			return ((is32Bit ? (LocalizedString*)Strings::Menus_Hacking_RegisterEsp::create(): (LocalizedString*)Strings::Menus_Hacking_RegisterRsp::create()));
 		}
 		case HackableCode::Register::zip:
 		{
-			return (is32Bit ? "eip" : "rip");
+			return ((is32Bit ? (LocalizedString*)Strings::Menus_Hacking_RegisterEip::create(): (LocalizedString*)Strings::Menus_Hacking_RegisterRip::create()));
 		}
 		case HackableCode::Register::r8:
 		{
-			return "r8";
+			return Strings::Menus_Hacking_RegisterR8::create();
 		}
 		case HackableCode::Register::r9:
 		{
-			return "r9";
+			return Strings::Menus_Hacking_RegisterR9::create();
 		}
 		case HackableCode::Register::r10:
 		{
-			return "r10";
+			return Strings::Menus_Hacking_RegisterR10::create();
 		}
 		case HackableCode::Register::r11:
 		{
-			return "r11";
+			return Strings::Menus_Hacking_RegisterR11::create();
 		}
 		case HackableCode::Register::r12:
 		{
-			return "r12";
+			return Strings::Menus_Hacking_RegisterR12::create();
 		}
 		case HackableCode::Register::r13:
 		{
-			return "r13";
+			return Strings::Menus_Hacking_RegisterR13::create();
 		}
 		case HackableCode::Register::r14:
 		{
-			return "r14";
+			return Strings::Menus_Hacking_RegisterR14::create();
 		}
 		case HackableCode::Register::r15:
 		{
-			return "r15";
+			return Strings::Menus_Hacking_RegisterR15::create();
 		}
 		case HackableCode::Register::st0:
 		{
-			return "st0";
+			return Strings::Menus_Hacking_RegisterSt0::create();
 		}
 		case HackableCode::Register::st1:
 		{
-			return "st1";
+			return Strings::Menus_Hacking_RegisterSt1::create();
 		}
 		case HackableCode::Register::st2:
 		{
-			return "st2";
+			return Strings::Menus_Hacking_RegisterSt2::create();
 		}
 		case HackableCode::Register::st3:
 		{
-			return "st3";
+			return Strings::Menus_Hacking_RegisterSt3::create();
 		}
 		case HackableCode::Register::st4:
 		{
-			return "st4";
+			return Strings::Menus_Hacking_RegisterSt4::create();
 		}
 		case HackableCode::Register::st5:
 		{
-			return "st5";
+			return Strings::Menus_Hacking_RegisterSt5::create();
 		}
 		case HackableCode::Register::st6:
 		{
-			return "st6";
+			return Strings::Menus_Hacking_RegisterSt6::create();
 		}
 		case HackableCode::Register::st7:
 		{
-			return "st7";
+			return Strings::Menus_Hacking_RegisterSt7::create();
 		}
 		case HackableCode::Register::xmm0:
 		{
-			return "xmm0";
+			return Strings::Menus_Hacking_RegisterXmm0::create();
 		}
 		case HackableCode::Register::xmm1:
 		{
-			return "xmm1";
+			return Strings::Menus_Hacking_RegisterXmm1::create();
 		}
 		case HackableCode::Register::xmm2:
 		{
-			return "xmm2";
+			return Strings::Menus_Hacking_RegisterXmm2::create();
 		}
 		case HackableCode::Register::xmm3:
 		{
-			return "xmm3";
+			return Strings::Menus_Hacking_RegisterXmm3::create();
 		}
 		case HackableCode::Register::xmm4:
 		{
-			return "xmm4";
+			return Strings::Menus_Hacking_RegisterXmm4::create();
 		}
 		case HackableCode::Register::xmm5:
 		{
-			return "xmm5";
+			return Strings::Menus_Hacking_RegisterXmm5::create();
 		}
 		case HackableCode::Register::xmm6:
 		{
-			return "xmm6";
+			return Strings::Menus_Hacking_RegisterXmm6::create();
 		}
 		case HackableCode::Register::xmm7:
 		{
-			return "xmm7";
-		}
-		default:
-		{
-			return "unk";
+			return Strings::Menus_Hacking_RegisterXmm7::create();
 		}
 	}
 }

@@ -3,6 +3,7 @@
 #include <string>
 
 #include "Engine/Hackables/HackableBase.h"
+#include "Engine/Localization/LocalizedString.h"
 
 #ifndef _WIN32
 	#include <sys/mman.h>
@@ -191,6 +192,22 @@ public:
 		ReadOnlyScript(LocalizedString* title, std::string scriptx86, std::string scriptx64) : title(title), scriptx86(scriptx86), scriptx64(scriptx64) { }
 	};
 
+	struct RegisterHintInfo
+	{
+		Register reg = Register::zax;
+		LocalizedString* hint = nullptr;
+		bool isPointer = false;
+		int pointerOffset = 0;
+
+		RegisterHintInfo(Register reg = Register::zax, LocalizedString* hint = nullptr, bool isPointer = false, int pointerOffset = 0)
+			: reg(reg), hint(hint), isPointer(isPointer), pointerOffset(pointerOffset) { }
+
+		RegisterHintInfo clone() const
+		{
+			return RegisterHintInfo(reg, (hint == nullptr ? nullptr : hint->clone()), isPointer, pointerOffset);
+		}
+	};
+
 	struct HackableCodeInfo
 	{
 		std::string hackableIdentifier;
@@ -198,7 +215,7 @@ public:
 		HackBarColor hackBarColor = HackBarColor::Purple;
 		std::string iconResource;
 		LazyNode<HackablePreview>* hackablePreview = nullptr;
-		std::map<Register, LocalizedString*> registerHints;
+		std::vector<RegisterHintInfo> registerHints;
 		int hackFlags = 0;
 		float duration = 1.0f;
 		float cooldown = 1.0f;
@@ -206,8 +223,12 @@ public:
 		bool excludeDefaultScript = false;
 
 		HackableCodeInfo() { }
-		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, HackBarColor hackBarColor, std::string iconResource, LazyNode<HackablePreview>* hackablePreview, std::map<Register, LocalizedString*> registerHints, int hackFlags, float duration, float cooldown, std::vector<ReadOnlyScript> readOnlyScripts = { }, bool excludeDefaultScript = false) :
-				hackableIdentifier(hackableIdentifier), functionName(functionName), hackBarColor(hackBarColor), iconResource(iconResource), hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), cooldown(cooldown), readOnlyScripts(readOnlyScripts), excludeDefaultScript(excludeDefaultScript) { }
+		HackableCodeInfo(std::string hackableIdentifier, LocalizedString* functionName, HackBarColor hackBarColor, std::string iconResource,
+			LazyNode<HackablePreview>* hackablePreview, std::vector<RegisterHintInfo> registerHints, int hackFlags, float duration,
+			float cooldown, std::vector<ReadOnlyScript> readOnlyScripts = { }, bool excludeDefaultScript = false)
+			: hackableIdentifier(hackableIdentifier), functionName(functionName), hackBarColor(hackBarColor), iconResource(iconResource),
+				hackablePreview(hackablePreview), registerHints(registerHints), hackFlags(hackFlags), duration(duration), cooldown(cooldown),
+				readOnlyScripts(readOnlyScripts), excludeDefaultScript(excludeDefaultScript) { }
 	};
 
 	struct HackableCodeMarkers
@@ -232,9 +253,10 @@ public:
 	bool applyCustomCode(std::string newAssembly);
 	void restoreState() override;
 
-	static std::string registerToString(HackableCode::Register reg, bool is32Bit);
+	static std::string registerToString(HackableCode::Register reg, bool is32Bit = (sizeof(void*) == 4));
+	static LocalizedString* registerToLocalizedString(HackableCode::Register reg, bool is32Bit = (sizeof(void*) == 4));
 
-	std::map<Register, LocalizedString*> registerHints;
+	std::vector<RegisterHintInfo> registerHints;
 
 protected:
 	static HackableCode* create(void* codeStart, void* codeEnd, HackableCodeInfo hackableCodeInfo);
