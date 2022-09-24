@@ -1,4 +1,4 @@
-#include "CypressHexusBehavior.h"
+#include "GodivaHexusBehavior.h"
 
 #include "Objects/Platformer/ItemPools/HexusPools/DataMines/HexusPoolDMGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
@@ -14,43 +14,43 @@
 
 using namespace cocos2d;
 
-const std::string CypressHexusBehavior::MapKey = "cypress-hexus";
+const std::string GodivaHexusBehavior::MapKey = "godiva-hexus";
 
-CypressHexusBehavior* CypressHexusBehavior::create(GameObject* owner)
+GodivaHexusBehavior* GodivaHexusBehavior::create(GameObject* owner)
 {
-	CypressHexusBehavior* instance = new CypressHexusBehavior(owner);
+	GodivaHexusBehavior* instance = new GodivaHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CypressHexusBehavior::CypressHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+GodivaHexusBehavior::GodivaHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-CypressHexusBehavior::~CypressHexusBehavior()
+GodivaHexusBehavior::~GodivaHexusBehavior()
 {
 }
 
-MinMaxPool* CypressHexusBehavior::generateReward()
+MinMaxPool* GodivaHexusBehavior::generateReward()
 {
 	return HexusPoolDMGeneric::create();
 }
 
-std::string CypressHexusBehavior::getWinLossSaveKey()
+std::string GodivaHexusBehavior::getWinLossSaveKey()
 {
-	return CypressHexusBehavior::MapKey;
+	return GodivaHexusBehavior::MapKey;
 }
 
-std::string CypressHexusBehavior::getBackgroundResource()
+std::string GodivaHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameDataMines;
 }
 
-std::vector<CardData*> CypressHexusBehavior::generateDeck()
+std::vector<CardData*> GodivaHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 4.0f / DMHexusConfig::MaxEntities;
+	const float LocalOrder = 6.0f / DMHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{
@@ -75,12 +75,12 @@ std::vector<CardData*> CypressHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* CypressHexusBehavior::getStateOverride()
+StateOverride* GodivaHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> CypressHexusBehavior::getTutorials()
+std::vector<TutorialBase*> GodivaHexusBehavior::getTutorials()
 {
 	return { };
 }

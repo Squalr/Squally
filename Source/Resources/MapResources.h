@@ -30,6 +30,7 @@ namespace MapResources
 	extern const std::string CastleValgrind_Town_Inn_Upstairs;
 	extern const std::string CastleValgrind_Town_Main;
 	extern const std::string CastleValgrind_Town_Smith;
+	extern const std::string CastleValgrind_Town_Train;
 	extern const std::string CastleValgrind_Zone_1_0;
 	extern const std::string CastleValgrind_Zone_1_1;
 	extern const std::string CastleValgrind_Zone_1_2;
@@ -60,11 +61,10 @@ namespace MapResources
 	extern const std::string DaemonsHallow_Zone_3_1;
 	extern const std::string DaemonsHallow_Zone_3_2;
 	extern const std::string DataMines_Combat_Caves;
-	extern const std::string DataMines_Home_Alder;
-	extern const std::string DataMines_Home_Cypress;
+	extern const std::string DataMines_Home_Burch;
 	extern const std::string DataMines_Home_Dawn;
-	extern const std::string DataMines_Home_Finch;
-	extern const std::string DataMines_Home_Mildred;
+	extern const std::string DataMines_Home_Godiva;
+	extern const std::string DataMines_Home_Ralston;
 	extern const std::string DataMines_Mages_Warp;
 	extern const std::string DataMines_Town_Alch;
 	extern const std::string DataMines_Town_Inn;

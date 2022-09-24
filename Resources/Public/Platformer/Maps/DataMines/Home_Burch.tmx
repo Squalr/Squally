@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="15" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="849">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value=""/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="hide-mini-map" type="bool" value="true"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="heartbeat"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="show-cracks" type="bool" value="false"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="16" name="tiled bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="808" name="trail" type="texture" x="-129.152" y="-506.485" width="2226.42" height="1712.48"/>
+ </objectgroup>
+ <objectgroup id="18" name="decor background 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="101" name="entities background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="102" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="828" name="Mines/TentDoor1" type="decor" x="757.65" y="533.421" width="394" height="562"/>
+ </objectgroup>
+ <objectgroup id="113" name="terrain bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="847" name="wood" type="terrain" x="-47.391" y="672.847" width="81.569" height="594.176"/>
+  <object id="848" name="wood" type="terrain" x="1882.49" y="707.946" width="66.9023" height="566.661"/>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="807" name="mines" type="terrain" x="33.1528" y="1065.94" width="1847.75" height="234.06"/>
+  <object id="846" name="wood-black-fill" type="terrain" x="-61.8887" y="-313.215">
+   <polygon points="-39.3939,-153.192 -21.1584,1040.69 946.349,559.852 1093.94,559.39 2026.5,1072.04 2038.02,-152.406"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="114" name="terrain fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="694" name="portal" type="object" x="834.857" y="809.661" width="237.527" height="256">
+   <properties>
+    <property name="map" value="DataMines/Zone_2_2"/>
+    <property name="transition" value="tent"/>
+   </properties>
+  </object>
+  <object id="840" name="metal-chest" type="object" x="417.362" y="934.52" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="dm-rare"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="810" name="burch" type="entity" x="1442.11" y="939.909" width="128" height="128">
+   <properties>
+    <property name="components" value="burch-hexus,friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="dm-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="962.378" y="937.4" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="805" name="spawn" type="object" x="848.644" y="939.309" width="128" height="128">
+   <properties>
+    <property name="transition" value="tent"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="decor +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

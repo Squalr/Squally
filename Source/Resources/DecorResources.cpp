@@ -803,6 +803,7 @@ const std::string DecorResources::Mines_StoneWoodDoor = "Private/Platformer/Deco
 const std::string DecorResources::Mines_SupportBeam = "Private/Platformer/Decor/Mines/SupportBeam.png";
 const std::string DecorResources::Mines_SupportLarge = "Private/Platformer/Decor/Mines/SupportLarge.png";
 const std::string DecorResources::Mines_SupportMedium = "Private/Platformer/Decor/Mines/SupportMedium.png";
+const std::string DecorResources::Mines_TentDoor1 = "Private/Platformer/Decor/Mines/TentDoor1.png";
 const std::string DecorResources::Mines_WarpTower = "Private/Platformer/Decor/Mines/WarpTower.png";
 const std::string DecorResources::Mines_WinchBroken = "Private/Platformer/Decor/Mines/WinchBroken.png";
 const std::string DecorResources::Ruins_ArchDoor1 = "Private/Platformer/Decor/Ruins/ArchDoor1.png";

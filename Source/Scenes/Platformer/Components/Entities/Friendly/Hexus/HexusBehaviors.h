@@ -3,7 +3,7 @@
 #include "Scenes/Platformer/Components/Entities/Friendly/Hexus/DataMines/BancroftHexusBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/Hexus/DataMines/BonnieHexusBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/Hexus/DataMines/BurchHexusBehavior.h"
-#include "Scenes/Platformer/Components/Entities/Friendly/Hexus/DataMines/CypressHexusBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/Hexus/DataMines/GodivaHexusBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/Hexus/DataMines/MildredHexusBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/Hexus/DataMines/OliveHexusBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/Hexus/DataMines/Puzzles/DMPuzzleABehavior.h"

@@ -804,6 +804,7 @@ namespace DecorResources
 	extern const std::string Mines_SupportBeam;
 	extern const std::string Mines_SupportLarge;
 	extern const std::string Mines_SupportMedium;
+	extern const std::string Mines_TentDoor1;
 	extern const std::string Mines_WarpTower;
 	extern const std::string Mines_WinchBroken;
 	extern const std::string Ruins_ArchDoor1;

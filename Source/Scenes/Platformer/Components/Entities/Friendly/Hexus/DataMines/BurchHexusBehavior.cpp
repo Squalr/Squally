@@ -50,7 +50,7 @@ std::string BurchHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> BurchHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 6.0f / DMHexusConfig::MaxEntities;
+	const float LocalOrder = 3.0f / DMHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{

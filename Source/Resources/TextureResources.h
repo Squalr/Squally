@@ -10,6 +10,7 @@ namespace TextureResources
 	extern const std::string ArabicStarTexture;
 	extern const std::string ArabicWebDarkTexture;
 	extern const std::string ArabicWebTexture;
+	extern const std::string BlackTexture;
 	extern const std::string BlueGrassTexture;
 	extern const std::string BrickInteriorTexture;
 	extern const std::string CastleTexture;

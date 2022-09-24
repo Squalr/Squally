@@ -9,6 +9,7 @@ const std::string TextureResources::ArabicFlowerTexture = "Private/Platformer/Te
 const std::string TextureResources::ArabicStarTexture = "Private/Platformer/Textures/ArabicStarTexture.png";
 const std::string TextureResources::ArabicWebDarkTexture = "Private/Platformer/Textures/ArabicWebDarkTexture.png";
 const std::string TextureResources::ArabicWebTexture = "Private/Platformer/Textures/ArabicWebTexture.png";
+const std::string TextureResources::BlackTexture = "Private/Platformer/Textures/BlackTexture.png";
 const std::string TextureResources::BlueGrassTexture = "Private/Platformer/Textures/BlueGrassTexture.png";
 const std::string TextureResources::BrickInteriorTexture = "Private/Platformer/Textures/BrickInteriorTexture.png";
 const std::string TextureResources::CastleTexture = "Private/Platformer/Textures/CastleTexture.png";

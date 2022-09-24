@@ -5,16 +5,16 @@
 class CardData;
 class MinMaxPool;
 
-class CypressHexusBehavior : public HexusBehaviorBase
+class GodivaHexusBehavior : public HexusBehaviorBase
 {
 public:
-	static CypressHexusBehavior* create(GameObject* owner);
+	static GodivaHexusBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	CypressHexusBehavior(GameObject* owner);
-	virtual ~CypressHexusBehavior();
+	GodivaHexusBehavior(GameObject* owner);
+	virtual ~GodivaHexusBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;

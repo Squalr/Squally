@@ -50,7 +50,7 @@ std::string RakaHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> RakaHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 5.0f / DMHexusConfig::MaxEntities;
+	const float LocalOrder = 4.0f / DMHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{

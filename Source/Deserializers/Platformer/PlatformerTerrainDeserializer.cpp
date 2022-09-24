@@ -45,6 +45,7 @@
 #include "Scenes/Platformer/Terrain/TempleTerrain.h"
 #include "Scenes/Platformer/Terrain/TrailTerrain.h"
 #include "Scenes/Platformer/Terrain/WoodTerrain.h"
+#include "Scenes/Platformer/Terrain/WoodBlackFillTerrain.h"
 #include "Scenes/Platformer/Terrain/VinesTerrain.h"
 #include "Scenes/Platformer/Terrain/VoidTerrain.h"
 
@@ -102,6 +103,7 @@ PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(Platforme
 	this->deserializers[TempleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleTerrain::create(properties); };
 	this->deserializers[TrailTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)TrailTerrain::create(properties); };
 	this->deserializers[WoodTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)WoodTerrain::create(properties); };
+	this->deserializers[WoodBlackFillTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)WoodBlackFillTerrain::create(properties); };
 	this->deserializers[VinesTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)VinesTerrain::create(properties); };
 	this->deserializers[VoidTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)VoidTerrain::create(properties); };
 }

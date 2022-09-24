@@ -8,6 +8,7 @@
 #include "Scenes/Platformer/Textures/ArabicDarkTexture.h"
 #include "Scenes/Platformer/Textures/ArabicStarTexture.h"
 #include "Scenes/Platformer/Textures/ArabicTexture.h"
+#include "Scenes/Platformer/Textures/BlackTexture.h"
 #include "Scenes/Platformer/Textures/BlueGrassTexture.h"
 #include "Scenes/Platformer/Textures/BrickInteriorTexture.h"
 #include "Scenes/Platformer/Textures/CastleTexture.h"
@@ -70,6 +71,7 @@ PlatformerTextureDeserializer::PlatformerTextureDeserializer() : super(Platforme
 		PlatformerTextureDeserializer::Deserializers[ArabicDarkTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)ArabicDarkTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[ArabicStarTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)ArabicStarTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[ArabicTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)ArabicTexture::create(properties); };
+		PlatformerTextureDeserializer::Deserializers[BlackTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)BlackTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[BlueGrassTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)BlueGrassTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[BrickInteriorTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)BrickInteriorTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[CastleTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)CastleTexture::create(properties); };

@@ -231,10 +231,8 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Town (DM)", MapResources::DataMines_Town_Main));
 		mapList.push_back(this->buildDebugButton("Town Train (DM)", MapResources::DataMines_Town_Train));
 		mapList.push_back(this->buildDebugButton("Home Dawn (DM)", MapResources::DataMines_Home_Dawn));
-		mapList.push_back(this->buildDebugButton("Home Finch (DM)", MapResources::DataMines_Home_Finch));
-		mapList.push_back(this->buildDebugButton("Home Mildred (DM)", MapResources::DataMines_Home_Mildred));
-		mapList.push_back(this->buildDebugButton("Home Alder (DM)", MapResources::DataMines_Home_Alder));
-		mapList.push_back(this->buildDebugButton("Home Cypress (DM)", MapResources::DataMines_Home_Cypress));
+		mapList.push_back(this->buildDebugButton("Home Godiva (DM)", MapResources::DataMines_Home_Godiva));
+		mapList.push_back(this->buildDebugButton("Home Burch (DM)", MapResources::DataMines_Home_Burch));
 		mapList.push_back(this->buildDebugButton("Zone_4_0 (DM)", MapResources::DataMines_Zone_4_0));
 		mapList.push_back(this->buildDebugButton("Zone_3_8 (DM)", MapResources::DataMines_Zone_3_8));
 		mapList.push_back(this->buildDebugButton("Zone_3_7 (DM)", MapResources::DataMines_Zone_3_7));
@@ -260,7 +258,6 @@ DeveloperScene::DeveloperScene()
 		// 	- Rework to have answers displayed on blocks across the gap
 		// 	- Implement reset
 		// Train ticket reward for returning to queen with restore-power quest (Bancroft as gating NPC)
-		// Fix blue trains
 		// Add Hexus fights to NPCs
 		// Needs Hexus puzzles
 		// - A
@@ -287,9 +284,8 @@ DeveloperScene::DeveloperScene()
 		X Olive			Zone 1_1 (H_1)
 		X Bonnie		Town_Inn (H_2) (non-vendor)
 		X Princess Dawn	Home_Dawn
-		- Finch			? Zone 2_x Flight Master -- Start flight master quest?
-		X Raka			Zone 3_3 (Push/Pop Puzzle) (H_3)
-		- Burch			Zone 3_x (H_4)
+		X Burch			Zone 2_x (H_3)
+		X Raka			Zone 3_3 (Push/Pop Puzzle) (H_4)
 		X Ralson		Home_Ralston (H_5)
 		X Godiva		Home_Godiva (H_6)
 		X Bancroft		Town_Train (H_7)
@@ -298,7 +294,7 @@ DeveloperScene::DeveloperScene()
 		X Brock			Town_BS
 		X Shen			Town_Inn
 
-		- Cypress		Zone 2_x nature spellbook (or cut from the game, it doesn't fit well)
+		- Cypress		Zone 2_x nature spellbook (or cut from the game, it doesn't fit well. Can also keep this optional, and have it just grant an ability)
 		- Alder			Technically in mage's guild
 		- Jasper		Technically in mage's guild
 		- Sarude		Technically in mage's guild
@@ -415,18 +411,34 @@ DeveloperScene::DeveloperScene()
 		// Dual boss with King Zul and Lazarus. Give Lazarus a rez or self rez?
 
 		/*
+		- Abomination			=>  
+		- Assassin				=>  
 		- BoneFiend				=>  
+		- BoneKnight				=>  
 		- Hunter				=>  
 		- ZombieElric			=>  
 		- ReanimatedPig			=>  
 		- Mystic				=>  
 		- Zombie				=>  
 		- Undead				=>  
-		- [B] Lazarus			=> 
 		- SkeletalPriestess		=>  
 		- SkeletalKnight		=>  
 		- SkeletalCleaver		=>  
+		- [B] Lazarus			=> 
 		- [B] KingZul			=>  
+
+		- Amelia				=> Town_Church
+		- Azmus					=> Town_Smith
+		- Elric					=> ? Town_Home
+		- Garrick				=> Town_Inn
+		- Johann				=> ? Crypts
+		- Princess Nebea		=> ? Town_Home
+		- Roger					=> Town_Main
+		- Thion					=> Town_Main
+		- Ursula				=> Town_Main
+		- Vesuvius				=> Town_Alch
+		- Viper					=> Town_Main
+		- Zelina				=> Town_Main
 		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
@@ -464,44 +476,38 @@ DeveloperScene::DeveloperScene()
 		// 3_x is all overworld (Tiger, Warrior, Grunt, Archer)
 
 		/*
-			Surface:
-			- DemonRogue			=>  1_X
-			- DemonShaman			=>  1_X
-			- DemonSwordsman		=>  1_X
-			
-			Caves:
-			- DemonDragon			=>  2_X
-			- DemonGhost			=>  2_X
-			- FireElemental			=>  2_X
-			- LavaGolem				=>  2_X
-			
-			Surface 2?
-			- DemonArcher			=>  3_X
-			- DemonGrunt			=>  3_X
-			- DemonWarrior			=>  3_X
-			- FireTiger				=>  3_X
-			
-			- [B] Asmodeus			=> 	4_X
-			
-			-----------------
-			
-			- Ash				=> 1_x (H)
-			
-			- Hades				=> 2_x (H)
-			
-			- Cindra			=> 3_x (barricade)(H?)
-			- Scaldor			=> 3_x (barricade)(H?)
-			- Magnus			=> 3_x (barricade)(H?)
-			
-			- Mittens			=> 2_x (H)
-			- Celeste			=> 3_x (barricade)(H?)
-			
-			- Lucifer			=> Town (H)
-			- Brine				=> Town_Main (Exterior) (H)
-			- Queen Elise		=> Town_Main
-			- Pan				=> Alch
-			- Ragnis			=> Smith
-			- Thatcher			=> Inn
+		Surface:
+		- DemonRogue			=>  1_X
+		- DemonShaman			=>  1_X
+		- DemonSwordsman		=>  1_X
+		Caves:
+		- DemonDragon			=>  2_X
+		- DemonGhost			=>  2_X
+		- FireElemental			=>  2_X
+		- LavaGolem				=>  2_X
+		Surface 2?
+		- DemonArcher			=>  3_X
+		- DemonGrunt			=>  3_X
+		- DemonWarrior			=>  3_X
+		- FireTiger				=>  3_X
+		- [B] Asmodeus			=> 	4_X
+		
+		-----------------
+		
+		- Ash				=> 1_x (H)
+		- Hades				=> 2_x (H)
+		- Cindra			=> 3_x (barricade)(H?)
+		- Scaldor			=> 3_x (barricade)(H?)
+		- Magnus			=> 3_x (barricade)(H?)
+		- Mittens			=> 2_x (H)
+		- Celeste			=> 3_x (barricade)(H?)
+		- Lucifer			=> Town (H)
+		- Brine				=> Town_Main (Exterior) (H)
+		- Queen Elise		=> Town_Main
+		- Pan				=> Alch
+		- Ragnis			=> Smith
+		- Thatcher			=> Inn
+		- Finch			? Zone 2_x Flight Master -- Start flight master quest?
 		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
@@ -536,21 +542,6 @@ DeveloperScene::DeveloperScene()
 		// 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
 
 		/*
-		O Aspen
-		O Bodom
-		X Cookie => Santa
-		X Cooper => Inn
-		X Jingles => Santa
-		O Juniper
-		X Kringle => Santa
-		X Luna => alch
-		O Nessie
-		O Princess Pepper
-		X Theldar => smith
-		X Tinsel => Santa
-		O Ysara
-		X Irmik => SkyMaster
-
 		- PenguinGrunt		1_x		=> jmp 			--
 		- PenguinWarrior	1_x		=> J[E]CXZ		%[E]CX = 0
 		- Viking			1_x		=> J[N]E/Z		ZF
@@ -564,6 +555,20 @@ DeveloperScene::DeveloperScene()
 		- [B?] Santa		3_x		=> J[N]C		CF		// Immortality. Copy undying logic, but include a subtract.
 		- [B] Cryogen		3_x 	=> 
 
+		- Aspen
+		- Bodom
+		X Cookie => Santa
+		X Cooper => Inn
+		X Jingles => Santa
+		- Juniper
+		X Kringle => Santa
+		X Luna => alch
+		- Nessie
+		- Princess Pepper
+		X Theldar => smith
+		X Tinsel => Santa
+		- Ysara
+		X Irmik => SkyMaster
 		*/
 
 		// Needs enemy scripting according to notes on which instructions this zone covers
@@ -601,17 +606,13 @@ DeveloperScene::DeveloperScene()
 	- DM => DH (viking ship or smth) - Drak
 	- BP => BP (viking ship or smth) - <Any>
 
-	- RELOCATED:
-		- Abomination			=>  
-		- Assassin				=>  
-		- BoneKnight			=>  
-		- DarkTiger				=>  
-		- Exterminator			=>  
-		- Gargoyle				=>  
-		- LightningGolem		=>  
-		- Shade					=>  
-		- VoidArcher			=>  
-		- VoidDemon				=>  
+	- Exterminator			=>  
+	- VoidDemon				=>  
+
+	Deprecated:
+	- Gargoyle				=>  
+	- LightningGolem		=>  
+	- Shade					=>  
 
 	- VS - LOOP / CALL / RET
 		- [B] EvilEye			=>  
