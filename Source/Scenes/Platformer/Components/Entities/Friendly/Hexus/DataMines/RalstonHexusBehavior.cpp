@@ -50,7 +50,7 @@ std::string RalstonHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> RalstonHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 8.0f / DMHexusConfig::MaxEntities;
+	const float LocalOrder = 3.0f / DMHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{

@@ -50,7 +50,7 @@ std::string BonnieHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> BonnieHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 8.0f / DMHexusConfig::MaxEntities;
+	const float LocalOrder = 2.0f / DMHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{

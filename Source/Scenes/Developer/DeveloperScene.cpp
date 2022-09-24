@@ -259,7 +259,22 @@ DeveloperScene::DeveloperScene()
 		// 	- Rework to have answers displayed on blocks across the gap
 		// 	- Implement reset
 		// Needs Hexus fights
+		// - Tune fight 1
+		// - Tune fight 2
+		// - Tune fight 3
+		// - Tune fight 4
+		// - Tune fight 5
+		// - Tune fight 6
+		// - Tune fight 7
+		// - Tune fight 8
 		// Needs Hexus puzzles
+		// - A
+		// - B
+		// - C
+		// - D
+		// - E
+		// - F
+		// - G
 		// Create train map, move train out of Drammol
 		
 		/*
@@ -273,11 +288,11 @@ DeveloperScene::DeveloperScene()
 		X Skeletal Archer		=> X 3_1 PUSH / POP REG (MULTISHOT debuff - curse of the ancients - tick on targets)
 		X Skeletal Warrior		=> X 3_0 PUSH [REG PTR + offset] / POP [REG PTR + offset] (blessing of the ancients - outgoing damage)
 		X Skeletal Necromancer 	=> X 3_0 PUSH const / POP [REG PTR] (pact of the ancients - health link)
-		[B] Krampus				=> O 3_3 NOT (No idea)
+		- [B] Krampus			=> O 3_3 NOT (No idea)
 
 		X Olive			Zone 1_1 (H_1)
 		X Bonnie		Town_Inn (H_2) (non-vendor)
-		Ralson			Town_Inn (H_3) (non-vendor)
+		- Ralson		Town_Inn (H_3) (non-vendor)
 		X Princess Dawn	Home_Dawn
 		X Cypress		Zone 2_x (H_4) Technically in mage's guild
 		X Raka			Zone 3_3 (Push/Pop Puzzle) (H_5)
@@ -291,9 +306,9 @@ DeveloperScene::DeveloperScene()
 		X Shen			Town_Inn
 
 		- Alder			Technically in mage's guild
-		- Jasper			Technically in mage's guild
-		- Sarude			Technically in mage's guild
-		- Gorilla			Deprecate
+		- Jasper		Technically in mage's guild
+		- Sarude		Technically in mage's guild
+		- Gorilla		Deprecate
 		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));

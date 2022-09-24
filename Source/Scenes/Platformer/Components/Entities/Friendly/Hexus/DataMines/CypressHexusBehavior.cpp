@@ -50,7 +50,7 @@ std::string CypressHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> CypressHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 8.0f / DMHexusConfig::MaxEntities;
+	const float LocalOrder = 4.0f / DMHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{

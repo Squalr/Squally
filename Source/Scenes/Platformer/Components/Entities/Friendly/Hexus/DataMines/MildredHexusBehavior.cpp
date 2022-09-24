@@ -50,7 +50,7 @@ std::string MildredHexusBehavior::getBackgroundResource()
 
 std::vector<CardData*> MildredHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 8.0f / DMHexusConfig::MaxEntities;
+	const float LocalOrder = 7.0f / DMHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{
