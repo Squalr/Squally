@@ -74,7 +74,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy"/>
     <property name="drop-pool" value="dm-generic"/>
     <property name="quest" value="defeat-rhinoman"/>
     <property name="quest-line" value="defeat-rhinoman"/>

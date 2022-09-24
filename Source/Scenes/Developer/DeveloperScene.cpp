@@ -275,23 +275,24 @@ DeveloperScene::DeveloperScene()
 		[B] Krampus				=> O 3_3 NOT (No idea)
 		Gorilla			Deprecate
 
-		Cypress			Home_Cypress or 3_x (H, Spellbook)
-		Alder			Technically in mage's guild Home_Alder (H?)
-		Jasper			Technically in mage's guild
-		Sarude			Technically in mage's guild
-		Burch			Zone 3_x (H)
+		Olive			Zone 1_1 (H_1)
+		Bonnie			Town_Inn (H_2) (non-vendor)
+		Ralson			Town_Inn (H_3) (non-vendor)
+		Princess Dawn	Home_Dawn (H_4)
+		Raka			Zone 2_3 (Push/Pop Puzzle) (H_5)
+		Burch			Zone 3_x (H_6)
+		Mildred			Home_Mildred (H_7)
+		Godiva			Home_Godiva (H_8)
+		Bancroft		? Ship? Doesn't really make sense.
 		Fraya			Town_Alch
 		Brock			Town_BS
 		Shen			Town_Inn
-		Bonnie			Town_Inn (H) (non-vendor)
-		Raka			Zone 2_3 (Puzzle) (H)
-		Ralson
-		Godiva
-		Bancroft
-		Princess Dawn	Home_Dawn (H)
-		Mildred			Home_Mildred (H)
-		Olive			Zone 1_1 (H)
-		Finch			Flight Master (Uh where?) -- Stolen
+
+		Finch			Home Finch Flight Master (H_7) -- Stolen
+		Cypress			Technically in mage's guild Home_Cypress or 3_x (H, Spellbook)
+		Alder			Technically in mage's guild Home_Alder (?H_?)
+		Jasper			Technically in mage's guild
+		Sarude			Technically in mage's guild
 		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));

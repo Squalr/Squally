@@ -1,4 +1,4 @@
-#include "LianaHexusBehavior.h"
+#include "OliveHexusBehavior.h"
 
 #include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
@@ -14,46 +14,49 @@
 
 using namespace cocos2d;
 
-const std::string LianaHexusBehavior::MapKey = "liana-hexus";
+const std::string OliveHexusBehavior::MapKey = "olive-hexus";
 
-LianaHexusBehavior* LianaHexusBehavior::create(GameObject* owner)
+OliveHexusBehavior* OliveHexusBehavior::create(GameObject* owner)
 {
-	LianaHexusBehavior* instance = new LianaHexusBehavior(owner);
+	OliveHexusBehavior* instance = new OliveHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-LianaHexusBehavior::LianaHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+OliveHexusBehavior::OliveHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-LianaHexusBehavior::~LianaHexusBehavior()
+OliveHexusBehavior::~OliveHexusBehavior()
 {
 }
 
-MinMaxPool* LianaHexusBehavior::generateReward()
+MinMaxPool* OliveHexusBehavior::generateReward()
 {
 	return HexusPoolEFGeneric::create();
 }
 
-std::string LianaHexusBehavior::getWinLossSaveKey()
+std::string OliveHexusBehavior::getWinLossSaveKey()
 {
-	return LianaHexusBehavior::MapKey;
+	return OliveHexusBehavior::MapKey;
 }
 
-std::string LianaHexusBehavior::getBackgroundResource()
+std::string OliveHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameCastleValgrind;
 }
 
-std::vector<CardData*> LianaHexusBehavior::generateDeck()
+std::vector<CardData*> OliveHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 0.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 8.0f / EFHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, EFHexusConfig::ZoneOrder),
 	{
+		CardList::getInstance()->cardListByName[CardKeys::Binary0],
+		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
+		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
@@ -65,12 +68,12 @@ std::vector<CardData*> LianaHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* LianaHexusBehavior::getStateOverride()
+StateOverride* OliveHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> LianaHexusBehavior::getTutorials()
+std::vector<TutorialBase*> OliveHexusBehavior::getTutorials()
 {
 	return { };
 }

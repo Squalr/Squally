@@ -5,16 +5,16 @@
 class CardData;
 class MinMaxPool;
 
-class PolyphemusHexusBehavior : public HexusBehaviorBase
+class OliveHexusBehavior : public HexusBehaviorBase
 {
 public:
-	static PolyphemusHexusBehavior* create(GameObject* owner);
+	static OliveHexusBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	PolyphemusHexusBehavior(GameObject* owner);
-	virtual ~PolyphemusHexusBehavior();
+	OliveHexusBehavior(GameObject* owner);
+	virtual ~OliveHexusBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;
