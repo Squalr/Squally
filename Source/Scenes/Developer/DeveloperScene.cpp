@@ -259,7 +259,8 @@ DeveloperScene::DeveloperScene()
 		// Push/pop puzzle:
 		// 	- Rework to have answers displayed on blocks across the gap
 		// 	- Implement reset
-		// Train ticket reward for returning to queen with restore-power quest
+		// Train ticket reward for returning to queen with restore-power quest (Bancroft as gating NPC)
+		// Fix blue trains
 		// Add Hexus fights to NPCs
 		// Needs Hexus puzzles
 		// - A
@@ -291,13 +292,13 @@ DeveloperScene::DeveloperScene()
 		- Burch			Zone 3_x (H_4)
 		X Ralson		Home_Ralston (H_5)
 		X Godiva		Home_Godiva (H_6)
-		X Mildred		Town_Train (H_7)
-		X Bancroft		Town_Train (H_8)
+		X Bancroft		Town_Train (H_7)
+		X Mildred		Town_Train (H_8)
 		X Fraya			Town_Alch
 		X Brock			Town_BS
 		X Shen			Town_Inn
 
-		- Cypress		Zone 2_x (H_4) Technically in mage's guild
+		- Cypress		Zone 2_x nature spellbook (or cut from the game, it doesn't fit well)
 		- Alder			Technically in mage's guild
 		- Jasper		Technically in mage's guild
 		- Sarude		Technically in mage's guild
@@ -356,20 +357,24 @@ DeveloperScene::DeveloperScene()
 		- Jack					2_x		=> J[N]C		CF		// Immortality. Copy undying logic, but include a subtract.
 		- [B] Agnes				2_x 	=> 
 		
-		- Garin					=> Train
-		- King Redsong			=> Dark Throne
-		- King Redsong Slime	=> Throne
-		- Leopold				=> Alch
-		- Mabel					=> Study
+		- Garin					=> Town_Train
+		- Mabel					=> Study (H_1)
+		- Gaunt					=> Main (H_2)
+		- Rogas					=> Main (H_3)
+		- Tyracius				=> Main (H_4)
+		- Zana					=> Main_Dark (H_5)
+		- Atreus				=> Main (H_6)
+		- Illia					=> Main (H_7)
+		- Leon					=> Main (H_8)
+		- Princess Opal			=> Town_Throne
+		- Leroy					=> ?
+		- King Redsong			=> Dark_Town_Throne
+		- King Redsong Slime	=> Town_Throne
+		- Leopold				=> Town_Alch
+		- Raven					=> Town_Inn
+		- Thurstan				=> Town_Smith
+
 		- Merlin				=> XXXXX nope
-		- Princess Opal			=> Throne
-		- Raven					=> Inn
-		- Thurstan				=> Smith
-		- Gaunt					=> Main
-		- Leroy					=> Main
-		- Rogas					=> Main
-		- Tyracius				=> Main
-		- Zana					=> Main
 		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));

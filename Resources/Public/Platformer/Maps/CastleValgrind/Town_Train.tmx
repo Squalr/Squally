@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="34" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="82" nextobjectid="853">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="34" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="82" nextobjectid="850">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -95,13 +95,13 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="849" name="train" type="object" x="1000" y="1106.33" width="1083" height="931">
+  <object id="849" name="train" type="object" x="1186.28" y="1120.61" width="1083" height="931">
    <properties>
-    <property name="color" value="black"/>
-    <property name="direction" value="left"/>
+    <property name="color" value="blue"/>
+    <property name="direction" value="right"/>
     <property name="idling" type="bool" value="true"/>
     <property name="locomotive-size" value="large"/>
-    <property name="segments" value="coal,wagon-l,coal,"/>
+    <property name="segments" value="coal,wagon-l,"/>
    </properties>
   </object>
  </objectgroup>
@@ -273,17 +273,18 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="847" name="mildred" type="entity" x="1701.18" y="1530.39" width="128" height="128">
+  <object id="847" name="mildred" type="entity" x="2143" y="1530.39" width="128" height="128">
    <properties>
     <property name="components" value="mildred-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="dm-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="848" name="bancroft" type="entity" x="2892.86" y="1532.06" width="128" height="128">
+  <object id="848" name="bancroft" type="entity" x="1416.48" y="1534.25" width="128" height="128">
    <properties>
-    <property name="components" value="bancroft-hexus,friendly,pick-pocket"/>
+    <property name="components" value="bancroft-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="dm-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
  </objectgroup>

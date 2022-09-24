@@ -56,7 +56,7 @@ Train::Train(cocos2d::ValueMap& properties) : super(properties, CSize(1083.0f, 9
 	{
 		this->color = TrainColor::Blue;
 	}
-	else if (colorStr == "black")
+	else // if (colorStr == "black")
 	{
 		this->color = TrainColor::Black;
 	}
