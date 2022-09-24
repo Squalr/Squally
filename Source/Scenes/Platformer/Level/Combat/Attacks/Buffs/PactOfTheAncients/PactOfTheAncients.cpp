@@ -37,7 +37,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_UNDYING 1
+#define LOCAL_FUNC_ID_PACT 1
 
 const std::string PactOfTheAncients::PactOfTheAncientsIdentifier = "pact-of-the-ancients";
 const float PactOfTheAncients::Duration = -1.0f;
@@ -91,7 +91,7 @@ void PactOfTheAncients::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_UNDYING,
+			LOCAL_FUNC_ID_PACT,
 			HackableCode::HackableCodeInfo(
 				PactOfTheAncients::PactOfTheAncientsIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_PactOfTheAncients::create(),
@@ -111,10 +111,10 @@ void PactOfTheAncients::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						"push 5\n"
-						"pop [edx]\n"
+						"pop dword ptr [edx]\n"
 						, // x64
 						"push 5\n"
-						"pop [rdx]\n"
+						"pop qword ptr [rdx]\n"
 					),
 				},
 				true
@@ -180,9 +180,9 @@ NO_OPTIMIZE void PactOfTheAncients::applyPactOfTheAncients()
 	ASM(push ZDX);
 	ASM_MOV_REG_PTR(ZDX, healthLinkDamageLocalPtr);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_UNDYING);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_PACT);
 	ASM(push 5);
-	ASM(pop [ZDX]);
+	ASM(pop ZWORD() ptr [ZDX]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 	

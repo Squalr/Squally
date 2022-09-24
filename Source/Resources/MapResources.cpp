@@ -69,6 +69,7 @@ const std::string MapResources::DataMines_Town_Alch = "Public/Platformer/Maps/Da
 const std::string MapResources::DataMines_Town_Inn = "Public/Platformer/Maps/DataMines/Town_Inn.tmx";
 const std::string MapResources::DataMines_Town_Main = "Public/Platformer/Maps/DataMines/Town_Main.tmx";
 const std::string MapResources::DataMines_Town_Smith = "Public/Platformer/Maps/DataMines/Town_Smith.tmx";
+const std::string MapResources::DataMines_Town_Train = "Public/Platformer/Maps/DataMines/Town_Train.tmx";
 const std::string MapResources::DataMines_Zone_1_0 = "Public/Platformer/Maps/DataMines/Zone_1_0.tmx";
 const std::string MapResources::DataMines_Zone_1_1 = "Public/Platformer/Maps/DataMines/Zone_1_1.tmx";
 const std::string MapResources::DataMines_Zone_1_2 = "Public/Platformer/Maps/DataMines/Zone_1_2.tmx";

@@ -62,9 +62,23 @@ std::vector<CardData*> OliveHexusBehavior::generateDeck()
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
+		// CardList::getInstance()->cardListByName[CardKeys::Mov],
+		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
+		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
+		CardList::getInstance()->cardListByName[CardKeys::Flip2],
+		// CardList::getInstance()->cardListByName[CardKeys::Flip2],
+		// CardList::getInstance()->cardListByName[CardKeys::Addition],
 		CardList::getInstance()->cardListByName[CardKeys::Addition],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
+		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
+		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
+		CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
+		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
+		CardList::getInstance()->cardListByName[CardKeys::LogicalXor],
+		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
+		CardList::getInstance()->cardListByName[CardKeys::LogicalAnd],
+		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
 	});
 }
 

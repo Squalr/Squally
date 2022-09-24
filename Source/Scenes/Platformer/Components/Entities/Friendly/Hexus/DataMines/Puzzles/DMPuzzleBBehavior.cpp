@@ -81,8 +81,10 @@ StateOverride* DMPuzzleBBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
-			CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+			CardList::getInstance()->cardListByName.at(CardKeys::Mov), // 10 vs enemy 5, mov to equalize, AND to smite
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight), // 8 vs enemy 4. Shr to equalize, AND to smite
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 		},
 		// Enemy hand
 		std::vector<CardData*>

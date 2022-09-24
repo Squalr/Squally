@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1112">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1113">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -58,11 +58,6 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1013" name="rails" type="terrain" x="-69.0836" y="2355.36" width="4956.68" height="92">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
   <object id="1068" name="rails" type="terrain" x="8391.18" y="1749.25" width="2121.92" height="92">
    <properties>
     <property name="collision" value="none"/>
@@ -117,19 +112,10 @@
     <property name="reward-pool" value="dm-diamond"/>
    </properties>
   </object>
-  <object id="1061" name="train" type="object" x="1981.53" y="1876.38" width="1083" height="931">
-   <properties>
-    <property name="color" value="red"/>
-    <property name="direction" value="left"/>
-    <property name="idling" type="bool" value="true"/>
-    <property name="locomotive-size" value="medium"/>
-    <property name="segments" value="coal,wagon-s,"/>
-   </properties>
-  </object>
-  <object id="1062" name="edge-portal" type="object" x="-934.383" y="-753.941" width="199.918" height="6584">
+  <object id="1062" name="edge-portal" type="object" x="1947.34" y="1883.59" width="199.918" height="488">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="CastleValgrind/Zone_1_0"/>
+    <property name="map" value="DataMines/Town_Train"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
@@ -148,6 +134,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-C"/>
+   </properties>
+  </object>
+  <object id="1112" name="spawn" type="object" x="2319.68" y="2239.86" width="128" height="128">
+   <properties>
+    <property name="transition" value="right"/>
    </properties>
   </object>
  </objectgroup>
@@ -673,7 +664,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="62" name="decor -3">
+ <objectgroup id="62" name="decor -3" visible="0">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -953,7 +944,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor midground">
+ <objectgroup id="22" name="decor midground" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>

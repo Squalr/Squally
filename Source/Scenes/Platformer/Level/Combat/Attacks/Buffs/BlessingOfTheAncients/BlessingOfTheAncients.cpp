@@ -134,8 +134,8 @@ void BlessingOfTheAncients::registerHackables()
 						"push dword ptr [ecx + 4]\n"
 						"pop dword ptr [ecx + 8]\n"
 						, // x64
-						"push dword ptr [rcx + 4]\n"
-						"pop dword ptr [rcx + 8]\n"
+						"push qword ptr [rcx + 4]\n"
+						"pop qword ptr [rcx + 8]\n"
 					),
 				},
 				true
@@ -180,8 +180,8 @@ NO_OPTIMIZE void BlessingOfTheAncients::applyBlessingOfTheAncients()
 	ASM_MOV_REG_PTR(ZCX, currentDamageDealtLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_BLESSING);
-	ASM(push [ZCX + 4]);
-	ASM(pop [ZCX + 8]);
+	ASM(push ZWORD() ptr [ZCX + 4]);
+	ASM(pop ZWORD() ptr [ZCX + 8]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 	

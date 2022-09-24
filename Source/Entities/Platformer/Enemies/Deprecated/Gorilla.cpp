@@ -22,8 +22,8 @@ Gorilla* Gorilla::deserialize(ValueMap& properties)
 
 Gorilla::Gorilla(ValueMap& properties) : super(properties,
 	Gorilla::MapKey,
-	EntityResources::Enemies_DataMines_Gorilla_Animations,
-	EntityResources::Enemies_DataMines_Gorilla_Emblem,
+	EntityResources::Enemies__Deprecated_Gorilla_Animations,
+	EntityResources::Enemies__Deprecated_Gorilla_Emblem,
 	CSize(256.0f, 228.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))

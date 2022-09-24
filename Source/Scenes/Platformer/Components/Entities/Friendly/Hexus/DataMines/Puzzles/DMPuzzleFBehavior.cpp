@@ -81,9 +81,9 @@ StateOverride* DMPuzzleFBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Mov),
-			CardList::getInstance()->cardListByName.at(CardKeys::Addition),
-			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+			CardList::getInstance()->cardListByName.at(CardKeys::Steal), // Incentivize stealing 5, flip 2, xoring 7 instead of stealing 12
+			CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 		},
 		// Enemy hand
 		std::vector<CardData*>

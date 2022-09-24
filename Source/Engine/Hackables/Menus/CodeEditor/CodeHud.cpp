@@ -373,9 +373,9 @@ void CodeHud::buildRegisterWindow()
 
 		LocalizedString* strRef = registerHint.hint;
 		LocalizedString* strCopy = strRef == nullptr ? nullptr : strRef->clone();
-		LocalizedLabel* registerHint = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, strCopy);
+		LocalizedLabel* registerHintLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, strCopy);
 
-		this->registerWindow->insert(registerHint);
+		this->registerWindow->insert(registerHintLabel);
 	}
 }
 

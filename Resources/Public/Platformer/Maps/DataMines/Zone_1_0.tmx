@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="34" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="72" nextobjectid="829">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="34" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="72" nextobjectid="829">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -49,6 +49,7 @@
  <objectgroup id="70" name="objects -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="821" name="trigger" type="object" x="2902.51" y="-39.3002" width="118.944" height="1629.75">
@@ -67,6 +68,7 @@
  <objectgroup id="69" name="entities -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="820" name="rhinoman" type="entity" x="2408" y="1464" width="128" height="128">

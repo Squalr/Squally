@@ -70,6 +70,7 @@ namespace MapResources
 	extern const std::string DataMines_Town_Inn;
 	extern const std::string DataMines_Town_Main;
 	extern const std::string DataMines_Town_Smith;
+	extern const std::string DataMines_Town_Train;
 	extern const std::string DataMines_Zone_1_0;
 	extern const std::string DataMines_Zone_1_1;
 	extern const std::string DataMines_Zone_1_2;

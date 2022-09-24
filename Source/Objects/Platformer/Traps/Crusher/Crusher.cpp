@@ -197,8 +197,8 @@ NO_OPTIMIZE bool Crusher::isPlayerDetected()
 		Vec3 squallyPosition = GameUtils::getWorldCoords3D(this->squally);
 
 		squallyPositionXLocal = int(squallyPosition.x);
-		leftBoundLocal += int(thisPosition.x);
-		rightBoundLocal += int(thisPosition.x);
+		leftBoundLocal = leftBoundLocal + int(thisPosition.x);
+		rightBoundLocal = rightBoundLocal + int(thisPosition.x);
 
 		// Different Z plane, don't detect player
 		if (std::abs(thisPosition.z - squallyPosition.z) > 24.0f)

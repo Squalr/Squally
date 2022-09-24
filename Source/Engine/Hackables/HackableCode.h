@@ -33,6 +33,7 @@
 	#define ZBP rbp
 	#define ZSP rsp
 	#define DIV_CONVERT cqo
+	#define ZWORD() qword
 #else
 	#define ASM_PUSH_EFLAGS() \
 		ASM(pushfd)
@@ -47,6 +48,7 @@
 	#define ZBP ebp
 	#define ZSP esp
 	#define DIV_CONVERT cdq
+	#define ZWORD() dword
 #endif
 
 // Define macros for inlining x86 assembly in a compiler-independent way
