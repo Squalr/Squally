@@ -1,11 +1,11 @@
 #include "OliveHexusBehavior.h"
 
-#include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
+#include "Objects/Platformer/ItemPools/HexusPools/DataMines/HexusPoolDMGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/Opponents/HexusOpponentData.h"
 #include "Scenes/Hexus/StateOverride.h"
-#include "Scenes/Platformer/Components/Entities/Friendly/Hexus/EndianForest/EFHexusConfig.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/Hexus/DataMines/DMHexusConfig.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
@@ -35,7 +35,7 @@ OliveHexusBehavior::~OliveHexusBehavior()
 
 MinMaxPool* OliveHexusBehavior::generateReward()
 {
-	return HexusPoolEFGeneric::create();
+	return HexusPoolDMGeneric::create();
 }
 
 std::string OliveHexusBehavior::getWinLossSaveKey()
@@ -45,14 +45,14 @@ std::string OliveHexusBehavior::getWinLossSaveKey()
 
 std::string OliveHexusBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameDataMines;
 }
 
 std::vector<CardData*> OliveHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 8.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 8.0f / DMHexusConfig::MaxEntities;
 
-	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, EFHexusConfig::ZoneOrder),
+	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],

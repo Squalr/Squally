@@ -47,7 +47,7 @@ std::string TutorialBBehavior::getWinLossSaveKey()
 
 std::string TutorialBBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameEndianForest;
 }
 
 std::vector<CardData*> TutorialBBehavior::generateDeck()

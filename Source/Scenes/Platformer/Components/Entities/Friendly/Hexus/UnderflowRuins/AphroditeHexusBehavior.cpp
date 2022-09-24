@@ -45,7 +45,7 @@ std::string AphroditeHexusBehavior::getWinLossSaveKey()
 
 std::string AphroditeHexusBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
 std::vector<CardData*> AphroditeHexusBehavior::generateDeck()

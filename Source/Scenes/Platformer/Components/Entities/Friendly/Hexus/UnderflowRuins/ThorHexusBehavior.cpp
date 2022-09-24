@@ -45,7 +45,7 @@ std::string ThorHexusBehavior::getWinLossSaveKey()
 
 std::string ThorHexusBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
 std::vector<CardData*> ThorHexusBehavior::generateDeck()

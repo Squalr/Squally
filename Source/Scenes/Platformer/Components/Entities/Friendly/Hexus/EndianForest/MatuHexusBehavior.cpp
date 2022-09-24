@@ -45,7 +45,7 @@ std::string MatuHexusBehavior::getWinLossSaveKey()
 
 std::string MatuHexusBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameEndianForest;
 }
 
 std::vector<CardData*> MatuHexusBehavior::generateDeck()

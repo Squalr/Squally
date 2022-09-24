@@ -45,7 +45,7 @@ std::string RupertHexusBehavior::getWinLossSaveKey()
 
 std::string RupertHexusBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
 std::vector<CardData*> RupertHexusBehavior::generateDeck()

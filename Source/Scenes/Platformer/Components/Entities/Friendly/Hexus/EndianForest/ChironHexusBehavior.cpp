@@ -45,7 +45,7 @@ std::string ChironHexusBehavior::getWinLossSaveKey()
 
 std::string ChironHexusBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameEndianForest;
 }
 
 std::vector<CardData*> ChironHexusBehavior::generateDeck()

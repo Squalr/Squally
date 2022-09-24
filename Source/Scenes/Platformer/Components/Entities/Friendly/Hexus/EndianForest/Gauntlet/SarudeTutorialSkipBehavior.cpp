@@ -47,7 +47,7 @@ std::string SarudeTutorialSkipBehavior::getWinLossSaveKey()
 
 std::string SarudeTutorialSkipBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameEndianForest;
 }
 
 std::vector<CardData*> SarudeTutorialSkipBehavior::generateDeck()

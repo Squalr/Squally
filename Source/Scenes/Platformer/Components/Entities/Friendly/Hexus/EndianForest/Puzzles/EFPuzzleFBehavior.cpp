@@ -45,7 +45,7 @@ std::string EFPuzzleFBehavior::getWinLossSaveKey()
 
 std::string EFPuzzleFBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameEndianForest;
 }
 
 std::vector<CardData*> EFPuzzleFBehavior::generateDeck()

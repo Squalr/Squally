@@ -45,7 +45,7 @@ std::string AngelHexusBehavior::getWinLossSaveKey()
 
 std::string AngelHexusBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
 std::vector<CardData*> AngelHexusBehavior::generateDeck()

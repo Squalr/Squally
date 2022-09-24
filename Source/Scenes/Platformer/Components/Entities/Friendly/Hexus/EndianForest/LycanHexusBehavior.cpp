@@ -45,7 +45,7 @@ std::string LycanHexusBehavior::getWinLossSaveKey()
 
 std::string LycanHexusBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameEndianForest;
 }
 
 std::vector<CardData*> LycanHexusBehavior::generateDeck()

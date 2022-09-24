@@ -124,7 +124,14 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[ThorHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ThorHexusBehavior::create(owner); };
 
 	// DM
+	this->componentDeserializers[BancroftHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BancroftHexusBehavior::create(owner); };
+	this->componentDeserializers[BonnieHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BonnieHexusBehavior::create(owner); };
+	this->componentDeserializers[BurchHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BurchHexusBehavior::create(owner); };
+	this->componentDeserializers[CypressHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)CypressHexusBehavior::create(owner); };
+	this->componentDeserializers[MildredHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)MildredHexusBehavior::create(owner); };
 	this->componentDeserializers[OliveHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)OliveHexusBehavior::create(owner); };
+	this->componentDeserializers[RakaHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)RakaHexusBehavior::create(owner); };
+	this->componentDeserializers[RalstonHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)RalstonHexusBehavior::create(owner); };
 
 	/*********************
 		ENTITIES / OVERWORLD

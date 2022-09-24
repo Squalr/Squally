@@ -45,7 +45,7 @@ std::string PoseidonHexusBehavior::getWinLossSaveKey()
 
 std::string PoseidonHexusBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
 std::vector<CardData*> PoseidonHexusBehavior::generateDeck()

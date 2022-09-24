@@ -45,7 +45,7 @@ std::string BardHexusBehavior::getWinLossSaveKey()
 
 std::string BardHexusBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameEndianForest;
 }
 
 std::vector<CardData*> BardHexusBehavior::generateDeck()

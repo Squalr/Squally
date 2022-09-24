@@ -260,6 +260,7 @@ DeveloperScene::DeveloperScene()
 		// 	- Implement reset
 		// Needs Hexus fights
 		// Needs Hexus puzzles
+		// Create train map, move train out of Drammol
 		
 		/*
 		X Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients - outgoing AND incoming damage)
@@ -273,26 +274,26 @@ DeveloperScene::DeveloperScene()
 		X Skeletal Warrior		=> X 3_0 PUSH [REG PTR + offset] / POP [REG PTR + offset] (blessing of the ancients - outgoing damage)
 		X Skeletal Necromancer 	=> X 3_0 PUSH const / POP [REG PTR] (pact of the ancients - health link)
 		[B] Krampus				=> O 3_3 NOT (No idea)
-		Gorilla			Deprecate
 
-		Olive			Zone 1_1 (H_1)
-		Bonnie			Town_Inn (H_2) (non-vendor)
+		X Olive			Zone 1_1 (H_1)
+		X Bonnie		Town_Inn (H_2) (non-vendor)
 		Ralson			Town_Inn (H_3) (non-vendor)
-		Princess Dawn	Home_Dawn (H_4)
-		Raka			Zone 2_3 (Push/Pop Puzzle) (H_5)
-		Burch			Zone 3_x (H_6)
-		Mildred			Home_Mildred (H_7)
-		Godiva			Home_Godiva (H_8)
-		Bancroft		? Ship? Doesn't really make sense.
-		Fraya			Town_Alch
-		Brock			Town_BS
-		Shen			Town_Inn
+		X Princess Dawn	Home_Dawn
+		X Cypress		Zone 2_x (H_4) Technically in mage's guild
+		X Raka			Zone 3_3 (Push/Pop Puzzle) (H_5)
+		- Finch			? Zone 3_x Flight Master -- Start flight master quest?
+		X Burch			Zone 3_x (H_6)
+		X Mildred		Home_Mildred (H_7)
+		X Godiva		Home_Godiva (H_8)
+		- Bancroft		Town_Train (Move train to this new map)
+		X Fraya			Town_Alch
+		X Brock			Town_BS
+		X Shen			Town_Inn
 
-		Finch			Home Finch Flight Master (H_7) -- Stolen
-		Cypress			Technically in mage's guild Home_Cypress or 3_x (H, Spellbook)
-		Alder			Technically in mage's guild Home_Alder (?H_?)
-		Jasper			Technically in mage's guild
-		Sarude			Technically in mage's guild
+		- Alder			Technically in mage's guild
+		- Jasper			Technically in mage's guild
+		- Sarude			Technically in mage's guild
+		- Gorilla			Deprecate
 		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));

@@ -45,7 +45,7 @@ std::string GrampsHexusBehavior::getWinLossSaveKey()
 
 std::string GrampsHexusBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameEndianForest;
 }
 
 std::vector<CardData*> GrampsHexusBehavior::generateDeck()

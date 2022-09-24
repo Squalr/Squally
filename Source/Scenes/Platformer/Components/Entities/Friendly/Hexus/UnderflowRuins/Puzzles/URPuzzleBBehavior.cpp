@@ -45,7 +45,7 @@ std::string URPuzzleBBehavior::getWinLossSaveKey()
 
 std::string URPuzzleBBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
 std::vector<CardData*> URPuzzleBBehavior::generateDeck()

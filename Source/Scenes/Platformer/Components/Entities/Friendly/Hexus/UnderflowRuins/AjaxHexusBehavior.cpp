@@ -45,7 +45,7 @@ std::string AjaxHexusBehavior::getWinLossSaveKey()
 
 std::string AjaxHexusBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
 std::vector<CardData*> AjaxHexusBehavior::generateDeck()

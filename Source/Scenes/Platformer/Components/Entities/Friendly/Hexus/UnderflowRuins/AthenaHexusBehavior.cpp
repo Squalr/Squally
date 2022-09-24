@@ -45,7 +45,7 @@ std::string AthenaHexusBehavior::getWinLossSaveKey()
 
 std::string AthenaHexusBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
 std::vector<CardData*> AthenaHexusBehavior::generateDeck()

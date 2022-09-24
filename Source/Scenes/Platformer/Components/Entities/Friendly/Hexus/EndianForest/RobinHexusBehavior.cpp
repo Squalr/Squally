@@ -45,7 +45,7 @@ std::string RobinHexusBehavior::getWinLossSaveKey()
 
 std::string RobinHexusBehavior::getBackgroundResource()
 {
-	return HexusResources::Menus_HexusFrameCastleValgrind;
+	return HexusResources::Menus_HexusFrameEndianForest;
 }
 
 std::vector<CardData*> RobinHexusBehavior::generateDeck()
