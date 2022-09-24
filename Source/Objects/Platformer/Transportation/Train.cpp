@@ -79,7 +79,7 @@ Train::Train(cocos2d::ValueMap& properties) : super(properties, CSize(1083.0f, 9
 	switch(this->color)
 	{
 		case TrainColor::Red: locomotiveAnimationName += "Red_"; break;
-		case TrainColor::Blue: locomotiveAnimationName += "Rlue_"; break;
+		case TrainColor::Blue: locomotiveAnimationName += "Blue_"; break;
 		default: case TrainColor::Black: locomotiveAnimationName += "Black_"; break;
 	}
 
@@ -107,7 +107,7 @@ Train::Train(cocos2d::ValueMap& properties) : super(properties, CSize(1083.0f, 9
 			switch(this->color)
 			{
 				case TrainColor::Red: segmentName += "Red"; break;
-				case TrainColor::Blue: segmentName += "Rlue"; break;
+				case TrainColor::Blue: segmentName += "Blue"; break;
 				default: case TrainColor::Black: segmentName += "Black"; break;
 			}
 		}
@@ -119,7 +119,7 @@ Train::Train(cocos2d::ValueMap& properties) : super(properties, CSize(1083.0f, 9
 			switch(this->color)
 			{
 				case TrainColor::Red: segmentName += "Red_"; break;
-				case TrainColor::Blue: segmentName += "Rlue_"; break;
+				case TrainColor::Blue: segmentName += "Blue_"; break;
 				default: case TrainColor::Black: segmentName += "Brown_"; break;
 			}
 
@@ -133,7 +133,7 @@ Train::Train(cocos2d::ValueMap& properties) : super(properties, CSize(1083.0f, 9
 			switch(this->color)
 			{
 				case TrainColor::Red: segmentName += "Red_"; break;
-				case TrainColor::Blue: segmentName += "Rlue_"; break;
+				case TrainColor::Blue: segmentName += "Blue_"; break;
 				default: case TrainColor::Black: segmentName += "Brown_"; break;
 			}
 
