@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="844">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="846">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -17,13 +17,12 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="808" name="stone-dark" type="texture" x="-58" y="-94" width="2171.27" height="2196"/>
+  <object id="808" name="stone-dark" type="texture" x="-129.152" y="-77.1515" width="2226.42" height="2179.15"/>
  </objectgroup>
  <objectgroup id="18" name="decor background 2">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="822" name="Generic/Shelf1" type="decor" x="4828.71" y="970.288" width="1135" height="753"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -40,11 +39,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="828" name="Mines/CaveDoor3" type="decor" x="562.667" y="1629.52" width="376" height="332">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
+  <object id="828" name="Mines/CaveDoor5" type="decor" x="1438.94" y="1798" width="240" height="164"/>
  </objectgroup>
  <objectgroup id="113" name="terrain bg">
   <properties>
@@ -55,55 +50,54 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="807" name="stone" type="terrain" x="-62.3621" y="1961.94" width="2206.66" height="234.06"/>
-  <object id="829" name="stone" type="terrain" x="-71.33" y="1038.97" width="2210.66" height="334.06"/>
-  <object id="841" name="stone" type="terrain" x="-90.1785" y="-79.1512" width="2210.66" height="334.06"/>
+  <object id="807" name="stone" type="terrain" x="-115.332" y="1961.94" width="2235.63" height="234.06"/>
+  <object id="836" name="stone" type="terrain" x="-75.7576" y="999.03">
+   <polygon points="0,-2.90909 -0.0152873,62.1148 2215.15,790.909 2212.12,-3.0303"/>
+  </object>
+  <object id="839" name="stone" type="terrain" x="-172.784" y="-191.755" width="2425.57" height="455.51"/>
  </objectgroup>
  <objectgroup id="114" name="terrain fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="834" name="stone" type="terrain" x="-59.33" y="-41.03" width="254.66" height="2186.06"/>
-  <object id="835" name="stone" type="terrain" x="1840.67" y="-55.03" width="254.66" height="2186.06"/>
+  <object id="837" name="stone" type="terrain" x="-211.391" y="-164.485" width="401.569" height="2327.51"/>
+  <object id="838" name="stone" type="terrain" x="1820.43" y="-165.755" width="401.569" height="2351.51"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="838" name="Mines/CaveWindow3" type="decor" x="920" y="438" width="264" height="272"/>
+  <object id="832" name="Mines/CaveWindow3" type="decor" x="527.152" y="1332.73" width="264" height="272">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="845" name="Mines/CaveWindow2" type="decor" x="654" y="434" width="237" height="241">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="694" name="portal" type="object" x="603.86" y="1585.21" width="237.527" height="375.411">
+  <object id="694" name="portal" type="object" x="1434.41" y="1708.24" width="237.527" height="256">
    <properties>
     <property name="map" value="DataMines/Town_Main"/>
-    <property name="transition" value="mildred"/>
+    <property name="transition" value="godiva"/>
    </properties>
   </object>
-  <object id="818" name="reward-item" type="object" x="5083.13" y="1287.43" width="64" height="64">
+  <object id="840" name="chest" type="object" x="951.152" y="868.667" width="128" height="128">
    <properties>
-    <property name="pool" value="reward-pool-hera"/>
+    <property name="reward-pool" value="dm-generic"/>
    </properties>
   </object>
-  <object id="819" name="reward-item" type="object" x="5376.46" y="1287.43" width="64" height="64">
-   <properties>
-    <property name="pool" value="reward-pool-hera"/>
-   </properties>
-  </object>
-  <object id="820" name="reward-pool-hera" type="object" x="5384.51" y="1051.84" width="64" height="64"/>
-  <object id="821" name="reward-item" type="object" x="5662.48" y="1286.3" width="64" height="64">
-   <properties>
-    <property name="pool" value="reward-pool-hera"/>
-   </properties>
-  </object>
-  <object id="837" name="caged-skunk" type="object" x="1478" y="928" width="196" height="112"/>
-  <object id="839" name="portal" type="object" x="948.691" y="449.325" width="256" height="256">
+  <object id="842" name="portal" type="object" x="643.691" y="424.658" width="256" height="256">
    <properties>
     <property name="map" value="DataMines/Town_Main"/>
-    <property name="transition" value="mildred-top"/>
+    <property name="transition" value="godiva-top"/>
    </properties>
   </object>
  </objectgroup>
@@ -117,9 +111,9 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="810" name="mildred" type="entity" x="1371.64" y="1833.33" width="128" height="128">
+  <object id="810" name="godiva" type="entity" x="658.183" y="1833.33" width="128" height="128">
    <properties>
-    <property name="components" value="mildred-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="godiva-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="dm-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
@@ -130,19 +124,19 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="355.588" y="1838.43" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="1525.83" y="1833.4" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="805" name="spawn" type="object" x="663.65" y="1829.7" width="128" height="128">
+  <object id="805" name="spawn" type="object" x="1493.2" y="1832.73" width="128" height="128">
    <properties>
-    <property name="transition" value="mildred"/>
+    <property name="transition" value="godiva"/>
    </properties>
   </object>
-  <object id="840" name="spawn" type="object" x="1012.55" y="579.091" width="128" height="128">
+  <object id="844" name="spawn" type="object" x="707.55" y="554.424" width="128" height="128">
    <properties>
-    <property name="transition" value="mildred-top"/>
+    <property name="transition" value="godiva-top"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="34" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="838">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="34" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="849">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -26,7 +26,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="813" name="mines" type="terrain" x="-258.992" y="1592" width="5017.2" height="844">
+  <object id="813" name="marble-dark" type="terrain" x="-258.992" y="1411.25" width="5017.2" height="844">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -57,6 +57,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.5"/>
   </properties>
  </objectgroup>
  <objectgroup id="67" name="decor fg -4">
@@ -65,6 +66,30 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
+ <objectgroup id="79" name="terrain -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="845" name="mines" type="terrain" x="-263.618" y="1597.56" width="5017.2" height="844">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="80" name="rails -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="846" name="rails" type="terrain" x="-665.632" y="1581.69" width="5828.98" height="109.149">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="65" name="fireflies -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
@@ -72,29 +97,13 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="73" name="terrain -2">
-  <properties>
-   <property name="depth" type="float" value="-128"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="832" name="mines" type="terrain" x="-344.626" y="1840.25" width="4961.59" height="844">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="835" name="mines" type="terrain" x="2395.44" y="1623.75" width="1200.5" height="545.686">
-   <properties>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="72" name="objects -2">
+ <objectgroup id="72" name="objects -2 bg">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="830" name="train" type="object" x="2333.22" y="1027.79" width="1083" height="931">
+  <object id="830" name="train" type="object" x="2339.29" y="1159.37" width="1083" height="931">
    <properties>
     <property name="color" value="red"/>
     <property name="direction" value="left"/>
@@ -110,14 +119,57 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="836" name="solid" type="collision" x="3409.37" y="-51.1444" width="217.455" height="2404.32"/>
-  <object id="837" name="solid" type="collision" x="2170.68" y="-45.4883" width="217.455" height="2398.67"/>
+ </objectgroup>
+ <objectgroup id="73" name="terrain -2 bg">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="832" name="mines" type="terrain" x="-344.626" y="1659.56" width="4961.59" height="1034.92">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="843" name="rails" type="terrain" x="-818.149" y="1638.44" width="5828.98" height="109.149">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="rails -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="78" name="terrain -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="844" name="marble" type="terrain" x="2388.88" y="1616.61" width="1115.48" height="545.686">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="75" name="objects -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="839" name="solid" type="collision" x="3512.61" y="-26.8529" width="217.455" height="2404.32"/>
+  <object id="840" name="solid" type="collision" x="2170.68" y="-45.4883" width="217.455" height="2398.67"/>
  </objectgroup>
  <objectgroup id="74" name="player_layer -2">
   <properties>
+   <property name="depth" type="float" value="-128"/>
    <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.5"/>
   </properties>
-  <object id="834" name="warp" type="object" x="3323.24" y="1362.65" width="256" height="256">
+  <object id="834" name="warp" type="object" x="3116.76" y="1360.63" width="256" height="256">
    <properties>
     <property name="from" value="bridge-back-C"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -132,6 +184,17 @@
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
   </properties>
+ </objectgroup>
+ <objectgroup id="76" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="842" name="marble" type="terrain" x="3120.4" y="1636.06" width="251.107" height="444.471">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="63" name="fireflies -1">
   <properties>
@@ -149,16 +212,12 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="786" name="mines" type="terrain" x="866.579" y="1658" width="3671.96" height="844">
+  <object id="786" name="marble-dark" type="terrain" x="866.579" y="1658" width="3671.96" height="844">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="829" name="mines" type="terrain" x="-449.166" y="-239.279" width="1306.61" height="2872.29">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
+  <object id="829" name="mines" type="terrain" x="-449.166" y="-239.279" width="1306.61" height="2872.29"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -199,8 +258,22 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="847" name="mildred" type="entity" x="2143" y="1530.39" width="128" height="128">
+   <properties>
+    <property name="components" value="mildred-hexus,friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="dm-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="848" name="bancroft" type="entity" x="1416.48" y="1534.25" width="128" height="128">
+   <properties>
+    <property name="components" value="bancroft-hexus,friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="dm-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="25" name="player_layer">
+ <objectgroup id="25" name="player_layer" visible="0">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -210,12 +283,17 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="833" name="warp" type="object" x="3328.29" y="1408.13" width="256" height="256">
+  <object id="833" name="warp" type="object" x="3121.81" y="1406.11" width="256" height="256">
    <properties>
     <property name="from" value="bridge-front-C"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-C"/>
+   </properties>
+  </object>
+  <object id="838" name="squally" type="entity" x="3770.84" y="1531.02" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
    </properties>
   </object>
  </objectgroup>

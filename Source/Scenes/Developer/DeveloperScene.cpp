@@ -259,15 +259,8 @@ DeveloperScene::DeveloperScene()
 		// Push/pop puzzle:
 		// 	- Rework to have answers displayed on blocks across the gap
 		// 	- Implement reset
-		// Needs Hexus fights
-		// - Tune fight 1
-		// - Tune fight 2
-		// - Tune fight 3
-		// - Tune fight 4
-		// - Tune fight 5
-		// - Tune fight 6
-		// - Tune fight 7
-		// - Tune fight 8
+		// Train ticket reward for returning to queen with restore-power quest
+		// Add Hexus fights to NPCs
 		// Needs Hexus puzzles
 		// - A
 		// - B
@@ -276,7 +269,6 @@ DeveloperScene::DeveloperScene()
 		// - E
 		// - F
 		// - G
-		// Create train map, move train out of Drammol
 		
 		/*
 		X Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients - outgoing AND incoming damage)
@@ -293,19 +285,19 @@ DeveloperScene::DeveloperScene()
 
 		X Olive			Zone 1_1 (H_1)
 		X Bonnie		Town_Inn (H_2) (non-vendor)
-		- Ralson		Town_Inn (H_3) (non-vendor)
 		X Princess Dawn	Home_Dawn
-		X Cypress		Zone 2_x (H_4) Technically in mage's guild
-		X Raka			Zone 3_3 (Push/Pop Puzzle) (H_5)
-		- Finch			? Zone 3_x Flight Master -- Start flight master quest?
-		X Burch			Zone 3_x (H_6)
-		X Mildred		Home_Mildred (H_7)
-		X Godiva		Home_Godiva (H_8)
-		- Bancroft		Town_Train (Move train to this new map)
+		- Finch			? Zone 2_x Flight Master -- Start flight master quest?
+		X Raka			Zone 3_3 (Push/Pop Puzzle) (H_3)
+		- Burch			Zone 3_x (H_4)
+		X Ralson		Home_Ralston (H_5)
+		X Godiva		Home_Godiva (H_6)
+		X Mildred		Town_Train (H_7)
+		X Bancroft		Town_Train (H_8)
 		X Fraya			Town_Alch
 		X Brock			Town_BS
 		X Shen			Town_Inn
 
+		- Cypress		Zone 2_x (H_4) Technically in mage's guild
 		- Alder			Technically in mage's guild
 		- Jasper		Technically in mage's guild
 		- Sarude		Technically in mage's guild
@@ -337,6 +329,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (CV)", MapResources::CastleValgrind_Zone_1_0));
 
 		// Traps: Organ gun, cannon, catapult, ballista, heaven hug
+		// Create train map, move train out of Zone 1_0 (or integrate it better)
 		// Finish maps and corresponding "dark" maps (alternatively a game flag that is toggled to load in the correct layers)
 		// Puzzles in dark maps can influence objects in normal maps. Typical inverse world puzzles.
 		// Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.

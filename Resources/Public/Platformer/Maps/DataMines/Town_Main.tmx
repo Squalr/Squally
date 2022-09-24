@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1113">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1114">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,12 +17,6 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="712" name="mines" type="terrain" x="4218.88" y="3548.49" rotation="-90">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="-5006.03,-380.941 7459.43,-380.1 7445.06,221.339 -4984.18,218.891"/>
-  </object>
   <object id="1067" name="mines" type="texture" x="-2974.54" y="-1845.84" width="15117.1" height="8763.69"/>
  </objectgroup>
  <objectgroup id="67" name="water -12">
@@ -50,7 +44,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="934" name="mines" type="terrain" x="8297.12" y="1745.98" width="2131.38" height="4372"/>
-  <object id="1064" name="mines" type="terrain" x="-99.54" y="2371.15" width="5050.66" height="1475.69"/>
+  <object id="1064" name="mines" type="terrain" x="-99.54" y="2371.15" width="3792.51" height="1475.69"/>
   <object id="1085" name="mines" type="terrain" x="5230.65" y="3471.17" width="1474.88" height="1197.46"/>
  </objectgroup>
  <objectgroup id="136" name="rails -12">
@@ -63,13 +57,18 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
+  <object id="1113" name="marble-dark" type="terrain" x="-952.834" y="2331.55" width="3671.96" height="844">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="82" name="terrain -12 fg">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1069" name="mines" type="terrain" x="4916.61" y="-45.845" width="276.463" height="3899.69"/>
+  <object id="1069" name="mines" type="terrain" x="3695.73" y="-45.845" width="1497.34" height="3899.69"/>
  </objectgroup>
  <objectgroup id="91" name="decor -12">
   <properties>
@@ -112,14 +111,14 @@
     <property name="reward-pool" value="dm-diamond"/>
    </properties>
   </object>
-  <object id="1062" name="edge-portal" type="object" x="1947.34" y="1883.59" width="199.918" height="488">
+  <object id="1062" name="edge-portal" type="object" x="2714.54" y="1881.55" width="199.918" height="488">
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="DataMines/Town_Train"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="1063" name="solid" type="collision" x="1736.73" y="12.6826" width="217.455" height="2353.42"/>
+  <object id="1063" name="solid" type="collision" x="2503.93" y="10.6447" width="217.455" height="2353.42"/>
  </objectgroup>
  <objectgroup id="96" name="player_layer -12">
   <properties>
@@ -136,7 +135,7 @@
     <property name="to" value="bridge-front-C"/>
    </properties>
   </object>
-  <object id="1112" name="spawn" type="object" x="2319.68" y="2239.86" width="128" height="128">
+  <object id="1112" name="spawn" type="object" x="2959.59" y="2241.9" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
    </properties>
@@ -719,15 +718,15 @@
   </object>
   <object id="913" name="portal" type="object" x="2401.15" y="2211.67" width="256" height="192">
    <properties>
-    <property name="map" value="DataMines/Home_Finch"/>
-    <property name="transition" value="finch"/>
+    <property name="map" value="DataMines/Home_Godiva"/>
+    <property name="transition" value="godiva"/>
    </properties>
   </object>
   <object id="925" name="portal" type="object" x="1989.76" y="1530.73" width="256" height="256">
    <properties>
-    <property name="map" value="DataMines/Home_Finch"/>
+    <property name="map" value="DataMines/Home_Godiva"/>
     <property name="mini-map-hidden" type="bool" value="true"/>
-    <property name="transition" value="finch-top"/>
+    <property name="transition" value="godiva-top"/>
    </properties>
   </object>
   <object id="968" name="portal" type="object" x="7096.34" y="2817.16" width="256" height="256">
@@ -802,12 +801,12 @@
   </object>
   <object id="915" name="spawn" type="object" x="2463.94" y="2273.55" width="128" height="128">
    <properties>
-    <property name="transition" value="finch"/>
+    <property name="transition" value="godiva"/>
    </properties>
   </object>
   <object id="924" name="spawn" type="object" x="2053.76" y="1657.39" width="128" height="128">
    <properties>
-    <property name="transition" value="finch-top"/>
+    <property name="transition" value="godiva-top"/>
    </properties>
   </object>
   <object id="970" name="spawn" type="object" x="7164.34" y="2945.16" width="128" height="128">
@@ -1013,15 +1012,15 @@
   </object>
   <object id="916" name="portal" type="object" x="3751.76" y="2266.88" width="256" height="256">
    <properties>
-    <property name="map" value="DataMines/Home_Mildred"/>
-    <property name="transition" value="mildred"/>
+    <property name="map" value="DataMines/Home_Ralston"/>
+    <property name="transition" value="ralston"/>
    </properties>
   </object>
   <object id="922" name="portal" type="object" x="3719.88" y="1618.55" width="256" height="256">
    <properties>
-    <property name="map" value="DataMines/Home_Mildred"/>
+    <property name="map" value="DataMines/Home_Ralston"/>
     <property name="mini-map-hidden" type="bool" value="true"/>
-    <property name="transition" value="mildred-top"/>
+    <property name="transition" value="ralston-top"/>
    </properties>
   </object>
   <object id="1057" name="life-stone" type="object" x="6947" y="3540.5" width="146" height="423">
@@ -1086,12 +1085,12 @@
   </object>
   <object id="917" name="spawn" type="object" x="3809.7" y="2397.55" width="128" height="128">
    <properties>
-    <property name="transition" value="mildred"/>
+    <property name="transition" value="ralston"/>
    </properties>
   </object>
   <object id="923" name="spawn" type="object" x="3787.88" y="1746.55" width="128" height="128">
    <properties>
-    <property name="transition" value="mildred-top"/>
+    <property name="transition" value="ralston-top"/>
    </properties>
   </object>
   <object id="1054" name="portal" type="object" x="6233.33" y="3705.94" width="256" height="256">
