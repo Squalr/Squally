@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="87" nextobjectid="853">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="87" nextobjectid="857">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -334,16 +334,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="755" name="rails" type="terrain" x="5250.81" y="2022.39" width="2525.35" height="92">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="756" name="rails" type="terrain" x="-153.525" y="2029" width="2215.05" height="92">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -370,18 +360,11 @@
     <property name="transition" value="bridge"/>
    </properties>
   </object>
-  <object id="783" name="mine-cart-lootable" type="object" x="1516.27" y="1850.69" width="240" height="184">
+  <object id="853" name="edge-portal" type="object" x="7479.66" y="1541.63" width="199.918" height="488.002">
    <properties>
-    <property name="color" value="brown"/>
-    <property name="fill" value=""/>
-    <property name="reward-pool" value="dm-coal"/>
-   </properties>
-  </object>
-  <object id="784" name="mine-cart-lootable" type="object" x="1087.73" y="1849.31" width="240" height="184">
-   <properties>
-    <property name="color" value="brown"/>
-    <property name="fill" value=""/>
-    <property name="reward-pool" value="dm-coal"/>
+    <property name="direction" value="left"/>
+    <property name="map" value="CastleValgrind/Zone_1_0"/>
+    <property name="transition" value="left"/>
    </properties>
   </object>
  </objectgroup>
@@ -395,34 +378,25 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="850" name="garin" type="entity" x="2087.33" y="1905.33" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="2329.92" y="1915.62" width="128" height="128">
+  <object id="738" name="spawn" type="object" x="3004" y="1920" width="128" height="128">
    <properties>
-    <property name="components" value="squally"/>
+    <property name="transition" value="bridge"/>
    </properties>
   </object>
-  <object id="716" name="spawn" type="object" x="4449.94" y="1905.7" width="128" height="128">
+  <object id="854" name="spawn" type="object" x="7184.02" y="1903.38" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="738" name="spawn" type="object" x="3004" y="1920" width="128" height="128">
+  <object id="855" name="squally" type="entity" x="6849.8" y="1910.29" width="128" height="128">
    <properties>
-    <property name="transition" value="bridge"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
  </objectgroup>
@@ -455,47 +429,14 @@
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="777" name="rails" type="terrain" x="-469.525" y="2156.67" width="8528.26" height="92">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="80" name="object +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="778" name="mine-cart-lootable" type="object" x="3553.57" y="1981.61" width="240" height="184">
-   <properties>
-    <property name="color" value="brown"/>
-    <property name="fill" value=""/>
-    <property name="reward-pool" value="dm-coal"/>
-   </properties>
-  </object>
-  <object id="779" name="mine-cart-lootable" type="object" x="4780.49" y="1979.61" width="240" height="184">
-   <properties>
-    <property name="color" value="brown"/>
-    <property name="fill" value="none"/>
-    <property name="reward-pool" value="none"/>
-   </properties>
-  </object>
-  <object id="780" name="mine-cart-lootable" type="object" x="4243.64" y="1980.73" width="240" height="184">
-   <properties>
-    <property name="color" value="blue"/>
-    <property name="fill" value="coal"/>
-    <property name="reward-pool" value="dm-coal"/>
-   </properties>
-  </object>
-  <object id="781" name="mine-cart-lootable" type="object" x="1322.96" y="1977.11" width="240" height="184">
-   <properties>
-    <property name="color" value="blue"/>
-    <property name="fill" value="coal"/>
-    <property name="reward-pool" value="dm-coal"/>
-   </properties>
-  </object>
  </objectgroup>
- <objectgroup id="32" name="decor +4">
+ <objectgroup id="32" name="decor +4" visible="0">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
@@ -505,7 +446,7 @@
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1569.57" y="1922.1" width="242" height="738"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="4774.63" y="1925.91" width="270" height="748"/>
  </objectgroup>
- <objectgroup id="33" name="decor +8">
+ <objectgroup id="33" name="decor +8" visible="0">
   <properties>
    <property name="depth" type="float" value="512"/>
    <property name="type" value="objects"/>

@@ -279,7 +279,7 @@ DeveloperScene::DeveloperScene()
 		// Traps: Crusher
 		// Push/pop puzzle:
 		// 	- Rework to have answers displayed on blocks across the gap
-		// 	- Implement reset
+		// 	- Implement resetg
 		// Enqueue "hi" pretext on Gecky :^)
 
 		// Hexus puzzles:
@@ -338,6 +338,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Inn (CV)", MapResources::CastleValgrind_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (CV)", MapResources::CastleValgrind_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (CV)", MapResources::CastleValgrind_Town_Main));
+		mapList.push_back(this->buildDebugButton("Town Train (CV)", MapResources::CastleValgrind_Town_Train));
 		mapList.push_back(this->buildDebugButton("Study Dark (CV)", MapResources::CastleValgrind_Study_Dark));
 		mapList.push_back(this->buildDebugButton("Study (CV)", MapResources::CastleValgrind_Study));
 		mapList.push_back(this->buildDebugButton("Zone_2_3 (CV)", MapResources::CastleValgrind_Zone_2_3));
