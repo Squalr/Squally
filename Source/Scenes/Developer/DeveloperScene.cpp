@@ -280,7 +280,7 @@ DeveloperScene::DeveloperScene()
 		// Push/pop puzzle:
 		// 	- Rework to have answers displayed on blocks across the gap
 		// 	- Implement reset
-		// Train ticket reward for returning to queen with restore-power quest (Bancroft as gating NPC)
+		// Enqueue "hi" pretext on Gecky :^)
 
 		// Hexus puzzles:
 		// - A	=> 1_x (Tiki)

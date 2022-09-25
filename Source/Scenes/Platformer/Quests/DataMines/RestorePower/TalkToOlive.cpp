@@ -181,8 +181,6 @@ void TalkToOlive::runCinematicSequencePt3()
 
 void TalkToOlive::runCinematicSequencePt4()
 {
-	PlatformerEvents::TriggerCinematicHijack();
-
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_DataMines_RestorePower_Olive_C_SeenAnythingUnusual::create(),
 		DialogueEvents::DialogueVisualArgs(

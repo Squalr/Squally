@@ -113,15 +113,13 @@ void ReturnToPrincessDawn::onSkipped()
 
 void ReturnToPrincessDawn::runCinematicSequencePt1()
 {
-	PlatformerEvents::TriggerCinematicHijack();
-	
 	this->princessDawn->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_Q_PowerRestoredThankYou::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
+				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->princessDawn, true)
 			),
@@ -136,7 +134,7 @@ void ReturnToPrincessDawn::runCinematicSequencePt1()
 			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_R_TakeTrainTicket::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
+				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->princessDawn, true)
 			),
@@ -144,7 +142,7 @@ void ReturnToPrincessDawn::runCinematicSequencePt1()
 			{
 				this->complete();
 			},
-			Voices::GetNextVoiceMedium(),
+			Voices::GetNextVoiceLong(),
 			false
 		));
 	});

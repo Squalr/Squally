@@ -29,7 +29,11 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequenceAccessBlocked();
+	void runCinematicSequenceAccessBlockedPt1();
+	void runCinematicSequenceAccessBlockedPt2();
+	void runCinematicSequenceAccessBlockedPt3();
+	void runCinematicSequenceAccessBlockedPt4();
+	void runCinematicSequenceAccessBlockedPt5();
 	void runCinematicSequencePt1();
 
 	Gecky* gecky = nullptr;

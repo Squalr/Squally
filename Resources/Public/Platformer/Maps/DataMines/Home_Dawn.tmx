@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="16" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="819">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="16" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="819">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -168,7 +168,7 @@
    <properties>
     <property name="components" value="princess-dawn-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="dm-generic"/>
-    <property name="quest" value="talk-to-princess-dawn"/>
+    <property name="quest" value="talk-to-princess-dawn,return-to-princess-dawn"/>
     <property name="quest-line" value="restore-power"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>

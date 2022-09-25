@@ -80,28 +80,33 @@ void BancroftTrainAccess::onLoad(QuestState questState)
 	{
 		this->bancroft = bancroft;
 
-		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+		this->bancroft->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
-			this->bancroft->watchForComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
-			{
-				questBehavior->enableNewQuest();
-			});
-		}
+			interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+				Strings::Platformer_Quests_DataMines_RestorePower_Bancroft_A_CanWeBoard::create(),
+				[=]()
+				{
+					if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+					{
+						this->runCinematicSequencePt1();
+					}
+					else
+					{
+						this->runCinematicSequenceAccessBlockedPt1();
+					}
+				}),
+				1.0f
+			);
+		});
 	});
 
-	if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
-	{
-		this->runCinematicSequencePt1();
-	}
-	else
+	if (questState == QuestState::None)
 	{
 		ObjectEvents::WatchForObject<Warp>(this, [=](Warp* warp)
 		{
 			this->warp = warp;
 			this->warp->disable();
 		}, BancroftTrainAccess::TagTrainWarp);
-		
-		this->runCinematicSequenceAccessBlocked();
 	}
 }
 
@@ -127,38 +132,120 @@ void BancroftTrainAccess::onSkipped()
 	this->removeAllListeners();
 }
 
-void BancroftTrainAccess::runCinematicSequenceAccessBlocked()
+void BancroftTrainAccess::runCinematicSequenceAccessBlockedPt1()
 {
-	this->bancroft->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-	{
-		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-			Strings::Platformer_Quests_DataMines_RestorePower_Bancroft_A_CanWeBoard::create(),
-			[=]()
-			{
-				this->runCinematicSequencePt1();
-			}),
-			0.5f
-		);
-	});
+	PlatformerEvents::TriggerCinematicHijack();
+
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_Bancroft_B_Nope::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->bancroft, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequenceAccessBlockedPt2();
+		},
+		Voices::GetNextVoiceLong(),
+		false
+	));
+}
+
+void BancroftTrainAccess::runCinematicSequenceAccessBlockedPt2()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_Bancroft_C_WhereCanWeGetOne::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->bancroft, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequenceAccessBlockedPt3();
+		},
+		Voices::GetNextVoiceShort(),
+		false
+	));
+}
+
+void BancroftTrainAccess::runCinematicSequenceAccessBlockedPt3()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_Bancroft_D_SoldOut::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->bancroft, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequenceAccessBlockedPt4();
+		},
+		Voices::GetNextVoiceShort(),
+		false
+	));
+}
+
+void BancroftTrainAccess::runCinematicSequenceAccessBlockedPt4()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_Bancroft_E_AnythingWeCanDo::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->bancroft, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequenceAccessBlockedPt5();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void BancroftTrainAccess::runCinematicSequenceAccessBlockedPt5()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_Bancroft_F_AskQueen::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->bancroft, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+		),
+		[=]()
+		{
+			PlatformerEvents::TriggerCinematicRestore();
+		},
+		Voices::GetNextVoiceLong(),
+		false
+	));
 }
 
 void BancroftTrainAccess::runCinematicSequencePt1()
 {
-	this->bancroft->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-	{
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_DataMines_RestorePower_Bancroft_B_Nope::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->bancroft, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceMedium(),
-			false
-		));
-	});
+	PlatformerEvents::TriggerCinematicHijack();
+
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_DataMines_RestorePower_Bancroft_Q_Yep::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->bancroft, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+		),
+		[=]()
+		{
+			PlatformerEvents::TriggerCinematicRestore();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
 }
