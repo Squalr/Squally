@@ -314,6 +314,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 
 	// Keys
 	this->deserializers[FountainRoomKey::SaveKey] = [=]() { return (Item*)FountainRoomKey::create(); };
+	this->deserializers[LetterForThePrincess::SaveKey] = [=]() { return (Item*)LetterForThePrincess::create(); };
 	this->deserializers[MagesGuildPrisonKey::SaveKey] = [=]() { return (Item*)MagesGuildPrisonKey::create(); };
 	this->deserializers[MageTowerKey::SaveKey] = [=]() { return (Item*)MageTowerKey::create(); };
 	this->deserializers[MayanGemBlueItem::SaveKey] = [=]() { return (Item*)MayanGemBlueItem::create(); };
@@ -322,6 +323,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[MedusaMirror::SaveKey] = [=]() { return (Item*)MedusaMirror::create(); };
 	this->deserializers[MinesKey::SaveKey] = [=]() { return (Item*)MinesKey::create(); };
 	this->deserializers[RamWheel::SaveKey] = [=]() { return (Item*)RamWheel::create(); };
+	this->deserializers[TrainTicket::SaveKey] = [=]() { return (Item*)TrainTicket::create(); };
 	this->deserializers[TownKey::SaveKey] = [=]() { return (Item*)TownKey::create(); };
 
 	// Maps

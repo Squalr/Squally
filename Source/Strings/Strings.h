@@ -7944,6 +7944,21 @@ namespace Strings
 		virtual ~Items_Misc_Keys_TownKey() = default;
 	};
 
+	class Items_Misc_Keys_TrainTicket : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_TrainTicket* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_TrainTicket();
+		virtual ~Items_Misc_Keys_TrainTicket() = default;
+	};
+
 	class Items_Misc_Maps_DungeonMap : public LocalizedString
 	{
 	public:
@@ -27624,6 +27639,81 @@ namespace Strings
 		virtual ~Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass() = default;
 	};
 
+	class Platformer_Quests_DataMines_RestorePower_Bancroft_A_CanWeBoard : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Bancroft_A_CanWeBoard* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Bancroft_A_CanWeBoard();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Bancroft_A_CanWeBoard() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Bancroft_B_Nope : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Bancroft_B_Nope* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Bancroft_B_Nope();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Bancroft_B_Nope() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Bancroft_C_WhereCanWeGetOne : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Bancroft_C_WhereCanWeGetOne* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Bancroft_C_WhereCanWeGetOne();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Bancroft_C_WhereCanWeGetOne() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Bancroft_D_SoldOut : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Bancroft_D_SoldOut* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Bancroft_D_SoldOut();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Bancroft_D_SoldOut() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Bancroft_E_AnythingWeCanDo : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Bancroft_E_AnythingWeCanDo* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Bancroft_E_AnythingWeCanDo();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Bancroft_E_AnythingWeCanDo() = default;
+	};
+
 	class Platformer_Quests_DataMines_RestorePower_Krampus_A_Intruders : public LocalizedString
 	{
 	public:
@@ -27952,6 +28042,36 @@ namespace Strings
 	private:
 		Platformer_Quests_DataMines_RestorePower_PrincessDawn_K_ImOut();
 		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_K_ImOut() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_Q_PowerRestoredThankYou : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_Q_PowerRestoredThankYou* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_Q_PowerRestoredThankYou();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_Q_PowerRestoredThankYou() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_R_TakeTrainTicket : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_R_TakeTrainTicket* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_R_TakeTrainTicket();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_R_TakeTrainTicket() = default;
 	};
 
 	class Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks : public LocalizedString

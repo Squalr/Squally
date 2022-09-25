@@ -72,13 +72,11 @@ DeveloperScene::DeveloperScene()
 	- Mounts should apply to helpers so they aren't awkwardly lagging behind
 	- Activate swim cooldown on opening save
 	- Hexus bugs:
+		- Update puzzle shrine icon on win
 		- Win a hexus puzzle, next one will show massive row score deltas
 		- Leave button stuck visible after losing a puzzle
 		- Enemy should pre-calc the best play when player has passed (hard)
 	- Maybe hexus puzzles can be shrines with portals showing enemy faces. I don't like overloading overworld enemies still.
-	- OVERWORLD ATTACKS:
-		- Troll swing if you jump them
-		- Cyclops swing if you jump them	
 	- Camera harsh leaving camera targets (which?)
 	- Can get stuck on roof of maps (see UR 3_1)
 	- Icons on title screen buttons (at least options, to reduce pains of wrong language selection)
@@ -177,7 +175,10 @@ DeveloperScene::DeveloperScene()
 		// - G	=> 3_1 (Cyclops)
 
 		// TODO:
-		// Sleeping Lycan face anim
+		// - Sleeping Lycan face anim
+		// - OVERWORLD ATTACKS:
+		// 	- Troll swing if you jump them
+		// 	- Cyclops swing if you jump them	
 	}
 
 	// CHAPTER 2 - Compare/CMOV/Neg/SHL/SHR + OR Puzzle

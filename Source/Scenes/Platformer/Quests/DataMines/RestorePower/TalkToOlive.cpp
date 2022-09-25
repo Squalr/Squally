@@ -101,7 +101,7 @@ void TalkToOlive::onActivate(bool isActiveThroughSkippable)
 
 void TalkToOlive::onComplete()
 {	
-	Objectives::SetCurrentObjective(ObjectiveKeys::URLightTorches);
+	Objectives::SetCurrentObjective(ObjectiveKeys::DMDeliverLetter);
 
 	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ LetterForThePrincess::create() }));
 

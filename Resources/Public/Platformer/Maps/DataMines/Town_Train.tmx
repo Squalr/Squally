@@ -280,14 +280,14 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="848" name="bancroft" type="entity" x="2892.86" y="1532.06" width="128" height="128">
+  <object id="848" name="bancroft" type="entity" x="2880.86" y="1532.06" width="128" height="128">
    <properties>
     <property name="components" value="bancroft-hexus,friendly,pick-pocket"/>
     <property name="pocket-pool" value="dm-generic"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="25" name="player_layer" visible="0">
+ <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -302,6 +302,7 @@
     <property name="from" value="bridge-front-C"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
+    <property name="tag" value="train-warp"/>
     <property name="to" value="bridge-back-C"/>
    </properties>
   </object>
