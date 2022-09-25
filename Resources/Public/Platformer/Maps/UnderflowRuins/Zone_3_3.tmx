@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="1168">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="1169">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="988" name="temple-dark" type="terrain" x="-2361.82" y="-1558" width="7875.63" height="5156">
+  <object id="988" name="temple-dark" type="terrain" x="-1225.82" y="-550" width="6739.63" height="4148">
    <properties>
     <property name="collision" value="none"/>
     <property name="hole-tag" value="hole-A"/>
@@ -454,7 +454,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="21" name="terrain" visible="0">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -496,6 +496,11 @@
     <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
+  <object id="1168" name="hexus-shrine" type="object" x="1561.05" y="1146.36" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-mummy-warrior"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="decor">
   <properties>
@@ -523,10 +528,10 @@
     <property name="components" value="ally"/>
    </properties>
   </object>
-  <object id="1149" name="mummy-warrior" type="entity" x="1554" y="1274" width="128" height="128">
+  <object id="1149" name="mummy-warrior" type="entity" x="1514" y="4262" width="128" height="128">
    <properties>
     <property name="components" value="friendly,disarmed,ur-puzzle-E"/>
-    <property name="scale" type="float" value="0.75"/>
+    <property name="tag" value="hexus-mummy-warrior"/>
    </properties>
   </object>
  </objectgroup>

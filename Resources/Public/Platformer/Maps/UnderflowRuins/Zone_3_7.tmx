@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="1163">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="1165">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -483,6 +483,11 @@
     <property name="mini-map-visible" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="1163" name="hexus-shrine" type="object" x="2852.5" y="1145" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-mummy-priest"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="decor">
   <properties>
@@ -494,10 +499,10 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1149" name="mummy-priest" type="entity" x="2868" y="1274.67" width="128" height="128">
+  <object id="1164" name="mummy-priest" type="entity" x="2808" y="4552" width="128" height="128">
    <properties>
     <property name="components" value="friendly,disarmed,ur-puzzle-F"/>
-    <property name="scale" type="float" value="0.75"/>
+    <property name="tag" value="hexus-mummy-priest"/>
    </properties>
   </object>
  </objectgroup>

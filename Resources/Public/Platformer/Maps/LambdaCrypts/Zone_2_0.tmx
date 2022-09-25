@@ -1012,7 +1012,7 @@
   </properties>
   <object id="816" name="ogre" type="entity" x="4631.88" y="1563.52" width="128" height="128">
    <properties>
-    <property name="components" value="z-fade,friendly,disarmed,ef-puzzle-G"/>
+    <property name="components" value="z-fade,friendly,disarmed,lc-puzzle-X"/>
     <property name="fade-multiplier" type="float" value="1"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>

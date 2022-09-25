@@ -167,6 +167,16 @@ DeveloperScene::DeveloperScene()
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 
+		// Hexus Puzzles:
+		// - A	=> 2_0 (Orc Grunt)
+		// - B	=> 2_2 (Troll)
+		// - C	=> 2_4_a (Goblin Warrior Pig)
+		// - D	=> 2_4 (Orc Warrior)
+		// - E	=> 2_6 (Goblin Grunt Boar)
+		// - F	=> 3_0 (Ogre)
+		// - G	=> 3_1 (Cyclops)
+
+		// TODO:
 		// Sleeping Lycan face anim
 	}
 
@@ -212,6 +222,16 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Shoreline (UR)", MapResources::UnderflowRuins_Shoreline));
 		mapList.push_back(this->buildDebugButton("Docks (UR)", MapResources::UnderflowRuins_Town_Docks));
 
+		// Hexus Puzzles:
+		// - A	=> 1_0 (Lioness)
+		// - B	=> 1_2_a (Tiger Man)
+		// - C	=> 2_2 (Mermaid)
+		// - D	=> 2_3 (Minotaur)
+		// - E	=> 3_3 (Mummy Warrior)
+		// - F	=> 3_6 (Anubis Pup)
+		// - G	=> 3_7 (Mummy Priest)
+
+		// TODO:
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
 		// Fix CMOV (railed spiked logs) on mac
 		// Needs Dark Tiger scripting (Maybe recycle a SHL or SHR instead of a CMOV)
@@ -254,12 +274,14 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (DM)", MapResources::DataMines_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
 
+		// TODO:
 		// Traps: Crusher
 		// Push/pop puzzle:
 		// 	- Rework to have answers displayed on blocks across the gap
 		// 	- Implement reset
 		// Train ticket reward for returning to queen with restore-power quest (Bancroft as gating NPC)
-		// Needs Hexus puzzles
+
+		// Hexus puzzles:
 		// - A	=> 1_x (Tiki)
 		// - B	=> 1_x (Shaman)
 		// - C	=> 2_1 (Forest Golem)
