@@ -75,6 +75,7 @@ DeveloperScene::DeveloperScene()
 		- Win a hexus puzzle, next one will show massive row score deltas
 		- Leave button stuck visible after losing a puzzle
 		- Enemy should pre-calc the best play when player has passed (hard)
+	- Maybe hexus puzzles can be shrines with portals showing enemy faces. I don't like overloading overworld enemies still.
 	- OVERWORLD ATTACKS:
 		- Troll swing if you jump them
 		- Cyclops swing if you jump them	
@@ -258,15 +259,14 @@ DeveloperScene::DeveloperScene()
 		// 	- Rework to have answers displayed on blocks across the gap
 		// 	- Implement reset
 		// Train ticket reward for returning to queen with restore-power quest (Bancroft as gating NPC)
-		// Add Hexus fights to NPCs
 		// Needs Hexus puzzles
-		// - A
-		// - B
-		// - C
-		// - D
-		// - E
-		// - F
-		// - G
+		// - A	=> 1_x (Tiki)
+		// - B	=> 1_x (Shaman)
+		// - C	=> 2_1 (Forest Golem)
+		// - D	=> 2_5 (Earth Golem)
+		// - E	=> 3_x (Skeletal Warrior)
+		// - F	=> 3_x (Skeletal Pirate)
+		// - G	=> 3_x (Skeletal Necromancer)
 		
 		/*
 		X Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients - outgoing AND incoming damage)

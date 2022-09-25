@@ -124,6 +124,14 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[ThorHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ThorHexusBehavior::create(owner); };
 
 	// DM
+	this->componentDeserializers[DMPuzzleABehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DMPuzzleABehavior::create(owner); };
+	this->componentDeserializers[DMPuzzleBBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DMPuzzleBBehavior::create(owner); };
+	this->componentDeserializers[DMPuzzleCBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DMPuzzleCBehavior::create(owner); };
+	this->componentDeserializers[DMPuzzleDBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DMPuzzleDBehavior::create(owner); };
+	this->componentDeserializers[DMPuzzleEBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DMPuzzleEBehavior::create(owner); };
+	this->componentDeserializers[DMPuzzleFBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DMPuzzleFBehavior::create(owner); };
+	this->componentDeserializers[DMPuzzleGBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DMPuzzleGBehavior::create(owner); };
+
 	this->componentDeserializers[BancroftHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BancroftHexusBehavior::create(owner); };
 	this->componentDeserializers[BonnieHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BonnieHexusBehavior::create(owner); };
 	this->componentDeserializers[BurchHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BurchHexusBehavior::create(owner); };

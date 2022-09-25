@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="856">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="857">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -71,6 +71,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="856" name="tiki-golem" type="entity" x="814.788" y="1460.24" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,dm-puzzle-A"/>
+    <property name="scale" type="float" value="0.75"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="player_layer -4">
   <properties>

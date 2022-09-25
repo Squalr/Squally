@@ -28,6 +28,7 @@ public:
 	void disableInteraction();
 	DialogueSet* getMainDialogueSet();
 	SpeechBubble* getSpeechBubble();
+	void progressDialogue();
 
 	static const std::string MapKey;
 
@@ -44,7 +45,6 @@ private:
 	typedef GameComponent super;
 
 	void onInteract();
-	void progressDialogue();
 	void showOptions();
 	bool hasDialogueOptions();
 	void updateInteractable();

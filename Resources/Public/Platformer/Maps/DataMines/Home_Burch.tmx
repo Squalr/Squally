@@ -17,7 +17,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="808" name="trail" type="texture" x="-129.152" y="-506.485" width="2226.42" height="1712.48"/>
+  <object id="808" name="trail" type="texture" x="-129.152" y="-154.485" width="2126.42" height="1360.48"/>
  </objectgroup>
  <objectgroup id="18" name="decor background 2">
   <properties>
@@ -52,9 +52,9 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="807" name="mines" type="terrain" x="33.1528" y="1065.94" width="1847.75" height="234.06"/>
+  <object id="807" name="mines" type="terrain" x="33.1528" y="1065.94" width="1847.75" height="202.06"/>
   <object id="846" name="wood-black-fill" type="terrain" x="-61.8887" y="-313.215">
-   <polygon points="-39.3939,-153.192 -21.1584,1040.69 946.349,559.852 1093.94,559.39 2026.5,1072.04 2038.02,-152.406"/>
+   <polygon points="-36.3636,198.323 -35.6584,1075.19 946.349,559.852 1093.94,559.39 2039.16,1074.7 2041.05,199.11"/>
   </object>
  </objectgroup>
  <objectgroup id="114" name="terrain fg">

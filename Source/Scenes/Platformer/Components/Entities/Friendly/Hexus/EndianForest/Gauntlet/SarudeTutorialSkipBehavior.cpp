@@ -27,7 +27,7 @@ SarudeTutorialSkipBehavior* SarudeTutorialSkipBehavior::create(GameObject* owner
 	return instance;
 }
 
-SarudeTutorialSkipBehavior::SarudeTutorialSkipBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1, false, Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_WeAcceptYourChallengeSkip::create())
+SarudeTutorialSkipBehavior::SarudeTutorialSkipBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1, Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_WeAcceptYourChallengeSkip::create())
 {
 }
 

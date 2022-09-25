@@ -279,9 +279,9 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1879" name="earth-golem" type="entity" x="2035.22" y="1523.82" width="128" height="128">
+  <object id="1879" name="forest-golem" type="entity" x="2035.22" y="1523.82" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,dm-puzzle-X"/>
+    <property name="components" value="friendly,disarmed,dm-puzzle-B"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>

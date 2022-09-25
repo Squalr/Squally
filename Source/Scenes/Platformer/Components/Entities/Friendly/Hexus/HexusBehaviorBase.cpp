@@ -13,7 +13,6 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/MinMaxPool.h"
-#include "Engine/Particles/SmartParticles.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/HexusEvents.h"
@@ -35,31 +34,20 @@
 
 using namespace cocos2d;
 
-HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResource, bool showParticles, LocalizedString* dialogueChoiceOverride) : super(owner)
+HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResource, LocalizedString* dialogueChoiceOverride) : super(owner)
 {
-	this->showParticles = showParticles;
 	this->dialogueStringNode = Node::create();
 	this->iconNode = Node::create();
 	this->undefeatedContainer = Node::create();
 	this->defeatedContainer = Node::create();
-	this->hackParticles1 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange1, SmartParticles::CullInfo(CSize(128.0f, 128.0f))) : nullptr;
-	this->hackParticles2 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange2, SmartParticles::CullInfo(CSize(128.0f, 128.0f))) : nullptr;
-	this->hackParticles3 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange3, SmartParticles::CullInfo(CSize(128.0f, 128.0f))) : nullptr;
-	this->hackParticles4 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange4, SmartParticles::CullInfo(CSize(128.0f, 128.0f))) : nullptr;
-	this->hackParticles5 = this->showParticles ? SmartParticles::create(ParticleResources::Platformer_Hacking_HackerRainOrange5, SmartParticles::CullInfo(CSize(128.0f, 128.0f))) : nullptr;
 
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->dialogueChoiceOverride = dialogueChoiceOverride;
 	this->voiceResource = voiceResource;
 
 	Sprite* cardGlow = Sprite::create(UIResources::HUD_EmblemGlow);
-	Sprite* overheadSprite = Sprite::create(this-> showParticles ? ObjectResources::Hexus_Jigsaw : ItemResources::Collectables_Cards_CardSpecial);
-	Sprite* overheadSpriteDefeated = Sprite::create(this-> showParticles ? ObjectResources::Hexus_JigsawCompleted : "");
-
-	if (this->entity == nullptr)
-	{
-		this->invalidate();
-	}
+	Sprite* overheadSprite = Sprite::create(ItemResources::Collectables_Cards_CardSpecial);
+	Sprite* overheadSpriteDefeated = Sprite::create("");
 
 	if (this->dialogueChoiceOverride != nullptr)
 	{
@@ -73,15 +61,6 @@ HexusBehaviorBase::HexusBehaviorBase(GameObject* owner, std::string voiceResourc
 	this->iconNode->addChild(this->defeatedContainer);
 	this->addChild(this->dialogueStringNode);
 	this->addChild(this->iconNode);
-
-	if (this->showParticles)
-	{
-		this->addChild(this->hackParticles1);
-		this->addChild(this->hackParticles2);
-		this->addChild(this->hackParticles3);
-		this->addChild(this->hackParticles4);
-		this->addChild(this->hackParticles5);	
-	}
 }
 
 HexusBehaviorBase::~HexusBehaviorBase()
@@ -91,18 +70,6 @@ HexusBehaviorBase::~HexusBehaviorBase()
 void HexusBehaviorBase::onEnter()
 {
 	super::onEnter();
-
-	if (this->showParticles)
-	{
-		this->hackParticles1->start();
-		this->hackParticles2->start();
-		this->hackParticles3->start();
-		this->hackParticles4->start();
-		this->hackParticles5->start();
-
-		this->hackParticles2->accelerate(1.0f);
-		this->hackParticles4->accelerate(1.0f);
-	}
 
 	bool wasDefeated = this->getWins() > 0;
 
@@ -127,22 +94,16 @@ void HexusBehaviorBase::initializePositions()
 {
 	super::initializePositions();
 
-	Vec2 entityCenter = this->entity->getEntityCenterPoint();
-
-	if (this->showParticles)
-	{
-		this->hackParticles1->setPosition(entityCenter);
-		this->hackParticles2->setPosition(entityCenter);
-		this->hackParticles3->setPosition(entityCenter);
-		this->hackParticles4->setPosition(entityCenter);
-		this->hackParticles5->setPosition(entityCenter);
-	}
-
 	if (this->entity != nullptr)
 	{
-		Vec2 offset = this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 96.0f);
+		Vec2 entityCenter = this->entity->getEntityCenterPoint();
 
-		this->iconNode->setPosition(offset);
+		if (this->entity != nullptr)
+		{
+			Vec2 offset = this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 96.0f);
+
+			this->iconNode->setPosition(offset);
+		}
 	}
 }
 
@@ -212,25 +173,14 @@ void HexusBehaviorBase::onLoad()
 
 	this->addChild(this->rewardPool);
 
-	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	if (this->entity != nullptr)
 	{
-		if (this->dialogueChoiceOverride != nullptr)
+		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
-			this->hexusOption = interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-				this->dialogueChoiceOverride->clone(),
-				[=]()
-				{
-					HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
-				}),
-				0.5f
-			);
-		}
-		else
-		{
-			if (this->getWins() <= 0)
+			if (this->dialogueChoiceOverride != nullptr)
 			{
 				this->hexusOption = interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-					Strings::Platformer_Dialogue_Hexus_HowAboutARoundOfHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+					this->dialogueChoiceOverride->clone(),
 					[=]()
 					{
 						HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
@@ -240,17 +190,31 @@ void HexusBehaviorBase::onLoad()
 			}
 			else
 			{
-				this->hexusOption = interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-					Strings::Platformer_Dialogue_Hexus_HowAboutARematch::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
-					[=]()
-					{
-						HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
-					}),
-					0.5f
-				);
+				if (this->getWins() <= 0)
+				{
+					this->hexusOption = interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+						Strings::Platformer_Dialogue_Hexus_HowAboutARoundOfHexus::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+						[=]()
+						{
+							HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
+						}),
+						0.5f
+					);
+				}
+				else
+				{
+					this->hexusOption = interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+						Strings::Platformer_Dialogue_Hexus_HowAboutARematch::create()->setStringReplacementVariables(Strings::Hexus_Hexus::create()),
+						[=]()
+						{
+							HexusEvents::TriggerOpenHexus(HexusEvents::HexusOpenArgs(this->createOpponentData()));
+						}),
+						0.5f
+					);
+				}
 			}
-		}
-	});
+		});
+	}
 }
 
 void HexusBehaviorBase::onDisable()
@@ -273,10 +237,13 @@ void HexusBehaviorBase::giveItems()
 
 void HexusBehaviorBase::removeFromDialogue()
 {
-	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	if (this->entity != nullptr)
 	{
-		interactionBehavior->getMainDialogueSet()->removeDialogueOption(this->hexusOption);
-	});
+		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		{
+			interactionBehavior->getMainDialogueSet()->removeDialogueOption(this->hexusOption);
+		});
+	}
 }
 
 void HexusBehaviorBase::onWin()
@@ -406,10 +373,13 @@ void HexusBehaviorBase::runPostMatchDialogue(LocalizedString* dialogue)
 		DelayTime::create(0.5f),
 		CallFunc::create([=]()
 		{
-			this->entity->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+			if (this->entity != nullptr)
 			{
-				interactionBehavior->getSpeechBubble()->runDialogue(dialogue->clone(), this->voiceResource);
-			});
+				this->entity->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+				{
+					interactionBehavior->getSpeechBubble()->runDialogue(dialogue->clone(), this->voiceResource);
+				});
+			}
 		}),
 		nullptr
 	));
@@ -420,7 +390,7 @@ HexusOpponentData* HexusBehaviorBase::createOpponentData()
     return HexusOpponentData::create( 
 		HexusEvents::BuildPreviewNode(this->entity),
         this->getBackgroundResource(),
-        this->entity->getDialogueOffset() + this->getAvatarOffset(),
+        this->entity == nullptr ? Vec2::ZERO : (this->entity->getDialogueOffset() + this->getAvatarOffset()),
         this->getWinLossSaveKey(),
         HexusOpponentData::Strategy::Random,
         Card::CardStyle::Light,

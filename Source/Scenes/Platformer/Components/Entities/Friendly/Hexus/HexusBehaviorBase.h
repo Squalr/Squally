@@ -33,7 +33,7 @@ public:
 	void removeFromDialogue();
 
 protected:
-	HexusBehaviorBase(GameObject* owner, std::string voiceResource, bool showParticles = false, LocalizedString* dialogueChoiceOverride = nullptr);
+	HexusBehaviorBase(GameObject* owner, std::string voiceResource, LocalizedString* dialogueChoiceOverride = nullptr);
 	virtual ~HexusBehaviorBase();
 	
 	void onDisable() override;
@@ -73,16 +73,9 @@ private:
 	cocos2d::Node* undefeatedContainer = nullptr;
 	cocos2d::Node* defeatedContainer = nullptr;
 
-	SmartParticles* hackParticles1 = nullptr;
-	SmartParticles* hackParticles2 = nullptr;
-	SmartParticles* hackParticles3 = nullptr;
-	SmartParticles* hackParticles4 = nullptr;
-	SmartParticles* hackParticles5 = nullptr;
-
 	std::vector<std::function<void()>> winCallbacks;
 	std::vector<std::function<void()>> lossCallbacks;
 	std::vector<std::function<void()>> drawCallbacks;
 
 	std::string voiceResource;
-	bool showParticles = false;
 };

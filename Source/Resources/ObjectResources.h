@@ -411,8 +411,6 @@ namespace ObjectResources
 	extern const std::string Doors_WoodStronghold_WOOD_BACK;
 	extern const std::string Doors_WoodStronghold_WOOD_FRONT;
 	extern const std::string Doors_WoodStronghold_WOOD_G;
-	extern const std::string Hexus_Jigsaw;
-	extern const std::string Hexus_JigsawCompleted;
 	extern const std::string Interactive_AlchemyLab_AlchemyLab;
 	extern const std::string Interactive_Anvil_Anvil;
 	extern const std::string Interactive_Anvil_AnvilHammer;
@@ -482,6 +480,9 @@ namespace ObjectResources
 	extern const std::string Interactive_Help_QuestionMark;
 	extern const std::string Interactive_Help_QuestionMarkDisabled;
 	extern const std::string Interactive_Help_TotemGlow;
+	extern const std::string Interactive_HexusShrine_Jigsaw;
+	extern const std::string Interactive_HexusShrine_JigsawCompleted;
+	extern const std::string Interactive_HexusShrine_Shrine;
 	extern const std::string Interactive_LifeStone;
 	extern const std::string Interactive_MineCarts_Body1;
 	extern const std::string Interactive_MineCarts_Body2;

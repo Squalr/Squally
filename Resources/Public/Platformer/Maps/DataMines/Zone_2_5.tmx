@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="52" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="875">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="52" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="876">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -252,6 +252,12 @@
     <property name="pocket-pool" value="ur-generic"/>
     <property name="quest" value="boat-unlocked"/>
     <property name="quest-line" value="boat-to-daemons"/>
+   </properties>
+  </object>
+  <object id="875" name="earth-golem" type="entity" x="1480" y="1016" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,dm-puzzle-C"/>
+    <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
  </objectgroup>

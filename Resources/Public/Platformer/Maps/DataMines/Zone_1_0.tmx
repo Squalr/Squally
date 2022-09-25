@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="34" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="72" nextobjectid="829">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="34" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="72" nextobjectid="833">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="712" name="mines" type="texture" x="1527.09" y="1626.75">
+  <object id="712" name="mines" type="texture" x="1527.09" y="1630.75">
    <polygon points="-2095.29,-2086.15 3122.17,-2081.55 3116.15,1212.13 -2086.14,1198.72"/>
   </object>
  </objectgroup>
@@ -26,12 +26,12 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="813" name="mines" type="terrain" x="1575.46" y="1592" width="3182.75" height="844">
+  <object id="813" name="mines" type="terrain" x="1387.46" y="1592" width="3370.75" height="844">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="819" name="mines" type="terrain" x="832.185" y="-290" width="747.63" height="2728"/>
+  <object id="819" name="mines" type="terrain" x="632.185" y="-294" width="747.63" height="2728"/>
  </objectgroup>
  <objectgroup id="68" name="decor -4">
   <properties>
@@ -64,6 +64,11 @@
     <property name="transition" value="right-back"/>
    </properties>
   </object>
+  <object id="832" name="hexus-shrine" type="object" x="1616" y="1334" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-shaman"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="69" name="entities -4">
   <properties>
@@ -89,6 +94,12 @@
     <property name="components" value="ally"/>
    </properties>
   </object>
+  <object id="829" name="shaman" type="entity" x="1682" y="2896" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,dm-puzzle-B"/>
+    <property name="tag" value="hexus-shaman"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="player_layer -4">
   <properties>
@@ -111,11 +122,6 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="814" name="Ruins/Walls1" type="decor" x="1706.52" y="1173.53" width="333" height="416">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
   <object id="815" name="Ruins/Walls2" type="decor" x="3185.45" y="1457.82" width="689" height="132">
    <properties>
     <property name="flip-y" type="bool" value="true"/>
@@ -170,7 +176,7 @@
   </properties>
   <object id="790" name="Ruins/ScarabDoorBroken" type="decor" x="2" y="1092.83" width="1236" height="569"/>
  </objectgroup>
- <objectgroup id="60" name="decor fg">
+ <objectgroup id="60" name="decor fg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>

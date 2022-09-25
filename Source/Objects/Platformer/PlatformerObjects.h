@@ -86,6 +86,7 @@
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemPotions.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemRepair.h"
 #include "Objects/Platformer/Interactables/HelpTotems/HelpTotemSwimHack.h"
+#include "Objects/Platformer/Interactables/HexusShrine/HexusShrine.h"
 #include "Objects/Platformer/Interactables/LifeStone.h"
 #include "Objects/Platformer/Interactables/Lights/Torch.h"
 #include "Objects/Platformer/Interactables/Mounts/GatlingGun/GatlingGun.h"

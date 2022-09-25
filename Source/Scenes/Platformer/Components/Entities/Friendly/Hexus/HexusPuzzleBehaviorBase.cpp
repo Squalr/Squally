@@ -12,7 +12,7 @@
 
 using namespace cocos2d;
 
-HexusPuzzleBehaviorBase::HexusPuzzleBehaviorBase(GameObject* owner, std::string voiceResource, LocalizedString* dialogueChoiceOverride) : super(owner, voiceResource, true, dialogueChoiceOverride)
+HexusPuzzleBehaviorBase::HexusPuzzleBehaviorBase(GameObject* owner, std::string voiceResource, LocalizedString* dialogueChoiceOverride) : super(owner, voiceResource, dialogueChoiceOverride)
 {
 	this->squally = nullptr;
 }
@@ -36,9 +36,9 @@ void HexusPuzzleBehaviorBase::onEnter()
 			Strings::Platformer_Dialogue_Hexus_PuzzleForYou::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->entity, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->entity, true)
 			),
 			[=]()
 			{
@@ -51,16 +51,16 @@ void HexusPuzzleBehaviorBase::onEnter()
 
 LocalizedString* HexusPuzzleBehaviorBase::getCustomWinDialogue()
 {
-	return Strings::Platformer_Dialogue_Hexus_GoodGameZalgo::create();
+	return  nullptr; //Strings::Platformer_Dialogue_Hexus_GoodGameZalgo::create();
 }
 
 LocalizedString* HexusPuzzleBehaviorBase::getCustomDrawDialogue()
 {
-	return Strings::Platformer_Dialogue_Hexus_ADrawZalgo::create();
+	return  nullptr; //Strings::Platformer_Dialogue_Hexus_ADrawZalgo::create();
 }
 
 LocalizedString* HexusPuzzleBehaviorBase::getCustomLossDialogue()
 {
 	// TODO: Reinstate zalgo text when microsoft fixes their shit
-	return Strings::Platformer_Dialogue_Hexus_BetterLuckNextTime::create();
+	return nullptr; // Strings::Platformer_Dialogue_Hexus_BetterLuckNextTime::create();
 }
