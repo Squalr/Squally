@@ -81,11 +81,12 @@ StateOverride* DMPuzzleEBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
-			CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
-			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+			// Premise: Flip 3 with no net effect on enemy, steal a buffed card, flip 2 self-buff, OR everything
+			CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+			CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+			CardList::getInstance()->cardListByName.at(CardKeys::Steal),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -95,37 +96,39 @@ StateOverride* DMPuzzleEBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 		},
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
 		}
 	);

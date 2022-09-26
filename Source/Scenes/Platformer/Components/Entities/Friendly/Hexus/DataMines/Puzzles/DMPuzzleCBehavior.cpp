@@ -81,12 +81,9 @@ StateOverride* DMPuzzleCBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			// Premise: Flip 3 with no net effect on enemy, steal a buffed card, flip 2 self-buff, OR everything
-			CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
-			CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-			CardList::getInstance()->cardListByName.at(CardKeys::Steal),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -96,40 +93,32 @@ StateOverride* DMPuzzleCBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
 		},
 		// Player hex cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex12),
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary1),
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal1),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal14),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
 		}
 	);
 }

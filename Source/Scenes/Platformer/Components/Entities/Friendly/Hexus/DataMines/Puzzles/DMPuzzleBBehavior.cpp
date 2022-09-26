@@ -82,8 +82,7 @@ StateOverride* DMPuzzleBBehavior::getStateOverride()
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -93,17 +92,18 @@ StateOverride* DMPuzzleBBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 		},
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex12),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
@@ -113,12 +113,12 @@ StateOverride* DMPuzzleBBehavior::getStateOverride()
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal14),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex12),
 		}
 	);
 }
