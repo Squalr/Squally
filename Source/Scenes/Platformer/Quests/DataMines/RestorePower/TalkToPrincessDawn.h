@@ -28,6 +28,7 @@ protected:
 private:
 	typedef QuestTask super;
 
+	void enqueueGeckyDialogue();
 	void runCinematicSequencePt1();
 
 	Guano* guano = nullptr;

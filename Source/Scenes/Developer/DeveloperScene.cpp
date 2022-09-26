@@ -256,6 +256,9 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Home Dawn (DM)", MapResources::DataMines_Home_Dawn));
 		mapList.push_back(this->buildDebugButton("Home Godiva (DM)", MapResources::DataMines_Home_Godiva));
 		mapList.push_back(this->buildDebugButton("Home Burch (DM)", MapResources::DataMines_Home_Burch));
+		mapList.push_back(this->buildDebugButton("Ship Main (PS)", MapResources::PerilousSea_Ship_Main));
+		mapList.push_back(this->buildDebugButton("Ship Captain (PS)", MapResources::PerilousSea_Ship_Captain));
+		mapList.push_back(this->buildDebugButton("Ship Hull (PS)", MapResources::PerilousSea_Ship_Hull));
 		mapList.push_back(this->buildDebugButton("Zone_4_0 (DM)", MapResources::DataMines_Zone_4_0));
 		mapList.push_back(this->buildDebugButton("Zone_3_8 (DM)", MapResources::DataMines_Zone_3_8));
 		mapList.push_back(this->buildDebugButton("Zone_3_7 (DM)", MapResources::DataMines_Zone_3_7));
@@ -281,7 +284,7 @@ DeveloperScene::DeveloperScene()
 		// Push/pop puzzle:
 		// 	- Rework to have answers displayed on blocks across the gap
 		// 	- Implement reset
-		// Enqueue "hi" pretext on Gecky :^)
+		// Krampus text
 
 		// Hexus puzzles:
 		// - A	=> 1_x (Tiki)

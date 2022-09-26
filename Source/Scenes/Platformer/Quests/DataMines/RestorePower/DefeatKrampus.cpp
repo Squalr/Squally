@@ -30,7 +30,7 @@
 using namespace cocos2d;
 
 const std::string DefeatKrampus::MapKeyQuest = "defeat-krampus";
-const std::string DefeatKrampus::MapEventEngageKrampus = "awaken-krampus";
+const std::string DefeatKrampus::MapEventEngageKrampus = "engage-krampus";
 
 DefeatKrampus* DefeatKrampus::create(GameObject* owner, QuestLine* questLine)
 {
@@ -107,9 +107,9 @@ void DefeatKrampus::runCinematicSequencePt1()
 {
 	PlatformerEvents::TriggerCinematicHijack();
 
+	this->krampus->getAnimations()->setFlippedX(true);
+
 	this->krampus->runAction(Sequence::create(
-		FadeTo::create(0.5f, 255),
-		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
 			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
@@ -124,7 +124,7 @@ void DefeatKrampus::runCinematicSequencePt1()
 				{
 					this->runCinematicSequencePt2();
 				},
-				Voices::GetNextVoiceShort(Voices::VoiceType::Rhino),
+				Voices::GetNextVoiceShort(Voices::VoiceType::Demon),
 				false
 			));
 		}),

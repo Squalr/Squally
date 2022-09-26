@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="16" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="819">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="16" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="819">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -176,6 +176,7 @@
   <object id="818" name="gecky" type="entity" x="1695.21" y="1064.58" width="128" height="128">
    <properties>
     <property name="components" value="friendly"/>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="tag" value="cinematic-gecky"/>
    </properties>
   </object>

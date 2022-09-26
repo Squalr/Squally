@@ -73,6 +73,10 @@ void TalkToPrincessDawn::onLoad(QuestState questState)
 		{
 			this->gecky->despawn();
 		}
+		else
+		{
+			this->enqueueGeckyDialogue();
+		}
 
 		// Disable gecky from appearing on party menu
 		this->gecky->setQueryable(false);
@@ -127,6 +131,31 @@ void TalkToPrincessDawn::onComplete()
 void TalkToPrincessDawn::onSkipped()
 {
 	this->removeAllListeners();
+}
+
+void TalkToPrincessDawn::enqueueGeckyDialogue()
+{
+	this->gecky->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	{
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_DataMines_RestorePower_Gecky_A_Hi::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->gecky, true)
+			),
+			[=]()
+			{
+				this->defer([=]()
+				{
+					this->enqueueGeckyDialogue();
+				});
+			},
+			Voices::GetNextVoiceShort(),
+			true
+		));
+	});
 }
 
 void TalkToPrincessDawn::runCinematicSequencePt1()
