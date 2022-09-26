@@ -355,7 +355,7 @@
   </properties>
   <object id="1978" name="skeletal-necromancer" type="entity" x="1122" y="2704" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,dm-puzzle-F"/>
+    <property name="components" value="friendly,disarmed,dm-puzzle-G"/>
     <property name="tag" value="hexus-skeletal-necromancer"/>
    </properties>
   </object>

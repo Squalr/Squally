@@ -261,7 +261,7 @@
   </object>
   <object id="875" name="earth-golem" type="entity" x="1606.18" y="3108.61" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,dm-puzzle-C"/>
+    <property name="components" value="friendly,disarmed,dm-puzzle-D"/>
     <property name="tag" value="hexus-forest-golem"/>
    </properties>
   </object>

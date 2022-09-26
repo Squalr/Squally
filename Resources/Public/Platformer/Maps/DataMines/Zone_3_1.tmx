@@ -629,7 +629,7 @@
   </object>
   <object id="1629" name="skeletal-warrior" type="entity" x="1164" y="4804" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,dm-puzzle-D"/>
+    <property name="components" value="friendly,disarmed,dm-puzzle-E"/>
     <property name="tag" value="hexus-skeletal-warrior"/>
    </properties>
   </object>

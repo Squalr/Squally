@@ -346,7 +346,7 @@
   </object>
   <object id="969" name="skeletal-pirate" type="entity" x="1412" y="4596" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,dm-puzzle-E"/>
+    <property name="components" value="friendly,disarmed,dm-puzzle-F"/>
     <property name="tag" value="hexus-skeletal-pirate"/>
    </properties>
   </object>

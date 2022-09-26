@@ -69,6 +69,7 @@ DeveloperScene::DeveloperScene()
 	}
 
 	/*
+	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+
 	- Mounts should apply to helpers so they aren't awkwardly lagging behind
 	- Activate swim cooldown on opening save
 	- Hexus bugs:

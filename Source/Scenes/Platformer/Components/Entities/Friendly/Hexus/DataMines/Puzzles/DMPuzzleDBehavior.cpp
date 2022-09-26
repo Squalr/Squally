@@ -84,7 +84,7 @@ StateOverride* DMPuzzleDBehavior::getStateOverride()
 			CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 			CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
-			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+			CardList::getInstance()->cardListByName.at(CardKeys::Subtraction),
 		},
 		// Enemy hand
 		std::vector<CardData*>
