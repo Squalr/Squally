@@ -501,7 +501,7 @@
   </properties>
   <object id="1164" name="mummy-priest" type="entity" x="2808" y="4552" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,ur-puzzle-F"/>
+    <property name="components" value="friendly,disarmed,ur-puzzle-G"/>
     <property name="tag" value="hexus-mummy-priest"/>
    </properties>
   </object>

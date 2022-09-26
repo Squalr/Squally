@@ -272,7 +272,7 @@
   </object>
   <object id="1177" name="anubis-pup" type="entity" x="728.182" y="4203.15" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,ur-puzzle-G"/>
+    <property name="components" value="friendly,disarmed,ur-puzzle-F"/>
     <property name="tag" value="hexus-anubis-pup"/>
    </properties>
   </object>

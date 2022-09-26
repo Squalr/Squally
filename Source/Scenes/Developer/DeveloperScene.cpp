@@ -280,7 +280,7 @@ DeveloperScene::DeveloperScene()
 		// Traps: Crusher
 		// Push/pop puzzle:
 		// 	- Rework to have answers displayed on blocks across the gap
-		// 	- Implement resetg
+		// 	- Implement reset
 		// Enqueue "hi" pretext on Gecky :^)
 
 		// Hexus puzzles:
@@ -288,9 +288,9 @@ DeveloperScene::DeveloperScene()
 		// - B	=> 1_x (Shaman)
 		// - C	=> 2_1 (Forest Golem)
 		// - D	=> 2_5 (Earth Golem)
-		// - E	=> 3_x (Skeletal Warrior)
-		// - F	=> 3_x (Skeletal Pirate)
-		// - G	=> 3_x (Skeletal Necromancer)
+		// - E	=> 3_1 (Skeletal Warrior)
+		// - F	=> 3_4 (Skeletal Pirate)
+		// - G	=> 3_6 (Skeletal Necromancer)
 		
 		/*
 		X Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients - outgoing AND incoming damage)
