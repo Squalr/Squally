@@ -182,8 +182,6 @@ void RegisterStone::runAnimationOut()
 		{
 			this->animatedStone->setPosition(this->valueStone->getPosition());
 
-			this->broadcastMapEvent(MayanDoor::MapEventUnlockInteraction, ValueMap());
-
 			ValueMap args = ValueMap();
 
 			args[MayanDoor::PropertyRegister] = Value(this->registerStr);

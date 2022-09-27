@@ -111,7 +111,7 @@ void MayanDoor::onEnterTransitionDidFinish()
 	}
 	else
 	{
-		this->broadcastMapEvent(MayanDoor::MapEventUnlockInteraction, ValueMap());
+		this->broadcastMapEvent(MayanDoor::MapEventLockInteraction, ValueMap());
 	}
 }
 
