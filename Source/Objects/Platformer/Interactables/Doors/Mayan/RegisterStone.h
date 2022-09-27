@@ -50,8 +50,6 @@ private:
 	cocos2d::Sprite* animatedStone = nullptr;
 	ConstantString* animatedString = nullptr;
 	LocalizedLabel* animatedLabel = nullptr;
-	ConstantString* correctValueString = nullptr;
-	LocalizedLabel* correctValueLabel = nullptr;
 	LocalizedLabel* registerLabel = nullptr;
 	cocos2d::Sprite* fxGlow = nullptr;
 	cocos2d::Sprite* fxGlowTop = nullptr;

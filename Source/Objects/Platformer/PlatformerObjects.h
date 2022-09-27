@@ -51,6 +51,7 @@
 #include "Objects/Platformer/Interactables/Doors/LanternGate/EdgeLanternGate.h"
 #include "Objects/Platformer/Interactables/Doors/LanternGate/LanternGate.h"
 #include "Objects/Platformer/Interactables/Doors/MagePortals/MagePortal.h"
+#include "Objects/Platformer/Interactables/Doors/Mayan/AnswerStone.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/MayanDoor.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/RegisterStone.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/StoneStack.h"

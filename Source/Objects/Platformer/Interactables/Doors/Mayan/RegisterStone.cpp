@@ -51,8 +51,6 @@ RegisterStone::RegisterStone(ValueMap& properties) : super(properties, InteractO
 	this->animatedStone = Sprite::create(ObjectResources::Puzzles_Stack_StackBlock);
 	this->animatedString = ConstantString::create(std::to_string(this->value));
 	this->animatedLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->animatedString);
-	this->correctValueString = ConstantString::create(correctValueStr);
-	this->correctValueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->correctValueString);
 	this->registerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->buildRegisterString());
 	this->pushInteract = InteractObject::create(InteractObject::InteractType::Input, CSize(100.0f, 118.0f), Vec2::ZERO, Strings::Platformer_Objects_Interaction_OperationPush::create(), InputEvents::KeyCode::KEY_C, Color3B(16, 23, 57));
 	this->fxGlow = Sprite::create(UIResources::HUD_EmblemGlow);
@@ -61,7 +59,6 @@ RegisterStone::RegisterStone(ValueMap& properties) : super(properties, InteractO
 	this->addTag(this->registerStr);
 	this->valueLabel->enableOutline(Color4B::BLACK, 2);
 	this->animatedLabel->enableOutline(Color4B::BLACK, 2);
-	this->correctValueLabel->enableOutline(Color4B::BLACK, 2);
 	this->registerLabel->enableOutline(Color4B::BLACK, 2);
 	this->setValue(this->value);
 	this->fxGlow->setOpacity(0);
@@ -70,7 +67,6 @@ RegisterStone::RegisterStone(ValueMap& properties) : super(properties, InteractO
 	this->addChild(this->pushInteract);
 	this->addChild(this->registerStone);
 	this->addChild(this->fxGlow);
-	this->addChild(this->correctValueLabel);
 	this->addChild(this->valueStone);
 	this->addChild(this->valueLabel);
 	this->addChild(this->animatedStone);
@@ -97,9 +93,8 @@ void RegisterStone::initializePositions()
 
 	this->pushInteract->setPositionY(118.0f / 2.0f);
 	this->registerStone->setPosition(Vec2(0.0f, BaseY));
-	this->registerLabel->setPosition(Vec2(-Width / 2.0f, BaseY - 6.0f));
-	this->correctValueLabel->setPosition(Vec2(Width / 2.0f, BaseY - 6.0f));
-	this->fxGlow->setPosition(Vec2(Width / 2.0f, BaseY - 6.0f));
+	this->registerLabel->setPosition(Vec2(0.0f, BaseY - 6.0f));
+	this->fxGlow->setPosition(Vec2(0.0f, BaseY - 6.0f));
 	this->valueStone->setPosition(Vec2(0.0f, BaseY + 42.0f));
 	this->valueLabel->setPosition(Vec2(0.0f, BaseY + 42.0f - 6.0f));
 	this->animatedStone->setPosition(valueStone->getPosition());

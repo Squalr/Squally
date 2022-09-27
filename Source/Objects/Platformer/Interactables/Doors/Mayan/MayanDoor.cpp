@@ -138,14 +138,20 @@ void MayanDoor::initializeListeners()
 
 	this->listenForMapEvent(MayanDoor::MapEventLockInteraction, [=](ValueMap args)
 	{
-		this->isUnlocking = true;
-		this->disable();
+		if (this->isLocked)
+		{
+			this->isUnlocking = true;
+			this->disable();
+		}
 	});
 
 	this->listenForMapEvent(MayanDoor::MapEventUnlockInteraction, [=](ValueMap args)
 	{
-		this->isUnlocking = false;
-		this->enable();
+		if (this->isLocked)
+		{
+			this->isUnlocking = false;
+			this->enable();
+		}
 	});
 }
 
@@ -346,4 +352,6 @@ void MayanDoor::unlock(bool animate)
 		this->doorContainer->setPosition(Vec2(MayanDoor::DoorOpenDelta, 0.0f));
 		this->doorContainer->setRotation(180.0f);
 	}
+
+	this->enable();
 }

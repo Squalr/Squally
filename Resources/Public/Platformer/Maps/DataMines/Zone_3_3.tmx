@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="58" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="96" nextobjectid="1679">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="58" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1698">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -103,7 +103,7 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1666" name="mines" type="terrain" x="6400.48" y="-104.5" width="2447.38" height="2384"/>
+  <object id="1666" name="mines" type="terrain" x="6908.48" y="-104.5" width="1939.38" height="2384"/>
  </objectgroup>
  <objectgroup id="89" name="decor -5 bg">
   <properties>
@@ -117,7 +117,7 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1626" name="mines" type="terrain" x="3715.64" y="1468" width="2683.38" height="948"/>
+  <object id="1626" name="mines" type="terrain" x="3715.64" y="1468" width="3191.38" height="948"/>
  </objectgroup>
  <objectgroup id="93" name="rails -5">
   <properties>
@@ -135,6 +135,48 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
+ </objectgroup>
+ <objectgroup id="96" name="objects -5 bg">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1692" name="answer-stone" type="object" x="4823.77" y="1076.7" width="150" height="118">
+   <properties>
+    <property name="correct-value" type="int" value="8"/>
+    <property name="register" value="eax"/>
+   </properties>
+  </object>
+  <object id="1693" name="answer-stone" type="object" x="5077.94" y="1077.7" width="150" height="118">
+   <properties>
+    <property name="correct-value" type="int" value="1"/>
+    <property name="register" value="ebx"/>
+   </properties>
+  </object>
+  <object id="1694" name="answer-stone" type="object" x="5336.6" y="1077.03" width="150" height="118">
+   <properties>
+    <property name="correct-value" type="int" value="3"/>
+    <property name="register" value="ecx"/>
+   </properties>
+  </object>
+  <object id="1695" name="answer-stone" type="object" x="5986.13" y="1077.03" width="150" height="118">
+   <properties>
+    <property name="correct-value" type="int" value="11"/>
+    <property name="register" value="edx"/>
+   </properties>
+  </object>
+  <object id="1696" name="answer-stone" type="object" x="6240.29" y="1078.03" width="150" height="118">
+   <properties>
+    <property name="correct-value" type="int" value="7"/>
+    <property name="register" value="edi"/>
+   </properties>
+  </object>
+  <object id="1697" name="answer-stone" type="object" x="6498.96" y="1077.36" width="150" height="118">
+   <properties>
+    <property name="correct-value" type="int" value="6"/>
+    <property name="register" value="esi"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="63" name="objects -5">
   <properties>
@@ -350,11 +392,18 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="57" name="objects back">
+ <objectgroup id="57" name="objects back" visible="0">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1691" name="trigger" type="object" x="4647" y="917" width="2202" height="1046">
+   <properties>
+    <property name="end-event" value="helper-stop-rest"/>
+    <property name="multi" type="bool" value="true"/>
+    <property name="send-event" value="helper-move-to-rest"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -429,13 +478,6 @@
     <property name="send-event" value="mayan-door-unlock"/>
    </properties>
   </object>
-  <object id="1677" name="trigger" type="object" x="4697.73" y="953.121" width="2202" height="1046">
-   <properties>
-    <property name="end-event" value="helper-stop-rest"/>
-    <property name="multi" type="bool" value="true"/>
-    <property name="send-event" value="helper-move-to-rest"/>
-   </properties>
-  </object>
   <object id="1678" name="cinematic-marker" type="object" x="5563.12" y="1520.36" width="128" height="128">
    <properties>
     <property name="tag" value="helper-rest"/>
@@ -464,7 +506,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="1.5"/>
+   <property name="zoom" type="float" value="1.15"/>
   </properties>
   <object id="805" name="spawn-cart" type="object" x="423.76" y="1516.27" width="128" height="128">
    <properties>

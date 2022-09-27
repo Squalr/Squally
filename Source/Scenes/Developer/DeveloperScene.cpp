@@ -265,7 +265,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_3_6 (DM)", MapResources::DataMines_Zone_3_6));
 		mapList.push_back(this->buildDebugButton("Zone_3_5 (DM)", MapResources::DataMines_Zone_3_5));
 		mapList.push_back(this->buildDebugButton("Zone_3_4 (DM)", MapResources::DataMines_Zone_3_4));
-		mapList.push_back(this->buildDebugButton("Zone_3_3 (DM)", MapResources::DataMines_Zone_3_3));
+		mapList.push_back(this->buildDebugButton("Zone_3_3 Stack Puzzle (DM)", MapResources::DataMines_Zone_3_3));
 		mapList.push_back(this->buildDebugButton("Zone_3_2 (DM)", MapResources::DataMines_Zone_3_2));
 		mapList.push_back(this->buildDebugButton("Zone_3_1 (DM)", MapResources::DataMines_Zone_3_1));
 		mapList.push_back(this->buildDebugButton("Zone_3_0 (DM)", MapResources::DataMines_Zone_3_0));
@@ -284,7 +284,8 @@ DeveloperScene::DeveloperScene()
 		// Push/pop puzzle:
 		// 	- Rework to have answers displayed on blocks across the gap
 		// 	- Implement reset
-		// Krampus text
+		// Krampus ability
+		// Nature spellbook? Can retrofit it maybe
 
 		// Hexus puzzles:
 		// - A	=> 1_x (Tiki)
