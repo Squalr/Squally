@@ -28,6 +28,7 @@ public:
 	static const std::string MapEventLockInteraction;
 	static const std::string MapEventUnlockInteraction;
 	static const std::string MapEventResetPuzzle;
+	static const std::string MapEventPuzzleComplete;
 
 protected:
 	MayanDoor(cocos2d::ValueMap& properties);

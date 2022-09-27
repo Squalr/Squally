@@ -44,6 +44,7 @@ const std::string MayanDoor::SaveKeyUnlocked = "SAVE_KEY_UNLOCKED";
 const std::string MayanDoor::MapEventLockInteraction = "EVENT_STONE_PUZZLE_LOCK_INTERACTION";
 const std::string MayanDoor::MapEventUnlockInteraction = "EVENT_STONE_PUZZLE_UNLOCK_INTERACTION";
 const std::string MayanDoor::MapEventResetPuzzle = "reset-puzzle";
+const std::string MayanDoor::MapEventPuzzleComplete = "puzzle-complete";
 
 MayanDoor* MayanDoor::create(ValueMap& properties)
 {
@@ -334,6 +335,7 @@ void MayanDoor::unlock(bool animate)
 {
 	super::unlock(animate);
 
+	this->broadcastMapEvent(MayanDoor::MapEventPuzzleComplete, ValueMap());
 	this->saveObjectState(MayanDoor::SaveKeyUnlocked, Value(true));
 
 	this->toggleHackable(false);

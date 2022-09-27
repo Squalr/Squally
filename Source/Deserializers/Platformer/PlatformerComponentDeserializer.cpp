@@ -145,6 +145,9 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 		ENTITIES / OVERWORLD
 	*********************/
 
+	// DM
+	this->componentDeserializers[RakaBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)RakaBehavior::create(owner); };
+
 	// EF
 	this->componentDeserializers[AraBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)AraBehavior::create(owner); };
 	this->componentDeserializers[JasperBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)JasperBehavior::create(owner); };

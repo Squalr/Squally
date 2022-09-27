@@ -282,7 +282,6 @@ DeveloperScene::DeveloperScene()
 		// TODO:
 		// Traps: Crusher
 		// Tune Hexus special cards list
-		// Raka hint dialog
 		// Krampus ability
 		// Nature spellbook? Can retrofit it maybe
 

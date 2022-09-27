@@ -198,6 +198,8 @@ void StoneStack::push(int value, bool unlockInteraction, bool animate, std::func
 	int stoneIndex = int(this->values.size());
 	Vec2 stonePosition = this->getPositionForStone(stoneIndex);
 	this->animatedString->setString(std::to_string(value));
+	
+	this->broadcastMapEvent(MayanDoor::MapEventLockInteraction, ValueMap());
 
 	if (animate)
 	{
@@ -207,6 +209,11 @@ void StoneStack::push(int value, bool unlockInteraction, bool animate, std::func
 			MoveTo::create(0.5f, stonePosition),
 			CallFunc::create([=]()
 			{
+				if (unlockInteraction)
+				{
+					this->broadcastMapEvent(MayanDoor::MapEventUnlockInteraction, ValueMap());
+				}
+
 				if (overFlow)
 				{
 					this->animatedStone->setPosition(stonePosition + Offset);
@@ -227,6 +234,11 @@ void StoneStack::push(int value, bool unlockInteraction, bool animate, std::func
 	}
 	else
 	{
+		if (unlockInteraction)
+		{
+			this->broadcastMapEvent(MayanDoor::MapEventUnlockInteraction, ValueMap());
+		}
+
 		if (overFlow)
 		{
 			return;

@@ -28119,6 +28119,36 @@ namespace Strings
 		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_R_TakeTrainTicket() = default;
 	};
 
+	class Platformer_Quests_DataMines_StackPuzzle_A_DoYouKnowHowToOpenDoor : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_StackPuzzle_A_DoYouKnowHowToOpenDoor* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_StackPuzzle_A_DoYouKnowHowToOpenDoor();
+		virtual ~Platformer_Quests_DataMines_StackPuzzle_A_DoYouKnowHowToOpenDoor() = default;
+	};
+
+	class Platformer_Quests_DataMines_StackPuzzle_B_NumbersMatch : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_StackPuzzle_B_NumbersMatch* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_StackPuzzle_B_NumbersMatch();
+		virtual ~Platformer_Quests_DataMines_StackPuzzle_B_NumbersMatch() = default;
+	};
+
 	class Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks : public LocalizedString
 	{
 	public:

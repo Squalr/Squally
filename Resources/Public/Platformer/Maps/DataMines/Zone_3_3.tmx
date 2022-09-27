@@ -501,7 +501,7 @@
   </properties>
   <object id="1655" name="raka" type="entity" x="7008" y="1482.5" width="128" height="167">
    <properties>
-    <property name="components" value="raka-hexus,friendly,pacing,pick-pocket"/>
+    <property name="components" value="raka,raka-hexus,friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="dm-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
