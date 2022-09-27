@@ -282,8 +282,8 @@ DeveloperScene::DeveloperScene()
 		// TODO:
 		// Traps: Crusher
 		// Push/pop puzzle:
-		// 	- Rework to have answers displayed on blocks across the gap
 		// 	- Implement reset
+		// 	- Raka dialog
 		// Krampus ability
 		// Nature spellbook? Can retrofit it maybe
 

@@ -530,7 +530,6 @@ const std::string ObjectResources::Puzzles_Stack_Answer_09 = "Private/Platformer
 const std::string ObjectResources::Puzzles_Stack_Answer_10 = "Private/Platformer/Objects/Puzzles/Stack/Answer_10.png";
 const std::string ObjectResources::Puzzles_Stack_Answer_11 = "Private/Platformer/Objects/Puzzles/Stack/Answer_11.png";
 const std::string ObjectResources::Puzzles_Stack_RegisterBlock = "Private/Platformer/Objects/Puzzles/Stack/RegisterBlock.png";
-const std::string ObjectResources::Puzzles_Stack_RegisterBlockDeprecated = "Private/Platformer/Objects/Puzzles/Stack/RegisterBlockDeprecated.png";
 const std::string ObjectResources::Puzzles_Stack_Rope = "Private/Platformer/Objects/Puzzles/Stack/Rope.png";
 const std::string ObjectResources::Puzzles_Stack_StackBlock = "Private/Platformer/Objects/Puzzles/Stack/StackBlock.png";
 const std::string ObjectResources::Puzzles_Torch_Torch = "Private/Platformer/Objects/Puzzles/Torch/Torch.png";

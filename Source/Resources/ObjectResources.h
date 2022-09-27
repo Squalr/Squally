@@ -531,7 +531,6 @@ namespace ObjectResources
 	extern const std::string Puzzles_Stack_Answer_10;
 	extern const std::string Puzzles_Stack_Answer_11;
 	extern const std::string Puzzles_Stack_RegisterBlock;
-	extern const std::string Puzzles_Stack_RegisterBlockDeprecated;
 	extern const std::string Puzzles_Stack_Rope;
 	extern const std::string Puzzles_Stack_StackBlock;
 	extern const std::string Puzzles_Torch_Torch;

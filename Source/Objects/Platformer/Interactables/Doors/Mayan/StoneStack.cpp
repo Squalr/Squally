@@ -62,17 +62,20 @@ StoneStack::StoneStack(ValueMap& properties) : super(properties)
 
 	this->animatedStone->addChild(animatedLabel);
 
-	for (auto next : values)
+	for (const std::string& next : values)
 	{
 		if (StrUtils::isInteger(next))
 		{
 			int value = std::stoi(next);
-
-			this->push(value, false);
+			this->pushList.push_back(value);
 		}
 	}
 
-	for (auto next : this->valueStones)
+	this->originalValues = this->pushList;
+
+	this->pushAll(nullptr, false);
+
+	for (Sprite* next : this->valueStones)
 	{
 		this->addChild(next);
 	}
@@ -112,7 +115,7 @@ void StoneStack::initializeListeners()
 			return;
 		}
 
-		this->pop([=](int value)
+		this->pop(true, [=](int value)
 		{
 			std::string regStr = GameUtils::getKeyOrDefault(args, MayanDoor::PropertyRegister, Value("")).asString();
 			ValueMap retArgs = ValueMap();
@@ -130,9 +133,63 @@ void StoneStack::initializeListeners()
 		
 		this->push(value);
 	});
+
+	this->listenForMapEvent(MayanDoor::MapEventResetPuzzle, [=](ValueMap args)
+	{
+		this->broadcastMapEvent(MayanDoor::MapEventLockInteraction, ValueMap());
+		this->popAll([=]()
+		{
+			Vector<FiniteTimeAction*> actions = Vector<FiniteTimeAction*>();
+			actions.pushBack(DelayTime::create(0.5f));
+			
+			this->pushList = this->originalValues;
+			this->pushAll([=]()
+			{
+				this->broadcastMapEvent(MayanDoor::MapEventUnlockInteraction, ValueMap());
+			});
+		});
+	});
 }
 
-void StoneStack::push(int value, bool animate)
+void StoneStack::popAll(std::function<void()> callback)
+{
+	if (this->values.size() <= 0)
+	{
+		if (callback != nullptr)
+		{
+			callback();
+		}
+		return;
+	}
+
+	this->pop(false, [=](int)
+	{
+		this->popAll(callback);
+	});
+}
+
+void StoneStack::pushAll(std::function<void()> callback, bool animate)
+{
+	if (this->pushList.size() <= 0)
+	{
+		if (callback != nullptr)
+		{
+			callback();
+		}
+		return;
+	}
+
+	int value = this->pushList.back();
+
+	pushList.pop_back();
+
+	this->push(value, false, animate, [=]()
+	{
+		this->pushAll(callback, animate);
+	});
+}
+
+void StoneStack::push(int value, bool unlockInteraction, bool animate, std::function<void()> callback)
 {
 	const float Speed = 0.5f;
 	const Vec2 Offset = Vec2(0.0f, 1536.0f);
@@ -159,6 +216,11 @@ void StoneStack::push(int value, bool animate)
 				this->values.push_back(value);
 				this->valueStrings[stoneIndex]->setString(std::to_string(value));
 				this->updateStackVisibility();
+				
+				if (callback != nullptr)
+				{
+					callback();
+				}
 			}),
 			nullptr
 		));
@@ -173,10 +235,15 @@ void StoneStack::push(int value, bool animate)
 		this->values.push_back(value);
 		this->valueStrings[stoneIndex]->setString(std::to_string(value));
 		this->updateStackVisibility();
+
+		if (callback != nullptr)
+		{
+			callback();
+		}
 	}
 }
 
-void StoneStack::pop(std::function<void(int)> callback)
+void StoneStack::pop(bool unlockInteraction, std::function<void(int)> callback)
 {
 	const float Speed = 0.5f;
 	const Vec2 Offset = Vec2(0.0f, 1536.0f);
@@ -207,7 +274,10 @@ void StoneStack::pop(std::function<void(int)> callback)
 				callback(value);
 			}
 
-			this->broadcastMapEvent(MayanDoor::MapEventUnlockInteraction, ValueMap());
+			if (unlockInteraction)
+			{
+				this->broadcastMapEvent(MayanDoor::MapEventUnlockInteraction, ValueMap());
+			}
 		}),
 		nullptr
 	));

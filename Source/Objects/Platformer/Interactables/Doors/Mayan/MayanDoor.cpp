@@ -109,6 +109,10 @@ void MayanDoor::onEnterTransitionDidFinish()
 	{
 		this->discoverStones();
 	}
+	else
+	{
+		this->broadcastMapEvent(MayanDoor::MapEventUnlockInteraction, ValueMap());
+	}
 }
 
 void MayanDoor::initializePositions()
@@ -291,7 +295,7 @@ void MayanDoor::tryUnlock()
 		}
 		else
 		{
-			this->broadcastMapEvent(MayanDoor::MapEventUnlockInteraction, ValueMap());
+			this->broadcastMapEvent(MayanDoor::MapEventResetPuzzle, ValueMap());
 		}
 	}));
 

@@ -30,13 +30,17 @@ protected:
 private:
 	typedef GameObject super;
 
-	void push(int value, bool animate = true);
-	void pop(std::function<void(int)> callback);
+	void popAll(std::function<void()> callback = nullptr);
+	void pushAll(std::function<void()> callback = nullptr, bool animate = true);
+	void push(int value, bool unlockInteraction = true, bool animate = true, std::function<void()> callback = nullptr);
+	void pop(bool unlockInteraction = true, std::function<void(int)> callback = nullptr);
 	void updateStackVisibility();
 	cocos2d::Vec2 getPositionForStone(int index);
 
 	std::vector<cocos2d::Sprite*> valueStones;
 	std::vector<int> values;
+	std::vector<int> originalValues;
+	std::vector<int> pushList;
 	std::vector<ConstantString*> valueStrings;
 
 	cocos2d::Sprite* animatedStone = nullptr;

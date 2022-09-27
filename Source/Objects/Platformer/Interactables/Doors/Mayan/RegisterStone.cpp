@@ -118,6 +118,12 @@ void RegisterStone::initializeListeners()
 		this->pushInteract->enable();
 	});
 
+	this->listenForMapEvent(MayanDoor::MapEventResetPuzzle, [=](ValueMap args)
+	{
+		this->setValue(this->originalValue);
+		this->runAnimationIn(this->originalValue);
+	});
+
 	this->listenForMapEvent(MayanDoor::MapEventPopRet + this->registerStr, [=](ValueMap args)
 	{
 		this->runAnimationIn(GameUtils::getKeyOrDefault(args, MayanDoor::PropertyValue, Value(0)).asInt());
