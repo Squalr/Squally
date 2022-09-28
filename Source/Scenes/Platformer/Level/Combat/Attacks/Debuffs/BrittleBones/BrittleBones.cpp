@@ -39,7 +39,7 @@ using namespace cocos2d;
 const std::string BrittleBones::BrittleBonesIdentifier = "brittle-bones";
 const std::string BrittleBones::HackIdentifierBrittleBones = "brittle-bones";
 
-const int BrittleBones::MaxMultiplier = 4;
+const int BrittleBones::MaxMultiplier = 6;
 const int BrittleBones::DamageDelt = 1;
 const float BrittleBones::Duration = 24.0f;
 
@@ -139,14 +139,12 @@ void BrittleBones::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingAr
 
 	this->applyBrittleBones();
 
-	// Bound multiplier in either direction
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(MathUtils::clamp(
-		Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt(),
-		-std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * BrittleBones::MaxMultiplier),
-		std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * BrittleBones::MaxMultiplier)
-	));
+	int min = -std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * BrittleBones::MaxMultiplier);
+	int max = std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * BrittleBones::MaxMultiplier);
 
-	*(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	*damageOrHealing->damageOrHealing = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	*damageOrHealing->damageOrHealingMin = min;
+	*damageOrHealing->damageOrHealingMax = max;
 }
 
 NO_OPTIMIZE void BrittleBones::applyBrittleBones()
