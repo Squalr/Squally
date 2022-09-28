@@ -219,7 +219,7 @@ NO_OPTIMIZE bool Crusher::isPlayerDetected()
 
 	ASM_MOV_REG_VAR(eax, compareResultLeft);
 	ASM_MOV_REG_VAR(ebx, compareResultRight);
-	ASM(mov ecx, 0)
+	ASM(mov ecx, 1)
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_DETECTOR);
 	ASM(and ecx, eax)
