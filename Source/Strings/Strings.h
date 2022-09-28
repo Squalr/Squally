@@ -18114,10 +18114,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEbx() = default;
 	};
 
-	class Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEsi : public LocalizedString
+	class Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEsi* create();
+		static Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEcx* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18125,8 +18125,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEsi();
-		virtual ~Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEsi() = default;
+		Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEcx();
+		virtual ~Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEcx() = default;
 	};
 
 	class Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_RegisterSt0 : public LocalizedString

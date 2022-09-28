@@ -7,6 +7,9 @@ namespace cocos2d
 	class Sprite;
 }
 
+class LocalizedLabel;
+class SmartClippingNode;
+
 class CrusherGenericPreview : public HackablePreview
 {
 public:
@@ -24,5 +27,10 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	cocos2d::Sprite* previewCrusher = nullptr;
+	SmartClippingNode* poleClip = nullptr;
+	cocos2d::Sprite* base = nullptr;
+	cocos2d::Sprite* pole = nullptr;
+	cocos2d::Sprite* crusher = nullptr;
+
+	static const float TravelDistance;
 };

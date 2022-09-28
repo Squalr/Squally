@@ -156,7 +156,7 @@ void Crusher::registerHackables()
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEbx::create() },
-					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEsi::create() },
+					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEcx::create() },
 				},
 				int(HackFlags::None),
 				20.0f,
@@ -184,6 +184,8 @@ NO_OPTIMIZE bool Crusher::isPlayerDetected()
 	static volatile int squallyPositionXLocal;
 	static volatile int leftBoundLocal;
 	static volatile int rightBoundLocal;
+	static volatile int compareResultLeft;
+	static volatile int compareResultRight;
 	static volatile int compareResult;
 
 	squallyPositionXLocal = 0;
@@ -207,33 +209,26 @@ NO_OPTIMIZE bool Crusher::isPlayerDetected()
 		}
 	}
 
+	compareResultLeft = squallyPositionXLocal > leftBoundLocal;
+	compareResultRight = squallyPositionXLocal < rightBoundLocal;
+
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX)
 	ASM(push ZBX)
 	ASM(push ZCX)
-	ASM(push ZDI)
-	ASM(push ZSI)
 
-	ASM(mov ZAX, 0)
-	ASM(mov ZBX, 0)
-	ASM(mov ZCX, 0)
-	ASM_MOV_REG_VAR(ecx, squallyPositionXLocal);
-	ASM_MOV_REG_VAR(esi, leftBoundLocal);
-	ASM_MOV_REG_VAR(edi, rightBoundLocal);
+	ASM_MOV_REG_VAR(eax, compareResultLeft);
+	ASM_MOV_REG_VAR(ebx, compareResultRight);
+	ASM(mov ecx, 0)
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_DETECTOR);
-	ASM(cmp ecx, esi)
-	ASM(setge al)
-	ASM(cmp ecx, edi)
-	ASM(setle bl)
-	ASM(and eax, ebx)
+	ASM(and ecx, eax)
+	ASM(and ecx, ebx)
 	ASM_NOP12();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(compareResult, eax);
+	ASM_MOV_VAR_REG(compareResult, ecx);
 
-	ASM(pop ZSI)
-	ASM(pop ZDI)
 	ASM(pop ZCX)
 	ASM(pop ZBX)
 	ASM(pop ZAX)

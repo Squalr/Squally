@@ -280,7 +280,6 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
 
 		// TODO:
-		// Traps: Crusher
 		// Tune Hexus special cards list
 		// Krampus ability
 		// Nature spellbook? Can retrofit it maybe

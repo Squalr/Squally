@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class LocalizedLabel;
+class SmartClippingNode;
 
 class CrusherSetSpeedPreview : public HackablePreview
 {
@@ -22,14 +23,23 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
+	void update(float dt) override;
 
 private:
 	typedef HackablePreview super;
 
-	cocos2d::Sprite* previewCrusher100 = nullptr;
-	cocos2d::Sprite* previewCrusher200 = nullptr;
-	cocos2d::Sprite* previewCrusher400 = nullptr;
-	LocalizedLabel* eax100Height = nullptr;
-	LocalizedLabel* eax200Height = nullptr;
-	LocalizedLabel* eax400Height = nullptr;
+	SmartClippingNode* poleClip = nullptr;
+	cocos2d::Sprite* base = nullptr;
+	cocos2d::Sprite* pole = nullptr;
+	cocos2d::Sprite* crusher = nullptr;
+
+	cocos2d::Sprite* previewSqually = nullptr;
+	LocalizedLabel* eax0Label = nullptr;
+	LocalizedLabel* ebx0Label = nullptr;
+	LocalizedLabel* ecx0Label = nullptr;
+	LocalizedLabel* eax1Label = nullptr;
+	LocalizedLabel* ebx1Label = nullptr;
+	LocalizedLabel* ecx1Label = nullptr;
+
+	static const float TravelDistance;
 };
