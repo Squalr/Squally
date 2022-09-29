@@ -50,12 +50,12 @@ void EntityEqBehavior::onDisable()
 	super::onDisable();
 }
 
-void EntityEqBehavior::load(std::string saveKeyEq, std::string saveKeyExp)
+void EntityEqBehavior::load(std::string saveKeyEq, std::string saveKeyExp, int defaultLevel)
 {
 	this->saveKeyEq = saveKeyEq;
 	this->saveKeyExp = saveKeyExp;
 
-	int eq = SaveManager::GetProfileDataOrDefault(this->saveKeyEq, Value(1)).asInt();
+	int eq = SaveManager::GetProfileDataOrDefault(this->saveKeyEq, Value(defaultLevel)).asInt();
 	int exp = SaveManager::GetProfileDataOrDefault(this->saveKeyExp, Value(0)).asInt();
 
 	this->entity->setState(StateKeys::Eq, Value(eq), false);

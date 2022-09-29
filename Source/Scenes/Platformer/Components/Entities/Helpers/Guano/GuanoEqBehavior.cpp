@@ -37,7 +37,7 @@ void GuanoEqBehavior::onLoad()
 {
 	this->guano->watchForComponent<EntityEqBehavior>([=](EntityEqBehavior* entityEqBehavior)
 	{
-		entityEqBehavior->load(SaveKeys::SaveKeyGuanoEq, SaveKeys::SaveKeyGuanoEqExperience);
+		entityEqBehavior->load(SaveKeys::SaveKeyGuanoEq, SaveKeys::SaveKeyGuanoEqExperience, 1);
 	});
 }
 

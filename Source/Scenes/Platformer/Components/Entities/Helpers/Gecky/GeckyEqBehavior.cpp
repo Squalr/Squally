@@ -37,7 +37,7 @@ void GeckyEqBehavior::onLoad()
 {
 	this->gecky->watchForComponent<EntityEqBehavior>([=](EntityEqBehavior* entityEqBehavior)
 	{
-		entityEqBehavior->load(SaveKeys::SaveKeyGeckyEq, SaveKeys::SaveKeyGeckyEqExperience);
+		entityEqBehavior->load(SaveKeys::SaveKeyGeckyEq, SaveKeys::SaveKeyGeckyEqExperience, 4);
 	});
 }
 

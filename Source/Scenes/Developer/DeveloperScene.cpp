@@ -69,6 +69,8 @@ DeveloperScene::DeveloperScene()
 	}
 
 	/*
+	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles)
+	- Sometimes hackable icon is below entity (rare)
 	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+
 	- Mounts should apply to helpers so they aren't awkwardly lagging behind
 	- Activate swim cooldown on opening save
@@ -281,8 +283,8 @@ DeveloperScene::DeveloperScene()
 
 		// TODO:
 		// Tune Hexus special cards list
-		// Krampus ability
-		// Nature spellbook? Can retrofit it maybe
+		// Krampus ability - Maybe a AoE slow effect. Can be FPU if needed, I don't really care.
+		// Nature spellbook, even if just for an ability? What ability?
 		// Tiki cast anim broken
 
 		// Hexus puzzles:

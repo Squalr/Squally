@@ -37,7 +37,7 @@ void SquallyEqBehavior::onLoad()
 {
 	this->squally->watchForComponent<EntityEqBehavior>([=](EntityEqBehavior* entityEqBehavior)
 	{
-		entityEqBehavior->load(SaveKeys::SaveKeySquallyEq, SaveKeys::SaveKeySquallyEqExperience);
+		entityEqBehavior->load(SaveKeys::SaveKeySquallyEq, SaveKeys::SaveKeySquallyEqExperience, 1);
 	});
 }
 

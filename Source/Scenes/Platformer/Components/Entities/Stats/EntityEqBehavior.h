@@ -9,7 +9,7 @@ class EntityEqBehavior : public GameComponent
 public:
 	static EntityEqBehavior* create(GameObject* owner);
 
-	void load(std::string saveKeyEq, std::string saveKeyExp);
+	void load(std::string saveKeyEq, std::string saveKeyExp, int defaultLevel);
 	void setEq(int eq);
 	int getEq();
 	bool setEqExperience(int eqExperience);
