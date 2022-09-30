@@ -93,10 +93,9 @@ DeveloperScene::DeveloperScene()
 	- Maybe hard code some rewards. It'd be nice to get SHL from the puzzle where you learn it.
 	- Lexicon from menu
 	- Seagulls should blink
-	- Ursula is a lego bitch. Please fix.
-	- Pan is a lego bitch too :^(
-	- Torches should flicker by sky tower doors
 	- Sky masters
+		- Find Finch to get to BP
+		- Find Irmik to get to BP peaks
 	- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
 	- Enemy should not necessarily prio 0 bin/hex/dec cards when player has passed (unless they can make a 200 iq play)
 	- No interrupt if damage attack modified to heal
@@ -234,7 +233,7 @@ DeveloperScene::DeveloperScene()
 		// - F	=> 3_6 (Anubis Pup)
 		// - G	=> 3_7 (Mummy Priest)
 
-		// TODO:
+		// ================== TODO ================== 
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
 		// Fix CMOV (railed spiked logs) on mac
 		// Needs Dark Tiger scripting (Maybe recycle a SHL or SHR instead of a CMOV)
@@ -280,7 +279,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (DM)", MapResources::DataMines_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
 
-		// TODO:
+		// ================== TODO ================== 
 		// Tune Hexus special cards list
 		// Krampus ability - Maybe a AoE slow effect. Can be FPU if needed, I don't really care.
 		// Nature spellbook, even if just for an ability? What ability?
@@ -353,6 +352,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (CV)", MapResources::CastleValgrind_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (CV)", MapResources::CastleValgrind_Zone_1_0));
 
+		// ================== TODO ================== 
 		// Traps: Organ gun, cannon, catapult, ballista, heaven hug
 		// Create train map, move train out of Zone 1_0 (or integrate it better)
 		// Finish maps and corresponding "dark" maps (alternatively a game flag that is toggled to load in the correct layers)
@@ -425,6 +425,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_2_0 (LC)", MapResources::LambdaCrypts_Zone_2_0));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (LC)", MapResources::LambdaCrypts_Zone_1_0));
 
+		// ================== TODO ================== 
 		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
 		// Needs enemy scripting according to notes on which instructions this zone covers
 		// Needs hexus puzzles
@@ -496,6 +497,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0_a (DH)", MapResources::DaemonsHallow_Zone_1_0_a));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DH)", MapResources::DaemonsHallow_Zone_1_0));
 
+		// ================== TODO ================== 
 		// Traps: Fire bird, fire launcher, TNT barrel, mortar
 		// Hexus puzzles
 		// Hexus fights
@@ -563,6 +565,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (BP)", MapResources::BallmerPeaks_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (BP)", MapResources::BallmerPeaks_Zone_1_0));
 
+		// ================== TODO ================== 
 		// Traps: Icicle, bear trap (?), { cannon or catapult or portal } (to VS)
 		// Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
 		// 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
@@ -617,6 +620,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Town (VS)", MapResources::VoidStar_Town_Main));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (VS)", MapResources::VoidStar_Zone_1_0));
 
+		// ================== TODO ================== 
 		// Likely just 1-2 interim maps before boss. Keep this zone really short.
 		// Traps: Laser
 		// Needs enemy scripting according to notes on which instructions this zone covers
