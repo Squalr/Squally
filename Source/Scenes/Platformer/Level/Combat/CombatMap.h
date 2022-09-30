@@ -14,6 +14,7 @@ class FocusTakeOver;
 class FirstStrikeMenu;
 class HackerModeWarningHud;
 template <class T> class LazyNode;
+class Lexicon;
 class NotificationHud;
 class PartyMenu;
 class PlatformerEntityDeserializer;
@@ -66,11 +67,13 @@ private:
 
 	void spawnEntities();
 	CollectablesMenu* buildCollectablesMenu();
+	Lexicon* buildLexicon();
 	CardsMenu* buildCardsMenu();
 	PartyMenu* buildPartyMenu();
 	PlatformerPauseMenu* buildPlatformerPauseMenu();
 
 	LazyNode<CollectablesMenu>* collectablesMenu = nullptr;
+	LazyNode<Lexicon>* lexiconMenu = nullptr;
 	LazyNode<CardsMenu>* cardsMenu = nullptr;
 	LazyNode<PartyMenu>* partyMenu = nullptr;
 	LazyNode<PlatformerPauseMenu>* platformerPauseMenu = nullptr;

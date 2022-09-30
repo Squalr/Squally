@@ -70,6 +70,12 @@ PlatformerPauseMenu::PlatformerPauseMenu() : super(true)
 		Strings::Menus_Pause_Collectables::create(),
 		true,
 		Vec2(96.0f, 0.0f));
+	this->lexiconButton = this->buildButton(
+		UIResources::Menus_PauseMenu_LexiconButton,
+		UIResources::Menus_PauseMenu_LexiconButtonSelected,
+		Strings::Menus_Hacking_Lexicon_Lexicon::create(),
+		false,
+		Vec2(-80.0f, 0.0f));
 	
 	this->addChild(this->pauseWindow);
 	this->addChild(this->pauseLabel);
@@ -80,6 +86,7 @@ PlatformerPauseMenu::PlatformerPauseMenu() : super(true)
 	this->addChild(this->partyButton);
 	this->addChild(this->cardsButton);
 	this->addChild(this->collectablesButton);
+	this->addChild(this->lexiconButton);
 	this->addChild(this->newButtonsNode);
 }
 
@@ -95,12 +102,14 @@ void PlatformerPauseMenu::initializePositions()
 
 	this->pauseWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 612.0f, visibleSize.height / 2.0f + 368.0f));
-	this->inventoryButton->setPosition(Vec2(visibleSize.width / 2.0f - 456.0f, visibleSize.height / 2.0f + 296.0f));
+	this->inventoryButton->setPosition(Vec2(visibleSize.width / 2.0f - 456.0f, visibleSize.height / 2.0f + 312.0f));
 	this->optionsButton->setPosition(Vec2(visibleSize.width / 2.0f - 240.0f, visibleSize.height / 2.0f + 64.0f));
 	this->quitToTitleButton->setPosition(Vec2(visibleSize.width / 2.0f - 538.0f, visibleSize.height / 2.0f - 144.0f));
-	this->partyButton->setPosition(Vec2(visibleSize.width / 2.0f + 80.0f, visibleSize.height / 2.0f + 296.0f));
-	this->cardsButton->setPosition(Vec2(visibleSize.width / 2.0f + 356.0f, visibleSize.height / 2.0f + 96.0f));
-	this->collectablesButton->setPosition(Vec2(visibleSize.width / 2.0f + 104.0f, visibleSize.height / 2.0f - 128.0f));
+	
+	this->partyButton->setPosition(Vec2(visibleSize.width / 2.0f + 80.0f, visibleSize.height / 2.0f + 312.0f));
+	this->cardsButton->setPosition(Vec2(visibleSize.width / 2.0f + 356.0f, visibleSize.height / 2.0f + 176.0f));
+	this->collectablesButton->setPosition(Vec2(visibleSize.width / 2.0f + 64.0f, visibleSize.height / 2.0f + 16.0f));
+	this->lexiconButton->setPosition(Vec2(visibleSize.width / 2.0f + 356.0f, visibleSize.height / 2.0f - 144.0f));
 }
 
 void PlatformerPauseMenu::initializeListeners()
@@ -138,6 +147,14 @@ void PlatformerPauseMenu::initializeListeners()
 			this->collectablesClickCallback();
 		}
 	});
+
+	this->lexiconButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
+	{
+		if (this->lexiconClickCallback != nullptr)
+		{
+			this->lexiconClickCallback();
+		}
+	});
 }
 
 void PlatformerPauseMenu::disableInventory()
@@ -173,6 +190,11 @@ void PlatformerPauseMenu::setCardsClickCallback(std::function<void()> cardsClick
 void PlatformerPauseMenu::setCollectablesClickCallback(std::function<void()> collectablesClickCallback)
 {
 	this->collectablesClickCallback = collectablesClickCallback;
+}
+
+void PlatformerPauseMenu::setLexiconClickCallback(std::function<void()> lexiconClickCallback)
+{
+	this->lexiconClickCallback = lexiconClickCallback;
 }
 
 ClickableTextNode* PlatformerPauseMenu::buildButton(std::string spriteResource, std::string spriteResourceSelected, LocalizedString* text, bool isLeftAligned,  Vec2 offset)

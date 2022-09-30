@@ -30,6 +30,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Lexicon.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -98,6 +99,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 	this->cardHelpMenu = LazyNode<HelpMenu>::create(CC_CALLBACK_0(PlatformerMap::buildHexusCardHelpMenu, this));
 	this->itemInfoMenu = LazyNode<ItemInfoMenu>::create(CC_CALLBACK_0(PlatformerMap::buildItemInfoMenu, this));
 	this->collectablesMenu = LazyNode<CollectablesMenu>::create(CC_CALLBACK_0(PlatformerMap::buildCollectablesMenu, this));
+	this->lexiconMenu = LazyNode<Lexicon>::create(CC_CALLBACK_0(PlatformerMap::buildLexicon, this));
 	this->cardsMenu = LazyNode<CardsMenu>::create(CC_CALLBACK_0(PlatformerMap::buildCardsMenu, this));
 	this->partyMenu = LazyNode<PartyMenu>::create(CC_CALLBACK_0(PlatformerMap::buildPartyMenu, this));
 	this->alchemyMenu = LazyNode<AlchemyMenu>::create(CC_CALLBACK_0(PlatformerMap::buildAlchemyMenu, this));
@@ -148,6 +150,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 	this->topMenuHud->addChild(this->platformerPauseMenu);
 	this->topMenuHud->addChild(this->cardsMenu);
 	this->topMenuHud->addChild(this->collectablesMenu);
+	this->topMenuHud->addChild(this->lexiconMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
 	this->topMenuHud->addChild(this->partyMenu);
 	this->confirmationMenuHud->addChild(this->confirmationHud);
@@ -627,6 +630,20 @@ CollectablesMenu* PlatformerMap::buildCollectablesMenu()
 	return instance;
 }
 
+Lexicon* PlatformerMap::buildLexicon()
+{
+	Lexicon* instance = Lexicon::create();
+
+	instance->setCloseCallBack([=]()
+	{
+		this->platformerPauseMenu->lazyGet()->setVisible(true);
+		instance->setVisible(false);
+		GameUtils::focus(this->platformerPauseMenu);
+	});
+
+	return instance;
+}
+
 ItemInfoMenu* PlatformerMap::buildItemInfoMenu()
 {
 	ItemInfoMenu* instance = ItemInfoMenu::create();
@@ -788,6 +805,14 @@ PlatformerPauseMenu* PlatformerMap::buildPlatformerPauseMenu()
 		this->collectablesMenu->lazyGet()->setVisible(true);
 		this->collectablesMenu->lazyGet()->open();
 		GameUtils::focus(this->collectablesMenu);
+	});
+	
+	instance->setLexiconClickCallback([=]()
+	{
+		instance->setVisible(false);
+		this->lexiconMenu->lazyGet()->setVisible(true);
+		this->lexiconMenu->lazyGet()->open();
+		GameUtils::focus(this->lexiconMenu);
 	});
 
 	return instance;

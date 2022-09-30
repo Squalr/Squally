@@ -91,7 +91,6 @@ DeveloperScene::DeveloperScene()
 	- Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
 		- Destroy all warp maps as a result (?) can still keep the zone portals for the return location
 	- Maybe hard code some rewards. It'd be nice to get SHL from the puzzle where you learn it.
-	- Lexicon from menu
 	- Seagulls should blink
 	- Sky masters
 		- Find Finch to get to BP

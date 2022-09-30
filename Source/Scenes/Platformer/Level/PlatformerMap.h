@@ -23,6 +23,7 @@ class HelpMenu;
 class Hexus;
 class InventoryMenu;
 class ItemInfoMenu;
+class Lexicon;
 class PlatformerPauseMenu;
 template <class T> class LazyNode;
 class NotificationHud;
@@ -59,6 +60,7 @@ private:
 	Hexus* buildHexus();
 	HelpMenu* buildHexusCardHelpMenu();
 	CollectablesMenu* buildCollectablesMenu();
+	Lexicon* buildLexicon();
 	ItemInfoMenu* buildItemInfoMenu();
 	CardsMenu* buildCardsMenu();
 	PartyMenu* buildPartyMenu();
@@ -77,6 +79,7 @@ private:
 	LazyNode<Hexus>* hexus = nullptr;
 	LazyNode<HelpMenu>* cardHelpMenu = nullptr;
 	LazyNode<CollectablesMenu>* collectablesMenu = nullptr;
+	LazyNode<Lexicon>* lexiconMenu = nullptr;
 	LazyNode<ItemInfoMenu>* itemInfoMenu = nullptr;
 	LazyNode<CardsMenu>* cardsMenu = nullptr;
 	LazyNode<PartyMenu>* partyMenu = nullptr;

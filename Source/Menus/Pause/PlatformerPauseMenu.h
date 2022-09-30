@@ -22,6 +22,7 @@ public:
 	void setPartyClickCallback(std::function<void()> partyClickCallback);
 	void setCardsClickCallback(std::function<void()> cardsClickCallback);
 	void setCollectablesClickCallback(std::function<void()> collectablesClickCallback);
+	void setLexiconClickCallback(std::function<void()> lexiconClickCallback);
 
 protected:
 	PlatformerPauseMenu();
@@ -39,9 +40,11 @@ private:
 	ClickableTextNode* partyButton = nullptr;
 	ClickableTextNode* cardsButton = nullptr;
 	ClickableTextNode* collectablesButton = nullptr;
+	ClickableTextNode* lexiconButton = nullptr;
 
 	std::function<void()> inventoryClickCallback = nullptr;
 	std::function<void()> partyClickCallback = nullptr;
 	std::function<void()> cardsClickCallback = nullptr;
 	std::function<void()> collectablesClickCallback = nullptr;
+	std::function<void()> lexiconClickCallback = nullptr;
 };
