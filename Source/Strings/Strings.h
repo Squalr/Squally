@@ -21684,6 +21684,21 @@ namespace Strings
 		virtual ~Platformer_Combat_Attacks_CondensationDescription() = default;
 	};
 
+	class Platformer_Combat_Attacks_DropTimeBomb : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_DropTimeBomb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_DropTimeBomb();
+		virtual ~Platformer_Combat_Attacks_DropTimeBomb() = default;
+	};
+
 	class Platformer_Combat_Attacks_EnergyBolt : public LocalizedString
 	{
 	public:

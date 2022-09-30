@@ -273,7 +273,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
 
 		// ================== TODO ================== 
-		// ** Krampus ability - Maybe a AoE slow effect. Can be FPU if needed, I don't really care.
+		// ** Krampus ability - Maybe a AoE slow effect. Can be FPU if needed, I don't really care. Maybe a NOT bomb.
 		// ** Minecarts can still glitch and not spawn on map changes
 		// Rhinoman fight too early. Need shaman enemy before, and maybe a puzzle/trap
 		// Tiki anims still broken (bad Spriter implementation strikes again)

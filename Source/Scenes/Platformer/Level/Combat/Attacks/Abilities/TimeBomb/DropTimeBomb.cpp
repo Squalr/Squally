@@ -50,7 +50,7 @@ PlatformerAttack* DropTimeBomb::cloneInternal()
 
 LocalizedString* DropTimeBomb::getString()
 {
-	return Strings::Platformer_Combat_Attacks_Slash::create();
+	return Strings::Platformer_Combat_Attacks_DropTimeBomb::create();
 }
 
 std::string DropTimeBomb::getAttackAnimation()
