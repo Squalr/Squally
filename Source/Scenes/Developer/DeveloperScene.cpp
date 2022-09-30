@@ -69,6 +69,7 @@ DeveloperScene::DeveloperScene()
 	}
 
 	/*
+	- ** Can get stuck on roof of maps (see UR 3_1)
 	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles)
 	- Sometimes hackable icon is below entity (rare)
 	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+
@@ -81,11 +82,8 @@ DeveloperScene::DeveloperScene()
 		- Win a hexus puzzle, next one will show massive row score deltas
 		- Leave button stuck visible after losing a puzzle
 		- Enemy should pre-calc the best play when player has passed (hard)
-	- Maybe hexus puzzles can be shrines with portals showing enemy faces. I don't like overloading overworld enemies still.
 	- Camera harsh leaving camera targets (which?)
-	- Can get stuck on roof of maps (see UR 3_1)
 	- Icons on title screen buttons (at least options, to reduce pains of wrong language selection)
-	- Rhinoman fight too early. Need shaman enemy before, and maybe a puzzle/trap
 	- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Bars
 	- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 	- Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
@@ -98,19 +96,18 @@ DeveloperScene::DeveloperScene()
 	- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
 	- No interrupt if damage attack modified to heal
 	- Eliminate Collision Offset parameter entirely
+	- Helpers
+		- Abilities unlocked at certain levels
+		- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
+	- Necron hitbox wrong in Mages guild (inconsistent?)
+	- "Quick-potion" capabilities
+	- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities)
 
 	- Just get a few top down replacement maps in. Should be able to do this fairly seamlessly.
 		- Invisible helpers. Some way to pull helpers into combat
 	- 3Q Perspective
 	- Reinstate Cipher with asm or something
 	- Reinstate ball roll game? It wasn't really fixable
-	- Helpers
-		- Abilities unlocked at certain levels
-		- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
-
-	- Necron hitbox wrong in Mages guild (inconsistent?)
-	- "Quick-potion" capabilities
-	- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities)
 	*/
 
 	// CHAPTER 1 - Mov/add/sub/inc/dec/div/mul + AND Puzzle
@@ -174,9 +171,7 @@ DeveloperScene::DeveloperScene()
 		// - G	=> 3_1 (Cyclops)
 
 		// TODO:
-		// - OVERWORLD ATTACKS:
-		// 	- Troll swing if you jump them
-		// 	- Cyclops swing if you jump them	
+		// Overworld attacks (Troll / Cyclops swing)
 	}
 
 	// CHAPTER 2 - Compare/CMOV/Neg/SHL/SHR + OR Puzzle
@@ -231,9 +226,10 @@ DeveloperScene::DeveloperScene()
 		// - G	=> 3_7 (Mummy Priest)
 
 		// ================== TODO ================== 
+		// ** Fix CMOV (railed spiked logs) on mac
+		// ** Needs Dark Tiger scripting (Maybe recycle a SHL or SHR instead of a CMOV)
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
-		// Fix CMOV (railed spiked logs) on mac
-		// Needs Dark Tiger scripting (Maybe recycle a SHL or SHR instead of a CMOV)
+		// Overworld attacks
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
@@ -277,10 +273,12 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
 
 		// ================== TODO ================== 
-		// Tune Hexus special cards list
-		// Krampus ability - Maybe a AoE slow effect. Can be FPU if needed, I don't really care.
-		// Nature spellbook, even if just for an ability? What ability?
+		// ** Krampus ability - Maybe a AoE slow effect. Can be FPU if needed, I don't really care.
+		// ** Minecarts can still glitch and not spawn on map changes
+		// Rhinoman fight too early. Need shaman enemy before, and maybe a puzzle/trap
 		// Tiki anims still broken (bad Spriter implementation strikes again)
+		// Train anims broken (for same reason)
+		// Nature spellbook, even if just for an ability? What ability?
 
 		// Hexus puzzles:
 		// - A	=> 1_x (Tiki)
