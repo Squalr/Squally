@@ -21414,6 +21414,21 @@ namespace Strings
 		virtual ~Menus_Submit() = default;
 	};
 
+	class Menus_TODO : public LocalizedString
+	{
+	public:
+		static Menus_TODO* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_TODO();
+		virtual ~Menus_TODO() = default;
+	};
+
 	class Menus_TranslationEditor_CurrentTranslation : public LocalizedString
 	{
 	public:

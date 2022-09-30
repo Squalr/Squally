@@ -85,7 +85,6 @@ DeveloperScene::DeveloperScene()
 	- Camera harsh leaving camera targets (which?)
 	- Can get stuck on roof of maps (see UR 3_1)
 	- Icons on title screen buttons (at least options, to reduce pains of wrong language selection)
-	- Rerun "TODO" translations
 	- Rhinoman fight too early. Need shaman enemy before, and maybe a puzzle/trap
 	- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Bars
 	- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
