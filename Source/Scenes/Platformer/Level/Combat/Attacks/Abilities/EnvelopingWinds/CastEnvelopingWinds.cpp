@@ -128,7 +128,7 @@ bool CastEnvelopingWinds::isWorthUsing(PlatformerEntity* caster, const std::vect
 	
 	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
 	{
-		for (auto next : timeline->getEntries())
+		for (TimelineEntry* next : timeline->getEntries())
 		{
 			if (dynamic_cast<CastEnvelopingWinds*>(next->getStagedCast()) != nullptr)
 			{

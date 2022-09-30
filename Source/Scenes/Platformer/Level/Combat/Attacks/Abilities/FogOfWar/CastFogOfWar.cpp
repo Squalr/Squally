@@ -118,7 +118,7 @@ bool CastFogOfWar::isWorthUsing(PlatformerEntity* caster, const std::vector<Plat
 	
 	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
 	{
-		for (auto next : timeline->getEntries())
+		for (TimelineEntry* next : timeline->getEntries())
 		{
 			if (dynamic_cast<CastFogOfWar*>(next->getStagedCast()) != nullptr)
 			{

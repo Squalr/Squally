@@ -124,7 +124,7 @@ bool CastArrowRain::isWorthUsing(PlatformerEntity* caster, const std::vector<Pla
 	
 	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
 	{
-		for (auto next : timeline->getEntries())
+		for (TimelineEntry* next : timeline->getEntries())
 		{
 			if (dynamic_cast<CastArrowRain*>(next->getStagedCast()) != nullptr)
 			{

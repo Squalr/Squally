@@ -88,7 +88,7 @@ bool CastRejuvination::isWorthUsing(PlatformerEntity* caster, const std::vector<
 	
 	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
 	{
-		for (auto next : timeline->getEntries())
+		for (TimelineEntry* next : timeline->getEntries())
 		{
 			if (dynamic_cast<CastRejuvination*>(next->getStagedCast()) != nullptr)
 			{

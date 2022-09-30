@@ -97,7 +97,6 @@ DeveloperScene::DeveloperScene()
 		- Find Finch to get to BP
 		- Find Irmik to get to BP peaks
 	- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
-	- Enemy should not necessarily prio 0 bin/hex/dec cards when player has passed (unless they can make a 200 iq play)
 	- No interrupt if damage attack modified to heal
 	- Eliminate Collision Offset parameter entirely
 
@@ -111,7 +110,6 @@ DeveloperScene::DeveloperScene()
 		- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
 
 	- Necron hitbox wrong in Mages guild (inconsistent?)
-	- Guano is behind the EF grass area gate (maybe after a layer xfer)
 	- "Quick-potion" capabilities
 	- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities)
 	*/

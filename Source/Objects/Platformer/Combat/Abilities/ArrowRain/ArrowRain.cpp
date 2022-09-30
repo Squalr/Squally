@@ -220,7 +220,7 @@ void ArrowRain::damageOtherTeam()
 
 		this->compareTeam(casterEntry);
 
-		for (auto next : timeline->getEntries())
+		for (TimelineEntry* next : timeline->getEntries())
 		{
 			if (next->isPlayerEntry() == CombatObject::HackStateStorage[ArrowRain::StateKeyIsCasterOnEnemyTeam].asBool())
 			{

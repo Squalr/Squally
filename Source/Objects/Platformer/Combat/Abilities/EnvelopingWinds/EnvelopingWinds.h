@@ -24,7 +24,10 @@ protected:
 private:
 	typedef CombatObject super;
 
+	void damageOtherTeam();
+
 	SmartParticles* wind = nullptr;
 
+	static const int WindDamage;
 	static const float WindDrain;
 };
