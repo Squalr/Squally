@@ -31,7 +31,8 @@
   </properties>
   <object id="789" name="airship-2" type="object" x="-2800" y="80" width="256" height="256">
    <properties>
-    <property name="flip-x" type="bool" value="true"/>
+    <property name="direction" value="right"/>
+    <property name="speed" type="float" value="320"/>
    </properties>
   </object>
  </objectgroup>
@@ -40,7 +41,12 @@
    <property name="depth" type="float" value="-1792"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="790" name="airship-1" type="object" x="7920" y="608" width="256" height="256"/>
+  <object id="790" name="airship-1" type="object" x="7920" y="608" width="256" height="256">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="16" name="WaterfallGround">
   <properties>

@@ -23,7 +23,9 @@ private:
 
 	SmartAnimationNode* animations = nullptr;
 	float speed = 320.0f;
+	bool directionLeft = false;
 
 	static const std::string PropertyVariant;
 	static const std::string PropertySpeed;
+	static const std::string PropertyDirection;
 };

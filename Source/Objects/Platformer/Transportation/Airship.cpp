@@ -13,6 +13,7 @@ using namespace cocos2d;
 const std::string Airship::MapKey = "airship";
 const std::string Airship::PropertyVariant = "variant";
 const std::string Airship::PropertySpeed = "speed";
+const std::string Airship::PropertyDirection = "direction";
 
 Airship* Airship::create(ValueMap& properties)
 {
@@ -42,8 +43,8 @@ Airship::Airship(ValueMap& properties) : super(properties)
 		}
 	}
 
-	this->speed = GameUtils::getKeyOrDefault(this->properties, Airship::PropertySpeed, Value(this->speed)).asFloat();
-
+	this->directionLeft = GameUtils::getKeyOrDefault(this->properties, Airship::PropertyDirection, Value(false)).asString() == "left";
+	this->speed = (this->directionLeft ? -1.0f : 1.0f) * std::abs(GameUtils::getKeyOrDefault(this->properties, Airship::PropertySpeed, Value(this->speed)).asFloat());
 	this->animations->setFlippedX(this->speed < 0.0f);
 	
 	this->addChild(this->animations);
