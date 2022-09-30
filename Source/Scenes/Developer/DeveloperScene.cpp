@@ -74,7 +74,9 @@ DeveloperScene::DeveloperScene()
 	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+
 	- Mounts should apply to helpers so they aren't awkwardly lagging behind
 	- Activate swim cooldown on opening save
-	- Hexus bugs:
+	- Hexus:
+		- Add a "Stack" pile, and PUSH/POP cards. PUSH = Move any card (even enemy) to stack. POP = Overwrite card attack
+			- Move 'cards to play/draw' indicators to the left side. Shift graveyard down, stack above it.
 		- Update puzzle shrine icon on win
 		- Win a hexus puzzle, next one will show massive row score deltas
 		- Leave button stuck visible after losing a puzzle
@@ -89,7 +91,6 @@ DeveloperScene::DeveloperScene()
 	- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 	- Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
 		- Destroy all warp maps as a result (?) can still keep the zone portals for the return location
-	- Kill Limestone temple map, replace with rare reward
 	- Maybe hard code some rewards. It'd be nice to get SHL from the puzzle where you learn it.
 	- Lexicon from menu
 	- Seagulls should blink
@@ -107,13 +108,13 @@ DeveloperScene::DeveloperScene()
 	- 3Q Perspective
 	- Reinstate Cipher with asm or something
 	- Reinstate ball roll game? It wasn't really fixable
-	- Interchangeable helpers from Inn map.
-		- Helper abilities or something.
-		- Helper equipment? Would fucking blow for menuing.
+	- Helpers
+		- Abilities unlocked at certain levels
+		- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
 
 	- Necron hitbox wrong in Mages guild (inconsistent?)
 	- Guano is behind the EF grass area gate (maybe after a layer xfer)
-	- Maybe some mana gain on enemy kills? Literally any small amount. (maybe less of an issue w/ exp fix?)
+	- "Quick-potion" capabilities
 	- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities)
 	*/
 
@@ -178,7 +179,6 @@ DeveloperScene::DeveloperScene()
 		// - G	=> 3_1 (Cyclops)
 
 		// TODO:
-		// - Sleeping Lycan face anim
 		// - OVERWORLD ATTACKS:
 		// 	- Troll swing if you jump them
 		// 	- Cyclops swing if you jump them	
@@ -285,7 +285,7 @@ DeveloperScene::DeveloperScene()
 		// Tune Hexus special cards list
 		// Krampus ability - Maybe a AoE slow effect. Can be FPU if needed, I don't really care.
 		// Nature spellbook, even if just for an ability? What ability?
-		// Tiki cast anim broken
+		// Tiki anims still broken (bad Spriter implementation strikes again)
 
 		// Hexus puzzles:
 		// - A	=> 1_x (Tiki)

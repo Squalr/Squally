@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="52" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="877">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="52" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="879">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,11 +17,10 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="832" name="mines" type="terrain" x="3056.98" y="1647.08">
+  <object id="877" name="mines" type="terrain" x="-624.6" y="-578" width="8033.2" height="3316">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="-3399.64,-2227.83 5065.82,-2222.92 5056.03,1294.45 -3384.8,1280.13"/>
   </object>
  </objectgroup>
  <objectgroup id="76" name="water bg -4">
@@ -40,13 +39,12 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="712" name="mines" type="terrain" x="-105.534" y="1077.35">
+  <object id="874" name="mines" type="terrain" x="1725.4" y="-898" width="1809.2" height="3380">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="-726.663,-2136.75 1082.8,-2132.04 1080.71,1241.53 -723.491,1227.8"/>
   </object>
-  <object id="874" name="mines" type="terrain" x="1725.4" y="-898" width="1809.2" height="3380">
+  <object id="878" name="mines" type="terrain" x="-836.6" y="-1062" width="1809.2" height="3380">
    <properties>
     <property name="collision" value="none"/>
    </properties>

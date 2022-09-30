@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="848">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="853">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -48,6 +48,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="850" name="Mines/MineDoorTunnel" type="decor" x="1110.86" y="1202.95" width="435" height="389"/>
  </objectgroup>
  <objectgroup id="70" name="objects -4">
   <properties>
@@ -67,6 +68,12 @@
     <property name="direction" value="right"/>
     <property name="map" value="DataMines/Zone_1_2"/>
     <property name="transition" value="right-back"/>
+   </properties>
+  </object>
+  <object id="851" name="portal" type="object" x="1210.06" y="1336.39" width="256" height="256">
+   <properties>
+    <property name="map" value="DataMines/Zone_1_1a"/>
+    <property name="transition" value="door"/>
    </properties>
   </object>
  </objectgroup>
@@ -106,6 +113,20 @@
   <object id="845" name="spawn" type="object" x="2290.55" y="1463.27" width="128" height="128">
    <properties>
     <property name="transition" value="left-back"/>
+   </properties>
+  </object>
+  <object id="849" name="warp" type="object" x="572" y="1334" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-4-A"/>
+    <property name="locked-text-key" value="closed"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-0-A"/>
+   </properties>
+  </object>
+  <object id="852" name="spawn" type="object" x="1264" y="1466" width="128" height="128">
+   <properties>
+    <property name="transition" value="door"/>
    </properties>
   </object>
  </objectgroup>
@@ -283,6 +304,16 @@
   <object id="844" name="spawn" type="object" x="2298" y="1528" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="848" name="warp" type="object" x="568" y="1404" width="256" height="256">
+   <properties>
+    <property name="components" value="disabled-portal"/>
+    <property name="from" value="bridge-0-A"/>
+    <property name="locked-text-key" value="closed"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-4-A"/>
    </properties>
   </object>
  </objectgroup>

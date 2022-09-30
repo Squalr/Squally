@@ -136,8 +136,7 @@ void SneakPastLycan::runSleepingCinematicSequence()
 {
 	static const std::vector<std::string>& sleepAnimationFiles = SmartAnimationSequenceNode::GetAllAnimationFiles(FXResources::Sleep_Sleep_0000);
 
-	// TODO: Swap for sleep anim
-	this->lycan->getAnimations()->playAnimation("Sit", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f));
+	this->lycan->getAnimations()->playAnimation("Sleep", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f));
 
 	GameUtils::setWorldCoords(this->sleepFx, GameUtils::getWorldCoords(this->lycan) + Vec2(0.0f, 256.0f));
 	this->sleepFx->setVisible(true);
