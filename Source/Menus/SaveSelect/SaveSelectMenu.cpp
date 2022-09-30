@@ -58,7 +58,7 @@ SaveSelectMenu::SaveSelectMenu()
 
 	this->backgroundNode = Node::create();
 	this->saveSelectWindow = Sprite::create(UIResources::Menus_Generic_LargeMenu);
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
 	this->saveButtonNode = Node::create();
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_SaveSelect_SelectASave::create());
 	this->confirmationMenu = ConfirmationMenu::create();

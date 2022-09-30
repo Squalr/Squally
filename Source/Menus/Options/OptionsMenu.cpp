@@ -37,7 +37,7 @@ OptionsMenu::OptionsMenu(bool useEnterFade)
 
 	this->background = Node::create();
 	this->optionsWindow = Sprite::create(UIResources::Menus_Generic_LargeMenu);
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
 	this->leftPanel = Node::create();
 	this->rightPanel = Node::create();
 	this->generalTab = GeneralTab::create();

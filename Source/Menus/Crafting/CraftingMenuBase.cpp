@@ -59,7 +59,7 @@ CraftingMenuBase::CraftingMenuBase(LocalizedString* titleString, LocalizedString
 	this->cancelIcon = Sprite::create(UIResources::Menus_CraftingMenu_CancelIcon);
 	this->craftProgress = ProgressBar::create(Sprite::create(UIResources::Menus_CraftingMenu_CraftFrame), Sprite::create(UIResources::Menus_CraftingMenu_CraftBarFill));
 	this->craftingLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, titleString);
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
 	this->errorSound = Sound::create(SoundResources::Menus_Error1);
 	this->backDecorNode = Node::create();
 

@@ -3803,6 +3803,7 @@ namespace EntityResources
 	extern const std::string Npcs_EndianForest_Lycan_BELT;
 	extern const std::string Npcs_EndianForest_Lycan_BODY;
 	extern const std::string Npcs_EndianForest_Lycan_Emblem;
+	extern const std::string Npcs_EndianForest_Lycan_HEAD_SLEEPING;
 	extern const std::string Npcs_EndianForest_Lycan_HEAD;
 	extern const std::string Npcs_EndianForest_Lycan_L_ARM;
 	extern const std::string Npcs_EndianForest_Lycan_L_LEG;

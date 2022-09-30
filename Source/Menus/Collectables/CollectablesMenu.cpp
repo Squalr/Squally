@@ -37,7 +37,7 @@ CollectablesMenu::CollectablesMenu()
 {
 	this->collectablesWindow = Sprite::create(UIResources::Menus_Generic_LargeMenu);
 	this->contentPane = ScrollPane::create(CSize(1024.0f, 612.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
 	this->collectablesLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Collectables_Collectables::create());
 	
 	this->contentPane->setBackgroundColor(Color4B(0, 0, 0, 0));

@@ -56,7 +56,7 @@ TutorialSelectMenu::TutorialSelectMenu()
 	this->background = Node::create();
 	this->window = Sprite::create(UIResources::Menus_Generic_LargeMenu);
 	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_HackingTutorials::create());
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
 	this->homeTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconCrown, Strings::Menus_Tutorials_Home_Home::create());
 	this->memoryEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconWeapons, Strings::Menus_Tutorials_MemoryEditing_MemoryEditing::create());
 	this->hexEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconKey, Strings::Menus_Tutorials_HexEditing_HexEditing::create());

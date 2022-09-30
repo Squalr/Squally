@@ -40,7 +40,7 @@ PartyMenu* PartyMenu::create()
 PartyMenu::PartyMenu()
 {
 	this->partyWindow = Sprite::create(UIResources::Menus_Generic_LargeMenu);
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
 	this->partyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Party_Party::create());
 	this->statsBarsNode = Node::create();
 	this->chooseTargetNode = Node::create();

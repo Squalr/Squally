@@ -3802,6 +3802,7 @@ const std::string EntityResources::Npcs_EndianForest_Lycan_Animations = "Private
 const std::string EntityResources::Npcs_EndianForest_Lycan_BELT = "Private/Platformer/Entities/Npcs/EndianForest/Lycan/BELT.png";
 const std::string EntityResources::Npcs_EndianForest_Lycan_BODY = "Private/Platformer/Entities/Npcs/EndianForest/Lycan/BODY.png";
 const std::string EntityResources::Npcs_EndianForest_Lycan_Emblem = "Private/Platformer/Entities/Npcs/EndianForest/Lycan/Emblem.png";
+const std::string EntityResources::Npcs_EndianForest_Lycan_HEAD_SLEEPING = "Private/Platformer/Entities/Npcs/EndianForest/Lycan/HEAD-SLEEPING.png";
 const std::string EntityResources::Npcs_EndianForest_Lycan_HEAD = "Private/Platformer/Entities/Npcs/EndianForest/Lycan/HEAD.png";
 const std::string EntityResources::Npcs_EndianForest_Lycan_L_ARM = "Private/Platformer/Entities/Npcs/EndianForest/Lycan/L-ARM.png";
 const std::string EntityResources::Npcs_EndianForest_Lycan_L_LEG = "Private/Platformer/Entities/Npcs/EndianForest/Lycan/L-LEG.png";

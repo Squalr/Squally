@@ -36,7 +36,7 @@ PauseMenu::PauseMenu(bool ownerInitialized)
 	}
 
 	this->pauseWindow = Sprite::create(UIResources::Menus_PauseMenu_PauseMenu);
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButtonSelected, UIResources::Menus_IngameMenu_CloseButton);
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButtonSelected, UIResources::Menus_PauseMenu_CloseButton);
 	this->pauseLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Pause_Pause::create());
 	this->newButtonsNode = Node::create();
 

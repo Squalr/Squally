@@ -29,44 +29,44 @@ PlatformerPauseMenu* PlatformerPauseMenu::create()
 
 PlatformerPauseMenu::PlatformerPauseMenu() : super(true)
 {
-	this->pauseWindow = Sprite::create(UIResources::Menus_IngameMenu_IngameMenu);
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->pauseWindow = Sprite::create(UIResources::Menus_PauseMenu_IngameMenu);
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
 	this->pauseLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Common_Empty::create());
 	this->newButtonsNode = Node::create();
 	
 	this->inventoryButton = this->buildButton(
-		UIResources::Menus_IngameMenu_InventoryButton,
-		UIResources::Menus_IngameMenu_InventoryButtonSelected,
+		UIResources::Menus_PauseMenu_InventoryButton,
+		UIResources::Menus_PauseMenu_InventoryButtonSelected,
 		Strings::Menus_Pause_Inventory::create(),
 		true,
 		Vec2(80.0f, -16.0f));
 	this->optionsButton = this->buildButton(
-		UIResources::Menus_IngameMenu_SettingsButton,
-		UIResources::Menus_IngameMenu_SettingsButtonSelected,
+		UIResources::Menus_PauseMenu_SettingsButton,
+		UIResources::Menus_PauseMenu_SettingsButtonSelected,
 		Strings::Menus_Pause_Options::create(),
 		false,
 		Vec2(-80.0f, 0.0f));
 	this->quitToTitleButton = this->buildButton(
-		UIResources::Menus_IngameMenu_ExitToTitleButton,
-		UIResources::Menus_IngameMenu_ExitToTitleButtonSelected,
+		UIResources::Menus_PauseMenu_ExitToTitleButton,
+		UIResources::Menus_PauseMenu_ExitToTitleButtonSelected,
 		Strings::Menus_Pause_QuitToTitle::create(),
 		true,
 		Vec2(80.0f, -8.0f));
 	this->partyButton = this->buildButton(
-		UIResources::Menus_IngameMenu_PartyButton,
-		UIResources::Menus_IngameMenu_PartyButtonSelected,
+		UIResources::Menus_PauseMenu_PartyButton,
+		UIResources::Menus_PauseMenu_PartyButtonSelected,
 		Strings::Menus_Pause_Party::create(),
 		true,
 		Vec2(80.0f, 0.0f));
 	this->cardsButton = this->buildButton(
-		UIResources::Menus_IngameMenu_CardsButton,
-		UIResources::Menus_IngameMenu_CardsButtonSelected,
+		UIResources::Menus_PauseMenu_CardsButton,
+		UIResources::Menus_PauseMenu_CardsButtonSelected,
 		Strings::Menus_Pause_Cards::create(),
 		false,
 		Vec2(-80.0f, 0.0f));
 	this->collectablesButton = this->buildButton(
-		UIResources::Menus_IngameMenu_CollectablesButton,
-		UIResources::Menus_IngameMenu_CollectablesButtonSelected,
+		UIResources::Menus_PauseMenu_CollectablesButton,
+		UIResources::Menus_PauseMenu_CollectablesButtonSelected,
 		Strings::Menus_Pause_Collectables::create(),
 		true,
 		Vec2(96.0f, 0.0f));

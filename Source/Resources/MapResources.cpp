@@ -125,6 +125,7 @@ const std::string MapResources::EndianForest_Ship_Captain = "Public/Platformer/M
 const std::string MapResources::EndianForest_Ship_Hull = "Public/Platformer/Maps/EndianForest/Ship_Hull.tmx";
 const std::string MapResources::EndianForest_Ship_Main = "Public/Platformer/Maps/EndianForest/Ship_Main.tmx";
 const std::string MapResources::EndianForest_SkyDock_1 = "Public/Platformer/Maps/EndianForest/SkyDock_1.tmx";
+const std::string MapResources::EndianForest_SkyDock_2 = "Public/Platformer/Maps/EndianForest/SkyDock_2.tmx";
 const std::string MapResources::EndianForest_Town_Alch = "Public/Platformer/Maps/EndianForest/Town_Alch.tmx";
 const std::string MapResources::EndianForest_Town_Docks = "Public/Platformer/Maps/EndianForest/Town_Docks.tmx";
 const std::string MapResources::EndianForest_Town_Inn = "Public/Platformer/Maps/EndianForest/Town_Inn.tmx";
