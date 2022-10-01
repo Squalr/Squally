@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="256" tileheight="256" infinite="0" nextlayerid="80" nextobjectid="764">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="256" tileheight="256" infinite="0" nextlayerid="80" nextobjectid="764">
+ <properties>
+  <property name="background" value=""/>
+  <property name="crack-color" value=""/>
+  <property name="gravity" value="0"/>
+  <property name="map-banner" value=""/>
+  <property name="music" value="solace"/>
+  <property name="rubber-band" type="int" value="2"/>
+  <property name="show-cracks" type="bool" value="false"/>
+  <property name="type" value="meta"/>
+ </properties>
  <tileset firstgid="1" name="TileMapTopDown" tilewidth="256" tileheight="256" tilecount="192" columns="16">
   <image source="../TileMapTopDown.png" width="4096" height="3072"/>
  </tileset>
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="0"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
  <layer id="75" name="floor" width="16" height="16">
   <properties>
+   <property name="objectify" type="bool" value="true"/>
    <property name="type" value="tilemap"/>
   </properties>
   <data encoding="csv">
@@ -32,8 +49,9 @@
 81,82,82,82,82,82,82,82,82,82,82,82,82,82,82,83
 </data>
  </layer>
- <layer id="77" name="floor_decor" width="16" height="16" visible="0">
+ <layer id="77" name="floor_decor" width="16" height="16">
   <properties>
+   <property name="objectify" type="bool" value="true"/>
    <property name="type" value="tilemap"/>
   </properties>
   <data encoding="csv">
@@ -59,19 +77,19 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="728" name="skeletal-warrior-topdown" type="entity" x="1028.63" y="1533.64" width="256" height="256">
+  <object id="728" name="skeletal-warrior" type="entity" x="1028.63" y="1533.64" width="256" height="256">
    <properties>
     <property name="components" value="enemy-topdown"/>
    </properties>
   </object>
-  <object id="738" name="squally-topdown" type="entity" x="1794.81" y="1538.73" width="256" height="256">
+  <object id="738" name="squally" type="entity" x="1794.81" y="1538.73" width="256" height="256">
    <properties>
     <property name="components" value="squally-topdown"/>
    </properties>
   </object>
   <object id="761" name="edge-portal" type="object" x="1792.04" y="-2.4255" width="256" height="256">
    <properties>
-    <property name="direction" value="right"/>
+    <property name="direction" value="up"/>
     <property name="map" value="EndianForest/Town_Main"/>
     <property name="transition" value="gate"/>
    </properties>

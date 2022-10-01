@@ -57,7 +57,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, cocos_experimental::TMXTi
 		mapSize.width /= 2.0f;
 	}
 	
-	for (auto next : mapRaw->getObjectGroups())
+	for (TMXObjectGroup* next : mapRaw->getObjectGroups())
 	{
 		ValueMap properties = next->getProperties();
 

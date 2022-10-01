@@ -50,6 +50,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[RepairableBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)RepairableBehavior::create(owner); };
 	this->componentDeserializers[ShopkeeperBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)ShopkeeperBehaviorGroup::create(owner); };
 	this->componentDeserializers[SquallyBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)SquallyBehaviorGroup::create(owner); };
+	this->componentDeserializers[SquallyTopDownBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)SquallyTopDownBehaviorGroup::create(owner); };
 	this->componentDeserializers[SquallyCombatBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)SquallyCombatBehaviorGroup::create(owner); };
 	this->componentDeserializers[SquallyNoSavePositionBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)SquallyNoSavePositionBehavior::create(owner); };
 	this->componentDeserializers[ZFadeBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ZFadeBehavior::create(owner); };

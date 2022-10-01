@@ -45,6 +45,7 @@
 #include "Scenes/Platformer/Components/Entities/Squally/Combat/SquallyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Movement/SquallyNoSavePositionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/SquallyBehaviorGroup.h"
+#include "Scenes/Platformer/Components/Entities/Squally/SquallyTopDownBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Visual/EntityDisarmedBehavior.h"
 #include "Scenes/Platformer/Components/Objects/Bridges/BridgeBehavior.h"
 #include "Scenes/Platformer/Components/Objects/Clippy/DartLauncherClippyNopBehavior.h"
