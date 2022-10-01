@@ -4,6 +4,7 @@
 
 class QuestLine;
 class PlatformerEntity;
+class Portal;
 class Squally;
 
 class TrollInTheDungeon : public QuestTask
@@ -30,7 +31,9 @@ private:
 
 	PlatformerEntity* mage = nullptr;
 	Squally* squally = nullptr;
+	Portal* exitPortal;
 	
 	static const std::string TagDialoguePause;
 	static const std::string TagExit;
+	static const std::string TagExitPortal;
 };

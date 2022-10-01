@@ -17,6 +17,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -29,6 +30,7 @@ using namespace cocos2d;
 const std::string TrollInTheDungeon::MapKeyQuest = "troll-in-the-dungeon";
 const std::string TrollInTheDungeon::TagDialoguePause = "dialogue-pause";
 const std::string TrollInTheDungeon::TagExit = "exit";
+const std::string TrollInTheDungeon::TagExitPortal = "exit-portal";
 
 TrollInTheDungeon* TrollInTheDungeon::create(GameObject* owner, QuestLine* questLine)
 {
@@ -66,14 +68,20 @@ void TrollInTheDungeon::onLoad(QuestState questState)
 
 void TrollInTheDungeon::onActivate(bool isActiveThroughSkippable)
 {
-	this->runAction(Sequence::create(
-		DelayTime::create(0.5f),
-		CallFunc::create([=]()
-		{
-			this->runChatSequence();
-		}),
-		nullptr
-	));
+	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* exitPortal)
+	{
+		this->exitPortal = exitPortal;
+		this->exitPortal->disable();
+
+		this->runAction(Sequence::create(
+			DelayTime::create(0.5f),
+			CallFunc::create([=]()
+			{
+				this->runChatSequence();
+			}),
+			nullptr
+		));
+	}, TrollInTheDungeon::TagExitPortal);
 }
 
 void TrollInTheDungeon::onComplete()
@@ -138,6 +146,11 @@ void TrollInTheDungeon::runChatSequencePt2()
 				CallFunc::create([=]()
 				{
 					this->mage->despawn();
+
+					if (this->exitPortal != nullptr)
+					{
+						this->exitPortal->enable();
+					}
 				}),
 				nullptr
 			));

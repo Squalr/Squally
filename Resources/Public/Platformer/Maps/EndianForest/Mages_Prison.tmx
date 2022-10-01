@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="68" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="136" nextobjectid="1087">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="68" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="136" nextobjectid="1087">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Laboratory"/>
@@ -370,6 +370,7 @@
   <object id="694" name="portal" type="object" x="151.265" y="696.711" width="237.527" height="375.411">
    <properties>
     <property name="map" value="EndianForest/Mages_Guild"/>
+    <property name="tag" value="exit-portal"/>
     <property name="transition" value="prison"/>
    </properties>
   </object>
@@ -425,10 +426,10 @@
   </object>
   <object id="892" name="troll" type="entity" x="2881.84" y="928.803" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,agro,run"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Prison"/>
     <property name="battle-tag" value="prison"/>
+    <property name="components" value="enemy,agro,run"/>
     <property name="drop-pool" value="ef-generic"/>
     <property name="quest" value="fight-troll"/>
     <property name="quest-line" value="rescue-guano"/>
@@ -576,38 +577,38 @@
   </properties>
   <object id="995" name="wood" type="terrain" x="1393.75" y="-158" width="101.823" height="1465.64">
    <properties>
-    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="997" name="wood" type="terrain" x="2342.42" y="-171.333" width="101.823" height="1465.64">
    <properties>
-    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="999" name="wood" type="terrain" x="3553.76" y="-144" width="101.823" height="1465.64">
    <properties>
-    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1000" name="wood" type="terrain" x="4808.42" y="-156.667" width="101.823" height="1465.64">
    <properties>
-    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1003" name="wood" type="terrain" x="6082.45" y="-171.091" width="101.823" height="1465.64">
    <properties>
-    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1079" name="wood" type="terrain" x="7298.45" y="-143.091" width="101.823" height="1465.64">
    <properties>
-    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -739,38 +740,38 @@
   </properties>
   <object id="1022" name="wood" type="terrain" x="1393.75" y="-158" width="101.823" height="1465.64">
    <properties>
-    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1024" name="wood" type="terrain" x="2345.09" y="-172" width="101.823" height="1465.64">
    <properties>
-    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1026" name="wood" type="terrain" x="3555.76" y="-144" width="101.823" height="1465.64">
    <properties>
-    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1028" name="wood" type="terrain" x="4811.33" y="-155.939" width="101.823" height="1465.64">
    <properties>
-    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1029" name="wood" type="terrain" x="6085.85" y="-171.03" width="101.823" height="1465.64">
    <properties>
-    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1077" name="wood" type="terrain" x="7301.85" y="-143.03" width="101.823" height="1465.64">
    <properties>
-    <property name="components" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>

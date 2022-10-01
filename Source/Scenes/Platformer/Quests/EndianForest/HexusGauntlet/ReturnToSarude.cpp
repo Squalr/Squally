@@ -223,9 +223,9 @@ void ReturnToSarude::runDialogueOutro()
 	Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_N_WeBroughtYouHere::create(),
 	DialogueEvents::DialogueVisualArgs(
 		DialogueBox::DialogueDock::Top,
-		DialogueBox::DialogueAlignment::Left,
-		DialogueEvents::BuildPreviewNode(&this->sarude, false),
-		DialogueEvents::BuildPreviewNode(&this->squally, true)
+		DialogueBox::DialogueAlignment::Right,
+		DialogueEvents::BuildPreviewNode(&this->squally, false),
+		DialogueEvents::BuildPreviewNode(&this->sarude, true)
 	),
 	[=]()
 	{
@@ -234,9 +234,9 @@ void ReturnToSarude::runDialogueOutro()
 			->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_EndianForest_Scrappy::create()),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Top,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->sarude, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->sarude, true)
 		),
 		[=]()
 		{
@@ -244,9 +244,9 @@ void ReturnToSarude::runDialogueOutro()
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_P_LearnMoreOfTheseMonsters::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Top,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->sarude, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->sarude, true)
 			),
 			[=]()
 			{
