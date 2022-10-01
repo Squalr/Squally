@@ -85,7 +85,6 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 	this->ship->setFlippedX(true);
 	this->fireAnimation->setFlippedX(true);
 	this->thrustAnimation->setFlippedX(true);
-	this->shipCollision->setPhysicsFlagEnabled(false);
 
 	this->fireAnimation->addChild(this->fireSound);
 	this->ship->addChild(this->fireRingAnimation);
@@ -176,6 +175,8 @@ void SquallyShip::runShipSequence()
 	this->runAction(Sequence::create(
 		CallFunc::create([=]()
 		{
+			this->shipCollision->setPhysicsFlagEnabled(false);
+			this->shipCollision->setGravityFlagEnabled(false);
 			this->shipCollision->setVelocity(Vec2(0.0f, 0.0f));
 			this->shipCollision->setHorizontalDampening(1.0f);
 			this->shipCollision->setVerticalDampening(1.0f);
@@ -191,6 +192,8 @@ void SquallyShip::runShipSequence()
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
+			this->shipCollision->setPhysicsFlagEnabled(true);
+			this->shipCollision->setGravityFlagEnabled(true);
 			this->shipCollision->setVelocity(Vec2(-2048.0f, -512.0f));
 			this->shipContainer->runAction(EaseSineIn::create(RotateTo::create(2.0f, -45.0f)));
 			this->smokeAnimation->playAnimationRepeat(FXResources::SmokeWhisp_SmokeWhisp_0000, 0.06f);

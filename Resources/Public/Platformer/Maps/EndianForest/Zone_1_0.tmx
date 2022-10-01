@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="46" nextobjectid="634">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="46" nextobjectid="634">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -137,7 +137,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally-ship" type="object" x="6514.95" y="2089.48" width="78.7879" height="88"/>
+  <object id="523" name="squally-ship" type="object" x="4400" y="2089.48" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup id="27" name="terrain foreground">
   <properties>
