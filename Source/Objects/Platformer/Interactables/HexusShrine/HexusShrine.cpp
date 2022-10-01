@@ -4,6 +4,8 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/NavigationEvents.h"
@@ -12,6 +14,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/DialogueEvents.h"
+#include "Events/HexusEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/ItemPools/RecipePools/RecipePoolDeserializer.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
@@ -88,12 +91,7 @@ void HexusShrine::onEnter()
 	ObjectEvents::WatchForObject<PlatformerEntity>(this, [=](PlatformerEntity* entity)
 	{
 		this->entity = entity;
-		this->entity->watchForComponent<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
-		{
-			bool wasDefeated = hexusBehavior->getWins() > 0;
-			this->undefeatedContainer->setVisible(!wasDefeated);
-			this->defeatedContainer->setVisible(wasDefeated);
-		});
+		this->refreshPuzzleState();
 	}, this->entityTag);
 
 	ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->iconNode));
@@ -125,6 +123,14 @@ void HexusShrine::initializePositions()
 	this->hackParticles5->setPosition(particlePosition);
 }
 
+void HexusShrine::initializeListeners()
+{
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventExitHexus, [=](EventCustom* eventCustom)
+	{
+		this->refreshPuzzleState();
+	}));
+}
+
 void HexusShrine::onInteract(PlatformerEntity* interactingEntity)
 {
 	super::onInteract(interactingEntity);
@@ -134,6 +140,19 @@ void HexusShrine::onInteract(PlatformerEntity* interactingEntity)
 		this->entity->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* dialogueBehavior)
 		{
 			dialogueBehavior->progressDialogue();
+		});
+	}
+}
+
+void HexusShrine::refreshPuzzleState()
+{
+	if (this->entity != nullptr)
+	{
+		this->entity->watchForComponent<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
+		{
+			bool wasDefeated = hexusBehavior->getWins() > 0;
+			this->undefeatedContainer->setVisible(!wasDefeated);
+			this->defeatedContainer->setVisible(wasDefeated);
 		});
 	}
 }

@@ -173,6 +173,7 @@ DeveloperScene::DeveloperScene()
 
 		// TODO:
 		// Overworld attacks (Troll / Cyclops swing)
+		// Troll Strength ability seems additive rather than absolute damage
 	}
 
 	// CHAPTER 2 - Compare/CMOV/Neg/SHL/SHR + OR Puzzle

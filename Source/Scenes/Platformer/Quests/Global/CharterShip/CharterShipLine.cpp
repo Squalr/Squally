@@ -22,7 +22,7 @@ CharterShipLine* CharterShipLine::create()
 
 CharterShipLine::CharterShipLine() : super(CharterShipLine::MapKeyQuestLine,
 	{
-		QuestData(DiscoverCharterShip::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return DiscoverCharterShip::create(owner, questLine); }),
+		QuestData(DiscoverCharterShip::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return DiscoverCharterShip::create(owner, questLine); }),
 		QuestData(BoardCharterShip::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return BoardCharterShip::create(owner, questLine); }),
 		QuestData(CharterShip::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return CharterShip::create(owner, questLine); }),
 	})
