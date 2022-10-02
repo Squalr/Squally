@@ -231,7 +231,6 @@ DeveloperScene::DeveloperScene()
 		// - G	=> 3_7 (Mummy Priest)
 
 		// ================== TODO ================== 
-		// ** Fix CMOV (railed spiked logs) on mac
 		// ** Needs Dark Tiger scripting (Maybe recycle a SHL or SHR instead of a CMOV)
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
 		// Overworld attacks

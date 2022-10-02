@@ -177,16 +177,16 @@ NO_OPTIMIZE void SpikedLogRailed::moveRailedSpikes(float dt)
 	ASM(mov ZAX, 0)
 	ASM(mov ZSI, 1)
 	ASM(mov ZDI, -1)
-	ASM_MOV_REG_VAR(ebx, squallyVelocityXLocal);
+	ASM_MOV_REG_VAR(ZBX, squallyVelocityXLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_MOVE);
-	ASM(cmp ZBX, 0)
+	ASM(cmp ebx, 0)
 	ASM(cmovg ZAX, ZSI)
 	ASM(cmovl ZAX, ZDI)
 	ASM_NOP9();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(spikeDirectionLocal, eax);
+	ASM_MOV_VAR_REG(spikeDirectionLocal, ZAX);
 	ASM(pop ZDI);
 	ASM(pop ZSI);
 	ASM(pop ZAX);
