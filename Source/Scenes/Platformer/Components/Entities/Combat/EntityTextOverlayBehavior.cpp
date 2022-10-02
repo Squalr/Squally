@@ -146,7 +146,7 @@ void EntityTextOverlayBehavior::runHealthDelta(int delta, bool zeroAsGreen, bool
 
 	if (overflowMin)
 	{
-		deltaString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Min::create() });
+		deltaString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Max::create() });
 	}
 	else if (overflowMax)
 	{
@@ -168,7 +168,7 @@ void EntityTextOverlayBehavior::runManaDelta(int delta, bool zeroAsBlue, bool ov
 
 	if (overflowMin)
 	{
-		deltaString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Min::create() });
+		deltaString = Strings::Common_ConcatSpaced::create()->setStringReplacementVariables({ deltaString, Strings::Platformer_Combat_Max::create() });
 	}
 	else if (overflowMax)
 	{
