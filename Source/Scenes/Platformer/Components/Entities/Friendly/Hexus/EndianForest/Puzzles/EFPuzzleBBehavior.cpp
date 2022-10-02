@@ -35,7 +35,8 @@ EFPuzzleBBehavior::~EFPuzzleBBehavior()
 
 MinMaxPool* EFPuzzleBBehavior::generateReward()
 {
-	return HexusPoolEFGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolEFGeneric::create(properties);
 }
 
 std::string EFPuzzleBBehavior::getWinLossSaveKey()

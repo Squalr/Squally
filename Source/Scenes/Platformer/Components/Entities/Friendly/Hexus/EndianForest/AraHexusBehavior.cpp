@@ -35,7 +35,8 @@ AraHexusBehavior::~AraHexusBehavior()
 
 MinMaxPool* AraHexusBehavior::generateReward()
 {
-	return HexusPoolEFGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolEFGeneric::create(properties);
 }
 
 std::string AraHexusBehavior::getWinLossSaveKey()

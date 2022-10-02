@@ -35,7 +35,8 @@ RobinHexusBehavior::~RobinHexusBehavior()
 
 MinMaxPool* RobinHexusBehavior::generateReward()
 {
-	return HexusPoolEFGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolEFGeneric::create(properties);
 }
 
 std::string RobinHexusBehavior::getWinLossSaveKey()

@@ -35,7 +35,8 @@ BancroftHexusBehavior::~BancroftHexusBehavior()
 
 MinMaxPool* BancroftHexusBehavior::generateReward()
 {
-	return HexusPoolDMGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolDMGeneric::create(properties);
 }
 
 std::string BancroftHexusBehavior::getWinLossSaveKey()

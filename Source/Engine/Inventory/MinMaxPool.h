@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/ItemPool.h"
 
+class CurrencyPool;
 class Item;
 class Inventory;
 
@@ -12,6 +13,7 @@ class MinMaxPool : public ItemPool
 public:
 	Item* getItem(const std::vector<Inventory*>& inventories);
 	std::vector<Item*> getItems(const std::vector<Inventory*>& inventories);
+	CurrencyPool* getCurrencyPool() const;
 
 	enum class SampleMethod
 	{
@@ -30,7 +32,8 @@ public:
 	};
 
 protected:
-	MinMaxPool(const cocos2d::ValueMap& properties, std::string poolName, SampleMethod sampleMethod, int minItems, int maxItems, std::vector<MinMaxPool*> nestedPools = { });
+	MinMaxPool(const cocos2d::ValueMap& properties, std::string poolName, SampleMethod sampleMethod,
+		int minItems, int maxItems, std::vector<MinMaxPool*> nestedPools = { }, CurrencyPool* currencyPool = nullptr);
 	virtual ~MinMaxPool();
 
 private:
@@ -40,6 +43,7 @@ private:
 
 	SampleMethod sampleMethod = SampleMethod::Random;
 	std::vector<MinMaxPool*> nestedPools;
+	CurrencyPool* currencyPool = nullptr;
 
 	int itemCount = 0;
 };

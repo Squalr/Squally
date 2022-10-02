@@ -35,7 +35,8 @@ AphroditeHexusBehavior::~AphroditeHexusBehavior()
 
 MinMaxPool* AphroditeHexusBehavior::generateReward()
 {
-	return HexusPoolURGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolURGeneric::create(properties);
 }
 
 std::string AphroditeHexusBehavior::getWinLossSaveKey()

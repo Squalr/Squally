@@ -35,7 +35,8 @@ URPuzzleFBehavior::~URPuzzleFBehavior()
 
 MinMaxPool* URPuzzleFBehavior::generateReward()
 {
-	return HexusPoolURGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolURGeneric::create(properties);
 }
 
 std::string URPuzzleFBehavior::getWinLossSaveKey()

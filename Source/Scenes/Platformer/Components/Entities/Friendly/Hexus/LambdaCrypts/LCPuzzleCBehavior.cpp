@@ -35,7 +35,8 @@ LCPuzzleCBehavior::~LCPuzzleCBehavior()
 
 MinMaxPool* LCPuzzleCBehavior::generateReward()
 {
-	return HexusPoolLCGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolLCGeneric::create(properties);
 }
 
 std::string LCPuzzleCBehavior::getWinLossSaveKey()

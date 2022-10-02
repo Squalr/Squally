@@ -73,6 +73,8 @@ DeveloperScene::DeveloperScene()
 	- **Death does not reset zoom/layer sometimes (see UR 1_0, die to the launchers)
 	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles)
 	- Sometimes hackable icon is below entity (rare)
+	- Show collectable animal names in notification
+	- Evil Eye chase scenes, cracks in simulation for story
 	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+
 	- Mounts should apply to helpers so they aren't awkwardly lagging behind
 	- Activate swim cooldown on opening save
@@ -93,9 +95,10 @@ DeveloperScene::DeveloperScene()
 	- Sky masters
 		- Find Finch to get to BP
 		- Find Irmik to get to BP peaks
+	- Kill 2nd sky tower map?
 	- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
 	- No interrupt if damage attack modified to heal
-	- Eliminate Collision Offset parameter entirely
+	- Eliminate 'collisionOffset' parameter entirely
 	- Helpers
 		- Abilities unlocked at certain levels
 		- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
@@ -281,6 +284,7 @@ DeveloperScene::DeveloperScene()
 		// Tiki anims still broken (bad Spriter implementation strikes again)
 		// Train anims broken (for same reason)
 		// Nature spellbook, even if just for an ability? What ability?
+		// Collectables
 
 		// Hexus puzzles:
 		// - A	=> 1_x (Tiki)

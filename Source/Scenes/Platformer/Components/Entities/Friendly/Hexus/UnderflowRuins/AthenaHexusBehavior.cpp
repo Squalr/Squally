@@ -35,7 +35,8 @@ AthenaHexusBehavior::~AthenaHexusBehavior()
 
 MinMaxPool* AthenaHexusBehavior::generateReward()
 {
-	return HexusPoolURGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolURGeneric::create(properties);
 }
 
 std::string AthenaHexusBehavior::getWinLossSaveKey()

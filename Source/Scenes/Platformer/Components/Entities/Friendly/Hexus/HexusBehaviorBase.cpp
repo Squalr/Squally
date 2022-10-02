@@ -232,6 +232,11 @@ void HexusBehaviorBase::giveItems()
 	if (this->rewardPool != nullptr)
 	{
 		PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->rewardPool, Strings::Platformer_Notifications_ItemWon::create()));
+
+		if (CurrencyPool* currencyPool = this->rewardPool->getCurrencyPool())
+		{
+			PlatformerEvents::TriggerGiveCurrenciesFromPool(PlatformerEvents::GiveCurrenciesFromPoolArgs(currencyPool, Strings::Platformer_Notifications_ItemWon::create()));
+		}
 	}
 }
 

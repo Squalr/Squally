@@ -35,7 +35,8 @@ LycanHexusBehavior::~LycanHexusBehavior()
 
 MinMaxPool* LycanHexusBehavior::generateReward()
 {
-	return HexusPoolEFGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolEFGeneric::create(properties);
 }
 
 std::string LycanHexusBehavior::getWinLossSaveKey()

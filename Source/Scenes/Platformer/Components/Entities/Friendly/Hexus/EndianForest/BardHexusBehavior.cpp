@@ -35,7 +35,8 @@ BardHexusBehavior::~BardHexusBehavior()
 
 MinMaxPool* BardHexusBehavior::generateReward()
 {
-	return HexusPoolEFGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolEFGeneric::create(properties);
 }
 
 std::string BardHexusBehavior::getWinLossSaveKey()

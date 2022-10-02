@@ -5,10 +5,10 @@
 class HexusPoolLCGeneric : public MinMaxPool
 {
 public:
-	static HexusPoolLCGeneric* create();
+	static HexusPoolLCGeneric* create(cocos2d::ValueMap& properties);
 
 protected:
-	HexusPoolLCGeneric();
+	HexusPoolLCGeneric(cocos2d::ValueMap& properties);
 	virtual ~HexusPoolLCGeneric();
 
 private:

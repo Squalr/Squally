@@ -8,16 +8,16 @@
 
 using namespace cocos2d;
 
-HexusPoolSarude* HexusPoolSarude::create()
+HexusPoolSarude* HexusPoolSarude::create(ValueMap& properties)
 {
-	HexusPoolSarude* instance = new HexusPoolSarude();
+	HexusPoolSarude* instance = new HexusPoolSarude(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HexusPoolSarude::HexusPoolSarude() : super(ValueMap(), "hexus-pool-marcel", SampleMethod::Guarantee, 2, 2)
+HexusPoolSarude::HexusPoolSarude(ValueMap& properties) : super(properties, "hexus-pool-marcel", SampleMethod::Guarantee, 2, 2)
 {
 	this->addItemToPool(ItemChance::create(MagesGuildPrisonKey::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(SpecialMov::create(), ItemChance::Probability::Guaranteed));

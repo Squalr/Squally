@@ -35,7 +35,8 @@ BurchHexusBehavior::~BurchHexusBehavior()
 
 MinMaxPool* BurchHexusBehavior::generateReward()
 {
-	return HexusPoolDMGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolDMGeneric::create(properties);
 }
 
 std::string BurchHexusBehavior::getWinLossSaveKey()

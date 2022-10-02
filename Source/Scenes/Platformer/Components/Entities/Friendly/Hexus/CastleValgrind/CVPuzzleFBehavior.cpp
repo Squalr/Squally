@@ -35,7 +35,8 @@ CVPuzzleFBehavior::~CVPuzzleFBehavior()
 
 MinMaxPool* CVPuzzleFBehavior::generateReward()
 {
-	return HexusPoolCVGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolCVGeneric::create(properties);
 }
 
 std::string CVPuzzleFBehavior::getWinLossSaveKey()

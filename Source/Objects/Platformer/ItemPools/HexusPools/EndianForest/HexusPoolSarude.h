@@ -5,10 +5,10 @@
 class HexusPoolSarude : public MinMaxPool
 {
 public:
-	static HexusPoolSarude* create();
+	static HexusPoolSarude* create(cocos2d::ValueMap& properties);
 
 protected:
-	HexusPoolSarude();
+	HexusPoolSarude(cocos2d::ValueMap& properties);
 	virtual ~HexusPoolSarude();
 
 private:

@@ -35,7 +35,8 @@ HeraHexusBehavior::~HeraHexusBehavior()
 
 MinMaxPool* HeraHexusBehavior::generateReward()
 {
-	return HexusPoolURGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolURGeneric::create(properties);
 }
 
 std::string HeraHexusBehavior::getWinLossSaveKey()

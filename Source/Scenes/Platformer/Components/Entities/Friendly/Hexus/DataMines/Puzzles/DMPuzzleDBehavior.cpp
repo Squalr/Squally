@@ -35,7 +35,8 @@ DMPuzzleDBehavior::~DMPuzzleDBehavior()
 
 MinMaxPool* DMPuzzleDBehavior::generateReward()
 {
-	return HexusPoolDMGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolDMGeneric::create(properties);
 }
 
 std::string DMPuzzleDBehavior::getWinLossSaveKey()

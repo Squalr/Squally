@@ -35,7 +35,8 @@ ChironHexusBehavior::~ChironHexusBehavior()
 
 MinMaxPool* ChironHexusBehavior::generateReward()
 {
-	return HexusPoolEFGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolEFGeneric::create(properties);
 }
 
 std::string ChironHexusBehavior::getWinLossSaveKey()

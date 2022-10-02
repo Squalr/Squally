@@ -35,7 +35,8 @@ RalstonHexusBehavior::~RalstonHexusBehavior()
 
 MinMaxPool* RalstonHexusBehavior::generateReward()
 {
-	return HexusPoolDMGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolDMGeneric::create(properties);
 }
 
 std::string RalstonHexusBehavior::getWinLossSaveKey()

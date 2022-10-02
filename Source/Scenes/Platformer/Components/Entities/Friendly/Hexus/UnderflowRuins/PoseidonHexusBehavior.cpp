@@ -35,7 +35,8 @@ PoseidonHexusBehavior::~PoseidonHexusBehavior()
 
 MinMaxPool* PoseidonHexusBehavior::generateReward()
 {
-	return HexusPoolURGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolURGeneric::create(properties);
 }
 
 std::string PoseidonHexusBehavior::getWinLossSaveKey()

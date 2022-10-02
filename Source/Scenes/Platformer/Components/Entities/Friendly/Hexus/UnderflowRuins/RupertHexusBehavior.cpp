@@ -35,7 +35,8 @@ RupertHexusBehavior::~RupertHexusBehavior()
 
 MinMaxPool* RupertHexusBehavior::generateReward()
 {
-	return HexusPoolURGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolURGeneric::create(properties);
 }
 
 std::string RupertHexusBehavior::getWinLossSaveKey()

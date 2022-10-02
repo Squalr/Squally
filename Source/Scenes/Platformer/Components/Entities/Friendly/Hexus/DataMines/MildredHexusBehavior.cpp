@@ -35,7 +35,8 @@ MildredHexusBehavior::~MildredHexusBehavior()
 
 MinMaxPool* MildredHexusBehavior::generateReward()
 {
-	return HexusPoolDMGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolDMGeneric::create(properties);
 }
 
 std::string MildredHexusBehavior::getWinLossSaveKey()

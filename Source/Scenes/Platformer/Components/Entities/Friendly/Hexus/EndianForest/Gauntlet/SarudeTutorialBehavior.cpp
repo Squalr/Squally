@@ -37,7 +37,8 @@ SarudeTutorialBehavior::~SarudeTutorialBehavior()
 
 MinMaxPool* SarudeTutorialBehavior::generateReward()
 {
-	return HexusPoolSarude::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolSarude::create(properties);
 }
 
 std::string SarudeTutorialBehavior::getWinLossSaveKey()

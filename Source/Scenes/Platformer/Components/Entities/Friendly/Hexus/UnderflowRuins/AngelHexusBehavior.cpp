@@ -35,7 +35,8 @@ AngelHexusBehavior::~AngelHexusBehavior()
 
 MinMaxPool* AngelHexusBehavior::generateReward()
 {
-	return HexusPoolURGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolURGeneric::create(properties);
 }
 
 std::string AngelHexusBehavior::getWinLossSaveKey()

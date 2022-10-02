@@ -35,7 +35,8 @@ MatuHexusBehavior::~MatuHexusBehavior()
 
 MinMaxPool* MatuHexusBehavior::generateReward()
 {
-	return HexusPoolEFGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolEFGeneric::create(properties);
 }
 
 std::string MatuHexusBehavior::getWinLossSaveKey()

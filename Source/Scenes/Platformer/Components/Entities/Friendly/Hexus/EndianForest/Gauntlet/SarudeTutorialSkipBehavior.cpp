@@ -37,7 +37,8 @@ SarudeTutorialSkipBehavior::~SarudeTutorialSkipBehavior()
 
 MinMaxPool* SarudeTutorialSkipBehavior::generateReward()
 {
-	return HexusPoolSarude::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolSarude::create(properties);
 }
 
 std::string SarudeTutorialSkipBehavior::getWinLossSaveKey()

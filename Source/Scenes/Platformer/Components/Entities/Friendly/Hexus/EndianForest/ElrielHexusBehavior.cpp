@@ -35,7 +35,8 @@ ElrielHexusBehavior::~ElrielHexusBehavior()
 
 MinMaxPool* ElrielHexusBehavior::generateReward()
 {
-	return HexusPoolEFGeneric::create();
+	ValueMap properties = ValueMap();
+	return HexusPoolEFGeneric::create(properties);
 }
 
 std::string ElrielHexusBehavior::getWinLossSaveKey()
