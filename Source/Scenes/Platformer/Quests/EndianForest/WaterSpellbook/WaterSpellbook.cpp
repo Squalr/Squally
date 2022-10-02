@@ -110,9 +110,9 @@ void WaterSpellbook::runCinematicSequence()
 			Strings::Platformer_Quests_EndianForest_WaterSpellbook_Merlin_A_ThankYou::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->entity, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->entity, true)
 			),
 			[=]()
 			{
@@ -125,9 +125,9 @@ void WaterSpellbook::runCinematicSequence()
 			Strings::Platformer_Quests_EndianForest_WaterSpellbook_Merlin_B_GraspPowers::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->entity, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->entity, true)
 			),
 			[=]()
 			{
@@ -140,9 +140,9 @@ void WaterSpellbook::runCinematicSequence()
 			Strings::Platformer_Quests_EndianForest_WaterSpellbook_Merlin_C_GrantBlessing::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->entity, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->entity, true)
 			),
 			[=]()
 			{
@@ -155,9 +155,9 @@ void WaterSpellbook::runCinematicSequence()
 			Strings::Platformer_Quests_EndianForest_WaterSpellbook_Merlin_D_UseYourPowers::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->entity, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->entity, true)
 			),
 			[=]()
 			{
@@ -180,9 +180,9 @@ void WaterSpellbook::setPostText()
 			Strings::Platformer_Quests_EndianForest_WaterSpellbook_Merlin_D_UseYourPowers::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->entity, false),
-					DialogueEvents::BuildPreviewNode(&this->squally, true)
+					DialogueBox::DialogueAlignment::Right,
+					DialogueEvents::BuildPreviewNode(&this->squally, false),
+					DialogueEvents::BuildPreviewNode(&this->entity, true)
 				),
 				[=]()
 				{

@@ -19,7 +19,7 @@ ShopPool::ShopPool(ValueMap& properties, std::string poolName, std::vector<MinMa
 {
 	this->itemsNode = Node::create();
 	this->items = std::vector<Item*>();
-	this->properties[GameObject::MapKeyQueryable] = false;
+	this->setQueryable(false);
 
 	this->addChild(this->itemsNode);
 }
@@ -38,13 +38,13 @@ void ShopPool::onEnter()
 		{
 			this->items = this->getItems(entityInventoryBehavior->getAllInventories());
 
-			for (auto item : this->items)
+			for (Item* item : this->items)
 			{
 				this->itemsNode->addChild(item);
 			}
 
 			// Re-enable querying. This prevents a race-scenario where an object queries this one before items are built.
-			this->properties[GameObject::MapKeyQueryable] = true;
+			this->setQueryable(true);
 		});
 	}, Squally::MapKey);
 }

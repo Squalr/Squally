@@ -19,5 +19,5 @@ std::string Mace::getWeaponAttackSound()
 
 std::string Mace::getWeaponImpactSound()
 {
-	return SoundResources::Platformer_Physical_Impact_Thud1;
+	return SoundResources::Platformer_Physical_Impact_HitSoft1;
 }

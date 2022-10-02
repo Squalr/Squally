@@ -105,13 +105,17 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="81" name="objects -6" visible="0">
+ <objectgroup id="81" name="objects -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1121" name="solid" type="collision" x="1966.67" y="2319.71" width="128" height="2035.85"/>
+  <object id="1121" name="solid" type="collision" x="1966.67" y="2319.71" width="128" height="2035.85">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="1123" name="vase" type="object" x="4142.65" y="4054.06" width="113" height="160">
    <properties>
     <property name="color" value="green"/>

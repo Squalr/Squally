@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="62" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="765">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="766">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -267,7 +267,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="500" name="Forest/Flower10" type="decor" x="7478.08" y="1940.57" width="199" height="133"/>
-  <object id="741" name="Forest/Flower11" type="decor" x="4642" y="1930" width="92" height="116"/>
+  <object id="741" name="Forest/Flower11" type="decor" x="4400" y="1932" width="92" height="116"/>
   <object id="742" name="Forest/Flower9" type="decor" x="2284.5" y="1899.5" width="199" height="133"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
@@ -312,6 +312,7 @@
     <property name="tutorial" value="overflow"/>
    </properties>
   </object>
+  <object id="765" name="help-totem-potions" type="object" x="4596" y="1792" width="248" height="248"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

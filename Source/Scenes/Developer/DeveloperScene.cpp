@@ -78,7 +78,6 @@ DeveloperScene::DeveloperScene()
 	- Hexus:
 		- Add a "Stack" pile, and PUSH/POP cards. PUSH = Move any card (even enemy) to stack. POP = Overwrite card attack
 			- Move 'cards to play/draw' indicators to the left side. Shift graveyard down, stack above it.
-		- Update puzzle shrine icon on win
 		- Win a hexus puzzle, next one will show massive row score deltas
 		- Leave button stuck visible after losing a puzzle
 		- Enemy should pre-calc the best play when player has passed (hard)

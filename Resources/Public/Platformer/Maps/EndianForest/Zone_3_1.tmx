@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="60" nextobjectid="824">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="61" nextobjectid="826">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -21,7 +21,7 @@
    <polygon points="-4357.06,-3335.96 6492.4,-3328.61 6479.87,1938.32 -4338.04,1916.87"/>
   </object>
  </objectgroup>
- <objectgroup id="59" name="terrain2">
+ <objectgroup id="59" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -35,6 +35,13 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup id="60" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="824" name="Generic/WoodCaveDoor1" type="decor" x="8734.06" y="1316.32" width="388" height="403"/>
+  <object id="825" name="Generic/WoodCaveDoor1" type="decor" x="94.6667" y="2538.5" width="388" height="403"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -63,14 +70,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="720" name="Generic/WoodCaveDoor1" type="decor" x="94.6667" y="2526.5" width="388" height="403"/>
   <object id="721" name="portal" type="object" x="164" y="2686" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Zone_3_0"/>
     <property name="transition" value="entrance"/>
    </properties>
   </object>
-  <object id="773" name="Generic/WoodCaveDoor1" type="decor" x="8734.06" y="1316.32" width="388" height="403"/>
   <object id="774" name="portal" type="object" x="8804.06" y="1443.82" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Zone_3_0"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="951">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="951">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -179,8 +179,16 @@
     <property name="transition" value="entrance-A"/>
    </properties>
   </object>
-  <object id="928" name="solid" type="collision" x="3710.18" y="-36.4848" width="107.515" height="2862.06"/>
-  <object id="930" name="solid" type="collision" x="9022.24" y="-55.03" width="107.515" height="3150.06"/>
+  <object id="928" name="solid" type="collision" x="3710.18" y="-36.4848" width="107.515" height="2862.06">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="930" name="solid" type="collision" x="9022.24" y="-55.03" width="107.515" height="3150.06">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="931" name="iou" type="object" x="8260.5" y="2044.5" width="87" height="87"/>
   <object id="932" name="iou" type="object" x="8681.83" y="2047.17" width="87" height="87"/>
   <object id="933" name="vase" type="object" x="8460.35" y="1974.42" width="113" height="160">
@@ -321,9 +329,9 @@
    </properties>
   </object>
   <object id="829" name="help-totem-hexus-cards" type="object" x="5620" y="1944" width="248" height="248"/>
-  <object id="840" name="chest" type="object" x="1118.24" y="535.21" width="128" height="128">
+  <object id="840" name="metal-chest" type="object" x="1118.24" y="535.21" width="128" height="128">
    <properties>
-    <property name="reward-pool" value="ef-generic"/>
+    <property name="reward-pool" value="ef-rare"/>
    </properties>
   </object>
   <object id="869" name="edge-portal" type="object" x="-19.959" y="23.57" width="199.918" height="640.851">

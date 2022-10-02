@@ -35,7 +35,7 @@ Cyclops::~Cyclops()
 
 Vec2 Cyclops::getDialogueOffset()
 {
-	return Vec2(-32.0f, -196.0f);
+	return Vec2(0.0f, -64.0f);
 }
 
 LocalizedString* Cyclops::getEntityName()

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="760">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="762">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -58,6 +58,13 @@
    <polygon points="-375.22,-1780.1 955.58,-1796.06 1346.68,-1523.7 1456.65,-745.789 1426.35,-59.409 1135.28,1694.19 -457.095,1698.44 -791.484,143.354 -735.419,-1455.98"/>
   </object>
  </objectgroup>
+ <objectgroup id="74" name="decor bg -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="760" name="Generic/WoodCaveDoor1" type="decor" x="1794" y="1659.23" width="388" height="403"/>
+ </objectgroup>
  <objectgroup id="67" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
@@ -72,9 +79,16 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="743" name="Generic/WoodCaveDoor1" type="decor" x="1794" y="1659.23" width="388" height="403"/>
-  <object id="746" name="solid" type="collision" x="1291.48" y="-2.155" width="97.0303" height="2072.31"/>
-  <object id="747" name="solid" type="collision" x="4479.48" y="-632.155" width="97.0303" height="2072.31"/>
+  <object id="746" name="solid" type="collision" x="1291.48" y="-2.155" width="97.0303" height="2072.31">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="747" name="solid" type="collision" x="4479.48" y="-632.155" width="97.0303" height="2072.31">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="68" name="player_layer -4">
   <properties>
@@ -158,6 +172,12 @@
    <polygon points="-375.22,-1780.1 955.58,-1796.06 1346.68,-1523.7 1456.65,-745.789 1426.35,-59.409 1143.28,1042.19 -377.095,1050.44"/>
   </object>
  </objectgroup>
+ <objectgroup id="75" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="761" name="Generic/WoodCaveDoor1" type="decor" x="422" y="2154.5" width="388" height="403"/>
+ </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
@@ -230,7 +250,6 @@
     <property name="tag" value="help-totem-wind"/>
    </properties>
   </object>
-  <object id="699" name="Generic/WoodCaveDoor1" type="decor" x="422" y="2154.5" width="388" height="403"/>
   <object id="703" name="portal" type="object" x="484" y="2304" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Zone_3_1"/>
@@ -309,7 +328,7 @@
   <object id="716" name="ogre" type="entity" x="6215.64" y="5687.39" width="128" height="128">
    <properties>
     <property name="components" value="friendly,disarmed,ef-puzzle-F"/>
-    <property name="entity-tag" value="hexus-ogre"/>
+    <property name="tag" value="hexus-ogre"/>
    </properties>
   </object>
  </objectgroup>

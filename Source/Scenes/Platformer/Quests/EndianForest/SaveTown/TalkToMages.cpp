@@ -191,7 +191,10 @@ void TalkToMages::setPostText()
 				),
 				[=]()
 				{
-					this->setPostText();
+					this->defer([=]()
+					{
+						this->setPostText();
+					});
 				},
 				Voices::GetNextVoiceMedium(),
 				true
