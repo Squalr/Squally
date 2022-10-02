@@ -19194,6 +19194,96 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_RegisterRspWarning() = default;
 	};
 
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_MoveTowardsPlayer : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_MoveTowardsPlayer* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_MoveTowardsPlayer();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_MoveTowardsPlayer() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEax();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEdi();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEdi() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi() = default;
+	};
+
 	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions : public LocalizedString
 	{
 	public:

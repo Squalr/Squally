@@ -70,6 +70,7 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- ** Can get stuck on roof of maps (see UR 3_1)
+	- **Death does not reset zoom/layer sometimes (see UR 1_0, die to the launchers)
 	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles)
 	- Sometimes hackable icon is below entity (rare)
 	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+

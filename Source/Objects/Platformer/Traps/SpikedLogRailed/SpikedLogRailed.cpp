@@ -105,13 +105,15 @@ void SpikedLogRailed::registerHackables()
 			LOCAL_FUNC_ID_MOVE,
 			HackableCode::HackableCodeInfo(
 				SpikedLogRailed::MapKey,
-				Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame::create(),
+				Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_MoveTowardsPlayer::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Banner,
 				LazyNode<HackablePreview>::create([=](){ return SpikedLogRailedSetRotationPreview::create(); }),
 				{
-					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx::create() },
-					{ HackableCode::Register::zdx, Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx::create() },
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEax::create() },
+					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx::create() },
+					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi::create() },
+					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEdi::create() },
 				},
 				int(HackFlags::None),
 				16.0f,
@@ -120,17 +122,17 @@ void SpikedLogRailed::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
-						"cmp ebx, 0\n" +
-						"cmovg eax, esi\n" +
-						"cmovl eax, edi\n"
+						std::string("cmp ebx, 0\n") +
+						std::string("cmovg eax, esi\n") +
+						std::string("cmovl eax, edi\n\n") +
+						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())) + 
-						"cmp rbx, 0\n" +
-						"cmovg rax, rsi\n" +
-						"cmovl rax, rdi\n"
+						std::string("cmp rbx, 0\n") +
+						std::string("cmovg rax, rsi\n") +
+						std::string("cmovl rax, rdi\n\n") +
+						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()))
 					)
 				},
 				true
