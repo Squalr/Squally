@@ -10,10 +10,8 @@ public:
 	static void RegisterGlobalNode();
 	static MusicPlayer* getInstance();
 
-	Music* getCurrentSong();
 	void pushTrack(Music* music, float delay = 0.5f);
 	void removeTrack(std::string musicResource, bool unpauseNext = true);
-	void purgueQueue();
 
 protected:
 	MusicPlayer();
@@ -24,7 +22,6 @@ protected:
 private:
 	typedef GlobalNode super;
 
-	void stopAndFadeOutCurrentSong();
-
-	std::vector<Music*> songStack;
+	Music* currentSong = nullptr;
+	Music* previousSong = nullptr;
 };

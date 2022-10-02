@@ -305,7 +305,9 @@ void Hexus::open(HexusOpponentData* opponentData)
 
 	this->setVisible(true);
 
-	if (RandomHelper::random_real(0.0f, 1.0f) < 0.5f)
+	static int NextIndex = 0;
+
+	if (NextIndex++ % 2 == 1)
 	{
 		this->musicA->pushTrack();
 	}

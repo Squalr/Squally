@@ -34,16 +34,10 @@ MusicPlayer* MusicPlayer::getInstance()
 
 MusicPlayer::MusicPlayer()
 {
-	this->songStack = std::vector<Music*>();
 }
 
 MusicPlayer::~MusicPlayer()
 {
-}
-
-Music* MusicPlayer::getCurrentSong()
-{
-	return this->songStack.empty() ? nullptr : this->songStack.back();
 }
 
 void MusicPlayer::pushTrack(Music* music, float delay)
@@ -54,90 +48,61 @@ void MusicPlayer::pushTrack(Music* music, float delay)
 	}
 	
 	// If the song is the same as the current one, do nothing
-	if (Music* currentSong = this->getCurrentSong())
+	if (this->currentSong != nullptr && music->getSoundResource() == this->currentSong->getSoundResource())
 	{
-		if (music->getSoundResource() == currentSong->getSoundResource())
-		{
-			return;
-		}
+		return;
 	}
 
-	// Check if this track is already in the stack / move the track to the top.
-	for (Music* next : this->songStack)
+	if (this->currentSong != nullptr)
 	{
-		if (next != nullptr && next->getSoundResource() == music->getSoundResource())
-		{
-			this->songStack.erase(std::find(this->songStack.begin(), this->songStack.end(), next));
-			this->songStack.push_back(next);
-			this->stopAndFadeOutCurrentSong();
-			next->play(true, delay);
-			return;
-		}
+		this->currentSong->stopAndFadeOut();
 	}
 	
-	this->stopAndFadeOutCurrentSong();
-
-	Music* globalClone = music->clone();
-
-	this->addChild(globalClone);
-	this->songStack.push_back(globalClone);
-	globalClone->play(true, delay);
-}
-
-void MusicPlayer::stopAndFadeOutCurrentSong()
-{
-	Music* currentSong = this->getCurrentSong();
-
-	if (currentSong != nullptr)
+	// If the song is the same as the previous one, start it
+	if (this->previousSong != nullptr && music->getSoundResource() == this->previousSong->getSoundResource())
 	{
-		std::string currentSongResource = currentSong->getSoundResource();
-		currentSong->stopAndFadeOut([=]()
+		std::swap(this->currentSong, this->previousSong);
+		this->currentSong->play(true, delay);
+	}
+	// Otherwise the song is new, so clone it and play it
+	else
+	{
+		if (this->previousSong != nullptr)
 		{
-			this->removeTrack(currentSongResource, false);
-		}, true);
+			this->previousSong->removeFromParent();
+		}
+
+		this->previousSong = this->currentSong;
+		Music* globalClone = music->clone();
+		this->addChild(globalClone);
+		this->currentSong = globalClone;
+		globalClone->play(true, delay);
 	}
 }
 
 void MusicPlayer::removeTrack(std::string musicResource, bool unpauseNext)
 {
-	if (musicResource.empty() || this->songStack.empty())
+	if (musicResource.empty() || this->currentSong == nullptr)
 	{
 		return;
 	}
 
-	Music* currentSong = this->getCurrentSong();
-	bool isCurrentSong = currentSong != nullptr && musicResource == currentSong->getSoundResource();
-	std::vector<Music*> toDelete = std::vector<Music*>();
-
-	for (Music* next : this->songStack)
+	if (this->currentSong->getSoundResource() == musicResource)
 	{
-		if (next != nullptr && next->getSoundResource() == musicResource)
+		Music* toDelete = this->currentSong;
+
+		toDelete->stopAndFadeOut([toDelete]()
 		{
-			next->removeFromParent();
-			toDelete.push_back(next);
+			toDelete->removeFromParent();
+		});
+
+		this->currentSong = nullptr;
+		std::swap(this->currentSong, this->previousSong);
+		
+		// Resume the previous song
+		if (unpauseNext && this->currentSong != nullptr)
+		{
+			this->currentSong->unfreeze();
 		}
-	}
-
-	for (Music* next : toDelete)
-	{
-		this->songStack.erase(std::remove_if(this->songStack.begin(), this->songStack.end(), [=](const Music* track)
-		{
-			return track == next;
-		}), this->songStack.end());
-	}
-
-	if (isCurrentSong && unpauseNext && !this->songStack.empty())
-	{
-		this->songStack.back()->unfreeze();
-	}
-}
-
-void MusicPlayer::purgueQueue()
-{
-	int maxIterFailSafe = 16;
-
-	while (!this->songStack.empty() && maxIterFailSafe-- >= 0)
-	{
-		this->removeTrack(this->songStack.back()->getSoundResource(), false);
 	}
 }

@@ -164,6 +164,4 @@ void Music::unfreeze()
 			}
 		}
 	}
-
-	SoundEvents::TriggerFadeOutMusic(SoundEvents::FadeOutMusicArgs(this->getSoundResource()));
 }
