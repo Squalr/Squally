@@ -125,6 +125,8 @@ void HexusShrine::initializePositions()
 
 void HexusShrine::initializeListeners()
 {
+	super::initializeListeners();
+	
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventExitHexus, [=](EventCustom* eventCustom)
 	{
 		this->refreshPuzzleState();

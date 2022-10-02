@@ -104,9 +104,9 @@ void ReturnToSarude::registerDialogue(bool isActiveThroughSkippable)
 					Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_K_IChallengeYou::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
-						DialogueBox::DialogueAlignment::Left,
-						DialogueEvents::BuildPreviewNode(&this->sarude, false),
-						DialogueEvents::BuildPreviewNode(&this->squally, true)
+						DialogueBox::DialogueAlignment::Right,
+						DialogueEvents::BuildPreviewNode(&this->squally, false),
+						DialogueEvents::BuildPreviewNode(&this->sarude, true)
 					),
 					[=]()
 					{
@@ -170,9 +170,9 @@ void ReturnToSarude::runDialogueIntroWin()
 		Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_M_WellDone::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Top,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->sarude, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->sarude, true)
 		),
 		[=]()
 		{
