@@ -183,7 +183,10 @@ NO_OPTIMIZE void TrainingHeal::runRestoreTick()
 
 	this->healSound->play();
 
-	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->owner, this->owner, incrementAmount, this->abilityType));
+	bool overflowedMin = incrementAmount == -256;
+	bool overflowedMax = incrementAmount == 256;
+
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->owner, this->owner, incrementAmount, this->abilityType, false, overflowedMin, overflowedMax));
 
 	HACKABLES_STOP_SEARCH();
 }
