@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="26" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="833">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="26" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="835">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -205,7 +205,7 @@
   </properties>
   <object id="760" name="polyphemus" type="entity" x="1442.93" y="851.352" width="128" height="167">
    <properties>
-    <property name="components" value="face-squally"/>
+    <property name="components" value="shopkeeper,face-squally"/>
    </properties>
   </object>
  </objectgroup>
@@ -290,6 +290,16 @@
    <properties>
     <property name="components" value="friendly,robin-hexus,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="833" name="gecky" type="entity" x="3003.94" y="936.844" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,recruitable"/>
+   </properties>
+  </object>
+  <object id="834" name="guano" type="entity" x="2141.85" y="935.156" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,recruitable"/>
    </properties>
   </object>
  </objectgroup>
