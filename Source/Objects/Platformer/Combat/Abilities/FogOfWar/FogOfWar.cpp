@@ -179,15 +179,21 @@ void FogOfWar::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* 
 
 	this->damageDealt = damageOrHealing->damageOrHealingValue;
 
+	int minDamage = 0;
+	int maxDamage = damageOrHealing->damageOrHealingValue * 2;
+
 	this->increaseDamage();
 
+	*(damageOrHealing->damageOrHealingMin) = minDamage;
+	*(damageOrHealing->damageOrHealingMax) = maxDamage;
+
 	// Bound by 0.5x and 2x
-	*(damageOrHealing->damageOrHealing) = MathUtils::clamp(this->damageDealt, damageOrHealing->damageOrHealingValue / 2, damageOrHealing->damageOrHealingValue * 2);
+	*(damageOrHealing->damageOrHealing) = MathUtils::clamp(this->damageDealt, minDamage, maxDamage);
 }
 
 void FogOfWar::updateAnimation(float dt)
 {
-	for (auto next : this->fog)
+	for (FogOfWar::Fog& next : this->fog)
 	{
 		const float WidthOver2 = next.sprite->getContentSize().width / 2.0f;
 		const float ResetPosition = 1568.0f + WidthOver2;

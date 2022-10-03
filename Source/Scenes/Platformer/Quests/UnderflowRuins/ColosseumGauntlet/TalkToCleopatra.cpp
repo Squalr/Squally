@@ -110,7 +110,7 @@ void TalkToCleopatra::onComplete()
 		SoundResources::Notifications_NotificationGood1
 	));
 	
-	Objectives::SetCurrentObjective(ObjectiveKeys::UREnterTheMines);
+	Objectives::SetCurrentObjective(ObjectiveKeys::URHeadToTown);
 
 	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
 	{

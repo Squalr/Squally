@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1155">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="24" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1155">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -277,6 +277,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy"/>
     <property name="drop-pool" value="ur-generic"/>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="quest" value="defeat-osiris"/>
     <property name="quest-line" value="cleanse-pyramid"/>
    </properties>

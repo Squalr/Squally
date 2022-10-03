@@ -79,7 +79,7 @@ void DefeatAgnes::onActivate(bool isActiveThroughSkippable)
 void DefeatAgnes::onComplete()
 {
 	// TODO
-	Objectives::SetCurrentObjective(ObjectiveKeys::UREnterTheMines);
+	// Objectives::SetCurrentObjective(ObjectiveKeys::UREnterTheMines);
 }
 
 void DefeatAgnes::onSkipped()

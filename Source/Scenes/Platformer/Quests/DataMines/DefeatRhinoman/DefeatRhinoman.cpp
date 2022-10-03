@@ -108,8 +108,6 @@ void DefeatRhinoman::onComplete()
 		
 		this->screamingDoor->unlock(false);
 	}, ScreamingDoor::MapKey);
-
-	Objectives::SetCurrentObjective(ObjectiveKeys::UREnterTheMines);
 }
 
 void DefeatRhinoman::onSkipped()

@@ -142,7 +142,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Minotaur::MapKey] = StatsIncrements(Stats(42, 8, 68));
 	StatsTables::StatsTable[MummyPriest::MapKey] = StatsIncrements(Stats(44, 30, 80));
 	StatsTables::StatsTable[MummyWarrior::MapKey] = StatsIncrements(Stats(43, 8, 84));
-	StatsTables::StatsTable[Osiris::MapKey] = StatsIncrements(Stats(105, 58, 224));
+	StatsTables::StatsTable[Osiris::MapKey] = StatsIncrements(Stats(105, 12, 224));
 	StatsTables::StatsTable[TigerMan::MapKey] = StatsIncrements(Stats(63, 15, 62));
 	StatsTables::StatsTable[Tigress::MapKey] = StatsIncrements(Stats(38, 11, 58));
 	

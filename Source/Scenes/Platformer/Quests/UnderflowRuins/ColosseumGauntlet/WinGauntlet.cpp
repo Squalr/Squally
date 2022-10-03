@@ -144,7 +144,6 @@ void WinGauntlet::onActivate(bool isActiveThroughSkippable)
 
 void WinGauntlet::onComplete()
 {
-	Objectives::SetCurrentObjective(ObjectiveKeys::UREnterTheMines);
 }
 
 void WinGauntlet::onSkipped()
