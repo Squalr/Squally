@@ -118,7 +118,19 @@ void RockSlide::registerHackables()
 				},
 				int(HackFlags::None),
 				RockSlide::StartDelay + RockSlide::TimeBetweenTicks * float(RockSlide::TickCount),
-				0.0f
+				0.0f,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_RockSlide_Hint::create()) +
+						"ror edi, 1\n"
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_RockSlide_Hint::create()) +
+						"ror rdi, 1\n"
+					),
+				},
+				true
 			)
 		},
 	};
@@ -152,7 +164,7 @@ void RockSlide::runRockSlide()
 				icon,
 				RockSlide::TimeBetweenTicks * float(index) + RockSlide::StartDelay, [=]()
 			{
-				this->damageEntities();
+				this->damagePlayerEntities();
 			})
 		);
 	}
@@ -193,7 +205,7 @@ void RockSlide::updateAnimation(float dt)
 	}
 }
 
-void RockSlide::damageEntities()
+void RockSlide::damagePlayerEntities()
 {
 	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([=](Timeline* timeline)
 	{
@@ -206,7 +218,10 @@ void RockSlide::damageEntities()
 
 		for (TimelineEntry* next : timeline->getEntries())
 		{
-			this->damagePlayerEntity(next->getEntity());
+			if (next->isPlayerEntry())
+			{
+				this->damagePlayerEntity(next->getEntity());
+			}
 		}
 	}));
 }
@@ -232,6 +247,7 @@ NO_OPTIMIZE void RockSlide::damagePlayerEntity(PlatformerEntity* entity)
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_ROCK_SLIDE);
 	ASM(ror ZDI, 1);
+	ASM_NOP4();
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(health, edi);

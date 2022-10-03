@@ -169,7 +169,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[EarthElemental::MapKey] = StatsIncrements(Stats(55, 12, 80));
 	StatsTables::StatsTable[EarthGolem::MapKey] = StatsIncrements(Stats(55, 12, 80));
 	StatsTables::StatsTable[ForestGolem::MapKey] = StatsIncrements(Stats(55, 12, 80));
-	StatsTables::StatsTable[Rhinoman::MapKey] = StatsIncrements(Stats(75, 12, 240));
+	StatsTables::StatsTable[Rhinoman::MapKey] = StatsIncrements(Stats(224, 12, 240));
 	StatsTables::StatsTable[Shaman::MapKey] = StatsIncrements(Stats(40, 24, 80));
 	StatsTables::StatsTable[SkeletalArcher::MapKey] = StatsIncrements(Stats(55, 12, 96));
 	StatsTables::StatsTable[SkeletalNecromancer::MapKey] = StatsIncrements(Stats(55, 12, 99));

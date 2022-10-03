@@ -35,7 +35,7 @@ private:
 	typedef CombatObject super;
 
 	void updateAnimation(float dt);
-	void damageEntities();
+	void damagePlayerEntities();
 	void damagePlayerEntity(PlatformerEntity* entity);
 
 	std::vector<cocos2d::Sprite*> rockPool;
