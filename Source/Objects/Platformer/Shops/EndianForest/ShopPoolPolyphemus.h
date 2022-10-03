@@ -14,10 +14,6 @@ protected:
 	ShopPoolPolyphemus(cocos2d::ValueMap& properties);
 	virtual ~ShopPoolPolyphemus();
 
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
-
 private:
 	typedef ShopPool super;
 };

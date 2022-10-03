@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="140" nextobjectid="1066">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="140" nextobjectid="1066">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -579,7 +579,7 @@
   <object id="931" name="edge-portal" type="object" x="1.76608" y="621.76" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="UnderflowRuins/Zone_1_3"/>
+    <property name="map" value="UnderflowRuins/Zone_1_5"/>
     <property name="transition" value="left"/>
    </properties>
   </object>

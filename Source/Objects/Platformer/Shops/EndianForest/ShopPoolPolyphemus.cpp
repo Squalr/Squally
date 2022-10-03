@@ -33,18 +33,3 @@ ShopPoolPolyphemus::ShopPoolPolyphemus(ValueMap& properties) : super(properties,
 ShopPoolPolyphemus::~ShopPoolPolyphemus()
 {
 }
-
-void ShopPoolPolyphemus::onEnter()
-{
-	super::onEnter(); 
-}
-
-void ShopPoolPolyphemus::initializePositions()
-{
-	super::initializePositions();
-}
-
-void ShopPoolPolyphemus::initializeListeners()
-{
-	super::initializeListeners();
-}

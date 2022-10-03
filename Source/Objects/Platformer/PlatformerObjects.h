@@ -123,6 +123,7 @@
 #include "Objects/Platformer/Shops/EndianForest/ShopPoolMinos.h"
 #include "Objects/Platformer/Shops/EndianForest/ShopPoolPolyphemus.h"
 #include "Objects/Platformer/Shops/EndianForest/ShopPoolToben.h"
+#include "Objects/Platformer/Shops/UnderflowRuins/ShopPoolAres.h"
 #include "Objects/Platformer/Shops/UnderflowRuins/ShopPoolGeryon.h"
 #include "Objects/Platformer/Shops/UnderflowRuins/ShopPoolGriffin.h"
 #include "Objects/Platformer/Shops/ShopItem.h"

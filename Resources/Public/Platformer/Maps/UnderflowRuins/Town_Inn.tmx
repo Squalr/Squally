@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="829">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="838">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -189,7 +189,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="770" name="Generic/ShelfBar1" type="decor" x="1565.59" y="115.752" width="1135" height="753"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -201,10 +200,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="760" name="ares" type="entity" x="2210.93" y="851.352" width="128" height="167">
+  <object id="760" name="ares" type="entity" x="2092.93" y="850.352" width="128" height="167">
    <properties>
     <property name="components" value="petrified,shopkeeper,face-squally"/>
     <property name="flip-x" type="bool" value="true"/>
+    <property name="tag" value="shopkeeper"/>
    </properties>
   </object>
  </objectgroup>
@@ -230,6 +230,7 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
+  <object id="837" name="Generic/Shelf1" type="decor" x="1581.59" y="73.5939" width="1135" height="753"/>
  </objectgroup>
  <objectgroup id="22" name="decor">
   <properties>
@@ -253,6 +254,49 @@
     <property name="transition" value="inn"/>
    </properties>
   </object>
+  <object id="830" name="shop-item" type="object" x="1836.52" y="107.961" width="64" height="64">
+   <properties>
+    <property name="components" value="petrification-link"/>
+    <property name="linked-tag" value="shopkeeper"/>
+    <property name="pool" value="shop-pool-ares"/>
+   </properties>
+  </object>
+  <object id="831" name="shop-item" type="object" x="2129.85" y="107.961" width="64" height="64">
+   <properties>
+    <property name="components" value="petrification-link"/>
+    <property name="linked-tag" value="shopkeeper"/>
+    <property name="pool" value="shop-pool-ares"/>
+   </properties>
+  </object>
+  <object id="832" name="shop-item" type="object" x="2411.85" y="107.961" width="64" height="64">
+   <properties>
+    <property name="components" value="petrification-link"/>
+    <property name="linked-tag" value="shopkeeper"/>
+    <property name="pool" value="shop-pool-ares"/>
+   </properties>
+  </object>
+  <object id="833" name="shop-item" type="object" x="1837.38" y="392.207" width="64" height="64">
+   <properties>
+    <property name="components" value="petrification-link"/>
+    <property name="linked-tag" value="shopkeeper"/>
+    <property name="pool" value="shop-pool-ares"/>
+   </properties>
+  </object>
+  <object id="834" name="shop-item" type="object" x="2129.85" y="392.207" width="64" height="64">
+   <properties>
+    <property name="components" value="petrification-link"/>
+    <property name="linked-tag" value="shopkeeper"/>
+    <property name="pool" value="shop-pool-ares"/>
+   </properties>
+  </object>
+  <object id="835" name="shop-item" type="object" x="2411.85" y="392.207" width="64" height="64">
+   <properties>
+    <property name="components" value="petrification-link"/>
+    <property name="linked-tag" value="shopkeeper"/>
+    <property name="pool" value="shop-pool-ares"/>
+   </properties>
+  </object>
+  <object id="836" name="shop-pool-ares" type="object" x="1190.06" y="331.903" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

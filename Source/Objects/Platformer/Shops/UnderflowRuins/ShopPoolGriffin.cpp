@@ -37,18 +37,3 @@ ShopPoolGriffin::ShopPoolGriffin(ValueMap& properties) : super(properties, ShopP
 ShopPoolGriffin::~ShopPoolGriffin()
 {
 }
-
-void ShopPoolGriffin::onEnter()
-{
-	super::onEnter(); 
-}
-
-void ShopPoolGriffin::initializePositions()
-{
-	super::initializePositions();
-}
-
-void ShopPoolGriffin::initializeListeners()
-{
-	super::initializeListeners();
-}

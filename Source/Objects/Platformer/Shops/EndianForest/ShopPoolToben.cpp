@@ -35,18 +35,3 @@ ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolT
 ShopPoolToben::~ShopPoolToben()
 {
 }
-
-void ShopPoolToben::onEnter()
-{
-	super::onEnter(); 
-}
-
-void ShopPoolToben::initializePositions()
-{
-	super::initializePositions();
-}
-
-void ShopPoolToben::initializeListeners()
-{
-	super::initializeListeners();
-}

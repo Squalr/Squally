@@ -74,6 +74,7 @@ DeveloperScene::DeveloperScene()
 	- ** Position saving logic busted
 	- ** Deleting script can glitch out
 	- ** Activate swim cooldown on opening save
+	- Chapter transitions can be more special
 	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles)
 	- Sometimes hackable icon is below entity (rare)
 	- Show collectable animal names in notification
@@ -233,8 +234,6 @@ DeveloperScene::DeveloperScene()
 		// - G	=> 3_7 (Mummy Priest)
 
 		// ================== TODO ================== 
-		// ** Killing machine 5 anims
-		// ** Killing machine 6 anims
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
 		// Overworld attacks
 
