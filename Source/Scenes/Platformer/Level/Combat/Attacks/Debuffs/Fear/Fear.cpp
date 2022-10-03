@@ -11,7 +11,7 @@
 #include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
-#include "Engine/Localization/ConstantFloat.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -34,19 +34,13 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_HASTE 1
+#define LOCAL_FUNC_ID_FEAR 1
 
 const std::string Fear::FearIdentifier = "fear";
+const std::string Fear::HackIdentifierFear = "fear";
 
-// Note: UI sets precision on these to 1 digit
-const float Fear::MinSpeed = -1.25f;
-const float Fear::DefaultSpeed = -1.25f;
-const float Fear::DefaultHackSpeed = -0.5f; // Keep in sync with the asm
-const float Fear::MaxSpeed = 1.0f;
-const float Fear::Duration = 6.0f;
-
-// Static to prevent GCC optimization issues
-volatile float Fear::currentSpeed = 0.0f;
+const int Fear::MaxMultiplier = 4;
+const float Fear::Duration = 12.0f;
 
 Fear* Fear::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -60,16 +54,9 @@ Fear* Fear::create(PlatformerEntity* caster, PlatformerEntity* target)
 Fear::Fear(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_SkullGlowRed, AbilityType::Shadow, BuffData(Fear::Duration, Fear::FearIdentifier))
 {
-	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
-	this->spellAura = Sprite::create(FXResources::Auras_ChantAura);
-	this->spellFx = SmartAnimationSequenceNode::create();
+	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 
-	this->spellAura->setColor(Color3B::MAGENTA);
-	this->spellAura->setOpacity(0);
-
-	this->addChild(this->spellFx);
 	this->addChild(this->spellEffect);
-	this->addChild(this->spellAura);
 }
 
 Fear::~Fear()
@@ -82,14 +69,6 @@ void Fear::onEnter()
 
 	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellEffect->start();
-	this->spellFx->playAnimationRepeat(FXResources::WeakMinded_WeakMinded_0000, 0.05f, true);
-
-	this->spellAura->runAction(Sequence::create(
-		FadeTo::create(0.25f, 255),
-		DelayTime::create(0.5f),
-		FadeTo::create(0.25f, 0),
-		nullptr
-	));
 
 	CombatEvents::TriggerHackableCombatCue();
 }
@@ -111,53 +90,21 @@ void Fear::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_HASTE,
+			LOCAL_FUNC_ID_FEAR,
 			HackableCode::HackableCodeInfo(
-				Fear::FearIdentifier,
+				Fear::HackIdentifierFear,
 				Strings::Menus_Hacking_Abilities_Debuffs_Fear_Fear::create(),
-				HackableBase::HackBarColor::Purple,
+				HackableBase::HackBarColor::Red,
 				UIResources::Menus_Icons_SkullGlowRed,
 				LazyNode<HackablePreview>::create([=](){ return FearGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi::create()
-							->setStringReplacementVariables({ ConstantFloat::create(Fear::MinSpeed, 2), ConstantFloat::create(Fear::MaxSpeed, 1) })
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi::create(),
 					},
-					{
-						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Debuffs_Fear_RegisterXmm3::create()
-							->setStringReplacementVariables(ConstantFloat::create(Fear::DefaultSpeed, 2))
-					}
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
-				0.0f,
-				{
-					HackableCode::ReadOnlyScript(
-						Strings::Menus_Hacking_Abilities_Debuffs_Fear_ReduceCurse::create(),
-						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Fear_CommentSpeed::create()
-							->setStringReplacementVariables({ ConstantFloat::create(Fear::DefaultHackSpeed, 1), ConstantFloat::create(Fear::DefaultSpeed, 2) })) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Fear_CommentGainInstead::create()) + 
-						"mov dword ptr [esi], -0.5f\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
-						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Fear_CommentSpeed::create()
-							->setStringReplacementVariables({ ConstantFloat::create(Fear::DefaultHackSpeed, 1), ConstantFloat::create(Fear::DefaultSpeed, 2) })) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Fear_CommentGainInstead::create()) + 
-						"mov dword ptr [rsi], -0.5f\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
-					)
-				}
+				0.0f
 			)
 		},
 	};
@@ -171,46 +118,43 @@ void Fear::registerHackables()
 	}
 }
 
-void Fear::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed)
+void Fear::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	super::onModifyTimelineSpeed(speed);
-	
-	this->currentSpeed = *(speed->speed);
+	super::onBeforeDamageDealt(damageOrHealing);
+
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyFear();
 
-	*(speed->speed) = this->currentSpeed;
+	int min = -std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Fear::MaxMultiplier);
+	int max = std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Fear::MaxMultiplier);
+
+	*damageOrHealing->damageOrHealing = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	*damageOrHealing->damageOrHealingMin = min;
+	*damageOrHealing->damageOrHealingMax = max;
 }
 
 NO_OPTIMIZE void Fear::applyFear()
 {
-	static volatile float speedBonus;
-	static volatile float increment = 0.0f;
-	static volatile float* speedBonusPtr;
-	static volatile float* incrementPtr;
+	static volatile int currentDamageDealtLocal = 0;
 
-	speedBonus = 0.0f;
-	increment = Fear::DefaultSpeed;
-	speedBonusPtr = &speedBonus;
-	incrementPtr = &increment;
+	currentDamageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 
-	ASM_PUSH_EFLAGS()
+	ASM_PUSH_EFLAGS();
 	ASM(push ZSI);
-	ASM(push ZBX);
-	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
-	ASM_MOV_REG_PTR(ZBX, incrementPtr);
-	ASM(movss xmm3, [ZBX]);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
-	ASM(movss [ZSI], xmm3);
-	ASM_NOP16();
+	ASM_MOV_REG_VAR(esi, currentDamageDealtLocal);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FEAR);
+	ASM(shr ZSI, 2);
 	HACKABLE_CODE_END();
 
-	ASM(pop ZBX);
-	ASM(pop ZSI);
-	ASM_POP_EFLAGS()
+	ASM_MOV_VAR_REG(currentDamageDealtLocal, esi);
 
-	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, Fear::MinSpeed, Fear::MaxSpeed);
+	ASM(pop ZSI);
+	ASM_POP_EFLAGS();
+
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

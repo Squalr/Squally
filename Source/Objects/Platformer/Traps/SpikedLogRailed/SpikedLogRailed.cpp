@@ -112,6 +112,7 @@ void SpikedLogRailed::registerHackables()
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx::create() },
+					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEcx::create() },
 					{ HackableCode::Register::zsi, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi::create() },
 					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEdi::create() },
 				},
@@ -122,15 +123,23 @@ void SpikedLogRailed::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						std::string("cmp ebx, 0\n") +
-						std::string("cmovg eax, esi\n") +
-						std::string("cmovl eax, edi\n\n") +
+						std::string("cmp ebx, 0\n\n") +
+						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft::create()) +
+						std::string("cmovg eax, edi\n\n") +
+						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight::create()) +
+						std::string("cmovl eax, esi\n\n") +
+						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert::create()) +
+						std::string("imul eax, ecx\n\n") +
 						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
 						, // x64
-						std::string("cmp rbx, 0\n") +
-						std::string("cmovg rax, rsi\n") +
-						std::string("cmovl rax, rdi\n\n") +
+						std::string("cmp rbx, 0\n\n") +
+						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft::create()) +
+						std::string("cmovg rax, rdi\n\n") +
+						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight::create()) +
+						std::string("cmovl rax, rsi\n\n") +
+						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert::create()) +
+						std::string("imul rax, rcx\n\n") +
 						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()))
 					)
@@ -158,9 +167,11 @@ NO_OPTIMIZE void SpikedLogRailed::moveRailedSpikes(float dt)
 {
 	static volatile int spikeDirectionLocal;
 	static volatile int squallyVelocityXLocal;
+	static volatile int inverseLocal;
 
 	spikeDirectionLocal = -1;
 	squallyVelocityXLocal = -1;
+	inverseLocal = this->inverse ? -1 : 1;
 
 	if (this->squally != nullptr)
 	{
@@ -170,6 +181,7 @@ NO_OPTIMIZE void SpikedLogRailed::moveRailedSpikes(float dt)
 	}
 
 	ASM_PUSH_EFLAGS();
+	ASM(push ZCX)
 	ASM(push ZBX)
 	ASM(push ZAX)
 	ASM(push ZSI)
@@ -178,11 +190,13 @@ NO_OPTIMIZE void SpikedLogRailed::moveRailedSpikes(float dt)
 	ASM(mov ZSI, 1)
 	ASM(mov ZDI, -1)
 	ASM_MOV_REG_VAR(ZBX, squallyVelocityXLocal);
+	ASM_MOV_REG_VAR(ZCX, inverseLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_MOVE);
 	ASM(cmp ebx, 0)
-	ASM(cmovg ZAX, ZSI)
-	ASM(cmovl ZAX, ZDI)
+	ASM(cmovg ZAX, ZDI)
+	ASM(cmovl ZAX, ZSI)
+	ASM(imul ZAX, ZCX)
 	ASM_NOP9();
 	HACKABLE_CODE_END();
 
@@ -191,6 +205,7 @@ NO_OPTIMIZE void SpikedLogRailed::moveRailedSpikes(float dt)
 	ASM(pop ZSI);
 	ASM(pop ZAX);
 	ASM(pop ZBX);
+	ASM(pop ZCX);
 	ASM_POP_EFLAGS();
 
 	static const float MoveSpeed = 512.0f;
@@ -201,7 +216,7 @@ NO_OPTIMIZE void SpikedLogRailed::moveRailedSpikes(float dt)
 
 	if (spikeDirectionLocal != 0)
 	{
-		if ((spikeDirectionLocal < 0) ^ this->inverse)
+		if (spikeDirectionLocal > 0)
 		{
 			newX += MoveSpeed * dt;
 		}

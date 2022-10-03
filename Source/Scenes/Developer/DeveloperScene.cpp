@@ -70,14 +70,15 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- ** Can get stuck on roof of maps (see UR 3_1)
-	- **Death does not reset zoom/layer sometimes (see UR 1_0, die to the launchers)
+	- ** Death does not reset zoom/layer sometimes (see UR 1_0, die to the launchers)
+	- ** Position saving logic busted
+	- ** Activate swim cooldown on opening save
 	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles)
 	- Sometimes hackable icon is below entity (rare)
 	- Show collectable animal names in notification
 	- Evil Eye chase scenes, cracks in simulation for story
 	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+
 	- Mounts should apply to helpers so they aren't awkwardly lagging behind
-	- Activate swim cooldown on opening save
 	- Hexus:
 		- Add a "Stack" pile, and PUSH/POP cards. PUSH = Move any card (even enemy) to stack. POP = Overwrite card attack
 			- Move 'cards to play/draw' indicators to the left side. Shift graveyard down, stack above it.
@@ -231,7 +232,7 @@ DeveloperScene::DeveloperScene()
 		// - G	=> 3_7 (Mummy Priest)
 
 		// ================== TODO ================== 
-		// ** Needs Dark Tiger scripting (Maybe recycle a SHL or SHR instead of a CMOV)
+		// ** Dark Tiger anims
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
 		// Overworld attacks
 

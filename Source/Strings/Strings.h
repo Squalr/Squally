@@ -10644,36 +10644,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterXmm3() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Fear_CommentGainInstead : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_Fear_CommentGainInstead* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Fear_CommentGainInstead();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Fear_CommentGainInstead() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_Fear_CommentSpeed : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_Fear_CommentSpeed* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Fear_CommentSpeed();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Fear_CommentSpeed() = default;
-	};
-
 	class Menus_Hacking_Abilities_Debuffs_Fear_Fear : public LocalizedString
 	{
 	public:
@@ -10689,21 +10659,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Fear_Fear() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Fear_ReduceCurse : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_Fear_ReduceCurse* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Fear_ReduceCurse();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Fear_ReduceCurse() = default;
-	};
-
 	class Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi : public LocalizedString
 	{
 	public:
@@ -10717,21 +10672,6 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi();
 		virtual ~Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_Fear_RegisterXmm3 : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_Fear_RegisterXmm3* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Fear_RegisterXmm3();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Fear_RegisterXmm3() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare : public LocalizedString
@@ -19209,6 +19149,51 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint() = default;
 	};
 
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight() = default;
+	};
+
 	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_MoveTowardsPlayer : public LocalizedString
 	{
 	public:
@@ -19252,6 +19237,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx();
 		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEcx();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEcx() = default;
 	};
 
 	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEdi : public LocalizedString
