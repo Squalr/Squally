@@ -234,6 +234,7 @@ DeveloperScene::DeveloperScene()
 		// - G	=> 3_7 (Mummy Priest)
 
 		// ================== TODO ================== 
+		// - ** Animate gulls
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
 		// Overworld attacks
 

@@ -160,7 +160,23 @@ void Crusher::registerHackables()
 				},
 				int(HackFlags::None),
 				20.0f,
-				0.0f
+				0.0f,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						"and ecx, eax\n"
+						"and ecx, ebx\n\n" + 
+						COMMENT(Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_Hint::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create()))
+						, // x64
+						"and rcx, rax\n"
+						"and rcx, rbx\n\n" + 
+						COMMENT(Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_Hint::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create()))
+					)
+				},
+				true
 			)
 		},
 	};

@@ -33,7 +33,6 @@ private:
 	Rhinoman* rhinoman = nullptr;
 	Squally* squally = nullptr;
 	ScreamingDoor* screamingDoor = nullptr;
-	WorldSound* rumbleSound = nullptr;
 
 	static const std::string MapEventAwakenRhinoman;
 };

@@ -18024,6 +18024,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_Crusher_DetectPlayer_DetectPlayer() = default;
 	};
 
+	class Menus_Hacking_Objects_Crusher_DetectPlayer_Hint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Crusher_DetectPlayer_Hint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Crusher_DetectPlayer_Hint();
+		virtual ~Menus_Hacking_Objects_Crusher_DetectPlayer_Hint() = default;
+	};
+
 	class Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEax : public LocalizedString
 	{
 	public:

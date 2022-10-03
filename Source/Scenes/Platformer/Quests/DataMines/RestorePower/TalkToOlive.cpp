@@ -154,7 +154,7 @@ void TalkToOlive::runCinematicSequencePt2()
 		{
 			this->runCinematicSequencePt3();
 		},
-		Voices::GetNextVoiceMedium(),
+		"",
 		false
 	));
 }

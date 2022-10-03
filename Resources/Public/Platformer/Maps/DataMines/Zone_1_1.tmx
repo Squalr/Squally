@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="853">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="855">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,9 +17,18 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="712" name="mines" type="texture" x="1079.11" y="1634.1">
-   <polygon points="-1478.68,-2086.15 2203.37,-2081.55 2199.12,1212.13 -1472.23,1198.72"/>
+  <object id="854" name="mines" type="terrain" x="-386.37" y="-298.12" width="3604.74" height="2852.24">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
   </object>
+ </objectgroup>
+ <objectgroup id="76" name="decor -4 bg">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="853" name="Mines/MineDoorTunnel" type="decor" x="1110.86" y="1202.95" width="435" height="389"/>
  </objectgroup>
  <objectgroup id="66" name="terrain -4">
   <properties>
@@ -48,7 +57,6 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="850" name="Mines/MineDoorTunnel" type="decor" x="1110.86" y="1202.95" width="435" height="389"/>
  </objectgroup>
  <objectgroup id="70" name="objects -4">
   <properties>
@@ -72,7 +80,7 @@
   </object>
   <object id="851" name="portal" type="object" x="1210.06" y="1336.39" width="256" height="256">
    <properties>
-    <property name="map" value="DataMines/Zone_1_1a"/>
+    <property name="map" value="DataMines/Zone_1_1_a"/>
     <property name="transition" value="door"/>
    </properties>
   </object>

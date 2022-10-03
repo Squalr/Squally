@@ -44,10 +44,7 @@ DefeatRhinoman* DefeatRhinoman::create(GameObject* owner, QuestLine* questLine)
 
 DefeatRhinoman::DefeatRhinoman(GameObject* owner, QuestLine* questLine) : super(owner, questLine, DefeatRhinoman::MapKeyQuest, false)
 {
-	this->rumbleSound = WorldSound::create(SoundResources::Platformer_FX_Rumbles_StoneRumbleAndRumble1);
 	this->rhinoman = dynamic_cast<Rhinoman*>(owner);
-
-	this->addChild(this->rumbleSound);
 }
 
 DefeatRhinoman::~DefeatRhinoman()
@@ -119,7 +116,6 @@ void DefeatRhinoman::runCinematicSequencePt1()
 {
 	PlatformerEvents::TriggerCinematicHijack();
 
-	this->rumbleSound->play();
 	this->screamingDoor->unlock(true);
 
 	this->rhinoman->runAction(Sequence::create(
