@@ -218,7 +218,7 @@
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="DataMines/Zone_2_0"/>
-    <property name="transition" value="left"/>
+    <property name="transition" value="left-bottom"/>
    </properties>
   </object>
   <object id="1879" name="edge-portal" type="object" x="5430.04" y="881.999" width="199.918" height="488.002">

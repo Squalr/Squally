@@ -95,8 +95,18 @@ void RecruitableBehavior::updateStateForCurrentHelper(std::string currentHelperN
 	this->entity->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		std::string helperName = GameUtils::getKeyOrDefault(this->entity->properties, GameObject::PropertyName, Value("")).asString();
+		bool isHelperAvailable = true;
 
-		if (currentHelperName == helperName)
+		if (helperName == Guano::MapKey && !SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGuanoFound, Value(false)).asBool())
+		{
+			isHelperAvailable = false;
+		}
+		else if (helperName == Gecky::MapKey && !SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyFound, Value(false)).asBool())
+		{
+			isHelperAvailable = false;
+		}
+
+		if (currentHelperName == helperName || !isHelperAvailable)
 		{
 			interactionBehavior->clearPretext();
 			interactionBehavior->disableInteraction();

@@ -565,7 +565,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="57" name="objects back" visible="0">
+ <objectgroup id="57" name="objects back">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -581,7 +581,7 @@
     <property name="target" value="target-A"/>
    </properties>
   </object>
-  <object id="1947" name="mini-map-relocator" type="object" x="4612.06" y="1657.97" width="3327.88" height="2828.06">
+  <object id="1947" name="mini-map-relocator" type="object" x="4612.06" y="1657.97" width="3327.88" height="1384.06">
    <properties>
     <property name="position" value="bottom-right"/>
    </properties>
@@ -677,7 +677,7 @@
   </object>
   <object id="1907" name="logic-gate" type="object" x="5128.51" y="3614.76" width="285" height="676">
    <properties>
-    <property name="answer" type="bool" value="false"/>
+    <property name="answer" type="bool" value="true"/>
     <property name="color" value="red"/>
     <property name="components" value="z-fade"/>
     <property name="delta" type="float" value="456"/>
@@ -712,7 +712,7 @@
   </object>
   <object id="1910" name="logic-gate" type="object" x="6150.49" y="3614.76" width="285" height="676">
    <properties>
-    <property name="answer" type="bool" value="false"/>
+    <property name="answer" type="bool" value="true"/>
     <property name="color" value="green"/>
     <property name="components" value="z-fade"/>
     <property name="delta" type="float" value="456"/>

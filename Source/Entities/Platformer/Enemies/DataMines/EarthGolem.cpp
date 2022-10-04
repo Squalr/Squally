@@ -36,7 +36,7 @@ EarthGolem::~EarthGolem()
 
 Vec2 EarthGolem::getDialogueOffset()
 {
-	return Vec2(-48.0f, -144.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* EarthGolem::getEntityName()

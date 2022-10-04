@@ -125,6 +125,7 @@
   </object>
   <object id="849" name="warp" type="object" x="572" y="1334" width="256" height="256">
    <properties>
+    <property name="components" value="disabled-portal"/>
     <property name="from" value="bridge-4-A"/>
     <property name="locked-text-key" value="closed"/>
     <property name="no-warp-camera" type="bool" value="true"/>
