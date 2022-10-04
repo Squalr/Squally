@@ -8889,6 +8889,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdx() = default;
 	};
 
+	class Menus_Hacking_Abilities_Abilities_Rejuvination_Hint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Rejuvination_Hint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Rejuvination_Hint();
+		virtual ~Menus_Hacking_Abilities_Abilities_Rejuvination_Hint() = default;
+	};
+
 	class Menus_Hacking_Abilities_Abilities_Rejuvination_RegisterEdx : public LocalizedString
 	{
 	public:

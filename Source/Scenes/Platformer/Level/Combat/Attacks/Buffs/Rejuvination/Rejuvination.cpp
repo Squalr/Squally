@@ -107,7 +107,19 @@ void Rejuvination::registerHackables()
 				},
 				int(HackFlags::None),
 				(float(Rejuvination::HealTicks) * Rejuvination::TimeBetweenTicks) + 0.1f,
-				0.0f
+				0.0f,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						"rol edx, 1\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_Hint::create())
+						, // x64
+						"rol rdx, 1\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_Hint::create())
+					),
+				},
+				true
 			)
 		},
 	};

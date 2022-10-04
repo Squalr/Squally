@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="128" nextobjectid="1981">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="128" nextobjectid="1982">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -220,12 +220,11 @@
   </properties>
   <object id="1944" name="dark-grass" type="terrain" x="4779.46" y="1998" width="905.08" height="2448">
    <properties>
-    <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="118" name="vines -4">
+ <objectgroup id="118" name="vines -4" visible="0">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -251,7 +250,7 @@
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="2432,737 2538.27,732.204 2510.2,322.705 2432.36,-297.132 1781.39,-1222.87 1119.92,-1689.02 1873.31,-1690.6 2435.86,-1157.25 2723.94,-587.713 2897.42,171.308 3183.62,461.073 4431.37,597.572 5758.59,203.035 6961.39,-72.3128 7735.52,-314.012 8274.73,-261.808 8269.04,128.881 7658.6,69.0824 6724.86,322.674 5004.72,785.372 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 2540.41,1846.57 2709.1,1917.32 3688.23,1916.08 4109.41,1976.8 4252.12,1975.54 4557.69,2097.02 4841.89,2096.19 4839.91,2332.64 2347.87,2330.62 2018.71,1333.49 1685.53,1147.1 686.106,1431.01 -452.248,1181.84 -434.152,-1680.45 142.021,-1679.9 168.02,737.709"/>
+   <polygon points="2432,737 2538.27,732.204 2510.2,322.705 2432.36,-297.132 1781.39,-1222.87 1119.92,-1689.02 1873.31,-1690.6 2435.86,-1157.25 2723.94,-587.713 2897.42,171.308 3183.62,461.073 4431.37,597.572 5758.59,203.035 6961.39,-72.3128 7735.52,-314.012 8274.73,-261.808 8269.04,128.881 7658.6,69.0824 6724.86,322.674 5004.72,785.372 2874.86,921.355 2518.02,1069.12 2527.68,1393.57 2540.41,1846.57 2709.1,1917.32 3688.23,1916.08 4109.41,1976.8 4252.12,1975.54 4557.69,2097.02 4841.89,2096.19 4839.91,2332.64 2347.87,2330.62 2018.71,1333.49 1685.53,1147.1 686.106,1431.01 -452.248,1181.84 -434.152,-1680.45 142.021,-1679.9 168.02,737.709"/>
   </object>
  </objectgroup>
  <objectgroup id="108" name="objects -4">
@@ -328,7 +327,7 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="107" name="water -4">
+ <objectgroup id="107" name="water -4" visible="0">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -339,7 +338,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="123" name="vines -3">
+ <objectgroup id="123" name="vines -3" visible="0">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -369,7 +368,7 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="106" name="water -3">
+ <objectgroup id="106" name="water -3" visible="0">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -386,7 +385,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="65" name="terrain -2">
+ <objectgroup id="65" name="terrain -2" visible="0">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -410,7 +409,7 @@
    <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
- <objectgroup id="105" name="water -2">
+ <objectgroup id="105" name="water -2" visible="0">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -421,7 +420,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="124" name="vines -1">
+ <objectgroup id="124" name="vines -1" visible="0">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
@@ -463,7 +462,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="104" name="water -1">
+ <objectgroup id="104" name="water -1" visible="0">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
@@ -530,7 +529,7 @@
   </properties>
   <object id="1955" name="Mines/MineDoorOpen" type="decor" x="251.5" y="1245.5" width="435" height="389"/>
  </objectgroup>
- <objectgroup id="21" name="terrain">
+ <objectgroup id="21" name="terrain" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -538,7 +537,7 @@
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="0,0 1652,-4 1944,16 2308,100 2720,260 3284,484 3652,784 3868,1072 3948,1296 3852,1472 3644,1520 3048,1292 2824,952 2801.04,535.248 2336.37,354.077 1792,292 907.833,303.378 260,544 113.53,1318.75 572,1920 924,2104 1732,1976 2580,1824 3059.59,1958.53 3484,1960 4324.65,1961.6 4724.71,2267.66 4996,2640 8164,2648 8172,2872 -596,2848 -564,-64"/>
+   <polygon points="0,0 1652,-4 1944,16 2308,100 2720,260 3284,484 3652,784 3868,1072 3948,1296 3852,1472 3644,1520 3048,1292 2824,952 2801.04,535.248 2336.37,354.077 1792,292 907.833,303.378 260,544 113.53,1318.75 572,1920 924,2104 1130.97,2101.53 1732,1976 2580,1824 3059.59,1958.53 3484,1960 4324.65,1961.6 4724.71,2267.66 4996,2640 8164,2648 8172,2872 -596,2848 -564,-64"/>
   </object>
   <object id="1876" name="dark-grass" type="terrain" x="7308" y="28">
    <properties>
@@ -566,7 +565,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="57" name="objects back">
+ <objectgroup id="57" name="objects back" visible="0">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -772,6 +771,11 @@
    <properties>
     <property name="map" value="DataMines/Zone_2_2"/>
     <property name="transition" value="door"/>
+   </properties>
+  </object>
+  <object id="1981" name="chest" type="object" x="858" y="3624" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="dm-generic"/>
    </properties>
   </object>
  </objectgroup>

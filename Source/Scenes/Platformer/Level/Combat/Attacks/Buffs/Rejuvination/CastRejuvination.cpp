@@ -68,14 +68,10 @@ void CastRejuvination::performAttack(PlatformerEntity* owner, std::vector<Platfo
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
-	
-	for (auto next : targets)
+	owner->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
-		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
-		{
-			entityBuffBehavior->applyBuff(Rejuvination::create(owner, next));
-		});
-	}
+		entityBuffBehavior->applyBuff(Rejuvination::create(owner, owner));
+	});
 }
 
 void CastRejuvination::onCleanup()
