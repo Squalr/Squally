@@ -50,7 +50,7 @@ Rejuvination* Rejuvination::create(PlatformerEntity* caster, PlatformerEntity* t
 }
 
 Rejuvination::Rejuvination(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_MoonShine, AbilityType::Arcane, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_MoonShine, AbilityType::Nature, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create();
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);

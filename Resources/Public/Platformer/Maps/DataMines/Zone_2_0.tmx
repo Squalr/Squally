@@ -529,7 +529,7 @@
   </properties>
   <object id="1955" name="Mines/MineDoorOpen" type="decor" x="251.5" y="1245.5" width="435" height="389"/>
  </objectgroup>
- <objectgroup id="21" name="terrain" visible="0">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -537,7 +537,7 @@
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="0,0 1652,-4 1944,16 2308,100 2720,260 3284,484 3652,784 3868,1072 3948,1296 3852,1472 3644,1520 3048,1292 2824,952 2801.04,535.248 2336.37,354.077 1792,292 907.833,303.378 260,544 113.53,1318.75 572,1920 924,2104 1130.97,2101.53 1732,1976 2580,1824 3059.59,1958.53 3484,1960 4324.65,1961.6 4724.71,2267.66 4996,2640 8164,2648 8172,2872 -596,2848 -564,-64"/>
+   <polygon points="0,0 1652,-4 1944,16 2308,100 2720,260 2960.32,263.55 3347.64,484 3679.27,774.909 3940.73,1072 4020.73,1296 3924.73,1472 3644,1520 3048,1292 2824,952 2801.04,535.248 2336.37,354.077 1792,292 907.833,303.378 260,544 113.53,1318.75 572,1920 924,2104 1130.97,2101.53 1732,1976 2580,1824 3059.59,1958.53 3484,1960 4324.65,1961.6 4724.71,2267.66 4996,2640 8164,2648 8172,2872 -596,2848 -564,-64"/>
   </object>
   <object id="1876" name="dark-grass" type="terrain" x="7308" y="28">
    <properties>
@@ -789,7 +789,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1865" name="forest-golem" type="entity" x="2704.42" y="1520.37" width="128" height="128">
+  <object id="1865" name="forest-golem" type="entity" x="2649.87" y="1777.95" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
@@ -798,7 +798,7 @@
     <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>
-  <object id="1866" name="forest-golem" type="entity" x="2711.58" y="1131.63" width="128" height="128">
+  <object id="1866" name="forest-golem" type="entity" x="2657.03" y="1389.21" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>

@@ -8874,10 +8874,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration() = default;
 	};
 
-	class Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdx : public LocalizedString
+	class Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdx* create();
+		static Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdi* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8885,8 +8885,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdx();
-		virtual ~Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdx() = default;
+		Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdi() = default;
 	};
 
 	class Menus_Hacking_Abilities_Abilities_Rejuvination_Hint : public LocalizedString

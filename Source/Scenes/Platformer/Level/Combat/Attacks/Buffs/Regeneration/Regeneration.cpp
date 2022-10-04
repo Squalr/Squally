@@ -49,7 +49,7 @@ Regeneration* Regeneration::create(PlatformerEntity* caster, PlatformerEntity* t
 }
 
 Regeneration::Regeneration(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_MoonShine, AbilityType::Arcane, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_AlchemyPot, AbilityType::Nature, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create();
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
@@ -99,10 +99,10 @@ void Regeneration::registerHackables()
 				Regeneration::RegenerationIdentifier,
 				Strings::Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration::create(),
 				HackableBase::HackBarColor::Green,
-				UIResources::Menus_Icons_MoonShine,
+				UIResources::Menus_Icons_AlchemyPot,
 				LazyNode<HackablePreview>::create([=](){ return RegenerationGenericPreview::create(); }),
 				{
-					// { HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_RegenerationFlask_Regeneration_RegisterEdi::create() }
+					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdi::create() }
 				},
 				int(HackFlags::None),
 				(float(Regeneration::HealTicks) * Regeneration::TimeBetweenTicks) + 0.1f,

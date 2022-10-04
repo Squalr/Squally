@@ -282,7 +282,7 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ================== 
 		// ** Krampus ability - Maybe a AoE slow effect. Can be FPU if needed, I don't really care. Maybe a NOT bomb.
 		// ** Minecarts can still glitch and not spawn on map changes
-		// Rhinoman fight too early. Need shaman enemy before, and maybe a puzzle/trap
+		// Terrain in tent map has wrong corner connectors
 		// Tiki anims still broken (bad Spriter implementation strikes again)
 		// Train anims broken (for same reason)
 		// Nature spellbook, even if just for an ability? What ability?
