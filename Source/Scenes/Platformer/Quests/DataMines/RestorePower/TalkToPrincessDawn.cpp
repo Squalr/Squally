@@ -309,6 +309,21 @@ void TalkToPrincessDawn::runCinematicSequencePt1()
 			),
 			[=]()
 			{
+			},
+			Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_DataMines_RestorePower_PrincessDawn_K_ImOut::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->squally, true)
+			),
+			[=]()
+			{
 				 // Backwards compat, this field was added mid development, and we want to avoid Guano being inaccessible to old patches
 				SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoFound, Value(true));
 				SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
@@ -335,7 +350,7 @@ void TalkToPrincessDawn::runCinematicSequencePt1()
 
 				this->complete();
 			},
-			Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
+			Voices::GetNextVoiceShort(),
 			true
 		));
 	});
