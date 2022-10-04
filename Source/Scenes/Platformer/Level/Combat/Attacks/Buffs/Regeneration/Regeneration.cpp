@@ -36,8 +36,9 @@ using namespace cocos2d;
 
 const std::string Regeneration::RegenerationIdentifier = "regeneration";
 const float Regeneration::TimeBetweenTicks = 1.0f;
-const int Regeneration::HealTicks = 3;
+const int Regeneration::HealTicks = 5;
 const float Regeneration::StartDelay = 0.15f;
+const int Regeneration::MaxHealing = 255;
 
 Regeneration* Regeneration::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -49,7 +50,7 @@ Regeneration* Regeneration::create(PlatformerEntity* caster, PlatformerEntity* t
 }
 
 Regeneration::Regeneration(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_AlchemyPot, AbilityType::Nature, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_WandGlowYellow, AbilityType::Nature, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create();
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
@@ -99,7 +100,7 @@ void Regeneration::registerHackables()
 				Regeneration::RegenerationIdentifier,
 				Strings::Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration::create(),
 				HackableBase::HackBarColor::Green,
-				UIResources::Menus_Icons_AlchemyPot,
+				UIResources::Menus_Icons_WandGlowYellow,
 				LazyNode<HackablePreview>::create([=](){ return RegenerationGenericPreview::create(); }),
 				{
 					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdi::create() }
@@ -183,7 +184,10 @@ NO_OPTIMIZE void Regeneration::runRestoreTick()
 
 	this->healSound->play();
 
-	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, health - originalHealth, this->abilityType));
+	int delta = MathUtils::clamp(health - originalHealth, -Regeneration::MaxHealing, Regeneration::MaxHealing);
+	bool overflowedMin = delta == -Regeneration::MaxHealing;
+	bool overflowedMax = delta == Regeneration::MaxHealing;
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, delta, this->abilityType, true, overflowedMin, overflowedMax));
 
 	HACKABLES_STOP_SEARCH();
 }

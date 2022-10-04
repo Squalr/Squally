@@ -15,6 +15,7 @@ public:
 	static const float TimeBetweenTicks;
 	static const int HealTicks;
 	static const float StartDelay;
+	static const int MaxHealing;
 
 protected:
 	Regeneration(PlatformerEntity* caster, PlatformerEntity* target);

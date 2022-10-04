@@ -30,7 +30,7 @@ CastRegeneration* CastRegeneration::create(float attackDuration, float recoverDu
 }
 
 CastRegeneration::CastRegeneration(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_AlchemyPot, priority, AbilityType::Nature, 0, 0, 4, attackDuration, recoverDuration, TargetingType::Team)
+	: super(AttackType::Damage, UIResources::Menus_Icons_WandGlowYellow, priority, AbilityType::Nature, 0, 0, 4, attackDuration, recoverDuration, TargetingType::Self)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	
@@ -68,14 +68,10 @@ void CastRegeneration::performAttack(PlatformerEntity* owner, std::vector<Platfo
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
-	
-	for (auto next : targets)
+	owner->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
-		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
-		{
-			entityBuffBehavior->applyBuff(Regeneration::create(owner, next));
-		});
-	}
+		entityBuffBehavior->applyBuff(Regeneration::create(owner, owner));
+	});
 }
 
 void CastRegeneration::onCleanup()
