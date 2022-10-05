@@ -174,6 +174,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[SkeletalArcher::MapKey] = StatsIncrements(Stats(55, 12, 96));
 	StatsTables::StatsTable[SkeletalNecromancer::MapKey] = StatsIncrements(Stats(55, 12, 99));
 	StatsTables::StatsTable[SkeletalWarrior::MapKey] = StatsIncrements(Stats(55, 12, 98));
+	StatsTables::StatsTable[SkeletalPirate::MapKey] = StatsIncrements(Stats(56, 14, 97));
 	StatsTables::StatsTable[TikiGolem::MapKey] = StatsIncrements(Stats(60, 12, 80));
 	StatsTables::StatsTable[Krampus::MapKey] = StatsIncrements(Stats(55, 12, 260));
 
@@ -202,7 +203,6 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Barbarian::MapKey] = StatsIncrements(Stats(55, 12, 88));
 	StatsTables::StatsTable[Jack::MapKey] =StatsIncrements(Stats(10, 10, 10)); 
 	StatsTables::StatsTable[Reaper::MapKey] = StatsIncrements(Stats(10, 10, 10));
-	StatsTables::StatsTable[SkeletalPirate::MapKey] = StatsIncrements(Stats(10, 10, 10));
 	StatsTables::StatsTable[Thug::MapKey] = StatsIncrements(Stats(10, 10, 10));
 	StatsTables::StatsTable[VampireLord::MapKey] = StatsIncrements(Stats(10, 10, 10));
 	StatsTables::StatsTable[Vampiress::MapKey] = StatsIncrements(Stats(10, 10, 10));

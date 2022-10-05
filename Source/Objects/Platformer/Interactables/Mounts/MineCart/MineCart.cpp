@@ -98,7 +98,7 @@ void MineCart::update(float dt)
 
 Vec2 MineCart::getButtonOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(0.0f, -64.0f);
 }
 
 void MineCart::registerHackables()
@@ -111,17 +111,15 @@ void MineCart::registerHackables()
 			LOCAL_FUNC_ID_CAN_MOVE,
 			HackableCode::HackableCodeInfo(
 				MineCart::MapKey,
-				Strings::Menus_StoryMode::create(),
-				HackableBase::HackBarColor::Purple,
+				Strings::Menus_Hacking_Objects_MineCart_IsMoving_IsMoving::create(),
+				HackableBase::HackBarColor::Gray,
 				UIResources::Menus_Icons_GearBroken,
 				LazyNode<HackablePreview>::create([=](){ return MineCartPreview::create(); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_StoryMode::create() },
-					{ HackableCode::Register::xmm0, Strings::Menus_StoryMode::create() },
-					{ HackableCode::Register::xmm1, Strings::Menus_StoryMode::create() },
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_MineCart_IsMoving_RegisterEax::create() },
 				},
 				int(HackFlags::None),
-				3.0f,
+				2.5f,
 				0.0f
 			)
 		},

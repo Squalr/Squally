@@ -367,7 +367,7 @@
   <object id="861" name="mine-cart" type="object" x="544.417" y="2741.6" width="240" height="184">
    <properties>
     <property name="color" value="blue"/>
-    <property name="direction" value="left"/>
+    <property name="direction" value="right"/>
     <property name="tag" value="cart-A"/>
    </properties>
   </object>

@@ -10569,10 +10569,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CurseOfTheAncients() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_Register : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_Register* create();
+		static Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEax* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10580,8 +10580,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_Register();
-		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_Register() = default;
+		Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEbx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEbx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead : public LocalizedString
@@ -18787,6 +18802,36 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer();
 		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer() = default;
+	};
+
+	class Menus_Hacking_Objects_MineCart_IsMoving_IsMoving : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MineCart_IsMoving_IsMoving* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MineCart_IsMoving_IsMoving();
+		virtual ~Menus_Hacking_Objects_MineCart_IsMoving_IsMoving() = default;
+	};
+
+	class Menus_Hacking_Objects_MineCart_IsMoving_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MineCart_IsMoving_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MineCart_IsMoving_RegisterEax();
+		virtual ~Menus_Hacking_Objects_MineCart_IsMoving_RegisterEax() = default;
 	};
 
 	class Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax : public LocalizedString

@@ -39,7 +39,7 @@ using namespace cocos2d;
 const std::string Blind::BlindIdentifier = "blind";
 
 const float Blind::Duration = 60.0f;
-const int Blind::DamageDealt = 20;
+const int Blind::MaxDamage = 25;
 
 Blind* Blind::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -109,6 +109,9 @@ void Blind::registerHackables()
 				UIResources::Menus_Icons_EyeStrain,
 				LazyNode<HackablePreview>::create([=](){ return BlindGenericPreview::create(); }),
 				{
+					{
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Blind_RegisterEsi::create(),
+					},
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
@@ -134,8 +137,9 @@ void Blind::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* dam
 
 	this->applyBlind();
 
-	*(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer())
-		= GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	*damageOrHealing->damageOrHealing = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	*damageOrHealing->damageOrHealingMin = -Blind::MaxDamage;
+	*damageOrHealing->damageOrHealingMax = Blind::MaxDamage;
 }
 
 NO_OPTIMIZE void Blind::applyBlind()
@@ -146,7 +150,7 @@ NO_OPTIMIZE void Blind::applyBlind()
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZDI);
-	ASM_MOV_REG_VAR(edx, currentDamageDealtLocal);
+	ASM_MOV_REG_VAR(edi, currentDamageDealtLocal);
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_BLIND);
 	ASM(xor ZDI, ZDI);
 	ASM_NOP16();

@@ -282,6 +282,7 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ================== 
 		// ** Krampus ability - Maybe a AoE slow effect. Can be FPU if needed, I don't really care. Maybe a NOT bomb.
 		// ** Minecarts can still glitch and not spawn on map changes
+		// Skeletal warrior cast anim is bad
 		// Terrain in tent map has wrong corner connectors
 		// Tiki anims still broken (bad Spriter implementation strikes again)
 		// Train anims broken (for same reason)
@@ -1041,8 +1042,8 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoFound, Value(true));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 			

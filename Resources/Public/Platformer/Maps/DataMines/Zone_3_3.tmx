@@ -209,7 +209,11 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1675" name="solid" type="collision" x="3400.01" y="-168.061" width="315.14" height="2580"/>
+  <object id="1675" name="solid" type="collision" x="3400.01" y="-168.061" width="315.14" height="2580">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="95" name="player_layer -5">
   <properties>

@@ -52,7 +52,7 @@ void Trigger::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->triggerCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionData data)
+	this->triggerCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionData data)
 	{
 		if (!this->wasActivated || this->multiTrip)
 		{
@@ -69,7 +69,7 @@ void Trigger::initializeListeners()
 		return CollisionResult::DoNothing;
 	});
 
-	this->triggerCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionData data)
+	this->triggerCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionData data)
 	{
 		this->broadcastMapEvent(this->endCollisionEvent, ValueMap());
 		

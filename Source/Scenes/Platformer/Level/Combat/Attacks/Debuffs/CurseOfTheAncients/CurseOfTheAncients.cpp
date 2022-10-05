@@ -100,7 +100,10 @@ void CurseOfTheAncients::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return CurseOfTheAncientsGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_Register::create(),
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEax::create(),
+					},
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEbx::create(),
 					},
 				},
 				int(HackFlags::None),
