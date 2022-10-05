@@ -40,6 +40,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_PACT 1
 
 const std::string PactOfTheAncients::PactOfTheAncientsIdentifier = "pact-of-the-ancients";
+const int PactOfTheAncients::MaxMultiplier = 3;
 const float PactOfTheAncients::Duration = -1.0f;
 
 // Static to prevent GCC optimization issues
@@ -158,11 +159,16 @@ NO_OPTIMIZE void PactOfTheAncients::onBeforeDamageTaken(CombatEvents::Modifiable
 			}
 		}
 
+		int maxDamage = std::abs(damageOrHealing->damageOrHealingValue * PactOfTheAncients::MaxMultiplier);
+		int damage = MathUtils::clamp(this->healthLinkDamage, -maxDamage, maxDamage);
+		bool overflowedMin = damage == -maxDamage;
+		bool overflowedMax = damage == maxDamage;
+
 		// For some incomprehensible reason, this needs to be a separate loop otherwise some enemies do not get it at all.
 		// TODO: Figure out why, if you care enough.
 		for (PlatformerEntity* target : healthLinkTargets)
 		{
-			CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->caster, target, std::abs(this->healthLinkDamage), AbilityType::Passive, true));
+			CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->caster, target, std::abs(damage), AbilityType::Passive, true, overflowedMin, overflowedMax));
 		}
 	}));
 }

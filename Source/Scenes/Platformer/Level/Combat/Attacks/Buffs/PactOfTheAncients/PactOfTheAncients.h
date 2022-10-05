@@ -30,7 +30,6 @@ private:
 	
 	static volatile int healthLinkDamage;
 	
-	static const int MinPactOfTheAncients;
 	static const int MaxMultiplier;
 	static const float Duration;
 };
