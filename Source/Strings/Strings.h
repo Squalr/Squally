@@ -9549,6 +9549,51 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_Fury_Fury : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fury_Fury* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fury_Fury();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fury_Fury() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fury_RegisterEcx4 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fury_RegisterEcx4* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fury_RegisterEcx4();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fury_RegisterEcx4() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fury_RegisterEcx8 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fury_RegisterEcx8* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fury_RegisterEcx8();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fury_RegisterEcx8() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed : public LocalizedString
 	{
 	public:

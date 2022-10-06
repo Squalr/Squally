@@ -235,6 +235,7 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// - ** Animate gulls
+		// - ** Fix or remove water gun
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
 		// Overworld attacks
 
@@ -281,7 +282,8 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// ** Krampus ability - Maybe a AoE slow effect. Can be FPU if needed, I don't really care. Maybe a NOT bomb.
-		// ** Minecarts can still glitch and not spawn on map changes
+		// ** Minecarts can still glitch and not spawn on map changes (?)
+		// Boat combat map for Krampus fight
 		// Skeletal warrior cast anim is bad
 		// Terrain in tent map has wrong corner connectors
 		// Tiki anims still broken (bad Spriter implementation strikes again)
@@ -306,7 +308,7 @@ DeveloperScene::DeveloperScene()
 		X Earth golem			=> X 2_1 ROR (ROCKSLIDE)
 		X Earth Elemental		=> X 2_2 OR (REGERATION)
 		X Skeletal Pirate		=> X 3_2 XOR (BLIND)
-		X Skeletal Archer		=> X 3_1 PUSH / POP REG (MULTISHOT debuff - curse of the ancients - tick on targets)
+		X Skeletal Archer		=> X 3_1 PUSH / POP REG (MULTISHOT debuff - curse of the ancients - damage dealt)
 		X Skeletal Warrior		=> X 3_0 PUSH [REG PTR + offset] / POP [REG PTR + offset] (blessing of the ancients - outgoing damage)
 		X Skeletal Necromancer 	=> X 3_0 PUSH const / POP [REG PTR] (pact of the ancients - health link)
 		- [B] Krampus			=> O 3_3 NOT (No idea)
@@ -356,7 +358,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (CV)", MapResources::CastleValgrind_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (CV)", MapResources::CastleValgrind_Zone_1_0));
 
-		// ================== TODO ================== 
+		// ================== TODO ==================
 		// Traps: Organ gun, cannon, catapult, ballista, heaven hug
 		// Create train map, move train out of Zone 1_0 (or integrate it better)
 		// Finish maps and corresponding "dark" maps (alternatively a game flag that is toggled to load in the correct layers)
