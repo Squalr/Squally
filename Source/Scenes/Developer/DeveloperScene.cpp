@@ -71,9 +71,10 @@ DeveloperScene::DeveloperScene()
 	/*
 	- ** Can get stuck on roof of maps (see UR 3_1)
 	- ** Death does not reset zoom/layer sometimes (see UR 1_0, die to the launchers)
-	- ** Position saving logic busted
 	- ** Deleting script can glitch out
-	- ** Activate swim cooldown on opening save
+	- ** Hack menu can get stuck open
+	- ** Position saving logic busted
+	- ** Activate swim cooldown on opening save (Not relevant if position saving is not a bug)
 	- Chapter transitions can be more special
 	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles)
 	- Sometimes hackable icon is below entity (rare)

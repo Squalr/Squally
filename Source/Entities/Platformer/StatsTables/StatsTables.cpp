@@ -176,7 +176,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[SkeletalWarrior::MapKey] = StatsIncrements(Stats(55, 12, 98));
 	StatsTables::StatsTable[SkeletalPirate::MapKey] = StatsIncrements(Stats(56, 14, 97));
 	StatsTables::StatsTable[TikiGolem::MapKey] = StatsIncrements(Stats(60, 12, 80));
-	StatsTables::StatsTable[Krampus::MapKey] = StatsIncrements(Stats(55, 12, 260));
+	StatsTables::StatsTable[Krampus::MapKey] = StatsIncrements(Stats(224, 12, 260));
 
 	StatsTables::StatsTable[Bancroft::MapKey] = StatsIncrements(Stats(10, 10, 10));
 	StatsTables::StatsTable[Alder::MapKey] = StatsIncrements(Stats(10, 10, 10));

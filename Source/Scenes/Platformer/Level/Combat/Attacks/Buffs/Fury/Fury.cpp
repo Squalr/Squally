@@ -116,12 +116,13 @@ void Fury::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return FuryGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_Fury_RegisterEcx4::create()
-							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx)), true, 4
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Fury_RegisterEax::create()
 					},
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_Fury_RegisterEcx8::create()
-							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx)), true, 8
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Fury_RegisterEax8::create(), true, 8
+					},
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Fury_RegisterEbx::create()
 					},
 				},
 				int(HackFlags::None),
@@ -131,11 +132,19 @@ void Fury::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"push dword ptr [ecx + 4]\n"
-						"pop dword ptr [ecx + 8]\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLea::create()) + 
+						"lea eax, [eax + ebx + 4]\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage::create()
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))) + 
+						"add dword ptr [eax], 20\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry::create())
 						, // x64
-						"push qword ptr [rcx + 4]\n"
-						"pop qword ptr [rcx + 8]\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLea::create()) + 
+						"lea rax, [rax + rbx + 4]\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage::create()
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))) + 
+						"add dword ptr [rax], 20\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry::create())
 					),
 				},
 				true
@@ -171,22 +180,26 @@ NO_OPTIMIZE void Fury::applyFury()
 	static volatile int* currentDamageDealtLocalPtr = nullptr;
 
 	currentDamageDealtLocalArr[0] = 0;
-	currentDamageDealtLocalArr[1] = this->currentDamageDealt * Fury::MaxMultiplier;
+	currentDamageDealtLocalArr[1] = 0;
 	currentDamageDealtLocalArr[2] = this->currentDamageDealt;
 	currentDamageDealtLocalPtr = currentDamageDealtLocalArr;
 
-	ASM_PUSH_EFLAGS()
-	ASM(push ZCX);
-	ASM_MOV_REG_PTR(ZCX, currentDamageDealtLocalPtr);
+	ASM_PUSH_EFLAGS();
+	ASM(push ZAX);
+	ASM(push ZBX);
+
+	ASM_MOV_REG_PTR(ZAX, currentDamageDealtLocalPtr);
+	ASM(mov ZBX, 4)
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FURY);
-	ASM(push ZWORD() ptr [ZCX + 4]);
-	ASM(pop ZWORD() ptr [ZCX + 8]);
+	ASM(lea ZAX, [ZAX + ZBX + 4]);
+	ASM(add dword ptr [ZAX], 40);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 	
-	ASM(pop ZCX);
-	ASM_POP_EFLAGS()
+	ASM(pop ZBX);
+	ASM(pop ZAX);
+	ASM_POP_EFLAGS();
 
 	this->currentDamageDealt = currentDamageDealtLocalArr[2];
 

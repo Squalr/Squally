@@ -7,7 +7,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/BlessingOfTheAncients/BlessingOfTheAncients.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Fury/Fury.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -49,7 +49,7 @@ PlatformerAttack* CastFury::cloneInternal()
 
 LocalizedString* CastFury::getString()
 {
-	return Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients::create();
+	return Strings::Menus_Hacking_Abilities_Buffs_Fury_Fury::create();
 }
 
 std::string CastFury::getAttackAnimation()
@@ -69,7 +69,7 @@ void CastFury::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnti
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
-			entityBuffBehavior->applyBuff(BlessingOfTheAncients::create(owner, next));
+			entityBuffBehavior->applyBuff(Fury::create(owner, next));
 		});
 	}
 }
@@ -84,7 +84,7 @@ bool CastFury::isWorthUsing(PlatformerEntity* caster, const std::vector<Platform
 
 	caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->getBuff<BlessingOfTheAncients>([&](BlessingOfTheAncients* buff)
+		entityBuffBehavior->getBuff<Fury>([&](Fury* buff)
 		{
 			hasBuff = true;
 		});
