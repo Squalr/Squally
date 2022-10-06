@@ -189,12 +189,14 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[ScreamingDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)ScreamingDoor::create(properties); };
 	this->deserializers[ShopItem::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopItem::create(properties); };
 	this->deserializers[ShopPoolAres::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolAres::create(properties); };
+	this->deserializers[ShopPoolBrock::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolBrock::create(properties); };
+	this->deserializers[ShopPoolFraya::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolFraya::create(properties); };
+	this->deserializers[ShopPoolGriffin::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolGriffin::create(properties); };
+	this->deserializers[ShopPoolGeryon::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolGeryon::create(properties); };
 	this->deserializers[ShopPoolMinos::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolMinos::create(properties); };
 	this->deserializers[ShopPoolPolyphemus::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolPolyphemus::create(properties); };
 	this->deserializers[ShopPoolShen::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolShen::create(properties); };
 	this->deserializers[ShopPoolToben::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolToben::create(properties); };
-	this->deserializers[ShopPoolGriffin::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolGriffin::create(properties); };
-	this->deserializers[ShopPoolGeryon::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolGeryon::create(properties); };
 	this->deserializers[Ship::MapKey] = [=](ValueMap properties) { return (GameObject*)Ship::create(properties); };
 	this->deserializers[ShipWheel::MapKey] = [=](ValueMap properties) { return (GameObject*)ShipWheel::create(properties); };
 	this->deserializers[SmeltingPot::MapKey] = [=](ValueMap properties) { return (GameObject*)SmeltingPot::create(properties); };

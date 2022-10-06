@@ -667,12 +667,12 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="62" name="decor -3" visible="0">
+ <objectgroup id="62" name="decor -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="817" name="Mines/CaveHouse4" type="decor" x="1439.44" y="1205.05" width="1729" height="1195">
+  <object id="817" name="Mines/CaveHouse4" type="decor" x="1093.99" y="1208.08" width="1729" height="1195">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -720,13 +720,13 @@
     <property name="transition" value="dawn"/>
    </properties>
   </object>
-  <object id="913" name="portal" type="object" x="2401.15" y="2211.67" width="256" height="192">
+  <object id="913" name="portal" type="object" x="2055.7" y="2214.7" width="256" height="192">
    <properties>
     <property name="map" value="DataMines/Home_Godiva"/>
     <property name="transition" value="godiva"/>
    </properties>
   </object>
-  <object id="925" name="portal" type="object" x="1989.76" y="1530.73" width="256" height="256">
+  <object id="925" name="portal" type="object" x="1644.31" y="1533.76" width="256" height="256">
    <properties>
     <property name="map" value="DataMines/Home_Godiva"/>
     <property name="mini-map-hidden" type="bool" value="true"/>
@@ -803,12 +803,12 @@
     <property name="transition" value="dawn"/>
    </properties>
   </object>
-  <object id="915" name="spawn" type="object" x="2463.94" y="2273.55" width="128" height="128">
+  <object id="915" name="spawn" type="object" x="2118.49" y="2276.58" width="128" height="128">
    <properties>
     <property name="transition" value="godiva"/>
    </properties>
   </object>
-  <object id="924" name="spawn" type="object" x="2053.76" y="1657.39" width="128" height="128">
+  <object id="924" name="spawn" type="object" x="1708.31" y="1660.42" width="128" height="128">
    <properties>
     <property name="transition" value="godiva-top"/>
    </properties>
@@ -947,7 +947,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor midground" visible="0">
+ <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>

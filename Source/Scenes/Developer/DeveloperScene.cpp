@@ -236,7 +236,7 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// - ** Animate gulls
-		// - ** Fix or remove water gun
+		// Reinstate water gun if we want it
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
 		// Overworld attacks
 
@@ -282,9 +282,12 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
 
 		// ================== TODO ================== 
-		// ** Krampus ability - Maybe a AoE slow effect. Can be FPU if needed, I don't really care. Maybe a NOT bomb.
-		// ** Minecarts can still glitch and not spawn on map changes (?)
+		// ** Minecarts can still glitch and not spawn on map changes (? confirm this)
+		// ** Collectable animals
+		// ** Fix Krampus death anim
+		// ** Fix Gecky level 0 on title
 		// Boat combat map for Krampus fight
+		// Train SFX
 		// Skeletal warrior cast anim is bad
 		// Terrain in tent map has wrong corner connectors
 		// Tiki anims still broken (bad Spriter implementation strikes again)
@@ -312,7 +315,7 @@ DeveloperScene::DeveloperScene()
 		X Skeletal Archer		=> X 3_1 PUSH / POP REG (MULTISHOT debuff - curse of the ancients - damage dealt)
 		X Skeletal Warrior		=> X 3_0 PUSH [REG PTR + offset] / POP [REG PTR + offset] (blessing of the ancients - outgoing damage)
 		X Skeletal Necromancer 	=> X 3_0 PUSH const / POP [REG PTR] (pact of the ancients - health link)
-		- [B] Krampus			=> O 3_3 NOT (No idea)
+		- [B] Krampus			=> O 3_3 LEA
 
 		X Olive			Zone 1_1 (H_1)
 		X Bonnie		Town_Inn (H_2) (non-vendor)

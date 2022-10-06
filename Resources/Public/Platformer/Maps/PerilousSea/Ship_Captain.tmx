@@ -95,13 +95,6 @@
     <property name="quest-line" value="restore-power"/>
    </properties>
   </object>
-  <object id="722" name="skeletal-pirate" type="entity" x="1218.79" y="838.109" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
   <object id="723" name="skeletal-pirate" type="entity" x="1429.21" y="833.149" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>

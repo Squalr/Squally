@@ -76,13 +76,13 @@ void ShipWheel::showCharterShipOptions()
 
 	callbacks.push_back([=]()
 	{
-		this->steeringWheelWarp(MapResources::DataMines_Zone_3_7);
+		this->steeringWheelWarp(MapResources::DataMines_Zone_3_8);
 		return true;
 	});
 
 	callbacks.push_back([=]()
 	{
-		this->steeringWheelWarp(MapResources::DataMines_Zone_3_8);
+		this->steeringWheelWarp(MapResources::DataMines_Zone_3_7);
 		return true;
 	});
 

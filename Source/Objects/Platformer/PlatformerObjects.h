@@ -120,6 +120,8 @@
 #include "Objects/Platformer/Rewards/RewardItem.h"
 #include "Objects/Platformer/Rewards/RewardPool.h"
 #include "Objects/Platformer/Rewards/UnderflowRuins/RewardPoolHera.h"
+#include "Objects/Platformer/Shops/DataMines/ShopPoolBrock.h"
+#include "Objects/Platformer/Shops/DataMines/ShopPoolFraya.h"
 #include "Objects/Platformer/Shops/DataMines/ShopPoolShen.h"
 #include "Objects/Platformer/Shops/EndianForest/ShopPoolMinos.h"
 #include "Objects/Platformer/Shops/EndianForest/ShopPoolPolyphemus.h"

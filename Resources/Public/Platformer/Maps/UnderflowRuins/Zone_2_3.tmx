@@ -126,7 +126,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="904" name="water-launcher" type="object" x="642.467" y="1525.32" width="128" height="128"/>
+  <object id="904" name="water-launcher-disabled" type="object" x="642.467" y="1525.32" width="128" height="128"/>
   <object id="907" name="minotaur" type="entity" x="3138.08" y="2657.23" width="128" height="128">
    <properties>
     <property name="components" value="friendly,disarmed,ur-puzzle-D"/>
