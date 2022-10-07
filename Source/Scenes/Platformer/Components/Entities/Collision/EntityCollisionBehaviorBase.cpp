@@ -6,6 +6,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Maps/MapLayer.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EnginePhysicsTypes.h"
 #include "Engine/Sound/WorldSound.h"
@@ -80,7 +81,15 @@ void EntityCollisionBehaviorBase::onLoad()
 		{
 			ObjectEvents::QueryObjects<GameObject>([=](GameObject* object)
 			{
+				MapLayer* objectLayer = GameUtils::GetFirstParentOfType<MapLayer>(object);
+
+				if (objectLayer != nullptr)
+				{
+					GameUtils::changeParent(this->entity, objectLayer, true);
+				}
+
 				this->warpToPosition(GameUtils::getWorldCoords3D(object), args->warpCamera);
+
 			}, args->objectId);
 
 			PlatformerEvents::TriggerAfterWarp(PlatformerEvents::AfterWarpArgs(this->entity));
