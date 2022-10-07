@@ -10,6 +10,7 @@ public:
 	static GeckyEqBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
+	static const int DefaultLevel;
 
 protected:
 	GeckyEqBehavior(GameObject* owner);

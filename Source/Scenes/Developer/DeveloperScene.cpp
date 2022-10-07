@@ -282,7 +282,6 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// ?* Minecarts can still glitch and not spawn on map changes (? confirm this)
-		// ** Fix Gecky level 0 on title
 		// Boat combat map for Krampus fight
 		// Train SFX
 		// Terrain in tent map has wrong corner connectors

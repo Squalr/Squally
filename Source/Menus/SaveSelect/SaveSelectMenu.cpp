@@ -18,10 +18,12 @@
 #include "Engine/Utils/StrUtils.h"
 #include "Engine/UI/SmartClippingNode.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
+#include "Entities/Platformer/Helpers/DataMines/Gecky.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/MenuBackground.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/Gecky/GeckyEqBehavior.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/Collectables.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -254,6 +256,10 @@ Node* SaveSelectMenu::buildSaveGameContent(int profileId)
 		if (helperName == Guano::MapKey)
 		{
 			helperEq = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGuanoEq, Value(1)).asInt();
+		}
+		else if (helperName == Gecky::MapKey)
+		{
+			helperEq = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyEq, Value(GeckyEqBehavior::DefaultLevel)).asInt();
 		}
 
 		ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(

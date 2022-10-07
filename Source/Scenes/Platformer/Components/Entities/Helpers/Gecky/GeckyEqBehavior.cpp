@@ -9,6 +9,7 @@
 using namespace cocos2d;
 
 const std::string GeckyEqBehavior::MapKey = "gecky-eq";
+const int GeckyEqBehavior::DefaultLevel = 4;
 
 GeckyEqBehavior* GeckyEqBehavior::create(GameObject* owner)
 {
@@ -37,7 +38,7 @@ void GeckyEqBehavior::onLoad()
 {
 	this->gecky->watchForComponent<EntityEqBehavior>([=](EntityEqBehavior* entityEqBehavior)
 	{
-		entityEqBehavior->load(SaveKeys::SaveKeyGeckyEq, SaveKeys::SaveKeyGeckyEqExperience, 4);
+		entityEqBehavior->load(SaveKeys::SaveKeyGeckyEq, SaveKeys::SaveKeyGeckyEqExperience, GeckyEqBehavior::DefaultLevel);
 	});
 }
 
