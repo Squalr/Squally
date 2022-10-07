@@ -821,7 +821,7 @@
     <property name="reward-pool" value="lc-rusty-key"/>
    </properties>
   </object>
-  <object id="1155" name="caged-fox" type="object" x="4155.22" y="1569.1" width="196" height="112"/>
+  <object id="1155" name="caged-chicken" type="object" x="4155.22" y="1569.1" width="196" height="112"/>
   <object id="1156" name="edge-portal" type="object" x="6.48358" y="1052.12" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="left"/>

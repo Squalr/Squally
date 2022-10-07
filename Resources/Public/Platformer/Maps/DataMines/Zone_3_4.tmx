@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="970">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="974">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -167,13 +167,15 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="851" name="mines" type="terrain" x="5368.31" y="6.18182" width="961.08" height="2792.12"/>
+  <object id="851" name="mines" type="terrain" x="5368.31" y="1478.18" width="961.08" height="1320.12"/>
+  <object id="970" name="mines" type="terrain" x="5368.31" y="6.18182" width="721.08" height="1076.12"/>
   <object id="950" name="mines" type="terrain" x="443.46" y="724" width="2097.08" height="824"/>
   <object id="960" name="mines" type="terrain" x="243.824" y="2472.48" width="1520.11" height="1360">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
+  <object id="971" name="mines" type="terrain" x="6087.46" y="717.94" width="961.08" height="756.12"/>
  </objectgroup>
  <objectgroup id="84" name="decor bg bg bg">
   <properties>
@@ -310,6 +312,7 @@
     <property name="entity-tag" value="hexus-skeletal-pirate"/>
    </properties>
   </object>
+  <object id="973" name="caged-rhino" type="object" x="5768.67" y="1368" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

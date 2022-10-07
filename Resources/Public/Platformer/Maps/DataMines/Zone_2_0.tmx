@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="128" nextobjectid="1982">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="128" nextobjectid="1983">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -258,11 +258,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1946" name="chest" type="object" x="4560" y="3508" width="128" height="128">
-   <properties>
-    <property name="reward-pool" value="dm-generic"/>
-   </properties>
-  </object>
+  <object id="1982" name="caged-turtle" type="object" x="4516" y="3526" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="109" name="entities -4">
   <properties>

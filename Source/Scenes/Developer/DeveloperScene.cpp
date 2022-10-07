@@ -235,7 +235,6 @@ DeveloperScene::DeveloperScene()
 		// - G	=> 3_7 (Mummy Priest)
 
 		// ================== TODO ================== 
-		// - ** Animate gulls
 		// Reinstate water gun if we want it
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
 		// Overworld attacks
@@ -282,13 +281,10 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
 
 		// ================== TODO ================== 
-		// ** Minecarts can still glitch and not spawn on map changes (? confirm this)
-		// ** Collectable animals
-		// ** Fix Krampus death anim
+		// ?* Minecarts can still glitch and not spawn on map changes (? confirm this)
 		// ** Fix Gecky level 0 on title
 		// Boat combat map for Krampus fight
 		// Train SFX
-		// Skeletal warrior cast anim is bad
 		// Terrain in tent map has wrong corner connectors
 		// Tiki anims still broken (bad Spriter implementation strikes again)
 		// Train anims broken (for same reason)
@@ -721,34 +717,45 @@ DeveloperScene::DeveloperScene()
 	===== Animals ====
 
 	// EF
-	Cat				EF	Jail cell
-	Cow				EF	2_2
-	Dog				EF	Inn Upstairs
-	Duck			EF	!!!!!!!! UNPLACED
-	Bear			EF	Shack
-	Fox				EF	Lianna Back
-	Monkey			EF	3_0
+	X Cat			EF	Jail cell
+	X Cow			EF	2_2
+	X Dog			EF	Inn Upstairs
+	X Bear			EF	Shack
+	X Fox			EF	Lianna Back
+	X Monkey		EF	3_0
 
 	// (Boat)
-	Whale			EF => UR
+	X Whale			EF => UR
 
 	// UR
-	Giraffe			UR	Inn upstairs
-	Hippo			UR	1_0
-	Squid			UR	1_2
-	Snail			UR	2_1
-	Zebra			UR	2_2
-	Mouse			UR	3_2
-	Squirrel		UR	3_4
+	X Giraffe		UR	Inn upstairs
+	X Hippo			UR	1_0
+	X Squid			UR	1_2
+	X Snail			UR	2_1
+	X Zebra			UR	2_2
+	X Mouse			UR	3_2
+	X Squirrel		UR	3_4
 
 	// DM
-	Bat				DM	1_x
-	Bird			DM	1_x
-	Pig				DM	2_x
-	Raccoon			DM	2_x
-	Rhino			DM	3_x
-	Sheep			DM	3_x
-	Skunk			DM	Town
+	X Bat			DM	Inn upstairs
+	X Bird			DM	1_1_a
+	X Turtle			DM	2_0
+	X Raccoon		DM	2_3
+	X Rhino			DM	3_x
+	X Sheep			DM	Home Godiva
+	X Skunk			DM	Home Ralson
+
+	// (Boat)
+	X Duck			DM charter ship
+
+	// CV
+	X Beaver		CV Inn upstairs
+	Pig				CV
+	Hedgehog		CV 
+	Horse			CV 
+	Koala			CV 
+	Panda			CV 
+	Parrot			CV 
 
 	// BP
 	Blowfish		BP	??
@@ -760,7 +767,7 @@ DeveloperScene::DeveloperScene()
 	Goat			BP	Town
 
 	// DH
-	Bee				DH 1_x
+	X Bee			DH 1_x
 	Crocodile		DH 1_x
 	Dinosaur		DH 2_x
 	Ladybug			DH 2_x
@@ -769,33 +776,13 @@ DeveloperScene::DeveloperScene()
 	Tucan			DH Town
 
 	// LC
-	Bull
-	Chicken
+	X Bull			LC Inn upstairs
+	Chicken			LC 2_2
 	Lion
 	MountainLion
 	Tiger
 	Wolf
 	Worm
-
-	// VS
-	Beaver
-	Hedgehog
-	Horse
-	Koala
-	Panda
-	Parrot
-	Turtle
-
-	- 1 freebie
-	- 1 swim hax
-	- 1 in Lianna’s house backdoor
-	- 1 by old man
-	- 1 on the path to Gorgon (wind)
-	- 1 in the inn, somehow or another
-
-	- 1 on ship
-
-	50 / 8 = 6 per zone, 2 bonus (probably on ships)
 
 	Spell ideas:
 	- Call of the Dead (skele's attacking from portal under target) - https://www.gamedevmarket.net/asset/skeleton-warrior-mega-game-sprite-pack/

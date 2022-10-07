@@ -628,7 +628,7 @@
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="952" name="caged-dog" type="object" x="2716" y="2295" width="196" height="112"/>
+  <object id="952" name="caged-bee" type="object" x="2716" y="2295" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="142" name="decor bg -12">
   <properties>
