@@ -107,6 +107,16 @@ void RadialMenu::initializeListeners()
 
 		this->close();
 	});
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
+		this->close();
+	}));
 }
 
 void RadialMenu::onHackerModeDisable()
