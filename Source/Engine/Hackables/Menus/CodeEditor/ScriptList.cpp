@@ -146,8 +146,6 @@ void ScriptList::deleteScript(ScriptEntry* scriptEntry)
 
 	LocalizedString* scriptName = (scriptEntry->getName() == nullptr) ? Strings::Menus_Hacking_CodeEditor_UnnamedScript::create() : scriptEntry->getName()->clone();
 	
-	GameUtils::focus(this->confirmationMenuRef);
-
 	this->confirmationMenuRef->showMessage(Strings::Menus_Hacking_CodeEditor_DeleteConfirmation::create()->setStringReplacementVariables(scriptName),
 	[=]()
 	{
@@ -173,14 +171,10 @@ void ScriptList::deleteScript(ScriptEntry* scriptEntry)
 			}
 		}
 
-		GameUtils::focus(this->getParent());
-
 		return false;
 	},
 	[=]()
 	{
-		GameUtils::focus(this->getParent());
-
 		return false;
 	});
 }

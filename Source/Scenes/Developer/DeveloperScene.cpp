@@ -70,7 +70,7 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- ** Can get stuck on roof of maps (see UR 3_1)
-	- ** Deleting script can glitch out
+	- ** Matrix rain busted
 	- Techncially Squally respawns on object layer upon death, although usually this is not noticeable
 	- Position saving logic busted
 	- Activate swim cooldown on opening save (Not relevant if position saving is not a bug)

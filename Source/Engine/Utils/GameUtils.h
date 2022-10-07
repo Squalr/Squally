@@ -14,13 +14,14 @@ namespace cocos2d
 class GameUtils
 {
 public:
-	static void pause(cocos2d::Node *node);
-	static void resume(cocos2d::Node *node);
+	static void pause(cocos2d::Node* node);
+	static void resume(cocos2d::Node* node);
+	static void resumeParents(cocos2d::Node* node);
 	static void resumeAll();
-	static bool isInRunningScene(cocos2d::Node *node);
+	static bool isInRunningScene(cocos2d::Node* node);
 	static cocos2d::Node* getFocusedNode();
-	static bool isFocused(cocos2d::Node *node);
-	static void focus(cocos2d::Node *node);
+	static bool isFocused(cocos2d::Node* node);
+	static void focus(cocos2d::Node* node);
 	static void flattenNode(cocos2d::Node* node);
 	static cocos2d::Node* changeParent(cocos2d::Node* node, cocos2d::Node* newParent, bool retainPosition, int index = -1);
 	static void fadeInObject(cocos2d::Node* node, float delay, float duration, uint8_t opacity = 255);
@@ -88,7 +89,7 @@ public:
 	}
 
 	template <class T>
-	static T* getParentAsType(cocos2d::Node *node)
+	static T* getParentAsType(cocos2d::Node* node)
 	{
 		if (node == nullptr)
 		{
@@ -99,7 +100,7 @@ public:
 	}
 
 	template <class T>
-	static T* GetFirstParentOfType(cocos2d::Node *node, bool includeTarget = false)
+	static T* GetFirstParentOfType(cocos2d::Node* node, bool includeTarget = false)
 	{
 		if (node != nullptr && !includeTarget)
 		{
@@ -121,7 +122,7 @@ public:
 	
 	// This function is O(n) and should be used sparringly
 	template <class T>
-	static void getChildrenOfType(cocos2d::Node *node, std::function<void(T*)> onFound, bool recurseOnFound = false)
+	static void getChildrenOfType(cocos2d::Node* node, std::function<void(T*)> onFound, bool recurseOnFound = false)
 	{
 		if (node == nullptr)
 		{

@@ -13,7 +13,7 @@
 using namespace cocos2d;
 
 // A better pause function that pauses recursively
-void GameUtils::pause(Node *node)
+void GameUtils::pause(Node* node)
 {
 	if (node == nullptr)
 	{
@@ -28,7 +28,7 @@ void GameUtils::pause(Node *node)
 	}
 }
 
-void GameUtils::resume(Node *node)
+void GameUtils::resume(Node* node)
 {
 	node->resume();
 
@@ -36,6 +36,18 @@ void GameUtils::resume(Node *node)
 	{
 		GameUtils::resume(child);
 	}
+}
+
+void GameUtils::resumeParents(cocos2d::Node* node)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+
+	node->resume();
+
+	GameUtils::resumeParents(node->getParent());
 }
 
 void GameUtils::resumeAll()
@@ -89,7 +101,7 @@ Node* GameUtils::getFocusedNode()
 	return findUnpausedNodeRecursive(root);
 }
 
-bool GameUtils::isFocused(Node *node)
+bool GameUtils::isFocused(Node* node)
 {
 	if (node->getParent() != nullptr && node->getParent()->isPaused() && !node->isPaused())
 	{
@@ -103,7 +115,7 @@ bool GameUtils::isFocused(Node *node)
 	return false;
 }
 
-void GameUtils::focus(Node *node)
+void GameUtils::focus(Node* node)
 {
 	if (node == nullptr)
 	{
@@ -112,6 +124,7 @@ void GameUtils::focus(Node *node)
 
 	GameUtils::pause(Director::getInstance()->getRunningScene());
 	GameUtils::resume(node);
+	GameUtils::resumeParents(node);
 }
 
 void GameUtils::flattenNode(Node* parent)
@@ -365,7 +378,7 @@ CRect GameUtils::getScreenBounds(Node* node, const CSize& padding, bool checkFor
 	nodeCoords.x -= padding.width;
 	nodeCoords.y -= padding.height;
 	
-	return GameUtils::getScreenBounds(nodeCoords, node->getContentSize() * GameUtils::getUniformScale(node) + padding * 2.0f);
+	return GameUtils::getScreenBounds(nodeCoords, node->getContentSize()*  GameUtils::getUniformScale(node) + padding*  2.0f);
 }
 
 CRect GameUtils::getScreenBounds(const Vec3& position, const CSize& size)
