@@ -200,7 +200,7 @@
   <object id="974" name="spawn" type="object" x="508.364" y="2041" width="128" height="128">
    <properties>
     <property name="map-banner" value=""/>
-    <property name="transition" value="entrance-E"/>
+    <property name="transition" value="exit-D"/>
    </properties>
   </object>
   <object id="975" name="spawn" type="object" x="4919.34" y="2054.12" width="128" height="128">
