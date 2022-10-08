@@ -7,6 +7,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SaveEvents.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Save/SaveManager.h"
@@ -18,6 +19,7 @@
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 #include "Scenes/Platformer/Level/Huds/FadeHuds/FadeHud.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 

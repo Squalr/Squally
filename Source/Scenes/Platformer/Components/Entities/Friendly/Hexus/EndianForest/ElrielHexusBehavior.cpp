@@ -1,5 +1,7 @@
 #include "ElrielHexusBehavior.h"
 
+#include "cocos/base/CCValue.h"
+
 #include "Objects/Platformer/ItemPools/HexusPools/EndianForest/HexusPoolEFGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"

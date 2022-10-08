@@ -30,7 +30,13 @@ FetchContent_MakeAvailable(SFML)
 # )
 
 # C++20
-target_compile_features(cocos2d PUBLIC cxx_std_20 c_std_99)
+if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    target_compile_features(cocos2d PUBLIC cxx_std_20 c_std_99)
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    target_compile_features(cocos2d PUBLIC cxx_std_20 c_std_99)
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    target_compile_features(cocos2d PUBLIC cxx_std_17 c_std_99)
+endif()
 
 # Target Propeties (PIE and edit the output directory)
 set_target_properties(${PROJECT_NAME} PROPERTIES

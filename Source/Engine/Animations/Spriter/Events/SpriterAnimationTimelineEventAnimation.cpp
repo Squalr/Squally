@@ -12,6 +12,9 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
+#include <cmath>
+#include <math.h>
+
 using namespace cocos2d;
 
 SpriterAnimationTimelineEventAnimation* SpriterAnimationTimelineEventAnimation::create(
@@ -204,7 +207,7 @@ void SpriterAnimationTimelineEventAnimation::computeDeltas()
 	this->deltaAlpha = this->next->alpha - this->alpha;
 
 	// https://stackoverflow.com/questions/28036652/finding-the-shortest-distance-between-two-angles/28037434
-    this->deltaRotation = std::fmodf((this->next->rotation - this->rotation + 180.0f), 360.0f) - 180.0f;
+    this->deltaRotation = std::fmod((this->next->rotation - this->rotation + 180.0f), 360.0f) - 180.0f;
     this->deltaRotation = this->deltaRotation < -180.0f ? this->deltaRotation + 360.0f : this->deltaRotation;
 
 	this->hasNoAnimationChanges = this->deltaPosition == Vec2::ZERO

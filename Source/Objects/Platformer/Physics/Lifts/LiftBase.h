@@ -41,7 +41,7 @@ private:
 	typedef GameObject super;
 
 	float getAdjustedSpeed();
-	Vec2 getStartPosition();
+	cocos2d::Vec2 getStartPosition();
 
 	float speedPer256px = 0.0f;
 	cocos2d::Sprite* railing = nullptr;
