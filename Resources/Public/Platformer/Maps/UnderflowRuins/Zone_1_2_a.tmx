@@ -172,7 +172,7 @@
   </object>
   <object id="993" name="egyptian-chest" type="object" x="2179.58" y="1547.67" width="128" height="128">
    <properties>
-    <property name="reward-pool" value="ur-dungeon-map"/>
+    <property name="reward-pool" value="ur-rare"/>
    </properties>
   </object>
   <object id="996" name="hexus-shrine" type="object" x="440.822" y="1412.06" width="155" height="260">
