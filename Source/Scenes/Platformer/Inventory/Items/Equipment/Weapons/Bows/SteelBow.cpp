@@ -64,7 +64,7 @@ const std::string& SteelBow::getIdentifier()
 
 Vec2 SteelBow::getDisplayOffset()
 {
-	return Vec2(0.0f, -24.0f);
+	return Vec2(-12.0f, -68.0f);
 }
 
 Recipe* SteelBow::getRecipe()
