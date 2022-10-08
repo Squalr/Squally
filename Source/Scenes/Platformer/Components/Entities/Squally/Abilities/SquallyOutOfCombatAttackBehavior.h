@@ -20,6 +20,7 @@ protected:
 	void onLoad() override;
 	void onDisable() override;
 	Projectile* createProjectile() override;
+	cocos2d::Vec2 getProjectileSpawnOffset() override;
 	void decorateProjectile(Projectile* projectile) override;
 	std::string getOutOfCombatAttackAnimation() override;
 	std::string getOutOfCombatAttackSound() override;

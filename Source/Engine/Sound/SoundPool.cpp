@@ -4,6 +4,7 @@
 
 #include "cocos/platform/CCFileUtils.h"
 
+#include "Engine/Utils/LogUtils.h"
 #include "Engine/Events/SoundEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Utils/MathUtils.h"
@@ -105,7 +106,12 @@ bool SoundPool::allocSoundInternal(const std::string& soundResource, int index)
 		case sf::SoundSource::Status::Stopped:
 		{
 			std::string fullPath = FileUtils::getInstance()->fullPathForFilename(soundResource);
-			this->buffers[index]->loadFromFile(fullPath);
+
+			if (!this->buffers[index]->loadFromFile(fullPath))
+			{
+				LogUtils::logError("Failed to load sound: " + fullPath);
+			}
+
 			this->sounds[index]->setBuffer(*this->buffers[index]);
 			return true;
 		}

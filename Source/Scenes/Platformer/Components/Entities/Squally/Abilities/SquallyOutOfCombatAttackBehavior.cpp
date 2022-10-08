@@ -218,6 +218,11 @@ Projectile* SquallyOutOfCombatAttackBehavior::createProjectile()
 	return projectile;
 }
 
+Vec2 SquallyOutOfCombatAttackBehavior::getProjectileSpawnOffset()
+{
+	return Vec2(0.0f, -40.0f);
+}
+
 void SquallyOutOfCombatAttackBehavior::decorateProjectile(Projectile* projectile)
 {
 	super::decorateProjectile(projectile);
