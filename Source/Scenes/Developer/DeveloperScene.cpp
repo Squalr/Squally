@@ -237,6 +237,7 @@ DeveloperScene::DeveloperScene()
 		// - G	=> 3_7 (Mummy Priest)
 
 		// ================== TODO ================== 
+		// ** Spiked log preview is incorrect
 		// Reinstate water gun if we want it
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
 		// Overworld attacks
