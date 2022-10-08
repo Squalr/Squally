@@ -1,5 +1,6 @@
 #include "Ship.h"
 
+#include "cocos/base/CCValue.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"

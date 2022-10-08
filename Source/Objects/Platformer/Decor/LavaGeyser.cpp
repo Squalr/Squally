@@ -40,7 +40,7 @@ LavaGeyser::LavaGeyser(ValueMap& properties) : super(properties)
 	this->midAnimation->setRepeatY(true);
 
 	float midRange = objectSize.height - LavaGeyser::BaseSize;
-	float overflow = std::fmodf(midRange, LavaGeyser::MidSize);
+	float overflow = std::fmod(midRange, LavaGeyser::MidSize);
 
 	this->midAnimation->setContentSize(CSize(objectSize.width, objectSize.height - LavaGeyser::BaseSize));
 	this->midAnimation->setRepeatTilingOffset(Vec2(0.0f, LavaGeyser::MidSize - overflow));

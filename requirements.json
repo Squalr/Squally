@@ -1,22 +1,22 @@
 {
     "common": [
-        "cereal",
-        "curl",
-        "freetype",
-        "glew",
-        "glfw3",
-        "libpng",
-        "tinyxml2",
+        "cereal", 
+        "curl", 
+        "freetype", 
+        "glew", 
+        "glfw3", 
+        "libpng", 
+        "tinyxml2", 
         "tiff"
-    ],
+    ], 
     "darwin": [
         "openssl"
-    ],
+    ], 
     "linux": [
-        "fontconfig",
-        "opengl",
+        "fontconfig", 
+        "opengl", 
         "openal-soft"
-    ],
+    ], 
     "windows": [
         "openal-soft"
     ]

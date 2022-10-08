@@ -3,6 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Inventory/ItemChance.h"
+#include "Objects/Platformer/ItemPools/CurrencyPools/UnderflowRuins/CurrencyPoolURGeneric.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier2/AlchemyPoolTier2.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier2/CardPoolTier2.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier2/SmithingPoolTier2.h"

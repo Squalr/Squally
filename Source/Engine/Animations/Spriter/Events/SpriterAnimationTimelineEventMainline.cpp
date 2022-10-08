@@ -156,14 +156,19 @@ void SpriterAnimationTimelineEventMainline::onFire(SpriterAnimationNode* animati
 
 void SpriterAnimationTimelineEventMainline::buildAnimationHeirarchy()
 {
-	for (const auto& [key, animationEvent] : this->registeredAnimationEventsByPartName)
+	for (const auto& next : this->registeredAnimationEventsByPartName)
 	{
+		auto key = next.first;
+		auto animationEvent = next.second;
 		animationEvent->clearCascadeChildren();
 	}
 	
 	// Parent all timeline events
-	for (const auto& [childObjectName, animationEvent] : this->registeredAnimationEventsByPartName)
+	for (const auto& next : this->registeredAnimationEventsByPartName)
 	{
+		auto childObjectName = next.first;
+		auto animationEvent = next.second;
+
 		if (this->boneIdMap.find(childObjectName) != this->boneIdMap.end() && this->registeredAnimationEventsByPartName.find(childObjectName) != this->registeredAnimationEventsByPartName.end())
 		{
 			int boneId = this->boneIdMap[childObjectName];

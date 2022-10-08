@@ -1,5 +1,7 @@
 #include "AphroditeHexusBehavior.h"
 
+#include "cocos/base/CCValue.h"
+
 #include "Objects/Platformer/ItemPools/HexusPools/UnderflowRuins/HexusPoolURGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"

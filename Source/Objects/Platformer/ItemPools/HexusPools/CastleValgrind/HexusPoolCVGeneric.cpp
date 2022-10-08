@@ -22,7 +22,7 @@ HexusPoolCVGeneric* HexusPoolCVGeneric::create(ValueMap& properties)
 }
 
 HexusPoolCVGeneric::HexusPoolCVGeneric(ValueMap& properties) : super(properties, "hexus-pool-cv-generic", SampleMethod::Random, 1, 2,
-	{ AlchemyPoolTier4::create(SampleMethod::Random, 1, 1), SmithingPoolTier4::create(SampleMethod::Random, 1, 2) }, CurrencyPoolEFGeneric::create(properties))
+	{ AlchemyPoolTier4::create(SampleMethod::Random, 1, 1), SmithingPoolTier4::create(SampleMethod::Random, 1, 2) }, CurrencyPoolCVGeneric::create(properties))
 {
 }
 

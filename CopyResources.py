@@ -14,10 +14,10 @@ from sys import platform as _platform
 
 def main():
     print(_platform)
-    if _platform == "win32" or _platform == "win64" or _platform == "darwin":
+    if _platform == "win32" or _platform == "win64" or _platform == "darwin" or _platform == "linux2":
         copyResources()
     else:
-        print("This script is currently Windows/OSX only.")
+        print("Unsupported platform")
 
 def copyResources():
     projectRoot = abspath(join(realpath(__file__), ".."))
@@ -28,6 +28,8 @@ def copyResources():
         binRoot = abspath(join(realpath(__file__), "../build/bin/"))
     elif _platform ==  "darwin":
         binRoot = abspath(join(realpath(__file__), "../build/bin/Squally.app/Contents/"))
+    elif _platform ==  "linux2":
+        binRoot = abspath(join(realpath(__file__), "../build/bin/"))
     
     destPathPublic = join(binRoot, "Resources/Public/")
     destPathPrivate = join(binRoot, "Resources/Private/")

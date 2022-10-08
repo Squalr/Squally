@@ -1,5 +1,7 @@
 #include "MildredHexusBehavior.h"
 
+#include "cocos/base/CCValue.h"
+
 #include "Objects/Platformer/ItemPools/HexusPools/DataMines/HexusPoolDMGeneric.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"

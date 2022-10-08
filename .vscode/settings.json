@@ -116,7 +116,8 @@
         "bit": "cpp",
         "compare": "cpp",
         "stop_token": "cpp",
-        "charconv": "cpp"
+        "charconv": "cpp",
+        "*.tcc": "cpp"
     },
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "C_Cpp.configurationWarnings": "Disabled",
