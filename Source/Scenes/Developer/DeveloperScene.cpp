@@ -74,6 +74,8 @@ DeveloperScene::DeveloperScene()
 	- ** Can hit ESC on potion menu, causing a soft-lock (probably focus side effect)
 	- ** Esc on crafting menu opens another pause menu (probably focus side effect)
 	- ** Esc doesn't close pause menu
+	- ** Arabic language is busted, I believe
+	- ** No mages guild portal map for DM
 	- Techncially Squally respawns on object layer upon death, although usually this is not noticeable
 	- Position saving logic busted
 	- Activate swim cooldown on opening save (Not relevant if position saving is not a bug)
@@ -238,6 +240,9 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// ** Spiked log preview is incorrect
+		// ** Hint string on Fear couldn't hurt
+		// ** Check gauntlet hackables on Linux/Mac. Last fight is busted for sure.
+		// Guano warps to Squally on unpetrification, which looks like trash
 		// Reinstate water gun if we want it
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
 		// Overworld attacks

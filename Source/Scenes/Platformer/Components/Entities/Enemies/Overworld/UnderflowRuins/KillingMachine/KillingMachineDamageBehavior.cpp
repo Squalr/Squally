@@ -309,14 +309,14 @@ void KillingMachineDamageBehavior::onLoad()
 						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()) +
 						"cmp eax, " + probabilityConstantStr + "\n\n" +
 						COMMENT(critChanceComment) +
-						command + " edi, esi\n" + 
+						command + " edi, esi\n\n" + 
 						commandComment + "\n"  +
 						COMMENT(hintStr)
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()) +
 						"cmp rax, " + probabilityConstantStr + "\n\n" +
 						COMMENT(critChanceComment->clone()) +
-						command + " rdi, rsi\n" + 
+						command + " rdi, rsi\n\n" + 
 						commandComment + "\n"  +
 						COMMENT(hintStr->clone())
 					),
