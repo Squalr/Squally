@@ -159,7 +159,9 @@ NO_OPTIMIZE void MineCart::updateCanMove()
 {
 	static volatile int canMoveLocal = 0;
 
-	this->canMoveOverride = true;
+	// GCC will seg fault if this is updated at the end of the function. So hacking this is on a 1-frame delay.
+	this->canMoveOverride = bool(canMoveLocal);
+
 	canMoveLocal = 1;
 
 	ASM_PUSH_EFLAGS();
@@ -170,7 +172,7 @@ NO_OPTIMIZE void MineCart::updateCanMove()
 	ASM(mov ZBX, 0);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CAN_MOVE);
-	ASM(cmp ZAX, 1);
+	ASM(cmp eax, 1);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 	
@@ -181,8 +183,6 @@ NO_OPTIMIZE void MineCart::updateCanMove()
 	ASM(pop ZBX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
-
-	this->canMoveOverride = bool(canMoveLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

@@ -43,7 +43,7 @@ protected:
 	MountDirection mountDirection = MountDirection::Left;
 	float mountSpeed = 0.0f;
 	bool isMoving = false;
-	bool canMoveOverride = true;
+	volatile bool canMoveOverride = true;
 	bool updateXOnly = true;
 
 	static const std::string PropertyDirection;
