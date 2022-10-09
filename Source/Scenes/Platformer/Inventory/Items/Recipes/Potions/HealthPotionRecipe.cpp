@@ -39,7 +39,7 @@ std::vector<std::tuple<Item*, int>> HealthPotionRecipe::getReagentsInternal()
 	return
 	{
 		{ DarkSeed::create(), 2 },
-		{ Honey::create(), 2 },
+		{ Honey::create(), 1 },
 	};
 }
 

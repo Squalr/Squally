@@ -39,7 +39,7 @@ std::vector<std::tuple<Item*, int>> ManaPotionRecipe::getReagentsInternal()
 	return
 	{
 		{ Clover::create(), 2 },
-		{ Feather::create(), 2 },
+		{ Feather::create(), 1 },
 	};
 }
 
