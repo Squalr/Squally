@@ -61,7 +61,7 @@ std::map<int, KillingMachineDamageBehavior::MachineAsmConstants> KillingMachineD
 	{ 5, KillingMachineDamageBehavior::MachineAsmConstants("cmovg", HackableCode::Register::zdi, CMOVG_PROBABILITY_CONST) },
 	{ 6, KillingMachineDamageBehavior::MachineAsmConstants("cmovge", HackableCode::Register::zsi, CMOVGE_PROBABILITY_CONST) },
 };
-const int KillingMachineDamageBehavior::DefaultDamage = 3;
+const int KillingMachineDamageBehavior::DefaultDamage = 1;
 const int KillingMachineDamageBehavior::CritDamage = 15;
 
 KillingMachineDamageBehavior* KillingMachineDamageBehavior::create(GameObject* owner)
@@ -314,7 +314,7 @@ void KillingMachineDamageBehavior::onLoad()
 						COMMENT(hintStr)
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()) +
-						"cmp rax, " + probabilityConstantStr + "\n\n" +
+						"cmp eax, " + probabilityConstantStr + "\n\n" + // eax usage intentional
 						COMMENT(critChanceComment->clone()) +
 						command + " rdi, rsi\n\n" + 
 						commandComment + "\n"  +
@@ -414,7 +414,7 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage1()
 	ASM_MOV_REG_VAR(ZSI, KillingMachineDamageBehavior::CritDamage);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_1);
-	ASM(cmp ZAX, CMOVL_PROBABILITY_CONST);
+	ASM(cmp eax, CMOVL_PROBABILITY_CONST);
 	ASM(cmovl ZDI, ZSI);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
@@ -461,7 +461,7 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage2()
 	ASM_MOV_REG_VAR(ZSI, KillingMachineDamageBehavior::CritDamage);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_2);
-	ASM(cmp ZAX, CMOVL_PROBABILITY_CONST);
+	ASM(cmp eax, CMOVL_PROBABILITY_CONST);
 	ASM(cmovl ZDI, ZSI);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
@@ -508,7 +508,7 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage3()
 	ASM_MOV_REG_VAR(ZSI, KillingMachineDamageBehavior::CritDamage);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_3);
-	ASM(cmp ZAX, CMOVE_PROBABILITY_CONST);
+	ASM(cmp eax, CMOVE_PROBABILITY_CONST);
 	ASM(cmove ZDI, ZSI);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
@@ -557,7 +557,7 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage4()
 	ASM_MOV_REG_VAR(ZSI, KillingMachineDamageBehavior::DefaultDamage);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_4);
-	ASM(cmp ZAX, CMOVNE_PROBABILITY_CONST);
+	ASM(cmp eax, CMOVNE_PROBABILITY_CONST);
 	ASM(cmovne ZDI, ZSI);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
@@ -604,7 +604,7 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage5()
 	ASM_MOV_REG_VAR(ZSI, KillingMachineDamageBehavior::CritDamage);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_5);
-	ASM(cmp ZAX, CMOVG_PROBABILITY_CONST);
+	ASM(cmp eax, CMOVG_PROBABILITY_CONST);
 	ASM(cmovg ZDI, ZSI);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
@@ -620,8 +620,8 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage5()
 
 	KillingMachineDamageBehavior::DamageStorageAntiOptimize = Value(damage);
 }
-END_NO_OPTIMIZE
 
+END_NO_OPTIMIZE
 // Greater than or equal
 NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage6()
 {
@@ -651,7 +651,7 @@ NO_OPTIMIZE void KillingMachineDamageBehavior::compareDamage6()
 	ASM_MOV_REG_VAR(ZSI, KillingMachineDamageBehavior::CritDamage);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM_6);
-	ASM(cmp ZAX, CMOVGE_PROBABILITY_CONST);
+	ASM(cmp eax, CMOVGE_PROBABILITY_CONST);
 	ASM(cmovge ZDI, ZSI);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
