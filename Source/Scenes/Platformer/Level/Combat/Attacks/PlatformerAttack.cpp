@@ -175,7 +175,7 @@ float PlatformerAttack::getUseUtility(PlatformerEntity* caster, PlatformerEntity
 			float eq = float(target->getRuntimeStateOrDefaultInt(StateKeys::Eq, 0));
 
 			// If <= level 5, priority is based on health percentage, otherwise it is random
-			return (eq > 5 || pacifist) ? RandomPriority : (hp / (hpMax <= 0.0f ? 1.0f : hpMax));
+			return !isAlive ? 0.0f : ((eq > 5 || pacifist) ? RandomPriority : (hp / (hpMax <= 0.0f ? 1.0f : hpMax)));
 		}
 		case AttackType::Healing:
 		{

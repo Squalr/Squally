@@ -241,7 +241,11 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ================== 
 		// ** Spiked log preview is incorrect
 		// ** Hint string on Fear couldn't hurt
-		// ** Check gauntlet hackables on Linux/Mac. Last fight is busted for sure.
+		// Remove mummies from pyramid main central map
+		// Add lioness to left back throw away lever fight (arrow rain to make it ez)
+		// Add aura for undying that makes the effect obvious
+		// Emerald drop rates are too high
+		// Double check 1_1_a chest pool (seemed same as UR)
 		// Guano warps to Squally on unpetrification, which looks like trash
 		// Reinstate water gun if we want it
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
@@ -290,6 +294,7 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// ?* Minecarts can still glitch and not spawn on map changes (? confirm this)
+		// Life stone or raisable bridge before rhinoman fight
 		// Boat combat map for Krampus fight
 		// Train SFX
 		// Terrain in tent map has wrong corner connectors
