@@ -94,6 +94,7 @@ void StateGameEnd::initializePositions()
 
 void StateGameEnd::onBackClick(GameState* gameState)
 {
+	this->backButton->stopAllActions();
 	this->backButton->disableInteraction(0);
 	this->backButton->setMouseClickCallback(nullptr);
 

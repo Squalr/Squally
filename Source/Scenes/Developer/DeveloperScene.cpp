@@ -76,6 +76,7 @@ DeveloperScene::DeveloperScene()
 	- ** Esc doesn't close pause menu
 	- ** Arabic language is busted, I believe
 	- ** No mages guild portal map for DM
+	- ** Dismantle item names can cache (dismantle 2nd item in list then craft a new item)
 	- Techncially Squally respawns on object layer upon death, although usually this is not noticeable
 	- Position saving logic busted
 	- Activate swim cooldown on opening save (Not relevant if position saving is not a bug)
@@ -294,7 +295,11 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// ?* Minecarts can still glitch and not spawn on map changes (? confirm this)
-		// Life stone or raisable bridge before rhinoman fight
+		// ** Life stone or raisable bridge before rhinoman fight
+		// ** Rock slide name string fix
+		// Earth golem cast anim kinda shit
+		// Earth elem cast anim shit
+		// Double check green light defaults on DM xor puzzle
 		// Boat combat map for Krampus fight
 		// Train SFX
 		// Terrain in tent map has wrong corner connectors
