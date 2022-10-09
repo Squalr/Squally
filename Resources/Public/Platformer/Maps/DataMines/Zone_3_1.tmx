@@ -676,7 +676,7 @@
   <object id="805" name="spawn-cart" type="object" x="423.76" y="3308.27" width="128" height="128">
    <properties>
     <property name="direction" value="right"/>
-    <property name="tag" value="cart-A"/>
+    <property name="link-tag" value="cart-A"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
