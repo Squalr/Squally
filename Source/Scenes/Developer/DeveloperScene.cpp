@@ -72,17 +72,16 @@ DeveloperScene::DeveloperScene()
 	- ** Can get stuck on roof of maps (see UR 3_1)
 	- ** Can hit ESC on potion menu, causing a soft-lock (probably focus side effect)
 	- ** Esc on crafting menu opens another pause menu (probably focus side effect)
-	- ** Esc doesn't close pause menu
+	- ** Esc doesn't close pause menu (probably focus side effect)
 	- Pacing behavior is broken for portal maps
 	- Techncially Squally respawns on object layer upon death, although usually this is not noticeable
-	- Position saving logic busted
-	- Activate swim cooldown on opening save (Not relevant if position saving is not a bug)
 	- Chapter transitions can be more special
-	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles)
+	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles) (edit: can't repro?)
 	- Sometimes hackable icon is below entity (rare)
 	- Evil Eye chase scenes, cracks in simulation for story
 	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+
 	- Mounts should apply to helpers so they aren't awkwardly lagging behind
+	- Squally auto crouch in mine carts
 	- Hexus:
 		- Add a "Stack" pile, and PUSH/POP cards. PUSH = Move any card (even enemy) to stack. POP = Overwrite card attack
 			- Move 'cards to play/draw' indicators to the left side. Shift graveyard down, stack above it.
