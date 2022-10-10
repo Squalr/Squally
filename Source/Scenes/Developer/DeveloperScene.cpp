@@ -240,7 +240,6 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// ** Spiked log preview is incorrect
-		// ** Hint string on Fear couldn't hurt
 		// Add aura for undying that makes the effect obvious
 		// Guano warps to Squally on unpetrification, which looks like trash
 		// Reinstate water gun if we want it

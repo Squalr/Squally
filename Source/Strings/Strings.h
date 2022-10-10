@@ -11559,6 +11559,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Fear_Fear() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_Fear_Hint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Fear_Hint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Fear_Hint();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Fear_Hint() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi : public LocalizedString
 	{
 	public:
