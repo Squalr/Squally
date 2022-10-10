@@ -2747,7 +2747,9 @@ namespace EntityResources
 	extern const std::string Misc_UnderflowRuins_Gull_back_wing;
 	extern const std::string Misc_UnderflowRuins_Gull_body;
 	extern const std::string Misc_UnderflowRuins_Gull_flying_wing_down;
+	extern const std::string Misc_UnderflowRuins_Gull_flying_wing_down_back;
 	extern const std::string Misc_UnderflowRuins_Gull_flying_wing_up;
+	extern const std::string Misc_UnderflowRuins_Gull_flying_wing_up_back;
 	extern const std::string Misc_UnderflowRuins_Gull_foot;
 	extern const std::string Misc_UnderflowRuins_Gull_foot_2;
 	extern const std::string Misc_UnderflowRuins_Gull_head;

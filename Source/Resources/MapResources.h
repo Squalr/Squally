@@ -62,6 +62,7 @@ namespace MapResources
 	extern const std::string DaemonsHallow_Zone_3_2;
 	extern const std::string DataMines_Combat_Caves;
 	extern const std::string DataMines_Home_Burch;
+	extern const std::string DataMines_Home_Cypress;
 	extern const std::string DataMines_Home_Dawn;
 	extern const std::string DataMines_Home_Godiva;
 	extern const std::string DataMines_Home_Ralston;
@@ -73,6 +74,7 @@ namespace MapResources
 	extern const std::string DataMines_Town_Train;
 	extern const std::string DataMines_Zone_1_0;
 	extern const std::string DataMines_Zone_1_1;
+	extern const std::string DataMines_Zone_1_1_a;
 	extern const std::string DataMines_Zone_1_2;
 	extern const std::string DataMines_Zone_2_0;
 	extern const std::string DataMines_Zone_2_1;
@@ -239,6 +241,7 @@ namespace MapResources
 	extern const std::string VoidStar_Town_Main;
 	extern const std::string VoidStar_Town_Smith;
 	extern const std::string VoidStar_Zone_1_0;
+	extern const std::string WarpGatePreviewMaps_DataMines;
 	extern const std::string WarpGatePreviewMaps_EndianForest;
 	extern const std::string WarpGatePreviewMaps_UnderflowRuins;
 };

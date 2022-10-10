@@ -20,6 +20,13 @@ WarpGateBP* WarpGateBP::create(ValueMap& properties)
 
 WarpGateBP::WarpGateBP(ValueMap& properties) : super(properties)
 {
+	PreviewMap* map = PreviewMap::create(MapResources::WarpGatePreviewMaps_EndianForest);
+
+	map->setPositionX(-map->getMapSize().width / 2.0f);
+	map->setPositionY(-map->getMapSize().height / 2.0f);
+	map->setPositionZ(-320.0f);
+
+	this->mapNode->addChild(map);
 }
 
 WarpGateBP::~WarpGateBP()
