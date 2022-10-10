@@ -28,11 +28,10 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	void onFrameComplete();
-
 	SmartAnimationSequenceNode* previewSpikedLogRailed = nullptr;
-	LocalizedLabel* ecxAnimationCount = nullptr;
-	ConstantString* countString = nullptr;
+	cocos2d::Sprite* previewSqually = nullptr;
+	LocalizedLabel* eaxLabel = nullptr;
+	ConstantString* eaxString = nullptr;
 	int currentAnimationIndex = -1;
 	int animationLength = 0;
 };

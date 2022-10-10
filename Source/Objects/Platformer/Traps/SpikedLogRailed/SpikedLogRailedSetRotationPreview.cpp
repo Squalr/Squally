@@ -1,6 +1,7 @@
 #include "SpikedLogRailedSetRotationPreview.h"
 
 #include "cocos/2d/CCActionEase.h"
+#include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
@@ -9,6 +10,7 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/MathUtils.h"
 
+#include "Resources/EntityResources.h"
 #include "Resources/ObjectResources.h"
 
 using namespace cocos2d;
@@ -25,14 +27,16 @@ SpikedLogRailedSetRotationPreview* SpikedLogRailedSetRotationPreview::create()
 SpikedLogRailedSetRotationPreview::SpikedLogRailedSetRotationPreview()
 {
 	this->previewSpikedLogRailed = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikedLogRailed_SpikedLog_00);
-	this->countString = ConstantString::create("0");
+	this->eaxString = ConstantString::create("1");
 	this->animationLength = SmartAnimationSequenceNode::GetAnimationLength(ObjectResources::Traps_SpikedLogRailed_SpikedLog_00);
+	this->previewSqually = Sprite::create(EntityResources::Squally_Emblem);
 
 	this->previewSpikedLogRailed->setScale(0.4f);
-	this->ecxAnimationCount = this->createRegisterEqualsValueLabel(HackableCode::Register::zcx, false, this->countString);
+	this->eaxLabel = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, false, this->eaxString);
 
 	this->previewNode->addChild(this->previewSpikedLogRailed);
-	this->assemblyTextNode->addChild(this->ecxAnimationCount);
+	this->previewNode->addChild(this->previewSqually);
+	this->assemblyTextNode->addChild(this->eaxLabel);
 }
 
 SpikedLogRailedSetRotationPreview::~SpikedLogRailedSetRotationPreview()
@@ -47,26 +51,52 @@ HackablePreview* SpikedLogRailedSetRotationPreview::clone()
 void SpikedLogRailedSetRotationPreview::onEnter()
 {
 	super::onEnter();
+	
+	const float speed = 1.5f;
+	const float range = HackablePreview::PreviewRadius - 72.0f;
 
 	this->previewSpikedLogRailed->setPosition(Vec2(0.0f, 0.0f));
+	this->previewSpikedLogRailed->playAnimationRepeat(ObjectResources::Traps_SpikedLogRailed_SpikedLog_00, 0.08f, 0.0f);
+	this->previewSqually->setFlippedX(true);
 
-	this->onFrameComplete();
-}
+	this->previewSqually->setPositionY(-72.0f);
 
-void SpikedLogRailedSetRotationPreview::onFrameComplete()
-{
-	this->currentAnimationIndex = MathUtils::wrappingNormalize(this->currentAnimationIndex + 1, 0, this->animationLength - 1);
-	this->countString->setString(std::to_string(this->currentAnimationIndex));
-
-	this->previewSpikedLogRailed->playSingleFrame(ObjectResources::Traps_SpikedLogRailed_SpikedLog_00, this->currentAnimationIndex, 0.5f, [=]()
-	{
-		this->onFrameComplete();
-	});
+	this->previewSqually->runAction(
+		RepeatForever::create(Sequence::create(
+			EaseSineInOut::create(MoveTo::create(speed, Vec2(-range, this->previewSqually->getPositionY()))),
+			EaseSineInOut::create(MoveTo::create(speed, Vec2(range, this->previewSqually->getPositionY()))),
+			nullptr
+		))
+	);
+	this->previewSpikedLogRailed->runAction(
+		RepeatForever::create(Sequence::create(
+			EaseSineInOut::create(MoveTo::create(speed, Vec2(range, this->previewSpikedLogRailed->getPositionY()))),
+			EaseSineInOut::create(MoveTo::create(speed, Vec2(-range, this->previewSpikedLogRailed->getPositionY()))),
+			nullptr
+		))
+	);
+	this->runAction(
+		RepeatForever::create(Sequence::create(
+			DelayTime::create(speed),
+			CallFunc::create([=]()
+			{
+				this->previewSqually->setFlippedX(false);
+				this->eaxString->setString("-1");
+			}),
+			DelayTime::create(speed),
+			CallFunc::create([=]()
+			{
+				this->previewSqually->setFlippedX(true);
+				this->eaxString->setString("1");
+			}),
+			nullptr
+		))
+	);
 }
 
 void SpikedLogRailedSetRotationPreview::initializePositions()
 {
 	super::initializePositions();
 
-	this->ecxAnimationCount->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - 64.0f));
+	this->eaxLabel->setPosition(Vec2(0.0f, HackablePreview::PreviewRadius - 32.0f));
 }
