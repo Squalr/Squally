@@ -83,7 +83,6 @@ DeveloperScene::DeveloperScene()
 	- Chapter transitions can be more special
 	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles)
 	- Sometimes hackable icon is below entity (rare)
-	- Show collectable animal names in notification
 	- Evil Eye chase scenes, cracks in simulation for story
 	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+
 	- Mounts should apply to helpers so they aren't awkwardly lagging behind
