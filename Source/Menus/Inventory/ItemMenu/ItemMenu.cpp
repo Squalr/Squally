@@ -159,7 +159,7 @@ void ItemMenu::clearPreview()
 
 void ItemMenu::clearVisibleItems()
 {
-	for (auto next : itemEntryMapping)
+	for (auto& next : itemEntryMapping)
 	{
 		next.second->setVisible(false);
 		next.second->setStackSize(1);
@@ -180,6 +180,11 @@ void ItemMenu::setPreviewCallback(std::function<void(Item*)> previewCallback)
 
 ItemEntry* ItemMenu::pushVisibleItem(Item* visibleItem, std::function<void()> onToggle)
 {
+	if (visibleItem == nullptr)
+	{
+		return nullptr;
+	}
+	
 	ItemEntry* itemEntry = nullptr;
 
 	for (auto entry : this->visibleItems)
@@ -216,6 +221,7 @@ ItemEntry* ItemMenu::pushVisibleItem(Item* visibleItem, std::function<void()> on
 	else
 	{
 		itemEntry = this->itemEntryMapping[visibleItem];
+		itemEntry->setText(visibleItem->getString());
 	}
 
 	this->visibleItems.push_back(itemEntry);

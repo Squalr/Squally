@@ -14,6 +14,7 @@ public:
 	void setToggleCallback(std::function<void()> onToggle);
 	std::function<void()> getToggleCallback();
 	Item* getAssociatedItem();
+	void setText(LocalizedString* newText);
 	int getStackSize();
 	void setStackSize(int stackSize);
 	void setCraftCount(int craftCount);
@@ -27,6 +28,7 @@ protected:
 private:
 	typedef MenuEntry super;
 
+	LocalizedString* textString = nullptr;
 	ConstantString* stackString = nullptr;
 	ConstantString* craftString = nullptr;
 	Item* associatedItem = nullptr;

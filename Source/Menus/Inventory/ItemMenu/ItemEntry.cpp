@@ -26,9 +26,10 @@ ItemEntry::ItemEntry(Item* associatedItem, LocalizedString* text, std::string sp
     this->associatedItem = associatedItem;
     this->stackString = ConstantString::create();
     this->craftString = ConstantString::create();
+    this->textString = Strings::Common_Constant::create()->setStringReplacementVariables(text);
     this->equipHintMode = ItemPreview::EquipHintMode::None;
 
-    this->label->setStringReplacementVariables({ text, this->stackString, this->craftString });
+    this->label->setStringReplacementVariables({ this->textString, this->stackString, this->craftString });
 
     this->hideIcon();
 }
@@ -50,6 +51,11 @@ std::function<void()> ItemEntry::getToggleCallback()
 Item* ItemEntry::getAssociatedItem()
 {
     return this->associatedItem;
+}
+
+void ItemEntry::setText(LocalizedString* newText)
+{
+    this->textString->setStringReplacementVariables(newText);
 }
 
 int ItemEntry::getStackSize()
