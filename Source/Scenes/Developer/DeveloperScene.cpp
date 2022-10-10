@@ -241,11 +241,7 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ================== 
 		// ** Spiked log preview is incorrect
 		// ** Hint string on Fear couldn't hurt
-		// Remove mummies from pyramid main central map
-		// Add lioness to left back throw away lever fight (arrow rain to make it ez)
 		// Add aura for undying that makes the effect obvious
-		// Emerald drop rates are too high
-		// Double check 1_1_a chest pool (seemed same as UR)
 		// Guano warps to Squally on unpetrification, which looks like trash
 		// Reinstate water gun if we want it
 		// Show the electricity ON/OFF in Lions Cistern water visually somehow
@@ -293,7 +289,6 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
 
 		// ================== TODO ================== 
-		// ** Life stone or raisable bridge before rhinoman fight
 		// Earth golem cast anim kinda shit
 		// Earth elem cast anim shit
 		// Double check green light defaults on DM xor puzzle
@@ -303,7 +298,6 @@ DeveloperScene::DeveloperScene()
 		// Tiki anims still broken (bad Spriter implementation strikes again)
 		// Train anims broken (for same reason)
 		// Nature spellbook, even if just for an ability? What ability?
-		// Collectables
 
 		// Hexus puzzles:
 		// - A	=> 1_x (Tiki)

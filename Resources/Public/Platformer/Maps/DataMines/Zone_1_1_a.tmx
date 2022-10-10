@@ -141,7 +141,7 @@
   </object>
   <object id="1000" name="hexus-shrine" type="object" x="492.392" y="1406.9" width="155" height="260">
    <properties>
-    <property name="entity-tag" value="hexus-tiki-golem"/>
+    <property name="entity-tag" value="hexus-shaman"/>
    </properties>
   </object>
   <object id="1003" name="metal-chest" type="object" x="2139.03" y="1545.09" width="128" height="128">
@@ -156,10 +156,10 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1001" name="tiki-golem" type="entity" x="565.202" y="2486.33" width="128" height="128">
+  <object id="1001" name="shaman" type="entity" x="565.202" y="2486.33" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,dm-puzzle-A"/>
-    <property name="tag" value="hexus-tiki-golem"/>
+    <property name="components" value="friendly,disarmed,dm-puzzle-B"/>
+    <property name="tag" value="hexus-shaman"/>
    </properties>
   </object>
  </objectgroup>

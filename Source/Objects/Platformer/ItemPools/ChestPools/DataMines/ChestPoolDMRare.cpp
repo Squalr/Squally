@@ -29,8 +29,8 @@ ChestPoolDMRare::ChestPoolDMRare(ValueMap& properties) : super(
 		SmithingPoolTier3::create(SampleMethod::Random, 1, 2)
 	})
 {
-	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Sapphire::create(), ItemChance::Probability::Common));
+	this->addItemToPool(ItemChance::create(Gold::create(), ItemChance::Probability::Guaranteed));
 }
 
 ChestPoolDMRare::~ChestPoolDMRare()

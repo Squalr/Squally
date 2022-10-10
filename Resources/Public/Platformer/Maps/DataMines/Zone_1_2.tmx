@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="22" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="859">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="863">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,8 +17,8 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="712" name="mines" type="texture" x="1079.11" y="1634.1">
-   <polygon points="-1478.68,-2086.15 2203.37,-2081.55 2199.12,1212.13 -1472.23,1198.72"/>
+  <object id="712" name="mines" type="texture" x="1516.04" y="1634.1">
+   <polygon points="-1915.61,-2086.15 2854.44,-2081.55 2848.93,1212.13 -1907.26,1198.72"/>
   </object>
  </objectgroup>
  <objectgroup id="66" name="terrain -4">
@@ -26,12 +26,12 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="813" name="mines" type="terrain" x="-448.244" y="1592" width="3771.8" height="844">
+  <object id="813" name="mines" type="terrain" x="-448.244" y="1592" width="4631.8" height="844">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="834" name="mines" type="terrain" x="-470.426" y="-144.239" width="3705.08" height="956">
+  <object id="834" name="mines" type="terrain" x="-470.426" y="-144.239" width="4801.08" height="956">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -42,7 +42,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="838" name="mines" type="terrain" x="2680.98" y="-151.225" width="545.287" height="2466.73"/>
+  <object id="838" name="mines" type="terrain" x="3844.98" y="-71.225" width="345.287" height="2466.73"/>
  </objectgroup>
  <objectgroup id="68" name="decor -4">
   <properties>
@@ -63,7 +63,7 @@
     <property name="transition" value="left-back"/>
    </properties>
   </object>
-  <object id="855" name="crusher" type="object" x="1057.05" y="819.622" width="341" height="782.937"/>
+  <object id="855" name="crusher" type="object" x="1393.05" y="807.622" width="341" height="782.937"/>
  </objectgroup>
  <objectgroup id="69" name="entities -4">
   <properties>
@@ -77,7 +77,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="824" name="warp" type="object" x="2333.96" y="1332.96" width="256" height="256">
+  <object id="824" name="warp" type="object" x="3350.93" y="1341.99" width="256" height="256">
    <properties>
     <property name="from" value="bridge-4-A"/>
     <property name="locked-text-key" value="closed"/>
@@ -97,12 +97,12 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="815" name="Ruins/Walls2" type="decor" x="1649.45" y="1457.82" width="689" height="132">
+  <object id="815" name="Ruins/Walls2" type="decor" x="2467.63" y="1460.85" width="689" height="132">
    <properties>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="835" name="Ruins/Walls3" type="decor" x="1677.03" y="812.966" width="262" height="130">
+  <object id="835" name="Ruins/Walls3" type="decor" x="2495.21" y="815.996" width="262" height="130">
    <properties>
     <property name="flip-y" type="bool" value="false"/>
    </properties>
@@ -128,7 +128,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="827" name="wood" type="terrain" x="2339.55" y="1593.39" width="252.514" height="327.549">
+  <object id="827" name="wood" type="terrain" x="3353.22" y="1597.72" width="252.514" height="327.549">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -146,7 +146,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="826" name="wood" type="terrain" x="2339.55" y="1616.39" width="252.514" height="327.549">
+  <object id="826" name="wood" type="terrain" x="3283.88" y="1618.06" width="252.514" height="327.549">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -164,7 +164,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="825" name="wood" type="terrain" x="2338.5" y="1637.21" width="252.514" height="327.549">
+  <object id="825" name="wood" type="terrain" x="3211.33" y="1638.38" width="252.514" height="327.549">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -186,13 +186,13 @@
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="849" name="mines" type="terrain" x="-722.237" y="-74.9697" width="3705.08" height="956"/>
+  <object id="849" name="mines" type="terrain" x="-722.237" y="-74.9697" width="4893.08" height="956"/>
  </objectgroup>
  <objectgroup id="59" name="terrain fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="837" name="mines" type="terrain" x="2683.41" y="-109.225" width="545.287" height="2466.73"/>
+  <object id="837" name="mines" type="terrain" x="3779.77" y="-69.225" width="400.923" height="2466.73"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -203,18 +203,18 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="799" name="Ruins/Walls2" type="decor" x="1437.44" y="1526.55" width="689" height="132">
+  <object id="799" name="Ruins/Walls2" type="decor" x="1583.62" y="1525.58" width="689" height="132">
    <properties>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="846" name="Ruins/Walls5" type="decor" x="1622.14" y="879.487" width="386" height="778"/>
-  <object id="847" name="Ruins/Walls3" type="decor" x="1360.1" y="879.453" width="262" height="130">
+  <object id="846" name="Ruins/Walls5" type="decor" x="1768.32" y="878.517" width="386" height="778"/>
+  <object id="847" name="Ruins/Walls3" type="decor" x="1506.28" y="878.483" width="262" height="130">
    <properties>
     <property name="flip-y" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="848" name="Ruins/Walls4" type="decor" x="2010.77" y="880.937" width="262" height="130">
+  <object id="848" name="Ruins/Walls4" type="decor" x="2156.95" y="879.967" width="262" height="130">
    <properties>
     <property name="flip-y" type="bool" value="false"/>
    </properties>
@@ -243,6 +243,11 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
+  <object id="862" name="hexus-shrine" type="object" x="2666.5" y="1398" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-tiki-golem"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -254,7 +259,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="853" name="shaman" type="entity" x="1164.42" y="1528.37" width="128" height="128">
+  <object id="853" name="shaman" type="entity" x="922.117" y="1532.37" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
@@ -263,11 +268,17 @@
     <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>
-  <object id="854" name="shaman" type="entity" x="1171.58" y="1139.63" width="128" height="128">
+  <object id="854" name="shaman" type="entity" x="929.277" y="1143.63" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="860" name="tiki-golem" type="entity" x="2691.41" y="3033.48" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,dm-puzzle-A"/>
+    <property name="tag" value="hexus-tiki-golem"/>
    </properties>
   </object>
  </objectgroup>
@@ -286,7 +297,7 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="823" name="warp" type="object" x="2336.64" y="1402.1" width="256" height="256">
+  <object id="823" name="warp" type="object" x="3210.11" y="1401.96" width="256" height="256">
    <properties>
     <property name="from" value="bridge-0-A"/>
     <property name="locked-text-key" value="closed"/>

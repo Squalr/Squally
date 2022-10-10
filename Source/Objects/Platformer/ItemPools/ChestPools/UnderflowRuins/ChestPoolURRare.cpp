@@ -29,7 +29,7 @@ ChestPoolURRare::ChestPoolURRare(ValueMap& properties) : super(
 		SmithingPoolTier2::create(SampleMethod::Random, 1, 2)
 	})
 {
-	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Guaranteed));
 }
 

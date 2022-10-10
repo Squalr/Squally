@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1163">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1163">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -499,22 +499,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="982" name="mummy-priest" type="entity" x="1366.17" y="1308.65" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="UnderflowRuins/Combat_Pyramid"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="983" name="mummy-warrior" type="entity" x="1373.61" y="974.013" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
   <object id="1146" name="horus" type="entity" x="2438.67" y="1273.33" width="128" height="128">
    <properties>
     <property name="components" value="horus-hexus,friendly,pick-pocket"/>
@@ -530,7 +514,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="1.3500000000000001"/>
+   <property name="zoom" type="float" value="1.35"/>
   </properties>
   <object id="523" name="squally" type="entity" x="3470.5" y="1280.68" width="128" height="128">
    <properties>
