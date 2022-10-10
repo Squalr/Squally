@@ -8064,6 +8064,756 @@ namespace Strings
 		virtual ~Menus_Cards_Cards() = default;
 	};
 
+	class Menus_Collectables_Animals_Bat : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Bat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Bat();
+		virtual ~Menus_Collectables_Animals_Bat() = default;
+	};
+
+	class Menus_Collectables_Animals_Bear : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Bear* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Bear();
+		virtual ~Menus_Collectables_Animals_Bear() = default;
+	};
+
+	class Menus_Collectables_Animals_Beaver : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Beaver* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Beaver();
+		virtual ~Menus_Collectables_Animals_Beaver() = default;
+	};
+
+	class Menus_Collectables_Animals_Bee : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Bee* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Bee();
+		virtual ~Menus_Collectables_Animals_Bee() = default;
+	};
+
+	class Menus_Collectables_Animals_Bird : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Bird* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Bird();
+		virtual ~Menus_Collectables_Animals_Bird() = default;
+	};
+
+	class Menus_Collectables_Animals_Blowfish : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Blowfish* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Blowfish();
+		virtual ~Menus_Collectables_Animals_Blowfish() = default;
+	};
+
+	class Menus_Collectables_Animals_Bull : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Bull* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Bull();
+		virtual ~Menus_Collectables_Animals_Bull() = default;
+	};
+
+	class Menus_Collectables_Animals_Bunny : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Bunny* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Bunny();
+		virtual ~Menus_Collectables_Animals_Bunny() = default;
+	};
+
+	class Menus_Collectables_Animals_Cat : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Cat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Cat();
+		virtual ~Menus_Collectables_Animals_Cat() = default;
+	};
+
+	class Menus_Collectables_Animals_Chicken : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Chicken* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Chicken();
+		virtual ~Menus_Collectables_Animals_Chicken() = default;
+	};
+
+	class Menus_Collectables_Animals_Cow : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Cow* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Cow();
+		virtual ~Menus_Collectables_Animals_Cow() = default;
+	};
+
+	class Menus_Collectables_Animals_Crocodile : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Crocodile* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Crocodile();
+		virtual ~Menus_Collectables_Animals_Crocodile() = default;
+	};
+
+	class Menus_Collectables_Animals_Dinosaur : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Dinosaur* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Dinosaur();
+		virtual ~Menus_Collectables_Animals_Dinosaur() = default;
+	};
+
+	class Menus_Collectables_Animals_Dog : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Dog* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Dog();
+		virtual ~Menus_Collectables_Animals_Dog() = default;
+	};
+
+	class Menus_Collectables_Animals_Duck : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Duck* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Duck();
+		virtual ~Menus_Collectables_Animals_Duck() = default;
+	};
+
+	class Menus_Collectables_Animals_Fox : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Fox* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Fox();
+		virtual ~Menus_Collectables_Animals_Fox() = default;
+	};
+
+	class Menus_Collectables_Animals_Giraffe : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Giraffe* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Giraffe();
+		virtual ~Menus_Collectables_Animals_Giraffe() = default;
+	};
+
+	class Menus_Collectables_Animals_Goat : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Goat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Goat();
+		virtual ~Menus_Collectables_Animals_Goat() = default;
+	};
+
+	class Menus_Collectables_Animals_Hedgehog : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Hedgehog* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Hedgehog();
+		virtual ~Menus_Collectables_Animals_Hedgehog() = default;
+	};
+
+	class Menus_Collectables_Animals_Hippo : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Hippo* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Hippo();
+		virtual ~Menus_Collectables_Animals_Hippo() = default;
+	};
+
+	class Menus_Collectables_Animals_Horse : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Horse* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Horse();
+		virtual ~Menus_Collectables_Animals_Horse() = default;
+	};
+
+	class Menus_Collectables_Animals_KillerWhale : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_KillerWhale* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_KillerWhale();
+		virtual ~Menus_Collectables_Animals_KillerWhale() = default;
+	};
+
+	class Menus_Collectables_Animals_Koala : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Koala* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Koala();
+		virtual ~Menus_Collectables_Animals_Koala() = default;
+	};
+
+	class Menus_Collectables_Animals_Ladybug : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Ladybug* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Ladybug();
+		virtual ~Menus_Collectables_Animals_Ladybug() = default;
+	};
+
+	class Menus_Collectables_Animals_Lion : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Lion* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Lion();
+		virtual ~Menus_Collectables_Animals_Lion() = default;
+	};
+
+	class Menus_Collectables_Animals_Lizard : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Lizard* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Lizard();
+		virtual ~Menus_Collectables_Animals_Lizard() = default;
+	};
+
+	class Menus_Collectables_Animals_Monkey : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Monkey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Monkey();
+		virtual ~Menus_Collectables_Animals_Monkey() = default;
+	};
+
+	class Menus_Collectables_Animals_MountainLion : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_MountainLion* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_MountainLion();
+		virtual ~Menus_Collectables_Animals_MountainLion() = default;
+	};
+
+	class Menus_Collectables_Animals_Mouse : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Mouse* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Mouse();
+		virtual ~Menus_Collectables_Animals_Mouse() = default;
+	};
+
+	class Menus_Collectables_Animals_Panda : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Panda* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Panda();
+		virtual ~Menus_Collectables_Animals_Panda() = default;
+	};
+
+	class Menus_Collectables_Animals_Parrot : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Parrot* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Parrot();
+		virtual ~Menus_Collectables_Animals_Parrot() = default;
+	};
+
+	class Menus_Collectables_Animals_Penguin : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Penguin* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Penguin();
+		virtual ~Menus_Collectables_Animals_Penguin() = default;
+	};
+
+	class Menus_Collectables_Animals_Pig : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Pig* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Pig();
+		virtual ~Menus_Collectables_Animals_Pig() = default;
+	};
+
+	class Menus_Collectables_Animals_Raccoon : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Raccoon* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Raccoon();
+		virtual ~Menus_Collectables_Animals_Raccoon() = default;
+	};
+
+	class Menus_Collectables_Animals_Reindeer : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Reindeer* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Reindeer();
+		virtual ~Menus_Collectables_Animals_Reindeer() = default;
+	};
+
+	class Menus_Collectables_Animals_Rhino : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Rhino* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Rhino();
+		virtual ~Menus_Collectables_Animals_Rhino() = default;
+	};
+
+	class Menus_Collectables_Animals_Sheep : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Sheep* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Sheep();
+		virtual ~Menus_Collectables_Animals_Sheep() = default;
+	};
+
+	class Menus_Collectables_Animals_Skunk : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Skunk* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Skunk();
+		virtual ~Menus_Collectables_Animals_Skunk() = default;
+	};
+
+	class Menus_Collectables_Animals_Snail : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Snail* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Snail();
+		virtual ~Menus_Collectables_Animals_Snail() = default;
+	};
+
+	class Menus_Collectables_Animals_Snake : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Snake* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Snake();
+		virtual ~Menus_Collectables_Animals_Snake() = default;
+	};
+
+	class Menus_Collectables_Animals_Squid : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Squid* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Squid();
+		virtual ~Menus_Collectables_Animals_Squid() = default;
+	};
+
+	class Menus_Collectables_Animals_Squirrel : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Squirrel* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Squirrel();
+		virtual ~Menus_Collectables_Animals_Squirrel() = default;
+	};
+
+	class Menus_Collectables_Animals_Tiger : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Tiger* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Tiger();
+		virtual ~Menus_Collectables_Animals_Tiger() = default;
+	};
+
+	class Menus_Collectables_Animals_Tucan : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Tucan* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Tucan();
+		virtual ~Menus_Collectables_Animals_Tucan() = default;
+	};
+
+	class Menus_Collectables_Animals_Turtle : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Turtle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Turtle();
+		virtual ~Menus_Collectables_Animals_Turtle() = default;
+	};
+
+	class Menus_Collectables_Animals_Whale : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Whale* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Whale();
+		virtual ~Menus_Collectables_Animals_Whale() = default;
+	};
+
+	class Menus_Collectables_Animals_Wolf : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Wolf* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Wolf();
+		virtual ~Menus_Collectables_Animals_Wolf() = default;
+	};
+
+	class Menus_Collectables_Animals_Worm : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Worm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Worm();
+		virtual ~Menus_Collectables_Animals_Worm() = default;
+	};
+
+	class Menus_Collectables_Animals_Yeti : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Yeti* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Yeti();
+		virtual ~Menus_Collectables_Animals_Yeti() = default;
+	};
+
+	class Menus_Collectables_Animals_Zebra : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Zebra* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Zebra();
+		virtual ~Menus_Collectables_Animals_Zebra() = default;
+	};
+
 	class Menus_Collectables_Collectables : public LocalizedString
 	{
 	public:

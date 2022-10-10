@@ -56,7 +56,7 @@ def main():
     'Content-type': 'application/json',
     'X-ClientTraceId': str(uuid.uuid4())
     }
-    params = ''
+    params = '' # &from=de
     
     for next in languages:
         params += ('&to=' + next)
