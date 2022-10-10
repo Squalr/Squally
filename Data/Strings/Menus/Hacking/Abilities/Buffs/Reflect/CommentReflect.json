@@ -15,7 +15,7 @@
     "ja": "減らされたダメージを'%s1'にコピーします。この破損は攻撃者に反映されます。",
     "ko": "감소된 손상을 '%s1'로 복사합니다. 이 피해는 공격자에게 다시 반영됩니다.",
     "nl": "Kopieer de verminderde schade naar '%s1'. Deze schade zal worden weerspiegeld terug naar de aanvaller.",
-    "nb": "Kopier den reduserte skaden til '%s1'. Denne skaden vil bli reflektert tilbake til angriperen.",
+    "no": "Kopier den reduserte skaden til '%s1'. Denne skaden vil bli reflektert tilbake til angriperen.",
     "pl": "Skopiuj zredukowane obrażenia na '%s1'. Obrażenia te zostaną odzwierciedlone z powrotem do atakującego.",
     "pt": "Copie os danos reduzidos em '%s1'. Este dano será refletido de volta ao agressor.",
     "pt-BR": "Copie o dano reduzido em '%s1'. Este dano será refletido de volta para o atacante.",

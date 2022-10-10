@@ -15,7 +15,7 @@
     "ja": "元のコードは敵に%s1ダメージを与えます。",
     "ko": "원래 코드로 인해 적에게 %s1개의 피해를 입힙니다.",
     "nl": "De originele code zorgt ervoor dat de vijand %s1 schade aanricht.",
-    "nb": "Den opprinnelige koden får fienden til å håndtere %s1 skader.",
+    "no": "Den opprinnelige koden får fienden til å håndtere %s1 skader.",
     "pl": "Oryginalny kod powoduje, że wróg zadaje %s1 pkt. obrażeń.",
     "pt": "O código original faz com que o inimigo lide com %s1 danos.",
     "pt-BR": "O código original faz com que o inimigo cause %s1 danos.",

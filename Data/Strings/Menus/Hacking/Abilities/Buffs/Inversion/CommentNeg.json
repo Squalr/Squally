@@ -15,7 +15,7 @@
     "ja": "命令 'neg' は値を否定します。これは-1 を掛けるのと同じです。",
     "ko": "명령 'neg'는 값을 부정합니다. 이는 -1로 곱한 것과 동일합니다.",
     "nl": "De instructie 'neg' ontkent een waarde. Dit is hetzelfde als vermenigvuldigen met -1.",
-    "nb": "Instruksjonen 'neg' opphever en verdi. Dette er det samme som å multiplisere med -1.",
+    "no": "Instruksjonen 'neg' opphever en verdi. Dette er det samme som å multiplisere med -1.",
     "pl": "Instrukcja 'neg' neguje wartość. Jest to taka sama jak pomnożenie przez -1.",
     "pt": "A instrução 'neg' nega um valor. Isto é o mesmo que multiplicar por -1.",
     "pt-BR": "A instrução 'neg' nega um valor. Isso é o mesmo que multiplicar por -1.",

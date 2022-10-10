@@ -15,7 +15,7 @@
     "ja": "エンティティがプレイヤーのチームにあるかどうかを示すブール値。ブール値は、偽 (0) または true (1) のデータ型 です。",
     "ko": "엔티티가 플레이어의 팀에 있는지를 나타내는 부울입니다. 부울은 거짓(0) 또는 true(1)일 수 있는 데이터 형식입니다.",
     "nl": "Een booleaan die aangeeft of een entiteit in het team van de speler zit. Een booleaan is een gegevenstype dat onwaar (0) of waar kan zijn (1).",
-    "nb": "En boolsk som angir om en enhet er på spillerens lag. En boolsk er en datatype som kan være usann (0) eller sann (1).",
+    "no": "En boolsk som angir om en enhet er på spillerens lag. En boolsk er en datatype som kan være usann (0) eller sann (1).",
     "pl": "Wartość logiczna wskazująca, czy jednostka znajduje się w drużynie gracza. Wartość logiczna to typ danych, który może być fałszywy (0) lub true (1).",
     "pt": "Um booleano indicando se uma entidade está na equipa do jogador. Um booleano é um tipo de dados que pode ser falso (0), ou verdadeiro (1).",
     "pt-BR": "Um booleano indicando se uma entidade está no time do jogador. Um booleano é um tipo de dados que pode ser falso (0) ou verdadeiro (1).",

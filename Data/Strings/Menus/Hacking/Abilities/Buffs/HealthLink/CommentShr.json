@@ -15,7 +15,7 @@
     "ja": "'shr' は、数値のビットを右にシフトします。",
     "ko": "'shr'는 숫자의 비트를 오른쪽으로 이동합니다.",
     "nl": "'shr' verschuift de bits van een getal naar rechts.",
-    "nb": "'shr' skifter biter av et tall til høyre.",
+    "no": "'shr' skifter biter av et tall til høyre.",
     "pl": "'shr' przesuwa bity liczby w prawo.",
     "pt": "'shr' muda os pedaços de um número para a direita.",
     "pt-BR": "'shr' muda os bits de um número para a direita.",

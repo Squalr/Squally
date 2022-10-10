@@ -15,7 +15,7 @@
     "ja": "この命令により、xmm* レジスタからメモリへのデータの転送が可能になります。",
     "ko": "이 명령을 사용하면 xmm* 레지스터에서 메모리로 데이터를 전송할 수 있습니다.",
     "nl": "Deze instructie maakt de overdracht van gegevens van xmm* registers naar het geheugen mogelijk.",
-    "nb": "Denne instruksjonen tillater overføring av data fra xmm*-registre til minne.",
+    "no": "Denne instruksjonen tillater overføring av data fra xmm*-registre til minne.",
     "pl": "Ta instrukcja umożliwia przesyłanie danych z rejestrów xmm* do pamięci.",
     "pt": "Esta instrução permite a transferência de dados dos registos xmm* para a memória.",
     "pt-BR": "Esta instrução permite a transferência de dados de xmm* registra-se para memória.",

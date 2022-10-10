@@ -13,6 +13,7 @@ public:
 	std::string getString();
 	cocos2d::LanguageType getOverrideLanguage();
 	void setOverrideLanguage(cocos2d::LanguageType overrideLanguage);
+	LocalizedString* setOverrideMap(std::map<cocos2d::LanguageType, cocos2d::LanguageType> remappedLanguages);
 	LocalizedString* setStringReplacementVariables(LocalizedString* stringReplacementVariable);
 	LocalizedString* setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables);
 	void setOnStringUpdateCallback(std::function<void()> onStringUpdate);
@@ -32,6 +33,7 @@ protected:
 	std::vector<LocalizedString*> stringReplacementVariables;
 	cocos2d::LanguageType currentLanguage = cocos2d::LanguageType::NONE;
 	cocos2d::LanguageType overrideLanguage = cocos2d::LanguageType::NONE;
+	std::map<cocos2d::LanguageType, cocos2d::LanguageType> remappedLanguages;
 
 private:
 	typedef SmartNode super;

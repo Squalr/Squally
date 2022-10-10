@@ -15,7 +15,7 @@
     "ja": "プレイヤーがクラッシャーの左右の境界内にあり、クラッシャーがアクティブになる場合は 1 に設定します。",
     "ko": "플레이어가 크러셔의 왼쪽 및 오른쪽 경계 내에 있으면 크러셔가 활성화되는 경우 1로 설정합니다.",
     "nl": "Stel in op 1 als de speler zich binnen zowel de linker- als rechtergrenzen van de breker bevindt, waardoor de breker wordt geactiveerd.",
-    "nb": "Sett til 1 hvis spilleren er innenfor både venstre og høyre grense for knuseren, noe som får knuseren til å aktiveres.",
+    "no": "Sett til 1 hvis spilleren er innenfor både venstre og høyre grense for knuseren, noe som får knuseren til å aktiveres.",
     "pl": "Ustaw na 1, jeśli gracz znajduje się zarówno w lewej, jak i prawej granicy kruszarki, co powoduje aktywację kruszarki.",
     "pt": "Ajuste para 1 se o leitor estiver dentro dos limites esquerdo e direito do triturador, o que faz com que o triturador se ative.",
     "pt-BR": "Definido para 1 se o jogador estiver dentro dos limites esquerdo e direito do triturador, o que faz com que o triturador seja ativado.",

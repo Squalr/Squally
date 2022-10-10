@@ -15,7 +15,7 @@
     "ja": "ptr = は、ポインターがアクセス中であることを示します。これは常に括弧、すなわち「ptr [eax]」の前に表示されます 。",
     "ko": "ptr = 포인터에 액세스 중임을 나타냅니다. 이것은 항상 브래킷, 즉 'ptr [eax]'앞에 나타납니다.",
     "nl": "ptr = geeft aan dat er een aanwijzer wordt geopend. Dit zal altijd verschijnen voor haakjes, dat wil zeggen 'ptr [eax]'.",
-    "nb": "ptr = angir at en peker åpnes. Dette vil alltid vises før parentes, dvs 'ptr [eax]'.",
+    "no": "ptr = angir at en peker åpnes. Dette vil alltid vises før parentes, dvs 'ptr [eax]'.",
     "pl": "ptr = wskazuje, że wskaźnik jest dostępny. To zawsze pojawi się przed nawiasami, czyli 'ptr [eax]'.",
     "pt": "ptr = indica que um ponteiro está a ser acedido. Isto aparecerá sempre antes dos suportes, ou seja, 'ptr [eax]'.",
     "pt-BR": "ptr = indica que um ponteiro está sendo acessado. Isso sempre aparecerá antes dos suportes, ou seja, 'ptr [eax]'.",

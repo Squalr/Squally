@@ -15,7 +15,7 @@
     "ja": "qword = 8 バイト。これは、アクセスされるデータのサイズです。倍精度整数と長整数は 8 バイトを要します。これは dword よりもはるかに一般的ではありません。",
     "ko": "qword = 8 바이트. 액세스 중인 데이터의 크기입니다. 복식과 긴 정수는 8바이트를 차지합니다. 이는 dword보다 훨 씬 덜 일반적입니다.",
     "nl": "qword = 8 bytes. Dit is de grootte van de gegevens die worden geopend. Dubbels en lange gehele getallen nemen 8 bytes in beslag. Dit komt veel minder vaak voor dan dwordQ.",
-    "nb": "qword = 8 byte. Dette er størrelsen på dataene som åpnes. Dobler og lange heltall tar opp 8 byte. Dette er langt mindre vanlig enn dword.",
+    "no": "qword = 8 byte. Dette er størrelsen på dataene som åpnes. Dobler og lange heltall tar opp 8 byte. Dette er langt mindre vanlig enn dword.",
     "pl": "qword = 8 bajtów. Jest to rozmiar danych, do które uzyskuje się dostęp. Podwaja i długie liczby całkowite zajmują 8 bajtów. Jest to znacznie mniej powszechne niż dword.",
     "pt": "qword = 8 bytes. Este é o tamanho dos dados que estão a ser acedidos. Duplos e inteiros longos tomam 8 bytes. Isto é muito menos comum do que o dword.",
     "pt-BR": "qword = 8 bytes. Este é o tamanho dos dados que estão sendo acessados. Duplas e inteiros longos tomam 8 bytes. Isso é muito menos comum do que o dword.",

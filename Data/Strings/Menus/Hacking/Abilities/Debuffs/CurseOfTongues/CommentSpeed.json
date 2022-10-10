@@ -15,7 +15,7 @@
     "ja": "値 %s1 を指定すると、curse によってどれだけの速度が消耗されるかがわずかに減少します。通常、この呪いは%s2で速度をドレインします。",
     "ko": "값이 %s1로 떨어면 저주에 의해 소모되는 속도가 약간 줄어듭니다. 일반적으로,이 저주는 %s2에 의해 속도를 배출한다.",
     "nl": "Een waarde van %s1 zal iets verminderen hoeveel snelheid wordt afgevoerd door de vloek. Normaal gesproken, deze vloek afvoeren snelheid door %s2.",
-    "nb": "En verdi på %s1 vil redusere hvor mye hastighet som dreneres av forbannelsen. Normalt, denne forbannelsen drenerer hastighet med %s2.",
+    "no": "En verdi på %s1 vil redusere hvor mye hastighet som dreneres av forbannelsen. Normalt, denne forbannelsen drenerer hastighet med %s2.",
     "pl": "Wartość %s1 nieznacznie zmniejszy prędkość spuszczenia przez klątwę. Zwykle ta klątwa spływa z prędkością o %s2.",
     "pt": "Um valor de %s1 reduzirá ligeiramente a velocidade drenada pela maldição. Normalmente, esta maldição drena velocidade às %s2.",
     "pt-BR": "Um valor de %s1 reduzirá ligeiramente a velocidade que é drenada pela maldição. Normalmente, esta maldição drena velocidade em %s2.",

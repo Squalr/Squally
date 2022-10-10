@@ -15,7 +15,7 @@
     "ja": "商は EAX/RAX に格納され、剰余は EDX/RDX に格納されます。",
     "ko": "몫은 EAX/RAX에 저장되며 나머지는 EDX/RDX에 저장됩니다.",
     "nl": "Het quotiënt wordt opgeslagen in EAX/RAX en de rest wordt opgeslagen in EDX/RDX.",
-    "nb": "Kvotienten lagres i EAX/RAX, og resten lagres i EDX/RDX.",
+    "no": "Kvotienten lagres i EAX/RAX, og resten lagres i EDX/RDX.",
     "pl": "Iloraz jest przechowywany w EAX/RAX, a pozostała część jest przechowywana w EDX/RDX.",
     "pt": "O quociente é armazenado em EAX/RAX, e o restante é armazenado em EDX/RDX.",
     "pt-BR": "O quociente é armazenado em EAX/RAX, e o restante é armazenado em EDX/RDX.",

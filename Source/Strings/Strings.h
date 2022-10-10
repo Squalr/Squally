@@ -23529,10 +23529,10 @@ namespace Strings
 		virtual ~Platformer_Dialogue_Hexus_HowAboutARoundOfHexus() = default;
 	};
 
-	class Platformer_Dialogue_Hexus_PuzzleForYou : public LocalizedString
+	class Platformer_Dialogue_Hexus_PuzzleForYouZalgo : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Hexus_PuzzleForYou* create();
+		static Platformer_Dialogue_Hexus_PuzzleForYouZalgo* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23540,8 +23540,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Dialogue_Hexus_PuzzleForYou();
-		virtual ~Platformer_Dialogue_Hexus_PuzzleForYou() = default;
+		Platformer_Dialogue_Hexus_PuzzleForYouZalgo();
+		virtual ~Platformer_Dialogue_Hexus_PuzzleForYouZalgo() = default;
 	};
 
 	class Platformer_Dialogue_Hexus_WeAcceptYourChallenge : public LocalizedString

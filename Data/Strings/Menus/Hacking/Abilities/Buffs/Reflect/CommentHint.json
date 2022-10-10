@@ -15,7 +15,7 @@
     "ja": "ヒント: '%s1' を減らしてダメージを減らし、'%s2' を増やしてダメージを増やします。",
     "ko": "힌트: '%s1'를 줄여 피해를 줄이고 '%s2'을 늘려 피해를 증가시면 피해를 증가시면 됩니다.",
     "nl": "Tip: Verlaag '%s1' om de geleden schade te beperken en verhoog '%s2' om de schade te verhogen.",
-    "nb": "Tips: Reduser '%s1' for å redusere skader tatt, og øke '%s2' for å øke skade utdelt.",
+    "no": "Tips: Reduser '%s1' for å redusere skader tatt, og øke '%s2' for å øke skade utdelt.",
     "pl": "Wskazówka: Zmniejsz '%s1', aby zmniejszyć otrzymywane obrażenia, i zwiększ liczbę '%s2', aby zwiększyć zadawane obrażenia.",
     "pt": "Atenção: Reduza o '%s1' para reduzir os danos causados e aumente o '%s2' para aumentar os danos causados.",
     "pt-BR": "Dica: Reduza '%s1' para reduzir os danos causados e aumente '%s2' para aumentar os danos causados.",

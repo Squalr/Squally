@@ -15,7 +15,7 @@
     "ja": "dword = 4 バイト。これは、アクセスされる変数のサイズです。整数と浮動小数点数はどちらも 4 バイトであり、最もよく使用されるサイズです。",
     "ko": "dword = 4 바이트. 액세스 중인 변수의 크기입니다. 정수와 수레는 모두 4바이트크기로 가장 일반적으로 사용되는 크기입니다.",
     "nl": "dword = 4 bytes. Dit is de grootte van de variabele die wordt geopend. Gehele getallen en praalwagens zijn beide 4-bytes, waardoor dit de meest gebruikte grootte.",
-    "nb": "dword = 4 byte. Dette er størrelsen på variabelen som åpnes. Heltall og flyter er begge 4 byte, noe som gjør dette til den mest brukte størrelsen.",
+    "no": "dword = 4 byte. Dette er størrelsen på variabelen som åpnes. Heltall og flyter er begge 4 byte, noe som gjør dette til den mest brukte størrelsen.",
     "pl": "dword = 4 bajty. Jest to rozmiar zmiennej, do która jest dostępna. Liczby całkowite i floats są zarówno 4-bajtów, co czyni go najczęściej używanym rozmiarem.",
     "pt": "dword = 4 bytes. Este é o tamanho da variável que está a ser acedida. Os inteiros e os carros alegóricos são ambos de 4 bytes, o que faz deste o tamanho mais utilizado.",
     "pt-BR": "dword = 4 bytes. Este é o tamanho da variável que está sendo acessada. Inteiros e carros alegóricos são ambos de 4 bytes, tornando este o tamanho mais usado.",

@@ -15,7 +15,7 @@
     "ja": "カートが移動できるかどうかを示すブール値。0 = 停止、1 = 移動中。",
     "ko": "카트가 움직일 수 있는지 여부를 나타내는 부울입니다. 0 = 중지됨, 1 = 이동.",
     "nl": "Een booleaanse die aangeeft of de kar kan bewegen. 0 = gestopt, 1 = in beweging.",
-    "nb": "En boolsk som indikerer om vognen kan bevege seg. 0 = stoppet, 1 = flytting.",
+    "no": "En boolsk som indikerer om vognen kan bevege seg. 0 = stoppet, 1 = flytting.",
     "pl": "Wartość logiczna wskazująca, czy koszyk może się poruszać. 0 = zatrzymany, 1 = poruszający się.",
     "pt": "Um booleano indicando se o carrinho pode mover-se. 0 = parado, 1 = movimento.",
     "pt-BR": "Um booleano indicando se o carrinho pode se mover. 0 = parou, 1 = movimento.",

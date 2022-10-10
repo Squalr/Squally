@@ -15,7 +15,7 @@
     "ja": "ダメージへのポインタが '%s1' にロードされました。この命令は与えたダメージに加わります。",
     "ko": "손상에 대한 포인터가 '%s1'에로드되었습니다. 이 지침은 처리 된 손상에 추가됩니다.",
     "nl": "De aanwijzer naar schade is in '%s1' geladen. Deze instructie draagt bij aan de uitgedeelde schade.",
-    "nb": "Pekeren til skade er lastet inn i '%s1'. Denne instruksjonen legger til skaden som deles ut.",
+    "no": "Pekeren til skade er lastet inn i '%s1'. Denne instruksjonen legger til skaden som deles ut.",
     "pl": "Wskaźnik do obrażeń został załadowany do \\\"%s1\\\". Ta instrukcja zwiększa zadane obrażenia.",
     "pt": "O ponteiro para os danos foi carregado em '%s1'. Esta instrução adiciona aos danos causados.",
     "pt-BR": "O ponteiro para danificar foi carregado em '%s1'. Esta instrução aumenta os danos causados.",

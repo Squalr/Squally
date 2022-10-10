@@ -15,7 +15,7 @@
     "ja": "ヒント: いくつかの解決策があります。値を変更して、cmp 命令の結果を変更してみてください。",
     "ko": "힌트 : 몇 가지 해결책이 있습니다. cmp 명령의 결과를 변경하려면 값을 변경하십시오.",
     "nl": "Tip: Er zijn verschillende oplossingen. Probeer waarden te wijzigen om het resultaat van de cmp-instructie te wijzigen.",
-    "nb": "Tips: Det finnes flere løsninger. Prøv å endre verdier for å endre resultatet av cmp-instruksjonen.",
+    "no": "Tips: Det finnes flere løsninger. Prøv å endre verdier for å endre resultatet av cmp-instruksjonen.",
     "pl": "Wskazówka: Istnieje kilka rozwiązań. Spróbuj zmienić wartości, aby zmienić wynik instrukcji cmp.",
     "pt": "Atenção: Existem várias soluções. Tente alterar valores para alterar o resultado da instrução do cmp.",
     "pt-BR": "Dica: Existem várias soluções. Tente alterar valores para alterar o resultado da instrução cmp.",

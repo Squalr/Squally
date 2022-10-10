@@ -117,6 +117,9 @@ def main():
 
                 if (language == "pt-PT"):
                     language = 'pt'
+
+                if (language == "nb"):
+                    language = 'no'
                     
                 resultDict[language] = translation
 

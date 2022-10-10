@@ -15,7 +15,7 @@
     "ja": "トラップが移動する方向。-1 = 左、1 = 右、0 = 移動なし。",
     "ko": "트랩이 이동하는 방향입니다. -1 = 왼쪽, 1 = 오른쪽, 0 = 이동 없음.",
     "nl": "De richting waarin de val zal bewegen. -1 = links, 1 = rechts, 0 = geen beweging.",
-    "nb": "Retningen der fellen vil bevege seg. -1 = venstre, 1 = høyre, 0 = ingen bevegelse.",
+    "no": "Retningen der fellen vil bevege seg. -1 = venstre, 1 = høyre, 0 = ingen bevegelse.",
     "pl": "Kierunek, w którym pułapka będzie się poruszać. -1 = w lewo, 1 = w prawo, 0 = bez ruchu.",
     "pt": "A direção em que a armadilha se moverá. -1 = esquerda, 1 = direita, 0 = sem movimento.",
     "pt-BR": "A direção em que a armadilha se moverá. -1 = esquerda, 1 = direita, 0 = sem movimento.",

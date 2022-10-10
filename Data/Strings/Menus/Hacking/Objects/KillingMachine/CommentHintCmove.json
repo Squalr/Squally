@@ -15,7 +15,7 @@
     "ja": "ヒント: クリティカル ヒットは、乱数が %s1 に正確に等しい場合にのみ発生します。「cmove」を「cmovne」に変更して、クリティカルヒット確率を%s2%に変更してみてください。",
     "ko": "힌트: 치명중은 난수가 정확히 %s1과 같은 경우에만 발생합니다. 'cmove'를 'cmovne'로 변경하여 %s2%의 치명타 확률로 변경해 보세요.",
     "nl": "Hint: Een kritieke treffer treedt alleen op als het willekeurige getal precies gelijk is aan %s1. Probeer 'cmove' te veranderen in 'cmovne' om over te schakelen naar een kritieke hitkans van %s2%.",
-    "nb": "Hint: Et kritisk treff oppstår bare hvis det tilfeldige tallet er nøyaktig lik %s1. Prøv å endre 'cmove' til 'cmovne' for å endre til en %s2% kritisk treffsjanse.",
+    "no": "Hint: Et kritisk treff oppstår bare hvis det tilfeldige tallet er nøyaktig lik %s1. Prøv å endre 'cmove' til 'cmovne' for å endre til en %s2% kritisk treffsjanse.",
     "pl": "Wskazówka: Trafienie krytyczne występuje tylko wtedy, gdy liczba losowa jest dokładnie równa %s1. Spróbuj zmienić \\\"cmove\\\" na \\\"cmovne\\\", aby zmienić na %s2% szans na trafienie krytyczne.",
     "pt": "Atenção: Um golpe crítico só ocorre se o número aleatório for exatamente igual a %s1. Tente mudar 'cmove' para 'cmovne' para mudar para uma chance de sucesso crítico de %s2%.",
     "pt-BR": "Dica: Um golpe crítico só ocorre se o número aleatório for exatamente igual a %s1. Tente mudar 'cmove' para 'cmovne' para mudar para uma chance de acerto crítico de %s2%.",

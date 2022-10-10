@@ -15,7 +15,7 @@
     "ja": "クリティカルヒットダメージをロードする確率は%s1%で、上記の比較の結果に基づきます。",
     "ko": "위의 비교 결과에 따라 치명타 피해를 가할 확률은 %s1%입니다.",
     "nl": "%s1% kans om de kritieke hitschade te laden, gebaseerd op het resultaat van de bovenstaande vergelijking.",
-    "nb": "%s1% sjanse til å laste den kritiske treffskaden, basert på resultatet av sammenligningen ovenfor.",
+    "no": "%s1% sjanse til å laste den kritiske treffskaden, basert på resultatet av sammenligningen ovenfor.",
     "pl": "%s1% szans na załadowanie obrażeń od trafienia krytycznego, na podstawie wyniku powyższego porównania.",
     "pt": "%s1% de hipótese de carregar os danos críticos, com base no resultado da comparação acima.",
     "pt-BR": "%s1% de chance de carregar o dano crítico, com base no resultado da comparação acima.",

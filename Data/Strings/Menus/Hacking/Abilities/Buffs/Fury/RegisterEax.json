@@ -15,7 +15,7 @@
     "ja": "敵が与えるダメージを含む構造体へのポインター。",
     "ko": "적이 처리할 피해를 포함하는 구조물에 대한 포인터입니다.",
     "nl": "Een aanwijzing naar een structuur met de schade die de vijand zal aanrichten.",
-    "nb": "En peker til en struktur som inneholder skaden fienden vil håndtere.",
+    "no": "En peker til en struktur som inneholder skaden fienden vil håndtere.",
     "pl": "Wskaźnik do struktury zawierającej obrażenia zadawane przez wroga.",
     "pt": "Um ponteiro para uma estrutura que contenha os danos que o inimigo vai resolver.",
     "pt-BR": "Um ponteiro para uma estrutura contendo o dano que o inimigo causará.",

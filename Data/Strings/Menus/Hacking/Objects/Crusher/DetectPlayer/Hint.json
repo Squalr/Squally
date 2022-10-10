@@ -15,7 +15,7 @@
     "ja": "ヒント: '%s1' を変更して、トラップがプレイヤーを検出できないようにします。",
     "ko": "힌트 : 트랩이 플레이어를 감지하지 못하도록 '%s1'를 수정하십시오.",
     "nl": "Hint: Wijzig '%s1' om te voorkomen dat de val de speler detecteert.",
-    "nb": "Tips: Endre '%s1' for å forhindre at fellen oppdager spilleren.",
+    "no": "Tips: Endre '%s1' for å forhindre at fellen oppdager spilleren.",
     "pl": "Wskazówka: Zmodyfikuj \\\"%s1\\\", aby zapobiec wykryciu gracza przez pułapkę.",
     "pt": "Atenção: Modifique '%s1' para evitar que a armadilha detete o leitor.",
     "pt-BR": "Dica: Modifique '%s1' para evitar que a armadilha detecte o jogador.",

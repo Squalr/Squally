@@ -33,7 +33,15 @@ void HexusPuzzleBehaviorBase::onEnter()
 	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Dialogue_Hexus_PuzzleForYou::create(),
+			Strings::Platformer_Dialogue_Hexus_PuzzleForYouZalgo::create()->setOverrideMap(
+				{
+					{ LanguageType::KOREAN, LanguageType::ENGLISH },
+					{ LanguageType::JAPANESE, LanguageType::ENGLISH },
+					{ LanguageType::THAI, LanguageType::ENGLISH },
+					{ LanguageType::CHINESE_SIMPLIFIED, LanguageType::ENGLISH },
+					{ LanguageType::CHINESE_TRADITIONAL, LanguageType::ENGLISH },
+				}
+			),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
@@ -61,6 +69,5 @@ LocalizedString* HexusPuzzleBehaviorBase::getCustomDrawDialogue()
 
 LocalizedString* HexusPuzzleBehaviorBase::getCustomLossDialogue()
 {
-	// TODO: Reinstate zalgo text when microsoft fixes their shit
-	return nullptr; // Strings::Platformer_Dialogue_Hexus_BetterLuckNextTime::create();
+	return nullptr; // Strings::Platformer_Dialogue_Hexus_BetterLuckNextTimeZalgo::create();
 }

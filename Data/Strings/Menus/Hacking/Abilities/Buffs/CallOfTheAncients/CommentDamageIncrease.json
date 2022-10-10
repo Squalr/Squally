@@ -15,7 +15,7 @@
     "ja": "元のコードは、敵が次の攻撃で%s1ダメージを与える原因となります。",
     "ko": "원래 코드로 인해 적에게 다음 공격에 %s1번의 피해를 입힙니다.",
     "nl": "De originele code zorgt ervoor dat de vijand %s1 schade aanricht bij hun volgende aanval.",
-    "nb": "Den opprinnelige koden får fienden til å håndtere %s1 skader på deres neste angrep.",
+    "no": "Den opprinnelige koden får fienden til å håndtere %s1 skader på deres neste angrep.",
     "pl": "Oryginalny kod powoduje, że wróg zadaje %s1 pkt. obrażeń przy następnym ataku.",
     "pt": "O código original faz com que o inimigo desemque %s1 danos no próximo ataque.",
     "pt-BR": "O código original faz com que o inimigo cause %s1 danos no próximo ataque.",

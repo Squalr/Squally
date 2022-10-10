@@ -15,7 +15,7 @@
     "ja": "このコードは 'mov %s1, %s2' に相当します。",
     "ko": "이 코드는 'mov %s1, %s2'와 동일합니다.",
     "nl": "Deze code is het equivalent van 'mov %s1, %s2'.",
-    "nb": "Denne koden tilsvarer 'mov %s1, %s2'.",
+    "no": "Denne koden tilsvarer 'mov %s1, %s2'.",
     "pl": "Ten kod jest odpowiednikiem 'mov %s1, %s2'.",
     "pt": "Este código é o equivalente a 'mov %s1, %s2'.",
     "pt-BR": "Este código é o equivalente a 'mov %s1, %s2'.",

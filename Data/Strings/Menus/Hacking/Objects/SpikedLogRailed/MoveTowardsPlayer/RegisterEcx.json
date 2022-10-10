@@ -15,7 +15,7 @@
     "ja": "このスパイクされたログ トラップが反転されるかどうかを示す値。1 = 標準、-1 = 反転。",
     "ko": "이 스파이크 로그 트랩이 반전되었는지 여부를 나타내는 값입니다. 1 = 정상, -1 = 반전됨.",
     "nl": "Een waarde die aangeeft of deze pieklogboekovervulling omgekeerd is. 1 = normaal, -1 = omgekeerd.",
-    "nb": "En verdi som angir om denne piggete loggfellen er invertert. 1 = normal, -1 = invertert.",
+    "no": "En verdi som angir om denne piggete loggfellen er invertert. 1 = normal, -1 = invertert.",
     "pl": "Wartość wskazująca, czy ta pułapka kłód z kolcami jest odwrócona. 1 = normalny, -1 = odwrócony.",
     "pt": "Um valor que indique se esta armadilha de tronco espirram é invertida. 1 = normal, -1 = invertido.",
     "pt-BR": "Um valor indicando se esta armadilha de troncos está invertida. 1 = normal, -1 = invertido.",

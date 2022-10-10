@@ -15,7 +15,7 @@
     "ja": "「movss」は、小数(浮動小数点数)の数値に対して動作する点を除いて、「mov」に似ています。",
     "ko": "'movss'는 'mov'와 비슷하며, 분수(부동점) 숫자로 작동합니다.",
     "nl": "'movss' is vergelijkbaar met 'mov', behalve dat het werkt op fractionele (floating-point) nummers.",
-    "nb": "'movss' ligner på 'mov', bortsett fra at den opererer på brøktall (flyttall) tall.",
+    "no": "'movss' ligner på 'mov', bortsett fra at den opererer på brøktall (flyttall) tall.",
     "pl": "'movss' jest podobny do 'mov', z tą różnicą, że działa na ułamkowych (zmiennoprzecinkowych) liczbach.",
     "pt": "'movss' é semelhante a 'mov', exceto que opera em números fracionados (ponto flutuante).",
     "pt-BR": "'movss' é semelhante ao 'mov', exceto que opera em números fracionados (ponto flutuante).",

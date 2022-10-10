@@ -15,7 +15,7 @@
     "ja": "吹雪の水平速度 (-1.0f ~ 1.0f) へのポインター。",
     "ko": "눈보라의 수평 속도에 대한 포인터로, -1.0f와 1.0f 사이입니다.",
     "nl": "Een verwijzing naar de horizontale snelheid van de sneeuwstorm, tussen -1.0f en 1.0f.",
-    "nb": "En peker til snøstormens horisontale hastighet, mellom -1,0f og 1,0f.",
+    "no": "En peker til snøstormens horisontale hastighet, mellom -1,0f og 1,0f.",
     "pl": "Wskaźnik do prędkości poziomej zamieci, między -1.0f a 1.0f.",
     "pt": "Um ponteiro para a velocidade horizontal da tempestade, entre -1,0f e 1.0f.",
     "pt-BR": "Um ponteiro para a velocidade horizontal da nevasca, entre -1,0f e 1,0f.",

@@ -15,7 +15,7 @@
     "ja": "この例では、'%s1' が '%s2' 以上の場合、この操作は 'mov' のみを実行します。",
     "ko": "이 예제에서는 '%s1'이 '%s2'보다 크거나 같으면 'mov'만 수행합니다.",
     "nl": "In dit voorbeeld voert deze bewerking ALLEEN een 'mov' uit als '%s1' groter is dan of gelijk is aan '%s2'",
-    "nb": "I dette eksemplet utfører denne operasjonen BARE en 'mov' hvis '%s1' er større enn eller lik '%s2'",
+    "no": "I dette eksemplet utfører denne operasjonen BARE en 'mov' hvis '%s1' er større enn eller lik '%s2'",
     "pl": "W tym przykładzie ta operacja wykonuje TYLKO 'mov', jeśli '%s1' jest większa lub równa '%s2'",
     "pt": "Neste exemplo, esta operação SÓ executa um 'mov' se '%s1' for maior ou igual a '%s2'",
     "pt-BR": "Neste exemplo, esta operação SOMENTE executa um 'mov' se '%s1' for maior ou igual a '%s2'",

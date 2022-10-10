@@ -15,7 +15,7 @@
     "ja": "'lea' は 'mov' と同様に動作する高度な命令です。この命令は、通常、データへのポインタアクセスを準備するために使用されます。",
     "ko": "'lea'는 'mov'와 유사하게 작동하는 고급 명령어입니다. 이 명령은 일반적으로 데이터에 대한 포인터 액세스를 준비 하는 데 사용됩니다.",
     "nl": "'lea' is een geavanceerde instructie die vergelijkbaar werkt met 'mov'. Deze instructie wordt over het algemeen gebruikt om u voor te bereiden op toegang van de aanwijzer tot gegevens.",
-    "nb": "'lea' er en avansert instruksjon som fungerer på samme måte som 'mov'. Denne instruksjonen brukes vanligvis til å forberede pekertilgang til data.",
+    "no": "'lea' er en avansert instruksjon som fungerer på samme måte som 'mov'. Denne instruksjonen brukes vanligvis til å forberede pekertilgang til data.",
     "pl": "\\\"lea\\\" to zaawansowana instrukcja, która działa podobnie do \\\"mov\\\". Ta instrukcja jest zwykle używana do przygotowania się do dostępu wskaźnika do danych.",
     "pt": "'lea' é uma instrução avançada que funciona semelhante a 'mov'. Esta instrução é geralmente utilizada para preparar o acesso do ponteiro aos dados.",
     "pt-BR": "'lea' é uma instrução avançada que funciona semelhante à 'mov'. Esta instrução é geralmente usada para se preparar para o acesso ao ponteiro aos dados.",

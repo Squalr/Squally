@@ -15,7 +15,7 @@
     "ja": "元のコードでは、取り扱うすべてのダメージが %s1 に設定されます。",
     "ko": "원래 코드는 당신이 다루는 모든 피해를 %s1로 설정합니다.",
     "nl": "De originele code stelt alle schade die u op %s1.",
-    "nb": "Den opprinnelige koden setter all skade du håndterer til %s1.",
+    "no": "Den opprinnelige koden setter all skade du håndterer til %s1.",
     "pl": "Oryginalny kod ustawia wszystkie obrażenia, które zadajsz na %s1.",
     "pt": "O código original define todos os danos que lida com %s1.",
     "pt-BR": "O código original define todos os danos que você causar a %s1.",
