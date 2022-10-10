@@ -47,7 +47,7 @@ protected:
 	void onEnterTransitionDidFinish() override;
 	void onExit() override;
 	bool loadMapFromTmx(std::string mapResource, cocos2d::cocos_experimental::TMXTiledMap* mapRaw, bool useFallback = true) override;
-	void openPauseMenu(cocos2d::Node* refocusTarget) override;
+	cocos2d::Node* openPauseMenu(cocos2d::Node* refocusTarget) override;
 
 private:
 	typedef MapBase super;

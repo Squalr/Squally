@@ -146,4 +146,7 @@ public:
 			}
 		}
 	}
+
+private:
+	static cocos2d::Node* focusedNode;
 };

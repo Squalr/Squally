@@ -117,7 +117,7 @@ void ConfirmationMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		if (!GameUtils::isVisible(this))
+		if (GameUtils::getFocusedNode() != this)
 		{
 			return;
 		}
@@ -159,6 +159,8 @@ void ConfirmationMenu::showMessage(LocalizedString* confirmationMessage, std::fu
 
 void ConfirmationMenu::confirm()
 {
+	GameUtils::focus(this->previousFocus);
+
 	if (this->onConfirmCallback != nullptr)
 	{
 		if (this->onConfirmCallback())
@@ -167,7 +169,6 @@ void ConfirmationMenu::confirm()
 		}
 	}
 
-	GameUtils::focus(this->previousFocus);
 	NotificationEvents::TriggerConfirmationEnd();
 	
 	this->setVisible(false);
@@ -175,6 +176,8 @@ void ConfirmationMenu::confirm()
 
 void ConfirmationMenu::close()
 {
+	GameUtils::focus(this->previousFocus);
+
 	if (this->onCancelCallback != nullptr)
 	{
 		if (this->onCancelCallback())
@@ -183,7 +186,6 @@ void ConfirmationMenu::close()
 		}
 	}
 	
-	GameUtils::focus(this->previousFocus);
 	NotificationEvents::TriggerConfirmationEnd();
 
 	this->setVisible(false);

@@ -163,18 +163,6 @@ void MapBase::initializeListeners()
 			args->hackerModeAllowed = this->allowHackerMode && !this->hackerModeEnabled;
 		}
 	}));
-
-	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
-	{
-		if (!this->canPause ||!GameUtils::isFocused(this))
-		{
-			return;
-		}
-		
-		args->handle();
-
-		this->openPauseMenu(this);
-	});
 }
 
 void MapBase::addLayerDeserializer(LayerDeserializer* layerDeserializer)
@@ -298,14 +286,15 @@ void MapBase::toggleHackerMode(void* userData)
 	}
 }
 
-void MapBase::openPauseMenu(Node* refocusTarget)
+Node* MapBase::openPauseMenu(Node* refocusTarget)
 {
 	if (!this->canPause)
 	{
-		return;
+		return nullptr;
 	}
 	
 	this->menuBackDrop->setOpacity(196);
+	return nullptr;
 }
 
 CodeHud* MapBase::buildCodeHud()

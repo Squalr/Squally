@@ -430,15 +430,29 @@ void CombatMap::initializeListeners()
 			}
 		}
 	}));
+
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
+	{
+		if (!this->canPause
+			|| GameUtils::isFocused(this->pauseMenuRef)
+			|| GameUtils::isFocused(this->partyMenu))
+		{
+			return;
+		}
+		
+		args->handle();
+
+		this->openPauseMenu(this);
+	});
 }
 
-void CombatMap::openPauseMenu(cocos2d::Node* refocusTarget)
+Node* CombatMap::openPauseMenu(cocos2d::Node* refocusTarget)
 {
 	super::openPauseMenu(refocusTarget);
 
 	if (!this->canPause)
 	{
-		return;
+		return this->platformerPauseMenu->lazyGet();
 	}
 
 	this->platformerPauseMenu->lazyGet()->open([=]()
@@ -446,6 +460,8 @@ void CombatMap::openPauseMenu(cocos2d::Node* refocusTarget)
 		this->menuBackDrop->setOpacity(0);
 		GameUtils::focus(refocusTarget);
 	});
+
+	return this->platformerPauseMenu->lazyGet();
 }
 
 void CombatMap::onHackerModeEnable()

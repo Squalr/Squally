@@ -229,7 +229,7 @@ void PartyMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		if (!GameUtils::isVisible(this))
+		if (GameUtils::getFocusedNode() != this)
 		{
 			return;
 		}

@@ -188,7 +188,7 @@ void CraftingMenuBase::initializeListeners()
 			return;
 		}
 
-		if (!GameUtils::isVisible(this))
+		if (GameUtils::getFocusedNode() != this)
 		{
 			return;
 		}

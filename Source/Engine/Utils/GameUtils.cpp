@@ -12,6 +12,8 @@
 
 using namespace cocos2d;
 
+cocos2d::Node* GameUtils::focusedNode = nullptr;
+
 // A better pause function that pauses recursively
 void GameUtils::pause(Node* node)
 {
@@ -63,6 +65,9 @@ bool GameUtils::isInRunningScene(Node* node)
 
 Node* GameUtils::getFocusedNode()
 {
+	return focusedNode;
+
+	/*
 	Node* root = Director::getInstance()->getRunningScene();
 	std::function<Node*(Node*)> findUnpausedNodeRecursive;
 
@@ -98,25 +103,18 @@ Node* GameUtils::getFocusedNode()
 		return result;
 	};
 
-	return findUnpausedNodeRecursive(root);
+	return findUnpausedNodeRecursive(root);*/
 }
 
 bool GameUtils::isFocused(Node* node)
 {
-	if (node->getParent() != nullptr && node->getParent()->isPaused() && !node->isPaused())
-	{
-		return true;
-	}
-	else if (node->getParent() == nullptr && !node->isPaused())
-	{
-		return true;
-	}
-
-	return false;
+	return GameUtils::getFocusedNode() != nullptr && GameUtils::getFocusedNode() == node;
 }
 
 void GameUtils::focus(Node* node)
 {
+	GameUtils::focusedNode = node;
+	
 	if (node == nullptr)
 	{
 		return;

@@ -40,7 +40,7 @@ protected:
 	void onHackerModeDisable() override;
 	void addLayerDeserializer(LayerDeserializer* layerDeserializer);
 	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);
-	virtual void openPauseMenu(cocos2d::Node* refocusTarget);
+	virtual cocos2d::Node* openPauseMenu(cocos2d::Node* refocusTarget);
 	virtual bool loadMapFromTmx(std::string mapResource, cocos2d::cocos_experimental::TMXTiledMap* mapRaw, bool useFallback = true);
 
 	cocos2d::Node* hudNode = nullptr;
@@ -56,6 +56,7 @@ protected:
 	LazyNode<OptionsMenu>* optionsMenu = nullptr;
 	cocos2d::Node* mapNode = nullptr;
 	GameMap* map = nullptr;
+	Node* pauseMenuRef = nullptr;
 
 	bool canPause = false;
 	bool allowHackerMode = false;

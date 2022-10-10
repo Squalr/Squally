@@ -287,6 +287,7 @@ DeveloperScene::DeveloperScene()
 		// Earth elem cast anim shit
 		// Double check green light defaults on DM xor puzzle
 		// Boat combat map for Krampus fight
+		// Rhinoman hovers off platform when dead in fight
 		// Train SFX
 		// Terrain in tent map has wrong corner connectors
 		// Tiki anims still broken (bad Spriter implementation strikes again)
