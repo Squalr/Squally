@@ -32,6 +32,11 @@ void GameUtils::pause(Node* node)
 
 void GameUtils::resume(Node* node)
 {
+	if (node == nullptr)
+	{
+		return;
+	}
+	
 	node->resume();
 
 	for (const auto &child : node->getChildren())
@@ -117,6 +122,7 @@ void GameUtils::focus(Node* node)
 	
 	if (node == nullptr)
 	{
+		GameUtils::resume(Director::getInstance()->getRunningScene());
 		return;
 	}
 

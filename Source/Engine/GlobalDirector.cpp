@@ -40,6 +40,7 @@ void GlobalDirector::loadScene(std::function<SmartScene*()> sceneCreator)
 	SceneEvents::TriggerBeforeSceneChange();
 	SceneEvents::TriggerBeforeSceneChangeFinalize();
 
+	GameUtils::focus(nullptr);
 	CollisionObject::ClearCollisionObjects();
 
 	SmartScene* scene = sceneCreator();

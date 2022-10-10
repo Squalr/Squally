@@ -13,6 +13,7 @@ class DefeatMenu;
 class FocusTakeOver;
 class FirstStrikeMenu;
 class HackerModeWarningHud;
+class HelpMenu;
 template <class T> class LazyNode;
 class Lexicon;
 class NotificationHud;
@@ -66,12 +67,14 @@ private:
 	typedef MapBase super;
 
 	void spawnEntities();
+	HelpMenu* buildHexusCardHelpMenu();
 	CollectablesMenu* buildCollectablesMenu();
 	Lexicon* buildLexicon();
 	CardsMenu* buildCardsMenu();
 	PartyMenu* buildPartyMenu();
 	PlatformerPauseMenu* buildPlatformerPauseMenu();
 
+	LazyNode<HelpMenu>* cardHelpMenu = nullptr;
 	LazyNode<CollectablesMenu>* collectablesMenu = nullptr;
 	LazyNode<Lexicon>* lexiconMenu = nullptr;
 	LazyNode<CardsMenu>* cardsMenu = nullptr;

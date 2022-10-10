@@ -42,6 +42,7 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Events/HexusEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Cards/CardsMenu.h"
 #include "Menus/Collectables/CollectablesMenu.h"
@@ -51,6 +52,7 @@
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Objects/Camera/CameraFocus.h"
+#include "Scenes/Hexus/HelpMenus/HelpMenu.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityDropTableBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Stats/EnemyHealthBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Combat/EnemyCombatBehaviorGroup.h"
@@ -93,6 +95,7 @@ CombatMap* CombatMap::create(std::string levelFile, bool playerFirstStrike, std:
 
 CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<CombatData> playerData, std::vector<CombatData> enemyData) : super(true)
 {
+	this->cardHelpMenu = LazyNode<HelpMenu>::create(CC_CALLBACK_0(CombatMap::buildHexusCardHelpMenu, this));
 	this->collectablesMenu = LazyNode<CollectablesMenu>::create(CC_CALLBACK_0(CombatMap::buildCollectablesMenu, this));
 	this->lexiconMenu = LazyNode<Lexicon>::create(CC_CALLBACK_0(CombatMap::buildLexicon, this));
 	this->cardsMenu = LazyNode<CardsMenu>::create(CC_CALLBACK_0(CombatMap::buildCardsMenu, this));
@@ -164,6 +167,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->topMenuHud->addChild(this->platformerPauseMenu);
 	this->topMenuHud->addChild(this->partyMenu);
 	this->topMenuHud->addChild(this->cardsMenu);
+	this->topMenuHud->addChild(this->cardHelpMenu);
 	this->topMenuHud->addChild(this->lexiconMenu);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->confirmationMenuHud->addChild(this->confirmationHud);
@@ -431,6 +435,19 @@ void CombatMap::initializeListeners()
 			}
 		}
 	}));
+	
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventShowHelpMenuOutsideOfGame, [=](EventCustom* eventCustom)
+	{
+		HexusEvents::HelpMenuArgs* args = static_cast<HexusEvents::HelpMenuArgs*>(eventCustom->getData());
+
+		if (args != nullptr)
+		{
+			this->cardHelpMenu->lazyGet()->openMenu(args->cardData, true, args->onExit);
+			this->cardHelpMenu->lazyGet()->setVisible(true);
+			
+			GameUtils::focus(this->cardHelpMenu->lazyGet());
+		}
+	}));
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
@@ -440,6 +457,7 @@ void CombatMap::initializeListeners()
 			|| (this->optionsMenu->isBuilt() && GameUtils::isFocused(this->optionsMenu->lazyGet()))
 			|| (this->lexiconMenu->isBuilt() && GameUtils::isFocused(this->lexiconMenu->lazyGet()))
 			|| (this->cardsMenu->isBuilt() && GameUtils::isFocused(this->cardsMenu->lazyGet()))
+			|| (this->cardHelpMenu->isBuilt() && GameUtils::isFocused(this->cardHelpMenu->lazyGet()))
 			|| (this->collectablesMenu->isBuilt() && GameUtils::isFocused(this->collectablesMenu->lazyGet()))
 			|| dynamic_cast<ConfirmationMenu*>(GameUtils::getFocusedNode()) != nullptr)
 		{
@@ -591,6 +609,35 @@ void CombatMap::spawnEntities()
 	this->combatHud->bindStatsBars(friendlyEntries, enemyEntries);
 }
 
+
+HelpMenu* CombatMap::buildHexusCardHelpMenu()
+{
+	HelpMenu* instance = HelpMenu::create();
+
+	instance->setExitCallback([=]()
+	{
+		instance->setVisible(false);
+
+		GameUtils::focus(this);
+	});
+
+	instance->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
+	{
+		if (!this->canPause ||!GameUtils::isFocused(instance))
+		{
+			return;
+		}
+		
+		args->handle();
+
+		instance->setVisible(false);
+
+		GameUtils::focus(this);
+	});
+
+	return instance;
+}
+
 CollectablesMenu* CombatMap::buildCollectablesMenu()
 {
 	CollectablesMenu* instance = CollectablesMenu::create();
@@ -599,7 +646,7 @@ CollectablesMenu* CombatMap::buildCollectablesMenu()
 	{
 		this->platformerPauseMenu->lazyGet()->setVisible(true);
 		instance->setVisible(false);
-		GameUtils::focus(this->platformerPauseMenu);
+		GameUtils::focus(this->platformerPauseMenu->lazyGet());
 	});
 
 	return instance;
@@ -613,7 +660,7 @@ Lexicon* CombatMap::buildLexicon()
 	{
 		this->platformerPauseMenu->lazyGet()->setVisible(true);
 		instance->setVisible(false);
-		GameUtils::focus(this->platformerPauseMenu);
+		GameUtils::focus(this->platformerPauseMenu->lazyGet());
 	});
 
 	return instance;
@@ -627,7 +674,7 @@ CardsMenu* CombatMap::buildCardsMenu()
 	{
 		this->platformerPauseMenu->lazyGet()->setVisible(true);
 		instance->setVisible(false);
-		GameUtils::focus(this->platformerPauseMenu);
+		GameUtils::focus(this->platformerPauseMenu->lazyGet());
 	});
 
 	return instance;
@@ -642,7 +689,7 @@ PartyMenu* CombatMap::buildPartyMenu()
 	{
 		this->platformerPauseMenu->lazyGet()->setVisible(true);
 		instance->setVisible(false);
-		GameUtils::focus(this->platformerPauseMenu);
+		GameUtils::focus(this->platformerPauseMenu->lazyGet());
 	});
 
 	return instance;
@@ -659,7 +706,7 @@ PlatformerPauseMenu* CombatMap::buildPlatformerPauseMenu()
 	{
 		instance->setVisible(false);
 		this->optionsMenu->lazyGet()->setVisible(true);
-		GameUtils::focus(this->optionsMenu);
+		GameUtils::focus(this->optionsMenu->lazyGet());
 	});
 
 	instance->setQuitToTitleClickCallback([=]()
@@ -675,7 +722,7 @@ PlatformerPauseMenu* CombatMap::buildPlatformerPauseMenu()
 		instance->setVisible(false);
 		this->partyMenu->lazyGet()->setVisible(true);
 		this->partyMenu->lazyGet()->open();
-		GameUtils::focus(this->partyMenu);
+		GameUtils::focus(this->partyMenu->lazyGet());
 	});
 	
 	instance->setCardsClickCallback([=]()
@@ -683,7 +730,7 @@ PlatformerPauseMenu* CombatMap::buildPlatformerPauseMenu()
 		instance->setVisible(false);
 		this->cardsMenu->lazyGet()->setVisible(true);
 		this->cardsMenu->lazyGet()->open();
-		GameUtils::focus(this->cardsMenu);
+		GameUtils::focus(this->cardsMenu->lazyGet());
 	});
 	
 	instance->setCollectablesClickCallback([=]()
@@ -691,7 +738,7 @@ PlatformerPauseMenu* CombatMap::buildPlatformerPauseMenu()
 		instance->setVisible(false);
 		this->collectablesMenu->lazyGet()->setVisible(true);
 		this->collectablesMenu->lazyGet()->open();
-		GameUtils::focus(this->collectablesMenu);
+		GameUtils::focus(this->collectablesMenu->lazyGet());
 	});
 	
 	instance->setLexiconClickCallback([=]()
@@ -699,7 +746,7 @@ PlatformerPauseMenu* CombatMap::buildPlatformerPauseMenu()
 		instance->setVisible(false);
 		this->lexiconMenu->lazyGet()->setVisible(true);
 		this->lexiconMenu->lazyGet()->open();
-		GameUtils::focus(this->lexiconMenu);
+		GameUtils::focus(this->lexiconMenu->lazyGet());
 	});
 
 	return instance;

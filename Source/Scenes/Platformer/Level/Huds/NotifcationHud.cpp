@@ -261,9 +261,5 @@ void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* 
 void NotificationHud::closeNotificationMenu()
 {
 	this->takeoverNode->setVisible(false);
-
-	if (this->previousFocus != nullptr)
-	{
-		GameUtils::focus(this->previousFocus);
-	}
+	GameUtils::focus(this->previousFocus);
 }
