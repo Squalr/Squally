@@ -11,6 +11,8 @@ protected:
 	HexusCard(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
 	virtual ~HexusCard();
 
+	static int TuneCost(int attack);
+
 private:
 	typedef Equipable super;
 };

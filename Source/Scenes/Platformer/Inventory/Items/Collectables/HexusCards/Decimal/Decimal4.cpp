@@ -21,7 +21,7 @@ Decimal4* Decimal4::create()
 	return instance;
 }
 
-Decimal4::Decimal4() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), ItemMeta(3, 3))
+Decimal4::Decimal4() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), HexusCard::TuneCost(4) }}), ItemMeta(3, 3))
 {
 }
 

@@ -11,3 +11,8 @@ HexusCard::HexusCard(CurrencyInventory* cost, ItemMeta itemMeta) : super(cost, I
 HexusCard::~HexusCard()
 {
 }
+
+int HexusCard::TuneCost(int attack)
+{
+    return 4 + int(std::round(double(attack) * std::pow(double(attack), 1.25)));
+}

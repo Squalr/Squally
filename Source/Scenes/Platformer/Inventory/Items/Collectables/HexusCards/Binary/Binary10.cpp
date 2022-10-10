@@ -21,7 +21,7 @@ Binary10* Binary10::create()
 	return instance;
 }
 
-Binary10::Binary10() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 12 }}), ItemMeta(3, 3))
+Binary10::Binary10() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), HexusCard::TuneCost(10) }}), ItemMeta(3, 3))
 {
 }
 
