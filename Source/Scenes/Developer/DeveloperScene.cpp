@@ -294,9 +294,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
 
 		// ================== TODO ================== 
-		// ?* Minecarts can still glitch and not spawn on map changes (? confirm this)
 		// ** Life stone or raisable bridge before rhinoman fight
-		// ** Rock slide name string fix
 		// Earth golem cast anim kinda shit
 		// Earth elem cast anim shit
 		// Double check green light defaults on DM xor puzzle
