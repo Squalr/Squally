@@ -45,6 +45,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Menus/Cards/CardsMenu.h"
 #include "Menus/Collectables/CollectablesMenu.h"
+#include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Pause/PlatformerPauseMenu.h"
 #include "Menus/Party/PartyMenu.h"
@@ -434,8 +435,13 @@ void CombatMap::initializeListeners()
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!this->canPause
-			|| GameUtils::isFocused(this->pauseMenuRef)
-			|| GameUtils::isFocused(this->partyMenu))
+			|| (this->platformerPauseMenu->isBuilt() && GameUtils::isFocused(this->platformerPauseMenu->lazyGet()))
+			|| (this->partyMenu->isBuilt() && GameUtils::isFocused(this->partyMenu->lazyGet()))
+			|| (this->optionsMenu->isBuilt() && GameUtils::isFocused(this->optionsMenu->lazyGet()))
+			|| (this->lexiconMenu->isBuilt() && GameUtils::isFocused(this->lexiconMenu->lazyGet()))
+			|| (this->cardsMenu->isBuilt() && GameUtils::isFocused(this->cardsMenu->lazyGet()))
+			|| (this->collectablesMenu->isBuilt() && GameUtils::isFocused(this->collectablesMenu->lazyGet()))
+			|| dynamic_cast<ConfirmationMenu*>(GameUtils::getFocusedNode()) != nullptr)
 		{
 			return;
 		}
@@ -446,13 +452,13 @@ void CombatMap::initializeListeners()
 	});
 }
 
-Node* CombatMap::openPauseMenu(cocos2d::Node* refocusTarget)
+void CombatMap::openPauseMenu(cocos2d::Node* refocusTarget)
 {
 	super::openPauseMenu(refocusTarget);
 
 	if (!this->canPause)
 	{
-		return this->platformerPauseMenu->lazyGet();
+		return;
 	}
 
 	this->platformerPauseMenu->lazyGet()->open([=]()
@@ -460,8 +466,6 @@ Node* CombatMap::openPauseMenu(cocos2d::Node* refocusTarget)
 		this->menuBackDrop->setOpacity(0);
 		GameUtils::focus(refocusTarget);
 	});
-
-	return this->platformerPauseMenu->lazyGet();
 }
 
 void CombatMap::onHackerModeEnable()

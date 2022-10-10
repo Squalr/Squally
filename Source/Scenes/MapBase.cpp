@@ -286,15 +286,15 @@ void MapBase::toggleHackerMode(void* userData)
 	}
 }
 
-Node* MapBase::openPauseMenu(Node* refocusTarget)
+void MapBase::openPauseMenu(Node* refocusTarget)
 {
 	if (!this->canPause)
 	{
-		return nullptr;
+		return;
 	}
 	
 	this->menuBackDrop->setOpacity(196);
-	return nullptr;
+	return;
 }
 
 CodeHud* MapBase::buildCodeHud()

@@ -119,9 +119,9 @@ void HelpMenu::initializePositions()
     this->exitButton->setPosition(Vec2(0.0f, -356.0f));
 }
 
-void HelpMenu::setExitCallback(std::function<void()> onExit)
+void HelpMenu::initializeListeners()
 {
-    this->onExit = onExit;
+    super::initializeListeners();
 
     this->exitButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
     {
@@ -155,6 +155,11 @@ void HelpMenu::setExitCallback(std::function<void()> onExit)
             this->onExitSecondary();
         }
 	});
+}
+
+void HelpMenu::setExitCallback(std::function<void()> onExit)
+{
+    this->onExit = onExit;
 }
 
 void HelpMenu::openMenu(CardData* cardData, bool showBackdrop, std::function<void()> onExitSecondary)

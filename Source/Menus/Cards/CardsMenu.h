@@ -13,7 +13,6 @@ class CardData;
 class ClickableNode;
 class ClickableTextNode;
 class EquipmentInventory;
-class HelpMenu;
 class HexusCard;
 class HexusFilter;
 class ItemMenu;
@@ -44,7 +43,6 @@ private:
 	void unequipHexusCard(HexusCard* card);
 	void showHelpMenu(CardData* cardData);
 	void close();
-	HelpMenu* buildHelpMenu();
 
 	cocos2d::Sprite* cardsWindow = nullptr;
 	LocalizedLabel* cardsLabel = nullptr;
@@ -53,7 +51,6 @@ private:
 	ClickableTextNode* returnButton = nullptr;
 	ClickableNode* closeButton = nullptr;
 	cocos2d::LayerColor* backdrop = nullptr;
-	LazyNode<HelpMenu>* helpMenu = nullptr;
 
 	EquipmentInventory* equipmentInventory = nullptr;
 	Inventory* inventory = nullptr;

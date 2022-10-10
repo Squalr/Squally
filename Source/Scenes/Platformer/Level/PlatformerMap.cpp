@@ -147,9 +147,9 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 	this->miniGameHud->addChild(this->cipher);
 	this->miniGameHud->addChild(this->hexus);
 	this->miniGameHud->addChild(this->itemInfoMenu);
-	this->miniGameHud->addChild(this->cardHelpMenu);
 	this->topMenuHud->addChild(this->platformerPauseMenu);
 	this->topMenuHud->addChild(this->cardsMenu);
+	this->topMenuHud->addChild(this->cardHelpMenu);
 	this->topMenuHud->addChild(this->collectablesMenu);
 	this->topMenuHud->addChild(this->lexiconMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
@@ -415,7 +415,7 @@ void PlatformerMap::initializeListeners()
 			this->cardHelpMenu->lazyGet()->openMenu(args->cardData, true, args->onExit);
 			this->cardHelpMenu->lazyGet()->setVisible(true);
 			
-			GameUtils::focus(this->cardHelpMenu);
+			GameUtils::focus(this->cardHelpMenu->lazyGet());
 		}
 	}));
 
@@ -442,15 +442,16 @@ void PlatformerMap::initializeListeners()
 			|| (this->optionsMenu->isBuilt() && GameUtils::isFocused(this->optionsMenu->lazyGet()))
 			|| (this->lexiconMenu->isBuilt() && GameUtils::isFocused(this->lexiconMenu->lazyGet()))
 			|| (this->cardsMenu->isBuilt() && GameUtils::isFocused(this->cardsMenu->lazyGet()))
+			|| (this->collectablesMenu->isBuilt() && GameUtils::isFocused(this->collectablesMenu->lazyGet()))
 			|| (this->inventoryMenu->isBuilt() && GameUtils::isFocused(this->inventoryMenu->lazyGet()))
-			|| static_cast<ConfirmationMenu*>(GameUtils::getFocusedNode()) != nullptr)
+			|| (this->cardHelpMenu->isBuilt() && GameUtils::isFocused(this->cardHelpMenu->lazyGet()))
+			|| dynamic_cast<ConfirmationMenu*>(GameUtils::getFocusedNode()) != nullptr)
 		{
 			return;
 		}
 		
 		args->handle();
 
-		// Broken somehow, TODO fix
 		this->openPauseMenu(this);
 	});
 }
@@ -520,7 +521,7 @@ bool PlatformerMap::loadMapFromTmx(std::string mapResource, cocos_experimental::
 	return fallbackResult;
 }
 
-Node* PlatformerMap::openPauseMenu(cocos2d::Node* refocusTarget)
+void PlatformerMap::openPauseMenu(cocos2d::Node* refocusTarget)
 {
 	super::openPauseMenu(refocusTarget);
 	
@@ -528,7 +529,7 @@ Node* PlatformerMap::openPauseMenu(cocos2d::Node* refocusTarget)
 
 	if (!this->canPause)
 	{
-		return this->platformerPauseMenu->lazyGet();
+		return;
 	}
 
 	this->platformerPauseMenu->lazyGet()->open([=]()
@@ -536,8 +537,6 @@ Node* PlatformerMap::openPauseMenu(cocos2d::Node* refocusTarget)
 		this->menuBackDrop->setOpacity(0);
 		GameUtils::focus(refocusTarget);
 	});
-
-	return this->platformerPauseMenu->lazyGet();
 }
 
 void PlatformerMap::warpSquallyToRespawn()
@@ -647,7 +646,7 @@ CollectablesMenu* PlatformerMap::buildCollectablesMenu()
 	{
 		this->platformerPauseMenu->lazyGet()->setVisible(true);
 		instance->setVisible(false);
-		GameUtils::focus(this->platformerPauseMenu);
+		GameUtils::focus(this->platformerPauseMenu->lazyGet());
 	});
 
 	return instance;
@@ -661,7 +660,7 @@ Lexicon* PlatformerMap::buildLexicon()
 	{
 		this->platformerPauseMenu->lazyGet()->setVisible(true);
 		instance->setVisible(false);
-		GameUtils::focus(this->platformerPauseMenu);
+		GameUtils::focus(this->platformerPauseMenu->lazyGet());
 	});
 
 	return instance;

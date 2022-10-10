@@ -205,6 +205,18 @@ void Lexicon::initializeListeners()
 	{
 		this->close();
 	});
+
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
+	{
+		if (!GameUtils::isFocused(this))
+		{
+			return;
+		}
+		
+		args->handle();
+
+		this->close();
+	});
 }
 
 void Lexicon::open()

@@ -60,7 +60,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onHackerModeEnable() override;
-	cocos2d::Node* openPauseMenu(cocos2d::Node* refocusTarget) override;
+	void openPauseMenu(cocos2d::Node* refocusTarget) override;
 
 private:
 	typedef MapBase super;

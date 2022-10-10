@@ -5,6 +5,7 @@
 #include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Events/ObjectEvents.h"
+#include "Events/HexusEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Inventory/CurrencyInventory.h"
@@ -64,7 +65,6 @@ CardsMenu::CardsMenu()
 	this->cardsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Cards_Cards::create());
 	this->hexusFilter = HexusFilter::create();
 	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
-	this->helpMenu = LazyNode<HelpMenu>::create(CC_CALLBACK_0(CardsMenu::buildHelpMenu, this));
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
@@ -96,7 +96,6 @@ CardsMenu::CardsMenu()
 	this->addChild(this->cardsLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->returnButton);
-	this->addChild(this->helpMenu);
 }
 
 CardsMenu::~CardsMenu()
@@ -348,13 +347,24 @@ void CardsMenu::unequipHexusCard(HexusCard* card)
 
 void CardsMenu::showHelpMenu(CardData* cardData)
 {
-	this->helpMenu->lazyGet()->openMenu(cardData);
+	if (cardData != nullptr)
+	{
+		this->cardsWindow->setVisible(false);
+		this->returnButton->setVisible(false);
+		this->closeButton->setVisible(false);
+		
+		HexusEvents::TriggerShowHelpMenuOutsideOfGame(HexusEvents::HelpMenuArgs(
+			CardList::getInstance()->cardListByName[cardData->getCardKey()],
+			[=]()
+			{
+				this->cardsWindow->setVisible(true);
+				this->returnButton->setVisible(true);
+				this->closeButton->setVisible(true);
 
-	this->cardsWindow->setVisible(false);
-	this->returnButton->setVisible(false);
-	this->closeButton->setVisible(false);
-
-	GameUtils::focus(this->helpMenu);
+				GameUtils::focus(this);
+			}
+		));
+	}
 }
 
 void CardsMenu::close()
@@ -368,21 +378,4 @@ void CardsMenu::close()
 	{
 		this->returnClickCallback();
 	}
-}
-
-HelpMenu* CardsMenu::buildHelpMenu()
-{
-	HelpMenu* instance = HelpMenu::create();
-
-	instance->setExitCallback([=]()
-	{
-		instance->setVisible(false);
-		this->cardsWindow->setVisible(true);
-		this->returnButton->setVisible(true);
-		this->closeButton->setVisible(true);
-
-		GameUtils::focus(this);
-	});
-
-	return instance;
 }
