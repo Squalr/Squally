@@ -66,10 +66,10 @@ void MatrixLetter::spawn()
 {
 	this->stopAllActions();
 
-	this->setColor(MatrixLetter::SpawnColor);
+	this->sprite->lazyGet()->setColor(MatrixLetter::SpawnColor);
 
 	// Restore color action
-	this->runAction(TintTo::create(MatrixLetter::SpawnTime, MatrixLetter::LetterColor));
+	this->sprite->lazyGet()->runAction(TintTo::create(MatrixLetter::SpawnTime, MatrixLetter::LetterColor));
 
 	FiniteTimeAction* fadeIn = FadeIn::create(0.1f);
 
@@ -99,10 +99,7 @@ void MatrixLetter::spawn()
 				DelayTime::create(changeRate),
 				CallFunc::create([=]()
 				{
-					if (this->sprite->isBuilt())
-					{
-						this->randomizeLetter(this->sprite->lazyGet());
-					}
+					this->randomizeLetter(this->sprite->lazyGet());
 				}),
 				nullptr
 			))
@@ -115,10 +112,7 @@ void MatrixLetter::spawn()
 			Sequence::create(
 				CallFunc::create([=]()
 				{
-					if (this->sprite->isBuilt())
-					{
-						this->randomizeLetter(this->sprite->lazyGet());
-					}
+					this->randomizeLetter(this->sprite->lazyGet());
 				}),
 				DelayTime::create(MatrixLetter::SpawnChangeRate),
 				nullptr
