@@ -271,7 +271,7 @@ void PlatformerMap::initializeListeners()
 			this->alchemyMenu->lazyGet()->open(args->recipes);
 			this->alchemyMenu->lazyGet()->setVisible(true);
 
-			GameUtils::focus(this->alchemyMenu);
+			GameUtils::focus(this->alchemyMenu->lazyGet());
 			GameUtils::resume(this->notificationHud);
 			GameUtils::resume(this->confirmationHud);
 		}
@@ -286,7 +286,7 @@ void PlatformerMap::initializeListeners()
 			this->blacksmithingMenu->lazyGet()->open(args->recipes);
 			this->blacksmithingMenu->lazyGet()->setVisible(true);
 
-			GameUtils::focus(this->blacksmithingMenu);
+			GameUtils::focus(this->blacksmithingMenu->lazyGet());
 			GameUtils::resume(this->notificationHud);
 			GameUtils::resume(this->confirmationHud);
 		}
@@ -301,7 +301,7 @@ void PlatformerMap::initializeListeners()
 			this->dismantleMenu->lazyGet()->open(args->recipes);
 			this->dismantleMenu->lazyGet()->setVisible(true);
 
-			GameUtils::focus(this->dismantleMenu);
+			GameUtils::focus(this->dismantleMenu->lazyGet());
 			GameUtils::resume(this->notificationHud);
 			GameUtils::resume(this->confirmationHud);
 		}
@@ -356,7 +356,7 @@ void PlatformerMap::initializeListeners()
 			this->cipher->lazyGet()->setVisible(true);
 			this->cipher->lazyGet()->openCipher(args->cipherPuzzleData);
 
-			GameUtils::focus(this->cipher);
+			GameUtils::focus(this->cipher->lazyGet());
 		}
 	}));
 
@@ -389,7 +389,7 @@ void PlatformerMap::initializeListeners()
 			this->hexus->lazyGet()->open(args->opponentData);
 			this->hexus->lazyGet()->setVisible(true);
 
-			GameUtils::focus(this->hexus);
+			GameUtils::focus(this->hexus->lazyGet());
 		}
 	}));
 
@@ -432,7 +432,7 @@ void PlatformerMap::initializeListeners()
 			this->itemInfoMenu->lazyGet()->open(args->item, args->onTakeDisplayItem, args->onExit);
 			this->itemInfoMenu->lazyGet()->setVisible(true);
 			
-			GameUtils::focus(this->itemInfoMenu);
+			GameUtils::focus(this->itemInfoMenu->lazyGet());
 		}
 	}));
 
@@ -449,6 +449,9 @@ void PlatformerMap::initializeListeners()
 			|| (this->collectablesMenu->isBuilt() && GameUtils::isFocused(this->collectablesMenu->lazyGet()))
 			|| (this->inventoryMenu->isBuilt() && GameUtils::isFocused(this->inventoryMenu->lazyGet()))
 			|| (this->cardHelpMenu->isBuilt() && GameUtils::isFocused(this->cardHelpMenu->lazyGet()))
+			|| (this->alchemyMenu->isBuilt() && GameUtils::isFocused(this->alchemyMenu->lazyGet()))
+			|| (this->blacksmithingMenu->isBuilt() && GameUtils::isFocused(this->blacksmithingMenu->lazyGet()))
+			|| (this->dismantleMenu->isBuilt() && GameUtils::isFocused(this->dismantleMenu->lazyGet()))
 			|| dynamic_cast<ConfirmationMenu*>(GameUtils::getFocusedNode()) != nullptr)
 		{
 			return;
