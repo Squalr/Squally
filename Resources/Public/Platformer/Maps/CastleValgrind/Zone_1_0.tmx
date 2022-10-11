@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="87" nextobjectid="857">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="87" nextobjectid="859">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -353,7 +353,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="623" name="life-stone" type="object" x="4083.94" y="1612.25" width="146" height="423"/>
+  <object id="623" name="life-stone" type="object" x="6023.94" y="1612.25" width="146" height="423"/>
   <object id="736" name="portal" type="object" x="2842.33" y="1621.81" width="450.603" height="423.038">
    <properties>
     <property name="map" value="CastleValgrind/Zone_1_1"/>
@@ -378,6 +378,22 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="857" name="thug" type="entity" x="4400.42" y="1906.37" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="CastleValgrind/Combat_DarkGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="dm-generic"/>
+   </properties>
+  </object>
+  <object id="858" name="thug" type="entity" x="4407.58" y="1517.63" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

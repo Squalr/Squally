@@ -126,23 +126,19 @@ void HeavyBlade::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentDamageIncrease::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(HeavyBlade::DamageIncrease)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentDecreaseInstead::create()) + 
-						"jmp addDamage\n"
-						"sub ecx, 20\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentJmp::create()) + 
+						"jmp addDamage\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentSkippedCode::create()) + 
+						"sub ecx, 20\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels::create()) + 
 						"addDamage:\n"
 						"add ecx, 3\n"
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentDamageIncrease::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(HeavyBlade::DamageIncrease)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentDecreaseInstead::create()) + 
-						"jmp addDamage\n"
-						"sub rcx, 20\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentJmp::create()) + 
+						"jmp addDamage\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentSkippedCode::create()) + 
+						"sub rcx, 20\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels::create()) + 
 						"addDamage:\n"
 						"add rcx, 3\n"
 					),

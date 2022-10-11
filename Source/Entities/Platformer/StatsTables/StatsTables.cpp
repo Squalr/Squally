@@ -203,7 +203,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Barbarian::MapKey] = StatsIncrements(Stats(55, 12, 88));
 	StatsTables::StatsTable[Jack::MapKey] =StatsIncrements(Stats(10, 10, 10)); 
 	StatsTables::StatsTable[Reaper::MapKey] = StatsIncrements(Stats(10, 10, 10));
-	StatsTables::StatsTable[Thug::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Thug::MapKey] = StatsIncrements(Stats(45, 4, 10));
 	StatsTables::StatsTable[VampireLord::MapKey] = StatsIncrements(Stats(10, 10, 10));
 	StatsTables::StatsTable[Vampiress::MapKey] = StatsIncrements(Stats(10, 10, 10));
 	StatsTables::StatsTable[Werewolf::MapKey] = StatsIncrements(Stats(10, 10, 10));

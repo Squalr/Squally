@@ -10584,10 +10584,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEdi() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentDamageIncrease : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentJmp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentDamageIncrease* create();
+		static Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentJmp* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10595,14 +10595,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentDamageIncrease();
-		virtual ~Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentDamageIncrease() = default;
+		Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentJmp();
+		virtual ~Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentJmp() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentDecreaseInstead : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentDecreaseInstead* create();
+		static Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10610,14 +10610,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentDecreaseInstead();
-		virtual ~Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentDecreaseInstead() = default;
+		Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels();
+		virtual ~Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentRegister : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentSkippedCode : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentRegister* create();
+		static Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentSkippedCode* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10625,8 +10625,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentRegister();
-		virtual ~Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentRegister() = default;
+		Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentSkippedCode();
+		virtual ~Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentSkippedCode() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_HeavyBlade_HeavyBlade : public LocalizedString
