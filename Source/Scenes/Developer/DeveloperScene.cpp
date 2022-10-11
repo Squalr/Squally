@@ -70,6 +70,8 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- * Can get stuck on roof of maps (see UR 3_1)
+	- Infinity symbol in hexus does not localize to arabic (and maybe others)
+	- Text navigation in editable assembly text is broken for arabic
 	- Pacing behavior is broken for portal maps
 	- Techncially Squally respawns on object layer upon death, although usually this is not noticeable
 	- Chapter transitions can be more special
