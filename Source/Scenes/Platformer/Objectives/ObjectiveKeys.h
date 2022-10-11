@@ -36,12 +36,14 @@ public:
 	static const std::string URReturnToHera;
 	static const std::string URCrossBridge;
 	static const std::string URFindMineEntrance;
-	static const std::string UREnterTheMines;
 	static const std::string URLightTorches;
+	static const std::string UREnterTheMines;
 	
 	static const std::string DMDeliverLetter;
 	static const std::string DMInvestigatePowerOutage;
 	static const std::string DMSailToDrammol;
-	static const std::string DMRepairTrain;
+	static const std::string DMRestorePower;
+	static const std::string DMReturnToPrincessDawn;
+	static const std::string DMObtainTrainTicket;
 	static const std::string DMRideTrainToCastleValgrind;
 };

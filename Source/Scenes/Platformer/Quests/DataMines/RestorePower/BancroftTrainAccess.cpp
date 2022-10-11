@@ -116,8 +116,6 @@ void BancroftTrainAccess::onActivate(bool isActiveThroughSkippable)
 
 void BancroftTrainAccess::onComplete()
 {	
-	Objectives::SetCurrentObjective(ObjectiveKeys::DMDeliverLetter);
-
 	if (this->bancroft != nullptr)
 	{
 		this->bancroft->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
@@ -222,6 +220,7 @@ void BancroftTrainAccess::runCinematicSequenceAccessBlockedPt5()
 		),
 		[=]()
 		{
+			Objectives::SetCurrentObjective(ObjectiveKeys::DMObtainTrainTicket);
 			PlatformerEvents::TriggerCinematicRestore();
 		},
 		Voices::GetNextVoiceLong(),

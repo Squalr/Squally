@@ -27819,6 +27819,111 @@ namespace Strings
 		virtual ~Platformer_Notifications_Party_HelperJoinedParty() = default;
 	};
 
+	class Platformer_Objectives_DataMines_DM_DeliverLetter : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_DataMines_DM_DeliverLetter* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_DataMines_DM_DeliverLetter();
+		virtual ~Platformer_Objectives_DataMines_DM_DeliverLetter() = default;
+	};
+
+	class Platformer_Objectives_DataMines_DM_InvestigatePowerOutage : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_DataMines_DM_InvestigatePowerOutage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_DataMines_DM_InvestigatePowerOutage();
+		virtual ~Platformer_Objectives_DataMines_DM_InvestigatePowerOutage() = default;
+	};
+
+	class Platformer_Objectives_DataMines_DM_ObtainTrainTicket : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_DataMines_DM_ObtainTrainTicket* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_DataMines_DM_ObtainTrainTicket();
+		virtual ~Platformer_Objectives_DataMines_DM_ObtainTrainTicket() = default;
+	};
+
+	class Platformer_Objectives_DataMines_DM_RestorePower : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_DataMines_DM_RestorePower* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_DataMines_DM_RestorePower();
+		virtual ~Platformer_Objectives_DataMines_DM_RestorePower() = default;
+	};
+
+	class Platformer_Objectives_DataMines_DM_ReturnToPrincessDawn : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_DataMines_DM_ReturnToPrincessDawn* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_DataMines_DM_ReturnToPrincessDawn();
+		virtual ~Platformer_Objectives_DataMines_DM_ReturnToPrincessDawn() = default;
+	};
+
+	class Platformer_Objectives_DataMines_DM_RideTrainToCastleValgrind : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_DataMines_DM_RideTrainToCastleValgrind* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_DataMines_DM_RideTrainToCastleValgrind();
+		virtual ~Platformer_Objectives_DataMines_DM_RideTrainToCastleValgrind() = default;
+	};
+
+	class Platformer_Objectives_DataMines_DM_SailToDrammol : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_DataMines_DM_SailToDrammol* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_DataMines_DM_SailToDrammol();
+		virtual ~Platformer_Objectives_DataMines_DM_SailToDrammol() = default;
+	};
+
 	class Platformer_Objectives_EndianForest_EF_Ambush : public LocalizedString
 	{
 	public:

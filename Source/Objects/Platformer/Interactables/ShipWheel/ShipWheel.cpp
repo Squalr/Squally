@@ -15,6 +15,8 @@
 #include "Objects/Platformer/ItemPools/RecipePools/RecipePoolDeserializer.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Recipe.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ObjectResources.h"
@@ -77,6 +79,7 @@ void ShipWheel::showCharterShipOptions()
 	callbacks.push_back([=]()
 	{
 		this->steeringWheelWarp(MapResources::DataMines_Zone_3_8);
+		Objectives::SetCurrentObjective(ObjectiveKeys::DMRestorePower);
 		return true;
 	});
 

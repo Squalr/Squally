@@ -17,6 +17,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Physics/Lifts/CartLift.h"
 #include "Objects/Platformer/Interactables/Computer/Computer.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -85,6 +86,7 @@ void RestorePower::onLoad(QuestState questState)
 	
 	this->listenForMapEvent(RestorePower::MapEventPowerRestored, [=](ValueMap)
 	{
+		Objectives::SetCurrentObjective(ObjectiveKeys::DMReturnToPrincessDawn);
 		this->complete();
 	});
 }

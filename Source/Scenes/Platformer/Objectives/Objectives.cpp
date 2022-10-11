@@ -115,4 +115,15 @@ void Objectives::InitMap()
 	Objectives::ObjectiveMap[ObjectiveKeys::UREnterTheMines] = Objective([](){ return Strings::Platformer_Objectives_UnderflowRuins_UR_EnterTheMines::create(); }, priority++);
 
 	priority = 200;
+
+	// DM
+	Objectives::ObjectiveMap[ObjectiveKeys::DMDeliverLetter] = Objective([](){ return Strings::Platformer_Objectives_DataMines_DM_DeliverLetter::create()->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_DataMines_PrincessDawn::create(), Strings::Platformer_MapNames_EndianForest_Elbridge::create() }); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::DMInvestigatePowerOutage] = Objective([](){ return Strings::Platformer_Objectives_DataMines_DM_InvestigatePowerOutage::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::DMSailToDrammol] = Objective([](){ return Strings::Platformer_Objectives_DataMines_DM_SailToDrammol::create()->setStringReplacementVariables(Strings::Platformer_MapNames_DataMines_Drammol::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::DMRestorePower] = Objective([](){ return Strings::Platformer_Objectives_DataMines_DM_RestorePower::create()->setStringReplacementVariables(Strings::Platformer_MapNames_DataMines_Drammol::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::DMReturnToPrincessDawn] = Objective([](){ return Strings::Platformer_Objectives_DataMines_DM_ReturnToPrincessDawn::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_DataMines_PrincessDawn::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::DMObtainTrainTicket] = Objective([](){ return Strings::Platformer_Objectives_DataMines_DM_ObtainTrainTicket::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_DataMines_PrincessDawn::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::DMRideTrainToCastleValgrind] = Objective([](){ return Strings::Platformer_Objectives_DataMines_DM_RideTrainToCastleValgrind::create()->setStringReplacementVariables(Strings::Platformer_MapNames_CastleValgrind_CastleValgrind::create()); }, priority++);
+
+	priority = 300;
 }
