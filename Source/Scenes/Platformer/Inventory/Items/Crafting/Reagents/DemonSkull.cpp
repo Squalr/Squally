@@ -33,22 +33,17 @@ Item* DemonSkull::clone()
 	return DemonSkull::create();
 }
 
-std::string DemonSkull::getItemName()
-{
-	return DemonSkull::SaveKey;
-}
-
 LocalizedString* DemonSkull::getString()
 {
 	return Strings::Items_Crafting_Reagents_DemonSkull::create();
 }
 
-std::string DemonSkull::getIconResource()
+const std::string& DemonSkull::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Reagents_DemonSkull;
 }
 
-std::string DemonSkull::getSerializationKey()
+const std::string& DemonSkull::getIdentifier()
 {
 	return DemonSkull::SaveKey;
 }

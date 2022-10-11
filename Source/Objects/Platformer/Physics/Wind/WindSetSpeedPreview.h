@@ -14,7 +14,7 @@ public:
 
 protected:
 	WindSetSpeedPreview();
-	virtual ~WindSetSpeedPreview() = default;
+	virtual ~WindSetSpeedPreview();
 	
 	void onEnter() override;
 	void initializePositions() override;
@@ -22,9 +22,9 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	SmartParticles* windParticles;
-	LocalizedLabel* eaxPositive;
-	LocalizedLabel* eaxNegative;
-	LocalizedLabel* ebxPositive;
-	LocalizedLabel* ebxNegative;
+	SmartParticles* windParticles = nullptr;
+	LocalizedLabel* eaxPositive = nullptr;
+	LocalizedLabel* eaxNegative = nullptr;
+	LocalizedLabel* ebxPositive = nullptr;
+	LocalizedLabel* ebxNegative = nullptr;
 };

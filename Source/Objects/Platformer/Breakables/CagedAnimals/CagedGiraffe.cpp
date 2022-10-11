@@ -8,6 +8,8 @@
 
 #include "Resources/ObjectResources.h"
 
+#include "Strings/Strings.h"
+
 using namespace cocos2d;
 
 const std::string CagedGiraffe::MapKey = "caged-giraffe";
@@ -41,7 +43,7 @@ void CagedGiraffe::initializePositions()
 
 LocalizedString* CagedGiraffe::getAnimalName()
 {
-	return nullptr;
+	return Strings::Menus_Collectables_Animals_Giraffe::create();
 }
 
 std::string CagedGiraffe::getSpriteResource()

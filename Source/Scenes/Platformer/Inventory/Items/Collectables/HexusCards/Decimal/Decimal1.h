@@ -10,17 +10,16 @@ public:
 	static Decimal1* create();
 
 	Item* clone() override;
-	std::string getItemName() override;
 	LocalizedString* getString() override;
-	std::string getIconResource() override;
-	std::string getSerializationKey() override;
+	const std::string& getIconResource() override;
+	const std::string& getIdentifier() override;
 	std::string getCardKey() override;
 
 	static const std::string SaveKey;
 
 protected:
 	Decimal1();
-	~Decimal1();
+	virtual ~Decimal1();
 
 private:
 	typedef HexusCard super;

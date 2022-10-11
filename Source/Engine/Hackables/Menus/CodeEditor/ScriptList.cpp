@@ -38,14 +38,10 @@ ScriptList::ScriptList(ConfirmationMenu* confirmationMenuRef, std::function<void
 	this->onScriptSelect = onScriptSelect;
 	this->scriptsNode = Node::create();
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Hacking_CodeEditor_YourScripts::create());
-	this->scripts = std::vector<ScriptEntry*>();
 	this->createNewScriptButton = ClickableNode::create(UIResources::Menus_HackerModeMenu_ScriptEntry, UIResources::Menus_HackerModeMenu_ScriptEntrySelected);
 	this->createNewScriptLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Hacking_CodeEditor_CreateNewScript::create());
 	this->createNewScriptSprite = Sprite::create(UIResources::Menus_HackerModeMenu_Plus);
 	this->confirmationMenuRef = confirmationMenuRef;
-	this->hackableCode = nullptr;
-	this->activeScript = nullptr;
-	this->readOnlyCount = 0;
 
 	this->createNewScriptLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->createNewScriptSprite->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -150,8 +146,6 @@ void ScriptList::deleteScript(ScriptEntry* scriptEntry)
 
 	LocalizedString* scriptName = (scriptEntry->getName() == nullptr) ? Strings::Menus_Hacking_CodeEditor_UnnamedScript::create() : scriptEntry->getName()->clone();
 	
-	GameUtils::focus(this->confirmationMenuRef);
-
 	this->confirmationMenuRef->showMessage(Strings::Menus_Hacking_CodeEditor_DeleteConfirmation::create()->setStringReplacementVariables(scriptName),
 	[=]()
 	{
@@ -177,14 +171,10 @@ void ScriptList::deleteScript(ScriptEntry* scriptEntry)
 			}
 		}
 
-		GameUtils::focus(this->getParent());
-
 		return false;
 	},
 	[=]()
 	{
-		GameUtils::focus(this->getParent());
-
 		return false;
 	});
 }
@@ -232,7 +222,7 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 		this->scriptsNode->addChild(scriptEntry);
 	}
 
-	ValueVector savedScripts = SaveManager::getProfileDataOrDefault(hackableCode->getHackableIdentifier(), Value(ValueVector())).asValueVector();
+	ValueVector savedScripts = SaveManager::GetProfileDataOrDefault(hackableCode->getHackableIdentifier(), Value(ValueVector())).asValueVector();
 
 	// Add user scripts
 	for (auto savedScript : savedScripts)
@@ -263,9 +253,9 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 	this->initializePositions();
 
 	// Try focusing the saved last selected script
-	if (SaveManager::hasProfileData(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier()))
+	if (SaveManager::HasProfileData(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier()))
 	{
-		int activeScriptIndex = SaveManager::getProfileDataOrDefault(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier(), Value(-1)).asInt();
+		int activeScriptIndex = SaveManager::GetProfileDataOrDefault(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier(), Value(-1)).asInt();
 
 		if (activeScriptIndex >= 0 && activeScriptIndex < int(this->scripts.size()))
 		{

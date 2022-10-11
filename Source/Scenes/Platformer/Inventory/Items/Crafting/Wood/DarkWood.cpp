@@ -33,22 +33,17 @@ Item* DarkWood::clone()
 	return DarkWood::create();
 }
 
-std::string DarkWood::getItemName()
-{
-	return DarkWood::SaveKey;
-}
-
 LocalizedString* DarkWood::getString()
 {
 	return Strings::Items_Crafting_Wood_DarkWood::create();
 }
 
-std::string DarkWood::getIconResource()
+const std::string& DarkWood::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_WoodDark;
 }
 
-std::string DarkWood::getSerializationKey()
+const std::string& DarkWood::getIdentifier()
 {
 	return DarkWood::SaveKey;
 }

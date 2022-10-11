@@ -9,8 +9,8 @@
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/EntityResources.h"
@@ -28,31 +28,6 @@ GameState* GameState::create()
 }
 
 GameState::GameState()
-	: stateType(StateType::EmptyState),
-	turn(Turn::Player),
-	difficulty(HexusOpponentData::Strategy::Random),
-	playerLosses(0),
-	enemyLosses(0),
-	cardReplaceCount(0),
-	isRepeatingSameTurn(false),
-	playerPassed(false),
-	enemyPassed(false),
-	turnNumber(0),
-	playableCardsThisTurn(0),
-	playerCardsDrawnNextRound(0),
-	enemyCardsDrawnNextRound(0),
-	roundNumber(0),
-	opponentData(nullptr),
-	gameDurationInSeconds(0),
-	showChallengeBanner(false),
-	selectedHandCard(nullptr),
-	selectedRow(nullptr),
-	cardPreviewComponentCallback(nullptr),
-	updateStateCallback(nullptr),
-	endTurnCallback(nullptr),
-	requestAiCallback(nullptr),
-	selectedSourceCard(nullptr),
-	selectedDestinationCard(nullptr)
 {
 	this->playerDeck = Deck::create();
 	this->playerHand = CardRow::create(true);
@@ -68,25 +43,8 @@ GameState::GameState()
 	this->enemyDecimalCards = CardRow::create(false);
 	this->enemyHexCards = CardRow::create(false);
 
-	this->lossesDisplayPointer = nullptr;
-	this->playerBinaryRowTotalPointer = nullptr;
-	this->playerDecimalRowTotalPointer = nullptr;
-	this->playerHexRowTotalPointer = nullptr;
-	this->enemyBinaryRowTotalPointer = nullptr;
-	this->enemyDecimalRowTotalPointer = nullptr;
-	this->enemyHexRowTotalPointer = nullptr;
-	this->scoreTotalPointer = nullptr;
-	this->deckCardCountDisplayPointer = nullptr;
-	this->handCardCountDisplayPointer = nullptr;
-	this->remainingCardDisplayPointer = nullptr;
-	this->drawCountDisplayPointer = nullptr;
-	this->passButtonPointer = nullptr;
-	this->lastStandButtonPointer = nullptr;
-	this->claimVictoryButtonPointer = nullptr;
-	this->cardPreviewPointer = nullptr;
-
-	this->playerHand->setRowWidth(Config::handWidth, 0.0f);
-	this->enemyHand->setRowWidth(Config::enemyHandWidth, 0.0f);
+	this->playerHand->setRowWidth(HexusConfig::handWidth, 0.0f);
+	this->enemyHand->setRowWidth(HexusConfig::enemyHandWidth, 0.0f);
 
 	this->playerHand->enableClearOperationsOnInsert();
 	this->enemyHand->enableClearOperationsOnInsert();
@@ -118,23 +76,23 @@ void GameState::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->enemyGraveyard->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f + Config::graveyardOffsetY);
-	this->playerGraveyard->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::graveyardOffsetX, visibleSize.height / 2.0f - Config::graveyardOffsetY);
+	this->enemyGraveyard->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::graveyardOffsetX, visibleSize.height / 2.0f + HexusConfig::graveyardOffsetY);
+	this->playerGraveyard->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::graveyardOffsetX, visibleSize.height / 2.0f - HexusConfig::graveyardOffsetY);
 
-	this->playerDeck->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX, visibleSize.height / 2.0f - Config::deckOffsetY);
-	this->enemyDeck->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter + Config::deckOffsetX, visibleSize.height / 2.0f + Config::deckOffsetY);
+	this->playerDeck->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::deckOffsetX, visibleSize.height / 2.0f - HexusConfig::deckOffsetY);
+	this->enemyDeck->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter + HexusConfig::deckOffsetX, visibleSize.height / 2.0f + HexusConfig::deckOffsetY);
 
-	this->playerHand->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::handOffsetY);
-	this->playerBinaryCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::binaryRowOffsetY);
-	this->playerDecimalCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::decimalRowOffsetY);
-	this->playerHexCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY - Config::hexRowOffsetY);
+	this->playerHand->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - HexusConfig::handOffsetY);
+	this->playerBinaryCards->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY - HexusConfig::binaryRowOffsetY);
+	this->playerDecimalCards->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY - HexusConfig::decimalRowOffsetY);
+	this->playerHexCards->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY - HexusConfig::hexRowOffsetY);
 
-	this->enemyHand->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::handOffsetY + 256.0f);
-	this->enemyBinaryCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::binaryRowOffsetY);
-	this->enemyDecimalCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::decimalRowOffsetY);
-	this->enemyHexCards->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + Config::hexRowOffsetY);
+	this->enemyHand->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + HexusConfig::handOffsetY + 256.0f);
+	this->enemyBinaryCards->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::binaryRowOffsetY);
+	this->enemyDecimalCards->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::decimalRowOffsetY);
+	this->enemyHexCards->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + HexusConfig::hexRowOffsetY);
 }
 
 void GameState::onDeveloperModeEnable(int debugLevel)
@@ -142,9 +100,9 @@ void GameState::onDeveloperModeEnable(int debugLevel)
 	super::onDeveloperModeEnable(debugLevel);
 
 	/*
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->enemyHand->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::handOffsetY);
+	this->enemyHand->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + HexusConfig::handOffsetY);
 	*/
 }
 
@@ -153,9 +111,9 @@ void GameState::onDeveloperModeDisable()
 	super::onDeveloperModeDisable();
 
 	/*
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->enemyHand->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::handOffsetY + 256.0f);
+	this->enemyHand->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + HexusConfig::handOffsetY + 256.0f);
 	*/
 }
 
@@ -286,22 +244,22 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 		{
 			if (card->getIsPlayerOwnedCard())
 			{
-				this->playerHand->insertCard(card, Config::insertDelay);
+				this->playerHand->insertCard(card, HexusConfig::insertDelay);
 			}
 			else
 			{
-				this->enemyHand->insertCard(card, Config::insertDelay);
+				this->enemyHand->insertCard(card, HexusConfig::insertDelay);
 			}
 		}
 		else
 		{
 			if (card->getIsPlayerOwnedCard())
 			{
-				this->playerGraveyard->insertCardTop(card, true, Config::insertDelay);
+				this->playerGraveyard->insertCardTop(card, true, HexusConfig::insertDelay);
 			}
 			else
 			{
-				this->enemyGraveyard->insertCardTop(card, true, Config::insertDelay);
+				this->enemyGraveyard->insertCardTop(card, true, HexusConfig::insertDelay);
 			}
 		}
 	}
@@ -313,22 +271,22 @@ void GameState::sendFieldCardsToGraveyard(bool playerWon, bool enemyWon)
 		{
 			if (card->getIsPlayerOwnedCard())
 			{
-				this->playerHand->insertCard(card, Config::insertDelay);
+				this->playerHand->insertCard(card, HexusConfig::insertDelay);
 			}
 			else
 			{
-				this->enemyHand->insertCard(card, Config::insertDelay);
+				this->enemyHand->insertCard(card, HexusConfig::insertDelay);
 			}
 		}
 		else
 		{
 			if (card->getIsPlayerOwnedCard())
 			{
-				this->playerGraveyard->insertCardTop(card, true, Config::insertDelay);
+				this->playerGraveyard->insertCardTop(card, true, HexusConfig::insertDelay);
 			}
 			else
 			{
-				this->enemyGraveyard->insertCardTop(card, true, Config::insertDelay);
+				this->enemyGraveyard->insertCardTop(card, true, HexusConfig::insertDelay);
 			}
 		}
 	}

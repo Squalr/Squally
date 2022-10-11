@@ -8,9 +8,9 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/InputBolt.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/Lightning.h"
-#include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
 #include "Resources/UIResources.h"
@@ -33,9 +33,6 @@ Connection::Connection()
 	this->connectionPulse = Sprite::create(CipherResources::Connections_ConnectionPulse);
 	this->lightningEffectSource = Lightning::create();
 	this->lightningEffectDest = Lightning::create();
-	this->inputBolt = nullptr;
-	this->trackBolt = false;
-	this->currentStretchPosition = Vec2::ZERO;
 
 	Texture2D::TexParams params = Texture2D::TexParams();
 	params.minFilter = GL_LINEAR;
@@ -125,7 +122,7 @@ void Connection::stretchToLocation(cocos2d::Vec2 location)
 	float distance = MathUtils::clamp(location.distance(thisPosition), 0.0f, MaxLength);
 	float angleBetween = -std::atan2(thisPosition.y - location.y, thisPosition.x - location.x) - float(M_PI) / 2.0f;
 
-	this->connectionLine->setTextureRect(Rect(0.0f, 0.0f, this->connectionLine->getContentSize().width, distance));
+	this->connectionLine->setTextureRect(CRect(0.0f, 0.0f, this->connectionLine->getContentSize().width, distance));
 	this->connectionLine->setRotation(angleBetween * 180.0f / float(M_PI));
 	this->connectionCap->setRotation(this->connectionLine->getRotation());
 	this->connectionCap->setPosition(location - thisPosition);

@@ -433,11 +433,11 @@ public:
     : BaseMem(d) {}
   //! \endcond
 
-  constexpr Mem(const Label& base, int32_t off, uint32_t size = 0, uint32_t flags = 0) noexcept
-    : BaseMem(Decomposed { Label::kLabelTag, base.id(), 0, 0, off, size, flags }) {}
+  constexpr Mem(const AsmLabel& base, int32_t off, uint32_t size = 0, uint32_t flags = 0) noexcept
+    : BaseMem(Decomposed { AsmLabel::kLabelTag, base.id(), 0, 0, off, size, flags }) {}
 
-  constexpr Mem(const Label& base, const BaseReg& index, uint32_t shift, int32_t off, uint32_t size = 0, uint32_t flags = 0) noexcept
-    : BaseMem(Decomposed { Label::kLabelTag, base.id(), index.type(), index.id(), off, size, flags | (shift << kSignatureMemShiftShift) }) {}
+  constexpr Mem(const AsmLabel& base, const BaseReg& index, uint32_t shift, int32_t off, uint32_t size = 0, uint32_t flags = 0) noexcept
+    : BaseMem(Decomposed { AsmLabel::kLabelTag, base.id(), index.type(), index.id(), off, size, flags | (shift << kSignatureMemShiftShift) }) {}
 
   constexpr Mem(const BaseReg& base, int32_t off, uint32_t size = 0, uint32_t flags = 0) noexcept
     : BaseMem(Decomposed { base.type(), base.id(), 0, 0, off, size, flags }) {}
@@ -871,15 +871,15 @@ static constexpr Mem ptr(const Gp& base, const Vec& index, uint32_t shift = 0, i
 }
 
 //! Creates `[base + offset]` memory operand.
-static constexpr Mem ptr(const Label& base, int32_t offset = 0, uint32_t size = 0) noexcept {
+static constexpr Mem ptr(const AsmLabel& base, int32_t offset = 0, uint32_t size = 0) noexcept {
   return Mem(base, offset, size);
 }
 //! Creates `[base + (index << shift) + offset]` memory operand.
-static constexpr Mem ptr(const Label& base, const Gp& index, uint32_t shift = 0, int32_t offset = 0, uint32_t size = 0) noexcept {
+static constexpr Mem ptr(const AsmLabel& base, const Gp& index, uint32_t shift = 0, int32_t offset = 0, uint32_t size = 0) noexcept {
   return Mem(base, index, shift, offset, size);
 }
 //! Creates `[base + (index << shift) + offset]` memory operand.
-static constexpr Mem ptr(const Label& base, const Vec& index, uint32_t shift = 0, int32_t offset = 0, uint32_t size = 0) noexcept {
+static constexpr Mem ptr(const AsmLabel& base, const Vec& index, uint32_t shift = 0, int32_t offset = 0, uint32_t size = 0) noexcept {
   return Mem(base, index, shift, offset, size);
 }
 
@@ -941,11 +941,11 @@ static constexpr Mem ptr_rel(uint64_t base, const Vec& index, uint32_t shift = 0
     return Mem(base, index, shift, offset, SIZE);                                     \
   }                                                                                   \
   /*! Creates `[base + offset]` memory operand. */                                    \
-  static constexpr Mem FUNC(const Label& base, int32_t offset = 0) noexcept {         \
+  static constexpr Mem FUNC(const AsmLabel& base, int32_t offset = 0) noexcept {         \
     return Mem(base, offset, SIZE);                                                   \
   }                                                                                   \
   /*! Creates `[base + (index << shift) + offset]` memory operand. */                 \
-  static constexpr Mem FUNC(const Label& base, const Gp& index, uint32_t shift = 0, int32_t offset = 0) noexcept { \
+  static constexpr Mem FUNC(const AsmLabel& base, const Gp& index, uint32_t shift = 0, int32_t offset = 0) noexcept { \
     return Mem(base, index, shift, offset, SIZE);                                     \
   }                                                                                   \
   /*! Creates `[rip + offset]` memory operand. */                                     \

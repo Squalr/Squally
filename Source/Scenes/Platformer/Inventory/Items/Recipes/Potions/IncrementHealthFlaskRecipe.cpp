@@ -29,17 +29,17 @@ IncrementHealthFlaskRecipe::~IncrementHealthFlaskRecipe()
 {
 }
 
-Item* IncrementHealthFlaskRecipe::craft()
+std::vector<Item*> IncrementHealthFlaskRecipe::craft()
 {
-	return IncrementHealthFlask::create();
+	return { IncrementHealthFlask::create() };
 }
 
 std::vector<std::tuple<Item*, int>> IncrementHealthFlaskRecipe::getReagentsInternal()
 {
 	return
 	{
-		{ Clover::create(), 1 },
-		{ DarkSeed::create(), 1 },
+		{ Clover::create(), 2 },
+		{ DarkSeed::create(), 2 },
 		{ Honey::create(), 1 },
 	};
 }
@@ -49,17 +49,12 @@ Item* IncrementHealthFlaskRecipe::clone()
 	return IncrementHealthFlaskRecipe::create();
 }
 
-std::string IncrementHealthFlaskRecipe::getItemName()
-{
-	return IncrementHealthFlaskRecipe::SaveKey;
-}
-
 LocalizedString* IncrementHealthFlaskRecipe::getString()
 {
 	return Strings::Items_Consumables_Health_IncrementHealthFlask::create();
 }
 
-std::string IncrementHealthFlaskRecipe::getIconResource()
+const std::string& IncrementHealthFlaskRecipe::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +64,7 @@ std::string IncrementHealthFlaskRecipe::getCraftedItemIconResource()
 	return ItemResources::Consumables_Potions_HealthFlaskIncrement;
 }
 
-std::string IncrementHealthFlaskRecipe::getSerializationKey()
+const std::string& IncrementHealthFlaskRecipe::getIdentifier()
 {
 	return IncrementHealthFlaskRecipe::SaveKey;
 }

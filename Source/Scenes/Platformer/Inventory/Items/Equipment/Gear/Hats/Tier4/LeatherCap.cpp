@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier4/LeatherCapPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* LeatherCap::clone()
 	return LeatherCap::create();
 }
 
-std::string LeatherCap::getItemName()
-{
-	return LeatherCap::SaveKey;
-}
-
 LocalizedString* LeatherCap::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_LeatherCap::create();
 }
 
-std::string LeatherCap::getIconResource()
+const std::string& LeatherCap::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_LeatherCap;
 }
 
-std::string LeatherCap::getSerializationKey()
+const std::string& LeatherCap::getIdentifier()
 {
 	return LeatherCap::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string LeatherCap::getSerializationKey()
 Vec2 LeatherCap::getDisplayOffset()
 {
 	return Vec2(2.0f, -38.0f);
+}
+
+Recipe* LeatherCap::getRecipe()
+{
+	return LeatherCapPlans::create();
 }

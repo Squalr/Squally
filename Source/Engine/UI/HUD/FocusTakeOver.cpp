@@ -22,13 +22,11 @@ FocusTakeOver * FocusTakeOver::create()
 
 FocusTakeOver::FocusTakeOver()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->hijackedNodes = std::vector<HijackData>();
 	this->focusBackground = LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height);
 	this->hijackContainer = Node::create();
 	this->takeOverOpacity = 196;
-	this->focusMode = FocusMode::None;
 
 	this->addChild(this->focusBackground);
 	this->addChild(this->hijackContainer);
@@ -155,7 +153,7 @@ void FocusTakeOver::unfocus(Transition transition)
 {
 	for (auto next : this->hijackedNodes)
 	{
-		GameUtils::changeParent(next.node, next.originalParent, true, true, next.originalIndex);
+		GameUtils::changeParent(next.node, next.originalParent, true, next.originalIndex);
 	}
 
 	switch(transition)
@@ -213,7 +211,7 @@ void FocusTakeOver::softUnfocus()
 {
 	for (auto next : this->hijackedNodes)
 	{
-		GameUtils::changeParent(next.node, next.originalParent, true, true, next.originalIndex);
+		GameUtils::changeParent(next.node, next.originalParent, true, next.originalIndex);
 	}
 }
 

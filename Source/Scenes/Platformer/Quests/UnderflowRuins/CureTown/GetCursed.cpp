@@ -24,10 +24,12 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -53,10 +55,6 @@ GetCursed* GetCursed::create(GameObject* owner, QuestLine* questLine)
 
 GetCursed::GetCursed(GameObject* owner, QuestLine* questLine) : super(owner, questLine, GetCursed::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
-	this->medusa = nullptr;
 	this->curseSfx = WorldSound::create(SoundResources::Platformer_Spells_Curse1);
 
 	this->addChild(this->curseSfx);
@@ -107,6 +105,7 @@ void GetCursed::onActivate(bool isActiveThroughSkippable)
 
 void GetCursed::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::URSearchCistern);
 }
 
 void GetCursed::onSkipped()
@@ -149,6 +148,7 @@ void GetCursed::runCinematicSequencePt2()
 {
 	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* cinematicMarker)
 	{
+		this->medusa->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->medusa).x));
 		this->medusa->setState(StateKeys::CinematicDestinationX, Value(cinematicMarker->getPositionX()));
 
 		this->medusa->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)

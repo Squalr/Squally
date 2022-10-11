@@ -6,6 +6,7 @@ class SaveKeys
 {
 public:
 	static const std::string SaveKeyMap;
+	static const std::string SaveKeyCharterShipReturnMap;
 	static const std::string SaveKeyCurrentObjective;
 	static const std::string SaveKeyEventTriggeredPrefix;
 	static const std::string SaveKeySquallyRuneCooldowns;
@@ -20,12 +21,21 @@ public:
 	static const std::string SaveKeySquallyInventory;
 	static const std::string SaveKeySquallyEquipment;
 	static const std::string SaveKeySquallyCurrencyInventory;
+
 	static const std::string SaveKeyScrappyFound;
+	static const std::string SaveKeyGuanoFound;
+	static const std::string SaveKeyGeckyFound;
+
 	static const std::string SaveKeyHelperName;
 	static const std::string SaveKeyHelperHeath;
 	static const std::string SaveKeyHelperMana;
 	static const std::string SaveKeyHasGivenDefaultItems;
 	static const std::string SaveKeyCrackProgress;
+
+	static const std::string SaveKeyGeckyHealth;
+	static const std::string SaveKeyGeckyMana;
+	static const std::string SaveKeyGeckyEq;
+	static const std::string SaveKeyGeckyEqExperience;
 
 	static const std::string SaveKeyGuanoHealth;
 	static const std::string SaveKeyGuanoMana;
@@ -36,6 +46,8 @@ public:
 	static const std::string SaveKeyRespawnObjectId;
 
 	static const std::string SaveKeyLevelRubberband;
+	static const std::string SaveKeyLevelHideMiniMap;
+	static const std::string SaveKeyLevelMiniMapRequiredItem;
 	
 	static const std::string SaveKeySpellBookArcane;
 	static const std::string SaveKeySpellBookFire;

@@ -6,7 +6,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Haste/Haste.h"
 
 #include "Resources/SoundResources.h"
@@ -67,7 +67,7 @@ void CastHaste::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnt
 
 	for (auto next : targets)
 	{
-		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->applyBuff(Haste::create(owner, next));
 		});
@@ -82,7 +82,7 @@ bool CastHaste::isWorthUsing(PlatformerEntity* caster, const std::vector<Platfor
 {
 	bool hasBuff = false;
 
-	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->getBuff<Haste>([&](Haste* buff)
 		{

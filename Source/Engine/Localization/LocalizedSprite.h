@@ -31,6 +31,6 @@ private:
 
 	void updateSprite();
 
-	cocos2d::Sprite* localizedSprite;
+	cocos2d::Sprite* localizedSprite = nullptr;
 	std::string resourceBase;
 };

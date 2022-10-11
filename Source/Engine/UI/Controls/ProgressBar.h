@@ -27,12 +27,13 @@ protected:
 
 private:
 	typedef SmartNode super;
-	cocos2d::Node* frame;
-	cocos2d::Node* fill;
-	cocos2d::DrawNode* clipStencil;
-	cocos2d::ClippingNode* progressClip;
 
-	bool isHorizontal;
-	float progress;
+	cocos2d::Node* frame = nullptr;
+	cocos2d::Node* fill = nullptr;
+	cocos2d::DrawNode* clipStencil = nullptr;
+	cocos2d::ClippingNode* progressClip = nullptr;
+
+	bool isHorizontal = false;
+	float progress = 0.0f;
 };
 

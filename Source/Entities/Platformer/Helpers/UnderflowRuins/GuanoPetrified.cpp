@@ -24,7 +24,7 @@ GuanoPetrified::GuanoPetrified(ValueMap& properties) : super(properties,
 	GuanoPetrified::MapKey,
 	EntityResources::Helpers_UnderflowRuins_GuanoPetrified_Animations,
 	EntityResources::Helpers_UnderflowRuins_GuanoPetrified_Emblem,
-	Size(64.0f, 128.0f),
+	CSize(64.0f, 128.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

@@ -29,9 +29,9 @@ private:
 
 	std::string from;
 	std::string to;
-	bool warpCamera;
-	bool relayer;
-	float cooldown;
+	bool warpCamera = false;
+	bool relayer = false;
+	float cooldown = 0.0f;
 
 	static const std::string EventWarpToPrefix;
 	static const float WarpCooldown;

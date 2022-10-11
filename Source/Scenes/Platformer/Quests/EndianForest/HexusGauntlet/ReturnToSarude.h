@@ -34,9 +34,9 @@ private:
 	void runDialogueIntroLoss();
 	void runDialogueOutro();
 
-	MagePortal* portal;
-	Sarude* sarude;
-	Squally* squally;
+	MagePortal* portal = nullptr;
+	Sarude* sarude = nullptr;
+	Squally* squally = nullptr;
 
 	static const std::string QuestPortalTag;
 };

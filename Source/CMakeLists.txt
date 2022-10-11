@@ -15,10 +15,35 @@ add_executable(${PROJECT_NAME}
     ${GAME_HEADERS}
 )
 
+# Fetches and compiles SFML from source in a cross-platform way. Technology is great sometimes.
+include(FetchContent)
+set(BUILD_SHARED_LIBS OFF)
+FetchContent_Declare(
+ SFML
+ GIT_REPOSITORY https://github.com/SFML/SFML.git
+ GIT_TAG 2.5.1
+)
+FetchContent_MakeAvailable(SFML)
+
+# target_precompile_headers(${PROJECT_NAME} PUBLIC
+  # "$<$<COMPILE_LANGUAGE:CXX>:precheader_squally.h>"
+# )
+
+# C++20
+if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
+    target_compile_features(cocos2d PUBLIC cxx_std_20 c_std_99)
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    target_compile_features(cocos2d PUBLIC cxx_std_20 c_std_99)
+elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+    target_compile_features(cocos2d PUBLIC cxx_std_17 c_std_99)
+endif()
+
 # Target Propeties (PIE and edit the output directory)
 set_target_properties(${PROJECT_NAME} PROPERTIES
     POSITION_INDEPENDENT_CODE ON
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
+    UNITY_BUILD ON
+    UNITY_BUILD_BATCH_SIZE 64
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
@@ -28,9 +53,13 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
+    # sfml-graphics
+    sfml-audio
+    # sfml-window
+    # sfml-system
+
     # vcpkg resources
     tinyxml2::tinyxml2
-    RapidJSON::RapidJSON
 
     # internal dependencies
     cocos2d::cocos2d
@@ -60,7 +89,16 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
         MACOSX_PACKAGE_LOCATION Resources
     )
 
+    # Patch to default segment permissions to allow self-modifying code
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMENT "Patching executable file init_prot to 0x07 (r/w/e for all segments)"
+        COMMAND ${PROJECT_SOURCE_DIR}/PostBuildMac.sh
+        WORKING_DIRECTORY ${PROJECT_SOURCE_DIR}/
+    )
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    # Supported architecture
+    target_compile_options(${PROJECT_NAME} PRIVATE "/arch:SSE2")
+
     set_target_properties(${PROJECT_NAME} PROPERTIES
         WIN32_EXECUTABLE YES
     )
@@ -80,11 +118,19 @@ elseif(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /Z7")
     set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "${CMAKE_CXX_FLAGS_RELWITHDEBINFO} /Z7")
 
-    # Find C++ 17, allow large multi-class C++ files
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++17 /bigobj")
+    # Allow large multi-class C++ files
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
 
-    # Enable to allow profiling on windows:
-    target_link_options(${PROJECT_NAME} PRIVATE $<$<CONFIG:DEBUG>:/PROFILE>)
+    message(${CMAKE_CXX_FLAGS_DEBUG})
+
+    target_link_options(${PROJECT_NAME} PRIVATE
+        # Enable to allow profiling on windows:
+        # $<$<CONFIG:RELEASE>:/PROFILE>
+        # $<$<CONFIG:DEBUG>:/PROFILE>
+
+        # Enable for verbose linker output
+        # $<$<CONFIG:DEBUG>:/VERBOSE>
+    )
 elseif(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
     # setup rpath so binaries can search relative to themselves for libs
     set_target_properties(${PROJECT_NAME} PROPERTIES LINK_FLAGS "-Wl,-rpath,'$ORIGIN/lib'")
@@ -112,11 +158,13 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         $<TARGET_FILE_DIR:${PROJECT_NAME}>
 )
 
-# Copy game resources
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${PROJECT_SOURCE_DIR}/Resources"
-        $<$<PLATFORM_ID:Linux>:$<TARGET_FILE_DIR:${PROJECT_NAME}>/Resources>
-        $<$<PLATFORM_ID:Darwin>:$<TARGET_FILE_DIR:${PROJECT_NAME}>/../Resources>
-        $<$<PLATFORM_ID:Windows>:$<TARGET_FILE_DIR:${PROJECT_NAME}>/Resources>
-)
+# Copy game resources. On windows this is stupidly slow, so please manually call CopyResources.py instead.
+if(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+            "${PROJECT_SOURCE_DIR}/Resources"
+            $<$<PLATFORM_ID:Linux>:$<TARGET_FILE_DIR:${PROJECT_NAME}>/Resources>
+            $<$<PLATFORM_ID:Darwin>:$<TARGET_FILE_DIR:${PROJECT_NAME}>/../Resources>
+            $<$<PLATFORM_ID:Windows>:$<TARGET_FILE_DIR:${PROJECT_NAME}>/Resources>
+    )
+endif()

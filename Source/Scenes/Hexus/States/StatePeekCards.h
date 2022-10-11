@@ -4,7 +4,6 @@
 
 class Card;
 class ClickableTextNode;
-class ClickableNode;
 
 class StatePeekCards : public StateBase
 {
@@ -30,5 +29,5 @@ private:
 	void initializeCallbacks(GameState* gameState);
 
 	std::vector<Card*> removedCards;
-	ClickableTextNode* doneButton;
+	ClickableTextNode* doneButton = nullptr;
 };

@@ -21,7 +21,7 @@ Binary8* Binary8::create()
 	return instance;
 }
 
-Binary8::Binary8() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 10 }}), ItemMeta(3, 3))
+Binary8::Binary8() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), HexusCard::TuneCost(8) }}), ItemMeta(3, 3))
 {
 }
 
@@ -34,22 +34,17 @@ Item* Binary8::clone()
 	return Binary8::create();
 }
 
-std::string Binary8::getItemName()
-{
-	return Binary8::SaveKey;
-}
-
 LocalizedString* Binary8::getString()
 {
 	return Strings::Hexus_Cards_Binary8::create();
 }
 
-std::string Binary8::getIconResource()
+const std::string& Binary8::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardBinary;
 }
 
-std::string Binary8::getSerializationKey()
+const std::string& Binary8::getIdentifier()
 {
 	return Binary8::SaveKey;
 }

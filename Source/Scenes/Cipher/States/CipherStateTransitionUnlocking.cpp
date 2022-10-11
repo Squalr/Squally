@@ -11,7 +11,7 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Scenes/Cipher/Components/CipherLock.h"
-#include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
@@ -56,9 +56,9 @@ void CipherStateTransitionUnlocking::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->contentClip->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter, visibleSize.height / 2.0f + Config::TopPanelCenter));
+	this->contentClip->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::RightColumnCenter, visibleSize.height / 2.0f + CipherConfig::TopPanelCenter));
 }
 
 void CipherStateTransitionUnlocking::initializeListeners()

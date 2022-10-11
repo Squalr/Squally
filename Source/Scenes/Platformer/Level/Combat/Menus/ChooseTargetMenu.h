@@ -27,7 +27,7 @@ protected:
 private:
 	typedef Hud super;
 
-	cocos2d::Sprite* background;
-	cocos2d::Node* iconPreviewNode;
-	LocalizedLabel* firstStrikeLabel;
+	cocos2d::Sprite* background = nullptr;
+	cocos2d::Node* iconPreviewNode = nullptr;
+	LocalizedLabel* firstStrikeLabel = nullptr;
 };

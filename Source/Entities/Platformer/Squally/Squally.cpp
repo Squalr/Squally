@@ -1,30 +1,14 @@
 #include "Squally.h"
 
-#include "cocos/2d/CCActionInstant.h"
-#include "cocos/2d/CCActionInterval.h"
-#include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Camera/CameraTrackingData.h"
-#include "Engine/Camera/GameCamera.h"
-#include "Engine/Events/HackableEvents.h"
-#include "Engine/Events/NavigationEvents.h"
-#include "Engine/Events/SaveEvents.h"
 #include "Engine/Events/SceneEvents.h"
-#include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/Input.h"
-#include "Engine/Input/MouseState.h"
-#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Save/SaveManager.h"
-#include "Engine/Utils/GameUtils.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
-#include "Scenes/Platformer/Save/SaveKeys.h"
-#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
@@ -35,7 +19,7 @@ using namespace cocos2d;
 
 const float Squally::SquallyScale = 0.92f;
 const std::string Squally::MapKey = "squally";
-const std::string Squally::BattleTag = "squally-team";
+const std::string Squally::TeamTag = "squally-team";
 
 Squally* Squally::create()
 {
@@ -60,7 +44,7 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	Squally::MapKey,
 	EntityResources::Squally_Animations,
 	EntityResources::Squally_Emblem,
-	Size(128.0f, 128.0f),
+	CSize(128.0f, 128.0f),
 	Squally::SquallyScale,
 	Vec2(0.0f, 24.0f),
 	96.0f)
@@ -120,7 +104,7 @@ std::string Squally::getSwimAnimation()
 {
 	std::string swimAnimation = super::getSwimAnimation();
 
-	this->getAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+	this->getComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 	{
 		if (entityInventoryBehavior->getEquipmentInventory()->getWeapon() != nullptr)
 		{

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier7/TheGoldenEaglePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* TheGoldenEagle::clone()
 	return TheGoldenEagle::create();
 }
 
-std::string TheGoldenEagle::getItemName()
-{
-	return TheGoldenEagle::SaveKey;
-}
-
 LocalizedString* TheGoldenEagle::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_TheGoldenEagle::create();
 }
 
-std::string TheGoldenEagle::getIconResource()
+const std::string& TheGoldenEagle::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_TheGoldenEagle;
 }
 
-std::string TheGoldenEagle::getSerializationKey()
+const std::string& TheGoldenEagle::getIdentifier()
 {
 	return TheGoldenEagle::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string TheGoldenEagle::getSerializationKey()
 Vec2 TheGoldenEagle::getDisplayOffset()
 {
 	return Vec2(-42.0f, 6.0f);
+}
+
+Recipe* TheGoldenEagle::getRecipe()
+{
+	return TheGoldenEaglePlans::create();
 }

@@ -24,7 +24,7 @@ Professor::Professor(ValueMap& properties) : super(properties,
 	Professor::MapKey,
 	EntityResources::Helpers_VoidStar_Professor_Animations,
 	EntityResources::Helpers_VoidStar_Professor_Emblem,
-	Size(224.0f, 440.0f),
+	CSize(224.0f, 440.0f),
 	0.3f,
 	Vec2(0.0f, 0.0f))
 {

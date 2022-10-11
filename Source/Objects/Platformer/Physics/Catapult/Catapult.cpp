@@ -12,6 +12,7 @@
 #include "Engine/Input/Input.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -19,7 +20,7 @@
 #include "Objects/Platformer/Physics/Catapult/CatapultApplyPowerPreview.h"
 #include "Objects/Platformer/Physics/Catapult/CatapultGenericPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -47,11 +48,9 @@ Catapult* Catapult::create(ValueMap& properties)
 Catapult::Catapult(ValueMap& properties) : super(properties)
 {
 	this->catapultAnimations = SmartAnimationNode::create(ObjectResources::Traps_Catapult_Animations);
-	this->catapultCollision = CollisionObject::create(CollisionObject::createBox(Size(512.0f, 320.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(false, false));
+	this->catapultCollision = CollisionObject::create(CollisionObject::createBox(CSize(512.0f, 320.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(false, false));
 	this->ballAnimationPart = this->catapultAnimations->getAnimationPart("BALL");
 	this->launchPower = Catapult::LaunchPowerDefault;
-	this->interactionEnabled = false;
-	this->currentCooldown = 0.0f;
 
 	float height = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat();
 	this->catapultAnimations->setPositionY(-height / 2.0f);
@@ -84,26 +83,26 @@ void Catapult::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->catapultCollision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
+	this->catapultCollision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->catapultCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	this->catapultCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionData collisionData)
 	{
 		this->interactionEnabled = true;
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->catapultCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	this->catapultCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionData collisionData)
 	{
 		this->interactionEnabled = false;
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_V }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_V }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->interactionEnabled && this->currentCooldown <= 0.0f)
 		{
@@ -140,7 +139,7 @@ void Catapult::registerHackables()
 				Strings::Menus_Hacking_Objects_Catapult_ApplyPower_ApplyPower::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Meteor,
-				CatapultApplyPowerPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return CatapultApplyPowerPreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterEax::create() },
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm0::create() },
@@ -156,7 +155,7 @@ void Catapult::registerHackables()
 	auto applyLaunchFunc = &Catapult::applyLaunchPower;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)applyLaunchFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}
@@ -191,11 +190,11 @@ void Catapult::launchBall()
 	catapultBall->setScale(this->catapultAnimations->getScale());
 	catapultBall->setRotation(0.0f);
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		this->ballAnimationPart,
 		catapultBall,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::SetToOwner,
+		SpawnMethod::Above,
+		PositionMode::SetToOwner,
 		[&]()
 		{
 		},

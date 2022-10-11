@@ -48,7 +48,7 @@ public:
 		};
 
 		OperationType operationType;
-		unsigned int immediate;
+		unsigned int immediate = 0;
 
 		Operation(OperationType operationType, unsigned int immediate = 0b0000) : operationType(operationType), immediate(immediate)
 		{
@@ -84,9 +84,9 @@ public:
 	void runUnderflowEffect(bool offsetYPosition = false, bool isGoodEffect = true);
 	CardEffects::CardEffect getCorrespondingCardEffect();
 
-	CardData* cardData;
-	CardEffects* cardEffects;
-	cocos2d::Vec2 position;
+	CardData* cardData = nullptr;
+	CardEffects* cardEffects = nullptr;
+	cocos2d::Vec2 position = cocos2d::Vec2::ZERO;
 
 	static const float cardScale;
 	static const cocos2d::Color4B BinaryColor;
@@ -107,27 +107,28 @@ protected:
 
 private:
 	typedef SmartNode super;
+
 	void updateText();
 	void onMouseOver();
 	void onMouseOut();
 	void onMouseClick();
 	int applyOperation(int attack, Operation operation);
 
-	CardStyle cardStyle;
-	bool isPlayerOwnedCard;
-	bool relocateUI;
+	CardStyle cardStyle = CardStyle::Shadow;
+	bool isPlayerOwnedCard = false;
+	bool relocateUI = false;
 
 	std::vector<Operation> operations;
-	cocos2d::Sprite* cardBack;
-	cocos2d::Sprite* cardFront;
-	cocos2d::Sprite* cardSprite;
-	ClickableNode* cardSelect;
-	cocos2d::Sprite* cardFocus;
-	ConstantString* cardString;
-	LocalizedLabel* cardLabel;
-	LocalizedLabel* overflowLabel;
-	LocalizedLabel* underflowLabel;
-	std::function<void(Card*)> mouseOverCallback;
-	std::function<void(Card*)> mouseOutCallback;
-	std::function<void(Card*)> mouseClickCallback;
+	cocos2d::Sprite* cardBack = nullptr;
+	cocos2d::Sprite* cardFront = nullptr;
+	cocos2d::Sprite* cardSprite = nullptr;
+	ClickableNode* cardSelect = nullptr;
+	cocos2d::Sprite* cardFocus = nullptr;
+	ConstantString* cardString = nullptr;
+	LocalizedLabel* cardLabel = nullptr;
+	LocalizedLabel* overflowLabel = nullptr;
+	LocalizedLabel* underflowLabel = nullptr;
+	std::function<void(Card*)> mouseOverCallback = nullptr;
+	std::function<void(Card*)> mouseOutCallback = nullptr;
+	std::function<void(Card*)> mouseClickCallback = nullptr;
 };

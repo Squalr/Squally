@@ -13,6 +13,7 @@ namespace SpriterEngine
 }
 
 class AnimationPart;
+class SpriterAnimationNode;
 
 class SmartAnimationNode : public SmartNode
 {
@@ -30,16 +31,15 @@ public:
 
 	struct AnimParams
 	{
-		float priority;
-		float blendTime;
-		bool cancelAnim;
+		float priority = 0.0f;
+		float blendTime = 0.0f;
+		bool cancelAnim = false;
 		
 		AnimParams(float priority = 0.5f, float blendTime = 0.5f, bool cancelAnim = false) : priority(priority), blendTime(blendTime), cancelAnim(cancelAnim) { }
 	};
 
 	SmartAnimationNode* clone();
 	void playAnimation(AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, AnimParams animParams = AnimParams(), std::function<void()> callback = nullptr);
-	void playAnimation(const char* animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, AnimParams animParams = AnimParams(), std::function<void()> callback = nullptr);
 	void playAnimation(std::string animationName, AnimationPlayMode animationPlayMode = AnimationPlayMode::ReturnToIdle, AnimParams animParams = AnimParams(), std::function<void()> callback = nullptr);
 	void clearAnimationPriority();
 	AnimationPart* getAnimationPart(std::string partName);
@@ -60,14 +60,15 @@ protected:
 	SmartAnimationNode(std::string animationResource, std::string entityName);
 	virtual ~SmartAnimationNode();
 
-	Spriter2dX::AnimationNode* animationNode;
-	SpriterEngine::EntityInstance* entity;
+	SpriterAnimationNode* spriterAnimation = nullptr;
+	Spriter2dX::AnimationNode* animationNode = nullptr;
+	SpriterEngine::EntityInstance* entity = nullptr;
 
 private:
 	typedef SmartNode super;
 
-	bool initialized;
-	float currentAnimationPriority;
+	bool initialized = false;
+	float currentAnimationPriority = 0.0f;
 	std::map<std::string, AnimationPart*> animationParts;
 	std::string currentAnimation;
 	std::string animationResource;

@@ -32,10 +32,12 @@ public:
 	};
 
 	static cocos2d::Vec3 computeArcVelocity(cocos2d::Vec3 source, cocos2d::Vec3 destination, cocos2d::Vec3 acceleration, cocos2d::Vec3 time);
+	static cocos2d::Vec2 pointOnCircle(cocos2d::Vec2 center, float radius, cocos2d::Vec2 closestPoint);
 	static cocos2d::Vec2 pointOnEllipse(cocos2d::Vec2 center, float rx, float ry, cocos2d::Vec2 closestPoint);
 	static std::vector<int> subsetSum(const std::vector<int>& numbers, int sum, int requiredLength);
 	
-	static std::vector<Triangle> trianglefyPolygon(const std::vector<cocos2d::Vec2>& polygonPoints, const std::vector<cocos2d::Vec2>& holePoints = { });
+	static void offsetPoints(std::vector<cocos2d::Vec2>& points, const cocos2d::Vec2& delta);
+	static std::vector<Triangle> trianglefyPolygon(const std::vector<cocos2d::Vec2>& polygonPoints, const std::vector<std::vector<cocos2d::Vec2>>& holes = { });
 	static bool isPointInTriangle(const Triangle& triangle, cocos2d::Vec2 point);
 	static bool isPointInPolygon(const std::vector<cocos2d::Vec2>& points, cocos2d::Vec2 point);
 	static cocos2d::Vec2 getClosestPointOnLine(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segment, cocos2d::Vec2 point);
@@ -46,7 +48,7 @@ public:
 			buildSegmentsFromPoints(const std::vector<cocos2d::Vec2>& points);
 	static std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>
 			shrinkSegments(const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& segments);
-	static cocos2d::Rect getPolygonRect(const std::vector<cocos2d::Vec2>& points);
+	static cocos2d::CRect getPolygonRect(const std::vector<cocos2d::Vec2>& points);
 	static std::vector<cocos2d::Vec2> insetPolygon(const std::vector<Triangle>& triangles,
 			const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& segments, float insetDistance);
 	static cocos2d::Vec2 getSegmentNormal(std::tuple<cocos2d::Vec2, cocos2d::Vec2> segment);

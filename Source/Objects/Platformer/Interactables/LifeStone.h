@@ -25,7 +25,7 @@ protected:
 	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onInteract() override;
+	void onInteract(PlatformerEntity* interactingEntity) override;
 	void onEndCollision() override;
 
 private:
@@ -33,9 +33,8 @@ private:
 
 	void runHealAnimation(bool reRun = false);
 
-	cocos2d::Sprite* lifeStone;
-	SmartAnimationSequenceNode* healAnimation;
-	WorldSound* healSound;
-	
-	bool isAnimating;
+	cocos2d::Sprite* lifeStone = nullptr;
+	SmartAnimationSequenceNode* healAnimation = nullptr;
+	WorldSound* healSound = nullptr;
+	bool isAnimating = false;
 };

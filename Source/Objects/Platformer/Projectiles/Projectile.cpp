@@ -5,12 +5,13 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Collision/EntityCollisionBehaviorBase.h"
+#include "Scenes/Platformer/Components/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/UIResources.h"
@@ -28,11 +29,6 @@ Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2> hitBox, int c
 {
 	this->caster = caster;
 	this->allowHacking = allowHacking;
-	this->noOwnerCollideDuration = 1.0f;
-	this->launchVelocity = Vec3::ZERO;
-	this->launchAcceleration = Vec3::ZERO;
-	this->speedMultiplier = Vec3::ONE;
-	this->spinSpeed = 0.0f;
 	this->collisionObject = CollisionObject::create(
 		hitBox,
 		collisionType,
@@ -42,11 +38,6 @@ Projectile::Projectile(PlatformerEntity* caster, std::vector<Vec2> hitBox, int c
 	this->contentNode = Node::create();
 	this->decorNode = Node::create();
 	this->postFXNode = Node::create();
-	this->ownerCollisionRef = nullptr;
-	this->enabled = true;
-	this->canUpdate = true;
-	this->projectileRotation = 0.0f;
-	this->movementMode = MovementMode::Kinematic;
 
 	this->addTag(Projectile::ProjectileTag);
 
@@ -67,7 +58,7 @@ void Projectile::onEnter()
 
 	if (this->caster != nullptr)
 	{
-		this->caster->watchForAttachedBehavior<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
+		this->caster->watchForComponent<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
 		{
 			this->ownerCollisionRef = collisionBehavior->entityCollision;
 		});
@@ -146,26 +137,26 @@ void Projectile::setMovementMode(MovementMode movementMode)
 	this->movementMode = movementMode;
 }
 
-void Projectile::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionObject::CollisionResult(CollisionObject::CollisionData)> onCollision)
+void Projectile::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
 {
-	this->getCollision()->whenCollidesWith(collisionTypes, [=](CollisionObject::CollisionData data)
+	this->getCollision()->whenCollidesWith(collisionTypes, [=](CollisionData data)
 	{
 		if (data.other == this->ownerCollisionRef && this->noOwnerCollideDuration > 0.0f)
 		{
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		}
 
 		return onCollision(data);
 	});
 }
 
-void Projectile::whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionObject::CollisionResult(CollisionObject::CollisionData)> onCollisionEnd)
+void Projectile::whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd)
 {
-	this->getCollision()->whenStopsCollidingWith(collisionTypes, [=](CollisionObject::CollisionData data)
+	this->getCollision()->whenStopsCollidingWith(collisionTypes, [=](CollisionData data)
 	{
 		if (data.other == this->ownerCollisionRef && this->noOwnerCollideDuration > 0.0f)
 		{
-			return CollisionObject::CollisionResult::DoNothing;
+			return CollisionResult::DoNothing;
 		}
 		
 		return onCollisionEnd(data);
@@ -190,7 +181,7 @@ void Projectile::registerHackables()
 				Strings::Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_GetProjectileVelocity::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_AxeSlash,
-				this->createVelocityPreview(),
+				LazyNode<HackablePreview>::create([=](){ return this->createVelocityPreview(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEbx::create() },
@@ -209,7 +200,7 @@ void Projectile::registerHackables()
 				Strings::Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_GetProjectileAcceleration::create(),
 				HackableBase::HackBarColor::Gray,
 				UIResources::Menus_Icons_Scale,
-				this->createAccelerationPreview(),
+				LazyNode<HackablePreview>::create([=](){ return this->createAccelerationPreview(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEbx::create() },
@@ -320,7 +311,7 @@ void Projectile::enable(bool setVisible)
 	this->contentNode->setVisible(setVisible);
 	this->enabled = true;
 	
-	this->collisionObject->setPhysicsEnabled(true);
+	this->collisionObject->setPhysicsFlagEnabled(true);
 }
 
 void Projectile::disable(bool setVisible)
@@ -328,7 +319,7 @@ void Projectile::disable(bool setVisible)
 	this->contentNode->setVisible(setVisible);
 	this->enabled = false;
 
-	this->collisionObject->setPhysicsEnabled(false);
+	this->collisionObject->setPhysicsFlagEnabled(false);
 }
 
 void Projectile::enableUpdate()

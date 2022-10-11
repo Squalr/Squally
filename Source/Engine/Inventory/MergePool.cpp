@@ -21,9 +21,9 @@ MergePool::MergePool(const ValueMap& properties, std::string poolName, SampleMet
 	: super(properties, poolName, sampleMethod, minItems, maxItems, nestedPools)
 {
 	// Nested pools are not passed through to the MinMax pool. Instead, we steal all of the items and merge them into this pool (hence a merge pool)
-	for (auto pool : mergedPools)
+	for (MinMaxPool* pool : mergedPools)
 	{
-		for (auto itemChance : pool->itemPool)
+		for (ItemChance* itemChance : pool->itemPool)
 		{
 			this->addItemToPool(itemChance->clone());
 		}

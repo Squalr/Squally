@@ -11,7 +11,7 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Sound/Sound.h"
-#include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
@@ -33,8 +33,6 @@ CipherLock* CipherLock::create()
 
 CipherLock::CipherLock()
 {
-	this->hasAnyPinFailed = false;
-	
 	DrawNode* stencil = DrawNode::create();
 
 	stencil->drawSolidRect(Vec2(-224.0f, -224.0f), Vec2(224.0f, 224.0f), Color4F::GREEN);
@@ -49,8 +47,6 @@ CipherLock::CipherLock()
 	this->cipherPinsNode = Node::create();
 	this->stoppingBlock = Sprite::create(CipherResources::Lock_StoppingBlock);
 	this->pinboardFront = Sprite::create(CipherResources::Lock_PinboardFront);
-	this->cipherPinholes = std::vector<cocos2d::Sprite*>();
-	this->cipherPins = std::vector<cocos2d::Sprite*>();
 	this->gearTurnSound = Sound::create(SoundResources::Cipher_GearTurn);
 
 	// Enable to debug clipping:
@@ -62,7 +58,7 @@ CipherLock::CipherLock()
 	params.wrapT = GL_REPEAT;
 
 	this->shaft->getTexture()->setTexParameters(params);
-	this->shaft->setTextureRect(Rect(0.0f, 0.0f, this->shaft->getContentSize().width, this->shaft->getContentSize().height * 8.0f));
+	this->shaft->setTextureRect(CRect(0.0f, 0.0f, this->shaft->getContentSize().width, this->shaft->getContentSize().height * 8.0f));
 
 	this->contentClip->addChild(this->background);
 	this->contentClip->addChild(this->steelGear);
@@ -90,9 +86,9 @@ void CipherLock::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->contentClip->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter, visibleSize.height / 2.0f + Config::TopPanelCenter));
+	this->contentClip->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::RightColumnCenter, visibleSize.height / 2.0f + CipherConfig::TopPanelCenter));
 	this->background->setPosition(Vec2(0.0f, 0.0f));
 	this->steelGear->setPosition(Vec2(0.0f + 64.0f, 0.0f));
 	this->woodGearTop->setPosition(Vec2(0.0f + 120.0f, 80.0f));
@@ -116,7 +112,7 @@ void CipherLock::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(CipherEvents::EventTryUnlockCurrentCipher, ([=](EventCustom* eventCustom)
 	{
-		CipherEvents::UnlockArgs* args = static_cast<CipherEvents::UnlockArgs*>(eventCustom->getUserData());
+		CipherEvents::UnlockArgs* args = static_cast<CipherEvents::UnlockArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

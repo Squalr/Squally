@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Wands/CrystalWandPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* CrystalWand::clone()
 	return CrystalWand::create();
 }
 
-std::string CrystalWand::getItemName()
-{
-	return CrystalWand::SaveKey;
-}
-
 LocalizedString* CrystalWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_CrystalWand::create();
 }
 
-std::string CrystalWand::getIconResource()
+const std::string& CrystalWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_CrystalWand;
 }
 
-std::string CrystalWand::getSerializationKey()
+const std::string& CrystalWand::getIdentifier()
 {
 	return CrystalWand::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string CrystalWand::getSerializationKey()
 Vec2 CrystalWand::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* CrystalWand::getRecipe()
+{
+	return CrystalWandPlans::create();
 }

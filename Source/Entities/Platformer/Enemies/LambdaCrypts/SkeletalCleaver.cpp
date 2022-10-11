@@ -24,7 +24,7 @@ SkeletalCleaver::SkeletalCleaver(ValueMap& properties) : super(properties,
 	SkeletalCleaver::MapKey,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalCleaver_Emblem,
-	Size(128.0f, 312.0f),
+	CSize(128.0f, 312.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))
 {

@@ -29,9 +29,9 @@ SteelBowPlans::~SteelBowPlans()
 {
 }
 
-Item* SteelBowPlans::craft()
+std::vector<Item*> SteelBowPlans::craft()
 {
-	return SteelBow::create();
+	return { SteelBow::create() };
 }
 
 std::vector<std::tuple<Item*, int>> SteelBowPlans::getReagentsInternal()
@@ -49,17 +49,12 @@ Item* SteelBowPlans::clone()
 	return SteelBowPlans::create();
 }
 
-std::string SteelBowPlans::getItemName()
-{
-	return SteelBowPlans::SaveKey;
-}
-
 LocalizedString* SteelBowPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_SteelBow::create();
 }
 
-std::string SteelBowPlans::getIconResource()
+const std::string& SteelBowPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +64,7 @@ std::string SteelBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_SteelBow;
 }
 
-std::string SteelBowPlans::getSerializationKey()
+const std::string& SteelBowPlans::getIdentifier()
 {
 	return SteelBowPlans::SaveKey;
 }

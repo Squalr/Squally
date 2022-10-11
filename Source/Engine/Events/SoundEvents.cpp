@@ -5,62 +5,46 @@
 
 using namespace cocos2d;
 
-const std::string SoundEvents::EventTrackPlayed = "EVENT_TRACK_PLAYED";
-const std::string SoundEvents::EventRequestTrackDeserialization = "EVENT_REQUEST_TRACK_DESERIALIZATION";
-const std::string SoundEvents::EventDestroyOrphanedMusic = "EVENT_DESTROY_ORPHANED_MUSIC";
+const std::string SoundEvents::EventMusicPlayed = "EVENT_MUSIC_PLAYED";
+const std::string SoundEvents::EventRequestMusicDeserialization = "EVENT_REQUEST_MUSIC_DESERIALIZATION";
 const std::string SoundEvents::EventOnMusicDestroyed = "EVENT_ON_MUSIC_DESTROYED";
 const std::string SoundEvents::EventFadeOutMusic = "EVENT_FADE_OUT_MUSIC";
 const std::string SoundEvents::EventMusicVolumeUpdated = "EVENT_MUSIC_VOLUME_UPDATED";
 const std::string SoundEvents::EventSoundVolumeUpdated = "EVENT_SOUND_VOLUME_UPDATED";
 
-void SoundEvents::TriggerTrackPlayed(TrackPlayedArgs args)
+void SoundEvents::TriggerMusicPlayed(MusicPlayedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		SoundEvents::EventTrackPlayed,
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		SoundEvents::EventMusicPlayed,
 		&args
 	);
 }
 
-void SoundEvents::TriggerRequestTrackDeserialization(RequestTrackDeserializationArgs args)
+void SoundEvents::TriggerRequestMusicDeserialization(RequestMusicDeserializationArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		SoundEvents::EventRequestTrackDeserialization,
-		&args
-	);
-}
-
-void SoundEvents::TriggerDestroyOrphanedMusic()
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		SoundEvents::EventDestroyOrphanedMusic
-	);
-}
-
-void SoundEvents::TriggerMusicDestroyed(MusicDestroyedArgs args)
-{
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
-		SoundEvents::EventOnMusicDestroyed,
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		SoundEvents::EventRequestMusicDeserialization,
 		&args
 	);
 }
 
 void SoundEvents::TriggerMusicVolumeUpdated()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		SoundEvents::EventMusicVolumeUpdated
 	);
 }
 
 void SoundEvents::TriggerSoundVolumeUpdated()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		SoundEvents::EventSoundVolumeUpdated
 	);
 }
 
 void SoundEvents::TriggerFadeOutMusic(FadeOutMusicArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		SoundEvents::EventFadeOutMusic,
 		&args
 	);

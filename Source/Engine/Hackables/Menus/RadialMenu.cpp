@@ -6,9 +6,10 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Hackables/HackActivatedAbility.h"
 #include "Engine/Hackables/HackableBase.h"
@@ -40,8 +41,6 @@ RadialMenu* RadialMenu::create()
 
 RadialMenu::RadialMenu()
 {
-	this->activeHackableObject = nullptr;
-
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 48));
 	this->background = Sprite::create(UIResources::Menus_HackerModeMenu_Radial_RadialEye);
 	this->previewNode = Node::create();
@@ -63,7 +62,7 @@ void RadialMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->previewNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
@@ -76,7 +75,7 @@ void RadialMenu::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableObjectOpen, [=](EventCustom* eventCustom)
 	{
-		HackableEvents::HackableObjectOpenArgs* args = static_cast<HackableEvents::HackableObjectOpenArgs*>(eventCustom->getUserData());
+		HackableObjectOpenArgs* args = static_cast<HackableObjectOpenArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -85,21 +84,23 @@ void RadialMenu::initializeListeners()
 			this->activeHackableObject = args->hackableObject;
 			this->buildRadialMenu(args);
 
+			this->previousFocus = GameUtils::getFocusedNode();
 			GameUtils::focus(this);
 		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableBaseEditDone, [=](EventCustom* EventCustom)
 	{
+		this->previousFocus = GameUtils::getFocusedNode();
 		GameUtils::focus(this);
 
 		// Just close out of this when finished editing an hackable
 		this->close();
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_TAB, InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		if (!GameUtils::isVisible(this))
+		if (GameUtils::getFocusedNode() != this)
 		{
 			return;
 		}
@@ -108,6 +109,26 @@ void RadialMenu::initializeListeners()
 
 		this->close();
 	});
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
+	{
+		if (!GameUtils::isVisible(this))
+		{
+			return;
+		}
+		
+		this->close();
+	}));
+}
+
+void RadialMenu::onHackerModeDisable()
+{
+	super::onHackerModeDisable();
+
+	if (GameUtils::isVisible(this))
+	{
+		this->close();
+	}
 }
 
 void RadialMenu::onHackableEdit(HackableBase* hackable)
@@ -119,7 +140,7 @@ void RadialMenu::onHackableEdit(HackableBase* hackable)
 	}
 	else
 	{
-		HackableEvents::TriggerEditHackableBase(HackableEvents::HackableObjectEditArgs(this->activeHackableObject, hackable));
+		HackableEvents::TriggerEditHackableBaseEdit(HackableObjectEditArgs(this->activeHackableObject, hackable));
 
 		this->setVisible(false);
 	}
@@ -128,12 +149,14 @@ void RadialMenu::onHackableEdit(HackableBase* hackable)
 void RadialMenu::close()
 {
 	this->setVisible(false);
+	GameUtils::focus(this->previousFocus);
+	this->previousFocus = nullptr;
 
 	HackableEvents::TriggerCloseHackable();
 	HackableEvents::TriggerHackerModeDisable();
 }
 
-void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
+void RadialMenu::buildRadialMenu(HackableObjectOpenArgs* args)
 {
 	this->previewNode->removeAllChildren();
 	this->radialMenuItems->removeAllChildren();
@@ -141,7 +164,7 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 	HackablePreview* preview = this->activeHackableObject->createDefaultPreview();
 	std::vector<HackableBase*> filteredAttributes = std::vector<HackableBase*>();
 
-	for (auto hackable : this->activeHackableObject->hackableList)
+	for (const auto& hackable : this->activeHackableObject->hackableList)
 	{
 		if ((hackable->getRequiredHackFlag() & HackableObject::GetHackFlags()) == hackable->getRequiredHackFlag())
 		{
@@ -166,7 +189,7 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 	this->radialMenuItems->addChild(returnRadialNode);
 
 	// Draw icons
-	for (auto hackable : filteredAttributes)
+	for (const auto& hackable : filteredAttributes)
 	{
 		LocalizedString* name = hackable->getName();
 
@@ -197,7 +220,7 @@ void RadialMenu::buildRadialMenu(HackableEvents::HackableObjectOpenArgs* args)
 
 ClickableNode* RadialMenu::createRadialNode(std::string iconResource, int requiredHackFlag, Vec2 nodePosition, float angle, LocalizedString* text, std::function<void()> clickCallback)
 {
-	const Size padding = Size(4.0f, 0.0f);
+	const CSize padding = CSize(4.0f, 0.0f);
 
 	Sprite* radialNodeIcon = Sprite::create(iconResource);
 	ClickableNode* clickableNode = ClickableNode::create(Node::create(), Node::create());
@@ -205,7 +228,7 @@ ClickableNode* RadialMenu::createRadialNode(std::string iconResource, int requir
 	LocalizedLabel* label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, text);
 	LayerColor* labelBackground = LayerColor::create(Color4B(0, 0, 0, 196), label->getContentSize().width + padding.width * 2.0f, label->getContentSize().height + padding.height * 2.0f);
 
-	clickableNode->setContentSize(Size(RadialMenu::IconRadius * 2.0f, RadialMenu::IconRadius * 2.0f));
+	clickableNode->setContentSize(CSize(RadialMenu::IconRadius * 2.0f, RadialMenu::IconRadius * 2.0f));
 
 	clickableNode->setMouseClickCallback([=](InputEvents::MouseEventArgs*) {	clickCallback(); });
 	clickableNode->setMouseOverCallback([=](InputEvents::MouseEventArgs*) {	label->setTextColor(Color4B::YELLOW); });

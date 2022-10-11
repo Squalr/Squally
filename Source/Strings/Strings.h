@@ -909,6 +909,21 @@ namespace Strings
 		virtual ~Common_MinusConstant() = default;
 	};
 
+	class Common_MinusPointerOffset : public LocalizedString
+	{
+	public:
+		static Common_MinusPointerOffset* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_MinusPointerOffset();
+		virtual ~Common_MinusPointerOffset() = default;
+	};
+
 	class Common_NativeLanguage : public LocalizedString
 	{
 	public:
@@ -954,6 +969,21 @@ namespace Strings
 		virtual ~Common_NewlineNewline() = default;
 	};
 
+	class Common_Parenthesis : public LocalizedString
+	{
+	public:
+		static Common_Parenthesis* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_Parenthesis();
+		virtual ~Common_Parenthesis() = default;
+	};
+
 	class Common_PlusConstant : public LocalizedString
 	{
 	public:
@@ -967,6 +997,21 @@ namespace Strings
 	private:
 		Common_PlusConstant();
 		virtual ~Common_PlusConstant() = default;
+	};
+
+	class Common_PlusPointerOffset : public LocalizedString
+	{
+	public:
+		static Common_PlusPointerOffset* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_PlusPointerOffset();
+		virtual ~Common_PlusPointerOffset() = default;
 	};
 
 	class Common_Squally : public LocalizedString
@@ -1029,6 +1074,21 @@ namespace Strings
 		virtual ~Common_TriconcatSpaced() = default;
 	};
 
+	class Common_XArrowY : public LocalizedString
+	{
+	public:
+		static Common_XArrowY* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_XArrowY();
+		virtual ~Common_XArrowY() = default;
+	};
+
 	class Common_XColonY : public LocalizedString
 	{
 	public:
@@ -1042,6 +1102,21 @@ namespace Strings
 	private:
 		Common_XColonY();
 		virtual ~Common_XColonY() = default;
+	};
+
+	class Common_XColonYSpaced : public LocalizedString
+	{
+	public:
+		static Common_XColonYSpaced* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_XColonYSpaced();
+		virtual ~Common_XColonYSpaced() = default;
 	};
 
 	class Common_XEqualsY : public LocalizedString
@@ -1072,6 +1147,21 @@ namespace Strings
 	private:
 		Common_XOverY();
 		virtual ~Common_XOverY() = default;
+	};
+
+	class Common_XTimesY : public LocalizedString
+	{
+	public:
+		static Common_XTimesY* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_XTimesY();
+		virtual ~Common_XTimesY() = default;
 	};
 
 	class Debugging_CameraX : public LocalizedString
@@ -7584,6 +7674,36 @@ namespace Strings
 		virtual ~Items_Misc_Keys_BlueGem() = default;
 	};
 
+	class Items_Misc_Keys_CryptKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_CryptKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_CryptKey();
+		virtual ~Items_Misc_Keys_CryptKey() = default;
+	};
+
+	class Items_Misc_Keys_DemonKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_DemonKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_DemonKey();
+		virtual ~Items_Misc_Keys_DemonKey() = default;
+	};
+
 	class Items_Misc_Keys_FountainRoomKey : public LocalizedString
 	{
 	public:
@@ -7597,6 +7717,111 @@ namespace Strings
 	private:
 		Items_Misc_Keys_FountainRoomKey();
 		virtual ~Items_Misc_Keys_FountainRoomKey() = default;
+	};
+
+	class Items_Misc_Keys_FrostKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_FrostKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_FrostKey();
+		virtual ~Items_Misc_Keys_FrostKey() = default;
+	};
+
+	class Items_Misc_Keys_FrozenKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_FrozenKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_FrozenKey();
+		virtual ~Items_Misc_Keys_FrozenKey() = default;
+	};
+
+	class Items_Misc_Keys_HellGateCrystal : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_HellGateCrystal* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_HellGateCrystal();
+		virtual ~Items_Misc_Keys_HellGateCrystal() = default;
+	};
+
+	class Items_Misc_Keys_HellKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_HellKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_HellKey();
+		virtual ~Items_Misc_Keys_HellKey() = default;
+	};
+
+	class Items_Misc_Keys_IceKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_IceKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_IceKey();
+		virtual ~Items_Misc_Keys_IceKey() = default;
+	};
+
+	class Items_Misc_Keys_LetterForThePrincess : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_LetterForThePrincess* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_LetterForThePrincess();
+		virtual ~Items_Misc_Keys_LetterForThePrincess() = default;
+	};
+
+	class Items_Misc_Keys_MageTowerKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_MageTowerKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_MageTowerKey();
+		virtual ~Items_Misc_Keys_MageTowerKey() = default;
 	};
 
 	class Items_Misc_Keys_MagesGuildPrisonKey : public LocalizedString
@@ -7627,6 +7852,21 @@ namespace Strings
 	private:
 		Items_Misc_Keys_MedusasMirror();
 		virtual ~Items_Misc_Keys_MedusasMirror() = default;
+	};
+
+	class Items_Misc_Keys_MinesKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_MinesKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_MinesKey();
+		virtual ~Items_Misc_Keys_MinesKey() = default;
 	};
 
 	class Items_Misc_Keys_PurpleGem : public LocalizedString
@@ -7674,6 +7914,21 @@ namespace Strings
 		virtual ~Items_Misc_Keys_RedGem() = default;
 	};
 
+	class Items_Misc_Keys_RustyKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_RustyKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_RustyKey();
+		virtual ~Items_Misc_Keys_RustyKey() = default;
+	};
+
 	class Items_Misc_Keys_TownKey : public LocalizedString
 	{
 	public:
@@ -7687,6 +7942,36 @@ namespace Strings
 	private:
 		Items_Misc_Keys_TownKey();
 		virtual ~Items_Misc_Keys_TownKey() = default;
+	};
+
+	class Items_Misc_Keys_TrainTicket : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_TrainTicket* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_TrainTicket();
+		virtual ~Items_Misc_Keys_TrainTicket() = default;
+	};
+
+	class Items_Misc_Maps_DungeonMap : public LocalizedString
+	{
+	public:
+		static Items_Misc_Maps_DungeonMap* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Maps_DungeonMap();
+		virtual ~Items_Misc_Maps_DungeonMap() = default;
 	};
 
 	class Menus_Accept : public LocalizedString
@@ -7779,6 +8064,756 @@ namespace Strings
 		virtual ~Menus_Cards_Cards() = default;
 	};
 
+	class Menus_Collectables_Animals_Bat : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Bat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Bat();
+		virtual ~Menus_Collectables_Animals_Bat() = default;
+	};
+
+	class Menus_Collectables_Animals_Bear : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Bear* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Bear();
+		virtual ~Menus_Collectables_Animals_Bear() = default;
+	};
+
+	class Menus_Collectables_Animals_Beaver : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Beaver* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Beaver();
+		virtual ~Menus_Collectables_Animals_Beaver() = default;
+	};
+
+	class Menus_Collectables_Animals_Bee : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Bee* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Bee();
+		virtual ~Menus_Collectables_Animals_Bee() = default;
+	};
+
+	class Menus_Collectables_Animals_Bird : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Bird* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Bird();
+		virtual ~Menus_Collectables_Animals_Bird() = default;
+	};
+
+	class Menus_Collectables_Animals_Blowfish : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Blowfish* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Blowfish();
+		virtual ~Menus_Collectables_Animals_Blowfish() = default;
+	};
+
+	class Menus_Collectables_Animals_Bull : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Bull* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Bull();
+		virtual ~Menus_Collectables_Animals_Bull() = default;
+	};
+
+	class Menus_Collectables_Animals_Bunny : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Bunny* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Bunny();
+		virtual ~Menus_Collectables_Animals_Bunny() = default;
+	};
+
+	class Menus_Collectables_Animals_Cat : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Cat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Cat();
+		virtual ~Menus_Collectables_Animals_Cat() = default;
+	};
+
+	class Menus_Collectables_Animals_Chicken : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Chicken* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Chicken();
+		virtual ~Menus_Collectables_Animals_Chicken() = default;
+	};
+
+	class Menus_Collectables_Animals_Cow : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Cow* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Cow();
+		virtual ~Menus_Collectables_Animals_Cow() = default;
+	};
+
+	class Menus_Collectables_Animals_Crocodile : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Crocodile* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Crocodile();
+		virtual ~Menus_Collectables_Animals_Crocodile() = default;
+	};
+
+	class Menus_Collectables_Animals_Dinosaur : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Dinosaur* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Dinosaur();
+		virtual ~Menus_Collectables_Animals_Dinosaur() = default;
+	};
+
+	class Menus_Collectables_Animals_Dog : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Dog* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Dog();
+		virtual ~Menus_Collectables_Animals_Dog() = default;
+	};
+
+	class Menus_Collectables_Animals_Duck : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Duck* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Duck();
+		virtual ~Menus_Collectables_Animals_Duck() = default;
+	};
+
+	class Menus_Collectables_Animals_Fox : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Fox* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Fox();
+		virtual ~Menus_Collectables_Animals_Fox() = default;
+	};
+
+	class Menus_Collectables_Animals_Giraffe : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Giraffe* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Giraffe();
+		virtual ~Menus_Collectables_Animals_Giraffe() = default;
+	};
+
+	class Menus_Collectables_Animals_Goat : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Goat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Goat();
+		virtual ~Menus_Collectables_Animals_Goat() = default;
+	};
+
+	class Menus_Collectables_Animals_Hedgehog : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Hedgehog* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Hedgehog();
+		virtual ~Menus_Collectables_Animals_Hedgehog() = default;
+	};
+
+	class Menus_Collectables_Animals_Hippo : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Hippo* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Hippo();
+		virtual ~Menus_Collectables_Animals_Hippo() = default;
+	};
+
+	class Menus_Collectables_Animals_Horse : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Horse* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Horse();
+		virtual ~Menus_Collectables_Animals_Horse() = default;
+	};
+
+	class Menus_Collectables_Animals_KillerWhale : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_KillerWhale* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_KillerWhale();
+		virtual ~Menus_Collectables_Animals_KillerWhale() = default;
+	};
+
+	class Menus_Collectables_Animals_Koala : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Koala* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Koala();
+		virtual ~Menus_Collectables_Animals_Koala() = default;
+	};
+
+	class Menus_Collectables_Animals_Ladybug : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Ladybug* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Ladybug();
+		virtual ~Menus_Collectables_Animals_Ladybug() = default;
+	};
+
+	class Menus_Collectables_Animals_Lion : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Lion* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Lion();
+		virtual ~Menus_Collectables_Animals_Lion() = default;
+	};
+
+	class Menus_Collectables_Animals_Lizard : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Lizard* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Lizard();
+		virtual ~Menus_Collectables_Animals_Lizard() = default;
+	};
+
+	class Menus_Collectables_Animals_Monkey : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Monkey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Monkey();
+		virtual ~Menus_Collectables_Animals_Monkey() = default;
+	};
+
+	class Menus_Collectables_Animals_MountainLion : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_MountainLion* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_MountainLion();
+		virtual ~Menus_Collectables_Animals_MountainLion() = default;
+	};
+
+	class Menus_Collectables_Animals_Mouse : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Mouse* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Mouse();
+		virtual ~Menus_Collectables_Animals_Mouse() = default;
+	};
+
+	class Menus_Collectables_Animals_Panda : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Panda* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Panda();
+		virtual ~Menus_Collectables_Animals_Panda() = default;
+	};
+
+	class Menus_Collectables_Animals_Parrot : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Parrot* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Parrot();
+		virtual ~Menus_Collectables_Animals_Parrot() = default;
+	};
+
+	class Menus_Collectables_Animals_Penguin : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Penguin* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Penguin();
+		virtual ~Menus_Collectables_Animals_Penguin() = default;
+	};
+
+	class Menus_Collectables_Animals_Pig : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Pig* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Pig();
+		virtual ~Menus_Collectables_Animals_Pig() = default;
+	};
+
+	class Menus_Collectables_Animals_Raccoon : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Raccoon* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Raccoon();
+		virtual ~Menus_Collectables_Animals_Raccoon() = default;
+	};
+
+	class Menus_Collectables_Animals_Reindeer : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Reindeer* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Reindeer();
+		virtual ~Menus_Collectables_Animals_Reindeer() = default;
+	};
+
+	class Menus_Collectables_Animals_Rhino : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Rhino* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Rhino();
+		virtual ~Menus_Collectables_Animals_Rhino() = default;
+	};
+
+	class Menus_Collectables_Animals_Sheep : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Sheep* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Sheep();
+		virtual ~Menus_Collectables_Animals_Sheep() = default;
+	};
+
+	class Menus_Collectables_Animals_Skunk : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Skunk* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Skunk();
+		virtual ~Menus_Collectables_Animals_Skunk() = default;
+	};
+
+	class Menus_Collectables_Animals_Snail : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Snail* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Snail();
+		virtual ~Menus_Collectables_Animals_Snail() = default;
+	};
+
+	class Menus_Collectables_Animals_Snake : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Snake* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Snake();
+		virtual ~Menus_Collectables_Animals_Snake() = default;
+	};
+
+	class Menus_Collectables_Animals_Squid : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Squid* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Squid();
+		virtual ~Menus_Collectables_Animals_Squid() = default;
+	};
+
+	class Menus_Collectables_Animals_Squirrel : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Squirrel* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Squirrel();
+		virtual ~Menus_Collectables_Animals_Squirrel() = default;
+	};
+
+	class Menus_Collectables_Animals_Tiger : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Tiger* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Tiger();
+		virtual ~Menus_Collectables_Animals_Tiger() = default;
+	};
+
+	class Menus_Collectables_Animals_Tucan : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Tucan* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Tucan();
+		virtual ~Menus_Collectables_Animals_Tucan() = default;
+	};
+
+	class Menus_Collectables_Animals_Turtle : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Turtle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Turtle();
+		virtual ~Menus_Collectables_Animals_Turtle() = default;
+	};
+
+	class Menus_Collectables_Animals_Whale : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Whale* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Whale();
+		virtual ~Menus_Collectables_Animals_Whale() = default;
+	};
+
+	class Menus_Collectables_Animals_Wolf : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Wolf* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Wolf();
+		virtual ~Menus_Collectables_Animals_Wolf() = default;
+	};
+
+	class Menus_Collectables_Animals_Worm : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Worm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Worm();
+		virtual ~Menus_Collectables_Animals_Worm() = default;
+	};
+
+	class Menus_Collectables_Animals_Yeti : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Yeti* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Yeti();
+		virtual ~Menus_Collectables_Animals_Yeti() = default;
+	};
+
+	class Menus_Collectables_Animals_Zebra : public LocalizedString
+	{
+	public:
+		static Menus_Collectables_Animals_Zebra* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Collectables_Animals_Zebra();
+		virtual ~Menus_Collectables_Animals_Zebra() = default;
+	};
+
 	class Menus_Collectables_Collectables : public LocalizedString
 	{
 	public:
@@ -7869,6 +8904,21 @@ namespace Strings
 		virtual ~Menus_Crafting_Bows() = default;
 	};
 
+	class Menus_Crafting_Craftable : public LocalizedString
+	{
+	public:
+		static Menus_Crafting_Craftable* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Crafting_Craftable();
+		virtual ~Menus_Crafting_Craftable() = default;
+	};
+
 	class Menus_Crafting_Crafting : public LocalizedString
 	{
 	public:
@@ -7882,6 +8932,21 @@ namespace Strings
 	private:
 		Menus_Crafting_Crafting();
 		virtual ~Menus_Crafting_Crafting() = default;
+	};
+
+	class Menus_Crafting_Dismantle : public LocalizedString
+	{
+	public:
+		static Menus_Crafting_Dismantle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Crafting_Dismantle();
+		virtual ~Menus_Crafting_Dismantle() = default;
 	};
 
 	class Menus_Crafting_Maces : public LocalizedString
@@ -8544,6 +9609,126 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEsi() = default;
 	};
 
+	class Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration();
+		virtual ~Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdi() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_Rejuvination_Hint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Rejuvination_Hint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Rejuvination_Hint();
+		virtual ~Menus_Hacking_Abilities_Abilities_Rejuvination_Hint() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_Rejuvination_RegisterEdx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Rejuvination_RegisterEdx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Rejuvination_RegisterEdx();
+		virtual ~Menus_Hacking_Abilities_Abilities_Rejuvination_RegisterEdx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_Rejuvination_Rejuvination : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Rejuvination_Rejuvination* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Rejuvination_Rejuvination();
+		virtual ~Menus_Hacking_Abilities_Abilities_Rejuvination_Rejuvination() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_RockSlide_Hint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_RockSlide_Hint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_RockSlide_Hint();
+		virtual ~Menus_Hacking_Abilities_Abilities_RockSlide_Hint() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_RockSlide_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_RockSlide_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_RockSlide_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Abilities_RockSlide_RegisterEdi() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_RockSlide_RockSlide : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_RockSlide_RockSlide* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_RockSlide_RockSlide();
+		virtual ~Menus_Hacking_Abilities_Abilities_RockSlide_RockSlide() = default;
+	};
+
 	class Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_ApplySpeed : public LocalizedString
 	{
 	public:
@@ -8649,6 +9834,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_StopShadowBolt() = default;
 	};
 
+	class Menus_Hacking_Abilities_Abilities_ShadowBomb_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_ShadowBomb_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_ShadowBomb_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Abilities_ShadowBomb_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_ShadowBomb_ShadowBomb : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_ShadowBomb_ShadowBomb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_ShadowBomb_ShadowBomb();
+		virtual ~Menus_Hacking_Abilities_Abilities_ShadowBomb_ShadowBomb() = default;
+	};
+
 	class Menus_Hacking_Abilities_Abilities_TimeBomb_RegisterEcx : public LocalizedString
 	{
 	public:
@@ -8677,6 +9892,246 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Abilities_TimeBomb_TimeBombTick();
 		virtual ~Menus_Hacking_Abilities_Abilities_TimeBomb_TimeBombTick() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_ApplySpeed : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_ApplySpeed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_ApplySpeed();
+		virtual ~Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_ApplySpeed() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentAlterSpeed : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentAlterSpeed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentAlterSpeed();
+		virtual ~Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentAlterSpeed() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentXmmLoading : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentXmmLoading* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentXmmLoading();
+		virtual ~Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentXmmLoading() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterXmm0 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterXmm0* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterXmm0();
+		virtual ~Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterXmm0() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterXmm1 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterXmm1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterXmm1();
+		virtual ~Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterXmm1() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_StopWaterball : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_StopWaterball* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_StopWaterball();
+		virtual ~Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_StopWaterball() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_WaterballClippy : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_WaterballClippy* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_WaterballClippy();
+		virtual ~Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_WaterballClippy() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients();
+		virtual ~Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx4 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx4* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx4();
+		virtual ~Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx4() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx8 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx8* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx8();
+		virtual ~Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx8() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients();
+		virtual ~Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful();
+		virtual ~Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease();
+		virtual ~Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead();
+		virtual ~Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_RegisterEdx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_CallOfTheAncients_RegisterEdx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_CallOfTheAncients_RegisterEdx();
+		virtual ~Menus_Hacking_Abilities_Buffs_CallOfTheAncients_RegisterEdx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Enrage_Enrage : public LocalizedString
@@ -8842,6 +10297,126 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax();
 		virtual ~Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fury_Fury : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fury_Fury* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fury_Fury();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fury_Fury() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fury_HintLea : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fury_HintLea* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fury_HintLea();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fury_HintLea() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fury_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fury_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fury_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fury_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fury_RegisterEax8 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fury_RegisterEax8* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fury_RegisterEax8();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fury_RegisterEax8() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Fury_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Fury_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Fury_RegisterEbx();
+		virtual ~Menus_Hacking_Abilities_Buffs_Fury_RegisterEbx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed();
+		virtual ~Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Haste_Haste : public LocalizedString
@@ -9067,6 +10642,36 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Buffs_Inversion_RegisterEax();
 		virtual ~Menus_Hacking_Abilities_Buffs_Inversion_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_PactOfTheAncients_PactOfTheAncients : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_PactOfTheAncients_PactOfTheAncients* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_PactOfTheAncients_PactOfTheAncients();
+		virtual ~Menus_Hacking_Abilities_Buffs_PactOfTheAncients_PactOfTheAncients() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx();
+		virtual ~Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate : public LocalizedString
@@ -9594,36 +11199,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_Blind() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Blind_BlindClippy : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_Blind_BlindClippy* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Blind_BlindClippy();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_BlindClippy() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_Blind_ReduceBlind : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_Blind_ReduceBlind* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Blind_ReduceBlind();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_ReduceBlind() = default;
-	};
-
 	class Menus_Hacking_Abilities_Debuffs_Blind_RegisterEsi : public LocalizedString
 	{
 	public:
@@ -9639,10 +11214,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_RegisterEsi() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Blind_RegisterXmm3 : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_BrittleBones_BrittleBones : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Blind_RegisterXmm3* create();
+		static Menus_Hacking_Abilities_Debuffs_BrittleBones_BrittleBones* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9650,8 +11225,38 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_Blind_RegisterXmm3();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_RegisterXmm3() = default;
+		Menus_Hacking_Abilities_Debuffs_BrittleBones_BrittleBones();
+		virtual ~Menus_Hacking_Abilities_Debuffs_BrittleBones_BrittleBones() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead();
+		virtual ~Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_BrittleBones_Register : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_BrittleBones_Register* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_BrittleBones_Register();
+		virtual ~Menus_Hacking_Abilities_Debuffs_BrittleBones_Register() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_BrokenBlade_BrokenBlade : public LocalizedString
@@ -9774,6 +11379,81 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_BrokenBlade_RegisterEbx() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CurseOfTheAncients : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CurseOfTheAncients* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CurseOfTheAncients();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CurseOfTheAncients() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEbx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEbx() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead : public LocalizedString
 	{
 	public:
@@ -9862,6 +11542,51 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterXmm3();
 		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterXmm3() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Fear_Fear : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Fear_Fear* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Fear_Fear();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Fear_Fear() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Fear_Hint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Fear_Hint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Fear_Hint();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Fear_Hint() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare : public LocalizedString
@@ -10132,6 +11857,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_DispelIllusion();
 		virtual ~Menus_Hacking_Abilities_DispelIllusion() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Bitwise_CommentBitwise : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Bitwise_CommentBitwise* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Bitwise_CommentBitwise();
+		virtual ~Menus_Hacking_Abilities_Generic_Bitwise_CommentBitwise() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_Cmov_CommentC : public LocalizedString
@@ -10449,6 +12189,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Generic_Common_CommentDword() = default;
 	};
 
+	class Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr();
+		virtual ~Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack();
+		virtual ~Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack() = default;
+	};
+
 	class Menus_Hacking_Abilities_Generic_Common_CommentPtr : public LocalizedString
 	{
 	public:
@@ -10464,21 +12234,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Generic_Common_CommentPtr() = default;
 	};
 
-	class Menus_Hacking_Abilities_Generic_Common_CommentPtrLexicon : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Generic_Common_CommentPtrLexicon* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Generic_Common_CommentPtrLexicon();
-		virtual ~Menus_Hacking_Abilities_Generic_Common_CommentPtrLexicon() = default;
-	};
-
 	class Menus_Hacking_Abilities_Generic_Common_CommentQword : public LocalizedString
 	{
 	public:
@@ -10492,6 +12247,36 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Generic_Common_CommentQword();
 		virtual ~Menus_Hacking_Abilities_Generic_Common_CommentQword() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov();
+		virtual ~Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Stacks_CommentPush : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Stacks_CommentPush* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Stacks_CommentPush();
+		virtual ~Menus_Hacking_Abilities_Generic_Stacks_CommentPush() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_Vector_CommentMovss1 : public LocalizedString
@@ -16989,6 +18774,96 @@ namespace Strings
 		virtual ~Menus_Hacking_Lexicon_Stack() = default;
 	};
 
+	class Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentBlizzardDown : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentBlizzardDown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentBlizzardDown();
+		virtual ~Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentBlizzardDown() = default;
+	};
+
+	class Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentModify : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentModify* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentModify();
+		virtual ~Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentModify() = default;
+	};
+
+	class Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEax();
+		virtual ~Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEbx();
+		virtual ~Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEbx() = default;
+	};
+
+	class Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_SetBlizzardSpeed : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_SetBlizzardSpeed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_SetBlizzardSpeed();
+		virtual ~Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_SetBlizzardSpeed() = default;
+	};
+
+	class Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_SetBlizzardSpeedDown : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_SetBlizzardSpeedDown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_SetBlizzardSpeedDown();
+		virtual ~Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_SetBlizzardSpeedDown() = default;
+	};
+
 	class Menus_Hacking_Objects_Catapult_ApplyPower_ApplyPower : public LocalizedString
 	{
 	public:
@@ -17049,6 +18924,81 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm1() = default;
 	};
 
+	class Menus_Hacking_Objects_Crusher_DetectPlayer_DetectPlayer : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Crusher_DetectPlayer_DetectPlayer* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Crusher_DetectPlayer_DetectPlayer();
+		virtual ~Menus_Hacking_Objects_Crusher_DetectPlayer_DetectPlayer() = default;
+	};
+
+	class Menus_Hacking_Objects_Crusher_DetectPlayer_Hint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Crusher_DetectPlayer_Hint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Crusher_DetectPlayer_Hint();
+		virtual ~Menus_Hacking_Objects_Crusher_DetectPlayer_Hint() = default;
+	};
+
+	class Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEax();
+		virtual ~Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEbx();
+		virtual ~Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEbx() = default;
+	};
+
+	class Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEcx();
+		virtual ~Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEcx() = default;
+	};
+
 	class Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_RegisterSt0 : public LocalizedString
 	{
 	public:
@@ -17077,6 +19027,126 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_UpdateCountDown();
 		virtual ~Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_UpdateCountDown() = default;
+	};
+
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_CommentAddss : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_CommentAddss* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_CommentAddss();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_CommentAddss() = default;
+	};
+
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_CommentChangeTo : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_CommentChangeTo* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_CommentChangeTo();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_CommentChangeTo() = default;
+	};
+
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt1 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt1();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt1() = default;
+	};
+
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt2 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt2();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt2() = default;
+	};
+
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt3 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt3* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt3();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt3() = default;
+	};
+
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm2 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm2();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm2() = default;
+	};
+
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm4 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm4* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm4();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm4() = default;
+	};
+
+	class Menus_Hacking_Objects_FireBird_UpdateTimer_UpdateTimer : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_FireBird_UpdateTimer_UpdateTimer* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_FireBird_UpdateTimer_UpdateTimer();
+		virtual ~Menus_Hacking_Objects_FireBird_UpdateTimer_UpdateTimer() = default;
 	};
 
 	class Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity : public LocalizedString
@@ -17197,6 +19267,156 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_RegisterEdi();
 		virtual ~Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_RegisterEdi() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_CommentCompare : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_CommentCompare* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_CommentCompare();
+		virtual ~Menus_Hacking_Objects_KillingMachine_CommentCompare() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_CommentCritChance : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_CommentCritChance* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_CommentCritChance();
+		virtual ~Menus_Hacking_Objects_KillingMachine_CommentCritChance() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_CommentCritChanceNegate : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_CommentCritChanceNegate* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_CommentCritChanceNegate();
+		virtual ~Menus_Hacking_Objects_KillingMachine_CommentCritChanceNegate() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_CommentHintCmove : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_CommentHintCmove* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_CommentHintCmove();
+		virtual ~Menus_Hacking_Objects_KillingMachine_CommentHintCmove() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_CommentHintCmovne : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_CommentHintCmovne* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_CommentHintCmovne();
+		virtual ~Menus_Hacking_Objects_KillingMachine_CommentHintCmovne() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_CommentHintGeneric : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_CommentHintGeneric* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_CommentHintGeneric();
+		virtual ~Menus_Hacking_Objects_KillingMachine_CommentHintGeneric() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_RegisterEax();
+		virtual ~Menus_Hacking_Objects_KillingMachine_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_RegisterEdi();
+		virtual ~Menus_Hacking_Objects_KillingMachine_RegisterEdi() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_RegisterEsi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_RegisterEsi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_RegisterEsi();
+		virtual ~Menus_Hacking_Objects_KillingMachine_RegisterEsi() = default;
+	};
+
+	class Menus_Hacking_Objects_KillingMachine_TakeDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_KillingMachine_TakeDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_KillingMachine_TakeDamage();
+		virtual ~Menus_Hacking_Objects_KillingMachine_TakeDamage() = default;
 	};
 
 	class Menus_Hacking_Objects_Laser_UpdateCountDown_RegisterSt0 : public LocalizedString
@@ -17452,6 +19672,36 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer();
 		virtual ~Menus_Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer() = default;
+	};
+
+	class Menus_Hacking_Objects_MineCart_IsMoving_IsMoving : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MineCart_IsMoving_IsMoving* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MineCart_IsMoving_IsMoving();
+		virtual ~Menus_Hacking_Objects_MineCart_IsMoving_IsMoving() = default;
+	};
+
+	class Menus_Hacking_Objects_MineCart_IsMoving_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_MineCart_IsMoving_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_MineCart_IsMoving_RegisterEax();
+		virtual ~Menus_Hacking_Objects_MineCart_IsMoving_RegisterEax() = default;
 	};
 
 	class Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax : public LocalizedString
@@ -17842,6 +20092,156 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_RegisterRspWarning();
 		virtual ~Menus_Hacking_Objects_RegisterRspWarning() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_MoveTowardsPlayer : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_MoveTowardsPlayer* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_MoveTowardsPlayer();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_MoveTowardsPlayer() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEax();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEcx();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEcx() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEdi();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEdi() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi();
+		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi() = default;
 	};
 
 	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions : public LocalizedString
@@ -19299,6 +21699,36 @@ namespace Strings
 		virtual ~Menus_Music_Nosbertus_TrickOrTreat() = default;
 	};
 
+	class Menus_Music_StrayGhost_StrayGhost : public LocalizedString
+	{
+	public:
+		static Menus_Music_StrayGhost_StrayGhost* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_StrayGhost_StrayGhost();
+		virtual ~Menus_Music_StrayGhost_StrayGhost() = default;
+	};
+
+	class Menus_Music_StrayGhost_TwoStepsTooOftenAside : public LocalizedString
+	{
+	public:
+		static Menus_Music_StrayGhost_TwoStepsTooOftenAside* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_StrayGhost_TwoStepsTooOftenAside();
+		virtual ~Menus_Music_StrayGhost_TwoStepsTooOftenAside() = default;
+	};
+
 	class Menus_Music_TheoAndPaul_LastMarch : public LocalizedString
 	{
 	public:
@@ -20034,6 +22464,21 @@ namespace Strings
 		virtual ~Menus_Submit() = default;
 	};
 
+	class Menus_TODO : public LocalizedString
+	{
+	public:
+		static Menus_TODO* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_TODO();
+		virtual ~Menus_TODO() = default;
+	};
+
 	class Menus_TranslationEditor_CurrentTranslation : public LocalizedString
 	{
 	public:
@@ -20287,6 +22732,21 @@ namespace Strings
 	private:
 		Platformer_Combat_Attacks_CondensationDescription();
 		virtual ~Platformer_Combat_Attacks_CondensationDescription() = default;
+	};
+
+	class Platformer_Combat_Attacks_DropTimeBomb : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Attacks_DropTimeBomb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_DropTimeBomb();
+		virtual ~Platformer_Combat_Attacks_DropTimeBomb() = default;
 	};
 
 	class Platformer_Combat_Attacks_EnergyBolt : public LocalizedString
@@ -20769,6 +23229,36 @@ namespace Strings
 		virtual ~Platformer_Combat_LevelUp() = default;
 	};
 
+	class Platformer_Combat_Max : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Max* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Max();
+		virtual ~Platformer_Combat_Max() = default;
+	};
+
+	class Platformer_Combat_Min : public LocalizedString
+	{
+	public:
+		static Platformer_Combat_Min* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Min();
+		virtual ~Platformer_Combat_Min() = default;
+	};
+
 	class Platformer_Combat_Rewards : public LocalizedString
 	{
 	public:
@@ -21039,10 +23529,10 @@ namespace Strings
 		virtual ~Platformer_Dialogue_Hexus_HowAboutARoundOfHexus() = default;
 	};
 
-	class Platformer_Dialogue_Hexus_PuzzleForYou : public LocalizedString
+	class Platformer_Dialogue_Hexus_PuzzleForYouZalgo : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Hexus_PuzzleForYou* create();
+		static Platformer_Dialogue_Hexus_PuzzleForYouZalgo* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21050,8 +23540,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Dialogue_Hexus_PuzzleForYou();
-		virtual ~Platformer_Dialogue_Hexus_PuzzleForYou() = default;
+		Platformer_Dialogue_Hexus_PuzzleForYouZalgo();
+		virtual ~Platformer_Dialogue_Hexus_PuzzleForYouZalgo() = default;
 	};
 
 	class Platformer_Dialogue_Hexus_WeAcceptYourChallenge : public LocalizedString
@@ -21082,6 +23572,66 @@ namespace Strings
 	private:
 		Platformer_Dialogue_Hexus_WellPlayed();
 		virtual ~Platformer_Dialogue_Hexus_WellPlayed() = default;
+	};
+
+	class Platformer_Dialogue_Recruitable_GeckyRecruitable : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Recruitable_GeckyRecruitable* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Recruitable_GeckyRecruitable();
+		virtual ~Platformer_Dialogue_Recruitable_GeckyRecruitable() = default;
+	};
+
+	class Platformer_Dialogue_Recruitable_GuanoRecruitable : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Recruitable_GuanoRecruitable* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Recruitable_GuanoRecruitable();
+		virtual ~Platformer_Dialogue_Recruitable_GuanoRecruitable() = default;
+	};
+
+	class Platformer_Dialogue_Recruitable_RecruitableAccept : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Recruitable_RecruitableAccept* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Recruitable_RecruitableAccept();
+		virtual ~Platformer_Dialogue_Recruitable_RecruitableAccept() = default;
+	};
+
+	class Platformer_Dialogue_Recruitable_RecruitableChoose : public LocalizedString
+	{
+	public:
+		static Platformer_Dialogue_Recruitable_RecruitableChoose* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Recruitable_RecruitableChoose();
+		virtual ~Platformer_Dialogue_Recruitable_RecruitableChoose() = default;
 	};
 
 	class Platformer_Dialogue_Rewards_DoYouWantThisReward : public LocalizedString
@@ -21309,6 +23859,21 @@ namespace Strings
 		virtual ~Platformer_Entities_EndianForest_Lycan_NobodyAllowedIntoTown() = default;
 	};
 
+	class Platformer_Entities_Names_Critters_Gull : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Critters_Gull* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Critters_Gull();
+		virtual ~Platformer_Entities_Names_Critters_Gull() = default;
+	};
+
 	class Platformer_Entities_Names_Critters_Horse : public LocalizedString
 	{
 	public:
@@ -21322,6 +23887,36 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Critters_Horse();
 		virtual ~Platformer_Entities_Names_Critters_Horse() = default;
+	};
+
+	class Platformer_Entities_Names_Critters_Lion : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Critters_Lion* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Critters_Lion();
+		virtual ~Platformer_Entities_Names_Critters_Lion() = default;
+	};
+
+	class Platformer_Entities_Names_Critters_Seagull : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Critters_Seagull* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Critters_Seagull();
+		virtual ~Platformer_Entities_Names_Critters_Seagull() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_BallmerPeaks_Cryogen : public LocalizedString
@@ -21519,6 +24114,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_Agnes() = default;
 	};
 
+	class Platformer_Entities_Names_Enemies_CastleValgrind_Barbarian : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_CastleValgrind_Barbarian* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_CastleValgrind_Barbarian();
+		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_Barbarian() = default;
+	};
+
 	class Platformer_Entities_Names_Enemies_CastleValgrind_Jack : public LocalizedString
 	{
 	public:
@@ -21532,6 +24142,21 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Enemies_CastleValgrind_Jack();
 		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_Jack() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_CastleValgrind_ReanimatedFighter : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_CastleValgrind_ReanimatedFighter* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_CastleValgrind_ReanimatedFighter();
+		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_ReanimatedFighter() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_CastleValgrind_Reaper : public LocalizedString
@@ -21564,10 +24189,10 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_Scarecrow() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalPirate : public LocalizedString
+	class Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalBaron : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalPirate* create();
+		static Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalBaron* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21575,8 +24200,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalPirate();
-		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalPirate() = default;
+		Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalBaron();
+		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalBaron() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_CastleValgrind_Thug : public LocalizedString
@@ -21652,36 +24277,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Enemies_CastleValgrind_Wraith();
 		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_Wraith() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_CastleValgrind_Zombie : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_Zombie* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_CastleValgrind_Zombie();
-		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_Zombie() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_CastleValgrind_ZombieElric : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_ZombieElric* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_CastleValgrind_ZombieElric();
-		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_ZombieElric() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_DaemonsHallow_Asmodeus : public LocalizedString
@@ -21864,21 +24459,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_DaemonsHallow_LavaGolem() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_DataMines_Barbarian : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DataMines_Barbarian* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DataMines_Barbarian();
-		virtual ~Platformer_Entities_Names_Enemies_DataMines_Barbarian() = default;
-	};
-
 	class Platformer_Entities_Names_Enemies_DataMines_EarthElemental : public LocalizedString
 	{
 	public:
@@ -21939,21 +24519,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_DataMines_Gorilla() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_DataMines_LightningGolem : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DataMines_LightningGolem* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DataMines_LightningGolem();
-		virtual ~Platformer_Entities_Names_Enemies_DataMines_LightningGolem() = default;
-	};
-
 	class Platformer_Entities_Names_Enemies_DataMines_Rhinoman : public LocalizedString
 	{
 	public:
@@ -22012,6 +24577,21 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Enemies_DataMines_SkeletalNecromancer();
 		virtual ~Platformer_Entities_Names_Enemies_DataMines_SkeletalNecromancer() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_DataMines_SkeletalPirate : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_DataMines_SkeletalPirate* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_DataMines_SkeletalPirate();
+		virtual ~Platformer_Entities_Names_Enemies_DataMines_SkeletalPirate() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_DataMines_SkeletalWarrior : public LocalizedString
@@ -22329,21 +24909,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_LambdaCrypts_Mystic() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_LambdaCrypts_ReanimatedFighter : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_LambdaCrypts_ReanimatedFighter* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_LambdaCrypts_ReanimatedFighter();
-		virtual ~Platformer_Entities_Names_Enemies_LambdaCrypts_ReanimatedFighter() = default;
-	};
-
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_ReanimatedPig : public LocalizedString
 	{
 	public:
@@ -22357,21 +24922,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Enemies_LambdaCrypts_ReanimatedPig();
 		virtual ~Platformer_Entities_Names_Enemies_LambdaCrypts_ReanimatedPig() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalBaron : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalBaron* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalBaron();
-		virtual ~Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalBaron() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalCleaver : public LocalizedString
@@ -22432,6 +24982,36 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Enemies_LambdaCrypts_Undead();
 		virtual ~Platformer_Entities_Names_Enemies_LambdaCrypts_Undead() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_LambdaCrypts_Zombie : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_LambdaCrypts_Zombie* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_LambdaCrypts_Zombie();
+		virtual ~Platformer_Entities_Names_Enemies_LambdaCrypts_Zombie() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_LambdaCrypts_ZombieElric : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_LambdaCrypts_ZombieElric* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_LambdaCrypts_ZombieElric();
+		virtual ~Platformer_Entities_Names_Enemies_LambdaCrypts_ZombieElric() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_Misc_TrainingDummy : public LocalizedString
@@ -22689,6 +25269,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_VoidStar_DarkTiger() = default;
 	};
 
+	class Platformer_Entities_Names_Enemies_VoidStar_DemonArcher : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_VoidStar_DemonArcher* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_VoidStar_DemonArcher();
+		virtual ~Platformer_Entities_Names_Enemies_VoidStar_DemonArcher() = default;
+	};
+
 	class Platformer_Entities_Names_Enemies_VoidStar_EvilEye : public LocalizedString
 	{
 	public:
@@ -22734,6 +25329,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_VoidStar_Gargoyle() = default;
 	};
 
+	class Platformer_Entities_Names_Enemies_VoidStar_LightningGolem : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_VoidStar_LightningGolem* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_VoidStar_LightningGolem();
+		virtual ~Platformer_Entities_Names_Enemies_VoidStar_LightningGolem() = default;
+	};
+
 	class Platformer_Entities_Names_Enemies_VoidStar_Shade : public LocalizedString
 	{
 	public:
@@ -22747,21 +25357,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Enemies_VoidStar_Shade();
 		virtual ~Platformer_Entities_Names_Enemies_VoidStar_Shade() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_VoidStar_VoidArcher : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_VoidStar_VoidArcher* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_VoidStar_VoidArcher();
-		virtual ~Platformer_Entities_Names_Enemies_VoidStar_VoidArcher() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_VoidStar_VoidDemon : public LocalizedString
@@ -22869,10 +25464,10 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Helpers_DaemonsHallow_CritterDemon() = default;
 	};
 
-	class Platformer_Entities_Names_Helpers_DataMines_Gecko : public LocalizedString
+	class Platformer_Entities_Names_Helpers_DataMines_Gecky : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Helpers_DataMines_Gecko* create();
+		static Platformer_Entities_Names_Helpers_DataMines_Gecky* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22880,8 +25475,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Helpers_DataMines_Gecko();
-		virtual ~Platformer_Entities_Names_Helpers_DataMines_Gecko() = default;
+		Platformer_Entities_Names_Helpers_DataMines_Gecky();
+		virtual ~Platformer_Entities_Names_Helpers_DataMines_Gecky() = default;
 	};
 
 	class Platformer_Entities_Names_Helpers_EndianForest_Guano : public LocalizedString
@@ -23079,21 +25674,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Cooper() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_BallmerPeaks_Irmik : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_Irmik* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_BallmerPeaks_Irmik();
-		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Irmik() = default;
-	};
-
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Jingles : public LocalizedString
 	{
 	public:
@@ -23212,36 +25792,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_BallmerPeaks_Tinsel();
 		virtual ~Platformer_Entities_Names_Npcs_BallmerPeaks_Tinsel() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_CastleValgrind_Elric : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_CastleValgrind_Elric* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_CastleValgrind_Elric();
-		virtual ~Platformer_Entities_Names_Npcs_CastleValgrind_Elric() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_CastleValgrind_Garin : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_CastleValgrind_Garin* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_CastleValgrind_Garin();
-		virtual ~Platformer_Entities_Names_Npcs_CastleValgrind_Garin() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_CastleValgrind_Gaunt : public LocalizedString
@@ -23409,6 +25959,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_CastleValgrind_Tyracius() = default;
 	};
 
+	class Platformer_Entities_Names_Npcs_CastleValgrind_Zana : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_CastleValgrind_Zana* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_CastleValgrind_Zana();
+		virtual ~Platformer_Entities_Names_Npcs_CastleValgrind_Zana() = default;
+	};
+
 	class Platformer_Entities_Names_Npcs_DaemonsHallow_Ash : public LocalizedString
 	{
 	public:
@@ -23467,21 +26032,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_DaemonsHallow_Cindra();
 		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Cindra() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Drak : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Drak* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Drak();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Drak() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_DaemonsHallow_Hades : public LocalizedString
@@ -23544,6 +26094,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Magnus() = default;
 	};
 
+	class Platformer_Entities_Names_Npcs_DaemonsHallow_Mittens : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_DaemonsHallow_Mittens* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_DaemonsHallow_Mittens();
+		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Mittens() = default;
+	};
+
 	class Platformer_Entities_Names_Npcs_DaemonsHallow_Pan : public LocalizedString
 	{
 	public:
@@ -23557,21 +26122,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_DaemonsHallow_Pan();
 		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Pan() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_PrincessMittens : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_PrincessMittens* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_PrincessMittens();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_PrincessMittens() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_DaemonsHallow_Ragnis : public LocalizedString
@@ -23692,21 +26242,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_DataMines_Cypress();
 		virtual ~Platformer_Entities_Names_Npcs_DataMines_Cypress() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DataMines_Finch : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DataMines_Finch* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DataMines_Finch();
-		virtual ~Platformer_Entities_Names_Npcs_DataMines_Finch() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_DataMines_Fraya : public LocalizedString
@@ -23857,21 +26392,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_EndianForest_Bard();
 		virtual ~Platformer_Entities_Names_Npcs_EndianForest_Bard() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_EndianForest_Blackbeard : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_Blackbeard* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_EndianForest_Blackbeard();
-		virtual ~Platformer_Entities_Names_Npcs_EndianForest_Blackbeard() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_EndianForest_Chiron : public LocalizedString
@@ -24069,10 +26589,10 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_LambdaCrypts_Azmus() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_LambdaCrypts_Dudly : public LocalizedString
+	class Platformer_Entities_Names_Npcs_LambdaCrypts_Elric : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_Dudly* create();
+		static Platformer_Entities_Names_Npcs_LambdaCrypts_Elric* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24080,8 +26600,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Entities_Names_Npcs_LambdaCrypts_Dudly();
-		virtual ~Platformer_Entities_Names_Npcs_LambdaCrypts_Dudly() = default;
+		Platformer_Entities_Names_Npcs_LambdaCrypts_Elric();
+		virtual ~Platformer_Entities_Names_Npcs_LambdaCrypts_Elric() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Garrick : public LocalizedString
@@ -24219,21 +26739,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_LambdaCrypts_Viper() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_LambdaCrypts_Zana : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_Zana* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_LambdaCrypts_Zana();
-		virtual ~Platformer_Entities_Names_Npcs_LambdaCrypts_Zana() = default;
-	};
-
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Zelina : public LocalizedString
 	{
 	public:
@@ -24247,6 +26752,96 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_LambdaCrypts_Zelina();
 		virtual ~Platformer_Entities_Names_Npcs_LambdaCrypts_Zelina() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_Transition_Blackbeard : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_Transition_Blackbeard* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_Transition_Blackbeard();
+		virtual ~Platformer_Entities_Names_Npcs_Transition_Blackbeard() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_Transition_Drak : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_Transition_Drak* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_Transition_Drak();
+		virtual ~Platformer_Entities_Names_Npcs_Transition_Drak() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_Transition_Dudly : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_Transition_Dudly* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_Transition_Dudly();
+		virtual ~Platformer_Entities_Names_Npcs_Transition_Dudly() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_Transition_Finch : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_Transition_Finch* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_Transition_Finch();
+		virtual ~Platformer_Entities_Names_Npcs_Transition_Finch() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_Transition_Garin : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_Transition_Garin* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_Transition_Garin();
+		virtual ~Platformer_Entities_Names_Npcs_Transition_Garin() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_Transition_Irmik : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_Transition_Irmik* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_Transition_Irmik();
+		virtual ~Platformer_Entities_Names_Npcs_Transition_Irmik() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Ajax : public LocalizedString
@@ -24699,6 +27294,21 @@ namespace Strings
 		virtual ~Platformer_Help_HelpTotemAttacking() = default;
 	};
 
+	class Platformer_Help_HelpTotemColdWater : public LocalizedString
+	{
+	public:
+		static Platformer_Help_HelpTotemColdWater* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Help_HelpTotemColdWater();
+		virtual ~Platformer_Help_HelpTotemColdWater() = default;
+	};
+
 	class Platformer_Help_HelpTotemEndOfDemo : public LocalizedString
 	{
 	public:
@@ -24729,6 +27339,36 @@ namespace Strings
 		virtual ~Platformer_Help_HelpTotemEquipment() = default;
 	};
 
+	class Platformer_Help_HelpTotemGecky : public LocalizedString
+	{
+	public:
+		static Platformer_Help_HelpTotemGecky* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Help_HelpTotemGecky();
+		virtual ~Platformer_Help_HelpTotemGecky() = default;
+	};
+
+	class Platformer_Help_HelpTotemGuano : public LocalizedString
+	{
+	public:
+		static Platformer_Help_HelpTotemGuano* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Help_HelpTotemGuano();
+		virtual ~Platformer_Help_HelpTotemGuano() = default;
+	};
+
 	class Platformer_Help_HelpTotemHacking : public LocalizedString
 	{
 	public:
@@ -24757,21 +27397,6 @@ namespace Strings
 	private:
 		Platformer_Help_HelpTotemHexusCards();
 		virtual ~Platformer_Help_HelpTotemHexusCards() = default;
-	};
-
-	class Platformer_Help_HelpTotemPickPocket : public LocalizedString
-	{
-	public:
-		static Platformer_Help_HelpTotemPickPocket* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Help_HelpTotemPickPocket();
-		virtual ~Platformer_Help_HelpTotemPickPocket() = default;
 	};
 
 	class Platformer_Help_HelpTotemPotions : public LocalizedString
@@ -24849,6 +27474,21 @@ namespace Strings
 		virtual ~Platformer_MapNames_DaemonsHallow_DaemonsHallow() = default;
 	};
 
+	class Platformer_MapNames_DataMines_DataCove : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_DataMines_DataCove* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_DataMines_DataCove();
+		virtual ~Platformer_MapNames_DataMines_DataCove() = default;
+	};
+
 	class Platformer_MapNames_DataMines_DataMines : public LocalizedString
 	{
 	public:
@@ -24862,6 +27502,21 @@ namespace Strings
 	private:
 		Platformer_MapNames_DataMines_DataMines();
 		virtual ~Platformer_MapNames_DataMines_DataMines() = default;
+	};
+
+	class Platformer_MapNames_DataMines_Drammol : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_DataMines_Drammol* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_DataMines_Drammol();
+		virtual ~Platformer_MapNames_DataMines_Drammol() = default;
 	};
 
 	class Platformer_MapNames_EndianForest_Elbridge : public LocalizedString
@@ -25149,6 +27804,21 @@ namespace Strings
 		virtual ~Platformer_Notifications_ItemWon() = default;
 	};
 
+	class Platformer_Notifications_MaterialsRecovered : public LocalizedString
+	{
+	public:
+		static Platformer_Notifications_MaterialsRecovered* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Notifications_MaterialsRecovered();
+		virtual ~Platformer_Notifications_MaterialsRecovered() = default;
+	};
+
 	class Platformer_Notifications_Party_HelperJoinedParty : public LocalizedString
 	{
 	public:
@@ -25162,6 +27832,111 @@ namespace Strings
 	private:
 		Platformer_Notifications_Party_HelperJoinedParty();
 		virtual ~Platformer_Notifications_Party_HelperJoinedParty() = default;
+	};
+
+	class Platformer_Objectives_DataMines_DM_DeliverLetter : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_DataMines_DM_DeliverLetter* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_DataMines_DM_DeliverLetter();
+		virtual ~Platformer_Objectives_DataMines_DM_DeliverLetter() = default;
+	};
+
+	class Platformer_Objectives_DataMines_DM_InvestigatePowerOutage : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_DataMines_DM_InvestigatePowerOutage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_DataMines_DM_InvestigatePowerOutage();
+		virtual ~Platformer_Objectives_DataMines_DM_InvestigatePowerOutage() = default;
+	};
+
+	class Platformer_Objectives_DataMines_DM_ObtainTrainTicket : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_DataMines_DM_ObtainTrainTicket* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_DataMines_DM_ObtainTrainTicket();
+		virtual ~Platformer_Objectives_DataMines_DM_ObtainTrainTicket() = default;
+	};
+
+	class Platformer_Objectives_DataMines_DM_RestorePower : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_DataMines_DM_RestorePower* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_DataMines_DM_RestorePower();
+		virtual ~Platformer_Objectives_DataMines_DM_RestorePower() = default;
+	};
+
+	class Platformer_Objectives_DataMines_DM_ReturnToPrincessDawn : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_DataMines_DM_ReturnToPrincessDawn* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_DataMines_DM_ReturnToPrincessDawn();
+		virtual ~Platformer_Objectives_DataMines_DM_ReturnToPrincessDawn() = default;
+	};
+
+	class Platformer_Objectives_DataMines_DM_RideTrainToCastleValgrind : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_DataMines_DM_RideTrainToCastleValgrind* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_DataMines_DM_RideTrainToCastleValgrind();
+		virtual ~Platformer_Objectives_DataMines_DM_RideTrainToCastleValgrind() = default;
+	};
+
+	class Platformer_Objectives_DataMines_DM_SailToDrammol : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_DataMines_DM_SailToDrammol* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_DataMines_DM_SailToDrammol();
+		virtual ~Platformer_Objectives_DataMines_DM_SailToDrammol() = default;
 	};
 
 	class Platformer_Objectives_EndianForest_EF_Ambush : public LocalizedString
@@ -25524,21 +28299,6 @@ namespace Strings
 		virtual ~Platformer_Objectives_UnderflowRuins_UR_EnterTheMines() = default;
 	};
 
-	class Platformer_Objectives_UnderflowRuins_UR_ExploreCistern : public LocalizedString
-	{
-	public:
-		static Platformer_Objectives_UnderflowRuins_UR_ExploreCistern* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Objectives_UnderflowRuins_UR_ExploreCistern();
-		virtual ~Platformer_Objectives_UnderflowRuins_UR_ExploreCistern() = default;
-	};
-
 	class Platformer_Objectives_UnderflowRuins_UR_ExploreFountain : public LocalizedString
 	{
 	public:
@@ -25629,6 +28389,81 @@ namespace Strings
 		virtual ~Platformer_Objectives_UnderflowRuins_UR_ReturnToHera() = default;
 	};
 
+	class Platformer_Objectives_UnderflowRuins_UR_SearchCistern : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_SearchCistern* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_SearchCistern();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_SearchCistern() = default;
+	};
+
+	class Platformer_Objectives_UnderflowRuins_UR_SlayMedusa : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_SlayMedusa* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_SlayMedusa();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_SlayMedusa() = default;
+	};
+
+	class Platformer_Objectives_UnderflowRuins_UR_SolvePuzzle : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_UnderflowRuins_UR_SolvePuzzle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_UnderflowRuins_UR_SolvePuzzle();
+		virtual ~Platformer_Objectives_UnderflowRuins_UR_SolvePuzzle() = default;
+	};
+
+	class Platformer_Objects_Doors_Broken : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Doors_Broken* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Doors_Broken();
+		virtual ~Platformer_Objects_Doors_Broken() = default;
+	};
+
+	class Platformer_Objects_Doors_Closed : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Doors_Closed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Doors_Closed();
+		virtual ~Platformer_Objects_Doors_Closed() = default;
+	};
+
 	class Platformer_Objects_Doors_ClosedBusinessHours : public LocalizedString
 	{
 	public:
@@ -25657,6 +28492,21 @@ namespace Strings
 	private:
 		Platformer_Objects_Doors_Locked();
 		virtual ~Platformer_Objects_Doors_Locked() = default;
+	};
+
+	class Platformer_Objects_Doors_Repairable : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Doors_Repairable* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Doors_Repairable();
+		virtual ~Platformer_Objects_Doors_Repairable() = default;
 	};
 
 	class Platformer_Objects_Doors_Unlock : public LocalizedString
@@ -25734,6 +28584,96 @@ namespace Strings
 		virtual ~Platformer_Objects_GlassCase_InspectItem() = default;
 	};
 
+	class Platformer_Objects_Interaction_Enter : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Interaction_Enter* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Interaction_Enter();
+		virtual ~Platformer_Objects_Interaction_Enter() = default;
+	};
+
+	class Platformer_Objects_Interaction_Open : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Interaction_Open* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Interaction_Open();
+		virtual ~Platformer_Objects_Interaction_Open() = default;
+	};
+
+	class Platformer_Objects_Interaction_OperationPop : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Interaction_OperationPop* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Interaction_OperationPop();
+		virtual ~Platformer_Objects_Interaction_OperationPop() = default;
+	};
+
+	class Platformer_Objects_Interaction_OperationPush : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Interaction_OperationPush* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Interaction_OperationPush();
+		virtual ~Platformer_Objects_Interaction_OperationPush() = default;
+	};
+
+	class Platformer_Objects_Interaction_Pull : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Interaction_Pull* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Interaction_Pull();
+		virtual ~Platformer_Objects_Interaction_Pull() = default;
+	};
+
+	class Platformer_Objects_Interaction_Push : public LocalizedString
+	{
+	public:
+		static Platformer_Objects_Interaction_Push* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objects_Interaction_Push();
+		virtual ~Platformer_Objects_Interaction_Push() = default;
+	};
+
 	class Platformer_Objects_Warps_Back : public LocalizedString
 	{
 	public:
@@ -25792,6 +28732,621 @@ namespace Strings
 	private:
 		Platformer_Objects_Warps_WhereTo();
 		virtual ~Platformer_Objects_Warps_WhereTo() = default;
+	};
+
+	class Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToCastle : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToCastle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToCastle();
+		virtual ~Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToCastle() = default;
+	};
+
+	class Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToPeaks : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToPeaks* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToPeaks();
+		virtual ~Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToPeaks() = default;
+	};
+
+	class Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Yep : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Yep* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Yep();
+		virtual ~Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Yep() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToCastle : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToCastle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToCastle();
+		virtual ~Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToCastle() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToTown : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToTown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToTown();
+		virtual ~Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToTown() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_Yep : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_Yep* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_Yep();
+		virtual ~Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_Yep() = default;
+	};
+
+	class Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass();
+		virtual ~Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Bancroft_A_CanWeBoard : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Bancroft_A_CanWeBoard* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Bancroft_A_CanWeBoard();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Bancroft_A_CanWeBoard() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Bancroft_B_Nope : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Bancroft_B_Nope* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Bancroft_B_Nope();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Bancroft_B_Nope() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Bancroft_C_WhereCanWeGetOne : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Bancroft_C_WhereCanWeGetOne* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Bancroft_C_WhereCanWeGetOne();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Bancroft_C_WhereCanWeGetOne() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Bancroft_D_SoldOut : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Bancroft_D_SoldOut* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Bancroft_D_SoldOut();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Bancroft_D_SoldOut() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Bancroft_E_AnythingWeCanDo : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Bancroft_E_AnythingWeCanDo* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Bancroft_E_AnythingWeCanDo();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Bancroft_E_AnythingWeCanDo() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Bancroft_F_AskQueen : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Bancroft_F_AskQueen* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Bancroft_F_AskQueen();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Bancroft_F_AskQueen() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Bancroft_Q_Yep : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Bancroft_Q_Yep* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Bancroft_Q_Yep();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Bancroft_Q_Yep() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Gecky_A_Hi : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Gecky_A_Hi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Gecky_A_Hi();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Gecky_A_Hi() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Krampus_A_Intruders : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Krampus_A_Intruders* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Krampus_A_Intruders();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Krampus_A_Intruders() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Olive_A_OliveIntro : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Olive_A_OliveIntro* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Olive_A_OliveIntro();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Olive_A_OliveIntro() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Olive_B_Power : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Olive_B_Power* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Olive_B_Power();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Olive_B_Power() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Olive_C_SeenAnythingUnusual : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Olive_C_SeenAnythingUnusual* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Olive_C_SeenAnythingUnusual();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Olive_C_SeenAnythingUnusual() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Olive_D_UnusualList : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Olive_D_UnusualList* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Olive_D_UnusualList();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Olive_D_UnusualList() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Olive_E_NothingExplainingOutage : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Olive_E_NothingExplainingOutage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Olive_E_NothingExplainingOutage();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Olive_E_NothingExplainingOutage() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Olive_F_Request : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Olive_F_Request* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Olive_F_Request();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Olive_F_Request() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Olive_G_SureForAPrice : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Olive_G_SureForAPrice* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Olive_G_SureForAPrice();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Olive_G_SureForAPrice() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Olive_H_WeWillDoIt : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Olive_H_WeWillDoIt* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Olive_H_WeWillDoIt();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Olive_H_WeWillDoIt() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Olive_I_ThankYou : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Olive_I_ThankYou* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Olive_I_ThankYou();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Olive_I_ThankYou() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Olive_J_WasntJoking : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_Olive_J_WasntJoking* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Olive_J_WasntJoking();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Olive_J_WasntJoking() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_A_LetterForYou : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_A_LetterForYou* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_A_LetterForYou();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_A_LetterForYou() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_B_ThankYou : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_B_ThankYou* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_B_ThankYou();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_B_ThankYou() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_C_CouldNotFindCause : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_C_CouldNotFindCause* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_C_CouldNotFindCause();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_C_CouldNotFindCause() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_D_WithoutPower : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_D_WithoutPower* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_D_WithoutPower();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_D_WithoutPower() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_E_InvestigateCause : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_E_InvestigateCause* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_E_InvestigateCause();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_E_InvestigateCause() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_F_Nope : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_F_Nope* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_F_Nope();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_F_Nope() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_G_OfCourse : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_G_OfCourse* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_G_OfCourse();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_G_OfCourse() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_H_TakeGecky : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_H_TakeGecky* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_H_TakeGecky();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_H_TakeGecky() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_I_Hi : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_I_Hi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_I_Hi();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_I_Hi() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_J_WelcomeToTheCrew : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_J_WelcomeToTheCrew* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_J_WelcomeToTheCrew();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_J_WelcomeToTheCrew() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_K_ImOut : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_K_ImOut* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_K_ImOut();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_K_ImOut() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_Q_PowerRestoredThankYou : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_Q_PowerRestoredThankYou* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_Q_PowerRestoredThankYou();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_Q_PowerRestoredThankYou() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_R_TakeTrainTicket : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_R_TakeTrainTicket* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_R_TakeTrainTicket();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_R_TakeTrainTicket() = default;
+	};
+
+	class Platformer_Quests_DataMines_StackPuzzle_A_DoYouKnowHowToOpenDoor : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_StackPuzzle_A_DoYouKnowHowToOpenDoor* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_StackPuzzle_A_DoYouKnowHowToOpenDoor();
+		virtual ~Platformer_Quests_DataMines_StackPuzzle_A_DoYouKnowHowToOpenDoor() = default;
+	};
+
+	class Platformer_Quests_DataMines_StackPuzzle_B_NumbersMatch : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_StackPuzzle_B_NumbersMatch* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_StackPuzzle_B_NumbersMatch();
+		virtual ~Platformer_Quests_DataMines_StackPuzzle_B_NumbersMatch() = default;
 	};
 
 	class Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks : public LocalizedString
@@ -26124,10 +29679,10 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_P_MoreOrcs() = default;
 	};
 
-	class Platformer_Quests_EndianForest_FindElriel_Lianna_Q_OrcKingDead : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_Q_NoChoice : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_Q_OrcKingDead* create();
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_Q_NoChoice* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26135,14 +29690,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Lianna_Q_OrcKingDead();
-		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_Q_OrcKingDead() = default;
+		Platformer_Quests_EndianForest_FindElriel_Lianna_Q_NoChoice();
+		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_Q_NoChoice() = default;
 	};
 
-	class Platformer_Quests_EndianForest_FindElriel_Lianna_R_WindowOfOpportunity : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_R_Ships : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_R_WindowOfOpportunity* create();
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_R_Ships* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26150,14 +29705,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Lianna_R_WindowOfOpportunity();
-		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_R_WindowOfOpportunity() = default;
+		Platformer_Quests_EndianForest_FindElriel_Lianna_R_Ships();
+		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_R_Ships() = default;
 	};
 
-	class Platformer_Quests_EndianForest_FindElriel_Lianna_S_NoChoice : public LocalizedString
+	class Platformer_Quests_EndianForest_FindElriel_Lianna_S_VisitShops : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_S_NoChoice* create();
+		static Platformer_Quests_EndianForest_FindElriel_Lianna_S_VisitShops* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26165,38 +29720,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_FindElriel_Lianna_S_NoChoice();
-		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_S_NoChoice() = default;
-	};
-
-	class Platformer_Quests_EndianForest_FindElriel_Lianna_T_Ships : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_T_Ships* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_EndianForest_FindElriel_Lianna_T_Ships();
-		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_T_Ships() = default;
-	};
-
-	class Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops();
-		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_U_VisitShops() = default;
+		Platformer_Quests_EndianForest_FindElriel_Lianna_S_VisitShops();
+		virtual ~Platformer_Quests_EndianForest_FindElriel_Lianna_S_VisitShops() = default;
 	};
 
 	class Platformer_Quests_EndianForest_FindElriel_Lycan_A_Tired : public LocalizedString
@@ -26649,10 +30174,10 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_Intro_G_HackerModeCombat() = default;
 	};
 
-	class Platformer_Quests_EndianForest_Misc_Cypress_A_Clever : public LocalizedString
+	class Platformer_Quests_EndianForest_Misc_Jasper_A_Clever : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Misc_Cypress_A_Clever* create();
+		static Platformer_Quests_EndianForest_Misc_Jasper_A_Clever* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26660,14 +30185,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_Misc_Cypress_A_Clever();
-		virtual ~Platformer_Quests_EndianForest_Misc_Cypress_A_Clever() = default;
+		Platformer_Quests_EndianForest_Misc_Jasper_A_Clever();
+		virtual ~Platformer_Quests_EndianForest_Misc_Jasper_A_Clever() = default;
 	};
 
-	class Platformer_Quests_EndianForest_Misc_Cypress_B_TakeThis : public LocalizedString
+	class Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Misc_Cypress_B_TakeThis* create();
+		static Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26675,8 +30200,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_Misc_Cypress_B_TakeThis();
-		virtual ~Platformer_Quests_EndianForest_Misc_Cypress_B_TakeThis() = default;
+		Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis();
+		virtual ~Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis() = default;
 	};
 
 	class Platformer_Quests_EndianForest_RescueGuano_A_GetMeOutOfHere : public LocalizedString
@@ -27054,6 +30579,66 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_SaveTown_Scrappy_A_RepairRam() = default;
 	};
 
+	class Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple();
+		virtual ~Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown();
+		virtual ~Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Nope : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Nope* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Nope();
+		virtual ~Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Nope() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Yep : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Yep* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Yep();
+		virtual ~Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Yep() = default;
+	};
+
 	class Platformer_Quests_EndianForest_WaterSpellbook_Merlin_A_ThankYou : public LocalizedString
 	{
 	public:
@@ -27144,10 +30729,10 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent() = default;
 	};
 
-	class Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_A_YouHaveCleansed : public LocalizedString
+	class Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_A_NewChallengersApproach : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_A_YouHaveCleansed* create();
+		static Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_A_NewChallengersApproach* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27155,14 +30740,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_A_YouHaveCleansed();
-		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_A_YouHaveCleansed() = default;
+		Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_A_NewChallengersApproach();
+		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_A_NewChallengersApproach() = default;
 	};
 
-	class Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_B_TakeThis : public LocalizedString
+	class Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_B_WellDone : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_B_TakeThis* create();
+		static Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_B_WellDone* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27170,14 +30755,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_B_TakeThis();
-		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_B_TakeThis() = default;
+		Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_B_WellDone();
+		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_B_WellDone() = default;
 	};
 
-	class Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_C_BehindMeDataMines : public LocalizedString
+	class Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_C_TakeThis : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_C_BehindMeDataMines* create();
+		static Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_C_TakeThis* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27185,14 +30770,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_C_BehindMeDataMines();
-		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_C_BehindMeDataMines() = default;
+		Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_C_TakeThis();
+		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_C_TakeThis() = default;
 	};
 
-	class Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_D_BestOfLuck : public LocalizedString
+	class Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_D_BestOfLuck : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_D_BestOfLuck* create();
+		static Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_D_BestOfLuck* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27200,8 +30785,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_D_BestOfLuck();
-		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_Cleopatra_D_BestOfLuck() = default;
+		Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_D_BestOfLuck();
+		virtual ~Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_D_BestOfLuck() = default;
 	};
 
 	class Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt1 : public LocalizedString
@@ -29032,51 +32617,6 @@ namespace Strings
 	private:
 		PointerTrace_Victory();
 		virtual ~PointerTrace_Victory() = default;
-	};
-
-	class SpaceForce_SpaceForce : public LocalizedString
-	{
-	public:
-		static SpaceForce_SpaceForce* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		SpaceForce_SpaceForce();
-		virtual ~SpaceForce_SpaceForce() = default;
-	};
-
-	class Stacks_Stacks : public LocalizedString
-	{
-	public:
-		static Stacks_Stacks* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Stacks_Stacks();
-		virtual ~Stacks_Stacks() = default;
-	};
-
-	class TowerDefense_TowerDefense : public LocalizedString
-	{
-	public:
-		static TowerDefense_TowerDefense* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		TowerDefense_TowerDefense();
-		virtual ~TowerDefense_TowerDefense() = default;
 	};
 
 }

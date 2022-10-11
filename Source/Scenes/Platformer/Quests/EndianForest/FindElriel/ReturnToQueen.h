@@ -9,7 +9,6 @@ class QuestLine;
 class RewardPoolLiana;
 class Scrappy;
 class Squally;
-class SaveTownLine;
 
 class ReturnToQueen : public QuestTask
 {
@@ -33,11 +32,10 @@ private:
 	void runCinematicSequence();
 	void setPostText();
 
-	RewardPoolLiana* rewardPool;
-
-	Elriel* elriel;
-	Guano* guano;
-	QueenLiana* queenLiana;
-	Scrappy* scrappy;
-	Squally* squally;
+	RewardPoolLiana* rewardPool = nullptr;
+	Elriel* elriel = nullptr;
+	Guano* guano = nullptr;
+	QueenLiana* queenLiana = nullptr;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 };

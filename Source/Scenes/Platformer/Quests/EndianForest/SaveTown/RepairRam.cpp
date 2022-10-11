@@ -20,8 +20,10 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
 #include "Objects/Platformer/Interactables/InteractObject.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/ObjectResources.h"
@@ -46,15 +48,9 @@ RepairRam* RepairRam::create(GameObject* owner, QuestLine* questLine)
 
 RepairRam::RepairRam(GameObject* owner, QuestLine* questLine) : super(owner, questLine, RepairRam::MapKeyQuest, false)
 {
-	this->ram = nullptr;
-	this->wheel1 = nullptr;
-	this->wheel2 = nullptr;
-	this->wheel3 = nullptr;
-	this->inventory = nullptr;
-	this->repairInteract = InteractObject::create(InteractObject::InteractType::Input, Size(512.0f, 288.0f));
+	this->repairInteract = InteractObject::create(InteractObject::InteractType::Input, CSize(512.0f, 288.0f));
 	this->impactSound = Sound::create(SoundResources::Platformer_Objects_Misc_BowlingStrike1);
 	this->rollSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_RollLoop1);
-	this->wasActivated = false;
 
 	this->addChild(this->repairInteract);
 	this->addChild(this->impactSound);
@@ -71,7 +67,7 @@ void RepairRam::onLoad(QuestState questState)
 	{
 		this->squally = squally;
 
-		this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		this->squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			this->inventory = entityInventoryBehavior->getInventory();
 		});

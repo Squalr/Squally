@@ -24,7 +24,7 @@ SkeletalWarrior::SkeletalWarrior(ValueMap& properties) : super(properties,
 	SkeletalWarrior::MapKey,
 	EntityResources::Enemies_DataMines_SkeletalWarrior_Animations,
 	EntityResources::Enemies_DataMines_SkeletalWarrior_Emblem,
-	Size(128.0f, 216.0f),
+	CSize(128.0f, 216.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

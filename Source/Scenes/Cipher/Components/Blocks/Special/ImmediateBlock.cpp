@@ -12,10 +12,10 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/InputBolt.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/OutputBolt.h"
 #include "Scenes/Cipher/Components/Letters/SmartAsciiLabel.h"
-#include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
 
@@ -46,7 +46,6 @@ ImmediateBlock::ImmediateBlock(BlockType blockType) : super(blockType, Connectio
 	this->spriteDecSelected = Sprite::create(CipherResources::Blocks_BlockDecLong);
 	this->spriteHexSelected = Sprite::create(CipherResources::Blocks_BlockHexLong);
 	this->displayLabel = SmartAsciiLabel::create();
-	this->charValue = (unsigned char)(0);
 
 	this->spriteAscii->setAnchorPoint(Vec2::ZERO);
 	this->spriteBin->setAnchorPoint(Vec2::ZERO);
@@ -117,7 +116,7 @@ void ImmediateBlock::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->displayLabel->setPositionY(4.0f);
 }
@@ -128,7 +127,7 @@ void ImmediateBlock::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventChangeDisplayDataType, [&](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherChangeDisplayDataTypeArgs* args = static_cast<CipherEvents::CipherChangeDisplayDataTypeArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherChangeDisplayDataTypeArgs* args = static_cast<CipherEvents::CipherChangeDisplayDataTypeArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

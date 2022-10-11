@@ -7,13 +7,14 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Traps/WoodenSpikes/WoodenSpikesGenericPreview.h"
 #include "Objects/Platformer/Traps/WoodenSpikes/WoodenSpikesUpdateTimerPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -40,10 +41,8 @@ WoodenSpikes* WoodenSpikes::create(ValueMap& properties)
 WoodenSpikes::WoodenSpikes(ValueMap& properties) : super(properties)
 {
 	this->spikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_WoodenSpikes_Spikes_0000);
-	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(Size(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(CSize(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 	this->currentElapsedTimeForSpikeTrigger = RandomHelper::random_real(0.0f, 3.0f);
-	this->totalTimeUntilSpikesTrigger = 4.0f;
-	this->isRunningAnimation = false;
 	this->isFlippedY = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
 
 	this->spikes->setFlippedY(this->isFlippedY);
@@ -95,7 +94,7 @@ void WoodenSpikes::registerHackables()
 				Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_UpdateTimer::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Clock,
-				WoodenSpikesUpdateTimerPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return WoodenSpikesUpdateTimerPreview::create(); }),
 				{
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },
 					{ HackableCode::Register::st0, Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0::create() },
@@ -132,7 +131,7 @@ void WoodenSpikes::registerHackables()
 	auto updateSpikesFunc = &WoodenSpikes::updateSpikes;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateSpikesFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}
@@ -189,20 +188,20 @@ NO_OPTIMIZE void WoodenSpikes::updateSpikes(float dt)
 		this->spikeCollision->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
-				this->spikeCollision->setPhysicsEnabled(true);
+				this->spikeCollision->setPhysicsFlagEnabled(true);
 			}),
 			MoveTo::create(0.425f, this->isFlippedY ? -WoodenSpikes::SpikesUpPosition : WoodenSpikes::SpikesUpPosition),
 			DelayTime::create(StayUpDuration),
 			MoveTo::create(0.425f, this->isFlippedY ? -WoodenSpikes::SpikesDownPosition : WoodenSpikes::SpikesDownPosition),
 			CallFunc::create([=]()
 			{
-				this->spikeCollision->setPhysicsEnabled(false);
+				this->spikeCollision->setPhysicsFlagEnabled(false);
 			}),
 			nullptr
 		));
 
 		// Play animation
-		this->spikes->playAnimationAndReverse(ObjectResources::Traps_WoodenSpikes_Spikes_0000, 0.025f, StayUpDuration, 0.025f, false, [=]()
+		this->spikes->playAnimationAndReverse(ObjectResources::Traps_WoodenSpikes_Spikes_0000, 0.025f, StayUpDuration, 0.025f, false, false, [=]()
 		{
 			this->isRunningAnimation = false;
 		});

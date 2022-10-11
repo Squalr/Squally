@@ -29,9 +29,9 @@ HealthPotionRecipe::~HealthPotionRecipe()
 {
 }
 
-Item* HealthPotionRecipe::craft()
+std::vector<Item*> HealthPotionRecipe::craft()
 {
-	return HealthPotion::create();
+	return { HealthPotion::create() };
 }
 
 std::vector<std::tuple<Item*, int>> HealthPotionRecipe::getReagentsInternal()
@@ -39,7 +39,7 @@ std::vector<std::tuple<Item*, int>> HealthPotionRecipe::getReagentsInternal()
 	return
 	{
 		{ DarkSeed::create(), 2 },
-		{ Honey::create(), 2 },
+		{ Honey::create(), 1 },
 	};
 }
 
@@ -48,17 +48,12 @@ Item* HealthPotionRecipe::clone()
 	return HealthPotionRecipe::create();
 }
 
-std::string HealthPotionRecipe::getItemName()
-{
-	return HealthPotionRecipe::SaveKey;
-}
-
 LocalizedString* HealthPotionRecipe::getString()
 {
 	return Strings::Items_Consumables_Health_HealthPotion::create();
 }
 
-std::string HealthPotionRecipe::getIconResource()
+const std::string& HealthPotionRecipe::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string HealthPotionRecipe::getCraftedItemIconResource()
 	return ItemResources::Consumables_Potions_HealthPotion;
 }
 
-std::string HealthPotionRecipe::getSerializationKey()
+const std::string& HealthPotionRecipe::getIdentifier()
 {
 	return HealthPotionRecipe::SaveKey;
 }

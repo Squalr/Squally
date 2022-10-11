@@ -49,7 +49,7 @@ Error BaseAssembler::setOffset(size_t offset) {
 // ============================================================================
 
 #ifndef ASMJIT_NO_LOGGING
-static void BaseAssembler_logLabel(BaseAssembler* self, const Label& label) noexcept {
+static void BaseAssembler_logLabel(BaseAssembler* self, const AsmLabel& label) noexcept {
   Logger* logger = self->_code->_logger;
 
   StringTmp<512> sb;
@@ -96,7 +96,7 @@ Error BaseAssembler::section(Section* section) {
 // [asmjit::BaseAssembler - Label Management]
 // ============================================================================
 
-Label BaseAssembler::newLabel() {
+AsmLabel BaseAssembler::newLabel() {
   uint32_t labelId = Globals::kInvalidId;
   if (ASMJIT_LIKELY(_code)) {
     LabelEntry* le;
@@ -105,10 +105,10 @@ Label BaseAssembler::newLabel() {
       reportError(err);
     labelId = le->id();
   }
-  return Label(labelId);
+  return AsmLabel(labelId);
 }
 
-Label BaseAssembler::newNamedLabel(const char* name, size_t nameSize, uint32_t type, uint32_t parentId) {
+AsmLabel BaseAssembler::newNamedLabel(const char* name, size_t nameSize, uint32_t type, uint32_t parentId) {
   uint32_t labelId = Globals::kInvalidId;
   if (ASMJIT_LIKELY(_code)) {
     LabelEntry* le;
@@ -117,10 +117,10 @@ Label BaseAssembler::newNamedLabel(const char* name, size_t nameSize, uint32_t t
       reportError(err);
     labelId = le->id();
   }
-  return Label(labelId);
+  return AsmLabel(labelId);
 }
 
-Error BaseAssembler::bind(const Label& label) {
+Error BaseAssembler::bind(const AsmLabel& label) {
   if (ASMJIT_UNLIKELY(!_code))
     return DebugUtils::errored(kErrorNotInitialized);
 
@@ -287,7 +287,7 @@ Error BaseAssembler::embed(const void* data, uint32_t dataSize) {
   return kErrorOk;
 }
 
-Error BaseAssembler::embedLabel(const Label& label) {
+Error BaseAssembler::embedLabel(const AsmLabel& label) {
   if (ASMJIT_UNLIKELY(!_code))
     return DebugUtils::errored(kErrorNotInitialized);
 
@@ -347,7 +347,7 @@ Error BaseAssembler::embedLabel(const Label& label) {
   return kErrorOk;
 }
 
-Error BaseAssembler::embedLabelDelta(const Label& label, const Label& base, uint32_t dataSize) {
+Error BaseAssembler::embedLabelDelta(const AsmLabel& label, const AsmLabel& base, uint32_t dataSize) {
   if (ASMJIT_UNLIKELY(!_code))
     return DebugUtils::errored(kErrorNotInitialized);
 
@@ -409,7 +409,7 @@ Error BaseAssembler::embedLabelDelta(const Label& label, const Label& base, uint
   return kErrorOk;
 }
 
-Error BaseAssembler::embedConstPool(const Label& label, const ConstPool& pool) {
+Error BaseAssembler::embedConstPool(const AsmLabel& label, const ConstPool& pool) {
   if (ASMJIT_UNLIKELY(!_code))
     return DebugUtils::errored(kErrorNotInitialized);
 

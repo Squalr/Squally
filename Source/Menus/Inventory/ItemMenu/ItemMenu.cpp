@@ -2,7 +2,7 @@
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -35,38 +35,40 @@ using namespace cocos2d;
 const cocos2d::Vec2 ItemMenu::DefaultPreviewOffset = Vec2(360.0f, 96.0f);
 const cocos2d::Vec3 ItemMenu::DefaultTextOffset = Vec3(16.0f, 6.0f, 128.0f);
 const float ItemMenu::LabelSpacing = 96.0f;
-const Size ItemMenu::LabelSize = Size(288.0f, 32.0f);
-const Size ItemMenu::ClipSize = Size(320.0f + 128.0f, 608.0f);
+const CSize ItemMenu::LabelSize = CSize(288.0f, 32.0f);
+const CSize ItemMenu::ClipSize = CSize(320.0f + 128.0f, 608.0f);
+const float ItemMenu::ClipTopBuffer = -12.0f;
 const float ItemMenu::ClipRightBuffer = 24.0f;
 
-ItemMenu* ItemMenu::create()
+ItemMenu* ItemMenu::create(LocalizedLabel* headerLabel)
 {
-	ItemMenu* instance = new ItemMenu();
+	ItemMenu* instance = new ItemMenu(headerLabel);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ItemMenu::ItemMenu()
+ItemMenu::ItemMenu(LocalizedLabel* headerLabel)
 {
-	this->isFocused = false;
-	this->itemEntryMapping = std::map<Item*, ItemEntry*>();
-	this->visibleItems = std::vector<ItemEntry*>();
+	this->headerLabel = headerLabel;
 	this->itemPreview = ItemPreview::create(false, true);
 	this->selectedInventoryRow = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
 	this->itemListNodeContent = Node::create();
-	this->itemListNode = SmartClippingNode::create(this->itemListNodeContent, Rect(-Vec2(ItemMenu::ClipSize / 2.0f), ItemMenu::ClipSize + Size(ItemMenu::ClipRightBuffer, 0.0f)));
+	this->itemListNode = SmartClippingNode::create(this->itemListNodeContent, CRect(-Vec2(ItemMenu::ClipSize / 2.0f), ItemMenu::ClipSize + CSize(ItemMenu::ClipRightBuffer, ItemMenu::ClipTopBuffer)));
 	this->inventorySelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
-	this->previewCallback = nullptr;
 	this->previewOffset = ItemMenu::DefaultPreviewOffset;
 	this->textOffset = ItemMenu::DefaultTextOffset;
-	this->selectedItemIndex = 0;
 	
 	this->addChild(this->selectedInventoryRow);
 	this->addChild(this->itemListNode);
 	this->addChild(this->inventorySelectionArrow);
 	this->addChild(this->itemPreview);
+
+	if (this->headerLabel != nullptr)
+	{
+		this->addChild(this->headerLabel);
+	}
 }
 
 ItemMenu::~ItemMenu()
@@ -88,19 +90,24 @@ void ItemMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->itemListNode->setPosition(Vec2(-340.0f + 342.0f, 0.0f));
+	this->itemListNode->setPosition(Vec2(2.0f, 0.0f));
 	this->inventorySelectionArrow->setPosition(Vec2(-186.0f, 0.0f));
 	this->selectedInventoryRow->setPosition(Vec2(0.0f, 0.0f));
 	this->itemPreview->setPosition(this->previewOffset);
+
+	if (this->headerLabel != nullptr)
+	{
+		this->headerLabel->setPosition(Vec2(0.0f, 312.0f));
+	}
 }
 
 void ItemMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!this->isFocused || this->visibleItems.empty())
 		{
@@ -115,7 +122,7 @@ void ItemMenu::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_RIGHT_ARROW, EventKeyboard::KeyCode::KEY_D, }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_RIGHT_ARROW, InputEvents::KeyCode::KEY_D, }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!this->isFocused || this->visibleItems.empty())
 		{
@@ -134,12 +141,12 @@ void ItemMenu::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_W, EventKeyboard::KeyCode::KEY_UP_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_W, InputEvents::KeyCode::KEY_UP_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->scrollInventoryUp();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_S, EventKeyboard::KeyCode::KEY_DOWN_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_S, InputEvents::KeyCode::KEY_DOWN_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->scrollInventoryDown();
 	});
@@ -152,7 +159,7 @@ void ItemMenu::clearPreview()
 
 void ItemMenu::clearVisibleItems()
 {
-	for (auto next : itemEntryMapping)
+	for (auto& next : itemEntryMapping)
 	{
 		next.second->setVisible(false);
 		next.second->setStackSize(1);
@@ -173,11 +180,16 @@ void ItemMenu::setPreviewCallback(std::function<void(Item*)> previewCallback)
 
 ItemEntry* ItemMenu::pushVisibleItem(Item* visibleItem, std::function<void()> onToggle)
 {
+	if (visibleItem == nullptr)
+	{
+		return nullptr;
+	}
+	
 	ItemEntry* itemEntry = nullptr;
 
 	for (auto entry : this->visibleItems)
 	{
-		if (entry->getAssociatedItem()->getItemName() == visibleItem->getItemName())
+		if (entry->getAssociatedItem()->getIdentifier() == visibleItem->getIdentifier())
 		{
 			if (entry->getStackSize() < entry->getAssociatedItem()->getStackSize())
 			{
@@ -209,6 +221,7 @@ ItemEntry* ItemMenu::pushVisibleItem(Item* visibleItem, std::function<void()> on
 	else
 	{
 		itemEntry = this->itemEntryMapping[visibleItem];
+		itemEntry->setText(visibleItem->getString());
 	}
 
 	this->visibleItems.push_back(itemEntry);
@@ -235,6 +248,11 @@ void ItemMenu::unfocus()
 	this->clearPreview();
 	
 	this->updateAndPositionItemText();
+}
+
+bool ItemMenu::hasFocus()
+{
+	return this->isFocused;
 }
 
 void ItemMenu::scrollInventoryUp()

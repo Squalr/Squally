@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier4/SteelHelmPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* SteelHelm::clone()
 	return SteelHelm::create();
 }
 
-std::string SteelHelm::getItemName()
-{
-	return SteelHelm::SaveKey;
-}
-
 LocalizedString* SteelHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_SteelHelm::create();
 }
 
-std::string SteelHelm::getIconResource()
+const std::string& SteelHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_SteelHelm;
 }
 
-std::string SteelHelm::getSerializationKey()
+const std::string& SteelHelm::getIdentifier()
 {
 	return SteelHelm::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string SteelHelm::getSerializationKey()
 Vec2 SteelHelm::getDisplayOffset()
 {
 	return Vec2(4.0f, -22.0f);
+}
+
+Recipe* SteelHelm::getRecipe()
+{
+	return SteelHelmPlans::create();
 }

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier6/TurbanPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* Turban::clone()
 	return Turban::create();
 }
 
-std::string Turban::getItemName()
-{
-	return Turban::SaveKey;
-}
-
 LocalizedString* Turban::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_Turban::create();
 }
 
-std::string Turban::getIconResource()
+const std::string& Turban::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_Turban;
 }
 
-std::string Turban::getSerializationKey()
+const std::string& Turban::getIdentifier()
 {
 	return Turban::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string Turban::getSerializationKey()
 Vec2 Turban::getDisplayOffset()
 {
 	return Vec2(2.0f, 6.0f);
+}
+
+Recipe* Turban::getRecipe()
+{
+	return TurbanPlans::create();
 }

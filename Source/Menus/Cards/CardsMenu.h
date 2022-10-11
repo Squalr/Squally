@@ -1,8 +1,6 @@
 #pragma once
 #include <functional>
 
-#include "cocos/base/ccTypes.h"
-
 #include "Engine/SmartNode.h"
 
 namespace cocos2d
@@ -14,14 +12,12 @@ namespace cocos2d
 class CardData;
 class ClickableNode;
 class ClickableTextNode;
-class CurrencyInventory;
 class EquipmentInventory;
-class HelpMenu;
 class HexusCard;
 class HexusFilter;
-class Item;
 class ItemMenu;
 class Inventory;
+template <class T> class LazyNode;
 class LocalizedLabel;
 
 class CardsMenu : public SmartNode
@@ -47,23 +43,21 @@ private:
 	void unequipHexusCard(HexusCard* card);
 	void showHelpMenu(CardData* cardData);
 	void close();
-	void buildHelpMenu();
 
-	cocos2d::Sprite* cardsWindow;
-	LocalizedLabel* cardsLabel;
-	ItemMenu* equippedCardsMenu;
-	ItemMenu* unequippedCardsMenu;
-	ClickableTextNode* returnButton;
-	ClickableNode* closeButton;
-	cocos2d::LayerColor* backdrop;
-	HelpMenu* helpMenu;
+	cocos2d::Sprite* cardsWindow = nullptr;
+	LocalizedLabel* cardsLabel = nullptr;
+	ItemMenu* equippedCardsMenu = nullptr;
+	ItemMenu* unequippedCardsMenu = nullptr;
+	ClickableTextNode* returnButton = nullptr;
+	ClickableNode* closeButton = nullptr;
+	cocos2d::LayerColor* backdrop = nullptr;
 
-	EquipmentInventory* equipmentInventory;
-	Inventory* inventory;
-	HexusFilter* hexusFilter;
+	EquipmentInventory* equipmentInventory = nullptr;
+	Inventory* inventory = nullptr;
+	HexusFilter* hexusFilter = nullptr;
 
-	std::function<void()> returnClickCallback;
-	bool equipmentChanged;
+	std::function<void()> returnClickCallback = nullptr;
+	bool equipmentChanged = false;
 
 	static const int MinHexusCards;
 	static const int MaxHexusCards;

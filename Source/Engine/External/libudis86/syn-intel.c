@@ -31,11 +31,11 @@
 #include "udint.h"
 
  /* -----------------------------------------------------------------------------
-  * opr_cast() - Prints an operand cast.
+  * opr_cast_intel() - Prints an operand cast.
   * -----------------------------------------------------------------------------
   */
 static void
-opr_cast(struct ud* u, struct ud_operand* op)
+opr_cast_intel(struct ud* u, struct ud_operand* op)
 {
 	if (u->br_far) {
 		ud_asmprintf(u, "far ");
@@ -53,10 +53,10 @@ opr_cast(struct ud* u, struct ud_operand* op)
 }
 
 /* -----------------------------------------------------------------------------
- * gen_operand() - Generates assembly output for each operand.
+ * gen_operand_intel() - Generates assembly output for each operand.
  * -----------------------------------------------------------------------------
  */
-static void gen_operand(struct ud* u, struct ud_operand* op, int syn_cast)
+static void gen_operand_intel(struct ud* u, struct ud_operand* op, int syn_cast)
 {
 	switch (op->type) {
 		case UD_OP_REG:
@@ -65,7 +65,7 @@ static void gen_operand(struct ud* u, struct ud_operand* op, int syn_cast)
 
 		case UD_OP_MEM:
 			if (syn_cast) {
-				opr_cast(u, op);
+				opr_cast_intel(u, op);
 			}
 			ud_asmprintf(u, "[");
 			if (u->pfx_seg) {
@@ -111,7 +111,7 @@ static void gen_operand(struct ud* u, struct ud_operand* op, int syn_cast)
 			break;
 
 		case UD_OP_CONST:
-			if (syn_cast) opr_cast(u, op);
+			if (syn_cast) opr_cast_intel(u, op);
 			ud_asmprintf(u, "%d", op->lval.udword);
 			break;
 
@@ -192,7 +192,7 @@ ud_translate_intel(struct ud* u)
 				}
 			}
 		}
-		gen_operand(u, &u->operand[0], cast);
+		gen_operand_intel(u, &u->operand[0], cast);
 	}
 
 	if (u->operand[1].type != UD_NONE) {
@@ -203,7 +203,7 @@ ud_translate_intel(struct ud* u)
 			!ud_opr_is_sreg(&u->operand[0])) {
 			cast = 1;
 		}
-		gen_operand(u, &u->operand[1], cast);
+		gen_operand_intel(u, &u->operand[1], cast);
 	}
 
 	if (u->operand[2].type != UD_NONE) {
@@ -213,12 +213,12 @@ ud_translate_intel(struct ud* u)
 			u->operand[2].size != u->operand[1].size) {
 			cast = 1;
 		}
-		gen_operand(u, &u->operand[2], cast);
+		gen_operand_intel(u, &u->operand[2], cast);
 	}
 
 	if (u->operand[3].type != UD_NONE) {
 		ud_asmprintf(u, ", ");
-		gen_operand(u, &u->operand[3], 0);
+		gen_operand_intel(u, &u->operand[3], 0);
 	}
 }
 

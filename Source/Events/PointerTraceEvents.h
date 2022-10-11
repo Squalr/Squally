@@ -29,10 +29,10 @@ public:
 			Right
 		};
 
-		GridEntity* gridEntity;
-		Direction direction;
-		int source;
-		float speed;
+		GridEntity* gridEntity = nullptr;
+		Direction direction = Direction::Up;
+		int source = 0;
+		float speed = 0.0f;
 
 		PointerTraceRequestMovementArgs(GridEntity* gridEntity, Direction direction, int source, float speed)
 			: gridEntity(gridEntity), direction(direction), source(source), speed(speed) { } 
@@ -40,8 +40,8 @@ public:
 
 	struct PointerTraceEntityMovedArgs
 	{
-		MemoryGrid* memoryGrid;
-		GridEntity* gridEntity;
+		MemoryGrid* memoryGrid = nullptr;
+		GridEntity* gridEntity = nullptr;
 		PointerTraceRequestMovementArgs innerArgs;
 
 		PointerTraceEntityMovedArgs(MemoryGrid* memoryGrid, GridEntity* gridEntity, PointerTraceRequestMovementArgs innerArgs) 
@@ -50,16 +50,16 @@ public:
 
 	struct PointerTraceWriteArgs
 	{
-		int address;
-		int value;
+		int address = 0;
+		int value = 0;
 
 		PointerTraceWriteArgs(int address, int value) : address(address), value(value) { }
 	};
 
 	struct PointerTraceReadArgs
 	{
-		int address;
-		std::function<void(int)> onReadCallback;
+		int address = 0;
+		std::function<void(int)> onReadCallback = nullptr;
 
 		PointerTraceReadArgs(int address, std::function<void(int)> onReadCallback) : address(address), onReadCallback(onReadCallback) { }
 	};

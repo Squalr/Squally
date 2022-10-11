@@ -2,11 +2,6 @@
 
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/LexiconPage.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class LocalizedLabel;
 class ClickableNode;
 class ClickableTextNode;
@@ -22,28 +17,29 @@ public:
 	static const std::string Identifier;
 
 protected:
+	PushExamplesPage();
+	virtual ~PushExamplesPage();
+	
 	void initializePositions() override;
 	void initializeListeners() override;
 	
 private:
 	typedef LexiconPage super;
-	PushExamplesPage();
-	~PushExamplesPage();
 
 	void resetState();
 
-	LocalizedLabel* examplesLabel;
-	RegisterBlock* registerBlock;
-	StackBlock* stackBlock;
-	ClickableTextNode* resetButton;
-	ClickableTextNode* pushButton;
-	ClickableTextNode* pushPtrButton;
-	ClickableTextNode* pushPtrOffsetButton;
-	ClickableNode* pointerHelpButton;
-	ClickableNode* offsetHelpButton;
-	TextPanel* textPanelPointerHelp;
-	TextPanel* textPanelOffsetHelp;
-	LocalizedLabel* pushLabel;
-	LocalizedLabel* pushPtrLabel;
-	LocalizedLabel* pushPtrOffsetLabel;
+	LocalizedLabel* examplesLabel = nullptr;
+	RegisterBlock* registerBlock = nullptr;
+	StackBlock* stackBlock = nullptr;
+	ClickableTextNode* resetButton = nullptr;
+	ClickableTextNode* pushButton = nullptr;
+	ClickableTextNode* pushPtrButton = nullptr;
+	ClickableTextNode* pushPtrOffsetButton = nullptr;
+	ClickableNode* pointerHelpButton = nullptr;
+	ClickableNode* offsetHelpButton = nullptr;
+	TextPanel* textPanelPointerHelp = nullptr;
+	TextPanel* textPanelOffsetHelp = nullptr;
+	LocalizedLabel* pushLabel = nullptr;
+	LocalizedLabel* pushPtrLabel = nullptr;
+	LocalizedLabel* pushPtrOffsetLabel = nullptr;
 };

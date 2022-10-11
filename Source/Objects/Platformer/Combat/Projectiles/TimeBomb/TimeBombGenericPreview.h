@@ -24,5 +24,5 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	cocos2d::Sprite* timeBomb;
+	cocos2d::Sprite* timeBomb = nullptr;
 };

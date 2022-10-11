@@ -6,7 +6,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Strength/Strength.h"
 
 #include "Resources/SoundResources.h"
@@ -26,7 +26,7 @@ CastStrength* CastStrength::create(float attackDuration, float recoverDuration, 
 }
 
 CastStrength::CastStrength(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_Gauntlet, priority, AbilityType::Physical, 0, 0, 3, attackDuration, recoverDuration)
+	: super(AttackType::Buff, UIResources::Menus_Icons_Gauntlet, priority, AbilityType::Physical, 0, 0, 4, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 
@@ -67,7 +67,7 @@ void CastStrength::performAttack(PlatformerEntity* owner, std::vector<Platformer
 
 	for (auto next : targets)
 	{
-		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->applyBuff(Strength::create(owner, next));
 		});
@@ -82,7 +82,7 @@ bool CastStrength::isWorthUsing(PlatformerEntity* caster, const std::vector<Plat
 {
 	bool hasBuff = false;
 
-	caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->getBuff<Strength>([&](Strength* buff)
 		{

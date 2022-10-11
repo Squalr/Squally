@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier4/JoustingHelmetPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* JoustingHelmet::clone()
 	return JoustingHelmet::create();
 }
 
-std::string JoustingHelmet::getItemName()
-{
-	return JoustingHelmet::SaveKey;
-}
-
 LocalizedString* JoustingHelmet::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_JoustingHelmet::create();
 }
 
-std::string JoustingHelmet::getIconResource()
+const std::string& JoustingHelmet::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_JoustingHelmet;
 }
 
-std::string JoustingHelmet::getSerializationKey()
+const std::string& JoustingHelmet::getIdentifier()
 {
 	return JoustingHelmet::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string JoustingHelmet::getSerializationKey()
 Vec2 JoustingHelmet::getDisplayOffset()
 {
 	return Vec2(-40.0f, 34.0f);
+}
+
+Recipe* JoustingHelmet::getRecipe()
+{
+	return JoustingHelmetPlans::create();
 }

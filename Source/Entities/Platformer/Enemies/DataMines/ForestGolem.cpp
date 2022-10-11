@@ -24,7 +24,7 @@ ForestGolem::ForestGolem(ValueMap& properties) : super(properties,
 	ForestGolem::MapKey,
 	EntityResources::Enemies_DataMines_ForestGolem_Animations,
 	EntityResources::Enemies_DataMines_ForestGolem_Emblem,
-	Size(768.0f, 840.0f),
+	CSize(256.0f, 228.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {
@@ -36,7 +36,7 @@ ForestGolem::~ForestGolem()
 
 Vec2 ForestGolem::getDialogueOffset()
 {
-	return Vec2(-32.0f, -144.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* ForestGolem::getEntityName()

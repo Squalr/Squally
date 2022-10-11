@@ -2,8 +2,6 @@
 
 #include "Entities/Platformer/PlatformerFriendly.h"
 
-class ClickableNode;
-
 // Base class for player + npcs
 class PlatformerHelper : public PlatformerFriendly
 {
@@ -15,7 +13,7 @@ protected:
 		std::string entityName,
 		std::string scmlResource,
 		std::string emblemResource,
-		cocos2d::Size size,
+		cocos2d::CSize size,
 		float scale,
 		cocos2d::Vec2 collisionOffset,
 		float hoverHeight = 0.0f);

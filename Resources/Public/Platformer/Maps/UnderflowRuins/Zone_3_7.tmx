@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1157">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="1165">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="SkyYellow"/>
+   <property name="background" value="BrightSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
@@ -17,16 +17,30 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="988" name="temple-dark" type="texture" x="-601.82" y="-518" width="5787.63" height="4116"/>
+  <object id="988" name="temple-dark" type="terrain" x="-601.82" y="-518" width="5787.63" height="4116">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="hole-tag" value="hole-A"/>
+    <property name="skip-surfaces" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="72" name="decor -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="962" name="Ruins/Window" type="decor" x="1160.11" y="551.015" width="313" height="381"/>
+  <object id="962" name="Ruins/WindowTransparent" type="decor" x="1160.11" y="551.015" width="313" height="381"/>
   <object id="967" name="torch" type="object" x="788.94" y="717.935" width="42" height="130"/>
   <object id="969" name="torch" type="object" x="1811.61" y="716.515" width="42" height="130"/>
+ </objectgroup>
+ <objectgroup id="101" name="terrain -6 bg">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1159" name="ruins-thick" type="terrain" x="3740.79" y="-167.455" width="1310.42" height="3310.91"/>
+  <object id="1161" name="ruins-thick" type="terrain" x="-505.891" y="-144.695" width="1310.42" height="3381.18"/>
  </objectgroup>
  <objectgroup id="75" name="terrain -6">
   <properties>
@@ -34,7 +48,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1036" name="ruins-thick" type="terrain" x="2088.05" y="1287.58" width="1649.57" height="438.909"/>
-  <object id="1128" name="ruins-thick" type="terrain" x="810.08" y="2850.73" width="2730.63" height="1176"/>
+  <object id="1128" name="ruins-thick" type="terrain" x="810.08" y="2850.73" width="2932.65" height="1176"/>
  </objectgroup>
  <objectgroup id="94" name="objects -6">
   <properties>
@@ -42,7 +56,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1092" name="solid" type="collision" x="3675.38" y="-498.287" width="126.878" height="1821.18"/>
   <object id="1101" name="temple-door" type="object" x="2680.33" y="758" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>
@@ -57,8 +70,6 @@
     <property name="transition" value="bottom-center"/>
    </properties>
   </object>
-  <object id="1141" name="solid" type="collision" x="3543.22" y="1280.32" width="126.878" height="1587.85"/>
-  <object id="1142" name="solid" type="collision" x="681.893" y="-94.587" width="126.878" height="2991.85"/>
   <object id="1145" name="logic-torch" type="object" x="2143.17" y="1175.17" width="101" height="111">
    <properties>
     <property name="color" value="green"/>
@@ -83,6 +94,11 @@
    <properties>
     <property name="color" value="tan"/>
     <property name="spawn-pool" value="spawn-pool-ur"/>
+   </properties>
+  </object>
+  <object id="1157" name="terrain-hole" type="object" x="1232.91" y="621.23" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
    </properties>
   </object>
  </objectgroup>
@@ -176,7 +192,8 @@
   </properties>
   <object id="1029" name="ruins-thick" type="terrain" x="1840.33" y="1336" width="2161.42" height="2040">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
@@ -187,6 +204,12 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1130" name="ruins-thick" type="terrain" x="-5.26" y="2926.42" width="3211.6" height="1176"/>
+  <object id="1162" name="ruins-thick" type="terrain" x="3212.33" y="1334.08" width="788.079" height="1886.32">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="99" name="decor -3">
   <properties>
@@ -195,7 +218,8 @@
   </properties>
   <object id="1131" name="Generic/Vent" type="decor" x="2766.89" y="2552.56" width="305" height="307">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
   </object>
  </objectgroup>
@@ -233,18 +257,25 @@
     <property name="transition" value="bottom-left"/>
    </properties>
   </object>
-  <object id="1132" name="solid" type="collision" x="3193.65" y="1354.02" width="126.878" height="1587.85"/>
-  <object id="1137" name="solid" type="collision" x="4004.44" y="-459.075" width="126.878" height="1821.18"/>
+  <object id="1137" name="solid" type="collision" x="4004.44" y="-459.075" width="126.878" height="3517.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="1151" name="life-stone" type="object" x="2833" y="922.5" width="146" height="423"/>
   <object id="1152" name="vase" type="object" x="2207.59" y="2766.27" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
     <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
   <object id="1153" name="vase" type="object" x="2370.5" y="2767" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
     <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
@@ -316,20 +347,20 @@
   </properties>
   <object id="1074" name="ruins-thick" type="terrain" x="3532.97" y="1352.85" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1075" name="ruins-thick" type="terrain" x="1991.33" y="1352.67" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1123" name="ruins-thick" type="terrain" x="747.333" y="1341.33" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -340,20 +371,20 @@
   </properties>
   <object id="1072" name="ruins-thick" type="terrain" x="3532.97" y="1374.85" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1073" name="ruins-thick" type="terrain" x="1990.66" y="1372.67" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1122" name="ruins-thick" type="terrain" x="746.333" y="1366.33" width="288" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -363,44 +394,51 @@
   </properties>
   <object id="1019" name="ruins-thick" type="terrain" x="1866.42" y="1439.85" width="96" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1020" name="ruins-thick" type="terrain" x="1747.9" y="1439.85" width="96" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1021" name="ruins-thick" type="terrain" x="1625.33" y="1439.85" width="96" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1022" name="ruins-thick" type="terrain" x="1505.47" y="1439.85" width="96" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1023" name="ruins-thick" type="terrain" x="1383.28" y="1439.85" width="96" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1024" name="ruins-thick" type="terrain" x="1261.09" y="1439.85" width="96" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1025" name="ruins-thick" type="terrain" x="1143.37" y="1439.85" width="96" height="340">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
@@ -410,12 +448,14 @@
   </properties>
   <object id="976" name="ruins-thick" type="terrain" x="1961.18" y="1404" width="1924.63" height="2088">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
   </object>
   <object id="1028" name="ruins-thick" type="terrain" x="-514.82" y="1398" width="1652.45" height="2128">
    <properties>
-    <property name="attached-behavior" value="z-fade"/>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
   </object>
  </objectgroup>
@@ -438,7 +478,16 @@
    </properties>
   </object>
   <object id="1108" name="solid" type="collision" x="1116.08" y="1437.59" width="873.545" height="100.513"/>
-  <object id="1136" name="solid" type="collision" x="3889.89" y="-366.105" width="126.878" height="1821.18"/>
+  <object id="1136" name="solid" type="collision" x="3889.89" y="-366.105" width="126.878" height="3437.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1163" name="hexus-shrine" type="object" x="2852.5" y="1145" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-mummy-priest"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="decor">
   <properties>
@@ -450,10 +499,10 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1149" name="mummy-priest" type="entity" x="2868" y="1274.67" width="128" height="128">
+  <object id="1164" name="mummy-priest" type="entity" x="2808" y="4552" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-F"/>
-    <property name="scale" type="float" value="0.75"/>
+    <property name="components" value="friendly,disarmed,ur-puzzle-G"/>
+    <property name="tag" value="hexus-mummy-priest"/>
    </properties>
   </object>
  </objectgroup>
@@ -464,7 +513,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="380.5" y="1268.68" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="1033" name="warp" type="object" x="3549.21" y="1147.76" width="256" height="256">

@@ -29,9 +29,9 @@ WoodenClubPlans::~WoodenClubPlans()
 {
 }
 
-Item* WoodenClubPlans::craft()
+std::vector<Item*> WoodenClubPlans::craft()
 {
-	return WoodenClub::create();
+	return { WoodenClub::create() };
 }
 
 std::vector<std::tuple<Item*, int>> WoodenClubPlans::getReagentsInternal()
@@ -47,17 +47,12 @@ Item* WoodenClubPlans::clone()
 	return WoodenClubPlans::create();
 }
 
-std::string WoodenClubPlans::getItemName()
-{
-	return WoodenClubPlans::SaveKey;
-}
-
 LocalizedString* WoodenClubPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_WoodenClub::create();
 }
 
-std::string WoodenClubPlans::getIconResource()
+const std::string& WoodenClubPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -67,7 +62,7 @@ std::string WoodenClubPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Maces_WoodenClub;
 }
 
-std::string WoodenClubPlans::getSerializationKey()
+const std::string& WoodenClubPlans::getIdentifier()
 {
 	return WoodenClubPlans::SaveKey;
 }

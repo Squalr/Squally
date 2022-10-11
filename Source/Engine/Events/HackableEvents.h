@@ -1,11 +1,75 @@
 #pragma once
 #include <string>
 
-#include "cocos/math/Vec2.h"
-
-class Clippy;
 class HackableBase;
 class HackableObject;
+
+struct HackableObjectOpenArgs
+{
+	HackableObject* hackableObject = nullptr;
+	int hackFlags = 0;
+
+	HackableObjectOpenArgs(HackableObject* hackableObject, int hackFlags) : hackableObject(hackableObject), hackFlags(hackFlags) { }
+};
+
+struct HackableObjectEditArgs
+{
+	HackableObject* hackableObject = nullptr;
+	HackableBase* hackableAttribute = nullptr;
+
+	HackableObjectEditArgs(HackableObject* hackableObject, HackableBase* hackableAttribute) : hackableObject(hackableObject), hackableAttribute(hackableAttribute) { }
+};
+
+struct HackAppliedArgs
+{
+	HackableBase* activeAttribute = nullptr;
+
+	HackAppliedArgs(HackableBase* activeAttribute) : activeAttribute(activeAttribute)
+	{
+	}
+};
+
+struct HackToggleArgs
+{
+	HackToggleArgs()
+	{
+	}
+};
+
+struct HackFlagsChangedArgs
+{
+	int hackFlags = 0;
+
+	HackFlagsChangedArgs(int hackFlags) : hackFlags(hackFlags) { }
+};
+
+struct HackerModeQueryArgs
+{
+	bool hackerModeAllowed = false;
+
+	HackerModeQueryArgs() : hackerModeAllowed(false)
+	{
+	}
+};
+
+struct HackableBaseQueryArgs
+{
+	std::string hackableIdentifier;
+	int count = 0;
+
+	HackableBaseQueryArgs(std::string hackableIdentifier) : hackableIdentifier(hackableIdentifier), count(0)
+	{
+	}
+};
+
+struct OpenLexiconPageArgs
+{
+	std::string pageIdentifier;
+
+	OpenLexiconPageArgs(std::string pageIdentifier) : pageIdentifier(pageIdentifier)
+	{
+	}
+};
 
 class HackableEvents
 {
@@ -29,73 +93,6 @@ public:
 	static const std::string EventCloseLeftLexiconPage;
 	static const std::string EventCloseRightLexiconPage;
 
-	struct HackableObjectOpenArgs
-	{
-		HackableObject* hackableObject;
-		int hackFlags;
-
-		HackableObjectOpenArgs(HackableObject* hackableObject, int hackFlags) : hackableObject(hackableObject), hackFlags(hackFlags) { }
-	};
-
-	struct HackableObjectEditArgs
-	{
-		HackableObject* hackableObject;
-		HackableBase* hackableAttribute;
-
-		HackableObjectEditArgs(HackableObject* hackableObject, HackableBase* hackableAttribute) : hackableObject(hackableObject), hackableAttribute(hackableAttribute) { }
-	};
-
-	struct HackAppliedArgs
-	{
-		HackableBase* activeAttribute;
-
-		HackAppliedArgs(HackableBase* activeAttribute) : activeAttribute(activeAttribute)
-		{
-		}
-	};
-
-	struct HackToggleArgs
-	{
-		HackToggleArgs()
-		{
-		}
-	};
-
-	struct HackFlagsChangedArgs
-	{
-		int hackFlags;
-
-		HackFlagsChangedArgs(int hackFlags) : hackFlags(hackFlags) { }
-	};
-
-	struct HackerModeQueryArgs
-	{
-		bool hackerModeAllowed;
-
-		HackerModeQueryArgs() : hackerModeAllowed(false)
-		{
-		}
-	};
-
-	struct HackableBaseQueryArgs
-	{
-		std::string hackableIdentifier;
-		int count;
-
-		HackableBaseQueryArgs(std::string hackableIdentifier) : hackableIdentifier(hackableIdentifier), count(0)
-		{
-		}
-	};
-
-	struct OpenLexiconPageArgs
-	{
-		std::string pageIdentifier;
-
-		OpenLexiconPageArgs(std::string pageIdentifier) : pageIdentifier(pageIdentifier)
-		{
-		}
-	};
-
 	static void TriggerForceUseHackerMode();
 	static void TriggerHackerModeToggle(HackToggleArgs args);
 	static void TriggerHackerModeEnable(HackToggleArgs args);
@@ -105,7 +102,7 @@ public:
 	static void TriggerQueryHackerModeAllowed(HackerModeQueryArgs* args);
 	static void TriggerOpenHackable(HackableObjectOpenArgs args);
 	static void TriggerCloseHackable();
-	static void TriggerEditHackableBase(HackableObjectEditArgs args);
+	static void TriggerEditHackableBaseEdit(HackableObjectEditArgs args);
 	static void TriggerEditHackableBaseDone();
 	static void TriggerOnHackApplied(HackAppliedArgs args);
 	static void TriggerHackFlagsChanged(HackFlagsChangedArgs args);

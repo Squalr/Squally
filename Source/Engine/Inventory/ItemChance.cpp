@@ -51,21 +51,21 @@ Item* ItemChance::getItem()
     return this->item;
 }
 
-float ItemChance::calculateProbability(std::vector<Inventory*> inventories)
+float ItemChance::calculateProbability(const std::vector<Inventory*>& inventories)
 {
     int uniqueCount = this->item == nullptr ? -1 : this->item->getUniqueCount();
     int rubberBand = this->item == nullptr ? -1 : this->item->getRubberBand();
     float rubberBandFactor = this->item == nullptr ? 0.0f : this->item->getRubberBandFactor();
     int currentCount = 0;
-    float chance = 0.0f;
+    float chance = 0.0f; 
 
     if (this->item != nullptr && ((this->probability != Probability::Guaranteed && rubberBand >= 0) || uniqueCount > 0))
     {
-		for (auto inventory : inventories)
+		for (Inventory* inventory : inventories)
 		{
-            for (auto nextItem : inventory->getItems())
+            for (Item* nextItem : inventory->getItems())
             {
-                if (nextItem != nullptr && nextItem->getItemName() == this->item->getItemName())
+                if (nextItem != nullptr && nextItem->getIdentifier() == this->item->getIdentifier())
                 {
                     currentCount++;
 

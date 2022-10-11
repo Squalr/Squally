@@ -1,7 +1,5 @@
 #include "Item.h"
 
-#include "cocos/base/CCValue.h"
-
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Utils/MathUtils.h"
 
@@ -12,7 +10,10 @@ Item::Item(CurrencyInventory* cost, ItemMeta itemMeta)
 	this->cost = cost;
 	this->itemMeta = itemMeta;
 
-	this->addChild(this->cost);
+	if (this->cost != nullptr)
+	{
+		this->addChild(this->cost);
+	}
 }
 
 Item::~Item()

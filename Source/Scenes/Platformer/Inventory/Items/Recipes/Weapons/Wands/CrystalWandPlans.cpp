@@ -29,9 +29,9 @@ CrystalWandPlans::~CrystalWandPlans()
 {
 }
 
-Item* CrystalWandPlans::craft()
+std::vector<Item*> CrystalWandPlans::craft()
 {
-	return CrystalWand::create();
+	return { CrystalWand::create() };
 }
 
 std::vector<std::tuple<Item*, int>> CrystalWandPlans::getReagentsInternal()
@@ -48,17 +48,12 @@ Item* CrystalWandPlans::clone()
 	return CrystalWandPlans::create();
 }
 
-std::string CrystalWandPlans::getItemName()
-{
-	return CrystalWandPlans::SaveKey;
-}
-
 LocalizedString* CrystalWandPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_CrystalWand::create();
 }
 
-std::string CrystalWandPlans::getIconResource()
+const std::string& CrystalWandPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string CrystalWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Wands_CrystalWand;
 }
 
-std::string CrystalWandPlans::getSerializationKey()
+const std::string& CrystalWandPlans::getIdentifier()
 {
 	return CrystalWandPlans::SaveKey;
 }

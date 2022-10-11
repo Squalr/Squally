@@ -2,7 +2,7 @@
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Input/ClickableNode.h"
@@ -36,13 +36,9 @@ PauseMenu::PauseMenu(bool ownerInitialized)
 	}
 
 	this->pauseWindow = Sprite::create(UIResources::Menus_PauseMenu_PauseMenu);
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButtonSelected, UIResources::Menus_IngameMenu_CloseButton);
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButtonSelected, UIResources::Menus_PauseMenu_CloseButton);
 	this->pauseLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Pause_Pause::create());
 	this->newButtonsNode = Node::create();
-	this->addedButtons = std::vector<ClickableTextNode*>();
-	this->resumeClickCallback = nullptr;
-	this->optionsClickCallback = nullptr;
-	this->quitToTitleClickCallback = nullptr;
 
 	LocalizedLabel*	resumeLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Pause_Resume::create());
 	LocalizedLabel*	resumeLabelSelected = resumeLabel->clone();
@@ -54,26 +50,26 @@ PauseMenu::PauseMenu(bool ownerInitialized)
 	LocalizedLabel*	quitToTitleLabelSelected = quitToTitleLabel->clone();
 
 	resumeLabel->enableOutline(Color4B::BLACK, 2);
-	resumeLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	resumeLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	resumeLabel->enableGlow(Color4B::BLACK);
 	optionsLabel->enableOutline(Color4B::BLACK, 2);
-	optionsLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	optionsLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	optionsLabel->enableGlow(Color4B::BLACK);
 	quitToTitleLabel->enableOutline(Color4B::BLACK, 2);
-	quitToTitleLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	quitToTitleLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	quitToTitleLabel->enableGlow(Color4B::BLACK);
 
 	resumeLabelSelected->enableOutline(Color4B::BLACK, 2);
 	resumeLabelSelected->setTextColor(Color4B::YELLOW);
-	resumeLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	resumeLabelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	resumeLabelSelected->enableGlow(Color4B::ORANGE);
 	optionsLabelSelected->enableOutline(Color4B::BLACK, 2);
 	optionsLabelSelected->setTextColor(Color4B::YELLOW);
-	optionsLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	optionsLabelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	optionsLabelSelected->enableGlow(Color4B::ORANGE);
 	quitToTitleLabelSelected->enableOutline(Color4B::BLACK, 2);
 	quitToTitleLabelSelected->setTextColor(Color4B::YELLOW);
-	quitToTitleLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	quitToTitleLabelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	quitToTitleLabelSelected->enableGlow(Color4B::ORANGE);
 
 	this->resumeButton = ClickableTextNode::create(
@@ -94,7 +90,7 @@ PauseMenu::PauseMenu(bool ownerInitialized)
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->pauseLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->pauseLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->pauseLabel->enableGlow(Color4B::BLACK);
 	
 	this->addChild(this->pauseWindow);
@@ -110,31 +106,11 @@ PauseMenu::~PauseMenu()
 {
 }
 
-void PauseMenu::onEnter()
-{
-	super::onEnter();
-
-	float delay = 0.1f;
-	float duration = 0.25f;
-
-	GameUtils::fadeInObject(this->pauseWindow, delay, duration);
-	GameUtils::fadeInObject(this->pauseLabel, delay, duration);
-	GameUtils::fadeInObject(this->closeButton, delay, duration);
-	GameUtils::fadeInObject(this->resumeButton, delay, duration);
-	GameUtils::fadeInObject(this->optionsButton, delay, duration);
-	GameUtils::fadeInObject(this->quitToTitleButton, delay, duration);
-
-	for (auto next : this->addedButtons)
-	{
-		GameUtils::fadeInObject(next, delay, duration);
-	}
-}
-
 void PauseMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->pauseWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->pauseLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
@@ -184,9 +160,9 @@ void PauseMenu::initializeListeners()
 	});
 	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		if (!GameUtils::isVisible(this))
+		if (GameUtils::getFocusedNode() != this)
 		{
 			return;
 		}
@@ -231,12 +207,12 @@ ClickableTextNode* PauseMenu::addNewButton(LocalizedString* text)
 	LocalizedLabel*	labelSelected = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, text == nullptr ? nullptr : text->clone());
 
 	labelSelected->enableOutline(Color4B::BLACK, 2);
-	label->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	label->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	label->enableGlow(Color4B::BLACK);
 
 	labelSelected->enableOutline(Color4B::BLACK, 2);
 	labelSelected->setTextColor(Color4B::YELLOW);
-	labelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	labelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	labelSelected->enableGlow(Color4B::ORANGE);
 
 	ClickableTextNode* newButton = ClickableTextNode::create(

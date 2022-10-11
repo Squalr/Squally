@@ -21,7 +21,7 @@ SpecialFlip1* SpecialFlip1::create()
 	return instance;
 }
 
-SpecialFlip1::SpecialFlip1() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 1 }}), ItemMeta(3, 3))
+SpecialFlip1::SpecialFlip1() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 4 }}), ItemMeta(3, 3))
 {
 }
 
@@ -34,22 +34,17 @@ Item* SpecialFlip1::clone()
 	return SpecialFlip1::create();
 }
 
-std::string SpecialFlip1::getItemName()
-{
-	return SpecialFlip1::SaveKey;
-}
-
 LocalizedString* SpecialFlip1::getString()
 {
 	return Strings::Hexus_Cards_Flip1::create();
 }
 
-std::string SpecialFlip1::getIconResource()
+const std::string& SpecialFlip1::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialFlip1::getSerializationKey()
+const std::string& SpecialFlip1::getIdentifier()
 {
 	return SpecialFlip1::SaveKey;
 }

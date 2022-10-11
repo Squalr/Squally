@@ -1,18 +1,17 @@
 #pragma once
 
 #include "Engine/Events/SoundEvents.h"
-#include "Engine/SmartNode.h"
 #include "Engine/GlobalNode.h"
 
-class Track;
+class Music;
 
 class TrackDeserializer : public GlobalNode
 {
 public:
 	static TrackDeserializer* getInstance();
-	static void registerGlobalNode();
+	static void RegisterGlobalNode();
 
-	void deserialize(SoundEvents::RequestTrackDeserializationArgs args);
+	void deserialize(SoundEvents::RequestMusicDeserializationArgs args);
 
 protected:
 	TrackDeserializer();
@@ -23,7 +22,7 @@ protected:
 private:
 	typedef GlobalNode super;
 
-	std::map<std::string, std::function<Track*()>> deserializers;
+	std::map<std::string, std::function<Music*(cocos2d::ValueMap&)>> deserializers;
 
-	static TrackDeserializer* instance;
+	static TrackDeserializer* Instance;
 };

@@ -721,7 +721,7 @@ public:
   }
 
   //! Tests whether the `label` is valid (i.e. created by `newLabelEntry()`).
-  inline bool isLabelValid(const Label& label) const noexcept {
+  inline bool isLabelValid(const AsmLabel& label) const noexcept {
     return label.id() < _labelEntries.size();
   }
 
@@ -733,7 +733,7 @@ public:
   //! Tests whether the `label` is already bound.
   //!
   //! Returns `false` if the `label` is not valid.
-  inline bool isLabelBound(const Label& label) const noexcept {
+  inline bool isLabelBound(const AsmLabel& label) const noexcept {
     return isLabelBound(label.id());
   }
 
@@ -743,7 +743,7 @@ public:
   }
 
   //! Returns LabelEntry of the given `label`.
-  inline LabelEntry* labelEntry(const Label& label) const noexcept {
+  inline LabelEntry* labelEntry(const AsmLabel& label) const noexcept {
     return labelEntry(label.id());
   }
 
@@ -757,7 +757,7 @@ public:
   }
 
   //! \overload
-  inline uint64_t labelOffset(const Label& label) const noexcept {
+  inline uint64_t labelOffset(const AsmLabel& label) const noexcept {
     return labelOffset(label.id());
   }
 
@@ -773,7 +773,7 @@ public:
   }
 
   //! \overload
-  inline uint64_t labelOffsetFromBase(const Label& label) const noexcept {
+  inline uint64_t labelOffsetFromBase(const AsmLabel& label) const noexcept {
     return labelOffsetFromBase(label.id());
   }
 
@@ -790,8 +790,8 @@ public:
   //! Returns a label id by name.
   ASMJIT_API uint32_t labelIdByName(const char* name, size_t nameSize = SIZE_MAX, uint32_t parentId = Globals::kInvalidId) noexcept;
 
-  inline Label labelByName(const char* name, size_t nameSize = SIZE_MAX, uint32_t parentId = Globals::kInvalidId) noexcept {
-    return Label(labelIdByName(name, nameSize, parentId));
+  inline AsmLabel labelByName(const char* name, size_t nameSize = SIZE_MAX, uint32_t parentId = Globals::kInvalidId) noexcept {
+    return AsmLabel(labelIdByName(name, nameSize, parentId));
   }
 
   //! Tests whether there are any unresolved label links.
@@ -813,7 +813,7 @@ public:
   //! Binds a label to a given `sectionId` and `offset` (relative to start of the section).
   //!
   //! This function is generally used by `BaseAssembler::bind()` to do the heavy lifting.
-  ASMJIT_API Error bindLabel(const Label& label, uint32_t sectionId, uint64_t offset) noexcept;
+  ASMJIT_API Error bindLabel(const AsmLabel& label, uint32_t sectionId, uint64_t offset) noexcept;
 
   //! \}
 

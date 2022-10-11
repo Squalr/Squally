@@ -326,9 +326,9 @@ public:
   //! \{
 
   //! Creates a new label.
-  virtual Label newLabel() = 0;
+  virtual AsmLabel newLabel() = 0;
   //! Creates a new named label.
-  virtual Label newNamedLabel(const char* name, size_t nameSize = SIZE_MAX, uint32_t type = Label::kTypeGlobal, uint32_t parentId = Globals::kInvalidId) = 0;
+  virtual AsmLabel newNamedLabel(const char* name, size_t nameSize = SIZE_MAX, uint32_t type = AsmLabel::kTypeGlobal, uint32_t parentId = Globals::kInvalidId) = 0;
 
   //! Returns `Label` by `name`.
   //!
@@ -336,17 +336,17 @@ public:
   //!
   //! \note This function doesn't trigger ErrorHandler in case the name is invalid
   //! or no such label exist. You must always check the validity of the `Label` returned.
-  ASMJIT_API Label labelByName(const char* name, size_t nameSize = SIZE_MAX, uint32_t parentId = Globals::kInvalidId) noexcept;
+  ASMJIT_API AsmLabel labelByName(const char* name, size_t nameSize = SIZE_MAX, uint32_t parentId = Globals::kInvalidId) noexcept;
 
   //! Binds the `label` to the current position of the current section.
   //!
   //! \note Attempt to bind the same label multiple times will return an error.
-  virtual Error bind(const Label& label) = 0;
+  virtual Error bind(const AsmLabel& label) = 0;
 
   //! Tests whether the label `id` is valid (i.e. registered).
   ASMJIT_API bool isLabelValid(uint32_t labelId) const noexcept;
   //! Tests whether the `label` is valid (i.e. registered).
-  inline bool isLabelValid(const Label& label) const noexcept { return isLabelValid(label.id()); }
+  inline bool isLabelValid(const AsmLabel& label) const noexcept { return isLabelValid(label.id()); }
 
   //! \}
 
@@ -480,18 +480,18 @@ public:
   virtual Error embed(const void* data, uint32_t dataSize) = 0;
 
   //! Embeds an absolute label address as data (4 or 8 bytes).
-  virtual Error embedLabel(const Label& label) = 0;
+  virtual Error embedLabel(const AsmLabel& label) = 0;
 
   //! Embeds a delta (distance) between the `label` and `base` calculating it
   //! as `label - base`. This function was designed to make it easier to embed
   //! lookup tables where each index is a relative distance of two labels.
-  virtual Error embedLabelDelta(const Label& label, const Label& base, uint32_t dataSize) = 0;
+  virtual Error embedLabelDelta(const AsmLabel& label, const AsmLabel& base, uint32_t dataSize) = 0;
 
   //! Embeds a constant pool at the current offset by performing the following:
   //!   1. Aligns by using kAlignData to the minimum `pool` alignment.
   //!   2. Binds the ConstPool label so it's bound to an aligned location.
   //!   3. Emits ConstPool content.
-  virtual Error embedConstPool(const Label& label, const ConstPool& pool) = 0;
+  virtual Error embedConstPool(const AsmLabel& label, const ConstPool& pool) = 0;
 
   //! \}
 

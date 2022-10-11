@@ -12,7 +12,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
@@ -28,7 +28,7 @@ EnergyBolt* EnergyBolt::create()
 	return instance;
 }
 
-EnergyBolt::EnergyBolt() : super(nullptr, CollisionObject::createCapsulePolygon(Size(48.0f, 48.0f)), (int)PlatformerCollisionType::PlayerWeapon, false)
+EnergyBolt::EnergyBolt() : super(nullptr, CollisionObject::createCapsulePolygon(CSize(48.0f, 48.0f)), (int)PlatformerCollisionType::PlayerWeapon, false)
 {
 	this->energyBolt = SmartAnimationSequenceNode::create(FXResources::ElectricOrb_ElectricOrb_0000);
 	this->energySfx = WorldSound::create(SoundResources::Platformer_Spells_ElectricZap1);

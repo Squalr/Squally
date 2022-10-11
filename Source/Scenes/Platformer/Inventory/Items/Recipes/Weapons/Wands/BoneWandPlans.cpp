@@ -29,9 +29,9 @@ BoneWandPlans::~BoneWandPlans()
 {
 }
 
-Item* BoneWandPlans::craft()
+std::vector<Item*> BoneWandPlans::craft()
 {
-	return BoneWand::create();
+	return { BoneWand::create() };
 }
 
 std::vector<std::tuple<Item*, int>> BoneWandPlans::getReagentsInternal()
@@ -49,17 +49,12 @@ Item* BoneWandPlans::clone()
 	return BoneWandPlans::create();
 }
 
-std::string BoneWandPlans::getItemName()
-{
-	return BoneWandPlans::SaveKey;
-}
-
 LocalizedString* BoneWandPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_BoneWand::create();
 }
 
-std::string BoneWandPlans::getIconResource()
+const std::string& BoneWandPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +64,7 @@ std::string BoneWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Wands_BoneWand;
 }
 
-std::string BoneWandPlans::getSerializationKey()
+const std::string& BoneWandPlans::getIdentifier()
 {
 	return BoneWandPlans::SaveKey;
 }

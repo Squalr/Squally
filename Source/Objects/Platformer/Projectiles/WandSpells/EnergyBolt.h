@@ -21,7 +21,6 @@ protected:
 private:
 	typedef Projectile super;
 
-	WorldSound* energySfx;
-
-	SmartAnimationSequenceNode* energyBolt;
+	WorldSound* energySfx = nullptr;
+	SmartAnimationSequenceNode* energyBolt = nullptr;
 };

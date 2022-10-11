@@ -179,7 +179,7 @@ struct X86MemInfo_T {
 
     kBase  = (B >= Reg::kTypeGpw    && B <= Reg::kTypeGpq ) ? kX86MemInfo_BaseGp    :
              (B == Reg::kTypeRip                          ) ? kX86MemInfo_BaseRip   :
-             (B == Label::kLabelTag                       ) ? kX86MemInfo_BaseLabel : 0,
+             (B == AsmLabel::kLabelTag                       ) ? kX86MemInfo_BaseLabel : 0,
 
     kIndex = (I >= Reg::kTypeGpw    && I <= Reg::kTypeGpq ) ? kX86MemInfo_Index     :
              (I >= Reg::kTypeXmm    && I <= Reg::kTypeZmm ) ? kX86MemInfo_Index     : 0,
@@ -196,8 +196,8 @@ struct X86MemInfo_T {
              (B == Reg::kTypeGpd    && I == Reg::kTypeYmm ) ? kX86MemInfo_67H_X64   :
              (B == Reg::kTypeGpw    && I == Reg::kTypeZmm ) ? kX86MemInfo_67H_X86   :
              (B == Reg::kTypeGpd    && I == Reg::kTypeZmm ) ? kX86MemInfo_67H_X64   :
-             (B == Label::kLabelTag && I == Reg::kTypeGpw ) ? kX86MemInfo_67H_X86   :
-             (B == Label::kLabelTag && I == Reg::kTypeGpd ) ? kX86MemInfo_67H_X64   : 0,
+             (B == AsmLabel::kLabelTag && I == Reg::kTypeGpw ) ? kX86MemInfo_67H_X86   :
+             (B == AsmLabel::kLabelTag && I == Reg::kTypeGpd ) ? kX86MemInfo_67H_X64   : 0,
 
     kValue = kBase | kIndex | k67H | 0x04 | 0x08
   };
@@ -4356,7 +4356,7 @@ EmitJmpCall:
     inst32Size += uint32_t((opcode & Opcode::kMM_Mask) == Opcode::kMM_0F);
 
     if (rmRel->isLabel()) {
-      label = _code->labelEntry(rmRel->as<Label>());
+      label = _code->labelEntry(rmRel->as<AsmLabel>());
       if (ASMJIT_UNLIKELY(!label))
         goto InvalidLabel;
 

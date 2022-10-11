@@ -1,13 +1,15 @@
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
 {
 	class Sprite;
 }
 
-class PlatformerDecorObject : public HackableObject
+template <class T> class LazyNode;
+
+class PlatformerDecorObject : public GameObject
 {
 public:
 	static PlatformerDecorObject* create(cocos2d::ValueMap& properties);
@@ -17,13 +19,18 @@ protected:
 	virtual ~PlatformerDecorObject();
 
 	void onEnter() override;
+	void update(float dt) override;
 	void onHackerModeEnable() override;
 	void onHackerModeDisable() override;
 	
 private:
-	typedef HackableObject super;
+	typedef GameObject super;
 
 	void runBounce();
-
-	cocos2d::Sprite* sprite;
+	void optimizationHideOffscreenDecor();
+	cocos2d::Sprite* buildSprite();
+	
+	std::string filePath;
+	cocos2d::CSize objectSize;
+	LazyNode<cocos2d::Sprite>* sprite = nullptr;
 };

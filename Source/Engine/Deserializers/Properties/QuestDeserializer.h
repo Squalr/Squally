@@ -2,12 +2,6 @@
 
 #include "Engine/Deserializers/Properties/PropertyDeserializer.h"
 
-namespace cocos2d
-{
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
-}
-
 class GameObject;
 class QuestLine;
 class QuestTask;
@@ -26,7 +20,7 @@ public:
 	
 	struct QuestDeserializationRequestArgs
 	{
-		GameObject* owner;
+		GameObject* owner = nullptr;
 		std::string questLine;
 		std::string questTask;
 

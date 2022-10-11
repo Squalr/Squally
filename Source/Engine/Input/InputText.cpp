@@ -9,7 +9,7 @@
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-InputText* InputText::create(Size minimumInputSize, LocalizedLabel::FontStyle fontStyle, LocalizedLabel::FontSize fontSize, bool unfuck)
+InputText* InputText::create(CSize minimumInputSize, LocalizedLabel::FontStyle fontStyle, LocalizedLabel::FontSize fontSize, bool unfuck)
 {
 	InputText* instance = new InputText(minimumInputSize, fontStyle, fontSize, unfuck);
 
@@ -18,7 +18,7 @@ InputText* InputText::create(Size minimumInputSize, LocalizedLabel::FontStyle fo
 	return instance;
 }
 
-InputText::InputText(Size minimumInputSize, LocalizedLabel::FontStyle fontStyle, LocalizedLabel::FontSize fontSize, bool unfuck)
+InputText::InputText(CSize minimumInputSize, LocalizedLabel::FontStyle fontStyle, LocalizedLabel::FontSize fontSize, bool unfuck)
 {
 	this->minimumInputSize = minimumInputSize;
 	this->unfuck = unfuck;
@@ -27,7 +27,6 @@ InputText::InputText(Size minimumInputSize, LocalizedLabel::FontStyle fontStyle,
 	this->hitBox = ClickableNode::create();
 	this->initCoords = Vec2::ZERO;
 	this->stringCache = this->labelText->getString();
-	this->stringChangeCallback = nullptr;
 
 	this->inputLabel->setAnchorPoint(Vec2::ZERO);
 	this->hitBox->setAnchorPoint(Vec2::ZERO);
@@ -40,6 +39,10 @@ InputText::InputText(Size minimumInputSize, LocalizedLabel::FontStyle fontStyle,
 
 	this->addChild(this->inputLabel);
 	this->addChild(this->hitBox);
+}
+
+InputText::~InputText()
+{
 }
 
 void InputText::onEnter()
@@ -56,7 +59,7 @@ void InputText::onEnter()
 
 void InputText::initializePositions()
 {
-	Size newSize = this->resize();
+	CSize newSize = this->resize();
 	Vec2 offset = Vec2(newSize.width / 2.0f, newSize.height / 2.0f);
 
 	this->labelText->setPosition(offset);
@@ -65,9 +68,9 @@ void InputText::initializePositions()
 	this->initCoords = this->getPosition();
 }
 
-cocos2d::Size InputText::resize()
+cocos2d::CSize InputText::resize()
 {
-	Size newSize = Size(std::max(this->minimumInputSize.width, this->getContentSize().width), std::max(this->minimumInputSize.height, this->getContentSize().height));
+	CSize newSize = CSize(std::max(this->minimumInputSize.width, this->getContentSize().width), std::max(this->minimumInputSize.height, this->getContentSize().height));
 	
 	this->hitBox->setContentSize(newSize);
 
@@ -110,7 +113,7 @@ void InputText::setString(const std::string& label)
 
 	this->labelText->setString(label);
 
-	Size newSize = this->resize();
+	CSize newSize = this->resize();
 
 	if (this->unfuck)
 	{

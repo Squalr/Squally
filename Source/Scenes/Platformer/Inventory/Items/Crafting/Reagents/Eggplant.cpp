@@ -33,22 +33,17 @@ Item* Eggplant::clone()
 	return Eggplant::create();
 }
 
-std::string Eggplant::getItemName()
-{
-	return Eggplant::SaveKey;
-}
-
 LocalizedString* Eggplant::getString()
 {
 	return Strings::Items_Crafting_Reagents_Eggplant::create();
 }
 
-std::string Eggplant::getIconResource()
+const std::string& Eggplant::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Reagents_Eggplant;
 }
 
-std::string Eggplant::getSerializationKey()
+const std::string& Eggplant::getIdentifier()
 {
 	return Eggplant::SaveKey;
 }

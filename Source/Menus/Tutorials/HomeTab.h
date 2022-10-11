@@ -27,5 +27,5 @@ protected:
 private:
 	typedef SmartNode super;
 	
-	LocalizedLabel* disclaimer;
+	LocalizedLabel* disclaimer = nullptr;
 };

@@ -7,6 +7,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -14,7 +15,7 @@
 #include "Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailGenericPreview.h"
 #include "Objects/Platformer/Traps/MechanicalFlail/MechanicalFlailSetAnglePreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ParticleResources.h"
 #include "Resources/ObjectResources.h"
@@ -47,7 +48,7 @@ MechanicalFlail::MechanicalFlail(ValueMap& properties) : super(properties)
 {
 	this->joint = Sprite::create(ObjectResources::Traps_MechanicalFlail_Joint);
 	this->flailChain = Node::create();
-	this->smokeParticles = SmartParticles::create(ParticleResources::Objects_Smoke, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	this->smokeParticles = SmartParticles::create(ParticleResources::Objects_Smoke, SmartParticles::CullInfo(CSize(96.0f, 96.0f)));
 	this->flailCollision = CollisionObject::create(CollisionObject::createCircle(56.0f), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
 	float height = this->properties.at(GameObject::MapKeyHeight).asFloat();
@@ -113,7 +114,7 @@ void MechanicalFlail::registerHackables()
 				Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_SetTargetAngle::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_CrossHair,
-				MechanicalFlailSetAnglePreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return MechanicalFlailSetAnglePreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEbx::create() }
@@ -128,7 +129,7 @@ void MechanicalFlail::registerHackables()
 	auto swingFunc = &MechanicalFlail::setSwingAngle;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}

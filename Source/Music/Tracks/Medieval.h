@@ -1,20 +1,18 @@
 #pragma once
 
-#include "Engine/Sound/Track.h"
+#include "Engine/Sound/Music.h"
 
-class Item;
-
-class Medieval : public Track
+class Medieval : public Music
 {
 public:
-	static Medieval* create();
+	static Medieval* create(cocos2d::ValueMap& properties);
 
 	static const std::string TrackKey;
 
 protected:
-	Medieval();
+	Medieval(cocos2d::ValueMap& properties);
 	virtual ~Medieval();
 
 private:
-	typedef Track super;
+	typedef Music super;
 };

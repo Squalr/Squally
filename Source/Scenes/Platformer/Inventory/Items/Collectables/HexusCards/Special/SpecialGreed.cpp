@@ -21,7 +21,7 @@ SpecialGreed* SpecialGreed::create()
 	return instance;
 }
 
-SpecialGreed::SpecialGreed() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), ItemMeta(3, 3))
+SpecialGreed::SpecialGreed() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 29 }}), ItemMeta(3, 3))
 {
 }
 
@@ -34,22 +34,17 @@ Item* SpecialGreed::clone()
 	return SpecialGreed::create();
 }
 
-std::string SpecialGreed::getItemName()
-{
-	return SpecialGreed::SaveKey;
-}
-
 LocalizedString* SpecialGreed::getString()
 {
 	return Strings::Hexus_Cards_Greed::create();
 }
 
-std::string SpecialGreed::getIconResource()
+const std::string& SpecialGreed::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialGreed::getSerializationKey()
+const std::string& SpecialGreed::getIdentifier()
 {
 	return SpecialGreed::SaveKey;
 }

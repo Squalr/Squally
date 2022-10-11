@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Swords/FireSwordPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* FireSword::clone()
 	return FireSword::create();
 }
 
-std::string FireSword::getItemName()
-{
-	return FireSword::SaveKey;
-}
-
 LocalizedString* FireSword::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_FireSword::create();
 }
 
-std::string FireSword::getIconResource()
+const std::string& FireSword::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_FireSword;
 }
 
-std::string FireSword::getSerializationKey()
+const std::string& FireSword::getIdentifier()
 {
 	return FireSword::SaveKey;
+}
+
+Recipe* FireSword::getRecipe()
+{
+	return FireSwordPlans::create();
 }

@@ -4,11 +4,10 @@
 
 namespace cocos2d
 {
-	class ParticleSystem;
 	class Sprite;
 }
 
-class InfiniteParallaxNode;
+class InfiniteScrollSprite;
 class FloatingSprite;
 class SmartParticles;
 
@@ -27,19 +26,19 @@ protected:
 private:
 	typedef SmartNode super;
 
-	cocos2d::Sprite* background;
-	FloatingSprite* backgroundTrees;
-	FloatingSprite* midgroundTrees;
-	FloatingSprite* foregroundVines;
-	InfiniteParallaxNode* fog;
-	InfiniteParallaxNode* foregroundFog;
-	FloatingSprite* foregroundGrassBottom;
-	FloatingSprite* foregroundGrassTop;
-	cocos2d::Sprite* webs;
-	cocos2d::Sprite* foregroundLight;
+	cocos2d::Sprite* background = nullptr;
+	FloatingSprite* backgroundTrees = nullptr;
+	FloatingSprite* midgroundTrees = nullptr;
+	FloatingSprite* foregroundVines = nullptr;
+	InfiniteScrollSprite* fog = nullptr;
+	InfiniteScrollSprite* foregroundFog = nullptr;
+	FloatingSprite* foregroundGrassBottom = nullptr;
+	FloatingSprite* foregroundGrassTop = nullptr;
+	cocos2d::Sprite* webs = nullptr;
+	cocos2d::Sprite* foregroundLight = nullptr;
 
-	SmartParticles* windParticles;
-	SmartParticles* fireflyParticles;
+	SmartParticles* windParticles = nullptr;
+	SmartParticles* fireflyParticles = nullptr;
 
 	static MenuBackground* menuBackgroundInstance;
 };

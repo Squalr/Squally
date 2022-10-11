@@ -26,6 +26,10 @@ FloatingWoodenBeamGenericPreview::FloatingWoodenBeamGenericPreview()
 	this->previewNode->addChild(this->previewAsteroid);
 }
 
+FloatingWoodenBeamGenericPreview::~FloatingWoodenBeamGenericPreview()
+{
+}
+
 HackablePreview* FloatingWoodenBeamGenericPreview::clone()
 {
 	return FloatingWoodenBeamGenericPreview::create();

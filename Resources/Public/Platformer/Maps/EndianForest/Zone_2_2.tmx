@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="46" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="785">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="46" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="789">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="3"/>
@@ -41,10 +41,9 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-4393.69" y="1789.3" width="23473.7" height="866">
+  <object id="785" name="Forest/Background/WaterfallRocks" type="decor" x="-5961.69" y="1101.3" width="17333.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -53,10 +52,9 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-6396.11" y="1360.77" width="23373.6" height="922">
+  <object id="786" name="Forest/Background/WaterfallGround" type="decor" x="-4989.81" y="2049.6" width="15017.6" height="2565">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="2.25"/>
    </properties>
   </object>
  </objectgroup>
@@ -136,6 +134,11 @@
   </object>
   <object id="778" name="solid-npc" type="collision" x="670.9" y="1890.17" width="121.03" height="777.836"/>
   <object id="779" name="solid-npc" type="collision" x="2211.49" y="1866.96" width="121.03" height="777.836"/>
+  <object id="787" name="hexus-shrine" type="object" x="1137.71" y="2134.42" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-troll"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -156,24 +159,24 @@
   </object>
   <object id="702" name="ogre" type="entity" x="2638" y="2956.91" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="703" name="troll" type="entity" x="2642.6" y="2680.48" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
-  <object id="780" name="troll" type="entity" x="1096.61" y="2272.36" width="128" height="128">
+  <object id="788" name="troll" type="entity" x="1340.12" y="6947.88" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-B"/>
-    <property name="scale" type="float" value="0.75"/>
+    <property name="components" value="friendly,disarmed,ef-puzzle-B"/>
+    <property name="tag" value="hexus-troll"/>
    </properties>
   </object>
  </objectgroup>
@@ -184,7 +187,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="686.08" y="2964.03" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="782" name="spawn" type="object" x="5098.6" y="4632.15" width="128" height="128">

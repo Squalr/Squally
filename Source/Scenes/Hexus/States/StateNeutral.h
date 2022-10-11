@@ -24,5 +24,5 @@ private:
 	void initializeCallbacks(GameState* gameState);
 	void selectCard(Card* card);
 
-	GameState* activeGameState;
+	GameState* activeGameState = nullptr;
 };

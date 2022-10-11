@@ -8,14 +8,33 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
-#include "Deserializers/Deserializers.h"
-#include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerComponentDeserializer.h"
+#include "Deserializers/Platformer/PlatformerBannerDeserializer.h"
 #include "Deserializers/Platformer/PlatformerCrackDeserializer.h"
+#include "Deserializers/Platformer/PlatformerDecorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
+#include "Deserializers/Platformer/PlatformerHideMiniMapDeserializer.h"
+#include "Deserializers/Platformer/PlatformerMiniMapRequiredItemDeserializer.h"
+#include "Deserializers/Platformer/PlatformerObjectDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
+#include "Deserializers/Platformer/PlatformerRubberbandingDeserializer.h"
+#include "Deserializers/Platformer/PlatformerTerrainDeserializer.h"
+#include "Deserializers/Platformer/PlatformerTextureDeserializer.h"
+#include "Deserializers/WeatherDeserializer.h"
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Deserializers/Meta/BackgroundDeserializer.h"
+#include "Engine/Deserializers/Meta/MetaLayerDeserializer.h"
+#include "Engine/Deserializers/Meta/MusicDeserializer.h"
+#include "Engine/Deserializers/Meta/PhysicsDeserializer.h"
+#include "Engine/Deserializers/Objects/CollisionDeserializer.h"
+#include "Engine/Deserializers/Objects/ObjectLayerDeserializer.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/NavigationEvents.h"
+#include "Engine/Hackables/Menus/CodeEditor/CodeHud.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Lexicon.h"
+#include "Engine/Hackables/Menus/RadialMenu.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Save/SaveManager.h"
@@ -25,19 +44,23 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
+#include "Events/HexusEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Cards/CardsMenu.h"
 #include "Menus/Collectables/CollectablesMenu.h"
-#include "Menus/Ingame/IngameMenu.h"
+#include "Menus/Confirmation/ConfirmationMenu.h"
+#include "Menus/Options/OptionsMenu.h"
+#include "Menus/Pause/PlatformerPauseMenu.h"
 #include "Menus/Party/PartyMenu.h"
 #include "Menus/Pause/PauseMenu.h"
 #include "Objects/Camera/CameraFocus.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Stats/EnemyHealthBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/EnemyCombatBehaviorGroup.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Combat/FriendlyCombatBehaviorGroup.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Hexus/HelpMenus/HelpMenu.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityDropTableBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Stats/EnemyHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Combat/EnemyCombatBehaviorGroup.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/Combat/FriendlyCombatBehaviorGroup.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Level/Combat/CombatAIHelper.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/CancelMenu.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/ChoicesMenu.h"
@@ -54,6 +77,7 @@
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
+#include "Scenes/Title/TitleScreen.h"
 
 #include "Resources/MapResources.h"
 
@@ -71,11 +95,14 @@ CombatMap* CombatMap::create(std::string levelFile, bool playerFirstStrike, std:
 	return instance;
 }
 
-CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<CombatData> playerData, std::vector<CombatData> enemyData) : super(true, true)
+CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<CombatData> playerData, std::vector<CombatData> enemyData) : super(true)
 {
-	this->collectablesMenu = nullptr; // Lazy initialized
-	this->cardsMenu = nullptr; // Lazy initialized
-	this->partyMenu = PartyMenu::create();
+	this->cardHelpMenu = LazyNode<HelpMenu>::create(CC_CALLBACK_0(CombatMap::buildHexusCardHelpMenu, this));
+	this->collectablesMenu = LazyNode<CollectablesMenu>::create(CC_CALLBACK_0(CombatMap::buildCollectablesMenu, this));
+	this->lexiconMenu = LazyNode<Lexicon>::create(CC_CALLBACK_0(CombatMap::buildLexicon, this));
+	this->cardsMenu = LazyNode<CardsMenu>::create(CC_CALLBACK_0(CombatMap::buildCardsMenu, this));
+	this->partyMenu = LazyNode<PartyMenu>::create(CC_CALLBACK_0(CombatMap::buildPartyMenu, this));
+	this->platformerPauseMenu = LazyNode<PlatformerPauseMenu>::create(CC_CALLBACK_0(CombatMap::buildPlatformerPauseMenu, this));
 	this->combatHud = CombatHud::create();
 	this->timeline = Timeline::create();
 	this->cancelMenu = CancelMenu::create();
@@ -94,14 +121,11 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->playerData = playerData;
 	this->enemyData = enemyData;
 	this->playerFirstStrike = playerFirstStrike;
-	this->scrappy = nullptr;
 
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
 	this->focusTakeOver->setTakeOverOpacity(127);
 	this->entityFocusTakeOver->setTakeOverOpacity(0);
-	this->ingameMenu->disableInventory();
-	this->partyMenu->disableUnstuck();
 
 	this->addLayerDeserializers({
 			MetaLayerDeserializer::create({
@@ -112,7 +136,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 				PlatformerRubberbandingDeserializer::create(),
 			}),
 			ObjectLayerDeserializer::create({
-				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
+				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerComponentDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
 				{ PlatformerDecorDeserializer::MapKeyTypeDecor, PlatformerDecorDeserializer::create() },
 				{ PlatformerEntityDeserializer::MapKeyTypeEntity, PlatformerEntityDeserializer::create() },
 				{ PlatformerObjectDeserializer::MapKeyTypeObject, PlatformerObjectDeserializer::create() },
@@ -123,7 +147,7 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 		}
 	);
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->combatEndBackdrop->addChild(LayerColor::create(Color4B::BLACK, visibleSize.width, visibleSize.height));
 
@@ -142,7 +166,12 @@ CombatMap::CombatMap(std::string levelFile, bool playerFirstStrike, std::vector<
 	this->backMenuHud->addChild(this->defeatMenu);
 	this->backMenuHud->addChild(this->rewardsMenu);
 	this->backMenuHud->addChild(this->notificationHud);
+	this->topMenuHud->addChild(this->platformerPauseMenu);
 	this->topMenuHud->addChild(this->partyMenu);
+	this->topMenuHud->addChild(this->cardsMenu);
+	this->topMenuHud->addChild(this->cardHelpMenu);
+	this->topMenuHud->addChild(this->lexiconMenu);
+	this->topMenuHud->addChild(this->collectablesMenu);
 	this->confirmationMenuHud->addChild(this->confirmationHud);
 
 	this->loadMap(levelFile);
@@ -156,7 +185,6 @@ void CombatMap::onEnter()
 {
 	super::onEnter();
 
-	this->partyMenu->setVisible(false);
 	this->combatEndBackdrop->setOpacity(0);
 	
 	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
@@ -182,9 +210,8 @@ void CombatMap::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->ingameMenu->setPosition(Vec2(72.0f, 0.0f));
 	this->defeatMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->rewardsMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->choicesMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
@@ -198,7 +225,7 @@ void CombatMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCombatFinished, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::CombatFinishedArgs* args = static_cast<CombatEvents::CombatFinishedArgs*>(eventCustom->getUserData());
+		CombatEvents::CombatFinishedArgs* args = static_cast<CombatEvents::CombatFinishedArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -238,9 +265,11 @@ void CombatMap::initializeListeners()
 	{
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 		{
-			std::string mapResource = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
+			std::string mapResource = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString();
 
-			PlatformerMap* map = PlatformerMap::create(mapResource, { });
+			PlatformerMap* map = PlatformerMap::create();
+
+			map->loadMap(mapResource);
 
 			return map;
 		}));
@@ -248,12 +277,14 @@ void CombatMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventReturnToMapRespawn, [=](EventCustom* eventCustom)
 	{
-		std::string savedMap = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyRespawnMap, Value(MapResources::EndianForest_Town_Main)).asString();
+		std::string savedMap = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyRespawnMap, Value(MapResources::EndianForest_Town_Main)).asString();
 
 		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 		{
 			PlatformerEvents::TriggerBeforePlatformerMapChange();
-			PlatformerMap* map = PlatformerMap::create(savedMap, PlatformerMap::TransitionRespawn);
+			PlatformerMap* map = PlatformerMap::create(PlatformerMap::TransitionRespawn);
+
+			map->loadMap(savedMap);
 
 			return map;
 		}));
@@ -261,7 +292,7 @@ void CombatMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getUserData());
+		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getData());
 
 		if (combatArgs != nullptr)
 		{
@@ -406,40 +437,56 @@ void CombatMap::initializeListeners()
 			}
 		}
 	}));
-
-	this->ingameMenu->setPartyClickCallback([=]()
-	{
-		this->ingameMenu->setVisible(false);
-		this->partyMenu->setVisible(true);
-		this->partyMenu->open();
-		GameUtils::focus(this->partyMenu);
-	});
 	
-	this->ingameMenu->setCardsClickCallback([=]()
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventShowHelpMenuOutsideOfGame, [=](EventCustom* eventCustom)
 	{
-		this->buildCardsMenu();
+		HexusEvents::HelpMenuArgs* args = static_cast<HexusEvents::HelpMenuArgs*>(eventCustom->getData());
 
-		this->ingameMenu->setVisible(false);
-		this->cardsMenu->setVisible(true);
-		this->cardsMenu->open();
-		GameUtils::focus(this->cardsMenu);
-	});
-	
-	this->ingameMenu->setCollectablesClickCallback([=]()
+		if (args != nullptr)
+		{
+			this->cardHelpMenu->lazyGet()->openMenu(args->cardData, true, args->onExit);
+			this->cardHelpMenu->lazyGet()->setVisible(true);
+			
+			GameUtils::focus(this->cardHelpMenu->lazyGet());
+		}
+	}));
+
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->buildCollectablesMenu();
+		if (!this->canPause
+			|| (this->platformerPauseMenu->isBuilt() && GameUtils::isFocused(this->platformerPauseMenu->lazyGet()))
+			|| (this->partyMenu->isBuilt() && GameUtils::isFocused(this->partyMenu->lazyGet()))
+			|| (this->optionsMenu->isBuilt() && GameUtils::isFocused(this->optionsMenu->lazyGet()))
+			|| (this->codeHud->isBuilt() && GameUtils::isFocused(this->codeHud->lazyGet()))
+			|| (this->radialMenu->isBuilt() && GameUtils::isFocused(this->radialMenu->lazyGet()))
+			|| (this->lexiconMenu->isBuilt() && GameUtils::isFocused(this->lexiconMenu->lazyGet()))
+			|| (this->cardsMenu->isBuilt() && GameUtils::isFocused(this->cardsMenu->lazyGet()))
+			|| (this->cardHelpMenu->isBuilt() && GameUtils::isFocused(this->cardHelpMenu->lazyGet()))
+			|| (this->collectablesMenu->isBuilt() && GameUtils::isFocused(this->collectablesMenu->lazyGet()))
+			|| dynamic_cast<ConfirmationMenu*>(GameUtils::getFocusedNode()) != nullptr)
+		{
+			return;
+		}
 		
-		this->ingameMenu->setVisible(false);
-		this->collectablesMenu->setVisible(true);
-		this->collectablesMenu->open();
-		GameUtils::focus(this->collectablesMenu);
-	});
+		args->handle();
 
-	this->partyMenu->setReturnClickCallback([=]()
+		this->openPauseMenu(this);
+	});
+}
+
+void CombatMap::openPauseMenu(cocos2d::Node* refocusTarget)
+{
+	super::openPauseMenu(refocusTarget);
+
+	if (!this->canPause)
 	{
-		this->ingameMenu->setVisible(true);
-		this->partyMenu->setVisible(false);
-		GameUtils::focus(this->ingameMenu);
+		return;
+	}
+
+	this->platformerPauseMenu->lazyGet()->open([=]()
+	{
+		this->menuBackDrop->setOpacity(0);
+		GameUtils::focus(refocusTarget);
 	});
 }
 
@@ -447,10 +494,10 @@ void CombatMap::onHackerModeEnable()
 {
 	super::onHackerModeEnable();
 
-	ObjectEvents::QueryObjects<CameraFocus>(QueryObjectsArgs<CameraFocus>([&](CameraFocus* cameraTarget)
+	ObjectEvents::QueryObjects<CameraFocus>([&](CameraFocus* cameraTarget)
 	{
 		GameCamera::getInstance()->setTarget(cameraTarget->getTrackingData());
-	}), CameraFocus::MapKey);
+	}, CameraFocus::MapKey);
 }
 
 void CombatMap::spawnEntities()
@@ -471,7 +518,7 @@ void CombatMap::spawnEntities()
 
 			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 			valueMap[GameObject::MapKeyName] = Value(this->playerData[index].entityType);
-			valueMap[GameObject::MapKeyAttachedBehavior] = this->playerData[index].battleBehavior;
+			valueMap[GameObject::MapKeyComponent] = this->playerData[index].battleBehavior;
 			
 			ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
 				valueMap,
@@ -481,18 +528,18 @@ void CombatMap::spawnEntities()
 					
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, false, index, [&]()
 					{
-						entity->attachBehavior(FriendlyCombatBehaviorGroup::create(entity));
+						entity->attachComponent(FriendlyCombatBehaviorGroup::create(entity));
 						friendlyEntities.push_back(entity);
 					}));
 
 					if (this->playerData[index].statsOverrides.useOverrides)
 					{
-						entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+						entity->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 						{
 							healthBehavior->setHealth(this->playerData[index].statsOverrides.health);
 						});
 
-						entity->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+						entity->getComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 						{
 							manaBehavior->setMana(this->playerData[index].statsOverrides.mana);
 						});
@@ -517,7 +564,7 @@ void CombatMap::spawnEntities()
 
 			valueMap[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 			valueMap[GameObject::MapKeyName] = Value(this->enemyData[index].entityType);
-			valueMap[GameObject::MapKeyAttachedBehavior] = this->enemyData[index].battleBehavior;
+			valueMap[GameObject::MapKeyComponent] = this->enemyData[index].battleBehavior;
 			valueMap[GameObject::MapKeyFlipX] = Value(true);
 
 			std::vector<std::string> behavior = StrUtils::splitOn(this->enemyData[index].battleBehavior, ", ", false);
@@ -540,9 +587,9 @@ void CombatMap::spawnEntities()
 
 					CombatEvents::TriggerSpawn(CombatEvents::SpawnArgs(entity, true, index, [&]()
 					{
-						entity->attachBehavior(EnemyCombatBehaviorGroup::create(entity));
+						entity->attachComponent(EnemyCombatBehaviorGroup::create(entity));
 
-						entity->getAttachedBehavior<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
+						entity->getComponent<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
 						{
 							entityDropTableBehavior->setDropTable(this->enemyData[index].dropPool);
 						});
@@ -566,44 +613,145 @@ void CombatMap::spawnEntities()
 	this->combatHud->bindStatsBars(friendlyEntries, enemyEntries);
 }
 
-void CombatMap::buildCardsMenu()
+
+HelpMenu* CombatMap::buildHexusCardHelpMenu()
 {
-	if (this->cardsMenu != nullptr)
+	HelpMenu* instance = HelpMenu::create();
+
+	instance->setExitCallback([=]()
 	{
-		return;
-	}
+		instance->setVisible(false);
 
-	this->cardsMenu = CardsMenu::create();
-
-	this->cardsMenu->setVisible(false);
-
-	this->topMenuHud->addChild(this->cardsMenu);
-
-	this->cardsMenu->setReturnClickCallback([=]()
-	{
-		this->ingameMenu->setVisible(true);
-		this->cardsMenu->setVisible(false);
-		GameUtils::focus(this->ingameMenu);
+		GameUtils::focus(this);
 	});
+
+	instance->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
+	{
+		if (!this->canPause ||!GameUtils::isFocused(instance))
+		{
+			return;
+		}
+		
+		args->handle();
+
+		instance->setVisible(false);
+
+		GameUtils::focus(this);
+	});
+
+	return instance;
 }
 
-void CombatMap::buildCollectablesMenu()
+CollectablesMenu* CombatMap::buildCollectablesMenu()
 {
-	if (this->collectablesMenu != nullptr)
-	{
-		return;
-	}
-
-	this->collectablesMenu = CollectablesMenu::create();
+	CollectablesMenu* instance = CollectablesMenu::create();
 	
-	this->collectablesMenu->setVisible(false);
-
-	this->topMenuHud->addChild(this->collectablesMenu);
-
-	this->collectablesMenu->setReturnClickCallback([=]()
+	instance->setReturnClickCallback([=]()
 	{
-		this->ingameMenu->setVisible(true);
-		this->collectablesMenu->setVisible(false);
-		GameUtils::focus(this->ingameMenu);
+		this->platformerPauseMenu->lazyGet()->setVisible(true);
+		instance->setVisible(false);
+		GameUtils::focus(this->platformerPauseMenu->lazyGet());
 	});
+
+	return instance;
+}
+
+Lexicon* CombatMap::buildLexicon()
+{
+	Lexicon* instance = Lexicon::create();
+
+	instance->setCloseCallBack([=]()
+	{
+		this->platformerPauseMenu->lazyGet()->setVisible(true);
+		instance->setVisible(false);
+		GameUtils::focus(this->platformerPauseMenu->lazyGet());
+	});
+
+	return instance;
+}
+
+CardsMenu* CombatMap::buildCardsMenu()
+{
+	CardsMenu* instance = CardsMenu::create();
+
+	instance->setReturnClickCallback([=]()
+	{
+		this->platformerPauseMenu->lazyGet()->setVisible(true);
+		instance->setVisible(false);
+		GameUtils::focus(this->platformerPauseMenu->lazyGet());
+	});
+
+	return instance;
+}
+
+PartyMenu* CombatMap::buildPartyMenu()
+{
+	PartyMenu* instance = PartyMenu::create();
+
+	instance->disableUnstuck();
+	instance->setReturnClickCallback([=]()
+	{
+		this->platformerPauseMenu->lazyGet()->setVisible(true);
+		instance->setVisible(false);
+		GameUtils::focus(this->platformerPauseMenu->lazyGet());
+	});
+
+	return instance;
+}
+
+PlatformerPauseMenu* CombatMap::buildPlatformerPauseMenu()
+{
+	PlatformerPauseMenu* instance = PlatformerPauseMenu::create();
+	
+	instance->setPosition(Vec2(72.0f, 0.0f));
+	instance->disableInventory();
+
+	instance->setOptionsClickCallback([=]()
+	{
+		instance->setVisible(false);
+		this->optionsMenu->lazyGet()->setVisible(true);
+		GameUtils::focus(this->optionsMenu->lazyGet());
+	});
+
+	instance->setQuitToTitleClickCallback([=]()
+	{
+		this->menuBackDrop->setOpacity(0);
+		instance->setVisible(false);
+		
+		NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
+	});
+
+	instance->setPartyClickCallback([=]()
+	{
+		instance->setVisible(false);
+		this->partyMenu->lazyGet()->setVisible(true);
+		this->partyMenu->lazyGet()->open();
+		GameUtils::focus(this->partyMenu->lazyGet());
+	});
+	
+	instance->setCardsClickCallback([=]()
+	{
+		instance->setVisible(false);
+		this->cardsMenu->lazyGet()->setVisible(true);
+		this->cardsMenu->lazyGet()->open();
+		GameUtils::focus(this->cardsMenu->lazyGet());
+	});
+	
+	instance->setCollectablesClickCallback([=]()
+	{
+		instance->setVisible(false);
+		this->collectablesMenu->lazyGet()->setVisible(true);
+		this->collectablesMenu->lazyGet()->open();
+		GameUtils::focus(this->collectablesMenu->lazyGet());
+	});
+	
+	instance->setLexiconClickCallback([=]()
+	{
+		instance->setVisible(false);
+		this->lexiconMenu->lazyGet()->setVisible(true);
+		this->lexiconMenu->lazyGet()->open();
+		GameUtils::focus(this->lexiconMenu->lazyGet());
+	});
+
+	return instance;
 }

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Swords/FrostbanePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* Frostbane::clone()
 	return Frostbane::create();
 }
 
-std::string Frostbane::getItemName()
-{
-	return Frostbane::SaveKey;
-}
-
 LocalizedString* Frostbane::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_Frostbane::create();
 }
 
-std::string Frostbane::getIconResource()
+const std::string& Frostbane::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_Frostbane;
 }
 
-std::string Frostbane::getSerializationKey()
+const std::string& Frostbane::getIdentifier()
 {
 	return Frostbane::SaveKey;
+}
+
+Recipe* Frostbane::getRecipe()
+{
+	return FrostbanePlans::create();
 }

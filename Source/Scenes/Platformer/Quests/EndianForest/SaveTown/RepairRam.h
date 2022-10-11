@@ -36,19 +36,19 @@ private:
 	void onRamInteract();
 	void runCinematicSequence();
 
-	Ram* ram;
-	InteractObject* repairInteract;
-	AnimationPart* wheel1;
-	AnimationPart* wheel2;
-	AnimationPart* wheel3;
-	Sound* impactSound;
-	WorldSound* rollSound;
+	Ram* ram = nullptr;
+	InteractObject* repairInteract = nullptr;
+	AnimationPart* wheel1 = nullptr;
+	AnimationPart* wheel2 = nullptr;
+	AnimationPart* wheel3 = nullptr;
+	Sound* impactSound = nullptr;
+	WorldSound* rollSound = nullptr;
 
-	Scrappy* scrappy;
-	Squally* squally;
-	Inventory* inventory;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
+	Inventory* inventory = nullptr;
 
-	bool wasActivated;
+	bool wasActivated = false;
 
 	static const std::string WheelFoundCount;
 };

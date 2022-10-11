@@ -9,8 +9,6 @@ namespace cocos2d
 
 class ClickableTextNode;
 class LocalizedLabel;
-class PlatformerEntity;
-class ScrollPane;
 class Sound;
 
 class DefeatMenu : public SmartNode
@@ -31,8 +29,8 @@ protected:
 private:
 	typedef SmartNode super;
 
-	cocos2d::Sprite* defeatBanner;
-	LocalizedLabel* defeatLabel;
-	ClickableTextNode* returnButton;
-	Sound* defeatSound;
+	cocos2d::Sprite* defeatBanner = nullptr;
+	LocalizedLabel* defeatLabel = nullptr;
+	ClickableTextNode* returnButton = nullptr;
+	Sound* defeatSound = nullptr;
 };

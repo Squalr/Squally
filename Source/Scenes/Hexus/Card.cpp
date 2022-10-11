@@ -13,7 +13,7 @@
 #include "Engine/Utils/HackUtils.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardEffects.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
@@ -41,10 +41,8 @@ Card* Card::create(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, 
 
 Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool relocateUI)
 {
-	this->mouseOverCallback = nullptr;
 	this->isPlayerOwnedCard = isPlayerOwnedCard;
 	this->relocateUI = relocateUI;
-	this->operations = std::vector<Operation>();
 	this->cardData = data;
 	this->cardStyle = cardStyle;
 
@@ -183,8 +181,8 @@ void Card::onEnterTransitionDidFinish()
 	if (this->relocateUI)
 	{
 		// TODO: This is broken somehow, there is an issue where these are not being properly positioned as UIBoundObjects
-		// ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->overflowLabel));
-		// ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->underflowLabel));
+		// ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->overflowLabel));
+		// ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->underflowLabel));
 	}
 }
 
@@ -192,7 +190,7 @@ void Card::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->cardLabel->setPosition(Vec2(0.0f, -88.0f));
 }
@@ -457,12 +455,12 @@ void Card::setFocusTint(Color3B color)
 
 void Card::doDrawAnimation(float cardDrawDelay)
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->reveal();
 
 	this->runAction(
-		EaseSineInOut::create(MoveTo::create(cardDrawDelay, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f)))
+		EaseSineInOut::create(MoveTo::create(cardDrawDelay, Vec2(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f)))
 	);
 
 	this->runAction(
@@ -560,7 +558,7 @@ int Card::simulateOperation(Operation operation)
 
 void Card::runOverflowEffect(bool offsetYPosition)
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	bool isHighOnScreen = GameUtils::getScreenBounds(this).getMinY() >= visibleSize.height - 256.0f;
 
 	this->overflowLabel->setPosition(Vec2(0.0f, isHighOnScreen ? (-64.0f + (offsetYPosition ? -32.0f : 0.0f)) : (64.0f + (offsetYPosition ? 32.0f : 0.0f))));
@@ -579,8 +577,8 @@ void Card::runOverflowEffect(bool offsetYPosition)
 
 void Card::runUnderflowEffect(bool offsetYPosition, bool isGoodEffect)
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	bool isHighOnScreen = GameUtils::getScreenBounds(this).getMinY() >= visibleSize.height - 256.0f;\
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
+	bool isHighOnScreen = GameUtils::getScreenBounds(this).getMinY() >= visibleSize.height - 256.0f;
 
 	this->underflowLabel->setTextColor(isGoodEffect ? Color4B::GREEN : Color4B::RED);
 

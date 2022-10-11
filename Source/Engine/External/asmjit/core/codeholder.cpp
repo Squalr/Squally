@@ -555,14 +555,14 @@ Error CodeHolder::newNamedLabelEntry(LabelEntry** entryOut, const char* name, si
     return DebugUtils::errored(kErrorLabelNameTooLong);
 
   switch (type) {
-    case Label::kTypeLocal:
+    case AsmLabel::kTypeLocal:
       if (ASMJIT_UNLIKELY(parentId >= _labelEntries.size()))
         return DebugUtils::errored(kErrorInvalidParentLabel);
 
       hashCode ^= parentId;
       break;
 
-    case Label::kTypeGlobal:
+    case AsmLabel::kTypeGlobal:
       if (ASMJIT_UNLIKELY(parentId != Globals::kInvalidId))
         return DebugUtils::errored(kErrorNonLocalLabelCantHaveParent);
 
@@ -670,7 +670,7 @@ ASMJIT_API Error CodeHolder::resolveUnresolvedLinks() noexcept {
   return err;
 }
 
-ASMJIT_API Error CodeHolder::bindLabel(const Label& label, uint32_t toSectionId, uint64_t toOffset) noexcept {
+ASMJIT_API Error CodeHolder::bindLabel(const AsmLabel& label, uint32_t toSectionId, uint64_t toOffset) noexcept {
   LabelEntry* le = labelEntry(label);
   if (ASMJIT_UNLIKELY(!le))
     return DebugUtils::errored(kErrorInvalidLabel);

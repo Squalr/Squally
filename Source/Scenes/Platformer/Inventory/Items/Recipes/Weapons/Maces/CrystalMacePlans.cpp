@@ -29,9 +29,9 @@ CrystalMacePlans::~CrystalMacePlans()
 {
 }
 
-Item* CrystalMacePlans::craft()
+std::vector<Item*> CrystalMacePlans::craft()
 {
-	return CrystalMace::create();
+	return { CrystalMace::create() };
 }
 
 std::vector<std::tuple<Item*, int>> CrystalMacePlans::getReagentsInternal()
@@ -50,17 +50,12 @@ Item* CrystalMacePlans::clone()
 	return CrystalMacePlans::create();
 }
 
-std::string CrystalMacePlans::getItemName()
-{
-	return CrystalMacePlans::SaveKey;
-}
-
 LocalizedString* CrystalMacePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_CrystalMace::create();
 }
 
-std::string CrystalMacePlans::getIconResource()
+const std::string& CrystalMacePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -70,7 +65,7 @@ std::string CrystalMacePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Maces_CrystalMace;
 }
 
-std::string CrystalMacePlans::getSerializationKey()
+const std::string& CrystalMacePlans::getIdentifier()
 {
 	return CrystalMacePlans::SaveKey;
 }

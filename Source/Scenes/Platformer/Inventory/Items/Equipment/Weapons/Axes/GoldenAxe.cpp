@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/GoldenAxePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,30 +47,25 @@ Item* GoldenAxe::clone()
 	return GoldenAxe::create();
 }
 
-std::string GoldenAxe::getItemName()
-{
-	return GoldenAxe::SaveKey;
-}
-
 LocalizedString* GoldenAxe::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_GoldenAxe::create();
 }
 
-std::string GoldenAxe::getIconResource()
+const std::string& GoldenAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Axes_GoldenAxe;
 }
 
-std::string GoldenAxe::getSerializationKey()
+const std::string& GoldenAxe::getIdentifier()
 {
 	return GoldenAxe::SaveKey;
 }
 
-Size GoldenAxe::getWeaponCollisionSize()
+CSize GoldenAxe::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return Size(112.0f, 96.0f);
+	return CSize(112.0f, 96.0f);
 }
 
 Vec2 GoldenAxe::getWeaponCollisionOffset()
@@ -81,4 +77,9 @@ Vec2 GoldenAxe::getWeaponCollisionOffset()
 Vec2 GoldenAxe::getDisplayOffset()
 {
 	return Vec2(28.0f, -4.0f);
+}
+
+Recipe* GoldenAxe::getRecipe()
+{
+	return GoldenAxePlans::create();
 }

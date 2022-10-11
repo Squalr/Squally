@@ -23,11 +23,12 @@ protected:
 	
 private:
 	typedef LexiconPage super;
-	ControlFlowSelectPage();
-	~ControlFlowSelectPage();
 
-	cocos2d::Sprite* decorLine;
-	LocalizedLabel* operationSelectLabel;
-	ClickableTextNode* nopOperationButton;
-	LocalizedLabel* introText;
+	ControlFlowSelectPage();
+	virtual ~ControlFlowSelectPage();
+
+	cocos2d::Sprite* decorLine = nullptr;
+	LocalizedLabel* operationSelectLabel = nullptr;
+	ClickableTextNode* nopOperationButton = nullptr;
+	LocalizedLabel* introText = nullptr;
 };

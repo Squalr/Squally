@@ -32,13 +32,12 @@ private:
 	void runTutorialDecimalCards(GameState* gameState);
 	void runTutorialHelp(GameState* gameState);
 
-	FocusTakeOver* focusTakeOver;
-	LocalizedLabel* introTutorialLabel;
-	LocalizedLabel* decimalCardsTutorialLabel;
-	LocalizedLabel* helpTutorialLabel;
-	ClickableTextNode* introNextButton;
-	ClickableTextNode* decimalCardsNextButton;
-	ClickableTextNode* helpNextButton;
-
-	HelpArrow* helpArrow;
+	FocusTakeOver* focusTakeOver = nullptr;
+	LocalizedLabel* introTutorialLabel = nullptr;
+	LocalizedLabel* decimalCardsTutorialLabel = nullptr;
+	LocalizedLabel* helpTutorialLabel = nullptr;
+	ClickableTextNode* introNextButton = nullptr;
+	ClickableTextNode* decimalCardsNextButton = nullptr;
+	ClickableTextNode* helpNextButton = nullptr;
+	HelpArrow* helpArrow = nullptr;
 };

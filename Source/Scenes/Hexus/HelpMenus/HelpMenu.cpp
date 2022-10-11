@@ -49,7 +49,7 @@ HelpMenu::HelpMenu()
     exitLabel->enableOutline(Color4B::BLACK, 2);
     exitLabelSelect->enableOutline(Color4B::BLACK, 2);
     
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
     this->background = Sprite::create(HexusResources::StoreMenu_StoreBoard);
     this->textPanel = LayerColor::create(Color4B(0, 0, 0, 196), 1234, 196);
@@ -111,7 +111,7 @@ void HelpMenu::initializePositions()
 {
     super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->backdrop->setPosition(Vec2(-visibleSize.width / 2.0f, -visibleSize.height / 2.0f));
     this->textPanel->setPosition(Vec2(-1234.0f / 2.0f, 236.0f));
@@ -119,9 +119,9 @@ void HelpMenu::initializePositions()
     this->exitButton->setPosition(Vec2(0.0f, -356.0f));
 }
 
-void HelpMenu::setExitCallback(std::function<void()> onExit)
+void HelpMenu::initializeListeners()
 {
-    this->onExit = onExit;
+    super::initializeListeners();
 
     this->exitButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
     {
@@ -136,9 +136,9 @@ void HelpMenu::setExitCallback(std::function<void()> onExit)
         }
     });
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		if (!GameUtils::isVisible(this))
+		if (GameUtils::getFocusedNode() != this)
 		{
 			return;
 		}
@@ -155,6 +155,11 @@ void HelpMenu::setExitCallback(std::function<void()> onExit)
             this->onExitSecondary();
         }
 	});
+}
+
+void HelpMenu::setExitCallback(std::function<void()> onExit)
+{
+    this->onExit = onExit;
 }
 
 void HelpMenu::openMenu(CardData* cardData, bool showBackdrop, std::function<void()> onExitSecondary)

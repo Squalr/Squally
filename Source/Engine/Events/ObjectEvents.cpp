@@ -26,7 +26,7 @@ void ObjectEvents::TriggerBroadCastMapObjectState(std::string eventName, ValueMa
 {
     if (!eventName.empty())
     {
-        Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+        Director::getInstance()->getEventDispatcher()->dispatchEvent(
             ObjectEvents::EventBroadCastMapObjectStatePrefix + eventName,
             &args
         );
@@ -35,7 +35,7 @@ void ObjectEvents::TriggerBroadCastMapObjectState(std::string eventName, ValueMa
 
 void ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		ObjectEvents::EventSpawnObject,
 		&args
 	);
@@ -52,7 +52,7 @@ void ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs args)
 
 void ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		ObjectEvents::EventBindObjectToUI,
 		&args
 	);
@@ -60,7 +60,7 @@ void ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs args)
 
 void ObjectEvents::TriggerElevateObject(RelocateObjectArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		ObjectEvents::EventElevateObject,
 		&args
 	);
@@ -68,7 +68,7 @@ void ObjectEvents::TriggerElevateObject(RelocateObjectArgs args)
 
 void ObjectEvents::TriggerReparentBind(ReparentBindArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 	ObjectEvents::EventReparentBindPrefix + std::to_string((unsigned long long)(args.relocatedObject)),
 		&args
 	);
@@ -76,7 +76,7 @@ void ObjectEvents::TriggerReparentBind(ReparentBindArgs args)
 
 void ObjectEvents::TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		ObjectEvents::EventSpawnObjectDelegator,
 		&args
 	);
@@ -86,7 +86,7 @@ void ObjectEvents::TriggerWriteObjectState(StateWriteArgs args)
 {
 	const std::string eventKey = args.key + "_" + std::to_string((unsigned long long)(args.owner));
 
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		ObjectEvents::EventWriteStatePrefix + eventKey,
 		&args
 	);

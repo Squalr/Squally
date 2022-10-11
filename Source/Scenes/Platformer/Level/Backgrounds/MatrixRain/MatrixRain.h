@@ -10,12 +10,14 @@ class MatrixRain : public Hud
 public:
 	static MatrixRain* create();
 
+protected:
+	MatrixRain();
+	virtual ~MatrixRain();
+	
+	void pause(void) override;
+
 private:
 	typedef Hud super;
-	MatrixRain();
-	~MatrixRain();
-
-	void pause(void) override;
 
 	std::vector<MatrixStrand*> strands;
 

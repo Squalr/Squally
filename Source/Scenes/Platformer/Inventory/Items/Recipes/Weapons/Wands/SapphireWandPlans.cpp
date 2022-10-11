@@ -29,9 +29,9 @@ SapphireWandPlans::~SapphireWandPlans()
 {
 }
 
-Item* SapphireWandPlans::craft()
+std::vector<Item*> SapphireWandPlans::craft()
 {
-	return SerpentWand::create();
+	return { SapphireWand::create() };
 }
 
 std::vector<std::tuple<Item*, int>> SapphireWandPlans::getReagentsInternal()
@@ -49,17 +49,12 @@ Item* SapphireWandPlans::clone()
 	return SapphireWandPlans::create();
 }
 
-std::string SapphireWandPlans::getItemName()
-{
-	return SapphireWandPlans::SaveKey;
-}
-
 LocalizedString* SapphireWandPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_SapphireWand::create();
 }
 
-std::string SapphireWandPlans::getIconResource()
+const std::string& SapphireWandPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +64,7 @@ std::string SapphireWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Wands_SapphireWand;
 }
 
-std::string SapphireWandPlans::getSerializationKey()
+const std::string& SapphireWandPlans::getIdentifier()
 {
 	return SapphireWandPlans::SaveKey;
 }

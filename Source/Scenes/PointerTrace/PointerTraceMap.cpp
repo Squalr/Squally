@@ -8,8 +8,14 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
-#include "Deserializers/Deserializers.h"
+#include "Deserializers/Isometric/IsometricDecorDeserializer.h"
+#include "Deserializers/Isometric/IsometricEntityDeserializer.h"
+#include "Deserializers/Isometric/IsometricObjectDeserializer.h"
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Deserializers/Meta/BackgroundDeserializer.h"
+#include "Engine/Deserializers/Meta/MetaLayerDeserializer.h"
+#include "Engine/Deserializers/Meta/MusicDeserializer.h"
+#include "Engine/Deserializers/Objects/ObjectLayerDeserializer.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Maps/TileLayer.h"
@@ -42,12 +48,9 @@ PointerTraceMap* PointerTraceMap::create(std::string mapFile, std::function<void
 	return instance;
 }
 
-PointerTraceMap::PointerTraceMap(std::string mapFile, std::function<void()> onLevelClearCallback) : super(false, false)
+PointerTraceMap::PointerTraceMap(std::string mapFile, std::function<void()> onLevelClearCallback) : super(false)
 {
 	this->onLevelClearCallback = onLevelClearCallback;
-	this->collisionMap = std::set<int>();
-	this->segfaultMap = std::set<int>();
-	this->memoryGrid = nullptr;
 	this->collisionDebugNode = Node::create();
 	this->pointerTraceHud = PointerTraceHud::create();
 	this->victoryMenu = VictoryMenu::create();
@@ -85,10 +88,10 @@ void PointerTraceMap::onEnter()
 
 	this->victoryMenu->setVisible(false);
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<MemoryGrid>([=](MemoryGrid* memoryGrid)
+	ObjectEvents::QueryObject<MemoryGrid>([=](MemoryGrid* memoryGrid)
 	{
 		this->memoryGrid = memoryGrid;
-	}));
+	});
 
 	this->buildCollisionMaps();
 	this->initializeGridObjects();
@@ -100,7 +103,7 @@ void PointerTraceMap::initializePositions()
 {
 	super::initializePositions();
 	
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->victoryMenu->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }
@@ -126,7 +129,7 @@ void PointerTraceMap::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventRequestMovement, [=](EventCustom* eventCustom)
 	{
-		PointerTraceEvents::PointerTraceRequestMovementArgs* args = static_cast<PointerTraceEvents::PointerTraceRequestMovementArgs*>(eventCustom->getUserData());
+		PointerTraceEvents::PointerTraceRequestMovementArgs* args = static_cast<PointerTraceEvents::PointerTraceRequestMovementArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -136,7 +139,7 @@ void PointerTraceMap::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventResumeMovement, [=](EventCustom* eventCustom)
 	{
-		PointerTraceEvents::PointerTraceRequestMovementArgs* args = static_cast<PointerTraceEvents::PointerTraceRequestMovementArgs*>(eventCustom->getUserData());
+		PointerTraceEvents::PointerTraceRequestMovementArgs* args = static_cast<PointerTraceEvents::PointerTraceRequestMovementArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -334,32 +337,32 @@ void PointerTraceMap::initializeGridObjects()
 	}
 
 	// Initialize registers first before anything else
-	ObjectEvents::QueryObjects(QueryObjectsArgs<RegisterInitializer>([=](RegisterInitializer* gridObject)
+	ObjectEvents::QueryObjects<RegisterInitializer>([=](RegisterInitializer* gridObject)
 	{
 		int gridIndex = this->memoryGrid->worldCoordsToGridIndex(gridObject->getPosition());
 		Vec2 realignedPosition = this->memoryGrid->gridIndexToWorldPosition(gridIndex);
 		
 		gridObject->setPosition(realignedPosition);
 		gridObject->setInitialGridIndex(gridIndex);
-	}));
+	});
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<GridObject>([=](GridObject* gridObject)
+	ObjectEvents::QueryObjects<GridObject>([=](GridObject* gridObject)
 	{
 		int gridIndex = this->memoryGrid->worldCoordsToGridIndex(gridObject->getPosition());
 		Vec2 realignedPosition = this->memoryGrid->gridIndexToWorldPosition(gridIndex);
 		
 		gridObject->setPosition(realignedPosition);
 		gridObject->setInitialGridIndex(gridIndex);
-	}));
+	});
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<GridEntity>([=](GridEntity* gridEntity)
+	ObjectEvents::QueryObjects<GridEntity>([=](GridEntity* gridEntity)
 	{
 		int gridIndex = this->memoryGrid->worldCoordsToGridIndex(gridEntity->getPosition());
 		Vec2 realignedPosition = this->memoryGrid->gridIndexToWorldPosition(gridIndex);
 		
 		gridEntity->setPosition(realignedPosition);
 		gridEntity->setInitialGridIndex(gridIndex);
-	}));
+	});
 
 	this->memoryGrid->setInitialState();
 }
@@ -371,15 +374,15 @@ void PointerTraceMap::resetState()
 		return;
 	}
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<GridObject>([=](GridObject* gridObject)
+	ObjectEvents::QueryObjects<GridObject>([=](GridObject* gridObject)
 	{
 		gridObject->setGridIndex(gridObject->getInitialGridIndex());
 		Vec2 respawnPosition = this->memoryGrid->gridIndexToWorldPosition(gridObject->getGridIndex());
 		
 		gridObject->setPosition(respawnPosition);
-	}));
+	});
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<GridEntity>([=](GridEntity* gridEntity)
+	ObjectEvents::QueryObjects<GridEntity>([=](GridEntity* gridEntity)
 	{
 		gridEntity->setGridIndex(gridEntity->getInitialGridIndex());
 		Vec2 respawnPosition = this->memoryGrid->gridIndexToWorldPosition(gridEntity->getGridIndex());
@@ -388,7 +391,7 @@ void PointerTraceMap::resetState()
 		gridEntity->uninterruptMovement();
 		
 		gridEntity->setPosition(respawnPosition);
-	}));
+	});
 
 	this->memoryGrid->resetState();
 }
@@ -404,7 +407,7 @@ void PointerTraceMap::buildCollisionMaps()
 	}
 
 	std::vector<TileLayer*> collisionLayers = this->map->getCollisionLayers();
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	for (auto layer : collisionLayers)
 	{

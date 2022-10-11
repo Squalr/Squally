@@ -8,19 +8,20 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Entities/Platformer/Npcs/DataMines/Sarude.h"
+#include "Entities/Platformer/Npcs/Mages/Sarude.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/MagePortals/MagePortal.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/SarudeTutorialBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/SarudeTutorialSkipBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/Hexus/EndianForest/Gauntlet/SarudeTutorialBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/Hexus/EndianForest/Gauntlet/SarudeTutorialSkipBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
@@ -43,9 +44,6 @@ ReturnToSarude* ReturnToSarude::create(GameObject* owner, QuestLine* questLine)
 
 ReturnToSarude::ReturnToSarude(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ReturnToSarude::MapKeyQuest, false)
 {
-	this->sarude = nullptr;
-	this->squally = nullptr;
-	this->portal = nullptr;
 }
 
 ReturnToSarude::~ReturnToSarude()
@@ -99,16 +97,16 @@ void ReturnToSarude::registerDialogue(bool isActiveThroughSkippable)
 	{
 		if (!isActiveThroughSkippable)
 		{
-			this->sarude->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+			this->sarude->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 			{
 				// Pre-text chain
 				interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 					Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_K_IChallengeYou::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
-						DialogueBox::DialogueAlignment::Left,
-						DialogueEvents::BuildPreviewNode(&this->sarude, false),
-						DialogueEvents::BuildPreviewNode(&this->squally, true)
+						DialogueBox::DialogueAlignment::Right,
+						DialogueEvents::BuildPreviewNode(&this->squally, false),
+						DialogueEvents::BuildPreviewNode(&this->sarude, true)
 					),
 					[=]()
 					{
@@ -138,7 +136,7 @@ void ReturnToSarude::registerDialogue(bool isActiveThroughSkippable)
 			this->onHexusLoss();
 		});
 
-		this->sarude->attachBehavior(behavior);
+		this->sarude->attachComponent(behavior);
 	}
 }
 
@@ -151,7 +149,7 @@ void ReturnToSarude::onHexusWin()
 
 void ReturnToSarude::onHexusLoss()
 {
-	this->sarude->watchForAttachedBehavior<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
+	this->sarude->watchForComponent<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
 	{
 		if (hexusBehavior->getLosses() + hexusBehavior->getDraws() >= 2)
 		{
@@ -172,9 +170,9 @@ void ReturnToSarude::runDialogueIntroWin()
 		Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_M_WellDone::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Top,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->sarude, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->sarude, true)
 		),
 		[=]()
 		{
@@ -192,7 +190,7 @@ void ReturnToSarude::runPostHexusMatchCleanup()
 		this->portal->closePortal(false);
 	}
 
-	this->sarude->watchForAttachedBehavior<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
+	this->sarude->watchForComponent<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
 	{
 		hexusBehavior->removeFromDialogue();
 	});
@@ -225,9 +223,9 @@ void ReturnToSarude::runDialogueOutro()
 	Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_N_WeBroughtYouHere::create(),
 	DialogueEvents::DialogueVisualArgs(
 		DialogueBox::DialogueDock::Top,
-		DialogueBox::DialogueAlignment::Left,
-		DialogueEvents::BuildPreviewNode(&this->sarude, false),
-		DialogueEvents::BuildPreviewNode(&this->squally, true)
+		DialogueBox::DialogueAlignment::Right,
+		DialogueEvents::BuildPreviewNode(&this->squally, false),
+		DialogueEvents::BuildPreviewNode(&this->sarude, true)
 	),
 	[=]()
 	{
@@ -236,9 +234,9 @@ void ReturnToSarude::runDialogueOutro()
 			->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_EndianForest_Scrappy::create()),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Top,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->sarude, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->sarude, true)
 		),
 		[=]()
 		{
@@ -246,9 +244,9 @@ void ReturnToSarude::runDialogueOutro()
 			Strings::Platformer_Quests_EndianForest_HexusGauntlet_Sarude_P_LearnMoreOfTheseMonsters::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Top,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->sarude, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->sarude, true)
 			),
 			[=]()
 			{

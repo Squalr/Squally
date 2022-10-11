@@ -29,9 +29,9 @@ DemonicBowPlans::~DemonicBowPlans()
 {
 }
 
-Item* DemonicBowPlans::craft()
+std::vector<Item*> DemonicBowPlans::craft()
 {
-	return DemonicBow::create();
+	return { DemonicBow::create() };
 }
 
 std::vector<std::tuple<Item*, int>> DemonicBowPlans::getReagentsInternal()
@@ -51,17 +51,12 @@ Item* DemonicBowPlans::clone()
 	return DemonicBowPlans::create();
 }
 
-std::string DemonicBowPlans::getItemName()
-{
-	return DemonicBowPlans::SaveKey;
-}
-
 LocalizedString* DemonicBowPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_DemonicBow::create();
 }
 
-std::string DemonicBowPlans::getIconResource()
+const std::string& DemonicBowPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -71,7 +66,7 @@ std::string DemonicBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_DemonicBow;
 }
 
-std::string DemonicBowPlans::getSerializationKey()
+const std::string& DemonicBowPlans::getIdentifier()
 {
 	return DemonicBowPlans::SaveKey;
 }

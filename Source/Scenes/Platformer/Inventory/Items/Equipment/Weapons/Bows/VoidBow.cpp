@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Bows/VoidBowPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* VoidBow::clone()
 	return VoidBow::create();
 }
 
-std::string VoidBow::getItemName()
-{
-	return VoidBow::SaveKey;
-}
-
 LocalizedString* VoidBow::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_VoidBow::create();
 }
 
-std::string VoidBow::getIconResource()
+const std::string& VoidBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_VoidBow;
 }
 
-std::string VoidBow::getSerializationKey()
+const std::string& VoidBow::getIdentifier()
 {
 	return VoidBow::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string VoidBow::getSerializationKey()
 Vec2 VoidBow::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* VoidBow::getRecipe()
+{
+	return VoidBowPlans::create();
 }

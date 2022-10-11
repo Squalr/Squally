@@ -16,11 +16,13 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	GatePuzzleDoorGenericPreview();
-	~GatePuzzleDoorGenericPreview();
+	virtual ~GatePuzzleDoorGenericPreview();
+	
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 };

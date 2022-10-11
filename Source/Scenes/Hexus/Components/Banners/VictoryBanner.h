@@ -9,7 +9,7 @@ namespace cocos2d
 class VictoryBanner : public BannerBase
 {
 public:
-	static VictoryBanner * create();
+	static VictoryBanner* create();
 
 protected:
 	VictoryBanner();
@@ -22,6 +22,6 @@ protected:
 private:
 	typedef BannerBase super;
 
-	cocos2d::Sprite* victoryBanner1;
-	cocos2d::Sprite* victoryBanner2;
+	cocos2d::Sprite* victoryBanner1 = nullptr;
+	cocos2d::Sprite* victoryBanner2 = nullptr;
 };

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="945">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="45" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="951">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -41,10 +41,9 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-4329.69" y="589.3" width="23473.7" height="866">
+  <object id="945" name="Forest/Background/WaterfallRocks" type="decor" x="-5961.69" y="1101.3" width="21461.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -53,10 +52,9 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-4301.81" y="581.98" width="23373.6" height="922">
+  <object id="947" name="Forest/Background/WaterfallGround" type="decor" x="-4509.81" y="705.6" width="18345.6" height="2565">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="2.25"/>
    </properties>
   </object>
  </objectgroup>
@@ -181,14 +179,28 @@
     <property name="transition" value="entrance-A"/>
    </properties>
   </object>
-  <object id="928" name="solid" type="collision" x="3710.18" y="-36.4848" width="107.515" height="2862.06"/>
-  <object id="930" name="solid" type="collision" x="9022.24" y="-55.03" width="107.515" height="3150.06"/>
+  <object id="928" name="solid" type="collision" x="3710.18" y="-36.4848" width="107.515" height="2862.06">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="930" name="solid" type="collision" x="9022.24" y="-55.03" width="107.515" height="3150.06">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="931" name="iou" type="object" x="8260.5" y="2044.5" width="87" height="87"/>
   <object id="932" name="iou" type="object" x="8681.83" y="2047.17" width="87" height="87"/>
   <object id="933" name="vase" type="object" x="8460.35" y="1974.42" width="113" height="160">
    <properties>
     <property name="color" value="tan"/>
     <property name="spawn-pool" value="spawn-pool-ef"/>
+   </properties>
+  </object>
+  <object id="949" name="portal" type="object" x="4254.67" y="1289.33" width="256" height="192">
+   <properties>
+    <property name="map" value="EndianForest/Zone_2_8"/>
+    <property name="transition" value="back"/>
    </properties>
   </object>
  </objectgroup>
@@ -200,18 +212,18 @@
   </properties>
   <object id="916" name="goblin-warrior-pig" type="entity" x="6757.7" y="1077.92" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Temple"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="917" name="goblin-warrior-pig" type="entity" x="6763.28" y="669.485" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>
@@ -232,6 +244,11 @@
   <object id="944" name="spawn" type="object" x="7812.85" y="1079.34" width="128" height="128">
    <properties>
     <property name="transition" value="exit-A"/>
+   </properties>
+  </object>
+  <object id="950" name="spawn" type="object" x="4318.67" y="1418.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="back"/>
    </properties>
   </object>
  </objectgroup>
@@ -312,9 +329,9 @@
    </properties>
   </object>
   <object id="829" name="help-totem-hexus-cards" type="object" x="5620" y="1944" width="248" height="248"/>
-  <object id="840" name="chest" type="object" x="1118.24" y="535.21" width="128" height="128">
+  <object id="840" name="metal-chest" type="object" x="1118.24" y="535.21" width="128" height="128">
    <properties>
-    <property name="reward-pool" value="ef-generic"/>
+    <property name="reward-pool" value="ef-rare"/>
    </properties>
   </object>
   <object id="869" name="edge-portal" type="object" x="-19.959" y="23.57" width="199.918" height="640.851">
@@ -329,11 +346,6 @@
     <property name="direction" value="right"/>
     <property name="map" value="EndianForest/Zone_2_2"/>
     <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="910" name="spawn" type="object" x="2432" y="132" width="128" height="128">
-   <properties>
-    <property name="transition" value="fall"/>
    </properties>
   </object>
   <object id="911" name="life-stone" type="object" x="7565.67" y="1769.47" width="146" height="423"/>
@@ -351,7 +363,7 @@
   </properties>
   <object id="827" name="chiron" type="entity" x="6600" y="2056" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="chiron-hexus,friendly,face-squally,pick-pocket"/>
+    <property name="components" value="chiron-hexus,friendly,face-squally,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>
     <property name="quest" value="talk-to-chiron"/>
     <property name="quest-line" value="find-elriel"/>
@@ -365,7 +377,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="537.292" y="3638.49" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="934" name="warp" type="object" x="6940" y="1932" width="256" height="256">

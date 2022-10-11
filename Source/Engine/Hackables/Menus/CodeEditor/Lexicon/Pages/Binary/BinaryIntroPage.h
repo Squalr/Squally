@@ -22,11 +22,12 @@ protected:
 	
 private:
 	typedef LexiconPage super;
-	BinaryIntroPage();
-	~BinaryIntroPage();
 
-	cocos2d::Sprite* hammerSprite;
-	cocos2d::Sprite* chapterSprite;
-	LocalizedLabel* introText;
-	LocalizedLabel* titleLabel;
+	BinaryIntroPage();
+	virtual ~BinaryIntroPage();
+
+	cocos2d::Sprite* hammerSprite = nullptr;
+	cocos2d::Sprite* chapterSprite = nullptr;
+	LocalizedLabel* introText = nullptr;
+	LocalizedLabel* titleLabel = nullptr;
 };

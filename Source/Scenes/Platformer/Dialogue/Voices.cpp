@@ -27,6 +27,10 @@ std::string Voices::GetNextVoiceShort(VoiceType voiceType)
 		{
 			return Voices::GetNextVoiceGhostShort();
 		}
+		case VoiceType::Rhino:
+		{
+			return Voices::GetNextVoiceRhinoShort();
+		}
 	}
 }
 
@@ -534,6 +538,22 @@ std::string Voices::GetNextVoiceGhostQuestion()
 		case 0:
 		{
 			return SoundResources::Platformer_Entities_Ghost_GhostMedium1;
+		}
+	}
+}
+
+std::string Voices::GetNextVoiceRhinoShort()
+{
+	static unsigned int VoiceIncrement = 0;
+	
+	VoiceIncrement++;
+
+	switch(VoiceIncrement % 1)
+	{
+		default:
+		case 0:
+		{
+			return SoundResources::Platformer_Entities_Rhino_ChatterShort1;
 		}
 	}
 }

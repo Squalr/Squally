@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
@@ -113,14 +114,10 @@ void Fortitude::registerHackables()
 				Strings::Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_ShieldGlowBlue,
-				FortitudeGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return FortitudeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax::create()->setStringReplacementVariables(
-							{
-								ConstantString::create(std::to_string(0)),
-								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(-Fortitude::MaxMultiplier)))
-							})
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax::create()
 					}
 				},
 				int(HackFlags::None),
@@ -155,7 +152,7 @@ void Fortitude::registerHackables()
 	auto func = &Fortitude::applyFortitude;
 	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
-	for (auto next : this->hackables)
+	for (HackableCode* next : this->hackables)
 	{
 		this->owner->registerCode(next);
 	}
@@ -165,26 +162,22 @@ void Fortitude::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs*
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageTaken] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyFortitude();
 
-	// Bound multiplier in either direction
-	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(MathUtils::clamp(
-		this->HackStateStorage[Buff::StateKeyDamageTaken].asInt(),
-		-std::abs(damageOrHealing->damageOrHealingValue * Fortitude::MaxMultiplier),
-		std::abs(damageOrHealing->damageOrHealingValue * Fortitude::MaxMultiplier))
-	);
-	
-	(*damageOrHealing->damageOrHealing) = this->HackStateStorage[Buff::StateKeyDamageTaken].asInt();
+	(*damageOrHealing->damageOrHealing) = Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
+	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * Fortitude::MaxMultiplier);
+	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * Fortitude::MaxMultiplier);
 }
 
 NO_OPTIMIZE void Fortitude::applyFortitude()
 {
 	static volatile int currentDamageTakenLocal = 0;
 
-	currentDamageTakenLocal = this->HackStateStorage[Buff::StateKeyDamageTaken].asInt();
+	currentDamageTakenLocal = Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZBX);
 	ASM_MOV_REG_VAR(ebx, currentDamageTakenLocal);
 
@@ -196,8 +189,9 @@ NO_OPTIMIZE void Fortitude::applyFortitude()
 	ASM_MOV_VAR_REG(currentDamageTakenLocal, ebx);
 
 	ASM(pop ZBX);
+	ASM_POP_EFLAGS()
 
-	this->HackStateStorage[Buff::StateKeyDamageTaken] = Value(currentDamageTakenLocal);
+	Buff::HackStateStorage[Buff::StateKeyDamageTaken] = Value(currentDamageTakenLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

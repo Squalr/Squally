@@ -16,14 +16,14 @@
 #include "Events/CombatEvents.h"
 #include "Objects/Camera/CameraFocus.h"
 #include "Objects/Platformer/Camera/CameraTarget.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Buff.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
 #include "Scenes/Platformer/State/StateKeys.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityCombatBehaviorBase.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityCombatBehaviorBase.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Pacifist/Pacifist.h"
 
 #include "Resources/UIResources.h"
@@ -32,6 +32,10 @@ using namespace cocos2d;
 
 const float TimelineEntry::CastPercentage = 0.75f;
 const float TimelineEntry::BaseSpeedMultiplier = 0.175f;
+const int TimelineEntry::DefaultMinDamage = -255;
+const int TimelineEntry::DefaultMaxDamage = 255;
+const int TimelineEntry::DefaultMinHealing = -255;
+const int TimelineEntry::DefaultMaxHealing = 255;
 
 TimelineEntry* TimelineEntry::create(PlatformerEntity* entity, int spawnIndex)
 {
@@ -51,12 +55,8 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, int spawnIndex) : super()
 	this->emblem = Sprite::create(entity == nullptr ? UIResources::EmptyImage : entity->getEmblemResource());
 	this->overlayCircle = Sprite::create(UIResources::Combat_OverlayCircle);
 	this->skull = Sprite::create(UIResources::Combat_Skull);
-	this->targetIcons = std::vector<cocos2d::Sprite*>();
 	this->orphanedAttackCache = Node::create();
-	this->isCasting = false;
-	this->isBlocking = false;
 	this->spawnIndex = spawnIndex;
-	this->combatBehavior = nullptr;
 	
 	for (int index = 0; index < 5; index++)
 	{
@@ -66,9 +66,7 @@ TimelineEntry::TimelineEntry(PlatformerEntity* entity, int spawnIndex) : super()
 
 		this->targetIcons.push_back(target);
 	}
-
-	this->interruptBonus = 0.0f;
-	this->progress = 0.0f;
+	
 	this->circleSelected->setVisible(false);
 
 	this->addChild(this->line);
@@ -103,7 +101,7 @@ void TimelineEntry::onEnter()
 
 	if (this->entity != nullptr)
 	{
-		this->entity->watchForAttachedBehavior<EntityCombatBehaviorBase>([=](EntityCombatBehaviorBase* combatBehavior)
+		this->entity->watchForComponent<EntityCombatBehaviorBase>([=](EntityCombatBehaviorBase* combatBehavior)
 		{
 			this->combatBehavior = combatBehavior;
 		});
@@ -137,7 +135,7 @@ void TimelineEntry::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastBlocked, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::CastBlockedArgs* args = static_cast<CombatEvents::CastBlockedArgs*>(eventCustom->getUserData());
+		CombatEvents::CastBlockedArgs* args = static_cast<CombatEvents::CastBlockedArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target == this->entity)
 		{
@@ -147,59 +145,59 @@ void TimelineEntry::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamage, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
 			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				this->applyDamage(args->caster, args->damageOrHealing, args->disableBuffProcessing, args->abilityType);
+				this->applyDamage(args);
 			}
 		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventHealing, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getUserData());
+		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
 			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				this->applyHealing(args->caster, args->damageOrHealing, args->disableBuffProcessing, args->abilityType);
+				this->applyHealing(args);
 			}
 		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaRestore, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getUserData());
+		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
 			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				this->applyManaRestore(args->caster, args->manaRestoreOrDrain, args->disableBuffProcessing, args->abilityType);
+				this->applyManaRestore(args);
 			}
 		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventManaDrain, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getUserData());
+		CombatEvents::ManaRestoreOrDrainArgs* args = static_cast<CombatEvents::ManaRestoreOrDrainArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target != nullptr && args->target == this->getEntity())
 		{
 			if (this->getEntity()->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 			{
-				this->applyManaDrain(args->caster, args->manaRestoreOrDrain, args->disableBuffProcessing, args->abilityType);
+				this->applyManaDrain(args);
 			}
 		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventGetAssociatedTimelineEntry, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::AssociatedEntryArgs* args = static_cast<CombatEvents::AssociatedEntryArgs*>(eventCustom->getUserData());
+		CombatEvents::AssociatedEntryArgs* args = static_cast<CombatEvents::AssociatedEntryArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->entity == this->getEntity())
 		{
@@ -234,27 +232,33 @@ PlatformerEntity* TimelineEntry::getEntity()
 	return this->entity;
 }
 
-void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disableBuffProcessing, AbilityType abilityType)
+void TimelineEntry::applyDamage(CombatEvents::DamageOrHealingArgs* args)
 {
 	PlatformerEntity* target = this->getEntity();
 
-	if (target == nullptr)
+	if (args == nullptr || target == nullptr)
 	{
 		return;
 	}
 
-	if (!disableBuffProcessing)
+	PlatformerEntity* caster = args->caster;
+	int damage = args->damageOrHealing;
+	AbilityType abilityType = args->abilityType;
+	int minDamage = TimelineEntry::DefaultMinDamage;
+	int maxDamage = TimelineEntry::DefaultMaxDamage;
+
+	if (!args->disableBuffProcessing)
 	{
-		int originalDamageBeforeBuffsAndStats = damage;
+		int originalDamageBeforeBuffsAndStats = args->damageOrHealing;
 		int originalDamageBeforeBuffs = originalDamageBeforeBuffsAndStats;
 
 		// Apply stats
-		CombatEvents::TriggerStatsModifyDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
-		CombatEvents::TriggerStatsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
+		CombatEvents::TriggerStatsModifyDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, &minDamage, &maxDamage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
+		CombatEvents::TriggerStatsModifyDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, &minDamage, &maxDamage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType));
 
 		originalDamageBeforeBuffs = damage;
 
-		CombatEvents::ModifiableDamageOrHealingArgs args = CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType);
+		CombatEvents::ModifiableDamageOrHealingArgs args = CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &damage, &minDamage, &maxDamage, damage, originalDamageBeforeBuffs, originalDamageBeforeBuffsAndStats, abilityType);
 
 		/******************
 		Modify outgoing damage
@@ -264,7 +268,7 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 		CombatEvents::TriggerModifyDamageDealt(args);
 
 		// Iterate buffs sequentially, as they are ordered by priority
-		caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			for (auto next : entityBuffBehavior->getBuffs())
 			{
@@ -298,7 +302,7 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 		CombatEvents::TriggerModifyDamageTaken(args);
 
 		// Iterate buffs sequentially, as they are ordered by priority
-		target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			for (auto next : entityBuffBehavior->getBuffs())
 			{
@@ -325,22 +329,34 @@ void TimelineEntry::applyDamage(PlatformerEntity* caster, int damage, bool disab
 		CombatEvents::TriggerModifyDamageTakenComplete(CombatEvents::DamageOrHealingArgs(caster, target, damage, abilityType));
 	}
 
-	if (abilityType != AbilityType::Passive)
+	if (abilityType != AbilityType::Passive && damage > 0)
 	{
 		this->tryInterrupt();
 	}
 
 	int health = target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 
-	target->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	// Clamp to the global min/max damage/healing
+	bool isOverflowedMin = args->overflowedMin;
+	bool isOverflowedMax = args->overflowedMax;
+
+	if (!isOverflowedMin && !isOverflowedMax)
 	{
-		healthBehavior->setHealth(health - damage);
+		isOverflowedMin = damage <= minDamage;
+		isOverflowedMin = damage >= maxDamage;
+	}
+
+	int clampedDamage = MathUtils::clamp(damage, minDamage, maxDamage);
+
+	target->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	{
+		healthBehavior->setHealth(health - clampedDamage);
 	});
 
-	CombatEvents::TriggerDamageDealt(CombatEvents::DamageOrHealingArgs(caster, target, damage, abilityType));
+	CombatEvents::TriggerDamageDealt(CombatEvents::DamageOrHealingArgs(caster, target, clampedDamage, abilityType, false, isOverflowedMin, isOverflowedMax));
 }
 
-void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool disableBuffProcessing, AbilityType abilityType)
+void TimelineEntry::applyHealing(CombatEvents::DamageOrHealingArgs* args)
 {
 	PlatformerEntity* target = this->getEntity();
 
@@ -349,16 +365,22 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 		return;
 	}
 
-	if (!disableBuffProcessing)
+	PlatformerEntity* caster = args->caster;
+	int healing = args->damageOrHealing;
+	AbilityType abilityType = args->abilityType;
+	int minHealing = TimelineEntry::DefaultMinHealing;
+	int maxHealing = TimelineEntry::DefaultMaxHealing;
+
+	if (!args->disableBuffProcessing)
 	{
 		int originalHealingBeforeBuffsAndStats = healing;
 		int originalHealingBeforeBuffs = originalHealingBeforeBuffsAndStats;
 
 		// Apply stats
-		CombatEvents::TriggerStatsModifyHealingDealt(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
-		CombatEvents::TriggerStatsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
+		CombatEvents::TriggerStatsModifyHealingDealt(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, &minHealing, &maxHealing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
+		CombatEvents::TriggerStatsModifyHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, &minHealing, &maxHealing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType));
 		
-		CombatEvents::ModifiableDamageOrHealingArgs args = CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType);
+		CombatEvents::ModifiableDamageOrHealingArgs args = CombatEvents::ModifiableDamageOrHealingArgs(caster, target, &healing, &minHealing, &maxHealing, healing, originalHealingBeforeBuffs, originalHealingBeforeBuffsAndStats, abilityType);
 
 		/******************
 		Modify outgoing healing
@@ -368,7 +390,7 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 		CombatEvents::TriggerModifyHealingDealt(args);
 
 		// Iterate buffs sequentially, as they are ordered by priority
-		caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			for (auto next : entityBuffBehavior->getBuffs())
 			{
@@ -400,7 +422,7 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 		CombatEvents::TriggerModifyHealingTaken(args);
 
 		// Iterate buffs sequentially, as they are ordered by priority
-		target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			for (auto next : entityBuffBehavior->getBuffs())
 			{
@@ -427,36 +449,48 @@ void TimelineEntry::applyHealing(PlatformerEntity* caster, int healing, bool dis
 
 	int health = target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
 
-	target->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	// Clamp to the global min/max damage/healing
+	bool isOverflowedMin = args->overflowedMin;
+	bool isOverflowedMax = args->overflowedMax;
+
+	if (!isOverflowedMin && !isOverflowedMax)
+	{
+		isOverflowedMin = healing <= minHealing;
+		isOverflowedMin = healing >= maxHealing;
+	}
+
+	int clampedHealing = MathUtils::clamp(healing, minHealing, maxHealing);
+
+	target->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
 		healthBehavior->setHealth(health + healing);
 	});
 
-	CombatEvents::TriggerHealingDealt(CombatEvents::DamageOrHealingArgs(caster, target, healing, abilityType));
+	CombatEvents::TriggerHealingDealt(CombatEvents::DamageOrHealingArgs(caster, target, healing, abilityType, false, isOverflowedMin, isOverflowedMax));
 }
 
-void TimelineEntry::applyManaRestore(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing, AbilityType abilityType)
+void TimelineEntry::applyManaRestore(CombatEvents::ManaRestoreOrDrainArgs* args)
 {
 	int mana = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
 
-	this->getEntity()->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+	this->getEntity()->getComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
-		manaBehavior->setMana(mana + manaGain);
+		manaBehavior->setMana(mana + args->manaRestoreOrDrain);
 	});
 
-	CombatEvents::TriggerManaRestoreDelt(CombatEvents::ManaRestoreOrDrainArgs(caster, this->getEntity(), manaGain, abilityType));
+	CombatEvents::TriggerManaRestoreDealt(*args);
 }
 
-void TimelineEntry::applyManaDrain(PlatformerEntity* caster, int manaDrain, bool disableBuffProcessing, AbilityType abilityType)
+void TimelineEntry::applyManaDrain(CombatEvents::ManaRestoreOrDrainArgs* args)
 {
 	int mana = this->getEntity()->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
 
-	this->getEntity()->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+	this->getEntity()->getComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
-		manaBehavior->setMana(mana - manaDrain);
+		manaBehavior->setMana(mana - args->manaRestoreOrDrain);
 	});
 
-	CombatEvents::TriggerManaDrainDelt(CombatEvents::ManaRestoreOrDrainArgs(caster, this->getEntity(), manaDrain, abilityType));
+	CombatEvents::TriggerManaDrainDealt(CombatEvents::ManaRestoreOrDrainArgs(*args));
 }
 
 void TimelineEntry::stageTargets(std::vector<PlatformerEntity*> targets)
@@ -513,7 +547,7 @@ void TimelineEntry::defend()
 
 	this->isCasting = true;
 	
-	this->getEntity()->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+	this->getEntity()->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->applyBuff(Defend::create(this->getEntity()));
 	});
@@ -578,10 +612,10 @@ void TimelineEntry::tryPerformActions()
 			CombatEvents::TriggerRequestAIAction(CombatEvents::AIRequestArgs(this));
 		}
 
-		ObjectEvents::QueryObjects<CameraFocus>(QueryObjectsArgs<CameraFocus>([&](CameraFocus* cameraTarget)
+		ObjectEvents::QueryObjects<CameraFocus>([&](CameraFocus* cameraTarget)
 		{
 			GameCamera::getInstance()->setTarget(cameraTarget->getTrackingData());
-		}), CameraFocus::MapKey);
+		}, CameraFocus::MapKey);
 	}
 	// Progress complete, do the cast
 	else if (this->progress >= 1.0f)
@@ -659,10 +693,10 @@ void TimelineEntry::cameraFocusEntry()
 {
 	std::string cameraTag = (this->isPlayerEntry() ? "player" : "enemy") + ("-camera-" + std::to_string(this->spawnIndex));
 
-	ObjectEvents::QueryObjects<CameraTarget>(QueryObjectsArgs<CameraTarget>([&](CameraTarget* cameraTarget)
+	ObjectEvents::QueryObjects<CameraTarget>([&](CameraTarget* cameraTarget)
 	{
 		GameCamera::getInstance()->setTarget(cameraTarget->getTrackingData());
-	}), cameraTag);
+	}, cameraTag);
 }
 
 void TimelineEntry::tryInterrupt()
@@ -741,6 +775,11 @@ void TimelineEntry::addBuffTarget(std::string iconResource)
 			return;
 		}
 	}
+}
+
+const std::string TimelineEntry::getEmblemResource()
+{
+	return entity == nullptr ? UIResources::EmptyImage : entity->getEmblemResource();
 }
 
 bool TimelineEntry::isPacifist()

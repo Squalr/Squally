@@ -7,7 +7,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/UIResources.h"
@@ -29,7 +29,7 @@ HelpTotemPickPocket* HelpTotemPickPocket::create(ValueMap& properties)
 
 HelpTotemPickPocket::HelpTotemPickPocket(ValueMap& properties) : super(properties)
 {
-	LocalizedString* hintString = Strings::Platformer_Help_HelpTotemPickPocket::create();
+	LocalizedString* hintString = Strings::Platformer_Help_HelpTotemGuano::create();
 	LocalizedString* helperNameString = Strings::Platformer_Entities_Names_Helpers_EndianForest_Guano::create();
 	LocalizedString* bracketString1 = Strings::Common_Brackets::create();
 	LocalizedString* shiftString = Strings::Input_Shift::create();
@@ -48,7 +48,7 @@ void HelpTotemPickPocket::onEnter()
 {
 	super::onEnter();
 
-	if (SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString() != Guano::MapKey)
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString() == "")
 	{
 		this->deactivate(true);
 	}

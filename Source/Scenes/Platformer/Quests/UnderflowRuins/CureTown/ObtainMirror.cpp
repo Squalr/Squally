@@ -17,11 +17,13 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Objects/Platformer/PlatformerDecorObject.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Helpers/GuanoPetrified/RopedMovementBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Petrification/GuanoUnpetrifyParticleBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Petrification/GuanoUnpetrifySoundBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/GuanoPetrified/RopedMovementBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Petrification/GuanoUnpetrifyParticleBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Petrification/GuanoUnpetrifySoundBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/MedusaMirror.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -43,12 +45,6 @@ ObtainMirror* ObtainMirror::create(GameObject* owner, QuestLine* questLine)
 
 ObtainMirror::ObtainMirror(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ObtainMirror::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->guanoPetrified = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
-	this->inventory = nullptr;
-	this->doBehaviorAttach = false;
 }
 
 ObtainMirror::~ObtainMirror()
@@ -61,7 +57,7 @@ void ObtainMirror::onLoad(QuestState questState)
 	{
 		this->squally = squally;
 
-		this->squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		this->squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			this->inventory = entityInventoryBehavior->getInventory();
 		});
@@ -137,14 +133,14 @@ void ObtainMirror::runCinematicSequencePt2()
 
 	this->doBehaviorAttach = true;
 
-	this->guanoPetrified->watchForAttachedBehavior<RopedMovementBehavior>([=](RopedMovementBehavior* ropedMovementBehavior)
+	this->guanoPetrified->watchForComponent<RopedMovementBehavior>([=](RopedMovementBehavior* ropedMovementBehavior)
 	{
 		ropedMovementBehavior->detach();
 	});
 
 	GuanoUnpetrifySoundBehavior* unpetrifySfxBehavior = GuanoUnpetrifySoundBehavior::create(this->guano);
 
-	this->guanoPetrified->attachBehavior(unpetrifySfxBehavior);
+	this->guanoPetrified->attachComponent(unpetrifySfxBehavior);
 
 	unpetrifySfxBehavior->unpetrify();
 
@@ -273,7 +269,7 @@ void ObtainMirror::attachGuanoSpawnBehaviors()
 
 	GuanoUnpetrifyParticleBehavior* unpetrifyParticleBehavior = GuanoUnpetrifyParticleBehavior::create(this->guano);
 
-	this->guano->attachBehavior(unpetrifyParticleBehavior);
+	this->guano->attachComponent(unpetrifyParticleBehavior);
 
 	unpetrifyParticleBehavior->unpetrify();
 }

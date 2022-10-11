@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier3/WolfHatPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* WolfHat::clone()
 	return WolfHat::create();
 }
 
-std::string WolfHat::getItemName()
-{
-	return WolfHat::SaveKey;
-}
-
 LocalizedString* WolfHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_WolfHat::create();
 }
 
-std::string WolfHat::getIconResource()
+const std::string& WolfHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_WolfHat;
 }
 
-std::string WolfHat::getSerializationKey()
+const std::string& WolfHat::getIdentifier()
 {
 	return WolfHat::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string WolfHat::getSerializationKey()
 Vec2 WolfHat::getDisplayOffset()
 {
 	return Vec2(12.0f, -24.0f);
+}
+
+Recipe* WolfHat::getRecipe()
+{
+	return WolfHatPlans::create();
 }

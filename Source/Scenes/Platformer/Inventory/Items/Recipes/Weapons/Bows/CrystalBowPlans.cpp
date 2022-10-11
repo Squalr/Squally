@@ -29,9 +29,9 @@ CrystalBowPlans::~CrystalBowPlans()
 {
 }
 
-Item* CrystalBowPlans::craft()
+std::vector<Item*> CrystalBowPlans::craft()
 {
-	return CrystalBow::create();
+	return { CrystalBow::create() };
 }
 
 std::vector<std::tuple<Item*, int>> CrystalBowPlans::getReagentsInternal()
@@ -48,17 +48,12 @@ Item* CrystalBowPlans::clone()
 	return CrystalBowPlans::create();
 }
 
-std::string CrystalBowPlans::getItemName()
-{
-	return CrystalBowPlans::SaveKey;
-}
-
 LocalizedString* CrystalBowPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_CrystalBow::create();
 }
 
-std::string CrystalBowPlans::getIconResource()
+const std::string& CrystalBowPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string CrystalBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_CrystalBow;
 }
 
-std::string CrystalBowPlans::getSerializationKey()
+const std::string& CrystalBowPlans::getIdentifier()
 {
 	return CrystalBowPlans::SaveKey;
 }

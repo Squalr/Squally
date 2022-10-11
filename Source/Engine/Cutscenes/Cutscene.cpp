@@ -1,7 +1,6 @@
 #include "Cutscene.h"
 
-#include "cocos/base/CCEventKeyboard.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Cutscenes/CutsceneClip.h"
 #include "Engine/Utils/GameUtils.h"
@@ -26,9 +25,12 @@ Cutscene::Cutscene(std::function<void()> cutsceneCompleteCallback)
 
 Cutscene::~Cutscene()
 {
-	for (auto next : this->cutsceneClips)
+	for (CutsceneClip* next : this->cutsceneClips)
 	{
-		next->release();
+		if (next != nullptr)
+		{
+			next->release();
+		}
 	}
 }
 
@@ -36,7 +38,7 @@ void Cutscene::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{

@@ -30,15 +30,14 @@ MapTitleBanner::MapTitleBanner(LocalizedString* bannerString) : super()
 	this->bannerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::S1, this->bannerString);
 	this->bannerBarTop = DrawNode::create();
 	this->bannerBarBottom = DrawNode::create();
-	this->hasRelocated = false;
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->bannerBarTop->drawSolidRect(-Vec2(visibleSize.width / 2.0f, MapTitleBanner::BannerBarHeight / 2.0f), Vec2(visibleSize.width / 2.0f, MapTitleBanner::BannerBarHeight / 2.0f), Color4F::WHITE);
 	this->bannerBarBottom->drawSolidRect(-Vec2(visibleSize.width / 2.0f, MapTitleBanner::BannerBarHeight / 2.0f), Vec2(visibleSize.width / 2.0f, MapTitleBanner::BannerBarHeight / 2.0f), Color4F::WHITE);
 
 	this->bannerLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
-	this->bannerLabel->enableShadow(Color4B::BLACK, Size(4.0f, -4.0f), 0);
+	this->bannerLabel->enableShadow(Color4B::BLACK, CSize(4.0f, -4.0f), 0);
 
 	this->contentNode->addChild(this->bannerBarTop);
 	this->contentNode->addChild(this->bannerBarBottom);
@@ -60,7 +59,7 @@ void MapTitleBanner::onEnter()
 		if (!this->hasRelocated)
 		{
 			// Move the UI elements to the top-most layer
-			ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(
+			ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(
 				this->hud
 			));
 			this->hasRelocated = true;
@@ -79,7 +78,7 @@ void MapTitleBanner::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->contentNode->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->bannerBarTop->setPosition(Vec2(0.0f, 320.0f + 64.0f));

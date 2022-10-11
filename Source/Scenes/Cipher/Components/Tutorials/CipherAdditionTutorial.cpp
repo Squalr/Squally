@@ -34,9 +34,9 @@ CipherAdditionTutorial* CipherAdditionTutorial::create()
 CipherAdditionTutorial::CipherAdditionTutorial() : super(CipherState::StateType::Neutral)
 {
 	this->focusTakeOver = FocusTakeOver::create();
-	this->introLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_Addition_A_DisplayedAs::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
-	this->buttonsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_Addition_B_ChangeDataType::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
-	this->connectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_Addition_C_ConnectComponents::create(), Size(512.0f, 0.0f), TextHAlignment::CENTER);
+	this->introLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_Addition_A_DisplayedAs::create(), CSize(512.0f, 0.0f), TextHAlignment::CENTER);
+	this->buttonsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_Addition_B_ChangeDataType::create(), CSize(512.0f, 0.0f), TextHAlignment::CENTER);
+	this->connectLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Cipher_Tutorials_Addition_C_ConnectComponents::create(), CSize(512.0f, 0.0f), TextHAlignment::CENTER);
 
 	this->introLabel->enableOutline(Color4B::BLACK, 2);
 	this->buttonsLabel->enableOutline(Color4B::BLACK, 2);
@@ -96,7 +96,7 @@ void CipherAdditionTutorial::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->introLabel->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f + 64.0f);
 	this->buttonsLabel->setPosition(visibleSize.width / 2.0f - 256.0f, visibleSize.height / 2.0f + 64.0f);
@@ -146,7 +146,7 @@ void CipherAdditionTutorial::initializeCallbacks(CipherState* cipherState)
 		this->tryUnHijackState(cipherState);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->nextButtonIntro->interact();
 		this->nextButtonButtons->interact();

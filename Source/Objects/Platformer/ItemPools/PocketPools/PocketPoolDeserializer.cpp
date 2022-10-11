@@ -28,6 +28,9 @@ PocketPoolDeserializer::PocketPoolDeserializer() : super(PocketPoolDeserializer:
 
 	// UR
 	this->deserializers[PocketPoolURGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)PocketPoolURGeneric::create(properties); };
+
+	// DM
+	this->deserializers[PocketPoolDMGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)PocketPoolDMGeneric::create(properties); };
 }
 
 PocketPoolDeserializer::~PocketPoolDeserializer()

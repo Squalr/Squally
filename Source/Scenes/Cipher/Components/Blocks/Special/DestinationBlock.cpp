@@ -11,9 +11,9 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 #include "Scenes/Cipher/Components/Letters/SmartAsciiLabel.h"
-#include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
 #include "Resources/UIResources.h"
@@ -31,18 +31,16 @@ DestinationBlock* DestinationBlock::create(int cipherIndex)
 	return instance;
 }
 
-DestinationBlock::DestinationBlock(int cipherIndex) : super(BlockType::Static, ConnectionType::Single, ConnectionType::None, ClickableNode::create(CipherResources::Blocks_BlockDecHuge, CipherResources::Blocks_BlockDecHuge), UIResources::EmptyImage, Strings::Cipher_Operations_Immediate::create())
+DestinationBlock::DestinationBlock(int cipherIndex) : super(BlockType::Static, ConnectionType::Single, ConnectionType::None, ClickableNode::create(CipherResources::Blocks_BlockDecLong, CipherResources::Blocks_BlockDecLong), UIResources::EmptyImage, Strings::Cipher_Operations_Immediate::create())
 {
 	this->cipherIndex = cipherIndex;
-	this->receivedValue = char(0);
-	this->charValue = char(0);
 	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
 	this->displayLabel = SmartAsciiLabel::create();
 	this->receivedDisplayLabel = SmartAsciiLabel::create();
-	this->spriteAscii = Sprite::create(CipherResources::Blocks_BlockAsciiHuge);
-	this->spriteBin = Sprite::create(CipherResources::Blocks_BlockBinHuge);
-	this->spriteDec = Sprite::create(CipherResources::Blocks_BlockDecHuge);
-	this->spriteHex = Sprite::create(CipherResources::Blocks_BlockHexHuge);
+	this->spriteAscii = Sprite::create(CipherResources::Blocks_BlockAsciiLong);
+	this->spriteBin = Sprite::create(CipherResources::Blocks_BlockBinLong);
+	this->spriteDec = Sprite::create(CipherResources::Blocks_BlockDecLong);
+	this->spriteHex = Sprite::create(CipherResources::Blocks_BlockHexLong);
 
 	this->spriteAscii->setAnchorPoint(Vec2::ZERO);
 	this->spriteBin->setAnchorPoint(Vec2::ZERO);
@@ -75,7 +73,7 @@ void DestinationBlock::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->receivedDisplayLabel->setPositionY(4.0f + 20.0f);
 	this->displayLabel->setPositionY(4.0f - 20.0f);
@@ -87,7 +85,7 @@ void DestinationBlock::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventChangeActiveCipher, [&](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherChangeActiveCipherArgs* args = static_cast<CipherEvents::CipherChangeActiveCipherArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherChangeActiveCipherArgs* args = static_cast<CipherEvents::CipherChangeActiveCipherArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -99,7 +97,7 @@ void DestinationBlock::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventChangeDisplayDataType, [&](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherChangeDisplayDataTypeArgs* args = static_cast<CipherEvents::CipherChangeDisplayDataTypeArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherChangeDisplayDataTypeArgs* args = static_cast<CipherEvents::CipherChangeDisplayDataTypeArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

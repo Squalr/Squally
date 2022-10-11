@@ -5,7 +5,6 @@
 class Guano;
 class GuanoPetrified;
 class Inventory;
-class Portal;
 class QuestLine;
 class Scrappy;
 class Squally;
@@ -38,11 +37,11 @@ private:
 	void regainGuano();
 	void attachGuanoSpawnBehaviors();
 
-	GuanoPetrified* guanoPetrified;
-	Scrappy* scrappy;
-	Guano* guano;
-	Squally* squally;
-	Inventory* inventory;
+	GuanoPetrified* guanoPetrified = nullptr;
+	Scrappy* scrappy = nullptr;
+	Guano* guano = nullptr;
+	Squally* squally = nullptr;
+	Inventory* inventory = nullptr;
 
-	bool doBehaviorAttach;
+	bool doBehaviorAttach = false;
 };

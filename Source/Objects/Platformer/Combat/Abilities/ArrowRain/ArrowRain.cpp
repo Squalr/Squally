@@ -8,6 +8,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -19,7 +20,7 @@
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"
@@ -34,7 +35,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_COMPARE_TEAM 11
 
 const int ArrowRain::TickCount = 6;
-const int ArrowRain::Damage = 2;
+const int ArrowRain::Damage = 4;
 const float ArrowRain::TimeBetweenTicks = 0.75f;
 const float ArrowRain::StartDelay = 0.25f;
 const std::string ArrowRain::StateKeyIsCasterOnEnemyTeam = "ANTI_OPTIMIZE_STATE_KEY_DAMAGE_TAKEN";
@@ -52,8 +53,6 @@ ArrowRain* ArrowRain::create(PlatformerEntity* caster, PlatformerEntity* target,
 
 ArrowRain::ArrowRain(PlatformerEntity* caster, PlatformerEntity* target, std::string arrowResource) : super(caster, target, true)
 {
-	this->arrowPool = std::vector<Sprite*>();
-	this->arrowCooldowns = std::vector<float>();
 	this->arrowResource = arrowResource;
 
 	for (int index = 0; index < 8; index++)
@@ -109,7 +108,7 @@ void ArrowRain::registerHackables()
 				Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CompareTeam::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_ArrowRain,
-				this->createDefaultPreview(),
+				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
 						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax::create()
@@ -141,7 +140,7 @@ void ArrowRain::registerHackables()
 	auto func = &ArrowRain::compareTeam;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}
@@ -182,11 +181,12 @@ void ArrowRain::runArrowRain()
 
 void ArrowRain::updateAnimation(float dt)
 {
+	static const float VarianceX = 768.0f;
+	static const float FallDistance = -1280.0f;
+	static const float PixelsPerSecond = 768.0f;
+	static const float Duration = std::abs(FallDistance) / PixelsPerSecond;
+
 	float totalDuration = ArrowRain::StartDelay + ArrowRain::TimeBetweenTicks * float(ArrowRain::TickCount);
-	const float VarianceX = 768.0f;
-	const float FallDistance = -1280.0f;
-	const float PixelsPerSecond = 768.0f;
-	const float Duration = std::abs(FallDistance) / PixelsPerSecond;
 
 	for (int index = 0; index < int(this->arrowCooldowns.size()); index++)
 	{
@@ -220,9 +220,9 @@ void ArrowRain::damageOtherTeam()
 
 		this->compareTeam(casterEntry);
 
-		for (auto next : timeline->getEntries())
+		for (TimelineEntry* next : timeline->getEntries())
 		{
-			if (next->isPlayerEntry() == this->HackStateStorage[ArrowRain::StateKeyIsCasterOnEnemyTeam].asBool())
+			if (next->isPlayerEntry() == CombatObject::HackStateStorage[ArrowRain::StateKeyIsCasterOnEnemyTeam].asBool())
 			{
 				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, next->getEntity(), std::abs(ArrowRain::Damage), AbilityType::Passive, true));
 			}
@@ -262,6 +262,6 @@ NO_OPTIMIZE void ArrowRain::compareTeam(TimelineEntry* entry)
 
 	HACKABLES_STOP_SEARCH();
 
-	this->HackStateStorage[ArrowRain::StateKeyIsCasterOnEnemyTeam] = Value((isOnEnemyTeamLocal == 0) ? false : true);
+	CombatObject::HackStateStorage[ArrowRain::StateKeyIsCasterOnEnemyTeam] = Value((isOnEnemyTeamLocal == 0) ? false : true);
 }
 END_NO_OPTIMIZE

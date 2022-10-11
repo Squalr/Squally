@@ -71,8 +71,8 @@ Error BaseEmitter::_emitOpArray(uint32_t instId, const Operand_* operands, size_
 // [asmjit::BaseEmitter - Finalize]
 // ============================================================================
 
-Label BaseEmitter::labelByName(const char* name, size_t nameSize, uint32_t parentId) noexcept {
-  return Label(_code ? _code->labelIdByName(name, nameSize, parentId) : uint32_t(Globals::kInvalidId));
+AsmLabel BaseEmitter::labelByName(const char* name, size_t nameSize, uint32_t parentId) noexcept {
+  return AsmLabel(_code ? _code->labelIdByName(name, nameSize, parentId) : uint32_t(Globals::kInvalidId));
 }
 
 // ============================================================================

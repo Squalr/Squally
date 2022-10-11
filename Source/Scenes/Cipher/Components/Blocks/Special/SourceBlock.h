@@ -24,13 +24,13 @@ private:
 	
 	void loadDisplayValue();
 
-	int cipherIndex;
-	unsigned char charValue;
-	CipherEvents::DisplayDataType displayDataType;
+	int cipherIndex = 0;
+	unsigned char charValue = 0;
+	CipherEvents::DisplayDataType displayDataType = CipherEvents::DisplayDataType::Ascii;
 
-	cocos2d::Sprite* spriteAscii;
-	cocos2d::Sprite* spriteBin;
-	cocos2d::Sprite* spriteDec;
-	cocos2d::Sprite* spriteHex;
-	SmartAsciiLabel* displayLabel;
+	cocos2d::Sprite* spriteAscii = nullptr;
+	cocos2d::Sprite* spriteBin = nullptr;
+	cocos2d::Sprite* spriteDec = nullptr;
+	cocos2d::Sprite* spriteHex = nullptr;
+	SmartAsciiLabel* displayLabel = nullptr;
 };

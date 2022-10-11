@@ -16,3 +16,8 @@ std::string Mace::getWeaponAttackSound()
 {
 	return SoundResources::Platformer_Physical_Swings_SwingWeakBlunt2;
 }
+
+std::string Mace::getWeaponImpactSound()
+{
+	return SoundResources::Platformer_Physical_Impact_HitSoft1;
+}

@@ -2,11 +2,6 @@
 
 #include "Engine/UI/HUD/Hud.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class ChooseTargetMenu;
 class PlatformerEntity;
 class Timeline;
@@ -20,20 +15,22 @@ public:
 
 protected:
 	TargetSelectionMenu(Timeline* timelineRef);
-	virtual ~TargetSelectionMenu() = default;
+	virtual ~TargetSelectionMenu();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void update(float dt) override;
 
 private:
 	typedef Hud super;
+
+	void switchToInputMode();
+	void switchToMouseMode();
 	void chooseCurrentTarget();
 	void setEntityClickCallbacks();
 	void setEntityClickCallbacks(PlatformerEntity* entity);
 	void clearEntityClickCallbacks();
-	void selectNext(bool directionIsLeft);
+	void selectNext(bool directionIsLeft, bool withMouseHitTest);
 
 	enum class AllowedSelection
 	{
@@ -44,10 +41,11 @@ private:
 		Either
 	};
 
-	Timeline* timelineRef;
-	AllowedSelection allowedSelection;
-	bool isActive;
-	PlatformerEntity* selectedEntity;
-
-	ChooseTargetMenu* chooseTargetMenu;
+	AllowedSelection allowedSelection = AllowedSelection::None;
+	Timeline* timelineRef = nullptr;
+	PlatformerEntity* castingEntity = nullptr;
+	PlatformerEntity* selectedEntity = nullptr;
+	ChooseTargetMenu* chooseTargetMenu = nullptr;
+	bool isActive = false;
+	bool areCallbacksSet = false;
 };

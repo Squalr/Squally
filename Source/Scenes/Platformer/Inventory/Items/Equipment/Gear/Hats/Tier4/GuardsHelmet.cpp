@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier4/GuardsHelmetPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* GuardsHelmet::clone()
 	return GuardsHelmet::create();
 }
 
-std::string GuardsHelmet::getItemName()
-{
-	return GuardsHelmet::SaveKey;
-}
-
 LocalizedString* GuardsHelmet::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_GuardsHelmet::create();
 }
 
-std::string GuardsHelmet::getIconResource()
+const std::string& GuardsHelmet::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_GuardsHelmet;
 }
 
-std::string GuardsHelmet::getSerializationKey()
+const std::string& GuardsHelmet::getIdentifier()
 {
 	return GuardsHelmet::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string GuardsHelmet::getSerializationKey()
 Vec2 GuardsHelmet::getDisplayOffset()
 {
 	return Vec2(0.0f, 42.0f);
+}
+
+Recipe* GuardsHelmet::getRecipe()
+{
+	return GuardsHelmetPlans::create();
 }

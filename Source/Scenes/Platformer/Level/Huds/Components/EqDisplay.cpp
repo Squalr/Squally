@@ -5,7 +5,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityEqBehavior.h"
 
 #include "Resources/UIResources.h"
 
@@ -26,8 +26,6 @@ EqDisplay* EqDisplay::create()
 
 EqDisplay::EqDisplay()
 {
-	this->target = nullptr;
-	this->eqBehavior = nullptr;
 	this->eqFrame = Sprite::create(UIResources::HUD_LevelFrame);
 	this->eqValue = ConstantString::create("0");
 	this->eqLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->eqValue);
@@ -89,7 +87,7 @@ void EqDisplay::setStatsTarget(PlatformerEntity* target)
 	this->cachedEq = (0 ^ EqDisplay::EqCacheCipher);
 	
 	this->target = target;
-	this->eqBehavior = this->target == nullptr ? nullptr : this->target->getAttachedBehavior<EntityEqBehavior>();
+	this->eqBehavior = this->target == nullptr ? nullptr : this->target->getComponent<EntityEqBehavior>();
 
 	if (this->eqBehavior == nullptr)
 	{

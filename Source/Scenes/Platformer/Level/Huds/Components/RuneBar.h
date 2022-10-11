@@ -12,7 +12,6 @@ namespace cocos2d
 class EntityRuneBehavior;
 class PlatformerEntity;
 class SmartAnimationSequenceNode;
-class SmartClippingNode;
 class Sound;
 
 class RuneBar : public SmartNode
@@ -34,8 +33,8 @@ protected:
 private:
 	typedef SmartNode super;
 
-	EntityRuneBehavior* runeBehavior;
-	PlatformerEntity* target;
+	EntityRuneBehavior* runeBehavior = nullptr;
+	PlatformerEntity* target = nullptr;
 
 	std::vector<cocos2d::Sprite*> emptyRunes;
 	std::vector<cocos2d::ClippingNode*> cooldownClips;

@@ -7,10 +7,8 @@ namespace cocos2d
 	class Sprite;
 }
 
-class HackablePreview;
 class PlatformerEntity;
 class SmartParticles;
-class WorldSound;
 
 class StoneSkin : public Buff
 {
@@ -35,9 +33,9 @@ private:
 	
 	static volatile int currentDamageTaken;
 	
-	SmartParticles* spellEffect;
-	cocos2d::Sprite* bubble;
-	cocos2d::Sprite* spellAura;
+	SmartParticles* spellEffect = nullptr;
+	cocos2d::Sprite* bubble = nullptr;
+	cocos2d::Sprite* spellAura = nullptr;
 	
 	static const int MaxMultiplier;
 	static const float Duration;

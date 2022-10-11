@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier7/NecrobatHelmPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* NecrobatHelm::clone()
 	return NecrobatHelm::create();
 }
 
-std::string NecrobatHelm::getItemName()
-{
-	return NecrobatHelm::SaveKey;
-}
-
 LocalizedString* NecrobatHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_NecrobatHelm::create();
 }
 
-std::string NecrobatHelm::getIconResource()
+const std::string& NecrobatHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_NecrobatHelm;
 }
 
-std::string NecrobatHelm::getSerializationKey()
+const std::string& NecrobatHelm::getIdentifier()
 {
 	return NecrobatHelm::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string NecrobatHelm::getSerializationKey()
 Vec2 NecrobatHelm::getDisplayOffset()
 {
 	return Vec2(-42.0f, 22.0f);
+}
+
+Recipe* NecrobatHelm::getRecipe()
+{
+	return NecrobatHelmPlans::create();
 }

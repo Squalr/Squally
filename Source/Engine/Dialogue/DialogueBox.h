@@ -44,8 +44,8 @@ protected:
 	virtual void hideDialogue();
 	virtual void onTypeWriterEffectComplete();
 
-	cocos2d::Node* contentNode;
-	LocalizedLabel* text;
+	cocos2d::Node* contentNode = nullptr;
+	LocalizedLabel* text = nullptr;
 
 	static const cocos2d::Color4F PanelColor;
 	static const cocos2d::Color4F PanelEdgeColor;
@@ -56,12 +56,12 @@ protected:
 private:
 	typedef SmartNode super;
 	
-	cocos2d::Node* containerNode;
-	cocos2d::DrawNode* panel;
+	cocos2d::Node* containerNode = nullptr;
+	cocos2d::DrawNode* panel = nullptr;
 
-	bool dialogueEffectComplete;
-	float textWidth;
-	float speakerOffset;
-	float speakerWidth;
-	std::function<void()> onDialogueClose;
+	bool dialogueEffectComplete = false;
+	float textWidth = 0.0f;
+	float speakerOffset = 0.0f;
+	float speakerWidth = 0.0f;
+	std::function<void()> onDialogueClose = nullptr;
 };

@@ -34,6 +34,10 @@ FloatingWoodenBeamGetDensityPreview::FloatingWoodenBeamGetDensityPreview()
 	this->assemblyTextNode->addChild(this->xmm0Bottom);
 }
 
+FloatingWoodenBeamGetDensityPreview::~FloatingWoodenBeamGetDensityPreview()
+{
+}
+
 HackablePreview* FloatingWoodenBeamGetDensityPreview::clone()
 {
 	return FloatingWoodenBeamGetDensityPreview::create();

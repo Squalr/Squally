@@ -1,56 +1,61 @@
 #pragma once
+
 #include <functional>
 #include <string>
 
+#include "cocos/base/CCValue.h"
+
+namespace sf
+{
+	class Sound;
+}
+
 class Music;
-class SmartNode;
-class Track;
+class SoundBase;
 
 class SoundEvents
 {
 public:
-	static const std::string EventTrackPlayed;
-	static const std::string EventRequestTrackDeserialization;
-	static const std::string EventDestroyOrphanedMusic;
+	static const std::string EventMusicPlayed;
+	static const std::string EventRequestMusicDeserialization;
 	static const std::string EventOnMusicDestroyed;
 	static const std::string EventFadeOutMusic;
 	static const std::string EventMusicVolumeUpdated;
 	static const std::string EventSoundVolumeUpdated;
 
-	struct RequestTrackDeserializationArgs
+	struct RequestMusicDeserializationArgs
 	{
-		std::string trackSerializationKey;
-		std::function<void(Track*)> onTrackDeserializedCallback;
+		std::string MusicSerializationKey;
+		std::function<void(Music*)> onMusicDeserializedCallback = nullptr;
+		cocos2d::ValueMap properties;
 
-		RequestTrackDeserializationArgs(std::string trackSerializationKey, std::function<void(Track*)> onTrackDeserializedCallback)
-			: trackSerializationKey(trackSerializationKey), onTrackDeserializedCallback(onTrackDeserializedCallback) { }
+		RequestMusicDeserializationArgs(std::string MusicSerializationKey, std::function<void(Music*)> onMusicDeserializedCallback)
+			: MusicSerializationKey(MusicSerializationKey), onMusicDeserializedCallback(onMusicDeserializedCallback) { }
 	};
 
 	struct FadeOutMusicArgs
 	{
-		int trackId;
+		std::string musicResource = 0;
 
-		FadeOutMusicArgs(int trackId) : trackId(trackId) { }
+		FadeOutMusicArgs(std::string musicResource) : musicResource(musicResource) { }
 	};
 
 	struct MusicDestroyedArgs
 	{
-		Music* music;
+		Music* music = nullptr;
 
 		MusicDestroyedArgs(Music* music) : music(music) { }
 	};
 
-	struct TrackPlayedArgs
+	struct MusicPlayedArgs
 	{
-		Track* track;
+		Music* music = nullptr;
 
-		TrackPlayedArgs(Track* track) : track(track) { }
+		MusicPlayedArgs(Music* music) : music(music) { }
 	};
 
-	static void TriggerTrackPlayed(TrackPlayedArgs args);
-	static void TriggerRequestTrackDeserialization(RequestTrackDeserializationArgs args);
-	static void TriggerDestroyOrphanedMusic();
-	static void TriggerMusicDestroyed(MusicDestroyedArgs args);
+	static void TriggerMusicPlayed(MusicPlayedArgs args);
+	static void TriggerRequestMusicDeserialization(RequestMusicDeserializationArgs args);
 	static void TriggerMusicVolumeUpdated();
 	static void TriggerSoundVolumeUpdated();
 	static void TriggerFadeOutMusic(FadeOutMusicArgs args);

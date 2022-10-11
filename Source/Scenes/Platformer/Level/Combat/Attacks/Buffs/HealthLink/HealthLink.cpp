@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
@@ -17,7 +18,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/HealthLink/HealthLinkGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
@@ -96,7 +97,7 @@ void HealthLink::registerHackables()
 				Strings::Menus_Hacking_Abilities_Buffs_HealthLink_HealthLink::create(),
 				HackableBase::HackBarColor::Blue,
 				UIResources::Menus_Icons_Clones,
-				HealthLinkGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return HealthLinkGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEdi::create(),
@@ -131,13 +132,13 @@ void HealthLink::registerHackables()
 	auto func = &HealthLink::applyHealthLink;
 	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
-	for (auto next : this->hackables)
+	for (HackableCode* next : this->hackables)
 	{
 		this->owner->registerCode(next);
 	}
 }
 
-void HealthLink::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+NO_OPTIMIZE void HealthLink::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
@@ -148,30 +149,31 @@ void HealthLink::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs
 	// Damage all team mates
 	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
 	{
-		bool healthLinkTargetFound = false;
-
-		for (auto next : timeline->getSameTeamEntities(damageOrHealing->target))
+		std::vector<PlatformerEntity*> targets = timeline->getSameTeamEntities(damageOrHealing->target);
+		std::vector<PlatformerEntity*> healthLinkTargets; 
+		for (PlatformerEntity* target : targets)
 		{
-			if (next != damageOrHealing->target && next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+			if (target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
-				caster->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+				caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 				{
 					entityBuffBehavior->getBuff<HealthLink>([&](HealthLink* healthLink)
 					{
-						healthLinkTargetFound = true;
-						CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->caster, next, std::abs(this->healthLinkDamage), AbilityType::Passive, true));
+						healthLinkTargets.push_back(target);
 					});
 				});
 			}
 		}
 
-		if (healthLinkTargetFound)
+		// For some incomprehensible reason, this needs to be a separate loop otherwise some enemies do not get it at all.
+		// TODO: Figure out why, if you care enough.
+		for (PlatformerEntity* target : healthLinkTargets)
 		{
-			// Do not use the hackable code for the main target
-			(*damageOrHealing->damageOrHealing) /= 2;
+			CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->caster, target, std::abs(this->healthLinkDamage), AbilityType::Passive, true));
 		}
 	}));
 }
+END_NO_OPTIMIZE
 
 NO_OPTIMIZE void HealthLink::applyHealthLink()
 {
@@ -179,6 +181,7 @@ NO_OPTIMIZE void HealthLink::applyHealthLink()
 
 	healthLinkDamageLocal = this->healthLinkDamage;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZDI);
 	ASM_MOV_REG_VAR(edi, healthLinkDamageLocal);
 
@@ -190,6 +193,7 @@ NO_OPTIMIZE void HealthLink::applyHealthLink()
 	ASM_MOV_VAR_REG(healthLinkDamageLocal, edi);
 
 	ASM(pop ZDI);
+	ASM_POP_EFLAGS()
 
 	this->healthLinkDamage = healthLinkDamageLocal;
 

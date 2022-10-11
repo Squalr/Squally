@@ -17,7 +17,7 @@ const std::string DialogueEvents::EventDialogueClose = "EVENT_DIALOGUE_CLOSE";
 
 void DialogueEvents::TriggerOpenDialogue(DialogueOpenArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		DialogueEvents::EventDialogueOpen,
 		&args
 	);
@@ -25,7 +25,7 @@ void DialogueEvents::TriggerOpenDialogue(DialogueOpenArgs args)
 
 void DialogueEvents::TriggerTryDialogueClose(DialogueCloseArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		DialogueEvents::EventDialogueClose,
 		&args
 	);

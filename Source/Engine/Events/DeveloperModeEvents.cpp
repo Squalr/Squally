@@ -10,7 +10,7 @@ const std::string DeveloperModeEvents::EventDeveloperModeModeDisable = "EVENT_DI
 
 void DeveloperModeEvents::TriggerDeveloperModeModeEnable(DeveloperModeEnableArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		DeveloperModeEvents::EventDeveloperModeModeEnable,
 		&args
 	);
@@ -18,7 +18,7 @@ void DeveloperModeEvents::TriggerDeveloperModeModeEnable(DeveloperModeEnableArgs
 
 void DeveloperModeEvents::TriggerDeveloperModeModeDisable()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		DeveloperModeEvents::EventDeveloperModeModeDisable
 	);
 }

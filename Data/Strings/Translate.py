@@ -56,7 +56,7 @@ def main():
     'Content-type': 'application/json',
     'X-ClientTraceId': str(uuid.uuid4())
     }
-    params = ''
+    params = '' # &from=de
     
     for next in languages:
         params += ('&to=' + next)
@@ -98,7 +98,7 @@ def main():
             translations = json.loads(response)
             translations = translations[0]['translations']
 		
-            resultDict = {};
+            resultDict = {}
 		
             for key in translations:
                 language = key['to']
@@ -117,6 +117,9 @@ def main():
 
                 if (language == "pt-PT"):
                     language = 'pt'
+
+                if (language == "nb"):
+                    language = 'no'
                     
                 resultDict[language] = translation
 

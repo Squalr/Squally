@@ -24,7 +24,7 @@ Cryogen::Cryogen(ValueMap& properties) : super(properties,
 	Cryogen::MapKey,
 	EntityResources::Enemies_BallmerPeaks_Cryogen_Animations,
 	EntityResources::Enemies_BallmerPeaks_Cryogen_Emblem,
-	Size(420.0f, 420.0f),
+	CSize(420.0f, 420.0f),
 	0.8f,
 	Vec2(0.0f, 0.0f))
 {

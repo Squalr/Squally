@@ -3,6 +3,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -11,7 +12,7 @@
 #include "Objects/Platformer/Combat/Projectiles/Fireball/FireballGenericPreview.h"
 #include "Objects/Platformer/Combat/Projectiles/Fireball/FireballSpeedPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"
@@ -37,7 +38,7 @@ Fireball* Fireball::create(PlatformerEntity* owner, PlatformerEntity* target)
 }
 
 Fireball::Fireball(PlatformerEntity* owner, PlatformerEntity* target)
-	: super(owner, target, true, Node::create(), Size(32.0f, 32.0f))
+	: super(owner, target, true, Node::create(), CSize(32.0f, 32.0f))
 {
 	this->fireballAnim = SmartAnimationSequenceNode::create();
 
@@ -100,7 +101,7 @@ void Fireball::registerHackables()
 				Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_ApplySpeed::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_FireSphere,
-				FireballSpeedPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return FireballSpeedPreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_RegisterEax::create() },
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_RegisterXmm0::create() },
@@ -137,7 +138,7 @@ void Fireball::registerHackables()
 	auto func = &Fireball::setFireballSpeed;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}

@@ -23,5 +23,5 @@ protected:
 private:
 	typedef MapLayer super;
 
-	SmartParticles* fireflies;
+	SmartParticles* fireflies = nullptr;
 };

@@ -46,22 +46,17 @@ Item* SamuraiHat::clone()
 	return SamuraiHat::create();
 }
 
-std::string SamuraiHat::getItemName()
-{
-	return SamuraiHat::SaveKey;
-}
-
 LocalizedString* SamuraiHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_SamuraiHat::create();
 }
 
-std::string SamuraiHat::getIconResource()
+const std::string& SamuraiHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_SamuraiHat;
 }
 
-std::string SamuraiHat::getSerializationKey()
+const std::string& SamuraiHat::getIdentifier()
 {
 	return SamuraiHat::SaveKey;
 }
@@ -69,4 +64,9 @@ std::string SamuraiHat::getSerializationKey()
 Vec2 SamuraiHat::getDisplayOffset()
 {
 	return Vec2(-18.0f, -10.0f);
+}
+
+Recipe* SamuraiHat::getRecipe()
+{
+	return nullptr;
 }

@@ -18,7 +18,6 @@ DialogueSet::DialogueSet(DialogueEvents::DialogueVisualArgs args)
 {
 	this->args = args;
 	this->optionsNode = Node::create();
-	this->dialogueOptions = std::vector<std::tuple<DialogueOption*, float>>();
 
 	this->addChild(this->optionsNode);
 }

@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Sound/WorldSound.h"
@@ -56,7 +57,7 @@ Haste* Haste::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Haste::Haste(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_HourGlass, AbilityType::Physical, BuffData(Haste::Duration, Haste::HasteIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_HourGlass, AbilityType::Arcane, BuffData(Haste::Duration, Haste::HasteIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
@@ -112,7 +113,7 @@ void Haste::registerHackables()
 				Strings::Menus_Hacking_Abilities_Buffs_Haste_Haste::create(),
 				HackableBase::HackBarColor::Yellow,
 				UIResources::Menus_Icons_HourGlass,
-				HasteGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return HasteGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Haste_RegisterEsi::create()
@@ -141,15 +142,17 @@ void Haste::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Buffs_Haste_ReduceHaste::create(),
 						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed::create()) +
 						"mov dword ptr [esi], 0.0f\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtrLexicon::create())
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr::create())
 						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed::create()) +
 						"mov dword ptr [rsi], 0.0f\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtrLexicon::create())
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr::create())
 					)
 				},
 				true
@@ -160,7 +163,7 @@ void Haste::registerHackables()
 	auto func = &Haste::applyHaste;
 	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
-	for (auto next : this->hackables)
+	for (HackableCode* next : this->hackables)
 	{
 		this->owner->registerCode(next);
 	}
@@ -179,16 +182,17 @@ void Haste::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* spe
 
 NO_OPTIMIZE void Haste::applyHaste()
 {
-	static volatile float speedBonus;
-	static volatile float increment;
-	static volatile float* speedBonusPtr;
-	static volatile float* incrementPtr;
+	static volatile float speedBonus = 0.0f;
+	static volatile float increment = 0.0f;
+	static volatile float* speedBonusPtr = nullptr;
+	static volatile float* incrementPtr = nullptr;
 
 	speedBonus = 0.0f;
 	increment = Haste::DefaultSpeed;
 	speedBonusPtr = &speedBonus;
 	incrementPtr = &increment;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZSI);
 	ASM(push ZBX);
 	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
@@ -202,8 +206,9 @@ NO_OPTIMIZE void Haste::applyHaste()
 
 	ASM(pop ZBX);
 	ASM(pop ZSI);
+	ASM_POP_EFLAGS()
 
-	this->currentSpeed += MathUtils::clamp(speedBonus, Haste::MinSpeed, Haste::MaxSpeed);
+	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, Haste::MinSpeed, Haste::MaxSpeed);
 
 	HACKABLES_STOP_SEARCH();
 }

@@ -72,7 +72,7 @@ void ProgressBar::setProgress(float newProgress)
 		{
 			this->clipStencil->drawSolidRect(
 				-Vec2(this->fill->getContentSize() / 2.0f),
-				Size(this->fill->getContentSize().width * this->progress, this->fill->getContentSize().height) - this->fill->getContentSize() / 2.0f,
+				CSize(this->fill->getContentSize().width * this->progress, this->fill->getContentSize().height) - this->fill->getContentSize() / 2.0f,
 				Color4F::GREEN
 			);
 		}
@@ -80,7 +80,7 @@ void ProgressBar::setProgress(float newProgress)
 		{
 			this->clipStencil->drawSolidRect(
 				-Vec2(this->fill->getContentSize() / 2.0f),
-				Size(this->fill->getContentSize().width, this->fill->getContentSize().height * this->progress) - this->fill->getContentSize() / 2.0f,
+				CSize(this->fill->getContentSize().width, this->fill->getContentSize().height * this->progress) - this->fill->getContentSize() / 2.0f,
 				Color4F::GREEN
 			);
 		}

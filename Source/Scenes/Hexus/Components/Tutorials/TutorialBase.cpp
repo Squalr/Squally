@@ -73,5 +73,5 @@ ClickableTextNode* TutorialBase::createNextButton()
 	nextLabel->enableOutline(Color4B::BLACK, 2);
 	nextLabelSelected->enableOutline(Color4B::BLACK, 2);
 
-	return ClickableTextNode::create(nextLabel, nextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));;
+	return ClickableTextNode::create(nextLabel, nextLabelSelected, Sprite::create(UIResources::Menus_Buttons_WoodButton), Sprite::create(UIResources::Menus_Buttons_WoodButtonSelected));
 }

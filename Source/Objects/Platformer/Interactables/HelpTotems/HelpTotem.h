@@ -4,12 +4,10 @@
 
 namespace cocos2d
 {
-	class ParticleSystem;
 	class Sprite;
 }
 
 class SpeechBubble;
-class LocalizedLabel;
 class LocalizedString;
 
 class HelpTotem : public InteractObject
@@ -27,7 +25,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onInteract() override;
+	void onInteract(PlatformerEntity* interactingEntity) override;
 	void onEndCollision() override;
 	void setHint(LocalizedString* hint);
 
@@ -36,10 +34,10 @@ private:
 
 	void tryDisplayHint();
 	
-	bool isInactive;
+	bool isInactive = false;
 
-	cocos2d::Sprite* totem;
-	cocos2d::Sprite* totemInactive;
-	SpeechBubble* speechBubble;
-	LocalizedString* hint;
+	cocos2d::Sprite* totem = nullptr;
+	cocos2d::Sprite* totemInactive = nullptr;
+	SpeechBubble* speechBubble = nullptr;
+	LocalizedString* hint = nullptr;
 };

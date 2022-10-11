@@ -8,9 +8,11 @@
 #include <sstream>
 
 #include "cocos/base/ccUTF8.h"
+#include "cocos/base/CCConsole.h"
 
 #ifndef WIN32
-extern "C" {
+extern "C"
+{
     #include <strings.h>
 }
 #endif
@@ -209,6 +211,11 @@ std::vector<std::string> StrUtils::splitOn(std::string str, std::string delimite
 	return tokens;
 }
 
+bool StrUtils::isEmptyOrWhitespace(std::string  str)
+{
+	return str.find_first_not_of(" \t\n\v\f\r") == std::string::npos;
+}
+
 bool StrUtils::isInteger(std::string  str)
 {
 	if (StrUtils::startsWith(str, "-", false))
@@ -224,7 +231,7 @@ bool StrUtils::isFloat(std::string str)
 	str = StrUtils::rtrim(str, "f");
 
 	std::istringstream iss(str);
-	float f;
+	float f = 0.0f;
 
 	iss >> std::noskipws >> f;
 
@@ -381,4 +388,28 @@ std::basic_string<char> StrUtils::replaceFirstOccurence(std::basic_string<char> 
 	}
 
 	return str;
+}
+
+std::string StrUtils::getSubStringOfUTF8String(const std::string& str, std::string::size_type start, std::string::size_type length)
+{
+    std::u32string utf32;
+
+    if (!StringUtils::UTF8ToUTF32(str, utf32))
+    {
+        CCLOGERROR("Can't convert string to UTF-32: %s", str.c_str());
+        return "";
+    }
+
+    if (utf32.size() < start)
+    {
+        CCLOGERROR("'start' is out of range: %ld, %s", static_cast<long>(start), str.c_str());
+        return "";
+    }
+    std::string result;
+    if (!StringUtils::UTF32ToUTF8(utf32.substr(start, length), result))
+    {
+        CCLOGERROR("Can't convert internal UTF-32 string to UTF-8: %s", str.c_str());
+        return "";
+    }
+    return result;
 }

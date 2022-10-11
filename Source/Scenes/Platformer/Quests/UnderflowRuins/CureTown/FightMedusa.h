@@ -30,8 +30,8 @@ private:
 	void runCinematicSequencePart1();
 	void runCinematicSequencePart2();
 
-	Guano* guano;
-	Medusa* medusa;
-	Scrappy* scrappy;
-	Squally* squally;
+	Guano* guano = nullptr;
+	Medusa* medusa = nullptr;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 };

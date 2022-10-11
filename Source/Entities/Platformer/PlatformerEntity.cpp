@@ -36,7 +36,7 @@ PlatformerEntity::PlatformerEntity(
 	std::string entityName,
 	std::string scmlResource,
 	std::string emblemResource,
-	Size size,
+	CSize size,
 	float scale, 
 	Vec2 collisionOffset,
 	float hoverHeight
@@ -149,7 +149,7 @@ std::vector<std::string> PlatformerEntity::getWalkSounds()
 
 PlatformerEntity::ControlState PlatformerEntity::getControlState()
 {
-	return (this->controlStateOverride == PlatformerEntity::ControlState::None) ? this->controlState : this->controlStateOverride;;
+	return (this->controlStateOverride == PlatformerEntity::ControlState::None) ? this->controlState : this->controlStateOverride;
 }
 
 std::string PlatformerEntity::getBattleBehavior()
@@ -167,7 +167,7 @@ SmartAnimationNode* PlatformerEntity::getAnimations()
 	return this->animationNode;
 }
 
-Size PlatformerEntity::getEntitySize()
+CSize PlatformerEntity::getEntitySize()
 {
 	return this->entitySize;
 }
@@ -251,7 +251,7 @@ PlatformerEntity* PlatformerEntity::uiClone()
 	properties[GameObject::MapKeyType] = PlatformerEntityDeserializer::MapKeyTypeEntity;
 	properties[GameObject::MapKeyName] = Value(this->entityName);
 	properties[GameObject::MapKeyScale] = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyScale, Value(1.0f));
-	properties[GameObject::MapKeyAttachedBehavior] = "disarmed";
+	properties[GameObject::MapKeyComponent] = "disarmed";
 	properties[GameObject::MapKeyQueryable] = Value(false);
 
 	ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
@@ -269,18 +269,21 @@ PlatformerEntity* PlatformerEntity::uiClone()
 
 void PlatformerEntity::optimizationHideOffscreenEntity()
 {
-	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
-	static const Size Padding = Size(384.0f, 384.0f);
-	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
-	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), clipSize);
-	Rect thisRect = Rect(GameUtils::getWorldCoords(this), this->entitySize);
+	// Slight padding for any rendering beyond the entity hitbox
+	static const CSize Padding = CSize(768.0f, 768.0f);
+	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	CRect thisRect = GameUtils::getScreenBounds(this->animationNode, this->getEntitySize() + Padding, false);
 
-	if (cameraRect.intersectsRect(thisRect))
+	if (CameraRect.intersectsRect(thisRect))
 	{
 		this->animationNode->enableRender();
+
+		// animationNode can be set visible by other scripts, use the parent node instead to avoid conflicts
+		this->floatNode->setVisible(true);
 	}
 	else
 	{
 		this->animationNode->disableRender();
+		this->floatNode->setVisible(false);
 	}
 }

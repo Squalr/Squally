@@ -87,9 +87,9 @@ public:
   //! \name Label Management
   //! \{
 
-  ASMJIT_API Label newLabel() override;
-  ASMJIT_API Label newNamedLabel(const char* name, size_t nameSize = SIZE_MAX, uint32_t type = Label::kTypeGlobal, uint32_t parentId = Globals::kInvalidId) override;
-  ASMJIT_API Error bind(const Label& label) override;
+  ASMJIT_API AsmLabel newLabel() override;
+  ASMJIT_API AsmLabel newNamedLabel(const char* name, size_t nameSize = SIZE_MAX, uint32_t type = AsmLabel::kTypeGlobal, uint32_t parentId = Globals::kInvalidId) override;
+  ASMJIT_API Error bind(const AsmLabel& label) override;
 
   //! \}
 
@@ -136,9 +136,9 @@ public:
   //! \{
 
   ASMJIT_API Error embed(const void* data, uint32_t dataSize) override;
-  ASMJIT_API Error embedLabel(const Label& label) override;
-  ASMJIT_API Error embedLabelDelta(const Label& label, const Label& base, uint32_t dataSize) override;
-  ASMJIT_API Error embedConstPool(const Label& label, const ConstPool& pool) override;
+  ASMJIT_API Error embedLabel(const AsmLabel& label) override;
+  ASMJIT_API Error embedLabelDelta(const AsmLabel& label, const AsmLabel& base, uint32_t dataSize) override;
+  ASMJIT_API Error embedConstPool(const AsmLabel& label, const ConstPool& pool) override;
 
   //! \}
 

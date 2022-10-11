@@ -20,5 +20,5 @@ protected:
 private:
 	typedef MapLayer super;
 
-	SmartParticles* snow;
+	SmartParticles* snow = nullptr;
 };

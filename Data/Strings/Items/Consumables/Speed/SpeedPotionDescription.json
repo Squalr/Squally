@@ -15,7 +15,7 @@
     "ja": "%s2秒間、速度を%s1%増加させます。",
     "ko": "%s2초 동안 속도를 %s1% 증가시킵니다.",
     "nl": "Verhoogt de snelheid met %s1% gedurende %s2 seconden.",
-    "nb": "Øker hastigheten med %s1% i %s2 sekunder.",
+    "no": "Øker hastigheten med %s1% i %s2 sekunder.",
     "pl": "Zwiększa prędkość o %s1% na %s2 sek.",
     "pt": "Aumenta a velocidade em %s1% durante %s2 segundos.",
     "pt-BR": "Aumenta a velocidade em %s1% por %s2 segundos.",

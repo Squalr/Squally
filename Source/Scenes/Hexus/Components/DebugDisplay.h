@@ -26,12 +26,12 @@ protected:
 private:
 	typedef ComponentBase super;
 
-	GameState* activeGameState;
-	ConstantString* stateStr;
-	LocalizedLabel* stateLabel;
-	ClickableNode* loseButton;
-	ClickableNode* drawButton;
-	ClickableNode* winButton;
+	GameState* activeGameState = nullptr;
+	ConstantString* stateStr = nullptr;
+	LocalizedLabel* stateLabel = nullptr;
+	ClickableNode* loseButton = nullptr;
+	ClickableNode* drawButton = nullptr;
+	ClickableNode* winButton = nullptr;
 
 	static const bool enabled;
 };

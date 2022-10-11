@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 
-#include "cocos/math/Vec2.h"
-
 #include "Engine/SmartNode.h"
 
 namespace cocos2d
@@ -24,9 +22,10 @@ protected:
 
 	void onEnter() override;
 
-	cocos2d::Sprite* sprite;
-	cocos2d::Vec2 movement;
-	cocos2d::Vec2 time;
 private:
 	typedef SmartNode super;
+
+	cocos2d::Sprite* sprite = nullptr;
+	cocos2d::Vec2 movement = cocos2d::Vec2::ZERO;
+	cocos2d::Vec2 time = cocos2d::Vec2::ZERO;
 };

@@ -1,11 +1,9 @@
 #pragma once
+#include <functional>
 #include <string>
 #include <vector>
 
-#include "cocos/math/CCGeometry.h"
-
 class LocalizedString;
-class PlatformerEntity;
 
 class NotificationEvents
 {
@@ -17,8 +15,8 @@ public:
 
 	struct NotificationTakeoverArgs
 	{
-		LocalizedString* title;
-		LocalizedString* description;
+		LocalizedString* title = nullptr;
+		LocalizedString* description = nullptr;
 		std::string soundResource;
 
 		NotificationTakeoverArgs(LocalizedString* title, LocalizedString* description, std::string soundResource)
@@ -29,11 +27,11 @@ public:
 
 	struct NotificationArgs
 	{
-		LocalizedString* title;
-		LocalizedString* description;
+		LocalizedString* title = nullptr;
+		LocalizedString* description = nullptr;
 		std::string iconResource;
 		std::string soundResource;
-		bool keepOpen;
+		bool keepOpen = false;
 
 		NotificationArgs(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource, bool keepOpen = false)
 			: title(title), description(description), iconResource(iconResource), soundResource(soundResource), keepOpen(keepOpen)
@@ -43,9 +41,9 @@ public:
 
 	struct ConfirmationArgs
 	{
-		LocalizedString* confirmationMessage;
-		std::function<bool()> confirmCallback;
-		std::function<bool()> cancelCallback;
+		LocalizedString* confirmationMessage = nullptr;
+		std::function<bool()> confirmCallback = nullptr;
+		std::function<bool()> cancelCallback = nullptr;
 
 		ConfirmationArgs(LocalizedString* confirmationMessage, std::function<bool()> confirmCallback, std::function<bool()> cancelCallback = nullptr)
 			: confirmationMessage(confirmationMessage), confirmCallback(confirmCallback), cancelCallback(cancelCallback)

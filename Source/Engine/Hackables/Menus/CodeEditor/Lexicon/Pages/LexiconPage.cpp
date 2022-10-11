@@ -17,9 +17,9 @@
 
 using namespace cocos2d;
 
-const Size LexiconPage::TotalPageSize = Size(580.0f, 832.0f);
-const Size LexiconPage::PageMargin = Size(32.0f, 32.0f);
-const Size LexiconPage::PageSize = LexiconPage::TotalPageSize - LexiconPage::PageMargin * 2.0f;
+const CSize LexiconPage::TotalPageSize = CSize(580.0f, 832.0f);
+const CSize LexiconPage::PageMargin = CSize(32.0f, 32.0f);
+const CSize LexiconPage::PageSize = LexiconPage::TotalPageSize - LexiconPage::PageMargin * 2.0f;
 const Vec2 LexiconPage::PageOffset = Vec2(324.0f, 36.0f);
 const Vec2 LexiconPage::FullPageSecondOffset = Vec2(LexiconPage::PageOffset.x * 2.0f, 0.0f);
 const Vec2 LexiconPage::ChapterMarkerLocation = Vec2(-LexiconPage::PageSize.width / 2.0f + 64.0f, LexiconPage::PageSize.height / 2.0f - 192.0f);
@@ -103,7 +103,7 @@ void LexiconPage::initializeListeners()
     
     this->addEventListener(EventListenerCustom::create(HackableEvents::EventOpenLexiconPage, [=](EventCustom* eventCustom)
     {
-        HackableEvents::OpenLexiconPageArgs* args = static_cast<HackableEvents::OpenLexiconPageArgs*>(eventCustom->getUserData());
+        OpenLexiconPageArgs* args = static_cast<OpenLexiconPageArgs*>(eventCustom->getData());
 
         if (args != nullptr)
         {
@@ -167,7 +167,7 @@ void LexiconPage::enableBack(std::string backPage, bool closeExisting)
             HackableEvents::TriggerCloseRightLexiconPage();
         }
         
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(backPage));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(backPage));
     });
 }
 
@@ -177,8 +177,8 @@ void LexiconPage::enableBack(std::string backPageLeft, std::string backPageRight
 
     this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
     {
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(backPageLeft));
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(backPageRight));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(backPageLeft));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(backPageRight));
     });
 }
 
@@ -197,7 +197,7 @@ ClickableTextNode* LexiconPage::buildInstructionLabel(LocalizedString* instructi
 	button->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		HackableEvents::TriggerCloseRightLexiconPage();
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(instructionIdentifier));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(instructionIdentifier));
 	});
 
     return button;
@@ -219,8 +219,8 @@ ClickableTextNode* LexiconPage::buildInstructionLabel(LocalizedString* instructi
 	{
 		HackableEvents::TriggerCloseLeftLexiconPage();
 		HackableEvents::TriggerCloseRightLexiconPage();
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(instructionIdentifierA));
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(instructionIdentifierB));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(instructionIdentifierA));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(instructionIdentifierB));
 	});
 
     return button;

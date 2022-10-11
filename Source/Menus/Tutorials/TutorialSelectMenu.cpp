@@ -5,7 +5,6 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -35,21 +34,21 @@
 
 using namespace cocos2d;
 
-TutorialSelectMenu* TutorialSelectMenu::instance = nullptr;
+TutorialSelectMenu* TutorialSelectMenu::Instance = nullptr;
 
 TutorialSelectMenu* TutorialSelectMenu::getInstance()
 {
-	if (TutorialSelectMenu::instance == nullptr)
+	if (TutorialSelectMenu::Instance == nullptr)
 	{
-		TutorialSelectMenu::instance = new TutorialSelectMenu();
+		TutorialSelectMenu::Instance = new TutorialSelectMenu();
 
-		TutorialSelectMenu::instance->autorelease();
-		TutorialSelectMenu::instance->initializeListeners();
+		TutorialSelectMenu::Instance->autorelease();
+		TutorialSelectMenu::Instance->initializeListeners();
 
-		GlobalDirector::registerGlobalScene(TutorialSelectMenu::getInstance());
+		GlobalDirector::RegisterGlobalScene(TutorialSelectMenu::getInstance());
 	}
 
-	return TutorialSelectMenu::instance;
+	return TutorialSelectMenu::Instance;
 }
 
 TutorialSelectMenu::TutorialSelectMenu()
@@ -57,7 +56,7 @@ TutorialSelectMenu::TutorialSelectMenu()
 	this->background = Node::create();
 	this->window = Sprite::create(UIResources::Menus_Generic_LargeMenu);
 	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_HackingTutorials::create());
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
 	this->homeTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconCrown, Strings::Menus_Tutorials_Home_Home::create());
 	this->memoryEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconWeapons, Strings::Menus_Tutorials_MemoryEditing_MemoryEditing::create());
 	this->hexEditingTabButton = this->buildTabButton(UIResources::Menus_OptionsMenu_IconKey, Strings::Menus_Tutorials_HexEditing_HexEditing::create());
@@ -74,11 +73,11 @@ TutorialSelectMenu::TutorialSelectMenu()
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
-	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
 
 	returnLabelHover->setColor(Color3B::YELLOW);
-	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = ClickableTextNode::create(
@@ -87,7 +86,7 @@ TutorialSelectMenu::TutorialSelectMenu()
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->title->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->title->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->title->enableGlow(Color4B::BLACK);
 
 	this->leftPanel->addChild(this->homeTabButton);
@@ -125,7 +124,7 @@ void TutorialSelectMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->window->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->title->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 372.0f));
@@ -155,7 +154,7 @@ void TutorialSelectMenu::initializeListeners()
 	this->pointersTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::Pointers); });
 	this->assemblyEditingTabButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->setActiveTab(Tab::AssemblyEditing); });
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{

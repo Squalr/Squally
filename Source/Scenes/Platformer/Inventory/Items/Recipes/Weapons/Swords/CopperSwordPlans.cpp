@@ -29,9 +29,9 @@ CopperSwordPlans::~CopperSwordPlans()
 {
 }
 
-Item* CopperSwordPlans::craft()
+std::vector<Item*> CopperSwordPlans::craft()
 {
-	return CopperSword::create();
+	return { CopperSword::create() };
 }
 
 std::vector<std::tuple<Item*, int>> CopperSwordPlans::getReagentsInternal()
@@ -48,17 +48,12 @@ Item* CopperSwordPlans::clone()
 	return CopperSwordPlans::create();
 }
 
-std::string CopperSwordPlans::getItemName()
-{
-	return CopperSwordPlans::SaveKey;
-}
-
 LocalizedString* CopperSwordPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_CopperSword::create();
 }
 
-std::string CopperSwordPlans::getIconResource()
+const std::string& CopperSwordPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string CopperSwordPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Swords_CopperSword;
 }
 
-std::string CopperSwordPlans::getSerializationKey()
+const std::string& CopperSwordPlans::getIdentifier()
 {
 	return CopperSwordPlans::SaveKey;
 }

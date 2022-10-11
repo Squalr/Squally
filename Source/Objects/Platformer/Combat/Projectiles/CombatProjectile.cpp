@@ -11,8 +11,6 @@ CombatProjectile::CombatProjectile(PlatformerEntity* caster, PlatformerEntity* t
 	: super(caster, hitBox, collisionType, allowHacking)
 {
 	this->target = target;
-	this->timelinePaused = false;
-	this->timelinePausedCinematic = false;
 	this->onTimeline = onTimeline;
 }
 

@@ -30,10 +30,14 @@ protected:
 
 private:
 	typedef HackableObject super;
+
+	void onFrameComplete();
 	int incrementSpikedLogAnimation(int count, int max);
 
-	cocos2d::Sprite* beam;
-	SmartAnimationSequenceNode* spikedLog;
-	CollisionObject* spikeCollision;
-	CollisionObject* logCollision;
+	int animationLength = 0;
+	int currentAnimationIndex = 0;
+	cocos2d::Sprite* beam = nullptr;
+	SmartAnimationSequenceNode* spikedLog = nullptr;
+	CollisionObject* spikeCollision = nullptr;
+	CollisionObject* logCollision = nullptr;
 };

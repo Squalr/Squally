@@ -24,9 +24,9 @@ public:
 
 	PageType getPageType();
 
-	static const cocos2d::Size TotalPageSize;
-	static const cocos2d::Size PageMargin;
-	static const cocos2d::Size PageSize;
+	static const cocos2d::CSize TotalPageSize;
+	static const cocos2d::CSize PageMargin;
+	static const cocos2d::CSize PageSize;
 	static const cocos2d::Vec2 PageOffset;
 	static const cocos2d::Vec2 FullPageSecondOffset;
 	static const cocos2d::Vec2 ChapterMarkerLocation;
@@ -59,9 +59,9 @@ protected:
 private:
 	typedef SmartNode super;
 
-	ClickableNode* backButton;
-	cocos2d::DrawNode* debugDrawNode;
+	ClickableNode* backButton = nullptr;
+	cocos2d::DrawNode* debugDrawNode = nullptr;
 
 	std::string pageIdentifier;
-	PageType pageType;
+	PageType pageType = PageType::Full;
 };

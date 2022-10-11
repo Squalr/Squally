@@ -23,12 +23,7 @@ UIBoundObject::UIBoundObject(cocos2d::Node* referencedObject)
 {
     this->referencedObject = referencedObject;
     this->originalParent = this->referencedObject == nullptr ? nullptr : dynamic_cast<SmartNode*>(this->referencedObject->getParent());
-    this->originalCoords = Vec3::ZERO;
-    this->originalScale = 1.0f;
-    this->realCoords = Vec3::ZERO;
-    this->realScale = 1.0f;
     this->eventKey = "";
-    this->scheduleTarget = nullptr;
 }
 
 UIBoundObject::~UIBoundObject()
@@ -57,7 +52,7 @@ void UIBoundObject::initializeListeners()
 
     this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventReparentBindPrefix + std::to_string((unsigned long long)(this->referencedObject)), [=](EventCustom* eventCustom)
     {
-        ObjectEvents::ReparentBindArgs* args = static_cast<ObjectEvents::ReparentBindArgs*>(eventCustom->getUserData());
+        ReparentBindArgs* args = static_cast<ReparentBindArgs*>(eventCustom->getData());
         
         if (args != nullptr)
         {
@@ -94,7 +89,7 @@ void UIBoundObject::scheduleUpdateTask()
 
         this->realCoords = UIBoundObject::getRealCoords(this);
         this->realScale = UIBoundObject::getRealScale(this);
-    }, 1.0f / 60.0f, CC_REPEAT_FOREVER, 0.0f, this->eventKey);
+    }, this->eventKey);
 }
 
 Vec3 UIBoundObject::getRealCoords(UIBoundObject* uiBoundObject)
@@ -107,7 +102,7 @@ Vec3 UIBoundObject::getRealCoords(UIBoundObject* uiBoundObject)
     Vec3 thisCoords = GameUtils::getWorldCoords3D(uiBoundObject);
     Vec3 originalParentCoords = GameUtils::getWorldCoords3D(uiBoundObject->originalParent);
     Vec3 originalCoords = uiBoundObject->referencedObject->getPosition3D();
-    float originalScale = GameUtils::getScale(uiBoundObject->originalParent);
+    float originalScale = GameUtils::getUniformScale(uiBoundObject->originalParent);
     Vec3 anchorOffset = Vec3(
         0.5f * uiBoundObject->originalParent->getContentSize().width * originalScale,
         0.5f * uiBoundObject->originalParent->getContentSize().height * originalScale,
@@ -125,7 +120,7 @@ float UIBoundObject::getRealScale(UIBoundObject* uiBoundObject)
         return 1.0f;
     }
 
-    float parentScale = GameUtils::getScale(uiBoundObject->originalParent);
+    float parentScale = GameUtils::getUniformScale(uiBoundObject->originalParent);
 
     return parentScale * uiBoundObject->referencedObject->getScale();
 }

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/CopperMalletPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* CopperMallet::clone()
 	return CopperMallet::create();
 }
 
-std::string CopperMallet::getItemName()
-{
-	return CopperMallet::SaveKey;
-}
-
 LocalizedString* CopperMallet::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_CopperMallet::create();
 }
 
-std::string CopperMallet::getIconResource()
+const std::string& CopperMallet::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Maces_CopperMallet;
 }
 
-std::string CopperMallet::getSerializationKey()
+const std::string& CopperMallet::getIdentifier()
 {
 	return CopperMallet::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string CopperMallet::getSerializationKey()
 Vec2 CopperMallet::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* CopperMallet::getRecipe()
+{
+	return CopperMalletPlans::create();
 }

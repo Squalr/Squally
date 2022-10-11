@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Wands/TaserRodPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* TaserRod::clone()
 	return TaserRod::create();
 }
 
-std::string TaserRod::getItemName()
-{
-	return TaserRod::SaveKey;
-}
-
 LocalizedString* TaserRod::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_TaserRod::create();
 }
 
-std::string TaserRod::getIconResource()
+const std::string& TaserRod::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_TaserRod;
 }
 
-std::string TaserRod::getSerializationKey()
+const std::string& TaserRod::getIdentifier()
 {
 	return TaserRod::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string TaserRod::getSerializationKey()
 Vec2 TaserRod::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* TaserRod::getRecipe()
+{
+	return TaserRodPlans::create();
 }

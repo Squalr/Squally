@@ -30,10 +30,10 @@ private:
 
 	void runCinematicSequence();
 
-	RewardPoolElriel* rewardPool;
+	RewardPoolElriel* rewardPool = nullptr;
 
-	Guano* guano;
-	QueenLiana* queenLiana;
-	Scrappy* scrappy;
-	Squally* squally;
+	Guano* guano = nullptr;
+	QueenLiana* queenLiana = nullptr;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 };

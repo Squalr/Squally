@@ -32,16 +32,16 @@ MagePortal* MagePortal::create(ValueMap& properties)
 	return instance;
 }
 
-MagePortal::MagePortal(ValueMap& properties) : super(properties, Size(128.0f, 256.0f))
+MagePortal::MagePortal(ValueMap& properties) : super(properties, CSize(128.0f, 256.0f))
 {
-	this->contentNode = Node::create();
-	this->portalBase = SmartClippingNode::create(this->contentNode, MagePortal::PortalRadius);
+	this->portalContentNode = Node::create();
+	this->portalBase = SmartClippingNode::create(this->portalContentNode, MagePortal::PortalRadius);
 	this->portalEffectNode = Node::create();
 	this->background = DrawNode::create();
 	this->edge = DrawNode::create();
 	this->portalOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_Portals_Portal);
-	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalFrost, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
-	this->edgeParticles = SmartParticles::create(ParticleResources::Portals_PortalEdge, SmartParticles::CullInfo(Size(96.0f, 96.0f)));
+	this->portalParticles = SmartParticles::create(ParticleResources::Portals_PortalFrost, SmartParticles::CullInfo(CSize(96.0f, 96.0f)));
+	this->edgeParticles = SmartParticles::create(ParticleResources::Portals_PortalEdge, SmartParticles::CullInfo(CSize(96.0f, 96.0f)));
 	
 	this->edgeParticles->start();
 	this->portalParticles->start();
@@ -55,10 +55,10 @@ MagePortal::MagePortal(ValueMap& properties) : super(properties, Size(128.0f, 25
 	
 	this->portalEffectNode->addChild(this->edgeParticles);
 	this->portalEffectNode->addChild(this->portalParticles);
-	this->contentNode->addChild(this->background);
-	this->contentNode->addChild(this->portalEffectNode);
-	this->contentNode->addChild(this->edge);
-	this->addChild(this->portalBase);
+	this->portalContentNode->addChild(this->background);
+	this->portalContentNode->addChild(this->portalEffectNode);
+	this->portalContentNode->addChild(this->edge);
+	this->contentNode->addChild(this->portalBase);
 	this->addChild(this->portalOpenSound);
 }
 

@@ -33,22 +33,17 @@ Item* Emerald::clone()
 	return Emerald::create();
 }
 
-std::string Emerald::getItemName()
-{
-	return Emerald::SaveKey;
-}
-
 LocalizedString* Emerald::getString()
 {
 	return Strings::Items_Crafting_Ore_Emerald::create();
 }
 
-std::string Emerald::getIconResource()
+const std::string& Emerald::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_Emerald;
 }
 
-std::string Emerald::getSerializationKey()
+const std::string& Emerald::getIdentifier()
 {
 	return Emerald::SaveKey;
 }

@@ -10,8 +10,8 @@
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/StrUtils.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherPuzzleData.h"
-#include "Scenes/Cipher/Config.h"
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
 #include "Scenes/Cipher/Components/Blocks/Blocks.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/Connection.h"
@@ -37,19 +37,13 @@ CipherState::CipherState()
 	cipherLockPointer(nullptr),
 	unlockPointer(nullptr)
 {
-	this->inputBlocks = std::vector<SourceBlock*>();
-	this->outputBlocks = std::vector<DestinationBlock*>();
-	this->userBlocks = std::vector<BlockBase*>();
-	this->userConnections = std::vector<Connection*>();
 	this->inputContent = Node::create();
 	this->outputContent = Node::create();
 	this->blockContent = Node::create();
 	this->connectionContent = Node::create();
-	this->gameAreaDebug = LayerColor::create(Color4B(32, 128, 32, 128), Config::GameAreaWidth, Config::GameAreaHeight);
-	this->puzzleData = nullptr;
-	this->displayDataType = CipherEvents::DisplayDataType::Ascii;
+	this->gameAreaDebug = LayerColor::create(Color4B(32, 128, 32, 128), CipherConfig::GameAreaWidth, CipherConfig::GameAreaHeight);
 
-	for (int index = 0; index < Config::MaxInputOutputCount; index++)
+	for (int index = 0; index < CipherConfig::MaxInputOutputCount; index++)
 	{
 		this->inputBlocks.push_back(SourceBlock::create(index));
 		this->outputBlocks.push_back(DestinationBlock::create(index));
@@ -80,22 +74,22 @@ void CipherState::initializePositions()
 {
 	SmartNode::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->gameAreaDebug->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter - Config::GameAreaWidth / 2.0f, visibleSize.height / 2.0f - Config::GameAreaHeight / 2.0f));
+	this->gameAreaDebug->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter - CipherConfig::GameAreaWidth / 2.0f, visibleSize.height / 2.0f - CipherConfig::GameAreaHeight / 2.0f));
 
 	int index = 0;
 
 	for (auto it = this->inputBlocks.begin(); it != this->inputBlocks.end(); it++, index++)
 	{
-		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + float(index - Config::MaxInputOutputCount / 2) * Config::IOSpacing, visibleSize.height / 2.0f + Config::IOVerticalOffset));
+		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter + float(index - CipherConfig::MaxInputOutputCount / 2) * CipherConfig::IOSpacing, visibleSize.height / 2.0f + CipherConfig::IOVerticalOffset));
 	}
 
 	index = 0;
 
 	for (auto it = this->outputBlocks.begin(); it != this->outputBlocks.end(); it++, index++)
 	{
-		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + float(index - Config::MaxInputOutputCount / 2) * Config::IOSpacing, visibleSize.height / 2.0f - Config::IOVerticalOffset + 16.0f));
+		(*it)->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter + float(index - CipherConfig::MaxInputOutputCount / 2) * CipherConfig::IOSpacing, visibleSize.height / 2.0f - CipherConfig::IOVerticalOffset + 16.0f));
 	}
 }
 
@@ -117,7 +111,7 @@ void CipherState::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventRequestBlockSpawn, [=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherBlockSpawnArgs* args = static_cast<CipherEvents::CipherBlockSpawnArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherBlockSpawnArgs* args = static_cast<CipherEvents::CipherBlockSpawnArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->block != nullptr)
 		{
@@ -129,7 +123,7 @@ void CipherState::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventChangeDisplayDataType, [&](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherChangeDisplayDataTypeArgs* args = static_cast<CipherEvents::CipherChangeDisplayDataTypeArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherChangeDisplayDataTypeArgs* args = static_cast<CipherEvents::CipherChangeDisplayDataTypeArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

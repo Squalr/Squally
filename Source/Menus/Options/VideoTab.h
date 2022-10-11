@@ -1,14 +1,11 @@
 #pragma once
 #include <functional>
 
-#include "Engine/UI/HUD/Hud.h"
+#include "Engine/SmartNode.h"
 
 class Checkbox;
-class ClickableNode;
-class ClickableTextNode;
 class LocalizedLabel;
 class RadioButton;
-class Slider;
 
 class VideoTab : public SmartNode
 {
@@ -40,39 +37,39 @@ private:
 	void showResolutionOptions();
 	void hideResolutionOptions();
 
-	LocalizedLabel* fullScreenLabel;
-	Checkbox* fullScreenButton;
+	LocalizedLabel* fullScreenLabel = nullptr;
+	Checkbox* fullScreenButton = nullptr;
 
-	LocalizedLabel* label1080x768;
-	LocalizedLabel* label1152x864;
-	LocalizedLabel* label1280x720;
-	LocalizedLabel* label1280x960;
-	LocalizedLabel* label1280x1024;
-	LocalizedLabel* label1440x900;
-	LocalizedLabel* label1600x900;
-	LocalizedLabel* label1600x1024;
-	LocalizedLabel* label1920x1080;
-	LocalizedLabel* label2560x1440;
-	LocalizedLabel* label3840x2160;
+	LocalizedLabel* label1080x768 = nullptr;
+	LocalizedLabel* label1152x864 = nullptr;
+	LocalizedLabel* label1280x720 = nullptr;
+	LocalizedLabel* label1280x960 = nullptr;
+	LocalizedLabel* label1280x1024 = nullptr;
+	LocalizedLabel* label1440x900 = nullptr;
+	LocalizedLabel* label1600x900 = nullptr;
+	LocalizedLabel* label1600x1024 = nullptr;
+	LocalizedLabel* label1920x1080 = nullptr;
+	LocalizedLabel* label2560x1440 = nullptr;
+	LocalizedLabel* label3840x2160 = nullptr;
 
-	RadioButton* option1080x768;
-	RadioButton* option1152x864;
-	RadioButton* option1280x720;
-	RadioButton* option1280x960;
-	RadioButton* option1280x1024;
-	RadioButton* option1440x900;
-	RadioButton* option1600x900;
-	RadioButton* option1600x1024;
-	RadioButton* option1920x1080;
-	RadioButton* option2560x1440;
-	RadioButton* option3840x2160;
+	RadioButton* option1080x768 = nullptr;
+	RadioButton* option1152x864 = nullptr;
+	RadioButton* option1280x720 = nullptr;
+	RadioButton* option1280x960 = nullptr;
+	RadioButton* option1280x1024 = nullptr;
+	RadioButton* option1440x900 = nullptr;
+	RadioButton* option1600x900 = nullptr;
+	RadioButton* option1600x1024 = nullptr;
+	RadioButton* option1920x1080 = nullptr;
+	RadioButton* option2560x1440 = nullptr;
+	RadioButton* option3840x2160 = nullptr;
 
-	LocalizedLabel* graphicEffectsLabel;
-	LocalizedLabel* highQualityLabel;
-	LocalizedLabel* lowQualityLabel;
+	LocalizedLabel* graphicEffectsLabel = nullptr;
+	LocalizedLabel* highQualityLabel = nullptr;
+	LocalizedLabel* lowQualityLabel = nullptr;
 
-	RadioButton* optionLowQuality;
-	RadioButton* optionHighQuality;
+	RadioButton* optionLowQuality = nullptr;
+	RadioButton* optionHighQuality = nullptr;
 
 	static const int ResolutionGroupId;
 	static const int GraphicsGroupId;

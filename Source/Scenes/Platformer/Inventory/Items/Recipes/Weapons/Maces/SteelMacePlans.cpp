@@ -29,9 +29,9 @@ SteelMacePlans::~SteelMacePlans()
 {
 }
 
-Item* SteelMacePlans::craft()
+std::vector<Item*> SteelMacePlans::craft()
 {
-	return SteelMace::create();
+	return { SteelMace::create() };
 }
 
 std::vector<std::tuple<Item*, int>> SteelMacePlans::getReagentsInternal()
@@ -49,17 +49,12 @@ Item* SteelMacePlans::clone()
 	return SteelMacePlans::create();
 }
 
-std::string SteelMacePlans::getItemName()
-{
-	return SteelMacePlans::SaveKey;
-}
-
 LocalizedString* SteelMacePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_SteelMace::create();
 }
 
-std::string SteelMacePlans::getIconResource()
+const std::string& SteelMacePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +64,7 @@ std::string SteelMacePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Maces_SteelMace;
 }
 
-std::string SteelMacePlans::getSerializationKey()
+const std::string& SteelMacePlans::getIdentifier()
 {
 	return SteelMacePlans::SaveKey;
 }

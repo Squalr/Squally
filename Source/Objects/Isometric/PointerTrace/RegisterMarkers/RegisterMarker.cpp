@@ -34,7 +34,7 @@ void RegisterMarker::onEnter()
 {
 	super::onEnter();
 
-	ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->registerLabel));
+	ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->registerLabel));
 }
 
 void RegisterMarker::initializePositions()
@@ -48,7 +48,7 @@ void RegisterMarker::update(float dt)
 {
 	super::update(dt);
 
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_TAB) || Input::isPressed(EventKeyboard::KeyCode::KEY_SHIFT))
+	if (Input::IsPressed(InputEvents::KeyCode::KEY_TAB) || Input::IsPressed(InputEvents::KeyCode::KEY_SHIFT))
 	{
 		this->registerLabel->setOpacity(0);
 	}

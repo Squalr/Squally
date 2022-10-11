@@ -24,7 +24,6 @@ CurrencyPool::CurrencyPool(std::string poolName) : CurrencyPool(ValueMap(), pool
 CurrencyPool::CurrencyPool(const ValueMap& properties, std::string poolName) : super(properties)
 {
 	this->poolName = poolName;
-	this->currencies = std::vector<CurrencyData>();
 }
 
 CurrencyPool::~CurrencyPool()

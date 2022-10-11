@@ -34,6 +34,10 @@ FloatingRockGetDensityPreview::FloatingRockGetDensityPreview()
 	this->assemblyTextNode->addChild(this->xmm0Bottom);
 }
 
+FloatingRockGetDensityPreview::~FloatingRockGetDensityPreview()
+{
+}
+
 HackablePreview* FloatingRockGetDensityPreview::clone()
 {
 	return FloatingRockGetDensityPreview::create();

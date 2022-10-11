@@ -2,7 +2,6 @@
 
 #include "Scenes/Hexus/States/StateBase.h"
 
-class ClickableNode;
 class ClickableTextNode;
 class Sound;
 
@@ -25,9 +24,10 @@ protected:
 
 private:
 	typedef StateBase super;
+
 	void onBackClick(GameState* gameState);
 
-	ClickableTextNode* backButton;
-	Sound* defeatSound;
-	Sound* victorySound;
+	ClickableTextNode* backButton = nullptr;
+	Sound* defeatSound = nullptr;
+	Sound* victorySound = nullptr;
 };

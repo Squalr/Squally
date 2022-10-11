@@ -46,22 +46,17 @@ Item* JesterHat::clone()
 	return JesterHat::create();
 }
 
-std::string JesterHat::getItemName()
-{
-	return JesterHat::SaveKey;
-}
-
 LocalizedString* JesterHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_JesterHat::create();
 }
 
-std::string JesterHat::getIconResource()
+const std::string& JesterHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_JesterHat;
 }
 
-std::string JesterHat::getSerializationKey()
+const std::string& JesterHat::getIdentifier()
 {
 	return JesterHat::SaveKey;
 }
@@ -69,4 +64,9 @@ std::string JesterHat::getSerializationKey()
 Vec2 JesterHat::getDisplayOffset()
 {
 	return Vec2(-34.0f, 14.0f);
+}
+
+Recipe* JesterHat::getRecipe()
+{
+	return nullptr;
 }

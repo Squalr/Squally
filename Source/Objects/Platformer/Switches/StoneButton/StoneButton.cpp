@@ -10,12 +10,13 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
 #include "Events/SwitchEvents.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -27,6 +28,7 @@ using namespace cocos2d;
 
 const std::string StoneButton::MapKey = "stone-button";
 const std::string StoneButton::PropertySwitch = "switch";
+const std::string StoneButton::PropertySaveKey = "save-key";
 const float StoneButton::ButtonPressureSpeed = 32.0f;
 const float StoneButton::ButtonPressureOffsetMin = 8.0f;
 
@@ -43,9 +45,10 @@ StoneButton::StoneButton(ValueMap& properties) : super(properties)
 {
 	this->button = Sprite::create(ObjectResources::Switches_StoneButton_StoneButtonTop);
 	this->buttonBase = Sprite::create(ObjectResources::Switches_StoneButton_StoneButtonBase);
-	this->buttonCollision = CollisionObject::create(CollisionObject::createBox(Size(224.0f, 48.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
+	this->buttonCollision = CollisionObject::create(CollisionObject::createBox(CSize(224.0f, 48.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
 	this->isSwitch = GameUtils::getKeyOrDefault(this->properties, StoneButton::PropertySwitch, Value(false)).asBool();
 	this->buttonSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_RollLoop1);
+	this->saveKey = GameUtils::getKeyOrDefault(this->properties, StoneButton::PropertySaveKey, Value("")).asString();
 	this->maxDefaultButtonPosition = 48.0f;
 	this->hasCollided = false;
 
@@ -63,6 +66,11 @@ void StoneButton::onEnter()
 {
 	super::onEnter();
 
+	if (!this->saveKey.empty())
+	{
+		this->hasCollided = SaveManager::GetProfileDataOrDefault(this->saveKey, Value(false)).asBool();
+	}
+
 	this->scheduleUpdate();
 }
 
@@ -77,11 +85,15 @@ void StoneButton::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->buttonCollision->whenCollidesWith({ (int)PlatformerCollisionType::Force, (int)PlatformerCollisionType::EntityMovement, (int)PlatformerCollisionType::Hover, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData data)
+	this->buttonCollision->whenCollidesWith({ (int)PlatformerCollisionType::Force, (int)PlatformerCollisionType::EntityMovement, (int)PlatformerCollisionType::Hover, (int)PlatformerCollisionType::Physics }, [=](CollisionData data)
 	{
-		this->hasCollided = true;
+		if (!this->hasCollided)
+		{
+			this->hasCollided = true;
+			SaveManager::SaveProfileData(this->saveKey, Value(this->hasCollided));
+		}
 		
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 }
 

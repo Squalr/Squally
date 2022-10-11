@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/DemonicMacePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* DemonicMace::clone()
 	return DemonicMace::create();
 }
 
-std::string DemonicMace::getItemName()
-{
-	return DemonicMace::SaveKey;
-}
-
 LocalizedString* DemonicMace::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_DemonicMace::create();
 }
 
-std::string DemonicMace::getIconResource()
+const std::string& DemonicMace::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Maces_DemonicMace;
 }
 
-std::string DemonicMace::getSerializationKey()
+const std::string& DemonicMace::getIdentifier()
 {
 	return DemonicMace::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string DemonicMace::getSerializationKey()
 Vec2 DemonicMace::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* DemonicMace::getRecipe()
+{
+	return DemonicMacePlans::create();
 }

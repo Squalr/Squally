@@ -5,6 +5,8 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Optimization/LazyNode.h"
+
 #include "Resources/FontResources.h"
 
 using namespace cocos2d;
@@ -31,15 +33,21 @@ MatrixLetter* MatrixLetter::create()
 
 MatrixLetter::MatrixLetter()
 {
-	this->initWithFile(FontResources::Texture_AlienText);
-
-	this->randomizeLetter();
+	this->sprite = LazyNode<Sprite>::create(CC_CALLBACK_0(MatrixLetter::buildSprite, this));
 
 	this->setOpacity(0);
+	this->setCascadeColorEnabled(true);
+
+	this->addChild(this->sprite);
 }
 
 MatrixLetter::~MatrixLetter()
 {
+}
+
+void MatrixLetter::build()
+{
+
 }
 
 void MatrixLetter::pause()
@@ -58,10 +66,10 @@ void MatrixLetter::spawn()
 {
 	this->stopAllActions();
 
-	this->setColor(MatrixLetter::SpawnColor);
+	this->sprite->lazyGet()->setColor(MatrixLetter::SpawnColor);
 
 	// Restore color action
-	this->runAction(TintTo::create(MatrixLetter::SpawnTime, MatrixLetter::LetterColor));
+	this->sprite->lazyGet()->runAction(TintTo::create(MatrixLetter::SpawnTime, MatrixLetter::LetterColor));
 
 	FiniteTimeAction* fadeIn = FadeIn::create(0.1f);
 
@@ -91,7 +99,7 @@ void MatrixLetter::spawn()
 				DelayTime::create(changeRate),
 				CallFunc::create([=]()
 				{
-					this->randomizeLetter();
+					this->randomizeLetter(this->sprite->lazyGet());
 				}),
 				nullptr
 			))
@@ -104,7 +112,7 @@ void MatrixLetter::spawn()
 			Sequence::create(
 				CallFunc::create([=]()
 				{
-					this->randomizeLetter();
+					this->randomizeLetter(this->sprite->lazyGet());
 				}),
 				DelayTime::create(MatrixLetter::SpawnChangeRate),
 				nullptr
@@ -119,19 +127,30 @@ void MatrixLetter::despawn()
 	this->setOpacity(0);
 }
 
-void MatrixLetter::randomizeLetter()
+void MatrixLetter::randomizeLetter(cocos2d::Sprite* target)
 {
-	Texture2D* texture = this->getTexture();
+	Texture2D* texture = target->getTexture();
 
 	if (texture == nullptr)
 	{
 		return;
 	}
 
-	Size spriteSheetSize = texture->getContentSize();
+	CSize spriteSheetSize = texture->getContentSize();
 
 	float x = float(RandomHelper::random_int(0, (int)(spriteSheetSize.width / MatrixLetter::LetterSize) - 1) *  MatrixLetter::LetterSize);
 	float y = float(RandomHelper::random_int(0, (int)(spriteSheetSize.height / MatrixLetter::LetterSize) - 1) *  MatrixLetter::LetterSize);
 
-	this->setTextureRect(Rect(x, y, MatrixLetter::LetterSize, MatrixLetter::LetterSize));
+	target->setTextureRect(CRect(x, y, MatrixLetter::LetterSize, MatrixLetter::LetterSize));
+}
+
+Sprite* MatrixLetter::buildSprite()
+{
+	Sprite* instance = Sprite::create();
+
+	instance->initWithFile(FontResources::Texture_AlienText);
+
+	this->randomizeLetter(instance);
+
+	return instance;
 }

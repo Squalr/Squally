@@ -44,6 +44,8 @@ PlatformerBannerDeserializer::PlatformerBannerDeserializer() : super()
 
 	// DM
 	this->deserializers["data-mines"] = [=]() { return Strings::Platformer_MapNames_DataMines_DataMines::create(); };
+	this->deserializers["drammol"] = [=]() { return Strings::Platformer_MapNames_DataMines_Drammol::create(); };
+	this->deserializers["data-cove"] = [=]() { return Strings::Platformer_MapNames_DataMines_DataCove::create(); };
 
 	// CV
 	this->deserializers["castle-valgrind"] = [=]() { return Strings::Platformer_MapNames_CastleValgrind_CastleValgrind::create(); };

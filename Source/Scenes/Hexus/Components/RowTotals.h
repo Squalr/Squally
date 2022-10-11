@@ -16,12 +16,12 @@ public:
 	static RowTotals* create();
 
 	// Public so that tutorials can focus these
-	cocos2d::Sprite* enemyBinaryTotalSocket;
-	cocos2d::Sprite* enemyDecimalTotalSocket;
-	cocos2d::Sprite* enemyHexTotalSocket;
-	cocos2d::Sprite* playerBinaryTotalSocket;
-	cocos2d::Sprite* playerDecimalTotalSocket;
-	cocos2d::Sprite* playerHexTotalSocket;
+	cocos2d::Sprite* enemyBinaryTotalSocket = nullptr;
+	cocos2d::Sprite* enemyDecimalTotalSocket = nullptr;
+	cocos2d::Sprite* enemyHexTotalSocket = nullptr;
+	cocos2d::Sprite* playerBinaryTotalSocket = nullptr;
+	cocos2d::Sprite* playerDecimalTotalSocket = nullptr;
+	cocos2d::Sprite* playerHexTotalSocket = nullptr;
 
 protected:
 	RowTotals();
@@ -29,63 +29,63 @@ protected:
 
 	void onEnter() override;
 	void initializePositions() override;
-	void onBeforeStateChange(GameState* gameState) override;
-	void onAnyStateChange(GameState* gameState) override;
+	void onAfterAnyStateChange(GameState* gameState) override;
 
 private:
 	typedef ComponentBase super;
+	
 	void readNewTotals(GameState* gameState, bool displayDeltas);
 	void updateTotals(GameState* gameState);
 	void runDeltaAnimation(LocalizedLabel* label, ConstantString* str, float startPositionY, int delta);
 
-	LocalizedLabel* enemyBinaryCardTotal;
-	LocalizedLabel* enemyDecimalCardTotal;
-	LocalizedLabel* enemyHexCardTotal;
-	LocalizedLabel* playerBinaryCardTotal;
-	LocalizedLabel* playerDecimalCardTotal;
-	LocalizedLabel* playerHexCardTotal;
+	LocalizedLabel* enemyBinaryCardTotal = nullptr;
+	LocalizedLabel* enemyDecimalCardTotal = nullptr;
+	LocalizedLabel* enemyHexCardTotal = nullptr;
+	LocalizedLabel* playerBinaryCardTotal = nullptr;
+	LocalizedLabel* playerDecimalCardTotal = nullptr;
+	LocalizedLabel* playerHexCardTotal = nullptr;
 
-	ConstantString* enemyBinaryCardTotalStr;
-	ConstantString* enemyDecimalCardTotalStr;
-	ConstantString* enemyHexCardTotalStr;
-	ConstantString* playerBinaryCardTotalStr;
-	ConstantString* playerDecimalCardTotalStr;
-	ConstantString* playerHexCardTotalStr;
+	ConstantString* enemyBinaryCardTotalStr = nullptr;
+	ConstantString* enemyDecimalCardTotalStr = nullptr;
+	ConstantString* enemyHexCardTotalStr = nullptr;
+	ConstantString* playerBinaryCardTotalStr = nullptr;
+	ConstantString* playerDecimalCardTotalStr = nullptr;
+	ConstantString* playerHexCardTotalStr = nullptr;
 
-	LocalizedLabel* enemyBinaryCardIncreaseLabel;
-	LocalizedLabel* enemyDecimalCardIncreaseLabel;
-	LocalizedLabel* enemyHexCardIncreaseLabel;
-	LocalizedLabel* playerBinaryCardIncreaseLabel;
-	LocalizedLabel* playerDecimalCardIncreaseLabel;
-	LocalizedLabel* playerHexCardIncreaseLabel;
+	LocalizedLabel* enemyBinaryCardIncreaseLabel = nullptr;
+	LocalizedLabel* enemyDecimalCardIncreaseLabel = nullptr;
+	LocalizedLabel* enemyHexCardIncreaseLabel = nullptr;
+	LocalizedLabel* playerBinaryCardIncreaseLabel = nullptr;
+	LocalizedLabel* playerDecimalCardIncreaseLabel = nullptr;
+	LocalizedLabel* playerHexCardIncreaseLabel = nullptr;
 
-	ConstantString* enemyBinaryCardIncreaseStr;
-	ConstantString* enemyDecimalCardIncreaseStr;
-	ConstantString* enemyHexCardIncreaseStr;
-	ConstantString* playerBinaryCardIncreaseStr;
-	ConstantString* playerDecimalCardIncreaseStr;
-	ConstantString* playerHexCardIncreaseStr;
+	ConstantString* enemyBinaryCardIncreaseStr = nullptr;
+	ConstantString* enemyDecimalCardIncreaseStr = nullptr;
+	ConstantString* enemyHexCardIncreaseStr = nullptr;
+	ConstantString* playerBinaryCardIncreaseStr = nullptr;
+	ConstantString* playerDecimalCardIncreaseStr = nullptr;
+	ConstantString* playerHexCardIncreaseStr = nullptr;
 
-	LocalizedLabel* enemyBinaryCardDecreaseLabel;
-	LocalizedLabel* enemyDecimalCardDecreaseLabel;
-	LocalizedLabel* enemyHexCardDecreaseLabel;
-	LocalizedLabel* playerBinaryCardDecreaseLabel;
-	LocalizedLabel* playerDecimalCardDecreaseLabel;
-	LocalizedLabel* playerHexCardDecreaseLabel;
+	LocalizedLabel* enemyBinaryCardDecreaseLabel = nullptr;
+	LocalizedLabel* enemyDecimalCardDecreaseLabel = nullptr;
+	LocalizedLabel* enemyHexCardDecreaseLabel = nullptr;
+	LocalizedLabel* playerBinaryCardDecreaseLabel = nullptr;
+	LocalizedLabel* playerDecimalCardDecreaseLabel = nullptr;
+	LocalizedLabel* playerHexCardDecreaseLabel = nullptr;
 
-	ConstantString* enemyBinaryCardDecreaseStr;
-	ConstantString* enemyDecimalCardDecreaseStr;
-	ConstantString* enemyHexCardDecreaseStr;
-	ConstantString* playerBinaryCardDecreaseStr;
-	ConstantString* playerDecimalCardDecreaseStr;
-	ConstantString* playerHexCardDecreaseStr;
+	ConstantString* enemyBinaryCardDecreaseStr = nullptr;
+	ConstantString* enemyDecimalCardDecreaseStr = nullptr;
+	ConstantString* enemyHexCardDecreaseStr = nullptr;
+	ConstantString* playerBinaryCardDecreaseStr = nullptr;
+	ConstantString* playerDecimalCardDecreaseStr = nullptr;
+	ConstantString* playerHexCardDecreaseStr = nullptr;
 
-	int cachedEnemyBinaryTotal;
-	int cachedEnemyDecimalTotal;
-	int cachedEnemyHexTotal;
-	int cachedPlayerBinaryTotal;
-	int cachedPlayerDecimalTotal;
-	int cachedPlayerHexTotal;
+	int cachedEnemyBinaryTotal = 0;
+	int cachedEnemyDecimalTotal = 0;
+	int cachedEnemyHexTotal = 0;
+	int cachedPlayerBinaryTotal = 0;
+	int cachedPlayerDecimalTotal = 0;
+	int cachedPlayerHexTotal = 0;
 
 	static const int CacheCipher;
 };

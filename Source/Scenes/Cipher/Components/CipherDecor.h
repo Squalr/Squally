@@ -23,7 +23,7 @@ protected:
 private:
 	typedef CipherComponentBase super;
 
-	cocos2d::Sprite* furnace;
-	cocos2d::Sprite* logo;
-	cocos2d::Sprite* cipherLabel;
+	cocos2d::Sprite* furnace = nullptr;
+	cocos2d::Sprite* logo = nullptr;
+	cocos2d::Sprite* cipherLabel = nullptr;
 };

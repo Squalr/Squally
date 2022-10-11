@@ -1,7 +1,7 @@
 #pragma once
 #include <unordered_map>
 
-#include "cocos/base/CCEventKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/GlobalNode.h"
 
@@ -13,24 +13,34 @@ namespace cocos2d
 class Input : public GlobalNode
 {
 public:
-	static void registerGlobalNode();
+	static void RegisterGlobalNode();
 
-	static cocos2d::EventKeyboard::KeyCode getActiveModifiers();
-	static bool isPressed(cocos2d::EventKeyboard::KeyCode keyCode);
-	static bool isReleased(cocos2d::EventKeyboard::KeyCode keyCode);
+	static cocos2d::InputEvents::MouseEventArgs GetMouseEvent();
+	static cocos2d::InputEvents::KeyCode GetActiveModifiers();
+	static bool IsPressed(cocos2d::InputEvents::KeyCode keyCode);
+	static bool IsReleased(cocos2d::InputEvents::KeyCode keyCode);
 
-private:
-	typedef GlobalNode super;
+protected:
 	Input();
 	virtual ~Input();
 
-	static Input* getInstance();
+	void onEnter() override;
 	void initializeListeners() override;
-	void onKeyPressed(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
-	void onKeyReleased(cocos2d::EventKeyboard::KeyCode keyCode, cocos2d::Event* event);
+	void update(float dt) override;
 
-	std::unordered_map<int, bool> pressedKeysPrevious;
-	std::unordered_map<int, bool> pressedKeys;
+private:
+	typedef GlobalNode super;
 
-	static Input* instance;
+	static Input* GetInstance();
+
+	void onKeyPressed(cocos2d::InputEvents::KeyCode keyCode);
+	void onKeyReleased(cocos2d::InputEvents::KeyCode keyCode);
+
+	bool refreshRequested = false;
+	
+	static cocos2d::InputEvents::MouseEventArgs MouseState;
+	static std::unordered_map<int, bool> PressedKeysPrevious;
+	static std::unordered_map<int, bool> PressedKeys;
+	static float MinDragDistance;
+	static Input* Instance;
 };

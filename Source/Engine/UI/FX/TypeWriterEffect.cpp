@@ -41,11 +41,11 @@ void TypeWriterEffect::runTypeWriterEffect(SmartNode* host, LocalizedLabel* labe
 
 	for (int index = 0; index < max; index++)
 	{
-		Sprite* letter = label->getLetter(index);
+		Sprite* letter = label->getLetter(index, false, label->getCurrentLanguage() != LanguageType::ARABIC);
 
 		if (letter != nullptr)
 		{
-			int realIndex = letter->getTag();
+			int realIndex = letter->getSpriteTag();
 
 			maxRealIndex = std::max(maxRealIndex, realIndex);
 
@@ -82,7 +82,7 @@ void TypeWriterEffect::cancelEffect(LocalizedLabel* label)
 
 	for (int index = 0; index < max; index++)
 	{
-		Sprite* letter = label->getLetter(index);
+		Sprite* letter = label->getLetter(index, false, label->getCurrentLanguage() != LanguageType::ARABIC);
 
 		if (letter != nullptr)
 		{

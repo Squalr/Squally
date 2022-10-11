@@ -16,10 +16,10 @@ public:
 
 	struct Contrast
 	{
-		bool doContrast;
-		unsigned char constrastValue;
+		bool doContrast = false;
+		unsigned char constrastValue = 0;
 
-		Contrast() : doContrast(false), constrastValue((unsigned char)(0)) { }
+		Contrast() { }
 		Contrast(unsigned char constrastValue) : doContrast(true), constrastValue(constrastValue) { }
 	};
 
@@ -37,7 +37,7 @@ protected:
 private:
 	typedef SmartNode super;
 
-	AsciiLetter* asciiLetterLabel;
-	ConstantString* displayValue;
-	LocalizedLabel* displayLabel;
+	AsciiLetter* asciiLetterLabel = nullptr;
+	ConstantString* displayValue = nullptr;
+	LocalizedLabel* displayLabel = nullptr;
 };

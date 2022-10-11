@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Bows/DemonicBowPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* DemonicBow::clone()
 	return DemonicBow::create();
 }
 
-std::string DemonicBow::getItemName()
-{
-	return DemonicBow::SaveKey;
-}
-
 LocalizedString* DemonicBow::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_DemonicBow::create();
 }
 
-std::string DemonicBow::getIconResource()
+const std::string& DemonicBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_DemonicBow;
 }
 
-std::string DemonicBow::getSerializationKey()
+const std::string& DemonicBow::getIdentifier()
 {
 	return DemonicBow::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string DemonicBow::getSerializationKey()
 Vec2 DemonicBow::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* DemonicBow::getRecipe()
+{
+	return DemonicBowPlans::create();
 }

@@ -487,7 +487,7 @@ namespace Globals {
 //! // Bind label to the current position, see `BaseEmitter::bind()`.
 //! a.bind(L1);
 //! ```
-class Label : public Operand {
+class AsmLabel : public Operand {
 public:
   //! Type of the Label.
   enum LabelType : uint32_t {
@@ -515,18 +515,18 @@ public:
   //! \{
 
   //! Creates a label operand without ID (you must set the ID to make it valid).
-  constexpr Label() noexcept
+  constexpr AsmLabel() noexcept
     : Operand(Globals::Init, kOpLabel, Globals::kInvalidId, 0, 0) {}
 
   //! Creates a cloned label operand of `other` .
-  constexpr Label(const Label& other) noexcept
+  constexpr AsmLabel(const AsmLabel& other) noexcept
     : Operand(other) {}
 
   //! Creates a label operand of the given `id`.
-  constexpr explicit Label(uint32_t id) noexcept
+  constexpr explicit AsmLabel(uint32_t id) noexcept
     : Operand(Globals::Init, kOpLabel, id, 0, 0) {}
 
-  inline explicit Label(Globals::NoInit_) noexcept
+  inline explicit AsmLabel(Globals::NoInit_) noexcept
     : Operand(Globals::NoInit) {}
 
   //! Resets the label, will reset all properties and set its ID to `Globals::kInvalidId`.
@@ -541,7 +541,7 @@ public:
   //! \name Overloaded Operators
   //! \{
 
-  inline Label& operator=(const Label& other) noexcept = default;
+  inline AsmLabel& operator=(const AsmLabel& other) noexcept = default;
 
   //! \}
 
@@ -1032,11 +1032,11 @@ public:
   constexpr bool hasBaseAndIndex() const noexcept { return (_signature & kSignatureMemBaseTypeMask) != 0 && (_signature & kSignatureMemIndexTypeMask) != 0; }
 
   //! Tests whether the BASE operand is a register (registers start after `kLabelTag`).
-  constexpr bool hasBaseReg() const noexcept { return (_signature & kSignatureMemBaseTypeMask) > (Label::kLabelTag << kSignatureMemBaseTypeShift); }
+  constexpr bool hasBaseReg() const noexcept { return (_signature & kSignatureMemBaseTypeMask) > (AsmLabel::kLabelTag << kSignatureMemBaseTypeShift); }
   //! Tests whether the BASE operand is a label.
-  constexpr bool hasBaseLabel() const noexcept { return (_signature & kSignatureMemBaseTypeMask) == (Label::kLabelTag << kSignatureMemBaseTypeShift); }
+  constexpr bool hasBaseLabel() const noexcept { return (_signature & kSignatureMemBaseTypeMask) == (AsmLabel::kLabelTag << kSignatureMemBaseTypeShift); }
   //! Tests whether the INDEX operand is a register (registers start after `kLabelTag`).
-  constexpr bool hasIndexReg() const noexcept { return (_signature & kSignatureMemIndexTypeMask) > (Label::kLabelTag << kSignatureMemIndexTypeShift); }
+  constexpr bool hasIndexReg() const noexcept { return (_signature & kSignatureMemIndexTypeMask) > (AsmLabel::kLabelTag << kSignatureMemIndexTypeShift); }
 
   //! Returns the type of the BASE register (0 if this memory operand doesn't
   //! use the BASE register).

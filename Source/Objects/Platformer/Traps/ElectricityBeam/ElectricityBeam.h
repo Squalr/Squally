@@ -8,7 +8,6 @@ namespace cocos2d
 }
 
 class CollisionObject;
-class HackableData;
 class SmartAnimationSequenceNode;
 
 class ElectricityBeam : public HackableObject
@@ -36,19 +35,19 @@ private:
 	void toggleDisabled();
 	void updateElectricityBeam();
 
-	SmartAnimationSequenceNode* electricityAnimation;
-	CollisionObject* electricityCollision;
-	cocos2d::Sprite* ballLeft;
-	cocos2d::Sprite* ballRight;
+	SmartAnimationSequenceNode* electricityAnimation = nullptr;
+	CollisionObject* electricityCollision = nullptr;
+	cocos2d::Sprite* ballLeft = nullptr;
+	cocos2d::Sprite* ballRight = nullptr;
 
-	volatile float currentElectricityBeamCountDown;
-	volatile float maxElectricityBeamCountDown;
-	volatile float storedDt;
-	volatile bool compareResult;
-	volatile bool isRunningAnimation;
-	volatile bool isVertical;
-	volatile bool isDisabled;
-	volatile bool disableSave;
+	volatile float currentElectricityBeamCountDown = 0.0f;
+	volatile float maxElectricityBeamCountDown = 1.0f;
+	volatile float storedDt = 0.0f;
+	volatile bool compareResult = false;
+	volatile bool isRunningAnimation = false;
+	volatile bool isVertical = false;
+	volatile bool isDisabled = false;
+	volatile bool disableSave = false;
 
 	static const std::string PropertyVertical;
 	static const std::string PropertyDisabled;

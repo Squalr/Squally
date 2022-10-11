@@ -9,7 +9,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -25,13 +25,11 @@ HelpTotem* HelpTotem::create(ValueMap& properties)
 	return instance;
 }
 
-HelpTotem::HelpTotem(ValueMap& properties) : super(properties, InteractObject::InteractType::Collision, Size(248.0f, 248.0f), Vec2::ZERO)
+HelpTotem::HelpTotem(ValueMap& properties) : super(properties, InteractObject::InteractType::Collision, CSize(248.0f, 248.0f), Vec2::ZERO)
 {
 	this->totem = Sprite::create(ObjectResources::Interactive_Help_HelpTotem);
 	this->totemInactive = Sprite::create(ObjectResources::Interactive_Help_HelpTotemDeactivated);
 	this->speechBubble = SpeechBubble::create(true);
-	this->hint = nullptr;
-	this->isInactive = false;
 
 	this->totemInactive->setOpacity(0);
 
@@ -71,7 +69,7 @@ void HelpTotem::initializeListeners()
 	super::initializeListeners();
 }
 
-void HelpTotem::onInteract()
+void HelpTotem::onInteract(PlatformerEntity* interactingEntity)
 {
 	this->tryDisplayHint();
 }

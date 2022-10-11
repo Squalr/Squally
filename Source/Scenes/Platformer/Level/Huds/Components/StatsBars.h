@@ -34,6 +34,8 @@ public:
 	void enableInteraction();
 	void disableInteraction(int opacity = 255);
 	int getFrameOpaicty();
+	void toggleManaBarVisibility(bool isVisible);
+	void toggleEmblemVisibility(bool isVisible);
 	void setMouseOverCallback(std::function<void(StatsBars*)> onMouseOverCallback);
 	void setClickCallback(std::function<void(StatsBars*)> onClickCallback);
 
@@ -49,41 +51,40 @@ protected:
 private:
 	typedef SmartNode super;
 
-	PlatformerEntity* target;
-	TimelineEntry* targetAsTimelineEntry;
+	PlatformerEntity* target = nullptr;
+	TimelineEntry* targetAsTimelineEntry = nullptr;
 
-	bool selectable;
+	bool selectable = false;
+	bool showExp = false;
+	int cachedExp = -1;
+	int cachedMaxExp = -1;
+	int cachedMana = -1;
+	int cachedMaxMana = -1;
+	int cachedHealth = -1;
+	int cachedMaxHealth = -1;
 
-	bool showExp;
-	int cachedExp;
-	int cachedMaxExp;
-	int cachedMana;
-	int cachedMaxMana;
-	int cachedHealth;
-	int cachedMaxHealth;
+	bool isFrameOnLeft = false;
+	ClickableNode* frame = nullptr;
+	cocos2d::Sprite* emblemGlow = nullptr;
+	cocos2d::Node* emblemNode = nullptr;
+	cocos2d::Sprite* emblem = nullptr;
+	ProgressBar* healthBar = nullptr;
+	ProgressBar* manaBar = nullptr;
+	ProgressBar* expBar = nullptr;
+	cocos2d::Sprite* healthSprite = nullptr;
+	cocos2d::Sprite* manaSprite = nullptr;
+	cocos2d::Sprite* expSprite = nullptr;
+	LocalizedLabel* healthLabel = nullptr;
+	ConstantString* healthNumerator = nullptr;
+	ConstantString* healthDenominator = nullptr;
+	LocalizedLabel* manaLabel = nullptr;
+	ConstantString* manaNumerator = nullptr;
+	ConstantString* manaDenominator = nullptr;
+	LocalizedLabel* expLabel = nullptr;
+	ConstantString* expNumerator = nullptr;
+	ConstantString* expDenominator = nullptr;
 
-	bool isFrameOnLeft;
-	ClickableNode* frame;
-	cocos2d::Sprite* emblemGlow;
-	cocos2d::Node* emblemNode;
-	cocos2d::Sprite* emblem;
-	ProgressBar* healthBar;
-	ProgressBar* manaBar;
-	ProgressBar* expBar;
-	cocos2d::Sprite* healthSprite;
-	cocos2d::Sprite* manaSprite;
-	cocos2d::Sprite* expSprite;
-	LocalizedLabel* healthLabel;
-	ConstantString* healthNumerator;
-	ConstantString* healthDenominator;
-	LocalizedLabel* manaLabel;
-	ConstantString* manaNumerator;
-	ConstantString* manaDenominator;
-	LocalizedLabel* expLabel;
-	ConstantString* expNumerator;
-	ConstantString* expDenominator;
-
-	EqDisplay* eqDisplay;
-	RuneBar* runeBar;
-	cocos2d::Sprite* arrowSprite;
+	EqDisplay* eqDisplay = nullptr;
+	RuneBar* runeBar = nullptr;
+	cocos2d::Sprite* arrowSprite = nullptr;
 };

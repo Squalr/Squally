@@ -23,7 +23,7 @@ Orthrus::Orthrus(ValueMap& properties) : super(properties,
 	Orthrus::MapKey,
 	EntityResources::Enemies_EndianForest_Orthrus_Animations,
 	EntityResources::Enemies_EndianForest_Orthrus_Emblem,
-	Size(412.0f, 412.0f),
+	CSize(412.0f, 412.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

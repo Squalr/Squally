@@ -24,7 +24,7 @@ TigerMan::TigerMan(ValueMap& properties) : super(properties,
 	TigerMan::MapKey,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_TigerMan_Emblem,
-	Size(256.0f, 308.0f),
+	CSize(256.0f, 308.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

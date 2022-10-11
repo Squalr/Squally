@@ -7,14 +7,14 @@ class HackablePreview;
 class ThrownObject : public CombatProjectile
 {
 public:
-	static ThrownObject* create(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, std::string objectResource, cocos2d::Size collisionSize);
-	static ThrownObject* create(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, cocos2d::Node* object, cocos2d::Size collisionSize);
+	static ThrownObject* create(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, std::string objectResource, cocos2d::CSize collisionSize);
+	static ThrownObject* create(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, cocos2d::Node* object, cocos2d::CSize collisionSize);
 
 	void setFlippedX(bool isFlipped);
 	void setFlippedY(bool isFlipped);
 
 protected:
-	ThrownObject(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, cocos2d::Node* object, cocos2d::Size collisionSize);
+	ThrownObject(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, cocos2d::Node* object, cocos2d::CSize collisionSize);
 	virtual ~ThrownObject();
 
 	void onEnter() override;
@@ -24,7 +24,7 @@ protected:
 	HackablePreview* createVelocityPreview() override;
 	HackablePreview* createAccelerationPreview() override;
 	
-	cocos2d::Node* object;
+	cocos2d::Node* object = nullptr;
 
 private:
 	typedef CombatProjectile super;

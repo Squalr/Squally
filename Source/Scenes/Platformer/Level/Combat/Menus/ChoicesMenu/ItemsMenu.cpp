@@ -13,7 +13,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
@@ -37,7 +37,6 @@ ItemsMenu* ItemsMenu::create()
 
 ItemsMenu::ItemsMenu() : super(ItemsMenu::Radius, float(M_PI) / 9.0f)
 {
-	this->hasItemsInList = false;
 }
 
 ItemsMenu::~ItemsMenu()
@@ -66,7 +65,7 @@ void ItemsMenu::buildItemList(TimelineEntry* entry)
 		return;
 	}
 
-	entity->getAttachedBehavior<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
+	entity->getComponent<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
 		int index = 0;
 
@@ -74,7 +73,7 @@ void ItemsMenu::buildItemList(TimelineEntry* entry)
 		
 		for (auto consumable : attackBehavior->getAvailableConsumables())
 		{
-			const std::string identifier = consumable->getItemName();
+			const std::string identifier = consumable->getIdentifier();
 
 			if (consumablesMap.find(identifier) == consumablesMap.end())
 			{

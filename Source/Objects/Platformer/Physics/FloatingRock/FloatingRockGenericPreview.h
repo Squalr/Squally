@@ -14,13 +14,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	FloatingRockGenericPreview();
-	virtual ~FloatingRockGenericPreview() = default;
+	virtual ~FloatingRockGenericPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* previewAsteroid;
+private:
+	typedef HackablePreview super;
+
+	cocos2d::Sprite* previewAsteroid = nullptr;
 };

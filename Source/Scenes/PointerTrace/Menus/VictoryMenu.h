@@ -9,8 +9,6 @@ namespace cocos2d
 
 class ClickableTextNode;
 class LocalizedLabel;
-class PlatformerEntity;
-class ScrollPane;
 
 class VictoryMenu : public SmartNode
 {
@@ -28,7 +26,7 @@ protected:
 private:
 	typedef SmartNode super;
 
-	cocos2d::Sprite* segfaultMenu;
-	LocalizedLabel* titleLabel;
-	ClickableTextNode* leaveButton;
+	cocos2d::Sprite* segfaultMenu = nullptr;
+	LocalizedLabel* titleLabel = nullptr;
+	ClickableTextNode* leaveButton = nullptr;
 };

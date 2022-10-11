@@ -1,12 +1,8 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "cocos/base/ccTypes.h"
 
-namespace cocos2d
-{
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
-}
+#include "Engine/SmartNode.h"
 
 class GameObject;
 class LocalizedString;
@@ -18,7 +14,7 @@ public:
 	struct QuestData
 	{
 		std::string questTask;
-		bool isSkippable;
+		bool isSkippable = false;
 		std::function<QuestTask*(GameObject*, QuestLine*)> deserializer;
 
 		QuestData(std::string questTask, bool isSkippable, std::function<QuestTask*(GameObject*, QuestLine*)> deserializer)
@@ -28,9 +24,9 @@ public:
 	struct QuestMeta
 	{
 		std::string questTask;
-		bool isActive;
-		bool isSkippable;
-		bool isComplete;
+		bool isActive = false;
+		bool isSkippable = false;
+		bool isComplete = false;
 
 		QuestMeta(std::string questTask, bool isActive, bool isSkippable, bool isComplete) : questTask(questTask), isActive(isActive), isSkippable(isSkippable), isComplete(isComplete) { }
 	};
@@ -44,6 +40,8 @@ public:
 	LocalizedString* getQuestLineObjective(std::string questTask);
 	bool isComplete();
 	bool isCompleteUpTo(std::string questTask);
+	QuestLine* getPrereq() const;
+	std::string getPrereqTask() const;
 	virtual QuestLine* clone() = 0;
 
 protected:
@@ -55,7 +53,7 @@ private:
 
 	std::string questLine;
 	std::vector<QuestData> quests;
-	QuestLine* prereq;
+	QuestLine* prereq = nullptr;
 	std::string prereqTask = "";
 
 	static const std::string QuestLineSaveKeyComplete;

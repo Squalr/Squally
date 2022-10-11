@@ -10,7 +10,7 @@ class ClickableTextNode;
 class TutorialAWinningRound : public TutorialBase
 {
 public:
-	static TutorialAWinningRound * create();
+	static TutorialAWinningRound* create();
 
 protected:
 	TutorialAWinningRound();
@@ -30,8 +30,8 @@ private:
 	void initializeCallbacks(GameState* gameState);
 	void runTutorialScoreTotal(GameState* gameState);
 
-	FocusTakeOver* focusTakeOver;
-	LocalizedLabel* scoreTotalsTutorialLabel;
-	ClickableTextNode* scoreTotalsNextButton;
-	HelpArrow* helpArrowScoreTotals;
+	FocusTakeOver* focusTakeOver = nullptr;
+	LocalizedLabel* scoreTotalsTutorialLabel = nullptr;
+	ClickableTextNode* scoreTotalsNextButton = nullptr;
+	HelpArrow* helpArrowScoreTotals = nullptr;
 };

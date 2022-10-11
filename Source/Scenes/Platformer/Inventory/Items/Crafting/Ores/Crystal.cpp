@@ -33,22 +33,17 @@ Item* Crystal::clone()
 	return Crystal::create();
 }
 
-std::string Crystal::getItemName()
-{
-	return Crystal::SaveKey;
-}
-
 LocalizedString* Crystal::getString()
 {
 	return Strings::Items_Crafting_Ore_Crystal::create();
 }
 
-std::string Crystal::getIconResource()
+const std::string& Crystal::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_Crystal;
 }
 
-std::string Crystal::getSerializationKey()
+const std::string& Crystal::getIdentifier()
 {
 	return Crystal::SaveKey;
 }

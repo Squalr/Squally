@@ -18,7 +18,7 @@
 #include "Objects/Platformer/Projectiles/Enemy/OverworldFireball.h"
 #include "Objects/Platformer/Projectiles/ProjectilePool.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -38,7 +38,7 @@ FireLauncherSqualr* FireLauncherSqualr::create(ValueMap& properties)
 	return instance;
 }
 
-FireLauncherSqualr::FireLauncherSqualr(ValueMap& properties) : super(properties, ObjectResources::Traps_FireLauncher_Animations, 4)
+FireLauncherSqualr::FireLauncherSqualr(ValueMap& properties) : super(properties, ObjectResources::Traps_FireLauncher_Animations, false, 4)
 {
 	this->setAutoLaunch(false);
 	this->toggleHackable(false);
@@ -64,14 +64,14 @@ Projectile* FireLauncherSqualr::createProjectile()
 {
 	OverworldFireball* fireball = OverworldFireball::create();
 	
-	fireball->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
+	fireball->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionData collisionData)
 	{
 		fireball->disable(true);
 		fireball->runImpactFX();
 
 		SqualrEvents::TriggerProjectileCollided();
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
 	return fireball;

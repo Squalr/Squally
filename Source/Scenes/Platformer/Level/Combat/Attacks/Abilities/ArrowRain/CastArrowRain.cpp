@@ -9,7 +9,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Combat/Abilities/ArrowRain/ArrowRain.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 
@@ -54,7 +54,7 @@ PlatformerAttack* CastArrowRain::cloneInternal()
 
 LocalizedString* CastArrowRain::getString()
 {
-	return Strings::Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude::create();
+	return Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_ArrowRain::create();
 }
 
 std::string CastArrowRain::getAttackAnimation()
@@ -70,15 +70,15 @@ void CastArrowRain::performAttack(PlatformerEntity* owner, std::vector<Platforme
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
-	ObjectEvents::QueryObject<CinematicMarker>(this, [=](CinematicMarker* marker)
+	ObjectEvents::QueryObject<CinematicMarker>([=](CinematicMarker* marker)
 	{
 		ArrowRain* arrowRain = ArrowRain::create(owner, nullptr, this->arrowResource);
 
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			marker,
 			arrowRain,
-			ObjectEvents::SpawnMethod::Above,
-			ObjectEvents::PositionMode::SetToOwner,
+			SpawnMethod::Above,
+			PositionMode::SetToOwner,
 			[&]()
 			{
 			},
@@ -90,16 +90,17 @@ void CastArrowRain::performAttack(PlatformerEntity* owner, std::vector<Platforme
 		// Place it quasi off-screen
 		arrowRain->setPosition(arrowRain->getPosition() + Vec2(0.0f, 512.0f));
 	},
+	PlatformerAttack::TagArenaTop,
 	[=]()
 	{
 		// TOP CENTER ARENA MARKER NOT FOUND!
 		ArrowRain* arrowRain = ArrowRain::create(owner, nullptr, this->arrowResource);
 
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			this,
 			arrowRain,
-			ObjectEvents::SpawnMethod::Above,
-			ObjectEvents::PositionMode::SetToOwner,
+			SpawnMethod::Above,
+			PositionMode::SetToOwner,
 			[&]()
 			{
 			},
@@ -110,7 +111,7 @@ void CastArrowRain::performAttack(PlatformerEntity* owner, std::vector<Platforme
 		
 		// Fall back by spawning the arrow rain in a quasi reasonable spot.
 		arrowRain->setPosition(arrowRain->getPosition() + Vec2(-256.0f, 1024.0f));
-	}, PlatformerAttack::TagArenaTop);
+	});
 }
 
 void CastArrowRain::onCleanup()
@@ -123,7 +124,7 @@ bool CastArrowRain::isWorthUsing(PlatformerEntity* caster, const std::vector<Pla
 	
 	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
 	{
-		for (auto next : timeline->getEntries())
+		for (TimelineEntry* next : timeline->getEntries())
 		{
 			if (dynamic_cast<CastArrowRain*>(next->getStagedCast()) != nullptr)
 			{
@@ -133,7 +134,7 @@ bool CastArrowRain::isWorthUsing(PlatformerEntity* caster, const std::vector<Pla
 		}
 	}));
 
-	ObjectEvents::QueryObject<ArrowRain>(this, [&](ArrowRain*)
+	ObjectEvents::QueryObject<ArrowRain>([&](ArrowRain*)
 	{
 		worthUsing = false;
 	});

@@ -33,22 +33,17 @@ Item* Snowball::clone()
 	return Snowball::create();
 }
 
-std::string Snowball::getItemName()
-{
-	return Snowball::SaveKey;
-}
-
 LocalizedString* Snowball::getString()
 {
 	return Strings::Items_Crafting_Reagents_Snowball::create();
 }
 
-std::string Snowball::getIconResource()
+const std::string& Snowball::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Reagents_Snowball;
 }
 
-std::string Snowball::getSerializationKey()
+const std::string& Snowball::getIdentifier()
 {
 	return Snowball::SaveKey;
 }

@@ -3,39 +3,39 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
+#include "Engine/Events/DeveloperModeEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Localization/Localization.h"
 #include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 
-DeveloperModeController* DeveloperModeController::instance = nullptr;
+DeveloperModeController* DeveloperModeController::Instance = nullptr;
 volatile bool DeveloperModeController::IsDeveloperBuild = false;
-volatile bool DeveloperModeController::ShowFPSInfo = false;
 int DeveloperModeController::MaxDebugLevel = 2;
 int DeveloperModeController::CurrentDebugLevel = 0;
 
-void DeveloperModeController::registerGlobalNode()
+void DeveloperModeController::RegisterGlobalNode()
 {
-	if (DeveloperModeController::instance == nullptr)
+	if (DeveloperModeController::Instance == nullptr)
 	{
 		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(DeveloperModeController::getInstance());
+		GlobalDirector::getInstance()->RegisterGlobalNode(DeveloperModeController::getInstance());
 	}
 }
 
 DeveloperModeController* DeveloperModeController::getInstance()
 {
-	if (DeveloperModeController::instance == nullptr)
+	if (DeveloperModeController::Instance == nullptr)
 	{
-		DeveloperModeController::instance = new DeveloperModeController();
+		DeveloperModeController::Instance = new DeveloperModeController();
 
-		DeveloperModeController::instance->autorelease();
+		DeveloperModeController::Instance->autorelease();
 	}
 
-	return DeveloperModeController::instance;
+	return DeveloperModeController::Instance;
 }
 
 DeveloperModeController::DeveloperModeController()
@@ -50,11 +50,6 @@ DeveloperModeController::~DeveloperModeController()
 void DeveloperModeController::onEnter()
 {
 	super::onEnter();
-	
-	if (DeveloperModeController::ShowFPSInfo)
-	{
-		Director::getInstance()->setDisplayStats(true);
-	}
 }
 
 void DeveloperModeController::initializeListeners()
@@ -63,7 +58,7 @@ void DeveloperModeController::initializeListeners()
 
 	static LanguageType nextLanguage = LanguageType::ENGLISH;
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_BACK_SLASH }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_BACK_SLASH }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!DeveloperModeController::IsDeveloperBuild)
 		{
@@ -84,7 +79,7 @@ void DeveloperModeController::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F1 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_F1 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!DeveloperModeController::IsDeveloperBuild)
 		{
@@ -96,7 +91,7 @@ void DeveloperModeController::initializeListeners()
 		this->stopAllActions();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F2 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_F2 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!DeveloperModeController::IsDeveloperBuild)
 		{
@@ -118,7 +113,7 @@ void DeveloperModeController::initializeListeners()
 		)));
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F3 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_F3 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!DeveloperModeController::IsDeveloperBuild)
 		{
@@ -140,7 +135,7 @@ void DeveloperModeController::initializeListeners()
 		)));
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F4 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_F4 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!DeveloperModeController::IsDeveloperBuild)
 		{
@@ -162,7 +157,7 @@ void DeveloperModeController::initializeListeners()
 		)));
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_F5 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_F5 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!DeveloperModeController::IsDeveloperBuild)
 		{

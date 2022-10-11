@@ -43,7 +43,7 @@ void TimelineEventGroup::initializeListeners()
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventBuffRemoved, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::BuffRemovedArgs* args = static_cast<CombatEvents::BuffRemovedArgs*>(eventCustom->getUserData());
+		CombatEvents::BuffRemovedArgs* args = static_cast<CombatEvents::BuffRemovedArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->buff == this->getAssociatedBuff())
 		{
@@ -95,12 +95,15 @@ bool TimelineEventGroup::processEvents(float previousTime, float currentTime)
 
 	this->timelineEventsToDelete.clear();
 
-	if (this->timelineEvents.empty() && this->onGroupComplete != nullptr)
+	return this->timelineEvents.empty();
+}
+
+void TimelineEventGroup::completeEventGroup()
+{
+	if (this->onGroupComplete != nullptr)
 	{
 		this->onGroupComplete();
 	}
-
-	return this->timelineEvents.empty();
 }
 
 void TimelineEventGroup::removeAllTimelineEvents()

@@ -10,7 +10,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/Camera/CameraTarget.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 using namespace cocos2d;
 
@@ -28,7 +28,7 @@ CameraControl* CameraControl::create(ValueMap& properties)
 
 CameraControl::CameraControl(ValueMap& properties) : super(properties)
 {
-	Size controlSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
+	CSize controlSize = CSize(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->targetTag = GameUtils::getKeyOrDefault(this->properties, CameraControl::PropertyTarget, Value("")).asString();
 	this->controlCollision = CollisionObject::create(CollisionObject::createBox(controlSize), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
 	this->cameraTarget = nullptr;
@@ -49,18 +49,18 @@ void CameraControl::initializeListeners()
 		this->cameraTarget = cameraTarget;
 	}, this->targetTag);
 
-	this->controlCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	this->controlCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::Player }, [=](CollisionData collisionData)
 	{
 		this->beginTrack();
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->controlCollision->whenStopsCollidingWith({ (CollisionType)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	this->controlCollision->whenStopsCollidingWith({ (CollisionType)PlatformerCollisionType::Player }, [=](CollisionData collisionData)
 	{
 		this->endTrack();
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }
 
@@ -71,27 +71,17 @@ void CameraControl::beginTrack()
 		return;
 	}
 
-	CameraTrackingData* trackingData = GameCamera::getInstance()->getCurrentTrackingData();
+	CameraTrackingData trackingData = this->cameraTarget->getTrackingData();
 
-	if (trackingData == nullptr || trackingData->target == this->cameraTarget)
-	{
-		return;
-	}
+	trackingData.id = this->getUniqueIdentifier();
 
-	GameCamera::getInstance()->pushTarget(this->cameraTarget->getTrackingData());
+	GameCamera::getInstance()->pushTarget(trackingData);
 }
 
 void CameraControl::endTrack()
 {
-	if (this->cameraTarget == nullptr)
+	if (this->cameraTarget != nullptr)
 	{
-		return;
-	}
-
-	CameraTrackingData* trackingData = GameCamera::getInstance()->getCurrentTrackingData();
-
-	if (trackingData == nullptr || trackingData->target == this->cameraTarget)
-	{
-		GameCamera::getInstance()->popTarget();
+		GameCamera::getInstance()->removeTarget(this->getUniqueIdentifier());
 	}
 }

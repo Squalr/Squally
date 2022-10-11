@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="878">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="44" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="878">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -27,7 +27,7 @@
   </object>
   <object id="870" name="portal" type="object" x="3518" y="1151" width="256" height="256">
    <properties>
-    <property name="map" value="UnderflowRuins/Zone_2_6"/>
+    <property name="map" value="UnderflowRuins/Zone_2_7"/>
     <property name="quest" value="lower-rope"/>
     <property name="quest-line" value="cure-town"/>
     <property name="tag" value="rope-portal"/>
@@ -101,7 +101,7 @@
   </properties>
   <object id="829" name="rupert" type="entity" x="4468.15" y="1276.97" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="rupert,rupert-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="rupert,rupert-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
@@ -114,7 +114,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="632.012" y="587.96" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="805" name="spawn" type="object" x="412.588" y="588.321" width="128" height="128">
@@ -141,10 +141,15 @@
   </properties>
   <object id="817" name="water" type="object" x="1404" y="904.78" width="540" height="1530.56">
    <properties>
-    <property name="disable-splash" type="bool" value="true"/>
+    <property name="disable-edges" type="bool" value="true"/>
+    <property name="disable-waves" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="820" name="water" type="object" x="1944" y="1538.11" width="3915.96" height="1099.06"/>
+  <object id="820" name="water" type="object" x="1944" y="1538.11" width="3915.96" height="1099.06">
+   <properties>
+    <property name="disable-edges" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="114" name="terrain fg">
   <properties>

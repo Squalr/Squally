@@ -30,7 +30,7 @@ protected:
 private:
 	typedef BreakableBase super;
 
-	cocos2d::Sprite* barrelSprite;
-	WorldSound* breakSound;
-	SmartAnimationSequenceNode* explosion;
+	cocos2d::Sprite* barrelSprite = nullptr;
+	WorldSound* breakSound = nullptr;
+	SmartAnimationSequenceNode* explosion = nullptr;
 };

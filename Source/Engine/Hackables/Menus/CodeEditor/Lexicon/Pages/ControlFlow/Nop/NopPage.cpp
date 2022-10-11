@@ -3,7 +3,8 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Events/HackableEvents.h"
-#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/LexiconPages.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowIntroPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowSelectPage.h"
 #include "Engine/Localization/LocalizedLabel.h"
 
 #include "Resources/UIResources.h"
@@ -32,7 +33,7 @@ NopPage::NopPage() : super(NopPage::Identifier, PageType::Full)
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::P,
 		Strings::Menus_Hacking_Lexicon_Pages_ControlFlow_Nop_Intro::create(),
-		Size(super::PageSize.width - 160.0f, super::PageSize.height)
+		CSize(super::PageSize.width - 160.0f, super::PageSize.height)
 	);
 
 	this->titleLabel->setTextColor(super::TextColor);
@@ -64,5 +65,5 @@ void NopPage::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->enableBack(BinaryIntroPage::Identifier, BinarySelectPage::Identifier);
+	this->enableBack(ControlFlowIntroPage::Identifier, ControlFlowSelectPage::Identifier);
 }

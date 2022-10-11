@@ -25,7 +25,7 @@ AlchemyMenu* AlchemyMenu::create()
 	return instance;
 }
 
-AlchemyMenu::AlchemyMenu()
+AlchemyMenu::AlchemyMenu() : super(Strings::Menus_Crafting_Crafting::create())
 {
 	this->anvil = Sprite::create(UIResources::Menus_CraftingMenu_Table);
 	this->icon = Sprite::create(UIResources::Menus_CraftingMenu_PlantIcon);
@@ -46,7 +46,7 @@ void AlchemyMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	const Vec2 AnvilOffset = Vec2(-72.0f, 0.0f);
 

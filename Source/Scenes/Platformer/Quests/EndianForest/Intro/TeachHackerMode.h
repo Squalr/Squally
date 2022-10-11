@@ -3,12 +3,9 @@
 #include "Engine/Quests/QuestTask.h"
 
 class HelpTotem;
-class MagePortal;
-class Marcel;
 class QuestLine;
 class Scrappy;
 class Squally;
-class WorldSound;
 
 class TeachHackerMode : public QuestTask
 {
@@ -31,9 +28,9 @@ private:
 
 	void runCinematicSequencePt1();
 
-	HelpTotem* helpTotem;
-	Scrappy* scrappy;
-	Squally* squally;
+	HelpTotem* helpTotem = nullptr;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 	
 	static const std::string TagHelpTotemHacking;
 };

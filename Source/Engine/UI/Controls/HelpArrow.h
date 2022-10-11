@@ -6,17 +6,19 @@ class SmartAnimationNode;
 class HelpArrow : public SmartNode
 {
 public:
-	static HelpArrow * create();
+	static HelpArrow* create();
 
 	void showPointer();
 	void hidePointer();
 
-private:
-	typedef SmartNode super;
+protected:
 	HelpArrow();
 	virtual ~HelpArrow();
 
+private:
+	typedef SmartNode super;
+
 	void onEnter() override;
 
-	SmartAnimationNode* arrow;
+	SmartAnimationNode* arrow = nullptr;
 };

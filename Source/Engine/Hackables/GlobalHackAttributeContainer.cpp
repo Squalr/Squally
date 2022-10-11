@@ -12,42 +12,40 @@
 
 using namespace cocos2d;
 
-GlobalHackAttributeContainer* GlobalHackAttributeContainer::instance = nullptr;
+GlobalHackAttributeContainer* GlobalHackAttributeContainer::Instance = nullptr;
 
-void GlobalHackAttributeContainer::registerGlobalNode()
+void GlobalHackAttributeContainer::RegisterGlobalNode()
 {
-	if (GlobalHackAttributeContainer::instance == nullptr)
+	if (GlobalHackAttributeContainer::Instance == nullptr)
 	{
 		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(GlobalHackAttributeContainer::getInstance());
+		GlobalDirector::getInstance()->RegisterGlobalNode(GlobalHackAttributeContainer::getInstance());
 	}
 }
 
 GlobalHackAttributeContainer* GlobalHackAttributeContainer::getInstance()
 {
-	if (GlobalHackAttributeContainer::instance == nullptr)
+	if (GlobalHackAttributeContainer::Instance == nullptr)
 	{
-		GlobalHackAttributeContainer::instance = new GlobalHackAttributeContainer();
+		GlobalHackAttributeContainer::Instance = new GlobalHackAttributeContainer();
 
-		GlobalHackAttributeContainer::instance->autorelease();
+		GlobalHackAttributeContainer::Instance->autorelease();
 	}
 
-	return GlobalHackAttributeContainer::instance;
+	return GlobalHackAttributeContainer::Instance;
 }
 
 GlobalHackAttributeContainer* GlobalHackAttributeContainer::create()
 {
-	GlobalHackAttributeContainer* instance = new GlobalHackAttributeContainer();
+	GlobalHackAttributeContainer* Instance = new GlobalHackAttributeContainer();
 
-	instance->autorelease();
+	Instance->autorelease();
 
-	return instance;
+	return Instance;
 }
 
 GlobalHackAttributeContainer::GlobalHackAttributeContainer() : super()
 {
-	this->codeMap = std::map<void*, HackableCode*>();
-	this->abilityMap = std::map<std::string, HackActivatedAbility*>();
 	this->hackableCodeContainer = Node::create();
 	this->hackableAbilityContainer = Node::create();
 
@@ -63,13 +61,15 @@ void GlobalHackAttributeContainer::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addGlobalEventListener(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
+	this->addGlobalEventListener(EventListenerCustom::create(SceneEvents::EventBeforeSceneChangeFinalize, [=](EventCustom* eventCustom)
 	{
 		HackableBase::HackTimersPaused = false;
 
-		// Hack abilities, unlike code, have lambdas that interact with the objects on the map. Bad things happen if we cache between scenes.
+		// These can have lambdas that interact with the objects on the map. Bad things happen if we cache between scenes.
 		this->hackableAbilityContainer->removeAllChildren();
+		this->hackableCodeContainer->removeAllChildren();
 		this->abilityMap.clear();
+		this->codeMap.clear();
 	}));
 
 	this->addGlobalEventListener(EventListenerCustom::create(HackableEvents::EventPauseHackTimers, [=](EventCustom* eventCustom)
@@ -85,9 +85,9 @@ void GlobalHackAttributeContainer::initializeListeners()
 
 HackableCode* GlobalHackAttributeContainer::GetHackableCode(void* startAddress)
 {
-	if (GlobalHackAttributeContainer::instance->codeMap.find(startAddress) != GlobalHackAttributeContainer::instance->codeMap.end())
+	if (GlobalHackAttributeContainer::Instance->codeMap.find(startAddress) != GlobalHackAttributeContainer::Instance->codeMap.end())
 	{
-		return GlobalHackAttributeContainer::instance->codeMap[startAddress];
+		return GlobalHackAttributeContainer::Instance->codeMap[startAddress];
 	}
 
 	return nullptr;
@@ -100,18 +100,18 @@ void GlobalHackAttributeContainer::RegisterHackableCode(HackableCode* hackableCo
 		return;
 	}
 
-	if (GlobalHackAttributeContainer::instance->codeMap.find(hackableCode->codePointer) == GlobalHackAttributeContainer::instance->codeMap.end())
+	if (GlobalHackAttributeContainer::Instance->codeMap.find(hackableCode->codePointer) == GlobalHackAttributeContainer::Instance->codeMap.end())
 	{
-		GlobalHackAttributeContainer::instance->codeMap[hackableCode->codePointer] = hackableCode;
-		GlobalHackAttributeContainer::instance->hackableCodeContainer->addChild(hackableCode);
+		GlobalHackAttributeContainer::Instance->codeMap[hackableCode->codePointer] = hackableCode;
+		GlobalHackAttributeContainer::Instance->hackableCodeContainer->addChild(hackableCode);
 	}
 }
 
 HackActivatedAbility* GlobalHackAttributeContainer::GetHackActivatedAbility(std::string identifier)
 {
-	if (GlobalHackAttributeContainer::instance->abilityMap.find(identifier) != GlobalHackAttributeContainer::instance->abilityMap.end())
+	if (GlobalHackAttributeContainer::Instance->abilityMap.find(identifier) != GlobalHackAttributeContainer::Instance->abilityMap.end())
 	{
-		return GlobalHackAttributeContainer::instance->abilityMap[identifier];
+		return GlobalHackAttributeContainer::Instance->abilityMap[identifier];
 	}
 
 	return nullptr;
@@ -124,11 +124,11 @@ void GlobalHackAttributeContainer::RegisterHackActivatedAbility(HackActivatedAbi
 		return;
 	}
 
-	const std::string identifier = hackActivatedAbility->getHackableIdentifier();
+	const std::string& identifier = hackActivatedAbility->getHackableIdentifier();
 
-	if (GlobalHackAttributeContainer::instance->abilityMap.find(identifier) == GlobalHackAttributeContainer::instance->abilityMap.end())
+	if (GlobalHackAttributeContainer::Instance->abilityMap.find(identifier) == GlobalHackAttributeContainer::Instance->abilityMap.end())
 	{
-		GlobalHackAttributeContainer::instance->abilityMap[identifier] = hackActivatedAbility;
-		GlobalHackAttributeContainer::instance->hackableAbilityContainer->addChild(hackActivatedAbility);
+		GlobalHackAttributeContainer::Instance->abilityMap[identifier] = hackActivatedAbility;
+		GlobalHackAttributeContainer::Instance->hackableAbilityContainer->addChild(hackActivatedAbility);
 	}
 }

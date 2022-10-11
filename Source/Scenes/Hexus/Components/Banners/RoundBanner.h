@@ -22,6 +22,6 @@ protected:
 private:
 	typedef BannerBase super;
 
-	cocos2d::Sprite* roundBanner1;
-	cocos2d::Sprite* roundBanner2;
+	cocos2d::Sprite* roundBanner1 = nullptr;
+	cocos2d::Sprite* roundBanner2 = nullptr;
 };

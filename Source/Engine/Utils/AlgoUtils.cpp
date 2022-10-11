@@ -20,6 +20,11 @@ Vec3 AlgoUtils::computeArcVelocity(Vec3 source, Vec3 destination, Vec3 accelerat
 	return velocity;
 }
 
+Vec2 AlgoUtils::pointOnCircle(Vec2 center, float radius, Vec2 closestPoint)
+{
+	return AlgoUtils::pointOnEllipse(center, radius, radius, closestPoint);
+}
+
 Vec2 AlgoUtils::pointOnEllipse(Vec2 center, float rx, float ry, Vec2 closestPoint)
 {
 	int maxIterations = 10;
@@ -148,16 +153,30 @@ std::vector<int> AlgoUtils::subsetSum(const std::vector<int>& numbers, int sum, 
 	return result;
 }
 
-std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<Vec2>& polygonPoints, const std::vector<Vec2>& holePoints)
+void AlgoUtils::offsetPoints(std::vector<cocos2d::Vec2>& points, const cocos2d::Vec2& delta)
+{
+	for (int index = 0; index < (int)points.size(); index++)
+	{
+		points[index] += delta;
+	}
+}
+
+std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<Vec2>& polygonPoints, const std::vector<std::vector<cocos2d::Vec2>>& holes)
 {
 	std::vector<Triangle> triangles = std::vector<Triangle>();
 
-	uint32_t MaxPointCount = polygonPoints.size();
-	size_t MemoryRequired = MPE_PolyMemoryRequired(MaxPointCount);
-	void* memory = calloc(MemoryRequired, 1);
+	uint32_t maxPointCount = polygonPoints.size();
+
+	for (const std::vector<cocos2d::Vec2>& holePoints : holes)
+	{
+		maxPointCount += holePoints.size();
+	}
+
+	size_t memoryRequired = MPE_PolyMemoryRequired(maxPointCount);
+	void* memory = calloc(memoryRequired, 1);
 	MPEPolyContext polyContext;
 
-	if (!MPE_PolyInitContext(&polyContext, memory, MaxPointCount))
+	if (!MPE_PolyInitContext(&polyContext, memory, maxPointCount))
 	{
 		LogUtils::logError("Error trianglefying polygon. Possible error condition: duplicate point cordinates, bounds checking assert failures");
 
@@ -177,27 +196,29 @@ std::vector<AlgoUtils::Triangle> AlgoUtils::trianglefyPolygon(const std::vector<
 	// Add the polyline for the edge. This will consume all points added so far.
 	MPE_PolyAddEdge(&polyContext);
 
-	if (!holePoints.empty())
+	for (const std::vector<cocos2d::Vec2>& holePoints : holes)
 	{
-		MPEPolyPoint* holes = MPE_PolyPushPointArray(&polyContext, holePoints.size());
-
-		for (int index = 0; index < int(holePoints.size()); index++)
+		if (!holePoints.empty())
 		{
-			holes[index].X = holePoints[index].x;
-			holes[index].Y = holePoints[index].y;
-		}
+			MPEPolyPoint* hole = MPE_PolyPushPointArray(&polyContext, holePoints.size());
 
-		MPE_PolyAddHole(&polyContext);
+			for (int index = 0; index < int(holePoints.size()); index++)
+			{
+				hole[index].X = holePoints[index].x;
+				hole[index].Y = holePoints[index].y;
+			}
+
+			MPE_PolyAddHole(&polyContext);
+		}
 	}
 
 	// Triangulate the shape
 	MPE_PolyTriangulate(&polyContext);
 
-	// Parse out the triangle and create the in-fill color from that
+	// Parse out the triangle
 	for (uxx triangleIndex = 0; triangleIndex < polyContext.TriangleCount; ++triangleIndex)
 	{
 		MPEPolyTriangle* triangle = polyContext.Triangles[triangleIndex];
-		DrawNode* infillTriangle = DrawNode::create();
 
 		Vec2 trianglePointA = Vec2(triangle->Points[0]->X, triangle->Points[0]->Y);
 		Vec2 trianglePointB = Vec2(triangle->Points[1]->X, triangle->Points[1]->Y);
@@ -462,9 +483,9 @@ std::vector<std::tuple<Vec2, Vec2>> AlgoUtils::buildSegmentsFromPoints(const std
 	return segments;
 }
 
-Rect AlgoUtils::getPolygonRect(const std::vector<Vec2>& points)
+CRect AlgoUtils::getPolygonRect(const std::vector<Vec2>& points)
 {
-	Rect drawRect = Rect::ZERO;
+	CRect drawRect = CRect::ZERO;
 
 	for (auto it = points.begin(); it != points.end(); it++)
 	{

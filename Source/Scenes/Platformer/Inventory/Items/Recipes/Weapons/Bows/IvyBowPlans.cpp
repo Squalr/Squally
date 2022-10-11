@@ -29,9 +29,9 @@ IvyBowPlans::~IvyBowPlans()
 {
 }
 
-Item* IvyBowPlans::craft()
+std::vector<Item*> IvyBowPlans::craft()
 {
-	return IvyBow::create();
+	return { IvyBow::create() };
 }
 
 std::vector<std::tuple<Item*, int>> IvyBowPlans::getReagentsInternal()
@@ -48,17 +48,12 @@ Item* IvyBowPlans::clone()
 	return IvyBowPlans::create();
 }
 
-std::string IvyBowPlans::getItemName()
-{
-	return IvyBowPlans::SaveKey;
-}
-
 LocalizedString* IvyBowPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_IvyBow::create();
 }
 
-std::string IvyBowPlans::getIconResource()
+const std::string& IvyBowPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string IvyBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_IvyBow;
 }
 
-std::string IvyBowPlans::getSerializationKey()
+const std::string& IvyBowPlans::getIdentifier()
 {
 	return IvyBowPlans::SaveKey;
 }

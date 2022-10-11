@@ -4,14 +4,13 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Sound/Music.h"
-#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -25,13 +24,13 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/Components/Components.h"
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
-#include "Scenes/Hexus/Components/Components.h"
 #include "Scenes/Hexus/HelpMenus/HelpMenu.h"
+#include "Scenes/Hexus/HexusConfig.h"
 #include "Scenes/Hexus/States/States.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Title/TitleScreen.h"
@@ -41,20 +40,21 @@
 
 using namespace cocos2d;
 
-Hexus* Hexus::instance = nullptr;
+Hexus* Hexus::Instance = nullptr;
 
 Hexus* Hexus::create()
 {
-	Hexus* instance = new Hexus();
+	Hexus* Instance = new Hexus();
 	
-	instance->autorelease();
+	Instance->autorelease();
 
-	return instance;
+	return Instance;
 }
 
 Hexus::Hexus()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	ValueMap emptyProperties;
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->gameBackground = Sprite::create(HexusResources::Gameboard);
 	this->gameState = GameState::create();
@@ -116,8 +116,8 @@ Hexus::Hexus()
 	this->relocateLayer = Node::create();
 	this->helpMenu = HelpMenu::create();
 	this->menuBackDrop = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
-	this->musicA = Medieval::create();
-	this->musicB = Medieval2::create();
+	this->musicA = Medieval::create(emptyProperties);
+	this->musicB = Medieval2::create(emptyProperties);
 
 	// Set up node pointers to be focused in tutorials -- a little hacky but avoids a cyclic dependency / refactor
 	this->gameState->boardSelection = this->boardSelection;
@@ -217,10 +217,10 @@ void Hexus::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->gameBackground->setPosition(visibleSize.width / 2.0f, visibleSize.height / 2.0f);
-	this->boardSelection->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY);
+	this->boardSelection->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY);
 }
 
 void Hexus::initializeListeners()
@@ -243,12 +243,12 @@ void Hexus::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HexusEvents::EventExitHexus, [=](EventCustom* eventCustom)
 	{
-		HexusEvents::HexusExitArgs* args = static_cast<HexusEvents::HexusExitArgs*>(eventCustom->getUserData());
+		HexusEvents::HexusExitArgs* args = static_cast<HexusEvents::HexusExitArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
-			this->musicA->pop();
-			this->musicB->pop();
+			this->musicA->popTrack();
+			this->musicB->popTrack();
 		}
 	}));
 }
@@ -305,13 +305,15 @@ void Hexus::open(HexusOpponentData* opponentData)
 
 	this->setVisible(true);
 
-	if (RandomHelper::random_real(0.0f, 1.0f) < 0.5f)
+	static int NextIndex = 0;
+
+	if (NextIndex++ % 2 == 1)
 	{
-		this->musicA->push();
+		this->musicA->pushTrack();
 	}
 	else
 	{
-		this->musicB->push();
+		this->musicB->pushTrack();
 	}
 	
 	this->defer([=]()
@@ -328,7 +330,7 @@ void Hexus::buildEnemyDeck(HexusOpponentData* opponentData)
 
 	for (auto card : enemyCards)
 	{
-		this->gameState->enemyDeck->insertCardRandom(Card::create(opponentData->cardStyle, card, false), false, 0.0f, false);
+		this->gameState->enemyDeck->insertCardRandom(Card::create(opponentData->cardStyle, card, false), false, 0.0f);
 	}
 }
 
@@ -336,7 +338,7 @@ void Hexus::buildPlayerDeck()
 {
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			EquipmentInventory* equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
 			std::vector<CardData*> cardData = std::vector<CardData*>();
@@ -357,7 +359,7 @@ void Hexus::buildPlayerDeck()
 
 			for (auto next : cardData)
 			{
-				this->gameState->playerDeck->insertCardRandom(Card::create(Card::CardStyle::Earth, next, true), false, 0.0f, false);
+				this->gameState->playerDeck->insertCardRandom(Card::create(Card::CardStyle::Earth, next, true), false, 0.0f);
 			}
 		});
 	}, Squally::MapKey);

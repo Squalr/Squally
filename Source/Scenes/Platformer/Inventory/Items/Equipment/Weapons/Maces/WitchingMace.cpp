@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/WitchingMacePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* WitchingMace::clone()
 	return WitchingMace::create();
 }
 
-std::string WitchingMace::getItemName()
-{
-	return WitchingMace::SaveKey;
-}
-
 LocalizedString* WitchingMace::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_WitchingMace::create();
 }
 
-std::string WitchingMace::getIconResource()
+const std::string& WitchingMace::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_WitchingMace;
 }
 
-std::string WitchingMace::getSerializationKey()
+const std::string& WitchingMace::getIdentifier()
 {
 	return WitchingMace::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string WitchingMace::getSerializationKey()
 Vec2 WitchingMace::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* WitchingMace::getRecipe()
+{
+	return WitchingMacePlans::create();
 }

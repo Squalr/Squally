@@ -14,7 +14,7 @@
 
 using namespace cocos2d;
 
-Sprite* RenderUtils::renderNodeToSprite(Node* target, Vec2 offset, Size renderSize, Size padding)
+Sprite* RenderUtils::renderNodeToSprite(Node* target, Vec2 offset, CSize renderSize, CSize padding)
 {
 	if (renderSize.width <= 0 || renderSize.height <= 0)
 	{
@@ -48,7 +48,7 @@ Sprite* RenderUtils::renderNodeToSprite(Node* target, Vec2 offset, Size renderSi
 	// Rasterize the texture to a target
 	Sprite* renderSprite = renderedNode->getSprite();
 
-	// The target is attached to the render texture -- decouple it before returning
+	// The target is attached to the render texture -- detach it before returning
 	GameUtils::changeParent(renderSprite, nullptr, false);
 	
 	renderSprite->setAnchorPoint(Vec2(0.5f, 0.5f));

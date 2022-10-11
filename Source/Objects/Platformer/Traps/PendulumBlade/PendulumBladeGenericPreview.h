@@ -14,13 +14,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	PendulumBladeGenericPreview();
-	virtual ~PendulumBladeGenericPreview() = default;
+	virtual ~PendulumBladeGenericPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* previewBlade;
+private:
+	typedef HackablePreview super;
+
+	cocos2d::Sprite* previewBlade = nullptr;
 };

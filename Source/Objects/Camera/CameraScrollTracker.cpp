@@ -1,10 +1,11 @@
 #include "CameraScrollTracker.h"
 
 #include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCValue.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCInputEvents.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Input/ClickableNode.h"
@@ -34,7 +35,6 @@ CameraScrollTracker::CameraScrollTracker(ValueMap& properties) : super(propertie
 {
 	this->zoom = GameUtils::getKeyOrDefault(properties, CameraScrollTracker::MapKeyZoom, Value(1.0f)).asFloat();
 	this->trackTarget = Node::create();
-	this->scrollDistance = 0.0f;
 
 	if (this->polylinePoints.size() >= 2)
 	{
@@ -83,7 +83,7 @@ void CameraScrollTracker::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
 	{
-		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData());
+		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

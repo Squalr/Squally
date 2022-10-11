@@ -15,7 +15,9 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
@@ -37,8 +39,6 @@ TownArrival* TownArrival::create(GameObject* owner, QuestLine* questLine)
 
 TownArrival::TownArrival(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TownArrival::MapKeyQuest, true)
 {
-	this->scrappy = nullptr;
-	this->squally = nullptr;
 }
 
 TownArrival::~TownArrival()

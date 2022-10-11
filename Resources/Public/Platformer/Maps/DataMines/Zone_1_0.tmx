@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="66" nextobjectid="806">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="857">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,16 +17,230 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="712" name="mines" type="texture" x="1527.09" y="1626.75">
-   <polygon points="-2095.29,-2086.15 3122.17,-2081.55 3116.15,1212.13 -2086.14,1198.72"/>
+  <object id="712" name="mines" type="texture" x="1823.09" y="1634.75">
+   <polygon points="-2397.29,-2086.15 3572.17,-2081.55 3565.29,1212.13 -2386.82,1198.72"/>
   </object>
  </objectgroup>
- <objectgroup id="65" name="firefliex -3">
+ <objectgroup id="66" name="terrain -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="813" name="mines" type="terrain" x="1378.37" y="1592" width="4003.84" height="844">
+   <properties>
+    <property name="top-only" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="819" name="mines" type="terrain" x="632.185" y="-294" width="747.63" height="2728"/>
+  <object id="836" name="mines" type="terrain" x="2235.66" y="2" width="1421.11" height="816"/>
+  <object id="837" name="mines" type="terrain" x="3874.63" y="8" width="1830.75" height="864"/>
+ </objectgroup>
+ <objectgroup id="76" name="terrain -4 fg">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="856" name="mines" type="terrain" x="3658.02" y="6" width="211.356" height="2321.33"/>
+ </objectgroup>
+ <objectgroup id="68" name="decor -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="817" name="screaming-door" type="object" x="1428.84" y="475.364" width="800" height="1114">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="map" value="DataMines/Zone_2_0"/>
+    <property name="transition" value="screaming-door"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="70" name="objects -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="821" name="trigger" type="object" x="2446.51" y="-43.3002" width="118.944" height="1629.75">
+   <properties>
+    <property name="send-event" value="awaken-rhinoman"/>
+   </properties>
+  </object>
+  <object id="822" name="edge-portal" type="object" x="4922.31" y="1106.44" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="DataMines/Zone_1_1"/>
+    <property name="transition" value="right-back"/>
+   </properties>
+  </object>
+  <object id="834" name="lever" type="object" x="4353.44" y="1389.32" width="177" height="205">
+   <properties>
+    <property name="send-event" value="bridge-group-A"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="69" name="entities -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="820" name="rhinoman" type="entity" x="1797.45" y="1460" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy"/>
+    <property name="drop-pool" value="dm-generic"/>
+    <property name="quest" value="defeat-rhinoman"/>
+    <property name="quest-line" value="defeat-rhinoman"/>
+   </properties>
+  </object>
+  <object id="824" name="tiki-golem" type="entity" x="1769.55" y="259.679" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="833" name="tiki-golem" type="entity" x="1477.45" y="280" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="71" name="player_layer -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="823" name="spawn" type="object" x="4664.69" y="1462.88" width="128" height="128">
+   <properties>
+    <property name="transition" value="left-back"/>
+   </properties>
+  </object>
+  <object id="828" name="spawn" type="object" x="1717.58" y="1460.06" width="128" height="128">
+   <properties>
+    <property name="transition" value="screaming-door"/>
+   </properties>
+  </object>
+  <object id="850" name="warp" type="object" x="3946" y="1335" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-B"/>
+    <property name="listen-event" value="bridge-group-A"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-B"/>
+   </properties>
+  </object>
+  <object id="851" name="warp" type="object" x="3196" y="1340" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-A"/>
+    <property name="listen-event" value="bridge-group-A"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-A"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="67" name="decor fg -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="815" name="Ruins/Walls2" type="decor" x="2618.42" y="1459.82" width="689" height="132">
+   <properties>
+    <property name="flip-y" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="816" name="Ruins/Walls5" type="decor" x="2232.1" y="817" width="386" height="778"/>
+  <object id="854" name="Ruins/Walls3" type="decor" x="5151.24" y="873.773" width="262" height="130">
+   <properties>
+    <property name="flip-y" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="855" name="Ruins/Walls4" type="decor" x="4140.76" y="874.227" width="262" height="130">
+   <properties>
+    <property name="flip-y" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="75" name="bridge -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="845" name="wood" type="terrain" x="3899.5" y="1600.75" width="347" height="356.5">
+   <properties>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
+   </properties>
+  </object>
+  <object id="846" name="wood" type="terrain" x="3141.5" y="1599.75" width="347" height="356.5">
+   <properties>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="2"/>
+    <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="74" name="bridge -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="843" name="wood" type="terrain" x="3897.5" y="1617.25" width="347" height="356.5">
+   <properties>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="1"/>
+    <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
+   </properties>
+  </object>
+  <object id="847" name="wood" type="terrain" x="3139.5" y="1616.25" width="347" height="356.5">
+   <properties>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="1"/>
+    <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="65" name="fireflies -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
   </properties>
+ </objectgroup>
+ <objectgroup id="72" name="bridge -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="840" name="wood" type="terrain" x="3899.5" y="1630.25" width="347" height="356.5">
+   <properties>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="2"/>
+    <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
+   </properties>
+  </object>
+  <object id="848" name="wood" type="terrain" x="3141.5" y="1629.25" width="347" height="356.5">
+   <properties>
+    <property name="bridge-group" value="bridge-group-A"/>
+    <property name="bridge-index" type="int" value="0"/>
+    <property name="collision" value="none"/>
+    <property name="components" value="bridge"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="64" name="fireflies -2">
   <properties>
@@ -34,6 +248,22 @@
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
   </properties>
+ </objectgroup>
+ <objectgroup id="73" name="bridge -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="842" name="wood" type="terrain" x="3898.5" y="1648.25" width="347" height="356.5">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="849" name="wood" type="terrain" x="3140.5" y="1647.25" width="347" height="356.5">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="63" name="fireflies -1">
   <properties>
@@ -56,7 +286,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="786" name="mines" type="terrain" x="-134.54" y="1658" width="4385.08" height="844">
+  <object id="786" name="mines" type="terrain" x="-134.54" y="1658" width="5297.08" height="844">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -72,27 +302,17 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="798" name="Ruins/Walls1" type="decor" x="3275.97" y="1244.26" width="333" height="416">
+  <object id="798" name="Ruins/Walls1" type="decor" x="2803.24" y="1244.26" width="333" height="416">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="799" name="Ruins/Walls2" type="decor" x="2312.47" y="1528.55" width="689" height="132">
+  <object id="799" name="Ruins/Walls2" type="decor" x="1232.47" y="1532.55" width="689" height="132">
    <properties>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="800" name="Ruins/Walls3" type="decor" x="4657.15" y="919.273" width="262" height="130">
-   <properties>
-    <property name="flip-y" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="801" name="Ruins/Walls4" type="decor" x="4392.67" y="917.727" width="262" height="130">
-   <properties>
-    <property name="flip-y" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="802" name="Ruins/Walls5" type="decor" x="1923.3" y="883.727" width="386" height="778"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
@@ -112,15 +332,15 @@
     <property name="transition" value="zone-transition"/>
    </properties>
   </object>
-  <object id="787" name="help-totem-end-of-demo" type="object" x="1630.42" y="1402.55" width="256" height="256"/>
   <object id="797" name="pass-through" type="collision" x="207.76" y="1102.04" width="807" height="106.19"/>
-  <object id="804" name="edge-portal" type="object" x="3900.04" y="1180" width="199.918" height="488.002">
+  <object id="804" name="edge-portal" type="object" x="4912.77" y="1182.06" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="DataMines/Zone_1_1"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
+  <object id="806" name="life-stone" type="object" x="3686.28" y="1240.5" width="146" height="423"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -140,7 +360,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="823.9" y="1527.62" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="779" name="spawn" type="object" x="568" y="1534" width="128" height="128">
@@ -149,9 +369,29 @@
     <property name="transition" value="zone-transition"/>
    </properties>
   </object>
-  <object id="805" name="spawn" type="object" x="3516" y="1528" width="128" height="128">
+  <object id="805" name="spawn" type="object" x="4657.78" y="1530.23" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="852" name="warp" type="object" x="3942" y="1401" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-B"/>
+    <property name="listen-event" value="bridge-group-A"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-B"/>
+   </properties>
+  </object>
+  <object id="853" name="warp" type="object" x="3194" y="1404" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-A"/>
+    <property name="listen-event" value="bridge-group-A"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-A"/>
    </properties>
   </object>
  </objectgroup>

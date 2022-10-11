@@ -30,10 +30,10 @@ private:
 	void runCinematicSequence();
 	void runShipmentsComplete();
 
-	Guano* guano;
-	Aphrodite* aphrodite;
-	Scrappy* scrappy;
-	Squally* squally;
+	Guano* guano = nullptr;
+	Aphrodite* aphrodite = nullptr;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 
 	static const std::string TagExitDoor;
 	static const std::string SaveKeyItemGiven;

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="81" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="930">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="81" height="62" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="936">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value="elbridge"/>
    <property name="music" value="Music/Ambient/Forest.mp3"/>
    <property name="rubber-band" type="int" value="2"/>
@@ -43,7 +43,6 @@
   <object id="601" name="Snow/Background/Mountains3" type="decor" x="-5382.54" y="2757.32" width="13333.3" height="761">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -105,18 +104,13 @@
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="767" name="ice" type="terrain" x="2069.78" y="2207.72">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 5535.16,-5.20891 5535.16,359.415 12.0855,364.624"/>
-  </object>
   <object id="804" name="ice" type="terrain" x="-1115.2" y="4387.65">
    <properties>
     <property name="collision" value="none"/>
    </properties>
    <polygon points="0,0 12787.8,-11.408 12787.8,787.153 27.9209,798.561"/>
   </object>
+  <object id="933" name="ice" type="terrain" x="2448.1" y="2229.59" width="5171.65" height="344.077"/>
  </objectgroup>
  <objectgroup id="72" name="decor -12">
   <properties>
@@ -201,11 +195,10 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="864" name="dark-grass" type="terrain" x="-218.254" y="527.73">
+  <object id="934" name="dark-grass" type="terrain" x="-555.598" y="501.981" width="3071.98" height="1814.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="0,-26.3307 2736.65,-27.1469 2736.65,1873.14 5.97518,1900.28"/>
   </object>
  </objectgroup>
  <objectgroup id="70" name="terrain -6">
@@ -219,18 +212,13 @@
    </properties>
    <polygon points="0,0 8010.38,-11.408 8010.38,787.153 17.4899,798.561"/>
   </object>
-  <object id="763" name="ice" type="terrain" x="1774.84" y="2350.61">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 5852.01,-11.408 5852.01,787.153 12.7773,798.561"/>
-  </object>
   <object id="769" name="dark-grass" type="terrain" x="-102.385" y="2343.81">
    <properties>
     <property name="collision" value="none"/>
    </properties>
    <polygon points="0,-5.86159 2281.07,-6.04329 2281.07,416.988 4.98051,423.031"/>
   </object>
+  <object id="932" name="ice" type="terrain" x="1789.21" y="2352.32" width="5829.72" height="778.27"/>
  </objectgroup>
  <objectgroup id="69" name="decor -6">
   <properties>
@@ -239,7 +227,7 @@
   </properties>
   <object id="750" name="Snow/TownHome3" type="decor" x="5557.69" y="3393.81" width="1317" height="1120"/>
   <object id="762" name="Snow/TownHomeEmpty4" type="decor" x="2730.41" y="3399.49" width="1267" height="1120"/>
-  <object id="766" name="Generic/TownHomeEmpty2" type="decor" x="5266.08" y="1188.05" width="1203" height="1160"/>
+  <object id="766" name="Snow/TownHomeEmpty2" type="decor" x="5266.08" y="1188.05" width="1203" height="1160"/>
   <object id="882" name="Snow/TownHomeEmpty5" type="decor" x="4004.32" y="2892.66" width="1563" height="1623"/>
  </objectgroup>
  <objectgroup id="67" name="bridge -5">
@@ -447,12 +435,7 @@
    </properties>
    <polygon points="1374.73,127.536 442.99,-331.723 -5.76369,-749.28 -11.5274,-1613.83 6128.3,-1622.32 6130.97,-719.051 4390.78,-721.802 4389.89,196.636 3533.03,219.084 2407.47,197.594"/>
   </object>
-  <object id="724" name="ice" type="terrain" x="3845.72" y="2441.07">
-   <polygon points="0,0 1863.05,-13.8647 1864.82,354.271 0,365.991"/>
-  </object>
-  <object id="764" name="ice" type="terrain" x="6015.74" y="823.581">
-   <polygon points="420.144,-49.2054 2582.8,-44.7421 2310.8,-200.206 2191.81,-323.907 2149.28,-666.958 2026.88,-1205.09 2031.72,-1587.52 2814.66,-1590.12 4354.83,-1583.51 4368.2,1973.49 0,1975.97 -2.21724,1606.05 2375.72,1594.83 2371.57,1221.15 431.5,1226.14"/>
-  </object>
+  <object id="931" name="ice" type="terrain" x="3839.02" y="2439.43" width="1969.48" height="344.077"/>
  </objectgroup>
  <objectgroup id="20" name="terrain 2">
   <properties>
@@ -466,15 +449,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="658" name="frost" type="terrain" x="1.1054" y="4641.23">
-   <polygon points="0,0 3452.4,-27.0701 3452.4,2273.88 8.35932,2300.96"/>
-  </object>
-  <object id="662" name="ice" type="terrain" x="675.156" y="2443.68">
-   <polygon points="0,0 2781.71,-4.37683 2781.71,367.653 6.73538,372.031"/>
-  </object>
   <object id="915" name="ice" type="terrain" x="-108.223" y="374.992">
    <polygon points="1.59291,-29.3333 565.933,-28.7024 566.933,2438 1.3703,2439.71"/>
   </object>
+  <object id="930" name="ice" type="terrain" x="-191.089" y="2453.9" width="3647.96" height="344.077"/>
+  <object id="935" name="frost" type="terrain" x="-181.823" y="4607.37" width="3647.96" height="2353.88"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -483,13 +462,8 @@
   <object id="484" name="Forest/Flower10" type="decor" x="1227.44" y="4513.8" width="199" height="133"/>
   <object id="500" name="Forest/Flower10" type="decor" x="4504.63" y="6024.98" width="199" height="133"/>
   <object id="651" name="Generic/Shack1" type="decor" x="5561.75" y="5341.81" width="1241" height="792"/>
-  <object id="654" name="Snow/TownAlchemy" type="decor" x="1745.09" y="823.354" width="1725" height="1622"/>
-  <object id="655" name="Snow/TownEquipment" type="decor" x="3849.65" y="823.354" width="1727" height="1624"/>
-  <object id="876" name="Snow/TreeHome1" type="decor" x="7238.55" y="-482.335" width="1462" height="1268">
-   <properties>
-    <property name="flip-x" type="bool" value="true"/>
-   </properties>
-  </object>
+  <object id="654" name="Snow/TownAlchemy" type="decor" x="3852.29" y="816.277" width="1725" height="1622"/>
+  <object id="655" name="Snow/TownEquipment" type="decor" x="1728.35" y="818.073" width="1727" height="1624"/>
   <object id="880" name="Snow/TownHomeEmpty2" type="decor" x="4270.63" y="3442.65" width="1203" height="1160"/>
  </objectgroup>
  <objectgroup id="87" name="decore midground 2">
@@ -567,36 +541,27 @@
     <property name="transition" value="shack"/>
    </properties>
   </object>
-  <object id="698" name="spawn" type="object" x="2432.49" y="2318.36" width="128" height="128">
+  <object id="698" name="spawn" type="object" x="4539.69" y="2311.28" width="128" height="128">
    <properties>
     <property name="transition" value="alch"/>
    </properties>
   </object>
-  <object id="699" name="spawn" type="object" x="4831.01" y="2318.3" width="128" height="128">
+  <object id="699" name="spawn" type="object" x="2709.71" y="2313.02" width="128" height="128">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
     <property name="transition" value="smith"/>
    </properties>
   </object>
-  <object id="700" name="portal" type="object" x="2366.04" y="2099.09" width="256.687" height="349.061">
+  <object id="700" name="portal" type="object" x="4473.24" y="2092.01" width="256.687" height="349.061">
    <properties>
-    <property name="map" value="EndianForest/Town_Alch"/>
-    <property name="quest" value="business-hours"/>
-    <property name="quest-line" value="find-elriel"/>
-    <property name="transition" value="main"/>
+    <property name="map" value="BallmerPeaks/Town_Alch"/>
+    <property name="transition" value="alch"/>
    </properties>
   </object>
-  <object id="701" name="portal" type="object" x="4770.45" y="2086.85" width="256.687" height="357.764">
+  <object id="701" name="portal" type="object" x="2649.15" y="2081.57" width="256.687" height="357.764">
    <properties>
-    <property name="map" value="EndianForest/Town_Smith"/>
-    <property name="quest" value="business-hours"/>
-    <property name="quest-line" value="find-elriel"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
-  <object id="705" name="spawn" type="object" x="7720.62" y="655.545" width="128" height="128">
-   <properties>
-    <property name="transition" value="liana"/>
+    <property name="map" value="BallmerPeaks/Town_Smith"/>
+    <property name="transition" value="smith"/>
    </properties>
   </object>
   <object id="707" name="edge-portal" type="object" x="10299.4" y="4141.35" width="199.918" height="488.002">
@@ -620,69 +585,15 @@
   </object>
   <object id="782" name="gate" type="object" x="752.638" y="2013.93" width="450.603" height="423.038">
    <properties>
-    <property name="attached-behavior" value="locked-portal"/>
+    <property name="components" value="locked-portal"/>
     <property name="item-required" value="gate-key"/>
     <property name="map" value="EndianForest/Zone_3_0"/>
-    <property name="transition" value="main"/>
-   </properties>
-  </object>
-  <object id="784" name="portal" type="object" x="7655.75" y="389.524" width="256.687" height="394.577">
-   <properties>
-    <property name="map" value="EndianForest/Town_Liana"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
   <object id="866" name="spawn" type="object" x="6069.3" y="4468.1" width="128" height="128">
    <properties>
     <property name="transition" value="inn"/>
-   </properties>
-  </object>
-  <object id="867" name="wind" type="object" x="6037.85" y="1918.66" width="380" height="480">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="1"/>
-   </properties>
-  </object>
-  <object id="868" name="wind" type="object" x="6039.74" y="1430.54" width="380" height="480">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="1"/>
-   </properties>
-  </object>
-  <object id="869" name="wind" type="object" x="6039.74" y="951.605" width="380" height="480">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="1"/>
-   </properties>
-  </object>
-  <object id="870" name="wind" type="object" x="6046.95" y="469.07" width="380" height="480">
-   <properties>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="1"/>
-   </properties>
-  </object>
-  <object id="871" name="wind" type="object" x="7411.73" y="2042.71" width="480" height="380">
-   <properties>
-    <property name="speed-x" type="float" value="-1"/>
-    <property name="speed-y" type="float" value="0"/>
-   </properties>
-  </object>
-  <object id="872" name="wind" type="object" x="6929.61" y="2045.9" width="480" height="380">
-   <properties>
-    <property name="speed-x" type="float" value="-1"/>
-    <property name="speed-y" type="float" value="0"/>
-   </properties>
-  </object>
-  <object id="873" name="wind" type="object" x="6454.27" y="2045.9" width="480" height="380">
-   <properties>
-    <property name="speed-x" type="float" value="-1"/>
-    <property name="speed-y" type="float" value="0"/>
-   </properties>
-  </object>
-  <object id="875" name="wind" type="object" x="7898.28" y="2038.7" width="480" height="380">
-   <properties>
-    <property name="speed-x" type="float" value="-1"/>
-    <property name="speed-y" type="float" value="0"/>
    </properties>
   </object>
   <object id="887" name="spawn" type="object" x="451.335" y="4510.59" width="128" height="128">
@@ -692,10 +603,8 @@
   </object>
   <object id="894" name="lantern-gate" type="object" x="5955.06" y="4283.87" width="356" height="320">
    <properties>
-    <property name="map" value="EndianForest/Town_Inn"/>
-    <property name="quest" value="business-hours"/>
-    <property name="quest-line" value="find-elriel"/>
-    <property name="transition" value="main"/>
+    <property name="map" value="BallmerPeaks/Town_Inn"/>
+    <property name="transition" value="inn"/>
    </properties>
   </object>
   <object id="911" name="portal" type="object" x="125.333" y="4387.03" width="256" height="256">
@@ -743,12 +652,12 @@
   </properties>
   <object id="883" name="aspen" type="entity" x="5482.59" y="4472.97" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
    </properties>
   </object>
   <object id="928" name="chiron" type="entity" x="9960.24" y="3842.06" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
     <property name="quest" value="town-exit-blocked"/>
     <property name="quest-line" value="find-elriel"/>
    </properties>
@@ -761,7 +670,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="971.817" y="4497.34" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
  </objectgroup>

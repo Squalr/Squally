@@ -8,13 +8,14 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Traps/SpikedLog/SpikedLogGenericPreview.h"
 #include "Objects/Platformer/Traps/SpikedLog/SpikedLogSetRotationPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -40,8 +41,9 @@ SpikedLog::SpikedLog(ValueMap& properties) : super(properties)
 {
 	this->beam = Sprite::create(ObjectResources::Traps_SpikedLog_Beam);
 	this->spikedLog = SmartAnimationSequenceNode::create(ObjectResources::Traps_SpikedLog_SpikedLog_00);
-	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(Size(32.0f, 480.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
-	this->logCollision = CollisionObject::create(CollisionObject::createBox(Size(128.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
+	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(CSize(32.0f, 480.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->logCollision = CollisionObject::create(CollisionObject::createBox(CSize(128.0f, 512.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
+	this->animationLength = SmartAnimationSequenceNode::GetAnimationLength(ObjectResources::Traps_SpikedLog_SpikedLog_00);
 
 	this->spikedLog->addChild(this->spikeCollision);
 	this->spikedLog->addChild(this->logCollision);
@@ -57,11 +59,7 @@ void SpikedLog::onEnter()
 {
 	super::onEnter();
 
-	this->spikedLog->playAnimationRepeat(ObjectResources::Traps_SpikedLog_SpikedLog_00, 0.08f, 0.0f);
-	this->spikedLog->getForwardsAnimation()->incrementCallback = [=](int current, int max)
-	{
-		return this->incrementSpikedLogAnimation(current, max);
-	};
+	this->onFrameComplete();
 }
 
 void SpikedLog::initializePositions()
@@ -91,7 +89,7 @@ void SpikedLog::registerHackables()
 				Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Banner,
-				SpikedLogSetRotationPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return SpikedLogSetRotationPreview::create(); }),
 				{
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx::create() },
 				},
@@ -119,7 +117,7 @@ void SpikedLog::registerHackables()
 	auto incrementAnimationFunc = &SpikedLog::incrementSpikedLogAnimation;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}
@@ -130,9 +128,19 @@ HackablePreview* SpikedLog::createDefaultPreview()
 	return SpikedLogGenericPreview::create();
 }
 
+void SpikedLog::onFrameComplete()
+{
+	this->currentAnimationIndex = MathUtils::wrappingNormalize(incrementSpikedLogAnimation(this->currentAnimationIndex, this->animationLength), 0, this->animationLength - 1);
+
+	this->spikedLog->playSingleFrame(ObjectResources::Traps_SpikedLog_SpikedLog_00, this->currentAnimationIndex, 0.05f, [=]()
+	{
+		this->onFrameComplete();
+	});
+}
+
 NO_OPTIMIZE int SpikedLog::incrementSpikedLogAnimation(int count, int max)
 {
-	this->spikeCollision->setPhysicsEnabled(true);
+	this->spikeCollision->setPhysicsFlagEnabled(true);
 	float offsetX = 0;
 
 	switch(count)
@@ -169,7 +177,7 @@ NO_OPTIMIZE int SpikedLog::incrementSpikedLogAnimation(int count, int max)
 		}
 		default:
 		{
-			this->spikeCollision->setPhysicsEnabled(false);
+			this->spikeCollision->setPhysicsFlagEnabled(false);
 		}
 	}
 

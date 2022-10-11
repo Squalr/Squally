@@ -41,31 +41,32 @@ protected:
 	
 	void onEnter() override;
 	void initializePositions() override;
+	void initializeListeners() override;
 
 private:
 	typedef SmartNode super;
 
-	cocos2d::LayerColor* backdrop;
-	cocos2d::Sprite* background;
-	cocos2d::LayerColor* textPanel;
-	ClickableNode* exitButton;
-	AddHelpMenu* addHelpMenu;
-	AndHelpMenu* andHelpMenu;
-	BinDecHexHelpMenu* binDecHexHelpMenu;
-	Flip1HelpMenu* flip1HelpMenu;
-	Flip2HelpMenu* flip2HelpMenu;
-	Flip3HelpMenu* flip3HelpMenu;
-	Flip4HelpMenu* flip4HelpMenu;
-	NotHelpMenu* notHelpMenu;
-	MovHelpMenu* movHelpMenu;
-	OrHelpMenu* orHelpMenu;
-	RolHelpMenu* rolHelpMenu;
-	RorHelpMenu* rorHelpMenu;
-	ShlHelpMenu* shlHelpMenu;
-	ShrHelpMenu* shrHelpMenu;
-	SubHelpMenu* subHelpMenu;
-	XorHelpMenu* xorHelpMenu;
+	cocos2d::LayerColor* backdrop = nullptr;
+	cocos2d::Sprite* background = nullptr;
+	cocos2d::LayerColor* textPanel = nullptr;
+	ClickableNode* exitButton = nullptr;
+	AddHelpMenu* addHelpMenu = nullptr;
+	AndHelpMenu* andHelpMenu = nullptr;
+	BinDecHexHelpMenu* binDecHexHelpMenu = nullptr;
+	Flip1HelpMenu* flip1HelpMenu = nullptr;
+	Flip2HelpMenu* flip2HelpMenu = nullptr;
+	Flip3HelpMenu* flip3HelpMenu = nullptr;
+	Flip4HelpMenu* flip4HelpMenu = nullptr;
+	NotHelpMenu* notHelpMenu = nullptr;
+	MovHelpMenu* movHelpMenu = nullptr;
+	OrHelpMenu* orHelpMenu = nullptr;
+	RolHelpMenu* rolHelpMenu = nullptr;
+	RorHelpMenu* rorHelpMenu = nullptr;
+	ShlHelpMenu* shlHelpMenu = nullptr;
+	ShrHelpMenu* shrHelpMenu = nullptr;
+	SubHelpMenu* subHelpMenu = nullptr;
+	XorHelpMenu* xorHelpMenu = nullptr;
 
-	std::function<void()> onExit;
-	std::function<void()> onExitSecondary;
+	std::function<void()> onExit = nullptr;
+	std::function<void()> onExitSecondary = nullptr;
 };

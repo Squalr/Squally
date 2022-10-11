@@ -21,6 +21,6 @@ protected:
 private:
 	typedef CipherComponentBase super;
 
-	ClickableTextNode* testButton;
-	CipherState* activeCipherState;
+	ClickableTextNode* testButton = nullptr;
+	CipherState* activeCipherState = nullptr;
 };

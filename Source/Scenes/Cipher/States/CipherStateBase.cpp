@@ -36,14 +36,14 @@ void CipherStateBase::initializeListeners()
 
 void CipherStateBase::onRequestStateChangeEvent(EventCustom* eventCustom)
 {
-	CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
+	CipherState* cipherState = (CipherState*)(eventCustom->getData());
 
 	this->onAnyRequestStateChange(cipherState);
 }
 
 void CipherStateBase::onBeforeStateChangeEvent(EventCustom* eventCustom)
 {
-	CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
+	CipherState* cipherState = (CipherState*)(eventCustom->getData());
 
 	if (cipherState->stateType == this->stateType && cipherState->previousStateType != this->stateType)
 	{
@@ -57,7 +57,7 @@ void CipherStateBase::onBeforeStateChangeEvent(EventCustom* eventCustom)
 
 void CipherStateBase::onStateChangeEvent(EventCustom* eventCustom)
 {
-	CipherState* cipherState = (CipherState*)(eventCustom->getUserData());
+	CipherState* cipherState = (CipherState*)(eventCustom->getData());
 
 	if (cipherState->stateType == this->stateType)
 	{

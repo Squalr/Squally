@@ -29,9 +29,9 @@ GoldenAxePlans::~GoldenAxePlans()
 {
 }
 
-Item* GoldenAxePlans::craft()
+std::vector<Item*> GoldenAxePlans::craft()
 {
-	return GoldenAxe::create();
+	return { GoldenAxe::create() };
 }
 
 std::vector<std::tuple<Item*, int>> GoldenAxePlans::getReagentsInternal()
@@ -49,17 +49,12 @@ Item* GoldenAxePlans::clone()
 	return GoldenAxePlans::create();
 }
 
-std::string GoldenAxePlans::getItemName()
-{
-	return GoldenAxePlans::SaveKey;
-}
-
 LocalizedString* GoldenAxePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_GoldenAxe::create();
 }
 
-std::string GoldenAxePlans::getIconResource()
+const std::string& GoldenAxePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +64,7 @@ std::string GoldenAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_GoldenAxe;
 }
 
-std::string GoldenAxePlans::getSerializationKey()
+const std::string& GoldenAxePlans::getIdentifier()
 {
 	return GoldenAxePlans::SaveKey;
 }

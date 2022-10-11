@@ -24,7 +24,6 @@ AnimationPart* AnimationPart::create(SpriterEngine::EntityInstance* entity, std:
 
 AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string partName)
 {
-	this->trackedObjects = std::vector<Node*>();
 	this->entity = entity;
 	this->spriterAnimationPart = this->entity == nullptr ? nullptr : this->entity->getObjectInstance(partName);
 	this->ghostSprite = this->spriterAnimationPart == nullptr ? nullptr : Sprite::create(this->spriterAnimationPart->getImage() == nullptr ? UIResources::EmptyImage : this->spriterAnimationPart->getImage()->path());
@@ -53,6 +52,10 @@ AnimationPart::AnimationPart(SpriterEngine::EntityInstance* entity, std::string 
 	}
 }
 
+AnimationPart::~AnimationPart()
+{
+}
+
 void AnimationPart::onEnter()
 {
 	super::onEnter();
@@ -72,6 +75,16 @@ void AnimationPart::visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& pare
 	this->updateTrackedAttributes();
 
 	super::visit(renderer, parentTransform, parentFlags);
+}
+
+void AnimationPart::reattachToTimeline()
+{
+	if (this->spriterAnimationPart == nullptr)
+	{
+		return;
+	}
+
+	this->spriterAnimationPart->toggleTimelineCanUpdate(true);
 }
 
 void AnimationPart::detachFromTimeline()
@@ -158,6 +171,26 @@ void AnimationPart::restoreSprite()
 	}
 	
 	this->spriterAnimationPart->getImage()->setPath(this->originalPath);
+}
+
+float AnimationPart::getRotationSpriter()
+{
+	if (this->spriterAnimationPart != nullptr)
+	{
+		return float(this->spriterAnimationPart->getAngle());
+	}
+
+	return 0.0f;
+}
+
+void AnimationPart::setRotationSpriter(float rotation)
+{
+	this->detachFromTimeline();
+
+	if (this->spriterAnimationPart != nullptr)
+	{
+		this->spriterAnimationPart->setAngle(rotation);
+	}
 }
 
 void AnimationPart::setRotation(float rotation)

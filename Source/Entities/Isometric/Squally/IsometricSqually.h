@@ -13,11 +13,11 @@ public:
 protected:
 	IsometricSqually(cocos2d::ValueMap& properties);
 	virtual ~IsometricSqually();
-
+	
+	void onEnter() override;
+	void update(float) override;
 	cocos2d::Vec2 getButtonOffset() override;
 
 private:
 	typedef IsometricEntity super;
-	void onEnter() override;
-	void update(float) override;
 };

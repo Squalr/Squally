@@ -29,9 +29,9 @@ DreadmournPlans::~DreadmournPlans()
 {
 }
 
-Item* DreadmournPlans::craft()
+std::vector<Item*> DreadmournPlans::craft()
 {
-	return Dreadmourn::create();
+	return { Dreadmourn::create() };
 }
 
 std::vector<std::tuple<Item*, int>> DreadmournPlans::getReagentsInternal()
@@ -50,17 +50,12 @@ Item* DreadmournPlans::clone()
 	return DreadmournPlans::create();
 }
 
-std::string DreadmournPlans::getItemName()
-{
-	return DreadmournPlans::SaveKey;
-}
-
 LocalizedString* DreadmournPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_Dreadmourn::create();
 }
 
-std::string DreadmournPlans::getIconResource()
+const std::string& DreadmournPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -70,7 +65,7 @@ std::string DreadmournPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_Dreadmourn;
 }
 
-std::string DreadmournPlans::getSerializationKey()
+const std::string& DreadmournPlans::getIdentifier()
 {
 	return DreadmournPlans::SaveKey;
 }

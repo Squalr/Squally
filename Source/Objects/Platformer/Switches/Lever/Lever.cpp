@@ -11,7 +11,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/SwitchEvents.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -29,11 +29,10 @@ Lever* Lever::create(ValueMap& properties)
 	return instance;
 }
 
-Lever::Lever(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(177.0f, 205.0f), Vec2::ZERO)
+Lever::Lever(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, CSize(177.0f, 205.0f), Vec2::ZERO)
 {
 	this->lever = SmartAnimationNode::create(ObjectResources::Switches_Lever_Animations);
 	this->leverSound = WorldSound::create(SoundResources::Cipher_GearTurn);
-	this->canPull = true;
 
 	this->lever->setPositionY(-GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat() / 2.0f);
 
@@ -55,9 +54,9 @@ void Lever::initializeListeners()
 	super::initializeListeners();
 }
 
-void Lever::onInteract()
+void Lever::onInteract(PlatformerEntity* interactingEntity)
 {
-	super::onInteract();
+	super::onInteract(interactingEntity);
 
 	if (!this->canPull)
 	{

@@ -25,7 +25,7 @@ public:
 	DisplayType getDisplayType();
 	void setCardScale(float cardScale);
 
-	Card* activeCard;
+	Card* activeCard = nullptr;
 
 protected:
 	AutoCard(int defaultAttack);
@@ -36,15 +36,15 @@ protected:
 private:
 	typedef SmartNode super;
 
-	cocos2d::Node* cardNode;
-	ClickableNode* upToggle;
-	ClickableNode* downToggle;
-
 	void updateToggle();
 
-	DisplayType displayType;
-	float cardScale;
-	int currentAttack;
+	cocos2d::Node* cardNode = nullptr;
+	ClickableNode* upToggle = nullptr;
+	ClickableNode* downToggle = nullptr;
+
+	DisplayType displayType = DisplayType::Binary;
+	float cardScale = 1.0f;
+	int currentAttack = 0;
 
 	std::map<int, Card*> binaryCardMap;
 	std::map<int, Card*> decimalCardMap;

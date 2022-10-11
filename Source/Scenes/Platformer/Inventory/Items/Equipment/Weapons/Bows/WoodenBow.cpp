@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Bows/WoodenBowPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,27 +47,27 @@ Item* WoodenBow::clone()
 	return WoodenBow::create();
 }
 
-std::string WoodenBow::getItemName()
-{
-	return WoodenBow::SaveKey;
-}
-
 LocalizedString* WoodenBow::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_WoodenBow::create();
 }
 
-std::string WoodenBow::getIconResource()
+const std::string& WoodenBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_WoodenBow;
 }
 
-std::string WoodenBow::getSerializationKey()
+const std::string& WoodenBow::getIdentifier()
 {
 	return WoodenBow::SaveKey;
 }
 
 Vec2 WoodenBow::getDisplayOffset()
 {
-	return Vec2(0.0f, -24.0f);
+	return Vec2(-14.0f, -62.0f);
+}
+
+Recipe* WoodenBow::getRecipe()
+{
+	return WoodenBowPlans::create();
 }

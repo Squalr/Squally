@@ -29,9 +29,9 @@ FrostbanePlans::~FrostbanePlans()
 {
 }
 
-Item* FrostbanePlans::craft()
+std::vector<Item*> FrostbanePlans::craft()
 {
-	return Frostbane::create();
+	return { Frostbane::create() };
 }
 
 std::vector<std::tuple<Item*, int>> FrostbanePlans::getReagentsInternal()
@@ -49,17 +49,12 @@ Item* FrostbanePlans::clone()
 	return FrostbanePlans::create();
 }
 
-std::string FrostbanePlans::getItemName()
-{
-	return FrostbanePlans::SaveKey;
-}
-
 LocalizedString* FrostbanePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_Frostbane::create();
 }
 
-std::string FrostbanePlans::getIconResource()
+const std::string& FrostbanePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +64,7 @@ std::string FrostbanePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_Frostbane;
 }
 
-std::string FrostbanePlans::getSerializationKey()
+const std::string& FrostbanePlans::getIdentifier()
 {
 	return FrostbanePlans::SaveKey;
 }

@@ -29,9 +29,9 @@ CopperMalletPlans::~CopperMalletPlans()
 {
 }
 
-Item* CopperMalletPlans::craft()
+std::vector<Item*> CopperMalletPlans::craft()
 {
-	return CopperMallet::create();
+	return { CopperMallet::create() };
 }
 
 std::vector<std::tuple<Item*, int>> CopperMalletPlans::getReagentsInternal()
@@ -48,17 +48,12 @@ Item* CopperMalletPlans::clone()
 	return CopperMalletPlans::create();
 }
 
-std::string CopperMalletPlans::getItemName()
-{
-	return CopperMalletPlans::SaveKey;
-}
-
 LocalizedString* CopperMalletPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_CopperMallet::create();
 }
 
-std::string CopperMalletPlans::getIconResource()
+const std::string& CopperMalletPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string CopperMalletPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Maces_CopperMallet;
 }
 
-std::string CopperMalletPlans::getSerializationKey()
+const std::string& CopperMalletPlans::getIdentifier()
 {
 	return CopperMalletPlans::SaveKey;
 }

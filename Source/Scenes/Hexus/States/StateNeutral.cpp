@@ -4,7 +4,7 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 using namespace cocos2d;
 
@@ -71,7 +71,7 @@ void StateNeutral::selectCard(Card* card)
 
 	this->activeGameState->selectedHandCard = card;
 	this->activeGameState->selectedHandCard->stopAllActions();
-	this->activeGameState->selectedHandCard->runAction(MoveTo::create(Config::cardSelectSpeed, this->activeGameState->selectedHandCard->position + Vec2(0.0f, Config::cardSelectOffsetY)));
+	this->activeGameState->selectedHandCard->runAction(MoveTo::create(HexusConfig::cardSelectSpeed, this->activeGameState->selectedHandCard->position + Vec2(0.0f, HexusConfig::cardSelectOffsetY)));
 
 	GameState::updateState(this->activeGameState, GameState::StateType::SelectionStaged);
 }

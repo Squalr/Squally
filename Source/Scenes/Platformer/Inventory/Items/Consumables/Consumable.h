@@ -2,7 +2,6 @@
 
 #include "Engine/Inventory/Item.h"
 
-class LocalizedString;
 class PlatformerAttack;
 class PlatformerEntity;
 
@@ -29,6 +28,6 @@ private:
 
 	void bindItemUseCallback(PlatformerAttack* attack, PlatformerEntity* entity);
 
-	PlatformerAttack* associatedAttack;
-	bool outOfCombatUseAllowed;
+	PlatformerAttack* associatedAttack = nullptr;
+	bool outOfCombatUseAllowed = false;
 };

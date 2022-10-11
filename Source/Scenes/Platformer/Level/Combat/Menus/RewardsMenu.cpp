@@ -23,11 +23,11 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityDropTableBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Combat/FriendlyExpBarBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityEqBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityDropTableBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/Combat/FriendlyExpBarBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityEqBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -55,7 +55,6 @@ RewardsMenu::RewardsMenu(Timeline* timelineRef)
 	this->victoryMenu = Sprite::create(UIResources::Combat_VictoryMenu);
 	this->expNode = Node::create();
 	this->victorySound = Sound::create(SoundResources::Platformer_Combat_Victory);
-	this->emblemCount = 0;
 	this->timelineRef = timelineRef;
 
 	this->victoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::M2, Strings::Platformer_Combat_Victory::create());
@@ -117,7 +116,7 @@ void RewardsMenu::initializeListeners()
 		CombatEvents::TriggerReturnToMap();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
@@ -139,13 +138,13 @@ void RewardsMenu::giveExp()
 {
 	this->clearEmblems();
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEntity>([&](PlatformerEntity* entity)
+	ObjectEvents::QueryObjects<PlatformerEntity>([&](PlatformerEntity* entity)
 	{
-		entity->getAttachedBehavior<FriendlyExpBarBehavior>([&](FriendlyExpBarBehavior* friendlyExpBarBehavior)
+		entity->getComponent<FriendlyExpBarBehavior>([&](FriendlyExpBarBehavior* friendlyExpBarBehavior)
 		{
-			entity->getAttachedBehavior<EntityEqBehavior>([&](EntityEqBehavior* eqBehavior)
+			entity->getComponent<EntityEqBehavior>([&](EntityEqBehavior* eqBehavior)
 			{
-				const int intendedLevel = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyLevelRubberband, Value(1)).asInt();
+				const int intendedLevel = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelRubberband, Value(1)).asInt();
 				const int currentLevel = eqBehavior->getEq();
 				const int levelDelta = intendedLevel - currentLevel;
 				int expGain = 0;
@@ -175,12 +174,12 @@ void RewardsMenu::giveExp()
 
 				if (didLevelUp)
 				{
-					entity->getAttachedBehavior<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
+					entity->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
 					{
 						healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
 					});
 
-					entity->getAttachedBehavior<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
+					entity->getComponent<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
 					{
 						manaBehavior->setMana(manaBehavior->getMaxMana());
 					});
@@ -189,14 +188,14 @@ void RewardsMenu::giveExp()
 				this->addExpEmblem(entity->getEmblemResource(), adjustedGain);
 			});
 		});
-	}), PlatformerEntity::PlatformerEntityTag);
+	}, PlatformerEntity::PlatformerEntityTag);
 }
 
 void RewardsMenu::loadRewards()
 {
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([&](PlatformerEnemy* enemy)
+	ObjectEvents::QueryObjects<PlatformerEnemy>([&](PlatformerEnemy* enemy)
 	{
-		enemy->getAttachedBehavior<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
+		enemy->getComponent<EntityDropTableBehavior>([=](EntityDropTableBehavior* entityDropTableBehavior)
 		{
 			DropPool* dropPool = entityDropTableBehavior->getDropPool();
 
@@ -206,7 +205,7 @@ void RewardsMenu::loadRewards()
 				PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(dropPool, nullptr, true));
 			}
 		});
-	}), PlatformerEnemy::PlatformerEnemyTag);
+	}, PlatformerEnemy::PlatformerEnemyTag);
 }
 
 void RewardsMenu::clearEmblems()

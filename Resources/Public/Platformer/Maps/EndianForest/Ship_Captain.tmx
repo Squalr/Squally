@@ -54,14 +54,14 @@
    </properties>
   </object>
   <object id="705" name="breakable-cage" type="object" x="938.88" y="1292.38" width="196" height="112"/>
-  <object id="717" name="portal" type="object" x="2781.54" y="1128.52" width="237.527" height="233.023">
+  <object id="717" name="portal" type="object" x="5157.54" y="1152.52" width="237.527" height="233.023">
    <properties>
     <property name="map" value="EndianForest/Town_Docks"/>
     <property name="tag" value="back-portal"/>
     <property name="transition" value="ship"/>
    </properties>
   </object>
-  <object id="718" name="portal" type="object" x="3138.51" y="1135.43" width="237.527" height="233.023">
+  <object id="718" name="portal" type="object" x="5514.51" y="1159.43" width="237.527" height="233.023">
    <properties>
     <property name="map" value="UnderflowRuins/Town_Docks"/>
     <property name="tag" value="leave-portal"/>
@@ -76,7 +76,7 @@
   </properties>
   <object id="715" name="blackbeard" type="entity" x="1700.18" y="1269.94" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,ef-ur-transportation"/>
+    <property name="components" value="friendly,ef-ur-transportation"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
@@ -88,7 +88,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="637.133" y="1272.28" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="719" name="spawn-wood-door" type="object" x="262.134" y="1267.48" width="128" height="128">

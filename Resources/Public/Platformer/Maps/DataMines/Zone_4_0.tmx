@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="44" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="890">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="heartbeat"/>
+   <property name="rubber-band" type="int" value="5"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="77" name="bg -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="832" name="mines" type="terrain" x="1972.04" y="1647.08">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="-2554.7,-2227.83 3806.76,-2222.92 3799.41,1294.45 -2543.54,1280.13"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="76" name="water bg -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="58" name="tiled bg -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="69" name="objects -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="877" name="hell-gate" type="object" x="4643.33" y="547.636" width="512" height="512">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="item-required" value="hell-gate-crystal"/>
+    <property name="map" value="DaemonsHallow/Zone_1_0"/>
+    <property name="transition" value="hell-gate"/>
+   </properties>
+  </object>
+  <object id="888" name="solid" type="collision" x="3938.27" y="-405.71" width="77.455" height="2353.42"/>
+  <object id="889" name="solid" type="collision" x="5286.06" y="-393.68" width="77.455" height="2353.42"/>
+ </objectgroup>
+ <objectgroup id="71" name="water -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="883" name="lava" type="object" x="-444.89" y="1035.23" width="6293.23" height="1327.53"/>
+ </objectgroup>
+ <objectgroup id="68" name="terrain -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="880" name="obsidean" type="terrain" x="4013.9" y="1057.33" width="1273.87" height="844"/>
+ </objectgroup>
+ <objectgroup id="78" name="player_layer -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="887" name="warp" type="object" x="4253.33" y="800" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-4-A"/>
+    <property name="locked-text-key" value="closed"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-0-A"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="72" name="water -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="882" name="lava" type="object" x="-447.223" y="1063.57" width="6247.78" height="1327.53"/>
+ </objectgroup>
+ <objectgroup id="67" name="terrain -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="863" name="mines" type="terrain" x="179.615" y="941.939" width="271.08" height="1088"/>
+  <object id="881" name="obsidean" type="terrain" x="4177.24" y="1073" width="533.2" height="844"/>
+ </objectgroup>
+ <objectgroup id="65" name="fireflies -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="73" name="water -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="826" name="lava" type="object" x="-445.37" y="1095.23" width="6214.45" height="1327.53"/>
+ </objectgroup>
+ <objectgroup id="66" name="terrain -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="879" name="obsidean" type="terrain" x="4240.15" y="1085.58" width="398.2" height="844"/>
+ </objectgroup>
+ <objectgroup id="64" name="fireflies -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="74" name="water -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="827" name="lava" type="object" x="-369.37" y="1126.24" width="6112.93" height="1327.53"/>
+ </objectgroup>
+ <objectgroup id="70" name="objects -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="59" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="878" name="obsidean" type="terrain" x="4195.16" y="1102.3" width="506.534" height="844"/>
+ </objectgroup>
+ <objectgroup id="63" name="fireflies -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="79" name="water">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="850" name="mines" type="terrain" x="3260.01" y="1021.15" width="354.413" height="1233.45"/>
+  <object id="874" name="mines" type="terrain" x="3409.4" y="1122" width="1905.2" height="844"/>
+  <object id="884" name="mines" type="terrain" x="5317.22" y="-159.634" width="354.413" height="2769.45"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="60" name="decor fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="57" name="objects back">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="872" name="edge-portal" type="object" x="1.25212" y="654.06" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="DataMines/Zone_2_5"/>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="851" name="drak" type="entity" x="3369.39" y="888.485" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly"/>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="pocket-pool" value="ur-generic"/>
+    <property name="quest" value="boat-unlocked"/>
+    <property name="quest-line" value="boat-to-daemons"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="873" name="spawn" type="object" x="4366.66" y="997" width="128" height="128">
+   <properties>
+    <property name="transition" value="hell-gate"/>
+   </properties>
+  </object>
+  <object id="876" name="squally" type="entity" x="3950" y="992" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="886" name="warp" type="object" x="4304" y="870" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-0-A"/>
+    <property name="locked-text-key" value="closed"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-4-A"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="83" name="objects fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="865" name="viking-ship" type="object" x="2180.48" y="266.485" width="1083" height="931">
+   <properties>
+    <property name="direction" value="left"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="82" name="water fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="860" name="lava" type="object" x="-304.92" y="1160.23" width="6015.9" height="1327.53"/>
+ </objectgroup>
+ <objectgroup id="81" name="terrain fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="859" name="mines" type="terrain" x="3315.58" y="1112.37" width="246.413" height="1233.45"/>
+ </objectgroup>
+ <objectgroup id="62" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+</map>

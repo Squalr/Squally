@@ -22,7 +22,7 @@ public:
 	static const std::string HackIdentifierLaunchTimer;
 
 protected:
-	PivotLauncher(cocos2d::ValueMap& properties, std::string animationResource, int projectilePoolCapacity);
+	PivotLauncher(cocos2d::ValueMap& properties, std::string animationResource, bool skipRegisterHackables, int projectilePoolCapacity);
 	virtual ~PivotLauncher();
 
 	void onEnter() override;
@@ -34,10 +34,10 @@ protected:
 	virtual cocos2d::Vec2 getProjectileSpawnPosition();
 	virtual HackablePreview* getTimerPreview();
 
-	ProjectilePool* projectilePool;
+	ProjectilePool* projectilePool = nullptr;
 
-	float currentAngle;
-	float launchSpeed;
+	float currentAngle = 0.0f;
+	float launchSpeed = 0.0f;
 
 private:
 	typedef HackableObject super;
@@ -47,18 +47,19 @@ private:
 	void faceTarget();
 	void updateShootTimer(float dt);
 
-	float launchTimer;
-	cocos2d::Node* containerNode;
-	SmartAnimationNode* launcherAnimations;
-	AnimationPart* cannon;
+	float launchTimer = 0.0f;
+	cocos2d::Node* containerNode = nullptr;
+	SmartAnimationNode* launcherAnimations = nullptr;
+	AnimationPart* cannon = nullptr;
 
-	PlatformerEntity* target;
+	PlatformerEntity* target = nullptr;
 	std::string targetQueryKey;
 	
-	float fixedAngle;
-	bool isFixed;
-	bool is3DEnabled;
-	bool isAutoLaunch;
+	float fixedAngle = 0.0f;
+	bool isFixed = false;
+	bool is3DEnabled = false;
+	bool isAutoLaunch = true;
+	bool skipRegisterHackables = false;
 
 	static const std::string PivotBone;
 	static const std::string PropertyLaunchSpeed;

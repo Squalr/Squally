@@ -4,7 +4,7 @@
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
@@ -40,13 +40,9 @@ PartyMenu* PartyMenu::create()
 PartyMenu::PartyMenu()
 {
 	this->partyWindow = Sprite::create(UIResources::Menus_Generic_LargeMenu);
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
 	this->partyLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Party_Party::create());
 	this->statsBarsNode = Node::create();
-	this->returnClickCallback = nullptr;
-	this->partyStatsBars = std::vector<StatsBars*>();
-	this->onSelect = nullptr;
-	this->onExit = nullptr;
 	this->chooseTargetNode = Node::create();
 	this->chooseTargetFrame = Sprite::create(UIResources::Combat_ItemFrame);
 	this->chooseTargetItemFrame = Sprite::create(UIResources::Combat_ItemsCircle);
@@ -54,17 +50,16 @@ PartyMenu::PartyMenu()
 	this->chooseTargetLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Platformer_Combat_ChooseATarget::create());
 	this->countString = ConstantString::create(std::to_string(0));
 	this->countLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_TimesConstant::create()->setStringReplacementVariables(this->countString));
-	this->selectionIndex = 0;
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelSelected = returnLabel->clone();
 
 	returnLabel->enableOutline(Color4B::BLACK, 2);
-	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
 	returnLabelSelected->enableOutline(Color4B::BLACK, 2);
 	returnLabelSelected->setTextColor(Color4B::YELLOW);
-	returnLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelSelected->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = ClickableTextNode::create(
@@ -77,11 +72,11 @@ PartyMenu::PartyMenu()
 	LocalizedLabel*	cancelLabelSelected = cancelLabel->clone();
 
 	cancelLabel->enableOutline(Color4B::BLACK, 2);
-	cancelLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	cancelLabel->enableGlow(Color4B::BLACK);
 	cancelLabelSelected->enableOutline(Color4B::BLACK, 2);
 	cancelLabelSelected->setTextColor(Color4B::YELLOW);
-	cancelLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	cancelLabelSelected->enableGlow(Color4B::ORANGE);
 
 	this->cancelButton = ClickableTextNode::create(
@@ -94,11 +89,11 @@ PartyMenu::PartyMenu()
 	LocalizedLabel*	stuckLabelSelected = stuckLabel->clone();
 
 	stuckLabel->enableOutline(Color4B::BLACK, 2);
-	stuckLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	stuckLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	stuckLabel->enableGlow(Color4B::BLACK);
 	stuckLabelSelected->enableOutline(Color4B::BLACK, 2);
 	stuckLabelSelected->setTextColor(Color4B::YELLOW);
-	stuckLabelSelected->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	stuckLabelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	stuckLabelSelected->enableGlow(Color4B::ORANGE);
 
 	this->stuckButton = ClickableTextNode::create(
@@ -107,7 +102,7 @@ PartyMenu::PartyMenu()
 		UIResources::Menus_Buttons_SmallGenericButton,
 		UIResources::Menus_Buttons_SmallGenericButtonSelected);
 
-	this->partyLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->partyLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->partyLabel->enableGlow(Color4B::BLACK);
 	this->chooseTargetLabel->enableOutline(Color4B::BLACK, 2);
 	this->countLabel->enableOutline(Color4B::BLACK, 2);
@@ -133,25 +128,11 @@ PartyMenu::~PartyMenu()
 {
 }
 
-void PartyMenu::onEnter()
-{
-	super::onEnter();
-
-	float delay = 0.1f;
-	float duration = 0.25f;
-
-	GameUtils::fadeInObject(this->partyWindow, delay, duration);
-	GameUtils::fadeInObject(this->partyLabel, delay, duration);
-	GameUtils::fadeInObject(this->closeButton, delay, duration);
-	GameUtils::fadeInObject(this->cancelButton, delay, duration);
-	GameUtils::fadeInObject(this->returnButton, delay, duration);
-}
-
 void PartyMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->partyWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->statsBarsNode->setPosition(Vec2(visibleSize.width / 2.0f - 460.0f, visibleSize.height / 2.0f + 128.0f));
@@ -206,35 +187,35 @@ void PartyMenu::initializeListeners()
 	});
 	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_UP_ARROW, EventKeyboard::KeyCode::KEY_W }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_UP_ARROW, InputEvents::KeyCode::KEY_W }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		args->handle();
 		
 		this->trySelectPrevious();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_LEFT_ARROW, EventKeyboard::KeyCode::KEY_A }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_LEFT_ARROW, InputEvents::KeyCode::KEY_A }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		args->handle();
 		
 		this->trySelectPrevious();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_RIGHT_ARROW, EventKeyboard::KeyCode::KEY_D }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_RIGHT_ARROW, InputEvents::KeyCode::KEY_D }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		args->handle();
 		
 		this->trySelectNext();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_DOWN_ARROW, EventKeyboard::KeyCode::KEY_S }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_DOWN_ARROW, InputEvents::KeyCode::KEY_S }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		args->handle();
 
 		this->trySelectNext();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
@@ -246,9 +227,9 @@ void PartyMenu::initializeListeners()
 		this->performSelectionActions();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		if (!GameUtils::isVisible(this))
+		if (GameUtils::getFocusedNode() != this)
 		{
 			return;
 		}
@@ -357,15 +338,15 @@ void PartyMenu::buildAllStats()
 	this->partyStatsBars.clear();
 	this->statsBarsNode->removeAllChildren();
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* entity)
+	ObjectEvents::QueryObject<Squally>([&](Squally* squally)
 	{
-		this->buildStats(entity);
-	}));
+		this->buildStats(squally);
+	});
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerHelper>([&](PlatformerHelper* entity)
+	ObjectEvents::QueryObjects<PlatformerHelper>([&](PlatformerHelper* entity)
 	{
 		this->buildStats(entity);
-	}));
+	});
 
 	for (int index = 0; index < int(this->partyStatsBars.size()); index++)
 	{

@@ -3,7 +3,9 @@
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/GlobalHackAttributeContainer.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Hackables/Menus/Clippy.h"
 #include "Engine/Localization/LocalizedString.h"
+#include "Engine/Optimization/LazyNode.h"
 
 using namespace cocos2d;
 
@@ -16,7 +18,7 @@ HackActivatedAbility* HackActivatedAbility::create(
 	HackBarColor hackBarColor,
 	std::string iconResource,
 	LocalizedString* name,
-	HackablePreview* hackablePreview,
+	LazyNode<HackablePreview>* hackablePreview,
 	Clippy* clippy)
 {
 	HackActivatedAbility* instance = GlobalHackAttributeContainer::GetHackActivatedAbility(hackableIdentifier);
@@ -41,7 +43,7 @@ HackActivatedAbility::HackActivatedAbility(
 	HackBarColor hackBarColor,
 	std::string iconResource,
 	LocalizedString* name,
-	HackablePreview* hackablePreview,
+	LazyNode<HackablePreview>* hackablePreview,
 	Clippy* clippy)
 	: HackableBase(
 		hackableIdentifier,
@@ -68,7 +70,7 @@ void HackActivatedAbility::activate()
 		this->onActivate();
 	}
 
-	HackableEvents::TriggerOnHackApplied(HackableEvents::HackAppliedArgs(this));
+	HackableEvents::TriggerOnHackApplied(HackAppliedArgs(this));
 	this->startTimer();
 }
 

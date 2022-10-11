@@ -18,6 +18,7 @@ public:
 
 	static const std::string MapKey;
 	static const std::string PropertySwitch;
+	static const std::string PropertySaveKey;
 
 protected:
 	StoneButton(cocos2d::ValueMap& properties);
@@ -33,14 +34,15 @@ protected:
 private:
 	typedef HackableObject super;
 
-	float maxDefaultButtonPosition;
-	cocos2d::Sprite* buttonBase;
-	cocos2d::Sprite* button;
-	CollisionObject* buttonCollision;
-	WorldSound* buttonSound;
+	float maxDefaultButtonPosition = 0.0f;
+	cocos2d::Sprite* buttonBase = nullptr;
+	cocos2d::Sprite* button = nullptr;
+	CollisionObject* buttonCollision = nullptr;
+	WorldSound* buttonSound = nullptr;
 
-	bool isSwitch;
-	bool hasCollided;
+	bool isSwitch = false;
+	bool hasCollided = false;
+	std::string saveKey;
 
 	static const float ButtonPressureSpeed;
 	static const float ButtonPressureOffsetMin;

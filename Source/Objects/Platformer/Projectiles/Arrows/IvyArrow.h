@@ -7,8 +7,6 @@ namespace cocos2d
 	class Sprite;
 }
 
-class CollisionObject;
-
 class IvyArrow : public Projectile
 {
 public:
@@ -23,5 +21,5 @@ protected:
 private:
 	typedef Projectile super;
 
-	cocos2d::Sprite* sprite;
+	cocos2d::Sprite* sprite = nullptr;
 };

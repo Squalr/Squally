@@ -17,7 +17,7 @@
 #include "Events/SqualrEvents.h"
 #include "Objects/Platformer/Projectiles/Dart/Dart.h"
 #include "Objects/Platformer/Projectiles/ProjectilePool.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -37,7 +37,7 @@ DartTripodLauncherSqualr* DartTripodLauncherSqualr::create(ValueMap& properties)
 	return instance;
 }
 
-DartTripodLauncherSqualr::DartTripodLauncherSqualr(ValueMap& properties) : super(properties, ObjectResources::Traps_DartTripodLauncher_Animations, 4)
+DartTripodLauncherSqualr::DartTripodLauncherSqualr(ValueMap& properties) : super(properties, ObjectResources::Traps_DartTripodLauncher_Animations, false, 4)
 {
 	this->setAutoLaunch(false);
 	this->toggleHackable(false);
@@ -61,14 +61,14 @@ Projectile* DartTripodLauncherSqualr::createProjectile()
 {
 	Dart* dart = Dart::create(this->currentAngle, this->launchSpeed);
 	
-	dart->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
+	dart->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionData collisionData)
 	{
 		dart->disable(true);
 		dart->runImpactFX();
 
 		SqualrEvents::TriggerProjectileCollided();
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
 	return dart;

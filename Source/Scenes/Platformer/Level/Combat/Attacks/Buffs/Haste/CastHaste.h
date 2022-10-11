@@ -2,11 +2,6 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-namespace cocos2d
-{
-	class Sprite;
-};
-
 class WorldSound;
 
 class CastHaste : public PlatformerAttack
@@ -33,5 +28,5 @@ private:
 	
 	PlatformerAttack* cloneInternal() override;
 	
-	WorldSound* castSound;
+	WorldSound* castSound = nullptr;
 };

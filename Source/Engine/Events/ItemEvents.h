@@ -1,8 +1,7 @@
 #pragma once
+#include <functional>
 #include <string>
 #include <vector>
-
-#include "cocos/math/CCGeometry.h"
 
 class Item;
 class Inventory;
@@ -16,7 +15,7 @@ public:
 	{
 		std::string poolName;
 		std::vector<Inventory*> inventories;
-		std::function<void(Item*)> callback;
+		std::function<void(Item*)> callback = nullptr;
 
 		ItemRequestArgs(std::string poolName, std::vector<Inventory*> inventories, std::function<void(Item*)> callback) : poolName(poolName), inventories(inventories), callback(callback)
 		{

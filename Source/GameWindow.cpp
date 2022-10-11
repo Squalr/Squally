@@ -2,7 +2,6 @@
 
 #include <GLFW/glfw3.h>
 
-#include "cocos/audio/include/AudioEngine.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/platform/desktop/CCGLViewImpl-desktop.h"
 
@@ -21,32 +20,29 @@
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
-using namespace cocos2d::cocos_experimental;
 
 GameWindow::GameWindow()
 {
 	this->gameWindowTitleContainer = GlobalNode::create();
 	this->gameWindowTitle = Strings::Common_Squally::create();
-	this->glView = nullptr;
 
 	// Listen for locale change events and update the window title
-	this->gameWindowTitle->setOnStringUpdateCallback([=](LocalizedString* newString)
+	this->gameWindowTitle->setOnStringUpdateCallback([=]()
 	{
 		if (this->glView != nullptr)
 		{
-			this->glView->setViewName(newString->getString());
-			glfwSetWindowTitle(this->glView->getWindow(), newString->getString().c_str());
+			this->glView->setViewName(this->gameWindowTitle->getString());
+			glfwSetWindowTitle(this->glView->getWindow(), this->gameWindowTitle->getString().c_str());
 		}
 	});
 
 	// The string needs to be in a global node so that it can utilize the cocos event system
 	this->gameWindowTitleContainer->addChild(this->gameWindowTitle);
-	GlobalDirector::getInstance()->registerGlobalNode(this->gameWindowTitleContainer);
+	GlobalDirector::getInstance()->RegisterGlobalNode(this->gameWindowTitleContainer);
 }
 
 GameWindow::~GameWindow()
 {
-	AudioEngine::end();
 }
 
 // If you want a different context, modify the value of glContextAttrs it will affect all platforms
@@ -62,12 +58,12 @@ bool GameWindow::applicationDidFinishLaunching()
 {
 	LogUtils::initialize();
 
-	if (!Steam::init())
+	if (!Steam::Init())
 	{
 		return false;
 	}
 
-	cocos2d::Size resolutionSize = ConfigManager::getResolutionSize();
+	cocos2d::CSize resolutionSize = ConfigManager::getResolutionSize();
 
 	if (ConfigManager::getIsFullScreen())
 	{
@@ -76,7 +72,7 @@ bool GameWindow::applicationDidFinishLaunching()
 	}
 	else
 	{
-		this->glView = GLViewImpl::createWithRect(this->gameWindowTitle->getString(), cocos2d::Rect(0, 0, resolutionSize.width, resolutionSize.height), 1, true);
+		this->glView = GLViewImpl::createWithRect(this->gameWindowTitle->getString(), cocos2d::CRect(0, 0, resolutionSize.width, resolutionSize.height), 1, true);
 		this->glView->setDesignResolutionSize(1920, 1080, ResolutionPolicy::SHOW_ALL);
 	}
 	
@@ -103,12 +99,18 @@ bool GameWindow::applicationDidFinishLaunching()
 void GameWindow::applicationDidEnterBackground()
 {
 	Director::getInstance()->stopAnimation();
+	
+	/*
 	AudioEngine::pauseAll();
+	*/
 }
 
 // This function will be called when the app is active again
 void GameWindow::applicationWillEnterForeground()
 {
 	Director::getInstance()->startAnimation();
+	
+	/*
 	AudioEngine::resumeAll();
+	*/
 }

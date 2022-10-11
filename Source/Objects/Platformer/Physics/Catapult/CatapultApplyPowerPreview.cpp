@@ -37,6 +37,10 @@ CatapultApplyPowerPreview::CatapultApplyPowerPreview()
 	this->assemblyTextNode->addChild(this->xmm1High);
 }
 
+CatapultApplyPowerPreview::~CatapultApplyPowerPreview()
+{
+}
+
 HackablePreview* CatapultApplyPowerPreview::clone()
 {
 	return CatapultApplyPowerPreview::create();

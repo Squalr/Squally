@@ -7,19 +7,20 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Save/SaveManager.h"
-#include "Entities/Platformer/Npcs/EndianForest/Marcel.h"
+#include "Entities/Platformer/Npcs/Mages/Marcel.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
@@ -43,8 +44,6 @@ WindSpellbook* WindSpellbook::create(GameObject* owner, QuestLine* questLine)
 
 WindSpellbook::WindSpellbook(GameObject* owner, QuestLine* questLine) : super(owner, questLine, WindSpellbook::MapKeyQuest, false)
 {
-	this->squally = nullptr;
-	this->marcel = nullptr;
 }
 
 WindSpellbook::~WindSpellbook()
@@ -66,7 +65,7 @@ void WindSpellbook::onLoad(QuestState questState)
 		{
 			this->runCinematicSequence();
 
-			this->marcel->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+			this->marcel->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 			{
 				questBehavior->enableTurnIn();
 			});
@@ -76,7 +75,7 @@ void WindSpellbook::onLoad(QuestState questState)
 
 void WindSpellbook::onActivate(bool isActiveThroughSkippable)
 {
-	this->marcel->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+	this->marcel->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{
 		questBehavior->enableTurnIn();
 	});
@@ -95,7 +94,7 @@ void WindSpellbook::onComplete()
 		SoundResources::Notifications_NotificationGood1
 	));
 
-	this->marcel->getAttachedBehavior<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+	this->marcel->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{
 		questBehavior->disableAll();
 	});
@@ -112,7 +111,7 @@ void WindSpellbook::runCinematicSequence()
 		return;
 	}
 
-	this->marcel->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	this->marcel->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(

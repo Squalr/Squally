@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Rings/GarnetBandRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* GarnetBand::clone()
 	return GarnetBand::create();
 }
 
-std::string GarnetBand::getItemName()
-{
-	return GarnetBand::SaveKey;
-}
-
 LocalizedString* GarnetBand::getString()
 {
 	return Strings::Items_Equipment_Gear_Rings_GarnetBand::create();
 }
 
-std::string GarnetBand::getIconResource()
+const std::string& GarnetBand::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Rings_GarnetBand;
 }
 
-std::string GarnetBand::getSerializationKey()
+const std::string& GarnetBand::getIdentifier()
 {
 	return GarnetBand::SaveKey;
+}
+
+Recipe* GarnetBand::getRecipe()
+{
+	return GarnetBandRecipe::create();
 }

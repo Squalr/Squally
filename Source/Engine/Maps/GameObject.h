@@ -3,7 +3,7 @@
 
 #include "cocos/math/CCGeometry.h"
 
-#include "Engine/AttachedBehavior/AttachedBehavior.h"
+#include "Engine/Components/GameComponent.h"
 #include "Engine/SmartNode.h"
 
 namespace cocos2d
@@ -16,16 +16,20 @@ class GameObject : public SmartNode
 {
 public:
 	std::string getUniqueIdentifier();
-	void attachBehavior(AttachedBehavior* attachedBehavior);
-	void detachBehavior(AttachedBehavior* attachedBehavior);
+	void attachComponent(GameComponent* component);
+	void detachAllComponents();
+	void detachComponent(GameComponent* component);
 	void setState(std::string key, cocos2d::Value value, bool broadcastUpdate = true);
 	void addTag(std::string tag);
+	const std::string getTag() const;
+	const std::set<std::string>& getTags() const;
 	cocos2d::Value getPropertyOrDefault(std::string key, cocos2d::Value value);
 	cocos2d::Value getRuntimeStateOrDefault(std::string key, cocos2d::Value value);
 	int getRuntimeStateOrDefaultInt(std::string key, int value);
 	float getRuntimeStateOrDefaultFloat(std::string key, float value);
 	bool getRuntimeStateOrDefaultBool(std::string key, bool value);
 	cocos2d::ValueMap& getStateVariables();
+	const std::vector<cocos2d::Vec2>& getPolylinePoints() const;
 	bool hasRuntimeState(std::string key);
 	void clearState(std::string key);
 	void setZSorted(bool zSorted);
@@ -44,11 +48,12 @@ public:
 	std::string getSendEvent();
 	void despawn(float despawnDelay = 0.0f);
 	bool isDespawned();
+	void setQueryable(bool isQueryable);
 
 	template <class T>
-	T* getAttachedBehavior()
+	T* getComponent()
 	{
-		for (auto next : attachedBehavior)
+		for (GameComponent* next : components)
 		{
 			if (dynamic_cast<T*>(next) != nullptr && next->isQueryable())
 			{
@@ -60,26 +65,26 @@ public:
 	}
 
 	template <class T>
-	void getAttachedBehavior(std::function<void(T*)> onFound)
+	void getComponent(std::function<void(T*)> onFound)
 	{
-		T* attachedBehavior = this->getAttachedBehavior<T>();
+		T* component = this->getComponent<T>();
 
-		if (attachedBehavior != nullptr && onFound != nullptr)
+		if (component != nullptr && onFound != nullptr)
 		{
-			onFound(attachedBehavior);
+			onFound(component);
 		}
 	}
 	
 	static unsigned long long WatchId;
 
 	template <class T>
-	void watchForAttachedBehavior(std::function<void(T*)> onBehaviorFound)
+	void watchForComponent(std::function<void(T*)> onBehaviorFound)
 	{
 		unsigned long long watchId = GameObject::WatchId++;
 		std::string eventKey = "EVENT_WATCH_FOR_ATTACHED_BEHAVIOR_" + std::to_string(watchId);
 
 		// Do an immediate check for the object
-		T* behavior = this->getAttachedBehavior<T>();
+		T* behavior = this->getComponent<T>();
 
 		if (behavior != nullptr)
 		{
@@ -90,15 +95,14 @@ public:
 		// Schedule a task to watch for the object
 		this->schedule([=](float dt)
 		{
-			T* behavior = this->getAttachedBehavior<T>();
+			T* behavior = this->getComponent<T>();
 
 			if (behavior != nullptr)
 			{
 				this->unschedule(eventKey);
 				onBehaviorFound(behavior);
 			}
-
-		}, 1.0f / 60.0f, CC_REPEAT_FOREVER, 0.0f, eventKey);
+		}, eventKey);
 	}
 
 	static const std::string MapKeyId;
@@ -115,9 +119,6 @@ public:
 	static const std::string MapKeyYPosition;
 	static const std::string MapKeyDepth;
 	static const std::string MapKeyScale;
-	static const std::string MapKeyScaleX;
-	static const std::string MapKeyScaleY;
-	static const std::string MapKeyAutoScale;
 	static const std::string MapKeyFlipX;
 	static const std::string MapKeyFlipY;
 	static const std::string MapKeyRepeatX;
@@ -128,8 +129,8 @@ public:
 	static const std::string MapKeyQuest;
 	static const std::string MapKeyQuestLine;
 	static const std::string MapKeyQuestTag;
-	static const std::string MapKeyAttachedBehavior;
-	static const std::string MapKeyAttachedBehaviorArgs;
+	static const std::string MapKeyComponent;
+	static const std::string MapKeyComponentArgs;
 	static const std::string MapKeyArgs;
 	static const std::string MapKeyQueryable;
 	static const std::string MapKeyZoom;
@@ -146,6 +147,7 @@ public:
 	static const std::string PropertyName;
 	static const std::string PropertyType;
 	static const std::string PropertyValue;
+	static const std::string PropertyColor;
 
 	cocos2d::ValueMap properties;
 	
@@ -160,6 +162,7 @@ protected:
 	virtual void onDespawn();
 	bool isMapObject();
 	void loadObjectState();
+	static std::string BuildUUID(std::string mapId, std::string objectId);
 
 	std::string listenEvent;
 	std::string sendEvent;
@@ -173,11 +176,12 @@ private:
 	bool containsAttributes();
 	bool containsProperties();
 
-	bool despawned;
+	bool despawned = false;
+	bool isQueryable = true;
 	std::set<std::string> tags;
-	bool zSorted;
+	bool zSorted = false;
 	std::string uniqueIdentifier;
 	cocos2d::ValueMap saveProperties;
 	cocos2d::ValueMap stateVariables;
-	std::vector<AttachedBehavior*> attachedBehavior;
+	std::vector<GameComponent*> components;
 };

@@ -7,13 +7,14 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/Traps/Laser/LaserAnimation.h"
 #include "Objects/Platformer/Traps/Laser/LaserCountDownPreview.h"
 #include "Objects/Platformer/Traps/Laser/LaserGenericPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/UIResources.h"
 
@@ -37,15 +38,13 @@ Laser* Laser::create(ValueMap& properties)
 Laser::Laser(ValueMap& properties) : super(properties)
 {
 	this->currentLaserCountDown = RandomHelper::random_real(0.0f, 3.0f);
-	this->maxLaserCountDown = 4.0f;
-	this->isRunningAnimation = false;
 
 	float height = this->properties.at(GameObject::MapKeyHeight).asFloat();
 
 	this->laserAnimation = LaserAnimation::create(height);
-	this->laserCollision = CollisionObject::create(CollisionObject::createBox(Size(21.0f, height)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->laserCollision = CollisionObject::create(CollisionObject::createBox(CSize(21.0f, height)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
-	this->laserCollision->setPhysicsEnabled(false);
+	this->laserCollision->setPhysicsFlagEnabled(false);
 
 	this->addChild(this->laserCollision);
 	this->addChild(this->laserAnimation);
@@ -78,11 +77,11 @@ void Laser::update(float dt)
 		this->laserAnimation->runAnimation(
 		[=]()
 		{
-			this->laserCollision->setPhysicsEnabled(true);
+			this->laserCollision->setPhysicsFlagEnabled(true);
 		},
 		[=]()
 		{
-			this->laserCollision->setPhysicsEnabled(false);
+			this->laserCollision->setPhysicsFlagEnabled(false);
 			this->isRunningAnimation = false;
 		});
 	}
@@ -113,7 +112,7 @@ void Laser::registerHackables()
 				Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown::create(),
 				HackableBase::HackBarColor::Red,
 				UIResources::Menus_Icons_SpellImpactWhite,
-				LaserCountDownPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return LaserCountDownPreview::create(); }),
 				{
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Laser_UpdateCountDown_RegisterSt0::create() },
 				},
@@ -127,7 +126,7 @@ void Laser::registerHackables()
 	auto updateLaserFunc = &Laser::updateLaser;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateLaserFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}

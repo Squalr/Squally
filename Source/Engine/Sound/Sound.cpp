@@ -1,6 +1,7 @@
 #include "Sound.h"
 
-#include "cocos/audio/include/AudioEngine.h"
+#include <SFML/Audio.hpp>
+
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
@@ -11,7 +12,6 @@
 #include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
-using namespace cocos_experimental;
 
 const std::string Sound::MapKey = "sound";
 const std::string Sound::PropertyKeyResource = "resource";
@@ -50,20 +50,29 @@ void Sound::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventSoundVolumeUpdated, [=](EventCustom* eventCustom)
 	{
-		AudioEngine::setVolume(this->activeTrackId, this->getVolume());
+		if (this->soundRef != nullptr)
+		{
+			this->soundRef->setVolume(this->getVolume());
+		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
 		// This needs more thought. Most sounds are brief and should just play out. However, if long sounds are added, then it makes sense to fade them out or something.
 		// May need to add a special global node that can handle fading out a given audio ID.
-		// this->stop();
+		if (this->soundRef != nullptr)
+		{
+			this->soundRef->stop();
+		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
 	{
 		// Let the audio play out -- cancel looping if it loops
-		AudioEngine::setLoop(this->activeTrackId, false);
+		if (this->soundRef != nullptr)
+		{
+			this->soundRef->setLoop(false);
+		}
 
 		this->stopAllActions();
 	}));
@@ -81,20 +90,26 @@ void Sound::freeze()
 {
 	super::freeze();
 
-	switch (AudioEngine::getState(this->activeTrackId))
+	if (this->soundRef == nullptr)
+	{
+		return;
+	}
+
+	switch (this->soundRef->getStatus())
 	{
 		default:
-		case AudioEngine::AudioState::ERROR:
-		case AudioEngine::AudioState::INITIALIZING:
-		case AudioEngine::AudioState::PAUSED:
+		case sf::SoundSource::Status::Paused:
+		case sf::SoundSource::Status::Stopped:
 		{
 			// Not playing, do nothing
 			break;
 		}
-		case AudioEngine::AudioState::PLAYING:
+		case sf::SoundSource::Status::Playing:
 		{
-			AudioEngine::pause(this->activeTrackId);
-
+			if (this->soundRef != nullptr)
+			{
+				this->soundRef->pause();
+			}
 			break;
 		}
 	}
@@ -104,20 +119,26 @@ void Sound::unfreeze()
 {
 	super::unfreeze();
 
-	switch (AudioEngine::getState(this->activeTrackId))
+	if (this->soundRef == nullptr)
+	{
+		return;
+	}
+
+	switch (this->soundRef->getStatus())
 	{
 		default:
-		case AudioEngine::AudioState::ERROR:
-		case AudioEngine::AudioState::INITIALIZING:
-		case AudioEngine::AudioState::PLAYING:
+		case sf::SoundSource::Status::Paused:
+		case sf::SoundSource::Status::Stopped:
 		{
-			// Not paused, do nothing
+			// Not playing, do nothing
 			break;
 		}
-		case AudioEngine::AudioState::PAUSED:
+		case sf::SoundSource::Status::Playing:
 		{
-			AudioEngine::resume(this->activeTrackId);
-
+			if (this->soundRef != nullptr)
+			{
+				this->soundRef->play();
+			}
 			break;
 		}
 	}

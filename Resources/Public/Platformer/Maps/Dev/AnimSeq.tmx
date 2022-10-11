@@ -39,10 +39,9 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-6889.69" y="-306.7" width="13333.3" height="1140">
+  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-6889.69" y="-306.7" width="13333.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -51,10 +50,9 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-6861.81" y="-302.4" width="13257.6" height="1140">
+  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-6861.81" y="-302.4" width="13257.6" height="2565">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="2.25"/>
    </properties>
   </object>
  </objectgroup>
@@ -94,7 +92,7 @@
   </properties>
   <object id="664" name="spiked-log" type="object" x="1748.18" y="1016.15" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
  </objectgroup>
@@ -116,7 +114,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="1127.14" y="1466.86" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
  </objectgroup>

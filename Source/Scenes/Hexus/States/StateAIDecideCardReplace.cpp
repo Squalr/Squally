@@ -8,8 +8,8 @@
 
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 using namespace cocos2d;
 
@@ -37,11 +37,11 @@ void StateAIDecideCardReplace::onBeforeStateEnter(GameState* gameState)
 
 	if (gameState->roundNumber == 0)
 	{
-		gameState->cardReplaceCount = std::min(Config::initialCardReplacements, gameState->enemyDeck->getCardCount());
+		gameState->cardReplaceCount = std::min(HexusConfig::initialCardReplacements, gameState->enemyDeck->getCardCount());
 	}
 	else
 	{
-		gameState->cardReplaceCount = std::min(Config::midgameCardReplacements, gameState->enemyDeck->getCardCount());
+		gameState->cardReplaceCount = std::min(HexusConfig::midgameCardReplacements, gameState->enemyDeck->getCardCount());
 	}
 }
 

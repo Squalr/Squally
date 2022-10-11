@@ -30,7 +30,6 @@ Inventory::Inventory(std::string saveKey, int capacity)
 {
 	this->saveKey = saveKey;
 	this->capacity = capacity;
-	this->items = std::vector<Item*>();
 	this->itemsNode = Node::create();
 
 	this->load();
@@ -53,7 +52,7 @@ void Inventory::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(InventoryEvents::EventInventoryInstanceChangedPrefix + this->saveKey, [=](EventCustom* eventCustom)
 	{
-		InventoryEvents::InventoryInstanceChangedArgs* args = static_cast<InventoryEvents::InventoryInstanceChangedArgs*>(eventCustom->getUserData());
+		InventoryEvents::InventoryInstanceChangedArgs* args = static_cast<InventoryEvents::InventoryInstanceChangedArgs*>(eventCustom->getData());
 		
 		if (args != nullptr && args->instance != this)
 		{
@@ -69,7 +68,7 @@ ValueMap Inventory::serialize()
 
 	for (auto next : this->items)
 	{
-		itemData.push_back(Value(next->getSerializationKey()));
+		itemData.push_back(Value(next->getIdentifier()));
 	}
 
 	saveData[Inventory::SaveKeyCapacity] = Value(this->capacity);
@@ -85,6 +84,8 @@ void Inventory::deserialize(const ValueMap& valueMap)
 	this->capacity = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyCapacity, Value(Inventory::InfiniteCapacity)).asInt();
 	ValueVector itemData = GameUtils::getKeyOrDefault(valueMap, Inventory::SaveKeyItems, Value(ValueVector())).asValueVector();
 
+	this->disableLookupTableRebuilding = true;
+
 	for (auto next : itemData)
 	{
 		InventoryEvents::TriggerRequestItemDeserialization(InventoryEvents::RequestItemDeserializationArgs(next.asString(), [=](Item* item)
@@ -92,12 +93,21 @@ void Inventory::deserialize(const ValueMap& valueMap)
 			this->forceInsert(item, false);
 		}));
 	}
+
+	this->disableLookupTableRebuilding = false;
+	this->rebuildLookupTable();
+}
+
+bool Inventory::hasItemOfName(std::string itemName)
+{
+	return this->itemLookup.find(itemName) != this->itemLookup.end();
 }
 
 void Inventory::clearItems()
 {
 	this->itemsNode->removeAllChildren();
 	this->items.clear();
+	this->itemLookup.clear();
 }
 
 void Inventory::save()
@@ -119,7 +129,7 @@ void Inventory::load()
 {
 	if (!this->saveKey.empty())
 	{
-		this->deserialize(SaveManager::getProfileDataOrDefault(this->saveKey, Value(ValueMap())).asValueMap());
+		this->deserialize(SaveManager::GetProfileDataOrDefault(this->saveKey, Value(ValueMap())).asValueMap());
 	}
 }
 
@@ -145,7 +155,8 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 		return;
 	}
 
-	if (std::find(this->items.begin(), this->items.end(), item) == this->items.end())
+	// Quick O(1) check using the set
+	if (this->itemLookup.find(item->getIdentifier()) == this->itemLookup.end())
 	{
 		if (onRemoveFailed != nullptr)
 		{
@@ -164,6 +175,8 @@ void Inventory::tryRemove(Item* item, std::function<void(Item*)> onRemove, std::
 	{
 		this->save();
 	}
+	
+	this->rebuildLookupTable();
 
 	if (onRemove != nullptr)
 	{
@@ -188,6 +201,8 @@ void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::
 			onInsert(item);
 		}
 
+		this->rebuildLookupTable();
+
 		return;
 	}
 	else
@@ -201,7 +216,13 @@ void Inventory::tryInsert(Item* item, std::function<void(Item*)> onInsert, std::
 
 void Inventory::forceInsert(Item* item, bool doSave)
 {
-	if (item != nullptr)
+	this->forceInsert(item, nullptr, nullptr, doSave);
+}
+
+void Inventory::forceInsert(Item* item, std::function<void(Item*)> onInsert, std::function<void(Item*)> onInsertFailed, bool doSave)
+{
+	// We still want to do unqiue checks on forced inserts, but ignore capacity checks
+	if (item != nullptr && this->canInsertItemIfUnique(item))
 	{
 		this->itemsNode->addChild(item);
 		this->items.push_back(item);
@@ -209,6 +230,20 @@ void Inventory::forceInsert(Item* item, bool doSave)
 		if (doSave)
 		{
 			this->save();
+		}
+
+		this->rebuildLookupTable();
+
+		if (onInsert != nullptr)
+		{
+			onInsert(item);
+		}
+	}
+	else
+	{
+		if (onInsertFailed != nullptr)
+		{
+			onInsertFailed(item);
 		}
 	}
 }
@@ -269,7 +304,7 @@ void Inventory::tryTransact(Inventory* other, Item* item, Item* otherItem, std::
 		[=](Item* removedItem)
 		{
 			// Return the first removed item to where it came from
-			other->forceInsert(otherRemovedItem);
+			other->forceInsert(otherRemovedItem, true);
 
 			LogUtils::logError("Error removing self item during transaction");
 
@@ -314,30 +349,59 @@ void Inventory::moveItem(Item* item, int destinationIndex, std::function<void(It
 	{
 		this->save();
 	}
+
+	this->rebuildLookupTable();
 }
 
 bool Inventory::canInsertItemIfUnique(Item* item)
 {
 	int uniqueCount = item->getUniqueCount();
+	int foundCount = 0;
+	bool hasUniqueCount = uniqueCount > 0;
 
-	if (uniqueCount >= 1)
+	if (hasUniqueCount && item != nullptr)
 	{
-		// Count how many duplicates exist
-		for (auto next : this->items)
+		// Optimization for the case where the unique count is 1
+		if (uniqueCount == 1)
 		{
-			if (item->getItemName() == next->getItemName())
+			if (this->itemLookup.find(item->getIdentifier()) != this->itemLookup.end())
 			{
-				uniqueCount--;
+				foundCount++;
 			}
 		}
-
-		// Unique cap hit!
-		if (uniqueCount <= 0)
+		else
 		{
-			return false;
+			// Count how many duplicates exist
+			for (Item* next : this->items)
+			{
+				if (next != nullptr && item->getIdentifier() == next->getIdentifier())
+				{
+					foundCount++;
+				}
+			}
 		}
+	}
+
+	// Unique cap hit!
+	if (hasUniqueCount && foundCount >= uniqueCount)
+	{
+		return false;
 	}
 
 	return true;
 }
 
+void Inventory::rebuildLookupTable()
+{
+	if (this->disableLookupTableRebuilding)
+	{
+		return;
+	}
+	
+	this->itemLookup.clear();
+
+	for (auto next : this->items)
+	{
+		this->itemLookup.insert(next->getIdentifier());
+	}
+}

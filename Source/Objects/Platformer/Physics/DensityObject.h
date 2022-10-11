@@ -17,15 +17,16 @@ protected:
 	virtual float getDensity() = 0;
 	virtual float getObjectHeight() = 0;
 
-	float currentDensity;
-	float loadedDensity;
+	float currentDensity = 0.0f;
+	float loadedDensity = 0.0f;
 
-	cocos2d::Node* contentNode;
+	cocos2d::Node* contentNode = nullptr;
 
 private:
 	typedef HackableObject super;
-
-	float heightRange;
+	friend class BinderDensityObject;
+	
+	float heightRange = 0.0f;
 
 	static const float DensityFloatSpeed;
 };

@@ -14,13 +14,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	HeavenHugGenericPreview();
-	virtual ~HeavenHugGenericPreview() = default;
+	virtual ~HeavenHugGenericPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
 
-	cocos2d::Sprite* previewHeavenHug;
+private:
+	typedef HackablePreview super;
+
+	cocos2d::Sprite* previewHeavenHug = nullptr;
 };

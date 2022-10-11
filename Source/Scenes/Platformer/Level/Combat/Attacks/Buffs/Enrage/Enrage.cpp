@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Sound/WorldSound.h"
@@ -114,7 +115,7 @@ void Enrage::registerHackables()
 				Strings::Menus_Hacking_Abilities_Buffs_Enrage_Enrage::create(),
 				HackableBase::HackBarColor::Orange,
 				UIResources::Menus_Icons_Clock,
-				EnrageGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return EnrageGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Enrage_RegisterEsi::create()
@@ -144,7 +145,7 @@ void Enrage::registerHackables()
 	auto func = &Enrage::applyEnrageSpeed;
 	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
-	for (auto next : this->hackables)
+	for (HackableCode* next : this->hackables)
 	{
 		this->owner->registerCode(next);
 	}
@@ -176,6 +177,7 @@ NO_OPTIMIZE void Enrage::applyEnrageSpeed()
 	volatile float* speedBonusPtr = &speedBonus;
 	volatile float* incrementPtr = &increment;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZSI);
 	ASM(push ZBX);
 
@@ -190,8 +192,9 @@ NO_OPTIMIZE void Enrage::applyEnrageSpeed()
 
 	ASM(pop ZBX);
 	ASM(pop ZSI);
+	ASM_POP_EFLAGS()
 
-	this->currentSpeed += MathUtils::clamp(speedBonus, Enrage::MinSpeed, Enrage::MaxSpeed);
+	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, Enrage::MinSpeed, Enrage::MaxSpeed);
 
 	HACKABLES_STOP_SEARCH();
 }
@@ -219,7 +222,7 @@ NO_OPTIMIZE void Enrage::applyEnrageIncreaseDamageDealt()
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
-	this->currentSpeed += MathUtils::clamp(speedBonus, Enrage::MinSpeed, Enrage::MaxSpeed);
+	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, Enrage::MinSpeed, Enrage::MaxSpeed);
 
 	HACKABLES_STOP_SEARCH();
 }
@@ -247,7 +250,7 @@ NO_OPTIMIZE void Enrage::applyEnrageIncreaseDamageTaken()
 	ASM(pop ZBX);
 	ASM(pop ZSI);
 
-	this->currentSpeed += MathUtils::clamp(speedBonus, Enrage::MinSpeed, Enrage::MaxSpeed);
+	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, Enrage::MinSpeed, Enrage::MaxSpeed);
 
 	HACKABLES_STOP_SEARCH();
 }

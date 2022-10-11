@@ -3,25 +3,26 @@
 #include <string>
 #include <vector>
 
-#include "Engine/Events/HackableEvents.h"
 #include "Engine/GlobalHud.h"
-#include "Engine/Hackables/Menus/CodeEditor/CodeWindow.h"
 
 namespace cocos2d
 {
 	class Sprite;
 }
 
-class ClickableNode;
 class ClickableTextNode;
+class CodeWindow;
 class ConfirmationMenu;
 class HackableCode;
 class LabelStack;
+template <class T> class LazyNode;
 class Lexicon;
-class MenuLabel;
-class ScriptEntry;
+class LocalizedLabel;
 class ScriptList;
-class TextWindow;
+
+struct AsmToken;
+
+struct HackableObjectEditArgs;
 
 class CodeHud : public GlobalHud
 {
@@ -40,49 +41,50 @@ protected:
 private:
 	typedef SmartNode super;
 
-	void open(HackableEvents::HackableObjectEditArgs* args);
+	void open(HackableObjectEditArgs* args);
+	void close();
 	void enableAccept();
 	void disableAccept();
 	void buildRegisterWindow();
 	void compile(std::string rawText);
-	void tokenizeCallback(std::string text, std::vector<CodeWindow::token>&);
+	void tokenizeCallback(std::string text, std::vector<AsmToken>&);
 	void onAccept();
 	void onCancel();
 	void setWindowColor(cocos2d::Color4B windowColor);
 	void setTitleBarColor(cocos2d::Color4B titleBarColor);
-	Lexicon* getLexicon();
+	Lexicon* buildLexicon();
 
 	// This is an unused label that is simply kept around to steal attributes from (font size, font style, etc)
-	LocalizedLabel* referenceContentLabel;
+	LocalizedLabel* referenceContentLabel = nullptr;
 
-	float marginSize;
+	float marginSize = 0.0f;
 
-	cocos2d::Sprite* statusBackground;
-	cocos2d::Sprite* rightBarBackground;
-	cocos2d::Sprite* radialEye;
-	cocos2d::Node* previewNode;
-	cocos2d::Node* clippyNode;
-	CodeWindow* functionWindow;
-	LabelStack* statusWindow;
-	LabelStack* registerWindow;
-	ScriptList* scriptList;
-	ClickableTextNode* cancelButton;
-	ClickableTextNode* applyChangesButton;
-	cocos2d::Node* applyChangesButtonGrayed;
-	LocalizedLabel* titleLabel;
-	ClickableTextNode* stuckButton;
-	ClickableTextNode* lexiconButton;
-	Lexicon* lexicon;
-	ConfirmationMenu* confirmationMenu;
+	cocos2d::Sprite* statusBackground = nullptr;
+	cocos2d::Sprite* rightBarBackground = nullptr;
+	cocos2d::Sprite* radialEye = nullptr;
+	cocos2d::Node* previewNode = nullptr;
+	cocos2d::Node* clippyNode = nullptr;
+	CodeWindow* functionWindow = nullptr;
+	LabelStack* statusWindow = nullptr;
+	LabelStack* registerWindow = nullptr;
+	ScriptList* scriptList = nullptr;
+	ClickableTextNode* cancelButton = nullptr;
+	ClickableTextNode* applyChangesButton = nullptr;
+	cocos2d::Node* applyChangesButtonGrayed = nullptr;
+	LocalizedLabel* titleLabel = nullptr;
+	ClickableTextNode* stuckButton = nullptr;
+	ClickableTextNode* lexiconButton = nullptr;
+	LazyNode<Lexicon>* lexicon = nullptr;
+	ConfirmationMenu* confirmationMenu = nullptr;
 
-	HackableCode* activeHackableCode;
-	float timeSinceLastCompile;
+	HackableCode* activeHackableCode = nullptr;
+	float timeSinceLastCompile = 0.0f;
 
-	static const cocos2d::Size Padding;
+	static const cocos2d::CSize Padding;
 	static const float CompileDelayMaxSeconds;
 	static const float LineNumberMargin;
-	static const cocos2d::Size StatusSize;
-	static const cocos2d::Size FunctionSize;
+	static const cocos2d::CSize StatusSize;
+	static const cocos2d::CSize FunctionSize;
 	static const cocos2d::Color4B SubtextColor;
 	static const cocos2d::Color4B HeaderColor;
 	static const cocos2d::Color4B ErrorColor;

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Necklaces/GlowingPendantRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* GlowingPendant::clone()
 	return GlowingPendant::create();
 }
 
-std::string GlowingPendant::getItemName()
-{
-	return GlowingPendant::SaveKey;
-}
-
 LocalizedString* GlowingPendant::getString()
 {
 	return Strings::Items_Equipment_Gear_Necklaces_GlowingPendant::create();
 }
 
-std::string GlowingPendant::getIconResource()
+const std::string& GlowingPendant::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Necklaces_GlowingPendant;
 }
 
-std::string GlowingPendant::getSerializationKey()
+const std::string& GlowingPendant::getIdentifier()
 {
 	return GlowingPendant::SaveKey;
+}
+
+Recipe* GlowingPendant::getRecipe()
+{
+	return GlowingPendantRecipe::create();
 }

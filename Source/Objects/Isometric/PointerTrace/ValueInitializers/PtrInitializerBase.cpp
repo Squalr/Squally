@@ -16,7 +16,6 @@ const std::string PtrInitializerBase::IntegerRegex = "[0-9]+";
 PtrInitializerBase::PtrInitializerBase(ValueMap& properties) : super(properties)
 {
 	std::string name = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString();
-	this->offset = 0;
     
 	// A bit hackathon-esque, but it works. Extracts the offset integer from the string.
     std::regex re = std::regex(PtrInitializerBase::OffsetRegex);

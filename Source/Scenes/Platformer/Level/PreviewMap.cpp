@@ -1,9 +1,23 @@
 #include "PreviewMap.h"
 
-#include "Deserializers/Deserializers.h"
-#include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerComponentDeserializer.h"
+#include "Deserializers/Platformer/PlatformerBannerDeserializer.h"
 #include "Deserializers/Platformer/PlatformerCrackDeserializer.h"
+#include "Deserializers/Platformer/PlatformerDecorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
+#include "Deserializers/Platformer/PlatformerHideMiniMapDeserializer.h"
+#include "Deserializers/Platformer/PlatformerMiniMapRequiredItemDeserializer.h"
+#include "Deserializers/Platformer/PlatformerObjectDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
+#include "Deserializers/Platformer/PlatformerTerrainDeserializer.h"
+#include "Deserializers/Platformer/PlatformerTextureDeserializer.h"
+#include "Deserializers/WeatherDeserializer.h"
+#include "Engine/Deserializers/Meta/BackgroundDeserializer.h"
+#include "Engine/Deserializers/Meta/MetaLayerDeserializer.h"
+#include "Engine/Deserializers/Meta/MusicDeserializer.h"
+#include "Engine/Deserializers/Meta/PhysicsDeserializer.h"
+#include "Engine/Deserializers/Objects/CollisionDeserializer.h"
+#include "Engine/Deserializers/Objects/ObjectLayerDeserializer.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -35,9 +49,6 @@ PreviewMap::PreviewMap() : super()
 		// throw std::uncaught_exceptions();
 	}
 	
-	this->layerDeserializers = std::vector<LayerDeserializer*>();
-
-	this->map = nullptr;
 	this->mapNode = Node::create();
 
 	this->addLayerDeserializers({
@@ -48,7 +59,7 @@ PreviewMap::PreviewMap() : super()
 				PhysicsDeserializer::create(),
 			}),
 			ObjectLayerDeserializer::create({
-				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
+				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerComponentDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },
 				{ PlatformerDecorDeserializer::MapKeyTypeDecor, PlatformerDecorDeserializer::create() },
 				{ PlatformerEntityDeserializer::MapKeyTypeEntity, PlatformerEntityDeserializer::create() },
 				{ PlatformerObjectDeserializer::MapKeyTypeObject, PlatformerObjectDeserializer::create() },
@@ -66,11 +77,11 @@ PreviewMap::~PreviewMap()
 {
 }
 
-Size PreviewMap::getMapSize()
+CSize PreviewMap::getMapSize()
 {
 	if (this->map == nullptr)
 	{
-		return Size::ZERO;
+		return CSize::ZERO;
 	}
 
 	return this->map->getMapSize();
@@ -104,7 +115,7 @@ bool PreviewMap::loadMap(std::string mapResource)
 	}
 
 	this->mapResource = mapResource;
-	this->map = GameMap::deserialize(this->mapResource, this->layerDeserializers, true);
+	this->map = GameMap::deserialize(this->mapResource, GameMap::parse(this->mapResource), this->layerDeserializers, true);
 
 	CollisionObject::UniverseId = previousUniverseId;
 	

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="46" nextobjectid="634">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="46" nextobjectid="634">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
+   <property name="hide-mini-map" type="bool" value="true"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
-   <property name="music-delay" type="float" value="17"/>
+   <property name="music-delay" type="float" value="13"/>
    <property name="rubber-band" type="int" value="1"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
@@ -42,10 +43,9 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-4329.69" y="5069.3" width="13333.3" height="1140">
+  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-3129.69" y="4925.3" width="14197.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -54,10 +54,9 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-4301.81" y="5073.6" width="13257.6" height="1140">
+  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-717.81" y="4929.6" width="9641.6" height="2565">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="2.25"/>
    </properties>
   </object>
  </objectgroup>
@@ -127,7 +126,7 @@
   </properties>
   <object id="616" name="scrappy" type="entity" x="5416.93" y="5309.35" width="78.7879" height="88">
    <properties>
-    <property name="attached-behavior" value="friendly,no-gravity"/>
+    <property name="components" value="friendly,no-gravity"/>
     <property name="quest" value="meet-scrappy"/>
     <property name="quest-line" value="intro"/>
    </properties>
@@ -138,7 +137,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally-ship" type="object" x="6514.95" y="2089.48" width="78.7879" height="88"/>
+  <object id="523" name="squally-ship" type="object" x="4400" y="2089.48" width="78.7879" height="88"/>
  </objectgroup>
  <objectgroup id="27" name="terrain foreground">
   <properties>

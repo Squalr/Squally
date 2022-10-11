@@ -16,14 +16,14 @@ const std::string PointerTraceEvents::EventResetState = "EVENT_PTRACE_RESET_STAT
 
 void PointerTraceEvents::TriggerVictory()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PointerTraceEvents::EventVictory
 	);
 }
 
 void PointerTraceEvents::TriggerEntityMoved(PointerTraceEntityMovedArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PointerTraceEvents::EventEntityMoved,
 		&args
 	);
@@ -31,7 +31,7 @@ void PointerTraceEvents::TriggerEntityMoved(PointerTraceEntityMovedArgs args)
 
 void PointerTraceEvents::TriggerRequestMovement(PointerTraceRequestMovementArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PointerTraceEvents::EventRequestMovement,
 		&args
 	);
@@ -39,7 +39,7 @@ void PointerTraceEvents::TriggerRequestMovement(PointerTraceRequestMovementArgs 
 
 void PointerTraceEvents::TriggerResumeMovement(PointerTraceRequestMovementArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PointerTraceEvents::EventResumeMovement,
 		&args
 	);
@@ -47,7 +47,7 @@ void PointerTraceEvents::TriggerResumeMovement(PointerTraceRequestMovementArgs a
 
 void PointerTraceEvents::TriggerWriteValue(PointerTraceWriteArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PointerTraceEvents::EventWriteValue,
 		&args
 	);
@@ -55,7 +55,7 @@ void PointerTraceEvents::TriggerWriteValue(PointerTraceWriteArgs args)
 
 void PointerTraceEvents::TriggerReadValue(PointerTraceReadArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PointerTraceEvents::EventReadValue,
 		&args
 	);
@@ -63,14 +63,14 @@ void PointerTraceEvents::TriggerReadValue(PointerTraceReadArgs args)
 
 void PointerTraceEvents::TriggerRegisterUpdated()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PointerTraceEvents::EventUpdateRegister
 	);
 }
 
 void PointerTraceEvents::TriggerResetState()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PointerTraceEvents::EventResetState
 	);
 }

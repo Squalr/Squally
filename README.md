@@ -94,3 +94,7 @@ To gain access to the `Resources/Private` folder being used in develop branch, d
 ![Squally resource folder](https://i.imgur.com/5PaDZiG.png)
 
 For those that contribute significantly to the project, we can give you access to the private `Resources/Private` Github repository. We're doing this sparringly because there are limted seats on Github.
+
+Additional learning resources
+------------
+Learning game hacking? Check out content from our partner [Guided Hacking](https://guidedhacking.com/)

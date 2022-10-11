@@ -10,7 +10,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ItemResources.h"
 
@@ -25,7 +25,7 @@ CrystalArrow* CrystalArrow::create()
 	return instance;
 }
 
-CrystalArrow::CrystalArrow() : super(nullptr, CollisionObject::createBox(Size(128.0f, 32.0f)), (int)PlatformerCollisionType::PlayerWeapon, false)
+CrystalArrow::CrystalArrow() : super(nullptr, CollisionObject::createBox(CSize(128.0f, 32.0f)), (int)PlatformerCollisionType::PlayerWeapon, false)
 {
 	this->sprite = Sprite::create(ItemResources::Equipment_Weapons_Bows_CrystalArrow);
 

@@ -32,12 +32,6 @@ MatrixStrand* MatrixStrand::create(int strandIndex)
 
 MatrixStrand::MatrixStrand(int strandIndex)
 {
-	this->letters = std::vector<MatrixLetter*>();
-	this->letterCount = 0;
-	this->elapsedDuration = 0.0f;
-	this->currentLetterIndex = 0;
-	this->isAlive = true;
-
 	for (int index = 0; index < MatrixStrand::MaxLetterCount; index++)
 	{
 		MatrixLetter* letter = MatrixLetter::create();
@@ -68,6 +62,21 @@ void MatrixStrand::pause()
 	// Ignore pause
 }
 
+void MatrixStrand::onHackerModeEnable()
+{
+	if (this->hasBuiltLetters)
+	{
+		return;
+	}
+
+	for (int index = 0; index < MatrixStrand::MaxLetterCount; index++)
+	{
+		this->letters[index]->build();
+	}
+
+	this->hasBuiltLetters = true;
+}
+
 void MatrixStrand::update(float dt)
 {
 	// Do not update if not visible
@@ -84,7 +93,7 @@ void MatrixStrand::update(float dt)
 		this->nextStrandAction();
 	}
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	// Camera movement effect
 	this->setPositionY(this->getPositionY() - dt * MovementSpeed / 4.0f);
@@ -115,7 +124,6 @@ void MatrixStrand::nextStrandAction()
 {
 	if (this->currentLetterIndex < MatrixStrand::letterCount)
 	{
-		
 		MatrixLetter* letter = this->letters[this->currentLetterIndex];
 
 		letter->spawn();
@@ -178,7 +186,7 @@ void MatrixStrand::randomizeInitialState(int strandIndex)
 
 void MatrixStrand::randomizeState(bool spawnInRange)
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	Vec3 position;
 	position.x = RandomHelper::random_real(0.0f, visibleSize.width);

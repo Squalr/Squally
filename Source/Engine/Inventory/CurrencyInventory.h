@@ -1,12 +1,8 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "cocos/base/CCValue.h"
 
-namespace cocos2d
-{
-	class Value;
-	typedef std::map<std::string, cocos2d::Value> ValueMap;
-}
+#include "Engine/SmartNode.h"
 
 class CurrencyInventory : public SmartNode
 {

@@ -16,12 +16,12 @@
 
 using namespace cocos2d;
 
-ThrownObject* ThrownObject::create(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, std::string objectResource, cocos2d::Size collisionSize)
+ThrownObject* ThrownObject::create(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, std::string objectResource, cocos2d::CSize collisionSize)
 {
 	return ThrownObject::create(caster, target, onTimeline, Sprite::create(objectResource), collisionSize);
 }
 
-ThrownObject* ThrownObject::create(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, cocos2d::Node* object, cocos2d::Size collisionSize)
+ThrownObject* ThrownObject::create(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, cocos2d::Node* object, cocos2d::CSize collisionSize)
 {
 	ThrownObject* instance = new ThrownObject(caster, target, onTimeline, object, collisionSize);
 
@@ -30,7 +30,7 @@ ThrownObject* ThrownObject::create(PlatformerEntity* caster, PlatformerEntity* t
 	return instance;
 }
 
-ThrownObject::ThrownObject(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, cocos2d::Node* object, cocos2d::Size collisionSize)
+ThrownObject::ThrownObject(PlatformerEntity* caster, PlatformerEntity* target, bool onTimeline, cocos2d::Node* object, cocos2d::CSize collisionSize)
 	: super(caster, target, onTimeline, CollisionObject::createCapsulePolygon(collisionSize), (int)CombatCollisionType::Projectile, true)
 {
 	this->object = object;

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Swords/AshenBladePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* AshenBlade::clone()
 	return AshenBlade::create();
 }
 
-std::string AshenBlade::getItemName()
-{
-	return AshenBlade::SaveKey;
-}
-
 LocalizedString* AshenBlade::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_AshenBlade::create();
 }
 
-std::string AshenBlade::getIconResource()
+const std::string& AshenBlade::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_AshenBlade;
 }
 
-std::string AshenBlade::getSerializationKey()
+const std::string& AshenBlade::getIdentifier()
 {
 	return AshenBlade::SaveKey;
+}
+
+Recipe* AshenBlade::getRecipe()
+{
+	return AshenBladePlans::create();
 }

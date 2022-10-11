@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier7/TigersBanePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* TigersBane::clone()
 	return TigersBane::create();
 }
 
-std::string TigersBane::getItemName()
-{
-	return TigersBane::SaveKey;
-}
-
 LocalizedString* TigersBane::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_TigersBane::create();
 }
 
-std::string TigersBane::getIconResource()
+const std::string& TigersBane::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_TigersBane;
 }
 
-std::string TigersBane::getSerializationKey()
+const std::string& TigersBane::getIdentifier()
 {
 	return TigersBane::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string TigersBane::getSerializationKey()
 Vec2 TigersBane::getDisplayOffset()
 {
 	return Vec2(12.0f, -18.0f);
+}
+
+Recipe* TigersBane::getRecipe()
+{
+	return TigersBanePlans::create();
 }

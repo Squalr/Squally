@@ -9,7 +9,6 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
@@ -17,22 +16,23 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Enemies/EndianForest/Gorgon.h"
-#include "Entities/Platformer/Npcs/BallmerPeaks/Aster.h"
-#include "Entities/Platformer/Npcs/CastleValgrind/Merlin.h"
-#include "Entities/Platformer/Npcs/DaemonsHallow/Igneus.h"
-#include "Entities/Platformer/Npcs/DataMines/Alder.h"
-#include "Entities/Platformer/Npcs/DataMines/Sarude.h"
+#include "Entities/Platformer/Npcs/Mages/Alder.h"
+#include "Entities/Platformer/Npcs/Mages/Aster.h"
+#include "Entities/Platformer/Npcs/Mages/Igneus.h"
+#include "Entities/Platformer/Npcs/Mages/Merlin.h"
+#include "Entities/Platformer/Npcs/Mages/Sarude.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Cinematic/MageCastBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Cinematic/MageCastBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/LookAtSquallyBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -61,9 +61,6 @@ FightGorgon* FightGorgon::create(GameObject* owner, QuestLine* questLine)
 
 FightGorgon::FightGorgon(GameObject* owner, QuestLine* questLine) : super(owner, questLine, FightGorgon::MapKeyQuest, false)
 {
-	this->gorgon = nullptr;
-	this->sarude = nullptr;   
-	this->ram = nullptr;
 	this->shieldImpact = SmartAnimationSequenceNode::create();
 	this->swordImpact = SmartAnimationSequenceNode::create();
 	this->knifeImpact = SmartAnimationSequenceNode::create();
@@ -127,7 +124,7 @@ void FightGorgon::onLoad(QuestState questState)
 				this->defer([=]()
 				{
 					this->killRammedEnemies();
-					this->gorgon->attachBehavior(LookAtSquallyBehavior::create(this->gorgon));
+					this->gorgon->attachComponent(LookAtSquallyBehavior::create(this->gorgon));
 				});
 
 				this->listenForMapEventOnce(FightGorgon::MarkerTagBack, [=](ValueMap)
@@ -199,6 +196,7 @@ void FightGorgon::runCinematicSequencePart1()
 		{
 			ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
 			{
+				this->squally->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->squally).x));
 				this->squally->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(marker).x));
 			}, FightGorgon::MarkerTagBack);
 
@@ -219,6 +217,7 @@ void FightGorgon::runCinematicSequencePart1Alt()
 		{
 			ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* marker)
 			{
+				this->squally->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->squally).x));
 				this->squally->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(marker).x));
 			}, FightGorgon::MarkerTagFront);
 
@@ -260,16 +259,16 @@ void FightGorgon::runCinematicSequencePart3()
 
 void FightGorgon::killRammedEnemies()
 {
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerEnemy>([=](PlatformerEnemy* enemy)
+	ObjectEvents::QueryObjects<PlatformerEnemy>([=](PlatformerEnemy* enemy)
 	{
 		if (enemy != this->gorgon)
 		{
-			enemy->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			enemy->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
 				healthBehavior->kill();
 			});
 		}
-	}), PlatformerEnemy::PlatformerEnemyTag);
+	}, PlatformerEnemy::PlatformerEnemyTag);
 
 	this->impactSound->play();
 }
@@ -298,7 +297,7 @@ void FightGorgon::runMageAnims()
 	{
 		this->defer([=]()
 		{
-			igneus->attachBehavior(MageCastBehavior::create(igneus));
+			igneus->attachComponent(MageCastBehavior::create(igneus));
 		});
 	}, Igneus::MapKey);
 
@@ -306,7 +305,7 @@ void FightGorgon::runMageAnims()
 	{
 		this->defer([=]()
 		{
-			alder->attachBehavior(MageCastBehavior::create(alder));
+			alder->attachComponent(MageCastBehavior::create(alder));
 		});
 	}, Alder::MapKey);
 
@@ -314,7 +313,7 @@ void FightGorgon::runMageAnims()
 	{
 		this->defer([=]()
 		{
-			sarude->attachBehavior(MageCastBehavior::create(sarude));
+			sarude->attachComponent(MageCastBehavior::create(sarude));
 		});
 	}, Sarude::MapKey);
 
@@ -322,7 +321,7 @@ void FightGorgon::runMageAnims()
 	{
 		this->defer([=]()
 		{
-			aster->attachBehavior(MageCastBehavior::create(aster));
+			aster->attachComponent(MageCastBehavior::create(aster));
 		});
 	}, Aster::MapKey);
 
@@ -330,7 +329,7 @@ void FightGorgon::runMageAnims()
 	{
 		this->defer([=]()
 		{
-			merlin->attachBehavior(MageCastBehavior::create(merlin));
+			merlin->attachComponent(MageCastBehavior::create(merlin));
 		});
 	}, Merlin::MapKey);
 }

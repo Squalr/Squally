@@ -8,7 +8,6 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialEntry.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/RadialScrollMenu.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
@@ -33,9 +32,6 @@ CancelMenu* CancelMenu::create()
 CancelMenu::CancelMenu()
 {
 	this->cancelMenu = RadialScrollMenu::create(CancelMenu::Radius);
-	this->currentMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
-	this->previousMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
-	this->trackTarget = nullptr;
 
 	this->cancelButton = this->cancelMenu->addEntry(Strings::Menus_Cancel::create(), { }, UIResources::Menus_Icons_Cross, UIResources::Combat_AttackCircle, [=]()
 	{
@@ -71,7 +67,7 @@ void CancelMenu::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getUserData());
+		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getData());
 
 		if (combatArgs != nullptr)
 		{

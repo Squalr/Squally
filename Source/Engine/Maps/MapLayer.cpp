@@ -7,6 +7,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/LogUtils.h"
 
 using namespace cocos2d;
 
@@ -64,12 +65,12 @@ void MapLayer::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventSpawnObject, [=](EventCustom* eventCustom)
 	{
-		ObjectEvents::RequestObjectSpawnArgs* args = static_cast<ObjectEvents::RequestObjectSpawnArgs*>(eventCustom->getUserData());
+		RequestObjectSpawnArgs* args = static_cast<RequestObjectSpawnArgs*>(eventCustom->getData());
 
-		if (GameUtils::getFirstParentOfType<MapLayer>(args->spawner) == this)
+		if (GameUtils::GetFirstParentOfType<MapLayer>(args->spawner) == this)
 		{
 			// Delegate the spawning to the map, which will decide where to place the object
-			ObjectEvents::TriggerObjectSpawnDelegator(ObjectEvents::RequestObjectSpawnDelegatorArgs(this, args));
+			ObjectEvents::TriggerObjectSpawnDelegator(RequestObjectSpawnDelegatorArgs(this, args));
 		}
 	}));
 
@@ -92,6 +93,14 @@ void MapLayer::update(float dt)
 bool MapLayer::isHackable()
 {
 	return GameUtils::getKeyOrDefault(this->properties, MapLayer::PropertyIsHackable, Value(false)).asBool();
+}
+
+void MapLayer::setHackable()
+{
+	if (!this->isHackable())
+	{
+		this->properties[MapLayer::PropertyIsHackable] = Value(true);
+	}
 }
 
 bool MapLayer::isElevateTarget()

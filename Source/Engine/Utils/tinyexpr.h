@@ -52,10 +52,10 @@ enum {
 };
 
 typedef struct te_variable {
-    const char *name;
-    const void *address;
+    const char* name;
+    void* address;
     int type;
-    void *context;
+    void* context;
 } te_variable;
 
 

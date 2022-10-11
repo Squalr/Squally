@@ -4,11 +4,11 @@
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListener.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/DeveloperModeEvents.h"
 #include "Engine/Events/HackableEvents.h"
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Utils/GameUtils.h"
 
@@ -27,15 +27,11 @@ SmartNode* SmartNode::create()
 
 SmartNode::SmartNode()
 {
-	this->hackermodeEnabled = false;
-	this->optimizationHasGlobalListener = false;
-	this->optimizationHasListener = false;
-	this->hasInitializedListeners = false;
-	this->disableHackerModeEvents = false;
 }
 
 SmartNode::~SmartNode()
 {
+	this->removeAllListeners();
 }
 
 void SmartNode::onEnter()
@@ -43,12 +39,7 @@ void SmartNode::onEnter()
 	super::onEnter();
 
 	this->initializePositions();
-
-	if (!this->hasInitializedListeners)
-	{
-		this->initializeListeners();
-		this->hasInitializedListeners = true;
-	}
+	this->initializeListeners();
 
 	if (this->isDeveloperModeEnabled())
 	{
@@ -64,16 +55,32 @@ void SmartNode::onExit()
 {
 	super::onExit();
 
-	// Only attempt to remove non global listeners if we've ever added one. Optimization to save significant time.
-	if (this->optimizationHasGlobalListener)
-	{
-		this->removeNonGlobalListeners();
-	}
+	this->removeAllListeners();
 }
 
 void SmartNode::onReenter()
 {
 	super::onReenter();
+}
+
+void SmartNode::pause()
+{
+	super::pause();
+
+	for (const auto& next : this->listeners)
+	{
+		next->setPaused(true);
+	}
+}
+
+void SmartNode::resume()
+{
+	super::resume();
+
+	for (const auto& next : this->listeners)
+	{
+		next->setPaused(false);
+	}
 }
 
 void SmartNode::initializePositions()
@@ -82,18 +89,14 @@ void SmartNode::initializePositions()
 
 void SmartNode::initializeListeners()
 {
-	// Only attempt to remove listeners if we've ever added one. Optimization to save significant time.
-	if (this->optimizationHasListener)
-	{
-		this->removeAllListeners();
-	}
+	this->removeAllListeners();
 
 	// Only listen for dev events in non-dev builds to save time in release mode
 	if (DeveloperModeController::IsDeveloperBuild)
 	{
 		this->addEventListenerIgnorePause(EventListenerCustom::create(DeveloperModeEvents::EventDeveloperModeModeEnable, [=](EventCustom* eventCustom)
 		{
-			DeveloperModeEvents::DeveloperModeEnableArgs* args = static_cast<DeveloperModeEvents::DeveloperModeEnableArgs*>(eventCustom->getUserData());
+			DeveloperModeEvents::DeveloperModeEnableArgs* args = static_cast<DeveloperModeEvents::DeveloperModeEnableArgs*>(eventCustom->getData());
 
 			if (args != nullptr)
 			{
@@ -107,11 +110,11 @@ void SmartNode::initializeListeners()
 		}));
 	}
 
-	if (!this->disableHackerModeEvents)
+	if (this->enableHackerModeEvents)
 	{
 		this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
 		{
-			HackableEvents::HackToggleArgs* args = static_cast<HackableEvents::HackToggleArgs*>(eventCustom->getUserData());
+			HackToggleArgs* args = static_cast<HackToggleArgs*>(eventCustom->getData());
 
 			if (args != nullptr)
 			{
@@ -151,100 +154,79 @@ bool SmartNode::isDeveloperModeEnabled()
 
 void SmartNode::removeAllListeners()
 {
-	this->optimizationHasGlobalListener = false;
-	this->optimizationHasListener = false;
-	this->hasInitializedListeners = false;
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	this->removeNonGlobalListeners();
+
+	for (const auto& listener : this->listenersGlobal)
+	{
+		this->getEventDispatcher()->removeEventListener(listener);
+	}
+
+	this->listenersGlobal.clear();
 }
 
 void SmartNode::removeNonGlobalListeners()
 {
-	this->hasInitializedListeners = false;
-	this->getEventDispatcher()->removeEventListenersForTargetWhere(this, [=](EventListener* listener)
+	for (const auto& listener : this->listeners)
 	{
-		return !listener->isGlobal();
-	});
+		this->getEventDispatcher()->removeEventListener(listener);
+	}
+
+	for (const auto& listener : this->listenersIgnorePause)
+	{
+		this->getEventDispatcher()->removeEventListener(listener);
+	}
+
+	this->listeners.clear();
+	this->listenersIgnorePause.clear();
 }
 
-void SmartNode::addEventListener(EventListener* listener)
+void SmartNode::addEventListener(EventListenerCustom* listener)
+{
+	if (listener == nullptr)
+	{
+		return;
+	}
+	
+	this->listeners.insert(listener);
+	this->getEventDispatcher()->addEventListener(listener);
+}
+
+void SmartNode::addEventListenerIgnorePause(EventListenerCustom* listener)
 {
 	if (listener == nullptr)
 	{
 		return;
 	}
 
-	if (listener->isGlobal())
-	{
-		this->optimizationHasGlobalListener = true;
-	}
-
-	this->optimizationHasListener = true;
-
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	this->listenersIgnorePause.insert(listener);
+	this->getEventDispatcher()->addEventListener(listener);
 }
 
-void SmartNode::removeEventListener(EventListener* listener)
+void SmartNode::addGlobalEventListener(EventListenerCustom* listener)
 {
 	if (listener == nullptr)
 	{
 		return;
 	}
 
+	this->listenersGlobal.insert(listener);
+	this->getEventDispatcher()->addEventListener(listener);
+}
+
+void SmartNode::removeEventListener(EventListenerCustom* listener)
+{
+	if (listener == nullptr)
+	{
+		return;
+	}
+	
+	this->listeners.erase(listener);
+	this->listenersIgnorePause.erase(listener);
+	this->listenersGlobal.erase(listener);
 	this->getEventDispatcher()->removeEventListener(listener);
 }
 
-void SmartNode::removeEventListenerByTag(std::string tag)
-{
-	if (tag.empty())
-	{
-		return;
-	}
-
-	this->getEventDispatcher()->removeEventListenersForTargetWhere(this, [=](EventListener* listener)
-	{
-		return listener->getTag() == tag;
-	});
-}
-
-void SmartNode::addEventListenerIgnorePause(EventListener* listener)
-{
-	if (listener == nullptr)
-	{
-		return;
-	}
-
-	EventListenerCustom* wrapper = EventListenerCustom::create(listener->getListenerId(), [=](EventCustom* eventCustom)
-	{
-		if (listener->isGlobal() || GameUtils::isInRunningScene(this))
-		{
-			listener->invoke(eventCustom);
-		}
-	});
-
-	wrapper->setTag(listener->getTag());
-	wrapper->setIgnorePause(true);
-
-	// Keep the original listener around so that we can invoke it, but disable it
-	listener->setEnabled(false);
-	listener->setTag("");
-
-	this->addEventListener(wrapper);
-	this->addEventListener(listener);
-}
-
-void SmartNode::addGlobalEventListener(EventListener* listener)
-{
-	if (listener == nullptr)
-	{
-		return;
-	}
-
-	listener->setIsGlobal(true);
-
-	this->addEventListenerIgnorePause(listener);
-}
-
-void SmartNode::defer(std::function<void()> task)
+void SmartNode::defer(std::function<void()> task, int ticks)
 {
 	unsigned long long taskId = SmartNode::TaskId++;
 	std::string eventKey = "EVENT_DEFER_TASK_" + std::to_string(taskId);
@@ -252,34 +234,45 @@ void SmartNode::defer(std::function<void()> task)
 	// Schedule the task for the next update loop
 	this->schedule([=](float dt)
 	{
-		task();
+		if (ticks <= 1)
+		{
+			task();
+		}
+		else
+		{
+			this->defer(task, ticks - 1);
+		}
+
 		this->unschedule(eventKey);
-	}, 1.0f / 60.0f, 1, 0.0f, eventKey);
+	}, eventKey, 0.0f, 1);
 }
 
 void SmartNode::scheduleEvery(std::function<void()> task, float seconds)
 {
 	unsigned long long taskId = SmartNode::TaskId++;
 	std::string eventKey = "EVENT_DEFER_TASK_" + std::to_string(taskId);
-
-	// Schedule the task for the next update loop
+	
+	// Schedules the task to be repeated every x seconds.
 	this->schedule([=](float dt)
 	{
 		task();
-	}, seconds, CC_REPEAT_FOREVER, 0.0f, eventKey);
+	}, eventKey, seconds);
 }
 
-EventListener* SmartNode::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListenerCustom* SmartNode::whenKeyPressed(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(InputEvents::KeyboardEventArgs*)> callback, bool requireVisible)
 {
-	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
+	EventListenerCustom* listener = EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
 	{
-		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
+		if (!this->isPaused())
 		{
-			if (!requireVisible || GameUtils::isVisible(this))
+			InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
+
+			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 			{
-				callback(args);
+				if (!requireVisible || GameUtils::isVisible(this))
+				{
+					callback(args);
+				}
 			}
 		}
 	});
@@ -289,11 +282,11 @@ EventListener* SmartNode::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCod
 	return listener;
 }
 
-EventListener* SmartNode::whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListenerCustom* SmartNode::whenKeyPressedIgnorePause(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(InputEvents::KeyboardEventArgs*)> callback, bool requireVisible)
 {
-	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
+	EventListenerCustom* listener = EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
 	{
-		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
 		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 		{
@@ -309,13 +302,13 @@ EventListener* SmartNode::whenKeyPressedIgnorePause(std::set<cocos2d::EventKeybo
 	return listener;
 }
 
-EventListener* SmartNode::whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListenerCustom* SmartNode::whenKeyPressedHackerMode(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(InputEvents::KeyboardEventArgs*)> callback, bool requireVisible)
 {
-	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
+	EventListenerCustom* listener = EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
 	{
 		if (this->hackermodeEnabled)
 		{
-			InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+			InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
 			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 			{
@@ -332,17 +325,20 @@ EventListener* SmartNode::whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboa
 	return listener;
 }
 
-EventListener* SmartNode::whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListenerCustom* SmartNode::whenKeyReleased(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(InputEvents::KeyboardEventArgs*)> callback, bool requireVisible)
 {
-	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
+	EventListenerCustom* listener = EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
 	{
-		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
+		if (!this->isPaused())
 		{
-			if (!requireVisible || GameUtils::isVisible(this))
+			InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
+
+			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 			{
-				callback(args);
+				if (!requireVisible || GameUtils::isVisible(this))
+				{
+					callback(args);
+				}
 			}
 		}
 	});
@@ -352,11 +348,11 @@ EventListener* SmartNode::whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCo
 	return listener;
 }
 
-EventListener* SmartNode::whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListenerCustom* SmartNode::whenKeyReleasedIgnorePause(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(InputEvents::KeyboardEventArgs*)> callback, bool requireVisible)
 {
-	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
+	EventListenerCustom* listener = EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
 	{
-		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
 		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 		{
@@ -372,13 +368,13 @@ EventListener* SmartNode::whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyb
 	return listener;
 }
 
-EventListener* SmartNode::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+EventListenerCustom* SmartNode::whenKeyReleasedHackerMode(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(InputEvents::KeyboardEventArgs*)> callback, bool requireVisible)
 {
-	EventListener* listener = EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
+	EventListenerCustom* listener = EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
 	{
 		if (this->hackermodeEnabled)
 		{
-			InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+			InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
 			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 			{
@@ -395,17 +391,20 @@ EventListener* SmartNode::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeybo
 	return listener;
 }
 
-EventListener* SmartNode::whenScrollUp(std::function<void(InputEvents::MouseEventArgs*)> callback, bool requireVisible)
+EventListenerCustom* SmartNode::whenScrollUp(std::function<void(InputEvents::MouseEventArgs*)> callback, bool requireVisible)
 {
-	EventListener* listener = EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
+	EventListenerCustom* listener = EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
 	{
-		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr && !args->isHandled() && args->scrollDelta.y < 0.0f)
+		if (!this->isPaused())
 		{
-			if (!requireVisible || GameUtils::isVisible(this))
+			InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData());
+
+			if (args != nullptr && !args->isHandled() && args->scrollDelta.y < 0.0f)
 			{
-				callback(args);
+				if (!requireVisible || GameUtils::isVisible(this))
+				{
+					callback(args);
+				}
 			}
 		}
 	});
@@ -415,17 +414,20 @@ EventListener* SmartNode::whenScrollUp(std::function<void(InputEvents::MouseEven
 	return listener;
 }
 
-EventListener* SmartNode::whenScrollDown(std::function<void(InputEvents::MouseEventArgs*)> callback, bool requireVisible)
+EventListenerCustom* SmartNode::whenScrollDown(std::function<void(InputEvents::MouseEventArgs*)> callback, bool requireVisible)
 {
-	EventListener* listener = EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
+	EventListenerCustom* listener = EventListenerCustom::create(InputEvents::EventMouseScroll, [=](EventCustom* eventCustom)
 	{
-		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getUserData());
-
-		if (args != nullptr && !args->isHandled() && args->scrollDelta.y > 0.0f)
+		if (!this->isPaused())
 		{
-			if (!requireVisible || GameUtils::isVisible(this))
+			InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData());
+
+			if (args != nullptr && !args->isHandled() && args->scrollDelta.y > 0.0f)
 			{
-				callback(args);
+				if (!requireVisible || GameUtils::isVisible(this))
+				{
+					callback(args);
+				}
 			}
 		}
 	});

@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Sound/WorldSound.h"
@@ -113,7 +114,7 @@ void CurseOfTongues::registerHackables()
 				Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTongues::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Voodoo,
-				CurseOfTonguesGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return CurseOfTonguesGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterEsi::create()
@@ -161,7 +162,7 @@ void CurseOfTongues::registerHackables()
 	auto func = &CurseOfTongues::applyCurseOfTongues;
 	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
-	for (auto next : this->hackables)
+	for (HackableCode* next : this->hackables)
 	{
 		this->owner->registerCode(next);
 	}
@@ -181,7 +182,7 @@ void CurseOfTongues::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeed
 NO_OPTIMIZE void CurseOfTongues::applyCurseOfTongues()
 {
 	static volatile float speedBonus;
-	static volatile float increment;
+	static volatile float increment = 0.0f;
 	static volatile float* speedBonusPtr;
 	static volatile float* incrementPtr;
 
@@ -190,6 +191,7 @@ NO_OPTIMIZE void CurseOfTongues::applyCurseOfTongues()
 	speedBonusPtr = &speedBonus;
 	incrementPtr = &increment;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZSI);
 	ASM(push ZBX);
 	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
@@ -203,8 +205,9 @@ NO_OPTIMIZE void CurseOfTongues::applyCurseOfTongues()
 
 	ASM(pop ZBX);
 	ASM(pop ZSI);
+	ASM_POP_EFLAGS()
 
-	this->currentSpeed += MathUtils::clamp(speedBonus, CurseOfTongues::MinSpeed, CurseOfTongues::MaxSpeed);
+	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, CurseOfTongues::MinSpeed, CurseOfTongues::MaxSpeed);
 
 	HACKABLES_STOP_SEARCH();
 }

@@ -2,8 +2,6 @@
 
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
-class LocalizedString;
-
 class Offhand : public Equipable
 {
 public:
@@ -21,6 +19,6 @@ protected:
 private:
 	typedef Equipable super;
 
-	int minAttack;
-	int maxAttack;
+	int minAttack = 0;
+	int maxAttack = 0;
 };

@@ -2,14 +2,16 @@
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Events/ObjectEvents.h"
+#include "Events/HexusEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -22,7 +24,7 @@
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardPreview.h"
 #include "Scenes/Hexus/HelpMenus/HelpMenu.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
@@ -51,27 +53,28 @@ CardsMenu* CardsMenu::create()
 
 CardsMenu::CardsMenu()
 {
+	LocalizedLabel* equippedCardsHeader = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hexus_CardsInDeck::create());
+	LocalizedLabel* unequippedCardsHeader = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Hexus_CardsInStorage::create());
+
+	equippedCardsHeader->enableOutline(Color4B::BLACK, 2);
+	unequippedCardsHeader->enableOutline(Color4B::BLACK, 2);
+
 	this->cardsWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
-	this->equippedCardsMenu = ItemMenu::create();
-	this->unequippedCardsMenu = ItemMenu::create();
+	this->equippedCardsMenu = ItemMenu::create(equippedCardsHeader);
+	this->unequippedCardsMenu = ItemMenu::create(unequippedCardsHeader);
 	this->cardsLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Cards_Cards::create());
 	this->hexusFilter = HexusFilter::create();
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
-	this->helpMenu = nullptr; // Lazy initialized
-	this->inventory = nullptr;
-	this->equipmentInventory = nullptr;
-	this->returnClickCallback = nullptr;
-	this->equipmentChanged = false;
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
 	returnLabel->enableOutline(Color4B::BLACK, 2);
-	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
 	returnLabelHover->enableOutline(Color4B::BLACK, 2);
 	returnLabelHover->setTextColor(Color4B::YELLOW);
-	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = ClickableTextNode::create(
@@ -80,7 +83,7 @@ CardsMenu::CardsMenu()
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->cardsLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->cardsLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->cardsLabel->enableGlow(Color4B::BLACK);
 	this->hexusFilter->setVisible(false);
 
@@ -105,7 +108,7 @@ void CardsMenu::onEnter()
 	
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			this->inventory = entityInventoryBehavior->getInventory();
 			this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
@@ -117,7 +120,7 @@ void CardsMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->unequippedCardsMenu->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f - 44.0f));
 	this->equippedCardsMenu->setPosition(Vec2(visibleSize.width / 2.0f - 1.0f, visibleSize.height / 2.0f - 44.0f));
@@ -153,9 +156,9 @@ void CardsMenu::initializeListeners()
 		this->showHelpMenu(cardData);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		if (!GameUtils::isVisible(this))
+		if (GameUtils::getFocusedNode() != this)
 		{
 			return;
 		}
@@ -164,13 +167,13 @@ void CardsMenu::initializeListeners()
 		this->close();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_D, InputEvents::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->equippedCardsMenu->focus();
 		this->unequippedCardsMenu->unfocus();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_A, InputEvents::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->equippedCardsMenu->unfocus();
 		this->unequippedCardsMenu->focus();
@@ -344,15 +347,24 @@ void CardsMenu::unequipHexusCard(HexusCard* card)
 
 void CardsMenu::showHelpMenu(CardData* cardData)
 {
-	this->buildHelpMenu();
-	
-	this->helpMenu->openMenu(cardData);
+	if (cardData != nullptr)
+	{
+		this->cardsWindow->setVisible(false);
+		this->returnButton->setVisible(false);
+		this->closeButton->setVisible(false);
+		
+		HexusEvents::TriggerShowHelpMenuOutsideOfGame(HexusEvents::HelpMenuArgs(
+			CardList::getInstance()->cardListByName[cardData->getCardKey()],
+			[=]()
+			{
+				this->cardsWindow->setVisible(true);
+				this->returnButton->setVisible(true);
+				this->closeButton->setVisible(true);
 
-	this->cardsWindow->setVisible(false);
-	this->returnButton->setVisible(false);
-	this->closeButton->setVisible(false);
-
-	GameUtils::focus(this->helpMenu);
+				GameUtils::focus(this);
+			}
+		));
+	}
 }
 
 void CardsMenu::close()
@@ -366,28 +378,4 @@ void CardsMenu::close()
 	{
 		this->returnClickCallback();
 	}
-}
-
-void CardsMenu::buildHelpMenu()
-{
-	if (this->helpMenu != nullptr)
-	{
-		return;
-	}
-
-	this->helpMenu = HelpMenu::create();
-
-	this->helpMenu->setVisible(false);
-
-	this->addChild(this->helpMenu);
-
-	this->helpMenu->setExitCallback([=]()
-	{
-		this->helpMenu->setVisible(false);
-		this->cardsWindow->setVisible(true);
-		this->returnButton->setVisible(true);
-		this->closeButton->setVisible(true);
-
-		GameUtils::focus(this);
-	});
 }

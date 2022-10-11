@@ -26,7 +26,7 @@ private:
 	typedef SmartScene super;
 	void playNextCutsceneClip();
 
-	CutsceneClip* activeClip;
+	CutsceneClip* activeClip = nullptr;
 	std::deque<CutsceneClip*> cutsceneClips;
-	std::function<void()> onCutsceneCompleteCallback;
+	std::function<void()> onCutsceneCompleteCallback = nullptr;
 };

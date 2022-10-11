@@ -7,19 +7,20 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
-#include "Entities/Platformer/Npcs/DataMines/Sarude.h"
+#include "Entities/Platformer/Npcs/Mages/Sarude.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Quests/EndianForest/SaveTown/FightGorgon.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -44,9 +45,6 @@ TalkToMages* TalkToMages::create(GameObject* owner, QuestLine* questLine)
 
 TalkToMages::TalkToMages(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToMages::MapKeyQuest, false)
 {
-	this->squally = nullptr;
-	this->scrappy = nullptr;
-	this->sarude = nullptr;
 }
 
 TalkToMages::~TalkToMages()
@@ -181,7 +179,7 @@ void TalkToMages::setPostText()
 	
 	this->defer([=]()
 	{
-		this->sarude->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		this->sarude->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 				Strings::Platformer_Quests_EndianForest_SaveTown_Sarude_D_GoNow::create(),
@@ -193,7 +191,10 @@ void TalkToMages::setPostText()
 				),
 				[=]()
 				{
-					this->setPostText();
+					this->defer([=]()
+					{
+						this->setPostText();
+					});
 				},
 				Voices::GetNextVoiceMedium(),
 				true

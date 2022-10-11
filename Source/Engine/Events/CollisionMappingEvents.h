@@ -1,13 +1,7 @@
 #pragma once
-#include "cocos/base/CCValue.h"
-#include "cocos/math/CCGeometry.h"
 
-class CollisionObject;
-
-namespace cocos2d
-{
-	class TMXObjectGroup;
-}
+#include <functional>
+#include <string>
 
 class CollisionMappingEvents
 {
@@ -17,7 +11,7 @@ public:
 	struct CollisionMapRequestArgs
 	{
 		std::string deserializedCollisionName;
-		std::function<void(int collisionType)> callback;
+		std::function<void(int collisionType)> callback = nullptr;
 
 		CollisionMapRequestArgs(std::string deserializedCollisionName, std::function<void(int collisionType)> callback) :
 			deserializedCollisionName(deserializedCollisionName), callback(callback)

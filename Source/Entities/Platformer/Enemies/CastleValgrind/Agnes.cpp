@@ -24,7 +24,7 @@ Agnes::Agnes(ValueMap& properties) : super(properties,
 	Agnes::MapKey,
 	EntityResources::Enemies_CastleValgrind_Agnes_Animations,
 	EntityResources::Enemies_CastleValgrind_Agnes_Emblem,
-	Size(360.0f, 420.0f),
+	CSize(360.0f, 420.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))
 {

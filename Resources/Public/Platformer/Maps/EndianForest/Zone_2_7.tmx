@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="40" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="73" nextobjectid="982">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="44" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="989">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="SkyYellow"/>
+   <property name="background" value="BrightSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
+   <property name="mini-map-item" value="temple-map"/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="4"/>
    <property name="show-cracks" type="bool" value="true"/>
@@ -17,18 +18,40 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="978" name="temple-dark" type="texture" x="-349.815" y="-358" width="5907.63" height="3540"/>
+  <object id="978" name="temple-dark" type="terrain" x="-349.815" y="-358" width="6331.63" height="3540">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="hole-tag" value="hole-A"/>
+    <property name="skip-surfaces" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="72" name="decor -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="961" name="Ruins/Window" type="decor" x="1759.5" y="1025.5" width="313" height="381"/>
-  <object id="962" name="Ruins/Window" type="decor" x="2887.5" y="1021.5" width="313" height="381"/>
+  <object id="961" name="Ruins/WindowTransparent" type="decor" x="1759.5" y="1025.5" width="313" height="381"/>
+  <object id="962" name="Ruins/WindowTransparent" type="decor" x="2887.5" y="1021.5" width="313" height="381"/>
   <object id="967" name="torch" type="object" x="2429.06" y="1180.42" width="42" height="130"/>
   <object id="968" name="torch" type="object" x="1388.93" y="1185.57" width="42" height="130"/>
   <object id="969" name="torch" type="object" x="3539" y="1187" width="42" height="130"/>
+ </objectgroup>
+ <objectgroup id="73" name="objects -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="987" name="terrain-hole" type="object" x="1834.68" y="1091.29" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="988" name="terrain-hole" type="object" x="2963" y="1091.83" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="58" name="terrain bg">
   <properties>
@@ -39,7 +62,7 @@
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="977" name="temple" type="terrain" x="3610.18" y="-82" width="1819.63" height="3212">
+  <object id="977" name="temple" type="terrain" x="3914.18" y="-82" width="1887.63" height="3212">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -50,7 +73,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="949" name="temple" type="terrain" x="-197.543" y="2128.94">
-   <polygon points="5417.36,35.2179 5402.83,787.255 132.839,801.973 126.995,39.3133 1606.04,46.3319 1732.71,45.9194 1733.54,-80.8227 1862.33,-81.1566 1861.61,-208.352 1989.31,-208.075 1989.34,-336.465 2117.83,-337.127 2117.35,-465.291 3507.78,-469.296 3507.51,-341.805 3637.81,-342.745 3636.38,-211.597 3763.55,-210.97 3762.94,-86.9084 3892.95,-85.1786 3891.4,43.3475"/>
+   <polygon points="5881.36,47.2179 5878.83,801.255 132.839,801.973 126.995,39.3133 1606.04,46.3319 1732.71,45.9194 1733.54,-80.8227 1862.33,-81.1566 1861.61,-208.352 1989.31,-208.075 1989.34,-336.465 2117.83,-337.127 2117.35,-465.291 3507.78,-469.296 3507.51,-341.805 3637.81,-342.745 3636.38,-211.597 3763.55,-210.97 3762.94,-86.9084 3892.95,-85.1786 3891.4,43.3475"/>
   </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
@@ -58,11 +81,13 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="944" name="temple-door" type="object" x="4205.22" y="1642.06" width="432" height="528">
+  <object id="944" name="temple-door" type="object" x="4758.22" y="1648.06" width="432" height="528">
    <properties>
-    <property name="color" value="yellow"/>
-    <property name="listen-event" value="grogg-dead"/>
+    <property name="color" value="yellow-skull"/>
+    <property name="listen-event" value="elriel-rescued"/>
     <property name="map" value="EndianForest/Zone_2_8"/>
+    <property name="quest" value="boss-exit-unlocked"/>
+    <property name="quest-line" value="find-elriel"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
@@ -73,7 +98,7 @@
     <property name="transition" value="entrance-D"/>
    </properties>
   </object>
-  <object id="960" name="vase" type="object" x="4749.5" y="2008" width="113" height="160">
+  <object id="960" name="vase" type="object" x="5299.5" y="2014" width="113" height="160">
    <properties>
     <property name="color" value="blue"/>
     <property name="spawn-pool" value="spawn-pool-ef"/>
@@ -91,6 +116,21 @@
     <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
+  <object id="984" name="cinematic-marker" type="object" x="4933.33" y="1916.61" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="elriel-exit"/>
+   </properties>
+  </object>
+  <object id="985" name="cinematic-marker" type="object" x="4936.36" y="1916.61" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="elriel-exit"/>
+   </properties>
+  </object>
+  <object id="986" name="cinematic-marker" type="object" x="4936.36" y="1916.61" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="elriel-exit"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="decor">
   <properties>
@@ -98,8 +138,8 @@
   </properties>
   <object id="955" name="torch" type="object" x="876.091" y="1758.03" width="42" height="130"/>
   <object id="956" name="torch" type="object" x="175.97" y="1753.18" width="42" height="130"/>
-  <object id="958" name="torch" type="object" x="4746.76" y="1798.39" width="42" height="130"/>
-  <object id="959" name="torch" type="object" x="4046.63" y="1795.54" width="42" height="130"/>
+  <object id="958" name="torch" type="object" x="5296.76" y="1804.39" width="42" height="130"/>
+  <object id="959" name="torch" type="object" x="4596.63" y="1801.54" width="42" height="130"/>
   <object id="973" name="Generic/ThroneBronze" type="decor" x="2465.28" y="1124.97" width="354" height="533"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
@@ -109,29 +149,41 @@
   </properties>
   <object id="966" name="king-grogg" type="entity" x="2756.06" y="1529.94" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="king-grogg,enemy,agro,run"/>
     <property name="battle-behavior" value="fireball-tutorial"/>
     <property name="battle-map" value="EndianForest/Combat_TempleBoss"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="king-grogg,enemy,agro,run"/>
     <property name="drop-pool" value="ef-grogg"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="quest" value="talk-to-grogg"/>
     <property name="quest-line" value="find-elriel"/>
-    <property name="send-event" value="grogg-dead"/>
    </properties>
   </object>
   <object id="971" name="goblin-shaman" type="entity" x="2827.45" y="1134.97" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
   <object id="972" name="goblin-shaman" type="entity" x="2653.45" y="1136.97" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="982" name="elriel" type="entity" x="4303.88" y="2044" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,run"/>
+    <property name="quest" value="talk-to-elriel"/>
+    <property name="quest-line" value="find-elriel"/>
+   </properties>
+  </object>
+  <object id="983" name="breakable-cage-tall" type="object" x="4304.67" y="2061.88" width="128" height="112">
+   <properties>
+    <property name="send-event" value="elriel-rescued"/>
+    <property name="tag" value="elriel-cage"/>
    </properties>
   </object>
  </objectgroup>
@@ -142,16 +194,16 @@
   </properties>
   <object id="523" name="squally" type="entity" x="737.292" y="2038.5" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="974" name="spawn" type="object" x="508.364" y="2041" width="128" height="128">
    <properties>
     <property name="map-banner" value=""/>
-    <property name="transition" value="entrance-E"/>
+    <property name="transition" value="exit-D"/>
    </properties>
   </object>
-  <object id="975" name="spawn" type="object" x="4366.31" y="2039.03" width="128" height="128">
+  <object id="975" name="spawn" type="object" x="4919.34" y="2054.12" width="128" height="128">
    <properties>
     <property name="transition" value="exit"/>
    </properties>

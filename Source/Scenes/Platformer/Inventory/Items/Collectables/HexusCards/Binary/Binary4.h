@@ -10,17 +10,16 @@ public:
 	static Binary4* create();
 
 	Item* clone() override;
-	std::string getItemName() override;
 	LocalizedString* getString() override;
-	std::string getIconResource() override;
-	std::string getSerializationKey() override;
+	const std::string& getIconResource() override;
+	const std::string& getIdentifier() override;
 	std::string getCardKey() override;
 
 	static const std::string SaveKey;
 
 protected:
 	Binary4();
-	~Binary4();
+	virtual ~Binary4();
 
 private:
 	typedef HexusCard super;

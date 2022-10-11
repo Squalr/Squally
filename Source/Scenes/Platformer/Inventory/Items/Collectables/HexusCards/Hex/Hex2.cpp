@@ -21,7 +21,7 @@ Hex2* Hex2::create()
 	return instance;
 }
 
-Hex2::Hex2() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 3 }}), ItemMeta(3, 3))
+Hex2::Hex2() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), HexusCard::TuneCost(2) }}), ItemMeta(3, 3))
 {
 }
 
@@ -34,22 +34,17 @@ Item* Hex2::clone()
 	return Hex2::create();
 }
 
-std::string Hex2::getItemName()
-{
-	return Hex2::SaveKey;
-}
-
 LocalizedString* Hex2::getString()
 {
 	return Strings::Hexus_Cards_Hex2::create();
 }
 
-std::string Hex2::getIconResource()
+const std::string& Hex2::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardHex;
 }
 
-std::string Hex2::getSerializationKey()
+const std::string& Hex2::getIdentifier()
 {
 	return Hex2::SaveKey;
 }

@@ -21,7 +21,7 @@ SpecialSteal* SpecialSteal::create()
 	return instance;
 }
 
-SpecialSteal::SpecialSteal() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 23 }}), ItemMeta(3, 3))
+SpecialSteal::SpecialSteal() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 36 }}), ItemMeta(3, 3))
 {
 }
 
@@ -34,22 +34,17 @@ Item* SpecialSteal::clone()
 	return SpecialSteal::create();
 }
 
-std::string SpecialSteal::getItemName()
-{
-	return SpecialSteal::SaveKey;
-}
-
 LocalizedString* SpecialSteal::getString()
 {
 	return Strings::Hexus_Cards_Steal::create();
 }
 
-std::string SpecialSteal::getIconResource()
+const std::string& SpecialSteal::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialSteal::getSerializationKey()
+const std::string& SpecialSteal::getIdentifier()
 {
 	return SpecialSteal::SaveKey;
 }

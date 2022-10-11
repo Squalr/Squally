@@ -46,22 +46,17 @@ Item* TheldarsHelm::clone()
 	return TheldarsHelm::create();
 }
 
-std::string TheldarsHelm::getItemName()
-{
-	return TheldarsHelm::SaveKey;
-}
-
 LocalizedString* TheldarsHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_TheldarsHelm::create();
 }
 
-std::string TheldarsHelm::getIconResource()
+const std::string& TheldarsHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_TheldarsHelm;
 }
 
-std::string TheldarsHelm::getSerializationKey()
+const std::string& TheldarsHelm::getIdentifier()
 {
 	return TheldarsHelm::SaveKey;
 }
@@ -69,4 +64,9 @@ std::string TheldarsHelm::getSerializationKey()
 Vec2 TheldarsHelm::getDisplayOffset()
 {
 	return Vec2(-2.0f, 26.0f);
+}
+
+Recipe* TheldarsHelm::getRecipe()
+{
+	return nullptr;
 }

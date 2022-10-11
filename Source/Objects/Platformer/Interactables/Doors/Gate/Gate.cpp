@@ -16,7 +16,7 @@
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/ParticleResources.h"
@@ -40,13 +40,13 @@ Gate* Gate::create(ValueMap& properties)
 	return instance;
 }
 
-Gate::Gate(ValueMap& properties) : super(properties, Size(512.0f, 512.0f), Vec2(0.0f, 48.0f))
+Gate::Gate(ValueMap& properties) : super(properties, CSize(512.0f, 512.0f), Vec2(0.0f, 48.0f))
 {
 	this->gateRight = Sprite::create(ObjectResources::Doors_Gate_GateRight);
 	this->gateLeft = Sprite::create(ObjectResources::Doors_Gate_GateLeft);
 
-	this->addChild(this->gateRight);
-	this->addChild(this->gateLeft);
+	this->contentNode->addChild(this->gateRight);
+	this->contentNode->addChild(this->gateLeft);
 }
 
 Gate::~Gate()

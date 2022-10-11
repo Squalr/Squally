@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Rings/SoulBandRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* SoulBand::clone()
 	return SoulBand::create();
 }
 
-std::string SoulBand::getItemName()
-{
-	return SoulBand::SaveKey;
-}
-
 LocalizedString* SoulBand::getString()
 {
 	return Strings::Items_Equipment_Gear_Rings_SoulBand::create();
 }
 
-std::string SoulBand::getIconResource()
+const std::string& SoulBand::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Rings_SoulBand;
 }
 
-std::string SoulBand::getSerializationKey()
+const std::string& SoulBand::getIdentifier()
 {
 	return SoulBand::SaveKey;
+}
+
+Recipe* SoulBand::getRecipe()
+{
+	return SoulBandRecipe::create();
 }

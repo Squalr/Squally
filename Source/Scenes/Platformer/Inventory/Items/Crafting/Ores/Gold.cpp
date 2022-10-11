@@ -33,22 +33,17 @@ Item* Gold::clone()
 	return Gold::create();
 }
 
-std::string Gold::getItemName()
-{
-	return Gold::SaveKey;
-}
-
 LocalizedString* Gold::getString()
 {
 	return Strings::Items_Crafting_Ore_Gold::create();
 }
 
-std::string Gold::getIconResource()
+const std::string& Gold::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_Gold;
 }
 
-std::string Gold::getSerializationKey()
+const std::string& Gold::getIdentifier()
 {
 	return Gold::SaveKey;
 }

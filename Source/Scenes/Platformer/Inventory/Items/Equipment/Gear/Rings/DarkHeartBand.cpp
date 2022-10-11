@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Rings/DarkHeartBandRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* DarkHeartBand::clone()
 	return DarkHeartBand::create();
 }
 
-std::string DarkHeartBand::getItemName()
-{
-	return DarkHeartBand::SaveKey;
-}
-
 LocalizedString* DarkHeartBand::getString()
 {
 	return Strings::Items_Equipment_Gear_Rings_DarkHeartBand::create();
 }
 
-std::string DarkHeartBand::getIconResource()
+const std::string& DarkHeartBand::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Rings_DarkHeartBand;
 }
 
-std::string DarkHeartBand::getSerializationKey()
+const std::string& DarkHeartBand::getIdentifier()
 {
 	return DarkHeartBand::SaveKey;
+}
+
+Recipe* DarkHeartBand::getRecipe()
+{
+	return DarkHeartBandRecipe::create();
 }

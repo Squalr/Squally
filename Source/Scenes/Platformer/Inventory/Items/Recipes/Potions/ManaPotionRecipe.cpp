@@ -29,9 +29,9 @@ ManaPotionRecipe::~ManaPotionRecipe()
 {
 }
 
-Item* ManaPotionRecipe::craft()
+std::vector<Item*> ManaPotionRecipe::craft()
 {
-	return ManaPotion::create();
+	return { ManaPotion::create() };
 }
 
 std::vector<std::tuple<Item*, int>> ManaPotionRecipe::getReagentsInternal()
@@ -39,7 +39,7 @@ std::vector<std::tuple<Item*, int>> ManaPotionRecipe::getReagentsInternal()
 	return
 	{
 		{ Clover::create(), 2 },
-		{ Feather::create(), 2 },
+		{ Feather::create(), 1 },
 	};
 }
 
@@ -48,17 +48,12 @@ Item* ManaPotionRecipe::clone()
 	return ManaPotionRecipe::create();
 }
 
-std::string ManaPotionRecipe::getItemName()
-{
-	return ManaPotionRecipe::SaveKey;
-}
-
 LocalizedString* ManaPotionRecipe::getString()
 {
 	return Strings::Items_Consumables_Mana_ManaPotion::create();
 }
 
-std::string ManaPotionRecipe::getIconResource()
+const std::string& ManaPotionRecipe::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string ManaPotionRecipe::getCraftedItemIconResource()
 	return ItemResources::Consumables_Potions_ManaPotion;
 }
 
-std::string ManaPotionRecipe::getSerializationKey()
+const std::string& ManaPotionRecipe::getIdentifier()
 {
 	return ManaPotionRecipe::SaveKey;
 }

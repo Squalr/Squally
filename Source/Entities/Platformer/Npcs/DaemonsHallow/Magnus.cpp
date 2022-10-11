@@ -24,7 +24,7 @@ Magnus::Magnus(ValueMap& properties) : super(properties,
 	Magnus::MapKey,
 	EntityResources::Npcs_DaemonsHallow_Magnus_Animations,
 	EntityResources::Npcs_DaemonsHallow_Magnus_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	0.85f,
 	Vec2(0.0f, 0.0f))
 {

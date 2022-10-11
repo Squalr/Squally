@@ -11,6 +11,8 @@ class ColumnData;
 
 class LiquidTop : public SmartNode
 {
+public:
+    
 private:
     typedef SmartNode super;
     friend class LiquidNode;
@@ -26,16 +28,16 @@ private:
 
     struct ColumnData
     {
-        float targetHeight;
-        float height;
-        float speed;
+        float targetHeight = 0.0f;
+        float height = 0.0f;
+        float speed = 0.0f;
 
         ColumnData(float targetHeight, float height, float speed) : targetHeight(targetHeight), height(height), speed(speed) { }
     };
 
-    static LiquidTop* create(cocos2d::Size surfaceSize, cocos2d::Color4B surfaceColor, cocos2d::Color4B bodyColor, float tension, float dampening, float spread);
+    static LiquidTop* create(cocos2d::CSize surfaceSize, cocos2d::Color4B surfaceColor, cocos2d::Color4B bodyColor, float tension, float dampening, float spread);
 
-    LiquidTop(cocos2d::Size surfaceSize, cocos2d::Color4B surfaceColor, cocos2d::Color4B bodyColor, float tension, float dampening, float spread);
+    LiquidTop(cocos2d::CSize surfaceSize, cocos2d::Color4B surfaceColor, cocos2d::Color4B bodyColor, float tension, float dampening, float spread);
     virtual ~LiquidTop();
     
     void onEnter() override;
@@ -51,14 +53,14 @@ private:
     std::vector<float> leftDeltas;
     std::vector<float> rightDeltas;
     std::vector<cocos2d::Color4B> colorArray;
-    cocos2d::CustomCommand* customCommand;
+    cocos2d::CustomCommand* customDrawCommand = nullptr;
 
-    cocos2d::Size surfaceSize;
-    float tension;
-    float dampening;
-    float spread;
-    int columnCount;
-    int lastIndex;
+    cocos2d::CSize surfaceSize;
+    float tension = 0.0f;
+    float dampening = 0.0f;
+    float spread = 0.0f;
+    int columnCount = 0;
+    int lastIndex = 0;
 
     static const int ColumnsPer128px;
 };

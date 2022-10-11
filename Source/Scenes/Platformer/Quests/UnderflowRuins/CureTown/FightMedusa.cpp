@@ -15,8 +15,9 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Enemies/Combat/AgroBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Combat/AgroBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -39,10 +40,6 @@ FightMedusa* FightMedusa::create(GameObject* owner, QuestLine* questLine)
 
 FightMedusa::FightMedusa(GameObject* owner, QuestLine* questLine) : super(owner, questLine, FightMedusa::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->medusa = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
 }
 
 FightMedusa::~FightMedusa()

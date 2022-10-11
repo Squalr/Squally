@@ -10,6 +10,7 @@ namespace TextureResources
 	extern const std::string ArabicStarTexture;
 	extern const std::string ArabicWebDarkTexture;
 	extern const std::string ArabicWebTexture;
+	extern const std::string BlackTexture;
 	extern const std::string BlueGrassTexture;
 	extern const std::string BrickInteriorTexture;
 	extern const std::string CastleTexture;
@@ -24,10 +25,12 @@ namespace TextureResources
 	extern const std::string JungleTexture;
 	extern const std::string LavaTexture;
 	extern const std::string LeafTexture;
+	extern const std::string MagmaTexture;
 	extern const std::string MarbleDarkTexture;
 	extern const std::string MarbleGrassTexture;
 	extern const std::string MarbleTexture;
 	extern const std::string MinesTexture;
+	extern const std::string ObsideanTexture;
 	extern const std::string RuinsGrayDarkTexture;
 	extern const std::string RuinsGrayTexture;
 	extern const std::string RuinsTexture;
@@ -42,5 +45,6 @@ namespace TextureResources
 	extern const std::string TempleGreenTexture;
 	extern const std::string TempleTexture;
 	extern const std::string TrailTexture;
+	extern const std::string VoidTexture;
 	extern const std::string WoodTexture;
 };

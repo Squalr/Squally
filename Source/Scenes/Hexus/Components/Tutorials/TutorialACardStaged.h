@@ -29,7 +29,7 @@ private:
 
 	void initializeCallbacks(GameState* gameState);
 
-	HelpArrow* binaryCardArrow;
-	HelpArrow* decimalCardArrow;
-	HelpArrow* hexCardArrow;
+	HelpArrow* binaryCardArrow = nullptr;
+	HelpArrow* decimalCardArrow = nullptr;
+	HelpArrow* hexCardArrow = nullptr;
 };

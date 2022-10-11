@@ -7,7 +7,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Events/CipherEvents.h"
-#include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
@@ -30,11 +30,11 @@ QuitButton::QuitButton()
 	LocalizedLabel*	quitLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	quitLabelHover = quitLabel->clone();
 
-	quitLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	quitLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	quitLabel->enableGlow(Color4B::BLACK);
 
 	quitLabelHover->setColor(Color3B::YELLOW);
-	quitLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	quitLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	quitLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->quitButton = ClickableTextNode::create(
@@ -59,9 +59,9 @@ void QuitButton::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->quitButton->setPosition(Vec2(visibleSize.width / 2.0f + Config::RightColumnCenter, visibleSize.height / 2.0f - 444.0f));
+	this->quitButton->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::RightColumnCenter, visibleSize.height / 2.0f - 444.0f));
 }
 
 void QuitButton::initializeListeners()

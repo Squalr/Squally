@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Bows/CrystalBowPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* CrystalBow::clone()
 	return CrystalBow::create();
 }
 
-std::string CrystalBow::getItemName()
-{
-	return CrystalBow::SaveKey;
-}
-
 LocalizedString* CrystalBow::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_CrystalBow::create();
 }
 
-std::string CrystalBow::getIconResource()
+const std::string& CrystalBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_CrystalBow;
 }
 
-std::string CrystalBow::getSerializationKey()
+const std::string& CrystalBow::getIdentifier()
 {
 	return CrystalBow::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string CrystalBow::getSerializationKey()
 Vec2 CrystalBow::getDisplayOffset()
 {
 	return Vec2(-10.0f, -74.0f);
+}
+
+Recipe* CrystalBow::getRecipe()
+{
+	return CrystalBowPlans::create();
 }

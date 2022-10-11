@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier4/GunnersHatPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* GunnersHat::clone()
 	return GunnersHat::create();
 }
 
-std::string GunnersHat::getItemName()
-{
-	return GunnersHat::SaveKey;
-}
-
 LocalizedString* GunnersHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_GunnersHat::create();
 }
 
-std::string GunnersHat::getIconResource()
+const std::string& GunnersHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_GunnersHat;
 }
 
-std::string GunnersHat::getSerializationKey()
+const std::string& GunnersHat::getIdentifier()
 {
 	return GunnersHat::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string GunnersHat::getSerializationKey()
 Vec2 GunnersHat::getDisplayOffset()
 {
 	return Vec2(0.0f, -26.0f);
+}
+
+Recipe* GunnersHat::getRecipe()
+{
+	return GunnersHatPlans::create();
 }

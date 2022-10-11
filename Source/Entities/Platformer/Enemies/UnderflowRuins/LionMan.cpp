@@ -24,7 +24,7 @@ LionMan::LionMan(ValueMap& properties) : super(properties,
 	LionMan::MapKey,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Animations,
 	EntityResources::Enemies_UnderflowRuins_LionMan_Emblem,
-	Size(256.0f, 326.0f),
+	CSize(256.0f, 326.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

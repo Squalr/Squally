@@ -487,7 +487,7 @@ static Error BaseBuilder_newLabelInternal(BaseBuilder* self, uint32_t labelId) n
   return kErrorOk;
 }
 
-Label BaseBuilder::newLabel() {
+AsmLabel BaseBuilder::newLabel() {
   uint32_t labelId = Globals::kInvalidId;
   if (_code) {
     LabelEntry* le;
@@ -503,10 +503,10 @@ Label BaseBuilder::newLabel() {
         labelId = le->id();
     }
   }
-  return Label(labelId);
+  return AsmLabel(labelId);
 }
 
-Label BaseBuilder::newNamedLabel(const char* name, size_t nameSize, uint32_t type, uint32_t parentId) {
+AsmLabel BaseBuilder::newNamedLabel(const char* name, size_t nameSize, uint32_t type, uint32_t parentId) {
   uint32_t labelId = Globals::kInvalidId;
   if (_code) {
     LabelEntry* le;
@@ -522,10 +522,10 @@ Label BaseBuilder::newNamedLabel(const char* name, size_t nameSize, uint32_t typ
         labelId = le->id();
     }
   }
-  return Label(labelId);
+  return AsmLabel(labelId);
 }
 
-Error BaseBuilder::bind(const Label& label) {
+Error BaseBuilder::bind(const AsmLabel& label) {
   LabelNode* node;
   Error err = labelNodeOf(&node, label);
 
@@ -802,7 +802,7 @@ Error BaseBuilder::embed(const void* data, uint32_t dataSize) {
   return kErrorOk;
 }
 
-Error BaseBuilder::embedLabel(const Label& label) {
+Error BaseBuilder::embedLabel(const AsmLabel& label) {
   if (ASMJIT_UNLIKELY(!_code))
     return DebugUtils::errored(kErrorNotInitialized);
 
@@ -814,7 +814,7 @@ Error BaseBuilder::embedLabel(const Label& label) {
   return kErrorOk;
 }
 
-Error BaseBuilder::embedLabelDelta(const Label& label, const Label& base, uint32_t dataSize) {
+Error BaseBuilder::embedLabelDelta(const AsmLabel& label, const AsmLabel& base, uint32_t dataSize) {
   if (ASMJIT_UNLIKELY(!_code))
     return DebugUtils::errored(kErrorNotInitialized);
 
@@ -826,7 +826,7 @@ Error BaseBuilder::embedLabelDelta(const Label& label, const Label& base, uint32
   return kErrorOk;
 }
 
-Error BaseBuilder::embedConstPool(const Label& label, const ConstPool& pool) {
+Error BaseBuilder::embedConstPool(const AsmLabel& label, const ConstPool& pool) {
   if (ASMJIT_UNLIKELY(!_code))
     return DebugUtils::errored(kErrorNotInitialized);
 

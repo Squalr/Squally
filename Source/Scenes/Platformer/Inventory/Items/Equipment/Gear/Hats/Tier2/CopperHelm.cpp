@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier2/CopperHelmPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* CopperHelm::clone()
 	return CopperHelm::create();
 }
 
-std::string CopperHelm::getItemName()
-{
-	return CopperHelm::SaveKey;
-}
-
 LocalizedString* CopperHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_CopperHelm::create();
 }
 
-std::string CopperHelm::getIconResource()
+const std::string& CopperHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_CopperHelm;
 }
 
-std::string CopperHelm::getSerializationKey()
+const std::string& CopperHelm::getIdentifier()
 {
 	return CopperHelm::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string CopperHelm::getSerializationKey()
 Vec2 CopperHelm::getDisplayOffset()
 {
 	return Vec2(10.0f, -2.0f);
+}
+
+Recipe* CopperHelm::getRecipe()
+{
+	return CopperHelmPlans::create();
 }

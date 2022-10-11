@@ -2,7 +2,7 @@
 
 #include "cocos/base/CCValue.h"
 
-#include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerComponentDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -22,7 +22,7 @@ PlatformerObjectDeserializer* PlatformerObjectDeserializer::create()
 	return instance;
 }
 
-PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerObjectDeserializer::MapKeyTypeObject, { (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() })
+PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerObjectDeserializer::MapKeyTypeObject, { (PropertyDeserializer*)PlatformerComponentDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() })
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 	
@@ -32,12 +32,15 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 
 	// Custom objects
 	this->deserializers[AddDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)AddDoor::create(properties); };
-	this->deserializers[Airship1::MapKey] = [=](ValueMap properties) { return (GameObject*)Airship1::create(properties); };
-	this->deserializers[Airship2::MapKey] = [=](ValueMap properties) { return (GameObject*)Airship2::create(properties); };
+	this->deserializers[Airship::MapKey] = [=](ValueMap properties) { return (GameObject*)Airship::create(properties); };
 	this->deserializers[AlchemyLab::MapKey] = [=](ValueMap properties) { return (GameObject*)AlchemyLab::create(properties); };
+	this->deserializers[AnswerStone::MapKey] = [=](ValueMap properties) { return (GameObject*)AnswerStone::create(properties); };
 	this->deserializers[Anvil::MapKey] = [=](ValueMap properties) { return (GameObject*)Anvil::create(properties); };
+	this->deserializers[Blizzard::MapKey] = [=](ValueMap properties) { return (GameObject*)Blizzard::create(properties); };
+	this->deserializers[Brazier::MapKey] = [=](ValueMap properties) { return (GameObject*)Brazier::create(properties); };
 	this->deserializers[BreakableBarrel::MapKey] = [=](ValueMap properties) { return (GameObject*)BreakableBarrel::create(properties); };
 	this->deserializers[BreakableCage::MapKey] = [=](ValueMap properties) { return (GameObject*)BreakableCage::create(properties); };
+	this->deserializers[BreakableCageTall::MapKey] = [=](ValueMap properties) { return (GameObject*)BreakableCageTall::create(properties); };
 	this->deserializers[CagedBat::MapKey] = [=](ValueMap properties) { return (GameObject*)CagedBat::create(properties); };
 	this->deserializers[CagedBear::MapKey] = [=](ValueMap properties) { return (GameObject*)CagedBear::create(properties); };
 	this->deserializers[CagedBeaver::MapKey] = [=](ValueMap properties) { return (GameObject*)CagedBeaver::create(properties); };
@@ -93,18 +96,26 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[CameraScrollTracker::MapKey] = [=](ValueMap properties) { return (GameObject*)CameraScrollTracker::create(properties); };
 	this->deserializers[CameraStop::MapKey] = [=](ValueMap properties) { return (GameObject*)CameraStop::create(properties); };
 	this->deserializers[CameraTarget::MapKey] = [=](ValueMap properties) { return (GameObject*)CameraTarget::create(properties); };
+	this->deserializers[CartLift::MapKey] = [=](ValueMap properties) { return (GameObject*)CartLift::create(properties); };
+	this->deserializers[CartSpawn::MapKey] = [=](ValueMap properties) { return (GameObject*)CartSpawn::create(properties); };
+	this->deserializers[CartStop::MapKey] = [=](ValueMap properties) { return (GameObject*)CartStop::create(properties); };
 	this->deserializers[CastleGate::MapKey] = [=](ValueMap properties) { return (GameObject*)CastleGate::create(properties); };
 	this->deserializers[CombatSpawn::MapKey] = [=](ValueMap properties) { return (GameObject*)CombatSpawn::create(properties); };
 	this->deserializers[Catapult::MapKey] = [=](ValueMap properties) { return (GameObject*)Catapult::create(properties); };
 	this->deserializers[Chest::MapKey] = [=](ValueMap properties) { return (GameObject*)Chest::create(properties); };
 	this->deserializers[CinematicMarker::MapKey] = [=](ValueMap properties) { return (GameObject*)CinematicMarker::create(properties); };
 	this->deserializers[CipherChest::MapKey] = [=](ValueMap properties) { return (GameObject*)CipherChest::create(properties); };
+	this->deserializers[ClockDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)ClockDoor::create(properties); };
+	this->deserializers[Computer::MapKey] = [=](ValueMap properties) { return (GameObject*)Computer::create(properties); };
+	this->deserializers[Crusher::MapKey] = [=](ValueMap properties) { return (GameObject*)Crusher::create(properties); };
 	this->deserializers[DartLauncher::MapKey] = [=](ValueMap properties) { return (GameObject*)DartLauncher::create(properties); };
 	this->deserializers[DartTripodLauncher::MapKey] = [=](ValueMap properties) { return (GameObject*)DartTripodLauncher::create(properties); };
 	this->deserializers[DartTripodLauncherSqualr::MapKey] = [=](ValueMap properties) { return (GameObject*)DartTripodLauncherSqualr::create(properties); };
 	this->deserializers[DragonDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)DragonDoor::create(properties); };
 	this->deserializers[EdgePortal::MapKey] = [=](ValueMap properties) { return (GameObject*)EdgePortal::create(properties); };
+	this->deserializers[EgyptianChest::MapKey] = [=](ValueMap properties) { return (GameObject*)EgyptianChest::create(properties); };
 	this->deserializers[ElectricityBeam::MapKey] = [=](ValueMap properties) { return (GameObject*)ElectricityBeam::create(properties); };
+	this->deserializers[FireBird::MapKey] = [=](ValueMap properties) { return (GameObject*)FireBird::create(properties); };
 	this->deserializers[FireplaceFire::MapKey] = [=](ValueMap properties) { return (GameObject*)FireplaceFire::create(properties); };
 	this->deserializers[FireLauncher::MapKey] = [=](ValueMap properties) { return (GameObject*)FireLauncher::create(properties); };
 	this->deserializers[FireLauncherSqualr::MapKey] = [=](ValueMap properties) { return (GameObject*)FireLauncherSqualr::create(properties); };
@@ -115,27 +126,39 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[FloatTutorialPortal::MapKey] = [=](ValueMap properties) { return (GameObject*)FloatTutorialPortal::create(properties); };
 	this->deserializers[FloatingWoodenBeam::MapKey] = [=](ValueMap properties) { return (GameObject*)FloatingWoodenBeam::create(properties); };
 	this->deserializers[Gate::MapKey] = [=](ValueMap properties) { return (GameObject*)Gate::create(properties); };
+	this->deserializers[GatlingGun::MapKey] = [=](ValueMap properties) { return (GameObject*)GatlingGun::create(properties); };
 	this->deserializers[GlassDisplayItem::MapKey] = [=](ValueMap properties) { return (GameObject*)GlassDisplayItem::create(properties); };
 	this->deserializers[LanternGate::MapKey] = [=](ValueMap properties) { return (GameObject*)LanternGate::create(properties); };
 	this->deserializers[LogicGate::MapKey] = [=](ValueMap properties) { return (GameObject*)LogicGate::create(properties); };
+	this->deserializers[LogicPuzzleController::MapKey] = [=](ValueMap properties) { return (GameObject*)LogicPuzzleController::create(properties); };
 	this->deserializers[EdgeLanternGate::MapKey] = [=](ValueMap properties) { return (GameObject*)EdgeLanternGate::create(properties); };
+	this->deserializers[Icicle::MapKey] = [=](ValueMap properties) { return (GameObject*)Icicle::create(properties); };
 	this->deserializers[IOUDrop::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop::create(properties); };
 	this->deserializers[IOUDrop5::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop5::create(properties); };
 	this->deserializers[IOUDrop10::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop10::create(properties); };
 	this->deserializers[IOUDrop25::MapKey] = [=](ValueMap properties) { return (GameObject*)IOUDrop25::create(properties); };
+	this->deserializers[HeavenHug::MapKey] = [=](ValueMap properties) { return (GameObject*)HeavenHug::create(properties); };
+	this->deserializers[HellGate::MapKey] = [=](ValueMap properties) { return (GameObject*)HellGate::create(properties); };
 	this->deserializers[HelpTotemAttacking::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemAttacking::create(properties); };
+	this->deserializers[HelpTotemColdWater::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemColdWater::create(properties); };
 	this->deserializers[HelpTotemEndOfDemo::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemEndOfDemo::create(properties); };
 	this->deserializers[HelpTotemEquipment::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemEquipment::create(properties); };
 	this->deserializers[HelpTotemHacking::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemHacking::create(properties); };
 	this->deserializers[HelpTotemHexusCards::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemHexusCards::create(properties); };
 	this->deserializers[HelpTotemPickPocket::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemPickPocket::create(properties); };
 	this->deserializers[HelpTotemPotions::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemPotions::create(properties); };
+	this->deserializers[HelpTotemRepair::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemRepair::create(properties); };
 	this->deserializers[HelpTotemSwimHack::MapKey] = [=](ValueMap properties) { return (GameObject*)HelpTotemSwimHack::create(properties); };
-	this->deserializers[HeavenHug::MapKey] = [=](ValueMap properties) { return (GameObject*)HeavenHug::create(properties); };
+	this->deserializers[HexusShrine::MapKey] = [=](ValueMap properties) { return (GameObject*)HexusShrine::create(properties); };
 	this->deserializers[Laser::MapKey] = [=](ValueMap properties) { return (GameObject*)Laser::create(properties); };
+	this->deserializers[Lava::MapKey] = [=](ValueMap properties) { return (GameObject*)Lava::create(properties); };
+	this->deserializers[LavaFall::MapKey] = [=](ValueMap properties) { return (GameObject*)LavaFall::create(properties); };
+	this->deserializers[LavaGeyser::MapKey] = [=](ValueMap properties) { return (GameObject*)LavaGeyser::create(properties); };
 	this->deserializers[Lever::MapKey] = [=](ValueMap properties) { return (GameObject*)Lever::create(properties); };
 	this->deserializers[LifeStone::MapKey] = [=](ValueMap properties) { return (GameObject*)LifeStone::create(properties); };
-	this->deserializers[LogicTorch::MapKey] = [=](ValueMap properties) { return (GameObject*)LogicTorch::create(properties); };
+	this->deserializers[Portcullus::MapKey] = [=](ValueMap properties) { return (GameObject*)Portcullus::create(properties); };
+	this->deserializers[PullyHorizontal::MapKey] = [=](ValueMap properties) { return (GameObject*)PullyHorizontal::create(properties); };
+	this->deserializers[PullyVertical::MapKey] = [=](ValueMap properties) { return (GameObject*)PullyVertical::create(properties); };
 	this->deserializers[ManaOrb::MapKey] = [=](ValueMap properties) { return (GameObject*)ManaOrb::create(properties); };
 	this->deserializers[MagePortal::MapKey] = [=](ValueMap properties) { return (GameObject*)MagePortal::create(properties); };
 	this->deserializers[MagicWall::MapKey] = [=](ValueMap properties) { return (GameObject*)MagicWall::create(properties); };
@@ -143,6 +166,15 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[MetalChest::MapKey] = [=](ValueMap properties) { return (GameObject*)MetalChest::create(properties); };
 	this->deserializers[MetalSpikes::MapKey] = [=](ValueMap properties) { return (GameObject*)MetalSpikes::create(properties); };
 	this->deserializers[MechanicalFlail::MapKey] = [=](ValueMap properties) { return (GameObject*)MechanicalFlail::create(properties); };
+	this->deserializers[MineCart::MapKey] = [=](ValueMap properties) { return (GameObject*)MineCart::create(properties); };
+	this->deserializers[MineCartLootable::MapKey] = [=](ValueMap properties) { return (GameObject*)MineCartLootable::create(properties); };
+	this->deserializers[MineClaw::MapKey] = [=](ValueMap properties) { return (GameObject*)MineClaw::create(properties); };
+	this->deserializers[MineDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)MineDoor::create(properties); };
+	this->deserializers[MineElevatorLift::MapKey] = [=](ValueMap properties) { return (GameObject*)MineElevatorLift::create(properties); };
+	this->deserializers[MineLantern::MapKey] = [=](ValueMap properties) { return (GameObject*)MineLantern::create(properties); };
+	this->deserializers[MineWheel::MapKey] = [=](ValueMap properties) { return (GameObject*)MineWheel::create(properties); };
+	this->deserializers[MineWinch::MapKey] = [=](ValueMap properties) { return (GameObject*)MineWinch::create(properties); };
+	this->deserializers[MiniMapRelocator::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapRelocator::create(properties); };
 	this->deserializers[MulDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)MulDoor::create(properties); };
 	this->deserializers[ObjectiveTrigger::MapKey] = [=](ValueMap properties) { return (GameObject*)ObjectiveTrigger::create(properties); };
 	this->deserializers[OptionWarp::MapKey] = [=](ValueMap properties) { return (GameObject*)OptionWarp::create(properties); };
@@ -150,28 +182,45 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[PortalSpawn::MapKey] = [=](ValueMap properties) { return (GameObject*)PortalSpawn::create(properties); };
 	this->deserializers[PendulumBlade::MapKey] = [=](ValueMap properties) { return (GameObject*)PendulumBlade::create(properties); };
 	this->deserializers[Ram::MapKey] = [=](ValueMap properties) { return (GameObject*)Ram::create(properties); };
+	this->deserializers[RegisterStone::MapKey] = [=](ValueMap properties) { return (GameObject*)RegisterStone::create(properties); };
 	this->deserializers[RewardItem::MapKey] = [=](ValueMap properties) { return (GameObject*)RewardItem::create(properties); };
 	this->deserializers[RewardPoolHera::MapKey] = [=](ValueMap properties) { return (GameObject*)RewardPoolHera::create(properties); };
 	this->deserializers[Sarcophagus::MapKey] = [=](ValueMap properties) { return (GameObject*)Sarcophagus::create(properties); };
+	this->deserializers[ScreamingDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)ScreamingDoor::create(properties); };
 	this->deserializers[ShopItem::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopItem::create(properties); };
-	this->deserializers[ShopPoolMinos::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolMinos::create(properties); };
-	this->deserializers[ShopPoolToben::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolToben::create(properties); };
+	this->deserializers[ShopPoolAres::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolAres::create(properties); };
+	this->deserializers[ShopPoolBrock::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolBrock::create(properties); };
+	this->deserializers[ShopPoolFraya::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolFraya::create(properties); };
 	this->deserializers[ShopPoolGriffin::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolGriffin::create(properties); };
 	this->deserializers[ShopPoolGeryon::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolGeryon::create(properties); };
+	this->deserializers[ShopPoolMinos::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolMinos::create(properties); };
+	this->deserializers[ShopPoolPolyphemus::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolPolyphemus::create(properties); };
+	this->deserializers[ShopPoolShen::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolShen::create(properties); };
+	this->deserializers[ShopPoolToben::MapKey] = [=](ValueMap properties) { return (GameObject*)ShopPoolToben::create(properties); };
 	this->deserializers[Ship::MapKey] = [=](ValueMap properties) { return (GameObject*)Ship::create(properties); };
+	this->deserializers[ShipWheel::MapKey] = [=](ValueMap properties) { return (GameObject*)ShipWheel::create(properties); };
+	this->deserializers[SmeltingPot::MapKey] = [=](ValueMap properties) { return (GameObject*)SmeltingPot::create(properties); };
 	this->deserializers[SpawnPoolEF::MapKey] = [=](ValueMap properties) { return (GameObject*)SpawnPoolEF::create(properties); };
 	this->deserializers[SpawnPoolUR::MapKey] = [=](ValueMap properties) { return (GameObject*)SpawnPoolUR::create(properties); };
 	this->deserializers[SpikedBall::MapKey] = [=](ValueMap properties) { return (GameObject*)SpikedBall::create(properties); };
 	this->deserializers[SpikedLog::MapKey] = [=](ValueMap properties) { return (GameObject*)SpikedLog::create(properties); };
+	this->deserializers[SpikedLogRailed::MapKey] = [=](ValueMap properties) { return (GameObject*)SpikedLogRailed::create(properties); };
 	this->deserializers[SquallyShip::MapKey] = [=](ValueMap properties) { return (GameObject*)SquallyShip::create(properties); };
+	this->deserializers[Stalactite::MapKey] = [=](ValueMap properties) { return (GameObject*)Stalactite::create(properties); };
 	this->deserializers[StoneButton::MapKey] = [=](ValueMap properties) { return (GameObject*)StoneButton::create(properties); };
+	this->deserializers[StoneStack::MapKey] = [=](ValueMap properties) { return (GameObject*)StoneStack::create(properties); };
+	this->deserializers[TerrainHole::MapKey] = [=](ValueMap properties) { return (GameObject*)TerrainHole::create(properties); };
 	this->deserializers[TempleDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleDoor::create(properties); };
 	this->deserializers[Tent::MapKey] = [=](ValueMap properties) { return (GameObject*)Tent::create(properties); };
 	this->deserializers[Torch::MapKey] = [=](ValueMap properties) { return (GameObject*)Torch::create(properties); };
+	this->deserializers[TrackingEye::MapKey] = [=](ValueMap properties) { return (GameObject*)TrackingEye::create(properties); };
+	this->deserializers[TrackingEyeController::MapKey] = [=](ValueMap properties) { return (GameObject*)TrackingEyeController::create(properties); };
+	this->deserializers[Train::MapKey] = [=](ValueMap properties) { return (GameObject*)Train::create(properties); };
 	this->deserializers[TrapDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)TrapDoor::create(properties); };
 	this->deserializers[TrapDoorFrame::MapKey] = [=](ValueMap properties) { return (GameObject*)TrapDoorFrame::create(properties); };
 	this->deserializers[Trigger::MapKey] = [=](ValueMap properties) { return (GameObject*)Trigger::create(properties); };
 	this->deserializers[Vase::MapKey] = [=](ValueMap properties) { return (GameObject*)Vase::create(properties); };
+	this->deserializers[VikingShip::MapKey] = [=](ValueMap properties) { return (GameObject*)VikingShip::create(properties); };
 	this->deserializers[Warp::MapKey] = [=](ValueMap properties) { return (GameObject*)Warp::create(properties); };
 	this->deserializers[WarpGateBP::MapKey] = [=](ValueMap properties) { return (GameObject*)WarpGateBP::create(properties); };
 	this->deserializers[WarpGateCV::MapKey] = [=](ValueMap properties) { return (GameObject*)WarpGateCV::create(properties); };
@@ -182,6 +231,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[WarpGateUR::MapKey] = [=](ValueMap properties) { return (GameObject*)WarpGateUR::create(properties); };
 	this->deserializers[WarpGateVS::MapKey] = [=](ValueMap properties) { return (GameObject*)WarpGateVS::create(properties); };
 	this->deserializers[Water::MapKey] = [=](ValueMap properties) { return (GameObject*)Water::create(properties); };
+	this->deserializers[WaterLauncher::MapKey] = [=](ValueMap properties) { return (GameObject*)WaterLauncher::create(properties); };
 	this->deserializers[Wind::MapKey] = [=](ValueMap properties) { return (GameObject*)Wind::create(properties); };
 	this->deserializers[WoodenCrate::MapKey] = [=](ValueMap properties) { return (GameObject*)WoodenCrate::create(properties); };
 	this->deserializers[WoodDoorSpawn::MapKey] = [=](ValueMap properties) { return (GameObject*)WoodDoorSpawn::create(properties); };

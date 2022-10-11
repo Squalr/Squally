@@ -7,29 +7,29 @@
 
 using namespace cocos2d;
 
-Analytics* Analytics::instance = nullptr;
-const std::string Analytics::trackingCode = "UA-125390935-1";
+Analytics* Analytics::Instance = nullptr;
+const std::string Analytics::TrackingCode = "UA-125390935-1";
 
-void Analytics::registerGlobalNode()
+void Analytics::RegisterGlobalNode()
 {
-	GlobalDirector::getInstance()->registerGlobalNode(Analytics::getInstance());
+	GlobalDirector::getInstance()->RegisterGlobalNode(Analytics::getInstance());
 }
 
 Analytics* Analytics::getInstance()
 {
-	if (Analytics::instance == nullptr)
+	if (Analytics::Instance == nullptr)
 	{
-		Analytics::instance = new Analytics();
+		Analytics::Instance = new Analytics();
 	}
 
-	return Analytics::instance;
+	return Analytics::Instance;
 }
 
 Analytics::Analytics()
 {
 	if (Analytics::areAnalyticsEnabled())
 	{
-		TAnalytics_Init(Analytics::trackingCode.c_str(), SystemUtils::getUniqueSystemIdentifier().c_str());
+		TAnalytics_Init(Analytics::TrackingCode.c_str(), SystemUtils::GetUniqueSystemIdentifier().c_str());
 	}
 }
 
@@ -86,8 +86,8 @@ void Analytics::shutDown()
 
 bool Analytics::areAnalyticsEnabled()
 {
-	// Analytics are currently disabled in Steam builds, and only on Itch.io (this is the price of being free for Itch)
-	if (!Steam::isSquallySteamBuild())
+	// Analytics are currently disabled in Steam builds
+	if (!Steam::IsSquallySteamBuild())
 	{
 		return true;
 	}

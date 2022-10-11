@@ -26,7 +26,7 @@ protected:
 private:
 	typedef CraftingMenuBase super;
 
-	cocos2d::Sprite* anvil;
-	cocos2d::Sprite* icon;
-	Sound* craftSound;
+	cocos2d::Sprite* anvil = nullptr;
+	cocos2d::Sprite* icon = nullptr;
+	Sound* craftSound = nullptr;
 };

@@ -15,7 +15,7 @@
     "ja": "'%s1' == 1 の場合、チームは破損しています。代わりに敵を損傷するためにこれを変更!",
     "ko": "'%s1' ==1이 면 팀이 손상됩니다! 대신 적을 손상하려면이 수정!",
     "nl": "Als '%s1' == 1, is je team beschadigd! Wijzig dit om de vijanden te beschadigen in plaats daarvan!",
-    "nb": "Hvis '%s1' == 1, teamet ditt er skadet! Endre dette for å skade fiender i stedet!",
+    "no": "Hvis '%s1' == 1, teamet ditt er skadet! Endre dette for å skade fiender i stedet!",
     "pl": "Jeśli '%s1' == 1, Twój zespół jest uszkodzony! Zmodyfikuj to, aby zadać obrażenia przeciwnikom!",
     "pt": "Se '%s1' == 1, a sua equipa está danificada! Modifique isto para danificar os inimigos!",
     "pt-BR": "Se '%s1' == 1, sua equipe está danificada! Modifique isso para danificar os inimigos em vez disso!",
@@ -26,6 +26,6 @@
     "tr": "'%s1' == 1 ise, takımınız zarar görür! Bunun yerine düşmanlara zarar vermek için bunu değiştirin!",
     "uk": "Якщо '% S1 ' = = 1, ваша команда пошкоджена! Змінити це, щоб пошкодити ворогів замість цього!",
     "vi": "Nếu ' S1 ' = = 1, nhóm của bạn bị hư hỏng! Sửa đổi này để làm hỏng kẻ thù thay vì!",
-    "zh-CN": "如果\\\"%s1\\\" = 1，您的团队已损坏！修改它，以损害敌人，而不是！",
+    "zh-CN": "如果'%s1' = 1，您的团队已损坏！修改它，以损害敌人，而不是！",
     "zh-TW": "如果 '%s1' = 1,您的團隊已損毀!修改它,以損害敵人,而不是!"
 }

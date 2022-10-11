@@ -12,7 +12,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/MagePortals/MagePortal.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/Hexus/EndianForest/Gauntlet/TutorialBBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/Hexus/EndianForest/Gauntlet/TutorialBBehavior.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
@@ -37,8 +37,6 @@ BeatTutorialB* BeatTutorialB::create(GameObject* owner, QuestLine* questLine)
 BeatTutorialB::BeatTutorialB(GameObject* owner, QuestLine* questLine) : super(owner, questLine, BeatTutorialB::MapKeyQuest, false)
 {
 	this->mage = dynamic_cast<PlatformerEntity*>(owner);
-	this->squally = nullptr;
-	this->portal = nullptr;
 }
 
 BeatTutorialB::~BeatTutorialB()
@@ -56,7 +54,7 @@ void BeatTutorialB::onLoad(QuestState questState)
 			this->complete();
 		});
 		
-    	this->mage->attachBehavior(tutorialBehavior);
+    	this->mage->attachComponent(tutorialBehavior);
 	});
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)

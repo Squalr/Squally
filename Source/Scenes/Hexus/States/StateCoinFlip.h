@@ -2,13 +2,8 @@
 
 #include "Scenes/Hexus/States/StateBase.h"
 
-namespace cocos2d
-{
-	class Animation;
-	class Sprite;
-}
-
 class SmartAnimationSequenceNode;
+class Sound;
 
 class StateCoinFlip : public StateBase
 {
@@ -29,5 +24,6 @@ protected:
 private:
 	typedef StateBase super;
 
-	SmartAnimationSequenceNode* coinAnimation;
+	SmartAnimationSequenceNode* coinAnimation = nullptr;
+	Sound* coinFlipSound = nullptr;
 };

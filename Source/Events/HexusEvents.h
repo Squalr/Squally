@@ -2,8 +2,6 @@
 #include <functional>
 #include <string>
 
-#include "cocos/math/CCGeometry.h"
-
 namespace cocos2d
 {
 	class Node;
@@ -31,7 +29,7 @@ public:
 
 	struct HexusOpenArgs
 	{
-		HexusOpponentData* opponentData;
+		HexusOpponentData* opponentData = nullptr;
 
 		HexusOpenArgs(HexusOpponentData* opponentData) : opponentData(opponentData) { }
 	};
@@ -43,7 +41,7 @@ public:
 
 	struct CardPreviewArgs
 	{
-		Card* card;
+		Card* card = nullptr;
 
 		CardPreviewArgs(Card* card) : card(card)
 		{
@@ -52,8 +50,8 @@ public:
 
 	struct HelpMenuArgs
 	{
-		CardData* cardData;
-		std::function<void()> onExit;
+		CardData* cardData = nullptr;
+		std::function<void()> onExit = nullptr;
 
 		HelpMenuArgs(CardData* cardData, std::function<void()> onExit) : cardData(cardData), onExit(onExit)
 		{

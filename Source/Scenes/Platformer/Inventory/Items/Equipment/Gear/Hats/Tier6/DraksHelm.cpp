@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier6/DraksHelmPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* DraksHelm::clone()
 	return DraksHelm::create();
 }
 
-std::string DraksHelm::getItemName()
-{
-	return DraksHelm::SaveKey;
-}
-
 LocalizedString* DraksHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_DraksHelm::create();
 }
 
-std::string DraksHelm::getIconResource()
+const std::string& DraksHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_DraksHelm;
 }
 
-std::string DraksHelm::getSerializationKey()
+const std::string& DraksHelm::getIdentifier()
 {
 	return DraksHelm::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string DraksHelm::getSerializationKey()
 Vec2 DraksHelm::getDisplayOffset()
 {
 	return Vec2(10.0f, -30.0f);
+}
+
+Recipe* DraksHelm::getRecipe()
+{
+	return DraksHelmPlans::create();
 }

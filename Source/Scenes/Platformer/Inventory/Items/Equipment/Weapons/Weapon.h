@@ -2,8 +2,6 @@
 
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
-class LocalizedString;
-
 class Weapon : public Equipable
 {
 public:
@@ -11,9 +9,10 @@ public:
 	int getMaxAttack();
 	virtual float getAttackOnset();
 	virtual float getAttackSustain();
-	virtual cocos2d::Size getWeaponCollisionSize();
+	virtual cocos2d::CSize getWeaponCollisionSize();
 	virtual cocos2d::Vec2 getWeaponCollisionOffset();
 	virtual std::string getWeaponAttackSound();
+	virtual std::string getWeaponImpactSound();
 
 protected:
 	Weapon(CurrencyInventory* cost, int minAttack, int maxAttack, ItemStats itemStats);
@@ -22,6 +21,6 @@ protected:
 private:
 	typedef Equipable super;
 
-	int minAttack;
-	int maxAttack;
+	int minAttack = 0;
+	int maxAttack = 0;
 };

@@ -5,7 +5,6 @@
 #include "cocos/platform/CCCommon.h"
 
 class LocalizedString;
-class ClickableNode;
 
 class LocalizedLabel : public cocos2d::Label
 {
@@ -43,7 +42,7 @@ public:
 		FontStyle fontStyle, 
 		FontSize fontSize,
 		LocalizedString* localizedString,
-		const cocos2d::Size& dimensions = cocos2d::Size::ZERO,
+		const cocos2d::CSize& dimensions = cocos2d::CSize::ZERO,
 		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
 		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP
 	);
@@ -63,7 +62,7 @@ protected:
 		FontStyle fontStyle,
 		FontSize fontSize,
 		LocalizedString* localizedString,
-		const cocos2d::Size& dimensions = cocos2d::Size::ZERO,
+		const cocos2d::CSize& dimensions = cocos2d::CSize::ZERO,
 		cocos2d::TextHAlignment hAlignment = cocos2d::TextHAlignment::LEFT,
 		cocos2d::TextVAlignment vAlignment = cocos2d::TextVAlignment::TOP);
 	virtual ~LocalizedLabel();
@@ -76,7 +75,7 @@ private:
 	using super::setString;
 
 	void onEnter() override;
-	void onStringUpdate(LocalizedString* localizedString);
+	void onStringUpdate();
 	void cleanupState();
 	cocos2d::LanguageType getCurrentLanguage();
 	float getFontSizeS1();
@@ -98,7 +97,7 @@ private:
 	std::string getMonospacedFont();
 	std::string getCodingFont();
 
-	LocalizedString* localizedString;
-	FontStyle fontStyle;
-	FontSize fontSize;
+	LocalizedString* localizedString = nullptr;
+	FontStyle fontStyle = FontStyle::Main;
+	FontSize fontSize = FontSize::P;
 };

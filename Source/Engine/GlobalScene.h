@@ -7,6 +7,7 @@ class GlobalScene : public SmartScene
 public:
 	static GlobalScene* create();
 
+protected:
 	GlobalScene();
 	virtual ~GlobalScene();
 

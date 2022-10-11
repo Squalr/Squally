@@ -28,9 +28,9 @@ private:
 
 	void registerDialogue();
 
-	MagePortal* portal;
-	Sarude* sarude;
-	Squally* squally;
+	MagePortal* portal = nullptr;
+	Sarude* sarude = nullptr;
+	Squally* squally = nullptr;
 
 	static const std::string QuestPortalTag;
 };

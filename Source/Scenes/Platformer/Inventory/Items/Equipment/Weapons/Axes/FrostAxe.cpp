@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/FrostAxePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,30 +47,25 @@ Item* FrostAxe::clone()
 	return FrostAxe::create();
 }
 
-std::string FrostAxe::getItemName()
-{
-	return FrostAxe::SaveKey;
-}
-
 LocalizedString* FrostAxe::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_FrostAxe::create();
 }
 
-std::string FrostAxe::getIconResource()
+const std::string& FrostAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_FrostAxe;
 }
 
-std::string FrostAxe::getSerializationKey()
+const std::string& FrostAxe::getIdentifier()
 {
 	return FrostAxe::SaveKey;
 }
 
-Size FrostAxe::getWeaponCollisionSize()
+CSize FrostAxe::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return Size(112.0f, 96.0f);
+	return CSize(112.0f, 96.0f);
 }
 
 Vec2 FrostAxe::getWeaponCollisionOffset()
@@ -81,4 +77,9 @@ Vec2 FrostAxe::getWeaponCollisionOffset()
 Vec2 FrostAxe::getDisplayOffset()
 {
 	return Vec2(28.0f, -4.0f);
+}
+
+Recipe* FrostAxe::getRecipe()
+{
+	return FrostAxePlans::create();
 }

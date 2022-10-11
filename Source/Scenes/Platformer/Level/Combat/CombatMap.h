@@ -13,13 +13,16 @@ class DefeatMenu;
 class FocusTakeOver;
 class FirstStrikeMenu;
 class HackerModeWarningHud;
+class HelpMenu;
+template <class T> class LazyNode;
+class Lexicon;
 class NotificationHud;
 class PartyMenu;
 class PlatformerEntityDeserializer;
+class PlatformerPauseMenu;
 class RewardsMenu;
 class Scrappy;
 class TargetSelectionMenu;
-class TextOverlays;
 class Timeline;
 
 class CombatMap : public MapBase
@@ -27,11 +30,11 @@ class CombatMap : public MapBase
 public:
 	struct StatsOverrides
 	{
-		int health;
-		int mana;
-		bool useOverrides;
+		int health = 0;
+		int mana = 0;
+		bool useOverrides = false;
 
-		StatsOverrides() : health(0), mana(0), useOverrides(false) { }
+		StatsOverrides() { }
 		StatsOverrides(int health, int mana) : health(health), mana(mana), useOverrides(true) { }
 	};
 
@@ -58,43 +61,51 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onHackerModeEnable() override;
+	void openPauseMenu(cocos2d::Node* refocusTarget) override;
 
 private:
 	typedef MapBase super;
 
 	void spawnEntities();
-	void buildCardsMenu();
-	void buildCollectablesMenu();
+	HelpMenu* buildHexusCardHelpMenu();
+	CollectablesMenu* buildCollectablesMenu();
+	Lexicon* buildLexicon();
+	CardsMenu* buildCardsMenu();
+	PartyMenu* buildPartyMenu();
+	PlatformerPauseMenu* buildPlatformerPauseMenu();
 
-	CollectablesMenu* collectablesMenu;
-	CardsMenu* cardsMenu;
-	PartyMenu* partyMenu;
+	LazyNode<HelpMenu>* cardHelpMenu = nullptr;
+	LazyNode<CollectablesMenu>* collectablesMenu = nullptr;
+	LazyNode<Lexicon>* lexiconMenu = nullptr;
+	LazyNode<CardsMenu>* cardsMenu = nullptr;
+	LazyNode<PartyMenu>* partyMenu = nullptr;
+	LazyNode<PlatformerPauseMenu>* platformerPauseMenu = nullptr;
 
-	TargetSelectionMenu* targetSelectionMenu;
-	ChoicesMenu* choicesMenu;
-	CancelMenu* cancelMenu;
-	CombatHud* combatHud;
-	FirstStrikeMenu* firstStrikeMenu;
-	DefeatMenu* defeatMenu;
-	RewardsMenu* rewardsMenu;
-	Timeline* timeline;
-	CombatAIHelper* enemyAIHelper;
-	HackerModeWarningHud* hackerModeWarningHud;
-	NotificationHud* notificationHud;
-	ConfirmationHud* confirmationHud;
+	TargetSelectionMenu* targetSelectionMenu = nullptr;
+	ChoicesMenu* choicesMenu = nullptr;
+	CancelMenu* cancelMenu = nullptr;
+	CombatHud* combatHud = nullptr;
+	FirstStrikeMenu* firstStrikeMenu = nullptr;
+	DefeatMenu* defeatMenu = nullptr;
+	RewardsMenu* rewardsMenu = nullptr;
+	Timeline* timeline = nullptr;
+	CombatAIHelper* enemyAIHelper = nullptr;
+	HackerModeWarningHud* hackerModeWarningHud = nullptr;
+	NotificationHud* notificationHud = nullptr;
+	ConfirmationHud* confirmationHud = nullptr;
 
-	Hud* combatEndBackdrop;
+	Hud* combatEndBackdrop = nullptr;
 
-	Scrappy* scrappy;
+	Scrappy* scrappy = nullptr;
 
-	FocusTakeOver* entityFocusTakeOver;
-	FocusTakeOver* focusTakeOver;
+	FocusTakeOver* entityFocusTakeOver = nullptr;
+	FocusTakeOver* focusTakeOver = nullptr;
 
-	bool playerFirstStrike;
+	bool playerFirstStrike = false;
 	std::vector<CombatData> playerData;
 	std::vector<CombatData> enemyData;
 
-	PlatformerEntityDeserializer* platformerEntityDeserializer;
+	PlatformerEntityDeserializer* platformerEntityDeserializer = nullptr;
 
 	static const std::string PropertyPlayerFirstStrike;
 	static const std::string PropertyEnemyFirstStrike;

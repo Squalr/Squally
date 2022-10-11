@@ -31,27 +31,24 @@ Deck* Deck::create(Card::CardStyle cardStyle, std::vector<CardData*> cards, bool
 
 Deck::Deck(bool isPlayerOwnedDeck) : Deck(Card::CardStyle::Earth, std::vector<CardData*>(), isPlayerOwnedDeck)
 {
-	this->deckCards = std::vector<Card*>();
 }
 
 Deck::Deck(Card::CardStyle cardStyle, std::vector<CardData*> cardData, bool isPlayerOwnedDeck)
 {
 	this->isPlayerOwnedDeck = isPlayerOwnedDeck;
 	this->style = cardStyle;
-	this->deckCards = std::vector<Card*>();
 	this->pad = ClickableNode::create(HexusResources::CardPad, HexusResources::CardPad);
 	this->cardsNode = Node::create();
 	this->deckFocus = Sprite::create(HexusResources::CardSelect);
-	this->clearOperationsOnInsert = false;
 
 	this->pad->setScale(Card::cardScale);
 	this->deckFocus->setScale(Card::cardScale);
 
 	this->addChild(this->pad);
 
-	for (auto next : cardData)
+	for (CardData* next : cardData)
 	{
-		this->insertCardBottom(Card::create(this->style, next, isPlayerOwnedDeck), false, 0.0f, false);
+		this->insertCardBottom(Card::create(this->style, next, isPlayerOwnedDeck), false, 0.0f);
 	}
 
 	this->addChild(this->cardsNode);
@@ -71,7 +68,7 @@ void Deck::copyTo(Deck* otherDeck)
 
 		for (auto next : this->deckCards)
 		{
-			otherDeck->insertCardRandom(Card::create(this->style, next->cardData, this->isPlayerOwnedDeck), false, 0.0f, false);
+			otherDeck->insertCardRandom(Card::create(this->style, next->cardData, this->isPlayerOwnedDeck), false, 0.0f);
 		}
 	}
 }
@@ -126,7 +123,7 @@ void Deck::shuffle()
 	this->setCardOrder();
 }
 
-void Deck::insertCardTop(Card* card, bool faceUp, float insertDelay, bool asReentry)
+void Deck::insertCardTop(Card* card, bool faceUp, float insertDelay)
 {
 	if (card == nullptr)
 	{
@@ -135,7 +132,7 @@ void Deck::insertCardTop(Card* card, bool faceUp, float insertDelay, bool asReen
 
 	card->disableInteraction();
 
-	GameUtils::changeParent(card, this->cardsNode, true, asReentry);
+	GameUtils::changeParent(card, this->cardsNode, true);
 
 	this->deckCards.push_back(card);
 	this->setCardOrder();
@@ -147,7 +144,7 @@ void Deck::insertCardTop(Card* card, bool faceUp, float insertDelay, bool asReen
 	}
 }
 
-void Deck::insertCardBottom(Card* card, bool faceUp, float insertDelay, bool asReentry)
+void Deck::insertCardBottom(Card* card, bool faceUp, float insertDelay)
 {
 	if (card == nullptr)
 	{
@@ -156,7 +153,7 @@ void Deck::insertCardBottom(Card* card, bool faceUp, float insertDelay, bool asR
 
 	card->disableInteraction();
 
-	GameUtils::changeParent(card, this->cardsNode, true, asReentry);
+	GameUtils::changeParent(card, this->cardsNode, true);
 
 	this->deckCards.insert(this->deckCards.begin(), card);
 	this->setCardOrder();
@@ -168,7 +165,7 @@ void Deck::insertCardBottom(Card* card, bool faceUp, float insertDelay, bool asR
 	}
 }
 
-void Deck::insertCardRandom(Card* card, bool faceUp, float insertDelay, bool asReentry)
+void Deck::insertCardRandom(Card* card, bool faceUp, float insertDelay)
 {
 	if (card == nullptr)
 	{
@@ -177,7 +174,7 @@ void Deck::insertCardRandom(Card* card, bool faceUp, float insertDelay, bool asR
 
 	card->disableInteraction();
 
-	GameUtils::changeParent(card, this->cardsNode, true, asReentry);
+	GameUtils::changeParent(card, this->cardsNode, true);
 
 	int index = RandomHelper::random_int(0, (int)this->deckCards.size());
 	this->deckCards.insert(this->deckCards.begin() + index, card);

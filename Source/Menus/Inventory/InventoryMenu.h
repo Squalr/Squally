@@ -1,8 +1,6 @@
 #pragma once
 #include <functional>
 
-#include "cocos/base/ccTypes.h"
-
 #include "Engine/SmartNode.h"
 
 namespace cocos2d
@@ -18,6 +16,7 @@ class EquipmentInventory;
 class Item;
 class ItemMenu;
 class Inventory;
+template <class T> class LazyNode;
 class LocalizedLabel;
 class PartyMenu;
 class FilterMenu;
@@ -25,13 +24,13 @@ class FilterMenu;
 class InventoryMenu : public SmartNode
 {
 public:
-	static InventoryMenu* create(PartyMenu* partyMenu);
+	static InventoryMenu* create(LazyNode<PartyMenu>* partyMenu);
 
 	void open();
 	void setReturnClickCallback(std::function<void()> returnClickCallback);
 
 protected:
-	InventoryMenu(PartyMenu* partyMenu);
+	InventoryMenu(LazyNode<PartyMenu>* partyMenu);
 	virtual ~InventoryMenu();
 	
 	void onEnter() override;
@@ -50,21 +49,21 @@ private:
 	void consumeItem(Consumable* item);
 	void close();
 
-	cocos2d::Sprite* inventoryWindow;
-	LocalizedLabel* inventoryLabel;
-	FilterMenu* filterMenu;
-	ItemMenu* itemMenu;
-	ClickableTextNode* returnButton;
-	ClickableNode* closeButton;
+	cocos2d::Sprite* inventoryWindow = nullptr;
+	LocalizedLabel* inventoryLabel = nullptr;
+	FilterMenu* filterMenu = nullptr;
+	ItemMenu* itemMenu = nullptr;
+	ClickableTextNode* returnButton = nullptr;
+	ClickableNode* closeButton = nullptr;
 
-	CurrencyInventory* currencyInventory;
-	EquipmentInventory* equipmentInventory;
-	Inventory* inventory;
+	CurrencyInventory* currencyInventory = nullptr;
+	EquipmentInventory* equipmentInventory = nullptr;
+	Inventory* inventory = nullptr;
 
-	std::function<void()> returnClickCallback;
-	bool equipmentChanged;
+	std::function<void()> returnClickCallback = nullptr;
+	bool equipmentChanged = false;
 
-	PartyMenu* partyMenu;
+	LazyNode<PartyMenu>* partyMenu = nullptr;
 
 	static const int MinHexusCards;
 	static const int MaxHexusCards;

@@ -20,12 +20,12 @@ protected:
 
 	ClickableTextNode* createNextButton();
 
-	bool tutorialShown;
-	GameState::StateType cachedPreviousState;
-	GameState::StateType stateToHijack;
+	bool tutorialShown = false;
+	GameState::StateType cachedPreviousState = GameState::StateType::EmptyState;
+	GameState::StateType stateToHijack = GameState::StateType::EmptyState;
 
 private:
 	typedef ComponentBase super;
 
-	bool isHijacking;
+	bool isHijacking = false;
 };

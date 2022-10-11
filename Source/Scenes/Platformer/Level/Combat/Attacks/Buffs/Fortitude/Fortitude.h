@@ -7,10 +7,8 @@ namespace cocos2d
 	class Sprite;
 }
 
-class HackablePreview;
 class PlatformerEntity;
 class SmartParticles;
-class WorldSound;
 
 class Fortitude : public Buff
 {
@@ -34,9 +32,9 @@ private:
 
 	void applyFortitude();
 	
-	cocos2d::Sprite* bubble;
-	SmartParticles* spellEffect;
-	cocos2d::Sprite* spellAura;
+	cocos2d::Sprite* bubble = nullptr;
+	SmartParticles* spellEffect = nullptr;
+	cocos2d::Sprite* spellAura = nullptr;
 	
 	static const int MaxMultiplier;
 	static const int DamageReduction;

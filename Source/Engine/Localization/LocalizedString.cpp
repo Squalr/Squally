@@ -14,11 +14,7 @@ using namespace cocos2d;
 
 LocalizedString::LocalizedString()
 {
-	this->overrideLanguage = LanguageType::NONE;
-	this->onStringUpdate = nullptr;
-	this->stringReplacementVariables = std::vector<LocalizedString*>();
 	this->currentLanguage = Localization::getLanguage();
-	this->disableHackerModeEvents = true;
 }
 
 LocalizedString::~LocalizedString()
@@ -68,12 +64,25 @@ std::string LocalizedString::getString()
 
 cocos2d::LanguageType LocalizedString::getOverrideLanguage()
 {
+	if (this->remappedLanguages.find(Localization::getLanguage()) != this->remappedLanguages.end())
+	{
+		return this->remappedLanguages[Localization::getLanguage()];
+	}
+
 	return this->overrideLanguage;
 }
 
 void LocalizedString::setOverrideLanguage(cocos2d::LanguageType overrideLanguage)
 {
 	this->overrideLanguage = overrideLanguage;
+}
+
+LocalizedString* LocalizedString::setOverrideMap(std::map<cocos2d::LanguageType, cocos2d::LanguageType> remappedLanguages)
+{
+	this->remappedLanguages = remappedLanguages;
+
+	// Convenience
+	return this;
 }
 
 LocalizedString* LocalizedString::setStringReplacementVariables(LocalizedString* stringReplacementVariables)
@@ -84,7 +93,7 @@ LocalizedString* LocalizedString::setStringReplacementVariables(LocalizedString*
 LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables)
 {
 	// Release old replacement varaibles
-	for (auto next : this->stringReplacementVariables)
+	for (const auto& next : this->stringReplacementVariables)
 	{
 		if (next == nullptr)
 		{
@@ -98,13 +107,14 @@ LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<Loca
 			if (next == *compareIt)
 			{
 				isReentry = true;
+				break;
 			}
 		}
 
 		if (isReentry)
 		{
 			// Remove the child and retain it
-			GameUtils::changeParent(next, nullptr, true, false);
+			GameUtils::changeParent(next, nullptr, false);
 		}
 		else
 		{
@@ -124,7 +134,7 @@ LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<Loca
 		}
 
 		// Update this string if any of the replacement variables get updated
-		next->setOnStringUpdateCallback([=](LocalizedString*)
+		next->setOnStringUpdateCallback([=]()
 		{
 			this->doStringUpdate();
 		});
@@ -137,7 +147,7 @@ LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<Loca
 	return this;
 }
 
-void LocalizedString::setOnStringUpdateCallback(std::function<void(LocalizedString* newString)> onStringUpdate)
+void LocalizedString::setOnStringUpdateCallback(std::function<void()> onStringUpdate)
 {
 	this->onStringUpdate = onStringUpdate;
 }
@@ -162,6 +172,6 @@ void LocalizedString::doStringUpdate()
 	
 	if (this->onStringUpdate != nullptr)
 	{
-		this->onStringUpdate(this);
+		this->onStringUpdate();
 	}
 }

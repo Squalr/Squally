@@ -33,22 +33,17 @@ Item* GoldWeed::clone()
 	return GoldWeed::create();
 }
 
-std::string GoldWeed::getItemName()
-{
-	return GoldWeed::SaveKey;
-}
-
 LocalizedString* GoldWeed::getString()
 {
 	return Strings::Items_Crafting_Plants_GoldWeed::create();
 }
 
-std::string GoldWeed::getIconResource()
+const std::string& GoldWeed::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Plants_GoldWeed;
 }
 
-std::string GoldWeed::getSerializationKey()
+const std::string& GoldWeed::getIdentifier()
 {
 	return GoldWeed::SaveKey;
 }

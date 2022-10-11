@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/BludgeonPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* Bludgeon::clone()
 	return Bludgeon::create();
 }
 
-std::string Bludgeon::getItemName()
-{
-	return Bludgeon::SaveKey;
-}
-
 LocalizedString* Bludgeon::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_Bludgeon::create();
 }
 
-std::string Bludgeon::getIconResource()
+const std::string& Bludgeon::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_Bludgeon;
 }
 
-std::string Bludgeon::getSerializationKey()
+const std::string& Bludgeon::getIdentifier()
 {
 	return Bludgeon::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string Bludgeon::getSerializationKey()
 Vec2 Bludgeon::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* Bludgeon::getRecipe()
+{
+	return BludgeonPlans::create();
 }

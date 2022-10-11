@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Wands/BoneWandPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* BoneWand::clone()
 	return BoneWand::create();
 }
 
-std::string BoneWand::getItemName()
-{
-	return BoneWand::SaveKey;
-}
-
 LocalizedString* BoneWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_BoneWand::create();
 }
 
-std::string BoneWand::getIconResource()
+const std::string& BoneWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_BoneWand;
 }
 
-std::string BoneWand::getSerializationKey()
+const std::string& BoneWand::getIdentifier()
 {
 	return BoneWand::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string BoneWand::getSerializationKey()
 Vec2 BoneWand::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* BoneWand::getRecipe()
+{
+	return BoneWandPlans::create();
 }

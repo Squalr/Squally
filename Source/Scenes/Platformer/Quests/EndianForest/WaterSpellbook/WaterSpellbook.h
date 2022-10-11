@@ -28,6 +28,6 @@ private:
 	void runCinematicSequence();
 	void setPostText();
 
-	PlatformerEntity* entity;
-	Squally* squally;
+	PlatformerEntity* entity = nullptr;
+	Squally* squally = nullptr;
 };

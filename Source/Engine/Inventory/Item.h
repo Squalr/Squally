@@ -1,15 +1,11 @@
 #pragma once
 
+#include "cocos/base/CCValue.h"
 #include "Engine/SmartNode.h"
-
-namespace cocos2d
-{
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
-}
 
 class CurrencyInventory;
 class LocalizedString;
+class Recipe;
 
 class Item : public SmartNode
 {
@@ -17,38 +13,36 @@ public:
 	struct RubberBanding
 	{
 		// The "expected value" that the player should have
-		int rubberBand;
+		int rubberBand = -1;
 
 		// Standard deviation to place around
-		float rubberBandFactor;
+		float rubberBandFactor = 0.0f;
 
-		RubberBanding() : rubberBand(-1), rubberBandFactor(0.0f) { }
 		RubberBanding(int rubberBand, float rubberBandFactor) : rubberBand(rubberBand), rubberBandFactor(rubberBandFactor) { }
+		RubberBanding() { }
 	};
 
 	struct ItemMeta
 	{
 		// How many of this item can exist in a stack;
-		int stackSize;
+		int stackSize = 1;
 
 		// How many of this item can exist in inventories.
-		int unique;
+		int unique = -1;
 
 		RubberBanding rubberBanding;
-
-		ItemMeta(int stackSize) : stackSize(stackSize), rubberBanding(RubberBanding()) { }
-		ItemMeta(int stackSize, int unique) : stackSize(stackSize), unique(unique), rubberBanding(RubberBanding()) { }
-		ItemMeta(int stackSize, int unique, RubberBanding rubberBanding) : stackSize(stackSize), unique(unique), rubberBanding(rubberBanding) { }
-		ItemMeta(int stackSize, RubberBanding rubberBanding) : stackSize(stackSize), unique(-1), rubberBanding(rubberBanding) { }
-		ItemMeta(RubberBanding rubberBanding) : stackSize(1), unique(-1), rubberBanding(rubberBanding) { }
-		ItemMeta() : stackSize(1), unique(-1), rubberBanding(RubberBanding()) { }
+		
+		ItemMeta(int stackSize, int unique = -1, RubberBanding rubberBanding = RubberBanding()) : stackSize(stackSize), unique(unique), rubberBanding(rubberBanding) { }
+		ItemMeta(int stackSize, RubberBanding rubberBanding) : stackSize(stackSize), rubberBanding(rubberBanding) { }
+		ItemMeta(RubberBanding rubberBanding) : rubberBanding(rubberBanding) { }
+		ItemMeta() { }
 	};
 
 	virtual Item* clone() = 0;
-	virtual std::string getItemName() = 0;
 	virtual LocalizedString* getString() = 0;
-	virtual std::string getIconResource() = 0;
-	virtual std::string getSerializationKey() = 0;
+	virtual const std::string& getIconResource() = 0;
+	virtual const std::string& getIdentifier() = 0;
+	virtual Recipe* getRecipe() { return nullptr; };
 	CurrencyInventory* getCost();
 	int getStackSize();
 	int getUniqueCount();
@@ -56,8 +50,9 @@ public:
 	float getRubberBandFactor();
 
 protected:
-	Item(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
+	Item(CurrencyInventory* cost = nullptr, ItemMeta itemMeta = ItemMeta());
 	virtual ~Item();
+	
 	void onEnter() override;
 	void initializeListeners() override;
 
@@ -65,5 +60,5 @@ private:
 	typedef SmartNode super;
 
 	ItemMeta itemMeta;
-	CurrencyInventory* cost;
+	CurrencyInventory* cost = nullptr;
 };

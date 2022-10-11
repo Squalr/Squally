@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Earrings/AquaMarineEarringsRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -9,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string AquaMarineEarrings::SaveKey = "aquamarines-earrings";
+const std::string AquaMarineEarrings::SaveKey = "aquamarine-earrings";
 
 AquaMarineEarrings* AquaMarineEarrings::create()
 {
@@ -46,22 +47,22 @@ Item* AquaMarineEarrings::clone()
 	return AquaMarineEarrings::create();
 }
 
-std::string AquaMarineEarrings::getItemName()
-{
-	return AquaMarineEarrings::SaveKey;
-}
-
 LocalizedString* AquaMarineEarrings::getString()
 {
 	return Strings::Items_Equipment_Gear_Earrings_AquaMarineEarrings::create();
 }
 
-std::string AquaMarineEarrings::getIconResource()
+const std::string& AquaMarineEarrings::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Earrings_AquaMarineEarrings;
 }
 
-std::string AquaMarineEarrings::getSerializationKey()
+const std::string& AquaMarineEarrings::getIdentifier()
 {
 	return AquaMarineEarrings::SaveKey;
+}
+
+Recipe* AquaMarineEarrings::getRecipe()
+{
+	return AquaMarineEarringsRecipe::create();
 }

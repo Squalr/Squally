@@ -5,7 +5,7 @@
 #include "cocos/2d/CCActionInterval.h"
 
 #include "Engine/Particles/SmartParticles.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/ParticleResources.h"
 
@@ -22,31 +22,6 @@ CardEffects* CardEffects::create()
 
 CardEffects::CardEffects()
 {
-	this->bite = nullptr;
-	this->dustPoof = nullptr;
-	this->dustStorm = nullptr;
-	this->fireBlast = nullptr;
-	this->flow = nullptr;
-	this->focusRing = nullptr;
-	this->frostCircle = nullptr;
-	this->gush = nullptr;
-	this->lightning = nullptr;
-	this->magicBurst = nullptr;
-	this->meteorAlt = nullptr;
-	this->meteorBlue = nullptr;
-	this->meteorPurple = nullptr;
-	this->nether = nullptr;
-	this->poison = nullptr;
-	this->radialAura = nullptr;
-	this->radialFire = nullptr;
-	this->radialGalaxy = nullptr;
-	this->radialStorm = nullptr;
-	this->selectionPulse = nullptr;
-	this->spinningMagic = nullptr;
-	this->splash = nullptr;
-	this->starBurst = nullptr;
-	this->starHit = nullptr;
-	this->targetPulse = nullptr;
 }
 
 CardEffects::~CardEffects()
@@ -64,7 +39,7 @@ void CardEffects::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 }
 
 void CardEffects::initializeListeners()

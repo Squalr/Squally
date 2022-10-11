@@ -11,37 +11,34 @@
 
 using namespace cocos2d;
 
-TrackDeserializer* TrackDeserializer::instance = nullptr;
+TrackDeserializer* TrackDeserializer::Instance = nullptr;
 
 TrackDeserializer* TrackDeserializer::getInstance()
 {
-	if (TrackDeserializer::instance == nullptr)
+	if (TrackDeserializer::Instance == nullptr)
 	{
-		TrackDeserializer::instance = new TrackDeserializer();
+		TrackDeserializer::Instance = new TrackDeserializer();
 
-		instance->autorelease();
+		Instance->autorelease();
 	}
 
-	return TrackDeserializer::instance;
+	return TrackDeserializer::Instance;
 }
 
-void TrackDeserializer::registerGlobalNode()
+void TrackDeserializer::RegisterGlobalNode()
 {
 	// Register this class globally so that it can always listen for events
-	GlobalDirector::getInstance()->registerGlobalNode(TrackDeserializer::getInstance());
+	GlobalDirector::getInstance()->RegisterGlobalNode(TrackDeserializer::getInstance());
 }
 
 TrackDeserializer::TrackDeserializer()
 {
-	this->deserializers = std::map<std::string, std::function<Track*()>>();
-
-	this->deserializers[Forgotten::TrackKey] = [=]() { return (Track*)Forgotten::create(); };
-	this->deserializers[Heartbeat::TrackKey] = [=]() { return (Track*)Heartbeat::create(); };
-	this->deserializers[Medieval::TrackKey] = [=]() { return (Track*)Medieval::create(); };
-	this->deserializers[Medieval2::TrackKey] = [=]() { return (Track*)Medieval2::create(); };
-	this->deserializers[Solace::TrackKey] = [=]() { return (Track*)Solace::create(); };
-	this->deserializers[TrickOrTreat::TrackKey] = [=]() { return (Track*)TrickOrTreat::create(); };
-	this->deserializers[WeWillGetThereTogether::TrackKey] = [=]() { return (Track*)WeWillGetThereTogether::create(); };
+	this->deserializers[Heartbeat::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Heartbeat::create(properties); };
+	this->deserializers[Medieval::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Medieval::create(properties); };
+	this->deserializers[Medieval2::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Medieval2::create(properties); };
+	this->deserializers[Solace::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Solace::create(properties); };
+	this->deserializers[TrickOrTreat::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)TrickOrTreat::create(properties); };
+	this->deserializers[WeWillGetThereTogether::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)WeWillGetThereTogether::create(properties); };
 }
 
 TrackDeserializer::~TrackDeserializer()
@@ -53,10 +50,10 @@ void TrackDeserializer::initializeListeners()
 	super::initializeListeners();
 
 	EventListenerCustom* deserializationRequestListener = EventListenerCustom::create(
-		SoundEvents::EventRequestTrackDeserialization,
+		SoundEvents::EventRequestMusicDeserialization,
 		[=](EventCustom* eventCustom)
 		{
-			SoundEvents::RequestTrackDeserializationArgs* args = static_cast<SoundEvents::RequestTrackDeserializationArgs*>(eventCustom->getUserData());
+			SoundEvents::RequestMusicDeserializationArgs* args = static_cast<SoundEvents::RequestMusicDeserializationArgs*>(eventCustom->getData());
 			
 			if (args != nullptr)
 			{
@@ -68,13 +65,13 @@ void TrackDeserializer::initializeListeners()
 	this->addGlobalEventListener(deserializationRequestListener);
 }
 
-void TrackDeserializer::deserialize(SoundEvents::RequestTrackDeserializationArgs args)
+void TrackDeserializer::deserialize(SoundEvents::RequestMusicDeserializationArgs args)
 {
-	std::string serializationKey = args.trackSerializationKey;
+	std::string serializationKey = args.MusicSerializationKey;
 
-	if (args.onTrackDeserializedCallback != nullptr && this->deserializers.find(serializationKey) != this->deserializers.end())
+	if (args.onMusicDeserializedCallback != nullptr && this->deserializers.find(serializationKey) != this->deserializers.end())
 	{
-		args.onTrackDeserializedCallback(this->deserializers[serializationKey]());
+		args.onMusicDeserializedCallback(this->deserializers[serializationKey](args.properties));
 	}
 	else
 	{

@@ -9,9 +9,9 @@
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardPreview.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Strings/Strings.h"
 
@@ -41,9 +41,9 @@ void CardPreviewComponent::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->cardPreview->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter, visibleSize.height / 2.0f + Config::previewOffsetY);
+	this->cardPreview->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter, visibleSize.height / 2.0f + HexusConfig::previewOffsetY);
 }
 
 CardPreview* CardPreviewComponent::getCardPreview()

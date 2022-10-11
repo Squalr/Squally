@@ -53,9 +53,9 @@ private:
 
 	struct HijackData
 	{
-		cocos2d::Node* node;
-		cocos2d::Node* originalParent;
-		int originalIndex;
+		cocos2d::Node* node = nullptr;
+		cocos2d::Node* originalParent = nullptr;
+		int originalIndex = 0;
 		cocos2d::Vec3 originalCoords;
 
 		HijackData(cocos2d::Node* node, cocos2d::Node* originalParent, int originalIndex, cocos2d::Vec3 originalCoords)
@@ -70,9 +70,9 @@ private:
 		Repeat
 	};
 
-	GLubyte takeOverOpacity;
-	cocos2d::LayerColor* focusBackground;
-	cocos2d::Node* hijackContainer;
+	GLubyte takeOverOpacity = 0;
+	cocos2d::LayerColor* focusBackground = nullptr;
+	cocos2d::Node* hijackContainer = nullptr;
 	std::vector<HijackData> hijackedNodes;
-	FocusMode focusMode;
+	FocusMode focusMode = FocusMode::None;
 };

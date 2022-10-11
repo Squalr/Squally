@@ -29,9 +29,9 @@ GoldenBowPlans::~GoldenBowPlans()
 {
 }
 
-Item* GoldenBowPlans::craft()
+std::vector<Item*> GoldenBowPlans::craft()
 {
-	return GoldenBow::create();
+	return { GoldenBow::create() };
 }
 
 std::vector<std::tuple<Item*, int>> GoldenBowPlans::getReagentsInternal()
@@ -50,17 +50,12 @@ Item* GoldenBowPlans::clone()
 	return GoldenBowPlans::create();
 }
 
-std::string GoldenBowPlans::getItemName()
-{
-	return GoldenBowPlans::SaveKey;
-}
-
 LocalizedString* GoldenBowPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_GoldenBow::create();
 }
 
-std::string GoldenBowPlans::getIconResource()
+const std::string& GoldenBowPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -70,7 +65,7 @@ std::string GoldenBowPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Bows_GoldenBow;
 }
 
-std::string GoldenBowPlans::getSerializationKey()
+const std::string& GoldenBowPlans::getIdentifier()
 {
 	return GoldenBowPlans::SaveKey;
 }

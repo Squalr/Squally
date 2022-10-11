@@ -22,9 +22,9 @@ protected:
 private:
 	typedef Projectile super;
 
-	WorldSound* fireballSfx;
-	WorldSound* impactSfx;
+	WorldSound* fireballSfx = nullptr;
+	WorldSound* impactSfx = nullptr;
 
-	SmartAnimationSequenceNode* fireball;
-	SmartAnimationSequenceNode* explosion;
+	SmartAnimationSequenceNode* fireball = nullptr;
+	SmartAnimationSequenceNode* explosion = nullptr;
 };

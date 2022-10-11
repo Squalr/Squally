@@ -3,7 +3,7 @@
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
@@ -22,7 +22,7 @@
 #include "Menus/Crafting/CraftingPreview.h"
 #include "Menus/Inventory/ItemMenu/ItemEntry.h"
 #include "Menus/Inventory/ItemMenu/ItemMenu.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Recipe.h"
@@ -37,38 +37,41 @@ using namespace cocos2d;
 
 const float CraftingMenuBase::CraftDuration = 1.5f;
 
-CraftingMenuBase::CraftingMenuBase()
+CraftingMenuBase::CraftingMenuBase(LocalizedString* titleString, LocalizedString* craftablesHeader)
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	LocalizedLabel* craftableHeaderLabel = nullptr;
+
+	if (craftablesHeader)
+	{
+		craftableHeaderLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, craftablesHeader);
+		craftableHeaderLabel->enableOutline(Color4B::BLACK, 2);
+	}
+
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
-	this->currencyInventory = nullptr;
-	this->inventory = nullptr;
 	this->craftingWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
 	this->craftingPreview = CraftingPreview::create();
 	this->filterMenu = CraftFilterMenu::create([=](){ this->onFilterChange(); });
-	this->itemMenu = ItemMenu::create();
-	this->recipes = std::vector<Item*>();
+	this->itemMenu = ItemMenu::create(craftableHeaderLabel);
 	this->craftButton = ClickableNode::create(UIResources::Menus_CraftingMenu_CraftButton, UIResources::Menus_CraftingMenu_CraftButtonSelected);
 	this->craftButtonDisabled = Sprite::create(UIResources::Menus_CraftingMenu_CraftButton);
 	this->craftIconNode = Node::create();
 	this->cancelIcon = Sprite::create(UIResources::Menus_CraftingMenu_CancelIcon);
 	this->craftProgress = ProgressBar::create(Sprite::create(UIResources::Menus_CraftingMenu_CraftFrame), Sprite::create(UIResources::Menus_CraftingMenu_CraftBarFill));
-	this->craftingLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Crafting_Crafting::create());
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->craftingLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, titleString);
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
 	this->errorSound = Sound::create(SoundResources::Menus_Error1);
 	this->backDecorNode = Node::create();
-	this->returnClickCallback = nullptr;
-	this->isCrafting = 0.0f;
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
 	returnLabel->enableOutline(Color4B::BLACK, 2);
-	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
 	returnLabelHover->enableOutline(Color4B::BLACK, 2);
 	returnLabelHover->setTextColor(Color4B::YELLOW);
-	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = ClickableTextNode::create(
@@ -77,7 +80,7 @@ CraftingMenuBase::CraftingMenuBase()
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->craftingLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->craftingLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->craftingLabel->enableGlow(Color4B::BLACK);
 	
 	this->addChild(this->backdrop);
@@ -105,20 +108,12 @@ void CraftingMenuBase::onEnter()
 {
 	super::onEnter();
 
-	float delay = 0.1f;
-	float duration = 0.25f;
-
-	GameUtils::fadeInObject(this->craftingWindow, delay, duration);
-	GameUtils::fadeInObject(this->craftingLabel, delay, duration);
-	GameUtils::fadeInObject(this->closeButton, delay, duration);
-	GameUtils::fadeInObject(this->returnButton, delay, duration);
-
 	this->cancelIcon->setVisible(false);
 	this->craftProgress->setVisible(false);
 	
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			this->inventory = entityInventoryBehavior->getInventory();
 			this->currencyInventory = entityInventoryBehavior->getCurrencyInventory();
@@ -132,7 +127,7 @@ void CraftingMenuBase::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	const Vec2 AnvilOffset = Vec2(-72.0f, 0.0f);
 
@@ -177,14 +172,23 @@ void CraftingMenuBase::initializeListeners()
 		this->onCraftInteract();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->onCraftInteract();
+		if (this->itemMenu->hasFocus())
+		{
+			this->onCraftInteract();
+		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		if (!GameUtils::isVisible(this))
+		if (this->isCrafting)
+		{
+			this->stopCraft(true);
+			return;
+		}
+
+		if (GameUtils::getFocusedNode() != this)
 		{
 			return;
 		}
@@ -193,17 +197,22 @@ void CraftingMenuBase::initializeListeners()
 		this->close();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_D, InputEvents::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->filterMenu->unfocus();
 		this->itemMenu->focus();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_A, InputEvents::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->filterMenu->focus();
 		this->itemMenu->unfocus();
 		this->craftingPreview->clearPreview();
+
+		if (this->isCrafting)
+		{
+			this->stopCraft(true);
+		}
 	});
 }
 
@@ -229,38 +238,41 @@ void CraftingMenuBase::update(float dt)
 
 void CraftingMenuBase::onFilterChange()
 {
-	this->populateItemList();
 	this->itemMenu->clearPreview();
 	this->craftingPreview->clearPreview();
+	this->populateItemList();
 }
 
 void CraftingMenuBase::populateItemList()
 {
 	this->itemMenu->clearVisibleItems();
-	std::vector<Item*> items = this->filterMenu->getActiveFilter()->filter(this->recipes);
-	
-	for (auto item : items)
-	{
-		ItemEntry* entry = this->itemMenu->pushVisibleItem(item, [=]()
-		{
-		});
+	std::vector<Item*> filteredRecipes = this->filterMenu->getActiveFilter()->filter(this->recipes);
+	std::set<std::string> processedRecipes = std::set<std::string>();
 
+	for (Item* recipe : filteredRecipes)
+	{
+		const std::string& recipeName = recipe->getIdentifier();
+
+		if (recipe == nullptr || processedRecipes.find(recipeName) != processedRecipes.end())
+		{
+			continue;
+		}
+
+		ItemEntry* entry = this->itemMenu->pushVisibleItem(recipe, [=](){ });
+		
 		entry->hideIcon();
-		entry->setCraftCount(this->getCraftCount(dynamic_cast<Recipe*>(item), this->inventory));
+		entry->setCraftCount(this->getCraftCount(dynamic_cast<Recipe*>(recipe), this->inventory));
+		processedRecipes.insert(recipeName);
 	}
 
 	this->itemMenu->updateAndPositionItemText();
 }
 
-void CraftingMenuBase::open(std::vector<Item*> recipes)
+void CraftingMenuBase::open(const std::vector<Item*>& recipes)
 {
 	this->recipes = recipes;
+	this->onCraftPreview(this->selectedRecipe);
 	this->onFilterChange();
-
-	this->canCraft = false;
-
-	this->filterMenu->focus();
-	this->itemMenu->unfocus();
 }
 
 void CraftingMenuBase::setReturnClickCallback(std::function<void()> returnClickCallback)
@@ -277,7 +289,8 @@ int CraftingMenuBase::getCraftCount(Recipe* recipe, Inventory* inventory)
 
 	std::vector<std::tuple<Item*, int>> reagents = recipe->getReagents();
 
-	int craftCount = 1000;
+	const int MaxCraftCount = 1000;
+	int craftCount = MaxCraftCount;
 
 	for (auto reagent : reagents)
 	{
@@ -287,7 +300,7 @@ int CraftingMenuBase::getCraftCount(Recipe* recipe, Inventory* inventory)
 
 		for (auto item : this->inventory->getItems())
 		{
-			if (item->getItemName() == next->getItemName())
+			if (item->getIdentifier() == next->getIdentifier())
 			{
 				existingCount++;
 			}
@@ -303,6 +316,7 @@ int CraftingMenuBase::getCraftCount(Recipe* recipe, Inventory* inventory)
 
 void CraftingMenuBase::onCraftPreview(Item* item)
 {
+	this->selectedRecipe = dynamic_cast<Recipe*>(item);
 	this->canCraft = this->craftingPreview->preview(dynamic_cast<Recipe*>(item), this->inventory);
 	
 	if (this->canCraft)
@@ -362,7 +376,7 @@ void CraftingMenuBase::craftItem()
 		return;
 	}
 
-	Item* craftedItem = recipe->craft();
+	std::vector<Item*> craftedItems = recipe->craft();
 	std::vector<std::tuple<Item*, int>> reagents = recipe->getReagents();
 
 	for (auto reagent : reagents)
@@ -371,7 +385,7 @@ void CraftingMenuBase::craftItem()
 
 		for (auto item : this->inventory->getItems())
 		{
-			if (item->getItemName() == std::get<0>(reagent)->getItemName())
+			if (item->getIdentifier() == std::get<0>(reagent)->getIdentifier())
 			{
 				this->inventory->tryRemove(item);
 				
@@ -383,7 +397,7 @@ void CraftingMenuBase::craftItem()
 		}
 	}
 
-	PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(craftedItem, Strings::Platformer_Notifications_ItemCrafted::create()));
+	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs(craftedItems, this->getCraftString()));
 
 	this->populateItemList();
 	this->craftingPreview->refresh();
@@ -397,7 +411,17 @@ void CraftingMenuBase::stopCraft(bool viaCancel)
 	this->craftIconNode->setVisible(true);
 	this->craftProgress->setVisible(false);
 
+	if (!viaCancel)
+	{
+		this->selectedRecipe = nullptr;
+	}
+
 	this->onCraftEnd(viaCancel);
+}
+
+LocalizedString* CraftingMenuBase::getCraftString()
+{
+	return Strings::Platformer_Notifications_ItemCrafted::create();
 }
 
 void CraftingMenuBase::close()

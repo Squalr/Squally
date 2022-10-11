@@ -8,10 +8,7 @@ namespace cocos2d
 }
 
 class CollisionObject;
-class Inventory;
-class MayanGemBlue;
-class MayanGemPurple;
-class MayanGemRed;
+class RegisterStone;
 class WorldSound;
 
 class MayanDoor : public Portal
@@ -23,52 +20,47 @@ public:
 	void unlock(bool animate = true) override;
 
 	static const std::string MapKey;
+	static const std::string MapEventPush;
+	static const std::string MapEventPop;
+	static const std::string MapEventPopRet;
+	static const std::string PropertyRegister;
+	static const std::string PropertyValue;
+	static const std::string MapEventLockInteraction;
+	static const std::string MapEventUnlockInteraction;
+	static const std::string MapEventResetPuzzle;
+	static const std::string MapEventPuzzleComplete;
 
 protected:
 	MayanDoor(cocos2d::ValueMap& properties);
 	virtual ~MayanDoor();
 
 	void onEnter() override;
+	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void registerHackables() override;
 
 private:
 	typedef Portal super;
 
-	void loadGems();
-	void tryTakeGems();
+	void discoverStones();
 	void tryUnlock();
-	int runGemRed(int currentIndex);
-	int runGemBlue(int currentIndex);
-	int runGemPurple(int currentIndex);
 
-	bool isUnlocking;
-	int redGemAnswer;
-	int blueGemAnswer;
-	int purpleGemAnswer;
+	bool isUnlocking = false;
+	std::vector<RegisterStone*> registerStones;
 	
-	MayanGemRed* redGem;
-	MayanGemBlue* blueGem;
-	MayanGemPurple* purpleGem;
-	CollisionObject* turninHitbox;
-	cocos2d::Sprite* doorArrow;
-	cocos2d::Sprite* doorFrame;
-	cocos2d::Node* doorContainer;
-	cocos2d::Node* innerContainer;
-	cocos2d::Sprite* door;
-
-	WorldSound* doorOpenSound;
-
-	Inventory* inventory;
+	cocos2d::Sprite* doorArrow = nullptr;
+	cocos2d::Sprite* doorFrame = nullptr;
+	cocos2d::Node* doorContainer = nullptr;
+	cocos2d::Node* innerContainer = nullptr;
+	cocos2d::Sprite* door = nullptr;
+	WorldSound* doorSound2Units = nullptr;
+	WorldSound* doorSound3Units = nullptr;
+	WorldSound* doorSound4Units = nullptr;
+	WorldSound* doorSound5Units = nullptr;
+	WorldSound* doorSound6Units = nullptr;
+	WorldSound* doorOpenSound = nullptr;
 
 	static const float DoorOpenDelta;
 	static const std::string EventMayanDoorUnlock;
-	static const std::string SaveKeyRedGem;
-	static const std::string SaveKeyBlueGem;
-	static const std::string SaveKeyPurpleGem;
-	static const std::string SaveKeyRedGemAnswer;
-	static const std::string SaveKeyBlueGemAnswer;
-	static const std::string SaveKeyPurpleGemAnswer;
 	static const std::string SaveKeyUnlocked;
 };

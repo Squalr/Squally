@@ -57,7 +57,7 @@ void ChooseTargetMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 368.0f));
 
@@ -71,7 +71,7 @@ void ChooseTargetMenu::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* args)
 	{
-		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(args->getUserData());
+		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(args->getData());
 
 		if (combatArgs != nullptr)
 		{

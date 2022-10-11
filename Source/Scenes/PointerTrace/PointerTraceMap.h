@@ -4,7 +4,6 @@
 #include "Events/PointerTraceEvents.h"
 #include "Scenes/MapBase.h"
 
-class GridEntity;
 class MemoryGrid;
 class Music;
 class PointerTraceHud;
@@ -37,11 +36,11 @@ private:
 	void doSegfault();
 	void openVictoryMenu();
 
-	std::function<void()> onLevelClearCallback;
+	std::function<void()> onLevelClearCallback = nullptr;
 	std::set<int> collisionMap;
 	std::set<int> segfaultMap;
-	MemoryGrid* memoryGrid;
-	cocos2d::Node* collisionDebugNode;
-	PointerTraceHud* pointerTraceHud;
-	VictoryMenu* victoryMenu;
+	MemoryGrid* memoryGrid = nullptr;
+	cocos2d::Node* collisionDebugNode = nullptr;
+	PointerTraceHud* pointerTraceHud = nullptr;
+	VictoryMenu* victoryMenu = nullptr;
 };

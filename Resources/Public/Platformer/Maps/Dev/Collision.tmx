@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="44" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="57" nextobjectid="681">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="44" height="26" tilewidth="128" tileheight="128" infinite="0" nextlayerid="57" nextobjectid="688">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="Music/Ambient/Forest.mp3"/>
    <property name="type" value="meta"/>
@@ -39,10 +39,14 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-5737.69" y="-306.7" width="13333.3" height="1140">
+  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-4231.67" y="-442.242" width="13333.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
+   </properties>
+  </object>
+  <object id="684" name="Forest/Background/WaterfallRocks" type="decor" x="-4231.67" y="-442.242" width="13333.3" height="4560">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -51,10 +55,14 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-5709.81" y="-302.4" width="13257.6" height="1140">
+  <object id="602" name="Forest/Background/WaterfallGround" type="decor" x="-4203.79" y="-437.942" width="13257.6" height="2565">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="2.25"/>
+   </properties>
+  </object>
+  <object id="683" name="Forest/Background/WaterfallGround" type="decor" x="-4203.79" y="-437.942" width="13257.6" height="2565">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -76,13 +84,13 @@
   <object id="679" name="blue-grass" type="terrain" x="2864" y="1848">
    <polygon points="-417.69,-343.98 -720.721,-597.871 -1264.93,-925.752 -1745.92,-927.197 -1724.8,-1366.39 -1487.1,-1609.52 -1487.78,-2106.19 -3295.44,-2122.95 -3297.53,-72.12 -420.36,-78.37"/>
   </object>
-  <object id="680" name="blue-grass" type="terrain" x="4176" y="244" width="1076" height="2644"/>
+  <object id="680" name="blue-grass" type="terrain" x="4357.82" y="-272.364" width="1076" height="2644"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="665" name="blue-grass" type="terrain" x="2414" y="2462" width="1282.06" height="548"/>
+  <object id="665" name="blue-grass" type="terrain" x="2526.88" y="2750.46" width="1282.06" height="548"/>
   <object id="666" name="blue-grass" type="terrain" x="434" y="1386" width="2294.79" height="548"/>
   <object id="668" name="blue-grass" type="terrain" x="3216" y="1561.97">
    <polygon points="-20,-68 721.846,-693.973 1396.27,-386.572 1821.85,-670.04 2452,-323.836 2420.7,575.319 914.154,430.027"/>
@@ -90,6 +98,8 @@
   <object id="673" name="blue-grass" type="terrain" x="208.485" y="2976.73">
    <polygon points="-20,-68 721.846,-693.973 1447.79,-195.663 1979.96,-194.242 1873.21,557.982 -31.4469,567.096"/>
   </object>
+  <object id="681" name="ruins-gray-thick" type="terrain" x="4368.94" y="2826.33" width="2593.69" height="1221.09"/>
+  <object id="685" name="blue-grass" type="terrain" x="2278.48" y="453.603" width="872.783" height="548"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -101,10 +111,10 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="675" name="wooden-crate" type="object" x="3111.49" y="2297.82" width="160" height="160"/>
-  <object id="676" name="wooden-crate" type="object" x="2452.07" y="2301.52" width="160" height="160"/>
-  <object id="677" name="wooden-crate" type="object" x="3272.52" y="2298.48" width="160" height="160"/>
-  <object id="678" name="vase" type="object" x="2929.5" y="2296" width="113" height="160">
+  <object id="675" name="wooden-crate" type="object" x="3224.37" y="2586.28" width="160" height="160"/>
+  <object id="676" name="wooden-crate" type="object" x="2564.95" y="2589.98" width="160" height="160"/>
+  <object id="677" name="wooden-crate" type="object" x="3385.4" y="2586.94" width="160" height="160"/>
+  <object id="678" name="vase" type="object" x="3042.38" y="2584.46" width="113" height="160">
    <properties>
     <property name="color" value="green"/>
    </properties>
@@ -126,9 +136,9 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="2831.14" y="762.86" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="2511.14" y="1133.77" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
  </objectgroup>
@@ -136,6 +146,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="687" name="water" type="object" x="-212.525" y="2954.62" width="7225.05" height="1099.06">
+   <properties>
+    <property name="disable-edges" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="28" name="fireflies">
   <properties>

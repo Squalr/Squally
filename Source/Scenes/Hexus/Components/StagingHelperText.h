@@ -28,6 +28,6 @@ private:
 	void onCombineCancel(GameState* gameState);
 	void clearSelectionStatus();
 
-	LocalizedLabel* selectionLabel;
-	ClickableNode* cancelButton;
+	LocalizedLabel* selectionLabel = nullptr;
+	ClickableNode* cancelButton = nullptr;
 };

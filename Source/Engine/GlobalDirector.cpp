@@ -6,30 +6,28 @@
 #include "Engine/Events/SaveEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/GlobalNode.h"
 #include "Engine/GlobalHud.h"
+#include "Engine/GlobalScene.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/SmartScene.h"
 #include "Engine/Utils/GameUtils.h"
 
 using namespace cocos2d;
 
-GlobalDirector* GlobalDirector::instance = nullptr;
+GlobalDirector* GlobalDirector::Instance = nullptr;
 
 GlobalDirector* GlobalDirector::getInstance()
 {
-	if (GlobalDirector::instance == nullptr)
+	if (GlobalDirector::Instance == nullptr)
 	{
-		GlobalDirector::instance = new GlobalDirector();
+		GlobalDirector::Instance = new GlobalDirector();
 	}
 
-	return GlobalDirector::instance;
+	return GlobalDirector::Instance;
 }
 
 GlobalDirector::GlobalDirector()
 {
-	this->globalNodes = std::vector<SmartNode*>();
-	this->globalScenes = std::vector<GlobalScene*>();
-	this->activeScene = nullptr;
 }
 
 GlobalDirector::~GlobalDirector()
@@ -40,7 +38,9 @@ void GlobalDirector::loadScene(std::function<SmartScene*()> sceneCreator)
 {
 	SaveEvents::TriggerSoftSaveGameState();
 	SceneEvents::TriggerBeforeSceneChange();
+	SceneEvents::TriggerBeforeSceneChangeFinalize();
 
+	GameUtils::focus(nullptr);
 	CollisionObject::ClearCollisionObjects();
 
 	SmartScene* scene = sceneCreator();
@@ -59,37 +59,36 @@ void GlobalDirector::loadScene(std::function<SmartScene*()> sceneCreator)
 	// Reparent the global director onto the active scene so that all global nodes are part of the active scene graph
 	scene->addChild(GlobalDirector::getInstance());
 
-	SaveManager::save();
+	SaveManager::Save();
 	GlobalDirector::getInstance()->activeScene = scene;
 	GameUtils::resume(scene);
 
 	SceneEvents::TriggerAfterSceneChange();
 }
 
-void GlobalDirector::registerGlobalNode(GlobalNode* node)
+void GlobalDirector::RegisterGlobalNode(GlobalNode* node)
 {
 	if (node != nullptr)
 	{
-		GlobalDirector::getInstance()->addChild(node);
+		GameUtils::changeParent(node, GlobalDirector::getInstance(), false);
 		GlobalDirector::getInstance()->globalNodes.push_back(node);
 	}
 }
 
-void GlobalDirector::registerGlobalNode(GlobalHud* node)
+void GlobalDirector::RegisterGlobalNode(GlobalHud* node)
 {
 	if (node != nullptr)
 	{
-		GlobalDirector::getInstance()->addChild(node);
+		GameUtils::changeParent(node, GlobalDirector::getInstance(), false);
 		GlobalDirector::getInstance()->globalNodes.push_back(node);
 	}
 }
 
-void GlobalDirector::registerGlobalScene(GlobalScene* scene)
+void GlobalDirector::RegisterGlobalScene(GlobalScene* scene)
 {
 	if (scene != nullptr)
 	{
 		scene->retain();
-
 		GlobalDirector::getInstance()->globalScenes.push_back(scene);
 	}
 }

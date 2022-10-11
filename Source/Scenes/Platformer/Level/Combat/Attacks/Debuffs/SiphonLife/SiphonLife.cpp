@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -97,7 +98,7 @@ void SiphonLife::registerHackables()
 				Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLife::create(),
 				HackableBase::HackBarColor::Yellow,
 				UIResources::Menus_Icons_BloodGoblet,
-				SiphonLifeGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return SiphonLifeGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEdi::create(),
@@ -134,7 +135,7 @@ void SiphonLife::registerHackables()
 	auto restoreFunc = &SiphonLife::runRestoreTick;
 	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
 
-	for (auto next : this->hackables)
+	for (HackableCode* next : this->hackables)
 	{
 		this->owner->registerCode(next);
 	}
@@ -183,6 +184,7 @@ NO_OPTIMIZE void SiphonLife::runRestoreTick()
 	drainAmount = 0;
 	gainAmount = 0;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZDI);
 	ASM(push ZSI);
 
@@ -199,6 +201,7 @@ NO_OPTIMIZE void SiphonLife::runRestoreTick()
 
 	ASM(pop ZSI);
 	ASM(pop ZDI);
+	ASM_POP_EFLAGS()
 
 	drainAmount = MathUtils::clamp(drainAmount, -8, 8);
 	gainAmount = MathUtils::clamp(gainAmount, -8, 8);

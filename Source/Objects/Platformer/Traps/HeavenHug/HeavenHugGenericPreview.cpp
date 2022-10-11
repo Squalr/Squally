@@ -26,6 +26,10 @@ HeavenHugGenericPreview::HeavenHugGenericPreview()
 	this->previewNode->addChild(this->previewHeavenHug);
 }
 
+HeavenHugGenericPreview::~HeavenHugGenericPreview()
+{
+}
+
 HackablePreview* HeavenHugGenericPreview::clone()
 {
 	return HeavenHugGenericPreview::create();

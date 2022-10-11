@@ -7,9 +7,10 @@ class PlatformerBannerDeserializer : public BannerDeserializer
 public:
 	static PlatformerBannerDeserializer* create();
 
-private:
-	typedef BannerDeserializer super;
-
+protected:
 	PlatformerBannerDeserializer();
 	virtual ~PlatformerBannerDeserializer();
+
+private:
+	typedef BannerDeserializer super;
 };

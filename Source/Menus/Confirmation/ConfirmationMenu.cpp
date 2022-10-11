@@ -3,7 +3,7 @@
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
@@ -29,25 +29,24 @@ ConfirmationMenu* ConfirmationMenu::create()
 
 ConfirmationMenu::ConfirmationMenu()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	this->previousFocus = nullptr;
+	
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 
-	this->onConfirmCallback = nullptr;
-	this->onCancelCallback = nullptr;
-
-	this->confirmationLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), Size(560.0f, 0.0f));
+	this->confirmationLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), CSize(560.0f, 0.0f));
 	this->confirmWindow = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
 	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 	
 	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Cancel::create());
 	LocalizedLabel*	cancelLabelHover = cancelLabel->clone();
 
-	cancelLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	cancelLabel->enableGlow(Color4B::BLACK);
 
 	cancelLabelHover->setColor(Color3B::YELLOW);
-	cancelLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	cancelLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	cancelLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->cancelButton = ClickableTextNode::create(
@@ -60,11 +59,11 @@ ConfirmationMenu::ConfirmationMenu()
 	LocalizedLabel*	confirmLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Accept::create());
 	LocalizedLabel*	confirmLabelHover = confirmLabel->clone();
 
-	confirmLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	confirmLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	confirmLabel->enableGlow(Color4B::BLACK);
 
 	confirmLabelHover->setColor(Color3B::YELLOW);
-	confirmLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	confirmLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	confirmLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->confirmButton = ClickableTextNode::create(
@@ -99,7 +98,7 @@ void ConfirmationMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->confirmWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->confirmationLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2 + 32.0f));
@@ -116,9 +115,9 @@ void ConfirmationMenu::initializeListeners()
 	this->confirmButton->setMouseClickCallback(CC_CALLBACK_0(ConfirmationMenu::confirm, this));
 	this->closeButton->setMouseClickCallback(CC_CALLBACK_0(ConfirmationMenu::close, this));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		if (!GameUtils::isVisible(this))
+		if (GameUtils::getFocusedNode() != this)
 		{
 			return;
 		}
@@ -128,7 +127,7 @@ void ConfirmationMenu::initializeListeners()
 		this->close();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE, EventKeyboard::KeyCode::KEY_ENTER }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE, InputEvents::KeyCode::KEY_ENTER }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
@@ -153,10 +152,15 @@ void ConfirmationMenu::showMessage(LocalizedString* confirmationMessage, std::fu
 	this->onCancelCallback = cancelCallback;
 
 	this->setVisible(true);
+	
+	this->previousFocus = GameUtils::getFocusedNode();
+	GameUtils::focus(this);
 }
 
 void ConfirmationMenu::confirm()
 {
+	GameUtils::focus(this->previousFocus);
+
 	if (this->onConfirmCallback != nullptr)
 	{
 		if (this->onConfirmCallback())
@@ -172,6 +176,8 @@ void ConfirmationMenu::confirm()
 
 void ConfirmationMenu::close()
 {
+	GameUtils::focus(this->previousFocus);
+
 	if (this->onCancelCallback != nullptr)
 	{
 		if (this->onCancelCallback())

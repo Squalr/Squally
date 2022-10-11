@@ -16,13 +16,15 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	CatapultGenericPreview();
-	virtual ~CatapultGenericPreview() = default;
+	virtual ~CatapultGenericPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
 
-	SmartAnimationNode* previewCatapult;
+private:
+	typedef HackablePreview super;
+
+	SmartAnimationNode* previewCatapult = nullptr;
 };

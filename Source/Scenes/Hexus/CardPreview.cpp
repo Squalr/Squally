@@ -10,8 +10,8 @@
 #include "Scenes/Hexus/CardData/CardData.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/UIResources.h"
@@ -34,7 +34,6 @@ CardPreview::CardPreview()
 	this->cardPad = Sprite::create(HexusResources::CardPad);
 	this->previewPanel = Node::create();
 	this->currentPreviewData = PreviewData();
-	this->previewCache = std::map<std::string, PreviewData>();
 
 	LocalizedLabel* helpLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Help::create());
 	LocalizedLabel* helpLabelSelected = helpLabel->clone();
@@ -207,16 +206,14 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 	LocalizedLabel* binLabelRef = nullptr;
 	LocalizedLabel* decLabelRef = nullptr;
 	LocalizedLabel* hexLabelRef = nullptr;
-	Card* cardClone = card == nullptr ? nullptr : card->clone(false);
+	Card* cardClone = card == nullptr ? Card::create(Card::CardStyle::Earth, cardData, true, false) : card->clone(false);
+	CSize cardSize = cardClone->getContentSize();
 
 	cardClone->setScale(1.0f);
+	cardClone->reveal();
+	cardClone->hideUI();
 
-	if (cardClone != nullptr)
-	{
-		preview->addChild(cardClone);
-		cardClone->reveal();
-		cardClone->hideUI();
-	}
+	preview->addChild(cardClone);
 
 	switch (cardData->getCardType())
 	{
@@ -259,8 +256,8 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 				specialLabel->setAnchorPoint(Vec2(0.0f, 1.0f));
 				specialLabel->setTextColor(Card::SpecialColor);
 				specialLabel->enableOutline(Color4B::BLACK, 2);
-				specialLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, 160.0f));
-				specialLabel->setDimensions(cardClone->getContentSize().width - 16.0f, 0.0f);
+				specialLabel->setPosition(Vec2(-cardSize.width / 2.0f + 8.0f, 160.0f));
+				specialLabel->setDimensions(cardSize.width - 16.0f, 0.0f);
 
 				preview->addChild(specialLabel);
 			}
@@ -291,9 +288,9 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 
 			const float yOffset = -72.0f;
 
-			binaryLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, yOffset));
-			decimalLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, yOffset - 40.0f));
-			hexLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, yOffset - 80.0f));
+			binaryLabel->setPosition(Vec2(-cardSize.width / 2.0f + 8.0f, yOffset));
+			decimalLabel->setPosition(Vec2(-cardSize.width / 2.0f + 8.0f, yOffset - 40.0f));
+			hexLabel->setPosition(Vec2(-cardSize.width / 2.0f + 8.0f, yOffset - 80.0f));
 
 			binStrRef = binaryString;
 			decStrRef = decimalString;
@@ -315,8 +312,9 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 			specialLabel->setAnchorPoint(Vec2(0.0f, 0.0f));
 			specialLabel->setTextColor(Card::SpecialColor);
 			specialLabel->enableOutline(Color4B::BLACK, 2);
-			specialLabel->setPosition(Vec2(-cardClone->getContentSize().width / 2.0f + 8.0f, -160.0f));
-			specialLabel->setDimensions(cardClone->getContentSize().width - 16.0f, 0.0f);
+			
+			specialLabel->setPosition(Vec2(-cardSize.width / 2.0f + 8.0f, -160.0f));
+			specialLabel->setDimensions(cardSize.width - 16.0f, 0.0f);
 
 			switch (cardData->getCardType())
 			{

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Rings/SkullBandRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* SkullBand::clone()
 	return SkullBand::create();
 }
 
-std::string SkullBand::getItemName()
-{
-	return SkullBand::SaveKey;
-}
-
 LocalizedString* SkullBand::getString()
 {
 	return Strings::Items_Equipment_Gear_Rings_SkullBand::create();
 }
 
-std::string SkullBand::getIconResource()
+const std::string& SkullBand::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Rings_SkullBand;
 }
 
-std::string SkullBand::getSerializationKey()
+const std::string& SkullBand::getIdentifier()
 {
 	return SkullBand::SaveKey;
+}
+
+Recipe* SkullBand::getRecipe()
+{
+	return SkullBandRecipe::create();
 }

@@ -1,12 +1,9 @@
 #pragma once
 
+#include "cocos/base/CCValue.h"
+
 #include "Engine/SmartNode.h"
 
-namespace cocos2d
-{
-	class Value;
-	typedef std::map<std::string, cocos2d::Value> ValueMap;
-}
 
 class Item;
 
@@ -30,6 +27,8 @@ public:
 
 		return false;
 	};
+
+	bool hasItemOfName(std::string itemName);
 
 	template<class T>
 	std::vector<T*> getItemsOfType()
@@ -64,7 +63,8 @@ public:
 	int getCapacity();
 	void tryRemove(Item* item, std::function<void(Item*)> onRemove = nullptr, std::function<void(Item*)> onRemoveFailed = nullptr, bool doSave = true);
 	void tryInsert(Item* item, std::function<void(Item*)> onInsert = nullptr, std::function<void(Item*)> onInsertFailed = nullptr, bool doSave = true);
-	void forceInsert(Item* item, bool doSave = true);
+	void forceInsert(Item* item, bool doSave);
+	void forceInsert(Item* item, std::function<void(Item*)> onInsert = nullptr, std::function<void(Item*)> onInsertFailed = nullptr, bool doSave = true);
 	void tryTransact(Inventory* other, Item* item, Item* otherItem = nullptr, std::function<void(Item*, Item*)> onTransact = nullptr, std::function<void(Item*, Item*)> onTransactFailed = nullptr, bool doSave = true);
 	void moveItem(Item* item, int destinationIndex, std::function<void(Item*)> onMove = nullptr, std::function<void(Item*)> onMoveFailed = nullptr, bool doSave = true);
 	void save();
@@ -82,17 +82,19 @@ protected:
 	void clearItems();
 
 	std::vector<Item*> items;
-	int capacity;
+	std::set<std::string> itemLookup;
+	int capacity = 0;
 
 	static const int InfiniteCapacity;
 
 private:
 	typedef SmartNode super;
 
+	void rebuildLookupTable();
 	bool canInsertItemIfUnique(Item* item);
 
-	cocos2d::Node* itemsNode;
-
+	bool disableLookupTableRebuilding = false;
+	cocos2d::Node* itemsNode = nullptr;
 	std::string saveKey;
 
 	static const std::string SaveKeyCapacity;

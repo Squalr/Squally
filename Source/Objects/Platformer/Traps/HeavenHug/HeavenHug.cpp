@@ -8,13 +8,14 @@
 
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Traps/HeavenHug/HeavenHugGenericPreview.h"
 #include "Objects/Platformer/Traps/HeavenHug/HeavenHugSetSpeedPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -41,7 +42,7 @@ HeavenHug::HeavenHug(ValueMap& properties) : super(properties)
 {
 	this->heavenHugContainer = Node::create();
 	this->heavenHug = Sprite::create(ObjectResources::Traps_HeavenHug_HEAVEN_HUG);
-	this->spikeCollision = CollisionObject::create(this->createSpikeCollision(), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(CSize(212.0f, 32.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
 	this->travelDistance = this->properties.at(GameObject::MapKeyHeight).asFloat();
 
@@ -58,7 +59,7 @@ void HeavenHug::onEnter()
 {
 	super::onEnter();
 
-	this->updateHeavenHug();
+	this->scheduleUpdate();
 }
 
 void HeavenHug::initializePositions()
@@ -67,6 +68,34 @@ void HeavenHug::initializePositions()
 
 	this->heavenHugContainer->setPositionY(this->properties.at(GameObject::MapKeyHeight).asFloat() / 2.0f);
 	this->spikeCollision->setPosition(Vec2(this->heavenHug->getContentSize().width / 2.0f, 32.0f));
+}
+
+void HeavenHug::update(float dt)
+{
+    float adjustedSpeed = (this->isMovingUp ? -1.0f : 1.0f) * this->getSpeed();
+    float startPositionY = (this->isMovingUp ? -1.0f : 0.0f) * this->getTravelHeight();
+
+    this->heavenHug->setPositionY(this->heavenHug->getPositionY() + adjustedSpeed * dt);
+
+    if (this->isMovingUp)
+    {
+        if (this->heavenHug->getPositionY() < startPositionY)
+        {
+            this->isMovingUp = !this->isMovingUp;
+        }
+    }
+    else
+    {
+        if (this->heavenHug->getPositionY() > startPositionY)
+        {
+            this->isMovingUp = !this->isMovingUp;
+        }
+    }
+}
+
+float HeavenHug::getSpeed()
+{
+    return this->SpeedPer480Px * 480.0f;
 }
 
 Vec2 HeavenHug::getButtonOffset()
@@ -87,10 +116,9 @@ void HeavenHug::registerHackables()
 				Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_BleedingLimb,
-				HeavenHugSetSpeedPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return HeavenHugSetSpeedPreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax::create() },
-					{ HackableCode::Register::zbp, Strings::Menus_Hacking_Objects_RegisterRbpWarning::create() }
 				},
 				int(HackFlags::None),
 				20.0f,
@@ -102,7 +130,7 @@ void HeavenHug::registerHackables()
 	auto getHeightFunc = &HeavenHug::getTravelHeight;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)getHeightFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}
@@ -111,30 +139,6 @@ void HeavenHug::registerHackables()
 HackablePreview* HeavenHug::createDefaultPreview()
 {
 	return HeavenHugGenericPreview::create();
-}
-
-void HeavenHug::updateHeavenHug()
-{
-	float duration = MathUtils::clamp(this->travelDistance / (480.0f * HeavenHug::SpeedPer480Px), 0.25f, 10.0f);
-
-	if (this->heavenHug->getPositionY() >= 0.0f)
-	{
-		float delta = this->getTravelHeight();
-
-		this->heavenHug->runAction(Sequence::create(
-			EaseSineInOut::create(MoveTo::create(duration, Vec2(0.0f, -delta))),
-			CallFunc::create([=]() { this->updateHeavenHug(); }),
-			nullptr
-		));
-	}
-	else
-	{
-		this->heavenHug->runAction(Sequence::create(
-			EaseSineInOut::create(MoveTo::create(duration, Vec2::ZERO)),
-			CallFunc::create([=]() { this->updateHeavenHug(); }),
-			nullptr
-		));
-	}
 }
 
 NO_OPTIMIZE float HeavenHug::getTravelHeight()
@@ -165,8 +169,3 @@ NO_OPTIMIZE float HeavenHug::getTravelHeight()
 	return retVal;
 }
 END_NO_OPTIMIZE
-
-std::vector<Vec2> HeavenHug::createSpikeCollision()
-{
-	return std::vector<Vec2>();
-}

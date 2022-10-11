@@ -4,8 +4,12 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCDirector.h"
+#include "cocos/base/CCValue.h"
+#include "cocos/renderer/CCTextureCache.h"
 
 #include "Engine/Camera/GameCamera.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 
@@ -22,111 +26,21 @@ PlatformerDecorObject* PlatformerDecorObject::create(ValueMap& properties)
 
 PlatformerDecorObject::PlatformerDecorObject(ValueMap& properties) : super(properties)
 {
-	std::string name = this->properties.at(GameObject::MapKeyName).asString();
+	const std::string name = this->properties.at(GameObject::MapKeyName).asString();
+	this->filePath = "Private/Platformer/Decor/" + name + ".png";
+	this->sprite = LazyNode<Sprite>::create(CC_CALLBACK_0(PlatformerDecorObject::buildSprite, this));
+	this->objectSize = CSize(
+		 GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
+		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
+	);
+	this->enableHackerModeEvents = true;
 
-	// For decor, simply grab the resource of the same name of the object type
-	this->sprite = Sprite::create("Private/Platformer/Decor/" + name + ".png");
+    Director::getInstance()->getTextureCache()->cacheImageAsync(this->filePath);
 
-	float width = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat();
-	float height = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat();
-	float x = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyXPosition, Value(0.0f)).asFloat();
-	float y = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyYPosition, Value(0.0f)).asFloat();
-	bool repeatX = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyRepeatX, Value(false)).asBool();
-	bool repeatY = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyRepeatY, Value(false)).asBool();
+	// Makes getScreenBounds() work
+	this->setContentSize(this->objectSize);
 
-	if (repeatX || repeatY)
-	{
-		Texture2D::TexParams params = Texture2D::TexParams();
-		params.minFilter = GL_LINEAR;
-		params.magFilter = GL_LINEAR;
-
-		if (repeatX)
-		{
-			params.wrapS = GL_REPEAT;
-		}
-		
-		if (repeatY)
-		{
-			params.wrapT = GL_REPEAT;
-		}
-
-		if (repeatX && !repeatY)
-		{
-			sprite->setTextureRect(Rect(0.0f, 0.0f, width, sprite->getContentSize().height));
-
-			// X is repeating -- set the scale based on the height
-			this->setScale(height / sprite->getContentSize().height);
-		}
-		if (repeatY && !repeatX)
-		{
-			sprite->setTextureRect(Rect(0.0f, 0.0f, sprite->getContentSize().width, height));
-
-			// Y is repeating -- set the scale based on the width
-			this->setScale(width / sprite->getContentSize().width);
-		}
-		else if (repeatX && repeatY)
-		{
-			sprite->setTextureRect(Rect(0.0f, 0.0f, width, height));
-		}
-
-		Texture2D* texture = sprite->getTexture();
-
-		if (texture != nullptr)
-		{
-			texture->setTexParameters(params);
-		}
-	}
-	else
-	{
-		// Default -- set the scale of the decor based on the height
-		this->setScale(height / sprite->getContentSize().height);
-	}
-	
-	if (GameUtils::keyExists(properties, GameObject::MapKeyAutoScale))
-	{
-		this->setScale(GameUtils::getKeyOrDefault(properties, GameObject::MapKeyAutoScale, Value(1.0f)).asFloat());
-	}
-	
-	if (GameUtils::keyExists(properties, GameObject::MapKeyScale))
-	{
-		this->setScale(GameUtils::getKeyOrDefault(properties, GameObject::MapKeyScale, Value(1.0f)).asFloat());
-	}
-	
-	if (GameUtils::keyExists(properties, GameObject::MapKeyScaleX))
-	{
-		this->setScaleX(GameUtils::getKeyOrDefault(properties, GameObject::MapKeyScaleX, Value(1.0f)).asFloat());
-	}
-	
-	if (GameUtils::keyExists(properties, GameObject::MapKeyScaleY))
-	{
-		this->setScaleY(GameUtils::getKeyOrDefault(properties, GameObject::MapKeyScaleY, Value(1.0f)).asFloat());
-	}
-
-	// TMX tile maps rotate around a different anchor point than cocos2d-x by default, so we have to account for this
-	sprite->setAnchorPoint(Vec2(0.0f, 1.0f));
-	this->setPosition(Vec2(x, y + height));
-
-	this->setPositionZ(GameUtils::getKeyOrDefault(properties, GameObject::MapKeyDepth, Value(0.0f)).asFloat());
-
-	if (GameUtils::keyExists(properties, GameObject::MapKeyRotation))
-	{
-		float rotation = properties.at(GameObject::MapKeyRotation).asFloat();
-		this->setRotation(rotation);
-	}
-
-	if (GameUtils::keyExists(properties, "flip-x"))
-	{
-		bool flipX = properties.at("flip-x").asBool();
-		sprite->setFlippedX(flipX);
-	}
-
-	if (GameUtils::keyExists(properties, "flip-y"))
-	{
-		bool flipY = properties.at("flip-y").asBool();
-		sprite->setFlippedY(flipY);
-	}
-
-	this->addChild(sprite);
+	this->addChild(this->sprite);
 }
 
 PlatformerDecorObject::~PlatformerDecorObject()
@@ -138,6 +52,15 @@ void PlatformerDecorObject::onEnter()
 	super::onEnter();
 
 	this->runBounce();
+	this->scheduleUpdate();
+	this->optimizationHideOffscreenDecor();
+}
+
+void PlatformerDecorObject::update(float dt)
+{
+	super::update(dt);
+
+	this->optimizationHideOffscreenDecor();
 }
 
 void PlatformerDecorObject::onHackerModeEnable()
@@ -186,4 +109,103 @@ void PlatformerDecorObject::runBounce()
 		FiniteTimeAction* bounceY2 = EaseSineInOut::create(MoveBy::create(timeY, Vec2(0.0f, -floatY)));
 		this->runAction(RepeatForever::create(Sequence::create(bounceY1, bounceY2, nullptr)));
 	}
+}
+
+void PlatformerDecorObject::optimizationHideOffscreenDecor()
+{
+	static const CSize Padding = CSize(0.0f, 0.0f);
+	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	CRect thisRect = GameUtils::getScreenBounds(this, Padding);
+
+	if (CameraRect.intersectsRect(thisRect))
+	{
+		this->sprite->lazyGet()->setVisible(true);
+	}
+	else if (this->sprite->isBuilt())
+	{
+		this->sprite->lazyGet()->setVisible(false);
+	}
+}
+
+Sprite* PlatformerDecorObject::buildSprite()
+{
+	// For decor, simply grab the resource of the same name of the object type
+	Sprite* instance = Sprite::create(this->filePath);
+
+	bool repeatX = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyRepeatX, Value(false)).asBool();
+	bool repeatY = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyRepeatY, Value(false)).asBool();
+
+	if (repeatX || repeatY)
+	{
+		Texture2D::TexParams params = Texture2D::TexParams();
+		params.minFilter = GL_LINEAR;
+		params.magFilter = GL_LINEAR;
+
+		if (repeatX)
+		{
+			params.wrapS = GL_REPEAT;
+		}
+		
+		if (repeatY)
+		{
+			params.wrapT = GL_REPEAT;
+		}
+
+		if (repeatX && repeatY)
+		{
+			instance->setTextureRect(CRect(0.0f, 0.0f, this->objectSize.width, this->objectSize.height));
+		}
+		else if (repeatX)
+		{
+			float scale = this->objectSize.height / instance->getContentSize().height;
+
+			// X is repeating -- set the scale based on the height
+			instance->setScale(scale);
+
+			instance->setTextureRect(CRect(0.0f, 0.0f, this->objectSize.width / scale, instance->getContentSize().height));
+		}
+		else if (repeatY)
+		{
+			instance->setTextureRect(CRect(0.0f, 0.0f, instance->getContentSize().width, this->objectSize.height));
+
+			// Y is repeating -- set the scale based on the width
+			instance->setScale(this->objectSize.width / instance->getContentSize().width);
+		}
+
+		Texture2D* texture = instance->getTexture();
+
+		if (texture != nullptr)
+		{
+			texture->setTexParameters(params);
+		}
+	}
+	else
+	{
+		// Default -- set the scale of the decor based on the height
+		instance->setScale(this->objectSize.height / instance->getContentSize().height);
+	}
+	
+	// TMX tile maps rotate around a different anchor point than cocos2d-x by default, so we have to account for this
+	instance->setAnchorPoint(Vec2(0.0f, 1.0f));
+	instance->setPosition(Vec2(-this->objectSize.width / 2.0f, this->objectSize.height / 2.0f));
+
+	if (GameUtils::keyExists(this->properties, GameObject::MapKeyRotation))
+	{
+		float rotation = this->properties.at(GameObject::MapKeyRotation).asFloat();
+		instance->setRotation(rotation);
+	}
+
+	if (GameUtils::keyExists(this->properties, "flip-x"))
+	{
+		bool flipX = this->properties.at("flip-x").asBool();
+		instance->setFlippedX(flipX);
+	}
+
+	if (GameUtils::keyExists(this->properties, "flip-y"))
+	{
+		bool flipY = this->properties.at("flip-y").asBool();
+		instance->setFlippedY(flipY);
+	}
+
+	return instance;
 }

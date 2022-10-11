@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Necklaces/SapphireNecklaceRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* SapphireNecklace::clone()
 	return SapphireNecklace::create();
 }
 
-std::string SapphireNecklace::getItemName()
-{
-	return SapphireNecklace::SaveKey;
-}
-
 LocalizedString* SapphireNecklace::getString()
 {
 	return Strings::Items_Equipment_Gear_Necklaces_SapphireNecklace::create();
 }
 
-std::string SapphireNecklace::getIconResource()
+const std::string& SapphireNecklace::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Necklaces_SapphireNecklace;
 }
 
-std::string SapphireNecklace::getSerializationKey()
+const std::string& SapphireNecklace::getIdentifier()
 {
 	return SapphireNecklace::SaveKey;
+}
+
+Recipe* SapphireNecklace::getRecipe()
+{
+	return SapphireNecklaceRecipe::create();
 }

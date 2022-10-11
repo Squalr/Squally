@@ -29,9 +29,9 @@ WoodenAxePlans::~WoodenAxePlans()
 {
 }
 
-Item* WoodenAxePlans::craft()
+std::vector<Item*> WoodenAxePlans::craft()
 {
-	return WoodenAxe::create();
+	return { WoodenAxe::create() };
 }
 
 std::vector<std::tuple<Item*, int>> WoodenAxePlans::getReagentsInternal()
@@ -47,17 +47,12 @@ Item* WoodenAxePlans::clone()
 	return WoodenAxePlans::create();
 }
 
-std::string WoodenAxePlans::getItemName()
-{
-	return WoodenAxePlans::SaveKey;
-}
-
 LocalizedString* WoodenAxePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_WoodenAxe::create();
 }
 
-std::string WoodenAxePlans::getIconResource()
+const std::string& WoodenAxePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -67,7 +62,7 @@ std::string WoodenAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_WoodenAxe;
 }
 
-std::string WoodenAxePlans::getSerializationKey()
+const std::string& WoodenAxePlans::getIdentifier()
 {
 	return WoodenAxePlans::SaveKey;
 }

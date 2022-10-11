@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier7/PriestHatPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* PriestHat::clone()
 	return PriestHat::create();
 }
 
-std::string PriestHat::getItemName()
-{
-	return PriestHat::SaveKey;
-}
-
 LocalizedString* PriestHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_PriestHat::create();
 }
 
-std::string PriestHat::getIconResource()
+const std::string& PriestHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_PriestHat;
 }
 
-std::string PriestHat::getSerializationKey()
+const std::string& PriestHat::getIdentifier()
 {
 	return PriestHat::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string PriestHat::getSerializationKey()
 Vec2 PriestHat::getDisplayOffset()
 {
 	return Vec2(-10.0f, 24.0f);
+}
+
+Recipe* PriestHat::getRecipe()
+{
+	return PriestHatPlans::create();
 }

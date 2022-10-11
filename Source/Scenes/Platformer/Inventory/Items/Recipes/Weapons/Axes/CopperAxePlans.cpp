@@ -29,9 +29,9 @@ CopperAxePlans::~CopperAxePlans()
 {
 }
 
-Item* CopperAxePlans::craft()
+std::vector<Item*> CopperAxePlans::craft()
 {
-	return CopperAxe::create();
+	return { CopperAxe::create() };
 }
 
 std::vector<std::tuple<Item*, int>> CopperAxePlans::getReagentsInternal()
@@ -48,17 +48,12 @@ Item* CopperAxePlans::clone()
 	return CopperAxePlans::create();
 }
 
-std::string CopperAxePlans::getItemName()
-{
-	return CopperAxePlans::SaveKey;
-}
-
 LocalizedString* CopperAxePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_CopperAxe::create();
 }
 
-std::string CopperAxePlans::getIconResource()
+const std::string& CopperAxePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string CopperAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_CopperAxe;
 }
 
-std::string CopperAxePlans::getSerializationKey()
+const std::string& CopperAxePlans::getIdentifier()
 {
 	return CopperAxePlans::SaveKey;
 }

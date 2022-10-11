@@ -6,7 +6,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ItemResources.h"
@@ -48,7 +48,7 @@ void IOUDrop25::initializeListeners()
 	{
 		ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 		{
-			squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+			squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 			{
 				entityInventoryBehavior->getCurrencyInventory()->addCurrency(IOU::getIOUIdentifier(), 25);
 			});

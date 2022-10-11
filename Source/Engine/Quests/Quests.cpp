@@ -22,7 +22,7 @@ Quests::~Quests()
 
 ValueMap Quests::getQuestData()
 {
-	return SaveManager::getProfileDataOrDefault(Quests::QuestsSaveKey, Value(ValueMap())).asValueMap();
+	return SaveManager::GetProfileDataOrDefault(Quests::QuestsSaveKey, Value(ValueMap())).asValueMap();
 }
 
 void Quests::saveQuestLineProgress(std::string questLine, std::string currentQuest)

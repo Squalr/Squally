@@ -21,7 +21,7 @@ SpecialAbsorb* SpecialAbsorb::create()
 	return instance;
 }
 
-SpecialAbsorb::SpecialAbsorb() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 14 }}), ItemMeta(3, 3))
+SpecialAbsorb::SpecialAbsorb() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 18 }}), ItemMeta(3, 3))
 {
 }
 
@@ -34,22 +34,17 @@ Item* SpecialAbsorb::clone()
 	return SpecialAbsorb::create();
 }
 
-std::string SpecialAbsorb::getItemName()
-{
-	return SpecialAbsorb::SaveKey;
-}
-
 LocalizedString* SpecialAbsorb::getString()
 {
 	return Strings::Hexus_Cards_Absorb::create();
 }
 
-std::string SpecialAbsorb::getIconResource()
+const std::string& SpecialAbsorb::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialAbsorb::getSerializationKey()
+const std::string& SpecialAbsorb::getIdentifier()
 {
 	return SpecialAbsorb::SaveKey;
 }

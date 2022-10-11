@@ -1,7 +1,6 @@
 #include "WindGenericPreview.h"
 
 #include "cocos/2d/CCActionEase.h"
-#include "cocos/2d/CCParticleSystem.h"
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Particles/SmartParticles.h"
@@ -23,8 +22,8 @@ WindGenericPreview::WindGenericPreview()
 {
 	this->windParticles = SmartParticles::create(ParticleResources::Gust);
 
-	this->windParticles->getParticles()->setAnchorPoint(Vec2::ZERO);
-	this->windParticles->getParticles()->setPosVar(Vec2(HackablePreview::PreviewRadius, HackablePreview::PreviewRadius));
+	this->windParticles->setAnchorPoint(Vec2::ZERO);
+	this->windParticles->setPosVar(Vec2(HackablePreview::PreviewRadius, HackablePreview::PreviewRadius));
 	this->windParticles->setGrouped();
 	this->windParticles->setScale(0.4f);
 

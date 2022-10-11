@@ -5,7 +5,46 @@
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Input/ClickableTextNode.h"
-#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/LexiconPages.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/BinaryIntroPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/BinarySelectPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/And/AndPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Bswap/BswapPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Not/NotPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Or/OrPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Shl/ShlPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Shr/ShrPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Binary/Xor/XorPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ChapterSelectPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowIntroPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/ControlFlowSelectPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/ControlFlow/Nop/NopPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/DataIntroPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/DataSelectPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Add/AddExamplesPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Add/AddPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Dec/DecExamplesPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Dec/DecPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Div/DivExamplesPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Div/DivPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Inc/IncExamplesPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Inc/IncPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Mov/MovExamplesPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Mov/MovPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Mul/MulExamplesPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Mul/MulPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Neg/NegExamplesPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Neg/NegPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Pop/PopExamplesPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Pop/PopPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Push/PushExamplesPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Push/PushPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Sub/SubExamplesPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Data/Sub/SubPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/IntroPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/FloatingPointIntroPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/FloatingPoint/FloatingPointSelectPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/VectorIntroPage.h"
+#include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/Vector/VectorSelectPage.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedSprite.h"
 #include "Engine/Utils/GameUtils.h"
@@ -27,9 +66,6 @@ Lexicon* Lexicon::create()
 
 Lexicon::Lexicon()
 {
-	this->closeCallback = nullptr;
-	this->pages = std::vector<LexiconPage*>();
-
 	this->background = Sprite::create(UIResources::Menus_LexiconMenu_desert_background);
 	this->banner = Sprite::create(UIResources::Menus_LexiconMenu_Banner);
 	this->title = LocalizedSprite::create(UIResources::Menus_LexiconMenu_Title_Lexicon_en);
@@ -138,8 +174,8 @@ void Lexicon::onEnter()
 
 	this->defer([=]()
 	{
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(IntroPage::Identifier));
-		HackableEvents::TriggerOpenLexiconPage(HackableEvents::OpenLexiconPageArgs(ChapterSelectPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(IntroPage::Identifier));
+		HackableEvents::TriggerOpenLexiconPage(OpenLexiconPageArgs(ChapterSelectPage::Identifier));
 	});
 }
 
@@ -149,7 +185,7 @@ void Lexicon::initializePositions()
 
 	const Vec2 BookOffset = Vec2(32.0f, -48.0f);
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->banner->setPosition(Vec2(visibleSize.width / 2.0f - 712.0f, visibleSize.height / 2.0f + 32.0f));
 	this->title->setPosition(Vec2(visibleSize.width / 2.0f - 712.0f, visibleSize.height / 2.0f + 464.0f));
@@ -167,6 +203,18 @@ void Lexicon::initializeListeners()
 
 	this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
+		this->close();
+	});
+
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
+	{
+		if (!GameUtils::isFocused(this))
+		{
+			return;
+		}
+		
+		args->handle();
+
 		this->close();
 	});
 }

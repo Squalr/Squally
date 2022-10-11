@@ -1,35 +1,35 @@
 #pragma once
 
+#include "cocos/base/CCValue.h"
+
 #include "Engine/GlobalScene.h"
 
 namespace cocos2d
 {
-	class Sprite;
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
+	namespace cocos_experimental
+	{
+		class TMXTiledMap;
+	}
 }
 
 class CodeHud;
 class DeveloperHud;
 class GameMap;
 class Hud;
-class IngameMenu;
 class LayerDeserializer;
+template <class T> class LazyNode;
 class MatrixRain;
 class MusicOverlay;
 class OptionsMenu;
-class PauseMenu;
-class PlatformerDialogueBox;
 class RadialMenu;
-class HackerModeHud;
 
 class MapBase : public GlobalScene
 {
 public:
-	virtual bool loadMap(std::string mapResource);
+	bool loadMap(std::string mapResource, bool useFallback = true);
 
 protected:
-	MapBase(bool useIngameMenu, bool allowHackerMode);
+	MapBase(bool allowHackerMode);
 	virtual ~MapBase();
 
 	void onEnter() override;
@@ -40,38 +40,44 @@ protected:
 	void onHackerModeDisable() override;
 	void addLayerDeserializer(LayerDeserializer* layerDeserializer);
 	void addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers);
-	void openPauseMenu(cocos2d::Node* refocusTarget);
+	virtual void openPauseMenu(cocos2d::Node* refocusTarget);
+	virtual bool loadMapFromTmx(std::string mapResource, cocos2d::cocos_experimental::TMXTiledMap* mapRaw, bool useFallback = true);
 
-	cocos2d::Node* hudNode;
-	Hud* hud;
-	Hud* hackerModeVisibleHud;
-	Hud* miniGameHud;
-	Hud* backMenuHud;
-	Hud* menuBackDrop;
-	Hud* menuHud;
-	Hud* topMenuHud;
-	Hud* confirmationMenuHud;
-	IngameMenu* ingameMenu;
-	PauseMenu* pauseMenu;
-	GameMap* map;
+	cocos2d::Node* hudNode = nullptr;
+	Hud* hud = nullptr;
+	Hud* hackerModeVisibleHud = nullptr;
+	Hud* miniGameHud = nullptr;
+	Hud* backMenuHud = nullptr;
+	Hud* menuBackDrop = nullptr;
+	Hud* hackMenuHud = nullptr;
+	Hud* menuHud = nullptr;
+	Hud* topMenuHud = nullptr;
+	Hud* confirmationMenuHud = nullptr;
+	LazyNode<OptionsMenu>* optionsMenu = nullptr;
+	LazyNode<CodeHud>* codeHud = nullptr;
+	LazyNode<RadialMenu>* radialMenu = nullptr;
+	cocos2d::Node* mapNode = nullptr;
+	GameMap* map = nullptr;
 
-	bool canPause;
-	bool allowHackerMode;
+	bool canPause = false;
+	bool allowHackerMode = false;
+	bool hackerModeEnabled = false;
 	std::string mapResource;
 	std::vector<std::string> mapArgs;
 
-	cocos2d::Node* mapNode;
-
 private:
 	typedef GlobalScene super;
-	void toggleHackerMode(void* userData);
 
-	Hud* hackerModeGlow;
-	MatrixRain* hackerModeRain;
-	CodeHud* codeHud;
-	RadialMenu* radialMenu;
-	OptionsMenu* optionsMenu;
-	MusicOverlay* musicOverlay;
+	void toggleHackerMode(void* userData);
+	CodeHud* buildCodeHud();
+	RadialMenu* buildRadialMenu();
+	OptionsMenu* buildOptionsMenu();
+	
+	Hud* hackerModeGlow = nullptr;
+	MatrixRain* hackerModeRain = nullptr;
+	MusicOverlay* musicOverlay = nullptr;
 
 	std::vector<LayerDeserializer*> layerDeserializers;
+
+	static std::map<std::string, cocos2d::cocos_experimental::TMXTiledMap*> MapCache;
 };

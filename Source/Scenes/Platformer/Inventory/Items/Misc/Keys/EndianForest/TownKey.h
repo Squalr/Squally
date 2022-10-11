@@ -1,17 +1,16 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Misc/Misc.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Keys/Key.h"
 
-class TownKey : public Misc
+class TownKey : public Key
 {
 public:
 	static TownKey* create();
 
 	Item* clone() override;
-	std::string getItemName() override;
 	LocalizedString* getString() override;
-	std::string getIconResource() override;
-	std::string getSerializationKey() override;
+	const std::string& getIconResource() override;
+	const std::string& getIdentifier() override;
 
 	static const std::string SaveKey;
 
@@ -20,5 +19,5 @@ protected:
 	virtual ~TownKey();
 
 private:
-	typedef Misc super;
+	typedef Key super;
 };

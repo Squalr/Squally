@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Wands/ChieftainsWandPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* ChieftainsWand::clone()
 	return ChieftainsWand::create();
 }
 
-std::string ChieftainsWand::getItemName()
-{
-	return ChieftainsWand::SaveKey;
-}
-
 LocalizedString* ChieftainsWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_ChieftainsWand::create();
 }
 
-std::string ChieftainsWand::getIconResource()
+const std::string& ChieftainsWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_ChieftainsWand;
 }
 
-std::string ChieftainsWand::getSerializationKey()
+const std::string& ChieftainsWand::getIdentifier()
 {
 	return ChieftainsWand::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string ChieftainsWand::getSerializationKey()
 Vec2 ChieftainsWand::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* ChieftainsWand::getRecipe()
+{
+	return ChieftainsWandPlans::create();
 }

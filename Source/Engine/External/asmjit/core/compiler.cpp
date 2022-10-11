@@ -461,7 +461,7 @@ Error BaseCompiler::_newConst(BaseMem& out, uint32_t scope, const void* data, si
     return reportError(err);
 
   out = BaseMem(BaseMem::Decomposed {
-    Label::kLabelTag,      // Base type.
+    AsmLabel::kLabelTag,      // Base type.
     pool->id(),            // Base id.
     0,                     // Index type.
     0,                     // Index id.

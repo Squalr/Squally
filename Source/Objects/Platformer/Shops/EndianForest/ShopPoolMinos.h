@@ -13,10 +13,6 @@ public:
 protected:
 	ShopPoolMinos(cocos2d::ValueMap& properties);
 	virtual ~ShopPoolMinos();
-	
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
 
 private:
 	typedef ShopPool super;

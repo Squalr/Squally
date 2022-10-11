@@ -29,9 +29,9 @@ TransmuteWoodToCoalRecipe::~TransmuteWoodToCoalRecipe()
 {
 }
 
-Item* TransmuteWoodToCoalRecipe::craft()
+std::vector<Item*> TransmuteWoodToCoalRecipe::craft()
 {
-	return Coal::create();
+	return { Coal::create() };
 }
 
 std::vector<std::tuple<Item*, int>> TransmuteWoodToCoalRecipe::getReagentsInternal()
@@ -47,17 +47,12 @@ Item* TransmuteWoodToCoalRecipe::clone()
 	return TransmuteWoodToCoalRecipe::create();
 }
 
-std::string TransmuteWoodToCoalRecipe::getItemName()
-{
-	return TransmuteWoodToCoalRecipe::SaveKey;
-}
-
 LocalizedString* TransmuteWoodToCoalRecipe::getString()
 {
 	return Strings::Items_Crafting_Recipes_TransmuteWoodToCoal::create();
 }
 
-std::string TransmuteWoodToCoalRecipe::getIconResource()
+const std::string& TransmuteWoodToCoalRecipe::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -67,7 +62,7 @@ std::string TransmuteWoodToCoalRecipe::getCraftedItemIconResource()
 	return ItemResources::Crafting_Smithing_Coal;
 }
 
-std::string TransmuteWoodToCoalRecipe::getSerializationKey()
+const std::string& TransmuteWoodToCoalRecipe::getIdentifier()
 {
 	return TransmuteWoodToCoalRecipe::SaveKey;
 }

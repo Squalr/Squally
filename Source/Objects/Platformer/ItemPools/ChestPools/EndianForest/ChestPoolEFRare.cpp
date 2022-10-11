@@ -23,7 +23,7 @@ ChestPoolEFRare::ChestPoolEFRare(ValueMap& properties) : super(
 	{
 	})
 {
-	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Guaranteed));
 }

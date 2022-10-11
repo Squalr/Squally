@@ -24,7 +24,7 @@ EarthGolem::EarthGolem(ValueMap& properties) : super(properties,
 	EarthGolem::MapKey,
 	EntityResources::Enemies_DataMines_EarthGolem_Animations,
 	EntityResources::Enemies_DataMines_EarthGolem_Emblem,
-	Size(256.0f, 224.0f),
+	CSize(256.0f, 224.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {
@@ -36,7 +36,7 @@ EarthGolem::~EarthGolem()
 
 Vec2 EarthGolem::getDialogueOffset()
 {
-	return Vec2(-48.0f, -144.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 LocalizedString* EarthGolem::getEntityName()

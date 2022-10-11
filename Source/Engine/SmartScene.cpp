@@ -7,6 +7,7 @@
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListener.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/DeveloperModeEvents.h"
@@ -32,8 +33,6 @@ SmartScene* SmartScene::create()
 
 SmartScene::SmartScene()
 {
-	this->hackermodeEnabled = false;
-	this->fadeAction = nullptr;
 	this->fadeSpeed = SmartScene::defaultFadeSpeed;
 	this->layerColorHud = Hud::create();
 	this->layerColor = LayerColor::create(Color4B(0, 0, 0, 255));
@@ -48,6 +47,7 @@ SmartScene::SmartScene()
 
 SmartScene::~SmartScene()
 {
+	this->removeNonGlobalListeners();
 }
 
 void SmartScene::onEnter()
@@ -91,6 +91,33 @@ void SmartScene::onExit()
 	this->removeNonGlobalListeners();
 }
 
+void SmartScene::pause()
+{
+	for (const auto& next : this->listeners)
+	{
+		next->setPaused(true);
+	}
+
+	// On pause cancel the fade in animation
+	if (this->fadeAction != nullptr)
+	{
+		this->stopAction(this->fadeAction);
+		this->layerColor->setOpacity(0);
+	}
+
+	super::pause();
+}
+
+void SmartScene::resume()
+{
+	for (const auto& next : this->listeners)
+	{
+		next->setPaused(false);
+	}
+
+	super::resume();
+}
+
 void SmartScene::initializePositions()
 {
 }
@@ -114,7 +141,7 @@ void SmartScene::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
 	{
-		HackableEvents::HackToggleArgs* args = static_cast<HackableEvents::HackToggleArgs*>(eventCustom->getUserData());
+		HackToggleArgs* args = static_cast<HackToggleArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -160,71 +187,82 @@ bool SmartScene::isDeveloperModeEnabled()
 
 void SmartScene::removeAllListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTarget(this);
+	this->removeNonGlobalListeners();
+
+	for (const auto& listener : this->listenersGlobal)
+	{
+		this->getEventDispatcher()->removeEventListener(listener);
+	}
+
+	this->listenersGlobal.clear();
 }
 
 void SmartScene::removeNonGlobalListeners()
 {
-	this->getEventDispatcher()->removeEventListenersForTargetWhere(this, [=](EventListener* listener)
+	for (const auto& listener : this->listeners)
 	{
-		return !listener->isGlobal();
-	});
+		this->getEventDispatcher()->removeEventListener(listener);
+	}
+
+	for (const auto& listener : this->listenersIgnorePause)
+	{
+		this->getEventDispatcher()->removeEventListener(listener);
+	}
+
+	this->listeners.clear();
+	this->listenersIgnorePause.clear();
 }
 
-void SmartScene::addEventListener(EventListener* listener)
+void SmartScene::addEventListener(EventListenerCustom* listener)
+{
+	if (listener == nullptr)
+	{
+		return;
+	}
+	
+	this->listeners.insert(listener);
+	this->getEventDispatcher()->addEventListener(listener);
+	if (listener == nullptr)
+	{
+		return;
+	}
+
+	this->getEventDispatcher()->addEventListener(listener);
+}
+
+void SmartScene::addEventListenerIgnorePause(EventListenerCustom* listener)
 {
 	if (listener == nullptr)
 	{
 		return;
 	}
 
-	this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
+	this->listenersIgnorePause.insert(listener);
+	this->getEventDispatcher()->addEventListener(listener);
 }
 
-void SmartScene::removeEventListener(EventListener* listener)
+void SmartScene::addGlobalEventListener(EventListenerCustom* listener)
 {
 	if (listener == nullptr)
 	{
 		return;
 	}
 
+	this->listenersGlobal.insert(listener);
+	this->getEventDispatcher()->addEventListener(listener);
+}
+
+void SmartScene::removeEventListener(EventListenerCustom* listener)
+{
+	if (listener == nullptr)
+	{
+		return;
+	}
+
+	this->listeners.erase(listener);
+	this->listenersIgnorePause.erase(listener);
+	this->listenersGlobal.erase(listener);
 	this->getEventDispatcher()->removeEventListener(listener);
-}
-
-void SmartScene::addEventListenerIgnorePause(EventListener* listener)
-{
-	if (listener == nullptr)
-	{
-		return;
-	}
-
-	EventListenerCustom* wrapper = EventListenerCustom::create(listener->getListenerId(), [=](EventCustom* eventCustom)
-	{
-		if (GameUtils::isInRunningScene(this))
-		{
-			listener->invoke(eventCustom);
-		}
-	});
-
-	wrapper->setIgnorePause(true);
-
-	// Keep the original listener around so that we can invoke it, but disable it
-	listener->setEnabled(false);
-
-	this->addEventListener(wrapper);
-	this->addEventListener(listener);
-}
-
-void SmartScene::addGlobalEventListener(EventListener* listener)
-{
-	if (listener == nullptr)
-	{
-		return;
-	}
-
-	listener->setIsGlobal(true);
-
-	this->addEventListenerIgnorePause(listener);
 }
 
 void SmartScene::setFadeSpeed(float newFadeSpeed)
@@ -237,19 +275,7 @@ float SmartScene::getFadeSpeed()
 	return this->fadeSpeed;
 }
 
-void SmartScene::pause()
-{
-	// On pause cancel the fade in animation
-	if (this->fadeAction != nullptr)
-	{
-		this->stopAction(this->fadeAction);
-		this->layerColor->setOpacity(0);
-	}
-
-	super::pause();
-}
-
-void SmartScene::defer(std::function<void()> task)
+void SmartScene::defer(std::function<void()> task, int ticks)
 {
 		unsigned long long taskId = SmartScene::TaskId++;
 		std::string eventKey = "EVENT_SCENE_DEFER_TASK_" + std::to_string(taskId);
@@ -257,16 +283,24 @@ void SmartScene::defer(std::function<void()> task)
 		// Schedule the task for the next update loop
 		this->schedule([=](float dt)
 		{
-			task();
+			if (ticks <= 1)
+			{
+				task();
+			}
+			else
+			{
+				this->defer(task, ticks - 1);
+			}
+
 			this->unschedule(eventKey);
-		}, 1.0f / 60.0f, 1, 0.0f, eventKey);
+		}, eventKey, 0.0f, 1);
 }
 
-void SmartScene::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+void SmartScene::whenKeyPressed(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(InputEvents::KeyboardEventArgs*)> callback, bool requireVisible)
 {
 	this->addEventListener(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
 	{
-		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
 		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 		{
@@ -278,11 +312,11 @@ void SmartScene::whenKeyPressed(std::set<cocos2d::EventKeyboard::KeyCode> keyCod
 	}));
 }
 
-void SmartScene::whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+void SmartScene::whenKeyPressedIgnorePause(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(InputEvents::KeyboardEventArgs*)> callback, bool requireVisible)
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
 	{
-		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
 		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 		{
@@ -294,13 +328,13 @@ void SmartScene::whenKeyPressedIgnorePause(std::set<cocos2d::EventKeyboard::KeyC
 	}));
 }
 
-void SmartScene::whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+void SmartScene::whenKeyPressedHackerMode(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(InputEvents::KeyboardEventArgs*)> callback, bool requireVisible)
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustPressed, [=](EventCustom* eventCustom)
 	{
 		if (this->hackermodeEnabled)
 		{
-			InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+			InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
 			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 			{
@@ -313,11 +347,11 @@ void SmartScene::whenKeyPressedHackerMode(std::set<cocos2d::EventKeyboard::KeyCo
 	}));
 }
 
-void SmartScene::whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+void SmartScene::whenKeyReleased(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(InputEvents::KeyboardEventArgs*)> callback, bool requireVisible)
 {
 	this->addEventListener(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
 	{
-		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
 		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 		{
@@ -329,11 +363,11 @@ void SmartScene::whenKeyReleased(std::set<cocos2d::EventKeyboard::KeyCode> keyCo
 	}));
 }
 
-void SmartScene::whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+void SmartScene::whenKeyReleasedIgnorePause(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(InputEvents::KeyboardEventArgs*)> callback, bool requireVisible)
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
 	{
-		InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+		InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
 		if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 		{
@@ -345,13 +379,13 @@ void SmartScene::whenKeyReleasedIgnorePause(std::set<cocos2d::EventKeyboard::Key
 	}));
 }
 
-void SmartScene::whenKeyReleasedHackerMode(std::set<cocos2d::EventKeyboard::KeyCode> keyCodes, std::function<void(InputEvents::InputArgs*)> callback, bool requireVisible)
+void SmartScene::whenKeyReleasedHackerMode(std::set<cocos2d::InputEvents::KeyCode> keyCodes, std::function<void(InputEvents::KeyboardEventArgs*)> callback, bool requireVisible)
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventKeyJustReleased, [=](EventCustom* eventCustom)
 	{
 		if (this->hackermodeEnabled)
 		{
-			InputEvents::InputArgs* args = static_cast<InputEvents::InputArgs*>(eventCustom->getUserData());
+			InputEvents::KeyboardEventArgs* args = static_cast<InputEvents::KeyboardEventArgs*>(eventCustom->getData());
 
 			if (args != nullptr && !args->isHandled() && keyCodes.find(args->keycode) != keyCodes.end())
 			{

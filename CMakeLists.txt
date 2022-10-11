@@ -1,11 +1,17 @@
 # Copyright 2019 Squalr
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
-project(Squally VERSION 1.1.3 LANGUAGES C CXX)
+project(Squally VERSION 1.1.5 LANGUAGES C CXX)
 set(CMAKE_OSX_DEPLOYMENT_TARGET 10.10)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
+# Enable if we ever decide to use IWYU
+# find_program(IWYU_PATH NAMES include-what-you-use iwyu)
+# if(IWYU_PATH)
+    # set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE ${IWYU_PATH})
+    # set(CMAKE_C_INCLUDE_WHAT_YOU_USE ${IWYU_PATH})
+# endif()
+
 # External dependencies
-find_package(RapidJSON REQUIRED)
 find_package(tinyxml2 REQUIRED)
 find_package(SteamWorks REQUIRED)
 
@@ -18,13 +24,6 @@ endif()
 ###############################################################################
 # Dependency Fixing
 ###############################################################################
-
-# Fix rapidjson target
-add_library(RapidJSON INTERFACE)
-add_library(RapidJSON::RapidJSON ALIAS RapidJSON)
-target_include_directories(RapidJSON INTERFACE
-    ${RAPIDJSON_INCLUDE_DIRS}
-)
 
 # Fix tinyxml2 relwithdebinfo configuration (chooses debug instead of release
 # for relwithdebinfo)

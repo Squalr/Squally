@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/BoneHammerPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* BoneHammer::clone()
 	return BoneHammer::create();
 }
 
-std::string BoneHammer::getItemName()
-{
-	return BoneHammer::SaveKey;
-}
-
 LocalizedString* BoneHammer::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_BoneHammer::create();
 }
 
-std::string BoneHammer::getIconResource()
+const std::string& BoneHammer::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Maces_BoneHammer;
 }
 
-std::string BoneHammer::getSerializationKey()
+const std::string& BoneHammer::getIdentifier()
 {
 	return BoneHammer::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string BoneHammer::getSerializationKey()
 Vec2 BoneHammer::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* BoneHammer::getRecipe()
+{
+	return BoneHammerPlans::create();
 }

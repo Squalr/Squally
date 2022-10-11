@@ -47,7 +47,7 @@ void JmpMarker::onEnter()
 {
 	super::onEnter();
 
-	ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(this->assemblyLabel));
+	ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->assemblyLabel));
 	
 	this->scheduleUpdate();
 }
@@ -67,7 +67,7 @@ void JmpMarker::initializeListeners()
 		PointerTraceEvents::EventEntityMoved,
 		[=](EventCustom* eventCustom)
 		{
-			PointerTraceEvents::PointerTraceEntityMovedArgs* args = static_cast<PointerTraceEvents::PointerTraceEntityMovedArgs*>(eventCustom->getUserData());
+			PointerTraceEvents::PointerTraceEntityMovedArgs* args = static_cast<PointerTraceEvents::PointerTraceEntityMovedArgs*>(eventCustom->getData());
 
 			if (args != nullptr && args->gridEntity != nullptr && args->gridEntity->getGridIndex() == this->getGridIndex())
 			{
@@ -99,7 +99,7 @@ void JmpMarker::update(float dt)
 {
 	super::update(dt);
 
-	if (Input::isPressed(EventKeyboard::KeyCode::KEY_TAB) || Input::isPressed(EventKeyboard::KeyCode::KEY_SHIFT))
+	if (Input::IsPressed(InputEvents::KeyCode::KEY_TAB) || Input::IsPressed(InputEvents::KeyCode::KEY_SHIFT))
 	{
 		this->assemblyLabel->setOpacity(0);
 	}

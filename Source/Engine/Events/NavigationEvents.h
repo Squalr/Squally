@@ -2,9 +2,6 @@
 #include <functional>
 #include <string>
 
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventDispatcher.h"
-
 class SmartScene;
 
 class NavigationEvents
@@ -14,7 +11,7 @@ public:
 
 	struct LoadSceneArgs
 	{
-		std::function<SmartScene*()> sceneCreator;
+		std::function<SmartScene*()> sceneCreator = nullptr;
 
 		LoadSceneArgs(std::function<SmartScene*()> sceneCreator) : sceneCreator(sceneCreator) { }
 	};

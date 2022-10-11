@@ -1304,8 +1304,8 @@ public:
   inline Iterator operator++(int) noexcept { T* prev = _p; operator+=(1); return Iterator(prev); }
   inline Iterator operator--(int) noexcept { T* prev = _p; operator-=(1); return Iterator(prev); }
 
-  inline bool operator==(const Iterator& other) noexcept { return _p == other._p; }
-  inline bool operator!=(const Iterator& other) noexcept { return _p != other._p; }
+  inline bool operator==(const Iterator& other) const noexcept { return _p == other._p; }
+  inline bool operator!=(const Iterator& other) const noexcept { return _p != other._p; }
 
   inline T& operator*() const noexcept { return _p[0]; }
 

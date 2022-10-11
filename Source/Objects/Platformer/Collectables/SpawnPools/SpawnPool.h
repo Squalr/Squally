@@ -17,8 +17,8 @@ public:
 protected:
 	struct SpawnObjectEvent
 	{
-		float probability;
-		std::function<Collectable*()> spawnFunc;
+		float probability = 0.0f;
+		std::function<Collectable*()> spawnFunc = nullptr;
 
 		SpawnObjectEvent(float probability, std::function<Collectable*()> spawnFunc) : probability(probability), spawnFunc(spawnFunc) { }
 	};
@@ -38,5 +38,5 @@ private:
 	void saveCollected();
 	bool isCollected();
 
-	GameObject* owner;
+	GameObject* owner = nullptr;
 };

@@ -15,5 +15,5 @@ protected:
 private:
 	typedef GameObject super;
 
-	Hud* background;
+	Hud* background = nullptr;
 };

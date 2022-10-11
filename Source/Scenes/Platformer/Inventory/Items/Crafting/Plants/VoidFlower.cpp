@@ -33,22 +33,17 @@ Item* VoidFlower::clone()
 	return VoidFlower::create();
 }
 
-std::string VoidFlower::getItemName()
-{
-	return VoidFlower::SaveKey;
-}
-
 LocalizedString* VoidFlower::getString()
 {
 	return Strings::Items_Crafting_Plants_VoidFlower::create();
 }
 
-std::string VoidFlower::getIconResource()
+const std::string& VoidFlower::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Plants_VoidFlower;
 }
 
-std::string VoidFlower::getSerializationKey()
+const std::string& VoidFlower::getIdentifier()
 {
 	return VoidFlower::SaveKey;
 }

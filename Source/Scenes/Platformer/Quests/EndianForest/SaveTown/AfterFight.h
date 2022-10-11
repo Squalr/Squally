@@ -31,10 +31,10 @@ private:
 	void runCinematicSequencePart1();
 	void runCinematicSequencePart2();
 
-	Sarude* sarude;
-	Scrappy* scrappy;
-	Squally* squally;
-	MagePortal* magePortal;
+	Sarude* sarude = nullptr;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
+	MagePortal* magePortal = nullptr;
 
 	static const std::string TagQuestPortal;
 };

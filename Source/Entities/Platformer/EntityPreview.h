@@ -17,18 +17,19 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	EntityPreview(PlatformerEntity* entity);
 	virtual ~EntityPreview();
+	
 	void onEnter() override;
 	void initializePositions() override;
 
-	PlatformerEntity* entityClone;
-	std::string animationResource;
-	float scale;
-	cocos2d::Vec2 offset;
+private:
+	typedef HackablePreview super;
 
-	SmartAnimationNode* previewAnimation;
+	PlatformerEntity* entityClone = nullptr;
+	std::string animationResource;
+	float scale = 0.0f;
+	cocos2d::Vec2 offset = cocos2d::Vec2::ZERO;
+	SmartAnimationNode* previewAnimation = nullptr;
 };

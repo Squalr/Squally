@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier5/ReindeerHatPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* ReindeerHat::clone()
 	return ReindeerHat::create();
 }
 
-std::string ReindeerHat::getItemName()
-{
-	return ReindeerHat::SaveKey;
-}
-
 LocalizedString* ReindeerHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_ReindeerHat::create();
 }
 
-std::string ReindeerHat::getIconResource()
+const std::string& ReindeerHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_ReindeerHat;
 }
 
-std::string ReindeerHat::getSerializationKey()
+const std::string& ReindeerHat::getIdentifier()
 {
 	return ReindeerHat::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string ReindeerHat::getSerializationKey()
 Vec2 ReindeerHat::getDisplayOffset()
 {
 	return Vec2(-12.0f, 6.0f);
+}
+
+Recipe* ReindeerHat::getRecipe()
+{
+	return ReindeerHatPlans::create();
 }

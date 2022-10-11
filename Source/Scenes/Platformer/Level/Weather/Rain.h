@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Engine/Particles/SmartParticles.h"
 #include "Engine/Maps/MapLayer.h"
 
 class SmartParticles;
@@ -22,5 +21,5 @@ protected:
 private:
 	typedef MapLayer super;
 
-	SmartParticles* rain;
+	SmartParticles* rain = nullptr;
 };

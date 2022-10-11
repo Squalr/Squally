@@ -38,18 +38,16 @@ NotificationHud* NotificationHud::create()
 
 NotificationHud::NotificationHud()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-
-	this->previousFocus = nullptr;
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
+	
 	this->contentNode = Node::create();
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 192), visibleSize.width, visibleSize.height);
 	this->menuBack = Sprite::create(UIResources::Menus_ConfirmMenu_ConfirmMenu);
 	this->title = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, Strings::Common_Empty::create());
-	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), Size(560.0f, 0.0f));
+	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Empty::create(), CSize(560.0f, 0.0f));
 	this->notificationSound = Sound::create();
 	this->takeoverNode = Node::create();
 	this->notificationsNode = Node::create();
-	this->slotCooldowns = std::vector<float>();
 
 	LocalizedLabel* okLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Okay::create());
 	LocalizedLabel* okLabelSelected = okLabel->clone();
@@ -94,7 +92,7 @@ void NotificationHud::initializePositions()
 {
 	super::initializePositions();
 
-	static const Size visibleSize = Director::getInstance()->getVisibleSize();
+	static const CSize visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->backdrop->setPosition(Vec2(-visibleSize.width / 2.0f, -visibleSize.height / 2.0f));
 	this->menuBack->setPosition(Vec2(0.0f, 0.0f));
@@ -110,7 +108,7 @@ void NotificationHud::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventNotificationTakeover, [=](EventCustom* eventCustom)
 	{
-		NotificationEvents::NotificationTakeoverArgs* args = static_cast<NotificationEvents::NotificationTakeoverArgs*>(eventCustom->getUserData());
+		NotificationEvents::NotificationTakeoverArgs* args = static_cast<NotificationEvents::NotificationTakeoverArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{
@@ -120,7 +118,7 @@ void NotificationHud::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventNotification, [=](EventCustom* eventCustom)
 	{
-		NotificationEvents::NotificationArgs* args = static_cast<NotificationEvents::NotificationArgs*>(eventCustom->getUserData());
+		NotificationEvents::NotificationArgs* args = static_cast<NotificationEvents::NotificationArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{
@@ -133,7 +131,7 @@ void NotificationHud::initializeListeners()
 		this->closeNotificationMenu();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE, InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this->takeoverNode))
 		{
@@ -158,10 +156,11 @@ void NotificationHud::update(float dt)
 		{
 			if (this->slotCooldowns[index] >= Cooldown)
 			{
-				Node* notification = this->toProcess.front();
+				Node* notification = std::get<0>(this->toProcess.front());
+				bool keepOpen = std::get<1>(this->toProcess.front());
 				this->toProcess.pop();
 
-				static const Size visibleSize = Director::getInstance()->getVisibleSize();
+				static const CSize visibleSize = Director::getInstance()->getVisibleSize();
 				static const Vec2 LeftPositionBase = Vec2(256.0f, 128.0f);
 				static const Vec2 RightPositionBase = Vec2(visibleSize.width - 256.0f, 128.0f);
 				int halfCount = int(this->slotCooldowns.size() / 2);
@@ -169,9 +168,9 @@ void NotificationHud::update(float dt)
 
 				notification->setPosition(basePosition + Vec2(0.0f, float(index % halfCount) * 160.0f));
 				
-				if (bool(notification->getTag()))
+				if (keepOpen)
 				{
-					// Slight hack. If the keep open flag is set on the object, just never hide the notification.
+					// If the keep open flag is set on the object, just never hide the notification.
 					// This is used in situations like combat, where we do not expect to exhaust the full # of possible notifications shown,
 					// So keeping them always visible is fine. This HUD will get disposed when they leave combat anyhow.
 					notification->runAction(Sequence::create(
@@ -232,7 +231,7 @@ void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* 
 	Sprite* itemFrame = Sprite::create(UIResources::Menus_NotificationMenu_NotificationFrame);
 	Sprite* notificationIcon = Sprite::create(iconResource);
 	LocalizedLabel* titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, title);
-	LocalizedLabel* descriptionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, description, Size(192.0f, 0.0f));
+	LocalizedLabel* descriptionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, description, CSize(192.0f, 0.0f));
 
 	this->notificationSound->setSoundResource(soundResource);
 
@@ -256,17 +255,11 @@ void NotificationHud::pushNotification(LocalizedString* title, LocalizedString* 
 		this->notificationSound->play();
 	}
 
-	notification->setTag(int(keepOpen));
-
-	this->toProcess.push(notification);
+	this->toProcess.push(std::make_tuple(notification, keepOpen));
 }
 
 void NotificationHud::closeNotificationMenu()
 {
 	this->takeoverNode->setVisible(false);
-
-	if (this->previousFocus != nullptr)
-	{
-		GameUtils::focus(this->previousFocus);
-	}
+	GameUtils::focus(this->previousFocus);
 }

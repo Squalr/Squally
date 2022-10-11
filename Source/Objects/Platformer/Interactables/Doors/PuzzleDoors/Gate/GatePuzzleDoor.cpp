@@ -16,7 +16,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/Gate/GatePuzzleDoorGenericPreview.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -27,7 +27,7 @@ using namespace cocos2d;
 const Vec2 GatePuzzleDoor::Offset = Vec2(0.0f, -160.0f);
 
 GatePuzzleDoor::GatePuzzleDoor(ValueMap& properties) : super(properties,
-	Size(256.0f, 512.0f),
+	CSize(256.0f, 512.0f),
 	GatePuzzleDoor::Offset + Vec2(0.0f, 24.0f),
 	GatePuzzleDoor::Offset + Vec2(0.0f, 32.0f),
 	GatePuzzleDoor::Offset + Vec2(0.0f, 464.0f),

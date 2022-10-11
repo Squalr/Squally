@@ -68,16 +68,18 @@ HexusOpponentData::HexusOpponentData(
 	this->onRoundEnd = onRoundEnd;
 	this->stateOverride = stateOverride;
 	this->tutorials = tutorials;
-	this->isLastInChapter = false;
 
 	if (this->stateOverride != nullptr)
 	{
 		this->stateOverride->retain();
 	}
 
-	for (auto next : this->tutorials)
+	for (TutorialBase* next : this->tutorials)
 	{
-		next->retain();
+		if (next != nullptr)
+		{
+			next->retain();
+		}
 	}
 }
 
@@ -88,9 +90,12 @@ HexusOpponentData::~HexusOpponentData()
 		this->stateOverride->release();
 	}
 
-	for (auto next : this->tutorials)
+	for (TutorialBase* next : this->tutorials)
 	{
-		next->release();
+		if (next != nullptr)
+		{
+			next->release();
+		}
 	}
 }
 
@@ -103,7 +108,7 @@ CardData* HexusOpponentData::getStrongestCard()
 {
 	CardData* best = nullptr;
 
-	for (auto card : this->cards)
+	for (CardData* card : this->cards)
 	{
 		if (best == nullptr || card->getAttack() > best->getAttack())
 		{
@@ -124,7 +129,7 @@ std::vector<CardData*> HexusOpponentData::generateDeck(int deckSize, float deckS
 
 	std::vector<CardData*> deck = std::vector<CardData*>();
 
-	for (auto card : guaranteedCards)
+	for (CardData* card : guaranteedCards)
 	{
 		deck.push_back(card);
 		deckSize--;

@@ -1,10 +1,10 @@
 #include "Wind.h"
 
-#include "cocos/2d/CCParticleSystem.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -17,7 +17,7 @@
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 using namespace cocos2d;
 
@@ -44,13 +44,13 @@ Wind::Wind(ValueMap& properties) : super(properties)
 	float speedX = GameUtils::getKeyOrDefault(this->properties, Wind::PropertySpeedX, Value(0.0f)).asFloat();
 	float speedY = GameUtils::getKeyOrDefault(this->properties, Wind::PropertySpeedY, Value(0.0f)).asFloat();
 
-	this->windSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
+	this->windSize = CSize(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->windSpeedDefault = Vec2(speedX, speedY);
 	this->windSpeed = this->windSpeedDefault;
 	this->windParticles = SmartParticles::create(ParticleResources::Gust, SmartParticles::CullInfo(this->windSize));
 	this->windForce = CollisionObject::create(CollisionObject::createBox(this->windSize), (CollisionType)PlatformerCollisionType::Force, CollisionObject::Properties(false, false));
 
-	this->windParticles->getParticles()->setAnchorPoint(Vec2::ZERO);
+	this->windParticles->setAnchorPoint(Vec2::ZERO);
 	this->windParticles->setGrouped();
 	
 	this->addChild(this->windForce);
@@ -66,8 +66,8 @@ void Wind::onEnter()
 	super::onEnter();
 
 	this->windParticles->start();
-	this->windParticles->getParticles()->setTotalParticles(int(this->windSize.width * this->windSize.height / 4096.0f));
-	this->windParticles->getParticles()->setPosVar(Vec2(this->windSize.width / 2.0f, this->windSize.height / 2.0f));
+	this->windParticles->setTotalParticles(int(this->windSize.width * this->windSize.height / 4096.0f));
+	this->windParticles->setPosVar(Vec2(this->windSize.width / 2.0f, this->windSize.height / 2.0f));
 
 	this->scheduleUpdate();
 }
@@ -81,11 +81,11 @@ void Wind::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->windForce->whileCollidesWith({ (int)PlatformerCollisionType::EntityMovement, (int)PlatformerCollisionType::Physics }, [=](CollisionObject::CollisionData collisionData)
+	this->windForce->whileCollidesWith({ (int)PlatformerCollisionType::EntityMovement, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
 	{
 		this->applyWindForce(collisionData.other, collisionData.dt);
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }
 
@@ -132,7 +132,7 @@ void Wind::registerHackables()
 				Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_SpellWind,
-				WindSetSpeedPreview::create(),
+				LazyNode<HackablePreview>::create([](){ return (HackablePreview*)WindSetSpeedPreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEax::create() },
 					{ HackableCode::Register::zbx, Strings::Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEbx::create() },
@@ -159,7 +159,7 @@ void Wind::registerHackables()
 	auto updateWindFunc = &Wind::updateWind;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateWindFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}
@@ -220,10 +220,10 @@ NO_OPTIMIZE void Wind::updateWind(float dt)
 		}
 	}
 
-	static volatile float angle;
+	static volatile float angle = 0.0f;
 
 	angle = std::atan2(this->windSpeed.y, this->windSpeed.x) * 180.0f / float(M_PI);
 
-	this->windParticles->getParticles()->setAngle(angle);
+	this->windParticles->setAngle(angle);
 }
 END_NO_OPTIMIZE

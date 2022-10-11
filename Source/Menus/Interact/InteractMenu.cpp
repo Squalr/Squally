@@ -7,7 +7,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/ObjectEvents.h"
@@ -21,29 +21,27 @@
 
 using namespace cocos2d;
 
-InteractMenu* InteractMenu::create(LocalizedString* displayString, Color3B backColor, float menuWidth)
+InteractMenu* InteractMenu::create(LocalizedString* displayString, Color3B backColor, Vec2 offset, float minWidth)
 {
-	InteractMenu* instance = new InteractMenu(displayString, backColor, menuWidth);
+	InteractMenu* instance = new InteractMenu(displayString, backColor, offset, minWidth);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-InteractMenu::InteractMenu(LocalizedString* displayString, Color3B backColor, float menuWidth)
+InteractMenu::InteractMenu(LocalizedString* displayString, Color3B backColor, Vec2 offset, float minWidth)
 {
 	this->uiElements = Node::create();
 	this->displayString = displayString;
 	this->displayLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, this->displayString);
-	this->menuSize = Size(menuWidth, 48.0f);
+	this->menuSize = CSize(std::max(minWidth, this->displayLabel->getContentSize().width + 32.0f), 48.0f);
 	this->backdrop = LayerColor::create(Color4B(backColor.r, backColor.g, backColor.b, 196), this->menuSize.width, this->menuSize.height);
-	this->hasRelocated = false;
-	this->isFadingIn = false;
-	this->isFadingOut = false;
 
 	this->displayLabel->setHorizontalAlignment(TextHAlignment::CENTER);
 	this->displayLabel->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->uiElements->setOpacity(0);
+	this->setPosition(offset);
 
 	this->uiElements->addChild(this->backdrop);
 	this->uiElements->addChild(this->displayLabel);
@@ -70,7 +68,7 @@ void InteractMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->backdrop->setPosition(Vec2(-this->menuSize.width / 2.0f, -this->menuSize.height / 2.0f));
 	this->uiElements->setPosition(Vec2(0.0f, 144.0f));
@@ -142,7 +140,7 @@ void InteractMenu::tryRelocate()
 	if (!this->hasRelocated)
 	{
 		// Move the UI elements to the top-most layer
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(
 			this->uiElements
 		));
 		this->hasRelocated = true;

@@ -28,11 +28,11 @@ public:
 		bool showChallengeBanner = true
 	);
 
-	int playerLosses;
-	int enemyLosses;
-	bool playersTurn;
-	bool playerPassed;
-	bool enemyPassed;
+	int playerLosses = 0;
+	int enemyLosses = 0;
+	bool playersTurn = 0;
+	bool playerPassed = 0;
+	bool enemyPassed = 0;
 	std::vector<CardData*> playerDeck;
 	std::vector<CardData*> enemyDeck;
 	std::vector<CardData*> playerHand;
@@ -43,7 +43,7 @@ public:
 	std::vector<CardData*> enemyBinaryCards;
 	std::vector<CardData*> enemyDecimalCards;
 	std::vector<CardData*> enemyHexCards;
-	bool showChallengeBanner;
+	bool showChallengeBanner = false;
 
 protected:
 	StateOverride();

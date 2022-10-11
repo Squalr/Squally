@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 
-#include "cocos/math/CCGeometry.h"
-
 #include "Engine/SmartNode.h"
 #include "Engine/Maps/MapLayer.h"
 
@@ -12,12 +10,6 @@ namespace cocos2d
 	{
 		class TMXLayer;
 	}
-}
-
-namespace tinyxml2
-{
-	class XMLDocument;
-	class XMLElement;
 }
 
 class TileLayer : public MapLayer
@@ -43,7 +35,7 @@ protected:
 
 private:
 	typedef MapLayer super;
-	cocos2d::cocos_experimental::TMXLayer* tileLayer;
 
-	bool objectified;
+	cocos2d::cocos_experimental::TMXLayer* tileLayer = nullptr;
+	bool objectified = false;
 };

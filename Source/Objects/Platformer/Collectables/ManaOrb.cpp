@@ -10,7 +10,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 
 #include "Resources/ParticleResources.h"
@@ -34,7 +34,7 @@ ManaOrb* ManaOrb::create(ValueMap& properties)
 ManaOrb::ManaOrb(ValueMap& properties) : super(properties)
 {
 	this->collectSound = WorldSound::create(SoundResources::Notifications_NotificationShine1);
-	this->manaOrb = SmartParticles::create(ParticleResources::Objects_ManaOrb, SmartParticles::CullInfo(Size(128.0f, 128.0f)));
+	this->manaOrb = SmartParticles::create(ParticleResources::Objects_ManaOrb, SmartParticles::CullInfo(CSize(128.0f, 128.0f)));
 
 	this->collectableNode->addChild(this->manaOrb);
 	this->addChild(this->collectSound);
@@ -48,7 +48,7 @@ void ManaOrb::onEnter()
 {
 	super::onEnter();
 
-	this->collectableCollision->setGravityEnabled(false);
+	this->collectableCollision->setGravityFlagEnabled(false);
 	this->manaOrb->start();
 }
 
@@ -60,7 +60,7 @@ void ManaOrb::initializeListeners()
 	{
 		ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 		{
-			squally->watchForAttachedBehavior<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
+			squally->watchForComponent<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
 			{
 				// Restore 30% of mana
 				manaBehavior->setMana(manaBehavior->getMana() + int(std::ceil(float(manaBehavior->getMaxMana()) * 0.3f)));

@@ -26,13 +26,13 @@ protected:
 	virtual LocalizedString* getAnimalName() = 0;
 	virtual std::string getSpriteResource() = 0;
 
-	cocos2d::Node* animalNode;
+	cocos2d::Node* animalNode = nullptr;
 
 private:
 	typedef BreakableCage super;
 
-	cocos2d::Sprite* shineFx;
+	cocos2d::Sprite* shineFx = nullptr;
 	std::string saveKey;
 
-	bool alreadyCollected;
+	bool alreadyCollected = false;
 };

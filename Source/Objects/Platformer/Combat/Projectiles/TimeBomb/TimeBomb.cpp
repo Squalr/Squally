@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -18,7 +19,7 @@
 #include "Objects/Platformer/Combat/Projectiles/TimeBomb/TimeBombGenericPreview.h"
 #include "Objects/Platformer/Combat/Projectiles/TimeBomb/TimeBombTickPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"
@@ -46,7 +47,7 @@ TimeBomb* TimeBomb::create(PlatformerEntity* owner, PlatformerEntity* target, st
 }
 
 TimeBomb::TimeBomb(PlatformerEntity* owner, PlatformerEntity* target, std::function<void()> onExplode)
-	: super(owner, target, true, Node::create(), Size(133.0f, 133.0f))
+	: super(owner, target, true, Node::create(), CSize(133.0f, 133.0f))
 {
 	this->bomb = Sprite::create(ObjectResources::Traps_TimeBomb_BOMB);
 	this->timerPlate = Sprite::create(ObjectResources::Traps_TimeBomb_TimerPlate);
@@ -64,8 +65,6 @@ TimeBomb::TimeBomb(PlatformerEntity* owner, PlatformerEntity* target, std::funct
 	this->explodeSound = WorldSound::create(SoundResources::Platformer_FX_Explosions_Explosion1);
 	this->onExplode = onExplode;
 	this->bombTick = TimeBomb::TimerInitial;
-	this->hasExploded = false;
-	this->elapsed = 0.0f;
 
 	this->postFXNode->addChild(this->spawnSound);
 	this->postFXNode->addChild(this->tickSound);
@@ -163,7 +162,7 @@ void TimeBomb::registerHackables()
 				Strings::Menus_Hacking_Abilities_Abilities_TimeBomb_TimeBombTick::create(),
 				HackableBase::HackBarColor::Red,
 				UIResources::Menus_Icons_Clock,
-				TimeBombTickPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return TimeBombTickPreview::create(); }),
 				{
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_TimeBomb_RegisterEcx::create() },
 				},
@@ -177,7 +176,7 @@ void TimeBomb::registerHackables()
 	auto tickFunc = &TimeBomb::tickTimeBomb;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)tickFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}

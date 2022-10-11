@@ -46,27 +46,27 @@ protected:
 	virtual float getBoltOffsetY();
 	bool isInGameArea();
 
-	ClickableNode* block;
-	cocos2d::Sprite* icon;
-	BlockType blockType;
-	unsigned char receivedValue;
-	int receivedInputs;
+	ClickableNode* block = nullptr;
+	cocos2d::Sprite* icon = nullptr;
+	BlockType blockType = BlockType::Normal;
+	unsigned char receivedValue = 0;
+	int receivedInputs = 0;
 	
-	unsigned char inputLeft;
-	unsigned char inputRight;
-	InputBolt* inputBoltLeft;
-	InputBolt* inputBoltRight;
-	OutputBolt* outputBoltLeft;
-	OutputBolt* outputBoltRight;
+	unsigned char inputLeft = 0;
+	unsigned char inputRight = 0;
+	InputBolt* inputBoltLeft = nullptr;
+	InputBolt* inputBoltRight = nullptr;
+	OutputBolt* outputBoltLeft = nullptr;
+	OutputBolt* outputBoltRight = nullptr;
 	
-	ConnectionType inputType;
-	ConnectionType outputType;
+	ConnectionType inputType = ConnectionType::None;
+	ConnectionType outputType = ConnectionType::None;
 
 private:
 	typedef CipherComponentBase super;
 
-	BlockBase* spawningBlock;
-	LocalizedLabel* label;
+	BlockBase* spawningBlock = nullptr;
+	LocalizedLabel* label = nullptr;
 	
 	cocos2d::Vec2 spawnPosition;
 	cocos2d::Vec2 originalPosition;

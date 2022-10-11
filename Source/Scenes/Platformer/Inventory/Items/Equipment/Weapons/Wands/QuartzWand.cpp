@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Wands/QuartzWandPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* QuartzWand::clone()
 	return QuartzWand::create();
 }
 
-std::string QuartzWand::getItemName()
-{
-	return QuartzWand::SaveKey;
-}
-
 LocalizedString* QuartzWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_QuartzWand::create();
 }
 
-std::string QuartzWand::getIconResource()
+const std::string& QuartzWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_QuartzWand;
 }
 
-std::string QuartzWand::getSerializationKey()
+const std::string& QuartzWand::getIdentifier()
 {
 	return QuartzWand::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string QuartzWand::getSerializationKey()
 Vec2 QuartzWand::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* QuartzWand::getRecipe()
+{
+	return QuartzWandPlans::create();
 }

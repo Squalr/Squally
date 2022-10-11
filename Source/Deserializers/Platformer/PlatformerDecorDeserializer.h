@@ -9,10 +9,12 @@ public:
 
 	static const std::string MapKeyTypeDecor;
 
-private:
-	typedef ObjectDeserializer super;
+protected:
 	PlatformerDecorDeserializer();
 	virtual ~PlatformerDecorDeserializer();
+
+private:
+	typedef ObjectDeserializer super;
 
 	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args) override;
 };

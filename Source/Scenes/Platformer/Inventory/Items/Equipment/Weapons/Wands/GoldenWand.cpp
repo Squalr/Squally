@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Wands/GoldenWandPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* GoldenWand::clone()
 	return GoldenWand::create();
 }
 
-std::string GoldenWand::getItemName()
-{
-	return GoldenWand::SaveKey;
-}
-
 LocalizedString* GoldenWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_GoldenWand::create();
 }
 
-std::string GoldenWand::getIconResource()
+const std::string& GoldenWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_GoldenWand;
 }
 
-std::string GoldenWand::getSerializationKey()
+const std::string& GoldenWand::getIdentifier()
 {
 	return GoldenWand::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string GoldenWand::getSerializationKey()
 Vec2 GoldenWand::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* GoldenWand::getRecipe()
+{
+	return GoldenWandPlans::create();
 }

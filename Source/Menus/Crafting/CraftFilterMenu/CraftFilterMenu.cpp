@@ -15,7 +15,7 @@
 using namespace cocos2d;
 
 const float CraftFilterMenu::LabelSpacing = 96.0f;
-const Size CraftFilterMenu::ClipSize = Size(320.0f + 128.0f, 608.0f);
+const CSize CraftFilterMenu::ClipSize = CSize(320.0f + 128.0f, 608.0f);
 
 CraftFilterMenu* CraftFilterMenu::create(std::function<void()> onFilterChange)
 {
@@ -28,11 +28,9 @@ CraftFilterMenu* CraftFilterMenu::create(std::function<void()> onFilterChange)
 
 CraftFilterMenu::CraftFilterMenu(std::function<void()> onFilterChange)
 {
-	this->isFocused = true;
-	this->filterSelectionIndex = 0;
 	this->onFilterChange = onFilterChange;
 	this->filterNodeContent = Node::create();
-	this->filterNode = SmartClippingNode::create(this->filterNodeContent, Rect(-Vec2(CraftFilterMenu::ClipSize / 2.0f), CraftFilterMenu::ClipSize));
+	this->filterNode = SmartClippingNode::create(this->filterNodeContent, CRect(-Vec2(CraftFilterMenu::ClipSize / 2.0f), CraftFilterMenu::ClipSize));
 	this->filterSelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
 	this->selectedFilterRowActive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
 	this->selectedFilterRowInactive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectInactive);
@@ -66,12 +64,12 @@ void CraftFilterMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_W, EventKeyboard::KeyCode::KEY_UP_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_W, InputEvents::KeyCode::KEY_UP_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->scrollFilterUp();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_S, EventKeyboard::KeyCode::KEY_DOWN_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_S, InputEvents::KeyCode::KEY_DOWN_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->scrollFilterDown();
 	});

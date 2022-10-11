@@ -40,7 +40,6 @@ ItemPreview* ItemPreview::create(bool showItemName, bool allowCardPreview)
 ItemPreview::ItemPreview(bool showItemName, bool allowCardPreview)
 {
 	this->previewNode = Node::create();
-	this->nextStatline = 0;
 	this->allowCardPreview = allowCardPreview;
 
 	LocalizedString* dashStr = Strings::Common_Dash::create();
@@ -143,7 +142,7 @@ void ItemPreview::initializePositions()
 	const float OffsetY = -160.0f;
 	int index = 0;
 
-	for (auto statline : this->statlines)
+	for (LocalizedLabel* statline : this->statlines)
 	{
 		statline->setPosition(Vec2(OffsetX, OffsetY - 40.0f * float(index++)));
 	}
@@ -205,7 +204,9 @@ void ItemPreview::preview(EquipHintMode equipHintMode, Item* item)
 
 	if (dynamic_cast<Recipe*>(item) != nullptr)
 	{
-		item = dynamic_cast<Recipe*>(item)->getCraftedItemRef();
+		const std::vector<Item*>& craftedItems = dynamic_cast<Recipe*>(item)->getCraftedItemsRef();
+
+		item = craftedItems.size() > 0 ? craftedItems[0] : nullptr;
 	}
 
 	if (dynamic_cast<Weapon*>(item) != nullptr)

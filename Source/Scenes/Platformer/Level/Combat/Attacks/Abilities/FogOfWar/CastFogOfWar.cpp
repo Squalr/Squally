@@ -9,7 +9,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Combat/Abilities/FogOfWar/FogOfWar.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Fortitude/Fortitude.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
@@ -70,15 +70,15 @@ void CastFogOfWar::performAttack(PlatformerEntity* owner, std::vector<Platformer
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
-	ObjectEvents::QueryObject<CinematicMarker>(this, [=](CinematicMarker* marker)
+	ObjectEvents::QueryObject<CinematicMarker>([=](CinematicMarker* marker)
 	{
 		FogOfWar* fogOfWar = FogOfWar::create(owner, nullptr);
 
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			marker,
 			fogOfWar,
-			ObjectEvents::SpawnMethod::Above,
-			ObjectEvents::PositionMode::SetToOwner,
+			SpawnMethod::Above,
+			PositionMode::SetToOwner,
 			[&]()
 			{
 			},
@@ -87,16 +87,17 @@ void CastFogOfWar::performAttack(PlatformerEntity* owner, std::vector<Platformer
 			}
 		));
 	},
+	PlatformerAttack::TagArenaBottom,
 	[=]()
 	{
 		// TOP CENTER ARENA MARKER NOT FOUND!
 		FogOfWar* fogOfWar = FogOfWar::create(owner, nullptr);
 
-		ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			this,
 			fogOfWar,
-			ObjectEvents::SpawnMethod::Above,
-			ObjectEvents::PositionMode::SetToOwner,
+			SpawnMethod::Above,
+			PositionMode::SetToOwner,
 			[&]()
 			{
 			},
@@ -104,7 +105,7 @@ void CastFogOfWar::performAttack(PlatformerEntity* owner, std::vector<Platformer
 			{
 			}
 		));
-	}, PlatformerAttack::TagArenaBottom);
+	});
 }
 
 void CastFogOfWar::onCleanup()
@@ -117,7 +118,7 @@ bool CastFogOfWar::isWorthUsing(PlatformerEntity* caster, const std::vector<Plat
 	
 	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
 	{
-		for (auto next : timeline->getEntries())
+		for (TimelineEntry* next : timeline->getEntries())
 		{
 			if (dynamic_cast<CastFogOfWar*>(next->getStagedCast()) != nullptr)
 			{
@@ -127,7 +128,7 @@ bool CastFogOfWar::isWorthUsing(PlatformerEntity* caster, const std::vector<Plat
 		}
 	}));
 
-	ObjectEvents::QueryObject<FogOfWar>(this, [&](FogOfWar*)
+	ObjectEvents::QueryObject<FogOfWar>([&](FogOfWar*)
 	{
 		worthUsing = false;
 	});

@@ -31,12 +31,10 @@ protected:
 private:
 	typedef BreakableBase super;
 
-	WorldSound* breakSound;
-	SmartAnimationSequenceNode* explosion;
-	cocos2d::Sprite* vase;
-	CollisionObject* vaseBroken;
-	SmartParticles* shardParticles;
+	WorldSound* breakSound = nullptr;
+	SmartAnimationSequenceNode* explosion = nullptr;
+	cocos2d::Sprite* vase = nullptr;
+	CollisionObject* vaseBroken = nullptr;
+	SmartParticles* shardParticles = nullptr;
 	std::string color;
-
-	static const std::string PropertyColor;
 };

@@ -10,14 +10,14 @@ class LocalizationEvents
 public:
 	struct LocaleChangeArgs
 	{
-		cocos2d::LanguageType languageType;
+		cocos2d::LanguageType languageType = cocos2d::LanguageType::NONE;
 
 		LocaleChangeArgs(cocos2d::LanguageType languageType) : languageType(languageType) { }
 	};
 
 	struct TranslationBeginEditArgs
 	{
-		LocalizedString* localizedString;
+		LocalizedString* localizedString = nullptr;
 
 		TranslationBeginEditArgs(LocalizedString* localizedString) : localizedString(localizedString) { }
 	};

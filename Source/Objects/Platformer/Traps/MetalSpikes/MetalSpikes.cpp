@@ -7,13 +7,14 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Traps/MetalSpikes/MetalSpikesGenericPreview.h"
 #include "Objects/Platformer/Traps/MetalSpikes/MetalSpikesUpdateTimerPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -40,7 +41,7 @@ MetalSpikes* MetalSpikes::create(ValueMap& properties)
 MetalSpikes::MetalSpikes(ValueMap& properties) : super(properties)
 {
 	this->spikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_MetalSpikes_Spikes_0000);
-	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(Size(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
+	this->spikeCollision = CollisionObject::create(CollisionObject::createBox(CSize(268.0f, 72.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 	this->currentElapsedTimeForSpikeTrigger = RandomHelper::random_real(0.0f, 3.0f);
 	this->totalTimeUntilSpikesTrigger = 4.0f;
 	this->isRunningAnimation = false;
@@ -95,7 +96,7 @@ void MetalSpikes::registerHackables()
 				Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Clock,
-				MetalSpikesUpdateTimerPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return MetalSpikesUpdateTimerPreview::create(); }),
 				{
 					{ HackableCode::Register::xmm2, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2::create() },
 					{ HackableCode::Register::xmm4, Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2::create() },
@@ -134,7 +135,7 @@ void MetalSpikes::registerHackables()
 	auto updateSpikesFunc = &MetalSpikes::updateSpikes;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)updateSpikesFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}
@@ -192,20 +193,20 @@ NO_OPTIMIZE void MetalSpikes::updateSpikes(float dt)
 		this->spikeCollision->runAction(Sequence::create(
 			CallFunc::create([=]()
 			{
-				this->spikeCollision->setPhysicsEnabled(true);
+				this->spikeCollision->setPhysicsFlagEnabled(true);
 			}),
 			MoveTo::create(0.425f, this->isFlippedY ? -MetalSpikes::SpikesUpPosition : MetalSpikes::SpikesUpPosition),
 			DelayTime::create(StayUpDuration),
 			MoveTo::create(0.425f, this->isFlippedY ? -MetalSpikes::SpikesDownPosition : MetalSpikes::SpikesDownPosition),
 			CallFunc::create([=]()
 			{
-				this->spikeCollision->setPhysicsEnabled(false);
+				this->spikeCollision->setPhysicsFlagEnabled(false);
 			}),
 			nullptr
 		));
 
 		// Play animation
-		this->spikes->playAnimationAndReverse(ObjectResources::Traps_MetalSpikes_Spikes_0000, 0.025f, StayUpDuration, 0.025f, false, [=]()
+		this->spikes->playAnimationAndReverse(ObjectResources::Traps_MetalSpikes_Spikes_0000, 0.025f, StayUpDuration, 0.025f, false, false, [=]()
 		{
 			this->isRunningAnimation = false;
 		});

@@ -52,34 +52,34 @@ private:
 	std::vector<LocalizedLabel*> valueLabels;
 	std::vector<LocalizedLabel*> addresses;
 
-	cocos2d::DrawNode* gridLines;
-	RegisterMarker* eaxMarker;
-	RegisterMarker* ebxMarker;
-	RegisterMarker* ecxMarker;
-	RegisterMarker* edxMarker;
-	RegisterMarker* ediMarker;
-	RegisterMarker* esiMarker;
-	RegisterMarker* ebpMarker;
-	RegisterMarker* espMarker;
-	cocos2d::Node* labelsNode;
-	cocos2d::Node* gridHitBoxesNode;
-	cocos2d::Sprite* selector;
+	cocos2d::DrawNode* gridLines = nullptr;
+	RegisterMarker* eaxMarker = nullptr;
+	RegisterMarker* ebxMarker = nullptr;
+	RegisterMarker* ecxMarker = nullptr;
+	RegisterMarker* edxMarker = nullptr;
+	RegisterMarker* ediMarker = nullptr;
+	RegisterMarker* esiMarker = nullptr;
+	RegisterMarker* ebpMarker = nullptr;
+	RegisterMarker* espMarker = nullptr;
+	cocos2d::Node* labelsNode = nullptr;
+	cocos2d::Node* gridHitBoxesNode = nullptr;
+	cocos2d::Sprite* selector = nullptr;
 
 	std::vector<RegisterMarker*> markers;
 
-	bool isValueFocused;
-	bool isAddressFocused;
-	int gridWidth;
-	int gridHeight;
+	bool isValueFocused = false;
+	bool isAddressFocused = false;
+	int gridWidth = 0;
+	int gridHeight = 0;
 
-	int initialEax;
-	int initialEbx;
-	int initialEcx;
-	int initialEdx;
-	int initialEdi;
-	int initialEsi;
-	int initialEbp;
-	int initialEsp;
+	int initialEax = 0;
+	int initialEbx = 0;
+	int initialEcx = 0;
+	int initialEdx = 0;
+	int initialEdi = 0;
+	int initialEsi = 0;
+	int initialEbp = 0;
+	int initialEsp = 0;
 
 	static const cocos2d::Color4B GridColor;
 };

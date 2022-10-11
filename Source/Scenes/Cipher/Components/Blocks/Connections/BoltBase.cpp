@@ -6,13 +6,12 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/Connection.h"
-#include "Scenes/Cipher/Config.h"
 
 #include "Resources/UIResources.h"
 
@@ -25,7 +24,7 @@ BoltBase::BoltBase()
 	this->connection = nullptr;
 	this->inputDebug = false;
 
-	this->connectButton->setContentSize(Size(48.0f, 48.0f));
+	this->connectButton->setContentSize(CSize(48.0f, 48.0f));
 
 	this->addChild(this->connectButton);
 }

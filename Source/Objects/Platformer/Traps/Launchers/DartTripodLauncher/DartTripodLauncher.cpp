@@ -39,7 +39,7 @@ DartTripodLauncher* DartTripodLauncher::create(ValueMap& properties)
 	return instance;
 }
 
-DartTripodLauncher::DartTripodLauncher(ValueMap& properties) : super(properties, ObjectResources::Traps_DartTripodLauncher_Animations, 2)
+DartTripodLauncher::DartTripodLauncher(ValueMap& properties) : super(properties, ObjectResources::Traps_DartTripodLauncher_Animations, false, 2)
 {
 }
 

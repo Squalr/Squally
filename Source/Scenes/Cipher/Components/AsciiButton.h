@@ -21,5 +21,5 @@ protected:
 private:
 	typedef CipherComponentBase super;
 
-	ClickableTextNode* asciiButton;
+	ClickableTextNode* asciiButton = nullptr;
 };

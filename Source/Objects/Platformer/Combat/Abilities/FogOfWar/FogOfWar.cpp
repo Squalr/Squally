@@ -8,6 +8,7 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -20,7 +21,7 @@
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/DecorResources.h"
@@ -51,8 +52,6 @@ FogOfWar* FogOfWar::create(PlatformerEntity* caster, PlatformerEntity* target)
 
 FogOfWar::FogOfWar(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, false)
 {
-	this->fog = std::vector<Fog>();
-
 	this->fog.push_back(Fog(Sprite::create(DecorResources::Generic_Background_Fog1), -32.0f, this->getRandomSpawnPosition()));
 	this->fog.push_back(Fog(Sprite::create(DecorResources::Generic_Background_Fog2), 256.0f, this->getRandomSpawnPosition()));
 	this->fog.push_back(Fog(Sprite::create(DecorResources::Generic_Background_Fog3), -128.0f, this->getRandomSpawnPosition()));
@@ -111,7 +110,7 @@ void FogOfWar::registerHackables()
 				Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_FogOfWar::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Fog,
-				this->createDefaultPreview(),
+				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
 						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_RegisterEdx::create()
@@ -145,7 +144,7 @@ void FogOfWar::registerHackables()
 	auto func = &FogOfWar::increaseDamage;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}
@@ -180,15 +179,21 @@ void FogOfWar::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* 
 
 	this->damageDealt = damageOrHealing->damageOrHealingValue;
 
+	int minDamage = 0;
+	int maxDamage = damageOrHealing->damageOrHealingValue * 2;
+
 	this->increaseDamage();
 
+	*(damageOrHealing->damageOrHealingMin) = minDamage;
+	*(damageOrHealing->damageOrHealingMax) = maxDamage;
+
 	// Bound by 0.5x and 2x
-	*(damageOrHealing->damageOrHealing) = MathUtils::clamp(this->damageDealt, damageOrHealing->damageOrHealingValue / 2, damageOrHealing->damageOrHealingValue * 2);
+	*(damageOrHealing->damageOrHealing) = MathUtils::clamp(this->damageDealt, minDamage, maxDamage);
 }
 
 void FogOfWar::updateAnimation(float dt)
 {
-	for (auto next : this->fog)
+	for (FogOfWar::Fog& next : this->fog)
 	{
 		const float WidthOver2 = next.sprite->getContentSize().width / 2.0f;
 		const float ResetPosition = 1568.0f + WidthOver2;

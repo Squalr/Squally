@@ -29,9 +29,9 @@ BoneSwordPlans::~BoneSwordPlans()
 {
 }
 
-Item* BoneSwordPlans::craft()
+std::vector<Item*> BoneSwordPlans::craft()
 {
-	return BoneSword::create();
+	return { BoneSword::create() };
 }
 
 std::vector<std::tuple<Item*, int>> BoneSwordPlans::getReagentsInternal()
@@ -48,17 +48,12 @@ Item* BoneSwordPlans::clone()
 	return BoneSwordPlans::create();
 }
 
-std::string BoneSwordPlans::getItemName()
-{
-	return BoneSwordPlans::SaveKey;
-}
-
 LocalizedString* BoneSwordPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_BoneSword::create();
 }
 
-std::string BoneSwordPlans::getIconResource()
+const std::string& BoneSwordPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string BoneSwordPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Swords_BoneSword;
 }
 
-std::string BoneSwordPlans::getSerializationKey()
+const std::string& BoneSwordPlans::getIdentifier()
 {
 	return BoneSwordPlans::SaveKey;
 }

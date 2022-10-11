@@ -7,8 +7,6 @@ namespace cocos2d
 	class Sprite;
 }
 
-class SmartAnimationSequenceNode;
-
 class StonePuzzleDoorGenericPreview : public HackablePreview
 {
 public:
@@ -16,11 +14,13 @@ public:
 
 	HackablePreview* clone() override;
 
-private:
-	typedef HackablePreview super;
-
+protected:
 	StonePuzzleDoorGenericPreview();
 	virtual ~StonePuzzleDoorGenericPreview();
+
 	void onEnter() override;
 	void initializePositions() override;
+
+private:
+	typedef HackablePreview super;
 };

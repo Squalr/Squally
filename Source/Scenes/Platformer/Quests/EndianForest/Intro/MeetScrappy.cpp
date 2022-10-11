@@ -20,8 +20,10 @@
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 
 #include "Resources/EntityResources.h"
 #include "Resources/SoundResources.h"
@@ -45,7 +47,6 @@ MeetScrappy* MeetScrappy::create(GameObject* owner, QuestLine* questLine)
 MeetScrappy::MeetScrappy(GameObject* owner, QuestLine* questLine) : super(owner, questLine, MeetScrappy::MapKeyQuest, true)
 {
 	this->scrappy = dynamic_cast<Scrappy*>(owner);
-	this->squally = nullptr;
 	this->droidAlarmedSound = WorldSound::create(SoundResources::Platformer_Entities_Droid_Alarmed);
 
 	this->addChild(this->droidAlarmedSound);
@@ -100,10 +101,10 @@ void MeetScrappy::runCinematicSequencePt1()
 {
 	Vec2 positionA = Vec2::ZERO;
 
-	ObjectEvents::QueryObjects(QueryObjectsArgs<CinematicMarker>([&](CinematicMarker* cinematicMarker)
+	ObjectEvents::QueryObject<CinematicMarker>([&](CinematicMarker* cinematicMarker)
 	{
 		positionA = GameUtils::getWorldCoords(cinematicMarker);
-	}), MeetScrappy::TagScrappyStop);
+	}, MeetScrappy::TagScrappyStop);
 
 	if (this->scrappy != nullptr)
 	{
@@ -117,7 +118,7 @@ void MeetScrappy::runCinematicSequencePt1()
 			EaseSineInOut::create(MoveTo::create(2.0f, positionA)),
 			CallFunc::create([=]()
 			{
-				this->scrappy->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+				this->scrappy->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 				{
 					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_A_YoureAlive::create(), Voices::GetNextVoiceShort(Voices::VoiceType::Droid), 2.0f, [=]()
 					{
@@ -178,10 +179,10 @@ void MeetScrappy::runCinematicSequencePt4()
 			{
 				Vec2 positionB = Vec2::ZERO;
 
-				ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([&](Squally* squally)
+				ObjectEvents::QueryObjects<Squally>([&](Squally* squally)
 				{
 					positionB = GameUtils::getWorldCoords(squally);
-				}), Squally::MapKey);
+				}, Squally::MapKey);
 
 				this->scrappy->runAction(EaseSineInOut::create(MoveTo::create(1.0f, positionB)));
 			}),

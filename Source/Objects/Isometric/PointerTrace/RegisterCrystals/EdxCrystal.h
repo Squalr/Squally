@@ -26,5 +26,5 @@ protected:
 private:
 	typedef RegisterCrystal super;
 
-	cocos2d::Sprite* crystal;
+	cocos2d::Sprite* crystal = nullptr;
 };

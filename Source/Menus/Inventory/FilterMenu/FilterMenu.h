@@ -8,8 +8,6 @@ namespace cocos2d
 }
 
 class FilterEntry;
-class Item;
-class LocalizedLabel;
 class SmartClippingNode;
 
 class FilterMenu : public SmartNode
@@ -22,29 +20,30 @@ public:
 	FilterEntry* getActiveFilter();
 
 protected:
+	FilterMenu(std::function<void()> onFilterChange);
+	virtual ~FilterMenu();
+	
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
 private:
 	typedef SmartNode super;
-	FilterMenu(std::function<void()> onFilterChange);
-	virtual ~FilterMenu();
 
 	void scrollFilterUp();
 	void scrollFilterDown();
 	void positionFilterText();
 
-	SmartClippingNode* filterNode;
-	cocos2d::Node* filterNodeContent;
-	cocos2d::Sprite* selectedFilterRowActive;
-	cocos2d::Sprite* selectedFilterRowInactive;
-	cocos2d::Sprite* filterSelectionArrow;
+	SmartClippingNode* filterNode = nullptr;
+	cocos2d::Node* filterNodeContent = nullptr;
+	cocos2d::Sprite* selectedFilterRowActive = nullptr;
+	cocos2d::Sprite* selectedFilterRowInactive = nullptr;
+	cocos2d::Sprite* filterSelectionArrow = nullptr;
 	std::vector<FilterEntry*> filters;
 
-	bool isFocused;
-	int filterSelectionIndex;
-	std::function<void()> onFilterChange;
+	bool isFocused = true;
+	int filterSelectionIndex = 0;
+	std::function<void()> onFilterChange = nullptr;
 
 	static const float LabelSpacing;
 };

@@ -7,10 +7,8 @@ namespace cocos2d
 	class Sprite;
 }
 
-class HackablePreview;
 class PlatformerEntity;
 class SmartParticles;
-class WorldSound;
 
 class Inversion : public Buff
 {
@@ -33,11 +31,11 @@ private:
 
 	void applyInversion();
 	
-	static volatile int currentDamageTaken;
+	SmartParticles* spellEffect = nullptr;
+	cocos2d::Sprite* bubble = nullptr;
+	cocos2d::Sprite* spellAura = nullptr;
 	
-	SmartParticles* spellEffect;
-	cocos2d::Sprite* bubble;
-	cocos2d::Sprite* spellAura;
+	static volatile int currentDamageTaken;
 	
 	static const int MaxMultiplier;
 	static const float Duration;

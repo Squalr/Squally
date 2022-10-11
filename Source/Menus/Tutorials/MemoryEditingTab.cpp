@@ -12,7 +12,7 @@
 #include "Entities/Platformer/Enemies/BallmerPeaks/Cryogen.h"
 #include "Entities/Platformer/Enemies/CastleValgrind/Agnes.h"
 #include "Entities/Platformer/Enemies/DaemonsHallow/Asmodeus.h"
-#include "Entities/Platformer/Enemies/DaemonsHallow/Krampus.h"
+#include "Entities/Platformer/Enemies/DataMines/Krampus.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/KingZul.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/Lazarus.h"
 #include "Entities/Platformer/Helpers/BallmerPeaks/Snowman.h"
@@ -112,15 +112,17 @@ void MemoryEditingTab::loadKnownValueIntTutorial()
 	{
 		const int UNUSED_SAVE_PROFILE = 99;
 
-		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+		SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
+		SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(MapResources::Tutorials_KnownValueInt32));
 	
-		PlatformerMap* map = PlatformerMap::create(MapResources::Tutorials_KnownValueInt32);
+		PlatformerMap* map = PlatformerMap::create();
+
+		map->loadMap(MapResources::Tutorials_KnownValueInt32);
 
 		return map;
 	}));
@@ -132,15 +134,17 @@ void MemoryEditingTab::loadKnownValueFloatTutorial()
 	{
 		const int UNUSED_SAVE_PROFILE = 99;
 
-		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+		SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
+		SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(MapResources::Tutorials_KnownValueFloat));
 		
-		PlatformerMap* map = PlatformerMap::create(MapResources::Tutorials_KnownValueFloat);
+		PlatformerMap* map = PlatformerMap::create();
+
+		map->loadMap(MapResources::Tutorials_KnownValueFloat);
 
 		return map;
 	}));
@@ -152,15 +156,17 @@ void MemoryEditingTab::loadUnknownValueIntTutorial()
 	{
 		const int UNUSED_SAVE_PROFILE = 99;
 
-		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+		SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
+		SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(MapResources::Tutorials_UnknownValueInt32));
 		
-		PlatformerMap* map = PlatformerMap::create(MapResources::Tutorials_UnknownValueInt32);
+		PlatformerMap* map = PlatformerMap::create();
+
+		map->loadMap(MapResources::Tutorials_UnknownValueInt32);
 
 		return map;
 	}));
@@ -172,15 +178,17 @@ void MemoryEditingTab::loadUnknownValueFloatTutorial()
 	{
 		const int UNUSED_SAVE_PROFILE = 99;
 
-		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+		SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
+		SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(MapResources::Tutorials_UnknownValueFloat));
 		
-		PlatformerMap* map = PlatformerMap::create(MapResources::Tutorials_UnknownValueFloat);
+		PlatformerMap* map = PlatformerMap::create();
+
+		map->loadMap(MapResources::Tutorials_UnknownValueFloat);
 
 		return map;
 	}));
@@ -192,15 +200,17 @@ void MemoryEditingTab::loadKnownValueDoubleTutorial()
 	{
 		const int UNUSED_SAVE_PROFILE = 99;
 
-		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+		SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
+		SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(MapResources::Tutorials_KnownValueDouble));
 		
-		PlatformerMap* map = PlatformerMap::create(MapResources::Tutorials_KnownValueDouble);
+		PlatformerMap* map = PlatformerMap::create();
+
+		map->loadMap(MapResources::Tutorials_KnownValueDouble);
 
 		return map;
 	}));
@@ -212,15 +222,17 @@ void MemoryEditingTab::loadUnknownValueFloatTutorialAdvanced()
 	{
 		const int UNUSED_SAVE_PROFILE = 99;
 
-		SaveManager::deleteAllProfileData(UNUSED_SAVE_PROFILE);
-		SaveManager::setActiveSaveProfile(UNUSED_SAVE_PROFILE);
+		SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
+		SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(MapResources::Tutorials_KnownValueFloatAdvanced));
 		
-		PlatformerMap* map = PlatformerMap::create(MapResources::Tutorials_KnownValueFloatAdvanced);
+		PlatformerMap* map = PlatformerMap::create();
+
+		map->loadMap(MapResources::Tutorials_KnownValueFloatAdvanced);
 
 		return map;
 	}));

@@ -29,9 +29,9 @@ VoidAxePlans::~VoidAxePlans()
 {
 }
 
-Item* VoidAxePlans::craft()
+std::vector<Item*> VoidAxePlans::craft()
 {
-	return VoidAxe::create();
+	return { VoidAxe::create() };
 }
 
 std::vector<std::tuple<Item*, int>> VoidAxePlans::getReagentsInternal()
@@ -48,17 +48,12 @@ Item* VoidAxePlans::clone()
 	return VoidAxePlans::create();
 }
 
-std::string VoidAxePlans::getItemName()
-{
-	return VoidAxePlans::SaveKey;
-}
-
 LocalizedString* VoidAxePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_VoidAxe::create();
 }
 
-std::string VoidAxePlans::getIconResource()
+const std::string& VoidAxePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string VoidAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_VoidAxe;
 }
 
-std::string VoidAxePlans::getSerializationKey()
+const std::string& VoidAxePlans::getIdentifier()
 {
 	return VoidAxePlans::SaveKey;
 }

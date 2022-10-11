@@ -21,5 +21,5 @@ protected:
 private:
 	typedef CipherComponentBase super;
 
-	ClickableTextNode* quitButton;
+	ClickableTextNode* quitButton = nullptr;
 };

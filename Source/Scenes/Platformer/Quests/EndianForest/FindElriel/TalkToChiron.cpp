@@ -12,7 +12,8 @@
 #include "Entities/Platformer/Npcs/EndianForest/Chiron.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 
 #include "Resources/SoundResources.h"
 
@@ -33,8 +34,6 @@ TalkToChiron* TalkToChiron::create(GameObject* owner, QuestLine* questLine)
 
 TalkToChiron::TalkToChiron(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToChiron::MapKeyQuest, false)
 {
-	this->chiron = nullptr;
-	this->squally = nullptr;
 }
 
 TalkToChiron::~TalkToChiron()
@@ -75,7 +74,7 @@ void TalkToChiron::runCinematicSequence()
 		return;
 	}
 	
-	this->chiron->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	this->chiron->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(

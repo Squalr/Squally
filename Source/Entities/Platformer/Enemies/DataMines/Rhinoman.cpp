@@ -24,7 +24,7 @@ Rhinoman::Rhinoman(ValueMap& properties) : super(properties,
 	Rhinoman::MapKey,
 	EntityResources::Enemies_DataMines_Rhinoman_Animations,
 	EntityResources::Enemies_DataMines_Rhinoman_Emblem,
-	Size(592.0f, 592.0f),
+	CSize(592.0f, 592.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

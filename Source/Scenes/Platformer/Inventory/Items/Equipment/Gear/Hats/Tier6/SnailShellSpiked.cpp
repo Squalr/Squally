@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier6/SnailShellSpikedPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* SnailShellSpiked::clone()
 	return SnailShellSpiked::create();
 }
 
-std::string SnailShellSpiked::getItemName()
-{
-	return SnailShellSpiked::SaveKey;
-}
-
 LocalizedString* SnailShellSpiked::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_SnailShellSpiked::create();
 }
 
-std::string SnailShellSpiked::getIconResource()
+const std::string& SnailShellSpiked::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_SnailShellSpiked;
 }
 
-std::string SnailShellSpiked::getSerializationKey()
+const std::string& SnailShellSpiked::getIdentifier()
 {
 	return SnailShellSpiked::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string SnailShellSpiked::getSerializationKey()
 Vec2 SnailShellSpiked::getDisplayOffset()
 {
 	return Vec2(-36.0f, -34.0f);
+}
+
+Recipe* SnailShellSpiked::getRecipe()
+{
+	return SnailShellSpikedPlans::create();
 }

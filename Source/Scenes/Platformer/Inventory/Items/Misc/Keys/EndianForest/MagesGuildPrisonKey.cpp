@@ -33,22 +33,17 @@ Item* MagesGuildPrisonKey::clone()
 	return MagesGuildPrisonKey::create();
 }
 
-std::string MagesGuildPrisonKey::getItemName()
-{
-	return MagesGuildPrisonKey::SaveKey;
-}
-
 LocalizedString* MagesGuildPrisonKey::getString()
 {
 	return Strings::Items_Misc_Keys_MagesGuildPrisonKey::create();
 }
 
-std::string MagesGuildPrisonKey::getIconResource()
+const std::string& MagesGuildPrisonKey::getIconResource()
 {
 	return ItemResources::Keys_KEY_2;
 }
 
-std::string MagesGuildPrisonKey::getSerializationKey()
+const std::string& MagesGuildPrisonKey::getIdentifier()
 {
 	return MagesGuildPrisonKey::SaveKey;
 }

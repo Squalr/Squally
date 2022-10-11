@@ -21,7 +21,7 @@ SpecialSub* SpecialSub::create()
 	return instance;
 }
 
-SpecialSub::SpecialSub() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 }}), ItemMeta(3, 3))
+SpecialSub::SpecialSub() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 34 }}), ItemMeta(3, 3))
 {
 }
 
@@ -34,22 +34,17 @@ Item* SpecialSub::clone()
 	return SpecialSub::create();
 }
 
-std::string SpecialSub::getItemName()
-{
-	return SpecialSub::SaveKey;
-}
-
 LocalizedString* SpecialSub::getString()
 {
 	return Strings::Hexus_Cards_Subtract::create();
 }
 
-std::string SpecialSub::getIconResource()
+const std::string& SpecialSub::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialSub::getSerializationKey()
+const std::string& SpecialSub::getIdentifier()
 {
 	return SpecialSub::SaveKey;
 }

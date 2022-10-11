@@ -15,7 +15,7 @@
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/ParticleResources.h"
@@ -31,7 +31,7 @@ const std::string PuzzleDoorBase::UnlockedSaveKey = "PUZZLE_DOOR_UNLOCKED";
 const std::string PuzzleDoorBase::PropertyUnlockedByDefault = "unlocked";
 
 PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
-		Size doorClipSize,
+		CSize doorClipSize,
 		Vec2 doorClipOffset,
 		Vec2 portalOffset,
 		Vec2 indexPosition,
@@ -42,17 +42,14 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 		float doorOpenDelta)
 	: super(properties, doorClipSize, portalOffset)
 {
-	this->backNode = Node::create();
 	this->barLeft = Sprite::create(ObjectResources::Doors_PuzzleDoor_BarLeft);
 	this->barRight = Sprite::create(ObjectResources::Doors_PuzzleDoor_BarRight);
 	this->lightLeft = Sprite::create(ObjectResources::Doors_PuzzleDoor_Light);
 	this->lightRight = Sprite::create(ObjectResources::Doors_PuzzleDoor_Light);
 	this->marker = Sprite::create(ObjectResources::Doors_PuzzleDoor_Marker);
+	this->backNode = Node::create();
 	this->doorNode = Node::create();
 	this->frontNode = Node::create();
-	this->runes = std::vector<Sprite*>();
-	this->runesPassed = std::vector<Sprite*>();
-	this->runesFailed = std::vector<Sprite*>();
 	this->indexString = ConstantString::create(std::to_string(0));
 	this->truthString = ConstantString::create(std::to_string(0));
 	this->hackableString = ConstantString::create(std::to_string(0));
@@ -63,7 +60,6 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->sliderSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_StoneSlideHeavy1);
 	this->sliderResetSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_StoneSlideHeavy3);
 	this->electricitySound = WorldSound::create(SoundResources::Cipher_Lightning);
-	this->isUnlocked = false;
 	this->doorClipSize = doorClipSize;
 	this->doorClipOffset = doorClipOffset;
 	this->portalOffset = portalOffset;
@@ -83,15 +79,15 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 		this->runesFailed.push_back(Sprite::create(ObjectResources::Doors_PuzzleDoor_RuneRed));
 	}
 
-	this->doorClip = SmartClippingNode::create(this->doorNode, Rect(Vec2(-this->doorClipSize.width / 2.0f, -this->doorClipSize.height / 2.0f), this->doorClipSize));
+	this->doorClip = SmartClippingNode::create(this->doorNode, CRect(Vec2(-this->doorClipSize.width / 2.0f, -this->doorClipSize.height / 2.0f), this->doorClipSize));
 
 	this->indexLabel->enableOutline(Color4B::BLACK, 4);
 	this->truthLabel->enableOutline(Color4B::BLACK, 4);
 	this->hackableLabel->enableOutline(Color4B::BLACK, 4);
 
-	this->indexLabel->enableShadow(Color4B(0, 0, 0, 128), Size(2.0f, -2.0f));
-	this->truthLabel->enableShadow(Color4B(0, 0, 0, 128), Size(2.0f, -2.0f));
-	this->hackableLabel->enableShadow(Color4B(0, 0, 0, 128), Size(2.0f, -2.0f));
+	this->indexLabel->enableShadow(Color4B(0, 0, 0, 128), CSize(2.0f, -2.0f));
+	this->truthLabel->enableShadow(Color4B(0, 0, 0, 128), CSize(2.0f, -2.0f));
+	this->hackableLabel->enableShadow(Color4B(0, 0, 0, 128), CSize(2.0f, -2.0f));
 
 	this->indexLabel->setTextColor(PuzzleDoorBase::PassColor);
 	this->truthLabel->setTextColor(PuzzleDoorBase::PassColor);
@@ -111,29 +107,29 @@ PuzzleDoorBase::PuzzleDoorBase(ValueMap& properties,
 	this->lightLeft->setOpacity(0);
 	this->lightRight->setOpacity(0);
 
-	this->addChild(this->barLeft);
-	this->addChild(this->barRight);
-	this->addChild(this->backNode);
-	this->addChild(this->lightLeft);
-	this->addChild(this->lightRight);
-	this->addChild(this->doorClip);
-	this->addChild(this->frontNode);
-	this->addChild(this->indexLabel);
-	this->addChild(this->truthLabel);
-	this->addChild(this->hackableLabel);
-
-	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
-	{
-		this->addChild(this->runes[index]);
-		this->addChild(this->runesFailed[index]);
-		this->addChild(this->runesPassed[index]);
-	}
-
 	this->sliderSound->setCustomMultiplier(0.25f);
 	this->sliderResetSound->setCustomMultiplier(0.25f);
 	this->electricitySound->setCustomMultiplier(0.75f);
 
-	this->addChild(this->marker);
+	this->contentNode->addChild(this->backNode);
+	this->contentNode->addChild(this->barLeft);
+	this->contentNode->addChild(this->barRight);
+	this->contentNode->addChild(this->lightLeft);
+	this->contentNode->addChild(this->lightRight);
+	this->contentNode->addChild(this->doorClip);
+	this->contentNode->addChild(this->frontNode);
+	this->contentNode->addChild(this->indexLabel);
+	this->contentNode->addChild(this->truthLabel);
+	this->contentNode->addChild(this->hackableLabel);
+
+	for (int index = 0; index < PuzzleDoorBase::RuneCount; index++)
+	{
+		this->contentNode->addChild(this->runes[index]);
+		this->contentNode->addChild(this->runesFailed[index]);
+		this->contentNode->addChild(this->runesPassed[index]);
+	}
+
+	this->contentNode->addChild(this->marker);
 	this->addChild(this->electricitySound);
 	this->addChild(this->sliderSound);
 	this->addChild(this->sliderResetSound);

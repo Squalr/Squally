@@ -31,11 +31,9 @@ FilterMenu* FilterMenu::create(std::function<void()> onFilterChange)
 
 FilterMenu::FilterMenu(std::function<void()> onFilterChange)
 {
-	this->isFocused = true;
-	this->filterSelectionIndex = 0;
 	this->onFilterChange = onFilterChange;
 	this->filterNodeContent = Node::create();
-	this->filterNode = SmartClippingNode::create(this->filterNodeContent, Rect(Vec2(-160.0f, -304.0f), Size(320.0f, 608.0f)));
+	this->filterNode = SmartClippingNode::create(this->filterNodeContent, CRect(Vec2(-160.0f, -304.0f), CSize(320.0f, 608.0f)));
 	this->filterSelectionArrow = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
 	this->selectedFilterRowActive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectActive);
 	this->selectedFilterRowInactive = Sprite::create(UIResources::Menus_InventoryMenu_RowSelectInactive);
@@ -46,7 +44,7 @@ FilterMenu::FilterMenu(std::function<void()> onFilterChange)
 	this->filters.push_back(ConsumablesFilter::create());
 	this->filters.push_back(MiscFilter::create());
 
-	for (auto next : this->filters)
+	for (FilterEntry* next : this->filters)
 	{
 		this->filterNodeContent->addChild(next);
 	}
@@ -80,12 +78,12 @@ void FilterMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_W, EventKeyboard::KeyCode::KEY_UP_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_W, InputEvents::KeyCode::KEY_UP_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->scrollFilterUp();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_S, EventKeyboard::KeyCode::KEY_DOWN_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_S, InputEvents::KeyCode::KEY_DOWN_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->scrollFilterDown();
 	});

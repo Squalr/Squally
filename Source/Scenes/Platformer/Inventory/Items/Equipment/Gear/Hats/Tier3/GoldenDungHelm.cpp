@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier3/GoldenDungHelmPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* GoldenDungHelm::clone()
 	return GoldenDungHelm::create();
 }
 
-std::string GoldenDungHelm::getItemName()
-{
-	return GoldenDungHelm::SaveKey;
-}
-
 LocalizedString* GoldenDungHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_GoldenDungHelm::create();
 }
 
-std::string GoldenDungHelm::getIconResource()
+const std::string& GoldenDungHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_GoldenDungHelm;
 }
 
-std::string GoldenDungHelm::getSerializationKey()
+const std::string& GoldenDungHelm::getIdentifier()
 {
 	return GoldenDungHelm::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string GoldenDungHelm::getSerializationKey()
 Vec2 GoldenDungHelm::getDisplayOffset()
 {
 	return Vec2(8.0f, 26.0f);
+}
+
+Recipe* GoldenDungHelm::getRecipe()
+{
+	return GoldenDungHelmPlans::create();
 }

@@ -2,8 +2,6 @@
 
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Gear.h"
 
-class LocalizedString;
-
 class Hat : public Gear
 {
 public:

@@ -13,7 +13,7 @@
 #include "Engine/Sound/Sound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/HexusEvents.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -70,7 +70,7 @@ void StateGameEnd::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE, EventKeyboard::KeyCode::KEY_ENTER }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE, InputEvents::KeyCode::KEY_ENTER }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this) || !this->backButton->canInteract())
 		{
@@ -87,13 +87,14 @@ void StateGameEnd::initializePositions()
 {
 	super::initializePositions();
 	
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->backButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 196.0f);
+	this->backButton->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 196.0f);
 }
 
 void StateGameEnd::onBackClick(GameState* gameState)
 {
+	this->backButton->stopAllActions();
 	this->backButton->disableInteraction(0);
 	this->backButton->setMouseClickCallback(nullptr);
 
@@ -106,9 +107,9 @@ void StateGameEnd::onBackClick(GameState* gameState)
 
 	if (isDraw)
 	{
-		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
+		int losses = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
 
-		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
+		SaveManager::SaveGlobalData(lossesKey, cocos2d::Value(losses));
 
 		// Analytics for losing (as a tie)
 		Analytics::sendEvent(AnalyticsCategories::Hexus, "total_losses", gameState->opponentData->enemyAnalyticsIdentifier, losses);
@@ -120,10 +121,10 @@ void StateGameEnd::onBackClick(GameState* gameState)
 	}
 	else if (isWin)
 	{
-		int wins = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
-		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
+		int wins = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
+		int losses = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
 
-		SaveManager::saveGlobalData(winsKey, cocos2d::Value(wins));
+		SaveManager::SaveGlobalData(winsKey, cocos2d::Value(wins));
 
 		if (wins == 1 && losses == 0)
 		{
@@ -145,10 +146,10 @@ void StateGameEnd::onBackClick(GameState* gameState)
 	}
 	else
 	{
-		int wins = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
-		int losses = SaveManager::getGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
+		int wins = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt();
+		int losses = SaveManager::GetGlobalDataOrDefault(winsKey, cocos2d::Value(0)).asInt() + 1;
 
-		SaveManager::saveGlobalData(lossesKey, cocos2d::Value(losses));
+		SaveManager::SaveGlobalData(lossesKey, cocos2d::Value(losses));
 
 		if (wins == 0 && losses == 1)
 		{
@@ -187,7 +188,7 @@ void StateGameEnd::onStateEnter(GameState* gameState)
 	}
 
 	this->backButton->enableInteraction(0);
-	this->backButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
+	this->backButton->runAction(FadeTo::create(HexusConfig::replaceEndButtonFadeSpeed, 255));
 	this->backButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->onBackClick(gameState);

@@ -6,6 +6,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -64,7 +65,7 @@ void MulDoor::registerHackables()
 				Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_Multiply::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Pearls,
-				MulDoorPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return MulDoorPreview::create(); }),
 				{
 					{ HackableCode::Register::zcx, Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_RegisterEcx::create() },
 				},
@@ -93,7 +94,7 @@ void MulDoor::registerHackables()
 	auto incrementAnimationFunc = &MulDoor::mulDoorTransform;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)incrementAnimationFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}
@@ -108,7 +109,7 @@ void MulDoor::runOperation(int puzzleIndex)
 
 NO_OPTIMIZE void MulDoor::mulDoorTransform(int puzzleIndex)
 {
-	static volatile int transform;
+	static volatile int transform = 0;
 
 	transform = puzzleIndex;
 

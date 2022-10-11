@@ -17,10 +17,9 @@
    <property name="depth" type="float" value="-3200"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="817" name="Forest/Background/GreenForestRocks1" type="decor" x="-3714.65" y="1126" width="8305.3" height="1140">
+  <object id="817" name="Forest/Background/GreenForestRocks1" type="decor" x="-3714.65" y="1126" width="8305.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -29,10 +28,9 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="819" name="Forest/Background/GreenForestGround2" type="decor" x="-3682.65" y="-66" width="8241.3" height="1140">
+  <object id="819" name="Forest/Background/GreenForestGround2" type="decor" x="-3682.65" y="-66" width="8241.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -186,7 +184,7 @@
   </properties>
   <object id="692" name="cyclops" type="entity" x="756.06" y="1983.37" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
+    <property name="components" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
@@ -195,7 +193,7 @@
   </object>
   <object id="693" name="orc-bomber" type="entity" x="757.64" y="1738.94" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
+    <property name="components" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
    </properties>
@@ -208,7 +206,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="1609.92" y="1987.86" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="770" name="Forest/Flower9" type="decor" x="1086.5" y="2001.5" width="199" height="133"/>

@@ -2,10 +2,8 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class Guano;
 class Chiron;
 class QuestLine;
-class Scrappy;
 class Squally;
 
 class TalkToChiron : public QuestTask
@@ -29,6 +27,6 @@ private:
 
 	void runCinematicSequence();
 
-	Chiron* chiron;
-	Squally* squally;
+	Chiron* chiron = nullptr;
+	Squally* squally = nullptr;
 };

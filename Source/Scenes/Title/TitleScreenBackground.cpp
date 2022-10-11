@@ -13,7 +13,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/UI/FloatingSprite.h"
-#include "Engine/UI/InfiniteParallaxNode.h"
+#include "Engine/UI/InfiniteScrollSprite.h"
 #include "Engine/Utils/GameUtils.h"
 
 #include "Resources/EntityResources.h"
@@ -35,8 +35,8 @@ TitleScreenBackground* TitleScreenBackground::create()
 TitleScreenBackground::TitleScreenBackground()
 {
 	this->background = Sprite::create(UIResources::Menus_Backgrounds_ForestBackground);
-	this->fog = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
-	this->foregroundFog = InfiniteParallaxNode::create(UIResources::Menus_Backgrounds_Fog);
+	this->fog = InfiniteScrollSprite::create(UIResources::Menus_Backgrounds_Fog);
+	this->foregroundFog = InfiniteScrollSprite::create(UIResources::Menus_Backgrounds_Fog);
 	this->backgroundTrees = FloatingSprite::create(UIResources::Menus_Backgrounds_LightTrees, Vec2(-12.0f, 8.0f), Vec2(7.0f, 5.0f));
 	this->backgroundVines = FloatingSprite::create(UIResources::Menus_Backgrounds_FarVines, Vec2(12.0f, -8.0f), Vec2(7.0f, 5.0f));
 	this->midgroundTrees = FloatingSprite::create(UIResources::Menus_Backgrounds_MidgroundTrees, Vec2(8.0f, -8.0f), Vec2(7.0f, 5.0f));
@@ -64,9 +64,6 @@ TitleScreenBackground::TitleScreenBackground()
 
 	this->leftEyeController->setVisible(false);
 	this->rightEyeController->setVisible(false);
-
-	this->eyes1->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesA_0000, 0.025f, 1.54f, 0.025f, 2.5f, true);
-	this->eyes2->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesB_0000, 0.025f, 1.25f, 0.025f, 3.25f, true);
 
 	this->windParticles = SmartParticles::create(ParticleResources::Wind);
 	this->fireflyParticles = SmartParticles::create(ParticleResources::Fireflies2);
@@ -104,7 +101,7 @@ void TitleScreenBackground::onEnter()
 	this->fireflyParticles->accelerate(2.0f);
 	this->windParticles->accelerate(5.0f);
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	Vec2 base = Vec2(visibleSize.width / 2 + 228.0f, visibleSize.height / 2 + 160.0f);
 
 	const float floatSpeed = 3.0f;
@@ -165,13 +162,16 @@ void TitleScreenBackground::onEnter()
 void TitleScreenBackground::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->eyes1->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesA_0000, 0.025f, 1.54f, 0.025f, 2.5f, true);
+	this->eyes2->playAnimationAndReverseRepeat(UIResources::Menus_Backgrounds_EyesB_0000, 0.025f, 1.25f, 0.025f, 3.25f, true);
 }
 
 void TitleScreenBackground::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->background->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->backgroundTrees->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
@@ -200,6 +200,7 @@ void TitleScreenBackground::runEyeBlinkLoop()
 	const float TimeBetweenBlinks = 5.5f;
 	
 	this->leftEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
+	/*
 	this->leftEyeController->getForwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
 	{
 		AnimationPart* leftEye = this->squally->getAnimationPart("eye_left");
@@ -218,7 +219,9 @@ void TitleScreenBackground::runEyeBlinkLoop()
 			leftEye->replaceSprite(spriteResource);
 		}
 	};
+	*/
 	this->rightEyeController->playAnimationAndReverseRepeat(EntityResources::Squally_Blink_EYE_L_Blink_0000, BlinkSpeed, EyesClosedDuration, BlinkSpeed, TimeBetweenBlinks);
+	/*
 	this->rightEyeController->getForwardsAnimation()->onSpriteChange = [=](std::string spriteResource)
 	{
 		AnimationPart* rightEye = this->squally->getAnimationPart("eye_right");
@@ -237,4 +240,5 @@ void TitleScreenBackground::runEyeBlinkLoop()
 			rightEye->replaceSprite(spriteResource);
 		}
 	};
+	*/
 }

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Wands/SapphireWandPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* SapphireWand::clone()
 	return SapphireWand::create();
 }
 
-std::string SapphireWand::getItemName()
-{
-	return SapphireWand::SaveKey;
-}
-
 LocalizedString* SapphireWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_SapphireWand::create();
 }
 
-std::string SapphireWand::getIconResource()
+const std::string& SapphireWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_SapphireWand;
 }
 
-std::string SapphireWand::getSerializationKey()
+const std::string& SapphireWand::getIdentifier()
 {
 	return SapphireWand::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string SapphireWand::getSerializationKey()
 Vec2 SapphireWand::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* SapphireWand::getRecipe()
+{
+	return SapphireWandPlans::create();
 }

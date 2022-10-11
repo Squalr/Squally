@@ -9,7 +9,7 @@ const std::string QuestEvents::EventQuestTaskComplete = "EVENT_QUEST_TASK_COMPLE
 
 void QuestEvents::TriggerQuestTaskComplete(QuestTaskCompleteArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		QuestEvents::EventQuestTaskComplete + args.questLine,
 		&args
 	);

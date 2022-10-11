@@ -32,7 +32,7 @@ Flip3HelpMenu* Flip3HelpMenu::create()
 
 Flip3HelpMenu::Flip3HelpMenu()
 {
-	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_Flip3::create(), Size(1200.0f, 0.0f));
+	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_Flip3::create(), CSize(1200.0f, 0.0f));
 	this->flip3Card = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Flip3));
 	this->previewCard = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight);
 	this->attackFrame = Sprite::create(HexusResources::HelperTextFrame);

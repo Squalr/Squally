@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier5/WizardsHatPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* WizardsHatArcane::clone()
 	return WizardsHatArcane::create();
 }
 
-std::string WizardsHatArcane::getItemName()
-{
-	return WizardsHatArcane::SaveKey;
-}
-
 LocalizedString* WizardsHatArcane::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_WizardsHatArcane::create();
 }
 
-std::string WizardsHatArcane::getIconResource()
+const std::string& WizardsHatArcane::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_WizardsHatArcane;
 }
 
-std::string WizardsHatArcane::getSerializationKey()
+const std::string& WizardsHatArcane::getIdentifier()
 {
 	return WizardsHatArcane::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string WizardsHatArcane::getSerializationKey()
 Vec2 WizardsHatArcane::getDisplayOffset()
 {
 	return Vec2(-22.0f, -8.0f);
+}
+
+Recipe* WizardsHatArcane::getRecipe()
+{
+	return nullptr;
 }

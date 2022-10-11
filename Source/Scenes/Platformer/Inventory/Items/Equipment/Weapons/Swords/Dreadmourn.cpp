@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Swords/DreadmournPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* Dreadmourn::clone()
 	return Dreadmourn::create();
 }
 
-std::string Dreadmourn::getItemName()
-{
-	return Dreadmourn::SaveKey;
-}
-
 LocalizedString* Dreadmourn::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_Dreadmourn::create();
 }
 
-std::string Dreadmourn::getIconResource()
+const std::string& Dreadmourn::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_Dreadmourn;
 }
 
-std::string Dreadmourn::getSerializationKey()
+const std::string& Dreadmourn::getIdentifier()
 {
 	return Dreadmourn::SaveKey;
+}
+
+Recipe* Dreadmourn::getRecipe()
+{
+	return DreadmournPlans::create();
 }

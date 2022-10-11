@@ -31,8 +31,6 @@ CombatHud::CombatHud()
 	this->playerPartyStatsNode = Node::create();
 	this->enemyPartyStatsNode = Node::create();
 	this->dialogueBox = PlatformerDialogueBox::create();
-	this->playerPartyStatsBars = std::vector<StatsBars*>();
-	this->enemyPartyStatsBars = std::vector<StatsBars*>();
 
 	this->addChild(this->playerPartyStatsNode);
 	this->addChild(this->enemyPartyStatsNode);
@@ -52,7 +50,7 @@ void CombatHud::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->dialogueBox->setPosition(Vec2(visibleSize.width / 2.0f, 192.0f));
 	this->playerPartyStatsNode->setPosition(32.0f, visibleSize.height - 96.0f);
@@ -65,7 +63,7 @@ void CombatHud::initializeListeners()
 	
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventSelectionChanged, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::SelectionArgs* args = static_cast<CombatEvents::SelectionArgs*>(eventCustom->getUserData());
+		CombatEvents::SelectionArgs* args = static_cast<CombatEvents::SelectionArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

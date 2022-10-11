@@ -7,10 +7,8 @@ namespace cocos2d
 	class Sprite;
 }
 
-class HackablePreview;
 class PlatformerEntity;
 class SmartParticles;
-class WorldSound;
 
 class Enrage : public Buff
 {
@@ -37,10 +35,10 @@ private:
 	void applyEnrageIncreaseDamageDealt();
 	void applyEnrageIncreaseDamageTaken();
 	
-	static volatile float currentSpeed;
+	SmartParticles* spellEffect = nullptr;
+	cocos2d::Sprite* spellAura = nullptr;
 	
-	SmartParticles* spellEffect;
-	cocos2d::Sprite* spellAura;
+	static volatile float currentSpeed;
 
 	static const float MinSpeed;
 	static const float DefaultSpeed;

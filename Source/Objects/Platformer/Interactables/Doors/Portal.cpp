@@ -13,7 +13,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Menus/Interact/InteractMenu.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/UIResources.h"
 
@@ -29,14 +29,14 @@ const std::string Portal::SaveKeyListenEventTriggered = "SAVE_KEY_LISTEN_EVENT_T
 
 Portal* Portal::create(ValueMap& properties)
 {
-	Portal* instance = new Portal(properties, Size(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()));
+	Portal* instance = new Portal(properties, CSize(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()));
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Portal::Portal(ValueMap& properties, Size size, Vec2 offset, Color3B color) : super(properties, InteractObject::InteractType::Input, size, offset, color)
+Portal::Portal(ValueMap& properties, CSize size, Vec2 offset, Color3B color) : super(properties, InteractObject::InteractType::Input, size, offset, nullptr, InputEvents::KeyCode::KEY_V, color)
 {
 	this->mapFile = GameUtils::getKeyOrDefault(this->properties, Portal::PropertyPortalMap, Value("")).asString();
 	this->transition = GameUtils::getKeyOrDefault(this->properties, Portal::PropertyPortalTransition, Value("")).asString();
@@ -87,11 +87,16 @@ void Portal::initializeListeners()
 	super::initializeListeners();
 }
 
-void Portal::onInteract()
+void Portal::onInteract(PlatformerEntity* interactingEntity)
 {
-	super::onInteract();
+	super::onInteract(interactingEntity);
 
 	this->loadMap();
+}
+
+void Portal::setMapFile(std::string mapFile)
+{
+	this->mapFile = mapFile;
 }
 
 void Portal::loadMap()
@@ -102,6 +107,7 @@ void Portal::loadMap()
 	}
 
 	this->wasTripped = true;
+	this->broadcastMapEvent(this->getSendEvent(), ValueMap());
 
 	// Load new map after a short delay -- changing scenes in the middle of a collision causes a crash
 	// (not sure why, changing to a combat map is fine)
@@ -112,7 +118,22 @@ void Portal::loadMap()
 			NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 			{
 				PlatformerEvents::TriggerBeforePlatformerMapChange();
-				PlatformerMap* map = PlatformerMap::create("Public/Platformer/Maps/" + this->mapFile + ".tmx", this->transition);
+				PlatformerMap* map = PlatformerMap::create(this->transition);
+
+				// Attempt to load the map file as a full relative path (rare edge case)
+				if (map->loadMap(this->mapFile, false))
+				{
+					return map;
+				}
+
+				std::string mapResource = "Public/Platformer/Maps/" + this->mapFile + ".tmx";
+				std::string mapResourceFallback = "Private/Platformer/Maps/" + this->mapFile + ".tmx";
+
+				// Attempt the public map first, try the private path if that fails
+				if (!map->loadMap(mapResource, false))
+				{
+					map->loadMap(mapResourceFallback, true);
+				}
 
 				return map;
 			}));

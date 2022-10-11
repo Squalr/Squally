@@ -13,7 +13,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityRuneBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityRuneBehavior.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
@@ -34,16 +34,6 @@ RuneBar* RuneBar::create(bool isFrameOnLeft)
 
 RuneBar::RuneBar(bool isFrameOnLeft)
 {
-	this->target = nullptr;
-	this->runeBehavior = nullptr;
-	this->emptyRunes = std::vector<Sprite*>();
-	this->cooldownClips = std::vector<ClippingNode*>();
-	this->cooldownCircles = std::vector<DrawNode*>();
-	this->cooldownStencils = std::vector<DrawNode*>();
-	this->filledRunes = std::vector<Sprite*>();
-	this->smokeFx = std::vector<SmartAnimationSequenceNode*>();
-	this->smokeSound = std::vector<Sound*>();
-
 	for (int index = 0; index < EntityRuneBehavior::MaxRunes; index++)
 	{
 		DrawNode* cooldownStencil = DrawNode::create();
@@ -128,7 +118,7 @@ void RuneBar::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(PlatformerEvents::EventRuneConsumed, [=](EventCustom* eventCustom)
 	{
-		PlatformerEvents::RuneConsumedArgs* args = static_cast<PlatformerEvents::RuneConsumedArgs*>(eventCustom->getUserData());
+		PlatformerEvents::RuneConsumedArgs* args = static_cast<PlatformerEvents::RuneConsumedArgs*>(eventCustom->getData());
 		
 		if (args != nullptr && this->target != nullptr && args->entity == this->target)
 		{
@@ -237,7 +227,7 @@ void RuneBar::update(float dt)
 void RuneBar::setStatsTarget(PlatformerEntity* target)
 {
 	this->target = target;
-	this->runeBehavior = this->target == nullptr ? nullptr : this->target->getAttachedBehavior<EntityRuneBehavior>();
+	this->runeBehavior = this->target == nullptr ? nullptr : this->target->getComponent<EntityRuneBehavior>();
 
 	if (this->runeBehavior == nullptr)
 	{

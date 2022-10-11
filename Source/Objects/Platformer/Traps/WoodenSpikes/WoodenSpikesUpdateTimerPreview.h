@@ -29,11 +29,10 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	bool isLaunching;
-	float launchCountDown;
+	bool isLaunching = false;
+	float launchCountDown = 0.0f;
 
-	SmartAnimationSequenceNode* previewSpikes;
-	
-	ConstantString* ebxTimerStr;
-	LocalizedLabel* ebxTimer;
+	SmartAnimationSequenceNode* previewSpikes = nullptr;
+	ConstantString* ebxTimerStr = nullptr;
+	LocalizedLabel* ebxTimer = nullptr;
 };

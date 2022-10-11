@@ -11,7 +11,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
-#include "Engine/Sound/Track.h"
+#include "Engine/Sound/Music.h"
 
 #include "Resources/UIResources.h"
 
@@ -20,7 +20,7 @@
 using namespace cocos2d;
 
 const Vec2 MusicOverlay::ScrollOutDelta = Vec2(0.0f, -128.0f);
-std::string MusicOverlay::CachedLastPlayedTrack = "";
+std::string MusicOverlay::CachedLastPlayedMusic = "";
 
 MusicOverlay* MusicOverlay::create()
 {
@@ -34,20 +34,20 @@ MusicOverlay* MusicOverlay::create()
 MusicOverlay::MusicOverlay()
 {
 	this->contentNode = Node::create();
-	this->trackString = Strings::Menus_Music_Track::create()->setStringReplacementVariables(ConstantString::create(""));
+	this->musicString = Strings::Menus_Music_Track::create()->setStringReplacementVariables(ConstantString::create(""));
 	this->artistString = Strings::Menus_Music_Artist::create()->setStringReplacementVariables(ConstantString::create(""));
-	this->trackLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->trackString);
+	this->musicLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, this->musicString);
 	this->artistLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, this->artistString);
 	this->note = Sprite::create(UIResources::Menus_MusicOverlay_Note);
 
-	this->trackLabel->enableOutline(Color4B::BLACK, 2);
+	this->musicLabel->enableOutline(Color4B::BLACK, 2);
 	this->artistLabel->enableOutline(Color4B::BLACK, 2);
 
-	this->trackLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
+	this->musicLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 	this->artistLabel->setAnchorPoint(Vec2(1.0f, 0.5f));
 
 	this->contentNode->addChild(this->note);
-	this->contentNode->addChild(this->trackLabel);
+	this->contentNode->addChild(this->musicLabel);
 	this->contentNode->addChild(this->artistLabel);
 	this->addChild(this->contentNode);
 }
@@ -60,11 +60,11 @@ void MusicOverlay::initializePositions()
 {
 	super::initializePositions();
 
-	const Size visibleSize = Director::getInstance()->getVisibleSize();
+	const CSize visibleSize = Director::getInstance()->getVisibleSize();
 	const Vec2 Offset = Vec2(visibleSize.width - 72.0f, 64.0f);
 
 	this->note->setPosition(Offset + Vec2(32.0f, 16.0f));
-	this->trackLabel->setPosition(Offset + Vec2(0.0f, 32.0f));
+	this->musicLabel->setPosition(Offset + Vec2(0.0f, 32.0f));
 	this->artistLabel->setPosition(Offset + Vec2(0.0f, 0.0f));
 
 	this->contentNode->setPosition(MusicOverlay::ScrollOutDelta);
@@ -74,35 +74,35 @@ void MusicOverlay::initializeListeners()
 {
 	super::initializeListeners();
 	
-	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventTrackPlayed, [=](EventCustom* eventCustom)
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SoundEvents::EventMusicPlayed, [=](EventCustom* eventCustom)
 	{
-		SoundEvents::TrackPlayedArgs* args = static_cast<SoundEvents::TrackPlayedArgs*>(eventCustom->getUserData());
+		SoundEvents::MusicPlayedArgs* args = static_cast<SoundEvents::MusicPlayedArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
-			this->showOverlayForTrack(args->track);
+			this->showOverlayForMusic(args->music);
 		}
 	}));
 }
 
-void MusicOverlay::showOverlayForTrack(Track* track)
+void MusicOverlay::showOverlayForMusic(Music* music)
 {
-	if (track == nullptr)
+	if (music == nullptr)
 	{
 		return;
 	}
 
-	std::string trackResource = track->getTrackResource();
+	std::string musicResource = music->getSoundResource();
 
-	if (MusicOverlay::CachedLastPlayedTrack == trackResource)
+	if (MusicOverlay::CachedLastPlayedMusic == musicResource)
 	{
 		return;
 	}
 
-	MusicOverlay::CachedLastPlayedTrack = trackResource;
+	MusicOverlay::CachedLastPlayedMusic = musicResource;
 
-	this->trackLabel->setStringReplacementVariables(track->getTrackName());
-	this->artistLabel->setStringReplacementVariables(track->getArtistName());
+	this->musicLabel->setStringReplacementVariables(music->cloneMusicName());
+	this->artistLabel->setStringReplacementVariables(music->cloneArtistName());
 
 	this->contentNode->runAction(Sequence::create(
 		MoveTo::create(0.5f, Vec2::ZERO),

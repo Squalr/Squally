@@ -17,7 +17,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/UIResources.h"
@@ -46,7 +46,7 @@ OptionWarp* OptionWarp::create(ValueMap& properties)
 
 OptionWarp::OptionWarp(ValueMap& properties) : super(
 	properties,
-	Size(
+	CSize(
 		GameUtils::getKeyOrDefault(properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 	),
@@ -92,13 +92,13 @@ void OptionWarp::initializeListeners()
 
 	this->listenForMapEvent(OptionWarp::EventWarpToPrefix + this->from, [=](ValueMap args)
 	{
-		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
+		ObjectEvents::QueryObject<Squally>([=](Squally* squally)
 		{
 			this->doRelayer();
 			this->applyZoomOverride();
 
 			PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this), this->warpCamera));
-		}), Squally::MapKey);
+		}, Squally::MapKey);
 	});
 }
 
@@ -153,6 +153,15 @@ void OptionWarp::openDialogue()
 			return true;
 		});
 	}
+	
+	options.push_back(Strings::Menus_Cancel::create());
+
+	callbacks.push_back([=]()
+	{
+		this->cancelOptionChoice();
+
+		return true;
+	});
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		DialogueEvents::BuildOptions(Strings::Platformer_Objects_Warps_WhereTo::create(), options),
@@ -200,9 +209,10 @@ bool OptionWarp::cancelOptionChoice()
 
 	DialogueEvents::TriggerTryDialogueClose(DialogueEvents::DialogueCloseArgs([=]()
 	{
-		this->canChooseOption = false;
-		PlatformerEvents::TriggerAllowPause();
 	}));
+	
+	this->canChooseOption = false;
+	PlatformerEvents::TriggerAllowPause();
 
 	return true;
 }
@@ -214,11 +224,12 @@ void OptionWarp::doRelayer()
 		return;
 	}
 
-	MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this);
+	MapLayer* mapLayer = GameUtils::GetFirstParentOfType<MapLayer>(this);
 
-	if (layer != nullptr)
+	if (mapLayer != nullptr)
 	{
-		GameUtils::changeParent(squally, layer, true);
+		GameUtils::changeParent(squally, mapLayer, true);
+		mapLayer->setHackable();
 	}
 }
 

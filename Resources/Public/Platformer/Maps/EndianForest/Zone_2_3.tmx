@@ -3,8 +3,8 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Waterfall"/>
-   <property name="gravity" value="-768"/>
    <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="3"/>
@@ -101,12 +101,16 @@
   <object id="834" name="solid" type="collision" x="-111.198" y="183.957" width="2270.88" height="171.48"/>
   <object id="835" name="merlin" type="entity" x="1182.91" y="1061.94" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,face-squally"/>
+    <property name="components" value="friendly,face-squally"/>
     <property name="quest" value="water-spellbook"/>
     <property name="quest-line" value="water-spellbook"/>
    </properties>
   </object>
-  <object id="836" name="solid" type="collision" x="-102.303" y="1192.3" width="2265.39" height="168.242"/>
+  <object id="836" name="solid" type="collision" x="-102.303" y="1192.3" width="2265.39" height="168.242">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="838" name="help-totem-swim-hack" type="object" x="392.364" y="945.091" width="248" height="248"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
@@ -122,7 +126,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="903.292" y="1060.49" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally,is-swimming-clippy"/>
+    <property name="components" value="squally,is-swimming-clippy"/>
    </properties>
   </object>
   <object id="839" name="spawn" type="object" x="963.576" y="601.394" width="128" height="128">

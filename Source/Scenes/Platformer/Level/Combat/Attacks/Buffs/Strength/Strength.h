@@ -7,10 +7,8 @@ namespace cocos2d
 	class Sprite;
 }
 
-class HackablePreview;
 class PlatformerEntity;
 class SmartParticles;
-class WorldSound;
 
 class Strength : public Buff
 {
@@ -35,8 +33,8 @@ private:
 	
 	static volatile int currentDamageDealt;
 	
-	SmartParticles* spellEffect;
-	cocos2d::Sprite* spellAura;
+	SmartParticles* spellEffect = nullptr;
+	cocos2d::Sprite* spellAura = nullptr;
 	
 	static const int MinMultiplier;
 	static const int MaxMultiplier;

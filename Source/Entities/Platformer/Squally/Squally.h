@@ -20,7 +20,7 @@ public:
 	std::vector<std::string> getWalkSounds() override;
 
 	static const std::string MapKey;
-	static const std::string BattleTag;
+	static const std::string TeamTag;
 
 protected:
 	Squally(cocos2d::ValueMap& properties);

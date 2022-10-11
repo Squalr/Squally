@@ -5,24 +5,22 @@
 #include "CipherResources.h"
 #include <string>
 
-const std::string CipherResources::Blocks_BlockAscii = "Private/Cipher/Blocks/BlockAscii.png";
-const std::string CipherResources::Blocks_BlockAsciiHuge = "Private/Cipher/Blocks/BlockAsciiHuge.png";
 const std::string CipherResources::Blocks_BlockAsciiLong = "Private/Cipher/Blocks/BlockAsciiLong.png";
-const std::string CipherResources::Blocks_BlockBin = "Private/Cipher/Blocks/BlockBin.png";
-const std::string CipherResources::Blocks_BlockBinHuge = "Private/Cipher/Blocks/BlockBinHuge.png";
+const std::string CipherResources::Blocks_BlockAsciiLongBottom = "Private/Cipher/Blocks/BlockAsciiLongBottom.png";
+const std::string CipherResources::Blocks_BlockAsciiLongMiddle = "Private/Cipher/Blocks/BlockAsciiLongMiddle.png";
+const std::string CipherResources::Blocks_BlockAsciiLongTop = "Private/Cipher/Blocks/BlockAsciiLongTop.png";
 const std::string CipherResources::Blocks_BlockBinLong = "Private/Cipher/Blocks/BlockBinLong.png";
-const std::string CipherResources::Blocks_BlockDec = "Private/Cipher/Blocks/BlockDec.png";
-const std::string CipherResources::Blocks_BlockDecHuge = "Private/Cipher/Blocks/BlockDecHuge.png";
+const std::string CipherResources::Blocks_BlockBinLongBottom = "Private/Cipher/Blocks/BlockBinLongBottom.png";
+const std::string CipherResources::Blocks_BlockBinLongMid = "Private/Cipher/Blocks/BlockBinLongMid.png";
+const std::string CipherResources::Blocks_BlockBinLongTop = "Private/Cipher/Blocks/BlockBinLongTop.png";
 const std::string CipherResources::Blocks_BlockDecLong = "Private/Cipher/Blocks/BlockDecLong.png";
-const std::string CipherResources::Blocks_BlockGreen = "Private/Cipher/Blocks/BlockGreen.png";
-const std::string CipherResources::Blocks_BlockHex = "Private/Cipher/Blocks/BlockHex.png";
-const std::string CipherResources::Blocks_BlockHexHuge = "Private/Cipher/Blocks/BlockHexHuge.png";
+const std::string CipherResources::Blocks_BlockDecLongBottom = "Private/Cipher/Blocks/BlockDecLongBottom.png";
+const std::string CipherResources::Blocks_BlockDecLongTop = "Private/Cipher/Blocks/BlockDecLongTop.png";
+const std::string CipherResources::Blocks_BlockDecMid = "Private/Cipher/Blocks/BlockDecMid.png";
 const std::string CipherResources::Blocks_BlockHexLong = "Private/Cipher/Blocks/BlockHexLong.png";
-const std::string CipherResources::Blocks_BlockPink = "Private/Cipher/Blocks/BlockPink.png";
-const std::string CipherResources::Blocks_BlockPurple = "Private/Cipher/Blocks/BlockPurple.png";
-const std::string CipherResources::Blocks_BlockRed = "Private/Cipher/Blocks/BlockRed.png";
-const std::string CipherResources::Blocks_BlockTeal = "Private/Cipher/Blocks/BlockTeal.png";
-const std::string CipherResources::Blocks_BlockYellow = "Private/Cipher/Blocks/BlockYellow.png";
+const std::string CipherResources::Blocks_BlockHexLongBottom = "Private/Cipher/Blocks/BlockHexLongBottom.png";
+const std::string CipherResources::Blocks_BlockHexLongMiddle = "Private/Cipher/Blocks/BlockHexLongMiddle.png";
+const std::string CipherResources::Blocks_BlockHexLongTop = "Private/Cipher/Blocks/BlockHexLongTop.png";
 const std::string CipherResources::Buttons_AsciiButton = "Private/Cipher/Buttons/AsciiButton.png";
 const std::string CipherResources::Buttons_AsciiButtonActive = "Private/Cipher/Buttons/AsciiButtonActive.png";
 const std::string CipherResources::Buttons_AsciiButtonSelected = "Private/Cipher/Buttons/AsciiButtonSelected.png";

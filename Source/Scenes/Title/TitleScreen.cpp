@@ -3,6 +3,7 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
 #include "Engine/Events/NavigationEvents.h"
@@ -12,7 +13,6 @@
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Sound/Music.h"
-#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Menus/MusicOverlay/MusicOverlay.h"
 #include "Menus/Options/OptionsScene.h"
@@ -30,32 +30,33 @@
 
 using namespace cocos2d;
 
-TitleScreen* TitleScreen::instance = nullptr;
+TitleScreen* TitleScreen::Instance = nullptr;
 
 TitleScreen* TitleScreen::getInstance()
 {
-	if (TitleScreen::instance == nullptr)
+	if (TitleScreen::Instance == nullptr)
 	{
-		TitleScreen::instance = new TitleScreen();
+		TitleScreen::Instance = new TitleScreen();
 
-		TitleScreen::instance->autorelease();
-		TitleScreen::instance->initializeListeners();
+		TitleScreen::Instance->autorelease();
+		TitleScreen::Instance->initializeListeners();
 
-		GlobalDirector::registerGlobalScene(TitleScreen::getInstance());
+		GlobalDirector::RegisterGlobalScene(TitleScreen::getInstance());
 	}
 
-	return TitleScreen::instance;
+	return TitleScreen::Instance;
 }
 
 TitleScreen::TitleScreen()
 {
+	ValueMap emptyProperties;
 	this->titleBar = Sprite::create(UIResources::Menus_TitleScreen_TitleBar);
 	this->title = Sprite::create(UIResources::Menus_TitleScreen_Title);
 	this->background = TitleScreenBackground::create();
 	this->musicOverlay = MusicOverlay::create();
-	this->music = WeWillGetThereTogether::create();
+	this->music = WeWillGetThereTogether::create(emptyProperties);
 	
-	const Size ShadowSize = Size(-2.0f, -2.0f);
+	const CSize ShadowSize = CSize(-2.0f, -2.0f);
 	const int ShadowBlur = 2;
 	const int HoverOutlineSize = 2;
 	const Color3B TextColor = Color3B::WHITE;
@@ -175,7 +176,7 @@ void TitleScreen::onEnter()
 {
 	super::onEnter();
 
-	this->music->play();
+	this->music->pushTrack();
 
 	this->etherParticles->accelerate(5.0f);
 	
@@ -203,7 +204,7 @@ void TitleScreen::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->ether->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - this->ether->getContentSize().height + 372.0f));
 	this->etherParticles->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - this->ether->getContentSize().height + 372.0f));

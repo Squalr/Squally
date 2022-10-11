@@ -16,7 +16,7 @@
 #include "Events/CipherEvents.h"
 #include "Menus/Interact/InteractMenu.h"
 #include "Scenes/Cipher/CipherPuzzleData.h"
-#include "Scenes/Platformer/Level/Physics//PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics//PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/ObjectResources.h"
@@ -39,7 +39,7 @@ CipherChest* CipherChest::create(ValueMap& properties)
 	return instance;
 }
 
-CipherChest::CipherChest(ValueMap& properties) : super(properties, Size(128.0f, 96.0f))
+CipherChest::CipherChest(ValueMap& properties) : super(properties, CSize(128.0f, 112.0f))
 {
 	Sprite* chestOpenFrontSprite = Sprite::create(ObjectResources::Interactive_Chests_CipherChestOpened);
 	Sprite* chestClosedSprite = Sprite::create(ObjectResources::Interactive_Chests_CipherChestClosed);
@@ -71,7 +71,7 @@ void CipherChest::initializeListeners()
 	super::initializeListeners();
 }
 
-void CipherChest::onInteract()
+void CipherChest::onInteract(PlatformerEntity* interactingEntity)
 {
 	// Intentionally do not call super here. Overriding default behavior of giving items.
 

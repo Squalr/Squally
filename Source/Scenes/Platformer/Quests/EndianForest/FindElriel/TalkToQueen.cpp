@@ -14,7 +14,10 @@
 #include "Entities/Platformer/Npcs/EndianForest/QueenLiana.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/TalkToElriel.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/SoundResources.h"
@@ -36,10 +39,6 @@ TalkToQueen* TalkToQueen::create(GameObject* owner, QuestLine* questLine)
 
 TalkToQueen::TalkToQueen(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToQueen::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->queenLiana = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
 }
 
 TalkToQueen::~TalkToQueen()
@@ -61,6 +60,14 @@ void TalkToQueen::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<QueenLiana>(this, [=](QueenLiana* queenLiana)
 	{
 		this->queenLiana = queenLiana;
+		
+		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+		{
+			this->queenLiana->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+			{
+				questBehavior->enableNewQuest();
+			});
+		}
 	}, QueenLiana::MapKey);
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
@@ -83,6 +90,14 @@ void TalkToQueen::onActivate(bool isActiveThroughSkippable)
 void TalkToQueen::onComplete()
 {
 	Objectives::SetCurrentObjective(ObjectiveKeys::EFFindElriel);
+
+	if (this->queenLiana != nullptr)
+	{
+		this->queenLiana->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+		{
+			questBehavior->disableAll();
+		});
+	}
 }
 
 void TalkToQueen::onSkipped()
@@ -97,16 +112,16 @@ void TalkToQueen::runCinematicSequence()
 		return;
 	}
 	
-	this->queenLiana->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	this->queenLiana->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_A_HowDoWeGetToTheRuins::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 			),
 			[=]()
 			{
@@ -119,9 +134,9 @@ void TalkToQueen::runCinematicSequence()
 			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_B_HowDareYou::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 			),
 			[=]()
 			{
@@ -135,9 +150,9 @@ void TalkToQueen::runCinematicSequence()
 				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->guano, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 			),
 			[=]()
 			{
@@ -151,9 +166,9 @@ void TalkToQueen::runCinematicSequence()
 				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 			),
 			[=]()
 			{
@@ -167,9 +182,9 @@ void TalkToQueen::runCinematicSequence()
 				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 			),
 			[=]()
 			{
@@ -183,9 +198,9 @@ void TalkToQueen::runCinematicSequence()
 				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 			),
 			[=]()
 			{
@@ -202,16 +217,16 @@ void TalkToQueen::setPostText()
 {
 	this->defer([=]()
 	{
-		this->queenLiana->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		this->queenLiana->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 				Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_F_OrderMyGuards::create()
 					->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
-					DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+					DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
 				),
 				[=]()
 				{

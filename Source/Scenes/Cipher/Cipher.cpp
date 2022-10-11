@@ -5,13 +5,12 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Engine/Sound/MusicPlayer.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/RenderUtils.h"
 #include "Events/CipherEvents.h"
@@ -62,9 +61,8 @@ Cipher* Cipher::create()
 
 Cipher::Cipher()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->backClickCallback = nullptr;
 	this->cipherBackground = CipherBackground::create();
 	this->cipherLock = CipherLock::create();
 	this->cipherStateTransitionUnlocking = CipherStateTransitionUnlocking::create();
@@ -88,7 +86,6 @@ Cipher::Cipher()
 	this->asciiTable = AsciiTable::create();
 	this->gameNode = Node::create();
 	this->tutorialNode = Node::create();
-	this->cipherTutorialMap = std::map<std::string, std::function<CipherTutorialBase*()>>();
 
 	this->cipherState->cipherLockPointer = this->cipherLock;
 	this->cipherState->unlockPointer = this->unlockButton;
@@ -139,7 +136,7 @@ void Cipher::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(CipherEvents::EventOpenAsciiTable, ([=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherOpenAsciiTableArgs* args = static_cast<CipherEvents::CipherOpenAsciiTableArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherOpenAsciiTableArgs* args = static_cast<CipherEvents::CipherOpenAsciiTableArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -156,7 +153,7 @@ void Cipher::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->backdrop->setPosition(Vec2::ZERO);
 }

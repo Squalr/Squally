@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Bows/IvyBowPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* IvyBow::clone()
 	return IvyBow::create();
 }
 
-std::string IvyBow::getItemName()
-{
-	return IvyBow::SaveKey;
-}
-
 LocalizedString* IvyBow::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_IvyBow::create();
 }
 
-std::string IvyBow::getIconResource()
+const std::string& IvyBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_IvyBow;
 }
 
-std::string IvyBow::getSerializationKey()
+const std::string& IvyBow::getIdentifier()
 {
 	return IvyBow::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string IvyBow::getSerializationKey()
 Vec2 IvyBow::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* IvyBow::getRecipe()
+{
+	return IvyBowPlans::create();
 }

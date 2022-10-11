@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier2/AcolytesCapPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* AcolytesCap::clone()
 	return AcolytesCap::create();
 }
 
-std::string AcolytesCap::getItemName()
-{
-	return AcolytesCap::SaveKey;
-}
-
 LocalizedString* AcolytesCap::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_AcolytesCap::create();
 }
 
-std::string AcolytesCap::getIconResource()
+const std::string& AcolytesCap::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_AcolytesCap;
 }
 
-std::string AcolytesCap::getSerializationKey()
+const std::string& AcolytesCap::getIdentifier()
 {
 	return AcolytesCap::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string AcolytesCap::getSerializationKey()
 Vec2 AcolytesCap::getDisplayOffset()
 {
 	return Vec2(26.0f, -38.0f);
+}
+
+Recipe* AcolytesCap::getRecipe()
+{
+	return AcolytesCapPlans::create();
 }

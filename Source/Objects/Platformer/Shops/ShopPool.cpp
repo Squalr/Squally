@@ -8,7 +8,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
@@ -19,7 +19,7 @@ ShopPool::ShopPool(ValueMap& properties, std::string poolName, std::vector<MinMa
 {
 	this->itemsNode = Node::create();
 	this->items = std::vector<Item*>();
-	this->properties[GameObject::MapKeyQueryable] = false;
+	this->setQueryable(false);
 
 	this->addChild(this->itemsNode);
 }
@@ -34,17 +34,17 @@ void ShopPool::onEnter()
 	
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
-		squally->getAttachedBehavior<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
+		squally->getComponent<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			this->items = this->getItems(entityInventoryBehavior->getAllInventories());
 
-			for (auto item : this->items)
+			for (Item* item : this->items)
 			{
 				this->itemsNode->addChild(item);
 			}
 
 			// Re-enable querying. This prevents a race-scenario where an object queries this one before items are built.
-			this->properties[GameObject::MapKeyQueryable] = true;
+			this->setQueryable(true);
 		});
 	}, Squally::MapKey);
 }

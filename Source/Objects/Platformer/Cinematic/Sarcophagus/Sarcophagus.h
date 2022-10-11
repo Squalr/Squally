@@ -27,6 +27,6 @@ protected:
 private:
 	typedef GameObject super;
 
-	cocos2d::Sprite* sarcophagusBase;
-	cocos2d::Sprite* sarcophagusLid;
+	cocos2d::Sprite* sarcophagusBase = nullptr;
+	cocos2d::Sprite* sarcophagusLid = nullptr;
 };

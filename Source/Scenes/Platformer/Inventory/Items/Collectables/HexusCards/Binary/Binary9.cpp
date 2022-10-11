@@ -21,7 +21,7 @@ Binary9* Binary9::create()
 	return instance;
 }
 
-Binary9::Binary9() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 11 }}), ItemMeta(3, 3))
+Binary9::Binary9() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), HexusCard::TuneCost(9) }}), ItemMeta(3, 3))
 {
 }
 
@@ -34,22 +34,17 @@ Item* Binary9::clone()
 	return Binary9::create();
 }
 
-std::string Binary9::getItemName()
-{
-	return Binary9::SaveKey;
-}
-
 LocalizedString* Binary9::getString()
 {
 	return Strings::Hexus_Cards_Binary9::create();
 }
 
-std::string Binary9::getIconResource()
+const std::string& Binary9::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardBinary;
 }
 
-std::string Binary9::getSerializationKey()
+const std::string& Binary9::getIdentifier()
 {
 	return Binary9::SaveKey;
 }

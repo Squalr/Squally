@@ -26,8 +26,6 @@ LanguageTab* LanguageTab::create()
 
 LanguageTab::LanguageTab()
 {
-	this->languageButtons = std::vector<ClickableTextNode*>();
-
 	for (int index = (int)LanguageType::FIRST_LANGUAGE; index <= (int)LanguageType::LAST_LANGUAGE; index++)
 	{
 		LanguageType language = (LanguageType)index;

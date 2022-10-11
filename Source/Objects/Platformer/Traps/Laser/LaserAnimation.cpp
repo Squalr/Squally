@@ -39,10 +39,10 @@ LaserAnimation::LaserAnimation(float height)
 	params.wrapT = GL_REPEAT;
 
 	this->laserWeak->getTexture()->setTexParameters(params);
-	this->laserWeak->setTextureRect(Rect(0.0f, 0.0f, this->laserWeak->getContentSize().width, this->height));
+	this->laserWeak->setTextureRect(CRect(0.0f, 0.0f, this->laserWeak->getContentSize().width, this->height));
 
 	this->laserStrong->getTexture()->setTexParameters(params);
-	this->laserStrong->setTextureRect(Rect(0.0f, 0.0f, this->laserStrong->getContentSize().width, this->height));
+	this->laserStrong->setTextureRect(CRect(0.0f, 0.0f, this->laserStrong->getContentSize().width, this->height));
 
 	this->addChild(this->laserWeak);
 	this->addChild(this->laserStrong);

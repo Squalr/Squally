@@ -21,5 +21,5 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	SmartParticles* windParticles;
+	SmartParticles* windParticles = nullptr;
 };

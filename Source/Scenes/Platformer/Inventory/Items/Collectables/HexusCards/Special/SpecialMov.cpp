@@ -21,7 +21,7 @@ SpecialMov* SpecialMov::create()
 	return instance;
 }
 
-SpecialMov::SpecialMov() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 3 }}), ItemMeta(3, 3))
+SpecialMov::SpecialMov() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), ItemMeta(3, 3))
 {
 }
 
@@ -34,22 +34,17 @@ Item* SpecialMov::clone()
 	return SpecialMov::create();
 }
 
-std::string SpecialMov::getItemName()
-{
-	return SpecialMov::SaveKey;
-}
-
 LocalizedString* SpecialMov::getString()
 {
 	return Strings::Hexus_Cards_Mov::create();
 }
 
-std::string SpecialMov::getIconResource()
+const std::string& SpecialMov::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialMov::getSerializationKey()
+const std::string& SpecialMov::getIdentifier()
 {
 	return SpecialMov::SaveKey;
 }

@@ -2,34 +2,36 @@
 
 #include "Engine/SmartNode.h"
 
-class MenuLabel;
-
 class LocalizedLabel;
 
 class LabelStack : public SmartNode
 {
 public:
-	static LabelStack* create(cocos2d::Size windowSize, float spacing);
+	static LabelStack* create(cocos2d::CSize windowSize, float spacing);
 
 	void insert(LocalizedLabel* label);
 	void insertNewline();
 	void clear();
 	void setAnchorPoint(const cocos2d::Vec2& anchorPoint) override;
-	void setPadding(cocos2d::Size padding);
+	void setPadding(cocos2d::CSize padding);
 
-private:
-	typedef SmartNode super;
-	LabelStack(cocos2d::Size windowSize, float spacing);
-	virtual ~LabelStack() = default;
+protected:
+	LabelStack(cocos2d::CSize windowSize, float spacing);
+	virtual ~LabelStack();
 
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
-	cocos2d::Node* labelsNode;
+private:
+	typedef SmartNode super;
+
+	void positionLabels();
+
+	cocos2d::Node* labelsNode = nullptr;
 	std::vector<LocalizedLabel*> labels;
-	cocos2d::Size windowSize;
-	float spacing;
-	float cumulativeHeight;
-	cocos2d::Size padding;
+	cocos2d::CSize windowSize;
+	float spacing = 0.0f;
+	float cumulativeHeight = 0.0f;
+	cocos2d::CSize padding;
 };

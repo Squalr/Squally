@@ -14,6 +14,7 @@ public:
 	static std::string toUpper(std::string str);
 	static std::string doubleToString(double value, int precision);
 	static std::string floatToString(float value, int precision);
+	static bool isEmptyOrWhitespace(std::string str);
 	static bool isInteger(std::string str);
 	static bool isFloat(std::string str);
 	static bool isHexNumber(std::string str);
@@ -28,4 +29,5 @@ public:
 	static bool contains(const std::string& str, const std::string & toFind, bool ignoreCase);
 	static std::string replaceAll(std::string str, const std::string& from, const std::string& to);
 	static std::string replaceFirstOccurence(std::string str, const std::string& from, const std::string& to);
+    static std::string getSubStringOfUTF8String(const std::string& str, std::string::size_type start, std::string::size_type length);
 };

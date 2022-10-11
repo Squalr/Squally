@@ -40,8 +40,8 @@ protected:
 	void saveQuestSaveState(std::string key, cocos2d::Value value);
 	cocos2d::Value getQuestSaveStateOrDefault(std::string key, cocos2d::Value value);
 	
-	GameObject* owner;
-	QuestLine* questLine;
+	GameObject* owner = nullptr;
+	QuestLine* questLine = nullptr;
 
 private:
 	typedef GameObject super;
@@ -50,8 +50,8 @@ private:
 
 	std::string questTask;
 	QuestState questState;
-	bool isSkippable;
-	bool hasLoaded;
-	bool completeCalled;
+	bool isSkippable = false;
+	bool hasLoaded = false;
+	bool completeCalled = false;
 };
 

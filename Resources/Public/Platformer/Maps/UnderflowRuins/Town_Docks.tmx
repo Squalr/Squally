@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="95" nextobjectid="775">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="789">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -17,10 +17,9 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="761" name="Ruins/Background/DesertLayer4" type="decor" x="-4389.32" y="337.092" width="14981.3" height="318">
+  <object id="761" name="Ruins/Background/DesertLayer4" type="decor" x="-4157.32" y="-14.908" width="13433.3" height="318">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -29,10 +28,9 @@
    <property name="depth" type="float" value="-2432"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="760" name="Ruins/Background/DesertLayer3" type="decor" x="-4106.65" y="-1043.85" width="14229.3" height="1534">
+  <object id="760" name="Ruins/Background/DesertLayer3" type="decor" x="-4042.65" y="-203.85" width="13397.3" height="1534">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -41,10 +39,9 @@
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="759" name="Ruins/Background/DesertLayer2" type="decor" x="-4092.47" y="-25.788" width="14469.3" height="1519">
+  <object id="759" name="Ruins/Background/DesertLayer2" type="decor" x="-3652.47" y="358.212" width="12277.3" height="1519">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -53,10 +50,9 @@
    <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="758" name="Ruins/Background/DesertLayer1" type="decor" x="-4204.71" y="446.091" width="14709.3" height="1090">
+  <object id="758" name="Ruins/Background/DesertLayer1" type="decor" x="-3084.71" y="678.091" width="11077.3" height="1090">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -65,10 +61,9 @@
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="757" name="Ruins/Background/DesertLayer0" type="decor" x="-4136.44" y="1101" width="14517.6" height="1088">
+  <object id="757" name="Ruins/Background/DesertLayer0" type="decor" x="-2456.44" y="1101" width="9605.6" height="1904">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="1.75"/>
    </properties>
   </object>
  </objectgroup>
@@ -107,11 +102,35 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="756" name="ship-alt" type="terrain" x="1760.75" y="1555.5" width="1182.5" height="363">
+  <object id="756" name="ship-alt" type="terrain" x="1760.75" y="1555.5" width="1182.5" height="363"/>
+ </objectgroup>
+ <objectgroup id="95" name="entities -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="785" name="gull" type="entity" x="2430.67" y="1426.67" width="128" height="128">
    <properties>
-    <property name="collision" value="none"/>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
+  <object id="786" name="gull" type="entity" x="2065.33" y="1428" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="96" name="objects -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="787" name="solid-npc" type="collision" x="1633.56" y="861.622" width="126.878" height="778.756"/>
+  <object id="788" name="solid-npc" type="collision" x="2942.56" y="894.622" width="126.878" height="778.756"/>
  </objectgroup>
  <objectgroup id="91" name="objects -4">
   <properties>
@@ -131,6 +150,7 @@
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="PerilousSea/Zone_UR_1_0"/>
+    <property name="mini-map-hidden" type="bool" value="true"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
@@ -269,10 +289,15 @@
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="PerilousSea/Zone_UR_1_0"/>
+    <property name="mini-map-hidden" type="bool" value="true"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="772" name="solid" type="collision" x="783.349" y="-3.07497" width="126.878" height="1672.7"/>
+  <object id="772" name="solid" type="collision" x="783.349" y="-3.07497" width="126.878" height="2308.7">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="773" name="objective-trigger" type="object" x="2556.56" y="-118.59" width="98.878" height="2609.18">
    <properties>
     <property name="send-event" value="UR_HEAD_TO_TOWN"/>
@@ -291,7 +316,70 @@
   </properties>
   <object id="692" name="blackbeard" type="entity" x="2991.67" y="1538.79" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly"/>
+    <property name="components" value="friendly"/>
+   </properties>
+  </object>
+  <object id="775" name="gull" type="entity" x="1376.73" y="1543.52" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="776" name="gull" type="entity" x="1195.4" y="1542.18" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="777" name="gull" type="entity" x="1482.06" y="1544.19" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="778" name="gull" type="entity" x="1300.74" y="1542.85" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="779" name="gull" type="entity" x="1568.73" y="1544.85" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="780" name="gull" type="entity" x="1897.33" y="1544" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="781" name="gull" type="entity" x="2012" y="1544" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="782" name="gull" type="entity" x="3272" y="1544" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="783" name="gull" type="entity" x="3414.67" y="1544" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
+   </properties>
+  </object>
+  <object id="784" name="gull" type="entity" x="3550.67" y="1544" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,bird,pacing"/>
+    <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
  </objectgroup>
@@ -302,7 +390,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="3960.48" y="1543.34" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="709" name="spawn" type="object" x="4153.41" y="1543.39" width="128" height="128">

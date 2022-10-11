@@ -6,6 +6,7 @@
 
 #include "Engine/Events/ItemEvents.h"
 #include "Engine/Input/ClickableNode.h"
+#include "Engine/Inventory/CurrencyPool.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
@@ -15,15 +16,22 @@
 
 using namespace cocos2d;
 
-MinMaxPool::MinMaxPool(const cocos2d::ValueMap& properties, std::string poolName, SampleMethod sampleMethod, int minItems, int maxItems, std::vector<MinMaxPool*> nestedPools) : super(properties, poolName)
+MinMaxPool::MinMaxPool(const cocos2d::ValueMap& properties, std::string poolName, SampleMethod sampleMethod,
+	int minItems, int maxItems, std::vector<MinMaxPool*> nestedPools, CurrencyPool* currencyPool) : super(properties, poolName)
 {
 	this->itemCount = RandomHelper::random_int(minItems, maxItems);
 	this->nestedPools = nestedPools;
 	this->sampleMethod = sampleMethod;
+	this->currencyPool = currencyPool;
 
-	for (auto nestedPool : this->nestedPools)
+	for (MinMaxPool* nestedPool : this->nestedPools)
 	{
 		this->addChild(nestedPool);
+	}
+
+	if (this->currencyPool != nullptr)
+	{
+		this->addChild(this->currencyPool);
 	}
 }
 
@@ -31,7 +39,7 @@ MinMaxPool::~MinMaxPool()
 {
 }
 
-Item* MinMaxPool::getItem(std::vector<Inventory*> inventories)
+Item* MinMaxPool::getItem(const std::vector<Inventory*>& inventories)
 {
 	if (this->sampleMethod != SampleMethod::Unbounded)
 	{
@@ -46,13 +54,13 @@ Item* MinMaxPool::getItem(std::vector<Inventory*> inventories)
 	return this->getItemFromPool(true, inventories);
 }
 
-std::vector<Item*> MinMaxPool::getItems(std::vector<Inventory*> inventories)
+std::vector<Item*> MinMaxPool::getItems(const std::vector<Inventory*>& inventories)
 {
 	std::vector<Item*> items = std::vector<Item*>();
 
-	for (auto nestedPool : this->nestedPools)
+	for (MinMaxPool* nestedPool : this->nestedPools)
 	{
-		for (auto item : nestedPool->getItems(inventories))
+		for (Item* item : nestedPool->getItems(inventories))
 		{
 			items.push_back(item);
 		}
@@ -91,4 +99,9 @@ std::vector<Item*> MinMaxPool::getItems(std::vector<Inventory*> inventories)
 	}
 
 	return items;
+}
+
+CurrencyPool* MinMaxPool::getCurrencyPool() const
+{
+	return this->currencyPool;
 }

@@ -24,7 +24,7 @@ Zelina::Zelina(ValueMap& properties) : super(properties,
 	Zelina::MapKey,
 	EntityResources::Npcs_LambdaCrypts_Zelina_Animations,
 	EntityResources::Npcs_LambdaCrypts_Zelina_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

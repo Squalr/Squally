@@ -9,7 +9,7 @@ const std::string SaveEvents::EventSoftSaveGameState = "EVENT_SOFT_SAVE_GAME_STA
 
 void SaveEvents::TriggerSoftSaveGameState()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		SaveEvents::EventSoftSaveGameState
 	);
 }

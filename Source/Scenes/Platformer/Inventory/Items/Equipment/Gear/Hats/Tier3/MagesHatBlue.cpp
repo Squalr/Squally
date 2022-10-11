@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier3/MagesHatBluePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* MagesHatBlue::clone()
 	return MagesHatBlue::create();
 }
 
-std::string MagesHatBlue::getItemName()
-{
-	return MagesHatBlue::SaveKey;
-}
-
 LocalizedString* MagesHatBlue::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_MagesHatBlue::create();
 }
 
-std::string MagesHatBlue::getIconResource()
+const std::string& MagesHatBlue::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_MagesHatBlue;
 }
 
-std::string MagesHatBlue::getSerializationKey()
+const std::string& MagesHatBlue::getIdentifier()
 {
 	return MagesHatBlue::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string MagesHatBlue::getSerializationKey()
 Vec2 MagesHatBlue::getDisplayOffset()
 {
 	return Vec2(-36.0f, -12.0f);
+}
+
+Recipe* MagesHatBlue::getRecipe()
+{
+	return MagesHatBluePlans::create();
 }

@@ -27,6 +27,6 @@ private:
 	
 	void runCinematicSequence();
 
-	Marcel* marcel;
-	Squally* squally;
+	Marcel* marcel = nullptr;
+	Squally* squally = nullptr;
 };

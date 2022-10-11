@@ -12,7 +12,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -37,9 +37,9 @@ SpikedBall::SpikedBall(ValueMap& properties) : super(properties)
 	this->ball = Sprite::create(ObjectResources::Traps_SpikedBall_SpikeBall);
 	this->ballCollision = CollisionObject::create(CollisionObject::createCircle(80.0f), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, false));
 
-	this->ballCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData collisionData)
+	this->ballCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 
 	this->ballCollision->addChild(this->ball);

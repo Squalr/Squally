@@ -12,8 +12,10 @@
 
 using namespace cocos2d;
 
+cocos2d::Node* GameUtils::focusedNode = nullptr;
+
 // A better pause function that pauses recursively
-void GameUtils::pause(Node *node)
+void GameUtils::pause(Node* node)
 {
 	if (node == nullptr)
 	{
@@ -28,8 +30,13 @@ void GameUtils::pause(Node *node)
 	}
 }
 
-void GameUtils::resume(Node *node)
+void GameUtils::resume(Node* node)
 {
+	if (node == nullptr)
+	{
+		return;
+	}
+	
 	node->resume();
 
 	for (const auto &child : node->getChildren())
@@ -38,19 +45,34 @@ void GameUtils::resume(Node *node)
 	}
 }
 
+void GameUtils::resumeParents(cocos2d::Node* node)
+{
+	if (node == nullptr)
+	{
+		return;
+	}
+
+	node->resume();
+
+	GameUtils::resumeParents(node->getParent());
+}
+
 void GameUtils::resumeAll()
 {
 	GameUtils::resume(Director::getInstance()->getRunningScene());
 }
 
-bool GameUtils::isInRunningScene(cocos2d::Node* node)
+bool GameUtils::isInRunningScene(Node* node)
 {
 	return node == Director::getInstance()->getRunningScene()
-		|| GameUtils::getFirstParentOfType<cocos2d::Scene>(node) == Director::getInstance()->getRunningScene();
+		|| GameUtils::GetFirstParentOfType<Scene>(node) == Director::getInstance()->getRunningScene();
 }
 
 Node* GameUtils::getFocusedNode()
 {
+	return focusedNode;
+
+	/*
 	Node* root = Director::getInstance()->getRunningScene();
 	std::function<Node*(Node*)> findUnpausedNodeRecursive;
 
@@ -86,32 +108,27 @@ Node* GameUtils::getFocusedNode()
 		return result;
 	};
 
-	return findUnpausedNodeRecursive(root);
+	return findUnpausedNodeRecursive(root);*/
 }
 
-bool GameUtils::isFocused(Node *node)
+bool GameUtils::isFocused(Node* node)
 {
-	if (node->getParent() != nullptr && node->getParent()->isPaused() && !node->isPaused())
-	{
-		return true;
-	}
-	else if (node->getParent() == nullptr && !node->isPaused())
-	{
-		return true;
-	}
-
-	return false;
+	return GameUtils::getFocusedNode() != nullptr && GameUtils::getFocusedNode() == node;
 }
 
-void GameUtils::focus(Node *node)
+void GameUtils::focus(Node* node)
 {
+	GameUtils::focusedNode = node;
+	
 	if (node == nullptr)
 	{
+		GameUtils::resume(Director::getInstance()->getRunningScene());
 		return;
 	}
 
 	GameUtils::pause(Director::getInstance()->getRunningScene());
 	GameUtils::resume(node);
+	GameUtils::resumeParents(node);
 }
 
 void GameUtils::flattenNode(Node* parent)
@@ -141,7 +158,7 @@ void GameUtils::flattenNode(Node* parent)
 	}
 }
 
-Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, bool addAsReentry, int index)
+Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, int index)
 {
 	if (node == nullptr)
 	{
@@ -149,21 +166,32 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 	}
 	
 	Node* originalParent = node->getParent();
+
+	if (originalParent == newParent)
+	{
+		return node;
+	}
+
 	Vec3 worldCoords = GameUtils::getWorldCoords3D(node);
-	unsigned int refIncrement = 0;
+	bool addAsReentry = originalParent != nullptr;
 
 	// Remove child from current parent
-	if (originalParent != nullptr)
+	if (addAsReentry)
 	{
 		node->retain();
-		originalParent->removeChildNoExit(node);
+
+		if (originalParent != nullptr)
+		{
+			originalParent->removeChildNoExit(node);
+		}
+
 		node->softRelease();
 	}
 
 	// Add or insert the child
 	if (newParent != nullptr && index != -1)
 	{
-		newParent->addChildInsert(node, index, true);
+		newParent->addChildInsert(node, index, addAsReentry);
 	}
 	else if (newParent != nullptr)
 	{
@@ -187,7 +215,7 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 		// Correct a strange bug where changing from a null parent to a HUD causes wrong positioning.
 		if (originalParent == nullptr)
 		{
-			Hud* newHudParent = GameUtils::getFirstParentOfType<Hud>(node);
+			Hud* newHudParent = GameUtils::GetFirstParentOfType<Hud>(node);
 
 			if (newHudParent != nullptr)
 			{
@@ -196,11 +224,6 @@ Node* GameUtils::changeParent(Node* node, Node* newParent, bool retainPosition, 
 		}
 
 		node->setPosition3D(delta);
-	}
-
-	while (node->getReferenceCount() > 1 && refIncrement > 0)
-	{
-		node->release();
 	}
 	
 	// Returns the same node that was given. Just a convenience thing for chaining methods.
@@ -220,7 +243,7 @@ void GameUtils::fadeInObject(Node* node, float delay, float duration, GLubyte op
 	node->runAction(sequence);
 }
 
-float GameUtils::getDepth(cocos2d::Node* node)
+float GameUtils::getDepth(Node* node)
 {
 	float depth = 0.0f;
 
@@ -234,7 +257,7 @@ float GameUtils::getDepth(cocos2d::Node* node)
 	return depth;
 }
 
-float GameUtils::getRotation(cocos2d::Node* node)
+float GameUtils::getRotation(Node* node)
 {
 	float rotation = 0.0f;
 
@@ -248,7 +271,22 @@ float GameUtils::getRotation(cocos2d::Node* node)
 	return rotation;
 }
 
-float GameUtils::getScale(cocos2d::Node* node)
+Vec2 GameUtils::getScale(Node* node)
+{
+	Vec2 scale = Vec2::ONE;
+
+	while (node != nullptr)
+	{
+		scale.x *= node->getScaleX();
+		scale.y *= node->getScaleY();
+
+		node = node->getParent();
+	}
+
+	return scale;
+}
+
+float GameUtils::getUniformScale(Node* node)
 {
 	float scale = 1.0f;
 
@@ -267,35 +305,6 @@ Vec2 GameUtils::getWorldCoords(Node* node, bool checkForUIBound)
 	Vec3 worldCoords3d = GameUtils::getWorldCoords3D(node, checkForUIBound);
 
 	return Vec2(worldCoords3d.x, worldCoords3d.y);
-	/*
-	if (node == nullptr)
-	{
-		return Vec2::ZERO;
-	}
-
-	Rect resultRect = node->getBoundingBox();
-	Vec2 resultCoords = Vec2(resultRect.getMinX() - resultRect.size.width / 2.0f, resultRect.getMinY() - resultRect.size.height / 2.0f);
-	Node* parent = node->getParent();
-	UIBoundObject* uiBoundObjectParent = checkForUIBound ? GameUtils::getFirstParentOfType<UIBoundObject>(parent) : nullptr;
-	// Hud* hudParent = checkForUIBound ? GameUtils::getFirstParentOfType<Hud>(parent) : nullptr;
-
-	// Special conditions for a ui-bound object
-	if (uiBoundObjectParent != nullptr)
-	{
-		Vec2 relativeCoords = uiBoundObjectParent->convertToWorldSpace(resultCoords);
-		Vec3 realCoords = UIBoundObject::getRealCoords(uiBoundObjectParent);
-		Vec2 fixedCoords = Vec2(realCoords.x, realCoords.y) + Vec2(relativeCoords.x, -resultRect.size.height / 2.0f);
-
-		return fixedCoords;
-	}
-
-	if (parent != nullptr)
-	{
-		resultCoords = parent->convertToWorldSpace(resultCoords);
-	}
-
-	return resultCoords;
-	*/
 }
 
 Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
@@ -305,12 +314,13 @@ Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
 		return Vec3::ZERO;
 	}
 
-	Rect resultRect = node->getBoundingBox();
+	CRect resultRect = node->getBoundingBox();
 	Vec3 resultCoords = Vec3(resultRect.getMinX() - resultRect.size.width / 2.0f, resultRect.getMinY() - resultRect.size.height / 2.0f, node->getPositionZ());
 	Node* parent = node->getParent();
-	UIBoundObject* uiBoundObjectParent = checkForUIBound ? GameUtils::getFirstParentOfType<UIBoundObject>(parent) : nullptr;
 
-	// Special conditions for objects that track the camera
+	// Getting the world coords of a UIBound node is expensive so we only check when asked
+	UIBoundObject* uiBoundObjectParent = checkForUIBound ? GameUtils::GetFirstParentOfType<UIBoundObject>(parent) : nullptr;
+
 	if (uiBoundObjectParent != nullptr)
 	{
 		uiBoundObjectParent->pushRealPosition();
@@ -320,8 +330,7 @@ Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
 	{
 		resultCoords = parent->convertToWorldSpace3(resultCoords);
 	}
-
-	// Special conditions for objects that track the camera
+	
 	if (uiBoundObjectParent != nullptr)
 	{
 		uiBoundObjectParent->popRealPosition();
@@ -330,7 +339,7 @@ Vec3 GameUtils::getWorldCoords3D(Node* node, bool checkForUIBound)
 	return resultCoords;
 }
 
-void GameUtils::setWorldCoords(cocos2d::Node* node, cocos2d::Vec2 worldCoords)
+void GameUtils::setWorldCoords(Node* node, Vec2 worldCoords)
 {
 	if (node == nullptr)
 	{
@@ -343,7 +352,7 @@ void GameUtils::setWorldCoords(cocos2d::Node* node, cocos2d::Vec2 worldCoords)
 	node->setPosition(node->getPosition() + delta);
 }
 
-void GameUtils::setWorldCoords3D(Node* node, cocos2d::Vec3 worldCoords)
+void GameUtils::setWorldCoords3D(Node* node, Vec3 worldCoords)
 {
 	if (node == nullptr)
 	{
@@ -356,27 +365,39 @@ void GameUtils::setWorldCoords3D(Node* node, cocos2d::Vec3 worldCoords)
 	node->setPosition3D(node->getPosition3D() + delta);
 }
 
-cocos2d::Vec2 GameUtils::getScreenCoords(cocos2d::Vec3 point)
+Vec2 GameUtils::getScreenCoords(const Vec3& point)
 {
 	return Camera::getDefaultCamera()->projectGL(point);
 }
 
-Rect GameUtils::getScreenBounds(Node* node)
+CRect GameUtils::getScreenBounds(Node* node, const CSize& padding, bool checkForUIBound)
 {
-	if (node == nullptr || Camera::getDefaultCamera() == nullptr || Director::getInstance() == nullptr)
+	if (node == nullptr)
 	{
-		return Rect::ZERO;
+		return CRect::ZERO;
 	}
 
-	Rect worldRect = node->getBoundingBoxNoTransform();
-	Vec3 worldCoordsA = GameUtils::getWorldCoords3D(node);
-	Vec3 worldCoordsB = worldCoordsA + Vec3(worldRect.size.width, worldRect.size.height, 0.0f) * GameUtils::getScale(node);
+	Vec3 nodeCoords = GameUtils::getWorldCoords3D(node, checkForUIBound);
 
-	Vec2 resultCoordsA = Camera::getDefaultCamera()->projectGL(worldCoordsA);
-	Vec2 resultCoordsB = Camera::getDefaultCamera()->projectGL(worldCoordsB);
-	Rect resultRect = Rect(resultCoordsA, Size(resultCoordsB - resultCoordsA));
+	nodeCoords.x -= padding.width;
+	nodeCoords.y -= padding.height;
+	
+	return GameUtils::getScreenBounds(nodeCoords, node->getContentSize()*  GameUtils::getUniformScale(node) + padding*  2.0f);
+}
 
-	return resultRect;
+CRect GameUtils::getScreenBounds(const Vec3& position, const CSize& size)
+{
+	if (Camera::getDefaultCamera() == nullptr)
+	{
+		return CRect::ZERO;
+	}
+
+	Vec3 rightEdgeCoords = position + Vec3(size.width, size.height, 0.0f);
+
+	Vec2 projectedLeftEdge = Camera::getDefaultCamera()->projectGL(position);
+	Vec2 projectedRightEdge = Camera::getDefaultCamera()->projectGL(rightEdgeCoords);
+
+	return CRect(projectedLeftEdge, CSize(projectedRightEdge - projectedLeftEdge));
 }
 
 bool GameUtils::isVisible(Node* node)
@@ -394,14 +415,14 @@ bool GameUtils::isVisible(Node* node)
 	return true;
 }
 
-bool GameUtils::isEclipsed(Node* node, cocos2d::Vec2 mousePos)
+bool GameUtils::isEclipsed(Node* node, Vec2 mousePos)
 {
-	ClippingNode* parentClip = GameUtils::getFirstParentOfType<ClippingNode>(node);
+	ClippingNode* parentClip = GameUtils::GetFirstParentOfType<ClippingNode>(node);
 
 	if (parentClip != nullptr)
 	{
-		Rect clippingBounds = GameUtils::getScreenBounds(parentClip);
-		Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
+		CRect clippingBounds = GameUtils::getScreenBounds(parentClip);
+		CRect mouseRect = CRect(mousePos.x, mousePos.y, 1.0f, 1.0f);
 
 		// Correction has to be made for whatever reason, don't question it
 		clippingBounds.origin += Vec2(clippingBounds.size / 2.0f);
@@ -416,16 +437,16 @@ bool GameUtils::isEclipsed(Node* node, cocos2d::Vec2 mousePos)
 	return false;
 }
 
-bool GameUtils::intersects(Node* node, Vec2 mousePos)
+bool GameUtils::intersects(Node* node, Vec2 mousePos, bool checkForUIBound)
 {
 	if (GameUtils::isEclipsed(node, mousePos))
 	{
 		return false;
 	}
 
-	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
+	CRect mouseRect = CRect(mousePos.x, mousePos.y, 1.0f, 1.0f);
 
-	if (GameUtils::getScreenBounds(node).intersectsRect(mouseRect))
+	if (GameUtils::getScreenBounds(node, CSize::ZERO, checkForUIBound).intersectsRect(mouseRect))
 	{
 		return true;
 	}
@@ -435,15 +456,15 @@ bool GameUtils::intersects(Node* node, Vec2 mousePos)
 	}
 }
 
-bool GameUtils::intersectsIsometric(Node* node, Vec2 mousePos)
+bool GameUtils::intersectsIsometric(Node* node, Vec2 mousePos, bool checkForUIBound)
 {
 	if (GameUtils::isEclipsed(node, mousePos))
 	{
 		return false;
 	}
 
-	Rect mouseRect = Rect(mousePos.x, mousePos.y, 1.0f, 1.0f);
-	Rect nodeBounds = GameUtils::getScreenBounds(node);
+	CRect mouseRect = CRect(mousePos.x, mousePos.y, 1.0f, 1.0f);
+	CRect nodeBounds = GameUtils::getScreenBounds(node, CSize::ZERO, checkForUIBound);
 
 	float dx = std::abs(mousePos.x - nodeBounds.getMidX());
 	float dy = std::abs(mousePos.y - nodeBounds.getMidY());
@@ -475,7 +496,7 @@ bool GameUtils::hasArg(const std::vector<std::string>& argList, std::string arg)
 	return (std::find(argList.begin(), argList.end(), arg) != argList.end());
 }
 
-const cocos2d::Value& GameUtils::getKeyOrDefault(const ValueMap& valueMap, std::string key, const Value& defaultValue)
+const Value& GameUtils::getKeyOrDefault(const ValueMap& valueMap, std::string key, const Value& defaultValue)
 {
 	if (GameUtils::keyExists(valueMap, key))
 	{
@@ -485,7 +506,7 @@ const cocos2d::Value& GameUtils::getKeyOrDefault(const ValueMap& valueMap, std::
 	return defaultValue;
 }
 
-void GameUtils::deleteKey(cocos2d::ValueMap& valueMap, std::string key)
+void GameUtils::deleteKey(ValueMap& valueMap, std::string key)
 {
 	if (GameUtils::keyExists(valueMap, key))
 	{

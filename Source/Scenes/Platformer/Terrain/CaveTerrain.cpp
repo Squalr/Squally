@@ -10,6 +10,8 @@
 using namespace cocos2d;
 
 const std::string CaveTerrain::MapKey = "cave";
+const Color4B CaveTerrain::FillColor = Color4B(11, 30, 39, 255);
+const Color4B CaveTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
 
 CaveTerrain* CaveTerrain::create(ValueMap& properties)
 {
@@ -67,17 +69,17 @@ CaveTerrain::CaveTerrain(ValueMap& properties) : super(
 		// TopConnector
 		Vec2::ZERO,
 		// TopConnectorConcave
-		Vec2(0.0f, 4.0f),
-		// TopConnectorConcaveDeep
 		Vec2(0.0f, 6.0f),
+		// TopConnectorConcaveDeep
+		Vec2(0.0f, 16.0f),
 		// TopConnectorConvex
-		Vec2(0.0f, -2.0f),
+		Vec2(0.0f, -6.0f),
 		// TopConnectorConvexDeep
-		Vec2(0.0f, -14.0f),
+		Vec2(0.0f, -12.0f),
 		// BottomConnector
 		Vec2::ZERO,
 		// FillColor
-		Color4B(11, 30, 39, 255)))
+		InfillData(CaveTerrain::FillColor, false, true)))
 {
 }
 

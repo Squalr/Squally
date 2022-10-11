@@ -358,7 +358,7 @@ public:
   //! Returns function exit `LabelNode`.
   inline LabelNode* exitNode() const noexcept { return _exitNode; }
   //! Returns function exit label.
-  inline Label exitLabel() const noexcept { return _exitNode->label(); }
+  inline AsmLabel exitLabel() const noexcept { return _exitNode->label(); }
 
   //! Returns "End of Func" sentinel.
   inline SentinelNode* endNode() const noexcept { return _end; }

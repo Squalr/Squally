@@ -4,6 +4,7 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCSprite.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -18,7 +19,7 @@ const std::string GlassDisplayBase::SaveKeyIsDisplayOpened = "SAVE_KEY_IS_DISPLA
 const std::string GlassDisplayBase::PropertyIsOpened = "is-opened";
 const std::string GlassDisplayBase::PropertyDelay = "delay";
 
-GlassDisplayBase::GlassDisplayBase(ValueMap& properties, Size interactSize) : super(properties, interactSize)
+GlassDisplayBase::GlassDisplayBase(ValueMap& properties, CSize interactSize) : super(properties, interactSize)
 {
 	this->displayContentNode = Node::create();
 	this->displayNormal = Node::create();

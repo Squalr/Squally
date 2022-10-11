@@ -10,7 +10,7 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -30,9 +30,7 @@ Collectable* Collectable::create(ValueMap& properties)
 Collectable::Collectable(ValueMap& properties) : super(properties)
 {
 	this->collectableNode = Node::create();
-	this->collectableCollision = CollisionObject::create(CollisionObject::createBox(Size(64.0f, 64.0f)), (CollisionType)PlatformerCollisionType::Collectable, CollisionObject::Properties(true, false));
-	this->collectionEvents = std::vector<std::function<void()>>();
-	this->isCollected = false;
+	this->collectableCollision = CollisionObject::create(CollisionObject::createBox(CSize(64.0f, 64.0f)), (CollisionType)PlatformerCollisionType::Collectable, CollisionObject::Properties(true, false));
 
 	this->collectableCollision->addChild(this->collectableNode);
 	this->addChild(this->collectableCollision);
@@ -61,16 +59,16 @@ void Collectable::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->collectableCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough  }, [=](CollisionObject::CollisionData data)
+	this->collectableCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough  }, [=](CollisionData data)
 	{
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 
-	this->collectableCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerWeapon, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData data)
+	this->collectableCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::PlayerWeapon, (int)PlatformerCollisionType::Hover }, [=](CollisionData data)
 	{
 		this->tryCollect();
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }
 
@@ -102,6 +100,6 @@ void Collectable::hideCollectable()
 void Collectable::disableCollection()
 {
 	this->isCollected = true;
-	this->collectableCollision->setPhysicsEnabled(false);
+	this->collectableCollision->setPhysicsFlagEnabled(false);
 	this->hideCollectable();
 }

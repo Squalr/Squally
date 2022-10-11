@@ -9,7 +9,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -32,7 +32,7 @@ Ram::Ram(ValueMap& properties) : super(properties)
 {
 	this->ramAnimations = SmartAnimationNode::create(ObjectResources::Traps_Ram_Animations);
 	this->collision = CollisionObject::create(
-		CollisionObject::createBox(Size(512.0f, 288.0f)),
+		CollisionObject::createBox(CSize(512.0f, 288.0f)),
 		(CollisionType)PlatformerCollisionType::Cinematic,
 		CollisionObject::Properties(true, false)
 	);
@@ -64,9 +64,9 @@ void Ram::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->collision->whileCollidesWith({ (CollisionType)PlatformerCollisionType::Solid, (CollisionType)PlatformerCollisionType::PassThrough }, [=](CollisionObject::CollisionData collisionData)
+	this->collision->whileCollidesWith({ (CollisionType)PlatformerCollisionType::Solid, (CollisionType)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 }
 

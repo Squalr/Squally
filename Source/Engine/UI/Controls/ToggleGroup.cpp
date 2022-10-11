@@ -2,7 +2,6 @@
 
 #include "cocos/base/ccMacros.h"
 
-#include "Engine/SmartNode.h"
 #include "Engine/UI/Controls/Checkbox.h"
 
 using namespace cocos2d;
@@ -18,7 +17,6 @@ ToggleGroup* ToggleGroup::create(std::function<void(Checkbox*)> callback)
 
 ToggleGroup::ToggleGroup(std::function<void(Checkbox*)> callback)
 {
-	this->toggles = std::vector<Checkbox*>();
 	this->callback = callback;
 }
 

@@ -32,11 +32,11 @@ protected:
 private:
 	typedef SmartNode super;
 
-	PlatformerEntity* owner;
-	cocos2d::Sprite* line;
-	cocos2d::Sprite* circle;
-	cocos2d::Sprite* emblem;
-	float time;
-	std::function<void()> timelineEvent;
-	bool isDeactivated;
+	PlatformerEntity* owner = nullptr;
+	cocos2d::Sprite* line = nullptr;
+	cocos2d::Sprite* circle = nullptr;
+	cocos2d::Sprite* emblem = nullptr;
+	float time = 0.0f;
+	std::function<void()> timelineEvent = nullptr;
+	bool isDeactivated = false;
 };

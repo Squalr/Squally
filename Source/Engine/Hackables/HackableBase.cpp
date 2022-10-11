@@ -6,6 +6,7 @@
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Localization/LocalizedString.h"
 
 #include "Resources/UIResources.h"
@@ -22,7 +23,7 @@ HackableBase::HackableBase(
 	HackBarColor hackBarColor,
 	std::string iconResource,
 	LocalizedString* name,
-	HackablePreview* hackablePreview)
+	LazyNode<HackablePreview>* hackablePreview)
 {
 	this->hackableIdentifier = hackableIdentifier;
 	this->requiredHackFlag = requiredHackFlag;
@@ -34,11 +35,10 @@ HackableBase::HackableBase(
 	this->cooldown = cooldown;
 	this->elapsedDuration = duration;
 	this->elapsedCooldown = cooldown;
-	this->isHackActive = false;
 
 	if (this->hackablePreview != nullptr)
 	{
-		this->hackablePreview->retain();
+		this->addChild(this->hackablePreview);
 	}
 
 	if (this->name != nullptr)
@@ -49,10 +49,6 @@ HackableBase::HackableBase(
 
 HackableBase::~HackableBase()
 {
-	if (this->hackablePreview != nullptr)
-	{
-		this->hackablePreview->release();
-	}
 }
 
 void HackableBase::onEnter()
@@ -97,7 +93,7 @@ void HackableBase::update(float dt)
 	}
 }
 
-std::string HackableBase::getHackableIdentifier()
+const std::string& HackableBase::getHackableIdentifier()
 {
 	return this->hackableIdentifier;
 }
@@ -130,7 +126,7 @@ bool HackableBase::isComplete()
 
 bool HackableBase::isCooldownComplete()
 {
-	return this->getElapsedCooldown() >= this->getCooldown();
+	return this->getCooldown() <= 0.0f || this->getElapsedCooldown() >= this->getCooldown();
 }
 
 float HackableBase::getElapsedCooldown()
@@ -151,7 +147,7 @@ void HackableBase::tryRefreshCooldown()
 	}
 }
 
-std::string HackableBase::getHackBarResource()
+const std::string& HackableBase::getHackBarResource()
 {
 	switch(this->getHackBarColor())
 	{
@@ -195,7 +191,7 @@ std::string HackableBase::getHackBarResource()
 	}
 }
 
-std::string HackableBase::getHackBarCooldownResource()
+const std::string& HackableBase::getHackBarCooldownResource()
 {
 	return UIResources::HUD_FillCooldown;
 }
@@ -205,7 +201,7 @@ HackableBase::HackBarColor HackableBase::getHackBarColor()
 	return this->hackBarColor;
 }
 
-std::string HackableBase::getIconResource()
+const std::string& HackableBase::getIconResource()
 {
 	return this->iconResource;
 }
@@ -215,7 +211,7 @@ LocalizedString* HackableBase::getName()
 	return this->name;
 }
 
-HackablePreview* HackableBase::getHackablePreview()
+LazyNode<HackablePreview>* HackableBase::getHackablePreview()
 {
 	return this->hackablePreview;
 }

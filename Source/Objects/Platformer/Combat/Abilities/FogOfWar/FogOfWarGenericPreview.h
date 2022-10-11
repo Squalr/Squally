@@ -24,5 +24,5 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	cocos2d::Sprite* fog;
+	cocos2d::Sprite* fog = nullptr;
 };

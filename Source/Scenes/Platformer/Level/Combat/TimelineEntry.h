@@ -2,6 +2,7 @@
 
 #include "Engine/SmartNode.h"
 
+#include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/AbilityType.h"
 
 namespace cocos2d
@@ -19,10 +20,10 @@ public:
 	static TimelineEntry* create(PlatformerEntity* entity, int spawnIndex);
 
 	PlatformerEntity* getEntity();
-	void applyDamage(PlatformerEntity* caster, int damage, bool disableBuffProcessing, AbilityType abilityType);
-	void applyHealing(PlatformerEntity* caster, int healing, bool disableBuffProcessing, AbilityType abilityType);
-	void applyManaRestore(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing, AbilityType abilityType);
-	void applyManaDrain(PlatformerEntity* caster, int manaGain, bool disableBuffProcessing, AbilityType abilityType);
+	void applyDamage(CombatEvents::DamageOrHealingArgs* args);
+	void applyHealing(CombatEvents::DamageOrHealingArgs* args);
+	void applyManaRestore(CombatEvents::ManaRestoreOrDrainArgs* args);
+	void applyManaDrain(CombatEvents::ManaRestoreOrDrainArgs* args);
 	void stageTargets(std::vector<PlatformerEntity*> targets);
 	void stageCast(PlatformerAttack* attack);
 	std::vector<PlatformerEntity*> getStagedTargets();
@@ -38,9 +39,14 @@ public:
 	void setSelected(bool isSelected);
 	void clearBuffTargets();
 	void addBuffTarget(std::string iconResource = "");
+	const std::string getEmblemResource();
 
 	static const float CastPercentage;
 	static const float BaseSpeedMultiplier;
+	static const int DefaultMinDamage;
+	static const int DefaultMaxDamage;
+	static const int DefaultMinHealing;
+	static const int DefaultMaxHealing;
 
 protected:
 	TimelineEntry(PlatformerEntity* entity, int spawnIndex);
@@ -56,35 +62,28 @@ private:
 
 	bool isPacifist();
 
-	struct DamageArgs
-	{
-		int damageDealta;
-
-		DamageArgs(int damageDealta) : damageDealta(damageDealta) { }
-	};
-
 	void performCast();
 	void tryInterrupt();
 	void resetTimeline();
 	void cameraFocusEntry();
 
-	PlatformerAttack* currentCast;
-	PlatformerEntity* entity;
-	EntityCombatBehaviorBase* combatBehavior;
+	PlatformerAttack* currentCast = nullptr;
+	PlatformerEntity* entity = nullptr;
+	EntityCombatBehaviorBase* combatBehavior = nullptr;
 	std::vector<PlatformerEntity*> targets;
 	std::vector<TimelineEntry*> targetsAsEntries;
-	cocos2d::Sprite* line;
-	cocos2d::Sprite* circle;
-	cocos2d::Sprite* circleSelected;
-	cocos2d::Sprite* emblem;
-	cocos2d::Sprite* overlayCircle;
+	cocos2d::Sprite* line = nullptr;
+	cocos2d::Sprite* circle = nullptr;
+	cocos2d::Sprite* circleSelected = nullptr;
+	cocos2d::Sprite* emblem = nullptr;
+	cocos2d::Sprite* overlayCircle = nullptr;
 	std::vector<cocos2d::Sprite*> targetIcons;
-	cocos2d::Sprite* skull;
-	cocos2d::Node* orphanedAttackCache;
+	cocos2d::Sprite* skull = nullptr;
+	cocos2d::Node* orphanedAttackCache = nullptr;
 
-	int spawnIndex;
-	float interruptBonus;
-	float progress;
-	bool isCasting;
-	bool isBlocking;
+	int spawnIndex = 0;
+	float interruptBonus = 0.0f;
+	float progress = 0.0f;
+	bool isCasting = false;
+	bool isBlocking = false;
 };

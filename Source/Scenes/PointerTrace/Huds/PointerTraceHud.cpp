@@ -155,7 +155,7 @@ void PointerTraceHud::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	
 	this->backdrop->setPosition(8.0f, visibleSize.height - 340.0f);
 	this->eaxLabel->setPosition(24.0f, visibleSize.height - 36.0f * 0.0f - 24.0f);

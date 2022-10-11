@@ -33,22 +33,17 @@ Item* Mandrake::clone()
 	return Mandrake::create();
 }
 
-std::string Mandrake::getItemName()
-{
-	return Mandrake::SaveKey;
-}
-
 LocalizedString* Mandrake::getString()
 {
 	return Strings::Items_Crafting_Plants_Mandrake::create();
 }
 
-std::string Mandrake::getIconResource()
+const std::string& Mandrake::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Plants_Mandrake;
 }
 
-std::string Mandrake::getSerializationKey()
+const std::string& Mandrake::getIdentifier()
 {
 	return Mandrake::SaveKey;
 }

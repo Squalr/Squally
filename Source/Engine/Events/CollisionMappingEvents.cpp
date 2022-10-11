@@ -9,7 +9,7 @@ const std::string CollisionMappingEvents::RequestCollisionMapKeyMappingEvent = "
 
 void CollisionMappingEvents::requestCollisionMapKeyMapping(CollisionMapRequestArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CollisionMappingEvents::RequestCollisionMapKeyMappingEvent,
 		&args
 	);

@@ -2,7 +2,7 @@
 
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
@@ -10,6 +10,7 @@
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -20,7 +21,7 @@
 #include "Menus/Inventory/ItemMenu/ItemMenu.h"
 #include "Menus/Party/PartyMenu.h"
 #include "Scenes/Title/TitleScreen.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
@@ -35,7 +36,7 @@
 
 using namespace cocos2d;
 
-InventoryMenu* InventoryMenu::create(PartyMenu* partyMenu)
+InventoryMenu* InventoryMenu::create(LazyNode<PartyMenu>* partyMenu)
 {
 	InventoryMenu* instance = new InventoryMenu(partyMenu);
 
@@ -44,29 +45,24 @@ InventoryMenu* InventoryMenu::create(PartyMenu* partyMenu)
 	return instance;
 }
 
-InventoryMenu::InventoryMenu(PartyMenu* partyMenu)
+InventoryMenu::InventoryMenu(LazyNode<PartyMenu>* partyMenu)
 {
-	this->currencyInventory = nullptr;
-	this->equipmentInventory = nullptr;
-	this->inventory = nullptr;
 	this->inventoryWindow = Sprite::create(UIResources::Menus_InventoryMenu_InventoryMenu);
 	this->filterMenu = FilterMenu::create([=](){ this->onFilterChange(); });
 	this->itemMenu = ItemMenu::create();
 	this->inventoryLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Inventory_Inventory::create());
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
-	this->returnClickCallback = nullptr;
-	this->equipmentChanged = false;
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
 	this->partyMenu = partyMenu;
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
 	returnLabel->enableOutline(Color4B::BLACK, 2);
-	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
 	returnLabelHover->enableOutline(Color4B::BLACK, 2);
 	returnLabelHover->setTextColor(Color4B::YELLOW);
-	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = ClickableTextNode::create(
@@ -75,7 +71,7 @@ InventoryMenu::InventoryMenu(PartyMenu* partyMenu)
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->inventoryLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->inventoryLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->inventoryLabel->enableGlow(Color4B::BLACK);
 	
 	this->addChild(this->inventoryWindow);
@@ -94,17 +90,9 @@ void InventoryMenu::onEnter()
 {
 	super::onEnter();
 
-	float delay = 0.1f;
-	float duration = 0.25f;
-
-	GameUtils::fadeInObject(this->inventoryWindow, delay, duration);
-	GameUtils::fadeInObject(this->inventoryLabel, delay, duration);
-	GameUtils::fadeInObject(this->closeButton, delay, duration);
-	GameUtils::fadeInObject(this->returnButton, delay, duration);
-
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			this->inventory = entityInventoryBehavior->getInventory();
 			this->equipmentInventory = entityInventoryBehavior->getEquipmentInventory();
@@ -117,7 +105,7 @@ void InventoryMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->filterMenu->setPosition(Vec2(visibleSize.width / 2.0f - 340.0f, visibleSize.height / 2.0f - 44.0f));
 	this->itemMenu->setPosition(Vec2(visibleSize.width / 2.0f - 1.0f, visibleSize.height / 2.0f - 44.0f));
@@ -142,9 +130,9 @@ void InventoryMenu::initializeListeners()
 	});
 	this->closeButton->setClickSound(SoundResources::Menus_ClickBack1);
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		if (!GameUtils::isVisible(this))
+		if (GameUtils::getFocusedNode() != this)
 		{
 			return;
 		}
@@ -153,13 +141,13 @@ void InventoryMenu::initializeListeners()
 		this->close();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_D, InputEvents::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->filterMenu->unfocus();
 		this->itemMenu->focus();
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_A, InputEvents::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->filterMenu->focus();
 		this->itemMenu->unfocus();
@@ -168,8 +156,8 @@ void InventoryMenu::initializeListeners()
 
 void InventoryMenu::onFilterChange()
 {
-	this->populateItemList();
 	this->itemMenu->clearPreview();
+	this->populateItemList();
 }
 
 void InventoryMenu::populateItemList()
@@ -319,28 +307,28 @@ void InventoryMenu::consumeItem(Consumable* item)
 		return;
 	}
 
-	this->partyMenu->setVisible(true);
-	GameUtils::focus(this->partyMenu);
+	this->partyMenu->lazyGet()->setVisible(true);
+	GameUtils::focus(this->partyMenu->lazyGet());
 
 	int count = 0;
 	
-	for (auto next : this->inventory->getItems())
+	for (Item* next : this->inventory->getItems())
 	{
-		if (next->getItemName() == item->getItemName())
+		if (next->getIdentifier() == item->getIdentifier())
 		{
 			count++;
 		}
 	}
 
-	this->partyMenu->openForSelection(item->getIconResource(), count, [=](PlatformerEntity* target)
+	this->partyMenu->lazyGet()->openForSelection(item->getIconResource(), count, [=](PlatformerEntity* target)
 	{
 		return item->canUseOnTarget(target);
 	},
 	[=](PlatformerEntity* target)
 	{
-		int currentSelectionIndex = this->partyMenu->getSelectionIndex();
+		int currentSelectionIndex = this->partyMenu->lazyGet()->getSelectionIndex();
 		
-		this->partyMenu->setVisible(false);
+		this->partyMenu->lazyGet()->setVisible(false);
 		GameUtils::focus(this);
 
 		item->useOutOfCombat(target);
@@ -352,11 +340,11 @@ void InventoryMenu::consumeItem(Consumable* item)
 			// Chain consumable usage
 			for (auto next : this->inventory->getItems())
 			{
-				if (next->getItemName() == removedItem->getItemName())
+				if (next->getIdentifier() == removedItem->getIdentifier())
 				{
 					this->consumeItem(dynamic_cast<Consumable*>(next));
 
-					this->partyMenu->setSelectionIndex(currentSelectionIndex);
+					this->partyMenu->lazyGet()->setSelectionIndex(currentSelectionIndex);
 					return;
 				}
 			}
@@ -374,7 +362,7 @@ void InventoryMenu::consumeItem(Consumable* item)
 	},
 	[=]()
 	{
-		this->partyMenu->setVisible(false);
+		this->partyMenu->lazyGet()->setVisible(false);
 		GameUtils::focus(this);
 	});
 }

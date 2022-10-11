@@ -10,8 +10,8 @@
 #include "Engine/UI/HUD/FocusTakeOver.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/UIResources.h"
 
@@ -64,8 +64,8 @@ void StateCardReplace::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	this->doneButton->setPosition(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f + 24.0f);
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
+	this->doneButton->setPosition(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f + 24.0f);
 }
 
 void StateCardReplace::onEndReplaceCards(GameState* gameState)
@@ -81,11 +81,11 @@ void StateCardReplace::onBeforeStateEnter(GameState* gameState)
 
 	if (gameState->roundNumber == 0)
 	{
-		gameState->cardReplaceCount = std::min(Config::initialCardReplacements, gameState->playerDeck->getCardCount());
+		gameState->cardReplaceCount = std::min(HexusConfig::initialCardReplacements, gameState->playerDeck->getCardCount());
 	}
 	else
 	{
-		gameState->cardReplaceCount = std::min(Config::midgameCardReplacements, gameState->playerDeck->getCardCount());
+		gameState->cardReplaceCount = std::min(HexusConfig::midgameCardReplacements, gameState->playerDeck->getCardCount());
 	}
 }
 
@@ -93,21 +93,28 @@ void StateCardReplace::onStateEnter(GameState* gameState)
 {
 	super::onStateEnter(gameState);
 
+	gameState->enemyBinaryCards->disableRowCardInteraction();
+	gameState->enemyDecimalCards->disableRowCardInteraction();
+	gameState->enemyHexCards->disableRowCardInteraction();
+	gameState->playerBinaryCards->disableRowCardInteraction();
+	gameState->playerDecimalCards->disableRowCardInteraction();
+	gameState->playerHexCards->disableRowCardInteraction();
+
 	if (gameState->cardReplaceCount > 0)
 	{
 		this->doneButton->enableInteraction(0);
-		this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 255));
+		this->doneButton->runAction(FadeTo::create(HexusConfig::replaceEndButtonFadeSpeed, 255));
 
-		Size visibleSize = Director::getInstance()->getVisibleSize();
+		CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 		this->focusTakeOver->focus({
 			gameState->playerHand,
 			gameState->enemyHand,
 		});
 
-		gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - 192.0f)));
+		gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - 192.0f)));
 		gameState->playerHand->setCardScale(0.6f, 0.25f);
-		gameState->playerHand->setRowWidth(Config::previewWidth, 0.25f);
+		gameState->playerHand->setRowWidth(HexusConfig::previewWidth, 0.25f);
 		gameState->playerHand->enableRowCardInteraction();
 		
 		gameState = gameState;
@@ -155,18 +162,18 @@ void StateCardReplace::onStateExit(GameState* gameState)
 	super::onStateExit(gameState);
 
 	// Restore hand to proper position
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->focusTakeOver->unfocus();
 	gameState->playerHand->setCardScale(Card::cardScale, 0.25f);
-	gameState->playerHand->setRowWidth(Config::handWidth, 0.25f);
-	gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + Config::centerColumnCenter, visibleSize.height / 2.0f - Config::handOffsetY)));
+	gameState->playerHand->setRowWidth(HexusConfig::handWidth, 0.25f);
+	gameState->playerHand->runAction(MoveTo::create(0.25f, Vec2(visibleSize.width / 2.0f + HexusConfig::centerColumnCenter, visibleSize.height / 2.0f - HexusConfig::handOffsetY)));
 
 	// Shuffle player deck
 	gameState->playerDeck->shuffle();
 
 	// Hide Done Button
 	this->doneButton->disableInteraction(this->doneButton->getOpacity());
-	this->doneButton->runAction(FadeTo::create(Config::replaceEndButtonFadeSpeed, 0));
+	this->doneButton->runAction(FadeTo::create(HexusConfig::replaceEndButtonFadeSpeed, 0));
 }
 
 void StateCardReplace::initializeCallbacks(GameState* gameState)
@@ -236,7 +243,7 @@ void StateCardReplace::replaceCard(Card* cardToReplace, GameState* gameState)
 			// Finished replacing cards
 			CardRow * hand = gameState->playerHand;
 			this->runAction(Sequence::create(
-				CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, replacement, Config::insertDelay, true)),
+				CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, replacement, HexusConfig::insertDelay)),
 				DelayTime::create(0.75f),
 				CallFunc::create([=]
 				{
@@ -250,8 +257,8 @@ void StateCardReplace::replaceCard(Card* cardToReplace, GameState* gameState)
 			// Reload state
 			CardRow * hand = gameState->playerHand;
 			this->runAction(Sequence::create(
-				CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, replacement, Config::insertDelay, true)),
-				DelayTime::create(Config::insertDelay),
+				CallFunc::create(CC_CALLBACK_0(CardRow::insertCard, hand, replacement, HexusConfig::insertDelay)),
+				DelayTime::create(HexusConfig::insertDelay),
 				CallFunc::create([=]
 				{
 					GameState::updateState(gameState, GameState::StateType::CardReplace);

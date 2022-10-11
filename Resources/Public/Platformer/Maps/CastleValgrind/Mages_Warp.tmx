@@ -583,7 +583,7 @@
   </properties>
   <object id="963" name="portal" type="object" x="2425.3" y="793.879" width="256" height="256">
    <properties>
-    <property name="map" value="CastleValgrind/Zone_1_3"/>
+    <property name="map" value="CastleValgrind/Castle_Main"/>
     <property name="transition" value="warp-room"/>
    </properties>
   </object>
@@ -661,7 +661,7 @@
   </properties>
   <object id="955" name="merlin" type="entity" x="2864.36" y="920.606" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pick-pocket"/>
+    <property name="components" value="friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value="power-warp-gate-cv"/>
@@ -676,7 +676,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="2579.72" y="920.314" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="933" name="spawn" type="object" x="2490.51" y="919.298" width="128" height="128">

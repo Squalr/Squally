@@ -2,7 +2,6 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class HexusOpponentData;
 class MagePortal;
 class PlatformerEntity;
 class QuestLine;
@@ -27,9 +26,9 @@ protected:
 private:
 	typedef QuestTask super;
 	
-	MagePortal* portal;
-	PlatformerEntity* mage;
-	Squally* squally;
+	MagePortal* portal = nullptr;
+	PlatformerEntity* mage = nullptr;
+	Squally* squally = nullptr;
 
 	static const std::string QuestPortalTag;
 	static const std::string WinLossTrackIdentifier;

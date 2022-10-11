@@ -13,9 +13,8 @@
 #include "Engine/Utils/StrUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
-#include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/UIResources.h"
 
@@ -40,7 +39,7 @@ Warp* Warp::create(ValueMap& properties)
 
 Warp::Warp(ValueMap& properties) : super(
 	properties,
-	Size(
+	CSize(
 		GameUtils::getKeyOrDefault(properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 	),
@@ -51,7 +50,6 @@ Warp::Warp(ValueMap& properties) : super(
 	this->to = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyWarpTo, Value("")).asString();
 	this->warpCamera = !GameUtils::getKeyOrDefault(this->properties, Warp::PropertyNoWarpCamera, Value(false)).asBool();
 	this->relayer = GameUtils::getKeyOrDefault(this->properties, Warp::PropertyRelayer, Value(false)).asBool();
-	this->cooldown = 0.0f;
 
 	this->setName("Warp from " + this->from + " to " + this->to);
 	this->setInteractType(InteractType::Input);
@@ -83,13 +81,13 @@ void Warp::initializeListeners()
 
 	this->listenForMapEvent(Warp::EventWarpToPrefix + this->from, [=](ValueMap args)
 	{
-		ObjectEvents::QueryObjects(QueryObjectsArgs<Squally>([=](Squally* squally)
+		ObjectEvents::QueryObject<Squally>([=](Squally* squally)
 		{
 			this->doRelayer();
 
 			PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(squally, GameUtils::getWorldCoords3D(this), this->warpCamera));
 			this->cooldown = Warp::WarpCooldown;
-		}), Squally::MapKey);
+		}, Squally::MapKey);
 	});
 }
 
@@ -107,10 +105,11 @@ void Warp::doRelayer()
 		return;
 	}
 
-	MapLayer* layer = GameUtils::getFirstParentOfType<MapLayer>(this);
+	MapLayer* mapLayer = GameUtils::GetFirstParentOfType<MapLayer>(this);
 
-	if (layer != nullptr)
+	if (mapLayer != nullptr)
 	{
-		GameUtils::changeParent(squally, layer, true);
+		GameUtils::changeParent(squally, mapLayer, true);
+		mapLayer->setHackable();
 	}
 }

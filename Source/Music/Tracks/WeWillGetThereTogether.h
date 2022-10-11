@@ -1,20 +1,18 @@
 #pragma once
 
-#include "Engine/Sound/Track.h"
+#include "Engine/Sound/Music.h"
 
-class Item;
-
-class WeWillGetThereTogether : public Track
+class WeWillGetThereTogether : public Music
 {
 public:
-	static WeWillGetThereTogether* create();
+	static WeWillGetThereTogether* create(cocos2d::ValueMap& properties);
 
 	static const std::string TrackKey;
 
 protected:
-	WeWillGetThereTogether();
+	WeWillGetThereTogether(cocos2d::ValueMap& properties);
 	virtual ~WeWillGetThereTogether();
 
 private:
-	typedef Track super;
+	typedef Music super;
 };

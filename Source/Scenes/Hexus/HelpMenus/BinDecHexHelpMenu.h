@@ -29,13 +29,13 @@ protected:
 private:
 	typedef SmartNode super;
 
-	LocalizedLabel* description;
-	ToggleCard* binCard;
-	ToggleCard* decCard;
-	ToggleCard* hexCard;
-	LocalizedLabel* equalsLabelLeft;
-	LocalizedLabel* equalsLabelRight;
-	LocalizedLabel* binHeader;
-	LocalizedLabel* decHeader;
-	LocalizedLabel* hexHeader;
+	LocalizedLabel* description = nullptr;
+	ToggleCard* binCard = nullptr;
+	ToggleCard* decCard = nullptr;
+	ToggleCard* hexCard = nullptr;
+	LocalizedLabel* equalsLabelLeft = nullptr;
+	LocalizedLabel* equalsLabelRight = nullptr;
+	LocalizedLabel* binHeader = nullptr;
+	LocalizedLabel* decHeader = nullptr;
+	LocalizedLabel* hexHeader = nullptr;
 };

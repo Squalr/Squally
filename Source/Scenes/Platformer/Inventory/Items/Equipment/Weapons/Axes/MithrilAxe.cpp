@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/MithrilAxePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,30 +47,25 @@ Item* MithrilAxe::clone()
 	return MithrilAxe::create();
 }
 
-std::string MithrilAxe::getItemName()
-{
-	return MithrilAxe::SaveKey;
-}
-
 LocalizedString* MithrilAxe::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_MithrilAxe::create();
 }
 
-std::string MithrilAxe::getIconResource()
+const std::string& MithrilAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Axes_MithrilAxe;
 }
 
-std::string MithrilAxe::getSerializationKey()
+const std::string& MithrilAxe::getIdentifier()
 {
 	return MithrilAxe::SaveKey;
 }
 
-Size MithrilAxe::getWeaponCollisionSize()
+CSize MithrilAxe::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return Size(112.0f, 96.0f);
+	return CSize(112.0f, 96.0f);
 }
 
 Vec2 MithrilAxe::getWeaponCollisionOffset()
@@ -81,4 +77,9 @@ Vec2 MithrilAxe::getWeaponCollisionOffset()
 Vec2 MithrilAxe::getDisplayOffset()
 {
 	return Vec2(28.0f, -4.0f);
+}
+
+Recipe* MithrilAxe::getRecipe()
+{
+	return MithrilAxePlans::create();
 }

@@ -21,9 +21,9 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Events/SwitchEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Squally/SquallyBehaviorGroup.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Squally/SquallyBehaviorGroup.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -50,7 +50,7 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 	this->lightningStrike = SmartAnimationSequenceNode::create();
 	this->shipContainer = Node::create();
 	this->ship = Sprite::create(ObjectResources::Cinematic_SpaceShipSqually);
-	this->shipCollision = CollisionObject::create(CollisionObject::createBox(Size(320.0f, 224.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true));
+	this->shipCollision = CollisionObject::create(CollisionObject::createBox(CSize(320.0f, 224.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true));
 	this->shipFireAnimation = SmartAnimationSequenceNode::create();
 	this->smokeAnimation = SmartAnimationSequenceNode::create();
 	this->fireAnimation = SmartAnimationSequenceNode::create();
@@ -69,14 +69,14 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 
 	this->skipSequence = KSequence::create(
 	{
-		EventKeyboard::KeyCode::KEY_S,
-		EventKeyboard::KeyCode::KEY_W,
-		EventKeyboard::KeyCode::KEY_A,
-		EventKeyboard::KeyCode::KEY_G,
-		EventKeyboard::KeyCode::KEY_L,
-		EventKeyboard::KeyCode::KEY_O,
-		EventKeyboard::KeyCode::KEY_R,
-		EventKeyboard::KeyCode::KEY_D,
+		InputEvents::KeyCode::KEY_S,
+		InputEvents::KeyCode::KEY_W,
+		InputEvents::KeyCode::KEY_A,
+		InputEvents::KeyCode::KEY_G,
+		InputEvents::KeyCode::KEY_L,
+		InputEvents::KeyCode::KEY_O,
+		InputEvents::KeyCode::KEY_R,
+		InputEvents::KeyCode::KEY_D,
 	}, [=]()
 	{
 		this->onCrash();
@@ -85,7 +85,6 @@ SquallyShip::SquallyShip(ValueMap& properties) : super(properties)
 	this->ship->setFlippedX(true);
 	this->fireAnimation->setFlippedX(true);
 	this->thrustAnimation->setFlippedX(true);
-	this->shipCollision->setGravityEnabled(false);
 
 	this->fireAnimation->addChild(this->fireSound);
 	this->ship->addChild(this->fireRingAnimation);
@@ -153,11 +152,11 @@ void SquallyShip::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->shipCollision->whenCollidesWith({(int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics}, [=](CollisionObject::CollisionData data)
+	this->shipCollision->whenCollidesWith({(int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics}, [=](CollisionData data)
 	{
 		this->onCrash();
 
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 }
 
@@ -176,6 +175,8 @@ void SquallyShip::runShipSequence()
 	this->runAction(Sequence::create(
 		CallFunc::create([=]()
 		{
+			this->shipCollision->setPhysicsFlagEnabled(false);
+			this->shipCollision->setGravityFlagEnabled(false);
 			this->shipCollision->setVelocity(Vec2(0.0f, 0.0f));
 			this->shipCollision->setHorizontalDampening(1.0f);
 			this->shipCollision->setVerticalDampening(1.0f);
@@ -191,6 +192,8 @@ void SquallyShip::runShipSequence()
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
+			this->shipCollision->setPhysicsFlagEnabled(true);
+			this->shipCollision->setGravityFlagEnabled(true);
 			this->shipCollision->setVelocity(Vec2(-2048.0f, -512.0f));
 			this->shipContainer->runAction(EaseSineIn::create(RotateTo::create(2.0f, -45.0f)));
 			this->smokeAnimation->playAnimationRepeat(FXResources::SmokeWhisp_SmokeWhisp_0000, 0.06f);
@@ -227,22 +230,22 @@ void SquallyShip::onCrash()
 	Vec2 crashCoords = GameUtils::getWorldCoords(this->shipCollision);
 	Squally* squally = Squally::create();
 	
-	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
-	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
-	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
-	SaveManager::softDeleteProfileData(SaveKeys::SaveKeySquallyLayerId);
+	SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
+	SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);
+	SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionZ);
+	SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyLayerId);
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		this->ship,
 		squally,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard,
+		SpawnMethod::Above,
+		PositionMode::Discard,
 		[&]()
 		{
 			squally->setPosition(crashCoords);
-			squally->attachBehavior(SquallyBehaviorGroup::create(squally));
+			squally->attachComponent(SquallyBehaviorGroup::create(squally));
 
-			squally->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			squally->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
 				healthBehavior->setHealth(1);
 			});
@@ -255,7 +258,7 @@ void SquallyShip::onCrash()
 
 	GameCamera::getInstance()->setCameraPosition(cameraCoords);
 
-	this->shipCollision->setPhysicsEnabled(false);
+	this->shipCollision->setPhysicsFlagEnabled(false);
 	this->ship->setVisible(false);
 	
 	this->smokeAnimation->stopAnimation();

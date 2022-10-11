@@ -1,11 +1,11 @@
 #pragma once
 #include <string>
 
-#include "Entities/Platformer/PlatformerFriendly.h"
+#include "Entities/Platformer/PlatformerHelper.h"
 
 class LocalizedString;
 
-class Robot : public PlatformerFriendly
+class Robot : public PlatformerHelper
 {
 public:
 	static Robot* deserialize(cocos2d::ValueMap& properties);
@@ -20,5 +20,5 @@ protected:
 	virtual ~Robot();
 
 private:
-	typedef PlatformerFriendly super;
+	typedef PlatformerHelper super;
 };

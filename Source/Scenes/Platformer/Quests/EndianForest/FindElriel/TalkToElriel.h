@@ -3,7 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 
 class Elriel;
-class PlatformerEntity;
+class Portal;
 class QuestLine;
 class Scrappy;
 class Squally;
@@ -32,9 +32,13 @@ private:
 	void runCinematicSequencePart3();
 	void runCinematicSequencePart4();
 
-	Elriel* elriel;
-	Scrappy* scrappy;
-	Squally* squally;
+	Elriel* elriel = nullptr;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
+	Portal* cutscenePortal = nullptr;
 
+	static const std::string MapEventElrielRescued;
 	static const std::string TagElrielExit;
+	static const std::string TagCutscenePortal;
+	static const std::string TagElrielCage;
 };

@@ -24,9 +24,9 @@ FireElemental::FireElemental(ValueMap& properties) : super(properties,
 	FireElemental::MapKey,
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Animations,
 	EntityResources::Enemies_DaemonsHallow_FireElemental_Emblem,
-	Size(820.0f, 1480.0f),
+	CSize(256.0f, 228.0f),
 	1.0f,
-	Vec2(64.0f, 0.0f))
+	Vec2(0.0f, 0.0f))
 {
 }
 

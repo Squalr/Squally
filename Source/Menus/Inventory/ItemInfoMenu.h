@@ -36,14 +36,14 @@ private:
 
 	void close();
 
-	cocos2d::LayerColor* backdrop;
-	cocos2d::Sprite* itemWindow;
-	LocalizedLabel* itemLabel;
-	ItemPreview* itemPreview;
-	ClickableTextNode* takeItemButton;
-	ClickableTextNode* returnButton;
-	ClickableNode* closeButton;
+	cocos2d::LayerColor* backdrop = nullptr;
+	cocos2d::Sprite* itemWindow = nullptr;
+	LocalizedLabel* itemLabel = nullptr;
+	ItemPreview* itemPreview = nullptr;
+	ClickableTextNode* takeItemButton = nullptr;
+	ClickableTextNode* returnButton = nullptr;
+	ClickableNode* closeButton = nullptr;
 
-	std::function<void()> returnClickCallback;
-	std::function<void()> onExitSecondary;
+	std::function<void()> returnClickCallback = nullptr;
+	std::function<void()> onExitSecondary = nullptr;
 };

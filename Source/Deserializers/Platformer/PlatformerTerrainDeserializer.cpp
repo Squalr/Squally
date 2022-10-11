@@ -5,9 +5,49 @@
 #include "Engine/Maps/GameObject.h"
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Deserializers/Platformer/PlatformerAttachedBehaviorDeserializer.h"
+#include "Deserializers/Platformer/PlatformerComponentDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
-#include "Scenes/Platformer/Terrain/PlatformerTerrain.h"
+#include "Scenes/Platformer/Terrain/ArabicDarkTerrain.h"
+#include "Scenes/Platformer/Terrain/ArabicTerrain.h"
+#include "Scenes/Platformer/Terrain/BlueGrassTerrain.h"
+#include "Scenes/Platformer/Terrain/CastleTerrain.h"
+#include "Scenes/Platformer/Terrain/CavernsTerrain.h"
+#include "Scenes/Platformer/Terrain/CaveTerrain.h"
+#include "Scenes/Platformer/Terrain/DarkGrassTerrain.h"
+#include "Scenes/Platformer/Terrain/DryGrassTerrain.h"
+#include "Scenes/Platformer/Terrain/DryTerrain.h"
+#include "Scenes/Platformer/Terrain/FrostTerrain.h"
+#include "Scenes/Platformer/Terrain/GrassTerrain.h"
+#include "Scenes/Platformer/Terrain/IceTerrain.h"
+#include "Scenes/Platformer/Terrain/JungleTerrain.h"
+#include "Scenes/Platformer/Terrain/LavaTerrain.h"
+#include "Scenes/Platformer/Terrain/LeafTerrain.h"
+#include "Scenes/Platformer/Terrain/MagmaTerrain.h"
+#include "Scenes/Platformer/Terrain/MarbleDarkTerrain.h"
+#include "Scenes/Platformer/Terrain/MarbleGrassTerrain.h"
+#include "Scenes/Platformer/Terrain/MarbleTerrain.h"
+#include "Scenes/Platformer/Terrain/MinesTerrain.h"
+#include "Scenes/Platformer/Terrain/MiniMapTerrain.h"
+#include "Scenes/Platformer/Terrain/ObsideanTerrain.h"
+#include "Scenes/Platformer/Terrain/RailsTerrain.h"
+#include "Scenes/Platformer/Terrain/RuinsGrayDarkTerrain.h"
+#include "Scenes/Platformer/Terrain/RuinsGrayTerrain.h"
+#include "Scenes/Platformer/Terrain/RuinsGrayThickTerrain.h"
+#include "Scenes/Platformer/Terrain/RuinsTerrain.h"
+#include "Scenes/Platformer/Terrain/RuinsThickTerrain.h"
+#include "Scenes/Platformer/Terrain/ShadeGrassTerrain.h"
+#include "Scenes/Platformer/Terrain/ShipAltTerrain.h"
+#include "Scenes/Platformer/Terrain/ShipTerrain.h"
+#include "Scenes/Platformer/Terrain/StoneDarkTerrain.h"
+#include "Scenes/Platformer/Terrain/StoneTerrain.h"
+#include "Scenes/Platformer/Terrain/TempleGreenTerrain.h"
+#include "Scenes/Platformer/Terrain/TempleDarkTerrain.h"
+#include "Scenes/Platformer/Terrain/TempleTerrain.h"
+#include "Scenes/Platformer/Terrain/TrailTerrain.h"
+#include "Scenes/Platformer/Terrain/WoodTerrain.h"
+#include "Scenes/Platformer/Terrain/WoodBlackFillTerrain.h"
+#include "Scenes/Platformer/Terrain/VinesTerrain.h"
+#include "Scenes/Platformer/Terrain/VoidTerrain.h"
 
 using namespace cocos2d;
 
@@ -22,7 +62,7 @@ PlatformerTerrainDeserializer* PlatformerTerrainDeserializer::create()
 	return instance;
 }
 
-PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(PlatformerTerrainDeserializer::MapKeyTypeTerrain, { (PropertyDeserializer*)PlatformerAttachedBehaviorDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() })
+PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(PlatformerTerrainDeserializer::MapKeyTypeTerrain, { (PropertyDeserializer*)PlatformerComponentDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() })
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
 	
@@ -41,10 +81,13 @@ PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(Platforme
 	this->deserializers[JungleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)JungleTerrain::create(properties); };
 	this->deserializers[LavaTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)LavaTerrain::create(properties); };
 	this->deserializers[LeafTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)LeafTerrain::create(properties); };
+	this->deserializers[MagmaTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MagmaTerrain::create(properties); };
 	this->deserializers[MarbleDarkTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleDarkTerrain::create(properties); };
 	this->deserializers[MarbleGrassTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleGrassTerrain::create(properties); };
 	this->deserializers[MarbleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MarbleTerrain::create(properties); };
 	this->deserializers[MinesTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MinesTerrain::create(properties); };
+	this->deserializers[ObsideanTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)ObsideanTerrain::create(properties); };
+	this->deserializers[RailsTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)RailsTerrain::create(properties); };
 	this->deserializers[RuinsGrayDarkTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayDarkTerrain::create(properties); };
 	this->deserializers[RuinsGrayTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayTerrain::create(properties); };
 	this->deserializers[RuinsGrayThickTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayThickTerrain::create(properties); };
@@ -60,6 +103,9 @@ PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(Platforme
 	this->deserializers[TempleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleTerrain::create(properties); };
 	this->deserializers[TrailTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)TrailTerrain::create(properties); };
 	this->deserializers[WoodTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)WoodTerrain::create(properties); };
+	this->deserializers[WoodBlackFillTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)WoodBlackFillTerrain::create(properties); };
+	this->deserializers[VinesTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)VinesTerrain::create(properties); };
+	this->deserializers[VoidTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)VoidTerrain::create(properties); };
 }
 
 PlatformerTerrainDeserializer::~PlatformerTerrainDeserializer()

@@ -19,7 +19,7 @@ using namespace cocos2d;
 TutorialTabBase::TutorialTabBase()
 {
 	this->description = Strings::Common_Empty::create();
-	this->descriptionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->description, Size(640.0f, 0.0f));
+	this->descriptionLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, this->description, CSize(640.0f, 0.0f));
 	this->entryNode = Node::create();
 	this->entries = std::vector<TutorialEntry*>();
 

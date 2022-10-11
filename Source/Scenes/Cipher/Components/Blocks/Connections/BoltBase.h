@@ -25,12 +25,12 @@ protected:
 	void onAnyStateChange(CipherState* cipherState) override;
 	virtual void onConnectionUpdated();
 
-	Connection* connection;
-	ClickableNode* connectButton;
-	bool inputDebug;
+	Connection* connection = nullptr;
+	ClickableNode* connectButton = nullptr;
+	bool inputDebug = false;
 
 private:
 	typedef CipherComponentBase super;
 
-	bool isCreatingConnection;
+	bool isCreatingConnection = false;
 };

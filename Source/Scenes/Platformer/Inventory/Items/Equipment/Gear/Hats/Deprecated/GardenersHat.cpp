@@ -46,22 +46,17 @@ Item* GardenersHat::clone()
 	return GardenersHat::create();
 }
 
-std::string GardenersHat::getItemName()
-{
-	return GardenersHat::SaveKey;
-}
-
 LocalizedString* GardenersHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_GardenersHat::create();
 }
 
-std::string GardenersHat::getIconResource()
+const std::string& GardenersHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_GardenersHat;
 }
 
-std::string GardenersHat::getSerializationKey()
+const std::string& GardenersHat::getIdentifier()
 {
 	return GardenersHat::SaveKey;
 }
@@ -69,4 +64,9 @@ std::string GardenersHat::getSerializationKey()
 Vec2 GardenersHat::getDisplayOffset()
 {
 	return Vec2(-12.0f, -2.0f);
+}
+
+Recipe* GardenersHat::getRecipe()
+{
+	return nullptr;
 }

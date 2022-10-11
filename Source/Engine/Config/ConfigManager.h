@@ -32,7 +32,7 @@ public:
 	static void setSoundVolume(float volume);
 	static void setMusicVolume(float volume);
 
-	static cocos2d::Size getResolutionSize();
+	static cocos2d::CSize getResolutionSize();
 	static ResolutionSetting getResolution();
 	static GraphicsSetting getGraphics();
 	static bool getIsFullScreen();
@@ -45,14 +45,16 @@ public:
 
 	static void save();
 
+protected:
+	ConfigManager();
+	virtual ~ConfigManager();
+
 private:
 	static ConfigManager* getInstance();
-	ConfigManager();
-	~ConfigManager();
 
 	cocos2d::ValueMap valueMap;
 
-	static ConfigManager* instance;
+	static ConfigManager* Instance;
 
 	static const std::string ConfigFile;
 	static const std::string ResolutionKey;

@@ -26,6 +26,6 @@ protected:
 private:
 	typedef Projectile super;
 
-	cocos2d::Sprite* sprite;
-	float dartSpeed;
+	cocos2d::Sprite* sprite = nullptr;
+	float dartSpeed = 0.0f;
 };

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="42" height="17" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="791">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="17" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="801">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -18,10 +18,9 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-4859.82" y="-368.888" width="13333.3" height="1140">
+  <object id="601" name="Forest/Background/WaterfallRocks" type="decor" x="-2971.82" y="-368.888" width="11445.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -32,7 +31,8 @@
   </properties>
   <object id="789" name="airship-2" type="object" x="-2800" y="80" width="256" height="256">
    <properties>
-    <property name="flip-x" type="bool" value="true"/>
+    <property name="direction" value="right"/>
+    <property name="speed" type="float" value="320"/>
    </properties>
   </object>
  </objectgroup>
@@ -41,7 +41,12 @@
    <property name="depth" type="float" value="-1792"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="790" name="airship-1" type="object" x="7920" y="608" width="256" height="256"/>
+  <object id="790" name="airship-1" type="object" x="7920" y="608" width="256" height="256">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="speed" type="float" value="320"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="16" name="WaterfallGround">
   <properties>
@@ -91,19 +96,14 @@
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="762" name="castle" type="terrain" x="2661.3" y="1564.24">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 419.108,-4.22532 419.108,354.925 1.01479,359.152"/>
-  </object>
+  <object id="792" name="castle" type="terrain" x="2657.33" y="1560" width="422.667" height="386.333"/>
  </objectgroup>
  <objectgroup id="93" name="water -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="764" name="water" type="object" x="-231.366" y="1590.11" width="7700.67" height="405.346">
+  <object id="764" name="water" type="object" x="-231.366" y="1587.44" width="7700.67" height="405.346">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
@@ -114,54 +114,39 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="761" name="castle" type="terrain" x="2659.36" y="1578.7">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 419.108,-4.22532 419.108,354.925 1.01479,359.152"/>
-  </object>
+  <object id="794" name="castle" type="terrain" x="2658.67" y="1576.17" width="422.667" height="386.333"/>
  </objectgroup>
  <objectgroup id="88" name="plank -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="759" name="castle" type="terrain" x="2660.69" y="1594.32">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 419.108,-4.22532 419.108,354.925 1.01479,359.152"/>
-  </object>
+  <object id="795" name="castle" type="terrain" x="2659.33" y="1594.83" width="422.667" height="386.333"/>
  </objectgroup>
  <objectgroup id="70" name="water -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="800" name="water" type="object" x="-227.366" y="1618.11" width="7700.67" height="405.346">
+   <properties>
+    <property name="disable-physics" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="20" name="plank -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="712" name="castle" type="terrain" x="2655.97" y="1613.66">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 419.108,-4.22532 419.108,354.925 1.01479,359.152"/>
-  </object>
+  <object id="796" name="castle" type="terrain" x="2658.67" y="1613.5" width="422.667" height="386.333"/>
  </objectgroup>
  <objectgroup id="68" name="plank -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="715" name="castle" type="terrain" x="2657.34" y="1632.25">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 419.108,-4.22532 419.108,354.925 1.01479,359.152"/>
-  </object>
+  <object id="797" name="castle" type="terrain" x="2658.67" y="1632.17" width="422.667" height="386.333"/>
  </objectgroup>
  <objectgroup id="83" name="water -2">
   <properties>
@@ -179,24 +164,14 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="716" name="castle" type="terrain" x="2656.02" y="1648.51">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 419.108,-4.22532 419.108,354.925 1.01479,359.152"/>
-  </object>
+  <object id="798" name="castle" type="terrain" x="2658" y="1644.83" width="422.667" height="386.333"/>
  </objectgroup>
  <objectgroup id="64" name="plank -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="713" name="castle" type="terrain" x="2654.77" y="1663.22">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="0,0 419.108,-4.22532 419.108,354.925 1.01479,359.152"/>
-  </object>
+  <object id="799" name="castle" type="terrain" x="2658.67" y="1662.83" width="422.667" height="386.333"/>
  </objectgroup>
  <objectgroup id="18" name="decor background">
   <properties>
@@ -255,7 +230,7 @@
   </object>
   <object id="768" name="lycan" type="entity" x="4504.31" y="1540.99" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pick-pocket"/>
+    <property name="components" value="friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="town-guard"/>
     <property name="quest" value="sneak-past-lycan"/>
@@ -265,7 +240,7 @@
   <object id="773" name="help-totem-pick-pocket" type="object" x="3891.93" y="1413.88" width="248" height="248"/>
   <object id="775" name="portal" type="object" x="4982.43" y="1414.94" width="256" height="256">
    <properties>
-    <property name="attached-behavior" value="locked-portal"/>
+    <property name="components" value="locked-portal"/>
     <property name="item-required" value="town-key"/>
     <property name="map" value="EndianForest/Town_Main"/>
     <property name="transition" value="main"/>
@@ -298,7 +273,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="571.009" y="1266.03" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="785" name="spawn" type="object" x="2792.68" y="1517.12" width="128" height="128">
@@ -306,12 +281,12 @@
     <property name="transition" value="mages"/>
    </properties>
   </object>
-  <object id="786" name="spawn" type="object" x="543.238" y="1268.97" width="128" height="128">
+  <object id="786" name="spawn" type="object" x="373.238" y="1263.97" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="787" name="spawn" type="object" x="4743.62" y="1542.46" width="128" height="128">
+  <object id="787" name="spawn" type="object" x="5044.95" y="1542.46" width="128" height="128">
    <properties>
     <property name="transition" value="town"/>
    </properties>

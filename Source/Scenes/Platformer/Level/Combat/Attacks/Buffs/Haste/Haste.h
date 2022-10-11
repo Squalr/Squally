@@ -33,10 +33,10 @@ private:
 
 	void applyHaste();
 	
-	static volatile float currentSpeed;
+	SmartParticles* spellEffect = nullptr;
+	cocos2d::Sprite* spellAura = nullptr;
 	
-	SmartParticles* spellEffect;
-	cocos2d::Sprite* spellAura;
+	static volatile float currentSpeed;
 
 	static const float MinSpeed;
 	static const float DefaultSpeed;

@@ -26,7 +26,7 @@ int Collectables::getCollectedAnimalCount()
 
     for (auto next : Collectables::CollectableAnimalData)
     {
-        collectedCount += (SaveManager::getProfileDataOrDefault(next.saveKey, Value(false)).asBool() ? 1 : 0);
+        collectedCount += (SaveManager::GetProfileDataOrDefault(next.saveKey, Value(false)).asBool() ? 1 : 0);
     }
 
     return collectedCount;

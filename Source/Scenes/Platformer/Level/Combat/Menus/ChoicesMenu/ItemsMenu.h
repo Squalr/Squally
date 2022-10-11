@@ -19,7 +19,7 @@ protected:
 private:
 	typedef RadialScrollMenu super;
 
-	bool hasItemsInList;
+	bool hasItemsInList = false;
 
 	static const float Radius;
 };

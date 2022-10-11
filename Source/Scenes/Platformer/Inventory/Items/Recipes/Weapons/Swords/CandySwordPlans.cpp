@@ -29,9 +29,9 @@ CandySwordPlans::~CandySwordPlans()
 {
 }
 
-Item* CandySwordPlans::craft()
+std::vector<Item*> CandySwordPlans::craft()
 {
-	return CandySword::create();
+	return { CandySword::create() };
 }
 
 std::vector<std::tuple<Item*, int>> CandySwordPlans::getReagentsInternal()
@@ -48,17 +48,12 @@ Item* CandySwordPlans::clone()
 	return CandySwordPlans::create();
 }
 
-std::string CandySwordPlans::getItemName()
-{
-	return CandySwordPlans::SaveKey;
-}
-
 LocalizedString* CandySwordPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_CandySword::create();
 }
 
-std::string CandySwordPlans::getIconResource()
+const std::string& CandySwordPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string CandySwordPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_CandySword;
 }
 
-std::string CandySwordPlans::getSerializationKey()
+const std::string& CandySwordPlans::getIdentifier()
 {
 	return CandySwordPlans::SaveKey;
 }

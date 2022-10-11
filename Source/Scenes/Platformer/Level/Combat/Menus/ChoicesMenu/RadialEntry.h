@@ -1,9 +1,6 @@
 #pragma once
 
-#include "cocos/math/Vec2.h"
-
 #include "Engine/SmartNode.h"
-#include "Engine/Events/InputEvents.h"
 
 class ClickableTextNode;
 class LocalizedLabel;
@@ -27,7 +24,7 @@ public:
 		cocos2d::Node* content,
 		cocos2d::Node* contentSelected);
 
-	std::string getIconResource();
+	const std::string& getIconResource();
 	void addIcon(std::string iconResource);
 
 	// ClickableTextNode wrapper
@@ -37,24 +34,24 @@ public:
 	// ClickableNode wrapper
 	void interact();
 	bool canInteract();
-	void setContentSize(const cocos2d::Size& size) override;
-	void setMouseClickCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseClick);
-	void setMouseInCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseIn);
-	void setMouseOverCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseOver);
-	void setMouseOutCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseOut);
-	void setMouseDownCallback(std::function<void(InputEvents::MouseEventArgs* args)> onMouseDown);
-	void setMousePressCallback(std::function<void(InputEvents::MouseEventArgs* args)> mousePressEvent);
-	void setMouseReleaseNoHitTestCallback(std::function<void(InputEvents::MouseEventArgs* args)> mouseReleaseNoHitTestEvent);
-	void setMouseReleaseCallback(std::function<void(InputEvents::MouseEventArgs* args)> mouseReleaseEvent);
-	void setMouseDragCallback(std::function<void(InputEvents::MouseEventArgs* args)> onDrag);
-	void setMouseScrollCallback(std::function<void(InputEvents::MouseEventArgs* args)> onScroll);
+	void setContentSize(const cocos2d::CSize& size) override;
+	void setMouseClickCallback(std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> onMouseClick);
+	void setMouseInCallback(std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> onMouseIn);
+	void setMouseOverCallback(std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> onMouseOver);
+	void setMouseOutCallback(std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> onMouseOut);
+	void setMouseDownCallback(std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> onMouseDown);
+	void setMousePressCallback(std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mousePressEvent);
+	void setMouseReleaseNoHitTestCallback(std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseReleaseNoHitTestEvent);
+	void setMouseReleaseCallback(std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> mouseReleaseEvent);
+	void setMouseDragCallback(std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> onDrag);
+	void setMouseScrollCallback(std::function<void(cocos2d::InputEvents::MouseEventArgs* args)> onScroll);
 	void setMouseOverSound(std::string soundResource);
 	void setClickSound(std::string soundResource);
 	void setAllowCollisionWhenInvisible(bool allowCollisionWhenInvisible);
 	virtual void disableInteraction(uint8_t newOpacity = 255);
 	virtual void enableInteraction(uint8_t newOpacity = 255);
 	void toggleAllowInteractionEdits(bool allowInteractionEdits);
-	void setClickModifier(cocos2d::EventKeyboard::KeyCode modifier);
+	void setClickModifier(cocos2d::InputEvents::KeyCode modifier);
 	cocos2d::Node* getContent();
 	cocos2d::Node* getContentSelected();
 	void setIntersectFunction(std::function<bool(cocos2d::Vec2 mousePos)> intersectFunction);
@@ -66,7 +63,7 @@ protected:
 private:
 	typedef SmartNode super;
 
-	ClickableTextNode* entry;
+	ClickableTextNode* entry = nullptr;
 	std::string iconResource;
-	bool allowInteractionEdits;
+	bool allowInteractionEdits = true;
 };

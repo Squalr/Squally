@@ -8,6 +8,8 @@
 
 #include "Resources/ObjectResources.h"
 
+#include "Strings/Strings.h"
+
 using namespace cocos2d;
 
 const std::string CagedHorse::MapKey = "caged-horse";
@@ -41,7 +43,7 @@ void CagedHorse::initializePositions()
 
 LocalizedString* CagedHorse::getAnimalName()
 {
-	return nullptr;
+	return Strings::Menus_Collectables_Animals_Horse::create();
 }
 
 std::string CagedHorse::getSpriteResource()

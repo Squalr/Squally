@@ -29,9 +29,9 @@ private:
 	void runNoSequence();
 	void runYesSequence();
 
-	Blackbeard* blackbeard;
-	Squally* squally;
-	Portal* portal;
+	Blackbeard* blackbeard = nullptr;
+	Squally* squally = nullptr;
+	Portal* portal = nullptr;
 
 	static const std::string QuestTagShipPortal;
 };

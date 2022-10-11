@@ -10,7 +10,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -32,7 +32,7 @@ DragonDoor* DragonDoor::create(ValueMap& properties)
 	return instance;
 }
 
-DragonDoor::DragonDoor(ValueMap& properties) : super(properties, Size(420.0f, 528.0f), Vec2(0.0f, 0.0f))
+DragonDoor::DragonDoor(ValueMap& properties) : super(properties, CSize(420.0f, 528.0f), Vec2(0.0f, 0.0f))
 {
 	this->doorOpenSound = WorldSound::create(SoundResources::Platformer_Objects_Doors_StoneWall1);
 	this->base = Sprite::create(ObjectResources::Doors_Dragon_DragonDoorBase);
@@ -40,10 +40,10 @@ DragonDoor::DragonDoor(ValueMap& properties) : super(properties, Size(420.0f, 52
 	this->top = Sprite::create(ObjectResources::Doors_Dragon_DragonDoorTop);
 	this->teeth = Sprite::create(ObjectResources::Doors_Dragon_DragonDoorTeeth);
 
-	this->addChild(this->base);
-	this->addChild(this->bars);
-	this->addChild(this->top);
-	this->addChild(this->teeth);
+	this->contentNode->addChild(this->base);
+	this->contentNode->addChild(this->bars);
+	this->contentNode->addChild(this->top);
+	this->contentNode->addChild(this->teeth);
 	this->addChild(this->doorOpenSound);
 }
 

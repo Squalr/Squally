@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Localization/ConstantString.h"
@@ -116,7 +117,7 @@ void Inversion::registerHackables()
 				Strings::Menus_Hacking_Abilities_Buffs_Inversion_Inversion::create(),
 				HackableBase::HackBarColor::Gray,
 				UIResources::Menus_Icons_YinYang,
-				InversionGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return InversionGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Inversion_RegisterEax::create(),
@@ -146,7 +147,7 @@ void Inversion::registerHackables()
 	auto stoneSkinFunc = &Inversion::applyInversion;
 	this->hackables = HackableCode::create((void*&)stoneSkinFunc, codeInfoMap);
 
-	for (auto next : this->hackables)
+	for (HackableCode* next : this->hackables)
 	{
 		this->owner->registerCode(next);
 	}
@@ -160,14 +161,12 @@ void Inversion::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs*
 
 	this->applyInversion();
 
-	// Bound multiplier in either direction
-	this->currentDamageTaken = MathUtils::clamp(
-		this->currentDamageTaken,
-		-std::abs(damageOrHealing->damageOrHealingValue * Inversion::MaxMultiplier),
-		std::abs(damageOrHealing->damageOrHealingValue * Inversion::MaxMultiplier)
-	);
+	int min = -std::abs(damageOrHealing->damageOrHealingValue * Inversion::MaxMultiplier);
+	int max = std::abs(damageOrHealing->damageOrHealingValue * Inversion::MaxMultiplier);
 
-	(*damageOrHealing->damageOrHealing) = this->currentDamageTaken;
+	*damageOrHealing->damageOrHealing = this->currentDamageTaken;
+	*damageOrHealing->damageOrHealingMin = min;
+	*damageOrHealing->damageOrHealingMax = max;
 }
 
 NO_OPTIMIZE void Inversion::applyInversion()
@@ -176,6 +175,7 @@ NO_OPTIMIZE void Inversion::applyInversion()
 
 	currentDamageTakenLocal = this->currentDamageTaken;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZAX);
 	ASM_MOV_REG_VAR(eax, currentDamageTakenLocal);
 
@@ -187,6 +187,7 @@ NO_OPTIMIZE void Inversion::applyInversion()
 	ASM_MOV_VAR_REG(currentDamageTakenLocal, eax);
 	
 	ASM(pop ZAX);
+	ASM_POP_EFLAGS()
 
 	this->currentDamageTaken = currentDamageTakenLocal;
 

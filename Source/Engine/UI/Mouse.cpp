@@ -3,30 +3,29 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/GlobalDirector.h"
-#include "Engine/Events/InputEvents.h"
-#include "Engine/Input/MouseState.h"
 #include "Engine/UI/HUD/Hud.h"
 
 using namespace cocos2d;
 
-Mouse* Mouse::instance = nullptr;
+Mouse* Mouse::Instance = nullptr;
 
-void Mouse::registerGlobalNode()
+void Mouse::RegisterGlobalNode()
 {
-	GlobalDirector::registerGlobalNode(Mouse::getInstance());
+	GlobalDirector::RegisterGlobalNode(Mouse::getInstance());
 }
 
 Mouse* Mouse::getInstance()
 {
-	if (Mouse::instance == nullptr)
+	if (Mouse::Instance == nullptr)
 	{
-		Mouse::instance = new Mouse();
-		Mouse::instance->autorelease();
+		Mouse::Instance = new Mouse();
+		Mouse::Instance->autorelease();
 	}
 
-	return Mouse::instance;
+	return Mouse::Instance;
 }
 
 Mouse::Mouse()
@@ -36,8 +35,6 @@ Mouse::Mouse()
 	this->mouseSpritePoint = Node::create();
 	this->mouseSpritePointPressed = Node::create();
 	this->mouseSpriteDrag = Node::create();
-	this->cursorSets = std::map<int, CursorSet>();
-	this->activeCursorSet = -1;
 
 	// Anchor point is the top left for the mouse -- this is where the click happens
 	this->setAnchorPoint(Vec2(0.0f, 1.0f));
@@ -74,20 +71,34 @@ void Mouse::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventMouseStateUpdate, [=](EventCustom* eventCustom)
+	this->addGlobalEventListener(EventListenerCustom::create(InputEvents::EventMouseRefresh, [=](EventCustom* eventCustom)
 	{
-		this->onEventMouseStateUpdate(eventCustom);
+		InputEvents::MouseEventArgs* args = static_cast<InputEvents::MouseEventArgs*>(eventCustom->getData());
+
+		if (args != nullptr)
+		{
+			this->readMousePosition = args->mouseCoords;
+
+			if (args->isDragging)
+			{
+				this->setActiveMouseSprite(this->mouseSpriteDrag);
+			}
+			else if (args->isLeftClicked && args->canClick)
+			{
+				this->setActiveMouseSprite(this->mouseSpritePointPressed);
+			}
+			else if (args->canClick)
+			{
+				this->setActiveMouseSprite(this->mouseSpritePoint);
+			}
+			else
+			{
+				this->setActiveMouseSprite(this->mouseSpriteIdle);
+			}
+
+			this->setSpriteToCursorPosition();
+		}
 	}));
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_CTRL, EventKeyboard::KeyCode::KEY_ALT, EventKeyboard::KeyCode::KEY_SHIFT}, [=](InputEvents::InputArgs*)
-	{
-		InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
-	});
-
-	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_CTRL, EventKeyboard::KeyCode::KEY_ALT, EventKeyboard::KeyCode::KEY_SHIFT}, [=](InputEvents::InputArgs*)
-	{
-		InputEvents::TriggerMouseRefresh(MouseState::getMouseState());
-	});
 }
 
 void Mouse::registerCursorSet(int setId, CursorSet cursorSet)
@@ -131,36 +142,6 @@ int Mouse::getActiveCursorSet()
 	return this->activeCursorSet;
 }
 
-const Vec2& Mouse::getPosition() const
-{
-	return this->readMousePosition;
-}
-
-void Mouse::onEventMouseStateUpdate(EventCustom* eventCustom)
-{
-	InputEvents::MouseEventArgs* args = (InputEvents::MouseEventArgs*)(eventCustom->getUserData());
-
-	if (args->isDragging)
-	{
-		this->setActiveMouseSprite(this->mouseSpriteDrag);
-	}
-	else if (args->isLeftClicked && args->canClick)
-	{
-		this->setActiveMouseSprite(this->mouseSpritePointPressed);
-	}
-	else if (args->canClick)
-	{
-		this->setActiveMouseSprite(this->mouseSpritePoint);
-	}
-	else
-	{
-		this->setActiveMouseSprite(this->mouseSpriteIdle);
-	}
-
-	this->readMousePosition = MouseState::getMousePosition();
-	this->setSpriteToCursorPosition();
-}
-
 void Mouse::setActiveMouseSprite(Node* mouseSprite)
 {
 	this->mouseSpriteIdle->setVisible(false);
@@ -174,8 +155,8 @@ void Mouse::setActiveMouseSprite(Node* mouseSprite)
 
 void Mouse::setSpriteToCursorPosition()
 {
-	this->mouseSpriteIdle->setPosition(MouseState::getMousePosition());
-	this->mouseSpritePoint->setPosition(MouseState::getMousePosition());
-	this->mouseSpritePointPressed->setPosition(MouseState::getMousePosition());
-	this->mouseSpriteDrag->setPosition(MouseState::getMousePosition());
+	this->mouseSpriteIdle->setPosition(this->readMousePosition);
+	this->mouseSpritePoint->setPosition(this->readMousePosition);
+	this->mouseSpritePointPressed->setPosition(this->readMousePosition);
+	this->mouseSpriteDrag->setPosition(this->readMousePosition);
 }

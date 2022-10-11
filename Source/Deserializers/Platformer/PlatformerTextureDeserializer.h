@@ -8,12 +8,13 @@ public:
 	static PlatformerTextureDeserializer* create();
 
 	static const std::string MapKeyTypeTexture;
+	
+protected:
+	PlatformerTextureDeserializer();
+	virtual ~PlatformerTextureDeserializer();
 
 private:
 	typedef ObjectDeserializer super;
-
-	PlatformerTextureDeserializer();
-	virtual ~PlatformerTextureDeserializer();
 
 	void deserialize(ObjectDeserializer::ObjectDeserializationRequestArgs* args);
 

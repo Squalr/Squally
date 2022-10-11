@@ -24,7 +24,7 @@ WaterElemental::WaterElemental(ValueMap& properties) : super(properties,
 	WaterElemental::MapKey,
 	EntityResources::Enemies_BallmerPeaks_WaterElemental_Animations,
 	EntityResources::Enemies_BallmerPeaks_WaterElemental_Emblem,
-	Size(820.0f, 1480.0f),
+	CSize(256.0f, 228.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Localization/ConstantString.h"
@@ -116,7 +117,7 @@ void StoneSkin::registerHackables()
 				Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkin::create(),
 				HackableBase::HackBarColor::Gray,
 				UIResources::Menus_Icons_ShieldBroken,
-				StoneSkinGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return StoneSkinGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEax::create()->setStringReplacementVariables(
@@ -185,7 +186,7 @@ void StoneSkin::registerHackables()
 	auto stoneSkinFunc = &StoneSkin::applyStoneSkin;
 	this->hackables = HackableCode::create((void*&)stoneSkinFunc, codeInfoMap);
 
-	for (auto next : this->hackables)
+	for (HackableCode* next : this->hackables)
 	{
 		this->owner->registerCode(next);
 	}
@@ -199,14 +200,9 @@ void StoneSkin::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs*
 
 	this->applyStoneSkin();
 
-	// Bound multiplier in either direction
-	this->currentDamageTaken = MathUtils::clamp(
-		this->currentDamageTaken,
-		-std::abs(damageOrHealing->damageOrHealingValue * StoneSkin::MaxMultiplier),
-		std::abs(damageOrHealing->damageOrHealingValue * StoneSkin::MaxMultiplier)
-	);
-
 	(*damageOrHealing->damageOrHealing) = this->currentDamageTaken;
+	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * StoneSkin::MaxMultiplier);
+	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * StoneSkin::MaxMultiplier);
 }
 
 NO_OPTIMIZE void StoneSkin::applyStoneSkin()
@@ -215,6 +211,7 @@ NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 
 	currentDamageTakenLocal = this->currentDamageTaken;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZAX);
 	ASM(push ZCX);
 	ASM(push ZDX);
@@ -233,6 +230,7 @@ NO_OPTIMIZE void StoneSkin::applyStoneSkin()
 	ASM(pop ZDX);
 	ASM(pop ZCX);
 	ASM(pop ZAX);
+	ASM_POP_EFLAGS()
 
 	this->currentDamageTaken = currentDamageTakenLocal;
 

@@ -24,7 +24,7 @@ private:
 	
 	void playAnimationsInternal(bool repeat, bool isFirstRun = false);
 
-	SmartAnimationSequenceNode* animations;
-	Sound* sound;
-	float manualDelay;
+	SmartAnimationSequenceNode* animations = nullptr;
+	Sound* sound = nullptr;
+	float manualDelay = 0.0f;
 };

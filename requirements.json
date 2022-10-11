@@ -5,18 +5,13 @@
         "freetype", 
         "glew", 
         "glfw3", 
-        "libjpeg-turbo", 
-        "libogg", 
         "libpng", 
-        "libvorbis",
-        "mpg123", 
-        "rapidjson", 
-        "tiff", 
         "tinyxml2", 
-        "xxhash", 
-        "zlib"
+        "tiff"
     ], 
-    "darwin": [], 
+    "darwin": [
+        "openssl"
+    ], 
     "linux": [
         "fontconfig", 
         "opengl", 

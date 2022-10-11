@@ -6,7 +6,7 @@
 
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
-#include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
@@ -26,16 +26,14 @@ TestButton* TestButton::create()
 
 TestButton::TestButton()
 {
-	this->activeCipherState = nullptr;
-
 	LocalizedLabel*	testLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Test::create());
 	LocalizedLabel*	testLabelHover = testLabel->clone();
 
-	testLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	testLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	testLabel->enableGlow(Color4B::BLACK);
 
 	testLabelHover->setColor(Color3B::YELLOW);
-	testLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	testLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	testLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->testButton = ClickableTextNode::create(
@@ -60,9 +58,9 @@ void TestButton::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->testButton->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + 256.0f, visibleSize.height / 2.0f - 420.0f));
+	this->testButton->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter + 256.0f, visibleSize.height / 2.0f - 420.0f));
 }
 
 void TestButton::initializeListeners()

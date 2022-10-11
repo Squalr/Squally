@@ -26,7 +26,7 @@ MemesTab* MemesTab::create()
 
 MemesTab::MemesTab()
 {
-	this->contentScrollPane = ScrollPane::create(Size(672.0f, 544.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
+	this->contentScrollPane = ScrollPane::create(CSize(672.0f, 544.0f), UIResources::Menus_Buttons_SliderButton, UIResources::Menus_Buttons_SliderButtonSelected);
 	this->developersTitle = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Credits_Developers::create());
 	this->zacSprite = Sprite::create(UIResources::Menus_CreditsMenu_Zac);
 	this->mattSprite = Sprite::create(UIResources::Menus_CreditsMenu_Matt);
@@ -102,7 +102,7 @@ void MemesTab::initializePositions()
 {
 	super::initializePositions();
 
-	Size paneSize = this->contentScrollPane->getContentSize();
+	CSize paneSize = this->contentScrollPane->getContentSize();
 
 	this->contentScrollPane->setPosition(Vec2(-8.0f, -48.0f));
 

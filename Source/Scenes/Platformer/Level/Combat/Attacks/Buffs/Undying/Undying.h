@@ -7,10 +7,8 @@ namespace cocos2d
 	class Sprite;
 }
 
-class HackablePreview;
 class PlatformerEntity;
 class SmartParticles;
-class WorldSound;
 
 class Undying : public Buff
 {
@@ -35,11 +33,11 @@ private:
 
 	void applyUndying();
 	
-	SmartParticles* spellEffect;
-	cocos2d::Sprite* bubble;
-	cocos2d::Sprite* spellAura;
+	SmartParticles* spellEffect = nullptr;
+	cocos2d::Sprite* bubble = nullptr;
+	cocos2d::Sprite* spellAura = nullptr;
 	
-	static const std::string StateKeyUndyingHealth;
+	static const std::string StateKeyUndyingNewHealth;
 	static const int MinUndying;
 	static const int MaxMultiplier;
 	static const float Duration;

@@ -33,22 +33,17 @@ Item* PoisonMushroom::clone()
 	return PoisonMushroom::create();
 }
 
-std::string PoisonMushroom::getItemName()
-{
-	return PoisonMushroom::SaveKey;
-}
-
 LocalizedString* PoisonMushroom::getString()
 {
 	return Strings::Items_Crafting_Plants_PoisonMushroom::create();
 }
 
-std::string PoisonMushroom::getIconResource()
+const std::string& PoisonMushroom::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Plants_PoisonMushroom;
 }
 
-std::string PoisonMushroom::getSerializationKey()
+const std::string& PoisonMushroom::getIdentifier()
 {
 	return PoisonMushroom::SaveKey;
 }

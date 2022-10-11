@@ -5,23 +5,17 @@
 
 #include "Scenes/Platformer/Level/Combat/Attacks/AbilityType.h"
 
-namespace cocos2d
-{
-	class Node;
-}
-
 class Buff;
 class PlatformerEntity;
 class Projectile;
 class Timeline;
 class TimelineEntry;
-class TimelineEvent;
 class TimelineEventGroup;
 
 class CombatEvents
 {
 public:
-	static const std::string EventSpawn;
+	static const std::string EventSpawnPrefix;
 	static const std::string EventQueryTimeline;
 	static const std::string EventGetAssociatedTimelineEntry;
 	static const std::string EventMenuBack;
@@ -59,9 +53,9 @@ public:
 	static const std::string EventDamage;
 	static const std::string EventHealing;
 	static const std::string EventManaRestore;
-	static const std::string EventManaRestoreDelt;
+	static const std::string EventManaRestoreDealt;
 	static const std::string EventManaDrain;
-	static const std::string EventManaDrainDelt;
+	static const std::string EventManaDrainDealt;
 	static const std::string EventModifyTimelineSpeed;
 	static const std::string EventModifyDamageTaken;
 	static const std::string EventModifyDamageDealt;
@@ -78,10 +72,10 @@ public:
 
 	struct SpawnArgs
 	{
-		PlatformerEntity* entity;
-		bool isEnemySpawn;
-		int spawnIndex;
-		std::function<void()> onSpawnSuccess;
+		PlatformerEntity* entity = nullptr;
+		bool isEnemySpawn = false;
+		int spawnIndex = 0;
+		std::function<void()> onSpawnSuccess = nullptr;
 
 		SpawnArgs(PlatformerEntity* entity, bool isEnemySpawn, int spawnIndex, std::function<void()> onSpawnSuccess) : entity(entity), isEnemySpawn(isEnemySpawn), spawnIndex(spawnIndex), onSpawnSuccess(onSpawnSuccess)
 		{
@@ -90,7 +84,7 @@ public:
 
 	struct QueryTimelineArgs
 	{
-		std::function<void(Timeline*)> callback;
+		std::function<void(Timeline*)> callback = nullptr;
 
 		QueryTimelineArgs(std::function<void(Timeline*)> callback) : callback(callback)
 		{
@@ -99,8 +93,8 @@ public:
 
 	struct AssociatedEntryArgs
 	{
-		PlatformerEntity* entity;
-		std::function<void(TimelineEntry*)> onLocated;
+		PlatformerEntity* entity = nullptr;
+		std::function<void(TimelineEntry*)> onLocated = nullptr;
 
 		AssociatedEntryArgs(PlatformerEntity* entity, std::function<void(TimelineEntry*)> onLocated) : entity(entity), onLocated(onLocated)
 		{
@@ -131,15 +125,15 @@ public:
 				Defend,
 			};
 
-			Choice choice;
+			Choice choice = Choice::Attack;
 			std::string iconResource;
 
 			SelectionMeta() : choice(Choice::Attack), iconResource("") { }
 			SelectionMeta(Choice choice, std::string iconResource) : choice(choice), iconResource(iconResource) { }
 		};
 
-		CurrentMenu currentMenu;
-		TimelineEntry* entry;
+		CurrentMenu currentMenu = CurrentMenu::Closed;
+		TimelineEntry* entry = nullptr;
 		SelectionMeta selectionMeta;
 
 		MenuStateArgs(CurrentMenu currentMenu, TimelineEntry* entry) : currentMenu(currentMenu), entry(entry), selectionMeta(SelectionMeta()) { }
@@ -148,7 +142,7 @@ public:
 
 	struct SelectionArgs
 	{
-		PlatformerEntity* target;
+		PlatformerEntity* target = nullptr;
 
 		SelectionArgs(PlatformerEntity* target) : target(target)
 		{
@@ -166,7 +160,7 @@ public:
 
 	struct AIRequestArgs
 	{
-		TimelineEntry* attackingEntry;
+		TimelineEntry* attackingEntry = nullptr;
 
 		AIRequestArgs(TimelineEntry* attackingEntry) : attackingEntry(attackingEntry)
 		{
@@ -175,7 +169,7 @@ public:
 
 	struct CastBlockedArgs
 	{
-		PlatformerEntity* target;
+		PlatformerEntity* target = nullptr;
 
 		CastBlockedArgs(PlatformerEntity* target) : target(target)
 		{
@@ -184,7 +178,7 @@ public:
 
 	struct CastInterruptArgs
 	{
-		PlatformerEntity* target;
+		PlatformerEntity* target = nullptr;
 
 		CastInterruptArgs(PlatformerEntity* target) : target(target)
 		{
@@ -193,8 +187,8 @@ public:
 
 	struct BuffAppliedArgs
 	{
-		PlatformerEntity* target;
-		Buff* buff;
+		PlatformerEntity* target = nullptr;
+		Buff* buff = nullptr;
 
 		BuffAppliedArgs(PlatformerEntity* target, Buff* buff) : target(target), buff(buff)
 		{
@@ -203,8 +197,8 @@ public:
 
 	struct BuffRemovedArgs
 	{
-		PlatformerEntity* target;
-		Buff* buff;
+		PlatformerEntity* target = nullptr;
+		Buff* buff = nullptr;
 
 		BuffRemovedArgs(PlatformerEntity* target, Buff* buff) : target(target), buff(buff)
 		{
@@ -213,7 +207,7 @@ public:
 
 	struct BuffTimeElapsedArgs
 	{
-		float dt;
+		float dt = 0.0f;
 
 		BuffTimeElapsedArgs(float dt) : dt(dt)
 		{
@@ -222,9 +216,9 @@ public:
 
 	struct ProjectileSpawnedArgs
 	{
-		PlatformerEntity* owner;
-		PlatformerEntity* target;
-		Projectile* projectile;
+		PlatformerEntity* owner = nullptr;
+		PlatformerEntity* target = nullptr;
+		Projectile* projectile = nullptr;
 
 		ProjectileSpawnedArgs(PlatformerEntity* owner, PlatformerEntity* target, Projectile* projectile) : owner(owner), target(target), projectile(projectile)
 		{
@@ -233,60 +227,88 @@ public:
 
 	struct DamageOrHealingArgs
 	{
-		PlatformerEntity* caster;
-		PlatformerEntity* target;
-		int damageOrHealing;
-		AbilityType abilityType;
+		PlatformerEntity* caster = nullptr;
+		PlatformerEntity* target = nullptr;
+		int damageOrHealing = 0;
+		AbilityType abilityType = AbilityType::Physical;
 
 		// If true, this flag will prevent buffs from modifying the damage/healing
-		bool disableBuffProcessing;
+		bool disableBuffProcessing = false;
+
+		bool overflowedMin = false;
+		bool overflowedMax = false;
 
 		DamageOrHealingArgs(
 			PlatformerEntity* caster,
 			PlatformerEntity* target,
 			int damageOrHealing,
 			AbilityType abilityType,
-			bool disableBuffProcessing = false
+			bool disableBuffProcessing = false,
+			bool overflowedMin = false,
+			bool overflowedMax = false
 		)
 			:	caster(caster),
 				target(target),
 				damageOrHealing(damageOrHealing),
 				abilityType(abilityType),
-				disableBuffProcessing(disableBuffProcessing)
+				disableBuffProcessing(disableBuffProcessing),
+				overflowedMin(overflowedMin),
+				overflowedMax(overflowedMax)
 		{
 		}
 	};
 
 	struct ManaRestoreOrDrainArgs
 	{
-		PlatformerEntity* caster;
-		PlatformerEntity* target;
-		int manaRestoreOrDrain;
-		AbilityType abilityType;
+		PlatformerEntity* caster = nullptr;
+		PlatformerEntity* target = nullptr;
+		int manaRestoreOrDrain = 0;
+		AbilityType abilityType = AbilityType::Physical;
 
 		// If true, this flag will prevent buffs from modifying the drain/restore
-		bool disableBuffProcessing;
+		bool disableBuffProcessing = false;
+		
+		bool overflowedMin = false;
+		bool overflowedMax = false;
 
-		ManaRestoreOrDrainArgs(PlatformerEntity* caster, PlatformerEntity* target, int manaRestoreOrDrain, AbilityType abilityType, bool disableBuffProcessing = false)
-			: caster(caster), target(target), manaRestoreOrDrain(manaRestoreOrDrain), abilityType(abilityType), disableBuffProcessing(disableBuffProcessing)
+		ManaRestoreOrDrainArgs(
+			PlatformerEntity* caster,
+			PlatformerEntity* target,
+			int manaRestoreOrDrain,
+			AbilityType abilityType,
+			bool disableBuffProcessing = false,
+			bool overflowedMin = false,
+			bool overflowedMax = false
+		)
+			:	caster(caster),
+				target(target),
+				manaRestoreOrDrain(manaRestoreOrDrain),
+				abilityType(abilityType),
+				disableBuffProcessing(disableBuffProcessing),
+				overflowedMin(overflowedMin),
+				overflowedMax(overflowedMax)
 		{
 		}
 	};
 
 	struct ModifiableDamageOrHealingArgs
 	{
-		PlatformerEntity* caster;
-		PlatformerEntity* target;
-		int* damageOrHealing;
-		int damageOrHealingValue;
-		int originalDamageOrHealingBeforeBuffs;
-		int originalDamageOrHealingBeforeBuffsAndStats;
-		AbilityType abilityType;
+		PlatformerEntity* caster = nullptr;
+		PlatformerEntity* target = nullptr;
+		int* damageOrHealing = nullptr;
+		int* damageOrHealingMin = nullptr;
+		int* damageOrHealingMax = nullptr;
+		int damageOrHealingValue = 0;
+		int originalDamageOrHealingBeforeBuffs = 0;
+		int originalDamageOrHealingBeforeBuffsAndStats = 0;
+		AbilityType abilityType = AbilityType::Physical;
 
 		ModifiableDamageOrHealingArgs(
 			PlatformerEntity* caster,
 			PlatformerEntity* target,
 			int* damageOrHealing,
+			int* damageOrHealingMin,
+			int* damageOrHealingMax,
 			int damageOrHealingValue,
 			int originalDamageOrHealingBeforeBuffs,
 			int originalDamageOrHealingBeforeBuffsAndStats,
@@ -295,6 +317,8 @@ public:
 			:	caster(caster),
 				target(target),
 				damageOrHealing(damageOrHealing),
+				damageOrHealingMin(damageOrHealingMin),
+				damageOrHealingMax(damageOrHealingMax),
 				damageOrHealingValue(damageOrHealingValue),
 				originalDamageOrHealingBeforeBuffs(originalDamageOrHealingBeforeBuffs),
 				originalDamageOrHealingBeforeBuffsAndStats(originalDamageOrHealingBeforeBuffsAndStats),
@@ -314,13 +338,13 @@ public:
 		}
 
 		private:
-			bool handled;
+			bool handled = false;
 	};
 	
 	struct ModifiableTimelineSpeedArgs
 	{
-		PlatformerEntity* target;
-		float* speed;
+		PlatformerEntity* target = nullptr;
+		float* speed = nullptr;
 
 		ModifiableTimelineSpeedArgs(PlatformerEntity* target, float* speed)
 			: target(target), speed(speed), handled(false)
@@ -338,12 +362,12 @@ public:
 		}
 
 		private:
-			bool handled;
+			bool handled = false;
 	};
 
 	struct CombatFinishedArgs
 	{
-		bool playerVictory;
+		bool playerVictory = false;
 
 		CombatFinishedArgs(bool playerVictory) : playerVictory(playerVictory)
 		{
@@ -352,8 +376,8 @@ public:
 
 	struct TimelineResetArgs
 	{
-		PlatformerEntity* target;
-		bool wasInterrupt;
+		PlatformerEntity* target = nullptr;
+		bool wasInterrupt = false;
 
 		TimelineResetArgs(PlatformerEntity* target, bool wasInterrupt) : target(target), wasInterrupt(wasInterrupt), handled(false) { }
 
@@ -368,7 +392,7 @@ public:
 		}
 
 		private:
-			bool handled;
+			bool handled = false;
 	};
 
 	struct RegisterTimelineEventGroupArgs
@@ -381,7 +405,7 @@ public:
 
 	struct BeforeReturnToMapArgs
 	{
-		bool defeat;
+		bool defeat = false;
 
 		BeforeReturnToMapArgs(bool defeat) : defeat(defeat) { }
 	};
@@ -423,9 +447,9 @@ public:
 	static void TriggerDamage(CombatEvents::DamageOrHealingArgs args);
 	static void TriggerHealing(CombatEvents::DamageOrHealingArgs args);
 	// Functionally, restore/drain are the same, but treat 0 differently. Drain will dislay -0, restore will display +0
-	static void TriggerManaRestoreDelt(ManaRestoreOrDrainArgs args);
+	static void TriggerManaRestoreDealt(ManaRestoreOrDrainArgs args);
 	static void TriggerManaRestore(ManaRestoreOrDrainArgs args);
-	static void TriggerManaDrainDelt(ManaRestoreOrDrainArgs args);
+	static void TriggerManaDrainDealt(ManaRestoreOrDrainArgs args);
 	static void TriggerManaDrain(ManaRestoreOrDrainArgs args);
 	static void TriggerModifyTimelineSpeed(ModifiableTimelineSpeedArgs args);
 	static void TriggerModifyDamageTaken(ModifiableDamageOrHealingArgs args);

@@ -14,8 +14,7 @@
 #include "Engine/Maps/MapLayer.h"
 #include "Engine/Maps/TileLayer.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Physics/EngineCollisionTypes.h"
-#include "Engine/SmartNode.h"
+#include "Engine/Physics/EnginePhysicsTypes.h"
 #include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
@@ -26,10 +25,15 @@ const std::string GameMap::KeyTypeCollision = "collision";
 
 using namespace cocos2d;
 
-GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserializer*> layerDeserializers, bool disableEvents)
+cocos_experimental::TMXTiledMap* GameMap::parse(std::string mapFileName)
 {
 	cocos_experimental::TMXTiledMap* mapRaw = cocos_experimental::TMXTiledMap::create(mapFileName);
 
+	return mapRaw;
+}
+
+GameMap* GameMap::deserialize(std::string mapFileName, cocos_experimental::TMXTiledMap* mapRaw, std::vector<LayerDeserializer*> layerDeserializers, bool disableEvents, bool disableBounds)
+{
 	if (mapRaw == nullptr)
 	{
 		return nullptr;
@@ -45,16 +49,15 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 		deserializedLayerMap[args.layerIndex] = args.mapLayer;
 	};
 
-	Size mapSize = Size(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
+	CSize mapSize = CSize(mapRaw->getMapSize().width * mapRaw->getTileSize().width, mapRaw->getMapSize().height * mapRaw->getTileSize().height);
 	bool isIsometric = mapRaw->getMapOrientation() == MapOrientation::Isometric;
 
 	if (isIsometric)
 	{
 		mapSize.width /= 2.0f;
 	}
-
-	// Fire event requesting the deserialization of this layer -- the appropriate deserializer class should handle it
-	for (auto next : mapRaw->getObjectGroups())
+	
+	for (TMXObjectGroup* next : mapRaw->getObjectGroups())
 	{
 		ValueMap properties = next->getProperties();
 
@@ -73,7 +76,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 			onDeserializeCallback
 		);
 
-		for (auto deserializer : layerDeserializers)
+		for (LayerDeserializer* deserializer : layerDeserializers)
 		{
 			if (deserializer->getLayerType() == layerType)
 			{
@@ -88,7 +91,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	}
 
 	// Pull out tile layers
-	for (auto next : mapRaw->getChildren())
+	for (Node* next : mapRaw->getChildren())
 	{
 		cocos_experimental::TMXLayer* tileLayer = dynamic_cast<cocos_experimental::TMXLayer*>(next);
 
@@ -99,7 +102,7 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	}
 
 	// Deserialize tiles (separate step from pulling them out because deserialization removes the child and would ruin the getChildren() iterator)
-	for (auto next : tileLayers)
+	for (cocos_experimental::TMXLayer* next : tileLayers)
 	{
 		deserializedLayerMap[next->layerIndex] = TileLayer::deserialize(next);
 	}
@@ -110,16 +113,16 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 		deserializedLayers.push_back(next.second);
 	}
 	
-	if (!isIsometric)
+	if (!disableBounds && !isIsometric)
 	{
 		MapLayer* edgeCollisionLayer = MapLayer::create({ }, "edge_collision");
 
 		const float EdgeThickness = 256.0f;
 
-		CollisionObject* topCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
-		CollisionObject* bottomCollision = CollisionObject::create(CollisionObject::createBox(Size(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
-		CollisionObject* leftCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
-		CollisionObject* rightCollision = CollisionObject::create(CollisionObject::createBox(Size(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* topCollision = CollisionObject::create(CollisionObject::createBox(CSize(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* bottomCollision = CollisionObject::create(CollisionObject::createBox(CSize(mapSize.width + EdgeThickness * 2.0f, EdgeThickness)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* leftCollision = CollisionObject::create(CollisionObject::createBox(CSize(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
+		CollisionObject* rightCollision = CollisionObject::create(CollisionObject::createBox(CSize(EdgeThickness, mapSize.height)), (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
 
 		edgeCollisionLayer->addChild(topCollision);
 		edgeCollisionLayer->addChild(leftCollision);
@@ -147,26 +150,24 @@ GameMap* GameMap::deserialize(std::string mapFileName, std::vector<LayerDeserial
 	// Create a special hud_target layer for top-level display items
 	deserializedLayers.push_back(MapLayer::create({ { MapLayer::PropertyIsHackable, Value(true) }}, "hud_target"));
 
-	GameMap* instance = new GameMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation(), disableEvents);
+	GameMap* instance = new GameMap(mapFileName, deserializedLayers, mapRaw->getMapSize(), mapRaw->getTileSize(), (MapOrientation)mapRaw->getMapOrientation(), disableEvents, disableBounds);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, Size unitSize, Size tileSize, MapOrientation orientation, bool disableEvents)
+GameMap::GameMap(std::string mapFileName, const std::vector<MapLayer*>& mapLayers, CSize unitSize, CSize tileSize, MapOrientation orientation, bool disableEvents, bool disableBounds)
 {
-	this->collisionLayers = std::vector<TileLayer*>();
 	this->mapLayers = mapLayers;
-	this->tileLayers = std::vector<TileLayer*>();
-	this->layersToSort = std::vector<TileLayer*>();
 	this->levelMapFileName = mapFileName;
 	this->mapUnitSize = unitSize;
 	this->mapTileSize = tileSize;
 	this->orientation = orientation;
 	this->disableEvents = disableEvents;
+	this->disableBounds = disableBounds;
 
-	for (auto next : this->mapLayers)
+	for (MapLayer* next : this->mapLayers)
 	{
 		this->addChild(next);
 	}
@@ -219,7 +220,7 @@ void GameMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventSpawnObjectDelegator, [=](EventCustom* eventCustom)
 	{
-		ObjectEvents::RequestObjectSpawnDelegatorArgs* args = static_cast<ObjectEvents::RequestObjectSpawnDelegatorArgs*>(eventCustom->getUserData());
+		RequestObjectSpawnDelegatorArgs* args = static_cast<RequestObjectSpawnDelegatorArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -229,7 +230,7 @@ void GameMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventBindObjectToUI, [=](EventCustom* eventCustom)
 	{
-		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventCustom->getUserData());
+		RelocateObjectArgs* args = static_cast<RelocateObjectArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -239,7 +240,7 @@ void GameMap::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventElevateObject, [=](EventCustom* eventCustom)
 	{
-		ObjectEvents::RelocateObjectArgs* args = static_cast<ObjectEvents::RelocateObjectArgs*>(eventCustom->getUserData());
+		RelocateObjectArgs* args = static_cast<RelocateObjectArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -260,14 +261,14 @@ std::string GameMap::getMapFileName()
 	return this->levelMapFileName;
 }
 
-void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
+void GameMap::spawnObject(RequestObjectSpawnDelegatorArgs* args)
 {
 	if (args == nullptr)
 	{
 		return;
 	}
 
-	ObjectEvents::RequestObjectSpawnArgs* innerArgs = args->innerArgs;
+	RequestObjectSpawnArgs* innerArgs = args->innerArgs;
 
 	if (this->mapLayers.empty() || innerArgs->objectToSpawn == nullptr)
 	{
@@ -275,16 +276,16 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 	}
 
 	bool isReentry = (innerArgs->objectToSpawn->getParent() != nullptr);
-	bool retainPosition = (innerArgs->positionMode != ObjectEvents::PositionMode::Discard);
+	bool retainPosition = (innerArgs->positionMode != PositionMode::Discard);
 
-	if (innerArgs->positionMode == ObjectEvents::PositionMode::SetToOwner)
+	if (innerArgs->positionMode == PositionMode::SetToOwner)
 	{
 		innerArgs->objectToSpawn->setPosition3D(GameUtils::getWorldCoords3D(innerArgs->spawner));
 	}
 
 	switch (innerArgs->spawnMethod)
 	{
-		case ObjectEvents::SpawnMethod::LayerBelow:
+		case SpawnMethod::LayerBelow:
 		{
 			std::vector<MapLayer*>::iterator prevIt = this->mapLayers.end();
 
@@ -294,14 +295,14 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 				{
 					if (prevIt != this->mapLayers.end())
 					{
-						GameUtils::changeParent(innerArgs->objectToSpawn, (*prevIt), retainPosition, isReentry);
+						GameUtils::changeParent(innerArgs->objectToSpawn, (*prevIt), retainPosition);
 						innerArgs->handled = true;
 
 						return;
 					}
 					else
 					{
-						GameUtils::changeParent(innerArgs->objectToSpawn, (*it), retainPosition, isReentry);
+						GameUtils::changeParent(innerArgs->objectToSpawn, (*it), retainPosition);
 						innerArgs->handled = true;
 
 						return;
@@ -313,36 +314,41 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 
 			break;
 		}
-		case ObjectEvents::SpawnMethod::TopMost:
+		case SpawnMethod::TopMost:
 		{
 			if (!this->mapLayers.empty())
 			{
-				GameUtils::changeParent(innerArgs->objectToSpawn, this->mapLayers.back(), retainPosition, isReentry);
+				GameUtils::changeParent(innerArgs->objectToSpawn, this->mapLayers.back(), retainPosition);
 				innerArgs->handled = true;
+				return;
 			}
 			
 			break;
 		}
-		case ObjectEvents::SpawnMethod::Below:
+		case SpawnMethod::Below:
 		{
 			for (auto layer : this->mapLayers)
 			{
 				if (layer == args->sourceLayer)
 				{
-					GameUtils::changeParent(innerArgs->objectToSpawn, layer, retainPosition, isReentry, 0);
+					GameUtils::changeParent(innerArgs->objectToSpawn, layer, retainPosition, 0);
 					innerArgs->handled = true;
+
+					return;
 				}
 			}
 		}
 		default:
-		case ObjectEvents::SpawnMethod::Above:
+		case SpawnMethod::Above:
 		{
 			for (auto layer : this->mapLayers)
 			{
 				if (layer == args->sourceLayer)
 				{
-					GameUtils::changeParent(innerArgs->objectToSpawn, layer, retainPosition, isReentry);
+					GameUtils::changeParent(innerArgs->objectToSpawn, layer, retainPosition);
 					innerArgs->handled = true;
+					
+					return;
 				}
 			}
 			
@@ -351,7 +357,7 @@ void GameMap::spawnObject(ObjectEvents::RequestObjectSpawnDelegatorArgs* args)
 	}
 }
 
-void GameMap::moveObjectToTopLayer(ObjectEvents::RelocateObjectArgs* args)
+void GameMap::moveObjectToTopLayer(RelocateObjectArgs* args)
 {
 	if (this->mapLayers.empty())
 	{
@@ -361,7 +367,7 @@ void GameMap::moveObjectToTopLayer(ObjectEvents::RelocateObjectArgs* args)
 	this->mapLayers.back()->addChild(UIBoundObject::create(args->relocatedObject));
 }
 
-void GameMap::moveObjectToElevateLayer(ObjectEvents::RelocateObjectArgs* args)
+void GameMap::moveObjectToElevateLayer(RelocateObjectArgs* args)
 {
 	if (this->mapLayers.empty())
 	{
@@ -415,20 +421,20 @@ void GameMap::hackerModeLayerUnfade()
 	}
 }
 
-Size GameMap::getMapSize()
+CSize GameMap::getMapSize()
 {
-	Size unitSize = this->getMapUnitSize();
-	Size tileSize = this->getMapTileSize();
+	CSize unitSize = this->getMapUnitSize();
+	CSize tileSize = this->getMapTileSize();
 
-	return Size(unitSize.width * tileSize.width, unitSize.height * tileSize.height);
+	return CSize(unitSize.width * tileSize.width, unitSize.height * tileSize.height);
 }
 
-Size GameMap::getMapUnitSize()
+CSize GameMap::getMapUnitSize()
 {
 	return this->mapUnitSize;
 }
 
-Size GameMap::getMapTileSize()
+CSize GameMap::getMapTileSize()
 {
 	return this->mapTileSize;
 }
@@ -460,6 +466,11 @@ void GameMap::setCollisionLayersVisible(bool isVisible)
 std::vector<TileLayer*> GameMap::getCollisionLayers()
 {
 	return this->collisionLayers;
+}
+
+std::vector<MapLayer*> GameMap::getMapLayers()
+{
+	return this->mapLayers;
 }
 
 void GameMap::isometricZSort()

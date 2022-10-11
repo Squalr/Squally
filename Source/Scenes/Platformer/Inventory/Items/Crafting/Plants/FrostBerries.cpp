@@ -33,22 +33,17 @@ Item* FrostBerries::clone()
 	return FrostBerries::create();
 }
 
-std::string FrostBerries::getItemName()
-{
-	return FrostBerries::SaveKey;
-}
-
 LocalizedString* FrostBerries::getString()
 {
 	return Strings::Items_Crafting_Plants_FrostBerries::create();
 }
 
-std::string FrostBerries::getIconResource()
+const std::string& FrostBerries::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Plants_FrostBerries;
 }
 
-std::string FrostBerries::getSerializationKey()
+const std::string& FrostBerries::getIdentifier()
 {
 	return FrostBerries::SaveKey;
 }

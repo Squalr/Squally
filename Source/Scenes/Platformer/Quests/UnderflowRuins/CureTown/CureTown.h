@@ -34,8 +34,8 @@ private:
 	void runCinematicSequence();
 	void setPreText();
 
-	Guano* guano;
-	Hera* hera;
-	Scrappy* scrappy;
-	Squally* squally;
+	Guano* guano = nullptr;
+	Hera* hera = nullptr;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 };

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier3/ConchHelmPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* ConchHelm::clone()
 	return ConchHelm::create();
 }
 
-std::string ConchHelm::getItemName()
-{
-	return ConchHelm::SaveKey;
-}
-
 LocalizedString* ConchHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_ConchHelm::create();
 }
 
-std::string ConchHelm::getIconResource()
+const std::string& ConchHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_ConchHelm;
 }
 
-std::string ConchHelm::getSerializationKey()
+const std::string& ConchHelm::getIdentifier()
 {
 	return ConchHelm::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string ConchHelm::getSerializationKey()
 Vec2 ConchHelm::getDisplayOffset()
 {
 	return Vec2(4.0f, -6.0f);
+}
+
+Recipe* ConchHelm::getRecipe()
+{
+	return ConchHelmPlans::create();
 }

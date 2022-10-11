@@ -17,5 +17,5 @@ protected:
 private:
 	typedef MinMaxPool super;
 
-	CurrencyPool* currencyPool;
+	CurrencyPool* currencyPool = nullptr;
 };

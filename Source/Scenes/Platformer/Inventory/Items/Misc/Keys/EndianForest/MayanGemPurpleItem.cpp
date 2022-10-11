@@ -33,22 +33,17 @@ Item* MayanGemPurpleItem::clone()
 	return MayanGemPurpleItem::create();
 }
 
-std::string MayanGemPurpleItem::getItemName()
-{
-	return MayanGemPurpleItem::SaveKey;
-}
-
 LocalizedString* MayanGemPurpleItem::getString()
 {
 	return Strings::Items_Misc_Keys_PurpleGem::create();
 }
 
-std::string MayanGemPurpleItem::getIconResource()
+const std::string& MayanGemPurpleItem::getIconResource()
 {
 	return ItemResources::Keys_PurpleGem;
 }
 
-std::string MayanGemPurpleItem::getSerializationKey()
+const std::string& MayanGemPurpleItem::getIdentifier()
 {
 	return MayanGemPurpleItem::SaveKey;
 }

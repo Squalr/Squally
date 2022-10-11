@@ -9,7 +9,7 @@ const std::string TerrainEvents::EventResolveOverlapConflicts = "EVENT_RESOLVE_O
 
 void TerrainEvents::TriggerResolveOverlapConflicts(TerrainOverlapArgs args)
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		TerrainEvents::EventResolveOverlapConflicts,
 		&args
 	);

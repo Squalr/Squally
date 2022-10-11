@@ -2,9 +2,8 @@
 #include <string>
 
 #include "Engine/Hackables/HackableBase.h"
-#include "Engine/Utils/HackUtils.h"
 
-class HackableCode;
+class Clippy;
 class LocalizedString;
 
 class HackActivatedAbility : public HackableBase
@@ -19,7 +18,7 @@ public:
 		HackBarColor hackBarColor,
 		std::string iconResource,
 		LocalizedString* name,
-		HackablePreview* hackablePreview,
+		LazyNode<HackablePreview>* hackablePreview,
 		Clippy* clippy = nullptr);
 
 	void activate();
@@ -34,7 +33,7 @@ protected:
 		HackBarColor hackBarColor,
 		std::string iconResource,
 		LocalizedString* name,
-		HackablePreview* hackablePreview,
+		LazyNode<HackablePreview>* hackablePreview,
 		Clippy* clippy = nullptr);
 	virtual ~HackActivatedAbility();
 	
@@ -44,6 +43,6 @@ private:
 	typedef HackableBase super;
 	friend class GlobalHackAttributeContainer;
 
-	std::function<void()> onActivate;
-	std::function<void()> onDeactivate;
+	std::function<void()> onActivate = nullptr;
+	std::function<void()> onDeactivate = nullptr;
 };

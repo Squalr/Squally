@@ -46,22 +46,17 @@ Item* OrnateHat::clone()
 	return OrnateHat::create();
 }
 
-std::string OrnateHat::getItemName()
-{
-	return OrnateHat::SaveKey;
-}
-
 LocalizedString* OrnateHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_OrnateHat::create();
 }
 
-std::string OrnateHat::getIconResource()
+const std::string& OrnateHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_OrnateHat;
 }
 
-std::string OrnateHat::getSerializationKey()
+const std::string& OrnateHat::getIdentifier()
 {
 	return OrnateHat::SaveKey;
 }
@@ -69,4 +64,9 @@ std::string OrnateHat::getSerializationKey()
 Vec2 OrnateHat::getDisplayOffset()
 {
 	return Vec2(-22.0f, -6.0f);
+}
+
+Recipe* OrnateHat::getRecipe()
+{
+	return nullptr;
 }

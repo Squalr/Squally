@@ -11,7 +11,7 @@
 #include "Engine/Utils/StrUtils.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 
@@ -30,9 +30,9 @@ EdgePortal* EdgePortal::create(ValueMap& properties)
 	return instance;
 }
 
-EdgePortal::EdgePortal(ValueMap& properties) : super(properties, Size(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
+EdgePortal::EdgePortal(ValueMap& properties) : super(properties, CSize(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
 {
-	Size arrowHintSize = Size(properties.at(GameObject::MapKeyWidth).asFloat() + 768.0f, properties.at(GameObject::MapKeyHeight).asFloat() + 256.0f);
+	CSize arrowHintSize = CSize(properties.at(GameObject::MapKeyWidth).asFloat() + 768.0f, properties.at(GameObject::MapKeyHeight).asFloat() + 256.0f);
 	this->edgeArrows = std::vector<Sprite*>();
 	this->setInteractType(InteractType::Collision);
 	this->arrowHintCollision = CollisionObject::create(CollisionObject::createBox(arrowHintSize), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
@@ -134,17 +134,22 @@ void EdgePortal::initializeListeners()
 		}
 	}
 
-	this->arrowHintCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData collisionData)
+	this->arrowHintCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionData collisionData)
 	{
+		if (this->getIsLocked() || this->getIsDisabled())
+		{
+			return CollisionResult::DoNothing;
+		}
+
 		for (auto arrow : this->edgeArrows)
 		{
 			arrow->runAction(FadeTo::create(0.25f, 255));
 		}
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->arrowHintCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData collisionData)
+	this->arrowHintCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionData collisionData)
 	{
 		if (!this->arrowHintCollision->hasCollisions())
 		{
@@ -154,6 +159,6 @@ void EdgePortal::initializeListeners()
 			}
 		}
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier5/WizardsHatWaterPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* WizardsHatWater::clone()
 	return WizardsHatWater::create();
 }
 
-std::string WizardsHatWater::getItemName()
-{
-	return WizardsHatWater::SaveKey;
-}
-
 LocalizedString* WizardsHatWater::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_WizardsHatWater::create();
 }
 
-std::string WizardsHatWater::getIconResource()
+const std::string& WizardsHatWater::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_WizardsHatWater;
 }
 
-std::string WizardsHatWater::getSerializationKey()
+const std::string& WizardsHatWater::getIdentifier()
 {
 	return WizardsHatWater::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string WizardsHatWater::getSerializationKey()
 Vec2 WizardsHatWater::getDisplayOffset()
 {
 	return Vec2(-20.0f, -8.0f);
+}
+
+Recipe* WizardsHatWater::getRecipe()
+{
+	return WizardsHatWaterPlans::create();
 }

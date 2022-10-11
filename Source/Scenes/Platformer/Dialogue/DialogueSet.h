@@ -4,7 +4,6 @@
 #include "Events/DialogueEvents.h"
 
 class DialogueOption;
-class LocalizedString;
 
 class DialogueSet : public SmartNode
 {
@@ -24,7 +23,7 @@ private:
 	typedef SmartNode super;
 
 	DialogueEvents::DialogueVisualArgs args;
-	cocos2d::Node* optionsNode;
+	cocos2d::Node* optionsNode = nullptr;
 
 	std::vector<std::tuple<DialogueOption*, float>> dialogueOptions;
 };

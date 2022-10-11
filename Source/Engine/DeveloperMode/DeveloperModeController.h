@@ -1,23 +1,15 @@
 #pragma once
 
-#include "Engine/Events/DeveloperModeEvents.h"
 #include "Engine/GlobalNode.h"
-
-namespace cocos2d
-{
-	class Event;
-}
 
 class DeveloperModeController : public GlobalNode
 {
 public:
-	static void registerGlobalNode();
-
+	static void RegisterGlobalNode();
 	static bool isDeveloperModeEnabled();
 	static int getDebugLevel();
 	
 	static volatile bool IsDeveloperBuild;
-	static volatile bool ShowFPSInfo;
 
 protected:
 	DeveloperModeController();
@@ -31,8 +23,7 @@ protected:
 private:
 	typedef GlobalNode super;
 
+	static DeveloperModeController* Instance;
 	static int CurrentDebugLevel;
-
-	static DeveloperModeController* instance;
 	static int MaxDebugLevel;
 };

@@ -21,15 +21,7 @@ AutoCard::AutoCard(int defaultAttack)
 {
     this->currentAttack = defaultAttack;
     this->cardNode = Node::create();
-	this->binaryCardMap = std::map<int, Card*>();
-	this->decimalCardMap = std::map<int, Card*>();
-	this->hexCardMap = std::map<int, Card*>();
-	this->binaryCardFactory = std::map<int, std::function<Card*()>>();
-	this->decimalCardFactory = std::map<int, std::function<Card*()>>();
-	this->hexCardFactory = std::map<int, std::function<Card*()>>();
-    this->activeCard = nullptr;
     this->cardScale = Card::cardScale;
-    this->displayType = DisplayType::Binary;
 
 	for (auto next : CardList::getInstance()->cardListByName)
     {

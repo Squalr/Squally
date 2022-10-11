@@ -4,6 +4,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Localization/ConstantString.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -12,7 +13,7 @@
 #include "Objects/Platformer/Combat/Projectiles/ShadowBolt/ShadowBoltGenericPreview.h"
 #include "Objects/Platformer/Combat/Projectiles/ShadowBolt/ShadowBoltSpeedPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 
 #include "Resources/ObjectResources.h"
@@ -36,7 +37,7 @@ ShadowBolt* ShadowBolt::create(PlatformerEntity* owner, PlatformerEntity* target
 }
 
 ShadowBolt::ShadowBolt(PlatformerEntity* owner, PlatformerEntity* target)
-	: super(owner, target, true, Node::create(), Size(32.0f, 32.0f))
+	: super(owner, target, true, Node::create(), CSize(32.0f, 32.0f))
 {
 	this->shadowBoltAnim = SmartAnimationSequenceNode::create();
 
@@ -102,7 +103,7 @@ void ShadowBolt::registerHackables()
 				Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_ApplySpeed::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_SpellImpactPurple,
-				ShadowBoltSpeedPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return ShadowBoltSpeedPreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterEax::create() },
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterXmm0::create() },
@@ -133,7 +134,7 @@ void ShadowBolt::registerHackables()
 	auto shadowBoltFunc = &ShadowBolt::setShadowBoltSpeed;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)shadowBoltFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}

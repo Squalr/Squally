@@ -15,22 +15,24 @@ class MapTitleBanner : public GameObject
 public:
 	static MapTitleBanner* create(LocalizedString* bannerString);
 
-private:
-	typedef GameObject super;
+protected:
 	MapTitleBanner(LocalizedString* bannerString);
-	~MapTitleBanner();
+	virtual ~MapTitleBanner();
 
 	void onEnter() override;
 	void initializePositions() override;
 
-	LocalizedString* bannerString;
-	LocalizedLabel* bannerLabel;
-	cocos2d::Node* contentNode;
-	cocos2d::DrawNode* bannerBarTop;
-	cocos2d::DrawNode* bannerBarBottom;
-	Hud* hud;
+private:
+	typedef GameObject super;
 
-	bool hasRelocated;
+	LocalizedString* bannerString = nullptr;
+	LocalizedLabel* bannerLabel = nullptr;
+	cocos2d::Node* contentNode = nullptr;
+	cocos2d::DrawNode* bannerBarTop = nullptr;
+	cocos2d::DrawNode* bannerBarBottom = nullptr;
+	Hud* hud = nullptr;
+
+	bool hasRelocated = false;
 
 	static const float BannerBarHeight;
 };

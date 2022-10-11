@@ -48,8 +48,6 @@ RadialEntry* RadialEntry::create(
 RadialEntry::RadialEntry(ClickableTextNode* entry) : super()
 {
 	this->entry = entry;
-	this->iconResource = "";
-	this->allowInteractionEdits = true;
 
 	this->addChild(this->entry);
 }
@@ -58,7 +56,7 @@ RadialEntry::~RadialEntry()
 {
 }
 
-std::string RadialEntry::getIconResource()
+const std::string& RadialEntry::getIconResource()
 {
 	return this->iconResource;
 }
@@ -90,7 +88,7 @@ void RadialEntry::interact()
 	this->entry->interact();
 }
 
-void RadialEntry::setContentSize(const Size& size)
+void RadialEntry::setContentSize(const CSize& size)
 {
 	this->entry->setContentSize(size);
 }
@@ -181,7 +179,7 @@ void RadialEntry::toggleAllowInteractionEdits(bool allowInteractionEdits)
 	this->allowInteractionEdits = allowInteractionEdits;
 }
 
-void RadialEntry::setClickModifier(EventKeyboard::KeyCode modifier)
+void RadialEntry::setClickModifier(InputEvents::KeyCode modifier)
 {
 	this->entry->setClickModifier(modifier);
 }

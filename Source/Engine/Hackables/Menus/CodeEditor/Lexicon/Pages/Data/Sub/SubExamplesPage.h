@@ -2,11 +2,6 @@
 
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/LexiconPage.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class LocalizedLabel;
 class ClickableNode;
 class ClickableTextNode;
@@ -26,32 +21,33 @@ protected:
 	
 private:
 	typedef LexiconPage super;
+
 	SubExamplesPage();
-	~SubExamplesPage();
+	virtual ~SubExamplesPage();
 
 	void resetState();
 
-	LocalizedLabel* examplesLabel;
-	RegisterBlock* registerBlock;
-	ClickableTextNode* resetButton;
-	ClickableTextNode* subRegImmButton;
-	ClickableTextNode* subRegRegButton;
-	ClickableTextNode* subPtrImmButton;
-	ClickableTextNode* subPtrRegButton;
-	ClickableTextNode* subPtrOffsetImmButton;
-	ClickableTextNode* subPtrOffsetRegButton;
-	ClickableNode* remainderHelpButton;
-	ClickableNode* pointerHelpButton;
-	ClickableNode* offsetHelp4Button;
-	ClickableNode* offsetHelp8Button;
-	TextPanel* textPanelRemainderHelp;
-	TextPanel* textPanelPointerHelp;
-	TextPanel* textPanelOffsetHelp4;
-	TextPanel* textPanelOffsetHelp8;
-	LocalizedLabel* subRegImmLabel;
-	LocalizedLabel* subRegRegLabel;
-	LocalizedLabel* subPtrImmLabel;
-	LocalizedLabel* subPtrRegLabel;
-	LocalizedLabel* subPtrOffsetImmLabel;
-	LocalizedLabel* subPtrOffsetRegLabel;
+	LocalizedLabel* examplesLabel = nullptr;
+	RegisterBlock* registerBlock = nullptr;
+	ClickableTextNode* resetButton = nullptr;
+	ClickableTextNode* subRegImmButton = nullptr;
+	ClickableTextNode* subRegRegButton = nullptr;
+	ClickableTextNode* subPtrImmButton = nullptr;
+	ClickableTextNode* subPtrRegButton = nullptr;
+	ClickableTextNode* subPtrOffsetImmButton = nullptr;
+	ClickableTextNode* subPtrOffsetRegButton = nullptr;
+	ClickableNode* remainderHelpButton = nullptr;
+	ClickableNode* pointerHelpButton = nullptr;
+	ClickableNode* offsetHelp4Button = nullptr;
+	ClickableNode* offsetHelp8Button = nullptr;
+	TextPanel* textPanelRemainderHelp = nullptr;
+	TextPanel* textPanelPointerHelp = nullptr;
+	TextPanel* textPanelOffsetHelp4 = nullptr;
+	TextPanel* textPanelOffsetHelp8 = nullptr;
+	LocalizedLabel* subRegImmLabel = nullptr;
+	LocalizedLabel* subRegRegLabel = nullptr;
+	LocalizedLabel* subPtrImmLabel = nullptr;
+	LocalizedLabel* subPtrRegLabel = nullptr;
+	LocalizedLabel* subPtrOffsetImmLabel = nullptr;
+	LocalizedLabel* subPtrOffsetRegLabel = nullptr;
 };

@@ -32,10 +32,6 @@ Buff::Buff(PlatformerEntity* caster, PlatformerEntity* target, std::string buffI
 	this->iconContainer = Node::create();
 	this->buffGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->buffIcon = Sprite::create(buffIconResource);
-	this->hackables = std::vector<HackableCode*>();
-	this->elapsedTime = 0.0f;
-	this->asyncElapsedTime = 0.0f;
-	this->wasRemoved = false;
 	this->isBuffIconPresent = !buffIconResource.empty();
 
 	this->iconContainer->setVisible(this->isBuffIconPresent);
@@ -87,7 +83,7 @@ void Buff::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventBuffTimeElapsed, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::BuffTimeElapsedArgs* args = static_cast<CombatEvents::BuffTimeElapsedArgs*>(eventCustom->getUserData());
+		CombatEvents::BuffTimeElapsedArgs* args = static_cast<CombatEvents::BuffTimeElapsedArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -97,7 +93,7 @@ void Buff::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventModifyTimelineSpeed, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::ModifiableTimelineSpeedArgs* args = static_cast<CombatEvents::ModifiableTimelineSpeedArgs*>(eventCustom->getUserData());
+		CombatEvents::ModifiableTimelineSpeedArgs* args = static_cast<CombatEvents::ModifiableTimelineSpeedArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target == this->owner && !args->isHandled())
 		{
@@ -107,7 +103,7 @@ void Buff::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(CombatEvents::EventEntityTimelineReset, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::TimelineResetArgs* args = static_cast<CombatEvents::TimelineResetArgs*>(eventCustom->getUserData());
+		CombatEvents::TimelineResetArgs* args = static_cast<CombatEvents::TimelineResetArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->target == this->owner)
 		{
@@ -171,46 +167,46 @@ void Buff::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* spee
 
 void Buff::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
 }
 
 void Buff::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
 }
 
 void Buff::onAfterDamageTaken(CombatEvents::DamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
 }
 
 void Buff::onAfterDamageDealt(CombatEvents::DamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
 }
 
 void Buff::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
 }
 
 void Buff::onBeforeHealingDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageOrHealingPtr] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealingValue);
 }
 
 void Buff::onAfterHealingTaken(CombatEvents::DamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
 }
 
 void Buff::onAfterHealingDealt(CombatEvents::DamageOrHealingArgs* damageOrHealing)
 {
-	this->HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
+	Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing] = Value(damageOrHealing->damageOrHealing);
 }
 
 void Buff::onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset)
@@ -224,7 +220,7 @@ void Buff::unregisterHackables()
 		return;
 	}
 
-	for (auto next : this->hackables)
+	for (HackableCode* next : this->hackables)
 	{
 		this->owner->unregisterCode(next);
 	}

@@ -62,14 +62,14 @@ public:
 	void setIsLastInChapter();
 	bool getIsLastInChapter();
 
-	cocos2d::Node* entityPreviewNode;
+	cocos2d::Node* entityPreviewNode = nullptr;
 	std::string backgroundResourceFile;
 	std::string enemyAnalyticsIdentifier;
 	cocos2d::Vec2 avatarOffset;
-	Strategy strategy;
-	std::function<void(Result)> onRoundEnd;
-	StateOverride* stateOverride;
-	Card::CardStyle cardStyle;
+	Strategy strategy = Strategy::Random;
+	std::function<void(Result)> onRoundEnd = nullptr;
+	StateOverride* stateOverride = nullptr;
+	Card::CardStyle cardStyle = Card::CardStyle::Shadow;
 	std::vector<TutorialBase*> tutorials;
 
 	static const std::string winsPrefix;
@@ -84,5 +84,5 @@ private:
 	static CardData* getDecimalCardForAttack(int attack);
 	static CardData* getHexCardForAttack(int attack);
 
-	bool isLastInChapter;
+	bool isLastInChapter = false;
 };

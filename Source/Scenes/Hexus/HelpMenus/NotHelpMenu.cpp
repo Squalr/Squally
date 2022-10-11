@@ -32,7 +32,7 @@ NotHelpMenu* NotHelpMenu::create()
 
 NotHelpMenu::NotHelpMenu()
 {
-	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_Inverse::create(), Size(1200.0f, 0.0f));
+	this->description = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Hexus_CardDescriptionsLong_Inverse::create(), CSize(1200.0f, 0.0f));
 	this->notCard = Card::create(Card::CardStyle::Earth, CardList::getInstance()->cardListByName.at(CardKeys::Inverse));
 	this->previewCard = ToggleCard::create(ToggleCard::ToggleModeLeftRight::LeftRight);
 	this->attackFrame = Sprite::create(HexusResources::HelperTextFrame);

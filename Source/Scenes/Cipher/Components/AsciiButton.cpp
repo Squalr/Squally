@@ -7,7 +7,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Events/CipherEvents.h"
-#include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
@@ -30,11 +30,11 @@ AsciiButton::AsciiButton()
 	LocalizedLabel*	asciiLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Cipher_Ascii::create());
 	LocalizedLabel*	asciiLabelHover = asciiLabel->clone();
 
-	asciiLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	asciiLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	asciiLabel->enableGlow(Color4B::BLACK);
 
 	asciiLabelHover->setColor(Color3B::YELLOW);
-	asciiLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	asciiLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	asciiLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->asciiButton = ClickableTextNode::create(
@@ -59,9 +59,9 @@ void AsciiButton::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->asciiButton->setPosition(Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter + 448.0f, visibleSize.height / 2.0f + 420.0f));
+	this->asciiButton->setPosition(Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter + 448.0f, visibleSize.height / 2.0f + 420.0f));
 }
 
 void AsciiButton::initializeListeners()

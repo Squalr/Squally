@@ -24,7 +24,7 @@ Werewolf::Werewolf(ValueMap& properties) : super(properties,
 	Werewolf::MapKey,
 	EntityResources::Enemies_CastleValgrind_Werewolf_Animations,
 	EntityResources::Enemies_CastleValgrind_Werewolf_Emblem,
-	Size(196.0f, 512.0f),
+	CSize(196.0f, 512.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

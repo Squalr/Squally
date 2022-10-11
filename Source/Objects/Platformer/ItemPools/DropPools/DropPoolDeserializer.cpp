@@ -35,6 +35,10 @@ DropPoolDeserializer::DropPoolDeserializer() : super(DropPoolDeserializer::MapKe
 	this->deserializers[DropPoolURGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolURGeneric::create(properties); };
 	this->deserializers[DropPoolUROsiris::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolUROsiris::create(properties); };
 	this->deserializers[DropPoolURWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolURWeak::create(properties); };
+
+	// DM
+	this->deserializers[DropPoolDMGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolDMGeneric::create(properties); };
+	this->deserializers[DropPoolDMWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolDMWeak::create(properties); };
 }
 
 DropPoolDeserializer::~DropPoolDeserializer()

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier7/PirateHatPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* PirateHat::clone()
 	return PirateHat::create();
 }
 
-std::string PirateHat::getItemName()
-{
-	return PirateHat::SaveKey;
-}
-
 LocalizedString* PirateHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_PirateHat::create();
 }
 
-std::string PirateHat::getIconResource()
+const std::string& PirateHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_PirateHat;
 }
 
-std::string PirateHat::getSerializationKey()
+const std::string& PirateHat::getIdentifier()
 {
 	return PirateHat::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string PirateHat::getSerializationKey()
 Vec2 PirateHat::getDisplayOffset()
 {
 	return Vec2(-12.0f, 2.0f);
+}
+
+Recipe* PirateHat::getRecipe()
+{
+	return PirateHatPlans::create();
 }

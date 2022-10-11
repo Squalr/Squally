@@ -14,11 +14,12 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
-#include "Entities/Platformer/PlatformerFriendly.h"
+#include "Entities/Platformer/PlatformerHelper.h"
+#include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Events/SwitchEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FXResources.h"
@@ -39,20 +40,19 @@ LifeStone* LifeStone::create(ValueMap& properties)
 	return instance;
 }
 
-LifeStone::LifeStone(ValueMap& properties) : super(properties, InteractObject::InteractType::Collision, Size(192.0f, 440.0f), Vec2::ZERO)
+LifeStone::LifeStone(ValueMap& properties) : super(properties, InteractObject::InteractType::Collision, CSize(192.0f, 440.0f), Vec2::ZERO)
 {
 	this->lifeStone = Sprite::create(ObjectResources::Interactive_LifeStone);
 	this->healAnimation = SmartAnimationSequenceNode::create();
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Heal4);
-	this->isAnimating = false;
 
-	static bool runOnce = true;
+	static bool RunOnce = true;
 
-	if (runOnce)
+	if (RunOnce)
 	{
-		runOnce = false;
+		RunOnce = false;
 
-		SmartAnimationSequenceNode::primeCache(FXResources::Heal_Heal_0000);
+		SmartAnimationSequenceNode::PrimeCache(FXResources::Heal_Heal_0000);
 	}
 	
 	this->addChild(this->lifeStone);
@@ -75,14 +75,14 @@ void LifeStone::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->healAnimation));
+	ObjectEvents::TriggerElevateObject(RelocateObjectArgs(this->healAnimation));
 }
 
 void LifeStone::initializePositions()
 {
 	super::initializePositions();
 
-	this->lifeStone->setPosition(Vec2(0.0f, 0.0f));
+	this->lifeStone->setPosition(Vec2(0.0f, -12.0f));
 	this->healAnimation->setPosition(Vec2(0.0f, -96.0f));
 }
 
@@ -91,21 +91,29 @@ void LifeStone::initializeListeners()
 	super::initializeListeners();
 }
 
-void LifeStone::onInteract()
+void LifeStone::onInteract(PlatformerEntity* interactingEntity)
 {
-	super::onInteract();
+	super::onInteract(interactingEntity);
 
 	this->runHealAnimation();
 
 	PlatformerEvents::TriggerSaveRespawn(PlatformerEvents::SaveRespawnArgs(this->getUniqueIdentifier()));
-
-	ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([=](PlatformerFriendly* entity)
+	
+	ObjectEvents::QueryObject<Squally>([&](Squally* squally)
 	{
-		entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		squally->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{
 			healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
 		});
-	}), PlatformerFriendly::PlatformerFriendlyTag);
+	}, Squally::MapKey);
+	
+	ObjectEvents::QueryObjects<PlatformerHelper>([&](PlatformerHelper* entity)
+	{
+		entity->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		{
+			healthBehavior->setHealth(healthBehavior->getMaxHealth(), false);
+		});
+	}, Squally::TeamTag);
 }
 
 void LifeStone::onEndCollision()

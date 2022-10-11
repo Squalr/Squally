@@ -2,7 +2,6 @@
 
 #include "Engine/SmartNode.h"
 
-class ItemPool;
 class Item;
 class Inventory;
 
@@ -26,7 +25,7 @@ public:
 	ItemChance* clone();
 
 	Item* getItem();
-	float calculateProbability(std::vector<Inventory*> inventories);
+	float calculateProbability(const std::vector<Inventory*>& inventories);
 	Probability getProbability();
 
 protected:
@@ -36,6 +35,6 @@ protected:
 private:
 	typedef SmartNode super;
 
-	Item* item;
+	Item* item = nullptr;
 	Probability probability;
 };

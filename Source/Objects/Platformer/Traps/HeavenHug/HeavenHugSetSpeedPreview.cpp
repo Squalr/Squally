@@ -38,6 +38,10 @@ HeavenHugSetSpeedPreview::HeavenHugSetSpeedPreview()
 	this->assemblyTextNode->addChild(this->eax400Height);
 }
 
+HeavenHugSetSpeedPreview::~HeavenHugSetSpeedPreview()
+{
+}
+
 HackablePreview* HeavenHugSetSpeedPreview::clone()
 {
 	return HeavenHugSetSpeedPreview::create();

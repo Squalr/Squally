@@ -28,6 +28,10 @@ CatapultGenericPreview::CatapultGenericPreview()
 	this->previewNode->addChild(this->previewCatapult);
 }
 
+CatapultGenericPreview::~CatapultGenericPreview()
+{
+}
+
 HackablePreview* CatapultGenericPreview::clone()
 {
 	return CatapultGenericPreview::create();

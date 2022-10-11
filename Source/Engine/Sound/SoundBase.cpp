@@ -1,36 +1,31 @@
 #include "SoundBase.h"
 
-#include "cocos/audio/include/AudioEngine.h"
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCDirector.h"
 
+#include <SFML/Audio.hpp>
+
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/SceneEvents.h"
+#include "Engine/Events/SoundEvents.h"
+#include "Engine/Sound/SoundPool.h"
 #include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
 using namespace cocos2d;
 using namespace cocos_experimental;
 
-const int SoundBase::INVALID_ID = -1;
+const int SoundBase::InvalidSoundId = -1;;
 const std::string SoundBase::KeyScheduleFadeOutAudio = "SCHEDULE_KEY_FADE_OUT_AUDIO";
 
 SoundBase::SoundBase(ValueMap& properties, std::string soundResource) : super(properties)
 {
-	this->activeTrackId = SoundBase::INVALID_ID;
-	this->soundResource = soundResource;
-	this->enableCameraDistanceFade = false;
-	this->isFading = false;
-	this->hasVolumeOverride = false;
-	this->fadeMultiplier = 1.0f;
-	this->distanceMultiplier = 1.0f;
-	this->customMultiplier = 1.0f;
-	this->onFadeOutCallback = nullptr;
-	this->destroyOnFadeOut = false;
+	this->setSoundResource(soundResource);
 }
 
 SoundBase::~SoundBase()
@@ -48,21 +43,20 @@ void SoundBase::update(float dt)
 {
 	super::update(dt);
 
-	if (this->isFading)
+	if (this->soundRef != nullptr && this->isFading)
 	{
-		AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
+		sf::SoundSource::Status status = this->soundRef->getStatus();
 
-		switch (state)
+		switch (status)
 		{
 			default:
-			case AudioEngine::AudioState::ERROR:
-			case AudioEngine::AudioState::INITIALIZING:
-			case AudioEngine::AudioState::PAUSED:
+			case sf::SoundSource::Status::Paused:
+			case sf::SoundSource::Status::Stopped:
 			{
 				// Not playing, do nothing
 				break;
 			}
-			case AudioEngine::AudioState::PLAYING:
+			case sf::SoundSource::Status::Playing:
 			{
 				const float fadeDuration = 1.0f;
 				
@@ -100,88 +94,85 @@ void SoundBase::play(bool repeat, float startDelay)
 	this->isFading = false;
 	this->fadeMultiplier = 1.0f;
 
-	float volume = this->getVolume();
+	this->runAction(Sequence::create(
+		DelayTime::create(startDelay),
+		CallFunc::create([=]()
+		{
+			this->stop();
 
-	if (startDelay <= 0.0f)
-	{
-		this->activeTrackId = AudioEngine::play2d(this->soundResource, repeat, volume);
-	}
-	else
-	{
-		this->runAction(Sequence::create(
-			DelayTime::create(startDelay),
-			CallFunc::create([=]()
+			this->soundId = SoundPool::getInstance()->validateSoundId(soundId, soundRef);
+			
+			if (this->soundRef == nullptr)
 			{
-				this->activeTrackId = AudioEngine::play2d(this->soundResource, repeat, volume);
-			}),
-			nullptr
-		));
-	}
+				this->soundId = SoundPool::getInstance()->allocSound(this->getSoundResource(), this->soundRef);
+			}
+			
+			if (this->soundRef != nullptr)
+			{
+				float volume = this->getVolume();
+
+				this->soundRef->setLoop(repeat);
+				this->soundRef->setVolume(volume);
+				this->soundRef->play();
+			}
+		}),
+		nullptr
+	));
 }
 
 void SoundBase::unfreeze()
 {
 	this->fadeMultiplier = 1.0f;
 
-	AudioEngine::setVolume(this->activeTrackId, this->getVolume());
-	AudioEngine::resume(this->activeTrackId);
+	if (this->soundRef != nullptr)
+	{
+		this->soundRef->setVolume(this->getVolume());
+		this->soundRef->play();
+	}
 }
 
 bool SoundBase::isPlaying()
 {
-	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
-
-	switch (state)
-	{
-		case AudioEngine::AudioState::INITIALIZING:
-		case AudioEngine::AudioState::PLAYING:
-		{
-			return true;
-		}
-		case AudioEngine::AudioState::ERROR:
-		case AudioEngine::AudioState::PAUSED:
-		default:
-		{
-			return false;
-		}
-	}
+	return this->soundRef != nullptr && this->soundRef->getStatus() == sf::SoundSource::Status::Playing;
 }
 
 void SoundBase::freeze()
 {
-	AudioEngine::pause(this->activeTrackId);
+	if (this->soundRef != nullptr)
+	{
+		this->soundRef->pause();
+	}
 }
 
 void SoundBase::stop()
 {
-	AudioEngine::stop(this->activeTrackId);
+	if (this->soundRef != nullptr && this->soundRef->getStatus() == sf::Sound::Status::Playing)
+	{
+		this->soundRef->stop();
+	}
 }
 
 void SoundBase::stopAndFadeOut(std::function<void()> onFadeOutCallback, bool hasPriority)
 {
-	if (this->isFading && !hasPriority)
+	if (this->soundRef == nullptr || (this->isFading && !hasPriority))
 	{
 		return;
 	}
 
-	AudioEngine::AudioState state = AudioEngine::getState(this->activeTrackId);
-
-	switch (state)
+	switch (this->soundRef->getStatus())
 	{
 		default:
-		case AudioEngine::AudioState::ERROR:
-		case AudioEngine::AudioState::INITIALIZING:
-		case AudioEngine::AudioState::PAUSED:
+		case sf::SoundSource::Status::Paused:
+		case sf::SoundSource::Status::Stopped:
 		{
 			// Not playing, do nothing
 			if (this->onFadeOutCallback != nullptr)
 			{
 				this->onFadeOutCallback();
 			}
-			
 			break;
 		}
-		case AudioEngine::AudioState::PLAYING:
+		case sf::SoundSource::Status::Playing:
 		{
 			this->isFading = true;
 			this->onFadeOutCallback = onFadeOutCallback;
@@ -200,26 +191,29 @@ void SoundBase::setSoundResource(std::string soundResource)
 	this->soundResource = soundResource;
 }
 
-std::string SoundBase::getSoundResource()
+std::string SoundBase::getSoundResource() const
 {
 	return this->soundResource;
 }
 
 void SoundBase::updateVolume()
 {
-	if (this->hasVolumeOverride)
+	if (this->soundRef == nullptr || this->hasVolumeOverride)
 	{
 		return;
 	}
 
-	AudioEngine::setVolume(this->activeTrackId, this->getVolume());
+	this->soundRef->setVolume(this->getVolume());
 }
 
 void SoundBase::setVolumeOverride(float volume)
 {
 	this->hasVolumeOverride = true;
 
-	AudioEngine::setVolume(this->activeTrackId, volume);
+	if (this->soundRef != nullptr)
+	{
+		this->soundRef->setVolume(volume);
+	}
 }
 
 void SoundBase::clearVolumeOverride()
@@ -231,6 +225,8 @@ void SoundBase::clearVolumeOverride()
 float SoundBase::getVolume()
 {
 	float configVolume = this->getConfigVolume();
+	static const float VolumeScale = 100.0f;
+	float volume =  MathUtils::clamp(configVolume * this->fadeMultiplier * this->distanceMultiplier * this->customMultiplier, 0.0f, configVolume) * VolumeScale;
 
-	return MathUtils::clamp(configVolume * this->fadeMultiplier * this->distanceMultiplier * this->customMultiplier, 0.0f, configVolume);
+	return volume;
 }

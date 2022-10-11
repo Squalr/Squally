@@ -22,5 +22,5 @@ private:
 	
 	void loadObjective();
 	
-	LocalizedLabel* label;
+	LocalizedLabel* label = nullptr;
 };

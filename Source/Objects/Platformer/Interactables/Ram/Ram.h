@@ -4,7 +4,6 @@
 
 class CollisionObject;
 class SmartAnimationNode;
-class WorldSound;
 
 class Ram : public HackableObject
 {
@@ -27,9 +26,8 @@ protected:
 private:
 	typedef HackableObject super;
 
-	SmartAnimationNode* ramAnimations;
-
-	CollisionObject* collision;
+	SmartAnimationNode* ramAnimations = nullptr;
+	CollisionObject* collision = nullptr;
 
 	static const float AnimOffset;
 };

@@ -29,9 +29,9 @@ DemonicAxePlans::~DemonicAxePlans()
 {
 }
 
-Item* DemonicAxePlans::craft()
+std::vector<Item*> DemonicAxePlans::craft()
 {
-	return DemonicAxe::create();
+	return { DemonicAxe::create() };
 }
 
 std::vector<std::tuple<Item*, int>> DemonicAxePlans::getReagentsInternal()
@@ -48,17 +48,12 @@ Item* DemonicAxePlans::clone()
 	return DemonicAxePlans::create();
 }
 
-std::string DemonicAxePlans::getItemName()
-{
-	return DemonicAxePlans::SaveKey;
-}
-
 LocalizedString* DemonicAxePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_DemonicAxe::create();
 }
 
-std::string DemonicAxePlans::getIconResource()
+const std::string& DemonicAxePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string DemonicAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_DemonicAxe;
 }
 
-std::string DemonicAxePlans::getSerializationKey()
+const std::string& DemonicAxePlans::getIdentifier()
 {
 	return DemonicAxePlans::SaveKey;
 }

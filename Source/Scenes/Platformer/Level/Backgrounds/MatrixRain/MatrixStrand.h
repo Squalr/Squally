@@ -2,11 +2,6 @@
 
 #include "Engine/SmartNode.h"
 
-namespace cocos2d
-{
-	class Action;
-}
-
 class MatrixLetter;
 
 class MatrixStrand : public SmartNode
@@ -14,14 +9,17 @@ class MatrixStrand : public SmartNode
 public:
 	static MatrixStrand* create(int strandIndex);
 
-private:
-	typedef SmartNode super;
+protected:
 	MatrixStrand(int strandIndex);
-	~MatrixStrand();
+	virtual ~MatrixStrand();
 
 	void onEnter() override;
 	void update(float) override;
 	void pause(void) override;
+	void onHackerModeEnable() override;
+
+private:
+	typedef SmartNode super;
 
 	void nextStrandAction();
 	void beginStrand();
@@ -32,11 +30,12 @@ private:
 
 	std::vector<MatrixLetter*> letters;
 
-	bool isAlive;
-	float spawnSpeed;
-	int currentLetterIndex;
-	int letterCount;
-	float elapsedDuration;
+	bool isAlive = true;
+	float spawnSpeed = 0.0f;
+	int currentLetterIndex = 0;
+	int letterCount = 0;
+	float elapsedDuration = 0.0f;
+	bool hasBuiltLetters = false;
 
 	static const int MinLetterCount;
 	static const int MaxLetterCount;

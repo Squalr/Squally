@@ -177,11 +177,30 @@ void QuestLine::waiveQuestPrereq()
 {
 	if (this->prereq != nullptr)
 	{
-		std::vector<QuestLine::QuestMeta> quests = this->prereq->getQuests();
-
-		if (!quests.empty() && !quests.back().isComplete)
+		// If there is no explicit prerequisite task, waive the entire prerequisite quest line
+		if (this->prereqTask.empty())
 		{
-			Quests::saveQuestLineProgress(this->prereq->getQuestLine(), QuestLine::QuestLineSaveKeyComplete + quests.back().questTask);
+			std::vector<QuestLine::QuestMeta> quests = this->prereq->getQuests();
+
+			if (!quests.empty() && !quests.back().isComplete)
+			{
+				Quests::saveQuestLineProgress(this->prereq->getQuestLine(), QuestLine::QuestLineSaveKeyComplete + quests.back().questTask);
+			}
+		}
+		else
+		{
+			// If we want to we can add support for waiving the prerequisite task up to the explicit task,
+			// however in my testing it seemed fine to not handle this case. It should not come up for users anyways.
 		}
 	}
+}
+
+QuestLine* QuestLine::getPrereq() const
+{
+	return this->prereq;
+}
+
+std::string QuestLine::getPrereqTask() const
+{
+	return this->prereqTask;
 }

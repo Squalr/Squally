@@ -565,9 +565,4 @@
   #define ASMJIT_TEST
 #endif
 
-// IDE: Make sure '#ifdef'ed unit tests are not disabled by IDE.
-#if defined(ASMJIT_TEST)
-  #include "../../../test/broken.h"
-#endif
-
 #endif // _ASMJIT_CORE_BUILD_H

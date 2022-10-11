@@ -14,10 +14,6 @@ protected:
 	ShopPoolToben(cocos2d::ValueMap& properties);
 	virtual ~ShopPoolToben();
 
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
-
 private:
 	typedef ShopPool super;
 };

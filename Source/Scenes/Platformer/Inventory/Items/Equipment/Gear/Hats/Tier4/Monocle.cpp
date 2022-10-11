@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier4/MonoclePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* Monocle::clone()
 	return Monocle::create();
 }
 
-std::string Monocle::getItemName()
-{
-	return Monocle::SaveKey;
-}
-
 LocalizedString* Monocle::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_Monocle::create();
 }
 
-std::string Monocle::getIconResource()
+const std::string& Monocle::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_Monocle;
 }
 
-std::string Monocle::getSerializationKey()
+const std::string& Monocle::getIdentifier()
 {
 	return Monocle::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string Monocle::getSerializationKey()
 Vec2 Monocle::getDisplayOffset()
 {
 	return Vec2(68.0f, -94.0f);
+}
+
+Recipe* Monocle::getRecipe()
+{
+	return MonoclePlans::create();
 }

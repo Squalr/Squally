@@ -34,10 +34,10 @@ private:
 	typedef HackableObject super;
 	void updateLaser(float dt);
 
-	LaserAnimation* laserAnimation;
-	CollisionObject* laserCollision;
+	LaserAnimation* laserAnimation = nullptr;
+	CollisionObject* laserCollision = nullptr;
 
-	float currentLaserCountDown;
-	float maxLaserCountDown;
-	bool isRunningAnimation;
+	float currentLaserCountDown = 0.0f;
+	float maxLaserCountDown = 4.0f;
+	bool isRunningAnimation = false;
 };

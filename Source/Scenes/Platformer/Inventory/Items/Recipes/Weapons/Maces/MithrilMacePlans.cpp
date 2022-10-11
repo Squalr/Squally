@@ -29,9 +29,9 @@ MithrilMacePlans::~MithrilMacePlans()
 {
 }
 
-Item* MithrilMacePlans::craft()
+std::vector<Item*> MithrilMacePlans::craft()
 {
-	return MithrilMace::create();
+	return { MithrilMace::create() };
 }
 
 std::vector<std::tuple<Item*, int>> MithrilMacePlans::getReagentsInternal()
@@ -49,17 +49,12 @@ Item* MithrilMacePlans::clone()
 	return MithrilMacePlans::create();
 }
 
-std::string MithrilMacePlans::getItemName()
-{
-	return MithrilMacePlans::SaveKey;
-}
-
 LocalizedString* MithrilMacePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_MithrilMace::create();
 }
 
-std::string MithrilMacePlans::getIconResource()
+const std::string& MithrilMacePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +64,7 @@ std::string MithrilMacePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Maces_MithrilMace;
 }
 
-std::string MithrilMacePlans::getSerializationKey()
+const std::string& MithrilMacePlans::getIdentifier()
 {
 	return MithrilMacePlans::SaveKey;
 }

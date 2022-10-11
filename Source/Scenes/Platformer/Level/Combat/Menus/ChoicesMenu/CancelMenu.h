@@ -26,15 +26,14 @@ private:
 
 	void onCancelClick();
 	void track(PlatformerEntity* trackTarget);
-
-	RadialScrollMenu* cancelMenu;
-	RadialEntry* cancelButton;
 	
-	CombatEvents::MenuStateArgs::CurrentMenu previousMenu;
-	CombatEvents::MenuStateArgs::CurrentMenu currentMenu;
+	CombatEvents::MenuStateArgs::CurrentMenu previousMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
+	CombatEvents::MenuStateArgs::CurrentMenu currentMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
 	
-	TimelineEntry* selectedEntry;
-	PlatformerEntity* trackTarget;
+	RadialScrollMenu* cancelMenu = nullptr;
+	RadialEntry* cancelButton = nullptr;
+	TimelineEntry* selectedEntry = nullptr;
+	PlatformerEntity* trackTarget = nullptr;
 
 	static const float Radius;
 };

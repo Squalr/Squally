@@ -14,10 +14,6 @@ protected:
 	ShopPoolGriffin(cocos2d::ValueMap& properties);
 	virtual ~ShopPoolGriffin();
 
-	void onEnter() override;
-	void initializePositions() override;
-	void initializeListeners() override;
-
 private:
 	typedef ShopPool super;
 };

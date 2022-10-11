@@ -11,7 +11,7 @@
 #include "Engine/Sound/Sound.h"
 #include "Events/NotificationEvents.h"
 
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/FXResources.h"
@@ -26,12 +26,11 @@ CagedAnimal::CagedAnimal(ValueMap& properties, std::string saveKey) : super(prop
 	this->animalNode = Node::create();
 	this->shineFx = Sprite::create(ObjectResources::Collectables_Animals_CollectShine);
 	this->saveKey = saveKey;
-	this->alreadyCollected = false;
 
 	this->shineFx->setOpacity(0);
 
 	this->animalNode->addChild(this->shineFx);
-	this->contentNode->addChild(this->animalNode);
+	this->cagedContentNode->addChild(this->animalNode);
 }
 
 CagedAnimal::~CagedAnimal()
@@ -42,7 +41,7 @@ void CagedAnimal::onEnter()
 {
 	super::onEnter();
 
-	if (SaveManager::getProfileDataOrDefault(this->saveKey, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(this->saveKey, Value(false)).asBool())
 	{
 		this->alreadyCollected = true;
 		this->animalNode->setVisible(false);
@@ -85,11 +84,11 @@ void CagedAnimal::onBreak()
 		SoundResources::Notifications_NotificationGood1
 	));
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		this,
 		this->animalNode,
-		ObjectEvents::SpawnMethod::TopMost,
-		ObjectEvents::PositionMode::Retain,
+		SpawnMethod::TopMost,
+		PositionMode::Retain,
 		[&]()
 		{
 		},

@@ -26,7 +26,6 @@ ValueInitializer* ValueInitializer::create(ValueMap& properties)
 ValueInitializer::ValueInitializer(ValueMap& properties) : super(properties)
 {
 	std::string name = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString();
-	this->value = 0;
     
     std::regex re = std::regex(ValueInitializer::IntegerRegex);
     std::smatch match = std::smatch();

@@ -46,22 +46,17 @@ Item* TopHat::clone()
 	return TopHat::create();
 }
 
-std::string TopHat::getItemName()
-{
-	return TopHat::SaveKey;
-}
-
 LocalizedString* TopHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_TopHat::create();
 }
 
-std::string TopHat::getIconResource()
+const std::string& TopHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_TopHat;
 }
 
-std::string TopHat::getSerializationKey()
+const std::string& TopHat::getIdentifier()
 {
 	return TopHat::SaveKey;
 }
@@ -69,4 +64,9 @@ std::string TopHat::getSerializationKey()
 Vec2 TopHat::getDisplayOffset()
 {
 	return Vec2(-26.0f, 10.0f);
+}
+
+Recipe* TopHat::getRecipe()
+{
+	return nullptr;
 }

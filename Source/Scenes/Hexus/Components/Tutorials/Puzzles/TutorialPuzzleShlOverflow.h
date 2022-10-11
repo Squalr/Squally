@@ -30,7 +30,7 @@ private:
 	void initializeCallbacks(GameState* gameState);
 	void runTutorialIntro(GameState* gameState);
 \
-	FocusTakeOver* focusTakeOver;
-	LocalizedLabel* introTutorialLabel;
-	ClickableTextNode* introNextButton;
+	FocusTakeOver* focusTakeOver = nullptr;
+	LocalizedLabel* introTutorialLabel = nullptr;
+	ClickableTextNode* introNextButton = nullptr;
 };

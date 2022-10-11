@@ -15,11 +15,13 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Config/ConfigManager.h"
 #include "Engine/DeveloperMode/DeveloperModeController.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/TerrainEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Physics/EnginePhysicsTypes.h"
+#include "Engine/Terrain/TerrainHole.h"
 #include "Engine/Terrain/TextureObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/LogUtils.h"
@@ -31,8 +33,9 @@
 
 using namespace cocos2d;
 
-std::string TerrainObject::MapKey = "terrain";
-std::string TerrainObject::PropertyTopOnly = "top-only";
+const std::string TerrainObject::MapKey = "terrain";
+const std::string TerrainObject::PropertyTopOnly = "top-only";
+const std::string TerrainObject::PropertySkipSurfaces = "skip-surfaces";
 const float TerrainObject::ShadowDistance = 32.0f;
 const float TerrainObject::InfillDistance = 128.0f;
 const float TerrainObject::TopThreshold = float(M_PI) / 6.0f;
@@ -43,15 +46,12 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 {
 	this->terrainObjectId = TerrainObject::NextTerrainId++;
 	this->terrainData = terrainData;
-	this->points = std::vector<Vec2>();
-	this->intersectionPoints = std::vector<Vec2>();
-	this->segments = std::vector<std::tuple<Vec2, Vec2>>();
-	this->collisionSegments = std::vector<std::tuple<Vec2, Vec2>>();
-	this->textureTriangles = std::vector<AlgoUtils::Triangle>();
-	this->infillTriangles = std::vector<AlgoUtils::Triangle>();
 	this->isTopOnlyCollision = GameUtils::getKeyOrDefault(this->properties, TerrainObject::PropertyTopOnly, Value(false)).asBool();
+	this->skipSurfaces = GameUtils::getKeyOrDefault(this->properties, TerrainObject::PropertySkipSurfaces, Value(false)).asBool();
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
 	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
+	this->enableHackerModeEvents = true;
+	this->terrainHoleTag = GameUtils::getKeyOrDefault(this->properties, TerrainHole::TerrainHoleTag, Value("")).asString();
 
 	this->addTag(TerrainObject::MapKey);
 
@@ -69,13 +69,19 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->topsNode = Node::create();
 	this->connectorsNode = Node::create();
 	this->topCornersNode = Node::create();
-	this->debugLabelsNode = Node::create();
-	this->debugDrawNode = DrawNode::create();
-	this->drawRect = Rect::ZERO;
-	this->boundsRect = Rect::ZERO;
+	this->debugLabelsNode = DeveloperModeController::IsDeveloperBuild ? Node::create() : nullptr;
+	this->debugDrawNode = DeveloperModeController::IsDeveloperBuild ? DrawNode::create() : nullptr;
+	this->drawRect = CRect::ZERO;
+	this->boundsRect = CRect::ZERO;
 
-	this->debugLabelsNode->setVisible(false);
-	this->debugDrawNode->setVisible(false);
+	this->rootNode->setName("rootNode");
+	this->collisionNode->setName("collisionRoot");
+
+	if (DeveloperModeController::IsDeveloperBuild)
+	{
+		this->debugLabelsNode->setVisible(false);
+		this->debugDrawNode->setVisible(false);
+	}
 	
 	this->setLocalZOrder(int32_t(this->getPositionZ()));
 
@@ -89,8 +95,11 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->rootNode->addChild(this->connectorsNode);
 	this->rootNode->addChild(this->bottomCornersNode);
 	this->rootNode->addChild(this->topCornersNode);
-	this->rootNode->addChild(this->debugLabelsNode);
-	this->rootNode->addChild(this->debugDrawNode);
+	if (DeveloperModeController::IsDeveloperBuild)
+	{
+		this->rootNode->addChild(this->debugLabelsNode);
+		this->rootNode->addChild(this->debugDrawNode);
+	}
 	this->rootNode->addChild(this->collisionNode);
 	this->addChild(this->rootNode);
 }
@@ -103,52 +112,79 @@ void TerrainObject::onEnter()
 {
 	super::onEnter();
 
-	this->initResources();
-
-	if (this->polylinePoints.empty())
+	if (this->isFlipped)
 	{
-		Size size = Size(
-			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
-			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
-		);
-
-		this->setPoints(std::vector<Vec2>({
-			Vec2(-size.width / 2.0f, -size.height / 2.0f),
-			Vec2(-size.width / 2.0f, size.height / 2.0f),
-			Vec2(size.width / 2.0f, size.height / 2.0f),
-			Vec2(size.width / 2.0f, -size.height / 2.0f)
-		}));
+		this->swapResourcesVertical(true);
 	}
-	else
-	{
-		this->setPoints(this->polylinePoints);
-	}
-
-	this->cullCollision();
-	this->rebuildTerrain(terrainData);
-	this->optimizationHideOffscreenTerrain();
 }
 
 void TerrainObject::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	// Should get called right after this is terrain is added to the map
-	if (!this->isInactive)
-	{
-		TerrainEvents::TriggerResolveOverlapConflicts(TerrainEvents::TerrainOverlapArgs(this));
-	}
-	
-	// This gets built as a deferred step since we may be waiting on masking until this point
 	this->defer([=]()
 	{
-		this->buildCollision();
+		if (this->isDespawned())
+		{
+			return;
+		}
+		
+		if (!this->terrainHoleTag.empty())
+		{
+			ObjectEvents::QueryObjects<TerrainHole>([&](TerrainHole* terrainHole)
+			{
+				Vec2 holeCoords = GameUtils::getWorldCoords(terrainHole, false);
+				Vec2 terrainCoords = GameUtils::getWorldCoords(this, false);
+				
+				std::vector<Vec2> holePoints = terrainHole->getPolylinePoints();
+				AlgoUtils::offsetPoints(holePoints, holeCoords - terrainCoords);
+				this->holes.push_back(holePoints);
+			}, this->terrainHoleTag);
+		}
+
+		this->segments = AlgoUtils::buildSegmentsFromPoints(this->polylinePoints);
+		this->collisionSegments = this->segments;
+		this->textureTriangles = AlgoUtils::trianglefyPolygon(this->polylinePoints);
+		this->infillTriangles = this->textureTriangles;
+		this->drawRect = AlgoUtils::getPolygonRect(this->polylinePoints);
+		this->boundsRect = CRect(drawRect.origin + this->getPosition(), drawRect.size);
+
+		this->holeSegments.clear();
+		this->holeTriangles.clear();
+		for (const std::vector<cocos2d::Vec2>& holePoints : this->holes)
+		{
+			this->holeSegments.push_back(AlgoUtils::buildSegmentsFromPoints(holePoints));
+			this->holeTriangles.push_back(AlgoUtils::trianglefyPolygon(holePoints));
+		}
+
+		// Most terrain is static, so the coords only need be updated once
+		this->updateCachedCoords(true);
+		this->cullCollision();
+
+		// Should get called right after this is terrain is added to the map
+		if (!this->isInactive)
+		{
+			TerrainEvents::TriggerResolveOverlapConflicts(TerrainEvents::TerrainOverlapArgs(this));
+		}
+		
+		// This gets built as a deferred step since we may be waiting on masking / terrain holes until this point
+		this->defer([=]()
+		{
+			if (this->isDespawned())
+			{
+				return;
+			}
+
+			this->buildCollision();
+			this->buildTerrain();
+			this->optimizationHideOffscreenTerrain();
+		});
 	});
 }
 
 void TerrainObject::onDeveloperModeEnable(int debugLevel)
 {
-	if (debugLevel >= 2)
+	if (debugLevel >= 2 && DeveloperModeController::IsDeveloperBuild)
 	{
 		this->debugLabelsNode->setVisible(true);
 		this->debugDrawNode->setVisible(true);
@@ -157,8 +193,11 @@ void TerrainObject::onDeveloperModeEnable(int debugLevel)
 
 void TerrainObject::onDeveloperModeDisable()
 {
-	this->debugLabelsNode->setVisible(false);
-	this->debugDrawNode->setVisible(false);
+	if (DeveloperModeController::IsDeveloperBuild)
+	{
+		this->debugLabelsNode->setVisible(false);
+		this->debugDrawNode->setVisible(false);
+	}
 }
 
 void TerrainObject::initializeListeners()
@@ -169,7 +208,7 @@ void TerrainObject::initializeListeners()
 	{
 		this->addEventListener(EventListenerCustom::create(TerrainEvents::EventResolveOverlapConflicts, [=](EventCustom* eventCustom)
 		{
-			TerrainEvents::TerrainOverlapArgs* args = static_cast<TerrainEvents::TerrainOverlapArgs*>(eventCustom->getUserData());
+			TerrainEvents::TerrainOverlapArgs* args = static_cast<TerrainEvents::TerrainOverlapArgs*>(eventCustom->getData());
 
 			if (args != nullptr && args->newTerrain != this && this->terrainObjectId < args->newTerrain->terrainObjectId)
 			{
@@ -200,82 +239,80 @@ void TerrainObject::onHackerModeDisable()
 	this->setVisible(true);
 }
 
-void TerrainObject::initResources()
+void TerrainObject::setDynamic(bool isDynamic)
 {
-	if (!this->isFlipped)
+	this->isDynamic = isDynamic;
+}
+
+void TerrainObject::swapResources(std::string* resourceA, Vec2* offsetA, std::string* resourceB, Vec2* offsetB, bool flipX, bool flipY)
+{
+	std::string tempStr = *resourceA;
+	Vec2 tempVec = *offsetA;
+
+	*resourceA = *resourceB;
+	*offsetA = *offsetB;
+	*resourceB = tempStr;
+	*offsetB = tempVec;
+
+	if (flipX)
 	{
-		return;
+		offsetA->x *= -1.0f;
+		offsetB->x *= -1.0f;
 	}
 
-	auto swapResources = [=](std::string* resourceA, Vec2* offsetA, std::string* resourceB, Vec2* offsetB)
+	if (flipY)
 	{
-		std::string tempStr = *resourceA;
-		Vec2 tempVec = *offsetA;
-
-		*resourceA = *resourceB;
-		*offsetA = *offsetB;
-		*resourceB = tempStr;
-		*offsetB = tempVec;
-
 		offsetA->y *= -1.0f;
-		offsetB->y *= -1.0f;
-	};
-
-	swapResources(
-		&this->terrainData.topCornerRightResource, &this->terrainData.topRightCornerOffset,
-		&this->terrainData.bottomCornerRightResource, &this->terrainData.bottomRightCornerOffset
-	);
-
-	swapResources(
-		&this->terrainData.topCornerLeftResource, &this->terrainData.topLeftCornerOffset,
-		&this->terrainData.bottomCornerLeftResource, &this->terrainData.bottomLeftCornerOffset
-	);
-
-	swapResources(
-		&this->terrainData.topResource, &this->terrainData.topOffset,
-		&this->terrainData.bottomResource, &this->terrainData.bottomOffset
-	);
-
-	swapResources(
-		&this->terrainData.topConnectorResource, &this->terrainData.topConnectorOffset,
-		&this->terrainData.bottomConnectorResource, &this->terrainData.bottomConnectorOffset
-	);
-}
-
-void TerrainObject::setPoints(std::vector<Vec2> points)
-{
-	this->points = points;
-	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
-	this->collisionSegments = this->segments;
-	this->textureTriangles = AlgoUtils::trianglefyPolygon(this->points);
-	this->infillTriangles = this->textureTriangles;
-	this->drawRect = AlgoUtils::getPolygonRect(this->points);
-	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
-}
-
-void TerrainObject::rebuildTerrain(TerrainData terrainData)
-{
-	this->debugLabelsNode->removeAllChildren();
-	this->debugDrawNode->removeAllChildren();
-
-	this->buildInnerTextures();
-
-	switch(ConfigManager::getGraphics())
-	{
-		case ConfigManager::GraphicsSetting::SlowHighQuality:
-		{
-			// Zac: Disabled for now since this is pretty slow
-			// this->buildInfill(terrainData.infillColor);
-			// this->buildSurfaceShadow();
-			break;
-		}
-		case ConfigManager::GraphicsSetting::FastLowQuality:
-		{
-			break;
-		}
+		offsetB->y *= -1.0f;	
 	}
+}
 
-	this->buildSurfaceTextures();
+void TerrainObject::swapResourcesForHole()
+{
+	this->swapResources(
+		&this->terrainData.topCornerRightResource, &this->terrainData.topRightCornerOffset,
+		&this->terrainData.topCornerLeftResource, &this->terrainData.topLeftCornerOffset,
+		true,
+		false
+	);
+
+	this->swapResources(
+		&this->terrainData.bottomCornerRightResource, &this->terrainData.bottomRightCornerOffset,
+		&this->terrainData.bottomCornerLeftResource, &this->terrainData.bottomLeftCornerOffset,
+		true,
+		false
+	);
+}
+
+void TerrainObject::swapResourcesVertical(bool flip)
+{
+	this->swapResources(
+		&this->terrainData.topCornerRightResource, &this->terrainData.topRightCornerOffset,
+		&this->terrainData.bottomCornerRightResource, &this->terrainData.bottomRightCornerOffset,
+		false,
+		flip
+	);
+
+	this->swapResources(
+		&this->terrainData.topCornerLeftResource, &this->terrainData.topLeftCornerOffset,
+		&this->terrainData.bottomCornerLeftResource, &this->terrainData.bottomLeftCornerOffset,
+		false,
+		flip
+	);
+
+	this->swapResources(
+		&this->terrainData.topResource, &this->terrainData.topOffset,
+		&this->terrainData.bottomResource, &this->terrainData.bottomOffset,
+		false,
+		flip
+	);
+
+	this->swapResources(
+		&this->terrainData.topConnectorResource, &this->terrainData.topConnectorOffset,
+		&this->terrainData.bottomConnectorResource, &this->terrainData.bottomConnectorOffset,
+		false,
+		flip
+	);
 }
 
 void TerrainObject::cullCollision()
@@ -325,7 +362,7 @@ void TerrainObject::buildCollision()
 {
 	this->collisionNode->removeAllChildren();
 
-	if (this->isInactive)
+	if (!this->terrainData.buildCollision || this->isInactive)
 	{
 		return;
 	}
@@ -380,35 +417,40 @@ void TerrainObject::buildCollision()
 
 		previousSegment = &(*it);
 	}
-
-	for (auto intersectionPoint : this->intersectionPoints)
-	{
-		const float Radius = 32.0f;
-
-		CollisionObject* collisionObject = CollisionObject::create(CollisionObject::createCircle(Radius), (CollisionType)EngineCollisionTypes::Intersection, CollisionObject::Properties(false, false));
-
-		collisionObject->setPosition(intersectionPoint);
-
-		this->collisionNode->addChild(collisionObject);
-	}
 }
 
 void TerrainObject::buildInnerTextures()
 {
 	if (this->terrainData.textureFactory != nullptr)
 	{
-		TextureObject* textures = this->terrainData.textureFactory(this->properties);
+		TextureObject* textureObject = this->terrainData.textureFactory(this->properties);
+		
+		if (textureObject == nullptr)
+		{
+			return;
+		}
+
+		bool isPolygon = GameUtils::keyExists(this->properties, GameObject::MapKeyPolyLinePoints) || GameUtils::keyExists(this->properties, GameObject::MapKeyPoints);
+		
+		if (!isPolygon && this->holes.empty())
+		{
+			textureObject->setPosition(textureObject->getPosition() - Vec2(this->boundsRect.size) / 2.0f);
+		}
 
 		this->infillTexturesNode->removeAllChildren();
-		this->infillTexturesNode->addChild(textures);
+
+		if (textureObject != nullptr)
+		{
+			this->infillTexturesNode->addChild(textureObject);
+		}
 	}
 }
 
-void TerrainObject::buildInfill(Color4B infillColor)
+void TerrainObject::buildInfill(InfillData infillData)
 {
 	this->infillNode->removeAllChildren();
 
-	if (this->textureTriangles.empty())
+	if (!infillData.applyInfill || this->textureTriangles.empty())
 	{
 		return;
 	}
@@ -423,7 +465,7 @@ void TerrainObject::buildInfill(Color4B infillColor)
 	{
 		AlgoUtils::Triangle triangle = *it;
 
-		infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(Color3B(infillColor), 0.0f));
+		infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(Color3B(infillData.infillColor), 0.0f));
 	}
 
 	// Loop over all infill triangles and create the solid infill color
@@ -431,108 +473,70 @@ void TerrainObject::buildInfill(Color4B infillColor)
 	{
 		AlgoUtils::Triangle triangle = *it;
 
-		infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(infillColor));
+		infill->drawTriangle(triangle.coords[0], triangle.coords[1], triangle.coords[2], Color4F(infillData.infillColor));
 	}
 
 	// Render the infill to a texture (Note: using outer points, not the infill points, due to the earlier padding)
-	Rect infillRect = AlgoUtils::getPolygonRect(this->points);
-
+	CRect infillRect = AlgoUtils::getPolygonRect(this->polylinePoints);
 	Sprite* renderedInfill = RenderUtils::renderNodeToSprite(infill, infillRect.origin, infillRect.size);
-	Sprite* rasterizedInfill = RenderUtils::applyShaderOnce(renderedInfill, ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur, [=](GLProgramState* state)
-	{
-		state->setUniformVec2("resolution", Vec2(infillRect.size.width, infillRect.size.height));
-		state->setUniformFloat("blurRadius", 112.0f);
-		state->setUniformFloat("sampleNum", 24.0f);
-	});
-	rasterizedInfill->setAnchorPoint(Vec2::ZERO);
-	rasterizedInfill->setPosition(infillRect.origin);
 
-	this->infillNode->addChild(rasterizedInfill);
+	if (infillData.blurInfill)
+	{
+		Sprite* rasterizedInfill = RenderUtils::applyShaderOnce(renderedInfill, ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur, [=](GLProgramState* state)
+		{
+			state->setUniformVec2("resolution", Vec2(infillRect.size.width, infillRect.size.height));
+			state->setUniformFloat("blurRadius", 112.0f);
+			state->setUniformFloat("sampleNum", 24.0f);
+		});
+		
+		rasterizedInfill->setAnchorPoint(Vec2::ZERO);
+		rasterizedInfill->setPosition(infillRect.origin);
+
+		this->infillNode->addChild(rasterizedInfill);
+	}
+	else
+	{
+		renderedInfill->setAnchorPoint(Vec2::ZERO);
+		renderedInfill->setPosition(infillRect.origin);
+
+		this->infillNode->addChild(renderedInfill);
+	}
 }
 
-void TerrainObject::buildSurfaceShadow()
+void TerrainObject::buildSurfaceTextures(const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& sourceSegments,
+	const std::vector<AlgoUtils::Triangle>& sourceTriangles, bool isHole)
 {
-	this->shadowsNode->removeAllChildren();
-
-	if (this->textureTriangles.empty())
+	if (this->skipSurfaces)
 	{
 		return;
 	}
-
-	std::vector<Vec2> shadowPoints = AlgoUtils::insetPolygon(this->textureTriangles, this->segments, TerrainObject::ShadowDistance);
-	std::vector<AlgoUtils::Triangle> shadowTriangles = AlgoUtils::trianglefyPolygon(shadowPoints);
-	std::vector<std::tuple<Vec2, Vec2>> shadowSegments = AlgoUtils::buildSegmentsFromPoints(shadowPoints);
-
-	DrawNode* shadowLine = DrawNode::create(12.0f);
-
-	// Draw shadow lines below the floors
-	for (auto it = shadowSegments.begin(); it != shadowSegments.end(); it++)
-	{
-		std::tuple<Vec2, Vec2> segment = *it;
-		Vec2 source = std::get<0>(segment);
-		Vec2 dest = std::get<1>(segment);
-		Vec2 delta = dest - source;
-		Vec2 midPoint = source.getMidpoint(dest);
-		float segmentLength = source.distance(dest);
-		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, shadowTriangles);
-
-		if (normalAngle >= TerrainObject::TopThreshold && normalAngle <= float(M_PI) - TerrainObject::TopThreshold)
-		{
-			shadowLine->drawLine(source, dest, Color4F::BLACK);
-		}
-	}
-
-	// Render the infill to a texture (Note: using outer points for padding)
-	Rect shadowRect = AlgoUtils::getPolygonRect(this->points);
-
-	Sprite* renderedShadowLine = RenderUtils::renderNodeToSprite(shadowLine, shadowRect.origin, shadowRect.size);
-
-	if (renderedShadowLine != nullptr)
-	{
-		Sprite* rasterizedShadowLine = RenderUtils::applyShaderOnce(renderedShadowLine, ShaderResources::Vertex_Blur, ShaderResources::Fragment_Blur, [=](GLProgramState* state)
-		{
-			state->setUniformVec2("resolution", Vec2(shadowRect.size.width, shadowRect.size.height));
-			state->setUniformFloat("blurRadius", 32.0f);
-			state->setUniformFloat("sampleNum", 12.0f);
-		});
-
-		if (rasterizedShadowLine != nullptr)
-		{
-			rasterizedShadowLine->setAnchorPoint(Vec2::ZERO);
-			rasterizedShadowLine->setPosition(shadowRect.origin);
-
-			this->shadowsNode->addChild(rasterizedShadowLine);
-		}
-	}
-}
-
-void TerrainObject::buildSurfaceTextures()
-{
-	this->leftWallNode->removeAllChildren();
-	this->rightWallNode->removeAllChildren();
-	this->bottomsNode->removeAllChildren();
-	this->bottomCornersNode->removeAllChildren();
-	this->topsNode->removeAllChildren();
-	this->topCornersNode->removeAllChildren();
-
+	
 	std::tuple<Vec2, Vec2>* previousSegment = nullptr;
 
-	for (auto it = this->segments.begin(); it != this->segments.end(); it++)
+	for (auto it = sourceSegments.begin(); it != sourceSegments.end(); it++)
 	{
 		auto itClone = it;
 
 		std::tuple<Vec2, Vec2> segment = *it;
-		std::tuple<Vec2, Vec2> nextSegment = (++itClone) == this->segments.end() ? this->segments[0] : (*itClone);
+		std::tuple<Vec2, Vec2> nextSegment = (++itClone) == sourceSegments.end() ? sourceSegments[0] : (*itClone);
 
 		Vec2 source = std::get<0>(segment);
 		Vec2 dest = std::get<1>(segment);
 		Vec2 delta = dest - source;
 		Vec2 midPoint = source.getMidpoint(dest);
 		float segmentLength = source.distance(dest);
-		float angle = AlgoUtils::getSegmentAngle(segment, this->textureTriangles, this->debugDrawNode);
-		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, this->textureTriangles);
-		float nextAngle = AlgoUtils::getSegmentAngle(nextSegment, this->textureTriangles);
-		float nextSegmentNormalAngle = AlgoUtils::getSegmentNormalAngle(nextSegment, this->textureTriangles);
+		float angle = AlgoUtils::getSegmentAngle(segment, sourceTriangles, this->debugDrawNode);
+		float normalAngle = AlgoUtils::getSegmentNormalAngle(segment, sourceTriangles);
+		float nextAngle = AlgoUtils::getSegmentAngle(nextSegment, sourceTriangles);
+		float nextSegmentNormalAngle = AlgoUtils::getSegmentNormalAngle(nextSegment, sourceTriangles);
+
+		if (isHole)
+		{
+			normalAngle = MathUtils::wrappingNormalize(normalAngle *= -1.0f, 0.0f, 2.0f * float(M_PI));
+			nextAngle = MathUtils::wrappingNormalize(nextAngle *= -1.0f, 0.0f,  2.0f * float(M_PI));
+			nextSegmentNormalAngle = MathUtils::wrappingNormalize(nextSegmentNormalAngle *= -1.0f, 0.0f,  2.0f * float(M_PI));
+		}
+
 		float bisectingAngle = (nextAngle + angle) / 2.0f;
 		float angleDelta = nextAngle - angle;
 
@@ -780,7 +784,7 @@ void TerrainObject::buildSurfaceTextures()
 
 void TerrainObject::buildSegment(Node* parent, Sprite* sprite, Vec2 anchor, Vec2 position, float rotation, float segmentLength, TerrainObject::TileMethod tileMethod)
 {
-	Size textureSize = sprite->getContentSize();
+	CSize textureSize = sprite->getContentSize();
 
 	static float seamlessSegmentX = 0.0f;
 
@@ -812,19 +816,23 @@ void TerrainObject::buildSegment(Node* parent, Sprite* sprite, Vec2 anchor, Vec2
 	segmentLength = std::ceil(segmentLength);
 
 	sprite->setAnchorPoint(anchor);
-	sprite->getTexture()->setTexParameters(params);
+	
+	if (sprite->getTexture() != nullptr)
+	{
+		sprite->getTexture()->setTexParameters(params);
+	}
 
 	// Start the texture from where the previous texture left off for seamless integration
 	if (tileMethod == TileMethod::Horizontal)
 	{
-		sprite->setTextureRect(Rect(seamlessSegmentX, 0.0f, segmentLength, textureSize.height));
+		sprite->setTextureRect(CRect(seamlessSegmentX, 0.0f, segmentLength, textureSize.height));
 
 		// Advance the seamless segment distance (with wrap around on overflow)
 		seamlessSegmentX = MathUtils::wrappingNormalize(seamlessSegmentX + segmentLength, 0.0f, textureSize.width);
 	}
 	else if (tileMethod == TileMethod::Vertical)
 	{
-		sprite->setTextureRect(Rect(0.0f, seamlessSegmentX, textureSize.width, segmentLength));
+		sprite->setTextureRect(CRect(0.0f, seamlessSegmentX, textureSize.width, segmentLength));
 
 		// Advance the seamless segment distance (with wrap around on overflow)
 		seamlessSegmentX = MathUtils::wrappingNormalize(seamlessSegmentX + segmentLength, 0.0f,  textureSize.height);
@@ -838,12 +846,11 @@ void TerrainObject::buildSegment(Node* parent, Sprite* sprite, Vec2 anchor, Vec2
 
 void TerrainObject::maskAgainstOther(TerrainObject* other)
 {
-	if (this->isInactive || !this->boundsRect.intersectsRect(other->boundsRect))
-	{
-		return;
-	}
-
-	if (std::abs(GameUtils::getDepth(this) - GameUtils::getDepth(other)) > CollisionObject::CollisionZThreshold)
+	// Pretty sure we dont need this anymore, but leaving it here for now
+	/*
+	if (this->isInactive
+		|| !this->boundsRect.intersectsRect(other->boundsRect)
+		|| (std::abs(GameUtils::getDepth(this) - GameUtils::getDepth(other))) > CollisionObject::CollisionZThreshold)
 	{
 		return;
 	}
@@ -911,12 +918,6 @@ void TerrainObject::maskAgainstOther(TerrainObject* other)
 					{
 						std::get<1>(segment) = intersectionPoint;	
 					}
-					
-					if (((!this->isFlipped && this->isTopAngle(normalAngle)) || (this->isFlipped && this->isBottomAngle(normalAngle))) &&
-						((!other->isFlipped && other->isTopAngle(otherNormalAngle)) || (other->isFlipped && other->isBottomAngle(otherNormalAngle))))
-					{
-						this->intersectionPoints.push_back(intersectionPoint);
-					}
 				}
 			}
 
@@ -929,6 +930,7 @@ void TerrainObject::maskAgainstOther(TerrainObject* other)
 	}
 
 	this->collisionSegments = rebuiltSegments;
+	*/
 }
 
 bool TerrainObject::isTopAngle(float normalAngle)
@@ -978,26 +980,96 @@ bool TerrainObject::isTopCollisionFriendly(std::tuple<Vec2, Vec2>* previousSegme
 
 ValueMap TerrainObject::transformPropertiesForTexture(ValueMap properties)
 {
+	bool isPolygon = GameUtils::keyExists(this->properties, GameObject::MapKeyPolyLinePoints) || GameUtils::keyExists(this->properties, GameObject::MapKeyPoints);
 	ValueMap textureProperties = properties;
-
+	
 	textureProperties[GameObject::MapKeyType] = TextureObject::MapKeyTypeTexture;
 	textureProperties[GameObject::MapKeyXPosition] = Value(0.0f);
 	textureProperties[GameObject::MapKeyYPosition] = Value(0.0f);
 	textureProperties[GameObject::MapKeyDepth] = Value(0.0f);
-	textureProperties[TextureObject::PropertyKeyClearAnchor] = Value(!this->polylinePoints.empty());
+	textureProperties[TextureObject::PropertyKeyClearAnchor] = Value(isPolygon);
 
 	return textureProperties;
 }
 
+void TerrainObject::buildTerrain()
+{
+	if (this->hasBuiltTerrain)
+	{
+		return;
+	}
+
+	this->hasBuiltTerrain = true;
+
+	if (DeveloperModeController::IsDeveloperBuild)
+	{
+		this->debugLabelsNode->removeAllChildren();
+		this->debugDrawNode->removeAllChildren();
+	}
+
+	this->buildInnerTextures();
+	this->buildInfill(terrainData.infillData);
+
+	switch(ConfigManager::getGraphics())
+	{
+		case ConfigManager::GraphicsSetting::SlowHighQuality:
+		{
+			// Zac: Disabled for now since this is pretty slow
+			// this->buildSurfaceShadow();
+			break;
+		}
+		case ConfigManager::GraphicsSetting::FastLowQuality:
+		{
+			break;
+		}
+	}
+
+	this->leftWallNode->removeAllChildren();
+	this->rightWallNode->removeAllChildren();
+	this->bottomsNode->removeAllChildren();
+	this->bottomCornersNode->removeAllChildren();
+	this->topsNode->removeAllChildren();
+	this->topCornersNode->removeAllChildren();
+
+	this->buildSurfaceTextures(this->segments, this->textureTriangles, false);
+
+	// Temporarily swap certain resources when building holes, and build surface textures with inverted normals
+	this->isFlipped = !this->isFlipped;
+	this->swapResourcesForHole();
+	for (int index = 0; index < (int)std::min(this->holeSegments.size(), this->holeTriangles.size()); index++)
+	{
+		this->buildSurfaceTextures(this->holeSegments[index], this->holeTriangles[index], true);
+	}
+	this->swapResourcesForHole();
+	this->isFlipped = !this->isFlipped;
+}
+
+void TerrainObject::updateCachedCoords(bool force)
+{
+	if (this->isDynamic || force)
+	{
+		// Terrain doesn't move, this should never need to be updated.
+		this->cachedCoords = GameUtils::getWorldCoords3D(this, false) + Vec3(drawRect.origin.x, drawRect.origin.y, 0.0f);
+		return;
+	}
+}
+
 void TerrainObject::optimizationHideOffscreenTerrain()
 {
-	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
-	static const Size Padding = Size(1024.0f, 1024.0f);
-	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
-	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), clipSize);
-	this->boundsRect = Rect(drawRect.origin + this->getPosition(), drawRect.size);
+	if (!this->hasBuiltTerrain)
+	{
+		this->rootNode->setVisible(false);
+		return;
+	}
 
-	if (cameraRect.intersectsRect(this->boundsRect))
+	// A little padding otherwise surface textures will pop into existence, as they can hang outside terrain bounds
+	static const CSize Padding = CSize(768.0f, 768.0f);
+	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+
+	this->updateCachedCoords();
+	CRect thisRect = GameUtils::getScreenBounds(this->cachedCoords, drawRect.size + Padding);
+
+	if (CameraRect.intersectsRect(thisRect))
 	{
 		this->rootNode->setVisible(true);
 	}

@@ -15,7 +15,7 @@
     "ja": "DIV は、ある数値を別の数値で除算する演算です。負の整数を扱う場合は、IDIV を使用できます。",
     "ko": "DIV는 한 숫자를 다른 숫자로 나누는 작업입니다. 잠재적으로 부정적인 정수를 다룰 때 IDIV를 대신 사용할 수 있습니다.",
     "nl": "DIV is een bewerking die het ene getal door het andere verdeelt. Bij het omgaan met mogelijk negatieve gehele getallen kan IDIV in plaats daarvan worden gebruikt.",
-    "nb": "DIV er en operasjon som deler ett tall med et annet. Når du arbeider med potensielt negative heltall, kan IDIV brukes i stedet.",
+    "no": "DIV er en operasjon som deler ett tall med et annet. Når du arbeider med potensielt negative heltall, kan IDIV brukes i stedet.",
     "pl": "DIV jest operacją, która dzieli jedną liczbę przez inną. W przypadku potencjalnie ujemnych liczby całkowite, IDIV może służyć zamiast.",
     "pt": "DIV é uma operação que divide um número por outro. Ao lidar com números inteiros potencialmente negativos, o IDIV pode ser utilizado.",
     "pt-BR": "DIV é uma operação que divide um número por outro. Ao lidar com inteiros potencialmente negativos, o IDIV pode ser usado em vez disso.",

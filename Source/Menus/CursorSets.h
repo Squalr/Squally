@@ -10,8 +10,10 @@ public:
 		Default = Mouse::SET_ID_DEFAULT,
 		Globe = Mouse::SET_ID_TRANSLATION_CURSOR,
 		PickPocket = 2,
+		Repair = 3,
 	};
 
-	static void registerCursorSets();
-	static void setActiveCursorSet(CursorSet cursorSet);
+	static void RegisterCursorSets();
+	static void SetActiveCursorSet(CursorSet cursorSet);
+	static CursorSet GetActiveCursorSet();
 };

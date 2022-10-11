@@ -9,7 +9,7 @@ const std::string SqualrEvents::EventProjectileCollided = "EVENT_SQUALR_PROJECTI
 
 void SqualrEvents::TriggerProjectileCollided()
 {
-	Director::getInstance()->getEventDispatcher()->dispatchCustomEvent(
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		SqualrEvents::EventProjectileCollided
 	);
 }

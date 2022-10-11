@@ -38,6 +38,10 @@ PendulumBladeSetAnglePreview::PendulumBladeSetAnglePreview()
 	this->assemblyTextNode->addChild(this->eax270Degrees);
 }
 
+PendulumBladeSetAnglePreview::~PendulumBladeSetAnglePreview()
+{
+}
+
 HackablePreview* PendulumBladeSetAnglePreview::clone()
 {
 	return PendulumBladeSetAnglePreview::create();

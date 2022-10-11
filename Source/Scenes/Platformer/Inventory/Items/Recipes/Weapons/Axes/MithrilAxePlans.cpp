@@ -29,9 +29,9 @@ MithrilAxePlans::~MithrilAxePlans()
 {
 }
 
-Item* MithrilAxePlans::craft()
+std::vector<Item*> MithrilAxePlans::craft()
 {
-	return MithrilAxe::create();
+	return { MithrilAxe::create() };
 }
 
 std::vector<std::tuple<Item*, int>> MithrilAxePlans::getReagentsInternal()
@@ -48,17 +48,12 @@ Item* MithrilAxePlans::clone()
 	return MithrilAxePlans::create();
 }
 
-std::string MithrilAxePlans::getItemName()
-{
-	return MithrilAxePlans::SaveKey;
-}
-
 LocalizedString* MithrilAxePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_MithrilAxe::create();
 }
 
-std::string MithrilAxePlans::getIconResource()
+const std::string& MithrilAxePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string MithrilAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_MithrilAxe;
 }
 
-std::string MithrilAxePlans::getSerializationKey()
+const std::string& MithrilAxePlans::getIdentifier()
 {
 	return MithrilAxePlans::SaveKey;
 }

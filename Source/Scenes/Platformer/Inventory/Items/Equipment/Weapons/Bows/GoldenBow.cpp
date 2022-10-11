@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Bows/GoldenBowPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* GoldenBow::clone()
 	return GoldenBow::create();
 }
 
-std::string GoldenBow::getItemName()
-{
-	return GoldenBow::SaveKey;
-}
-
 LocalizedString* GoldenBow::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_GoldenBow::create();
 }
 
-std::string GoldenBow::getIconResource()
+const std::string& GoldenBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_GoldenBow;
 }
 
-std::string GoldenBow::getSerializationKey()
+const std::string& GoldenBow::getIdentifier()
 {
 	return GoldenBow::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string GoldenBow::getSerializationKey()
 Vec2 GoldenBow::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* GoldenBow::getRecipe()
+{
+	return GoldenBowPlans::create();
 }

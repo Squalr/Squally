@@ -12,6 +12,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Hexus/CardData/CardList.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/ItemResources.h"
@@ -24,7 +25,9 @@ using namespace cocos2d;
 const std::string GlassDisplayItem::MapKey = "glass-display-item";
 const std::string GlassDisplayItem::PropertyItemName = "item-name";
 const std::string GlassDisplayItem::PropertyTutorial = "tutorial";
-const std::string GlassDisplayItem::TutorialLightHint = "light-hint";
+const std::string GlassDisplayItem::TutorialAndHint = "and-hint";
+const std::string GlassDisplayItem::TutorialOrHint = "or-hint";
+const std::string GlassDisplayItem::TutorialXorHint = "xor-hint";
 const std::string GlassDisplayItem::PropertyDisplayGroup = "display-group";
 const std::string GlassDisplayItem::MapEventDisableDisplayGroup = "disable-display-group";
 const std::string GlassDisplayItem::SaveKeyIsDisabled = "SAVE_KEY_GLASS_DISPLAY_DISABLED";
@@ -38,12 +41,11 @@ GlassDisplayItem* GlassDisplayItem::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-GlassDisplayItem::GlassDisplayItem(cocos2d::ValueMap& properties) : super(properties, Size(169.0f, 331.0f))
+GlassDisplayItem::GlassDisplayItem(cocos2d::ValueMap& properties) : super(properties, CSize(169.0f, 331.0f))
 {
 	this->itemName = GameUtils::getKeyOrDefault(this->properties, GlassDisplayItem::PropertyItemName, Value("")).asString();
 	this->tutorialName = GameUtils::getKeyOrDefault(this->properties, GlassDisplayItem::PropertyTutorial, Value("")).asString();
 	this->displayGroup = GameUtils::getKeyOrDefault(this->properties, GlassDisplayItem::PropertyDisplayGroup, Value("")).asString();
-	this->item = nullptr;
 }
 
 GlassDisplayItem::~GlassDisplayItem()
@@ -75,6 +77,11 @@ void GlassDisplayItem::initializeListeners()
 		{
 			this->saveObjectState(GlassDisplayItem::SaveKeyIsDisabled, Value(true));
 		}
+	});
+
+	this->listenForMapEvent(this->listenEvent, [=](ValueMap args)
+	{
+		this->unlock();
 	});
 }
 		
@@ -132,12 +139,14 @@ void GlassDisplayItem::unlockAndGiveItems()
 		return;
 	}
 
-	PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(this->item->clone()));
+	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ this->item->clone() }));
 }
 
 void GlassDisplayItem::tryRunTutorials()
 {
-	if (this->tutorialName == GlassDisplayItem::TutorialLightHint)
+	if (this->tutorialName == GlassDisplayItem::TutorialAndHint
+		|| this->tutorialName == GlassDisplayItem::TutorialOrHint
+		|| this->tutorialName == GlassDisplayItem::TutorialXorHint)
 	{
 		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Objects_GlassCase_Clue::create(),

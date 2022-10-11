@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
@@ -112,14 +113,10 @@ void Strength::registerHackables()
 				Strings::Menus_Hacking_Abilities_Buffs_Strength_Strength::create(),
 				HackableBase::HackBarColor::Yellow,
 				UIResources::Menus_Icons_Gauntlet,
-				StrengthGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return StrengthGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx::create()->setStringReplacementVariables(
-							{
-								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::MinMultiplier))),
-								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::MaxMultiplier))),
-							})
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx::create()
 					}
 				},
 				int(HackFlags::None),
@@ -152,7 +149,7 @@ void Strength::registerHackables()
 	auto func = &Strength::applyStrength;
 	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
 
-	for (auto next : this->hackables)
+	for (HackableCode* next : this->hackables)
 	{
 		this->owner->registerCode(next);
 	}
@@ -166,8 +163,8 @@ void Strength::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* 
 
 	this->applyStrength();
 
-	this->currentDamageDealt = MathUtils::clamp(this->currentDamageDealt, -std::abs(damageOrHealing->damageOrHealingValue * Strength::MinMultiplier), std::abs(damageOrHealing->damageOrHealingValue * Strength::MaxMultiplier));
-	
+	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * Strength::MinMultiplier);
+	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * Strength::MaxMultiplier);
 	(*damageOrHealing->damageOrHealing) = this->currentDamageDealt;
 }
 
@@ -177,6 +174,7 @@ NO_OPTIMIZE void Strength::applyStrength()
 
 	currentDamageDealtLocal = this->currentDamageDealt;
 
+	ASM_PUSH_EFLAGS()
 	ASM(push ZCX);
 	ASM_MOV_REG_VAR(ecx, currentDamageDealtLocal);
 
@@ -188,6 +186,7 @@ NO_OPTIMIZE void Strength::applyStrength()
 	ASM_MOV_VAR_REG(currentDamageDealtLocal, ecx);
 
 	ASM(pop ZCX);
+	ASM_POP_EFLAGS()
 
 	this->currentDamageDealt = currentDamageDealtLocal;
 

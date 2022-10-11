@@ -24,7 +24,7 @@ Gaunt::Gaunt(ValueMap& properties) : super(properties,
 	Gaunt::MapKey,
 	EntityResources::Npcs_CastleValgrind_Gaunt_Animations,
 	EntityResources::Npcs_CastleValgrind_Gaunt_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	0.95f,
 	Vec2(0.0f, 0.0f))
 {

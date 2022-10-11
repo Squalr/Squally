@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Rings/MarineBandRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* MarineBand::clone()
 	return MarineBand::create();
 }
 
-std::string MarineBand::getItemName()
-{
-	return MarineBand::SaveKey;
-}
-
 LocalizedString* MarineBand::getString()
 {
 	return Strings::Items_Equipment_Gear_Rings_MarineBand::create();
 }
 
-std::string MarineBand::getIconResource()
+const std::string& MarineBand::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Rings_MarineBand;
 }
 
-std::string MarineBand::getSerializationKey()
+const std::string& MarineBand::getIdentifier()
 {
 	return MarineBand::SaveKey;
+}
+
+Recipe* MarineBand::getRecipe()
+{
+	return MarineBandRecipe::create();
 }

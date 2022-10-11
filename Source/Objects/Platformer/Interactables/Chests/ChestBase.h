@@ -9,7 +9,7 @@ class ChestBase : public InteractObject
 public:
 
 protected:
-	ChestBase(cocos2d::ValueMap& properties, cocos2d::Size interactSize);
+	ChestBase(cocos2d::ValueMap& properties, cocos2d::CSize interactSize);
 	virtual ~ChestBase();
 
 	void onEnter() override;
@@ -21,10 +21,10 @@ protected:
 	void open(bool doSave);
 	void close();
 
-	cocos2d::Node* chestOpen;
-	cocos2d::Node* chestClosed;
+	cocos2d::Node* chestOpen = nullptr;
+	cocos2d::Node* chestClosed = nullptr;
 
-	MinMaxPool* chestPool;
+	MinMaxPool* chestPool = nullptr;
 
 private:
 	typedef InteractObject super;

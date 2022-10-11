@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Necklaces/MarineNecklaceRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* MarineNecklace::clone()
 	return MarineNecklace::create();
 }
 
-std::string MarineNecklace::getItemName()
-{
-	return MarineNecklace::SaveKey;
-}
-
 LocalizedString* MarineNecklace::getString()
 {
 	return Strings::Items_Equipment_Gear_Necklaces_MarineNecklace::create();
 }
 
-std::string MarineNecklace::getIconResource()
+const std::string& MarineNecklace::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Necklaces_MarineNecklace;
 }
 
-std::string MarineNecklace::getSerializationKey()
+const std::string& MarineNecklace::getIdentifier()
 {
 	return MarineNecklace::SaveKey;
+}
+
+Recipe* MarineNecklace::getRecipe()
+{
+	return MarineNecklaceRecipe::create();
 }

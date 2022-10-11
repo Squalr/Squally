@@ -9,6 +9,7 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -54,6 +55,8 @@ IncrementHealth::IncrementHealth(PlatformerEntity* caster, PlatformerEntity* tar
 	this->healEffect = SmartAnimationSequenceNode::create();
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
+	
+	this->healEffect->setAnimationAnchor(Vec2(0.5f, 0.0f));
 
 	this->addChild(this->healEffect);
 	this->addChild(this->impactSound);
@@ -76,8 +79,8 @@ void IncrementHealth::onEnter()
 void IncrementHealth::initializePositions()
 {
 	super::initializePositions();
-
-	this->setPosition(Vec2(0.0f, 118.0f - this->owner->getEntityCenterPoint().y));
+	
+	this->healEffect->setPositionY(this->owner->getEntityBottomPointRelative().y - 12.0f);
 }
 
 void IncrementHealth::registerHackables()
@@ -98,7 +101,7 @@ void IncrementHealth::registerHackables()
 				Strings::Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_IncrementHealth::create(),
 				HackableBase::HackBarColor::Green,
 				UIResources::Menus_Icons_ArrowUp,
-				IncrementHealthGenericPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return IncrementHealthGenericPreview::create(); }),
 				{
 					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_RegisterEdi::create() }
 				},
@@ -112,7 +115,7 @@ void IncrementHealth::registerHackables()
 	auto restoreFunc = &IncrementHealth::runRestoreTick;
 	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
 
-	for (auto next : this->hackables)
+	for (HackableCode* next : this->hackables)
 	{
 		this->owner->registerCode(next);
 	}

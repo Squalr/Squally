@@ -7,13 +7,12 @@ class GoldenSwordPlans : public SwordRecipe
 public:
 	static GoldenSwordPlans* create();
 
-	Item* craft() override;
+	std::vector<Item*> craft() override;
 	Item* clone() override;
-	std::string getItemName() override;
 	LocalizedString* getString() override;
-	std::string getIconResource() override;
+	const std::string& getIconResource() override;
 	std::string getCraftedItemIconResource() override;
-	std::string getSerializationKey() override;
+	const std::string& getIdentifier() override;
 
 	static const std::string SaveKey;
 

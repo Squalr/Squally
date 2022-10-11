@@ -17,7 +17,7 @@
 #include "Objects/Platformer/Combat/Projectiles/Fireball/Fireball.h"
 #include "Objects/Platformer/Projectiles/ProjectilePool.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -37,7 +37,7 @@ FireLauncher* FireLauncher::create(ValueMap& properties)
 	return instance;
 }
 
-FireLauncher::FireLauncher(ValueMap& properties) : super(properties, ObjectResources::Traps_FireLauncher_Animations, 2)
+FireLauncher::FireLauncher(ValueMap& properties) : super(properties, ObjectResources::Traps_FireLauncher_Animations, false, 2)
 {
 }
 
@@ -61,12 +61,12 @@ Projectile* FireLauncher::createProjectile()
 {
 	Fireball* fireball = Fireball::create(nullptr, nullptr);
 	
-	fireball->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionObject::CollisionData collisionData)
+	fireball->whenCollidesWith({ (int)PlatformerCollisionType::Enemy }, [=](CollisionData collisionData)
 	{
 		fireball->disable(true);
 		fireball->runImpactFX();
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
 	return fireball;

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Wands/VoidWandPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* VoidWand::clone()
 	return VoidWand::create();
 }
 
-std::string VoidWand::getItemName()
-{
-	return VoidWand::SaveKey;
-}
-
 LocalizedString* VoidWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_VoidWand::create();
 }
 
-std::string VoidWand::getIconResource()
+const std::string& VoidWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_VoidWand;
 }
 
-std::string VoidWand::getSerializationKey()
+const std::string& VoidWand::getIdentifier()
 {
 	return VoidWand::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string VoidWand::getSerializationKey()
 Vec2 VoidWand::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* VoidWand::getRecipe()
+{
+	return VoidWandPlans::create();
 }

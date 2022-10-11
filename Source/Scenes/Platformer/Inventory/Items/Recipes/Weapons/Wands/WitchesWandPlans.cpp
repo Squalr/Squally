@@ -29,9 +29,9 @@ WitchesWandPlans::~WitchesWandPlans()
 {
 }
 
-Item* WitchesWandPlans::craft()
+std::vector<Item*> WitchesWandPlans::craft()
 {
-	return TaserRod::create();
+	return { TaserRod::create() };
 }
 
 std::vector<std::tuple<Item*, int>> WitchesWandPlans::getReagentsInternal()
@@ -48,17 +48,12 @@ Item* WitchesWandPlans::clone()
 	return WitchesWandPlans::create();
 }
 
-std::string WitchesWandPlans::getItemName()
-{
-	return WitchesWandPlans::SaveKey;
-}
-
 LocalizedString* WitchesWandPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_WitchesWand::create();
 }
 
-std::string WitchesWandPlans::getIconResource()
+const std::string& WitchesWandPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string WitchesWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_WitchesWand;
 }
 
-std::string WitchesWandPlans::getSerializationKey()
+const std::string& WitchesWandPlans::getIdentifier()
 {
 	return WitchesWandPlans::SaveKey;
 }

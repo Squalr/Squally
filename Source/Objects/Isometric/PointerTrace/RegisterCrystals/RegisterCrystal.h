@@ -34,9 +34,9 @@ protected:
 	static const std::string PropertyRegisterOffset;
 	static const std::string PropertyRegisterValue;
 
-	cocos2d::Node* crystalContainerNode;
-	cocos2d::Node* crystalNode;
-	LocalizedString* assemblyString;
+	cocos2d::Node* crystalContainerNode = nullptr;
+	cocos2d::Node* crystalNode = nullptr;
+	LocalizedString* assemblyString = nullptr;
 
 private:
 	typedef GridObject super;
@@ -44,12 +44,13 @@ private:
 	int runInstruction();
 	void buildInstructionString(LocalizedString* registerString, LocalizedString* instructionString, bool bindValue);
 	void buildInstructionPtrString(LocalizedString* registerString, LocalizedString* instructionString, bool bindValue);
-	int value;
-	int offset;
-	bool isPointer;
+
+	int value = 0;
+	int offset = 0;
+	bool isPointer = 0;
 	std::string instruction;
 
-	cocos2d::Sprite* shadow;
-	LocalizedLabel* assemblyLabel;
-	SmartAnimationSequenceNode* shineFx;
+	cocos2d::Sprite* shadow = nullptr;
+	LocalizedLabel* assemblyLabel = nullptr;
+	SmartAnimationSequenceNode* shineFx = nullptr;
 };

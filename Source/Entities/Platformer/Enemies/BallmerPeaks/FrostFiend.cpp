@@ -24,7 +24,7 @@ FrostFiend::FrostFiend(ValueMap& properties) : super(properties,
 	FrostFiend::MapKey,
 	EntityResources::Enemies_BallmerPeaks_FrostFiend_Animations,
 	EntityResources::Enemies_BallmerPeaks_FrostFiend_Emblem,
-	Size(212.0f, 296.0f),
+	CSize(212.0f, 296.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

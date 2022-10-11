@@ -33,22 +33,17 @@ Item* Feather::clone()
 	return Feather::create();
 }
 
-std::string Feather::getItemName()
-{
-	return Feather::SaveKey;
-}
-
 LocalizedString* Feather::getString()
 {
 	return Strings::Items_Crafting_Reagents_Feather::create();
 }
 
-std::string Feather::getIconResource()
+const std::string& Feather::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Reagents_Feather;
 }
 
-std::string Feather::getSerializationKey()
+const std::string& Feather::getIdentifier()
 {
 	return Feather::SaveKey;
 }

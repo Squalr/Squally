@@ -37,18 +37,3 @@ ShopPoolGeryon::ShopPoolGeryon(ValueMap& properties) : super(properties, ShopPoo
 ShopPoolGeryon::~ShopPoolGeryon()
 {
 }
-
-void ShopPoolGeryon::onEnter()
-{
-	super::onEnter(); 
-}
-
-void ShopPoolGeryon::initializePositions()
-{
-	super::initializePositions();
-}
-
-void ShopPoolGeryon::initializeListeners()
-{
-	super::initializeListeners();
-}

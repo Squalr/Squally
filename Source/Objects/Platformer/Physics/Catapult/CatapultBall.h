@@ -29,8 +29,8 @@ protected:
 private:
 	typedef HackableObject super;
 
-	bool isAccelerating;
-	cocos2d::Sprite* ball;
-	CollisionObject* ballCollision;
-	cocos2d::Vec2 velocity;
+	bool isAccelerating = true;
+	cocos2d::Sprite* ball = nullptr;
+	CollisionObject* ballCollision = nullptr;
+	cocos2d::Vec2 velocity = cocos2d::Vec2::ZERO;
 };

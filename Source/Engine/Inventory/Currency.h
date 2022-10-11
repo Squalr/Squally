@@ -2,9 +2,6 @@
 
 #include "Engine/SmartNode.h"
 
-class Item;
-class ItemChance;
-class Inventory;
 class LocalizedString;
 
 class Currency : public SmartNode
@@ -12,8 +9,8 @@ class Currency : public SmartNode
 public:
 	virtual LocalizedString* getString() = 0;
 	virtual LocalizedString* getStringPlural() = 0;
-	virtual std::string getIconResource() = 0;
-	virtual std::string getSerializationKey() = 0;
+	virtual const std::string& getIconResource() = 0;
+	virtual const std::string& getIdentifier() = 0;
 
 	void setCount(int count);
 	int getCount();
@@ -25,5 +22,5 @@ protected:
 private:
 	typedef SmartNode super;
 
-	int count;
+	int count = 0;
 };

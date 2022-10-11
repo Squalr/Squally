@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/MithrilMacePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* MithrilMace::clone()
 	return MithrilMace::create();
 }
 
-std::string MithrilMace::getItemName()
-{
-	return MithrilMace::SaveKey;
-}
-
 LocalizedString* MithrilMace::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_MithrilMace::create();
 }
 
-std::string MithrilMace::getIconResource()
+const std::string& MithrilMace::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Maces_MithrilMace;
 }
 
-std::string MithrilMace::getSerializationKey()
+const std::string& MithrilMace::getIdentifier()
 {
 	return MithrilMace::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string MithrilMace::getSerializationKey()
 Vec2 MithrilMace::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* MithrilMace::getRecipe()
+{
+	return MithrilMacePlans::create();
 }

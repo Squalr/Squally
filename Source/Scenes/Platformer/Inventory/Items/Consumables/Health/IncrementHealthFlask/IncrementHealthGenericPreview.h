@@ -14,11 +14,12 @@ public:
 protected:
 	IncrementHealthGenericPreview();
 	virtual ~IncrementHealthGenericPreview();
+	
 	void onEnter() override;
 	void initializePositions() override;
 
 private:
 	typedef HackablePreview super;
 
-	SmartAnimationSequenceNode* healEffect;
+	SmartAnimationSequenceNode* healEffect = nullptr;
 };

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="759">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="80" height="38" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="762">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,10 +17,9 @@
    <property name="depth" type="float" value="-3200"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="725" name="Forest/Background/GreenForestRocks1" type="decor" x="-4677.69" y="1869.3" width="13333.3" height="1140">
+  <object id="725" name="Forest/Background/GreenForestRocks1" type="decor" x="-5317.69" y="1869.3" width="20981.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -29,10 +28,9 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="723" name="Forest/Background/GreenForestGround2" type="decor" x="-4693.69" y="701.3" width="13333.3" height="1140">
+  <object id="723" name="Forest/Background/GreenForestGround2" type="decor" x="-4693.69" y="701.3" width="19701.3" height="4560">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -41,7 +39,7 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="724" name="Forest/Background/GreenForestGround3" type="decor" x="-5305.81" y="2297.6" width="14985.6" height="1116">
+  <object id="724" name="Forest/Background/GreenForestGround3" type="decor" x="-2157" y="2809.55" width="14281.6" height="1116">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
     <property name="scale" type="float" value="1.75"/>
@@ -60,6 +58,13 @@
    <polygon points="-375.22,-1780.1 955.58,-1796.06 1346.68,-1523.7 1456.65,-745.789 1426.35,-59.409 1135.28,1694.19 -457.095,1698.44 -791.484,143.354 -735.419,-1455.98"/>
   </object>
  </objectgroup>
+ <objectgroup id="74" name="decor bg -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="760" name="Generic/WoodCaveDoor1" type="decor" x="1794" y="1659.23" width="388" height="403"/>
+ </objectgroup>
  <objectgroup id="67" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
@@ -74,9 +79,16 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="743" name="Generic/WoodCaveDoor1" type="decor" x="1794" y="1659.23" width="388" height="403"/>
-  <object id="746" name="solid" type="collision" x="1291.48" y="-2.155" width="97.0303" height="2072.31"/>
-  <object id="747" name="solid" type="collision" x="4479.48" y="-632.155" width="97.0303" height="2072.31"/>
+  <object id="746" name="solid" type="collision" x="1291.48" y="-2.155" width="97.0303" height="2072.31">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="747" name="solid" type="collision" x="4479.48" y="-632.155" width="97.0303" height="2072.31">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="68" name="player_layer -4">
   <properties>
@@ -160,6 +172,12 @@
    <polygon points="-375.22,-1780.1 955.58,-1796.06 1346.68,-1523.7 1456.65,-745.789 1426.35,-59.409 1143.28,1042.19 -377.095,1050.44"/>
   </object>
  </objectgroup>
+ <objectgroup id="75" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="761" name="Generic/WoodCaveDoor1" type="decor" x="422" y="2154.5" width="388" height="403"/>
+ </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
@@ -232,7 +250,6 @@
     <property name="tag" value="help-totem-wind"/>
    </properties>
   </object>
-  <object id="699" name="Generic/WoodCaveDoor1" type="decor" x="422" y="2154.5" width="388" height="403"/>
   <object id="703" name="portal" type="object" x="484" y="2304" width="256" height="256">
    <properties>
     <property name="map" value="EndianForest/Zone_3_1"/>
@@ -272,6 +289,11 @@
     <property name="speed-y" type="float" value="-1"/>
    </properties>
   </object>
+  <object id="759" name="hexus-shrine" type="object" x="6210.38" y="3709.39" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-ogre"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
@@ -280,33 +302,33 @@
   </properties>
   <object id="690" name="orc-swordsman" type="entity" x="2483.88" y="2377.55" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value=""/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="692" name="goblin-shaman" type="entity" x="6021.82" y="1088.34" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,goblin-shaman,agro"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="693" name="orc-warrior" type="entity" x="6019.4" y="671.911" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
-  <object id="716" name="ogre" type="entity" x="6140" y="3840" width="128" height="128">
+  <object id="716" name="ogre" type="entity" x="6215.64" y="5687.39" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-F"/>
-    <property name="scale" type="float" value="0.75"/>
+    <property name="components" value="friendly,disarmed,ef-puzzle-F"/>
+    <property name="tag" value="hexus-ogre"/>
    </properties>
   </object>
  </objectgroup>
@@ -317,7 +339,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="9469.92" y="3587.62" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="736" name="spawn" type="object" x="9508.02" y="3579.5" width="128" height="128">

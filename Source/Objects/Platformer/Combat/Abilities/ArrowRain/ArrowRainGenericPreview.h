@@ -24,6 +24,6 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	cocos2d::Sprite* arrow;
+	cocos2d::Sprite* arrow = nullptr;
 	std::string arrowResource;
 };

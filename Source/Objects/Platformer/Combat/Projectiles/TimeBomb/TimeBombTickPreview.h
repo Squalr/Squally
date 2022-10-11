@@ -29,13 +29,13 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	int currentTick;
-	float elapsed;
+	int currentTick = 0;
+	float elapsed = 0.0f;
 
-	cocos2d::Sprite* timeBomb;
-	ConstantString* tickStr;
-	LocalizedLabel* tick;
-	SmartAnimationSequenceNode* explosionAnim;
+	cocos2d::Sprite* timeBomb = nullptr;
+	ConstantString* tickStr = nullptr;
+	LocalizedLabel* tick = nullptr;
+	SmartAnimationSequenceNode* explosionAnim = nullptr;
 
 	static const int MaxTick;
 };

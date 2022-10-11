@@ -16,14 +16,14 @@ public:
 	struct RequestItemDeserializationArgs
 	{
 		std::string itemSerializationKey;
-		std::function<void(Item*)> onItemDeserializedCallback;
+		std::function<void(Item*)> onItemDeserializedCallback = nullptr;
 
 		RequestItemDeserializationArgs(std::string itemSerializationKey, std::function<void(Item*)> onItemDeserializedCallback) : itemSerializationKey(itemSerializationKey), onItemDeserializedCallback(onItemDeserializedCallback) { }
 	};
 
 	struct InventoryInstanceChangedArgs
 	{
-		Inventory* instance;
+		Inventory* instance = nullptr;
 		std::string inventorySaveKey;
 
 		InventoryInstanceChangedArgs(Inventory* instance, std::string inventorySaveKey) : instance(instance), inventorySaveKey(inventorySaveKey) { }
@@ -31,7 +31,7 @@ public:
 
 	struct CurrencyInventoryInstanceChangedArgs
 	{
-		CurrencyInventory* instance;
+		CurrencyInventory* instance = nullptr;
 		std::string inventorySaveKey;
 
 		CurrencyInventoryInstanceChangedArgs(CurrencyInventory* instance, std::string inventorySaveKey) : instance(instance), inventorySaveKey(inventorySaveKey) { }

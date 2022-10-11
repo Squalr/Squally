@@ -76,7 +76,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="617.133" y="1024.28" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="717" name="spawn-wood-door" type="object" x="242.134" y="1019.48" width="128" height="128">

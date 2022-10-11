@@ -24,7 +24,7 @@ KingRedsong::KingRedsong(ValueMap& properties) : super(properties,
 	KingRedsong::MapKey,
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Animations,
 	EntityResources::Npcs_CastleValgrind_KingRedsong_Emblem,
-	Size(160.0f, 192.0f),
+	CSize(160.0f, 192.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

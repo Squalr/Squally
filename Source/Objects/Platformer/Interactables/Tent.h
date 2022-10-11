@@ -33,12 +33,11 @@ private:
 	void runHealAnimation(bool reRun = false);
 	std::vector<cocos2d::Vec2> createTentTopCollision();
 
-	cocos2d::Sprite* tentBack;
-	SmartAnimationSequenceNode* healAnimation;
-	cocos2d::Sprite* tentFront;
-	CollisionObject* topCollision;
-	CollisionObject* healCollision;
-	WorldSound* healSound;
-	
-	bool isAnimating;
+	cocos2d::Sprite* tentBack = nullptr;
+	SmartAnimationSequenceNode* healAnimation = nullptr;
+	cocos2d::Sprite* tentFront = nullptr;
+	CollisionObject* topCollision = nullptr;
+	CollisionObject* healCollision = nullptr;
+	WorldSound* healSound = nullptr;
+	bool isAnimating = false;
 };

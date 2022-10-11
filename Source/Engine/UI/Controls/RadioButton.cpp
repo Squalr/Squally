@@ -22,7 +22,6 @@ RadioButton* RadioButton::create(ClickableNode* checked, ClickableNode* unchecke
 
 RadioButton::RadioButton(ClickableNode* checked, ClickableNode* unchecked, int groupIdentifier)
 {
-	this->onCheckCallback = nullptr;
 	this->groupId = groupIdentifier;
 
 	this->checked = checked;
@@ -58,7 +57,7 @@ void RadioButton::setCheckCallback(std::function<void(RadioButton*)> callback)
 
 void RadioButton::onGroupCheck(EventCustom* event)
 {
-	int* eventGroupId = static_cast<int*>(event->getUserData());
+	int* eventGroupId = static_cast<int*>(event->getData());
 
 	if (*eventGroupId == this->groupId)
 	{
@@ -80,7 +79,7 @@ void RadioButton::check(bool invokeCallback)
 {
 	if (!this->isChecked)
 	{
-		this->getEventDispatcher()->dispatchCustomEvent(this->RadioButtonCheckEvent, &this->groupId);
+		this->getEventDispatcher()->dispatchEvent(this->RadioButtonCheckEvent, &this->groupId);
 
 		this->checked->setVisible(true);
 		this->unchecked->setVisible(false);

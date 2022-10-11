@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/WoodenClubPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* WoodenClub::clone()
 	return WoodenClub::create();
 }
 
-std::string WoodenClub::getItemName()
-{
-	return WoodenClub::SaveKey;
-}
-
 LocalizedString* WoodenClub::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_WoodenClub::create();
 }
 
-std::string WoodenClub::getIconResource()
+const std::string& WoodenClub::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Maces_WoodenClub;
 }
 
-std::string WoodenClub::getSerializationKey()
+const std::string& WoodenClub::getIdentifier()
 {
 	return WoodenClub::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string WoodenClub::getSerializationKey()
 Vec2 WoodenClub::getDisplayOffset()
 {
 	return Vec2(-4.0f, -2.0f);
+}
+
+Recipe* WoodenClub::getRecipe()
+{
+	return WoodenClubPlans::create();
 }

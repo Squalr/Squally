@@ -41,6 +41,10 @@ MechanicalFlailSetAnglePreview::MechanicalFlailSetAnglePreview()
 	this->assemblyTextNode->addChild(this->eax270Degrees);
 }
 
+MechanicalFlailSetAnglePreview::~MechanicalFlailSetAnglePreview()
+{
+}
+
 HackablePreview* MechanicalFlailSetAnglePreview::clone()
 {
 	return MechanicalFlailSetAnglePreview::create();

@@ -18,8 +18,6 @@ QuestTask::QuestTask(GameObject* owner, QuestLine* questLine, std::string questT
 	this->questLine = questLine;
 	this->questTask = questTask;
 	this->isSkippable = skippable;
-	this->hasLoaded = false;
-	this->completeCalled = false;
 
 	if (this->questLine != nullptr)
 	{
@@ -46,15 +44,33 @@ void QuestTask::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->addEventListenerIgnorePause(EventListenerCustom::create(QuestEvents::EventQuestTaskComplete + this->questLine->getQuestLine(), [=](EventCustom* eventCustom)
+	if (this->questLine != nullptr)
 	{
-		QuestEvents::QuestTaskCompleteArgs* args = static_cast<QuestEvents::QuestTaskCompleteArgs*>(eventCustom->getUserData());
-		
-		if (args != nullptr && this->questLine != nullptr && args->questLine == this->questLine->getQuestLine())
+		this->addEventListenerIgnorePause(EventListenerCustom::create(QuestEvents::EventQuestTaskComplete + this->questLine->getQuestLine(), [=](EventCustom* eventCustom)
 		{
-			this->updateState();
+			QuestEvents::QuestTaskCompleteArgs* args = static_cast<QuestEvents::QuestTaskCompleteArgs*>(eventCustom->getData());
+			
+			if (args != nullptr && this->questLine != nullptr && args->questLine == this->questLine->getQuestLine())
+			{
+				this->updateState();
+			}
+		}));
+
+		QuestLine* preReq = this->questLine->getPrereq();
+
+		if (preReq != nullptr)
+		{
+			this->addEventListenerIgnorePause(EventListenerCustom::create(QuestEvents::EventQuestTaskComplete + preReq->getQuestLine(), [=](EventCustom* eventCustom)
+			{
+				QuestEvents::QuestTaskCompleteArgs* args = static_cast<QuestEvents::QuestTaskCompleteArgs*>(eventCustom->getData());
+				
+				if (args != nullptr && this->questLine != nullptr && args->questLine == preReq->getQuestLine())
+				{
+					this->updateState();
+				}
+			}));
 		}
-	}));
+	}
 }
 
 std::string QuestTask::getQuestTaskName()
@@ -178,7 +194,7 @@ cocos2d::Value QuestTask::GetQuestSaveStateOrDefault(std::string questLine, std:
 {
 	std::string combinedKey = questLine + "_" + questTask + "_" + key;
 
-	return SaveManager::getProfileDataOrDefault(combinedKey, value);
+	return SaveManager::GetProfileDataOrDefault(combinedKey, value);
 }
 
 void QuestTask::saveQuestSaveState(std::string key, Value value)

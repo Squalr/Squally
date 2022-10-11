@@ -1,3 +1,5 @@
+#include "Objects/Platformer/ItemPools/DropPools/DataMines/DropPoolDMGeneric.h"
+#include "Objects/Platformer/ItemPools/DropPools/DataMines/DropPoolDMWeak.h"
 #include "Objects/Platformer/ItemPools/DropPools/EndianForest/DropPoolEFGeneric.h"
 #include "Objects/Platformer/ItemPools/DropPools/EndianForest/DropPoolEFGorgon.h"
 #include "Objects/Platformer/ItemPools/DropPools/EndianForest/DropPoolEFGrogg.h"

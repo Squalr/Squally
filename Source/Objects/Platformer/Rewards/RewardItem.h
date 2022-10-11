@@ -8,8 +8,6 @@ namespace cocos2d
 }
 
 class ClickableNode;
-class ConstantString;
-class LocalizedLabel;
 class ItemPreview;
 class Item;
 
@@ -35,11 +33,11 @@ private:
 	void sellItem();
 	void removeRewardItem();
 
-	ItemPreview* itemPreview;
-	Item* item;
-	cocos2d::Node* itemNode;
-	ClickableNode* itemClickHitbox;
+	ItemPreview* itemPreview = nullptr;
+	Item* item = nullptr;
+	cocos2d::Node* itemNode = nullptr;
+	ClickableNode* itemClickHitbox = nullptr;
 	std::string poolName;
 	
-	bool available;
+	bool available = false;
 };

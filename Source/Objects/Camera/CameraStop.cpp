@@ -30,11 +30,10 @@ CameraStop::CameraStop(ValueMap& properties) : super(properties)
 	this->noX = GameUtils::getKeyOrDefault(this->properties, CameraStop::PropertyNoX, Value(false)).asBool();
 	this->noY = GameUtils::getKeyOrDefault(this->properties, CameraStop::PropertyNoY, Value(false)).asBool();
 	this->debugDraw = DrawNode::create();
-	this->stopSize = Size(
+	this->stopSize = CSize(
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(32.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(32.0f)).asFloat()
 	);
-	this->isDisabled = false;
 
 	this->debugDraw->drawRect(-Vec2(this->stopSize / 2.0f), Vec2(this->stopSize / 2.0f), Color4F::GREEN);
 
@@ -63,7 +62,7 @@ void CameraStop::update(float dt)
 
 	Vec2 thisCoords = GameUtils::getWorldCoords(this);
 	Vec2 cameraCoords = GameCamera::getInstance()->getCameraPosition();
-	Size cameraSize = Director::getInstance()->getVisibleSize() * GameCamera::getInstance()->getCameraZoom();
+	CSize cameraSize = Director::getInstance()->getVisibleSize() * GameCamera::getInstance()->getCameraZoom();
 
 	Vec2 cameraDistance = thisCoords - cameraCoords;
 	Vec2 cameraInset = cameraDistance + Vec2(cameraSize / 2.0f);

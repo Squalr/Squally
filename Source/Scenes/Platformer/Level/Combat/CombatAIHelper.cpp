@@ -9,7 +9,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
@@ -54,7 +54,7 @@ void CombatAIHelper::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRequestAIAction, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::AIRequestArgs* args = static_cast<CombatEvents::AIRequestArgs*>(eventCustom->getUserData());
+		CombatEvents::AIRequestArgs* args = static_cast<CombatEvents::AIRequestArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -64,7 +64,7 @@ void CombatAIHelper::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRequestRetargetCorrection, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::AIRequestArgs* args = static_cast<CombatEvents::AIRequestArgs*>(eventCustom->getUserData());
+		CombatEvents::AIRequestArgs* args = static_cast<CombatEvents::AIRequestArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -202,6 +202,16 @@ void CombatAIHelper::selectTargets(TimelineEntry* attackingEntry)
 			this->selectTargetSelf(attackingEntry);
 			break;
 		}
+		case PlatformerAttack::TargetingType::Team:
+		{
+			this->selectTargetsTeam(attackingEntry);
+			break;
+		}
+		case PlatformerAttack::TargetingType::All:
+		{
+			this->selectTargetsTeam(attackingEntry);
+			break;
+		}
 		default:
 		case PlatformerAttack::TargetingType::Single:
 		{
@@ -302,10 +312,36 @@ void CombatAIHelper::selectTargetsMulti(TimelineEntry* attackingEntry)
 	}
 }
 
+void CombatAIHelper::selectTargetsTeam(TimelineEntry* attackingEntry)
+{
+	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+
+	for (auto next : sameTeam)
+	{
+		this->selectedTargets.push_back(next);
+	}
+}
+
+void CombatAIHelper::selectTargetsAll(TimelineEntry* attackingEntry)
+{
+	const std::vector<PlatformerEntity*>& sameTeam = attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+
+	for (auto next : sameTeam)
+	{
+		this->selectedTargets.push_back(next);
+	}
+	
+	for (auto next : otherTeam)
+	{
+		this->selectedTargets.push_back(next);
+	}
+}
+
 void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
 {
 	PlatformerEntity* attackingEntity = attackingEntry == nullptr ? nullptr : attackingEntry->getEntity();
-	EntityAttackBehavior* attackBehavior = attackingEntity == nullptr ? nullptr : attackingEntity->getAttachedBehavior<EntityAttackBehavior>();
+	EntityAttackBehavior* attackBehavior = attackingEntity == nullptr ? nullptr : attackingEntity->getComponent<EntityAttackBehavior>();
 
 	if (attackingEntry == nullptr || attackingEntity == nullptr || attackBehavior == nullptr)
 	{

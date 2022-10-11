@@ -8,7 +8,6 @@ namespace cocos2d
 }
 
 class Item;
-class LocalizedLabel;
 class LocalizedString;
 
 class FilterEntry : public MenuEntry

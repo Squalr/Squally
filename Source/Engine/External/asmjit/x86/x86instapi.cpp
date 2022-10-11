@@ -169,13 +169,13 @@ static const uint32_t _x86OpFlagFromRegType[Reg::kTypeMax + 1] = { ASMJIT_LOOKUP
 
 static const X86ValidationData _x86ValidationData = {
   { ASMJIT_LOOKUP_TABLE_32(REG_MASK_FROM_REG_TYPE_X86, 0) },
-  (1u << Reg::kTypeGpw) | (1u << Reg::kTypeGpd) | (1u << Reg::kTypeRip) | (1u << Label::kLabelTag),
+  (1u << Reg::kTypeGpw) | (1u << Reg::kTypeGpd) | (1u << Reg::kTypeRip) | (1u << AsmLabel::kLabelTag),
   (1u << Reg::kTypeGpw) | (1u << Reg::kTypeGpd) | (1u << Reg::kTypeXmm) | (1u << Reg::kTypeYmm) | (1u << Reg::kTypeZmm)
 };
 
 static const X86ValidationData _x64ValidationData = {
   { ASMJIT_LOOKUP_TABLE_32(REG_MASK_FROM_REG_TYPE_X64, 0) },
-  (1u << Reg::kTypeGpd) | (1u << Reg::kTypeGpq) | (1u << Reg::kTypeRip) | (1u << Label::kLabelTag),
+  (1u << Reg::kTypeGpd) | (1u << Reg::kTypeGpq) | (1u << Reg::kTypeRip) | (1u << AsmLabel::kLabelTag),
   (1u << Reg::kTypeGpd) | (1u << Reg::kTypeGpq) | (1u << Reg::kTypeXmm) | (1u << Reg::kTypeYmm) | (1u << Reg::kTypeZmm)
 };
 
@@ -1478,29 +1478,6 @@ Error InstInternal::queryFeatures(uint32_t archId, const BaseInst& inst, const O
   return kErrorOk;
 }
 #endif // !ASMJIT_NO_INTROSPECTION
-
-// ============================================================================
-// [asmjit::x86::InstInternal - Unit]
-// ============================================================================
-
-#if defined(ASMJIT_TEST)
-UNIT(asmjit_x86_inst_api_text) {
-  // All known instructions should be matched.
-  INFO("Matching all X86 instructions");
-  for (uint32_t a = 1; a < Inst::_kIdCount; a++) {
-    StringTmp<128> aName;
-    EXPECT(InstInternal::instIdToString(0, a, aName) == kErrorOk,
-           "Failed to get the name of instruction #%u", a);
-
-    uint32_t b = InstInternal::stringToInstId(0, aName.data(), aName.size());
-    StringTmp<128> bName;
-    InstInternal::instIdToString(0, b, bName);
-
-    EXPECT(a == b,
-           "Instructions do not match \"%s\" (#%u) != \"%s\" (#%u)", aName.data(), a, bName.data(), b);
-  }
-}
-#endif
 
 ASMJIT_END_SUB_NAMESPACE
 

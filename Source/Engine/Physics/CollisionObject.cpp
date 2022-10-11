@@ -57,42 +57,23 @@ CollisionObject::CollisionObject(const ValueMap& properties, std::vector<Vec2> p
 	super(properties)
 {
 	this->collisionType = collisionType;
-	this->collisionTypes = std::vector<CollisionType>();
 	this->points = points;
 	this->pointsRotated = points;
 	this->segments = AlgoUtils::buildSegmentsFromPoints(this->points);
 	this->segmentsRotated = this->segments;
 	this->shape = this->determineShape();
 	this->boundsRect = AlgoUtils::getPolygonRect(this->pointsRotated);
-	this->collidesWithTypes = std::set<CollisionType>();
-	this->collisionStartEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
-	this->collisionSustainEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
-	this->collisionEndEvents = std::map<CollisionType, std::vector<CollisionEvent>>();
-	this->collisionsRed = std::set<CollisionObject*>();
-	this->collisionsBlack = std::set<CollisionObject*>();
 	this->currentCollisions = &this->collisionsRed;
 	this->previousCollisions = &this->collisionsBlack;
 	this->collisionProperties = collisionProperties;
-	this->physicsEnabled = true;
-	this->gravityEnabled = collisionProperties.isDynamic;
-	this->gravityDisabledOverride = false;
-	this->bindTarget = nullptr;
-	this->debugColor = debugColor;
-	this->debugDrawNode = nullptr;
-	this->debugDrawNodeConnectors = nullptr;
-	this->debugInfoSpawned = false;
-	this->velocity = Vec2::ZERO;
-	this->acceleration = Vec2::ZERO;
 	this->gravity = Vec2(0.0f, CollisionObject::DefaultGravity);
 	this->horizontalDampening = CollisionObject::DefaultHorizontalDampening;
 	this->verticalDampening = CollisionObject::DefaultVerticalDampening;
-	this->cachedRotation = 0.0f;
-	this->cachedWorldCoords = Vec2::ZERO;
-	this->cachedWorldCoords3D = Vec3::ZERO;
-	this->cachedTick = 0;
-	this->cachedTickDepth = 0;
+	this->debugColor = debugColor;
 	this->collisionDepth = CollisionObject::CollisionZThreshold;
 	this->universeId = CollisionObject::UniverseId;
+
+	this->setGravityFlagEnabled(collisionProperties.isDynamic, (int)EngineGravityFlags::Default);
 
 	for (int shift = 0; shift <= sizeof(int) * 8; shift++)
 	{
@@ -167,13 +148,13 @@ void CollisionObject::update(float dt)
 
 void CollisionObject::runPhysics(float dt)
 {
-	if (!this->physicsEnabled)
+	if (!this->getPhysicsEnabled() || this->isDespawned())
 	{
 		return;
 	}
 
 	// Apply gravity & accel
-	this->velocity += (this->gravityEnabled && !this->gravityDisabledOverride) ? (this->gravity * dt) : Vec2::ZERO;
+	this->velocity += (this->getGravityEnabled()) ? (this->gravity * dt) : Vec2::ZERO;
 	this->velocity += this->acceleration * dt;
 
 	if (this->velocity != Vec2::ZERO)
@@ -202,11 +183,21 @@ void CollisionObject::runPhysics(float dt)
 	this->previousCollisions->clear();
 	this->previousCollisions = this->currentCollisions;
 	this->currentCollisions = this->previousCollisions == &this->collisionsBlack ? &this->collisionsRed : &this->collisionsBlack;
+	
+	if (!this->getCollisionEnabled())
+	{
+		return;
+	}
 
 	for (auto collisionType : this->collidesWithTypes)
 	{
 		for (auto collisionObject : CollisionObject::CollisionObjects[collisionType])
 		{
+			if (collisionObject->isDespawned())
+			{
+				continue;
+			}
+			
 			CollisionResolver::resolveCollision(this, collisionObject, [=]()
 			{
 				CollisionResult collisionResult = CollisionResult::DoNothing;
@@ -263,29 +254,49 @@ void CollisionObject::setCollisionDepth(float collisionDepth)
 	this->debugInfoSpawned = false;
 }
 
-void CollisionObject::setPhysicsEnabled(bool enabled)
+void CollisionObject::setGravityFlagEnabled(bool isEnabled, int flagIndex)
 {
-	this->physicsEnabled = enabled;
+	gravityDisabledFlags = MathUtils::setBit(gravityDisabledFlags, flagIndex, !isEnabled);
 }
 
-void CollisionObject::setGravityEnabled(bool isEnabled)
+bool CollisionObject::getGravityFlagEnabled(int flagIndex)
 {
-	this->gravityEnabled = isEnabled;
-}
-
-void CollisionObject::setGravityDisabledOverride(bool isDisabled)
-{
-	this->gravityDisabledOverride = isDisabled;
+	return !MathUtils::getBit(gravityDisabledFlags, flagIndex);
 }
 
 bool CollisionObject::getGravityEnabled()
 {
-	return this->gravityEnabled;
+	return gravityDisabledFlags == 0;
 }
 
-bool CollisionObject::getGravityDisabledOverride()
+void CollisionObject::setPhysicsFlagEnabled(bool isEnabled, int flagIndex)
 {
-	return this->gravityDisabledOverride;
+	physicsDisabledFlags = MathUtils::setBit(physicsDisabledFlags, flagIndex, !isEnabled);
+}
+
+bool CollisionObject::getPhysicsFlagEnabled(int flagIndex)
+{
+	return !MathUtils::getBit(physicsDisabledFlags, flagIndex);
+}
+
+bool CollisionObject::getPhysicsEnabled()
+{
+	return physicsDisabledFlags == 0;
+}
+
+void CollisionObject::setCollisionFlagEnabled(bool isEnabled, int flagIndex)
+{
+	collisionDisabledFlags = MathUtils::setBit(collisionDisabledFlags, flagIndex, !isEnabled);
+}
+
+bool CollisionObject::getCollisionFlagEnabled(int flagIndex)
+{
+	return !MathUtils::getBit(collisionDisabledFlags, flagIndex);
+}
+
+bool CollisionObject::getCollisionEnabled()
+{
+	return collisionDisabledFlags == 0;
 }
 
 Vec2 CollisionObject::getVelocity()
@@ -341,12 +352,12 @@ void CollisionObject::setAccelerationY(float accelerationY)
 
 void CollisionObject::setHorizontalDampening(float horizontalDampening)
 {
-	this->horizontalDampening =  MathUtils::clamp(horizontalDampening, 0.0f, 1.0f);
+	this->horizontalDampening = MathUtils::clamp(horizontalDampening, 0.0f, 1.0f);
 }
 
 void CollisionObject::setVerticalDampening(float verticalDampening)
 {
-	this->verticalDampening =  MathUtils::clamp(verticalDampening, 0.0f, 1.0f);
+	this->verticalDampening = MathUtils::clamp(verticalDampening, 0.0f, 1.0f);
 }
 
 const std::vector<cocos2d::Vec2>& CollisionObject::getPoints()
@@ -374,7 +385,7 @@ void CollisionObject::setPoints(std::vector<Vec2> points)
 	}
 }
 
-CollisionObject::Shape CollisionObject::getShape()
+CollisionShape CollisionObject::getShape()
 {
 	return this->shape;
 }
@@ -457,7 +468,7 @@ bool CollisionObject::wasCollidingWith(CollisionObject* collisionObject)
 
 bool CollisionObject::isCollidingWithType(int collisionType)
 {
-	for (auto next : *this->currentCollisions)
+	for (CollisionObject* next : *this->currentCollisions)
 	{
 		if (next->hasCollisionType(CollisionType(collisionType)))
 		{
@@ -470,7 +481,7 @@ bool CollisionObject::isCollidingWithType(int collisionType)
 
 bool CollisionObject::wasCollidingWithType(int collisionType)
 {
-	for (auto next : *this->previousCollisions)
+	for (CollisionObject* next : *this->previousCollisions)
 	{
 		if (next->hasCollisionType(CollisionType(collisionType)))
 		{
@@ -555,7 +566,7 @@ std::vector<Vec2> CollisionObject::createCircle(float radius, int segments)
 	return points;
 }
 
-std::vector<Vec2> CollisionObject::createBox(Size size)
+std::vector<Vec2> CollisionObject::createBox(CSize size)
 {
 	return std::vector<Vec2>({
 		Vec2(-size.width / 2.0f, -size.height / 2.0f),
@@ -565,7 +576,7 @@ std::vector<Vec2> CollisionObject::createBox(Size size)
 	});
 }
 
-std::vector<Vec2> CollisionObject::createCapsulePolygon(Size size, float capsuleRadius)
+std::vector<Vec2> CollisionObject::createCapsulePolygon(CSize size, float capsuleRadius)
 {
 	size.height = std::max(0.0f, size.height - capsuleRadius * 2.0f);
 
@@ -614,11 +625,11 @@ void CollisionObject::setThisOrBindPosition(Vec3 position)
 	this->computeWorldCoords(true);
 }
 
-CollisionObject::Shape CollisionObject::determineShape()
+CollisionShape CollisionObject::determineShape()
 {
 	if (this->points.size() == 2)
 	{
-		return Shape::Segment;
+		return CollisionShape::Segment;
 	}
 	else if (this->points.size() == 4)
 	{
@@ -630,12 +641,14 @@ CollisionObject::Shape CollisionObject::determineShape()
 		{
 			sameX += (point.x == prior.x ? 1 : 0);
 			sameY += (point.y == prior.y ? 1 : 0);
+
+			prior = point;
 		}
 
-		return (sameX == 2 && sameY == 2) ? Shape::Rectangle : Shape::Quad;
+		return (sameX == 2 && sameY == 2) ? CollisionShape::Rectangle : CollisionShape::Quad;
 	}
 
-	return Shape::Polygon;
+	return CollisionShape::Polygon;
 }
 
 void CollisionObject::computeDepth(bool force)
@@ -663,7 +676,7 @@ void CollisionObject::propagateRotation(bool force)
 {
 	float rotation = GameUtils::getRotation(this);
 
-	if (!force && rotation == this->cachedRotation )
+	if (!force && rotation == this->cachedRotation)
 	{
 		return;
 	}

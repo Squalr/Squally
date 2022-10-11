@@ -9,7 +9,7 @@ PlatformerFriendly::PlatformerFriendly(
 	std::string entityName,
 	std::string scmlResource,
 	std::string emblemResource,
-	Size size, 
+	CSize size, 
 	float scale,
 	Vec2 collisionOffset,
 	float hoverHeight

@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 
-#include "cocos/base/ccTypes.h"
-
 #include "Engine/Maps/GameObject.h"
 
 namespace cocos2d
@@ -17,22 +15,26 @@ public:
 
 	struct CullInfo
 	{
-		bool cull;
-		cocos2d::Size size;
+		bool cull = false;
+		cocos2d::CSize size;
 
-		CullInfo() : cull(false), size(cocos2d::Size::ZERO) { }
-		CullInfo(cocos2d::Size size) : cull(true), size(size) { }
+		CullInfo() : cull(false), size(cocos2d::CSize::ZERO) { }
+		CullInfo(cocos2d::CSize size) : cull(true), size(size) { }
 	};
 
 	static SmartParticles* create(std::string particleResource, CullInfo cullInfo = CullInfo());
 
-	cocos2d::ParticleSystem* getParticles();
 	void start();
 	void restart();
 	void stop(float disableUpdateAfter = 0.0f);
 	bool isActive();
 	void accelerate(float duration);
 
+	void setTotalParticles(int totalParticles);
+	void setPosVar(cocos2d::Vec2 posVar);
+	void setSourcePosition(cocos2d::Vec2 sourcePosition);
+	void setAngle(float angle);
+	void setParticleAnchorPoint(cocos2d::Vec2 anchorPoint);
 	void setGrouped();
 	void setRelative();
 	void setFree();
@@ -49,13 +51,31 @@ protected:
 private:
 	typedef GameObject super;
 
+	void tryCreateParticleInstance();
 	void optimizationHideOffscreenParticles();
 
-	bool canUpdate;
+	bool canUpdate = false;
 	CullInfo cullInfo;
 
-	cocos2d::Rect boundsRect;
-	cocos2d::DrawNode* debugDrawNode;
-	cocos2d::Node* cullContainer;
-	cocos2d::ParticleSystem* particles;
+	std::string particleResource;
+
+	// Pass through variables to cocos particles. We store them locally for better lazy initialization
+	int particleTotalParticles = 0;
+	cocos2d::Vec2 particlePosVar;
+	cocos2d::Vec2 particleSourcePosition;
+	float particleAngle = 0.0f;
+	cocos2d::Vec2 particleAnchor;
+	int particlePositionType = 0;
+
+	bool hasAnchorOverride = false;
+	bool hasPosVarOverride = false;
+	bool hasSourcePositionOverride = false;
+	bool hasTotalParticlesOverride = false;
+	bool hasAngleOverride = false;
+	bool hasPositionTypeOverride = false;
+
+	cocos2d::CRect boundsRect;
+	cocos2d::DrawNode* debugDrawNode = nullptr;
+	cocos2d::Node* cullContainer = nullptr;
+	cocos2d::ParticleSystem* particles = nullptr;
 };

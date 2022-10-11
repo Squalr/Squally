@@ -13,6 +13,7 @@
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Hackables/Menus/Clippy.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Lexicon.h"
 #include "Engine/Hackables/Menus/CodeEditor/CodeWindow.h"
@@ -20,12 +21,12 @@
 #include "Engine/Hackables/Menus/CodeEditor/ScriptList.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
+#include "Engine/Hackables/Menus/CodeEditor/CodeWindow.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Engine/UI/Controls/LabelStack.h"
-#include "Engine/UI/Controls/MenuLabel.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 
 #include "Resources/UIResources.h"
@@ -37,8 +38,8 @@ using namespace cocos2d::ui;
 
 const float CodeHud::CompileDelayMaxSeconds = 0.1f;
 const float CodeHud::LineNumberMargin = 32.0f;
-const Size CodeHud::StatusSize = Size(420.0f, 1080.0f);
-const Size CodeHud::FunctionSize = Size(840.0f, 640.0f);
+const CSize CodeHud::StatusSize = CSize(420.0f, 1080.0f);
+const CSize CodeHud::FunctionSize = CSize(840.0f, 640.0f);
 const Color4B CodeHud::SubtextColor = Color4B(66, 166, 166, 255);
 const Color4B CodeHud::HeaderColor = Color4B(188, 188, 64, 255);
 const Color4B CodeHud::ErrorColor = Color4B(196, 82, 82, 255);
@@ -56,8 +57,7 @@ CodeHud* CodeHud::create()
 CodeHud::CodeHud()
 {
 	this->timeSinceLastCompile = CodeHud::CompileDelayMaxSeconds;
-	this->activeHackableCode = nullptr;
-	this->lexicon = nullptr;
+	this->lexicon = LazyNode<Lexicon>::create(CC_CALLBACK_0(CodeHud::buildLexicon, this));
 
 	this->statusBackground = Sprite::create(UIResources::Menus_HackerModeMenu_SideBar);
 	this->rightBarBackground = Sprite::create(UIResources::Menus_HackerModeMenu_SideBar);
@@ -78,7 +78,7 @@ CodeHud::CodeHud()
 	LocalizedLabel*	cancelLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Cancel::create());
 	LocalizedLabel*	cancelLabelHover = cancelLabel->clone();
 
-	Size shadowSize = Size(-2.0f, -2.0f);
+	CSize shadowSize = CSize(-2.0f, -2.0f);
 	int shadowBlur = 2;
 	Color3B textColor = Color3B::WHITE;
 	Color4B shadowColor = Color4B::BLACK;
@@ -140,8 +140,8 @@ CodeHud::CodeHud()
 	this->lexiconButton->setTextOffset(Vec2(0.0f, -56.0f));
 	this->stuckButton->setTextOffset(Vec2(0.0f, -56.0f));
 
-	this->statusWindow->setPadding(Size(16.0f, 0.0f));
-	this->registerWindow->setPadding(Size(16.0f, 0.0f));
+	this->statusWindow->setPadding(CSize(16.0f, 0.0f));
+	this->registerWindow->setPadding(CSize(16.0f, 0.0f));
 
 	this->statusBackground->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->rightBarBackground->setAnchorPoint(Vec2(1.0f, 0.5f));
@@ -167,6 +167,7 @@ CodeHud::CodeHud()
 	this->addChild(this->lexiconButton);
 	this->addChild(this->stuckButton);
 	this->addChild(this->clippyNode);
+	this->addChild(this->lexicon);
 	this->addChild(this->confirmationMenu);
 }
 
@@ -185,7 +186,7 @@ void CodeHud::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	const float sidebarWidth = 420.0f;
 
@@ -239,7 +240,7 @@ void CodeHud::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableBaseEdit, [=](EventCustom* eventCustom)
 	{
-		HackableEvents::HackableObjectEditArgs* args = static_cast<HackableEvents::HackableObjectEditArgs*>(eventCustom->getUserData());
+		HackableObjectEditArgs* args = static_cast<HackableObjectEditArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{
@@ -250,7 +251,7 @@ void CodeHud::initializeListeners()
 	this->lexiconButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->functionWindow->unfocus();
-		this->getLexicon()->open();
+		this->lexicon->lazyGet()->open();
 	});
 	
 	this->stuckButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
@@ -259,7 +260,7 @@ void CodeHud::initializeListeners()
 	});
 }
 
-void CodeHud::open(HackableEvents::HackableObjectEditArgs* args)
+void CodeHud::open(HackableObjectEditArgs* args)
 {
 	HackableCode* hackableCode = dynamic_cast<HackableCode*>(args->hackableAttribute);
 
@@ -273,11 +274,14 @@ void CodeHud::open(HackableEvents::HackableObjectEditArgs* args)
 
 		if (hackableCode->getHackablePreview() != nullptr)
 		{
-			HackablePreview* preview = hackableCode->getHackablePreview()->clone();
+			HackablePreview* preview = hackableCode->getHackablePreview()->lazyClone();
 
-			preview->setAssemblyTextVisible(true);
+			if (preview != nullptr)
+			{
+				preview->setAssemblyTextVisible(true);
 
-			this->previewNode->addChild(preview);
+				this->previewNode->addChild(preview);
+			}
 		}
 
 		this->clippyNode->removeAllChildren();
@@ -345,202 +349,34 @@ void CodeHud::buildRegisterWindow()
 
 	this->registerWindow->clear();
 
-	auto getRegisterLabel = ([=](HackableCode::Register reg)
+	for (const HackableCode::RegisterHintInfo& registerHint : this->activeHackableCode->registerHints)
 	{
-		switch (reg)
+		LocalizedString* registerString = nullptr;
+		
+		if (registerHint.isPointer)
 		{
-			default:
-			case HackableCode::Register::zax:
+			registerString = Strings::Common_PlusPointerOffset::create()->setStringReplacementVariables(
 			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEax::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRax::create()));
-			}
-			case HackableCode::Register::zbx:
-			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEbx::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRbx::create()));
-			}
-			case HackableCode::Register::zcx:
-			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEcx::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRcx::create()));
-			}
-			case HackableCode::Register::zdx:
-			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEdx::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRdx::create()));
-			}
-			case HackableCode::Register::zdi:
-			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEdi::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRdi::create()));
-			}
-			case HackableCode::Register::zsi:
-			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEsi::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRsi::create()));
-			}
-			case HackableCode::Register::zbp:
-			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEbp::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRbp::create()));
-			}
-			case HackableCode::Register::zsp:
-			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEsp::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRsp::create()));
-			}
-			case HackableCode::Register::zip:
-			{
-				return ((sizeof(void*) == 4 ? (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterEip::create() : (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterRip::create()));
-			}
-			case HackableCode::Register::r8:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR8::create();
-			}
-			case HackableCode::Register::r9:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR9::create();
-			}
-			case HackableCode::Register::r10:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR10::create();
-			}
-			case HackableCode::Register::r11:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR11::create();
-			}
-			case HackableCode::Register::r12:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR12::create();
-			}
-			case HackableCode::Register::r13:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR13::create();
-			}
-			case HackableCode::Register::r14:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR14::create();
-			}
-			case HackableCode::Register::r15:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterR15::create();
-			}
-			case HackableCode::Register::st0:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt0::create();
-			}
-			case HackableCode::Register::st1:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt1::create();
-			}
-			case HackableCode::Register::st2:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt2::create();
-			}
-			case HackableCode::Register::st3:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt3::create();
-			}
-			case HackableCode::Register::st4:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt4::create();
-			}
-			case HackableCode::Register::st5:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt5::create();
-			}
-			case HackableCode::Register::st6:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt6::create();
-			}
-			case HackableCode::Register::st7:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterSt7::create();
-			}
-			case HackableCode::Register::xmm0:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm0::create();
-			}
-			case HackableCode::Register::xmm1:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm1::create();
-			}
-			case HackableCode::Register::xmm2:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm2::create();
-			}
-			case HackableCode::Register::xmm3:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm3::create();
-			}
-			case HackableCode::Register::xmm4:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm4::create();
-			}
-			case HackableCode::Register::xmm5:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm5::create();
-			}
-			case HackableCode::Register::xmm6:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm6::create();
-			}
-			case HackableCode::Register::xmm7:
-			{
-				return (LocalizedString*)Strings::Menus_Hacking_CodeEditor_RegisterXmm7::create();
-			}
+				HackableCode::registerToLocalizedString(registerHint.reg),
+				ConstantString::create(std::to_string(registerHint.pointerOffset))
+			});
 		}
-	});
-
-	auto tryPrintRegisterHint = [=](HackableCode::Register reg)
-	{
-		if (this->activeHackableCode->registerHints.find(reg) != this->activeHackableCode->registerHints.end())
+		else
 		{
-			LocalizedLabel* registerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, getRegisterLabel(reg));
-
-			registerLabel->setTextColor(CodeHud::RegisterColor);
-
-			this->registerWindow->insert(registerLabel);
-
-			LocalizedString* strRef = this->activeHackableCode->registerHints[reg];
-			LocalizedString* strCopy = strRef == nullptr ? nullptr : strRef->clone();
-			LocalizedLabel* registerHint = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, strCopy);
-
-			this->registerWindow->insert(registerHint);
+			registerString = HackableCode::registerToLocalizedString(registerHint.reg);
 		}
-	};
 
-	tryPrintRegisterHint(HackableCode::Register::zax);
-	tryPrintRegisterHint(HackableCode::Register::zbx);
-	tryPrintRegisterHint(HackableCode::Register::zcx);
-	tryPrintRegisterHint(HackableCode::Register::zdx);
-	tryPrintRegisterHint(HackableCode::Register::zdi);
-	tryPrintRegisterHint(HackableCode::Register::zsi);
-	tryPrintRegisterHint(HackableCode::Register::zbp);
-	tryPrintRegisterHint(HackableCode::Register::zsp);
-	tryPrintRegisterHint(HackableCode::Register::zip);
+		LocalizedLabel* registerLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, registerString);
+		registerLabel->setTextColor(CodeHud::RegisterColor);
 
-	if (sizeof(void*) == 8)
-	{
-		tryPrintRegisterHint(HackableCode::Register::r8);
-		tryPrintRegisterHint(HackableCode::Register::r9);
-		tryPrintRegisterHint(HackableCode::Register::r10);
-		tryPrintRegisterHint(HackableCode::Register::r11);
-		tryPrintRegisterHint(HackableCode::Register::r12);
-		tryPrintRegisterHint(HackableCode::Register::r13);
-		tryPrintRegisterHint(HackableCode::Register::r14);
-		tryPrintRegisterHint(HackableCode::Register::r15);
+		this->registerWindow->insert(registerLabel);
+
+		LocalizedString* strRef = registerHint.hint;
+		LocalizedString* strCopy = strRef == nullptr ? nullptr : strRef->clone();
+		LocalizedLabel* registerHintLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, strCopy);
+
+		this->registerWindow->insert(registerHintLabel);
 	}
-
-	tryPrintRegisterHint(HackableCode::Register::st0);
-	tryPrintRegisterHint(HackableCode::Register::st1);
-	tryPrintRegisterHint(HackableCode::Register::st2);
-	tryPrintRegisterHint(HackableCode::Register::st3);
-	tryPrintRegisterHint(HackableCode::Register::st4);
-	tryPrintRegisterHint(HackableCode::Register::st5);
-	tryPrintRegisterHint(HackableCode::Register::st6);
-	tryPrintRegisterHint(HackableCode::Register::st7);
-	tryPrintRegisterHint(HackableCode::Register::xmm0);
-	tryPrintRegisterHint(HackableCode::Register::xmm1);
-	tryPrintRegisterHint(HackableCode::Register::xmm2);
-	tryPrintRegisterHint(HackableCode::Register::xmm3);
-	tryPrintRegisterHint(HackableCode::Register::xmm4);
-	tryPrintRegisterHint(HackableCode::Register::xmm5);
-	tryPrintRegisterHint(HackableCode::Register::xmm6);
-	tryPrintRegisterHint(HackableCode::Register::xmm7);
 }
 
 void CodeHud::compile(std::string assemblyText)
@@ -680,9 +516,9 @@ void CodeHud::compile(std::string assemblyText)
 
 void CodeHud::onAccept()
 {
-	if (this->lexicon != nullptr)
+	if (this->lexicon->isBuilt())
 	{
-		this->lexicon->close();
+		this->lexicon->lazyGet()->close();
 	}
 
 	this->functionWindow->unfocus();
@@ -702,6 +538,7 @@ void CodeHud::onAccept()
 	this->activeHackableCode->applyCustomCode(scriptText);
 
 	this->setVisible(false);
+	GameUtils::focus(nullptr);
 	this->getParent()->setOpacity(0xFF);
 
 	HackableEvents::TriggerEditHackableBaseDone();
@@ -709,36 +546,29 @@ void CodeHud::onAccept()
 
 void CodeHud::onCancel()
 {
-	if (this->lexicon != nullptr)
+	if (this->lexicon->isBuilt())
 	{
-		this->getLexicon()->close();
+		this->lexicon->lazyGet()->close();
 	}
 
 	this->functionWindow->unfocus();
 	this->scriptList->saveScripts();
 
 	this->setVisible(false);
+	GameUtils::focus(nullptr);
 
 	HackableEvents::TriggerEditHackableBaseDone();
 }
 
-Lexicon* CodeHud::getLexicon()
+Lexicon* CodeHud::buildLexicon()
 {
-	// Lazy initialization for lexicon since it is a little bit resource intensive (several sprites, buttons)
-	if (this->lexicon == nullptr)
+	Lexicon* instance = Lexicon::create();
+
+	instance->setCloseCallBack([=]()
 	{
-		this->lexicon = Lexicon::create();
+		GameUtils::focus(this);
+		this->functionWindow->focus();
+	});
 
-		this->lexicon->setCloseCallBack([=]()
-		{
-			GameUtils::focus(this);
-			this->functionWindow->focus();
-		});
-
-		this->lexicon->setVisible(false);
-
-		this->addChild(this->lexicon);
-	}
-
-	return this->lexicon;
+	return instance;
 }

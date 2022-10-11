@@ -28,9 +28,9 @@ WoodDoorSpawn::~WoodDoorSpawn()
 {
 }
 
-void WoodDoorSpawn::onPlayerSpawn()
+void WoodDoorSpawn::onPlayerSpawn(PlatformerEntity* entity)
 {
-	super::onPlayerSpawn();
+	super::onPlayerSpawn(entity);
 
 	this->doorSound->play();
 }

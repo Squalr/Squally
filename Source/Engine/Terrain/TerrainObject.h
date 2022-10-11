@@ -1,8 +1,6 @@
 #pragma once
 #include <string>
 
-#include "cocos/base/ccTypes.h"
-
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Utils/AlgoUtils.h"
 
@@ -17,10 +15,20 @@ class TextureObject;
 class TerrainObject : public HackableObject
 {
 public:
+	struct InfillData
+	{
+		cocos2d::Color4B infillColor = cocos2d::Color4B::BLACK;
+		bool applyInfill = false;
+		bool blurInfill = false;
+
+		InfillData() { }
+		InfillData(cocos2d::Color4B infillColor, bool applyInfill, bool blurInfill) : infillColor(infillColor), applyInfill(applyInfill), blurInfill(blurInfill) { }
+	};
+
 	struct TerrainData
 	{
-		std::function<TextureObject*(cocos2d::ValueMap)> textureFactory;
-		float friction;
+		std::function<TextureObject*(cocos2d::ValueMap)> textureFactory = nullptr;
+		float friction = 0.0f;
 		std::string textureMapKeyValue;
 		std::string textureResource;
 		std::string topResource;
@@ -53,7 +61,8 @@ public:
 		cocos2d::Vec2 topConnectorConvexOffset;
 		cocos2d::Vec2 topConnectorConvexDeepOffset;
 		cocos2d::Vec2 bottomConnectorOffset;
-		cocos2d::Color4B infillColor;
+		InfillData infillData;
+		bool buildCollision = false;
 
 		TerrainData(
 			std::function<TextureObject*(cocos2d::ValueMap)> textureFactory,
@@ -90,7 +99,9 @@ public:
 			cocos2d::Vec2 topConnectorConvexOffset,
 			cocos2d::Vec2 topConnectorConvexDeepOffset,
 			cocos2d::Vec2 bottomConnectorOffset,
-			cocos2d::Color4B infillColor) :
+			InfillData infillData = InfillData(),
+			bool buildCollision = true
+			) :
 			textureFactory(textureFactory),
 			friction(friction),
 			textureMapKeyValue(textureMapKeyValue),
@@ -125,7 +136,8 @@ public:
 			topConnectorConvexOffset(topConnectorConvexOffset),
 			topConnectorConvexDeepOffset(topConnectorConvexDeepOffset),
 			bottomConnectorOffset(bottomConnectorOffset),
-			infillColor(infillColor)
+			infillData(infillData),
+			buildCollision(buildCollision)
 		{
 		}
 
@@ -134,8 +146,11 @@ public:
 		}
 	};
 
-	static std::string MapKey;
-	static std::string PropertyTopOnly;
+	void setDynamic(bool isDynamic);
+
+	static const std::string MapKey;
+	static const std::string PropertyTopOnly;
+	static const std::string PropertySkipSurfaces;
 	static unsigned int NextTerrainId;
 
 protected:
@@ -162,53 +177,63 @@ private:
 		None
 	};
 
-	void initResources();
-	void setPoints(std::vector<cocos2d::Vec2> points);
-	void rebuildTerrain(TerrainData terrainData);
+	void swapResources(std::string* resourceA, cocos2d::Vec2* offsetA, std::string* resourceB, cocos2d::Vec2* offsetB, bool flipX, bool flipY);
+	void swapResourcesForHole();
+	void swapResourcesVertical(bool flip);
 	void cullCollision();
 	void buildCollision();
 	void buildInnerTextures();
-	void buildInfill(cocos2d::Color4B infillColor);
-	void buildSurfaceShadow();
-	void buildSurfaceTextures();
-	void buildSegment(cocos2d::Node* parent, cocos2d::Sprite* sprite, cocos2d::Vec2 anchor, cocos2d::Vec2 position, float rotation, float segmentLength, TerrainObject::TileMethod tileMethod);
+	void buildInfill(InfillData infillData);
+	void buildSurfaceTextures(const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& sourceSegments,
+		const std::vector<AlgoUtils::Triangle>& sourceTriangles, bool isHole);
+	void buildSegment(cocos2d::Node* parent, cocos2d::Sprite* sprite, cocos2d::Vec2 anchor, cocos2d::Vec2 position,
+		float rotation, float segmentLength, TerrainObject::TileMethod tileMethod);
 	void maskAgainstOther(TerrainObject* other);
 	bool isTopAngle(float normalAngle);
 	bool isBottomAngle(float normalAngle);
 	bool isLeftAngle(float normalAngle);
 	bool isRightAngle(float normalAngle);
-	bool isTopCollisionFriendly(std::tuple<cocos2d::Vec2, cocos2d::Vec2>* previousSegment, std::tuple<cocos2d::Vec2, cocos2d::Vec2>* segment, std::tuple<cocos2d::Vec2, cocos2d::Vec2>* nextSegment);
+	bool isTopCollisionFriendly(std::tuple<cocos2d::Vec2, cocos2d::Vec2>* previousSegment, std::tuple<cocos2d::Vec2, cocos2d::Vec2>* segment,
+		std::tuple<cocos2d::Vec2, cocos2d::Vec2>* nextSegment);
+	void buildTerrain();
+	void updateCachedCoords(bool force = false);
 	void optimizationHideOffscreenTerrain();
 
 	TerrainData terrainData;
-	bool isTopOnlyCollision;
-	bool isInactive;
-	bool isFlipped;
-	unsigned int terrainObjectId;
+	bool isTopOnlyCollision = false;
+	bool skipSurfaces = false;
+	bool isInactive = false;
+	bool isFlipped = false;
+	bool hasBuiltTerrain = false;
+	bool isDynamic = false;
+	unsigned int terrainObjectId = 0;
+	std::string terrainHoleTag;
 
-	cocos2d::Rect drawRect;
-	cocos2d::Rect boundsRect;
-	std::vector<cocos2d::Vec2> points;
-	std::vector<cocos2d::Vec2> intersectionPoints;
+	cocos2d::CRect drawRect;
+	cocos2d::CRect boundsRect;
+	cocos2d::Vec3 cachedCoords;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> segments;
 	std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>> collisionSegments;
 	std::vector<AlgoUtils::Triangle> textureTriangles;
 	std::vector<AlgoUtils::Triangle> infillTriangles;
+	std::vector<std::vector<cocos2d::Vec2>> holes;
+	std::vector<std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>> holeSegments;
+	std::vector<std::vector<AlgoUtils::Triangle>> holeTriangles;
 
-	cocos2d::Node* rootNode;
-	cocos2d::Node* collisionNode;
-	cocos2d::Node* infillTexturesNode;
-	cocos2d::Node* infillNode;
-	cocos2d::Node* shadowsNode;
-	cocos2d::Node* leftWallNode;
-	cocos2d::Node* rightWallNode;
-	cocos2d::Node* bottomsNode;
-	cocos2d::Node* bottomCornersNode;
-	cocos2d::Node* topsNode;
-	cocos2d::Node* connectorsNode;
-	cocos2d::Node* topCornersNode;
-	cocos2d::DrawNode* debugDrawNode;
-	cocos2d::Node* debugLabelsNode;
+	cocos2d::Node* rootNode = nullptr;
+	cocos2d::Node* collisionNode = nullptr;
+	cocos2d::Node* infillTexturesNode = nullptr;
+	cocos2d::Node* infillNode = nullptr;
+	cocos2d::Node* shadowsNode = nullptr;
+	cocos2d::Node* leftWallNode = nullptr;
+	cocos2d::Node* rightWallNode = nullptr;
+	cocos2d::Node* bottomsNode = nullptr;
+	cocos2d::Node* bottomCornersNode = nullptr;
+	cocos2d::Node* topsNode = nullptr;
+	cocos2d::Node* connectorsNode = nullptr;
+	cocos2d::Node* topCornersNode = nullptr;
+	cocos2d::DrawNode* debugDrawNode = nullptr;
+	cocos2d::Node* debugLabelsNode = nullptr;
 
 	static const float ShadowDistance;
 	static const float InfillDistance;

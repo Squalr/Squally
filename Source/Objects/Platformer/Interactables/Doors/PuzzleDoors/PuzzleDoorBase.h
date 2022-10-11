@@ -7,7 +7,6 @@ namespace cocos2d
 	class Sprite;
 }
 
-class ClickableNode;
 class CollisionObject;
 class ConstantString;
 class InteractMenu;
@@ -28,7 +27,7 @@ public:
 
 protected:
 	PuzzleDoorBase(cocos2d::ValueMap& properties,
-		cocos2d::Size doorClipSize,
+		cocos2d::CSize doorClipSize,
 		cocos2d::Vec2 doorClipOffset,
 		cocos2d::Vec2 portalOffset,
 		cocos2d::Vec2 indexPosition,
@@ -45,45 +44,46 @@ protected:
 	virtual void runOperation(int puzzleIndex) = 0;
 	void setRealValue(int value);
 	void setHackValue(int value);
-
-	cocos2d::Node* backNode;
-	cocos2d::Node* doorNode;
-	SmartClippingNode* doorClip;
-	cocos2d::Node* frontNode;
-	WorldSound* doorOpenSound;
-	WorldSound* sliderSound;
-	WorldSound* sliderResetSound;
-	WorldSound* electricitySound;
+	
+	cocos2d::Node* backNode = nullptr;
+	cocos2d::Node* doorNode = nullptr;
+	SmartClippingNode* doorClip = nullptr;
+	cocos2d::Node* frontNode = nullptr;
+	WorldSound* doorOpenSound = nullptr;
+	WorldSound* sliderSound = nullptr;
+	WorldSound* sliderResetSound = nullptr;
+	WorldSound* electricitySound = nullptr;
 
 	static const std::string UnlockedSaveKey;
 
 private:
 	typedef Portal super;
-	cocos2d::Sprite* barLeft;
-	cocos2d::Sprite* barRight;
-	cocos2d::Sprite* lightLeft;
-	cocos2d::Sprite* lightRight;
-	cocos2d::Sprite* marker;
+
+	cocos2d::Sprite* barLeft = nullptr;
+	cocos2d::Sprite* barRight = nullptr;
+	cocos2d::Sprite* lightLeft = nullptr;
+	cocos2d::Sprite* lightRight = nullptr;
+	cocos2d::Sprite* marker = nullptr;
 	std::vector<cocos2d::Sprite*> runes;
 	std::vector<cocos2d::Sprite*> runesPassed;
 	std::vector<cocos2d::Sprite*> runesFailed;
-	ConstantString* indexString;
-	ConstantString* truthString;
-	ConstantString* hackableString;
-	LocalizedLabel* indexLabel;
-	LocalizedLabel* truthLabel;
-	LocalizedLabel* hackableLabel;
+	ConstantString* indexString = nullptr;
+	ConstantString* truthString = nullptr;
+	ConstantString* hackableString = nullptr;
+	LocalizedLabel* indexLabel = nullptr;
+	LocalizedLabel* truthLabel = nullptr;
+	LocalizedLabel* hackableLabel = nullptr;
 
 	// Positioning parameters
-	cocos2d::Size doorClipSize;
+	cocos2d::CSize doorClipSize;
 	cocos2d::Vec2 doorClipOffset;
 	cocos2d::Vec2 portalOffset;
 	cocos2d::Vec2 indexPosition;
 	cocos2d::Vec2 hackLabelPosition;
 	cocos2d::Vec2 truthLabelPosition;
 	cocos2d::Vec2 runeBasePosition;
-	float runeSpacing;
-	float doorOpenDelta;
+	float runeSpacing = 0.0f;
+	float doorOpenDelta = 0.0f;
 
 	enum RuneState
 	{
@@ -92,13 +92,13 @@ private:
 		Failed
 	};
 
-	bool unlockedByDefault;
-	bool firstRun;
-	bool isUnlocked;
+	bool unlockedByDefault = false;
+	bool firstRun = false;
+	bool isUnlocked = false;
 	RuneState runeStates[4];
-	int puzzleIndex;
-	int realValue;
-	int hackValue;
+	int puzzleIndex = 0;
+	int realValue = 0;
+	int hackValue = 0;
 
 	static const int RuneCount;
 	static const cocos2d::Color4B PassColor;

@@ -21,34 +21,35 @@ public:
 
 protected:
 	SaveSelectMenu();
-	~SaveSelectMenu();
+	virtual ~SaveSelectMenu();
 
-private:
-	typedef GlobalScene super;
 	void onEnter() override;
 	void initializeListeners() override;
 	void initializePositions() override;
+
+private:
+	typedef GlobalScene super;
 
 	void buildSaveButtons();
 	ClickableTextNode* buildSaveButton(int profileId);
 	ClickableNode* buildDeleteButton(int profileId);
 	cocos2d::Node* buildSaveGameContent(int profileId);
 	cocos2d::Node* buildEntityFrame(PlatformerEntity* entity, cocos2d::Vec2 offsetAdjustment, int eq);
-	std::string getBackgroundResourceForCurrentSaveProfile();
+	cocos2d::Sprite* getBackgroundForCurrentSaveProfile();
 	void loadSave();
 	void goBack();
 
-	cocos2d::Node* backgroundNode;
-	cocos2d::Sprite* saveSelectWindow;
-	cocos2d::Node* saveButtonNode;
-	ClickableTextNode* saveGameButton0;
-	ClickableTextNode* saveGameButton1;
-	ClickableTextNode* saveGameButton2;
-	ClickableNode* closeButton;
-	ClickableTextNode* returnButton;
-	LocalizedLabel* titleLabel;
-	ConfirmationMenu* confirmationMenu;
-	PlatformerEntityDeserializer* platformerEntityDeserializer;
+	cocos2d::Node* backgroundNode = nullptr;
+	cocos2d::Sprite* saveSelectWindow = nullptr;
+	cocos2d::Node* saveButtonNode = nullptr;
+	ClickableTextNode* saveGameButton0 = nullptr;
+	ClickableTextNode* saveGameButton1 = nullptr;
+	ClickableTextNode* saveGameButton2 = nullptr;
+	ClickableNode* closeButton = nullptr;
+	ClickableTextNode* returnButton = nullptr;
+	LocalizedLabel* titleLabel = nullptr;
+	ConfirmationMenu* confirmationMenu = nullptr;
+	PlatformerEntityDeserializer* platformerEntityDeserializer = nullptr;
 
-	static SaveSelectMenu* instance;
+	static SaveSelectMenu* Instance;
 };

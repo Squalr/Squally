@@ -24,7 +24,7 @@ Knight::Knight(ValueMap& properties) : super(properties,
 	Knight::MapKey,
 	EntityResources::Helpers_CastleValgrind_Knight_Animations,
 	EntityResources::Helpers_CastleValgrind_Knight_Emblem,
-	Size(224.0f, 440.0f),
+	CSize(224.0f, 440.0f),
 	0.3f,
 	Vec2(0.0f, 0.0f))
 {

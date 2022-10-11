@@ -7,7 +7,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/CombatUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/CurseOfTongues/CurseOfTongues.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -70,7 +70,7 @@ void CastCurseOfTongues::performAttack(PlatformerEntity* owner, std::vector<Plat
 
 	for (auto next : targets)
 	{
-		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->applyBuff(CurseOfTongues::create(owner, next));
 		});
@@ -99,7 +99,7 @@ bool CastCurseOfTongues::isWorthUsing(PlatformerEntity* caster, const std::vecto
 			continue;
 		}
 
-		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->getBuff<CurseOfTongues>([&](CurseOfTongues* debuff)
 			{
@@ -115,7 +115,7 @@ float CastCurseOfTongues::getUseUtility(PlatformerEntity* caster, PlatformerEnti
 {
 	float utility = CombatUtils::HasDuplicateCastOnLivingTarget(caster, target, [](PlatformerAttack* next) { return dynamic_cast<CastCurseOfTongues*>(next) != nullptr;  }) ? 0.0f : 1.0f;
 
-	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->getBuff<CurseOfTongues>([&](CurseOfTongues* debuff)
 		{

@@ -6,15 +6,14 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/InputBolt.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/OutputBolt.h"
-#include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
 
@@ -28,17 +27,6 @@ BlockBase::BlockBase(BlockType blockType, ConnectionType inputType, ConnectionTy
 	this->blockType = blockType;
 	this->inputType = inputType;
 	this->outputType = outputType;
-	this->spawnPosition = Vec2::ZERO;
-	this->originalPosition = Vec2::ZERO;
-	this->clickDelta = Vec2::ZERO;
-	this->inputBoltLeft = nullptr;
-	this->inputBoltRight = nullptr;
-	this->outputBoltLeft = nullptr;
-	this->outputBoltRight = nullptr;
-	this->inputLeft = 0;
-	this->inputRight = 0;
-	this->spawningBlock = nullptr;
-	this->receivedInputs = 0;
 
 	this->label->enableOutline(Color4B::BLACK, 2);
 	this->label->setOpacity(0);
@@ -200,14 +188,14 @@ void BlockBase::onAnyStateChange(CipherState* cipherState)
 
 bool BlockBase::isInGameArea()
 {
-	Size visibleSize = Director::getInstance()->getVisibleSize();
-	Vec2 center = Vec2(visibleSize.width / 2.0f + Config::LeftColumnCenter, visibleSize.height / 2.0f);
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
+	Vec2 center = Vec2(visibleSize.width / 2.0f + CipherConfig::LeftColumnCenter, visibleSize.height / 2.0f);
 	Vec2 thisPosition = GameUtils::getScreenBounds(this).origin;
 
-	if (thisPosition.x > center.x - Config::GameAreaWidth / 2.0f &&
-		thisPosition.x < center.x + Config::GameAreaWidth / 2.0f &&
-		thisPosition.y > center.y - Config::GameAreaHeight / 2.0f &&
-		thisPosition.y < center.y + Config::GameAreaHeight / 2.0f)
+	if (thisPosition.x > center.x - CipherConfig::GameAreaWidth / 2.0f &&
+		thisPosition.x < center.x + CipherConfig::GameAreaWidth / 2.0f &&
+		thisPosition.y > center.y - CipherConfig::GameAreaHeight / 2.0f &&
+		thisPosition.y < center.y + CipherConfig::GameAreaHeight / 2.0f)
 	{
 		return true;
 	}

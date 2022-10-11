@@ -4,9 +4,7 @@
 #include "Engine/Hackables/HackableObject.h"
 
 class CollisionObject;
-class HackableData;
-class InteractMenu;
-class Squally;
+class PlatformerEntity;
 
 class PortalSpawn : public HackableObject
 {
@@ -25,17 +23,17 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	virtual void onPlayerSpawn();
+	virtual void onPlayerSpawn(PlatformerEntity* entity);
 
 private:
 	typedef HackableObject super;
 
-	void doRelayer(Squally* squally);
+	void doRelayer(PlatformerEntity* entity);
 	void applyZoomOverride();
 	void tryShowBanner();
 
 	std::string transition;
 	std::string bannerName;
-	bool flipX;
-	float zoomOverride;
+	bool flipX = false;
+	float zoomOverride = 0.0f;
 };

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier6/DemonShellPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* DemonShell::clone()
 	return DemonShell::create();
 }
 
-std::string DemonShell::getItemName()
-{
-	return DemonShell::SaveKey;
-}
-
 LocalizedString* DemonShell::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_DemonShell::create();
 }
 
-std::string DemonShell::getIconResource()
+const std::string& DemonShell::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_DemonShell;
 }
 
-std::string DemonShell::getSerializationKey()
+const std::string& DemonShell::getIdentifier()
 {
 	return DemonShell::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string DemonShell::getSerializationKey()
 Vec2 DemonShell::getDisplayOffset()
 {
 	return Vec2(6.0f, -34.0f);
+}
+
+Recipe* DemonShell::getRecipe()
+{
+	return DemonShellPlans::create();
 }

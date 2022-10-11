@@ -36,18 +36,3 @@ ShopPoolMinos::ShopPoolMinos(ValueMap& properties) : super(properties, ShopPoolM
 ShopPoolMinos::~ShopPoolMinos()
 {
 }
-
-void ShopPoolMinos::onEnter()
-{
-	super::onEnter(); 
-}
-
-void ShopPoolMinos::initializePositions()
-{
-	super::initializePositions();
-}
-
-void ShopPoolMinos::initializeListeners()
-{
-	super::initializeListeners();
-}

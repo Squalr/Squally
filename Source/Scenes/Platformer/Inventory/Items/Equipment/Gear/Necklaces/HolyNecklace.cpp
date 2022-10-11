@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Necklaces/HolyNecklaceRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* HolyNecklace::clone()
 	return HolyNecklace::create();
 }
 
-std::string HolyNecklace::getItemName()
-{
-	return HolyNecklace::SaveKey;
-}
-
 LocalizedString* HolyNecklace::getString()
 {
 	return Strings::Items_Equipment_Gear_Necklaces_HolyNecklace::create();
 }
 
-std::string HolyNecklace::getIconResource()
+const std::string& HolyNecklace::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Necklaces_HolyNecklace;
 }
 
-std::string HolyNecklace::getSerializationKey()
+const std::string& HolyNecklace::getIdentifier()
 {
 	return HolyNecklace::SaveKey;
+}
+
+Recipe* HolyNecklace::getRecipe()
+{
+	return HolyNecklaceRecipe::create();
 }

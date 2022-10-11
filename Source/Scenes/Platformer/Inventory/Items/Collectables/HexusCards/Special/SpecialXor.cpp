@@ -21,7 +21,7 @@ SpecialXor* SpecialXor::create()
 	return instance;
 }
 
-SpecialXor::SpecialXor() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), ItemMeta(3, 3))
+SpecialXor::SpecialXor() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 37 }}), ItemMeta(3, 3))
 {
 }
 
@@ -34,22 +34,17 @@ Item* SpecialXor::clone()
 	return SpecialXor::create();
 }
 
-std::string SpecialXor::getItemName()
-{
-	return SpecialXor::SaveKey;
-}
-
 LocalizedString* SpecialXor::getString()
 {
 	return Strings::Hexus_Cards_LogicalXor::create();
 }
 
-std::string SpecialXor::getIconResource()
+const std::string& SpecialXor::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialXor::getSerializationKey()
+const std::string& SpecialXor::getIdentifier()
 {
 	return SpecialXor::SaveKey;
 }

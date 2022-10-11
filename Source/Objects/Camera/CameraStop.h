@@ -33,11 +33,11 @@ protected:
 private:
 	typedef GameObject super;
 
-	bool soft;
-	bool noX;
-	bool noY;
-	bool isDisabled;
+	bool soft = false;
+	bool noX = false;
+	bool noY = false;
+	bool isDisabled = false;
 
-	cocos2d::DrawNode* debugDraw;
-	cocos2d::Size stopSize;
+	cocos2d::DrawNode* debugDraw = nullptr;
+	cocos2d::CSize stopSize;
 };

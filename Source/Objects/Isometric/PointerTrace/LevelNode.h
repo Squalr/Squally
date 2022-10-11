@@ -34,12 +34,12 @@ private:
 	std::string getSaveKey();
 	std::string getPreviousSaveKey();
 
-	int levelIndex;
-	int groupIndex;
-	bool isGroupFinale;
-	cocos2d::Sprite* disabledSprite;
-	ClickableNode* sprite;
-	LocalizedLabel* indexLabel;
+	int levelIndex = 0;
+	int groupIndex = 0;
+	bool isGroupFinale = false;
+	cocos2d::Sprite* disabledSprite = nullptr;
+	ClickableNode* sprite = nullptr;
+	LocalizedLabel* indexLabel = nullptr;
 
 	static const std::string PropertyMapFile;
 	static const std::string PropertyGroupIndex;

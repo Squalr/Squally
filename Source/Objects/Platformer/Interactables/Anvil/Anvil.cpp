@@ -32,15 +32,13 @@ Anvil* Anvil::create(ValueMap& properties)
 	return instance;
 }
 
-Anvil::Anvil(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(192.0f, 440.0f))
+Anvil::Anvil(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, CSize(256.0f, 128.0f))
 {
 	this->anvil = Sprite::create(ObjectResources::Interactive_Anvil_Anvil);
 	this->shine = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->hammer = Sprite::create(ObjectResources::Interactive_Anvil_AnvilHammer);
 	this->floatContainer = Node::create();
-	this->recipes = std::vector<Item*>();
 	this->recipePoolName = GameUtils::getKeyOrDefault(this->properties, RecipePoolDeserializer::MapKeyTypeRecipePool, Value("")).asString();
-	this->recipePool = nullptr;
 	this->recipePoolDeserializer = RecipePoolDeserializer::create();
 	
 	this->floatContainer->addChild(this->shine);
@@ -82,9 +80,9 @@ void Anvil::initializeListeners()
 	super::initializeListeners();
 }
 
-void Anvil::onInteract()
+void Anvil::onInteract(PlatformerEntity* interactingEntity)
 {
-	super::onInteract();
+	super::onInteract(interactingEntity);
 
 	PlatformerEvents::TriggerOpenSmithing(PlatformerEvents::CraftingOpenArgs(this->recipes));
 }

@@ -33,13 +33,8 @@ RadialScrollMenu::RadialScrollMenu(float radius, float angleDelta)
 	this->radius = radius;
 	this->buttonsNode = Node::create();
 	this->arrow = Sprite::create(UIResources::Combat_Arrow);
-	this->buttons = std::vector<RadialEntry*>();
 	this->indexChangeSound = Sound::create(SoundResources::Menus_ButtonRollover1);
 	this->errorSound = Sound::create(SoundResources::Menus_Error1);
-	this->currentIndex = 0;
-	this->focused = true;
-	this->isTimelineCinematicPaused = false;
-	this->backCallback = nullptr;
 	this->angleDelta = angleDelta;
 
 	this->addChild(this->buttonsNode);
@@ -73,7 +68,7 @@ void RadialScrollMenu::initializeListeners()
 		this->isTimelineCinematicPaused = false;
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_W, EventKeyboard::KeyCode::KEY_UP_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_W, InputEvents::KeyCode::KEY_UP_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->focused && !this->isTimelineCinematicPaused)
 		{
@@ -82,7 +77,7 @@ void RadialScrollMenu::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_S, EventKeyboard::KeyCode::KEY_DOWN_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_S, InputEvents::KeyCode::KEY_DOWN_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->focused && !this->isTimelineCinematicPaused)
 		{
@@ -109,7 +104,7 @@ void RadialScrollMenu::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_BACKSPACE, EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE, InputEvents::KeyCode::KEY_BACKSPACE, InputEvents::KeyCode::KEY_A, InputEvents::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->focused && !this->isTimelineCinematicPaused && this->backCallback != nullptr)
 		{
@@ -118,7 +113,7 @@ void RadialScrollMenu::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE, EventKeyboard::KeyCode::KEY_ENTER, EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE, InputEvents::KeyCode::KEY_ENTER, InputEvents::KeyCode::KEY_D, InputEvents::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->focused && !this->isTimelineCinematicPaused)
 		{

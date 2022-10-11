@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Necklaces/TopazPendantRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* TopazPendant::clone()
 	return TopazPendant::create();
 }
 
-std::string TopazPendant::getItemName()
-{
-	return TopazPendant::SaveKey;
-}
-
 LocalizedString* TopazPendant::getString()
 {
 	return Strings::Items_Equipment_Gear_Necklaces_TopazPendant::create();
 }
 
-std::string TopazPendant::getIconResource()
+const std::string& TopazPendant::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Necklaces_TopazPendant;
 }
 
-std::string TopazPendant::getSerializationKey()
+const std::string& TopazPendant::getIdentifier()
 {
 	return TopazPendant::SaveKey;
+}
+
+Recipe* TopazPendant::getRecipe()
+{
+	return TopazPendantRecipe::create();
 }

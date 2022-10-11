@@ -10,7 +10,7 @@ class GlobalHackAttributeContainer : public GlobalNode
 public:
 	static GlobalHackAttributeContainer* create();
 
-	static void registerGlobalNode();
+	static void RegisterGlobalNode();
 	static HackableCode* GetHackableCode(void* startAddress);
 	static void RegisterHackableCode(HackableCode* hackableCode);
 	static HackActivatedAbility* GetHackActivatedAbility(std::string identifier);
@@ -29,8 +29,8 @@ private:
 
 	std::map<void*, HackableCode*> codeMap;
 	std::map<std::string, HackActivatedAbility*> abilityMap;
-	cocos2d::Node* hackableCodeContainer;
-	cocos2d::Node* hackableAbilityContainer;
+	cocos2d::Node* hackableCodeContainer = nullptr;
+	cocos2d::Node* hackableAbilityContainer = nullptr;
 
-	static GlobalHackAttributeContainer* instance;
+	static GlobalHackAttributeContainer* Instance;
 };

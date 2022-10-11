@@ -11,6 +11,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -39,12 +40,11 @@ const float PivotLauncher::DefaultLaunchSpeed = 320.0f;
 const float PivotLauncher::LaunchCooldownMin = 2.0f;
 const float PivotLauncher::LaunchCooldownMax = 4.0f;
 
-PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource, int projectilePoolCapacity) : super(properties)
+PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource, bool skipRegisterHackables, int projectilePoolCapacity) : super(properties)
 {
 	this->containerNode = Node::create();
 	this->launcherAnimations = SmartAnimationNode::create(animationResource);
 	this->projectilePool = ProjectilePool::create([=](){ return this->createProjectile(); }, projectilePoolCapacity);
-	this->launchTimer = 0.0f;
 	this->cannon = this->launcherAnimations->getAnimationPart(PivotLauncher::PivotBone);
 	this->targetQueryKey = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyPivotTarget, Value("")).asString();
 	this->isFixed = GameUtils::keyExists(this->properties, PivotLauncher::PropertyFixed);
@@ -52,8 +52,9 @@ PivotLauncher::PivotLauncher(ValueMap& properties, std::string animationResource
 	this->fixedAngle = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyFixed, Value(0.0f)).asFloat();
 	this->launchSpeed = GameUtils::getKeyOrDefault(this->properties, PivotLauncher::PropertyLaunchSpeed, Value(320.0f)).asFloat();
 	this->currentAngle = this->fixedAngle;
-	this->target = nullptr;
-	this->isAutoLaunch = true;
+	this->skipRegisterHackables = skipRegisterHackables;
+
+	this->setContentSize(CSize(128.0f, 192.0f));
 
 	this->launcherAnimations->playAnimation();
 	this->launcherAnimations->setPositionY(-GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat() / 2.0f);
@@ -118,6 +119,11 @@ void PivotLauncher::registerHackables()
 {
 	super::registerHackables();
 
+	if (this->skipRegisterHackables)
+	{
+		return;
+	}
+	
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
@@ -127,7 +133,7 @@ void PivotLauncher::registerHackables()
 				Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_UpdateLaunchTimer::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_CrossHair,
-				this->getTimerPreview(),
+				LazyNode<HackablePreview>::create([=](){ return this->getTimerPreview(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterEax::create() },
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm0::create() },
@@ -143,7 +149,7 @@ void PivotLauncher::registerHackables()
 	auto swingFunc = &PivotLauncher::updateShootTimer;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)swingFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}
@@ -167,16 +173,11 @@ void PivotLauncher::setAutoLaunch(bool isAutoLaunch)
 bool PivotLauncher::rangeCheck()
 {
 	// It may be ideal for this to be configurable. Fixed-angle launchers can get away with this being a high value, but player-tracking launchers would want this to be low.
-	static const Size Padding = Size(1024.0f, 512.0f);
+	static const CSize Padding = CSize(1024.0f, 512.0f);
+	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
+	CRect thisRect = GameUtils::getScreenBounds(this, Padding);
 
-	float zoom = GameCamera::getInstance()->getCameraZoomOnTarget(this);
-	Size clipSize = (Director::getInstance()->getVisibleSize() + Padding) * zoom;
-	Rect cameraRect = Rect(GameCamera::getInstance()->getCameraPosition() - Vec2(clipSize.width / 2.0f, clipSize.height / 2.0f), clipSize);
-	Rect thisRect = GameUtils::getScreenBounds(this);
-
-	thisRect.origin += GameUtils::getWorldCoords(this);
-
-	return cameraRect.intersectsRect(thisRect);
+	return CameraRect.intersectsRect(thisRect);
 }
 
 void PivotLauncher::shoot()

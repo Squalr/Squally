@@ -26,7 +26,6 @@ CurrencyInventory* CurrencyInventory::create(std::map<std::string, int> currency
 CurrencyInventory::CurrencyInventory(std::map<std::string, int> currency, std::string saveKey)
 {
 	this->saveKey = saveKey;
-	this->currencyMap = ValueMap();
 	this->load();
 
 	for (auto next : currency)
@@ -50,7 +49,7 @@ void CurrencyInventory::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(InventoryEvents::EventCurrencyInventoryInstanceChangedPrefix + this->saveKey, [=](EventCustom* eventCustom)
 	{
-		InventoryEvents::CurrencyInventoryInstanceChangedArgs* args = static_cast<InventoryEvents::CurrencyInventoryInstanceChangedArgs*>(eventCustom->getUserData());
+		InventoryEvents::CurrencyInventoryInstanceChangedArgs* args = static_cast<InventoryEvents::CurrencyInventoryInstanceChangedArgs*>(eventCustom->getData());
 		
 		this->load();
 		if (args != nullptr && args->instance != this)
@@ -111,6 +110,6 @@ void CurrencyInventory::load()
 {
 	if (!this->saveKey.empty())
 	{
-		this->currencyMap = SaveManager::getProfileDataOrDefault(this->saveKey, Value(ValueMap())).asValueMap();
+		this->currencyMap = SaveManager::GetProfileDataOrDefault(this->saveKey, Value(ValueMap())).asValueMap();
 	}
 }

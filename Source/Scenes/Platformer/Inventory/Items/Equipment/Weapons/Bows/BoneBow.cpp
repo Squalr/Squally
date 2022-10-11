@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Bows/BoneBowPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* BoneBow::clone()
 	return BoneBow::create();
 }
 
-std::string BoneBow::getItemName()
-{
-	return BoneBow::SaveKey;
-}
-
 LocalizedString* BoneBow::getString()
 {
 	return Strings::Items_Equipment_Weapons_Bows_BoneBow::create();
 }
 
-std::string BoneBow::getIconResource()
+const std::string& BoneBow::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Bows_BoneBow;
 }
 
-std::string BoneBow::getSerializationKey()
+const std::string& BoneBow::getIdentifier()
 {
 	return BoneBow::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string BoneBow::getSerializationKey()
 Vec2 BoneBow::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* BoneBow::getRecipe()
+{
+	return BoneBowPlans::create();
 }

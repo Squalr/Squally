@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="86" nextobjectid="1254">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="87" nextobjectid="1268">
  <objectgroup id="1" name="meta">
   <properties>
-   <property name="background" value="SkyYellow"/>
+   <property name="background" value="BrightSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value="limestone-temple"/>
+   <property name="mini-map-item" value="temple-map"/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="3"/>
    <property name="show-cracks" type="bool" value="true"/>
@@ -17,30 +18,82 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1228" name="temple-dark" type="texture" x="-736" y="-816" width="5728" height="7008"/>
+  <object id="1228" name="temple-dark" type="terrain" x="-736" y="-816" width="5728" height="7008">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="hole-tag" value="hole-A"/>
+    <property name="skip-surfaces" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="82" name="decor -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="990" name="Ruins/Window" type="decor" x="771.485" y="3940" width="313" height="381"/>
-  <object id="991" name="Ruins/Window" type="decor" x="1607.5" y="3940" width="313" height="381"/>
-  <object id="992" name="Ruins/Window" type="decor" x="-296.5" y="3940" width="313" height="381"/>
-  <object id="994" name="Ruins/Window" type="decor" x="2913.49" y="3940" width="313" height="381"/>
-  <object id="995" name="Ruins/Window" type="decor" x="3749.51" y="3940" width="313" height="381"/>
-  <object id="996" name="Ruins/Window" type="decor" x="2697.49" y="641.5" width="313" height="381"/>
-  <object id="997" name="Ruins/Window" type="decor" x="3533.51" y="641.5" width="313" height="381"/>
+  <object id="990" name="Ruins/WindowTransparent" type="decor" x="771.485" y="3940" width="313" height="381"/>
+  <object id="991" name="Ruins/WindowTransparent" type="decor" x="1607.5" y="3940" width="313" height="381"/>
+  <object id="992" name="Ruins/WindowTransparent" type="decor" x="-296.5" y="3940" width="313" height="381"/>
+  <object id="994" name="Ruins/WindowTransparent" type="decor" x="2913.49" y="3940" width="313" height="381"/>
+  <object id="995" name="Ruins/WindowTransparent" type="decor" x="3749.51" y="3940" width="313" height="381"/>
+  <object id="996" name="Ruins/WindowTransparent" type="decor" x="2697.49" y="641.5" width="313" height="381"/>
+  <object id="997" name="Ruins/WindowTransparent" type="decor" x="3533.51" y="641.5" width="313" height="381"/>
   <object id="998" name="torch" type="object" x="306.045" y="4303.92" width="42" height="130"/>
   <object id="999" name="torch" type="object" x="1341.55" y="4320" width="42" height="130"/>
   <object id="1000" name="torch" type="object" x="3515" y="4319" width="42" height="130"/>
   <object id="1001" name="torch" type="object" x="5844" y="4500" width="42" height="130"/>
   <object id="1003" name="torch" type="object" x="5163" y="4500" width="42" height="130"/>
-  <object id="1006" name="Ruins/Window" type="decor" x="3067.5" y="2225.5" width="313" height="381"/>
+  <object id="1006" name="Ruins/WindowTransparent" type="decor" x="3067.5" y="2225.5" width="313" height="381"/>
   <object id="1007" name="torch" type="object" x="2763.25" y="2388" width="42" height="130"/>
   <object id="1008" name="torch" type="object" x="3586.75" y="2388" width="42" height="130"/>
-  <object id="1011" name="Ruins/Window" type="decor" x="5095.5" y="649.5" width="313" height="381"/>
+  <object id="1011" name="Ruins/WindowTransparent" type="decor" x="5095.5" y="649.5" width="313" height="381"/>
   <object id="1027" name="torch" type="object" x="3235" y="1063" width="42" height="130"/>
+ </objectgroup>
+ <objectgroup id="86" name="objects -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1257" name="terrain-hole" type="object" x="-226.333" y="4009.83" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1258" name="terrain-hole" type="object" x="845.667" y="4021.83" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1259" name="terrain-hole" type="object" x="1681" y="4023.83" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1260" name="terrain-hole" type="object" x="2983" y="4011.17" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1261" name="terrain-hole" type="object" x="3137.67" y="2289.17" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1262" name="terrain-hole" type="object" x="2767.73" y="706.44" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1263" name="terrain-hole" type="object" x="3605.67" y="715.167" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1264" name="terrain-hole" type="object" x="5172.58" y="715.288" width="170" height="260.333">
+   <properties>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="84" name="bg -6">
   <properties>
@@ -53,7 +106,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="74" name="terrain -6">
+ <objectgroup id="74" name="terrain -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -125,7 +178,7 @@
   </properties>
   <object id="972" name="goblin-grunt-boar" type="entity" x="1122.79" y="4595.52" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
@@ -209,7 +262,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="18" name="background">
+ <objectgroup id="18" name="background" visible="0">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -313,7 +366,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="30" name="objects -1">
+ <objectgroup id="30" name="objects bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -391,6 +444,7 @@
   </object>
   <object id="1253" name="stone-button" type="object" x="3018.82" y="4867.14" width="258.367" height="85.7283">
    <properties>
+    <property name="save-key" value="ef-ls-temple-switch"/>
     <property name="send-event" value="door-open"/>
     <property name="switch" type="bool" value="true"/>
    </properties>
@@ -411,32 +465,32 @@
   </object>
   <object id="860" name="spiked-log" type="object" x="2026.81" y="4095.2" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="861" name="spiked-log" type="object" x="2328.29" y="4091.4" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="862" name="spiked-log" type="object" x="2031.57" y="3500.5" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="863" name="spiked-log" type="object" x="2327.32" y="3492.5" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="864" name="spiked-log" type="object" x="2034.18" y="2907.1" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="865" name="spiked-log" type="object" x="2329.93" y="2899.1" width="140" height="598">
    <properties>
-    <property name="attached-behavior" value="enable-all-clippy"/>
+    <property name="components" value="enable-all-clippy"/>
    </properties>
   </object>
   <object id="903" name="trap-door" type="object" x="5248.18" y="1896.11" width="299.579" height="85.7283">
@@ -501,20 +555,20 @@
   <object id="1031" name="solid-npc" type="collision" x="5009.18" y="1117.14" width="121.03" height="777.836"/>
   <object id="1233" name="warp" type="object" x="4641.7" y="1426.55" width="256" height="256">
    <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="components" value="disabled-portal"/>
     <property name="from" value="end"/>
     <property name="to" value="start"/>
    </properties>
   </object>
   <object id="1234" name="warp" type="object" x="4714.42" y="2772" width="256" height="256">
    <properties>
-    <property name="attached-behavior" value="disabled-portal"/>
+    <property name="components" value="disabled-portal"/>
     <property name="from" value="start"/>
     <property name="to" value="end"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="60" name="terrain +1">
+ <objectgroup id="60" name="terrain fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -525,18 +579,12 @@
    <polygon points="2277.38,7.59483 2276.35,92.0392 226.713,92.3613 230.391,-218.235 2001.58,-209.405 2000.33,-95.8615 2119.11,-96.4572 2119.11,7.56749"/>
   </object>
  </objectgroup>
- <objectgroup id="42" name="objects +1">
+ <objectgroup id="42" name="objects fg">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="932" name="life-stone" type="object" x="3823" y="1256.5" width="146" height="423"/>
-  <object id="941" name="orc-warrior" type="entity" x="3404" y="1544" width="128" height="128">
-   <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ef-puzzle-D"/>
-    <property name="scale" type="float" value="0.75"/>
-   </properties>
-  </object>
   <object id="943" name="iou" type="object" x="3337.72" y="4857.71" width="87" height="87"/>
   <object id="945" name="iou" type="object" x="4480.5" y="2928.5" width="87" height="87"/>
   <object id="947" name="iou" type="object" x="984.5" y="1024.5" width="87" height="87"/>
@@ -570,6 +618,11 @@
     <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
+  <object id="1265" name="hexus-shrine" type="object" x="3460.98" y="1414.55" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-orc-warrior"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
@@ -578,18 +631,24 @@
   </properties>
   <object id="1235" name="goblin-warrior-pig" type="entity" x="1594.24" y="4816.22" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_Temple"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
   <object id="1236" name="troll" type="entity" x="1589.76" y="4491.78" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="1267" name="orc-warrior" type="entity" x="3460" y="6392" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,ef-puzzle-D"/>
+    <property name="tag" value="hexus-orc-warrior"/>
    </properties>
   </object>
  </objectgroup>
@@ -600,7 +659,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="573.292" y="4810.5" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="1238" name="spawn" type="object" x="344.364" y="4813" width="128" height="128">

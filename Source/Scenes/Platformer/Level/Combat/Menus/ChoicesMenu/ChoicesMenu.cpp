@@ -13,7 +13,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityAttackBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChoicesMenu/AttackMenu.h"
@@ -42,15 +42,11 @@ ChoicesMenu* ChoicesMenu::create(Timeline* timelineRef)
 
 ChoicesMenu::ChoicesMenu(Timeline* timelineRef)
 {
-	this->noItems = false;
-	this->noDefend = false;
-	this->selectedEntry = nullptr;
 	this->currentMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
 	this->previousMenu = CombatEvents::MenuStateArgs::CurrentMenu::Closed;
 	this->choicesMenu = RadialScrollMenu::create(ChoicesMenu::Radius);
 	this->attackMenu = AttackMenu::create(timelineRef);
 	this->itemsMenu = ItemsMenu::create();
-	this->trackTarget = nullptr;
 
 	this->itemsButton = this->choicesMenu->addEntry(Strings::Platformer_Combat_Items::create(), { }, UIResources::Menus_Icons_Dice, UIResources::Combat_ItemsCircle, [=]()
 	{
@@ -107,7 +103,7 @@ void ChoicesMenu::initializeListeners()
 	// Handle the (very rare) case of getting interrupted while menuing -- can happen if a projectile hits the user after the timeline resumes.
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastInterrupt, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::CastInterruptArgs* args = static_cast<CombatEvents::CastInterruptArgs*>(eventCustom->getUserData());
+		CombatEvents::CastInterruptArgs* args = static_cast<CombatEvents::CastInterruptArgs*>(eventCustom->getData());
 
 		PlatformerEntity* entity = this->selectedEntry == nullptr ? nullptr : this->selectedEntry->getEntity();
 
@@ -121,7 +117,7 @@ void ChoicesMenu::initializeListeners()
 		}
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE, EventKeyboard::KeyCode::KEY_BACKSPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE, InputEvents::KeyCode::KEY_BACKSPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		switch (this->currentMenu)
 		{
@@ -148,7 +144,7 @@ void ChoicesMenu::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
 	{
-		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getUserData());
+		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getData());
 
 		if (combatArgs != nullptr)
 		{

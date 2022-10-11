@@ -24,7 +24,9 @@ public:
 	{
 		Single,
 		Self,
-		Multi
+		Multi,
+		Team,
+		All
 	};
 
 	enum class Priority
@@ -43,7 +45,7 @@ public:
 	virtual LocalizedString* getDescription();
 	void registerAttackCompleteCallback(std::function<void()> callback);
 	virtual std::string getAttackAnimation();
-	std::string getIconResource();
+	const std::string& getIconResource();
 	void execute(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets, std::function<void()> onCastComplete, std::function<void()> onRecoverComplete);
 	Priority getPriority();
 	int getSpecialCost();
@@ -87,11 +89,11 @@ protected:
 	void replaceMainhandWithProjectile(PlatformerEntity* owner, Projectile* projectile);
 	void replaceOffhandWithProjectile(PlatformerEntity* owner, Projectile* projectile);
 
-	PlatformerEntity* owner;
-	float attackDuration;
-	float recoverDuration;
-	Priority priority;
-	AbilityType abilityType;
+	PlatformerEntity* owner = nullptr;
+	float attackDuration = 0.0f;
+	float recoverDuration = 0.0f;
+	Priority priority = Priority::Guaranteed;
+	AbilityType abilityType = AbilityType::Physical;
 	
 	static const float DefaultCleanupDuration;
 	static const std::string TagArenaTop;
@@ -104,13 +106,13 @@ private:
 	void replaceAnimationPartWithProjectile(std::string animationPart, PlatformerEntity* owner, Projectile* projectile);
 	virtual PlatformerAttack* cloneInternal() = 0;
 
-	AttackType attackType;
-	TargetingType targetingType;
+	AttackType attackType = AttackType::Damage;
+	TargetingType targetingType = TargetingType::Single;
 	std::string iconResource;
-	int baseDamageOrHealingMin;
-	int baseDamageOrHealingMax;
-	float damageMultiplier;
-	int specialCost;
+	int baseDamageOrHealingMin = 0;
+	int baseDamageOrHealingMax = 0;
+	float damageMultiplier = 1.0f;
+	int specialCost = 0;
 
 	std::vector<std::function<void()>> attackCompleteCallbacks;
 };

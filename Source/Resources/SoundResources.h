@@ -8,7 +8,6 @@ namespace SoundResources
 {
 	extern const std::string Cipher_GearTurn;
 	extern const std::string Cipher_Lightning;
-	extern const std::string Hexus_Achievement;
 	extern const std::string Hexus_Attacks_Acid;
 	extern const std::string Hexus_Attacks_AcidHit;
 	extern const std::string Hexus_Attacks_AirBurstSpell;
@@ -38,6 +37,7 @@ namespace SoundResources
 	extern const std::string Hexus_CardMovement;
 	extern const std::string Hexus_CardMovementStrong;
 	extern const std::string Hexus_ClaimVictory;
+	extern const std::string Hexus_CoinFlip;
 	extern const std::string Hexus_Defeat;
 	extern const std::string Hexus_LastStand;
 	extern const std::string Hexus_Medieval_War_Horn;
@@ -178,6 +178,18 @@ namespace SoundResources
 	extern const std::string Platformer_Entities_Pig_PigGrunt2;
 	extern const std::string Platformer_Entities_Pig_PigSqueal1;
 	extern const std::string Platformer_Entities_Pig_PigSqueelDeep1;
+	extern const std::string Platformer_Entities_Rhino_ChatterShort1;
+	extern const std::string Platformer_Entities_Seagull_FlyAway;
+	extern const std::string Platformer_Entities_Seagull_Squawk1;
+	extern const std::string Platformer_Entities_Seagull_Squawk2;
+	extern const std::string Platformer_Entities_Seagull_Squawk3;
+	extern const std::string Platformer_Entities_Seagull_Squawk4;
+	extern const std::string Platformer_Entities_Seagull_Squawk5;
+	extern const std::string Platformer_Entities_Seagull_Startled1;
+	extern const std::string Platformer_Entities_Seagull_Startled2;
+	extern const std::string Platformer_Entities_Seagull_Startled3;
+	extern const std::string Platformer_Entities_Seagull_Startled4;
+	extern const std::string Platformer_Entities_Seagull_Startled5;
 	extern const std::string Platformer_Entities_Serpent_Hiss1;
 	extern const std::string Platformer_Entities_Skeleton_Movement_Footsteps1;
 	extern const std::string Platformer_Entities_Skeleton_Movement_Footsteps2;
@@ -241,6 +253,11 @@ namespace SoundResources
 	extern const std::string Platformer_Objects_Machines_StoneSlideHeavy3;
 	extern const std::string Platformer_Objects_Machines_StoneSlideSmall1;
 	extern const std::string Platformer_Objects_Machines_WoodMechanism1;
+	extern const std::string Platformer_Objects_Machines_WoodMechanism2Units;
+	extern const std::string Platformer_Objects_Machines_WoodMechanism3Units;
+	extern const std::string Platformer_Objects_Machines_WoodMechanism4Units;
+	extern const std::string Platformer_Objects_Machines_WoodMechanism5Units;
+	extern const std::string Platformer_Objects_Machines_WoodMechanism6Units;
 	extern const std::string Platformer_Objects_Misc_BowlingStrike1;
 	extern const std::string Platformer_Objects_PotBreak_PotSmash1;
 	extern const std::string Platformer_Objects_Statue_RockBreak1;

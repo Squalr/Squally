@@ -9,10 +9,10 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/Components/Blocks/BlockBase.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/Connection.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/OutputBolt.h"
-#include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
 #include "Resources/UIResources.h"
@@ -78,12 +78,12 @@ void InputBolt::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventRequestConnectionCreate, [=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherConnectionCreateArgs* args = static_cast<CipherEvents::CipherConnectionCreateArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherConnectionCreateArgs* args = static_cast<CipherEvents::CipherConnectionCreateArgs*>(eventCustom->getData());
 
 		if (args != nullptr && !args->isHandled())
 		{
 			// Source bolt is output bolt
-			if (dynamic_cast<OutputBolt*>(args->sourceBolt) != nullptr && GameUtils::intersects(this->connectButton, args->destination))
+			if (dynamic_cast<OutputBolt*>(args->sourceBolt) != nullptr && GameUtils::intersects(this->connectButton, args->destination, false))
 			{
 				args->sourceBolt->setConnection(args->connection);
 				args->connection->setInputBolt(this);

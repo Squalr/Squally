@@ -6,7 +6,7 @@
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 
-#include "Engine/AttachedBehavior/AttachedBehavior.h"
+#include "Engine/Components/GameComponent.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
@@ -25,9 +25,6 @@ const std::string GameObject::MapKeyXPosition = "x";
 const std::string GameObject::MapKeyYPosition = "y";
 const std::string GameObject::MapKeyDepth = "depth";
 const std::string GameObject::MapKeyScale = "scale";
-const std::string GameObject::MapKeyScaleX = "scale-x";
-const std::string GameObject::MapKeyScaleY = "scale-y";
-const std::string GameObject::MapKeyAutoScale = "auto-scale";
 const std::string GameObject::MapKeyFlipX = "flip-x";
 const std::string GameObject::MapKeyFlipY = "flip-y";
 const std::string GameObject::MapKeyRepeatX = "repeat-x";
@@ -38,9 +35,9 @@ const std::string GameObject::MapKeyState = "state";
 const std::string GameObject::MapKeyQuest = "quest";
 const std::string GameObject::MapKeyQuestLine = "quest-line";
 const std::string GameObject::MapKeyQuestTag = "quest-tag";
-const std::string GameObject::MapKeyAttachedBehavior = "attached-behavior";
+const std::string GameObject::MapKeyComponent = "components";
 const std::string GameObject::MapKeyArgs = "args";
-const std::string GameObject::MapKeyQueryable = "args";
+const std::string GameObject::MapKeyQueryable = "queryable";
 const std::string GameObject::MapKeyRotation = "rotation";
 const std::string GameObject::MapKeyPoints = "points";
 const std::string GameObject::MapKeyPolyLinePoints = "polylinePoints";
@@ -68,6 +65,8 @@ const std::vector<std::string> GameObject::AttributeKeys =
 const std::string GameObject::PropertyName = "name";
 const std::string GameObject::PropertyType = "type";
 const std::string GameObject::PropertyValue = "value";
+const std::string GameObject::PropertyColor = "color";
+
 unsigned long long GameObject::WatchId = 0;
 
 GameObject::GameObject() : GameObject(ValueMap())
@@ -77,32 +76,25 @@ GameObject::GameObject() : GameObject(ValueMap())
 GameObject::GameObject(const ValueMap& properties) : super()
 {
 	this->properties = properties;
-	this->zSorted = false;
-	this->despawned = false;
-	this->tags = std::set<std::string>();
-	this->polylinePoints = std::vector<Vec2>();
-	this->stateVariables = ValueMap();
 	this->listenEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyListenEvent, Value("")).asString();
 	this->sendEvent = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeySendEvent, Value("")).asString();
 	this->uniqueIdentifier = "";
-	this->attachedBehavior = std::vector<AttachedBehavior*>();
+	this->isQueryable = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyQueryable, Value(true)).asBool();
 
-	std::vector<std::string> tags = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTags, Value("")).asString(), ", ", false);
+	std::vector<std::string> parsedTags = StrUtils::splitOn(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTags, Value("")).asString(), ", ", false);
 
 	if (GameUtils::keyExists(this->properties, GameObject::MapKeyMetaMapIdentifier))
 	{
-		this->uniqueIdentifier = (this->properties.at(GameObject::MapKeyMetaMapIdentifier).asString()) + "_" + (this->properties.at(GameObject::MapKeyId).asString());
-		
-		tags.push_back(this->uniqueIdentifier);
+		this->uniqueIdentifier = GameObject::BuildUUID(this->properties.at(GameObject::MapKeyMetaMapIdentifier).asString(), this->properties.at(GameObject::MapKeyId).asString());
 	}
 	
 	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString());
 	this->addTag(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyName, Value("")).asString());
 	this->addTag(this->getUniqueIdentifier());
 
-	for (auto tag : tags)
+	for (const std::string& next : parsedTags)
 	{
-		this->addTag(tag);
+		this->addTag(next);
 	}
 
 	// Map the coordinates of Tiled space to Cocos space for isometric games:
@@ -110,7 +102,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	{
 		this->setAnchorPoint(Vec2(0.5f, 0.0f));
 
-		Size mapSize = Size(
+		CSize mapSize = CSize(
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyMetaMapWidth, Value(0.0f)).asFloat(),
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyMetaMapHeight, Value(0.0f)).asFloat()
 		);
@@ -120,7 +112,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyYPosition, Value(0.0f)).asFloat()
 		);
 
-		Size objectSize = Size(
+		CSize objectSize = CSize(
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 		);
@@ -162,7 +154,7 @@ GameObject::GameObject(const ValueMap& properties) : super()
 	// Map the coordinates of Tiled space to Cocos space for 2d games:
 	else
 	{
-		Size mapSize = Size(
+		CSize mapSize = CSize(
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 			GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 		);
@@ -203,6 +195,28 @@ GameObject::GameObject(const ValueMap& properties) : super()
 
 			this->polylinePoints.push_back(convertedDelta);
 		}
+	
+		if (this->polylinePoints.empty())
+		{
+			CSize size = CSize(
+				GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
+				GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
+			);
+
+			this->polylinePoints = std::vector<Vec2>({
+				Vec2(0.0f, 0.0f),
+				Vec2(size.width, 0.0f),
+				Vec2(size.width, -size.height),
+				Vec2(0.0f, -size.height),
+			});
+
+			this->polylinePoints = std::vector<Vec2>({
+				Vec2(-size.width / 2.0f, -size.height / 2.0f),
+				Vec2(-size.width / 2.0f, size.height / 2.0f),
+				Vec2(size.width / 2.0f, size.height / 2.0f),
+				Vec2(size.width / 2.0f, -size.height / 2.0f)
+			});
+		}
 	}
 
 	this->setPositionZ(GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyDepth, Value(0.0f)).asFloat());
@@ -229,9 +243,9 @@ void GameObject::initializeListeners()
 	
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObject, [=](EventCustom* eventCustom)
 	{
-		QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
+		QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getData());
 
-		if (args != nullptr && GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyQueryable, Value(true)).asBool())
+		if (args != nullptr && this->isQueryable)
 		{
 			args->tryInvoke(this);
 		}
@@ -241,9 +255,9 @@ void GameObject::initializeListeners()
 	{
 		this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventQueryObjectByTagPrefix + tag, [=](EventCustom* eventCustom)
 		{
-			QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getUserData());
+			QueryObjectsArgsBase* args = static_cast<QueryObjectsArgsBase*>(eventCustom->getData());
 
-			if (args != nullptr && GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyQueryable, Value(true)).asBool())
+			if (args != nullptr && this->isQueryable)
 			{
 				args->tryInvoke(this);
 			}
@@ -256,30 +270,45 @@ std::string GameObject::getUniqueIdentifier()
 	return this->uniqueIdentifier;
 }
 
-void GameObject::attachBehavior(AttachedBehavior* attachedBehavior)
+void GameObject::attachComponent(GameComponent* component)
 {
-	if (this->isDespawned() || attachedBehavior == nullptr || attachedBehavior->isInvalidated())
+	if (this->isDespawned() || component == nullptr || component->isInvalidated())
 	{
 		return;
 	}
 
-	this->attachedBehavior.push_back(attachedBehavior);
-	this->addChild(attachedBehavior);
+	this->components.push_back(component);
+	this->addChild(component);
 }
 
-void GameObject::detachBehavior(AttachedBehavior* attachedBehavior)
+void GameObject::detachAllComponents()
 {
-	if (this->isDespawned() || attachedBehavior == nullptr)
+	if (this->isDespawned())
 	{
 		return;
 	}
 
-	if (std::find(this->attachedBehavior.begin(), this->attachedBehavior.end(), attachedBehavior) != this->attachedBehavior.end())
+	for (GameComponent* next : this->components)
 	{
-		this->attachedBehavior.erase(std::remove(this->attachedBehavior.begin(), this->attachedBehavior.end(), attachedBehavior), this->attachedBehavior.end());
+		next->onDisable();
+	}
+
+	this->components.clear();
+}
+
+void GameObject::detachComponent(GameComponent* component)
+{
+	if (this->isDespawned() || component == nullptr)
+	{
+		return;
+	}
+
+	if (std::find(this->components.begin(), this->components.end(), component) != this->components.end())
+	{
+		this->components.erase(std::remove(this->components.begin(), this->components.end(), component), this->components.end());
 
 		// Note: Removing children at runtime is unsafe. The best we can do is disable it.
-		attachedBehavior->onDisable();
+		component->onDisable();
 	}
 }
 
@@ -289,7 +318,7 @@ void GameObject::setState(std::string key, Value value, bool broadcastUpdate)
 
 	if (broadcastUpdate)
 	{
-		ObjectEvents::TriggerWriteObjectState(ObjectEvents::StateWriteArgs(this, key, value));
+		ObjectEvents::TriggerWriteObjectState(StateWriteArgs(this, key, value));
 	}
 }
 
@@ -300,10 +329,22 @@ void GameObject::addTag(std::string tag)
 		return;
 	}
 
-	if (GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyQueryable, Value(true)).asBool())
+	this->tags.insert(tag);
+}
+
+const std::string GameObject::getTag() const
+{
+	if (this->tags.size() > 0)
 	{
-		this->tags.insert(tag);
+		return *this->tags.begin();
 	}
+
+	return "";
+}
+
+const std::set<std::string>& GameObject::getTags() const
+{
+	return this->tags;
 }
 
 Value GameObject::getPropertyOrDefault(std::string key, Value value)
@@ -334,6 +375,11 @@ bool GameObject::getRuntimeStateOrDefaultBool(std::string key, bool value)
 ValueMap& GameObject::getStateVariables()
 {
 	return this->stateVariables;
+}
+
+const std::vector<cocos2d::Vec2>& GameObject::getPolylinePoints() const
+{
+	return this->polylinePoints;
 }
 
 bool GameObject::hasRuntimeState(std::string key)
@@ -373,7 +419,7 @@ void GameObject::saveObjectState(std::string key, cocos2d::Value value)
 
 void GameObject::saveObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value)
 {
-	ValueMap saveData = SaveManager::getProfileDataOrDefault(uniqueIdentifier, Value(ValueMap())).asValueMap();
+	ValueMap saveData = SaveManager::GetProfileDataOrDefault(uniqueIdentifier, Value(ValueMap())).asValueMap();
 
 	saveData[key] = value;
 
@@ -394,7 +440,7 @@ void GameObject::saveTemporalObjectState(std::string key, cocos2d::Value value)
 void GameObject::saveTemporalObjectState(std::string uniqueIdentifier, std::string key, cocos2d::Value value)
 {
 	// TODO: Implement temporal state, passing temporal flags (map temporal, time temporal, zone temporal, etc)
-	ValueMap saveData = SaveManager::getProfileDataOrDefault(uniqueIdentifier, Value(ValueMap())).asValueMap();
+	ValueMap saveData = SaveManager::GetProfileDataOrDefault(uniqueIdentifier, Value(ValueMap())).asValueMap();
 
 	saveData[key] = value;
 
@@ -410,7 +456,7 @@ void GameObject::loadObjectState()
 {
 	if (this->isMapObject())
 	{
-		this->saveProperties = SaveManager::getProfileDataOrDefault(this->uniqueIdentifier, Value(ValueMap())).asValueMap();
+		this->saveProperties = SaveManager::GetProfileDataOrDefault(this->uniqueIdentifier, Value(ValueMap())).asValueMap();
 	}
 }
 
@@ -421,7 +467,7 @@ void GameObject::listenForStateWrite(std::string key, std::function<void(cocos2d
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventWriteStatePrefix + eventKey, [=](EventCustom* eventCustom)
 	{
-		ObjectEvents::StateWriteArgs* args = static_cast<ObjectEvents::StateWriteArgs*>(eventCustom->getUserData());
+		StateWriteArgs* args = static_cast<StateWriteArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{
@@ -432,23 +478,21 @@ void GameObject::listenForStateWrite(std::string key, std::function<void(cocos2d
 
 void GameObject::listenForStateWriteOnce(std::string key, std::function<void(cocos2d::Value)> onWrite)
 {
-	static unsigned int UniqueCounter = 0;
 	const std::string eventKey = key + "_" + std::to_string((unsigned long long)(this));
-	const std::string uniqueKey = eventKey + "_" + std::to_string(UniqueCounter++);
 
-	EventListener* listener = EventListenerCustom::create(ObjectEvents::EventWriteStatePrefix + eventKey, [=](EventCustom* eventCustom)
+	EventListenerCustom* listener = EventListenerCustom::create(ObjectEvents::EventWriteStatePrefix + eventKey, nullptr);
+
+	listener->setCallback([=](EventCustom* eventCustom)
 	{
-		ObjectEvents::StateWriteArgs* args = static_cast<ObjectEvents::StateWriteArgs*>(eventCustom->getUserData());
+		StateWriteArgs* args = static_cast<StateWriteArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{
-			this->removeEventListenerByTag(uniqueKey);
+			this->removeEventListener(listener);
 			
 			onWrite(args->value);
 		}
 	});
-
-	listener->setTag(uniqueKey);
 
 	this->addEventListenerIgnorePause(listener);
 }
@@ -508,7 +552,7 @@ void GameObject::listenForMapEvent(std::string eventName, std::function<void(Val
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + eventName, [=](EventCustom* eventCustom)
 	{
-		ValueMap* args = static_cast<ValueMap*>(eventCustom->getUserData());
+		ValueMap* args = static_cast<ValueMap*>(eventCustom->getData());
 
 		if (args != nullptr && callback != nullptr)
 		{
@@ -524,22 +568,20 @@ void GameObject::listenForMapEventOnce(std::string eventName, std::function<void
 		return;
 	}
 	
-	static unsigned int UniqueCounter = 0;
 	const std::string eventKey = eventName + "_" + std::to_string((unsigned long long)(this));
-	const std::string uniqueKey = eventKey + "_" + std::to_string(UniqueCounter++);
 
-	EventListener* listener = EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + eventName, [=](EventCustom* eventCustom)
+	EventListenerCustom* listener = EventListenerCustom::create(ObjectEvents::EventBroadCastMapObjectStatePrefix + eventName, nullptr);
+	
+	listener->setCallback([=](EventCustom* eventCustom)
 	{
-		ValueMap* args = static_cast<ValueMap*>(eventCustom->getUserData());
+		ValueMap* args = static_cast<ValueMap*>(eventCustom->getData());
 		
 		if (args != nullptr && callback != nullptr)
 		{
-			this->removeEventListenerByTag(uniqueKey);
+			this->removeEventListener(listener);
 			callback(*args);
 		}
 	});
-
-	listener->setTag(uniqueKey);
 
 	this->addEventListenerIgnorePause(listener);
 }
@@ -575,11 +617,23 @@ void GameObject::despawn(float despawnDelay)
 
 void GameObject::onDespawn()
 {
-	std::vector<AttachedBehavior*> behaviorClone = this->attachedBehavior;
+	std::vector<GameComponent*> componentsClone = this->components;
 
-	for (auto behavior : behaviorClone)
+	for (GameComponent* component : componentsClone)
 	{
-		this->detachBehavior(behavior);
+		this->detachComponent(component);
+	}
+
+	std::vector<GameObject*> children;
+
+	GameUtils::getChildrenOfType<GameObject>(this, [&](GameObject* child)
+	{
+		children.push_back(child);
+	}, true);
+
+	for (GameObject* child : children)
+	{
+		child->onDespawn();
 	}
 	
 	this->removeAllListeners();
@@ -591,4 +645,14 @@ void GameObject::onDespawn()
 bool GameObject::isDespawned()
 {
 	return this->despawned;
+}
+
+void GameObject::setQueryable(bool isQueryable)
+{
+	this->isQueryable = isQueryable;
+}
+
+std::string GameObject::BuildUUID(std::string mapId, std::string objectId)
+{
+	return mapId + "_" + objectId;
 }

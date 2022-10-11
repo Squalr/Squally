@@ -35,15 +35,12 @@ PlatformerDialogueBox* PlatformerDialogueBox::create()
 
 PlatformerDialogueBox::PlatformerDialogueBox() : super(PlatformerDialogueBox::TextWidth, PlatformerDialogueBox::SpeakerPanelOffset, PlatformerDialogueBox::SpeakerPanelWidth)
 {
-	this->inputOptions = std::vector<std::function<bool()>>();
-	this->inputCancel = nullptr;
-
 	LocalizedString* bracketString = Strings::Common_Brackets::create();
 	LocalizedString* spaceString = Strings::Input_Spacebar::create();
 
 	bracketString->setStringReplacementVariables(spaceString);
 
-	Rect speakerRect = Rect(-PlatformerDialogueBox::SpeakerPanelWidth / 2.0f, -DialogueBox::DialogueHeight / 2.0f, PlatformerDialogueBox::SpeakerPanelWidth, DialogueBox::DialogueHeight);
+	CRect speakerRect = CRect(-PlatformerDialogueBox::SpeakerPanelWidth / 2.0f, -DialogueBox::DialogueHeight / 2.0f, PlatformerDialogueBox::SpeakerPanelWidth, DialogueBox::DialogueHeight);
 
 	this->spaceToContinueLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, bracketString);
 	this->leftSpeakerNode = Node::create();
@@ -53,13 +50,9 @@ PlatformerDialogueBox::PlatformerDialogueBox() : super(PlatformerDialogueBox::Te
 	this->leftSpeakerClip = SmartClippingNode::create(this->leftSpeakerBackground, speakerRect);
 	this->rightSpeakerClip = SmartClippingNode::create(this->rightSpeakerBackground, speakerRect);
 
-	this->unhijack = true;
-	this->allowSpace = false;
-
 	this->leftSpeakerBackground->drawSolidRect(speakerRect.origin, speakerRect.size, PlatformerDialogueBox::SpeakerBackgroundColor);
 	this->rightSpeakerBackground->drawSolidRect(speakerRect.origin, speakerRect.size, PlatformerDialogueBox::SpeakerBackgroundColor);
 	this->spaceToContinueLabel->setTextColor(DialogueBox::PanelTextColor);
-	this->isDialogueFocused = false;
 
 	this->leftSpeakerBackground->addChild(this->leftSpeakerNode);
 	this->rightSpeakerBackground->addChild(this->rightSpeakerNode);
@@ -87,7 +80,7 @@ void PlatformerDialogueBox::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(DialogueEvents::EventDialogueOpen, [=](EventCustom* eventCustom)
 	{
-		DialogueEvents::DialogueOpenArgs* args = static_cast<DialogueEvents::DialogueOpenArgs*>(eventCustom->getUserData());
+		DialogueEvents::DialogueOpenArgs* args = static_cast<DialogueEvents::DialogueOpenArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{
@@ -140,7 +133,7 @@ void PlatformerDialogueBox::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(DialogueEvents::EventDialogueClose, [=](EventCustom* eventCustom)
 	{
-		DialogueEvents::DialogueCloseArgs* args = static_cast<DialogueEvents::DialogueCloseArgs*>(eventCustom->getUserData());
+		DialogueEvents::DialogueCloseArgs* args = static_cast<DialogueEvents::DialogueCloseArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{
@@ -156,7 +149,7 @@ void PlatformerDialogueBox::initializeListeners()
 		}
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->allowSpace && this->isDialogueEffectComplete() && this->isDialogueFocused)
 		{
@@ -166,7 +159,7 @@ void PlatformerDialogueBox::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_TAB }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->allowSpace && this->isDialogueEffectComplete() && this->isDialogueFocused)
 		{
@@ -178,7 +171,7 @@ void PlatformerDialogueBox::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_1 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_1 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(1))
 		{
@@ -186,7 +179,7 @@ void PlatformerDialogueBox::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_2 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_2 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(2))
 		{
@@ -194,7 +187,7 @@ void PlatformerDialogueBox::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_3 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_3 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(3))
 		{
@@ -202,7 +195,7 @@ void PlatformerDialogueBox::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_4 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_4 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(4))
 		{
@@ -210,7 +203,7 @@ void PlatformerDialogueBox::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_5 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_5 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(5))
 		{
@@ -218,7 +211,7 @@ void PlatformerDialogueBox::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_6 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_6 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(6))
 		{
@@ -226,7 +219,7 @@ void PlatformerDialogueBox::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_7 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_7 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(7))
 		{
@@ -234,7 +227,7 @@ void PlatformerDialogueBox::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_8 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_8 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(8))
 		{
@@ -242,7 +235,7 @@ void PlatformerDialogueBox::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_9 }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_9 }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->isDialogueEffectComplete() && this->isDialogueFocused && this->chooseOption(9))
 		{
@@ -250,7 +243,7 @@ void PlatformerDialogueBox::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_BACK, EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_BACK, InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (this->isDialogueFocused && this->cancelOptionChoice())
 		{

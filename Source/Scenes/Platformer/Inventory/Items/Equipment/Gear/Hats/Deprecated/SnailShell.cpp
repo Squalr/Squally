@@ -46,22 +46,17 @@ Item* SnailShell::clone()
 	return SnailShell::create();
 }
 
-std::string SnailShell::getItemName()
-{
-	return SnailShell::SaveKey;
-}
-
 LocalizedString* SnailShell::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_SnailShell::create();
 }
 
-std::string SnailShell::getIconResource()
+const std::string& SnailShell::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_SnailShell;
 }
 
-std::string SnailShell::getSerializationKey()
+const std::string& SnailShell::getIdentifier()
 {
 	return SnailShell::SaveKey;
 }
@@ -69,4 +64,9 @@ std::string SnailShell::getSerializationKey()
 Vec2 SnailShell::getDisplayOffset()
 {
 	return Vec2(-36.0f, -34.0f);
+}
+
+Recipe* SnailShell::getRecipe()
+{
+	return nullptr;
 }

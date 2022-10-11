@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="18" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="176" nextobjectid="1110">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="18" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="176" nextobjectid="1110">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -17,10 +17,9 @@
    <property name="depth" type="float" value="-2560"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="897" name="Ruins/Background/DesertLayer4" type="decor" x="-4357.32" y="-249.181" width="14981.3" height="318">
+  <object id="897" name="Ruins/Background/DesertLayer4" type="decor" x="-4341.32" y="782.819" width="11797.3" height="318">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -29,10 +28,9 @@
    <property name="depth" type="float" value="-2432"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-3970.65" y="-962.85" width="14229.3" height="1534">
+  <object id="895" name="Ruins/Background/DesertLayer3" type="decor" x="-3898.65" y="569.15" width="10773.3" height="1534">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -41,7 +39,7 @@
    <property name="depth" type="float" value="-2432"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1090" name="Ruins/Pyramid" type="decor" x="3183" y="33" width="1922" height="878"/>
+  <object id="1090" name="Ruins/Pyramid" type="decor" x="3191" y="225" width="1922" height="878"/>
   <object id="1091" name="Ruins/Obelisk" type="decor" x="-1257" y="-7" width="298" height="1102"/>
  </objectgroup>
  <objectgroup id="136" name="desert bg 0">
@@ -49,10 +47,9 @@
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1044" name="Ruins/Background/DesertLayer0" type="decor" x="-3152.44" y="774" width="14517.6" height="1088">
+  <object id="1044" name="Ruins/Background/DesertLayer0" type="decor" x="-3136.44" y="1270" width="9045.6" height="1904">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
-    <property name="scale" type="float" value="4"/>
    </properties>
   </object>
  </objectgroup>
@@ -131,9 +128,9 @@
   </properties>
   <object id="1059" name="wood" type="terrain" x="996.18" y="1323" width="640" height="948">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
     <property name="bridge-group" value="raise-bridge"/>
     <property name="bridge-index" type="int" value="6"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
  </objectgroup>
@@ -155,9 +152,9 @@
   </properties>
   <object id="1060" name="wood" type="terrain" x="996.18" y="1349.99" width="640" height="948">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
     <property name="bridge-group" value="raise-bridge"/>
     <property name="bridge-index" type="int" value="5"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
  </objectgroup>
@@ -190,9 +187,9 @@
   </properties>
   <object id="1061" name="wood" type="terrain" x="996.847" y="1379.99" width="640" height="948">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
     <property name="bridge-group" value="raise-bridge"/>
     <property name="bridge-index" type="int" value="4"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
  </objectgroup>
@@ -214,9 +211,9 @@
   </properties>
   <object id="1062" name="wood" type="terrain" x="996.187" y="1405.33" width="640" height="948">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
     <property name="bridge-group" value="raise-bridge"/>
     <property name="bridge-index" type="int" value="3"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
  </objectgroup>
@@ -249,9 +246,9 @@
   </properties>
   <object id="1063" name="wood" type="terrain" x="997.517" y="1433.66" width="640" height="948">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
     <property name="bridge-group" value="raise-bridge"/>
     <property name="bridge-index" type="int" value="2"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
  </objectgroup>
@@ -273,9 +270,9 @@
   </properties>
   <object id="1064" name="wood" type="terrain" x="997.52" y="1460.66" width="640" height="948">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
     <property name="bridge-group" value="raise-bridge"/>
     <property name="bridge-index" type="int" value="1"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
  </objectgroup>
@@ -308,9 +305,9 @@
   </properties>
   <object id="1065" name="wood" type="terrain" x="997.523" y="1485.33" width="640" height="948">
    <properties>
-    <property name="attached-behavior" value="bridge"/>
     <property name="bridge-group" value="raise-bridge"/>
     <property name="bridge-index" type="int" value="0"/>
+    <property name="components" value="bridge"/>
    </properties>
   </object>
  </objectgroup>
@@ -393,15 +390,14 @@
   <object id="1069" name="portal" type="object" x="1183.99" y="1324.7" width="256.687" height="235.919">
    <properties>
     <property name="listen-event" value="raise-bridge"/>
+    <property name="locked-text-key" value="closed"/>
     <property name="map" value="UnderflowRuins/Zone_3_1"/>
     <property name="transition" value="path"/>
    </properties>
   </object>
   <object id="1080" name="solid" type="collision" x="1996.04" y="-20.001" width="199.918" height="1588">
    <properties>
-    <property name="direction" value="left"/>
-    <property name="map" value="UnderflowRuins/Zone_1_2"/>
-    <property name="transition" value="left"/>
+    <property name="mini-map-visible" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -412,7 +408,7 @@
   </properties>
   <object id="1109" name="ajax" type="entity" x="1785.33" y="1433.33" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ajax-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="ajax-hexus,friendly,pick-pocket,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="quest" value="raise-bridge"/>
@@ -433,7 +429,7 @@
   </object>
   <object id="1047" name="squally" type="entity" x="454" y="1431.34" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="1070" name="spawn" type="object" x="1243.67" y="1432.6" width="128" height="128">

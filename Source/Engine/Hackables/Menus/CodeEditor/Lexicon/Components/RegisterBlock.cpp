@@ -32,33 +32,6 @@ RegisterBlock* RegisterBlock::create()
 
 RegisterBlock::RegisterBlock()
 {
-    this->eax = Register();
-    this->ebx = Register();
-    this->ecx = Register();
-    this->edx = Register();
-    this->edi = Register();
-    this->esi = Register();
-    this->ebp = Register();
-    this->esp = Register();
-    this->eip = Register();
-	this->eaxPtrLabels = std::vector<LocalizedLabel*>();
-	this->ebxPtrLabels = std::vector<LocalizedLabel*>();
-	this->ecxPtrLabels = std::vector<LocalizedLabel*>();
-	this->edxPtrLabels = std::vector<LocalizedLabel*>();
-	this->ediPtrLabels = std::vector<LocalizedLabel*>();
-	this->esiPtrLabels = std::vector<LocalizedLabel*>();
-	this->ebpPtrLabels = std::vector<LocalizedLabel*>();
-	this->espPtrLabels = std::vector<LocalizedLabel*>();
-	this->eipPtrLabels = std::vector<LocalizedLabel*>();
-	this->eaxPtrStrings = std::vector<ConstantString*>();
-	this->ebxPtrStrings = std::vector<ConstantString*>();
-	this->ecxPtrStrings = std::vector<ConstantString*>();
-	this->edxPtrStrings = std::vector<ConstantString*>();
-	this->ediPtrStrings = std::vector<ConstantString*>();
-	this->esiPtrStrings = std::vector<ConstantString*>();
-	this->ebpPtrStrings = std::vector<ConstantString*>();
-	this->espPtrStrings = std::vector<ConstantString*>();
-	this->eipPtrStrings = std::vector<ConstantString*>();
     this->eaxString = ConstantString::create(std::to_string(this->eax.currentValue));
     this->ebxString = ConstantString::create(std::to_string(this->ebx.currentValue));
     this->ecxString = ConstantString::create(std::to_string(this->ecx.currentValue));

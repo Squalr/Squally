@@ -25,7 +25,7 @@ CameraTarget::CameraTarget(ValueMap& properties) : super(properties)
 {
 	this->zoom = GameUtils::getKeyOrDefault(this->properties, CameraTarget::PropertyZoom, Value(1.0f)).asFloat();
 	this->debugDraw = DrawNode::create();
-	Size size = Size(
+	CSize size = CSize(
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(32.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(32.0f)).asFloat()
 	);
@@ -62,6 +62,8 @@ CameraTrackingData CameraTarget::getTrackingData()
 		Vec2::ZERO,
 		CameraTrackingData::CameraScrollType::Rectangle,
 		cocos2d::Vec2(0.015f, 0.015f),
-		this->zoom
+		this->zoom,
+		nullptr,
+		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyTag, Value("")).asString()
 	);
 }

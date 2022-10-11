@@ -23,8 +23,8 @@ protected:
 	void onBeforeStateChange(GameState* gameState) override;
 	void onAnyStateChange(GameState* gameState) override;
 
-	cocos2d::Sprite* penaltyIcon;
-	SmartParticles* penaltyIconParticles;
+	cocos2d::Sprite* penaltyIcon = nullptr;
+	SmartParticles* penaltyIconParticles = nullptr;
 
 private:
 	typedef BannerBase super;

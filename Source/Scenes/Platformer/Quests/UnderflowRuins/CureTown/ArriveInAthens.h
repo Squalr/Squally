@@ -33,9 +33,9 @@ private:
 	void runCinematicSequencePt5();
 	void runCinematicSequencePt6();
 
-	Guano* guano;
-	Scrappy* scrappy;
-	Squally* squally;
+	Guano* guano = nullptr;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 
 	static const std::string TagTownCinematic;
 };

@@ -34,6 +34,7 @@ ConfirmationHud::ConfirmationHud()
 {
 	this->confirmationMenu = ConfirmationMenu::create();
 	this->contentNode = Node::create();
+	this->enableHackerModeEvents = true;
 
 	this->contentNode->addChild(this->confirmationMenu);
 	this->addChild(this->contentNode);
@@ -59,7 +60,7 @@ void ConfirmationHud::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(NotificationEvents::EventConfirmation, [=](EventCustom* eventCustom)
 	{
-		NotificationEvents::ConfirmationArgs* args = static_cast<NotificationEvents::ConfirmationArgs*>(eventCustom->getUserData());
+		NotificationEvents::ConfirmationArgs* args = static_cast<NotificationEvents::ConfirmationArgs*>(eventCustom->getData());
 		
 		if (args != nullptr)
 		{

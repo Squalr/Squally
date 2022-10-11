@@ -34,13 +34,13 @@ protected:
 private:
 	typedef CipherComponentBase super;
 
-	ClickableNode* panel;
-	SmartAsciiLabel* inputLabel;
-	SmartAsciiLabel* outputLabel;
-	cocos2d::Sprite* failedIcon;
-	cocos2d::Sprite* passedIcon;
+	ClickableNode* panel = nullptr;
+	SmartAsciiLabel* inputLabel = nullptr;
+	SmartAsciiLabel* outputLabel = nullptr;
+	cocos2d::Sprite* failedIcon = nullptr;
+	cocos2d::Sprite* passedIcon = nullptr;
 
-	unsigned char input;
-	unsigned char output;
-	std::function<void(InputOutputItem*)> selectCallback;
+	unsigned char input = 0;
+	unsigned char output = 0;
+	std::function<void(InputOutputItem*)> selectCallback = nullptr;
 };

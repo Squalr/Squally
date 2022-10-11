@@ -1,5 +1,9 @@
 #include "WoodenSpikesUpdateTimerPreview.h"
 
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCSprite.h"
@@ -24,11 +28,9 @@ WoodenSpikesUpdateTimerPreview* WoodenSpikesUpdateTimerPreview::create()
 
 WoodenSpikesUpdateTimerPreview::WoodenSpikesUpdateTimerPreview()
 {
-	this->launchCountDown = 0.0f;
 	this->previewSpikes = SmartAnimationSequenceNode::create(ObjectResources::Traps_WoodenSpikes_Spikes_0000);
 	this->ebxTimerStr = ConstantString::create(std::to_string(this->launchCountDown));
 	this->ebxTimer = this->createRegisterEqualsValueLabel(HackableCode::Register::zax, false, this->ebxTimerStr);
-	this->isLaunching = false;
 
 	this->ebxTimer->setAnchorPoint(Vec2(0.5f, 0.5f));
 

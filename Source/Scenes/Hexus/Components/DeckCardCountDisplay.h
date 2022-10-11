@@ -25,13 +25,14 @@ protected:
 
 private:
 	typedef ComponentBase super;
+	
 	void updateTotals(GameState* gameState);
 
-	cocos2d::LayerColor* playerDeckCardCountFrame;
-	ConstantString* playerDeckCardCountStr;
-	LocalizedLabel* playerDeckCardCountLabel;
+	cocos2d::LayerColor* playerDeckCardCountFrame = nullptr;
+	ConstantString* playerDeckCardCountStr = nullptr;
+	LocalizedLabel* playerDeckCardCountLabel = nullptr;
 
-	cocos2d::LayerColor* enemyDeckCardCountFrame;
-	ConstantString* enemyDeckCardCountStr;
-	LocalizedLabel* enemyDeckCardCountLabel;
+	cocos2d::LayerColor* enemyDeckCardCountFrame = nullptr;
+	ConstantString* enemyDeckCardCountStr = nullptr;
+	LocalizedLabel* enemyDeckCardCountLabel = nullptr;
 };

@@ -3,11 +3,6 @@
 #include "Menus/Inventory/MenuEntry.h"
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class ConstantString;
 class Item;
 
@@ -19,6 +14,7 @@ public:
 	void setToggleCallback(std::function<void()> onToggle);
 	std::function<void()> getToggleCallback();
 	Item* getAssociatedItem();
+	void setText(LocalizedString* newText);
 	int getStackSize();
 	void setStackSize(int stackSize);
 	void setCraftCount(int craftCount);
@@ -32,12 +28,13 @@ protected:
 private:
 	typedef MenuEntry super;
 
-	ConstantString* stackString;
-	ConstantString* craftString;
-	Item* associatedItem;
-	int craftCount;
-	int stackSize;
-	ItemPreview::EquipHintMode equipHintMode;
+	LocalizedString* textString = nullptr;
+	ConstantString* stackString = nullptr;
+	ConstantString* craftString = nullptr;
+	Item* associatedItem = nullptr;
+	int craftCount = 0;
+	int stackSize = 1;
+	ItemPreview::EquipHintMode equipHintMode = ItemPreview::EquipHintMode::None;
 	
-	std::function<void()> onToggle;
+	std::function<void()> onToggle = nullptr;
 };

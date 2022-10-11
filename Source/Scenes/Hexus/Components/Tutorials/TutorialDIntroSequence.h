@@ -30,8 +30,8 @@ private:
 	void initializeCallbacks(GameState* gameState);
 	void runTutorialHandCards(GameState* gameState);
 
-	FocusTakeOver* focusTakeOver;
-	LocalizedLabel* handCardsTutorialLabel;
-	ClickableTextNode* handCardsNextButton;
-	HelpArrow* helpArrowHandCards;
+	FocusTakeOver* focusTakeOver = nullptr;
+	LocalizedLabel* handCardsTutorialLabel = nullptr;
+	ClickableTextNode* handCardsNextButton = nullptr;
+	HelpArrow* helpArrowHandCards = nullptr;
 };

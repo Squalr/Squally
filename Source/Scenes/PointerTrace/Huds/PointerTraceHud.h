@@ -29,30 +29,30 @@ private:
 	
 	void updateRegisters();
 
-	cocos2d::LayerColor* backdrop;
+	cocos2d::LayerColor* backdrop = nullptr;
 
-	ConstantString* eaxValue;
-	ConstantString* ebxValue;
-	ConstantString* ecxValue;
-	ConstantString* edxValue;
-	ConstantString* ediValue;
-	ConstantString* esiValue;
-	ConstantString* ebpValue;
-	ConstantString* espValue;
-	ConstantString* eipValue;
+	ConstantString* eaxValue = nullptr;
+	ConstantString* ebxValue = nullptr;
+	ConstantString* ecxValue = nullptr;
+	ConstantString* edxValue = nullptr;
+	ConstantString* ediValue = nullptr;
+	ConstantString* esiValue = nullptr;
+	ConstantString* ebpValue = nullptr;
+	ConstantString* espValue = nullptr;
+	ConstantString* eipValue = nullptr;
 
-	LocalizedLabel* eaxLabel;
-	LocalizedLabel* ebxLabel;
-	LocalizedLabel* ecxLabel;
-	LocalizedLabel* edxLabel;
-	LocalizedLabel* ediLabel;
-	LocalizedLabel* esiLabel;
-	LocalizedLabel* ebpLabel;
-	LocalizedLabel* espLabel;
-	LocalizedLabel* eipLabel;
+	LocalizedLabel* eaxLabel = nullptr;
+	LocalizedLabel* ebxLabel = nullptr;
+	LocalizedLabel* ecxLabel = nullptr;
+	LocalizedLabel* edxLabel = nullptr;
+	LocalizedLabel* ediLabel = nullptr;
+	LocalizedLabel* esiLabel = nullptr;
+	LocalizedLabel* ebpLabel = nullptr;
+	LocalizedLabel* espLabel = nullptr;
+	LocalizedLabel* eipLabel = nullptr;
 
-	LocalizedLabel* addressHintLabel;
-	LocalizedLabel* valueHintLabel;
+	LocalizedLabel* addressHintLabel = nullptr;
+	LocalizedLabel* valueHintLabel = nullptr;
 
-	cocos2d::Sprite* movementHelp;
+	cocos2d::Sprite* movementHelp = nullptr;
 };

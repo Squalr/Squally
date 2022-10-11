@@ -10,7 +10,7 @@
 #include "Engine/Inventory/Item.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 
 #include "Resources/MapResources.h"
 #include "Resources/UIResources.h"
@@ -27,7 +27,7 @@ PlatformerEnemy::PlatformerEnemy(
 	std::string entityName,
 	std::string scmlResource,
 	std::string emblemResource,
-	Size size, 
+	CSize size, 
 	float scale,
 	Vec2 collisionOffset,
 	float hoverHeight)

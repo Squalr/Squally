@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/CrystalAxePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,30 +47,25 @@ Item* CrystalAxe::clone()
 	return CrystalAxe::create();
 }
 
-std::string CrystalAxe::getItemName()
-{
-	return CrystalAxe::SaveKey;
-}
-
 LocalizedString* CrystalAxe::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_CrystalAxe::create();
 }
 
-std::string CrystalAxe::getIconResource()
+const std::string& CrystalAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Axes_CrystalAxe;
 }
 
-std::string CrystalAxe::getSerializationKey()
+const std::string& CrystalAxe::getIdentifier()
 {
 	return CrystalAxe::SaveKey;
 }
 
-Size CrystalAxe::getWeaponCollisionSize()
+CSize CrystalAxe::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return Size(112.0f, 96.0f);
+	return CSize(112.0f, 96.0f);
 }
 
 Vec2 CrystalAxe::getWeaponCollisionOffset()
@@ -81,4 +77,9 @@ Vec2 CrystalAxe::getWeaponCollisionOffset()
 Vec2 CrystalAxe::getDisplayOffset()
 {
 	return Vec2(28.0f, -4.0f);
+}
+
+Recipe* CrystalAxe::getRecipe()
+{
+	return CrystalAxePlans::create();
 }

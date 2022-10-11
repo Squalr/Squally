@@ -35,17 +35,17 @@ private:
 
 	struct PreviewData
 	{
-		Card* previewCard;
-		CardData* cardData;
-		cocos2d::Node* previewNode;
-		ConstantString* binStrRef;
-		ConstantString* decStrRef;
-		ConstantString* hexStrRef;
-		LocalizedLabel* binLabelRef;
-		LocalizedLabel* decLabelRef;
-		LocalizedLabel* hexLabelRef;
+		Card* previewCard = nullptr;
+		CardData* cardData = nullptr;
+		cocos2d::Node* previewNode = nullptr;
+		ConstantString* binStrRef = nullptr;
+		ConstantString* decStrRef = nullptr;
+		ConstantString* hexStrRef = nullptr;
+		LocalizedLabel* binLabelRef = nullptr;
+		LocalizedLabel* decLabelRef = nullptr;
+		LocalizedLabel* hexLabelRef = nullptr;
 
-		PreviewData() : previewCard(nullptr), cardData(nullptr), previewNode(nullptr), binStrRef(binStrRef), decStrRef(decStrRef), hexStrRef(hexStrRef) { }
+		PreviewData() { }
 		PreviewData(Card* previewCard, CardData* cardData, cocos2d::Node* previewNode, ConstantString* binStrRef, ConstantString* decStrRef, ConstantString* hexStrRef, LocalizedLabel* binLabelRef, LocalizedLabel* decLabelRef, LocalizedLabel* hexLabelRef)
 			: previewCard(previewCard), cardData(cardData), previewNode(previewNode), binStrRef(binStrRef), decStrRef(decStrRef), hexStrRef(hexStrRef), binLabelRef(binLabelRef), decLabelRef(decLabelRef), hexLabelRef(hexLabelRef) { }
 	};
@@ -53,11 +53,11 @@ private:
 	CardPreview::PreviewData constructPreview(CardData* cardData, Card* card);
 	void updatePreview(PreviewData previewData, Card* refCard);
 
-	cocos2d::Sprite* cardPad;
+	cocos2d::Sprite* cardPad = nullptr;
 	PreviewData currentPreviewData;
-	cocos2d::Node* previewPanel;
-	ClickableTextNode* helpButton;
+	cocos2d::Node* previewPanel = nullptr;
+	ClickableTextNode* helpButton = nullptr;
 	
-	std::function<void(CardData*)> onHelpClick;
+	std::function<void(CardData*)> onHelpClick = nullptr;
 	std::map<std::string, PreviewData> previewCache;
 };

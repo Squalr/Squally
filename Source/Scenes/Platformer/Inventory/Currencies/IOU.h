@@ -18,8 +18,8 @@ public:
 
 	LocalizedString* getString() override;
 	LocalizedString* getStringPlural() override;
-	std::string getIconResource() override;
-	std::string getSerializationKey() override;
+	const std::string& getIconResource() override;
+	const std::string& getIdentifier() override;
 
 protected:
 	IOU();
@@ -27,4 +27,6 @@ protected:
 
 private:
 	typedef Currency super;
+
+	static const std::string IOUIdentifier;
 };

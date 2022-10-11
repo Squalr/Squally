@@ -26,5 +26,5 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	SmartAnimationSequenceNode* previewSpikes;
+	SmartAnimationSequenceNode* previewSpikes = nullptr;
 };

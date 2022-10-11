@@ -34,12 +34,12 @@ private:
 
 	void onDoorEventTriggered(cocos2d::ValueMap args);
 
-	bool isFlipped;
-	float doorClosedPosition;
-	SmartClippingNode* doorClip;
-	cocos2d::Sprite* door;
-	cocos2d::Sprite* bridge2;
-	CollisionObject* doorCollision;
+	bool isFlipped = false;
+	float doorClosedPosition = 0.0f;
+	SmartClippingNode* doorClip = nullptr;
+	cocos2d::Sprite* door = nullptr;
+	cocos2d::Sprite* bridge2 = nullptr;
+	CollisionObject* doorCollision = nullptr;
 
 	static const float DoorOpenDelta;
 };

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Wands/EmeraldWandPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* EmeraldWand::clone()
 	return EmeraldWand::create();
 }
 
-std::string EmeraldWand::getItemName()
-{
-	return EmeraldWand::SaveKey;
-}
-
 LocalizedString* EmeraldWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_EmeraldWand::create();
 }
 
-std::string EmeraldWand::getIconResource()
+const std::string& EmeraldWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_EmeraldWand;
 }
 
-std::string EmeraldWand::getSerializationKey()
+const std::string& EmeraldWand::getIdentifier()
 {
 	return EmeraldWand::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string EmeraldWand::getSerializationKey()
 Vec2 EmeraldWand::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* EmeraldWand::getRecipe()
+{
+	return EmeraldWandPlans::create();
 }

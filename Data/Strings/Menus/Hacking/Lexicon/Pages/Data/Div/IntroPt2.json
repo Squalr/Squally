@@ -15,7 +15,7 @@
     "ja": "レジスタ EAX:EDX (32 ビット) または RAX:RDX (64 ビット) は、1 つの大きな数値として扱われます。DIV は、1 つのオペランド (除数) を受け取ります。",
     "ko": "레지스터 EAX:EDX(32비트) 또는 RAX:RDX(64비트)는 하나의 큰 수의 배당금으로 처리됩니다. DIV는 하나의 오페랜드, 제수걸립니다.",
     "nl": "De registers EAX:EDX (32-bits) of RAX:RDX (64-bits) worden behandeld als één groot getal, het dividend. DIV neemt een operand, de deler.",
-    "nb": "Registrene EAX:EDX (32-bit) eller RAX:RDX (64-bit) behandles som ett stort tall, utbyttet. DIV tar en operand, divisoren.",
+    "no": "Registrene EAX:EDX (32-bit) eller RAX:RDX (64-bit) behandles som ett stort tall, utbyttet. DIV tar en operand, divisoren.",
     "pl": "Rejestry EAX:EDX (32-bitowe) lub RAX:RDX (64-bitowe) są traktowane jako jedna duża liczba, dywidenda. DIV zajmuje jeden operand, dzielnik.",
     "pt": "Os registos EAX:EDX (32-bit) ou RAX:RDX (64-bit) são tratados como um grande número, o dividendo. DIV leva uma ópera, o divisor.",
     "pt-BR": "Os registros EAX:EDX (32 bits) ou RAX:RDX (64 bits) são tratados como um grande número, o dividendo. DIV toma um operando, o divisor.",

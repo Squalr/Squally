@@ -4,8 +4,6 @@
 #include <map>
 #include <string>
 
-#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
-
 class LocalizedString;
 
 class Objectives
@@ -21,10 +19,10 @@ private:
 
 	struct Objective
 	{
-		std::function<LocalizedString*()> createFunc;
-		int priority;
+		std::function<LocalizedString*()> createFunc = nullptr;
+		int priority = -1;
 
-		Objective() : createFunc(nullptr), priority(-1) { }
+		Objective() { }
 		Objective(std::function<LocalizedString*()> createFunc, int priority) : createFunc(createFunc), priority(priority) { }
 	};
 

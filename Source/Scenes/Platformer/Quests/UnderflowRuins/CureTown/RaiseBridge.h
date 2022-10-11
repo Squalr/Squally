@@ -31,10 +31,10 @@ private:
 	void runCinematicSequenceCureIncomplete();
 	void runCinematicSequencePreviousQuestIncomplete();
 
-	Ajax* ajax;
-	Guano* guano;
-	Scrappy* scrappy;
-	Squally* squally;
+	Ajax* ajax = nullptr;
+	Guano* guano = nullptr;
+	Scrappy* scrappy = nullptr;
+	Squally* squally = nullptr;
 
 	static const std::string TagTownCinematic;
 };

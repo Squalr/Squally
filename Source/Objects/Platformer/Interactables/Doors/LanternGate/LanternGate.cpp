@@ -21,13 +21,13 @@ LanternGate* LanternGate::create(ValueMap& properties)
 	return instance;
 }
 
-LanternGate::LanternGate(ValueMap& properties) : super(properties, Size(356.0f, 320.0f), Vec2(0.0f, 0.0f))
+LanternGate::LanternGate(ValueMap& properties) : super(properties, CSize(356.0f, 320.0f), Vec2(0.0f, 0.0f))
 {
 	this->gateRight = Sprite::create(ObjectResources::Doors_LanternGate_LanternOrangeRight);
 	this->gateLeft = Sprite::create(ObjectResources::Doors_LanternGate_LanternOrangeLeft);
 
-	this->addChild(this->gateRight);
-	this->addChild(this->gateLeft);
+	this->contentNode->addChild(this->gateRight);
+	this->contentNode->addChild(this->gateLeft);
 }
 
 LanternGate::~LanternGate()
@@ -60,14 +60,4 @@ Vec2 LanternGate::getButtonOffset()
 HackablePreview* LanternGate::createDefaultPreview()
 {
 	return nullptr;
-}
-
-void LanternGate::lock(bool animate)
-{
-	super::lock(animate);
-}
-
-void LanternGate::unlock(bool animate)
-{
-	super::unlock(animate);
 }

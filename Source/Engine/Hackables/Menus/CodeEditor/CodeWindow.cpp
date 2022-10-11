@@ -4,9 +4,10 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventDispatcher.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/ui/UIRichText.h"
 
 #include "Engine/UI/Controls/ScrollPane.h"
+#include "Engine/UI/Controls/UIRichText.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Hackables/Menus/CodeEditor/ScriptEntry.h"
@@ -65,14 +66,14 @@ const Color3B CodeWindow::RegisterColor = Color3B(86, 156, 214);
 const Color3B CodeWindow::NumberColor = Color3B(181, 206, 168);
 const Color3B CodeWindow::CommentColor = Color3B(87, 166, 74);
 const Color3B CodeWindow::LineNumberColor = Color3B(166, 166, 166);
-const Size CodeWindow::Padding = Size(8.0f, 4.0f);
+const CSize CodeWindow::Padding = CSize(8.0f, 4.0f);
 const float CodeWindow::MarginSize = 48.0f;
 const float CodeWindow::TitleBarHeight = 64.0f;
 const Color4B CodeWindow::DefaultTitleBarColor = Color4B(59, 92, 97, 255);
 const Color4B CodeWindow::DefaultWindowColor = Color4B(39, 58, 61, 255);
 const Color4B CodeWindow::ReadonlyWindowColor = Color4B(70, 66, 10, 255);
 
-CodeWindow* CodeWindow::create(cocos2d::Size windowSize)
+CodeWindow* CodeWindow::create(cocos2d::CSize windowSize)
 {
 	CodeWindow* instance = new CodeWindow(windowSize);
 
@@ -81,17 +82,13 @@ CodeWindow* CodeWindow::create(cocos2d::Size windowSize)
 	return instance;
 }
 
-CodeWindow::CodeWindow(cocos2d::Size windowSize)
+CodeWindow::CodeWindow(cocos2d::CSize windowSize)
 {
 	this->windowSize = windowSize;
-	this->currentLineNumber = 1;
-	this->lineNumberElements = std::vector<RichElement*>();
-	this->textInfo = std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>>();
-	this->hasScriptChanges = false;
 
 	this->lineNumbers = RichText::create();
 	this->editableText = InputText::create(
-		Size(windowSize.width - CodeWindow::MarginSize - CodeWindow::Padding.width * 2.0f, this->windowSize.height - CodeWindow::Padding.height * 2.0f),
+		CSize(windowSize.width - CodeWindow::MarginSize - CodeWindow::Padding.width * 2.0f, this->windowSize.height - CodeWindow::Padding.height * 2.0f),
 		LocalizedLabel::FontStyle::Coding,
 		LocalizedLabel::FontSize::H3
 	);
@@ -101,12 +98,12 @@ CodeWindow::CodeWindow(cocos2d::Size windowSize)
 		UIResources::Menus_Buttons_SliderButton,
 		UIResources::Menus_Buttons_SliderButtonSelected,
 		CodeWindow::Padding,
-		Size::ZERO
+		CSize::ZERO
 	);
 	this->background = LayerColor::create(CodeWindow::DefaultWindowColor, this->windowSize.width, this->windowSize.height);
 	this->titleBar = LayerColor::create(CodeWindow::DefaultTitleBarColor, this->windowSize.width, CodeWindow::TitleBarHeight);
 	this->windowTitle = InputText::create(
-		Size(this->windowSize.width - 16.0f - 88.0f, CodeWindow::TitleBarHeight - 16.0f),
+		CSize(this->windowSize.width - 16.0f - 88.0f, CodeWindow::TitleBarHeight - 16.0f),
 		LocalizedLabel::FontStyle::Main,
 		LocalizedLabel::FontSize::H3
 	);
@@ -171,7 +168,7 @@ void CodeWindow::initializePositions()
 {
 	super::initializePositions();
 
-	Size windowSize = this->background->getContentSize();
+	CSize windowSize = this->background->getContentSize();
 
 	this->background->setPosition(-windowSize.width / 2.0f, -windowSize.height / 2.0f);
 	this->titleBar->setPosition(-windowSize.width / 2.0f, windowSize.height / 2.0f);
@@ -180,8 +177,8 @@ void CodeWindow::initializePositions()
 	this->copyButtonGlow->setPosition(windowSize.width / 2.0f - 32.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 	this->copyButton->setPosition(windowSize.width / 2.0f - 32.0f, windowSize.height / 2 + CodeWindow::TitleBarHeight / 2.0f);
 
-	this->displayedText->setContentSize(Size(windowSize.width - CodeWindow::MarginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
-	this->lineNumbers->setContentSize(Size(windowSize.width - CodeWindow::MarginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
+	this->displayedText->setContentSize(CSize(windowSize.width - CodeWindow::MarginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
+	this->lineNumbers->setContentSize(CSize(windowSize.width - CodeWindow::MarginSize - CodeWindow::Padding.width * 2.0f, windowSize.height - CodeWindow::Padding.height * 2.0f));
 
 	this->lineNumbers->setPosition(Vec2(-this->contentPane->getPaneSize().width / 2.0f + 20.0f, 0.0f));
 	this->displayedText->setPosition(Vec2(-this->contentPane->getPaneSize().width / 2.0f + CodeWindow::MarginSize, 0.0f));
@@ -265,6 +262,7 @@ void CodeWindow::initializeListeners()
 		this->copyPanel->setOpacity(196);
 		this->copyLabel->setOpacity(255);
 	});
+
 	this->copyButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->copyPanel->setOpacity(0);
@@ -372,7 +370,7 @@ void CodeWindow::clearText()
 
 void CodeWindow::constructTokenizedText(std::string currentText)
 {
-	std::vector<CodeWindow::token> tokens = std::vector<CodeWindow::token>();
+	std::vector<AsmToken> tokens = std::vector<AsmToken>();
 
 	// Due to RichTextBoxes being garbage, we need to split text down further if they contain newlines
 	// Also split them down further if they contain comments
@@ -446,7 +444,7 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 				color = CodeWindow::CommentColor;
 			}
 
-			CodeWindow::token nextToken = CodeWindow::token(ConstantString::create(token), color);
+			AsmToken nextToken = AsmToken(ConstantString::create(token), color);
 			tokens.push_back(nextToken);
 		}
 	}
@@ -454,7 +452,7 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 	this->clearText();
 	this->insertNewline();
 
-	for (auto token : tokens)
+	for (const AsmToken& token : tokens)
 	{
 		if (token.tokenStr->getString() == "\n")
 		{

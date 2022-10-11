@@ -15,7 +15,7 @@
 #include "Engine/Utils/MathUtils.h"
 
 #include "Events/SwitchEvents.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -39,7 +39,7 @@ TrapDoor* TrapDoor::create(ValueMap& properties)
 TrapDoor::TrapDoor(ValueMap& properties) : super(properties)
 {
 	this->door = Sprite::create(ObjectResources::Doors_TrapDoor_TrapDoor);
-	this->doorCollision = CollisionObject::create(CollisionObject::createBox(Size(256.0f, 80.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
+	this->doorCollision = CollisionObject::create(CollisionObject::createBox(CSize(256.0f, 80.0f)), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
 	this->destinationProgress = 0.0f;
 
 	DrawNode* clipStencil = DrawNode::create();

@@ -9,16 +9,16 @@
 
 using namespace cocos2d;
 
-Localization* Localization::instance = nullptr;
+Localization* Localization::Instance = nullptr;
 
 Localization* Localization::getInstance()
 {
-	if (Localization::instance == nullptr)
+	if (Localization::Instance == nullptr)
 	{
-		Localization::instance = new Localization();
+		Localization::Instance = new Localization();
 	}
 
-	return Localization::instance;
+	return Localization::Instance;
 }
 
 Localization::Localization()
@@ -54,9 +54,9 @@ void Localization::setLanguage(LanguageType languageType)
 LanguageType Localization::getNativeLanguage()
 {
 	// Default to steam language
-	if (!Steam::isSquallySteamBuild())
+	if (!Steam::IsSquallySteamBuild())
 	{
-		return Steam::getLanguage();
+		return Steam::GetLanguage();
 	}
 
 	// Steam not available -- use system language

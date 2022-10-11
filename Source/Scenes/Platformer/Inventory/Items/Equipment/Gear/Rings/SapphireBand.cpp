@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Rings/SapphireBandRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* SapphireBand::clone()
 	return SapphireBand::create();
 }
 
-std::string SapphireBand::getItemName()
-{
-	return SapphireBand::SaveKey;
-}
-
 LocalizedString* SapphireBand::getString()
 {
 	return Strings::Items_Equipment_Gear_Rings_SapphireBand::create();
 }
 
-std::string SapphireBand::getIconResource()
+const std::string& SapphireBand::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Rings_SapphireBand;
 }
 
-std::string SapphireBand::getSerializationKey()
+const std::string& SapphireBand::getIdentifier()
 {
 	return SapphireBand::SaveKey;
+}
+
+Recipe* SapphireBand::getRecipe()
+{
+	return SapphireBandRecipe::create();
 }

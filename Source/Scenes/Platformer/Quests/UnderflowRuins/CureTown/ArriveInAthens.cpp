@@ -17,8 +17,10 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Camera/CameraTarget.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/EntityResources.h"
@@ -42,9 +44,6 @@ ArriveInAthens* ArriveInAthens::create(GameObject* owner, QuestLine* questLine)
 
 ArriveInAthens::ArriveInAthens(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ArriveInAthens::MapKeyQuest, false)
 {
-	this->guano = nullptr;
-	this->scrappy = nullptr;
-	this->squally = nullptr;
 }
 
 ArriveInAthens::~ArriveInAthens()
@@ -125,10 +124,10 @@ void ArriveInAthens::runCinematicSequencePt1()
 
 void ArriveInAthens::runCinematicSequencePt2()
 {
-	ObjectEvents::QueryObjects<CameraTarget>(QueryObjectsArgs<CameraTarget>([&](CameraTarget* cameraTarget)
+	ObjectEvents::QueryObjects<CameraTarget>([&](CameraTarget* cameraTarget)
 	{
 		GameCamera::getInstance()->pushTarget(cameraTarget->getTrackingData());
-	}), ArriveInAthens::TagTownCinematic);
+	}, ArriveInAthens::TagTownCinematic);
 
 	this->runAction(Sequence::create(
 		DelayTime::create(1.0f),

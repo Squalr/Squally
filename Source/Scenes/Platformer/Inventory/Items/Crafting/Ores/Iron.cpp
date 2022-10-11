@@ -33,22 +33,17 @@ Item* Iron::clone()
 	return Iron::create();
 }
 
-std::string Iron::getItemName()
-{
-	return Iron::SaveKey;
-}
-
 LocalizedString* Iron::getString()
 {
 	return Strings::Items_Crafting_Ore_Iron::create();
 }
 
-std::string Iron::getIconResource()
+const std::string& Iron::getIconResource()
 {
 	return ItemResources::Crafting_Smithing_Iron;
 }
 
-std::string Iron::getSerializationKey()
+const std::string& Iron::getIdentifier()
 {
 	return Iron::SaveKey;
 }

@@ -8,6 +8,7 @@
 
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -15,7 +16,7 @@
 #include "Objects/Platformer/Physics/FloatingCrate/FloatingCrateGenericPreview.h"
 #include "Objects/Platformer/Physics/FloatingCrate/FloatingCrateGetDensityPreview.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/UIResources.h"
@@ -40,11 +41,11 @@ FloatingCrate* FloatingCrate::create(ValueMap& properties)
 FloatingCrate::FloatingCrate(ValueMap& properties) : super(properties)
 {
 	this->sprite = Sprite::create(ObjectResources::Physics_WoodenCrate_WoodenCrate);
-	this->collision = CollisionObject::create(CollisionObject::createBox(Size(160.0f, 160.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(false, true));
+	this->collision = CollisionObject::create(CollisionObject::createBox(CSize(160.0f, 160.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(false, true));
 
-	this->collision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionObject::CollisionData collisionData)
+	this->collision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 
 	this->collision->addChild(this->sprite);
@@ -90,7 +91,7 @@ void FloatingCrate::registerHackables()
 				Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Anvil,
-				FloatingCrateGetDensityPreview::create(),
+				LazyNode<HackablePreview>::create([=](){ return FloatingCrateGetDensityPreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterEax::create() },
 					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0::create() },
@@ -106,7 +107,7 @@ void FloatingCrate::registerHackables()
 	auto densityFunc = &FloatingCrate::getDensityNonVirtual;
 	std::vector<HackableCode*> hackables = HackableCode::create((void*&)densityFunc, codeInfoMap);
 
-	for (auto next : hackables)
+	for (HackableCode* next : hackables)
 	{
 		this->registerCode(next);
 	}

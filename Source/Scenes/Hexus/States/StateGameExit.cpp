@@ -12,7 +12,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
 #include "Events/HexusEvents.h"
-#include "Scenes/Hexus/Config.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"

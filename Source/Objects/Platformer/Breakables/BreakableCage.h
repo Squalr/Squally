@@ -26,14 +26,15 @@ protected:
 	void initializeListeners() override;
 	cocos2d::Vec2 getButtonOffset() override;
 	void onBreak() override;
-	cocos2d::Node* contentNode;
+
+	cocos2d::Node* cagedContentNode = nullptr;
 
 private:
 	typedef BreakableBase super;
 
-	WorldSound* breakSound;
-	SmartAnimationSequenceNode* explosion;
-	CollisionObject* cageBottom;
-	CollisionObject* cage;
-	CollisionObject* cageTop;
+	WorldSound* breakSound = nullptr;
+	SmartAnimationSequenceNode* explosion = nullptr;
+	CollisionObject* cageBottom = nullptr;
+	CollisionObject* cage = nullptr;
+	CollisionObject* cageTop = nullptr;
 };

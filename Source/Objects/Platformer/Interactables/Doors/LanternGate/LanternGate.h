@@ -7,15 +7,10 @@ namespace cocos2d
 	class Sprite;
 }
 
-class ClickableNode;
-
 class LanternGate : public Portal
 {
 public:
 	static LanternGate* create(cocos2d::ValueMap& properties);
-
-	void lock(bool animate = true) override;
-	void unlock(bool animate = true) override;
 
 	static const std::string MapKey;
 
@@ -32,9 +27,6 @@ protected:
 private:
 	typedef Portal super;
 
-	cocos2d::Sprite* gateRight;
-	cocos2d::Sprite* gateLeft;
-
-	ClickableNode* lockButton;
-	ClickableNode* unlockButton;
+	cocos2d::Sprite* gateRight = nullptr;
+	cocos2d::Sprite* gateLeft = nullptr;
 };

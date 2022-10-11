@@ -6,7 +6,7 @@
 
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/RenderUtils.h"
-#include "Scenes/Cipher/Config.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/CipherState.h"
 
 #include "Resources/CipherResources.h"
@@ -45,7 +45,7 @@ void CipherBackground::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->cipherBackground->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 }

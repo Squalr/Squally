@@ -29,9 +29,9 @@ SteelAxePlans::~SteelAxePlans()
 {
 }
 
-Item* SteelAxePlans::craft()
+std::vector<Item*> SteelAxePlans::craft()
 {
-	return SteelAxe::create();
+	return { SteelAxe::create() };
 }
 
 std::vector<std::tuple<Item*, int>> SteelAxePlans::getReagentsInternal()
@@ -50,17 +50,12 @@ Item* SteelAxePlans::clone()
 	return SteelAxePlans::create();
 }
 
-std::string SteelAxePlans::getItemName()
-{
-	return SteelAxePlans::SaveKey;
-}
-
 LocalizedString* SteelAxePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_SteelAxe::create();
 }
 
-std::string SteelAxePlans::getIconResource()
+const std::string& SteelAxePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -70,7 +65,7 @@ std::string SteelAxePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Axes_SteelAxe;
 }
 
-std::string SteelAxePlans::getSerializationKey()
+const std::string& SteelAxePlans::getIdentifier()
 {
 	return SteelAxePlans::SaveKey;
 }

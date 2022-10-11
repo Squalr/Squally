@@ -34,10 +34,10 @@ float Weapon::getAttackSustain()
 	return 0.35f;
 }
 
-Size Weapon::getWeaponCollisionSize()
+CSize Weapon::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return Size(32.0f, 160.0f);
+	return CSize(32.0f, 160.0f);
 }
 
 Vec2 Weapon::getWeaponCollisionOffset()
@@ -49,4 +49,9 @@ Vec2 Weapon::getWeaponCollisionOffset()
 std::string Weapon::getWeaponAttackSound()
 {
 	return SoundResources::Platformer_Physical_Swings_SwingWeakHybrid1;
+}
+
+std::string Weapon::getWeaponImpactSound()
+{
+	return SoundResources::Platformer_Physical_Impact_Hit1;
 }

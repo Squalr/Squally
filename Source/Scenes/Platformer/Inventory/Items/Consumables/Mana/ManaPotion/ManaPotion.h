@@ -13,10 +13,9 @@ public:
 	void useOutOfCombat(PlatformerEntity* target) override;
 	bool canUseOnTarget(PlatformerEntity* target) override;
 	Item* clone() override;
-	std::string getItemName() override;
 	LocalizedString* getString() override;
-	std::string getIconResource() override;
-	std::string getSerializationKey() override;
+	const std::string& getIconResource() override;
+	const std::string& getIdentifier() override;
 
 	static const std::string SaveKey;
 	static const float RestorePercentage;
@@ -30,5 +29,5 @@ protected:
 private:
 	typedef Consumable super;
 
-	Sound* outOfCombatSound;
+	Sound* outOfCombatSound = nullptr;
 };

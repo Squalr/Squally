@@ -9,19 +9,21 @@ class Checkbox;
 class ToggleGroup : public SmartNode
 {
 public:
-	static ToggleGroup * create(std::function<void(Checkbox*)> callback);
+	static ToggleGroup* create(std::function<void(Checkbox*)> callback);
 
 	void addToggle(Checkbox* toggle);
 
-private:
-	typedef SmartNode super;
+protected:
 	ToggleGroup(std::function<void(Checkbox*)> callback);
 	virtual ~ToggleGroup();
+	
+private:
+	typedef SmartNode super;
 
 	bool onToggleClick(Checkbox* toggle, bool isToggled);
 
-	std::function<void(Checkbox*)> callback;
-	Checkbox* activeToggle;
+	std::function<void(Checkbox*)> callback = nullptr;
+	Checkbox* activeToggle = nullptr;
 	std::vector<Checkbox*> toggles;
 };
 

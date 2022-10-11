@@ -21,7 +21,7 @@ SpecialShr* SpecialShr::create()
 	return instance;
 }
 
-SpecialShr::SpecialShr() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), ItemMeta(3, 3))
+SpecialShr::SpecialShr() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 13 }}), ItemMeta(3, 3))
 {
 }
 
@@ -34,22 +34,17 @@ Item* SpecialShr::clone()
 	return SpecialShr::create();
 }
 
-std::string SpecialShr::getItemName()
-{
-	return SpecialShr::SaveKey;
-}
-
 LocalizedString* SpecialShr::getString()
 {
 	return Strings::Hexus_Cards_ShiftRight::create();
 }
 
-std::string SpecialShr::getIconResource()
+const std::string& SpecialShr::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialShr::getSerializationKey()
+const std::string& SpecialShr::getIdentifier()
 {
 	return SpecialShr::SaveKey;
 }

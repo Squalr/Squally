@@ -27,8 +27,8 @@ protected:
 private:
 	typedef LexiconPage super;
 
-	cocos2d::Sprite* decorLine;
-	LocalizedLabel* operationSelectLabel;
-	ClickableTextNode* nopOperationButton;
-	LocalizedLabel* introText;
+	cocos2d::Sprite* decorLine = nullptr;
+	LocalizedLabel* operationSelectLabel = nullptr;
+	ClickableTextNode* nopOperationButton = nullptr;
+	LocalizedLabel* introText = nullptr;
 };

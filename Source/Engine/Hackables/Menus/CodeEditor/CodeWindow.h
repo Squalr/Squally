@@ -3,45 +3,39 @@
 #include <string>
 #include <vector>
 
-#include "cocos/base/ccTypes.h"
-
 #include "Engine/SmartNode.h"
 
 namespace cocos2d
 {
 	class LayerColor;
 	class Sprite;
-
-	namespace ui
-	{
-		class RichText;
-		class RichElement;
-		class RichElementText;
-	}
 }
 
 class ClickableNode;
 class InputText;
 class LocalizedLabel;
 class LocalizedString;
+class RichText;
+class RichElement;
+class RichElementText;
 class ScriptEntry;
 class ScrollPane;
+	
+struct AsmToken
+{
+	LocalizedString* tokenStr = nullptr;
+	cocos2d::Color3B color;
+
+	AsmToken(LocalizedString* tokenStr, cocos2d::Color3B color) :
+		tokenStr(tokenStr), color(color)
+	{
+	}
+};
 
 class CodeWindow : public SmartNode
 {
 public:
-	static CodeWindow* create(cocos2d::Size windowSize);
-	
-	struct token
-	{
-		LocalizedString* tokenStr;
-		cocos2d::Color3B color;
-
-		token(LocalizedString* tokenStr, cocos2d::Color3B color) :
-			tokenStr(tokenStr), color(color)
-		{
-		}
-	};
+	static CodeWindow* create(cocos2d::CSize windowSize);
 
 	void openScript(ScriptEntry* script);
 	bool hasChanges();
@@ -51,7 +45,7 @@ public:
 	void unfocus();
 
 protected:
-	CodeWindow(cocos2d::Size windowSize);
+	CodeWindow(cocos2d::CSize windowSize);
 	virtual ~CodeWindow();
 
 	void onEnter() override;
@@ -68,29 +62,29 @@ private:
 	void setText(std::string text);
 	void constructTokenizedText(std::string currentText);
 
-	cocos2d::LayerColor* background;
-	cocos2d::LayerColor* titleBar;
-	InputText* windowTitle;
-	ClickableNode* deleteButton;
-	cocos2d::Sprite* copyButtonGlow;
-	ClickableNode* copyButton;
-	ScrollPane* contentPane;
-	cocos2d::ui::RichText* displayedText;
-	InputText* editableText;
-	cocos2d::ui::RichText* lineNumbers;
-	cocos2d::LayerColor* deletePanel;
-	LocalizedLabel* deleteLabel;
-	cocos2d::LayerColor* copyPanel;
-	LocalizedLabel* copyLabel;
+	cocos2d::LayerColor* background = nullptr;
+	cocos2d::LayerColor* titleBar = nullptr;
+	InputText* windowTitle = nullptr;
+	ClickableNode* deleteButton = nullptr;
+	cocos2d::Sprite* copyButtonGlow = nullptr;
+	ClickableNode* copyButton = nullptr;
+	ScrollPane* contentPane = nullptr;
+	RichText* displayedText = nullptr;
+	InputText* editableText = nullptr;
+	RichText* lineNumbers = nullptr;
+	cocos2d::LayerColor* deletePanel = nullptr;
+	LocalizedLabel* deleteLabel = nullptr;
+	cocos2d::LayerColor* copyPanel = nullptr;
+	LocalizedLabel* copyLabel = nullptr;
 
 	std::vector<std::tuple<LocalizedString*, cocos2d::Color3B>> textInfo;
-	std::vector<cocos2d::ui::RichElementText*> textElements;
-	std::vector<cocos2d::ui::RichElement*> lineNumberElements;
+	std::vector<RichElementText*> textElements;
+	std::vector<RichElement*> lineNumberElements;
 
-	bool hasScriptChanges;
-	ScriptEntry* script;
-	int currentLineNumber;
-	cocos2d::Size windowSize;
+	bool hasScriptChanges = false;
+	ScriptEntry* script = nullptr;
+	int currentLineNumber = 1;
+	cocos2d::CSize windowSize;
 
 	static const std::string Delimiters;
 	static const std::set<std::string> Registers;
@@ -103,6 +97,6 @@ private:
 	static const cocos2d::Color4B DefaultWindowColor;
 	static const cocos2d::Color4B ReadonlyWindowColor;
 	static const cocos2d::Color3B LineNumberColor;
-	static const cocos2d::Size Padding;
+	static const cocos2d::CSize Padding;
 	static const float MarginSize;
 };

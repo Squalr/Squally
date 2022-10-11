@@ -2,13 +2,14 @@
 
 #include "cocos/2d/CCSprite.h"
 
+#include "Engine/Input/Input.h"
 #include "Engine/UI/Mouse.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-void CursorSets::registerCursorSets()
+void CursorSets::RegisterCursorSets()
 {
 	Mouse::getInstance()->registerCursorSet(
 		CursorSet::Default,
@@ -25,10 +26,22 @@ void CursorSets::registerCursorSets()
 		Mouse::CursorSet(UIResources::Cursors_MouseIdle, UIResources::Cursors_Store, UIResources::Cursors_Store, UIResources::Cursors_Store)
 	);
 
-	CursorSets::setActiveCursorSet(CursorSet::Default);
+	Mouse::getInstance()->registerCursorSet(
+		CursorSet::Repair,
+		Mouse::CursorSet(UIResources::Cursors_MouseIdle, UIResources::Cursors_Craft, UIResources::Cursors_Craft, UIResources::Cursors_Craft)
+	);
+
+	CursorSets::SetActiveCursorSet(CursorSet::Default);
 }
 
-void CursorSets::setActiveCursorSet(CursorSet cursorSet)
+void CursorSets::SetActiveCursorSet(CursorSet cursorSet)
 {
 	Mouse::getInstance()->setActiveCursorSet(cursorSet);
+
+	InputEvents::TriggerMouseRefresh(Input::GetMouseEvent());
+}
+
+CursorSets::CursorSet CursorSets::GetActiveCursorSet()
+{
+	return (CursorSet)Mouse::getInstance()->getActiveCursorSet();
 }

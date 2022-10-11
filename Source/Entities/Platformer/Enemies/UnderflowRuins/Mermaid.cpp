@@ -24,7 +24,7 @@ Mermaid::Mermaid(ValueMap& properties) : super(properties,
 	Mermaid::MapKey,
 	EntityResources::Enemies_UnderflowRuins_Mermaid_Animations,
 	EntityResources::Enemies_UnderflowRuins_Mermaid_Emblem,
-	Size(172.0f, 296.0f),
+	CSize(172.0f, 296.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

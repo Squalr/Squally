@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="24" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="123" nextobjectid="970">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="24" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="124" nextobjectid="971">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -77,32 +77,39 @@
   </properties>
   <object id="959" name="mermaid" type="entity" x="857.818" y="1621.33" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
   <object id="961" name="mermaid" type="entity" x="1032" y="860" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
   <object id="962" name="mermaid" type="entity" x="2536" y="856" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
   <object id="964" name="mermaid" type="entity" x="2384" y="2424" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
   <object id="966" name="mermaid" type="entity" x="896" y="2432" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
   <object id="967" name="mermaid" type="entity" x="1068" y="2428" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="123" name="tiled bg bg">
+  <object id="970" name="ruins-gray-dark" type="texture" x="-214" y="-308" width="3652" height="4672">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -180,17 +187,17 @@
   </properties>
   <object id="909" name="mermaid" type="entity" x="842.061" y="905.697" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
   <object id="914" name="mermaid" type="entity" x="759.758" y="199.636" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
   <object id="916" name="minotaur" type="entity" x="2574.91" y="3413.58" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,pacing"/>
+    <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
  </objectgroup>
@@ -201,7 +208,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="655.71" y="3401.14" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="805" name="spawn" type="object" x="443.589" y="3408.59" width="128" height="128">
@@ -229,12 +236,20 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="113" name="water fg" visible="0">
+ <objectgroup id="113" name="water fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="917" name="water" type="object" x="1400" y="-124.37" width="792.32" height="4284.74"/>
-  <object id="918" name="water" type="object" x="-25" y="2623.63" width="1425" height="1536.74"/>
+  <object id="917" name="water" type="object" x="1400" y="-124.37" width="792.32" height="4284.74">
+   <properties>
+    <property name="disable-edges" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="918" name="water" type="object" x="-25" y="2623.63" width="1425" height="1536.74">
+   <properties>
+    <property name="disable-edges" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="114" name="terrain fg">
   <properties>

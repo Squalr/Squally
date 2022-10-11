@@ -11,24 +11,24 @@
 
 using namespace cocos2d;
 
-PlatformerItemDeserializer* PlatformerItemDeserializer::instance = nullptr;
+PlatformerItemDeserializer* PlatformerItemDeserializer::Instance = nullptr;
 
 PlatformerItemDeserializer* PlatformerItemDeserializer::getInstance()
 {
-	if (PlatformerItemDeserializer::instance == nullptr)
+	if (PlatformerItemDeserializer::Instance == nullptr)
 	{
-		PlatformerItemDeserializer::instance = new PlatformerItemDeserializer();
+		PlatformerItemDeserializer::Instance = new PlatformerItemDeserializer();
 
-		instance->autorelease();
+		Instance->autorelease();
 	}
 
-	return PlatformerItemDeserializer::instance;
+	return PlatformerItemDeserializer::Instance;
 }
 
-void PlatformerItemDeserializer::registerGlobalNode()
+void PlatformerItemDeserializer::RegisterGlobalNode()
 {
 	// Register this class globally so that it can always listen for events
-	GlobalDirector::getInstance()->registerGlobalNode(PlatformerItemDeserializer::getInstance());
+	GlobalDirector::getInstance()->RegisterGlobalNode(PlatformerItemDeserializer::getInstance());
 }
 
 PlatformerItemDeserializer::PlatformerItemDeserializer()
@@ -314,13 +314,88 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 
 	// Keys
 	this->deserializers[FountainRoomKey::SaveKey] = [=]() { return (Item*)FountainRoomKey::create(); };
+	this->deserializers[LetterForThePrincess::SaveKey] = [=]() { return (Item*)LetterForThePrincess::create(); };
 	this->deserializers[MagesGuildPrisonKey::SaveKey] = [=]() { return (Item*)MagesGuildPrisonKey::create(); };
+	this->deserializers[MageTowerKey::SaveKey] = [=]() { return (Item*)MageTowerKey::create(); };
 	this->deserializers[MayanGemBlueItem::SaveKey] = [=]() { return (Item*)MayanGemBlueItem::create(); };
 	this->deserializers[MayanGemPurpleItem::SaveKey] = [=]() { return (Item*)MayanGemPurpleItem::create(); };
 	this->deserializers[MayanGemRedItem::SaveKey] = [=]() { return (Item*)MayanGemRedItem::create(); };
 	this->deserializers[MedusaMirror::SaveKey] = [=]() { return (Item*)MedusaMirror::create(); };
+	this->deserializers[MinesKey::SaveKey] = [=]() { return (Item*)MinesKey::create(); };
 	this->deserializers[RamWheel::SaveKey] = [=]() { return (Item*)RamWheel::create(); };
+	this->deserializers[TrainTicket::SaveKey] = [=]() { return (Item*)TrainTicket::create(); };
 	this->deserializers[TownKey::SaveKey] = [=]() { return (Item*)TownKey::create(); };
+
+	// Maps
+	this->deserializers[TempleMap::SaveKey] = [=]() { return (Item*)TempleMap::create(); };
+
+	// Recipes
+	this->deserializers[HealthPotionRecipe::SaveKey] = [=]() { return (Item*)HealthPotionRecipe::create(); };
+	this->deserializers[ManaPotionRecipe::SaveKey] = [=]() { return (Item*)ManaPotionRecipe::create(); };
+	this->deserializers[IncrementHealthFlaskRecipe::SaveKey] = [=]() { return (Item*)IncrementHealthFlaskRecipe::create(); };
+	this->deserializers[TransmuteCopperToIron::SaveKey] = [=]() { return (Item*)TransmuteCopperToIron::create(); };
+	this->deserializers[TransmuteCopperToQuartzRecipe::SaveKey] = [=]() { return (Item*)TransmuteCopperToQuartzRecipe::create(); };
+	this->deserializers[TransmuteQuartzToEmerald::SaveKey] = [=]() { return (Item*)TransmuteQuartzToEmerald::create(); };
+	this->deserializers[TransmuteWoodToCoalRecipe::SaveKey] = [=]() { return (Item*)TransmuteWoodToCoalRecipe::create(); };
+	this->deserializers[BoneAxePlans::SaveKey] = [=]() { return (Item*)BoneAxePlans::create(); };
+	this->deserializers[CopperAxePlans::SaveKey] = [=]() { return (Item*)CopperAxePlans::create(); };
+	this->deserializers[CrystalAxePlans::SaveKey] = [=]() { return (Item*)CrystalAxePlans::create(); };
+	this->deserializers[DemonicAxePlans::SaveKey] = [=]() { return (Item*)DemonicAxePlans::create(); };
+	this->deserializers[FrostAxePlans::SaveKey] = [=]() { return (Item*)FrostAxePlans::create(); };
+	this->deserializers[GoldenAxePlans::SaveKey] = [=]() { return (Item*)GoldenAxePlans::create(); };
+	this->deserializers[MithrilAxePlans::SaveKey] = [=]() { return (Item*)MithrilAxePlans::create(); };
+	this->deserializers[ScythePlans::SaveKey] = [=]() { return (Item*)ScythePlans::create(); };
+	this->deserializers[SteelAxePlans::SaveKey] = [=]() { return (Item*)SteelAxePlans::create(); };
+	this->deserializers[VoidAxePlans::SaveKey] = [=]() { return (Item*)VoidAxePlans::create(); };
+	this->deserializers[WoodenAxePlans::SaveKey] = [=]() { return (Item*)WoodenAxePlans::create(); };
+	this->deserializers[BoneBowPlans::SaveKey] = [=]() { return (Item*)BoneBowPlans::create(); };
+	this->deserializers[CrystalBowPlans::SaveKey] = [=]() { return (Item*)CrystalBowPlans::create(); };
+	this->deserializers[DemonicBowPlans::SaveKey] = [=]() { return (Item*)DemonicBowPlans::create(); };
+	this->deserializers[GoldenBowPlans::SaveKey] = [=]() { return (Item*)GoldenBowPlans::create(); };
+	this->deserializers[HuntersBowPlans::SaveKey] = [=]() { return (Item*)HuntersBowPlans::create(); };
+	this->deserializers[IvyBowPlans::SaveKey] = [=]() { return (Item*)IvyBowPlans::create(); };
+	this->deserializers[SteelBowPlans::SaveKey] = [=]() { return (Item*)SteelBowPlans::create(); };
+	this->deserializers[VoidBowPlans::SaveKey] = [=]() { return (Item*)VoidBowPlans::create(); };
+	this->deserializers[WoodenBowPlans::SaveKey] = [=]() { return (Item*)WoodenBowPlans::create(); };
+	this->deserializers[BludgeonPlans::SaveKey] = [=]() { return (Item*)BludgeonPlans::create(); };
+	this->deserializers[BoneHammerPlans::SaveKey] = [=]() { return (Item*)BoneHammerPlans::create(); };
+	this->deserializers[CopperMalletPlans::SaveKey] = [=]() { return (Item*)CopperMalletPlans::create(); };
+	this->deserializers[CrystalMacePlans::SaveKey] = [=]() { return (Item*)CrystalMacePlans::create(); };
+	this->deserializers[DemonicMacePlans::SaveKey] = [=]() { return (Item*)DemonicMacePlans::create(); };
+	this->deserializers[GoldenMacePlans::SaveKey] = [=]() { return (Item*)GoldenMacePlans::create(); };
+	this->deserializers[MithrilMacePlans::SaveKey] = [=]() { return (Item*)MithrilMacePlans::create(); };
+	this->deserializers[SteelMacePlans::SaveKey] = [=]() { return (Item*)SteelMacePlans::create(); };
+	this->deserializers[VoidMacePlans::SaveKey] = [=]() { return (Item*)VoidMacePlans::create(); };
+	this->deserializers[WitchingMacePlans::SaveKey] = [=]() { return (Item*)WitchingMacePlans::create(); };
+	this->deserializers[WoodenClubPlans::SaveKey] = [=]() { return (Item*)WoodenClubPlans::create(); };
+	this->deserializers[AshenBladePlans::SaveKey] = [=]() { return (Item*)AshenBladePlans::create(); };
+	this->deserializers[BoneSwordPlans::SaveKey] = [=]() { return (Item*)BoneSwordPlans::create(); };
+	this->deserializers[CandySwordPlans::SaveKey] = [=]() { return (Item*)CandySwordPlans::create(); };
+	this->deserializers[CopperSwordPlans::SaveKey] = [=]() { return (Item*)CopperSwordPlans::create(); };
+	this->deserializers[CrystalSwordPlans::SaveKey] = [=]() { return (Item*)CrystalSwordPlans::create(); };
+	this->deserializers[DemonicSwordPlans::SaveKey] = [=]() { return (Item*)DemonicSwordPlans::create(); };
+	this->deserializers[DreadmournPlans::SaveKey] = [=]() { return (Item*)DreadmournPlans::create(); };
+	this->deserializers[FireSwordPlans::SaveKey] = [=]() { return (Item*)FireSwordPlans::create(); };
+	this->deserializers[FrostbanePlans::SaveKey] = [=]() { return (Item*)FrostbanePlans::create(); };
+	this->deserializers[GoldenSwordPlans::SaveKey] = [=]() { return (Item*)GoldenSwordPlans::create(); };
+	this->deserializers[MithrilSwordPlans::SaveKey] = [=]() { return (Item*)MithrilSwordPlans::create(); };
+	this->deserializers[SteelSwordPlans::SaveKey] = [=]() { return (Item*)SteelSwordPlans::create(); };
+	this->deserializers[TheButcherPlans::SaveKey] = [=]() { return (Item*)TheButcherPlans::create(); };
+	this->deserializers[TimmyPlans::SaveKey] = [=]() { return (Item*)TimmyPlans::create(); };
+	this->deserializers[VoidSwordPlans::SaveKey] = [=]() { return (Item*)VoidSwordPlans::create(); };
+	this->deserializers[WoodenSwordPlans::SaveKey] = [=]() { return (Item*)WoodenSwordPlans::create(); };
+	this->deserializers[BoneWandPlans::SaveKey] = [=]() { return (Item*)BoneWandPlans::create(); };
+	this->deserializers[ChieftainsWandPlans::SaveKey] = [=]() { return (Item*)ChieftainsWandPlans::create(); };
+	this->deserializers[CrystalWandPlans::SaveKey] = [=]() { return (Item*)CrystalWandPlans::create(); };
+	this->deserializers[DemonicWandPlans::SaveKey] = [=]() { return (Item*)DemonicWandPlans::create(); };
+	this->deserializers[EmeraldWandPlans::SaveKey] = [=]() { return (Item*)EmeraldWandPlans::create(); };
+	this->deserializers[GoldenWandPlans::SaveKey] = [=]() { return (Item*)GoldenWandPlans::create(); };
+	this->deserializers[QuartzWandPlans::SaveKey] = [=]() { return (Item*)QuartzWandPlans::create(); };
+	this->deserializers[SapphireWandPlans::SaveKey] = [=]() { return (Item*)SapphireWandPlans::create(); };
+	this->deserializers[SerpentWandPlans::SaveKey] = [=]() { return (Item*)SerpentWandPlans::create(); };
+	this->deserializers[TaserRodPlans::SaveKey] = [=]() { return (Item*)TaserRodPlans::create(); };
+	this->deserializers[VoidWandPlans::SaveKey] = [=]() { return (Item*)VoidWandPlans::create(); };
+	this->deserializers[WoodenWandPlans::SaveKey] = [=]() { return (Item*)WoodenWandPlans::create(); };
 }
 
 PlatformerItemDeserializer::~PlatformerItemDeserializer()
@@ -335,7 +410,7 @@ void PlatformerItemDeserializer::initializeListeners()
 		InventoryEvents::EventRequestItemDeserialization,
 		[=](EventCustom* eventCustom)
 		{
-			InventoryEvents::RequestItemDeserializationArgs* args = static_cast<InventoryEvents::RequestItemDeserializationArgs*>(eventCustom->getUserData());
+			InventoryEvents::RequestItemDeserializationArgs* args = static_cast<InventoryEvents::RequestItemDeserializationArgs*>(eventCustom->getData());
 			
 			if (args != nullptr)
 			{

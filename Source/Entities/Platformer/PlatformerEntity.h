@@ -1,7 +1,5 @@
 #pragma once
 
-#include "cocos/math/CCGeometry.h"
-
 #include "Engine/Hackables/HackableObject.h"
 
 class HackablePreview;
@@ -26,7 +24,7 @@ public:
 	std::string getEmblemResource();
 	cocos2d::Node* getFloatNode();
 	SmartAnimationNode* getAnimations();
-	cocos2d::Size getEntitySize();
+	cocos2d::CSize getEntitySize();
 	cocos2d::Vec2 getCollisionOffset();
 	cocos2d::Vec2 getEntityCenterPoint();
 	cocos2d::Vec2 getEntityTopPoint();
@@ -59,7 +57,7 @@ protected:
 		std::string entityName,
 		std::string scmlResource,
 		std::string emblemResource,
-		cocos2d::Size size,
+		cocos2d::CSize size,
 		float scale,
 		cocos2d::Vec2 collisionOffset,
 		float hoverHeight = 0.0f);
@@ -73,9 +71,9 @@ protected:
 
 	std::string state;
 
-	cocos2d::Node* floatNode;
-	cocos2d::Node* belowAnimationNode;
-	SmartAnimationNode* animationNode;
+	cocos2d::Node* floatNode = nullptr;
+	cocos2d::Node* belowAnimationNode = nullptr;
+	SmartAnimationNode* animationNode = nullptr;
 
 	static const std::string PropertyState;
 
@@ -84,14 +82,14 @@ private:
 
 	void optimizationHideOffscreenEntity();
 	
-	float entityScale;
+	float entityScale = 1.0f;
 	cocos2d::Vec2 entityCollisionOffset;
-	cocos2d::Size entitySize;
-	float hoverHeight;
+	cocos2d::CSize entitySize;
+	float hoverHeight = 0.0f;
 	std::string entityName;
 	std::string animationResource;
 	std::string emblemResource;
 	cocos2d::Vec2 hackButtonOffset;
 	std::string battleBehavior;
-	PlatformerEntityDeserializer* platformerEntityDeserializer;
+	PlatformerEntityDeserializer* platformerEntityDeserializer = nullptr;
 };

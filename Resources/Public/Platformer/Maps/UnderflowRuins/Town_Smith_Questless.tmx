@@ -113,7 +113,7 @@
   </properties>
   <object id="760" name="geryon" type="entity" x="1037.5" y="850.554" width="128" height="167">
    <properties>
-    <property name="attached-behavior" value="shopkeeper"/>
+    <property name="components" value="shopkeeper"/>
     <property name="tag" value="shopkeeper"/>
    </properties>
   </object>
@@ -204,7 +204,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="1916.32" y="934.96" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="805" name="spawn-wood-door" type="object" x="1869.38" y="934.23" width="128" height="128">

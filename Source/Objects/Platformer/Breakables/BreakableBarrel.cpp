@@ -27,13 +27,13 @@ BreakableBarrel* BreakableBarrel::create(ValueMap& properties)
 	return instance;
 }
 
-BreakableBarrel::BreakableBarrel(ValueMap& properties) : super(properties, Size(128.0f, 212.0f), 1)
+BreakableBarrel::BreakableBarrel(ValueMap& properties) : super(properties, CSize(128.0f, 212.0f), 1)
 {
 	this->barrelSprite = Sprite::create(ObjectResources::Doors_Tent_BARREL);
 	this->explosion = SmartAnimationSequenceNode::create();
 
-	this->addChild(this->barrelSprite);
-	this->addChild(this->explosion);
+	this->contentNode->addChild(this->barrelSprite);
+	this->contentNode->addChild(this->explosion);
 }
 
 BreakableBarrel::~BreakableBarrel()

@@ -24,7 +24,7 @@ Hades::Hades(ValueMap& properties) : super(properties,
 	Hades::MapKey,
 	EntityResources::Npcs_DaemonsHallow_Hades_Animations,
 	EntityResources::Npcs_DaemonsHallow_Hades_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	0.9f,
 	Vec2(0.0f, 0.0f))
 {

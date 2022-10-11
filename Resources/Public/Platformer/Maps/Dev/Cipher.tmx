@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.5" tiledversion="1.7.2" orientation="orthogonal" renderorder="right-down" width="48" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="38" nextobjectid="657">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="WaterfallSky"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="4" name="decor -4096">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="5" name="decor -3584">
+  <properties>
+   <property name="depth" type="float" value="-3584"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="396" name="Forest/Background/Mountain2" type="decor" x="1097.5" y="1757.5" width="2237" height="989"/>
+ </objectgroup>
+ <objectgroup id="6" name="decor -3072">
+  <properties>
+   <property name="depth" type="float" value="-3072"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="430" name="Forest/Background/Mountain1" type="decor" x="3889.5" y="1769.5" width="2237" height="989"/>
+ </objectgroup>
+ <objectgroup id="7" name="decor -2560">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="426" name="Forest/Background/Forest4" type="decor" x="-2128" y="2467.85" width="40000" height="816">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="8" name="decor -2304">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="432" name="Forest/Background/Forest3" type="decor" x="-2128" y="2527.85" width="40000" height="715">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="9" name="decor -2048">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="431" name="Forest/Background/Forest2" type="decor" x="-2128" y="2559.85" width="40000" height="941">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="10" name="decor -1792">
+  <properties>
+   <property name="depth" type="float" value="-1792"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="433" name="Forest/Background/Forest1" type="decor" x="-2126.46" y="2496.5" width="40000" height="909">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="11" name="background mist">
+  <properties>
+   <property name="background" value="Mist"/>
+   <property name="type" value="background"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="12" name="decor -1536">
+  <properties>
+   <property name="depth" type="float" value="-1536"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="13" name="decor -1024">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="14" name="decor -768">
+  <properties>
+   <property name="depth" type="float" value="-1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="15" name="decor -512">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="16" name="decor -256">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="18" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="19" name="objects background">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="20" name="terrain 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="600" name="blue-grass" type="terrain" x="-14.9031" y="2816.69">
+   <polygon points="0,0 6154.99,-7.45156 6154.99,625.931 14.9031,633.383"/>
+  </object>
+  <object id="654" name="edge-portal" type="object" x="5929.41" y="2248.64" width="199.918" height="559.063">
+   <properties>
+    <property name="args" value="0"/>
+    <property name="map" value="Dev/Cages"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="655" name="portal" type="object" x="5192.18" y="2593.16" width="226.759" height="216.791">
+   <properties>
+    <property name="args" value="0"/>
+    <property name="map" value="EndianForest/Town_Main"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="656" name="cipher-chest" type="object" x="851.485" y="2687.03" width="128" height="128">
+   <properties>
+    <property name="data">{
+  &quot;blocks&quot;: [
+      {
+        &quot;lines&quot;:
+        [
+          {
+            &quot;registers&quot;: [ &quot;eax&quot;, &quot;ebx&quot;, &quot;ecx&quot; ],
+            &quot;operands&quot;: [ &quot;mov&quot;, &quot;add&quot;, &quot;sub&quot; ],
+            &quot;values&quot;: [ 1, 2, 3 ]
+          },
+          {
+            &quot;registers&quot;: [ &quot;eax&quot;, &quot;ebx&quot;, &quot;ecx&quot; ],
+            &quot;operands&quot;: [ &quot;mov&quot;, &quot;add&quot;, &quot;sub&quot; ],
+            &quot;values&quot;: [ 1, 2, 3 ]
+          },
+          {
+            &quot;registers&quot;: [ &quot;eax&quot;, &quot;ebx&quot;, &quot;ecx&quot; ],
+            &quot;operands&quot;: [ &quot;mov&quot;, &quot;add&quot;, &quot;sub&quot; ],
+            &quot;values&quot;: [ 1, 2, 3 ]
+          }
+        ]
+      },
+      {
+        &quot;lines&quot;:
+        [
+          {
+            &quot;registers&quot;: [ &quot;eax&quot;, &quot;ebx&quot;, &quot;ecx&quot; ],
+            &quot;operands&quot;: [ &quot;mov&quot;, &quot;add&quot;, &quot;sub&quot; ],
+            &quot;values&quot;: [ 1, 2, 3 ]
+          },
+          {
+            &quot;registers&quot;: [ &quot;eax&quot;, &quot;ebx&quot;, &quot;ecx&quot; ],
+            &quot;operands&quot;: [ &quot;mov&quot;, &quot;add&quot;, &quot;sub&quot; ],
+            &quot;values&quot;: [ 1, 2, 3 ]
+          },
+          {
+            &quot;registers&quot;: [ &quot;eax&quot;, &quot;ebx&quot;, &quot;ecx&quot; ],
+            &quot;operands&quot;: [ &quot;mov&quot;, &quot;add&quot;, &quot;sub&quot; ],
+            &quot;values&quot;: [ 1, 2, 3 ]
+          }
+        ]
+      }
+    ]
+}</property>
+    <property name="data-type" value="decimal"/>
+    <property name="event" value="open-cipher"/>
+    <property name="registers" value="1,0,0,0,0,0,0,0"/>
+    <property name="registers-output" value="5,0,0,0,0,0,0,0"/>
+    <property name="reward-pool" value="ef-generic"/>
+    <property name="tutorial" value="extra-tokens"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="523" name="squally" type="entity" x="157.785" y="2527.43" width="78.7879" height="88">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="27" name="terrain foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="28" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="29" name="decor_foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="30" name="object_foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="31" name="rain">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="32" name="decor +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="33" name="decor +8">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

@@ -1,0 +1,37 @@
+#pragma once
+#include <string>
+
+#include "cocos/base/ccTypes.h"
+
+#include "Engine/Hackables/HackableObject.h"
+#include "Engine/Terrain/TerrainObject.h"
+#include "Engine/Utils/AlgoUtils.h"
+
+class MiniMapTerrainObject : public HackableObject
+{
+public:
+	static const std::string MapKey;
+	static const std::string PropertyTopOnly;
+	static const std::string PropertyMiniMapHidden;
+	static const std::string TagMiniMapTerrain;
+
+protected:
+	MiniMapTerrainObject(cocos2d::ValueMap& properties, TerrainObject::TerrainData terrainData);
+	virtual ~MiniMapTerrainObject();
+
+	void onEnter() override;
+
+private:
+	typedef HackableObject super;
+
+	void buildInfill(TerrainObject::InfillData infillData);
+
+	TerrainObject::TerrainData terrainData;
+	std::vector<AlgoUtils::Triangle> infillTriangles;
+
+	cocos2d::Node* rootNode = nullptr;
+	cocos2d::Node* infillNode = nullptr;
+
+	bool isInactive = false;
+	bool isMiniMapHidden = false;
+};

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="51" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="128" nextobjectid="955">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="51" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="128" nextobjectid="958">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -72,30 +72,30 @@
   </properties>
   <object id="902" name="minotaur" type="entity" x="3310.59" y="977.623" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="enemy,agro"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>
   <object id="903" name="minotaur" type="entity" x="3232.02" y="648.983" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
   <object id="940" name="minotaur" type="entity" x="3434" y="650" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="ally"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
   <object id="953" name="poseidon" type="entity" x="900" y="976" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="poseidon,poseidon-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="poseidon,poseidon-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
@@ -206,10 +206,17 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="835" name="ruins-gray-thick" type="terrain" x="-351.63" y="1197.82" width="2306.72" height="652.241"/>
+  <object id="835" name="ruins-gray-thick" type="terrain" x="-351.63" y="1197.82" width="2306.72" height="652.241">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
   <object id="891" name="ruins-gray-thick" type="terrain" x="-328.238" y="2248.61" width="7197.93" height="654.787"/>
   <object id="894" name="ruins-gray-thick" type="terrain" x="2685.4" y="1198.06" width="1701.93" height="1048.12"/>
   <object id="926" name="ruins-gray-thick" type="terrain" x="6056" y="1580.35">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
    <polygon points="-1050.96,-390.747 215.057,-391.588 216.231,-495.537 389.343,-493.443 387.99,-576.808 848.9,-580.504 850.99,261.911 -1056.8,266.287"/>
   </object>
  </objectgroup>
@@ -217,8 +224,16 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="915" name="ruins-gray-thick" type="terrain" x="1878.55" y="-75.9994" width="237.082" height="1925.21"/>
-  <object id="916" name="ruins-gray-thick" type="terrain" x="4885.46" y="0.06" width="237.082" height="1846.79"/>
+  <object id="915" name="ruins-gray-thick" type="terrain" x="1878.55" y="-75.9994" width="237.082" height="1925.21">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="916" name="ruins-gray-thick" type="terrain" x="4885.46" y="0.06" width="237.082" height="1846.79">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="22" name="decor">
   <properties>
@@ -253,6 +268,11 @@
    </properties>
   </object>
   <object id="954" name="caged-zebra" type="object" x="4002" y="1085.33" width="196" height="112"/>
+  <object id="957" name="hexus-shrine" type="object" x="3248.68" y="935.818" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-mermaid"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -264,10 +284,10 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="943" name="mermaid" type="entity" x="3456.12" y="1067.58" width="128" height="128">
+  <object id="943" name="mermaid" type="entity" x="3204.12" y="3187.58" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="friendly,disarmed,ur-puzzle-D"/>
-    <property name="scale" type="float" value="0.75"/>
+    <property name="components" value="friendly,disarmed,ur-puzzle-C"/>
+    <property name="tag" value="hexus-mermaid"/>
    </properties>
   </object>
  </objectgroup>
@@ -278,7 +298,7 @@
   </properties>
   <object id="523" name="squally" type="entity" x="698.467" y="1073.38" width="128" height="128">
    <properties>
-    <property name="attached-behavior" value="squally"/>
+    <property name="components" value="squally"/>
    </properties>
   </object>
   <object id="805" name="spawn" type="object" x="561.65" y="1071.68" width="128" height="128">

@@ -21,7 +21,7 @@ SpecialOr* SpecialOr::create()
 	return instance;
 }
 
-SpecialOr::SpecialOr() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), ItemMeta(3, 3))
+SpecialOr::SpecialOr() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 17 }}), ItemMeta(3, 3))
 {
 }
 
@@ -34,22 +34,17 @@ Item* SpecialOr::clone()
 	return SpecialOr::create();
 }
 
-std::string SpecialOr::getItemName()
-{
-	return SpecialOr::SaveKey;
-}
-
 LocalizedString* SpecialOr::getString()
 {
 	return Strings::Hexus_Cards_LogicalOr::create();
 }
 
-std::string SpecialOr::getIconResource()
+const std::string& SpecialOr::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardSpecial;
 }
 
-std::string SpecialOr::getSerializationKey()
+const std::string& SpecialOr::getIdentifier()
 {
 	return SpecialOr::SaveKey;
 }

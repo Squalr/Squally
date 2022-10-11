@@ -2,7 +2,6 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class Portal;
 class QuestLine;
 
 class UnlockTomb : public QuestTask

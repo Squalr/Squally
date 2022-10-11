@@ -8,11 +8,10 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
+#include "cocos/base/CCInputEvents.h"
 
-#include "Engine/Events/InputEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/Input.h"
-#include "Engine/Input/MouseState.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
@@ -47,12 +46,6 @@ MemoryGrid* MemoryGrid::create(const ValueMap& properties)
 
 MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 {
-	this->addresses = std::vector<LocalizedLabel*>();
-	this->values = std::vector<int>();
-	this->initialValues = std::vector<int>();
-	this->valueStrings = std::vector<ConstantString*>();
-	this->valueLabels = std::vector<LocalizedLabel*>();
-	this->gridHitBoxes = std::vector<ClickableNode*>();
 	this->gridLines = DrawNode::create();
 	this->eaxMarker = RegisterMarkerEax::create();
 	this->ebxMarker = RegisterMarkerEbx::create();
@@ -66,16 +59,6 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 	this->gridHitBoxesNode = Node::create();
 	this->selector = Sprite::create(IsometricObjectResources::PointerTrace_Selector);
 	this->markers = std::vector<RegisterMarker*>();
-	this->isAddressFocused = false;
-	this->isValueFocused = false;
-	this->initialEax = 0;
-	this->initialEbx = 0;
-	this->initialEcx = 0;
-	this->initialEdx = 0;
-	this->initialEdi = 0;
-	this->initialEsi = 0;
-	this->initialEbp = 0;
-	this->initialEsp = 0;
 
 	this->markers.push_back(this->eaxMarker);
 	this->markers.push_back(this->ebxMarker);
@@ -109,7 +92,7 @@ MemoryGrid::MemoryGrid(const ValueMap& properties) : HackableObject(properties)
 
 			indexLabel->enableOutline(Color4B::BLACK, 4);
 			valueLabel->enableOutline(Color4B::BLACK, 4);
-			gridHitBox->setContentSize(Size(128.0f, 64.0f));
+			gridHitBox->setContentSize(CSize(128.0f, 64.0f));
 			
 			this->addresses.push_back(indexLabel);
 			this->values.push_back(0);
@@ -191,13 +174,13 @@ void MemoryGrid::onEnter()
 
 	for (auto it = this->addresses.begin(); it != this->addresses.end(); it++)
 	{
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(*it));
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(*it));
 		(*it)->setOpacity(0);
 	}
 
 	for (auto it = this->valueLabels.begin(); it != this->valueLabels.end(); it++)
 	{
-		ObjectEvents::TriggerBindObjectToUI(ObjectEvents::RelocateObjectArgs(*it));
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(*it));
 		(*it)->setOpacity(0);
 	}
 
@@ -262,13 +245,13 @@ void MemoryGrid::initializeListeners()
 
 		(*it)->setIntersectFunction([=](Vec2 mousePos)
 		{
-			return GameUtils::intersectsIsometric(*it, mousePos);
+			return GameUtils::intersectsIsometric(*it, mousePos, false);
 		});
 	}
 
 	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventWriteValue, [=](EventCustom* eventCustom)
 	{
-		PointerTraceEvents::PointerTraceWriteArgs* args = static_cast<PointerTraceEvents::PointerTraceWriteArgs*>(eventCustom->getUserData());
+		PointerTraceEvents::PointerTraceWriteArgs* args = static_cast<PointerTraceEvents::PointerTraceWriteArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -283,7 +266,7 @@ void MemoryGrid::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(PointerTraceEvents::EventReadValue, [=](EventCustom* eventCustom)
 	{
-		PointerTraceEvents::PointerTraceReadArgs* args = static_cast<PointerTraceEvents::PointerTraceReadArgs*>(eventCustom->getUserData());
+		PointerTraceEvents::PointerTraceReadArgs* args = static_cast<PointerTraceEvents::PointerTraceReadArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{
@@ -302,7 +285,7 @@ void MemoryGrid::initializeListeners()
 		this->positionRegisterMarkers();
 	}));
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_TAB }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->isAddressFocused = true;
 
@@ -313,7 +296,7 @@ void MemoryGrid::initializeListeners()
 		}
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_SHIFT }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SHIFT }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->isValueFocused = true;
 
@@ -324,7 +307,7 @@ void MemoryGrid::initializeListeners()
 		}
 	});
 
-	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_TAB }, [=](InputEvents::InputArgs* args)
+	this->whenKeyReleased({ InputEvents::KeyCode::KEY_TAB }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->isAddressFocused = false;
 		
@@ -333,11 +316,9 @@ void MemoryGrid::initializeListeners()
 			(*it)->setOpacity(0);
 			(*it)->setVisible(false);
 		}
-
-		InputEvents::TriggerMouseRefresh(InputEvents::MouseEventArgs(MouseState::getMouseState()));
 	});
 
-	this->whenKeyReleased({ EventKeyboard::KeyCode::KEY_SHIFT }, [=](InputEvents::InputArgs* args)
+	this->whenKeyReleased({ InputEvents::KeyCode::KEY_SHIFT }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->isValueFocused = false;
 		
@@ -346,8 +327,6 @@ void MemoryGrid::initializeListeners()
 			(*it)->setOpacity(0);
 			(*it)->setVisible(false);
 		}
-
-		InputEvents::TriggerMouseRefresh(InputEvents::MouseEventArgs(MouseState::getMouseState()));
 	});
 }
 

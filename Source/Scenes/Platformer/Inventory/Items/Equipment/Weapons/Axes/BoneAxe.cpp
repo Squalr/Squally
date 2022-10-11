@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/BoneAxePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,30 +47,25 @@ Item* BoneAxe::clone()
 	return BoneAxe::create();
 }
 
-std::string BoneAxe::getItemName()
-{
-	return BoneAxe::SaveKey;
-}
-
 LocalizedString* BoneAxe::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_BoneAxe::create();
 }
 
-std::string BoneAxe::getIconResource()
+const std::string& BoneAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Axes_BoneAxe;
 }
 
-std::string BoneAxe::getSerializationKey()
+const std::string& BoneAxe::getIdentifier()
 {
 	return BoneAxe::SaveKey;
 }
 
-Size BoneAxe::getWeaponCollisionSize()
+CSize BoneAxe::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return Size(112.0f, 96.0f);
+	return CSize(112.0f, 96.0f);
 }
 
 Vec2 BoneAxe::getWeaponCollisionOffset()
@@ -81,4 +77,9 @@ Vec2 BoneAxe::getWeaponCollisionOffset()
 Vec2 BoneAxe::getDisplayOffset()
 {
 	return Vec2(28.0f, -4.0f);
+}
+
+Recipe* BoneAxe::getRecipe()
+{
+	return BoneAxePlans::create();
 }

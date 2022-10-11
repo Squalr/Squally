@@ -17,7 +17,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
 #include "Objects/Platformer/Rewards/RewardPool.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -49,7 +49,7 @@ RewardItem::RewardItem(ValueMap& properties) : super(properties)
 	this->poolName = GameUtils::getKeyOrDefault(this->properties, RewardItem::PropertyRewardPool, Value("")).asString();
 	this->available = true;
 	
-	this->itemClickHitbox->setContentSize(Size(224.0f, 224.0f));
+	this->itemClickHitbox->setContentSize(CSize(224.0f, 224.0f));
 
 	this->setVisible(false);
 
@@ -126,9 +126,9 @@ void RewardItem::sellItem()
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
-			PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(this->item->clone()));
+			PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ this->item->clone() }));
 			this->removeRewardItem();
 		});
 	}, Squally::MapKey);

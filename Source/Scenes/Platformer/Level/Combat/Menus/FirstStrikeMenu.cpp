@@ -53,7 +53,7 @@ void FirstStrikeMenu::initializePositions()
 {
 	super::initializePositions();
 	
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 256.0f));
 }
@@ -67,7 +67,7 @@ void FirstStrikeMenu::show(bool playerFirstStrike)
 {
 	if (playerFirstStrike)
 	{
-		Size visibleSize = Director::getInstance()->getVisibleSize();
+		CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 		this->runAction(Sequence::create(
 			FadeTo::create(0.25f, 255),

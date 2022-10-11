@@ -24,7 +24,7 @@ VoidDemon::VoidDemon(ValueMap& properties) : super(properties,
 	VoidDemon::MapKey,
 	EntityResources::Enemies_VoidStar_VoidDemon_Animations,
 	EntityResources::Enemies_VoidStar_VoidDemon_Emblem,
-	Size(338.0f, 342.0f),
+	CSize(338.0f, 342.0f),
 	0.7f,
 	Vec2(0.0f, 0.0f))
 {

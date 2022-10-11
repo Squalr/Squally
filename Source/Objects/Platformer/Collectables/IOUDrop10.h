@@ -25,7 +25,6 @@ protected:
 private:
 	typedef Collectable super;
 
-	cocos2d::Sprite* iou;
-
-	WorldSound* collectSound;
+	cocos2d::Sprite* iou = nullptr;
+	WorldSound* collectSound = nullptr;
 };

@@ -17,11 +17,12 @@ public:
 protected:
 	ThrownObjectGenericPreview(cocos2d::Node* object);
 	virtual ~ThrownObjectGenericPreview();
+	
 	void onEnter() override;
 	void initializePositions() override;
 
 private:
 	typedef HackablePreview super;
 
-	cocos2d::Node* object;
+	cocos2d::Node* object = nullptr;
 };

@@ -35,7 +35,6 @@ TimelineEvent::TimelineEvent(PlatformerEntity* owner, Sprite* emblem, float offs
 	this->emblem = emblem;
 	this->time = offsetTime;
 	this->timelineEvent = timelineEvent;
-	this->isDeactivated = false;
 
 	this->addChild(this->line);
 	this->addChild(this->circle);

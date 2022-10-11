@@ -2,10 +2,6 @@
 #include <functional>
 #include <string>
 
-#include "cocos/base/CCDirector.h"
-#include "cocos/base/CCEventDispatcher.h"
-#include "cocos/base/CCValue.h"
-
 class CollisionObject;
 
 class CollisionEvents
@@ -15,8 +11,8 @@ public:
 		
 	struct QueryCollisionObjectsArgs
 	{
-		std::function<void(CollisionObject*)> onObjectQueriedCallback;
-		int bitmask;
+		std::function<void(CollisionObject*)> onObjectQueriedCallback = nullptr;
+		int bitmask = 0;
 		
 		QueryCollisionObjectsArgs(std::function<void(CollisionObject*)> onObjectQueriedCallback, int bitmask) : onObjectQueriedCallback(onObjectQueriedCallback), bitmask(bitmask)
 		{

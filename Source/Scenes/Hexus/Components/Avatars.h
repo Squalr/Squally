@@ -32,13 +32,13 @@ private:
 	typedef ComponentBase super;
 	void setAvatars(GameState* gameState);
 
-	SmartClippingNode* clipPlayer;
-	SmartClippingNode* clipEnemy;
-	cocos2d::Sprite* framePlayer;
-	cocos2d::Sprite* frameEnemy;
-	cocos2d::Node* avatarPlayer;
-	cocos2d::Node* avatarEnemy;
-	cocos2d::Node* playerBackground;
-	SmartAnimationNode* playerPreview;
-	cocos2d::Node* opponentPreview;
+	SmartClippingNode* clipPlayer = nullptr;
+	SmartClippingNode* clipEnemy = nullptr;
+	cocos2d::Sprite* framePlayer = nullptr;
+	cocos2d::Sprite* frameEnemy = nullptr;
+	cocos2d::Node* avatarPlayer = nullptr;
+	cocos2d::Node* avatarEnemy = nullptr;
+	cocos2d::Node* playerBackground = nullptr;
+	SmartAnimationNode* playerPreview = nullptr;
+	cocos2d::Node* opponentPreview = nullptr;
 };

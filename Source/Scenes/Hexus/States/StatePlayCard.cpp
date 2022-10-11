@@ -7,8 +7,8 @@
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardEffects.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/Deck.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/SoundResources.h"
 
@@ -161,11 +161,11 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			// Draw card effect for decimal 0 card
 			if (gameState->selectedHandCard->cardData->getCardKey() == CardKeys::Decimal0)
 			{
-				selfHand->insertCard(selfDeck->drawCard(), gameState->turn == GameState::Turn::Player ? Config::insertDelay : 0.0f);
+				selfHand->insertCard(selfDeck->drawCard(), gameState->turn == GameState::Turn::Player ? HexusConfig::insertDelay : 0.0f);
 			}
 
 			selfHand->removeCard(gameState->selectedHandCard);
-			gameState->selectedRow->insertCard(gameState->selectedHandCard, Config::insertDelay);
+			gameState->selectedRow->insertCard(gameState->selectedHandCard, HexusConfig::insertDelay);
 
 			// Horde effect for hex 1 card
 			if (gameState->selectedHandCard->cardData->getCardKey() == CardKeys::Hex1)
@@ -194,7 +194,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 					return false;
 				});
 
-				gameState->selectedRow->insertCards(hordeCards, Config::insertDelay);
+				gameState->selectedRow->insertCards(hordeCards, HexusConfig::insertDelay);
 			}
 			
 			this->movementSound->play();
@@ -209,7 +209,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			}
 
 			selfHand->removeCard(gameState->selectedHandCard);
-			gameState->selectedRow->insertCard(gameState->selectedHandCard, Config::insertDelay);
+			gameState->selectedRow->insertCard(gameState->selectedHandCard, HexusConfig::insertDelay);
 			
 			this->movementSound->play();
 			break;
@@ -228,7 +228,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			}
 
 			selfHand->removeCard(gameState->selectedHandCard);
-			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, HexusConfig::insertDelay);
 
 			if (!tryAbsorb(gameState, gameState->selectedRow))
 			{	
@@ -325,7 +325,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			}
 
 			selfHand->removeCard(gameState->selectedHandCard);
-			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, HexusConfig::insertDelay);
 
 			if (!tryAbsorb(gameState, gameState->getRowForCard(gameState->selectedDestinationCard)))
 			{
@@ -411,7 +411,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			}
 
 			selfHand->removeCard(gameState->selectedHandCard);
-			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, HexusConfig::insertDelay);
 
 			if (!tryAbsorb(gameState, gameState->getRowForCard(gameState->selectedDestinationCard)))
 			{
@@ -453,17 +453,17 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_GREED:
 		{
 			selfHand->removeCard(gameState->selectedHandCard);
-			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, HexusConfig::insertDelay);
 
-			selfHand->insertCard(selfDeck->drawCard(), gameState->turn == GameState::Turn::Player ? Config::insertDelay : 0.0f);
-			selfHand->insertCard(selfDeck->drawCard(), gameState->turn == GameState::Turn::Player ? Config::insertDelay : 0.0f);
+			selfHand->insertCard(selfDeck->drawCard(), gameState->turn == GameState::Turn::Player ? HexusConfig::insertDelay : 0.0f);
+			selfHand->insertCard(selfDeck->drawCard(), gameState->turn == GameState::Turn::Player ? HexusConfig::insertDelay : 0.0f);
 
 			break;
 		}
 		case CardData::CardType::Special_BONUS_MOVES:
 		{
 			selfHand->removeCard(gameState->selectedHandCard);
-			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, HexusConfig::insertDelay);
 			
 			gameState->playableCardsThisTurn += 3;
 			break;
@@ -471,7 +471,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_PEEK:
 		{
 			selfHand->removeCard(gameState->selectedHandCard);
-			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, HexusConfig::insertDelay);
 
 			playedPeekCard = true;
 			break;
@@ -479,7 +479,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_SUDDEN_DEATH:
 		{
 			selfHand->removeCard(gameState->selectedHandCard);
-			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, HexusConfig::insertDelay);
 
 			auto removeWeakCards = [=](CardRow* targetRow, Deck* targetGraveyard)
 			{
@@ -497,7 +497,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 					for (auto it = toRemove.begin(); it != toRemove.end(); it++)
 					{
-						targetGraveyard->insertCardTop(targetRow->removeCard(*it), true, Config::insertDelay);
+						targetGraveyard->insertCardTop(targetRow->removeCard(*it), true, HexusConfig::insertDelay);
 					}
 				}
 			};
@@ -514,7 +514,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_KILL:
 		{
 			selfHand->removeCard(gameState->selectedHandCard);
-			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, HexusConfig::insertDelay);
 
 			CardRow* targetRow = gameState->getRowForCard(gameState->selectedDestinationCard);
 
@@ -530,11 +530,11 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				{
 					if (targetRow->isPlayerRow())
 					{
-						gameState->playerGraveyard->insertCardTop(targetRow->removeCard(gameState->selectedDestinationCard), true, Config::insertDelay);
+						gameState->playerGraveyard->insertCardTop(targetRow->removeCard(gameState->selectedDestinationCard), true, HexusConfig::insertDelay);
 					}
 					else
 					{
-						gameState->enemyGraveyard->insertCardTop(targetRow->removeCard(gameState->selectedDestinationCard), true, Config::insertDelay);
+						gameState->enemyGraveyard->insertCardTop(targetRow->removeCard(gameState->selectedDestinationCard), true, HexusConfig::insertDelay);
 					}
 
 					gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
@@ -551,7 +551,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		{
 			selfHand->removeCard(gameState->selectedHandCard);
-			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, HexusConfig::insertDelay);
 
 			CardRow* targetRow = gameState->getRowForCard(gameState->selectedDestinationCard);
 
@@ -565,11 +565,11 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			{
 				if (gameState->selectedDestinationCard->getIsPlayerOwnedCard())
 				{
-					gameState->playerHand->insertCard(targetRow->removeCard(gameState->selectedDestinationCard), Config::insertDelay);
+					gameState->playerHand->insertCard(targetRow->removeCard(gameState->selectedDestinationCard), HexusConfig::insertDelay);
 				}
 				else
 				{
-					gameState->enemyHand->insertCard(targetRow->removeCard(gameState->selectedDestinationCard), Config::insertDelay);
+					gameState->enemyHand->insertCard(targetRow->removeCard(gameState->selectedDestinationCard), HexusConfig::insertDelay);
 				}
 
 				gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
@@ -581,7 +581,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_STEAL:
 		{
 			selfHand->removeCard(gameState->selectedHandCard);
-			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, Config::insertDelay);
+			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, HexusConfig::insertDelay);
 
 			CardRow* targetRow = gameState->getRowForCard(gameState->selectedDestinationCard);
 
@@ -595,7 +595,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			{
 				auto tryStealCard = [=](CardRow* sourceRow, CardRow* destRow, Card* targetCard)
 				{
-					destRow->insertCard(sourceRow->removeCard(targetCard), Config::insertDelay);
+					destRow->insertCard(sourceRow->removeCard(targetCard), HexusConfig::insertDelay);
 				};
 
 				tryStealCard(selfBinaryRow, otherBinaryRow, gameState->selectedDestinationCard);
@@ -746,11 +746,11 @@ bool StatePlayCard::tryAbsorb(GameState* gameState, CardRow* cardRow)
 		{
 			if (cardRow->isPlayerRow())
 			{
-				gameState->playerGraveyard->insertCardTop(cardRow->removeCard(*it), true, Config::insertDelay);
+				gameState->playerGraveyard->insertCardTop(cardRow->removeCard(*it), true, HexusConfig::insertDelay);
 			}
 			else
 			{
-				gameState->enemyGraveyard->insertCardTop(cardRow->removeCard(*it), true, Config::insertDelay);
+				gameState->enemyGraveyard->insertCardTop(cardRow->removeCard(*it), true, HexusConfig::insertDelay);
 			}
 
 			this->sheepSound->play();

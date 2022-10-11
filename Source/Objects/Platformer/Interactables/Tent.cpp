@@ -16,8 +16,8 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/SwitchEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityHealthBehavior.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FXResources.h"
@@ -44,9 +44,8 @@ Tent::Tent(ValueMap& properties) : super(properties)
 	this->healAnimation = SmartAnimationSequenceNode::create();
 	this->tentFront = Sprite::create(ObjectResources::Interactive_TentFront);
 	this->topCollision = CollisionObject::create(this->createTentTopCollision(), (CollisionType)PlatformerCollisionType::Solid, CollisionObject::Properties(false, false));
-	this->healCollision = CollisionObject::create(CollisionObject::createBox(Size(192.0f, 356.0f)), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
+	this->healCollision = CollisionObject::create(CollisionObject::createBox(CSize(192.0f, 356.0f)), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Heal4);
-	this->isAnimating = false;
 	
 	this->addChild(this->healCollision);
 	this->addChild(this->topCollision);
@@ -71,8 +70,8 @@ void Tent::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->healAnimation));
-	ObjectEvents::TriggerElevateObject(ObjectEvents::RelocateObjectArgs(this->tentFront));
+	ObjectEvents::TriggerElevateObject(RelocateObjectArgs(this->healAnimation));
+	ObjectEvents::TriggerElevateObject(RelocateObjectArgs(this->tentFront));
 }
 
 void Tent::initializePositions()
@@ -90,31 +89,31 @@ void Tent::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->topCollision->whenCollidesWith({(int)PlatformerCollisionType::Force, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics}, [=](CollisionObject::CollisionData data)
+	this->topCollision->whenCollidesWith({(int)PlatformerCollisionType::Force, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Physics}, [=](CollisionData data)
 	{
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 
-	this->healCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
+	this->healCollision->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionData data)
 	{
 		this->runHealAnimation();
 
-		ObjectEvents::QueryObjects(QueryObjectsArgs<PlatformerFriendly>([=](PlatformerFriendly* entity)
+		ObjectEvents::QueryObjects<PlatformerFriendly>([=](PlatformerFriendly* entity)
 		{
-			entity->getAttachedBehavior<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			entity->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
 				healthBehavior->setHealth(healthBehavior->getMaxHealth());
 			});
-		}), PlatformerFriendly::PlatformerFriendlyTag);
+		}, PlatformerFriendly::PlatformerFriendlyTag);
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 
-	this->healCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionObject::CollisionData data)
+	this->healCollision->whenStopsCollidingWith({ (int)PlatformerCollisionType::Player }, [=](CollisionData data)
 	{
 		this->isAnimating = false;
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }
 

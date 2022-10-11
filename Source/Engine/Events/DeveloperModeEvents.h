@@ -9,7 +9,7 @@ public:
 
 	struct DeveloperModeEnableArgs
 	{
-		int debugLevel;
+		int debugLevel = 0;
 
 		DeveloperModeEnableArgs(int debugLevel) : debugLevel(debugLevel) { }
 	};

@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/VoidMacePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* VoidMace::clone()
 	return VoidMace::create();
 }
 
-std::string VoidMace::getItemName()
-{
-	return VoidMace::SaveKey;
-}
-
 LocalizedString* VoidMace::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_VoidMace::create();
 }
 
-std::string VoidMace::getIconResource()
+const std::string& VoidMace::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Maces_VoidMace;
 }
 
-std::string VoidMace::getSerializationKey()
+const std::string& VoidMace::getIdentifier()
 {
 	return VoidMace::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string VoidMace::getSerializationKey()
 Vec2 VoidMace::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* VoidMace::getRecipe()
+{
+	return VoidMacePlans::create();
 }

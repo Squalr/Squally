@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/WoodenAxePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,30 +47,25 @@ Item* WoodenAxe::clone()
 	return WoodenAxe::create();
 }
 
-std::string WoodenAxe::getItemName()
-{
-	return WoodenAxe::SaveKey;
-}
-
 LocalizedString* WoodenAxe::getString()
 {
 	return Strings::Items_Equipment_Weapons_Axes_WoodenAxe::create();
 }
 
-std::string WoodenAxe::getIconResource()
+const std::string& WoodenAxe::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Axes_WoodenAxe;
 }
 
-std::string WoodenAxe::getSerializationKey()
+const std::string& WoodenAxe::getIdentifier()
 {
 	return WoodenAxe::SaveKey;
 }
 
-Size WoodenAxe::getWeaponCollisionSize()
+CSize WoodenAxe::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return Size(140.0f, 92.0f);
+	return CSize(140.0f, 92.0f);
 }
 
 Vec2 WoodenAxe::getWeaponCollisionOffset()
@@ -81,4 +77,9 @@ Vec2 WoodenAxe::getWeaponCollisionOffset()
 Vec2 WoodenAxe::getDisplayOffset()
 {
 	return Vec2(28.0f, -4.0f);
+}
+
+Recipe* WoodenAxe::getRecipe()
+{
+	return WoodenAxePlans::create();
 }

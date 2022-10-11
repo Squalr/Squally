@@ -17,7 +17,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Menus/Inventory/ItemMenu/ItemPreview.h"
 #include "Objects/Platformer/Shops/ShopPool.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCard.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -55,7 +55,7 @@ ShopItem::ShopItem(ValueMap& properties) : super(properties)
 	this->available = true;
 
 	this->currencySprite->setScale(0.4f);
-	this->itemClickHitbox->setContentSize(Size(224.0f, 224.0f));
+	this->itemClickHitbox->setContentSize(CSize(224.0f, 224.0f));
 	this->itemCostLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->itemCostLabel->enableOutline(Color4B::BLACK, 2);
 
@@ -159,7 +159,7 @@ void ShopItem::sellItem()
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
-		squally->watchForAttachedBehavior<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		squally->watchForComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
 		{
 			CurrencyInventory* playerCurrencyInventory = entityInventoryBehavior->getCurrencyInventory();
 
@@ -167,7 +167,7 @@ void ShopItem::sellItem()
 			
 			if (this->itemCost >= 0 && playerCurrency >= this->itemCost)
 			{
-				PlatformerEvents::TriggerGiveItem(PlatformerEvents::GiveItemArgs(this->item->clone()));
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ this->item->clone() }));
 				playerCurrencyInventory->removeCurrency(IOU::getIOUIdentifier(), this->itemCost);
 
 				if (dynamic_cast<HexusCard*>(this->item) != nullptr)

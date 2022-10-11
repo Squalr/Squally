@@ -27,12 +27,12 @@ protected:
 private:
 	typedef SmartNode super;
 
-	ScrollPane* contentScrollPane;
-	LocalizedLabel* developersTitle;
-	cocos2d::Sprite* zacSprite;
-	cocos2d::Sprite* mattSprite;
-	cocos2d::Sprite* nathanSprite;
-	ClickableTextNode* twitterButtonZac;
-	ClickableTextNode* twitterButtonMatt;
-	ClickableTextNode* twitterButtonNate;
+	ScrollPane* contentScrollPane = nullptr;
+	LocalizedLabel* developersTitle = nullptr;
+	cocos2d::Sprite* zacSprite = nullptr;
+	cocos2d::Sprite* mattSprite = nullptr;
+	cocos2d::Sprite* nathanSprite = nullptr;
+	ClickableTextNode* twitterButtonZac = nullptr;
+	ClickableTextNode* twitterButtonMatt = nullptr;
+	ClickableTextNode* twitterButtonNate = nullptr;
 };

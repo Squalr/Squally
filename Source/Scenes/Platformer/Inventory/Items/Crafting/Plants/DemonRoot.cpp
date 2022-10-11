@@ -33,22 +33,17 @@ Item* DemonRoot::clone()
 	return DemonRoot::create();
 }
 
-std::string DemonRoot::getItemName()
-{
-	return DemonRoot::SaveKey;
-}
-
 LocalizedString* DemonRoot::getString()
 {
 	return Strings::Items_Crafting_Plants_DemonRoot::create();
 }
 
-std::string DemonRoot::getIconResource()
+const std::string& DemonRoot::getIconResource()
 {
 	return ItemResources::Crafting_Alchemy_Plants_DemonRoot;
 }
 
-std::string DemonRoot::getSerializationKey()
+const std::string& DemonRoot::getIdentifier()
 {
 	return DemonRoot::SaveKey;
 }

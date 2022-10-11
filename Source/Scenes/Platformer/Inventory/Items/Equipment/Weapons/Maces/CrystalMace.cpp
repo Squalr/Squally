@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/CrystalMacePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* CrystalMace::clone()
 	return CrystalMace::create();
 }
 
-std::string CrystalMace::getItemName()
-{
-	return CrystalMace::SaveKey;
-}
-
 LocalizedString* CrystalMace::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_CrystalMace::create();
 }
 
-std::string CrystalMace::getIconResource()
+const std::string& CrystalMace::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Maces_CrystalMace;
 }
 
-std::string CrystalMace::getSerializationKey()
+const std::string& CrystalMace::getIdentifier()
 {
 	return CrystalMace::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string CrystalMace::getSerializationKey()
 Vec2 CrystalMace::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* CrystalMace::getRecipe()
+{
+	return CrystalMacePlans::create();
 }

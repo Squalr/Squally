@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Necklaces/EmeraldPendantRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* EmeraldPendant::clone()
 	return EmeraldPendant::create();
 }
 
-std::string EmeraldPendant::getItemName()
-{
-	return EmeraldPendant::SaveKey;
-}
-
 LocalizedString* EmeraldPendant::getString()
 {
 	return Strings::Items_Equipment_Gear_Necklaces_EmeraldPendant::create();
 }
 
-std::string EmeraldPendant::getIconResource()
+const std::string& EmeraldPendant::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Necklaces_EmeraldPendant;
 }
 
-std::string EmeraldPendant::getSerializationKey()
+const std::string& EmeraldPendant::getIdentifier()
 {
 	return EmeraldPendant::SaveKey;
+}
+
+Recipe* EmeraldPendant::getRecipe()
+{
+	return EmeraldPendantRecipe::create();
 }

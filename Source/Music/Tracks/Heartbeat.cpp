@@ -8,16 +8,16 @@ using namespace cocos2d;
 
 const std::string Heartbeat::TrackKey = "heartbeat";
 
-Heartbeat* Heartbeat::create()
+Heartbeat* Heartbeat::create(cocos2d::ValueMap& properties)
 {
-	Heartbeat* instance = new Heartbeat();
+	Heartbeat* instance = new Heartbeat(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Heartbeat::Heartbeat() : super(MusicResources::HeartBeat, Strings::Menus_Music_AlexanderIvanov_Heartbeat::create(), Strings::Menus_Music_AlexanderIvanov_AlexanderIvanov::create())
+Heartbeat::Heartbeat(cocos2d::ValueMap& properties) : super(properties, MusicResources::HeartBeat, Strings::Menus_Music_AlexanderIvanov_Heartbeat::create(), Strings::Menus_Music_AlexanderIvanov_AlexanderIvanov::create())
 {
 }
 

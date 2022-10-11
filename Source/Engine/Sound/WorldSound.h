@@ -23,7 +23,7 @@ protected:
 private:
 	typedef Sound super;
 
-	bool zDepthEnabled;
+	bool zDepthEnabled = false;
 
 	void updateDistanceFade();
 };

@@ -14,7 +14,7 @@ class GlassDisplayBase : public ChestBase
 {
 public:
 protected:
-	GlassDisplayBase(cocos2d::ValueMap& properties, cocos2d::Size interactSize);
+	GlassDisplayBase(cocos2d::ValueMap& properties, cocos2d::CSize interactSize);
 	virtual ~GlassDisplayBase();
 
 	void onEnter() override;
@@ -22,29 +22,29 @@ protected:
 	void closeDisplay(bool animate);
 	void openDisplay(bool animate);
 
-	cocos2d::Node* displayContentNode;
+	cocos2d::Node* displayContentNode = nullptr;
 
-	bool isDisplayOpened;
+	bool isDisplayOpened = 0.0f;
 
 private:
 	typedef ChestBase super;
 
-	float openDelay;
+	float openDelay = 0.0f;
 
-	cocos2d::Node* displayNormal;
-	cocos2d::Node* displayOpened;
-	cocos2d::Node* displayLooted;
+	cocos2d::Node* displayNormal = nullptr;
+	cocos2d::Node* displayOpened = nullptr;
+	cocos2d::Node* displayLooted = nullptr;
 
-	cocos2d::Sprite* glassDisplayFrontNormal;
-	cocos2d::Sprite* glassDisplayFrontOpened;
-	cocos2d::Sprite* glassDisplayFrontLooted;
+	cocos2d::Sprite* glassDisplayFrontNormal = nullptr;
+	cocos2d::Sprite* glassDisplayFrontOpened = nullptr;
+	cocos2d::Sprite* glassDisplayFrontLooted = nullptr;
 
-	cocos2d::Sprite* normalGlow;
-	cocos2d::Sprite* openGlow;
+	cocos2d::Sprite* normalGlow = nullptr;
+	cocos2d::Sprite* openGlow = nullptr;
 
-	WorldSound* openSound;
-	WorldSound* closeSound;
-	WorldSound* notifySound;
+	WorldSound* openSound = nullptr;
+	WorldSound* closeSound = nullptr;
+	WorldSound* notifySound = nullptr;
 
 	static const std::string SaveKeyIsDisplayOpened;
 	static const std::string PropertyIsOpened;

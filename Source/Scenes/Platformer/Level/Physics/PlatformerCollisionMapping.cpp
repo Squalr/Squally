@@ -6,7 +6,8 @@
 #include "Engine/Events/CollisionMappingEvents.h"
 #include "Engine/GlobalDirector.h"
 #include "Engine/Physics/CollisionObject.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Engine/Utils/LogUtils.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 using namespace cocos2d;
 
@@ -21,25 +22,29 @@ const std::string PlatformerCollisionMapping::MapKeyCollisionTypeForce = "force"
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpc = "solid-npc";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeWater = "water";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeDamage = "damage";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypeCartStop = "cart-stop";
 const std::string PlatformerCollisionMapping::MapKeyCollisionTypeKill = "kill";
+const std::string PlatformerCollisionMapping::MapKeyCollisionTypeKillAlt = "kill-plane";
+std::map<std::string, int> PlatformerCollisionMapping::CollisionMap = std::map<std::string, int>();
 
-PlatformerCollisionMapping* PlatformerCollisionMapping::instance = nullptr;
+PlatformerCollisionMapping* PlatformerCollisionMapping::Instance = nullptr;
 
-void PlatformerCollisionMapping::registerGlobalNode()
+void PlatformerCollisionMapping::RegisterGlobalNode()
 {
-	if (PlatformerCollisionMapping::instance == nullptr)
+	if (PlatformerCollisionMapping::Instance == nullptr)
 	{
-		PlatformerCollisionMapping::instance = new PlatformerCollisionMapping();
+		PlatformerCollisionMapping::Instance = new PlatformerCollisionMapping();
 
-		instance->autorelease();
+		Instance->autorelease();
 
 		// Register this class globally so that it can always listen for events
-		GlobalDirector::getInstance()->registerGlobalNode(PlatformerCollisionMapping::instance);
+		GlobalDirector::getInstance()->RegisterGlobalNode(PlatformerCollisionMapping::Instance);
 	}
 }
 
 PlatformerCollisionMapping::PlatformerCollisionMapping()
 {
+	this->buildCollisionMap();
 }
 
 PlatformerCollisionMapping::~PlatformerCollisionMapping()
@@ -57,41 +62,34 @@ void PlatformerCollisionMapping::initializeListeners()
 	this->addGlobalEventListener(mapKeyMappingRequestEventListener);
 }
 
+void PlatformerCollisionMapping::buildCollisionMap()
+{
+	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypeSolid] = (int)PlatformerCollisionType::Solid;
+	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypePassThrough] = (int)PlatformerCollisionType::PassThrough;
+	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpc] = (int)PlatformerCollisionType::SolidNpcOnly;
+	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypeForce] = (int)PlatformerCollisionType::Force;
+	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypeWater] = (int)PlatformerCollisionType::Water;
+	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypeDamage] = (int)PlatformerCollisionType::Damage;
+	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypeCartStop] = (int)PlatformerCollisionType::CartStop;
+	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypeKill] = (int)PlatformerCollisionType::KillPlane;
+	PlatformerCollisionMapping::CollisionMap[PlatformerCollisionMapping::MapKeyCollisionTypeKillAlt] = (int)PlatformerCollisionType::KillPlane;
+}
+
 void PlatformerCollisionMapping::onMapKeyMappingRequest(EventCustom* eventCustom)
 {
-	CollisionMappingEvents::CollisionMapRequestArgs* args = (CollisionMappingEvents::CollisionMapRequestArgs*)(eventCustom->getUserData());
+	CollisionMappingEvents::CollisionMapRequestArgs* args = (CollisionMappingEvents::CollisionMapRequestArgs*)(eventCustom->getData());
 
 	if (args == nullptr || args->callback == nullptr)
 	{
 		return;
 	}
 
-	if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeSolid)
+	if (PlatformerCollisionMapping::CollisionMap.find(args->deserializedCollisionName) != PlatformerCollisionMapping::CollisionMap.end())
 	{
-		args->callback((int)PlatformerCollisionType::Solid);
+		args->callback(PlatformerCollisionMapping::CollisionMap[args->deserializedCollisionName]);
 	}
-	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypePassThrough)
+	else
 	{
-		args->callback((int)PlatformerCollisionType::PassThrough);
-	}
-	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeSolidNpc)
-	{
-		args->callback((int)PlatformerCollisionType::SolidNpcOnly);
-	}
-	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeForce)
-	{
-		args->callback((int)PlatformerCollisionType::Force);
-	}
-	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeWater)
-	{
-		args->callback((int)PlatformerCollisionType::Water);
-	}
-	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeDamage)
-	{
-		args->callback((int)PlatformerCollisionType::Damage);
-	}
-	else if (args->deserializedCollisionName == PlatformerCollisionMapping::MapKeyCollisionTypeKill)
-	{
-		args->callback((int)PlatformerCollisionType::KillPlane);
+		LogUtils::logError("Unknown collision type: " + args->deserializedCollisionName);
 	}
 }

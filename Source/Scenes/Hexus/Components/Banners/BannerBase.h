@@ -33,7 +33,7 @@ protected:
 private:
 	typedef ComponentBase super;
 
-	cocos2d::LayerColor* bannerOverlay;
-	LocalizedLabel* bannerLabel;
-	cocos2d::Node* bannerChildrenNode;
+	cocos2d::LayerColor* bannerOverlay = nullptr;
+	LocalizedLabel* bannerLabel = nullptr;
+	cocos2d::Node* bannerChildrenNode = nullptr;
 };

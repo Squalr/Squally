@@ -24,8 +24,8 @@ GoblinElf::GoblinElf(ValueMap& properties) : super(properties,
 	GoblinElf::MapKey,
 	EntityResources::Enemies_BallmerPeaks_GoblinElf_Animations,
 	EntityResources::Enemies_BallmerPeaks_GoblinElf_Emblem,
-	Size(140.0f, 296.0f),
-	0.8f,
+	CSize(140.0f, 296.0f),
+	0.7f,
 	Vec2(0.0f, 0.0f))
 {
 }

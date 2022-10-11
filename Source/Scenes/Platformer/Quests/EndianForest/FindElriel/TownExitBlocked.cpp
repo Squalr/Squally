@@ -18,10 +18,12 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Friendly/LookAtSquallyBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/LookAtSquallyBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/EntityResources.h"
@@ -45,11 +47,7 @@ TownExitBlocked* TownExitBlocked::create(GameObject* owner, QuestLine* questLine
 
 TownExitBlocked::TownExitBlocked(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TownExitBlocked::MapKeyQuest, false)
 {
-	this->dialogueCooldown = 0.0f;
-	this->isEngagedInDialogue = false;
 	this->chiron = dynamic_cast<Chiron*>(owner);
-	this->bard = nullptr;
-	this->squally = nullptr;
 }
 
 TownExitBlocked::~TownExitBlocked()
@@ -106,7 +104,7 @@ void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
 
 void TownExitBlocked::attachChironBehavior()
 {
-	this->chiron->attachBehavior(LookAtSquallyBehavior::create(this->chiron));
+	this->chiron->attachComponent(LookAtSquallyBehavior::create(this->chiron));
 
 	this->chironCollision = CollisionObject::create(
 		CollisionObject::createCapsulePolygon(this->chiron->getEntitySize(), 8.0f),
@@ -117,7 +115,7 @@ void TownExitBlocked::attachChironBehavior()
 
 	this->chiron->addChild(this->chironCollision);
 
-	this->chironCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionObject::CollisionData collisionData)
+	this->chironCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement, (int)PlatformerCollisionType::Hover }, [=](CollisionData collisionData)
 	{
 		if (!this->isEngagedInDialogue && this->dialogueCooldown <= 0.0f)
 		{
@@ -140,7 +138,7 @@ void TownExitBlocked::attachChironBehavior()
 			));
 		}
 		
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 }
 
@@ -151,7 +149,7 @@ void TownExitBlocked::attachBardBehavior()
 		return;
 	}
 
-	this->bard->watchForAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	this->bard->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
 			Strings::Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks::create(),

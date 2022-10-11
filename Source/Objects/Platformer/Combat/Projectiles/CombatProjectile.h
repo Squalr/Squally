@@ -18,14 +18,14 @@ protected:
 
 	void onEnter() override;
 
-	PlatformerEntity* target;
+	PlatformerEntity* target = nullptr;
 
 private:
 	typedef Projectile super;
 	
 	void updateProjectileCanUpdate();
 
-	bool onTimeline;
-	bool timelinePaused;
-	bool timelinePausedCinematic;
+	bool onTimeline = false;
+	bool timelinePaused = false;
+	bool timelinePausedCinematic = false;
 };

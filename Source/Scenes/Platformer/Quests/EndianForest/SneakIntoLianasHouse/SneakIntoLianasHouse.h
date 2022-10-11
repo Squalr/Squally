@@ -4,7 +4,6 @@
 
 class Portal;
 class QuestLine;
-class Squally;
 
 class SneakIntoLianasHouse : public QuestTask
 {
@@ -25,5 +24,5 @@ protected:
 private:
 	typedef QuestTask super;
 
-	Portal* portal;
+	Portal* portal = nullptr;
 };

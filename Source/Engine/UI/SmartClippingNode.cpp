@@ -16,12 +16,12 @@ SmartClippingNode* SmartClippingNode::create(cocos2d::Node* contentNode, float r
 	return SmartClippingNode::create(contentNode, stencil);
 }
 
-SmartClippingNode* SmartClippingNode::create(cocos2d::Node* contentNode, Size size)
+SmartClippingNode* SmartClippingNode::create(cocos2d::Node* contentNode, CSize size)
 {
-	return SmartClippingNode::create(contentNode, Rect(-Vec2(size / 2.0f), size));
+	return SmartClippingNode::create(contentNode, CRect(-Vec2(size / 2.0f), size));
 }
 
-SmartClippingNode* SmartClippingNode::create(cocos2d::Node* contentNode, Rect bounds)
+SmartClippingNode* SmartClippingNode::create(cocos2d::Node* contentNode, CRect bounds)
 {
 	DrawNode* stencil = DrawNode::create();
 
@@ -42,7 +42,6 @@ SmartClippingNode* SmartClippingNode::create(Node* contentNode, DrawNode* stenci
 SmartClippingNode::SmartClippingNode(Node* contentNode, DrawNode* stencil)
 {
 	this->stencil = stencil;
-	this->allowDebugDraw = true;
 
 	this->clip = ClippingNode::create(this->stencil);
 

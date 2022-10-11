@@ -3,21 +3,17 @@
 #include "Engine/Maps/GameObject.h"
 
 class Currency;
-class Item;
-class ItemChance;
-class Inventory;
-class LocalizedString;
 
 class CurrencyPool : public GameObject
 {
 public:
 	struct CurrencyData
 	{
-		Currency* currency;
-		int minCount;
-		int maxCount;
+		Currency* currency = nullptr;
+		int minCount = 0;
+		int maxCount = 0;
 
-		CurrencyData() : currency(nullptr), minCount(0), maxCount(0) { }
+		CurrencyData() { }
 		CurrencyData(Currency* currency, int minCount, int maxCount)
 			: currency(currency), minCount(minCount), maxCount(maxCount) { }
 	};

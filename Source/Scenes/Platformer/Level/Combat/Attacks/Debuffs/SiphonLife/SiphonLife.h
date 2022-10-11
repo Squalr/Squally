@@ -2,12 +2,6 @@
 
 #include "Scenes/Platformer/Level/Combat/Buffs/Buff.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class HackablePreview;
 class PlatformerEntity;
 class SmartAnimationSequenceNode;
 class WorldSound;
@@ -37,8 +31,8 @@ private:
 
 	void incrementHeal();
 
-	int healAmount;
-	SmartAnimationSequenceNode* healEffect;
-	WorldSound* impactSound;
-	WorldSound* healSound;
+	int healAmount = 0;
+	SmartAnimationSequenceNode* healEffect = nullptr;
+	WorldSound* impactSound = nullptr;
+	WorldSound* healSound = nullptr;
 };

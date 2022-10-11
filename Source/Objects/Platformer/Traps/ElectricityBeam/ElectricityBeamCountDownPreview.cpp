@@ -1,5 +1,9 @@
 #include "ElectricityBeamCountDownPreview.h"
 
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCSprite.h"
@@ -24,11 +28,9 @@ ElectricityBeamCountDownPreview* ElectricityBeamCountDownPreview::create()
 
 ElectricityBeamCountDownPreview::ElectricityBeamCountDownPreview()
 {
-	this->launchCountDown = 0.0f;
 	this->electricityAnimation = SmartAnimationSequenceNode::create(ObjectResources::Traps_MetalSpikes_Spikes_0000);
 	this->zbxTimerStr = ConstantString::create(std::to_string(this->launchCountDown));
 	this->zbxTimer = this->createRegisterEqualsValueLabel(HackableCode::Register::zbx, false, this->zbxTimerStr);
-	this->isLaunching = false;
 	this->ballLeft = Sprite::create(ObjectResources::Traps_ElectricBeam_Ball);
 	this->ballRight = Sprite::create(ObjectResources::Traps_ElectricBeam_Ball);
 

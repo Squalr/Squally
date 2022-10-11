@@ -14,8 +14,6 @@ using namespace cocos2d;
 
 GridObject::GridObject(const ValueMap& properties) : super(properties)
 {
-	this->initialGridIndex = 0;
-	this->gridIndex = 0;
 }
 
 GridObject::~GridObject()

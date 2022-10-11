@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Wands/DemonicWandPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* DemonicWand::clone()
 	return DemonicWand::create();
 }
 
-std::string DemonicWand::getItemName()
-{
-	return DemonicWand::SaveKey;
-}
-
 LocalizedString* DemonicWand::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_DemonicWand::create();
 }
 
-std::string DemonicWand::getIconResource()
+const std::string& DemonicWand::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Wands_DemonicWand;
 }
 
-std::string DemonicWand::getSerializationKey()
+const std::string& DemonicWand::getIdentifier()
 {
 	return DemonicWand::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string DemonicWand::getSerializationKey()
 Vec2 DemonicWand::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* DemonicWand::getRecipe()
+{
+	return DemonicWandPlans::create();
 }

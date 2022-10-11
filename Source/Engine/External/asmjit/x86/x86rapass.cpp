@@ -1095,7 +1095,7 @@ Error X86RAPass::onEmitSave(uint32_t workId, uint32_t srcPhysId) noexcept {
   return X86Internal::emitRegMove(cc()->as<Emitter>(), dstMem, srcReg, wReg->typeId(), _avxEnabled, comment);
 }
 
-Error X86RAPass::onEmitJump(const Label& label) noexcept {
+Error X86RAPass::onEmitJump(const AsmLabel& label) noexcept {
   return cc()->jmp(label);
 }
 

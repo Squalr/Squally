@@ -24,7 +24,7 @@ Nessie::Nessie(ValueMap& properties) : super(properties,
 	Nessie::MapKey,
 	EntityResources::Npcs_BallmerPeaks_Nessie_Animations,
 	EntityResources::Npcs_BallmerPeaks_Nessie_Emblem,
-	Size(112.0f, 160.0f),
+	CSize(112.0f, 160.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

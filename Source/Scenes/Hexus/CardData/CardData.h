@@ -54,6 +54,6 @@ public:
 private:
 	std::string cardResourceFile;
 	std::string cardKey;
-	CardType cardType;
-	unsigned int attack;
+	CardType cardType = CardType::Binary;
+	unsigned int attack = 0;
 };

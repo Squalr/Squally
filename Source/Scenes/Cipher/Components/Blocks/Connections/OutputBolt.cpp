@@ -9,9 +9,9 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CipherEvents.h"
+#include "Scenes/Cipher/CipherConfig.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/Connection.h"
 #include "Scenes/Cipher/Components/Blocks/Connections/InputBolt.h"
-#include "Scenes/Cipher/Config.h"
 
 #include "Resources/CipherResources.h"
 #include "Resources/UIResources.h"
@@ -71,7 +71,7 @@ void OutputBolt::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventConnectionUpdated, [=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherConnectionUpdatedArgs* args = static_cast<CipherEvents::CipherConnectionUpdatedArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherConnectionUpdatedArgs* args = static_cast<CipherEvents::CipherConnectionUpdatedArgs*>(eventCustom->getData());
 
 		// Enforce that every input only has one output flowing into it
 		if (args != nullptr && this->connection != nullptr && args->connection != this->connection)
@@ -85,12 +85,12 @@ void OutputBolt::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventRequestConnectionCreate, [=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherConnectionCreateArgs* args = static_cast<CipherEvents::CipherConnectionCreateArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherConnectionCreateArgs* args = static_cast<CipherEvents::CipherConnectionCreateArgs*>(eventCustom->getData());
 
 		if (args != nullptr && !args->isHandled())
 		{
 			// Source bolt is input bolt
-			if (dynamic_cast<InputBolt*>(args->sourceBolt) != nullptr && GameUtils::intersects(this->connectButton, args->destination))
+			if (dynamic_cast<InputBolt*>(args->sourceBolt) != nullptr && GameUtils::intersects(this->connectButton, args->destination, false))
 			{
 				this->setConnection(args->connection);
 				this->connection->setInputBolt(dynamic_cast<InputBolt*>(args->sourceBolt));
@@ -103,7 +103,7 @@ void OutputBolt::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CipherEvents::EventConnectionDestroy, [=](EventCustom* eventCustom)
 	{
-		CipherEvents::CipherConnectionDestroyArgs* args = static_cast<CipherEvents::CipherConnectionDestroyArgs*>(eventCustom->getUserData());
+		CipherEvents::CipherConnectionDestroyArgs* args = static_cast<CipherEvents::CipherConnectionDestroyArgs*>(eventCustom->getData());
 
 		if (args != nullptr)
 		{

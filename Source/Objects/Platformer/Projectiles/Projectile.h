@@ -16,8 +16,8 @@ public:
 
 	MovementMode getMovementMode();
 	void setMovementMode(MovementMode movementMode);
-	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionObject::CollisionResult(CollisionObject::CollisionData)> onCollision);
-	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionObject::CollisionResult(CollisionObject::CollisionData)> onCollisionEnd);
+	void whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision);
+	void whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd);
 	void launchTowardsTarget(Node* target, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, float spinSpeed = 0.0f, cocos2d::Vec2 secondsPer256pxLinearDistance = cocos2d::Vec2(0.75f, 0.75f), cocos2d::Vec2 gravity = cocos2d::Vec2(0.0f, -768.0f));
 	void launchTowardsTarget3D(Node* target, cocos2d::Vec2 offset = cocos2d::Vec2::ZERO, float spinSpeed = 0.0f, cocos2d::Vec3 secondsPer256pxLinearDistance = cocos2d::Vec3(0.75f, 0.75f, 0.75f), cocos2d::Vec3 gravity = cocos2d::Vec3(0.0f, -768.0f, 0.0f));
 	void setLaunchVelocity(cocos2d::Vec3 velocity);
@@ -53,29 +53,27 @@ protected:
 	void enableUpdate();
 	void disableUpdate();
 	
-	bool canUpdate;
+	bool canUpdate = true;
 	
-	PlatformerEntity* caster;
-
-	CollisionObject* collisionObject;
-	cocos2d::Node* contentNode;
-	cocos2d::Node* decorNode;
-	cocos2d::Node* postFXNode;
+	PlatformerEntity* caster = nullptr;
+	CollisionObject* collisionObject = nullptr;
+	cocos2d::Node* contentNode = nullptr;
+	cocos2d::Node* decorNode = nullptr;
+	cocos2d::Node* postFXNode = nullptr;
 
 private:
 	typedef HackableObject super;
 
-	MovementMode movementMode;
+	MovementMode movementMode = MovementMode::Kinematic;
 
-	CollisionObject* ownerCollisionRef;
-	bool enabled;
-	float spinSpeed;
-	float projectileRotation;
-	bool allowHacking;
-	cocos2d::Vec3 launchVelocity;
-	cocos2d::Vec3 launchAcceleration;
-	cocos2d::Vec3 speedMultiplier;
-	float noOwnerCollideDuration;
-
-	cocos2d::Node* rotationNode;
+	CollisionObject* ownerCollisionRef = nullptr;
+	cocos2d::Node* rotationNode = nullptr;
+	float spinSpeed = 0.0f;
+	float projectileRotation = 0.0f;
+	float noOwnerCollideDuration = 1.0f;
+	bool enabled = true;
+	bool allowHacking = false;
+	cocos2d::Vec3 launchVelocity = cocos2d::Vec3::ZERO;
+	cocos2d::Vec3 launchAcceleration = cocos2d::Vec3::ZERO;
+	cocos2d::Vec3 speedMultiplier = cocos2d::Vec3::ONE;
 };

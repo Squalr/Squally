@@ -38,8 +38,6 @@ StatsBars::StatsBars(bool isFrameOnLeft, bool showExp)
 
 	this->isFrameOnLeft = isFrameOnLeft;
 	this->showExp = showExp;
-	this->target = nullptr;
-	this->targetAsTimelineEntry = nullptr;
 	this->frame = ClickableNode::create(this->showExp ? UIResources::HUD_FrameExtended : UIResources::HUD_Frame, this->showExp ? UIResources::HUD_FrameExtendedSelected : UIResources::HUD_FrameSelected);
 	this->emblemGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->emblemNode = Node::create();
@@ -61,13 +59,6 @@ StatsBars::StatsBars(bool isFrameOnLeft, bool showExp)
 	this->eqDisplay = EqDisplay::create();
 	this->runeBar = RuneBar::create();
 	this->arrowSprite = Sprite::create(UIResources::Menus_InventoryMenu_Arrow);
-	this->cachedExp = -1;
-	this->cachedMaxExp = -1;
-	this->cachedMana = -1;
-	this->cachedMaxMana = -1;
-	this->cachedHealth = -1;
-	this->cachedMaxHealth = -1;
-	this->selectable = false;
 
 	this->healthLabel->setStringReplacementVariables({ this->healthNumerator, this->healthDenominator });
 	this->manaLabel->setStringReplacementVariables({ this->manaNumerator, this->manaDenominator });
@@ -116,7 +107,7 @@ void StatsBars::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	const float BarY = this->showExp ? 40.0f : 20.0f;
 	const float TextOffset = 22.0f;
@@ -300,6 +291,18 @@ void StatsBars::disableInteraction(int opacity)
 int StatsBars::getFrameOpaicty()
 {
 	return this->frame->getOpacity();
+}
+
+void StatsBars::toggleManaBarVisibility(bool isVisible)
+{
+	this->manaBar->setVisible(isVisible);
+	this->manaSprite->setVisible(isVisible);
+}
+
+void StatsBars::toggleEmblemVisibility(bool isVisible)
+{
+	this->emblemNode->setVisible(isVisible);
+	this->emblemGlow->setVisible(isVisible);
 }
 
 void StatsBars::setMouseOverCallback(std::function<void(StatsBars*)> onMouseOverCallback)

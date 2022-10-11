@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/TimmyPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* Timmy::clone()
 	return Timmy::create();
 }
 
-std::string Timmy::getItemName()
-{
-	return Timmy::SaveKey;
-}
-
 LocalizedString* Timmy::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_Timmy::create();
 }
 
-std::string Timmy::getIconResource()
+const std::string& Timmy::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Special_Timmy;
 }
 
-std::string Timmy::getSerializationKey()
+const std::string& Timmy::getIdentifier()
 {
 	return Timmy::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string Timmy::getSerializationKey()
 Vec2 Timmy::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* Timmy::getRecipe()
+{
+	return TimmyPlans::create();
 }

@@ -14,8 +14,6 @@ const std::string SpawnPool::SaveKeySpawnCollected = "SPAWN_POOL_COLLECTED";
 
 SpawnPool::SpawnPool(ValueMap& properties) : super(properties)
 {
-	this->owner = nullptr;
-	this->spawnEvents = std::vector<SpawnObjectEvent>();
 }
 
 SpawnPool::~SpawnPool()
@@ -51,11 +49,11 @@ void SpawnPool::trySpawnCollectable()
 		this->saveCollected();
 	});
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		this,
 		collectable,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::SetToOwner,
+		SpawnMethod::Above,
+		PositionMode::SetToOwner,
 		[&]()
 		{
 		},

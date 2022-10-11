@@ -21,7 +21,7 @@ Decimal6* Decimal6::create()
 	return instance;
 }
 
-Decimal6::Decimal6() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 }}), ItemMeta(3, 3))
+Decimal6::Decimal6() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), HexusCard::TuneCost(6) }}), ItemMeta(3, 3))
 {
 }
 
@@ -34,22 +34,17 @@ Item* Decimal6::clone()
 	return Decimal6::create();
 }
 
-std::string Decimal6::getItemName()
-{
-	return Decimal6::SaveKey;
-}
-
 LocalizedString* Decimal6::getString()
 {
 	return Strings::Hexus_Cards_Decimal6::create();
 }
 
-std::string Decimal6::getIconResource()
+const std::string& Decimal6::getIconResource()
 {
 	return ItemResources::Collectables_Cards_CardDecimal;
 }
 
-std::string Decimal6::getSerializationKey()
+const std::string& Decimal6::getIdentifier()
 {
 	return Decimal6::SaveKey;
 }

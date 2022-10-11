@@ -29,9 +29,9 @@ GoldenWandPlans::~GoldenWandPlans()
 {
 }
 
-Item* GoldenWandPlans::craft()
+std::vector<Item*> GoldenWandPlans::craft()
 {
-	return GoldenWand::create();
+	return { GoldenWand::create() };
 }
 
 std::vector<std::tuple<Item*, int>> GoldenWandPlans::getReagentsInternal()
@@ -49,17 +49,12 @@ Item* GoldenWandPlans::clone()
 	return GoldenWandPlans::create();
 }
 
-std::string GoldenWandPlans::getItemName()
-{
-	return GoldenWandPlans::SaveKey;
-}
-
 LocalizedString* GoldenWandPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_GoldenWand::create();
 }
 
-std::string GoldenWandPlans::getIconResource()
+const std::string& GoldenWandPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -69,7 +64,7 @@ std::string GoldenWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Wands_GoldenWand;
 }
 
-std::string GoldenWandPlans::getSerializationKey()
+const std::string& GoldenWandPlans::getIdentifier()
 {
 	return GoldenWandPlans::SaveKey;
 }

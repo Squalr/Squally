@@ -30,8 +30,6 @@ FireplaceFire::FireplaceFire(ValueMap& properties) : super(properties)
 {
 	this->glow = Sprite::create(ObjectResources::Decor_Fireplace_FireplaceGlow);
 	this->fire = SmartAnimationSequenceNode::create(FXResources::FlameSmall_FlameSmall_0000);
-	this->isOn = false;
-	this->isCulled = false;
 
 	this->addChild(this->glow);
 	this->addChild(this->fire);

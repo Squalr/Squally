@@ -2,10 +2,9 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class Guano;
 class Lycan;
 class QuestLine;
-class Scrappy;
+class SmartAnimationSequenceNode;
 class Squally;
 
 class SneakPastLycan : public QuestTask
@@ -28,7 +27,9 @@ private:
 	typedef QuestTask super;
 
 	void runCinematicSequence();
+	void runSleepingCinematicSequence();
 
-	Lycan* lycan;
-	Squally* squally;
+	Lycan* lycan = nullptr;
+	Squally* squally = nullptr;
+	SmartAnimationSequenceNode* sleepFx = nullptr;
 };

@@ -2,8 +2,6 @@
 
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
-class LocalizedString;
-
 class HexusCard : public Equipable
 {
 public:
@@ -11,7 +9,9 @@ public:
 
 protected:
 	HexusCard(CurrencyInventory* cost, ItemMeta itemMeta = ItemMeta());
-	~HexusCard();
+	virtual ~HexusCard();
+
+	static int TuneCost(int attack);
 
 private:
 	typedef Equipable super;

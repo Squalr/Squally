@@ -14,7 +14,7 @@
 #include "Menus/Tutorials/TutorialSelectMenu.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Tutorials/Save/TutorialSaveKeys.h"
 
 #include "Resources/ObjectResources.h"
@@ -32,7 +32,7 @@ FloatTutorialPortal* FloatTutorialPortal::create(ValueMap& properties)
 	return instance;
 }
 
-FloatTutorialPortal::FloatTutorialPortal(ValueMap& properties) : super(properties, Size(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
+FloatTutorialPortal::FloatTutorialPortal(ValueMap& properties) : super(properties, CSize(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
 {
 	this->setInteractType(InteractType::Input);
 }
@@ -43,7 +43,7 @@ FloatTutorialPortal::~FloatTutorialPortal()
 	
 void FloatTutorialPortal::loadMap()
 {
-	SaveManager::saveGlobalData(TutorialSaveKeys::SaveKeyKnownValueFloatAdvanced, Value(true));
+	SaveManager::SaveGlobalData(TutorialSaveKeys::SaveKeyKnownValueFloatAdvanced, Value(true));
 
 	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 	{

@@ -1,9 +1,6 @@
 #pragma once
 #include <functional>
 
-#include "cocos/base/CCEventKeyboard.h"
-#include "cocos/base/ccTypes.h"
-
 #include "Engine/SmartNode.h"
 
 namespace cocos2d
@@ -27,8 +24,8 @@ protected:
 private:
 	typedef SmartNode super;
 
-	cocos2d::Node* cinematicIndicator;
-	cocos2d::Sprite* filmProjector;
-	cocos2d::Sprite* reelLarge;
-	cocos2d::Sprite* reelSmall;
+	cocos2d::Node* cinematicIndicator = nullptr;
+	cocos2d::Sprite* filmProjector = nullptr;
+	cocos2d::Sprite* reelLarge = nullptr;
+	cocos2d::Sprite* reelSmall = nullptr;
 };

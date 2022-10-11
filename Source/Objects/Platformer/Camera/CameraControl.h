@@ -24,8 +24,8 @@ private:
 	void beginTrack();
 	void endTrack();
 
-	CollisionObject* controlCollision;
-	CameraTarget* cameraTarget;
+	CollisionObject* controlCollision = nullptr;
+	CameraTarget* cameraTarget = nullptr;
 	std::string targetTag;
 
 	static const std::string PropertyTarget;

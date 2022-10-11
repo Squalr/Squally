@@ -1,6 +1,7 @@
 #include "SaveKeys.h"
 
 const std::string SaveKeys::SaveKeyMap = "SAVE_KEY_MAP";
+const std::string SaveKeys::SaveKeyCharterShipReturnMap = "SAVE_KEY_CHARTER_SHIP_RETURN_MAP";
 const std::string SaveKeys::SaveKeyCurrentObjective = "SAVE_KEY_CURRENT_OBJECTIVE";
 const std::string SaveKeys::SaveKeyEventTriggeredPrefix = "SAVE_KEY_EVENT_TRIGGERED_";
 const std::string SaveKeys::SaveKeySquallyRuneCooldowns = "SAVE_KEY_SQUALLY_RUNE_COOLDOWNS";
@@ -15,7 +16,11 @@ const std::string SaveKeys::SaveKeySquallyPositionX = "SAVE_KEY_SQUALLY_POSITION
 const std::string SaveKeys::SaveKeySquallyPositionY = "SAVE_KEY_SQUALLY_POSITION_Y";
 const std::string SaveKeys::SaveKeySquallyPositionZ = "SAVE_KEY_SQUALLY_POSITION_Z";
 const std::string SaveKeys::SaveKeySquallyLayerId = "SAVE_KEY_SQUALLY_LAYER_ID";
-const std::string SaveKeys::SaveKeyScrappyFound = "SAVE_KEY_Scrappy_FOUND";
+
+const std::string SaveKeys::SaveKeyScrappyFound = "SAVE_KEY_Scrappy_FOUND"; // Don't fix casing, backwards compat
+const std::string SaveKeys::SaveKeyGuanoFound = "SAVE_KEY_GUANO_FOUND";
+const std::string SaveKeys::SaveKeyGeckyFound = "SAVE_KEY_GECKY_FOUND";
+
 const std::string SaveKeys::SaveKeyHelperName = "SAVE_KEY_HELPER_NAME";
 const std::string SaveKeys::SaveKeyHelperHeath = "SAVE_KEY_HELPER_HEALTH";
 const std::string SaveKeys::SaveKeyHelperMana = "SAVE_KEY_HELPER_MANA";
@@ -27,10 +32,17 @@ const std::string SaveKeys::SaveKeyGuanoMana = "SAVE_KEY_GUANO_MANA";
 const std::string SaveKeys::SaveKeyGuanoEq = "SAVE_KEY_GUANO_EQ";
 const std::string SaveKeys::SaveKeyGuanoEqExperience = "SAVE_KEY_GUANO_EQ_EXPERIENCE";
 
+const std::string SaveKeys::SaveKeyGeckyHealth = "SAVE_KEY_GECKY_HEALTH";
+const std::string SaveKeys::SaveKeyGeckyMana = "SAVE_KEY_GECKY_MANA";
+const std::string SaveKeys::SaveKeyGeckyEq = "SAVE_KEY_GECKY_EQ";
+const std::string SaveKeys::SaveKeyGeckyEqExperience = "SAVE_KEY_GECKY_EQ_EXPERIENCE";
+
 const std::string SaveKeys::SaveKeyRespawnMap = "SAVE_KEY_RESPAWN_MAP";
 const std::string SaveKeys::SaveKeyRespawnObjectId = "SAVE_KEY_RESPAWN_OBJECT_ID";
 
 const std::string SaveKeys::SaveKeyLevelRubberband = "SAVE_KEY_LEVEL_RUBBERBAND";
+const std::string SaveKeys::SaveKeyLevelHideMiniMap = "SAVE_KEY_HIDE_MINIMAP";
+const std::string SaveKeys::SaveKeyLevelMiniMapRequiredItem = "SAVE_KEY_MINIMAP_REQUIRED_ITEM";
 
 const std::string SaveKeys::SaveKeySpellBookArcane = "SAVE_KEY_SPELLBOOK_ARCANE";
 const std::string SaveKeys::SaveKeySpellBookFire = "SAVE_KEY_SPELLBOOK_FIRE";

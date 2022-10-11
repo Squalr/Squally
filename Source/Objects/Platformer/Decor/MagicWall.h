@@ -4,7 +4,6 @@
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Hackables/HackableObject.h"
 
-class HackableData;
 class SmartParticles;
 
 class MagicWall : public HackableObject
@@ -23,6 +22,6 @@ protected:
 private:
 	typedef HackableObject super;
 
-	SmartParticles* wallParticles;
-	cocos2d::Size wallSize;
+	SmartParticles* wallParticles = nullptr;
+	cocos2d::CSize wallSize;
 };

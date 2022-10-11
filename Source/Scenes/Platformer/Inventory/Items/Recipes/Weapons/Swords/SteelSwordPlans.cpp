@@ -29,9 +29,9 @@ SteelSwordPlans::~SteelSwordPlans()
 {
 }
 
-Item* SteelSwordPlans::craft()
+std::vector<Item*> SteelSwordPlans::craft()
 {
-	return SteelSword::create();
+	return { SteelSword::create() };
 }
 
 std::vector<std::tuple<Item*, int>> SteelSwordPlans::getReagentsInternal()
@@ -48,17 +48,12 @@ Item* SteelSwordPlans::clone()
 	return SteelSwordPlans::create();
 }
 
-std::string SteelSwordPlans::getItemName()
-{
-	return SteelSwordPlans::SaveKey;
-}
-
 LocalizedString* SteelSwordPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_SteelSword::create();
 }
 
-std::string SteelSwordPlans::getIconResource()
+const std::string& SteelSwordPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string SteelSwordPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Swords_SteelSword;
 }
 
-std::string SteelSwordPlans::getSerializationKey()
+const std::string& SteelSwordPlans::getIdentifier()
 {
 	return SteelSwordPlans::SaveKey;
 }

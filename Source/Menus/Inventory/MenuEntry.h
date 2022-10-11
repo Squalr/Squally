@@ -7,7 +7,6 @@ namespace cocos2d
 	class Sprite;
 }
 
-class Item;
 class LocalizedLabel;
 class LocalizedString;
 
@@ -28,11 +27,11 @@ protected:
 
 	void sizeFont();
 
-	cocos2d::Sprite* icon;
-	LocalizedLabel* label;
+	cocos2d::Sprite* icon = nullptr;
+	LocalizedLabel* label = nullptr;
 
 private:
 	typedef SmartNode super;
 
-	static const cocos2d::Size LabelSize;
+	static const cocos2d::CSize LabelSize;
 };

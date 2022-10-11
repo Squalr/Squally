@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier1/BucketHelmPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* BucketHelm::clone()
 	return BucketHelm::create();
 }
 
-std::string BucketHelm::getItemName()
-{
-	return BucketHelm::SaveKey;
-}
-
 LocalizedString* BucketHelm::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_BucketHelm::create();
 }
 
-std::string BucketHelm::getIconResource()
+const std::string& BucketHelm::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_BucketHelm;
 }
 
-std::string BucketHelm::getSerializationKey()
+const std::string& BucketHelm::getIdentifier()
 {
 	return BucketHelm::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string BucketHelm::getSerializationKey()
 Vec2 BucketHelm::getDisplayOffset()
 {
 	return Vec2(6.0f, -20.0f);
+}
+
+Recipe* BucketHelm::getRecipe()
+{
+	return BucketHelmPlans::create();
 }

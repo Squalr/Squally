@@ -5,7 +5,6 @@
 #include "Engine/SmartNode.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 
-class PlatformerAttack;
 class PlatformerEntity;
 class TimelineEntry;
 
@@ -33,13 +32,15 @@ private:
 	void selectTargetSingle(TimelineEntry* attackingEntry);
 	void selectTargetSelf(TimelineEntry* attackingEntry);
 	void selectTargetsMulti(TimelineEntry* attackingEntry);
+	void selectTargetsTeam(TimelineEntry* attackingEntry);
+	void selectTargetsAll(TimelineEntry* attackingEntry);
 	void selectAttack(TimelineEntry* attackingEntry);
 	void shuffleEntities();
 
 	struct AttackProbability
 	{
-		PlatformerAttack* attack;
-		float cumulativeProbability;
+		PlatformerAttack* attack = nullptr;
+		float cumulativeProbability = 0.0f;
 
 		AttackProbability(PlatformerAttack* attack, float cumulativeProbability) : attack(attack), cumulativeProbability(cumulativeProbability) { }
 	};
@@ -47,15 +48,15 @@ private:
 	struct ProbabilityMap
 	{
 		std::vector<AttackProbability> probabilities;
-		float sum;
+		float sum = 0.0f;
 
-		ProbabilityMap() : probabilities({ }), sum(0.0f) { }
+		ProbabilityMap() { }
 		ProbabilityMap(std::vector<AttackProbability> probabilities, float sum) : probabilities(probabilities), sum(sum) { }
 
 		PlatformerAttack* getRandomAttack()
 		{
 			// Short circuit for guaranteed attacks
-			for (auto next : probabilities)
+			for (AttackProbability& next : probabilities)
 			{
 				if (next.attack->getPriority() == PlatformerAttack::Priority::Guaranteed)
 				{
@@ -67,7 +68,7 @@ private:
 			float rng = cocos2d::RandomHelper::random_real(0.0f, sum);
 
 			// Choose ability randomly
-			for (auto next : probabilities)
+			for (AttackProbability& next : probabilities)
 			{
 				attack = next.attack;
 
@@ -89,5 +90,5 @@ private:
 	std::vector<PlatformerEntity*> playerEntities;
 	std::vector<PlatformerEntity*> enemyEntities;
 	std::vector<PlatformerEntity*> selectedTargets;
-	PlatformerAttack* selectedAttack;
+	PlatformerAttack* selectedAttack = nullptr;
 };

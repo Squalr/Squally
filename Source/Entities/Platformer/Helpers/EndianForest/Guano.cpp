@@ -24,7 +24,7 @@ Guano::Guano(ValueMap& properties) : super(properties,
 	Guano::MapKey,
 	EntityResources::Helpers_EndianForest_Guano_Animations,
 	EntityResources::Helpers_EndianForest_Guano_Emblem,
-	Size(64.0f, 128.0f),
+	CSize(64.0f, 128.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {

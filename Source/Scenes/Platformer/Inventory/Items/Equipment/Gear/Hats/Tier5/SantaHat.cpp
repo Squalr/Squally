@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier5/SantaHatPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* SantaHat::clone()
 	return SantaHat::create();
 }
 
-std::string SantaHat::getItemName()
-{
-	return SantaHat::SaveKey;
-}
-
 LocalizedString* SantaHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_SantaHat::create();
 }
 
-std::string SantaHat::getIconResource()
+const std::string& SantaHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_SantaHat;
 }
 
-std::string SantaHat::getSerializationKey()
+const std::string& SantaHat::getIdentifier()
 {
 	return SantaHat::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string SantaHat::getSerializationKey()
 Vec2 SantaHat::getDisplayOffset()
 {
 	return Vec2(12.0f, -24.0f);
+}
+
+Recipe* SantaHat::getRecipe()
+{
+	return SantaHatPlans::create();
 }

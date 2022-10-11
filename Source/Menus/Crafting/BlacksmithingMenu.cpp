@@ -30,7 +30,7 @@ BlacksmithingMenu* BlacksmithingMenu::create()
 	return instance;
 }
 
-BlacksmithingMenu::BlacksmithingMenu()
+BlacksmithingMenu::BlacksmithingMenu() : super(Strings::Menus_Crafting_Crafting::create())
 {
 	this->anvil = Sprite::create(UIResources::Menus_CraftingMenu_Anvil);
 	this->icon = Sprite::create(UIResources::Menus_CraftingMenu_AnvilIcon);
@@ -56,7 +56,7 @@ void BlacksmithingMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	const Vec2 AnvilOffset = Vec2(-72.0f, 0.0f);
 

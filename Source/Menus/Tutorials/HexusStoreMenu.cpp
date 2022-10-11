@@ -5,10 +5,9 @@
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
 #include "cocos/2d/CCLayer.h"
-#include "cocos/2d/CCParticleSystemQuad.h"
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/SpeechBubble.h"
@@ -28,7 +27,8 @@
 #include "Scenes/Hexus/Card.h"
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardData/CardList.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Tutorials/Save/TutorialSaveKeys.h"
 
 #include "Resources/ParticleResources.h"
@@ -42,21 +42,21 @@ const int HexusStoreMenu::DefaultGold = 1000;
 
 using namespace cocos2d;
 
-HexusStoreMenu* HexusStoreMenu::instance;
+HexusStoreMenu* HexusStoreMenu::Instance;
 
 HexusStoreMenu* HexusStoreMenu::getInstance()
 {
-	if (HexusStoreMenu::instance == nullptr)
+	if (HexusStoreMenu::Instance == nullptr)
 	{
-		HexusStoreMenu::instance = new HexusStoreMenu();
+		HexusStoreMenu::Instance = new HexusStoreMenu();
 
-		HexusStoreMenu::instance->autorelease();
-		HexusStoreMenu::instance->initializeListeners();
+		HexusStoreMenu::Instance->autorelease();
+		HexusStoreMenu::Instance->initializeListeners();
 
-		GlobalDirector::registerGlobalScene(HexusStoreMenu::getInstance());
+		GlobalDirector::RegisterGlobalScene(HexusStoreMenu::getInstance());
 	}
 
-	return HexusStoreMenu::instance;
+	return HexusStoreMenu::Instance;
 }
 
 HexusStoreMenu::HexusStoreMenu()
@@ -129,7 +129,7 @@ HexusStoreMenu::HexusStoreMenu()
 
 	this->resetButton->setClickSound(SoundResources::Menus_ButtonClick5);
 
-	this->shopKeeper->attachBehavior(EntityDialogueBehavior::create(this->shopKeeper));
+	this->shopKeeper->attachComponent(EntityDialogueBehavior::create(this->shopKeeper));
 	this->storeBack->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->storeFront->setAnchorPoint(Vec2(0.0f, 0.5f));
 
@@ -169,7 +169,7 @@ void HexusStoreMenu::onEnter()
 
 	this->updateGoldText();
 	
-	this->shopKeeper->getAttachedBehavior<EntityDialogueBehavior>([=](EntityDialogueBehavior* dialogueBehavior)
+	this->shopKeeper->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* dialogueBehavior)
 	{
 		dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Menus_Tutorials_HexEditing_TutorialStringSearch::create(), Voices::GetNextVoiceMedium(), SpeechBubble::InfiniteDuration);
 	});
@@ -179,7 +179,7 @@ void HexusStoreMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
@@ -205,7 +205,7 @@ void HexusStoreMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	const float StoreOffsetY = -128.0f;
 
@@ -270,7 +270,7 @@ ClickableNode* HexusStoreMenu::constructCard(CardData* cardData, int price, std:
 
 bool HexusStoreMenu::purchaseCard(CardData* cardData, int price)
 {
-	int gold = SaveManager::getGlobalDataOrDefault(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold)).asInt();
+	int gold = SaveManager::GetGlobalDataOrDefault(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold)).asInt();
 
 	if (gold < price)
 	{
@@ -281,7 +281,7 @@ bool HexusStoreMenu::purchaseCard(CardData* cardData, int price)
 	gold -= price;
 	this->purchaseSound->play();
 
-	SaveManager::saveGlobalData(HexusStoreMenu::SaveKeyGold, Value(gold));
+	SaveManager::SaveGlobalData(HexusStoreMenu::SaveKeyGold, Value(gold));
 	this->updateGoldText();
 
 	return true;
@@ -289,7 +289,7 @@ bool HexusStoreMenu::purchaseCard(CardData* cardData, int price)
 
 void HexusStoreMenu::onChallengeComplete()
 {
-	SaveManager::saveGlobalData(TutorialSaveKeys::SaveKeyHexEditGold, Value(true));
+	SaveManager::SaveGlobalData(TutorialSaveKeys::SaveKeyHexEditGold, Value(true));
 
 	this->runAction(Sequence::create(
 		DelayTime::create(1.0f),
@@ -308,12 +308,12 @@ void HexusStoreMenu::onBackClick()
 
 void HexusStoreMenu::onResetClick()
 {
-	SaveManager::saveGlobalData(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold));
+	SaveManager::SaveGlobalData(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold));
 
 	this->updateGoldText();
 }
 
 void HexusStoreMenu::updateGoldText()
 {
-	this->goldString->setString(std::to_string(SaveManager::getGlobalDataOrDefault(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold)).asInt()));
+	this->goldString->setString(std::to_string(SaveManager::GetGlobalDataOrDefault(HexusStoreMenu::SaveKeyGold, Value(HexusStoreMenu::DefaultGold)).asInt()));
 }

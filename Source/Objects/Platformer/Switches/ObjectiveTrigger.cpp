@@ -1,9 +1,10 @@
 #include "ObjectiveTrigger.h"
 
 #include "cocos/base/ccTypes.h"
+#include "cocos/base/CCValue.h"
 
 #include "Engine/Physics/CollisionObject.h"
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 
 using namespace cocos2d;
@@ -21,7 +22,7 @@ ObjectiveTrigger* ObjectiveTrigger::create(ValueMap& properties)
 
 ObjectiveTrigger::ObjectiveTrigger(ValueMap& properties) : super(properties)
 {
-	Size triggerSize = Size(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
+	CSize triggerSize = CSize(this->properties.at(GameObject::MapKeyWidth).asFloat(), this->properties.at(GameObject::MapKeyHeight).asFloat());
 	this->triggerCollision = CollisionObject::create(CollisionObject::createBox(triggerSize), (CollisionType)PlatformerCollisionType::Trigger, CollisionObject::Properties(false, false));
 
 	this->addChild(this->triggerCollision);
@@ -33,10 +34,10 @@ ObjectiveTrigger::~ObjectiveTrigger()
 
 void ObjectiveTrigger::initializeListeners()
 {
-	this->triggerCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionObject::CollisionData data)
+	this->triggerCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerMovement }, [=](CollisionData data)
 	{
 		Objectives::SetCurrentObjective(this->getSendEvent());
 
-		return CollisionObject::CollisionResult::DoNothing;
+		return CollisionResult::DoNothing;
 	});
 }

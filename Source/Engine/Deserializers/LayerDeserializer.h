@@ -1,13 +1,8 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "cocos/base/CCValue.h"
 
-namespace cocos2d
-{
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
-	typedef std::vector<Value> ValueVector;
-}
+#include "Engine/SmartNode.h"
 
 class MapLayer;
 
@@ -16,8 +11,8 @@ class LayerDeserializer : public SmartNode
 public:
 	struct LayerDeserializationArgs
 	{
-		MapLayer* mapLayer;
-		int layerIndex;
+		MapLayer* mapLayer = nullptr;
+		int layerIndex = 0;
 
 		LayerDeserializationArgs(MapLayer* mapLayer, int layerIndex) : mapLayer(mapLayer), layerIndex(layerIndex)
 		{
@@ -28,17 +23,17 @@ public:
 	{
 		const cocos2d::ValueMap& properties;
 		const cocos2d::ValueVector& objects;
-		int layerIndex;
+		int layerIndex = 0;
 		std::string mapIdentifier;
-		cocos2d::Size mapSize;
-		bool isIsometric;
-		std::function<void(LayerDeserializer::LayerDeserializationArgs)> onDeserializeCallback;
+		cocos2d::CSize mapSize;
+		bool isIsometric = false;
+		std::function<void(LayerDeserializer::LayerDeserializationArgs)> onDeserializeCallback = nullptr;
 
 		LayerDeserializationRequestArgs(const cocos2d::ValueMap& properties,
 			const cocos2d::ValueVector& objects,
 			int layerIndex,
 			std::string mapIdentifier,
-			cocos2d::Size mapSize,
+			cocos2d::CSize mapSize,
 			bool isIsometric,
 			std::function<void(LayerDeserializer::LayerDeserializationArgs)> onDeserializeCallback,
 			bool handled = false
@@ -58,7 +53,7 @@ public:
 		}
 
 		private:
-			bool handled;
+			bool handled = false;
 
 	};
 
@@ -67,7 +62,7 @@ public:
 
 protected:
 	LayerDeserializer(std::string layerType);
-	~LayerDeserializer();
+	virtual ~LayerDeserializer();
 
 private:
 	typedef SmartNode super;

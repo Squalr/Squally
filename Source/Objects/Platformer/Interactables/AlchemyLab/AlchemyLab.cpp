@@ -33,15 +33,13 @@ AlchemyLab* AlchemyLab::create(ValueMap& properties)
 	return instance;
 }
 
-AlchemyLab::AlchemyLab(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, Size(192.0f, 440.0f))
+AlchemyLab::AlchemyLab(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, CSize(192.0f, 440.0f))
 {
 	this->alchemyLab = Sprite::create(ObjectResources::Interactive_AlchemyLab_AlchemyLab);
 	this->shine = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->potion = Sprite::create(ItemResources::Consumables_Potions_ManaFlaskAdd);
 	this->floatContainer = Node::create();
-	this->recipes = std::vector<Item*>();
 	this->recipePoolName = GameUtils::getKeyOrDefault(this->properties, RecipePoolDeserializer::MapKeyTypeRecipePool, Value("")).asString();
-	this->recipePool = nullptr;
 	this->recipePoolDeserializer = RecipePoolDeserializer::create();
 	
 	this->floatContainer->addChild(this->shine);
@@ -97,9 +95,9 @@ void AlchemyLab::deactivate()
 	this->disable();
 }
 
-void AlchemyLab::onInteract()
+void AlchemyLab::onInteract(PlatformerEntity* interactingEntity)
 {
-	super::onInteract();
+	super::onInteract(interactingEntity);
 
 	PlatformerEvents::TriggerOpenAlchemy(PlatformerEvents::CraftingOpenArgs(this->recipes));
 }

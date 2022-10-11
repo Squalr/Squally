@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Earrings/CrystalEarringsRecipe.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,22 @@ Item* CrystalEarrings::clone()
 	return CrystalEarrings::create();
 }
 
-std::string CrystalEarrings::getItemName()
-{
-	return CrystalEarrings::SaveKey;
-}
-
 LocalizedString* CrystalEarrings::getString()
 {
 	return Strings::Items_Equipment_Gear_Earrings_CrystalEarrings::create();
 }
 
-std::string CrystalEarrings::getIconResource()
+const std::string& CrystalEarrings::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Earrings_CrystalEarrings;
 }
 
-std::string CrystalEarrings::getSerializationKey()
+const std::string& CrystalEarrings::getIdentifier()
 {
 	return CrystalEarrings::SaveKey;
+}
+
+Recipe* CrystalEarrings::getRecipe()
+{
+	return CrystalEarringsRecipe::create();
 }

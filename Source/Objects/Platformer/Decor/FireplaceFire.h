@@ -7,7 +7,6 @@ namespace cocos2d
 	class Sprite;
 };
 
-class HackableData;
 class SmartAnimationSequenceNode;
 
 class FireplaceFire : public GameObject
@@ -30,9 +29,9 @@ protected:
 private:
 	typedef GameObject super;
 	
-	cocos2d::Sprite* glow;
-	SmartAnimationSequenceNode* fire;
+	cocos2d::Sprite* glow = nullptr;
+	SmartAnimationSequenceNode* fire = nullptr;
 
-	bool isOn;
-	bool isCulled;
+	bool isOn = false;
+	bool isCulled = false;
 };

@@ -29,9 +29,9 @@ AshenBladePlans::~AshenBladePlans()
 {
 }
 
-Item* AshenBladePlans::craft()
+std::vector<Item*> AshenBladePlans::craft()
 {
-	return AshenBlade::create();
+	return { AshenBlade::create() };
 }
 
 std::vector<std::tuple<Item*, int>> AshenBladePlans::getReagentsInternal()
@@ -51,17 +51,12 @@ Item* AshenBladePlans::clone()
 	return AshenBladePlans::create();
 }
 
-std::string AshenBladePlans::getItemName()
-{
-	return AshenBladePlans::SaveKey;
-}
-
 LocalizedString* AshenBladePlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Swords_AshenBlade::create();
 }
 
-std::string AshenBladePlans::getIconResource()
+const std::string& AshenBladePlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -71,7 +66,7 @@ std::string AshenBladePlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Special_AshenBlade;
 }
 
-std::string AshenBladePlans::getSerializationKey()
+const std::string& AshenBladePlans::getIdentifier()
 {
 	return AshenBladePlans::SaveKey;
 }

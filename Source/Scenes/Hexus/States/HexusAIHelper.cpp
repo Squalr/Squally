@@ -179,16 +179,23 @@ void HexusAIHelper::applyIntelligentOpponentCardOrdering(GameState* gameState)
 {
 	gameState->enemyHand->shuffle();
 
-	std::partition(gameState->enemyHand->rowCards.begin(), gameState->enemyHand->rowCards.end(), [](Card* card) -> bool
+	// If the player has not passed, prioritize 'zero' cards.
+	// If the player has passed, prioritize normal cards.
+	// Always prioritize Decimal 1 since this card is returned to the hand after rounds.
+	std::partition(gameState->enemyHand->rowCards.begin(), gameState->enemyHand->rowCards.end(), [gameState](Card* card) -> bool
 	{
-		if (card->cardData->getCardKey() == CardKeys::Binary0
-			|| card->cardData->getCardKey() == CardKeys::Decimal0
-			|| card->cardData->getCardKey() == CardKeys::Hex0
-			|| card->cardData->getCardKey() == CardKeys::Decimal1)
+		if (card->cardData->getCardKey() == CardKeys::Decimal1)
 		{
 			return true;
 		}
 
-		return false;
+		if (card->cardData->getCardKey() == CardKeys::Binary0
+			|| card->cardData->getCardKey() == CardKeys::Decimal0
+			|| card->cardData->getCardKey() == CardKeys::Hex0)
+		{
+			return true ^ gameState->playerPassed;
+		}
+
+		return false ^ gameState->playerPassed;
 	});
 }

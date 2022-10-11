@@ -10,7 +10,7 @@ namespace cocos2d
 class PlatformerCollisionMapping : public GlobalNode
 {
 public:
-	static void registerGlobalNode();
+	static void RegisterGlobalNode();
 
 	void onMapKeyMappingRequest(cocos2d::EventCustom* eventCustom);
 
@@ -25,7 +25,9 @@ public:
 	static const std::string MapKeyCollisionTypeSolidNpc;
 	static const std::string MapKeyCollisionTypeWater;
 	static const std::string MapKeyCollisionTypeDamage;
+	static const std::string MapKeyCollisionTypeCartStop;
 	static const std::string MapKeyCollisionTypeKill;
+	static const std::string MapKeyCollisionTypeKillAlt;
 
 protected:
 	PlatformerCollisionMapping();
@@ -35,6 +37,10 @@ protected:
 
 private:
 	typedef GlobalNode super;
+
+	void buildCollisionMap();
 	
-	static PlatformerCollisionMapping* instance;
+	static PlatformerCollisionMapping* Instance;
+
+	static std::map<std::string, int> CollisionMap;
 };

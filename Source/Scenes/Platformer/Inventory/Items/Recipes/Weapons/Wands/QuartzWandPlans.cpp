@@ -29,9 +29,9 @@ QuartzWandPlans::~QuartzWandPlans()
 {
 }
 
-Item* QuartzWandPlans::craft()
+std::vector<Item*> QuartzWandPlans::craft()
 {
-	return QuartzWand::create();
+	return { QuartzWand::create() };
 }
 
 std::vector<std::tuple<Item*, int>> QuartzWandPlans::getReagentsInternal()
@@ -48,17 +48,12 @@ Item* QuartzWandPlans::clone()
 	return QuartzWandPlans::create();
 }
 
-std::string QuartzWandPlans::getItemName()
-{
-	return QuartzWandPlans::SaveKey;
-}
-
 LocalizedString* QuartzWandPlans::getString()
 {
 	return Strings::Items_Equipment_Weapons_Wands_QuartzWand::create();
 }
 
-std::string QuartzWandPlans::getIconResource()
+const std::string& QuartzWandPlans::getIconResource()
 {
 	return ItemResources::Misc_SCROLL_1;
 }
@@ -68,7 +63,7 @@ std::string QuartzWandPlans::getCraftedItemIconResource()
 	return ItemResources::Equipment_Weapons_Wands_QuartzWand;
 }
 
-std::string QuartzWandPlans::getSerializationKey()
+const std::string& QuartzWandPlans::getIdentifier()
 {
 	return QuartzWandPlans::SaveKey;
 }

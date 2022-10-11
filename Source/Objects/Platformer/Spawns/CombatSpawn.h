@@ -7,29 +7,25 @@ class CombatSpawn : public GameObject
 public:
 	static CombatSpawn* create(cocos2d::ValueMap& properties);
 
-	enum SpawnType
-	{
-		Player,
-		Enemy
-	};
-
-	SpawnType getSpawnType();
-	int getSpawnOrder();
-
 	static const std::string MapKey;
 
-private:
-	typedef GameObject super;
+protected:
 	CombatSpawn(cocos2d::ValueMap& properties);
 	virtual ~CombatSpawn();
 
 	void onEnter() override;
 	void initializeListeners() override;
 
-	SpawnType spawnType;
-	int spawnOrder;
-	float spawnObjectHeight;
-	float zoom;
+private:
+	typedef GameObject super;
+
+	std::string getEventString();
+	int getSpawnOrder();
+
+	bool isEnemySpawn = false;
+	int spawnOrder = 0;
+	float spawnObjectHeight = 0.0f;
+	float zoom = 0.0f;
 
 	static const std::string MapKeySpawnType;
 	static const std::string MapKeySpawnOrder;

@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Events/HackableEvents.h"
+#include "Engine/Utils/GameUtils.h"
 
 #include "Resources/UIResources.h"
 
@@ -27,7 +28,7 @@ HackButton::~HackButton()
 {
 }
 
-void HackButton::addEventListener(cocos2d::EventListener* listener)
+void HackButton::addEventListener(cocos2d::EventListenerCustom* listener)
 {
 	static bool isWrappingCall = false;
 

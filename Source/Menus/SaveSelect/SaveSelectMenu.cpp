@@ -4,7 +4,7 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 #include "cocos/base/CCValue.h"
 
 #include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
@@ -18,10 +18,12 @@
 #include "Engine/Utils/StrUtils.h"
 #include "Engine/UI/SmartClippingNode.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
+#include "Entities/Platformer/Helpers/DataMines/Gecky.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/MenuBackground.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/Gecky/GeckyEqBehavior.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/Collectables.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -35,21 +37,21 @@
 
 using namespace cocos2d;
 
-SaveSelectMenu* SaveSelectMenu::instance;
+SaveSelectMenu* SaveSelectMenu::Instance;
 
 SaveSelectMenu* SaveSelectMenu::getInstance()
 {
-	if (SaveSelectMenu::instance == nullptr)
+	if (SaveSelectMenu::Instance == nullptr)
 	{
-		SaveSelectMenu::instance = new SaveSelectMenu();
+		SaveSelectMenu::Instance = new SaveSelectMenu();
 
-		SaveSelectMenu::instance->autorelease();
-		SaveSelectMenu::instance->initializeListeners();
+		SaveSelectMenu::Instance->autorelease();
+		SaveSelectMenu::Instance->initializeListeners();
 
-		GlobalDirector::registerGlobalScene(SaveSelectMenu::instance);
+		GlobalDirector::RegisterGlobalScene(SaveSelectMenu::Instance);
 	}
 
-	return SaveSelectMenu::instance;
+	return SaveSelectMenu::Instance;
 }
 
 SaveSelectMenu::SaveSelectMenu()
@@ -58,7 +60,7 @@ SaveSelectMenu::SaveSelectMenu()
 
 	this->backgroundNode = Node::create();
 	this->saveSelectWindow = Sprite::create(UIResources::Menus_Generic_LargeMenu);
-	this->closeButton = ClickableNode::create(UIResources::Menus_IngameMenu_CloseButton, UIResources::Menus_IngameMenu_CloseButtonSelected);
+	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
 	this->saveButtonNode = Node::create();
 	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_SaveSelect_SelectASave::create());
 	this->confirmationMenu = ConfirmationMenu::create();
@@ -67,11 +69,11 @@ SaveSelectMenu::SaveSelectMenu()
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
-	returnLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabel->enableGlow(Color4B::BLACK);
 
 	returnLabelHover->setColor(Color3B::YELLOW);
-	returnLabelHover->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	returnLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelHover->enableGlow(Color4B::ORANGE);
 
 	this->returnButton = ClickableTextNode::create(
@@ -80,7 +82,7 @@ SaveSelectMenu::SaveSelectMenu()
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->titleLabel->enableShadow(Color4B::BLACK, Size(-2.0f, -2.0f), 2);
+	this->titleLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	this->titleLabel->enableGlow(Color4B::BLACK);
 
 	this->addChild(this->platformerEntityDeserializer);
@@ -120,7 +122,7 @@ void SaveSelectMenu::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ESCAPE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		if (!GameUtils::isVisible(this))
 		{
@@ -147,7 +149,7 @@ void SaveSelectMenu::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	this->saveSelectWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 372.0f));
@@ -175,7 +177,7 @@ void SaveSelectMenu::buildSaveButtons()
 
 ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 {
-	const Size shadowSize = Size(-2.0f, -2.0f);
+	const CSize shadowSize = CSize(-2.0f, -2.0f);
 	const int shadowBlur = 2;
 	const int hoverOutlineSize = 2;
 	const Color3B textColor = Color3B::WHITE;
@@ -183,7 +185,7 @@ ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 	const Color3B highlightColor = Color3B::YELLOW;
 	const Color4B glowColor = Color4B::ORANGE;
 
-	bool hasSaveData = SaveManager::hasSaveProfile(profileId);
+	bool hasSaveData = SaveManager::HasSaveProfile(profileId);
 	LocalizedLabel*	saveGameLabel = nullptr;
 
 	if (hasSaveData)
@@ -213,7 +215,7 @@ ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 
 	saveGameButton->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
-		SaveManager::setActiveSaveProfile(profileId);
+		SaveManager::SetActiveSaveProfile(profileId);
 		this->loadSave();
 	});
 
@@ -229,12 +231,12 @@ ClickableTextNode* SaveSelectMenu::buildSaveButton(int profileId)
 Node* SaveSelectMenu::buildSaveGameContent(int profileId)
 {
 	// Temporarily set the active profile
-	SaveManager::setActiveSaveProfile(profileId);
+	SaveManager::SetActiveSaveProfile(profileId);
 
-	int squallyEq = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(1)).asInt();
+	int squallyEq = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySquallyEq, Value(1)).asInt();
 	Node* content = Node::create();
-	Node* squallyAvatar = this->buildEntityFrame(Squally::create(), Vec2(-32.0f, -32.0f), squallyEq);
-	std::string helperName = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
+	Node* squallyAvatar = this->buildEntityFrame(Squally::create(), Vec2(0.0f, -32.0f), squallyEq);
+	std::string helperName = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
 
 	squallyAvatar->setPosition(Vec2(-356.0f, 0.0f));
 
@@ -253,7 +255,11 @@ Node* SaveSelectMenu::buildSaveGameContent(int profileId)
 
 		if (helperName == Guano::MapKey)
 		{
-			helperEq = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyGuanoEq, Value(1)).asInt();
+			helperEq = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGuanoEq, Value(1)).asInt();
+		}
+		else if (helperName == Gecky::MapKey)
+		{
+			helperEq = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyEq, Value(GeckyEqBehavior::DefaultLevel)).asInt();
 		}
 
 		ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(
@@ -306,7 +312,7 @@ ClickableNode* SaveSelectMenu::buildDeleteButton(int profileId)
 	{
 		this->confirmationMenu->showMessage(Strings::Menus_SaveSelect_ConfirmDelete::create(), [=]()
 		{
-			SaveManager::deleteAllProfileData(profileId);
+			SaveManager::DeleteAllProfileData(profileId);
 
 			this->buildSaveButtons();
 
@@ -332,10 +338,12 @@ void SaveSelectMenu::loadSave()
 {
 	NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]()
 	{
-		bool isReload = SaveManager::hasProfileData(SaveKeys::SaveKeyMap);
-		std::string mapFile = SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value(MapResources::EndianForest_Zone_1_0)).asString();
+		bool isReload = SaveManager::HasProfileData(SaveKeys::SaveKeyMap);
+		std::string mapFile = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyMap, Value(MapResources::EndianForest_Zone_1_0)).asString();
 		
-		PlatformerMap* map = PlatformerMap::create(mapFile);
+		PlatformerMap* map = PlatformerMap::create();
+
+		map->loadMap(mapFile);
 
 		return map;
 	}));
@@ -356,14 +364,13 @@ Node* SaveSelectMenu::buildEntityFrame(PlatformerEntity* entity, Vec2 offsetAdju
 	Node* content = Node::create();
 	Node* entityContent = Node::create();
 	Sprite* entityFrame = Sprite::create(UIResources::Menus_SaveSelectMenu_AvatarFrame);
-	std::string backgroundResource = this->getBackgroundResourceForCurrentSaveProfile();
 
-	SmartClippingNode* entityClip = SmartClippingNode::create(entityContent, Size(128.0f, 128.0f));
-	Sprite* backgroundSqually = Sprite::create(backgroundResource);
+	SmartClippingNode* entityClip = SmartClippingNode::create(entityContent, CSize(128.0f, 128.0f));
+	Sprite* backgroundEnvironment = this->getBackgroundForCurrentSaveProfile();
 
 	entity->setPosition(entity->getDialogueOffset() + Vec2(-16.0f, -80.0f) + offsetAdjustment);
 
-	entityContent->addChild(backgroundSqually);
+	entityContent->addChild(backgroundEnvironment);
 	entityContent->addChild(entity);
 	content->addChild(entityClip);
 	content->addChild(entityFrame);
@@ -381,40 +388,44 @@ Node* SaveSelectMenu::buildEntityFrame(PlatformerEntity* entity, Vec2 offsetAdju
 	return content;
 }
 
-std::string SaveSelectMenu::getBackgroundResourceForCurrentSaveProfile()
+Sprite* SaveSelectMenu::getBackgroundForCurrentSaveProfile()
 {
-	std::string currentMap = StrUtils::toLower(SaveManager::getProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString());
+	std::string currentMap = StrUtils::toLower(SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString());
 
 	if (StrUtils::contains(currentMap, "underflowruins", true))
 	{
-		return HexusResources::Menus_HexusFrameUnderflowRuins;
+		return Sprite::create(HexusResources::Menus_HexusFrameUnderflowRuins);
 	}
-	else if (StrUtils::contains(currentMap, "seasharpcaverns", true))
+	else if (StrUtils::contains(currentMap, "datamines", true))
 	{
-		return HexusResources::Menus_HexusFrameDataMines;
+		Sprite* background = Sprite::create(HexusResources::Menus_HexusFrameDataMines);
+
+		background->setPositionY(-72.0f);
+
+		return background;
 	}
 	else if (StrUtils::contains(currentMap, "castlevalgrind", true))
 	{
-		return HexusResources::Menus_HexusFrameCastleValgrind;
+		return Sprite::create(HexusResources::Menus_HexusFrameCastleValgrind);
 	}
 	else if (StrUtils::contains(currentMap, "balmerPeaks", true))
 	{
-		return HexusResources::Menus_HexusFrameBallmerPeaks;
+		return Sprite::create(HexusResources::Menus_HexusFrameBallmerPeaks);
 	}
 	else if (StrUtils::contains(currentMap, "daemonshallow", true))
 	{
-		return HexusResources::Menus_HexusFrameDaemonsHallow;
+		return Sprite::create(HexusResources::Menus_HexusFrameDaemonsHallow);
 	}
 	else if (StrUtils::contains(currentMap, "lambdacrypts", true))
 	{
-		return HexusResources::Menus_HexusFrameLambdaCrypts;
+		return Sprite::create(HexusResources::Menus_HexusFrameLambdaCrypts);
 	}
 	else if (StrUtils::contains(currentMap, "voidStar", true))
 	{
-		return HexusResources::Menus_HexusFrameVoidStar;
+		return Sprite::create(HexusResources::Menus_HexusFrameVoidStar);
 	}
 	else
 	{
-		return HexusResources::Menus_HexusFrameEndianForest;
+		return Sprite::create(HexusResources::Menus_HexusFrameEndianForest);
 	}
 }

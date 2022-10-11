@@ -10,7 +10,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Projectiles/Projectile.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Stats/EntityManaBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Strings/Strings.h"
@@ -40,12 +40,10 @@ PlatformerAttack::PlatformerAttack(
 	this->abilityType = abilityType;
 	this->baseDamageOrHealingMin = std::abs(std::min(baseDamageOrHealingMin, baseDamageOrHealingMax));
 	this->baseDamageOrHealingMax = std::abs(std::max(baseDamageOrHealingMin, baseDamageOrHealingMax));
-	this->damageMultiplier = 1.0f;
 	this->specialCost = specialCost;
 	this->attackDuration = attackDuration;
 	this->recoverDuration = recoverDuration;
 	this->attackCompleteCallbacks = std::vector<std::function<void()>>();
-	this->owner = nullptr;
 	this->targetingType = targetingType;
 }
 
@@ -83,7 +81,7 @@ std::string PlatformerAttack::getAttackAnimation()
 	return "Attack";
 }
 
-std::string PlatformerAttack::getIconResource()
+const std::string& PlatformerAttack::getIconResource()
 {
 	return this->iconResource;
 }
@@ -112,7 +110,7 @@ void PlatformerAttack::execute(PlatformerEntity* owner, std::vector<PlatformerEn
 {
 	this->onAttackTelegraphBegin();
 
-	owner->getAttachedBehavior<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
+	owner->getComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
 		manaBehavior->setMana(manaBehavior->getMana() - this->getSpecialCost());
 	});
@@ -177,7 +175,7 @@ float PlatformerAttack::getUseUtility(PlatformerEntity* caster, PlatformerEntity
 			float eq = float(target->getRuntimeStateOrDefaultInt(StateKeys::Eq, 0));
 
 			// If <= level 5, priority is based on health percentage, otherwise it is random
-			return (eq > 5 || pacifist) ? RandomPriority : (hp / (hpMax <= 0.0f ? 1.0f : hpMax));
+			return !isAlive ? 0.0f : ((eq > 5 || pacifist) ? RandomPriority : (hp / (hpMax <= 0.0f ? 1.0f : hpMax)));
 		}
 		case AttackType::Healing:
 		{
@@ -253,11 +251,11 @@ void PlatformerAttack::replaceAnimationPartWithProjectile(std::string animationP
 		weapon->replaceWithObject(projectile, 2.0f);
 	}
 
-	ObjectEvents::TriggerObjectSpawn(ObjectEvents::RequestObjectSpawnArgs(
+	ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 		owner,
 		projectile,
-		ObjectEvents::SpawnMethod::Above,
-		ObjectEvents::PositionMode::Discard,
+		SpawnMethod::Above,
+		PositionMode::Discard,
 		[&]()
 		{
 		},
@@ -267,7 +265,7 @@ void PlatformerAttack::replaceAnimationPartWithProjectile(std::string animationP
 	));
 
 	Node* reference = weapon == nullptr ? (Node*)owner : (Node*)weapon;
-	float layerZ = GameUtils::getDepth(GameUtils::getFirstParentOfType<MapLayer>(reference));
+	float layerZ = GameUtils::getDepth(GameUtils::GetFirstParentOfType<MapLayer>(reference));
 
 	// Set the position to the reference object's position. Offset it by any layer positioning.
 	projectile->setPosition3D(GameUtils::getWorldCoords3D(reference) - Vec3(0.0f, 0.0f, layerZ));
@@ -275,7 +273,9 @@ void PlatformerAttack::replaceAnimationPartWithProjectile(std::string animationP
 
 int PlatformerAttack::getRandomDamage()
 {
-	return int(RandomHelper::random_real(float(this->getBaseDamageMin()), float(this->getBaseDamageMax())) * this->damageMultiplier);
+	int damage = int(RandomHelper::random_real(float(this->getBaseDamageMin()), float(this->getBaseDamageMax())) * this->damageMultiplier);
+
+	return damage;
 }
 
 int PlatformerAttack::getBaseDamageMin()

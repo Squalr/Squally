@@ -24,7 +24,7 @@ Ghost::Ghost(ValueMap& properties) : super(properties,
 	Ghost::MapKey,
 	EntityResources::Helpers_LambdaCrypts_Ghost_Animations,
 	EntityResources::Helpers_LambdaCrypts_Ghost_Emblem,
-	Size(224.0f, 440.0f),
+	CSize(224.0f, 440.0f),
 	0.3f,
 	Vec2(0.0f, 0.0f))
 {

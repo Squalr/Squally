@@ -2,11 +2,6 @@
 
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Pages/LexiconPage.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
 class LocalizedLabel;
 class ClickableNode;
 class ClickableTextNode;
@@ -26,22 +21,23 @@ protected:
 	
 private:
 	typedef LexiconPage super;
+
 	NegExamplesPage();
-	~NegExamplesPage();
+	virtual ~NegExamplesPage();
 
 	void resetState();
 
-	LocalizedLabel* examplesLabel;
-	RegisterBlockSigned* registerBlock;
-	ClickableTextNode* resetButton;
-	ClickableTextNode* negButton;
-	ClickableTextNode* negPtrButton;
-	ClickableTextNode* negPtrOffsetButton;
-	ClickableNode* pointerHelpButton;
-	ClickableNode* offsetHelpButton;
-	TextPanel* textPanelPointerHelp;
-	TextPanel* textPanelOffsetHelp;
-	LocalizedLabel* negLabel;
-	LocalizedLabel* negPtrLabel;
-	LocalizedLabel* negPtrOffsetLabel;
+	LocalizedLabel* examplesLabel = nullptr;
+	RegisterBlockSigned* registerBlock = nullptr;
+	ClickableTextNode* resetButton = nullptr;
+	ClickableTextNode* negButton = nullptr;
+	ClickableTextNode* negPtrButton = nullptr;
+	ClickableTextNode* negPtrOffsetButton = nullptr;
+	ClickableNode* pointerHelpButton = nullptr;
+	ClickableNode* offsetHelpButton = nullptr;
+	TextPanel* textPanelPointerHelp = nullptr;
+	TextPanel* textPanelOffsetHelp = nullptr;
+	LocalizedLabel* negLabel = nullptr;
+	LocalizedLabel* negPtrLabel = nullptr;
+	LocalizedLabel* negPtrOffsetLabel = nullptr;
 };

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Physics/EngineCollisionTypes.h"
+#include "Engine/Physics/EnginePhysicsTypes.h"
 
 enum class CombatCollisionType
 {
@@ -16,5 +16,4 @@ enum class CombatCollisionType
 	Solid				= (int)EngineCollisionTypes::Solid,
 	SolidRoof			= (int)EngineCollisionTypes::SolidRoof,
 	PassThrough			= (int)EngineCollisionTypes::PassThrough,
-	Intersection		= (int)EngineCollisionTypes::Intersection,
 };

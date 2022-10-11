@@ -2,15 +2,6 @@
 
 #include "Menus/Tutorials/TutorialTabBase.h"
 
-namespace cocos2d
-{
-	class Sprite;
-}
-
-class ClickableTextNode;
-class LocalizedLabel;
-class PlatformerEntity;
-class ScrollPane;
 class TutorialEntry;
 
 class HexEditingTab : public TutorialTabBase
@@ -31,7 +22,6 @@ private:
 
 	void loadHexEditingGoldTutorial();
 
-	TutorialEntry* hexEditingGold;
-	
-	cocos2d::Node* shopkeeper;
+	TutorialEntry* hexEditingGold = nullptr;
+	cocos2d::Node* shopkeeper = nullptr;
 };

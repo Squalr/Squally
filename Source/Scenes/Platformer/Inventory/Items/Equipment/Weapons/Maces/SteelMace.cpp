@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/SteelMacePlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* SteelMace::clone()
 	return SteelMace::create();
 }
 
-std::string SteelMace::getItemName()
-{
-	return SteelMace::SaveKey;
-}
-
 LocalizedString* SteelMace::getString()
 {
 	return Strings::Items_Equipment_Weapons_Maces_SteelMace::create();
 }
 
-std::string SteelMace::getIconResource()
+const std::string& SteelMace::getIconResource()
 {
 	return ItemResources::Equipment_Weapons_Maces_SteelMace;
 }
 
-std::string SteelMace::getSerializationKey()
+const std::string& SteelMace::getIdentifier()
 {
 	return SteelMace::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string SteelMace::getSerializationKey()
 Vec2 SteelMace::getDisplayOffset()
 {
 	return Vec2(0.0f, -24.0f);
+}
+
+Recipe* SteelMace::getRecipe()
+{
+	return SteelMacePlans::create();
 }

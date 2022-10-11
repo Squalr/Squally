@@ -23,7 +23,7 @@ GoblinGruntBoar::GoblinGruntBoar(ValueMap& properties) : super(properties,
 	GoblinGruntBoar::MapKey,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Animations,
 	EntityResources::Enemies_EndianForest_GoblinGruntBoar_Emblem,
-	Size(128.0f, 296.0f),
+	CSize(128.0f, 296.0f),
 	0.85f,
 	Vec2(0.0f, 0.0f))
 {

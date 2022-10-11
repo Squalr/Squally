@@ -26,7 +26,7 @@ ShopPoolGriffin* ShopPoolGriffin::create(ValueMap& properties)
 }
 
 ShopPoolGriffin::ShopPoolGriffin(ValueMap& properties) : super(properties, ShopPoolGriffin::PoolName,
-	{ CardPoolTier2::create(SampleMethod::Guarantee, 2, 2) })
+	{ })
 {
 	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(DarkSeed::create(), ItemChance::Probability::Guaranteed));
@@ -36,19 +36,4 @@ ShopPoolGriffin::ShopPoolGriffin(ValueMap& properties) : super(properties, ShopP
 
 ShopPoolGriffin::~ShopPoolGriffin()
 {
-}
-
-void ShopPoolGriffin::onEnter()
-{
-	super::onEnter(); 
-}
-
-void ShopPoolGriffin::initializePositions()
-{
-	super::initializePositions();
-}
-
-void ShopPoolGriffin::initializeListeners()
-{
-	super::initializeListeners();
 }

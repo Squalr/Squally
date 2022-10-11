@@ -10,17 +10,16 @@ public:
 	static SpecialShl* create();
 
 	Item* clone() override;
-	std::string getItemName() override;
 	LocalizedString* getString() override;
-	std::string getIconResource() override;
-	std::string getSerializationKey() override;
+	const std::string& getIconResource() override;
+	const std::string& getIdentifier() override;
 	std::string getCardKey() override;
 
 	static const std::string SaveKey;
 
 protected:
 	SpecialShl();
-	~SpecialShl();
+	virtual ~SpecialShl();
 
 private:
 	typedef HexusCard super;

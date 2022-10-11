@@ -23,12 +23,7 @@ ItemPool::ItemPool(std::string poolName) : ItemPool(ValueMap(), poolName)
 ItemPool::ItemPool(const ValueMap& properties, std::string poolName) : super(properties)
 {
 	this->poolName = poolName;
-	this->itemPool = std::vector<ItemChance*>();
 	this->itemsNode = Node::create();
-	this->probabilityCache = std::vector<ProbabilityData>();
-	this->probabilitySum = 0.0f;
-	this->disableShuffle = false;
-	this->cacheDirty = true;
 
 	this->addChild(this->itemsNode);
 }
@@ -45,7 +40,7 @@ void ItemPool::initializeListeners()
 	{
 		this->addEventListenerIgnorePause(EventListenerCustom::create(ItemEvents::EventRequestItemFromPoolPrefix + this->poolName, [=](EventCustom* eventCustom)
 		{
-			ItemEvents::ItemRequestArgs* args = static_cast<ItemEvents::ItemRequestArgs*>(eventCustom->getUserData());
+			ItemEvents::ItemRequestArgs* args = static_cast<ItemEvents::ItemRequestArgs*>(eventCustom->getData());
 			
 			if (args != nullptr)
 			{
@@ -60,7 +55,7 @@ int ItemPool::getPoolSize()
 	return this->itemPool.size();
 }
 
-std::vector<Item*> ItemPool::getItemsFromPool(int count, std::vector<Inventory*> inventories, bool removeSampledItems)
+std::vector<Item*> ItemPool::getItemsFromPool(int count, const std::vector<Inventory*>& inventories, bool removeSampledItems)
 {
 	std::vector<Item*> items = std::vector<Item*>();
 
@@ -77,7 +72,7 @@ std::vector<Item*> ItemPool::getItemsFromPool(int count, std::vector<Inventory*>
 	return items;
 }
 
-std::vector<Item*> ItemPool::getItemsFromPoolGuaranteed(int count, std::vector<Inventory*> inventories, bool removeSampledItems)
+std::vector<Item*> ItemPool::getItemsFromPoolGuaranteed(int count, const std::vector<Inventory*>& inventories, bool removeSampledItems)
 {
 	std::vector<Item*> items = std::vector<Item*>();
 
@@ -94,7 +89,7 @@ std::vector<Item*> ItemPool::getItemsFromPoolGuaranteed(int count, std::vector<I
 	return items;
 }
 
-Item* ItemPool::getItemFromPool(bool removeSampledItem, std::vector<Inventory*> inventories)
+Item* ItemPool::getItemFromPool(bool removeSampledItem, const std::vector<Inventory*>& inventories)
 {
 	this->shuffleItems();
 
@@ -120,7 +115,7 @@ Item* ItemPool::getItemFromPool(bool removeSampledItem, std::vector<Inventory*> 
 	return nullptr;
 }
 
-Item* ItemPool::getItemFromPoolGuaranteed(bool removeSampledItem, std::vector<Inventory*> inventories)
+Item* ItemPool::getItemFromPoolGuaranteed(bool removeSampledItem, const std::vector<Inventory*>& inventories)
 {
 	if (this->cacheDirty)
 	{

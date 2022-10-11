@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier4/WitchesHatPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* WitchesHat::clone()
 	return WitchesHat::create();
 }
 
-std::string WitchesHat::getItemName()
-{
-	return WitchesHat::SaveKey;
-}
-
 LocalizedString* WitchesHat::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_WitchesHat::create();
 }
 
-std::string WitchesHat::getIconResource()
+const std::string& WitchesHat::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_WitchesHat;
 }
 
-std::string WitchesHat::getSerializationKey()
+const std::string& WitchesHat::getIdentifier()
 {
 	return WitchesHat::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string WitchesHat::getSerializationKey()
 Vec2 WitchesHat::getDisplayOffset()
 {
 	return Vec2(-38.0f, 32.0f);
+}
+
+Recipe* WitchesHat::getRecipe()
+{
+	return nullptr;
 }

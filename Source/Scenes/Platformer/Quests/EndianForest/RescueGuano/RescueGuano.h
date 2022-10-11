@@ -29,8 +29,8 @@ private:
 	void runRescueSequencePt2();
 	void runRescueSequencePt3();
 
-	Guano* guano;
-	Squally* squally;
+	Guano* guano = nullptr;
+	Squally* squally = nullptr;
 
 	static const std::string EventMulDoorUnlocked;
 	static const std::string TagPrisonDoor;

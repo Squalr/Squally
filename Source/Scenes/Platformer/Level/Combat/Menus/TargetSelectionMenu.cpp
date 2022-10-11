@@ -4,18 +4,19 @@
 #include "cocos/base/CCDirector.h"
 #include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
-#include "cocos/base/CCEventListenerKeyboard.h"
+#include "cocos/base/CCInputEvents.h"
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableTextNode.h"
+#include "Engine/Input/Input.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/EntitySelectionBehavior.h"
+#include "Scenes/Platformer/Components/Entities/EntitySelectionBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Menus/ChooseTargetMenu.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
@@ -37,11 +38,13 @@ TargetSelectionMenu* TargetSelectionMenu::create(Timeline* timelineRef)
 TargetSelectionMenu::TargetSelectionMenu(Timeline* timelineRef)
 {
 	this->timelineRef = timelineRef;
-	this->selectedEntity = nullptr;
-	this->allowedSelection = AllowedSelection::None;
 	this->chooseTargetMenu = ChooseTargetMenu::create();
 
 	this->addChild(this->chooseTargetMenu);
+}
+
+TargetSelectionMenu::~TargetSelectionMenu()
+{
 }
 
 void TargetSelectionMenu::onEnter()
@@ -64,10 +67,12 @@ void TargetSelectionMenu::initializeListeners()
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* args)
 	{
-		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(args->getUserData());
+		CombatEvents::MenuStateArgs* combatArgs = static_cast<CombatEvents::MenuStateArgs*>(args->getData());
 
 		if (combatArgs != nullptr)
 		{
+			this->castingEntity = combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity();
+
 			switch (combatArgs->currentMenu)
 			{
 				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
@@ -81,7 +86,7 @@ void TargetSelectionMenu::initializeListeners()
 				{
 					this->allowedSelection = AllowedSelection::None;
 					this->clearEntityClickCallbacks();
-					this->selectEntity(combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity());
+					this->selectEntity(this->castingEntity);
 
 					this->setVisible(true);
 
@@ -92,9 +97,9 @@ void TargetSelectionMenu::initializeListeners()
 					this->allowedSelection = AllowedSelection::Enemy;
 					this->isActive = true;
 
-					this->setEntityClickCallbacks();
+					this->switchToInputMode();
 					this->selectEntity(nullptr);
-					this->selectNext(false);
+					this->selectNext(false, false);
 
 					this->setVisible(true);
 					break;
@@ -104,9 +109,9 @@ void TargetSelectionMenu::initializeListeners()
 					this->allowedSelection = AllowedSelection::PlayerResurrection;
 					this->isActive = true;
 
-					this->setEntityClickCallbacks();
+					this->switchToInputMode();
 					this->selectEntity(nullptr);
-					this->selectNext(false);
+					this->selectNext(false, false);
 					
 					this->setVisible(true);
 					break;
@@ -116,9 +121,9 @@ void TargetSelectionMenu::initializeListeners()
 					this->allowedSelection = AllowedSelection::Player;
 					this->isActive = true;
 
-					this->setEntityClickCallbacks();
+					this->switchToInputMode();
 					this->selectEntity(nullptr);
-					this->selectNext(false);
+					this->selectNext(false, false);
 					
 					this->setVisible(true);
 					break;
@@ -133,31 +138,53 @@ void TargetSelectionMenu::initializeListeners()
 			}
 		}
 	}));
-
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_A, EventKeyboard::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::InputArgs* args)
+	
+	this->addEventListenerIgnorePause(EventListenerCustom::create(InputEvents::EventMouseMoveInternal, [=](EventCustom* args)
 	{
-		this->selectNext(true);
+		this->switchToMouseMode();
+	}));
+
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_A, InputEvents::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
+	{
+		this->switchToInputMode();
+		this->selectNext(true, true);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_D, EventKeyboard::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_D, InputEvents::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		this->selectNext(false);
+		this->switchToInputMode();
+		this->selectNext(false, true);
 	});
 
-	this->whenKeyPressed({ EventKeyboard::KeyCode::KEY_ENTER, EventKeyboard::KeyCode::KEY_SPACE }, [=](InputEvents::InputArgs* args)
+	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ENTER, InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
 		this->chooseCurrentTarget();
 	});
 }
 
-void TargetSelectionMenu::update(float dt)
+void TargetSelectionMenu::switchToInputMode()
 {
-	super::update(dt);
+	if (!this->isActive || this->allowedSelection == AllowedSelection::None)
+	{
+		return;
+	}
+
+	this->clearEntityClickCallbacks();
+}
+
+void TargetSelectionMenu::switchToMouseMode()
+{
+	if (!this->isActive || this->allowedSelection == AllowedSelection::None)
+	{
+		return;
+	}
+
+	this->setEntityClickCallbacks();
 }
 
 void TargetSelectionMenu::chooseCurrentTarget()
 {
-	if (!this->isActive || this->selectedEntity == nullptr)
+	if (!this->isActive || this->selectedEntity == nullptr  || this->allowedSelection == AllowedSelection::None)
 	{
 		return;
 	}
@@ -172,7 +199,7 @@ void TargetSelectionMenu::selectEntity(PlatformerEntity* entity)
 	CombatEvents::TriggerSelectionChanged(CombatEvents::SelectionArgs(this->selectedEntity));
 }
 
-void TargetSelectionMenu::selectNext(bool directionIsLeft)
+void TargetSelectionMenu::selectNext(bool directionIsLeft, bool withMouseHitTest)
 {
 	if (!this->isActive || this->allowedSelection == AllowedSelection::None)
 	{
@@ -245,10 +272,39 @@ void TargetSelectionMenu::selectNext(bool directionIsLeft)
 	{
 		this->selectEntity(nullptr);
 	}
+
+	PlatformerEntity* firstEntity = (targetEntityGroup.size() <= 0) ? nullptr : targetEntityGroup[0];
+	bool canHitTest = (this->selectedEntity == firstEntity || withMouseHitTest) && this->selectedEntity != nullptr;
+
+	// Enable mouse-over if we happened to use the keyboard to select an entity that our mouse is over. This is a nicer UX.
+	// This allows for the user to use the keyboard to navigate to an entity under the mouse, and complete the selection with a click.
+	if (canHitTest)
+	{
+		this->selectedEntity->getComponent<EntitySelectionBehavior>([=](EntitySelectionBehavior* selection)
+		{
+			InputEvents::TriggerMouseHitTest(InputEvents::MouseHitTestArgs(
+				Input::GetMouseEvent().mouseCoords,
+				[=](Node* node)
+				{
+					if (node == selection->getHitbox())
+					{
+						this->switchToMouseMode();
+					}
+				}, false, true)
+			);
+		});
+	}
 }
 
 void TargetSelectionMenu::setEntityClickCallbacks()
 {
+	if (this->areCallbacksSet)
+	{
+		return;
+	}
+
+	this->areCallbacksSet = true;
+	
 	for (auto next : timelineRef->getEntries())
 	{
 		this->setEntityClickCallbacks(next->getEntity());
@@ -257,7 +313,7 @@ void TargetSelectionMenu::setEntityClickCallbacks()
 
 void TargetSelectionMenu::setEntityClickCallbacks(PlatformerEntity* entity)
 {
-	entity->getAttachedBehavior<EntitySelectionBehavior>([=](EntitySelectionBehavior* selection)
+	entity->getComponent<EntitySelectionBehavior>([=](EntitySelectionBehavior* selection)
 	{
 		TimelineEntry* entry = this->timelineRef->getAssociatedEntry(entity);
 		bool isAlive = entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true);
@@ -308,9 +364,16 @@ void TargetSelectionMenu::setEntityClickCallbacks(PlatformerEntity* entity)
 
 void TargetSelectionMenu::clearEntityClickCallbacks()
 {
-	for (auto next : timelineRef->getEntries())
+	if (!this->areCallbacksSet)
 	{
-		EntitySelectionBehavior* selection = next->getEntity()->getAttachedBehavior<EntitySelectionBehavior>();
+		return;
+	}
+
+	this->areCallbacksSet = false;
+
+	for (TimelineEntry* next : timelineRef->getEntries())
+	{
+		EntitySelectionBehavior* selection = next->getEntity()->getComponent<EntitySelectionBehavior>();
 		
 		if (selection != nullptr)
 		{

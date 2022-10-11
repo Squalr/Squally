@@ -3,8 +3,8 @@
 
 #include "Engine/SmartNode.h"
 
-class Clippy;
 class HackablePreview;
+template <class T> class LazyNode;
 class LocalizedString;
 
 class HackableBase : public SmartNode
@@ -23,7 +23,7 @@ public:
 		Yellow
 	};
 
-	std::string getHackableIdentifier();
+	const std::string& getHackableIdentifier();
 	int getRequiredHackFlag();
 	float getElapsedDuration();
 	float getDuration();
@@ -32,12 +32,12 @@ public:
 	float getElapsedCooldown();
 	float getCooldown();
 	void tryRefreshCooldown();
-	std::string getHackBarResource();
-	std::string getHackBarCooldownResource();
+	const std::string& getHackBarResource();
+	const std::string& getHackBarCooldownResource();
 	HackBarColor getHackBarColor();
-	std::string getIconResource();
+	const std::string& getIconResource();
 	LocalizedString* getName();
-	HackablePreview* getHackablePreview();
+	LazyNode<HackablePreview>* getHackablePreview();
 	virtual void* getPointer();
 	virtual void restoreState();
 
@@ -50,7 +50,7 @@ protected:
 		HackBarColor hackBarColor,
 		std::string iconResource,
 		LocalizedString* name,
-		HackablePreview* hackablePreview
+		LazyNode<HackablePreview>* hackablePreview
 	);
 	virtual ~HackableBase();
 
@@ -66,16 +66,16 @@ private:
 	typedef SmartNode super;
 	friend class GlobalHackAttributeContainer;
 
-	float duration;
-	float cooldown;
-	float elapsedDuration;
-	float elapsedCooldown;
-	bool isHackActive;
+	float duration = 0.0f;
+	float cooldown = 0.0f;
+	float elapsedDuration = 0.0f;
+	float elapsedCooldown = 0.0f;
+	bool isHackActive = false;
 
 	std::string hackableIdentifier;
-	LocalizedString* name;
+	LocalizedString* name = nullptr;
 	HackBarColor hackBarColor;
 	std::string iconResource;
-	HackablePreview* hackablePreview;
-	int requiredHackFlag;
+	LazyNode<HackablePreview>* hackablePreview = nullptr;
+	int requiredHackFlag = 0;
 };

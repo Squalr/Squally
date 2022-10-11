@@ -2,6 +2,11 @@
 
 #include "Engine/Maps/GameObject.h"
 
+namespace sf
+{
+	class Sound;
+}
+
 class SoundBase : public GameObject
 {
 public:
@@ -13,8 +18,10 @@ public:
 	virtual void stopAndFadeOut(std::function<void()> onFadeOutCallback = nullptr, bool hasPriority = false);
 
 	void setCustomMultiplier(float customMultiplier);
-	void setSoundResource(std::string soundResource);
-	std::string getSoundResource();
+	virtual void setSoundResource(std::string soundResource);
+	std::string getSoundResource() const;
+	
+	static const int InvalidSoundId;
 
 protected:
 	SoundBase(cocos2d::ValueMap& properties, std::string soundResource);
@@ -28,20 +35,18 @@ protected:
 	void clearVolumeOverride();
 	float getVolume();
 
-	int activeTrackId;
-
 	std::string soundResource;
-	float fadeMultiplier;
-	float distanceMultiplier;
-	float customMultiplier;
-	bool enableCameraDistanceFade;
-	bool hasVolumeOverride;
-	bool isFading;
-	bool destroyOnFadeOut;
-	std::function<void()> onFadeOutCallback;
+	float fadeMultiplier = 1.0f;
+	float distanceMultiplier = 1.0f;
+	float customMultiplier = 1.0f;
+	bool enableCameraDistanceFade = false;
+	bool hasVolumeOverride = false;
+	bool isFading = false;
+	bool destroyOnFadeOut = false;
+	std::function<void()> onFadeOutCallback = nullptr;
+	sf::Sound* soundRef = nullptr;
+	int soundId = -1;
 	
-	static const int INVALID_ID;
-
 private:
 	typedef GameObject super;
 

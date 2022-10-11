@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="256" tileheight="256" infinite="0" nextlayerid="80" nextobjectid="764">
+ <properties>
+  <property name="background" value=""/>
+  <property name="crack-color" value=""/>
+  <property name="gravity" value="0"/>
+  <property name="map-banner" value=""/>
+  <property name="music" value="solace"/>
+  <property name="rubber-band" type="int" value="2"/>
+  <property name="show-cracks" type="bool" value="false"/>
+  <property name="type" value="meta"/>
+ </properties>
+ <tileset firstgid="1" name="TileMapTopDown" tilewidth="256" tileheight="256" tilecount="192" columns="16">
+  <image source="../TileMapTopDown.png" width="4096" height="3072"/>
+ </tileset>
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value=""/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="0"/>
+   <property name="map-banner" value=""/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="2"/>
+   <property name="show-cracks" type="bool" value="false"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <layer id="75" name="floor" width="16" height="16">
+  <properties>
+   <property name="objectify" type="bool" value="true"/>
+   <property name="type" value="tilemap"/>
+  </properties>
+  <data encoding="csv">
+49,50,50,50,50,50,50,84,50,50,50,50,50,50,50,51,
+65,66,66,66,66,66,66,66,66,66,66,66,66,66,66,67,
+65,66,66,66,66,66,66,66,66,66,66,66,66,66,66,67,
+65,66,66,66,66,66,66,66,66,49,50,50,50,51,66,67,
+65,66,66,66,66,66,66,66,66,65,66,66,66,67,66,67,
+65,66,66,66,66,66,66,66,66,65,66,66,66,67,66,67,
+65,66,66,66,66,66,66,66,66,81,82,97,82,83,66,67,
+65,66,66,66,66,66,66,66,66,66,66,66,66,66,66,67,
+65,66,66,66,66,66,66,66,66,66,66,66,66,66,66,67,
+65,66,66,66,66,66,66,66,66,66,66,66,66,66,66,67,
+65,66,66,66,66,6,7,7,7,7,7,8,66,66,66,67,
+65,66,66,66,66,22,23,23,23,23,23,24,66,66,66,67,
+65,66,66,66,66,38,39,39,39,39,39,40,66,66,66,67,
+65,66,66,66,66,66,66,66,66,66,66,66,66,66,66,67,
+65,66,66,66,66,66,66,66,66,66,66,66,66,66,66,67,
+81,82,82,82,82,82,82,82,82,82,82,82,82,82,82,83
+</data>
+ </layer>
+ <layer id="77" name="floor_decor" width="16" height="16">
+  <properties>
+   <property name="objectify" type="bool" value="true"/>
+   <property name="type" value="tilemap"/>
+  </properties>
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="728" name="skeletal-warrior" type="entity" x="1028.63" y="1533.64" width="256" height="256">
+   <properties>
+    <property name="components" value="enemy-topdown"/>
+   </properties>
+  </object>
+  <object id="738" name="squally" type="entity" x="1794.81" y="1538.73" width="256" height="256">
+   <properties>
+    <property name="components" value="squally-topdown"/>
+   </properties>
+  </object>
+  <object id="761" name="edge-portal" type="object" x="1792.04" y="-2.4255" width="256" height="256">
+   <properties>
+    <property name="direction" value="up"/>
+    <property name="map" value="EndianForest/Town_Main"/>
+    <property name="transition" value="gate"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="78" name="collision">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="746" name="solid" type="collision" x="-24.2193" y="-73.21" width="256" height="4272"/>
+  <object id="747" name="solid" type="collision" x="3839.78" y="-124.21" width="256" height="4288"/>
+  <object id="748" name="solid" type="collision" x="2047.78" y="-1.21" width="2132.36" height="256"/>
+  <object id="750" name="solid" type="collision" x="-95.3993" y="3836.79" width="4290.36" height="256"/>
+  <object id="752" name="solid" type="collision" x="1292.84" y="2589.03" width="1761.03" height="701.333"/>
+  <object id="754" name="solid" type="collision" x="2303.02" y="767.82" width="254.121" height="1020"/>
+  <object id="755" name="solid" type="collision" x="3326.72" y="768.123" width="254.121" height="1028"/>
+  <object id="756" name="solid" type="collision" x="2437.48" y="767.79" width="1019.58" height="250"/>
+  <object id="757" name="solid" type="collision" x="2417.39" y="1539.79" width="397.454" height="250"/>
+  <object id="758" name="solid" type="collision" x="3073.05" y="1535.79" width="397.576" height="256.667"/>
+  <object id="759" name="solid" type="collision" x="-102.18" y="-8" width="1892.36" height="256"/>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+</map>

@@ -31,16 +31,16 @@ protected:
 private:
 	typedef Hud super;
 	
-	cocos2d::Sprite* background;
-	cocos2d::Sprite* banner;
-	LocalizedSprite* title;
-	cocos2d::Sprite* lexiconBack;
-	cocos2d::Sprite* lexiconFront;
-	cocos2d::Node* leftPageNode;
-	cocos2d::Node* rightPageNode;
-	ClickableTextNode* backButton;
-	cocos2d::Sprite* darkFrame;
+	cocos2d::Sprite* background = nullptr;
+	cocos2d::Sprite* banner = nullptr;
+	LocalizedSprite* title = nullptr;
+	cocos2d::Sprite* lexiconBack = nullptr;
+	cocos2d::Sprite* lexiconFront = nullptr;
+	cocos2d::Node* leftPageNode = nullptr;
+	cocos2d::Node* rightPageNode = nullptr;
+	ClickableTextNode* backButton = nullptr;
+	cocos2d::Sprite* darkFrame = nullptr;
 
-	std::function<void()> closeCallback;
+	std::function<void()> closeCallback = nullptr;
 	std::vector<LexiconPage*> pages;
 };

@@ -38,17 +38,17 @@ private:
 	void sellItem();
 	void removeShopItem();
 
-	cocos2d::Node* activationNode;
-	cocos2d::Node* itemNode;
-	ClickableNode* itemClickHitbox;
-	cocos2d::Sprite* currencySprite;
-	LocalizedLabel* itemCostLabel;
-	ConstantString* itemCostString;
+	cocos2d::Node* activationNode = nullptr;
+	cocos2d::Node* itemNode = nullptr;
+	ClickableNode* itemClickHitbox = nullptr;
+	cocos2d::Sprite* currencySprite = nullptr;
+	LocalizedLabel* itemCostLabel = nullptr;
+	ConstantString* itemCostString = nullptr;
 
 	std::string poolName;
-	ItemPreview* itemPreview;
-	Item* item;
+	ItemPreview* itemPreview = nullptr;
+	Item* item = nullptr;
 
-	int itemCost;
-	bool available;
+	int itemCost = 0;
+	bool available = false;
 };

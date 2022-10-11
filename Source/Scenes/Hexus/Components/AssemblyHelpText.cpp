@@ -11,8 +11,8 @@
 #include "Engine/Utils/HackUtils.h"
 #include "Events/HexusEvents.h"
 #include "Scenes/Hexus/CardRow.h"
-#include "Scenes/Hexus/Config.h"
 #include "Scenes/Hexus/GameState.h"
+#include "Scenes/Hexus/HexusConfig.h"
 
 #include "Resources/HexusResources.h"
 
@@ -62,9 +62,9 @@ void AssemblyHelpText::initializePositions()
 {
 	super::initializePositions();
 
-	Size visibleSize = Director::getInstance()->getVisibleSize();
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->assemblyHelpLabel->setPosition(visibleSize.width / 2.0f + Config::rightColumnCenter, visibleSize.height / 2.0f + Config::boardCenterOffsetY + 212.0f);
+	this->assemblyHelpLabel->setPosition(visibleSize.width / 2.0f + HexusConfig::rightColumnCenter, visibleSize.height / 2.0f + HexusConfig::boardCenterOffsetY + 212.0f);
 }
 
 void AssemblyHelpText::initializeListeners()
@@ -73,7 +73,7 @@ void AssemblyHelpText::initializeListeners()
 
 	this->addEventListener(EventListenerCustom::create(HexusEvents::EventCardPreviewed, [=](EventCustom* eventCustom)
 	{
-		HexusEvents::CardPreviewArgs* args = static_cast<HexusEvents::CardPreviewArgs*>(eventCustom->getUserData());
+		HexusEvents::CardPreviewArgs* args = static_cast<HexusEvents::CardPreviewArgs*>(eventCustom->getData());
 
 		if (args != nullptr && args->card != nullptr && this->gameState != nullptr && this->gameState->selectedHandCard != nullptr)
 		{

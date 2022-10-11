@@ -7,10 +7,8 @@ namespace cocos2d
 	class Sprite;
 }
 
-class HackablePreview;
 class PlatformerEntity;
 class SmartParticles;
-class WorldSound;
 
 class SharpenedBlade : public Buff
 {
@@ -34,8 +32,8 @@ private:
 
 	void applySharpenedBlade();
 	
-	SmartParticles* spellEffect;
-	cocos2d::Sprite* spellAura;
+	SmartParticles* spellEffect = nullptr;
+	cocos2d::Sprite* spellAura = nullptr;
 	
 	static const int MaxMultiplier;
 	static const float Duration;

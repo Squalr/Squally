@@ -6,7 +6,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/AttachedBehavior/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/BrokenBlade/BrokenBlade.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -68,7 +68,7 @@ void CastBrokenBlade::performAttack(PlatformerEntity* owner, std::vector<Platfor
 
 	for (auto next : targets)
 	{
-		next->getAttachedBehavior<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->applyBuff(BrokenBlade::create(owner, next));
 		});
@@ -91,7 +91,7 @@ bool CastBrokenBlade::isWorthUsing(PlatformerEntity* caster, const std::vector<P
 			continue;
 		}
 
-		next->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->getBuff<BrokenBlade>([&](BrokenBlade* debuff)
 			{
@@ -107,7 +107,7 @@ float CastBrokenBlade::getUseUtility(PlatformerEntity* caster, PlatformerEntity*
 {
 	float utility = target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
 
-	target->getAttachedBehavior<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->getBuff<BrokenBlade>([&](BrokenBlade* debuff)
 		{

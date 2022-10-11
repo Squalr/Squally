@@ -12,7 +12,6 @@ namespace cocos2d
 class ClickableTextNode;
 class LocalizedLabel;
 class LocalizedString;
-class PlatformerEntity;
 class Sound;
 
 class NotificationHud : public Hud
@@ -38,19 +37,18 @@ private:
 	void pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource, bool keepOpen);
 	void closeNotificationMenu();
 
-	cocos2d::Node* previousFocus;
+	cocos2d::Node* previousFocus = nullptr;
+	cocos2d::Node* contentNode = nullptr;
+	cocos2d::LayerColor* backdrop = nullptr;
+	cocos2d::Sprite* menuBack = nullptr;
+	ClickableTextNode* okButton = nullptr;
+	LocalizedLabel* title = nullptr;
+	LocalizedLabel* description = nullptr;
+	cocos2d::Node* takeoverNode = nullptr;
+	cocos2d::Node* notificationsNode = nullptr;
+	Sound* notificationSound = nullptr;
 
-	cocos2d::Node* contentNode;
-	cocos2d::LayerColor* backdrop;
-	cocos2d::Sprite* menuBack;
-	ClickableTextNode* okButton;
-	LocalizedLabel* title;
-	LocalizedLabel* description;
-	cocos2d::Node* takeoverNode;
-	cocos2d::Node* notificationsNode;
-	Sound* notificationSound;
-
-	std::queue<cocos2d::Node*> toProcess;
+	std::queue<std::tuple<cocos2d::Node*, bool>> toProcess;
 	std::vector<float> slotCooldowns;
 
 	static const int SlotCount;

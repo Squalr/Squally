@@ -2,6 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Gear/Hats/Tier6/DepressingWigPlans.h"
 
 #include "Resources/ItemResources.h"
 
@@ -46,22 +47,17 @@ Item* DepressingWig::clone()
 	return DepressingWig::create();
 }
 
-std::string DepressingWig::getItemName()
-{
-	return DepressingWig::SaveKey;
-}
-
 LocalizedString* DepressingWig::getString()
 {
 	return Strings::Items_Equipment_Gear_Hats_DepressingWig::create();
 }
 
-std::string DepressingWig::getIconResource()
+const std::string& DepressingWig::getIconResource()
 {
 	return ItemResources::Equipment_Gear_Hats_DepressingWig;
 }
 
-std::string DepressingWig::getSerializationKey()
+const std::string& DepressingWig::getIdentifier()
 {
 	return DepressingWig::SaveKey;
 }
@@ -69,4 +65,9 @@ std::string DepressingWig::getSerializationKey()
 Vec2 DepressingWig::getDisplayOffset()
 {
 	return Vec2(18.0f, -48.0f);
+}
+
+Recipe* DepressingWig::getRecipe()
+{
+	return DepressingWigPlans::create();
 }

@@ -138,6 +138,11 @@
 
 #include <math.h>  // fabs fabsf
 
+/*
+#define MPE_Assert(expression) (void)(                                               \
+    (!!(expression)) \
+)*/
+
 #ifndef MPE_MemorySet
   #include <string.h> //memset
   #define MPE_MemorySet memset

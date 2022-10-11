@@ -25,10 +25,11 @@ protected:
 	void initializePositions() override;
 	void update(float dt) override;
 
-	cocos2d::Sprite* marker;
-	LocalizedString* registerString;
+	cocos2d::Sprite* marker = nullptr;
+	LocalizedString* registerString = nullptr;
 
 private:
 	typedef GridObject super;
-	LocalizedLabel* registerLabel;
+	
+	LocalizedLabel* registerLabel = nullptr;
 };

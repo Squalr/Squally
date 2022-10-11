@@ -29,11 +29,21 @@ public:
 	static const std::string URHeadToTown;
 	static const std::string URLookForSurvivors;
 	static const std::string URExploreFountain;
-	static const std::string URExploreCistern;
+	static const std::string URSearchCistern;
+	static const std::string URSolvePuzzle;
+	static const std::string URSlayMedusa;
 	static const std::string URCureTownspeople;
 	static const std::string URReturnToHera;
 	static const std::string URCrossBridge;
 	static const std::string URFindMineEntrance;
-	static const std::string UREnterTheMines;
 	static const std::string URLightTorches;
+	static const std::string UREnterTheMines;
+	
+	static const std::string DMDeliverLetter;
+	static const std::string DMInvestigatePowerOutage;
+	static const std::string DMSailToDrammol;
+	static const std::string DMRestorePower;
+	static const std::string DMReturnToPrincessDawn;
+	static const std::string DMObtainTrainTicket;
+	static const std::string DMRideTrainToCastleValgrind;
 };

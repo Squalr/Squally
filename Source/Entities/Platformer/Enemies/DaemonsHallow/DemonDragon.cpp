@@ -24,7 +24,7 @@ DemonDragon::DemonDragon(ValueMap& properties) : super(properties,
 	DemonDragon::MapKey,
 	EntityResources::Enemies_DaemonsHallow_DemonDragon_Animations,
 	EntityResources::Enemies_DaemonsHallow_DemonDragon_Emblem,
-	Size(340.0f, 360.0f),
+	CSize(340.0f, 360.0f),
 	0.85f,
 	Vec2(0.0f, 0.0f))
 {

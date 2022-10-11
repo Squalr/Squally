@@ -16,6 +16,7 @@ public:
 	Buff* getAssociatedBuff();
 	PlatformerEntity* getOwner();
 	bool processEvents(float previousTime, float currentTime);
+	void completeEventGroup();
 
 protected:
 	TimelineEventGroup(std::vector<TimelineEvent*> timelineEvents, Buff* associatedBuff, PlatformerEntity* owner, std::function<void()> onGroupComplete);
@@ -30,11 +31,10 @@ private:
 	void registerTimelineEvent(TimelineEvent* timelineEvent);
 	void unregisterTimelineEvent(TimelineEvent* timelineEvent);
 
-	cocos2d::Node* timelineEventsNode;
-
-	Buff* associatedBuff;
-	PlatformerEntity* owner;
+	cocos2d::Node* timelineEventsNode = nullptr;
+	Buff* associatedBuff = nullptr;
+	PlatformerEntity* owner = nullptr;
 	std::vector<TimelineEvent*> timelineEvents;
 	std::vector<TimelineEvent*> timelineEventsToDelete;
-	std::function<void()> onGroupComplete;
+	std::function<void()> onGroupComplete = nullptr;
 };

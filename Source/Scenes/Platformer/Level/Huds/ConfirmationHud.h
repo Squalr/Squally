@@ -29,6 +29,6 @@ private:
 	void pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource, bool keepOpen);
 	void closeNotificationMenu();
 
-	cocos2d::Node* contentNode;
-	ConfirmationMenu* confirmationMenu;
+	cocos2d::Node* contentNode = nullptr;
+	ConfirmationMenu* confirmationMenu = nullptr;
 };

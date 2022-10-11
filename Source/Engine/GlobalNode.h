@@ -1,16 +1,12 @@
 #pragma once
 #include "Engine/SmartNode.h"
 
-namespace cocos2d
-{
-	class EventListener;
-}
-
 class GlobalNode : public SmartNode
 {
 public:
 	static GlobalNode* create();
 
+protected:
 	GlobalNode();
 	virtual ~GlobalNode();
 

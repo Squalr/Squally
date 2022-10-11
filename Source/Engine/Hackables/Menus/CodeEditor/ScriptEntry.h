@@ -1,19 +1,16 @@
 #pragma once
 
 #include "Engine/SmartNode.h"
-#include "Engine/Localization/LocalizedString.h"
 
 namespace cocos2d
 {
 	class LayerColor;
-	class Node;
 	class Sprite;
 }
 
-class ConstantString;
 class ClickableNode;
-class HackableCode;
 class LocalizedLabel;
+class LocalizedString;
 
 class ScriptEntry : public SmartNode
 {
@@ -28,7 +25,7 @@ public:
 	void setScript(std::string script);
 	void setName(std::string name);
 
-	bool isReadOnly;
+	bool isReadOnly = false;
 
 protected:
 	ScriptEntry(LocalizedString* scriptName, std::string script, bool isReadOnly, std::function<void(ScriptEntry*)> onScriptEntryClick, std::function<void(ScriptEntry*)> onCopyClick, std::function<void(ScriptEntry*)> onDeleteClick);
@@ -41,21 +38,21 @@ protected:
 private:
 	typedef SmartNode super;
 
-	cocos2d::Size originalBackPlateSize;
+	cocos2d::CSize originalBackPlateSize;
 
-	ClickableNode* backPlate;
-	cocos2d::Sprite* selectedSprite;
-	LocalizedLabel* label;
-	ClickableNode* copyButton;
-	ClickableNode* deleteButton;
-	cocos2d::LayerColor* deletePanel;
-	LocalizedLabel* deleteLabel;
-	cocos2d::LayerColor* copyPanel;
-	LocalizedLabel* copyLabel;
+	ClickableNode* backPlate = nullptr;
+	cocos2d::Sprite* selectedSprite = nullptr;
+	LocalizedLabel* label = nullptr;
+	ClickableNode* copyButton = nullptr;
+	ClickableNode* deleteButton = nullptr;
+	cocos2d::LayerColor* deletePanel = nullptr;
+	LocalizedLabel* deleteLabel = nullptr;
+	cocos2d::LayerColor* copyPanel = nullptr;
+	LocalizedLabel* copyLabel = nullptr;
 
-	LocalizedString* scriptName;
+	LocalizedString* scriptName = nullptr;
 	std::string script;
-	std::function<void(ScriptEntry*)> onScriptEntryClick;
-	std::function<void(ScriptEntry*)> onCopyClick;
-	std::function<void(ScriptEntry*)> onDeleteClick;
+	std::function<void(ScriptEntry*)> onScriptEntryClick = nullptr;
+	std::function<void(ScriptEntry*)> onCopyClick = nullptr;
+	std::function<void(ScriptEntry*)> onDeleteClick = nullptr;
 };

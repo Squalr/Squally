@@ -1,12 +1,8 @@
 #pragma once
 
-#include "Engine/SmartNode.h"
+#include "cocos/base/CCValue.h"
 
-namespace cocos2d
-{
-	class Value;
-	typedef std::map<std::string, Value> ValueMap;
-}
+#include "Engine/SmartNode.h"
 
 class GameObject;
 class PropertyDeserializer;
@@ -16,7 +12,7 @@ class ObjectDeserializer : public SmartNode
 public:
 	struct ObjectDeserializationArgs
 	{
-		GameObject* gameObject;
+		GameObject* gameObject = nullptr;
 
 		ObjectDeserializationArgs(GameObject* gameObject) : gameObject(gameObject)
 		{
@@ -26,7 +22,7 @@ public:
 	struct ObjectDeserializationRequestArgs
 	{
 		cocos2d::ValueMap properties;
-		std::function<void(ObjectDeserializationArgs)> onDeserializeCallback;
+		std::function<void(ObjectDeserializationArgs)> onDeserializeCallback = nullptr;
 
 		ObjectDeserializationRequestArgs(
 			cocos2d::ValueMap properties,

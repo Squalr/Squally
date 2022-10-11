@@ -11,7 +11,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 
-#include "Scenes/Platformer/Level/Physics/PlatformerCollisionType.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
@@ -21,7 +21,6 @@
 using namespace cocos2d;
 
 const std::string Vase::MapKey = "vase";
-const std::string Vase::PropertyColor = "color";
 
 Vase* Vase::create(ValueMap& properties)
 {
@@ -32,13 +31,13 @@ Vase* Vase::create(ValueMap& properties)
 	return instance;
 }
 
-Vase::Vase(ValueMap& properties, int requiredHits) : super(properties, Size(113.0f, 160.0f), requiredHits)
+Vase::Vase(ValueMap& properties, int requiredHits) : super(properties, CSize(113.0f, 160.0f), requiredHits)
 {
 	this->explosion = SmartAnimationSequenceNode::create();
 	this->breakSound = WorldSound::create(SoundResources::Platformer_Objects_PotBreak_PotSmash1);
-	this->color = GameUtils::getKeyOrDefault(this->properties, Vase::PropertyColor, Value("yellow")).asString();
-	this->shardParticles = SmartParticles::create(ParticleResources::Objects_VaseBreak, SmartParticles::CullInfo(Size(113.0f, 160.0f)));
-	this->vaseBroken = CollisionObject::create(CollisionObject::createBox(Size(113.0f, 92.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true, 0.1f));
+	this->color = GameUtils::getKeyOrDefault(this->properties, GameObject::PropertyColor, Value("yellow")).asString();
+	this->shardParticles = SmartParticles::create(ParticleResources::Objects_VaseBreak, SmartParticles::CullInfo(CSize(113.0f, 160.0f)));
+	this->vaseBroken = CollisionObject::create(CollisionObject::createBox(CSize(113.0f, 92.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(true, true, 0.1f));
 
 	if (this->color == "blue")
 	{
@@ -76,14 +75,14 @@ Vase::Vase(ValueMap& properties, int requiredHits) : super(properties, Size(113.
 		this->vaseBroken->addChild(Sprite::create(ObjectResources::Breakables_VaseYellowBroken));
 	}
 
-	this->vaseBroken->setPhysicsEnabled(false);
+	this->vaseBroken->setPhysicsFlagEnabled(false);
 	this->vaseBroken->setVisible(false);
 
-	this->addChild(this->vase);
-	this->addChild(this->vaseBroken);
-	this->addChild(this->shardParticles);
-	this->addChild(this->explosion);
-	this->addChild(this->breakSound);
+	this->contentNode->addChild(this->vase);
+	this->contentNode->addChild(this->vaseBroken);
+	this->contentNode->addChild(this->shardParticles);
+	this->contentNode->addChild(this->explosion);
+	this->contentNode->addChild(this->breakSound);
 }
 
 Vase::~Vase()
@@ -101,9 +100,9 @@ void Vase::initializeListeners()
 {
 	super::initializeListeners();
 
-	this->vaseBroken->whileCollidesWith({ (CollisionType)PlatformerCollisionType::Solid, (CollisionType)PlatformerCollisionType::PassThrough, (CollisionType)PlatformerCollisionType::Physics, (CollisionType)PlatformerCollisionType::Player, (CollisionType)PlatformerCollisionType::PlayerWeapon }, [=](CollisionObject::CollisionData collisionData)
+	this->vaseBroken->whileCollidesWith({ (CollisionType)PlatformerCollisionType::Solid, (CollisionType)PlatformerCollisionType::PassThrough, (CollisionType)PlatformerCollisionType::Physics, (CollisionType)PlatformerCollisionType::Player, (CollisionType)PlatformerCollisionType::PlayerWeapon }, [=](CollisionData collisionData)
 	{
-		return CollisionObject::CollisionResult::CollideWithPhysics;
+		return CollisionResult::CollideWithPhysics;
 	});
 }
 
@@ -118,7 +117,7 @@ void Vase::onBreak()
 	
 	this->explosion->playAnimation(FXResources::ExplosionNormal_Explosion_0000, 0.035f, true);
 	this->vase->setVisible(false);
-	this->vaseBroken->setPhysicsEnabled(true);
+	this->vaseBroken->setPhysicsFlagEnabled(true);
 	this->vaseBroken->setVisible(true);
 	this->vaseBroken->setVelocity(Vec2(3200.0f, 9600.0f));
 	this->shardParticles->start();

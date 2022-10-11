@@ -6,7 +6,6 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
-#include "Menus/Inventory/MenuEntry.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
 
 #include "Strings/Strings.h"
@@ -25,13 +24,12 @@ ItemEntry* ItemEntry::create(Item* associatedItem, LocalizedString* text, std::s
 ItemEntry::ItemEntry(Item* associatedItem, LocalizedString* text, std::string spriteResource) : super(Strings::Common_TriconcatSpaced::create(), spriteResource)
 {
     this->associatedItem = associatedItem;
-    this->onToggle = nullptr;
-    this->stackSize = 1;
     this->stackString = ConstantString::create();
     this->craftString = ConstantString::create();
+    this->textString = Strings::Common_Constant::create()->setStringReplacementVariables(text);
     this->equipHintMode = ItemPreview::EquipHintMode::None;
 
-    this->label->setStringReplacementVariables({ text, this->stackString, this->craftString });
+    this->label->setStringReplacementVariables({ this->textString, this->stackString, this->craftString });
 
     this->hideIcon();
 }
@@ -53,6 +51,11 @@ std::function<void()> ItemEntry::getToggleCallback()
 Item* ItemEntry::getAssociatedItem()
 {
     return this->associatedItem;
+}
+
+void ItemEntry::setText(LocalizedString* newText)
+{
+    this->textString->setStringReplacementVariables(newText);
 }
 
 int ItemEntry::getStackSize()
