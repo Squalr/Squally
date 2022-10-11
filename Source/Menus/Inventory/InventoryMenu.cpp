@@ -308,7 +308,7 @@ void InventoryMenu::consumeItem(Consumable* item)
 	}
 
 	this->partyMenu->lazyGet()->setVisible(true);
-	GameUtils::focus(this->partyMenu);
+	GameUtils::focus(this->partyMenu->lazyGet());
 
 	int count = 0;
 	

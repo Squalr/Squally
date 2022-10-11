@@ -142,7 +142,7 @@ void ItemPreview::initializePositions()
 	const float OffsetY = -160.0f;
 	int index = 0;
 
-	for (auto statline : this->statlines)
+	for (LocalizedLabel* statline : this->statlines)
 	{
 		statline->setPosition(Vec2(OffsetX, OffsetY - 40.0f * float(index++)));
 	}
