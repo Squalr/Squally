@@ -36,11 +36,10 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_HEAVYBLADE 1
 
-const std::string HeavyBlade::HeavyBladeIdentifier = "HeavyBlade";
+const std::string HeavyBlade::HeavyBladeIdentifier = "heavy-blade";
 
 const int HeavyBlade::MinMultiplier = -1;
 const int HeavyBlade::MaxMultiplier = 2;
-const int HeavyBlade::DamageIncrease = 3; // Keep in sync with asm
 const float HeavyBlade::Duration = 12.0f;
 
 // Static to prevent GCC optimization issues

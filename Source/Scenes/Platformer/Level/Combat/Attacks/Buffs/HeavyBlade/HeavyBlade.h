@@ -38,6 +38,5 @@ private:
 	
 	static const int MinMultiplier;
 	static const int MaxMultiplier;
-	static const int DamageIncrease;
 	static const float Duration;
 };

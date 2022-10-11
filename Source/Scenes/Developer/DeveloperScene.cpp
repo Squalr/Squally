@@ -377,8 +377,8 @@ DeveloperScene::DeveloperScene()
 
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
-		- Barbarian				1_x		=> jmp 			--
-		- Thug					1_x		=> J[E]CXZ		%[E]CX = 0
+		X Thug					1_x		=> jmp 			--
+		- Barbarian				1_x		=> J[E]CXZ		%[E]CX = 0
 		- ReanimatedFighter		1_x		=> J[N]E/Z		ZF
 		- WereWolf				dark	=> J[N]P[E]		PF		// Odd or even! PF = 0 odd. All combinations valid except JNPE
 		- Wraith				dark	=> J[N]S		SF		// Sign flag set if the FIRST operand is negative. Can be used to block negative damage.
