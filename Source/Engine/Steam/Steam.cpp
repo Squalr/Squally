@@ -56,7 +56,6 @@ bool Steam::Init()
 
 bool Steam::IsSquallySteamBuild()
 {
-	return false;
 	static bool init = false;
 	static bool isItchBuild = false;
 
