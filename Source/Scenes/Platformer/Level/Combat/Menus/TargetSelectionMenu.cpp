@@ -71,6 +71,8 @@ void TargetSelectionMenu::initializeListeners()
 
 		if (combatArgs != nullptr)
 		{
+			this->castingEntity = combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity();
+
 			switch (combatArgs->currentMenu)
 			{
 				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
@@ -84,7 +86,7 @@ void TargetSelectionMenu::initializeListeners()
 				{
 					this->allowedSelection = AllowedSelection::None;
 					this->clearEntityClickCallbacks();
-					this->selectEntity(combatArgs->entry == nullptr ? nullptr : combatArgs->entry->getEntity());
+					this->selectEntity(this->castingEntity);
 
 					this->setVisible(true);
 
@@ -182,7 +184,7 @@ void TargetSelectionMenu::switchToMouseMode()
 
 void TargetSelectionMenu::chooseCurrentTarget()
 {
-	if (!this->isActive || this->selectedEntity == nullptr)
+	if (!this->isActive || this->selectedEntity == nullptr  || this->allowedSelection == AllowedSelection::None)
 	{
 		return;
 	}
@@ -369,7 +371,7 @@ void TargetSelectionMenu::clearEntityClickCallbacks()
 
 	this->areCallbacksSet = false;
 
-	for (auto next : timelineRef->getEntries())
+	for (TimelineEntry* next : timelineRef->getEntries())
 	{
 		EntitySelectionBehavior* selection = next->getEntity()->getComponent<EntitySelectionBehavior>();
 		

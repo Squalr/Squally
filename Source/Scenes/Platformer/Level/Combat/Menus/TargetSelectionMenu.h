@@ -43,6 +43,7 @@ private:
 
 	AllowedSelection allowedSelection = AllowedSelection::None;
 	Timeline* timelineRef = nullptr;
+	PlatformerEntity* castingEntity = nullptr;
 	PlatformerEntity* selectedEntity = nullptr;
 	ChooseTargetMenu* chooseTargetMenu = nullptr;
 	bool isActive = false;
