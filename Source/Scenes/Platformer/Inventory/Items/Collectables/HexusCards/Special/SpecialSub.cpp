@@ -21,7 +21,7 @@ SpecialSub* SpecialSub::create()
 	return instance;
 }
 
-SpecialSub::SpecialSub() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 }}), ItemMeta(3, 3))
+SpecialSub::SpecialSub() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 34 }}), ItemMeta(3, 3))
 {
 }
 
