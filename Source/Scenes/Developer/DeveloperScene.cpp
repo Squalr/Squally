@@ -69,10 +69,8 @@ DeveloperScene::DeveloperScene()
 	}
 
 	/*
-	- ** Can get stuck on roof of maps (see UR 3_1)
+	- * Can get stuck on roof of maps (see UR 3_1)
 	- ** Can hit ESC on potion menu, causing a soft-lock (probably focus side effect)
-	- ** Esc on crafting menu opens another pause menu (probably focus side effect)
-	- ** Esc doesn't close pause menu (probably focus side effect)
 	- Pacing behavior is broken for portal maps
 	- Techncially Squally respawns on object layer upon death, although usually this is not noticeable
 	- Chapter transitions can be more special

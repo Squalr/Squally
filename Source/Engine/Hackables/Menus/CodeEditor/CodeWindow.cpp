@@ -7,6 +7,7 @@
 
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/UIRichText.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Hackables/Menus/CodeEditor/ScriptEntry.h"
@@ -261,6 +262,7 @@ void CodeWindow::initializeListeners()
 		this->copyPanel->setOpacity(196);
 		this->copyLabel->setOpacity(255);
 	});
+
 	this->copyButton->setMouseOutCallback([=](InputEvents::MouseEventArgs*)
 	{
 		this->copyPanel->setOpacity(0);
@@ -450,7 +452,7 @@ void CodeWindow::constructTokenizedText(std::string currentText)
 	this->clearText();
 	this->insertNewline();
 
-	for (auto token : tokens)
+	for (const AsmToken& token : tokens)
 	{
 		if (token.tokenStr->getString() == "\n")
 		{

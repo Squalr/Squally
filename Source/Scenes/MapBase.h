@@ -54,6 +54,8 @@ protected:
 	Hud* topMenuHud = nullptr;
 	Hud* confirmationMenuHud = nullptr;
 	LazyNode<OptionsMenu>* optionsMenu = nullptr;
+	LazyNode<CodeHud>* codeHud = nullptr;
+	LazyNode<RadialMenu>* radialMenu = nullptr;
 	cocos2d::Node* mapNode = nullptr;
 	GameMap* map = nullptr;
 
@@ -73,8 +75,6 @@ private:
 	
 	Hud* hackerModeGlow = nullptr;
 	MatrixRain* hackerModeRain = nullptr;
-	LazyNode<CodeHud>* codeHud = nullptr;
-	LazyNode<RadialMenu>* radialMenu = nullptr;
 	MusicOverlay* musicOverlay = nullptr;
 
 	std::vector<LayerDeserializer*> layerDeserializers;

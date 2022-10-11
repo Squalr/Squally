@@ -31,7 +31,9 @@
 #include "Engine/Deserializers/Objects/ObjectLayerDeserializer.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/NavigationEvents.h"
+#include "Engine/Hackables/Menus/CodeEditor/CodeHud.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Lexicon.h"
+#include "Engine/Hackables/Menus/RadialMenu.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Maps/GameMap.h"
 #include "Engine/Maps/GameObject.h"
@@ -455,6 +457,8 @@ void CombatMap::initializeListeners()
 			|| (this->platformerPauseMenu->isBuilt() && GameUtils::isFocused(this->platformerPauseMenu->lazyGet()))
 			|| (this->partyMenu->isBuilt() && GameUtils::isFocused(this->partyMenu->lazyGet()))
 			|| (this->optionsMenu->isBuilt() && GameUtils::isFocused(this->optionsMenu->lazyGet()))
+			|| (this->codeHud->isBuilt() && GameUtils::isFocused(this->codeHud->lazyGet()))
+			|| (this->radialMenu->isBuilt() && GameUtils::isFocused(this->radialMenu->lazyGet()))
 			|| (this->lexiconMenu->isBuilt() && GameUtils::isFocused(this->lexiconMenu->lazyGet()))
 			|| (this->cardsMenu->isBuilt() && GameUtils::isFocused(this->cardsMenu->lazyGet()))
 			|| (this->cardHelpMenu->isBuilt() && GameUtils::isFocused(this->cardHelpMenu->lazyGet()))

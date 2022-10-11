@@ -42,6 +42,7 @@ private:
 	cocos2d::Sprite* background = nullptr;
 	cocos2d::Node* previewNode = nullptr;
 	cocos2d::Node* radialMenuItems = nullptr;
+	cocos2d::Node* previousFocus = nullptr;
 
 	static const float Radius;
 	static const float IconRadius;

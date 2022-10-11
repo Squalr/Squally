@@ -5,6 +5,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Events/LocalizationEvents.h"
+#include "Engine/Localization/Localization.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 
@@ -48,6 +49,15 @@ void LabelStack::initializePositions()
 void LabelStack::initializeListeners()
 {
 	super::initializeListeners();
+
+	this->addGlobalEventListener(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
+	{
+		// Defer a frame to give labels a chance to update localization first
+		this->defer([=]()
+		{
+			this->positionLabels();
+		});
+	}));
 }
 
 void LabelStack::setAnchorPoint(const cocos2d::Vec2& anchorPoint)
@@ -60,36 +70,14 @@ void LabelStack::setAnchorPoint(const cocos2d::Vec2& anchorPoint)
 void LabelStack::insert(LocalizedLabel* label)
 {
 	this->labelsNode->addChild(label);
-
-	label->setAnchorPoint(Vec2(0.0f, 1.0f));
-	label->setPositionX(this->padding.width);
-	label->setOverflow(Label::Overflow::RESIZE_HEIGHT);
-	label->setDimensions(this->windowSize.width - this->padding.width * 2, 0.0f);
-
-	if (!this->labels.empty())
-	{
-		this->cumulativeHeight += this->labels.back()->getContentSize().height + this->spacing;
-	}
-	else
-	{
-		this->cumulativeHeight += this->padding.height + this->spacing;
-	}
-
-	label->setPositionY(-this->cumulativeHeight);
-
 	this->labels.push_back(label);
+	this->positionLabels();
 }
 
 void LabelStack::insertNewline()
 {
-	if (!this->labels.empty())
-	{
-		this->cumulativeHeight += this->labels.back()->getContentSize().height + this->spacing;
-	}
-	else
-	{
-		this->cumulativeHeight += this->spacing;
-	}
+	this->labels.push_back(nullptr);
+	this->positionLabels();
 }
 
 void LabelStack::clear()
@@ -103,5 +91,43 @@ void LabelStack::setPadding(cocos2d::CSize padding)
 {
 	this->padding = padding;
 
-	// Should probably adjust existing labels, but this shouldn't be an issue in our use cases so im not gonna implement it
+	this->positionLabels();
+}
+
+void LabelStack::positionLabels()
+{
+	switch(Localization::getLanguage())
+	{
+		default:
+		{
+			this->padding.height = 0.0f;
+			break;
+		}
+		case LanguageType::ARABIC:
+		{
+			this->padding.height = -12.0f;
+			break;
+		}
+	}
+
+	this->cumulativeHeight = 0.0f;
+	
+	for (int index = 0; index < int(this->labels.size()); index++)
+	{
+		Label* label = this->labels[index];
+
+		if (label == nullptr)
+		{
+			this->cumulativeHeight += this->spacing;
+			continue;
+		}
+
+		label->setAnchorPoint(Vec2(0.0f, 1.0f));
+		label->setPositionX(this->padding.width);
+		label->setOverflow(Label::Overflow::RESIZE_HEIGHT);
+		label->setDimensions(this->windowSize.width - this->padding.width * 2.0f, 0.0f);
+		label->setPositionY(-this->cumulativeHeight);
+
+		this->cumulativeHeight += label->getContentSize().height + this->padding.height + this->spacing;
+	}
 }

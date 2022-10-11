@@ -26,6 +26,8 @@ protected:
 private:
 	typedef SmartNode super;
 
+	void positionLabels();
+
 	cocos2d::Node* labelsNode = nullptr;
 	std::vector<LocalizedLabel*> labels;
 	cocos2d::CSize windowSize;

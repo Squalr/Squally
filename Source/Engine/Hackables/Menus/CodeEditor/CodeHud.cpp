@@ -538,6 +538,7 @@ void CodeHud::onAccept()
 	this->activeHackableCode->applyCustomCode(scriptText);
 
 	this->setVisible(false);
+	GameUtils::focus(nullptr);
 	this->getParent()->setOpacity(0xFF);
 
 	HackableEvents::TriggerEditHackableBaseDone();
@@ -554,6 +555,7 @@ void CodeHud::onCancel()
 	this->scriptList->saveScripts();
 
 	this->setVisible(false);
+	GameUtils::focus(nullptr);
 
 	HackableEvents::TriggerEditHackableBaseDone();
 }

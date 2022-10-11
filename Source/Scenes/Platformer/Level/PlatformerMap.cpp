@@ -30,7 +30,9 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/GlobalDirector.h"
+#include "Engine/Hackables/Menus/CodeEditor/CodeHud.h"
 #include "Engine/Hackables/Menus/CodeEditor/Lexicon/Lexicon.h"
+#include "Engine/Hackables/Menus/RadialMenu.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -440,6 +442,8 @@ void PlatformerMap::initializeListeners()
 			|| (this->platformerPauseMenu->isBuilt() && GameUtils::isFocused(this->platformerPauseMenu->lazyGet()))
 			|| (this->partyMenu->isBuilt() && GameUtils::isFocused(this->partyMenu->lazyGet()))
 			|| (this->optionsMenu->isBuilt() && GameUtils::isFocused(this->optionsMenu->lazyGet()))
+			|| (this->codeHud->isBuilt() && GameUtils::isFocused(this->codeHud->lazyGet()))
+			|| (this->radialMenu->isBuilt() && GameUtils::isFocused(this->radialMenu->lazyGet()))
 			|| (this->lexiconMenu->isBuilt() && GameUtils::isFocused(this->lexiconMenu->lazyGet()))
 			|| (this->cardsMenu->isBuilt() && GameUtils::isFocused(this->cardsMenu->lazyGet()))
 			|| (this->collectablesMenu->isBuilt() && GameUtils::isFocused(this->collectablesMenu->lazyGet()))

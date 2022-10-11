@@ -42,6 +42,7 @@ private:
 	typedef SmartNode super;
 
 	void open(HackableObjectEditArgs* args);
+	void close();
 	void enableAccept();
 	void disableAccept();
 	void buildRegisterWindow();

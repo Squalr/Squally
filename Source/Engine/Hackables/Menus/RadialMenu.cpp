@@ -84,12 +84,14 @@ void RadialMenu::initializeListeners()
 			this->activeHackableObject = args->hackableObject;
 			this->buildRadialMenu(args);
 
+			this->previousFocus = GameUtils::getFocusedNode();
 			GameUtils::focus(this);
 		}
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackableBaseEditDone, [=](EventCustom* EventCustom)
 	{
+		this->previousFocus = GameUtils::getFocusedNode();
 		GameUtils::focus(this);
 
 		// Just close out of this when finished editing an hackable
@@ -147,6 +149,8 @@ void RadialMenu::onHackableEdit(HackableBase* hackable)
 void RadialMenu::close()
 {
 	this->setVisible(false);
+	GameUtils::focus(this->previousFocus);
+	this->previousFocus = nullptr;
 
 	HackableEvents::TriggerCloseHackable();
 	HackableEvents::TriggerHackerModeDisable();
