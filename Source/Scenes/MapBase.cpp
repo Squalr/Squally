@@ -192,9 +192,16 @@ bool MapBase::loadMap(std::string mapResource, bool useFallback)
 
 	if (MapBase::MapCache.find(mapResource) == MapBase::MapCache.end())
 	{
-		MapBase::MapCache[this->mapResource] = GameMap::parse(this->mapResource);
+		cocos_experimental::TMXTiledMap* tileMap = GameMap::parse(this->mapResource);
+
+		if (tileMap == nullptr)
+		{
+			return false;
+		}
+
+		MapBase::MapCache[this->mapResource] = tileMap;
 		MapBase::MapCache[this->mapResource]->retain();
-	}	
+	}
 	
 	return this->loadMapFromTmx(this->mapResource, MapBase::MapCache[this->mapResource], useFallback);
 }
