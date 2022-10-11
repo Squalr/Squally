@@ -363,18 +363,17 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (CV)", MapResources::CastleValgrind_Zone_1_0));
 
 		// ================== TODO ==================
-		// Traps: Organ gun, cannon, catapult, ballista, heaven hug
-		// Create train map, move train out of Zone 1_0 (or integrate it better)
-		// Finish maps and corresponding "dark" maps (alternatively a game flag that is toggled to load in the correct layers)
-		// Puzzles in dark maps can influence objects in normal maps. Typical inverse world puzzles.
-		// Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
+		// ** Traps: Organ gun, cannon, catapult, ballista, heaven hug
+		// ** Finish maps and corresponding "dark" maps (alternatively a game flag that is toggled to load in the correct layers)
+		// ** Puzzles in dark maps can influence objects in normal maps. Typical inverse world puzzles.
+		// ** Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
 		// WIP flow:
 		// 	- Clock to go to dark side
 		// 	- Study default locked
 		// 	- Key is in the bar or something (maybe the barkeep has a hint about this)
 		// 	- Secret room behind throne room (dark side only, helps make shit easier for me) leading to 2_x zones
-		// Needs hexus battles
-		// Needs hexus puzzles
+		// ** Needs hexus battles
+		// ** Needs hexus puzzles
 
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
