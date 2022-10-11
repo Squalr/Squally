@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="18" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="725">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="18" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="726">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -96,6 +96,13 @@
    </properties>
   </object>
   <object id="723" name="skeletal-pirate" type="entity" x="1429.21" y="833.149" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="725" name="skeletal-warrior" type="entity" x="1180" y="812" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>

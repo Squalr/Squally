@@ -27474,6 +27474,21 @@ namespace Strings
 		virtual ~Platformer_MapNames_DaemonsHallow_DaemonsHallow() = default;
 	};
 
+	class Platformer_MapNames_DataMines_DataCove : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_DataMines_DataCove* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_DataMines_DataCove();
+		virtual ~Platformer_MapNames_DataMines_DataCove() = default;
+	};
+
 	class Platformer_MapNames_DataMines_DataMines : public LocalizedString
 	{
 	public:

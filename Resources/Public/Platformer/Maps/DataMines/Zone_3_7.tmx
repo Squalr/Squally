@@ -267,6 +267,7 @@
   </object>
   <object id="1888" name="spawn" type="object" x="831.333" y="1319.33" width="128" height="128">
    <properties>
+    <property name="map-banner" value="data-cove"/>
     <property name="transition" value="charter-ship"/>
    </properties>
   </object>
@@ -553,6 +554,7 @@
   </object>
   <object id="1698" name="spawn" type="object" x="3984.55" y="1520.79" width="128" height="128">
    <properties>
+    <property name="map-banner" value="data-cove"/>
     <property name="transition" value="tiger-right"/>
    </properties>
   </object>

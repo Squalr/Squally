@@ -82,6 +82,7 @@ DeveloperScene::DeveloperScene()
 	- Mounts should apply to helpers so they aren't awkwardly lagging behind
 	- Squally auto crouch in mine carts
 	- Hexus:
+		- Rematch dialog does not load unless map is reloaded
 		- Add a "Stack" pile, and PUSH/POP cards. PUSH = Move any card (even enemy) to stack. POP = Overwrite card attack
 			- Move 'cards to play/draw' indicators to the left side. Shift graveyard down, stack above it.
 		- Win a hexus puzzle, next one will show massive row score deltas
@@ -281,7 +282,8 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (DM)", MapResources::DataMines_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
 
-		// ================== TODO ================== 
+		// ================== TODO ==================
+		// Maybe hint to use 'or' on shadow bomb
 		// Earth golem cast anim kinda shit
 		// Earth elem cast anim shit
 		// Double check green light defaults on DM xor puzzle

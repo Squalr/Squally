@@ -39,7 +39,7 @@ using namespace cocos2d;
 const std::string Blind::BlindIdentifier = "blind";
 
 const float Blind::Duration = 60.0f;
-const int Blind::MaxDamage = 25;
+const int Blind::MaxMultiplier = 5;
 
 Blind* Blind::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -138,8 +138,8 @@ void Blind::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* dam
 	this->applyBlind();
 
 	*damageOrHealing->damageOrHealing = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
-	*damageOrHealing->damageOrHealingMin = -Blind::MaxDamage;
-	*damageOrHealing->damageOrHealingMax = Blind::MaxDamage;
+	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * Blind::MaxMultiplier);
+	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * Blind::MaxMultiplier);
 }
 
 NO_OPTIMIZE void Blind::applyBlind()

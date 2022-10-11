@@ -35,5 +35,5 @@ private:
 	cocos2d::Sprite* spellAura = nullptr;
 	
 	static const float Duration;
-	static const int MaxDamage;
+	static const int MaxMultiplier;
 };
