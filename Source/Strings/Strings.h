@@ -10134,10 +10134,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_CallOfTheAncients_RegisterEdx() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentDamageReduce : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentDamageReduce* create();
+		static Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentCompare* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10145,14 +10145,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentDamageReduce();
-		virtual ~Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentDamageReduce() = default;
+		Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentCompare();
+		virtual ~Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentCompare() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentIncreaseInstead : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentSkipped : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentIncreaseInstead* create();
+		static Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentSkipped* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10160,38 +10160,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentIncreaseInstead();
-		virtual ~Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentIncreaseInstead() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentRegister : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentRegister* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentRegister();
-		virtual ~Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentRegister() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentTryChanging : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentTryChanging* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentTryChanging();
-		virtual ~Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentTryChanging() = default;
+		Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentSkipped();
+		virtual ~Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentSkipped() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_DefensiveStance_DefensiveStance : public LocalizedString
@@ -12039,216 +12009,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Generic_Bitwise_CommentBitwise() = default;
 	};
 
-	class Menus_Hacking_Abilities_Generic_Cmov_CommentC : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Generic_Cmov_CommentC* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Generic_Cmov_CommentC();
-		virtual ~Menus_Hacking_Abilities_Generic_Cmov_CommentC() = default;
-	};
-
-	class Menus_Hacking_Abilities_Generic_Cmov_CommentCmove : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Generic_Cmov_CommentCmove* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Generic_Cmov_CommentCmove();
-		virtual ~Menus_Hacking_Abilities_Generic_Cmov_CommentCmove() = default;
-	};
-
-	class Menus_Hacking_Abilities_Generic_Cmov_CommentCmovg : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Generic_Cmov_CommentCmovg* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Generic_Cmov_CommentCmovg();
-		virtual ~Menus_Hacking_Abilities_Generic_Cmov_CommentCmovg() = default;
-	};
-
-	class Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge();
-		virtual ~Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge() = default;
-	};
-
-	class Menus_Hacking_Abilities_Generic_Cmov_CommentCmovl : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Generic_Cmov_CommentCmovl* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Generic_Cmov_CommentCmovl();
-		virtual ~Menus_Hacking_Abilities_Generic_Cmov_CommentCmovl() = default;
-	};
-
-	class Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle();
-		virtual ~Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle() = default;
-	};
-
-	class Menus_Hacking_Abilities_Generic_Cmov_CommentCmovne : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Generic_Cmov_CommentCmovne* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Generic_Cmov_CommentCmovne();
-		virtual ~Menus_Hacking_Abilities_Generic_Cmov_CommentCmovne() = default;
-	};
-
-	class Menus_Hacking_Abilities_Generic_Cmov_CommentE : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Generic_Cmov_CommentE* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Generic_Cmov_CommentE();
-		virtual ~Menus_Hacking_Abilities_Generic_Cmov_CommentE() = default;
-	};
-
-	class Menus_Hacking_Abilities_Generic_Cmov_CommentG : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Generic_Cmov_CommentG* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Generic_Cmov_CommentG();
-		virtual ~Menus_Hacking_Abilities_Generic_Cmov_CommentG() = default;
-	};
-
-	class Menus_Hacking_Abilities_Generic_Cmov_CommentGe : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Generic_Cmov_CommentGe* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Generic_Cmov_CommentGe();
-		virtual ~Menus_Hacking_Abilities_Generic_Cmov_CommentGe() = default;
-	};
-
-	class Menus_Hacking_Abilities_Generic_Cmov_CommentL : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Generic_Cmov_CommentL* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Generic_Cmov_CommentL();
-		virtual ~Menus_Hacking_Abilities_Generic_Cmov_CommentL() = default;
-	};
-
-	class Menus_Hacking_Abilities_Generic_Cmov_CommentLe : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Generic_Cmov_CommentLe* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Generic_Cmov_CommentLe();
-		virtual ~Menus_Hacking_Abilities_Generic_Cmov_CommentLe() = default;
-	};
-
-	class Menus_Hacking_Abilities_Generic_Cmov_CommentMov : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Generic_Cmov_CommentMov* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Generic_Cmov_CommentMov();
-		virtual ~Menus_Hacking_Abilities_Generic_Cmov_CommentMov() = default;
-	};
-
-	class Menus_Hacking_Abilities_Generic_Cmov_CommentNe : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Generic_Cmov_CommentNe* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Generic_Cmov_CommentNe();
-		virtual ~Menus_Hacking_Abilities_Generic_Cmov_CommentNe() = default;
-	};
-
 	class Menus_Hacking_Abilities_Generic_CommentBreak : public LocalizedString
 	{
 	public:
@@ -12412,6 +12172,321 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Generic_Common_CommentQword();
 		virtual ~Menus_Hacking_Abilities_Generic_Common_CommentQword() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentC : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentC* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentC();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentC() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentCmove : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentCmove* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentCmove();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentCmove() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentCmovg : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentCmovg* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentCmovg();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentCmovg() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentCmovl : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentCmovl* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentCmovl();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentCmovl() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentCmovne : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentCmovne* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentCmovne();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentCmovne() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentE : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentE* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentE();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentE() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentG : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentG* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentG();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentG() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentGe : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentGe* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentGe();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentGe() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentJ : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentJ* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentJ();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentJ() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentJe : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentJe* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentJe();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentJe() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentJg : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentJg* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentJg();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentJg() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentJge : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentJge* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentJge();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentJge() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentJl : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentJl* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentJl();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentJl() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentJle : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentJle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentJle();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentJle() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentJne : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentJne* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentJne();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentJne() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentL : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentL* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentL();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentL() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentLe : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentLe* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentLe();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentLe() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentMov : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentMov* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentMov();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentMov() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentNe : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentNe* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentNe();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentNe() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov : public LocalizedString

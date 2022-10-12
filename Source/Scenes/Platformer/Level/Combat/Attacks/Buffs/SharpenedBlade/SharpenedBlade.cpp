@@ -130,10 +130,10 @@ void SharpenedBlade::registerHackables()
 						"cmp eax, ebx\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentConditionalMov::create()) +
 						"cmovle eax, ebx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentFinale::create()
 							->setStringReplacementVariables({
 								Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(),
@@ -150,10 +150,10 @@ void SharpenedBlade::registerHackables()
 						"cmp rax, rbx\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentConditionalMov::create()) +
 						"cmovle rax, rbx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentFinale::create()
 							->setStringReplacementVariables({
 								Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(),

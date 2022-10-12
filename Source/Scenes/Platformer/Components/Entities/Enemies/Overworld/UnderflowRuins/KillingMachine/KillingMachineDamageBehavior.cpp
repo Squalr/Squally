@@ -144,10 +144,10 @@ void KillingMachineDamageBehavior::onLoad()
 			auto func = &KillingMachineDamageBehavior::compareDamage1;
 			functionPtr = (void*&)func;
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[1];
-			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovl::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentL::create());
+			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovl::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentL::create());
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			break;
 		}
@@ -159,10 +159,10 @@ void KillingMachineDamageBehavior::onLoad()
 			auto func = &KillingMachineDamageBehavior::compareDamage2;
 			functionPtr = (void*&)func;
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[2];
-			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovle::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentLe::create());
+			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create());
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			break;
 		}
@@ -174,10 +174,10 @@ void KillingMachineDamageBehavior::onLoad()
 			auto func = &KillingMachineDamageBehavior::compareDamage3;
 			functionPtr = (void*&)func;
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[3];
-			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmove::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentE::create());
+			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmove::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create());
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintCmove::create();
 			setHintVariables = true;
 			break;
@@ -190,10 +190,10 @@ void KillingMachineDamageBehavior::onLoad()
 			auto func = &KillingMachineDamageBehavior::compareDamage4;
 			functionPtr = (void*&)func;
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[4];
-			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovne::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentNe::create());
+			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovne::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNe::create());
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintCmovne::create();
 			setHintVariables = true;
 			defaultAndCritReversed = true;
@@ -207,10 +207,10 @@ void KillingMachineDamageBehavior::onLoad()
 			auto func = &KillingMachineDamageBehavior::compareDamage5;
 			functionPtr = (void*&)func;
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[5];
-			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovg::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentG::create());
+			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovg::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentG::create());
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			probabilityReversed = true;
 			break;
@@ -223,10 +223,10 @@ void KillingMachineDamageBehavior::onLoad()
 			auto func = &KillingMachineDamageBehavior::compareDamage6;
 			functionPtr = (void*&)func;
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[6];
-			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentGe::create());
+			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create());
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			probabilityReversed = true;
 			break;

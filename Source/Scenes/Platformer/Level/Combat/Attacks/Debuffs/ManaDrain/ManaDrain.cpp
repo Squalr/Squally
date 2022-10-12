@@ -125,10 +125,10 @@ void ManaDrain::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create())) +
 						"cmovge esi, edx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentGe::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale::create()) +
 						"\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint::create()
@@ -139,10 +139,10 @@ void ManaDrain::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create())) +
 						"cmovge rsi, rdx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentCmovge::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentC::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Cmov_CommentGe::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale::create()) +
 						"\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint::create()

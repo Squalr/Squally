@@ -378,17 +378,17 @@ DeveloperScene::DeveloperScene()
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
 		X Thug					1_x		=> jmp 			--
-		- Barbarian				1_x		=> J[E]CXZ		%[E]CX = 0
-		- ReanimatedFighter		1_x		=> J[N]E/Z		ZF
-		- WereWolf				dark	=> J[N]P[E]		PF		// Odd or even! PF = 0 odd. All combinations valid except JNPE
-		- Wraith				dark	=> J[N]S		SF		// Sign flag set if the FIRST operand is negative. Can be used to block negative damage.
-		- Reaper				dark	=> J[N]O		OF
-		- Vampiress				dark	=> J[N]G[E]		ZF/SF/OF
-		- VampireLord			dark	=> J[N]L[E]		ZF/SF/OF
-		- Abomination			2_x		=> J[N]B[E]		ZF/OF
-		- SkeletalBaron			2_x		=> J[N]A[E]		ZF/OF
-		- Jack					2_x		=> J[N]C		CF		// Immortality. Copy undying logic, but include a subtract.
-		- [B] Agnes				2_x 	=> 
+		X Barbarian				1_x		=> jle			ZF/SF/OF
+		- ReanimatedFighter		1_x		=> jg			ZF/SF/OF
+		- WereWolf				dark	=> jl			ZF/SF/OF
+		- Wraith				dark	=> jge			ZF/SF/OF
+		- Reaper				dark	=> je			ZF/SF/OF
+		- Vampiress				dark	=> jne			ZF/SF/OF
+		- VampireLord			dark	=> jz			ZF/SF/OF
+		- Abomination			2_x		=> jnz			ZF/SF/OF
+		- SkeletalBaron			2_x		=> js			SF		// Sign flag set if the FIRST operand is negative. Can be used to block negative damage.
+		- Jack					2_x		=> jns			SF		// Sign flag set if the FIRST operand is positive. Can be used to block positive damage.
+		- [B] Agnes				2_x 	=> jecxz		%ecx == 0
 		
 		- Garin					=> Town_Train
 		- Mabel					=> Study (H_1)
@@ -452,7 +452,7 @@ DeveloperScene::DeveloperScene()
 		- Abomination			=>  
 		- Assassin				=>  
 		- BoneFiend				=>  
-		- BoneKnight				=>  
+		- BoneKnight			=>  
 		- Hunter				=>  
 		- ZombieElric			=>  
 		- ReanimatedPig			=>  
@@ -582,17 +582,17 @@ DeveloperScene::DeveloperScene()
 		// 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
 
 		/*
-		- PenguinGrunt		1_x		=> jmp 			--
-		- PenguinWarrior	1_x		=> J[E]CXZ		%[E]CX = 0
-		- Viking			1_x		=> J[N]E/Z		ZF
-		- IceGolem			2_x		=> J[N]P[E]		PF		// Odd or even! PF = 0 odd. All combinations valid except JNPE
-		- Yeti				2_x		=> J[N]S		SF		// Sign flag set if the FIRST operand is negative. Can be used to block negative damage.
-		- WaterElemental	2_x		=> J[N]O		OF
-		- FrostFiend		2_x 	=> J[N]G[E]		ZF/SF/OF
-		- GoblinElf			3_x		=> J[N]L[E]		ZF/SF/OF
-		- ToySoldierGoblin	3_x		=> J[N]B[E]		ZF/OF
-		- SnowFiend			3_x		=> J[N]A[E]		ZF/OF
-		- [B?] Santa		3_x		=> J[N]C		CF		// Immortality. Copy undying logic, but include a subtract.
+		- PenguinGrunt		1_x		=> jnp			PF		// Odd or even! PF = 0 odd. All combinations valid except JNPE
+		- PenguinWarrior	1_x		=> jp			PF		// Odd or even! PF = 0 odd. All combinations valid except JNPE
+		- Viking			1_x		=> jpe			PF		// Odd or even! PF = 0 odd. All combinations valid except JNPE
+		- IceGolem			2_x		=> J[N]C		CF		// Immortality. Copy undying logic, but include a subtract.
+		- Yeti				2_x		=> J[N]C		CF		// Immortality. Copy undying logic, but include a subtract.
+		- WaterElemental	2_x		=> jno			OF
+		- FrostFiend		2_x 	=> jo			OF
+		- GoblinElf			3_x		=> jbe			ZF/OF
+		- ToySoldierGoblin	3_x		=> jb			ZF/OF
+		- SnowFiend			3_x		=> jae			ZF/OF
+		- [B?] Santa		3_x		=> ja			ZF/OF
 		- [B] Cryogen		3_x 	=> 
 
 		- Aspen

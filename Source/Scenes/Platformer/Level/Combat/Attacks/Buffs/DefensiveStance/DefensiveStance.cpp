@@ -127,21 +127,25 @@ void DefensiveStance::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(DefensiveStance::DamageReduction)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentTryChanging::create()) + 
-						"sub ebx, 3\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentCompare::create()) +
+						"cmp ecx, 5\n"
+						"jle doNothing\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentSkipped::create()) +
+						"mov ecx, 1\n\n" +
+						"doNothing:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJle::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(DefensiveStance::DamageReduction)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentTryChanging::create()) + 
-						"sub rbx, 3\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentCompare::create()) +
+						"cmp rcx, 5\n"
+						"jle doNothing\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentSkipped::create()) +
+						"mov rcx, 1\n\n" +
+						"doNothing:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJle::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create())
 					),
 				},
 				true
@@ -179,17 +183,20 @@ NO_OPTIMIZE void DefensiveStance::applyDefensiveStance()
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZCX);
-	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ebx, currentDamageTakenLocal);
+
+	ASM(MOV ZCX, 0)
+	ASM_MOV_REG_VAR(ecx, currentDamageTakenLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_DEFENSIVE_STANCE);
-	ASM(sub ZBX, 3);
+	ASM(cmp ZCX, 5);
+	ASM(jle doNothing);
+	ASM(mov ZCX, 1);
+	ASM(doNothing:);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageTakenLocal, ebx);
+	ASM_MOV_VAR_REG(currentDamageTakenLocal, ecx);
 
-	ASM(pop ZBX);
 	ASM(pop ZCX);
 	ASM_POP_EFLAGS()
 
