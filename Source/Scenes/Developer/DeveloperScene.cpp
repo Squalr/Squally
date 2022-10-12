@@ -181,6 +181,7 @@ DeveloperScene::DeveloperScene()
 		// TODO:
 		// Overworld attacks (Troll / Cyclops swing)
 		// Troll Strength ability seems additive rather than absolute damage
+		// Hot potato debuff for swordsman (dec on target)
 	}
 
 	// CHAPTER 2 - Compare/CMOV/Neg/SHL/SHR + OR Puzzle
@@ -377,9 +378,9 @@ DeveloperScene::DeveloperScene()
 
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
-		X Thug					1_x		=> jmp 			--
-		X Barbarian				1_x		=> jle			ZF/SF/OF
-		- ReanimatedFighter		1_x		=> jg			ZF/SF/OF
+		X Thug					1_x		=> jmp 			--			Heavy blade
+		X Barbarian				1_x		=> jle			ZF/SF/OF	Defensive stance
+		X ReanimatedFighter		1_x		=> jg			ZF/SF/OF	Diseased
 		- WereWolf				dark	=> jl			ZF/SF/OF
 		- Wraith				dark	=> jge			ZF/SF/OF
 		- Reaper				dark	=> je			ZF/SF/OF

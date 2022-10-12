@@ -34,7 +34,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_CURSE_OF_THE_ANCIENTS 1
+#define LOCAL_FUNC_ID_BRITTLE_BONES 1
 
 const std::string BrittleBones::BrittleBonesIdentifier = "brittle-bones";
 const std::string BrittleBones::HackIdentifierBrittleBones = "brittle-bones";
@@ -91,7 +91,7 @@ void BrittleBones::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_CURSE_OF_THE_ANCIENTS,
+			LOCAL_FUNC_ID_BRITTLE_BONES,
 			HackableCode::HackableCodeInfo(
 				BrittleBones::HackIdentifierBrittleBones,
 				Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_BrittleBones::create(),
@@ -158,7 +158,7 @@ NO_OPTIMIZE void BrittleBones::applyBrittleBones()
 
 	ASM_MOV_REG_VAR(eax, currentDamageDealtLocal);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSE_OF_THE_ANCIENTS);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_BRITTLE_BONES);
 	ASM(and ZAX, 7);
 	ASM_NOP16();
 	HACKABLE_CODE_END();

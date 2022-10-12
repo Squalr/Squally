@@ -11679,6 +11679,96 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterXmm3() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_Diseased_CommentCompare : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Diseased_CommentCompare* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Diseased_CommentCompare();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Diseased_CommentCompare() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Diseased_CommentDecreaseDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Diseased_CommentDecreaseDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Diseased_CommentDecreaseDamage();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Diseased_CommentDecreaseDamage() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeat : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeat();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeat() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeatJump : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeatJump* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeatJump();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeatJump() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Diseased_Diseased : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Diseased_Diseased* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Diseased_Diseased();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Diseased_Diseased() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Diseased_Register : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Diseased_Register* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Diseased_Register();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Diseased_Register() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_Fear_Fear : public LocalizedString
 	{
 	public:
