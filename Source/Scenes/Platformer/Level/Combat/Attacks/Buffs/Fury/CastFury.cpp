@@ -26,7 +26,7 @@ CastFury* CastFury::create(float attackDuration, float recoverDuration, Priority
 }
 
 CastFury::CastFury(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_Piggy, priority, AbilityType::Physical, 0, 0, 3, attackDuration, recoverDuration)
+	: super(AttackType::Buff, UIResources::Menus_Icons_SwordGlowRed, priority, AbilityType::Physical, 0, 0, 3, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 

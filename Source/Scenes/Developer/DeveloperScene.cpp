@@ -82,6 +82,7 @@ DeveloperScene::DeveloperScene()
 	- Mounts should apply to helpers so they aren't awkwardly lagging behind
 	- Squally auto crouch in mine carts
 	- Hexus:
+		- * Reduce Hexus fights to 6 per chapter (ignoring VS) (6 * 7 = 42 fights)
 		- Rematch dialog does not load unless map is reloaded
 		- Add a "Stack" pile, and PUSH/POP cards. PUSH = Move any card (even enemy) to stack. POP = Overwrite card attack
 			- Move 'cards to play/draw' indicators to the left side. Shift graveyard down, stack above it.
@@ -316,7 +317,7 @@ DeveloperScene::DeveloperScene()
 		X Skeletal Archer		=> X 3_1 PUSH / POP REG (MULTISHOT debuff - curse of the ancients - damage dealt)
 		X Skeletal Warrior		=> X 3_0 PUSH [REG PTR + offset] / POP [REG PTR + offset] (blessing of the ancients - outgoing damage)
 		X Skeletal Necromancer 	=> X 3_0 PUSH const / POP [REG PTR] (pact of the ancients - health link)
-		- [B] Krampus			=> O 3_3 LEA
+		X [B] Krampus			=> O 3_3 LEA
 
 		X Olive			Zone 1_1 (H_1)
 		X Bonnie		Town_Inn (H_2) (non-vendor)
@@ -364,17 +365,17 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (CV)", MapResources::CastleValgrind_Zone_1_0));
 
 		// ================== TODO ==================
-		// ** Traps: Organ gun, cannon, catapult, ballista, heaven hug
+		// ** Traps: Organ gun, cannon, catapult, ballista, heaven hug (FPU acceptable, given that jmps are pretty much done)
 		// ** Finish maps and corresponding "dark" maps (alternatively a game flag that is toggled to load in the correct layers)
 		// ** Puzzles in dark maps can influence objects in normal maps. Typical inverse world puzzles.
 		// ** Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
+		// ** Needs hexus battles
+		// ** Needs hexus puzzles
 		// WIP flow:
 		// 	- Clock to go to dark side
 		// 	- Study default locked
 		// 	- Key is in the bar or something (maybe the barkeep has a hint about this)
 		// 	- Secret room behind throne room (dark side only, helps make shit easier for me) leading to 2_x zones
-		// ** Needs hexus battles
-		// ** Needs hexus puzzles
 
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
@@ -382,14 +383,14 @@ DeveloperScene::DeveloperScene()
 		X Barbarian				1_x		=> jle			ZF/SF/OF	Defensive stance
 		X ReanimatedFighter		1_x		=> jg			ZF/SF/OF	Diseased
 		O WereWolf				dark	=> jge			ZF/SF/OF	Rabies
-		- Wraith				dark	=> jne			ZF/SF/OF	
-		- Reaper				dark	=> je			ZF/SF/OF	
+		O Wraith				dark	=> jne			ZF/SF/OF	<Spirit, invert rabies as damage buff>
+		- Reaper				dark	=> je			ZF/SF/OF	<AngelFigurine, undying>
 		X Vampiress				dark	=> jl			ZF/SF/OF	Vampirism
-		- VampireLord			dark	=> jz			ZF/SF/OF	
-		- Abomination			2_x		=> jnz			ZF/SF/OF
-		- SkeletalBaron			2_x		=> js			SF			// Sign flag set if the FIRST operand is negative. Can be used to block negative damage.
-		- Jack					2_x		=> jns			SF			// Sign flag set if the FIRST operand is positive. Can be used to block positive damage.
-		- [B] Agnes				2_x 	=> jecxz		%ecx == 0
+		- VampireLord			dark	=> jz			ZF/SF/OF	<SwordGlowBlue, RNG mana steal?>
+		- Abomination			2_x		=> jnz			ZF/SF/OF	<Radiation, RNG per tick to do -5 dmg or something>
+		- SkeletalBaron			2_x		=> jns			SF			<ShieldAdorned, convert damage to healing>
+		- Jack					2_x		=> js			SF			<Dice, RNG per tick? Maybe create pumpkin icon, but idk>
+		- [B] Agnes				2_x 	=> jecxz		%ecx == 0	<Bats, Bat Swarm RNG per tick to attack>
 		
 		- Garin					=> Town_Train
 		- Mabel					=> Study (H_1)
@@ -450,21 +451,20 @@ DeveloperScene::DeveloperScene()
 		// Dual boss with King Zul and Lazarus. Give Lazarus a rez or self rez?
 
 		/*
-		- Abomination			=>  
-		- Assassin				=>  
-		- BoneFiend				=>  
-		- BoneKnight			=>  
-		- Hunter				=>  
-		- ZombieElric			=>  
-		- ReanimatedPig			=>  
-		- Mystic				=>  
-		- Zombie				=>  
-		- Undead				=>  
-		- SkeletalPriestess		=>  
-		- SkeletalKnight		=>  
-		- SkeletalCleaver		=>  
-		- [B] Lazarus			=> 
-		- [B] KingZul			=>  
+		- Assassin				=>  <ThrowingStar, ?>
+		- BoneFiend				=>  <Daze, ?>
+		- BoneKnight			=>  <?, ?>
+		- Hunter				=>  <Crossbow, ?>
+		- ZombieElric			=>  <?, ?>
+		- ReanimatedPig			=>  <Piggy, ?>
+		- Mystic				=>  <VoodooZombie, ?>
+		- Zombie				=>  <Zombie[Grasp], ?>
+		- Undead				=>  <DeadGrasp, ?>
+		- SkeletalPriestess		=>  <Book, ?>
+		- SkeletalKnight		=>  <?, ?>
+		- SkeletalCleaver		=>  <?, ?>
+		- [B] Lazarus			=>	<?, ?>
+		- [B] KingZul			=>  <?, ?>
 
 		- Amelia				=> Town_Church
 		- Azmus					=> Town_Smith
@@ -517,20 +517,20 @@ DeveloperScene::DeveloperScene()
 
 		/*
 		Surface:
-		- DemonRogue			=>  1_X
-		- DemonShaman			=>  1_X
-		- DemonSwordsman		=>  1_X
+		- DemonRogue			=>  1_X		?	<Dice, ?> 
+		- DemonShaman			=>  1_X		?	<?, ?> 
+		- DemonSwordsman		=>  1_X		?	<?, ?> 
 		Caves:
-		- DemonDragon			=>  2_X
-		- DemonGhost			=>  2_X
-		- FireElemental			=>  2_X
-		- LavaGolem				=>  2_X
+		- DemonDragon			=>  2_X		?	<?, ?> 
+		- DemonGhost			=>  2_X		?	<Candle, ?> 
+		- FireElemental			=>  2_X		?	<?, ?> 
+		- LavaGolem				=>  2_X		?	<?, ?> 
 		Surface 2?
-		- DemonArcher			=>  3_X
-		- DemonGrunt			=>  3_X
-		- DemonWarrior			=>  3_X
-		- FireTiger				=>  3_X
-		- [B] Asmodeus			=> 	4_X
+		- DemonArcher			=>  3_X			<?, ?> 
+		- DemonGrunt			=>  3_X		?	<?, ?> 
+		- DemonWarrior			=>  3_X		?	<?, ?> 
+		- FireTiger				=>  3_X		?	<?, ?> 
+		- [B] Asmodeus			=> 	4_X		?	<?, ?> 
 		
 		-----------------
 		
@@ -583,17 +583,17 @@ DeveloperScene::DeveloperScene()
 		// 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
 
 		/*
-		- PenguinGrunt		1_x		=> jnp			PF		// Odd or even! PF = 0 odd. All combinations valid except JNPE
-		- PenguinWarrior	1_x		=> jp			PF		// Odd or even! PF = 0 odd. All combinations valid except JNPE
-		- Viking			1_x		=> jpe			PF		// Odd or even! PF = 0 odd. All combinations valid except JNPE
-		- IceGolem			2_x		=> J[N]C		CF		// Immortality. Copy undying logic, but include a subtract.
-		- Yeti				2_x		=> J[N]C		CF		// Immortality. Copy undying logic, but include a subtract.
-		- WaterElemental	2_x		=> jno			OF
-		- FrostFiend		2_x 	=> jo			OF
-		- GoblinElf			3_x		=> jbe			ZF/OF
-		- ToySoldierGoblin	3_x		=> jb			ZF/OF
-		- SnowFiend			3_x		=> jae			ZF/OF
-		- [B?] Santa		3_x		=> ja			ZF/OF
+		- PenguinGrunt		1_x		=> jnp			PF		<?, ?> // Odd or even! PF = 0 odd. All combinations valid except JNPE
+		- PenguinWarrior	1_x		=> jp			PF		<?, ?> // Odd or even! PF = 0 odd. All combinations valid except JNPE
+		- Viking			1_x		=> jpe			PF		<Anchor, ?> // Odd or even! PF = 0 odd. All combinations valid except JNPE
+		- IceGolem			2_x		=> J[N]C		CF		<Snowflake, ?> // Immortality. Copy undying logic, but include a subtract.
+		- Yeti				2_x		=> J[N]C		CF		<?, ?> // Immortality. Copy undying logic, but include a subtract.
+		- WaterElemental	2_x		=> jno			OF		<SpellImpactBlue, ?>
+		- FrostFiend		2_x 	=> jo			OF		<?, ?> 
+		- GoblinElf			3_x		=> jbe			ZF/OF	<?, ?> 
+		- ToySoldierGoblin	3_x		=> jb			ZF/OF	<?, ?> 
+		- SnowFiend			3_x		=> jae			ZF/OF	<?, ?> 
+		- [B?] Santa		3_x		=> ja			ZF/OF	<ChristmasPresent, ? RNG>
 		- [B] Cryogen		3_x 	=> 
 
 		- Aspen

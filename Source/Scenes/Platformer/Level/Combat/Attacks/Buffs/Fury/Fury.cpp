@@ -56,7 +56,7 @@ Fury* Fury::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Fury::Fury(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Piggy, AbilityType::Physical, BuffData(Fury::Duration, Fury::FuryIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_SwordGlowRed, AbilityType::Physical, BuffData(Fury::Duration, Fury::FuryIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
@@ -112,7 +112,7 @@ void Fury::registerHackables()
 				Fury::FuryIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Fury_Fury::create(),
 				HackableBase::HackBarColor::Green,
-				UIResources::Menus_Icons_Piggy,
+				UIResources::Menus_Icons_SwordGlowRed,
 				LazyNode<HackablePreview>::create([=](){ return FuryGenericPreview::create(); }),
 				{
 					{
