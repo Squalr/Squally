@@ -149,20 +149,22 @@ NO_OPTIMIZE float HeavenHug::getTravelHeight()
 	*travelDistPtr = this->travelDistance;
 	retVal = *travelDistPtr;
 
-	ASM(push ZAX)
+	ASM_PUSH_EFLAGS();
+	ASM(push ZAX);
 
 	ASM_MOV_REG_PTR(ZAX, travelDistPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_TRAVEL_HEIGHT);
-	ASM(fld dword ptr [ZAX])
+	ASM(fld dword ptr [ZAX]);
 	ASM_NOP12();
 	HACKABLE_CODE_END();
 
-	ASM(fstp dword ptr [ZAX])
-	ASM(mov ZAX, [ZAX])
+	ASM(fstp dword ptr [ZAX]);
+	ASM(mov ZAX, [ZAX]);
 	ASM_MOV_VAR_REG(retVal, eax);
 
-	ASM(pop ZAX)
+	ASM(pop ZAX);
+	ASM_POP_EFLAGS();
 
 	HACKABLES_STOP_SEARCH();
 

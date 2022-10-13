@@ -155,6 +155,7 @@ NO_OPTIMIZE void WoodenSpikes::updateSpikes(float dt)
 	elapsedPtr = &this->currentElapsedTimeForSpikeTrigger;
 	deltaTimePtr = &dt;
 
+	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
 	ASM(push ZBX);
 
@@ -172,6 +173,7 @@ NO_OPTIMIZE void WoodenSpikes::updateSpikes(float dt)
 
 	ASM(pop ZAX);
 	ASM(pop ZBX);
+	ASM_POP_EFLAGS();
 
 	HACKABLES_STOP_SEARCH();
 

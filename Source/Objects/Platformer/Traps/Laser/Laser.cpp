@@ -150,6 +150,7 @@ NO_OPTIMIZE void Laser::updateLaser(float dt)
 	countDownPtr = &this->currentLaserCountDown;
 	deltaTimePtr = &dt;
 
+	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
 	ASM(push ZBX);
 
@@ -167,6 +168,7 @@ NO_OPTIMIZE void Laser::updateLaser(float dt)
 
 	ASM(pop ZAX);
 	ASM(pop ZBX);
+	ASM_POP_EFLAGS();
 
 	HACKABLES_STOP_SEARCH();
 }

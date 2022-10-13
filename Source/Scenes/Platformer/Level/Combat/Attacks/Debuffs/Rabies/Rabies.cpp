@@ -11,7 +11,7 @@
 #include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
-#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -37,11 +37,16 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_RABIES 1
 
 const std::string Rabies::RabiesIdentifier = "rabies";
-const std::string Rabies::HackIdentifierRabies = "rabies";
 
-const int Rabies::MaxMultiplier = 6;
-const int Rabies::DamageDelt = 1;
-const float Rabies::Duration = 24.0f;
+// Note: UI sets precision on these to 1 digit
+const float Rabies::MinSpeed = -1.25f;
+const float Rabies::DefaultSpeed = -1.25f;
+const float Rabies::DefaultHackSpeed = -0.5f; // Keep in sync with the asm
+const float Rabies::MaxSpeed = 2.0f;
+const float Rabies::Duration = 6.0f;
+
+// Static to prevent GCC optimization issues
+volatile float Rabies::currentSpeed = 0.0f;
 
 Rabies* Rabies::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -53,11 +58,16 @@ Rabies* Rabies::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Rabies::Rabies(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_PurpleScarabShell, AbilityType::Nature, BuffData(Rabies::Duration, Rabies::RabiesIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Voodoo, AbilityType::Shadow, BuffData(Rabies::Duration, Rabies::RabiesIdentifier))
 {
-	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
+	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
+	this->spellAura = Sprite::create(FXResources::Auras_ChantAura);
+
+	this->spellAura->setColor(Color3B::MAGENTA);
+	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
+	this->addChild(this->spellAura);
 }
 
 Rabies::~Rabies()
@@ -70,6 +80,13 @@ void Rabies::onEnter()
 
 	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellEffect->start();
+
+	this->spellAura->runAction(Sequence::create(
+		FadeTo::create(0.25f, 255),
+		DelayTime::create(0.5f),
+		FadeTo::create(0.25f, 0),
+		nullptr
+	));
 
 	CombatEvents::TriggerHackableCombatCue();
 }
@@ -93,15 +110,20 @@ void Rabies::registerHackables()
 		{
 			LOCAL_FUNC_ID_RABIES,
 			HackableCode::HackableCodeInfo(
-				Rabies::HackIdentifierRabies,
+				Rabies::RabiesIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_Rabies_Rabies::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_PurpleScarabShell,
+				UIResources::Menus_Icons_Voodoo,
 				LazyNode<HackablePreview>::create([=](){ return RabiesGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_Register::create(),
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_Register::create()
+							->setStringReplacementVariables({ ConstantFloat::create(Rabies::MinSpeed, 2), ConstantFloat::create(Rabies::MaxSpeed, 1) })
 					},
+					{
+						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_Register::create()
+							->setStringReplacementVariables(ConstantFloat::create(Rabies::DefaultSpeed, 2))
+					}
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
@@ -110,24 +132,41 @@ void Rabies::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"cmp edx, 1:\n"
-						"jl doNothing\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentDecreaseDamage::create()) +
-						"imul edx, -1\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeat::create()) +
-						"doNothing:\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						"fld dword ptr [eax]\n"
+						"fldz\n"
+						"fcompp\n"
+						"jge reduceSpeed\n"
+						"jmp skipCode\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						"reduceSpeed:\n"
+						"mov dword ptr [esi], -0.5f\n\n"
+						"skipCode:\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeat::create()) +
-						"repeat:\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentDecreaseDamage::create()) +
-						"dec rdx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare::create()) +
-						"cmp rdx, 5\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeatJump::create()) +
-						"jg repeat\n"
-					),
-				},
-				true
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						"fld dword ptr [rax]\n"
+						"fldz\n"
+						"fcompp\n"
+						"jge reduceSpeed\n"
+						"jmp skipCode\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						"reduceSpeed:\n"
+						"mov dword ptr [rsi], -0.5f\n\n"
+						"skipCode:\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+					)
+				}
 			)
 		},
 	};
@@ -141,49 +180,51 @@ void Rabies::registerHackables()
 	}
 }
 
-void Rabies::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void Rabies::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed)
 {
-	super::onBeforeDamageDealt(damageOrHealing);
-
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(Rabies::DamageDelt);
+	super::onModifyTimelineSpeed(speed);
+	
+	this->currentSpeed = *(speed->speed);
 
 	this->applyRabies();
 
-	int min = -std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Rabies::MaxMultiplier);
-	int max = std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Rabies::MaxMultiplier);
-
-	*damageOrHealing->damageOrHealing = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
-	*damageOrHealing->damageOrHealingMin = min;
-	*damageOrHealing->damageOrHealingMax = max;
+	*(speed->speed) = this->currentSpeed;
 }
 
 NO_OPTIMIZE void Rabies::applyRabies()
 {
-	static volatile int currentDamageDealtLocal = 0;
+	static volatile float speedBonus = 0.0f;
+	static volatile float* speedBonusPtr;
+	static volatile float* currentSpeedPtr;
 
-	currentDamageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	speedBonus = 0.0f;
+	speedBonusPtr = &speedBonus;
+	currentSpeedPtr = &this->currentSpeed;
+	
+	ASM_PUSH_EFLAGS();
+	ASM(push ZAX);
+	ASM(push ZSI);
 
-	ASM_PUSH_EFLAGS()
-	ASM(push ZDX);
-
-	ASM(MOV ZDX, 0)
-	ASM_MOV_REG_VAR(edx, currentDamageDealtLocal);
+	ASM_MOV_REG_PTR(ZAX, currentSpeedPtr);
+	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RABIES);
-	ASM(repeat:);
-	ASM(dec ZDX);
-	ASM(cmp ZDX, 5);
-	ASM(jg repeat);
-	ASM_NOP16();
+	ASM(fld dword ptr [ZAX]);
+	ASM(fldz);
+	ASM(fcompp);
+	ASM(jge reduceSpeed);
+	ASM(jmp skipCode);
+	ASM(reduceSpeed:);
+	ASM(mov dword ptr [ZSI], -0.5f);
+	ASM(skipCode:);
+	ASM_NOP12();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, edx);
-
-	ASM(pop ZDX);
-	ASM_POP_EFLAGS()
-
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
-
+	ASM(pop ZSI);
+	ASM(pop ZAX);
+	ASM_POP_EFLAGS();
 	HACKABLES_STOP_SEARCH();
+
+	this->currentSpeed = MathUtils::clamp(this->currentSpeed + speedBonus, Rabies::MinSpeed, Rabies::MaxSpeed);
 }
 END_NO_OPTIMIZE
