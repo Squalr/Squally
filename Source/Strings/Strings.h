@@ -11934,6 +11934,96 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEsi() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentDecreaseDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentDecreaseDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Rabies_CommentDecreaseDamage();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_CommentDecreaseDamage() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeat : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeat();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeat() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeatJump : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeatJump* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeatJump();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeatJump() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Rabies_Rabies : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Rabies_Rabies* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Rabies_Rabies();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_Rabies() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Rabies_Register : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Rabies_Register* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Rabies_Register();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_Register() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain : public LocalizedString
 	{
 	public:
@@ -12022,6 +12112,81 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLife();
 		virtual ~Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLife() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Vampirism_CommentConvertToHealing : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Vampirism_CommentConvertToHealing* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Vampirism_CommentConvertToHealing();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Vampirism_CommentConvertToHealing() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Vampirism_Register : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Vampirism_Register* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Vampirism_Register();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Vampirism_Register() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Vampirism_Vampirism : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Vampirism_Vampirism* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Vampirism_Vampirism();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Vampirism_Vampirism() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEcx : public LocalizedString

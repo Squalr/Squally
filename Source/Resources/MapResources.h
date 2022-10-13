@@ -21,6 +21,7 @@ namespace MapResources
 	extern const std::string BallmerPeaks_Zone_3_0;
 	extern const std::string BallmerPeaks_Zone_3_1;
 	extern const std::string BallmerPeaks_Zone_3_2;
+	extern const std::string CastleValgrind_Combat_DarkGrass;
 	extern const std::string CastleValgrind_Mages_Warp;
 	extern const std::string CastleValgrind_Study;
 	extern const std::string CastleValgrind_Study_Dark;

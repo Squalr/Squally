@@ -190,11 +190,14 @@ namespace UIResources
 	extern const std::string Menus_Icons_AxeGlowPurple;
 	extern const std::string Menus_Icons_AxeGlowRed;
 	extern const std::string Menus_Icons_AxeGlowYellow;
+	extern const std::string Menus_Icons_AxeMoon;
 	extern const std::string Menus_Icons_AxeSlash;
 	extern const std::string Menus_Icons_Banner;
 	extern const std::string Menus_Icons_BannerRed;
 	extern const std::string Menus_Icons_Bats;
+	extern const std::string Menus_Icons_BearTrap;
 	extern const std::string Menus_Icons_Bell;
+	extern const std::string Menus_Icons_Bite;
 	extern const std::string Menus_Icons_BleedingLimb;
 	extern const std::string Menus_Icons_Blizzard;
 	extern const std::string Menus_Icons_BloodGoblet;
@@ -232,6 +235,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_Currency_GOLD_4;
 	extern const std::string Menus_Icons_DaggerGlowYellow;
 	extern const std::string Menus_Icons_Daze;
+	extern const std::string Menus_Icons_DeadGrasp;
 	extern const std::string Menus_Icons_Diamond;
 	extern const std::string Menus_Icons_Dice;
 	extern const std::string Menus_Icons_Doubloon;
@@ -270,7 +274,9 @@ namespace UIResources
 	extern const std::string Menus_Icons_Heal;
 	extern const std::string Menus_Icons_Health;
 	extern const std::string Menus_Icons_Heart;
+	extern const std::string Menus_Icons_HeartHeal;
 	extern const std::string Menus_Icons_HeartPatchwork;
+	extern const std::string Menus_Icons_HeartPurple;
 	extern const std::string Menus_Icons_HoneyComb;
 	extern const std::string Menus_Icons_HookShot;
 	extern const std::string Menus_Icons_Horn;
@@ -278,6 +284,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_HourGlass2;
 	extern const std::string Menus_Icons_Hourglass3;
 	extern const std::string Menus_Icons_KeyGold;
+	extern const std::string Menus_Icons_Leaf;
 	extern const std::string Menus_Icons_Letter;
 	extern const std::string Menus_Icons_Lightning;
 	extern const std::string Menus_Icons_LightningBolts;
@@ -295,6 +302,8 @@ namespace UIResources
 	extern const std::string Menus_Icons_ManaSpear;
 	extern const std::string Menus_Icons_Medals;
 	extern const std::string Menus_Icons_Meteor;
+	extern const std::string Menus_Icons_MonsterBite;
+	extern const std::string Menus_Icons_Moon;
 	extern const std::string Menus_Icons_MoonShine;
 	extern const std::string Menus_Icons_Padlock;
 	extern const std::string Menus_Icons_ParchmentFeather;
@@ -306,6 +315,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_PoisonPool;
 	extern const std::string Menus_Icons_PoisonSpear;
 	extern const std::string Menus_Icons_PoisonSpears;
+	extern const std::string Menus_Icons_PoisonSpider;
 	extern const std::string Menus_Icons_Poisoned;
 	extern const std::string Menus_Icons_Pouch1;
 	extern const std::string Menus_Icons_Pouch2;
@@ -316,6 +326,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_PurpleScarabShell;
 	extern const std::string Menus_Icons_Question;
 	extern const std::string Menus_Icons_Quiver;
+	extern const std::string Menus_Icons_Radiation;
 	extern const std::string Menus_Icons_Ring;
 	extern const std::string Menus_Icons_RingDark;
 	extern const std::string Menus_Icons_RobotArm;
@@ -331,6 +342,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_ScrollBlue;
 	extern const std::string Menus_Icons_Shard;
 	extern const std::string Menus_Icons_Shield;
+	extern const std::string Menus_Icons_ShieldAdorned;
 	extern const std::string Menus_Icons_ShieldBroken;
 	extern const std::string Menus_Icons_ShieldBuckler;
 	extern const std::string Menus_Icons_ShieldGlowBlue;
@@ -346,9 +358,11 @@ namespace UIResources
 	extern const std::string Menus_Icons_Skull2;
 	extern const std::string Menus_Icons_SkullAndCrossbones;
 	extern const std::string Menus_Icons_SkullGlowRed;
+	extern const std::string Menus_Icons_SkullLavaEyes;
 	extern const std::string Menus_Icons_Snowflake;
 	extern const std::string Menus_Icons_Spear;
 	extern const std::string Menus_Icons_SpearTip;
+	extern const std::string Menus_Icons_SpellBind;
 	extern const std::string Menus_Icons_SpellCast;
 	extern const std::string Menus_Icons_SpellFire;
 	extern const std::string Menus_Icons_SpellImpactBlue;
@@ -356,6 +370,8 @@ namespace UIResources
 	extern const std::string Menus_Icons_SpellImpactRed;
 	extern const std::string Menus_Icons_SpellImpactWhite;
 	extern const std::string Menus_Icons_SpellWind;
+	extern const std::string Menus_Icons_SpiderWeb;
+	extern const std::string Menus_Icons_SpikedBomb;
 	extern const std::string Menus_Icons_Spirit;
 	extern const std::string Menus_Icons_Stab;
 	extern const std::string Menus_Icons_Star;
@@ -376,17 +392,22 @@ namespace UIResources
 	extern const std::string Menus_Icons_SwordsLight;
 	extern const std::string Menus_Icons_ThrowingStar;
 	extern const std::string Menus_Icons_ThunderBoltBlue;
+	extern const std::string Menus_Icons_Tombstone;
 	extern const std::string Menus_Icons_Tools;
 	extern const std::string Menus_Icons_Torch;
 	extern const std::string Menus_Icons_Tornado;
 	extern const std::string Menus_Icons_TreasureChest;
+	extern const std::string Menus_Icons_Turret;
 	extern const std::string Menus_Icons_Voodoo;
+	extern const std::string Menus_Icons_VoodooZombie;
 	extern const std::string Menus_Icons_Wand;
 	extern const std::string Menus_Icons_WandCrystal;
 	extern const std::string Menus_Icons_WandGlowYellow;
 	extern const std::string Menus_Icons_WandSkeleton;
 	extern const std::string Menus_Icons_WheelBurrow;
 	extern const std::string Menus_Icons_YinYang;
+	extern const std::string Menus_Icons_Zombie;
+	extern const std::string Menus_Icons_ZombieGrasp;
 	extern const std::string Menus_InventoryMenu_AllIcon;
 	extern const std::string Menus_InventoryMenu_Arrow;
 	extern const std::string Menus_InventoryMenu_ConsumablesIcon;

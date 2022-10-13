@@ -171,7 +171,7 @@ NO_OPTIMIZE void Diseased::applyDiseased()
 	ASM(MOV ZDX, 0)
 	ASM_MOV_REG_VAR(edx, currentDamageDealtLocal);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_DEFENSIVE_STANCE);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_DISEASED);
 	ASM(repeat:);
 	ASM(dec ZDX);
 	ASM(cmp ZDX, 5);

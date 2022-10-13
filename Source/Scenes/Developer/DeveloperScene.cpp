@@ -381,11 +381,11 @@ DeveloperScene::DeveloperScene()
 		X Thug					1_x		=> jmp 			--			Heavy blade
 		X Barbarian				1_x		=> jle			ZF/SF/OF	Defensive stance
 		X ReanimatedFighter		1_x		=> jg			ZF/SF/OF	Diseased
-		- WereWolf				dark	=> jl			ZF/SF/OF
+		- WereWolf				dark	=> jne			ZF/SF/OF	Bite
 		- Wraith				dark	=> jge			ZF/SF/OF
 		- Reaper				dark	=> je			ZF/SF/OF
-		- Vampiress				dark	=> jne			ZF/SF/OF
-		- VampireLord			dark	=> jz			ZF/SF/OF
+		- Vampiress				dark	=> jl			ZF/SF/OF	Vampirism
+		- VampireLord			dark	=> jz			ZF/SF/OF	
 		- Abomination			2_x		=> jnz			ZF/SF/OF
 		- SkeletalBaron			2_x		=> js			SF		// Sign flag set if the FIRST operand is negative. Can be used to block negative damage.
 		- Jack					2_x		=> jns			SF		// Sign flag set if the FIRST operand is positive. Can be used to block positive damage.
