@@ -177,7 +177,7 @@
   <object id="790" name="Castle/RailingLong" type="decor" x="3483.26" y="1720.7" width="564" height="307"/>
   <object id="791" name="gate" type="object" x="3055.17" y="1604.18" width="450.603" height="423.038">
    <properties>
-    <property name="map" value="CastleValgrind/Zone1_2"/>
+    <property name="map" value="CastleValgrind/Zone_1_1"/>
     <property name="transition" value="gate"/>
    </properties>
   </object>
@@ -234,7 +234,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="barbarian" type="entity" x="2617.37" y="1902.63" width="128" height="128">
+  <object id="692" name="reanimated-fighter" type="entity" x="2617.37" y="1902.63" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
