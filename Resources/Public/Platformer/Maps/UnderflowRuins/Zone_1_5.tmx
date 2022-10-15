@@ -7,7 +7,7 @@
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
    <property name="music" value="heartbeat"/>
-   <property name="rubber-band" type="int" value="7"/>
+   <property name="rubber-band" type="int" value="6"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
@@ -153,9 +153,6 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1043" name="caverns" type="terrain" x="288.269" y="1560" width="2745.55" height="1528">
-   <properties>
-    <property name="rubber-band" type="int" value="6"/>
-   </properties>
   </object>
  </objectgroup>
  <objectgroup id="152" name="terrain fg">

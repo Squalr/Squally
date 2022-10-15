@@ -393,16 +393,16 @@ DeveloperScene::DeveloperScene()
 		- [B] Agnes				2_x 	=> jecxz		%ecx == 0	<Bats, Bat Swarm RNG per tick to attack>
 		
 		- Garin					=> Town_Train
-		- Mabel					=> Study (H_1)
-		- Gaunt					=> Main (H_2)
-		- Rogas					=> Main (H_3)
+		- Rogas					=> 1_x (H_1)
+		- Mabel					=> Study (H_2)
+		- Gaunt					=> Main (H_3)
 		- Tyracius				=> Main (H_4)
 		- Zana					=> Main_Dark (H_5)
 		- Atreus				=> Main (H_6)
-		- Illia					=> Main (H_7)
-		- Leon					=> Main (H_8)
+		- Illia					=> Main
+		- Leon					=> Dark_Town_Throne  (Leroy?)
 		- Princess Opal			=> Town_Throne
-		- Leroy					=> ?
+		- Leroy					=> Town_Throne (Leon?)
 		- King Redsong			=> Dark_Town_Throne
 		- King Redsong Slime	=> Town_Throne
 		- Leopold				=> Town_Alch
