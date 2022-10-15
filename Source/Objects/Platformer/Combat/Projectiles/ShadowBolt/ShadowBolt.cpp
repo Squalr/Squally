@@ -117,12 +117,12 @@ void ShadowBolt::registerHackables()
 						Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_StopShadowBolt::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_CommentSpeed::create()) + 
-						"mov dword ptr [eax], 0.0\n"
+						"mov dword ptr [eax], 0.0f\n"
 						"movss xmm1, dword ptr [eax]\n\n"
 						"mulps xmm0, xmm1"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_CommentSpeed::create()) + 
-						"mov dword ptr [rax], 0.0\n"
+						"mov dword ptr [rax], 0.0f\n"
 						"movss xmm1, dword ptr [rax]\n\n"
 						"mulps xmm0, xmm1"
 					)

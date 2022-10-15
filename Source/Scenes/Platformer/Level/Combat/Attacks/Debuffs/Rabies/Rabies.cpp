@@ -157,7 +157,7 @@ void Rabies::registerHackables()
 						"jmp skipCode\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						"reduceSpeed:\n"
-						"mov qword ptr [rsi], -0.5f\n\n"
+						"mov dword ptr [rsi], -0.5f\n\n"
 						"skipCode:\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
@@ -215,7 +215,7 @@ NO_OPTIMIZE void Rabies::applyRabies()
 	ASM(jge reduceSpeed);
 	ASM(jmp skipCode);
 	ASM(reduceSpeed:);
-	ASM(mov ZWORD() ptr [ZSI], -0.5f);
+	ASM(mov dword ptr [ZSI], 0x500); // TODO: Encode -0.5f in hex
 	ASM(skipCode:);
 	ASM_NOP12();
 	HACKABLE_CODE_END();
