@@ -142,6 +142,45 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[RakaHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)RakaHexusBehavior::create(owner); };
 	this->componentDeserializers[RalstonHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)RalstonHexusBehavior::create(owner); };
 
+	// CV
+	this->componentDeserializers[CVPuzzleABehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)CVPuzzleABehavior::create(owner); };
+	this->componentDeserializers[CVPuzzleBBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)CVPuzzleBBehavior::create(owner); };
+	this->componentDeserializers[CVPuzzleCBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)CVPuzzleCBehavior::create(owner); };
+	this->componentDeserializers[CVPuzzleDBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)CVPuzzleDBehavior::create(owner); };
+	this->componentDeserializers[CVPuzzleEBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)CVPuzzleEBehavior::create(owner); };
+	this->componentDeserializers[CVPuzzleFBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)CVPuzzleFBehavior::create(owner); };
+	this->componentDeserializers[CVPuzzleGBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)CVPuzzleGBehavior::create(owner); };
+
+	// LC
+	this->componentDeserializers[LCPuzzleABehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LCPuzzleABehavior::create(owner); };
+	this->componentDeserializers[LCPuzzleBBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LCPuzzleBBehavior::create(owner); };
+	this->componentDeserializers[LCPuzzleCBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LCPuzzleCBehavior::create(owner); };
+	this->componentDeserializers[LCPuzzleDBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LCPuzzleDBehavior::create(owner); };
+	this->componentDeserializers[LCPuzzleEBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LCPuzzleEBehavior::create(owner); };
+	this->componentDeserializers[LCPuzzleFBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LCPuzzleFBehavior::create(owner); };
+	this->componentDeserializers[LCPuzzleGBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LCPuzzleGBehavior::create(owner); };
+
+	// DH
+	this->componentDeserializers[DHPuzzleABehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DHPuzzleABehavior::create(owner); };
+	this->componentDeserializers[DHPuzzleBBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DHPuzzleBBehavior::create(owner); };
+	this->componentDeserializers[DHPuzzleCBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DHPuzzleCBehavior::create(owner); };
+	this->componentDeserializers[DHPuzzleDBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DHPuzzleDBehavior::create(owner); };
+	this->componentDeserializers[DHPuzzleEBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DHPuzzleEBehavior::create(owner); };
+	this->componentDeserializers[DHPuzzleFBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DHPuzzleFBehavior::create(owner); };
+	this->componentDeserializers[DHPuzzleGBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DHPuzzleGBehavior::create(owner); };
+
+	// BP
+	this->componentDeserializers[BPPuzzleABehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BPPuzzleABehavior::create(owner); };
+	this->componentDeserializers[BPPuzzleBBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BPPuzzleBBehavior::create(owner); };
+	this->componentDeserializers[BPPuzzleCBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BPPuzzleCBehavior::create(owner); };
+	this->componentDeserializers[BPPuzzleDBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BPPuzzleDBehavior::create(owner); };
+	this->componentDeserializers[BPPuzzleEBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BPPuzzleEBehavior::create(owner); };
+	this->componentDeserializers[BPPuzzleFBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BPPuzzleFBehavior::create(owner); };
+	this->componentDeserializers[BPPuzzleGBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BPPuzzleGBehavior::create(owner); };
+	
+	// VS
+	this->componentDeserializers[VSPuzzleABehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)VSPuzzleABehavior::create(owner); };
+	
 	/*********************
 		ENTITIES / OVERWORLD
 	*********************/
