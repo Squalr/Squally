@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="82" nextobjectid="1005">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="82" nextobjectid="1005">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -156,7 +156,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1001" name="shaman" type="entity" x="565.202" y="2486.33" width="128" height="128">
+  <object id="1001" name="shaman" type="entity" x="508.325" y="2481.16" width="128" height="128">
    <properties>
     <property name="components" value="friendly,disarmed,dm-puzzle-B"/>
     <property name="tag" value="hexus-shaman"/>
