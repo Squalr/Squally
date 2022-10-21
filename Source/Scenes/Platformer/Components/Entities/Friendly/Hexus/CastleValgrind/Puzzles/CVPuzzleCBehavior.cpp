@@ -64,11 +64,11 @@ StateOverride* CVPuzzleCBehavior::getStateOverride()
 		// Enemy losses
 		1,
 		// Player's turn
-		true,
+		false,
 		// Player passed
-		true,
+		false,
 		// Enemy passed
-		true,
+		false,
 		// Player deck
 		std::vector<CardData*>
 		{
@@ -82,7 +82,7 @@ StateOverride* CVPuzzleCBehavior::getStateOverride()
 		// Player graveyard
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
 		},
 		// Enemy graveyard
 		std::vector<CardData*>
@@ -92,11 +92,15 @@ StateOverride* CVPuzzleCBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+			CardList::getInstance()->cardListByName.at(CardKeys::Push),
+			CardList::getInstance()->cardListByName.at(CardKeys::Pop),
 		},
 		// Enemy hand
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 		},
 		// Player binary cards
 		std::vector<CardData*>
@@ -105,23 +109,27 @@ StateOverride* CVPuzzleCBehavior::getStateOverride()
 		// Player decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
 		},
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary12),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
 		}
 	);
 }
