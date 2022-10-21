@@ -79,6 +79,16 @@ StateOverride* DMPuzzleCBehavior::getStateOverride()
 		{
 			
 		},
+		// Player graveyard
+		std::vector<CardData*>
+		{
+			
+		},
+		// Enemy graveyard
+		std::vector<CardData*>
+		{
+			
+		},
 		// Player hand
 		std::vector<CardData*>
 		{

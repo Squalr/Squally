@@ -78,6 +78,16 @@ StateOverride* TutorialCBehavior::getStateOverride()
 		std::vector<CardData*>
 		{
 		},
+		// Player graveyard
+		std::vector<CardData*>
+		{
+			
+		},
+		// Enemy graveyard
+		std::vector<CardData*>
+		{
+			
+		},
 		// Player hand
 		std::vector<CardData*>
 		{

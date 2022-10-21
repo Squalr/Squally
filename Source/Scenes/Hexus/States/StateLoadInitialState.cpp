@@ -72,6 +72,11 @@ void StateLoadInitialState::loadStateOverrides(GameState* gameState, StateOverri
 		gameState->playerHand->insertCard(Card::create(Card::CardStyle::Earth, next, true), 0.0f);
 	}
 
+	for (CardData* next : stateOverride->playerGraveyard)
+	{
+		gameState->playerGraveyard->insertCardBottom(Card::create(Card::CardStyle::Earth, next, true), false, 0.0f);
+	}
+
 	for (CardData* next : stateOverride->playerDeck)
 	{
 		gameState->playerDeck->insertCardBottom(Card::create(Card::CardStyle::Earth, next, true), false, 0.0f);
@@ -96,6 +101,11 @@ void StateLoadInitialState::loadStateOverrides(GameState* gameState, StateOverri
 	for (CardData* next : stateOverride->enemyHand)
 	{
 		gameState->enemyHand->insertCard(Card::create(Card::CardStyle::Shadow, next, false), 0.0f);
+	}
+
+	for (CardData* next : stateOverride->enemyGraveyard)
+	{
+		gameState->enemyGraveyard->insertCardBottom(Card::create(Card::CardStyle::Shadow, next, false), false, 0.0f);
 	}
 
 	for (CardData* next : stateOverride->enemyDeck)

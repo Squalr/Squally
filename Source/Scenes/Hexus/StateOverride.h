@@ -17,6 +17,8 @@ public:
 		bool enemyPassed,
 		std::vector<CardData*> playerDeck,
 		std::vector<CardData*> enemyDeck,
+		std::vector<CardData*> playerGraveyard,
+		std::vector<CardData*> enemyGraveyard,
 		std::vector<CardData*> playerHand,
 		std::vector<CardData*> enemyHand,
 		std::vector<CardData*> playerBinaryCards,
@@ -35,6 +37,8 @@ public:
 	bool enemyPassed = 0;
 	std::vector<CardData*> playerDeck;
 	std::vector<CardData*> enemyDeck;
+	std::vector<CardData*> playerGraveyard;
+	std::vector<CardData*> enemyGraveyard;
 	std::vector<CardData*> playerHand;
 	std::vector<CardData*> enemyHand;
 	std::vector<CardData*> playerBinaryCards;
@@ -55,6 +59,8 @@ protected:
 		bool enemyPassed,
 		std::vector<CardData*> playerDeck,
 		std::vector<CardData*> enemyDeck,
+		std::vector<CardData*> playerGraveyard,
+		std::vector<CardData*> enemyGraveyard,
 		std::vector<CardData*> playerHand,
 		std::vector<CardData*> enemyHand,
 		std::vector<CardData*> playerBinaryCards,
