@@ -550,6 +550,10 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		}
 		case CardData::CardType::Special_POP:
 		{
+			// Move to bottom of graveyard, so that pop cards can be chained (otherwise pop would just restore pop...)
+			selfHand->removeCard(gameState->selectedHandCard);
+			selfGraveyard->insertCardBottom(gameState->selectedHandCard, true, HexusConfig::insertDelay);
+
 			if (selfGraveyard->hasCards())
 			{
 				Card* revivedCard = selfGraveyard->removeCard(selfGraveyard->deckCards.back());

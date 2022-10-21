@@ -186,8 +186,8 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 			{
 				if (gameState->enemyGraveyard->getCardCount() > 0)
 				{
-					// Reviving attack cards is good. Reviving special cards only helps if there are more rounds left.
-					if (gameState->enemyGraveyard->deckCards.back()->cardData->isAttackCard() || gameState->roundNumber <= 1)
+					// Reviving attack cards is good. Reviving special cards only helps if there are more rounds/plays left.
+					if (gameState->enemyGraveyard->deckCards.back()->cardData->isAttackCard() || gameState->roundNumber <= 1 || gameState->playableCardsThisTurn > 1)
 					{
 						gameState->selectedHandCard = card;
 						return;
