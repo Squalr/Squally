@@ -84,8 +84,6 @@ DeveloperScene::DeveloperScene()
 	- Hexus:
 		- * Reduce Hexus fights to 6 per chapter (ignoring VS) (6 * 7 = 42 fights)
 		- Rematch dialog does not load unless map is reloaded
-		- Add a "Stack" pile, and PUSH/POP cards. PUSH = Move any card (even enemy) to stack. POP = Overwrite card attack
-			- Move 'cards to play/draw' indicators to the left side. Shift graveyard down, stack above it.
 		- Win a hexus puzzle, next one will show massive row score deltas
 		- Leave button stuck visible after losing a puzzle
 		- Enemy should pre-calc the best play when player has passed (hard)
