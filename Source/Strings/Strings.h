@@ -2799,6 +2799,36 @@ namespace Strings
 		virtual ~Hexus_Cards_Abbreviations_OR() = default;
 	};
 
+	class Hexus_Cards_Abbreviations_POP : public LocalizedString
+	{
+	public:
+		static Hexus_Cards_Abbreviations_POP* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_Cards_Abbreviations_POP();
+		virtual ~Hexus_Cards_Abbreviations_POP() = default;
+	};
+
+	class Hexus_Cards_Abbreviations_PUSH : public LocalizedString
+	{
+	public:
+		static Hexus_Cards_Abbreviations_PUSH* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_Cards_Abbreviations_PUSH();
+		virtual ~Hexus_Cards_Abbreviations_PUSH() = default;
+	};
+
 	class Hexus_Cards_Abbreviations_ROL : public LocalizedString
 	{
 	public:

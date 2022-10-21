@@ -113,11 +113,17 @@ LocalizedString* CardData::getCardTypeString()
 		{
 			return Strings::Hexus_Cards_Abbreviations_SUB::create();
 		}
+		case CardData::CardType::Special_PUSH:
+		{
+			return Strings::Hexus_Cards_Abbreviations_PUSH::create();
+		}
+		case CardData::CardType::Special_POP:
+		{
+			return Strings::Hexus_Cards_Abbreviations_POP::create();
+		}
 		case CardData::CardType::Special_SUDDEN_DEATH:
 		case CardData::CardType::Special_GREED:
 		case CardData::CardType::Special_ABSORB:
-		case CardData::CardType::Special_PUSH:
-		case CardData::CardType::Special_POP:
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		case CardData::CardType::Special_STEAL:
 		case CardData::CardType::Special_BONUS_MOVES:

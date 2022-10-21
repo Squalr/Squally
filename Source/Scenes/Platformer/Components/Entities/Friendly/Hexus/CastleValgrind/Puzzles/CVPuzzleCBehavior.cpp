@@ -82,7 +82,7 @@ StateOverride* CVPuzzleCBehavior::getStateOverride()
 		// Player graveyard
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
 		},
 		// Enemy graveyard
 		std::vector<CardData*>
@@ -109,7 +109,7 @@ StateOverride* CVPuzzleCBehavior::getStateOverride()
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal12),
 		},
 		// Player hex cards
 		std::vector<CardData*>
