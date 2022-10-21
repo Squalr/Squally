@@ -136,12 +136,13 @@ namespace HexusResources
 	extern const std::string Special_Flip4;
 	extern const std::string Special_Greed;
 	extern const std::string Special_Inverse;
-	extern const std::string Special_Kill;
 	extern const std::string Special_LogicalAnd;
 	extern const std::string Special_LogicalOr;
 	extern const std::string Special_LogicalXor;
 	extern const std::string Special_Mov;
 	extern const std::string Special_Peek;
+	extern const std::string Special_Pop;
+	extern const std::string Special_Push;
 	extern const std::string Special_ReturnToHand;
 	extern const std::string Special_ShiftLeft;
 	extern const std::string Special_ShiftLeftCircular;

@@ -56,7 +56,8 @@ public:
 	static const std::string SuddenDeath;
 	static const std::string Greed;
 	static const std::string Absorb;
-	static const std::string Kill;
+	static const std::string Push;
+	static const std::string Pop;
 	static const std::string ReturnToHand;
 	static const std::string Steal;
 	static const std::string BonusMoves;

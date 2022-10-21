@@ -59,10 +59,11 @@
 #include "Scenes/Hexus/CardData/Special/CardFlip4.h"
 #include "Scenes/Hexus/CardData/Special/CardGreed.h"
 #include "Scenes/Hexus/CardData/Special/CardInverse.h"
-#include "Scenes/Hexus/CardData/Special/CardKill.h"
 #include "Scenes/Hexus/CardData/Special/CardLogicalAnd.h"
 #include "Scenes/Hexus/CardData/Special/CardLogicalOr.h"
 #include "Scenes/Hexus/CardData/Special/CardLogicalXor.h"
+#include "Scenes/Hexus/CardData/Special/CardPop.h"
+#include "Scenes/Hexus/CardData/Special/CardPush.h"
 #include "Scenes/Hexus/CardData/Special/CardMov.h"
 #include "Scenes/Hexus/CardData/Special/CardPeek.h"
 #include "Scenes/Hexus/CardData/Special/CardReturnToHand.h"
@@ -162,7 +163,8 @@ CardList::CardList()
 	this->cardListByName[CardKeys::Absorb] = new CardAbsorb();
 	this->cardListByName[CardKeys::BonusMoves] = new CardBonusMoves();
 	this->cardListByName[CardKeys::Greed] = new CardGreed();
-	this->cardListByName[CardKeys::Kill] = new CardKill();
+	this->cardListByName[CardKeys::Push] = new CardPush();
+	this->cardListByName[CardKeys::Pop] = new CardPop();
 	this->cardListByName[CardKeys::Peek] = new CardPeek();
 	this->cardListByName[CardKeys::ReturnToHand] = new CardReturnToHand();
 	this->cardListByName[CardKeys::Steal] = new CardSteal();

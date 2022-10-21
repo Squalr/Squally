@@ -35,6 +35,7 @@ namespace MapResources
 	extern const std::string CastleValgrind_Zone_1_0;
 	extern const std::string CastleValgrind_Zone_1_1;
 	extern const std::string CastleValgrind_Zone_1_2;
+	extern const std::string CastleValgrind_Zone_1_3;
 	extern const std::string CastleValgrind_Zone_2_0;
 	extern const std::string CastleValgrind_Zone_2_1;
 	extern const std::string CastleValgrind_Zone_2_2;

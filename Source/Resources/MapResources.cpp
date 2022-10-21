@@ -34,6 +34,7 @@ const std::string MapResources::CastleValgrind_Town_Train = "Public/Platformer/M
 const std::string MapResources::CastleValgrind_Zone_1_0 = "Public/Platformer/Maps/CastleValgrind/Zone_1_0.tmx";
 const std::string MapResources::CastleValgrind_Zone_1_1 = "Public/Platformer/Maps/CastleValgrind/Zone_1_1.tmx";
 const std::string MapResources::CastleValgrind_Zone_1_2 = "Public/Platformer/Maps/CastleValgrind/Zone_1_2.tmx";
+const std::string MapResources::CastleValgrind_Zone_1_3 = "Public/Platformer/Maps/CastleValgrind/Zone_1_3.tmx";
 const std::string MapResources::CastleValgrind_Zone_2_0 = "Public/Platformer/Maps/CastleValgrind/Zone_2_0.tmx";
 const std::string MapResources::CastleValgrind_Zone_2_1 = "Public/Platformer/Maps/CastleValgrind/Zone_2_1.tmx";
 const std::string MapResources::CastleValgrind_Zone_2_2 = "Public/Platformer/Maps/CastleValgrind/Zone_2_2.tmx";

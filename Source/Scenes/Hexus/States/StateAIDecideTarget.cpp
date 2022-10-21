@@ -91,7 +91,7 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_ROR:
 		case CardData::CardType::Special_NOT:
 		case CardData::CardType::Special_STEAL:
-		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_PUSH:
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		{
 			gameState->selectedDestinationCard = std::get<0>(gameState->cachedBestTargetPlay);
@@ -101,6 +101,7 @@ void StateAIDecideTarget::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_GREED:
 		case CardData::CardType::Special_BONUS_MOVES:
 		case CardData::CardType::Special_PEEK:
+		case CardData::CardType::Special_POP:
 		default:
 		{
 			break;

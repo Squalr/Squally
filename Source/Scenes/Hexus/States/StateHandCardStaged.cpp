@@ -201,7 +201,7 @@ void StateHandCardStaged::initializeSelectablesAndCallbacks(GameState* gameState
 		case CardData::CardType::Special_ROL:
 		case CardData::CardType::Special_ROR:
 		case CardData::CardType::Special_NOT:
-		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_PUSH:
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		{
 			std::vector<Card*> ignoreList = std::vector<Card*>
@@ -228,6 +228,7 @@ void StateHandCardStaged::initializeSelectablesAndCallbacks(GameState* gameState
 		case CardData::CardType::Special_GREED:
 		case CardData::CardType::Special_PEEK:
 		case CardData::CardType::Special_SUDDEN_DEATH:
+		case CardData::CardType::Special_POP:
 		{
 			gameState->boardSelection->enableInteraction();
 			gameState->boardSelection->setMouseClickCallback([=](InputEvents::MouseEventArgs*)

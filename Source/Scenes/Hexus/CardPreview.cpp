@@ -408,9 +408,14 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 					specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Absorb::create());
 					break;
 				}
-				case CardData::CardType::Special_KILL:
+				case CardData::CardType::Special_PUSH:
 				{
-					specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Kill::create());
+					specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Push::create());
+					break;
+				}
+				case CardData::CardType::Special_POP:
+				{
+					specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Pop::create());
 					break;
 				}
 				case CardData::CardType::Special_RETURN_TO_HAND:

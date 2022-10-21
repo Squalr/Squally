@@ -116,7 +116,8 @@ LocalizedString* CardData::getCardTypeString()
 		case CardData::CardType::Special_SUDDEN_DEATH:
 		case CardData::CardType::Special_GREED:
 		case CardData::CardType::Special_ABSORB:
-		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_PUSH:
+		case CardData::CardType::Special_POP:
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		case CardData::CardType::Special_STEAL:
 		case CardData::CardType::Special_BONUS_MOVES:
@@ -189,7 +190,8 @@ LocalizedString* CardData::getCardOperationString()
 		case CardData::CardType::Special_SUDDEN_DEATH:
 		case CardData::CardType::Special_GREED:
 		case CardData::CardType::Special_ABSORB:
-		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_PUSH:
+		case CardData::CardType::Special_POP:
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		case CardData::CardType::Special_STEAL:
 		case CardData::CardType::Special_BONUS_MOVES:
@@ -313,7 +315,8 @@ unsigned int CardData::getIntrinsicImmediate()
 		case CardData::CardType::Special_SUB:
 		case CardData::CardType::Special_GREED:
 		case CardData::CardType::Special_ABSORB:
-		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_PUSH:
+		case CardData::CardType::Special_POP:
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		case CardData::CardType::Special_STEAL:
 		case CardData::CardType::Special_PEEK:

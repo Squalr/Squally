@@ -5,6 +5,7 @@
 
 #include "Scenes/Hexus/CardData/CardKeys.h"
 #include "Scenes/Hexus/CardRow.h"
+#include "Scenes/Hexus/Deck.h"
 #include "Scenes/Hexus/States/HexusAIHelper.h"
 
 using namespace cocos2d;
@@ -181,7 +182,20 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 				
 				break;
 			}
-			case CardData::CardType::Special_KILL:
+			case CardData::CardType::Special_POP:
+			{
+				if (gameState->enemyGraveyard->getCardCount() > 0)
+				{
+					// Reviving attack cards is good. Reviving special cards only helps if there are more rounds left.
+					if (gameState->enemyGraveyard->deckCards.back()->cardData->isAttackCard() || gameState->roundNumber <= 1)
+					{
+						gameState->selectedHandCard = card;
+						return;
+					}
+				}
+				break;
+			}
+			case CardData::CardType::Special_PUSH:
 			case CardData::CardType::Special_STEAL:
 			{
 				std::tuple<Card*, int> bestPlay = HexusAIHelper::getStrongestPlayerCard(gameState);

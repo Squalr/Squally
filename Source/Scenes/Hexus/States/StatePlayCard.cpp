@@ -511,7 +511,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			break;
 		}
-		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_PUSH:
 		{
 			selfHand->removeCard(gameState->selectedHandCard);
 			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, HexusConfig::insertDelay);
@@ -546,6 +546,29 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				}
 			}
 
+			break;
+		}
+		case CardData::CardType::Special_POP:
+		{
+			if (selfGraveyard->hasCards())
+			{
+				Card* revivedCard = selfGraveyard->removeCard(selfGraveyard->deckCards.back());
+
+				if (revivedCard->cardData->isAttackCard())
+				{
+					switch(revivedCard->cardData->getCardType())
+					{
+						default:
+						case CardData::CardType::Binary: selfBinaryRow->insertCard(revivedCard, HexusConfig::insertDelay); break;
+						case CardData::CardType::Decimal: selfDecimalRow->insertCard(revivedCard, HexusConfig::insertDelay); break;
+						case CardData::CardType::Hexidecimal: selfHexRow->insertCard(revivedCard, HexusConfig::insertDelay); break;
+					}
+				}
+				else
+				{
+					selfHand->insertCard(revivedCard, HexusConfig::insertDelay);
+				}
+			}
 			break;
 		}
 		case CardData::CardType::Special_RETURN_TO_HAND:

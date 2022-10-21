@@ -635,6 +635,7 @@ CardEffects::CardEffect Card::getCorrespondingCardEffect()
 		case CardData::CardType::Special_MOV:
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		case CardData::CardType::Special_STEAL:
+		case CardData::CardType::Special_POP:
 		{
 			return CardEffects::CardEffect::DustPoof;
 		}
@@ -659,7 +660,7 @@ CardEffects::CardEffect Card::getCorrespondingCardEffect()
 			return CardEffects::CardEffect::StarHit;
 		}
 		case CardData::CardType::Special_NOT:
-		case CardData::CardType::Special_KILL:
+		case CardData::CardType::Special_PUSH:
 		{
 			return CardEffects::CardEffect::Bite;
 		}

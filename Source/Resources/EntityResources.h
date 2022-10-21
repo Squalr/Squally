@@ -405,17 +405,11 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_Vampiress_R_WING;
 	extern const std::string Enemies_CastleValgrind_Vampiress_TORSO;
 	extern const std::string Enemies_CastleValgrind_Vampiress_WEAPON;
-	extern const std::string Enemies_CastleValgrind_Werewolf__FRAMES_HEAD_2;
-	extern const std::string Enemies_CastleValgrind_Werewolf__FRAMES_HEAD_3;
 	extern const std::string Enemies_CastleValgrind_Werewolf_Animations;
 	extern const std::string Enemies_CastleValgrind_Werewolf_BELT;
 	extern const std::string Enemies_CastleValgrind_Werewolf_Emblem;
 	extern const std::string Enemies_CastleValgrind_Werewolf_GROIN;
 	extern const std::string Enemies_CastleValgrind_Werewolf_HEAD_1;
-	extern const std::string Enemies_CastleValgrind_Werewolf_HUMAN_LIKE_LEGS_L_LEG_1_H;
-	extern const std::string Enemies_CastleValgrind_Werewolf_HUMAN_LIKE_LEGS_L_LEG_2_H;
-	extern const std::string Enemies_CastleValgrind_Werewolf_HUMAN_LIKE_LEGS_R_LEG_1_H;
-	extern const std::string Enemies_CastleValgrind_Werewolf_HUMAN_LIKE_LEGS_R_LEG_2_H;
 	extern const std::string Enemies_CastleValgrind_Werewolf_L_ARM_1;
 	extern const std::string Enemies_CastleValgrind_Werewolf_L_ARM_2;
 	extern const std::string Enemies_CastleValgrind_Werewolf_L_ARM_CLOTH;
@@ -441,9 +435,6 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_Wraith_ghost_arm_L;
 	extern const std::string Enemies_CastleValgrind_Wraith_ghost_arm_R;
 	extern const std::string Enemies_CastleValgrind_Wraith_ghost_body_1;
-	extern const std::string Enemies_CastleValgrind_Wraith_ghost_body_2;
-	extern const std::string Enemies_CastleValgrind_Wraith_ghost_body_3;
-	extern const std::string Enemies_CastleValgrind_Wraith_ghost_body_4;
 	extern const std::string Enemies_CastleValgrind_Wraith_ghost_cape_L;
 	extern const std::string Enemies_CastleValgrind_Wraith_ghost_cape_R;
 	extern const std::string Enemies_CastleValgrind_Wraith_ghost_head_1;
