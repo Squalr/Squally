@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="822">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="818">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -13,7 +13,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="96" name="wall bg -6" visible="0">
+ <objectgroup id="96" name="wall bg -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -177,8 +177,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="754" name="marble" type="texture" x="-118.842" y="-52" width="1784.84" height="1364"/>
-  <object id="755" name="marble" type="texture" x="2335.33" y="-46" width="3162.97" height="1364"/>
+  <object id="754" name="marble-dark" type="texture" x="-118.842" y="-52" width="1784.84" height="1364"/>
+  <object id="755" name="marble-dark" type="texture" x="2335.33" y="-46" width="3162.97" height="1364"/>
  </objectgroup>
  <objectgroup id="81" name="columns -0">
   <properties>
@@ -199,11 +199,23 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="713" name="Castle/Banner1" type="decor" x="1453.45" y="451.107" width="184" height="424"/>
+  <object id="714" name="Castle/Banner1" type="decor" x="2395.6" y="435.152" width="184" height="424"/>
+  <object id="809" name="Castle/Window1" type="decor" x="1107.06" y="488" width="293" height="575"/>
+  <object id="810" name="Castle/Window1" type="decor" x="2632.07" y="481.887" width="293" height="575"/>
+  <object id="811" name="Castle/Emblem1" type="decor" x="581.106" y="662.208" width="129" height="148"/>
+  <object id="812" name="Castle/Emblem1" type="decor" x="3294.35" y="699.054" width="129" height="148"/>
+  <object id="813" name="Castle/Emblem2" type="decor" x="4249.62" y="364.341" width="286" height="338"/>
+  <object id="814" name="Castle/Window1" type="decor" x="3721.09" y="502.091" width="293" height="575"/>
  </objectgroup>
  <objectgroup id="18" name="decor bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="799" name="Castle/KnightSuit1" type="decor" x="2948.44" y="643.444" width="327" height="553"/>
+  <object id="800" name="Castle/KnightSuit1" type="decor" x="722.077" y="643.745" width="327" height="553"/>
+  <object id="801" name="Castle/KnightSuit1" type="decor" x="246.617" y="643.745" width="327" height="553"/>
+  <object id="805" name="Castle/KnightSuit1" type="decor" x="3955.41" y="640.121" width="327" height="553"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -231,9 +243,12 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="817" name="Generic/BookshelfEmpty1" type="decor" x="2838.78" y="588.441" width="727" height="608"/>
-  <object id="818" name="Generic/BookshelfEmpty1" type="decor" x="479.431" y="585.19" width="727" height="608"/>
-  <object id="819" name="Generic/BookshelfEmpty1" type="decor" x="3850.47" y="591.19" width="727" height="608"/>
+  <object id="699" name="Castle/Throne1" type="decor" x="4486.61" y="598.81" width="292" height="595">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="721" name="Generic/DiningTable1" type="decor" x="340.987" y="894.835" width="610" height="301"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -242,8 +257,17 @@
   </properties>
   <object id="775" name="portal" type="object" x="1890.63" y="731.182" width="237.527" height="464.666">
    <properties>
-    <property name="map" value="CastleValgrind/Town_Main"/>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Main"/>
     <property name="transition" value="throne-room"/>
+   </properties>
+  </object>
+  <object id="816" name="clock-door" type="object" x="3365.17" y="452.968" width="288" height="743">
+   <properties>
+    <property name="clock-style" value="haunted"/>
+    <property name="map" value="Castle_Valgrind/Town_Throne_Room"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="transition" value="clock"/>
    </properties>
   </object>
  </objectgroup>
@@ -257,12 +281,21 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="820" name="mabel" type="entity" x="3642" y="1062" width="128" height="128">
+  <object id="783" name="king-redsong-slime" type="entity" x="4478.29" y="1067.33" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value="cure-king"/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="789" name="princess-opal" type="entity" x="4045.6" y="1065.21" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
+    <property name="quest" value="cure-king"/>
+    <property name="quest-line" value="talk-to-princess-opal"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
@@ -282,11 +315,18 @@
     <property name="transition" value="throne-room"/>
    </properties>
   </object>
+  <object id="817" name="spawn" type="object" x="3436.32" y="1065.55" width="128" height="128">
+   <properties>
+    <property name="transition" value="clock"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="77" name="decor +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="720" name="Generic/Chandilier1" type="decor" x="3078.84" y="126.742" width="372.519" height="492.296"/>
+  <object id="797" name="Generic/Chandilier1" type="decor" x="634.123" y="116.405" width="372.519" height="492.296"/>
  </objectgroup>
 </map>

@@ -352,8 +352,14 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Smith (CV)", MapResources::CastleValgrind_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (CV)", MapResources::CastleValgrind_Town_Main));
 		mapList.push_back(this->buildDebugButton("Town Train (CV)", MapResources::CastleValgrind_Town_Train));
-		mapList.push_back(this->buildDebugButton("Study Dark (CV)", MapResources::CastleValgrind_Study_Dark));
-		mapList.push_back(this->buildDebugButton("Study (CV)", MapResources::CastleValgrind_Study));
+		mapList.push_back(this->buildDebugButton("Throne Room (CV)", MapResources::CastleValgrind_Town_Throne_Room));
+		mapList.push_back(this->buildDebugButton("Study (CV)", MapResources::CastleValgrind_Town_Study));
+		mapList.push_back(this->buildDebugButton("[Dark] Alch (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Alch));
+		mapList.push_back(this->buildDebugButton("[Dark] Inn (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Inn));
+		mapList.push_back(this->buildDebugButton("[Dark] Smith (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Smith));
+		mapList.push_back(this->buildDebugButton("[Dark] Town (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Main));
+		mapList.push_back(this->buildDebugButton("[Dark] Study Dark (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Study));
+		mapList.push_back(this->buildDebugButton("[Dark] Throne Room (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Throne_Room));
 		mapList.push_back(this->buildDebugButton("Zone_2_3 (CV)", MapResources::CastleValgrind_Zone_2_3));
 		mapList.push_back(this->buildDebugButton("Zone_2_2 (CV)", MapResources::CastleValgrind_Zone_2_2));
 		mapList.push_back(this->buildDebugButton("Zone_2_1 (CV)", MapResources::CastleValgrind_Zone_2_1));
@@ -752,7 +758,7 @@ DeveloperScene::DeveloperScene()
 
 	// CV
 	X Beaver		CV Inn upstairs
-	Pig				CV
+	X Pig			CV Dark Inn Upstairs
 	Hedgehog		CV 
 	Horse			CV 
 	Koala			CV 
