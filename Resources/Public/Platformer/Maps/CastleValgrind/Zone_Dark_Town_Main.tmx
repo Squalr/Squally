@@ -759,7 +759,7 @@
   </properties>
   <object id="694" name="portal" type="object" x="4795.16" y="985.189" width="237.527" height="464.666">
    <properties>
-    <property name="map" value="CastleValgrind/Study"/>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Study"/>
     <property name="transition" value="study"/>
    </properties>
   </object>

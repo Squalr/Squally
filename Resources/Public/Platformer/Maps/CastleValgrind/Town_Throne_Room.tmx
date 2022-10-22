@@ -264,7 +264,7 @@
   <object id="815" name="clock-door" type="object" x="3447.32" y="466.18" width="257" height="729">
    <properties>
     <property name="door-style" value="old"/>
-    <property name="map" value="Castle_Valgrind/Zone_Dark_Town_Throne_Room"/>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Throne_Room"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
     <property name="transition" value="clock"/>

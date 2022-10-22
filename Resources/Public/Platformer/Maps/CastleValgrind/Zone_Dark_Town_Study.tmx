@@ -243,7 +243,7 @@
   <object id="775" name="portal" type="object" x="1890.63" y="731.182" width="237.527" height="464.666">
    <properties>
     <property name="map" value="CastleValgrind/Zone_Dark_Town_Main"/>
-    <property name="transition" value="throne-room"/>
+    <property name="transition" value="study"/>
    </properties>
   </object>
  </objectgroup>
@@ -279,7 +279,7 @@
   </object>
   <object id="779" name="spawn-wood-door" type="object" x="1942.93" y="1067.25" width="128" height="128">
    <properties>
-    <property name="transition" value="throne-room"/>
+    <property name="transition" value="study"/>
    </properties>
   </object>
  </objectgroup>

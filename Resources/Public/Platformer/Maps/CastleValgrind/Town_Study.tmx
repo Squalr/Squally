@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="821">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="821">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -243,7 +243,7 @@
   <object id="775" name="portal" type="object" x="1890.63" y="731.182" width="237.527" height="464.666">
    <properties>
     <property name="map" value="CastleValgrind/Town_Main"/>
-    <property name="transition" value="throne-room"/>
+    <property name="transition" value="study"/>
    </properties>
   </object>
  </objectgroup>
@@ -279,7 +279,7 @@
   </object>
   <object id="779" name="spawn-wood-door" type="object" x="1942.93" y="1067.25" width="128" height="128">
    <properties>
-    <property name="transition" value="throne-room"/>
+    <property name="transition" value="study"/>
    </properties>
   </object>
  </objectgroup>
