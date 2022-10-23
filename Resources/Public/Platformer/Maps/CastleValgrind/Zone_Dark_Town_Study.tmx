@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="822">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="829">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -25,7 +25,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="746" name="Generic/MoonDoor" type="decor" x="1679.08" y="380.344" width="648" height="667"/>
+  <object id="826" name="Generic/LesserMoonDoorDark" type="decor" x="1859" y="552" width="310" height="492"/>
  </objectgroup>
  <objectgroup id="87" name="stairs -6">
   <properties>
@@ -204,6 +204,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="828" name="Mines/CaveDoor3" type="decor" x="4013.83" y="864" width="376" height="332"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -233,7 +234,7 @@
   </properties>
   <object id="817" name="Generic/BookshelfEmpty1" type="decor" x="2838.78" y="588.441" width="727" height="608"/>
   <object id="818" name="Generic/BookshelfEmpty1" type="decor" x="479.431" y="585.19" width="727" height="608"/>
-  <object id="819" name="Generic/BookshelfEmpty1" type="decor" x="3850.47" y="591.19" width="727" height="608"/>
+  <object id="819" name="Generic/BookshelfEmpty1" type="decor" x="4601.99" y="585.129" width="727" height="608"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>

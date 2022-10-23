@@ -376,10 +376,12 @@ DeveloperScene::DeveloperScene()
 		// ** Needs hexus battles
 		// ** Needs hexus puzzles
 		// WIP flow:
-		// 	- Clock to go to dark side
-		// 	- Study default locked
-		// 	- Key is in the bar or something (maybe the barkeep has a hint about this)
-		// 	- Secret room behind throne room (dark side only, helps make shit easier for me) leading to 2_x zones
+		// 	- Clock to go to dark side. TODO: Move clock out of throne room.
+		//	- 'Unhaunt' NPCs on each map
+		//		- King cursed as slime
+		//		- Somebody as Leroy
+		//		- Zombie Elric (yay, a use for this)
+		// 	- Secret room behind study room (dark side only, helps make shit easier for me) leading to 2_x zones
 
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.

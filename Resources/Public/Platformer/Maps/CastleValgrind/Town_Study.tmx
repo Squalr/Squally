@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="821">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="822">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -25,7 +25,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="746" name="Generic/MoonDoor" type="decor" x="1679.08" y="380.344" width="648" height="667"/>
+  <object id="821" name="Generic/LesserMoonDoor" type="decor" x="1852.65" y="550.093" width="310" height="492"/>
  </objectgroup>
  <objectgroup id="87" name="stairs -6">
   <properties>

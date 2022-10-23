@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="111" nextobjectid="1011">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="111" nextobjectid="1037">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -51,6 +51,7 @@
    </properties>
   </object>
   <object id="863" name="marble-dark" type="terrain" x="1264.31" y="1319.39" width="3600" height="234.06"/>
+  <object id="1025" name="marble-dark" type="terrain" x="1237.33" y="-231.697" width="3600" height="234.06"/>
  </objectgroup>
  <objectgroup id="97" name="decor -6">
   <properties>
@@ -71,6 +72,62 @@
   <object id="974" name="Castle/KnightSuitDark1" type="decor" x="2335.83" y="770.167" width="327" height="553"/>
   <object id="975" name="Castle/KnightSuitDark1" type="decor" x="3448.5" y="765.5" width="327" height="553"/>
   <object id="996" name="Castle/CastleGateDark" type="decor" x="2822.81" y="1987.31" width="412" height="699"/>
+  <object id="1011" name="Forest/WebCocoon" type="decor" x="2107.83" y="-75.613" width="232" height="588" rotation="10">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="1"/>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="flip-y" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="1012" name="Forest/Webs4" type="decor" x="5482.67" y="133.16" width="454" height="375">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="1"/>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="flip-y" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="1013" name="Forest/Webs3" type="decor" x="1938.49" y="36.796" width="193" height="377" rotation="-25">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="1"/>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="flip-y" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="1014" name="Forest/Webs3" type="decor" x="1400.97" y="946.128" width="193" height="377">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="1"/>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="flip-y" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="1016" name="Forest/Webs1" type="decor" x="2552.36" y="990.857" width="193" height="337">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="1"/>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="flip-y" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="1017" name="Forest/Webs2" type="decor" x="3630.09" y="943.918" width="159" height="375">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="1"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="flip-y" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1032" name="Forest/Webs1" type="decor" x="5757.5" y="579.5" width="193" height="337">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="1"/>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="flip-y" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="107" name="decor -6 fg">
   <properties>
@@ -225,6 +282,14 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1007" name="Generic/Sack" type="decor" x="3093.33" y="2548.83" width="162" height="145"/>
+  <object id="1031" name="Forest/Webs2" type="decor" x="5716.5" y="1134.5" width="159" height="375">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="1"/>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="flip-y" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="92" name="columns -4">
   <properties>
@@ -408,12 +473,12 @@
   <object id="897" name="Generic/BlueRugDark" type="decor" x="3863.67" y="1363.83" width="332" height="21"/>
   <object id="900" name="Generic/BlueRugDark" type="decor" x="2452" y="1371.5" width="332" height="21"/>
   <object id="901" name="Generic/BlueRugDark" type="decor" x="3353.67" y="1365.5" width="332" height="21"/>
-  <object id="942" name="Generic/SignSmith" type="decor" x="1426.5" y="655.5" width="523" height="265">
+  <object id="942" name="Generic/SignSmithDark" type="decor" x="1426.5" y="655.5" width="523" height="265">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="944" name="Generic/SignAlch" type="decor" x="4186.5" y="653.5" width="523" height="265">
+  <object id="944" name="Generic/SignAlchDark" type="decor" x="4186.5" y="653.5" width="523" height="265">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -429,6 +494,10 @@
    </properties>
   </object>
   <object id="1008" name="Castle/BarrelDark1" type="decor" x="3010.83" y="2520.5" width="189" height="203" rotation="90"/>
+  <object id="1033" name="Castle/BarrelDark1" type="decor" x="3204.84" y="1172.83" width="189" height="203"/>
+  <object id="1034" name="Generic/Sack" type="decor" x="3656" y="1233" width="162" height="145"/>
+  <object id="1035" name="Castle/Chair2" type="decor" x="3733.34" y="1275.17" width="119" height="102"/>
+  <object id="1036" name="Castle/BarrelDark1" type="decor" x="4395.66" y="1187.83" width="189" height="203" rotation="90"/>
  </objectgroup>
  <objectgroup id="106" name="objects -3">
   <properties>
@@ -793,7 +862,7 @@
   </properties>
   <object id="893" name="Generic/BlueRugDark" type="decor" x="2450.67" y="1429.71" width="332" height="21"/>
   <object id="895" name="Generic/BlueRugDark" type="decor" x="3354" y="1425.5" width="332" height="21"/>
-  <object id="945" name="Generic/SignBar" type="decor" x="1102.5" y="625.5" width="252" height="265"/>
+  <object id="945" name="Generic/SignBarDark" type="decor" x="1102.5" y="625.5" width="252" height="265"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
