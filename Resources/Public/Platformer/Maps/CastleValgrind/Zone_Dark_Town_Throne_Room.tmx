@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="818">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="818">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -7,7 +7,7 @@
    <property name="gravity" value="-768"/>
    <property name="hide-mini-map" type="bool" value="true"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="two-steps"/>
+   <property name="music" value="carnival-dream"/>
    <property name="rubber-band" type="int" value="11"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
@@ -199,23 +199,23 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="713" name="Castle/Banner1" type="decor" x="1453.45" y="451.107" width="184" height="424"/>
-  <object id="714" name="Castle/Banner1" type="decor" x="2395.6" y="435.152" width="184" height="424"/>
-  <object id="809" name="Castle/Window1" type="decor" x="1107.06" y="488" width="293" height="575"/>
-  <object id="810" name="Castle/Window1" type="decor" x="2632.07" y="481.887" width="293" height="575"/>
-  <object id="811" name="Castle/Emblem1" type="decor" x="581.106" y="662.208" width="129" height="148"/>
-  <object id="812" name="Castle/Emblem1" type="decor" x="3294.35" y="699.054" width="129" height="148"/>
-  <object id="813" name="Castle/Emblem2" type="decor" x="4249.62" y="364.341" width="286" height="338"/>
-  <object id="814" name="Castle/Window1" type="decor" x="3721.09" y="502.091" width="293" height="575"/>
+  <object id="713" name="Castle/BannerDark1" type="decor" x="1453.45" y="451.107" width="184" height="424"/>
+  <object id="714" name="Castle/BannerDark1" type="decor" x="2395.6" y="435.152" width="184" height="424"/>
+  <object id="809" name="Castle/WindowDark1" type="decor" x="1107.06" y="488" width="293" height="575"/>
+  <object id="810" name="Castle/WindowDark1" type="decor" x="2632.07" y="481.887" width="293" height="575"/>
+  <object id="811" name="Castle/EmblemDark1" type="decor" x="581.106" y="662.208" width="129" height="148"/>
+  <object id="812" name="Castle/EmblemDark1" type="decor" x="3294.35" y="699.054" width="129" height="148"/>
+  <object id="813" name="Castle/EmblemDark2" type="decor" x="4249.62" y="364.341" width="286" height="338"/>
+  <object id="814" name="Castle/WindowDark1" type="decor" x="3721.09" y="502.091" width="293" height="575"/>
  </objectgroup>
  <objectgroup id="18" name="decor bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="799" name="Castle/KnightSuit1" type="decor" x="2948.44" y="643.444" width="327" height="553"/>
-  <object id="800" name="Castle/KnightSuit1" type="decor" x="722.077" y="643.745" width="327" height="553"/>
-  <object id="801" name="Castle/KnightSuit1" type="decor" x="246.617" y="643.745" width="327" height="553"/>
-  <object id="805" name="Castle/KnightSuit1" type="decor" x="3955.41" y="640.121" width="327" height="553"/>
+  <object id="799" name="Castle/KnightSuitDark1" type="decor" x="2948.44" y="643.444" width="327" height="553"/>
+  <object id="800" name="Castle/KnightSuitDark1" type="decor" x="722.077" y="643.745" width="327" height="553"/>
+  <object id="801" name="Castle/KnightSuitDark1" type="decor" x="246.617" y="643.745" width="327" height="553"/>
+  <object id="805" name="Castle/KnightSuitDark1" type="decor" x="3955.41" y="640.121" width="327" height="553"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -243,7 +243,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="699" name="Castle/Throne1" type="decor" x="4486.61" y="598.81" width="292" height="595">
+  <object id="699" name="Castle/ThroneDark1" type="decor" x="4486.61" y="598.81" width="292" height="595">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -326,7 +326,7 @@
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="720" name="Generic/Chandilier1" type="decor" x="3078.84" y="126.742" width="372.519" height="492.296"/>
-  <object id="797" name="Generic/Chandilier1" type="decor" x="634.123" y="116.405" width="372.519" height="492.296"/>
+  <object id="720" name="Generic/ChandilierDark1" type="decor" x="3078.84" y="126.742" width="372.519" height="492.296"/>
+  <object id="797" name="Generic/ChandilierDark1" type="decor" x="634.123" y="116.405" width="372.519" height="492.296"/>
  </objectgroup>
 </map>

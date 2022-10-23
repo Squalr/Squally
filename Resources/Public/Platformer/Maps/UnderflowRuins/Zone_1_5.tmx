@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="26" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="167" nextobjectid="1101">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="26" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="167" nextobjectid="1101">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="heartbeat"/>
+   <property name="music" value="the-letter"/>
    <property name="rubber-band" type="int" value="6"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
@@ -152,8 +152,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1043" name="caverns" type="terrain" x="288.269" y="1560" width="2745.55" height="1528">
-  </object>
+  <object id="1043" name="caverns" type="terrain" x="288.269" y="1560" width="2745.55" height="1528"/>
  </objectgroup>
  <objectgroup id="152" name="terrain fg">
   <properties>

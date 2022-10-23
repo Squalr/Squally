@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="32" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="133" nextobjectid="974">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="133" nextobjectid="974">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="heartbeat"/>
+   <property name="music" value="artrium"/>
    <property name="rubber-band" type="int" value="7"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
@@ -185,10 +185,10 @@
   </properties>
   <object id="965" name="medusa" type="entity" x="2365.97" y="1065.85" width="128" height="128">
    <properties>
-    <property name="components" value="enemy"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Cistern"/>
     <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy"/>
     <property name="drop-pool" value="ur-generic"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="quest" value="fight-medusa"/>

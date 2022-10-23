@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="107" nextobjectid="996">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="111" nextobjectid="1011">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -7,7 +7,7 @@
    <property name="gravity" value="-768"/>
    <property name="hide-mini-map" type="bool" value="false"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="two-steps"/>
+   <property name="music" value="carnival-dream"/>
    <property name="rubber-band" type="int" value="11"/>
    <property name="show-cracks" type="bool" value="false"/>
    <property name="type" value="meta"/>
@@ -18,7 +18,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="756" name="castle-dark" type="texture" x="-566" y="-598" width="7940" height="3446"/>
+  <object id="756" name="ruins-gray-dark" type="texture" x="-566" y="-598" width="7940" height="3446"/>
  </objectgroup>
  <objectgroup id="87" name="stairs -6">
   <properties>
@@ -57,26 +57,47 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="890" name="Generic/MoonDoor" type="decor" x="2741.97" y="654.122" width="648" height="667"/>
-  <object id="898" name="Generic/BlueRug" type="decor" x="3860.67" y="1309.83" width="332" height="21"/>
-  <object id="899" name="Generic/BlueRug" type="decor" x="1962.33" y="1310.5" width="332" height="21"/>
-  <object id="955" name="Castle/Window1" type="decor" x="1668.65" y="303.409" width="293" height="575"/>
-  <object id="956" name="Castle/Window1" type="decor" x="4114.11" y="318.561" width="293" height="575"/>
-  <object id="959" name="Castle/Window1" type="decor" x="311.076" y="451.894" width="293" height="575"/>
-  <object id="960" name="Castle/Window1" type="decor" x="5550.47" y="442.803" width="293" height="575"/>
-  <object id="961" name="Castle/Window1" type="decor" x="326.227" y="1779.17" width="293" height="575"/>
-  <object id="962" name="Castle/Window1" type="decor" x="5544.41" y="1788.26" width="293" height="575"/>
-  <object id="971" name="Castle/Banner2" type="decor" x="3818.61" y="771.03" width="184" height="424"/>
-  <object id="972" name="Castle/Banner2" type="decor" x="2040.54" y="770" width="184" height="424"/>
-  <object id="974" name="Castle/KnightSuit1" type="decor" x="2335.83" y="770.167" width="327" height="553"/>
-  <object id="975" name="Castle/KnightSuit1" type="decor" x="3448.5" y="765.5" width="327" height="553"/>
+  <object id="890" name="Generic/MoonDoorDark" type="decor" x="2741.97" y="654.122" width="648" height="667"/>
+  <object id="898" name="Generic/BlueRugDark" type="decor" x="3860.67" y="1309.83" width="332" height="21"/>
+  <object id="899" name="Generic/BlueRugDark" type="decor" x="1962.33" y="1310.5" width="332" height="21"/>
+  <object id="955" name="Castle/WindowDark1" type="decor" x="1668.65" y="303.409" width="293" height="575"/>
+  <object id="956" name="Castle/WindowDark1" type="decor" x="4114.11" y="318.561" width="293" height="575"/>
+  <object id="959" name="Castle/WindowDark1" type="decor" x="311.076" y="451.894" width="293" height="575"/>
+  <object id="960" name="Castle/WindowDark1" type="decor" x="5550.47" y="442.803" width="293" height="575"/>
+  <object id="961" name="Castle/WindowDark1" type="decor" x="326.227" y="1779.17" width="293" height="575"/>
+  <object id="962" name="Castle/WindowDark1" type="decor" x="5544.41" y="1788.26" width="293" height="575"/>
+  <object id="971" name="Castle/BannerDark2" type="decor" x="3818.61" y="771.03" width="184" height="424"/>
+  <object id="972" name="Castle/BannerDark2" type="decor" x="2040.54" y="770" width="184" height="424"/>
+  <object id="974" name="Castle/KnightSuitDark1" type="decor" x="2335.83" y="770.167" width="327" height="553"/>
+  <object id="975" name="Castle/KnightSuitDark1" type="decor" x="3448.5" y="765.5" width="327" height="553"/>
+  <object id="996" name="Castle/CastleGateDark" type="decor" x="2822.81" y="1987.31" width="412" height="699"/>
+ </objectgroup>
+ <objectgroup id="107" name="decor -6 fg">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="997" name="Castle/BarrelDark1" type="decor" x="2912" y="2482.5" width="189" height="203"/>
+  <object id="998" name="Castle/BarrelDark1" type="decor" x="3075.5" y="2486.5" width="189" height="203"/>
+  <object id="999" name="Castle/BarrelDark1" type="decor" x="3007.5" y="2294.5" width="189" height="203"/>
+  <object id="1001" name="Castle/Chair2" type="decor" x="2809.5" y="2583" width="119" height="102">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1002" name="Castle/Chair2" type="decor" x="3159" y="2584.25" width="119" height="102"/>
+  <object id="1003" name="Castle/Chair2" type="decor" x="3232" y="2583.75" width="119" height="102">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1004" name="Generic/Sack" type="decor" x="2746.5" y="2540" width="162" height="145"/>
  </objectgroup>
  <objectgroup id="95" name="objects -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="746" name="Castle/CastleGate" type="decor" x="2822.81" y="1987.31" width="412" height="699"/>
   <object id="976" name="portal" type="object" x="2950.24" y="935.295" width="237.527" height="375.411">
    <properties>
     <property name="map" value="CastleValgrind/Zone_Dark_Town_Throne_Room"/>
@@ -198,6 +219,13 @@
   </object>
   <object id="862" name="marble-dark" type="terrain" x="1264.31" y="1339.39" width="3600" height="234.06"/>
  </objectgroup>
+ <objectgroup id="108" name="decor -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1007" name="Generic/Sack" type="decor" x="3093.33" y="2548.83" width="162" height="145"/>
+ </objectgroup>
  <objectgroup id="92" name="columns -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
@@ -275,6 +303,13 @@
    </properties>
   </object>
   <object id="861" name="marble-dark" type="terrain" x="1264.31" y="1355.39" width="3600" height="234.06"/>
+ </objectgroup>
+ <objectgroup id="109" name="decor -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1006" name="Castle/Chair2" type="decor" x="2750.5" y="2599.5" width="119" height="102"/>
  </objectgroup>
  <objectgroup id="91" name="columns -3">
   <properties>
@@ -369,10 +404,10 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="896" name="Generic/BlueRug" type="decor" x="1961.33" y="1364.5" width="332" height="21"/>
-  <object id="897" name="Generic/BlueRug" type="decor" x="3863.67" y="1363.83" width="332" height="21"/>
-  <object id="900" name="Generic/BlueRug" type="decor" x="2452" y="1371.5" width="332" height="21"/>
-  <object id="901" name="Generic/BlueRug" type="decor" x="3353.67" y="1365.5" width="332" height="21"/>
+  <object id="896" name="Generic/BlueRugDark" type="decor" x="1961.33" y="1364.5" width="332" height="21"/>
+  <object id="897" name="Generic/BlueRugDark" type="decor" x="3863.67" y="1363.83" width="332" height="21"/>
+  <object id="900" name="Generic/BlueRugDark" type="decor" x="2452" y="1371.5" width="332" height="21"/>
+  <object id="901" name="Generic/BlueRugDark" type="decor" x="3353.67" y="1365.5" width="332" height="21"/>
   <object id="942" name="Generic/SignSmith" type="decor" x="1426.5" y="655.5" width="523" height="265">
    <properties>
     <property name="components" value="z-fade"/>
@@ -383,16 +418,17 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="946" name="Generic/RedRug" type="decor" x="1458" y="1364.83" width="332" height="21">
+  <object id="946" name="Generic/RedRugDark" type="decor" x="1458" y="1364.83" width="332" height="21">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="947" name="Generic/RedRug" type="decor" x="4372.67" y="1364.83" width="332" height="21">
+  <object id="947" name="Generic/RedRugDark" type="decor" x="4372.67" y="1364.83" width="332" height="21">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
   </object>
+  <object id="1008" name="Castle/BarrelDark1" type="decor" x="3010.83" y="2520.5" width="189" height="203" rotation="90"/>
  </objectgroup>
  <objectgroup id="106" name="objects -3">
   <properties>
@@ -565,6 +601,13 @@
   </object>
   <object id="859" name="marble-dark" type="terrain" x="1262.31" y="1389.39" width="3600" height="234.06"/>
  </objectgroup>
+ <objectgroup id="110" name="decor -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1010" name="Castle/BarrelDark1" type="decor" x="3083.5" y="2513.17" width="189" height="203"/>
+ </objectgroup>
  <objectgroup id="88" name="columns -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
@@ -647,12 +690,12 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="754" name="castle-dark" type="texture" x="948.788" y="1510.18" width="1738.18" height="1356"/>
-  <object id="755" name="castle-dark" type="texture" x="3359.33" y="1490" width="1831.94" height="1364"/>
-  <object id="840" name="castle-dark" type="texture" x="-1430.85" y="-154.606" width="1710.18" height="3012"/>
-  <object id="841" name="castle-dark" type="texture" x="5878.91" y="-716.303" width="1033.94" height="3604"/>
-  <object id="854" name="castle-dark" type="texture" x="944.91" y="-534" width="560.18" height="2084"/>
-  <object id="855" name="castle-dark" type="texture" x="4638.24" y="-482" width="552.847" height="2084"/>
+  <object id="754" name="ruins-gray-dark" type="texture" x="948.788" y="1510.18" width="1738.18" height="1356"/>
+  <object id="755" name="ruins-gray-dark" type="texture" x="3359.33" y="1490" width="1831.94" height="1364"/>
+  <object id="840" name="ruins-gray-dark" type="texture" x="-1430.85" y="-154.606" width="1710.18" height="3012"/>
+  <object id="841" name="ruins-gray-dark" type="texture" x="5878.91" y="-716.303" width="1033.94" height="3604"/>
+  <object id="854" name="ruins-gray-dark" type="texture" x="944.91" y="-534" width="560.18" height="2084"/>
+  <object id="855" name="ruins-gray-dark" type="texture" x="4638.24" y="-482" width="552.847" height="2084"/>
  </objectgroup>
  <objectgroup id="81" name="columns -0">
   <properties>
@@ -703,23 +746,23 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="713" name="Castle/Banner2" type="decor" x="2477.45" y="1987.11" width="184" height="424"/>
-  <object id="714" name="Castle/Banner2" type="decor" x="3419.6" y="1971.15" width="184" height="424"/>
-  <object id="967" name="Castle/Banner2" type="decor" x="1047.39" y="1988" width="184" height="424"/>
+  <object id="713" name="Castle/BannerDark2" type="decor" x="2477.45" y="1987.11" width="184" height="424"/>
+  <object id="714" name="Castle/BannerDark2" type="decor" x="3419.6" y="1971.15" width="184" height="424"/>
+  <object id="967" name="Castle/BannerDark2" type="decor" x="1047.39" y="1988" width="184" height="424"/>
   <object id="968" name="Castle/Banner2" type="decor" x="4953.45" y="1972.85" width="184" height="424"/>
  </objectgroup>
  <objectgroup id="18" name="decor bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="709" name="Castle/Window1" type="decor" x="2131.06" y="2024" width="293" height="575"/>
-  <object id="711" name="Castle/Window1" type="decor" x="3656.07" y="2017.89" width="293" height="575"/>
-  <object id="953" name="Castle/Window1" type="decor" x="1315.5" y="2028.5" width="293" height="575"/>
-  <object id="954" name="Castle/Window1" type="decor" x="4609.5" y="2022.5" width="293" height="575"/>
-  <object id="963" name="Castle/KnightSuit1" type="decor" x="4124.38" y="2171.98" width="327" height="553"/>
-  <object id="964" name="Castle/KnightSuit1" type="decor" x="1703.17" y="2171.98" width="327" height="553"/>
-  <object id="982" name="Generic/LesserMoonDoor" type="decor" x="4765.19" y="944.62" width="310" height="492"/>
-  <object id="983" name="Generic/LesserMoonDoor" type="decor" x="1085.19" y="940.62" width="310" height="492"/>
+  <object id="709" name="Castle/WindowDark1" type="decor" x="2131.06" y="2024" width="293" height="575"/>
+  <object id="711" name="Castle/WindowDark1" type="decor" x="3656.07" y="2017.89" width="293" height="575"/>
+  <object id="953" name="Castle/WindowDark1" type="decor" x="1315.5" y="2028.5" width="293" height="575"/>
+  <object id="954" name="Castle/WindowDark1" type="decor" x="4609.5" y="2022.5" width="293" height="575"/>
+  <object id="963" name="Castle/KnightSuitDark1" type="decor" x="4124.38" y="2171.98" width="327" height="553"/>
+  <object id="964" name="Castle/KnightSuitDark1" type="decor" x="1703.17" y="2171.98" width="327" height="553"/>
+  <object id="982" name="Generic/LesserMoonDoorDark" type="decor" x="4765.19" y="944.62" width="310" height="492"/>
+  <object id="983" name="Generic/LesserMoonDoorDark" type="decor" x="1085.19" y="940.62" width="310" height="492"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -748,8 +791,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="893" name="Generic/BlueRug" type="decor" x="2450.67" y="1429.71" width="332" height="21"/>
-  <object id="895" name="Generic/BlueRug" type="decor" x="3354" y="1425.5" width="332" height="21"/>
+  <object id="893" name="Generic/BlueRugDark" type="decor" x="2450.67" y="1429.71" width="332" height="21"/>
+  <object id="895" name="Generic/BlueRugDark" type="decor" x="3354" y="1425.5" width="332" height="21"/>
   <object id="945" name="Generic/SignBar" type="decor" x="1102.5" y="625.5" width="252" height="265"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
@@ -765,74 +808,19 @@
   </object>
   <object id="845" name="portal" type="object" x="1115.16" y="981.189" width="237.527" height="464.666">
    <properties>
-    <property name="map" value="CastleValgrind/Town_Inn"/>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Inn"/>
     <property name="transition" value="inn"/>
    </properties>
   </object>
-  <object id="775" name="portal" type="object" x="2914.63" y="2267.18" width="237.527" height="464.666">
-   <properties>
-    <property name="map" value="CastleValgrind/Zone_1_3"/>
-    <property name="transition" value="castle-main"/>
-   </properties>
-  </object>
-  <object id="977" name="hexus-shrine" type="object" x="3733.84" y="2468.73" width="155" height="260">
-   <properties>
-    <property name="entity-tag" value="hexus-reanimated-fighter"/>
-   </properties>
-  </object>
-  <object id="984" name="hexus-shrine" type="object" x="2222.5" y="2472.87" width="155" height="260">
+  <object id="984" name="hexus-shrine" type="object" x="3733.74" y="2472.87" width="155" height="260">
    <properties>
     <property name="entity-tag" value="hexus-abomination"/>
    </properties>
   </object>
-  <object id="989" name="hexus-shrine" type="object" x="1889.17" y="2469.84" width="155" height="260">
-   <properties>
-    <property name="entity-tag" value="hexus-wraith"/>
-   </properties>
-  </object>
-  <object id="991" name="hexus-shrine" type="object" x="1646.74" y="2469.84" width="155" height="260">
-   <properties>
-    <property name="entity-tag" value="hexus-vampire-lord"/>
-   </properties>
-  </object>
-  <object id="993" name="hexus-shrine" type="object" x="1377.05" y="2466.81" width="155" height="260">
-   <properties>
-    <property name="entity-tag" value="hexus-skeletal-baron"/>
-   </properties>
-  </object>
-  <object id="995" name="hexus-shrine" type="object" x="1107.35" y="2466.81" width="155" height="260">
-   <properties>
-    <property name="entity-tag" value="hexus-reaper"/>
-   </properties>
-  </object>
-  <object id="985" name="abomination" type="entity" x="2222.43" y="3579.13" width="128" height="128">
+  <object id="985" name="abomination" type="entity" x="3733.67" y="3579.13" width="128" height="128">
    <properties>
     <property name="components" value="friendly,disarmed,cv-puzzle-C"/>
     <property name="tag" value="hexus-abomination"/>
-   </properties>
-  </object>
-  <object id="988" name="wraith" type="entity" x="1889.1" y="3576.1" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,disarmed,cv-puzzle-D"/>
-    <property name="tag" value="hexus-wraith"/>
-   </properties>
-  </object>
-  <object id="990" name="vampire-lord" type="entity" x="1646.67" y="3576.1" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,disarmed,cv-puzzle-E"/>
-    <property name="tag" value="hexus-vampire-lord"/>
-   </properties>
-  </object>
-  <object id="992" name="skeletal-baron" type="entity" x="1376.98" y="3573.07" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,disarmed,cv-puzzle-F"/>
-    <property name="tag" value="hexus-skeletal-baron"/>
-   </properties>
-  </object>
-  <object id="994" name="reaper" type="entity" x="1107.28" y="3573.07" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,disarmed,cv-puzzle-G"/>
-    <property name="tag" value="hexus-reaper"/>
    </properties>
   </object>
  </objectgroup>
@@ -873,12 +861,6 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="979" name="reanimated-fighter" type="entity" x="3749.77" y="3542.99" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,disarmed,cv-puzzle-B"/>
-    <property name="tag" value="hexus-reanimated-fighter"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer" opacity="0.9">
   <properties>
@@ -898,12 +880,6 @@
   <object id="843" name="spawn-wood-door" type="object" x="1167.46" y="1317.26" width="128" height="128">
    <properties>
     <property name="transition" value="inn"/>
-   </properties>
-  </object>
-  <object id="779" name="spawn-wood-door" type="object" x="2966.93" y="2603.25" width="128" height="128">
-   <properties>
-    <property name="transition" value="castle-main"/>
-    <property name="zoom" type="float" value="1.5"/>
    </properties>
   </object>
   <object id="846" name="warp" type="object" x="494" y="2474" width="256" height="256">
@@ -960,6 +936,6 @@
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="720" name="Generic/Chandilier1" type="decor" x="4102.84" y="1662.74" width="372.519" height="492.296"/>
+  <object id="720" name="Generic/ChandilierDark1" type="decor" x="4102.84" y="1662.74" width="372.519" height="492.296"/>
  </objectgroup>
 </map>
