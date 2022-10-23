@@ -117,7 +117,7 @@ void PlatformerDecorObject::optimizationHideOffscreenDecor()
 	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
 
 	// Add extra self content size as a small hack. Rotated objects get culled improperly, so this hacks around that by increasing buffer a bit.
-	CRect thisRect = GameUtils::getScreenBounds(this, Padding + this->getContentSize());
+	CRect thisRect = GameUtils::getScreenBounds(this, Padding + this->getContentSize() * 2.0f);
 
 	if (CameraRect.intersectsRect(thisRect))
 	{

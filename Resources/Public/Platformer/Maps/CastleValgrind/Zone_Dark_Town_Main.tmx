@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="111" nextobjectid="1037">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="111" nextobjectid="1045">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -161,8 +161,16 @@
     <property name="transition" value="throne-room"/>
    </properties>
   </object>
-  <object id="980" name="torch" type="object" x="2798.99" y="889.646" width="42" height="130"/>
-  <object id="981" name="torch" type="object" x="3268.48" y="881.555" width="42" height="130"/>
+  <object id="980" name="torch" type="object" x="2798.99" y="889.646" width="42" height="130">
+   <properties>
+    <property name="is-on" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="981" name="torch" type="object" x="3268.48" y="881.555" width="42" height="130">
+   <properties>
+    <property name="is-on" type="bool" value="false"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="101" name="player_layer -6">
   <properties>
@@ -290,6 +298,7 @@
     <property name="flip-y" type="bool" value="false"/>
    </properties>
   </object>
+  <object id="1041" name="Generic/Sack" type="decor" x="3487" y="1194.17" width="162" height="145"/>
  </objectgroup>
  <objectgroup id="92" name="columns -4">
   <properties>
@@ -375,6 +384,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1006" name="Castle/Chair2" type="decor" x="2750.5" y="2599.5" width="119" height="102"/>
+  <object id="1043" name="Castle/BarrelDark1" type="decor" x="2281.5" y="1151.83" width="189" height="203"/>
  </objectgroup>
  <objectgroup id="91" name="columns -3">
   <properties>
@@ -494,10 +504,7 @@
    </properties>
   </object>
   <object id="1008" name="Castle/BarrelDark1" type="decor" x="3010.83" y="2520.5" width="189" height="203" rotation="90"/>
-  <object id="1033" name="Castle/BarrelDark1" type="decor" x="3204.84" y="1172.83" width="189" height="203"/>
-  <object id="1034" name="Generic/Sack" type="decor" x="3656" y="1233" width="162" height="145"/>
-  <object id="1035" name="Castle/Chair2" type="decor" x="3733.34" y="1275.17" width="119" height="102"/>
-  <object id="1036" name="Castle/BarrelDark1" type="decor" x="4395.66" y="1187.83" width="189" height="203" rotation="90"/>
+  <object id="1035" name="Castle/Chair2" type="decor" x="3169.82" y="1276.58" width="119" height="102"/>
  </objectgroup>
  <objectgroup id="106" name="objects -3">
   <properties>
@@ -524,22 +531,20 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="902" name="tyracius" type="entity" x="2940" y="1232.85" width="128" height="128">
+  <object id="1037" name="vampire-lord" type="entity" x="2839.09" y="1237.04" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="cv-generic"/>
    </properties>
   </object>
-  <object id="903" name="zana" type="entity" x="3642.67" y="1249.82" width="128" height="128">
+  <object id="1038" name="vampire-lord" type="entity" x="2846.25" y="848.298" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>
@@ -676,6 +681,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1010" name="Castle/BarrelDark1" type="decor" x="3083.5" y="2513.17" width="189" height="203"/>
+  <object id="1044" name="Castle/BarrelDark1" type="decor" x="4398.83" y="1218.5" width="189" height="203" rotation="90"/>
  </objectgroup>
  <objectgroup id="88" name="columns -1">
   <properties>
@@ -818,7 +824,7 @@
   <object id="713" name="Castle/BannerDark2" type="decor" x="2477.45" y="1987.11" width="184" height="424"/>
   <object id="714" name="Castle/BannerDark2" type="decor" x="3419.6" y="1971.15" width="184" height="424"/>
   <object id="967" name="Castle/BannerDark2" type="decor" x="1047.39" y="1988" width="184" height="424"/>
-  <object id="968" name="Castle/Banner2" type="decor" x="4953.45" y="1972.85" width="184" height="424"/>
+  <object id="968" name="Castle/BannerDark2" type="decor" x="4953.45" y="1972.85" width="184" height="424"/>
  </objectgroup>
  <objectgroup id="18" name="decor bg">
   <properties>
@@ -863,6 +869,11 @@
   <object id="893" name="Generic/BlueRugDark" type="decor" x="2450.67" y="1429.71" width="332" height="21"/>
   <object id="895" name="Generic/BlueRugDark" type="decor" x="3354" y="1425.5" width="332" height="21"/>
   <object id="945" name="Generic/SignBarDark" type="decor" x="1102.5" y="625.5" width="252" height="265"/>
+  <object id="1042" name="Castle/Chair2" type="decor" x="952.5" y="1340" width="119" height="102">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -903,31 +914,20 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="782" name="gaunt" type="entity" x="2115.67" y="2602" width="128" height="128">
+  <object id="1039" name="vampiress" type="entity" x="2132.42" y="2600.07" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-tag" value="group-b"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="cv-generic"/>
    </properties>
   </object>
-  <object id="786" name="leroy" type="entity" x="2775" y="1307.67" width="128" height="128">
+  <object id="1040" name="vampiress" type="entity" x="2139.58" y="2211.33" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
-  <object id="791" name="rogas" type="entity" x="4476.46" y="2602.64" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-b"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>

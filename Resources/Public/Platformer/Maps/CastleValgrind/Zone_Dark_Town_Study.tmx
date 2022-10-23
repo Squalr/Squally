@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="829">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="831">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -232,9 +232,9 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="817" name="Generic/BookshelfEmpty1" type="decor" x="2838.78" y="588.441" width="727" height="608"/>
-  <object id="818" name="Generic/BookshelfEmpty1" type="decor" x="479.431" y="585.19" width="727" height="608"/>
-  <object id="819" name="Generic/BookshelfEmpty1" type="decor" x="4601.99" y="585.129" width="727" height="608"/>
+  <object id="817" name="Generic/BookshelfEmptyDark1" type="decor" x="2838.78" y="588.441" width="727" height="608"/>
+  <object id="818" name="Generic/BookshelfEmptyDark1" type="decor" x="479.431" y="585.19" width="727" height="608"/>
+  <object id="819" name="Generic/BookshelfEmptyDark1" type="decor" x="4601.99" y="585.129" width="727" height="608"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -258,15 +258,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="820" name="mabel" type="entity" x="3642" y="1062" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer" opacity="0.9">
   <properties>

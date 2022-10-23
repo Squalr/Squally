@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="818">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="820">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -25,7 +25,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="746" name="Generic/MoonDoor" type="decor" x="1679.08" y="380.344" width="648" height="667"/>
+  <object id="746" name="Generic/MoonDoorDark" type="decor" x="1679.08" y="380.344" width="648" height="667"/>
  </objectgroup>
  <objectgroup id="87" name="stairs -6">
   <properties>
@@ -248,7 +248,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="721" name="Generic/DiningTable1" type="decor" x="340.987" y="894.835" width="610" height="301"/>
+  <object id="721" name="Generic/DiningTableDark1" type="decor" x="340.987" y="894.835" width="610" height="301"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -281,22 +281,20 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="783" name="king-redsong-slime" type="entity" x="4478.29" y="1067.33" width="128" height="128">
+  <object id="818" name="agnes" type="entity" x="4842.42" y="1062.37" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value="cure-king"/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="cv-generic"/>
    </properties>
   </object>
-  <object id="789" name="princess-opal" type="entity" x="4045.6" y="1065.21" width="128" height="128">
+  <object id="819" name="jack" type="entity" x="4849.58" y="673.633" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value="cure-king"/>
-    <property name="quest-line" value="talk-to-princess-opal"/>
-    <property name="travel-distance" type="float" value="192"/>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>
