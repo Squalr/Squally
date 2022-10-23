@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="822">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="825">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -231,9 +231,9 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="817" name="Generic/Bookshelf1" type="decor" x="2838.78" y="588.441" width="727" height="608"/>
-  <object id="818" name="Generic/Bookshelf1" type="decor" x="479.431" y="585.19" width="727" height="608"/>
-  <object id="819" name="Generic/Bookshelf1" type="decor" x="3850.47" y="591.19" width="727" height="608"/>
+  <object id="817" name="Generic/Bookshelf1" type="decor" x="2838.78" y="588" width="727" height="608"/>
+  <object id="818" name="Generic/Bookshelf1" type="decor" x="102" y="588" width="727" height="608"/>
+  <object id="819" name="Generic/Bookshelf1" type="decor" x="3850.47" y="588" width="727" height="608"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -244,6 +244,15 @@
    <properties>
     <property name="map" value="CastleValgrind/Town_Main"/>
     <property name="transition" value="study"/>
+   </properties>
+  </object>
+  <object id="822" name="clock-door" type="object" x="1072.7" y="465.605" width="257" height="729">
+   <properties>
+    <property name="door-style" value="old"/>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Throne_Room"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="transition" value="clock"/>
    </properties>
   </object>
  </objectgroup>
@@ -280,6 +289,11 @@
   <object id="779" name="spawn-wood-door" type="object" x="1942.93" y="1067.25" width="128" height="128">
    <properties>
     <property name="transition" value="study"/>
+   </properties>
+  </object>
+  <object id="824" name="spawn" type="object" x="1144.08" y="1064.94" width="128" height="128">
+   <properties>
+    <property name="transition" value="clock"/>
    </properties>
   </object>
  </objectgroup>

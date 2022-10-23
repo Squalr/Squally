@@ -7884,10 +7884,10 @@ namespace Strings
 		virtual ~Items_Misc_Keys_LetterForThePrincess() = default;
 	};
 
-	class Items_Misc_Keys_MageTowerKey : public LocalizedString
+	class Items_Misc_Keys_StudyRoomKey : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_MageTowerKey* create();
+		static Items_Misc_Keys_StudyRoomKey* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7895,8 +7895,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Misc_Keys_MageTowerKey();
-		virtual ~Items_Misc_Keys_MageTowerKey() = default;
+		Items_Misc_Keys_StudyRoomKey();
+		virtual ~Items_Misc_Keys_StudyRoomKey() = default;
 	};
 
 	class Items_Misc_Keys_MagesGuildPrisonKey : public LocalizedString

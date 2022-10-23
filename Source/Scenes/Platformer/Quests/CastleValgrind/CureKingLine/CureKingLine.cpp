@@ -3,6 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 #include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/DefeatAgnes.h"
 #include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/TalkToPrincessOpal.h"
+#include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/UnhauntCastle.h"
 
 using namespace cocos2d;
 

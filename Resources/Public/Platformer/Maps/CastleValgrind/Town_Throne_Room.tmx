@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="818">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="818">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -261,24 +261,6 @@
     <property name="transition" value="throne-room"/>
    </properties>
   </object>
-  <object id="815" name="clock-door" type="object" x="3447.32" y="466.18" width="257" height="729">
-   <properties>
-    <property name="door-style" value="old"/>
-    <property name="map" value="CastleValgrind/Zone_Dark_Town_Throne_Room"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="transition" value="clock"/>
-   </properties>
-  </object>
-  <object id="816" name="clock-door" type="object" x="3431.35" y="-824.332" width="288" height="743">
-   <properties>
-    <property name="clock-style" value="haunted"/>
-    <property name="map" value="Castle_Valgrind/Castle_Main"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="transition" value="clock"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -322,11 +304,6 @@
   <object id="779" name="spawn-wood-door" type="object" x="1942.93" y="1067.25" width="128" height="128">
    <properties>
     <property name="transition" value="throne-room"/>
-   </properties>
-  </object>
-  <object id="817" name="spawn" type="object" x="3512.05" y="1063.85" width="128" height="128">
-   <properties>
-    <property name="transition" value="clock"/>
    </properties>
   </object>
  </objectgroup>

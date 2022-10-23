@@ -23,7 +23,7 @@
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
-#include "Scenes/Platformer/Inventory/Items/Misc/Keys/CastleValgrind/MageTowerKey.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Keys/CastleValgrind/StudyRoomKey.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -105,7 +105,7 @@ void TalkToPrincessOpal::runCinematicSequence()
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Menus_StoryMode::create(),
+			Strings::Menus_TODO::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
@@ -114,7 +114,7 @@ void TalkToPrincessOpal::runCinematicSequence()
 			),
 			[=]()
 			{
-				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ MageTowerKey::create() }));
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ StudyRoomKey::create() }));
 				this->complete();
 			},
 			Voices::GetNextVoiceShort(),
