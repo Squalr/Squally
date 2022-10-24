@@ -42,11 +42,7 @@
 
 using namespace cocos2d;
 
-const std::string EntityHauntedBehavior::MapKey = "petrified";
-const std::string EntityHauntedBehavior::SaveKeyUnhaunted = "SAVE_KEY_UNHAUNTED";
-const std::string EntityHauntedBehavior::PropertyLinkedEnemy = "linked-enemy";
-const std::string EntityHauntedBehavior::MapEventUnhaunted = "unhaunted";
-const std::string EntityHauntedBehavior::MapEventKeyOwnerId = "owner-id";
+const std::string EntityHauntedBehavior::MapKey = "haunted";
 
 EntityHauntedBehavior* EntityHauntedBehavior::create(GameObject* owner)
 {
@@ -65,8 +61,6 @@ EntityHauntedBehavior::EntityHauntedBehavior(GameObject* owner) : super(owner)
 	{
 		this->invalidate();
 	}
-
-	this->toggleQueryable(false);
 }
 
 EntityHauntedBehavior::~EntityHauntedBehavior()
@@ -75,90 +69,10 @@ EntityHauntedBehavior::~EntityHauntedBehavior()
 
 void EntityHauntedBehavior::onLoad()
 {
-	if (this->entity->loadObjectStateOrDefault(EntityHauntedBehavior::SaveKeyUnhaunted, Value(false)).asBool())
-	{
-		this->toggleQueryable(true);
-
-		return;
-	}
-
-	this->entity->watchForComponent<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
-	{
-		hexusBehavior->setVisible(false);
-	});
-	
-	this->entity->getAnimations()->setVisible(false);
-	this->toggleQueryable(true);
+	this->entity->getAnimations()->setOpacity(127);
 }
 
 void EntityHauntedBehavior::onDisable()
 {
 	super::onDisable();
-}
-
-bool EntityHauntedBehavior::tryUnhaunt()
-{
-	if (this->inventory == nullptr)
-	{
-		return false;
-	}
-
-	Item* mirror = this->inventory->getItemOfType<MedusaMirror>();
-
-	PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(mirror));
-
-	this->entity->saveObjectState(EntityHauntedBehavior::SaveKeyUnhaunted, Value(true));
-
-	if (this->entity->getEntityKey() == "elric")
-	{
-		QuestTask::SaveQuestSaveState(CureKingLine::MapKeyQuestLine, UnhauntCastle::MapKeyQuest, UnhauntCastle::SaveKeyElricCured, Value(true));
-	}
-	else if (this->entity->getEntityKey() == "leopold")
-	{
-		QuestTask::SaveQuestSaveState(CureKingLine::MapKeyQuestLine, UnhauntCastle::MapKeyQuest, UnhauntCastle::SaveKeyLeopoldCured, Value(true));
-	}
-
-	ValueMap args = ValueMap();
-
-	args[EntityHauntedBehavior::MapEventKeyOwnerId] = this->entity->getUniqueIdentifier();
-
-	this->entity->broadcastMapEvent(EntityHauntedBehavior::MapEventUnhaunted, args);
-
-	return true;
-}
-
-void EntityHauntedBehavior::runDialogue()
-{
-	this->entity->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* dialogueBehavior)
-	{
-		if (this->entity->getEntityKey() == "ajax")
-		{
-			dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Menus_TODO::create(), Voices::GetNextVoiceShort());
-		}
-		else if (this->entity->getEntityKey() == "griffin")
-		{
-			dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Menus_TODO::create(), Voices::GetNextVoiceShort());
-		}
-		else if (this->entity->getEntityKey() == "geryon")
-		{
-			dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Menus_TODO::create(), Voices::GetNextVoiceMedium());
-		}
-		else if (this->entity->getEntityKey() == "athena")
-		{
-			dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Menus_TODO::create(), Voices::GetNextVoiceShort());
-		}
-		else
-		{
-			dialogueBehavior->getSpeechBubble()->runDialogue(Strings::Menus_TODO::create(), Voices::GetNextVoiceShort());
-		}
-
-		int cureCount = QuestTask::GetQuestSaveStateOrDefault(CureKingLine::MapKeyQuestLine, UnhauntCastle::MapKeyQuest, UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt() + 1;
-
-		if (cureCount >= UnhauntCastle::MaxCuredCount)
-		{
-			Objectives::SetCurrentObjective(ObjectiveKeys::URReturnToHera);
-		}
-
-		QuestTask::SaveQuestSaveState(CureKingLine::MapKeyQuestLine, UnhauntCastle::MapKeyQuest, UnhauntCastle::SaveKeyUnhauntedCount, Value(cureCount));
-	});
 }

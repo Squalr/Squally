@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="812">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="813">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -88,7 +88,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="808" name="castle" type="texture" x="-42" y="-70" width="2284" height="1264"/>
+  <object id="808" name="castle" type="texture" x="-42" y="-70" width="2284" height="1264">
+   <properties>
+    <property name="pool" value="shop-pool-thurstan"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="95" name="columns -0">
   <properties>
@@ -99,7 +103,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="770" name="Generic/Shelf1" type="decor" x="422.601" y="114.954" width="1135" height="753"/>
+  <object id="770" name="Generic/Shelf1" type="decor" x="422.601" y="114.954" width="1135" height="753">
+   <properties>
+    <property name="pool" value="shop-pool-thurstan"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -111,13 +119,12 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="760" name="elric" type="entity" x="1037.5" y="850.554" width="128" height="167">
+  <object id="760" name="thurstan" type="entity" x="1037.5" y="850.554" width="128" height="167">
    <properties>
     <property name="components" value="shopkeeper"/>
     <property name="tag" value="shopkeeper"/>
    </properties>
   </object>
-  <object id="811" name="zombie-elric" type="entity" x="792" y="864.5" width="128" height="167"/>
  </objectgroup>
  <objectgroup id="102" name="decor background">
   <properties>
@@ -151,35 +158,35 @@
   </object>
   <object id="795" name="shop-item" type="object" x="682.67" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-elric"/>
+    <property name="pool" value="shop-pool-thurstan"/>
    </properties>
   </object>
   <object id="796" name="shop-item" type="object" x="976" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-elric"/>
+    <property name="pool" value="shop-pool-thurstan"/>
    </properties>
   </object>
   <object id="797" name="shop-item" type="object" x="1258" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-elric"/>
+    <property name="pool" value="shop-pool-thurstan"/>
    </properties>
   </object>
   <object id="798" name="shop-item" type="object" x="683.53" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-elric"/>
+    <property name="pool" value="shop-pool-thurstan"/>
    </properties>
   </object>
   <object id="799" name="shop-item" type="object" x="976" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-elric"/>
+    <property name="pool" value="shop-pool-thurstan"/>
    </properties>
   </object>
   <object id="800" name="shop-item" type="object" x="1258" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-elric"/>
+    <property name="pool" value="shop-pool-thurstan"/>
    </properties>
   </object>
-  <object id="801" name="shop-pool-elric" type="object" x="1847.68" y="226.045" width="64" height="64"/>
+  <object id="801" name="shop-pool-thurstan" type="object" x="1847.68" y="226.045" width="64" height="64"/>
   <object id="804" name="anvil" type="object" x="126.451" y="960.88" width="249" height="106">
    <properties>
     <property name="linked-tag" value="shopkeeper"/>
@@ -197,6 +204,11 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="812" name="reaper" type="entity" x="716" y="900.5" width="128" height="167">
+   <properties>
+    <property name="components" value="friendly,haunted"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

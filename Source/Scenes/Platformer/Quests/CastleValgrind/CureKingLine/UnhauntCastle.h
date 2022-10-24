@@ -15,9 +15,9 @@ public:
 
 	static const std::string MapKeyQuest;
 	static const std::string SaveKeyUnhauntedCount;
-	static const std::string SaveKeyElricCured;
-	static const std::string SaveKeyLeopoldCured;
-	static const int MaxCuredCount;
+	static const std::string SaveKeyThurstanUnhaunted;
+	static const std::string SaveKeyLeopoldUnhaunted;
+	static const int MaxUnhauntCount;
 
 protected:
 	UnhauntCastle(GameObject* owner, QuestLine* questLine);

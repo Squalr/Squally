@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="814">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="815">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -111,6 +111,12 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="814" name="thurstan" type="entity" x="1059" y="858.5" width="128" height="167">
+   <properties>
+    <property name="components" value="haunted"/>
+    <property name="tag" value="shopkeeper"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="102" name="decor background">
   <properties>

@@ -30,6 +30,7 @@
 #include "Scenes/Platformer/Components/Entities/Friendly/FriendlyBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/Shopkeepers/ShopkeeperBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/Transportation/EFURTransportationBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Haunted/EntityHauntedBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/HelperCombatBehaviors.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Scrappy/Combat/ScrappyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Scrappy/ScrappyBehaviorGroup.h"

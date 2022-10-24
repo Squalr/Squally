@@ -18,11 +18,7 @@ class EntityHauntedBehavior : public GameComponent
 public:
 	static EntityHauntedBehavior* create(GameObject* owner);
 
-	void runDialogue();
-
 	static const std::string MapKey;
-	static const std::string MapEventUnhaunted;
-	static const std::string MapEventKeyOwnerId;
 
 protected:
 	EntityHauntedBehavior(GameObject* owner);
@@ -34,12 +30,5 @@ protected:
 private:
 	typedef GameComponent super;
 
-	bool tryUnhaunt();
-
 	PlatformerEntity* entity = nullptr;
-	cocos2d::Vec2 displayOffset;
-	Inventory* inventory = nullptr;
-
-	static const std::string PropertyLinkedEnemy;
-	static const std::string SaveKeyUnhaunted;
 };

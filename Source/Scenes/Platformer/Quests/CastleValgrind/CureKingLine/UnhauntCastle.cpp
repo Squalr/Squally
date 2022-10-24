@@ -36,9 +36,9 @@ using namespace cocos2d;
 
 const std::string UnhauntCastle::MapKeyQuest = "unhaunt-castle";
 const std::string UnhauntCastle::SaveKeyUnhauntedCount = "SAVE_KEY_UNHAUNTED_COUNT";
-const std::string UnhauntCastle::SaveKeyElricCured = "SAVE_KEY_ELRIC_UNHAUNTED";
-const std::string UnhauntCastle::SaveKeyLeopoldCured = "SAVE_KEY_LEOPOLD_UNHAUNTED";
-const int UnhauntCastle::MaxCuredCount = 4;
+const std::string UnhauntCastle::SaveKeyThurstanUnhaunted = "SAVE_KEY_THURSTAN_UNHAUNTED";
+const std::string UnhauntCastle::SaveKeyLeopoldUnhaunted = "SAVE_KEY_LEOPOLD_UNHAUNTED";
+const int UnhauntCastle::MaxUnhauntCount = 4;
 
 UnhauntCastle* UnhauntCastle::create(GameObject* owner, QuestLine* questLine)
 {
@@ -79,7 +79,7 @@ void UnhauntCastle::onLoad(QuestState questState)
 			{
 				int currentCureCount = this->getQuestSaveStateOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
 
-				if (currentCureCount >= UnhauntCastle::MaxCuredCount)
+				if (currentCureCount >= UnhauntCastle::MaxUnhauntCount)
 				{
 					questBehavior->enableTurnIn();
 
@@ -231,7 +231,7 @@ void UnhauntCastle::setPreText()
 	{
 		this->hera->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
-			int remaining = UnhauntCastle::MaxCuredCount - this->getQuestSaveStateOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
+			int remaining = UnhauntCastle::MaxUnhauntCount - this->getQuestSaveStateOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
 
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 				Strings::Menus_TODO::create()

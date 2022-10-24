@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="107" nextobjectid="997">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="108" nextobjectid="1000">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -276,6 +276,17 @@
   </object>
   <object id="861" name="marble" type="terrain" x="1264.31" y="1355.39" width="3600" height="234.06"/>
  </objectgroup>
+ <objectgroup id="107" name="entities -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="999" name="vampire-lord" type="entity" x="3133.33" y="1227.33" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,haunted"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="91" name="columns -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
@@ -419,16 +430,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="902" name="tyracius" type="entity" x="2940" y="1232.85" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
-  <object id="903" name="zana" type="entity" x="3642.67" y="1249.82" width="128" height="128">
+  <object id="902" name="tyracius" type="entity" x="2955.5" y="1247.85" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -855,15 +857,6 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="786" name="leroy" type="entity" x="2775" y="1307.67" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
   <object id="791" name="rogas" type="entity" x="4476.46" y="2602.64" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
@@ -877,6 +870,11 @@
    <properties>
     <property name="components" value="friendly,disarmed,cv-puzzle-B"/>
     <property name="tag" value="hexus-reanimated-fighter"/>
+   </properties>
+  </object>
+  <object id="998" name="vampiress" type="entity" x="1693.33" y="2601.33" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,haunted"/>
    </properties>
   </object>
  </objectgroup>

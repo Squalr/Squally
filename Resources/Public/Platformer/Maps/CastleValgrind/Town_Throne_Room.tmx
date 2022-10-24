@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="818">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="819">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -287,6 +287,15 @@
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value="cure-king"/>
     <property name="quest-line" value="talk-to-princess-opal"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="818" name="leroy" type="entity" x="4308" y="1067.52" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>

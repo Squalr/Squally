@@ -400,19 +400,19 @@ DeveloperScene::DeveloperScene()
 		
 		- Garin					=> Town_Train
 		- Rogas					=> 1_x (H_1)
-		- [Slime] Mabel			=> Study (H_2)
-		- Gaunt					=> Main (H_3)
-		- Tyracius				=> Main (H_4)
-		- Zana					=> Main_Dark (H_5)
+		- Zana					=> 1_2 (H2)
+		- Mabel					=> Study (H_3)
+		- Gaunt					=> Main (H_4)
+		- Tyracius				=> Main (H_5)
 		- Atreus				=> Main (H_6)
 		- Illia					=> Main
-		- Leon					=> Dark_Town_Throne  (Leroy?)
+		- Leon					=> Dark_Town_Throne
 		- Princess Opal			=> Town_Throne
 		- King Redsong			=> Dark_Town_Throne
 		- King Redsong Slime	=> Town_Throne
 		- [Gorilla?] Leopold	=> Town_Alch
 		- Raven					=> Town_Inn
-		- [Zombie] Elric		=> [Dark] Town_Smith
+		- Thurstan				=> Town_Smith
 
 		- Merlin				=> XXXXX nope
 		*/
@@ -481,7 +481,7 @@ DeveloperScene::DeveloperScene()
 		- Vesuvius				=> Town_Alch
 		- Viper					=> Town_Main
 		- Zelina				=> Town_Main
-		- Thurstan				=> ? Town_Main
+		- [Zombie] Elric		=> ? Town_Main
 		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));

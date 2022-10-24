@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="898">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="899">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -112,6 +112,13 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="898" name="leopold" type="entity" x="1518" y="860.5" width="128" height="167">
+   <properties>
+    <property name="components" value="haunted"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="tag" value="shopkeeper"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="102" name="decor background">
   <properties>

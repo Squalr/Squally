@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="111" nextobjectid="1045">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="111" nextobjectid="1047">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -531,7 +531,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1037" name="vampire-lord" type="entity" x="2839.09" y="1237.04" width="128" height="128">
+  <object id="1037" name="vampire-lord" type="entity" x="2884.09" y="1248.04" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
@@ -540,11 +540,17 @@
     <property name="drop-pool" value="cv-generic"/>
    </properties>
   </object>
-  <object id="1038" name="vampire-lord" type="entity" x="2846.25" y="848.298" width="128" height="128">
+  <object id="1038" name="vampire-lord" type="entity" x="2890.25" y="858.965" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="1045" name="tyracius" type="entity" x="3017" y="1247" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pacing,haunted"/>
+    <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="30" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="834">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="30" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="834">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -203,7 +203,7 @@
   </properties>
   <object id="833" name="raven" type="entity" x="1347.94" y="822.614" width="128" height="167">
    <properties>
-    <property name="components" value="shopkeeper,face-squally"/>
+    <property name="components" value="haunted,shopkeeper,face-squally"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
