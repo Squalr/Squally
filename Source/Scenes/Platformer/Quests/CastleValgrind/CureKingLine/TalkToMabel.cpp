@@ -13,8 +13,10 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Quests/QuestLine.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
+#include "Entities/Platformer/Helpers/DataMines/Gecky.h"
 #include "Entities/Platformer/Npcs/Mages/Mabel.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
@@ -35,6 +37,7 @@
 using namespace cocos2d;
 
 const std::string TalkToMabel::MapKeyQuest = "talk-to-mabel";
+const std::string TalkToMabel::MapEventMabelRevealed = "mabel-revealed";
 
 TalkToMabel* TalkToMabel::create(GameObject* owner, QuestLine* questLine)
 {
@@ -73,16 +76,15 @@ void TalkToMabel::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<Mabel>(this, [=](Mabel* mabel)
 	{
 		this->mabel = mabel;
-		
-		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
-		{
-			this->runCinematicSequence();
-		}
 	}, Mabel::MapKey);
 }
 
 void TalkToMabel::onActivate(bool isActiveThroughSkippable)
 {
+	this->listenForMapEventOnce(TalkToMabel::MapEventMabelRevealed, [=](ValueMap valueMap)
+	{
+		this->runCinematicSequence();
+	});
 }
 
 void TalkToMabel::onComplete()
@@ -100,25 +102,21 @@ void TalkToMabel::runCinematicSequence()
 	{
 		return;
 	}
-	
-	this->mabel->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-	{
-		// Pre-text chain
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Menus_TODO::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->mabel, true)
-			),
-			[=]()
-			{
-				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ StudyRoomKey::create() }));
-				this->complete();
-			},
-			Voices::GetNextVoiceShort(),
-			false
-		));
-	});
+
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Menus_TODO::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->mabel, true)
+		),
+		[=]()
+		{
+			PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ StudyRoomKey::create() }));
+			this->complete();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
 }

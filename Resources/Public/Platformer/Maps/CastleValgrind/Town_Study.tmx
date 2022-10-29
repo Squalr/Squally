@@ -260,6 +260,7 @@
    <properties>
     <property name="components" value="dispel-illusion"/>
     <property name="illusion-group" value="A"/>
+    <property name="send-event" value="mabel-revealed"/>
    </properties>
   </object>
   <object id="828" name="solid" type="collision" x="3358.31" y="-230.755" width="126.878" height="1598.76">
@@ -289,8 +290,8 @@
     <property name="components" value="friendly,pacing,pick-pocket,illusion"/>
     <property name="illusion-group" value="A"/>
     <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
+    <property name="quest" value="talk-to-mabel"/>
+    <property name="quest-line" value="cure-king"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>

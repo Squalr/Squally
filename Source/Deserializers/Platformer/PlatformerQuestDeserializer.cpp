@@ -53,12 +53,12 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	this->lineDeserializers[CureKingLine::MapKeyQuestLine] = [=]() { return (QuestLine*)CureKingLine::create(); };
 	this->lineDeserializers[SkyShipToCastleLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SkyShipToCastleLine::create(); };
 	
-	// BALLMER PEAKS QUESTS
+	// LAMBDA CRYPTS QUESTS
 	
 	// DAEMONS HALLOW QUESTS
 	this->lineDeserializers[ReleasePressureLine::MapKeyQuestLine] = [=]() { return (QuestLine*)ReleasePressureLine::create(); };
 	
-	// LAMBDA CRYPTS QUESTS
+	// BALLMER PEAKS QUESTS
 	
 	// VOID STAR QUESTS
 }

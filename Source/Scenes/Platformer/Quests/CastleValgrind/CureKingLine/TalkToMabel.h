@@ -3,6 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 
 class EvilEye;
+class Gecky;
 class Guano;
 class Mabel;
 class QuestLine;
@@ -31,8 +32,11 @@ private:
 	void runCinematicSequence();
 
 	EvilEye* evilEye = nullptr;
+	Gecky* gecky = nullptr;
 	Guano* guano = nullptr;
 	Mabel* mabel = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
+
+	static const std::string MapEventMabelRevealed;
 };

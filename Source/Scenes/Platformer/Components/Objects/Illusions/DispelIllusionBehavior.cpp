@@ -99,6 +99,8 @@ void DispelIllusionBehavior::onDispelActivated()
 
 	PlatformerEvents::TriggerDispelIllusion(PlatformerEvents::DispelIllusionArgs(this->group));
 
+	this->object->broadcastMapEvent(this->object->getSendEvent(), ValueMap());
+
 	if (this->object != nullptr)
 	{
 		this->object->runAction(FadeTo::create(0.25f, 0));

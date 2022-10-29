@@ -374,6 +374,7 @@ DeveloperScene::DeveloperScene()
 		// ** Needs hexus battles
 		// ** Needs hexus puzzles
 		// ** Cower animations for haunted?
+		// ** New helper?
 
 		// WIP flow:
 		//	- Castle is visibly haunted
