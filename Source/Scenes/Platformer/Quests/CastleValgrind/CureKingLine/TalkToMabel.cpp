@@ -1,4 +1,4 @@
-#include "TalkToPrincessOpal.h"
+#include "TalkToMabel.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -15,7 +15,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
-#include "Entities/Platformer/Npcs/CastleValgrind/PrincessOpal.h"
+#include "Entities/Platformer/Npcs/Mages/Mabel.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Camera/CameraStop.h"
@@ -34,26 +34,26 @@
 
 using namespace cocos2d;
 
-const std::string TalkToPrincessOpal::MapKeyQuest = "talk-to-princess-opal";
+const std::string TalkToMabel::MapKeyQuest = "talk-to-mabel";
 
-TalkToPrincessOpal* TalkToPrincessOpal::create(GameObject* owner, QuestLine* questLine)
+TalkToMabel* TalkToMabel::create(GameObject* owner, QuestLine* questLine)
 {
-	TalkToPrincessOpal* instance = new TalkToPrincessOpal(owner, questLine);
+	TalkToMabel* instance = new TalkToMabel(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-TalkToPrincessOpal::TalkToPrincessOpal(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToPrincessOpal::MapKeyQuest, false)
+TalkToMabel::TalkToMabel(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToMabel::MapKeyQuest, false)
 {
 }
 
-TalkToPrincessOpal::~TalkToPrincessOpal()
+TalkToMabel::~TalkToMabel()
 {
 }
 
-void TalkToPrincessOpal::onLoad(QuestState questState)
+void TalkToMabel::onLoad(QuestState questState)
 {
 	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
@@ -70,38 +70,38 @@ void TalkToPrincessOpal::onLoad(QuestState questState)
 		this->squally = squally;
 	}, Squally::MapKey);
 
-	ObjectEvents::WatchForObject<PrincessOpal>(this, [=](PrincessOpal* princessOpal)
+	ObjectEvents::WatchForObject<Mabel>(this, [=](Mabel* mabel)
 	{
-		this->princessOpal = princessOpal;
+		this->mabel = mabel;
 		
 		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 		{
 			this->runCinematicSequence();
 		}
-	}, PrincessOpal::MapKey);
+	}, Mabel::MapKey);
 }
 
-void TalkToPrincessOpal::onActivate(bool isActiveThroughSkippable)
+void TalkToMabel::onActivate(bool isActiveThroughSkippable)
 {
 }
 
-void TalkToPrincessOpal::onComplete()
+void TalkToMabel::onComplete()
 {
 }
 
-void TalkToPrincessOpal::onSkipped()
+void TalkToMabel::onSkipped()
 {
 	this->removeAllListeners();
 }
 
-void TalkToPrincessOpal::runCinematicSequence()
+void TalkToMabel::runCinematicSequence()
 {
-	if (this->princessOpal == nullptr)
+	if (this->mabel == nullptr)
 	{
 		return;
 	}
 	
-	this->princessOpal->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	this->mabel->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -110,7 +110,7 @@ void TalkToPrincessOpal::runCinematicSequence()
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->princessOpal, true)
+				DialogueEvents::BuildPreviewNode(&this->mabel, true)
 			),
 			[=]()
 			{

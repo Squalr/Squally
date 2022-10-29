@@ -2,7 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 #include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/DefeatAgnes.h"
-#include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/TalkToPrincessOpal.h"
+#include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/TalkToMabel.h"
 #include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/UnhauntCastle.h"
 
 using namespace cocos2d;
@@ -20,7 +20,8 @@ CureKingLine* CureKingLine::create()
 
 CureKingLine::CureKingLine() : super(CureKingLine::MapKeyQuestLine,
 	{
-		QuestData(TalkToPrincessOpal::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToPrincessOpal::create(owner, questLine); }),
+		QuestData(TalkToMabel::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToMabel::create(owner, questLine); }),
+		QuestData(UnhauntCastle::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return UnhauntCastle::create(owner, questLine); }),
 		QuestData(DefeatAgnes::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return DefeatAgnes::create(owner, questLine); }),
 	})
 {

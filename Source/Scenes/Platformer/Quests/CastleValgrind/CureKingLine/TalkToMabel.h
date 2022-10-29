@@ -2,22 +2,23 @@
 
 #include "Engine/Quests/QuestTask.h"
 
+class EvilEye;
 class Guano;
-class PrincessOpal;
+class Mabel;
 class QuestLine;
 class Scrappy;
 class Squally;
 
-class TalkToPrincessOpal : public QuestTask
+class TalkToMabel : public QuestTask
 {
 public:
-	static TalkToPrincessOpal* create(GameObject* owner, QuestLine* questLine);
+	static TalkToMabel* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	TalkToPrincessOpal(GameObject* owner, QuestLine* questLine);
-	virtual ~TalkToPrincessOpal();
+	TalkToMabel(GameObject* owner, QuestLine* questLine);
+	virtual ~TalkToMabel();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;
@@ -29,8 +30,9 @@ private:
 
 	void runCinematicSequence();
 
+	EvilEye* evilEye = nullptr;
 	Guano* guano = nullptr;
-	PrincessOpal* princessOpal = nullptr;
+	Mabel* mabel = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 };

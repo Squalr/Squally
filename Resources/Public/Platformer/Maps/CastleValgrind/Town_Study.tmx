@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="826">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="830">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -256,6 +256,23 @@
     <property name="transition" value="clock"/>
    </properties>
   </object>
+  <object id="826" name="magic-wall" type="object" x="2772.14" y="937.351" width="318.249" height="261.59">
+   <properties>
+    <property name="components" value="dispel-illusion"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+  <object id="828" name="solid" type="collision" x="3358.31" y="-230.755" width="126.878" height="1598.76">
+   <properties>
+    <property name="tag" value="quest-solid-wall"/>
+   </properties>
+  </object>
+  <object id="829" name="camera-stop" type="object" x="3328.98" y="-91.422" width="126.878" height="1366.76">
+   <properties>
+    <property name="no-y" type="bool" value="false"/>
+    <property name="tag" value="quest-camera-stop"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -269,7 +286,8 @@
   </properties>
   <object id="820" name="mabel" type="entity" x="2861.54" y="1069.83" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,pacing,pick-pocket,illusion"/>
+    <property name="illusion-group" value="A"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>

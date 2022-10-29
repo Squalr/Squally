@@ -373,6 +373,8 @@ DeveloperScene::DeveloperScene()
 		// ** Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
 		// ** Needs hexus battles
 		// ** Needs hexus puzzles
+		// ** Cower animations for haunted?
+
 		// WIP flow:
 		//	- Castle is visibly haunted
 		//	- Throne room locked
