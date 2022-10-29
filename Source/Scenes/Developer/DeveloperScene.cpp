@@ -376,11 +376,13 @@ DeveloperScene::DeveloperScene()
 		// ** Needs hexus battles
 		// ** Needs hexus puzzles
 		// WIP flow:
-		// 	- Clock to go to dark side. TODO: Move clock out of throne room.
+		//	- Throne room locked
+		//	- ? Clock repair
+		//	- Clock to dark side
 		//	- 'Unhaunt' NPCs on each map
-		//		- King cursed as slime
-		//		- Somebody as Leroy
-		//		- Zombie Elric (yay, a use for this)
+		//	- ? Some event to move bookcase. Maybe a hole on dark side to show the hidden tunnel.
+		// 		- Mabel asks you to grab the Arcane book from shelf, it causes the shelf to move in overworld, showing a boarded hole.
+		//			- Arcane => Defend for two turns
 		// 	- Secret room behind study room (dark side only, helps make shit easier for me) leading to 2_x zones
 
 		/*
@@ -399,18 +401,17 @@ DeveloperScene::DeveloperScene()
 		- [B] Agnes				2_x 	=> jecxz		%ecx == 0	<Bats, Bat Swarm RNG per tick to attack>
 		
 		- Garin					=> Town_Train
-		- Rogas					=> 1_x (H_1)
-		- Zana					=> 1_2 (H2)
-		- Mabel					=> Study (H_3)
-		- Gaunt					=> Main (H_4)
-		- Tyracius				=> Main (H_5)
-		- Atreus				=> Main (H_6)
+		- Zana					=> 1_2 (H_1)
+		- Gaunt					=> Main (H_2)
+		- Tyracius				=> Main (H_3)
+		- Atreus				=> Main
+		- Mabel					=> Study (H_5)
 		- Illia					=> Main
-		- Leon					=> Dark_Town_Throne
+		- Leon					=> 2_x (H_6)
 		- Princess Opal			=> Town_Throne
-		- King Redsong			=> Dark_Town_Throne
-		- King Redsong Slime	=> Town_Throne
-		- [Gorilla?] Leopold	=> Town_Alch
+		- [Slime] King Redsong	=> [Dark_]Town_Throne
+		- Rogas					=> Town_Inn (H_4)
+		- Leopold				=> Town_Alch
 		- Raven					=> Town_Inn
 		- Thurstan				=> Town_Smith
 

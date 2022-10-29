@@ -204,7 +204,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="812" name="reaper" type="entity" x="716" y="900.5" width="128" height="167">
+  <object id="812" name="abomination" type="entity" x="716" y="900.5" width="128" height="167">
    <properties>
     <property name="components" value="friendly,haunted"/>
    </properties>

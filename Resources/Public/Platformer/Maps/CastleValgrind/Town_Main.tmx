@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="108" nextobjectid="1000">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="108" nextobjectid="1001">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -281,7 +281,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="999" name="vampire-lord" type="entity" x="3133.33" y="1227.33" width="128" height="128">
+  <object id="999" name="skeletal-baron" type="entity" x="3133.33" y="1227.33" width="128" height="128">
    <properties>
     <property name="components" value="friendly,haunted"/>
    </properties>
@@ -857,7 +857,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="791" name="rogas" type="entity" x="4476.46" y="2602.64" width="128" height="128">
+  <object id="791" name="atreus" type="entity" x="4476.46" y="2602.64" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
@@ -872,9 +872,15 @@
     <property name="tag" value="hexus-reanimated-fighter"/>
    </properties>
   </object>
-  <object id="998" name="vampiress" type="entity" x="1693.33" y="2601.33" width="128" height="128">
+  <object id="998" name="wraith" type="entity" x="1693.33" y="2601.33" width="128" height="128">
    <properties>
     <property name="components" value="friendly,haunted"/>
+   </properties>
+  </object>
+  <object id="1000" name="reaper" type="entity" x="4694.85" y="2603.7" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,haunted"/>
+    <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

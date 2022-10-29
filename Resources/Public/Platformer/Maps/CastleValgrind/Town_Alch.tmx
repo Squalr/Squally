@@ -198,7 +198,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="895" name="wraith" type="entity" x="1108" y="900.5" width="128" height="167">
+  <object id="895" name="vampiress" type="entity" x="1108" y="900.5" width="128" height="167">
    <properties>
     <property name="components" value="friendly,haunted"/>
    </properties>
