@@ -102,73 +102,8 @@ ClockDoor::~ClockDoor()
 void ClockDoor::onEnter()
 {
 	super::onEnter();
-
-	const float PendulumSpeed = 0.85f;
-	const float PendulumSwing = 12.5f;
-
-	if (!this->isHaunted)
-	{
-		this->pendulum->runAction(RepeatForever::create(Sequence::create(
-			EaseSineOut::create(RotateTo::create(PendulumSpeed, PendulumSwing)),
-			CallFunc::create([=]()
-			{
-			}),
-			EaseSineIn::create(RotateTo::create(PendulumSpeed, 0.0f)),
-			EaseSineOut::create(RotateTo::create(PendulumSpeed, -PendulumSwing)),
-			CallFunc::create([=]()
-			{
-			}),
-			EaseSineIn::create(RotateTo::create(PendulumSpeed, 0.0f)),
-			nullptr
-		)));
-
-		const float OneFakeMinute = 2.0f;
-		const float OneFakeHour = OneFakeMinute * 60.0f / 8.0f;
-
-		this->handMinutes->runAction(RepeatForever::create(Sequence::create(
-			RotateBy::create(OneFakeMinute, 360.0f),
-			nullptr
-		)));
-
-		this->handHours->runAction(RepeatForever::create(Sequence::create(
-			RotateBy::create(OneFakeHour, 360.0f),
-			nullptr
-		)));
-
-		static const std::vector<float> WeightInitDelays = { 1.14f, 2.12f, 0.37f };
-		static const std::vector<float> WeightSpeeds = { 1.91f, 2.12f, 2.37f };
-		static const std::vector<float> WeightDelays = { 1.91f, 2.12f, 2.37f };
-		static const std::vector<float> Deltas = { 32.0f, -16.0f, 16.0f };
-
-		for (int index = 0; index < int(this->weights.size()); index++)
-		{
-			Node* weight = std::get<0>(this->weights[index]);
-			Node* spinner = std::get<1>(this->weights[index]);
-
-			weight->runAction(Sequence::create(
-				DelayTime::create(WeightInitDelays[index]),
-				CallFunc::create([=]()
-				{
-					weight->runAction(RepeatForever::create(Sequence::create(
-						EaseSineInOut::create(MoveBy::create(WeightSpeeds[index], Vec2(0.0f, Deltas[index]))),
-						DelayTime::create(WeightDelays[index]),
-						EaseSineInOut::create(MoveBy::create(WeightSpeeds[index], Vec2(0.0f, -Deltas[index]))),
-						DelayTime::create(WeightDelays[index]),
-						nullptr
-					)));
-				}), nullptr));
-			spinner->runAction(Sequence::create(
-				DelayTime::create(WeightInitDelays[index]),
-				CallFunc::create([=]()
-				{
-					spinner->runAction(RepeatForever::create(Sequence::create(
-						RotateBy::create(WeightSpeeds[index], 360.0f),
-						DelayTime::create(WeightDelays[index]),
-						nullptr
-					)));
-				}), nullptr));
-		}
-	}
+	
+	this->runAnimations();
 }
 
 void ClockDoor::initializePositions()
@@ -196,6 +131,112 @@ void ClockDoor::initializePositions()
 void ClockDoor::initializeListeners()
 {
 	super::initializeListeners();
+}
+
+void ClockDoor::lock(bool animate)
+{
+	super::lock(animate);
+
+	this->stopAnimations();
+}
+
+void ClockDoor::unlock(bool animate)
+{
+	super::unlock(animate);
+
+	this->runAnimations();
+}
+
+void ClockDoor::runAnimations()
+{
+	if (this->isHaunted || this->isLocked || this->isAnimating)
+	{
+		return;
+	}
+
+	const float PendulumSpeed = 0.85f;
+	const float PendulumSwing = 12.5f;
+
+	this->isAnimating = true;
+
+	this->pendulum->runAction(RepeatForever::create(Sequence::create(
+		EaseSineOut::create(RotateTo::create(PendulumSpeed, PendulumSwing)),
+		CallFunc::create([=]()
+		{
+		}),
+		EaseSineIn::create(RotateTo::create(PendulumSpeed, 0.0f)),
+		EaseSineOut::create(RotateTo::create(PendulumSpeed, -PendulumSwing)),
+		CallFunc::create([=]()
+		{
+		}),
+		EaseSineIn::create(RotateTo::create(PendulumSpeed, 0.0f)),
+		nullptr
+	)));
+
+	const float OneFakeMinute = 2.0f;
+	const float OneFakeHour = OneFakeMinute * 60.0f / 8.0f;
+
+	this->handMinutes->runAction(RepeatForever::create(Sequence::create(
+		RotateBy::create(OneFakeMinute, 360.0f),
+		nullptr
+	)));
+
+	this->handHours->runAction(RepeatForever::create(Sequence::create(
+		RotateBy::create(OneFakeHour, 360.0f),
+		nullptr
+	)));
+
+	static const std::vector<float> WeightInitDelays = { 1.14f, 2.12f, 0.37f };
+	static const std::vector<float> WeightSpeeds = { 1.91f, 2.12f, 2.37f };
+	static const std::vector<float> WeightDelays = { 1.91f, 2.12f, 2.37f };
+	static const std::vector<float> Deltas = { 32.0f, -16.0f, 16.0f };
+
+	for (int index = 0; index < int(this->weights.size()); index++)
+	{
+		Node* weight = std::get<0>(this->weights[index]);
+		Node* spinner = std::get<1>(this->weights[index]);
+
+		weight->runAction(Sequence::create(
+			DelayTime::create(WeightInitDelays[index]),
+			CallFunc::create([=]()
+			{
+				weight->runAction(RepeatForever::create(Sequence::create(
+					EaseSineInOut::create(MoveBy::create(WeightSpeeds[index], Vec2(0.0f, Deltas[index]))),
+					DelayTime::create(WeightDelays[index]),
+					EaseSineInOut::create(MoveBy::create(WeightSpeeds[index], Vec2(0.0f, -Deltas[index]))),
+					DelayTime::create(WeightDelays[index]),
+					nullptr
+				)));
+			}), nullptr));
+		spinner->runAction(Sequence::create(
+			DelayTime::create(WeightInitDelays[index]),
+			CallFunc::create([=]()
+			{
+				spinner->runAction(RepeatForever::create(Sequence::create(
+					RotateBy::create(WeightSpeeds[index], 360.0f),
+					DelayTime::create(WeightDelays[index]),
+					nullptr
+				)));
+			}), nullptr));
+	}
+}
+
+void ClockDoor::stopAnimations()
+{
+	this->isAnimating = false;
+
+	this->pendulum->stopAllActions();
+	this->handMinutes->stopAllActions();
+	this->handHours->stopAllActions();
+
+	for (int index = 0; index < int(this->weights.size()); index++)
+	{
+		Node* weight = std::get<0>(this->weights[index]);
+		Node* spinner = std::get<1>(this->weights[index]);
+
+		weight->stopAllActions();
+		spinner->stopAllActions();
+	}
 }
 
 std::tuple<cocos2d::Node*, cocos2d::Node*> ClockDoor::createWeight(std::string weightResource)

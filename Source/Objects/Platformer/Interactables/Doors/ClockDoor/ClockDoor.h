@@ -16,6 +16,9 @@ class ClockDoor : public Portal
 public:
 	static ClockDoor* create(cocos2d::ValueMap& properties);
 
+	void lock(bool animate = true) override;
+	void unlock(bool animate = true) override;
+
 	static const std::string MapKey;
 
 protected:
@@ -30,6 +33,9 @@ protected:
 
 private:
 	typedef Portal super;
+
+	void runAnimations();
+	void stopAnimations();
 	
 	std::tuple<cocos2d::Node*, cocos2d::Node*> createWeight(std::string weightResource);
 
@@ -47,6 +53,7 @@ private:
 	SmartParticles* portalParticles = nullptr;
 	SmartParticles* edgeParticles = nullptr;
 
+	bool isAnimating = false;
 	bool isHaunted = false;
 	
 	static const std::string PropertyClockStyle;

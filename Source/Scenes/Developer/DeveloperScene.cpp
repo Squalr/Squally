@@ -370,20 +370,20 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ==================
 		// ** Traps: Organ gun, cannon, catapult, ballista, heaven hug (FPU acceptable, given that jmps are pretty much done)
-		// ** Finish maps and corresponding "dark" maps (alternatively a game flag that is toggled to load in the correct layers)
-		// ** Puzzles in dark maps can influence objects in normal maps. Typical inverse world puzzles.
 		// ** Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
 		// ** Needs hexus battles
 		// ** Needs hexus puzzles
 		// WIP flow:
+		//	- Castle is visibly haunted
 		//	- Throne room locked
-		//	- ? Clock repair
-		//	- Clock to dark side
+		//	- study room clock [repairable] to dark side
 		//	- 'Unhaunt' NPCs on each map
-		//	- ? Some event to move bookcase. Maybe a hole on dark side to show the hidden tunnel.
-		// 		- Mabel asks you to grab the Arcane book from shelf, it causes the shelf to move in overworld, showing a boarded hole.
-		//			- Arcane => Defend for two turns
+		// 	- Mabel asks you to grab the Arcane book from shelf, it causes the shelf to move in overworld, showing a boarded hole.
+		//		- Maybe a hole on dark side to tease the hidden tunnel.
+		//		- Arcane => Defend for two turns
+		//		- Enter hole from dark side after bookshelf moved
 		// 	- Secret room behind study room (dark side only, helps make shit easier for me) leading to 2_x zones
+		// 	- Eventually 2_x leads back to throne room [dark]
 
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
