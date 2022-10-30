@@ -430,7 +430,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="902" name="tyracius" type="entity" x="2955.5" y="1247.85" width="128" height="128">
+  <object id="902" name="leon" type="entity" x="2955.5" y="1247.85" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>

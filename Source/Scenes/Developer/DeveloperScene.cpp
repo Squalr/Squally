@@ -374,6 +374,12 @@ DeveloperScene::DeveloperScene()
 		// ** Needs hexus battles
 		// ** Needs hexus puzzles
 		// ** Cower animations for haunted?
+		//	X Leopold
+		//	X Raven
+		//	X Atreus
+		//	X Gaunt
+		//	X Leon
+		//	X Thurstan
 		// ** New helper?
 
 		// WIP flow:
@@ -406,11 +412,11 @@ DeveloperScene::DeveloperScene()
 		- Garin					=> Town_Train
 		- Zana					=> 1_2 (H_1)
 		- Gaunt					=> Main (H_2)
-		- Tyracius				=> Main (H_3)
+		- Leon					=> Main (H_3)
 		- Atreus				=> Main
 		- Mabel					=> Study (H_5)
 		- Illia					=> Main
-		- Leon					=> 2_x (H_6)
+		- Tyracius				=> 2_x (H_6)
 		- Princess Opal			=> Town_Throne
 		- [Slime] King Redsong	=> [Dark_]Town_Throne
 		- Rogas					=> Town_Inn (H_4)
