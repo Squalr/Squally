@@ -31,6 +31,8 @@ private:
 	PlatformerEnemy* ownerAsEnemy = nullptr;
 	PlatformerFriendly* ownerAsFriendly = nullptr;
 	bool isOtherWorld = false;
+	std::string hauntedKey;
 
 	static const std::string PropertyOtherWorld;
+	static const std::string PropertyHauntedKey;
 };

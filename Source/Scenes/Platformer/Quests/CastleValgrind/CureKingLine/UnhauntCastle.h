@@ -15,8 +15,7 @@ public:
 
 	static const std::string MapKeyQuest;
 	static const std::string SaveKeyUnhauntedCount;
-	static const std::string SaveKeyThurstanUnhaunted;
-	static const std::string SaveKeyLeopoldUnhaunted;
+	static const std::string SaveKeyPrefixUnhaunted;
 	static const int MaxUnhauntCount;
 
 protected:

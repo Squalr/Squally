@@ -922,13 +922,14 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1039" name="reaper" type="entity" x="1697.26" y="2600.07" width="128" height="128">
+  <object id="1039" name="wraith" type="entity" x="1697.26" y="2600.07" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-b"/>
     <property name="components" value="enemy,haunted,agro"/>
     <property name="drop-pool" value="cv-generic"/>
+    <property name="haunted-key" value="wraith"/>
     <property name="other-world" type="bool" value="false"/>
    </properties>
   </object>
@@ -939,9 +940,10 @@
     <property name="components" value="ally"/>
    </properties>
   </object>
-  <object id="1047" name="leon" type="entity" x="2068.87" y="2599.92" width="128" height="128">
+  <object id="1047" name="gaunt" type="entity" x="2068.87" y="2599.92" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,haunted"/>
+    <property name="haunted-key" value="wraith"/>
     <property name="other-world" type="bool" value="true"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
@@ -953,6 +955,7 @@
     <property name="battle-tag" value="group-c"/>
     <property name="components" value="enemy,haunted,agro"/>
     <property name="drop-pool" value="cv-generic"/>
+    <property name="haunted-key" value="reaper"/>
     <property name="other-world" type="bool" value="false"/>
    </properties>
   </object>
@@ -966,6 +969,7 @@
   <object id="1050" name="atreus" type="entity" x="4458.52" y="2602.67" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,haunted"/>
+    <property name="haunted-key" value="reaper"/>
     <property name="other-world" type="bool" value="true"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>

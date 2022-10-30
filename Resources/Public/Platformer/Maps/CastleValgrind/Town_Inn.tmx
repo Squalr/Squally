@@ -203,8 +203,9 @@
   </properties>
   <object id="760" name="raven" type="entity" x="1442.93" y="851.352" width="128" height="167">
    <properties>
-    <property name="components" value="shopkeeper,hauntedface-squally"/>
+    <property name="components" value="shopkeeper,haunted,face-squally"/>
     <property name="flip-x" type="bool" value="true"/>
+    <property name="haunted-key" value="abomination"/>
     <property name="other-world" type="bool" value="false"/>
    </properties>
   </object>
@@ -268,12 +269,15 @@
   <object id="831" name="abomination" type="entity" x="1190.55" y="900.5" width="128" height="167">
    <properties>
     <property name="components" value="friendly,haunted"/>
+    <property name="haunted-key" value="abomination"/>
     <property name="other-world" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="832" name="rogas" type="entity" x="1954.06" y="939.758" width="128" height="128">
+  <object id="832" name="rogas" type="entity" x="1836.07" y="936.882" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,haunted,pacing,pick-pocket"/>
+    <property name="haunted-key" value="abomination"/>
+    <property name="other-world" type="bool" value="false"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>

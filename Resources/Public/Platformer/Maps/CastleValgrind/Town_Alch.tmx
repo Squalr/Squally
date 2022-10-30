@@ -116,6 +116,7 @@
    <properties>
     <property name="components" value="shopkeeper,haunted"/>
     <property name="flip-x" type="bool" value="true"/>
+    <property name="haunted-key" value="vampiress"/>
     <property name="other-world" type="bool" value="false"/>
     <property name="tag" value="shopkeeper"/>
    </properties>
@@ -202,6 +203,7 @@
   <object id="895" name="vampiress" type="entity" x="1108" y="900.5" width="128" height="167">
    <properties>
     <property name="components" value="friendly,haunted"/>
+    <property name="haunted-key" value="vampiress"/>
     <property name="other-world" type="bool" value="true"/>
    </properties>
   </object>

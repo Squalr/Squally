@@ -853,6 +853,7 @@
   <object id="782" name="gaunt" type="entity" x="2115.67" y="2602" width="128" height="128">
    <properties>
     <property name="components" value="friendly,haunted,pacing,pick-pocket"/>
+    <property name="haunted-key" value="wraith"/>
     <property name="other-world" type="bool" value="false"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
@@ -863,6 +864,7 @@
   <object id="791" name="atreus" type="entity" x="4476.46" y="2602.64" width="128" height="128">
    <properties>
     <property name="components" value="friendly,haunted,pacing,pick-pocket"/>
+    <property name="haunted-key" value="reaper"/>
     <property name="other-world" type="bool" value="false"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
@@ -879,6 +881,7 @@
   <object id="998" name="wraith" type="entity" x="1693.33" y="2601.33" width="128" height="128">
    <properties>
     <property name="components" value="friendly,haunted"/>
+    <property name="haunted-key" value="wraith"/>
     <property name="other-world" type="bool" value="true"/>
    </properties>
   </object>
@@ -886,6 +889,7 @@
    <properties>
     <property name="components" value="friendly,haunted"/>
     <property name="flip-x" type="bool" value="true"/>
+    <property name="haunted-key" value="reaper"/>
     <property name="other-world" type="bool" value="true"/>
    </properties>
   </object>

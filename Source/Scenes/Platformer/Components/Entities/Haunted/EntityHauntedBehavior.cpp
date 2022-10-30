@@ -46,6 +46,7 @@ using namespace cocos2d;
 
 const std::string EntityHauntedBehavior::MapKey = "haunted";
 const std::string EntityHauntedBehavior::PropertyOtherWorld = "other-world";
+const std::string EntityHauntedBehavior::PropertyHauntedKey = "haunted-key";
 
 EntityHauntedBehavior* EntityHauntedBehavior::create(GameObject* owner)
 {
@@ -68,6 +69,7 @@ EntityHauntedBehavior::EntityHauntedBehavior(GameObject* owner) : super(owner)
 	else
 	{
 		this->isOtherWorld = GameUtils::getKeyOrDefault(this->owner->properties, EntityHauntedBehavior::PropertyOtherWorld, Value(false)).asBool();
+		this->hauntedKey = GameUtils::getKeyOrDefault(this->owner->properties, EntityHauntedBehavior::PropertyHauntedKey, Value("")).asString();
 	}
 }
 
@@ -85,13 +87,32 @@ void EntityHauntedBehavior::onLoad()
 		}
 
 		this->ownerAsFriendly->setState(StateKeys::PatrolHijacked, Value(true));
-		this->ownerAsFriendly->getAnimations()->playAnimation("Cower", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
+
+		// Defer 1 frame to give the dead enemy a chance to persist the save key
+		this->defer([=]()
+		{
+			if (!SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(false)).asBool())
+			{
+				this->ownerAsFriendly->getAnimations()->playAnimation("Cower", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
+			}
+		});
 	}
 	else if (this->ownerAsEnemy != nullptr)
 	{
 		if (this->isOtherWorld)
 		{
 			this->ownerAsEnemy->getAnimations()->setOpacity(127);
+		}
+
+		if (!this->ownerAsEnemy->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+		{
+			if (!SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(false)).asBool())
+			{
+				SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(true));
+
+				int unhauntedCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
+				SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeyUnhauntedCount, Value(unhauntedCount + 1));
+			}
 		}
 	}
 }
