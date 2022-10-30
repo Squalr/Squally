@@ -16,7 +16,9 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/PlatformerFriendly.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
@@ -43,6 +45,7 @@
 using namespace cocos2d;
 
 const std::string EntityHauntedBehavior::MapKey = "haunted";
+const std::string EntityHauntedBehavior::PropertyOtherWorld = "other-world";
 
 EntityHauntedBehavior* EntityHauntedBehavior::create(GameObject* owner)
 {
@@ -55,11 +58,16 @@ EntityHauntedBehavior* EntityHauntedBehavior::create(GameObject* owner)
 
 EntityHauntedBehavior::EntityHauntedBehavior(GameObject* owner) : super(owner)
 {
-	this->entity = dynamic_cast<PlatformerEntity*>(owner);
+	this->ownerAsEnemy = dynamic_cast<PlatformerEnemy*>(owner);
+	this->ownerAsFriendly = dynamic_cast<PlatformerFriendly*>(owner);
 
-	if (this->entity == nullptr)
+	if (this->ownerAsEnemy == nullptr && this->ownerAsFriendly == nullptr)
 	{
 		this->invalidate();
+	}
+	else
+	{
+		this->isOtherWorld = GameUtils::getKeyOrDefault(this->owner->properties, EntityHauntedBehavior::PropertyOtherWorld, Value(false)).asBool();
 	}
 }
 
@@ -69,7 +77,23 @@ EntityHauntedBehavior::~EntityHauntedBehavior()
 
 void EntityHauntedBehavior::onLoad()
 {
-	this->entity->getAnimations()->setOpacity(127);
+	if (this->ownerAsFriendly != nullptr)
+	{
+		if (this->isOtherWorld)
+		{
+			this->ownerAsFriendly->getAnimations()->setOpacity(127);
+		}
+
+		this->ownerAsFriendly->setState(StateKeys::PatrolHijacked, Value(true));
+		this->ownerAsFriendly->getAnimations()->playAnimation("Cower", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
+	}
+	else if (this->ownerAsEnemy != nullptr)
+	{
+		if (this->isOtherWorld)
+		{
+			this->ownerAsEnemy->getAnimations()->setOpacity(127);
+		}
+	}
 }
 
 void EntityHauntedBehavior::onDisable()

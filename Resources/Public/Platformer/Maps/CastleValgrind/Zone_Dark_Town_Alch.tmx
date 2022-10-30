@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="899">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="899">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -116,6 +116,7 @@
    <properties>
     <property name="components" value="haunted"/>
     <property name="flip-x" type="bool" value="true"/>
+    <property name="other-world" type="bool" value="true"/>
     <property name="tag" value="shopkeeper"/>
    </properties>
   </object>
@@ -167,16 +168,17 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="896" name="wraith" type="entity" x="1263.27" y="937.277" width="128" height="128">
+  <object id="896" name="vampiress" type="entity" x="1263.27" y="937.277" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,haunted,agro"/>
     <property name="drop-pool" value="cv-generic"/>
+    <property name="other-world" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="897" name="wraith" type="entity" x="1270.43" y="548.542" width="128" height="128">
+  <object id="897" name="vampiress" type="entity" x="1270.43" y="548.542" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="834">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="835">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -287,6 +287,15 @@
   <object id="833" name="spawn" type="object" x="3524.47" y="1065.97" width="128" height="128">
    <properties>
     <property name="transition" value="clock"/>
+   </properties>
+  </object>
+  <object id="834" name="mabel" type="entity" x="2837.84" y="1067.1" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,haunted,pacing,pick-pocket"/>
+    <property name="other-world" type="bool" value="true"/>
+    <property name="quest" value=""/>
+    <property name="quest-line" value=""/>
+    <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
  </objectgroup>

@@ -3,7 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 
 class Guano;
-class Hera;
+class Mabel;
 class QuestLine;
 class Scrappy;
 class Squally;
@@ -35,7 +35,7 @@ private:
 	void setPreText();
 
 	Guano* guano = nullptr;
-	Hera* hera = nullptr;
+	Mabel* mabel = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 };

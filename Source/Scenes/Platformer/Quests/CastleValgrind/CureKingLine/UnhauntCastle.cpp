@@ -15,7 +15,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
-#include "Entities/Platformer/Npcs/UnderflowRuins/Hera.h"
+#include "Entities/Platformer/Npcs/Mages/Mabel.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Camera/CameraStop.h"
@@ -69,13 +69,13 @@ void UnhauntCastle::onLoad(QuestState questState)
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	ObjectEvents::WatchForObject<Hera>(this, [=](Hera* hera)
+	ObjectEvents::WatchForObject<Mabel>(this, [=](Mabel* mabel)
 	{
-		this->hera = hera;
+		this->mabel = mabel;
 		
 		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 		{
-			this->hera->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+			this->mabel->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 			{
 				int currentCureCount = this->getQuestSaveStateOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
 
@@ -93,7 +93,7 @@ void UnhauntCastle::onLoad(QuestState questState)
 				}
 			});
 		}
-	}, Hera::MapKey);
+	}, Mabel::MapKey);
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
@@ -107,7 +107,7 @@ void UnhauntCastle::onActivate(bool isActiveThroughSkippable)
 
 void UnhauntCastle::onComplete()
 {
-	this->hera->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+	this->mabel->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{
 		questBehavior->disableAll();
 	});
@@ -122,12 +122,12 @@ void UnhauntCastle::onSkipped()
 
 void UnhauntCastle::runCinematicSequence()
 {
-	if (this->hera == nullptr)
+	if (this->mabel == nullptr)
 	{
 		return;
 	}
 	
-	this->hera->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	this->mabel->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -136,7 +136,7 @@ void UnhauntCastle::runCinematicSequence()
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->hera, true)
+				DialogueEvents::BuildPreviewNode(&this->mabel, true)
 			),
 			[=]()
 			{
@@ -152,7 +152,7 @@ void UnhauntCastle::runCinematicSequence()
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->hera, true)
+				DialogueEvents::BuildPreviewNode(&this->mabel, true)
 			),
 			[=]()
 			{
@@ -167,7 +167,7 @@ void UnhauntCastle::runCinematicSequence()
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-				DialogueEvents::BuildPreviewNode(&this->hera, true)
+				DialogueEvents::BuildPreviewNode(&this->mabel, true)
 			),
 			[=]()
 			{
@@ -183,7 +183,7 @@ void UnhauntCastle::runCinematicSequence()
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->hera, true)
+				DialogueEvents::BuildPreviewNode(&this->mabel, true)
 			),
 			[=]()
 			{
@@ -198,7 +198,7 @@ void UnhauntCastle::runCinematicSequence()
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->hera, true)
+				DialogueEvents::BuildPreviewNode(&this->mabel, true)
 			),
 			[=]()
 			{
@@ -213,7 +213,7 @@ void UnhauntCastle::runCinematicSequence()
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->hera, true)
+				DialogueEvents::BuildPreviewNode(&this->mabel, true)
 			),
 			[=]()
 			{
@@ -229,7 +229,7 @@ void UnhauntCastle::setPreText()
 {
 	this->defer([=]()
 	{
-		this->hera->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		this->mabel->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			int remaining = UnhauntCastle::MaxUnhauntCount - this->getQuestSaveStateOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
 
@@ -240,7 +240,7 @@ void UnhauntCastle::setPreText()
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Right,
 					DialogueEvents::BuildPreviewNode(&this->squally, false),
-					DialogueEvents::BuildPreviewNode(&this->hera, true)
+					DialogueEvents::BuildPreviewNode(&this->mabel, true)
 				),
 				[=]()
 				{

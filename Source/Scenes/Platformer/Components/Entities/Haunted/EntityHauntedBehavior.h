@@ -8,10 +8,8 @@ namespace cocos2d
 }
 
 class InteractObject;
-class Inventory;
-class PlatformerEntity;
-class SmartParticles;
-class WorldSound;
+class PlatformerEnemy;
+class PlatformerFriendly;
 
 class EntityHauntedBehavior : public GameComponent
 {
@@ -30,5 +28,9 @@ protected:
 private:
 	typedef GameComponent super;
 
-	PlatformerEntity* entity = nullptr;
+	PlatformerEnemy* ownerAsEnemy = nullptr;
+	PlatformerFriendly* ownerAsFriendly = nullptr;
+	bool isOtherWorld = false;
+
+	static const std::string PropertyOtherWorld;
 };

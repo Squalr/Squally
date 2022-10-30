@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="815">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="815">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -165,16 +165,17 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="812" name="reaper" type="entity" x="908.473" y="937.211" width="128" height="128">
+  <object id="812" name="vampire-lord" type="entity" x="908.473" y="937.211" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,haunted,agro"/>
     <property name="drop-pool" value="cv-generic"/>
+    <property name="other-world" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="813" name="reaper" type="entity" x="915.633" y="548.476" width="128" height="128">
+  <object id="813" name="vampire-lord" type="entity" x="915.633" y="548.476" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>

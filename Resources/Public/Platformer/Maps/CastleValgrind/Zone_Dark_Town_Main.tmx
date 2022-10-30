@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="111" nextobjectid="1047">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="111" nextobjectid="1051">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -536,8 +536,9 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,haunted,agro"/>
     <property name="drop-pool" value="cv-generic"/>
+    <property name="other-world" type="bool" value="false"/>
    </properties>
   </object>
   <object id="1038" name="vampire-lord" type="entity" x="2890.25" y="858.965" width="128" height="128">
@@ -547,9 +548,10 @@
     <property name="components" value="ally"/>
    </properties>
   </object>
-  <object id="1045" name="tyracius" type="entity" x="3017" y="1247" width="128" height="128">
+  <object id="1045" name="leon" type="entity" x="3017" y="1247" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,haunted"/>
+    <property name="other-world" type="bool" value="true"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
@@ -920,20 +922,52 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1039" name="vampiress" type="entity" x="2132.42" y="2600.07" width="128" height="128">
+  <object id="1039" name="reaper" type="entity" x="1697.26" y="2600.07" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,haunted,agro"/>
     <property name="drop-pool" value="cv-generic"/>
+    <property name="other-world" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="1040" name="vampiress" type="entity" x="2139.58" y="2211.33" width="128" height="128">
+  <object id="1040" name="wraith" type="entity" x="1704.42" y="2211.33" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-b"/>
     <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="1047" name="leon" type="entity" x="2068.87" y="2599.92" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pacing,haunted"/>
+    <property name="other-world" type="bool" value="true"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="1048" name="reaper" type="entity" x="4707.19" y="2602.44" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-tag" value="group-c"/>
+    <property name="components" value="enemy,haunted,agro"/>
+    <property name="drop-pool" value="cv-generic"/>
+    <property name="other-world" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="1049" name="reaper" type="entity" x="4714.35" y="2213.7" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-c"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="1050" name="atreus" type="entity" x="4458.52" y="2602.67" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pacing,haunted"/>
+    <property name="other-world" type="bool" value="true"/>
+    <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
  </objectgroup>

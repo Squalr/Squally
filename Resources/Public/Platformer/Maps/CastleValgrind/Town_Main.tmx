@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="108" nextobjectid="1001">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="108" nextobjectid="1001">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -284,6 +284,7 @@
   <object id="999" name="skeletal-baron" type="entity" x="3133.33" y="1227.33" width="128" height="128">
    <properties>
     <property name="components" value="friendly,haunted"/>
+    <property name="other-world" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -432,7 +433,8 @@
   </properties>
   <object id="902" name="leon" type="entity" x="2955.5" y="1247.85" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,haunted,pacing,pick-pocket"/>
+    <property name="other-world" type="bool" value="false"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -850,7 +852,8 @@
   </properties>
   <object id="782" name="gaunt" type="entity" x="2115.67" y="2602" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,haunted,pacing,pick-pocket"/>
+    <property name="other-world" type="bool" value="false"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -859,7 +862,8 @@
   </object>
   <object id="791" name="atreus" type="entity" x="4476.46" y="2602.64" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,haunted,pacing,pick-pocket"/>
+    <property name="other-world" type="bool" value="false"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
@@ -875,12 +879,14 @@
   <object id="998" name="wraith" type="entity" x="1693.33" y="2601.33" width="128" height="128">
    <properties>
     <property name="components" value="friendly,haunted"/>
+    <property name="other-world" type="bool" value="true"/>
    </properties>
   </object>
   <object id="1000" name="reaper" type="entity" x="4694.85" y="2603.7" width="128" height="128">
    <properties>
     <property name="components" value="friendly,haunted"/>
     <property name="flip-x" type="bool" value="true"/>
+    <property name="other-world" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

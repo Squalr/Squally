@@ -298,6 +298,7 @@
   <object id="825" name="evil-eye" type="entity" x="4144.87" y="1067.2" width="128" height="128">
    <properties>
     <property name="components" value="friendly,haunted"/>
+    <property name="other-world" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="813">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="813">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -121,7 +121,8 @@
   </properties>
   <object id="760" name="thurstan" type="entity" x="1037.5" y="850.554" width="128" height="167">
    <properties>
-    <property name="components" value="shopkeeper"/>
+    <property name="components" value="shopkeeper,haunted"/>
+    <property name="other-world" type="bool" value="false"/>
     <property name="tag" value="shopkeeper"/>
    </properties>
   </object>
@@ -204,9 +205,10 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="812" name="abomination" type="entity" x="716" y="900.5" width="128" height="167">
+  <object id="812" name="vampire-lord" type="entity" x="716" y="900.5" width="128" height="167">
    <properties>
     <property name="components" value="friendly,haunted"/>
+    <property name="other-world" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
