@@ -69,6 +69,11 @@ void TalkToMabel::onLoad(QuestState questState)
 		this->guano = guano;
 	}, Guano::MapKey);
 
+	ObjectEvents::WatchForObject<Gecky>(this, [=](Gecky* gecky)
+	{
+		this->gecky = gecky;
+	}, Gecky::MapKey);
+
 	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
@@ -153,9 +158,9 @@ void TalkToMabel::runCinematicSequencePt1()
 			{
 				ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* exit)
 				{
-					this->evilEye->setState(StateKeys::PatrolHijacked, Value(true));
-					this->evilEye->setState(StateKeys::PatrolSourceX, Value(GameUtils::getWorldCoords(this->evilEye).x));
-					this->evilEye->setState(StateKeys::PatrolDestinationX, Value(GameUtils::getWorldCoords(exit).x));
+					this->evilEye->setState(StateKeys::CinematicHijacked, Value(true));
+					this->evilEye->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->evilEye).x));
+					this->evilEye->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(exit).x));
 					
 					this->evilEye->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
 					{
@@ -267,19 +272,46 @@ void TalkToMabel::runCinematicSequencePt5()
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->mabel, true)
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 		),
 		[=]()
 		{
 			this->runCinematicSequencePt6();
 		},
 		Voices::GetNextVoiceMedium(),
-		true
+		false
 	));
 }
 
 void TalkToMabel::runCinematicSequencePt6()
 {
+	if (this->guano != nullptr)
+	{
+		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_F_BrokenClock::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->guano, true)
+			),
+			[=]()
+			{
+				this->runCinematicSequencePt7();
+			},
+			Voices::GetNextVoiceMedium(),
+			true
+		));
+	}
+	else
+	{
+		this->runCinematicSequencePt7();
+	}
+}
+
+void TalkToMabel::runCinematicSequencePt7()
+{
+	PlatformerEvents::TriggerCinematicRestore();
 	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ StudyRoomKey::create() }));
 	this->complete();
 }
