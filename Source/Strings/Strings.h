@@ -7884,21 +7884,6 @@ namespace Strings
 		virtual ~Items_Misc_Keys_LetterForThePrincess() = default;
 	};
 
-	class Items_Misc_Keys_StudyRoomKey : public LocalizedString
-	{
-	public:
-		static Items_Misc_Keys_StudyRoomKey* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Misc_Keys_StudyRoomKey();
-		virtual ~Items_Misc_Keys_StudyRoomKey() = default;
-	};
-
 	class Items_Misc_Keys_MagesGuildPrisonKey : public LocalizedString
 	{
 	public:
@@ -8002,6 +7987,21 @@ namespace Strings
 	private:
 		Items_Misc_Keys_RustyKey();
 		virtual ~Items_Misc_Keys_RustyKey() = default;
+	};
+
+	class Items_Misc_Keys_StudyRoomKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_StudyRoomKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_StudyRoomKey();
+		virtual ~Items_Misc_Keys_StudyRoomKey() = default;
 	};
 
 	class Items_Misc_Keys_TownKey : public LocalizedString
@@ -29347,6 +29347,111 @@ namespace Strings
 	private:
 		Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Yep();
 		virtual ~Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Yep() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Mabel_A_Ack : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_Mabel_A_Ack* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Mabel_A_Ack();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_A_Ack() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Mabel_B_TellMeYouSawThat : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_Mabel_B_TellMeYouSawThat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Mabel_B_TellMeYouSawThat();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_B_TellMeYouSawThat() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Mabel_C_WentThroughTheClock : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_Mabel_C_WentThroughTheClock* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Mabel_C_WentThroughTheClock();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_C_WentThroughTheClock() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Mabel_D_Gecky : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_Mabel_D_Gecky* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Mabel_D_Gecky();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_D_Gecky() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Mabel_D_Guano : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_Mabel_D_Guano* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Mabel_D_Guano();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_D_Guano() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Mabel_E_DefeatSpirits : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_Mabel_E_DefeatSpirits* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Mabel_E_DefeatSpirits();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_E_DefeatSpirits() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Mabel_F_BrokenClock : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_Mabel_F_BrokenClock* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Mabel_F_BrokenClock();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_F_BrokenClock() = default;
 	};
 
 	class Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToCastle : public LocalizedString

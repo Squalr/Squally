@@ -2,6 +2,8 @@
 
 #include "Engine/Quests/QuestTask.h"
 
+class CameraStop;
+class CollisionObject;
 class EvilEye;
 class Gecky;
 class Guano;
@@ -29,7 +31,12 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequence();
+	void runCinematicSequencePt1();
+	void runCinematicSequencePt2();
+	void runCinematicSequencePt3();
+	void runCinematicSequencePt4();
+	void runCinematicSequencePt5();
+	void runCinematicSequencePt6();
 
 	EvilEye* evilEye = nullptr;
 	Gecky* gecky = nullptr;
@@ -37,6 +44,9 @@ private:
 	Mabel* mabel = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
+
+	CameraStop* cameraStop = nullptr;
+	CollisionObject* wall = nullptr;
 
 	static const std::string MapEventMabelRevealed;
 };
