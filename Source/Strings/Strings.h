@@ -29424,10 +29424,10 @@ namespace Strings
 		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_D_Guano() = default;
 	};
 
-	class Platformer_Quests_CastleValgrind_CureKing_Mabel_E_DefeatSpirits : public LocalizedString
+	class Platformer_Quests_CastleValgrind_CureKing_Mabel_E_ClockSpecial : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Mabel_E_DefeatSpirits* create();
+		static Platformer_Quests_CastleValgrind_CureKing_Mabel_E_ClockSpecial* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29435,8 +29435,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_CastleValgrind_CureKing_Mabel_E_DefeatSpirits();
-		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_E_DefeatSpirits() = default;
+		Platformer_Quests_CastleValgrind_CureKing_Mabel_E_ClockSpecial();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_E_ClockSpecial() = default;
 	};
 
 	class Platformer_Quests_CastleValgrind_CureKing_Mabel_F_BrokenClock : public LocalizedString

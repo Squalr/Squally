@@ -24,6 +24,7 @@
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/CastleValgrind/StudyRoomKey.h"
@@ -62,6 +63,18 @@ void TalkToMabel::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<EvilEye>(this, [=](EvilEye* evilEye)
 	{
 		this->evilEye = evilEye;
+		
+		if (questState == QuestState::Complete)
+		{
+			this->evilEye->despawn();
+		}
+		else
+		{
+			this->evilEye->getComponent<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
+			{
+				movementBehavior->setMoveAcceleration(EntityMovementBehavior::DefaultSprintAcceleration);
+			});
+		}
 	}, EvilEye::MapKey);
 
 	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
@@ -267,7 +280,7 @@ void TalkToMabel::runCinematicSequencePt4()
 void TalkToMabel::runCinematicSequencePt5()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_E_DefeatSpirits::create(),
+		Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_E_ClockSpecial::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,

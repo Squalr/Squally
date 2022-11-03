@@ -23,6 +23,7 @@ using namespace cocos2d;
 const std::string EntityMovementBehavior::MapKey = "entity-movement";
 const float EntityMovementBehavior::DefaultWalkAcceleration = 4800.0f;
 const float EntityMovementBehavior::DefaultRunAcceleration = 5600.0f;
+const float EntityMovementBehavior::DefaultSprintAcceleration = 8000.0f;
 const Vec2 EntityMovementBehavior::DefaultSwimAcceleration = Vec2(8000.0f, 420.0f);
 const float EntityMovementBehavior::DefaultJumpVelocity = 7680.0f;
 

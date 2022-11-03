@@ -25,6 +25,7 @@ public:
 	static const std::string MapKey;
 	static const float DefaultWalkAcceleration;
 	static const float DefaultRunAcceleration;
+	static const float DefaultSprintAcceleration;
 	static const cocos2d::Vec2 DefaultSwimAcceleration;
 	static const float DefaultJumpVelocity;
 
