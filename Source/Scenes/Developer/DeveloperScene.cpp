@@ -371,8 +371,8 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ==================
 		// ** Traps: Organ gun, cannon, catapult, ballista, heaven hug (FPU acceptable, given that jmps are pretty much done)
 		// ** Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
-		// ** Needs hexus battles
-		// ** Needs hexus puzzles
+		// ** Needs hexus battles (easy enough)
+		// ** Needs hexus puzzles (D, E, F, G)
 		// ** Mabel cower while ghost walks by
 		// ** Objectives
 		// ** New helper?

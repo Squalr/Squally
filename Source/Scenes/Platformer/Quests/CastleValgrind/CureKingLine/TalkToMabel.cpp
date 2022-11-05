@@ -100,6 +100,12 @@ void TalkToMabel::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<Mabel>(this, [=](Mabel* mabel)
 	{
 		this->mabel = mabel;
+
+		if (questState != QuestState::Complete)
+		{
+			this->mabel->getAnimations()->playAnimation("Cower", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
+		}
+
 	}, Mabel::MapKey);
 
 	ObjectEvents::WatchForObject<CameraStop>(this, [=](CameraStop* cameraStop)
@@ -201,6 +207,11 @@ void TalkToMabel::runCinematicSequencePt1()
 
 void TalkToMabel::runCinematicSequencePt2()
 {
+	if (this->mabel != nullptr)
+	{
+		this->mabel->getAnimations()->clearAnimationPriority();
+	}
+	
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_B_TellMeYouSawThat::create(),
 		DialogueEvents::DialogueVisualArgs(
