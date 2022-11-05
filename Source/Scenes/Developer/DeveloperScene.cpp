@@ -373,13 +373,8 @@ DeveloperScene::DeveloperScene()
 		// ** Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
 		// ** Needs hexus battles
 		// ** Needs hexus puzzles
-		// ** Cower animations for haunted?
-		//	X Leopold
-		//	X Raven
-		//	X Atreus
-		//	X Gaunt
-		//	X Leon
-		//	X Thurstan
+		// ** Mabel cower while ghost walks by
+		// ** Objectives
 		// ** New helper?
 
 		// WIP flow:

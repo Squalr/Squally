@@ -46,4 +46,14 @@ public:
 	static const std::string DMReturnToPrincessDawn;
 	static const std::string DMObtainTrainTicket;
 	static const std::string DMRideTrainToCastleValgrind;
+
+	static const std::string CVInvestigateCastle;
+	static const std::string CVRepairClock;
+	static const std::string CVEnterClock;
+	static const std::string CVDefeatSpirits;
+	static const std::string CVReturnToMabel;
+	static const std::string CVTakeArcaneBook;
+	static const std::string CVExploreSecretTunnel;
+	static const std::string CVDefeatAgnes;
+	static const std::string CVEnterLambdaCrypts;
 };
