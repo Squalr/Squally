@@ -47,6 +47,7 @@ public:
 	static const std::string DMObtainTrainTicket;
 	static const std::string DMRideTrainToCastleValgrind;
 
+	static const std::string CVEnterCastle;
 	static const std::string CVInvestigateCastle;
 	static const std::string CVRepairClock;
 	static const std::string CVEnterClock;

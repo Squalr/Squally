@@ -28434,6 +28434,21 @@ namespace Strings
 		virtual ~Platformer_Objectives_CastleValgrind_CV_DefeatSpirits() = default;
 	};
 
+	class Platformer_Objectives_CastleValgrind_CV_EnterCastle : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_CastleValgrind_CV_EnterCastle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_CastleValgrind_CV_EnterCastle();
+		virtual ~Platformer_Objectives_CastleValgrind_CV_EnterCastle() = default;
+	};
+
 	class Platformer_Objectives_CastleValgrind_CV_EnterClock : public LocalizedString
 	{
 	public:
@@ -28477,6 +28492,21 @@ namespace Strings
 	private:
 		Platformer_Objectives_CastleValgrind_CV_ExploreSecretTunnel();
 		virtual ~Platformer_Objectives_CastleValgrind_CV_ExploreSecretTunnel() = default;
+	};
+
+	class Platformer_Objectives_CastleValgrind_CV_InvestigateCastle : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_CastleValgrind_CV_InvestigateCastle* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_CastleValgrind_CV_InvestigateCastle();
+		virtual ~Platformer_Objectives_CastleValgrind_CV_InvestigateCastle() = default;
 	};
 
 	class Platformer_Objectives_CastleValgrind_CV_InvestigateClock : public LocalizedString

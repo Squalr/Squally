@@ -42,6 +42,7 @@ const std::string ObjectiveKeys::DMReturnToPrincessDawn = "DM_RETURN_TO_PRINCESS
 const std::string ObjectiveKeys::DMObtainTrainTicket = "DM_OBTAIN_TRAIN_TICKET";
 const std::string ObjectiveKeys::DMRideTrainToCastleValgrind = "DM_RIDE_TRAIN_TO_CV";
 
+const std::string ObjectiveKeys::CVEnterCastle = "CV_ENTER_CASTLE";
 const std::string ObjectiveKeys::CVInvestigateCastle = "CV_INVESTIGATE_CASTLE";
 const std::string ObjectiveKeys::CVRepairClock = "CV_REPAIR_CLOCK";
 const std::string ObjectiveKeys::CVEnterClock = "CV_ENTER_CLOCK";

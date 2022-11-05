@@ -128,15 +128,16 @@ void Objectives::InitMap()
 	priority = 300;
 
 	// CV
-	Objectives::ObjectiveMap[ObjectiveKeys::CVInvestigateCastle] = Objective([](){ return Strings::Menus_TODO::create()->setStringReplacementVariables(Strings::Menus_TODO::create()); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::CVRepairClock] = Objective([](){ return Strings::Menus_TODO::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::CVEnterClock] =  Objective([](){ return Strings::Menus_TODO::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::CVDefeatSpirits] =  Objective([](){ return Strings::Menus_TODO::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::CVReturnToMabel] =  Objective([](){ return Strings::Menus_TODO::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::CVTakeArcaneBook] =  Objective([](){ return Strings::Menus_TODO::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::CVDefeatAgnes] =  Objective([](){ return Strings::Menus_TODO::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::CVEnterLambdaCrypts] =  Objective([](){ return Strings::Menus_TODO::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::CVExploreSecretTunnel] =  Objective([](){ return Strings::Menus_TODO::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVEnterCastle] = Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_EnterCastle::create()->setStringReplacementVariables(Strings::Menus_TODO::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVInvestigateCastle] = Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_InvestigateCastle::create()->setStringReplacementVariables(Strings::Menus_TODO::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVRepairClock] = Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_RepairClock::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVEnterClock] =  Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_EnterClock::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVDefeatSpirits] =  Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_DefeatSpirits::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVReturnToMabel] =  Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_ReturnToMabel::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVTakeArcaneBook] =  Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_TakeArcaneBook::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVDefeatAgnes] =  Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_DefeatAgnes::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVEnterLambdaCrypts] =  Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_EnterLambdaCrypts::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::CVExploreSecretTunnel] =  Objective([](){ return Strings::Platformer_Objectives_CastleValgrind_CV_ExploreSecretTunnel::create(); }, priority++);
 
 	priority = 400;
 
