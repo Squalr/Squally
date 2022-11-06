@@ -284,6 +284,7 @@
   <object id="999" name="skeletal-baron" type="entity" x="3133.33" y="1227.33" width="128" height="128">
    <properties>
     <property name="components" value="friendly,haunted"/>
+    <property name="haunted-key" value="skeletal-baron"/>
     <property name="other-world" type="bool" value="true"/>
    </properties>
   </object>

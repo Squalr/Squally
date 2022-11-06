@@ -114,6 +114,8 @@
   <object id="814" name="thurstan" type="entity" x="1059" y="858.5" width="128" height="167">
    <properties>
     <property name="components" value="haunted"/>
+    <property name="haunted-key" value="vampire-lord"/>
+    <property name="other-world" type="bool" value="true"/>
     <property name="tag" value="shopkeeper"/>
    </properties>
   </object>
@@ -172,7 +174,8 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,haunted,agro"/>
     <property name="drop-pool" value="cv-generic"/>
-    <property name="other-world" type="bool" value="true"/>
+    <property name="haunted-key" value="vampire-lord"/>
+    <property name="other-world" type="bool" value="false"/>
    </properties>
   </object>
   <object id="813" name="vampire-lord" type="entity" x="915.633" y="548.476" width="128" height="128">

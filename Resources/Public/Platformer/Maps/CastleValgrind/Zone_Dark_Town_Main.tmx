@@ -531,17 +531,18 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1037" name="vampire-lord" type="entity" x="2884.09" y="1248.04" width="128" height="128">
+  <object id="1037" name="skeletal-baron" type="entity" x="2884.09" y="1248.04" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,haunted,agro"/>
     <property name="drop-pool" value="cv-generic"/>
+    <property name="haunted-key" value="skeletal-baron"/>
     <property name="other-world" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="1038" name="vampire-lord" type="entity" x="2890.25" y="858.965" width="128" height="128">
+  <object id="1038" name="skeletal-baron" type="entity" x="2890.25" y="858.965" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
@@ -551,6 +552,7 @@
   <object id="1045" name="leon" type="entity" x="3017" y="1247" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,haunted"/>
+    <property name="haunted-key" value="skeletal-baron"/>
     <property name="other-world" type="bool" value="true"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>

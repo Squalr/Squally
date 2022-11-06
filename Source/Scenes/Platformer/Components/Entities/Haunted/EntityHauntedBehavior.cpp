@@ -86,16 +86,21 @@ void EntityHauntedBehavior::onLoad()
 			this->ownerAsFriendly->getAnimations()->setOpacity(127);
 		}
 
-		this->ownerAsFriendly->setState(StateKeys::PatrolHijacked, Value(true));
-
-		// Defer 1 frame to give the dead enemy a chance to persist the save key
-		this->defer([=]()
+		if (!this->hauntedKey.empty())
 		{
-			if (!SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(false)).asBool())
+			this->ownerAsFriendly->setState(StateKeys::PatrolHijacked, Value(true));
+			
+			// Defer 1 frame to give the dead enemy a chance to persist the save key
+			this->defer([=]()
 			{
-				this->ownerAsFriendly->getAnimations()->playAnimation("Cower", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
-			}
-		});
+				bool isUnhaunted = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(false)).asBool();
+
+				if (!isUnhaunted)
+				{
+					this->ownerAsFriendly->getAnimations()->playAnimation("Cower", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
+				}
+			});
+		}
 	}
 	else if (this->ownerAsEnemy != nullptr)
 	{
@@ -104,14 +109,27 @@ void EntityHauntedBehavior::onLoad()
 			this->ownerAsEnemy->getAnimations()->setOpacity(127);
 		}
 
-		if (!this->ownerAsEnemy->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+		if (!this->hauntedKey.empty())
 		{
-			if (!SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(false)).asBool())
+			bool isAlive = this->ownerAsEnemy->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool();
+			bool isUnhaunted = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(false)).asBool();
+			
+			// Increase unhaunted count (only once) if this enemy is dead
+			if (!isUnhaunted && !isAlive)
 			{
 				SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(true));
 
 				int unhauntedCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
 				SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeyUnhauntedCount, Value(unhauntedCount + 1));
+			}
+
+			// This enemy is linked to a enemy on another map that is unhaunted. Kill it!
+			if (isUnhaunted && isAlive)
+			{
+				this->ownerAsEnemy->watchForComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+				{
+					healthBehavior->kill();
+				});
 			}
 		}
 	}
