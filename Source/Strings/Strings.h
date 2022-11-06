@@ -32604,6 +32604,21 @@ namespace Strings
 		virtual ~Platformer_Spellbooks_SpellbookNature() = default;
 	};
 
+	class Platformer_Spellbooks_SpellbookOfArcane : public LocalizedString
+	{
+	public:
+		static Platformer_Spellbooks_SpellbookOfArcane* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Spellbooks_SpellbookOfArcane();
+		virtual ~Platformer_Spellbooks_SpellbookOfArcane() = default;
+	};
+
 	class Platformer_Spellbooks_SpellbookOfFire : public LocalizedString
 	{
 	public:

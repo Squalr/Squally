@@ -35,6 +35,7 @@
 #include "Objects/Platformer/Decor/PullyVertical.h"
 #include "Objects/Platformer/Interactables/AlchemyLab/AlchemyLab.h"
 #include "Objects/Platformer/Interactables/Anvil/Anvil.h"
+#include "Objects/Platformer/Interactables/Chests/ArcaneBook.h"
 #include "Objects/Platformer/Interactables/Chests/Chest.h"
 #include "Objects/Platformer/Interactables/Chests/CipherChest.h"
 #include "Objects/Platformer/Interactables/Chests/EgyptianChest.h"

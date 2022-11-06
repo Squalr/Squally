@@ -50,6 +50,7 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	this->lineDeserializers[RestorePowerLine::MapKeyQuestLine] = [=]() { return (QuestLine*)RestorePowerLine::create(); };
 
 	// CASTLE VALGRIND QUESTS
+	this->lineDeserializers[ArcaneBookLine::MapKeyQuestLine] = [=]() { return (QuestLine*)ArcaneBookLine::create(); };
 	this->lineDeserializers[CureKingLine::MapKeyQuestLine] = [=]() { return (QuestLine*)CureKingLine::create(); };
 	this->lineDeserializers[SkyShipToCastleLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SkyShipToCastleLine::create(); };
 	

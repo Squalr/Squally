@@ -119,8 +119,13 @@ void EntityHauntedBehavior::onLoad()
 			{
 				SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(true));
 
-				int unhauntedCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
-				SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeyUnhauntedCount, Value(unhauntedCount + 1));
+				int newUnhauntedCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt() + 1;
+				SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeyUnhauntedCount, Value(newUnhauntedCount));
+
+				if (newUnhauntedCount >= UnhauntCastle::MaxUnhauntCount)
+				{
+					Objectives::SetCurrentObjective(ObjectiveKeys::CVReturnToMabel);
+				}
 			}
 
 			// This enemy is linked to a enemy on another map that is unhaunted. Kill it!

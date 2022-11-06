@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="108" nextobjectid="1001">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1002">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -19,6 +19,13 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="756" name="castle" type="texture" x="-566" y="-598" width="7940" height="3446"/>
+ </objectgroup>
+ <objectgroup id="108" name="decor -6 bg">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1001" name="Generic/MoonDoor" type="decor" x="2741.97" y="654.122" width="648" height="667"/>
  </objectgroup>
  <objectgroup id="87" name="stairs -6">
   <properties>
@@ -57,7 +64,6 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="890" name="Generic/MoonDoor" type="decor" x="2741.97" y="654.122" width="648" height="667"/>
   <object id="898" name="Generic/BlueRug" type="decor" x="3860.67" y="1309.83" width="332" height="21"/>
   <object id="899" name="Generic/BlueRug" type="decor" x="1962.33" y="1310.5" width="332" height="21"/>
   <object id="955" name="Castle/Window1" type="decor" x="1668.65" y="303.409" width="293" height="575"/>

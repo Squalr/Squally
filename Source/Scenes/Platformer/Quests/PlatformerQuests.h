@@ -1,4 +1,5 @@
 #pragma once
+#include "Scenes/Platformer/Quests/CastleValgrind/ArcaneBookLine/ArcaneBookLine.h"
 #include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/CureKingLine.h"
 #include "Scenes/Platformer/Quests/CastleValgrind/SkyShipToCastle/SkyShipToCastleLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/BusinessHours/BusinessHoursLine.h"
