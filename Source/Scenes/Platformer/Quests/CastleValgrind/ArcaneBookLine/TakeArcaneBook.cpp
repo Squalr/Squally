@@ -19,6 +19,7 @@
 #include "Entities/Platformer/Npcs/Mages/Mabel.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Interactables/Chests/ArcaneBook.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
@@ -30,8 +31,7 @@
 
 using namespace cocos2d;
 
-const std::string TakeArcaneBook::MapKeyQuest = "talk-to-mabel";
-const std::string TakeArcaneBook::MapEventMabelRevealed = "mabel-revealed";
+const std::string TakeArcaneBook::MapKeyQuest = "take-arcane-book";
 
 TakeArcaneBook* TakeArcaneBook::create(GameObject* owner, QuestLine* questLine)
 {
@@ -44,6 +44,7 @@ TakeArcaneBook* TakeArcaneBook::create(GameObject* owner, QuestLine* questLine)
 
 TakeArcaneBook::TakeArcaneBook(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TakeArcaneBook::MapKeyQuest, false)
 {
+	this->arcaneBook = dynamic_cast<ArcaneBook*>(owner);
 }
 
 TakeArcaneBook::~TakeArcaneBook()
@@ -56,6 +57,11 @@ void TakeArcaneBook::onLoad(QuestState questState)
 	{
 		this->guano = guano;
 	}, Guano::MapKey);
+
+	ObjectEvents::WatchForObject<GameObject>(this, [=](GameObject* bookshelf)
+	{
+		this->bookshelf = bookshelf;
+	}, "secret-bookshelf");
 
 	ObjectEvents::WatchForObject<Gecky>(this, [=](Gecky* gecky)
 	{
@@ -82,6 +88,24 @@ void TakeArcaneBook::onLoad(QuestState questState)
 		}
 
 	}, Mabel::MapKey);
+
+	if (this->arcaneBook != nullptr)
+	{
+		if (questState == QuestState::None)
+		{
+			this->arcaneBook->disable();
+		}
+		else
+		{
+			this->moveBookshelf(false);
+		}
+	}
+
+	this->listenForMapEventOnce("arcane-book-taken", [=](ValueMap)
+	{
+		this->complete();
+		this->moveBookshelf(true);
+	});
 }
 
 void TakeArcaneBook::onActivate(bool isActiveThroughSkippable)
@@ -92,11 +116,33 @@ void TakeArcaneBook::onActivate(bool isActiveThroughSkippable)
 
 void TakeArcaneBook::onComplete()
 {
+	// An objective to check dark side?
+	// Objectives::SetCurrentObjective(ObjectiveKeys::CVTakeArcaneBook);
 }
 
 void TakeArcaneBook::onSkipped()
 {
 	this->removeAllListeners();
+}
+
+void TakeArcaneBook::moveBookshelf(bool animate)
+{
+	if (this->bookshelf == nullptr)
+	{
+		return;
+	}
+
+	float startX = this->bookshelf->getPositionX();
+
+	if (animate)
+	{
+		// TODO
+		this->bookshelf->setPositionX(startX + 512.0f);
+	}
+	else
+	{
+		this->bookshelf->setPositionX(startX + 512.0f);
+	}
 }
 
 void TakeArcaneBook::runCinematicSequencePt1()

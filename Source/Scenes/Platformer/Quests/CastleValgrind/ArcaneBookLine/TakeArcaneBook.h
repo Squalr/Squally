@@ -2,8 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class CameraStop;
-class CollisionObject;
+class ArcaneBook;
 class EvilEye;
 class Gecky;
 class Guano;
@@ -31,6 +30,7 @@ protected:
 private:
 	typedef QuestTask super;
 
+	void moveBookshelf(bool animate);
 	void runCinematicSequencePt1();
 
 	Gecky* gecky = nullptr;
@@ -38,9 +38,6 @@ private:
 	Mabel* mabel = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
-
-	CameraStop* cameraStop = nullptr;
-	CollisionObject* wall = nullptr;
-
-	static const std::string MapEventMabelRevealed;
+	ArcaneBook* arcaneBook = nullptr;
+	GameObject* bookshelf = nullptr;
 };

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1002">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1005">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -844,6 +844,30 @@
    <properties>
     <property name="components" value="friendly,disarmed,cv-puzzle-G"/>
     <property name="tag" value="hexus-reaper"/>
+   </properties>
+  </object>
+  <object id="1002" name="portal" type="object" x="2259.72" y="2478.59" width="256" height="256">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Main"/>
+    <property name="transition" value="debug"/>
+   </properties>
+  </object>
+  <object id="1003" name="portal" type="object" x="4110.2" y="2475.75" width="256" height="256">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Main"/>
+    <property name="transition" value="debug"/>
+   </properties>
+  </object>
+  <object id="1004" name="portal" type="object" x="4175.58" y="1179.56" width="256" height="256">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Main"/>
+    <property name="transition" value="debug"/>
    </properties>
   </object>
  </objectgroup>

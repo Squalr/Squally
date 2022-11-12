@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="813">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="814">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -192,6 +192,14 @@
    <properties>
     <property name="linked-tag" value="shopkeeper"/>
     <property name="recipe-pool" value="smithing-pool-cv"/>
+   </properties>
+  </object>
+  <object id="813" name="portal" type="object" x="1378.11" y="807.422" width="256" height="256">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="CastleValgrind/Town_Smith"/>
+    <property name="transition" value="debug"/>
    </properties>
   </object>
  </objectgroup>

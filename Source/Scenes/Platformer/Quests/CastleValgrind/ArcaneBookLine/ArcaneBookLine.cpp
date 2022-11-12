@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const std::string ArcaneBookLine::MapKeyQuestLine = "arane-book";
+const std::string ArcaneBookLine::MapKeyQuestLine = "arcane-book";
 
 ArcaneBookLine* ArcaneBookLine::create()
 {

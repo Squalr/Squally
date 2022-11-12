@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="1052">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="1055">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -878,6 +878,14 @@
   </properties>
   <object id="753" name="marble-dark" type="terrain" x="-359.515" y="2731.09" width="7459.75" height="234.06"/>
   <object id="842" name="marble-dark" type="terrain" x="-215.451" y="1434.97" width="6752" height="234.06"/>
+  <object id="1054" name="portal" type="object" x="4158.86" y="1178.36" width="256" height="256">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="CastleValgrind/Town_Main"/>
+    <property name="transition" value="debug"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -918,6 +926,22 @@
    <properties>
     <property name="components" value="friendly,disarmed,cv-puzzle-C"/>
     <property name="tag" value="hexus-abomination"/>
+   </properties>
+  </object>
+  <object id="1052" name="portal" type="object" x="1271.42" y="2474.05" width="256" height="256">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="CastleValgrind/Town_Main"/>
+    <property name="transition" value="debug"/>
+   </properties>
+  </object>
+  <object id="1053" name="portal" type="object" x="4132.12" y="2473.25" width="256" height="256">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="CastleValgrind/Town_Main"/>
+    <property name="transition" value="debug"/>
    </properties>
   </object>
  </objectgroup>

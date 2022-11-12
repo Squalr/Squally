@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="832">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="834">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -233,7 +233,11 @@
   </properties>
   <object id="817" name="Generic/Bookshelf1" type="decor" x="2582.78" y="588" width="727" height="608"/>
   <object id="818" name="Generic/Bookshelf1" type="decor" x="166.513" y="587.658" width="727" height="608"/>
-  <object id="819" name="Generic/Bookshelf1" type="decor" x="3862" y="586.494" width="727" height="608"/>
+  <object id="819" name="Generic/Bookshelf1" type="decor" x="3862" y="586.494" width="727" height="608">
+   <properties>
+    <property name="tag" value="secret-bookshelf"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -278,6 +282,22 @@
   <object id="831" name="cinematic-marker" type="object" x="1688" y="1009.33" width="128" height="128">
    <properties>
     <property name="tag" value="exit"/>
+   </properties>
+  </object>
+  <object id="832" name="portal" type="object" x="752.009" y="935.314" width="256" height="256">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Study"/>
+    <property name="transition" value="debug"/>
+   </properties>
+  </object>
+  <object id="833" name="arcane-book" type="object" x="4171.62" y="867.507" width="128" height="128">
+   <properties>
+    <property name="quest" value="take-arcane-book"/>
+    <property name="quest-line" value="arcane-book"/>
+    <property name="reward-pool" value="arcane-book"/>
+    <property name="send-event" value="arcane-book-taken"/>
    </properties>
   </object>
  </objectgroup>
