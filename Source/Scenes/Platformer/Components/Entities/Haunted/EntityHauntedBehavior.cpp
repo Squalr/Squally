@@ -14,6 +14,7 @@
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEnemy.h"
@@ -113,19 +114,18 @@ void EntityHauntedBehavior::onLoad()
 		{
 			bool isAlive = this->ownerAsEnemy->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool();
 			bool isUnhaunted = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(false)).asBool();
-			
+
 			// Increase unhaunted count (only once) if this enemy is dead
 			if (!isUnhaunted && !isAlive)
 			{
-				SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(true));
-
-				int newUnhauntedCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt() + 1;
-				SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeyUnhauntedCount, Value(newUnhauntedCount));
-
-				if (newUnhauntedCount >= UnhauntCastle::MaxUnhauntCount)
+				this->unhaunt();
+			}
+			else
+			{
+				this->ownerAsEnemy->listenForStateWriteOnce(StateKeys::IsAlive, [=](Value)
 				{
-					Objectives::SetCurrentObjective(ObjectiveKeys::CVReturnToMabel);
-				}
+					this->unhaunt();
+				});
 			}
 
 			// This enemy is linked to a enemy on another map that is unhaunted. Kill it!
@@ -143,4 +143,22 @@ void EntityHauntedBehavior::onLoad()
 void EntityHauntedBehavior::onDisable()
 {
 	super::onDisable();
+}
+
+void EntityHauntedBehavior::unhaunt()
+{
+	bool isUnhaunted = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(false)).asBool();
+
+	if (!isUnhaunted)
+	{
+		SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(true));
+
+		int newUnhauntedCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt() + 1;
+		SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeyUnhauntedCount, Value(newUnhauntedCount));
+
+		if (newUnhauntedCount >= UnhauntCastle::MaxUnhauntCount)
+		{
+			Objectives::SetCurrentObjective(ObjectiveKeys::CVReturnToMabel);
+		}
+	}
 }

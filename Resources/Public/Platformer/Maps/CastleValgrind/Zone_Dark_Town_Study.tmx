@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="837">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="839">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -264,6 +264,11 @@
     <property name="transition" value="debug"/>
    </properties>
   </object>
+  <object id="838" name="objective-trigger" type="object" x="3204.11" y="-24.9112" width="700.878" height="1225.58">
+   <properties>
+    <property name="send-event" value="CV_EXPLORE_DARK_SIDE"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -289,7 +294,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="1.1499999999999999"/>
+   <property name="zoom" type="float" value="1.15"/>
   </properties>
   <object id="523" name="squally" type="entity" x="2248.72" y="1067.79" width="128" height="128">
    <properties>

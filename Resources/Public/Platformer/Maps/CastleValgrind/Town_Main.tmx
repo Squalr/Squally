@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1005">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1009">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -868,6 +868,21 @@
     <property name="locked-text-key" value="none"/>
     <property name="map" value="CastleValgrind/Zone_Dark_Town_Main"/>
     <property name="transition" value="debug"/>
+   </properties>
+  </object>
+  <object id="1006" name="objective-trigger" type="object" x="2572.89" y="1509.15" width="919.06" height="1225.58">
+   <properties>
+    <property name="send-event" value="CV_INVESTIGATE_CASTLE"/>
+   </properties>
+  </object>
+  <object id="1007" name="objective-trigger" type="object" x="3393.56" y="-60.79" width="700.878" height="3073.58">
+   <properties>
+    <property name="send-event" value="CV_DEFEAT_SPIRITS"/>
+   </properties>
+  </object>
+  <object id="1008" name="objective-trigger" type="object" x="4833.56" y="1511.21" width="1564.88" height="1289.58">
+   <properties>
+    <property name="send-event" value="CV_DEFEAT_SPIRITS"/>
    </properties>
   </object>
  </objectgroup>

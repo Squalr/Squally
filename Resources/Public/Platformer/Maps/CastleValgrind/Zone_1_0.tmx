@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="866">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="867">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -395,6 +395,11 @@
     <property name="direction" value="left"/>
     <property name="map" value="CastleValgrind/Zone_1_0"/>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="866" name="objective-trigger" type="object" x="1712.47" y="-704.79" width="2207.06" height="3785.58">
+   <properties>
+    <property name="send-event" value="CV_ENTER_CASTLE"/>
    </properties>
   </object>
  </objectgroup>

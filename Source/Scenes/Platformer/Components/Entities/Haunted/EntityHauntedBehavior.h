@@ -28,6 +28,8 @@ protected:
 private:
 	typedef GameComponent super;
 
+	void unhaunt();
+
 	PlatformerEnemy* ownerAsEnemy = nullptr;
 	PlatformerFriendly* ownerAsFriendly = nullptr;
 	bool isOtherWorld = false;

@@ -51,6 +51,7 @@ public:
 	static const std::string CVInvestigateCastle;
 	static const std::string CVRepairClock;
 	static const std::string CVEnterClock;
+	static const std::string CVExploreDarkSide;
 	static const std::string CVDefeatSpirits;
 	static const std::string CVReturnToMabel;
 	static const std::string CVTakeArcaneBook;

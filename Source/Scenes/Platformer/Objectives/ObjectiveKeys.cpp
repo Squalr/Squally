@@ -46,6 +46,7 @@ const std::string ObjectiveKeys::CVEnterCastle = "CV_ENTER_CASTLE";
 const std::string ObjectiveKeys::CVInvestigateCastle = "CV_INVESTIGATE_CASTLE";
 const std::string ObjectiveKeys::CVRepairClock = "CV_REPAIR_CLOCK";
 const std::string ObjectiveKeys::CVEnterClock = "CV_ENTER_CLOCK";
+const std::string ObjectiveKeys::CVExploreDarkSide = "CV_EXPLORE_DARK_SIDE";
 const std::string ObjectiveKeys::CVDefeatSpirits = "CV_DEFEAT_SPIRITS";
 const std::string ObjectiveKeys::CVReturnToMabel = "CV_RETURN_TO_MABEL";
 const std::string ObjectiveKeys::CVTakeArcaneBook = "CV_TAKE_ARCANE_BOOK";

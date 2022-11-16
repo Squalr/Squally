@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="834">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="834">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -256,8 +256,7 @@
     <property name="door-style" value="old"/>
     <property name="locked-text-key" value="repairable"/>
     <property name="map" value="CastleValgrind/Zone_Dark_Town_Study"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
+    <property name="send-event" value="clock-repaired"/>
     <property name="transition" value="clock"/>
    </properties>
   </object>
@@ -332,7 +331,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="1.1499999999999999"/>
+   <property name="zoom" type="float" value="1.15"/>
   </properties>
   <object id="523" name="squally" type="entity" x="2248.72" y="1067.79" width="128" height="128">
    <properties>

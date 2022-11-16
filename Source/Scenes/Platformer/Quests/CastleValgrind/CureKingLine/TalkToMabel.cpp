@@ -127,6 +127,11 @@ void TalkToMabel::onLoad(QuestState questState)
 			this->wall->setPhysicsFlagEnabled(false);
 		}
 	}, "quest-solid-wall");
+
+	this->listenForMapEventOnce("clock-repaired", [=](ValueMap)
+	{
+		Objectives::SetCurrentObjective(ObjectiveKeys::CVEnterClock);
+	});
 }
 
 void TalkToMabel::onActivate(bool isActiveThroughSkippable)
@@ -337,5 +342,6 @@ void TalkToMabel::runCinematicSequencePt7()
 {
 	PlatformerEvents::TriggerCinematicRestore();
 	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ StudyRoomKey::create() }));
+	Objectives::SetCurrentObjective(ObjectiveKeys::CVRepairClock);
 	this->complete();
 }
