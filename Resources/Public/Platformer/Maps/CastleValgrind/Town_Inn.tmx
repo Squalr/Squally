@@ -255,7 +255,7 @@
     <property name="transition" value="inn"/>
    </properties>
   </object>
-  <object id="834" name="portal" type="object" x="1989.98" y="810.202" width="256" height="256">
+  <object id="834" name="portal" type="object" x="591.104" y="810.202" width="256" height="256">
    <properties>
     <property name="components" value="locked-portal"/>
     <property name="locked-text-key" value="none"/>
@@ -298,7 +298,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="640.265" y="938.223" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="879.029" y="935.414" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>

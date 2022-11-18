@@ -20,5 +20,4 @@ const std::string MusicResources::LastMarchFull = "Private/Music/LastMarchFull.o
 const std::string MusicResources::Solace = "Private/Music/Solace.ogg";
 const std::string MusicResources::TheLetter = "Private/Music/TheLetter.ogg";
 const std::string MusicResources::TrickOrTreat = "Private/Music/TrickOrTreat.ogg";
-const std::string MusicResources::TwoStepsTooOftenAside = "Private/Music/TwoStepsTooOftenAside.ogg";
 const std::string MusicResources::WeWillGetThereTogether = "Private/Music/WeWillGetThereTogether.ogg";

@@ -39,6 +39,7 @@ const std::string MapResources::CastleValgrind_Zone_2_1 = "Public/Platformer/Map
 const std::string MapResources::CastleValgrind_Zone_2_2 = "Public/Platformer/Maps/CastleValgrind/Zone_2_2.tmx";
 const std::string MapResources::CastleValgrind_Zone_2_3 = "Public/Platformer/Maps/CastleValgrind/Zone_2_3.tmx";
 const std::string MapResources::CastleValgrind_Zone_2_4 = "Public/Platformer/Maps/CastleValgrind/Zone_2_4.tmx";
+const std::string MapResources::CastleValgrind_Zone_Dark_Debug = "Public/Platformer/Maps/CastleValgrind/Zone_Dark_Debug.tmx";
 const std::string MapResources::CastleValgrind_Zone_Dark_Town_Alch = "Public/Platformer/Maps/CastleValgrind/Zone_Dark_Town_Alch.tmx";
 const std::string MapResources::CastleValgrind_Zone_Dark_Town_Inn = "Public/Platformer/Maps/CastleValgrind/Zone_Dark_Town_Inn.tmx";
 const std::string MapResources::CastleValgrind_Zone_Dark_Town_Inn_Upstairs = "Public/Platformer/Maps/CastleValgrind/Zone_Dark_Town_Inn_Upstairs.tmx";

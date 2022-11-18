@@ -12,6 +12,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Quests/QuestLine.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
@@ -102,8 +103,6 @@ void UnhauntCastle::onComplete()
 	{
 		questBehavior->disableAll();
 	});
-
-	Objectives::SetCurrentObjective(ObjectiveKeys::URCrossBridge);
 }
 
 void UnhauntCastle::onSkipped()
@@ -120,7 +119,7 @@ void UnhauntCastle::updateQuestVisuals()
 
 	this->mabel->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{
-		int currentCureCount = this->getQuestSaveStateOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
+		int currentCureCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
 
 		if (currentCureCount >= UnhauntCastle::MaxUnhauntCount)
 		{
@@ -173,9 +172,10 @@ void UnhauntCastle::runCinematicSequence()
 			),
 			[=]()
 			{
+				this->complete();
 			},
 			Voices::GetNextVoiceShort(),
-			false
+			true
 		));
 	});
 }
@@ -191,7 +191,7 @@ void UnhauntCastle::setPreText()
 	{
 		this->mabel->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
-			int remaining = UnhauntCastle::MaxUnhauntCount - this->getQuestSaveStateOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
+			int remaining = UnhauntCastle::MaxUnhauntCount - SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
 
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 				Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_Q_Remaining::create()

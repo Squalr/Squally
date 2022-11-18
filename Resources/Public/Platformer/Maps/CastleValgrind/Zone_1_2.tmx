@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="810">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="42" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="810">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -244,7 +244,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="780" name="portal" type="object" x="2133.15" y="1607.54" width="450.603" height="423.038">
+  <object id="780" name="portal" type="object" x="2078.51" y="1610.58" width="450.603" height="423.038">
    <properties>
     <property name="map" value="CastleValgrind/Mages_Warp"/>
     <property name="transition" value="warp-room"/>

@@ -282,7 +282,6 @@ namespace ItemResources
 	extern const std::string Keys_KEY_4;
 	extern const std::string Keys_KEY_5;
 	extern const std::string Keys_KEY_6;
-	extern const std::string Keys_StudyRoomKey;
 	extern const std::string Keys_MedusaMirror;
 	extern const std::string Keys_PurpleGem;
 	extern const std::string Keys_RamWheel;
@@ -290,6 +289,7 @@ namespace ItemResources
 	extern const std::string Keys_RustyKey1;
 	extern const std::string Keys_RustyKey2;
 	extern const std::string Keys_SilverKey;
+	extern const std::string Keys_StudyRoomKey;
 	extern const std::string Maps_Map;
 	extern const std::string Misc_AdvancedBandage;
 	extern const std::string Misc_BackpackA;

@@ -10,6 +10,8 @@ class DispelIllusionBehavior : public GameComponent
 {
 public:
 	static DispelIllusionBehavior* create(GameObject* owner);
+	
+	void onDispelActivated();
 
 	static const std::string MapKey;
 
@@ -23,8 +25,6 @@ protected:
 
 private:
 	typedef GameComponent super;
-
-	void onDispelActivated();
 
 	Portal* portal = nullptr;
 	HackableObject* object = nullptr;

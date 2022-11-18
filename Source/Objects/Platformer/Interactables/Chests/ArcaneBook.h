@@ -16,6 +16,7 @@ protected:
 	ArcaneBook(cocos2d::ValueMap& properties);
 	virtual ~ArcaneBook();
 
+	void onEnter() override;
 	bool tryOpen() override;
 
 private:

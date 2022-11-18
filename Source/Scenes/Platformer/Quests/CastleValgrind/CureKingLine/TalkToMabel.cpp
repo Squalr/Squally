@@ -26,6 +26,7 @@
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
+#include "Scenes/Platformer/Components/Objects/Illusions/DispelIllusionBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/CastleValgrind/StudyRoomKey.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
@@ -133,17 +134,16 @@ void TalkToMabel::onLoad(QuestState questState)
 	{
 		Objectives::SetCurrentObjective(ObjectiveKeys::CVEnterClock);
 	});
-}
-
-void TalkToMabel::onActivate(bool isActiveThroughSkippable)
-{
-	int currentCureCount = this->getQuestSaveStateOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
+	int currentCureCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
 
 	if (currentCureCount >= UnhauntCastle::MaxUnhauntCount)
 	{
 		this->complete();
 	}
-	
+}
+
+void TalkToMabel::onActivate(bool isActiveThroughSkippable)
+{
 	this->listenForMapEventOnce(TalkToMabel::MapEventMabelRevealed, [=](ValueMap valueMap)
 	{
 		this->runCinematicSequencePt1();
@@ -152,11 +152,30 @@ void TalkToMabel::onActivate(bool isActiveThroughSkippable)
 
 void TalkToMabel::onComplete()
 {
-	if (this->mabel != nullptr)
+	this->defer([=]()
 	{
-		this->mabel->getAnimations()->clearAnimationPriority();
 		this->removeAllListeners();
-	}
+
+		if (this->mabel != nullptr)
+		{
+			this->mabel->getAnimations()->clearAnimationPriority();
+		}
+		
+		if (this->wall != nullptr)
+		{
+			this->wall->setPhysicsFlagEnabled(false);
+		}
+
+		if (this->cameraStop != nullptr)
+		{
+			this->cameraStop->disable();
+		}
+
+		if (this->evilEye != nullptr)
+		{
+			this->evilEye->despawn();
+		}
+	}, 2);
 }
 
 void TalkToMabel::onSkipped()

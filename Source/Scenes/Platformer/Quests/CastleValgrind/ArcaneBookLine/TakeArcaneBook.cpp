@@ -99,12 +99,23 @@ void TakeArcaneBook::onLoad(QuestState questState)
 	{
 		this->complete();
 		this->moveBookshelf(true);
+
+		if (this->arcaneBook != nullptr)
+		{
+			this->arcaneBook->disable();
+		}
 	});
 }
 
 void TakeArcaneBook::onActivate(bool isActiveThroughSkippable)
 {
 	Objectives::SetCurrentObjective(ObjectiveKeys::CVTakeArcaneBook);
+
+	if (this->arcaneBook != nullptr)
+	{
+		this->arcaneBook->enable();
+	}
+
 	this->runCinematicSequencePt1();
 }
 

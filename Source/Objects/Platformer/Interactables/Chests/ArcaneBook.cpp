@@ -37,6 +37,16 @@ ArcaneBook::~ArcaneBook()
 {
 }
 
+void ArcaneBook::onEnter()
+{
+	super::onEnter();
+	
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookArcane, Value(false)).asBool())
+	{
+		this->disable();
+	}
+}
+
 bool ArcaneBook::tryOpen()
 {
 	// Instead of giving items, grant the spellbook

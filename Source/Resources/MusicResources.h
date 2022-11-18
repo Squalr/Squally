@@ -21,6 +21,5 @@ namespace MusicResources
 	extern const std::string Solace;
 	extern const std::string TheLetter;
 	extern const std::string TrickOrTreat;
-	extern const std::string TwoStepsTooOftenAside;
 	extern const std::string WeWillGetThereTogether;
 };
