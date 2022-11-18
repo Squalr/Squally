@@ -152,16 +152,18 @@ void TakeArcaneBook::moveBookshelf(bool animate)
 		return;
 	}
 
-	float startX = this->bookshelf->getPositionX();
+	Vec2 startPos = this->bookshelf->getPosition();
 
 	if (animate)
 	{
-		// TODO
-		this->bookshelf->setPositionX(startX + 512.0f);
+		this->bookshelf->runAction(Sequence::create(
+			EaseSineInOut::create(MoveTo::create(1.0f, startPos + Vec2(512.0f, 0.0f))),
+			nullptr
+		));
 	}
 	else
 	{
-		this->bookshelf->setPositionX(startX + 512.0f);
+		this->bookshelf->setPositionX(startPos.x + 512.0f);
 	}
 }
 
