@@ -30,6 +30,7 @@
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/CastleValgrind/StudyRoomKey.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
+#include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/UnhauntCastle.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -136,6 +137,13 @@ void TalkToMabel::onLoad(QuestState questState)
 
 void TalkToMabel::onActivate(bool isActiveThroughSkippable)
 {
+	int currentCureCount = this->getQuestSaveStateOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
+
+	if (currentCureCount >= UnhauntCastle::MaxUnhauntCount)
+	{
+		this->complete();
+	}
+	
 	this->listenForMapEventOnce(TalkToMabel::MapEventMabelRevealed, [=](ValueMap valueMap)
 	{
 		this->runCinematicSequencePt1();
@@ -144,6 +152,11 @@ void TalkToMabel::onActivate(bool isActiveThroughSkippable)
 
 void TalkToMabel::onComplete()
 {
+	if (this->mabel != nullptr)
+	{
+		this->mabel->getAnimations()->clearAnimationPriority();
+		this->removeAllListeners();
+	}
 }
 
 void TalkToMabel::onSkipped()

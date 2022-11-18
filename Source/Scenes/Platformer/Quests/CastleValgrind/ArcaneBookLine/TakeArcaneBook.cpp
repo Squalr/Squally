@@ -81,12 +81,6 @@ void TakeArcaneBook::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<Mabel>(this, [=](Mabel* mabel)
 	{
 		this->mabel = mabel;
-
-		if (questState != QuestState::Complete)
-		{
-			this->mabel->getAnimations()->playAnimation("Cower", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
-		}
-
 	}, Mabel::MapKey);
 
 	if (this->arcaneBook != nullptr)

@@ -72,25 +72,9 @@ void UnhauntCastle::onLoad(QuestState questState)
 	{
 		this->mabel = mabel;
 		
-		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+		if (questState == QuestState::Active)
 		{
-			this->mabel->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
-			{
-				int currentCureCount = this->getQuestSaveStateOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
-
-				if (currentCureCount >= UnhauntCastle::MaxUnhauntCount)
-				{
-					questBehavior->enableTurnIn();
-
-					this->runCinematicSequence();
-				}
-				else
-				{
-					questBehavior->enableIncompleteQuest();
-
-					this->setPreText();
-				}
-			});
+			this->updateQuestVisuals();
 		}
 	}, Mabel::MapKey);
 
@@ -102,6 +86,14 @@ void UnhauntCastle::onLoad(QuestState questState)
 
 void UnhauntCastle::onActivate(bool isActiveThroughSkippable)
 {
+	// Defer just in case Mabel is not initialized yet
+	this->defer([=]()
+	{
+		if (isActiveThroughSkippable)
+		{
+			this->updateQuestVisuals();
+		}
+	}, 2);
 }
 
 void UnhauntCastle::onComplete()
@@ -119,6 +111,33 @@ void UnhauntCastle::onSkipped()
 	this->removeAllListeners();
 }
 
+void UnhauntCastle::updateQuestVisuals()
+{
+	if (this->mabel == nullptr)
+	{
+		return;
+	}
+
+	this->mabel->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+	{
+		int currentCureCount = this->getQuestSaveStateOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
+
+		if (currentCureCount >= UnhauntCastle::MaxUnhauntCount)
+		{
+			questBehavior->enableTurnIn();
+
+			this->runCinematicSequence();
+		}
+		// Check for at least one unhaunted entity, such as to not give spoilers for the unhaunting quest
+		else if (currentCureCount >= 1)
+		{
+			questBehavior->enableIncompleteQuest();
+
+			this->setPreText();
+		}
+	});
+}
+
 void UnhauntCastle::runCinematicSequence()
 {
 	if (this->mabel == nullptr)
@@ -130,7 +149,7 @@ void UnhauntCastle::runCinematicSequence()
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Menus_TODO::create(),
+			Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_V_ThankYou::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
@@ -139,14 +158,13 @@ void UnhauntCastle::runCinematicSequence()
 			),
 			[=]()
 			{
-				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ FountainRoomKey::create() }));
 			},
 			Voices::GetNextVoiceShort(),
 			false
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Menus_TODO::create(),
+			Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_W_TakeArcaneBook::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
@@ -156,76 +174,19 @@ void UnhauntCastle::runCinematicSequence()
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceQuestion(),
+			Voices::GetNextVoiceShort(),
 			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Menus_TODO::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-				DialogueEvents::BuildPreviewNode(&this->mabel, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Menus_TODO::create()
-				->setStringReplacementVariables(Strings::Platformer_MapNames_UnderflowRuins_PyramidPass::create()),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->mabel, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceMedium(),
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Menus_TODO::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->mabel, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceMedium(),
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Menus_TODO::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
-				DialogueEvents::BuildPreviewNode(&this->mabel, true)
-			),
-			[=]()
-			{
-				this->complete();
-			},
-			Voices::GetNextVoiceMedium(),
-			true
 		));
 	});
 }
 
 void UnhauntCastle::setPreText()
 {
+	if (this->mabel == nullptr)
+	{
+		return;
+	}
+
 	this->defer([=]()
 	{
 		this->mabel->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
@@ -233,7 +194,7 @@ void UnhauntCastle::setPreText()
 			int remaining = UnhauntCastle::MaxUnhauntCount - this->getQuestSaveStateOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
 
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Menus_TODO::create()
+				Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_Q_Remaining::create()
 					->setStringReplacementVariables(ConstantString::create(std::to_string(remaining))),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
@@ -243,7 +204,6 @@ void UnhauntCastle::setPreText()
 				),
 				[=]()
 				{
-					PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ FountainRoomKey::create() }));
 					this->setPreText();
 				},
 				Voices::GetNextVoiceMedium(),

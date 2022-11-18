@@ -30,6 +30,7 @@ protected:
 private:
 	typedef QuestTask super;
 
+	void updateQuestVisuals();
 	void runCinematicSequence();
 	void setPreText();
 
