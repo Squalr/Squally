@@ -40,4 +40,5 @@ private:
 	Squally* squally = nullptr;
 	ArcaneBook* arcaneBook = nullptr;
 	GameObject* bookshelf = nullptr;
+	Portal* secretDoorPortal = nullptr;
 };

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="834">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="98" nextobjectid="876">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -204,6 +204,30 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="834" name="Mines/CaveDoor4" type="decor" x="3954.96" y="808.394" width="333" height="385"/>
+ </objectgroup>
+ <objectgroup id="97" name="decor bg fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="836" name="Mines/Plank1" type="decor" x="4233.96" y="863.719" width="54" height="374"/>
+  <object id="838" name="Mines/Plank6" type="decor" x="4018.58" y="933.767" width="321" height="38" rotation="45"/>
+  <object id="839" name="Mines/Plank8" type="decor" x="3962.46" y="1131.16" width="173" height="38"/>
+  <object id="840" name="Mines/Plank9" type="decor" x="4137.13" y="1131.16" width="110" height="38"/>
+  <object id="843" name="Mines/Plank11" type="decor" x="4089.96" y="1130.61" width="93" height="38"/>
+  <object id="844" name="Mines/Plank1" type="decor" x="3974.97" y="846.695" width="54" height="374"/>
+  <object id="846" name="Mines/Plank6" type="decor" x="3976.89" y="854.998" width="321" height="38"/>
+  <object id="860" name="Mines/Plank6" type="decor" x="3993.45" y="1170.19" width="321" height="38" rotation="-45"/>
+  <object id="862" name="Mines/Plank6" type="decor" x="3970.41" y="1020.94" width="321" height="38" rotation="12"/>
+  <object id="867" name="Mines/Plank8" type="decor" x="3974.72" y="952.308" width="173" height="38"/>
+  <object id="868" name="Mines/Plank9" type="decor" x="4149.39" y="952.308" width="110" height="38"/>
+  <object id="870" name="Mines/Plank11" type="decor" x="4102.22" y="951.768" width="93" height="38"/>
+  <object id="874" name="Mines/PlankConnector1" type="decor" x="3988.22" y="865.668" width="148" height="124"/>
+  <object id="875" name="Mines/PlankConnector1" type="decor" x="4127.35" y="865.496" width="148" height="124">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -221,13 +245,13 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="21" name="terrain">
+ <objectgroup id="21" name="terrain" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="753" name="marble" type="terrain" x="-132.135" y="1195.09" width="5380.86" height="234.06"/>
  </objectgroup>
- <objectgroup id="22" name="decor midground">
+ <objectgroup id="22" name="decor midground" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -291,7 +315,7 @@
     <property name="transition" value="debug"/>
    </properties>
   </object>
-  <object id="833" name="arcane-book" type="object" x="4171.62" y="867.507" width="128" height="128">
+  <object id="871" name="arcane-book" type="object" x="4159.44" y="893.482" width="128" height="128">
    <properties>
     <property name="quest" value="take-arcane-book"/>
     <property name="quest-line" value="arcane-book"/>

@@ -83,6 +83,16 @@ void TakeArcaneBook::onLoad(QuestState questState)
 		this->mabel = mabel;
 	}, Mabel::MapKey);
 
+	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
+	{
+		this->secretDoorPortal = portal;
+
+		if (questState != QuestState::None)
+		{
+			this->secretDoorPortal->unlock();
+		}
+	}, "secret-door");
+
 	if (this->arcaneBook != nullptr)
 	{
 		if (questState == QuestState::None)
@@ -99,6 +109,11 @@ void TakeArcaneBook::onLoad(QuestState questState)
 	{
 		this->complete();
 		this->moveBookshelf(true);
+
+		if (this->secretDoorPortal != nullptr)
+		{
+			this->secretDoorPortal->unlock();
+		}
 
 		if (this->arcaneBook != nullptr)
 		{

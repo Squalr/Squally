@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="839">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="842">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -204,7 +204,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="828" name="Mines/CaveDoor3" type="decor" x="3958.84" y="864" width="376" height="332"/>
+  <object id="828" name="Mines/CaveDoor4" type="decor" x="3954.96" y="808.394" width="333" height="385"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -234,7 +234,11 @@
   </properties>
   <object id="817" name="Generic/BookshelfEmptyDark1" type="decor" x="2582.78" y="588" width="727" height="608"/>
   <object id="818" name="Generic/BookshelfEmptyDark1" type="decor" x="160.05" y="588" width="727" height="608"/>
-  <object id="819" name="Generic/BookshelfEmptyDark1" type="decor" x="3862" y="588" width="727" height="608"/>
+  <object id="819" name="Generic/BookshelfEmptyDark1" type="decor" x="3862" y="588" width="727" height="608">
+   <properties>
+    <property name="tag" value="secret-bookshelf"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -269,6 +273,23 @@
     <property name="send-event" value="CV_EXPLORE_DARK_SIDE"/>
    </properties>
   </object>
+  <object id="839" name="portal" type="object" x="3989.98" y="936.607" width="256" height="256">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="CastleValgrind/Zone_2_0"/>
+    <property name="tag" value="secret-door"/>
+    <property name="transition" value="secret-door"/>
+   </properties>
+  </object>
+  <object id="841" name="arcane-book" type="object" x="4107.35" y="-580.854" width="128" height="128">
+   <properties>
+    <property name="quest" value="take-arcane-book"/>
+    <property name="quest-line" value="arcane-book"/>
+    <property name="reward-pool" value="arcane-book"/>
+    <property name="send-event" value="arcane-book-taken"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -294,7 +315,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="1.15"/>
+   <property name="zoom" type="float" value="1.1499999999999999"/>
   </properties>
   <object id="523" name="squally" type="entity" x="2248.72" y="1067.79" width="128" height="128">
    <properties>
@@ -309,6 +330,11 @@
   <object id="833" name="spawn" type="object" x="3524.47" y="1065.97" width="128" height="128">
    <properties>
     <property name="transition" value="clock"/>
+   </properties>
+  </object>
+  <object id="840" name="spawn" type="object" x="4051.17" y="1068.02" width="128" height="128">
+   <properties>
+    <property name="transition" value="secret-door"/>
    </properties>
   </object>
  </objectgroup>
