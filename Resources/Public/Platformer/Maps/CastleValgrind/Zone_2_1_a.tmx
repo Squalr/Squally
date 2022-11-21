@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="24" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="826">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="24" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="824">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -161,36 +161,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="822" name="agnes" type="entity" x="1714.45" y="1066.97" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="dm-generic"/>
-   </properties>
-  </object>
-  <object id="823" name="skeletal-baron" type="entity" x="1613.91" y="779.173" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
-  <object id="824" name="skeletal-reaper" type="entity" x="1829.38" y="779.29" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
-  <object id="825" name="werewolf" type="entity" x="2031.59" y="779.29" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer" opacity="0.9">
   <properties>

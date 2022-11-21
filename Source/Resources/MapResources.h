@@ -36,10 +36,9 @@ namespace MapResources
 	extern const std::string CastleValgrind_Zone_1_2;
 	extern const std::string CastleValgrind_Zone_1_3;
 	extern const std::string CastleValgrind_Zone_2_0;
+	extern const std::string CastleValgrind_Zone_2_0_a;
 	extern const std::string CastleValgrind_Zone_2_1;
-	extern const std::string CastleValgrind_Zone_2_2;
-	extern const std::string CastleValgrind_Zone_2_3;
-	extern const std::string CastleValgrind_Zone_2_4;
+	extern const std::string CastleValgrind_Zone_2_1_a;
 	extern const std::string CastleValgrind_Zone_Dark_Debug;
 	extern const std::string CastleValgrind_Zone_Dark_Town_Alch;
 	extern const std::string CastleValgrind_Zone_Dark_Town_Inn;

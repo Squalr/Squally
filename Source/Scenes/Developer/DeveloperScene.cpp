@@ -361,9 +361,9 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("[Dark] Town (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Main));
 		mapList.push_back(this->buildDebugButton("[Dark] Study Dark (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Study));
 		mapList.push_back(this->buildDebugButton("[Dark] Throne Room (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Throne_Room));
-		mapList.push_back(this->buildDebugButton("Zone_2_3 (CV)", MapResources::CastleValgrind_Zone_2_3));
-		mapList.push_back(this->buildDebugButton("Zone_2_2 (CV)", MapResources::CastleValgrind_Zone_2_2));
+		mapList.push_back(this->buildDebugButton("Zone_2_1_a (CV)", MapResources::CastleValgrind_Zone_2_1_a));
 		mapList.push_back(this->buildDebugButton("Zone_2_1 (CV)", MapResources::CastleValgrind_Zone_2_1));
+		mapList.push_back(this->buildDebugButton("Zone_2_0_a (CV)", MapResources::CastleValgrind_Zone_2_0_a));
 		mapList.push_back(this->buildDebugButton("Zone_2_0 (CV)", MapResources::CastleValgrind_Zone_2_0));
 		mapList.push_back(this->buildDebugButton("Zone_1_2 (CV)", MapResources::CastleValgrind_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (CV)", MapResources::CastleValgrind_Zone_1_1));
@@ -374,36 +374,24 @@ DeveloperScene::DeveloperScene()
 		// ** Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
 		// ** Needs hexus battles (easy enough)
 		// ** Needs hexus puzzles (D, E, F, G)
-		// ** Mabel cower while ghost walks by
-		// ** Objectives
-		// ** New helper?
-
-		// WIP flow:
-		//	- Castle is visibly haunted
-		//	- Throne room locked
-		//	- study room clock [repairable] to dark side
-		//	- 'Unhaunt' NPCs on each map
-		// 	- Mabel asks you to grab the Arcane book from shelf, it causes the shelf to move in overworld, showing a boarded hole.
-		//		- Maybe a hole on dark side to tease the hidden tunnel.
-		//		- Arcane => Defend for two turns
-		//		- Enter hole from dark side after bookshelf moved
-		// 	- Secret room behind study room (dark side only, helps make shit easier for me) leading to 2_x zones
-		// 	- Eventually 2_x leads back to throne room [dark]
+		// ** New helper? Would need a story rewrite to justify it. If anything, a repear to claim spirit souls, or some shit.
+		// ** Lock throne room until entered from 2_x zones
+		// ** Place all animals
 
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
 		X Thug					1_x		=> jmp 			--			Heavy blade
 		X Barbarian				1_x		=> jle			ZF/SF/OF	Defensive stance
 		X ReanimatedFighter		1_x		=> jg			ZF/SF/OF	Diseased
-		O WereWolf				dark	=> jge			ZF/SF/OF	Rabies
 		O Wraith				dark	=> jne			ZF/SF/OF	<Spirit, invert rabies as damage buff>
+		- Abomination			dark	=> jnz			ZF/SF/OF	<Radiation, RNG per tick to do -5 dmg or something>
 		- Reaper				dark	=> je			ZF/SF/OF	<AngelFigurine, undying>
 		X Vampiress				dark	=> jl			ZF/SF/OF	Vampirism
 		- VampireLord			dark	=> jz			ZF/SF/OF	<SwordGlowBlue, RNG mana steal?>
-		- Abomination			2_x		=> jnz			ZF/SF/OF	<Radiation, RNG per tick to do -5 dmg or something>
+		O WereWolf				2_x		=> jge			ZF/SF/OF	Rabies
 		- SkeletalBaron			2_x		=> jns			SF			<ShieldAdorned, convert damage to healing>
 		- Jack					2_x		=> js			SF			<Dice, RNG per tick? Maybe create pumpkin icon, but idk>
-		- [B] Agnes				2_x 	=> jecxz		%ecx == 0	<Bats, Bat Swarm RNG per tick to attack>
+		- [B] Agnes				dark_t	=> jecxz		%ecx == 0	<Bats, Bat Swarm RNG per tick to attack>
 		
 		- Garin					=> Town_Train
 		- Zana					=> 1_2 (H_1)
