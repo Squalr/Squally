@@ -290,6 +290,10 @@ Card::Operation Card::toOperation(unsigned int immediate)
 		{
 			return Operation(Operation::OperationType::NOT);
 		}
+		case CardData::CardType::Special_CLEAR:
+		{
+			return Operation(Operation::OperationType::CLEAR);
+		}
 		default:
 		{
 			return Operation(Operation::OperationType::AND, 0b000);
@@ -379,6 +383,11 @@ int Card::applyOperation(int attack, Operation operation)
 		case Operation::OperationType::NOT:
 		{
 			attack ^= 0b1111;
+			break;
+		}
+		case Operation::OperationType::CLEAR:
+		{
+			attack = this->getOriginalAttack();
 			break;
 		}
 		case Operation::OperationType::ADD:
@@ -636,6 +645,7 @@ CardEffects::CardEffect Card::getCorrespondingCardEffect()
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		case CardData::CardType::Special_STEAL:
 		case CardData::CardType::Special_POP:
+		case CardData::CardType::Special_CLEAR:
 		{
 			return CardEffects::CardEffect::DustPoof;
 		}

@@ -45,6 +45,7 @@ public:
 			ADD,
 			SUB,
 			NOT,
+			CLEAR,
 		};
 
 		OperationType operationType;

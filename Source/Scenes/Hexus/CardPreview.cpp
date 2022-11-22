@@ -363,6 +363,11 @@ CardPreview::PreviewData CardPreview::constructPreview(CardData* cardData, Card*
 					specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Inverse::create());
 					break;
 				}
+				case CardData::CardType::Special_CLEAR:
+				{
+					specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Clear::create());
+					break;
+				}
 				case CardData::CardType::Special_FLIP1:
 				{
 					specialLabel->setLocalizedString(Strings::Hexus_CardDescriptions_Flip1::create());

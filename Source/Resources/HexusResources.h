@@ -130,6 +130,7 @@ namespace HexusResources
 	extern const std::string Special_Absorb;
 	extern const std::string Special_Addition;
 	extern const std::string Special_BonusMoves;
+	extern const std::string Special_Clear;
 	extern const std::string Special_Flip1;
 	extern const std::string Special_Flip2;
 	extern const std::string Special_Flip3;
@@ -154,7 +155,6 @@ namespace HexusResources
 	extern const std::string Special__TBD1;
 	extern const std::string Special__TBD10;
 	extern const std::string Special__TBD11;
-	extern const std::string Special__TBD12;
 	extern const std::string Special__TBD2;
 	extern const std::string Special__TBD3;
 	extern const std::string Special__TBD4;

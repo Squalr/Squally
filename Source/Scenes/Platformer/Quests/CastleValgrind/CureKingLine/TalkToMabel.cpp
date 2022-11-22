@@ -12,6 +12,7 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Quests/QuestLine.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"

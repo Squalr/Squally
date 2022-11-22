@@ -373,7 +373,7 @@ DeveloperScene::DeveloperScene()
 		// ** Traps: Organ gun, cannon, catapult, ballista, heaven hug (FPU acceptable, given that jmps are pretty much done)
 		// ** Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
 		// ** Needs hexus battles (easy enough)
-		// ** Needs hexus puzzles (D, E, F, G)
+		// ** Needs hexus puzzles (F, G)
 		// ** New helper? Would need a story rewrite to justify it. If anything, a repear to claim spirit souls, or some shit.
 		// ** Lock throne room until entered from 2_x zones
 		// ** Place all animals

@@ -137,6 +137,7 @@ void StagingHelperText::updateSelectionStatus(GameState* gameState)
 			case CardData::CardType::Special_ADD:
 			case CardData::CardType::Special_SUB:
 			case CardData::CardType::Special_NOT:
+			case CardData::CardType::Special_CLEAR:
 			case CardData::CardType::Special_ROL:
 			case CardData::CardType::Special_ROR:
 			{

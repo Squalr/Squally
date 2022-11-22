@@ -461,6 +461,7 @@ int CardRow::simulateCardEffect(Card* card)
 		case CardData::CardType::Special_FLIP3:
 		case CardData::CardType::Special_FLIP4:
 		case CardData::CardType::Special_NOT:
+		case CardData::CardType::Special_CLEAR:
 		case CardData::CardType::Special_SUDDEN_DEATH:
 		{
 			for (auto rowCard : this->rowCards)

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="819">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="821">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -259,6 +259,17 @@
    <properties>
     <property name="map" value="CastleValgrind/Town_Main"/>
     <property name="transition" value="throne-room"/>
+   </properties>
+  </object>
+  <object id="819" name="hexus-shrine" type="object" x="1178.54" y="930.87" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-skeletal-baron"/>
+   </properties>
+  </object>
+  <object id="820" name="skeletal-baron" type="entity" x="1178.47" y="2037.13" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,cv-puzzle-G"/>
+    <property name="tag" value="hexus-skeletal-baron"/>
    </properties>
   </object>
  </objectgroup>

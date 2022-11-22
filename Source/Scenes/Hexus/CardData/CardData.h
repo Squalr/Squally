@@ -20,6 +20,7 @@ public:
 		Special_SHR,
 		Special_ROR,
 		Special_NOT,
+		Special_CLEAR,
 		Special_FLIP1,
 		Special_FLIP2,
 		Special_FLIP3,

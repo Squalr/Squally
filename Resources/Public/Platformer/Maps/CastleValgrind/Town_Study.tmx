@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="98" nextobjectid="876">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="98" nextobjectid="878">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -245,13 +245,13 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="21" name="terrain" visible="0">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="753" name="marble" type="terrain" x="-132.135" y="1195.09" width="5380.86" height="234.06"/>
  </objectgroup>
- <objectgroup id="22" name="decor midground" visible="0">
+ <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -323,6 +323,17 @@
     <property name="send-event" value="arcane-book-taken"/>
    </properties>
   </object>
+  <object id="876" name="hexus-shrine" type="object" x="410.414" y="934.385" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-reaper"/>
+   </properties>
+  </object>
+  <object id="877" name="reaper" type="entity" x="410.344" y="2040.65" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,cv-puzzle-F"/>
+    <property name="tag" value="hexus-reaper"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -355,7 +366,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="1.1499999999999999"/>
+   <property name="zoom" type="float" value="1.15"/>
   </properties>
   <object id="523" name="squally" type="entity" x="2248.72" y="1067.79" width="128" height="128">
    <properties>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="1057">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="1059">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -917,17 +917,6 @@
     <property name="transition" value="inn"/>
    </properties>
   </object>
-  <object id="984" name="hexus-shrine" type="object" x="3733.74" y="2472.87" width="155" height="260">
-   <properties>
-    <property name="entity-tag" value="hexus-abomination"/>
-   </properties>
-  </object>
-  <object id="985" name="abomination" type="entity" x="3733.67" y="3579.13" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,disarmed,cv-puzzle-C"/>
-    <property name="tag" value="hexus-abomination"/>
-   </properties>
-  </object>
   <object id="1052" name="portal" type="object" x="1271.42" y="2474.05" width="256" height="256">
    <properties>
     <property name="components" value="locked-portal"/>
@@ -945,8 +934,9 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="42" name="no hack objects">
+ <objectgroup id="42" name="objects fg" visible="0">
   <properties>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1055" name="objective-trigger" type="object" x="3393.56" y="-60.79" width="700.878" height="3073.58">

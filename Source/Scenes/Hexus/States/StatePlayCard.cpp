@@ -403,6 +403,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 		case CardData::CardType::Special_ROL:
 		case CardData::CardType::Special_ROR:
 		case CardData::CardType::Special_NOT:
+		case CardData::CardType::Special_CLEAR:
 		{
 			if (gameState->selectedDestinationCard == nullptr)
 			{
@@ -439,6 +440,12 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 					{
 						gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
 						this->notSound->play();
+						break;
+					}
+					case CardData::CardType::Special_CLEAR:
+					{
+						gameState->selectedDestinationCard->cardEffects->runEffect(gameState->selectedHandCard->getCorrespondingCardEffect());
+						this->stealSound->play(); // TODO if you care
 						break;
 					}
 					default:

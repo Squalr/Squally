@@ -89,6 +89,10 @@ LocalizedString* CardData::getCardTypeString()
 		{
 			return Strings::Hexus_Cards_Abbreviations_NOT::create();
 		}
+		case CardData::CardType::Special_CLEAR:
+		{
+			return Strings::Common_Empty::create();
+		}
 		case CardData::CardType::Special_FLIP1:
 		{
 			return Strings::Hexus_Cards_Abbreviations_FLIP1::create();
@@ -181,6 +185,10 @@ LocalizedString* CardData::getCardOperationString()
 		case CardData::CardType::Special_NOT:
 		{
 			return Strings::Hexus_Cards_Abbreviations_NOT::create();
+		}
+		case CardData::CardType::Special_CLEAR:
+		{
+			return Strings::Common_Empty::create();
 		}
 		case CardData::CardType::Special_ADD:
 		{
@@ -317,6 +325,7 @@ unsigned int CardData::getIntrinsicImmediate()
 		case CardData::CardType::Special_OR:
 		case CardData::CardType::Special_XOR:
 		case CardData::CardType::Special_NOT:
+		case CardData::CardType::Special_CLEAR:
 		case CardData::CardType::Special_ADD:
 		case CardData::CardType::Special_SUB:
 		case CardData::CardType::Special_GREED:

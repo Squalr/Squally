@@ -53,6 +53,7 @@
 #include "Scenes/Hexus/CardData/Special/CardAbsorb.h"
 #include "Scenes/Hexus/CardData/Special/CardAddition.h"
 #include "Scenes/Hexus/CardData/Special/CardBonusMoves.h"
+#include "Scenes/Hexus/CardData/Special/CardClear.h"
 #include "Scenes/Hexus/CardData/Special/CardFlip1.h"
 #include "Scenes/Hexus/CardData/Special/CardFlip2.h"
 #include "Scenes/Hexus/CardData/Special/CardFlip3.h"
@@ -150,6 +151,7 @@ CardList::CardList()
 	this->cardListByName[CardKeys::Flip3] = new CardFlip3();
 	this->cardListByName[CardKeys::Flip4] = new CardFlip4();
 	this->cardListByName[CardKeys::Inverse] = new CardInverse();
+	this->cardListByName[CardKeys::Clear] = new CardClear();
 	this->cardListByName[CardKeys::LogicalAnd] = new CardLogicalAnd();
 	this->cardListByName[CardKeys::LogicalOr] = new CardLogicalOr();
 	this->cardListByName[CardKeys::LogicalXor] = new CardLogicalXor();

@@ -64,11 +64,11 @@ StateOverride* CVPuzzleDBehavior::getStateOverride()
 		// Enemy losses
 		1,
 		// Player's turn
-		true,
+		false,
 		// Player passed
-		true,
+		false,
 		// Enemy passed
-		true,
+		false,
 		// Player deck
 		std::vector<CardData*>
 		{
@@ -82,7 +82,7 @@ StateOverride* CVPuzzleDBehavior::getStateOverride()
 		// Player graveyard
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
 		},
 		// Enemy graveyard
 		std::vector<CardData*>
@@ -92,15 +92,22 @@ StateOverride* CVPuzzleDBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Push),
+			CardList::getInstance()->cardListByName.at(CardKeys::Pop),
+			CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Clear),
 		},
 		// Enemy hand
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 		},
 		// Player binary cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
@@ -114,14 +121,22 @@ StateOverride* CVPuzzleDBehavior::getStateOverride()
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary0),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal12),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex8),
 		}
 	);
 }

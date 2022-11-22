@@ -134,6 +134,7 @@ void StateAIDecideCard::decideCardRandom(GameState* gameState)
 				break;
 			}
 			case CardData::CardType::Special_NOT:
+			case CardData::CardType::Special_CLEAR:
 			case CardData::CardType::Special_ROL:
 			case CardData::CardType::Special_ROR:
 			{
