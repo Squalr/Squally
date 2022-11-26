@@ -1,3 +1,6 @@
+
+#include "Objects/Platformer/ItemPools/ChestPools/CastleValgrind/ChestPoolCVGeneric.h"
+#include "Objects/Platformer/ItemPools/ChestPools/CastleValgrind/ChestPoolCVRare.h"
 #include "Objects/Platformer/ItemPools/ChestPools/DataMines/ChestPoolBlueGem.h"
 #include "Objects/Platformer/ItemPools/ChestPools/DataMines/ChestPoolDMCoal.h"
 #include "Objects/Platformer/ItemPools/ChestPools/DataMines/ChestPoolDMDiamond.h"
