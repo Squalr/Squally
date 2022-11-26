@@ -86,6 +86,8 @@
   <object id="976" name="portal" type="object" x="2950.24" y="935.295" width="237.527" height="375.411">
    <properties>
     <property name="map" value="CastleValgrind/Town_Throne_Room"/>
+    <property name="quest" value="locked-throne-room"/>
+    <property name="quest-line" value="cure-king"/>
     <property name="transition" value="throne-room"/>
    </properties>
   </object>

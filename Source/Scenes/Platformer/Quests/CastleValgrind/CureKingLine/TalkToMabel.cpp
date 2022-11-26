@@ -29,7 +29,6 @@
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Components/Objects/Illusions/DispelIllusionBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
-#include "Scenes/Platformer/Inventory/Items/Misc/Keys/CastleValgrind/StudyRoomKey.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/UnhauntCastle.h"
@@ -374,7 +373,6 @@ void TalkToMabel::runCinematicSequencePt6()
 void TalkToMabel::runCinematicSequencePt7()
 {
 	PlatformerEvents::TriggerCinematicRestore();
-	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ StudyRoomKey::create() }));
 	Objectives::SetCurrentObjective(ObjectiveKeys::CVRepairClock);
 	this->complete();
 }

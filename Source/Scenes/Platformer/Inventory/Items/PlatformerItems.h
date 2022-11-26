@@ -186,6 +186,7 @@
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/Wand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/WitchesWand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Wands/WoodenWand.h"
+#include "Scenes/Platformer/Inventory/Items/Misc/Keys/CastleValgrind/CryptKey.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/CastleValgrind/StudyRoomKey.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/DataMines/LetterForThePrincess.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/DataMines/TrainTicket.h"

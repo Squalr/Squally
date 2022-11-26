@@ -373,8 +373,8 @@ DeveloperScene::DeveloperScene()
 		// ** Traps: Organ gun, cannon, catapult, ballista, heaven hug (FPU acceptable, given that jmps are pretty much done)
 		// ** Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
 		// ** New helper? Would need a story rewrite to justify it. If anything, a repear to claim spirit souls, or some shit.
-		// ** Lock throne room until entered from 2_x zones
-
+		// ** Crypt key reward
+		
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
 		X Thug					1_x		=> jmp 			--			Heavy blade
