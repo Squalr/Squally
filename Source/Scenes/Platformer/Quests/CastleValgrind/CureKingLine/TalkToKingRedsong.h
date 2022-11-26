@@ -8,20 +8,23 @@ class EvilEye;
 class Gecky;
 class Guano;
 class KingRedsong;
+class KingRedsongSlime;
+class Leroy;
+class PrincessOpal;
 class QuestLine;
 class Scrappy;
 class Squally;
 
-class TalkToKing : public QuestTask
+class TalkToKingRedsong : public QuestTask
 {
 public:
-	static TalkToKing* create(GameObject* owner, QuestLine* questLine);
+	static TalkToKingRedsong* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	TalkToKing(GameObject* owner, QuestLine* questLine);
-	virtual ~TalkToKing();
+	TalkToKingRedsong(GameObject* owner, QuestLine* questLine);
+	virtual ~TalkToKingRedsong();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;
@@ -43,6 +46,9 @@ private:
 	Gecky* gecky = nullptr;
 	Guano* guano = nullptr;
 	KingRedsong* kingRedsong = nullptr;
+	KingRedsongSlime* kingRedsongSlime = nullptr;
+	Leroy* leroy = nullptr;
+	PrincessOpal* princessOpal = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 };

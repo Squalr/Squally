@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="46" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="98" nextobjectid="836">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="46" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="98" nextobjectid="837">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -286,6 +286,11 @@
     <property name="transition" value="fireplace"/>
    </properties>
   </object>
+  <object id="836" name="trigger" type="object" x="4248.67" y="-178.774" width="118.944" height="1629.75">
+   <properties>
+    <property name="send-event" value="engage-agnes"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -338,8 +343,8 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="cv-generic"/>
-    <property name="quest" value="cure-king"/>
-    <property name="quest-line" value="defeat-agnes"/>
+    <property name="quest" value="defeat-agnes"/>
+    <property name="quest-line" value="cure-king"/>
    </properties>
   </object>
   <object id="835" name="jack" type="entity" x="3534.02" y="1064.93" width="128" height="128">

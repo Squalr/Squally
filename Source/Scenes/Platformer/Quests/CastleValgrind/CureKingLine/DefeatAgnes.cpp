@@ -78,8 +78,6 @@ void DefeatAgnes::onActivate(bool isActiveThroughSkippable)
 
 void DefeatAgnes::onComplete()
 {
-	// TODO
-	// Objectives::SetCurrentObjective(ObjectiveKeys::UREnterTheMines);
 }
 
 void DefeatAgnes::onSkipped()
@@ -119,9 +117,4 @@ void DefeatAgnes::runCinematicSequencePt1()
 void DefeatAgnes::runCinematicSequencePt2()
 {
 	PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(this->agnes, false));
-
-	/*
-	#include "Scenes/Platformer/Inventory/Items/Misc/Keys/CastleValgrind/CryptKey.h"
-	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ CryptKey::create() }));
-	*/
 }
