@@ -375,7 +375,6 @@ DeveloperScene::DeveloperScene()
 		// ** Needs hexus battles (easy enough)
 		// ** New helper? Would need a story rewrite to justify it. If anything, a repear to claim spirit souls, or some shit.
 		// ** Lock throne room until entered from 2_x zones
-		// ** Place all animals
 
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
@@ -438,6 +437,8 @@ DeveloperScene::DeveloperScene()
 		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
 		// Needs enemy scripting according to notes on which instructions this zone covers
 		// Needs hexus puzzles
+		// Needs hexus battles
+		// Needs animals
 		// 3x more enemies than is standard, which makes this harder
 		// 3 crypts that need to be cleared. Can either be "orderless" or force linearity with keys.
 		//	- town key (rusty?), bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x		
@@ -506,8 +507,10 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// Traps: Fire bird, fire launcher, TNT barrel, mortar
-		// Hexus puzzles
-		// Hexus fights
+		// Needs hexus puzzles
+		// Needs hexus battles
+		// Needs animals
+		// Needs enemy scripting according to notes on which instructions this zone covers
 		// 1_x should be the initial overworld + caves (Dragon, Ghost, Elemental, Golem)
 		// 2_x should be more caves connecting town to the 3_x maps (Shaman, Swordsman, Rogue)
 		// 3_x is all overworld (Tiger, Warrior, Grunt, Archer)
@@ -578,6 +581,10 @@ DeveloperScene::DeveloperScene()
 		// 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
 		// 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
 		// 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
+		// Needs hexus puzzles
+		// Needs hexus battles
+		// Needs animals
+		// Needs enemy scripting according to notes on which instructions this zone covers
 
 		/*
 		- PenguinGrunt		1_x		=> jnp			PF		<?, ?> // Odd or even! PF = 0 odd. All combinations valid except JNPE
@@ -608,9 +615,6 @@ DeveloperScene::DeveloperScene()
 		- Ysara
 		X Irmik => SkyMaster
 		*/
-
-		// Needs enemy scripting according to notes on which instructions this zone covers
-		// Needs hexus puzzles
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
@@ -752,11 +756,11 @@ DeveloperScene::DeveloperScene()
 	// CV
 	X Beaver		CV Inn upstairs
 	X Pig			CV Dark Inn Upstairs
-	Hedgehog		CV 
-	Horse			CV 
-	Koala			CV 
-	Panda			CV 
-	Parrot			CV 
+	X Hedgehog		CV 
+	X Horse			CV 
+	X Koala			CV 
+	X Panda			CV 
+	X Parrot		CV 
 
 	// BP
 	Blowfish		BP	??

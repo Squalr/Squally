@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="842">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="843">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -290,6 +290,7 @@
     <property name="send-event" value="arcane-book-taken"/>
    </properties>
   </object>
+  <object id="842" name="caged-panda" type="object" x="379.742" y="1084.07" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
