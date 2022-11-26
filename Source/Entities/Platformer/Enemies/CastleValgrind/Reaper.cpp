@@ -36,7 +36,7 @@ Reaper::~Reaper()
 
 Vec2 Reaper::getDialogueOffset()
 {
-	return Vec2(-16.0f, -288.0f);
+	return Vec2(-16.0f, -64.0f);
 }
 
 LocalizedString* Reaper::getEntityName()

@@ -181,10 +181,12 @@ void HexusAIHelper::applyIntelligentOpponentCardOrdering(GameState* gameState)
 
 	// If the player has not passed, prioritize 'zero' cards.
 	// If the player has passed, prioritize normal cards.
-	// Always prioritize Decimal 1 since this card is returned to the hand after rounds.
 	std::partition(gameState->enemyHand->rowCards.begin(), gameState->enemyHand->rowCards.end(), [gameState](Card* card) -> bool
 	{
-		if (card->cardData->getCardKey() == CardKeys::Decimal1)
+		// Always prioritize Decimal 1 since this card is returned to the hand after rounds.
+		// High prioritization for bonus moves because why not (note: some puzzles rely on this behavior)
+		if (card->cardData->getCardKey() == CardKeys::Decimal1
+			|| card->cardData->getCardKey() == CardKeys::BonusMoves)
 		{
 			return true;
 		}

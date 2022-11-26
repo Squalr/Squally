@@ -92,12 +92,11 @@ StateOverride* CVPuzzleFBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			// Needs work. Ideal effect is to keep shifting a card to OR it with other cards, then AND to zero out opponent cards
-			// In practice this doesn't work so well
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+			CardList::getInstance()->cardListByName.at(CardKeys::Pop),
 			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
 			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
 			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
@@ -119,7 +118,7 @@ StateOverride* CVPuzzleFBehavior::getStateOverride()
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
@@ -131,11 +130,16 @@ StateOverride* CVPuzzleFBehavior::getStateOverride()
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal11),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex11),
+			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex15),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
 		}
 	);
 }

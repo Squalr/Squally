@@ -36,7 +36,7 @@ SkeletalBaron::~SkeletalBaron()
 
 Vec2 SkeletalBaron::getDialogueOffset()
 {
-	return Vec2(16.0f, -112.0f);
+	return Vec2(16.0f, -72.0f);
 }
 
 LocalizedString* SkeletalBaron::getEntityName()
