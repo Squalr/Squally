@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1009">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1009">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -440,7 +440,7 @@
   </properties>
   <object id="902" name="leon" type="entity" x="2955.5" y="1247.85" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,haunted,pacing,pick-pocket"/>
+    <property name="components" value="cv-t3-hexus,friendly,haunted,pacing,pick-pocket"/>
     <property name="other-world" type="bool" value="false"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
@@ -844,7 +844,7 @@
   </properties>
   <object id="782" name="gaunt" type="entity" x="1813" y="2602" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,haunted,pacing,pick-pocket"/>
+    <property name="components" value="cv-t2-hexus,friendly,haunted,pacing,pick-pocket"/>
     <property name="haunted-key" value="wraith"/>
     <property name="other-world" type="bool" value="false"/>
     <property name="pocket-pool" value="cv-generic"/>

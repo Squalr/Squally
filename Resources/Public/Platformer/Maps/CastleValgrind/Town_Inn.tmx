@@ -283,7 +283,7 @@
   </object>
   <object id="832" name="rogas" type="entity" x="1836.07" y="936.882" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,haunted,pacing,pick-pocket"/>
+    <property name="components" value="cv-t4-hexus,friendly,haunted,pacing,pick-pocket"/>
     <property name="haunted-key" value="abomination"/>
     <property name="other-world" type="bool" value="false"/>
     <property name="pocket-pool" value="cv-generic"/>

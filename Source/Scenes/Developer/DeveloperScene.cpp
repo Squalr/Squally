@@ -372,7 +372,6 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ==================
 		// ** Traps: Organ gun, cannon, catapult, ballista, heaven hug (FPU acceptable, given that jmps are pretty much done)
 		// ** Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
-		// ** Needs hexus battles (easy enough)
 		// ** New helper? Would need a story rewrite to justify it. If anything, a repear to claim spirit souls, or some shit.
 		// ** Lock throne room until entered from 2_x zones
 
@@ -392,16 +391,16 @@ DeveloperScene::DeveloperScene()
 		- [B] Agnes				dark_t	=> jecxz		%ecx == 0	<Bats, Bat Swarm RNG per tick to attack>
 		
 		- Garin					=> Town_Train
-		- Zana					=> 1_2 (H_1)
-		- Gaunt					=> Main (H_2)
-		- Leon					=> Main (H_3)
+		- Zana					=> 1_2 (X H_1)
+		- Gaunt					=> Main (X H_2)
+		- Leon					=> Main (X H_3)
 		- Atreus				=> Main
-		- Mabel					=> Study (H_5)
+		- Mabel					=> Study (X H_5)
 		- Illia					=> Main
-		- Tyracius				=> 2_x (H_6)
+		- Tyracius				=> 2_x (X H_6)
 		- Princess Opal			=> Town_Throne
 		- [Slime] King Redsong	=> [Dark_]Town_Throne
-		- Rogas					=> Town_Inn (H_4)
+		- Rogas					=> Town_Inn (X H_4)
 		- Leopold				=> Town_Alch
 		- Raven					=> Town_Inn
 		- Thurstan				=> Town_Smith

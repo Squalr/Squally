@@ -287,7 +287,7 @@
   </object>
   <object id="809" name="zana" type="entity" x="4669.33" y="1901.33" width="128" height="128">
    <properties>
-    <property name="components" value="zana-hexus,friendly,pick-pocket"/>
+    <property name="components" value="cv-t1-hexus,friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
