@@ -360,7 +360,6 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("[Dark] Smith (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Smith));
 		mapList.push_back(this->buildDebugButton("[Dark] Town (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Main));
 		mapList.push_back(this->buildDebugButton("[Dark] Study Dark (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Study));
-		mapList.push_back(this->buildDebugButton("[Dark] Throne Room (CV)", MapResources::CastleValgrind_Zone_Dark_Town_Throne_Room));
 		mapList.push_back(this->buildDebugButton("Zone_2_1_a (CV)", MapResources::CastleValgrind_Zone_2_1_a));
 		mapList.push_back(this->buildDebugButton("Zone_2_1 (CV)", MapResources::CastleValgrind_Zone_2_1));
 		mapList.push_back(this->buildDebugButton("Zone_2_0_a (CV)", MapResources::CastleValgrind_Zone_2_0_a));
@@ -374,7 +373,7 @@ DeveloperScene::DeveloperScene()
 		// ** Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
 		// ** New helper? Would need a story rewrite to justify it. If anything, a repear to claim spirit souls, or some shit.
 		// ** Crypt key reward
-		
+
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
 		X Thug					1_x		=> jmp 			--			Heavy blade

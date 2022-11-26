@@ -155,6 +155,7 @@ namespace HexusResources
 	extern const std::string Special__TBD1;
 	extern const std::string Special__TBD10;
 	extern const std::string Special__TBD11;
+	extern const std::string Special__TBD12;
 	extern const std::string Special__TBD2;
 	extern const std::string Special__TBD3;
 	extern const std::string Special__TBD4;

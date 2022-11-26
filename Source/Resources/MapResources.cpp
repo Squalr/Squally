@@ -45,7 +45,6 @@ const std::string MapResources::CastleValgrind_Zone_Dark_Town_Inn_Upstairs = "Pu
 const std::string MapResources::CastleValgrind_Zone_Dark_Town_Main = "Public/Platformer/Maps/CastleValgrind/Zone_Dark_Town_Main.tmx";
 const std::string MapResources::CastleValgrind_Zone_Dark_Town_Smith = "Public/Platformer/Maps/CastleValgrind/Zone_Dark_Town_Smith.tmx";
 const std::string MapResources::CastleValgrind_Zone_Dark_Town_Study = "Public/Platformer/Maps/CastleValgrind/Zone_Dark_Town_Study.tmx";
-const std::string MapResources::CastleValgrind_Zone_Dark_Town_Throne_Room = "Public/Platformer/Maps/CastleValgrind/Zone_Dark_Town_Throne_Room.tmx";
 const std::string MapResources::DaemonsHallow_Home_Swag = "Public/Platformer/Maps/DaemonsHallow/Home_Swag.tmx";
 const std::string MapResources::DaemonsHallow_Mages_Warp = "Public/Platformer/Maps/DaemonsHallow/Mages_Warp.tmx";
 const std::string MapResources::DaemonsHallow_Town_Alch = "Public/Platformer/Maps/DaemonsHallow/Town_Alch.tmx";

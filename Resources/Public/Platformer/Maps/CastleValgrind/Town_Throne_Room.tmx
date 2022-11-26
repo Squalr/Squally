@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="42" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="822">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="46" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="98" nextobjectid="836">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -178,7 +178,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="754" name="marble" type="texture" x="-118.842" y="-52" width="1784.84" height="1364"/>
-  <object id="755" name="marble" type="texture" x="2335.33" y="-46" width="3162.97" height="1364"/>
+  <object id="755" name="marble" type="texture" x="2335.33" y="-46" width="3633.24" height="1364"/>
  </objectgroup>
  <objectgroup id="81" name="columns -0">
   <properties>
@@ -237,7 +237,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="753" name="marble" type="terrain" x="-127.203" y="1195.09" width="5631.93" height="234.06"/>
+  <object id="753" name="marble" type="terrain" x="-127.203" y="1195.09" width="6096.79" height="234.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -249,6 +249,13 @@
    </properties>
   </object>
   <object id="721" name="Generic/DiningTable1" type="decor" x="340.987" y="894.835" width="610" height="301"/>
+  <object id="826" name="Generic/FireplaceEmpty1" type="decor" x="4930.99" y="-143.862" width="711" height="1341"/>
+  <object id="827" name="fireplace-fire" type="object" x="5196.55" y="1014.92" width="128" height="128"/>
+ </objectgroup>
+ <objectgroup id="97" name="decor fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -273,6 +280,12 @@
    </properties>
   </object>
   <object id="821" name="caged-koala" type="object" x="68.7032" y="1080.21" width="196" height="112"/>
+  <object id="830" name="portal" type="object" x="5139.6" y="815.322" width="237.527" height="388">
+   <properties>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Throne_Room"/>
+    <property name="transition" value="fireplace"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -284,12 +297,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="783" name="king-redsong-slime" type="entity" x="4478.29" y="1067.33" width="128" height="128">
+  <object id="783" name="king-redsong" type="entity" x="4478.29" y="1067.33" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value="cure-king"/>
-    <property name="quest-line" value=""/>
+    <property name="quest" value="talk-to-king-redsong"/>
+    <property name="quest-line" value="cure-king"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
@@ -302,13 +315,40 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="818" name="leroy" type="entity" x="4308" y="1067.52" width="128" height="128">
+  <object id="832" name="king-redsong-slime" type="entity" x="4385.41" y="1067.6" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pacing,pick-pocket"/>
+    <property name="pocket-pool" value="cv-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="833" name="leroy" type="entity" x="4017.95" y="1063.85" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
     <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="834" name="agnes" type="entity" x="3731.82" y="1066.52" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="cv-generic"/>
+    <property name="quest" value="cure-king"/>
+    <property name="quest-line" value="defeat-agnes"/>
+   </properties>
+  </object>
+  <object id="835" name="jack" type="entity" x="3534.02" y="1064.93" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="cv-generic"/>
    </properties>
   </object>
  </objectgroup>
@@ -325,6 +365,11 @@
   <object id="779" name="spawn-wood-door" type="object" x="1942.93" y="1067.25" width="128" height="128">
    <properties>
     <property name="transition" value="throne-room"/>
+   </properties>
+  </object>
+  <object id="831" name="spawn" type="object" x="5191.33" y="1068.44" width="128" height="128">
+   <properties>
+    <property name="transition" value="fireplace"/>
    </properties>
   </object>
  </objectgroup>

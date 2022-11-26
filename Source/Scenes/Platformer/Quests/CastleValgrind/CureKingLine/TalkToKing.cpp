@@ -38,7 +38,7 @@
 
 using namespace cocos2d;
 
-const std::string TalkToKing::MapKeyQuest = "talk-to-kingRedsong";
+const std::string TalkToKing::MapKeyQuest = "talk-to-king-redsong";
 
 TalkToKing* TalkToKing::create(GameObject* owner, QuestLine* questLine)
 {
@@ -82,7 +82,6 @@ void TalkToKing::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<KingRedsong>(this, [=](KingRedsong* kingRedsong)
 	{
 		this->kingRedsong = kingRedsong;
-
 	}, KingRedsong::MapKey);
 }
 

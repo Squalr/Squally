@@ -25,7 +25,7 @@ CureKingLine::CureKingLine() : super(CureKingLine::MapKeyQuestLine,
 		QuestData(TalkToMabel::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToMabel::create(owner, questLine); }),
 		QuestData(UnhauntCastle::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return UnhauntCastle::create(owner, questLine); }),
 		QuestData(LockedThroneRoom::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return LockedThroneRoom::create(owner, questLine); }),
-		QuestData(DefeatAgnes::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return DefeatAgnes::create(owner, questLine); }),
+		QuestData(DefeatAgnes::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return DefeatAgnes::create(owner, questLine); }),
 		QuestData(TalkToKing::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return TalkToKing::create(owner, questLine); }),
 	})
 {
