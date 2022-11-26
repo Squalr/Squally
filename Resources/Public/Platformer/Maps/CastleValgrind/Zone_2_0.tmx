@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="28" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="906">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="28" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="911">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
-   <property name="hide-mini-map" type="bool" value="true"/>
+   <property name="hide-mini-map" type="bool" value="false"/>
    <property name="map-banner" value=""/>
    <property name="music" value="two-steps"/>
    <property name="rubber-band" type="int" value="13"/>
@@ -44,7 +44,7 @@
   <object id="866" name="wood" type="terrain" x="2000" y="1945.13" width="420" height="112"/>
   <object id="867" name="wood" type="terrain" x="2176.27" y="1817.87" width="1938.21" height="112"/>
   <object id="870" name="wood" type="terrain" x="618.583" y="1016.94" width="420" height="112"/>
-  <object id="871" name="wood" type="terrain" x="-76.9814" y="761.581" width="846.747" height="112"/>
+  <object id="871" name="wood" type="terrain" x="104.661" y="760.581" width="538.115" height="112"/>
   <object id="872" name="wood" type="terrain" x="477.454" y="891.521" width="420" height="112"/>
   <object id="874" name="wood" type="terrain" x="1102.45" y="1425.03" width="420" height="112"/>
   <object id="875" name="wood" type="terrain" x="1233.5" y="1551.93" width="420" height="112"/>
@@ -114,7 +114,7 @@
     <property name="to" value="bridge-front-D"/>
    </properties>
   </object>
-  <object id="898" name="warp" type="object" x="93.0776" y="509.377" width="256" height="256">
+  <object id="898" name="warp" type="object" x="247.394" y="509.377" width="256" height="256">
    <properties>
     <property name="from" value="bridge-back-E"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -159,7 +159,7 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="884" name="wood" type="terrain" x="27.3527" y="775.632" width="420" height="139.393">
+  <object id="884" name="wood" type="terrain" x="181.669" y="775.632" width="420" height="139.393">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -201,7 +201,7 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="883" name="wood" type="terrain" x="27.3527" y="798.972" width="420" height="139.393">
+  <object id="883" name="wood" type="terrain" x="250.458" y="798.972" width="420" height="139.393">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -243,7 +243,7 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="882" name="wood" type="terrain" x="27.3527" y="822.632" width="420" height="139.393">
+  <object id="882" name="wood" type="terrain" x="390.002" y="820.667" width="420" height="139.393">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -285,7 +285,7 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="881" name="wood" type="terrain" x="27.3527" y="848.302" width="420" height="139.393">
+  <object id="881" name="wood" type="terrain" x="468.618" y="854.198" width="420" height="139.393">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -333,12 +333,24 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="754" name="wood" type="texture" x="-41.9246" y="2978.16" width="683.923" height="1149.84"/>
+  <object id="906" name="wood" type="texture" x="2225.91" y="-228.498" width="1475.93" height="1149.84"/>
+  <object id="910" name="wood" type="texture" x="-754.556" y="-185.04" width="866.224" height="1149.84"/>
  </objectgroup>
  <objectgroup id="81" name="columns -0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="763" name="wood" type="terrain" x="633.09" y="2977.5" width="51.823" height="1248">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="907" name="wood" type="terrain" x="2187.4" y="-232.725" width="51.823" height="1248">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="908" name="wood" type="terrain" x="82.5892" y="-209.344" width="51.823" height="1168.57">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -392,8 +404,8 @@
   </properties>
   <object id="775" name="portal" type="object" x="67.2329" y="3710.73" width="256" height="256">
    <properties>
-    <property name="map" value="CastleValgrind/Town_Study"/>
-    <property name="transition" value="secret-room"/>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Study"/>
+    <property name="transition" value="secret-door"/>
    </properties>
   </object>
   <object id="824" name="heaven-hug" type="object" x="2075.92" y="3112.32" width="227" height="860.389"/>
@@ -434,7 +446,7 @@
   </object>
   <object id="779" name="spawn" type="object" x="124.797" y="3836.21" width="128" height="128">
    <properties>
-    <property name="transition" value="secret-room"/>
+    <property name="transition" value="secret-door"/>
    </properties>
   </object>
   <object id="886" name="spawn-wood-door" type="object" x="2942.66" y="747.147" width="128" height="128">
@@ -474,7 +486,7 @@
     <property name="to" value="bridge-back-D"/>
    </properties>
   </object>
-  <object id="895" name="warp" type="object" x="95.8547" y="620.818" width="256" height="256">
+  <object id="895" name="warp" type="object" x="546.947" y="618.853" width="256" height="256">
    <properties>
     <property name="from" value="bridge-front-E"/>
     <property name="no-warp-camera" type="bool" value="true"/>

@@ -162,7 +162,7 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="828" name="chest-metal" type="object" x="177.645" y="1067.92" width="128" height="128">
+  <object id="828" name="metal-chest" type="object" x="177.645" y="1067.92" width="128" height="128">
    <properties>
     <property name="reward-pool" value="cv-rare"/>
    </properties>

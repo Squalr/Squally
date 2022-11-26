@@ -282,7 +282,7 @@
   <object id="821" name="caged-koala" type="object" x="68.7032" y="1080.21" width="196" height="112"/>
   <object id="830" name="portal" type="object" x="5139.6" y="815.322" width="237.527" height="388">
    <properties>
-    <property name="map" value="CastleValgrind/Zone_2_0"/>
+    <property name="map" value="CastleValgrind/Zone_2_1"/>
     <property name="transition" value="fireplace"/>
    </properties>
   </object>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="28" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="954">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="28" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="963">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
-   <property name="hide-mini-map" type="bool" value="true"/>
+   <property name="hide-mini-map" type="bool" value="false"/>
    <property name="map-banner" value=""/>
    <property name="music" value="two-steps"/>
    <property name="rubber-band" type="int" value="13"/>
@@ -33,8 +33,6 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="762" name="wood" type="terrain" x="-190.419" y="3842.81" width="4297.73" height="704.622"/>
-  <object id="899" name="castle" type="terrain" x="3482.57" y="-303.292" width="771.053" height="4706.4"/>
-  <object id="907" name="wood" type="terrain" x="1160.97" y="3730.22" width="420" height="112"/>
   <object id="936" name="wood" type="terrain" x="1980.46" y="2843.07" width="1935.42" height="112"/>
   <object id="937" name="wood" type="terrain" x="1958.17" y="2719.25" width="420" height="112"/>
   <object id="938" name="wood" type="terrain" x="2089.52" y="2582.6" width="420" height="112"/>
@@ -255,11 +253,17 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="956" name="wood" type="texture" x="2413.08" y="-261.289" width="1475.93" height="1149.84"/>
  </objectgroup>
  <objectgroup id="81" name="columns -0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="955" name="wood" type="terrain" x="2374.57" y="-265.516" width="51.823" height="1248">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="76" name="decor bg2">
   <properties>
@@ -290,18 +294,24 @@
   </properties>
   <object id="922" name="wood" type="terrain" x="1892.99" y="2991.53" width="2176.05" height="112"/>
   <object id="924" name="wood" type="terrain" x="-88.9143" y="3969.11" width="3849.82" height="234.06"/>
-  <object id="925" name="wood" type="terrain" x="-96.7996" y="2972.5" width="1488.56" height="141.181"/>
-  <object id="926" name="wood" type="terrain" x="2093.82" y="876.614" width="1619.81" height="141.181"/>
+  <object id="925" name="wood" type="terrain" x="-99.1214" y="3044.48" width="1488.56" height="141.181"/>
+  <object id="926" name="wood" type="terrain" x="2275.91" y="876.614" width="1437.72" height="141.181"/>
   <object id="927" name="wood" type="terrain" x="1151.43" y="1425.03" width="420" height="112"/>
   <object id="928" name="wood" type="terrain" x="1029.42" y="1556.01" width="420" height="112"/>
-  <object id="929" name="wood" type="terrain" x="-53.4599" y="1680.66" width="1726.84" height="112"/>
+  <object id="929" name="wood" type="terrain" x="-53.4599" y="1680.66" width="1342.42" height="112"/>
   <object id="930" name="wood" type="terrain" x="2731" y="1900.65" width="420" height="112"/>
-  <object id="931" name="wood" type="terrain" x="2137.56" y="1680.24" width="1938.21" height="112"/>
+  <object id="931" name="wood" type="terrain" x="1879.59" y="1680.24" width="2196.18" height="112"/>
+  <object id="957" name="wood" type="terrain" x="1520.2" y="2058.58" width="420" height="112"/>
+  <object id="958" name="wood" type="terrain" x="1174.47" y="2422.49" width="420" height="112"/>
+  <object id="959" name="wood" type="terrain" x="787.786" y="2728.31" width="420" height="112"/>
+  <object id="961" name="wood" type="terrain" x="1183.34" y="3362" width="420" height="112"/>
+  <object id="962" name="wood" type="terrain" x="1797.4" y="3630.81" width="420" height="112"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="960" name="castle" type="terrain" x="3482.57" y="-303.292" width="771.053" height="4706.4"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -315,7 +325,7 @@
   </properties>
   <object id="887" name="portal" type="object" x="2885.1" y="621.667" width="256" height="256">
    <properties>
-    <property name="map" value="CastleValgrind/Zone_2_1"/>
+    <property name="map" value="CastleValgrind/Zone_2_0"/>
     <property name="transition" value="door"/>
    </properties>
   </object>
@@ -324,7 +334,7 @@
     <property name="reward-pool" value="cv-generic"/>
    </properties>
   </object>
-  <object id="946" name="hexus-shrine" type="object" x="623.597" y="2712.52" width="155" height="260">
+  <object id="946" name="hexus-shrine" type="object" x="342.659" y="2784.5" width="155" height="260">
    <properties>
     <property name="entity-tag" value="hexus-abomination"/>
    </properties>
