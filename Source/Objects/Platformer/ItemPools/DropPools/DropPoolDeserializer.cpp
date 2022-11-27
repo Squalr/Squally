@@ -39,6 +39,30 @@ DropPoolDeserializer::DropPoolDeserializer() : super(DropPoolDeserializer::MapKe
 	// DM
 	this->deserializers[DropPoolDMGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolDMGeneric::create(properties); };
 	this->deserializers[DropPoolDMWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolDMWeak::create(properties); };
+
+	// DM
+	this->deserializers[DropPoolDMGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolDMGeneric::create(properties); };
+	this->deserializers[DropPoolDMWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolDMWeak::create(properties); };
+
+	// CV
+	this->deserializers[DropPoolCVGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolCVGeneric::create(properties); };
+	this->deserializers[DropPoolCVWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolCVWeak::create(properties); };
+
+	// LC
+	this->deserializers[DropPoolLCGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolLCGeneric::create(properties); };
+	this->deserializers[DropPoolLCWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolLCWeak::create(properties); };
+
+	// DH
+	this->deserializers[DropPoolDHGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolDHGeneric::create(properties); };
+	this->deserializers[DropPoolDHWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolDHWeak::create(properties); };
+
+	// BP
+	this->deserializers[DropPoolBPGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolBPGeneric::create(properties); };
+	this->deserializers[DropPoolBPWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolBPWeak::create(properties); };
+
+	// VS
+	this->deserializers[DropPoolVSGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolVSGeneric::create(properties); };
+	this->deserializers[DropPoolVSWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolVSWeak::create(properties); };
 }
 
 DropPoolDeserializer::~DropPoolDeserializer()
