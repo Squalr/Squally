@@ -89,7 +89,7 @@ void TalkToKingRedsong::onLoad(QuestState questState)
 
 		if (questState == QuestState::None)
 		{
-			this->kingRedsong->despawn();
+			this->kingRedsong->setOpacity(0);
 		}
 	}, KingRedsong::MapKey);
 
@@ -99,7 +99,7 @@ void TalkToKingRedsong::onLoad(QuestState questState)
 		
 		if (questState != QuestState::None)
 		{
-			this->kingRedsongSlime->despawn();
+			this->kingRedsongSlime->setOpacity(0);
 		}
 	}, KingRedsongSlime::MapKey);
 
@@ -109,7 +109,7 @@ void TalkToKingRedsong::onLoad(QuestState questState)
 		
 		if (questState != QuestState::None)
 		{
-			this->leroy->despawn();
+			this->leroy->setOpacity(0);
 		}
 	}, Leroy::MapKey);
 
@@ -119,7 +119,7 @@ void TalkToKingRedsong::onLoad(QuestState questState)
 
 		if (questState == QuestState::None)
 		{
-			this->princessOpal->despawn();
+			this->princessOpal->setOpacity(0);
 		}
 	}, PrincessOpal::MapKey);
 }
@@ -127,6 +127,26 @@ void TalkToKingRedsong::onLoad(QuestState questState)
 void TalkToKingRedsong::onActivate(bool isActiveThroughSkippable)
 {
 	this->runCinematicSequencePt1();
+
+	if (this->leroy != nullptr)
+	{
+		this->leroy->setOpacity(0);
+	}
+
+	if (this->kingRedsongSlime != nullptr)
+	{
+		this->kingRedsongSlime->setOpacity(0);
+	}
+
+	if (this->princessOpal != nullptr)
+	{
+		this->princessOpal->setOpacity(255);
+	}
+
+	if (this->kingRedsong != nullptr)
+	{
+		this->kingRedsong->setOpacity(255);
+	}
 }
 
 void TalkToKingRedsong::onComplete()

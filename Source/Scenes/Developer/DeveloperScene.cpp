@@ -438,8 +438,8 @@ DeveloperScene::DeveloperScene()
 		// ** Needs hexus battles
 		// ** Tune hexus battle special cards
 		// ** Needs animals
-		// 3x more enemies than is standard, which makes this harder
-		// 3 crypts that need to be cleared. Can either be "orderless" or force linearity with keys.
+		// Orderless crypt progression.
+		// Progression reworked a bit, 2_x => 1_x (key 1) => town => 3_x (key 2) => 4x (key 3) => boss crypt
 		//	- town key (rusty?), bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x		
 		// ** 1_x overworld enemies (zombie, pig, undead)
 		// ** 2_x assassin, fiend, mystic (left crypt / hole)
@@ -449,17 +449,18 @@ DeveloperScene::DeveloperScene()
 		// Dual boss with King Zul and Lazarus. Give Lazarus a rez or self rez?
 
 		/*
-		- Assassin				=>  <ThrowingStar, ?>
-		- BoneFiend				=>  <Daze, ?>
-		- BoneKnight			=>  <?, ?>
-		- Hunter				=>  <Crossbow, ?>
-		- ReanimatedPig			=>  <Piggy, ?>
-		- Mystic				=>  <VoodooZombie, ?>
-		- Zombie				=>  <Zombie[Grasp], ?>
-		- Undead				=>  <DeadGrasp, ?>
-		- SkeletalPriestess		=>  <Book, ?>
-		- SkeletalKnight		=>  <?, ?>
-		- SkeletalCleaver		=>  <?, ?>
+		- ReanimatedPig			=>  1_x <Piggy, ?>
+		- Zombie				=>  1_x <Zombie[Grasp], ?>
+		- Undead				=>  1_x <DeadGrasp, ?>
+		- Assassin				=>  2_x <ThrowingStar, ?>
+		- BoneFiend				=>  2_x <Daze, ?>
+		- Mystic				=>  2_x <VoodooZombie, ?>
+		- BoneKnight			=>  3_x <?, ?>
+		- Hunter				=>  3_x <Crossbow, ?>
+		- Warlock				=>  3_x <?, ?>
+		- SkeletalPriestess		=>  4_x <Book, ?>
+		- SkeletalKnight		=>  4_x <?, ?>
+		- SkeletalCleaver		=>  4_x <?, ?>
 		- [B] Lazarus			=>	<?, ?>
 		- [B] KingZul			=>  <?, ?>
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1067">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="54" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1069">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -175,7 +175,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="862" name="wood" type="terrain" x="2167.25" y="2701.33" width="342.717" height="391">
+  <object id="862" name="wood" type="terrain" x="2213.68" y="2701.33" width="342.717" height="391">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -224,7 +224,7 @@
     <property name="transition" value="church"/>
    </properties>
   </object>
-  <object id="1050" name="warp" type="object" x="2216" y="2430" width="256" height="256">
+  <object id="1050" name="warp" type="object" x="2262.43" y="2430" width="256" height="256">
    <properties>
     <property name="from" value="bridge-back-C"/>
     <property name="locked-text-key" value="closed"/>
@@ -265,7 +265,7 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="861" name="wood" type="terrain" x="2164.25" y="2717.76" width="342.717" height="391">
+  <object id="861" name="wood" type="terrain" x="2210.68" y="2717.76" width="342.717" height="391">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -287,7 +287,7 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="860" name="wood" type="terrain" x="2163.58" y="2741.76" width="344.383" height="391">
+  <object id="860" name="wood" type="terrain" x="2210.01" y="2741.76" width="344.383" height="391">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -312,7 +312,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="846" name="Forest/Tree2" type="decor" x="6684.9" y="2163.67" width="679" height="712"/>
-  <object id="1032" name="Generic/TownSmith" type="decor" x="-543.056" y="937.224" width="2591" height="1827">
+  <object id="1032" name="Generic/TownSmith" type="decor" x="-117.659" y="1481.22" width="2353" height="1301">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -328,7 +328,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1051" name="portal" type="object" x="618.242" y="2506.24" width="256" height="256">
+  <object id="1051" name="portal" type="object" x="1151.82" y="2504.18" width="256" height="256">
    <properties>
     <property name="map" value="LambdaCrypts/Town_Smith"/>
     <property name="transition" value="smith"/>
@@ -371,7 +371,7 @@
     <property name="to" value="bridge-front-B"/>
    </properties>
   </object>
-  <object id="1049" name="warp" type="object" x="2213" y="2503" width="256" height="256">
+  <object id="1049" name="warp" type="object" x="2259.43" y="2503" width="256" height="256">
    <properties>
     <property name="from" value="bridge-front-C"/>
     <property name="locked-text-key" value="closed"/>
@@ -380,7 +380,7 @@
     <property name="to" value="bridge-back-C"/>
    </properties>
   </object>
-  <object id="1053" name="spawn-wood-door" type="object" x="674.667" y="2633.64" width="128" height="128">
+  <object id="1053" name="spawn-wood-door" type="object" x="1208.25" y="2631.58" width="128" height="128">
    <properties>
     <property name="transition" value="smith"/>
    </properties>
@@ -460,6 +460,12 @@
     <property name="fade-multiplier" type="float" value="0.5"/>
    </properties>
   </object>
+  <object id="1067" name="Generic/TownHomeEmpty1" type="decor" x="6000" y="1573.5" width="1367" height="1233">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.5"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
@@ -474,6 +480,7 @@
   </properties>
   <object id="623" name="life-stone" type="object" x="2726.36" y="2380.25" width="146" height="423"/>
   <object id="1065" name="solid" type="collision" x="1168.94" y="22.1356" width="192.909" height="2791.85"/>
+  <object id="1068" name="solid" type="collision" x="6087.35" y="14.1179" width="192.909" height="2791.85"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
