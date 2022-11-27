@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="1157">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="1158">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -821,12 +821,18 @@
     <property name="reward-pool" value="lc-rusty-key"/>
    </properties>
   </object>
-  <object id="1155" name="caged-chicken" type="object" x="4155.22" y="1569.1" width="196" height="112"/>
+  <object id="1155" name="caged-chicken" type="object" x="3201.37" y="1524.13" width="196" height="112"/>
   <object id="1156" name="edge-portal" type="object" x="6.48358" y="1052.12" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="LambdaCrypts/Zone_2_0"/>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1157" name="stone-button" type="object" x="4135.91" y="1592.64" width="258.367" height="85.7283">
+   <properties>
+    <property name="send-event" value="portcullus-open"/>
+    <property name="switch" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>

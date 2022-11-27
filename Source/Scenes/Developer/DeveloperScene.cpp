@@ -440,13 +440,12 @@ DeveloperScene::DeveloperScene()
 		// ** Needs animals
 		// Orderless crypt progression.
 		// Progression reworked a bit, 2_x => 1_x (key 1) => town => 3_x (key 2) => 4x (key 3) => boss crypt
-		//	- town key (rusty?), bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x		
+		//	- town key (rusty?), bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x	
+		// ** 2_x assassin, fiend, mystic (evil-eye, left crypt / hole / dirt env, orb 1)	
 		// ** 1_x overworld enemies (zombie, pig, undead)
-		// ** 2_x assassin, fiend, mystic (left crypt / hole)
-			// TODO: Maybe redo this as a dirt environment, to differentiate it from crypts and break up LC repetativeness
-		// ** 3_x warlock, hunter, knight (right crypt, unlock w/ bone)
-		// ** 4_x cleaver, knight, priestess (central crypt, unlock w/ demon)
-		// Dual boss with King Zul and Lazarus. Give Lazarus a rez or self rez?
+		// ** 3_x warlock, hunter, knight (right crypt, orb 2)
+		// ** 4_x cleaver, knight, priestess (central crypt, orb 3)
+		// ** 5_x (orb keys) Dual boss with King Zul and Lazarus. Give Lazarus a rez or self rez?
 
 		/*
 		- ReanimatedPig			=>  1_x <Piggy, ?>
