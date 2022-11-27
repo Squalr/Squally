@@ -38,11 +38,10 @@ SmithingPoolTier8::SmithingPoolTier8(SampleMethod sampleMethod, int min, int max
 	/**************
 	 Gems
 	**************/
-	this->addItemToPool(ItemChance::create(Sapphire::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(VoidCrystal::create(), ItemChance::Probability::Common));
 
 	// Phasing out
-	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Legendary));
-	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Artifact));
+	this->addItemToPool(ItemChance::create(Sulfur::create(), ItemChance::Probability::Artifact));
 }
 
 SmithingPoolTier8::~SmithingPoolTier8()

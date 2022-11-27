@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const std::string ChestPoolRedGem::PoolName = "ur-gem-red";
+const std::string ChestPoolRedGem::PoolName = "lc-gem-red";
 
 ChestPoolRedGem* ChestPoolRedGem::create(ValueMap& properties)
 {

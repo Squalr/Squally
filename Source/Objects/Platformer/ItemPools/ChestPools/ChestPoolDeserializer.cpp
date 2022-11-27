@@ -42,18 +42,22 @@ ChestPoolDeserializer::ChestPoolDeserializer() : super(ChestPoolDeserializer::Ma
 	this->deserializers[ChestPoolURRare::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolURRare::create(properties); };
 
 	// DM pools
-	this->deserializers[ChestPoolBlueGem::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolBlueGem::create(properties); };
 	this->deserializers[ChestPoolDMCoal::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolDMCoal::create(properties); };
 	this->deserializers[ChestPoolDMDiamond::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolDMDiamond::create(properties); };
 	this->deserializers[ChestPoolDMGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolDMGeneric::create(properties); };
 	this->deserializers[ChestPoolDMGold::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolDMGold::create(properties); };
 	this->deserializers[ChestPoolDMRare::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolDMRare::create(properties); };
-	this->deserializers[ChestPoolPurpleGem::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolPurpleGem::create(properties); };
-	this->deserializers[ChestPoolRedGem::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolRedGem::create(properties); };
 
 	// CV pools
 	this->deserializers[ChestPoolCVGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolCVGeneric::create(properties); };
 	this->deserializers[ChestPoolCVRare::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolCVRare::create(properties); };
+
+	// LC pools
+	this->deserializers[ChestPoolBlueGem::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolBlueGem::create(properties); };
+	this->deserializers[ChestPoolPurpleGem::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolPurpleGem::create(properties); };
+	this->deserializers[ChestPoolRedGem::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolRedGem::create(properties); };
+	this->deserializers[ChestPoolLCGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolLCGeneric::create(properties); };
+	this->deserializers[ChestPoolLCRare::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolLCRare::create(properties); };
 
 }
 
