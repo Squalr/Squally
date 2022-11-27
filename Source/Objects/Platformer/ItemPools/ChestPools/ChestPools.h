@@ -1,6 +1,9 @@
-
+#include "Objects/Platformer/ItemPools/ChestPools/BallmerPeaks/ChestPoolBPGeneric.h"
+#include "Objects/Platformer/ItemPools/ChestPools/BallmerPeaks/ChestPoolBPRare.h"
 #include "Objects/Platformer/ItemPools/ChestPools/CastleValgrind/ChestPoolCVGeneric.h"
 #include "Objects/Platformer/ItemPools/ChestPools/CastleValgrind/ChestPoolCVRare.h"
+#include "Objects/Platformer/ItemPools/ChestPools/DaemonsHallow/ChestPoolDHGeneric.h"
+#include "Objects/Platformer/ItemPools/ChestPools/DaemonsHallow/ChestPoolDHRare.h"
 #include "Objects/Platformer/ItemPools/ChestPools/DataMines/ChestPoolDMCoal.h"
 #include "Objects/Platformer/ItemPools/ChestPools/DataMines/ChestPoolDMDiamond.h"
 #include "Objects/Platformer/ItemPools/ChestPools/DataMines/ChestPoolDMGeneric.h"
@@ -22,3 +25,5 @@
 #include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolURGeneric.h"
 #include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolURMirror.h"
 #include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolURRare.h"
+#include "Objects/Platformer/ItemPools/ChestPools/VoidStar/ChestPoolVSGeneric.h"
+#include "Objects/Platformer/ItemPools/ChestPools/VoidStar/ChestPoolVSRare.h"
