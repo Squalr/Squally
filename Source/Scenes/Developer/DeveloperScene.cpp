@@ -372,7 +372,7 @@ DeveloperScene::DeveloperScene()
 		// ** Traps: Organ gun, cannon, catapult, ballista, heaven hug (FPU acceptable, given that jmps are pretty much done)
 		// ** Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
 		// ** New helper? Would need a story rewrite to justify it. If anything, a repear to claim spirit souls, or some shit.
-		// ** Crypt key reward
+		// ** Tune hexus battle special cards
 
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
@@ -433,18 +433,19 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
-		// Needs enemy scripting according to notes on which instructions this zone covers
-		// Needs hexus puzzles
-		// Needs hexus battles
-		// Needs animals
+		// ** Needs enemy scripting according to notes on which instructions this zone covers
+		// ** Needs hexus puzzles
+		// ** Needs hexus battles
+		// ** Tune hexus battle special cards
+		// ** Needs animals
 		// 3x more enemies than is standard, which makes this harder
 		// 3 crypts that need to be cleared. Can either be "orderless" or force linearity with keys.
 		//	- town key (rusty?), bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x		
-		// 1_x overworld enemies (zombie, pig, undead)
-		// 2_x assassin, fiend, mystic (left crypt / hole)
+		// ** 1_x overworld enemies (zombie, pig, undead)
+		// ** 2_x assassin, fiend, mystic (left crypt / hole)
 			// TODO: Maybe redo this as a dirt environment, to differentiate it from crypts and break up LC repetativeness
-		// 3_x warlock, hunter, knight (right crypt, unlock w/ bone)
-		// 4_x cleaver, knight, priestess (central crypt, unlock w/ demon)
+		// ** 3_x warlock, hunter, knight (right crypt, unlock w/ bone)
+		// ** 4_x cleaver, knight, priestess (central crypt, unlock w/ demon)
 		// Dual boss with King Zul and Lazarus. Give Lazarus a rez or self rez?
 
 		/*
@@ -505,13 +506,14 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// Traps: Fire bird, fire launcher, TNT barrel, mortar
-		// Needs hexus puzzles
-		// Needs hexus battles
-		// Needs animals
-		// Needs enemy scripting according to notes on which instructions this zone covers
-		// 1_x should be the initial overworld + caves (Dragon, Ghost, Elemental, Golem)
-		// 2_x should be more caves connecting town to the 3_x maps (Shaman, Swordsman, Rogue)
-		// 3_x is all overworld (Tiger, Warrior, Grunt, Archer)
+		// ** Needs hexus puzzles
+		// ** Needs hexus battles
+		// ** Tune hexus battle special cards
+		// ** Needs animals
+		// ** Needs enemy scripting according to notes on which instructions this zone covers
+		// ** 1_x should be the initial overworld + caves (Dragon, Ghost, Elemental, Golem)
+		// ** 2_x should be more caves connecting town to the 3_x maps (Shaman, Swordsman, Rogue)
+		// ** 3_x is all overworld (Tiger, Warrior, Grunt, Archer)
 
 		/*
 		Surface:
@@ -576,13 +578,14 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ================== 
 		// Traps: Icicle, bear trap (?), { cannon or catapult or portal } (to VS)
 		// Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
-		// 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
-		// 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
-		// 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
-		// Needs hexus puzzles
-		// Needs hexus battles
-		// Needs animals
-		// Needs enemy scripting according to notes on which instructions this zone covers
+		// ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
+		// ** 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
+		// ** 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
+		// ** Needs hexus puzzles
+		// ** Needs hexus battles
+		// ** Tune hexus battle special cards
+		// ** Needs animals
+		// ** Needs enemy scripting according to notes on which instructions this zone covers
 
 		/*
 		- PenguinGrunt		1_x		=> jnp			PF		<?, ?> // Odd or even! PF = 0 odd. All combinations valid except JNPE
