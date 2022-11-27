@@ -62,13 +62,21 @@ void DefeatAgnes::onLoad(QuestState questState)
 
 void DefeatAgnes::onActivate(bool isActiveThroughSkippable)
 {
-	this->agnes->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+	if (this->agnes != nullptr)
 	{
-		if (!value.asBool())
+		this->agnes->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+		{
+			if (!value.asBool())
+			{
+				this->complete();
+			}
+		});
+
+		if (!this->agnes->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 		{
 			this->complete();
 		}
-	});
+	}
 
 	this->listenForMapEventOnce(DefeatAgnes::MapEventEngageAgnes, [=](ValueMap)
 	{
@@ -89,28 +97,20 @@ void DefeatAgnes::runCinematicSequencePt1()
 {
 	PlatformerEvents::TriggerCinematicHijack();
 
-	this->agnes->runAction(Sequence::create(
-		FadeTo::create(0.5f, 255),
-		DelayTime::create(0.75f),
-		CallFunc::create([=]()
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Menus_StoryMode::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->agnes, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
 		{
-			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-				Strings::Menus_StoryMode::create(),
-				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->agnes, false),
-					DialogueEvents::BuildPreviewNode(&this->squally, true)
-				),
-				[=]()
-				{
-					this->runCinematicSequencePt2();
-				},
-				Voices::GetNextVoiceMedium(Voices::VoiceType::Human),
-				false
-			));
-		}),
-		nullptr
+			this->runCinematicSequencePt2();
+		},
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Human),
+		false
 	));
 }
 

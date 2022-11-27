@@ -141,11 +141,44 @@ void TalkToKingRedsong::onSkipped()
 
 void TalkToKingRedsong::runCinematicSequencePt1()
 {
-	if (this->kingRedsong == nullptr)
-	{
-		return;
-	}
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Menus_TODO::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->kingRedsong, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt2();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
 
+void TalkToKingRedsong::runCinematicSequencePt2()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Menus_TODO::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->kingRedsong, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt3();
+		},
+		Voices::GetNextVoiceMedium(),
+		false
+	));
+}
+
+void TalkToKingRedsong::runCinematicSequencePt3()
+{
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Menus_TODO::create(),
 		DialogueEvents::DialogueVisualArgs(
@@ -160,6 +193,6 @@ void TalkToKingRedsong::runCinematicSequencePt1()
 			this->complete();
 		},
 		Voices::GetNextVoiceMedium(),
-		false
+		true
 	));
 }

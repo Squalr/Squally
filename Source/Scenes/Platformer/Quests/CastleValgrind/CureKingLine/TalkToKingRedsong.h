@@ -37,10 +37,6 @@ private:
 	void runCinematicSequencePt1();
 	void runCinematicSequencePt2();
 	void runCinematicSequencePt3();
-	void runCinematicSequencePt4();
-	void runCinematicSequencePt5();
-	void runCinematicSequencePt6();
-	void runCinematicSequencePt7();
 
 	EvilEye* evilEye = nullptr;
 	Gecky* gecky = nullptr;

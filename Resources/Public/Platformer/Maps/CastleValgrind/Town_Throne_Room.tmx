@@ -306,8 +306,6 @@
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value="talk-to-king-redsong"/>
-    <property name="quest-line" value="cure-king"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
@@ -343,7 +341,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="cv-generic"/>
-    <property name="quest" value="defeat-agnes"/>
+    <property name="quest" value="defeat-agnes,talk-to-king-redsong"/>
     <property name="quest-line" value="cure-king"/>
    </properties>
   </object>
