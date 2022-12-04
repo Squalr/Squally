@@ -70,6 +70,8 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- * Can get stuck on roof of maps (see UR 3_1)
+	- Tune Alch / Card tier pools
+	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+
 	- Infinity symbol in hexus does not localize to arabic (and maybe others)
 	- Text navigation in editable assembly text is broken for arabic
 	- Pacing behavior is broken for portal maps
@@ -78,7 +80,6 @@ DeveloperScene::DeveloperScene()
 	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles) (edit: can't repro?)
 	- Sometimes hackable icon is below entity (rare)
 	- Evil Eye chase scenes, cracks in simulation for story
-	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+
 	- Mounts should apply to helpers so they aren't awkwardly lagging behind
 	- Squally auto crouch in mine carts
 	- Hexus:
@@ -113,7 +114,8 @@ DeveloperScene::DeveloperScene()
 		- Invisible helpers. Some way to pull helpers into combat
 	- 3Q Perspective
 	- Reinstate Cipher with asm or something
-	- Reinstate ball roll game? It wasn't really fixable
+	- Reinstate ball roll game? Would need isometric squally, and some form of strategy element that isn't prone to trial-and-error.
+		- No good way to retrofit this into the game. Reviving the arcade concept could be fun.
 	*/
 
 	// CHAPTER 1 - Mov/add/sub/inc/dec/div/mul + AND Puzzle

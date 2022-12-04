@@ -55,6 +55,7 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	this->lineDeserializers[SkyShipToCastleLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SkyShipToCastleLine::create(); };
 	
 	// LAMBDA CRYPTS QUESTS
+	this->lineDeserializers[OpenCryptLine::MapKeyQuestLine] = [=]() { return (QuestLine*)OpenCryptLine::create(); };
 	
 	// DAEMONS HALLOW QUESTS
 	this->lineDeserializers[ReleasePressureLine::MapKeyQuestLine] = [=]() { return (QuestLine*)ReleasePressureLine::create(); };
