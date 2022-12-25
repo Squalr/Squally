@@ -7,6 +7,8 @@ class Gecky;
 class Guano;
 class QuestLine;
 class Scrappy;
+class SmartAnimationSequenceNode;
+class Sound;
 class Squally;
 
 class EnterCrypts : public QuestTask
@@ -36,4 +38,6 @@ private:
 	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
+	SmartAnimationSequenceNode* lightningStrike = nullptr;
+	Sound* lightningSound = nullptr;
 };

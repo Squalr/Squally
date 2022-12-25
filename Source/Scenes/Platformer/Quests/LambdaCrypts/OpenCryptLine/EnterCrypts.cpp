@@ -8,11 +8,13 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Quests/QuestLine.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
@@ -28,6 +30,7 @@
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Squally/Movement/SquallyRespawnBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Components/Objects/Illusions/DispelIllusionBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
@@ -36,6 +39,7 @@
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
+#include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
@@ -55,6 +59,13 @@ EnterCrypts* EnterCrypts::create(GameObject* owner, QuestLine* questLine)
 
 EnterCrypts::EnterCrypts(GameObject* owner, QuestLine* questLine) : super(owner, questLine, EnterCrypts::MapKeyQuest, false)
 {
+	this->lightningStrike = SmartAnimationSequenceNode::create();
+	this->lightningSound = Sound::create(SoundResources::Hexus_Attacks_Energy);
+
+	this->lightningStrike->setVisible(false);
+
+	this->addChild(this->lightningStrike);
+	this->addChild(this->lightningSound);
 }
 
 EnterCrypts::~EnterCrypts()
@@ -161,7 +172,6 @@ void EnterCrypts::runCinematicSequencePt1()
 		),
 		[=]()
 		{
-			this->complete();
 		},
 		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 		true
@@ -185,12 +195,16 @@ void EnterCrypts::runCinematicSequenceStrikeZone()
 		),
 		[=]()
 		{
-			// Kill squally // TODO: VFX (maybe purple lightning strike)
 			if (this->squally != nullptr)
 			{
-				this->squally->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+				// Kill with forced map reload to reset the event
+				this->squally->getComponent<SquallyRespawnBehavior>([=](SquallyRespawnBehavior* respawnBehavior)
 				{
-					healthBehavior->kill();
+					this->lightningStrike->setVisible(true);
+					this->lightningStrike->playAnimation(FXResources::Lightning_Lightning_0000, 0.06f);
+					GameUtils::setWorldCoords(this->lightningStrike, GameUtils::getWorldCoords(this->squally) + Vec2(0.0f, 256.0f));
+					this->lightningSound->play();
+					respawnBehavior->respawnWithMapReload();
 				});
 			}
 		},

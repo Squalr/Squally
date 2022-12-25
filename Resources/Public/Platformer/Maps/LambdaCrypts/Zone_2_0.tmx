@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="48" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="82" nextobjectid="1164">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="48" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="82" nextobjectid="1165">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -814,6 +814,7 @@
     <property name="send-event" value="gauntlet-complete"/>
    </properties>
   </object>
+  <object id="1164" name="life-stone" type="object" x="846.186" y="1250.56" width="146" height="423"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
