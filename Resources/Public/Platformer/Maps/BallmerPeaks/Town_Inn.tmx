@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="19" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="839">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="19" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="846">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -116,6 +116,37 @@
     <property name="reward-pool" value="dm-generic"/>
    </properties>
   </object>
+  <object id="839" name="shop-item" type="object" x="1190.84" y="1308.42" width="64" height="64">
+   <properties>
+    <property name="pool" value="shop-pool-inn-t7"/>
+   </properties>
+  </object>
+  <object id="840" name="shop-item" type="object" x="1484.17" y="1308.42" width="64" height="64">
+   <properties>
+    <property name="pool" value="shop-pool-inn-t7"/>
+   </properties>
+  </object>
+  <object id="841" name="shop-item" type="object" x="1766.17" y="1308.42" width="64" height="64">
+   <properties>
+    <property name="pool" value="shop-pool-inn-t7"/>
+   </properties>
+  </object>
+  <object id="842" name="shop-item" type="object" x="1191.7" y="1592.67" width="64" height="64">
+   <properties>
+    <property name="pool" value="shop-pool-inn-t7"/>
+   </properties>
+  </object>
+  <object id="843" name="shop-item" type="object" x="1484.17" y="1592.67" width="64" height="64">
+   <properties>
+    <property name="pool" value="shop-pool-inn-t7"/>
+   </properties>
+  </object>
+  <object id="844" name="shop-item" type="object" x="1766.17" y="1592.67" width="64" height="64">
+   <properties>
+    <property name="pool" value="shop-pool-inn-t7"/>
+   </properties>
+  </object>
+  <object id="845" name="shop-pool-inn-t7" type="object" x="566.378" y="1432.37" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>

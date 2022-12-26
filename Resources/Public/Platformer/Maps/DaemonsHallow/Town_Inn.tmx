@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="26" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="833">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="26" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="833">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -246,35 +246,35 @@
   </object>
   <object id="826" name="shop-item" type="object" x="1030.52" y="250.119" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-thatcher"/>
+    <property name="pool" value="shop-pool-inn-t6"/>
    </properties>
   </object>
   <object id="827" name="shop-item" type="object" x="1323.85" y="250.119" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-thatcher"/>
+    <property name="pool" value="shop-pool-inn-t6"/>
    </properties>
   </object>
   <object id="828" name="shop-item" type="object" x="1605.85" y="250.119" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-thatcher"/>
+    <property name="pool" value="shop-pool-inn-t6"/>
    </properties>
   </object>
   <object id="829" name="shop-item" type="object" x="1031.38" y="534.365" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-thatcher"/>
+    <property name="pool" value="shop-pool-inn-t6"/>
    </properties>
   </object>
   <object id="830" name="shop-item" type="object" x="1323.85" y="534.365" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-thatcher"/>
+    <property name="pool" value="shop-pool-inn-t6"/>
    </properties>
   </object>
   <object id="831" name="shop-item" type="object" x="1605.85" y="534.365" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-thatcher"/>
+    <property name="pool" value="shop-pool-inn-t6"/>
    </properties>
   </object>
-  <object id="832" name="shop-pool-thatcher" type="object" x="406.06" y="374.061" width="64" height="64"/>
+  <object id="832" name="shop-pool-inn-t6" type="object" x="406.06" y="374.061" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
