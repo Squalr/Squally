@@ -309,11 +309,9 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1011" name="solid" type="collision" x="1901.66" y="-89.9638" width="171.617" height="1932.84"/>
+  <object id="1011" name="solid" type="collision" x="3427.43" y="-79.5059" width="171.617" height="1932.84"/>
   <object id="1012" name="portal" type="object" x="5859.49" y="1439.36" width="450.603" height="423.038">
    <properties>
-    <property name="components" value="locked-portal"/>
-    <property name="item-required" value="rusty-key"/>
     <property name="map" value="LambdaCrypts/Town_Main"/>
     <property name="transition" value="gate"/>
    </properties>

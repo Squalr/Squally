@@ -1,4 +1,4 @@
-#include "ShopPoolShen.h"
+#include "ShopPoolInnT3.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -13,23 +13,23 @@
 
 using namespace cocos2d;
 
-const std::string ShopPoolShen::MapKey = "shop-pool-shen";
-const std::string ShopPoolShen::PoolName = "shop-pool-shen";
+const std::string ShopPoolInnT3::MapKey = "shop-pool-inn-t3";
+const std::string ShopPoolInnT3::PoolName = "shop-pool-inn-t3";
 
-ShopPoolShen* ShopPoolShen::create(ValueMap& properties)
+ShopPoolInnT3* ShopPoolInnT3::create(ValueMap& properties)
 {
-	ShopPoolShen* instance = new ShopPoolShen(properties);
+	ShopPoolInnT3* instance = new ShopPoolInnT3(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShopPoolShen::ShopPoolShen(ValueMap& properties) : super(properties, ShopPoolShen::PoolName,
+ShopPoolInnT3::ShopPoolInnT3(ValueMap& properties) : super(properties, ShopPoolInnT3::PoolName,
 	{ CardPoolTier3::create(SampleMethod::Guarantee, 6, 6) })
 {
 }
 
-ShopPoolShen::~ShopPoolShen()
+ShopPoolInnT3::~ShopPoolInnT3()
 {
 }

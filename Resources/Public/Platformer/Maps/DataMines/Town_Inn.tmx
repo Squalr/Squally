@@ -116,35 +116,35 @@
     <property name="reward-pool" value="dm-generic"/>
    </properties>
   </object>
-  <object id="841" name="shop-pool-shen" type="object" x="610" y="1538" width="64" height="64"/>
+  <object id="841" name="shop-pool-inn-t3" type="object" x="610" y="1538" width="64" height="64"/>
   <object id="850" name="shop-item" type="object" x="1235.43" y="1319.87" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-shen"/>
+    <property name="pool" value="shop-pool-inn-t3"/>
    </properties>
   </object>
   <object id="851" name="shop-item" type="object" x="1528.76" y="1319.87" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-shen"/>
+    <property name="pool" value="shop-pool-inn-t3"/>
    </properties>
   </object>
   <object id="852" name="shop-item" type="object" x="1810.76" y="1319.87" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-shen"/>
+    <property name="pool" value="shop-pool-inn-t3"/>
    </properties>
   </object>
   <object id="853" name="shop-item" type="object" x="1236.29" y="1604.11" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-shen"/>
+    <property name="pool" value="shop-pool-inn-t3"/>
    </properties>
   </object>
   <object id="854" name="shop-item" type="object" x="1528.76" y="1604.11" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-shen"/>
+    <property name="pool" value="shop-pool-inn-t3"/>
    </properties>
   </object>
   <object id="855" name="shop-item" type="object" x="1810.76" y="1604.11" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-shen"/>
+    <property name="pool" value="shop-pool-inn-t3"/>
    </properties>
   </object>
  </objectgroup>

@@ -2,17 +2,17 @@
 
 #include "Objects/Platformer/Shops/ShopPool.h"
 
-class ShopPoolGriffin : public ShopPool
+class ShopPoolInnT6 : public ShopPool
 {
 public:
-	static ShopPoolGriffin* create(cocos2d::ValueMap& properties);
+	static ShopPoolInnT6* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKey;
 	static const std::string PoolName;
 
 protected:
-	ShopPoolGriffin(cocos2d::ValueMap& properties);
-	virtual ~ShopPoolGriffin();
+	ShopPoolInnT6(cocos2d::ValueMap& properties);
+	virtual ~ShopPoolInnT6();
 
 private:
 	typedef ShopPool super;

@@ -1,4 +1,4 @@
-#include "ShopPoolGeryon.h"
+#include "ShopPoolSmithT5.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -12,28 +12,28 @@
 
 using namespace cocos2d;
 
-const std::string ShopPoolGeryon::MapKey = "shop-pool-geryon";
-const std::string ShopPoolGeryon::PoolName = "shop-pool-geryon";
+const std::string ShopPoolSmithT5::MapKey = "shop-pool-smith-t5";
+const std::string ShopPoolSmithT5::PoolName = "shop-pool-smith-t5";
 
-ShopPoolGeryon* ShopPoolGeryon::create(ValueMap& properties)
+ShopPoolSmithT5* ShopPoolSmithT5::create(ValueMap& properties)
 {
-	ShopPoolGeryon* instance = new ShopPoolGeryon(properties);
+	ShopPoolSmithT5* instance = new ShopPoolSmithT5(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShopPoolGeryon::ShopPoolGeryon(ValueMap& properties) : super(properties, ShopPoolGeryon::PoolName, { })
+ShopPoolSmithT5::ShopPoolSmithT5(ValueMap& properties) : super(properties, ShopPoolSmithT5::PoolName, { })
 {
 	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Sapphire::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Gold::create(), ItemChance::Probability::Guaranteed));
 }
 
-ShopPoolGeryon::~ShopPoolGeryon()
+ShopPoolSmithT5::~ShopPoolSmithT5()
 {
 }

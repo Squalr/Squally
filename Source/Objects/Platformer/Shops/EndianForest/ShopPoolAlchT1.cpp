@@ -1,4 +1,4 @@
-#include "ShopPoolGriffin.h"
+#include "ShopPoolAlchT1.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -6,27 +6,25 @@
 #include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier2/CardPoolTier2.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-const std::string ShopPoolGriffin::MapKey = "shop-pool-griffin";
-const std::string ShopPoolGriffin::PoolName = "shop-pool-griffin";
+const std::string ShopPoolAlchT1::MapKey = "shop-pool-alch-t1";
+const std::string ShopPoolAlchT1::PoolName = "shop-pool-alch-t1";
 
-ShopPoolGriffin* ShopPoolGriffin::create(ValueMap& properties)
+ShopPoolAlchT1* ShopPoolAlchT1::create(ValueMap& properties)
 {
-	ShopPoolGriffin* instance = new ShopPoolGriffin(properties);
+	ShopPoolAlchT1* instance = new ShopPoolAlchT1(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShopPoolGriffin::ShopPoolGriffin(ValueMap& properties) : super(properties, ShopPoolGriffin::PoolName,
-	{ })
+ShopPoolAlchT1::ShopPoolAlchT1(ValueMap& properties) : super(properties, ShopPoolAlchT1::PoolName)
 {
 	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(DarkSeed::create(), ItemChance::Probability::Guaranteed));
@@ -34,6 +32,6 @@ ShopPoolGriffin::ShopPoolGriffin(ValueMap& properties) : super(properties, ShopP
 	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Guaranteed));
 }
 
-ShopPoolGriffin::~ShopPoolGriffin()
+ShopPoolAlchT1::~ShopPoolAlchT1()
 {
 }

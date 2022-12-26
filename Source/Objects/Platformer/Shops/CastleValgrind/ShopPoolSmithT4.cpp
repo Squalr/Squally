@@ -1,4 +1,4 @@
-#include "ShopPoolBrock.h"
+#include "ShopPoolSmithT4.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -12,19 +12,19 @@
 
 using namespace cocos2d;
 
-const std::string ShopPoolBrock::MapKey = "shop-pool-brock";
-const std::string ShopPoolBrock::PoolName = "shop-pool-brock";
+const std::string ShopPoolSmithT4::MapKey = "shop-pool-smith-t4";
+const std::string ShopPoolSmithT4::PoolName = "shop-pool-smith-t4";
 
-ShopPoolBrock* ShopPoolBrock::create(ValueMap& properties)
+ShopPoolSmithT4* ShopPoolSmithT4::create(ValueMap& properties)
 {
-	ShopPoolBrock* instance = new ShopPoolBrock(properties);
+	ShopPoolSmithT4* instance = new ShopPoolSmithT4(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShopPoolBrock::ShopPoolBrock(ValueMap& properties) : super(properties, ShopPoolBrock::PoolName, { })
+ShopPoolSmithT4::ShopPoolSmithT4(ValueMap& properties) : super(properties, ShopPoolSmithT4::PoolName, { })
 {
 	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Guaranteed));
@@ -34,6 +34,6 @@ ShopPoolBrock::ShopPoolBrock(ValueMap& properties) : super(properties, ShopPoolB
 	this->addItemToPool(ItemChance::create(Gold::create(), ItemChance::Probability::Guaranteed));
 }
 
-ShopPoolBrock::~ShopPoolBrock()
+ShopPoolSmithT4::~ShopPoolSmithT4()
 {
 }

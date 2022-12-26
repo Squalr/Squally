@@ -210,7 +210,7 @@
     <property name="transition" value="church"/>
    </properties>
   </object>
-  <object id="1054" name="solid" type="collision" x="3833" y="-106.348" width="192.909" height="2791.85"/>
+  <object id="1054" name="solid" type="collision" x="3924.57" y="-106.348" width="192.909" height="2791.85"/>
   <object id="1062" name="solid" type="collision" x="1939.55" y="-107.925" width="192.909" height="2791.85"/>
  </objectgroup>
  <objectgroup id="89" name="player_layer -6">

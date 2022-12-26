@@ -1,4 +1,4 @@
-#include "ShopPoolMinos.h"
+#include "ShopPoolSmithT1.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -12,19 +12,19 @@
 
 using namespace cocos2d;
 
-const std::string ShopPoolMinos::MapKey = "shop-pool-minos";
-const std::string ShopPoolMinos::PoolName = "shop-pool-minos";
+const std::string ShopPoolSmithT1::MapKey = "shop-pool-smith-t1";
+const std::string ShopPoolSmithT1::PoolName = "shop-pool-smith-t1";
 
-ShopPoolMinos* ShopPoolMinos::create(ValueMap& properties)
+ShopPoolSmithT1* ShopPoolSmithT1::create(ValueMap& properties)
 {
-	ShopPoolMinos* instance = new ShopPoolMinos(properties);
+	ShopPoolSmithT1* instance = new ShopPoolSmithT1(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShopPoolMinos::ShopPoolMinos(ValueMap& properties) : super(properties, ShopPoolMinos::PoolName, { })
+ShopPoolSmithT1::ShopPoolSmithT1(ValueMap& properties) : super(properties, ShopPoolSmithT1::PoolName, { })
 {
 	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Guaranteed));
@@ -33,6 +33,6 @@ ShopPoolMinos::ShopPoolMinos(ValueMap& properties) : super(properties, ShopPoolM
 	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Guaranteed));
 }
 
-ShopPoolMinos::~ShopPoolMinos()
+ShopPoolSmithT1::~ShopPoolSmithT1()
 {
 }

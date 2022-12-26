@@ -1,4 +1,4 @@
-#include "ShopPoolFraya.h"
+#include "ShopPoolAlchT2.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -13,19 +13,19 @@
 
 using namespace cocos2d;
 
-const std::string ShopPoolFraya::MapKey = "shop-pool-fraya";
-const std::string ShopPoolFraya::PoolName = "shop-pool-fraya";
+const std::string ShopPoolAlchT2::MapKey = "shop-pool-alch-t2";
+const std::string ShopPoolAlchT2::PoolName = "shop-pool-alch-t2";
 
-ShopPoolFraya* ShopPoolFraya::create(ValueMap& properties)
+ShopPoolAlchT2* ShopPoolAlchT2::create(ValueMap& properties)
 {
-	ShopPoolFraya* instance = new ShopPoolFraya(properties);
+	ShopPoolAlchT2* instance = new ShopPoolAlchT2(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShopPoolFraya::ShopPoolFraya(ValueMap& properties) : super(properties, ShopPoolFraya::PoolName,
+ShopPoolAlchT2::ShopPoolAlchT2(ValueMap& properties) : super(properties, ShopPoolAlchT2::PoolName,
 	{ })
 {
 	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Guaranteed));
@@ -34,6 +34,6 @@ ShopPoolFraya::ShopPoolFraya(ValueMap& properties) : super(properties, ShopPoolF
 	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Guaranteed));
 }
 
-ShopPoolFraya::~ShopPoolFraya()
+ShopPoolAlchT2::~ShopPoolAlchT2()
 {
 }

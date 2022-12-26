@@ -150,32 +150,32 @@
   </object>
   <object id="795" name="shop-item" type="object" x="682.67" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-smith-t1"/>
    </properties>
   </object>
   <object id="796" name="shop-item" type="object" x="976" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-smith-t1"/>
    </properties>
   </object>
   <object id="797" name="shop-item" type="object" x="1258" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-smith-t1"/>
    </properties>
   </object>
   <object id="798" name="shop-item" type="object" x="683.53" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-smith-t1"/>
    </properties>
   </object>
   <object id="799" name="shop-item" type="object" x="976" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-smith-t1"/>
    </properties>
   </object>
   <object id="800" name="shop-item" type="object" x="1258" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-minos"/>
+    <property name="pool" value="shop-pool-smith-t1"/>
    </properties>
   </object>
   <object id="801" name="shop-pool-geryon" type="object" x="1847.68" y="226.045" width="64" height="64"/>

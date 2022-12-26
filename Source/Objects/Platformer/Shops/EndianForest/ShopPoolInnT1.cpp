@@ -1,4 +1,4 @@
-#include "ShopPoolPolyphemus.h"
+#include "ShopPoolInnT1.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -13,23 +13,23 @@
 
 using namespace cocos2d;
 
-const std::string ShopPoolPolyphemus::MapKey = "shop-pool-polyphemus";
-const std::string ShopPoolPolyphemus::PoolName = "shop-pool-polyphemus";
+const std::string ShopPoolInnT1::MapKey = "shop-pool-inn-t1";
+const std::string ShopPoolInnT1::PoolName = "shop-pool-inn-t1";
 
-ShopPoolPolyphemus* ShopPoolPolyphemus::create(ValueMap& properties)
+ShopPoolInnT1* ShopPoolInnT1::create(ValueMap& properties)
 {
-	ShopPoolPolyphemus* instance = new ShopPoolPolyphemus(properties);
+	ShopPoolInnT1* instance = new ShopPoolInnT1(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShopPoolPolyphemus::ShopPoolPolyphemus(ValueMap& properties) : super(properties, ShopPoolPolyphemus::PoolName,
+ShopPoolInnT1::ShopPoolInnT1(ValueMap& properties) : super(properties, ShopPoolInnT1::PoolName,
 	{ CardPoolTier1::create(SampleMethod::Guarantee, 6, 6) })
 {
 }
 
-ShopPoolPolyphemus::~ShopPoolPolyphemus()
+ShopPoolInnT1::~ShopPoolInnT1()
 {
 }

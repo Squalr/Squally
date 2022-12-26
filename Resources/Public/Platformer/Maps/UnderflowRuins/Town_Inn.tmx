@@ -258,45 +258,45 @@
    <properties>
     <property name="components" value="petrification-link"/>
     <property name="linked-tag" value="shopkeeper"/>
-    <property name="pool" value="shop-pool-ares"/>
+    <property name="pool" value="shop-pool-inn-t2"/>
    </properties>
   </object>
   <object id="831" name="shop-item" type="object" x="2129.85" y="107.961" width="64" height="64">
    <properties>
     <property name="components" value="petrification-link"/>
     <property name="linked-tag" value="shopkeeper"/>
-    <property name="pool" value="shop-pool-ares"/>
+    <property name="pool" value="shop-pool-inn-t2"/>
    </properties>
   </object>
   <object id="832" name="shop-item" type="object" x="2411.85" y="107.961" width="64" height="64">
    <properties>
     <property name="components" value="petrification-link"/>
     <property name="linked-tag" value="shopkeeper"/>
-    <property name="pool" value="shop-pool-ares"/>
+    <property name="pool" value="shop-pool-inn-t2"/>
    </properties>
   </object>
   <object id="833" name="shop-item" type="object" x="1837.38" y="392.207" width="64" height="64">
    <properties>
     <property name="components" value="petrification-link"/>
     <property name="linked-tag" value="shopkeeper"/>
-    <property name="pool" value="shop-pool-ares"/>
+    <property name="pool" value="shop-pool-inn-t2"/>
    </properties>
   </object>
   <object id="834" name="shop-item" type="object" x="2129.85" y="392.207" width="64" height="64">
    <properties>
     <property name="components" value="petrification-link"/>
     <property name="linked-tag" value="shopkeeper"/>
-    <property name="pool" value="shop-pool-ares"/>
+    <property name="pool" value="shop-pool-inn-t2"/>
    </properties>
   </object>
   <object id="835" name="shop-item" type="object" x="2411.85" y="392.207" width="64" height="64">
    <properties>
     <property name="components" value="petrification-link"/>
     <property name="linked-tag" value="shopkeeper"/>
-    <property name="pool" value="shop-pool-ares"/>
+    <property name="pool" value="shop-pool-inn-t2"/>
    </properties>
   </object>
-  <object id="836" name="shop-pool-ares" type="object" x="1190.06" y="331.903" width="64" height="64"/>
+  <object id="836" name="shop-pool-inn-t2" type="object" x="1190.06" y="331.903" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

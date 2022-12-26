@@ -246,35 +246,35 @@
   </object>
   <object id="826" name="shop-item" type="object" x="1052.52" y="150.119" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-polyphemus"/>
+    <property name="pool" value="shop-pool-inn-t1"/>
    </properties>
   </object>
   <object id="827" name="shop-item" type="object" x="1345.85" y="150.119" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-polyphemus"/>
+    <property name="pool" value="shop-pool-inn-t1"/>
    </properties>
   </object>
   <object id="828" name="shop-item" type="object" x="1627.85" y="150.119" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-polyphemus"/>
+    <property name="pool" value="shop-pool-inn-t1"/>
    </properties>
   </object>
   <object id="829" name="shop-item" type="object" x="1053.38" y="434.365" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-polyphemus"/>
+    <property name="pool" value="shop-pool-inn-t1"/>
    </properties>
   </object>
   <object id="830" name="shop-item" type="object" x="1345.85" y="434.365" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-polyphemus"/>
+    <property name="pool" value="shop-pool-inn-t1"/>
    </properties>
   </object>
   <object id="831" name="shop-item" type="object" x="1627.85" y="434.365" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-polyphemus"/>
+    <property name="pool" value="shop-pool-inn-t1"/>
    </properties>
   </object>
-  <object id="832" name="shop-pool-polyphemus" type="object" x="406.06" y="374.061" width="64" height="64"/>
+  <object id="832" name="shop-pool-inn-t1" type="object" x="406.06" y="374.061" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

@@ -1,4 +1,4 @@
-#include "ShopPoolToben.h"
+#include "ShopPoolAlchT7.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -6,25 +6,27 @@
 #include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier2/CardPoolTier2.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
 
-const std::string ShopPoolToben::MapKey = "shop-pool-toben";
-const std::string ShopPoolToben::PoolName = "shop-pool-toben";
+const std::string ShopPoolAlchT7::MapKey = "shop-pool-alch-t7";
+const std::string ShopPoolAlchT7::PoolName = "shop-pool-alch-t7";
 
-ShopPoolToben* ShopPoolToben::create(ValueMap& properties)
+ShopPoolAlchT7* ShopPoolAlchT7::create(ValueMap& properties)
 {
-	ShopPoolToben* instance = new ShopPoolToben(properties);
+	ShopPoolAlchT7* instance = new ShopPoolAlchT7(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolToben::PoolName)
+ShopPoolAlchT7::ShopPoolAlchT7(ValueMap& properties) : super(properties, ShopPoolAlchT7::PoolName,
+	{ })
 {
 	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(DarkSeed::create(), ItemChance::Probability::Guaranteed));
@@ -32,6 +34,6 @@ ShopPoolToben::ShopPoolToben(ValueMap& properties) : super(properties, ShopPoolT
 	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Guaranteed));
 }
 
-ShopPoolToben::~ShopPoolToben()
+ShopPoolAlchT7::~ShopPoolAlchT7()
 {
 }
