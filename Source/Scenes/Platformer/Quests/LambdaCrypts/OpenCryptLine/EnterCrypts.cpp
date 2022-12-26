@@ -163,7 +163,7 @@ void EnterCrypts::onSkipped()
 void EnterCrypts::runCinematicSequencePt1()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Menus_TODO::create(), // DANGER DANGER
+		Strings::Platformer_Quests_LambdaCrypts_EnterCrypts_Scrappy_A_DangerDanger::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
@@ -183,10 +183,12 @@ void EnterCrypts::runCinematicSequenceStrikeZone()
 	if (this->evilEye != nullptr)
 	{
 		this->evilEye->setState(StateKeys::CinematicHijacked, Value(false));
+		this->evilEye->clearState(StateKeys::CinematicSourceX);
+		this->evilEye->clearState(StateKeys::CinematicDestinationX);
 	}
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Menus_TODO::create(), // Found you.
+		Strings::Platformer_Quests_LambdaCrypts_EnterCrypts_EvilEye_A_FoundYou::create(), 
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
@@ -202,7 +204,7 @@ void EnterCrypts::runCinematicSequenceStrikeZone()
 				{
 					this->lightningStrike->setVisible(true);
 					this->lightningStrike->playAnimation(FXResources::Lightning_Lightning_0000, 0.06f);
-					GameUtils::setWorldCoords(this->lightningStrike, GameUtils::getWorldCoords(this->squally) + Vec2(0.0f, 256.0f));
+					GameUtils::setWorldCoords(this->lightningStrike, GameUtils::getWorldCoords(this->squally) + Vec2(0.0f, 392.0f));
 					this->lightningSound->play();
 					respawnBehavior->respawnWithMapReload();
 				});
