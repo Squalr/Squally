@@ -516,8 +516,8 @@
   <object id="993" name="solid" type="collision" x="466.125" y="-10.314" width="171.617" height="1932.84"/>
   <object id="994" name="portal" type="object" x="650.82" y="1500.84" width="450.603" height="423.038">
    <properties>
-    <property name="map" value="LambdaCrypts/Zone_1_1"/>
-    <property name="transition" value="grave"/>
+    <property name="map" value="LambdaCrypts/Zone_2_1"/>
+    <property name="transition" value="grave-left"/>
    </properties>
   </object>
   <object id="1029" name="portal" type="object" x="2731.98" y="1543.38" width="237.527" height="375.411">
