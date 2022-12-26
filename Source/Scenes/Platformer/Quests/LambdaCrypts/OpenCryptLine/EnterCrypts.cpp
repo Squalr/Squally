@@ -182,7 +182,7 @@ void EnterCrypts::runCinematicSequenceStrikeZone()
 {
 	if (this->evilEye != nullptr)
 	{
-		this->evilEye->setState(StateKeys::CinematicHijacked, Value(false));
+		this->evilEye->clearState(StateKeys::CinematicHijacked);
 		this->evilEye->clearState(StateKeys::CinematicSourceX);
 		this->evilEye->clearState(StateKeys::CinematicDestinationX);
 	}

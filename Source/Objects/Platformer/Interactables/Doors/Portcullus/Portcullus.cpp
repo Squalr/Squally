@@ -7,6 +7,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/UI/SmartClippingNode.h"
 #include "Engine/Utils/GameUtils.h"
@@ -19,7 +20,8 @@ using namespace cocos2d;
 
 const std::string Portcullus::MapKey = "portcullus";
 const float Portcullus::DoorOpenDelta = 320.0f;
-const std::string Portcullus::UnlockedSaveKey = "PORTCULLUSR_UNLOCKED";
+const std::string Portcullus::UnlockedSaveKey = "PORTCULLUS_UNLOCKED";
+const std::string Portcullus::PropertySaveKey = "save-key";
 
 Portcullus* Portcullus::create(ValueMap& properties)
 {
@@ -38,6 +40,7 @@ Portcullus::Portcullus(ValueMap& properties) : super(properties, CSize(propertie
 	this->top = Sprite::create(ObjectResources::Doors_Portcullus_PortcullusTop);
 	this->bars = Sprite::create(ObjectResources::Doors_Portcullus_PortcullusMid);
 	this->spikes = Sprite::create(ObjectResources::Doors_Portcullus_PortcullusSpikes);
+	this->saveKey = GameUtils::getKeyOrDefault(this->properties, Portcullus::PropertySaveKey, Value("")).asString();
 
 	// Create parameters to repeat the texture
 	Texture2D::TexParams params = Texture2D::TexParams();
@@ -66,7 +69,18 @@ void Portcullus::onEnter()
 {
 	super::onEnter();
 	
-	if (this->loadObjectStateOrDefault(Portcullus::UnlockedSaveKey, Value(true)).asBool())
+	if (this->saveKey.empty())
+	{
+		if (this->loadObjectStateOrDefault(Portcullus::UnlockedSaveKey, Value(true)).asBool())
+		{
+			this->unlock(false);
+		}
+		else
+		{
+			this->lock(false);
+		}
+	}
+	else if (SaveManager::GetProfileDataOrDefault(this->saveKey, Value(false)).asBool())
 	{
 		this->unlock(false);
 	}

@@ -816,22 +816,22 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1154" name="chest" type="object" x="2635.37" y="1558.36" width="128" height="128">
+  <object id="1154" name="metal-chest" type="object" x="2635.37" y="1558.36" width="128" height="128">
    <properties>
-    <property name="reward-pool" value="lc-rusty-key"/>
+    <property name="reward-pool" value="lc-gem-red"/>
    </properties>
   </object>
-  <object id="1155" name="caged-chicken" type="object" x="3201.37" y="1524.13" width="196" height="112"/>
-  <object id="1156" name="edge-portal" type="object" x="6.48358" y="1052.12" width="199.918" height="640.851">
+  <object id="1155" name="caged-chicken" type="object" x="3260.35" y="1572.79" width="196" height="112"/>
+  <object id="1156" name="edge-portal" type="object" x="0.48358" y="1059.12" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="left"/>
-    <property name="map" value="LambdaCrypts/Zone_2_0"/>
+    <property name="map" value="LambdaCrypts/Zone_2_1"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
   <object id="1157" name="stone-button" type="object" x="4135.91" y="1592.64" width="258.367" height="85.7283">
    <properties>
-    <property name="send-event" value="portcullus-open"/>
+    <property name="save-key" value="LC_INTRO_CRYPT_PORTCULLUS"/>
     <property name="switch" type="bool" value="true"/>
    </properties>
   </object>
@@ -846,15 +846,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1137" name="evil-eye" type="entity" x="3872.25" y="1554.37" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
-    <property name="battle-tag" value="group-z"/>
-    <property name="components" value="enemy"/>
-    <property name="drop-pool" value="lc-generic"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

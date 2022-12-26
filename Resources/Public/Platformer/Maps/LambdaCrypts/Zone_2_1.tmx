@@ -377,7 +377,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="895" name="stone-dark" type="terrain" x="-194.91" y="1681.16" width="6381.82" height="931.689">
+  <object id="895" name="cave" type="terrain" x="-194.91" y="1681.16" width="6381.82" height="931.689">
    <properties>
     <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
@@ -459,7 +459,7 @@
   </object>
   <object id="1133" name="spawn" type="object" x="5668.07" y="1550.81" width="128" height="128">
    <properties>
-    <property name="transition" value="left"/>
+    <property name="transition" value="left-back"/>
    </properties>
   </object>
   <object id="1151" name="spawn" type="object" x="2739.66" y="1552.21" width="128" height="128">
@@ -669,6 +669,7 @@
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
+    <property name="save-key" value="LC_INTRO_CRYPT_PORTCULLUS"/>
    </properties>
   </object>
  </objectgroup>
@@ -686,7 +687,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="66" name="holes">
+ <objectgroup id="66" name="holes" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -894,13 +895,38 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1135" name="torch" type="object" x="4701.78" y="1158.44" width="42" height="130"/>
-  <object id="1136" name="torch" type="object" x="5630.46" y="1158.44" width="42" height="130"/>
-  <object id="1138" name="torch" type="object" x="3223.88" y="1193.94" width="42" height="130"/>
-  <object id="1140" name="torch" type="object" x="2117.52" y="1187.67" width="42" height="130"/>
-  <object id="1143" name="torch" type="object" x="3774.04" y="1167.78" width="42" height="130"/>
+  <object id="1135" name="torch" type="object" x="4701.78" y="1158.44" width="42" height="130">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="1136" name="torch" type="object" x="5630.46" y="1158.44" width="42" height="130">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="1138" name="torch" type="object" x="3223.88" y="1193.94" width="42" height="130">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="1140" name="torch" type="object" x="2117.52" y="1187.67" width="42" height="130">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="1143" name="torch" type="object" x="3774.04" y="1167.78" width="42" height="130">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="68" name="terrain bg">
+ <objectgroup id="68" name="terrain bg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -919,7 +945,7 @@
    <polygon points="-129.285,1298.03 -152.035,650.189 -143.052,-184.124 -120.931,-799.778 119.02,-984.251 712.796,-916.389 909.327,-642.938 918.06,214.697 851.437,885.155 751.19,1335.21 516.295,1394.45 242.216,1380.08"/>
   </object>
  </objectgroup>
- <objectgroup id="81" name="decor bg">
+ <objectgroup id="81" name="decor bg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -1066,6 +1092,7 @@
     <property name="from" value="bridge-front-A"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
+    <property name="save-key" value="LC_INTRO_CRYPT_PORTCULLUS"/>
     <property name="to" value="bridge-back-A"/>
    </properties>
   </object>

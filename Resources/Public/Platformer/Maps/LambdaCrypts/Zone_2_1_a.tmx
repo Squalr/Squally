@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="26" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1155">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="26" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1155">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -784,7 +784,7 @@
   <object id="720" name="Generic/WoodCaveDoor1" type="decor" x="2774.37" y="1272.53" width="388" height="403"/>
   <object id="721" name="portal" type="object" x="2843.7" y="1420.03" width="256" height="256">
    <properties>
-    <property name="map" value="LambdaCrypts/Zone_2_0"/>
+    <property name="map" value="LambdaCrypts/Zone_2_1"/>
     <property name="transition" value="back-room"/>
    </properties>
   </object>
