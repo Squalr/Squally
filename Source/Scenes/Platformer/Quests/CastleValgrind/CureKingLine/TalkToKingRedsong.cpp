@@ -162,7 +162,7 @@ void TalkToKingRedsong::onSkipped()
 void TalkToKingRedsong::runCinematicSequencePt1()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Menus_TODO::create(),
+		Strings::TODO::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -181,7 +181,7 @@ void TalkToKingRedsong::runCinematicSequencePt1()
 void TalkToKingRedsong::runCinematicSequencePt2()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Menus_TODO::create(),
+		Strings::TODO::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -200,7 +200,7 @@ void TalkToKingRedsong::runCinematicSequencePt2()
 void TalkToKingRedsong::runCinematicSequencePt3()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Menus_TODO::create(),
+		Strings::TODO::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,

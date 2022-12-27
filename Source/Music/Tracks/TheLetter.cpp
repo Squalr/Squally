@@ -17,7 +17,7 @@ TheLetter* TheLetter::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-TheLetter::TheLetter(cocos2d::ValueMap& properties) : super(properties, MusicResources::TheLetter, Strings::Menus_TODO::create(), Strings::Menus_TODO::create())
+TheLetter::TheLetter(cocos2d::ValueMap& properties) : super(properties, MusicResources::TheLetter, Strings::TODO::create(), Strings::TODO::create())
 {
 }
 

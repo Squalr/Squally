@@ -639,6 +639,7 @@ DeveloperScene::DeveloperScene()
 		// Traps: Laser
 		// Needs enemy scripting according to notes on which instructions this zone covers
 		// Needs hexus puzzles
+		// No mage tower, final boss room is a portal room (maybe with bigger windows to see other worlds?)
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}

@@ -17,7 +17,7 @@ LastMarch* LastMarch::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-LastMarch::LastMarch(cocos2d::ValueMap& properties) : super(properties, MusicResources::LastMarch, Strings::Menus_TODO::create(), Strings::Menus_TODO::create())
+LastMarch::LastMarch(cocos2d::ValueMap& properties) : super(properties, MusicResources::LastMarch, Strings::TODO::create(), Strings::TODO::create())
 {
 }
 

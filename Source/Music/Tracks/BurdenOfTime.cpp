@@ -17,7 +17,7 @@ BurdenOfTime* BurdenOfTime::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-BurdenOfTime::BurdenOfTime(cocos2d::ValueMap& properties) : super(properties, MusicResources::BurdenOfTime, Strings::Menus_TODO::create(), Strings::Menus_TODO::create())
+BurdenOfTime::BurdenOfTime(cocos2d::ValueMap& properties) : super(properties, MusicResources::BurdenOfTime, Strings::TODO::create(), Strings::TODO::create())
 {
 }
 
