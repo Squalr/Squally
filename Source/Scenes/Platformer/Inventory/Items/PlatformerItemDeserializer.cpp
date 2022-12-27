@@ -318,7 +318,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[TownKey::SaveKey] = [=]() { return (Item*)TownKey::create(); };
 
 	// Keys UR
-	this->deserializers[FountainRoomKey::SaveKey] = [=]() { return (Item*)FountainRoomKey::create(); }
+	this->deserializers[FountainRoomKey::SaveKey] = [=]() { return (Item*)FountainRoomKey::create(); };
 	this->deserializers[MedusaMirror::SaveKey] = [=]() { return (Item*)MedusaMirror::create(); };;
 
 	// Keys DM
