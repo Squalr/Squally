@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="830">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="850">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -23,6 +23,11 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
+  <object id="849" name="ruins-gray-dark" type="terrain" x="478.119" y="-441.196" width="1212.12" height="1581.82">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="99" name="stairs -5 (4)">
   <properties>
@@ -30,6 +35,11 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="804" name="ruins-gray" type="terrain" x="3443.52" y="635.273" width="491.633" height="139.455">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="848" name="ruins-gray" type="terrain" x="512.186" y="645.248" width="491.633" height="139.455">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -45,6 +55,11 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
+  <object id="847" name="ruins-gray" type="terrain" x="610.697" y="716.342" width="521.633" height="139.455">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="97" name="stairs -5 (2)">
   <properties>
@@ -52,6 +67,11 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="806" name="ruins-gray" type="terrain" x="3307.18" y="770.939" width="558.3" height="139.455">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="846" name="ruins-gray" type="terrain" x="725.64" y="775.77" width="558.3" height="139.455">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -72,6 +92,16 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
+  <object id="844" name="ruins-gray-dark" type="terrain" x="1212.79" y="-71.076" width="108.606" height="1366.67">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="845" name="ruins-gray-dark" type="terrain" x="784.789" y="-83.076" width="108.606" height="1366.67">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="107" name="stairs -4">
   <properties>
@@ -79,6 +109,11 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="807" name="ruins-gray" type="terrain" x="2972.85" y="828.273" width="748.3" height="139.455">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="843" name="ruins-gray" type="terrain" x="645.939" y="830.532" width="748.3" height="139.455">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -99,6 +134,16 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
+  <object id="841" name="ruins-gray-dark" type="terrain" x="1216.79" y="-69.076" width="108.606" height="1366.67">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="842" name="ruins-gray-dark" type="terrain" x="780.789" y="-87.076" width="108.606" height="1366.67">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="84" name="stairs -3">
   <properties>
@@ -106,6 +151,11 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="808" name="ruins-gray" type="terrain" x="2972.85" y="888.273" width="748.3" height="139.455">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="840" name="ruins-gray" type="terrain" x="645.939" y="890.532" width="748.3" height="139.455">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -126,6 +176,16 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
+  <object id="838" name="ruins-gray-dark" type="terrain" x="1214.79" y="-69.076" width="108.606" height="1366.67">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="839" name="ruins-gray-dark" type="terrain" x="770.789" y="-91.076" width="108.606" height="1366.67">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="83" name="stairs -2">
   <properties>
@@ -133,6 +193,11 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="809" name="ruins-gray" type="terrain" x="2975.85" y="943.273" width="748.3" height="139.455">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="837" name="ruins-gray" type="terrain" x="648.939" y="945.532" width="748.3" height="139.455">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -153,6 +218,16 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
+  <object id="835" name="ruins-gray-dark" type="terrain" x="1222.79" y="-71.076" width="108.606" height="1366.67">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="836" name="ruins-gray-dark" type="terrain" x="804.789" y="-241.076" width="108.606" height="1366.67">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="82" name="stairs -1">
   <properties>
@@ -160,6 +235,11 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="810" name="ruins-gray" type="terrain" x="2975.85" y="1006.27" width="748.3" height="139.455">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="834" name="ruins-gray" type="terrain" x="648.939" y="1008.53" width="748.3" height="139.455">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -174,7 +254,12 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="802" name="ruins-gray-dark" type="terrain" x="-67.335" y="-43.09" width="3274.67" height="1318.18">
+  <object id="802" name="ruins-gray-dark" type="terrain" x="1223.21" y="-43.09" width="1984.13" height="1318.18">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="833" name="ruins-gray-dark" type="terrain" x="-344.499" y="-42.5284" width="1213.75" height="1318.18">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -205,19 +290,19 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="826" name="Ruins/ArchDoorGray1" type="decor" x="404.379" y="617.152" width="235" height="452"/>
+  <object id="826" name="Ruins/ArchDoorGray1" type="decor" x="2101.21" y="618.219" width="235" height="452"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="803" name="ruins-gray" type="terrain" x="-128.665" y="1066.61" width="4830.3" height="245.455"/>
+  <object id="803" name="ruins-gray" type="terrain" x="-54.6701" y="1066.61" width="4756.31" height="245.455"/>
  </objectgroup>
  <objectgroup id="112" name="decor bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="828" name="Generic/RedRug" type="decor" x="352.667" y="1050.17" width="332" height="21">
+  <object id="828" name="Generic/RedRug" type="decor" x="2049.5" y="1051.24" width="332" height="21">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -233,7 +318,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="694" name="portal" type="object" x="401.862" y="696.711" width="237.527" height="375.411">
+  <object id="694" name="portal" type="object" x="2098.69" y="697.778" width="237.527" height="375.411">
    <properties>
     <property name="map" value="LambdaCrypts/Town_Main"/>
     <property name="transition" value="church"/>
@@ -241,8 +326,14 @@
   </object>
   <object id="794" name="portal" type="object" x="3202.21" y="690.527" width="335.878" height="375.411">
    <properties>
-    <property name="map" value="UnderflowRuins/Town_Inn_Upstairs"/>
-    <property name="transition" value="inn"/>
+    <property name="map" value="LambdaCrypts/Town_Church_Upstairs"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="831" name="portal" type="object" x="875.299" y="692.786" width="335.878" height="375.411">
+   <properties>
+    <property name="map" value="LambdaCrypts/Town_Church_Upstairs"/>
+    <property name="transition" value="left"/>
    </properties>
   </object>
  </objectgroup>
@@ -268,19 +359,24 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="784.265" y="938.223" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="2481.1" y="939.29" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="824" name="spawn-wood-door" type="object" x="461.648" y="941.2" width="128" height="128">
+  <object id="824" name="spawn-wood-door" type="object" x="2158.48" y="942.267" width="128" height="128">
    <properties>
     <property name="transition" value="church"/>
    </properties>
   </object>
   <object id="825" name="spawn" type="object" x="3307.5" y="940.849" width="128" height="128">
    <properties>
-    <property name="transition" value="inn-upstairs"/>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="830" name="spawn" type="object" x="980.589" y="943.108" width="128" height="128">
+   <properties>
+    <property name="transition" value="left"/>
    </properties>
   </object>
  </objectgroup>

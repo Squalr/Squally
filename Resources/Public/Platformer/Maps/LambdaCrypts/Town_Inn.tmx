@@ -249,7 +249,7 @@
   </object>
   <object id="794" name="portal" type="object" x="3202.21" y="690.527" width="335.878" height="375.411">
    <properties>
-    <property name="map" value="UnderflowRuins/Town_Inn_Upstairs"/>
+    <property name="map" value="LambdaCrypts/Town_Inn_Upstairs"/>
     <property name="transition" value="inn"/>
    </properties>
   </object>

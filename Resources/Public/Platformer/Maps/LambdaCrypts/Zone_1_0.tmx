@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="107" nextobjectid="1040">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="107" nextobjectid="1041">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
-   <property name="map-banner" value=""/>
+   <property name="map-banner" value="lambda-crypts"/>
    <property name="music" value="last-march"/>
    <property name="rubber-band" type="int" value="15"/>
    <property name="show-cracks" type="bool" value="true"/>
@@ -346,6 +346,11 @@
     <property name="transition" value="lesser-crypt"/>
    </properties>
   </object>
+  <object id="1040" name="spawn" type="object" x="6012.03" y="1734.12" width="128" height="128">
+   <properties>
+    <property name="transition" value="gate"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="761" name="terrain -7">
   <properties>
@@ -363,7 +368,7 @@
   <object id="1015" name="wood" type="terrain" x="4888.18" y="1872.09" width="267.799" height="1244.94"/>
   <object id="1038" name="Crypts/Crypt1" type="decor" x="2090.5" y="947" width="1051" height="943"/>
  </objectgroup>
- <objectgroup id="81" name="decor -7">
+ <objectgroup id="81" name="decor -7" visible="0">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>

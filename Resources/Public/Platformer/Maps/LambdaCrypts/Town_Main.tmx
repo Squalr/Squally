@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="54" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1069">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="54" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="108" nextobjectid="1076">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
-   <property name="map-banner" value=""/>
+   <property name="map-banner" value="grave-flower"/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="14"/>
    <property name="show-cracks" type="bool" value="true"/>
@@ -481,6 +481,12 @@
   <object id="623" name="life-stone" type="object" x="2726.36" y="2380.25" width="146" height="423"/>
   <object id="1065" name="solid" type="collision" x="1168.94" y="22.1356" width="192.909" height="2791.85"/>
   <object id="1068" name="solid" type="collision" x="6087.35" y="14.1179" width="192.909" height="2791.85"/>
+  <object id="1075" name="portal" type="object" x="3118.79" y="2547.32" width="256" height="256">
+   <properties>
+    <property name="map" value="LambdaCrypts/Zone_1_0"/>
+    <property name="transition" value="gate"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -498,7 +504,7 @@
     <property name="pocket-pool" value="lc-generic"/>
    </properties>
   </object>
-  <object id="1025" name="thion" type="entity" x="2939.41" y="2676.21" width="128" height="128">
+  <object id="1025" name="thion" type="entity" x="2432.88" y="2676.21" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="lc-generic"/>
@@ -510,7 +516,7 @@
     <property name="pocket-pool" value="lc-generic"/>
    </properties>
   </object>
-  <object id="1028" name="viper" type="entity" x="3175.08" y="2678.11" width="128" height="128">
+  <object id="1028" name="viper" type="entity" x="2224.36" y="2676.84" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="lc-generic"/>
@@ -529,13 +535,13 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.5"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="2502.3" y="2677.05" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="2985.56" y="2675.26" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
     <property name="zoom" type="float" value="1.5"/>
    </properties>
   </object>
-  <object id="716" name="spawn" type="object" x="2953.46" y="2674.46" width="128" height="128">
+  <object id="716" name="spawn" type="object" x="3194.01" y="2673.19" width="128" height="128">
    <properties>
     <property name="transition" value="gate"/>
    </properties>
@@ -575,6 +581,34 @@
    <property name="type" value="weather"/>
    <property name="weather" value="rain"/>
   </properties>
+ </objectgroup>
+ <objectgroup id="104" name="terrain + 1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1070" name="shade-grass" type="terrain" x="3036.2" y="2820.81" width="445.504" height="942.089"/>
+ </objectgroup>
+ <objectgroup id="105" name="terrain +2">
+  <properties>
+   <property name="depth" type="float" value="128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1071" name="shade-grass" type="terrain" x="3035.23" y="2848.1" width="445.504" height="942.089"/>
+ </objectgroup>
+ <objectgroup id="106" name="terrain +3">
+  <properties>
+   <property name="depth" type="float" value="192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1072" name="shade-grass" type="terrain" x="3033.28" y="2879.65" width="445.504" height="942.089"/>
+ </objectgroup>
+ <objectgroup id="107" name="terrain +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1073" name="shade-grass" type="terrain" x="3035.23" y="2913.74" width="445.504" height="942.089"/>
  </objectgroup>
  <objectgroup id="32" name="decor +4">
   <properties>

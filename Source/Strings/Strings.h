@@ -28029,6 +28029,21 @@ namespace Strings
 		virtual ~Platformer_MapNames_BallmerPeaks_BallmerPeaks() = default;
 	};
 
+	class Platformer_MapNames_BallmerPeaks_Workshop : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_BallmerPeaks_Workshop* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_BallmerPeaks_Workshop();
+		virtual ~Platformer_MapNames_BallmerPeaks_Workshop() = default;
+	};
+
 	class Platformer_MapNames_CastleValgrind_CastleValgrind : public LocalizedString
 	{
 	public:
@@ -28042,6 +28057,21 @@ namespace Strings
 	private:
 		Platformer_MapNames_CastleValgrind_CastleValgrind();
 		virtual ~Platformer_MapNames_CastleValgrind_CastleValgrind() = default;
+	};
+
+	class Platformer_MapNames_DaemonsHallow_Brimstone : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_DaemonsHallow_Brimstone* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_DaemonsHallow_Brimstone();
+		virtual ~Platformer_MapNames_DaemonsHallow_Brimstone() = default;
 	};
 
 	class Platformer_MapNames_DaemonsHallow_DaemonsHallow : public LocalizedString
@@ -28207,6 +28237,21 @@ namespace Strings
 	private:
 		Platformer_MapNames_EndianForest_SullenForest();
 		virtual ~Platformer_MapNames_EndianForest_SullenForest() = default;
+	};
+
+	class Platformer_MapNames_LambdaCrypts_GraveFlower : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_LambdaCrypts_GraveFlower* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_LambdaCrypts_GraveFlower();
+		virtual ~Platformer_MapNames_LambdaCrypts_GraveFlower() = default;
 	};
 
 	class Platformer_MapNames_LambdaCrypts_LambdaCrypts : public LocalizedString
