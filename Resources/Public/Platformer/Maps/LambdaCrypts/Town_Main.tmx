@@ -498,12 +498,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1024" name="roger" type="entity" x="3576.51" y="2674.88" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pick-pocket"/>
-    <property name="pocket-pool" value="lc-generic"/>
-   </properties>
-  </object>
   <object id="1025" name="thion" type="entity" x="2432.88" y="2676.21" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket"/>

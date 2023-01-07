@@ -424,6 +424,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Smith (LC)", MapResources::LambdaCrypts_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (LC)", MapResources::LambdaCrypts_Town_Main));
 		mapList.push_back(this->buildDebugButton("Church (LC)", MapResources::LambdaCrypts_Town_Church));
+		mapList.push_back(this->buildDebugButton("Home (LC)", MapResources::LambdaCrypts_Town_Home));
 		mapList.push_back(this->buildDebugButton("Zone_4_1 (LC)", MapResources::LambdaCrypts_Zone_4_1));
 		mapList.push_back(this->buildDebugButton("Zone_4_0 (LC)", MapResources::LambdaCrypts_Zone_4_0));
 		mapList.push_back(this->buildDebugButton("Zone_3_1 (LC)", MapResources::LambdaCrypts_Zone_3_1));
@@ -767,14 +768,14 @@ DeveloperScene::DeveloperScene()
 	X Panda			CV 
 	X Parrot		CV 
 
-	// BP
-	Blowfish		BP	??
-	Bunny			BP	??
-	KillerWhale		BP	??
-	Penguin			BP	??
-	Reindeer		BP	??
-	Yeti			BP	??
-	Goat			BP	Town
+	// LC
+	X Bull			LC Inn upstairs
+	X Chicken		LC 2_2
+	X Lion			LC Home upstairs
+	MountainLion
+	Tiger
+	Wolf
+	Worm
 
 	// DH
 	X Bee			DH 1_x
@@ -785,14 +786,14 @@ DeveloperScene::DeveloperScene()
 	Snake			DH 3_x
 	Tucan			DH Town
 
-	// LC
-	X Bull			LC Inn upstairs
-	Chicken			LC 2_2
-	Lion
-	MountainLion
-	Tiger
-	Wolf
-	Worm
+	// BP
+	Blowfish		BP	??
+	Bunny			BP	??
+	KillerWhale		BP	??
+	Penguin			BP	??
+	Reindeer		BP	??
+	Yeti			BP	??
+	Goat			BP	Town
 
 	Spell ideas:
 	- Call of the Dead (skele's attacking from portal under target) - https://www.gamedevmarket.net/asset/skeleton-warrior-mega-game-sprite-pack/
