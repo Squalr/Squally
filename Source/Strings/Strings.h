@@ -7764,6 +7764,21 @@ namespace Strings
 		virtual ~Items_Error_MissingNo() = default;
 	};
 
+	class Items_Misc_Keys_AncientKey : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_AncientKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_AncientKey();
+		virtual ~Items_Misc_Keys_AncientKey() = default;
+	};
+
 	class Items_Misc_Keys_BlueGem : public LocalizedString
 	{
 	public:
@@ -8017,21 +8032,6 @@ namespace Strings
 	private:
 		Items_Misc_Keys_RustyKey();
 		virtual ~Items_Misc_Keys_RustyKey() = default;
-	};
-
-	class Items_Misc_Keys_StudyRoomKey : public LocalizedString
-	{
-	public:
-		static Items_Misc_Keys_StudyRoomKey* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Misc_Keys_StudyRoomKey();
-		virtual ~Items_Misc_Keys_StudyRoomKey() = default;
 	};
 
 	class Items_Misc_Keys_TownKey : public LocalizedString

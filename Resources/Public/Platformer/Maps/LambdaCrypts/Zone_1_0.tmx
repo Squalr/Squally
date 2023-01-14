@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="107" nextobjectid="1041">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="107" nextobjectid="1043">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -319,8 +319,8 @@
   <object id="1030" name="portal" type="object" x="3739.73" y="1483.8" width="237.527" height="375.411">
    <properties>
     <property name="components" value="locked-portal"/>
-    <property name="item-required" value="bone-key"/>
-    <property name="map" value="LambdaCrypts/Zone_4_0"/>
+    <property name="item-required" value="rusty-key"/>
+    <property name="map" value="LambdaCrypts/Zone_3_0"/>
     <property name="transition" value="lesser-crypt"/>
    </properties>
   </object>
@@ -526,7 +526,7 @@
   <object id="1029" name="portal" type="object" x="2731.98" y="1543.38" width="237.527" height="375.411">
    <properties>
     <property name="components" value="locked-portal"/>
-    <property name="item-required" value="demon-key"/>
+    <property name="item-required" value="ancient-key"/>
     <property name="map" value="LambdaCrypts/Zone_4_0"/>
     <property name="transition" value="greater-crypt"/>
    </properties>
@@ -774,6 +774,13 @@
     <property name="flip-x" type="bool" value="false"/>
    </properties>
   </object>
+  <object id="1041" name="Crypts/Statue5" type="decor" x="4908.24" y="1288.87" width="370" height="754">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.5"/>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
@@ -793,6 +800,7 @@
    </properties>
   </object>
   <object id="1035" name="solid" type="collision" x="1058.19" y="101.58" width="171.617" height="1932.84"/>
+  <object id="1042" name="solid" type="collision" x="4968.99" y="109.455" width="171.617" height="1932.84"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

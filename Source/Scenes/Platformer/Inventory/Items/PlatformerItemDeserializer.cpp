@@ -328,13 +328,9 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 
 	// Keys CV
 	this->deserializers[CryptKey::SaveKey] = [=]() { return (Item*)CryptKey::create(); };
-	this->deserializers[StudyRoomKey::SaveKey] = [=]() { return (Item*)StudyRoomKey::create(); };
 
 	// Keys LC
-	this->deserializers[DemonKey::SaveKey] = [=]() { return (Item*)DemonKey::create(); };
-	this->deserializers[MayanGemBlueItem::SaveKey] = [=]() { return (Item*)MayanGemBlueItem::create(); };
-	this->deserializers[MayanGemPurpleItem::SaveKey] = [=]() { return (Item*)MayanGemPurpleItem::create(); };
-	this->deserializers[MayanGemRedItem::SaveKey] = [=]() { return (Item*)MayanGemRedItem::create(); };
+	this->deserializers[AncientKey::SaveKey] = [=]() { return (Item*)AncientKey::create(); };
 	this->deserializers[RustyKey::SaveKey] = [=]() { return (Item*)RustyKey::create(); };
 
 	// Keys BP
@@ -343,10 +339,14 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[FrozenKey::SaveKey] = [=]() { return (Item*)FrozenKey::create(); };
 
 	// Keys DH
+	this->deserializers[DemonKey::SaveKey] = [=]() { return (Item*)DemonKey::create(); };
 	this->deserializers[HellGateCrystal::SaveKey] = [=]() { return (Item*)HellGateCrystal::create(); };
 	this->deserializers[HellKey::SaveKey] = [=]() { return (Item*)HellKey::create(); };
 
 	// Keys VS
+	this->deserializers[MayanGemBlueItem::SaveKey] = [=]() { return (Item*)MayanGemBlueItem::create(); };
+	this->deserializers[MayanGemPurpleItem::SaveKey] = [=]() { return (Item*)MayanGemPurpleItem::create(); };
+	this->deserializers[MayanGemRedItem::SaveKey] = [=]() { return (Item*)MayanGemRedItem::create(); };
 
 	// Maps
 	this->deserializers[TempleMap::SaveKey] = [=]() { return (Item*)TempleMap::create(); };

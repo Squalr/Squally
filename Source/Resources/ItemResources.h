@@ -268,6 +268,7 @@ namespace ItemResources
 	extern const std::string Equipment_Weapons_Wands_VoidWand;
 	extern const std::string Equipment_Weapons_Wands_WoodenWand;
 	extern const std::string Error_MissingNo;
+	extern const std::string Keys_AncientKey;
 	extern const std::string Keys_BlueGem;
 	extern const std::string Keys_CryptKey;
 	extern const std::string Keys_DemonKey;
@@ -289,7 +290,6 @@ namespace ItemResources
 	extern const std::string Keys_RustyKey1;
 	extern const std::string Keys_RustyKey2;
 	extern const std::string Keys_SilverKey;
-	extern const std::string Keys_StudyRoomKey;
 	extern const std::string Maps_Map;
 	extern const std::string Misc_AdvancedBandage;
 	extern const std::string Misc_BackpackA;
