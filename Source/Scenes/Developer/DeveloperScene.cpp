@@ -442,14 +442,14 @@ DeveloperScene::DeveloperScene()
 		// ** Needs hexus battles
 		// ** Tune hexus battle special cards
 		// ** Needs animals
-		// Orderless crypt progression.
-		// Progression reworked a bit, 2_x (Orb 1) => 1_x => town (key 1) => 3_x (key 2, Orb 2) => 4x (key 3, Orb 3) => boss crypt
+		// Progression reworked a bit, 2_x => 1_x => town (key 1) => 3_x (key 2) => 4x (key 3) => boss crypt
 		//	- town key (rusty?), bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x	
 		// ** 2_x assassin, fiend, mystic (evil-eye, left crypt / hole / dirt env, orb 1)	
 		// ** 1_x overworld enemies (zombie, pig, undead)
-		// ** 3_x warlock, hunter, knight (right crypt, orb 2)
-		// ** 4_x cleaver, knight, priestess (central crypt, orb 3)
-		// ** 5_x (orb keys) Dual boss with King Zul and Lazarus. Give Lazarus a rez or self rez?
+		// ** 3_x warlock, hunter, knight (right crypt)
+		// ** 3_x Lazarus - Rez or self rez?
+		// ** 4_x cleaver, knight, priestess (central crypt)
+		// ** 4_x King Zul
 
 		/*
 		- ReanimatedPig			=>  1_x <Piggy, ?>
