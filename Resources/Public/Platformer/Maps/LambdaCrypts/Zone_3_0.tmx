@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="64" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1467">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="64" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1470">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -706,22 +706,6 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1149" name="warlock" type="entity" x="2331.04" y="1549.35" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
-    <property name="battle-tag" value="group-c"/>
-    <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="1150" name="warlock" type="entity" x="2333.6" y="1175.61" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-c"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
   <object id="1361" name="warlock" type="entity" x="5577.02" y="1490.21" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
@@ -738,6 +722,22 @@
     <property name="components" value="ally"/>
    </properties>
   </object>
+  <object id="1468" name="hunter" type="entity" x="2335.85" y="1566.69" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="ur-generic"/>
+   </properties>
+  </object>
+  <object id="1469" name="hunter" type="entity" x="2338.41" y="1192.95" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="77" name="objects -8">
   <properties>
@@ -746,7 +746,7 @@
   </properties>
   <object id="1152" name="portal" type="object" x="658.488" y="1422.68" width="256" height="256">
    <properties>
-    <property name="map" value="LambdaCrypts/Zone_3_0"/>
+    <property name="map" value="LambdaCrypts/Zone_3_1"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
@@ -758,7 +758,7 @@
   </object>
   <object id="1465" name="portal" type="object" x="7030.47" y="1428.25" width="256" height="256">
    <properties>
-    <property name="map" value="LambdaCrypts/Zone_3_2"/>
+    <property name="map" value="LambdaCrypts/Zone_3_3"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
@@ -779,12 +779,12 @@
   </object>
   <object id="1151" name="spawn" type="object" x="725.718" y="1549.3" width="128" height="128">
    <properties>
-    <property name="transition" value="back-room"/>
+    <property name="transition" value="left"/>
    </properties>
   </object>
   <object id="1357" name="spawn" type="object" x="3731.74" y="1551.75" width="128" height="128">
    <properties>
-    <property name="transition" value="back-room"/>
+    <property name="transition" value="middle"/>
    </properties>
   </object>
   <object id="1358" name="spawn" type="object" x="8024.54" y="1533.86" width="128" height="128">
@@ -802,6 +802,11 @@
    </properties>
   </object>
   <object id="1464" name="spawn" type="object" x="6729.58" y="1559.71" width="128" height="128">
+   <properties>
+    <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="1467" name="spawn" type="object" x="7096.32" y="1558.33" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
    </properties>
@@ -1178,7 +1183,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="66" name="holes">
+ <objectgroup id="66" name="holes" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -1790,7 +1795,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="24" name="entities" visible="0">
+ <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -1802,23 +1807,7 @@
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
-  <object id="989" name="hunter" type="entity" x="-38.6961" y="1570.87" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="990" name="hunter" type="entity" x="-36.1361" y="1197.13" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
-  <object id="1289" name="hunter" type="entity" x="4486.19" y="1553.92" width="128" height="128">
+  <object id="1289" name="knight" type="entity" x="4486.19" y="1553.92" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
@@ -1834,7 +1823,7 @@
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
-  <object id="1291" name="hunter" type="entity" x="4488.75" y="1180.18" width="128" height="128">
+  <object id="1291" name="knight" type="entity" x="4488.75" y="1180.18" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>

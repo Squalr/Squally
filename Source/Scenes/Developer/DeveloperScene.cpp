@@ -427,6 +427,8 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Home (LC)", MapResources::LambdaCrypts_Town_Home));
 		mapList.push_back(this->buildDebugButton("Zone_4_1 (LC)", MapResources::LambdaCrypts_Zone_4_1));
 		mapList.push_back(this->buildDebugButton("Zone_4_0 (LC)", MapResources::LambdaCrypts_Zone_4_0));
+		mapList.push_back(this->buildDebugButton("Zone_3_3 (LC)", MapResources::LambdaCrypts_Zone_3_3));
+		mapList.push_back(this->buildDebugButton("Zone_3_2 (LC)", MapResources::LambdaCrypts_Zone_3_2));
 		mapList.push_back(this->buildDebugButton("Zone_3_1 (LC)", MapResources::LambdaCrypts_Zone_3_1));
 		mapList.push_back(this->buildDebugButton("Zone_3_0 (LC)", MapResources::LambdaCrypts_Zone_3_0));
 		mapList.push_back(this->buildDebugButton("Zone_2_2 (LC)", MapResources::LambdaCrypts_Zone_2_2));
@@ -444,9 +446,9 @@ DeveloperScene::DeveloperScene()
 		// ** Needs animals
 		// Progression reworked a bit, 2_x => 1_x => town (key 1) => 3_x (key 2) => 4x (key 3) => boss crypt
 		//	- town key (rusty?), bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x	
-		// ** 2_x assassin, fiend, mystic (evil-eye, left crypt / hole / dirt env, orb 1)	
+		// ** 2_x assassin, fiend, mystic (evil-eye, left crypt / hole / dirt env)	
 		// ** 1_x overworld enemies (zombie, pig, undead)
-		// ** 3_x warlock, hunter, knight (right crypt)
+		// ** 3_x warlock, hunter, knight -- 3x gems to rez lazarus
 		// ** 3_x Lazarus - Rez or self rez?
 		// ** 4_x cleaver, knight, priestess (central crypt)
 		// ** 4_x King Zul
