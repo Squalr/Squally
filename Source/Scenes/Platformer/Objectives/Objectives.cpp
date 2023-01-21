@@ -143,6 +143,7 @@ void Objectives::InitMap()
 	priority = 400;
 
 	// LC
+	Objectives::ObjectiveMap[ObjectiveKeys::LCFindGems] =  Objective([](){ return Strings::TODO::create(); }, priority++);
 
 	priority = 500;
 

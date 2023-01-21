@@ -747,19 +747,19 @@
   <object id="1152" name="portal" type="object" x="658.488" y="1422.68" width="256" height="256">
    <properties>
     <property name="map" value="LambdaCrypts/Zone_3_1"/>
-    <property name="transition" value="left"/>
+    <property name="transition" value="left-room"/>
    </properties>
   </object>
   <object id="1355" name="portal" type="object" x="3664.51" y="1425.13" width="256" height="256">
    <properties>
     <property name="map" value="LambdaCrypts/Zone_3_2"/>
-    <property name="transition" value="middle"/>
+    <property name="transition" value="middle-room"/>
    </properties>
   </object>
   <object id="1465" name="portal" type="object" x="7030.47" y="1428.25" width="256" height="256">
    <properties>
     <property name="map" value="LambdaCrypts/Zone_3_3"/>
-    <property name="transition" value="right"/>
+    <property name="transition" value="right-room"/>
    </properties>
   </object>
  </objectgroup>
@@ -779,17 +779,12 @@
   </object>
   <object id="1151" name="spawn" type="object" x="725.718" y="1549.3" width="128" height="128">
    <properties>
-    <property name="transition" value="left"/>
+    <property name="transition" value="left-room"/>
    </properties>
   </object>
   <object id="1357" name="spawn" type="object" x="3731.74" y="1551.75" width="128" height="128">
    <properties>
-    <property name="transition" value="middle"/>
-   </properties>
-  </object>
-  <object id="1358" name="spawn" type="object" x="8024.54" y="1533.86" width="128" height="128">
-   <properties>
-    <property name="transition" value="left"/>
+    <property name="transition" value="middle-room"/>
    </properties>
   </object>
   <object id="1359" name="warp" type="object" x="6167.59" y="1405.3" width="256" height="256">
@@ -808,7 +803,7 @@
   </object>
   <object id="1467" name="spawn" type="object" x="7096.32" y="1558.33" width="128" height="128">
    <properties>
-    <property name="transition" value="right"/>
+    <property name="transition" value="right-room"/>
    </properties>
   </object>
  </objectgroup>
@@ -1807,7 +1802,7 @@
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
-  <object id="1289" name="knight" type="entity" x="4486.19" y="1553.92" width="128" height="128">
+  <object id="1289" name="bone-knight" type="entity" x="4486.19" y="1553.92" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
@@ -1823,7 +1818,7 @@
     <property name="scale" type="float" value="0.75"/>
    </properties>
   </object>
-  <object id="1291" name="knight" type="entity" x="4488.75" y="1180.18" width="128" height="128">
+  <object id="1291" name="bone-knight" type="entity" x="4488.75" y="1180.18" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>

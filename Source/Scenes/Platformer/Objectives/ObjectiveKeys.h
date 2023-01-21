@@ -58,4 +58,6 @@ public:
 	static const std::string CVExploreSecretTunnel;
 	static const std::string CVDefeatAgnes;
 	static const std::string CVEnterLambdaCrypts;
+
+	static const std::string LCFindGems;
 };

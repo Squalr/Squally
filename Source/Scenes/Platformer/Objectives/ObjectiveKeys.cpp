@@ -53,3 +53,6 @@ const std::string ObjectiveKeys::CVTakeArcaneBook = "CV_TAKE_ARCANE_BOOK";
 const std::string ObjectiveKeys::CVExploreSecretTunnel = "CV_EXPLORE_SECRET_TUNNEL";
 const std::string ObjectiveKeys::CVDefeatAgnes = "CV_DEFEAT_AGNES";
 const std::string ObjectiveKeys::CVEnterLambdaCrypts = "CV_ENTER_LAMBDA_CRYPTS";
+
+const std::string ObjectiveKeys::LCFindGems = "LC_FIND_GEMS";
+
