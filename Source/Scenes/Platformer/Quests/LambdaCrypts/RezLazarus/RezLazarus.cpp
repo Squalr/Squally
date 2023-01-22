@@ -35,7 +35,10 @@
 using namespace cocos2d;
 
 const std::string RezLazarus::MapKeyQuest = "rez-lazaus";
-const std::string RezLazarus::WheelFoundCount = "SAVE_KEY_GEMS_FOUND";
+const std::string RezLazarus::TurnedInGemCount = "SAVE_KEY_GEM_TURNED_IN_COUNT";
+const std::string RezLazarus::GemTurnedInRed = "SAVE_KEY_GEM_TURNED_IN_RED";
+const std::string RezLazarus::GemTurnedInPurple = "SAVE_KEY_GEM_TURNED_IN_PURPLE";
+const std::string RezLazarus::GemTurnedInBlue = "SAVE_KEY_GEM_TURNED_IN_BLUE";
 
 RezLazarus* RezLazarus::create(GameObject* owner, QuestLine* questLine)
 {
@@ -49,12 +52,8 @@ RezLazarus* RezLazarus::create(GameObject* owner, QuestLine* questLine)
 RezLazarus::RezLazarus(GameObject* owner, QuestLine* questLine) : super(owner, questLine, RezLazarus::MapKeyQuest, false)
 {
 	this->repairInteract = InteractObject::create(InteractObject::InteractType::Input, CSize(512.0f, 288.0f));
-	this->impactSound = Sound::create(SoundResources::Platformer_Objects_Misc_BowlingStrike1);
-	this->rollSound = WorldSound::create(SoundResources::Platformer_Objects_Machines_RollLoop1);
 
 	this->addChild(this->repairInteract);
-	this->addChild(this->impactSound);
-	this->addChild(this->rollSound);
 }
 
 RezLazarus::~RezLazarus()
@@ -77,28 +76,26 @@ void RezLazarus::onLoad(QuestState questState)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
-
-	ObjectEvents::WatchForObject<Ram>(this, [=](Ram* ram)
+	
+	ObjectEvents::WatchForObject<GameObject>(this, [=](GameObject* displayGemRed)
 	{
-		this->ram = ram;
+		this->displayGemRed = displayGemRed;
+	}, "gem-red");
+	
+	ObjectEvents::WatchForObject<GameObject>(this, [=](GameObject* displayGemPurple)
+	{
+		this->displayGemPurple = displayGemPurple;
+	}, "gem-purple");
+	
+	ObjectEvents::WatchForObject<GameObject>(this, [=](GameObject* displayGemBlue)
+	{
+		this->displayGemBlue = displayGemBlue;
+	}, "gem-blue");
 
-		if (questState == QuestState::Complete)
-		{
-			this->ram->setVisible(false);
-			this->repairInteract->disable();
-		}
-		else
-		{
-			this->defer([=]()
-			{
-				this->wheel1 = this->ram->getAnimations()->getAnimationPart("wheel_1");
-				this->wheel2 = this->ram->getAnimations()->getAnimationPart("wheel_2");
-				this->wheel3 = this->ram->getAnimations()->getAnimationPart("wheel_3");
-
-				this->refreshWheels();
-			});
-		}
-	}, Ram::MapKey);
+	this->defer([=]()
+	{
+		this->refreshGems();
+	}, 2);
 
 	this->repairInteract->setInteractCallback([=]()
 	{
@@ -146,52 +143,54 @@ void RezLazarus::onRamInteract()
 		return;
 	}
 
-	std::vector<RamWheel*> ramWheels = this->inventory->getItemsOfType<RamWheel>();
-	int wheelFoundCount = this->getQuestSaveStateOrDefault(RezLazarus::WheelFoundCount, Value(0)).asInt();
+	Key* redGem = this->inventory->getItemOfType<MayanGemRedItem>();
+	Key* blueGem = this->inventory->getItemOfType<MayanGemBlueItem>();
+	Key* purpleGem = this->inventory->getItemOfType<MayanGemPurpleItem>();
+
+	int turnedInGemCountOriginal = this->getQuestSaveStateOrDefault(RezLazarus::TurnedInGemCount, Value(0)).asInt();
+	int turnedInGemCount = turnedInGemCountOriginal;
 	
-	if (!ramWheels.empty())
+	if (redGem != nullptr)
 	{
-		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(ramWheels.back()));
-
-		for (auto next : ramWheels)
-		{
-			inventory->tryRemove(next);
-		}
-
-		wheelFoundCount += ramWheels.size();
-		this->saveQuestSaveState(RezLazarus::WheelFoundCount, Value(wheelFoundCount));
+		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(redGem));
+		inventory->tryRemove(redGem);
+		turnedInGemCount++;
+		this->saveQuestSaveState(RezLazarus::GemTurnedInRed, Value(true));
 	}
-	else if (wheelFoundCount < 3)
+	else if (blueGem != nullptr)
+	{
+		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(blueGem));
+		inventory->tryRemove(blueGem);
+		turnedInGemCount++;
+		this->saveQuestSaveState(RezLazarus::GemTurnedInBlue, Value(true));
+	}
+	else if (purpleGem != nullptr)
+	{
+		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(purpleGem));
+		inventory->tryRemove(purpleGem);
+		turnedInGemCount++;
+		this->saveQuestSaveState(RezLazarus::GemTurnedInPurple, Value(true));
+	}
+
+	if (turnedInGemCount != turnedInGemCountOriginal)
+	{
+		this->saveQuestSaveState(RezLazarus::TurnedInGemCount, Value(turnedInGemCount));
+		this->refreshGems();
+	}
+	
+	if (turnedInGemCount < 3)
 	{
 		this->runDialogue();
+
+		if (turnedInGemCount != turnedInGemCountOriginal)
+		{
+			return;
+		}
 	}
 
-	this->refreshWheels();
-
-	if (wheelFoundCount >= 3)
+	if (turnedInGemCount >= 3)
 	{
-		this->runAction(Sequence::create(
-			DelayTime::create(1.5f),
-			CallFunc::create([=]()
-			{
-				this->rollSound->play(true);
-				this->ram->getCollision()->setAccelerationX(-12800.0f);
-				this->ram->getAnimations()->clearAnimationPriority();
-				this->ram->getAnimations()->playAnimation("Run", SmartAnimationNode::AnimationPlayMode::Repeat);
-			}),
-			DelayTime::create(2.5f),
-			CallFunc::create([=]()
-			{
-				this->rollSound->stopAndFadeOut();
-
-				// Disabled -- play on the next scene instead
-				// this->impactSound->play();
-			}),
-			nullptr
-		));
-
 		this->wasActivated = true;
-
 		this->complete();
 	}
 	else
@@ -200,47 +199,25 @@ void RezLazarus::onRamInteract()
 	}
 }
 
-void RezLazarus::refreshWheels()
+void RezLazarus::refreshGems()
 {
-	int wheelFoundCount = this->getQuestSaveStateOrDefault(RezLazarus::WheelFoundCount, Value(0)).asInt();
-	bool wheel1Found = wheelFoundCount >= 1;
-	bool wheel2Found = wheelFoundCount >= 2;
-	bool wheel3Found = wheelFoundCount >= 3;
+	bool redGemFound = this->getQuestSaveStateOrDefault(RezLazarus::GemTurnedInRed, Value(false)).asBool();
+	bool blueGemFound = this->getQuestSaveStateOrDefault(RezLazarus::GemTurnedInBlue, Value(false)).asBool();
+	bool purpleGemFound = this->getQuestSaveStateOrDefault(RezLazarus::GemTurnedInPurple, Value(false)).asBool();
 
-	if (this->wheel1 != nullptr)
+	if (this->displayGemRed != nullptr)
 	{
-		if (wheel1Found)
-		{
-			this->wheel1->restoreSprite();
-		}
-		else
-		{
-			this->wheel1->replaceSprite(UIResources::EmptyImage);
-		}
+		this->displayGemRed->runAction(FadeTo::create(0.5f, redGemFound ? 255 : 0));
 	}
 
-	if (this->wheel2 != nullptr)
+	if (this->displayGemBlue != nullptr)
 	{
-		if (wheel2Found)
-		{
-			this->wheel2->restoreSprite();
-		}
-		else
-		{
-			this->wheel2->replaceSprite(UIResources::EmptyImage);
-		}
+		this->displayGemBlue->runAction(FadeTo::create(0.5f, blueGemFound ? 255 : 0));
 	}
 
-	if (this->wheel3 != nullptr)
+	if (this->displayGemPurple != nullptr)
 	{
-		if (wheel3Found)
-		{
-			this->wheel3->restoreSprite();
-		}
-		else
-		{
-			this->wheel3->replaceSprite(UIResources::EmptyImage);
-		}
+		this->displayGemPurple->runAction(FadeTo::create(0.5f, purpleGemFound ? 255 : 0));
 	}
 }
 

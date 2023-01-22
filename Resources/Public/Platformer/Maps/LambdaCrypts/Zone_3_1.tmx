@@ -833,7 +833,7 @@
   </object>
   <object id="1156" name="edge-portal" type="object" x="4939.9" y="1037.74" width="199.918" height="640.851">
    <properties>
-    <property name="direction" value="left"/>
+    <property name="direction" value="right"/>
     <property name="map" value="LambdaCrypts/Zone_3_0"/>
     <property name="transition" value="left-room"/>
    </properties>

@@ -482,7 +482,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="895" name="stone-dark" type="terrain" x="-425.577" y="1681.16" width="5587.15" height="931.689">
+  <object id="895" name="stone-dark" type="terrain" x="-425.577" y="1681.16" width="6448.89" height="931.689">
    <properties>
     <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>

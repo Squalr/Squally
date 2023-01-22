@@ -6,7 +6,6 @@ class AnimationPart;
 class InteractObject;
 class Inventory;
 class QuestLine;
-class Ram;
 class Scrappy;
 class Squally;
 class Sound;
@@ -32,17 +31,14 @@ private:
 	typedef QuestTask super;
 
 	void runDialogue();
-	void refreshWheels();
+	void refreshGems();
 	void onRamInteract();
 	void runCinematicSequence();
 
-	Ram* ram = nullptr;
 	InteractObject* repairInteract = nullptr;
-	AnimationPart* wheel1 = nullptr;
-	AnimationPart* wheel2 = nullptr;
-	AnimationPart* wheel3 = nullptr;
-	Sound* impactSound = nullptr;
-	WorldSound* rollSound = nullptr;
+	GameObject* displayGemRed = nullptr;
+	GameObject* displayGemPurple = nullptr;
+	GameObject* displayGemBlue = nullptr;
 
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
@@ -50,5 +46,8 @@ private:
 
 	bool wasActivated = false;
 
-	static const std::string WheelFoundCount;
+	static const std::string TurnedInGemCount;
+	static const std::string GemTurnedInRed;
+	static const std::string GemTurnedInPurple;
+	static const std::string GemTurnedInBlue;
 };

@@ -1,7 +1,7 @@
 #include "OpenCryptLine.h"
 
 #include "Engine/Quests/QuestTask.h"
-#include "Scenes/Platformer/Quests/LambdaCrypts/OpenCryptLine/EnterCrypts.h"
+#include "Scenes/Platformer/Quests/LambdaCrypts/OpenCrypt/EnterCrypts.h"
 
 using namespace cocos2d;
 
