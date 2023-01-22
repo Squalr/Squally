@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="64" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1474">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="64" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1476">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -12,7 +12,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="73" name="terrain -12" visible="0">
+ <objectgroup id="73" name="terrain -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
@@ -35,7 +35,7 @@
   <object id="1415" name="torch" type="object" x="7631.99" y="1337.69" width="42" height="130"/>
   <object id="1416" name="torch" type="object" x="6703.31" y="1337.69" width="42" height="130"/>
  </objectgroup>
- <objectgroup id="74" name="terrain -10" visible="0">
+ <objectgroup id="74" name="terrain -10">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
@@ -509,13 +509,13 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="58" name="terrain -8" visible="0">
+ <objectgroup id="58" name="terrain -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="72" name="holes bg" visible="0">
+ <objectgroup id="72" name="holes bg">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -659,7 +659,7 @@
    <polygon points="226.318,5.79374 235.938,1749.71 7284.6,1758.14 7271.21,15.2144 7906.82,16.349 7915.93,2678.16 -283.786,2665.12 -289.684,8.96591"/>
   </object>
  </objectgroup>
- <objectgroup id="69" name="terrain -8" visible="0">
+ <objectgroup id="69" name="terrain -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -829,7 +829,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="61" name="terrain -6" visible="0">
+ <objectgroup id="61" name="terrain -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -1083,7 +1083,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="60" name="terrain -4" visible="0">
+ <objectgroup id="60" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -1163,7 +1163,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="59" name="terrain -2" visible="0">
+ <objectgroup id="59" name="terrain -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -1178,7 +1178,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="66" name="holes" visible="0">
+ <objectgroup id="66" name="holes">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -1633,7 +1633,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="68" name="terrain bg" visible="0">
+ <objectgroup id="68" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -1651,7 +1651,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="82" name="decor bg" visible="0">
+ <objectgroup id="82" name="decor bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -1759,32 +1759,29 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="1471" name="LambdaCrypts/GemBlue" type="decor" x="3431.58" y="1768.62" width="74" height="76">
+  <object id="1471" name="Generic/GemBlue" type="decor" x="3431.58" y="1768.62" width="74" height="76">
    <properties>
-    <property name="components" value="z-fade"/>
     <property name="tag" value="gem-blue"/>
    </properties>
   </object>
-  <object id="1472" name="LambdaCrypts/GemPurple" type="decor" x="3745.15" y="1777.43" width="70" height="71">
+  <object id="1472" name="Generic/GemPurple" type="decor" x="3745.15" y="1777.43" width="70" height="71">
    <properties>
-    <property name="components" value="z-fade"/>
     <property name="tag" value="gem-purple"/>
    </properties>
   </object>
-  <object id="1473" name="LambdaCrypts/GemRed" type="decor" x="4068.9" y="1783.48" width="72" height="76">
+  <object id="1473" name="Generic/GemRed" type="decor" x="4068.9" y="1783.48" width="72" height="76">
    <properties>
-    <property name="components" value="z-fade"/>
     <property name="tag" value="gem-red"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="57" name="objects back" visible="0">
+ <objectgroup id="57" name="objects back">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -1803,7 +1800,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="42" name="no hack objects" visible="0">
+ <objectgroup id="42" name="no hack objects">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -1844,7 +1841,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="25" name="player_layer" visible="0">
+ <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -1902,7 +1899,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="83" name="bridge +1" visible="0">
+ <objectgroup id="83" name="bridge +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
@@ -1918,7 +1915,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="84" name="bridge +2" visible="0">
+ <objectgroup id="84" name="bridge +2">
   <properties>
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
@@ -1934,7 +1931,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="85" name="bridge +3" visible="0">
+ <objectgroup id="85" name="bridge +3">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
@@ -1950,14 +1947,14 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="86" name="bridge +4" visible="0">
+ <objectgroup id="86" name="bridge +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1427" name="stone-dark" type="terrain" x="2499.13" y="2008.07" width="2630.64" height="737.817"/>
  </objectgroup>
- <objectgroup id="91" name="decor +4" visible="0">
+ <objectgroup id="91" name="decor +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
@@ -2040,14 +2037,14 @@
   </properties>
   <object id="1450" name="solid" type="collision" x="2324.82" y="-740.731" width="171.617" height="3839.68"/>
   <object id="1451" name="solid" type="collision" x="5133.69" y="-778.952" width="171.617" height="3839.68"/>
-  <object id="1470" name="cinemati-marker" type="object" x="3651.12" y="1793.33" width="256" height="256">
+  <object id="1470" name="cinematic-marker" type="object" x="3651.12" y="1793.33" width="256" height="256">
    <properties>
     <property name="quest" value="rez-lazarus"/>
     <property name="quest-line" value="rez-lazarus"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="87" name="bridge +5" visible="0">
+ <objectgroup id="87" name="bridge +5">
   <properties>
    <property name="depth" type="float" value="320"/>
    <property name="type" value="objects"/>
@@ -2063,7 +2060,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="88" name="bridge +6" visible="0">
+ <objectgroup id="88" name="bridge +6">
   <properties>
    <property name="depth" type="float" value="384"/>
    <property name="type" value="objects"/>
@@ -2079,14 +2076,14 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="89" name="bridge +7" visible="0">
+ <objectgroup id="89" name="bridge +7">
   <properties>
    <property name="depth" type="float" value="448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1430" name="stone-dark" type="terrain" x="3081.08" y="2199.65" width="1460.44" height="737.817"/>
+  <object id="1430" name="stone-dark" type="terrain" x="2915.69" y="2199.65" width="1812.43" height="737.817"/>
  </objectgroup>
- <objectgroup id="94" name="player_layer +7" visible="0">
+ <objectgroup id="94" name="player_layer +7">
   <properties>
    <property name="depth" type="float" value="448"/>
    <property name="is-hackable" type="bool" value="true"/>
@@ -2111,7 +2108,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="96" name="decor midground +7" visible="0">
+ <objectgroup id="96" name="decor midground +7">
   <properties>
    <property name="depth" type="float" value="448"/>
    <property name="type" value="objects"/>
@@ -2127,13 +2124,23 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="95" name="objects +7" visible="0">
+ <objectgroup id="95" name="objects +7">
   <properties>
    <property name="depth" type="float" value="448"/>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1452" name="solid" type="collision" x="2908.07" y="-725.353" width="171.617" height="3839.68"/>
-  <object id="1453" name="solid" type="collision" x="4550.31" y="-710.039" width="171.617" height="3839.68"/>
+  <object id="1452" name="solid" type="collision" x="2745.62" y="-707.302" width="171.617" height="3839.68"/>
+  <object id="1453" name="solid" type="collision" x="4728.56" y="-714.552" width="171.617" height="3839.68"/>
+  <object id="1474" name="logic-torch" type="object" x="2990.59" y="2137.31" width="64" height="64">
+   <properties>
+    <property name="color" value="blue"/>
+   </properties>
+  </object>
+  <object id="1475" name="logic-torch" type="object" x="4600.22" y="2138.58" width="64" height="64">
+   <properties>
+    <property name="color" value="blue"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

@@ -34,7 +34,7 @@
 
 using namespace cocos2d;
 
-const std::string RezLazarus::MapKeyQuest = "rez-lazaus";
+const std::string RezLazarus::MapKeyQuest = "rez-lazarus";
 const std::string RezLazarus::TurnedInGemCount = "SAVE_KEY_GEM_TURNED_IN_COUNT";
 const std::string RezLazarus::GemTurnedInRed = "SAVE_KEY_GEM_TURNED_IN_RED";
 const std::string RezLazarus::GemTurnedInPurple = "SAVE_KEY_GEM_TURNED_IN_PURPLE";

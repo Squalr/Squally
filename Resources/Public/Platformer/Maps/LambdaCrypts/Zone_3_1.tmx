@@ -651,7 +651,7 @@
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="962" name="Crypts/Skull1" type="decor" x="2724.18" y="1446.84" width="66" height="44">
+  <object id="962" name="Crypts/Skull1" type="decor" x="2728.49" y="1370.25" width="66" height="44">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
@@ -664,7 +664,7 @@
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="966" name="Crypts/Skull1" type="decor" x="2446.78" y="1327.65" width="66" height="44">
+  <object id="966" name="Crypts/Skull1" type="decor" x="2234.24" y="1336.89" width="66" height="44">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
