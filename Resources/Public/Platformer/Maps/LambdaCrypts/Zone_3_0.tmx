@@ -2172,7 +2172,7 @@
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-f"/>
     <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="lc-generic"/>
+    <property name="drop-pool" value="lc-lazarus"/>
    </properties>
   </object>
   <object id="1481" name="bone-knight" type="entity" x="3625.28" y="1733.13" width="128" height="128">

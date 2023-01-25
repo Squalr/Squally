@@ -40,16 +40,13 @@ DropPoolDeserializer::DropPoolDeserializer() : super(DropPoolDeserializer::MapKe
 	this->deserializers[DropPoolDMGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolDMGeneric::create(properties); };
 	this->deserializers[DropPoolDMWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolDMWeak::create(properties); };
 
-	// DM
-	this->deserializers[DropPoolDMGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolDMGeneric::create(properties); };
-	this->deserializers[DropPoolDMWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolDMWeak::create(properties); };
-
 	// CV
 	this->deserializers[DropPoolCVGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolCVGeneric::create(properties); };
 	this->deserializers[DropPoolCVWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolCVWeak::create(properties); };
 
 	// LC
 	this->deserializers[DropPoolLCGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolLCGeneric::create(properties); };
+	this->deserializers[DropPoolLCLazarus::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolLCLazarus::create(properties); };
 	this->deserializers[DropPoolLCWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolLCWeak::create(properties); };
 
 	// DH
