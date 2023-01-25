@@ -1276,7 +1276,7 @@
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-b"/>
     <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ur-generic"/>
+    <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>
   <object id="992" name="bone-knight" type="entity" x="4461.91" y="1292.6" width="128" height="128">

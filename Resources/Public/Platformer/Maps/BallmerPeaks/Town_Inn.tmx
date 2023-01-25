@@ -108,12 +108,12 @@
   </object>
   <object id="837" name="chest" type="object" x="1580" y="720" width="128" height="128">
    <properties>
-    <property name="reward-pool" value="dm-generic"/>
+    <property name="reward-pool" value="bp-generic"/>
    </properties>
   </object>
   <object id="838" name="chest" type="object" x="818" y="722" width="128" height="128">
    <properties>
-    <property name="reward-pool" value="dm-generic"/>
+    <property name="reward-pool" value="bp-generic"/>
    </properties>
   </object>
   <object id="839" name="shop-item" type="object" x="1190.84" y="1308.42" width="64" height="64">

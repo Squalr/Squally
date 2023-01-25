@@ -418,7 +418,7 @@
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,agro,z-fade"/>
-    <property name="drop-pool" value="dm-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="1866" name="lava-golem" type="entity" x="3507.58" y="1635.63" width="128" height="128">

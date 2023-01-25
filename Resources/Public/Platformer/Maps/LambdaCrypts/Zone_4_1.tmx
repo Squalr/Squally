@@ -783,7 +783,7 @@
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-b"/>
     <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ur-generic"/>
+    <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>
   <object id="992" name="skeletal-knight" type="entity" x="3346.79" y="1303.14" width="128" height="128">

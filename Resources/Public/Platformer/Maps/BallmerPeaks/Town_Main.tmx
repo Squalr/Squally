@@ -624,7 +624,7 @@
    <properties>
     <property name="event" value="open-cipher"/>
     <property name="inputs-easy" value="s,w,a,g"/>
-    <property name="reward-pool" value="ef-generic"/>
+    <property name="reward-pool" value="bp-generic"/>
     <property name="rule-easy" value="{i}"/>
     <property name="tokens-easy" value=""/>
    </properties>

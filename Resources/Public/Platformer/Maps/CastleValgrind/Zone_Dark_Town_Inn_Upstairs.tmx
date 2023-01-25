@@ -215,7 +215,7 @@
   </object>
   <object id="794" name="chest" type="object" x="231.273" y="939.03" width="128" height="128">
    <properties>
-    <property name="reward-pool" value="ur-generic"/>
+    <property name="reward-pool" value="cv-generic"/>
    </properties>
   </object>
   <object id="797" name="caged-pig" type="object" x="1877.09" y="950.97" width="196" height="112"/>

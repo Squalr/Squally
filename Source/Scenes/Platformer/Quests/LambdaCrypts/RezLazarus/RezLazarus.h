@@ -5,10 +5,12 @@
 class AnimationPart;
 class InteractObject;
 class Inventory;
+class Lazarus;
 class QuestLine;
 class Scrappy;
 class Squally;
 class Sound;
+class Warp;
 class WorldSound;
 
 class RezLazarus : public QuestTask
@@ -40,8 +42,11 @@ private:
 	GameObject* displayGemPurple = nullptr;
 	GameObject* displayGemBlue = nullptr;
 
+	std::vector<Warp*> lazarusWarps;
+
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
+	Lazarus* lazarus = nullptr;
 	Inventory* inventory = nullptr;
 
 	bool wasActivated = false;

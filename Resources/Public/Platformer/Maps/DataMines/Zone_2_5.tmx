@@ -252,7 +252,7 @@
    <properties>
     <property name="components" value="friendly"/>
     <property name="flip-x" type="bool" value="true"/>
-    <property name="pocket-pool" value="ur-generic"/>
+    <property name="pocket-pool" value="dm-generic"/>
     <property name="quest" value="boat-unlocked"/>
     <property name="quest-line" value="boat-to-daemons"/>
    </properties>

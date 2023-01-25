@@ -410,7 +410,7 @@
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-b"/>
     <property name="components" value="enemy,agro,z-fade"/>
-    <property name="drop-pool" value="dm-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="1962" name="fire-elemental" type="entity" x="1270.01" y="1802.08" width="128" height="128">

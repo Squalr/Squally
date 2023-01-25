@@ -413,7 +413,7 @@
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-c"/>
     <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ur-generic"/>
+    <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>
   <object id="1150" name="mystic" type="entity" x="4502.02" y="1175.61" width="128" height="128">
@@ -1047,7 +1047,7 @@
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ur-generic"/>
+    <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>
   <object id="990" name="bone-fiend" type="entity" x="2132.28" y="1197.13" width="128" height="128">
@@ -1063,7 +1063,7 @@
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ur-generic"/>
+    <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>
  </objectgroup>

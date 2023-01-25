@@ -325,7 +325,7 @@
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-c"/>
     <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="bp-generic"/>
    </properties>
   </object>
   <object id="929" name="penguin-grunt" type="entity" x="7665.27" y="1596.57" width="128" height="128">
@@ -341,7 +341,7 @@
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-b"/>
     <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="bp-generic"/>
    </properties>
   </object>
   <object id="980" name="penguin-warrior" type="entity" x="7261.27" y="1582.83" width="128" height="128">

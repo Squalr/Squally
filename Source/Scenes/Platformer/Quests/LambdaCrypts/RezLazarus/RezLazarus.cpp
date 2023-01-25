@@ -14,10 +14,12 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/Sound.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/Lazarus.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Interactables/Doors/Warp.h"
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
 #include "Objects/Platformer/Interactables/InteractObject.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
@@ -77,6 +79,34 @@ void RezLazarus::onLoad(QuestState questState)
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 	
+	ObjectEvents::WatchForObject<Warp>(this, [=](Warp* warp)
+	{
+		if (questState != QuestState::Complete)
+		{
+			warp->disable();
+			this->lazarusWarps.push_back(warp);
+		}
+	}, "lazarus-portal-a");
+	
+	ObjectEvents::WatchForObject<Warp>(this, [=](Warp* warp)
+	{
+		if (questState != QuestState::Complete)
+		{
+			warp->disable();
+			this->lazarusWarps.push_back(warp);
+		}
+	}, "lazarus-portal-b");
+	
+	ObjectEvents::WatchForObject<Lazarus>(this, [=](Lazarus* lazarus)
+	{
+		this->lazarus = lazarus;
+
+		if (questState != QuestState::Complete)
+		{
+			this->lazarus->setOpacity(0);
+		}
+	}, Lazarus::MapKey);
+	
 	ObjectEvents::WatchForObject<GameObject>(this, [=](GameObject* displayGemRed)
 	{
 		this->displayGemRed = displayGemRed;
@@ -111,7 +141,10 @@ void RezLazarus::onActivate(bool isActiveThroughSkippable)
 
 void RezLazarus::onComplete()
 {
-	Objectives::SetCurrentObjective(ObjectiveKeys::EFConfrontCommander);
+	for (Warp* warp : this->lazarusWarps)
+	{
+		warp->enable();
+	}
 }
 
 void RezLazarus::onSkipped()
@@ -149,6 +182,8 @@ void RezLazarus::onRamInteract()
 
 	int turnedInGemCountOriginal = this->getQuestSaveStateOrDefault(RezLazarus::TurnedInGemCount, Value(0)).asInt();
 	int turnedInGemCount = turnedInGemCountOriginal;
+
+	Objectives::SetCurrentObjective(ObjectiveKeys::LCFindGems);
 	
 	if (redGem != nullptr)
 	{
@@ -157,14 +192,14 @@ void RezLazarus::onRamInteract()
 		turnedInGemCount++;
 		this->saveQuestSaveState(RezLazarus::GemTurnedInRed, Value(true));
 	}
-	else if (blueGem != nullptr)
+	if (blueGem != nullptr)
 	{
 		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(blueGem));
 		inventory->tryRemove(blueGem);
 		turnedInGemCount++;
 		this->saveQuestSaveState(RezLazarus::GemTurnedInBlue, Value(true));
 	}
-	else if (purpleGem != nullptr)
+	if (purpleGem != nullptr)
 	{
 		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(purpleGem));
 		inventory->tryRemove(purpleGem);
@@ -187,15 +222,10 @@ void RezLazarus::onRamInteract()
 			return;
 		}
 	}
-
-	if (turnedInGemCount >= 3)
+	else
 	{
 		this->wasActivated = true;
 		this->complete();
-	}
-	else
-	{
-		Objectives::SetCurrentObjective(ObjectiveKeys::LCFindGems);
 	}
 }
 

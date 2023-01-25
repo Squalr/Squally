@@ -42,7 +42,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
  </objectgroup>
@@ -157,7 +157,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="991" name="demon-warrior" type="entity" x="2074.86" y="2133.47" width="128" height="128">
@@ -166,7 +166,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="992" name="demon-archer" type="entity" x="2560.37" y="2128.76" width="128" height="128">
@@ -175,7 +175,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="993" name="demon-rogue" type="entity" x="1723.7" y="2124.05" width="128" height="128">
@@ -184,7 +184,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="994" name="demon-shaman" type="entity" x="2869.11" y="2128.76" width="128" height="128">
@@ -193,7 +193,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="995" name="fire-tiger" type="entity" x="1480.94" y="2133.47" width="128" height="128">
@@ -202,7 +202,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="996" name="fire-tiger" type="entity" x="3123.65" y="2131.12" width="128" height="128">
@@ -211,7 +211,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
  </objectgroup>
@@ -257,7 +257,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="1002" name="demon-archer" type="entity" x="1602.17" y="2144.76" width="128" height="128">
@@ -266,7 +266,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="1003" name="demon-rogue" type="entity" x="1820.3" y="2140.05" width="128" height="128">
@@ -275,7 +275,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="1004" name="demon-shaman" type="entity" x="2965.71" y="2144.76" width="128" height="128">
@@ -284,7 +284,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="1005" name="fire-tiger" type="entity" x="2387.24" y="2157.73" width="128" height="128">
@@ -293,7 +293,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="1007" name="demon-rogue" type="entity" x="2657.78" y="2147.51" width="128" height="128">
@@ -302,7 +302,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
  </objectgroup>
@@ -340,7 +340,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="1010" name="demon-archer" type="entity" x="1640.01" y="2169.02" width="128" height="128">
@@ -349,7 +349,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="1011" name="demon-rogue" type="entity" x="2238.21" y="2169.02" width="128" height="128">
@@ -358,7 +358,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="1012" name="demon-shaman" type="entity" x="2028.62" y="2169.02" width="128" height="128">
@@ -367,7 +367,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="1015" name="demon-warrior" type="entity" x="2789.98" y="2169.02" width="128" height="128">
@@ -376,7 +376,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
   <object id="1017" name="demon-shaman" type="entity" x="2974.5" y="2169.02" width="128" height="128">
@@ -385,7 +385,7 @@
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
  </objectgroup>

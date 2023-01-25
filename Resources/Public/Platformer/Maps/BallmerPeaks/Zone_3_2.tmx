@@ -248,7 +248,7 @@
     <property name="battle-map" value="EndianForest/Combat_Temple"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ef-generic"/>
+    <property name="drop-pool" value="bp-generic"/>
    </properties>
   </object>
   <object id="954" name="goblin-elf" type="entity" x="3502.79" y="1659.78" width="128" height="128">

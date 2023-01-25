@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="64" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1476">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="1483">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -712,7 +712,7 @@
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-c"/>
     <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ur-generic"/>
+    <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>
   <object id="1362" name="warlock" type="entity" x="5579.58" y="1116.47" width="128" height="128">
@@ -728,7 +728,7 @@
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ur-generic"/>
+    <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>
   <object id="1469" name="hunter" type="entity" x="2338.41" y="1192.95" width="128" height="128">
@@ -1675,6 +1675,14 @@
    <polygon points="-3776.11,-1541.73 -1911.49,-1544.14 -1043.82,-1712.81 -489.124,-1979.97 8425.18,-1989.26 8449.01,5.605 -3733.1,37.798"/>
   </object>
  </objectgroup>
+ <objectgroup id="97" name="decor midground bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1476" name="Generic/GemHolder" type="decor" x="3421" y="1760" width="96" height="95"/>
+  <object id="1477" name="Generic/GemHolder" type="decor" x="3732" y="1765.5" width="96" height="95"/>
+  <object id="1478" name="Generic/GemHolder" type="decor" x="4056" y="1774.5" width="96" height="95"/>
+ </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
@@ -1823,7 +1831,7 @@
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="ur-generic"/>
+    <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>
   <object id="1290" name="ogre" type="entity" x="6988.35" y="1546.57" width="128" height="128">
@@ -1990,6 +1998,7 @@
     <property name="from" value="bridge-back-E"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
+    <property name="tag" value="lazarus-portal-a"/>
     <property name="to" value="bridge-front-E"/>
    </properties>
   </object>
@@ -1999,6 +2008,7 @@
     <property name="from" value="bridge-back-F"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
+    <property name="tag" value="lazarus-portal-b"/>
     <property name="to" value="bridge-front-F"/>
    </properties>
   </object>
@@ -2024,6 +2034,11 @@
    </properties>
   </object>
   <object id="1440" name="Generic/BlueRug" type="decor" x="4770.24" y="1997.35" width="332" height="21">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
+  <object id="1479" name="Generic/BlueRugDark" type="decor" x="3617" y="1998.5" width="332" height="21">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -2140,6 +2155,31 @@
   <object id="1475" name="logic-torch" type="object" x="4600.22" y="2138.58" width="64" height="64">
    <properties>
     <property name="color" value="blue"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="98" name="entities +7">
+  <object id="1480" name="lazarus" type="entity" x="3774.72" y="2072.87" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
+    <property name="battle-tag" value="group-f"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="lc-generic"/>
+   </properties>
+  </object>
+  <object id="1481" name="bone-knight" type="entity" x="3625.28" y="1733.13" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-f"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="1482" name="bone-knight" type="entity" x="3876" y="1726" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-f"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>
