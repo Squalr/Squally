@@ -186,6 +186,7 @@ namespace MapResources
 	extern const std::string LambdaCrypts_Zone_2_1_a;
 	extern const std::string LambdaCrypts_Zone_2_2;
 	extern const std::string LambdaCrypts_Zone_3_0;
+	extern const std::string LambdaCrypts_Zone_3_0_Dev;
 	extern const std::string LambdaCrypts_Zone_3_1;
 	extern const std::string LambdaCrypts_Zone_3_2;
 	extern const std::string LambdaCrypts_Zone_3_3;

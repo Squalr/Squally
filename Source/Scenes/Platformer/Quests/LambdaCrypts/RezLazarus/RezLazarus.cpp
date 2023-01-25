@@ -127,12 +127,19 @@ void RezLazarus::onLoad(QuestState questState)
 		this->refreshGems();
 	}, 2);
 
-	this->repairInteract->setInteractCallback([=]()
+	if (questState != QuestState::Complete)
 	{
-		this->onRamInteract();
+		this->repairInteract->setInteractCallback([=]()
+		{
+			this->onRamInteract();
 
-		return true;
-	});
+			return true;
+		});
+	}
+	else
+	{
+		this->repairInteract->disable();
+	}
 }
 
 void RezLazarus::onActivate(bool isActiveThroughSkippable)
@@ -144,6 +151,11 @@ void RezLazarus::onComplete()
 	for (Warp* warp : this->lazarusWarps)
 	{
 		warp->enable();
+	}
+
+	if (this->repairInteract != nullptr)
+	{
+		this->repairInteract->disable();
 	}
 }
 
@@ -237,17 +249,17 @@ void RezLazarus::refreshGems()
 
 	if (this->displayGemRed != nullptr)
 	{
-		this->displayGemRed->runAction(FadeTo::create(0.5f, redGemFound ? 255 : 0));
+		this->displayGemRed->runAction(FadeTo::create(redGemFound ? 0.5f : 0.0f, redGemFound ? 255 : 0));
 	}
 
 	if (this->displayGemBlue != nullptr)
 	{
-		this->displayGemBlue->runAction(FadeTo::create(0.5f, blueGemFound ? 255 : 0));
+		this->displayGemBlue->runAction(FadeTo::create(blueGemFound ? 0.5f : 0.0f, blueGemFound ? 255 : 0));
 	}
 
 	if (this->displayGemPurple != nullptr)
 	{
-		this->displayGemPurple->runAction(FadeTo::create(0.5f, purpleGemFound ? 255 : 0));
+		this->displayGemPurple->runAction(FadeTo::create(purpleGemFound ? 0.5f : 0.0f, purpleGemFound ? 255 : 0));
 	}
 }
 

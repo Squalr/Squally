@@ -519,6 +519,10 @@ namespace DecorResources
 	extern const std::string Generic_Flag3;
 	extern const std::string Generic_ForceField;
 	extern const std::string Generic_ForceFieldDome;
+	extern const std::string Generic_GemBlue;
+	extern const std::string Generic_GemHolder;
+	extern const std::string Generic_GemPurple;
+	extern const std::string Generic_GemRed;
 	extern const std::string Generic_GreenCrystal;
 	extern const std::string Generic_GrindStone;
 	extern const std::string Generic_Hammer1;
