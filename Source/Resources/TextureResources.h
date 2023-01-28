@@ -14,6 +14,7 @@ namespace TextureResources
 	extern const std::string BlueGrassTexture;
 	extern const std::string BrickInteriorTexture;
 	extern const std::string CastleTexture;
+	extern const std::string CatacombsTexture;
 	extern const std::string CaveTexture;
 	extern const std::string CavernsTexture;
 	extern const std::string DarkGrassTexture;

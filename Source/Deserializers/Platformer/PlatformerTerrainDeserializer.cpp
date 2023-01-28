@@ -12,6 +12,7 @@
 #include "Scenes/Platformer/Terrain/BlueGrassTerrain.h"
 #include "Scenes/Platformer/Terrain/CastleTerrain.h"
 #include "Scenes/Platformer/Terrain/CavernsTerrain.h"
+#include "Scenes/Platformer/Terrain/CatacombsTerrain.h"
 #include "Scenes/Platformer/Terrain/CaveTerrain.h"
 #include "Scenes/Platformer/Terrain/DarkGrassTerrain.h"
 #include "Scenes/Platformer/Terrain/DryGrassTerrain.h"
@@ -70,6 +71,7 @@ PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(Platforme
 	this->deserializers[ArabicTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)ArabicTerrain::create(properties); };
 	this->deserializers[BlueGrassTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)BlueGrassTerrain::create(properties); };
 	this->deserializers[CastleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)CastleTerrain::create(properties); };
+	this->deserializers[CatacombsTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)CatacombsTerrain::create(properties); };
 	this->deserializers[CavernsTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)CavernsTerrain::create(properties); };
 	this->deserializers[CaveTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)CaveTerrain::create(properties); };
 	this->deserializers[DarkGrassTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)DarkGrassTerrain::create(properties); };

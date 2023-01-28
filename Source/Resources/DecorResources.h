@@ -501,6 +501,7 @@ namespace DecorResources
 	extern const std::string Generic_Bookshelf1;
 	extern const std::string Generic_BookshelfEmpty1;
 	extern const std::string Generic_BookshelfEmptyDark1;
+	extern const std::string Generic_BookshelfGap;
 	extern const std::string Generic_Chains1;
 	extern const std::string Generic_Chandilier1;
 	extern const std::string Generic_ChandilierDark1;

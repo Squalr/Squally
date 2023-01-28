@@ -500,6 +500,7 @@ const std::string DecorResources::Generic_Books1 = "Private/Platformer/Decor/Gen
 const std::string DecorResources::Generic_Bookshelf1 = "Private/Platformer/Decor/Generic/Bookshelf1.png";
 const std::string DecorResources::Generic_BookshelfEmpty1 = "Private/Platformer/Decor/Generic/BookshelfEmpty1.png";
 const std::string DecorResources::Generic_BookshelfEmptyDark1 = "Private/Platformer/Decor/Generic/BookshelfEmptyDark1.png";
+const std::string DecorResources::Generic_BookshelfGap = "Private/Platformer/Decor/Generic/BookshelfGap.png";
 const std::string DecorResources::Generic_Chains1 = "Private/Platformer/Decor/Generic/Chains1.png";
 const std::string DecorResources::Generic_Chandilier1 = "Private/Platformer/Decor/Generic/Chandilier1.png";
 const std::string DecorResources::Generic_ChandilierDark1 = "Private/Platformer/Decor/Generic/ChandilierDark1.png";
