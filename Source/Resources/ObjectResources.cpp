@@ -413,6 +413,7 @@ const std::string ObjectResources::Doors_WoodStronghold_WOOD_G = "Private/Platfo
 const std::string ObjectResources::Interactive_AlchemyLab_AlchemyLab = "Private/Platformer/Objects/Interactive/AlchemyLab/AlchemyLab.png";
 const std::string ObjectResources::Interactive_Anvil_Anvil = "Private/Platformer/Objects/Interactive/Anvil/Anvil.png";
 const std::string ObjectResources::Interactive_Anvil_AnvilHammer = "Private/Platformer/Objects/Interactive/Anvil/AnvilHammer.png";
+const std::string ObjectResources::Interactive_ArcaneBook = "Private/Platformer/Objects/Interactive/ArcaneBook.png";
 const std::string ObjectResources::Interactive_Chests_ChestClosed = "Private/Platformer/Objects/Interactive/Chests/ChestClosed.png";
 const std::string ObjectResources::Interactive_Chests_ChestOpen = "Private/Platformer/Objects/Interactive/Chests/ChestOpen.png";
 const std::string ObjectResources::Interactive_Chests_CipherChestClosed = "Private/Platformer/Objects/Interactive/Chests/CipherChestClosed.png";

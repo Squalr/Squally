@@ -170,6 +170,7 @@ namespace MapResources
 	extern const std::string EndianForest_Zone_3_6;
 	extern const std::string EndianForest_Zone_3_7;
 	extern const std::string EndianForest_Zone_3_Dev;
+	extern const std::string LambdaCrypts_Combat_Crypts;
 	extern const std::string LambdaCrypts_Home_Upstairs;
 	extern const std::string LambdaCrypts_Mages_Warp;
 	extern const std::string LambdaCrypts_Town_Alch;

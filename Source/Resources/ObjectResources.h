@@ -414,6 +414,7 @@ namespace ObjectResources
 	extern const std::string Interactive_AlchemyLab_AlchemyLab;
 	extern const std::string Interactive_Anvil_Anvil;
 	extern const std::string Interactive_Anvil_AnvilHammer;
+	extern const std::string Interactive_ArcaneBook;
 	extern const std::string Interactive_Chests_ChestClosed;
 	extern const std::string Interactive_Chests_ChestOpen;
 	extern const std::string Interactive_Chests_CipherChestClosed;

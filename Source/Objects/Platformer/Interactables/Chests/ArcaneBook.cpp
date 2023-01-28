@@ -28,7 +28,7 @@ ArcaneBook* ArcaneBook::create(ValueMap& properties)
 
 ArcaneBook::ArcaneBook(ValueMap& properties) : super(properties, CSize(128.0f, 112.0f))
 {
-	Sprite* arcaneBookSprite = Sprite::create("TODO");
+	Sprite* arcaneBookSprite = Sprite::create(ObjectResources::Interactive_ArcaneBook);
 
 	this->chestClosed->addChild(arcaneBookSprite);
 }
@@ -49,8 +49,8 @@ void ArcaneBook::onEnter()
 
 bool ArcaneBook::tryOpen()
 {
-	// Instead of giving items, grant the spellbook
-	this->broadcastMapEvent(this->getSendEvent(), ValueMap());
+	this->open(true);
+	
 	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookArcane, Value(true));
 	Objectives::SetCurrentObjective(ObjectiveKeys::CVExploreSecretTunnel);
 	
