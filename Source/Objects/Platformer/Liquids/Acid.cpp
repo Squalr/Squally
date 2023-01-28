@@ -16,8 +16,8 @@
 using namespace cocos2d;
 
 const std::string Acid::MapKey = "acid";
-const Color4B Acid::SurfaceColor = Color4B(224, 224, 0, 255);
-const Color4B Acid::BodyColor = Color4B(212, 12, 12, 240);
+const Color4B Acid::SurfaceColor = Color4B(0, 224, 0, 255);
+const Color4B Acid::BodyColor = Color4B(12, 212, 12, 240);
 const float Acid::AcidGravity = 0.0f;
 const float Acid::BubbleDensityPer1024Px = 1.0f;
 
