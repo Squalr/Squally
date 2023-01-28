@@ -104,6 +104,7 @@
 #include "Objects/Platformer/Interactables/Spawns/CartSpawn.h"
 #include "Objects/Platformer/Interactables/Spawns/PortalSpawn.h"
 #include "Objects/Platformer/Interactables/Spawns/WoodDoorSpawn.h"
+#include "Objects/Platformer/Liquids/Acid.h"
 #include "Objects/Platformer/Liquids/Lava.h"
 #include "Objects/Platformer/Liquids/Water.h"
 #include "Objects/Platformer/MiniMap/MiniMapObject.h"

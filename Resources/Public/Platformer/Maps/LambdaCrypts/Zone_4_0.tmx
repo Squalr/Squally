@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="1154">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="48" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="1154">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -629,7 +629,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="838" name="catacombs" type="terrain" x="-1865.95" y="-583.88" width="8382.8" height="4022.25">
+  <object id="838" name="stone-dark" type="terrain" x="-1865.95" y="-583.88" width="8382.8" height="4022.25">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -682,7 +682,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="782" name="catacombs" type="terrain" x="-1542.82" y="-434.055" width="7878.43" height="4044.9">
+  <object id="782" name="stone-dark" type="terrain" x="-1542.82" y="-434.055" width="7878.43" height="4044.9">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -910,7 +910,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="893" name="catacombs" type="terrain" x="5722.58" y="755.576">
+  <object id="893" name="stone-dark" type="terrain" x="5722.58" y="755.576">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -918,7 +918,7 @@
    </properties>
    <polygon points="-129.285,1298.03 -152.035,650.189 -143.052,-184.124 -120.931,-799.778 119.02,-984.251 712.796,-916.389 909.327,-642.938 918.06,214.697 851.437,885.155 751.19,1335.21 516.295,1394.45 242.216,1380.08"/>
   </object>
-  <object id="1131" name="catacombs" type="terrain" x="-21.2121" y="1824.24">
+  <object id="1131" name="stone-dark" type="terrain" x="-21.2121" y="1824.24">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -929,14 +929,14 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="674" name="catacombs" type="terrain" x="1823.47" y="3680.45">
+  <object id="674" name="stone-dark" type="terrain" x="1823.47" y="3680.45">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
    <polygon points="-2032.69,-1541.73 -1028.96,-1544.14 -561.889,-1712.81 -263.297,-1979.97 4535.3,-1989.26 4548.13,5.605 -2009.54,37.798"/>
   </object>
-  <object id="680" name="catacombs" type="terrain" x="-1140" y="632">
+  <object id="680" name="stone-dark" type="terrain" x="-1140" y="632">
    <polygon points="-123.152,963.273 -413.455,484 -389.026,-137.062 -328.869,-595.354 323.672,-732.675 1938.43,-682.159 2472.89,-478.602 2496.64,159.82 2315.46,658.908 2042.84,993.932 1404.05,1038.03 658.7,1027.33"/>
   </object>
  </objectgroup>

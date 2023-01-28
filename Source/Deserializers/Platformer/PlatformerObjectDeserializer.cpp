@@ -31,6 +31,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[WorldSound::MapKey] = [=](ValueMap properties) { return (GameObject*)WorldSound::create(properties); };
 
 	// Custom objects
+	this->deserializers[Acid::MapKey] = [=](ValueMap properties) { return (GameObject*)Acid::create(properties); };
 	this->deserializers[AddDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)AddDoor::create(properties); };
 	this->deserializers[Airship::MapKey] = [=](ValueMap properties) { return (GameObject*)Airship::create(properties); };
 	this->deserializers[AlchemyLab::MapKey] = [=](ValueMap properties) { return (GameObject*)AlchemyLab::create(properties); };

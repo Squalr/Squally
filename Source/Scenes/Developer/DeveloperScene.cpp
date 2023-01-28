@@ -455,20 +455,20 @@ DeveloperScene::DeveloperScene()
 		// ** 4_x King Zul
 
 		/*
-		- ReanimatedPig			=>  1_x <Piggy, ?>
-		- Zombie				=>  1_x <Zombie[Grasp], ?>
-		- Undead				=>  1_x <DeadGrasp, ?>
-		- Assassin				=>  2_x <ThrowingStar, ?>
-		- BoneFiend				=>  2_x <Daze, ?>
-		- Mystic				=>  2_x <VoodooZombie, ?>
-		- BoneKnight			=>  3_x <?, ?>
-		- Hunter				=>  3_x <Crossbow, ?>
-		- Warlock				=>  3_x <?, ?>
-		- SkeletalPriestess		=>  4_x <Book, ?>
-		- SkeletalKnight		=>  4_x <?, ?>
-		- SkeletalCleaver		=>  4_x <?, ?>
-		- [B] Lazarus			=>	<?, ?>
-		- [B] KingZul			=>  <?, ?>
+		- ReanimatedPig			=>  1_x <Piggy,			fmov>
+		- Zombie				=>  1_x <Zombie[Grasp], fadd>
+		- Undead				=>  1_x <DeadGrasp,		fsub>
+		- Assassin				=>  2_x <ThrowingStar,	fdiv>
+		- BoneFiend				=>  2_x <Daze,			fmul>
+		- Mystic				=>  2_x <VoodooZombie,	fabs>
+		- BoneKnight			=>  3_x <?,				fld>
+		- Hunter				=>  3_x <Crossbow,		fild>
+		- Warlock				=>  3_x <?,				fst>
+		- SkeletalPriestess		=>  4_x <Book,			fstp>
+		- SkeletalKnight		=>  4_x <?,				fistp>
+		- SkeletalCleaver		=>  4_x <?,				fist>
+		- [B] Lazarus			=>	3_x <?,				fsqrt>
+		- [B] KingZul			=>  4_x <?,				fxch>
 
 		- Amelia				=> Town_Church
 		- Azmus					=> Town_Smith
