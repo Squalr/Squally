@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="162" nextobjectid="959">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="162" nextobjectid="962">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -12,19 +12,12 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="138" name="bg" visible="0">
-  <properties>
-   <property name="depth" type="float" value="-2304"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="879" name="stone-dark" type="texture" x="-2920.11" y="-1058.25" width="14517.9" height="7024.79"/>
- </objectgroup>
  <objectgroup id="130" name="acid -36">
   <properties>
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="864" name="acid" type="object" x="-3391.45" y="2452.43" width="15353" height="1024"/>
+  <object id="864" name="acid" type="object" x="-3391.45" y="2332.43" width="15353" height="1024"/>
  </objectgroup>
  <objectgroup id="132" name="decor -36">
   <properties>
@@ -37,14 +30,13 @@
    <property name="depth" type="float" value="-2240"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="908" name="acid/Formation19" type="decor" x="5493" y="2147" width="692" height="189"/>
  </objectgroup>
  <objectgroup id="129" name="acid -35">
   <properties>
    <property name="depth" type="float" value="-2240"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="863" name="acid" type="object" x="-3285.45" y="2460.45" width="15139" height="1024"/>
+  <object id="863" name="acid" type="object" x="-3285.45" y="2340.45" width="15139" height="1024"/>
  </objectgroup>
  <objectgroup id="137" name="decor bg -34">
   <properties>
@@ -57,21 +49,20 @@
    <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="862" name="acid" type="object" x="-3190.98" y="2467.8" width="14951" height="1024"/>
+  <object id="862" name="acid" type="object" x="-3190.98" y="2347.8" width="14951" height="1024"/>
  </objectgroup>
  <objectgroup id="140" name="decor bg -33">
   <properties>
    <property name="depth" type="float" value="-2112"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="883" name="acid/Formation3" type="decor" x="4916.5" y="2181.5" width="211" height="163"/>
  </objectgroup>
  <objectgroup id="127" name="acid -33">
   <properties>
    <property name="depth" type="float" value="-2112"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="861" name="acid" type="object" x="-3103.72" y="2474.98" width="14775" height="1024"/>
+  <object id="861" name="acid" type="object" x="-3103.72" y="2354.98" width="14775" height="1024"/>
  </objectgroup>
  <objectgroup id="153" name="decor bg -32">
   <properties>
@@ -84,7 +75,7 @@
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="860" name="acid" type="object" x="-3003.69" y="2482.63" width="14575" height="1024"/>
+  <object id="860" name="acid" type="object" x="-3003.69" y="2362.63" width="14575" height="1024"/>
  </objectgroup>
  <objectgroup id="131" name="decor -32">
   <properties>
@@ -103,7 +94,7 @@
    <property name="depth" type="float" value="-1984"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="859" name="acid" type="object" x="-2902.75" y="2491.25" width="14373" height="1024"/>
+  <object id="859" name="acid" type="object" x="-2902.75" y="2371.25" width="14373" height="1024"/>
  </objectgroup>
  <objectgroup id="141" name="decor bg -30">
   <properties>
@@ -116,7 +107,7 @@
    <property name="depth" type="float" value="-1920"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="858" name="acid" type="object" x="-2805.78" y="2499.28" width="14181" height="1024"/>
+  <object id="858" name="acid" type="object" x="-2805.78" y="2379.28" width="14181" height="1024"/>
  </objectgroup>
  <objectgroup id="158" name="decor bg -29">
   <properties>
@@ -129,14 +120,14 @@
    <property name="depth" type="float" value="-1856"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="857" name="acid" type="object" x="-2714.86" y="2506.24" width="13997" height="1024"/>
+  <object id="857" name="acid" type="object" x="-2714.86" y="2386.24" width="13997" height="1024"/>
  </objectgroup>
  <objectgroup id="122" name="acid -28">
   <properties>
    <property name="depth" type="float" value="-1792"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="856" name="acid" type="object" x="-2628.19" y="2515.52" width="13823" height="1024"/>
+  <object id="856" name="acid" type="object" x="-2628.19" y="2395.52" width="13823" height="1024"/>
  </objectgroup>
  <objectgroup id="136" name="decor -28">
   <properties>
@@ -149,7 +140,7 @@
    <property name="depth" type="float" value="-1728"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="855" name="acid" type="object" x="-2532.72" y="2524.77" width="13631" height="1024"/>
+  <object id="855" name="acid" type="object" x="-2532.72" y="2404.77" width="13631" height="1024"/>
  </objectgroup>
  <objectgroup id="157" name="decor bg -26">
   <properties>
@@ -162,14 +153,21 @@
    <property name="depth" type="float" value="-1664"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="854" name="acid" type="object" x="-2423.93" y="2533.08" width="13413" height="1024"/>
+  <object id="854" name="acid" type="object" x="-2423.93" y="2413.08" width="13413" height="1024"/>
  </objectgroup>
  <objectgroup id="119" name="acid -25">
   <properties>
    <property name="depth" type="float" value="-1600"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="853" name="acid" type="object" x="-2331.11" y="2539.25" width="13225" height="1024"/>
+  <object id="853" name="acid" type="object" x="-2331.11" y="2419.25" width="13225" height="1024"/>
+ </objectgroup>
+ <objectgroup id="138" name="bg" visible="0">
+  <properties>
+   <property name="depth" type="float" value="-1536"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="879" name="stone-dark" type="texture" x="-2920.11" y="-1058.25" width="14517.9" height="7024.79"/>
  </objectgroup>
  <objectgroup id="155" name="decor bg -24">
   <properties>
@@ -189,7 +187,7 @@
    <property name="depth" type="float" value="-1536"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="791" name="acid" type="object" x="-2209.59" y="2547.46" width="12985" height="1024"/>
+  <object id="791" name="acid" type="object" x="-2209.59" y="2427.46" width="12985" height="1024"/>
  </objectgroup>
  <objectgroup id="115" name="terrain -23">
   <properties>
@@ -202,7 +200,7 @@
    <property name="depth" type="float" value="-1472"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="790" name="acid" type="object" x="-2071.59" y="2554.96" width="12706" height="1024"/>
+  <object id="790" name="acid" type="object" x="-2071.59" y="2434.96" width="12706" height="1024"/>
  </objectgroup>
  <objectgroup id="151" name="decor bg -22">
   <properties>
@@ -221,7 +219,7 @@
    <property name="depth" type="float" value="-1408"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="789" name="acid" type="object" x="-1951.93" y="2561.92" width="12465.7" height="1024"/>
+  <object id="789" name="acid" type="object" x="-1951.93" y="2441.92" width="12465.7" height="1024"/>
  </objectgroup>
  <objectgroup id="113" name="terrain -21">
   <properties>
@@ -234,7 +232,7 @@
    <property name="depth" type="float" value="-1344"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="788" name="acid" type="object" x="-1851.69" y="2568.79" width="12244.5" height="1024"/>
+  <object id="788" name="acid" type="object" x="-1851.69" y="2448.79" width="12244.5" height="1024"/>
  </objectgroup>
  <objectgroup id="100" name="terrain -20">
   <properties>
@@ -281,24 +279,12 @@
     <property name="transition" value="hell-gate"/>
    </properties>
   </object>
-  <object id="825" name="squally" type="entity" x="5539.03" y="2199.18" width="128" height="128">
-   <properties>
-    <property name="components" value="squally"/>
-   </properties>
-  </object>
   <object id="844" name="warp" type="object" x="4657.67" y="2078.33" width="256" height="256">
    <properties>
     <property name="from" value="bridge-back-A"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-A"/>
-   </properties>
-  </object>
-  <object id="955" name="spawn" type="object" x="4173.95" y="1511.3" width="128" height="128">
-   <properties>
-    <property name="quest" value="release-pressure"/>
-    <property name="quest-line" value="release-pressure"/>
-    <property name="transition" value="pressure"/>
    </properties>
   </object>
  </objectgroup>
@@ -313,7 +299,7 @@
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="787" name="acid" type="object" x="-1755.75" y="2576.18" width="12026.8" height="1024"/>
+  <object id="787" name="acid" type="object" x="-1755.75" y="2456.18" width="12026.8" height="1024"/>
  </objectgroup>
  <objectgroup id="156" name="terrain mg -20">
   <properties>
@@ -338,7 +324,7 @@
    <property name="depth" type="float" value="-1216"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="786" name="acid" type="object" x="-1659.57" y="2583.78" width="11822.5" height="1024"/>
+  <object id="786" name="acid" type="object" x="-1659.57" y="2463.78" width="11822.5" height="1024"/>
  </objectgroup>
  <objectgroup id="111" name="terrain -19">
   <properties>
@@ -358,7 +344,7 @@
    <property name="depth" type="float" value="-1152"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="785" name="acid" type="object" x="-1574.84" y="2591.57" width="11627.7" height="1024"/>
+  <object id="785" name="acid" type="object" x="-1574.84" y="2471.57" width="11627.7" height="1024"/>
  </objectgroup>
  <objectgroup id="110" name="terrain -18">
   <properties>
@@ -371,14 +357,13 @@
    <property name="depth" type="float" value="-1088"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="899" name="acid/Formation11" type="decor" x="5531.61" y="2115.73" width="258" height="338"/>
  </objectgroup>
  <objectgroup id="92" name="acid -17">
   <properties>
    <property name="depth" type="float" value="-1088"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="784" name="acid" type="object" x="-1495.57" y="2599.68" width="11426.9" height="1024"/>
+  <object id="784" name="acid" type="object" x="-1495.57" y="2479.68" width="11426.9" height="1024"/>
  </objectgroup>
  <objectgroup id="109" name="terrain -17">
   <properties>
@@ -398,7 +383,7 @@
    <property name="depth" type="float" value="-1024"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="783" name="acid" type="object" x="-1419.66" y="2609.07" width="11237.1" height="1024"/>
+  <object id="783" name="acid" type="object" x="-1419.66" y="2489.07" width="11237.1" height="1024"/>
  </objectgroup>
  <objectgroup id="134" name="decor -16">
   <properties>
@@ -417,7 +402,7 @@
    <property name="depth" type="float" value="-960"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="782" name="acid" type="object" x="-1344.08" y="2616.85" width="11047.4" height="1024"/>
+  <object id="782" name="acid" type="object" x="-1344.08" y="2496.85" width="11047.4" height="1024"/>
   <object id="837" name="stone-dark" type="terrain" x="4412.95" y="2426" width="164.273" height="142.5"/>
  </objectgroup>
  <objectgroup id="107" name="terrain -15">
@@ -431,14 +416,13 @@
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="881" name="acid/Formation1" type="decor" x="1748" y="2383" width="177" height="88"/>
  </objectgroup>
  <objectgroup id="89" name="acid -14">
   <properties>
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="781" name="acid" type="object" x="-1281.01" y="2624.77" width="10865.7" height="1024"/>
+  <object id="781" name="acid" type="object" x="-1281.01" y="2504.77" width="10865.7" height="1024"/>
  </objectgroup>
  <objectgroup id="106" name="terrain -14">
   <properties>
@@ -451,7 +435,7 @@
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="780" name="acid" type="object" x="-1204.09" y="2633.17" width="10681" height="1024"/>
+  <object id="780" name="acid" type="object" x="-1204.09" y="2513.17" width="10681" height="1024"/>
  </objectgroup>
  <objectgroup id="71" name="terrain -13">
   <properties>
@@ -461,8 +445,8 @@
   <object id="729" name="stone-dark" type="terrain" x="4673.43" y="5140.11">
    <polygon points="-498.828,-2723.26 -370.244,-1979.27 295.857,-1709.84 936.817,-1976.28 1048.59,-2731.7"/>
   </object>
-  <object id="953" name="stone-dark" type="terrain" x="4673.43" y="5140.11">
-   <polygon points="-498.828,-2723.26 -370.244,-1979.27 295.857,-1709.84 936.817,-1976.28 1048.59,-2731.7"/>
+  <object id="953" name="stone-dark" type="terrain" x="3171.78" y="5140.11">
+   <polygon points="-1213.18,-2723.26 -900.457,-1979.27 719.543,-1709.84 2278.4,-1976.28 2550.24,-2731.7"/>
   </object>
   <object id="954" name="stone-dark" type="terrain" x="6355.61" y="5136.11">
    <polygon points="-435,-2723.26 -322.869,-1979.27 258,-1709.84 816.946,-1976.28 914.413,-2731.7"/>
@@ -521,7 +505,7 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="779" name="acid" type="object" x="-1108.08" y="2643.19" width="10479.7" height="1024"/>
+  <object id="779" name="acid" type="object" x="-1108.08" y="2523.19" width="10479.7" height="1024"/>
  </objectgroup>
  <objectgroup id="7912" name="terrain -12">
   <properties>
@@ -535,7 +519,7 @@
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="778" name="acid" type="object" x="-1027.23" y="2648.89" width="10373.9" height="1024"/>
+  <object id="778" name="acid" type="object" x="-1027.23" y="2528.89" width="10373.9" height="1024"/>
  </objectgroup>
  <objectgroup id="7911" name="terrain -11">
   <properties>
@@ -554,7 +538,7 @@
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="777" name="acid" type="object" x="-955.266" y="2655.48" width="10229" height="1024"/>
+  <object id="777" name="acid" type="object" x="-955.266" y="2535.48" width="10229" height="1024"/>
  </objectgroup>
  <objectgroup id="791" name="terrain -10">
   <properties>
@@ -568,7 +552,7 @@
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="776" name="acid" type="object" x="-889.475" y="2664.14" width="10217.3" height="1024"/>
+  <object id="776" name="acid" type="object" x="-889.475" y="2544.14" width="10217.3" height="1024"/>
  </objectgroup>
  <objectgroup id="781" name="terrain -9">
   <properties>
@@ -587,7 +571,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="775" name="acid" type="object" x="-819.016" y="2671.6" width="9999" height="1024"/>
+  <object id="775" name="acid" type="object" x="-819.016" y="2551.6" width="9999" height="1024"/>
  </objectgroup>
  <objectgroup id="135" name="decor -8">
   <properties>
@@ -613,7 +597,7 @@
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="774" name="acid" type="object" x="-735.183" y="2681.1" width="9817" height="1024"/>
+  <object id="774" name="acid" type="object" x="-735.183" y="2561.1" width="9817" height="1024"/>
  </objectgroup>
  <objectgroup id="761" name="terrain -7">
   <properties>
@@ -632,7 +616,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="773" name="acid" type="object" x="-649.141" y="2688.81" width="9627" height="1024"/>
+  <object id="773" name="acid" type="object" x="-649.141" y="2568.81" width="9627" height="1024"/>
  </objectgroup>
  <objectgroup id="751" name="terrain -6">
   <properties>
@@ -658,7 +642,7 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="772" name="acid" type="object" x="-560.475" y="2696.14" width="9587.93" height="1024"/>
+  <object id="772" name="acid" type="object" x="-560.475" y="2576.14" width="9587.93" height="1024"/>
  </objectgroup>
  <objectgroup id="79" name="terrain -5">
   <properties>
@@ -671,21 +655,21 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="771" name="acid" type="object" x="-475.058" y="2705.1" width="9345" height="1024"/>
+  <object id="771" name="acid" type="object" x="-475.058" y="2585.1" width="9345" height="1024"/>
  </objectgroup>
  <objectgroup id="78" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="809" name="stone-dark" type="terrain" x="6570.19" y="2481.53" width="164.273" height="142.5"/>
+  <object id="809" name="stone-dark" type="terrain" x="6550.86" y="2481.53" width="160.273" height="149.833"/>
  </objectgroup>
  <objectgroup id="78" name="acid -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="770" name="acid" type="object" x="-398.35" y="2713.44" width="9159" height="1024"/>
+  <object id="770" name="acid" type="object" x="-398.35" y="2593.44" width="9159" height="1024"/>
  </objectgroup>
  <objectgroup id="77" name="terrain -3">
   <properties>
@@ -704,7 +688,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="769" name="acid" type="object" x="-332.475" y="2720.81" width="8991.67" height="1024"/>
+  <object id="769" name="acid" type="object" x="-332.475" y="2600.81" width="8991.67" height="1024"/>
  </objectgroup>
  <objectgroup id="76" name="terrain -2">
   <properties>
@@ -718,7 +702,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="768" name="acid" type="object" x="-260.808" y="2729.89" width="8815" height="1024"/>
+  <object id="768" name="acid" type="object" x="-260.808" y="2609.89" width="8815" height="1024"/>
  </objectgroup>
  <objectgroup id="75" name="terrain -1">
   <properties>
@@ -731,7 +715,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="766" name="acid" type="object" x="-192.808" y="2741.65" width="8647" height="1024"/>
+  <object id="766" name="acid" type="object" x="-192.808" y="2621.65" width="8647" height="1024"/>
  </objectgroup>
  <objectgroup id="68" name="decor bg">
   <properties>
@@ -742,15 +726,21 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="930" name="stone-dark" type="terrain" x="2153.4" y="4812.4">
-   <polygon points="-183.631,-2372.3 -47.9522,-1700.61 124.403,-1570.82 358.119,-1716.54 400.846,-2372.68"/>
+  <object id="930" name="stone-dark" type="terrain" x="3371.58" y="6385.64">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="-183.631,-4739.1 -160.073,-4091.21 -172.567,-3186.48 397.513,-3195.76 381.134,-4073.53 400.846,-4739.86"/>
   </object>
  </objectgroup>
  <objectgroup id="160" name="terrain bg bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="929" name="stone-dark" type="terrain" x="2128.84" y="5202">
+  <object id="929" name="stone-dark" type="terrain" x="3347.02" y="5208.06">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
    <polygon points="-223.733,-2731.26 -58.4238,-1957.94 151.57,-1808.51 436.324,-1976.28 488.381,-2731.7"/>
   </object>
  </objectgroup>
@@ -758,7 +748,10 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="927" name="stone-dark" type="terrain" x="2094.44" y="5229">
+  <object id="927" name="stone-dark" type="terrain" x="3312.62" y="5235.06">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
    <polygon points="-245.854,-2731.26 -63.7926,-1957.94 165.498,-1808.51 476.419,-1976.28 533.259,-2731.7"/>
   </object>
  </objectgroup>
@@ -772,14 +765,13 @@
   <object id="792" name="stone-dark" type="terrain" x="6564.55" y="5468.05">
    <polygon points="-718.342,-2948.06 -533.173,-2142.65 426.052,-1850.98 1349.07,-2139.42 1510.03,-2957.2"/>
   </object>
+  <object id="961" name="stone-dark" type="terrain" x="1717.22" y="-307.576" width="6493.08" height="2068"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="741" name="acid/Stone1" type="decor" x="2437.64" y="2378.46" width="165" height="120"/>
   <object id="902" name="acid/acidPool1" type="decor" x="2752.17" y="2490.67" width="213" height="44"/>
-  <object id="926" name="acid/Hole2" type="decor" x="1937.5" y="2414.67" width="541" height="100"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
@@ -792,7 +784,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="931" name="portal" type="object" x="2153.33" y="2272" width="256" height="256">
+  <object id="931" name="portal" type="object" x="3371.51" y="2278.06" width="256" height="256">
    <properties>
     <property name="map" value="DaemonsHallow/Zone_1_1"/>
     <property name="transition" value="hole"/>
@@ -809,7 +801,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="demon-ghost" type="entity" x="4436.85" y="2413.43" width="128" height="128">
+  <object id="692" name="demon-ghost" type="entity" x="7228.85" y="2389.43" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
@@ -818,7 +810,7 @@
     <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
-  <object id="693" name="demon-ghost" type="entity" x="4438.43" y="2169" width="128" height="128">
+  <object id="693" name="demon-ghost" type="entity" x="7230.43" y="2145" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
@@ -839,7 +831,7 @@
     <property name="to" value="bridge-back-B"/>
    </properties>
   </object>
-  <object id="932" name="spawn" type="object" x="2224" y="2400.67" width="128" height="128">
+  <object id="932" name="spawn" type="object" x="3442.18" y="2406.73" width="128" height="128">
    <properties>
     <property name="transition" value="hole"/>
    </properties>
@@ -856,12 +848,17 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
+  <object id="959" name="squally" type="entity" x="3683.94" y="2398.55" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="66" name="acid">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="718" name="acid" type="object" x="-107.308" y="2778.14" width="8449" height="1024"/>
+  <object id="718" name="acid" type="object" x="-107.308" y="2658.14" width="8449" height="1024"/>
  </objectgroup>
  <objectgroup id="28" name="fireflies">
   <properties>
