@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="162" nextobjectid="962">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="166" nextobjectid="1019">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -167,7 +167,7 @@
    <property name="depth" type="float" value="-1536"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="879" name="stone-dark" type="texture" x="-2920.11" y="-1058.25" width="14517.9" height="7024.79"/>
+  <object id="879" name="stone-dark" type="texture" x="-2912.11" y="-1034.25" width="14517.9" height="7024.79"/>
  </objectgroup>
  <objectgroup id="155" name="decor bg -24">
   <properties>
@@ -194,6 +194,16 @@
    <property name="depth" type="float" value="-1472"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="962" name="stone-dark" type="terrain" x="921.46" y="-66" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1008" name="stone-dark" type="terrain" x="7513.46" y="-274" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="98" name="acid -23">
   <properties>
@@ -213,6 +223,16 @@
    <property name="depth" type="float" value="-1408"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="963" name="stone-dark" type="terrain" x="924.127" y="-39.3333" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1007" name="stone-dark" type="terrain" x="7516.13" y="-247.333" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="97" name="acid -22">
   <properties>
@@ -226,6 +246,16 @@
    <property name="depth" type="float" value="-1344"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="964" name="stone-dark" type="terrain" x="924.127" y="-15.3333" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1006" name="stone-dark" type="terrain" x="7516.13" y="-223.333" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="96" name="acid -21">
   <properties>
@@ -241,6 +271,16 @@
   </properties>
   <object id="795" name="stone-dark" type="terrain" x="5343.37" y="5066">
    <polygon points="-913.913,-2736.26 -678.331,-1979.27 542.046,-1709.84 1716.35,-1976.28 1921.14,-2731.7"/>
+  </object>
+  <object id="965" name="stone-dark" type="terrain" x="928.127" y="14.2424" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="997" name="stone-dark" type="terrain" x="7520.13" y="-193.758" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="101" name="decor -20">
@@ -332,6 +372,16 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="841" name="stone-dark" type="terrain" x="4666.36" y="2394.75" width="164.273" height="142.5"/>
+  <object id="966" name="stone-dark" type="terrain" x="925.46" y="43.8182" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="996" name="stone-dark" type="terrain" x="7517.46" y="-164.182" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="143" name="decor -18">
   <properties>
@@ -351,6 +401,16 @@
    <property name="depth" type="float" value="-1152"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="967" name="stone-dark" type="terrain" x="926.793" y="86" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1005" name="stone-dark" type="terrain" x="7518.79" y="-122" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="145" name="decor bg -17">
   <properties>
@@ -371,6 +431,16 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="839" name="stone-dark" type="terrain" x="4585.11" y="2411.75" width="164.273" height="142.5"/>
+  <object id="968" name="stone-dark" type="terrain" x="925.46" y="126" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="995" name="stone-dark" type="terrain" x="7517.46" y="-82" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="144" name="decor -16 bg">
   <properties>
@@ -396,6 +466,16 @@
    <property name="depth" type="float" value="-1024"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="969" name="stone-dark" type="terrain" x="924.127" y="167.333" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1004" name="stone-dark" type="terrain" x="7516.13" y="-40.6667" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="90" name="acid -15">
   <properties>
@@ -429,6 +509,16 @@
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="970" name="stone-dark" type="terrain" x="925.46" y="207.333" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1003" name="stone-dark" type="terrain" x="7517.46" y="-0.666667" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="88" name="acid -13">
   <properties>
@@ -451,11 +541,15 @@
   <object id="954" name="stone-dark" type="terrain" x="6355.61" y="5136.11">
    <polygon points="-435,-2723.26 -322.869,-1979.27 258,-1709.84 816.946,-1976.28 914.413,-2731.7"/>
   </object>
-  <object id="950" name="stone-dark" type="terrain" x="2760" y="3055.67">
+  <object id="971" name="stone-dark" type="terrain" x="925.46" y="255.333" width="965.08" height="3308">
    <properties>
-    <property name="tag" value="lift-terrain"/>
+    <property name="collision" value="none"/>
    </properties>
-   <polygon points="-93.8626,-649.121 -69.6674,-470.813 55.6703,-406.723 176.277,-470.102 197.309,-649.796"/>
+  </object>
+  <object id="986" name="stone-dark" type="terrain" x="7517.46" y="47.3333" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="117" name="player_layer-13">
@@ -492,7 +586,6 @@
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="952" name="caged-xyz" type="object" x="2716" y="2295" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="142" name="decor bg -12">
   <properties>
@@ -513,6 +606,16 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="817" name="stone-dark" type="terrain" x="6860.69" y="2428.4" width="164.273" height="142.5"/>
+  <object id="972" name="stone-dark" type="terrain" x="925.46" y="299.333" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="994" name="stone-dark" type="terrain" x="7517.46" y="91.3333" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="86" name="acid -11">
   <properties>
@@ -526,6 +629,16 @@
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="973" name="stone-dark" type="terrain" x="925.46" y="346" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1002" name="stone-dark" type="terrain" x="7517.46" y="138" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="149" name="decor bg -10">
   <properties>
@@ -546,6 +659,16 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="815" name="stone-dark" type="terrain" x="6810.94" y="2440.73" width="164.273" height="142.5"/>
+  <object id="974" name="stone-dark" type="terrain" x="925.46" y="394" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="993" name="stone-dark" type="terrain" x="7517.46" y="186" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="84" name="acid -9">
   <properties>
@@ -559,6 +682,16 @@
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="975" name="stone-dark" type="terrain" x="929.46" y="434" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1001" name="stone-dark" type="terrain" x="7521.46" y="226" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="146" name="decor -8 bg">
   <properties>
@@ -579,12 +712,37 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
+ <objectgroup id="165" name="terrain -8 bg" visible="0">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1018" name="stone-dark" type="terrain" x="-1035" y="-102.45" width="12102" height="4044.9">
+   <properties>
+    <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+    <property name="hole-tag" value="hole-A"/>
+    <property name="square-test" value=""/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="771" name="terrain -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="813" name="stone-dark" type="terrain" x="6739.44" y="2456.82" width="164.273" height="142.5"/>
+  <object id="813" name="stone-dark" type="terrain" x="6813.44" y="2459.82" width="164.273" height="142.5"/>
+  <object id="976" name="stone-dark" type="terrain" x="925.46" y="482" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="992" name="stone-dark" type="terrain" x="7517.46" y="274" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="147" name="decor bg -7">
   <properties>
@@ -604,6 +762,16 @@
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="977" name="stone-dark" type="terrain" x="925.46" y="530" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="1000" name="stone-dark" type="terrain" x="7517.46" y="322" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="152" name="decor bg -6">
   <properties>
@@ -623,13 +791,39 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="811" name="stone-dark" type="terrain" x="6563.19" y="2464.65" width="164.273" height="142.5"/>
+  <object id="811" name="stone-dark" type="terrain" x="6702.19" y="2470.65" width="164.273" height="142.5"/>
+  <object id="978" name="stone-dark" type="terrain" x="925.46" y="586" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="991" name="stone-dark" type="terrain" x="7517.46" y="378" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="73" name="decor -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
+ </objectgroup>
+ <objectgroup id="162" name="terrain -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="979" name="stone-dark" type="terrain" x="929.46" y="642" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="999" name="stone-dark" type="terrain" x="7521.46" y="434" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="150" name="decor bg -5">
   <properties>
@@ -662,7 +856,17 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="809" name="stone-dark" type="terrain" x="6550.86" y="2481.53" width="160.273" height="149.833"/>
+  <object id="809" name="stone-dark" type="terrain" x="6624.86" y="2484.53" width="160.273" height="149.833"/>
+  <object id="980" name="stone-dark" type="terrain" x="925.46" y="694" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="990" name="stone-dark" type="terrain" x="7517.46" y="486" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="78" name="acid -3">
   <properties>
@@ -676,6 +880,16 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="981" name="stone-dark" type="terrain" x="925.46" y="746" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="998" name="stone-dark" type="terrain" x="7517.46" y="538" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="148" name="decor bg -2">
   <properties>
@@ -695,7 +909,17 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="806" name="stone-dark" type="terrain" x="6486.22" y="2490.4" width="164.273" height="142.5"/>
+  <object id="806" name="stone-dark" type="terrain" x="6560.22" y="2493.4" width="164.273" height="142.5"/>
+  <object id="982" name="stone-dark" type="terrain" x="929.46" y="790" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="989" name="stone-dark" type="terrain" x="7521.46" y="582" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="76" name="acid -1">
   <properties>
@@ -709,7 +933,17 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="819" name="stone-dark" type="terrain" x="6350.01" y="2498.54" width="164.273" height="142.5"/>
+  <object id="819" name="stone-dark" type="terrain" x="6424.01" y="2501.54" width="164.273" height="142.5"/>
+  <object id="983" name="stone-dark" type="terrain" x="929.46" y="834" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+  <object id="988" name="stone-dark" type="terrain" x="7521.46" y="626" width="965.08" height="3308">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="67" name="acid bg">
   <properties>
@@ -729,8 +963,19 @@
   <object id="930" name="stone-dark" type="terrain" x="3371.58" y="6385.64">
    <properties>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
    <polygon points="-183.631,-4739.1 -160.073,-4091.21 -172.567,-3186.48 397.513,-3195.76 381.134,-4073.53 400.846,-4739.86"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="164" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1017" name="Crypts/CryptDoor1" type="decor" x="3366.5" y="2017.5" width="265" height="447">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="160" name="terrain bg bg">
@@ -740,6 +985,7 @@
   <object id="929" name="stone-dark" type="terrain" x="3347.02" y="5208.06">
    <properties>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
    <polygon points="-223.733,-2731.26 -58.4238,-1957.94 151.57,-1808.51 436.324,-1976.28 488.381,-2731.7"/>
   </object>
@@ -751,16 +997,21 @@
   <object id="927" name="stone-dark" type="terrain" x="3312.62" y="5235.06">
    <properties>
     <property name="collision" value="none"/>
+    <property name="components" value="z-fade"/>
    </properties>
    <polygon points="-245.854,-2731.26 -63.7926,-1957.94 165.498,-1808.51 476.419,-1976.28 533.259,-2731.7"/>
   </object>
+  <object id="985" name="stone-dark" type="terrain" x="927.46" y="874" width="965.08" height="3308"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="715" name="stone-dark" type="terrain" x="2976.1" y="5260">
-   <polygon points="-1062.41,-2733.26 -905.33,-1979.27 723.437,-1709.84 2290.73,-1976.28 2564.03,-2731.7"/>
+  <object id="715" name="stone-dark" type="terrain" x="2894.08" y="5260">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+   <polygon points="-990.333,-2736.29 -993.655,-2585.64 -934.289,-1979.27 746.578,-1709.84 2364,-1976.28 2646.05,-2731.7"/>
   </object>
   <object id="792" name="stone-dark" type="terrain" x="6564.55" y="5468.05">
    <polygon points="-718.342,-2948.06 -533.173,-2142.65 426.052,-1850.98 1349.07,-2139.42 1510.03,-2957.2"/>
@@ -771,7 +1022,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="902" name="acid/acidPool1" type="decor" x="2752.17" y="2490.67" width="213" height="44"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
@@ -784,10 +1034,50 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="931" name="portal" type="object" x="3371.51" y="2278.06" width="256" height="256">
+  <object id="931" name="portal" type="object" x="3373.51" y="2216.06" width="256" height="312">
    <properties>
-    <property name="map" value="DaemonsHallow/Zone_1_1"/>
-    <property name="transition" value="hole"/>
+    <property name="map" value="LambdaCrypts/Zone_1_0"/>
+    <property name="transition" value="lesser-crypt"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="163" name="holes" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1010" name="terrain-hole" type="object" x="3996" y="2048" width="1112" height="312">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1011" name="terrain-hole" type="object" x="2608" y="2096" width="312" height="312">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1013" name="terrain-hole" type="object" x="5244" y="2052" width="1112" height="312">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1014" name="terrain-hole" type="object" x="2056" y="2100" width="312" height="312">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+    <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1015" name="terrain-hole" type="object" x="6661.45" y="1825.7" width="502" height="600">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+    <property name="hole-tag" value="hole-A"/>
    </properties>
   </object>
  </objectgroup>
@@ -823,7 +1113,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="848" name="warp" type="object" x="6310.33" y="2256.67" width="256" height="256">
+  <object id="848" name="warp" type="object" x="6367.33" y="2261.67" width="256" height="256">
    <properties>
     <property name="from" value="bridge-front-B"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -833,7 +1123,7 @@
   </object>
   <object id="932" name="spawn" type="object" x="3442.18" y="2406.73" width="128" height="128">
    <properties>
-    <property name="transition" value="hole"/>
+    <property name="transition" value="lesser-crypt"/>
    </properties>
   </object>
   <object id="957" name="edge-portal" type="object" x="7730.06" y="2031.58" width="199.918" height="488.002">
@@ -858,7 +1148,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="718" name="acid" type="object" x="-107.308" y="2658.14" width="8449" height="1024"/>
+  <object id="718" name="acid" type="object" x="-101.247" y="2670.26" width="8449" height="1024"/>
  </objectgroup>
  <objectgroup id="28" name="fireflies">
   <properties>
