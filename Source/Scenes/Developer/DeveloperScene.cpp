@@ -317,7 +317,7 @@ DeveloperScene::DeveloperScene()
 		X Skeletal Archer		=> X 3_1 PUSH / POP REG (MULTISHOT debuff - curse of the ancients - damage dealt)
 		X Skeletal Warrior		=> X 3_0 PUSH [REG PTR + offset] / POP [REG PTR + offset] (blessing of the ancients - outgoing damage)
 		X Skeletal Necromancer 	=> X 3_0 PUSH const / POP [REG PTR] (pact of the ancients - health link)
-		X [B] Krampus			=> O 3_3 LEA
+		X [B] Krampus			=> X 3_3 LEA
 
 		X Olive			Zone 1_1 (H_1)
 		X Bonnie		Town_Inn (H_2) (non-vendor)
@@ -381,15 +381,15 @@ DeveloperScene::DeveloperScene()
 		X Thug					1_x		=> jmp 			--			Heavy blade
 		X Barbarian				1_x		=> jle			ZF/SF/OF	Defensive stance
 		X ReanimatedFighter		1_x		=> jg			ZF/SF/OF	Diseased
-		O Wraith				dark	=> jne			ZF/SF/OF	<Spirit, invert rabies as damage buff>
+		O Wraith				dark	=> jne			ZF/SF/OF	Manifest <Spirit, invert rabies as damage buff>
 		- Abomination			dark	=> jnz			ZF/SF/OF	<Radiation, RNG per tick to do -5 dmg or something>
 		- Reaper				dark	=> je			ZF/SF/OF	<AngelFigurine, undying>
-		X Vampiress				dark	=> jl			ZF/SF/OF	Vampirism
-		- VampireLord			dark	=> jz			ZF/SF/OF	<SwordGlowBlue, RNG mana steal?>
-		O WereWolf				2_x		=> jge			ZF/SF/OF	Rabies
-		- SkeletalBaron			2_x		=> jns			SF			<ShieldAdorned, convert damage to healing>
+		X Vampiress				dark	=> jl			ZF/SF/OF	Vampirism <?, HP Drain>
+		- VampireLord			dark	=> jz			ZF/SF/OF	Leech <SwordGlowBlue, RNG mana steal?>
+		O WereWolf				2_x		=> jge			ZF/SF/OF	Rabies <?, speed drain>
+		- SkeletalBaron			2_x		=> jns			SF			Parry <ShieldAdorned, convert damage to healing>
 		- Jack					2_x		=> js			SF			<Dice, RNG per tick? Maybe create pumpkin icon, but idk>
-		- [B] Agnes				dark_t	=> jecxz		%ecx == 0	<Bats, Bat Swarm RNG per tick to attack>
+		- [B] Agnes				dark_t	=> jecxz		%ecx == 0	Bat Swarm <Bats, Bat Swarm RNG per tick to attack>
 		
 		- Garin					=> Town_Train
 		- Zana					=> 1_2 (X H_1)

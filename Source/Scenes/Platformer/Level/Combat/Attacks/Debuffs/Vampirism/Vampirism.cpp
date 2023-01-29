@@ -171,9 +171,9 @@ NO_OPTIMIZE void Vampirism::applyVampirism()
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_VAMPIRISM);
 	ASM(cmp ZDX, 1);
-	ASM(jl doNothing);
+	ASM(jl doNothingVampirism);
 	ASM(imul ZDX, -1);
-	ASM(doNothing:);
+	ASM(doNothingVampirism:);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 

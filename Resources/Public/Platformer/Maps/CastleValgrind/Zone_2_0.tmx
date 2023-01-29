@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="28" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="911">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="28" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="913">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -77,9 +77,33 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="100" name="entities -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="911" name="werewolf" type="entity" x="2791.24" y="2704.41" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="thug,enemy,agro"/>
+    <property name="drop-pool" value="cv-generic"/>
+   </properties>
+  </object>
+  <object id="912" name="werewolf" type="entity" x="2787.8" y="2283.68" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="97" name="player_layer -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="890" name="warp" type="object" x="1224.31" y="3580.69" width="256" height="256">

@@ -133,10 +133,15 @@ void Rabies::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						// COMMENT("Push speed onto FPU stack")
 						"fld dword ptr [eax]\n"
+						// COMMENT("Push zero onto FPU stack")
 						"fldz\n"
+						// COMMENT("Check if speed is > 0, and pop stack twice")
 						"fcompp\n"
+						// COMMENT("Jump to reduce speed code if speed is > 0")
 						"jge reduceSpeed\n"
+						// COMMENT("Otherwise, jump over the speed reduction and do nothing")
 						"jmp skipCode\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						"reduceSpeed:\n"
@@ -166,7 +171,8 @@ void Rabies::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 					)
-				}
+				},
+				true
 			)
 		},
 	};
@@ -215,7 +221,7 @@ NO_OPTIMIZE void Rabies::applyRabies()
 	ASM(jge reduceSpeed);
 	ASM(jmp skipCode);
 	ASM(reduceSpeed:);
-	ASM(mov dword ptr [ZSI], 0x500); // TODO: Encode -0.5f in hex
+	ASM(mov dword ptr [ZSI], 0x000000BF); // -0.5f encoded in hex
 	ASM(skipCode:);
 	ASM_NOP12();
 	HACKABLE_CODE_END();
