@@ -12219,10 +12219,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_Register() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Radiation_CommentDrain : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Radiation_CommentDrain* create();
+		static Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12230,14 +12230,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_Radiation_CommentDrain();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Radiation_CommentDrain() = default;
+		Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Radiation_CommentGain : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Radiation_CommentGain* create();
+		static Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12245,14 +12245,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_Radiation_CommentGain();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Radiation_CommentGain() = default;
+		Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Radiation_CommentReverse : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Radiation_CommentReverse* create();
+		static Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12260,8 +12260,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_Radiation_CommentReverse();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Radiation_CommentReverse() = default;
+		Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_Radiation_Radiation : public LocalizedString

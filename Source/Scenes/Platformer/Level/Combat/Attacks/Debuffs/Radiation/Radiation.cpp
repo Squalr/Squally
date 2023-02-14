@@ -112,32 +112,30 @@ void Radiation::registerHackables()
 				Radiation::StartDelay + Radiation::TimeBetweenTicks * float(Radiation::DamageAmount),
 				0.0f,
 				{
-					/*
-					HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RADIATION);
-					ASM(cmp ZSI, 0);
-					ASM(jnz radiation);
-					ASM(jmp radiationSkip);
-					ASM(radiation:);
-					ASM_MOV_VAR_REG(drainAmount, edi);
-					ASM(radiationSkip:);
-					HACKABLE_CODE_END();
-					*/
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentGain::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()) +
 						"cmp esi, 0\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentDrain::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create()) +
+						"jnz radiation\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create()) +
+						"jmp radiationSkip\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create()) +
+						"mov edi, 5:\n" + // Radiation::DamageAmount
+						"radiation:\n" +
+						"radiationSkip:\n\n"
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()) +
+						"cmp rsi, 0\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create()) +
 						"jnz radiation\n\n" +
 						"jmp radiationSkip\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentReverse::create() +
-						"radiationSkip\n\n")
-						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentGain::create()) +
-						"inc rdi\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentDrain::create()) +
-						"dec rsi\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentReverse::create())
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create()) +
+						"mov rdi, 5:\n" + // Radiation::DamageAmount
+						"radiation:\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create()) +
+						"radiationSkip:\n\n"
 					),
 				},
 				true
@@ -201,7 +199,7 @@ NO_OPTIMIZE void Radiation::runRadiationTick()
 	ASM(push ZDI);
 	ASM(push ZSI);
 
-	ASM(mov ZDI, 5); // Radiation::DamageAmount
+	ASM(mov ZDI, 0);
 	ASM_MOV_REG_VAR(esi, rng);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RADIATION);
@@ -209,17 +207,20 @@ NO_OPTIMIZE void Radiation::runRadiationTick()
 	ASM(jnz radiation);
 	ASM(jmp radiationSkip);
 	ASM(radiation:);
-	ASM_MOV_VAR_REG(drainAmount, edi);
+	ASM(mov ZDI, 5); // Radiation::DamageAmount
 	ASM(radiationSkip:);
 	HACKABLE_CODE_END();
 
+	ASM_MOV_VAR_REG(drainAmount, edi);
+
+	ASM(pop ZSI);
 	ASM(pop ZDI);
 	ASM_POP_EFLAGS()
 
 	drainAmount = MathUtils::clamp(drainAmount, -Radiation::DamageAmountMax, Radiation::DamageAmountMax);
 
 	this->healSound->play();
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->owner, this->caster, drainAmount, this->abilityType));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, drainAmount, this->abilityType));
 
 	HACKABLES_STOP_SEARCH();
 }
