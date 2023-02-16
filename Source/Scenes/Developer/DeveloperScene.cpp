@@ -382,12 +382,12 @@ DeveloperScene::DeveloperScene()
 		X Barbarian				1_x		=> jle			ZF/SF/OF	Defensive stance
 		X ReanimatedFighter		1_x		=> jg			ZF/SF/OF	Diseased
 		O Wraith				dark	=> jne			ZF/SF/OF	Manifest <Spirit, invert rabies as damage buff>
-		- Abomination			dark	=> jnz			ZF/SF/OF	<Radiation, RNG per tick to do -5 dmg or something>
-		- Reaper				dark	=> je			ZF/SF/OF	<AngelFigurine, undying>
-		X Vampiress				dark	=> jl			ZF/SF/OF	Vampirism <?, HP Drain>
-		- VampireLord			dark	=> jz			ZF/SF/OF	Leech <SwordGlowBlue, RNG mana steal?>
+		O Abomination			dark	=> jnz			ZF/SF/OF	<Radiation, RNG per tick to do -5 dmg or something>
+		O Reaper				dark	=> je			ZF/SF/OF	<AngelFigurine, undying>
+		O Vampiress				dark	=> jl			ZF/SF/OF	Vampirism <?, HP Drain> // TODO: Steal
+		O VampireLord			dark	=> jz			ZF/SF/OF	Leech <SwordGlowBlue, RNG mana steal?>
 		O WereWolf				2_x		=> jge			ZF/SF/OF	Rabies <?, speed drain>
-		- SkeletalBaron			2_x		=> jns			SF			Parry <ShieldAdorned, convert damage to healing>
+		O SkeletalBaron			2_x		=> jns			SF			Parry <ShieldAdorned, convert damage to zero>
 		- Jack					2_x		=> js			SF			<Dice, RNG per tick? Maybe create pumpkin icon, but idk>
 		- [B] Agnes				dark_t	=> jecxz		%ecx == 0	Bat Swarm <Bats, Bat Swarm RNG per tick to attack>
 		

@@ -49,7 +49,7 @@ Radiation* Radiation::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Radiation::Radiation(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_BloodGoblet, AbilityType::Shadow, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_Radiation, AbilityType::Shadow, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = Radiation::DamageAmount;
@@ -98,7 +98,7 @@ void Radiation::registerHackables()
 				Radiation::RadiationIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_Radiation_Radiation::create(),
 				HackableBase::HackBarColor::Yellow,
-				UIResources::Menus_Icons_BloodGoblet,
+				UIResources::Menus_Icons_Radiation,
 				LazyNode<HackablePreview>::create([=](){ return RadiationGenericPreview::create(); }),
 				{
 					{

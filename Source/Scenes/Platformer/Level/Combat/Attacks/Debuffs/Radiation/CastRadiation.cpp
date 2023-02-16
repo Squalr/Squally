@@ -28,7 +28,7 @@ CastRadiation* CastRadiation::create(float attackDuration, float recoverDuration
 }
 
 CastRadiation::CastRadiation(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Debuff, UIResources::Menus_Icons_BloodGoblet, priority, AbilityType::Shadow, 0, 0, 5, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_Radiation, priority, AbilityType::Shadow, 0, 0, 5, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 
