@@ -117,12 +117,10 @@ void Rabies::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return RabiesGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_Register::create()
-							->setStringReplacementVariables({ ConstantFloat::create(Rabies::MinSpeed, 2), ConstantFloat::create(Rabies::MaxSpeed, 1) })
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEax::create()
 					},
 					{
-						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_Register::create()
-							->setStringReplacementVariables(ConstantFloat::create(Rabies::DefaultSpeed, 2))
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEsi::create()
 					}
 				},
 				int(HackFlags::None),
@@ -133,19 +131,19 @@ void Rabies::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						// COMMENT("Push speed onto FPU stack")
-						"fld dword ptr [eax]\n"
-						// COMMENT("Push zero onto FPU stack")
-						"fldz\n"
-						// COMMENT("Check if speed is > 0, and pop stack twice")
-						"fcompp\n"
-						// COMMENT("Jump to reduce speed code if speed is > 0")
-						"jge reduceSpeed\n"
-						// COMMENT("Otherwise, jump over the speed reduction and do nothing")
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushSpeed::create()) +
+						"fld dword ptr [eax]\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushZero::create()) +
+						"fldz\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare::create()) +
+						"fcompp\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentJump::create()) +
+						"jge reduceSpeed\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentElse::create()) +
 						"jmp skipCode\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						"reduceSpeed:\n"
-						"mov dword ptr [esi], -0.5f\n\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentSpeedDrain::create()) + 
+						"reduceSpeed:\n" +
+						"mov dword ptr [esi], -0.5f\n\n" +
 						"skipCode:\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
@@ -155,14 +153,19 @@ void Rabies::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						"fld dword ptr [rax]\n"
-						"fldz\n"
-						"fcompp\n"
-						"jge reduceSpeed\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushSpeed::create()) +
+						"fld dword ptr [rax]\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushZero::create()) +
+						"fldz\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare::create()) +
+						"fcompp\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentJump::create()) +
+						"jge reduceSpeed\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentElse::create()) +
 						"jmp skipCode\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						"reduceSpeed:\n"
-						"mov dword ptr [rsi], -0.5f\n\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentSpeedDrain::create()) + 
+						"reduceSpeed:\n" +
+						"mov dword ptr [rsi], -0.5f\n\n" +
 						"skipCode:\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
@@ -218,11 +221,11 @@ NO_OPTIMIZE void Rabies::applyRabies()
 	ASM(fld dword ptr [ZAX]);
 	ASM(fldz);
 	ASM(fcompp);
-	ASM(jge reduceSpeed);
-	ASM(jmp skipCode);
-	ASM(reduceSpeed:);
+	ASM(jge rabiesReduceSpeed);
+	ASM(jmp skipRabiesCode);
+	ASM(rabiesReduceSpeed:);
 	ASM(mov dword ptr [ZSI], 0x000000BF); // -0.5f encoded in hex
-	ASM(skipCode:);
+	ASM(skipRabiesCode:);
 	ASM_NOP12();
 	HACKABLE_CODE_END();
 

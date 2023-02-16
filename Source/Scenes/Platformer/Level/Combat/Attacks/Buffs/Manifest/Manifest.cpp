@@ -201,11 +201,11 @@ void Manifest::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* 
 
 NO_OPTIMIZE void Manifest::applyManifest()
 {
-	static volatile int damageBonus = 0.0f;
+	static volatile int damageBonus = 0;
 	static volatile int* damageBonusPtr;
 	static volatile int* currentDamagePtr;
 
-	damageBonus = 0.0f;
+	damageBonus = 0;
 	damageBonusPtr = &damageBonus;
 	currentDamagePtr = &this->currentDamageDealt;
 	
@@ -217,14 +217,12 @@ NO_OPTIMIZE void Manifest::applyManifest()
 	ASM_MOV_REG_PTR(ZSI, damageBonusPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_MANIFEST);
-	ASM(fld dword ptr [ZAX]);
-	ASM(fldz);
-	ASM(fcompp);
-	ASM(jge reduceDamage);
-	ASM(jmp skipCode);
-	ASM(reduceDamage:);
-	ASM(mov dword ptr [ZSI], 0x000000BF); // -0.5f encoded in hex
-	ASM(skipCode:);
+	ASM(cmp [ZAX], 0);
+	ASM(jne manifestReduceDamage);
+	ASM(jmp skipManifestCode);
+	ASM(manifestReduceDamage:);
+	ASM(mov dword ptr [ZSI], 0);
+	ASM(skipManifestCode:);
 	ASM_NOP12();
 	HACKABLE_CODE_END();
 

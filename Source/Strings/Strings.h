@@ -12309,10 +12309,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentDecreaseDamage : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentElse : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentDecreaseDamage* create();
+		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentElse* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12320,14 +12320,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_Rabies_CommentDecreaseDamage();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_CommentDecreaseDamage() = default;
+		Menus_Hacking_Abilities_Debuffs_Rabies_CommentElse();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_CommentElse() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeat : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentJump : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeat* create();
+		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentJump* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12335,14 +12335,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeat();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeat() = default;
+		Menus_Hacking_Abilities_Debuffs_Rabies_CommentJump();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_CommentJump() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeatJump : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushSpeed : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeatJump* create();
+		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushSpeed* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12350,8 +12350,38 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeatJump();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_CommentRepeatJump() = default;
+		Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushSpeed();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushSpeed() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushZero : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushZero* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushZero();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushZero() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentSpeedDrain : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentSpeedDrain* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Rabies_CommentSpeedDrain();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_CommentSpeedDrain() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_Rabies_Rabies : public LocalizedString
@@ -12369,10 +12399,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_Rabies() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Rabies_Register : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Rabies_Register* create();
+		static Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEax* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12380,8 +12410,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_Rabies_Register();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_Register() = default;
+		Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEsi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEsi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEsi() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage : public LocalizedString
