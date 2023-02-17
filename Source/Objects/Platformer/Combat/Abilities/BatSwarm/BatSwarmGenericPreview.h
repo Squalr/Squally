@@ -7,15 +7,17 @@ namespace cocos2d
 	class Sprite;
 }
 
+class PlatformerEntity;
+
 class BatSwarmGenericPreview : public HackablePreview
 {
 public:
-	static BatSwarmGenericPreview* create(std::string arrowResource);
+	static BatSwarmGenericPreview* create();
 
 	HackablePreview* clone() override;
 
 protected:
-	BatSwarmGenericPreview(std::string arrowResource);
+	BatSwarmGenericPreview();
 	virtual ~BatSwarmGenericPreview();
 	
 	void onEnter() override;
@@ -24,6 +26,5 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	cocos2d::Sprite* arrow = nullptr;
-	std::string arrowResource;
+	PlatformerEntity* bat = nullptr;
 };

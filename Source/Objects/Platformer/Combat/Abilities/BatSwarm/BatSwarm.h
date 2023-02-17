@@ -11,7 +11,7 @@ class WorldSound;
 class BatSwarm : public CombatObject
 {
 public:
-	static BatSwarm* create(PlatformerEntity* caster, PlatformerEntity* target, std::string arrowResource);
+	static BatSwarm* create(PlatformerEntity* caster, PlatformerEntity* target);
 
 	void runBatSwarm();
 
@@ -22,7 +22,7 @@ public:
 	static const float StartDelay;
 
 protected:
-	BatSwarm(PlatformerEntity* caster, PlatformerEntity* target, std::string arrowResource);
+	BatSwarm(PlatformerEntity* caster, PlatformerEntity* target);
 	virtual ~BatSwarm();
 
 	void onEnter() override;
@@ -38,9 +38,8 @@ private:
 	void damageOtherTeam();
 	void compareTeam(TimelineEntry* entry);
 
-	std::vector<cocos2d::Sprite*> arrowPool;
-	std::vector<float> arrowCooldowns;
+	std::vector<PlatformerEntity*> batPool;
+	std::vector<float> batCooldowns;
 
-	std::string arrowResource;
 	static const std::string StateKeyIsCasterOnEnemyTeam;
 };

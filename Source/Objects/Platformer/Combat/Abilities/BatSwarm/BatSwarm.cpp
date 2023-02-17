@@ -13,7 +13,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/CombatEvents.h"
-#include "Entities/Platformer/PlatformerEntity.h"
+#include "Entities/Platformer/Critters/Bat.h"
 #include "Objects/Platformer/Combat/Abilities/BatSwarm/BatSwarmGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
@@ -42,31 +42,30 @@ const std::string BatSwarm::StateKeyIsCasterOnEnemyTeam = "ANTI_OPTIMIZE_STATE_K
 
 const std::string BatSwarm::HackIdentifierBatSwarmTeamCompare = "bat-swarm-team";
 
-BatSwarm* BatSwarm::create(PlatformerEntity* caster, PlatformerEntity* target, std::string arrowResource)
+BatSwarm* BatSwarm::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
-	BatSwarm* instance = new BatSwarm(caster, target, arrowResource);
+	BatSwarm* instance = new BatSwarm(caster, target);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BatSwarm::BatSwarm(PlatformerEntity* caster, PlatformerEntity* target, std::string arrowResource) : super(caster, target, true)
+BatSwarm::BatSwarm(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, true)
 {
-	this->arrowResource = arrowResource;
-
 	for (int index = 0; index < 8; index++)
 	{
-		Sprite* arrow = Sprite::create(arrowResource);
+		ValueMap valueMap;
+		PlatformerEntity* bat = Bat::deserialize(valueMap);
 
 		// Arrows are assumed to point up
-		arrow->setRotation(180.0f);
-		arrow->setOpacity(0);
+		bat->setRotation(180.0f);
+		bat->setOpacity(0);
 
-		this->arrowPool.push_back(arrow);
-		this->arrowCooldowns.push_back(float(index) * 0.4f);
+		this->batPool.push_back(bat);
+		this->batCooldowns.push_back(float(index) * 0.4f);
 
-		this->addChild(arrow);
+		this->addChild(bat);
 	}
 }
 
@@ -150,7 +149,7 @@ void BatSwarm::registerHackables()
 
 HackablePreview* BatSwarm::createDefaultPreview()
 {
-	return BatSwarmGenericPreview::create(this->arrowResource);
+	return BatSwarmGenericPreview::create();
 }
 
 void BatSwarm::runBatSwarm()
@@ -190,21 +189,21 @@ void BatSwarm::updateAnimation(float dt)
 
 	float totalDuration = BatSwarm::StartDelay + BatSwarm::TimeBetweenTicks * float(BatSwarm::TickCount);
 
-	for (int index = 0; index < int(this->arrowCooldowns.size()); index++)
+	for (int index = 0; index < int(this->batCooldowns.size()); index++)
 	{
 		if (!this->timelinePaused)
 		{
-			this->arrowCooldowns[index] -= dt;
-			this->arrowPool[index]->setPositionY(this->arrowPool[index]->getPositionY() - dt * PixelsPerSecond);
+			this->batCooldowns[index] -= dt;
+			this->batPool[index]->setPositionY(this->batPool[index]->getPositionY() - dt * PixelsPerSecond);
 		}
 
-		if (this->arrowCooldowns[index] <= 0.0f)
+		if (this->batCooldowns[index] <= 0.0f)
 		{
-			this->arrowPool[index]->setOpacity(0);
-			this->arrowPool[index]->setPosition(Vec2(RandomHelper::random_real(-VarianceX, VarianceX), 0.0f));
-			this->arrowPool[index]->runAction(FadeTo::create(0.25f, 255));
+			this->batPool[index]->setOpacity(0);
+			this->batPool[index]->setPosition(Vec2(RandomHelper::random_real(-VarianceX, VarianceX), 0.0f));
+			this->batPool[index]->runAction(FadeTo::create(0.25f, 255));
 
-			this->arrowCooldowns[index] = Duration;
+			this->batCooldowns[index] = Duration;
 		}
 	}
 }

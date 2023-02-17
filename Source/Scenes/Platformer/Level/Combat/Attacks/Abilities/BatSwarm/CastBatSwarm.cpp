@@ -13,6 +13,7 @@
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 
+#include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
@@ -20,20 +21,19 @@
 
 using namespace cocos2d;
 
-CastBatSwarm* CastBatSwarm::create(float attackDuration, float recoverDuration, Priority priority, std::string arrowResource)
+CastBatSwarm* CastBatSwarm::create(float attackDuration, float recoverDuration, Priority priority)
 {
-	CastBatSwarm* instance = new CastBatSwarm(attackDuration, recoverDuration, priority, arrowResource);
+	CastBatSwarm* instance = new CastBatSwarm(attackDuration, recoverDuration, priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CastBatSwarm::CastBatSwarm(float attackDuration, float recoverDuration, Priority priority, std::string arrowResource)
+CastBatSwarm::CastBatSwarm(float attackDuration, float recoverDuration, Priority priority)
 	: super(AttackType::Damage, UIResources::Menus_Icons_Bats, priority, AbilityType::Shadow, 0, 0, 4, attackDuration, recoverDuration, TargetingType::Multi)
 {
-	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
-	this->arrowResource = arrowResource;
+	this->castSound = WorldSound::create(ObjectResources::Traps_Ballista_TILT_1);
 	
 	this->addChild(this->castSound);
 }
@@ -49,7 +49,7 @@ void CastBatSwarm::initializePositions()
 
 PlatformerAttack* CastBatSwarm::cloneInternal()
 {
-	return CastBatSwarm::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority, this->arrowResource);
+	return CastBatSwarm::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority);
 }
 
 LocalizedString* CastBatSwarm::getString()
@@ -72,7 +72,7 @@ void CastBatSwarm::performAttack(PlatformerEntity* owner, std::vector<Platformer
 
 	ObjectEvents::QueryObject<CinematicMarker>([=](CinematicMarker* marker)
 	{
-		BatSwarm* arrowRain = BatSwarm::create(owner, nullptr, this->arrowResource);
+		BatSwarm* arrowRain = BatSwarm::create(owner, nullptr);
 
 		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			marker,
@@ -94,7 +94,7 @@ void CastBatSwarm::performAttack(PlatformerEntity* owner, std::vector<Platformer
 	[=]()
 	{
 		// TOP CENTER ARENA MARKER NOT FOUND!
-		BatSwarm* arrowRain = BatSwarm::create(owner, nullptr, this->arrowResource);
+		BatSwarm* arrowRain = BatSwarm::create(owner, nullptr);
 
 		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			this,

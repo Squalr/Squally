@@ -25149,6 +25149,21 @@ namespace Strings
 		virtual ~Platformer_Entities_EndianForest_Lycan_NobodyAllowedIntoTown() = default;
 	};
 
+	class Platformer_Entities_Names_Critters_Bat : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Critters_Bat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Critters_Bat();
+		virtual ~Platformer_Entities_Names_Critters_Bat() = default;
+	};
+
 	class Platformer_Entities_Names_Critters_Gull : public LocalizedString
 	{
 	public:

@@ -4,28 +4,29 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Entities/Platformer/Critters/Bat.h"
 
 #include "Resources/FXResources.h"
 
 using namespace cocos2d;
 
-BatSwarmGenericPreview* BatSwarmGenericPreview::create(std::string arrowResource)
+BatSwarmGenericPreview* BatSwarmGenericPreview::create()
 {
-	BatSwarmGenericPreview* instance = new BatSwarmGenericPreview(arrowResource);
+	BatSwarmGenericPreview* instance = new BatSwarmGenericPreview();
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BatSwarmGenericPreview::BatSwarmGenericPreview(std::string arrowResource)
+BatSwarmGenericPreview::BatSwarmGenericPreview()
 {
-	this->arrowResource = arrowResource;
-	this->arrow = Sprite::create(arrowResource);
+	ValueMap valueMap;
+	this->bat = Bat::deserialize(valueMap);
 
-	this->arrow->setRotation(180.0f);
+	this->bat->setRotation(180.0f);
 
-	this->previewNode->addChild(this->arrow);
+	this->previewNode->addChild(this->bat);
 }
 
 BatSwarmGenericPreview::~BatSwarmGenericPreview()
@@ -34,7 +35,7 @@ BatSwarmGenericPreview::~BatSwarmGenericPreview()
 
 HackablePreview* BatSwarmGenericPreview::clone()
 {
-	return BatSwarmGenericPreview::create(this->arrowResource);
+	return BatSwarmGenericPreview::create();
 }
 
 void BatSwarmGenericPreview::onEnter()
