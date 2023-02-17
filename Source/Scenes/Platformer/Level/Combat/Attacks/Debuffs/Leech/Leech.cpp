@@ -10,8 +10,6 @@
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Optimization/LazyNode.h"
-#include "Engine/Particles/SmartParticles.h"
-#include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -25,8 +23,7 @@
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
 
 #include "Resources/FXResources.h"
-#include "Resources/ObjectResources.h"
-#include "Resources/ParticleResources.h"
+#include "Resources/ItemResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
@@ -34,14 +31,13 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_LEECH 1
+#define LOCAL_FUNC_ID_RADIATION 1
 
 const std::string Leech::LeechIdentifier = "leech";
-const std::string Leech::HackIdentifierLeech = "leech";
-
-const int Leech::MaxMultiplier = 6;
-const int Leech::DamageDelt = 1;
-const float Leech::Duration = 24.0f;
+const int Leech::DrainAmount = 5;
+const int Leech::DrainAmountMax = 8;
+const float Leech::TimeBetweenTicks = 0.5f;
+const float Leech::StartDelay = 0.25f;
 
 Leech* Leech::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -53,11 +49,16 @@ Leech* Leech::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Leech::Leech(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_PurpleScarabShell, AbilityType::Nature, BuffData(Leech::Duration, Leech::LeechIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_SwordGlowBlue, AbilityType::Shadow, BuffData())
 {
-	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
+	this->drainEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
+	this->drainAmount = Leech::DrainAmount;
+	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
+	this->drainSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
 
-	this->addChild(this->spellEffect);
+	this->addChild(this->drainEffect);
+	this->addChild(this->impactSound);
+	this->addChild(this->drainSound);
 }
 
 Leech::~Leech()
@@ -68,8 +69,7 @@ void Leech::onEnter()
 {
 	super::onEnter();
 
-	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
-	this->spellEffect->start();
+	this->runLeech();
 
 	CombatEvents::TriggerHackableCombatCue();
 }
@@ -77,6 +77,8 @@ void Leech::onEnter()
 void Leech::initializePositions()
 {
 	super::initializePositions();
+
+	this->setPosition(Vec2(0.0f, 118.0f - this->owner->getEntityCenterPoint().y));
 }
 
 void Leech::registerHackables()
@@ -91,40 +93,43 @@ void Leech::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_LEECH,
+			LOCAL_FUNC_ID_RADIATION,
 			HackableCode::HackableCodeInfo(
-				Leech::HackIdentifierLeech,
+				Leech::LeechIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_Leech_Leech::create(),
-				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_PurpleScarabShell,
+				HackableBase::HackBarColor::Yellow,
+				UIResources::Menus_Icons_SwordGlowBlue,
 				LazyNode<HackablePreview>::create([=](){ return LeechGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_Leech_Register::create(),
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_Leech_RegisterEdi::create(),
 					},
+					{
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Leech_RegisterEsi::create(),
+					}
 				},
 				int(HackFlags::None),
-				this->getRemainingDuration(),
+				Leech::StartDelay + Leech::TimeBetweenTicks * float(Leech::DrainAmount),
 				0.0f,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentCompare::create()) +
-						"cmp edx, 1:\n"
-						"jl doNothing\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentConvertToHealing::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentJump::create()) +
-						"imul edx, -1\n\n" +
-						"doNothing:\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentRng::create()) +
+						"cmp esi, 0\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentJz::create()) +
+						"jz skipCode\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentApplyDamage::create()) +
+						"mov edi, 5:\n" + // Leech::DrainAmount
+						"skipCode:\n"
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentCompare::create()) +
-						"cmp rdx, 1:\n"
-						"jl doNothing\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentConvertToHealing::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentJump::create()) +
-						"imul rdx, -1\n\n" +
-						"doNothing:\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentRng::create()) +
+						"cmp rsi, 0\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentJz::create()) +
+						"jz skipCode\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentApplyDamage::create()) +
+						"mov rdi, 5:\n" + // Leech::DrainAmount
+						"skipCode:\n"
 					),
 				},
 				true
@@ -132,8 +137,8 @@ void Leech::registerHackables()
 		},
 	};
 
-	auto func = &Leech::applyLeech;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	auto restoreFunc = &Leech::runLeechTick;
+	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{
@@ -141,48 +146,76 @@ void Leech::registerHackables()
 	}
 }
 
-void Leech::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void Leech::runLeech()
 {
-	super::onBeforeDamageDealt(damageOrHealing);
+	this->impactSound->play();
 
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(Leech::DamageDelt);
+	std::vector<TimelineEvent*> timelineEvents = std::vector<TimelineEvent*>();
 
-	this->applyLeech();
+	for (int drainIndex = 0; drainIndex < this->drainAmount; drainIndex++)
+	{
+		Sprite* icon = Sprite::create(UIResources::Menus_Icons_BloodGoblet);
 
-	int min = -std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Leech::MaxMultiplier);
-	int max = std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Leech::MaxMultiplier);
+		icon->setScale(0.5f);
 
-	*damageOrHealing->damageOrHealing = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
-	*damageOrHealing->damageOrHealingMin = min;
-	*damageOrHealing->damageOrHealingMax = max;
+		timelineEvents.push_back(TimelineEvent::create(
+				this->owner,
+				icon,
+				Leech::TimeBetweenTicks * float(drainIndex) + Leech::StartDelay, [=]()
+			{
+				if (!this->drainEffect->isPlayingAnimation())
+				{
+					this->drainEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
+				}
+				
+				this->runLeechTick();
+			})
+		);
+	}
+
+	CombatEvents::TriggerRegisterTimelineEventGroup(CombatEvents::RegisterTimelineEventGroupArgs(
+		TimelineEventGroup::create(timelineEvents, this, this->owner, [=]()
+		{
+			this->removeBuff();
+		})
+	));
 }
 
-NO_OPTIMIZE void Leech::applyLeech()
+NO_OPTIMIZE void Leech::runLeechTick()
 {
-	static volatile int currentDamageDealtLocal = 0;
+	static volatile int drainAmount = 0;
+	static volatile int rng = 0;
 
-	currentDamageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	drainAmount = 0;
+	rng = RandomHelper::random_int(0, 1);
 
 	ASM_PUSH_EFLAGS()
-	ASM(push ZDX);
+	ASM(push ZDI);
+	ASM(push ZSI);
 
-	ASM(MOV ZDX, 0)
-	ASM_MOV_REG_VAR(edx, currentDamageDealtLocal);
+	ASM(mov ZDI, 0);
+	ASM_MOV_REG_VAR(esi, rng);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_LEECH);
-	ASM(cmp ZDX, 1);
-	ASM(jl doNothingLeech);
-	ASM(imul ZDX, -1);
-	ASM(doNothingLeech:);
-	ASM_NOP16();
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RADIATION);
+	ASM(cmp ZSI, 0);
+	ASM(jz skipLeechCode);
+	ASM(mov ZDI, 5); // Leech::DrainAmount
+	ASM(skipLeechCode:);
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, edx);
+	ASM_MOV_VAR_REG(drainAmount, edi);
 
-	ASM(pop ZDX);
+	ASM(pop ZSI);
+	ASM(pop ZDI);
 	ASM_POP_EFLAGS()
 
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
+	bool overflowedMin = drainAmount <= -Leech::DrainAmountMax;
+	bool overflowedMax = drainAmount >= Leech::DrainAmountMax;
+	drainAmount = MathUtils::clamp(drainAmount, -Leech::DrainAmountMax, Leech::DrainAmountMax);
+
+	this->drainSound->play();
+	CombatEvents::TriggerManaDrain(CombatEvents::ManaRestoreOrDrainArgs(this->owner, this->caster, drainAmount, this->abilityType, true, overflowedMin, overflowedMax));
+	CombatEvents::TriggerManaRestore(CombatEvents::ManaRestoreOrDrainArgs(this->caster, this->owner, drainAmount, this->abilityType, true, overflowedMax, overflowedMin));
 
 	HACKABLES_STOP_SEARCH();
 }

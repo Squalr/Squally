@@ -128,19 +128,27 @@ void Immortality::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"cmp esi, ebx\n"
-						"cmovle esi, ebx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create())
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentCompare::create()) + 
+						std::string("cmp esi, 0\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentJump::create()) + 
+						std::string("je applyImmortality\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentElse::create()) + 
+						std::string("jmp skipCodeImmortality\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentApplyImmortality::create()) + 
+						std::string("applyImmortality:\n") +
+						std::string("mov esi, 1\n\n") +
+						std::string("skipCodeImmortality:\n")
 						, // x64
-						"cmp rsi, rbx\n"
-						"cmovle rsi, rbx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create())
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentCompare::create()) + 
+						std::string("cmp rsi, 0\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentJump::create()) + 
+						std::string("je applyImmortality\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentElse::create()) + 
+						std::string("jmp skipCodeImmortality\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentApplyImmortality::create()) + 
+						std::string("applyImmortality:\n") +
+						std::string("mov rsi, 1\n\n") +
+						std::string("skipCodeImmortality:\n")
 					),
 				},
 				true
@@ -198,22 +206,23 @@ NO_OPTIMIZE void Immortality::applyImmortality()
 	newHealthImmortality = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Immortality::StateKeyImmortalityNewHealth, Value(0)).asInt();
 
 	ASM_PUSH_EFLAGS();
-	ASM(push ZBX);
 	ASM(push ZSI);
 
-	ASM(mov ZBX, 1);
 	ASM_MOV_REG_VAR(esi, newHealthImmortality);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_IMMORTALITY);
-	ASM(cmp ZSI, ZBX);
-	ASM(cmovle ZSI, ZBX);
+	ASM(cmp ZSI, 0);
+	ASM(je applyImmortalityHp);
+	ASM(jmp skipCodeImmortality);
+	ASM(applyImmortalityHp:);
+	ASM(mov ZSI, 1);
+	ASM(skipCodeImmortality:);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 		
 	ASM_MOV_VAR_REG(newHealthImmortality, esi);
 
 	ASM(pop ZSI);
-	ASM(pop ZBX);
 	ASM_POP_EFLAGS();
 
 	Buff::HackStateStorage[Immortality::StateKeyImmortalityNewHealth] = newHealthImmortality;

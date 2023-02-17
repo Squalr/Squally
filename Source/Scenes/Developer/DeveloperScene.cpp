@@ -379,14 +379,14 @@ DeveloperScene::DeveloperScene()
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
 		X Thug					1_x		=> jmp 			--			Heavy blade
-		X Barbarian				1_x		=> jle			ZF/SF/OF	Defensive stance
+		X Barbarian				1_x		=> jle			ZF/SF/OF	Defensive Stance
 		X ReanimatedFighter		1_x		=> jg			ZF/SF/OF	Diseased
-		O Wraith				dark	=> jne			ZF/SF/OF	Manifest <Spirit, invert rabies as damage buff>
-		O Abomination			dark	=> jnz			ZF/SF/OF	<Radiation, RNG per tick to do -5 dmg or something>
-		O Reaper				dark	=> je			ZF/SF/OF	<AngelFigurine, undying>
-		O Vampiress				dark	=> jl			ZF/SF/OF	Vampirism <?, HP Drain> // TODO: Steal
-		O VampireLord			dark	=> jz			ZF/SF/OF	Leech <SwordGlowBlue, RNG mana steal?>
-		O WereWolf				2_x		=> jge			ZF/SF/OF	Rabies <?, speed drain>
+		X Wraith				dark	=> jne			ZF/SF/OF	Manifest <Spirit, invert rabies as damage buff>
+		X Abomination			dark	=> jnz			ZF/SF/OF	<Radiation, RNG per tick to do -5 dmg or something>
+		X Reaper				dark	=> je			ZF/SF/OF	<AngelFigurine, immortality>
+		X Vampiress				dark	=> jl			ZF/SF/OF	Vampirism <?, HP Drain> // TODO: Steal
+		X VampireLord			dark	=> jz			ZF/SF/OF	Leech <SwordGlowBlue, RNG mana steal?>
+		X WereWolf				2_x		=> jge			ZF/SF/OF	Rabies <?, speed drain>
 		O SkeletalBaron			2_x		=> jns			SF			Parry <ShieldAdorned, convert damage to zero>
 		- Jack					2_x		=> js			SF			<Dice, RNG per tick? Maybe create pumpkin icon, but idk>
 		- [B] Agnes				dark_t	=> jecxz		%ecx == 0	Bat Swarm <Bats, Bat Swarm RNG per tick to attack>

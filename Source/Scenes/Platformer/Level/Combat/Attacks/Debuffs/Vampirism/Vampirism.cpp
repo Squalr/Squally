@@ -111,19 +111,21 @@ void Vampirism::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare::create()) +
-						"cmp edx, 1:\n"
+						"cmp edx, 0:\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump::create()) +
 						"jl doNothing\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentConvertToHealing::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump::create()) +
-						"imul edx, -1\n\n" +
+						"mov ecx, edx\n" +
+						"imul ecx, -1\n\n" +
 						"doNothing:\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare::create()) +
-						"cmp rdx, 1:\n"
+						"cmp rdx, 0:\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump::create()) +
 						"jl doNothing\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentConvertToHealing::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump::create()) +
-						"imul rdx, -1\n\n" +
+						"mov rcx, rdx\n" +
+						"imul rcx, -1\n\n" +
 						"doNothing:\n"
 					),
 				},
@@ -160,29 +162,41 @@ void Vampirism::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs*
 NO_OPTIMIZE void Vampirism::applyVampirism()
 {
 	static volatile int currentDamageDealtLocal = 0;
+	static volatile int healingLocal = 0;
 
 	currentDamageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 
+	// TODO: Another register to store the amount healed on damage
+
 	ASM_PUSH_EFLAGS()
 	ASM(push ZDX);
+	ASM(push ZCX);
 
 	ASM(MOV ZDX, 0)
 	ASM_MOV_REG_VAR(edx, currentDamageDealtLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_VAMPIRISM);
-	ASM(cmp ZDX, 1);
-	ASM(jl doNothingVampirism);
-	ASM(imul ZDX, -1);
-	ASM(doNothingVampirism:);
+	ASM(cmp ZDX, 0);
+	ASM(jl skipCodeVampirism);
+	ASM(mov ZCX, ZDX);
+	ASM(imul ZCX, -1);
+	ASM(skipCodeVampirism:);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, edx);
+	ASM_MOV_VAR_REG(healingLocal, ecx);
 
+	ASM(pop ZCX);
 	ASM(pop ZDX);
 	ASM_POP_EFLAGS()
 
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
+	currentDamageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+
+	int max = currentDamageDealtLocal * Vampirism::MaxMultiplier;
+	bool overflowedMin = healingLocal >= max;
+	bool overflowedMax = healingLocal <= max;
+	healingLocal = MathUtils::clamp(healingLocal, -max, max);
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, healingLocal, this->abilityType, true, overflowedMin, overflowedMax));
 
 	HACKABLES_STOP_SEARCH();
 }

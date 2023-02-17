@@ -116,13 +116,10 @@ void Manifest::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return ManifestGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Fury_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Manifest_RegisterEax::create()
 					},
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Fury_RegisterEax8::create(), true, 8
-					},
-					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Fury_RegisterEbx::create()
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Manifest_RegisterEbx::create()
 					},
 				},
 				int(HackFlags::None),
@@ -132,44 +129,25 @@ void Manifest::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						// COMMENT("Push speed onto FPU stack")
-						"fld dword ptr [eax]\n"
-						// COMMENT("Push zero onto FPU stack")
-						"fldz\n"
-						// COMMENT("Check if speed is > 0, and pop stack twice")
-						"fcompp\n"
-						// COMMENT("Jump to reduce speed code if speed is > 0")
-						"jge reduceSpeed\n"
-						// COMMENT("Otherwise, jump over the speed reduction and do nothing")
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Manifest_CommentCompareDamage::create()) + 
+						"cmp [eax], 0\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Manifest_CommentJumpReduce::create()) + 
+						"jne reduceDamage\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Manifest_CommentElseSkip::create()) + 
 						"jmp skipCode\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						"reduceSpeed:\n"
-						"mov dword ptr [esi], -0.5f\n\n"
-						"skipCode:\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						"reduceDamage:\n" +
+						"mov dword ptr [esi], 0\n\n" +
+						"skipCode:\n"
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						"fld dword ptr [rax]\n"
-						"fldz\n"
-						"fcompp\n"
-						"jge reduceSpeed\n"
-						"jmp skipCode\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						"reduceSpeed:\n"
-						"mov dword ptr [rsi], -0.5f\n\n"
-						"skipCode:\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Manifest_CommentCompareDamage::create()) + 
+						"cmp [rax], 0\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Manifest_CommentJumpReduce::create()) + 
+						"jne reduceDamage\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Manifest_CommentElseSkip::create()) + 
+						"jmp skipCode\n" +
+						"reduceDamage:\n" +
+						"mov dword ptr [rsi], 0\n\n" +
+						"skipCode:\n"
 					)
 				},
 				true
