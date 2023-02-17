@@ -11109,36 +11109,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Parry_CommentElaborate : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_Parry_CommentElaborate* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_Parry_CommentElaborate();
-		virtual ~Menus_Hacking_Abilities_Buffs_Parry_CommentElaborate() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_Parry_CommentHint : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_Parry_CommentHint* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_Parry_CommentHint();
-		virtual ~Menus_Hacking_Abilities_Buffs_Parry_CommentHint() = default;
-	};
-
 	class Menus_Hacking_Abilities_Buffs_Parry_CommentParry : public LocalizedString
 	{
 	public:
@@ -11154,10 +11124,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Parry_CommentParry() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Parry_CommentShr : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Parry_CommentSkipParry : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Parry_CommentShr* create();
+		static Menus_Hacking_Abilities_Buffs_Parry_CommentSkipParry* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11165,14 +11135,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_Parry_CommentShr();
-		virtual ~Menus_Hacking_Abilities_Buffs_Parry_CommentShr() = default;
+		Menus_Hacking_Abilities_Buffs_Parry_CommentSkipParry();
+		virtual ~Menus_Hacking_Abilities_Buffs_Parry_CommentSkipParry() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Parry_CommentShrBy1 : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Parry_CommentTest : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Parry_CommentShrBy1* create();
+		static Menus_Hacking_Abilities_Buffs_Parry_CommentTest* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11180,8 +11150,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_Parry_CommentShrBy1();
-		virtual ~Menus_Hacking_Abilities_Buffs_Parry_CommentShrBy1() = default;
+		Menus_Hacking_Abilities_Buffs_Parry_CommentTest();
+		virtual ~Menus_Hacking_Abilities_Buffs_Parry_CommentTest() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Parry_Parry : public LocalizedString
@@ -11199,10 +11169,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Parry_Parry() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Parry_RegisterEbx : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Parry_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Parry_RegisterEbx* create();
+		static Menus_Hacking_Abilities_Buffs_Parry_RegisterEax* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11210,23 +11180,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_Parry_RegisterEbx();
-		virtual ~Menus_Hacking_Abilities_Buffs_Parry_RegisterEbx() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_Parry_RegisterEdi : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_Parry_RegisterEdi* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_Parry_RegisterEdi();
-		virtual ~Menus_Hacking_Abilities_Buffs_Parry_RegisterEdi() = default;
+		Menus_Hacking_Abilities_Buffs_Parry_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Buffs_Parry_RegisterEax() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate : public LocalizedString

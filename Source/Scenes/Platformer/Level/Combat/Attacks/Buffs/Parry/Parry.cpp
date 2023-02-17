@@ -11,6 +11,7 @@
 #include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
+#include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -34,15 +35,15 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_REFLECT 1
+#define LOCAL_FUNC_ID_STONE_SKIN 1
 
-const std::string Parry::ParryIdentifier = "reflect";
+const std::string Parry::ParryIdentifier = "parry";
 
-const int Parry::MinMultiplier = 2;
-const int Parry::MaxMultiplier = 2;
-const float Parry::Duration = 10.0f;
-	
-const std::string Parry::StateKeyDamageParryed = "ANTI_OPTIMIZE_STATE_KEY_DAMAGE_REFLECTED";
+const int Parry::MaxMultiplier = 4;
+const float Parry::Duration = 16.0f;
+
+// Static to prevent GCC optimization issues
+volatile int Parry::currentDamageTaken = 0;
 
 Parry* Parry::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -54,14 +55,15 @@ Parry* Parry::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Parry::Parry(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_ShieldMagic, AbilityType::Arcane, BuffData(Parry::Duration, Parry::ParryIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_ShieldBroken, AbilityType::Physical, BuffData(Parry::Duration, Parry::ParryIdentifier))
 {
-	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
+	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Gray);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
+	this->currentDamageTaken = 0;
 
 	this->bubble->setOpacity(0);
-	this->spellAura->setColor(Color3B::BLUE);
+	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
@@ -77,11 +79,11 @@ void Parry::onEnter()
 {
 	super::onEnter();
 
+	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellEffect->start();
 
 	this->bubble->runAction(FadeTo::create(0.25f, 255));
 
-	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellAura->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),
 		DelayTime::create(0.5f),
@@ -109,24 +111,17 @@ void Parry::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_REFLECT,
+			LOCAL_FUNC_ID_STONE_SKIN,
 			HackableCode::HackableCodeInfo(
 				Parry::ParryIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Parry_Parry::create(),
-				HackableBase::HackBarColor::Blue,
-				UIResources::Menus_Icons_ShieldMagic,
+				HackableBase::HackBarColor::Gray,
+				UIResources::Menus_Icons_ShieldBroken,
 				LazyNode<HackablePreview>::create([=](){ return ParryGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Parry_RegisterEbx::create()->setStringReplacementVariables(
-							{
-								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(-Parry::MinMultiplier))),
-								Strings::Common_ConstantTimes::create()->setStringReplacementVariables(ConstantString::create(std::to_string(Parry::MaxMultiplier)))
-							}),
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Parry_RegisterEax::create()
 					},
-					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Parry_RegisterEdi::create(),
-					}
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
@@ -135,35 +130,32 @@ void Parry::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentShr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentShrBy1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentElaborate::create()) +
-						"shr esi, 1\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentParry::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) +
-						"mov ebx, esi\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentHint::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create() }))
-						
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentTest::create()
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))) + 
+						"test eax, eax\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentSkipParry::create()) + 
+						"jns skipCode\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentParry::create()) + 
+						"mov eax, 0\n" +
+						"skipCode:\n"
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentShr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentShrBy1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentElaborate::create()) +
-						"shr rsi, 1\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentParry::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) +
-						"mov rbx, rsi\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentHint::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsi::create() }))
-					),
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentTest::create()
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))) + 
+						"test rax, rax\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentSkipParry::create()) + 
+						"jns skipCode\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentParry::create()) + 
+						"mov rax, 0\n" +
+						"skipCode:\n"
+					)
 				},
 				true
 			)
 		},
 	};
 
-	auto func = &Parry::applyParry;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	auto stoneSkinFunc = &Parry::applyParry;
+	this->hackables = HackableCode::create((void*&)stoneSkinFunc, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{
@@ -175,64 +167,41 @@ void Parry::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* dam
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
-	Buff::HackStateStorage[Parry::StateKeyDamageParryed] = Value(damageOrHealing->damageOrHealingValue);
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
+	this->currentDamageTaken = damageOrHealing->damageOrHealingValue;
 
 	this->applyParry();
 
-	int minDamage = -std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Parry::MinMultiplier);
-	int maxDamage = std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Parry::MaxMultiplier);
-	int minParryedDamage = -std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Parry::MinMultiplier);
-	int maxParryedDamage = std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Parry::MaxMultiplier);
-	bool reflectedDamageOverflowMin = Buff::HackStateStorage[Parry::StateKeyDamageParryed].asInt() <= minParryedDamage;
-	bool reflectedDamageOverflowMax = Buff::HackStateStorage[Parry::StateKeyDamageParryed].asInt() >= maxParryedDamage;
-	
-	*(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
-	(*damageOrHealing->damageOrHealingMin) = minDamage;
-	(*damageOrHealing->damageOrHealingMax) = maxDamage;
-
-	// Parry damage back to attacker (do not let buffs process this damage -- two reflect spells could infinite loop otherwise)
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(
-		damageOrHealing->target,
-		damageOrHealing->caster,
-		GameUtils::getKeyOrDefault(Buff::HackStateStorage, Parry::StateKeyDamageParryed, Value(0)).asInt(),
-		damageOrHealing->abilityType,
-		true,
-		reflectedDamageOverflowMin,
-		reflectedDamageOverflowMax
-	));
+	(*damageOrHealing->damageOrHealing) = this->currentDamageTaken;
+	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * Parry::MaxMultiplier);
+	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * Parry::MaxMultiplier);
 }
 
 NO_OPTIMIZE void Parry::applyParry()
 {
-	static volatile int damageDealtLocal = 0;
-	static volatile int damageParryedLocal = 0;
+	static volatile int currentDamageTakenLocal = 0;
 
-	damageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
-	damageParryedLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
-	
+	currentDamageTakenLocal = this->currentDamageTaken;
+
 	ASM_PUSH_EFLAGS()
-	ASM(push ZSI);
-	ASM(push ZBX);
+	ASM(push ZAX);
 
-	ASM_MOV_REG_VAR(esi, damageDealtLocal);
-	ASM_MOV_REG_VAR(ebx, damageParryedLocal);
+	ASM_MOV_REG_VAR(eax, currentDamageTakenLocal);
+	ASM(DIV_CONVERT);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_REFLECT);
-	ASM(shr ZSI, 1);
-	ASM(mov ZBX, ZSI);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_STONE_SKIN);
+	ASM(test ZAX, ZAX);
+	ASM(jns skipCode);
+	ASM(mov ZAX, 0);
+	ASM(skipCode:);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(damageDealtLocal, esi);
-	ASM_MOV_VAR_REG(damageParryedLocal, ebx);
+	ASM_MOV_VAR_REG(currentDamageTakenLocal, eax);
 
-	ASM(pop ZBX);
-	ASM(pop ZSI);
+	ASM(pop ZAX);
 	ASM_POP_EFLAGS()
 
-	Buff::HackStateStorage[Parry::StateKeyDamageDealt] = Value(damageDealtLocal);
-	Buff::HackStateStorage[Parry::StateKeyDamageParryed] = Value(damageParryedLocal);
+	this->currentDamageTaken = currentDamageTakenLocal;
 
 	HACKABLES_STOP_SEARCH();
 }

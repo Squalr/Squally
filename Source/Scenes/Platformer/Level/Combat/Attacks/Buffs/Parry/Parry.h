@@ -31,13 +31,12 @@ private:
 
 	void applyParry();
 	
+	static volatile int currentDamageTaken;
+	
 	SmartParticles* spellEffect = nullptr;
 	cocos2d::Sprite* bubble = nullptr;
 	cocos2d::Sprite* spellAura = nullptr;
 	
-	static const std::string StateKeyDamageParryed;
-
-	static const int MinMultiplier;
 	static const int MaxMultiplier;
 	static const float Duration;
 };
