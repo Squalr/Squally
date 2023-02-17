@@ -49,7 +49,7 @@ Bloodletting* Bloodletting::create(PlatformerEntity* caster, PlatformerEntity* t
 }
 
 Bloodletting::Bloodletting(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_BloodGoblet, AbilityType::Shadow, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_Stab, AbilityType::Shadow, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = Bloodletting::DamageAmount;
@@ -98,14 +98,14 @@ void Bloodletting::registerHackables()
 				Bloodletting::BloodlettingIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_Bloodletting::create(),
 				HackableBase::HackBarColor::Yellow,
-				UIResources::Menus_Icons_BloodGoblet,
+				UIResources::Menus_Icons_Stab,
 				LazyNode<HackablePreview>::create([=](){ return BloodlettingGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEdi::create(),
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEbx::create(),
 					},
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEsi::create(),
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEdx::create(),
 					}
 				},
 				int(HackFlags::None),
@@ -116,26 +116,26 @@ void Bloodletting::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng::create()) +
-						"cmp esi, 0\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJnz::create()) +
-						"jnz radiation\n\n" +
+						"test ebx, ebx\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJs::create()) +
+						"js bloodletting\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp::create()) +
-						"jmp radiationSkip\n\n" +
+						"jmp skipCode\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage::create()) +
+						"bloodletting:\n" +
 						"mov edi, 5:\n" + // Bloodletting::DamageAmount
-						"radiation:\n" +
-						"radiationSkip:\n\n"
+						"skipCode:\n\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng::create()) +
-						"cmp rsi, 0\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJnz::create()) +
-						"jnz radiation\n\n" +
-						"jmp radiationSkip\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage::create()) +
-						"mov rdi, 5:\n" + // Bloodletting::DamageAmount
-						"radiation:\n" +
+						"test rbx, rbx\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJs::create()) +
+						"js bloodletting\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp::create()) +
-						"radiationSkip:\n\n"
+						"jmp skipCode\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage::create()) +
+						"bloodletting:\n" +
+						"mov rdi, 5:\n" + // Bloodletting::DamageAmount
+						"skipCode:\n\n"
 					),
 				},
 				true
@@ -193,28 +193,27 @@ NO_OPTIMIZE void Bloodletting::runBloodlettingTick()
 	static volatile int rng = 0;
 
 	drainAmount = 0;
-	rng = RandomHelper::random_int(0, 1);
+	rng = RandomHelper::random_int(-100, 100);
 
 	ASM_PUSH_EFLAGS()
-	ASM(push ZDI);
-	ASM(push ZSI);
+	ASM(push ZBX);
+	ASM(push ZDX);
 
-	ASM(mov ZDI, 0);
-	ASM_MOV_REG_VAR(esi, rng);
+	ASM_MOV_REG_VAR(ebx, rng);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RADIATION);
-	ASM(cmp ZSI, 0);
-	ASM(jnz radiation);
-	ASM(jmp radiationSkip);
-	ASM(radiation:);
-	ASM(mov ZDI, 5); // Bloodletting::DamageAmount
-	ASM(radiationSkip:);
+	ASM(test ZBX, ZBX);
+	ASM(js bloodletting);
+	ASM(jmp bloodlettingSkip);
+	ASM(bloodletting:);
+	ASM(mov ZDX, 5); // Bloodletting::DamageAmount
+	ASM(bloodlettingSkip:);
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(drainAmount, edi);
 
-	ASM(pop ZSI);
-	ASM(pop ZDI);
+	ASM(pop ZDX);
+	ASM(pop ZBX);
 	ASM_POP_EFLAGS()
 
 	drainAmount = MathUtils::clamp(drainAmount, -Bloodletting::DamageAmountMax, Bloodletting::DamageAmountMax);

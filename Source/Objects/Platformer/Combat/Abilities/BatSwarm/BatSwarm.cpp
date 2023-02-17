@@ -35,7 +35,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_COMPARE_TEAM 11
 
 const int BatSwarm::TickCount = 6;
-const int BatSwarm::Damage = 4;
+const int BatSwarm::Damage = 6;
 const float BatSwarm::TimeBetweenTicks = 0.75f;
 const float BatSwarm::StartDelay = 0.25f;
 const std::string BatSwarm::StateKeyIsCasterOnEnemyTeam = "ANTI_OPTIMIZE_STATE_KEY_DAMAGE_TAKEN";
@@ -122,14 +122,16 @@ void BatSwarm::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentEval::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
-						"cmp eax, 1\n"
+						"jecxz skipCode\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentApplyDamage::create()) +
+						"mov eax, 1\n" +
+						"skipCode:\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentEval::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
-						"cmp rax, 1\n"
+						"jecxz skipCode\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentApplyDamage::create()) +
+						"mov rax, 1\n" +
+						"skipCode:\n"
 					),
 				},
 				true
@@ -238,25 +240,20 @@ NO_OPTIMIZE void BatSwarm::compareTeam(TimelineEntry* entry)
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
-	ASM(push ZBX);
+	ASM(push ZCX);
 
-	ASM(MOV ZAX, 0);
 	ASM_MOV_REG_VAR(eax, isOnEnemyTeamLocal);
 
-	ASM(mov ZBX, 1);
-
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM);
-	ASM(cmp ZAX, 1);
+	ASM(jecxz skipCodeBatSwarm);
+	ASM(mov ZAX, 1);
+	ASM(skipCodeBatSwarm:);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	// If the compare is true, set zax to 1, else 0
-	ASM(MOV ZAX, 0);
-	ASM(cmove ZAX, ZBX);
-
 	ASM_MOV_VAR_REG(isOnEnemyTeamLocal, eax);
 
-	ASM(pop ZBX);
+	ASM(pop ZCX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
