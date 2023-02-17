@@ -9354,6 +9354,81 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax() = default;
 	};
 
+	class Menus_Hacking_Abilities_Abilities_BatSwarm_BatSwarm : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_BatSwarm_BatSwarm* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_BatSwarm_BatSwarm();
+		virtual ~Menus_Hacking_Abilities_Abilities_BatSwarm_BatSwarm() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_BatSwarm_CommentCompare : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_BatSwarm_CommentCompare* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_BatSwarm_CommentCompare();
+		virtual ~Menus_Hacking_Abilities_Abilities_BatSwarm_CommentCompare() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_BatSwarm_CommentEval : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_BatSwarm_CommentEval* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_BatSwarm_CommentEval();
+		virtual ~Menus_Hacking_Abilities_Abilities_BatSwarm_CommentEval() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_BatSwarm_CompareTeam : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_BatSwarm_CompareTeam* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_BatSwarm_CompareTeam();
+		virtual ~Menus_Hacking_Abilities_Abilities_BatSwarm_CompareTeam() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEax() = default;
+	};
+
 	class Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_ApplySpeed : public LocalizedString
 	{
 	public:
@@ -11722,6 +11797,111 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_Blind_RegisterEsi();
 		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_RegisterEsi() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Bloodletting_Bloodletting : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Bloodletting_Bloodletting* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Bloodletting_Bloodletting();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Bloodletting_Bloodletting() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJnz : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJnz* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJnz();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJnz() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEdi() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEsi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEsi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEsi() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_BrittleBones_BrittleBones : public LocalizedString

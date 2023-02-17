@@ -58,7 +58,7 @@ Rabies* Rabies::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Rabies::Rabies(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Voodoo, AbilityType::Shadow, BuffData(Rabies::Duration, Rabies::RabiesIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Bite, AbilityType::Shadow, BuffData(Rabies::Duration, Rabies::RabiesIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura);
@@ -113,7 +113,7 @@ void Rabies::registerHackables()
 				Rabies::RabiesIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_Rabies_Rabies::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_Voodoo,
+				UIResources::Menus_Icons_Bite,
 				LazyNode<HackablePreview>::create([=](){ return RabiesGenericPreview::create(); }),
 				{
 					{
