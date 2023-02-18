@@ -468,7 +468,7 @@ DeveloperScene::DeveloperScene()
 		- SkeletalKnight		=>  4_x <SwordGlowYel,	fistp> => ?? / fixed damage (int)
 		- SkeletalCleaver		=>  4_x <AxeGlowPurp,	fist>  => ?? / fixed damage (int)
 		- [B] Lazarus			=>	3_x <Tombstone / WandCrystal, ??> => (?? / resurrection) (?? / damage thing)
-		- [B] KingZul			=>  4_x <AxeMoon,		fxch>  => ?? / swap st(0) and st(1). why.
+		- [B] KingZul			=>  4_x <GhostBolts?,		fxch>  => ?? / swap st(0) and st(1). why.
 
 		fsqrt => distance based trap damage
 
@@ -527,17 +527,17 @@ DeveloperScene::DeveloperScene()
 		/*
 		Surface:
 		- DemonRogue			=>  1_X		?	<Dice, ?> 
-		- DemonShaman			=>  1_X		?	<AxeGlowGreen, ?> 
+		- DemonShaman			=>  1_X		?	<FlamingScroll, ?> 
 		- DemonSwordsman		=>  1_X		?	<AxeGlowRed, ?> 
 		Caves:
 		- DemonDragon			=>  2_X		?	<Bone, ?> 
 		- DemonGhost			=>  2_X		?	<Candle, ?> 
 		- FireElemental			=>  2_X		?	<BookSpellsFire, ?> 
-		- LavaGolem				=>  2_X		?	<?, ?> 
+		- LavaGolem				=>  2_X		?	<Fire, ?> 
 		Surface 2?
 		- DemonArcher			=>  3_X			<CrossBow, ?> 
 		- DemonGrunt			=>  3_X		?	<DaggerGlowYellow, ?> 
-		- DemonWarrior			=>  3_X		?	<AxeGlowBlue, ?> 
+		- DemonWarrior			=>  3_X		?	<FireBolts, ?> 
 		- FireTiger				=>  3_X		?	<Chains, ?> 
 		- [B] Asmodeus			=> 	4_X		?	<AxeGlowOrange, ?> 
 		
@@ -597,18 +597,18 @@ DeveloperScene::DeveloperScene()
 		// ** Needs enemy scripting according to notes on which instructions this zone covers
 
 		/*
-		- PenguinGrunt		1_x		=> jnp			PF		<?, ?> // Odd or even! PF = 0 odd. All combinations valid except JNPE
-		- PenguinWarrior	1_x		=> jp			PF		<?, ?> // Odd or even! PF = 0 odd. All combinations valid except JNPE
+		- PenguinGrunt		1_x		=> jnp			PF		<Feather, ?> // Speed? Odd or even! PF = 0 odd. All combinations valid except JNPE
+		- PenguinWarrior	1_x		=> jp			PF		<AxeGlowBlue, ?> // Odd or even! PF = 0 odd. All combinations valid except JNPE
 		- Viking			1_x		=> jpe			PF		<Anchor, ?> // Odd or even! PF = 0 odd. All combinations valid except JNPE
-		- IceGolem			2_x		=> J[N]C		CF		<Snowflake, ?> // Immortality. Copy undying logic, but include a subtract.
-		- Yeti				2_x		=> J[N]C		CF		<?, ?> // Immortality. Copy undying logic, but include a subtract.
+		- IceGolem			2_x		=> J[N]C		CF		<Diamond, ?> // Immortality. Copy undying logic, but include a subtract.
+		- Yeti				2_x		=> J[N]C		CF		<AxeMoon?, ?> // Immortality. Copy undying logic, but include a subtract.
 		- WaterElemental	2_x		=> jno			OF		<SpellImpactBlue, ?>
-		- FrostFiend		2_x 	=> jo			OF		<?, ?> 
-		- GoblinElf			3_x		=> jbe			ZF/OF	<?, ?> 
-		- ToySoldierGoblin	3_x		=> jb			ZF/OF	<?, ?> 
-		- SnowFiend			3_x		=> jae			ZF/OF	<?, ?> 
-		- [B?] Santa		3_x		=> ja			ZF/OF	<ChristmasPresent, ? RNG>
-		- [B] Cryogen		3_x 	=> 
+		- FrostFiend		2_x 	=> jo			OF		<Blizzard, ?> 
+		- GoblinElf			3_x		=> jbe			ZF/OF	<AxeGlowGreen, ?> 
+		- ToySoldierGoblin	3_x		=> jb			ZF/OF	<ChristmasPresent, ?> 
+		- SnowFiend			3_x		=> jae			ZF/OF	<Snowflake, ?> 
+		- [B?] Santa		3_x		=> ja			ZF/OF	<Gift, ? RNG>
+		- [B] Cryogen		3_x 	=> ??			ZF/OF	<SwordsLight, ?>
 
 		- Aspen
 		- Bodom
