@@ -55,7 +55,7 @@ Parry* Parry::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Parry::Parry(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_ShieldBroken, AbilityType::Physical, BuffData(Parry::Duration, Parry::ParryIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_ShieldAdorned, AbilityType::Physical, BuffData(Parry::Duration, Parry::ParryIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Gray);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
@@ -116,7 +116,7 @@ void Parry::registerHackables()
 				Parry::ParryIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Parry_Parry::create(),
 				HackableBase::HackBarColor::Gray,
-				UIResources::Menus_Icons_ShieldBroken,
+				UIResources::Menus_Icons_ShieldAdorned,
 				LazyNode<HackablePreview>::create([=](){ return ParryGenericPreview::create(); }),
 				{
 					{

@@ -26,7 +26,7 @@ CastParry* CastParry::create(float attackDuration, float recoverDuration, Priori
 }
 
 CastParry::CastParry(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_ShieldMagic, priority, AbilityType::Arcane, 0, 0, 8, attackDuration, recoverDuration)
+	: super(AttackType::Buff, UIResources::Menus_Icons_ShieldAdorned, priority, AbilityType::Arcane, 0, 0, 8, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 

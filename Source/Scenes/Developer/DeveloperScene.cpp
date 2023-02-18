@@ -470,6 +470,10 @@ DeveloperScene::DeveloperScene()
 		- [B] Lazarus			=>	3_x <Tombstone / WandCrystal, ??> => (?? / resurrection) (?? / damage thing)
 		- [B] KingZul			=>  4_x <GhostBolts?,		fxch>  => ?? / swap st(0) and st(1). why.
 
+		Avail for traps:
+		- SpellBind
+		- SpellCast
+
 		fsqrt => distance based trap damage
 
 		- Amelia				=> Town_Church
@@ -531,7 +535,7 @@ DeveloperScene::DeveloperScene()
 		- DemonSwordsman		=>  1_X		?	<AxeGlowRed, ?> 
 		Caves:
 		- DemonDragon			=>  2_X		?	<Bone, ?> 
-		- DemonGhost			=>  2_X		?	<Candle, ?> 
+		- DemonGhost			=>  2_X		?	<SkullLavaEyes, ?> 
 		- FireElemental			=>  2_X		?	<BookSpellsFire, ?> 
 		- LavaGolem				=>  2_X		?	<Fire, ?> 
 		Surface 2?
@@ -540,7 +544,14 @@ DeveloperScene::DeveloperScene()
 		- DemonWarrior			=>  3_X		?	<FireBolts, ?> 
 		- FireTiger				=>  3_X		?	<Chains, ?> 
 		- [B] Asmodeus			=> 	4_X		?	<AxeGlowOrange, ?> 
-		
+
+		Avail for traps:
+		- Candle
+		- SkullAndCrossbones
+		- Skull2
+		- SpellFire
+		- SunShield
+
 		-----------------
 		
 		- Ash				=> 1_x (H)
@@ -667,6 +678,9 @@ DeveloperScene::DeveloperScene()
 	- Gargoyle				=>  
 	- LightningGolem		=>  
 	- Shade					=>  
+
+	Available icons:
+	- ShovelGlowGreen
 
 	- VS - LOOP / CALL / RET
 		- [B] EvilEye			=>  
