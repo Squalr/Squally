@@ -195,7 +195,7 @@ NO_OPTIMIZE void Manifest::applyManifest()
 	ASM_MOV_REG_PTR(ZSI, damageBonusPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_MANIFEST);
-	ASM(cmp [ZAX], 0);
+	ASM(cmp dword ptr [ZAX], 0);
 	ASM(jne manifestReduceDamage);
 	ASM(jmp skipManifestCode);
 	ASM(manifestReduceDamage:);
