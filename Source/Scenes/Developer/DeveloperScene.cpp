@@ -455,20 +455,22 @@ DeveloperScene::DeveloperScene()
 		// ** 4_x King Zul
 
 		/*
-		- ReanimatedPig			=>  1_x <Piggy,			fmov> => thick hide
-		- Zombie				=>  1_x <Zombie[Grasp], fdiv> => damage divide, round to int
-		- Undead				=>  1_x <DeadGrasp,		fsub> => speed decrease
-		- Assassin				=>  2_x <ThrowingStar,	fadd> => add to damage, round to int
-		- BoneFiend				=>  2_x <Daze,			fmul> => chance to do zero damage
-		- Mystic				=>  2_x <VoodooZombie,	fabs> => convert damage to healing
-		- BoneKnight			=>  3_x <?,				fld>  => constant 1.0f damage recv, round to int
-		- Warlock				=>  3_x <?,				fild> => constant 1 damage recv, round to int
-		- Hunter				=>  3_x <Crossbow,		fst>  => fixed damge (float)
-		- SkeletalPriestess		=>  4_x <Book,			fstp> => fixed damge (float)
-		- SkeletalKnight		=>  4_x <?,				fistp> => fixed damage (int)
-		- SkeletalCleaver		=>  4_x <?,				fist>  => fixed damage (int)
-		- [B] Lazarus			=>	3_x <?,				fsqrt> => clever distance thing
-		- [B] KingZul			=>  4_x <?,				fxch>  => swap st(0) and st(1). why.
+		X ReanimatedPig			=>  1_x <Piggy,			f(i)sub> => Thick Hide / dmg decrease
+		O Zombie				=>  1_x <Zombie[Grasp], f(i)div> => Zombie Grasp / speed decrease
+		O Undead				=>  1_x <DeadGrasp,		f(i)mov> => Dead Grasp? / damage divide
+		O Assassin				=>  2_x <ThrowingStar,	f(i)add> => Focus / add to damage
+		O BoneFiend				=>  2_x <Daze,			f(i)mul> => Daze / chance to do zero damage OR reduce dmg
+		O Mystic				=>  2_x <VoodooZombie,	fabs> => Hex / convert damage to healing
+		- BoneKnight			=>  3_x <SwordGlowPurp,	fld>  => ?? / constant 1.0f damage recv, round to int
+		- Warlock				=>  3_x <WandSkeleton,	fild> => ?? / constant 1 damage recv, round to int
+		- Hunter				=>  3_x <Crossbow,		fst>  => ?? / fixed damge (float)
+		- SkeletalPriestess		=>  4_x <Book,			fstp> => ?? / fixed damge (float)
+		- SkeletalKnight		=>  4_x <SwordGlowYel,	fistp> => ?? / fixed damage (int)
+		- SkeletalCleaver		=>  4_x <AxeGlowPurp,	fist>  => ?? / fixed damage (int)
+		- [B] Lazarus			=>	3_x <Tombstone / WandCrystal, ??> => (?? / resurrection) (?? / damage thing)
+		- [B] KingZul			=>  4_x <AxeMoon,		fxch>  => ?? / swap st(0) and st(1). why.
+
+		fsqrt => distance based trap damage
 
 		- Amelia				=> Town_Church
 		- Azmus					=> Town_Smith
@@ -525,19 +527,19 @@ DeveloperScene::DeveloperScene()
 		/*
 		Surface:
 		- DemonRogue			=>  1_X		?	<Dice, ?> 
-		- DemonShaman			=>  1_X		?	<?, ?> 
-		- DemonSwordsman		=>  1_X		?	<?, ?> 
+		- DemonShaman			=>  1_X		?	<AxeGlowGreen, ?> 
+		- DemonSwordsman		=>  1_X		?	<AxeGlowRed, ?> 
 		Caves:
-		- DemonDragon			=>  2_X		?	<?, ?> 
+		- DemonDragon			=>  2_X		?	<Bone, ?> 
 		- DemonGhost			=>  2_X		?	<Candle, ?> 
-		- FireElemental			=>  2_X		?	<?, ?> 
+		- FireElemental			=>  2_X		?	<BookSpellsFire, ?> 
 		- LavaGolem				=>  2_X		?	<?, ?> 
 		Surface 2?
-		- DemonArcher			=>  3_X			<?, ?> 
-		- DemonGrunt			=>  3_X		?	<?, ?> 
-		- DemonWarrior			=>  3_X		?	<?, ?> 
-		- FireTiger				=>  3_X		?	<?, ?> 
-		- [B] Asmodeus			=> 	4_X		?	<?, ?> 
+		- DemonArcher			=>  3_X			<CrossBow, ?> 
+		- DemonGrunt			=>  3_X		?	<DaggerGlowYellow, ?> 
+		- DemonWarrior			=>  3_X		?	<AxeGlowBlue, ?> 
+		- FireTiger				=>  3_X		?	<Chains, ?> 
+		- [B] Asmodeus			=> 	4_X		?	<AxeGlowOrange, ?> 
 		
 		-----------------
 		
