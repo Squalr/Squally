@@ -90,7 +90,7 @@ DeveloperScene::DeveloperScene()
 		- Enemy should pre-calc the best play when player has passed (hard)
 	- Camera harsh leaving camera targets (which?)
 	- Icons on title screen buttons (at least options, to reduce pains of wrong language selection)
-	- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Bars
+	- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
 	- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 	- Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
 		- Destroy all warp maps as a result (?) can still keep the zone portals for the return location
