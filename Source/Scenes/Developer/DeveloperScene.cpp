@@ -461,13 +461,13 @@ DeveloperScene::DeveloperScene()
 		O Assassin				=>  2_x <ThrowingStar,	f(i)add> => Focus / add to damage
 		O BoneFiend				=>  2_x <Daze,			f(i)mul> => Daze / chance to do zero damage OR reduce dmg
 		O Mystic				=>  2_x <VoodooZombie,	fabs> => Hex / convert damage to healing
-		- BoneKnight			=>  3_x <SwordGlowPurp,	fld>  => ?? / constant 1.0f damage recv, round to int
-		- Warlock				=>  3_x <WandSkeleton,	fild> => ?? / constant 1 damage recv, round to int
-		- Hunter				=>  3_x <Crossbow,		fst>  => ?? / fixed damge (float)
-		- SkeletalPriestess		=>  4_x <Book,			fstp> => ?? / fixed damge (float)
-		- SkeletalKnight		=>  4_x <SwordGlowYel,	fistp> => ?? / fixed damage (int)
-		- SkeletalCleaver		=>  4_x <AxeGlowPurp,	fist>  => ?? / fixed damage (int)
-		- [B] Lazarus			=>	3_x <Tombstone / WandCrystal, ??> => (?? / resurrection) (?? / damage thing)
+		O BoneKnight			=>  3_x <SwordGlowPurp,	fld>  => CursedBlade debuff / constant 1.0f damage, round to int
+		- Warlock				=>  3_x <WandSkeleton,	fild> => ArcaneProtection / constant 1 damage recv, round to int
+		- Hunter				=>  3_x <Crossbow,		fst>  => Aimed Shots / fixed damge (float)
+		- SkeletalPriestess		=>  4_x <Book,			fstp> => Unholy Protection / fixed damge recv (float)
+		- SkeletalKnight		=>  4_x <SwordGlowYel,	fistp> => EnchantedBlade / fixed damage (int)
+		- SkeletalCleaver		=>  4_x <AxeGlowPurp,	fist>  => CursedSwings debuff / fixed damage (int)
+		- [B] Lazarus			=>	3_x <Tombstone / WandCrystal, ??> => Return from the Dead / ?? (damage)
 		- [B] KingZul			=>  4_x <GhostBolts?,		fxch>  => ?? / swap st(0) and st(1). why.
 
 		Avail for traps:

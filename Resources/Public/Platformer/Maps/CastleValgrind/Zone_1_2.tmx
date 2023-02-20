@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="42" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="811">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="811">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -196,7 +196,7 @@
   </object>
   <object id="797" name="gate" type="object" x="353.951" y="1608.79" width="450.603" height="423.038">
    <properties>
-    <property name="map" value="CastleValgrind/Zone_1_3"/>
+    <property name="map" value="CastleValgrind/Zone_1_1"/>
     <property name="transition" value="gate"/>
    </properties>
   </object>
