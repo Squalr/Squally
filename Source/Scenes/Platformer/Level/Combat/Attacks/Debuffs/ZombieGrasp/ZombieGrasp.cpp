@@ -34,7 +34,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_BLIND 1
+#define LOCAL_FUNC_ID_ZOMBIE_GRASP 1
 
 const std::string ZombieGrasp::ZombieGraspIdentifier = "zombie-grasp";
 
@@ -101,7 +101,7 @@ void ZombieGrasp::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_BLIND,
+			LOCAL_FUNC_ID_ZOMBIE_GRASP,
 			HackableCode::HackableCodeInfo(
 				ZombieGrasp::ZombieGraspIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_ZombieGrasp::create(),
@@ -151,7 +151,7 @@ NO_OPTIMIZE void ZombieGrasp::applyZombieGrasp()
 	ASM_PUSH_EFLAGS()
 	ASM(push ZDI);
 	ASM_MOV_REG_VAR(edi, currentDamageDealtLocal);
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_BLIND);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_ZOMBIE_GRASP);
 	ASM(xor ZDI, ZDI);
 	ASM_NOP16();
 	HACKABLE_CODE_END();

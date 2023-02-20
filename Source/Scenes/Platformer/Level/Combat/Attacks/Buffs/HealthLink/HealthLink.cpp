@@ -37,7 +37,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_UNDYING 1
+#define LOCAL_FUNC_ID_HEALTH_LINK 1
 
 const std::string HealthLink::HealthLinkIdentifier = "health-link";
 const float HealthLink::Duration = -1.0f;
@@ -91,7 +91,7 @@ void HealthLink::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_UNDYING,
+			LOCAL_FUNC_ID_HEALTH_LINK,
 			HackableCode::HackableCodeInfo(
 				HealthLink::HealthLinkIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_HealthLink_HealthLink::create(),
@@ -185,7 +185,7 @@ NO_OPTIMIZE void HealthLink::applyHealthLink()
 	ASM(push ZDI);
 	ASM_MOV_REG_VAR(edi, healthLinkDamageLocal);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_UNDYING);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HEALTH_LINK);
 	ASM(shr ZDI, 1);
 	ASM_NOP16();
 	HACKABLE_CODE_END();

@@ -462,13 +462,13 @@ DeveloperScene::DeveloperScene()
 		O BoneFiend				=>  2_x <Daze,			f(i)mul> => Daze / chance to do zero damage OR reduce dmg
 		O Mystic				=>  2_x <VoodooZombie,	fabs> => Hex / convert damage to healing
 		O BoneKnight			=>  3_x <SwordGlowPurp,	fld>  => CursedBlade debuff / constant 1.0f damage, round to int
-		- Warlock				=>  3_x <WandSkeleton,	fild> => ArcaneProtection / constant 1 damage recv, round to int
-		- Hunter				=>  3_x <Crossbow,		fst>  => Aimed Shots / fixed damge (float)
-		- SkeletalPriestess		=>  4_x <Book,			fstp> => Unholy Protection / fixed damge recv (float)
-		- SkeletalKnight		=>  4_x <SwordGlowYel,	fistp> => EnchantedBlade / fixed damage (int)
-		- SkeletalCleaver		=>  4_x <AxeGlowPurp,	fist>  => CursedSwings debuff / fixed damage (int)
+		O Warlock				=>  3_x <WandSkeleton,	fild> => ArcaneProtection / constant 1 damage recv, round to int
+		O Hunter				=>  3_x <Crossbow,		fst>  => Multi Shot (different than bow attack one) / fixed AoE damge (float)
+		O SkeletalPriestess		=>  4_x <Book,			fstp> => Unholy Protection / fixed damge recv (float)
+		O SkeletalKnight		=>  4_x <SwordGlowYel,	fistp> => EnchantedBlade / fixed damage (int)
+		O SkeletalCleaver		=>  4_x <AxeGlowPurp,	fist>  => CursedSwings debuff / fixed AoE damage (int)
 		- [B] Lazarus			=>	3_x <Tombstone / WandCrystal, ??> => Return from the Dead / ?? (damage)
-		- [B] KingZul			=>  4_x <GhostBolts?,		fxch>  => ?? / swap st(0) and st(1). why.
+		- [B] KingZul			=>  4_x <GhostBolts?,		fxch>  => ?? / swap st(0) and st(1). Maybe damage/heal swap? idk.
 
 		Avail for traps:
 		- SpellBind
@@ -530,20 +530,20 @@ DeveloperScene::DeveloperScene()
 
 		/*
 		Surface:
-		- DemonRogue			=>  1_X		?	<Dice, ?> 
-		- DemonShaman			=>  1_X		?	<FlamingScroll, ?> 
-		- DemonSwordsman		=>  1_X		?	<AxeGlowRed, ?> 
+		- DemonRogue			=>  1_X		<Dice, Poison> RNG Poison Tick
+		- DemonShaman			=>  1_X		<BookSpellsFire, ?> ?? idk
+		- DemonSwordsman		=>  1_X		<AxeGlowRed, Scalding Blade> Damage+
 		Caves:
-		- DemonDragon			=>  2_X		?	<Bone, ?> 
-		- DemonGhost			=>  2_X		?	<SkullLavaEyes, ?> 
-		- FireElemental			=>  2_X		?	<BookSpellsFire, ?> 
-		- LavaGolem				=>  2_X		?	<Fire, ?> 
+		- DemonDragon			=>  2_X		<Bone, Calcify? dumb> Defense+ 
+		- DemonGhost			=>  2_X		<SkullLavaEyes, ?> Inner Fire / blood boil / idk
+		- FireElemental			=>  2_X		<FireBolts, Fire Rain> AoE damage
+		- LavaGolem				=>  2_X		<Fire, Enflame> Burn Tick
 		Surface 2?
-		- DemonArcher			=>  3_X			<CrossBow, ?> 
-		- DemonGrunt			=>  3_X		?	<DaggerGlowYellow, ?> 
-		- DemonWarrior			=>  3_X		?	<FireBolts, ?> 
-		- FireTiger				=>  3_X		?	<Chains, ?> 
-		- [B] Asmodeus			=> 	4_X		?	<AxeGlowOrange, ?> 
+		- DemonArcher			=>  3_X		<CrossBow, Arrow Rain> Another arrow rain? Different asm? 
+		- DemonGrunt			=>  3_X		<DaggerGlowYellow, ? Another stupid blade thing?> Damage+
+		- DemonWarrior			=>  3_X		<FlamingScroll, ?> ?? idk
+		- FireTiger				=>  3_X		<Chains, Entwined?> Health Link? 
+		- [B] Asmodeus			=> 	4_X		<AxeGlowOrange, Searing Blade> Damage+
 
 		Avail for traps:
 		- Candle
