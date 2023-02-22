@@ -467,12 +467,13 @@ DeveloperScene::DeveloperScene()
 		O SkeletalPriestess		=>  4_x <Book,			fstp> => Unholy Protection / fixed damge recv (float)
 		O SkeletalKnight		=>  4_x <SwordGlowYel,	fistp> => EnchantedBlade / fixed damage (int)
 		O SkeletalCleaver		=>  4_x <AxeGlowPurp,	fist>  => CursedSwings debuff / fixed AoE damage (int)
-		- [B] Lazarus			=>	3_x <Tombstone / WandCrystal, ??> => Return from the Dead / ?? (damage)
-		- [B] KingZul			=>  4_x <GhostBolts?,		fxch>  => ?? / swap st(0) and st(1). Maybe damage/heal swap? idk.
+		- [B] Lazarus			=>	3_x <Tombstone / GhostBolts> => Return from the Dead / Reflectable spell
+		- [B] KingZul			=>  4_x <?,		fxch>  => ?? / swap st(0) and st(1). Maybe damage/heal swap? idk.
 
 		Avail for traps:
 		- SpellBind
 		- SpellCast
+		- WandCrystal
 
 		fsqrt => distance based trap damage
 
@@ -530,14 +531,14 @@ DeveloperScene::DeveloperScene()
 
 		/*
 		Surface:
-		- DemonRogue			=>  1_X		<Dice, Poison> RNG Poison Tick
+		O DemonRogue			=>  1_X		<Dice, Chance> Deal random damage
 		- DemonShaman			=>  1_X		<BookSpellsFire, ?> ?? idk
-		- DemonSwordsman		=>  1_X		<AxeGlowRed, Scalding Blade> Damage+
+		O DemonSwordsman		=>  1_X		<AxeGlowRed, Scalding Blade> Damage+
 		Caves:
-		- DemonDragon			=>  2_X		<Bone, Calcify? dumb> Defense+ 
-		- DemonGhost			=>  2_X		<SkullLavaEyes, ?> Inner Fire / blood boil / idk
-		- FireElemental			=>  2_X		<FireBolts, Fire Rain> AoE damage
-		- LavaGolem				=>  2_X		<Fire, Enflame> Burn Tick
+		O DemonDragon			=>  2_X		<Bone, Calcify? dumb> Defense+ 
+		O DemonGhost			=>  2_X		<SkullLavaEyes, Inner Fire> Self Heal Tick
+		O FireElemental			=>  2_X		<FireBolts, Fire Rain> AoE damage
+		O LavaGolem				=>  2_X		<Fire, Enflame> Burn Tick
 		Surface 2?
 		- DemonArcher			=>  3_X		<CrossBow, Arrow Rain> Another arrow rain? Different asm? 
 		- DemonGrunt			=>  3_X		<DaggerGlowYellow, ? Another stupid blade thing?> Damage+
