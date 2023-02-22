@@ -21,7 +21,7 @@ GoldenBow* GoldenBow::create()
 	return instance;
 }
 
-GoldenBow::GoldenBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 56, 64, ItemStats(
+GoldenBow::GoldenBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 11, 15, ItemStats(
 	// Health
 	0,
 	// Mana
@@ -64,7 +64,7 @@ const std::string& GoldenBow::getIdentifier()
 
 Vec2 GoldenBow::getDisplayOffset()
 {
-	return Vec2(0.0f, -24.0f);
+	return Vec2(-10.0f, -74.0f);
 }
 
 Recipe* GoldenBow::getRecipe()
