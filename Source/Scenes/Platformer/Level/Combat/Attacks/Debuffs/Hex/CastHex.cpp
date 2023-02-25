@@ -27,7 +27,7 @@ CastHex* CastHex::create(float attackDuration, float recoverDuration, Priority p
 }
 
 CastHex::CastHex(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Debuff, UIResources::Menus_Icons_EyeStrain, priority, AbilityType::Physical, 0, 0, 7, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_Voodoo, priority, AbilityType::Physical, 0, 0, 7, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 

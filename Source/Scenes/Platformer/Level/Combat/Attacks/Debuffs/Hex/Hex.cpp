@@ -36,10 +36,12 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_HEX 1
 
-const std::string Hex::HexIdentifier = "hex";
+const std::string Hex::HexIdentifier = "cursed-blade";
+const std::string Hex::HackIdentifierHex = "cursed-blade";
 
-const float Hex::Duration = 60.0f;
-const int Hex::MaxMultiplier = 5;
+const int Hex::MaxMultiplier = 4;
+const float Hex::DamageIncrease = 10.0f; // Keep in sync with asm
+const float Hex::Duration = 16.0f;
 
 Hex* Hex::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -51,7 +53,7 @@ Hex* Hex::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Hex::Hex(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_EyeStrain, AbilityType::Physical, BuffData(Hex::Duration, Hex::HexIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Voodoo, AbilityType::Physical, BuffData(Hex::Duration, Hex::HexIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
@@ -103,19 +105,41 @@ void Hex::registerHackables()
 		{
 			LOCAL_FUNC_ID_HEX,
 			HackableCode::HackableCodeInfo(
-				Hex::HexIdentifier,
+				Hex::HackIdentifierHex,
 				Strings::Menus_Hacking_Abilities_Debuffs_Hex_Hex::create(),
-				HackableBase::HackBarColor::Green,
-				UIResources::Menus_Icons_EyeStrain,
+				HackableBase::HackBarColor::Purple,
+				UIResources::Menus_Icons_Voodoo,
 				LazyNode<HackablePreview>::create([=](){ return HexGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_Hex_RegisterEsi::create(),
-					},
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Hex_RegisterEsi::create()
+					}
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
-				0.0f
+				0.0f,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Hex_CommentRegister::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Hex_CommentDamageReduce::create()
+							->setStringReplacementVariables(ConstantString::create(std::to_string(Hex::DamageIncrease)))) + 
+						"fld dword ptr [esi]\n" +
+						"fabs\n" +
+						"fistp dword ptr [esi]\n"
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Hex_CommentRegister::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Hex_CommentDamageReduce::create()
+							->setStringReplacementVariables(ConstantString::create(std::to_string(Hex::DamageIncrease)))) + 
+						"fld dword ptr [rsi]\n" +
+						"fabs\n" +
+						"fistp dword ptr [rsi]\n"
+					),
+				},
+				true
 			)
 		},
 	};
@@ -137,7 +161,7 @@ void Hex::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damag
 
 	this->applyHex();
 
-	*damageOrHealing->damageOrHealing = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	(*damageOrHealing->damageOrHealing) = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * Hex::MaxMultiplier);
 	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * Hex::MaxMultiplier);
 }
@@ -145,18 +169,25 @@ void Hex::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damag
 NO_OPTIMIZE void Hex::applyHex()
 {
 	static volatile int currentDamageDealtLocal = 0;
+	static volatile int* currentDamageDealtLocalPtr = &currentDamageDealtLocal;
 
-	currentDamageDealtLocal = 0;
+	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 
 	ASM_PUSH_EFLAGS()
-	ASM(push ZDI);
-	ASM_MOV_REG_VAR(edi, currentDamageDealtLocal);
+	ASM(push ZSI);
+
+	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
+
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HEX);
-	ASM(xor ZDI, ZDI);
+	ASM(fld dword ptr [ZSI]);
+	ASM(fabs);
+	ASM(fistp dword ptr [ZSI]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
+
 	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
-	ASM(pop ZDI);
+
+	ASM(pop ZSI);
 	ASM_POP_EFLAGS()
 
 	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);

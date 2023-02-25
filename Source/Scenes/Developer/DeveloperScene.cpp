@@ -454,15 +454,15 @@ DeveloperScene::DeveloperScene()
 		// ** 4_x cleaver, knight, priestess (central crypt)
 		// ** 4_x King Zul
 
-		/*
+		/*/
 		X ReanimatedPig			=>  1_x <Piggy,			f(i)sub> => Thick Hide / dmg decrease
 		O Zombie				=>  1_x <Zombie[Grasp], f(i)div> => Zombie Grasp / speed decrease
 		O Undead				=>  1_x <DeadGrasp,		f(i)mov> => Dead Grasp? / damage divide
-		O Assassin				=>  2_x <ThrowingStar,	f(i)add> => Focus / add to damage
+		X Assassin				=>  2_x <ThrowingStar,	f(i)add> => Focus / add to damage
 		O BoneFiend				=>  2_x <Daze,			f(i)mul> => Daze / chance to do zero damage OR reduce dmg
-		O Mystic				=>  2_x <VoodooZombie,	fabs> => Hex / convert damage to healing
-		O BoneKnight			=>  3_x <SwordGlowPurp,	fld>  => CursedBlade debuff / constant 1.0f damage, round to int
-		O Warlock				=>  3_x <WandSkeleton,	fild> => ArcaneProtection / constant 1 damage recv, round to int
+		X Mystic				=>  2_x <VoodooZombie,	fabs> => Hex / convert damage to healing
+		X BoneKnight			=>  3_x <SwordGlowPurp,	fld>  => CursedBlade debuff / constant 1.0f damage, round to int
+		X Warlock				=>  3_x <WandSkeleton,	fild> => ArcaneProtection / constant 1 damage recv, round to int
 		O Hunter				=>  3_x <Crossbow,		fst>  => Multi Shot (different than bow attack one) / fixed AoE damge (float)
 		O SkeletalPriestess		=>  4_x <Book,			fstp> => Unholy Protection / fixed damge recv (float)
 		O SkeletalKnight		=>  4_x <SwordGlowYel,	fistp> => EnchantedBlade / fixed damage (int)

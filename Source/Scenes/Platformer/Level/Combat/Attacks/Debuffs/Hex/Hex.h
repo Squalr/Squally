@@ -16,6 +16,7 @@ public:
 	static Hex* create(PlatformerEntity* caster, PlatformerEntity* target);
 
 	static const std::string HexIdentifier;
+	static const std::string HackIdentifierHex;
 
 protected:
 	Hex(PlatformerEntity* caster, PlatformerEntity* target);
@@ -35,5 +36,6 @@ private:
 	cocos2d::Sprite* spellAura = nullptr;
 	
 	static const float Duration;
+	static const float DamageIncrease;
 	static const int MaxMultiplier;
 };

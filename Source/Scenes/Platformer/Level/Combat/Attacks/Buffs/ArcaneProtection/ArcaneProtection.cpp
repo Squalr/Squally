@@ -36,8 +36,8 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_ARCANE_PROTECTION 1
 
-const std::string ArcaneProtection::ArcaneProtectionIdentifier = "arcane-protection";
-const std::string ArcaneProtection::HackIdentifierArcaneProtection = "arcane-protection";
+const std::string ArcaneProtection::ArcaneProtectionIdentifier = "thick-hide";
+const std::string ArcaneProtection::HackIdentifierArcaneProtection = "thick-hide";
 
 const int ArcaneProtection::MaxMultiplier = 4;
 const int ArcaneProtection::DamageReduction = 3; // Keep in sync with asm
@@ -117,7 +117,10 @@ void ArcaneProtection::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return ArcaneProtectionGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_ArcaneProtection_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_ArcaneProtection_RegisterEax::create()
+					},
+					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_ArcaneProtection_RegisterEcx::create()
 					}
 				},
 				int(HackFlags::None),
@@ -133,7 +136,7 @@ void ArcaneProtection::registerHackables()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(ArcaneProtection::DamageReduction)))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentIncreaseInstead::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentTryChanging::create()) + 
-						"sub ebx, 3\n"
+						"fild dword ptr [eax]\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentRegister::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
@@ -141,7 +144,7 @@ void ArcaneProtection::registerHackables()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(ArcaneProtection::DamageReduction)))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentIncreaseInstead::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentTryChanging::create()) + 
-						"sub rbx, 3\n"
+						"fild dword ptr [rax]\n"
 					),
 				},
 				true
@@ -174,21 +177,30 @@ void ArcaneProtection::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHeali
 NO_OPTIMIZE void ArcaneProtection::applyArcaneProtection()
 {
 	static volatile int currentDamageTakenLocal = 0;
+	static volatile int* currentDamageTakenLocalPtr = &currentDamageTakenLocal;
+	static volatile int damageReduction = 1;
+	static volatile int* newDamage = &damageReduction;
 
 	currentDamageTakenLocal = Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
 
 	ASM_PUSH_EFLAGS()
-	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ebx, currentDamageTakenLocal);
+	ASM(push ZAX);
+	ASM(push ZCX);
+
+	ASM_MOV_REG_VAR(ZAX, newDamage);
+	ASM_MOV_REG_VAR(ZCX, currentDamageTakenLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_ARCANE_PROTECTION);
-	ASM(sub ZBX, 3);
+	ASM(fild dword ptr [ZAX]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageTakenLocal, ebx);
+	ASM(fistp dword ptr [ZCX]);
 
-	ASM(pop ZBX);
+	ASM_MOV_VAR_REG(currentDamageTakenLocal, eax);
+
+	ASM(pop ZCX);
+	ASM(pop ZAX);
 	ASM_POP_EFLAGS()
 
 	Buff::HackStateStorage[Buff::StateKeyDamageTaken] = Value(currentDamageTakenLocal);

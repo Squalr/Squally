@@ -117,7 +117,10 @@ void ThickHide::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return ThickHideGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEax::create()
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEbx::create()
+					},
+					{
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEdx::create()
 					}
 				},
 				int(HackFlags::None),

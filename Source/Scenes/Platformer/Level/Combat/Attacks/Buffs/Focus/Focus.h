@@ -14,7 +14,7 @@ class Focus : public Buff
 {
 public:
 	static Focus* create(PlatformerEntity* caster, PlatformerEntity* target);
-	
+
 	static const std::string FocusIdentifier;
 	static const std::string HackIdentifierFocus;
 
@@ -25,18 +25,17 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void registerHackables() override;
-	void onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
+	void onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
 
 private:
 	typedef Buff super;
 
 	void applyFocus();
 	
-	cocos2d::Sprite* bubble = nullptr;
 	SmartParticles* spellEffect = nullptr;
 	cocos2d::Sprite* spellAura = nullptr;
 	
-	static const int MaxMultiplier;
-	static const int DamageReduction;
 	static const float Duration;
+	static const float DamageReduction;
+	static const int MaxMultiplier;
 };

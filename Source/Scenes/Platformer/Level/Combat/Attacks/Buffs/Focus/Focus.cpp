@@ -40,7 +40,7 @@ const std::string Focus::FocusIdentifier = "focus";
 const std::string Focus::HackIdentifierFocus = "focus";
 
 const int Focus::MaxMultiplier = 4;
-const int Focus::DamageReduction = 3; // Keep in sync with asm
+const float Focus::DamageReduction = 1.0f; // Keep in sync with asm
 const float Focus::Duration = 16.0f;
 
 Focus* Focus::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -56,15 +56,12 @@ Focus::Focus(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_ShieldGlowBlue, AbilityType::Physical, BuffData(Focus::Duration, Focus::FocusIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
-	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
-	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
-	this->addChild(this->bubble);
 	this->addChild(this->spellAura);
 }
 
@@ -78,8 +75,6 @@ void Focus::onEnter()
 
 	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellEffect->start();
-
-	this->bubble->runAction(FadeTo::create(0.25f, 255));
 
 	this->spellAura->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),
@@ -117,7 +112,10 @@ void Focus::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return FocusGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Focus_RegisterEax::create()
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Buffs_Focus_RegisterEdi::create()
+					},
+					{
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Focus_RegisterEsi::create()
 					}
 				},
 				int(HackFlags::None),
@@ -131,17 +129,13 @@ void Focus::registerHackables()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentDamageReduce::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Focus::DamageReduction)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentTryChanging::create()) + 
-						"sub ebx, 3\n"
+						"fld dword ptr [edi]\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentRegister::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentDamageReduce::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Focus::DamageReduction)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentTryChanging::create()) + 
-						"sub rbx, 3\n"
+						"fld dword ptr [rdi]\n"
 					),
 				},
 				true
@@ -158,40 +152,49 @@ void Focus::registerHackables()
 	}
 }
 
-void Focus::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void Focus::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
-	super::onBeforeDamageTaken(damageOrHealing);
+	super::onBeforeDamageDealt(damageOrHealing);
 
-	Buff::HackStateStorage[Buff::StateKeyDamageTaken] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyFocus();
 
-	(*damageOrHealing->damageOrHealing) = Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
+	(*damageOrHealing->damageOrHealing) = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * Focus::MaxMultiplier);
 	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * Focus::MaxMultiplier);
 }
 
 NO_OPTIMIZE void Focus::applyFocus()
 {
-	static volatile int currentDamageTakenLocal = 0;
+	static volatile int currentDamageDealtLocal = 0;
+	static volatile int* currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	static volatile float damageReduction = 1.0f;
+	static volatile float* damageReductionPtr = &damageReduction;
 
-	currentDamageTakenLocal = Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
+	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 
 	ASM_PUSH_EFLAGS()
-	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ebx, currentDamageTakenLocal);
+	ASM(push ZDI);
+	ASM(push ZSI);
+
+	ASM_MOV_REG_VAR(ZDI, damageReductionPtr);
+	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FOCUS);
-	ASM(sub ZBX, 3);
+	ASM(fld dword ptr [ZDI]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageTakenLocal, ebx);
+	ASM(fistp dword ptr [ZSI]);
 
-	ASM(pop ZBX);
+	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
+
+	ASM(pop ZSI);
+	ASM(pop ZDI);
 	ASM_POP_EFLAGS()
 
-	Buff::HackStateStorage[Buff::StateKeyDamageTaken] = Value(currentDamageTakenLocal);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }
