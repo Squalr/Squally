@@ -541,10 +541,10 @@ DeveloperScene::DeveloperScene()
 		O LavaGolem				=>  2_X		<Fire, Enflame> Burn Tick
 		Surface 2?
 		- DemonArcher			=>  3_X		<CrossBow, Arrow Rain> Another arrow rain? Different asm? 
-		- DemonGrunt			=>  3_X		<DaggerGlowYellow, ? Another stupid blade thing?> Damage+
+		- DemonGrunt			=>  3_X		<DaggerGlowYellow, DaggerThrow> Redirectable dagger
 		- DemonWarrior			=>  3_X		<FlamingScroll, ?> ?? idk
 		- FireTiger				=>  3_X		<Chains, Entwined?> Health Link? 
-		- [B] Asmodeus			=> 	4_X		<AxeGlowOrange, Searing Blade> Damage+
+		- [B] Asmodeus			=> 	4_X		<AxeGlowOrange, Searing Blade> Giant axe that falls counter-clockwise, redirectable
 
 		Avail for traps:
 		- Candle
