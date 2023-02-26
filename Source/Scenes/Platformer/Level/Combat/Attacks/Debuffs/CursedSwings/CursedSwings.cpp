@@ -18,14 +18,11 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/CombatEvents.h"
 #include "Events/PlatformerEvents.h"
-#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/CursedSwings/CursedSwingsGenericPreview.h"
 #include "Scenes/Platformer/Level/Combat/CombatMap.h"
-#include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
-#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
@@ -39,11 +36,12 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_CURSED_SWINGS 1
 
-const std::string CursedSwings::CursedSwingsIdentifier = "cursed-swings";
-const float CursedSwings::Duration = -1.0f;
+const std::string CursedSwings::CursedSwingsIdentifier = "cursed-blade";
+const std::string CursedSwings::HackIdentifierCursedSwings = "cursed-blade";
 
-// Static to prevent GCC optimization issues
-volatile int CursedSwings::cursedSwingsDamage = 0;
+const int CursedSwings::MaxMultiplier = 4;
+const float CursedSwings::DamageIncrease = 10.0f; // Keep in sync with asm
+const float CursedSwings::Duration = 16.0f;
 
 CursedSwings* CursedSwings::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -55,12 +53,16 @@ CursedSwings* CursedSwings::create(PlatformerEntity* caster, PlatformerEntity* t
 }
 
 CursedSwings::CursedSwings(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Clones, AbilityType::Physical, BuffData(CursedSwings::Duration, CursedSwings::CursedSwingsIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_ShieldGlowBlue, AbilityType::Physical, BuffData(CursedSwings::Duration, CursedSwings::CursedSwingsIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
-	this->cursedSwingsDamage = 0;
+	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
+
+	this->spellAura->setColor(Color3B::YELLOW);
+	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
+	this->addChild(this->spellAura);
 }
 
 CursedSwings::~CursedSwings()
@@ -71,7 +73,17 @@ void CursedSwings::onEnter()
 {
 	super::onEnter();
 
+	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellEffect->start();
+
+	this->spellAura->runAction(Sequence::create(
+		FadeTo::create(0.25f, 255),
+		DelayTime::create(0.5f),
+		FadeTo::create(0.25f, 0),
+		nullptr
+	));
+
+	CombatEvents::TriggerHackableCombatCue();
 }
 
 void CursedSwings::initializePositions()
@@ -93,15 +105,18 @@ void CursedSwings::registerHackables()
 		{
 			LOCAL_FUNC_ID_CURSED_SWINGS,
 			HackableCode::HackableCodeInfo(
-				CursedSwings::CursedSwingsIdentifier,
+				CursedSwings::HackIdentifierCursedSwings,
 				Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CursedSwings::create(),
-				HackableBase::HackBarColor::Blue,
-				UIResources::Menus_Icons_Clones,
+				HackableBase::HackBarColor::Purple,
+				UIResources::Menus_Icons_ShieldGlowBlue,
 				LazyNode<HackablePreview>::create([=](){ return CursedSwingsGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEdi::create(),
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEdi::create()
 					},
+					{
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEsi::create()
+					}
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
@@ -110,18 +125,23 @@ void CursedSwings::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentShr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentShrBy1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentElaborate::create()) +
-						"shr edi, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint::create())
-						
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentRegister::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentDamageReduce::create()
+							->setStringReplacementVariables(ConstantString::create(std::to_string(CursedSwings::DamageIncrease)))) + 
+						"fld dword ptr [edi]\n" +
+						"fld dword ptr [esi]\n" +
+						"fdivp st(1), st(0)\n" +
+						"fistp dword ptr [esi]\n"
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentShr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentShrBy1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentElaborate::create()) +
-						"shr rdi, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint::create())
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentRegister::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentDamageReduce::create()
+							->setStringReplacementVariables(ConstantString::create(std::to_string(CursedSwings::DamageIncrease)))) + 
+						"fld dword ptr [rdi]\n" +
+						"fld dword ptr [rsi]\n" +
+						"fdivp st(1), st(0)\n" +
+						"fistp dword ptr [rsi]\n"
 					),
 				},
 				true
@@ -138,64 +158,53 @@ void CursedSwings::registerHackables()
 	}
 }
 
-NO_OPTIMIZE void CursedSwings::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void CursedSwings::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageDealt(damageOrHealing);
 
-	this->cursedSwingsDamage = damageOrHealing->damageOrHealingValue;
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyCursedSwings();
 
-	// Damage all team mates
-	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
-	{
-		std::vector<PlatformerEntity*> targets = timeline->getSameTeamEntities(damageOrHealing->target);
-		std::vector<PlatformerEntity*> cursedSwingsTargets; 
-		for (PlatformerEntity* target : targets)
-		{
-			if (target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
-			{
-				caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
-				{
-					entityBuffBehavior->getBuff<CursedSwings>([&](CursedSwings* cursedSwings)
-					{
-						cursedSwingsTargets.push_back(target);
-					});
-				});
-			}
-		}
-
-		// For some incomprehensible reason, this needs to be a separate loop otherwise some enemies do not get it at all.
-		// TODO: Figure out why, if you care enough.
-		for (PlatformerEntity* target : cursedSwingsTargets)
-		{
-			CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(damageOrHealing->caster, target, std::abs(this->cursedSwingsDamage), AbilityType::Passive, true));
-		}
-	}));
+	(*damageOrHealing->damageOrHealing) = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * CursedSwings::MaxMultiplier);
+	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * CursedSwings::MaxMultiplier);
 }
-END_NO_OPTIMIZE
 
 NO_OPTIMIZE void CursedSwings::applyCursedSwings()
 {
-	static volatile int cursedSwingsDamageLocal = 0;
+	static volatile int currentDamageDealtLocal = 0;
+	static volatile int* currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	static volatile float damageDivide = 0.0f;
+	static volatile float* damageDividePtr = &damageDivide;
 
-	cursedSwingsDamageLocal = this->cursedSwingsDamage;
+	damageDivide = 2.0f;
+	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZDI);
-	ASM_MOV_REG_VAR(edi, cursedSwingsDamageLocal);
+	ASM(push ZSI);
+
+	ASM_MOV_REG_VAR(ZDI, damageDividePtr);
+	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
+
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSED_SWINGS);
-	ASM(shr ZDI, 1);
+	ASM(fld dword ptr [ZDI]);
+	ASM(fld dword ptr [ZSI]);
+	ASM(fdivp st(1), st(0));
+	ASM(fistp dword ptr [ZSI]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(cursedSwingsDamageLocal, edi);
 
+	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
+
+	ASM(pop ZSI);
 	ASM(pop ZDI);
 	ASM_POP_EFLAGS()
 
-	this->cursedSwingsDamage = cursedSwingsDamageLocal;
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

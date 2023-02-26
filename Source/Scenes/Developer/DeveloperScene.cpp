@@ -455,25 +455,36 @@ DeveloperScene::DeveloperScene()
 		// ** 4_x King Zul
 
 		/*/
-		X ReanimatedPig			=>  1_x <Piggy,			f(i)sub> => Thick Hide / dmg decrease
-		O Zombie				=>  1_x <Zombie[Grasp], f(i)div> => Zombie Grasp / speed decrease
-		O Undead				=>  1_x <DeadGrasp,		f(i)mov> => Dead Grasp? / damage divide
-		X Assassin				=>  2_x <ThrowingStar,	f(i)add> => Focus / add to damage
-		O BoneFiend				=>  2_x <Daze,			f(i)mul> => Daze / chance to do zero damage OR reduce dmg
-		X Mystic				=>  2_x <VoodooZombie,	fabs> => Hex / convert damage to healing
-		X BoneKnight			=>  3_x <SwordGlowPurp,	fld>  => CursedBlade debuff / constant 1.0f damage, round to int
-		X Warlock				=>  3_x <WandSkeleton,	fild> => ArcaneProtection / constant 1 damage recv, round to int
-		O Hunter				=>  3_x <Crossbow,		fst>  => Multi Shot (different than bow attack one) / fixed AoE damge (float)
-		O SkeletalPriestess		=>  4_x <Book,			fstp> => Unholy Protection / fixed damge recv (float)
-		O SkeletalKnight		=>  4_x <SwordGlowYel,	fistp> => EnchantedBlade / fixed damage (int)
-		O SkeletalCleaver		=>  4_x <AxeGlowPurp,	fist>  => CursedSwings debuff / fixed AoE damage (int)
-		- [B] Lazarus			=>	3_x <Tombstone / GhostBolts> => Return from the Dead / Reflectable spell
-		- [B] KingZul			=>  4_x <?,		fxch>  => ?? / swap st(0) and st(1). Maybe damage/heal swap? idk.
+		X ReanimatedPig			=>  1_x <Piggy,			fisub> 		=> Thick Hide / dmg decrease
+		X Zombie				=>  1_x <SwordGlowPurp,	fld>  		=> CursedBlade debuff / constant 1.0f damage, round to int
+		O Undead				=>  1_x <DeadGrasp,		fdiv>		 => Dead Grasp? / speed decrease
+		X Assassin				=>  2_x <ThrowingStar,	fadd> 		=> Focus / add to damage
+		- BoneFiend				=>  2_x <??, 			??> 		=> ?? / ??
+		X Mystic				=>  2_x <VoodooZombie,	fabs> 		=> Hex / convert damage to healing
+		X BoneKnight			=>  3_x <ShieldGlowOrange, fidiv> 	=> Shield Wall / constant 1 damage recv, round to int
+		X Warlock				=>  3_x <WandSkeleton, 	f(i)mov> 	=> ?? / ??
+
+		O Hunter				=>  3_x <ArrowMultiShotGlow, fmul>  => Multi Shot (different than bow attack one) / AoE 75% damage
+		O SkeletalPriestess		=>  4_x <Book,			fcmove 		=> Unholy Protection / zero non-physical damage
+		O SkeletalKnight		=>  4_x <SwordGlowYel,	??> 		=> EnchantedBlade / fixed damage (int)
+		X SkeletalCleaver		=>  4_x <AxeGlowPurp,	f(i)div>  	=> CursedSwings debuff / reduce damage by 75% or something (int)
+
+		- [B] Lazarus			=>	3_x <Tombstone / GhostBolts> 	=> Return from the Dead / Reflectable spell
+		X [B] KingZul			=>  4_x <Daze,			fcmovbe> 	=> Daze / chance to do less damage
+
+		Deprecated:
+		- <Zombie[Grasp], fsub> => Zombie Grasp / speed decrease
+		- <DeadGrasp,	f(i)mov> => Dead Grasp? / damage divide
+
+		Traps:
+		- fldpi + fcos/fsin/fptan/fpatan on launcher direction
 
 		Avail for traps:
 		- SpellBind
 		- SpellCast
 		- WandCrystal
+		- fldpi/fldz/fld1
+		- other fcmov{cc}
 
 		fsqrt => distance based trap damage
 
