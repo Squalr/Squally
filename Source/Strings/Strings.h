@@ -10599,10 +10599,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_DefensiveStance_RegisterEax() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentDamageReduce : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentDamageReduce* create();
+		static Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10610,14 +10610,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentDamageReduce();
-		virtual ~Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentDamageReduce() = default;
+		Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce();
+		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentIncreaseInstead : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Enchantment_CommentRegister : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentIncreaseInstead* create();
+		static Menus_Hacking_Abilities_Buffs_Enchantment_CommentRegister* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10625,14 +10625,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentIncreaseInstead();
-		virtual ~Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentIncreaseInstead() = default;
+		Menus_Hacking_Abilities_Buffs_Enchantment_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_CommentRegister() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentRegister : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Enchantment_CursedBlade : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentRegister* create();
+		static Menus_Hacking_Abilities_Buffs_Enchantment_CursedBlade* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10640,14 +10640,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentRegister();
-		virtual ~Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentRegister() = default;
+		Menus_Hacking_Abilities_Buffs_Enchantment_CursedBlade();
+		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_CursedBlade() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentTryChanging : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Enchantment_Enchantment : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentTryChanging* create();
+		static Menus_Hacking_Abilities_Buffs_Enchantment_Enchantment* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10655,14 +10655,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentTryChanging();
-		virtual ~Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentTryChanging() = default;
+		Menus_Hacking_Abilities_Buffs_Enchantment_Enchantment();
+		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_Enchantment() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_EnchantedBlade_EnchantedBlade : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_EnchantedBlade_EnchantedBlade* create();
+		static Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEdi* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10670,14 +10670,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_EnchantedBlade_EnchantedBlade();
-		virtual ~Menus_Hacking_Abilities_Buffs_EnchantedBlade_EnchantedBlade() = default;
+		Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEdi() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_EnchantedBlade_RegisterEax : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_EnchantedBlade_RegisterEax* create();
+		static Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEsi* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10685,8 +10685,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_EnchantedBlade_RegisterEax();
-		virtual ~Menus_Hacking_Abilities_Buffs_EnchantedBlade_RegisterEax() = default;
+		Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEsi() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Enrage_Enrage : public LocalizedString

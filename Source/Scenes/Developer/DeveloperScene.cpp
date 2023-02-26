@@ -457,20 +457,20 @@ DeveloperScene::DeveloperScene()
 		/*/
 		X ReanimatedPig			=>  1_x <Piggy,			fisub> 		=> Thick Hide / dmg decrease
 		X Zombie				=>  1_x <SwordGlowPurp,	fld>  		=> CursedBlade debuff / constant 1.0f damage, round to int
-		O Undead				=>  1_x <DeadGrasp,		fdiv>		 => Dead Grasp? / speed decrease
-		X Assassin				=>  2_x <ThrowingStar,	fadd> 		=> Focus / add to damage
+		O Undead				=>  1_x <DeadGrasp,		fdiv>		=> Dead Grasp? / speed decrease
+		O Assassin				=>  2_x <ThrowingStar,	fadd> 		=> Focus / add to damage
 		- BoneFiend				=>  2_x <??, 			??> 		=> ?? / ??
 		X Mystic				=>  2_x <VoodooZombie,	fabs> 		=> Hex / convert damage to healing
 		X BoneKnight			=>  3_x <ShieldGlowOrange, fidiv> 	=> Shield Wall / constant 1 damage recv, round to int
-		X Warlock				=>  3_x <WandSkeleton, 	f(i)mov> 	=> ?? / ??
+		X Warlock				=>  3_x <WandSkeleton, 	fimov> 		=> Enchantment / fixed damage (int)
 
 		O Hunter				=>  3_x <ArrowMultiShotGlow, fmul>  => Multi Shot (different than bow attack one) / AoE 75% damage
 		O SkeletalPriestess		=>  4_x <Book,			fcmove 		=> Unholy Protection / zero non-physical damage
-		O SkeletalKnight		=>  4_x <SwordGlowYel,	??> 		=> EnchantedBlade / fixed damage (int)
+		O SkeletalKnight		=>  4_x <SwordGlowYel,	fmove> 		=> 
 		X SkeletalCleaver		=>  4_x <AxeGlowPurp,	f(i)div>  	=> CursedSwings debuff / reduce damage by 75% or something (int)
 
-		- [B] Lazarus			=>	3_x <Tombstone / GhostBolts> 	=> Return from the Dead / Reflectable spell
-		X [B] KingZul			=>  4_x <Daze,			fcmovbe> 	=> Daze / chance to do less damage
+		- [B] Lazarus			=>	3_x <Tombstone (f??) / GhostBolts (f??)> 	=> Return from the Dead / Reflectable spell
+		X [B] KingZul			=>  4_x <Daze,			fcmovbe> 				=> Daze / chance to do less damage
 
 		Deprecated:
 		- <Zombie[Grasp], fsub> => Zombie Grasp / speed decrease
