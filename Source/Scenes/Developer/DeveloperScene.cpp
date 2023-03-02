@@ -465,11 +465,12 @@ DeveloperScene::DeveloperScene()
 		X Warlock				=>  3_x <WandSkeleton, 	fimov> 		=> Enchantment / fixed damage (int)
 
 		O Hunter				=>  3_x <ArrowMultiShotGlow, fmul>  => Multi Shot (different than bow attack one) / AoE 75% damage
-		O SkeletalPriestess		=>  4_x <Book,			fcmove 		=> Unholy Protection / zero non-physical damage
+		O SkeletalPriestess		=>  4_x <Book,			fcmove 		=> 
 		O SkeletalKnight		=>  4_x <SwordGlowYel,	fmove> 		=> 
 		X SkeletalCleaver		=>  4_x <AxeGlowPurp,	f(i)div>  	=> CursedSwings debuff / reduce damage by 75% or something (int)
 
-		- [B] Lazarus			=>	3_x <Tombstone (f??) / GhostBolts (f??)> 	=> Return from the Dead / Reflectable spell
+		O [B] Lazarus			=>	3_x <Tombstone, fcmove> 		=> UnholyProtection (rename) / undying effect
+		- 						=>	3_x <GhostBolts, (f??)> 		=> Ghostbolts / reflectable spell
 		X [B] KingZul			=>  4_x <Daze,			fcmovbe> 				=> Daze / chance to do less damage
 
 		Deprecated:

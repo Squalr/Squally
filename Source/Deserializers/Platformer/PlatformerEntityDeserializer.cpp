@@ -243,7 +243,6 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[DemonArcher::MapKey] = [=](ValueMap properties) { return (GameObject*)DemonArcher::deserialize(properties); };
 	this->deserializers[VoidDemon::MapKey] = [=](ValueMap properties) { return (GameObject*)VoidDemon::deserialize(properties); };
 	this->deserializers[Warlock::MapKey] = [=](ValueMap properties) { return (GameObject*)Warlock::deserialize(properties); };
-	this->deserializers[Professor::MapKey] = [=](ValueMap properties) { return (GameObject*)Professor::deserialize(properties); };
 	this->deserializers[Robot::MapKey] = [=](ValueMap properties) { return (GameObject*)Robot::deserialize(properties); };
 	this->deserializers[Atreus::MapKey] = [=](ValueMap properties) { return (GameObject*)Atreus::deserialize(properties); };
 	this->deserializers[Bancroft::MapKey] = [=](ValueMap properties) { return (GameObject*)Bancroft::deserialize(properties); };

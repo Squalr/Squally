@@ -28059,6 +28059,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Helpers_BallmerPeaks_YetiBaby() = default;
 	};
 
+	class Platformer_Entities_Names_Helpers_CastleValgrind_Grim : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Helpers_CastleValgrind_Grim* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Helpers_CastleValgrind_Grim();
+		virtual ~Platformer_Entities_Names_Helpers_CastleValgrind_Grim() = default;
+	};
+
 	class Platformer_Entities_Names_Helpers_CastleValgrind_Knight : public LocalizedString
 	{
 	public:
@@ -28072,21 +28087,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Helpers_CastleValgrind_Knight();
 		virtual ~Platformer_Entities_Names_Helpers_CastleValgrind_Knight() = default;
-	};
-
-	class Platformer_Entities_Names_Helpers_CastleValgrind_Princess : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Helpers_CastleValgrind_Princess* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Helpers_CastleValgrind_Princess();
-		virtual ~Platformer_Entities_Names_Helpers_CastleValgrind_Princess() = default;
 	};
 
 	class Platformer_Entities_Names_Helpers_DaemonsHallow_CritterDemon : public LocalizedString
@@ -28149,21 +28149,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Helpers_EndianForest_Scrappy() = default;
 	};
 
-	class Platformer_Entities_Names_Helpers_EndianForest_Turtle : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Helpers_EndianForest_Turtle* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Helpers_EndianForest_Turtle();
-		virtual ~Platformer_Entities_Names_Helpers_EndianForest_Turtle() = default;
-	};
-
 	class Platformer_Entities_Names_Helpers_LambdaCrypts_Ghost : public LocalizedString
 	{
 	public:
@@ -28179,21 +28164,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Helpers_LambdaCrypts_Ghost() = default;
 	};
 
-	class Platformer_Entities_Names_Helpers_LambdaCrypts_Grim : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Helpers_LambdaCrypts_Grim* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Helpers_LambdaCrypts_Grim();
-		virtual ~Platformer_Entities_Names_Helpers_LambdaCrypts_Grim() = default;
-	};
-
 	class Platformer_Entities_Names_Helpers_UnderflowRuins_Mummy : public LocalizedString
 	{
 	public:
@@ -28207,21 +28177,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Helpers_UnderflowRuins_Mummy();
 		virtual ~Platformer_Entities_Names_Helpers_UnderflowRuins_Mummy() = default;
-	};
-
-	class Platformer_Entities_Names_Helpers_VoidStar_Professor : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Helpers_VoidStar_Professor* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Helpers_VoidStar_Professor();
-		virtual ~Platformer_Entities_Names_Helpers_VoidStar_Professor() = default;
 	};
 
 	class Platformer_Entities_Names_Helpers_VoidStar_Robot : public LocalizedString
