@@ -458,6 +458,8 @@ namespace ObjectResources
 	extern const std::string Interactive_Chests_GlassDisplayFront;
 	extern const std::string Interactive_Chests_MetalChestClosed;
 	extern const std::string Interactive_Chests_MetalChestOpen;
+	extern const std::string Interactive_Chests_PresentChestClosed;
+	extern const std::string Interactive_Chests_PresentChestOpen;
 	extern const std::string Interactive_Computer_Animations;
 	extern const std::string Interactive_Computer_console_console_01;
 	extern const std::string Interactive_Computer_console_console_02;

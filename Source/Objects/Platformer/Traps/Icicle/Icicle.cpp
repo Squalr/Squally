@@ -40,13 +40,16 @@ Icicle* Icicle::create(ValueMap& properties)
 
 Icicle::Icicle(ValueMap& properties) : super(properties)
 {
+	CSize size = CSize(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat());
 	this->sprite = Sprite::create(ObjectResources::Traps_Icicle_Icicle);
-	this->collision = CollisionObject::create(CollisionObject::createBox(CSize(32.0f, 96.0f)), (CollisionType)PlatformerCollisionType::Physics, CollisionObject::Properties(false, true));
+	this->collision = CollisionObject::create(CollisionObject::createBox(size), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, true));
 
-	this->collision->whenCollidesWith({ (int)PlatformerCollisionType::Physics, (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::Player, (int)PlatformerCollisionType::Force }, [=](CollisionData collisionData)
+	CSize imageSize = this->sprite->getContentSize();
+	if (imageSize.height > 0.0f) 
 	{
-		return CollisionResult::CollideWithPhysics;
-	});
+		this->sprite->setScale(size.height / imageSize.height);
+	}
+	
 
 	this->collision->addChild(this->sprite);
 	this->addChild(this->collision);
@@ -63,6 +66,39 @@ void Icicle::onEnter()
 	this->scheduleUpdate();
 }
 
+void Icicle::initializeListeners()
+{
+	super::initializeListeners();
+
+	this->listenForMapEventOnce(this->getListenEvent(), [=](ValueMap)
+	{
+		const float RotationAngle = 2.5f;
+		const float RotationSpeed = 0.05f;
+		const float HalfRotationSpeed = RotationSpeed / 2.0f;
+		const float RumbleTime = 1.5f;
+		const int Rumbles = int(std::round((RumbleTime - RotationSpeed) / RotationSpeed)) / 2;
+
+		// TODO: Add icicle shaking sound.
+		// this->rumbleSound->play(); 
+
+		this->runAction(Sequence::create(
+			EaseSineInOut::create(RotateTo::create(HalfRotationSpeed, RotationAngle)),
+			Repeat::create(Sequence::create(
+				EaseSineInOut::create(RotateTo::create(RotationSpeed, -RotationAngle)),
+				EaseSineInOut::create(RotateTo::create(RotationSpeed, RotationAngle)),
+				nullptr
+			), Rumbles),
+			EaseSineInOut::create(RotateTo::create(HalfRotationSpeed, 0.0f)),
+			CallFunc::create([=]()
+			{
+				this->isFalling = true;
+
+			}),
+			nullptr
+		));
+	});
+}
+
 void Icicle::initializePositions()
 {
 	super::initializePositions();
@@ -72,7 +108,7 @@ void Icicle::update(float dt)
 {
 	super::update(dt);
 
-	this->applyGravity();
+	this->applyGravity(dt);
 }
 
 Vec2 Icicle::getButtonOffset()
@@ -120,8 +156,17 @@ HackablePreview* Icicle::createDefaultPreview()
 	return IcicleGenericPreview::create();
 }
 
-NO_OPTIMIZE void Icicle::applyGravity()
+NO_OPTIMIZE void Icicle::applyGravity(float dt)
 {
+	static const float Speed = -768.0f;
+
+	if (!this->isFalling)
+	{
+		return;
+	}
+
+	this->setPositionY(this->getPositionY() + Speed * dt);
+
 	/*
 	volatile static float* freeMemoryForUser = new float[16];
 	volatile float densityRet = 0.5f;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="82" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="1176">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="82" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="91" nextobjectid="1178">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -300,14 +300,14 @@
    <polygon points="78.8635,628.379 1.91777,518.044 0.644437,427.635 14.9971,324.1 419.84,323.937 434.121,435.164 421.813,554.248 359.71,623.942"/>
   </object>
   <object id="971" name="ice" type="terrain" x="3912.53" y="3207.62">
-   <polygon points="1183.33,1127.87 381.405,1210.08 64.2261,1062.43 9.05856,889.776 -15.6962,838.481 78.7294,731.969 66.2892,685.184 64.2737,607.942 1799.33,607.637 1805.72,697.929 1860.53,816.274 1807.78,1039.65 1585.04,1201.76"/>
+   <polygon points="1183.33,1127.87 381.405,1210.08 64.2261,1062.43 9.05856,889.776 -15.6962,838.481 5.7294,706.969 27.2892,661.184 64.2737,607.942 1799.33,607.637 1805.72,697.929 1860.53,816.274 1807.78,1039.65 1585.04,1201.76"/>
   </object>
   <object id="972" name="ice" type="terrain" x="5786.18" y="3158.25">
    <polygon points="651.47,1359.08 312.133,1275.41 34.7012,1111.81 -10.2366,878.236 32.846,723.495 30.9533,626.764 970.196,633.337 969.057,720.298 1005.24,854.212 976.74,1087.97 856.393,1257.61"/>
   </object>
   <object id="973" name="wood" type="terrain" x="6758.84" y="3787.35" width="943.206" height="87.433"/>
   <object id="984" name="ice" type="terrain" x="-251.774" y="2863.93">
-   <polygon points="2338.24,2940.63 774.28,3146.39 130.384,2762.48 -38.4622,2182.13 39.0371,1842.78 130.48,1580.74 3323.58,1585.5 3826.79,1430.07 4228.58,951.63 4230.61,1028.87 4183.52,1052.41 4145.36,1182.93 4229.03,1407.87 4545.69,1555.62 4502.88,1941.23 3549.93,2711.25 3217.75,3124.75"/>
+   <polygon points="2338.24,2940.63 774.28,3146.39 130.384,2762.48 -38.4622,2182.13 39.0371,1842.78 130.48,1580.74 3323.58,1585.5 3826.79,1430.07 4075.58,1118.13 4106.86,1132.12 4132.02,1142.41 4145.36,1182.93 4229.03,1407.87 4545.69,1555.62 4502.88,1941.23 3549.93,2711.25 3217.75,3124.75"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -378,13 +378,38 @@
   <object id="1133" name="icicle" type="object" x="2819.85" y="3511.98" width="30.5125" height="88.0169" rotation="359.972"/>
   <object id="1134" name="icicle" type="object" x="2903.83" y="3510.67" width="52" height="150" rotation="359.849"/>
   <object id="1138" name="icicle" type="object" x="2956.99" y="3510.49" width="30.5125" height="88.0169" rotation="359.972"/>
-  <object id="1139" name="icicle" type="object" x="4887.75" y="3072.62" width="52" height="150" rotation="359.849"/>
-  <object id="1140" name="icicle" type="object" x="4856.51" y="3073.54" width="30.5125" height="88.0169" rotation="359.972"/>
-  <object id="1141" name="icicle" type="object" x="4940.49" y="3072.23" width="52" height="150" rotation="359.849"/>
-  <object id="1142" name="icicle" type="object" x="4993.65" y="3072.05" width="30.5125" height="88.0169" rotation="359.972"/>
+  <object id="1139" name="icicle" type="object" x="4887.75" y="3072.62" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="listen-event" value="2"/>
+   </properties>
+  </object>
+  <object id="1140" name="icicle" type="object" x="4856.51" y="3073.54" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="listen-event" value="1"/>
+   </properties>
+  </object>
+  <object id="1141" name="icicle" type="object" x="4940.49" y="3072.23" width="52" height="150" rotation="359.849">
+   <properties>
+    <property name="listen-event" value="4"/>
+   </properties>
+  </object>
+  <object id="1142" name="icicle" type="object" x="4993.65" y="3072.05" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="listen-event" value="5"/>
+   </properties>
+  </object>
   <object id="1148" name="icicle" type="object" x="2866.74" y="3511.32" width="30.5125" height="88.0169" rotation="359.972"/>
-  <object id="1149" name="icicle" type="object" x="4931.08" y="3072.66" width="30.5125" height="88.0169" rotation="359.972"/>
+  <object id="1149" name="icicle" type="object" x="4931.08" y="3072.66" width="30.5125" height="88.0169" rotation="359.972">
+   <properties>
+    <property name="listen-event" value="3"/>
+   </properties>
+  </object>
   <object id="1150" name="snowball" type="object" x="5297.69" y="589.345" width="682.419" height="663.462" rotation="339.416"/>
+  <object id="1177" name="trigger" type="object" x="4735.09" y="3036" width="420.573" height="1174.67">
+   <properties>
+    <property name="send-event" value="4"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="86" name="objects fg">
   <properties>
