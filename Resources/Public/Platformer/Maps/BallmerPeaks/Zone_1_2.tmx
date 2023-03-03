@@ -436,13 +436,12 @@
    <polygon points="5223.19,4515.02 3857.18,4530.09 2813.38,4917.54 1380.92,4948.15 688.694,4930.85 710.777,4663.81 1353.3,4645.72 2119.77,4546.74 2961.94,4236.89 3801.49,3966.47 4175.75,3966.09 4679.44,3767.61 5229.64,3768.74"/>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor midground" visible="0">
+ <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="729" name="Forest/Flower10" type="decor" x="2045.74" y="6275.64" width="199" height="133"/>
   <object id="834" name="Forest/Flower9" type="decor" x="1730.65" y="6282.86" width="199" height="133"/>
-  <object id="888" name="Generic/SkyTower" type="decor" x="-590.799" y="3222.68" width="2395" height="3180"/>
  </objectgroup>
  <objectgroup id="60" name="terrain +1">
   <properties>

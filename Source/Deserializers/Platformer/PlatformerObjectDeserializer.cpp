@@ -180,9 +180,10 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[MulDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)MulDoor::create(properties); };
 	this->deserializers[ObjectiveTrigger::MapKey] = [=](ValueMap properties) { return (GameObject*)ObjectiveTrigger::create(properties); };
 	this->deserializers[OptionWarp::MapKey] = [=](ValueMap properties) { return (GameObject*)OptionWarp::create(properties); };
+	this->deserializers[PendulumBlade::MapKey] = [=](ValueMap properties) { return (GameObject*)PendulumBlade::create(properties); };
 	this->deserializers[Portal::MapKey] = [=](ValueMap properties) { return (GameObject*)Portal::create(properties); };
 	this->deserializers[PortalSpawn::MapKey] = [=](ValueMap properties) { return (GameObject*)PortalSpawn::create(properties); };
-	this->deserializers[PendulumBlade::MapKey] = [=](ValueMap properties) { return (GameObject*)PendulumBlade::create(properties); };
+	this->deserializers[PresentChest::MapKey] = [=](ValueMap properties) { return (GameObject*)PresentChest::create(properties); };
 	this->deserializers[Ram::MapKey] = [=](ValueMap properties) { return (GameObject*)Ram::create(properties); };
 	this->deserializers[RegisterStone::MapKey] = [=](ValueMap properties) { return (GameObject*)RegisterStone::create(properties); };
 	this->deserializers[RewardItem::MapKey] = [=](ValueMap properties) { return (GameObject*)RewardItem::create(properties); };
