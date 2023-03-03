@@ -454,25 +454,38 @@ DeveloperScene::DeveloperScene()
 		// ** 4_x cleaver, knight, priestess (central crypt)
 		// ** 4_x King Zul
 
-		/*
-		X ReanimatedPig			=>  1_x <Piggy,			f(i)sub> => Thick Hide / dmg decrease
-		O Zombie				=>  1_x <Zombie[Grasp], f(i)div> => Zombie Grasp / speed decrease
-		O Undead				=>  1_x <DeadGrasp,		f(i)mov> => Dead Grasp? / damage divide
-		O Assassin				=>  2_x <ThrowingStar,	f(i)add> => Focus / add to damage
-		O BoneFiend				=>  2_x <Daze,			f(i)mul> => Daze / chance to do zero damage OR reduce dmg
-		O Mystic				=>  2_x <VoodooZombie,	fabs> => Hex / convert damage to healing
-		O BoneKnight			=>  3_x <SwordGlowPurp,	fld>  => CursedBlade debuff / constant 1.0f damage, round to int
-		O Warlock				=>  3_x <WandSkeleton,	fild> => ArcaneProtection / constant 1 damage recv, round to int
-		O Hunter				=>  3_x <Crossbow,		fst>  => Multi Shot (different than bow attack one) / fixed AoE damge (float)
-		O SkeletalPriestess		=>  4_x <Book,			fstp> => Unholy Protection / fixed damge recv (float)
-		O SkeletalKnight		=>  4_x <SwordGlowYel,	fistp> => EnchantedBlade / fixed damage (int)
-		O SkeletalCleaver		=>  4_x <AxeGlowPurp,	fist>  => CursedSwings debuff / fixed AoE damage (int)
-		- [B] Lazarus			=>	3_x <Tombstone / WandCrystal, ??> => Return from the Dead / ?? (damage)
-		- [B] KingZul			=>  4_x <GhostBolts?,		fxch>  => ?? / swap st(0) and st(1). Maybe damage/heal swap? idk.
+		/*/
+		X ReanimatedPig			=>  1_x <Piggy,			fisub> 		=> Thick Hide / dmg decrease
+		X Zombie				=>  1_x <SwordGlowPurp,	fld>  		=> CursedBlade debuff / constant 1.0f damage, round to int
+		O Undead				=>  1_x <DeadGrasp,		fdiv>		=> Dead Grasp? / speed decrease
+		O Assassin				=>  2_x <ThrowingStar,	fadd> 		=> Focus / add to damage
+		- BoneFiend				=>  2_x <??, 			??> 		=> ?? / ??
+		X Mystic				=>  2_x <VoodooZombie,	fabs> 		=> Hex / convert damage to healing
+		X BoneKnight			=>  3_x <ShieldGlowOrange, fidiv> 	=> Shield Wall / constant 1 damage recv, round to int
+		X Warlock				=>  3_x <WandSkeleton, 	fimov> 		=> Enchantment / fixed damage (int)
+
+		O Hunter				=>  3_x <ArrowMultiShotGlow, fmul>  => Multi Shot (different than bow attack one) / AoE 75% damage
+		O SkeletalPriestess		=>  4_x <Book,			fcmove 		=> 
+		O SkeletalKnight		=>  4_x <SwordGlowYel,	fmove> 		=> 
+		X SkeletalCleaver		=>  4_x <AxeGlowPurp,	f(i)div>  	=> CursedSwings debuff / reduce damage by 75% or something (int)
+
+		O [B] Lazarus			=>	3_x <Tombstone, fcmove> 		=> UnholyProtection (rename) / undying effect
+		- 						=>	3_x <GhostBolts, (f??)> 		=> Ghostbolts / reflectable spell
+		X [B] KingZul			=>  4_x <Daze,			fcmovbe> 				=> Daze / chance to do less damage
+
+		Deprecated:
+		- <Zombie[Grasp], fsub> => Zombie Grasp / speed decrease
+		- <DeadGrasp,	f(i)mov> => Dead Grasp? / damage divide
+
+		Traps:
+		- fldpi + fcos/fsin/fptan/fpatan on launcher direction
 
 		Avail for traps:
 		- SpellBind
 		- SpellCast
+		- WandCrystal
+		- fldpi/fldz/fld1
+		- other fcmov{cc}
 
 		fsqrt => distance based trap damage
 
@@ -530,20 +543,20 @@ DeveloperScene::DeveloperScene()
 
 		/*
 		Surface:
-		- DemonRogue			=>  1_X		<Dice, Poison> RNG Poison Tick
+		O DemonRogue			=>  1_X		<Dice, Chance> Deal random damage
 		- DemonShaman			=>  1_X		<BookSpellsFire, ?> ?? idk
-		- DemonSwordsman		=>  1_X		<AxeGlowRed, Scalding Blade> Damage+
+		O DemonSwordsman		=>  1_X		<AxeGlowRed, Scalding Blade> Damage+
 		Caves:
-		- DemonDragon			=>  2_X		<Bone, Calcify? dumb> Defense+ 
-		- DemonGhost			=>  2_X		<SkullLavaEyes, ?> Inner Fire / blood boil / idk
-		- FireElemental			=>  2_X		<FireBolts, Fire Rain> AoE damage
-		- LavaGolem				=>  2_X		<Fire, Enflame> Burn Tick
+		O DemonDragon			=>  2_X		<Bone, Calcify? dumb> Defense+ 
+		O DemonGhost			=>  2_X		<SkullLavaEyes, Inner Fire> Self Heal Tick
+		O FireElemental			=>  2_X		<FireBolts, Fire Rain> AoE damage
+		O LavaGolem				=>  2_X		<Fire, Enflame> Burn Tick
 		Surface 2?
 		- DemonArcher			=>  3_X		<CrossBow, Arrow Rain> Another arrow rain? Different asm? 
-		- DemonGrunt			=>  3_X		<DaggerGlowYellow, ? Another stupid blade thing?> Damage+
+		- DemonGrunt			=>  3_X		<DaggerGlowYellow, DaggerThrow> Redirectable dagger
 		- DemonWarrior			=>  3_X		<FlamingScroll, ?> ?? idk
 		- FireTiger				=>  3_X		<Chains, Entwined?> Health Link? 
-		- [B] Asmodeus			=> 	4_X		<AxeGlowOrange, Searing Blade> Damage+
+		- [B] Asmodeus			=> 	4_X		<AxeGlowOrange, Searing Blade> Giant axe that falls counter-clockwise, redirectable
 
 		Avail for traps:
 		- Candle

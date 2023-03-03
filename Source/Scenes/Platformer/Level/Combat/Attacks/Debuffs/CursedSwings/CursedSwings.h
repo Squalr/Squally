@@ -2,6 +2,11 @@
 
 #include "Scenes/Platformer/Level/Combat/Buffs/Buff.h"
 
+namespace cocos2d
+{
+	class Sprite;
+}
+
 class PlatformerEntity;
 class SmartParticles;
 
@@ -9,8 +14,9 @@ class CursedSwings : public Buff
 {
 public:
 	static CursedSwings* create(PlatformerEntity* caster, PlatformerEntity* target);
-	
+
 	static const std::string CursedSwingsIdentifier;
+	static const std::string HackIdentifierCursedSwings;
 
 protected:
 	CursedSwings(PlatformerEntity* caster, PlatformerEntity* target);
@@ -27,10 +33,9 @@ private:
 	void applyCursedSwings();
 	
 	SmartParticles* spellEffect = nullptr;
+	cocos2d::Sprite* spellAura = nullptr;
 	
-	static volatile int cursedSwingsDamage;
-	
-	static const int MinCursedSwings;
-	static const int MaxMultiplier;
 	static const float Duration;
+	static const float DamageIncrease;
+	static const int MaxMultiplier;
 };

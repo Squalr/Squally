@@ -1599,456 +1599,6 @@ namespace Strings
 		virtual ~Hexus_BinaryMax() = default;
 	};
 
-	class Hexus_CardDescriptions_Absorb : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Absorb* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Absorb();
-		virtual ~Hexus_CardDescriptions_Absorb() = default;
-	};
-
-	class Hexus_CardDescriptions_Addition : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Addition* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Addition();
-		virtual ~Hexus_CardDescriptions_Addition() = default;
-	};
-
-	class Hexus_CardDescriptions_BonusMoves : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_BonusMoves* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_BonusMoves();
-		virtual ~Hexus_CardDescriptions_BonusMoves() = default;
-	};
-
-	class Hexus_CardDescriptions_Clear : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Clear* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Clear();
-		virtual ~Hexus_CardDescriptions_Clear() = default;
-	};
-
-	class Hexus_CardDescriptions_DrawEffect : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_DrawEffect* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_DrawEffect();
-		virtual ~Hexus_CardDescriptions_DrawEffect() = default;
-	};
-
-	class Hexus_CardDescriptions_Flip1 : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Flip1* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Flip1();
-		virtual ~Hexus_CardDescriptions_Flip1() = default;
-	};
-
-	class Hexus_CardDescriptions_Flip2 : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Flip2* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Flip2();
-		virtual ~Hexus_CardDescriptions_Flip2() = default;
-	};
-
-	class Hexus_CardDescriptions_Flip3 : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Flip3* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Flip3();
-		virtual ~Hexus_CardDescriptions_Flip3() = default;
-	};
-
-	class Hexus_CardDescriptions_Flip4 : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Flip4* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Flip4();
-		virtual ~Hexus_CardDescriptions_Flip4() = default;
-	};
-
-	class Hexus_CardDescriptions_Greed : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Greed* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Greed();
-		virtual ~Hexus_CardDescriptions_Greed() = default;
-	};
-
-	class Hexus_CardDescriptions_Horde : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Horde* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Horde();
-		virtual ~Hexus_CardDescriptions_Horde() = default;
-	};
-
-	class Hexus_CardDescriptions_Inverse : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Inverse* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Inverse();
-		virtual ~Hexus_CardDescriptions_Inverse() = default;
-	};
-
-	class Hexus_CardDescriptions_LogicalAnd : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_LogicalAnd* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_LogicalAnd();
-		virtual ~Hexus_CardDescriptions_LogicalAnd() = default;
-	};
-
-	class Hexus_CardDescriptions_LogicalOr : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_LogicalOr* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_LogicalOr();
-		virtual ~Hexus_CardDescriptions_LogicalOr() = default;
-	};
-
-	class Hexus_CardDescriptions_LogicalXor : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_LogicalXor* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_LogicalXor();
-		virtual ~Hexus_CardDescriptions_LogicalXor() = default;
-	};
-
-	class Hexus_CardDescriptions_Mov : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Mov* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Mov();
-		virtual ~Hexus_CardDescriptions_Mov() = default;
-	};
-
-	class Hexus_CardDescriptions_NoDestroyEffect : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_NoDestroyEffect* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_NoDestroyEffect();
-		virtual ~Hexus_CardDescriptions_NoDestroyEffect() = default;
-	};
-
-	class Hexus_CardDescriptions_Peek : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Peek* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Peek();
-		virtual ~Hexus_CardDescriptions_Peek() = default;
-	};
-
-	class Hexus_CardDescriptions_Pop : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Pop* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Pop();
-		virtual ~Hexus_CardDescriptions_Pop() = default;
-	};
-
-	class Hexus_CardDescriptions_Push : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Push* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Push();
-		virtual ~Hexus_CardDescriptions_Push() = default;
-	};
-
-	class Hexus_CardDescriptions_ReturnAfterRound : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_ReturnAfterRound* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_ReturnAfterRound();
-		virtual ~Hexus_CardDescriptions_ReturnAfterRound() = default;
-	};
-
-	class Hexus_CardDescriptions_ReturnToHand : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_ReturnToHand* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_ReturnToHand();
-		virtual ~Hexus_CardDescriptions_ReturnToHand() = default;
-	};
-
-	class Hexus_CardDescriptions_ShiftLeft : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_ShiftLeft* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_ShiftLeft();
-		virtual ~Hexus_CardDescriptions_ShiftLeft() = default;
-	};
-
-	class Hexus_CardDescriptions_ShiftLeftCircular : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_ShiftLeftCircular* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_ShiftLeftCircular();
-		virtual ~Hexus_CardDescriptions_ShiftLeftCircular() = default;
-	};
-
-	class Hexus_CardDescriptions_ShiftRight : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_ShiftRight* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_ShiftRight();
-		virtual ~Hexus_CardDescriptions_ShiftRight() = default;
-	};
-
-	class Hexus_CardDescriptions_ShiftRightCircular : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_ShiftRightCircular* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_ShiftRightCircular();
-		virtual ~Hexus_CardDescriptions_ShiftRightCircular() = default;
-	};
-
-	class Hexus_CardDescriptions_Steal : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Steal* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Steal();
-		virtual ~Hexus_CardDescriptions_Steal() = default;
-	};
-
-	class Hexus_CardDescriptions_Subtract : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_Subtract* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_Subtract();
-		virtual ~Hexus_CardDescriptions_Subtract() = default;
-	};
-
-	class Hexus_CardDescriptions_SuddenDeath : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_SuddenDeath* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_SuddenDeath();
-		virtual ~Hexus_CardDescriptions_SuddenDeath() = default;
-	};
-
-	class Hexus_CardDescriptions_TurnGainsEffect : public LocalizedString
-	{
-	public:
-		static Hexus_CardDescriptions_TurnGainsEffect* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardDescriptions_TurnGainsEffect();
-		virtual ~Hexus_CardDescriptions_TurnGainsEffect() = default;
-	};
-
 	class Hexus_CardDescriptionsLong_Absorb : public LocalizedString
 	{
 	public:
@@ -2512,6 +2062,501 @@ namespace Strings
 	private:
 		Hexus_CardDescriptionsLong_TurnGainsEffect();
 		virtual ~Hexus_CardDescriptionsLong_TurnGainsEffect() = default;
+	};
+
+	class Hexus_CardDescriptions_Absorb : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Absorb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Absorb();
+		virtual ~Hexus_CardDescriptions_Absorb() = default;
+	};
+
+	class Hexus_CardDescriptions_Addition : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Addition* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Addition();
+		virtual ~Hexus_CardDescriptions_Addition() = default;
+	};
+
+	class Hexus_CardDescriptions_BonusMoves : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_BonusMoves* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_BonusMoves();
+		virtual ~Hexus_CardDescriptions_BonusMoves() = default;
+	};
+
+	class Hexus_CardDescriptions_Clear : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Clear* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Clear();
+		virtual ~Hexus_CardDescriptions_Clear() = default;
+	};
+
+	class Hexus_CardDescriptions_DrawEffect : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_DrawEffect* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_DrawEffect();
+		virtual ~Hexus_CardDescriptions_DrawEffect() = default;
+	};
+
+	class Hexus_CardDescriptions_Flip1 : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Flip1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Flip1();
+		virtual ~Hexus_CardDescriptions_Flip1() = default;
+	};
+
+	class Hexus_CardDescriptions_Flip2 : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Flip2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Flip2();
+		virtual ~Hexus_CardDescriptions_Flip2() = default;
+	};
+
+	class Hexus_CardDescriptions_Flip3 : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Flip3* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Flip3();
+		virtual ~Hexus_CardDescriptions_Flip3() = default;
+	};
+
+	class Hexus_CardDescriptions_Flip4 : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Flip4* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Flip4();
+		virtual ~Hexus_CardDescriptions_Flip4() = default;
+	};
+
+	class Hexus_CardDescriptions_Greed : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Greed* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Greed();
+		virtual ~Hexus_CardDescriptions_Greed() = default;
+	};
+
+	class Hexus_CardDescriptions_Horde : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Horde* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Horde();
+		virtual ~Hexus_CardDescriptions_Horde() = default;
+	};
+
+	class Hexus_CardDescriptions_Inverse : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Inverse* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Inverse();
+		virtual ~Hexus_CardDescriptions_Inverse() = default;
+	};
+
+	class Hexus_CardDescriptions_LogicalAnd : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_LogicalAnd* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_LogicalAnd();
+		virtual ~Hexus_CardDescriptions_LogicalAnd() = default;
+	};
+
+	class Hexus_CardDescriptions_LogicalOr : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_LogicalOr* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_LogicalOr();
+		virtual ~Hexus_CardDescriptions_LogicalOr() = default;
+	};
+
+	class Hexus_CardDescriptions_LogicalXor : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_LogicalXor* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_LogicalXor();
+		virtual ~Hexus_CardDescriptions_LogicalXor() = default;
+	};
+
+	class Hexus_CardDescriptions_Mov : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Mov* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Mov();
+		virtual ~Hexus_CardDescriptions_Mov() = default;
+	};
+
+	class Hexus_CardDescriptions_NoDestroyEffect : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_NoDestroyEffect* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_NoDestroyEffect();
+		virtual ~Hexus_CardDescriptions_NoDestroyEffect() = default;
+	};
+
+	class Hexus_CardDescriptions_Peek : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Peek* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Peek();
+		virtual ~Hexus_CardDescriptions_Peek() = default;
+	};
+
+	class Hexus_CardDescriptions_Pop : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Pop* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Pop();
+		virtual ~Hexus_CardDescriptions_Pop() = default;
+	};
+
+	class Hexus_CardDescriptions_Push : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Push* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Push();
+		virtual ~Hexus_CardDescriptions_Push() = default;
+	};
+
+	class Hexus_CardDescriptions_ReturnAfterRound : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_ReturnAfterRound* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_ReturnAfterRound();
+		virtual ~Hexus_CardDescriptions_ReturnAfterRound() = default;
+	};
+
+	class Hexus_CardDescriptions_ReturnToHand : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_ReturnToHand* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_ReturnToHand();
+		virtual ~Hexus_CardDescriptions_ReturnToHand() = default;
+	};
+
+	class Hexus_CardDescriptions_ShiftLeft : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_ShiftLeft* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_ShiftLeft();
+		virtual ~Hexus_CardDescriptions_ShiftLeft() = default;
+	};
+
+	class Hexus_CardDescriptions_ShiftLeftCircular : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_ShiftLeftCircular* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_ShiftLeftCircular();
+		virtual ~Hexus_CardDescriptions_ShiftLeftCircular() = default;
+	};
+
+	class Hexus_CardDescriptions_ShiftRight : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_ShiftRight* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_ShiftRight();
+		virtual ~Hexus_CardDescriptions_ShiftRight() = default;
+	};
+
+	class Hexus_CardDescriptions_ShiftRightCircular : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_ShiftRightCircular* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_ShiftRightCircular();
+		virtual ~Hexus_CardDescriptions_ShiftRightCircular() = default;
+	};
+
+	class Hexus_CardDescriptions_Steal : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Steal* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Steal();
+		virtual ~Hexus_CardDescriptions_Steal() = default;
+	};
+
+	class Hexus_CardDescriptions_Subtract : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_Subtract* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_Subtract();
+		virtual ~Hexus_CardDescriptions_Subtract() = default;
+	};
+
+	class Hexus_CardDescriptions_SuddenDeath : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_SuddenDeath* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_SuddenDeath();
+		virtual ~Hexus_CardDescriptions_SuddenDeath() = default;
+	};
+
+	class Hexus_CardDescriptions_TurnGainsEffect : public LocalizedString
+	{
+	public:
+		static Hexus_CardDescriptions_TurnGainsEffect* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardDescriptions_TurnGainsEffect();
+		virtual ~Hexus_CardDescriptions_TurnGainsEffect() = default;
+	};
+
+	class Hexus_CardsInDeck : public LocalizedString
+	{
+	public:
+		static Hexus_CardsInDeck* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardsInDeck();
+		virtual ~Hexus_CardsInDeck() = default;
+	};
+
+	class Hexus_CardsInStorage : public LocalizedString
+	{
+	public:
+		static Hexus_CardsInStorage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardsInStorage();
+		virtual ~Hexus_CardsInStorage() = default;
+	};
+
+	class Hexus_CardsToPlayToolTip : public LocalizedString
+	{
+	public:
+		static Hexus_CardsToPlayToolTip* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_CardsToPlayToolTip();
+		virtual ~Hexus_CardsToPlayToolTip() = default;
 	};
 
 	class Hexus_Cards_Abbreviations_ADD : public LocalizedString
@@ -3997,51 +4042,6 @@ namespace Strings
 	private:
 		Hexus_Cards_Subtract();
 		virtual ~Hexus_Cards_Subtract() = default;
-	};
-
-	class Hexus_CardsInDeck : public LocalizedString
-	{
-	public:
-		static Hexus_CardsInDeck* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardsInDeck();
-		virtual ~Hexus_CardsInDeck() = default;
-	};
-
-	class Hexus_CardsInStorage : public LocalizedString
-	{
-	public:
-		static Hexus_CardsInStorage* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardsInStorage();
-		virtual ~Hexus_CardsInStorage() = default;
-	};
-
-	class Hexus_CardsToPlayToolTip : public LocalizedString
-	{
-	public:
-		static Hexus_CardsToPlayToolTip* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Hexus_CardsToPlayToolTip();
-		virtual ~Hexus_CardsToPlayToolTip() = default;
 	};
 
 	class Hexus_ClaimVictory : public LocalizedString
@@ -9264,6 +9264,21 @@ namespace Strings
 		virtual ~Menus_GotIt() = default;
 	};
 
+	class Menus_HackingTutorials : public LocalizedString
+	{
+	public:
+		static Menus_HackingTutorials* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_HackingTutorials();
+		virtual ~Menus_HackingTutorials() = default;
+	};
+
 	class Menus_Hacking_Abilities_Abilities_ArrowRain_ArrowRain : public LocalizedString
 	{
 	public:
@@ -9427,6 +9442,81 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEcx();
 		virtual ~Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEcx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare();
+		virtual ~Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_FireRain_CommentEval : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_FireRain_CommentEval* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_FireRain_CommentEval();
+		virtual ~Menus_Hacking_Abilities_Abilities_FireRain_CommentEval() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_FireRain_CompareTeam : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_FireRain_CompareTeam* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_FireRain_CompareTeam();
+		virtual ~Menus_Hacking_Abilities_Abilities_FireRain_CompareTeam() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_FireRain_FireRain : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_FireRain_FireRain* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_FireRain_FireRain();
+		virtual ~Menus_Hacking_Abilities_Abilities_FireRain_FireRain() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_FireRain_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_FireRain_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_FireRain_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Abilities_FireRain_RegisterEax() = default;
 	};
 
 	class Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_ApplySpeed : public LocalizedString
@@ -9787,6 +9877,51 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEsi();
 		virtual ~Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEsi() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_InnerFire_Hint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_InnerFire_Hint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_InnerFire_Hint();
+		virtual ~Menus_Hacking_Abilities_Abilities_InnerFire_Hint() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_InnerFire_InnerFire : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_InnerFire_InnerFire* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_InnerFire_InnerFire();
+		virtual ~Menus_Hacking_Abilities_Abilities_InnerFire_InnerFire() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx();
+		virtual ~Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration : public LocalizedString
@@ -10194,96 +10329,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_WaterballClippy() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_ArcaneProtection_ArcaneProtection : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_ArcaneProtection_ArcaneProtection* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_ArcaneProtection_ArcaneProtection();
-		virtual ~Menus_Hacking_Abilities_Buffs_ArcaneProtection_ArcaneProtection() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentDamageReduce : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentDamageReduce* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentDamageReduce();
-		virtual ~Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentDamageReduce() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentIncreaseInstead : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentIncreaseInstead* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentIncreaseInstead();
-		virtual ~Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentIncreaseInstead() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentRegister : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentRegister* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentRegister();
-		virtual ~Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentRegister() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentTryChanging : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentTryChanging* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentTryChanging();
-		virtual ~Menus_Hacking_Abilities_Buffs_ArcaneProtection_CommentTryChanging() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_ArcaneProtection_RegisterEax : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_ArcaneProtection_RegisterEax* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_ArcaneProtection_RegisterEax();
-		virtual ~Menus_Hacking_Abilities_Buffs_ArcaneProtection_RegisterEax() = default;
-	};
-
 	class Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients : public LocalizedString
 	{
 	public:
@@ -10327,6 +10372,96 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx8();
 		virtual ~Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx8() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Calcify_Calcify : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Calcify_Calcify* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Calcify_Calcify();
+		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_Calcify() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Calcify_CommentDamageReduce : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Calcify_CommentDamageReduce* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Calcify_CommentDamageReduce();
+		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_CommentDamageReduce() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Calcify_CommentIncreaseInstead : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Calcify_CommentIncreaseInstead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Calcify_CommentIncreaseInstead();
+		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_CommentIncreaseInstead() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Calcify_CommentRegister : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Calcify_CommentRegister* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Calcify_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_CommentRegister() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Calcify_CommentTryChanging : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Calcify_CommentTryChanging* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Calcify_CommentTryChanging();
+		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_CommentTryChanging() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Calcify_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Calcify_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Calcify_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_RegisterEax() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients : public LocalizedString
@@ -10464,10 +10599,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_DefensiveStance_RegisterEax() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentDamageReduce : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentDamageReduce* create();
+		static Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10475,14 +10610,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentDamageReduce();
-		virtual ~Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentDamageReduce() = default;
+		Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce();
+		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentIncreaseInstead : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Enchantment_CommentRegister : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentIncreaseInstead* create();
+		static Menus_Hacking_Abilities_Buffs_Enchantment_CommentRegister* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10490,14 +10625,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentIncreaseInstead();
-		virtual ~Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentIncreaseInstead() = default;
+		Menus_Hacking_Abilities_Buffs_Enchantment_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_CommentRegister() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentRegister : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Enchantment_CursedBlade : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentRegister* create();
+		static Menus_Hacking_Abilities_Buffs_Enchantment_CursedBlade* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10505,14 +10640,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentRegister();
-		virtual ~Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentRegister() = default;
+		Menus_Hacking_Abilities_Buffs_Enchantment_CursedBlade();
+		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_CursedBlade() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentTryChanging : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Enchantment_Enchantment : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentTryChanging* create();
+		static Menus_Hacking_Abilities_Buffs_Enchantment_Enchantment* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10520,14 +10655,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentTryChanging();
-		virtual ~Menus_Hacking_Abilities_Buffs_EnchantedBlade_CommentTryChanging() = default;
+		Menus_Hacking_Abilities_Buffs_Enchantment_Enchantment();
+		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_Enchantment() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_EnchantedBlade_EnchantedBlade : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_EnchantedBlade_EnchantedBlade* create();
+		static Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEdi* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10535,14 +10670,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_EnchantedBlade_EnchantedBlade();
-		virtual ~Menus_Hacking_Abilities_Buffs_EnchantedBlade_EnchantedBlade() = default;
+		Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEdi() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_EnchantedBlade_RegisterEax : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_EnchantedBlade_RegisterEax* create();
+		static Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEsi* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10550,8 +10685,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_EnchantedBlade_RegisterEax();
-		virtual ~Menus_Hacking_Abilities_Buffs_EnchantedBlade_RegisterEax() = default;
+		Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEsi() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Enrage_Enrage : public LocalizedString
@@ -10644,21 +10779,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Focus_CommentDamageReduce() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Focus_CommentIncreaseInstead : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_Focus_CommentIncreaseInstead* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_Focus_CommentIncreaseInstead();
-		virtual ~Menus_Hacking_Abilities_Buffs_Focus_CommentIncreaseInstead() = default;
-	};
-
 	class Menus_Hacking_Abilities_Buffs_Focus_CommentRegister : public LocalizedString
 	{
 	public:
@@ -10672,21 +10792,6 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Buffs_Focus_CommentRegister();
 		virtual ~Menus_Hacking_Abilities_Buffs_Focus_CommentRegister() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_Focus_CommentTryChanging : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_Focus_CommentTryChanging* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_Focus_CommentTryChanging();
-		virtual ~Menus_Hacking_Abilities_Buffs_Focus_CommentTryChanging() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Focus_Focus : public LocalizedString
@@ -10704,10 +10809,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Focus_Focus() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Focus_RegisterEax : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Focus_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Focus_RegisterEax* create();
+		static Menus_Hacking_Abilities_Buffs_Focus_RegisterEdi* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10715,8 +10820,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_Focus_RegisterEax();
-		virtual ~Menus_Hacking_Abilities_Buffs_Focus_RegisterEax() = default;
+		Menus_Hacking_Abilities_Buffs_Focus_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Buffs_Focus_RegisterEdi() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Focus_RegisterEsi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Focus_RegisterEsi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Focus_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_Buffs_Focus_RegisterEsi() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce : public LocalizedString
@@ -11649,6 +11769,96 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentDamageReduce : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentDamageReduce* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentDamageReduce();
+		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentDamageReduce() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentIncreaseInstead : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentIncreaseInstead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentIncreaseInstead();
+		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentIncreaseInstead() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentRegister : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentRegister* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentRegister() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentTryChanging : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentTryChanging* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentTryChanging();
+		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentTryChanging() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_ScaldingBlade : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_ScaldingBlade* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ScaldingBlade_ScaldingBlade();
+		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_ScaldingBlade() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCompare : public LocalizedString
 	{
 	public:
@@ -11767,6 +11977,111 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Buffs_SharpenedBlade_SharpenedBlade();
 		virtual ~Menus_Hacking_Abilities_Buffs_SharpenedBlade_SharpenedBlade() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_ShieldWall_CommentDamageReduce : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ShieldWall_CommentDamageReduce* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ShieldWall_CommentDamageReduce();
+		virtual ~Menus_Hacking_Abilities_Buffs_ShieldWall_CommentDamageReduce() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_ShieldWall_CommentIncreaseInstead : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ShieldWall_CommentIncreaseInstead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ShieldWall_CommentIncreaseInstead();
+		virtual ~Menus_Hacking_Abilities_Buffs_ShieldWall_CommentIncreaseInstead() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_ShieldWall_CommentRegister : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ShieldWall_CommentRegister* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ShieldWall_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Buffs_ShieldWall_CommentRegister() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_ShieldWall_CommentTryChanging : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ShieldWall_CommentTryChanging* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ShieldWall_CommentTryChanging();
+		virtual ~Menus_Hacking_Abilities_Buffs_ShieldWall_CommentTryChanging() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEcx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_ShieldWall_ShieldWall : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ShieldWall_ShieldWall* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ShieldWall_ShieldWall();
+		virtual ~Menus_Hacking_Abilities_Buffs_ShieldWall_ShieldWall() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide : public LocalizedString
@@ -12054,10 +12369,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_ThickHide_CommentTryChanging() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEax : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEax* create();
+		static Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEbx* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12065,8 +12380,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEax();
-		virtual ~Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEax() = default;
+		Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEbx();
+		virtual ~Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEbx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEdx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEdx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEdx();
+		virtual ~Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEdx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_ThickHide_ThickHide : public LocalizedString
@@ -12519,6 +12849,126 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_BrokenBlade_RegisterEbx() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_Chance_Chance : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Chance_Chance* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Chance_Chance();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Chance_Chance() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Chance_CommentCompare : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Chance_CommentCompare* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Chance_CommentCompare();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Chance_CommentCompare() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Chance_CommentConditionalMov : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Chance_CommentConditionalMov* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Chance_CommentConditionalMov();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Chance_CommentConditionalMov() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Chance_CommentFinale : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Chance_CommentFinale* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Chance_CommentFinale();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Chance_CommentFinale() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Chance_CommentHint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Chance_CommentHint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Chance_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Chance_CommentHint() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Chance_CommentMaxDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Chance_CommentMaxDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Chance_CommentMaxDamage();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Chance_CommentMaxDamage() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Chance_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Chance_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Chance_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Chance_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Chance_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Chance_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Chance_RegisterEbx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Chance_RegisterEbx() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue : public LocalizedString
 	{
 	public:
@@ -12684,6 +13134,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterXmm3() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentDamageReduce : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentDamageReduce* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentDamageReduce();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentDamageReduce() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRegister : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRegister* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRegister() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CursedBlade : public LocalizedString
 	{
 	public:
@@ -12697,6 +13177,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_CursedBlade_CursedBlade();
 		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_CursedBlade() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEdi() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEsi : public LocalizedString
@@ -12714,10 +13209,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEsi() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentElaborate : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentDamageReduce : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentElaborate* create();
+		static Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentDamageReduce* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12725,14 +13220,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentElaborate();
-		virtual ~Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentElaborate() = default;
+		Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentDamageReduce();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentDamageReduce() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentRegister : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint* create();
+		static Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentRegister* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12740,38 +13235,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint();
-		virtual ~Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentShr : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentShr* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentShr();
-		virtual ~Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentShr() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentShrBy1 : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentShrBy1* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentShrBy1();
-		virtual ~Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentShrBy1() = default;
+		Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentRegister() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_CursedSwings_CursedSwings : public LocalizedString
@@ -12804,6 +13269,51 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEdi() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEsi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEsi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEsi() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Daze_CommentDamageReduce : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Daze_CommentDamageReduce* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Daze_CommentDamageReduce();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Daze_CommentDamageReduce() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Daze_CommentRegister : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Daze_CommentRegister* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Daze_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Daze_CommentRegister() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_Daze_Daze : public LocalizedString
 	{
 	public:
@@ -12817,6 +13327,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_Daze_Daze();
 		virtual ~Menus_Hacking_Abilities_Debuffs_Daze_Daze() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Daze_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Daze_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Daze_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Daze_RegisterEdi() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_Daze_RegisterEsi : public LocalizedString
@@ -12954,6 +13479,111 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Diseased_Register() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_Enflame_CommentApplyDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Enflame_CommentApplyDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Enflame_CommentApplyDamage();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Enflame_CommentApplyDamage() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Enflame_CommentJmp : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Enflame_CommentJmp* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Enflame_CommentJmp();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Enflame_CommentJmp() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Enflame_CommentJnz : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Enflame_CommentJnz* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Enflame_CommentJnz();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Enflame_CommentJnz() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Enflame_Enflame : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Enflame_Enflame* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Enflame_Enflame();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Enflame_Enflame() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEdi() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEsi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEsi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEsi() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_Fear_Fear : public LocalizedString
 	{
 	public:
@@ -12997,6 +13627,36 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi();
 		virtual ~Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Hex_CommentDamageReduce : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Hex_CommentDamageReduce* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Hex_CommentDamageReduce();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Hex_CommentDamageReduce() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Hex_CommentRegister : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Hex_CommentRegister* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Hex_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Hex_CommentRegister() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_Hex_Hex : public LocalizedString
@@ -22074,51 +22734,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_RegisterRspWarning() = default;
 	};
 
-	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions();
-		virtual ~Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions() = default;
-	};
-
-	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame();
-		virtual ~Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame() = default;
-	};
-
-	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx();
-		virtual ~Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx() = default;
-	};
-
 	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint : public LocalizedString
 	{
 	public:
@@ -22267,6 +22882,51 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi();
 		virtual ~Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions();
+		virtual ~Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame();
+		virtual ~Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame() = default;
+	};
+
+	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx();
+		virtual ~Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx() = default;
 	};
 
 	class Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify : public LocalizedString
@@ -23107,21 +23767,6 @@ namespace Strings
 	private:
 		Menus_Hacking_RegisterXmm7();
 		virtual ~Menus_Hacking_RegisterXmm7() = default;
-	};
-
-	class Menus_HackingTutorials : public LocalizedString
-	{
-	public:
-		static Menus_HackingTutorials* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_HackingTutorials();
-		virtual ~Menus_HackingTutorials() = default;
 	};
 
 	class Menus_Help : public LocalizedString
@@ -27414,6 +28059,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Helpers_BallmerPeaks_YetiBaby() = default;
 	};
 
+	class Platformer_Entities_Names_Helpers_CastleValgrind_Grim : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Helpers_CastleValgrind_Grim* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Helpers_CastleValgrind_Grim();
+		virtual ~Platformer_Entities_Names_Helpers_CastleValgrind_Grim() = default;
+	};
+
 	class Platformer_Entities_Names_Helpers_CastleValgrind_Knight : public LocalizedString
 	{
 	public:
@@ -27427,21 +28087,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Helpers_CastleValgrind_Knight();
 		virtual ~Platformer_Entities_Names_Helpers_CastleValgrind_Knight() = default;
-	};
-
-	class Platformer_Entities_Names_Helpers_CastleValgrind_Princess : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Helpers_CastleValgrind_Princess* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Helpers_CastleValgrind_Princess();
-		virtual ~Platformer_Entities_Names_Helpers_CastleValgrind_Princess() = default;
 	};
 
 	class Platformer_Entities_Names_Helpers_DaemonsHallow_CritterDemon : public LocalizedString
@@ -27504,21 +28149,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Helpers_EndianForest_Scrappy() = default;
 	};
 
-	class Platformer_Entities_Names_Helpers_EndianForest_Turtle : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Helpers_EndianForest_Turtle* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Helpers_EndianForest_Turtle();
-		virtual ~Platformer_Entities_Names_Helpers_EndianForest_Turtle() = default;
-	};
-
 	class Platformer_Entities_Names_Helpers_LambdaCrypts_Ghost : public LocalizedString
 	{
 	public:
@@ -27534,21 +28164,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Helpers_LambdaCrypts_Ghost() = default;
 	};
 
-	class Platformer_Entities_Names_Helpers_LambdaCrypts_Grim : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Helpers_LambdaCrypts_Grim* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Helpers_LambdaCrypts_Grim();
-		virtual ~Platformer_Entities_Names_Helpers_LambdaCrypts_Grim() = default;
-	};
-
 	class Platformer_Entities_Names_Helpers_UnderflowRuins_Mummy : public LocalizedString
 	{
 	public:
@@ -27562,21 +28177,6 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Helpers_UnderflowRuins_Mummy();
 		virtual ~Platformer_Entities_Names_Helpers_UnderflowRuins_Mummy() = default;
-	};
-
-	class Platformer_Entities_Names_Helpers_VoidStar_Professor : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Helpers_VoidStar_Professor* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Helpers_VoidStar_Professor();
-		virtual ~Platformer_Entities_Names_Helpers_VoidStar_Professor() = default;
 	};
 
 	class Platformer_Entities_Names_Helpers_VoidStar_Robot : public LocalizedString

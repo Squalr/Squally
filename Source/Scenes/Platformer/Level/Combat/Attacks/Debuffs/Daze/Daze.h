@@ -16,6 +16,7 @@ public:
 	static Daze* create(PlatformerEntity* caster, PlatformerEntity* target);
 
 	static const std::string DazeIdentifier;
+	static const std::string HackIdentifierDaze;
 
 protected:
 	Daze(PlatformerEntity* caster, PlatformerEntity* target);
@@ -35,5 +36,6 @@ private:
 	cocos2d::Sprite* spellAura = nullptr;
 	
 	static const float Duration;
+	static const float DazeDamage;
 	static const int MaxMultiplier;
 };

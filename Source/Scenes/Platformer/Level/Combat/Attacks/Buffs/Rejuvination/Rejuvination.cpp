@@ -32,7 +32,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_RESTORE 1
+#define LOCAL_FUNC_ID_REJUVINATION 1
 
 const std::string Rejuvination::RejuvinationIdentifier = "rejuvination";
 const float Rejuvination::TimeBetweenTicks = 1.0f;
@@ -95,7 +95,7 @@ void Rejuvination::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_RESTORE,
+			LOCAL_FUNC_ID_REJUVINATION,
 			HackableCode::HackableCodeInfo(
 				Rejuvination::RejuvinationIdentifier,
 				Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_Rejuvination::create(),
@@ -185,7 +185,7 @@ NO_OPTIMIZE void Rejuvination::runRestoreTick()
 
 	ASM_MOV_REG_VAR(edx, health);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RESTORE);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_REJUVINATION);
 	ASM(rol ZDX, 1);
 	HACKABLE_CODE_END();
 

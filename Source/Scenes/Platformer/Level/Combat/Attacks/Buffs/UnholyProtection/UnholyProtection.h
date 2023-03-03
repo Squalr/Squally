@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Scenes/Platformer/Level/Combat/Attacks/AbilityType.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Buff.h"
 
 namespace cocos2d
@@ -26,6 +27,7 @@ protected:
 	void initializePositions() override;
 	void registerHackables() override;
 	void onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
+	void onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
 
 private:
 	typedef Buff super;
@@ -35,8 +37,9 @@ private:
 	cocos2d::Sprite* bubble = nullptr;
 	SmartParticles* spellEffect = nullptr;
 	cocos2d::Sprite* spellAura = nullptr;
-	
+
+	static const std::string StateKeyUnholyProtectionNewHealth;
+	static const int MinUnholyProtection;
 	static const int MaxMultiplier;
-	static const int DamageReduction;
 	static const float Duration;
 };
