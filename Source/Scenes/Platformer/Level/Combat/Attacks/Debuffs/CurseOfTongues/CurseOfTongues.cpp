@@ -34,7 +34,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_HASTE 1
+#define LOCAL_FUNC_ID_CURSE_OF_TONGUES 1
 
 const std::string CurseOfTongues::CurseOfTonguesIdentifier = "curse-of-tongues";
 
@@ -108,7 +108,7 @@ void CurseOfTongues::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_HASTE,
+			LOCAL_FUNC_ID_CURSE_OF_TONGUES,
 			HackableCode::HackableCodeInfo(
 				CurseOfTongues::CurseOfTonguesIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTongues::create(),
@@ -198,7 +198,7 @@ NO_OPTIMIZE void CurseOfTongues::applyCurseOfTongues()
 	ASM_MOV_REG_PTR(ZBX, incrementPtr);
 	ASM(movss xmm3, [ZBX]);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HASTE);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSE_OF_TONGUES);
 	ASM(movss [ZSI], xmm3);
 	ASM_NOP16();
 	HACKABLE_CODE_END();

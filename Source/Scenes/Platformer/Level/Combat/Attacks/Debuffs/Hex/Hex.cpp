@@ -11,7 +11,7 @@
 #include "Engine/Hackables/Menus/HackablePreview.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
-#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/ConstantFloat.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
@@ -36,12 +36,17 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_HEX 1
 
-const std::string Hex::HexIdentifier = "cursed-blade";
-const std::string Hex::HackIdentifierHex = "cursed-blade";
+const std::string Hex::HexIdentifier = "curse-of-tongues";
 
-const int Hex::MaxMultiplier = 4;
-const float Hex::DamageIncrease = 10.0f; // Keep in sync with asm
-const float Hex::Duration = 16.0f;
+// Note: UI sets precision on these to 1 digit
+const float Hex::MinSpeed = -1.25f;
+const float Hex::DefaultSpeed = -1.25f;
+const float Hex::DefaultHackSpeed = -0.5f; // Keep in sync with the asm
+const float Hex::MaxSpeed = 1.0f;
+const float Hex::Duration = 6.0f;
+
+// Static to prevent GCC optimization issues
+volatile float Hex::currentSpeed = 0.0f;
 
 Hex* Hex::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -53,12 +58,12 @@ Hex* Hex::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Hex::Hex(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Voodoo, AbilityType::Physical, BuffData(Hex::Duration, Hex::HexIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Voodoo, AbilityType::Shadow, BuffData(Hex::Duration, Hex::HexIdentifier))
 {
-	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
-	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
+	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
+	this->spellAura = Sprite::create(FXResources::Auras_ChantAura);
 
-	this->spellAura->setColor(Color3B::YELLOW);
+	this->spellAura->setColor(Color3B::MAGENTA);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
@@ -105,7 +110,7 @@ void Hex::registerHackables()
 		{
 			LOCAL_FUNC_ID_HEX,
 			HackableCode::HackableCodeInfo(
-				Hex::HackIdentifierHex,
+				Hex::HexIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_Hex_Hex::create(),
 				HackableBase::HackBarColor::Purple,
 				UIResources::Menus_Icons_Voodoo,
@@ -113,6 +118,11 @@ void Hex::registerHackables()
 				{
 					{
 						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Hex_RegisterEsi::create()
+							->setStringReplacementVariables({ ConstantFloat::create(Hex::MinSpeed, 2), ConstantFloat::create(Hex::MaxSpeed, 1) })
+					},
+					{
+						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Debuffs_Hex_RegisterEsi::create()
+							->setStringReplacementVariables(ConstantFloat::create(Hex::DefaultSpeed, 2))
 					}
 				},
 				int(HackFlags::None),
@@ -120,26 +130,25 @@ void Hex::registerHackables()
 				0.0f,
 				{
 					HackableCode::ReadOnlyScript(
-						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						Strings::Menus_Hacking_Abilities_Debuffs_Hex_Hex::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Hex_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Hex_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Hex::DamageIncrease)))) + 
-						"fld dword ptr [esi]\n" +
-						"fabs\n" +
-						"fistp dword ptr [esi]\n"
+						"mov dword ptr [esi], -0.5f\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Hex_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Hex_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Hex::DamageIncrease)))) + 
-						"fld dword ptr [rsi]\n" +
-						"fabs\n" +
-						"fistp dword ptr [rsi]\n"
-					),
-				},
-				true
+						"mov dword ptr [rsi], -0.5f\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+					)
+				}
 			)
 		},
 	};
@@ -153,44 +162,46 @@ void Hex::registerHackables()
 	}
 }
 
-void Hex::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void Hex::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed)
 {
-	super::onBeforeDamageDealt(damageOrHealing);
-
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
+	super::onModifyTimelineSpeed(speed);
+	
+	this->currentSpeed = *(speed->speed);
 
 	this->applyHex();
 
-	(*damageOrHealing->damageOrHealing) = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
-	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * Hex::MaxMultiplier);
-	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * Hex::MaxMultiplier);
+	*(speed->speed) = this->currentSpeed;
 }
 
 NO_OPTIMIZE void Hex::applyHex()
 {
-	static volatile int currentDamageDealtLocal = 0;
-	static volatile int* currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	static volatile float speedBonus;
+	static volatile float increment = 0.0f;
+	static volatile float* speedBonusPtr;
+	static volatile float* incrementPtr;
 
-	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	speedBonus = 0.0f;
+	increment = Hex::DefaultSpeed;
+	speedBonusPtr = &speedBonus;
+	incrementPtr = &increment;
 
-	ASM_PUSH_EFLAGS()
+	ASM_PUSH_EFLAGS();
 	ASM(push ZSI);
-
-	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
+	ASM(push ZBX);
+	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
+	ASM_MOV_REG_PTR(ZBX, incrementPtr);
+	ASM(movss xmm3, [ZBX]);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HEX);
-	ASM(fld dword ptr [ZSI]);
-	ASM(fabs);
-	ASM(fistp dword ptr [ZSI]);
+	ASM(movss [ZSI], xmm3);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
-
+	ASM(pop ZBX);
 	ASM(pop ZSI);
-	ASM_POP_EFLAGS()
+	ASM_POP_EFLAGS();
 
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
+	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, Hex::MinSpeed, Hex::MaxSpeed);
 
 	HACKABLES_STOP_SEARCH();
 }

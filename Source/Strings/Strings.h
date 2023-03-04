@@ -13359,6 +13359,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Daze_RegisterEsi() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentDamageReduce : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentDamageReduce* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentDamageReduce();
+		virtual ~Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentDamageReduce() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentRegister : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentRegister* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentRegister() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_DeadGrasp_DeadGrasp : public LocalizedString
 	{
 	public:
@@ -13627,36 +13657,6 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi();
 		virtual ~Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_Hex_CommentDamageReduce : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_Hex_CommentDamageReduce* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Hex_CommentDamageReduce();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Hex_CommentDamageReduce() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_Hex_CommentRegister : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_Hex_CommentRegister* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Hex_CommentRegister();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Hex_CommentRegister() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_Hex_Hex : public LocalizedString
@@ -14347,36 +14347,6 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_Weakness_Weakness();
 		virtual ~Menus_Hacking_Abilities_Debuffs_Weakness_Weakness() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEsi : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEsi* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEsi();
-		virtual ~Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEsi() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_ZombieGrasp : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_ZombieGrasp* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_ZombieGrasp_ZombieGrasp();
-		virtual ~Menus_Hacking_Abilities_Debuffs_ZombieGrasp_ZombieGrasp() = default;
 	};
 
 	class Menus_Hacking_Abilities_DispelIllusion : public LocalizedString

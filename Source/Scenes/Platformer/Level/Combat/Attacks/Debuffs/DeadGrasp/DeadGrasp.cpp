@@ -34,12 +34,14 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_DEAD_GRASP 1
+#define LOCAL_FUNC_ID_HEX 1
 
 const std::string DeadGrasp::DeadGraspIdentifier = "dead-grasp";
+const std::string DeadGrasp::HackIdentifierDeadGrasp = "dead-grasp";
 
-const float DeadGrasp::Duration = 60.0f;
-const int DeadGrasp::MaxMultiplier = 5;
+const int DeadGrasp::MaxMultiplier = 4;
+const float DeadGrasp::DamageIncrease = 10.0f; // Keep in sync with asm
+const float DeadGrasp::Duration = 16.0f;
 
 DeadGrasp* DeadGrasp::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -51,7 +53,7 @@ DeadGrasp* DeadGrasp::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 DeadGrasp::DeadGrasp(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_EyeStrain, AbilityType::Physical, BuffData(DeadGrasp::Duration, DeadGrasp::DeadGraspIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_DeadGrasp, AbilityType::Physical, BuffData(DeadGrasp::Duration, DeadGrasp::DeadGraspIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
@@ -101,21 +103,43 @@ void DeadGrasp::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_DEAD_GRASP,
+			LOCAL_FUNC_ID_HEX,
 			HackableCode::HackableCodeInfo(
-				DeadGrasp::DeadGraspIdentifier,
+				DeadGrasp::HackIdentifierDeadGrasp,
 				Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_DeadGrasp::create(),
-				HackableBase::HackBarColor::Green,
-				UIResources::Menus_Icons_EyeStrain,
+				HackableBase::HackBarColor::Purple,
+				UIResources::Menus_Icons_DeadGrasp,
 				LazyNode<HackablePreview>::create([=](){ return DeadGraspGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_RegisterEsi::create(),
-					},
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_RegisterEsi::create()
+					}
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
-				0.0f
+				0.0f,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentRegister::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentDamageReduce::create()
+							->setStringReplacementVariables(ConstantString::create(std::to_string(DeadGrasp::DamageIncrease)))) + 
+						"fld dword ptr [esi]\n" +
+						"fabs\n" +
+						"fistp dword ptr [esi]\n"
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentRegister::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentDamageReduce::create()
+							->setStringReplacementVariables(ConstantString::create(std::to_string(DeadGrasp::DamageIncrease)))) + 
+						"fld dword ptr [rsi]\n" +
+						"fabs\n" +
+						"fistp dword ptr [rsi]\n"
+					),
+				},
+				true
 			)
 		},
 	};
@@ -137,7 +161,7 @@ void DeadGrasp::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs*
 
 	this->applyDeadGrasp();
 
-	*damageOrHealing->damageOrHealing = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	(*damageOrHealing->damageOrHealing) = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * DeadGrasp::MaxMultiplier);
 	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * DeadGrasp::MaxMultiplier);
 }
@@ -145,18 +169,25 @@ void DeadGrasp::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs*
 NO_OPTIMIZE void DeadGrasp::applyDeadGrasp()
 {
 	static volatile int currentDamageDealtLocal = 0;
+	static volatile int* currentDamageDealtLocalPtr = &currentDamageDealtLocal;
 
-	currentDamageDealtLocal = 0;
+	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 
 	ASM_PUSH_EFLAGS()
-	ASM(push ZDI);
-	ASM_MOV_REG_VAR(edi, currentDamageDealtLocal);
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_DEAD_GRASP);
-	ASM(xor ZDI, ZDI);
+	ASM(push ZSI);
+
+	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HEX);
+	ASM(fld dword ptr [ZSI]);
+	ASM(fabs);
+	ASM(fistp dword ptr [ZSI]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
+
 	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
-	ASM(pop ZDI);
+
+	ASM(pop ZSI);
 	ASM_POP_EFLAGS()
 
 	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
