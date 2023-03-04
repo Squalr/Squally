@@ -65,7 +65,30 @@ void Stalactite::initializeListeners()
 
 	this->listenForMapEventOnce(this->getListenEvent(), [=](ValueMap)
 	{
-		this->isFalling = true;
+		const float RotationAngle = 2.5f;
+		const float RotationSpeed = 0.05f;
+		const float HalfRotationSpeed = RotationSpeed / 2.0f;
+		const float RumbleTime = 1.0f;
+		const int Rumbles = int(std::round((RumbleTime - RotationSpeed) / RotationSpeed)) / 2;
+
+		// TODO: Add shaking sound.
+		// this->rumbleSound->play(); 
+
+		this->runAction(Sequence::create(
+			EaseSineInOut::create(RotateTo::create(HalfRotationSpeed, RotationAngle)),
+			Repeat::create(Sequence::create(
+				EaseSineInOut::create(RotateTo::create(RotationSpeed, -RotationAngle)),
+				EaseSineInOut::create(RotateTo::create(RotationSpeed, RotationAngle)),
+				nullptr
+			), Rumbles),
+			EaseSineInOut::create(RotateTo::create(HalfRotationSpeed, 0.0f)),
+			CallFunc::create([=]()
+			{
+				this->isFalling = true;
+
+			}),
+			nullptr
+		));
 	});
 }
 

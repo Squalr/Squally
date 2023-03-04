@@ -458,18 +458,18 @@ DeveloperScene::DeveloperScene()
 		X ReanimatedPig			=>  1_x <Piggy,			fisub> 		=> Thick Hide / dmg decrease
 		X Zombie				=>  1_x <SwordGlowPurp,	fld>  		=> CursedBlade debuff / constant 1.0f damage, round to int
 		O Undead				=>  1_x <DeadGrasp,		fdiv>		=> Dead Grasp? / speed decrease
-		O Assassin				=>  2_x <ThrowingStar,	fadd> 		=> Focus / add to damage
+		X Assassin				=>  2_x <ThrowingStar,	fadd> 		=> Focus / add to damage
 		- BoneFiend				=>  2_x <??, 			??> 		=> ?? / ??
 		X Mystic				=>  2_x <VoodooZombie,	fabs> 		=> Hex / convert damage to healing
-		X BoneKnight			=>  3_x <ShieldGlowOrange, fidiv> 	=> Shield Wall / constant 1 damage recv, round to int
-		X Warlock				=>  3_x <WandSkeleton, 	fimov> 		=> Enchantment / fixed damage (int)
+		X BoneKnight			=>  3_x <ShieldGlowOrange,	fidiv> 	=> Shield Wall / constant 1 damage recv, round to int
+		X Warlock				=>  3_x <WandSkeleton, 		fimov> 	=> Enchantment / fixed damage (int)
 
 		O Hunter				=>  3_x <ArrowMultiShotGlow, fmul>  => Multi Shot (different than bow attack one) / AoE 75% damage
-		O SkeletalPriestess		=>  4_x <Book,			fcmove 		=> 
+		- SkeletalPriestess		=>  4_x <Book,			?? 		=> 
 		O SkeletalKnight		=>  4_x <SwordGlowYel,	fmove> 		=> 
 		X SkeletalCleaver		=>  4_x <AxeGlowPurp,	f(i)div>  	=> CursedSwings debuff / reduce damage by 75% or something (int)
 
-		O [B] Lazarus			=>	3_x <Tombstone, fcmove> 		=> UnholyProtection (rename) / undying effect
+		X [B] Lazarus			=>	3_x <Tombstone, fcmove> 		=> UnholyProtection (rename) / undying effect
 		- 						=>	3_x <GhostBolts, (f??)> 		=> Ghostbolts / reflectable spell
 		X [B] KingZul			=>  4_x <Daze,			fcmovbe> 				=> Daze / chance to do less damage
 

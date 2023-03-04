@@ -190,14 +190,13 @@ NO_OPTIMIZE void ThickHide::applyThickHide()
 	ASM_MOV_REG_VAR(ZBX, damageReductionPtr);
 	ASM_MOV_REG_VAR(ZDX, currentDamageTakenLocalPtr);
 
-	ASM(fild dword ptr [ZDX]);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FORTITUDE);
+	ASM(fild dword ptr [ZDX]);
 	ASM(fisub dword ptr [ZBX]);
+	ASM(fistp dword ptr [ZDX]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-	ASM(fistp dword ptr [ZDX]);
 
 	ASM_MOV_VAR_REG(currentDamageTakenLocal, ebx);
 

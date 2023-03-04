@@ -40,7 +40,7 @@ const std::string Focus::FocusIdentifier = "focus";
 const std::string Focus::HackIdentifierFocus = "focus";
 
 const int Focus::MaxMultiplier = 4;
-const float Focus::DamageReduction = 1.0f; // Keep in sync with asm
+const float Focus::DamageIncrease = 1.0f; // Keep in sync with asm
 const float Focus::Duration = 16.0f;
 
 Focus* Focus::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -128,14 +128,18 @@ void Focus::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentRegister::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Focus::DamageReduction)))) + 
-						"fld dword ptr [edi]\n"
+							->setStringReplacementVariables(ConstantString::create(std::to_string(Focus::DamageIncrease)))) + 
+						"fild dword ptr [esi]\n" +
+						"fiadd dword ptr [eax]\n" +
+						"fistp dword ptr [esi]\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentRegister::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Focus::DamageReduction)))) + 
-						"fld dword ptr [rdi]\n"
+							->setStringReplacementVariables(ConstantString::create(std::to_string(Focus::DamageIncrease)))) + 
+						"fild dword ptr [rsi]\n" +
+						"fiadd dword ptr [rax]\n" +
+						"fistp dword ptr [rsi]\n"
 					),
 				},
 				true
@@ -169,29 +173,29 @@ NO_OPTIMIZE void Focus::applyFocus()
 {
 	static volatile int currentDamageDealtLocal = 0;
 	static volatile int* currentDamageDealtLocalPtr = &currentDamageDealtLocal;
-	static volatile float damageReduction = 1.0f;
-	static volatile float* damageReductionPtr = &damageReduction;
+	static volatile int damageIncrease = 8;
+	static volatile int* damageIncreasePtr = &damageIncrease;
 
 	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 
 	ASM_PUSH_EFLAGS()
-	ASM(push ZDI);
+	ASM(push ZAX);
 	ASM(push ZSI);
 
-	ASM_MOV_REG_VAR(ZDI, damageReductionPtr);
+	ASM_MOV_REG_VAR(ZAX, damageIncreasePtr);
 	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FOCUS);
-	ASM(fld dword ptr [ZDI]);
+	ASM(fild dword ptr [ZSI]);
+	ASM(fiadd dword ptr [ZAX]);
+	ASM(fistp dword ptr [ZSI]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-	ASM(fistp dword ptr [ZSI]);
 
 	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
 
 	ASM(pop ZSI);
-	ASM(pop ZDI);
+	ASM(pop ZAX);
 	ASM_POP_EFLAGS()
 
 	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
