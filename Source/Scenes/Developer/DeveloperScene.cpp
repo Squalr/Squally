@@ -464,35 +464,27 @@ DeveloperScene::DeveloperScene()
 		X BoneFiend				=>  2_x <AxeGlowPurp,		fdiv>  	=> CursedSwings debuff / reduce damage by 75% or something (int)
 		X Mystic				=>  2_x <VoodooZombie,		fimul> 	=> Hex / speed decrease
 		X BoneKnight			=>  3_x <ShieldGlowOrange,	fidiv> 	=> Shield Wall / constant 25% damage recv
-		X Warlock				=>  3_x <WandSkeleton, 		fmul/frndint> 	=> Enchantment / 50% damage increase (rounded)
+		X Warlock				=>  3_x <WandSkeleton,		fmul/frndint> 	=> Enchantment / 50% damage increase (rounded)
 
 		// f([i,u])com(p)(p) + fstsw ax + sahf
 		// ftst (Compares St(0) to 0.0)
 
-		O Hunter				=>  3_x <ArrowMultiShotGlow,	ja>  	=> Multi Shot (2) - RNG damage tick radiation style?
-		- SkeletalPriestess		=>  4_x <Book,					jb> 	=> ?? - ??
-		O SkeletalKnight		=>  4_x <SwordGlowPurp,			jae>  	=> CursedBlade - ??
-		- SkeletalCleaver		=>  4_x <SwordGlowYel,			jbe> 	=> ?? - ??
+		O Hunter				=>  3_x <PoisonSpears,			ja>  	=> PoisonedArrows - either radiation or diseased copy
+		O SkeletalPriestess		=>  4_x <Book,					jae> 	=> Spell of Binding - Speed Decrease
+		O SkeletalKnight		=>  4_x <SwordGlowPurp,			jb>  	=> CursedBlade - ??
+		- SkeletalCleaver		=>  4_x <SwordGlowYel,			jbe> 	=> SomethingBlade - ??
 
 		X [B] Lazarus			=>	3_x <Tombstone, 	fcmove> 		=> UnholyProtection (rename) / undying effect
 		? 						=>	3_x <GhostBolts,	f?????> 		=> Ghostbolts / reflectable spell
 		X [B] KingZul			=>  4_x <Daze,			fcmovbe> 		=> Daze / chance to do less damage
 
-		Deprecated:
-		- <Zombie[Grasp], fsub> => Zombie Grasp / speed decrease
-		- <DeadGrasp,	f(i)mov> => Dead Grasp? / damage divide
-
-		Traps:
-		- fldpi + fsqrt + fcos/fsin/fptan/fpatan on launcher direction
-
 		Avail for traps:
 		- SpellBind
 		- SpellCast
 		- WandCrystal
+		- fldpi + fsqrt + fcos/fsin/fptan/fpatan on launcher direction (can also use sqrt for distance based damage or something)
 		- fldpi/fldz/fld1
 		- other fcmov{cc}
-
-		fsqrt => distance based trap damage
 
 		- Amelia				=> Town_Church
 		- Azmus					=> Town_Smith

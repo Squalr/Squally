@@ -33,7 +33,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_RADIATION 1
 
-const std::string Radiation::RadiationIdentifier = "radiation";
+const std::string Radiation::RadiationIdentifier = "poisonedArrows";
 const int Radiation::DamageAmount = 5;
 const int Radiation::DamageAmountMax = 8;
 const float Radiation::TimeBetweenTicks = 0.5f;
@@ -118,24 +118,24 @@ void Radiation::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()) +
 						"cmp esi, 0\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create()) +
-						"jnz radiation\n\n" +
+						"jnz poisonedArrows\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create()) +
-						"jmp radiationSkip\n\n" +
+						"jmp poisonedArrowsSkip\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create()) +
 						"mov edi, 5:\n" + // Radiation::DamageAmount
-						"radiation:\n" +
-						"radiationSkip:\n\n"
+						"poisonedArrows:\n" +
+						"poisonedArrowsSkip:\n\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()) +
 						"cmp rsi, 0\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create()) +
-						"jnz radiation\n\n" +
-						"jmp radiationSkip\n\n" +
+						"jnz poisonedArrows\n\n" +
+						"jmp poisonedArrowsSkip\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create()) +
 						"mov rdi, 5:\n" + // Radiation::DamageAmount
-						"radiation:\n" +
+						"poisonedArrows:\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create()) +
-						"radiationSkip:\n\n"
+						"poisonedArrowsSkip:\n\n"
 					),
 				},
 				true
@@ -202,13 +202,14 @@ NO_OPTIMIZE void Radiation::runRadiationTick()
 	ASM(mov ZDI, 0);
 	ASM_MOV_REG_VAR(esi, rng);
 
+	// TODO: Maybe reference diseased code to cap damage or something using ja
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RADIATION);
 	ASM(cmp ZSI, 0);
-	ASM(jnz radiation);
-	ASM(jmp radiationSkip);
-	ASM(radiation:);
+	ASM(jnz poisonedArrows);
+	ASM(jmp poisonedArrowsSkip);
+	ASM(poisonedArrows:);
 	ASM(mov ZDI, 5); // Radiation::DamageAmount
-	ASM(radiationSkip:);
+	ASM(poisonedArrowsSkip:);
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(drainAmount, edi);
