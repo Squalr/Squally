@@ -217,6 +217,8 @@ NO_OPTIMIZE void SpellOfBinding::applySpellOfBinding()
 	ASM_MOV_REG_PTR(ZAX, currentSpeedPtr);
 	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
 
+	// f([i,u])com(p)(p) + fstsw ax + sahf
+	// ftst (Compares St(0) to 0.0)
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RABIES);
 	ASM(fld dword ptr [ZAX]);
 	ASM(fldz);

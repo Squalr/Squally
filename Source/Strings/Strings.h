@@ -14454,6 +14454,81 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_SpellOfBinding_SpellOfBinding() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare();
+		virtual ~Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentConvertToHealing : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentConvertToHealing* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentConvertToHealing();
+		virtual ~Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentConvertToHealing() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentJump : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentJump* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentJump();
+		virtual ~Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentJump() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_Register : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_Register* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_UnholyBlade_Register();
+		virtual ~Menus_Hacking_Abilities_Debuffs_UnholyBlade_Register() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_UnholyBlade : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_UnholyBlade* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_UnholyBlade_UnholyBlade();
+		virtual ~Menus_Hacking_Abilities_Debuffs_UnholyBlade_UnholyBlade() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare : public LocalizedString
 	{
 	public:

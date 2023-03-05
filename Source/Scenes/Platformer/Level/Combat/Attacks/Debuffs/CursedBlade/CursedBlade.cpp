@@ -183,15 +183,14 @@ NO_OPTIMIZE void CursedBlade::applyCursedBlade()
 	ASM_MOV_REG_VAR(ZDI, damageIncreasePtr);
 	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
 
-
+	// f([i,u])com(p)(p) + fstsw ax + sahf
+	// ftst (Compares St(0) to 0.0)
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSED_BLADE);
 	ASM(fld dword ptr [ZSI]);
 	ASM(fadd dword ptr [ZDI]);
 	ASM(fistp dword ptr [ZSI]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
 
 	ASM(pop ZSI);
 	ASM(pop ZDI);

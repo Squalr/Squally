@@ -374,6 +374,8 @@ DeveloperScene::DeveloperScene()
 		// ** Traps: Organ gun, cannon, catapult, ballista, heaven hug (FPU acceptable, given that jmps are pretty much done)
 		// ** Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
 		// ** New helper? Would need a story rewrite to justify it. If anything, a repear to claim spirit souls, or some shit.
+		//		* Could also allow this helper to steal enemy abilities from enemy corpses (1 activate at a time)
+		//		* Ability would be registered to helper
 		// ** Tune hexus battle special cards
 
 		/*
@@ -457,25 +459,22 @@ DeveloperScene::DeveloperScene()
 		// Maybe should try to incorporate fld and fstp first?
 
 		/*
-		X ReanimatedPig			=>  1_x <Piggy,				fisub> 	=> Thick Hide / dmg decrease
+		X ReanimatedPig			=>  1_x <Piggy,				fisub> 		=> Thick Hide / dmg decrease
 		X Zombie				=>  1_x <ZombieGrasp,		fild/fistp> => Zombie Grasp / raw damage dealt debuff
-		X Undead				=>  1_x <DeadGrasp,			fabs>	=> Dead Grasp / convert damage to healing
-		X Assassin				=>  2_x <ThrowingStar,		fiadd> 	=> Focus / add to damage
-		X BoneFiend				=>  2_x <AxeGlowPurp,		fdiv>  	=> CursedSwings debuff / reduce damage by 75% or something (int)
-		X Mystic				=>  2_x <VoodooZombie,		fimul> 	=> Hex / speed decrease
-		X BoneKnight			=>  3_x <ShieldGlowOrange,	fidiv> 	=> Shield Wall / constant 25% damage recv
+		X Undead				=>  1_x <DeadGrasp,			fabs>		=> Dead Grasp / convert damage to healing
+		X Assassin				=>  2_x <ThrowingStar,		fiadd> 		=> Focus / add to damage
+		X BoneFiend				=>  2_x <AxeGlowPurp,		fdiv>  		=> CursedSwings debuff / reduce damage by 75% or something (int)
+		X Mystic				=>  2_x <VoodooZombie,		fimul> 		=> Hex / speed decrease
+		X BoneKnight			=>  3_x <ShieldGlowOrange,	fidiv> 		=> Shield Wall / constant 25% damage recv
 		X Warlock				=>  3_x <WandSkeleton,		fmul/frndint> 	=> Enchantment / 50% damage increase (rounded)
 
-		// f([i,u])com(p)(p) + fstsw ax + sahf
-		// ftst (Compares St(0) to 0.0)
-
-		O Hunter				=>  3_x <PoisonSpears,			ja>  	=> PoisonedArrows - either radiation or diseased copy
-		O SkeletalPriestess		=>  4_x <Book,					jae> 	=> Spell of Binding - Speed Decrease
-		O SkeletalKnight		=>  4_x <SwordGlowPurp,			jb>  	=> CursedBlade - ??
-		- SkeletalCleaver		=>  4_x <SwordGlowYel,			jbe> 	=> SomethingBlade - ??
+		O Hunter				=>  3_x <PoisonSpears,		ja>  	=> PoisonedArrows - either radiation or diseased copy
+		O SkeletalPriestess		=>  4_x <Book,				jae> 	=> Spell of Binding - Speed Decrease
+		O SkeletalKnight		=>  4_x <SwordGlowPurp,		jb>  	=> CursedBlade - Reduce damage
+		O SkeletalCleaver		=>  4_x <SwordGlowYel,		jbe> 	=> UnholyBlade - Damage to healing
 
 		X [B] Lazarus			=>	3_x <Tombstone, 	fcmove> 		=> UnholyProtection (rename) / undying effect
-		? 						=>	3_x <GhostBolts,	f?????> 		=> Ghostbolts / reflectable spell
+		? 						=>	3_x <GhostBolts,	f?????> 		=> Ghostbolts / reflectable spell (Copy FireBall I guess?)
 		X [B] KingZul			=>  4_x <Daze,			fcmovbe> 		=> Daze / chance to do less damage
 
 		Avail for traps:
@@ -540,20 +539,20 @@ DeveloperScene::DeveloperScene()
 
 		/*
 		Surface:
-		O DemonRogue			=>  1_X		<Dice, Chance> Deal random damage
-		- DemonShaman			=>  1_X		<BookSpellsFire, ?> ?? idk
-		O DemonSwordsman		=>  1_X		<AxeGlowRed, Scalding Blade> Damage+
+		O DemonRogue			=>  1_X		<Dice,				?> Chance / Deal random damage
+		- DemonShaman			=>  1_X		<BookSpellsFire,	?> ?? / idk
+		O DemonSwordsman		=>  1_X		<AxeGlowRed,		?> Scalding Blade / Damage+
 		Caves:
-		O DemonDragon			=>  2_X		<Bone, Calcify? dumb> Defense+ 
-		O DemonGhost			=>  2_X		<SkullLavaEyes, Inner Fire> Self Heal Tick
-		O FireElemental			=>  2_X		<FireBolts, Fire Rain> AoE damage
-		O LavaGolem				=>  2_X		<Fire, Enflame> Burn Tick
+		O DemonDragon			=>  2_X		<Bone,			?> Calcify? dumb / Defense+ 
+		O DemonGhost			=>  2_X		<SkullLavaEyes,	?> Inner Fire / Self Heal Tick
+		O FireElemental			=>  2_X		<FireBolts,		?> Fire Rain / AoE damage
+		O LavaGolem				=>  2_X		<Fire,			?> Enflame / Burn Tick
 		Surface 2?
-		- DemonArcher			=>  3_X		<CrossBow, Arrow Rain> Another arrow rain? Different asm? 
-		- DemonGrunt			=>  3_X		<DaggerGlowYellow, DaggerThrow> Redirectable dagger
-		- DemonWarrior			=>  3_X		<FlamingScroll, ?> ?? idk
-		- FireTiger				=>  3_X		<Chains, Entwined?> Health Link? 
-		- [B] Asmodeus			=> 	4_X		<AxeGlowOrange, Searing Blade> Giant axe that falls counter-clockwise, redirectable
+		- DemonArcher			=>  3_X		<CrossBow,			?> Arrow Rain / Another arrow rain? Different asm? 
+		- DemonGrunt			=>  3_X		<DaggerGlowYellow,	?> DaggerThrow / Redirectable dagger
+		- DemonWarrior			=>  3_X		<FlamingScroll,		?> ?? / idk
+		- FireTiger				=>  3_X		<Chains,			?> Entwined? / Health Link? 
+		- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		?> Searing Blade / Giant axe that falls counter-clockwise, redirectable
 
 		Avail for traps:
 		- Candle

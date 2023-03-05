@@ -118,24 +118,24 @@ void PoisonedArrows::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentRng::create()) +
 						"cmp esi, 0\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJnz::create()) +
-						"jnz radiation\n\n" +
+						"jnz poisonedArrows\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJmp::create()) +
-						"jmp radiationSkip\n\n" +
+						"jmp poisonedArrowsSkip\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage::create()) +
 						"mov edi, 5:\n" + // PoisonedArrows::DamageAmount
-						"radiation:\n" +
-						"radiationSkip:\n\n"
+						"poisonedArrows:\n" +
+						"poisonedArrowsSkip:\n\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentRng::create()) +
 						"cmp rsi, 0\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJnz::create()) +
-						"jnz radiation\n\n" +
-						"jmp radiationSkip\n\n" +
+						"jnz poisonedArrows\n\n" +
+						"jmp poisonedArrowsSkip\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage::create()) +
 						"mov rdi, 5:\n" + // PoisonedArrows::DamageAmount
-						"radiation:\n" +
+						"poisonedArrows:\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJmp::create()) +
-						"radiationSkip:\n\n"
+						"poisonedArrowsSkip:\n\n"
 					),
 				},
 				true
@@ -189,38 +189,48 @@ void PoisonedArrows::runPoisonedArrows()
 
 NO_OPTIMIZE void PoisonedArrows::runPoisonedArrowsTick()
 {
-	static volatile int drainAmount = 0;
+	static volatile float damageBonus = 0.0f;
+	static volatile float* damageBonusPtr = nullptr;
 	static volatile int rng = 0;
+	static volatile int* rngPtr = nullptr;
 
-	drainAmount = 0;
+	damageBonus = 5.0f;
+	damageBonusPtr = &damageBonus;
 	rng = RandomHelper::random_int(0, 1);
-
-	ASM_PUSH_EFLAGS()
-	ASM(push ZDI);
+	rngPtr = &rng;
+	
+	ASM_PUSH_EFLAGS();
+	ASM(push ZAX);
 	ASM(push ZSI);
 
-	ASM(mov ZDI, 0);
-	ASM_MOV_REG_VAR(esi, rng);
+	ASM_MOV_REG_PTR(ZAX, rngPtr);
+	ASM_MOV_REG_PTR(ZSI, damageBonusPtr);
 
+	// f([i,u])com(p)(p) + fstsw ax + sahf
+	// ftst (Compares St(0) to 0.0)
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_POISONED_ARROWS);
-	ASM(cmp ZSI, 0);
-	ASM(jnz radiation);
-	ASM(jmp radiationSkip);
-	ASM(radiation:);
-	ASM(mov ZDI, 5); // PoisonedArrows::DamageAmount
-	ASM(radiationSkip:);
+	ASM(fild dword ptr [ZAX]);
+	ASM(ftst);
+	ASM(fstsw ax);
+	// TODO: Pop? Or just switch back to fldz + fcompp
+	ASM(sahf);
+	ASM(jge poisonedArrowsReduceSpeed);
+	ASM(jmp skipPoisonedArrowsCode);
+	ASM(poisonedArrowsReduceSpeed:);
+	ASM(mov dword ptr [ZSI], 0x000000BF); // -0.5f encoded in hex
+	ASM(skipPoisonedArrowsCode:);
+	ASM_NOP12();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(drainAmount, edi);
-
 	ASM(pop ZSI);
-	ASM(pop ZDI);
-	ASM_POP_EFLAGS()
+	ASM(pop ZAX);
+	ASM_POP_EFLAGS();
+	HACKABLES_STOP_SEARCH();
 
-	drainAmount = MathUtils::clamp(drainAmount, -PoisonedArrows::DamageAmountMax, PoisonedArrows::DamageAmountMax);
+	int damage = MathUtils::clamp((int)damageBonus, -PoisonedArrows::DamageAmountMax, PoisonedArrows::DamageAmountMax);
 
 	this->healSound->play();
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, drainAmount, this->abilityType));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, damage, this->abilityType));
 
 	HACKABLES_STOP_SEARCH();
 }
