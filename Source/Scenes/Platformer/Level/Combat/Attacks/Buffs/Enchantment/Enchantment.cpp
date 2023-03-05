@@ -174,10 +174,13 @@ void Enchantment::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArg
 NO_OPTIMIZE void Enchantment::applyEnchantment()
 {
 	static volatile int currentDamageDealtLocal = 0;
-	static volatile int* currentDamageDealtLocalPtr = &currentDamageDealtLocal;
-	static volatile float damageIncrease = 1.5f;
-	static volatile float* damageIncreasePtr = &damageIncrease;
+	static volatile int* currentDamageDealtLocalPtr = nullptr;
+	static volatile float damageIncrease = 0.0f;
+	static volatile float* damageIncreasePtr = nullptr;
 
+	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	damageIncrease = 1.5f;
+	damageIncreasePtr = &damageIncrease;
 	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 
 	ASM_PUSH_EFLAGS()
@@ -194,9 +197,6 @@ NO_OPTIMIZE void Enchantment::applyEnchantment()
 	ASM(fistp dword ptr [ZSI]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
 
 	ASM(pop ZSI);
 	ASM(pop ZDI);

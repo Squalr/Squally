@@ -172,10 +172,12 @@ void Focus::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* dam
 NO_OPTIMIZE void Focus::applyFocus()
 {
 	static volatile int currentDamageDealtLocal = 0;
-	static volatile int* currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	static volatile int* currentDamageDealtLocalPtr = nullptr;
 	static volatile int damageIncrease = 8;
-	static volatile int* damageIncreasePtr = &damageIncrease;
+	static volatile int* damageIncreasePtr = nullptr;
 
+	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	damageIncreasePtr = &damageIncrease;
 	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 
 	ASM_PUSH_EFLAGS()
@@ -191,8 +193,6 @@ NO_OPTIMIZE void Focus::applyFocus()
 	ASM(fistp dword ptr [ZSI]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
 
 	ASM(pop ZSI);
 	ASM(pop ZAX);

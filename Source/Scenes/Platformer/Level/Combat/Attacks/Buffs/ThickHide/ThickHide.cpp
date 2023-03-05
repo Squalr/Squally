@@ -177,10 +177,12 @@ void ThickHide::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs*
 NO_OPTIMIZE void ThickHide::applyThickHide()
 {
 	static volatile int currentDamageTakenLocal = 0;
-	static volatile int* currentDamageTakenLocalPtr = &currentDamageTakenLocal;
+	static volatile int* currentDamageTakenLocalPtr = nullptr;
 	static volatile int damageReduction = 6;
-	static volatile int* damageReductionPtr = &damageReduction;
+	static volatile int* damageReductionPtr = nullptr;
 
+	currentDamageTakenLocalPtr = &currentDamageTakenLocal;
+	damageReductionPtr = &damageReduction;
 	currentDamageTakenLocal = Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
 
 	ASM_PUSH_EFLAGS()
@@ -197,8 +199,6 @@ NO_OPTIMIZE void ThickHide::applyThickHide()
 	ASM(fistp dword ptr [ZDX]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(currentDamageTakenLocal, ebx);
 
 	ASM(pop ZDX);
 	ASM(pop ZBX);

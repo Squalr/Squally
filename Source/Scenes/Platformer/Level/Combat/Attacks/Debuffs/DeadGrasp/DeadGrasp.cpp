@@ -185,8 +185,6 @@ NO_OPTIMIZE void DeadGrasp::applyDeadGrasp()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
-
 	ASM(pop ZSI);
 	ASM_POP_EFLAGS()
 

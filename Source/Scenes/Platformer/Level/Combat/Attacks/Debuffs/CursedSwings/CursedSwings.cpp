@@ -172,10 +172,12 @@ void CursedSwings::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingAr
 NO_OPTIMIZE void CursedSwings::applyCursedSwings()
 {
 	static volatile int currentDamageDealtLocal = 0;
-	static volatile int* currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	static volatile int* currentDamageDealtLocalPtr = nullptr;
 	static volatile float damageDivide = 0.0f;
-	static volatile float* damageDividePtr = &damageDivide;
+	static volatile float* damageDividePtr = nullptr;
 
+	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	damageDividePtr = &damageDivide;
 	damageDivide = 2.0f;
 	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 
@@ -192,9 +194,6 @@ NO_OPTIMIZE void CursedSwings::applyCursedSwings()
 	ASM(fistp dword ptr [ZSI]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
 
 	ASM(pop ZSI);
 	ASM(pop ZDI);

@@ -177,27 +177,28 @@ void ShieldWall::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs
 NO_OPTIMIZE void ShieldWall::applyShieldWall()
 {
 	static volatile int currentDamageTakenLocal = 0;
-	static volatile int* currentDamageTakenLocalPtr = &currentDamageTakenLocal;
-	static volatile int damageReduction = 1;
-	static volatile int* newDamage = &damageReduction;
+	static volatile int* currentDamageTakenLocalPtr = nullptr;
+	static volatile int damageReduction = 4;
+	static volatile int* damageReductionPtr = nullptr;
 
+	currentDamageTakenLocalPtr = &currentDamageTakenLocal;
+	damageReductionPtr = &damageReduction;
+	damageReduction = 1;
 	currentDamageTakenLocal = Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZAX);
 	ASM(push ZCX);
 
-	ASM_MOV_REG_VAR(ZAX, newDamage);
+	ASM_MOV_REG_VAR(ZAX, damageReductionPtr);
 	ASM_MOV_REG_VAR(ZCX, currentDamageTakenLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SHIELD_WALL);
-	ASM(fild dword ptr [ZAX]);
+	ASM(fild dword ptr [ZCX]);
+	ASM(fidiv dword ptr [ZAX]);
+	ASM(fistp dword ptr [ZCX]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-	ASM(fistp dword ptr [ZCX]);
-
-	ASM_MOV_VAR_REG(currentDamageTakenLocal, eax);
 
 	ASM(pop ZCX);
 	ASM(pop ZAX);

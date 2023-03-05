@@ -166,17 +166,22 @@ void ZombieGrasp::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArg
 
 NO_OPTIMIZE void ZombieGrasp::applyZombieGrasp()
 {
+	static volatile int currentDamageDealtLocalTmp = 0;
+	static volatile int* currentDamageDealtLocalTmpPtr = nullptr;
 	static volatile int currentDamageDealtLocal = 0;
-	static volatile int* currentDamageDealtLocalPtr = &currentDamageDealtLocal;
-	static volatile int currentDamageDealtLocal = 0;
-	static volatile int* currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	static volatile int* currentDamageDealtLocalPtr  = nullptr;
 
-	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	currentDamageDealtLocalTmpPtr = &currentDamageDealtLocalTmp;
+	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+
+	currentDamageDealtLocal = 0;
+	currentDamageDealtLocalTmp = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZDX);
 	ASM(push ZSI);
 
+	ASM_MOV_REG_VAR(ZDX, currentDamageDealtLocalTmpPtr);
 	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_ZOMBIE_GRASP);
@@ -184,8 +189,6 @@ NO_OPTIMIZE void ZombieGrasp::applyZombieGrasp()
 	ASM(fistp dword ptr [ZSI]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
 
 	ASM(pop ZSI);
 	ASM(pop ZDX);
