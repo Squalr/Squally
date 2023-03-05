@@ -53,7 +53,7 @@ CursedSwings* CursedSwings::create(PlatformerEntity* caster, PlatformerEntity* t
 }
 
 CursedSwings::CursedSwings(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_ShieldGlowBlue, AbilityType::Physical, BuffData(CursedSwings::Duration, CursedSwings::CursedSwingsIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_AxeGlowPurple, AbilityType::Physical, BuffData(CursedSwings::Duration, CursedSwings::CursedSwingsIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
@@ -108,7 +108,7 @@ void CursedSwings::registerHackables()
 				CursedSwings::HackIdentifierCursedSwings,
 				Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CursedSwings::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_ShieldGlowBlue,
+				UIResources::Menus_Icons_AxeGlowPurple,
 				LazyNode<HackablePreview>::create([=](){ return CursedSwingsGenericPreview::create(); }),
 				{
 					{
@@ -129,18 +129,16 @@ void CursedSwings::registerHackables()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentDamageReduce::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(CursedSwings::DamageIncrease)))) + 
-						"fld dword ptr [edi]\n" +
 						"fld dword ptr [esi]\n" +
-						"fdivp st(1), st(0)\n" +
+						"fdiv dword ptr [edi\n" +
 						"fistp dword ptr [esi]\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentRegister::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentDamageReduce::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(CursedSwings::DamageIncrease)))) + 
-						"fld dword ptr [rdi]\n" +
 						"fld dword ptr [rsi]\n" +
-						"fdivp st(1), st(0)\n" +
+						"fdiv dword ptr [rdi\n" +
 						"fistp dword ptr [rsi]\n"
 					),
 				},
@@ -188,11 +186,9 @@ NO_OPTIMIZE void CursedSwings::applyCursedSwings()
 	ASM_MOV_REG_VAR(ZDI, damageDividePtr);
 	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
 
-
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSED_SWINGS);
-	ASM(fld dword ptr [ZDI]);
 	ASM(fld dword ptr [ZSI]);
-	ASM(fdivp st(1), st(0));
+	ASM(fdiv dword ptr [ZDI]);
 	ASM(fistp dword ptr [ZSI]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();

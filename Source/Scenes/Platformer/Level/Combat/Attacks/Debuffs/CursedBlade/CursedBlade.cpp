@@ -129,7 +129,9 @@ void CursedBlade::registerHackables()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentDamageReduce::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(CursedBlade::DamageIncrease)))) + 
-						"fld dword ptr [edi]\n"
+						"fld dword ptr [esi]\n"
+						"fadd dword ptr [edi]\n"
+						"fistp dword ptr [esi]\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRegister::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
@@ -181,14 +183,13 @@ NO_OPTIMIZE void CursedBlade::applyCursedBlade()
 	ASM_MOV_REG_VAR(ZDI, damageIncreasePtr);
 	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
 
-	ASM(fld dword ptr [ZSI]);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSED_BLADE);
+	ASM(fld dword ptr [ZSI]);
 	ASM(fadd dword ptr [ZDI]);
+	ASM(fistp dword ptr [ZSI]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-	ASM(fistp dword ptr [ZSI]);
 
 	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
 

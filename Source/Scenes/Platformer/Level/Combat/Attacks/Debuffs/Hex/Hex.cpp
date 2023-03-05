@@ -132,7 +132,9 @@ void Hex::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Debuffs_Hex_Hex::create(),
 						// x86
-						"mov dword ptr [esi], -0.5f\n\n" +
+						std::string("fild dword ptr [esi]\n") +
+						std::string("fimul dword ptr [ebx]\n") +
+						std::string("fistp dword ptr [esi]\n\n") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
@@ -140,7 +142,9 @@ void Hex::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 						, // x64
-						"mov dword ptr [rsi], -0.5f\n\n" +
+						std::string("fild dword ptr [rsi]\n") +
+						std::string("fimul dword ptr [rbx]\n") +
+						std::string("fistp dword ptr [rsi]\n\n") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
@@ -175,25 +179,27 @@ void Hex::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeedArgs* speed
 
 NO_OPTIMIZE void Hex::applyHex()
 {
-	static volatile float speedBonus;
-	static volatile float increment = 0.0f;
-	static volatile float* speedBonusPtr;
-	static volatile float* incrementPtr;
+	static volatile float timelineSpeed;
+	static volatile float* timelineSpeedPtr;
+	static volatile float multiplier;
+	static volatile float* multiplierPtr;
 
-	speedBonus = 0.0f;
-	increment = Hex::DefaultSpeed;
-	speedBonusPtr = &speedBonus;
-	incrementPtr = &increment;
+	timelineSpeed = this->currentSpeed;
+	multiplier = Hex::DefaultSpeed;
+	timelineSpeedPtr = &timelineSpeed;
+	multiplierPtr = &multiplier;
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZSI);
 	ASM(push ZBX);
-	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
-	ASM_MOV_REG_PTR(ZBX, incrementPtr);
-	ASM(movss xmm3, [ZBX]);
+
+	ASM_MOV_REG_PTR(ZSI, timelineSpeed);
+	ASM_MOV_REG_PTR(ZBX, multiplierPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HEX);
-	ASM(movss [ZSI], xmm3);
+	ASM(fild dword ptr [ZSI]);
+	ASM(fimul dword ptr [ZBX]);
+	ASM(fistp dword ptr [ZSI]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
@@ -201,7 +207,7 @@ NO_OPTIMIZE void Hex::applyHex()
 	ASM(pop ZSI);
 	ASM_POP_EFLAGS();
 
-	this->currentSpeed = this->currentSpeed + MathUtils::clamp(speedBonus, Hex::MinSpeed, Hex::MaxSpeed);
+	this->currentSpeed = this->currentSpeed + MathUtils::clamp(timelineSpeed, Hex::MinSpeed, Hex::MaxSpeed);
 
 	HACKABLES_STOP_SEARCH();
 }

@@ -129,13 +129,19 @@ void Enchantment::registerHackables()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Enchantment::DamageIncrease)))) + 
-						"fld dword ptr [edi]\n"
+						"fld dword ptr [esi]\n" +
+						"fmul dword ptr [edi]\n" +
+						"frndint\n" +
+						"fistp dword ptr [esi]\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Enchantment_CommentRegister::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Enchantment::DamageIncrease)))) + 
-						"fld dword ptr [rdi]\n"
+						"fld dword ptr [rsi]\n" +
+						"fmul dword ptr [rdi]\n" +
+						"frndint\n" +
+						"fistp dword ptr [rsi]\n"
 					),
 				},
 				true
@@ -169,7 +175,7 @@ NO_OPTIMIZE void Enchantment::applyEnchantment()
 {
 	static volatile int currentDamageDealtLocal = 0;
 	static volatile int* currentDamageDealtLocalPtr = &currentDamageDealtLocal;
-	static volatile float damageIncrease = 10.0f;
+	static volatile float damageIncrease = 1.5f;
 	static volatile float* damageIncreasePtr = &damageIncrease;
 
 	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
@@ -181,14 +187,14 @@ NO_OPTIMIZE void Enchantment::applyEnchantment()
 	ASM_MOV_REG_VAR(ZDI, damageIncreasePtr);
 	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
 
-	ASM(fld dword ptr [ZSI]);
-
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_ENCHANTMENT);
-	ASM(fadd dword ptr [ZDI]);
+	ASM(fld dword ptr [ZSI]);
+	ASM(fmul dword ptr [ZDI]);
+	ASM(frndint)
+	ASM(fistp dword ptr [ZSI]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM(fistp dword ptr [ZSI]);
 
 	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
 
