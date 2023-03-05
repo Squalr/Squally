@@ -34,7 +34,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_HEX 1
+#define LOCAL_FUNC_ID_DEAD_GRASP 1
 
 const std::string DeadGrasp::DeadGraspIdentifier = "dead-grasp";
 const std::string DeadGrasp::HackIdentifierDeadGrasp = "dead-grasp";
@@ -103,7 +103,7 @@ void DeadGrasp::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_HEX,
+			LOCAL_FUNC_ID_DEAD_GRASP,
 			HackableCode::HackableCodeInfo(
 				DeadGrasp::HackIdentifierDeadGrasp,
 				Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_DeadGrasp::create(),
@@ -178,7 +178,7 @@ NO_OPTIMIZE void DeadGrasp::applyDeadGrasp()
 
 	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HEX);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_DEAD_GRASP);
 	ASM(fld dword ptr [ZSI]);
 	ASM(fabs);
 	ASM(fistp dword ptr [ZSI]);

@@ -458,7 +458,7 @@ DeveloperScene::DeveloperScene()
 
 		/*
 		X ReanimatedPig			=>  1_x <Piggy,				fisub> 	=> Thick Hide / dmg decrease
-		X Zombie				=>  1_x <ZombieGrasp,		fld/fstp> => Zombie Grasp / raw damage dealt debuff
+		X Zombie				=>  1_x <ZombieGrasp,		fild/fistp> => Zombie Grasp / raw damage dealt debuff
 		X Undead				=>  1_x <DeadGrasp,			fabs>	=> Dead Grasp / convert damage to healing
 		X Assassin				=>  2_x <ThrowingStar,		fiadd> 	=> Focus / add to damage
 		X BoneFiend				=>  2_x <AxeGlowPurp,		fdiv>  	=> CursedSwings debuff / reduce damage by 75% or something (int)
@@ -467,12 +467,12 @@ DeveloperScene::DeveloperScene()
 		X Warlock				=>  3_x <WandSkeleton, 		fmul/frndint> 	=> Enchantment / 50% damage increase (rounded)
 
 		// f([i,u])com(p)(p) + fstsw ax + sahf
-		// ftst
+		// ftst (Compares St(0) to 0.0)
 
-		O Hunter				=>  3_x <ArrowMultiShotGlow,	ja>  	=> Multi Shot (different than bow attack one) / AoE 75% damage
-		- SkeletalPriestess		=>  4_x <Book,					jae> 	=> (Compares St(0) to 0.0)
-		O SkeletalKnight		=>  4_x <SwordGlowPurp,			jb>  	=> CursedBlade debuff / constant 1.0f damage, round to int
-		- SkeletalCleaver		=>  4_x <SwordGlowYel,			jbe> 	=> 
+		O Hunter				=>  3_x <ArrowMultiShotGlow,	ja>  	=> Multi Shot (2) - RNG damage tick radiation style?
+		- SkeletalPriestess		=>  4_x <Book,					jb> 	=> ?? - ??
+		O SkeletalKnight		=>  4_x <SwordGlowPurp,			jae>  	=> CursedBlade - ??
+		- SkeletalCleaver		=>  4_x <SwordGlowYel,			jbe> 	=> ?? - ??
 
 		X [B] Lazarus			=>	3_x <Tombstone, 	fcmove> 		=> UnholyProtection (rename) / undying effect
 		? 						=>	3_x <GhostBolts,	f?????> 		=> Ghostbolts / reflectable spell
@@ -484,7 +484,6 @@ DeveloperScene::DeveloperScene()
 
 		Traps:
 		- fldpi + fsqrt + fcos/fsin/fptan/fpatan on launcher direction
-		- frndint?
 
 		Avail for traps:
 		- SpellBind
@@ -592,7 +591,7 @@ DeveloperScene::DeveloperScene()
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 7 - Jumps/More compares
+	// CHAPTER 7 - More Jumps/Compares/Misc
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Ballmer Peaks");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
@@ -626,6 +625,9 @@ DeveloperScene::DeveloperScene()
 		// ** Needs animals
 		// ** Needs enemy scripting according to notes on which instructions this zone covers
 
+		// Potentially:
+		// addc
+
 		/*
 		- PenguinGrunt		1_x		=> jnp			PF		<Feather, ?> // Speed? Odd or even! PF = 0 odd. All combinations valid except JNPE
 		- PenguinWarrior	1_x		=> jp			PF		<AxeGlowBlue, ?> // Odd or even! PF = 0 odd. All combinations valid except JNPE
@@ -634,11 +636,11 @@ DeveloperScene::DeveloperScene()
 		- Yeti				2_x		=> J[N]C		CF		<AxeMoon?, ?> // Immortality. Copy undying logic, but include a subtract.
 		- WaterElemental	2_x		=> jno			OF		<SpellImpactBlue, ?>
 		- FrostFiend		2_x 	=> jo			OF		<Blizzard, ?> 
-		- GoblinElf			3_x		=> // jbe			ZF/OF	<AxeGlowGreen, ?> 
-		- ToySoldierGoblin	3_x		=> // jb			ZF/OF	<ChristmasPresent, ?> 
-		- SnowFiend			3_x		=> // jae			ZF/OF	<Snowflake, ?> 
-		- [B?] Santa		3_x		=> // ja			ZF/OF	<Gift, ? RNG>
-		- [B] Cryogen		3_x 	=> ??			ZF/OF	<SwordsLight, ?>
+		- GoblinElf			3_x		=> <AxeGlowGreen, ?> 
+		- ToySoldierGoblin	3_x		=> <ChristmasPresent, ?> 
+		- SnowFiend			3_x		=> <Snowflake, ?> 
+		- [B?] Santa		3_x		=> <Gift, ? RNG>
+		- [B] Cryogen		3_x 	=> <SwordsLight, ?>
 
 		- Aspen
 		- Bodom

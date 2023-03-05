@@ -14349,6 +14349,66 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Weakness_Weakness() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentDamageReduce : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentDamageReduce* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentDamageReduce();
+		virtual ~Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentDamageReduce() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentRegister : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentRegister* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentRegister() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEsi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEsi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEsi() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_ZombieGrasp : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_ZombieGrasp* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_ZombieGrasp_ZombieGrasp();
+		virtual ~Menus_Hacking_Abilities_Debuffs_ZombieGrasp_ZombieGrasp() = default;
+	};
+
 	class Menus_Hacking_Abilities_DispelIllusion : public LocalizedString
 	{
 	public:
