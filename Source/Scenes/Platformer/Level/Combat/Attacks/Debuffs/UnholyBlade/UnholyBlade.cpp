@@ -34,10 +34,10 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_UNHOLY_BLADE 1
+#define LOCAL_FUNC_ID_CURSED_BLADE 1
 
-const std::string UnholyBlade::UnholyBladeIdentifier = "unholy-blade";
-const std::string UnholyBlade::HackIdentifierUnholyBlade = "unholy-blade";
+const std::string UnholyBlade::UnholyBladeIdentifier = "cursed-blade";
+const std::string UnholyBlade::HackIdentifierUnholyBlade = "cursed-blade";
 
 const int UnholyBlade::MaxMultiplier = 6;
 const int UnholyBlade::DamageDelt = 1;
@@ -53,7 +53,7 @@ UnholyBlade* UnholyBlade::create(PlatformerEntity* caster, PlatformerEntity* tar
 }
 
 UnholyBlade::UnholyBlade(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_SwordGlowYellow, AbilityType::Shadow, BuffData(UnholyBlade::Duration, UnholyBlade::UnholyBladeIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_PurpleScarabShell, AbilityType::Nature, BuffData(UnholyBlade::Duration, UnholyBlade::UnholyBladeIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 
@@ -91,12 +91,12 @@ void UnholyBlade::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_UNHOLY_BLADE,
+			LOCAL_FUNC_ID_CURSED_BLADE,
 			HackableCode::HackableCodeInfo(
 				UnholyBlade::HackIdentifierUnholyBlade,
 				Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_UnholyBlade::create(),
-				HackableBase::HackBarColor::Yellow,
-				UIResources::Menus_Icons_SwordGlowYellow,
+				HackableBase::HackBarColor::Purple,
+				UIResources::Menus_Icons_PurpleScarabShell,
 				LazyNode<HackablePreview>::create([=](){ return UnholyBladeGenericPreview::create(); }),
 				{
 					{
@@ -110,23 +110,29 @@ void UnholyBlade::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare::create()) +
-						"cmp edx, 0:\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentJump::create()) +
-						"jl doNothing\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentConvertToHealing::create()) +
-						"mov ecx, edx\n" +
-						"imul ecx, -1\n\n" +
-						"doNothing:\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentRepeat::create()) +
+						std::string("fldz") +
+						std::string("ficomp dword ptr [ebx]") +
+						std::string("fstsw ax") +
+						std::string("sahf") +
+						std::string("jb skipCodeUnholyBlade") +
+						std::string("fild dword ptr [ebx]") +
+						std::string("fistp dword ptr [edx]") +
+						std::string("fldz") +
+						std::string("fistp dword ptr [ebx]") +
+						std::string("skipCodeUnholyBlade:")
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare::create()) +
-						"cmp rdx, 0:\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentJump::create()) +
-						"jl doNothing\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentConvertToHealing::create()) +
-						"mov rcx, rdx\n" +
-						"imul rcx, -1\n\n" +
-						"doNothing:\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentRepeat::create()) +
+						std::string("fldz") +
+						std::string("ficomp dword ptr [rbx]") +
+						std::string("fstsw ax") +
+						std::string("sahf") +
+						std::string("jb skipCodeUnholyBlade") +
+						std::string("fild dword ptr [rbx]") +
+						std::string("fistp dword ptr [rdx]") +
+						std::string("fldz") +
+						std::string("fistp dword ptr [rbx]") +
+						std::string("skipCodeUnholyBlade:")
 					),
 				},
 				true
@@ -162,43 +168,47 @@ void UnholyBlade::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArg
 NO_OPTIMIZE void UnholyBlade::applyUnholyBlade()
 {
 	static volatile int currentDamageDealtLocal = 0;
-	static volatile int healingLocal = 0;
+	static volatile int* currentDamageDealtLocalPtr = nullptr;
+	static volatile int currentHealingLocal = 0;
+	static volatile int* currentHealingLocalPtr = nullptr;
 
 	currentDamageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
-
-	// TODO: Another register to store the amount healed on damage
-
-	ASM_PUSH_EFLAGS()
+	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	currentHealingLocal = 0;
+	currentHealingLocalPtr = &currentHealingLocal;
+	
+	ASM_PUSH_EFLAGS();
+	ASM(push ZAX);
+	ASM(push ZBX);
 	ASM(push ZDX);
-	ASM(push ZCX);
+
+	ASM(MOV ZBX, 0)
+	ASM_MOV_REG_VAR(ebx, currentDamageDealtLocal);
 
 	ASM(MOV ZDX, 0)
-	ASM_MOV_REG_VAR(edx, currentDamageDealtLocal);
+	ASM_MOV_REG_VAR(edx, currentHealingLocal);
 
-	// f([i,u])com(p)(p) + fstsw ax + sahf
-	// ftst (Compares St(0) to 0.0)
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_UNHOLY_BLADE);
-	ASM(cmp ZDX, 0);
-	ASM(jl skipCodeUnholyBlade);
-	ASM(mov ZCX, ZDX);
-	ASM(imul ZCX, -1);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSED_BLADE);
+	ASM(fldz);	// Load 0
+	ASM(ficomp dword ptr [ZBX]); // Compare to damage
+	ASM(fstsw ax);	// Store in AX
+	ASM(sahf);		// Convert to eflags
+	ASM(jb skipCodeUnholyBlade);
+	ASM(fild dword ptr [ZBX]);
+	ASM(fistp dword ptr [ZDX]);
+	ASM(fldz);
+	ASM(fistp dword ptr [ZBX]);
 	ASM(skipCodeUnholyBlade:);
-	ASM_NOP16();
+	ASM_NOP12();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(healingLocal, ecx);
-
-	ASM(pop ZCX);
 	ASM(pop ZDX);
-	ASM_POP_EFLAGS()
+	ASM(pop ZBX);
+	ASM(pop ZAX);
+	ASM_POP_EFLAGS();
+	HACKABLES_STOP_SEARCH();
 
-	currentDamageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
-
-	int max = currentDamageDealtLocal * UnholyBlade::MaxMultiplier;
-	bool overflowedMin = healingLocal >= max;
-	bool overflowedMax = healingLocal <= max;
-	healingLocal = MathUtils::clamp(healingLocal, -max, max);
-	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, healingLocal, this->abilityType, true, overflowedMin, overflowedMax));
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }
