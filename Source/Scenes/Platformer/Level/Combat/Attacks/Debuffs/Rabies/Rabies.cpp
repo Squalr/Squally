@@ -220,7 +220,7 @@ NO_OPTIMIZE void Rabies::applyRabies()
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RABIES);
 	ASM(fld dword ptr [ZAX]);
 	ASM(fldz);
-	ASM(fcompp);
+	ASM(fcompp); // FIXME: Need eflags convert. Also wrong chapter.
 	ASM(jge rabiesReduceSpeed);
 	ASM(jmp skipRabiesCode);
 	ASM(rabiesReduceSpeed:);

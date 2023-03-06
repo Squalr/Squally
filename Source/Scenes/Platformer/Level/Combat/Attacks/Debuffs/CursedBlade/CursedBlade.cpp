@@ -39,9 +39,9 @@ using namespace cocos2d;
 const std::string CursedBlade::CursedBladeIdentifier = "cursed-blade";
 const std::string CursedBlade::HackIdentifierCursedBlade = "cursed-blade";
 
-const int CursedBlade::MaxMultiplier = 4;
-const float CursedBlade::DamageIncrease = 10.0f; // Keep in sync with asm
-const float CursedBlade::Duration = 16.0f;
+const int CursedBlade::MaxMultiplier = 6;
+const int CursedBlade::DamageDelt = 1;
+const float CursedBlade::Duration = 24.0f;
 
 CursedBlade* CursedBlade::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -53,16 +53,11 @@ CursedBlade* CursedBlade::create(PlatformerEntity* caster, PlatformerEntity* tar
 }
 
 CursedBlade::CursedBlade(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_ShieldGlowBlue, AbilityType::Physical, BuffData(CursedBlade::Duration, CursedBlade::CursedBladeIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_PurpleScarabShell, AbilityType::Nature, BuffData(CursedBlade::Duration, CursedBlade::CursedBladeIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
-	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
-
-	this->spellAura->setColor(Color3B::YELLOW);
-	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
-	this->addChild(this->spellAura);
 }
 
 CursedBlade::~CursedBlade()
@@ -75,13 +70,6 @@ void CursedBlade::onEnter()
 
 	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellEffect->start();
-
-	this->spellAura->runAction(Sequence::create(
-		FadeTo::create(0.25f, 255),
-		DelayTime::create(0.5f),
-		FadeTo::create(0.25f, 0),
-		nullptr
-	));
 
 	CombatEvents::TriggerHackableCombatCue();
 }
@@ -108,15 +96,12 @@ void CursedBlade::registerHackables()
 				CursedBlade::HackIdentifierCursedBlade,
 				Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CursedBlade::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_ShieldGlowBlue,
+				UIResources::Menus_Icons_PurpleScarabShell,
 				LazyNode<HackablePreview>::create([=](){ return CursedBladeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEdi::create()
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_Register::create(),
 					},
-					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEsi::create()
-					}
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
@@ -125,19 +110,23 @@ void CursedBlade::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(CursedBlade::DamageIncrease)))) + 
-						"fld dword ptr [esi]\n"
-						"fadd dword ptr [edi]\n"
-						"fistp dword ptr [esi]\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeat::create()) +
+						"repeat:\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentDecreaseDamage::create()) +
+						"dec edx\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentCompare::create()) +
+						"cmp edx, 5\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeatJump::create()) +
+						"jg repeat\n"
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(CursedBlade::DamageIncrease)))) + 
-						"fld dword ptr [rdi]\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeat::create()) +
+						"repeat:\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentDecreaseDamage::create()) +
+						"dec rdx\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentCompare::create()) +
+						"cmp rdx, 5\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeatJump::create()) +
+						"jg repeat\n"
 					),
 				},
 				true
@@ -158,42 +147,41 @@ void CursedBlade::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArg
 {
 	super::onBeforeDamageDealt(damageOrHealing);
 
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(CursedBlade::DamageDelt);
 
 	this->applyCursedBlade();
 
-	(*damageOrHealing->damageOrHealing) = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
-	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * CursedBlade::MaxMultiplier);
-	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * CursedBlade::MaxMultiplier);
+	int min = -std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * CursedBlade::MaxMultiplier);
+	int max = std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * CursedBlade::MaxMultiplier);
+
+	*damageOrHealing->damageOrHealing = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	*damageOrHealing->damageOrHealingMin = min;
+	*damageOrHealing->damageOrHealingMax = max;
 }
 
 NO_OPTIMIZE void CursedBlade::applyCursedBlade()
 {
 	static volatile int currentDamageDealtLocal = 0;
-	static volatile int* currentDamageDealtLocalPtr = &currentDamageDealtLocal;
-	static volatile float damageIncrease = 10.0f;
-	static volatile float* damageIncreasePtr = &damageIncrease;
 
-	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	currentDamageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 
 	ASM_PUSH_EFLAGS()
-	ASM(push ZDI);
-	ASM(push ZSI);
+	ASM(push ZDX);
 
-	ASM_MOV_REG_VAR(ZDI, damageIncreasePtr);
-	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
+	ASM(MOV ZDX, 0)
+	ASM_MOV_REG_VAR(edx, currentDamageDealtLocal);
 
-	// f([i,u])com(p)(p) + fstsw ax + sahf
-	// ftst (Compares St(0) to 0.0)
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSED_BLADE);
-	ASM(fld dword ptr [ZSI]);
-	ASM(fadd dword ptr [ZDI]);
-	ASM(fistp dword ptr [ZSI]);
+	ASM(repeat:);
+	ASM(dec ZDX);
+	ASM(cmp ZDX, 5);
+	ASM(jg repeat);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM(pop ZSI);
-	ASM(pop ZDI);
+	ASM_MOV_VAR_REG(currentDamageDealtLocal, edx);
+
+	ASM(pop ZDX);
 	ASM_POP_EFLAGS()
 
 	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);

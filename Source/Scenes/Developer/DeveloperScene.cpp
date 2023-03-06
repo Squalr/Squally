@@ -468,10 +468,10 @@ DeveloperScene::DeveloperScene()
 		X BoneKnight			=>  3_x <ShieldGlowOrange,	fidiv> 		=> Shield Wall / constant 25% damage recv
 		X Warlock				=>  3_x <WandSkeleton,		fmul/frndint> 	=> Enchantment / 50% damage increase (rounded)
 
-		O Hunter				=>  3_x <PoisonSpears,		ja>  	=> PoisonedArrows - either radiation or diseased copy
-		O SkeletalPriestess		=>  4_x <Book,				jae> 	=> Spell of Binding - Speed Decrease
-		O SkeletalKnight		=>  4_x <SwordGlowPurp,		jb>  	=> CursedBlade - Reduce damage
-		O SkeletalCleaver		=>  4_x <SwordGlowYel,		jbe> 	=> UnholyBlade - Damage to healing
+		X Hunter				=>  3_x <PoisonSpears,		ja>  		=> PoisonedArrows - either radiation or diseased copy
+		X SkeletalPriestess		=>  4_x <Book,				fchs/jbe> 	=> Spell of Binding - Speed Decrease
+		O SkeletalKnight		=>  4_x <SwordGlowPurp,		jae>  		=> CursedBlade - Reduce damage
+		O SkeletalCleaver		=>  4_x <SwordGlowYel,		jb> 		=> UnholyBlade - Damage to healing
 
 		X [B] Lazarus			=>	3_x <Tombstone, 	fcmove> 		=> UnholyProtection (rename) / undying effect
 		? 						=>	3_x <GhostBolts,	f?????> 		=> Ghostbolts / reflectable spell (Copy FireBall I guess?)

@@ -27,10 +27,10 @@ CastCursedBlade* CastCursedBlade::create(float attackDuration, float recoverDura
 }
 
 CastCursedBlade::CastCursedBlade(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Debuff, UIResources::Menus_Icons_EyeStrain, priority, AbilityType::Physical, 0, 0, 7, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_PurpleScarabShell, priority, AbilityType::Physical, 0, 0, 5, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
-
+	
 	this->addChild(this->castSound);
 }
 

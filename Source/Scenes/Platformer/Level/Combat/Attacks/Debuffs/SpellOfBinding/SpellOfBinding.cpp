@@ -34,7 +34,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_RABIES 1
+#define LOCAL_FUNC_ID_SPELL_OF_BINDING 1
 
 const std::string SpellOfBinding::SpellOfBindingIdentifier = "spell-of-binding";
 
@@ -108,7 +108,7 @@ void SpellOfBinding::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_RABIES,
+			LOCAL_FUNC_ID_SPELL_OF_BINDING,
 			HackableCode::HackableCodeInfo(
 				SpellOfBinding::SpellOfBindingIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_SpellOfBinding::create(),
@@ -131,20 +131,18 @@ void SpellOfBinding::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentPushSpeed::create()) +
-						"fld dword ptr [eax]\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentPushZero::create()) +
-						"fldz\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentCompare::create()) +
-						"fcompp\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentJump::create()) +
-						"jge reduceSpeed\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentElse::create()) +
-						"jmp skipCode\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentSpeedDrain::create()) + 
-						"reduceSpeed:\n" +
-						"mov dword ptr [esi], -0.5f\n\n" +
-						"skipCode:\n" +
+						std::string("fld dword ptr [eax]") +
+						std::string("fldz") +
+						std::string("fcompp") +
+						// Convert to eflags
+						std::string("fstsw ax") +
+						std::string("sahf") +
+						std::string("jbe skipSpellOfBindingCode") +
+						std::string("fld dword ptr [esi]") +
+						// Negate
+						std::string("fchs") +
+						std::string("fstp dword ptr [esi]") +
+						std::string("skipSpellOfBindingCode:") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
@@ -153,20 +151,18 @@ void SpellOfBinding::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentPushSpeed::create()) +
-						"fld dword ptr [rax]\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentPushZero::create()) +
-						"fldz\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentCompare::create()) +
-						"fcompp\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentJump::create()) +
-						"jge reduceSpeed\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentElse::create()) +
-						"jmp skipCode\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentSpeedDrain::create()) + 
-						"reduceSpeed:\n" +
-						"mov dword ptr [rsi], -0.5f\n\n" +
-						"skipCode:\n" +
+						std::string("fld dword ptr [rax]") +
+						std::string("fldz") +
+						std::string("fcompp") +
+						// Convert to eflags
+						std::string("fstsw ax") +
+						std::string("sahf") +		
+						std::string("jbe skipSpellOfBindingCode") +
+						std::string("fld dword ptr [rsi]") +
+						// Negate
+						std::string("fchs") +
+						std::string("fstp dword ptr [rsi]") +
+						std::string("skipSpellOfBindingCode:") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
@@ -212,26 +208,28 @@ NO_OPTIMIZE void SpellOfBinding::applySpellOfBinding()
 	
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
+	ASM(push ZBX);
 	ASM(push ZSI);
 
-	ASM_MOV_REG_PTR(ZAX, currentSpeedPtr);
+	ASM_MOV_REG_PTR(ZBX, currentSpeedPtr);
 	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
 
-	// f([i,u])com(p)(p) + fstsw ax + sahf
-	// ftst (Compares St(0) to 0.0)
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RABIES);
-	ASM(fld dword ptr [ZAX]);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SPELL_OF_BINDING);
+	ASM(fld dword ptr [ZBX]);
 	ASM(fldz);
 	ASM(fcompp);
-	ASM(jge spellOfBindingReduceSpeed);
-	ASM(jmp skipSpellOfBindingCode);
-	ASM(spellOfBindingReduceSpeed:);
-	ASM(mov dword ptr [ZSI], 0x000000BF); // -0.5f encoded in hex
+	ASM(fstsw ax);	// Store in AX
+	ASM(sahf);		// Convert to eflags
+	ASM(jbe skipSpellOfBindingCode);
+	ASM(fld dword ptr [ZSI]);
+	ASM(fchs) // Negate
+	ASM(fstp dword ptr [ZSI]);
 	ASM(skipSpellOfBindingCode:);
 	ASM_NOP12();
 	HACKABLE_CODE_END();
 
 	ASM(pop ZSI);
+	ASM(pop ZBX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 	HACKABLES_STOP_SEARCH();

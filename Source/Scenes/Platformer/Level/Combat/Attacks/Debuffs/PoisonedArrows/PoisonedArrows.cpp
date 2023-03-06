@@ -116,26 +116,30 @@ void PoisonedArrows::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentRng::create()) +
-						"cmp esi, 0\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJnz::create()) +
-						"jnz poisonedArrows\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJmp::create()) +
-						"jmp poisonedArrowsSkip\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage::create()) +
-						"mov edi, 5:\n" + // PoisonedArrows::DamageAmount
-						"poisonedArrows:\n" +
-						"poisonedArrowsSkip:\n\n"
+						// Load rng
+						std::string("fild dword ptr [ebx]") +
+						// Load chance + compare
+						std::string("fcomp dword ptr [ecx]") +
+						// Convert to eflags
+						std::string("fstsw ax") +
+						std::string("sahf") +
+						std::string("jae skipPoisonedArrowsCode") +
+						std::string("fild dword ptr [edi]") +
+						std::string("fistp dword ptr [esi]") +
+						std::string("skipPoisonedArrowsCode:")
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentRng::create()) +
-						"cmp rsi, 0\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJnz::create()) +
-						"jnz poisonedArrows\n\n" +
-						"jmp poisonedArrowsSkip\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage::create()) +
-						"mov rdi, 5:\n" + // PoisonedArrows::DamageAmount
-						"poisonedArrows:\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJmp::create()) +
-						"poisonedArrowsSkip:\n\n"
+						// Load rng
+						std::string("fild dword ptr [ebx]") +
+						// Load chance + compare
+						std::string("fcomp dword ptr [ecx]") +
+						// Convert to eflags
+						std::string("fstsw ax") +
+						std::string("sahf") +
+						std::string("jae skipPoisonedArrowsCode") +
+						std::string("fild dword ptr [edi]") +
+						std::string("fistp dword ptr [esi]") +
+						std::string("skipPoisonedArrowsCode:")
 					),
 				},
 				true
@@ -189,48 +193,59 @@ void PoisonedArrows::runPoisonedArrows()
 
 NO_OPTIMIZE void PoisonedArrows::runPoisonedArrowsTick()
 {
-	static volatile float damageBonus = 0.0f;
-	static volatile float* damageBonusPtr = nullptr;
-	static volatile int rng = 0;
-	static volatile int* rngPtr = nullptr;
+	static volatile int damage = 0;
+	static volatile int* damagePtr = nullptr;
+	static volatile int damageBonus = 0;
+	static volatile int* damageBonusPtr = nullptr;
+	static volatile float rng = 0;
+	static volatile float* rngPtr = nullptr;
+	static volatile float chance = 0;
+	static volatile float* chancePtr = nullptr;
 
-	damageBonus = 5.0f;
-	damageBonusPtr = &damageBonus;
-	rng = RandomHelper::random_int(0, 1);
+	damage = 1;
+	damageBonus = 5;
+	damagePtr = &damage;
+	chance = 50.0f;
+	chancePtr = &chance;
+	rng = RandomHelper::random_real(0.0f, 100.0f);
 	rngPtr = &rng;
 	
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
+	ASM(push ZBX);
+	ASM(push ZCX);
+	ASM(push ZDI);
 	ASM(push ZSI);
 
-	ASM_MOV_REG_PTR(ZAX, rngPtr);
+	ASM_MOV_REG_PTR(ZBX, rngPtr);
+	ASM_MOV_REG_PTR(ZCX, chancePtr);
+	ASM_MOV_REG_PTR(ZDI, damageBonusPtr);
 	ASM_MOV_REG_PTR(ZSI, damageBonusPtr);
 
-	// f([i,u])com(p)(p) + fstsw ax + sahf
-	// ftst (Compares St(0) to 0.0)
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_POISONED_ARROWS);
-	ASM(fild dword ptr [ZAX]);
-	ASM(ftst);
-	ASM(fstsw ax);
-	// TODO: Pop? Or just switch back to fldz + fcompp
-	ASM(sahf);
-	ASM(jge poisonedArrowsReduceSpeed);
-	ASM(jmp skipPoisonedArrowsCode);
-	ASM(poisonedArrowsReduceSpeed:);
-	ASM(mov dword ptr [ZSI], 0x000000BF); // -0.5f encoded in hex
+	ASM(fild dword ptr [ZBX]);	// Load rng
+	ASM(fcomp dword ptr [ZCX]);	// Load chance + compare
+	ASM(fstsw ax);	// Store in AX
+	ASM(sahf);		// Convert to eflags
+	ASM(ja skipPoisonedArrowsCode);
+	ASM(fild dword ptr [ZDI]);
+	ASM(fistp dword ptr [ZSI]);
 	ASM(skipPoisonedArrowsCode:);
 	ASM_NOP12();
 	HACKABLE_CODE_END();
 
 	ASM(pop ZSI);
+	ASM(pop ZDI);
+	ASM(pop ZCX);
+	ASM(pop ZBX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 	HACKABLES_STOP_SEARCH();
 
-	int damage = MathUtils::clamp((int)damageBonus, -PoisonedArrows::DamageAmountMax, PoisonedArrows::DamageAmountMax);
+	int actualDamage = MathUtils::clamp(damage, -PoisonedArrows::DamageAmountMax, PoisonedArrows::DamageAmountMax);
 
 	this->healSound->play();
-	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, damage, this->abilityType));
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, actualDamage, this->abilityType));
 
 	HACKABLES_STOP_SEARCH();
 }
