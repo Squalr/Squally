@@ -112,21 +112,21 @@ void CursedBlade::registerHackables()
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeat::create()) +
 						"repeat:\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentDecreaseDamage::create()) +
-						"dec edx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentCompare::create()) +
-						"cmp edx, 5\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeatJump::create()) +
-						"jg repeat\n"
+						"fld1\n" +
+						"fisubr dword ptr [ebx]\n" +
+						"ficomp dword ptr [ebx]\n" +
+						"fstsw ax\n" +
+						"sahf\n" +
+						"jae repeat\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeat::create()) +
 						"repeat:\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentDecreaseDamage::create()) +
-						"dec rdx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentCompare::create()) +
-						"cmp rdx, 5\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeatJump::create()) +
-						"jg repeat\n"
+						"fld1\n" +
+						"fisubr dword ptr [rbx]\n" +
+						"ficomp dword ptr [rbx]\n" +
+						"fstsw ax\n" +
+						"sahf\n" +
+						"jae repeat\n"
 					),
 				},
 				true
@@ -162,27 +162,33 @@ void CursedBlade::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArg
 NO_OPTIMIZE void CursedBlade::applyCursedBlade()
 {
 	static volatile int currentDamageDealtLocal = 0;
+	static volatile int* currentDamageDealtLocalPtr = nullptr;
 
 	currentDamageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	
+	ASM_PUSH_EFLAGS();
+	ASM(push ZAX);
+	ASM(push ZBX);
 
-	ASM_PUSH_EFLAGS()
-	ASM(push ZDX);
-
-	ASM(MOV ZDX, 0)
-	ASM_MOV_REG_VAR(edx, currentDamageDealtLocal);
+	ASM(MOV ZBX, 0)
+	ASM_MOV_REG_VAR(ebx, currentDamageDealtLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSED_BLADE);
-	ASM(repeat:);
-	ASM(dec ZDX);
-	ASM(cmp ZDX, 5);
-	ASM(jg repeat);
-	ASM_NOP16();
+	ASM(repeatCursedBlade:);
+	ASM(fld1);	// Load 1
+	ASM(fisubr dword ptr [ZBX]);
+	ASM(ficomp dword ptr [ZBX]);
+	ASM(fstsw ax);	// Store in AX
+	ASM(sahf);		// Convert to eflags
+	ASM(jae repeatCursedBlade);
+	ASM_NOP12();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, edx);
-
-	ASM(pop ZDX);
-	ASM_POP_EFLAGS()
+	ASM(pop ZBX);
+	ASM(pop ZAX);
+	ASM_POP_EFLAGS();
+	HACKABLES_STOP_SEARCH();
 
 	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 
