@@ -1,37 +1,37 @@
-#include "ImmortalityAutoCast.h"
+#include "UnholyProtectionAutoCast.h"
 
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Immortality/Immortality.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/UnholyProtection/UnholyProtection.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Strings/Strings.h"
 
 using namespace cocos2d;
 
-const std::string ImmortalityAutoCast::ImmortalityAutoCastIdentifier = "immortality-auto-cast";
+const std::string UnholyProtectionAutoCast::UnholyProtectionAutoCastIdentifier = "unholy-protection-auto-cast";
 
-ImmortalityAutoCast* ImmortalityAutoCast::create(PlatformerEntity* caster, PlatformerEntity* target)
+UnholyProtectionAutoCast* UnholyProtectionAutoCast::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
-	ImmortalityAutoCast* instance = new ImmortalityAutoCast(caster, target);
+	UnholyProtectionAutoCast* instance = new UnholyProtectionAutoCast(caster, target);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ImmortalityAutoCast::ImmortalityAutoCast(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, "", AbilityType::Shadow, BuffData(-1.0f, ImmortalityAutoCast::ImmortalityAutoCastIdentifier, 0.0f))
+UnholyProtectionAutoCast::UnholyProtectionAutoCast(PlatformerEntity* caster, PlatformerEntity* target)
+	: super(caster, target, "", AbilityType::Shadow, BuffData(-1.0f, UnholyProtectionAutoCast::UnholyProtectionAutoCastIdentifier, 0.0f))
 {
 	this->hasAutoCasted = false;
 }
 
-ImmortalityAutoCast::~ImmortalityAutoCast()
+UnholyProtectionAutoCast::~UnholyProtectionAutoCast()
 {
 }
 
-void ImmortalityAutoCast::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void UnholyProtectionAutoCast::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
 
@@ -49,10 +49,10 @@ void ImmortalityAutoCast::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHe
 		{
 			this->hasAutoCasted = true;
 
-			entityBuffBehavior->applyBuff(Immortality::create(damageOrHealing->target, damageOrHealing->target));
-			entityBuffBehavior->getBuff<Immortality>([&](Immortality* undying)
+			entityBuffBehavior->applyBuff(UnholyProtection::create(damageOrHealing->target, damageOrHealing->target));
+			entityBuffBehavior->getBuff<UnholyProtection>([&](UnholyProtection* unholyProtection)
 			{
-				undying->onBeforeDamageTaken(damageOrHealing);
+				unholyProtection->onBeforeDamageTaken(damageOrHealing);
 
 				damageOrHealing->target->getComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 				{
@@ -63,7 +63,7 @@ void ImmortalityAutoCast::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHe
 	}
 }
 
-void ImmortalityAutoCast::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
+void UnholyProtectionAutoCast::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeHealingTaken(damageOrHealing);
 
@@ -81,10 +81,10 @@ void ImmortalityAutoCast::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrH
 		{
 			this->hasAutoCasted = true;
 
-			entityBuffBehavior->applyBuff(Immortality::create(damageOrHealing->target, damageOrHealing->target));
-			entityBuffBehavior->getBuff<Immortality>([&](Immortality* undying)
+			entityBuffBehavior->applyBuff(UnholyProtection::create(damageOrHealing->target, damageOrHealing->target));
+			entityBuffBehavior->getBuff<UnholyProtection>([&](UnholyProtection* unholyProtection)
 			{
-				undying->onBeforeHealingTaken(damageOrHealing);
+				unholyProtection->onBeforeHealingTaken(damageOrHealing);
 
 				damageOrHealing->target->getComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 				{

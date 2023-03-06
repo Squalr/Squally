@@ -456,8 +456,6 @@ DeveloperScene::DeveloperScene()
 		// ** 4_x cleaver, knight, priestess (central crypt)
 		// ** 4_x King Zul
 
-		// Maybe should try to incorporate fld and fstp first?
-
 		/*
 		X ReanimatedPig			=>  1_x <Piggy,				fisub> 		=> Thick Hide / dmg decrease
 		X Zombie				=>  1_x <ZombieGrasp,		fild/fistp> => Zombie Grasp / raw damage dealt debuff

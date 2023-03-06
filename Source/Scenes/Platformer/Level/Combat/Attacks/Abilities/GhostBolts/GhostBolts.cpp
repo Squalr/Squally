@@ -33,7 +33,7 @@ GhostBolts* GhostBolts::create(float attackDuration, float recoverDuration, Prio
 }
 
 GhostBolts::GhostBolts(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_FireSphere, priority, AbilityType::Fire, 7, 9, 12, attackDuration, recoverDuration)
+	: super(AttackType::Damage, UIResources::Menus_Icons_FireSphere, priority, AbilityType::Fire, 7, 9, 12, attackDuration, recoverDuration, TargetingType::Multi)
 {
 }
 

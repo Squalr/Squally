@@ -16,6 +16,9 @@ class UnholyProtection : public Buff
 public:
 	static UnholyProtection* create(PlatformerEntity* caster, PlatformerEntity* target);
 	
+	void onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
+	void onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
+	
 	static const std::string UnholyProtectionIdentifier;
 	static const std::string HackIdentifierUnholyProtection;
 
@@ -26,8 +29,6 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void registerHackables() override;
-	void onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
-	void onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing) override;
 
 private:
 	typedef Buff super;
