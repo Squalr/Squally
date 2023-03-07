@@ -500,7 +500,7 @@ DeveloperScene::DeveloperScene()
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 6 - XMM*
+	// CHAPTER 6 - XMM* / More Jumps
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Daemons' Hallow");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
@@ -536,21 +536,40 @@ DeveloperScene::DeveloperScene()
 		// ** 3_x is all overworld (Tiger, Warrior, Grunt, Archer)
 
 		/*
+		ASM Reference: https://docs.oracle.com/cd/E26502_01/html/E28388/eojde.html
+		- x seta
+		- x setae
+		- x setb
+		- x setbe
+		- x setna
+		- x setnae
+		- x setnb
+		- x setnbe
+		- x jnp // Deprecated boomer shit
+		- x jp
+		- x jpe
+		- x jno // Overflow, hard to use in combat unless dealing with > 127
+		- x jo
+		- x jnc // Unsigned overflow, harder to use because > 255
+		- x jc
+		- x jo
+		- x addc
+
 		Surface:
-		O DemonRogue			=>  1_X		<Dice,				?> Chance / Deal random damage
-		- DemonShaman			=>  1_X		<BookSpellsFire,	?> ?? / idk
-		O DemonSwordsman		=>  1_X		<AxeGlowRed,		?> Scalding Blade / Damage+
+		- DemonRogue			=>  1_X		<Dice,				movss> Chance / Deal random damage
+		- DemonShaman			=>  1_X		<BookSpellsFire,	addss> ?? / idk
+		- DemonSwordsman		=>  1_X		<AxeGlowRed,		mulss> Scalding Blade / Damage+
 		Caves:
-		O DemonDragon			=>  2_X		<Bone,			?> Calcify? dumb / Defense+ 
-		O DemonGhost			=>  2_X		<SkullLavaEyes,	?> Inner Fire / Self Heal Tick
-		O FireElemental			=>  2_X		<FireBolts,		?> Fire Rain / AoE damage
-		O LavaGolem				=>  2_X		<Fire,			?> Enflame / Burn Tick
+		- DemonDragon			=>  2_X		<Bone,			divss> Calcify? dumb / Defense+ 
+		- DemonGhost			=>  2_X		<SkullLavaEyes,	cmpss/comiss> Inner Fire / Self Heal Tick
+		- FireElemental			=>  2_X		<FireBolts,		js> Fire Rain / AoE damage
+		- LavaGolem				=>  2_X		<Fire,			jns> Enflame / Burn Tick
 		Surface 2?
-		- DemonArcher			=>  3_X		<CrossBow,			?> Arrow Rain / Another arrow rain? Different asm? 
-		- DemonGrunt			=>  3_X		<DaggerGlowYellow,	?> DaggerThrow / Redirectable dagger
-		- DemonWarrior			=>  3_X		<FlamingScroll,		?> ?? / idk
-		- FireTiger				=>  3_X		<Chains,			?> Entwined? / Health Link? 
-		- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		?> Searing Blade / Giant axe that falls counter-clockwise, redirectable
+		- DemonArcher			=>  3_X		<CrossBow,			movabs> Arrow Rain / Another arrow rain? Different asm? 
+		- DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> DaggerThrow / Redirectable dagger
+		- DemonWarrior			=>  3_X		<FlamingScroll,		setne> ?? / idk
+		- FireTiger				=>  3_X		<Chains,			recycle?> Entwined? / Health Link? 
+		- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		recycle?> Searing Blade / Giant axe that falls counter-clockwise, redirectable
 
 		Avail for traps:
 		- Candle
@@ -580,7 +599,7 @@ DeveloperScene::DeveloperScene()
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 7 - More Jumps/Compares/Misc
+	// CHAPTER 7 - SET
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Ballmer Peaks");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
@@ -614,22 +633,22 @@ DeveloperScene::DeveloperScene()
 		// ** Needs animals
 		// ** Needs enemy scripting according to notes on which instructions this zone covers
 
-		// Potentially:
-		// addc
-
 		/*
-		- PenguinGrunt		1_x		=> jnp			PF		<Feather, ?> // Speed? Odd or even! PF = 0 odd. All combinations valid except JNPE
-		- PenguinWarrior	1_x		=> jp			PF		<AxeGlowBlue, ?> // Odd or even! PF = 0 odd. All combinations valid except JNPE
-		- Viking			1_x		=> jpe			PF		<Anchor, ?> // Odd or even! PF = 0 odd. All combinations valid except JNPE
-		- IceGolem			2_x		=> J[N]C		CF		<Diamond, ?> // Immortality. Copy undying logic, but include a subtract.
-		- Yeti				2_x		=> J[N]C		CF		<AxeMoon?, ?> // Immortality. Copy undying logic, but include a subtract.
-		- WaterElemental	2_x		=> jno			OF		<SpellImpactBlue, ?>
-		- FrostFiend		2_x 	=> jo			OF		<Blizzard, ?> 
-		- GoblinElf			3_x		=> <AxeGlowGreen, ?> 
-		- ToySoldierGoblin	3_x		=> <ChristmasPresent, ?> 
-		- SnowFiend			3_x		=> <Snowflake, ?> 
-		- [B?] Santa		3_x		=> <Gift, ? RNG>
-		- [B] Cryogen		3_x 	=> <SwordsLight, ?>
+		ASM Reference (General instructions) https://docs.oracle.com/cd/E26502_01/html/E28388/ennbz.html#eoizv
+		ASM Reference (AVX instructions) https://docs.oracle.com/cd/E36784_01/html/E36859/gntbd.html
+
+		- PenguinGrunt		1_x		=> <Feather, 		setge> // Speed?
+		- PenguinWarrior	1_x		=> <AxeGlowBlue, 	setl> 
+		- Viking			1_x		=> <Anchor, 		setle> 
+		- IceGolem			2_x		=> <Diamond, 		setg> // Immortality. Copy undying logic, but include a subtract.
+		- Yeti				2_x		=> <AxeMoon?, 		setng> 
+		- WaterElemental	2_x		=> <SpellImpactBlue, 	setnge>
+		- FrostFiend		2_x 	=> <Blizzard, 			setnl> 
+		- GoblinElf			3_x		=> <AxeGlowGreen, 		setnle> 
+		- ToySoldierGoblin	3_x		=> <ChristmasPresent, 	setns> // Non-negative
+		- SnowFiend			3_x		=> <Snowflake, 			setnz> // Non-zero
+		- [B?] Santa		3_x		=> <Gift, 				sets> // Negative // RNG?
+		- [B] Cryogen		3_x 	=> <SwordsLight, 		setz> // Zero
 
 		- Aspen
 		- Bodom
