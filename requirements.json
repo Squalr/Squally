@@ -1,6 +1,5 @@
 {
     "common": [
-        "cereal", 
         "curl", 
         "freetype", 
         "glew", 
