@@ -90,7 +90,7 @@ void Chance::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_BROKEN_BLADE,
+			LOCAL_FUNC_ID_CHANCE,
 			HackableCode::HackableCodeInfo(
 				Chance::HackIdentifierChance,
 				Strings::Menus_Hacking_Abilities_Debuffs_Chance_Chance::create(),
@@ -194,7 +194,7 @@ NO_OPTIMIZE void Chance::applyChance()
 
 	ASM_MOV_REG_VAR(eax, currentDamageDealtLocal);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_BROKEN_BLADE);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CHANCE);
 	ASM(mov ZBX, 3);
 	ASM(cmp ZAX, ZBX);
 	ASM(cmovge ZAX, ZBX);

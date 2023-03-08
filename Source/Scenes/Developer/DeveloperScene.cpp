@@ -556,20 +556,20 @@ DeveloperScene::DeveloperScene()
 		- x addc
 
 		Surface:
-		- DemonRogue			=>  1_X		<Dice,				movss> Chance / Deal random damage
-		- DemonShaman			=>  1_X		<BookSpellsFire,	addss> ?? / idk
-		- DemonSwordsman		=>  1_X		<AxeGlowRed,		mulss> Scalding Blade / Damage+
+		O DemonRogue			=>  1_X		<Dice,				movss> 	=> Chance / Deal random damage
+		- DemonShaman			=>  1_X		<BookSpellsFire,	addss> 	=> ?? / idk
+		X DemonSwordsman		=>  1_X		<AxeGlowRed,		mulss> 	=> Scalding Blade / Damage+
 		Caves:
-		- DemonDragon			=>  2_X		<Bone,			divss> Calcify? dumb / Defense+ 
-		- DemonGhost			=>  2_X		<SkullLavaEyes,	cmpss/comiss> Inner Fire / Self Heal Tick
-		- FireElemental			=>  2_X		<FireBolts,		js> Fire Rain / AoE damage
-		- LavaGolem				=>  2_X		<Fire,			jns> Enflame / Burn Tick
+		O DemonDragon			=>  2_X		<Bone,			divss> 			=> Calcify? dumb / Defense+ 
+		O DemonGhost			=>  2_X		<SkullLavaEyes,	cmpss/comiss> 	=> Inner Fire / Self Heal Tick
+		O FireElemental			=>  2_X		<FireBolts,		js> 			=> Fire Rain / AoE damage
+		O LavaGolem				=>  2_X		<Fire,			jns> 			=> Enflame / Burn Tick
 		Surface 2?
-		- DemonArcher			=>  3_X		<CrossBow,			movabs> Arrow Rain / Another arrow rain? Different asm? 
-		- DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> DaggerThrow / Redirectable dagger
-		- DemonWarrior			=>  3_X		<FlamingScroll,		setne> ?? / idk
-		- FireTiger				=>  3_X		<Chains,			recycle?> Entwined? / Health Link? 
-		- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		recycle?> Searing Blade / Giant axe that falls counter-clockwise, redirectable
+		- DemonArcher			=>  3_X		<CrossBow,			movabs>		=> Arrow Rain / Another arrow rain? Different asm? 
+		- DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 		=> DaggerThrow / Redirectable dagger
+		- DemonWarrior			=>  3_X		<FlamingScroll,		setne> 		=> ?? / idk
+		- FireTiger				=>  3_X		<Chains,			recycle?> 	=> Entwined? / Health Link? 
+		- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		recycle?> 	=> Searing Blade / Giant axe that falls counter-clockwise, redirectable
 
 		Avail for traps:
 		- Candle

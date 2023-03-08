@@ -34,7 +34,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_FORTITUDE 1
+#define LOCAL_FUNC_ID_SCALDING_BLADE 1
 
 const std::string ScaldingBlade::ScaldingBladeIdentifier = "scalding-blade";
 const std::string ScaldingBlade::HackIdentifierScaldingBlade = "scalding-blade";
@@ -108,7 +108,7 @@ void ScaldingBlade::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_FORTITUDE,
+			LOCAL_FUNC_ID_SCALDING_BLADE,
 			HackableCode::HackableCodeInfo(
 				ScaldingBlade::HackIdentifierScaldingBlade,
 				Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_ScaldingBlade::create(),
@@ -133,7 +133,10 @@ void ScaldingBlade::registerHackables()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(ScaldingBlade::DamageReduction)))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentIncreaseInstead::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentTryChanging::create()) + 
-						"sub ebx, 3\n"
+						std::string("movss xmm0, dword ptr [eax]") +
+						std::string("movss xmm0, dword ptr [ebx]") +
+						std::string("mulss xmm0, xmm1") +
+						std::string("movss dword ptr [eax], xmm0")
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentRegister::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
@@ -141,7 +144,10 @@ void ScaldingBlade::registerHackables()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(ScaldingBlade::DamageReduction)))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentIncreaseInstead::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentTryChanging::create()) + 
-						"sub rbx, 3\n"
+						std::string("movss xmm0, dword ptr [rax]") +
+						std::string("movss xmm0, dword ptr [rbx]") +
+						std::string("mulss xmm0, xmm1") +
+						std::string("movss dword ptr [rax], xmm0")
 					),
 				},
 				true
@@ -173,25 +179,37 @@ void ScaldingBlade::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingA
 
 NO_OPTIMIZE void ScaldingBlade::applyScaldingBlade()
 {
-	static volatile int currentDamageDealtLocal = 0;
+	static volatile float currentDamageDealtLocal = 0;
+	static volatile float multiplierLocal = 0;
+	static volatile float* currentDamageDealtLocalPtr = nullptr;
+	static volatile float* multiplierLocalPtr = nullptr;
 
-	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	currentDamageDealtLocal = (float)Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	multiplierLocal = 3.0f;
+	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	multiplierLocalPtr = &multiplierLocal;
 
 	ASM_PUSH_EFLAGS()
+	ASM(push ZAX);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ebx, currentDamageDealtLocal);
+	ASM_MOV_REG_VAR(ZAX, currentDamageDealtLocal);
+	ASM_MOV_REG_VAR(ZBX, multiplierLocalPtr);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_FORTITUDE);
-	ASM(sub ZBX, 3);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SCALDING_BLADE);
+	ASM(movss xmm0, dword ptr [ZAX]);
+	ASM(movss xmm0, dword ptr [ZBX]);
+	ASM(mulss xmm0, xmm1);
+	ASM(movss dword ptr [ZAX], xmm0);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(currentDamageDealtLocal, ebx);
 
 	ASM(pop ZBX);
+	ASM(pop ZAX);
 	ASM_POP_EFLAGS()
 
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value((int)currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }
