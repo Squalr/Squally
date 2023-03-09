@@ -557,20 +557,20 @@ DeveloperScene::DeveloperScene()
 
 
 		Surface:
-		X DemonRogue			=>  1_X		<SkullGlowRed, movss> 		=> BloodBoil / Fixed damage debuff
+		X DemonRogue			=>  1_X		<SkullGlowRed, 		movss> 	=> BloodBoil / Fixed damage debuff
 		X DemonShaman			=>  1_X		<BookSpellsFire,	addss> 	=> Cauterize / Self Heal Tick
 		X DemonSwordsman		=>  1_X		<AxeGlowRed,		mulss> 	=> Scalding Blade / Damage+
 		Caves:
-		X DemonDragon			=>  2_X		<Bone,			divss> 			=> Calcify? dumb / Defense+ 
-		O DemonGhost			=>  2_X		<SkullLavaEyes,	?cmpss/comiss> 	=> Inner Fire / ?Self Heal Tick
-		O FireElemental			=>  2_X		<FireBolts,		js> 			=> Fire Rain / AoE damage
+		X DemonDragon			=>  2_X		<Bone,			divss> 			=> Calcify / Defense+ 
+		X DemonGhost			=>  2_X		<SkullLavaEyes,	xchg>		 	=> Inner Fire / Siphon HP tick
+		O FireElemental			=>  2_X		<FireBolts,		cmpss/comiss> 	=> Fire Rain / AoE damage
 		O LavaGolem				=>  2_X		<Fire,			jns> 			=> Enflame / Burn Tick
 		Surface 2?
-		- DemonArcher			=>  3_X		<CrossBow,			movabs>		=> Arrow Rain / Another arrow rain? Different asm? 
-		- DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 		=> DaggerThrow / Redirectable dagger
-		- DemonWarrior			=>  3_X		<FlamingScroll,		setne> 		=> ?? / idk
-		- FireTiger				=>  3_X		<Chains,			recycle?> 	=> Entwined? / Health Link? 
-		- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		recycle?> 	=> Searing Blade / Giant axe that falls counter-clockwise, redirectable
+		- DemonArcher			=>  3_X		<CrossBow,			js>				=> Arrow Rain / Another arrow rain? Different asm? 
+		- DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 			=> DaggerThrow / Redirectable dagger
+		- DemonWarrior			=>  3_X		<FlamingScroll,		setne> 			=> ?? / idk
+		- FireTiger				=>  3_X		<Chains,			recycle?> 		=> Entwined? / Health Link? 
+		- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		recycle?> 		=> Searing Blade / Giant axe that falls counter-clockwise, redirectable
 
 		Avail for traps:
 		- Dice

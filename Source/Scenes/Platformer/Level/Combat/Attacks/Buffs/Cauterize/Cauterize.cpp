@@ -32,7 +32,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_RESTORE 1
+#define LOCAL_FUNC_ID_CAUTERIZE 1
 
 const std::string Cauterize::CauterizeIdentifier = "cauterize";
 const float Cauterize::TimeBetweenTicks = 1.0f;
@@ -95,19 +95,33 @@ void Cauterize::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_RESTORE,
+			LOCAL_FUNC_ID_CAUTERIZE,
 			HackableCode::HackableCodeInfo(
 				Cauterize::CauterizeIdentifier,
 				Strings::Menus_Hacking_Abilities_Abilities_Cauterize_Cauterize::create(),
-				HackableBase::HackBarColor::Green,
-				UIResources::Menus_Icons_WandGlowYellow,
+				HackableBase::HackBarColor::Purple,
+				UIResources::Menus_Icons_ShieldGlowBlue,
 				LazyNode<HackablePreview>::create([=](){ return CauterizeGenericPreview::create(); }),
 				{
-					{ HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEdi::create() }
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEdi::create()
+					}
 				},
 				int(HackFlags::None),
-				(float(Cauterize::HealTicks) * Cauterize::TimeBetweenTicks) + 0.1f,
-				0.0f
+				this->getRemainingDuration(),
+				0.0f,
+				{
+					HackableCode::ReadOnlyScript(
+						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEdi::create()) +
+						std::string("addss xmm0, dword ptr [edi]")
+						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEdi::create()) +
+						std::string("addss xmm0, dword ptr [rdi]")
+					),
+				},
+				true
 			)
 		},
 	};
@@ -158,33 +172,33 @@ void Cauterize::runCauterize()
 
 NO_OPTIMIZE void Cauterize::runRestoreTick()
 {
-	static volatile int originalHealth = 0;
-	static volatile int health = 0;
+	static volatile float healing = 4.0f;
+	static volatile float* healingPtr = nullptr;
+	static volatile float constZero = 0.0f;
+	static volatile float* constZeroPtr = nullptr;
 
-	this->owner->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
-	{
-		originalHealth = healthBehavior->getHealth();
-	});
-
-	health = originalHealth;
+	healingPtr = &healing;
+	constZeroPtr = &constZero;
 
 	ASM_PUSH_EFLAGS()
+	ASM(push ZAX);
 	ASM(push ZDI);
 
-	ASM_MOV_REG_VAR(edi, health);
+	ASM(movss xmm0, dword ptr [ZAX]);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RESTORE);
-	ASM(or ZDI, 15);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CAUTERIZE);
+	ASM(addss xmm0, dword ptr [ZDI]);
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(health, edi);
+	ASM(movss dword ptr [ZDI], xmm0);
 
 	ASM(pop ZDI);
+	ASM(pop ZAX);
 	ASM_POP_EFLAGS()
 
 	this->healSound->play();
 
-	int delta = MathUtils::clamp(health - originalHealth, -Cauterize::MaxHealing, Cauterize::MaxHealing);
+	int delta = MathUtils::clamp((int)healing, -Cauterize::MaxHealing, Cauterize::MaxHealing);
 	bool overflowedMin = delta == -Cauterize::MaxHealing;
 	bool overflowedMax = delta == Cauterize::MaxHealing;
 	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, delta, this->abilityType, true, overflowedMin, overflowedMax));

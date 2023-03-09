@@ -36,9 +36,9 @@ using namespace cocos2d;
 
 const std::string InnerFire::InnerFireIdentifier = "inner-fire";
 const float InnerFire::TimeBetweenTicks = 1.0f;
-const int InnerFire::HealTicks = 3;
-const int InnerFire::MaxHealing = 20;
-const float InnerFire::StartDelay = 0.5f;
+const int InnerFire::HealTicks = 5;
+const float InnerFire::StartDelay = 0.15f;
+const int InnerFire::MaxHealing = 255;
 
 InnerFire* InnerFire::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -50,7 +50,7 @@ InnerFire* InnerFire::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 InnerFire::InnerFire(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_MoonShine, AbilityType::Nature, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_WandGlowYellow, AbilityType::Nature, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create();
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
@@ -99,24 +99,29 @@ void InnerFire::registerHackables()
 			HackableCode::HackableCodeInfo(
 				InnerFire::InnerFireIdentifier,
 				Strings::Menus_Hacking_Abilities_Abilities_InnerFire_InnerFire::create(),
-				HackableBase::HackBarColor::Green,
-				UIResources::Menus_Icons_MoonShine,
+				HackableBase::HackBarColor::Purple,
+				UIResources::Menus_Icons_ShieldGlowBlue,
 				LazyNode<HackablePreview>::create([=](){ return InnerFireGenericPreview::create(); }),
 				{
-					{ HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx::create() }
+					{
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx::create()
+					},
+					{
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx::create()
+					}
 				},
 				int(HackFlags::None),
-				(float(InnerFire::HealTicks) * InnerFire::TimeBetweenTicks) + 0.1f,
+				this->getRemainingDuration(),
 				0.0f,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"rol edx, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_InnerFire_Hint::create())
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx::create()) +
+						std::string("xchg ecx, edx")
 						, // x64
-						"rol rdx, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_InnerFire_Hint::create())
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx::create()) +
+						std::string("xchg rcx, rdx")
 					),
 				},
 				true
@@ -170,36 +175,38 @@ void InnerFire::runInnerFire()
 
 NO_OPTIMIZE void InnerFire::runRestoreTick()
 {
-	static volatile int originalHealth = 0;
-	static volatile int health = 0;
-
-	this->owner->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
-	{
-		originalHealth = healthBehavior->getHealth();
-	});
-
-	health = originalHealth;
+	static volatile int healingSelf = 4;
+	static volatile int healingOther = -4;
 
 	ASM_PUSH_EFLAGS()
+	ASM(push ZCX);
 	ASM(push ZDX);
 
-	ASM_MOV_REG_VAR(edx, health);
+	ASM_MOV_REG_VAR(ZDX, healingSelf);
+	ASM_MOV_REG_VAR(ZCX, healingOther);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INNER_FIRE);
-	ASM(rol ZDX, 1);
+	ASM(xchg ZCX, ZDX);
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(health, edx);
+	ASM_MOV_VAR_REG(healingSelf, ZCX);
+	ASM_MOV_VAR_REG(healingOther, ZDX);
 
 	ASM(pop ZDX);
+	ASM(pop ZCX);
 	ASM_POP_EFLAGS()
 
 	this->healSound->play();
 
-	int delta = MathUtils::clamp(health - originalHealth, -InnerFire::MaxHealing, InnerFire::MaxHealing);
+	int delta = MathUtils::clamp((int)healingSelf, -InnerFire::MaxHealing, InnerFire::MaxHealing);
 	bool overflowedMin = delta == -InnerFire::MaxHealing;
 	bool overflowedMax = delta == InnerFire::MaxHealing;
 	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, delta, this->abilityType, true, overflowedMin, overflowedMax));
+
+	delta = MathUtils::clamp((int)healingOther, -InnerFire::MaxHealing, InnerFire::MaxHealing);
+	overflowedMin = delta == -InnerFire::MaxHealing;
+	overflowedMax = delta == InnerFire::MaxHealing;
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->owner, this->caster, delta, this->abilityType, true, overflowedMin, overflowedMax));
 
 	HACKABLES_STOP_SEARCH();
 }

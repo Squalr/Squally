@@ -14,8 +14,8 @@ public:
 	static const std::string InnerFireIdentifier;
 	static const float TimeBetweenTicks;
 	static const int HealTicks;
-	static const int MaxHealing;
 	static const float StartDelay;
+	static const int MaxHealing;
 
 protected:
 	InnerFire(PlatformerEntity* caster, PlatformerEntity* target);
