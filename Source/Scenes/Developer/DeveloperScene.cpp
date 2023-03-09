@@ -560,7 +560,7 @@ DeveloperScene::DeveloperScene()
 		- DemonShaman			=>  1_X		<BookSpellsFire,	addss> 	=> ?? / idk
 		X DemonSwordsman		=>  1_X		<AxeGlowRed,		mulss> 	=> Scalding Blade / Damage+
 		Caves:
-		O DemonDragon			=>  2_X		<Bone,			divss> 			=> Calcify? dumb / Defense+ 
+		X DemonDragon			=>  2_X		<Bone,			divss> 			=> Calcify? dumb / Defense+ 
 		O DemonGhost			=>  2_X		<SkullLavaEyes,	cmpss/comiss> 	=> Inner Fire / Self Heal Tick
 		O FireElemental			=>  2_X		<FireBolts,		js> 			=> Fire Rain / AoE damage
 		O LavaGolem				=>  2_X		<Fire,			jns> 			=> Enflame / Burn Tick

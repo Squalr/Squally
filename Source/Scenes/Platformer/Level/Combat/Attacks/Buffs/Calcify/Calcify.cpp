@@ -36,8 +36,8 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_CALCIFY 1
 
-const std::string Calcify::CalcifyIdentifier = "fortitude";
-const std::string Calcify::HackIdentifierCalcify = "fortitude";
+const std::string Calcify::CalcifyIdentifier = "calcify";
+const std::string Calcify::HackIdentifierCalcify = "calcify";
 
 const int Calcify::MaxMultiplier = 4;
 const int Calcify::DamageReduction = 3; // Keep in sync with asm
@@ -133,7 +133,10 @@ void Calcify::registerHackables()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Calcify::DamageReduction)))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentIncreaseInstead::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentTryChanging::create()) + 
-						"sub ebx, 3\n"
+						std::string("movss xmm0, dword ptr [eax]") +
+						std::string("movss xmm0, dword ptr [ebx]") +
+						std::string("divss xmm0, xmm1") +
+						std::string("movss dword ptr [eax], xmm0")
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentRegister::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
@@ -141,7 +144,10 @@ void Calcify::registerHackables()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Calcify::DamageReduction)))) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentIncreaseInstead::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentTryChanging::create()) + 
-						"sub rbx, 3\n"
+						std::string("movss xmm0, dword ptr [rax]") +
+						std::string("movss xmm0, dword ptr [rbx]") +
+						std::string("divss xmm0, xmm1") +
+						std::string("movss dword ptr [rax], xmm0")
 					),
 				},
 				true
@@ -173,22 +179,34 @@ void Calcify::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* d
 
 NO_OPTIMIZE void Calcify::applyCalcify()
 {
-	static volatile int currentDamageTakenLocal = 0;
+	static volatile float currentDamageTakenLocal = 0;
+	static volatile float divideByLocal = 0;
+	static volatile float* currentDamageTakenLocalPtr = nullptr;
+	static volatile float* divideByLocalPtr = nullptr;
 
-	currentDamageTakenLocal = Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
+	currentDamageTakenLocal = (float)Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
+	divideByLocal = 3.0f;
+	currentDamageTakenLocalPtr = &currentDamageTakenLocal;
+	divideByLocalPtr = &divideByLocal;
 
 	ASM_PUSH_EFLAGS()
+	ASM(push ZAX);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ebx, currentDamageTakenLocal);
+	ASM_MOV_REG_VAR(ZAX, currentDamageTakenLocal);
+	ASM_MOV_REG_VAR(ZBX, divideByLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CALCIFY);
-	ASM(sub ZBX, 3);
+	ASM(movss xmm0, dword ptr [ZAX]);
+	ASM(movss xmm0, dword ptr [ZBX]);
+	ASM(divss xmm0, xmm1);
+	ASM(movss dword ptr [ZAX], xmm0);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(currentDamageTakenLocal, ebx);
 
 	ASM(pop ZBX);
+	ASM(pop ZAX);
 	ASM_POP_EFLAGS()
 
 	Buff::HackStateStorage[Buff::StateKeyDamageTaken] = Value(currentDamageTakenLocal);
