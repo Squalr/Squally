@@ -9444,6 +9444,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEcx() = default;
 	};
 
+	class Menus_Hacking_Abilities_Abilities_Cauterize_Cauterize : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Cauterize_Cauterize* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Cauterize_Cauterize();
+		virtual ~Menus_Hacking_Abilities_Abilities_Cauterize_Cauterize() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEdi() = default;
+	};
+
 	class Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare : public LocalizedString
 	{
 	public:
