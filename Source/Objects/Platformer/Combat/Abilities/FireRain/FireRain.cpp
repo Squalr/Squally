@@ -110,7 +110,10 @@ void FireRain::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_FireRain_RegisterEax::create()
+						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Abilities_FireRain_RegisterEax::create()
+					},
+					{
+						HackableCode::Register::xmm4, Strings::Menus_Hacking_Abilities_Abilities_FireRain_RegisterEax::create()
 					},
 				},
 				int(HackFlags::None),
@@ -121,12 +124,14 @@ void FireRain::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare::create()) +
-						"jecxz skipCode\n" +
+						"comiss xmm3, xmm4\n" +
+						"je skipCode\n" +
 						"mov eax, 1\n" +
 						"skipCode:\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare::create()) +
-						"jecxz skipCode\n" +
+						"comiss xmm3, xmm4\n" +
+						"je skipCode\n" +
 						"mov rax, 1\n" +
 						"skipCode:\n"
 					),
@@ -231,19 +236,32 @@ void FireRain::damageOtherTeam()
 
 NO_OPTIMIZE void FireRain::compareTeam(TimelineEntry* entry)
 {
-	static volatile int isOnEnemyTeamLocal;
+	static volatile float isOnEnemyTeamLocal = 0.0f;
+	static volatile float* isOnEnemyTeamLocalPtr = nullptr;
+	static volatile float constZero = 0.0f;
+	static volatile float* constZeroPtr = nullptr;
 
-	isOnEnemyTeamLocal = entry->isPlayerEntry() ? 0 : 1;
+	isOnEnemyTeamLocal = entry->isPlayerEntry() ? 0.0f : 1.0f;
+	isOnEnemyTeamLocalPtr = &isOnEnemyTeamLocal;
+	constZero = 0.0f;
+	constZeroPtr = &constZero;
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
+	ASM(push ZBX);
 	ASM(push ZCX);
 
-	ASM_MOV_REG_VAR(eax, isOnEnemyTeamLocal);
+	ASM(mov ZAX, 0);
+	ASM_MOV_REG_VAR(ebx, isOnEnemyTeamLocalPtr);
+	ASM_MOV_REG_VAR(ecx, constZeroPtr);
+
+	ASM(movss xmm3, dword ptr [ZBX]);
+	ASM(movss xmm4, dword ptr [ZCX]);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM);
-	ASM(jecxz skipCodeFireRain);
-	ASM(mov ZAX, 1);
+	ASM(comiss xmm3, xmm4);
+	ASM(je skipCodeFireRain);
+	ASM(mov eax, 1);
 	ASM(skipCodeFireRain:);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
@@ -251,6 +269,7 @@ NO_OPTIMIZE void FireRain::compareTeam(TimelineEntry* entry)
 	ASM_MOV_VAR_REG(isOnEnemyTeamLocal, eax);
 
 	ASM(pop ZCX);
+	ASM(pop ZBX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
