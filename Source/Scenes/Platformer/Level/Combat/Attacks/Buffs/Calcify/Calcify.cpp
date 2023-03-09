@@ -197,7 +197,7 @@ NO_OPTIMIZE void Calcify::applyCalcify()
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CALCIFY);
 	ASM(movss xmm0, dword ptr [ZAX]);
-	ASM(movss xmm0, dword ptr [ZBX]);
+	ASM(movss xmm1, dword ptr [ZBX]);
 	ASM(divss xmm0, xmm1);
 	ASM(movss dword ptr [ZAX], xmm0);
 	ASM_NOP16();

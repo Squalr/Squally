@@ -52,7 +52,7 @@ Fear* Fear::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Fear::Fear(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_SkullGlowRed, AbilityType::Shadow, BuffData(Fear::Duration, Fear::FearIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Skull2, AbilityType::Shadow, BuffData(Fear::Duration, Fear::FearIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 
@@ -95,7 +95,7 @@ void Fear::registerHackables()
 				Fear::HackIdentifierFear,
 				Strings::Menus_Hacking_Abilities_Debuffs_Fear_Fear::create(),
 				HackableBase::HackBarColor::Red,
-				UIResources::Menus_Icons_SkullGlowRed,
+				UIResources::Menus_Icons_Skull2,
 				LazyNode<HackablePreview>::create([=](){ return FearGenericPreview::create(); }),
 				{
 					{

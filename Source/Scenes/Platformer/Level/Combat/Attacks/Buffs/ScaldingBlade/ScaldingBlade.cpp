@@ -134,7 +134,7 @@ void ScaldingBlade::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentIncreaseInstead::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentTryChanging::create()) + 
 						std::string("movss xmm0, dword ptr [eax]") +
-						std::string("movss xmm0, dword ptr [ebx]") +
+						std::string("movss xmm1, dword ptr [ebx]") +
 						std::string("mulss xmm0, xmm1") +
 						std::string("movss dword ptr [eax], xmm0")
 						, // x64
@@ -145,7 +145,7 @@ void ScaldingBlade::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentIncreaseInstead::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentTryChanging::create()) + 
 						std::string("movss xmm0, dword ptr [rax]") +
-						std::string("movss xmm0, dword ptr [rbx]") +
+						std::string("movss xmm1, dword ptr [rbx]") +
 						std::string("mulss xmm0, xmm1") +
 						std::string("movss dword ptr [rax], xmm0")
 					),
@@ -197,7 +197,7 @@ NO_OPTIMIZE void ScaldingBlade::applyScaldingBlade()
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SCALDING_BLADE);
 	ASM(movss xmm0, dword ptr [ZAX]);
-	ASM(movss xmm0, dword ptr [ZBX]);
+	ASM(movss xmm1, dword ptr [ZBX]);
 	ASM(mulss xmm0, xmm1);
 	ASM(movss dword ptr [ZAX], xmm0);
 	ASM_NOP16();

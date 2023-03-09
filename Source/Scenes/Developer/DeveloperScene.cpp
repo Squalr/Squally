@@ -557,9 +557,9 @@ DeveloperScene::DeveloperScene()
 
 
 		Surface:
-		O DemonRogue			=>  1_X		<SkullAndCrossbones, movss> 	=> ?? / Fixed damage debuff
-		X DemonShaman			=>  1_X		<BookSpellsFire,	addss> 		=> Cauterize / Self Heal Tick
-		X DemonSwordsman		=>  1_X		<AxeGlowRed,		mulss> 		=> Scalding Blade / Damage+
+		X DemonRogue			=>  1_X		<SkullGlowRed, movss> 		=> BloodBoil / Fixed damage debuff
+		X DemonShaman			=>  1_X		<BookSpellsFire,	addss> 	=> Cauterize / Self Heal Tick
+		X DemonSwordsman		=>  1_X		<AxeGlowRed,		mulss> 	=> Scalding Blade / Damage+
 		Caves:
 		X DemonDragon			=>  2_X		<Bone,			divss> 			=> Calcify? dumb / Defense+ 
 		O DemonGhost			=>  2_X		<SkullLavaEyes,	?cmpss/comiss> 	=> Inner Fire / ?Self Heal Tick
