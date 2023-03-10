@@ -10,6 +10,8 @@
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/ObjectResources.h"
+#include "Resources/ItemResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
 

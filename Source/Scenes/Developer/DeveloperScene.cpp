@@ -237,6 +237,7 @@ DeveloperScene::DeveloperScene()
 		// - G	=> 3_7 (Mummy Priest)
 
 		// ================== TODO ================== 
+		// Despawn dead gauntlet vehicles
 		// Add aura for undying that makes the effect obvious
 		// Guano warps to Squally on unpetrification, which looks like trash
 		// Reinstate water gun if we want it
@@ -500,7 +501,7 @@ DeveloperScene::DeveloperScene()
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 6 - XMM* / More Jumps
+	// CHAPTER 6 - XMM* / More Jumps / Misc
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Daemons' Hallow");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
@@ -563,13 +564,13 @@ DeveloperScene::DeveloperScene()
 			X DemonDragon			=>  2_X		<Bone,			divss> 			=> Calcify / Defense+ 
 			X DemonGhost			=>  2_X		<SkullLavaEyes,	xchg>		 	=> Inner Fire / Siphon HP tick
 			X FireElemental			=>  2_X		<FireBolts,		cmpss/comiss> 	=> Fire Rain / AoE damage
-			O LavaGolem				=>  2_X		<Fire,			jns> 			=> Enflame / Burn Tick
+			X LavaGolem				=>  2_X		<Fire,			js> 			=> Enflame / Burn Tick
 		Surface 2?
-			- DemonArcher			=>  3_X		<CrossBow,			js>				=> Arrow Rain / Another arrow rain? Different asm? 
-			- DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 			=> DaggerThrow / Redirectable dagger
+			X DemonArcher			=>  3_X		<CrossBow,			jns>			=> Arrow Volley / team compare damage
+			X DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 			=> Seeking Blade / Damage+ based on rng?
 			- DemonWarrior			=>  3_X		<FlamingScroll,		setne> 			=> ?? / idk
-			- FireTiger				=>  3_X		<Chains,			recycle?> 		=> Entwined? / Health Link? 
-			- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		recycle?> 		=> Searing Blade / Giant axe that falls counter-clockwise, redirectable
+			- FireTiger				=>  3_X		<Chains,			cmpxchg> 		=> Entwined? / Health Link? 
+			- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		lea?>	 		=> Searing Blade / Giant axe that falls counter-clockwise, redirectable
 
 		Avail for traps:
 		- Dice
@@ -670,7 +671,7 @@ DeveloperScene::DeveloperScene()
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 8 - bswap? lol. Could retrofit Setz instructions, maybe build out this zone after all.
+	// CHAPTER 8 - Call/Ret?
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Void Star");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
