@@ -569,8 +569,8 @@ DeveloperScene::DeveloperScene()
 			X DemonArcher			=>  3_X		<CrossBow,			jns>			=> Arrow Volley / team compare damage
 			X DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 			=> Seeking Blade / Damage+ based on rng
 			X DemonWarrior			=>  3_X		<FlamingScroll,		setne> 			=> Melt / Damage- based on RNG
-			- FireTiger				=>  3_X		<Chains,			cmpxchg> 		=> Entwined? / Health Link (two cmpxchg of team HP to take lowest)
-			- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		lea?>	 		=> Searing Blade / Giant axe that falls counter-clockwise, redirectable
+			O FireTiger				=>  3_X		<Chains,			cmpxchg> 		=> Entwined / Health Link (loop cmpxchg of team HP to take lowest)
+			- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		????>	 		=> Searing Blade / Giant axe that falls counter-clockwise, redirectable
 
 		Avail for traps:
 		- Dice
@@ -582,19 +582,19 @@ DeveloperScene::DeveloperScene()
 
 		-----------------
 		
-		- Ash				=> 1_x (H)
-		- Hades				=> 2_x (H)
-		- Cindra			=> 3_x (barricade)(H?)
-		- Scaldor			=> 3_x (barricade)(H?)
-		- Magnus			=> 3_x (barricade)(H?)
-		- Mittens			=> 2_x (H)
-		- Celeste			=> 3_x (barricade)(H?)
-		- Lucifer			=> Town (H)
-		- Brine				=> Town_Main (Exterior) (H)
-		- Queen Elise		=> Town_Main
-		- Pan				=> Alch
-		- Ragnis			=> Smith
-		- Thatcher			=> Inn
+		- Ash			=> 1_x (H)
+		- Hades			=> 2_x (H)
+		- Cindra		=> 3_x (barricade)(H?)
+		- Scaldor		=> 3_x (barricade)(H?)
+		- Magnus		=> 3_x (barricade)(H?)
+		- Mittens		=> 2_x (H)
+		- Celeste		=> 3_x (barricade)(H?)
+		- Lucifer		=> Town (H)
+		- Brine			=> Town_Main (Exterior) (H)
+		- Queen Elise	=> Town_Main
+		- Pan			=> Alch
+		- Ragnis		=> Smith
+		- Thatcher		=> Inn
 		- Finch			? Zone 2_x Flight Master -- Start flight master quest?
 		*/
 

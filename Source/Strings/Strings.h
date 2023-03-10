@@ -10989,6 +10989,66 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Enrage_RegisterXmm3() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_Entwined_CommentElaborate : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Entwined_CommentElaborate* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Entwined_CommentElaborate();
+		virtual ~Menus_Hacking_Abilities_Buffs_Entwined_CommentElaborate() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Entwined_CommentHint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Entwined_CommentHint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Entwined_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Buffs_Entwined_CommentHint() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Entwined_Entwined : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Entwined_Entwined* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Entwined_Entwined();
+		virtual ~Menus_Hacking_Abilities_Buffs_Entwined_Entwined() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Entwined_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Entwined_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Entwined_RegisterEdi();
+		virtual ~Menus_Hacking_Abilities_Buffs_Entwined_RegisterEdi() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_Focus_CommentDamageReduce : public LocalizedString
 	{
 	public:
