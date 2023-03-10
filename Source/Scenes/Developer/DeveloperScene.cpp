@@ -567,9 +567,9 @@ DeveloperScene::DeveloperScene()
 			X LavaGolem				=>  2_X		<Fire,			js> 			=> Enflame / Burn Tick
 		Surface 2?
 			X DemonArcher			=>  3_X		<CrossBow,			jns>			=> Arrow Volley / team compare damage
-			X DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 			=> Seeking Blade / Damage+ based on rng?
-			- DemonWarrior			=>  3_X		<FlamingScroll,		setne> 			=> ?? / idk
-			- FireTiger				=>  3_X		<Chains,			cmpxchg> 		=> Entwined? / Health Link? 
+			X DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 			=> Seeking Blade / Damage+ based on rng
+			X DemonWarrior			=>  3_X		<FlamingScroll,		setne> 			=> Melt / Damage- based on RNG
+			- FireTiger				=>  3_X		<Chains,			cmpxchg> 		=> Entwined? / Health Link (two cmpxchg of team HP to take lowest)
 			- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		lea?>	 		=> Searing Blade / Giant axe that falls counter-clockwise, redirectable
 
 		Avail for traps:

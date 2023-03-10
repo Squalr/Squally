@@ -137,7 +137,7 @@ void SeekingBlade::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentIncreaseInstead::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentTryChanging::create()) + 
 						std::string("cmp ecx, 1") +
-						std::string("sete eax, 10") // SeekingBlade::CritDamage
+						std::string("sete al")
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentRegister::create()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
@@ -146,7 +146,7 @@ void SeekingBlade::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentIncreaseInstead::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentTryChanging::create()) + 
 						std::string("cmp ecx, 1") +
-						std::string("sete eax, 10") // SeekingBlade::CritDamage
+						std::string("sete al")
 					),
 				},
 				true
@@ -194,21 +194,24 @@ NO_OPTIMIZE void SeekingBlade::applySeekingBlade()
 	ASM(push ZAX);
 	ASM(push ZCX);
 
+	ASM(mov ZAX, 0);
 	ASM(mov ZCX, 0);
-	ASM_MOV_REG_VAR(ZAX, currentDamageDealtLocal);
+	ASM_MOV_REG_VAR(eax, currentDamageDealtLocal);
 	ASM_MOV_REG_VAR(ecx, rng);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SEEKING_BLADE);
 	ASM(cmp ZCX, 1);
-	ASM(sete ZAX, 10);
+	ASM(sete al);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, ebx);
+	ASM_MOV_VAR_REG(currentDamageDealtLocal, eax);
 
 	ASM(pop ZCX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS()
+
+	currentDamageDealtLocal = currentDamageDealtLocal == 1 ? SeekingBlade::CritDamage : currentDamageDealtLocal;
 
 	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value((int)currentDamageDealtLocal);
 

@@ -12069,6 +12069,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEax() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEcx() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_ScaldingBlade : public LocalizedString
 	{
 	public:
@@ -14332,6 +14347,111 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEsi();
 		virtual ~Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEsi() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Melt_CommentDamageReduce : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Melt_CommentDamageReduce* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Melt_CommentDamageReduce();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Melt_CommentDamageReduce() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Melt_CommentIncreaseInstead : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Melt_CommentIncreaseInstead* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Melt_CommentIncreaseInstead();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Melt_CommentIncreaseInstead() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Melt_CommentRegister : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Melt_CommentRegister* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Melt_CommentRegister();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Melt_CommentRegister() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Melt_CommentTryChanging : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Melt_CommentTryChanging* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Melt_CommentTryChanging();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Melt_CommentTryChanging() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Melt_Melt : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Melt_Melt* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Melt_Melt();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Melt_Melt() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Melt_RegisterEax : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Melt_RegisterEax* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Melt_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Melt_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Melt_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Melt_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Melt_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Melt_RegisterEcx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage : public LocalizedString
