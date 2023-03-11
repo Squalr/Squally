@@ -10569,6 +10569,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx4 : public LocalizedString
 	{
 	public:
@@ -15862,6 +15877,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Generic_Conditional_CommentNe();
 		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentNe() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance();
+		virtual ~Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov : public LocalizedString

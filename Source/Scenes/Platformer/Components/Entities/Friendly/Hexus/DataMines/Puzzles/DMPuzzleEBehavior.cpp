@@ -58,6 +58,14 @@ std::vector<CardData*> DMPuzzleEBehavior::generateDeck()
 
 StateOverride* DMPuzzleEBehavior::getStateOverride()
 {
+	/*
+	Solution:
+	- Flip on 0x4
+	- SHL the now 0x6 card
+	- OR the now C card with one of the 0b0011
+	- OR the 0b1111 with 0b000
+	*/
+
 	return StateOverride::create(
 		// Player losses
 		1,

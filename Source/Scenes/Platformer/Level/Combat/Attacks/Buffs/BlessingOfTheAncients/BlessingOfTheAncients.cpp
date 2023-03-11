@@ -131,11 +131,17 @@ void BlessingOfTheAncients::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"push dword ptr [ecx + 4]\n"
-						"pop dword ptr [ecx + 8]\n"
+						std::string("push dword ptr [ecx + 4]\n") +
+						std::string("pop dword ptr [ecx + 8]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint::create()) +
+						std::string("\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
 						, // x64
-						"push qword ptr [rcx + 4]\n"
-						"pop qword ptr [rcx + 8]\n"
+						std::string("push qword ptr [rcx + 4]\n") +
+						std::string("pop qword ptr [rcx + 8]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint::create()) +
+						std::string("\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
 					),
 				},
 				true
