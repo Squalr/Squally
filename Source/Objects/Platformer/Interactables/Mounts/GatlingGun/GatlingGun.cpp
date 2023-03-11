@@ -72,9 +72,12 @@ void GatlingGun::update(float dt)
 {
 	super::update(dt);
 
-	if (this->mountedEntity != nullptr)
+	for (PlatformerEntity* mountedEntity : this->mountedEntities)
 	{
-		this->mountedEntity->getAnimations()->setFlippedX(false);
+		if (mountedEntity != nullptr)
+		{
+			mountedEntity->getAnimations()->setFlippedX(false);
+		}
 	}
 }
 
@@ -87,9 +90,9 @@ void GatlingGun::mount(PlatformerEntity* interactingEntity)
 	this->isMoving = false;
 }
 
-void GatlingGun::dismount()
+void GatlingGun::dismount(PlatformerEntity* entity)
 {
-	super::dismount();
+	super::dismount(entity);
 	
 	this->isMoving = false;
 }

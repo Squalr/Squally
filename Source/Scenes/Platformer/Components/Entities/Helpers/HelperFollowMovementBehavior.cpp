@@ -12,6 +12,8 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
+#include "Objects/Platformer/Interactables/Mounts/MountBase.h"
+#include "Scenes/Platformer/Components/Entities/Movement/EntityMountBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Movement/SquallyMovementBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -134,13 +136,24 @@ void HelperFollowMovementBehavior::update(float dt)
 
 	Vec3 squallyPosition = GameUtils::getWorldCoords3D(this->squally);
 	Vec3 entityPosition = GameUtils::getWorldCoords3D(this->entity);
-
+	
 	if (std::abs(squallyPosition.x - entityPosition.x) >= HelperFollowMovementBehavior::ResetRangeX ||
 		std::abs(squallyPosition.y - entityPosition.y) >= HelperFollowMovementBehavior::ResetRangeY)
 	{
 		this->warpToSqually();
 		return;
 	}
+	
+	squally->getComponent<EntityMountBehavior>([&](EntityMountBehavior* squallyMountBehavior)
+	{
+		if (squallyMountBehavior->isMounted())
+		{
+			if (squallyMountBehavior->isMounted() && squallyMountBehavior->getMountTarget() != nullptr)
+			{
+				squallyMountBehavior->getMountTarget()->mount(this->entity);
+			}
+		}
+	});
 
 	if (std::abs(squallyPosition.x - entityPosition.x) >= HelperFollowMovementBehavior::StopFollowRangeX)
 	{

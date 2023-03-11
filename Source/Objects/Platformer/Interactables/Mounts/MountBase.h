@@ -16,7 +16,8 @@ public:
 
 	cocos2d::Node* getReparentNode();
 	virtual void mount(PlatformerEntity* interactingEntity);
-	virtual void dismount();
+	virtual void dismount(PlatformerEntity* entity);
+	void dismountAll();
 	bool isMounted() const;
 	void setMountDirection(MountDirection mountDirection);
 	void reverse();
@@ -39,7 +40,7 @@ protected:
 	void moveMount(float dt);
 	
 	cocos2d::Node* frontNode = nullptr;
-	PlatformerEntity* mountedEntity = nullptr;
+	std::set<PlatformerEntity*> mountedEntities;
 	MountDirection mountDirection = MountDirection::Left;
 	float mountSpeed = 0.0f;
 	bool isMoving = false;

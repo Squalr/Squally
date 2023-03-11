@@ -68,7 +68,7 @@ void VikingShip::initializeListeners()
 	this->interactCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::CartStop }, [=](CollisionData collisionData)
 	{
 		this->reverse();
-		this->dismount();
+		this->dismountAll();
 		
 		return CollisionResult::CollideWithPhysics;
 	});
@@ -92,9 +92,9 @@ void VikingShip::mount(PlatformerEntity* interactingEntity)
 	this->isMoving = true;
 }
 
-void VikingShip::dismount()
+void VikingShip::dismount(PlatformerEntity* entity)
 {
-	super::dismount();
+	super::dismount(entity);
 	
 	this->isMoving = false;
 }

@@ -33,7 +33,7 @@ MineCart* MineCart::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-MineCart::MineCart(cocos2d::ValueMap& properties) : super(properties, CSize(240.0f, 184.0f))
+MineCart::MineCart(cocos2d::ValueMap& properties) : super(properties, CSize(240.0f, 184.0f), false)
 {
 	this->parseColor();
 	this->parseDirection();
@@ -77,11 +77,10 @@ void MineCart::initializeListeners()
 {
 	super::initializeListeners();
 	
-
 	this->interactCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::CartStop }, [=](CollisionData collisionData)
 	{
 		this->reverse();
-		this->dismount();
+		this->dismountAll();
 		
 		return CollisionResult::CollideWithPhysics;
 	});
@@ -148,9 +147,9 @@ void MineCart::mount(PlatformerEntity* interactingEntity)
 	this->isMoving = true;
 }
 
-void MineCart::dismount()
+void MineCart::dismount(PlatformerEntity* entity)
 {
-	super::dismount();
+	super::dismount(entity);
 	
 	this->isMoving = false;
 }
@@ -190,7 +189,7 @@ END_NO_OPTIMIZE
 
 Vec2 MineCart::getReparentPosition()
 {
-	return Vec2(0.0f, 128.0f);
+	return Vec2(0.0f, 32.0f);
 }
 
 void MineCart::parseColor()

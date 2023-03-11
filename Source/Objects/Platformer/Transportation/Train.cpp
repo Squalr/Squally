@@ -185,7 +185,7 @@ void Train::initializeListeners()
 	this->interactCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::CartStop }, [=](CollisionData collisionData)
 	{
 		this->reverse();
-		this->dismount();
+		this->dismountAll();
 		
 		return CollisionResult::CollideWithPhysics;
 	});
@@ -257,9 +257,9 @@ void Train::mount(PlatformerEntity* interactingEntity)
 	this->isMoving = true;
 }
 
-void Train::dismount()
+void Train::dismount(PlatformerEntity* entity)
 {
-	super::dismount();
+	super::dismount(entity);
 	
 	this->isMoving = false;
 }

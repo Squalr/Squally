@@ -15,7 +15,7 @@ public:
 	static GatlingGun* create(cocos2d::ValueMap& properties);
 
 	void mount(PlatformerEntity* interactingEntity) override;
-	void dismount() override;
+	void dismount(PlatformerEntity* entity) override;
 	SmartAnimationNode* getAnimations() const;
 
 	static const std::string MapKey;

@@ -15,7 +15,7 @@ public:
 	static MineCart* create(cocos2d::ValueMap& properties);
 
 	void mount(PlatformerEntity* interactingEntity) override;
-	void dismount() override;
+	void dismount(PlatformerEntity* entity) override;
 
 	static const std::string MapKey;
 

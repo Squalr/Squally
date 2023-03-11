@@ -69,6 +69,7 @@ DeveloperScene::DeveloperScene()
 	}
 
 	/*
+	- Changing language does not update readonly scripts after they are loaded once
 	- * Can get stuck on roof of maps (see UR 3_1)
 	- Tune Alch / Card tier pools
 	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+
@@ -80,7 +81,6 @@ DeveloperScene::DeveloperScene()
 	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles) (edit: can't repro?)
 	- Sometimes hackable icon is below entity (rare)
 	- Evil Eye chase scenes, cracks in simulation for story
-	- Mounts should apply to helpers so they aren't awkwardly lagging behind
 	- Squally auto crouch in mine carts
 	- Hexus:
 		- * Reduce Hexus fights to 6 per chapter (ignoring VS) (6 * 7 = 42 fights)

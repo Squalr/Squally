@@ -7,6 +7,7 @@
 #include "Scenes/Platformer/Components/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityJumpCollisionBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Movement/EntityMountBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -92,7 +93,16 @@ void EntityHoverCollisionBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (this->entity->getRuntimeStateOrDefaultFloat(StateKeys::MovementY, 0.0f) < 0.0f)
+	bool autoCrouch = false;
+	this->entity->getComponent<EntityMountBehavior>([&](EntityMountBehavior* entityMountBehavior)
+	{
+		if (entityMountBehavior->isMounted())
+		{
+			autoCrouch = true;
+		}
+	});
+
+	if (autoCrouch || this->entity->getRuntimeStateOrDefaultFloat(StateKeys::MovementY, 0.0f) < 0.0f)
 	{
 		this->crouch(dt);
 	}
