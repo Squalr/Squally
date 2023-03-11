@@ -70,7 +70,10 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- Changing language does not update readonly scripts after they are loaded once
+	- CPU noises when turned on in DM
+	- Train noises in DM/CV
 	- * Can get stuck on roof of maps (see UR 3_1)
+	- Sanity check card localization (due to art changes)
 	- Tune Alch / Card tier pools
 	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+
 	- Infinity symbol in hexus does not localize to arabic (and maybe others)
@@ -78,11 +81,11 @@ DeveloperScene::DeveloperScene()
 	- Pacing behavior is broken for portal maps
 	- Techncially Squally respawns on object layer upon death, although usually this is not noticeable
 	- Chapter transitions can be more special
-	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles) (edit: can't repro?)
-	- Sometimes hackable icon is below entity (rare)
+	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles) (edit: repro inconsistent)
+	- Sometimes hackable icon is below entity
 	- Evil Eye chase scenes, cracks in simulation for story
-	- Squally auto crouch in mine carts
 	- Hexus:
+		- Can pass after auto-loss
 		- * Reduce Hexus fights to 6 per chapter (ignoring VS) (6 * 7 = 42 fights)
 		- Rematch dialog does not load unless map is reloaded
 		- Win a hexus puzzle, next one will show massive row score deltas

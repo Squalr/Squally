@@ -11844,6 +11844,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Manifest_RegisterEbx() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_PactOfTheAncients_PactOfTheAncients : public LocalizedString
 	{
 	public:

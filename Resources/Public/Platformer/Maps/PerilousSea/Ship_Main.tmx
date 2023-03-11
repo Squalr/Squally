@@ -13,6 +13,10 @@
   </properties>
  </objectgroup>
  <objectgroup id="87" name="tiled bg -10">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
   <object id="770" name="mines" type="texture" x="-886.55" y="-639.82" width="5853.1" height="3871.64"/>
  </objectgroup>
  <objectgroup id="72" name="water back">

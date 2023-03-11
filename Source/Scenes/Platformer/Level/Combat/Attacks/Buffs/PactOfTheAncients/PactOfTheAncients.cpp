@@ -101,7 +101,7 @@ void PactOfTheAncients::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return PactOfTheAncientsGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx::create(),
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx::create(), true
 					},
 				},
 				int(HackFlags::None),
@@ -111,11 +111,17 @@ void PactOfTheAncients::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"push 5\n"
-						"pop dword ptr [edx]\n"
+						std::string("push 5\n") +
+						std::string("pop dword ptr [edx]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint::create()) +
+						std::string("\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
 						, // x64
-						"push 5\n"
-						"pop qword ptr [rdx]\n"
+						std::string("push 5\n") +
+						std::string("pop qword ptr [rdx]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint::create()) +
+						std::string("\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
 					),
 				},
 				true
