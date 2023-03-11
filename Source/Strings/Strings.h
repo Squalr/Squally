@@ -33309,6 +33309,21 @@ namespace Strings
 		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_R_TakeTrainTicket() = default;
 	};
 
+	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_S_DontForgetBlacksmith : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_S_DontForgetBlacksmith* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_PrincessDawn_S_DontForgetBlacksmith();
+		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_S_DontForgetBlacksmith() = default;
+	};
+
 	class Platformer_Quests_DataMines_StackPuzzle_A_DoYouKnowHowToOpenDoor : public LocalizedString
 	{
 	public:
