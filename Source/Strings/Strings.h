@@ -10824,10 +10824,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_DefensiveStance_DefensiveStance() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_DefensiveStance_RegisterEax : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_DefensiveStance_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_DefensiveStance_RegisterEax* create();
+		static Menus_Hacking_Abilities_Buffs_DefensiveStance_RegisterEcx* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10835,8 +10835,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_DefensiveStance_RegisterEax();
-		virtual ~Menus_Hacking_Abilities_Buffs_DefensiveStance_RegisterEax() = default;
+		Menus_Hacking_Abilities_Buffs_DefensiveStance_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Buffs_DefensiveStance_RegisterEcx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce : public LocalizedString

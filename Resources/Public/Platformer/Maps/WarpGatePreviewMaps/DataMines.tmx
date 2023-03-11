@@ -72,8 +72,8 @@
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1058" name="water" type="object" x="-794.195" y="621.9" width="2160.51" height="1132.2"/>
-  <object id="1059" name="water" type="object" x="-597.892" y="645.9" width="1739.3" height="1132.2"/>
+  <object id="1058" name="water" type="object" x="-1174.2" y="621.9" width="2895.06" height="1132.2"/>
+  <object id="1059" name="water" type="object" x="-1057.89" y="645.9" width="2703.3" height="1132.2"/>
  </objectgroup>
  <objectgroup id="79" name="bridge -11">
   <properties>
@@ -103,7 +103,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1060" name="water" type="object" x="-381.71" y="673.067" width="1302.94" height="1132.2"/>
+  <object id="1060" name="water" type="object" x="-981.71" y="673.067" width="2546.94" height="1132.2"/>
  </objectgroup>
  <objectgroup id="77" name="bridge -9">
   <properties>
@@ -121,7 +121,7 @@
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1061" name="water" type="object" x="-378.44" y="696.082" width="1302.94" height="1132.2"/>
+  <object id="1061" name="water" type="object" x="-934.44" y="696.082" width="2446.94" height="1132.2"/>
  </objectgroup>
  <objectgroup id="76" name="bridge -8">
   <properties>
@@ -139,7 +139,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1062" name="water" type="object" x="-271.046" y="716.567" width="1102.94" height="1132.2"/>
+  <object id="1062" name="water" type="object" x="-907.046" y="716.567" width="2382.94" height="1132.2"/>
  </objectgroup>
  <objectgroup id="75" name="bridge -7">
   <properties>

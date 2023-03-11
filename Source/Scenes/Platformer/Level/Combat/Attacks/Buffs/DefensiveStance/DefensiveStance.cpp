@@ -117,7 +117,7 @@ void DefensiveStance::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return DefensiveStanceGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_RegisterEax::create()
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_RegisterEcx::create()
 					}
 				},
 				int(HackFlags::None),
