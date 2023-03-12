@@ -54,7 +54,7 @@ void LazarusCombatBehavior::onLoad()
 	{
 		attackBehavior->registerAttack(DragonBreath::create(0.5f, EntityAttackBehavior::DefaultRecoverSpeedSlow, PlatformerAttack::Priority::VeryCommon));
 		attackBehavior->registerAttack(CastStrength::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
-		attackBehavior->registerAttack(BasicSlash::create(3, 5, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
+		attackBehavior->registerAttack(BasicSlash::create(8, 10, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
 
 	this->entity->watchForComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
