@@ -2,16 +2,16 @@
 
 #include "Scenes/Platformer/Components/Entities/Combat/EntityCombatBehaviorBase.h"
 
-class VoidArcherCombatBehavior : public EntityCombatBehaviorBase
+class DemonArcherCombatBehavior : public EntityCombatBehaviorBase
 {
 public:
-	static VoidArcherCombatBehavior* create(GameObject* owner);
+	static DemonArcherCombatBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	VoidArcherCombatBehavior(GameObject* owner);
-	virtual ~VoidArcherCombatBehavior();
+	DemonArcherCombatBehavior(GameObject* owner);
+	virtual ~DemonArcherCombatBehavior();
 
 	void initializePositions() override;
 	void onLoad() override;

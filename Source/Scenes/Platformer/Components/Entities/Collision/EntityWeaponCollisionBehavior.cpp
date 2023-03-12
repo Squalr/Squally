@@ -81,7 +81,7 @@ void EntityWeaponCollisionBehavior::setWeaponCollisionOffset(Vec2 weaponCollisio
 
 void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType)
 {
-	if (this->isInvalidated())
+	if (this->isInvalidated() || this->entity == nullptr || this->entity->getAnimations() == nullptr)
 	{
 		return;
 	}
@@ -104,7 +104,11 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType)
 		CollisionObject::Properties(false, false)
 	);
 
-	this->weaponCollision->setPosition(this->weaponCollisionOffset);
+	Vec2 weaponCollisionOffsetAdjusted = this->entity->getAnimations()->getFlippedX()
+		? Vec2(-this->weaponCollisionOffset.x, this->weaponCollisionOffset.y)
+		: this->weaponCollisionOffset;
+
+	this->weaponCollision->setPosition(weaponCollisionOffsetAdjusted);
 	this->weaponCollision->setPhysicsFlagEnabled(false);
 	mainhand->addTrackingObject(this->weaponCollision);
 }

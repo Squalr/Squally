@@ -240,6 +240,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	// UR
 	this->componentDeserializers[AnubisPupCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)AnubisPupCombatBehavior::create(owner); };
 	this->componentDeserializers[AnubisWarriorCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)AnubisWarriorCombatBehavior::create(owner); };
+	this->componentDeserializers[DarkTigerCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DarkTigerCombatBehavior::create(owner); };
 	this->componentDeserializers[LionessCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LionessCombatBehavior::create(owner); };
 	this->componentDeserializers[LionManCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LionManCombatBehavior::create(owner); };
 	this->componentDeserializers[MedusaCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)MedusaCombatBehavior::create(owner); };
@@ -262,18 +263,17 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[SkeletalArcherCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)SkeletalArcherCombatBehavior::create(owner); };
 	this->componentDeserializers[SkeletalNecromancerCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)SkeletalNecromancerCombatBehavior::create(owner); };
 	this->componentDeserializers[SkeletalWarriorCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)SkeletalWarriorCombatBehavior::create(owner); };
-	this->componentDeserializers[ThugCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ThugCombatBehavior::create(owner); };
 	this->componentDeserializers[TikiGolemCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)TikiGolemCombatBehavior::create(owner); };
 	
 	// CV
+	this->componentDeserializers[AbominationCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)AbominationCombatBehavior::create(owner); };
 	this->componentDeserializers[AgnesCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)AgnesCombatBehavior::create(owner); };
-	this->componentDeserializers[GorillaCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)GorillaCombatBehavior::create(owner); };
 	this->componentDeserializers[JackCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)JackCombatBehavior::create(owner); };
 	this->componentDeserializers[ReanimatedFighterCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ReanimatedFighterCombatBehavior::create(owner); };
 	this->componentDeserializers[ReaperCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ReaperCombatBehavior::create(owner); };
-	this->componentDeserializers[ScarecrowCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ScarecrowCombatBehavior::create(owner); };
 	this->componentDeserializers[SkeletalBaronCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)SkeletalBaronCombatBehavior::create(owner); };
 	this->componentDeserializers[SkeletalPirateCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)SkeletalPirateCombatBehavior::create(owner); };
+	this->componentDeserializers[ThugCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ThugCombatBehavior::create(owner); };
 	this->componentDeserializers[VampireLordCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)VampireLordCombatBehavior::create(owner); };
 	this->componentDeserializers[VampiressCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)VampiressCombatBehavior::create(owner); };
 	this->componentDeserializers[WerewolfCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)WerewolfCombatBehavior::create(owner); };
@@ -295,6 +295,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 
 	// DH
 	this->componentDeserializers[AsmodeusCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)AsmodeusCombatBehavior::create(owner); };
+	this->componentDeserializers[DemonArcherCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DemonArcherCombatBehavior::create(owner); };
 	this->componentDeserializers[DemonDragonCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DemonDragonCombatBehavior::create(owner); };
 	this->componentDeserializers[DemonGhostCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DemonGhostCombatBehavior::create(owner); };
 	this->componentDeserializers[DemonGruntCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DemonGruntCombatBehavior::create(owner); };
@@ -307,7 +308,9 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[LavaGolemCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LavaGolemCombatBehavior::create(owner); };
 
 	// LC
+	this->componentDeserializers[AssassinCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)AssassinCombatBehavior::create(owner); };
 	this->componentDeserializers[BoneFiendCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BoneFiendCombatBehavior::create(owner); };
+	this->componentDeserializers[BoneKnightCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BoneKnightCombatBehavior::create(owner); };
 	this->componentDeserializers[HunterCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)HunterCombatBehavior::create(owner); };
 	this->componentDeserializers[KingZulCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)KingZulCombatBehavior::create(owner); };
 	this->componentDeserializers[LazarusCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LazarusCombatBehavior::create(owner); };
@@ -317,27 +320,26 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[SkeletalKnightCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)SkeletalKnightCombatBehavior::create(owner); };
 	this->componentDeserializers[SkeletalPriestessCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)SkeletalPriestessCombatBehavior::create(owner); };
 	this->componentDeserializers[UndeadCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)UndeadCombatBehavior::create(owner); };
+	this->componentDeserializers[WarlockCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)WarlockCombatBehavior::create(owner); };
 	this->componentDeserializers[ZombieCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ZombieCombatBehavior::create(owner); };
 	this->componentDeserializers[ZombieElricCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ZombieElricCombatBehavior::create(owner); };
 
 	// VS
-	this->componentDeserializers[AbominationCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)AbominationCombatBehavior::create(owner); };
-	this->componentDeserializers[AssassinCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)AssassinCombatBehavior::create(owner); };
-	this->componentDeserializers[BoneKnightCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BoneKnightCombatBehavior::create(owner); };
-	this->componentDeserializers[DarkTigerCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DarkTigerCombatBehavior::create(owner); };
 	this->componentDeserializers[EvilEyeCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)EvilEyeCombatBehavior::create(owner); };
 	this->componentDeserializers[ExterminatorCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ExterminatorCombatBehavior::create(owner); };
-	this->componentDeserializers[GargoyleCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)GargoyleCombatBehavior::create(owner); };
-	this->componentDeserializers[LightningGolemCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LightningGolemCombatBehavior::create(owner); };
-	this->componentDeserializers[ShadeCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ShadeCombatBehavior::create(owner); };
-	this->componentDeserializers[VoidArcherCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)VoidArcherCombatBehavior::create(owner); };
 	this->componentDeserializers[VoidDemonCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)VoidDemonCombatBehavior::create(owner); };
-	this->componentDeserializers[WarlockCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)WarlockCombatBehavior::create(owner); };
 
 	// Misc
 	this->componentDeserializers[GatlingGunBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)GatlingGunBehavior::create(owner); };
 	this->componentDeserializers[KillingMachineBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)KillingMachineBehaviorGroup::create(owner); };
 	this->componentDeserializers[RamWeakenedCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)RamWeakenedCombatBehavior::create(owner); };
+
+	// Deprecated
+	this->componentDeserializers[GargoyleCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)GargoyleCombatBehavior::create(owner); };
+	this->componentDeserializers[GorillaCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)GorillaCombatBehavior::create(owner); };
+	this->componentDeserializers[LightningGolemCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LightningGolemCombatBehavior::create(owner); };
+	this->componentDeserializers[ScarecrowCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ScarecrowCombatBehavior::create(owner); };
+	this->componentDeserializers[ShadeCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ShadeCombatBehavior::create(owner); };
 	
 	/*********************
 		Squalr

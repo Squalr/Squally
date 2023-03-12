@@ -168,8 +168,7 @@ NO_OPTIMIZE void Diseased::applyDiseased()
 	ASM_PUSH_EFLAGS()
 	ASM(push ZDX);
 
-	ASM(MOV ZDX, 0)
-	ASM_MOV_REG_VAR(edx, currentDamageDealtLocal);
+	ASM_MOV_REG_VAR(ZDX, currentDamageDealtLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_DISEASED);
 	ASM(repeatDiseased:);

@@ -84,7 +84,7 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			entityInventoryBehavior->getInventory()->forceInsert(WoodenClub::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WoodenAxe::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(CrystalBow::create(), false);
-			entityInventoryBehavior->getEquipmentInventory()->forceInsert(WoodenSword::create(), false);
+			entityInventoryBehavior->getEquipmentInventory()->forceInsert(GoldenAxe::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WoodenWand::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(QuartzWand::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(MagesGuildPrisonKey::create(), false);

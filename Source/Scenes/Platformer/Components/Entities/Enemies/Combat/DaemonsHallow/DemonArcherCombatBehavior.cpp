@@ -1,4 +1,4 @@
-#include "VoidArcherCombatBehavior.h"
+#include "DemonArcherCombatBehavior.h"
 
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/Item.h"
@@ -12,18 +12,18 @@
 
 using namespace cocos2d;
 	
-const std::string VoidArcherCombatBehavior::MapKey = "void-archer-combat";
+const std::string DemonArcherCombatBehavior::MapKey = "demon-archer-combat";
 
-VoidArcherCombatBehavior* VoidArcherCombatBehavior::create(GameObject* owner)
+DemonArcherCombatBehavior* DemonArcherCombatBehavior::create(GameObject* owner)
 {
-	VoidArcherCombatBehavior* instance = new VoidArcherCombatBehavior(owner);
+	DemonArcherCombatBehavior* instance = new DemonArcherCombatBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-VoidArcherCombatBehavior::VoidArcherCombatBehavior(GameObject* owner) : super(owner)
+DemonArcherCombatBehavior::DemonArcherCombatBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
@@ -35,15 +35,15 @@ VoidArcherCombatBehavior::VoidArcherCombatBehavior(GameObject* owner) : super(ow
 	this->setTimelineSpeedBase(1.25f);
 }
 
-VoidArcherCombatBehavior::~VoidArcherCombatBehavior()
+DemonArcherCombatBehavior::~DemonArcherCombatBehavior()
 {
 }
 
-void VoidArcherCombatBehavior::initializePositions()
+void DemonArcherCombatBehavior::initializePositions()
 {
 }
 
-void VoidArcherCombatBehavior::onLoad()
+void DemonArcherCombatBehavior::onLoad()
 {
 	super::onLoad();
 	

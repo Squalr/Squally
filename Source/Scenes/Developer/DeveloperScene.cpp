@@ -1103,6 +1103,9 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
+
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyEq, Value(11));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyEq, Value(7));
 			
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(mapResource));
 
