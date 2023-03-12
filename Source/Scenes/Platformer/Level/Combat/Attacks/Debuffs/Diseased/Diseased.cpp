@@ -39,7 +39,7 @@ using namespace cocos2d;
 const std::string Diseased::DiseasedIdentifier = "diseased";
 const std::string Diseased::HackIdentifierDiseased = "diseased";
 
-const int Diseased::MaxMultiplier = 6;
+const int Diseased::MaxMultiplier = 4;
 const int Diseased::DamageDelt = 1;
 const float Diseased::Duration = 24.0f;
 
@@ -147,11 +147,11 @@ void Diseased::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* 
 {
 	super::onBeforeDamageDealt(damageOrHealing);
 
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(Diseased::DamageDelt);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyDiseased();
 
-	int min = -std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Diseased::MaxMultiplier);
+	int min = 0;
 	int max = std::abs(Buff::HackStateStorage[Buff::StateKeyOriginalDamageOrHealing].asInt() * Diseased::MaxMultiplier);
 
 	*damageOrHealing->damageOrHealing = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
@@ -172,10 +172,10 @@ NO_OPTIMIZE void Diseased::applyDiseased()
 	ASM_MOV_REG_VAR(edx, currentDamageDealtLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_DISEASED);
-	ASM(repeat:);
+	ASM(repeatDiseased:);
 	ASM(dec ZDX);
 	ASM(cmp ZDX, 5);
-	ASM(jg repeat);
+	ASM(jg repeatDiseased);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
