@@ -11664,21 +11664,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Immortality_Immortality() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Immortality_RegisterEbx : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_Immortality_RegisterEbx* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_Immortality_RegisterEbx();
-		virtual ~Menus_Hacking_Abilities_Buffs_Immortality_RegisterEbx() = default;
-	};
-
 	class Menus_Hacking_Abilities_Buffs_Immortality_RegisterEsi : public LocalizedString
 	{
 	public:

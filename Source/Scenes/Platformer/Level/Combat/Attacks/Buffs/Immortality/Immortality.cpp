@@ -115,9 +115,6 @@ void Immortality::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return ImmortalityGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Immortality_RegisterEbx::create(),
-					},
-					{
 						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Immortality_RegisterEsi::create(),
 					}
 				},
@@ -208,7 +205,7 @@ NO_OPTIMIZE void Immortality::applyImmortality()
 	ASM_PUSH_EFLAGS();
 	ASM(push ZSI);
 
-	ASM_MOV_REG_VAR(esi, newHealthImmortality);
+	ASM_MOV_REG_VAR(ZSI, newHealthImmortality);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_IMMORTALITY);
 	ASM(cmp ZSI, 0);
