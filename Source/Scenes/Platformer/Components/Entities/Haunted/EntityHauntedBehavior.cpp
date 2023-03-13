@@ -94,6 +94,17 @@ void EntityHauntedBehavior::onLoad()
 			// Defer 1 frame to give the dead enemy a chance to persist the save key
 			this->defer([=]()
 			{
+				// Hack to remove interaction
+				this->ownerAsFriendly->watchForComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+				{
+					healthBehavior->kill();
+				});
+
+				this->ownerAsFriendly->watchForComponent<HexusBehaviorBase>([=](HexusBehaviorBase* hexusBehavior)
+				{
+					hexusBehavior->setVisible(false);
+				});
+
 				bool isUnhaunted = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(false)).asBool();
 
 				if (!isUnhaunted)

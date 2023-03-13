@@ -12,7 +12,7 @@ public:
 	static Leech* create(PlatformerEntity* caster, PlatformerEntity* target);
 
 	static const std::string LeechIdentifier;
-	static const int DrainAmount;
+	static const int TickCount;
 	static const int DrainAmountMax;
 	static const float TimeBetweenTicks;
 	static const float StartDelay;
@@ -32,7 +32,6 @@ private:
 
 	void incrementHeal();
 
-	int drainAmount = 0;
 	SmartAnimationSequenceNode* drainEffect = nullptr;
 	WorldSound* impactSound = nullptr;
 	WorldSound* drainSound = nullptr;

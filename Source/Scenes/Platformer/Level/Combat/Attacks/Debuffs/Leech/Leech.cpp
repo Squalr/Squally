@@ -31,10 +31,10 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_RADIATION 1
+#define LOCAL_FUNC_ID_LEECH 1
 
 const std::string Leech::LeechIdentifier = "leech";
-const int Leech::DrainAmount = 5;
+const int Leech::TickCount = 5;
 const int Leech::DrainAmountMax = 8;
 const float Leech::TimeBetweenTicks = 0.5f;
 const float Leech::StartDelay = 0.25f;
@@ -51,10 +51,11 @@ Leech* Leech::create(PlatformerEntity* caster, PlatformerEntity* target)
 Leech::Leech(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_SwordGlowBlue, AbilityType::Shadow, BuffData())
 {
-	this->drainEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
-	this->drainAmount = Leech::DrainAmount;
+	this->drainEffect = SmartAnimationSequenceNode::create(FXResources::HealMP_Heal_0000);
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
 	this->drainSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
+
+	this->drainEffect->setAnimationAnchor(Vec2(0.5f, 0.0f));
 
 	this->addChild(this->drainEffect);
 	this->addChild(this->impactSound);
@@ -78,7 +79,7 @@ void Leech::initializePositions()
 {
 	super::initializePositions();
 
-	this->setPosition(Vec2(0.0f, 118.0f - this->owner->getEntityCenterPoint().y));
+	this->drainEffect->setPositionY(this->owner->getEntityBottomPointRelative().y - 12.0f);
 }
 
 void Leech::registerHackables()
@@ -93,7 +94,7 @@ void Leech::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_RADIATION,
+			LOCAL_FUNC_ID_LEECH,
 			HackableCode::HackableCodeInfo(
 				Leech::LeechIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_Leech_Leech::create(),
@@ -109,26 +110,28 @@ void Leech::registerHackables()
 					}
 				},
 				int(HackFlags::None),
-				Leech::StartDelay + Leech::TimeBetweenTicks * float(Leech::DrainAmount),
+				Leech::StartDelay + Leech::TimeBetweenTicks * float(Leech::TickCount),
 				0.0f,
 				{
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentRng::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentRng::create()
+							->setStringReplacementVariables({ HackableCode::registerToLocalizedString(HackableCode::Register::zsi) })) +
 						"cmp esi, 0\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentJz::create()) +
 						"jz skipCode\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentApplyDamage::create()) +
-						"mov edi, 5:\n" + // Leech::DrainAmount
+						"mov edi, 5\n" +
 						"skipCode:\n"
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentRng::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentRng::create()
+							->setStringReplacementVariables({ HackableCode::registerToLocalizedString(HackableCode::Register::zsi) })) +
 						"cmp rsi, 0\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentJz::create()) +
 						"jz skipCode\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentApplyDamage::create()) +
-						"mov rdi, 5:\n" + // Leech::DrainAmount
+						"mov rdi, 5\n" +
 						"skipCode:\n"
 					),
 				},
@@ -152,7 +155,7 @@ void Leech::runLeech()
 
 	std::vector<TimelineEvent*> timelineEvents = std::vector<TimelineEvent*>();
 
-	for (int drainIndex = 0; drainIndex < this->drainAmount; drainIndex++)
+	for (int tickIndex = 0; tickIndex < Leech::TickCount; tickIndex++)
 	{
 		Sprite* icon = Sprite::create(UIResources::Menus_Icons_BloodGoblet);
 
@@ -161,11 +164,11 @@ void Leech::runLeech()
 		timelineEvents.push_back(TimelineEvent::create(
 				this->owner,
 				icon,
-				Leech::TimeBetweenTicks * float(drainIndex) + Leech::StartDelay, [=]()
+				Leech::TimeBetweenTicks * float(tickIndex) + Leech::StartDelay, [=]()
 			{
 				if (!this->drainEffect->isPlayingAnimation())
 				{
-					this->drainEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
+					this->drainEffect->playAnimation(FXResources::HealMP_Heal_0000, 0.05f);
 				}
 				
 				this->runLeechTick();
@@ -194,9 +197,9 @@ NO_OPTIMIZE void Leech::runLeechTick()
 	ASM(push ZSI);
 
 	ASM(mov ZDI, 0);
-	ASM_MOV_REG_VAR(esi, rng);
+	ASM_MOV_REG_VAR(ZDI, rng);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RADIATION);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_LEECH);
 	ASM(cmp ZSI, 0);
 	ASM(jz skipLeechCode);
 	ASM(mov ZDI, 5); // Leech::DrainAmount
@@ -214,8 +217,8 @@ NO_OPTIMIZE void Leech::runLeechTick()
 	drainAmount = MathUtils::clamp(drainAmount, -Leech::DrainAmountMax, Leech::DrainAmountMax);
 
 	this->drainSound->play();
-	CombatEvents::TriggerManaDrain(CombatEvents::ManaRestoreOrDrainArgs(this->owner, this->caster, drainAmount, this->abilityType, true, overflowedMin, overflowedMax));
-	CombatEvents::TriggerManaRestore(CombatEvents::ManaRestoreOrDrainArgs(this->caster, this->owner, drainAmount, this->abilityType, true, overflowedMax, overflowedMin));
+	CombatEvents::TriggerManaDrain(CombatEvents::ManaRestoreOrDrainArgs(this->caster, this->owner, drainAmount, this->abilityType, true, overflowedMin, overflowedMax));
+	CombatEvents::TriggerManaRestore(CombatEvents::ManaRestoreOrDrainArgs(this->owner, this->caster, drainAmount, this->abilityType, true, overflowedMax, overflowedMin));
 
 	HACKABLES_STOP_SEARCH();
 }

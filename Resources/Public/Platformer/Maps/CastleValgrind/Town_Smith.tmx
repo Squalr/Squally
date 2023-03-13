@@ -122,6 +122,7 @@
   <object id="760" name="thurstan" type="entity" x="1037.5" y="850.554" width="128" height="167">
    <properties>
     <property name="components" value="shopkeeper,haunted"/>
+    <property name="haunted-key" value="vampire-lord"/>
     <property name="other-world" type="bool" value="false"/>
     <property name="tag" value="shopkeeper"/>
    </properties>

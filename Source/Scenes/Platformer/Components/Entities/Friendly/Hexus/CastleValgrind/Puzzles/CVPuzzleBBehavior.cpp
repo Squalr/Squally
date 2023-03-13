@@ -58,6 +58,9 @@ std::vector<CardData*> CVPuzzleBBehavior::generateDeck()
 
 StateOverride* CVPuzzleBBehavior::getStateOverride()
 {
+	/*
+	- AND enemy b011
+	*/
 	return StateOverride::create(
 		// Player losses
 		1,

@@ -11754,6 +11754,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Inversion_RegisterEax() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_ManaLife_CommentExplainer : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ManaLife_CommentExplainer* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ManaLife_CommentExplainer();
+		virtual ~Menus_Hacking_Abilities_Buffs_ManaLife_CommentExplainer() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_ManaLife_ManaLife : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_ManaLife_ManaLife* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_ManaLife_ManaLife();
+		virtual ~Menus_Hacking_Abilities_Buffs_ManaLife_ManaLife() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_Manifest_CommentCompareDamage : public LocalizedString
 	{
 	public:

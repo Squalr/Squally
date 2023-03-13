@@ -54,7 +54,7 @@ Reflect* Reflect::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Reflect::Reflect(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_ShieldMagic, AbilityType::Arcane, BuffData(Reflect::Duration, Reflect::ReflectIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_ShieldHoly, AbilityType::Arcane, BuffData(Reflect::Duration, Reflect::ReflectIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
@@ -114,7 +114,7 @@ void Reflect::registerHackables()
 				Reflect::ReflectIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Reflect_Reflect::create(),
 				HackableBase::HackBarColor::Blue,
-				UIResources::Menus_Icons_ShieldMagic,
+				UIResources::Menus_Icons_ShieldHoly,
 				LazyNode<HackablePreview>::create([=](){ return ReflectGenericPreview::create(); }),
 				{
 					{

@@ -72,6 +72,7 @@ DeveloperScene::DeveloperScene()
 	- Changing language does not update readonly scripts after they are loaded once
 	- CPU noises when turned on in DM
 	- Train noises in DM/CV
+	- Update all CastX isWorthUsing functions to take into account whether a cast of the same spell is already on the target (and perhaps likely to not be interrupted)
 	- * Can get stuck on roof of maps (see UR 3_1)
 	- Sanity check card localization (due to art changes)
 	- Tune Alch / Card tier pools
@@ -376,7 +377,6 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ==================
 		// ** Traps: Organ gun, cannon, catapult, ballista, heaven hug (FPU acceptable, given that jmps are pretty much done)
-		// ** Another gauntlet with SET(x) instructions instead of CMOV(x)? This could fit outside and be zombie invasion themed.
 		// ** New helper? Would need a story rewrite to justify it. If anything, a repear to claim spirit souls, or some shit.
 		//		* Could also allow this helper to steal enemy abilities from enemy corpses (1 activate at a time)
 		//		* Ability would be registered to helper
@@ -1104,7 +1104,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyEq, Value(11));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyEq, Value(8));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyEq, Value(7));
 			
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(mapResource));

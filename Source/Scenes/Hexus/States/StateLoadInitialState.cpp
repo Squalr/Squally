@@ -65,6 +65,11 @@ void StateLoadInitialState::loadStateOverrides(GameState* gameState, StateOverri
 	gameState->enemyLosses = stateOverride->enemyLosses;
 
 	gameState->showChallengeBanner = stateOverride->showChallengeBanner;
+	
+	gameState->selectedHandCard = nullptr;
+	gameState->selectedDestinationCard = nullptr;
+	gameState->selectedRow = nullptr;
+	gameState->selectedSourceCard = nullptr;
 
 	// Load player cards
 	for (CardData* next : stateOverride->playerHand)
