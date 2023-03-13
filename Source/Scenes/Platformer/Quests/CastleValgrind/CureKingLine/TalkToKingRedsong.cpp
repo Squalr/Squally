@@ -255,7 +255,7 @@ void TalkToKingRedsong::runCinematicSequencePt4()
 		{
 				this->runCinematicSequencePt5();
 		},
-		Voices::GetNextVoiceMedium(),
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 		true
 	));
 }
