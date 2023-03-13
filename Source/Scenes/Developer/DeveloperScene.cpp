@@ -567,9 +567,9 @@ DeveloperScene::DeveloperScene()
 			X DemonDragon			=>  2_X		<Bone,			divss> 			=> Calcify / Defense+ 
 			X DemonGhost			=>  2_X		<SkullLavaEyes,	xchg>		 	=> Inner Fire / Siphon HP tick
 			X FireElemental			=>  2_X		<FireBolts,		cmpss/comiss> 	=> Fire Rain / AoE damage
-			X LavaGolem				=>  2_X		<Fire,			js> 			=> Enflame / Burn Tick
+			X LavaGolem				=>  2_X		<Fire,			??> 			=> Enflame / Burn Tick
 		Surface 2?
-			X DemonArcher			=>  3_X		<CrossBow,			jns>			=> Arrow Volley / team compare damage
+			X DemonArcher			=>  3_X		<CrossBow,			??>				=> Arrow Volley / team compare damage
 			X DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 			=> Seeking Blade / Damage+ based on rng
 			X DemonWarrior			=>  3_X		<FlamingScroll,		setne> 			=> Melt / Damage- based on RNG
 			O FireTiger				=>  3_X		<Chains,			cmpxchg> 		=> Entwined / Health Link (loop cmpxchg of team HP to take lowest)

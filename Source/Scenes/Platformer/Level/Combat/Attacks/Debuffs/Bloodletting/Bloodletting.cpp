@@ -203,7 +203,7 @@ NO_OPTIMIZE void Bloodletting::runBloodlettingTick()
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RADIATION);
 	ASM(test ZBX, ZBX);
-	ASM(js bloodletting);
+	ASM(jns bloodletting);
 	ASM(jmp bloodlettingSkip);
 	ASM(bloodletting:);
 	ASM(mov ZDX, 5); // Bloodletting::DamageAmount

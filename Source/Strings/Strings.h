@@ -15279,10 +15279,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Vampirism_Register : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_Vampirism_CommentReflectDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Vampirism_Register* create();
+		static Menus_Hacking_Abilities_Debuffs_Vampirism_CommentReflectDamage* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15290,8 +15290,38 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_Vampirism_Register();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Vampirism_Register() = default;
+		Menus_Hacking_Abilities_Debuffs_Vampirism_CommentReflectDamage();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Vampirism_CommentReflectDamage() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEcx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEdx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEdx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEdx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEdx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_Vampirism_Vampirism : public LocalizedString

@@ -190,7 +190,7 @@ NO_OPTIMIZE void Parry::applyParry()
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_STONE_SKIN);
 	ASM(test ZAX, ZAX);
-	ASM(jns skipCode);
+	ASM(js skipCode);
 	ASM(mov ZAX, 0);
 	ASM(skipCode:);
 	ASM_NOP16();

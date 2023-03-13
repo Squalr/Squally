@@ -30,6 +30,6 @@ private:
 	SmartParticles* spellEffect = nullptr;
 	
 	static const int MaxMultiplier;
-	static const int DamageDelt;
+	static const int DamageReductionDivisor;
 	static const float Duration;
 };

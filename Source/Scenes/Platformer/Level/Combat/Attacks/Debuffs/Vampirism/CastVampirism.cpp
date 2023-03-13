@@ -27,7 +27,7 @@ CastVampirism* CastVampirism::create(float attackDuration, float recoverDuration
 }
 
 CastVampirism::CastVampirism(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Debuff, UIResources::Menus_Icons_PurpleScarabShell, priority, AbilityType::Physical, 0, 0, 5, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_SkullAndCrossbones, priority, AbilityType::Physical, 0, 0, 5, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	

@@ -40,7 +40,7 @@ const std::string Vampirism::VampirismIdentifier = "vampirism";
 const std::string Vampirism::HackIdentifierVampirism = "vampirism";
 
 const int Vampirism::MaxMultiplier = 6;
-const int Vampirism::DamageDelt = 1;
+const int Vampirism::DamageReductionDivisor = 4;
 const float Vampirism::Duration = 24.0f;
 
 Vampirism* Vampirism::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -53,7 +53,7 @@ Vampirism* Vampirism::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Vampirism::Vampirism(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_PurpleScarabShell, AbilityType::Nature, BuffData(Vampirism::Duration, Vampirism::VampirismIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_SkullAndCrossbones, AbilityType::Nature, BuffData(Vampirism::Duration, Vampirism::VampirismIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 
@@ -96,11 +96,14 @@ void Vampirism::registerHackables()
 				Vampirism::HackIdentifierVampirism,
 				Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_Vampirism::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_PurpleScarabShell,
+				UIResources::Menus_Icons_SkullAndCrossbones,
 				LazyNode<HackablePreview>::create([=](){ return VampirismGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_Register::create(),
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEcx::create(),
+					},
+					{
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEdx::create(),
 					},
 				},
 				int(HackFlags::None),
@@ -111,21 +114,23 @@ void Vampirism::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare::create()) +
-						"cmp edx, 0:\n" +
+						"cmp edx, 0\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump::create()) +
 						"jl doNothing\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentConvertToHealing::create()) +
 						"mov ecx, edx\n" +
-						"imul ecx, -1\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentReflectDamage::create()) +
+						"imul edx, -1\n\n" +
 						"doNothing:\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare::create()) +
-						"cmp rdx, 0:\n" +
+						"cmp rdx, 0\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump::create()) +
 						"jl doNothing\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentConvertToHealing::create()) +
 						"mov rcx, rdx\n" +
-						"imul rcx, -1\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentReflectDamage::create()) +
+						"imul rdx, -1\n\n" +
 						"doNothing:\n"
 					),
 				},
@@ -147,7 +152,7 @@ void Vampirism::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs*
 {
 	super::onBeforeDamageDealt(damageOrHealing);
 
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(Vampirism::DamageDelt);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyVampirism();
 
@@ -161,42 +166,43 @@ void Vampirism::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs*
 
 NO_OPTIMIZE void Vampirism::applyVampirism()
 {
+	static volatile int originalDamageDealt = 0;
 	static volatile int currentDamageDealtLocal = 0;
-	static volatile int healingLocal = 0;
+	static volatile int reflectedDamage = 0;
 
-	currentDamageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
-
-	// TODO: Another register to store the amount healed on damage
+	originalDamageDealt = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt() / Vampirism::DamageReductionDivisor;
+	currentDamageDealtLocal = originalDamageDealt;
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZDX);
 	ASM(push ZCX);
 
-	ASM(MOV ZDX, 0)
-	ASM_MOV_REG_VAR(edx, currentDamageDealtLocal);
+	ASM_MOV_REG_VAR(ZDX, currentDamageDealtLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_VAMPIRISM);
 	ASM(cmp ZDX, 0);
 	ASM(jl skipCodeVampirism);
 	ASM(mov ZCX, ZDX);
-	ASM(imul ZCX, -1);
+	ASM(imul ZDX, -1);
 	ASM(skipCodeVampirism:);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(healingLocal, ecx);
+	ASM_MOV_VAR_REG(reflectedDamage, ecx);
+	ASM_MOV_VAR_REG(currentDamageDealtLocal, edx);
 
 	ASM(pop ZCX);
 	ASM(pop ZDX);
 	ASM_POP_EFLAGS()
 
-	currentDamageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
 
-	int max = currentDamageDealtLocal * Vampirism::MaxMultiplier;
-	bool overflowedMin = healingLocal >= max;
-	bool overflowedMax = healingLocal <= max;
-	healingLocal = MathUtils::clamp(healingLocal, -max, max);
-	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, healingLocal, this->abilityType, true, overflowedMin, overflowedMax));
+	// Reflect damage
+	int max = originalDamageDealt * Vampirism::MaxMultiplier;
+	bool overflowedMin = reflectedDamage >= max;
+	bool overflowedMax = reflectedDamage <= max;
+	reflectedDamage = MathUtils::clamp(reflectedDamage, -max, max);
+	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, this->owner, reflectedDamage, this->abilityType, true, overflowedMin, overflowedMax));
 
 	HACKABLES_STOP_SEARCH();
 }
