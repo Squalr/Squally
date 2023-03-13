@@ -151,6 +151,11 @@ void Rabies::registerHackables()
 						"reduceSpeed:\n" +
 						"mov dword ptr [esi], -0.5f\n\n" +
 						"skipCode:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJge::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create()) +
+						"\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
@@ -176,6 +181,11 @@ void Rabies::registerHackables()
 						"reduceSpeed:\n" +
 						"mov dword ptr [rsi], -0.5f\n\n" +
 						"skipCode:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJge::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create()) +
+						"\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 

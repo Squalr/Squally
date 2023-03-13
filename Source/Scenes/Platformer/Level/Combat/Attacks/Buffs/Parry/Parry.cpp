@@ -137,7 +137,10 @@ void Parry::registerHackables()
 						"jns skipCode\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentParry::create()) + 
 						"mov eax, 0\n" +
-						"skipCode:\n"
+						"skipCode:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJs::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentS::create())
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentTest::create()
 							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))) + 
@@ -146,7 +149,10 @@ void Parry::registerHackables()
 						"jns skipCode\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentParry::create()) + 
 						"mov rax, 0\n" +
-						"skipCode:\n"
+						"skipCode:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJs::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentS::create())
 					)
 				},
 				true

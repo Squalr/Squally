@@ -117,23 +117,31 @@ void Radiation::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create()) +
 						"jnz radiation\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create()) +
-						"jmp radiationSkip\n\n" +
+						"jmp skipCode\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create()) +
 						"mov edi, 5\n" + // Radiation::DamageAmount
 						"radiation:\n" +
-						"radiationSkip:\n\n"
+						"skipCode:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJnz::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNz::create())
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()
 							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi))) +
 						"cmp rsi, 0\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create()) +
 						"jnz radiation\n\n" +
-						"jmp radiationSkip\n\n" +
+						"jmp skipCode\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create()) +
 						"mov rdi, 5\n" + // Radiation::DamageAmount
 						"radiation:\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create()) +
-						"radiationSkip:\n\n"
+						"skipCode:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJnz::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNz::create())
 					),
 				},
 				true

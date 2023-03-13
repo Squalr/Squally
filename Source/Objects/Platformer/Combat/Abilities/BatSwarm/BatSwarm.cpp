@@ -35,7 +35,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_COMPARE_TEAM 11
 
 const int BatSwarm::TickCount = 6;
-const int BatSwarm::Damage = 6;
+const int BatSwarm::Damage = 8;
 const float BatSwarm::TimeBetweenTicks = 0.75f;
 const float BatSwarm::StartDelay = 0.25f;
 const std::string BatSwarm::StateKeyIsCasterOnEnemyTeam = "ANTI_OPTIMIZE_STATE_KEY_DAMAGE_TAKEN";
@@ -112,6 +112,9 @@ void BatSwarm::registerHackables()
 					{
 						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEax::create()
 					},
+					{
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEcx::create()
+					},
 				},
 				int(HackFlags::None),
 				BatSwarm::StartDelay + BatSwarm::TimeBetweenTicks * float(BatSwarm::TickCount),
@@ -124,13 +127,27 @@ void BatSwarm::registerHackables()
 						"jecxz skipCode\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentApplyDamage::create()) +
 						"mov eax, 1\n" +
-						"skipCode:\n"
+						"skipCode:\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentHint::create()
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx))) +
+						"\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJecxz::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentEcx::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentZ::create())
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentCompare::create()) +
 						"jecxz skipCode\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentApplyDamage::create()) +
 						"mov rax, 1\n" +
-						"skipCode:\n"
+						"skipCode:\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentHint::create()
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))) +
+						"\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJecxz::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentEcx::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentZ::create())
 					),
 				},
 				true
@@ -241,7 +258,7 @@ NO_OPTIMIZE void BatSwarm::compareTeam(TimelineEntry* entry)
 	ASM(push ZAX);
 	ASM(push ZCX);
 
-	ASM_MOV_REG_VAR(eax, isOnEnemyTeamLocal);
+	ASM_MOV_REG_VAR(ZCX, isOnEnemyTeamLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM);
 	ASM(jecxz skipCodeBatSwarm);

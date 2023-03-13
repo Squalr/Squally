@@ -98,7 +98,7 @@ void DefeatAgnes::runCinematicSequencePt1()
 	PlatformerEvents::TriggerCinematicHijack();
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Menus_StoryMode::create(),
+		Strings::Platformer_Quests_CastleValgrind_CureKing_Agnes_A_Guests::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
@@ -109,12 +109,27 @@ void DefeatAgnes::runCinematicSequencePt1()
 		{
 			this->runCinematicSequencePt2();
 		},
-		Voices::GetNextVoiceMedium(Voices::VoiceType::Human),
+		Voices::GetNextVoiceShort(Voices::VoiceType::Human),
 		false
 	));
 }
 
 void DefeatAgnes::runCinematicSequencePt2()
 {
-	PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(this->agnes, false));
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_CastleValgrind_CureKing_Agnes_B_StayingLong::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->agnes, false),
+			DialogueEvents::BuildPreviewNode(&this->squally, true)
+		),
+		[=]()
+		{
+			PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(this->agnes, false));
+		},
+		Voices::GetNextVoiceShort(Voices::VoiceType::Human),
+		false
+	));
+	
 }

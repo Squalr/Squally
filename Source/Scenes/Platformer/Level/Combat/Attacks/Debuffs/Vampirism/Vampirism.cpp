@@ -121,7 +121,10 @@ void Vampirism::registerHackables()
 						"mov ecx, edx\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentReflectDamage::create()) +
 						"imul edx, -1\n\n" +
-						"doNothing:\n"
+						"doNothing:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJl::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentL::create())
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare::create()) +
 						"cmp rdx, 0\n" +
@@ -131,7 +134,10 @@ void Vampirism::registerHackables()
 						"mov rcx, rdx\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentReflectDamage::create()) +
 						"imul rdx, -1\n\n" +
-						"doNothing:\n"
+						"doNothing:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJl::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentL::create())
 					),
 				},
 				true

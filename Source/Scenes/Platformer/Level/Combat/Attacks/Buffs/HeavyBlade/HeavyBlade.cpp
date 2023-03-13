@@ -130,16 +130,18 @@ void HeavyBlade::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentSkippedCode::create()) + 
 						"sub ecx, 20\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels::create()) + 
-						"addDamage:\n"
-						"add ecx, 3\n"
+						"addDamage:\n" +
+						"add ecx, 3\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create())
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentJmp::create()) + 
 						"jmp addDamage\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentSkippedCode::create()) + 
 						"sub rcx, 20\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels::create()) + 
-						"addDamage:\n"
-						"add rcx, 3\n"
+						"addDamage:\n" +
+						"add rcx, 3\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create())
 					),
 				},
 				true

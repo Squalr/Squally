@@ -36,7 +36,7 @@ using namespace cocos2d;
 const std::string Bloodletting::BloodlettingIdentifier = "bloodletting";
 const int Bloodletting::DamageAmount = 5;
 const int Bloodletting::DamageAmountMax = 8;
-const float Bloodletting::TimeBetweenTicks = 0.5f;
+const float Bloodletting::TimeBetweenTicks = 1.0f;
 const float Bloodletting::StartDelay = 0.25f;
 
 Bloodletting* Bloodletting::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -123,7 +123,7 @@ void Bloodletting::registerHackables()
 						"jmp skipCode\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage::create()) +
 						"bloodletting:\n" +
-						"mov edi, 5:\n" + // Bloodletting::DamageAmount
+						"mov edi, 5\n" + // Bloodletting::DamageAmount
 						"skipCode:\n\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng::create()) +
@@ -134,7 +134,7 @@ void Bloodletting::registerHackables()
 						"jmp skipCode\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage::create()) +
 						"bloodletting:\n" +
-						"mov rdi, 5:\n" + // Bloodletting::DamageAmount
+						"mov rdi, 5\n" + // Bloodletting::DamageAmount
 						"skipCode:\n\n"
 					),
 				},

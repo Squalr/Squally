@@ -123,7 +123,10 @@ void Leech::registerHackables()
 						"jz skipCode\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentApplyDamage::create()) +
 						"mov edi, 5\n" +
-						"skipCode:\n"
+						"skipCode:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJz::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentZ::create())
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentRng::create()
 							->setStringReplacementVariables({ HackableCode::registerToLocalizedString(HackableCode::Register::zsi) })) +
@@ -132,7 +135,10 @@ void Leech::registerHackables()
 						"jz skipCode\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentApplyDamage::create()) +
 						"mov rdi, 5\n" +
-						"skipCode:\n"
+						"skipCode:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJz::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentZ::create())
 					),
 				},
 				true

@@ -9474,6 +9474,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_BatSwarm_CommentCompare() = default;
 	};
 
+	class Menus_Hacking_Abilities_Abilities_BatSwarm_CommentHint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_BatSwarm_CommentHint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_BatSwarm_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Abilities_BatSwarm_CommentHint() = default;
+	};
+
 	class Menus_Hacking_Abilities_Abilities_BatSwarm_CompareTeam : public LocalizedString
 	{
 	public:
@@ -15744,6 +15759,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentE() = default;
 	};
 
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentEcx();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentEcx() = default;
+	};
+
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentG : public LocalizedString
 	{
 	public:
@@ -15802,6 +15832,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Generic_Conditional_CommentJe();
 		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentJe() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentJecxz : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentJecxz* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentJecxz();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentJecxz() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentJg : public LocalizedString
@@ -15864,6 +15909,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentJle() = default;
 	};
 
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentJmp : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentJmp* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentJmp();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentJmp() = default;
+	};
+
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentJne : public LocalizedString
 	{
 	public:
@@ -15877,6 +15937,51 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Generic_Conditional_CommentJne();
 		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentJne() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentJnz : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentJnz* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentJnz();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentJnz() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentJs : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentJs* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentJs();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentJs() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentJz : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentJz* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentJz();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentJz() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentL : public LocalizedString
@@ -15937,6 +16042,51 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Generic_Conditional_CommentNe();
 		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentNe() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentNz : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentNz* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentNz();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentNz() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentS : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentS* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentS();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentS() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentZ : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentZ* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentZ();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentZ() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_FPU_CompEFlags : public LocalizedString
@@ -32767,6 +32917,126 @@ namespace Strings
 	private:
 		Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Yep();
 		virtual ~Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Yep() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Agnes_A_Guests : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_Agnes_A_Guests* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Agnes_A_Guests();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Agnes_A_Guests() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Agnes_B_StayingLong : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_Agnes_B_StayingLong* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Agnes_B_StayingLong();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Agnes_B_StayingLong() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_KingRedsong_A_ThankYou : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_KingRedsong_A_ThankYou* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_KingRedsong_A_ThankYou();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_KingRedsong_A_ThankYou() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_KingRedsong_B_TheWitch : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_KingRedsong_B_TheWitch* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_KingRedsong_B_TheWitch();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_KingRedsong_B_TheWitch() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_KingRedsong_C_Generic : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_KingRedsong_C_Generic* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_KingRedsong_C_Generic();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_KingRedsong_C_Generic() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_KingRedsong_C_GuanoFireGuards : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_KingRedsong_C_GuanoFireGuards* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_KingRedsong_C_GuanoFireGuards();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_KingRedsong_C_GuanoFireGuards() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_KingRedsong_D_CanWeEnterCrypts : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_KingRedsong_D_CanWeEnterCrypts* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_KingRedsong_D_CanWeEnterCrypts();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_KingRedsong_D_CanWeEnterCrypts() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_KingRedsong_E_OfCourse : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_KingRedsong_E_OfCourse* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_KingRedsong_E_OfCourse();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_KingRedsong_E_OfCourse() = default;
 	};
 
 	class Platformer_Quests_CastleValgrind_CureKing_Mabel_A_Ack : public LocalizedString

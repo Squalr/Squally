@@ -130,7 +130,11 @@ void Manifest::registerHackables()
 						"jmp skipCode\n\n" +
 						"reduceDamage:\n" +
 						"mov dword ptr [eax], 0\n\n" +
-						"skipCode:\n"
+						"skipCode:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJne::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNe::create())
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentCompareDamage::create()) + 
 						"cmp dword ptr [rax], 0\n" +
@@ -140,7 +144,11 @@ void Manifest::registerHackables()
 						"jmp skipCode\n" +
 						"reduceDamage:\n" +
 						"mov dword ptr [rax], 0\n\n" +
-						"skipCode:\n"
+						"skipCode:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJne::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNe::create())
 					)
 				},
 				true

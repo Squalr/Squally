@@ -162,7 +162,7 @@ void TalkToKingRedsong::onSkipped()
 void TalkToKingRedsong::runCinematicSequencePt1()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
+		Strings::Platformer_Quests_CastleValgrind_CureKing_KingRedsong_A_ThankYou::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -181,7 +181,7 @@ void TalkToKingRedsong::runCinematicSequencePt1()
 void TalkToKingRedsong::runCinematicSequencePt2()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
+		Strings::Platformer_Quests_CastleValgrind_CureKing_KingRedsong_B_TheWitch::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -199,8 +199,71 @@ void TalkToKingRedsong::runCinematicSequencePt2()
 
 void TalkToKingRedsong::runCinematicSequencePt3()
 {
+	if (this->guano != nullptr)
+	{
+		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_CastleValgrind_CureKing_KingRedsong_C_GuanoFireGuards::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->kingRedsong, true)
+			),
+			[=]()
+			{
+				this->runCinematicSequencePt4();
+			},
+			Voices::GetNextVoiceShort(Voices::VoiceType::Human),
+			true
+		));
+	}
+	else if (this->gecky != nullptr)
+	{
+		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_CastleValgrind_CureKing_KingRedsong_C_Generic::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->gecky, false),
+				DialogueEvents::BuildPreviewNode(&this->kingRedsong, true)
+			),
+			[=]()
+			{
+				this->runCinematicSequencePt4();
+			},
+			Voices::GetNextVoiceShort(Voices::VoiceType::Human),
+			true
+		));
+	}
+	else
+	{
+		this->runCinematicSequencePt4();
+	}
+}
+
+void TalkToKingRedsong::runCinematicSequencePt4()
+{
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
+		Strings::Platformer_Quests_CastleValgrind_CureKing_KingRedsong_D_CanWeEnterCrypts::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+			DialogueEvents::BuildPreviewNode(&this->kingRedsong, true)
+		),
+		[=]()
+		{
+				this->runCinematicSequencePt5();
+		},
+		Voices::GetNextVoiceMedium(),
+		true
+	));
+}
+
+void TalkToKingRedsong::runCinematicSequencePt5()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_CastleValgrind_CureKing_KingRedsong_E_OfCourse::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
