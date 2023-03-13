@@ -52,10 +52,8 @@ Radiation::Radiation(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_Radiation, AbilityType::Shadow, BuffData())
 {
 	this->healAmount = Radiation::DamageAmount;
-	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Curse1);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Recharge1);
 
-	this->addChild(this->impactSound);
 	this->addChild(this->healSound);
 }
 
@@ -154,8 +152,6 @@ void Radiation::registerHackables()
 
 void Radiation::runRadiation()
 {
-	this->impactSound->play();
-
 	std::vector<TimelineEvent*> timelineEvents = std::vector<TimelineEvent*>();
 
 	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
@@ -197,7 +193,6 @@ NO_OPTIMIZE void Radiation::runRadiationTick()
 	ASM(mov ZDI, 0);
 	ASM_MOV_REG_VAR(esi, rng);
 
-	// TODO: Maybe reference diseased code to cap damage or something using ja
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RADIATION);
 	ASM(cmp ZSI, 0);
 	ASM(jnz radiation);

@@ -33,6 +33,5 @@ private:
 	void incrementHeal();
 
 	int healAmount = 0;
-	WorldSound* impactSound = nullptr;
 	WorldSound* healSound = nullptr;
 };
