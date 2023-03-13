@@ -393,7 +393,7 @@ DeveloperScene::DeveloperScene()
 		X Vampiress				dark	=> jz			ZF/SF/OF	Leech <SwordGlowBlue, RNG mana steal?>
 		X VampireLord			dark	=> jl			ZF/SF/OF	Vampirism <SkullAndCrossbones, HP Steal>
 		X SkeletalBaron			dark	=> jns			SF			Parry <ShieldAdorned, convert damage to zero>
-		X WereWolf				2_x		=> jge			ZF/SF/OF	Rabies <?, speed drain>
+		X WereWolf				2_x		=> jge			ZF/SF/OF	Rabies <Fangs, speed drain>
 		X Jack					2_x		=> js			SF			<?, Bloodletting RNG Per Tick?>
 		X [B] Agnes				dark_t	=> jecxz		%ecx == 0	Bat Swarm <Bats, Bat Swarm RNG per tick to attack>
 		

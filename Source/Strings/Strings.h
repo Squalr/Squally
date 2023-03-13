@@ -14769,6 +14769,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEax() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEcx() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEsi : public LocalizedString
 	{
 	public:
@@ -15924,6 +15939,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentNe() = default;
 	};
 
+	class Menus_Hacking_Abilities_Generic_FPU_CompEFlags : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_FPU_CompEFlags* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_FPU_CompEFlags();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CompEFlags() = default;
+	};
+
 	class Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance : public LocalizedString
 	{
 	public:
@@ -15937,6 +15967,36 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance();
 		virtual ~Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop();
+		virtual ~Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush();
+		virtual ~Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov : public LocalizedString
@@ -22899,6 +22959,51 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm1() = default;
 	};
 
+	class Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentHint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentHint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentHint();
+		virtual ~Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentHint() = default;
+	};
+
+	class Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPop : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPop* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPop();
+		virtual ~Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPop() = default;
+	};
+
+	class Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPush : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPush* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPush();
+		virtual ~Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPush() = default;
+	};
+
 	class Menus_Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight : public LocalizedString
 	{
 	public:
@@ -22927,6 +23032,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax();
 		virtual ~Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEbx();
+		virtual ~Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEbx() = default;
 	};
 
 	class Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_IncrementHealth : public LocalizedString

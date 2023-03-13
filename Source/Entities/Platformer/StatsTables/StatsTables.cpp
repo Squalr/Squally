@@ -209,7 +209,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[VampireLord::MapKey] = StatsIncrements(Stats(77, 8, 121));
 	StatsTables::StatsTable[Vampiress::MapKey] = StatsIncrements(Stats(46, 24, 118));
 	StatsTables::StatsTable[Undead::MapKey] = StatsIncrements(Stats(49, 6, 109));
-	StatsTables::StatsTable[Werewolf::MapKey] = StatsIncrements(Stats(52, 8, 115));
+	StatsTables::StatsTable[Werewolf::MapKey] = StatsIncrements(Stats(52, 13, 115));
 	StatsTables::StatsTable[Wraith::MapKey] = StatsIncrements(Stats(46, 22, 116));
 	StatsTables::StatsTable[Zombie::MapKey] = StatsIncrements(Stats(50, 5, 110));
 	StatsTables::StatsTable[ZombieElric::MapKey] = StatsIncrements(Stats(75, 13, 140));

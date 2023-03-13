@@ -63,7 +63,7 @@ Rabies::Rabies(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura);
 
-	this->spellAura->setColor(Color3B::MAGENTA);
+	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
@@ -120,6 +120,9 @@ void Rabies::registerHackables()
 						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEax::create()
 					},
 					{
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEcx::create()
+					},
+					{
 						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEsi::create()
 					}
 				},
@@ -132,11 +135,14 @@ void Rabies::registerHackables()
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushSpeed::create()) +
-						"fld dword ptr [eax]\n" +
+						"fld dword ptr [ecx]\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushZero::create()) +
 						"fldz\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare::create()) +
 						"fcompp\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CompEFlags::create()) +
+						"fstsw ax\n" +
+						"sahf\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentJump::create()) +
 						"jge reduceSpeed\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentElse::create()) +
@@ -144,7 +150,7 @@ void Rabies::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentSpeedDrain::create()) + 
 						"reduceSpeed:\n" +
 						"mov dword ptr [esi], -0.5f\n\n" +
-						"skipCode:\n" +
+						"skipCode:\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
@@ -154,11 +160,14 @@ void Rabies::registerHackables()
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushSpeed::create()) +
-						"fld dword ptr [rax]\n" +
+						"fld dword ptr [rcx]\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushZero::create()) +
 						"fldz\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare::create()) +
 						"fcompp\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CompEFlags::create()) +
+						"fstsw ax\n" +
+						"sahf\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentJump::create()) +
 						"jge reduceSpeed\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentElse::create()) +
@@ -166,7 +175,7 @@ void Rabies::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentSpeedDrain::create()) + 
 						"reduceSpeed:\n" +
 						"mov dword ptr [rsi], -0.5f\n\n" +
-						"skipCode:\n" +
+						"skipCode:\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
@@ -206,30 +215,35 @@ NO_OPTIMIZE void Rabies::applyRabies()
 	static volatile float* speedBonusPtr;
 	static volatile float* currentSpeedPtr;
 
-	speedBonus = 0.0f;
+	speedBonus = -0.5f;
 	speedBonusPtr = &speedBonus;
 	currentSpeedPtr = &this->currentSpeed;
-	
+
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
+	ASM(push ZCX);
 	ASM(push ZSI);
 
-	ASM_MOV_REG_PTR(ZAX, currentSpeedPtr);
+	ASM(mov ZAX, 0)
+	ASM_MOV_REG_PTR(ZCX, currentSpeedPtr);
 	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RABIES);
-	ASM(fld dword ptr [ZAX]);
+	ASM(fld dword ptr [ZCX]);
 	ASM(fldz);
-	ASM(fcompp); // FIXME: Need eflags convert. Also wrong chapter.
+	ASM(fcompp);
+	ASM(fstsw ax);	// Store in AX
+	ASM(sahf);		// Convert to eflags
 	ASM(jge rabiesReduceSpeed);
 	ASM(jmp skipRabiesCode);
 	ASM(rabiesReduceSpeed:);
-	ASM(mov dword ptr [ZSI], 0x000000BF); // -0.5f encoded in hex
+	ASM(mov dword ptr [ZSI], 0xBF000000); // -0.5f encoded in hex
 	ASM(skipRabiesCode:);
-	ASM_NOP12();
+	ASM_NOP16();
 	HACKABLE_CODE_END();
 
 	ASM(pop ZSI);
+	ASM(pop ZCX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 	HACKABLES_STOP_SEARCH();
