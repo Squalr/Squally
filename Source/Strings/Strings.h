@@ -14454,21 +14454,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Manifest_RegisterEax() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Manifest_RegisterEbx : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_Manifest_RegisterEbx* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Manifest_RegisterEbx();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Manifest_RegisterEbx() = default;
-	};
-
 	class Menus_Hacking_Abilities_Debuffs_Melt_CommentDamageReduce : public LocalizedString
 	{
 	public:

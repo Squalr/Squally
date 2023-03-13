@@ -58,7 +58,7 @@ Manifest::Manifest(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
-	this->spellAura->setColor(Color3B::GREEN);
+	this->spellAura->setColor(Color3B::PURPLE);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
@@ -114,11 +114,8 @@ void Manifest::registerHackables()
 					{
 						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Manifest_RegisterEax::create()
 					},
-					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_Manifest_RegisterEbx::create()
-					},
 				},
-				int(HackFlags::None),
+			int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
 				{
@@ -126,23 +123,23 @@ void Manifest::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentCompareDamage::create()) + 
-						"cmp [eax], 0\n" +
+						"cmp dword ptr [eax], 0\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentJumpReduce::create()) + 
 						"jne reduceDamage\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentElseSkip::create()) + 
 						"jmp skipCode\n\n" +
 						"reduceDamage:\n" +
-						"mov dword ptr [esi], 0\n\n" +
+						"mov dword ptr [eax], 0\n\n" +
 						"skipCode:\n"
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentCompareDamage::create()) + 
-						"cmp [rax], 0\n" +
+						"cmp dword ptr [rax], 0\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentJumpReduce::create()) + 
 						"jne reduceDamage\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentElseSkip::create()) + 
 						"jmp skipCode\n" +
 						"reduceDamage:\n" +
-						"mov dword ptr [rsi], 0\n\n" +
+						"mov dword ptr [rax], 0\n\n" +
 						"skipCode:\n"
 					)
 				},
@@ -183,7 +180,6 @@ NO_OPTIMIZE void Manifest::applyManifest()
 	
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
-	ASM(push ZSI);
 
 	ASM_MOV_REG_PTR(ZAX, currentDamagePtr);
 
