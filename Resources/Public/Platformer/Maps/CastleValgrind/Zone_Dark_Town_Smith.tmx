@@ -178,7 +178,7 @@
   <object id="812" name="vampire-lord" type="entity" x="908.473" y="937.211" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,haunted,agro"/>
     <property name="drop-pool" value="cv-generic"/>

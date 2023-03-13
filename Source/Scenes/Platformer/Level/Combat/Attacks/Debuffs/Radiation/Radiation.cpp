@@ -33,7 +33,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_RADIATION 1
 
-const std::string Radiation::RadiationIdentifier = "poisonedArrows";
+const std::string Radiation::RadiationIdentifier = "radiation";
 const int Radiation::DamageAmount = 5;
 const int Radiation::DamageAmountMax = 8;
 const float Radiation::TimeBetweenTicks = 0.5f;
@@ -51,12 +51,10 @@ Radiation* Radiation::create(PlatformerEntity* caster, PlatformerEntity* target)
 Radiation::Radiation(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_Radiation, AbilityType::Shadow, BuffData())
 {
-	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = Radiation::DamageAmount;
-	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
-	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
+	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Curse1);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Recharge1);
 
-	this->addChild(this->healEffect);
 	this->addChild(this->impactSound);
 	this->addChild(this->healSound);
 }
@@ -115,27 +113,29 @@ void Radiation::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi))) +
 						"cmp esi, 0\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create()) +
-						"jnz poisonedArrows\n\n" +
+						"jnz radiation\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create()) +
-						"jmp poisonedArrowsSkip\n\n" +
+						"jmp radiationSkip\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create()) +
-						"mov edi, 5:\n" + // Radiation::DamageAmount
-						"poisonedArrows:\n" +
-						"poisonedArrowsSkip:\n\n"
+						"mov edi, 5\n" + // Radiation::DamageAmount
+						"radiation:\n" +
+						"radiationSkip:\n\n"
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi))) +
 						"cmp rsi, 0\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create()) +
-						"jnz poisonedArrows\n\n" +
-						"jmp poisonedArrowsSkip\n\n" +
+						"jnz radiation\n\n" +
+						"jmp radiationSkip\n\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create()) +
-						"mov rdi, 5:\n" + // Radiation::DamageAmount
-						"poisonedArrows:\n" +
+						"mov rdi, 5\n" + // Radiation::DamageAmount
+						"radiation:\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create()) +
-						"poisonedArrowsSkip:\n\n"
+						"radiationSkip:\n\n"
 					),
 				},
 				true
@@ -160,7 +160,7 @@ void Radiation::runRadiation()
 
 	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
 	{
-		Sprite* icon = Sprite::create(UIResources::Menus_Icons_BloodGoblet);
+		Sprite* icon = Sprite::create(UIResources::Menus_Icons_Radiation);
 
 		icon->setScale(0.5f);
 
@@ -169,11 +169,6 @@ void Radiation::runRadiation()
 				icon,
 				Radiation::TimeBetweenTicks * float(healIndex) + Radiation::StartDelay, [=]()
 			{
-				if (!this->healEffect->isPlayingAnimation())
-				{
-					this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
-				}
-				
 				this->runRadiationTick();
 			})
 		);
@@ -205,11 +200,12 @@ NO_OPTIMIZE void Radiation::runRadiationTick()
 	// TODO: Maybe reference diseased code to cap damage or something using ja
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RADIATION);
 	ASM(cmp ZSI, 0);
-	ASM(jnz poisonedArrows);
-	ASM(jmp poisonedArrowsSkip);
-	ASM(poisonedArrows:);
+	ASM(jnz radiation);
+	ASM(jmp radiationSkip);
+	ASM(radiation:);
 	ASM(mov ZDI, 5); // Radiation::DamageAmount
-	ASM(poisonedArrowsSkip:);
+	ASM(radiationSkip:);
+	ASM_NOP16();
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(drainAmount, edi);

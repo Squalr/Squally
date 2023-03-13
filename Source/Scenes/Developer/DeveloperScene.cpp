@@ -390,10 +390,10 @@ DeveloperScene::DeveloperScene()
 		X Wraith				dark	=> jne			ZF/SF/OF	Manifest <Spirit, invert rabies as damage buff>
 		X Abomination			dark	=> jnz			ZF/SF/OF	<Radiation, RNG per tick to do -5 dmg or something>
 		X Reaper				dark	=> je			ZF/SF/OF	<AngelFigurine, immortality>
-		X Vampiress				dark	=> jl			ZF/SF/OF	Leech <SwordGlowBlue, RNG mana steal?>
-		X VampireLord			dark	=> jz			ZF/SF/OF	Vampirism <?, HP Drain> // TODO: Steal
+		X Vampiress				dark	=> jz			ZF/SF/OF	Leech <SwordGlowBlue, RNG mana steal?>
+		X VampireLord			dark	=> jl			ZF/SF/OF	Vampirism <SkullAndCrossbones, HP Steal>
+		X SkeletalBaron			dark	=> jns			SF			Parry <ShieldAdorned, convert damage to zero>
 		X WereWolf				2_x		=> jge			ZF/SF/OF	Rabies <?, speed drain>
-		X SkeletalBaron			2_x		=> jns			SF			Parry <ShieldAdorned, convert damage to zero>
 		X Jack					2_x		=> js			SF			<?, Bloodletting RNG Per Tick?>
 		X [B] Agnes				dark_t	=> jecxz		%ecx == 0	Bat Swarm <Bats, Bat Swarm RNG per tick to attack>
 		

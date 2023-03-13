@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="16" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="843">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="16" height="14" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="843">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -169,7 +169,7 @@
   <object id="831" name="abomination" type="entity" x="560.835" y="948.39" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="cv-generic"/>
@@ -180,7 +180,7 @@
   <object id="837" name="vampire-lord" type="entity" x="37.1327" y="948.168" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,haunted,agro"/>
     <property name="drop-pool" value="cv-generic"/>
@@ -191,7 +191,7 @@
   <object id="838" name="wraith" type="entity" x="316.259" y="956.259" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-b"/>
     <property name="components" value="enemy,haunted,agro"/>
     <property name="drop-pool" value="cv-generic"/>
@@ -202,7 +202,7 @@
   <object id="839" name="skeletal-baron" type="entity" x="846.194" y="952.214" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,haunted,agro"/>
     <property name="drop-pool" value="cv-generic"/>
@@ -213,7 +213,7 @@
   <object id="841" name="reaper" type="entity" x="1137.46" y="956.259" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-c"/>
     <property name="components" value="enemy,haunted,agro"/>
     <property name="drop-pool" value="cv-generic"/>
@@ -224,7 +224,7 @@
   <object id="842" name="vampiress" type="entity" x="1428.72" y="952.214" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,haunted,agro"/>
     <property name="drop-pool" value="cv-generic"/>
