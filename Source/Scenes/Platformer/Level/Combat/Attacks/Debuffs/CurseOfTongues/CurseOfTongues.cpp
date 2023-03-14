@@ -117,12 +117,11 @@ void CurseOfTongues::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return CurseOfTonguesGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterEsi::create()
-							->setStringReplacementVariables({ ConstantFloat::create(CurseOfTongues::MinSpeed, 2), ConstantFloat::create(CurseOfTongues::MaxSpeed, 1) })
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterEsi::create(), true
 					},
 					{
 						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterXmm3::create()
-							->setStringReplacementVariables(ConstantFloat::create(CurseOfTongues::DefaultSpeed, 2))
+							->setStringReplacementVariables(ConstantFloat::create(CurseOfTongues::DefaultSpeed, 2)), true
 					}
 				},
 				int(HackFlags::None),

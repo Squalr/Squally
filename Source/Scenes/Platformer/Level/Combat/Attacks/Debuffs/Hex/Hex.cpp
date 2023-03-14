@@ -36,7 +36,7 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_HEX 1
 
-const std::string Hex::HexIdentifier = "curse-of-tongues";
+const std::string Hex::HexIdentifier = "hex";
 
 // Note: UI sets precision on these to 1 digit
 const float Hex::MinSpeed = -1.25f;
@@ -58,7 +58,7 @@ Hex* Hex::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Hex::Hex(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Voodoo, AbilityType::Shadow, BuffData(Hex::Duration, Hex::HexIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_VoodooZombie, AbilityType::Shadow, BuffData(Hex::Duration, Hex::HexIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura);
@@ -113,16 +113,15 @@ void Hex::registerHackables()
 				Hex::HexIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_Hex_Hex::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_Voodoo,
+				UIResources::Menus_Icons_VoodooZombie,
 				LazyNode<HackablePreview>::create([=](){ return HexGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Hex_RegisterEsi::create()
-							->setStringReplacementVariables({ ConstantFloat::create(Hex::MinSpeed, 2), ConstantFloat::create(Hex::MaxSpeed, 1) })
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_Hex_RegisterEbx::create()
+							->setStringReplacementVariables(ConstantFloat::create(Hex::DefaultSpeed, 2)), true
 					},
 					{
-						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Debuffs_Hex_RegisterEsi::create()
-							->setStringReplacementVariables(ConstantFloat::create(Hex::DefaultSpeed, 2))
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Hex_RegisterEsi::create(), true
 					}
 				},
 				int(HackFlags::None),
@@ -132,27 +131,30 @@ void Hex::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Debuffs_Hex_Hex::create(),
 						// x86
-						std::string("fild dword ptr [esi]\n") +
-						std::string("fimul dword ptr [ebx]\n") +
-						std::string("fistp dword ptr [esi]\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						std::string("fld dword ptr [esi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentMul::create()) + 
+						std::string("fmul dword ptr [ebx]\n\n") +
+						std::string("fstp dword ptr [esi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
+						std::string("\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Hex_CommentHint::create())
 						, // x64
-						std::string("fild dword ptr [rsi]\n") +
-						std::string("fimul dword ptr [rbx]\n") +
-						std::string("fistp dword ptr [rsi]\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						std::string("fld dword ptr [esi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentMul::create()) + 
+						std::string("fmul dword ptr [ebx]\n\n") +
+						std::string("fstp dword ptr [esi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
+						std::string("\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Hex_CommentHint::create())
 					)
-				}
+				},
+				true
 			)
 		},
 	};
@@ -193,13 +195,13 @@ NO_OPTIMIZE void Hex::applyHex()
 	ASM(push ZSI);
 	ASM(push ZBX);
 
-	ASM_MOV_REG_PTR(ZSI, timelineSpeed);
+	ASM_MOV_REG_PTR(ZSI, timelineSpeedPtr);
 	ASM_MOV_REG_PTR(ZBX, multiplierPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HEX);
-	ASM(fild dword ptr [ZSI]);
-	ASM(fimul dword ptr [ZBX]);
-	ASM(fistp dword ptr [ZSI]);
+	ASM(fld dword ptr [ZSI]);
+	ASM(fmul dword ptr [ZBX]);
+	ASM(fstp dword ptr [ZSI]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 

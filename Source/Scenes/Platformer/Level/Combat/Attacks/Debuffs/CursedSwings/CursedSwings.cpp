@@ -58,7 +58,7 @@ CursedSwings::CursedSwings(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
-	this->spellAura->setColor(Color3B::YELLOW);
+	this->spellAura->setColor(Color3B::MAGENTA);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
@@ -125,21 +125,27 @@ void CursedSwings::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(CursedSwings::DamageIncrease)))) + 
-						"fld dword ptr [esi]\n" +
-						"fdiv dword ptr [edi\n" +
-						"fistp dword ptr [esi]\n"
+						std::string("fild dword ptr [esi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentDiv::create()) + 
+						std::string("fdiv dword ptr [edi]\n\n") +
+						std::string("fistp dword ptr [esi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
+						std::string("\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(CursedSwings::DamageIncrease)))) + 
-						"fld dword ptr [rsi]\n" +
-						"fdiv dword ptr [rdi\n" +
-						"fistp dword ptr [rsi]\n"
+						std::string("fild dword ptr [rsi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentDiv::create()) + 
+						std::string("fdiv dword ptr [rdi]\n\n") +
+						std::string("fistp dword ptr [rsi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
+						std::string("\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint::create())
 					),
 				},
 				true
@@ -189,7 +195,7 @@ NO_OPTIMIZE void CursedSwings::applyCursedSwings()
 	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSED_SWINGS);
-	ASM(fld dword ptr [ZSI]);
+	ASM(fild dword ptr [ZSI]);
 	ASM(fdiv dword ptr [ZDI]);
 	ASM(fistp dword ptr [ZSI]);
 	ASM_NOP16();

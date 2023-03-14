@@ -58,7 +58,7 @@ Manifest::Manifest(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
-	this->spellAura->setColor(Color3B::PURPLE);
+	this->spellAura->setColor(Color3B::MAGENTA);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);

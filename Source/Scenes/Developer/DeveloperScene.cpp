@@ -444,12 +444,14 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (LC)", MapResources::LambdaCrypts_Zone_1_0));
 
 		// ================== TODO ================== 
+		// LC story mode picture invalid (jungle?)
 		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
 		// ** Needs enemy scripting according to notes on which instructions this zone covers
 		// ** Needs hexus puzzles
 		// ** Needs hexus battles
 		// ** Tune hexus battle special cards
 		// ** Needs animals
+		// ** Another Evil Eye encounter
 		// Progression reworked a bit, 2_x => 1_x => town (key 1) => 3_x (key 2) => 4x (key 3) => boss crypt
 		//	- town key (rusty?), bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x	
 		// ** 2_x assassin, fiend, mystic (evil-eye, left crypt / hole / dirt env)	

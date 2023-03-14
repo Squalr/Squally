@@ -13674,10 +13674,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_Register() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentDamageReduce : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentDamageReduce* create();
+		static Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13685,23 +13685,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentDamageReduce();
-		virtual ~Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentDamageReduce() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentRegister : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentRegister* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentRegister();
-		virtual ~Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentRegister() = default;
+		Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_CursedSwings_CursedSwings : public LocalizedString
@@ -14124,6 +14109,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_Hex_CommentHint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Hex_CommentHint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Hex_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Hex_CommentHint() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_Hex_Hex : public LocalizedString
 	{
 	public:
@@ -14137,6 +14137,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_Hex_Hex();
 		virtual ~Menus_Hacking_Abilities_Debuffs_Hex_Hex() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Hex_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Hex_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Hex_RegisterEbx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Hex_RegisterEbx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_Hex_RegisterEsi : public LocalizedString
