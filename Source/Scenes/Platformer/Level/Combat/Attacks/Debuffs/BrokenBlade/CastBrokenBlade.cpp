@@ -5,6 +5,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Engine/Utils/CombatUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/BrokenBlade/BrokenBlade.h"
@@ -86,6 +87,12 @@ bool CastBrokenBlade::isWorthUsing(PlatformerEntity* caster, const std::vector<P
 	for (auto next : otherTeam)
 	{
 		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			uncastableCount++;
+			continue;
+		}
+
+		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastBrokenBlade*>(next) != nullptr;  }))
 		{
 			uncastableCount++;
 			continue;

@@ -16,6 +16,8 @@ class EntityHauntedBehavior : public GameComponent
 public:
 	static EntityHauntedBehavior* create(GameObject* owner);
 
+	bool isUnhaunted() const;
+
 	static const std::string MapKey;
 
 protected:

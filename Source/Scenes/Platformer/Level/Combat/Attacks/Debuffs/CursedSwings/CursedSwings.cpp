@@ -36,8 +36,8 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_CURSED_SWINGS 1
 
-const std::string CursedSwings::CursedSwingsIdentifier = "cursed-blade";
-const std::string CursedSwings::HackIdentifierCursedSwings = "cursed-blade";
+const std::string CursedSwings::CursedSwingsIdentifier = "cursed-swings";
+const std::string CursedSwings::HackIdentifierCursedSwings = "cursed-swings";
 
 const int CursedSwings::MaxMultiplier = 4;
 const float CursedSwings::DamageIncrease = 10.0f; // Keep in sync with asm

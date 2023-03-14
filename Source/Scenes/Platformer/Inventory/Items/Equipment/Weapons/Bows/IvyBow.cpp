@@ -21,7 +21,7 @@ IvyBow* IvyBow::create()
 	return instance;
 }
 
-IvyBow::IvyBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 24, 32, ItemStats(
+IvyBow::IvyBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 14, 18, ItemStats(
 	// Health
 	0,
 	// Mana

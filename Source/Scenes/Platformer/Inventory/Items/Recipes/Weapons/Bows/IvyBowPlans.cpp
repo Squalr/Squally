@@ -39,7 +39,7 @@ std::vector<std::tuple<Item*, int>> IvyBowPlans::getReagentsInternal()
 	return
 	{
 		{ Wood::create(), 12 },
-		{ Iron::create(), 2 },
+		{ Mithril::create(), 4 },
 	};
 }
 

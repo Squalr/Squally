@@ -91,6 +91,12 @@ bool CastRadiation::isWorthUsing(PlatformerEntity* caster, const std::vector<Pla
 			uncastableCount++;
 			continue;
 		}
+		
+		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastRadiation*>(next) != nullptr;  }))
+		{
+			uncastableCount++;
+			continue;
+		}
 
 		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{

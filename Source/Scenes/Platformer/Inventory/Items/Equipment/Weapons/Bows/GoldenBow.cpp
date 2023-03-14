@@ -21,7 +21,7 @@ GoldenBow* GoldenBow::create()
 	return instance;
 }
 
-GoldenBow::GoldenBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 11, 15, ItemStats(
+GoldenBow::GoldenBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 11, 13, ItemStats(
 	// Health
 	0,
 	// Mana

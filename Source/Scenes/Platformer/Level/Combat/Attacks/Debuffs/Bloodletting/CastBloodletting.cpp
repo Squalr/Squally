@@ -92,6 +92,12 @@ bool CastBloodletting::isWorthUsing(PlatformerEntity* caster, const std::vector<
 			continue;
 		}
 
+		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastBloodletting*>(next) != nullptr;  }))
+		{
+			uncastableCount++;
+			continue;
+		}
+
 		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->getBuff<Bloodletting>([&](Bloodletting* debuff)

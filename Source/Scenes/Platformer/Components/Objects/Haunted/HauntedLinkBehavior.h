@@ -6,6 +6,7 @@ class AlchemyLab;
 class Anvil;
 class PlatformerEntity;
 class ShopItem;
+class SmeltingPot;
 
 class HauntedLinkBehavior : public GameComponent
 {
@@ -24,10 +25,13 @@ protected:
 private:
 	typedef GameComponent super;
 
+	void activateAll();
+
 	PlatformerEntity* linkedEntity = nullptr;
 	ShopItem* ownerAsItem = nullptr;
 	AlchemyLab* ownerAsAlchemyLab = nullptr;
 	Anvil* ownerAsAnvil = nullptr;
+	SmeltingPot* ownerAsSmeltingPot = nullptr;
 	std::string linkedTag;
 
 	static const std::string PropertyLinkedTag;

@@ -5,6 +5,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Engine/Utils/CombatUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Calcify/Calcify.h"
@@ -80,17 +81,26 @@ void CastCalcify::onCleanup()
 
 bool CastCalcify::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	bool hasBuff = false;
+	int uncastableCount = 0;
 
-	caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	for (auto next : otherTeam)
 	{
-		entityBuffBehavior->getBuff<Calcify>([&](Calcify* haste)
+		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastCalcify*>(next) != nullptr;  }))
 		{
-			hasBuff = true;
-		});
-	});
+			uncastableCount++;
+			continue;
+		}
 
-	return !hasBuff;
+		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		{
+			entityBuffBehavior->getBuff<Calcify>([&](Calcify* debuff)
+			{
+				uncastableCount++;
+			});
+		});
+	}
+
+	return uncastableCount != int(otherTeam.size());
 }
 
 float CastCalcify::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)

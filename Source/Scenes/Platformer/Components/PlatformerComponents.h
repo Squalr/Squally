@@ -55,6 +55,7 @@
 #include "Scenes/Platformer/Components/Objects/Clippy/PendulumBladeClippyAngleBehavior.h"
 #include "Scenes/Platformer/Components/Objects/DisabledPortal.h"
 #include "Scenes/Platformer/Components/Objects/Fade/ZFadeBehavior.h"
+#include "Scenes/Platformer/Components/Objects/Haunted/HauntedLinkBehavior.h"
 #include "Scenes/Platformer/Components/Objects/Illusions/DispelIllusionBehavior.h"
 #include "Scenes/Platformer/Components/Objects/Illusions/IllusionBehavior.h"
 #include "Scenes/Platformer/Components/Objects/LockedPortal.h"

@@ -8,7 +8,7 @@
 #include "Engine/Utils/CombatUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/CurseOfTongues/CurseOfTongues.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/CursedSwings/CursedSwings.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FXResources.h"
@@ -52,7 +52,7 @@ PlatformerAttack* CastCursedSwings::cloneInternal()
 
 LocalizedString* CastCursedSwings::getString()
 {
-	return Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTongues::create();
+	return Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CursedSwings::create();
 }
 
 std::string CastCursedSwings::getAttackAnimation()
@@ -72,7 +72,7 @@ void CastCursedSwings::performAttack(PlatformerEntity* owner, std::vector<Platfo
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
-			entityBuffBehavior->applyBuff(CurseOfTongues::create(owner, next));
+			entityBuffBehavior->applyBuff(CursedSwings::create(owner, next));
 		});
 	}
 }
@@ -93,6 +93,12 @@ bool CastCursedSwings::isWorthUsing(PlatformerEntity* caster, const std::vector<
 
 	for (auto next : otherTeam)
 	{
+		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			uncastableCount++;
+			continue;
+		}
+		
 		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastCursedSwings*>(next) != nullptr;  }))
 		{
 			uncastableCount++;
@@ -101,7 +107,7 @@ bool CastCursedSwings::isWorthUsing(PlatformerEntity* caster, const std::vector<
 
 		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
-			entityBuffBehavior->getBuff<CurseOfTongues>([&](CurseOfTongues* debuff)
+			entityBuffBehavior->getBuff<CursedSwings>([&](CursedSwings* debuff)
 			{
 				uncastableCount++;
 			});
@@ -117,7 +123,7 @@ float CastCursedSwings::getUseUtility(PlatformerEntity* caster, PlatformerEntity
 
 	target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->getBuff<CurseOfTongues>([&](CurseOfTongues* debuff)
+		entityBuffBehavior->getBuff<CursedSwings>([&](CursedSwings* debuff)
 		{
 			utility = 0.0f;
 		});

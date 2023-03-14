@@ -93,6 +93,12 @@ bool CastFear::isWorthUsing(PlatformerEntity* caster, const std::vector<Platform
 
 	for (auto next : otherTeam)
 	{
+		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			uncastableCount++;
+			continue;
+		}
+		
 		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastFear*>(next) != nullptr;  }))
 		{
 			uncastableCount++;

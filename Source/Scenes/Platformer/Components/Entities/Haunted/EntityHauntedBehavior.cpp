@@ -156,6 +156,11 @@ void EntityHauntedBehavior::onDisable()
 	super::onDisable();
 }
 
+bool EntityHauntedBehavior::isUnhaunted() const
+{
+	return SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(false)).asBool();
+}
+
 void EntityHauntedBehavior::unhaunt()
 {
 	bool isUnhaunted = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(false)).asBool();

@@ -93,6 +93,12 @@ bool CastCurseOfTongues::isWorthUsing(PlatformerEntity* caster, const std::vecto
 
 	for (auto next : otherTeam)
 	{
+		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
+		{
+			uncastableCount++;
+			continue;
+		}
+		
 		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastCurseOfTongues*>(next) != nullptr;  }))
 		{
 			uncastableCount++;

@@ -265,31 +265,43 @@
   </object>
   <object id="835" name="shop-item" type="object" x="1054.13" y="146.102" width="64" height="64">
    <properties>
+    <property name="components" value="haunted-link"/>
+    <property name="linked-tag" value="abomination"/>
     <property name="pool" value="shop-pool-inn-t4"/>
    </properties>
   </object>
   <object id="836" name="shop-item" type="object" x="1347.46" y="146.102" width="64" height="64">
    <properties>
+    <property name="components" value="haunted-link"/>
+    <property name="linked-tag" value="abomination"/>
     <property name="pool" value="shop-pool-inn-t4"/>
    </properties>
   </object>
   <object id="837" name="shop-item" type="object" x="1629.46" y="146.102" width="64" height="64">
    <properties>
+    <property name="components" value="haunted-link"/>
+    <property name="linked-tag" value="abomination"/>
     <property name="pool" value="shop-pool-inn-t4"/>
    </properties>
   </object>
   <object id="838" name="shop-item" type="object" x="1054.99" y="430.348" width="64" height="64">
    <properties>
+    <property name="components" value="haunted-link"/>
+    <property name="linked-tag" value="abomination"/>
     <property name="pool" value="shop-pool-inn-t4"/>
    </properties>
   </object>
   <object id="839" name="shop-item" type="object" x="1347.46" y="430.348" width="64" height="64">
    <properties>
+    <property name="components" value="haunted-link"/>
+    <property name="linked-tag" value="abomination"/>
     <property name="pool" value="shop-pool-inn-t4"/>
    </properties>
   </object>
   <object id="840" name="shop-item" type="object" x="1629.46" y="430.348" width="64" height="64">
    <properties>
+    <property name="components" value="haunted-link"/>
+    <property name="linked-tag" value="abomination"/>
     <property name="pool" value="shop-pool-inn-t4"/>
    </properties>
   </object>

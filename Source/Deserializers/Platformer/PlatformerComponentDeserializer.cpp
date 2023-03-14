@@ -39,6 +39,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[DispelIllusionBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DispelIllusionBehavior::create(owner); };
 	this->componentDeserializers[FriendlyBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)FriendlyBehaviorGroup::create(owner); };
 	this->componentDeserializers[FirstIOUFound::MapKey] = [=](GameObject* owner) { return (GameComponent*)FirstIOUFound::create(owner); };
+	this->componentDeserializers[HauntedLinkBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)HauntedLinkBehavior::create(owner); };
 	this->componentDeserializers[IllusionBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)IllusionBehavior::create(owner); };
 	this->componentDeserializers[LookAtSquallyBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LookAtSquallyBehavior::create(owner); };
 	this->componentDeserializers[LookAtSquallyBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LookAtSquallyBehavior::create(owner); };

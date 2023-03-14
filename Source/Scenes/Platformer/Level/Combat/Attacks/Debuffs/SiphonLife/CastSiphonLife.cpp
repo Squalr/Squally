@@ -91,6 +91,12 @@ bool CastSiphonLife::isWorthUsing(PlatformerEntity* caster, const std::vector<Pl
 			uncastableCount++;
 			continue;
 		}
+		
+		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastSiphonLife*>(next) != nullptr;  }))
+		{
+			uncastableCount++;
+			continue;
+		}
 
 		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{

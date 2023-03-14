@@ -154,38 +154,51 @@
   </object>
   <object id="795" name="shop-item" type="object" x="1066.67" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-smith-t4"/>
+    <property name="components" value="haunted-link"/>
+    <property name="linked-tag" value="vampiress"/>
+    <property name="pool" value="shop-pool-alch-t4"/>
    </properties>
   </object>
   <object id="796" name="shop-item" type="object" x="1360" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-smith-t4"/>
+    <property name="components" value="haunted-link"/>
+    <property name="linked-tag" value="vampiress"/>
+    <property name="pool" value="shop-pool-alch-t4"/>
    </properties>
   </object>
   <object id="797" name="shop-item" type="object" x="1642" y="198" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-smith-t4"/>
+    <property name="components" value="haunted-link"/>
+    <property name="linked-tag" value="vampiress"/>
+    <property name="pool" value="shop-pool-alch-t4"/>
    </properties>
   </object>
   <object id="798" name="shop-item" type="object" x="1067.53" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-smith-t4"/>
+    <property name="components" value="haunted-link"/>
+    <property name="linked-tag" value="vampiress"/>
+    <property name="pool" value="shop-pool-alch-t4"/>
    </properties>
   </object>
   <object id="799" name="shop-item" type="object" x="1360" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-smith-t4"/>
+    <property name="components" value="haunted-link"/>
+    <property name="linked-tag" value="vampiress"/>
+    <property name="pool" value="shop-pool-alch-t4"/>
    </properties>
   </object>
   <object id="800" name="shop-item" type="object" x="1642" y="482.246" width="64" height="64">
    <properties>
-    <property name="pool" value="shop-pool-smith-t4"/>
+    <property name="components" value="haunted-link"/>
+    <property name="linked-tag" value="vampiress"/>
+    <property name="pool" value="shop-pool-alch-t4"/>
    </properties>
   </object>
-  <object id="801" name="shop-pool-smith-t4" type="object" x="404.409" y="310.893" width="64" height="64"/>
+  <object id="801" name="shop-pool-alch-t4" type="object" x="404.409" y="310.893" width="64" height="64"/>
   <object id="886" name="alchemy-lab" type="object" x="1793.68" y="670.939" width="381" height="393">
    <properties>
-    <property name="linked-tag" value="shopkeeper"/>
+    <property name="components" value="haunted-link"/>
+    <property name="linked-tag" value="vampiress"/>
     <property name="recipe-pool" value="alchemy-pool-cv"/>
    </properties>
   </object>

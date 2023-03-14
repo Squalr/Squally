@@ -91,6 +91,12 @@ bool CastEnflame::isWorthUsing(PlatformerEntity* caster, const std::vector<Platf
 			uncastableCount++;
 			continue;
 		}
+		
+		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastEnflame*>(next) != nullptr;  }))
+		{
+			uncastableCount++;
+			continue;
+		}
 
 		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{

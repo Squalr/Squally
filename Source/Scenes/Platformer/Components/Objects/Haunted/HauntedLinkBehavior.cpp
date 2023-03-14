@@ -15,6 +15,7 @@
 #include "Objects/Platformer/Interactables/AlchemyLab/AlchemyLab.h"
 #include "Objects/Platformer/Interactables/SmeltingPot/SmeltingPot.h"
 #include "Scenes/Platformer/Components/Entities/Petrification/EntityPetrificationBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Haunted/EntityHauntedBehavior.h"
 
 #include "Strings/Strings.h"
 
@@ -37,6 +38,7 @@ HauntedLinkBehavior::HauntedLinkBehavior(GameObject* owner) : super(owner)
 	this->ownerAsItem = dynamic_cast<ShopItem*>(owner);
 	this->ownerAsAlchemyLab = dynamic_cast<AlchemyLab*>(owner);
 	this->ownerAsAnvil = dynamic_cast<Anvil*>(owner);
+	this->ownerAsSmeltingPot = dynamic_cast<SmeltingPot*>(owner);
 	this->linkedTag = GameUtils::getKeyOrDefault(owner->properties, HauntedLinkBehavior::PropertyLinkedTag, Value(false)).asString();
 }
 
@@ -60,6 +62,11 @@ void HauntedLinkBehavior::onLoad()
 	{
 		this->ownerAsAnvil->deactivate();
 	}
+
+	if (this->ownerAsSmeltingPot != nullptr)
+	{
+		this->ownerAsSmeltingPot->deactivate();
+	}
 	
 	ObjectEvents::WatchForObject<PlatformerEntity>(this, [=](PlatformerEntity* platformerEntity)
 	{
@@ -71,20 +78,7 @@ void HauntedLinkBehavior::onLoad()
 
 			if (identifier == this->linkedEntity->getUniqueIdentifier())
 			{
-				if (this->ownerAsItem != nullptr)
-				{
-					this->ownerAsItem->activate();
-				}
-
-				if (this->ownerAsAlchemyLab != nullptr)
-				{
-					this->ownerAsAlchemyLab->activate();
-				}
-
-				if (this->ownerAsAnvil != nullptr)
-				{
-					this->ownerAsAnvil->activate();
-				}
+				this->activateAll();
 			}
 		});
 
@@ -92,20 +86,15 @@ void HauntedLinkBehavior::onLoad()
 		{
 			if (petrificationBehavior->isCured())
 			{
-				if (this->ownerAsItem != nullptr)
-				{
-					this->ownerAsItem->activate();
-				}
+				this->activateAll();
+			}
+		});
 
-				if (this->ownerAsAlchemyLab != nullptr)
-				{
-					this->ownerAsAlchemyLab->activate();
-				}
-
-				if (this->ownerAsAnvil != nullptr)
-				{
-					this->ownerAsAnvil->activate();
-				}
+		this->linkedEntity->watchForComponent<EntityHauntedBehavior>([=](EntityHauntedBehavior* hauntedBehavior)
+		{
+			if (hauntedBehavior->isUnhaunted())
+			{
+				this->activateAll();
 			}
 		});
 	}, this->linkedTag);
@@ -114,4 +103,27 @@ void HauntedLinkBehavior::onLoad()
 void HauntedLinkBehavior::onDisable()
 {
 	super::onDisable();
+}
+
+void HauntedLinkBehavior::activateAll()
+{
+	if (this->ownerAsItem != nullptr)
+	{
+		this->ownerAsItem->activate();
+	}
+
+	if (this->ownerAsAlchemyLab != nullptr)
+	{
+		this->ownerAsAlchemyLab->activate();
+	}
+
+	if (this->ownerAsAnvil != nullptr)
+	{
+		this->ownerAsAnvil->activate();
+	}
+
+	if (this->ownerAsSmeltingPot != nullptr)
+	{
+		this->ownerAsSmeltingPot->activate();
+	}
 }

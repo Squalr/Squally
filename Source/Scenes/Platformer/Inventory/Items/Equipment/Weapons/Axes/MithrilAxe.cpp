@@ -65,13 +65,13 @@ const std::string& MithrilAxe::getIdentifier()
 CSize MithrilAxe::getWeaponCollisionSize()
 {
 	// As expected: Weapon width, height
-	return CSize(112.0f, 96.0f);
+	return CSize(96.0f, 96.0f);
 }
 
 Vec2 MithrilAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
-	return Vec2(-12.0f, 212.0f);
+	return Vec2(-12.0f, 202.0f);
 }
 
 Vec2 MithrilAxe::getDisplayOffset()

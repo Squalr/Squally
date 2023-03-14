@@ -91,6 +91,12 @@ bool CastPoisonedArrows::isWorthUsing(PlatformerEntity* caster, const std::vecto
 			uncastableCount++;
 			continue;
 		}
+		
+		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastPoisonedArrows*>(next) != nullptr;  }))
+		{
+			uncastableCount++;
+			continue;
+		}
 
 		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{

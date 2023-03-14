@@ -72,7 +72,6 @@ DeveloperScene::DeveloperScene()
 	- Changing language does not update readonly scripts after they are loaded once
 	- CPU noises when turned on in DM
 	- Train noises in DM/CV
-	- Update all CastX isWorthUsing functions to take into account whether a cast of the same spell is already on the target (and perhaps likely to not be interrupted)
 	- * Can get stuck on roof of maps (see UR 3_1)
 	- Sanity check card localization (due to art changes)
 	- Tune Alch / Card tier pools
