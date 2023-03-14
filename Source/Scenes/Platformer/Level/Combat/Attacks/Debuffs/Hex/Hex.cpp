@@ -43,7 +43,7 @@ const float Hex::MinSpeed = -1.25f;
 const float Hex::DefaultSpeed = -1.25f;
 const float Hex::DefaultHackSpeed = -0.5f; // Keep in sync with the asm
 const float Hex::MaxSpeed = 1.0f;
-const float Hex::Duration = 6.0f;
+const float Hex::Duration = 10.0f;
 
 // Static to prevent GCC optimization issues
 volatile float Hex::currentSpeed = 0.0f;
