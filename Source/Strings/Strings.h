@@ -15324,10 +15324,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Weakness_Weakness() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentDamageReduce : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentDamageReduce* create();
+		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentHint* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15335,14 +15335,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentDamageReduce();
-		virtual ~Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentDamageReduce() = default;
+		Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentHint() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentRegister : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentRegister* create();
+		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEcx* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15350,14 +15350,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentRegister();
-		virtual ~Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentRegister() = default;
+		Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEcx() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEsi : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEsi* create();
+		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEdx* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15365,8 +15365,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEsi();
-		virtual ~Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEsi() = default;
+		Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEdx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEdx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_ZombieGrasp : public LocalizedString

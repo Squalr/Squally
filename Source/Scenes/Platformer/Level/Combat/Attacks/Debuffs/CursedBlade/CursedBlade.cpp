@@ -53,7 +53,7 @@ CursedBlade* CursedBlade::create(PlatformerEntity* caster, PlatformerEntity* tar
 }
 
 CursedBlade::CursedBlade(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_PurpleScarabShell, AbilityType::Nature, BuffData(CursedBlade::Duration, CursedBlade::CursedBladeIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_SwordGlowPurple, AbilityType::Nature, BuffData(CursedBlade::Duration, CursedBlade::CursedBladeIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 
@@ -96,7 +96,7 @@ void CursedBlade::registerHackables()
 				CursedBlade::HackIdentifierCursedBlade,
 				Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CursedBlade::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_PurpleScarabShell,
+				UIResources::Menus_Icons_SwordGlowPurple,
 				LazyNode<HackablePreview>::create([=](){ return CursedBladeGenericPreview::create(); }),
 				{
 					{

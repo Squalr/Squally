@@ -28,7 +28,7 @@ CastCursedBlade* CastCursedBlade::create(float attackDuration, float recoverDura
 }
 
 CastCursedBlade::CastCursedBlade(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Debuff, UIResources::Menus_Icons_PurpleScarabShell, priority, AbilityType::Physical, 0, 0, 5, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_SwordGlowPurple, priority, AbilityType::Physical, 0, 0, 5, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	
@@ -112,7 +112,7 @@ bool CastCursedBlade::isWorthUsing(PlatformerEntity* caster, const std::vector<P
 
 float CastCursedBlade::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	float utility = target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
+	float utility = CombatUtils::HasDuplicateCastOnLivingTarget(caster, target, [](PlatformerAttack* next) { return dynamic_cast<CastCursedBlade*>(next) != nullptr;  }) ? 0.0f : 1.0f;
 
 	target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{

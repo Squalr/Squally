@@ -112,7 +112,7 @@ bool CastCurseOfTheAncients::isWorthUsing(PlatformerEntity* caster, const std::v
 
 float CastCurseOfTheAncients::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	float utility = target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) ? 1.0f : 0.0f;
+	float utility = CombatUtils::HasDuplicateCastOnLivingTarget(caster, target, [](PlatformerAttack* next) { return dynamic_cast<CastCurseOfTheAncients*>(next) != nullptr;  }) ? 0.0f : 1.0f;
 
 	target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{

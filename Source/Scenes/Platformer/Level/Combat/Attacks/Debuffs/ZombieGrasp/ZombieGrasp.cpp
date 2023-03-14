@@ -58,7 +58,7 @@ ZombieGrasp::ZombieGrasp(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
-	this->spellAura->setColor(Color3B::YELLOW);
+	this->spellAura->setColor(Color3B::MAGENTA);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
@@ -112,7 +112,10 @@ void ZombieGrasp::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return ZombieGraspGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEsi::create()
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEdx::create(), true
+					},
+					{
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEcx::create(), true
 					}
 				},
 				int(HackFlags::None),
@@ -122,19 +125,23 @@ void ZombieGrasp::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(ZombieGrasp::DamageIncrease)))) + 
-						"fld dword ptr [esi]\n" +
-						"fistp dword ptr [esi]\n"
+						std::string("fld dword ptr [edx]\n") +
+						std::string("fistp dword ptr [ecx]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
+						std::string("\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentHint::create()
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx)))
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(ZombieGrasp::DamageIncrease)))) + 
-						"fld dword ptr [rsi]\n" +
-						"fistp dword ptr [rsi]\n"
+						std::string("fld dword ptr [rdx]\n") +
+						std::string("fistp dword ptr [rcx]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
+						std::string("\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentHint::create()
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx)))
 					),
 				},
 				true
@@ -175,22 +182,22 @@ NO_OPTIMIZE void ZombieGrasp::applyZombieGrasp()
 	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
 
 	currentDamageDealtLocal = 0;
-	currentDamageDealtLocalTmp = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	currentDamageDealtLocalTmp = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt() / 4;
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZDX);
-	ASM(push ZSI);
+	ASM(push ZCX);
 
 	ASM_MOV_REG_VAR(ZDX, currentDamageDealtLocalTmpPtr);
-	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
+	ASM_MOV_REG_VAR(ZCX, currentDamageDealtLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_ZOMBIE_GRASP);
 	ASM(fild dword ptr [ZDX]);
-	ASM(fistp dword ptr [ZSI]);
+	ASM(fistp dword ptr [ZCX]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM(pop ZSI);
+	ASM(pop ZCX);
 	ASM(pop ZDX);
 	ASM_POP_EFLAGS()
 

@@ -85,12 +85,6 @@ bool CastCalcify::isWorthUsing(PlatformerEntity* caster, const std::vector<Platf
 
 	for (auto next : otherTeam)
 	{
-		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastCalcify*>(next) != nullptr;  }))
-		{
-			uncastableCount++;
-			continue;
-		}
-
 		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->getBuff<Calcify>([&](Calcify* debuff)
