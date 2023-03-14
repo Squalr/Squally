@@ -450,7 +450,7 @@
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_Graveyard"/>
-    <property name="battle-tag" value="group-a"/>
+    <property name="battle-tag" value="group-b"/>
     <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="lc-generic"/>
    </properties>
@@ -458,7 +458,7 @@
   <object id="1002" name="zombie" type="entity" x="3467.28" y="1421.13" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
+    <property name="battle-tag" value="group-b"/>
     <property name="components" value="ally"/>
    </properties>
   </object>

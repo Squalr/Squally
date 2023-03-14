@@ -12669,66 +12669,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Strength_Strength() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_ThickHide_CommentDamageReduce : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_ThickHide_CommentDamageReduce* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_ThickHide_CommentDamageReduce();
-		virtual ~Menus_Hacking_Abilities_Buffs_ThickHide_CommentDamageReduce() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_ThickHide_CommentIncreaseInstead : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_ThickHide_CommentIncreaseInstead* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_ThickHide_CommentIncreaseInstead();
-		virtual ~Menus_Hacking_Abilities_Buffs_ThickHide_CommentIncreaseInstead() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_ThickHide_CommentRegister : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_ThickHide_CommentRegister* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_ThickHide_CommentRegister();
-		virtual ~Menus_Hacking_Abilities_Buffs_ThickHide_CommentRegister() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_ThickHide_CommentTryChanging : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_ThickHide_CommentTryChanging* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_ThickHide_CommentTryChanging();
-		virtual ~Menus_Hacking_Abilities_Buffs_ThickHide_CommentTryChanging() = default;
-	};
-
 	class Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEbx : public LocalizedString
 	{
 	public:

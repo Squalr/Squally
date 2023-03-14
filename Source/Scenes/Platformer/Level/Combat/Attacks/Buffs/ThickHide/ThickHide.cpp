@@ -53,7 +53,7 @@ ThickHide* ThickHide::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 ThickHide::ThickHide(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_ShieldGlowBlue, AbilityType::Physical, BuffData(ThickHide::Duration, ThickHide::ThickHideIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Piggy, AbilityType::Physical, BuffData(ThickHide::Duration, ThickHide::ThickHideIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
@@ -113,7 +113,7 @@ void ThickHide::registerHackables()
 				ThickHide::HackIdentifierThickHide,
 				Strings::Menus_Hacking_Abilities_Buffs_ThickHide_ThickHide::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_ShieldGlowBlue,
+				UIResources::Menus_Icons_Piggy,
 				LazyNode<HackablePreview>::create([=](){ return ThickHideGenericPreview::create(); }),
 				{
 					{
@@ -130,21 +130,25 @@ void ThickHide::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ThickHide_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ThickHide_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(ThickHide::DamageReduction)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ThickHide_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ThickHide_CommentTryChanging::create()) + 
-						"fisub dword ptr [ebx]\n"
+						"fild dword ptr [edx]\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentSub::create()) + 
+						"fisub dword ptr [ebx]\n" +
+						"fistp dword ptr [edx]\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ThickHide_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ThickHide_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(ThickHide::DamageReduction)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ThickHide_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ThickHide_CommentTryChanging::create()) + 
-						"fisub dword ptr [rbx]\n"
+						"fild dword ptr [rdx]\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentSub::create()) + 
+						"fisub dword ptr [rbx]\n" +
+						"fistp dword ptr [rdx]\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create())
 					),
 				},
 				true
@@ -170,7 +174,7 @@ void ThickHide::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs*
 	this->applyThickHide();
 
 	(*damageOrHealing->damageOrHealing) = Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
-	(*damageOrHealing->damageOrHealingMin) = -std::abs(damageOrHealing->damageOrHealingValue * ThickHide::MaxMultiplier);
+	(*damageOrHealing->damageOrHealingMin) = 0;
 	(*damageOrHealing->damageOrHealingMax) = std::abs(damageOrHealing->damageOrHealingValue * ThickHide::MaxMultiplier);
 }
 
@@ -178,7 +182,7 @@ NO_OPTIMIZE void ThickHide::applyThickHide()
 {
 	static volatile int currentDamageTakenLocal = 0;
 	static volatile int* currentDamageTakenLocalPtr = nullptr;
-	static volatile int damageReduction = 6;
+	static volatile int damageReduction = 10;
 	static volatile int* damageReductionPtr = nullptr;
 
 	currentDamageTakenLocalPtr = &currentDamageTakenLocal;
