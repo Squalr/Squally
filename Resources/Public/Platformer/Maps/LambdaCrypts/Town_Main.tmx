@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="1093">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="1100">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -204,6 +204,12 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1093" name="thion" type="entity" x="2702.67" y="2561.33" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="lc-generic"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="87" name="bridge -6">
   <properties>
@@ -227,7 +233,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="73" name="decor -6">
+ <objectgroup id="73" name="decor -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -239,6 +245,13 @@
     <property name="fade-multiplier" type="float" value="0.5"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup id="114" name="decor fg -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1094" name="Generic/SignBar" type="decor" x="4456" y="2016.5" width="252" height="265"/>
  </objectgroup>
  <objectgroup id="97" name="objects -6">
   <properties>
@@ -283,7 +296,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="88" name="decor -6 fg">
+ <objectgroup id="88" name="decor -6 fg" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -385,14 +398,32 @@
   </object>
   <object id="1057" name="portal" type="object" x="4793.52" y="2501.79" width="256" height="256">
    <properties>
-    <property name="map" value="LambdaCrypts/Town_Home"/>
-    <property name="transition" value="home"/>
+    <property name="map" value="LambdaCrypts/Town_Inn"/>
+    <property name="transition" value="inn"/>
    </properties>
   </object>
   <object id="1059" name="portal" type="object" x="5810.85" y="2499.79" width="256" height="256">
    <properties>
     <property name="map" value="LambdaCrypts/Town_Alch"/>
     <property name="transition" value="alch"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="115" name="entities -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1098" name="zelina" type="entity" x="3603.46" y="2628.44" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="lc-generic"/>
+   </properties>
+  </object>
+  <object id="1099" name="elric" type="entity" x="2888.54" y="2627.56" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="lc-generic"/>
    </properties>
   </object>
  </objectgroup>
@@ -436,7 +467,7 @@
   </object>
   <object id="1056" name="spawn-wood-door" type="object" x="4849.94" y="2629.18" width="128" height="128">
    <properties>
-    <property name="transition" value="home"/>
+    <property name="transition" value="inn"/>
    </properties>
   </object>
   <object id="1058" name="spawn-wood-door" type="object" x="5867.27" y="2627.18" width="128" height="128">
@@ -555,30 +586,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1025" name="thion" type="entity" x="2432.88" y="2676.21" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pick-pocket"/>
-    <property name="pocket-pool" value="lc-generic"/>
-   </properties>
-  </object>
-  <object id="1026" name="ursula" type="entity" x="3751.13" y="2672.53" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pick-pocket"/>
-    <property name="pocket-pool" value="lc-generic"/>
-   </properties>
-  </object>
-  <object id="1028" name="viper" type="entity" x="2224.36" y="2676.84" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pick-pocket"/>
-    <property name="pocket-pool" value="lc-generic"/>
-   </properties>
-  </object>
-  <object id="1029" name="zelina" type="entity" x="3412.92" y="2672.88" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pick-pocket"/>
-    <property name="pocket-pool" value="lc-generic"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

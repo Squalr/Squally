@@ -452,6 +452,7 @@ DeveloperScene::DeveloperScene()
 		// ** Tune hexus battle special cards
 		// ** Needs animals
 		// ** Another Evil Eye encounter
+		// ** Need objective after entering GY
 		// Progression reworked a bit, 2_x => 1_x => town (key 1) => 3_x (key 2) => 4x (key 3) => boss crypt
 		//	- town key (rusty?), bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x	
 		// ** 2_x assassin, fiend, mystic (evil-eye, left crypt / hole / dirt env)	
@@ -468,10 +469,11 @@ DeveloperScene::DeveloperScene()
 		X Assassin				=>  2_x <ThrowingStar,		fiadd> 		=> Focus / add to damage
 		X BoneFiend				=>  2_x <AxeGlowPurp,		fdiv>  		=> CursedSwings debuff / reduce damage by 75% or something (int)
 		X Mystic				=>  2_x <VoodooZombie,		fimul> 		=> Hex / speed decrease
+
 		X BoneKnight			=>  3_x <ShieldGlowOrange,	fidiv> 		=> Shield Wall / constant 25% damage recv
 		X Warlock				=>  3_x <WandSkeleton,		fmul/frndint> 	=> Enchantment / 50% damage increase (rounded)
-
 		X Hunter				=>  3_x <PoisonSpears,		ja>  		=> PoisonedArrows - either radiation or diseased copy
+
 		X SkeletalPriestess		=>  4_x <Book,				fchs/jbe> 	=> Spell of Binding - Speed Decrease
 		X SkeletalKnight		=>  4_x <SwordGlowPurp,		jae>  		=> CursedBlade - Reduce damage
 		X SkeletalCleaver		=>  4_x <SwordGlowYel,		jb> 		=> UnholyBlade - Damage to healing
@@ -491,11 +493,11 @@ DeveloperScene::DeveloperScene()
 		- Amelia				=> Town_Church
 		- Azmus					=> Town_Smith
 		- Garrick				=> Town_Inn
-		- Johann				=> ? Crypts
+		- Johann				=> 2_x (H?)
 		- Princess Nebea		=> ? Town_Home
 		- Roger					=> Town_Main
 		- Thion					=> Town_Main
-		- Ursula				=> Town_Main
+		- Ursula				=> 1_x (H1)
 		- Vesuvius				=> Town_Alch
 		- Viper					=> Town_Main
 		- Zelina				=> Town_Main
