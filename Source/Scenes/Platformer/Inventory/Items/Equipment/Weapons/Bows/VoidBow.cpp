@@ -25,7 +25,7 @@ VoidBow::VoidBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(),
 	// Health
 	0,
 	// Mana
-	0,
+	7,
 	// Attack
 	0,
 	// Magic Attack

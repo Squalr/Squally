@@ -25,7 +25,7 @@ GoldenBow::GoldenBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifie
 	// Health
 	0,
 	// Mana
-	0,
+	4,
 	// Attack
 	0,
 	// Magic Attack

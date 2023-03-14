@@ -53,7 +53,7 @@ Focus* Focus::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Focus::Focus(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_ShieldGlowBlue, AbilityType::Physical, BuffData(Focus::Duration, Focus::FocusIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_ThrowingStar, AbilityType::Physical, BuffData(Focus::Duration, Focus::FocusIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
@@ -108,11 +108,11 @@ void Focus::registerHackables()
 				Focus::HackIdentifierFocus,
 				Strings::Menus_Hacking_Abilities_Buffs_Focus_Focus::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_ShieldGlowBlue,
+				UIResources::Menus_Icons_ThrowingStar,
 				LazyNode<HackablePreview>::create([=](){ return FocusGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Buffs_Focus_RegisterEdi::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Focus_RegisterEax::create()
 					},
 					{
 						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Focus_RegisterEsi::create()
@@ -125,21 +125,29 @@ void Focus::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Focus::DamageIncrease)))) + 
-						"fild dword ptr [esi]\n" +
-						"fiadd dword ptr [eax]\n" +
-						"fistp dword ptr [esi]\n"
+						std::string("fild dword ptr [esi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentAdd::create()) + 
+						std::string("fiadd dword ptr [eax]\n\n") +
+						std::string("fistp dword ptr [esi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
+						std::string("\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentHint::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Focus::DamageIncrease)))) + 
-						"fild dword ptr [rsi]\n" +
-						"fiadd dword ptr [rax]\n" +
-						"fistp dword ptr [rsi]\n"
+						std::string("fild dword ptr [rsi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentAdd::create()) + 
+						std::string("fiadd dword ptr [rax]\n\n") +
+						std::string("fistp dword ptr [rsi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
+						std::string("\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Focus_CommentHint::create())
 					),
 				},
 				true
@@ -173,10 +181,11 @@ NO_OPTIMIZE void Focus::applyFocus()
 {
 	static volatile int currentDamageDealtLocal = 0;
 	static volatile int* currentDamageDealtLocalPtr = nullptr;
-	static volatile int damageIncrease = 8;
+	static volatile int damageIncrease = 0;
 	static volatile int* damageIncreasePtr = nullptr;
 
 	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	damageIncrease = 8;
 	damageIncreasePtr = &damageIncrease;
 	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 

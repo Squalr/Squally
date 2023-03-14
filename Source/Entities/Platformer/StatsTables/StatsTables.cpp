@@ -237,17 +237,17 @@ StatsTables::StatsTables()
 		LC
 	************/
 	
-	StatsTables::StatsTable[Assassin::MapKey] = StatsIncrements(Stats(10, 10, 10));
-	StatsTables::StatsTable[BoneKnight::MapKey] = StatsIncrements(Stats(10, 10, 10));
-	StatsTables::StatsTable[BoneFiend::MapKey] = StatsIncrements(Stats(10, 10, 10));
-	StatsTables::StatsTable[Hunter::MapKey] = StatsIncrements(Stats(10, 10, 10));
-	StatsTables::StatsTable[KingZul::MapKey] = StatsIncrements(Stats(10, 10, 10));
-	StatsTables::StatsTable[Lazarus::MapKey] = StatsIncrements(Stats(10, 10, 10));
-	StatsTables::StatsTable[Mystic::MapKey] = StatsIncrements(Stats(10, 10, 10));
-	StatsTables::StatsTable[ReanimatedPig::MapKey] = StatsIncrements(Stats(10, 10, 10));
-	StatsTables::StatsTable[SkeletalCleaver::MapKey] = StatsIncrements(Stats(10, 10, 10));
-	StatsTables::StatsTable[SkeletalKnight::MapKey] = StatsIncrements(Stats(10, 10, 10));
-	StatsTables::StatsTable[SkeletalPriestess::MapKey] = StatsIncrements(Stats(10, 10, 10));
+	StatsTables::StatsTable[Assassin::MapKey] = StatsIncrements(Stats(49, 8, 10));
+	StatsTables::StatsTable[BoneKnight::MapKey] = StatsIncrements(Stats(54, 12, 10));
+	StatsTables::StatsTable[BoneFiend::MapKey] = StatsIncrements(Stats(52, 8, 10));
+	StatsTables::StatsTable[Hunter::MapKey] = StatsIncrements(Stats(55, 14, 10));
+	StatsTables::StatsTable[KingZul::MapKey] = StatsIncrements(Stats(160, 18, 10));
+	StatsTables::StatsTable[Lazarus::MapKey] = StatsIncrements(Stats(124, 28, 10));
+	StatsTables::StatsTable[Mystic::MapKey] = StatsIncrements(Stats(58, 22, 10));
+	StatsTables::StatsTable[ReanimatedPig::MapKey] = StatsIncrements(Stats(55, 10, 10));
+	StatsTables::StatsTable[SkeletalCleaver::MapKey] = StatsIncrements(Stats(57, 8, 10));
+	StatsTables::StatsTable[SkeletalKnight::MapKey] = StatsIncrements(Stats(62, 10, 10));
+	StatsTables::StatsTable[SkeletalPriestess::MapKey] = StatsIncrements(Stats(56, 20, 10));
 	StatsTables::StatsTable[Warlock::MapKey] = StatsIncrements(Stats(10, 10, 10));
 
 	StatsTables::StatsTable[Ghost::MapKey] = StatsIncrements(Stats(10, 10, 10));

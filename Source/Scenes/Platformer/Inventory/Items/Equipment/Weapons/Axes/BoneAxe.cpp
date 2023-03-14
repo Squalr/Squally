@@ -71,12 +71,12 @@ CSize BoneAxe::getWeaponCollisionSize()
 Vec2 BoneAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
-	return Vec2(0.0f, 212.0f);
+	return Vec2(-8.0f, 212.0f);
 }
 
 Vec2 BoneAxe::getDisplayOffset()
 {
-	return Vec2(28.0f, -4.0f);
+	return Vec2(0.0f, -8.0f);
 }
 
 Recipe* BoneAxe::getRecipe()

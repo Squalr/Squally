@@ -21,7 +21,7 @@ MithrilMace* MithrilMace::create()
 	return instance;
 }
 
-MithrilMace::MithrilMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 8, 14, ItemStats(
+MithrilMace::MithrilMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 16, 20, ItemStats(
 	// Health
 	0,
 	// Mana

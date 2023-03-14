@@ -71,12 +71,12 @@ CSize CrystalAxe::getWeaponCollisionSize()
 Vec2 CrystalAxe::getWeaponCollisionOffset()
 {
 	// Unintuitive: x influences y position, y influences x, likely due to initial weapon rotation
-	return Vec2(0.0f, 212.0f);
+	return Vec2(-12.0f, 212.0f);
 }
 
 Vec2 CrystalAxe::getDisplayOffset()
 {
-	return Vec2(28.0f, -4.0f);
+	return Vec2(0.0f, -8.0f);
 }
 
 Recipe* CrystalAxe::getRecipe()

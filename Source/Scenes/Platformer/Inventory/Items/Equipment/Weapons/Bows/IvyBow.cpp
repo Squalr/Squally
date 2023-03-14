@@ -25,7 +25,7 @@ IvyBow::IvyBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2
 	// Health
 	0,
 	// Mana
-	0,
+	4,
 	// Attack
 	0,
 	// Magic Attack

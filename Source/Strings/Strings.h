@@ -11079,10 +11079,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Entwined_RegisterEdi() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Focus_CommentDamageReduce : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Focus_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Focus_CommentDamageReduce* create();
+		static Menus_Hacking_Abilities_Buffs_Focus_CommentHint* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11090,23 +11090,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_Focus_CommentDamageReduce();
-		virtual ~Menus_Hacking_Abilities_Buffs_Focus_CommentDamageReduce() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_Focus_CommentRegister : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_Focus_CommentRegister* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_Focus_CommentRegister();
-		virtual ~Menus_Hacking_Abilities_Buffs_Focus_CommentRegister() = default;
+		Menus_Hacking_Abilities_Buffs_Focus_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Buffs_Focus_CommentHint() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Focus_Focus : public LocalizedString
@@ -11124,10 +11109,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Focus_Focus() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Focus_RegisterEdi : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Focus_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Focus_RegisterEdi* create();
+		static Menus_Hacking_Abilities_Buffs_Focus_RegisterEax* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11135,8 +11120,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_Focus_RegisterEdi();
-		virtual ~Menus_Hacking_Abilities_Buffs_Focus_RegisterEdi() = default;
+		Menus_Hacking_Abilities_Buffs_Focus_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Buffs_Focus_RegisterEax() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Focus_RegisterEsi : public LocalizedString
@@ -16087,6 +16072,111 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Generic_Conditional_CommentZ();
 		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentZ() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_FPU_CommentAdd : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_FPU_CommentAdd* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_FPU_CommentAdd();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentAdd() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_FPU_CommentDiv : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_FPU_CommentDiv* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_FPU_CommentDiv();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentDiv() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_FPU_CommentF : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_FPU_CommentF* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_FPU_CommentF();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentF() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_FPU_CommentFiadd : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_FPU_CommentFiadd* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_FPU_CommentFiadd();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentFiadd() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_FPU_CommentI : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_FPU_CommentI* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_FPU_CommentI();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentI() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_FPU_CommentMul : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_FPU_CommentMul* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_FPU_CommentMul();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentMul() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_FPU_CommentSub : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_FPU_CommentSub* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_FPU_CommentSub();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentSub() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_FPU_CompEFlags : public LocalizedString

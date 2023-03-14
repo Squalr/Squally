@@ -25,7 +25,7 @@ DemonicBow::DemonicBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentif
 	// Health
 	0,
 	// Mana
-	0,
+	5,
 	// Attack
 	0,
 	// Magic Attack

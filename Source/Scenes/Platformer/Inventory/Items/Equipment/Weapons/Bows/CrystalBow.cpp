@@ -25,7 +25,7 @@ CrystalBow::CrystalBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentif
 	// Health
 	0,
 	// Mana
-	0,
+	6,
 	// Attack
 	0,
 	// Magic Attack
