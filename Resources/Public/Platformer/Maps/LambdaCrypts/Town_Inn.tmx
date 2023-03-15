@@ -297,7 +297,7 @@
   </properties>
   <object id="836" name="viper" type="entity" x="2802.67" y="942.061" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pick-pocket,pacing"/>
+    <property name="components" value="lc-t3-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="lc-generic"/>
    </properties>
   </object>

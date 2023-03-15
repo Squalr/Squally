@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="169" nextobjectid="1033">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="169" nextobjectid="1034">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -1169,6 +1169,12 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="1033" name="roger" type="entity" x="4619.33" y="2399.27" width="128" height="128">
+   <properties>
+    <property name="components" value="lc-t6-hexus,friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="lc-generic"/>
    </properties>
   </object>
  </objectgroup>

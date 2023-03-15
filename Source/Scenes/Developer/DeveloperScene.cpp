@@ -448,13 +448,14 @@ DeveloperScene::DeveloperScene()
 		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
 		// ** Needs enemy scripting according to notes on which instructions this zone covers
 		// ** Needs hexus puzzles
-		// ** Needs hexus battles
 		// ** Tune hexus battle special cards
 		// ** Needs animals
 		// ** Another Evil Eye encounter
 		// ** Need objective after entering GY
+		// Maybe a fun mini-game in town? Something to break up the insane number of fights
 		// Progression reworked a bit, 2_x => 1_x => town (key 1) => 3_x (key 2) => 4x (key 3) => boss crypt
-		//	- town key (rusty?), bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x	
+		//	- crypt key, bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x
+		// Maybe bone key from Zombie Elrich? Elrich only accessible after going to town?
 		// ** 2_x assassin, fiend, mystic (evil-eye, left crypt / hole / dirt env)	
 		// ** 1_x overworld enemies (zombie, pig, undead)
 		// ** 3_x warlock, hunter, knight -- 3x gems to rez lazarus
@@ -490,17 +491,17 @@ DeveloperScene::DeveloperScene()
 		- fldpi/fldz/fld1
 		- other fcmov{cc}
 
+		- Ursula				=> 1_x (H1)
+		- Thion					=> Town_Main (H2)
+		- Viper					=> Town_Inn (H3)
 		- Amelia				=> Town_Church
 		- Azmus					=> Town_Smith
 		- Garrick				=> Town_Inn
-		- Johann				=> 2_x (H?)
-		- Princess Nebea		=> ? Town_Home
-		- Roger					=> Town_Main
-		- Thion					=> Town_Main
-		- Ursula				=> 1_x (H1)
+		- Johann				=> Town_Church (H4)
+		- Princess Nebea		=> Town_Church
+		- Zelina				=> 3_x (H5)
+		- Roger					=> 4_x (H6)
 		- Vesuvius				=> Town_Alch
-		- Viper					=> Town_Main
-		- Zelina				=> Town_Main
 		- [Zombie] Elric		=> ? Town_Main
 		*/
 

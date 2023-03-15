@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="1483">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="1484">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -1168,7 +1168,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="782" name="stone-dark" type="terrain" x="-2286.31" y="-434.055" width="12102" height="4044.9">
+  <object id="782" name="stone-dark" type="terrain" x="-2298.43" y="-412.843" width="12102" height="4044.9">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -1803,7 +1803,7 @@
   </object>
   <object id="774" name="portal" type="object" x="3672.28" y="1430.83" width="256" height="256">
    <properties>
-    <property name="map" value="LambdaCrypts/Zone_1_0"/>
+    <property name="map" value="LambdaCrypts/Zone_2_0"/>
     <property name="transition" value="lesser-crypt"/>
    </properties>
   </object>
@@ -1846,6 +1846,12 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="1483" name="zelina" type="entity" x="5623.88" y="1566.3" width="128" height="128">
+   <properties>
+    <property name="components" value="lc-t5-hexus,friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="lc-generic"/>
    </properties>
   </object>
  </objectgroup>

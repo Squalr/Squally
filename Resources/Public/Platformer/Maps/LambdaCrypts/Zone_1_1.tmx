@@ -432,13 +432,13 @@
   <object id="1132" name="edge-portal" type="object" x="5936.73" y="1042.17" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
-    <property name="map" value="LambdaCrypts/Zone_1_0"/>
+    <property name="map" value="LambdaCrypts/Zone_2_0"/>
     <property name="transition" value="grave-left"/>
    </properties>
   </object>
   <object id="1152" name="portal" type="object" x="2672.43" y="1425.59" width="256" height="256">
    <properties>
-    <property name="map" value="LambdaCrypts/Zone_2_1_a"/>
+    <property name="map" value="LambdaCrypts/Zone_1_1_a"/>
     <property name="transition" value="back-room"/>
    </properties>
   </object>
@@ -1026,7 +1026,7 @@
   </object>
   <object id="774" name="portal" type="object" x="5732.06" y="1443.82" width="256" height="256">
    <properties>
-    <property name="map" value="LambdaCrypts/Zone_2_2"/>
+    <property name="map" value="LambdaCrypts/Zone_1_2"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
