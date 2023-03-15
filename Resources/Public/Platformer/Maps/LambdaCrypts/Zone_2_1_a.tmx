@@ -801,7 +801,7 @@
   </properties>
   <object id="1155" name="ursula" type="entity" x="1300" y="1556" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pick-pocket,pacing"/>
+    <property name="components" value="lc-t1-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="lc-generic"/>
    </properties>
   </object>
