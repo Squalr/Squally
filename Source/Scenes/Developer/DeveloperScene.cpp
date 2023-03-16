@@ -470,6 +470,7 @@ DeveloperScene::DeveloperScene()
 		X Assassin				=>  2_x <ThrowingStar,		fiadd> 		=> Focus / add to damage
 		X BoneFiend				=>  2_x <AxeGlowPurp,		fdiv>  		=> CursedSwings debuff / reduce damage by 75% or something (int)
 		X Mystic				=>  2_x <VoodooZombie,		fimul> 		=> Hex / speed decrease
+		- Zombie Elric			=> 2_x <??, ??> ?? / ??
 
 		X BoneKnight			=>  3_x <ShieldGlowOrange,	fidiv> 		=> Shield Wall / constant 25% damage recv
 		X Warlock				=>  3_x <WandSkeleton,		fmul/frndint> 	=> Enchantment / 50% damage increase (rounded)
