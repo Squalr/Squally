@@ -58,6 +58,12 @@ std::vector<CardData*> LCPuzzleBBehavior::generateDeck()
 
 StateOverride* LCPuzzleBBehavior::getStateOverride()
 {
+	/*
+	- Xor self 10 with 10
+	- Flip self 10 to 5
+	- Xor self 5 with 10
+	- Flip self 5 to 10
+	*/
 	return StateOverride::create(
 		// Player losses
 		1,
@@ -92,6 +98,10 @@ StateOverride* LCPuzzleBBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+			CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+			CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -101,10 +111,12 @@ StateOverride* LCPuzzleBBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 		},
 		// Player hex cards
 		std::vector<CardData*>
@@ -114,14 +126,20 @@ StateOverride* LCPuzzleBBehavior::getStateOverride()
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal10),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
 		}
 	);
 }
