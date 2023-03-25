@@ -58,6 +58,11 @@ std::vector<CardData*> LCPuzzleDBehavior::generateDeck()
 
 StateOverride* LCPuzzleDBehavior::getStateOverride()
 {
+	/*
+	- Invert a 7 into 8
+	- MOV the 8 to their row
+	- SHL that row to oblivion
+	*/
 	return StateOverride::create(
 		// Player losses
 		1,
@@ -92,6 +97,9 @@ StateOverride* LCPuzzleDBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+			CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -109,19 +117,27 @@ StateOverride* LCPuzzleDBehavior::getStateOverride()
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex9),
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary4),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
 		}
 	);
 }
