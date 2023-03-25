@@ -58,6 +58,14 @@ std::vector<CardData*> LCPuzzleEBehavior::generateDeck()
 
 StateOverride* LCPuzzleEBehavior::getStateOverride()
 {
+	/*
+	(Untested)
+	- Enemy ANDs, zeroing out player Dec card
+	- Enemy Flip2, zeroing out player Hex card
+	- Player ANDs this against enemy 14 (zeroing)
+	- Player clears Dec card
+	- Player adds Dec to enemy Dec, overflowing to 0
+	*/
 	return StateOverride::create(
 		// Player losses
 		1,
@@ -92,20 +100,25 @@ StateOverride* LCPuzzleEBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			// zzz
+			CardList::getInstance()->cardListByName.at(CardKeys::Clear),
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+			CardList::getInstance()->cardListByName.at(CardKeys::Addition),
 		},
 		// Enemy hand
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+			CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 		},
 		// Player binary cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal2),
 		},
 		// Player hex cards
 		std::vector<CardData*>
@@ -115,14 +128,17 @@ StateOverride* LCPuzzleEBehavior::getStateOverride()
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
 		}
 	);
 }

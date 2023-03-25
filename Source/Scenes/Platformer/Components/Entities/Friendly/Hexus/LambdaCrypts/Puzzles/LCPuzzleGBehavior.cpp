@@ -58,6 +58,11 @@ std::vector<CardData*> LCPuzzleGBehavior::generateDeck()
 
 StateOverride* LCPuzzleGBehavior::getStateOverride()
 {
+	/*
+	(Untested, sanity check that no other strats exist)
+	- Add to overflow player 2 to 1
+	- Shift circular right to get 8 (23)
+	*/
 	return StateOverride::create(
 		// Player losses
 		1,
@@ -92,7 +97,8 @@ StateOverride* LCPuzzleGBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			// zzz
+			CardList::getInstance()->cardListByName.at(CardKeys::Addition),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftRightCircular),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -106,23 +112,28 @@ StateOverride* LCPuzzleGBehavior::getStateOverride()
 		// Player decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
 		},
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
 		}
 	);
 }

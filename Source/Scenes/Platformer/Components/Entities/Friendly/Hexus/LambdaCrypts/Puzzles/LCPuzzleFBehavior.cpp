@@ -58,6 +58,8 @@ std::vector<CardData*> LCPuzzleFBehavior::generateDeck()
 
 StateOverride* LCPuzzleFBehavior::getStateOverride()
 {
+	// Needs work. Ideal effect is to keep shifting a card to OR it with other cards, then AND to zero out opponent cards
+	// In practice this doesn't work so well
 	return StateOverride::create(
 		// Player losses
 		1,
@@ -92,8 +94,6 @@ StateOverride* LCPuzzleFBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			// Needs work. Ideal effect is to keep shifting a card to OR it with other cards, then AND to zero out opponent cards
-			// In practice this doesn't work so well
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),

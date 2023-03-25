@@ -194,9 +194,9 @@ NO_OPTIMIZE void Enflame::runEnflameTick()
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_ENFLAME);
 	ASM(test ZAX, ZAX);
-	ASM(js radiationSkip);
+	ASM(js enflameSkip);
 	ASM(mov ZBX, 7); // Enflame::DamageAmount
-	ASM(radiationSkip:);
+	ASM(enflameSkip:);
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(drainAmount, ebx);

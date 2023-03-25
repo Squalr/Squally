@@ -62,9 +62,6 @@ public:
 	static const std::string Steal;
 	static const std::string BonusMoves;
 	static const std::string Peek;
-	static const std::string Heal;
-	static const std::string Poison;
-	static const std::string Drank;
 	static const std::string Addition;
 	static const std::string Flip1;
 	static const std::string Flip2;

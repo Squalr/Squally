@@ -117,7 +117,7 @@ void Leech::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentRng::create()
-							->setStringReplacementVariables({ HackableCode::registerToLocalizedString(HackableCode::Register::zsi) })) +
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi))) +
 						"cmp esi, 0\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentJz::create()) +
 						"jz skipCode\n\n" +
@@ -129,7 +129,7 @@ void Leech::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentZ::create())
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentRng::create()
-							->setStringReplacementVariables({ HackableCode::registerToLocalizedString(HackableCode::Register::zsi) })) +
+							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi))) +
 						"cmp rsi, 0\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentJz::create()) +
 						"jz skipCode\n\n" +
