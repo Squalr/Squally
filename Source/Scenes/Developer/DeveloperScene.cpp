@@ -395,7 +395,7 @@ DeveloperScene::DeveloperScene()
 		X WereWolf				2_x		=> jge			ZF/SF/OF	Rabies <Fangs, speed drain>
 		X Jack					2_x		=> jns			SF			<Stab, Bloodletting RNG Per Tick>
 		X [B] Agnes				dark_t	=> jecxz		%ecx == 0	Bat Swarm <Bats, Bat Swarm RNG per tick to attack>
-		
+
 		- Garin					=> Town_Train
 		- Zana					=> 1_2 (X H_1)
 		- Gaunt					=> Main (X H_2)
@@ -452,6 +452,9 @@ DeveloperScene::DeveloperScene()
 		// ** Needs animals
 		// ** Another Evil Eye encounter
 		// ** Need objective after entering GY
+		//		Something with Elric
+		//		Probably some lore dump of LC sky tower master missing (move from EF)
+		//		Need to rescue from DH
 		// Maybe a fun mini-game in town? Something to break up the insane number of fights
 		// Progression reworked a bit, 2_x => 1_x => town (key 1) => 3_x (key 2) => 4x (key 3) => boss crypt
 		//	- crypt key, bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x
@@ -492,6 +495,14 @@ DeveloperScene::DeveloperScene()
 		- fldpi/fldz/fld1
 		- other fcmov{cc}
 
+		O hexus A => 1_1_a
+		X hexus B => 1_1
+		X hexus C => 2_0
+		X hexus D => Town_Main
+		X hexus E => Town_Main
+		O hexus F => 3_x
+		O hexus G => 4_x
+		
 		- Ursula				=> 1_x (H1)
 		- Thion					=> Town_Main (H2)
 		- Viper					=> Town_Inn (H3)

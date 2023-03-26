@@ -230,7 +230,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			selfHand->removeCard(gameState->selectedHandCard);
 			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, HexusConfig::insertDelay);
 
-			if (!tryAbsorb(gameState, gameState->selectedRow))
+			if (!this->tryAbsorb(gameState, gameState->selectedRow))
 			{	
 				int index = 0;
 
@@ -327,7 +327,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			selfHand->removeCard(gameState->selectedHandCard);
 			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, HexusConfig::insertDelay);
 
-			if (!tryAbsorb(gameState, gameState->getRowForCard(gameState->selectedDestinationCard)))
+			if (!this->tryAbsorb(gameState, gameState->getRowForCard(gameState->selectedDestinationCard)))
 			{
 				Card::Operation operation = gameState->selectedHandCard->toOperation(
 					gameState->selectedSourceCard->getAttack()
@@ -414,7 +414,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 			selfHand->removeCard(gameState->selectedHandCard);
 			selfGraveyard->insertCardTop(gameState->selectedHandCard, true, HexusConfig::insertDelay);
 
-			if (!tryAbsorb(gameState, gameState->getRowForCard(gameState->selectedDestinationCard)))
+			if (!this->tryAbsorb(gameState, gameState->getRowForCard(gameState->selectedDestinationCard)))
 			{
 				Card::Operation operation = gameState->selectedHandCard->toOperation(
 					gameState->selectedDestinationCard->getAttack()
@@ -490,7 +490,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 
 			auto removeWeakCards = [=](CardRow* targetRow, Deck* targetGraveyard)
 			{
-				if (!tryAbsorb(gameState, targetRow))
+				if (!this->tryAbsorb(gameState, targetRow))
 				{
 					std::vector<Card*> toRemove = std::vector<Card*>();
 
@@ -531,7 +531,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				return;
 			}
 
-			if (!tryAbsorb(gameState, targetRow))
+			if (!this->tryAbsorb(gameState, targetRow))
 			{
 				if (gameState->selectedDestinationCard->cardData->getCardKey() != CardKeys::Binary0)
 				{
@@ -595,7 +595,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				return;
 			}
 
-			if (!tryAbsorb(gameState, targetRow))
+			if (!this->tryAbsorb(gameState, targetRow))
 			{
 				if (gameState->selectedDestinationCard->getIsPlayerOwnedCard())
 				{
@@ -625,7 +625,7 @@ void StatePlayCard::onStateEnter(GameState* gameState)
 				return;
 			}
 
-			if (!tryAbsorb(gameState, targetRow))
+			if (!this->tryAbsorb(gameState, targetRow))
 			{
 				auto tryStealCard = [=](CardRow* sourceRow, CardRow* destRow, Card* targetCard)
 				{
@@ -764,6 +764,8 @@ bool StatePlayCard::tryAbsorb(GameState* gameState, CardRow* cardRow)
 		return false;
 	}
 
+	// Feels better to just absorb everything. If we decide to only aborb enemy attacks, then uncomment.
+	/*
 	if (cardRow->isPlayerRow() && gameState->turn == GameState::Turn::Player)
 	{
 		return false;
@@ -772,19 +774,19 @@ bool StatePlayCard::tryAbsorb(GameState* gameState, CardRow* cardRow)
 	if (!cardRow->isPlayerRow() && gameState->turn == GameState::Turn::Enemy)
 	{
 		return false;
-	}
+	}*/
 
-	for (auto it = cardRow->rowCards.begin(); it != cardRow->rowCards.end(); it++)
+	for (Card* card : cardRow->rowCards)
 	{
-		if ((*it)->cardData->getCardType() == CardData::CardType::Special_ABSORB)
+		if (card->cardData->getCardType() == CardData::CardType::Special_ABSORB)
 		{
 			if (cardRow->isPlayerRow())
 			{
-				gameState->playerGraveyard->insertCardTop(cardRow->removeCard(*it), true, HexusConfig::insertDelay);
+				gameState->playerGraveyard->insertCardTop(cardRow->removeCard(card), true, HexusConfig::insertDelay);
 			}
 			else
 			{
-				gameState->enemyGraveyard->insertCardTop(cardRow->removeCard(*it), true, HexusConfig::insertDelay);
+				gameState->enemyGraveyard->insertCardTop(cardRow->removeCard(card), true, HexusConfig::insertDelay);
 			}
 
 			this->sheepSound->play();

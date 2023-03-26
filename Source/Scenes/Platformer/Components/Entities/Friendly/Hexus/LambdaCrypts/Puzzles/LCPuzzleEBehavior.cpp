@@ -59,7 +59,6 @@ std::vector<CardData*> LCPuzzleEBehavior::generateDeck()
 StateOverride* LCPuzzleEBehavior::getStateOverride()
 {
 	/*
-	(Untested)
 	- Enemy ANDs, zeroing out player Dec card
 	- Enemy Flip2, zeroing out player Hex card
 	- Player ANDs this against enemy 14 (zeroing)
@@ -72,11 +71,11 @@ StateOverride* LCPuzzleEBehavior::getStateOverride()
 		// Enemy losses
 		1,
 		// Player's turn
-		true,
+		false,
 		// Player passed
-		true,
+		false,
 		// Enemy passed
-		true,
+		false,
 		// Player deck
 		std::vector<CardData*>
 		{

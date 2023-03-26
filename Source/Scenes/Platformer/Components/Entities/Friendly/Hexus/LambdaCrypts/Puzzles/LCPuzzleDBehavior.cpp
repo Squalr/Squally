@@ -59,8 +59,9 @@ std::vector<CardData*> LCPuzzleDBehavior::generateDeck()
 StateOverride* LCPuzzleDBehavior::getStateOverride()
 {
 	/*
-	- Invert a 7 into 8
-	- MOV the 8 to their row
+	- NEG to destroy their aborb card
+	- NEG to invert thier 7 to 8
+	- MOV your 9 to their whatever
 	- SHL that row to oblivion
 	*/
 	return StateOverride::create(
@@ -100,6 +101,7 @@ StateOverride* LCPuzzleDBehavior::getStateOverride()
 			CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
 			CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
+			CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -131,13 +133,16 @@ StateOverride* LCPuzzleDBehavior::getStateOverride()
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 			CardList::getInstance()->cardListByName.at(CardKeys::Decimal6),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
 		}
 	);
 }
