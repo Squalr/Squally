@@ -505,6 +505,7 @@ namespace DecorResources
 	extern const std::string Generic_Chains1;
 	extern const std::string Generic_Chandilier1;
 	extern const std::string Generic_ChandilierDark1;
+	extern const std::string Generic_ChurchDoor;
 	extern const std::string Generic_CoalPile1;
 	extern const std::string Generic_Counter;
 	extern const std::string Generic_Crate1;

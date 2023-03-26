@@ -59,12 +59,11 @@ std::vector<CardData*> LCPuzzleBBehavior::generateDeck()
 StateOverride* LCPuzzleBBehavior::getStateOverride()
 {
 	/*
-	// Needs work, too many solutions...
-	- Steal 15
-	- Add 1 to it (overflow 0)
+	- Add 9 to enemy 7 (either)
+	- Steal it
 	- AND against one of their other 15s
 	- AND against one of their other 15s
-	- Clear the 0 back to 15
+	- Clear the 0 back to 7
 	*/
 	return StateOverride::create(
 		// Player losses
@@ -118,7 +117,7 @@ StateOverride* LCPuzzleBBehavior::getStateOverride()
 		// Player decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
 		},
 		// Player hex cards
 		std::vector<CardData*>
@@ -129,12 +128,13 @@ StateOverride* LCPuzzleBBehavior::getStateOverride()
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Binary15),
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>

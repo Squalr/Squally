@@ -429,7 +429,6 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Smith (LC)", MapResources::LambdaCrypts_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (LC)", MapResources::LambdaCrypts_Town_Main));
 		mapList.push_back(this->buildDebugButton("Church (LC)", MapResources::LambdaCrypts_Town_Church));
-		mapList.push_back(this->buildDebugButton("Home (LC)", MapResources::LambdaCrypts_Town_Home));
 		mapList.push_back(this->buildDebugButton("Zone_4_1 (LC)", MapResources::LambdaCrypts_Zone_4_1));
 		mapList.push_back(this->buildDebugButton("Zone_4_0 (LC)", MapResources::LambdaCrypts_Zone_4_0));
 		mapList.push_back(this->buildDebugButton("Zone_3_3 (LC)", MapResources::LambdaCrypts_Zone_3_3));
@@ -437,10 +436,10 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_3_1 (LC)", MapResources::LambdaCrypts_Zone_3_1));
 		mapList.push_back(this->buildDebugButton("Zone_3_0 (LC)", MapResources::LambdaCrypts_Zone_3_0));
 		mapList.push_back(this->buildDebugButton("Zone_3_Dev (LC)", MapResources::LambdaCrypts_Zone_3_0_Dev));
-		mapList.push_back(this->buildDebugButton("Zone_2_2 (LC)", MapResources::LambdaCrypts_Zone_2_2));
-		mapList.push_back(this->buildDebugButton("Zone_2_1_a (LC)", MapResources::LambdaCrypts_Zone_2_1_a));
-		mapList.push_back(this->buildDebugButton("Zone_2_1 (LC)", MapResources::LambdaCrypts_Zone_2_1));
 		mapList.push_back(this->buildDebugButton("Zone_2_0 (LC)", MapResources::LambdaCrypts_Zone_2_0));
+		mapList.push_back(this->buildDebugButton("Zone_1_2 (LC)", MapResources::LambdaCrypts_Zone_1_2));
+		mapList.push_back(this->buildDebugButton("Zone_1_1_a (LC)", MapResources::LambdaCrypts_Zone_1_1_a));
+		mapList.push_back(this->buildDebugButton("Zone_1_1 (LC)", MapResources::LambdaCrypts_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (LC)", MapResources::LambdaCrypts_Zone_1_0));
 
 		// ================== TODO ================== 
