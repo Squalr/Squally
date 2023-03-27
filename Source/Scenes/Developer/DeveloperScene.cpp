@@ -500,7 +500,7 @@ DeveloperScene::DeveloperScene()
 		X hexus C => 2_0
 		X hexus D => Town_Main
 		X hexus E => Town_Main
-		O hexus F => 3_x
+		X hexus F => 3_0
 		X hexus G => 4_1_a
 		
 		- Ursula				=> 1_x (H1)

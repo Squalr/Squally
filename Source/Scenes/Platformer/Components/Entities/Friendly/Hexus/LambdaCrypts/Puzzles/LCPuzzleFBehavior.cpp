@@ -58,7 +58,7 @@ std::vector<CardData*> LCPuzzleFBehavior::generateDeck()
 
 StateOverride* LCPuzzleFBehavior::getStateOverride()
 {
-	// Needs work. Ideal effect is to keep shifting a card to OR it with other cards, then AND to zero out opponent cards
+	// Needs work. Ideal effect is to keep shifting a card to AND it with other cards, then AND to zero out opponent cards
 	// In practice this doesn't work so well
 	return StateOverride::create(
 		// Player losses
@@ -94,13 +94,12 @@ StateOverride* LCPuzzleFBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
-			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
-			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeftCircular),
+			CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
+			CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -119,13 +118,12 @@ StateOverride* LCPuzzleFBehavior::getStateOverride()
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex14),
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
