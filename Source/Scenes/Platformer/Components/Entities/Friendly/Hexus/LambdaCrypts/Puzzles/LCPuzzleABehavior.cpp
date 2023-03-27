@@ -72,8 +72,9 @@ StateOverride* LCPuzzleABehavior::getStateOverride()
 		// Player deck
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Greed),
 			CardList::getInstance()->cardListByName.at(CardKeys::ReturnToHand),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex8),
 		},
 		// Enemy deck
 		std::vector<CardData*>

@@ -59,7 +59,6 @@ std::vector<CardData*> LCPuzzleGBehavior::generateDeck()
 StateOverride* LCPuzzleGBehavior::getStateOverride()
 {
 	/*
-	(Untested, sanity check that no other strats exist)
 	- Add to overflow player 2 to 1
 	- Shift circular right to get 8 (23)
 	*/
@@ -133,7 +132,7 @@ StateOverride* LCPuzzleGBehavior::getStateOverride()
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
 		}
 	);
 }

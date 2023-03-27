@@ -430,6 +430,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Town (LC)", MapResources::LambdaCrypts_Town_Main));
 		mapList.push_back(this->buildDebugButton("Church (LC)", MapResources::LambdaCrypts_Town_Church));
 		mapList.push_back(this->buildDebugButton("Zone_4_1 (LC)", MapResources::LambdaCrypts_Zone_4_1));
+		mapList.push_back(this->buildDebugButton("Zone_4_0_a (LC)", MapResources::LambdaCrypts_Zone_4_0_a));
 		mapList.push_back(this->buildDebugButton("Zone_4_0 (LC)", MapResources::LambdaCrypts_Zone_4_0));
 		mapList.push_back(this->buildDebugButton("Zone_3_3 (LC)", MapResources::LambdaCrypts_Zone_3_3));
 		mapList.push_back(this->buildDebugButton("Zone_3_2 (LC)", MapResources::LambdaCrypts_Zone_3_2));
@@ -494,13 +495,13 @@ DeveloperScene::DeveloperScene()
 		- fldpi/fldz/fld1
 		- other fcmov{cc}
 
-		O hexus A => 1_1_a
+		X hexus A => 1_1_a
 		X hexus B => 1_1
 		X hexus C => 2_0
 		X hexus D => Town_Main
 		X hexus E => Town_Main
 		O hexus F => 3_x
-		O hexus G => 4_x
+		X hexus G => 4_1_a
 		
 		- Ursula				=> 1_x (H1)
 		- Thion					=> Town_Main (H2)

@@ -193,6 +193,7 @@ const std::string MapResources::LambdaCrypts_Zone_3_1 = "Public/Platformer/Maps/
 const std::string MapResources::LambdaCrypts_Zone_3_2 = "Public/Platformer/Maps/LambdaCrypts/Zone_3_2.tmx";
 const std::string MapResources::LambdaCrypts_Zone_3_3 = "Public/Platformer/Maps/LambdaCrypts/Zone_3_3.tmx";
 const std::string MapResources::LambdaCrypts_Zone_4_0 = "Public/Platformer/Maps/LambdaCrypts/Zone_4_0.tmx";
+const std::string MapResources::LambdaCrypts_Zone_4_0_a = "Public/Platformer/Maps/LambdaCrypts/Zone_4_0_a.tmx";
 const std::string MapResources::LambdaCrypts_Zone_4_1 = "Public/Platformer/Maps/LambdaCrypts/Zone_4_1.tmx";
 const std::string MapResources::PerilousSea_Ship_Captain = "Public/Platformer/Maps/PerilousSea/Ship_Captain.tmx";
 const std::string MapResources::PerilousSea_Ship_Hull = "Public/Platformer/Maps/PerilousSea/Ship_Hull.tmx";
