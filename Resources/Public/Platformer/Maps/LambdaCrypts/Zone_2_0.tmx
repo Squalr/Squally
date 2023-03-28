@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1060">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1061">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -787,7 +787,7 @@
     <property name="flip-x" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="1041" name="Crypts/Statue5" type="decor" x="4908.24" y="1288.87" width="370" height="754">
+  <object id="1041" name="Crypts/Statue5" type="decor" x="6277.94" y="1282.81" width="370" height="754">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.5"/>
@@ -813,13 +813,14 @@
    </properties>
   </object>
   <object id="1035" name="solid" type="collision" x="356.19" y="105.58" width="171.617" height="1932.84"/>
-  <object id="1042" name="solid" type="collision" x="4968.99" y="109.455" width="171.617" height="1932.84"/>
+  <object id="1042" name="solid" type="collision" x="6338.69" y="103.394" width="171.617" height="1932.84"/>
   <object id="1043" name="portal" type="object" x="645.365" y="1614.48" width="450.603" height="423.038">
    <properties>
     <property name="map" value="LambdaCrypts/Zone_1_1"/>
     <property name="transition" value="grave-left"/>
    </properties>
   </object>
+  <object id="1060" name="caged-mountain-lion" type="object" x="5608.06" y="1922.79" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

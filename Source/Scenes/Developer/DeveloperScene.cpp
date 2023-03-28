@@ -840,11 +840,11 @@ DeveloperScene::DeveloperScene()
 	// LC
 	X Bull			LC Inn upstairs
 	X Chicken		LC 2_2
-	X Lion			LC Home upstairs
-	MountainLion
-	Tiger
-	Wolf
-	Worm
+	X Lion			LC Church upstairs
+	X MountainLion	LC 2_0
+	X Tiger			LC 3_2
+	X Wolf			LC 4_0_a
+	X Worm			LC 1_1_a
 
 	// DH
 	X Bee			DH 1_x

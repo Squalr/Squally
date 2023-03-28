@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="26" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1159">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="26" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1160">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -799,6 +799,7 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
+  <object id="1159" name="caged-wolf" type="object" x="2671.7" y="1574.3" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
