@@ -10,16 +10,16 @@ class Scrappy;
 class Squally;
 class ZombieElric;
 
-class ElricsDemise : public QuestTask
+class ElricsPlea : public QuestTask
 {
 public:
-	static ElricsDemise* create(GameObject* owner, QuestLine* questLine);
+	static ElricsPlea* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	ElricsDemise(GameObject* owner, QuestLine* questLine);
-	virtual ~ElricsDemise();
+	ElricsPlea(GameObject* owner, QuestLine* questLine);
+	virtual ~ElricsPlea();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

@@ -1,4 +1,4 @@
-#include "ElricsDemise.h"
+#include "ElricsPlea.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -48,26 +48,26 @@
 
 using namespace cocos2d;
 
-const std::string ElricsDemise::MapKeyQuest = "elrics-demise";
+const std::string ElricsPlea::MapKeyQuest = "elrics-plea";
 
-ElricsDemise* ElricsDemise::create(GameObject* owner, QuestLine* questLine)
+ElricsPlea* ElricsPlea::create(GameObject* owner, QuestLine* questLine)
 {
-	ElricsDemise* instance = new ElricsDemise(owner, questLine);
+	ElricsPlea* instance = new ElricsPlea(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ElricsDemise::ElricsDemise(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ElricsDemise::MapKeyQuest, false)
+ElricsPlea::ElricsPlea(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ElricsPlea::MapKeyQuest, false)
 {
 }
 
-ElricsDemise::~ElricsDemise()
+ElricsPlea::~ElricsPlea()
 {
 }
 
-void ElricsDemise::onLoad(QuestState questState)
+void ElricsPlea::onLoad(QuestState questState)
 {
 	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
@@ -115,23 +115,23 @@ void ElricsDemise::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void ElricsDemise::onActivate(bool isActiveThroughSkippable)
+void ElricsPlea::onActivate(bool isActiveThroughSkippable)
 {
 }
 
-void ElricsDemise::onComplete()
+void ElricsPlea::onComplete()
 {
 }
 
-void ElricsDemise::onSkipped()
+void ElricsPlea::onSkipped()
 {
 	this->removeAllListeners();
 }
 
-void ElricsDemise::runCinematicSequencePt1()
+void ElricsPlea::runCinematicSequencePt1()
 {
 }
 
-void ElricsDemise::runCinematicSequenceStrikeZone()
+void ElricsPlea::runCinematicSequenceStrikeZone()
 {
 }

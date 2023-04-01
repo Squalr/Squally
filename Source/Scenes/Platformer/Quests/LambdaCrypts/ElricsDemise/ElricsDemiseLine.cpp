@@ -3,6 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 #include "Scenes/Platformer/Quests/LambdaCrypts/ElricsDemise/TalkToAmelia.h"
 #include "Scenes/Platformer/Quests/LambdaCrypts/ElricsDemise/ElricsDemise.h"
+#include "Scenes/Platformer/Quests/LambdaCrypts/ElricsDemise/ElricsPlea.h"
 
 using namespace cocos2d;
 
@@ -19,7 +20,8 @@ ElricsDemiseLine* ElricsDemiseLine::create()
 
 ElricsDemiseLine::ElricsDemiseLine() : super(ElricsDemiseLine::MapKeyQuestLine,
 	{
-		QuestData(TalkToAmelia::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToAmelia::create(owner, questLine); }),
+		QuestData(ElricsPlea::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return ElricsPlea::create(owner, questLine); }),
+		QuestData(TalkToAmelia::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return TalkToAmelia::create(owner, questLine); }),
 		QuestData(ElricsDemise::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return ElricsDemise::create(owner, questLine); }),
 	})
 {
