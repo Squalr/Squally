@@ -55,9 +55,11 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	this->lineDeserializers[SkyShipToCastleLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SkyShipToCastleLine::create(); };
 	
 	// LAMBDA CRYPTS QUESTS
+	this->lineDeserializers[CraftHellGateCrystalLine::MapKeyQuestLine] = [=]() { return (QuestLine*)CraftHellGateCrystalLine::create(); };
+	this->lineDeserializers[ElricsDemiseLine::MapKeyQuestLine] = [=]() { return (QuestLine*)ElricsDemiseLine::create(); };
 	this->lineDeserializers[OpenCryptLine::MapKeyQuestLine] = [=]() { return (QuestLine*)OpenCryptLine::create(); };
 	this->lineDeserializers[RezLazarusLine::MapKeyQuestLine] = [=]() { return (QuestLine*)RezLazarusLine::create(); };
-	
+
 	// DAEMONS HALLOW QUESTS
 	this->lineDeserializers[ReleasePressureLine::MapKeyQuestLine] = [=]() { return (QuestLine*)ReleasePressureLine::create(); };
 	

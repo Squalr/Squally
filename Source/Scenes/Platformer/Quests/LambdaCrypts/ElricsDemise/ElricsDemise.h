@@ -8,16 +8,16 @@ class QuestLine;
 class Scrappy;
 class Squally;
 
-class CollectAncientGems : public QuestTask
+class ElricsDemise : public QuestTask
 {
 public:
-	static CollectAncientGems* create(GameObject* owner, QuestLine* questLine);
+	static ElricsDemise* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	CollectAncientGems(GameObject* owner, QuestLine* questLine);
-	virtual ~CollectAncientGems();
+	ElricsDemise(GameObject* owner, QuestLine* questLine);
+	virtual ~ElricsDemise();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

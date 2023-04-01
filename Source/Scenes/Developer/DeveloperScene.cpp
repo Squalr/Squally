@@ -449,7 +449,6 @@ DeveloperScene::DeveloperScene()
 		// ** Needs enemy scripting according to notes on which instructions this zone covers
 		// ** Needs hexus puzzles
 		// ** Tune hexus battle special cards
-		// ** Needs animals
 		// ** Another Evil Eye encounter
 		// ** Need objective after entering GY
 		//		Something with Elric

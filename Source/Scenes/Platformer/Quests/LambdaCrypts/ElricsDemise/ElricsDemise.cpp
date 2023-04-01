@@ -1,4 +1,4 @@
-#include "CollectAncientGems.h"
+#include "ElricsDemise.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -46,26 +46,26 @@
 
 using namespace cocos2d;
 
-const std::string CollectAncientGems::MapKeyQuest = "ancient-gems";
+const std::string ElricsDemise::MapKeyQuest = "elrics-demise";
 
-CollectAncientGems* CollectAncientGems::create(GameObject* owner, QuestLine* questLine)
+ElricsDemise* ElricsDemise::create(GameObject* owner, QuestLine* questLine)
 {
-	CollectAncientGems* instance = new CollectAncientGems(owner, questLine);
+	ElricsDemise* instance = new ElricsDemise(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CollectAncientGems::CollectAncientGems(GameObject* owner, QuestLine* questLine) : super(owner, questLine, CollectAncientGems::MapKeyQuest, false)
+ElricsDemise::ElricsDemise(GameObject* owner, QuestLine* questLine) : super(owner, questLine, ElricsDemise::MapKeyQuest, false)
 {
 }
 
-CollectAncientGems::~CollectAncientGems()
+ElricsDemise::~ElricsDemise()
 {
 }
 
-void CollectAncientGems::onLoad(QuestState questState)
+void ElricsDemise::onLoad(QuestState questState)
 {
 	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
@@ -88,23 +88,23 @@ void CollectAncientGems::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void CollectAncientGems::onActivate(bool isActiveThroughSkippable)
+void ElricsDemise::onActivate(bool isActiveThroughSkippable)
 {
 }
 
-void CollectAncientGems::onComplete()
+void ElricsDemise::onComplete()
 {
 }
 
-void CollectAncientGems::onSkipped()
+void ElricsDemise::onSkipped()
 {
 	this->removeAllListeners();
 }
 
-void CollectAncientGems::runCinematicSequencePt1()
+void ElricsDemise::runCinematicSequencePt1()
 {
 }
 
-void CollectAncientGems::runCinematicSequenceStrikeZone()
+void ElricsDemise::runCinematicSequenceStrikeZone()
 {
 }
