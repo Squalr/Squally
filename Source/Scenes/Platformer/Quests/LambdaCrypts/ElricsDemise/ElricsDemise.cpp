@@ -108,11 +108,6 @@ void ElricsDemise::onLoad(QuestState questState)
 			this->zombieElric->despawn();
 		}
 	}, ZombieElric::MapKey);
-
-	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
-	{
-		this->squally = squally;
-	}, Squally::MapKey);
 }
 
 void ElricsDemise::onActivate(bool isActiveThroughSkippable)

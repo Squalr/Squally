@@ -30,7 +30,7 @@ private:
 	typedef QuestTask super;
 
 	void runCinematicSequencePt1();
-	void runCinematicSequenceStrikeZone();
+	void runCinematicSequencePt2();
 
 	Gecky* gecky = nullptr;
 	Guano* guano = nullptr;

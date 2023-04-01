@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const std::string ElricsDemiseLine::MapKeyQuestLine = "craft-hell-gate-crystal";
+const std::string ElricsDemiseLine::MapKeyQuestLine = "elrics-demise";
 
 ElricsDemiseLine* ElricsDemiseLine::create()
 {

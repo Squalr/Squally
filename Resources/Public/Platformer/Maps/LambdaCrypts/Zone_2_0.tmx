@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1061">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1062">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -821,6 +821,11 @@
    </properties>
   </object>
   <object id="1060" name="caged-mountain-lion" type="object" x="5608.06" y="1922.79" width="196" height="112"/>
+  <object id="1061" name="trigger" type="object" x="2037.5" y="-336.087" width="118.944" height="2375.2">
+   <properties>
+    <property name="send-event" value="elrics-plea"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -836,6 +841,8 @@
    <properties>
     <property name="components" value="friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="lc-generic"/>
+    <property name="quest" value="elrics-plea,elrics-demise"/>
+    <property name="quest-line" value="elrics-demise"/>
    </properties>
   </object>
   <object id="1055" name="zombie-elric" type="entity" x="3326.72" y="1910.87" width="128" height="128">

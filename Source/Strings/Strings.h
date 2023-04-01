@@ -35199,6 +35199,21 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent() = default;
 	};
 
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_A_NeedHelp : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_A_NeedHelp* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_A_NeedHelp();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_A_NeedHelp() = default;
+	};
+
 	class Platformer_Quests_LambdaCrypts_EnterCrypts_EvilEye_A_FoundYou : public LocalizedString
 	{
 	public:

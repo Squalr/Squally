@@ -108,15 +108,14 @@ void ElricsPlea::onLoad(QuestState questState)
 			this->zombieElric->despawn();
 		}
 	}, ZombieElric::MapKey);
-
-	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
-	{
-		this->squally = squally;
-	}, Squally::MapKey);
 }
 
 void ElricsPlea::onActivate(bool isActiveThroughSkippable)
 {
+	this->listenForMapEventOnce(ElricsPlea::MapKeyQuest, [=](ValueMap)
+	{
+		this->runCinematicSequencePt1();
+	});
 }
 
 void ElricsPlea::onComplete()
@@ -130,8 +129,23 @@ void ElricsPlea::onSkipped()
 
 void ElricsPlea::runCinematicSequencePt1()
 {
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_A_NeedHelp::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->elric, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt2();
+		},
+		Voices::GetNextVoiceLong(Voices::VoiceType::Human),
+		false
+	));
 }
 
-void ElricsPlea::runCinematicSequenceStrikeZone()
+void ElricsPlea::runCinematicSequencePt2()
 {
 }
