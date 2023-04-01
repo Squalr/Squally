@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1062">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1065">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -795,7 +795,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="57" name="objects back">
+ <objectgroup id="57" name="objects back" locked="1">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -824,6 +824,12 @@
   <object id="1061" name="trigger" type="object" x="2037.5" y="-336.087" width="118.944" height="2375.2">
    <properties>
     <property name="send-event" value="elrics-plea"/>
+   </properties>
+  </object>
+  <object id="1063" name="camera-target" type="object" x="3198.67" y="1584" width="128" height="128">
+   <properties>
+    <property name="tag" value="graveyard-cinematic"/>
+    <property name="zoom" type="float" value="2"/>
    </properties>
   </object>
  </objectgroup>
@@ -866,6 +872,13 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-c"/>
     <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="1064" name="zombie" type="entity" x="2685.15" y="1906" width="128" height="128">
+   <properties>
+    <property name="components" value="enemy"/>
+    <property name="drop-pool" value="lc-generic"/>
+    <property name="tag" value="cinematic-zombie"/>
    </properties>
   </object>
  </objectgroup>

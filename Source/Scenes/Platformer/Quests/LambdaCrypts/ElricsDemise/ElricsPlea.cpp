@@ -9,6 +9,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
@@ -17,8 +18,9 @@
 #include "Engine/Sound/Sound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
-#include "Entities/Platformer/Npcs/LambdaCrypts/Elric.h"
+#include "Entities/Platformer/Enemies/LambdaCrypts/Zombie.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/ZombieElric.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/Elric.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Helpers/DataMines/Gecky.h"
@@ -26,6 +28,7 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Camera/CameraStop.h"
+#include "Objects/Platformer/Camera/CameraTarget.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Objects/Platformer/Switches/Trigger.h"
@@ -99,6 +102,17 @@ void ElricsPlea::onLoad(QuestState questState)
 		}
 	}, Elric::MapKey);
 
+	ObjectEvents::WatchForObject<Zombie>(this, [=](Zombie* zombie)
+	{
+		this->zombie = zombie;
+		
+		zombie->watchForComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		{
+			healthBehavior->kill(false);
+		});
+	}, "cinematic-zombie");
+	
+
 	ObjectEvents::WatchForObject<ZombieElric>(this, [=](ZombieElric* zombieElric)
 	{
 		this->zombieElric = zombieElric;
@@ -129,8 +143,13 @@ void ElricsPlea::onSkipped()
 
 void ElricsPlea::runCinematicSequencePt1()
 {
+	ObjectEvents::QueryObjects<CameraTarget>([&](CameraTarget* cameraTarget)
+	{
+		GameCamera::getInstance()->pushTarget(cameraTarget->getTrackingData());
+	}, "graveyard-cinematic");
+
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_A_NeedHelp::create(),
+		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_A_Travelers::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -141,11 +160,116 @@ void ElricsPlea::runCinematicSequencePt1()
 		{
 			this->runCinematicSequencePt2();
 		},
-		Voices::GetNextVoiceLong(Voices::VoiceType::Human),
+		Voices::GetNextVoiceShort(Voices::VoiceType::Human),
 		false
 	));
 }
 
 void ElricsPlea::runCinematicSequencePt2()
 {
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_B_NeedAssistance::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->elric, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt3();
+		},
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Human),
+		false
+	));
+}
+
+void ElricsPlea::runCinematicSequencePt3()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_C_Bitten::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->elric, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt4();
+		},
+		Voices::GetNextVoiceLong(Voices::VoiceType::Human),
+		false
+	));
+}
+
+void ElricsPlea::runCinematicSequencePt4()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_D_SeekHelp::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->elric, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt5();
+		},
+		Voices::GetNextVoiceLong(Voices::VoiceType::Human),
+		false
+	));
+}
+
+void ElricsPlea::runCinematicSequencePt5()
+{
+	if (this->guano != nullptr)
+	{
+		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_E_Guano_PickHisPockets::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->guano, false),
+				DialogueEvents::BuildPreviewNode(&this->elric, true)
+			),
+			[=]()
+			{
+				this->runCinematicSequencePt6();
+			},
+			Voices::GetNextVoiceMedium(),
+			true
+		));
+	}
+	else if (this->gecky != nullptr)
+	{
+		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_E_Gecky_Ok::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->gecky, false),
+				DialogueEvents::BuildPreviewNode(&this->elric, true)
+			),
+			[=]()
+			{
+				this->runCinematicSequencePt6();
+			},
+			Voices::GetNextVoiceMedium(),
+			true
+		));
+	}
+	else
+	{
+		PlatformerEvents::TriggerCinematicRestore();
+		this->runCinematicSequencePt6();
+	}
+}
+
+void ElricsPlea::runCinematicSequencePt6()
+{
+	GameCamera::getInstance()->popTargetIfMultiple();
+
+	this->complete();
 }

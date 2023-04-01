@@ -8,6 +8,7 @@ class Guano;
 class QuestLine;
 class Scrappy;
 class Squally;
+class Zombie;
 class ZombieElric;
 
 class ElricsPlea : public QuestTask
@@ -31,6 +32,10 @@ private:
 
 	void runCinematicSequencePt1();
 	void runCinematicSequencePt2();
+	void runCinematicSequencePt3();
+	void runCinematicSequencePt4();
+	void runCinematicSequencePt5();
+	void runCinematicSequencePt6();
 
 	Gecky* gecky = nullptr;
 	Guano* guano = nullptr;
@@ -38,4 +43,5 @@ private:
 	Squally* squally = nullptr;
 	Elric* elric = nullptr;
 	ZombieElric* zombieElric = nullptr;
+	Zombie* zombie = nullptr;
 };
