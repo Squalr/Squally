@@ -144,7 +144,7 @@ void TalkToAmelia::runCinematicSequence()
 					this->amelia->getAnimations()->setFlippedX(false);
 				}
 			},
-			Voices::GetNextVoiceShort(),
+			Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 			false
 		));
 
@@ -159,7 +159,7 @@ void TalkToAmelia::runCinematicSequence()
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceShort(),
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 
@@ -173,14 +173,28 @@ void TalkToAmelia::runCinematicSequence()
 			),
 			[=]()
 			{
-				this->complete();
 			},
 			Voices::GetNextVoiceShort(),
 			false
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeKeyFromCorpse::create()
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeKeyFromCorpse::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->amelia, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceLong(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_HellCrystal::create()
 				->setStringReplacementVariables({ Strings::Items_Misc_Keys_HellGateCrystal::create(), Strings::Platformer_MapNames_DaemonsHallow_DaemonsHallow::create() }),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
@@ -190,25 +204,8 @@ void TalkToAmelia::runCinematicSequence()
 			),
 			[=]()
 			{
-				this->complete();
 			},
-			Voices::GetNextVoiceShort(),
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_HellCrystal::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-				DialogueEvents::BuildPreviewNode(&this->amelia, true)
-			),
-			[=]()
-			{
-				this->complete();
-			},
-			Voices::GetNextVoiceShort(),
+			Voices::GetNextVoiceLong(),
 			false
 		));
 
@@ -224,7 +221,6 @@ void TalkToAmelia::runCinematicSequence()
 				),
 				[=]()
 				{
-					this->complete();
 				},
 				Voices::GetNextVoiceShort(),
 				false
@@ -242,7 +238,6 @@ void TalkToAmelia::runCinematicSequence()
 				),
 				[=]()
 				{
-					this->complete();
 				},
 				Voices::GetNextVoiceShort(),
 				false
@@ -261,8 +256,8 @@ void TalkToAmelia::runCinematicSequence()
 			{
 				this->complete();
 			},
-			Voices::GetNextVoiceShort(),
-			false
+			Voices::GetNextVoiceLong(),
+			true
 		));
 	});
 }
