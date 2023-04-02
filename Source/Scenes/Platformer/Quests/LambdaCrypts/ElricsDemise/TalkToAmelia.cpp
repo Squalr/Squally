@@ -13,6 +13,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
+#include "Entities/Platformer/Helpers/DataMines/Gecky.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Amelia.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
@@ -31,7 +32,7 @@
 
 using namespace cocos2d;
 
-const std::string TalkToAmelia::MapKeyQuest = "talk-to-Amelia";
+const std::string TalkToAmelia::MapKeyQuest = "talk-to-amelia";
 
 TalkToAmelia* TalkToAmelia::create(GameObject* owner, QuestLine* questLine)
 {
@@ -122,7 +123,8 @@ void TalkToAmelia::runCinematicSequence()
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_Bitten::create(),
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_Bitten::create()
+				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Elric::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -178,7 +180,8 @@ void TalkToAmelia::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeKeyFromCorpse::create(),
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeKeyFromCorpse::create()
+				->setStringReplacementVariables({ Strings::Items_Misc_Keys_HellGateCrystal::create(), Strings::Platformer_MapNames_DaemonsHallow_DaemonsHallow::create() }),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
@@ -209,37 +212,42 @@ void TalkToAmelia::runCinematicSequence()
 			false
 		));
 
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Gecky_Oh::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-				DialogueEvents::BuildPreviewNode(&this->amelia, true)
-			),
-			[=]()
-			{
-				this->complete();
-			},
-			Voices::GetNextVoiceShort(),
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Guano_Brutal::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-				DialogueEvents::BuildPreviewNode(&this->amelia, true)
-			),
-			[=]()
-			{
-				this->complete();
-			},
-			Voices::GetNextVoiceShort(),
-			false
-		));
+		if (this->gecky != nullptr)
+		{
+			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Gecky_Oh::create(),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Left,
+					DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+					DialogueEvents::BuildPreviewNode(&this->amelia, true)
+				),
+				[=]()
+				{
+					this->complete();
+				},
+				Voices::GetNextVoiceShort(),
+				false
+			));
+		}
+		else
+		{
+			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Guano_Brutal::create(),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Left,
+					DialogueEvents::BuildPreviewNode(&this->guano, false),
+					DialogueEvents::BuildPreviewNode(&this->amelia, true)
+				),
+				[=]()
+				{
+					this->complete();
+				},
+				Voices::GetNextVoiceShort(),
+				false
+			));
+		}
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_H_SkyMaster::create(),

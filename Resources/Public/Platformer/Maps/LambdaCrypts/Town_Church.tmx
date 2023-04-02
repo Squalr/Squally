@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="36" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="857">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="857">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -367,6 +367,8 @@
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="lc-generic"/>
+    <property name="quest" value="talk-to-amelia"/>
+    <property name="quest-line" value="elrics-demise"/>
    </properties>
   </object>
  </objectgroup>

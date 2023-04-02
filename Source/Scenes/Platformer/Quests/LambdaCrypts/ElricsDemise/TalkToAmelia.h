@@ -2,8 +2,9 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class Guano;
 class Amelia;
+class Gecky;
+class Guano;
 class QuestLine;
 class Scrappy;
 class Squally;
@@ -29,8 +30,9 @@ private:
 
 	void runCinematicSequence();
 
-	Guano* guano = nullptr;
 	Amelia* amelia = nullptr;
+	Gecky* gecky = nullptr;
+	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 };
