@@ -826,10 +826,10 @@
     <property name="send-event" value="elrics-plea"/>
    </properties>
   </object>
-  <object id="1063" name="camera-target" type="object" x="3198.67" y="1584" width="128" height="128">
+  <object id="1063" name="camera-target" type="object" x="2432" y="1705.21" width="128" height="128">
    <properties>
     <property name="tag" value="graveyard-cinematic"/>
-    <property name="zoom" type="float" value="2"/>
+    <property name="zoom" type="float" value="1.5"/>
    </properties>
   </object>
  </objectgroup>
@@ -845,7 +845,7 @@
   </properties>
   <object id="1049" name="elric" type="entity" x="2998" y="1910" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pick-pocket,pacing"/>
+    <property name="components" value="friendly,pick-pocket,face-squally"/>
     <property name="pocket-pool" value="lc-generic"/>
     <property name="quest" value="elrics-plea,elrics-demise"/>
     <property name="quest-line" value="elrics-demise"/>

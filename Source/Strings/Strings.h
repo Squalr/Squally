@@ -35334,10 +35334,10 @@ namespace Strings
 		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_A_Travelers() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_NeedAssistance : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_What : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_NeedAssistance* create();
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_What* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35345,8 +35345,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_NeedAssistance();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_NeedAssistance() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_What();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_What() = default;
 	};
 
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_C_Bitten : public LocalizedString

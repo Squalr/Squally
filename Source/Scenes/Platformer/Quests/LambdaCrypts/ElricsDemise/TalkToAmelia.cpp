@@ -95,10 +95,13 @@ void TalkToAmelia::onActivate(bool isActiveThroughSkippable)
 
 void TalkToAmelia::onComplete()
 {
-	this->amelia->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+	if (this->amelia != nullptr)
 	{
-		questBehavior->enableIncompleteQuest();
-	});
+		this->amelia->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+		{
+			questBehavior->disableAll();
+		});
+	}
 
 	Objectives::SetCurrentObjective(ObjectiveKeys::URExploreFountain);
 }

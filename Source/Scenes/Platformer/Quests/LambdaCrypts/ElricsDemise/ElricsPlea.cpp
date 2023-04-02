@@ -168,18 +168,18 @@ void ElricsPlea::runCinematicSequencePt1()
 void ElricsPlea::runCinematicSequencePt2()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_NeedAssistance::create(),
+		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_What::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Right,
-			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 			DialogueEvents::BuildPreviewNode(&this->elric, true)
 		),
 		[=]()
 		{
 			this->runCinematicSequencePt3();
 		},
-		Voices::GetNextVoiceMedium(Voices::VoiceType::Human),
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 		false
 	));
 }
