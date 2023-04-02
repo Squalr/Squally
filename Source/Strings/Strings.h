@@ -35199,10 +35199,10 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_A_Travelers : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_Bitten : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_A_Travelers* create();
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_Bitten* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35210,14 +35210,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_A_Travelers();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_A_Travelers() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_Bitten();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_Bitten() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_B_NeedAssistance : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NothingCanBeDone : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_B_NeedAssistance* create();
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NothingCanBeDone* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35225,14 +35225,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_B_NeedAssistance();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_B_NeedAssistance() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NothingCanBeDone();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NothingCanBeDone() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_C_Bitten : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_NoCure : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_C_Bitten* create();
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_NoCure* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35240,14 +35240,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_C_Bitten();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_C_Bitten() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_NoCure();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_NoCure() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_D_SeekHelp : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeKeyFromCorpse : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_D_SeekHelp* create();
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeKeyFromCorpse* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35255,14 +35255,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_D_SeekHelp();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_D_SeekHelp() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeKeyFromCorpse();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeKeyFromCorpse() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_E_Gecky_Ok : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_HellCrystal : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_E_Gecky_Ok* create();
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_HellCrystal* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35270,14 +35270,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_E_Gecky_Ok();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_E_Gecky_Ok() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_HellCrystal();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_HellCrystal() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_E_Guano_PickHisPockets : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Gecky_Oh : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_E_Guano_PickHisPockets* create();
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Gecky_Oh* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35285,8 +35285,128 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_E_Guano_PickHisPockets();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_E_Guano_PickHisPockets() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Gecky_Oh();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Gecky_Oh() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Guano_Brutal : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Guano_Brutal* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Guano_Brutal();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Guano_Brutal() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_H_SkyMaster : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_H_SkyMaster* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_H_SkyMaster();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_H_SkyMaster() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_A_Travelers : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_A_Travelers* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_A_Travelers();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_A_Travelers() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_NeedAssistance : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_NeedAssistance* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_NeedAssistance();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_NeedAssistance() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_C_Bitten : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_C_Bitten* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_C_Bitten();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_C_Bitten() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_D_SeekHelp : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_D_SeekHelp* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_D_SeekHelp();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_D_SeekHelp() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Gecky_Ok : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Gecky_Ok* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Gecky_Ok();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Gecky_Ok() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Guano_PickHisPockets : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Guano_PickHisPockets* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Guano_PickHisPockets();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Guano_PickHisPockets() = default;
 	};
 
 	class Platformer_Quests_LambdaCrypts_EnterCrypts_EvilEye_A_FoundYou : public LocalizedString

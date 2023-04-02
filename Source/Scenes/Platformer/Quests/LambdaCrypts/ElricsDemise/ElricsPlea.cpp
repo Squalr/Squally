@@ -149,7 +149,7 @@ void ElricsPlea::runCinematicSequencePt1()
 	}, "graveyard-cinematic");
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_A_Travelers::create(),
+		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_A_Travelers::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -168,7 +168,7 @@ void ElricsPlea::runCinematicSequencePt1()
 void ElricsPlea::runCinematicSequencePt2()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_B_NeedAssistance::create(),
+		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_NeedAssistance::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -187,7 +187,7 @@ void ElricsPlea::runCinematicSequencePt2()
 void ElricsPlea::runCinematicSequencePt3()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_C_Bitten::create(),
+		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_C_Bitten::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -206,7 +206,7 @@ void ElricsPlea::runCinematicSequencePt3()
 void ElricsPlea::runCinematicSequencePt4()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_D_SeekHelp::create(),
+		Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_D_SeekHelp::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -227,7 +227,7 @@ void ElricsPlea::runCinematicSequencePt5()
 	if (this->guano != nullptr)
 	{
 		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_E_Guano_PickHisPockets::create(),
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Guano_PickHisPockets::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -245,7 +245,7 @@ void ElricsPlea::runCinematicSequencePt5()
 	else if (this->gecky != nullptr)
 	{
 		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_E_Gecky_Ok::create(),
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Gecky_Ok::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,

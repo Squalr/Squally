@@ -119,11 +119,11 @@ void TalkToAmelia::runCinematicSequence()
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::TODO::create(),
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_A_Introduction::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->amelia, true)
 			),
 			[=]()
@@ -144,17 +144,30 @@ void TalkToAmelia::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::TODO::create()
-				->setStringReplacementVariables(Strings::Platformer_MapNames_UnderflowRuins_Athens::create()),
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_Hmm::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->amelia, true)
 			),
 			[=]()
 			{
-				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ RustyKey::create() }));
+			},
+			Voices::GetNextVoiceShort(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NothingCanBeDone::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->amelia, true)
+			),
+			[=]()
+			{
 				this->complete();
 			},
 			Voices::GetNextVoiceShort(),
