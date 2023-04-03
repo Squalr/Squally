@@ -61,7 +61,7 @@ void TalkToAmelia::onLoad(QuestState questState)
 	{
 		this->gecky = gecky;
 	}, Gecky::MapKey);
-	
+
 	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
@@ -86,6 +86,13 @@ void TalkToAmelia::onLoad(QuestState questState)
 				questBehavior->enableTurnIn();
 			});
 		}
+
+		// Await Helpers to be ready
+		this->defer([=]()
+		{
+			this->runCinematicSequence();
+		}, 2);
+
 	}, Amelia::MapKey);
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
@@ -96,7 +103,6 @@ void TalkToAmelia::onLoad(QuestState questState)
 
 void TalkToAmelia::onActivate(bool isActiveThroughSkippable)
 {
-	this->runCinematicSequence();
 }
 
 void TalkToAmelia::onComplete()

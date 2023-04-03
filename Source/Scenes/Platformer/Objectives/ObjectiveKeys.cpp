@@ -54,5 +54,8 @@ const std::string ObjectiveKeys::CVExploreSecretTunnel = "CV_EXPLORE_SECRET_TUNN
 const std::string ObjectiveKeys::CVDefeatAgnes = "CV_DEFEAT_AGNES";
 const std::string ObjectiveKeys::CVEnterLambdaCrypts = "CV_ENTER_LAMBDA_CRYPTS";
 
+const std::string ObjectiveKeys::LCSeekAmelia = "LC_SEEK_AMELIA";
+const std::string ObjectiveKeys::LCReturnToElric = "LC_RETURN_TO_ELRIC";
+const std::string ObjectiveKeys::LCEnterSecondCrypt = "LC_ENTER_SECOND_CRYPT";
 const std::string ObjectiveKeys::LCFindGems = "LC_FIND_GEMS";
-
+const std::string ObjectiveKeys::LCEnterFinalCrypt = "LC_ENTER_FINAL_CRYPT";
