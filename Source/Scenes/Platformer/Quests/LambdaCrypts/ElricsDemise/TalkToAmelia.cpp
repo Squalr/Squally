@@ -115,7 +115,7 @@ void TalkToAmelia::onComplete()
 		});
 	}
 
-	Objectives::SetCurrentObjective(ObjectiveKeys::URExploreFountain);
+	Objectives::SetCurrentObjective(ObjectiveKeys::LCReturnToElric);
 }
 
 void TalkToAmelia::onSkipped()
@@ -185,7 +185,7 @@ void TalkToAmelia::runCinematicSequence()
 			[=]()
 			{
 			},
-			Voices::GetNextVoiceShort(),
+			Voices::GetNextVoiceLong(),
 			false
 		));
 

@@ -46,6 +46,7 @@ DropPoolDeserializer::DropPoolDeserializer() : super(DropPoolDeserializer::MapKe
 
 	// LC
 	this->deserializers[DropPoolLCGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolLCGeneric::create(properties); };
+	this->deserializers[DropPoolLCElric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolLCElric::create(properties); };
 	this->deserializers[DropPoolLCLazarus::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolLCLazarus::create(properties); };
 	this->deserializers[DropPoolLCWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolLCWeak::create(properties); };
 

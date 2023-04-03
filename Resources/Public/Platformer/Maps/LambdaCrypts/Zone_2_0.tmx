@@ -857,7 +857,9 @@
     <property name="battle-map" value="LambdaCrypts/Combat_Graveyard"/>
     <property name="battle-tag" value="group-c"/>
     <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="lc-generic"/>
+    <property name="drop-pool" value="lc-elric"/>
+    <property name="quest" value="defeat-elric"/>
+    <property name="quest-line" value="elrics-demise"/>
    </properties>
   </object>
   <object id="1056" name="zombie" type="entity" x="3227.28" y="1559.13" width="128" height="128">

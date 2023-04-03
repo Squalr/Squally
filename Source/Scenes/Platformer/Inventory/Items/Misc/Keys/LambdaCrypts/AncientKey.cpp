@@ -9,7 +9,7 @@
 
 using namespace cocos2d;
 
-const std::string AncientKey::SaveKey = "study-room-key";
+const std::string AncientKey::SaveKey = "ancient-key";
 
 AncientKey* AncientKey::create()
 {

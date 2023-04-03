@@ -98,16 +98,6 @@ void ElricsDemise::onLoad(QuestState questState)
 			this->elric->despawn();
 		}
 	}, Elric::MapKey);
-
-	ObjectEvents::WatchForObject<ZombieElric>(this, [=](ZombieElric* zombieElric)
-	{
-		this->zombieElric = zombieElric;
-
-		if (questState != QuestState::Active || questState != QuestState::ActiveThroughSkippable)
-		{
-			this->zombieElric->despawn();
-		}
-	}, ZombieElric::MapKey);
 }
 
 void ElricsDemise::onActivate(bool isActiveThroughSkippable)

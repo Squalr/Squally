@@ -117,7 +117,7 @@ void ElricsPlea::onLoad(QuestState questState)
 	{
 		this->zombieElric = zombieElric;
 
-		if (questState != QuestState::Active || questState != QuestState::ActiveThroughSkippable)
+		if (questState != QuestState::Complete)
 		{
 			this->zombieElric->despawn();
 		}
@@ -134,6 +134,7 @@ void ElricsPlea::onActivate(bool isActiveThroughSkippable)
 
 void ElricsPlea::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::LCSeekAmelia);
 }
 
 void ElricsPlea::onSkipped()

@@ -1,6 +1,7 @@
 #include "RezLazarusLine.h"
 
 #include "Engine/Quests/QuestTask.h"
+#include "Scenes/Platformer/Quests/LambdaCrypts/RezLazarus/DefeatLazarus.h"
 #include "Scenes/Platformer/Quests/LambdaCrypts/RezLazarus/RezLazarus.h"
 
 using namespace cocos2d;
@@ -19,6 +20,7 @@ RezLazarusLine* RezLazarusLine::create()
 RezLazarusLine::RezLazarusLine() : super(RezLazarusLine::MapKeyQuestLine,
 	{
 		QuestData(RezLazarus::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return RezLazarus::create(owner, questLine); }),
+		QuestData(DefeatLazarus::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return DefeatLazarus::create(owner, questLine); }),
 	})
 {
 }

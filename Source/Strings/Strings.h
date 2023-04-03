@@ -32424,6 +32424,81 @@ namespace Strings
 		virtual ~Platformer_Objectives_EndianForest_EF_VisitQueen() = default;
 	};
 
+	class Platformer_Objectives_LambdaCrypts_LC_FindGems : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_LambdaCrypts_LC_FindGems* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_LambdaCrypts_LC_FindGems();
+		virtual ~Platformer_Objectives_LambdaCrypts_LC_FindGems() = default;
+	};
+
+	class Platformer_Objectives_LambdaCrypts_LC_GreaterCrypt : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_LambdaCrypts_LC_GreaterCrypt* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_LambdaCrypts_LC_GreaterCrypt();
+		virtual ~Platformer_Objectives_LambdaCrypts_LC_GreaterCrypt() = default;
+	};
+
+	class Platformer_Objectives_LambdaCrypts_LC_LesserCrypt : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_LambdaCrypts_LC_LesserCrypt* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_LambdaCrypts_LC_LesserCrypt();
+		virtual ~Platformer_Objectives_LambdaCrypts_LC_LesserCrypt() = default;
+	};
+
+	class Platformer_Objectives_LambdaCrypts_LC_ReturnToElric : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_LambdaCrypts_LC_ReturnToElric* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_LambdaCrypts_LC_ReturnToElric();
+		virtual ~Platformer_Objectives_LambdaCrypts_LC_ReturnToElric() = default;
+	};
+
+	class Platformer_Objectives_LambdaCrypts_LC_SeekAmelia : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_LambdaCrypts_LC_SeekAmelia* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_LambdaCrypts_LC_SeekAmelia();
+		virtual ~Platformer_Objectives_LambdaCrypts_LC_SeekAmelia() = default;
+	};
+
 	class Platformer_Objectives_Objective : public LocalizedString
 	{
 	public:

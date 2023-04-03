@@ -11,6 +11,7 @@
 #include "Objects/Platformer/ItemPools/DropPools/EndianForest/DropPoolEFGrogg.h"
 #include "Objects/Platformer/ItemPools/DropPools/EndianForest/DropPoolEFWeak.h"
 #include "Objects/Platformer/ItemPools/DropPools/LambdaCrypts/DropPoolLCGeneric.h"
+#include "Objects/Platformer/ItemPools/DropPools/LambdaCrypts/DropPoolLCElric.h"
 #include "Objects/Platformer/ItemPools/DropPools/LambdaCrypts/DropPoolLCLazarus.h"
 #include "Objects/Platformer/ItemPools/DropPools/LambdaCrypts/DropPoolLCWeak.h"
 #include "Objects/Platformer/ItemPools/DropPools/UnderflowRuins/DropPoolURGeneric.h"

@@ -2,6 +2,8 @@
 
 #include "base/CCValue.h"
 
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Save/SaveManager.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
@@ -24,7 +26,8 @@ LocalizedString* Objectives::GetObjectiveString()
 		return Objectives::ObjectiveMap[objectiveKey].createFunc();
 	}
 
-	return nullptr;
+	// Default to the missing key so that we know to add it
+	return ConstantString::create(objectiveKey);
 }
 
 std::string Objectives::GetCurrentObjective()
@@ -143,7 +146,11 @@ void Objectives::InitMap()
 	priority = 400;
 
 	// LC
-	Objectives::ObjectiveMap[ObjectiveKeys::LCFindGems] =  Objective([](){ return Strings::TODO::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCSeekAmelia] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_SeekAmelia::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Amelia::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCReturnToElric] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_ReturnToElric::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Elric::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCEnterSecondCrypt] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_LesserCrypt::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCFindGems] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_FindGems::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCEnterFinalCrypt] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_GreaterCrypt::create(); }, priority++);
 
 	priority = 500;
 
