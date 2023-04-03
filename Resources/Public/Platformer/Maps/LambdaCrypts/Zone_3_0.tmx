@@ -1807,7 +1807,7 @@
     <property name="transition" value="lesser-crypt"/>
    </properties>
   </object>
-  <object id="1485" name="hexus-shrine" type="object" x="3077.27" y="1433.6" width="155" height="260">
+  <object id="1485" name="hexus-shrine" type="object" x="3078.27" y="1441.6" width="155" height="260">
    <properties>
     <property name="entity-tag" value="hexus-bone-knight"/>
    </properties>

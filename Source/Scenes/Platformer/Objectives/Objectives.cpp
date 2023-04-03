@@ -26,6 +26,12 @@ LocalizedString* Objectives::GetObjectiveString()
 		return Objectives::ObjectiveMap[objectiveKey].createFunc();
 	}
 
+	// Absense of a key should return nullptr so the caller knows not to create a UI element
+	if (objectiveKey == "")
+	{
+		return nullptr;
+	}
+
 	// Default to the missing key so that we know to add it
 	return ConstantString::create(objectiveKey);
 }
