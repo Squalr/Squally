@@ -57,6 +57,11 @@ TalkToAmelia::~TalkToAmelia()
 
 void TalkToAmelia::onLoad(QuestState questState)
 {
+	ObjectEvents::WatchForObject<Gecky>(this, [=](Gecky* gecky)
+	{
+		this->gecky = gecky;
+	}, Gecky::MapKey);
+	
 	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
@@ -216,7 +221,7 @@ void TalkToAmelia::runCinematicSequence()
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+					DialogueEvents::BuildPreviewNode(&this->gecky, false),
 					DialogueEvents::BuildPreviewNode(&this->amelia, true)
 				),
 				[=]()

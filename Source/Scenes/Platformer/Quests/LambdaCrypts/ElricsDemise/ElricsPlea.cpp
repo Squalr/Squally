@@ -179,7 +179,7 @@ void ElricsPlea::runCinematicSequencePt2()
 		{
 			this->runCinematicSequencePt3();
 		},
-		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
+		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 		false
 	));
 }
