@@ -62,8 +62,6 @@ void CastFocus::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnt
 	super::performAttack(owner, targets);
 
 	this->castSound->play();
-	owner->getAnimations()->clearAnimationPriority();
-	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
 	for (auto next : targets)
 	{
