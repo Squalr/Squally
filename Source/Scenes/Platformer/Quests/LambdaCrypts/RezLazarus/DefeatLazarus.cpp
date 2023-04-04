@@ -78,7 +78,7 @@ void DefeatLazarus::onActivate(bool isActiveThroughSkippable)
 
 void DefeatLazarus::onComplete()
 {
-	Objectives::SetCurrentObjective(ObjectiveKeys::LCEnterSecondCrypt);
+	Objectives::SetCurrentObjective(ObjectiveKeys::LCEnterFinalCrypt);
 }
 
 void DefeatLazarus::onSkipped()

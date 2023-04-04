@@ -6,7 +6,6 @@
 #include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Platformer/ItemPools/DropPools/LambdaCrypts/DropPoolLCKey.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
@@ -29,9 +28,9 @@ DropPoolLCLazarus::DropPoolLCLazarus(ValueMap& properties) : super(properties, D
 		CardPoolTier5::create(SampleMethod::Random, 0, 1),
 		AlchemyPoolTier5::create(SampleMethod::Random, 1, 2),
 		SmithingPoolTier5::create(SampleMethod::Random, 1, 2),
-		DropPoolLCKey::create(SampleMethod::Random, 1, 1),
 	})
 {
+	this->addItemToPool(ItemChance::create(AncientKey::create(), ItemChance::Probability::Guaranteed));
 }
 
 DropPoolLCLazarus::~DropPoolLCLazarus()
