@@ -57,10 +57,6 @@ void DefeatLazarus::onLoad(QuestState questState)
 		{
 			this->complete();
 		}
-		else
-		{
-			this->lazarus->setOpacity(0);
-		}
 	}
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)

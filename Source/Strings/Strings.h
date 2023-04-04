@@ -35514,6 +35514,51 @@ namespace Strings
 		virtual ~Platformer_Quests_LambdaCrypts_EnterCrypts_Scrappy_A_DangerDanger() = default;
 	};
 
+	class Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems1 : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems1();
+		virtual ~Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems1() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems2 : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems2* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems2();
+		virtual ~Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems2() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems3 : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems3* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems3();
+		virtual ~Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems3() = default;
+	};
+
 	class Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_A_NewChallengersApproach : public LocalizedString
 	{
 	public:

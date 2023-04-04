@@ -34,10 +34,10 @@ private:
 
 	void runDialogue();
 	void refreshGems();
-	void onRamInteract();
+	void onRezInteract();
 	void runCinematicSequence();
 
-	InteractObject* repairInteract = nullptr;
+	InteractObject* rezInteract = nullptr;
 	GameObject* displayGemRed = nullptr;
 	GameObject* displayGemPurple = nullptr;
 	GameObject* displayGemBlue = nullptr;

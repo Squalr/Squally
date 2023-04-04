@@ -53,9 +53,9 @@ RezLazarus* RezLazarus::create(GameObject* owner, QuestLine* questLine)
 
 RezLazarus::RezLazarus(GameObject* owner, QuestLine* questLine) : super(owner, questLine, RezLazarus::MapKeyQuest, false)
 {
-	this->repairInteract = InteractObject::create(InteractObject::InteractType::Input, CSize(512.0f, 288.0f));
+	this->rezInteract = InteractObject::create(InteractObject::InteractType::Input, CSize(512.0f, 288.0f));
 
-	this->addChild(this->repairInteract);
+	this->addChild(this->rezInteract);
 }
 
 RezLazarus::~RezLazarus()
@@ -129,16 +129,16 @@ void RezLazarus::onLoad(QuestState questState)
 
 	if (questState != QuestState::Complete)
 	{
-		this->repairInteract->setInteractCallback([=]()
+		this->rezInteract->setInteractCallback([=]()
 		{
-			this->onRamInteract();
+			this->onRezInteract();
 
 			return true;
 		});
 	}
 	else
 	{
-		this->repairInteract->disable();
+		this->rezInteract->disable();
 	}
 }
 
@@ -153,9 +153,17 @@ void RezLazarus::onComplete()
 		warp->enable();
 	}
 
-	if (this->repairInteract != nullptr)
+	if (this->rezInteract != nullptr)
 	{
-		this->repairInteract->disable();
+		this->rezInteract->disable();
+	}
+
+	if (this->lazarus != nullptr)
+	{
+		this->lazarus->runAction(Sequence::create(
+			FadeTo::create(1.0f, 255),
+			nullptr
+		));
 	}
 }
 
@@ -165,23 +173,66 @@ void RezLazarus::onSkipped()
 
 void RezLazarus::runDialogue()
 {
-	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
-		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Right,
-			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
-		),
-		[=]()
-		{
-		},
-		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
-		true
-	));
+	bool redGemFound = this->getQuestSaveStateOrDefault(RezLazarus::GemTurnedInRed, Value(false)).asBool();
+	bool blueGemFound = this->getQuestSaveStateOrDefault(RezLazarus::GemTurnedInBlue, Value(false)).asBool();
+	bool purpleGemFound = this->getQuestSaveStateOrDefault(RezLazarus::GemTurnedInPurple, Value(false)).asBool();
+
+	int turnedInGemCount = (redGemFound ? 1 : 0) + (blueGemFound ? 1 : 0) + (purpleGemFound ? 1 : 0);
+
+	if (turnedInGemCount <= 0)
+	{
+		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems3::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
+			true
+		));
+	}
+	else if (turnedInGemCount == 1)
+	{
+		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems2::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
+			true
+		));
+	}
+	else if (turnedInGemCount == 2)
+	{
+		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems1::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
+			true
+		));
+	}
 }
 
-void RezLazarus::onRamInteract()
+void RezLazarus::onRezInteract()
 {
 	if (this->inventory == nullptr || this->wasActivated)
 	{
@@ -194,6 +245,7 @@ void RezLazarus::onRamInteract()
 
 	int turnedInGemCountOriginal = this->getQuestSaveStateOrDefault(RezLazarus::TurnedInGemCount, Value(0)).asInt();
 	int turnedInGemCount = turnedInGemCountOriginal;
+	bool shouldRunDialogue = true;
 
 	Objectives::SetCurrentObjective(ObjectiveKeys::LCFindGems);
 	
@@ -223,15 +275,14 @@ void RezLazarus::onRamInteract()
 	{
 		this->saveQuestSaveState(RezLazarus::TurnedInGemCount, Value(turnedInGemCount));
 		this->refreshGems();
+		shouldRunDialogue = false;
 	}
 	
 	if (turnedInGemCount < 3)
 	{
-		this->runDialogue();
-
-		if (turnedInGemCount != turnedInGemCountOriginal)
+		if (shouldRunDialogue)
 		{
-			return;
+			this->runDialogue();
 		}
 	}
 	else

@@ -57,10 +57,6 @@ void DefeatElric::onLoad(QuestState questState)
 		{
 			this->complete();
 		}
-		else
-		{
-			this->zombieElric->setOpacity(0);
-		}
 	}
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
