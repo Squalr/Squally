@@ -64,8 +64,6 @@ void CastHex::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntit
 	super::performAttack(owner, targets);
 
 	this->castSound->play();
-	owner->getAnimations()->clearAnimationPriority();
-	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
 	for (auto next : targets)
 	{

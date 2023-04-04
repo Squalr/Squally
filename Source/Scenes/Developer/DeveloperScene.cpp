@@ -446,24 +446,9 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ================== 
 		// LC story mode picture invalid (jungle?)
 		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
-		// ** Needs enemy scripting according to notes on which instructions this zone covers
-		// ** Needs hexus puzzles
+		// ** Fix hexus puzzle in back side of 3_x
 		// ** Tune hexus battle special cards
 		// ** Another Evil Eye encounter
-		// ** Need objective after entering GY
-		//		Something with Elric
-		//		Probably some lore dump of LC sky tower master missing (move from EF)
-		//		Need to rescue from DH
-		// Maybe a fun mini-game in town? Something to break up the insane number of fights
-		// Progression reworked a bit, 2_x => 1_x => town (key 1) => 3_x (key 2) => 4x (key 3) => boss crypt
-		//	- crypt key, bone key, demon key, This helps force a progression of 1_x => town => 2_x => 3x
-		// Maybe bone key from Zombie Elrich? Elrich only accessible after going to town?
-		// ** 2_x assassin, fiend, mystic (evil-eye, left crypt / hole / dirt env)	
-		// ** 1_x overworld enemies (zombie, pig, undead)
-		// ** 3_x warlock, hunter, knight -- 3x gems to rez lazarus
-		// ** 3_x Lazarus - Rez or self rez?
-		// ** 4_x cleaver, knight, priestess (central crypt)
-		// ** 4_x King Zul
 
 		/*
 		X ReanimatedPig			=>  1_x <Piggy,				fisub> 		=> Thick Hide / dmg decrease
