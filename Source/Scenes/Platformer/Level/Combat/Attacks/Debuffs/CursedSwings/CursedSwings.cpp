@@ -40,7 +40,6 @@ const std::string CursedSwings::CursedSwingsIdentifier = "cursed-swings";
 const std::string CursedSwings::HackIdentifierCursedSwings = "cursed-swings";
 
 const int CursedSwings::MaxMultiplier = 4;
-const float CursedSwings::DamageIncrease = 10.0f; // Keep in sync with asm
 const float CursedSwings::Duration = 16.0f;
 
 CursedSwings* CursedSwings::create(PlatformerEntity* caster, PlatformerEntity* target)
