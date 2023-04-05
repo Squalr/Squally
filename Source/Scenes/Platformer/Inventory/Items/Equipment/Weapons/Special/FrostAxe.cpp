@@ -2,7 +2,7 @@
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
-#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/FrostAxePlans.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Special/FrostAxePlans.h"
 
 #include "Resources/ItemResources.h"
 
