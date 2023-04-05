@@ -38,8 +38,8 @@ std::vector<std::tuple<Item*, int>> VoidAxePlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Obsidian::create(), 2 },
+		{ VoidCrystal::create(), 4 },
 	};
 }
 

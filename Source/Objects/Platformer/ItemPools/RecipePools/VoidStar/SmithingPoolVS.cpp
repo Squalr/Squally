@@ -29,11 +29,11 @@ SmithingPoolVS::SmithingPoolVS(ValueMap& properties) : super(properties, Smithin
 	this->addItemToPool(ItemChance::create(VoidBowPlans::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(VoidWandPlans::create(), ItemChance::Probability::Guaranteed));
 	
-	this->addItemToPool(ItemChance::create(BoneSwordPlans::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(BoneAxePlans::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(BoneHammerPlans::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(BoneBowPlans::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(BoneWandPlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(CrystalSwordPlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(CrystalAxePlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(CrystalMacePlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(CrystalBowPlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(CrystalWandPlans::create(), ItemChance::Probability::Guaranteed));
 	
 	this->addItemToPool(ItemChance::create(DemonicSwordPlans::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(DemonicAxePlans::create(), ItemChance::Probability::Guaranteed));
@@ -41,11 +41,11 @@ SmithingPoolVS::SmithingPoolVS(ValueMap& properties) : super(properties, Smithin
 	this->addItemToPool(ItemChance::create(DemonicBowPlans::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(DemonicWandPlans::create(), ItemChance::Probability::Guaranteed));
 	
-	this->addItemToPool(ItemChance::create(CrystalSwordPlans::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(CrystalAxePlans::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(CrystalMacePlans::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(CrystalBowPlans::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(CrystalWandPlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(BoneSwordPlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(BoneAxePlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(BoneHammerPlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(BoneBowPlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(BoneWandPlans::create(), ItemChance::Probability::Guaranteed));
 	
 	this->addItemToPool(ItemChance::create(MithrilSwordPlans::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(MithrilAxePlans::create(), ItemChance::Probability::Guaranteed));
