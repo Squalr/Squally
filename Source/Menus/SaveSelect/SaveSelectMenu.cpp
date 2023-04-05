@@ -391,12 +391,13 @@ Node* SaveSelectMenu::buildEntityFrame(PlatformerEntity* entity, Vec2 offsetAdju
 Sprite* SaveSelectMenu::getBackgroundForCurrentSaveProfile()
 {
 	std::string currentMap = StrUtils::toLower(SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyMap, Value("")).asString());
+	const bool ignoreCase = true;
 
-	if (StrUtils::contains(currentMap, "underflowruins", true))
+	if (StrUtils::contains(currentMap, "underflowruins", ignoreCase))
 	{
 		return Sprite::create(HexusResources::Menus_HexusFrameUnderflowRuins);
 	}
-	else if (StrUtils::contains(currentMap, "datamines", true))
+	else if (StrUtils::contains(currentMap, "datamines", ignoreCase))
 	{
 		Sprite* background = Sprite::create(HexusResources::Menus_HexusFrameDataMines);
 
@@ -404,23 +405,23 @@ Sprite* SaveSelectMenu::getBackgroundForCurrentSaveProfile()
 
 		return background;
 	}
-	else if (StrUtils::contains(currentMap, "castlevalgrind", true))
+	else if (StrUtils::contains(currentMap, "castlevalgrind", ignoreCase))
 	{
 		return Sprite::create(HexusResources::Menus_HexusFrameCastleValgrind);
 	}
-	else if (StrUtils::contains(currentMap, "balmerPeaks", true))
+	else if (StrUtils::contains(currentMap, "balmerPeaks", ignoreCase))
 	{
 		return Sprite::create(HexusResources::Menus_HexusFrameBallmerPeaks);
 	}
-	else if (StrUtils::contains(currentMap, "daemonshallow", true))
+	else if (StrUtils::contains(currentMap, "daemonshallow", ignoreCase))
 	{
 		return Sprite::create(HexusResources::Menus_HexusFrameDaemonsHallow);
 	}
-	else if (StrUtils::contains(currentMap, "lambdacrypts", true))
+	else if (StrUtils::contains(currentMap, "lambdacrypts", ignoreCase))
 	{
 		return Sprite::create(HexusResources::Menus_HexusFrameLambdaCrypts);
 	}
-	else if (StrUtils::contains(currentMap, "voidStar", true))
+	else if (StrUtils::contains(currentMap, "voidStar", ignoreCase))
 	{
 		return Sprite::create(HexusResources::Menus_HexusFrameVoidStar);
 	}

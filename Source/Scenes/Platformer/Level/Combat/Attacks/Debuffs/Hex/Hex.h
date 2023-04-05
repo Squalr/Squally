@@ -37,8 +37,7 @@ private:
 	static volatile float currentSpeed;
 
 	static const float MinSpeed;
-	static const float DefaultSpeed;
-	static const float DefaultHackSpeed;
+	static const float SpeedMultiplier;
 	static const float MaxSpeed;
 	static const float Duration;
 };

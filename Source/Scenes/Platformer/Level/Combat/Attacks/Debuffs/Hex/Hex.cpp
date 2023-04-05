@@ -40,9 +40,8 @@ const std::string Hex::HexIdentifier = "hex";
 
 // Note: UI sets precision on these to 1 digit
 const float Hex::MinSpeed = -1.25f;
-const float Hex::DefaultSpeed = -1.25f;
-const float Hex::DefaultHackSpeed = -0.5f; // Keep in sync with the asm
-const float Hex::MaxSpeed = 1.0f;
+const float Hex::SpeedMultiplier = 0.1f;
+const float Hex::MaxSpeed = 3.0f;
 const float Hex::Duration = 10.0f;
 
 // Static to prevent GCC optimization issues
@@ -118,7 +117,7 @@ void Hex::registerHackables()
 				{
 					{
 						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_Hex_RegisterEbx::create()
-							->setStringReplacementVariables(ConstantFloat::create(Hex::DefaultSpeed, 2)), true
+							->setStringReplacementVariables(ConstantFloat::create(Hex::SpeedMultiplier, 2)), true
 					},
 					{
 						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Hex_RegisterEsi::create(), true
@@ -187,7 +186,7 @@ NO_OPTIMIZE void Hex::applyHex()
 	static volatile float* multiplierPtr;
 
 	timelineSpeed = this->currentSpeed;
-	multiplier = Hex::DefaultSpeed;
+	multiplier = Hex::SpeedMultiplier;
 	timelineSpeedPtr = &timelineSpeed;
 	multiplierPtr = &multiplier;
 
@@ -209,7 +208,7 @@ NO_OPTIMIZE void Hex::applyHex()
 	ASM(pop ZSI);
 	ASM_POP_EFLAGS();
 
-	this->currentSpeed = this->currentSpeed + MathUtils::clamp(timelineSpeed, Hex::MinSpeed, Hex::MaxSpeed);
+	this->currentSpeed = MathUtils::clamp(timelineSpeed, Hex::MinSpeed, Hex::MaxSpeed);
 
 	HACKABLES_STOP_SEARCH();
 }
