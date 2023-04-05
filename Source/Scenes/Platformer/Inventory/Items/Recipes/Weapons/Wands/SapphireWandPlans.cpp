@@ -38,9 +38,10 @@ std::vector<std::tuple<Item*, int>> SapphireWandPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Iron::create(), 6 },
-		{ Gold::create(), 4 },
 		{ Sapphire::create(), 1 },
+		{ Gold::create(), 4 },
+		{ Iron::create(), 6 },
+		{ Coal::create(), 4 },
 	};
 }
 

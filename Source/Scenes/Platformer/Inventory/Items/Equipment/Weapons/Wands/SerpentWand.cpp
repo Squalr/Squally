@@ -25,7 +25,7 @@ SerpentWand::SerpentWand() : super(CurrencyInventory::create({{ IOU::getIOUIdent
 	// Health
 	0,
 	// Mana
-	0,
+	12,
 	// Attack
 	0,
 	// Magic Attack

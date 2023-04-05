@@ -25,7 +25,7 @@ ChieftainsWand::ChieftainsWand() : super(CurrencyInventory::create({{ IOU::getIO
 	// Health
 	0,
 	// Mana
-	0,
+	12,
 	// Attack
 	0,
 	// Magic Attack

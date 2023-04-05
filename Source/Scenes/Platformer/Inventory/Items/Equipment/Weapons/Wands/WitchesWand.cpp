@@ -25,7 +25,7 @@ WitchesWand::WitchesWand() : super(CurrencyInventory::create({{ IOU::getIOUIdent
 	// Health
 	0,
 	// Mana
-	0,
+	16,
 	// Attack
 	0,
 	// Magic Attack

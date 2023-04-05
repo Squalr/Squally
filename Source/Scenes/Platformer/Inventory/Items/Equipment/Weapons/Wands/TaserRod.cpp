@@ -25,7 +25,7 @@ TaserRod::TaserRod() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(
 	// Health
 	0,
 	// Mana
-	0,
+	14,
 	// Attack
 	0,
 	// Magic Attack

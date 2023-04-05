@@ -40,6 +40,7 @@ std::vector<std::tuple<Item*, int>> ChieftainsWandPlans::getReagentsInternal()
 	{
 		{ DarkWood::create(), 2 },
 		{ Sulfur::create(), 4 },
+		{ Coal::create(), 4 },
 	};
 }
 

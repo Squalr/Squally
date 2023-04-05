@@ -38,8 +38,9 @@ std::vector<std::tuple<Item*, int>> SerpentWandPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Sapphire::create(), 4 },
 		{ Sulfur::create(), 1 },
+		{ Sapphire::create(), 4 },
+		{ Coal::create(), 6 },
 	};
 }
 

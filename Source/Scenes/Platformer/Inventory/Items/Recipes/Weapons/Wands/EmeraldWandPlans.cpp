@@ -42,6 +42,7 @@ std::vector<std::tuple<Item*, int>> EmeraldWandPlans::getReagentsInternal()
 		{ Iron::create(), 4 },
 		{ Gold::create(), 1 },
 		{ Emerald::create(), 1 },
+		{ Coal::create(), 4 },
 	};
 }
 

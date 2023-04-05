@@ -25,7 +25,7 @@ CrystalWand::CrystalWand() : super(CurrencyInventory::create({{ IOU::getIOUIdent
 	// Health
 	0,
 	// Mana
-	0,
+	20,
 	// Attack
 	0,
 	// Magic Attack

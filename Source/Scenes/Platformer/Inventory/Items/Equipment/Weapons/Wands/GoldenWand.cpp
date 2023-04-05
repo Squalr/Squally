@@ -21,11 +21,11 @@ GoldenWand* GoldenWand::create()
 	return instance;
 }
 
-GoldenWand::GoldenWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 24, 28, ItemStats(
+GoldenWand::GoldenWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 7, 8, ItemStats(
 	// Health
 	0,
 	// Mana
-	0,
+	10,
 	// Attack
 	0,
 	// Magic Attack
