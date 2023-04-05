@@ -42,6 +42,5 @@ private:
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 	Elric* elric = nullptr;
-	ZombieElric* zombieElric = nullptr;
 	Zombie* zombie = nullptr;
 };

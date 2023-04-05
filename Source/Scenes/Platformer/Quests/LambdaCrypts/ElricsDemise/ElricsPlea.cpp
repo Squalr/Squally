@@ -95,11 +95,6 @@ void ElricsPlea::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<Elric>(this, [=](Elric* elric)
 	{
 		this->elric = elric;
-
-		if (questState == QuestState::Complete)
-		{
-			this->elric->despawn();
-		}
 	}, Elric::MapKey);
 
 	ObjectEvents::WatchForObject<Zombie>(this, [=](Zombie* zombie)
@@ -111,17 +106,6 @@ void ElricsPlea::onLoad(QuestState questState)
 			healthBehavior->kill(false);
 		});
 	}, "cinematic-zombie");
-	
-
-	ObjectEvents::WatchForObject<ZombieElric>(this, [=](ZombieElric* zombieElric)
-	{
-		this->zombieElric = zombieElric;
-
-		if (questState != QuestState::Complete)
-		{
-			this->zombieElric->despawn();
-		}
-	}, ZombieElric::MapKey);
 }
 
 void ElricsPlea::onActivate(bool isActiveThroughSkippable)

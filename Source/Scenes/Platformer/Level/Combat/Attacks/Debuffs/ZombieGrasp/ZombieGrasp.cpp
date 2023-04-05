@@ -125,7 +125,7 @@ void ZombieGrasp::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						std::string("fld dword ptr [edx]\n") +
+						std::string("fild dword ptr [edx]\n") +
 						std::string("fistp dword ptr [ecx]\n\n") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
@@ -134,7 +134,7 @@ void ZombieGrasp::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentHint::create()
 							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx)))
 						, // x64
-						std::string("fld dword ptr [rdx]\n") +
+						std::string("fild dword ptr [rdx]\n") +
 						std::string("fistp dword ptr [rcx]\n\n") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
