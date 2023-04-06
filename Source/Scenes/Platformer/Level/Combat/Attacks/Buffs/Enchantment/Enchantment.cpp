@@ -57,7 +57,7 @@ Enchantment::Enchantment(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
-	this->spellAura->setColor(Color3B::YELLOW);
+	this->spellAura->setColor(Color3B::MAGENTA);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
