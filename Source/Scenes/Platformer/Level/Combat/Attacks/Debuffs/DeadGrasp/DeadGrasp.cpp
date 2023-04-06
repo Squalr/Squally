@@ -194,9 +194,7 @@ NO_OPTIMIZE void DeadGrasp::applyDeadGrasp()
 	ASM(pop ZSI);
 	ASM_POP_EFLAGS()
 
-	volatile int signChange = currentDamageDealtLocal < 0 ? 1 : -1;
-
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(signChange * currentDamageDealtLocal);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(-currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }
