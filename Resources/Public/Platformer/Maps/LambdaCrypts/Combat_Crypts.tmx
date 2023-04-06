@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="582" name="ruins-gray" type="terrain" x="-1104.07" y="-604.91" width="4648.13" height="4309.82">
+  <object id="582" name="stone-dark" type="terrain" x="-1104.07" y="-604.91" width="4648.13" height="4309.82">
    <properties>
     <property name="collision" value="none"/>
    </properties>

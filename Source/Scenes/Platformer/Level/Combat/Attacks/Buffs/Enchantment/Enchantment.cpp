@@ -40,7 +40,6 @@ const std::string Enchantment::EnchantmentIdentifier = "enchantment";
 const std::string Enchantment::HackIdentifierEnchantment = "enchantment";
 
 const int Enchantment::MaxMultiplier = 4;
-const float Enchantment::DamageIncrease = 10.0f; // Keep in sync with asm
 const float Enchantment::Duration = 16.0f;
 
 Enchantment* Enchantment::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -125,23 +124,31 @@ void Enchantment::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Enchantment_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Enchantment::DamageIncrease)))) + 
-						"fld dword ptr [esi]\n" +
-						"fmul dword ptr [edi]\n" +
-						"frndint\n" +
-						"fistp dword ptr [esi]\n"
+						std::string("fild dword ptr [esi]\n") +
+						std::string("fmul dword ptr [edi]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentRnd::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentInt::create()) +
+						std::string("frndint\n") +
+						std::string("fistp dword ptr [esi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
+						std::string("\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Enchantment_CommentHint::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Enchantment_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Enchantment::DamageIncrease)))) + 
-						"fld dword ptr [rsi]\n" +
-						"fmul dword ptr [rdi]\n" +
-						"frndint\n" +
-						"fistp dword ptr [rsi]\n"
+						std::string("fild dword ptr [rsi]\n") +
+						std::string("fmul dword ptr [rdi]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentRnd::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentInt::create()) +
+						std::string("frndint\n") +
+						std::string("fistp dword ptr [rsi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
+						std::string("\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Enchantment_CommentHint::create())
 					),
 				},
 				true
@@ -179,7 +186,7 @@ NO_OPTIMIZE void Enchantment::applyEnchantment()
 	static volatile float* damageIncreasePtr = nullptr;
 
 	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
-	damageIncrease = 1.5f;
+	damageIncrease = 3.0f;
 	damageIncreasePtr = &damageIncrease;
 	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 
@@ -191,7 +198,7 @@ NO_OPTIMIZE void Enchantment::applyEnchantment()
 	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_ENCHANTMENT);
-	ASM(fld dword ptr [ZSI]);
+	ASM(fild dword ptr [ZSI]);
 	ASM(fmul dword ptr [ZDI]);
 	ASM(frndint)
 	ASM(fistp dword ptr [ZSI]);

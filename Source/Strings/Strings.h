@@ -10854,10 +10854,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_DefensiveStance_RegisterEcx() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Enchantment_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce* create();
+		static Menus_Hacking_Abilities_Buffs_Enchantment_CommentHint* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10865,38 +10865,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce();
-		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_CommentDamageReduce() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_Enchantment_CommentRegister : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_Enchantment_CommentRegister* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_Enchantment_CommentRegister();
-		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_CommentRegister() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_Enchantment_CursedBlade : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_Enchantment_CursedBlade* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_Enchantment_CursedBlade();
-		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_CursedBlade() = default;
+		Menus_Hacking_Abilities_Buffs_Enchantment_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Buffs_Enchantment_CommentHint() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Enchantment_Enchantment : public LocalizedString
@@ -16104,6 +16074,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentI() = default;
 	};
 
+	class Menus_Hacking_Abilities_Generic_FPU_CommentInt : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_FPU_CommentInt* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_FPU_CommentInt();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentInt() = default;
+	};
+
 	class Menus_Hacking_Abilities_Generic_FPU_CommentMul : public LocalizedString
 	{
 	public:
@@ -16117,6 +16102,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Generic_FPU_CommentMul();
 		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentMul() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_FPU_CommentRnd : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_FPU_CommentRnd* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_FPU_CommentRnd();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentRnd() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_FPU_CommentSub : public LocalizedString
