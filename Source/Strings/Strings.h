@@ -13749,10 +13749,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Daze_RegisterEsi() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentDamageReduce : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentAbs : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentDamageReduce* create();
+		static Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentAbs* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13760,23 +13760,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentDamageReduce();
-		virtual ~Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentDamageReduce() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentRegister : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentRegister* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentRegister();
-		virtual ~Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentRegister() = default;
+		Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentAbs();
+		virtual ~Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentAbs() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_DeadGrasp_DeadGrasp : public LocalizedString
@@ -16027,6 +16012,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Generic_Conditional_CommentZ();
 		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentZ() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_FPU_CommentAbs : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_FPU_CommentAbs* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_FPU_CommentAbs();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentAbs() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_FPU_CommentAdd : public LocalizedString

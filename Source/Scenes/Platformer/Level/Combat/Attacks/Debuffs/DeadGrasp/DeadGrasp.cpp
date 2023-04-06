@@ -122,21 +122,27 @@ void DeadGrasp::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(DeadGrasp::DamageIncrease)))) + 
-						"fld dword ptr [esi]\n" +
-						"fabs\n" +
-						"fistp dword ptr [esi]\n"
+						std::string("fild dword ptr [esi]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentAbs::create()) +
+						std::string("fabs\n") +
+						std::string("fistp dword ptr [esi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
+						std::string("\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentAbs::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(DeadGrasp::DamageIncrease)))) + 
-						"fld dword ptr [rsi]\n" +
-						"fabs\n" +
-						"fistp dword ptr [rsi]\n"
+						std::string("fild dword ptr [rsi]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentAbs::create()) +
+						std::string("fabs\n") +
+						std::string("fistp dword ptr [rsi]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
+						std::string("\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentAbs::create())
 					),
 				},
 				true
@@ -171,7 +177,7 @@ NO_OPTIMIZE void DeadGrasp::applyDeadGrasp()
 	static volatile int currentDamageDealtLocal = 0;
 	static volatile int* currentDamageDealtLocalPtr = &currentDamageDealtLocal;
 
-	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+	currentDamageDealtLocal = -Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZSI);
@@ -179,7 +185,7 @@ NO_OPTIMIZE void DeadGrasp::applyDeadGrasp()
 	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_DEAD_GRASP);
-	ASM(fld dword ptr [ZSI]);
+	ASM(fild dword ptr [ZSI]);
 	ASM(fabs);
 	ASM(fistp dword ptr [ZSI]);
 	ASM_NOP16();
@@ -188,7 +194,9 @@ NO_OPTIMIZE void DeadGrasp::applyDeadGrasp()
 	ASM(pop ZSI);
 	ASM_POP_EFLAGS()
 
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(currentDamageDealtLocal);
+	volatile int signChange = currentDamageDealtLocal < 0 ? 1 : -1;
+
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(signChange * currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }
