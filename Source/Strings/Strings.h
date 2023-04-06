@@ -14409,51 +14409,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Melt_RegisterEcx() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage();
-		virtual ~Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJmp : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJmp* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJmp();
-		virtual ~Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJmp() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJnz : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJnz* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJnz();
-		virtual ~Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentJnz() = default;
-	};
-
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentRng : public LocalizedString
 	{
 	public:
@@ -14482,6 +14437,36 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_PoisonedArrows_PoisonedArrows();
 		virtual ~Menus_Hacking_Abilities_Debuffs_PoisonedArrows_PoisonedArrows() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEbx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEbx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEcx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEdi : public LocalizedString

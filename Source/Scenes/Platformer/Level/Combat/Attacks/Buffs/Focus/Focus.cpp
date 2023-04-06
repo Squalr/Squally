@@ -112,10 +112,10 @@ void Focus::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return FocusGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Focus_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Focus_RegisterEax::create(), true
 					},
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Focus_RegisterEsi::create()
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Buffs_Focus_RegisterEsi::create(), true
 					}
 				},
 				int(HackFlags::None),

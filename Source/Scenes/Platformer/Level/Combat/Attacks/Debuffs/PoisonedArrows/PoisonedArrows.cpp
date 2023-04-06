@@ -102,10 +102,16 @@ void PoisonedArrows::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return PoisonedArrowsGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEdi::create(),
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEbx::create(),
 					},
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEsi::create(),
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEcx::create(),
+					},
+					{
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEdi::create(), true
+					},
+					{
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEsi::create(), true
 					}
 				},
 				int(HackFlags::None),
@@ -117,29 +123,29 @@ void PoisonedArrows::registerHackables()
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentRng::create()) +
 						// Load rng
-						std::string("fild dword ptr [ebx]") +
+						std::string("fild dword ptr [ebx]\n") +
 						// Load chance + compare
-						std::string("fcomp dword ptr [ecx]") +
+						std::string("fcomp dword ptr [ecx]\n") +
 						// Convert to eflags
-						std::string("fstsw ax") +
-						std::string("sahf") +
-						std::string("jae skipPoisonedArrowsCode") +
-						std::string("fild dword ptr [edi]") +
-						std::string("fistp dword ptr [esi]") +
-						std::string("skipPoisonedArrowsCode:")
+						std::string("fstsw ax\n") +
+						std::string("sahf\n") +
+						std::string("jae skipPoisonedArrowsCode\n") +
+						std::string("fild dword ptr [edi]\n") +
+						std::string("fistp dword ptr [esi]\n") +
+						std::string("skipPoisonedArrowsCode:\n")
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentRng::create()) +
 						// Load rng
-						std::string("fild dword ptr [ebx]") +
+						std::string("fild dword ptr [rbx]\n") +
 						// Load chance + compare
-						std::string("fcomp dword ptr [ecx]") +
+						std::string("fcomp dword ptr [rcx]\n") +
 						// Convert to eflags
-						std::string("fstsw ax") +
-						std::string("sahf") +
-						std::string("jae skipPoisonedArrowsCode") +
-						std::string("fild dword ptr [edi]") +
-						std::string("fistp dword ptr [esi]") +
-						std::string("skipPoisonedArrowsCode:")
+						std::string("fstsw ax\n") +
+						std::string("sahf\n") +
+						std::string("jae skipPoisonedArrowsCode\n") +
+						std::string("fild dword ptr [rdi]\n") +
+						std::string("fistp dword ptr [rsi]\n") +
+						std::string("skipPoisonedArrowsCode:\n")
 					),
 				},
 				true
@@ -195,15 +201,15 @@ NO_OPTIMIZE void PoisonedArrows::runPoisonedArrowsTick()
 {
 	static volatile int damage = 0;
 	static volatile int* damagePtr = nullptr;
-	static volatile int damageBonus = 0;
-	static volatile int* damageBonusPtr = nullptr;
+	static volatile int critDamage = 0;
+	static volatile int* critDamagePtr = nullptr;
 	static volatile float rng = 0;
 	static volatile float* rngPtr = nullptr;
 	static volatile float chance = 0;
 	static volatile float* chancePtr = nullptr;
 
 	damage = 1;
-	damageBonus = 5;
+	critDamage = 5;
 	damagePtr = &damage;
 	chance = 50.0f;
 	chancePtr = &chance;
@@ -219,8 +225,8 @@ NO_OPTIMIZE void PoisonedArrows::runPoisonedArrowsTick()
 
 	ASM_MOV_REG_PTR(ZBX, rngPtr);
 	ASM_MOV_REG_PTR(ZCX, chancePtr);
-	ASM_MOV_REG_PTR(ZDI, damageBonusPtr);
-	ASM_MOV_REG_PTR(ZSI, damageBonusPtr);
+	ASM_MOV_REG_PTR(ZDI, critDamagePtr);
+	ASM_MOV_REG_PTR(ZSI, damagePtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_POISONED_ARROWS);
 	ASM(fild dword ptr [ZBX]);	// Load rng
