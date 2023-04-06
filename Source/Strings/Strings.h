@@ -12309,10 +12309,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_SharpenedBlade_SharpenedBlade() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_ShieldWall_CommentDamageReduce : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_ShieldWall_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ShieldWall_CommentDamageReduce* create();
+		static Menus_Hacking_Abilities_Buffs_ShieldWall_CommentHint* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12320,53 +12320,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_ShieldWall_CommentDamageReduce();
-		virtual ~Menus_Hacking_Abilities_Buffs_ShieldWall_CommentDamageReduce() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_ShieldWall_CommentIncreaseInstead : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_ShieldWall_CommentIncreaseInstead* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_ShieldWall_CommentIncreaseInstead();
-		virtual ~Menus_Hacking_Abilities_Buffs_ShieldWall_CommentIncreaseInstead() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_ShieldWall_CommentRegister : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_ShieldWall_CommentRegister* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_ShieldWall_CommentRegister();
-		virtual ~Menus_Hacking_Abilities_Buffs_ShieldWall_CommentRegister() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_ShieldWall_CommentTryChanging : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_ShieldWall_CommentTryChanging* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_ShieldWall_CommentTryChanging();
-		virtual ~Menus_Hacking_Abilities_Buffs_ShieldWall_CommentTryChanging() = default;
+		Menus_Hacking_Abilities_Buffs_ShieldWall_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Buffs_ShieldWall_CommentHint() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEax : public LocalizedString
