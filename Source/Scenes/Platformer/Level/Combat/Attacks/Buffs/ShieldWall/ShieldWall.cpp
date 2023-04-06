@@ -186,12 +186,12 @@ NO_OPTIMIZE void ShieldWall::applyShieldWall()
 {
 	static volatile int currentDamageTakenLocal = 0;
 	static volatile int* currentDamageTakenLocalPtr = nullptr;
-	static volatile int damageReduction = 4;
+	static volatile int damageReduction = 0;
 	static volatile int* damageReductionPtr = nullptr;
 
 	currentDamageTakenLocalPtr = &currentDamageTakenLocal;
 	damageReductionPtr = &damageReduction;
-	damageReduction = 1;
+	damageReduction = 4;
 	currentDamageTakenLocal = Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
 
 	ASM_PUSH_EFLAGS()
