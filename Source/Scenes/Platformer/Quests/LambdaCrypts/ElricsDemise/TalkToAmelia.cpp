@@ -204,26 +204,10 @@ void TalkToAmelia::runCinematicSequence()
 			false
 		));
 
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_HellCrystal::create()
-				->setStringReplacementVariables({ Strings::Items_Misc_Keys_HellGateCrystal::create(), Strings::Platformer_MapNames_DaemonsHallow_DaemonsHallow::create() }),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-				DialogueEvents::BuildPreviewNode(&this->amelia, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceLong(),
-			false
-		));
-
 		if (this->gecky != nullptr)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Gecky_Oh::create(),
+				Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Gecky_Oh::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -240,7 +224,7 @@ void TalkToAmelia::runCinematicSequence()
 		else
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Guano_Brutal::create(),
+				Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Guano_Brutal::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -254,6 +238,22 @@ void TalkToAmelia::runCinematicSequence()
 				false
 			));
 		}
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_HellCrystal::create()
+				->setStringReplacementVariables({ Strings::Items_Misc_Keys_HellGateCrystal::create(), Strings::Platformer_MapNames_DaemonsHallow_DaemonsHallow::create() }),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->amelia, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceLong(),
+			false
+		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_H_SkyMaster::create(),

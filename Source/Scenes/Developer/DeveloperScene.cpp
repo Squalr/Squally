@@ -450,15 +450,16 @@ DeveloperScene::DeveloperScene()
 		// ** Fix hexus puzzle in graveyard (1 extra card)
 		// ** Tune hexus battle special cards
 		// ** Another Evil Eye encounter
+		// interim quest Amelia => Princess Nebea (to explain hell crystal nonsense)
 
 		/*
 		X ReanimatedPig			=>  1_x <Piggy,				fisub> 		=> Thick Hide / dmg decrease
 		X Zombie				=>  1_x <ZombieGrasp,		fild/fistp> => Zombie Grasp / raw damage dealt debuff
 		X Undead				=>  1_x <DeadGrasp,			fabs>		=> Dead Grasp / convert damage to healing
+		X Zombie Elric			=> 	2_x 								=> Recycle (ZombieGrasp)
 		X Assassin				=>  2_x <ThrowingStar,		fiadd> 		=> Focus / add to damage
 		X BoneFiend				=>  2_x <AxeGlowPurp,		fdiv>  		=> CursedSwings debuff / reduce damage by 75% or something (int)
 		X Mystic				=>  2_x <VoodooZombie,		fimul> 		=> Hex / speed decrease
-		- Zombie Elric			=> 2_x <??, ??> ?? / ??
 
 		X BoneKnight			=>  3_x <ShieldGlowOrange,	fidiv> 		=> Shield Wall / constant 25% damage recv
 		X Warlock				=>  3_x <WandSkeleton,		fmul/frndint> 	=> Enchantment / 50% damage increase (rounded)

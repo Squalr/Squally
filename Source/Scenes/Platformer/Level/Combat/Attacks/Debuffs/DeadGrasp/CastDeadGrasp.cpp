@@ -28,7 +28,7 @@ CastDeadGrasp* CastDeadGrasp::create(float attackDuration, float recoverDuration
 }
 
 CastDeadGrasp::CastDeadGrasp(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Debuff, UIResources::Menus_Icons_DeadGrasp, priority, AbilityType::Shadow, 0, 0, 7, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_DeadGrasp, priority, AbilityType::Shadow, 0, 0, 6, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 

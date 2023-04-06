@@ -35334,10 +35334,10 @@ namespace Strings
 		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeKeyFromCorpse() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_HellCrystal : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Gecky_Oh : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_HellCrystal* create();
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Gecky_Oh* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35345,14 +35345,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_HellCrystal();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_HellCrystal() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Gecky_Oh();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Gecky_Oh() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Gecky_Oh : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Guano_Brutal : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Gecky_Oh* create();
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Guano_Brutal* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35360,14 +35360,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Gecky_Oh();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Gecky_Oh() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Guano_Brutal();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Guano_Brutal() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Guano_Brutal : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_HellCrystal : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Guano_Brutal* create();
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_HellCrystal* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35375,8 +35375,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Guano_Brutal();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_Guano_Brutal() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_HellCrystal();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_HellCrystal() = default;
 	};
 
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_H_SkyMaster : public LocalizedString
