@@ -133,10 +133,10 @@ void UnholyProtection::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) + 
 						"fldz\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create()) + 
-						"fcomip st(0), st(1)\n" +  // TODO: AsmJit can't parse this. Need to pull latest version and see if it's fixed.
-						"fcmove st(0), st(1)\n" +
+						"fcomip st0, st1\n" +  // TODO: AsmJit can't parse this. Need to pull latest version and see if it's fixed.
+						"fcmove st0, st1\n" +
 						"fistp dword ptr [eax]\n" +
-						"fstp st(0)\n"
+						"fstp st0\n"
 						, // x64 
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) + 
 						"fld1\n" +
@@ -145,10 +145,10 @@ void UnholyProtection::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) + 
 						"fldz\n" +
 						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create()) + 
-						"fcomip st(0), st(1)\n" + 
-						"fcmove st(0), st(1)\n" +
+						"fcomip st0, st1\n" + 
+						"fcmove st0, st1\n" +
 						"fistp dword ptr [rax]\n" +
-						"fstp st(0)\n"
+						"fstp st0\n"
 					),
 				},
 				true
