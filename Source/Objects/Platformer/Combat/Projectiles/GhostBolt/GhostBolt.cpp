@@ -103,34 +103,39 @@ void GhostBolt::registerHackables()
 				UIResources::Menus_Icons_GhostBolts,
 				LazyNode<HackablePreview>::create([=](){ return GhostBoltSpeedPreview::create(); }),
 				{
-					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterEax::create() },
-					{ HackableCode::Register::xmm0, Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterXmm0::create() },
-					{ HackableCode::Register::xmm1, Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterXmm1::create() }
+					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterEax::create(), true },
 				},
 				int(HackFlags::None),
 				3.0f,
 				0.0f,
 				{
 					HackableCode::ReadOnlyScript(
-						Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_StopGhostBolt::create(),
+						Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_ApplySpeed::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentXmmLoading::create()->
-							setStringReplacementVariables(Strings::Common_Brackets::create()->
-							setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentAlterSpeed::create()) + 
-						"mov dword ptr [eax], 0.0f\n"
-						"movss xmm1, dword ptr [eax]\n\n"
-						"mulps xmm0, xmm1"
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) +
+						std::string("fld1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFchgs::create()) +
+						std::string("fchs\n") +
+						std::string("fstp dword ptr [eax]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
+						std::string("\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentHint::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentXmmLoading::create()->
-							setStringReplacementVariables(Strings::Common_Brackets::create()->
-							setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentAlterSpeed::create()) + 
-						"mov dword ptr [rax], 0.0f\n"
-						"movss xmm1, dword ptr [rax]\n\n"
-						"mulps xmm0, xmm1"
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) +
+						std::string("fld1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFchgs::create()) +
+						std::string("fchs\n") +
+						std::string("fstp dword ptr [rax]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
+						std::string("\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentHint::create())
 					)
-				}
+				},
+				true
 			)
 		},
 	};
@@ -151,34 +156,29 @@ HackablePreview* GhostBolt::createDefaultPreview()
 
 NO_OPTIMIZE void GhostBolt::setGhostBoltSpeed()
 {
-	static volatile float* freeMemoryForUser = new float[16];
 	static volatile float speedMultiplier;
-	static volatile float speedMultiplierTemp;
 	static volatile float* speedMultiplierPtr;
-	static volatile float* speedMultiplierTempPtr;
 
-	speedMultiplier = 1.0f;
-	speedMultiplierTemp = 1.0f;
+	speedMultiplier = 0.0f;
 	speedMultiplierPtr = &speedMultiplier;
-	speedMultiplierTempPtr = &speedMultiplierTemp;
 
-	// Initialize xmm0 and xmm1
+	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
+
 	ASM_MOV_REG_PTR(ZAX, speedMultiplierPtr);
-	ASM(movss xmm0, dword ptr [ZAX]);
-	ASM_MOV_REG_PTR(ZAX, speedMultiplierTempPtr);
-	ASM(movss xmm1, dword ptr [ZAX]);
-	ASM_MOV_REG_PTR(ZAX, freeMemoryForUser);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_GHOST_BOLT);
-	ASM(mulps xmm0, xmm1);
+	ASM(fld1);
+	ASM(fchs);
+	ASM(fstp dword ptr [ZAX]);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_REG_PTR(ZAX, speedMultiplierPtr);
-	ASM(movss dword ptr [ZAX], xmm0);
 	ASM(pop ZAX);
+	ASM_POP_EFLAGS();
 
+	speedMultiplier *= -1.0f;
+	
 	this->setSpeedMultiplier(Vec3(speedMultiplier, speedMultiplier, speedMultiplier));
 
 	HACKABLES_STOP_SEARCH();

@@ -22,7 +22,7 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	SmartAnimationSequenceNode* fireball = nullptr;
+	SmartAnimationSequenceNode* ghostbolt = nullptr;
 	LocalizedLabel* xmm1Left = nullptr;
 	LocalizedLabel* xmm1Right = nullptr;
 };

@@ -242,7 +242,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[BoneFiend::MapKey] = StatsIncrements(Stats(52, 8, 10));
 	StatsTables::StatsTable[Hunter::MapKey] = StatsIncrements(Stats(55, 14, 10));
 	StatsTables::StatsTable[KingZul::MapKey] = StatsIncrements(Stats(160, 18, 10));
-	StatsTables::StatsTable[Lazarus::MapKey] = StatsIncrements(Stats(124, 28, 10));
+	StatsTables::StatsTable[Lazarus::MapKey] = StatsIncrements(Stats(124, 38, 10));
 	StatsTables::StatsTable[Mystic::MapKey] = StatsIncrements(Stats(58, 22, 10));
 	StatsTables::StatsTable[ReanimatedPig::MapKey] = StatsIncrements(Stats(55, 10, 10));
 	StatsTables::StatsTable[SkeletalCleaver::MapKey] = StatsIncrements(Stats(57, 8, 10));

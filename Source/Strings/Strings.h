@@ -10029,10 +10029,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_ApplySpeed() = default;
 	};
 
-	class Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentAlterSpeed : public LocalizedString
+	class Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentAlterSpeed* create();
+		static Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentHint* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10040,38 +10040,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentAlterSpeed();
-		virtual ~Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentAlterSpeed() = default;
-	};
-
-	class Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentXmmLoading : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentXmmLoading* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentXmmLoading();
-		virtual ~Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentXmmLoading() = default;
-	};
-
-	class Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_GhostBoltClippy : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_GhostBoltClippy* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_GhostBoltClippy();
-		virtual ~Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_GhostBoltClippy() = default;
+		Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentHint() = default;
 	};
 
 	class Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterEax : public LocalizedString
@@ -10087,51 +10057,6 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterEax();
 		virtual ~Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterEax() = default;
-	};
-
-	class Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterXmm0 : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterXmm0* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterXmm0();
-		virtual ~Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterXmm0() = default;
-	};
-
-	class Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterXmm1 : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterXmm1* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterXmm1();
-		virtual ~Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterXmm1() = default;
-	};
-
-	class Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_StopGhostBolt : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_StopGhostBolt* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_StopGhostBolt();
-		virtual ~Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_StopGhostBolt() = default;
 	};
 
 	class Menus_Hacking_Abilities_Abilities_InnerFire_Hint : public LocalizedString
@@ -16089,6 +16014,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentF() = default;
 	};
 
+	class Menus_Hacking_Abilities_Generic_FPU_CommentFchgs : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_FPU_CommentFchgs* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_FPU_CommentFchgs();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentFchgs() = default;
+	};
+
 	class Menus_Hacking_Abilities_Generic_FPU_CommentFiadd : public LocalizedString
 	{
 	public:
@@ -16102,6 +16042,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Generic_FPU_CommentFiadd();
 		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentFiadd() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_FPU_CommentFld1 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_FPU_CommentFld1* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_FPU_CommentFld1();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentFld1() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_FPU_CommentI : public LocalizedString

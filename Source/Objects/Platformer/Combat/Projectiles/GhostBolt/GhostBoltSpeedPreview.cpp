@@ -23,14 +23,14 @@ GhostBoltSpeedPreview* GhostBoltSpeedPreview::create()
 
 GhostBoltSpeedPreview::GhostBoltSpeedPreview()
 {
-	this->fireball = SmartAnimationSequenceNode::create(FXResources::FireBall_FireBall_0000);
+	this->ghostbolt = SmartAnimationSequenceNode::create(FXResources::GhostBolt_GhostBolt_0000);
 
 	this->xmm1Left = this->createRegisterEqualsValueLabel(HackableCode::Register::xmm1, false, ConstantString::create("1.0f"));
 	this->xmm1Right = this->createRegisterEqualsValueLabel(HackableCode::Register::xmm1, false, ConstantString::create("-1.0f"));
 
-	this->fireball->setScale(0.35f);
+	this->ghostbolt->setScale(0.35f);
 
-	this->previewNode->addChild(this->fireball);
+	this->previewNode->addChild(this->ghostbolt);
 	this->assemblyTextNode->addChild(this->xmm1Left);
 	this->assemblyTextNode->addChild(this->xmm1Right);
 }
@@ -51,17 +51,17 @@ void GhostBoltSpeedPreview::onEnter()
 	const float speed = 1.5f;
 	const float offset = 48.0f;
 
-	this->fireball->setPosition(Vec2(0.0f, 0.0f));
+	this->ghostbolt->setPosition(Vec2(0.0f, 0.0f));
 
-	this->fireball->runAction(
+	this->ghostbolt->runAction(
 		RepeatForever::create(Sequence::create(
-			EaseSineInOut::create(MoveTo::create(speed, Vec2(-(HackablePreview::PreviewRadius - offset), this->fireball->getPositionY()))),
-			EaseSineInOut::create(MoveTo::create(speed, Vec2(HackablePreview::PreviewRadius - offset, this->fireball->getPositionY()))),
+			EaseSineInOut::create(MoveTo::create(speed, Vec2(-(HackablePreview::PreviewRadius - offset), this->ghostbolt->getPositionY()))),
+			EaseSineInOut::create(MoveTo::create(speed, Vec2(HackablePreview::PreviewRadius - offset, this->ghostbolt->getPositionY()))),
 			nullptr
 		))
 	);
 
-	this->fireball->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.085f);
+	this->ghostbolt->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.085f);
 }
 
 void GhostBoltSpeedPreview::initializePositions()

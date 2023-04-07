@@ -162,8 +162,10 @@ NO_OPTIMIZE void Fireball::setFireballSpeed()
 	speedMultiplierPtr = &speedMultiplier;
 	speedMultiplierTempPtr = &speedMultiplierTemp;
 
-	// Initialize xmm0 and xmm1
+	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
+
+	// Initialize xmm0 and xmm1
 	ASM_MOV_REG_PTR(ZAX, speedMultiplierPtr);
 	ASM(movss xmm0, dword ptr [ZAX]);
 	ASM_MOV_REG_PTR(ZAX, speedMultiplierTempPtr);
@@ -177,7 +179,9 @@ NO_OPTIMIZE void Fireball::setFireballSpeed()
 
 	ASM_MOV_REG_PTR(ZAX, speedMultiplierPtr);
 	ASM(movss dword ptr [ZAX], xmm0);
+	
 	ASM(pop ZAX);
+	ASM_POP_EFLAGS();
 
 	this->setSpeedMultiplier(Vec3(speedMultiplier, speedMultiplier, speedMultiplier));
 

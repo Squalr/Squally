@@ -198,13 +198,15 @@ void UnholyProtection::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHeal
 NO_OPTIMIZE void UnholyProtection::applyUnholyProtection()
 {
 	static volatile int newHealthUnholyProtection = 0;
-	static volatile int* newHealthUnholyProtectionPtr = &newHealthUnholyProtection;
+	static volatile int* newHealthUnholyProtectionPtr = nullptr;
 	static volatile int currentDamageTakenLocal = 0;
-	static volatile int* currentDamageTakenLocalPtr = &currentDamageTakenLocal;
+	static volatile int* currentDamageTakenLocalPtr = nullptr;
 
 	newHealthUnholyProtection = GameUtils::getKeyOrDefault(Buff::HackStateStorage, UnholyProtection::StateKeyUnholyProtectionNewHealth, Value(0)).asInt();
 	newHealthUnholyProtection = MathUtils::clamp(newHealthUnholyProtection, 0, std::abs(newHealthUnholyProtection));
+	newHealthUnholyProtectionPtr = &newHealthUnholyProtection;
 	currentDamageTakenLocal = Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
+	currentDamageTakenLocalPtr = &currentDamageTakenLocal;
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZAX);

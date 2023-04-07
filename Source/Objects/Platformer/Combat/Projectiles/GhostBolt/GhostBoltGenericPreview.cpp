@@ -20,9 +20,9 @@ GhostBoltGenericPreview* GhostBoltGenericPreview::create()
 
 GhostBoltGenericPreview::GhostBoltGenericPreview()
 {
-	this->fireball = SmartAnimationSequenceNode::create(FXResources::FireBall_FireBall_0000);
+	this->ghostbolt = SmartAnimationSequenceNode::create(FXResources::GhostBolt_GhostBolt_0000);
 
-	this->previewNode->addChild(this->fireball);
+	this->previewNode->addChild(this->ghostbolt);
 }
 
 GhostBoltGenericPreview::~GhostBoltGenericPreview()
@@ -38,7 +38,7 @@ void GhostBoltGenericPreview::onEnter()
 {
 	super::onEnter();
 
-	this->fireball->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.085f);
+	this->ghostbolt->playAnimationRepeat(FXResources::GhostBolt_GhostBolt_0000, 0.085f);
 }
 
 void GhostBoltGenericPreview::initializePositions()
