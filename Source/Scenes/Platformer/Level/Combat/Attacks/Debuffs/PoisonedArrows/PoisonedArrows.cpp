@@ -51,12 +51,12 @@ PoisonedArrows* PoisonedArrows::create(PlatformerEntity* caster, PlatformerEntit
 PoisonedArrows::PoisonedArrows(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_PoisonSpears, AbilityType::Nature, BuffData())
 {
-	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
+	this->poisonEffect = SmartAnimationSequenceNode::create();
 	this->healAmount = PoisonedArrows::DamageAmount;
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
 
-	this->addChild(this->healEffect);
+	this->addChild(this->poisonEffect);
 	this->addChild(this->impactSound);
 	this->addChild(this->healSound);
 }
@@ -121,31 +121,35 @@ void PoisonedArrows::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentRng::create()) +
-						// Load rng
-						std::string("fild dword ptr [ebx]\n") +
-						// Load chance + compare
-						std::string("fcomp dword ptr [ecx]\n") +
-						// Convert to eflags
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng::create()) +
+						std::string("fld dword ptr [ebx]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst::create()) +
+						std::string("fcomp dword ptr [ecx]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) +
 						std::string("fstsw ax\n") +
-						std::string("sahf\n") +
-						std::string("jae skipPoisonedArrowsCode\n") +
+						std::string("sahf\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip::create()) +
+						std::string("ja skipPoisonedArrowsCode\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage::create()) +
 						std::string("fild dword ptr [edi]\n") +
-						std::string("fistp dword ptr [esi]\n") +
-						std::string("skipPoisonedArrowsCode:\n")
+						std::string("fistp dword ptr [esi]\n\n") +
+						std::string("skipPoisonedArrowsCode:\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentRng::create()) +
-						// Load rng
-						std::string("fild dword ptr [rbx]\n") +
-						// Load chance + compare
-						std::string("fcomp dword ptr [rcx]\n") +
-						// Convert to eflags
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng::create()) +
+						std::string("fld dword ptr [ebx]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst::create()) +
+						std::string("fcomp dword ptr [ecx]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) +
 						std::string("fstsw ax\n") +
-						std::string("sahf\n") +
-						std::string("jae skipPoisonedArrowsCode\n") +
-						std::string("fild dword ptr [rdi]\n") +
-						std::string("fistp dword ptr [rsi]\n") +
-						std::string("skipPoisonedArrowsCode:\n")
+						std::string("sahf\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip::create()) +
+						std::string("ja skipPoisonedArrowsCode\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage::create()) +
+						std::string("fild dword ptr [edi]\n") +
+						std::string("fistp dword ptr [esi]\n\n") +
+						std::string("skipPoisonedArrowsCode:\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint::create())
 					),
 				},
 				true
@@ -179,9 +183,9 @@ void PoisonedArrows::runPoisonedArrows()
 				icon,
 				PoisonedArrows::TimeBetweenTicks * float(healIndex) + PoisonedArrows::StartDelay, [=]()
 			{
-				if (!this->healEffect->isPlayingAnimation())
+				if (!this->poisonEffect->isPlayingAnimation())
 				{
-					this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
+					this->poisonEffect->playAnimation(FXResources::VoidPulse_VoidPulse_0000, 0.05f, true);
 				}
 				
 				this->runPoisonedArrowsTick();
@@ -209,8 +213,9 @@ NO_OPTIMIZE void PoisonedArrows::runPoisonedArrowsTick()
 	static volatile float* chancePtr = nullptr;
 
 	damage = 1;
-	critDamage = 5;
 	damagePtr = &damage;
+	critDamage = 5;
+	critDamagePtr = &critDamage;
 	chance = 50.0f;
 	chancePtr = &chance;
 	rng = RandomHelper::random_real(0.0f, 100.0f);
@@ -229,10 +234,12 @@ NO_OPTIMIZE void PoisonedArrows::runPoisonedArrowsTick()
 	ASM_MOV_REG_PTR(ZSI, damagePtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_POISONED_ARROWS);
-	ASM(fild dword ptr [ZBX]);	// Load rng
+	ASM(fld dword ptr [ZBX]);	// Load rng
 	ASM(fcomp dword ptr [ZCX]);	// Load chance + compare
+
 	ASM(fstsw ax);	// Store in AX
 	ASM(sahf);		// Convert to eflags
+
 	ASM(ja skipPoisonedArrowsCode);
 	ASM(fild dword ptr [ZDI]);
 	ASM(fistp dword ptr [ZSI]);

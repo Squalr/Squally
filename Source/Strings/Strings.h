@@ -1014,6 +1014,21 @@ namespace Strings
 		virtual ~Common_PlusPointerOffset() = default;
 	};
 
+	class Common_Pointer : public LocalizedString
+	{
+	public:
+		static Common_Pointer* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_Pointer();
+		virtual ~Common_Pointer() = default;
+	};
+
 	class Common_Squally : public LocalizedString
 	{
 	public:
@@ -14409,6 +14424,66 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Melt_RegisterEcx() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage();
+		virtual ~Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst();
+		virtual ~Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng();
+		virtual ~Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentRng : public LocalizedString
 	{
 	public:
@@ -14422,6 +14497,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentRng();
 		virtual ~Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentRng() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip();
+		virtual ~Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_PoisonedArrows : public LocalizedString
@@ -15952,6 +16042,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Generic_FPU_CommentAdd();
 		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentAdd() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_FPU_CommentConvert : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_FPU_CommentConvert* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_FPU_CommentConvert();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentConvert() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_FPU_CommentDiv : public LocalizedString

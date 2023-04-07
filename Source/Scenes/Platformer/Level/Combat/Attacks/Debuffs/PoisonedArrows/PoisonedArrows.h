@@ -33,7 +33,7 @@ private:
 	void incrementHeal();
 
 	int healAmount = 0;
-	SmartAnimationSequenceNode* healEffect = nullptr;
+	SmartAnimationSequenceNode* poisonEffect = nullptr;
 	WorldSound* impactSound = nullptr;
 	WorldSound* healSound = nullptr;
 };

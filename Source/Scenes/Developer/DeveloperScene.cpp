@@ -465,13 +465,14 @@ DeveloperScene::DeveloperScene()
 		X Warlock				=>  3_x <WandSkeleton,		fmul/frndint> 	=> Enchantment / 50% damage increase (rounded)
 		X Hunter				=>  3_x <PoisonSpears,		ja>  		=> PoisonedArrows - either radiation or diseased copy
 
+		X [B] Lazarus			=>	3_x <Tombstone, 	fcmove> 		=> UnholyProtection (rename) / undying effect
+		O 						=>	3_x <GhostBolts,	f?????> 		=> Ghostbolts / reflectable spell (Copy FireBall I guess?) but make 1 per teammate (ie 2 lol)
+		
 		X SkeletalPriestess		=>  4_x <Book,				fchs/jbe> 	=> Spell of Binding - Speed Decrease
 		X SkeletalKnight		=>  4_x <SwordGlowPurp,		jae>  		=> CursedBlade - Reduce damage
 		X SkeletalCleaver		=>  4_x <SwordGlowYel,		jb> 		=> UnholyBlade - Damage to healing
 
-		X [B] Lazarus			=>	3_x <Tombstone, 	fcmove> 		=> UnholyProtection (rename) / undying effect
-		O 						=>	3_x <GhostBolts,	f?????> 		=> Ghostbolts / reflectable spell (Copy FireBall I guess?) but make 1 per teammate (ie 2 lol)
-		X [B] KingZul			=>  4_x <Daze,			fcmovbe> 		=> Daze / chance to do less damage
+		X [B] KingZul			=>  4_x <Daze,			fcmovbe> 		=> Daze / chance to do less damage (use cool daze FX)
 
 		Avail for traps:
 		- SpellBind

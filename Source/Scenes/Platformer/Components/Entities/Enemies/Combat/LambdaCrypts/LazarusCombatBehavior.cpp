@@ -9,7 +9,7 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/UnholyProtection/UnholyProtectionAutoCast.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Strength/CastStrength.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/BasicSlash/BasicSlash.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/DragonBreath/DragonBreath.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/GhostBolts/GhostBolts.h"
 
 #include "Resources/UIResources.h"
 
@@ -52,8 +52,7 @@ void LazarusCombatBehavior::onLoad()
 	
 	this->entity->watchForComponent<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(DragonBreath::create(0.5f, EntityAttackBehavior::DefaultRecoverSpeedSlow, PlatformerAttack::Priority::VeryCommon));
-		attackBehavior->registerAttack(CastStrength::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
+		attackBehavior->registerAttack(GhostBolts::create(0.5f, EntityAttackBehavior::DefaultRecoverSpeedSlow, PlatformerAttack::Priority::VeryCommon));
 		attackBehavior->registerAttack(BasicSlash::create(8, 10, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
 

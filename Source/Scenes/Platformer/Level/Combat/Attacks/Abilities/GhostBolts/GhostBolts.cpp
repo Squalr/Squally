@@ -33,7 +33,7 @@ GhostBolts* GhostBolts::create(float attackDuration, float recoverDuration, Prio
 }
 
 GhostBolts::GhostBolts(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_FireSphere, priority, AbilityType::Fire, 7, 9, 12, attackDuration, recoverDuration, TargetingType::Multi)
+	: super(AttackType::Damage, UIResources::Menus_Icons_GhostBolts, priority, AbilityType::Shadow, 7, 9, 12, attackDuration, recoverDuration, TargetingType::Multi)
 {
 }
 
@@ -48,7 +48,8 @@ PlatformerAttack* GhostBolts::cloneInternal()
 
 LocalizedString* GhostBolts::getString()
 {
-	return Strings::Platformer_Combat_Attacks_Slash::create();
+	// Not user facing
+	return Strings::TODO::create();
 }
 
 std::string GhostBolts::getAttackAnimation()
@@ -62,7 +63,7 @@ void GhostBolts::performAttack(PlatformerEntity* owner, std::vector<PlatformerEn
 	
 	for (auto next : targets)
 	{
-		SmartAnimationSequenceNode* fireBreath = SmartAnimationSequenceNode::create();
+		SmartAnimationSequenceNode* ghostBoltsCastFx = SmartAnimationSequenceNode::create();
 		GhostBolt* ghostBolt = GhostBolt::create(owner, next);
 
 		ghostBolt->runSpawnFX();
@@ -89,8 +90,8 @@ void GhostBolts::performAttack(PlatformerEntity* owner, std::vector<PlatformerEn
 			return CollisionResult::DoNothing;
 		});
 
-		fireBreath->playAnimation(FXResources::FireBreath_FireBreath_0000, 0.05f, true);
-		fireBreath->setFlippedX(owner->isFlippedX());
+		ghostBoltsCastFx->playAnimation(FXResources::FireBreath_FireBreath_0000, 0.05f, true);
+		ghostBoltsCastFx->setFlippedX(owner->isFlippedX());
 
 		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			owner,
@@ -106,7 +107,7 @@ void GhostBolts::performAttack(PlatformerEntity* owner, std::vector<PlatformerEn
 		));
 		ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
 			owner,
-			fireBreath,
+			ghostBoltsCastFx,
 			SpawnMethod::Above,
 			PositionMode::Discard,
 			[&]()
@@ -119,7 +120,7 @@ void GhostBolts::performAttack(PlatformerEntity* owner, std::vector<PlatformerEn
 		
 		float flipMultiplier = (owner->isFlippedX() ? -1.0f : 1.0f);
 		ghostBolt->setPosition3D(GameUtils::getWorldCoords3D(owner) + Vec3(flipMultiplier * 96.0f, 96.0f, 0.0f));
-		fireBreath->setPosition3D(GameUtils::getWorldCoords3D(ghostBolt) + Vec3(flipMultiplier * 180.0f, 0.0f, 0.0f));
+		ghostBoltsCastFx->setPosition3D(GameUtils::getWorldCoords3D(ghostBolt) + Vec3(flipMultiplier * 180.0f, 0.0f, 0.0f));
 
 		next->getComponent<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 		{

@@ -465,6 +465,14 @@ namespace FXResources
 	extern const std::string FlameWhisp_FlameWhisp_0012;
 	extern const std::string FlameWhisp_FlameWhisp_0013;
 	extern const std::string FlameWhisp_FlameWhisp_0014;
+	extern const std::string GhostBolt_GhostBolt_0000;
+	extern const std::string GhostBolt_GhostBolt_0001;
+	extern const std::string GhostBolt_GhostBolt_0002;
+	extern const std::string GhostBolt_GhostBolt_0003;
+	extern const std::string GhostBolt_GhostBolt_0004;
+	extern const std::string GhostBolt_GhostBolt_0005;
+	extern const std::string GhostBolt_GhostBolt_0006;
+	extern const std::string GhostBolt_GhostBolt_0007;
 	extern const std::string HealMP_Heal_0000;
 	extern const std::string HealMP_Heal_0001;
 	extern const std::string HealMP_Heal_0002;
@@ -847,6 +855,7 @@ namespace FXResources
 	extern const std::string VoidFire_VoidFire_0012;
 	extern const std::string VoidFire_VoidFire_0013;
 	extern const std::string VoidFire_VoidFire_0014;
+	extern const std::string VoidPulse_VoidPulse_0000;
 	extern const std::string VoidPulse_VoidPulse_0001;
 	extern const std::string VoidPulse_VoidPulse_0003;
 	extern const std::string VoidPulse_VoidPulse_0004;
@@ -854,7 +863,6 @@ namespace FXResources
 	extern const std::string VoidPulse_VoidPulse_0006;
 	extern const std::string VoidPulse_VoidPulse_0007;
 	extern const std::string VoidPulse_VoidPulse_0008;
-	extern const std::string VoidPulse_VoidPulse_0009;
 	extern const std::string WaterBall_WaterBall_0000;
 	extern const std::string WaterBall_WaterBall_0001;
 	extern const std::string WaterBall_WaterBall_0002;

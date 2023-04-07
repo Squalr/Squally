@@ -71,12 +71,12 @@ void GhostBolt::update(float dt)
 void GhostBolt::runSpawnFX()
 {
 	this->breathSound->play();
-	this->fireballAnim->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.05f);
+	this->fireballAnim->playAnimationRepeat(FXResources::GhostBolt_GhostBolt_0000, 0.05f);
 }
 
 void GhostBolt::runImpactFX()
 {
-	this->explosionAnim->playAnimation(FXResources::Explosion_Explosion_0000, 0.05f, true);
+	this->explosionAnim->playAnimation(FXResources::ShadowImpact_ShadowImpact_0000, 0.05f, true);
 	this->fireballAnim->stopAnimation();
 	this->setLaunchVelocity(Vec3::ZERO);
 
@@ -100,7 +100,7 @@ void GhostBolt::registerHackables()
 				GhostBolt::HackIdentifierGhostBoltSpeed,
 				Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_ApplySpeed::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_FireSphere,
+				UIResources::Menus_Icons_GhostBolts,
 				LazyNode<HackablePreview>::create([=](){ return GhostBoltSpeedPreview::create(); }),
 				{
 					{ HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterEax::create() },

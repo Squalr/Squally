@@ -48,7 +48,8 @@ PlatformerAttack* DragonBreath::cloneInternal()
 
 LocalizedString* DragonBreath::getString()
 {
-	return Strings::Platformer_Combat_Attacks_Slash::create();
+	// Not user facing
+	return Strings::TODO::create();
 }
 
 std::string DragonBreath::getAttackAnimation()
