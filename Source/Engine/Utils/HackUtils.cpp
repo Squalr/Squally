@@ -118,10 +118,10 @@ std::string HackUtils::preProcessAssembly(std::string assembly)
 HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* addressStart)
 {
 	CompileResult compileResult;
-	
-	CodeInfo ci(sizeof(void*) == 4 ? ArchInfo::kIdX86 : ArchInfo::kIdX64);
+
+	Environment env(sizeof(void*) == 4 ? Arch::kX86 : Arch::kX64);
 	CodeHolder code;
-	code.init(ci);
+	code.init(env);
 
 	// Attach X86Assembler `code`.
 	x86::Assembler a(&code);

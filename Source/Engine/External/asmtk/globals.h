@@ -7,14 +7,12 @@
 #ifndef _ASMTK_GLOBALS_H
 #define _ASMTK_GLOBALS_H
 
-#include "Engine/External/asmjit/asmjit.h"
+#include "Engine/External/asmjit/core.h"
 
 #include <stdint.h>
 #include <algorithm>
 #include <cstdlib>
 #include <cstring>
-
-#define ASMTK_STATIC
 
 // DEPRECATED: Will be removed in the future.
 #if defined(ASMTK_BUILD_STATIC)

@@ -7,7 +7,7 @@
 #ifndef _ASMTK_PARSERUTILS_H
 #define _ASMTK_PARSERUTILS_H
 
-#include "Engine/External/asmjit/asmjit.h"
+#include "Engine/External/asmjit/core.h"
 
 #include <stdint.h>
 #include <algorithm>

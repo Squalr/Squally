@@ -40,15 +40,15 @@ public:
   inline StrToD() { handle = _create_locale(LC_ALL, "C"); }
   inline ~StrToD() { _free_locale(handle); }
 
-  inline bool isOk() const { return handle != NULL; }
+  inline bool isOk() const { return handle != nullptr; }
   inline double conv(const char* s, char** end) const { return _strtod_l(s, end, handle); }
 
   _locale_t handle;
 #elif defined(ASMTK_STRTOD_XLOCALE)
-  inline StrToD() { handle = newlocale(LC_ALL_MASK, "C", NULL); }
+  inline StrToD() { handle = newlocale(LC_ALL_MASK, "C", nullptr); }
   inline ~StrToD() { freelocale(handle); }
 
-  inline bool isOk() const { return handle != NULL; }
+  inline bool isOk() const { return handle != nullptr; }
   inline double conv(const char* s, char** end) const { return strtod_l(s, end, handle); }
 
   locale_t handle;

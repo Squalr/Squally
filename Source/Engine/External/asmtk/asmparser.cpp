@@ -6,6 +6,8 @@
 
 #define ASMTK_EXPORTS
 
+#include "Engine/External/asmjit/x86.h"
+
 #include "./asmparser.h"
 #include "./parserutils.h"
 
@@ -33,9 +35,7 @@ enum X86Directive : uint32_t {
 enum X86Alias : uint32_t {
   kX86AliasStart = 0x00010000u,
 
-  kX86AliasMovabs = kX86AliasStart,
-
-  kX86AliasInsb,
+  kX86AliasInsb = kX86AliasStart,
   kX86AliasInsd,
   kX86AliasInsw,
 
@@ -76,15 +76,16 @@ enum X86Alias : uint32_t {
 AsmParser::AsmParser(BaseEmitter* emitter) noexcept
   : _emitter(emitter),
     _currentCommandOffset(0),
-    _unknownSymbolHandler(NULL),
-    _unknownSymbolHandlerData(NULL) {}
+    _currentGlobalLabelId(Globals::kInvalidId),
+    _unknownSymbolHandler(nullptr),
+    _unknownSymbolHandlerData(nullptr) {}
 AsmParser::~AsmParser() noexcept {}
 
 // ============================================================================
 // [asmtk::AsmParser - Input]
 // ============================================================================
 
-uint32_t AsmParser::nextToken(AsmToken* token, uint32_t flags) noexcept {
+AsmTokenType AsmParser::nextToken(AsmToken* token, ParseFlags flags) noexcept {
   return _tokenizer.next(token, flags);
 }
 
@@ -107,11 +108,26 @@ static void strToLower(uint8_t* dst, const uint8_t* src, size_t size) noexcept{
 #define COMB_CHAR_4(a, b, c, d) \
   ((uint32_t(a) << 24) | (uint32_t(b) << 16) | (uint32_t(c) << 8) | uint32_t(d))
 
-static bool x86ParseRegister(Operand_& op, const uint8_t* s, size_t size) noexcept {
+static uint32_t x86RegisterCount(Arch arch, RegType regType) noexcept {
+  if (arch == Arch::kX86)
+    return 8;
+
+  if (regType == RegType::kX86_St || regType == RegType::kX86_Mm || regType == RegType::kX86_KReg || regType == RegType::kX86_Tmm)
+    return 8;
+
+  if (regType == RegType::kX86_Xmm || regType == RegType::kX86_Ymm || regType == RegType::kX86_Zmm)
+    return 32;
+
+  return 16;
+}
+
+static bool x86ParseRegister(AsmParser& parser, Operand_& op, const uint8_t* s, size_t size) noexcept {
   constexpr uint32_t kMinSize = 2;
   constexpr uint32_t kMaxSize = 5;
 
-  if (size < kMinSize || size > kMaxSize) return false;
+  if (size < kMinSize || size > kMaxSize)
+    return false;
+
   const uint8_t* sEnd = s + size;
 
   uint32_t c0 = Support::asciiToLower<uint32_t>(s[0]);
@@ -119,7 +135,7 @@ static bool x86ParseRegister(Operand_& op, const uint8_t* s, size_t size) noexce
   uint32_t c2 = size > 2 ? Support::asciiToLower<uint32_t>(s[2]) : uint32_t(0);
   uint32_t cn = (c0 << 8) + c1;
 
-  uint32_t rType = x86::Reg::kTypeNone;
+  RegType rType = RegType::kNone;
   uint32_t rId = 0;
 
   static const uint8_t gpLetterToRegIndex[] = {
@@ -159,25 +175,25 @@ static bool x86ParseRegister(Operand_& op, const uint8_t* s, size_t size) noexce
     if (c0 <= 'd') {
       rId = gpLetterToRegIndex[c0 - 'a'];
 
-      rType = x86::Reg::kTypeGpbLo;
+      rType = RegType::kX86_GpbLo;
       if (c1 == 'l') goto Done;
 
-      rType = x86::Reg::kTypeGpbHi;
+      rType = RegType::kX86_GpbHi;
       if (c1 == 'h') goto Done;
 
-      rType = x86::Reg::kTypeGpw;
+      rType = RegType::kX86_Gpw;
       if (c1 == 'x') goto Done;
     }
 
     if (c1 == 's') {
       rId = srLetterToRegIndex[c0 - 'a'];
-      rType = x86::Reg::kTypeSReg;
+      rType = RegType::kX86_SReg;
 
       if (rId != x86::Reg::kIdBad)
         goto Done;
     }
 
-    rType = x86::Reg::kTypeGpw;
+    rType = RegType::kX86_Gpw;
     goto TrySpBpSiDi;
   }
 
@@ -188,16 +204,16 @@ static bool x86ParseRegister(Operand_& op, const uint8_t* s, size_t size) noexce
   // [RIP]
   if (size == 3) {
     if (c2 == 'l') {
-      rType = x86::Reg::kTypeGpbLo;
+      rType = RegType::kX86_GpbLo;
       goto TrySpBpSiDi;
     }
 
     if (c0 == 'e' || c0 == 'r') {
       cn = (c1 << 8) | c2;
-      rType = (c0 == 'e') ? x86::Reg::kTypeGpd : x86::Reg::kTypeGpq;
+      rType = (c0 == 'e') ? RegType::kX86_Gpd : RegType::kX86_Gpq;
 
       if (c0 == 'r' && cn == COMB_CHAR_2('i', 'p')) {
-        rType = x86::Reg::kTypeRip;
+        rType = RegType::kX86_Rip;
         goto Done;
       }
 
@@ -217,52 +233,57 @@ TrySpBpSiDi:
   // [R?|R?B|R?W|R?D]
   if (c0 == 'r') {
     s++;
-    rType = x86::Reg::kTypeGpq;
+    rType = RegType::kX86_Gpq;
 
     // Handle 'b', 'w', and 'd' suffixes.
     c2 = Support::asciiToLower<uint32_t>(sEnd[-1]);
     if (c2 == 'b')
-      rType = x86::Reg::kTypeGpbLo;
+      rType = RegType::kX86_GpbLo;
     else if (c2 == 'w')
-      rType = x86::Reg::kTypeGpw;
+      rType = RegType::kX86_Gpw;
     else if (c2 == 'd')
-      rType = x86::Reg::kTypeGpd;
-    sEnd -= (rType != x86::Reg::kTypeGpq);
+      rType = RegType::kX86_Gpd;
+    sEnd -= (rType != RegType::kX86_Gpq);
   }
   // [XMM?|YMM?|ZMM?]
   else if (c0 >= 'x' && c0 <= 'z' && c1 == 'm' && c2 == 'm') {
     s += 3;
-    rType = x86::Reg::kTypeXmm + (c0 - 'x');
+    rType = RegType(uint32_t(RegType::kX86_Xmm) + uint32_t(c0 - 'x'));
   }
   // [K?]
   else if (c0 == 'k') {
     s++;
-    rType = x86::Reg::kTypeKReg;
+    rType = RegType::kX86_KReg;
   }
   // [ST?|FP?]
   else if ((c0 == 's' && c1 == 't') | (c0 == 'f' && c1 == 'p')) {
     s += 2;
-    rType = x86::Reg::kTypeSt;
+    rType = RegType::kX86_St;
   }
   // [MM?]
   else if (c0 == 'm' && c1 == 'm') {
     s += 2;
-    rType = x86::Reg::kTypeMm;
+    rType = RegType::kX86_Mm;
   }
   // [BND?]
   else if (c0 == 'b' && c1 == 'n' && c2 == 'd') {
     s += 3;
-    rType = x86::Reg::kTypeBnd;
+    rType = RegType::kX86_Bnd;
+  }
+  // [TMM?]
+  else if (c0 == 't' && c1 == 'm' && c2 == 'm') {
+    s += 3;
+    rType = RegType::kX86_Tmm;
   }
   // [CR?]
   else if (c0 == 'c' && c1 == 'r') {
     s += 2;
-    rType = x86::Reg::kTypeCReg;
+    rType = RegType::kX86_CReg;
   }
   // [DR?]
   else if (c0 == 'd' && c1 == 'r') {
     s += 2;
-    rType = x86::Reg::kTypeDReg;
+    rType = RegType::kX86_DReg;
   }
   else {
     return false;
@@ -270,25 +291,30 @@ TrySpBpSiDi:
 
   // Parse the register index.
   rId = uint32_t(s[0]) - '0';
-  if (rId >= 10) return false;
+  if (rId >= 10)
+    return false;
 
   if (++s < sEnd) {
     c0 = uint32_t(*s++) - '0';
-    if (c0 >= 10) return false;
+    if (c0 >= 10)
+      return false;
     rId = rId * 10 + c0;
 
     // Maximum register
-    if (rId >= 32) return false;
+    if (rId >= x86RegisterCount(parser.emitter()->arch(), rType))
+      return false;
   }
 
   // Fail if the whole input wasn't parsed.
-  if (s != sEnd) return false;
+  if (s != sEnd)
+    return false;
 
   // Fail if the register index is greater than allowed.
-  if (rId >= x86::opData.archRegs.regCount[rType]) return false;
+  if (rId >= 32)
+    return false;
 
 Done:
-  op._initReg(x86::opData.archRegs.regInfo[rType].signature(), rId);
+  op._initReg(ArchTraits::byArch(Arch::kX64).regTypeToSignature(rType), rId);
   return true;
 }
 
@@ -308,7 +334,8 @@ static uint32_t x86ParseSize(const uint8_t* s, size_t size) noexcept {
 
   if (suffix.test('w', 'o', 'r', 'd')) {
     // Parsed 'word'.
-    if (size == 4) return 2;
+    if (size == 4)
+      return 2;
 
     // Sizes of length '5':
     ParserUtils::WordParser wordSize;
@@ -346,50 +373,105 @@ static uint32_t x86ParseSize(const uint8_t* s, size_t size) noexcept {
   }
 
   // Parsed 'byte'.
-  if (suffix.test('b', 'y', 't', 'e'))
-    return size == 4 ? 1 : 0;
+  if (suffix.test('b', 'y', 't', 'e')) {
+    if (size == 4)
+      return 1;
+
+    // Sizes of length '5':
+    ParserUtils::WordParser wordSize;
+    wordSize.addLowercasedChar(s, 0);
+
+    if (size == 5) {
+      if (wordSize.test('t')) return 10;
+    }
+  }
 
   return 0;
 }
 
-static Error asmHandleSymbol(AsmParser& parser, Operand_& dst, const uint8_t* name, size_t size) noexcept {
-  AsmLabel L = parser._emitter->labelByName(reinterpret_cast<const char*>(name), size);
+static Error asmHandleSymbol(AsmParser& parser, Operand_& dst, const uint8_t* name, size_t nameSize) noexcept {
+  // Resolve global/local label.
+  BaseEmitter* emitter = parser._emitter;
 
-  if (!L.isValid()) {
+  const uint8_t* localName = nullptr;
+  size_t localNameSize = 0;
+  size_t parentNameSize = nameSize;
+
+  // Don't do anything if the name starts with "..".
+  if (!(nameSize >= 2 && name[0] == '.' && name[1] == '.')) {
+    localName = static_cast<const uint8_t*>(memchr(name, '.', nameSize));
+    if (localName) {
+      parentNameSize = (size_t)(localName - name);
+      localName++;
+      localNameSize = (size_t)((name + nameSize) - localName);
+    }
+  }
+
+  Label parent;
+  Label label;
+
+  if (localName) {
+    if (name[0] == '.')
+      parent.setId(parser._currentGlobalLabelId);
+    else
+      parent = emitter->labelByName(reinterpret_cast<const char*>(name), parentNameSize);
+
+    if (parent.isValid())
+      label = emitter->labelByName(reinterpret_cast<const char*>(localName), localNameSize, parent.id());
+  }
+  else {
+    label = emitter->labelByName(reinterpret_cast<const char*>(name), nameSize, parent.id());
+  }
+
+  if (!label.isValid()) {
     if (parser._unknownSymbolHandler) {
-      Error err = parser._unknownSymbolHandler(&parser, static_cast<Operand*>(&dst), reinterpret_cast<const char*>(name), size);
-      if (err)
-        return err;
-
+      dst.reset();
+      ASMJIT_PROPAGATE(parser._unknownSymbolHandler(&parser, static_cast<Operand*>(&dst), reinterpret_cast<const char*>(name), nameSize));
       if (!dst.isNone())
         return kErrorOk;
     }
 
-    L = parser._emitter->newNamedLabel(reinterpret_cast<const char*>(name), size);
-    if (!L.isValid()) return DebugUtils::errored(kErrorOutOfMemory);
+    if (localName) {
+      if (!parent.isValid()) {
+        if (!parentNameSize)
+          return DebugUtils::errored(kErrorInvalidParentLabel);
+
+        parent = emitter->newNamedLabel(reinterpret_cast<const char*>(name), parentNameSize, LabelType::kGlobal);
+        if (!parent.isValid())
+          return DebugUtils::errored(kErrorOutOfMemory);
+      }
+      label = emitter->newNamedLabel(reinterpret_cast<const char*>(localName), localNameSize, LabelType::kLocal, parent.id());
+      if (!label.isValid())
+        return DebugUtils::errored(kErrorOutOfMemory);
+    }
+    else {
+      label = emitter->newNamedLabel(reinterpret_cast<const char*>(name), nameSize, LabelType::kGlobal);
+      if (!label.isValid())
+        return DebugUtils::errored(kErrorOutOfMemory);
+    }
   }
 
-  dst = L;
+  dst = label;
   return kErrorOk;
 }
 
 static Error x86ParseOperand(AsmParser& parser, Operand_& dst, AsmToken* token) noexcept {
-  uint32_t type = token->type;
+  AsmTokenType type = token->type();
   uint32_t memSize = 0;
   Operand seg;
 
   // Symbol, could be register, memory operand size, or label.
-  if (type == AsmToken::kSym) {
+  if (type == AsmTokenType::kSym) {
     // Try register.
-    if (x86ParseRegister(dst, token->data, token->size)) {
+    if (x86ParseRegister(parser, dst, token->data(), token->size())) {
       if (!dst.as<x86::Reg>().isSReg())
         return kErrorOk;
 
       // A segment register followed by a colon (':') describes a segment of a
       // memory operand - in such case we store the segment and jump to MemOp.
       AsmToken tTmp;
-      if (parser.nextToken(token) == AsmToken::kColon &&
-          parser.nextToken(&tTmp) == AsmToken::kLBracket) {
+      if (parser.nextToken(token) == AsmTokenType::kColon &&
+          parser.nextToken(&tTmp) == AsmTokenType::kLBracket) {
         seg = dst;
         goto MemOp;
       }
@@ -398,35 +480,35 @@ static Error x86ParseOperand(AsmParser& parser, Operand_& dst, AsmToken* token) 
     }
 
     // Try memory size specifier.
-    memSize = x86ParseSize(token->data, token->size);
+    memSize = x86ParseSize(token->data(), token->size());
     if (memSize) {
       type = parser.nextToken(token);
 
       // The specifier may be followed by 'ptr', skip it in such case.
-      if (type == AsmToken::kSym &&
-          token->size == 3 &&
-          Support::asciiToLower<uint32_t>(token->data[0]) == 'p' &&
-          Support::asciiToLower<uint32_t>(token->data[1]) == 't' &&
-          Support::asciiToLower<uint32_t>(token->data[2]) == 'r') {
+      if (type == AsmTokenType::kSym &&
+          token->size() == 3 &&
+          Support::asciiToLower<uint32_t>(token->dataAt(0)) == 'p' &&
+          Support::asciiToLower<uint32_t>(token->dataAt(1)) == 't' &&
+          Support::asciiToLower<uint32_t>(token->dataAt(2)) == 'r') {
         type = parser.nextToken(token);
       }
 
       // Jump to memory operand if we encountered '['.
-      if (type == AsmToken::kLBracket)
+      if (type == AsmTokenType::kLBracket)
         goto MemOp;
 
       // Parse segment prefix otherwise.
-      if (type == AsmToken::kSym) {
+      if (type == AsmTokenType::kSym) {
         // Segment register.
-        if (!x86ParseRegister(seg, token->data, token->size) || !seg.as<x86::Reg>().isSReg())
+        if (!x86ParseRegister(parser, seg, token->data(), token->size()) || !seg.as<x86::Reg>().isSReg())
           return DebugUtils::errored(kErrorInvalidAddress);
 
         type = parser.nextToken(token);
-        if (type != AsmToken::kColon)
+        if (type != AsmTokenType::kColon)
           return DebugUtils::errored(kErrorInvalidAddress);
 
         type = parser.nextToken(token);
-        if (type == AsmToken::kLBracket)
+        if (type == AsmTokenType::kLBracket)
           goto MemOp;
       }
 
@@ -434,61 +516,61 @@ static Error x86ParseOperand(AsmParser& parser, Operand_& dst, AsmToken* token) 
     }
 
     // Must be label/symbol.
-    return asmHandleSymbol(parser, dst, token->data, token->size);
+    return asmHandleSymbol(parser, dst, token->data(), token->size());
   }
 
   // Memory address - parse opening '['.
-  if (type == AsmToken::kLBracket) {
+  if (type == AsmTokenType::kLBracket) {
 MemOp:
     Operand base;
     Operand index;
 
     uint32_t shift = 0;
-    uint32_t flags = 0;
     uint64_t offset = 0;
+    OperandSignature signature{0};
 
     // Parse address prefix - 'abs'.
     type = parser.nextToken(token);
-    if (type == AsmToken::kSym) {
-      if (token->size == 3) {
+    if (type == AsmTokenType::kSym) {
+      if (token->size() == 3) {
         ParserUtils::WordParser addrMode;
-        addrMode.addLowercasedChar(token->data, 0);
-        addrMode.addLowercasedChar(token->data, 1);
-        addrMode.addLowercasedChar(token->data, 2);
+        addrMode.addLowercasedChar(token->data(), 0);
+        addrMode.addLowercasedChar(token->data(), 1);
+        addrMode.addLowercasedChar(token->data(), 2);
 
         if (addrMode.test('a', 'b', 's')) {
-          flags |= BaseMem::kSignatureMemAbs;
+          signature |= OperandSignature::fromValue<x86::Mem::kSignatureMemAddrTypeMask>(x86::Mem::AddrType::kAbs);
           type = parser.nextToken(token);
         }
         else if (addrMode.test('r', 'e', 'l')) {
-          flags |= BaseMem::kSignatureMemRel;
+          signature |= OperandSignature::fromValue<x86::Mem::kSignatureMemAddrTypeMask>(x86::Mem::AddrType::kRel);
           type = parser.nextToken(token);
         }
       }
     }
 
-    // Parse "[base] + [index [* scale]] + [offset]" or "[base + [offset]], [index [* scale]]" parts.
+    // Parse "[base] + [index [* scale]] + [offset]" or "[base + [offset]], [index [* scale]]".
     bool commaSeparated = false;
-    uint32_t opType = AsmToken::kAdd;
+    AsmTokenType opType = AsmTokenType::kAdd;
 
     for (;;) {
-      if (type == AsmToken::kSym) {
-        if (opType != AsmToken::kAdd)
+      if (type == AsmTokenType::kSym) {
+        if (opType != AsmTokenType::kAdd)
           return DebugUtils::errored(kErrorInvalidAddress);
 
         Operand op;
-        if (!x86ParseRegister(op, token->data, token->size)) {
+        if (!x86ParseRegister(parser, op, token->data(), token->size())) {
           // No label after 'base' is allowed.
           if (!base.isNone())
             return DebugUtils::errored(kErrorInvalidAddress);
 
-          ASMJIT_PROPAGATE(asmHandleSymbol(parser, op, token->data, token->size));
+          ASMJIT_PROPAGATE(asmHandleSymbol(parser, op, token->data(), token->size()));
         }
 
         type = parser.nextToken(token);
-        opType = AsmToken::kInvalid;
+        opType = AsmTokenType::kInvalid;
 
-        if (type != AsmToken::kMul) {
+        if (type != AsmTokenType::kMul) {
           // Prefer base, then index.
           if (base.isNone() && !commaSeparated)
             base = op;
@@ -505,10 +587,10 @@ MemOp:
 
           index = op;
           type = parser.nextToken(token);
-          if (type != AsmToken::kU64)
+          if (type != AsmTokenType::kU64)
             return DebugUtils::errored(kErrorInvalidAddressScale);
 
-          switch (token->u64) {
+          switch (token->u64Value()) {
             case 1: shift = 0; break;
             case 2: shift = 1; break;
             case 4: shift = 2; break;
@@ -518,31 +600,31 @@ MemOp:
           }
         }
       }
-      else if (type == AsmToken::kU64) {
-        if (opType == AsmToken::kAdd) {
-          offset += token->u64;
-          opType = AsmToken::kInvalid;
+      else if (type == AsmTokenType::kU64) {
+        if (opType == AsmTokenType::kAdd) {
+          offset += token->u64Value();
+          opType = AsmTokenType::kInvalid;
         }
-        else if (opType == AsmToken::kSub) {
-          offset -= token->u64;
-          opType = AsmToken::kInvalid;
+        else if (opType == AsmTokenType::kSub) {
+          offset -= token->u64Value();
+          opType = AsmTokenType::kInvalid;
         }
         else {
           return DebugUtils::errored(kErrorInvalidAddress);
         }
       }
-      else if (type == AsmToken::kAdd) {
-        if (opType == AsmToken::kInvalid)
+      else if (type == AsmTokenType::kAdd) {
+        if (opType == AsmTokenType::kInvalid)
           opType = type;
       }
-      else if (type == AsmToken::kSub) {
-        if (opType == AsmToken::kInvalid)
+      else if (type == AsmTokenType::kSub) {
+        if (opType == AsmTokenType::kInvalid)
           opType = type;
         else
-          opType = opType == AsmToken::kSub ? AsmToken::kAdd : AsmToken::kSub;
+          opType = opType == AsmTokenType::kSub ? AsmTokenType::kAdd : AsmTokenType::kSub;
       }
-      else if (type == AsmToken::kRBracket) {
-        if (opType != AsmToken::kInvalid)
+      else if (type == AsmTokenType::kRBracket) {
+        if (opType != AsmTokenType::kInvalid)
           return DebugUtils::errored(kErrorInvalidAddress);
 
         // Reverse base and index if base is a vector register.
@@ -558,13 +640,13 @@ MemOp:
             if (!Support::isUInt32(int64_t(offset)))
               return DebugUtils::errored(kErrorInvalidAddress64Bit);
 
-            if (base.as<BaseReg>().isReg(x86::Reg::kTypeGpq))
+            if (base.as<BaseReg>().isReg(RegType::kX86_Gpq))
               return DebugUtils::errored(kErrorInvalidAddress64BitZeroExtension);
           }
 
           int32_t disp32 = int32_t(offset & 0xFFFFFFFFu);
           if (base.isLabel())
-            dst = x86::ptr(base.as<AsmLabel>(), disp32);
+            dst = x86::ptr(base.as<Label>(), disp32);
           else if (!index.isReg())
             dst = x86::ptr(base.as<x86::Gp>(), disp32);
           else
@@ -578,18 +660,18 @@ MemOp:
         }
 
         dst.as<x86::Mem>().setSize(memSize);
-        dst._signature |= flags;
+        dst._signature |= signature;
 
         if (seg.isReg())
           dst.as<x86::Mem>().setSegment(seg.as<x86::SReg>());
 
         return kErrorOk;
       }
-      else if (type == AsmToken::kComma) {
+      else if (type == AsmTokenType::kComma) {
         if (commaSeparated)
           return DebugUtils::errored(kErrorInvalidAddress);
 
-        opType = AsmToken::kAdd;
+        opType = AsmTokenType::kAdd;
         commaSeparated = true;
       }
       else {
@@ -601,27 +683,27 @@ MemOp:
   }
 
   // Immediate.
-  if (type == AsmToken::kU64 || type == AsmToken::kSub) {
-    bool negative = (type == AsmToken::kSub);
+  if (type == AsmTokenType::kU64 || type == AsmTokenType::kSub) {
+    bool negative = (type == AsmTokenType::kSub);
     if (negative) {
       type = parser.nextToken(token);
-      if (type != AsmToken::kU64)
+      if (type != AsmTokenType::kU64)
         return DebugUtils::errored(kErrorInvalidState);
     }
 
-    dst = imm(negative ? -token->i64 : token->i64);
+    dst = imm(negative ? -token->i64Value() : token->i64Value());
     return kErrorOk;
   }
 
   return DebugUtils::errored(kErrorInvalidState);
 }
 
-static uint32_t x86ParseInstOption(const uint8_t* s, size_t size) noexcept {
+static InstOptions x86ParseInstOption(const uint8_t* s, size_t size) noexcept {
   constexpr uint32_t kMinSize = 3;
   constexpr uint32_t kMaxSize = 8;
 
   if (size < kMinSize || size > kMaxSize)
-    return 0;
+    return InstOptions::kNone;
 
   ParserUtils::WordParser word;
 
@@ -629,53 +711,64 @@ static uint32_t x86ParseInstOption(const uint8_t* s, size_t size) noexcept {
   word.addLowercasedChar(s, 0);
   word.addLowercasedChar(s, 1);
   word.addLowercasedChar(s, 2);
+
   if (size == 3) {
-    if (word.test('r', 'e', 'p')) return x86::Inst::kOptionRep;
-    if (word.test('r', 'e', 'x')) return x86::Inst::kOptionRex;
-    return 0;
+    if (word.test('b', 'n', 'd')) return InstOptions::kX86_Repne;
+    if (word.test('r', 'e', 'p')) return InstOptions::kX86_Rep;
+    if (word.test('r', 'e', 'x')) return InstOptions::kX86_Rex;
+    if (word.test('v', 'e', 'x')) return InstOptions::kX86_Vex;
+
+    return InstOptions::kNone;
   }
 
   // Options of length '4':
   word.addLowercasedChar(s, 3);
+
   if (size == 4) {
-    if (word.test('l', 'o', 'c', 'k')) return x86::Inst::kOptionLock;
-    if (word.test('r', 'e', 'p', 'z')) return x86::Inst::kOptionRep;
-    if (word.test('r', 'e', 'p', 'e')) return x86::Inst::kOptionRep;
-    if (word.test('l', 'o', 'n', 'g')) return x86::Inst::kOptionLongForm;
-    if (word.test('v', 'e', 'x', '3')) return x86::Inst::kOptionVex3;
-    if (word.test('e', 'v', 'e', 'x')) return x86::Inst::kOptionEvex;
-    return 0;
+    if (word.test('e', 'v', 'e', 'x')) return InstOptions::kX86_Evex;
+    if (word.test('l', 'o', 'c', 'k')) return InstOptions::kX86_Lock;
+    if (word.test('l', 'o', 'n', 'g')) return InstOptions::kLongForm;
+    if (word.test('r', 'e', 'p', 'e')) return InstOptions::kX86_Rep;
+    if (word.test('r', 'e', 'p', 'z')) return InstOptions::kX86_Rep;
+    if (word.test('v', 'e', 'x', '3')) return InstOptions::kX86_Vex3;
+
+    return InstOptions::kNone;
   }
 
   // Options of length '5':
   word.addLowercasedChar(s, 4);
+
   if (size == 5) {
-    if (word.test('r', 'e', 'p', 'n', 'e')) return x86::Inst::kOptionRepne;
-    if (word.test('r', 'e', 'p', 'n', 'z')) return x86::Inst::kOptionRepne;
-    if (word.test('s', 'h', 'o', 'r', 't')) return x86::Inst::kOptionShortForm;
-    if (word.test('m', 'o', 'd', 'm', 'r')) return x86::Inst::kOptionModMR;
-    return 0;
+    if (word.test('m', 'o', 'd', 'r', 'm')) return InstOptions::kX86_ModRM;
+    if (word.test('m', 'o', 'd', 'm', 'r')) return InstOptions::kX86_ModMR;
+    if (word.test('r', 'e', 'p', 'n', 'e')) return InstOptions::kX86_Repne;
+    if (word.test('r', 'e', 'p', 'n', 'z')) return InstOptions::kX86_Repne;
+    if (word.test('s', 'h', 'o', 'r', 't')) return InstOptions::kShortForm;
+
+    return InstOptions::kNone;
   }
 
   // Options of length '8':
   word.addLowercasedChar(s, 5);
   word.addLowercasedChar(s, 6);
   word.addLowercasedChar(s, 7);
+
   if (size == 8) {
-    if (word.test('x', 'a', 'c', 'q', 'u', 'i', 'r', 'e')) return x86::Inst::kOptionXAcquire;
-    if (word.test('x', 'r', 'e', 'l', 'e', 'a', 's', 'e')) return x86::Inst::kOptionXRelease;
-    return 0;
+    if (word.test('x', 'a', 'c', 'q', 'u', 'i', 'r', 'e')) return InstOptions::kX86_XAcquire;
+    if (word.test('x', 'r', 'e', 'l', 'e', 'a', 's', 'e')) return InstOptions::kX86_XRelease;
+
+    return InstOptions::kNone;
   }
 
-  return 0;
+  return InstOptions::kNone;
 }
 
-static uint32_t x86ParseAvx512Option(const uint8_t* s, size_t size) noexcept {
+static InstOptions x86ParseAvx512Option(const uint8_t* s, size_t size) noexcept {
   constexpr uint32_t kMinSize = 3;
   constexpr uint32_t kMaxSize = 6;
 
   if (size < kMinSize || size > kMaxSize)
-    return 0;
+    return InstOptions::kNone;
 
   ParserUtils::WordParser word;
 
@@ -683,35 +776,39 @@ static uint32_t x86ParseAvx512Option(const uint8_t* s, size_t size) noexcept {
   word.addLowercasedChar(s, 0);
   word.addLowercasedChar(s, 1);
   word.addLowercasedChar(s, 2);
+
   if (size == 3) {
-    if (word.test('s', 'a', 'e')) return x86::Inst::kOptionSAE;
-    return 0;
+    if (word.test('s', 'a', 'e')) return InstOptions::kX86_SAE;
+
+    return InstOptions::kNone;
   }
 
   if (size < 6)
-    return 0;
+    return InstOptions::kNone;
 
   // Options of length '6':
   word.addLowercasedChar(s, 3);
   word.addLowercasedChar(s, 4);
   word.addLowercasedChar(s, 5);
+
   if (size == 6) {
-    if (word.test('r', 'n', '-', 's', 'a', 'e')) return x86::Inst::kOptionER | x86::Inst::kOptionRN_SAE;
-    if (word.test('r', 'd', '-', 's', 'a', 'e')) return x86::Inst::kOptionER | x86::Inst::kOptionRD_SAE;
-    if (word.test('r', 'u', '-', 's', 'a', 'e')) return x86::Inst::kOptionER | x86::Inst::kOptionRU_SAE;
-    if (word.test('r', 'z', '-', 's', 'a', 'e')) return x86::Inst::kOptionER | x86::Inst::kOptionRZ_SAE;
-    return 0;
+    if (word.test('r', 'n', '-', 's', 'a', 'e')) return InstOptions::kX86_ER | InstOptions::kX86_RN_SAE;
+    if (word.test('r', 'd', '-', 's', 'a', 'e')) return InstOptions::kX86_ER | InstOptions::kX86_RD_SAE;
+    if (word.test('r', 'u', '-', 's', 'a', 'e')) return InstOptions::kX86_ER | InstOptions::kX86_RU_SAE;
+    if (word.test('r', 'z', '-', 's', 'a', 'e')) return InstOptions::kX86_ER | InstOptions::kX86_RZ_SAE;
+
+    return InstOptions::kNone;
   }
 
-  return 0;
+  return InstOptions::kNone;
 }
 
-static uint32_t x86ParseAvx512Broadcast(const uint8_t* s, size_t size) noexcept {
+static x86::Mem::Broadcast x86ParseAvx512Broadcast(const uint8_t* s, size_t size) noexcept {
   constexpr uint32_t kMinSize = 4;
   constexpr uint32_t kMaxSize = 5;
 
   if (size < kMinSize || size > kMaxSize)
-    return 0;
+    return x86::Mem::Broadcast::kNone;
 
   ParserUtils::WordParser word;
 
@@ -720,23 +817,27 @@ static uint32_t x86ParseAvx512Broadcast(const uint8_t* s, size_t size) noexcept 
   word.addLowercasedChar(s, 1);
   word.addLowercasedChar(s, 2);
   word.addLowercasedChar(s, 3);
+
   if (size == 4) {
-    if (word.test('1', 't', 'o', '2')) return x86::Mem::kBroadcast1To2;
-    if (word.test('1', 't', 'o', '4')) return x86::Mem::kBroadcast1To4;
-    if (word.test('1', 't', 'o', '8')) return x86::Mem::kBroadcast1To8;
-    return 0;
+    if (word.test('1', 't', 'o', '2')) return x86::Mem::Broadcast::k1To2;
+    if (word.test('1', 't', 'o', '4')) return x86::Mem::Broadcast::k1To4;
+    if (word.test('1', 't', 'o', '8')) return x86::Mem::Broadcast::k1To8;
+
+    return x86::Mem::Broadcast::kNone;
   }
 
   // Broadcast option of length '5':
   word.addLowercasedChar(s, 4);
+
   if (size == 5) {
-    if (word.test('1', 't', 'o', '1', '6')) return x86::Mem::kBroadcast1To16;
-    if (word.test('1', 't', 'o', '3', '2')) return x86::Mem::kBroadcast1To32;
-    if (word.test('1', 't', 'o', '6', '4')) return x86::Mem::kBroadcast1To64;
-    return 0;
+    if (word.test('1', 't', 'o', '1', '6')) return x86::Mem::Broadcast::k1To16;
+    if (word.test('1', 't', 'o', '3', '2')) return x86::Mem::Broadcast::k1To32;
+    if (word.test('1', 't', 'o', '6', '4')) return x86::Mem::Broadcast::k1To64;
+
+    return x86::Mem::Broadcast::kNone;
   }
 
-  return 0;
+  return x86::Mem::Broadcast::kNone;
 }
 
 static uint32_t x86ParseDirective(const uint8_t* s, size_t size) noexcept {
@@ -824,56 +925,50 @@ static uint32_t x86ParseAlias(const uint8_t* s, size_t size) noexcept {
     return x86::Inst::kIdNone;
   }
 
-  word.addLowercasedChar(s, 5);
-  if (size == 6) {
-    if (word.test('m', 'o', 'v', 'a', 'b', 's')) return kX86AliasMovabs;
-  }
-
   return x86::Inst::kIdNone;
 }
 
-static Error x86ParseInstruction(AsmParser& parser, uint32_t& instId, uint32_t& options, AsmToken* token) noexcept {
+static Error x86ParseInstruction(AsmParser& parser, InstId& instId, InstOptions& options, AsmToken* token) noexcept {
   for (;;) {
-    size_t size = token->size;
+    size_t size = token->size();
     uint8_t lower[32];
 
     if (size > ASMJIT_ARRAY_SIZE(lower))
       return DebugUtils::errored(kErrorInvalidInstruction);
 
-    strToLower(lower, token->data, size);
+    strToLower(lower, token->data(), size);
 
     // Try to match instruction alias, as there are some tricky ones.
     instId = x86ParseAlias(lower, size);
     if (instId == x86::Inst::kIdNone) {
       // If that didn't work out, try to match instruction as defined by AsmJit.
-      instId = InstAPI::stringToInstId(parser.emitter()->archId(), reinterpret_cast<char*>(lower), size);
+      instId = InstAPI::stringToInstId(parser.emitter()->arch(), reinterpret_cast<char*>(lower), size);
     }
 
     if (instId == x86::Inst::kIdNone) {
       // Maybe it's an option / prefix?
-      uint32_t option = x86ParseInstOption(lower, size);
-      if (!(option))
+      InstOptions option = x86ParseInstOption(lower, size);
+      if (option == InstOptions::kNone)
         return DebugUtils::errored(kErrorInvalidInstruction);
 
       // Refuse to parse the same option specified multiple times.
-      if (ASMJIT_UNLIKELY(options & option))
+      if (ASMJIT_UNLIKELY(Support::test(options, option)))
         return DebugUtils::errored(kErrorOptionAlreadyDefined);
 
       options |= option;
-      if (parser.nextToken(token) != AsmToken::kSym)
+      if (parser.nextToken(token) != AsmTokenType::kSym)
         return DebugUtils::errored(kErrorInvalidInstruction);
     }
     else {
-      // Ok, we have an instruction. Now let's parse the next token and decide if
-      // it belongs to the instruction or not. This is required to parse things
-      // such "jmp short" although we prefer "short jmp" (but the former is valid
-      // in other assemblers).
-      if (parser.nextToken(token) == AsmToken::kSym) {
-        size = token->size;
+      // Ok, we have an instruction. Now let's parse the next token and decide if it belongs to the instruction or not.
+      // This is required to parse things such "jmp short" although we prefer "short jmp" (but the former is valid in
+      // other assemblers).
+      if (parser.nextToken(token) == AsmTokenType::kSym) {
+        size = token->size();
         if (size <= ASMJIT_ARRAY_SIZE(lower)) {
-          strToLower(lower, token->data, size);
-          uint32_t option = x86ParseInstOption(lower, size);
-          if (option == x86::Inst::kOptionShortForm) {
+          strToLower(lower, token->data(), size);
+          InstOptions option = x86ParseInstOption(lower, size);
+          if (option == InstOptions::kShortForm) {
             options |= option;
             return kErrorOk;
           }
@@ -889,8 +984,7 @@ static Error x86ParseInstruction(AsmParser& parser, uint32_t& instId, uint32_t& 
 static Error x86FixupInstruction(AsmParser& parser, BaseInst& inst, Operand_* operands, uint32_t& count) noexcept {
   uint32_t i;
 
-  uint32_t& instId = inst._id;
-  uint32_t& options = inst._options;
+  InstId& instId = inst._id;
 
   if (instId >= kX86AliasStart) {
     x86::Emitter* emitter = static_cast<x86::Emitter*>(parser._emitter);
@@ -898,12 +992,6 @@ static Error x86FixupInstruction(AsmParser& parser, BaseInst& inst, Operand_* op
     bool isStr = false;
 
     switch (instId) {
-      case kX86AliasMovabs:
-        // 'movabs' is basically the longest 'mov'.
-        instId = x86::Inst::kIdMov;
-        options |= x86::Inst::kOptionLongForm;
-        break;
-
       case kX86AliasInsb: memSize = 1; instId = x86::Inst::kIdIns; isStr = true; break;
       case kX86AliasInsd: memSize = 4; instId = x86::Inst::kIdIns; isStr = true; break;
       case kX86AliasInsw: memSize = 2; instId = x86::Inst::kIdIns; isStr = true; break;
@@ -947,10 +1035,10 @@ static Error x86FixupInstruction(AsmParser& parser, BaseInst& inst, Operand_* op
 
     if (isStr) {
       if (count == 0) {
-        uint32_t sign = memSize == 1 ? uint32_t(x86::GpbLo::kSignature) :
-                        memSize == 2 ? uint32_t(x86::Gpw::kSignature) :
-                        memSize == 4 ? uint32_t(x86::Gpd::kSignature) :
-                                       uint32_t(x86::Gpq::kSignature) ;
+        OperandSignature regSignature = OperandSignature{
+          memSize == 1 ? x86::GpbLo::kSignature :
+          memSize == 2 ? x86::Gpw::kSignature :
+          memSize == 4 ? x86::Gpd::kSignature : x86::Gpq::kSignature};
 
         // String instructions aliases.
         count = 2;
@@ -958,8 +1046,8 @@ static Error x86FixupInstruction(AsmParser& parser, BaseInst& inst, Operand_* op
           case x86::Inst::kIdCmps: operands[0] = emitter->ptr_zsi(); operands[1] = emitter->ptr_zdi(); break;
           case x86::Inst::kIdMovs: operands[0] = emitter->ptr_zdi(); operands[1] = emitter->ptr_zsi(); break;
           case x86::Inst::kIdLods:
-          case x86::Inst::kIdScas: operands[0] = BaseReg(sign, x86::Gp::kIdAx); operands[1] = emitter->ptr_zdi(); break;
-          case x86::Inst::kIdStos: operands[0] = emitter->ptr_zdi(); operands[1] = BaseReg(sign, x86::Gp::kIdAx); break;
+          case x86::Inst::kIdScas: operands[0] = BaseReg(regSignature, x86::Gp::kIdAx); operands[1] = emitter->ptr_zdi(); break;
+          case x86::Inst::kIdStos: operands[0] = emitter->ptr_zdi(); operands[1] = BaseReg(regSignature, x86::Gp::kIdAx); break;
         }
       }
 
@@ -980,10 +1068,9 @@ static Error x86FixupInstruction(AsmParser& parser, BaseInst& inst, Operand_* op
   for (i = 0; i < count; i++) {
     Operand_& op = operands[i];
 
-    // If the parsed memory segment is the default one, remove it. AsmJit
-    // always emits segment-override if the segment is specified, this is
-    // good on AsmJit side, but causes problems here as it's not necessary
-    // to emit 'ds:' everywhere if the input contains it (and it's common).
+    // If the parsed memory segment is the default one, remove it. AsmJit always emits segment-override if the
+    // segment is specified, this is good on AsmJit side, but causes problems here as it's not necessary to emit
+    // 'ds:' everywhere if the input contains it (and it's common).
     if (op.isMem() && op.as<x86::Mem>().hasSegment()) {
       x86::Mem& mem = op.as<x86::Mem>();
 
@@ -1013,40 +1100,48 @@ Error AsmParser::parse(const char* input, size_t size) noexcept {
 
 Error AsmParser::parseCommand() noexcept {
   AsmToken token;
-  uint32_t tType = nextToken(&token);
+  AsmTokenType tType = nextToken(&token);
 
-  _currentCommandOffset = (size_t)(reinterpret_cast<const char*>(token.data) - input());
+  _currentCommandOffset = (size_t)(reinterpret_cast<const char*>(token.data()) - input());
 
-  if (tType == AsmToken::kSym) {
+  if (tType == AsmTokenType::kSym) {
     AsmToken tmp;
 
     tType = nextToken(&tmp);
-    if (tType == AsmToken::kColon) {
+    if (tType == AsmTokenType::kColon) {
       // Parse label.
-      AsmLabel dst;
-      ASMJIT_PROPAGATE(asmHandleSymbol(*this, dst, token.data, token.size));
-      ASMJIT_PROPAGATE(_emitter->bind(dst));
+      Label label;
+      ASMJIT_PROPAGATE(asmHandleSymbol(*this, label, token.data(), token.size()));
+      ASMJIT_PROPAGATE(_emitter->bind(label));
+
+      // Must be valid if we passed through asmHandleSymbol() and bind().
+      LabelEntry* le = _emitter->code()->labelEntry(label);
+      ASMJIT_ASSERT(le);
+
+      if (le->type() == LabelType::kGlobal)
+        _currentGlobalLabelId = label.id();
+
       return kErrorOk;
     }
 
-    if (token.data[0] == '.') {
+    if (token.dataAt(0) == '.') {
       // Parse directive (instructions never start with '.').
-      uint32_t directive = x86ParseDirective(token.data + 1, token.size - 1);
+      uint32_t directive = x86ParseDirective(token.data() + 1, token.size() - 1);
 
       if (directive == kX86DirectiveAlign) {
-        if (tType != AsmToken::kU64)
+        if (tType != AsmTokenType::kU64)
           return DebugUtils::errored(kErrorInvalidState);
 
-        if (tmp.u64 > std::numeric_limits<uint32_t>::max() || !Support::isPowerOf2(tmp.u64))
+        if (tmp.u64Value() > std::numeric_limits<uint32_t>::max() || !Support::isPowerOf2(tmp.u64Value()))
           return DebugUtils::errored(kErrorInvalidState);
 
-        ASMJIT_PROPAGATE(_emitter->align(kAlignCode, uint32_t(tmp.u64)));
+        ASMJIT_PROPAGATE(_emitter->align(AlignMode::kCode, uint32_t(tmp.u64Value())));
 
         tType = nextToken(&token);
         // Fall through as we would like to see EOL or EOF.
       }
       else if (directive >= kX86DirectiveDB && directive <= kX86DirectiveDQ) {
-        if (tType != AsmToken::kU64)
+        if (tType != AsmTokenType::kU64)
           return DebugUtils::errored(kErrorInvalidState);
 
         uint32_t nBytes   = (directive == kX86DirectiveDB) ? 1 :
@@ -1056,16 +1151,16 @@ Error AsmParser::parseCommand() noexcept {
 
         StringTmp<512> db;
         for (;;) {
-          if (tType != AsmToken::kU64)
+          if (tType != AsmTokenType::kU64)
             return DebugUtils::errored(kErrorInvalidState);
 
-          if (tmp.u64 > maxValue)
+          if (tmp.u64Value() > maxValue)
             return DebugUtils::errored(kErrorInvalidImmediate);
 
-          db.appendString(reinterpret_cast<const char*>(tmp.valueBytes), nBytes);
+          db.append(tmp.valueChars(), nBytes);
 
           tType = nextToken(&tmp);
-          if (tType != AsmToken::kComma)
+          if (tType != AsmTokenType::kComma)
             break;
 
           tType = nextToken(&tmp);
@@ -1093,35 +1188,35 @@ Error AsmParser::parseCommand() noexcept {
         tType = nextToken(&token);
 
         // Instruction without operands...
-        if ((tType == AsmToken::kNL || tType == AsmToken::kEnd) && count == 0)
+        if ((tType == AsmTokenType::kNL || tType == AsmTokenType::kEnd) && count == 0)
           break;
 
         // Parse {AVX-512} options that act as operand (valid syntax).
-        if (tType == AsmToken::kLCurl) {
-          uint32_t kAllowed = x86::Inst::kOptionER     |
-                              x86::Inst::kOptionSAE    |
-                              x86::Inst::kOptionRN_SAE |
-                              x86::Inst::kOptionRD_SAE |
-                              x86::Inst::kOptionRU_SAE |
-                              x86::Inst::kOptionRZ_SAE ;
+        if (tType == AsmTokenType::kLCurl) {
+          constexpr InstOptions kAllowed =
+            InstOptions::kX86_ER     |
+            InstOptions::kX86_SAE    |
+            InstOptions::kX86_RN_SAE |
+            InstOptions::kX86_RD_SAE |
+            InstOptions::kX86_RU_SAE |
+            InstOptions::kX86_RZ_SAE ;
 
-          tType = nextToken(&tmp, AsmTokenizer::kParseSymbol | AsmTokenizer::kParseDashes);
-          if (tType != AsmToken::kSym && tType != AsmToken::kNSym)
+          tType = nextToken(&tmp, ParseFlags::kParseSymbol | ParseFlags::kIncludeDashes);
+          if (tType != AsmTokenType::kSym && tType != AsmTokenType::kNSym)
             return DebugUtils::errored(kErrorInvalidState);
 
           tType = nextToken(&token);
-          if (tType != AsmToken::kRCurl)
+          if (tType != AsmTokenType::kRCurl)
             return DebugUtils::errored(kErrorInvalidState);
 
-          uint32_t option = x86ParseAvx512Option(tmp.data, tmp.size);
-          if (!option || (option & ~kAllowed) != 0)
+          InstOptions option = x86ParseAvx512Option(tmp.data(), tmp.size());
+          if (option == InstOptions::kNone || Support::test(option, ~kAllowed))
             return DebugUtils::errored(kErrorInvalidOption);
 
-          uint32_t& options = inst._options;
-          if (options & option)
+          if (inst.hasOption(option))
             return DebugUtils::errored(kErrorOptionAlreadyDefined);
 
-          options |= option;
+          inst.addOptions(option);
           tType = nextToken(&token);
         }
         else {
@@ -1136,20 +1231,19 @@ Error AsmParser::parseCommand() noexcept {
 
           // Parse {AVX-512} option(s) immediately next to the operand.
           tType = nextToken(&token);
-          if (tType == AsmToken::kLCurl) {
-            uint32_t& options = inst._options;
+          if (tType == AsmTokenType::kLCurl) {
             do {
-              tType = nextToken(&tmp, AsmTokenizer::kParseSymbol | AsmTokenizer::kParseDashes);
-              if (tType != AsmToken::kSym && tType != AsmToken::kNSym)
+              tType = nextToken(&tmp, ParseFlags::kParseSymbol | ParseFlags::kIncludeDashes);
+              if (tType != AsmTokenType::kSym && tType != AsmTokenType::kNSym)
                 return DebugUtils::errored(kErrorInvalidState);
 
               tType = nextToken(&token);
-              if (tType != AsmToken::kRCurl)
+              if (tType != AsmTokenType::kRCurl)
                 return DebugUtils::errored(kErrorInvalidState);
 
               uint32_t maskRegId = 0;
-              uint32_t size = tmp.size;
-              const uint8_t* str = tmp.data;
+              size_t size = tmp.size();
+              const uint8_t* str = tmp.data();
 
               if (size == 2 && (str[0] == 'k' || str[1] == 'K') && (maskRegId = (str[1] - (uint8_t)'0')) < 8) {
                 RegOnly& extraReg = inst._extraReg;
@@ -1165,48 +1259,48 @@ Error AsmParser::parseCommand() noexcept {
                 if (count != 0)
                   return DebugUtils::errored(kErrorInvalidOption);
 
-                if (options & x86::Inst::kOptionZMask)
+                if (inst.hasOption(InstOptions::kX86_ZMask))
                   return DebugUtils::errored(kErrorOptionAlreadyDefined);
 
-                options |= x86::Inst::kOptionZMask;
+                inst.addOptions(InstOptions::kX86_ZMask);
               }
               else {
-                uint32_t option = x86ParseAvx512Option(str, size);
-                if (option) {
-                  if (options & option)
+                InstOptions option = x86ParseAvx512Option(str, size);
+                if (option != InstOptions::kNone) {
+                  if (inst.hasOption(option))
                     return DebugUtils::errored(kErrorOptionAlreadyDefined);
-                  options |= option;
+                  inst.addOptions(option);
                 }
                 else {
-                  uint32_t bcst = x86ParseAvx512Broadcast(str, size);
-                  if (!bcst)
+                  x86::Mem::Broadcast broadcast = x86ParseAvx512Broadcast(str, size);
+                  if (broadcast == x86::Mem::Broadcast::kNone)
                     return DebugUtils::errored(kErrorInvalidOption);
 
-                  if (bcst && (!memOp || memOp->hasBroadcast()))
+                  if (!memOp || memOp->hasBroadcast())
                     return DebugUtils::errored(kErrorInvalidBroadcast);
 
-                  memOp->setBroadcast(bcst);
+                  memOp->setBroadcast(broadcast);
                 }
               }
 
               tType = nextToken(&token);
-            } while (tType == AsmToken::kLCurl);
+            } while (tType == AsmTokenType::kLCurl);
           }
 
           count++;
         }
 
-        if (tType == AsmToken::kComma)
+        if (tType == AsmTokenType::kComma)
           continue;
 
-        if (tType == AsmToken::kNL || tType == AsmToken::kEnd)
+        if (tType == AsmTokenType::kNL || tType == AsmTokenType::kEnd)
           break;
 
         return DebugUtils::errored(kErrorInvalidState);
       }
 
       ASMJIT_PROPAGATE(x86FixupInstruction(*this, inst, operands, count));
-      ASMJIT_PROPAGATE(InstAPI::validate(_emitter->archId(), inst, operands, count));
+      ASMJIT_PROPAGATE(InstAPI::validate(_emitter->arch(), inst, operands, count));
 
       _emitter->setInstOptions(inst.options());
       _emitter->setExtraReg(inst.extraReg());
@@ -1214,10 +1308,10 @@ Error AsmParser::parseCommand() noexcept {
     }
   }
 
-  if (tType == AsmToken::kNL)
+  if (tType == AsmTokenType::kNL)
     return kErrorOk;
 
-  if (tType == AsmToken::kEnd) {
+  if (tType == AsmTokenType::kEnd) {
     _endOfInput = true;
     return kErrorOk;
   }

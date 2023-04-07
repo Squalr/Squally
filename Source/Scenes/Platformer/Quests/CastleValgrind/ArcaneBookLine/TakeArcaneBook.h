@@ -7,6 +7,7 @@ class EvilEye;
 class Gecky;
 class Guano;
 class Mabel;
+class Portal;
 class QuestLine;
 class Scrappy;
 class Squally;
