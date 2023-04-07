@@ -40,7 +40,7 @@ using namespace cocos2d;
 const std::string UnholyProtection::UnholyProtectionIdentifier = "unholy-protection";
 const std::string UnholyProtection::HackIdentifierUnholyProtection = "unholy-protection";
 const float UnholyProtection::Duration = 120.0f;
-const std::string UnholyProtection::StateKeyUnholyProtectionNewHealth = "ANTI_OPTIMIZE_STATE_KEY_UNDYING_DAMAGE";
+const std::string UnholyProtection::StateKeyUnholyProtectionNewHealth = "ANTI_OPTIMIZE_STATE_KEY_UNDYING_NEW_HP";
 
 UnholyProtection* UnholyProtection::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -116,8 +116,8 @@ void UnholyProtection::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return UnholyProtectionGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_RegisterEax::create()
-					}
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_RegisterEax::create()
+					},
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
@@ -126,25 +126,29 @@ void UnholyProtection::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentTryChanging::create()) +
-						"fld1\n" + // Load one (potential new health) <PUSH>
-						"fld dword ptr [eax]\n" +  // Load health <PUSH>
-						"fldz\n" + // Load zero <PUSH>
-						"fcomp\n" + // Check if health == 0 (death check) <POP>
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) + 
+						"fld1\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage::create()) + 
+						"fild dword ptr [eax]\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) + 
+						"fldz\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create()) + 
+						"fcomip st(0), st(1)\n" +  // TODO: AsmJit can't parse this. Need to pull latest version and see if it's fixed.
 						"fcmove st(0), st(1)\n" +
 						"fistp dword ptr [eax]\n" +
-						"fstp st(0)\n" // <POP>
+						"fstp st(0)\n"
 						, // x64 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentTryChanging::create()) + 
-						"fld1\n" + // Load one (potential new health) <PUSH>
-						"fld dword ptr [rax]\n" +  // Load health <PUSH>
-						"fldz\n" + // Load zero <PUSH>
-						"fcomp\n" + // Check if health == 0 (death check) <POP>
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) + 
+						"fld1\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage::create()) + 
+						"fild dword ptr [eax]\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) + 
+						"fldz\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create()) + 
+						"fcomip st(0), st(1)\n" + 
 						"fcmove st(0), st(1)\n" +
 						"fistp dword ptr [rax]\n" +
-						"fstp st(0)\n" // <POP>
+						"fstp st(0)\n"
 					),
 				},
 				true
@@ -170,7 +174,10 @@ void UnholyProtection::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHeali
 		return;
 	}
 	
-	Buff::HackStateStorage[UnholyProtection::StateKeyUnholyProtectionNewHealth] = Value(1);
+	int originalHealth = damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
+	int projectedNewHealth = originalHealth - damageOrHealing->damageOrHealingValue;
+
+	Buff::HackStateStorage[UnholyProtection::StateKeyUnholyProtectionNewHealth] = Value(projectedNewHealth);
 
 	this->applyUnholyProtection();
 
@@ -187,7 +194,10 @@ void UnholyProtection::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHeal
 		return;
 	}
 
-	Buff::HackStateStorage[UnholyProtection::StateKeyUnholyProtectionNewHealth] = Value(1);
+	int originalHealth = damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0);
+	int projectedNewHealth = originalHealth + damageOrHealing->damageOrHealingValue;
+	
+	Buff::HackStateStorage[UnholyProtection::StateKeyUnholyProtectionNewHealth] = Value(projectedNewHealth);
 
 	this->applyUnholyProtection();
 
@@ -199,37 +209,31 @@ NO_OPTIMIZE void UnholyProtection::applyUnholyProtection()
 {
 	static volatile int newHealthUnholyProtection = 0;
 	static volatile int* newHealthUnholyProtectionPtr = nullptr;
-	static volatile int currentDamageTakenLocal = 0;
-	static volatile int* currentDamageTakenLocalPtr = nullptr;
 
 	newHealthUnholyProtection = GameUtils::getKeyOrDefault(Buff::HackStateStorage, UnholyProtection::StateKeyUnholyProtectionNewHealth, Value(0)).asInt();
 	newHealthUnholyProtection = MathUtils::clamp(newHealthUnholyProtection, 0, std::abs(newHealthUnholyProtection));
 	newHealthUnholyProtectionPtr = &newHealthUnholyProtection;
-	currentDamageTakenLocal = Buff::HackStateStorage[Buff::StateKeyDamageTaken].asInt();
-	currentDamageTakenLocalPtr = &currentDamageTakenLocal;
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZAX);
 
-	ASM_MOV_REG_VAR(ZAX, newHealthUnholyProtection);
+	ASM_MOV_REG_VAR(ZAX, newHealthUnholyProtectionPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_UNHOLY_PROTECTION);
 	ASM(fld1); // One (potential new health) <PUSH>
 	ASM(fild dword ptr [ZAX]); // Health <PUSH>
 	ASM(fldz); // Zero (death check) <PUSH>
-	ASM(fcomp); // Check if health == 0 <POP>
+	ASM(fcomip st(0), st(1)); // Check if health == 0 <POP>
 	ASM(fcmove st(0), st(1)); // If so, set to 1
-	ASM(fistp dword ptr [ZAX]); // <POP>
+	ASM(fistp dword ptr [ZAX]); // <POP> and set new HP
 	ASM(fstp st(0)); // <POP>
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageTakenLocal, edi);
-
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS()
 
-	Buff::HackStateStorage[Buff::StateKeyDamageTaken] = Value(currentDamageTakenLocal);
+	Buff::HackStateStorage[UnholyProtection::StateKeyUnholyProtectionNewHealth] = newHealthUnholyProtection;
 
 	HACKABLES_STOP_SEARCH();
 }
