@@ -58,7 +58,7 @@ SpellOfBinding* SpellOfBinding::create(PlatformerEntity* caster, PlatformerEntit
 }
 
 SpellOfBinding::SpellOfBinding(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Bite, AbilityType::Shadow, BuffData(SpellOfBinding::Duration, SpellOfBinding::SpellOfBindingIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Book, AbilityType::Arcane, BuffData(SpellOfBinding::Duration, SpellOfBinding::SpellOfBindingIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Curse);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura);
@@ -113,7 +113,7 @@ void SpellOfBinding::registerHackables()
 				SpellOfBinding::SpellOfBindingIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_SpellOfBinding::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_Bite,
+				UIResources::Menus_Icons_Book,
 				LazyNode<HackablePreview>::create([=](){ return SpellOfBindingGenericPreview::create(); }),
 				{
 					{
@@ -131,44 +131,40 @@ void SpellOfBinding::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						std::string("fld dword ptr [eax]") +
-						std::string("fldz") +
-						std::string("fcompp") +
+						std::string("fldz\n") +
+						std::string("fld dword ptr [ebx]\n") +
+						std::string("fcompp\n") +
 						// Convert to eflags
-						std::string("fstsw ax") +
-						std::string("sahf") +
-						std::string("jbe skipSpellOfBindingCode") +
-						std::string("fld dword ptr [esi]") +
+						std::string("fstsw ax\n") +
+						std::string("sahf\n") +
+						// Skip
+						std::string("jbe skipSpellOfBindingCode\n") +
 						// Negate
-						std::string("fchs") +
-						std::string("fstp dword ptr [esi]") +
-						std::string("skipSpellOfBindingCode:") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						std::string("fld dword ptr [ebx]\n") +
+						std::string("fchs\n") +
+						std::string("fstp dword ptr [ebx]\n") +
+						std::string("skipSpellOfBindingCode:\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create())
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						std::string("fld dword ptr [rax]") +
-						std::string("fldz") +
-						std::string("fcompp") +
+						std::string("fldz\n") +
+						std::string("fld dword ptr [rbx]\n") +
+						std::string("fcompp\n") +
 						// Convert to eflags
-						std::string("fstsw ax") +
-						std::string("sahf") +		
-						std::string("jbe skipSpellOfBindingCode") +
-						std::string("fld dword ptr [rsi]") +
+						std::string("fstsw ax\n") +
+						std::string("sahf\n") +		
+						// Skip
+						std::string("jbe skipSpellOfBindingCode\n") +
 						// Negate
-						std::string("fchs") +
-						std::string("fstp dword ptr [rsi]") +
-						std::string("skipSpellOfBindingCode:") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						std::string("fld dword ptr [rbx]\n") +
+						std::string("fchs\n") +
+						std::string("fstp dword ptr [rbx]\n") +
+						std::string("skipSpellOfBindingCode:\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create())
 					)
 				},
 				true
@@ -197,42 +193,35 @@ void SpellOfBinding::onModifyTimelineSpeed(CombatEvents::ModifiableTimelineSpeed
 
 NO_OPTIMIZE void SpellOfBinding::applySpellOfBinding()
 {
-	static volatile float speedBonus = 0.0f;
-	static volatile float* speedBonusPtr;
 	static volatile float* currentSpeedPtr;
 
-	speedBonus = 0.0f;
-	speedBonusPtr = &speedBonus;
 	currentSpeedPtr = &this->currentSpeed;
 	
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
 	ASM(push ZBX);
-	ASM(push ZSI);
 
 	ASM_MOV_REG_PTR(ZBX, currentSpeedPtr);
-	ASM_MOV_REG_PTR(ZSI, speedBonusPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SPELL_OF_BINDING);
-	ASM(fld dword ptr [ZBX]);
 	ASM(fldz);
+	ASM(fld dword ptr [ZBX]);
 	ASM(fcompp);
 	ASM(fstsw ax);	// Store in AX
 	ASM(sahf);		// Convert to eflags
 	ASM(jbe skipSpellOfBindingCode);
-	ASM(fld dword ptr [ZSI]);
+	ASM(fld dword ptr [ZBX]);
 	ASM(fchs) // Negate
-	ASM(fstp dword ptr [ZSI]);
+	ASM(fstp dword ptr [ZBX]);
 	ASM(skipSpellOfBindingCode:);
 	ASM_NOP12();
 	HACKABLE_CODE_END();
 
-	ASM(pop ZSI);
 	ASM(pop ZBX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 	HACKABLES_STOP_SEARCH();
 
-	this->currentSpeed = MathUtils::clamp(this->currentSpeed + speedBonus, SpellOfBinding::MinSpeed, SpellOfBinding::MaxSpeed);
+	this->currentSpeed = MathUtils::clamp(this->currentSpeed, SpellOfBinding::MinSpeed, SpellOfBinding::MaxSpeed);
 }
 END_NO_OPTIMIZE

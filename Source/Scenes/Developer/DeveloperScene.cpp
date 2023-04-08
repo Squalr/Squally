@@ -468,7 +468,7 @@ DeveloperScene::DeveloperScene()
 		X [B] Lazarus			=>	3_x <Tombstone, 	fcmove> 		=> UnholyProtection (rename) / undying effect
 		O 						=>	3_x <GhostBolts,	f?????> 		=> Ghostbolts / reflectable spell (Copy FireBall I guess?) but make 1 per teammate (ie 2 lol)
 		
-		X SkeletalPriestess		=>  4_x <Book,				fchs/jbe> 	=> Spell of Binding - Speed Decrease
+		X SkeletalPriestess		=>  4_x <Book,				jbe> 		=> Spell of Binding - Speed Decrease
 		X SkeletalKnight		=>  4_x <SwordGlowPurp,		jae>  		=> CursedBlade - Reduce damage
 		X SkeletalCleaver		=>  4_x <SwordGlowYel,		jb> 		=> UnholyBlade - Damage to healing
 
