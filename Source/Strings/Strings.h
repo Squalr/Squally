@@ -15084,6 +15084,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentNegate() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentPushDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentPushDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentPushDamage();
+		virtual ~Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentPushDamage() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentSkip : public LocalizedString
 	{
 	public:
