@@ -120,8 +120,7 @@ void Fear::registerHackables()
 		},
 	};
 
-	auto func = &Fear::applyFear;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Fear::applyFear, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

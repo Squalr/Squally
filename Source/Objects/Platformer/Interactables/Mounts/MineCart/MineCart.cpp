@@ -124,8 +124,7 @@ void MineCart::registerHackables()
 		},
 	};
 
-	auto func = &MineCart::updateCanMove;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(MineCart::updateCanMove, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{

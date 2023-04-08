@@ -160,8 +160,7 @@ void Parry::registerHackables()
 		},
 	};
 
-	auto stoneSkinFunc = &Parry::applyParry;
-	this->hackables = HackableCode::create((void*&)stoneSkinFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Parry::applyParry, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

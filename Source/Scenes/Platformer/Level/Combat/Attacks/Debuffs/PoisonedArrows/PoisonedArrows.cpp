@@ -157,8 +157,7 @@ void PoisonedArrows::registerHackables()
 		},
 	};
 
-	auto restoreFunc = &PoisonedArrows::runPoisonedArrowsTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(PoisonedArrows::runPoisonedArrowsTick, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

@@ -155,8 +155,7 @@ void BatSwarm::registerHackables()
 		},
 	};
 
-	auto func = &BatSwarm::compareTeam;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(BatSwarm::compareTeam, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{

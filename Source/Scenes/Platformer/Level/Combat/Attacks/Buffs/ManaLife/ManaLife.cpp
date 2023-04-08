@@ -109,8 +109,7 @@ void ManaLife::registerHackables()
 		},
 	};
 
-	auto func = &ManaLife::applyManaLife;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(ManaLife::applyManaLife, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

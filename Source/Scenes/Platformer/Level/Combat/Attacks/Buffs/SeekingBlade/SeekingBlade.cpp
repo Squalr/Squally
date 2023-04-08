@@ -154,8 +154,7 @@ void SeekingBlade::registerHackables()
 		},
 	};
 
-	auto func = &SeekingBlade::applySeekingBlade;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(SeekingBlade::applySeekingBlade, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

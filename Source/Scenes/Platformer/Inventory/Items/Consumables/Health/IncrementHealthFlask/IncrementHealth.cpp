@@ -112,8 +112,7 @@ void IncrementHealth::registerHackables()
 		},
 	};
 
-	auto restoreFunc = &IncrementHealth::runRestoreTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(IncrementHealth::runRestoreTick, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

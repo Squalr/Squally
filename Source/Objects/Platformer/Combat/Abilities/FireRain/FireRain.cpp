@@ -141,8 +141,7 @@ void FireRain::registerHackables()
 		},
 	};
 
-	auto func = &FireRain::compareTeam;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(FireRain::compareTeam, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{

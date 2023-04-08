@@ -160,8 +160,7 @@ void Haste::registerHackables()
 		},
 	};
 
-	auto func = &Haste::applyHaste;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Haste::applyHaste, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

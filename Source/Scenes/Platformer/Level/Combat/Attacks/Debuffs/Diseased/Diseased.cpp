@@ -140,8 +140,7 @@ void Diseased::registerHackables()
 		},
 	};
 
-	auto func = &Diseased::applyDiseased;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Diseased::applyDiseased, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

@@ -154,8 +154,7 @@ void ManaDrain::registerHackables()
 		},
 	};
 
-	auto restoreFunc = &ManaDrain::runRestoreTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(ManaDrain::runRestoreTick, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

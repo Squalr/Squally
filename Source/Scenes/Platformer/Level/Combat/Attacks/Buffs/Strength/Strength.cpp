@@ -146,8 +146,7 @@ void Strength::registerHackables()
 		},
 	};
 
-	auto func = &Strength::applyStrength;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Strength::applyStrength, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

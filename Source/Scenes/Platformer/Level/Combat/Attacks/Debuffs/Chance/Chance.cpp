@@ -157,8 +157,7 @@ void Chance::registerHackables()
 		},
 	};
 
-	auto func = &Chance::applyChance;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Chance::applyChance, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

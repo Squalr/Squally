@@ -113,8 +113,7 @@ void ShadowBomb::registerHackables()
 		},
 	};
 
-	auto func = &ShadowBomb::dealDamage;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(ShadowBomb::dealDamage, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{

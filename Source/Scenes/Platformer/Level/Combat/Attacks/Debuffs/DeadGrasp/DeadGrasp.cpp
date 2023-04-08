@@ -150,8 +150,7 @@ void DeadGrasp::registerHackables()
 		},
 	};
 
-	auto func = &DeadGrasp::applyDeadGrasp;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(DeadGrasp::applyDeadGrasp, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

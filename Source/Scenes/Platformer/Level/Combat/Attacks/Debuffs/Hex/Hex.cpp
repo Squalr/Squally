@@ -158,8 +158,7 @@ void Hex::registerHackables()
 		},
 	};
 
-	auto func = &Hex::applyHex;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Hex::applyHex, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

@@ -129,8 +129,7 @@ void InnerFire::registerHackables()
 		},
 	};
 
-	auto restoreFunc = &InnerFire::runRestoreTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(InnerFire::runRestoreTick, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

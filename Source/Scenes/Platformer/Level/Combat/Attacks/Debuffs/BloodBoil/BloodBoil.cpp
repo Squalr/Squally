@@ -141,8 +141,7 @@ void BloodBoil::registerHackables()
 		},
 	};
 
-	auto func = &BloodBoil::applyBloodBoil;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(BloodBoil::applyBloodBoil, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

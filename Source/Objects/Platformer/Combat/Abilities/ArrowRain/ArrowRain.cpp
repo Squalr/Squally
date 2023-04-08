@@ -137,8 +137,7 @@ void ArrowRain::registerHackables()
 		},
 	};
 
-	auto func = &ArrowRain::compareTeam;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(ArrowRain::compareTeam, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{

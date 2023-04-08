@@ -132,8 +132,7 @@ void SiphonLife::registerHackables()
 		},
 	};
 
-	auto restoreFunc = &SiphonLife::runRestoreTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(SiphonLife::runRestoreTick, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

@@ -149,8 +149,7 @@ void Radiation::registerHackables()
 		},
 	};
 
-	auto restoreFunc = &Radiation::runRadiationTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Radiation::runRadiationTick, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

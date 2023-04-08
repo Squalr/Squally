@@ -199,8 +199,7 @@ void Rabies::registerHackables()
 		},
 	};
 
-	auto func = &Rabies::applyRabies;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Rabies::applyRabies, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

@@ -158,8 +158,7 @@ void CurseOfTongues::registerHackables()
 		},
 	};
 
-	auto func = &CurseOfTongues::applyCurseOfTongues;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(CurseOfTongues::applyCurseOfTongues, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

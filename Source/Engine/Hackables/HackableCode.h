@@ -19,6 +19,9 @@
 #define COMMENT(str) Strings::Common_ConstantNewline::create()->setStringReplacementVariables( \
 	Strings::Common_Comment::create()->setStringReplacementVariables(str))->getString()
 
+#define CREATE_HACKABLES(funcName, codeInfoMap) HackableCode::create([]() { auto func = &funcName; return (void*&)func; }(), codeInfoMap);
+
+
 #if (_WIN64 || (__GNUC__ && (__x86_64__ || __ppc64__)))
 	#define ASM_PUSH_EFLAGS() \
 		ASM(pushfq)

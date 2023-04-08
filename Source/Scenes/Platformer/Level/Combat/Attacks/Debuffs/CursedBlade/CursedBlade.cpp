@@ -134,8 +134,7 @@ void CursedBlade::registerHackables()
 		},
 	};
 
-	auto func = &CursedBlade::applyCursedBlade;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(CursedBlade::applyCursedBlade, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

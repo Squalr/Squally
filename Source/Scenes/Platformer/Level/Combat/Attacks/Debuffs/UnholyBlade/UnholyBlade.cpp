@@ -53,7 +53,7 @@ UnholyBlade* UnholyBlade::create(PlatformerEntity* caster, PlatformerEntity* tar
 }
 
 UnholyBlade::UnholyBlade(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_PurpleScarabShell, AbilityType::Nature, BuffData(UnholyBlade::Duration, UnholyBlade::UnholyBladeIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_SwordGlowYellow, AbilityType::Nature, BuffData(UnholyBlade::Duration, UnholyBlade::UnholyBladeIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 
@@ -96,7 +96,7 @@ void UnholyBlade::registerHackables()
 				UnholyBlade::HackIdentifierUnholyBlade,
 				Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_UnholyBlade::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_PurpleScarabShell,
+				UIResources::Menus_Icons_SwordGlowYellow,
 				LazyNode<HackablePreview>::create([=](){ return UnholyBladeGenericPreview::create(); }),
 				{
 					{
@@ -111,28 +111,30 @@ void UnholyBlade::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentRepeat::create()) +
-						std::string("fldz") +
-						std::string("ficomp dword ptr [ebx]") +
-						std::string("fstsw ax") +
-						std::string("sahf") +
-						std::string("jb skipCodeUnholyBlade") +
-						std::string("fild dword ptr [ebx]") +
-						std::string("fistp dword ptr [edx]") +
-						std::string("fldz") +
-						std::string("fistp dword ptr [ebx]") +
-						std::string("skipCodeUnholyBlade:")
+						std::string("fldz\n") +
+						std::string("ficomp dword ptr [ebx]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) +
+						std::string("fstsw ax\n") +
+						std::string("sahf\n\n") +
+						std::string("jb skipCodeUnholyBlade\n") +
+						std::string("fild dword ptr [ebx]\n") +
+						std::string("fistp dword ptr [edx]\n") +
+						std::string("fldz\n") +
+						std::string("fistp dword ptr [ebx]\n") +
+						std::string("skipCodeUnholyBlade:\n")
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentRepeat::create()) +
-						std::string("fldz") +
-						std::string("ficomp dword ptr [rbx]") +
-						std::string("fstsw ax") +
-						std::string("sahf") +
-						std::string("jb skipCodeUnholyBlade") +
-						std::string("fild dword ptr [rbx]") +
-						std::string("fistp dword ptr [rdx]") +
-						std::string("fldz") +
-						std::string("fistp dword ptr [rbx]") +
-						std::string("skipCodeUnholyBlade:")
+						std::string("fldz\n") +
+						std::string("ficomp dword ptr [rbx]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) +
+						std::string("fstsw ax\n") +
+						std::string("sahf\n\n") +
+						std::string("jb skipCodeUnholyBlade\n") +
+						std::string("fild dword ptr [rbx]\n") +
+						std::string("fistp dword ptr [rdx]\n") +
+						std::string("fldz\n") +
+						std::string("fistp dword ptr [rbx]\n") +
+						std::string("skipCodeUnholyBlade:\n")
 					),
 				},
 				true
@@ -140,8 +142,7 @@ void UnholyBlade::registerHackables()
 		},
 	};
 
-	auto func = &UnholyBlade::applyUnholyBlade;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(UnholyBlade::applyUnholyBlade, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

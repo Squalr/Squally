@@ -129,8 +129,7 @@ void HealthLink::registerHackables()
 		},
 	};
 
-	auto func = &HealthLink::applyHealthLink;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(HealthLink::applyHealthLink, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

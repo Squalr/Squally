@@ -129,8 +129,7 @@ void PactOfTheAncients::registerHackables()
 		},
 	};
 
-	auto func = &PactOfTheAncients::applyPactOfTheAncients;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(PactOfTheAncients::applyPactOfTheAncients, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

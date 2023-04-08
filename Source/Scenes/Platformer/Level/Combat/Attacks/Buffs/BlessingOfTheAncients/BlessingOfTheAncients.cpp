@@ -149,8 +149,7 @@ void BlessingOfTheAncients::registerHackables()
 		},
 	};
 
-	auto func = &BlessingOfTheAncients::applyBlessingOfTheAncients;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(BlessingOfTheAncients::applyBlessingOfTheAncients, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

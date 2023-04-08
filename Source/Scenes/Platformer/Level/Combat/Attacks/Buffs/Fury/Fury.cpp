@@ -152,8 +152,7 @@ void Fury::registerHackables()
 		},
 	};
 
-	auto func = &Fury::applyFury;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Fury::applyFury, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

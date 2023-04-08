@@ -152,8 +152,7 @@ void CursedSwings::registerHackables()
 		},
 	};
 
-	auto func = &CursedSwings::applyCursedSwings;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(CursedSwings::applyCursedSwings, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

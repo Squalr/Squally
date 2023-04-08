@@ -133,8 +133,7 @@ void Enflame::registerHackables()
 		},
 	};
 
-	auto restoreFunc = &Enflame::runEnflameTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Enflame::runEnflameTick, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

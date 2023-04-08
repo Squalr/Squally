@@ -140,8 +140,7 @@ void GhostBolt::registerHackables()
 		},
 	};
 
-	auto func = &GhostBolt::setGhostBoltSpeed;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(GhostBolt::setGhostBoltSpeed, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{

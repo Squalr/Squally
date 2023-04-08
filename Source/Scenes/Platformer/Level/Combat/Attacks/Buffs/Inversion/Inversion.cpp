@@ -144,8 +144,7 @@ void Inversion::registerHackables()
 		},
 	};
 
-	auto stoneSkinFunc = &Inversion::applyInversion;
-	this->hackables = HackableCode::create((void*&)stoneSkinFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Inversion::applyInversion, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

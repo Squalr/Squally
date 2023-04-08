@@ -154,8 +154,7 @@ void Melt::registerHackables()
 		},
 	};
 
-	auto func = &Melt::applyMelt;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Melt::applyMelt, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

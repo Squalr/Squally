@@ -156,8 +156,7 @@ void Enchantment::registerHackables()
 		},
 	};
 
-	auto func = &Enchantment::applyEnchantment;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Enchantment::applyEnchantment, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

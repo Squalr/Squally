@@ -164,10 +164,7 @@ void UnholyProtection::registerHackables()
 		},
 	};
 
-	auto func = &UnholyProtection::applyUnholyProtection;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
-
-	HackableCode::create([]() { auto func = &UnholyProtection::applyUnholyProtection; return (void*&)func; }(), codeInfoMap);
+	this->hackables = CREATE_HACKABLES(UnholyProtection::applyUnholyProtection, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

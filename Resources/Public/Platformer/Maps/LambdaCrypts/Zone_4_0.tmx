@@ -1100,8 +1100,8 @@
   </properties>
   <object id="931" name="portal" type="object" x="3373.51" y="2216.06" width="256" height="312">
    <properties>
-    <property name="map" value="LambdaCrypts/Zone_1_0"/>
-    <property name="transition" value="lesser-crypt"/>
+    <property name="map" value="LambdaCrypts/Zone_2_0"/>
+    <property name="transition" value="greater-crypt"/>
    </properties>
   </object>
  </objectgroup>
@@ -1171,7 +1171,7 @@
     <property name="components" value="ally"/>
    </properties>
   </object>
-  <object id="1033" name="roger" type="entity" x="4619.33" y="2399.27" width="128" height="128">
+  <object id="1033" name="roger" type="entity" x="2519.33" y="2399.27" width="128" height="128">
    <properties>
     <property name="components" value="lc-t6-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="lc-generic"/>
@@ -1193,7 +1193,7 @@
   </object>
   <object id="932" name="spawn" type="object" x="3442.18" y="2406.73" width="128" height="128">
    <properties>
-    <property name="transition" value="lesser-crypt"/>
+    <property name="transition" value="greater-crypt"/>
    </properties>
   </object>
   <object id="957" name="edge-portal" type="object" x="7730.06" y="2031.58" width="199.918" height="488.002">

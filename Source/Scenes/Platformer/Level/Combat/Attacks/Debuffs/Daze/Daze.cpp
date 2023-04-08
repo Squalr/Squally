@@ -157,8 +157,7 @@ void Daze::registerHackables()
 		},
 	};
 
-	auto func = &Daze::applyDaze;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Daze::applyDaze, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

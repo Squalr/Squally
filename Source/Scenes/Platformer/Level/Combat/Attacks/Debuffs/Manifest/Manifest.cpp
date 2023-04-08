@@ -156,8 +156,7 @@ void Manifest::registerHackables()
 		},
 	};
 
-	auto func = &Manifest::applyManifest;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Manifest::applyManifest, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

@@ -141,8 +141,7 @@ void KillingMachineDamageBehavior::onLoad()
 			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_1;
 			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare1;
 			icon = UIResources::Menus_Icons_Tools;
-			auto func = &KillingMachineDamageBehavior::compareDamage1;
-			functionPtr = (void*&)func;
+			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage1; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[1];
 			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovl::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
@@ -156,8 +155,7 @@ void KillingMachineDamageBehavior::onLoad()
 			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_2;
 			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare2;
 			icon = UIResources::Menus_Icons_RobotArm;
-			auto func = &KillingMachineDamageBehavior::compareDamage2;
-			functionPtr = (void*&)func;
+			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage2; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[2];
 			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
@@ -171,8 +169,7 @@ void KillingMachineDamageBehavior::onLoad()
 			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_3;
 			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare3;
 			icon = UIResources::Menus_Icons_Pickaxe;
-			auto func = &KillingMachineDamageBehavior::compareDamage3;
-			functionPtr = (void*&)func;
+			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage3; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[3];
 			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmove::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
@@ -187,8 +184,7 @@ void KillingMachineDamageBehavior::onLoad()
 			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_4;
 			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare4;
 			icon = UIResources::Menus_Icons_Hammer;
-			auto func = &KillingMachineDamageBehavior::compareDamage4;
-			functionPtr = (void*&)func;
+			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage4; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[4];
 			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovne::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
@@ -204,8 +200,7 @@ void KillingMachineDamageBehavior::onLoad()
 			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_5;
 			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare5;
 			icon = UIResources::Menus_Icons_HammerSmithing;
-			auto func = &KillingMachineDamageBehavior::compareDamage5;
-			functionPtr = (void*&)func;
+			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage5; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[5];
 			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovg::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
@@ -220,8 +215,7 @@ void KillingMachineDamageBehavior::onLoad()
 			functionId = LOCAL_FUNC_ID_COMPARE_TEAM_6;
 			functionIdentifier = KillingMachineDamageBehavior::HackIdentifierKillingMachineCompare6;
 			icon = UIResources::Menus_Icons_GearBroken;
-			auto func = &KillingMachineDamageBehavior::compareDamage6;
-			functionPtr = (void*&)func;
+			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage6; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[6];
 			commandComment = COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge::create()) +
 				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +

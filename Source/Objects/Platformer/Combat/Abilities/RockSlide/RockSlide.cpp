@@ -135,8 +135,7 @@ void RockSlide::registerHackables()
 		},
 	};
 
-	auto func = &RockSlide::damagePlayerEntity;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(RockSlide::damagePlayerEntity, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{

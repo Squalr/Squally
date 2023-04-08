@@ -160,8 +160,7 @@ void ShieldWall::registerHackables()
 		},
 	};
 
-	auto func = &ShieldWall::applyShieldWall;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(ShieldWall::applyShieldWall, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

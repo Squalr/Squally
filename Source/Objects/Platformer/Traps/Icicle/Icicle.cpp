@@ -142,8 +142,7 @@ void Icicle::registerHackables()
 		},
 	};
 
-	auto func = &Icicle::applyGravity;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(Icicle::applyGravity, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{

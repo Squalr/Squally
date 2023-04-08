@@ -155,8 +155,7 @@ void ScaldingBlade::registerHackables()
 		},
 	};
 
-	auto func = &ScaldingBlade::applyScaldingBlade;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(ScaldingBlade::applyScaldingBlade, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

@@ -145,8 +145,7 @@ void Vampirism::registerHackables()
 		},
 	};
 
-	auto func = &Vampirism::applyVampirism;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Vampirism::applyVampirism, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

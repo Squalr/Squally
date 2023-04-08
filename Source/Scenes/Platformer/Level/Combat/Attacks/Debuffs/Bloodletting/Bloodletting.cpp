@@ -143,8 +143,7 @@ void Bloodletting::registerHackables()
 		},
 	};
 
-	auto restoreFunc = &Bloodletting::runBloodlettingTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Bloodletting::runBloodlettingTick, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

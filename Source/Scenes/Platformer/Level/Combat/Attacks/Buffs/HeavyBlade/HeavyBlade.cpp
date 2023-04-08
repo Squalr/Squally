@@ -149,8 +149,7 @@ void HeavyBlade::registerHackables()
 		},
 	};
 
-	auto func = &HeavyBlade::applyHeavyBlade;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(HeavyBlade::applyHeavyBlade, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

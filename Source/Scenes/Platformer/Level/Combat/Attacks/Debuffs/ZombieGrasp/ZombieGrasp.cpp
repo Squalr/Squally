@@ -149,8 +149,7 @@ void ZombieGrasp::registerHackables()
 		},
 	};
 
-	auto func = &ZombieGrasp::applyZombieGrasp;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(ZombieGrasp::applyZombieGrasp, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

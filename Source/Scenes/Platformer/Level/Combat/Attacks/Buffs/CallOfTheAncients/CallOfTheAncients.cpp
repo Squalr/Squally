@@ -148,8 +148,7 @@ void CallOfTheAncients::registerHackables()
 		},
 	};
 
-	auto func = &CallOfTheAncients::applyCallOfTheAncients;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(CallOfTheAncients::applyCallOfTheAncients, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

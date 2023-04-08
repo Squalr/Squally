@@ -157,8 +157,7 @@ void BrokenBlade::registerHackables()
 		},
 	};
 
-	auto func = &BrokenBlade::applyBrokenBlade;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(BrokenBlade::applyBrokenBlade, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

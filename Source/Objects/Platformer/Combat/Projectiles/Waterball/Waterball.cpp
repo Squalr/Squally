@@ -135,8 +135,7 @@ void Waterball::registerHackables()
 		},
 	};
 
-	auto func = &Waterball::setWaterballSpeed;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(Waterball::setWaterballSpeed, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{

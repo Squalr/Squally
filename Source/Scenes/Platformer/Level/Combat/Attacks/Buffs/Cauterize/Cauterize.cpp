@@ -126,8 +126,7 @@ void Cauterize::registerHackables()
 		},
 	};
 
-	auto restoreFunc = &Cauterize::runRestoreTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Cauterize::runRestoreTick, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

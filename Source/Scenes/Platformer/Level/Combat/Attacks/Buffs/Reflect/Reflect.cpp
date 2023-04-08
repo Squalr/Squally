@@ -162,8 +162,7 @@ void Reflect::registerHackables()
 		},
 	};
 
-	auto func = &Reflect::applyReflect;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Reflect::applyReflect, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

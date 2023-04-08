@@ -155,8 +155,7 @@ void Focus::registerHackables()
 		},
 	};
 
-	auto func = &Focus::applyFocus;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Focus::applyFocus, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

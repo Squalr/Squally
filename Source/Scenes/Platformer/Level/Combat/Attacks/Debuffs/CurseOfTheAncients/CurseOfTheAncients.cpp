@@ -139,8 +139,7 @@ void CurseOfTheAncients::registerHackables()
 		},
 	};
 
-	auto func = &CurseOfTheAncients::applyCurseOfTheAncients;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(CurseOfTheAncients::applyCurseOfTheAncients, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

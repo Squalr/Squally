@@ -155,8 +155,7 @@ void Calcify::registerHackables()
 		},
 	};
 
-	auto func = &Calcify::applyCalcify;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Calcify::applyCalcify, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

@@ -125,8 +125,7 @@ void Entwined::registerHackables()
 		},
 	};
 
-	auto func = &Entwined::applyEntwined;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Entwined::applyEntwined, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

@@ -143,8 +143,7 @@ void ArrowVolley::registerHackables()
 		},
 	};
 
-	auto func = &ArrowVolley::compareTeam;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(ArrowVolley::compareTeam, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{

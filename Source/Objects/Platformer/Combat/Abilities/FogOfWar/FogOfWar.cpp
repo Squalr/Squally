@@ -141,8 +141,7 @@ void FogOfWar::registerHackables()
 		},
 	};
 
-	auto func = &FogOfWar::increaseDamage;
-	std::vector<HackableCode*> hackables = HackableCode::create((void*&)func, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(FogOfWar::increaseDamage, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{

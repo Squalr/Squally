@@ -124,8 +124,7 @@ void Rejuvination::registerHackables()
 		},
 	};
 
-	auto restoreFunc = &Rejuvination::runRestoreTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Rejuvination::runRestoreTick, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

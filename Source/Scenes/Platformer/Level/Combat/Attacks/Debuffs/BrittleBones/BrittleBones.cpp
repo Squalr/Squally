@@ -122,8 +122,7 @@ void BrittleBones::registerHackables()
 		},
 	};
 
-	auto func = &BrittleBones::applyBrittleBones;
-	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(BrittleBones::applyBrittleBones, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{

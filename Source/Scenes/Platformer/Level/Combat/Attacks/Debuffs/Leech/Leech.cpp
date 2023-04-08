@@ -146,8 +146,7 @@ void Leech::registerHackables()
 		},
 	};
 
-	auto restoreFunc = &Leech::runLeechTick;
-	this->hackables = HackableCode::create((void*&)restoreFunc, codeInfoMap);
+	this->hackables = CREATE_HACKABLES(Leech::runLeechTick, codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{
