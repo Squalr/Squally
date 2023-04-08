@@ -110,10 +110,10 @@ void UnholyBlade::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) +
-						std::string("fldz\n") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare::create()) +
 						std::string("ficomp dword ptr [ebx]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) +
+						std::string("fldz\n") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) +
 						std::string("fstsw ax\n") +
 						std::string("sahf\n\n") +
@@ -127,10 +127,10 @@ void UnholyBlade::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint1::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint2::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) +
-						std::string("fldz\n") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare::create()) +
 						std::string("ficomp dword ptr [rbx]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) +
+						std::string("fldz\n") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) +
 						std::string("fstsw ax\n") +
 						std::string("sahf\n\n") +
@@ -189,8 +189,8 @@ NO_OPTIMIZE void UnholyBlade::applyUnholyBlade()
 	ASM_MOV_REG_VAR(ZBX, currentDamageDealtLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSED_BLADE);
-	ASM(fldz);	// Load 0
 	ASM(fild dword ptr [ZBX]); // Compare to damage
+	ASM(fldz);	// Load 0
 	ASM(fstsw ax);	// Store in AX
 	ASM(sahf);		// Convert to eflags
 	ASM(jb skipCodeUnholyBlade);
