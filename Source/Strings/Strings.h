@@ -15039,10 +15039,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentDecreaseDamage : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentDecreaseDamage* create();
+		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint1* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15050,14 +15050,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentDecreaseDamage();
-		virtual ~Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentDecreaseDamage() = default;
+		Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint1();
+		virtual ~Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint1() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentRepeat : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentRepeat* create();
+		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint2* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15065,14 +15065,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentRepeat();
-		virtual ~Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentRepeat() = default;
+		Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint2();
+		virtual ~Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint2() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentRepeatJump : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentNegate : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentRepeatJump* create();
+		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentNegate* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15080,8 +15080,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentRepeatJump();
-		virtual ~Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentRepeatJump() = default;
+		Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentNegate();
+		virtual ~Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentNegate() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentSkip : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentSkip* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentSkip();
+		virtual ~Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentSkip() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_Register : public LocalizedString
@@ -16044,10 +16059,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentF() = default;
 	};
 
-	class Menus_Hacking_Abilities_Generic_FPU_CommentFchgs : public LocalizedString
+	class Menus_Hacking_Abilities_Generic_FPU_CommentFchs : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentFchgs* create();
+		static Menus_Hacking_Abilities_Generic_FPU_CommentFchs* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16055,8 +16070,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Generic_FPU_CommentFchgs();
-		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentFchgs() = default;
+		Menus_Hacking_Abilities_Generic_FPU_CommentFchs();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentFchs() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_FPU_CommentFiadd : public LocalizedString

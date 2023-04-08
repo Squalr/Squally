@@ -110,31 +110,39 @@ void UnholyBlade::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentRepeat::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) +
 						std::string("fldz\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare::create()) +
 						std::string("ficomp dword ptr [ebx]\n\n") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) +
 						std::string("fstsw ax\n") +
 						std::string("sahf\n\n") +
-						std::string("jb skipCodeUnholyBlade\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentSkip::create()) +
+						std::string("jb skipCode\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentNegate::create()) +
 						std::string("fild dword ptr [ebx]\n") +
-						std::string("fistp dword ptr [edx]\n") +
-						std::string("fldz\n") +
-						std::string("fistp dword ptr [ebx]\n") +
-						std::string("skipCodeUnholyBlade:\n")
+						std::string("fchs\n") +
+						std::string("fistp dword ptr [ebx]\n\n") +
+						std::string("skipCode:\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint1::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint2::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentRepeat::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) +
 						std::string("fldz\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare::create()) +
 						std::string("ficomp dword ptr [rbx]\n\n") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) +
 						std::string("fstsw ax\n") +
 						std::string("sahf\n\n") +
-						std::string("jb skipCodeUnholyBlade\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentSkip::create()) +
+						std::string("jb skipCode\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentNegate::create()) +
 						std::string("fild dword ptr [rbx]\n") +
-						std::string("fistp dword ptr [rdx]\n") +
-						std::string("fldz\n") +
-						std::string("fistp dword ptr [rbx]\n") +
-						std::string("skipCodeUnholyBlade:\n")
+						std::string("fchs\n") +
+						std::string("fistp dword ptr [rbx]\n\n") +
+						std::string("skipCode:\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint1::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint2::create())
 					),
 				},
 				true
@@ -170,24 +178,15 @@ NO_OPTIMIZE void UnholyBlade::applyUnholyBlade()
 {
 	static volatile int currentDamageDealtLocal = 0;
 	static volatile int* currentDamageDealtLocalPtr = nullptr;
-	static volatile int currentHealingLocal = 0;
-	static volatile int* currentHealingLocalPtr = nullptr;
 
 	currentDamageDealtLocal = GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageDealt, Value(0)).asInt();
 	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
-	currentHealingLocal = 0;
-	currentHealingLocalPtr = &currentHealingLocal;
 	
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
 	ASM(push ZBX);
-	ASM(push ZDX);
 
-	ASM(MOV ZBX, 0)
-	ASM_MOV_REG_VAR(ebx, currentDamageDealtLocal);
-
-	ASM(MOV ZDX, 0)
-	ASM_MOV_REG_VAR(edx, currentHealingLocal);
+	ASM_MOV_REG_VAR(ZBX, currentDamageDealtLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSED_BLADE);
 	ASM(fldz);	// Load 0
@@ -196,14 +195,12 @@ NO_OPTIMIZE void UnholyBlade::applyUnholyBlade()
 	ASM(sahf);		// Convert to eflags
 	ASM(jb skipCodeUnholyBlade);
 	ASM(fild dword ptr [ZBX]);
-	ASM(fistp dword ptr [ZDX]);
-	ASM(fldz);
+	ASM(fchs);
 	ASM(fistp dword ptr [ZBX]);
 	ASM(skipCodeUnholyBlade:);
 	ASM_NOP12();
 	HACKABLE_CODE_END();
 
-	ASM(pop ZDX);
 	ASM(pop ZBX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();

@@ -114,7 +114,7 @@ void GhostBolt::registerHackables()
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) +
 						std::string("fld1\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFchgs::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFchs::create()) +
 						std::string("fchs\n") +
 						std::string("fstp dword ptr [eax]\n\n") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
@@ -125,7 +125,7 @@ void GhostBolt::registerHackables()
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) +
 						std::string("fld1\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFchgs::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFchs::create()) +
 						std::string("fchs\n") +
 						std::string("fstp dword ptr [rax]\n\n") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
