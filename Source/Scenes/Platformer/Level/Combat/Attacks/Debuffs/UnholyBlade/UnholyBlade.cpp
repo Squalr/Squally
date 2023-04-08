@@ -162,7 +162,7 @@ void UnholyBlade::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArg
 {
 	super::onBeforeDamageDealt(damageOrHealing);
 
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(UnholyBlade::DamageDelt);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyUnholyBlade();
 
@@ -190,7 +190,7 @@ NO_OPTIMIZE void UnholyBlade::applyUnholyBlade()
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSED_BLADE);
 	ASM(fldz);	// Load 0
-	ASM(ficomp dword ptr [ZBX]); // Compare to damage
+	ASM(fild dword ptr [ZBX]); // Compare to damage
 	ASM(fstsw ax);	// Store in AX
 	ASM(sahf);		// Convert to eflags
 	ASM(jb skipCodeUnholyBlade);
