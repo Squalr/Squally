@@ -120,8 +120,10 @@ HackUtils::CompileResult HackUtils::assemble(std::string assembly, void* address
 	CompileResult compileResult;
 
 	Environment env(sizeof(void*) == 4 ? Arch::kX86 : Arch::kX64);
+	CpuFeatures cpuFeatures = CpuInfo::host().features();
+
 	CodeHolder code;
-	code.init(env);
+	code.init(env, cpuFeatures);
 
 	// Attach X86Assembler `code`.
 	x86::Assembler a(&code);

@@ -12639,6 +12639,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare() = default;
 	};
 
+	class Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional();
+		virtual ~Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional() = default;
+	};
+
 	class Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentHint : public LocalizedString
 	{
 	public:
@@ -12652,6 +12667,36 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentHint();
 		virtual ~Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentHint() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop();
+		virtual ~Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore();
+		virtual ~Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage : public LocalizedString
@@ -12682,21 +12727,6 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Buffs_UnholyProtection_RegisterEax();
 		virtual ~Menus_Hacking_Abilities_Buffs_UnholyProtection_RegisterEax() = default;
-	};
-
-	class Menus_Hacking_Abilities_Buffs_UnholyProtection_RegisterEdx : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Buffs_UnholyProtection_RegisterEdx* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Buffs_UnholyProtection_RegisterEdx();
-		virtual ~Menus_Hacking_Abilities_Buffs_UnholyProtection_RegisterEdx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_UnholyProtection_UnholyProtection : public LocalizedString

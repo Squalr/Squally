@@ -126,29 +126,37 @@ void UnholyProtection::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) + 
-						"fld1\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage::create()) + 
-						"fild dword ptr [eax]\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) + 
-						"fldz\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create()) + 
-						"fcomip st0, st1\n" +  // TODO: AsmJit can't parse this. Need to pull latest version and see if it's fixed.
-						"fcmove st0, st1\n" +
-						"fistp dword ptr [eax]\n" +
-						"fstp st0\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) +
+						std::string("fld1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage::create()) +
+						std::string("fild dword ptr [eax]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) +
+						std::string("fldz\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create()) +
+						std::string("fcomip st1\n\n") + // ideally this would be fcomip st0, st1 but asmtk doesn't allow this
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional::create()) +
+						std::string("fcmove st1\n") + // ideally this would be fcmove st0, st1 but asmtk doesn't allow this
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore::create()) +
+						std::string("fistp dword ptr [eax]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop::create()) + 
+						std::string("fstp st0\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentHint::create())
 						, // x64 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) + 
-						"fld1\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage::create()) + 
-						"fild dword ptr [eax]\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) + 
-						"fldz\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create()) + 
-						"fcomip st0, st1\n" + 
-						"fcmove st0, st1\n" +
-						"fistp dword ptr [rax]\n" +
-						"fstp st0\n"
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) +
+						std::string("fld1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage::create()) +
+						std::string("fild dword ptr [rax]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) +
+						std::string("fldz\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create()) +
+						std::string("fcomip st1\n\n") + // ideally this would be fcomip st0, st1 but asmtk doesn't allow this
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional::create()) +
+						std::string("fcmove st1\n") + // ideally this would be fcmove st0, st1 but asmtk doesn't allow this
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore::create()) +
+						std::string("fistp dword ptr [rax]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop::create()) + 
+						std::string("fstp st0\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentHint::create())
 					),
 				},
 				true
@@ -158,6 +166,8 @@ void UnholyProtection::registerHackables()
 
 	auto func = &UnholyProtection::applyUnholyProtection;
 	this->hackables = HackableCode::create((void*&)func, codeInfoMap);
+
+	HackableCode::create([]() { auto func = &UnholyProtection::applyUnholyProtection; return (void*&)func; }(), codeInfoMap);
 
 	for (HackableCode* next : this->hackables)
 	{
