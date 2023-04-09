@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class PlatformerEntity;
+class SmartAnimationSequenceNode;
 class SmartParticles;
 
 class Daze : public Buff
@@ -33,9 +34,10 @@ private:
 	void applyDaze();
 	
 	SmartParticles* spellEffect = nullptr;
+	SmartAnimationSequenceNode* dazeFx = nullptr;
 	cocos2d::Sprite* spellAura = nullptr;
 	
 	static const float Duration;
-	static const float DazeDamage;
+	static const int DazeDamage;
 	static const int MaxMultiplier;
 };

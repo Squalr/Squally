@@ -466,7 +466,7 @@ DeveloperScene::DeveloperScene()
 		X Hunter				=>  3_x <PoisonSpears,		ja>  		=> PoisonedArrows - either radiation or diseased copy
 
 		X [B] Lazarus			=>	3_x <Tombstone, 	fcmove> 		=> UnholyProtection (rename) / undying effect
-		O 						=>	3_x <GhostBolts,	f?????> 		=> Ghostbolts / reflectable spell (Copy FireBall I guess?) but make 1 per teammate (ie 2 lol)
+		X 						=>	3_x <GhostBolts,	fchs> 			=> Ghostbolts / reflectable spell (Copy FireBall I guess?) but make 1 per teammate (ie 2 lol)
 		
 		X SkeletalPriestess		=>  4_x <Book,				jbe> 		=> Spell of Binding - Speed Decrease
 		X SkeletalKnight		=>  4_x <SwordGlowPurp,		jae>  		=> CursedBlade - Reduce damage
@@ -543,25 +543,6 @@ DeveloperScene::DeveloperScene()
 		// ** 3_x is all overworld (Tiger, Warrior, Grunt, Archer)
 
 		/*
-		ASM Reference: https://docs.oracle.com/cd/E26502_01/html/E28388/eojde.html
-		- x seta
-		- x setae
-		- x setb
-		- x setbe
-		- x setna
-		- x setnae
-		- x setnb
-		- x setnbe
-		- x jnp // Deprecated boomer shit
-		- x jp
-		- x jpe
-		- x jno // Overflow, hard to use in combat unless dealing with > 127
-		- x jo
-		- x jnc // Unsigned overflow, harder to use because > 255
-		- x jc
-		- x jo
-		- x addc
-
 		Surface:
 			X DemonRogue			=>  1_X		<SkullGlowRed, 		movss> 	=> BloodBoil / Fixed damage debuff
 			X DemonShaman			=>  1_X		<BookSpellsFire,	addss> 	=> Cauterize / Self Heal Tick

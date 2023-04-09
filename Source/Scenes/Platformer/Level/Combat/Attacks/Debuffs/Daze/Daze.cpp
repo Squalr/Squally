@@ -40,7 +40,7 @@ const std::string Daze::DazeIdentifier = "cursed-blade";
 const std::string Daze::HackIdentifierDaze = "cursed-blade";
 
 const int Daze::MaxMultiplier = 4;
-const float Daze::DazeDamage = 2.0f; // Keep in sync with asm
+const int Daze::DazeDamage = 2; // Keep in sync with asm
 const float Daze::Duration = 16.0f;
 
 Daze* Daze::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -57,10 +57,12 @@ Daze::Daze(PlatformerEntity* caster, PlatformerEntity* target)
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
+	this->dazeFx = SmartAnimationSequenceNode::create();
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
 
+	this->addChild(this->dazeFx);
 	this->addChild(this->spellEffect);
 	this->addChild(this->spellAura);
 }
@@ -82,6 +84,11 @@ void Daze::onEnter()
 		FadeTo::create(0.25f, 0),
 		nullptr
 	));
+	
+	if (!this->dazeFx->isPlayingAnimation())
+	{
+		this->dazeFx->playAnimationRepeat(FXResources::Confused___status_effect_01__KO_000, 0.05f);
+	}
 
 	CombatEvents::TriggerHackableCombatCue();
 }
@@ -89,6 +96,8 @@ void Daze::onEnter()
 void Daze::initializePositions()
 {
 	super::initializePositions();
+
+	this->dazeFx->setPosition(Vec2(0.0f, 64.0f));
 }
 
 void Daze::registerHackables()
@@ -182,16 +191,19 @@ NO_OPTIMIZE void Daze::applyDaze()
 {
 	static volatile int currentDamageDealtLocal = 0;
 	static volatile int* currentDamageDealtLocalPtr = &currentDamageDealtLocal;
-	static volatile float dazeDamage;
-	static volatile float* dazeDamagePtr = &dazeDamage;
+	static volatile int dazeDamage;
+	static volatile int* dazeDamagePtr = nullptr;
 	static volatile float rng = 0.0f;
+	static volatile float* rngPtr = nullptr;
 	static volatile float chance = 0.0f;
-	static volatile float* rngPtr = &rng;
 	static volatile float* chancePtr = &chance;
 
 	dazeDamage = Daze::DazeDamage;
+	dazeDamagePtr = &dazeDamage;
 	rng = RandomHelper::random_real(0.0f, 1.0f);
-	chance = 0.75f;
+	rngPtr = &rng;
+	chance = 0.01f;
+	chancePtr = &chance;
 
 	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 
@@ -201,24 +213,22 @@ NO_OPTIMIZE void Daze::applyDaze()
 	ASM(push ZDI);
 	ASM(push ZSI);
 
-	ASM_MOV_REG_VAR(ZAX, rngPtr);
-	ASM_MOV_REG_VAR(ZBX, chancePtr);
-	ASM_MOV_REG_VAR(ZDI, dazeDamagePtr);
-	ASM_MOV_REG_VAR(ZSI, currentDamageDealtLocalPtr);
+	ASM_MOV_REG_VAR(ZDI, rngPtr);
+	ASM_MOV_REG_VAR(ZSI, chancePtr);
+	ASM_MOV_REG_VAR(ZAX, dazeDamagePtr);
+	ASM_MOV_REG_VAR(ZBX, currentDamageDealtLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_DAZE);
-	ASM(fild dword ptr [ZSI]);
+	ASM(fld dword ptr [ZSI]);
 	ASM(fld dword ptr [ZDI]);
 	ASM(fcompp);
-	ASM(fld dword ptr [ZAX]);
-	ASM(fld dword ptr [ZBX]);
+	ASM(fild dword ptr [ZBX]);
+	ASM(fild dword ptr [ZAX]);
 	ASM(fcmovbe st(0), st(1));
-	ASM(fistp dword ptr [ZSI]);
+	ASM(fistp dword ptr [ZBX]);
 	ASM(fstp st(0));
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, edi);
 
 	ASM(pop ZSI);
 	ASM(pop ZDI);
