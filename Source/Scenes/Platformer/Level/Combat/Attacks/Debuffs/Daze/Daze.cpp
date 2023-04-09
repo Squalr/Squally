@@ -131,9 +131,9 @@ void Daze::registerHackables()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Daze::DazeDamage)))) + 
 						std::string("fild dword ptr [esi]\n") +
 						std::string("fld dword ptr [edi]\n") +
+						std::string("fcompp\n") +
 						std::string("fld dword ptr [eax]\n") +
 						std::string("fld dword ptr [ebx]\n") +
-						std::string("fcompp\n") +
 						std::string("fcmovbe st0, st1\n") +
 						std::string("fistp dword ptr [esi]\n") +
 						std::string("fstp st(0)\n")
@@ -144,9 +144,9 @@ void Daze::registerHackables()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Daze::DazeDamage)))) + 
 						std::string("fild dword ptr [rsi]\n") +
 						std::string("fld dword ptr [rdi]\n") +
+						std::string("fcompp\n") +
 						std::string("fld dword ptr [rax]\n") +
 						std::string("fld dword ptr [rbx]\n") +
-						std::string("fcompp\n") +
 						std::string("fcmovbe st0, st1\n") +
 						std::string("fistp dword ptr [rsi]\n") +
 						std::string("fstp st(0)\n")
@@ -209,9 +209,9 @@ NO_OPTIMIZE void Daze::applyDaze()
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_DAZE);
 	ASM(fild dword ptr [ZSI]);
 	ASM(fld dword ptr [ZDI]);
+	ASM(fcompp);
 	ASM(fld dword ptr [ZAX]);
 	ASM(fld dword ptr [ZBX]);
-	ASM(fcompp);
 	ASM(fcmovbe st(0), st(1));
 	ASM(fistp dword ptr [ZSI]);
 	ASM(fstp st(0));
