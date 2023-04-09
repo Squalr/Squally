@@ -100,33 +100,75 @@ void CursedBlade::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return CursedBladeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_Register::create(),
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEcx::create(), true
 					},
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
 				0.0f,
 				{
+					/*
+					ASM(repeatCursedBlade:);
+					ASM(fld1); // Load 1
+					ASM(fisubr dword ptr [ZCX]);
+					ASM(fist dword ptr [ZCX]); // Store back to damage
+					ASM(fld1); // Load 1
+					ASM(fxch);
+					ASM(fcompp); // Compare and pop stack twice
+					ASM(fstsw ax);	// Store in AX
+					ASM(sahf);		// Convert to eflags
+					ASM(jae repeatCursedBlade);
+					*/
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeat::create()) +
-						"repeat:\n" +
-						"fld1\n" +
-						"fisubr dword ptr [ebx]\n" +
-						"ficomp dword ptr [ebx]\n" +
-						"fstsw ax\n" +
-						"sahf\n" +
-						"jae repeat\n"
+						std::string("repeat:\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) +
+						std::string("fld1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSubtract::create()) +
+						std::string("fisubr dword ptr [ebx]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentStoreDamage::create()) +
+						std::string("fist dword ptr [ebx]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) +
+						std::string("fld1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSwapDamage::create()) +
+						std::string("fxch st1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentCompare::create()) +
+						std::string("fcompp\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) +
+						std::string("fstsw ax\n") +
+						std::string("sahf\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentA::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentJump::create()) +
+						std::string("jae repeat\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentHint::create())
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeat::create()) +
-						"repeat:\n" +
-						"fld1\n" +
-						"fisubr dword ptr [rbx]\n" +
-						"ficomp dword ptr [rbx]\n" +
-						"fstsw ax\n" +
-						"sahf\n" +
-						"jae repeat\n"
+						std::string("repeat:\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) +
+						std::string("fld1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSubtract::create()) +
+						std::string("fisubr dword ptr [rbx]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentStoreDamage::create()) +
+						std::string("fist dword ptr [rbx]\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) +
+						std::string("fld1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSwapDamage::create()) +
+						std::string("fxch st1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentCompare::create()) +
+						std::string("fcompp\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) +
+						std::string("fstsw ax\n") +
+						std::string("sahf\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentA::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentJump::create()) +
+						std::string("jae repeat\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentHint::create())
 					),
 				},
 				true
@@ -146,7 +188,7 @@ void CursedBlade::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArg
 {
 	super::onBeforeDamageDealt(damageOrHealing);
 
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(CursedBlade::DamageDelt);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(damageOrHealing->damageOrHealingValue);
 
 	this->applyCursedBlade();
 
@@ -168,23 +210,25 @@ NO_OPTIMIZE void CursedBlade::applyCursedBlade()
 	
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
-	ASM(push ZBX);
+	ASM(push ZCX);
 
-	ASM(MOV ZBX, 0)
-	ASM_MOV_REG_VAR(ebx, currentDamageDealtLocal);
+	ASM_MOV_REG_VAR(ZCX, currentDamageDealtLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CURSED_BLADE);
 	ASM(repeatCursedBlade:);
-	ASM(fld1);	// Load 1
-	ASM(fisubr dword ptr [ZBX]);
-	ASM(ficomp dword ptr [ZBX]);
+	ASM(fld1); // Load 1
+	ASM(fisubr dword ptr [ZCX]);
+	ASM(fist dword ptr [ZCX]); // Store back to damage
+	ASM(fld1); // Load 1
+	ASM(fxch);
+	ASM(fcompp); // Compare and pop stack twice
 	ASM(fstsw ax);	// Store in AX
 	ASM(sahf);		// Convert to eflags
 	ASM(jae repeatCursedBlade);
 	ASM_NOP12();
 	HACKABLE_CODE_END();
 
-	ASM(pop ZBX);
+	ASM(pop ZCX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 	HACKABLES_STOP_SEARCH();

@@ -278,6 +278,7 @@ private:
 
 	static std::vector<HackableCode*> parseHackables(void* functionStart, CodeInfoMap& hackableCodeInfoMap);
 	static MarkerMap& parseHackableMarkers(void* functionStart, CodeInfoMap& hackableCodeInfoMap);
+	static std::string removeComments(const std::string& code);
 
 	std::string assemblyString;
 	std::string originalAssemblyString;

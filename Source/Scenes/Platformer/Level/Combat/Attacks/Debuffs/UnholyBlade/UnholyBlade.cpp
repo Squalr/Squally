@@ -36,8 +36,8 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_CURSED_BLADE 1
 
-const std::string UnholyBlade::UnholyBladeIdentifier = "cursed-blade";
-const std::string UnholyBlade::HackIdentifierUnholyBlade = "cursed-blade";
+const std::string UnholyBlade::UnholyBladeIdentifier = "unholy-blade";
+const std::string UnholyBlade::HackIdentifierUnholyBlade = "unholy-blade";
 
 const int UnholyBlade::MaxMultiplier = 6;
 const int UnholyBlade::DamageDelt = 1;

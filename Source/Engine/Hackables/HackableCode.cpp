@@ -173,7 +173,10 @@ bool HackableCode::applyCustomCode(std::string newAssembly)
 		return false;
 	}
 
-	HackUtils::CompileResult compileResult = HackUtils::assemble(this->assemblyString, this->codePointer);
+	// Remove comments to improve compilation speeds
+	std::string simplifiedAssembly = HackableCode::removeComments(this->assemblyString);
+
+	HackUtils::CompileResult compileResult = HackUtils::assemble(simplifiedAssembly, this->codePointer);
 
 	// Sanity check that the code compiles -- there isn't any reason it shouldn't
 	if (compileResult.hasError || compileResult.byteCount > this->originalCodeLength)
@@ -489,4 +492,30 @@ HackableCode::MarkerMap& HackableCode::parseHackableMarkers(void* functionStart,
 	HackableCode::HackableCodeCache[functionStart] = extractedMarkers;
 
 	return HackableCode::HackableCodeCache[functionStart];
+}
+
+std::string HackableCode::removeComments(const std::string& code)
+{
+    std::string result;
+    result.reserve(code.size());
+
+    bool inComment = false;
+    for (size_t i = 0; i < code.size(); ++i)
+	{
+        if (!inComment && i + 1 < code.size() && code[i] == '/' && code[i + 1] == '/')
+		{
+            inComment = true;
+            i++; // Skip the second '/'
+        }
+		else if (inComment && code[i] == '\n')
+		{
+            inComment = false;
+        }
+		else if (!inComment)
+		{
+            result.push_back(code[i]);
+        }
+    }
+
+    return result;
 }

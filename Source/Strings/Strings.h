@@ -13434,10 +13434,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentCompare() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentDecreaseDamage : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentDecreaseDamage* create();
+		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentHint* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13445,8 +13445,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentDecreaseDamage();
-		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentDecreaseDamage() = default;
+		Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentHint() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentJump : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentJump* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentJump();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentJump() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeat : public LocalizedString
@@ -13464,10 +13479,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeat() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeatJump : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentStoreDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeatJump* create();
+		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentStoreDamage* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13475,8 +13490,38 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeatJump();
-		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeatJump() = default;
+		Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentStoreDamage();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentStoreDamage() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSubtract : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSubtract* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSubtract();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSubtract() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSwapDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSwapDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSwapDamage();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSwapDamage() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CursedBlade : public LocalizedString
@@ -13494,10 +13539,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_CursedBlade() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_CursedBlade_Register : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedBlade_Register* create();
+		static Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEcx* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13505,8 +13550,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_CursedBlade_Register();
-		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_Register() = default;
+		Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEcx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint : public LocalizedString
@@ -16177,6 +16222,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Generic_FPU_CommentMul();
 		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentMul() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_FPU_CommentR : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_FPU_CommentR* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_FPU_CommentR();
+		virtual ~Menus_Hacking_Abilities_Generic_FPU_CommentR() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_FPU_CommentRnd : public LocalizedString

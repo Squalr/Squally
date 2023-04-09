@@ -129,27 +129,27 @@ void Daze::registerHackables()
 							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentDamageReduce::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Daze::DazeDamage)))) + 
-						"fild dword ptr [esi]\n" +
-						"fld dword ptr [edi]\n" +
-						"fld dword ptr [eax]\n" +
-						"fld dword ptr [ebx]\n" +
-						"fcompp\n" +
-						"fcmovbe st(0), st(1)\n" +
-						"fistp dword ptr [esi]\n" +
-						"fstp st(0)\n"
+						std::string("fild dword ptr [esi]\n") +
+						std::string("fld dword ptr [edi]\n") +
+						std::string("fld dword ptr [eax]\n") +
+						std::string("fld dword ptr [ebx]\n") +
+						std::string("fcompp\n") +
+						std::string("fcmovbe st0, st1\n") +
+						std::string("fistp dword ptr [esi]\n") +
+						std::string("fstp st(0)\n")
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentDamageReduce::create()
 							->setStringReplacementVariables(ConstantString::create(std::to_string(Daze::DazeDamage)))) + 
-						"fild dword ptr [rsi]\n" +
-						"fld dword ptr [rdi]\n" +
-						"fld dword ptr [rax]\n" +
-						"fld dword ptr [rbx]\n" +
-						"fcompp\n" +
-						"fcmovbe st(0), st(1)\n" +
-						"fistp dword ptr [rsi]\n" +
-						"fstp st(0)\n"
+						std::string("fild dword ptr [rsi]\n") +
+						std::string("fld dword ptr [rdi]\n") +
+						std::string("fld dword ptr [rax]\n") +
+						std::string("fld dword ptr [rbx]\n") +
+						std::string("fcompp\n") +
+						std::string("fcmovbe st0, st1\n") +
+						std::string("fistp dword ptr [rsi]\n") +
+						std::string("fstp st(0)\n")
 					),
 				},
 				true
