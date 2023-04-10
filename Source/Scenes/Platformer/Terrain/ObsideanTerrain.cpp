@@ -51,7 +51,7 @@ ObsideanTerrain::ObsideanTerrain(ValueMap& properties) : super(
 		TerrainResources::Obsidean_Right,
 		TerrainResources::Obsidean_RightConnector,
 		// Top
-		Vec2::ZERO,
+		Vec2(0.0f, -16.0f),
 		// Bottom
 		Vec2::ZERO,
 		// Left

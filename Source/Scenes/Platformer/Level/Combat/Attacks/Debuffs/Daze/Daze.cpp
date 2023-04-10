@@ -59,8 +59,6 @@ Daze::Daze(PlatformerEntity* caster, PlatformerEntity* target)
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 	this->dazeFx = SmartAnimationSequenceNode::create();
 
-	this->dazeFx->setScale(0.25f);
-
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
 
