@@ -7,7 +7,6 @@
 #include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Entwined/Entwined.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Buffs/Strength/CastStrength.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/BasicSlash/BasicSlash.h"
 
 #include "Resources/UIResources.h"
@@ -51,7 +50,6 @@ void FireTigerCombatBehavior::onLoad()
 	
 	this->entity->watchForComponent<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(CastStrength::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
 		attackBehavior->registerAttack(BasicSlash::create(8, 10, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
 
