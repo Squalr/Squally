@@ -36,8 +36,8 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_DAZE 1
 
-const std::string Daze::DazeIdentifier = "cursed-blade";
-const std::string Daze::HackIdentifierDaze = "cursed-blade";
+const std::string Daze::DazeIdentifier = "daze";
+const std::string Daze::HackIdentifierDaze = "daze";
 
 const int Daze::MaxMultiplier = 4;
 const int Daze::DazeDamage = 2; // Keep in sync with asm
@@ -53,11 +53,13 @@ Daze* Daze::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Daze::Daze(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_ShieldGlowBlue, AbilityType::Physical, BuffData(Daze::Duration, Daze::DazeIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Daze, AbilityType::Physical, BuffData(Daze::Duration, Daze::DazeIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 	this->dazeFx = SmartAnimationSequenceNode::create();
+
+	this->dazeFx->setScale(0.25f);
 
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
@@ -87,7 +89,7 @@ void Daze::onEnter()
 	
 	if (!this->dazeFx->isPlayingAnimation())
 	{
-		this->dazeFx->playAnimationRepeat(FXResources::Confused___status_effect_01__KO_000, 0.05f);
+		this->dazeFx->playAnimationRepeat(FXResources::Dazed_Dazed_000, 0.075f);
 	}
 
 	CombatEvents::TriggerHackableCombatCue();
@@ -117,7 +119,7 @@ void Daze::registerHackables()
 				Daze::HackIdentifierDaze,
 				Strings::Menus_Hacking_Abilities_Debuffs_Daze_Daze::create(),
 				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_ShieldGlowBlue,
+				UIResources::Menus_Icons_Daze,
 				LazyNode<HackablePreview>::create([=](){ return DazeGenericPreview::create(); }),
 				{
 					{

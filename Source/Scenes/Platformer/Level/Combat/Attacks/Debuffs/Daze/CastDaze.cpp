@@ -28,7 +28,7 @@ CastDaze* CastDaze::create(float attackDuration, float recoverDuration, Priority
 }
 
 CastDaze::CastDaze(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Debuff, UIResources::Menus_Icons_EyeStrain, priority, AbilityType::Physical, 0, 0, 7, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_Daze, priority, AbilityType::Physical, 0, 0, 7, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 
