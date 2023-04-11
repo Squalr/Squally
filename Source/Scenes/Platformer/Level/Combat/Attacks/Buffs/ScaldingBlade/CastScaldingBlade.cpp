@@ -26,7 +26,7 @@ CastScaldingBlade* CastScaldingBlade::create(float attackDuration, float recover
 }
 
 CastScaldingBlade::CastScaldingBlade(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_ShieldGlowBlue, priority, AbilityType::Physical, 0, 0, 4, attackDuration, recoverDuration)
+	: super(AttackType::Buff, UIResources::Menus_Icons_AxeGlowRed, priority, AbilityType::Fire, 0, 0, 4, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	

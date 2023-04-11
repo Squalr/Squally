@@ -11949,10 +11949,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentDamageReduce : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentDamageReduce* create();
+		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11960,14 +11960,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentDamageReduce();
-		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentDamageReduce() = default;
+		Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage();
+		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentIncreaseInstead : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentIncreaseInstead* create();
+		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11975,14 +11975,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentIncreaseInstead();
-		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentIncreaseInstead() = default;
+		Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier();
+		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentRegister : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentRegister* create();
+		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11990,14 +11990,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentRegister();
-		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentRegister() = default;
+		Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply();
+		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentTryChanging : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentTryChanging* create();
+		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12005,8 +12005,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentTryChanging();
-		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentTryChanging() = default;
+		Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore();
+		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEax : public LocalizedString
@@ -12024,10 +12024,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEax() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEcx : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEcx* create();
+		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEbx* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12035,8 +12035,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEcx();
-		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEcx() = default;
+		Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEbx();
+		virtual ~Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEbx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_ScaldingBlade : public LocalizedString

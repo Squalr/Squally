@@ -40,7 +40,6 @@ const std::string ScaldingBlade::ScaldingBladeIdentifier = "scalding-blade";
 const std::string ScaldingBlade::HackIdentifierScaldingBlade = "scalding-blade";
 
 const int ScaldingBlade::MaxMultiplier = 4;
-const int ScaldingBlade::DamageReduction = 3; // Keep in sync with asm
 const float ScaldingBlade::Duration = 16.0f;
 
 ScaldingBlade* ScaldingBlade::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -53,14 +52,14 @@ ScaldingBlade* ScaldingBlade::create(PlatformerEntity* caster, PlatformerEntity*
 }
 
 ScaldingBlade::ScaldingBlade(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_ShieldGlowBlue, AbilityType::Physical, BuffData(ScaldingBlade::Duration, ScaldingBlade::ScaldingBladeIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_AxeGlowRed, AbilityType::Fire, BuffData(ScaldingBlade::Duration, ScaldingBlade::ScaldingBladeIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
 	this->bubble->setOpacity(0);
-	this->spellAura->setColor(Color3B::YELLOW);
+	this->spellAura->setColor(Color3B::RED);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
@@ -112,12 +111,15 @@ void ScaldingBlade::registerHackables()
 			HackableCode::HackableCodeInfo(
 				ScaldingBlade::HackIdentifierScaldingBlade,
 				Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_ScaldingBlade::create(),
-				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_ShieldGlowBlue,
+				HackableBase::HackBarColor::Red,
+				UIResources::Menus_Icons_AxeGlowRed,
 				LazyNode<HackablePreview>::create([=](){ return ScaldingBladeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEax::create()
+					},
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEbx::create()
 					}
 				},
 				int(HackFlags::None),
@@ -127,27 +129,23 @@ void ScaldingBlade::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(ScaldingBlade::DamageReduction)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentTryChanging::create()) + 
-						std::string("movss xmm0, dword ptr [eax]") +
-						std::string("movss xmm1, dword ptr [ebx]") +
-						std::string("mulss xmm0, xmm1") +
-						std::string("movss dword ptr [eax], xmm0")
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage::create()) +
+						std::string("movss xmm0, dword ptr [eax]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier::create()) +
+						std::string("movss xmm1, dword ptr [ebx]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply::create()) +
+						std::string("mulss xmm0, xmm1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore::create()) +
+						std::string("movss dword ptr [eax], xmm0\n")
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(ScaldingBlade::DamageReduction)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentTryChanging::create()) + 
-						std::string("movss xmm0, dword ptr [rax]") +
-						std::string("movss xmm1, dword ptr [rbx]") +
-						std::string("mulss xmm0, xmm1") +
-						std::string("movss dword ptr [rax], xmm0")
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage::create()) +
+						std::string("movss xmm0, dword ptr [rax]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier::create()) +
+						std::string("movss xmm1, dword ptr [rbx]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply::create()) +
+						std::string("mulss xmm0, xmm1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore::create()) +
+						std::string("movss dword ptr [rax], xmm0\n")
 					),
 				},
 				true
@@ -184,14 +182,15 @@ NO_OPTIMIZE void ScaldingBlade::applyScaldingBlade()
 	static volatile float* multiplierLocalPtr = nullptr;
 
 	currentDamageDealtLocal = (float)Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
-	multiplierLocal = 3.0f;
 	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	multiplierLocal = 3.0f;
 	multiplierLocalPtr = &multiplierLocal;
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZAX);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZAX, currentDamageDealtLocal);
+	
+	ASM_MOV_REG_VAR(ZAX, currentDamageDealtLocalPtr);
 	ASM_MOV_REG_VAR(ZBX, multiplierLocalPtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SCALDING_BLADE);
@@ -201,8 +200,6 @@ NO_OPTIMIZE void ScaldingBlade::applyScaldingBlade()
 	ASM(movss dword ptr [ZAX], xmm0);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, ebx);
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);
