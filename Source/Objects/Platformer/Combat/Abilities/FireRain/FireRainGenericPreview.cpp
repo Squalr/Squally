@@ -4,7 +4,6 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
-#include "Entities/Platformer/Critters/Bat.h"
 
 #include "Resources/FXResources.h"
 
@@ -21,12 +20,11 @@ FireRainGenericPreview* FireRainGenericPreview::create()
 
 FireRainGenericPreview::FireRainGenericPreview()
 {
-	ValueMap valueMap;
-	this->bat = Bat::deserialize(valueMap);
+	this->fireRain = SmartAnimationSequenceNode::create(FXResources::FireBomb_FireBomb_0000);
 
-	this->bat->setRotation(180.0f);
+	this->fireRain->setScale(0.25f);
 
-	this->previewNode->addChild(this->bat);
+	this->previewNode->addChild(this->fireRain);
 }
 
 FireRainGenericPreview::~FireRainGenericPreview()
@@ -41,6 +39,8 @@ HackablePreview* FireRainGenericPreview::clone()
 void FireRainGenericPreview::onEnter()
 {
 	super::onEnter();
+
+	this->fireRain->playAnimationRepeat(FXResources::FireBomb_FireBomb_0000, 0.05f);
 }
 
 void FireRainGenericPreview::initializePositions()

@@ -7,7 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
-class PlatformerEntity;
+class SmartAnimationSequenceNode;
 
 class FireRainGenericPreview : public HackablePreview
 {
@@ -26,5 +26,5 @@ protected:
 private:
 	typedef HackablePreview super;
 
-	PlatformerEntity* bat = nullptr;
+	SmartAnimationSequenceNode* fireRain = nullptr;
 };

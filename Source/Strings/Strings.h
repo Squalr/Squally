@@ -9624,10 +9624,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare() = default;
 	};
 
-	class Menus_Hacking_Abilities_Abilities_FireRain_CommentEval : public LocalizedString
+	class Menus_Hacking_Abilities_Abilities_FireRain_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_FireRain_CommentEval* create();
+		static Menus_Hacking_Abilities_Abilities_FireRain_CommentHint* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9635,8 +9635,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Abilities_FireRain_CommentEval();
-		virtual ~Menus_Hacking_Abilities_Abilities_FireRain_CommentEval() = default;
+		Menus_Hacking_Abilities_Abilities_FireRain_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Abilities_FireRain_CommentHint() = default;
 	};
 
 	class Menus_Hacking_Abilities_Abilities_FireRain_CompareTeam : public LocalizedString
@@ -9669,10 +9669,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_FireRain_FireRain() = default;
 	};
 
-	class Menus_Hacking_Abilities_Abilities_FireRain_RegisterEax : public LocalizedString
+	class Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_FireRain_RegisterEax* create();
+		static Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm3* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9680,8 +9680,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Abilities_FireRain_RegisterEax();
-		virtual ~Menus_Hacking_Abilities_Abilities_FireRain_RegisterEax() = default;
+		Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm3();
+		virtual ~Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm3() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm4 : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm4* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm4();
+		virtual ~Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm4() = default;
 	};
 
 	class Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_ApplySpeed : public LocalizedString

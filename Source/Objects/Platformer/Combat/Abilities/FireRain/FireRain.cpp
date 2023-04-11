@@ -101,15 +101,15 @@ void FireRain::registerHackables()
 			HackableCode::HackableCodeInfo(
 				FireRain::HackIdentifierFireRainTeamCompare,
 				Strings::Menus_Hacking_Abilities_Abilities_FireRain_CompareTeam::create(),
-				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_Bats,
+				HackableBase::HackBarColor::Red,
+				UIResources::Menus_Icons_FireBolts,
 				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
-						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Abilities_FireRain_RegisterEax::create()
+						HackableCode::Register::xmm3, Strings::Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm3::create()
 					},
 					{
-						HackableCode::Register::xmm4, Strings::Menus_Hacking_Abilities_Abilities_FireRain_RegisterEax::create()
+						HackableCode::Register::xmm4, Strings::Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm4::create()
 					},
 				},
 				int(HackFlags::None),
@@ -123,13 +123,17 @@ void FireRain::registerHackables()
 						"comiss xmm3, xmm4\n" +
 						"je skipCode\n" +
 						"mov eax, 1\n" +
-						"skipCode:\n"
+						"skipCode:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentHint::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare::create()) +
 						"comiss xmm3, xmm4\n" +
 						"je skipCode\n" +
 						"mov rax, 1\n" +
-						"skipCode:\n"
+						"skipCode:\n\n" +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentHint::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()))
 					),
 				},
 				true
