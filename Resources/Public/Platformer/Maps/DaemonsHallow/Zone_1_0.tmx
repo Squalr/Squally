@@ -929,7 +929,7 @@
   </properties>
   <object id="741" name="Lava/Stone1" type="decor" x="2437.64" y="2378.46" width="165" height="120"/>
   <object id="902" name="Lava/LavaPool1" type="decor" x="2752.17" y="2490.67" width="213" height="44"/>
-  <object id="926" name="Lava/Hole2" type="decor" x="1937.5" y="2414.67" width="541" height="100"/>
+  <object id="926" name="Lava/Hole2" type="decor" x="1937" y="2434.67" width="541" height="100"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
@@ -984,7 +984,7 @@
     <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
-  <object id="962" name="demon-swordsman" type="entity" x="3068.29" y="2212.78" width="128" height="128">
+  <object id="962" name="demon-shaman" type="entity" x="3074.35" y="2221.88" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-c"/>
