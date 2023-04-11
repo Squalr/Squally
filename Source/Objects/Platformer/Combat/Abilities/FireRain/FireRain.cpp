@@ -56,11 +56,7 @@ FireRain::FireRain(PlatformerEntity* caster, PlatformerEntity* target) : super(c
 	for (int index = 0; index < 8; index++)
 	{
 		ValueMap valueMap;
-		SmartAnimationSequenceNode* meteor = SmartAnimationSequenceNode::create("TODO");
-
-		// Arrows are assumed to point up
-		meteor->setRotation(180.0f);
-		meteor->setOpacity(0);
+		SmartAnimationSequenceNode* meteor = SmartAnimationSequenceNode::create();
 
 		this->meteorPool.push_back(meteor);
 		this->meteorCooldowns.push_back(float(index) * 0.4f);
@@ -91,7 +87,7 @@ void FireRain::update(float dt)
 
 Vec2 FireRain::getButtonOffset()
 {
-	return Vec2(0.0f, -768.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 void FireRain::registerHackables()
@@ -160,9 +156,11 @@ void FireRain::runFireRain()
 
 	for (int index = 0; index < FireRain::TickCount; index++)
 	{
-		Sprite* icon = Sprite::create(UIResources::Menus_Icons_Bats);
+		Sprite* icon = Sprite::create(UIResources::Menus_Icons_FireBolts);
 
 		icon->setScale(0.5f);
+
+		this->meteorPool[index]->playAnimation(FXResources::FireBomb_FireBomb_0000, 0.05f, true);
 
 		timelineEvents.push_back(TimelineEvent::create(
 				this->caster,
@@ -186,7 +184,7 @@ void FireRain::updateAnimation(float dt)
 {
 	static const float VarianceX = 768.0f;
 	static const float FallDistance = -1280.0f;
-	static const float PixelsPerSecond = 768.0f;
+	static const float PixelsPerSecond = 256.0f;
 	static const float Duration = std::abs(FallDistance) / PixelsPerSecond;
 
 	float totalDuration = FireRain::StartDelay + FireRain::TimeBetweenTicks * float(FireRain::TickCount);
@@ -204,6 +202,7 @@ void FireRain::updateAnimation(float dt)
 			this->meteorPool[index]->setOpacity(0);
 			this->meteorPool[index]->setPosition(Vec2(RandomHelper::random_real(-VarianceX, VarianceX), 0.0f));
 			this->meteorPool[index]->runAction(FadeTo::create(0.25f, 255));
+			this->meteorPool[index]->playAnimation(FXResources::FireBomb_FireBomb_0000, 0.05f, true);
 
 			this->meteorCooldowns[index] = Duration;
 		}

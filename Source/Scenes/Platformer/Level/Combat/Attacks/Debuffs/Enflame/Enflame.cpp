@@ -180,7 +180,6 @@ NO_OPTIMIZE void Enflame::runEnflameTick()
 
 	ASM(mov ZAX, 0);
 
-	// TODO: Unclear what instruction to use
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_ENFLAME);
 	ASM(rdrand ZAX);
 	ASM(and ZAX, 0xF);

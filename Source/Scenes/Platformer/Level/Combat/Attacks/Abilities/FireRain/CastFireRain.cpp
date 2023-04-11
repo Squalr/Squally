@@ -89,7 +89,7 @@ void CastFireRain::performAttack(PlatformerEntity* owner, std::vector<Platformer
 		// Place it quasi off-screen
 		arrowRain->setPosition(arrowRain->getPosition() + Vec2(0.0f, 512.0f));
 	},
-	PlatformerAttack::TagArenaTop,
+	PlatformerAttack::TagArenaBottom,
 	[=]()
 	{
 		// TOP CENTER ARENA MARKER NOT FOUND!
@@ -109,7 +109,7 @@ void CastFireRain::performAttack(PlatformerEntity* owner, std::vector<Platformer
 		));
 		
 		// Fall back by spawning the arrow rain in a quasi reasonable spot.
-		arrowRain->setPosition(arrowRain->getPosition() + Vec2(-256.0f, 1024.0f));
+		arrowRain->setPosition(arrowRain->getPosition() + Vec2(-256.0f, 256.0f));
 	});
 }
 
