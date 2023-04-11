@@ -8,6 +8,7 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/ArrowVolley/CastArrowVolley.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/BasicSlash/BasicSlash.h"
 
+#include "Resources/EntityResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -49,7 +50,7 @@ void DemonArcherCombatBehavior::onLoad()
 	
 	this->entity->watchForComponent<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(CastArrowVolley::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
+		attackBehavior->registerAttack(CastArrowVolley::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed, EntityResources::Enemies_DaemonsHallow_DemonArcher_ARROW));
 		attackBehavior->registerAttack(BasicSlash::create(8, 10, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
 	

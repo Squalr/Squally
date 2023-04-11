@@ -30,7 +30,7 @@ CastCauterize* CastCauterize::create(float attackDuration, float recoverDuration
 }
 
 CastCauterize::CastCauterize(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_WandGlowYellow, priority, AbilityType::Nature, 0, 0, 4, attackDuration, recoverDuration, TargetingType::Self)
+	: super(AttackType::Damage, UIResources::Menus_Icons_BookSpellsFire, priority, AbilityType::Fire, 0, 0, 4, attackDuration, recoverDuration, TargetingType::Self)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	

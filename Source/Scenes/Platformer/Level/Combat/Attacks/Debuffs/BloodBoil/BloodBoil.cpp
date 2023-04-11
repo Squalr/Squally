@@ -111,7 +111,10 @@ void BloodBoil::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return BloodBoilGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_RegisterEax::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_RegisterEax::create(), true
+					},
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_RegisterEbx::create(), true
 					}
 				},
 				int(HackFlags::None),
@@ -121,19 +124,13 @@ void BloodBoil::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentTryChanging::create()) + 
-						std::string("movss xmm0, dword ptr [ebx]") +
-						std::string("movss dword ptr [eax], xmm0")
+						std::string("movss xmm0, dword ptr [ebx]\n") +
+						std::string("movss dword ptr [eax], xmm0\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentHint::create())
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentTryChanging::create()) + 
-						std::string("movss xmm0, dword ptr [rbx]") +
-						std::string("movss dword ptr [rax], xmm0")
+						std::string("movss xmm0, dword ptr [rbx]\n") +
+						std::string("movss dword ptr [rax], xmm0\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentHint::create())
 					),
 				},
 				true
@@ -170,14 +167,15 @@ NO_OPTIMIZE void BloodBoil::applyBloodBoil()
 	static volatile float* fixedDamagePtr = nullptr;
 
 	currentDamageDealtLocal = (float)Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
-	fixedDamage = 1.0f;
 	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	fixedDamage = 1.0f;
 	fixedDamagePtr = &fixedDamage;
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZAX);
 	ASM(push ZBX);
-	ASM_MOV_REG_VAR(ZAX, currentDamageDealtLocal);
+	
+	ASM_MOV_REG_VAR(ZAX, currentDamageDealtLocalPtr);
 	ASM_MOV_REG_VAR(ZBX, fixedDamagePtr);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SCALDING_BLADE);
@@ -185,8 +183,6 @@ NO_OPTIMIZE void BloodBoil::applyBloodBoil()
 	ASM(movss dword ptr [ZAX], xmm0);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
-
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, ebx);
 
 	ASM(pop ZBX);
 	ASM(pop ZAX);

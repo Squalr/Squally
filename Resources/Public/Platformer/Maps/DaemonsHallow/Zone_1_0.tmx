@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="163" nextobjectid="961">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="163" nextobjectid="963">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -959,7 +959,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="demon-swordsman" type="entity" x="4469.18" y="2401.43" width="128" height="128">
+  <object id="692" name="demon-shaman" type="entity" x="4867.18" y="2391.43" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DaemonsHallow/Combat_Lava"/>
@@ -968,10 +968,26 @@
     <property name="drop-pool" value="dh-generic"/>
    </properties>
   </object>
-  <object id="693" name="demon-swordsman" type="entity" x="4465.76" y="2187" width="128" height="128">
+  <object id="693" name="demon-shaman" type="entity" x="4863.76" y="2177" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-b"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="961" name="demon-swordsman" type="entity" x="3071.71" y="2427.21" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="DaemonsHallow/Combat_Lava"/>
+    <property name="battle-tag" value="group-c"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="dh-generic"/>
+   </properties>
+  </object>
+  <object id="962" name="demon-swordsman" type="entity" x="3068.29" y="2212.78" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-c"/>
     <property name="components" value="ally"/>
    </properties>
   </object>

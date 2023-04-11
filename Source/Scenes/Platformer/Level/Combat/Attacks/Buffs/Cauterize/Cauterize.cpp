@@ -36,7 +36,7 @@ using namespace cocos2d;
 
 const std::string Cauterize::CauterizeIdentifier = "cauterize";
 const float Cauterize::TimeBetweenTicks = 1.0f;
-const int Cauterize::HealTicks = 5;
+const int Cauterize::HealTicks = 6;
 const float Cauterize::StartDelay = 0.15f;
 const int Cauterize::MaxHealing = 255;
 
@@ -50,7 +50,7 @@ Cauterize* Cauterize::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Cauterize::Cauterize(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_WandGlowYellow, AbilityType::Nature, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_BookSpellsFire, AbilityType::Nature, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create();
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
@@ -104,6 +104,9 @@ void Cauterize::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return CauterizeGenericPreview::create(); }),
 				{
 					{
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEax::create(), true
+					},
+					{
 						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEdi::create(), true
 					}
 				},
@@ -114,10 +117,10 @@ void Cauterize::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEdi::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Cauterize_CommentAdd::create()) +
 						std::string("addss xmm0, dword ptr [edi]")
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEdi::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Cauterize_CommentAdd::create()) +
 						std::string("addss xmm0, dword ptr [rdi]")
 					),
 				},
@@ -142,7 +145,7 @@ void Cauterize::runCauterize()
 
 	for (int healIndex = 0; healIndex < Cauterize::HealTicks; healIndex++)
 	{
-		Sprite* icon = Sprite::create(UIResources::Menus_Icons_ArrowUp);
+		Sprite* icon = Sprite::create(UIResources::Menus_Icons_BookSpellsFire);
 
 		icon->setScale(0.5f);
 
@@ -171,25 +174,30 @@ void Cauterize::runCauterize()
 
 NO_OPTIMIZE void Cauterize::runRestoreTick()
 {
-	static volatile float healing = 4.0f;
+	static volatile float healing = 0.0f;
 	static volatile float* healingPtr = nullptr;
-	static volatile float constZero = 0.0f;
-	static volatile float* constZeroPtr = nullptr;
+	static volatile float healingGain = 0.0f;
+	static volatile float* healingGainPtr = nullptr;
 
+	healing = 0.0f;
 	healingPtr = &healing;
-	constZeroPtr = &constZero;
+	healingGain = 12.0f;
+	healingGainPtr = &healingGain;
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZAX);
 	ASM(push ZDI);
 
-	ASM(movss xmm0, dword ptr [ZAX]);
+	ASM_MOV_REG_VAR(ZAX, healingPtr);
+	ASM_MOV_REG_VAR(ZDI, healingGainPtr);
+
+	ASM(movss xmm0, dword ptr [ZAX]); // Load healing (0.0f) into xmm0
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CAUTERIZE);
-	ASM(addss xmm0, dword ptr [ZDI]);
+	ASM(addss xmm0, dword ptr [ZDI]); // Add healing gain (4.0f) to healing (0.0f)
 	HACKABLE_CODE_END();
 
-	ASM(movss dword ptr [ZDI], xmm0);
+	ASM(movss dword ptr [ZAX], xmm0); // Store healing (4.0f) into healingGain
 
 	ASM(pop ZDI);
 	ASM(pop ZAX);

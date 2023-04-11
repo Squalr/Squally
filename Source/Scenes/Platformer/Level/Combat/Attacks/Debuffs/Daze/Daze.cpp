@@ -121,10 +121,16 @@ void Daze::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return DazeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Daze_RegisterEsi::create()
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Daze_RegisterEax::create()
+					},
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_Daze_RegisterEbx::create()
 					},
 					{
 						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_Daze_RegisterEdi::create()
+					},
+					{
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_Daze_RegisterEsi::create()
 					},
 				},
 				int(HackFlags::None),
@@ -134,10 +140,6 @@ void Daze::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Daze::DazeDamage)))) + 
 						std::string("fild dword ptr [esi]\n") +
 						std::string("fld dword ptr [edi]\n") +
 						std::string("fcompp\n") +
@@ -147,10 +149,6 @@ void Daze::registerHackables()
 						std::string("fistp dword ptr [esi]\n") +
 						std::string("fstp st(0)\n")
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Daze::DazeDamage)))) + 
 						std::string("fild dword ptr [rsi]\n") +
 						std::string("fld dword ptr [rdi]\n") +
 						std::string("fcompp\n") +
