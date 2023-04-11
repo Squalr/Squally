@@ -548,10 +548,10 @@ DeveloperScene::DeveloperScene()
 			X DemonShaman			=>  1_X		<BookSpellsFire,	addss> 	=> Cauterize / Self Heal Tick
 			X DemonSwordsman		=>  1_X		<AxeGlowRed,		mulss> 	=> Scalding Blade / Damage+
 		Caves:
+			X LavaGolem				=>  2_X		<Fire,			??> 			=> Enflame / Burn Tick
 			X DemonDragon			=>  2_X		<Bone,			divss> 			=> Calcify / Defense+ 
 			X DemonGhost			=>  2_X		<SkullLavaEyes,	xchg>		 	=> Inner Fire / Siphon HP tick
 			X FireElemental			=>  2_X		<FireBolts,		cmpss/comiss> 	=> Fire Rain / AoE damage
-			X LavaGolem				=>  2_X		<Fire,			??> 			=> Enflame / Burn Tick
 		Surface 2?
 			X DemonArcher			=>  3_X		<CrossBow,			??>				=> Arrow Volley / team compare damage
 			X DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 			=> Seeking Blade / Damage+ based on rng

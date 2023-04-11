@@ -102,11 +102,8 @@ void Enflame::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return EnflameGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEdi::create(),
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEax::create(),
 					},
-					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEsi::create(),
-					}
 				},
 				int(HackFlags::None),
 				Enflame::StartDelay + Enflame::TimeBetweenTicks * float(Enflame::DamageAmount),
@@ -116,16 +113,12 @@ void Enflame::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng::create()) +
-						"test eax, eax\n" +
-						"js skipCode:\n" +
-						"mov ebx, 7:\n" + // Enflame::DamageAmount
-						"skipCode:\n"
+						std::string("rdrand eax\n") +
+						std::string("and eax, 0xF\n")
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng::create()) +
-						"test rax, rax\n" +
-						"js skipCode:\n" +
-						"mov rbx, 7:\n" + // Enflame::DamageAmount
-						"skipCode:\n"
+						std::string("rdrand eax\n") +
+						std::string("and eax, 0xF\n")
 					),
 				},
 				true
@@ -179,29 +172,24 @@ void Enflame::runEnflame()
 NO_OPTIMIZE void Enflame::runEnflameTick()
 {
 	static volatile int drainAmount = 0;
-	static volatile int rng = 0;
 
 	drainAmount = 0;
-	rng = RandomHelper::random_int(-100, 100);
 
 	ASM_PUSH_EFLAGS()
-	ASM(push ZBX);
 	ASM(push ZAX);
 
-	ASM(mov ZBX, 0);
-	ASM_MOV_REG_VAR(eax, rng);
+	ASM(mov ZAX, 0);
 
+	// TODO: Unclear what instruction to use
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_ENFLAME);
-	ASM(test ZAX, ZAX);
-	ASM(js enflameSkip);
-	ASM(mov ZBX, 7); // Enflame::DamageAmount
-	ASM(enflameSkip:);
+	ASM(rdrand ZAX);
+	ASM(and ZAX, 0xF);
+	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(drainAmount, ebx);
+	ASM_MOV_VAR_REG(drainAmount, eax);
 
 	ASM(pop ZAX);
-	ASM(pop ZBX);
 	ASM_POP_EFLAGS()
 
 	drainAmount = MathUtils::clamp(drainAmount, -Enflame::DamageAmountMax, Enflame::DamageAmountMax);

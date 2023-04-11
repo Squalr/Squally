@@ -13839,10 +13839,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Diseased_Register() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Enflame_CommentApplyDamage : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_Enflame_CommentMask : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Enflame_CommentApplyDamage* create();
+		static Menus_Hacking_Abilities_Debuffs_Enflame_CommentMask* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13850,38 +13850,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_Enflame_CommentApplyDamage();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Enflame_CommentApplyDamage() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_Enflame_CommentJmp : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_Enflame_CommentJmp* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Enflame_CommentJmp();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Enflame_CommentJmp() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_Enflame_CommentJnz : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_Enflame_CommentJnz* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Enflame_CommentJnz();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Enflame_CommentJnz() = default;
+		Menus_Hacking_Abilities_Debuffs_Enflame_CommentMask();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Enflame_CommentMask() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng : public LocalizedString
@@ -13914,10 +13884,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Enflame_Enflame() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEdi : public LocalizedString
+	class Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEdi* create();
+		static Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEax* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13925,23 +13895,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEdi();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEdi() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEsi : public LocalizedString
-	{
-	public:
-		static Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEsi* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEsi();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEsi() = default;
+		Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEax() = default;
 	};
 
 	class Menus_Hacking_Abilities_Debuffs_Fear_Fear : public LocalizedString
