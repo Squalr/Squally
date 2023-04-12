@@ -205,7 +205,7 @@ NO_OPTIMIZE void Melt::applyMelt()
 		? (currentDamageDealtLocal / 3)
 		// Jank to allow hacked critical hits, so that this buff can be made into a positive force
 		// This value wouldn't be possible naturally.
-		: rng >= 2
+		: rng == 2
 			? (currentDamageDealtLocal * 3)
 			: currentDamageDealtLocal);
 
