@@ -40,7 +40,7 @@ const std::string SeekingBlade::SeekingBladeIdentifier = "seeking-blade";
 const std::string SeekingBlade::HackIdentifierSeekingBlade = "seeking-blade";
 
 const int SeekingBlade::MaxMultiplier = 4;
-const int SeekingBlade::CritDamage = 10; // Keep in sync with asm
+const int SeekingBlade::CritDamage = 20; // Keep in sync with asm
 const float SeekingBlade::Duration = 16.0f;
 
 SeekingBlade* SeekingBlade::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -53,18 +53,15 @@ SeekingBlade* SeekingBlade::create(PlatformerEntity* caster, PlatformerEntity* t
 }
 
 SeekingBlade::SeekingBlade(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_DaggerGlowYellow, AbilityType::Physical, BuffData(SeekingBlade::Duration, SeekingBlade::SeekingBladeIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_DaggerGlowYellow, AbilityType::Fire, BuffData(SeekingBlade::Duration, SeekingBlade::SeekingBladeIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
-	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
-	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
-	this->addChild(this->bubble);
 	this->addChild(this->spellAura);
 }
 
@@ -78,8 +75,6 @@ void SeekingBlade::onEnter()
 
 	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellEffect->start();
-
-	this->bubble->runAction(FadeTo::create(0.25f, 255));
 
 	this->spellAura->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),
@@ -131,10 +126,22 @@ void SeekingBlade::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						std::string("cmp ecx, 1\n") +
-						std::string("sete al")
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
+						std::string("sete al\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint1::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() })) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint2::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
 						, // x64
 						std::string("cmp rcx, 1\n") +
-						std::string("sete al")
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
+						std::string("sete al\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint1::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() })) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint2::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()))
 					),
 				},
 				true
@@ -167,15 +174,11 @@ NO_OPTIMIZE void SeekingBlade::applySeekingBlade()
 {
 	static volatile int rng = 0;
 	static volatile float currentDamageDealtLocal = 0;
-	static volatile float multiplierLocal = 0;
 	static volatile float* currentDamageDealtLocalPtr = nullptr;
-	static volatile float* multiplierLocalPtr = nullptr;
 
 	rng = RandomHelper::random_int(0, 1);
 	currentDamageDealtLocal = (float)Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
-	multiplierLocal = 3.0f;
 	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
-	multiplierLocalPtr = &multiplierLocal;
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZAX);
@@ -183,7 +186,7 @@ NO_OPTIMIZE void SeekingBlade::applySeekingBlade()
 
 	ASM(mov ZAX, 0);
 	ASM(mov ZCX, 0);
-	ASM_MOV_REG_VAR(eax, currentDamageDealtLocal);
+
 	ASM_MOV_REG_VAR(ecx, rng);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SEEKING_BLADE);
@@ -192,13 +195,13 @@ NO_OPTIMIZE void SeekingBlade::applySeekingBlade()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, eax);
+	ASM_MOV_VAR_REG(rng, eax);
 
 	ASM(pop ZCX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS()
 
-	currentDamageDealtLocal = currentDamageDealtLocal == 1 ? SeekingBlade::CritDamage : currentDamageDealtLocal;
+	currentDamageDealtLocal = rng == 1 ? SeekingBlade::CritDamage : currentDamageDealtLocal;
 
 	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value((int)currentDamageDealtLocal);
 

@@ -26,7 +26,7 @@ CastSeekingBlade* CastSeekingBlade::create(float attackDuration, float recoverDu
 }
 
 CastSeekingBlade::CastSeekingBlade(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_DaggerGlowYellow, priority, AbilityType::Physical, 0, 0, 4, attackDuration, recoverDuration)
+	: super(AttackType::Buff, UIResources::Menus_Icons_DaggerGlowYellow, priority, AbilityType::Fire, 0, 0, 4, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	

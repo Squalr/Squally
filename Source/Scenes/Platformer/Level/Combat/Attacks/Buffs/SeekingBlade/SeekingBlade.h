@@ -32,7 +32,6 @@ private:
 
 	void applySeekingBlade();
 	
-	cocos2d::Sprite* bubble = nullptr;
 	SmartParticles* spellEffect = nullptr;
 	cocos2d::Sprite* spellAura = nullptr;
 	
