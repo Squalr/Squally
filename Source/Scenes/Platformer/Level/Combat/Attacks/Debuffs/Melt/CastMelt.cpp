@@ -5,9 +5,11 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Engine/Utils/CombatUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/Melt/Melt.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -26,7 +28,7 @@ CastMelt* CastMelt::create(float attackDuration, float recoverDuration, Priority
 }
 
 CastMelt::CastMelt(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_FlamingScroll, priority, AbilityType::Fire, 0, 0, 4, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_FlamingScroll, priority, AbilityType::Fire, 0, 0, 4, attackDuration, recoverDuration, TargetingType::Single)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	
@@ -62,8 +64,6 @@ void CastMelt::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnti
 	super::performAttack(owner, targets);
 
 	this->castSound->play();
-	owner->getAnimations()->clearAnimationPriority();
-	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
 	for (PlatformerEntity* next : targets)
 	{
@@ -80,21 +80,45 @@ void CastMelt::onCleanup()
 
 bool CastMelt::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	bool hasBuff = false;
+	int uncastableCount = 0;
 
-	caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	for (PlatformerEntity* next : otherTeam)
 	{
-		entityBuffBehavior->getBuff<Melt>([&](Melt* haste)
+		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
-			hasBuff = true;
-		});
-	});
+			uncastableCount++;
+			continue;
+		}
+		
+		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastMelt*>(next) != nullptr;  }))
+		{
+			uncastableCount++;
+			continue;
+		}
 
-	return !hasBuff;
+		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		{
+			entityBuffBehavior->getBuff<Melt>([&](Melt* debuff)
+			{
+				uncastableCount++;
+			});
+		});
+	}
+
+	return uncastableCount != int(otherTeam.size());
 }
 
 float CastMelt::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	// Prioritize self-cast
-	return target == this->owner ? 1.0f : 0.0f;
+	float utility = CombatUtils::HasDuplicateCastOnLivingTarget(caster, target, [](PlatformerAttack* next) { return dynamic_cast<CastMelt*>(next) != nullptr;  }) ? 0.0f : 1.0f;
+
+	target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	{
+		entityBuffBehavior->getBuff<Melt>([&](Melt* debuff)
+		{
+			utility = 0.0f;
+		});
+	});
+	
+	return utility;
 }

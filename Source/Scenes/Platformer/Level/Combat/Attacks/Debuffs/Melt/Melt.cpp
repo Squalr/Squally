@@ -40,7 +40,6 @@ const std::string Melt::MeltIdentifier = "melt";
 const std::string Melt::HackIdentifierMelt = "melt";
 
 const int Melt::MaxMultiplier = 4;
-const int Melt::CritDamage = 10; // Keep in sync with asm
 const float Melt::Duration = 16.0f;
 
 Melt* Melt::create(PlatformerEntity* caster, PlatformerEntity* target)
@@ -56,15 +55,12 @@ Melt::Melt(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_FlamingScroll, AbilityType::Fire, BuffData(Melt::Duration, Melt::MeltIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
-	this->bubble = Sprite::create(FXResources::Auras_DefendAura);
 	this->spellAura = Sprite::create(FXResources::Auras_ChantAura2);
 
-	this->bubble->setOpacity(0);
 	this->spellAura->setColor(Color3B::YELLOW);
 	this->spellAura->setOpacity(0);
 
 	this->addChild(this->spellEffect);
-	this->addChild(this->bubble);
 	this->addChild(this->spellAura);
 }
 
@@ -78,8 +74,6 @@ void Melt::onEnter()
 
 	this->spellEffect->setPositionY(this->owner->getEntityBottomPointRelative().y);
 	this->spellEffect->start();
-
-	this->bubble->runAction(FadeTo::create(0.25f, 255));
 
 	this->spellAura->runAction(Sequence::create(
 		FadeTo::create(0.25f, 255),
@@ -113,14 +107,14 @@ void Melt::registerHackables()
 				Melt::HackIdentifierMelt,
 				Strings::Menus_Hacking_Abilities_Debuffs_Melt_Melt::create(),
 				HackableBase::HackBarColor::Yellow,
-				UIResources::Menus_Icons_DaggerGlowYellow,
+				UIResources::Menus_Icons_FlamingScroll,
 				LazyNode<HackablePreview>::create([=](){ return MeltGenericPreview::create(); }),
 				{
 					{
 						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Debuffs_Melt_RegisterEax::create()
 					},
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_Melt_RegisterEcx::create()
+						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_Melt_RegisterEdx::create()
 					},
 				},
 				int(HackFlags::None),
@@ -130,23 +124,23 @@ void Melt::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Melt::CritDamage)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentTryChanging::create()) + 
-						std::string("cmp ecx, 1") +
-						std::string("setne al")
+						std::string("cmp edx, 1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
+						std::string("setne al\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint1::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEdx::create() })) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint2::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Melt::CritDamage)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentTryChanging::create()) + 
-						std::string("cmp ecx, 1") +
-						std::string("setne al")
+						std::string("cmp rdx, 1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
+						std::string("setne al\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint1::create()
+							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRdx::create() })) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint2::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()))
 					),
 				},
 				true
@@ -178,39 +172,42 @@ void Melt::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* dama
 NO_OPTIMIZE void Melt::applyMelt()
 {
 	static volatile int rng = 0;
-	static volatile float currentDamageDealtLocal = 0;
-	static volatile float multiplierLocal = 0;
-	static volatile float* currentDamageDealtLocalPtr = nullptr;
-	static volatile float* multiplierLocalPtr = nullptr;
+	static volatile int currentDamageDealtLocal = 0;
+	static volatile int* currentDamageDealtLocalPtr = nullptr;
 
 	rng = RandomHelper::random_int(0, 1);
-	currentDamageDealtLocal = (float)Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
-	multiplierLocal = 3.0f;
+	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
 	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
-	multiplierLocalPtr = &multiplierLocal;
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZAX);
-	ASM(push ZCX);
+	ASM(push ZDX);
 
 	ASM(mov ZAX, 0);
-	ASM(mov ZCX, 0);
-	ASM_MOV_REG_VAR(eax, currentDamageDealtLocal);
-	ASM_MOV_REG_VAR(ecx, rng);
+	ASM(mov ZDX, 0);
+
+	ASM_MOV_REG_VAR(edx, rng);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_MELT);
-	ASM(cmp ZCX, 1);
+	ASM(cmp ZDX, 1);
 	ASM(setne al);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(currentDamageDealtLocal, eax);
+	ASM_MOV_VAR_REG(rng, eax);
 
-	ASM(pop ZCX);
+	ASM(pop ZDX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS()
 
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value((int)currentDamageDealtLocal);
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(
+		rng == 1
+		? (currentDamageDealtLocal / 3)
+		// Jank to allow hacked critical hits, so that this buff can be made into a positive force
+		// This value wouldn't be possible naturally.
+		: rng >= 2
+			? (currentDamageDealtLocal * 3)
+			: currentDamageDealtLocal);
 
 	HACKABLES_STOP_SEARCH();
 }

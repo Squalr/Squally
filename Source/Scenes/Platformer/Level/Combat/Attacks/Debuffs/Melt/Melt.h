@@ -32,11 +32,9 @@ private:
 
 	void applyMelt();
 	
-	cocos2d::Sprite* bubble = nullptr;
 	SmartParticles* spellEffect = nullptr;
 	cocos2d::Sprite* spellAura = nullptr;
 	
 	static const int MaxMultiplier;
-	static const int CritDamage;
 	static const float Duration;
 };
