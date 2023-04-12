@@ -78,7 +78,7 @@ void CastLightningStrike::performAttack(PlatformerEntity* owner, std::vector<Pla
 {
 	super::performAttack(owner, targets);
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->owner, next, this->getRandomDamage(), this->abilityType));
 

@@ -130,22 +130,10 @@ void SeekingBlade::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(SeekingBlade::CritDamage)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentTryChanging::create()) + 
-						std::string("cmp ecx, 1") +
+						std::string("cmp ecx, 1\n") +
 						std::string("sete al")
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentDamageReduce::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(SeekingBlade::CritDamage)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentIncreaseInstead::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentTryChanging::create()) + 
-						std::string("cmp ecx, 1") +
+						std::string("cmp rcx, 1\n") +
 						std::string("sete al")
 					),
 				},

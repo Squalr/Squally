@@ -102,7 +102,7 @@ bool DropTimeBomb::isWorthUsing(PlatformerEntity* caster, const std::vector<Plat
 {
 	int buffCount = 0;
 
-	for (auto next : otherTeam)
+	for (PlatformerEntity* next : otherTeam)
 	{
 		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<DropTimeBomb*>(next) != nullptr;  }))
 		{

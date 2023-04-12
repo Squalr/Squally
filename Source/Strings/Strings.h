@@ -10104,10 +10104,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterEax() = default;
 	};
 
-	class Menus_Hacking_Abilities_Abilities_InnerFire_Hint : public LocalizedString
+	class Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_InnerFire_Hint* create();
+		static Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10115,8 +10115,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Abilities_InnerFire_Hint();
-		virtual ~Menus_Hacking_Abilities_Abilities_InnerFire_Hint() = default;
+		Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg();
+		virtual ~Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg() = default;
 	};
 
 	class Menus_Hacking_Abilities_Abilities_InnerFire_InnerFire : public LocalizedString
@@ -10132,6 +10132,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Abilities_InnerFire_InnerFire();
 		virtual ~Menus_Hacking_Abilities_Abilities_InnerFire_InnerFire() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEcx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx : public LocalizedString
@@ -10629,10 +10644,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_Calcify() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Calcify_CommentDamageReduce : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Calcify_CommentDivide : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Calcify_CommentDamageReduce* create();
+		static Menus_Hacking_Abilities_Buffs_Calcify_CommentDivide* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10640,14 +10655,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_Calcify_CommentDamageReduce();
-		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_CommentDamageReduce() = default;
+		Menus_Hacking_Abilities_Buffs_Calcify_CommentDivide();
+		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_CommentDivide() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Calcify_CommentIncreaseInstead : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Calcify_CommentIncreaseInstead* create();
+		static Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDamage* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10655,14 +10670,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_Calcify_CommentIncreaseInstead();
-		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_CommentIncreaseInstead() = default;
+		Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDamage();
+		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDamage() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Calcify_CommentRegister : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDivisor : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Calcify_CommentRegister* create();
+		static Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDivisor* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10670,14 +10685,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_Calcify_CommentRegister();
-		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_CommentRegister() = default;
+		Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDivisor();
+		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDivisor() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Calcify_CommentTryChanging : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Calcify_CommentStore : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Calcify_CommentTryChanging* create();
+		static Menus_Hacking_Abilities_Buffs_Calcify_CommentStore* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10685,8 +10700,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_Calcify_CommentTryChanging();
-		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_CommentTryChanging() = default;
+		Menus_Hacking_Abilities_Buffs_Calcify_CommentStore();
+		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_CommentStore() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Calcify_RegisterEax : public LocalizedString
@@ -10702,6 +10717,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Buffs_Calcify_RegisterEax();
 		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Buffs_Calcify_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Buffs_Calcify_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Buffs_Calcify_RegisterEbx();
+		virtual ~Menus_Hacking_Abilities_Buffs_Calcify_RegisterEbx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients : public LocalizedString

@@ -60,7 +60,7 @@ void CastShadowBolt::performAttack(PlatformerEntity* owner, std::vector<Platform
 {
 	super::performAttack(owner, targets);
 	
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		SmartAnimationSequenceNode* launchFx = SmartAnimationSequenceNode::create();
 		ShadowBolt* shadowBolt = ShadowBolt::create(owner, next);

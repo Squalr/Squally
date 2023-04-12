@@ -79,7 +79,7 @@ void Pound::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*
 {
 	super::performAttack(owner, targets);
 	
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		this->doDamageOrHealing(owner, next);
 	}

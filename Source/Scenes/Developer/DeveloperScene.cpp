@@ -446,6 +446,13 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ================== 
 		// LC story mode picture invalid (jungle?)
 		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
+		// ** Rethinking flow:
+		//	- Finish CV
+		//	- Get a key mold + hell gate crystal
+		//	- Forge key in DH
+		//	- Use this key to enter crypts
+		//	- Pass through crypts to BP
+		//	- (Would need to reorder LC and DH)
 		// ** Fix hexus puzzle in back side of 3_x (1 extra card)
 		// ** Fix hexus puzzle in graveyard (1 extra card)
 		// ** Tune hexus battle special cards
@@ -553,11 +560,11 @@ DeveloperScene::DeveloperScene()
 			X DemonGhost			=>  2_X		<SkullLavaEyes,	xchg>		 	=> Inner Fire / Siphon HP tick
 			X FireElemental			=>  2_X		<FireBolts,		cmpss/comiss> 	=> Fire Rain / AoE damage
 		Surface 2?
-			X DemonArcher			=>  3_X		<CrossBow,			??>				=> Arrow Volley / team compare damage
+			X DemonArcher			=>  3_X		<CrossBow,			call/ret>		=> Arrow Volley / team compare damage
 			X DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 			=> Seeking Blade / Damage+ based on rng
 			X DemonWarrior			=>  3_X		<FlamingScroll,		setne> 			=> Melt / Damage- based on RNG
 			O FireTiger				=>  3_X		<Chains,			cmpxchg> 		=> Entwined / Health Link (loop cmpxchg of team HP to take lowest)
-			- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		????>	 		=> Searing Blade / Giant axe that falls counter-clockwise, redirectable
+			- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		call/ret>		=> Searing Blade / Giant axe that falls counter-clockwise, redirectable
 
 		Avail for traps:
 		- Dice

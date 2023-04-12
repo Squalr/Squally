@@ -35,7 +35,7 @@ using namespace cocos2d;
 #define LOCAL_FUNC_ID_COMPARE_TEAM 11
 
 const int ArrowVolley::TickCount = 6;
-const int ArrowVolley::Damage = 4;
+const int ArrowVolley::Damage = 15;
 const float ArrowVolley::TimeBetweenTicks = 0.75f;
 const float ArrowVolley::StartDelay = 0.25f;
 const std::string ArrowVolley::StateKeyIsCasterOnEnemyTeam = "ANTI_OPTIMIZE_STATE_KEY_DAMAGE_TAKEN";
@@ -60,7 +60,7 @@ ArrowVolley::ArrowVolley(PlatformerEntity* caster, PlatformerEntity* target, std
 		Sprite* arrow = Sprite::create(arrowResource);
 
 		// Arrows are assumed to point up
-		arrow->setRotation(180.0f);
+		arrow->setRotation(90.0f);
 		arrow->setOpacity(0);
 
 		this->arrowPool.push_back(arrow);
@@ -113,6 +113,12 @@ void ArrowVolley::registerHackables()
 					{
 						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEax::create()
 					},
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEax::create()
+					},
+					{
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEax::create()
+					},
 				},
 				int(HackFlags::None),
 				ArrowVolley::StartDelay + ArrowVolley::TimeBetweenTicks * float(ArrowVolley::TickCount),
@@ -121,21 +127,21 @@ void ArrowVolley::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentEval::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
-						"test eax, eax\n" +
-						"jns skipAssign\n" +
-						"mov ebx, 1\n" +
-						"skipAssign\n"
+						std::string("call checkValue\n") +
+						std::string("jmp complete\n\n") +
+						std::string("checkValue:\n") +
+						std::string("cmp ebx, 0\n") +
+						std::string("cmove eax, ecx\n") +
+						std::string("ret\n\n") +
+						std::string("complete:\n")
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentEval::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
-						"test rax, rax\n" +
-						"jns skipAssign\n" +
-						"mov rbx, 1\n" +
-						"skipAssign\n"
+						std::string("call checkValue\n") +
+						std::string("jmp complete\n\n") +
+						std::string("checkValue:\n") +
+						std::string("cmp rbx, 0\n") +
+						std::string("cmove rax, rcx\n") +
+						std::string("ret\n\n") +
+						std::string("complete:\n")
 					),
 				},
 				true
@@ -223,48 +229,58 @@ void ArrowVolley::damageOtherTeam()
 			return;
 		}
 
-		this->compareTeam(casterEntry);
-
 		for (TimelineEntry* next : timeline->getEntries())
 		{
-			if (next->isPlayerEntry() == CombatObject::HackStateStorage[ArrowVolley::StateKeyIsCasterOnEnemyTeam].asBool())
-			{
-				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, next->getEntity(), std::abs(ArrowVolley::Damage), AbilityType::Passive, true));
-			}
+			this->compareTeam(next);
+
+			volatile int damage = CombatObject::HackStateStorage[CombatObject::HackStorageKeyDamage].asInt();
+			CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, next->getEntity(), damage, AbilityType::Passive, true));
 		}
 	}));
 }
 
 NO_OPTIMIZE void ArrowVolley::compareTeam(TimelineEntry* entry)
 {
-	static volatile int isOnEnemyTeamLocal;
+	static volatile int isOnEnemyTeamLocal = 0;
+	static volatile int damageLocal = 0;
+	static volatile int arrowVolleyDamage = 0;
 
-	isOnEnemyTeamLocal = entry->isPlayerEntry() ? 1 : -1;
+	damageLocal = 0;
+	arrowVolleyDamage = ArrowVolley::Damage;
+	isOnEnemyTeamLocal = entry->isPlayerEntry() ? 0 : 1;
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
 	ASM(push ZBX);
+	ASM(push ZCX);
 
 	ASM(mov ZAX, 0);
-	ASM_MOV_REG_VAR(eax, isOnEnemyTeamLocal);
 	ASM(mov ZBX, 0);
+	ASM(mov ZCX, 0);
+
+	ASM_MOV_REG_VAR(ebx, isOnEnemyTeamLocal);
+	ASM_MOV_REG_VAR(ecx, arrowVolleyDamage);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM);
-	ASM(test ZAX, ZAX);
-	ASM(jns skipAssign);
-	ASM(mov ZBX, 1);
-	ASM(skipAssign:);
+	ASM(call checkValue);
+	ASM(jmp complete);
+	ASM(checkValue:);
+	ASM(cmp ZBX, 0);
+	ASM(cmove ZAX, ZCX);
+	ASM(ret);
+	ASM(complete:);
 	ASM_NOP8();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(isOnEnemyTeamLocal, eax);
+	ASM_MOV_VAR_REG(damageLocal, eax);
 
+	ASM(pop ZCX);
 	ASM(pop ZBX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
 	HACKABLES_STOP_SEARCH();
 
-	CombatObject::HackStateStorage[ArrowVolley::StateKeyIsCasterOnEnemyTeam] = Value((isOnEnemyTeamLocal != 0) ? false : true);
+	CombatObject::HackStateStorage[CombatObject::HackStorageKeyDamage] = Value(damageLocal);
 }
 END_NO_OPTIMIZE

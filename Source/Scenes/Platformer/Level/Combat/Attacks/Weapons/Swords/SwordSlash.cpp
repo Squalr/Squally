@@ -60,7 +60,7 @@ void SwordSlash::performAttack(PlatformerEntity* owner, std::vector<PlatformerEn
 {
 	super::performAttack(owner, targets);
 	
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		this->doDamageOrHealing(owner, next);
 	}

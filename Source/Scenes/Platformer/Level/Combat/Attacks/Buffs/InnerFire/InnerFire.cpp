@@ -50,7 +50,7 @@ InnerFire* InnerFire::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 InnerFire::InnerFire(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_WandGlowYellow, AbilityType::Nature, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_SkullLavaEyes, AbilityType::Fire, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create();
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
@@ -99,12 +99,12 @@ void InnerFire::registerHackables()
 			HackableCode::HackableCodeInfo(
 				InnerFire::InnerFireIdentifier,
 				Strings::Menus_Hacking_Abilities_Abilities_InnerFire_InnerFire::create(),
-				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_ShieldGlowBlue,
+				HackableBase::HackBarColor::Red,
+				UIResources::Menus_Icons_SkullLavaEyes,
 				LazyNode<HackablePreview>::create([=](){ return InnerFireGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx::create()
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEcx::create()
 					},
 					{
 						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx::create()
@@ -117,11 +117,11 @@ void InnerFire::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx::create()) +
-						std::string("xchg ecx, edx")
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg::create()) +
+						std::string("xchg ecx, edx\n")
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx::create()) +
-						std::string("xchg rcx, rdx")
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg::create()) +
+						std::string("xchg rcx, rdx\n")
 					),
 				},
 				true
@@ -186,6 +186,7 @@ NO_OPTIMIZE void InnerFire::runRestoreTick()
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_INNER_FIRE);
 	ASM(xchg ZCX, ZDX);
+	ASM_NOP16();
 	HACKABLE_CODE_END();
 
 	ASM_MOV_VAR_REG(healingSelf, ZCX);

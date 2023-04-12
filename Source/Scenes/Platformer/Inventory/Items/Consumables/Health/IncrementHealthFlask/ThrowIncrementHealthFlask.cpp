@@ -94,7 +94,7 @@ void ThrowIncrementHealthFlask::performAttack(PlatformerEntity* owner, std::vect
 {
 	super::performAttack(owner, targets);
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		ThrownObject* potion = ThrownObject::create(owner, next, false, ItemResources::Consumables_Potions_HealthFlaskIncrement, CSize(64.0f, 64.0f));
 		

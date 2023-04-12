@@ -61,7 +61,7 @@ void GhostBolts::performAttack(PlatformerEntity* owner, std::vector<PlatformerEn
 {
 	super::performAttack(owner, targets);
 	
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		SmartAnimationSequenceNode* ghostBoltsCastFx = SmartAnimationSequenceNode::create();
 		GhostBolt* ghostBolt = GhostBolt::create(owner, next);

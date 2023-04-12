@@ -67,7 +67,7 @@ void CastEnflame::performAttack(PlatformerEntity* owner, std::vector<PlatformerE
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation("AttackCast");
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
@@ -84,7 +84,7 @@ bool CastEnflame::isWorthUsing(PlatformerEntity* caster, const std::vector<Platf
 {
 	int uncastableCount = 0;
 
-	for (auto next : otherTeam)
+	for (PlatformerEntity* next : otherTeam)
 	{
 		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{

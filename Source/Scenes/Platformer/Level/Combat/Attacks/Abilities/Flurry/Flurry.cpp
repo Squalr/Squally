@@ -131,7 +131,7 @@ void Flurry::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity
 
 	for (int index = 0; index < this->hits; index++)
 	{
-		for (auto next : targets)
+		for (PlatformerEntity* next : targets)
 		{
 			this->runAction(Sequence::create(
 				DelayTime::create(float(index) * this->attackDuration),

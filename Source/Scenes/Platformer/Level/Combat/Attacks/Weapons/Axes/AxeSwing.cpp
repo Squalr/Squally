@@ -70,7 +70,7 @@ void AxeSwing::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnti
 {
 	super::performAttack(owner, targets);
 	
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		this->doDamageOrHealing(owner, next);
 	}

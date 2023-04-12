@@ -76,7 +76,7 @@ void ThrowHealthPotion::performAttack(PlatformerEntity* owner, std::vector<Platf
 {
 	super::performAttack(owner, targets);
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		ThrownObject* potion = ThrownObject::create(owner, next, false, this->getIconResource(), CSize(64.0f, 64.0f));
 		

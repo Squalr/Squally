@@ -65,7 +65,7 @@ void CastHex::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntit
 
 	this->castSound->play();
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
@@ -82,7 +82,7 @@ bool CastHex::isWorthUsing(PlatformerEntity* caster, const std::vector<Platforme
 {
 	int uncastableCount = 0;
 
-	for (auto next : otherTeam)
+	for (PlatformerEntity* next : otherTeam)
 	{
 		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{

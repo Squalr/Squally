@@ -67,7 +67,7 @@ void CastPoisonedArrows::performAttack(PlatformerEntity* owner, std::vector<Plat
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation("AttackCast");
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
@@ -84,7 +84,7 @@ bool CastPoisonedArrows::isWorthUsing(PlatformerEntity* caster, const std::vecto
 {
 	int uncastableCount = 0;
 
-	for (auto next : otherTeam)
+	for (PlatformerEntity* next : otherTeam)
 	{
 		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{

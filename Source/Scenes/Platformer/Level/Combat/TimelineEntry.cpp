@@ -497,7 +497,7 @@ void TimelineEntry::stageTargets(std::vector<PlatformerEntity*> targets)
 {
 	this->targets.clear();
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		if (next == nullptr)
 		{

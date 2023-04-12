@@ -27,7 +27,7 @@ CastCalcify* CastCalcify::create(float attackDuration, float recoverDuration, Pr
 }
 
 CastCalcify::CastCalcify(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Buff, UIResources::Menus_Icons_ShieldGlowBlue, priority, AbilityType::Physical, 0, 0, 4, attackDuration, recoverDuration)
+	: super(AttackType::Buff, UIResources::Menus_Icons_Bone, priority, AbilityType::Physical, 0, 0, 4, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	
@@ -66,7 +66,7 @@ void CastCalcify::performAttack(PlatformerEntity* owner, std::vector<PlatformerE
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
@@ -81,20 +81,17 @@ void CastCalcify::onCleanup()
 
 bool CastCalcify::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	int uncastableCount = 0;
+	bool hasBuff = false;
 
-	for (auto next : otherTeam)
+	caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		entityBuffBehavior->getBuff<Calcify>([&](Calcify* buff)
 		{
-			entityBuffBehavior->getBuff<Calcify>([&](Calcify* debuff)
-			{
-				uncastableCount++;
-			});
+			hasBuff = true;
 		});
-	}
+	});
 
-	return uncastableCount != int(otherTeam.size());
+	return !hasBuff;
 }
 
 float CastCalcify::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)

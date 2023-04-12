@@ -20,7 +20,7 @@ FireRainGenericPreview* FireRainGenericPreview::create()
 
 FireRainGenericPreview::FireRainGenericPreview()
 {
-	this->fireRain = SmartAnimationSequenceNode::create(FXResources::FireBomb_FireBomb_0000);
+	this->fireRain = SmartAnimationSequenceNode::create(FXResources::FireOrb_ready_attack_00);
 
 	this->fireRain->setScale(0.25f);
 
@@ -40,7 +40,7 @@ void FireRainGenericPreview::onEnter()
 {
 	super::onEnter();
 
-	this->fireRain->playAnimationRepeat(FXResources::FireBomb_FireBomb_0000, 0.05f);
+	this->fireRain->playAnimationRepeat(FXResources::FireOrb_ready_attack_00, 0.05f, 0.0f, true);
 }
 
 void FireRainGenericPreview::initializePositions()

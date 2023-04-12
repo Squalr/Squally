@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="178" nextobjectid="1032">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="178" nextobjectid="1034">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -629,6 +629,22 @@
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1032" name="demon-archer" type="entity" x="4181.21" y="2202.22" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
+    <property name="battle-tag" value="group-b"/>
+    <property name="components" value="enemy,agro"/>
+    <property name="drop-pool" value="dh-generic"/>
+   </properties>
+  </object>
+  <object id="1033" name="demon-archer" type="entity" x="4182.79" y="1957.79" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-b"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="95" name="lava -20">
   <properties>
@@ -1110,7 +1126,7 @@
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
-    <property name="battle-tag" value="group-a"/>
+    <property name="battle-tag" value="group-c"/>
     <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="dh-generic"/>
    </properties>
@@ -1118,7 +1134,7 @@
   <object id="1023" name="demon-grunt" type="entity" x="2022.58" y="2153.82" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
+    <property name="battle-tag" value="group-c"/>
     <property name="components" value="ally"/>
    </properties>
   </object>

@@ -4,14 +4,12 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
-#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Sound/WorldSound.h"
+#include "Engine/Utils/CombatUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/InnerFire/InnerFire.h"
-#include "Scenes/Platformer/Level/Combat/Timeline.h"
-#include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
@@ -30,7 +28,7 @@ CastInnerFire* CastInnerFire::create(float attackDuration, float recoverDuration
 }
 
 CastInnerFire::CastInnerFire(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Damage, UIResources::Menus_Icons_MoonShine, priority, AbilityType::Nature, 0, 0, 4, attackDuration, recoverDuration, TargetingType::Self)
+	: super(AttackType::Damage, UIResources::Menus_Icons_SkullLavaEyes, priority, AbilityType::Fire, 0, 0, 4, attackDuration, recoverDuration, TargetingType::Single)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	
@@ -67,11 +65,15 @@ void CastInnerFire::performAttack(PlatformerEntity* owner, std::vector<Platforme
 
 	this->castSound->play();
 	owner->getAnimations()->clearAnimationPriority();
-	owner->getAnimations()->playAnimation(this->getAttackAnimation());
-	owner->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+	owner->getAnimations()->playAnimation("AttackCast");
+
+	for (PlatformerEntity* next : targets)
 	{
-		entityBuffBehavior->applyBuff(InnerFire::create(owner, owner));
-	});
+		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
+		{
+			entityBuffBehavior->applyBuff(InnerFire::create(owner, next));
+		});
+	}
 }
 
 void CastInnerFire::onCleanup()
@@ -80,29 +82,45 @@ void CastInnerFire::onCleanup()
 
 bool CastInnerFire::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	bool worthUsing = true;
-	
-	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
+	int uncastableCount = 0;
+
+	for (PlatformerEntity* next : otherTeam)
 	{
-		for (TimelineEntry* next : timeline->getEntries())
+		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
-			if (dynamic_cast<CastInnerFire*>(next->getStagedCast()) != nullptr)
-			{
-				worthUsing = false;
-				break;
-			}
+			uncastableCount++;
+			continue;
 		}
-	}));
+		
+		if (CombatUtils::HasDuplicateCastOnLivingTarget(caster, next, [](PlatformerAttack* next) { return dynamic_cast<CastInnerFire*>(next) != nullptr;  }))
+		{
+			uncastableCount++;
+			continue;
+		}
 
-	ObjectEvents::QueryObject<InnerFire>([&](InnerFire*)
-	{
-		worthUsing = false;
-	});
+		next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+		{
+			entityBuffBehavior->getBuff<InnerFire>([&](InnerFire* debuff)
+			{
+				uncastableCount++;
+			});
+		});
+	}
 
-	return worthUsing;
+	return uncastableCount != int(otherTeam.size());
 }
 
 float CastInnerFire::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	return 1.0;
+	float utility = CombatUtils::HasDuplicateCastOnLivingTarget(caster, target, [](PlatformerAttack* next) { return dynamic_cast<CastInnerFire*>(next) != nullptr;  }) ? 0.0f : 1.0f;
+
+	target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
+	{
+		entityBuffBehavior->getBuff<InnerFire>([&](InnerFire* debuff)
+		{
+			utility = 0.0f;
+		});
+	});
+	
+	return utility;
 }

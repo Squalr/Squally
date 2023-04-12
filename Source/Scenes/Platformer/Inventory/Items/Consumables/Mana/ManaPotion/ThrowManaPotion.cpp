@@ -74,7 +74,7 @@ void ThrowManaPotion::performAttack(PlatformerEntity* owner, std::vector<Platfor
 {
 	super::performAttack(owner, targets);
 	
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		ThrownObject* potion = ThrownObject::create(owner, next, false, ItemResources::Consumables_Potions_ManaPotion, CSize(64.0f, 64.0f));
 		

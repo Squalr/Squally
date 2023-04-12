@@ -188,7 +188,7 @@ void FireRain::updateAnimation(float dt)
 {
 	static const float VarianceX = 768.0f;
 	static const float FallDistance = -1280.0f;
-	static const float PixelsPerSecond = 256.0f;
+	static const float PixelsPerSecond = 768.0f;
 	static const float Duration = std::abs(FallDistance) / PixelsPerSecond;
 
 	float totalDuration = FireRain::StartDelay + FireRain::TimeBetweenTicks * float(FireRain::TickCount);
@@ -206,7 +206,7 @@ void FireRain::updateAnimation(float dt)
 			this->meteorPool[index]->setOpacity(0);
 			this->meteorPool[index]->setPosition(Vec2(RandomHelper::random_real(-VarianceX, VarianceX), 0.0f));
 			this->meteorPool[index]->runAction(FadeTo::create(0.25f, 255));
-			this->meteorPool[index]->playAnimation(FXResources::FireBomb_FireBomb_0000, 0.05f, true);
+			this->meteorPool[index]->playAnimation(FXResources::FireOrb_ready_attack_00, 0.05f, true);
 
 			this->meteorCooldowns[index] = Duration;
 		}

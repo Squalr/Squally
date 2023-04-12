@@ -82,7 +82,7 @@ void CastCondensation::performAttack(PlatformerEntity* owner, std::vector<Platfo
 {
 	super::performAttack(owner, targets);
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		CombatEvents::TriggerManaRestore(CombatEvents::ManaRestoreOrDrainArgs(next, this->owner, CastCondensation::ManaGain, this->abilityType));
 

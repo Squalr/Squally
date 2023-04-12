@@ -65,7 +65,7 @@ void CastShieldWall::performAttack(PlatformerEntity* owner, std::vector<Platform
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
@@ -84,7 +84,7 @@ bool CastShieldWall::isWorthUsing(PlatformerEntity* caster, const std::vector<Pl
 
 	caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->getBuff<ShieldWall>([&](ShieldWall* haste)
+		entityBuffBehavior->getBuff<ShieldWall>([&](ShieldWall* buff)
 		{
 			hasBuff = true;
 		});

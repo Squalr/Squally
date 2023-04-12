@@ -252,7 +252,7 @@ void CombatAIHelper::selectTargetSingle(TimelineEntry* attackingEntry)
 		case PlatformerAttack::AttackType::Damage:
 		case PlatformerAttack::AttackType::Debuff:
 		{
-			for (auto next : otherTeam)
+			for (PlatformerEntity* next : otherTeam)
 			{
 				float utility = this->selectedAttack->getUseUtility(caster, next, sameTeam, otherTeam);
 
@@ -302,7 +302,7 @@ void CombatAIHelper::selectTargetsMulti(TimelineEntry* attackingEntry)
 		case PlatformerAttack::AttackType::Damage:
 		case PlatformerAttack::AttackType::Debuff:
 		{
-			for (auto next : otherTeam)
+			for (PlatformerEntity* next : otherTeam)
 			{
 				this->selectedTargets.push_back(next);
 			}
@@ -332,7 +332,7 @@ void CombatAIHelper::selectTargetsAll(TimelineEntry* attackingEntry)
 		this->selectedTargets.push_back(next);
 	}
 	
-	for (auto next : otherTeam)
+	for (PlatformerEntity* next : otherTeam)
 	{
 		this->selectedTargets.push_back(next);
 	}

@@ -63,7 +63,7 @@ void CastFocus::performAttack(PlatformerEntity* owner, std::vector<PlatformerEnt
 
 	this->castSound->play();
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{

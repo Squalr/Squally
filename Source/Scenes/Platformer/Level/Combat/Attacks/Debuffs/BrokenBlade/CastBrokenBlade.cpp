@@ -67,7 +67,7 @@ void CastBrokenBlade::performAttack(PlatformerEntity* owner, std::vector<Platfor
 	owner->getAnimations()->clearAnimationPriority();
 	owner->getAnimations()->playAnimation(this->getAttackAnimation());
 
-	for (auto next : targets)
+	for (PlatformerEntity* next : targets)
 	{
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
@@ -84,7 +84,7 @@ bool CastBrokenBlade::isWorthUsing(PlatformerEntity* caster, const std::vector<P
 {
 	int uncastableCount = 0;
 
-	for (auto next : otherTeam)
+	for (PlatformerEntity* next : otherTeam)
 	{
 		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{
