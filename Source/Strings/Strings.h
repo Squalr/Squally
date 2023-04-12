@@ -9384,6 +9384,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_ArrowVolley_ArrowVolley() = default;
 	};
 
+	class Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall();
+		virtual ~Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall() = default;
+	};
+
 	class Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare : public LocalizedString
 	{
 	public:
@@ -9399,10 +9414,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare() = default;
 	};
 
-	class Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentEval : public LocalizedString
+	class Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentEval* create();
+		static Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9410,8 +9425,38 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentEval();
-		virtual ~Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentEval() = default;
+		Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp();
+		virtual ~Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet();
+		virtual ~Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet() = default;
 	};
 
 	class Menus_Hacking_Abilities_Abilities_ArrowVolley_CompareTeam : public LocalizedString
@@ -9442,6 +9487,36 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEax();
 		virtual ~Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEax() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEbx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEbx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEbx();
+		virtual ~Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEbx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEcx : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEcx* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEcx();
+		virtual ~Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEcx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Abilities_BatSwarm_BatSwarm : public LocalizedString

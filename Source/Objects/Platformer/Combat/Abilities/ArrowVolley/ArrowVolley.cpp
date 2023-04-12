@@ -114,10 +114,10 @@ void ArrowVolley::registerHackables()
 						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEax::create()
 					},
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEax::create()
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEbx::create()
 					},
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEax::create()
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEcx::create()
 					},
 				},
 				int(HackFlags::None),
@@ -127,21 +127,33 @@ void ArrowVolley::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall::create()) +
 						std::string("call checkValue\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp::create()) +
 						std::string("jmp complete\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare::create()) +
 						std::string("checkValue:\n") +
-						std::string("cmp ebx, 0\n") +
+						std::string("cmp ebx, 1\n") +
 						std::string("cmove eax, ecx\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet::create()) +
 						std::string("ret\n\n") +
-						std::string("complete:\n")
+						std::string("complete:\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create()))
 						, // x64
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall::create()) +
 						std::string("call checkValue\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp::create()) +
 						std::string("jmp complete\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare::create()) +
 						std::string("checkValue:\n") +
-						std::string("cmp rbx, 0\n") +
+						std::string("cmp rbx, 1\n") +
 						std::string("cmove rax, rcx\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet::create()) +
 						std::string("ret\n\n") +
-						std::string("complete:\n")
+						std::string("complete:\n\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint::create()
+							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create()))
 					),
 				},
 				true
@@ -247,7 +259,7 @@ NO_OPTIMIZE void ArrowVolley::compareTeam(TimelineEntry* entry)
 
 	damageLocal = 0;
 	arrowVolleyDamage = ArrowVolley::Damage;
-	isOnEnemyTeamLocal = entry->isPlayerEntry() ? 0 : 1;
+	isOnEnemyTeamLocal = entry->isPlayerEntry() ? 1 : 0;
 
 	ASM_PUSH_EFLAGS();
 	ASM(push ZAX);
@@ -265,7 +277,7 @@ NO_OPTIMIZE void ArrowVolley::compareTeam(TimelineEntry* entry)
 	ASM(call checkValue);
 	ASM(jmp complete);
 	ASM(checkValue:);
-	ASM(cmp ZBX, 0);
+	ASM(cmp ZBX, 1);
 	ASM(cmove ZAX, ZCX);
 	ASM(ret);
 	ASM(complete:);
