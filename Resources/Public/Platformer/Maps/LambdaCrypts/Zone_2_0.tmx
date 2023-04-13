@@ -217,7 +217,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1025" name="wood" type="terrain" x="5905.27" y="1836.39" width="358.833" height="1234.06"/>
-  <object id="1039" name="Crypts/Crypt2" type="decor" x="3084.5" y="900.5" width="1051" height="943">
+  <object id="1039" name="Crypts/Crypt2" type="decor" x="3280.5" y="898.5" width="888" height="943">
    <properties>
     <property name="flip-x" type="bool" value="false"/>
    </properties>
