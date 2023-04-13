@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="26" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="80" nextobjectid="1160">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="26" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="83" nextobjectid="1168">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -685,6 +685,21 @@
   </properties>
   <object id="1143" name="torch" type="object" x="1922.06" y="1222" width="42" height="130"/>
   <object id="1145" name="torch" type="object" x="949.334" y="1222" width="42" height="130"/>
+  <object id="1164" name="Crypts/CryptDoor3" type="decor" x="2611.5" y="923" width="561" height="722"/>
+ </objectgroup>
+ <objectgroup id="82" name="terrain -2 fg">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1167" name="stone-dark" type="terrain" x="2595.28" y="1644" width="614.782" height="2112"/>
+ </objectgroup>
+ <objectgroup id="81" name="terrain -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1165" name="stone-dark" type="terrain" x="2598.06" y="1672" width="614.782" height="2112"/>
  </objectgroup>
  <objectgroup id="68" name="terrain bg">
   <properties>
@@ -696,6 +711,11 @@
    </properties>
    <polygon points="-129.285,1298.03 -152.035,650.189 -143.052,-184.124 -120.931,-799.778 119.02,-984.251 712.796,-916.389 909.327,-642.938 918.06,214.697 851.437,885.155 751.19,1335.21 516.295,1394.45 242.216,1380.08"/>
   </object>
+ </objectgroup>
+ <objectgroup id="80" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -799,7 +819,16 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="1159" name="caged-wolf" type="object" x="2671.7" y="1574.3" width="196" height="112"/>
+  <object id="1159" name="caged-wolf" type="object" x="1308.06" y="1568.24" width="196" height="112"/>
+  <object id="1163" name="portal" type="object" x="2764.18" y="1177.42" width="256" height="512">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="item-required" value="crypt-key"/>
+    <property name="map" value="DataMines/Town_Main"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
+    <property name="transition" value="crypt-secret-entrance"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -826,6 +855,11 @@
    <properties>
     <property name="components" value="squally"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="1161" name="spawn" type="object" x="2830.9" y="1558.51" width="128" height="128">
+   <properties>
+    <property name="transition" value="crypt-secret-entrance"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,5 +1,6 @@
 #include "Objects/Platformer/ItemPools/DropPools/BallmerPeaks/DropPoolBPGeneric.h"
 #include "Objects/Platformer/ItemPools/DropPools/BallmerPeaks/DropPoolBPWeak.h"
+#include "Objects/Platformer/ItemPools/DropPools/CastleValgrind/DropPoolCVAgnes.h"
 #include "Objects/Platformer/ItemPools/DropPools/CastleValgrind/DropPoolCVGeneric.h"
 #include "Objects/Platformer/ItemPools/DropPools/CastleValgrind/DropPoolCVWeak.h"
 #include "Objects/Platformer/ItemPools/DropPools/DaemonsHallow/DropPoolDHGeneric.h"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1114">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1123">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -37,6 +37,7 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1116" name="Crypts/CryptDoor3" type="decor" x="3659.87" y="1630.75" width="561" height="722"/>
  </objectgroup>
  <objectgroup id="63" name="terrain -12">
   <properties>
@@ -44,7 +45,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="934" name="mines" type="terrain" x="8297.12" y="1745.98" width="2131.38" height="4372"/>
-  <object id="1064" name="mines" type="terrain" x="-99.54" y="2371.15" width="3792.51" height="1475.69"/>
+  <object id="1064" name="mines" type="terrain" x="-99.54" y="2371.15" width="4401.78" height="1475.69"/>
   <object id="1085" name="mines" type="terrain" x="5230.65" y="3471.17" width="1474.88" height="1197.46"/>
  </objectgroup>
  <objectgroup id="136" name="rails -12">
@@ -68,7 +69,7 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1069" name="mines" type="terrain" x="3695.73" y="-45.845" width="1497.34" height="3899.69"/>
+  <object id="1069" name="mines" type="terrain" x="4302.09" y="-45.845" width="890.976" height="3899.69"/>
  </objectgroup>
  <objectgroup id="91" name="decor -12">
   <properties>
@@ -142,6 +143,20 @@
   <object id="1112" name="spawn" type="object" x="2959.59" y="2241.9" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="1118" name="spawn" type="object" x="3879.39" y="2242.42" width="128" height="128">
+   <properties>
+    <property name="transition" value="crypt-secret-entrance"/>
+   </properties>
+  </object>
+  <object id="1122" name="portal" type="object" x="3802" y="1842" width="256" height="512">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="item-required" value="crypt-key"/>
+    <property name="map" value="LambdaCrypts/Zone_4_0_a"/>
+    <property name="mini-map-hidden" type="bool" value="false"/>
+    <property name="transition" value="crypt-secret-entrance"/>
    </properties>
   </object>
  </objectgroup>
@@ -949,7 +964,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor midground">
+ <objectgroup id="22" name="decor midground" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>

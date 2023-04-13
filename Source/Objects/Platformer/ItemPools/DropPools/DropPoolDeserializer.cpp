@@ -41,6 +41,7 @@ DropPoolDeserializer::DropPoolDeserializer() : super(DropPoolDeserializer::MapKe
 	this->deserializers[DropPoolDMWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolDMWeak::create(properties); };
 
 	// CV
+	this->deserializers[DropPoolCVAgnes::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolCVAgnes::create(properties); };
 	this->deserializers[DropPoolCVGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolCVGeneric::create(properties); };
 	this->deserializers[DropPoolCVWeak::PoolName] = [=](ValueMap properties) { return (GameObject*)DropPoolCVWeak::create(properties); };
 
