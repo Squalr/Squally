@@ -806,7 +806,7 @@
     <property name="entity-tag" value="hexus-skeletal-priestess"/>
    </properties>
   </object>
-  <object id="1157" name="skeletal-priestess" type="entity" x="1665.85" y="3195.19" width="128" height="128">
+  <object id="1157" name="skeletal-priestess" type="entity" x="1633.85" y="4011.19" width="128" height="128">
    <properties>
     <property name="components" value="friendly,disarmed,lc-puzzle-G"/>
     <property name="tag" value="hexus-skeletal-priestess"/>

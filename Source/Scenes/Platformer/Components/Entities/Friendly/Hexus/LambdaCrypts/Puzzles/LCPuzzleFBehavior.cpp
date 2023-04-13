@@ -58,8 +58,7 @@ std::vector<CardData*> LCPuzzleFBehavior::generateDeck()
 
 StateOverride* LCPuzzleFBehavior::getStateOverride()
 {
-	// Needs work. Ideal effect is to keep shifting a card to AND it with other cards, then AND to zero out opponent cards
-	// In practice this doesn't work so well
+	// Just spam AND on stuff, then buff the hell out of 1 card
 	return StateOverride::create(
 		// Player losses
 		1,
@@ -123,7 +122,7 @@ StateOverride* LCPuzzleFBehavior::getStateOverride()
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>

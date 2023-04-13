@@ -12,7 +12,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="73" name="terrain -12" visible="0">
+ <objectgroup id="73" name="terrain -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
@@ -23,7 +23,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="74" name="terrain -10" visible="0">
+ <objectgroup id="74" name="terrain -10">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
@@ -298,7 +298,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="61" name="terrain -6" visible="0">
+ <objectgroup id="61" name="terrain -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -427,7 +427,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="60" name="terrain -4" visible="0">
+ <objectgroup id="60" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -474,7 +474,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="59" name="terrain -2">
+ <objectgroup id="59" name="terrain -2" visible="0">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>

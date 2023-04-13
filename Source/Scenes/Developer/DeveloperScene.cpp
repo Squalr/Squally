@@ -446,13 +446,6 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ================== 
 		// LC story mode picture invalid (jungle?)
 		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
-		// ** Rethinking flow:
-		//	- Finish CV
-		//	- Get a key mold + hell gate crystal
-		//	- Forge key in DH
-		//	- Use this key to enter crypts
-		//	- Pass through crypts to BP
-		//	- (Would need to reorder LC and DH)
 		// ** Fix hexus puzzle in back side of 3_x (1 extra card)
 		// ** Fix hexus puzzle in graveyard (1 extra card)
 		// ** Tune hexus battle special cards
