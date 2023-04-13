@@ -446,8 +446,7 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ================== 
 		// LC story mode picture invalid (jungle?)
 		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
-		// ** Fix hexus puzzle in back side of 3_x (1 extra card)
-		// ** Fix hexus puzzle in graveyard (1 extra card)
+		// ** Make greater crypt distinct from lesser crypt
 		// ** Tune hexus battle special cards
 		// ** Another Evil Eye encounter
 		// interim quest Amelia => Princess Nebea (to explain hell crystal nonsense)

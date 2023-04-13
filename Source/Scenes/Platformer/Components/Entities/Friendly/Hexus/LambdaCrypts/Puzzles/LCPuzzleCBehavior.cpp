@@ -58,6 +58,7 @@ std::vector<CardData*> LCPuzzleCBehavior::generateDeck()
 
 StateOverride* LCPuzzleCBehavior::getStateOverride()
 {
+	// 
 	return StateOverride::create(
 		// Player losses
 		1,
@@ -105,7 +106,6 @@ StateOverride* LCPuzzleCBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
@@ -114,25 +114,26 @@ StateOverride* LCPuzzleCBehavior::getStateOverride()
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex1),
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary8),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
 			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
 			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 		}
 	);
