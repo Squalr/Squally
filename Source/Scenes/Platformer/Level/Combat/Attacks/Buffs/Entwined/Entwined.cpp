@@ -55,7 +55,7 @@ Entwined* Entwined::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Entwined::Entwined(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Clones, AbilityType::Physical, BuffData(Entwined::Duration, Entwined::EntwinedIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_Chains, AbilityType::Physical, BuffData(Entwined::Duration, Entwined::EntwinedIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->healthLinkDamage = 0;
@@ -95,8 +95,8 @@ void Entwined::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Entwined::EntwinedIdentifier,
 				Strings::Menus_Hacking_Abilities_Buffs_Entwined_Entwined::create(),
-				HackableBase::HackBarColor::Blue,
-				UIResources::Menus_Icons_Clones,
+				HackableBase::HackBarColor::Yellow,
+				UIResources::Menus_Icons_Chains,
 				LazyNode<HackablePreview>::create([=](){ return EntwinedGenericPreview::create(); }),
 				{
 					{
@@ -110,14 +110,15 @@ void Entwined::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentElaborate::create()) +
-						"shr edi, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint::create())
-						
+						std::string("mov edi, 0x05000000\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2::create()) +
+						std::string("bswap edi\n")
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentElaborate::create()) +
-						"shr rdi, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint::create())
+						std::string("mov edi, 0x05000000\n") + // Intentionally 32-bit register
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2::create()) +
+						std::string("bswap edi\n")
 					),
 				},
 				true
@@ -141,6 +142,9 @@ NO_OPTIMIZE void Entwined::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrH
 	
 	this->applyEntwined();
 
+	*damageOrHealing->damageOrHealing = this->healthLinkDamage;
+	damageOrHealing->damageOrHealingValue = this->healthLinkDamage;
+
 	// Damage all team mates
 	CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
 	{
@@ -148,6 +152,11 @@ NO_OPTIMIZE void Entwined::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrH
 		std::vector<PlatformerEntity*> healthLinkTargets;
 		for (PlatformerEntity* target : targets)
 		{
+			if (target == this->owner)
+			{
+				continue;
+			}
+
 			if (target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 			{
 				caster->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
@@ -178,10 +187,13 @@ NO_OPTIMIZE void Entwined::applyEntwined()
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZDI);
+
+	ASM(mov ZDI, 0);
 	ASM_MOV_REG_VAR(edi, healthLinkDamageLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_HEALTH_LINK);
-	ASM(shr ZDI, 1);
+	ASM(mov ZDI, 0x05000000);
+	ASM(bswap ZDI);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 

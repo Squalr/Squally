@@ -563,8 +563,8 @@ DeveloperScene::DeveloperScene()
 			X DemonArcher			=>  3_X		<CrossBow,			call/ret>		=> Arrow Volley / team compare damage
 			X DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 			=> Seeking Blade / Damage+ based on rng
 			X DemonWarrior			=>  3_X		<FlamingScroll,		setne> 			=> Melt / Damage- based on RNG
-			O FireTiger				=>  3_X		<Chains,			cmpxchg> 		=> Entwined / Health Link (loop cmpxchg of team HP to take lowest)
-			- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		call/ret>		=> Searing Blade / Giant axe that falls counter-clockwise, redirectable
+			X FireTiger				=>  3_X		<Chains,			bswap> 			=> Entwined / Health Link
+			- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		call/ret?>		=> Searing Blade / Giant axe that falls counter-clockwise, redirectable?
 
 		Avail for traps:
 		- Dice

@@ -11079,10 +11079,10 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Buffs_Enrage_RegisterXmm3() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Entwined_CommentElaborate : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Entwined_CommentElaborate* create();
+		static Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11090,14 +11090,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_Entwined_CommentElaborate();
-		virtual ~Menus_Hacking_Abilities_Buffs_Entwined_CommentElaborate() = default;
+		Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1();
+		virtual ~Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1() = default;
 	};
 
-	class Menus_Hacking_Abilities_Buffs_Entwined_CommentHint : public LocalizedString
+	class Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Entwined_CommentHint* create();
+		static Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11105,8 +11105,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Buffs_Entwined_CommentHint();
-		virtual ~Menus_Hacking_Abilities_Buffs_Entwined_CommentHint() = default;
+		Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2();
+		virtual ~Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2() = default;
 	};
 
 	class Menus_Hacking_Abilities_Buffs_Entwined_Entwined : public LocalizedString
