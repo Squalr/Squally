@@ -1,4 +1,4 @@
-#include "ThorHexusBehavior.h"
+#include "Tier4URHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,44 +16,45 @@
 
 using namespace cocos2d;
 
-const std::string ThorHexusBehavior::MapKey = "thor-hexus";
+const std::string Tier4URHexusBehavior::MapKey = "ur-t4-hexus";
 
-ThorHexusBehavior* ThorHexusBehavior::create(GameObject* owner)
+Tier4URHexusBehavior* Tier4URHexusBehavior::create(GameObject* owner)
 {
-	ThorHexusBehavior* instance = new ThorHexusBehavior(owner);
+	Tier4URHexusBehavior* instance = new Tier4URHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ThorHexusBehavior::ThorHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier4URHexusBehavior::Tier4URHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-ThorHexusBehavior::~ThorHexusBehavior()
+Tier4URHexusBehavior::~Tier4URHexusBehavior()
 {
 }
 
-MinMaxPool* ThorHexusBehavior::generateReward()
+MinMaxPool* Tier4URHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolURGeneric::create(properties);
 }
 
-std::string ThorHexusBehavior::getWinLossSaveKey()
+std::string Tier4URHexusBehavior::getWinLossSaveKey()
 {
-	return ThorHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "poseidon-hexus"; // Tier4URHexusBehavior::MapKey;
 }
 
-std::string ThorHexusBehavior::getBackgroundResource()
+std::string Tier4URHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
-std::vector<CardData*> ThorHexusBehavior::generateDeck()
+std::vector<CardData*> Tier4URHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 7.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 4.0f / URHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{
@@ -67,8 +68,8 @@ std::vector<CardData*> ThorHexusBehavior::generateDeck()
 		// CardList::getInstance()->cardListByName[CardKeys::Mov],
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
-		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
-		CardList::getInstance()->cardListByName[CardKeys::Flip2],
+		CardList::getInstance()->cardListByName[CardKeys::Flip1],
+		// CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		// CardList::getInstance()->cardListByName[CardKeys::Addition],
 		CardList::getInstance()->cardListByName[CardKeys::Addition],
@@ -81,12 +82,12 @@ std::vector<CardData*> ThorHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* ThorHexusBehavior::getStateOverride()
+StateOverride* Tier4URHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> ThorHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier4URHexusBehavior::getTutorials()
 {
 	return { };
 }

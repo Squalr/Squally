@@ -71,7 +71,7 @@
   </properties>
   <object id="692" name="aphrodite" type="entity" x="1047.36" y="935.725" width="128" height="128">
    <properties>
-    <property name="components" value="aphrodite-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="ur-t1-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="quest" value="talk-to-aphrodite"/>
     <property name="quest-line" value="cure-town"/>

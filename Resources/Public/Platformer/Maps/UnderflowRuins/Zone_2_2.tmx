@@ -95,7 +95,7 @@
   </object>
   <object id="953" name="poseidon" type="entity" x="900" y="976" width="128" height="128">
    <properties>
-    <property name="components" value="poseidon,poseidon-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="poseidon,ur-t4-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>

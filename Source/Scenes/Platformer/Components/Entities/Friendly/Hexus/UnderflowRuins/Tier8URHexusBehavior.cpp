@@ -1,4 +1,4 @@
-#include "AphroditeHexusBehavior.h"
+#include "Tier8URHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,44 +16,45 @@
 
 using namespace cocos2d;
 
-const std::string AphroditeHexusBehavior::MapKey = "aphrodite-hexus";
+const std::string Tier8URHexusBehavior::MapKey = "ur-t8-hexus";
 
-AphroditeHexusBehavior* AphroditeHexusBehavior::create(GameObject* owner)
+Tier8URHexusBehavior* Tier8URHexusBehavior::create(GameObject* owner)
 {
-	AphroditeHexusBehavior* instance = new AphroditeHexusBehavior(owner);
+	Tier8URHexusBehavior* instance = new Tier8URHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-AphroditeHexusBehavior::AphroditeHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier8URHexusBehavior::Tier8URHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-AphroditeHexusBehavior::~AphroditeHexusBehavior()
+Tier8URHexusBehavior::~Tier8URHexusBehavior()
 {
 }
 
-MinMaxPool* AphroditeHexusBehavior::generateReward()
+MinMaxPool* Tier8URHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolURGeneric::create(properties);
 }
 
-std::string AphroditeHexusBehavior::getWinLossSaveKey()
+std::string Tier8URHexusBehavior::getWinLossSaveKey()
 {
-	return AphroditeHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "ajax-hexus"; // Tier8URHexusBehavior::MapKey;
 }
 
-std::string AphroditeHexusBehavior::getBackgroundResource()
+std::string Tier8URHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
-std::vector<CardData*> AphroditeHexusBehavior::generateDeck()
+std::vector<CardData*> Tier8URHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 1.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 8.0f / URHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{
@@ -65,28 +66,28 @@ std::vector<CardData*> AphroditeHexusBehavior::generateDeck()
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
-		CardList::getInstance()->cardListByName[CardKeys::Mov],
-		CardList::getInstance()->cardListByName[CardKeys::Flip1],
+		// CardList::getInstance()->cardListByName[CardKeys::Mov],
+		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
 		CardList::getInstance()->cardListByName[CardKeys::Flip2],
-		// CardList::getInstance()->cardListByName[CardKeys::Flip2],
+		CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		// CardList::getInstance()->cardListByName[CardKeys::Addition],
-		// CardList::getInstance()->cardListByName[CardKeys::Addition],
-		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
+		CardList::getInstance()->cardListByName[CardKeys::Addition],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
-		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
+		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
-		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
+		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
+		CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
 		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
 	});
 }
 
-StateOverride* AphroditeHexusBehavior::getStateOverride()
+StateOverride* Tier8URHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> AphroditeHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier8URHexusBehavior::getTutorials()
 {
 	return { };
 }

@@ -1,4 +1,4 @@
-#include "AthenaHexusBehavior.h"
+#include "Tier7URHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,44 +16,45 @@
 
 using namespace cocos2d;
 
-const std::string AthenaHexusBehavior::MapKey = "athena-hexus";
+const std::string Tier7URHexusBehavior::MapKey = "ur-t7-hexus";
 
-AthenaHexusBehavior* AthenaHexusBehavior::create(GameObject* owner)
+Tier7URHexusBehavior* Tier7URHexusBehavior::create(GameObject* owner)
 {
-	AthenaHexusBehavior* instance = new AthenaHexusBehavior(owner);
+	Tier7URHexusBehavior* instance = new Tier7URHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-AthenaHexusBehavior::AthenaHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier7URHexusBehavior::Tier7URHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-AthenaHexusBehavior::~AthenaHexusBehavior()
+Tier7URHexusBehavior::~Tier7URHexusBehavior()
 {
 }
 
-MinMaxPool* AthenaHexusBehavior::generateReward()
+MinMaxPool* Tier7URHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolURGeneric::create(properties);
 }
 
-std::string AthenaHexusBehavior::getWinLossSaveKey()
+std::string Tier7URHexusBehavior::getWinLossSaveKey()
 {
-	return AthenaHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "thor-hexus"; // Tier7URHexusBehavior::MapKey;
 }
 
-std::string AthenaHexusBehavior::getBackgroundResource()
+std::string Tier7URHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
-std::vector<CardData*> AthenaHexusBehavior::generateDeck()
+std::vector<CardData*> Tier7URHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 6.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 7.0f / URHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{
@@ -64,29 +65,29 @@ std::vector<CardData*> AthenaHexusBehavior::generateDeck()
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 
-		CardList::getInstance()->cardListByName[CardKeys::Mov],
+		// CardList::getInstance()->cardListByName[CardKeys::Mov],
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
 		CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		// CardList::getInstance()->cardListByName[CardKeys::Addition],
-		// CardList::getInstance()->cardListByName[CardKeys::Addition],
+		CardList::getInstance()->cardListByName[CardKeys::Addition],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
-		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
+		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
-		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
-		CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
+		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
+		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
 		CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
 	});
 }
 
-StateOverride* AthenaHexusBehavior::getStateOverride()
+StateOverride* Tier7URHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> AthenaHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier7URHexusBehavior::getTutorials()
 {
 	return { };
 }

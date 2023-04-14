@@ -1,4 +1,4 @@
-#include "RupertHexusBehavior.h"
+#include "Tier3URHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,42 +16,43 @@
 
 using namespace cocos2d;
 
-const std::string RupertHexusBehavior::MapKey = "rupert-hexus";
+const std::string Tier3URHexusBehavior::MapKey = "ur-t3-hexus";
 
-RupertHexusBehavior* RupertHexusBehavior::create(GameObject* owner)
+Tier3URHexusBehavior* Tier3URHexusBehavior::create(GameObject* owner)
 {
-	RupertHexusBehavior* instance = new RupertHexusBehavior(owner);
+	Tier3URHexusBehavior* instance = new Tier3URHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RupertHexusBehavior::RupertHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier3URHexusBehavior::Tier3URHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-RupertHexusBehavior::~RupertHexusBehavior()
+Tier3URHexusBehavior::~Tier3URHexusBehavior()
 {
 }
 
-MinMaxPool* RupertHexusBehavior::generateReward()
+MinMaxPool* Tier3URHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolURGeneric::create(properties);
 }
 
-std::string RupertHexusBehavior::getWinLossSaveKey()
+std::string Tier3URHexusBehavior::getWinLossSaveKey()
 {
-	return RupertHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "rupert-hexus"; // Tier3URHexusBehavior::MapKey;
 }
 
-std::string RupertHexusBehavior::getBackgroundResource()
+std::string Tier3URHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
-std::vector<CardData*> RupertHexusBehavior::generateDeck()
+std::vector<CardData*> Tier3URHexusBehavior::generateDeck()
 {
 	const float LocalOrder = 3.0f / URHexusConfig::MaxEntities;
 
@@ -81,12 +82,12 @@ std::vector<CardData*> RupertHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* RupertHexusBehavior::getStateOverride()
+StateOverride* Tier3URHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> RupertHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier3URHexusBehavior::getTutorials()
 {
 	return { };
 }

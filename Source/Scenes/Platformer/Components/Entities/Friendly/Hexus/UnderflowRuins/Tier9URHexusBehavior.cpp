@@ -1,4 +1,4 @@
-#include "PoseidonHexusBehavior.h"
+#include "Tier9URHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,44 +16,45 @@
 
 using namespace cocos2d;
 
-const std::string PoseidonHexusBehavior::MapKey = "poseidon-hexus";
+const std::string Tier9URHexusBehavior::MapKey = "ur-t9-hexus";
 
-PoseidonHexusBehavior* PoseidonHexusBehavior::create(GameObject* owner)
+Tier9URHexusBehavior* Tier9URHexusBehavior::create(GameObject* owner)
 {
-	PoseidonHexusBehavior* instance = new PoseidonHexusBehavior(owner);
+	Tier9URHexusBehavior* instance = new Tier9URHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-PoseidonHexusBehavior::PoseidonHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier9URHexusBehavior::Tier9URHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-PoseidonHexusBehavior::~PoseidonHexusBehavior()
+Tier9URHexusBehavior::~Tier9URHexusBehavior()
 {
 }
 
-MinMaxPool* PoseidonHexusBehavior::generateReward()
+MinMaxPool* Tier9URHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolURGeneric::create(properties);
 }
 
-std::string PoseidonHexusBehavior::getWinLossSaveKey()
+std::string Tier9URHexusBehavior::getWinLossSaveKey()
 {
-	return PoseidonHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "horus-hexus"; // Tier9URHexusBehavior::MapKey;
 }
 
-std::string PoseidonHexusBehavior::getBackgroundResource()
+std::string Tier9URHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
-std::vector<CardData*> PoseidonHexusBehavior::generateDeck()
+std::vector<CardData*> Tier9URHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 4.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 9.0f / URHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{
@@ -81,12 +82,12 @@ std::vector<CardData*> PoseidonHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* PoseidonHexusBehavior::getStateOverride()
+StateOverride* Tier9URHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> PoseidonHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier9URHexusBehavior::getTutorials()
 {
 	return { };
 }

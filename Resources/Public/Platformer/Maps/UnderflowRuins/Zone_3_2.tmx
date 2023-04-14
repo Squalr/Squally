@@ -501,7 +501,7 @@
   </properties>
   <object id="1146" name="horus" type="entity" x="2438.67" y="1273.33" width="128" height="128">
    <properties>
-    <property name="components" value="horus-hexus,friendly,pick-pocket"/>
+    <property name="components" value="ur-t9-hexus,friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="quest" value="talk-to-horus"/>

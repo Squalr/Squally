@@ -1,4 +1,4 @@
-#include "HorusHexusBehavior.h"
+#include "Tier2URHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,44 +16,45 @@
 
 using namespace cocos2d;
 
-const std::string HorusHexusBehavior::MapKey = "horus-hexus";
+const std::string Tier2URHexusBehavior::MapKey = "ur-t2-hexus";
 
-HorusHexusBehavior* HorusHexusBehavior::create(GameObject* owner)
+Tier2URHexusBehavior* Tier2URHexusBehavior::create(GameObject* owner)
 {
-	HorusHexusBehavior* instance = new HorusHexusBehavior(owner);
+	Tier2URHexusBehavior* instance = new Tier2URHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HorusHexusBehavior::HorusHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier2URHexusBehavior::Tier2URHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-HorusHexusBehavior::~HorusHexusBehavior()
+Tier2URHexusBehavior::~Tier2URHexusBehavior()
 {
 }
 
-MinMaxPool* HorusHexusBehavior::generateReward()
+MinMaxPool* Tier2URHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolURGeneric::create(properties);
 }
 
-std::string HorusHexusBehavior::getWinLossSaveKey()
+std::string Tier2URHexusBehavior::getWinLossSaveKey()
 {
-	return HorusHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "hera-hexus"; // Tier2URHexusBehavior::MapKey;
 }
 
-std::string HorusHexusBehavior::getBackgroundResource()
+std::string Tier2URHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
-std::vector<CardData*> HorusHexusBehavior::generateDeck()
+std::vector<CardData*> Tier2URHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 9.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 2.0f / URHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{
@@ -81,12 +82,12 @@ std::vector<CardData*> HorusHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* HorusHexusBehavior::getStateOverride()
+StateOverride* Tier2URHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> HorusHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier2URHexusBehavior::getTutorials()
 {
 	return { };
 }

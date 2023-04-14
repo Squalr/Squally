@@ -1,4 +1,4 @@
-#include "AngelHexusBehavior.h"
+#include "Tier1URHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,44 +16,45 @@
 
 using namespace cocos2d;
 
-const std::string AngelHexusBehavior::MapKey = "angel-hexus";
+const std::string Tier1URHexusBehavior::MapKey = "ur-t1-hexus";
 
-AngelHexusBehavior* AngelHexusBehavior::create(GameObject* owner)
+Tier1URHexusBehavior* Tier1URHexusBehavior::create(GameObject* owner)
 {
-	AngelHexusBehavior* instance = new AngelHexusBehavior(owner);
+	Tier1URHexusBehavior* instance = new Tier1URHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-AngelHexusBehavior::AngelHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier1URHexusBehavior::Tier1URHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-AngelHexusBehavior::~AngelHexusBehavior()
+Tier1URHexusBehavior::~Tier1URHexusBehavior()
 {
 }
 
-MinMaxPool* AngelHexusBehavior::generateReward()
+MinMaxPool* Tier1URHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolURGeneric::create(properties);
 }
 
-std::string AngelHexusBehavior::getWinLossSaveKey()
+std::string Tier1URHexusBehavior::getWinLossSaveKey()
 {
-	return AngelHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "aphrodite-hexus"; // Tier1EFHexusBehavior::MapKey;
 }
 
-std::string AngelHexusBehavior::getBackgroundResource()
+std::string Tier1URHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
-std::vector<CardData*> AngelHexusBehavior::generateDeck()
+std::vector<CardData*> Tier1URHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 5.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 1.0f / URHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{
@@ -64,29 +65,29 @@ std::vector<CardData*> AngelHexusBehavior::generateDeck()
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 
-		// CardList::getInstance()->cardListByName[CardKeys::Mov],
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
+		CardList::getInstance()->cardListByName[CardKeys::Mov],
+		CardList::getInstance()->cardListByName[CardKeys::Flip1],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
-		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
-		// CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		CardList::getInstance()->cardListByName[CardKeys::Flip2],
+		// CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		// CardList::getInstance()->cardListByName[CardKeys::Addition],
-		CardList::getInstance()->cardListByName[CardKeys::Addition],
+		// CardList::getInstance()->cardListByName[CardKeys::Addition],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
-		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
+		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
 		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
 		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
 	});
 }
 
-StateOverride* AngelHexusBehavior::getStateOverride()
+StateOverride* Tier1URHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> AngelHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier1URHexusBehavior::getTutorials()
 {
 	return { };
 }

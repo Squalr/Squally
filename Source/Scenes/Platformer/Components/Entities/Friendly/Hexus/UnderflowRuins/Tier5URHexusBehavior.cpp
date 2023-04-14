@@ -1,4 +1,4 @@
-#include "HeraHexusBehavior.h"
+#include "Tier5URHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,44 +16,45 @@
 
 using namespace cocos2d;
 
-const std::string HeraHexusBehavior::MapKey = "hera-hexus";
+const std::string Tier5URHexusBehavior::MapKey = "ur-t5-hexus";
 
-HeraHexusBehavior* HeraHexusBehavior::create(GameObject* owner)
+Tier5URHexusBehavior* Tier5URHexusBehavior::create(GameObject* owner)
 {
-	HeraHexusBehavior* instance = new HeraHexusBehavior(owner);
+	Tier5URHexusBehavior* instance = new Tier5URHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-HeraHexusBehavior::HeraHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier5URHexusBehavior::Tier5URHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-HeraHexusBehavior::~HeraHexusBehavior()
+Tier5URHexusBehavior::~Tier5URHexusBehavior()
 {
 }
 
-MinMaxPool* HeraHexusBehavior::generateReward()
+MinMaxPool* Tier5URHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolURGeneric::create(properties);
 }
 
-std::string HeraHexusBehavior::getWinLossSaveKey()
+std::string Tier5URHexusBehavior::getWinLossSaveKey()
 {
-	return HeraHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "angel-hexus"; // Tier5URHexusBehavior::MapKey;
 }
 
-std::string HeraHexusBehavior::getBackgroundResource()
+std::string Tier5URHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
-std::vector<CardData*> HeraHexusBehavior::generateDeck()
+std::vector<CardData*> Tier5URHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 2.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 5.0f / URHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{
@@ -67,26 +68,26 @@ std::vector<CardData*> HeraHexusBehavior::generateDeck()
 		// CardList::getInstance()->cardListByName[CardKeys::Mov],
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
-		CardList::getInstance()->cardListByName[CardKeys::Flip1],
+		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		// CardList::getInstance()->cardListByName[CardKeys::Addition],
 		CardList::getInstance()->cardListByName[CardKeys::Addition],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
-		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
+		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
 		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
-		CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
+		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
 	});
 }
 
-StateOverride* HeraHexusBehavior::getStateOverride()
+StateOverride* Tier5URHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> HeraHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier5URHexusBehavior::getTutorials()
 {
 	return { };
 }

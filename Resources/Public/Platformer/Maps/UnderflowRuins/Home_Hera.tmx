@@ -126,7 +126,7 @@
   </properties>
   <object id="810" name="hera" type="entity" x="1486.91" y="937.333" width="128" height="128">
    <properties>
-    <property name="components" value="hera-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="ur-t2-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="quest" value="talk-to-hera,cure-town"/>
     <property name="quest-line" value="cure-town"/>

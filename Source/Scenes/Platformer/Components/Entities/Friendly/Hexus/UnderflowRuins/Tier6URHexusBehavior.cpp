@@ -1,4 +1,4 @@
-#include "AjaxHexusBehavior.h"
+#include "Tier6URHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,44 +16,45 @@
 
 using namespace cocos2d;
 
-const std::string AjaxHexusBehavior::MapKey = "ajax-hexus";
+const std::string Tier6URHexusBehavior::MapKey = "ur-t6-hexus";
 
-AjaxHexusBehavior* AjaxHexusBehavior::create(GameObject* owner)
+Tier6URHexusBehavior* Tier6URHexusBehavior::create(GameObject* owner)
 {
-	AjaxHexusBehavior* instance = new AjaxHexusBehavior(owner);
+	Tier6URHexusBehavior* instance = new Tier6URHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-AjaxHexusBehavior::AjaxHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier6URHexusBehavior::Tier6URHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-AjaxHexusBehavior::~AjaxHexusBehavior()
+Tier6URHexusBehavior::~Tier6URHexusBehavior()
 {
 }
 
-MinMaxPool* AjaxHexusBehavior::generateReward()
+MinMaxPool* Tier6URHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolURGeneric::create(properties);
 }
 
-std::string AjaxHexusBehavior::getWinLossSaveKey()
+std::string Tier6URHexusBehavior::getWinLossSaveKey()
 {
-	return AjaxHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "athena-hexus"; // Tier6URHexusBehavior::MapKey;
 }
 
-std::string AjaxHexusBehavior::getBackgroundResource()
+std::string Tier6URHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameUnderflowRuins;
 }
 
-std::vector<CardData*> AjaxHexusBehavior::generateDeck()
+std::vector<CardData*> Tier6URHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 8.0f / URHexusConfig::MaxEntities;
+	const float LocalOrder = 6.0f / URHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{
@@ -65,28 +66,28 @@ std::vector<CardData*> AjaxHexusBehavior::generateDeck()
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
-		// CardList::getInstance()->cardListByName[CardKeys::Mov],
+		CardList::getInstance()->cardListByName[CardKeys::Mov],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
 		CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		// CardList::getInstance()->cardListByName[CardKeys::Addition],
-		CardList::getInstance()->cardListByName[CardKeys::Addition],
-		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
+		// CardList::getInstance()->cardListByName[CardKeys::Addition],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
-		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
+		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
+		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
 		CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
-		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
+		CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
 	});
 }
 
-StateOverride* AjaxHexusBehavior::getStateOverride()
+StateOverride* Tier6URHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> AjaxHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier6URHexusBehavior::getTutorials()
 {
 	return { };
 }

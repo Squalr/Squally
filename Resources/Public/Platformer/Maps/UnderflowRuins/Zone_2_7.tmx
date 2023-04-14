@@ -97,7 +97,7 @@
   </properties>
   <object id="851" name="angel" type="entity" x="2012.33" y="938" width="128" height="128">
    <properties>
-    <property name="components" value="angel-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="ur-t5-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>

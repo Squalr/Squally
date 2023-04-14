@@ -5,16 +5,16 @@
 class CardData;
 class MinMaxPool;
 
-class AphroditeHexusBehavior : public HexusBehaviorBase
+class Tier8URHexusBehavior : public HexusBehaviorBase
 {
 public:
-	static AphroditeHexusBehavior* create(GameObject* owner);
+	static Tier8URHexusBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	AphroditeHexusBehavior(GameObject* owner);
-	virtual ~AphroditeHexusBehavior();
+	Tier8URHexusBehavior(GameObject* owner);
+	virtual ~Tier8URHexusBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;
