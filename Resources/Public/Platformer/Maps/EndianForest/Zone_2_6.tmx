@@ -538,7 +538,7 @@
   </object>
   <object id="1096" name="lycan" type="entity" x="1502" y="3990" width="128" height="128">
    <properties>
-    <property name="components" value="lycan,lycan-hexus,friendly,pick-pocket"/>
+    <property name="components" value="lycan,ef-t3-hexus,friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>

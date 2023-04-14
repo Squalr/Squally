@@ -5,16 +5,16 @@
 class CardData;
 class MinMaxPool;
 
-class LycanHexusBehavior : public HexusBehaviorBase
+class Tier4EFHexusBehavior : public HexusBehaviorBase
 {
 public:
-	static LycanHexusBehavior* create(GameObject* owner);
+	static Tier4EFHexusBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	LycanHexusBehavior(GameObject* owner);
-	virtual ~LycanHexusBehavior();
+	Tier4EFHexusBehavior(GameObject* owner);
+	virtual ~Tier4EFHexusBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;

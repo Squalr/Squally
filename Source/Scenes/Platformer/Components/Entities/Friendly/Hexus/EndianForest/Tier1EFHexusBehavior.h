@@ -5,16 +5,16 @@
 class CardData;
 class MinMaxPool;
 
-class BardHexusBehavior : public HexusBehaviorBase
+class Tier1EFHexusBehavior : public HexusBehaviorBase
 {
 public:
-	static BardHexusBehavior* create(GameObject* owner);
+	static Tier1EFHexusBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	BardHexusBehavior(GameObject* owner);
-	virtual ~BardHexusBehavior();
+	Tier1EFHexusBehavior(GameObject* owner);
+	virtual ~Tier1EFHexusBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;

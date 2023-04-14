@@ -1,4 +1,4 @@
-#include "GrampsHexusBehavior.h"
+#include "Tier4EFHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,63 +16,67 @@
 
 using namespace cocos2d;
 
-const std::string GrampsHexusBehavior::MapKey = "gramps-hexus";
+const std::string Tier4EFHexusBehavior::MapKey = "ef-t4-hexus";
 
-GrampsHexusBehavior* GrampsHexusBehavior::create(GameObject* owner)
+Tier4EFHexusBehavior* Tier4EFHexusBehavior::create(GameObject* owner)
 {
-	GrampsHexusBehavior* instance = new GrampsHexusBehavior(owner);
+	Tier4EFHexusBehavior* instance = new Tier4EFHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GrampsHexusBehavior::GrampsHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier4EFHexusBehavior::Tier4EFHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-GrampsHexusBehavior::~GrampsHexusBehavior()
+Tier4EFHexusBehavior::~Tier4EFHexusBehavior()
 {
 }
 
-MinMaxPool* GrampsHexusBehavior::generateReward()
+MinMaxPool* Tier4EFHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolEFGeneric::create(properties);
 }
 
-std::string GrampsHexusBehavior::getWinLossSaveKey()
+std::string Tier4EFHexusBehavior::getWinLossSaveKey()
 {
-	return GrampsHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "elriel-hexus"; // Tier4EFHexusBehavior::MapKey;
 }
 
-std::string GrampsHexusBehavior::getBackgroundResource()
+std::string Tier4EFHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameEndianForest;
 }
 
-std::vector<CardData*> GrampsHexusBehavior::generateDeck()
+std::vector<CardData*> Tier4EFHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 6.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 4.0f / EFHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, EFHexusConfig::ZoneOrder),
 	{
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
-		
+		CardList::getInstance()->cardListByName[CardKeys::Binary0],
+		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
+		CardList::getInstance()->cardListByName[CardKeys::Hex0],
+
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
 		CardList::getInstance()->cardListByName[CardKeys::Addition],
-		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
+		CardList::getInstance()->cardListByName[CardKeys::Addition],
 	});
 }
 
-StateOverride* GrampsHexusBehavior::getStateOverride()
+StateOverride* Tier4EFHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> GrampsHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier4EFHexusBehavior::getTutorials()
 {
 	return { };
 }

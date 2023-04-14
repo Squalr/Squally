@@ -408,7 +408,7 @@
   </object>
   <object id="751" name="elriel" type="entity" x="2363.54" y="1061.87" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,face-squally,elriel-hexus,pick-pocket"/>
+    <property name="components" value="friendly,face-squally,ef-t4-hexus,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>

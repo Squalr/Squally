@@ -1,4 +1,4 @@
-#include "DropPoolLCLazarus.h"
+#include "DropPoolLCKingZul.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -17,27 +17,27 @@
 
 using namespace cocos2d;
 
-const std::string DropPoolLCLazarus::PoolName = "lc-lazarus";
+const std::string DropPoolLCKingZul::PoolName = "cv-agnes";
 
-DropPoolLCLazarus* DropPoolLCLazarus::create(ValueMap& properties)
+DropPoolLCKingZul* DropPoolLCKingZul::create(ValueMap& properties)
 {
-	DropPoolLCLazarus* instance = new DropPoolLCLazarus(properties);
+	DropPoolLCKingZul* instance = new DropPoolLCKingZul(properties);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-DropPoolLCLazarus::DropPoolLCLazarus(ValueMap& properties) : super(properties, DropPoolLCLazarus::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolLCGeneric::create(properties),
+DropPoolLCKingZul::DropPoolLCKingZul(ValueMap& properties) : super(properties, DropPoolLCKingZul::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolCVGeneric::create(properties),
 	{
 		CardPoolTier5::create(SampleMethod::Random, 0, 1),
 		AlchemyPoolTier5::create(SampleMethod::Random, 1, 2),
 		SmithingPoolTier5::create(SampleMethod::Random, 1, 2),
 	})
 {
-	this->addItemToPool(ItemChance::create(AncientKey::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(HellGateCrystal::create(), ItemChance::Probability::Guaranteed));
 }
 
-DropPoolLCLazarus::~DropPoolLCLazarus()
+DropPoolLCKingZul::~DropPoolLCKingZul()
 {
 }

@@ -98,14 +98,14 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[EFPuzzleFBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)EFPuzzleFBehavior::create(owner); };
 	this->componentDeserializers[EFPuzzleGBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)EFPuzzleGBehavior::create(owner); };
 
-	this->componentDeserializers[AraHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)AraHexusBehavior::create(owner); };
-	this->componentDeserializers[BardHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BardHexusBehavior::create(owner); };
-	this->componentDeserializers[ChironHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ChironHexusBehavior::create(owner); };
-	this->componentDeserializers[ElrielHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ElrielHexusBehavior::create(owner); };
-	this->componentDeserializers[GrampsHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)GrampsHexusBehavior::create(owner); };
-	this->componentDeserializers[LycanHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LycanHexusBehavior::create(owner); };
-	this->componentDeserializers[MatuHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)MatuHexusBehavior::create(owner); };
-	this->componentDeserializers[RobinHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)RobinHexusBehavior::create(owner); };
+	this->componentDeserializers[Tier8EFHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier8EFHexusBehavior::create(owner); };
+	this->componentDeserializers[Tier1EFHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier1EFHexusBehavior::create(owner); };
+	this->componentDeserializers[Tier2EFHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier2EFHexusBehavior::create(owner); };
+	this->componentDeserializers[Tier4EFHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier4EFHexusBehavior::create(owner); };
+	this->componentDeserializers[Tier6EFHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier6EFHexusBehavior::create(owner); };
+	this->componentDeserializers[Tier3EFHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier3EFHexusBehavior::create(owner); };
+	this->componentDeserializers[Tier7EFHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier7EFHexusBehavior::create(owner); };
+	this->componentDeserializers[Tier5EFHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier5EFHexusBehavior::create(owner); };
 		
 	// UR
 	this->componentDeserializers[URPuzzleABehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)URPuzzleABehavior::create(owner); };

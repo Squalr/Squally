@@ -5,16 +5,16 @@
 class CardData;
 class MinMaxPool;
 
-class RobinHexusBehavior : public HexusBehaviorBase
+class Tier2EFHexusBehavior : public HexusBehaviorBase
 {
 public:
-	static RobinHexusBehavior* create(GameObject* owner);
+	static Tier2EFHexusBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	RobinHexusBehavior(GameObject* owner);
-	virtual ~RobinHexusBehavior();
+	Tier2EFHexusBehavior(GameObject* owner);
+	virtual ~Tier2EFHexusBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;

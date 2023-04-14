@@ -63,7 +63,7 @@
   </properties>
   <object id="692" name="matu" type="entity" x="581.14" y="810.218" width="128" height="128">
    <properties>
-    <property name="components" value="matu-hexus,friendly,pick-pocket"/>
+    <property name="components" value="ef-t7-hexus,friendly,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>

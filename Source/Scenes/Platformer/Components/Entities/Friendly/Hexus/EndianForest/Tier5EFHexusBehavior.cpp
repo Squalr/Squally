@@ -1,4 +1,4 @@
-#include "AraHexusBehavior.h"
+#include "Tier5EFHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,44 +16,45 @@
 
 using namespace cocos2d;
 
-const std::string AraHexusBehavior::MapKey = "ara-hexus";
+const std::string Tier5EFHexusBehavior::MapKey = "ef-t5-hexus";
 
-AraHexusBehavior* AraHexusBehavior::create(GameObject* owner)
+Tier5EFHexusBehavior* Tier5EFHexusBehavior::create(GameObject* owner)
 {
-	AraHexusBehavior* instance = new AraHexusBehavior(owner);
+	Tier5EFHexusBehavior* instance = new Tier5EFHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-AraHexusBehavior::AraHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier5EFHexusBehavior::Tier5EFHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-AraHexusBehavior::~AraHexusBehavior()
+Tier5EFHexusBehavior::~Tier5EFHexusBehavior()
 {
 }
 
-MinMaxPool* AraHexusBehavior::generateReward()
+MinMaxPool* Tier5EFHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolEFGeneric::create(properties);
 }
 
-std::string AraHexusBehavior::getWinLossSaveKey()
+std::string Tier5EFHexusBehavior::getWinLossSaveKey()
 {
-	return AraHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "robin-hexus"; // Tier5EFHexusBehavior::MapKey;
 }
 
-std::string AraHexusBehavior::getBackgroundResource()
+std::string Tier5EFHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameEndianForest;
 }
 
-std::vector<CardData*> AraHexusBehavior::generateDeck()
+std::vector<CardData*> Tier5EFHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 8.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 5.0f / EFHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, EFHexusConfig::ZoneOrder),
 	{
@@ -65,18 +66,18 @@ std::vector<CardData*> AraHexusBehavior::generateDeck()
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
+		CardList::getInstance()->cardListByName[CardKeys::Mov],
 		CardList::getInstance()->cardListByName[CardKeys::Addition],
-		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
-		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
+		CardList::getInstance()->cardListByName[CardKeys::Addition],
 	});
 }
 
-StateOverride* AraHexusBehavior::getStateOverride()
+StateOverride* Tier5EFHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> AraHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier5EFHexusBehavior::getTutorials()
 {
 	return { };
 }

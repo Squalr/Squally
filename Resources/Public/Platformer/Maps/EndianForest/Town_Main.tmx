@@ -865,7 +865,7 @@
   </properties>
   <object id="883" name="bard" type="entity" x="5482.59" y="5752.97" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,bard-hexus,pick-pocket"/>
+    <property name="components" value="friendly,ef-t1-hexus,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>

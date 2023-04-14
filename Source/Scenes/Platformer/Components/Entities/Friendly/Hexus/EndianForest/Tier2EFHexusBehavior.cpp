@@ -1,4 +1,4 @@
-#include "ChironHexusBehavior.h"
+#include "Tier2EFHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,42 +16,43 @@
 
 using namespace cocos2d;
 
-const std::string ChironHexusBehavior::MapKey = "chiron-hexus";
+const std::string Tier2EFHexusBehavior::MapKey = "ef-t2-hexus";
 
-ChironHexusBehavior* ChironHexusBehavior::create(GameObject* owner)
+Tier2EFHexusBehavior* Tier2EFHexusBehavior::create(GameObject* owner)
 {
-	ChironHexusBehavior* instance = new ChironHexusBehavior(owner);
+	Tier2EFHexusBehavior* instance = new Tier2EFHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ChironHexusBehavior::ChironHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier2EFHexusBehavior::Tier2EFHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-ChironHexusBehavior::~ChironHexusBehavior()
+Tier2EFHexusBehavior::~Tier2EFHexusBehavior()
 {
 }
 
-MinMaxPool* ChironHexusBehavior::generateReward()
+MinMaxPool* Tier2EFHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolEFGeneric::create(properties);
 }
 
-std::string ChironHexusBehavior::getWinLossSaveKey()
+std::string Tier2EFHexusBehavior::getWinLossSaveKey()
 {
-	return ChironHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "chiron-hexus"; // Tier2EFHexusBehavior::MapKey;
 }
 
-std::string ChironHexusBehavior::getBackgroundResource()
+std::string Tier2EFHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameEndianForest;
 }
 
-std::vector<CardData*> ChironHexusBehavior::generateDeck()
+std::vector<CardData*> Tier2EFHexusBehavior::generateDeck()
 {
 	const float LocalOrder = 2.0f / EFHexusConfig::MaxEntities;
 
@@ -66,12 +67,12 @@ std::vector<CardData*> ChironHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* ChironHexusBehavior::getStateOverride()
+StateOverride* Tier2EFHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> ChironHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier2EFHexusBehavior::getTutorials()
 {
 	return { };
 }

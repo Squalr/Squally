@@ -1,4 +1,4 @@
-#include "MatuHexusBehavior.h"
+#include "Tier8EFHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,44 +16,45 @@
 
 using namespace cocos2d;
 
-const std::string MatuHexusBehavior::MapKey = "matu-hexus";
+const std::string Tier8EFHexusBehavior::MapKey = "ef-t8-hexus";
 
-MatuHexusBehavior* MatuHexusBehavior::create(GameObject* owner)
+Tier8EFHexusBehavior* Tier8EFHexusBehavior::create(GameObject* owner)
 {
-	MatuHexusBehavior* instance = new MatuHexusBehavior(owner);
+	Tier8EFHexusBehavior* instance = new Tier8EFHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MatuHexusBehavior::MatuHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier8EFHexusBehavior::Tier8EFHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-MatuHexusBehavior::~MatuHexusBehavior()
+Tier8EFHexusBehavior::~Tier8EFHexusBehavior()
 {
 }
 
-MinMaxPool* MatuHexusBehavior::generateReward()
+MinMaxPool* Tier8EFHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolEFGeneric::create(properties);
 }
 
-std::string MatuHexusBehavior::getWinLossSaveKey()
+std::string Tier8EFHexusBehavior::getWinLossSaveKey()
 {
-	return MatuHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "ara-hexus"; // Tier8EFHexusBehavior::MapKey;
 }
 
-std::string MatuHexusBehavior::getBackgroundResource()
+std::string Tier8EFHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameEndianForest;
 }
 
-std::vector<CardData*> MatuHexusBehavior::generateDeck()
+std::vector<CardData*> Tier8EFHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 7.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 8.0f / EFHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, EFHexusConfig::ZoneOrder),
 	{
@@ -71,12 +72,12 @@ std::vector<CardData*> MatuHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* MatuHexusBehavior::getStateOverride()
+StateOverride* Tier8EFHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> MatuHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier8EFHexusBehavior::getTutorials()
 {
 	return { };
 }

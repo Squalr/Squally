@@ -1,4 +1,4 @@
-#include "LycanHexusBehavior.h"
+#include "Tier7EFHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,47 +16,51 @@
 
 using namespace cocos2d;
 
-const std::string LycanHexusBehavior::MapKey = "lycan-hexus";
+const std::string Tier7EFHexusBehavior::MapKey = "ef-t7-hexus";
 
-LycanHexusBehavior* LycanHexusBehavior::create(GameObject* owner)
+Tier7EFHexusBehavior* Tier7EFHexusBehavior::create(GameObject* owner)
 {
-	LycanHexusBehavior* instance = new LycanHexusBehavior(owner);
+	Tier7EFHexusBehavior* instance = new Tier7EFHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-LycanHexusBehavior::LycanHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier7EFHexusBehavior::Tier7EFHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-LycanHexusBehavior::~LycanHexusBehavior()
+Tier7EFHexusBehavior::~Tier7EFHexusBehavior()
 {
 }
 
-MinMaxPool* LycanHexusBehavior::generateReward()
+MinMaxPool* Tier7EFHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolEFGeneric::create(properties);
 }
 
-std::string LycanHexusBehavior::getWinLossSaveKey()
+std::string Tier7EFHexusBehavior::getWinLossSaveKey()
 {
-	return LycanHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "matu-hexus"; // Tier7EFHexusBehavior::MapKey;
 }
 
-std::string LycanHexusBehavior::getBackgroundResource()
+std::string Tier7EFHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameEndianForest;
 }
 
-std::vector<CardData*> LycanHexusBehavior::generateDeck()
+std::vector<CardData*> Tier7EFHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 3.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 7.0f / EFHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, EFHexusConfig::ZoneOrder),
 	{
+		CardList::getInstance()->cardListByName[CardKeys::Binary0],
+		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
+		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
@@ -68,12 +72,12 @@ std::vector<CardData*> LycanHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* LycanHexusBehavior::getStateOverride()
+StateOverride* Tier7EFHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> LycanHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier7EFHexusBehavior::getTutorials()
 {
 	return { };
 }

@@ -35,7 +35,6 @@ DropPoolCVAgnes::DropPoolCVAgnes(ValueMap& properties) : super(properties, DropP
 		SmithingPoolTier4::create(SampleMethod::Random, 1, 2),
 	})
 {
-	// this->addItemToPool(ItemChance::create(HellGateCrystal::create(), ItemChance::Probability::Guaranteed));
 }
 
 DropPoolCVAgnes::~DropPoolCVAgnes()

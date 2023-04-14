@@ -115,7 +115,7 @@
   </properties>
   <object id="692" name="gramps" type="entity" x="1025.14" y="938.218" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,gramps-hexus"/>
+    <property name="components" value="friendly,ef-t6-hexus"/>
    </properties>
   </object>
  </objectgroup>

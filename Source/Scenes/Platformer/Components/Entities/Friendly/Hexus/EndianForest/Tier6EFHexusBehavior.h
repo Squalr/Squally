@@ -5,16 +5,16 @@
 class CardData;
 class MinMaxPool;
 
-class GrampsHexusBehavior : public HexusBehaviorBase
+class Tier6EFHexusBehavior : public HexusBehaviorBase
 {
 public:
-	static GrampsHexusBehavior* create(GameObject* owner);
+	static Tier6EFHexusBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	GrampsHexusBehavior(GameObject* owner);
-	virtual ~GrampsHexusBehavior();
+	Tier6EFHexusBehavior(GameObject* owner);
+	virtual ~Tier6EFHexusBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;

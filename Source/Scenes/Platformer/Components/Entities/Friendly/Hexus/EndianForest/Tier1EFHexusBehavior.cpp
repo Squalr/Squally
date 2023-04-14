@@ -1,4 +1,4 @@
-#include "RobinHexusBehavior.h"
+#include "Tier1EFHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,67 +16,63 @@
 
 using namespace cocos2d;
 
-const std::string RobinHexusBehavior::MapKey = "robin-hexus";
+const std::string Tier1EFHexusBehavior::MapKey = "ef-t1-hexus";
 
-RobinHexusBehavior* RobinHexusBehavior::create(GameObject* owner)
+Tier1EFHexusBehavior* Tier1EFHexusBehavior::create(GameObject* owner)
 {
-	RobinHexusBehavior* instance = new RobinHexusBehavior(owner);
+	Tier1EFHexusBehavior* instance = new Tier1EFHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RobinHexusBehavior::RobinHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier1EFHexusBehavior::Tier1EFHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-RobinHexusBehavior::~RobinHexusBehavior()
+Tier1EFHexusBehavior::~Tier1EFHexusBehavior()
 {
 }
 
-MinMaxPool* RobinHexusBehavior::generateReward()
+MinMaxPool* Tier1EFHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolEFGeneric::create(properties);
 }
 
-std::string RobinHexusBehavior::getWinLossSaveKey()
+std::string Tier1EFHexusBehavior::getWinLossSaveKey()
 {
-	return RobinHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "bard-hexus"; // Tier1EFHexusBehavior::MapKey;
 }
 
-std::string RobinHexusBehavior::getBackgroundResource()
+std::string Tier1EFHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameEndianForest;
 }
 
-std::vector<CardData*> RobinHexusBehavior::generateDeck()
+std::vector<CardData*> Tier1EFHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 5.0f / EFHexusConfig::MaxEntities;
+	const float LocalOrder = 1.0f / EFHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, EFHexusConfig::ZoneOrder),
 	{
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
-		CardList::getInstance()->cardListByName[CardKeys::Binary0],
-		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
-		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
-		CardList::getInstance()->cardListByName[CardKeys::Addition],
-		CardList::getInstance()->cardListByName[CardKeys::Addition],
 	});
 }
 
-StateOverride* RobinHexusBehavior::getStateOverride()
+StateOverride* Tier1EFHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> RobinHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier1EFHexusBehavior::getTutorials()
 {
 	return { };
 }
