@@ -288,7 +288,7 @@
   </properties>
   <object id="831" name="olive" type="entity" x="1540.06" y="1529.7" width="128" height="128">
    <properties>
-    <property name="components" value="olive-hexus,friendly,pick-pocket,face-squally"/>
+    <property name="components" value="dm-t1-hexus,friendly,pick-pocket,face-squally"/>
     <property name="pocket-pool" value="dm-generic"/>
     <property name="quest" value="talk-to-olive"/>
     <property name="quest-line" value="restore-power"/>

@@ -1,4 +1,4 @@
-#include "OliveHexusBehavior.h"
+#include "Tier3DMHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,44 +16,45 @@
 
 using namespace cocos2d;
 
-const std::string OliveHexusBehavior::MapKey = "olive-hexus";
+const std::string Tier3DMHexusBehavior::MapKey = "dm-t3-hexus";
 
-OliveHexusBehavior* OliveHexusBehavior::create(GameObject* owner)
+Tier3DMHexusBehavior* Tier3DMHexusBehavior::create(GameObject* owner)
 {
-	OliveHexusBehavior* instance = new OliveHexusBehavior(owner);
+	Tier3DMHexusBehavior* instance = new Tier3DMHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-OliveHexusBehavior::OliveHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier3DMHexusBehavior::Tier3DMHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-OliveHexusBehavior::~OliveHexusBehavior()
+Tier3DMHexusBehavior::~Tier3DMHexusBehavior()
 {
 }
 
-MinMaxPool* OliveHexusBehavior::generateReward()
+MinMaxPool* Tier3DMHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolDMGeneric::create(properties);
 }
 
-std::string OliveHexusBehavior::getWinLossSaveKey()
+std::string Tier3DMHexusBehavior::getWinLossSaveKey()
 {
-	return OliveHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "burch-hexus"; // Tier3DMHexusBehavior::MapKey;
 }
 
-std::string OliveHexusBehavior::getBackgroundResource()
+std::string Tier3DMHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameDataMines;
 }
 
-std::vector<CardData*> OliveHexusBehavior::generateDeck()
+std::vector<CardData*> Tier3DMHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 1.0f / DMHexusConfig::MaxEntities;
+	const float LocalOrder = 3.0f / DMHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{
@@ -68,9 +69,9 @@ std::vector<CardData*> OliveHexusBehavior::generateDeck()
 		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
 		CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip2],
+		CardList::getInstance()->cardListByName[CardKeys::Flip3],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip3],
-		// CardList::getInstance()->cardListByName[CardKeys::Flip3],
-		// CardList::getInstance()->cardListByName[CardKeys::Flip4],
+		CardList::getInstance()->cardListByName[CardKeys::Flip4],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip4],
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
 		// CardList::getInstance()->cardListByName[CardKeys::Mov],
@@ -107,12 +108,12 @@ std::vector<CardData*> OliveHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* OliveHexusBehavior::getStateOverride()
+StateOverride* Tier3DMHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> OliveHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier3DMHexusBehavior::getTutorials()
 {
 	return { };
 }

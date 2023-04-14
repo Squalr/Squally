@@ -275,14 +275,14 @@
   </properties>
   <object id="847" name="mildred" type="entity" x="1701.18" y="1530.39" width="128" height="128">
    <properties>
-    <property name="components" value="mildred-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="dm-t8-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="dm-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
   <object id="848" name="bancroft" type="entity" x="2880.86" y="1532.06" width="128" height="128">
    <properties>
-    <property name="components" value="bancroft-hexus,friendly,pick-pocket"/>
+    <property name="components" value="dm-t7-hexus,friendly,pick-pocket"/>
     <property name="pocket-pool" value="dm-generic"/>
     <property name="quest" value="bancroft-train-access"/>
     <property name="quest-line" value="restore-power"/>

@@ -1,4 +1,4 @@
-#include "BonnieHexusBehavior.h"
+#include "Tier5DMHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,47 +16,51 @@
 
 using namespace cocos2d;
 
-const std::string BonnieHexusBehavior::MapKey = "bonnie-hexus";
+const std::string Tier5DMHexusBehavior::MapKey = "dm-t5-hexus";
 
-BonnieHexusBehavior* BonnieHexusBehavior::create(GameObject* owner)
+Tier5DMHexusBehavior* Tier5DMHexusBehavior::create(GameObject* owner)
 {
-	BonnieHexusBehavior* instance = new BonnieHexusBehavior(owner);
+	Tier5DMHexusBehavior* instance = new Tier5DMHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BonnieHexusBehavior::BonnieHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier5DMHexusBehavior::Tier5DMHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-BonnieHexusBehavior::~BonnieHexusBehavior()
+Tier5DMHexusBehavior::~Tier5DMHexusBehavior()
 {
 }
 
-MinMaxPool* BonnieHexusBehavior::generateReward()
+MinMaxPool* Tier5DMHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolDMGeneric::create(properties);
 }
 
-std::string BonnieHexusBehavior::getWinLossSaveKey()
+std::string Tier5DMHexusBehavior::getWinLossSaveKey()
 {
-	return BonnieHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "ralston-hexus"; // Tier5DMHexusBehavior::MapKey;
 }
 
-std::string BonnieHexusBehavior::getBackgroundResource()
+std::string Tier5DMHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameDataMines;
 }
 
-std::vector<CardData*> BonnieHexusBehavior::generateDeck()
+std::vector<CardData*> Tier5DMHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 2.0f / DMHexusConfig::MaxEntities;
+	const float LocalOrder = 5.0f / DMHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{
+		CardList::getInstance()->cardListByName[CardKeys::Binary0],
+		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
+		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
@@ -107,12 +111,12 @@ std::vector<CardData*> BonnieHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* BonnieHexusBehavior::getStateOverride()
+StateOverride* Tier5DMHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> BonnieHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier5DMHexusBehavior::getTutorials()
 {
 	return { };
 }

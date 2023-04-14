@@ -1,4 +1,4 @@
-#include "RakaHexusBehavior.h"
+#include "Tier4DMHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,42 +16,43 @@
 
 using namespace cocos2d;
 
-const std::string RakaHexusBehavior::MapKey = "raka-hexus";
+const std::string Tier4DMHexusBehavior::MapKey = "dm-t4-hexus";
 
-RakaHexusBehavior* RakaHexusBehavior::create(GameObject* owner)
+Tier4DMHexusBehavior* Tier4DMHexusBehavior::create(GameObject* owner)
 {
-	RakaHexusBehavior* instance = new RakaHexusBehavior(owner);
+	Tier4DMHexusBehavior* instance = new Tier4DMHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RakaHexusBehavior::RakaHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier4DMHexusBehavior::Tier4DMHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-RakaHexusBehavior::~RakaHexusBehavior()
+Tier4DMHexusBehavior::~Tier4DMHexusBehavior()
 {
 }
 
-MinMaxPool* RakaHexusBehavior::generateReward()
+MinMaxPool* Tier4DMHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolDMGeneric::create(properties);
 }
 
-std::string RakaHexusBehavior::getWinLossSaveKey()
+std::string Tier4DMHexusBehavior::getWinLossSaveKey()
 {
-	return RakaHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "raka-hexus"; // Tier4DMHexusBehavior::MapKey;
 }
 
-std::string RakaHexusBehavior::getBackgroundResource()
+std::string Tier4DMHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameDataMines;
 }
 
-std::vector<CardData*> RakaHexusBehavior::generateDeck()
+std::vector<CardData*> Tier4DMHexusBehavior::generateDeck()
 {
 	const float LocalOrder = 4.0f / DMHexusConfig::MaxEntities;
 
@@ -107,12 +108,12 @@ std::vector<CardData*> RakaHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* RakaHexusBehavior::getStateOverride()
+StateOverride* Tier4DMHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> RakaHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier4DMHexusBehavior::getTutorials()
 {
 	return { };
 }

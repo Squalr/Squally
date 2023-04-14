@@ -5,16 +5,16 @@
 class CardData;
 class MinMaxPool;
 
-class BurchHexusBehavior : public HexusBehaviorBase
+class Tier2DMHexusBehavior : public HexusBehaviorBase
 {
 public:
-	static BurchHexusBehavior* create(GameObject* owner);
+	static Tier2DMHexusBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	BurchHexusBehavior(GameObject* owner);
-	virtual ~BurchHexusBehavior();
+	Tier2DMHexusBehavior(GameObject* owner);
+	virtual ~Tier2DMHexusBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;

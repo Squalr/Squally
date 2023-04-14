@@ -1,4 +1,4 @@
-#include "MildredHexusBehavior.h"
+#include "Tier8DMHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,44 +16,45 @@
 
 using namespace cocos2d;
 
-const std::string MildredHexusBehavior::MapKey = "mildred-hexus";
+const std::string Tier8DMHexusBehavior::MapKey = "dm-t8-hexus";
 
-MildredHexusBehavior* MildredHexusBehavior::create(GameObject* owner)
+Tier8DMHexusBehavior* Tier8DMHexusBehavior::create(GameObject* owner)
 {
-	MildredHexusBehavior* instance = new MildredHexusBehavior(owner);
+	Tier8DMHexusBehavior* instance = new Tier8DMHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-MildredHexusBehavior::MildredHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier8DMHexusBehavior::Tier8DMHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-MildredHexusBehavior::~MildredHexusBehavior()
+Tier8DMHexusBehavior::~Tier8DMHexusBehavior()
 {
 }
 
-MinMaxPool* MildredHexusBehavior::generateReward()
+MinMaxPool* Tier8DMHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolDMGeneric::create(properties);
 }
 
-std::string MildredHexusBehavior::getWinLossSaveKey()
+std::string Tier8DMHexusBehavior::getWinLossSaveKey()
 {
-	return MildredHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "mildred-hexus"; // Tier8DMHexusBehavior::MapKey;
 }
 
-std::string MildredHexusBehavior::getBackgroundResource()
+std::string Tier8DMHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameDataMines;
 }
 
-std::vector<CardData*> MildredHexusBehavior::generateDeck()
+std::vector<CardData*> Tier8DMHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 7.0f / DMHexusConfig::MaxEntities;
+	const float LocalOrder = 8.0f / DMHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{
@@ -107,12 +108,12 @@ std::vector<CardData*> MildredHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* MildredHexusBehavior::getStateOverride()
+StateOverride* Tier8DMHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> MildredHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier8DMHexusBehavior::getTutorials()
 {
 	return { };
 }

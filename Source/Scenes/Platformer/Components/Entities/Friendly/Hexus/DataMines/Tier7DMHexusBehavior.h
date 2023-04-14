@@ -5,16 +5,16 @@
 class CardData;
 class MinMaxPool;
 
-class RalstonHexusBehavior : public HexusBehaviorBase
+class Tier7DMHexusBehavior : public HexusBehaviorBase
 {
 public:
-	static RalstonHexusBehavior* create(GameObject* owner);
+	static Tier7DMHexusBehavior* create(GameObject* owner);
 
 	static const std::string MapKey;
 
 protected:
-	RalstonHexusBehavior(GameObject* owner);
-	virtual ~RalstonHexusBehavior();
+	Tier7DMHexusBehavior(GameObject* owner);
+	virtual ~Tier7DMHexusBehavior();
 
 	MinMaxPool* generateReward() override;
 	std::string getWinLossSaveKey() override;

@@ -1,4 +1,4 @@
-#include "RalstonHexusBehavior.h"
+#include "Tier2DMHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,50 +16,48 @@
 
 using namespace cocos2d;
 
-const std::string RalstonHexusBehavior::MapKey = "ralston-hexus";
+const std::string Tier2DMHexusBehavior::MapKey = "dm-t2-hexus";
 
-RalstonHexusBehavior* RalstonHexusBehavior::create(GameObject* owner)
+Tier2DMHexusBehavior* Tier2DMHexusBehavior::create(GameObject* owner)
 {
-	RalstonHexusBehavior* instance = new RalstonHexusBehavior(owner);
+	Tier2DMHexusBehavior* instance = new Tier2DMHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-RalstonHexusBehavior::RalstonHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier2DMHexusBehavior::Tier2DMHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-RalstonHexusBehavior::~RalstonHexusBehavior()
+Tier2DMHexusBehavior::~Tier2DMHexusBehavior()
 {
 }
 
-MinMaxPool* RalstonHexusBehavior::generateReward()
+MinMaxPool* Tier2DMHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolDMGeneric::create(properties);
 }
 
-std::string RalstonHexusBehavior::getWinLossSaveKey()
+std::string Tier2DMHexusBehavior::getWinLossSaveKey()
 {
-	return RalstonHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "bonnie-hexus"; // Tier2DMHexusBehavior::MapKey;
 }
 
-std::string RalstonHexusBehavior::getBackgroundResource()
+std::string Tier2DMHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameDataMines;
 }
 
-std::vector<CardData*> RalstonHexusBehavior::generateDeck()
+std::vector<CardData*> Tier2DMHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 5.0f / DMHexusConfig::MaxEntities;
+	const float LocalOrder = 2.0f / DMHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{
-		CardList::getInstance()->cardListByName[CardKeys::Binary0],
-		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
-		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
@@ -110,12 +108,12 @@ std::vector<CardData*> RalstonHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* RalstonHexusBehavior::getStateOverride()
+StateOverride* Tier2DMHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> RalstonHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier2DMHexusBehavior::getTutorials()
 {
 	return { };
 }

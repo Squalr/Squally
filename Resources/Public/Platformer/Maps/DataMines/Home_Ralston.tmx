@@ -119,7 +119,7 @@
   </properties>
   <object id="810" name="ralston" type="entity" x="1371.64" y="1833.33" width="128" height="128">
    <properties>
-    <property name="components" value="ralston-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="dm-t5-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="dm-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>

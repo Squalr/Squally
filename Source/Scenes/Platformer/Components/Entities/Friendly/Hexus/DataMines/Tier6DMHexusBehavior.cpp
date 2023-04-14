@@ -1,4 +1,4 @@
-#include "BurchHexusBehavior.h"
+#include "Tier6DMHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,44 +16,45 @@
 
 using namespace cocos2d;
 
-const std::string BurchHexusBehavior::MapKey = "burch-hexus";
+const std::string Tier6DMHexusBehavior::MapKey = "dm-t6-hexus";
 
-BurchHexusBehavior* BurchHexusBehavior::create(GameObject* owner)
+Tier6DMHexusBehavior* Tier6DMHexusBehavior::create(GameObject* owner)
 {
-	BurchHexusBehavior* instance = new BurchHexusBehavior(owner);
+	Tier6DMHexusBehavior* instance = new Tier6DMHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BurchHexusBehavior::BurchHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier6DMHexusBehavior::Tier6DMHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-BurchHexusBehavior::~BurchHexusBehavior()
+Tier6DMHexusBehavior::~Tier6DMHexusBehavior()
 {
 }
 
-MinMaxPool* BurchHexusBehavior::generateReward()
+MinMaxPool* Tier6DMHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolDMGeneric::create(properties);
 }
 
-std::string BurchHexusBehavior::getWinLossSaveKey()
+std::string Tier6DMHexusBehavior::getWinLossSaveKey()
 {
-	return BurchHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "godiva-hexus"; // Tier6DMHexusBehavior::MapKey;
 }
 
-std::string BurchHexusBehavior::getBackgroundResource()
+std::string Tier6DMHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameDataMines;
 }
 
-std::vector<CardData*> BurchHexusBehavior::generateDeck()
+std::vector<CardData*> Tier6DMHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 3.0f / DMHexusConfig::MaxEntities;
+	const float LocalOrder = 6.0f / DMHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{
@@ -66,11 +67,11 @@ std::vector<CardData*> BurchHexusBehavior::generateDeck()
 
 		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
-		CardList::getInstance()->cardListByName[CardKeys::Flip2],
+		// CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		CardList::getInstance()->cardListByName[CardKeys::Flip3],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip3],
-		CardList::getInstance()->cardListByName[CardKeys::Flip4],
+		// CardList::getInstance()->cardListByName[CardKeys::Flip4],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip4],
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
 		// CardList::getInstance()->cardListByName[CardKeys::Mov],
@@ -92,7 +93,7 @@ std::vector<CardData*> BurchHexusBehavior::generateDeck()
 		// CardList::getInstance()->cardListByName[CardKeys::LogicalAnd],
 		CardList::getInstance()->cardListByName[CardKeys::Absorb],
 		// CardList::getInstance()->cardListByName[CardKeys::Absorb],
-		CardList::getInstance()->cardListByName[CardKeys::Greed],
+		// CardList::getInstance()->cardListByName[CardKeys::Greed],
 		// CardList::getInstance()->cardListByName[CardKeys::Greed],
 		// CardList::getInstance()->cardListByName[CardKeys::BonusMoves],
 		// CardList::getInstance()->cardListByName[CardKeys::BonusMoves],
@@ -107,12 +108,12 @@ std::vector<CardData*> BurchHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* BurchHexusBehavior::getStateOverride()
+StateOverride* Tier6DMHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> BurchHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier6DMHexusBehavior::getTutorials()
 {
 	return { };
 }

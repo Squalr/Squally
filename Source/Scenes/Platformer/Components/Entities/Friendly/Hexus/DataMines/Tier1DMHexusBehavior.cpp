@@ -1,4 +1,4 @@
-#include "BancroftHexusBehavior.h"
+#include "Tier1DMHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,44 +16,45 @@
 
 using namespace cocos2d;
 
-const std::string BancroftHexusBehavior::MapKey = "bancroft-hexus";
+const std::string Tier1DMHexusBehavior::MapKey = "dm-t1-hexus";
 
-BancroftHexusBehavior* BancroftHexusBehavior::create(GameObject* owner)
+Tier1DMHexusBehavior* Tier1DMHexusBehavior::create(GameObject* owner)
 {
-	BancroftHexusBehavior* instance = new BancroftHexusBehavior(owner);
+	Tier1DMHexusBehavior* instance = new Tier1DMHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-BancroftHexusBehavior::BancroftHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier1DMHexusBehavior::Tier1DMHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-BancroftHexusBehavior::~BancroftHexusBehavior()
+Tier1DMHexusBehavior::~Tier1DMHexusBehavior()
 {
 }
 
-MinMaxPool* BancroftHexusBehavior::generateReward()
+MinMaxPool* Tier1DMHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolDMGeneric::create(properties);
 }
 
-std::string BancroftHexusBehavior::getWinLossSaveKey()
+std::string Tier1DMHexusBehavior::getWinLossSaveKey()
 {
-	return BancroftHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "olive-hexus"; // Tier1DMHexusBehavior::MapKey;
 }
 
-std::string BancroftHexusBehavior::getBackgroundResource()
+std::string Tier1DMHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameDataMines;
 }
 
-std::vector<CardData*> BancroftHexusBehavior::generateDeck()
+std::vector<CardData*> Tier1DMHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 7.0f / DMHexusConfig::MaxEntities;
+	const float LocalOrder = 1.0f / DMHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{
@@ -66,23 +67,23 @@ std::vector<CardData*> BancroftHexusBehavior::generateDeck()
 
 		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
+		CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip2],
-		// CardList::getInstance()->cardListByName[CardKeys::Flip2],
-		CardList::getInstance()->cardListByName[CardKeys::Flip3],
+		// CardList::getInstance()->cardListByName[CardKeys::Flip3],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip3],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip4],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip4],
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
 		// CardList::getInstance()->cardListByName[CardKeys::Mov],
-		// CardList::getInstance()->cardListByName[CardKeys::Addition],
+		CardList::getInstance()->cardListByName[CardKeys::Addition],
 		// CardList::getInstance()->cardListByName[CardKeys::Addition],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftLeftCircular],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeftCircular],
-		// CardList::getInstance()->cardListByName[CardKeys::ShiftRightCircular],
+		CardList::getInstance()->cardListByName[CardKeys::ShiftRightCircular],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftRightCircular],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
-		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
+		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
 		CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
 		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
@@ -107,12 +108,12 @@ std::vector<CardData*> BancroftHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* BancroftHexusBehavior::getStateOverride()
+StateOverride* Tier1DMHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> BancroftHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier1DMHexusBehavior::getTutorials()
 {
 	return { };
 }

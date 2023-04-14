@@ -1,4 +1,4 @@
-#include "GodivaHexusBehavior.h"
+#include "Tier7DMHexusBehavior.h"
 
 #include "cocos/base/CCValue.h"
 
@@ -16,44 +16,45 @@
 
 using namespace cocos2d;
 
-const std::string GodivaHexusBehavior::MapKey = "godiva-hexus";
+const std::string Tier7DMHexusBehavior::MapKey = "dm-t7-hexus";
 
-GodivaHexusBehavior* GodivaHexusBehavior::create(GameObject* owner)
+Tier7DMHexusBehavior* Tier7DMHexusBehavior::create(GameObject* owner)
 {
-	GodivaHexusBehavior* instance = new GodivaHexusBehavior(owner);
+	Tier7DMHexusBehavior* instance = new Tier7DMHexusBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-GodivaHexusBehavior::GodivaHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
+Tier7DMHexusBehavior::Tier7DMHexusBehavior(GameObject* owner) : super(owner, SoundResources::Platformer_Entities_Generic_ChatterShort1)
 {
 }
 
-GodivaHexusBehavior::~GodivaHexusBehavior()
+Tier7DMHexusBehavior::~Tier7DMHexusBehavior()
 {
 }
 
-MinMaxPool* GodivaHexusBehavior::generateReward()
+MinMaxPool* Tier7DMHexusBehavior::generateReward()
 {
 	ValueMap properties = ValueMap();
 	return HexusPoolDMGeneric::create(properties);
 }
 
-std::string GodivaHexusBehavior::getWinLossSaveKey()
+std::string Tier7DMHexusBehavior::getWinLossSaveKey()
 {
-	return GodivaHexusBehavior::MapKey;
+	// Backwards compatibility, use old string for save key
+	return "bancroft-hexus"; // Tier7DMHexusBehavior::MapKey;
 }
 
-std::string GodivaHexusBehavior::getBackgroundResource()
+std::string Tier7DMHexusBehavior::getBackgroundResource()
 {
 	return HexusResources::Menus_HexusFrameDataMines;
 }
 
-std::vector<CardData*> GodivaHexusBehavior::generateDeck()
+std::vector<CardData*> Tier7DMHexusBehavior::generateDeck()
 {
-	const float LocalOrder = 6.0f / DMHexusConfig::MaxEntities;
+	const float LocalOrder = 7.0f / DMHexusConfig::MaxEntities;
 
 	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{
@@ -74,15 +75,15 @@ std::vector<CardData*> GodivaHexusBehavior::generateDeck()
 		// CardList::getInstance()->cardListByName[CardKeys::Flip4],
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
 		// CardList::getInstance()->cardListByName[CardKeys::Mov],
-		CardList::getInstance()->cardListByName[CardKeys::Addition],
+		// CardList::getInstance()->cardListByName[CardKeys::Addition],
 		// CardList::getInstance()->cardListByName[CardKeys::Addition],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftLeftCircular],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeftCircular],
-		CardList::getInstance()->cardListByName[CardKeys::ShiftRightCircular],
+		// CardList::getInstance()->cardListByName[CardKeys::ShiftRightCircular],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftRightCircular],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
-		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
+		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
 		CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
 		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
@@ -92,7 +93,7 @@ std::vector<CardData*> GodivaHexusBehavior::generateDeck()
 		// CardList::getInstance()->cardListByName[CardKeys::LogicalAnd],
 		CardList::getInstance()->cardListByName[CardKeys::Absorb],
 		// CardList::getInstance()->cardListByName[CardKeys::Absorb],
-		// CardList::getInstance()->cardListByName[CardKeys::Greed],
+		CardList::getInstance()->cardListByName[CardKeys::Greed],
 		// CardList::getInstance()->cardListByName[CardKeys::Greed],
 		// CardList::getInstance()->cardListByName[CardKeys::BonusMoves],
 		// CardList::getInstance()->cardListByName[CardKeys::BonusMoves],
@@ -107,12 +108,12 @@ std::vector<CardData*> GodivaHexusBehavior::generateDeck()
 	});
 }
 
-StateOverride* GodivaHexusBehavior::getStateOverride()
+StateOverride* Tier7DMHexusBehavior::getStateOverride()
 {
 	return nullptr;
 }
 
-std::vector<TutorialBase*> GodivaHexusBehavior::getTutorials()
+std::vector<TutorialBase*> Tier7DMHexusBehavior::getTutorials()
 {
 	return { };
 }
