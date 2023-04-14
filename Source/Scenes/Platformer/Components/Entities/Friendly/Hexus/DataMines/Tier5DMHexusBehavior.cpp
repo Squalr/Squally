@@ -56,7 +56,7 @@ std::vector<CardData*> Tier5DMHexusBehavior::generateDeck()
 {
 	const float LocalOrder = 5.0f / DMHexusConfig::MaxEntities;
 
-	return HexusOpponentData::generateDeck(25, calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
+	return HexusOpponentData::generateDeck(25, this->calculateStrength(LocalOrder, DMHexusConfig::ZoneOrder),
 	{
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],

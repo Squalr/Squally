@@ -56,7 +56,7 @@ std::vector<CardData*> Tier3URHexusBehavior::generateDeck()
 {
 	const float LocalOrder = 3.0f / URHexusConfig::MaxEntities;
 
-	return HexusOpponentData::generateDeck(28, calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
+	return HexusOpponentData::generateDeck(28, this->calculateStrength(LocalOrder, URHexusConfig::ZoneOrder),
 	{
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
