@@ -13719,6 +13719,126 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEsi() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_Daze_CommentCompare : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Daze_CommentCompare* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Daze_CommentCompare();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Daze_CommentCompare() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Daze_CommentConditonal : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Daze_CommentConditonal* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Daze_CommentConditonal();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Daze_CommentConditonal() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Daze_CommentPopDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Daze_CommentPopDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Daze_CommentPopDamage();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Daze_CommentPopDamage() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Daze_CommentPopStack : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Daze_CommentPopStack* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Daze_CommentPopStack();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Daze_CommentPopStack() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Daze_CommentPushChance : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Daze_CommentPushChance* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Daze_CommentPushChance();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Daze_CommentPushChance() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDamageDealt : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDamageDealt* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDamageDealt();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDamageDealt() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDazeDamage : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDazeDamage* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDazeDamage();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDazeDamage() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_Daze_CommentPushRng : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Debuffs_Daze_CommentPushRng* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Daze_CommentPushRng();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Daze_CommentPushRng() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_Daze_Daze : public LocalizedString
 	{
 	public:
@@ -15757,6 +15877,21 @@ namespace Strings
 	private:
 		Menus_Hacking_Abilities_Generic_Conditional_CommentEcx();
 		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentEcx() = default;
+	};
+
+	class Menus_Hacking_Abilities_Generic_Conditional_CommentF : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Abilities_Generic_Conditional_CommentF* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Generic_Conditional_CommentF();
+		virtual ~Menus_Hacking_Abilities_Generic_Conditional_CommentF() = default;
 	};
 
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentG : public LocalizedString
@@ -32679,6 +32814,21 @@ namespace Strings
 		virtual ~Platformer_Objectives_LambdaCrypts_LC_SeekAmelia() = default;
 	};
 
+	class Platformer_Objectives_LambdaCrypts_LC_TalkToNebea : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_LambdaCrypts_LC_TalkToNebea* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_LambdaCrypts_LC_TalkToNebea();
+		virtual ~Platformer_Objectives_LambdaCrypts_LC_TalkToNebea() = default;
+	};
+
 	class Platformer_Objectives_Objective : public LocalizedString
 	{
 	public:
@@ -35454,10 +35604,10 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_Bitten : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_A_Bitten : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_Bitten* create();
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_A_Bitten* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35465,14 +35615,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_Bitten();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_Bitten() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_A_Bitten();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_A_Bitten() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NothingCanBeDone : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_NothingCanBeDone : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NothingCanBeDone* create();
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_NothingCanBeDone* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35480,14 +35630,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NothingCanBeDone();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NothingCanBeDone() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_NothingCanBeDone();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_NothingCanBeDone() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_NoCure : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NoCure : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_NoCure* create();
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NoCure* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35495,14 +35645,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_NoCure();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_NoCure() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NoCure();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NoCure() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeKeyFromCorpse : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_SeeNebea : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeKeyFromCorpse* create();
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_SeeNebea* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35510,68 +35660,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeKeyFromCorpse();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeKeyFromCorpse() = default;
-	};
-
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Gecky_Oh : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Gecky_Oh* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Gecky_Oh();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Gecky_Oh() = default;
-	};
-
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Guano_Brutal : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Guano_Brutal* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Guano_Brutal();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Guano_Brutal() = default;
-	};
-
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_HellCrystal : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_HellCrystal* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_HellCrystal();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_HellCrystal() = default;
-	};
-
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_H_SkyMaster : public LocalizedString
-	{
-	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_H_SkyMaster* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_H_SkyMaster();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_H_SkyMaster() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_SeeNebea();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_SeeNebea() = default;
 	};
 
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_A_Travelers : public LocalizedString
@@ -35662,6 +35752,96 @@ namespace Strings
 	private:
 		Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Guano_PickHisPockets();
 		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Guano_PickHisPockets() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_A_ElricIsDying : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_A_ElricIsDying* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_A_ElricIsDying();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_A_ElricIsDying() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_B_ElricsMission : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_B_ElricsMission* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_B_ElricsMission();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_B_ElricsMission() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_C_TakeKeyFromCorpse : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_C_TakeKeyFromCorpse* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_C_TakeKeyFromCorpse();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_C_TakeKeyFromCorpse() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_HellCrystalPurpose : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_HellCrystalPurpose* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_HellCrystalPurpose();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_HellCrystalPurpose() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Gecky_Oh : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Gecky_Oh* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Gecky_Oh();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Gecky_Oh() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Guano_Brutal : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Guano_Brutal* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Guano_Brutal();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Guano_Brutal() = default;
 	};
 
 	class Platformer_Quests_LambdaCrypts_EnterCrypts_EvilEye_A_FoundYou : public LocalizedString

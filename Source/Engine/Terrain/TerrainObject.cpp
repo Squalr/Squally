@@ -27,6 +27,7 @@
 #include "Engine/Utils/LogUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Engine/Utils/RenderUtils.h"
+#include "Engine/Utils/StrUtils.h"
 #include "Engine/UI/SmartClippingNode.h"
 
 #include "Resources/ShaderResources.h"
@@ -51,7 +52,11 @@ TerrainObject::TerrainObject(ValueMap& properties, TerrainData terrainData) : su
 	this->isInactive = GameUtils::getKeyOrDefault(this->properties, CollisionObject::MapKeyTypeCollision, Value("")).asString() == CollisionObject::MapKeyCollisionTypeNone;
 	this->isFlipped = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyFlipY, Value(false)).asBool();
 	this->enableHackerModeEvents = true;
-	this->terrainHoleTag = GameUtils::getKeyOrDefault(this->properties, TerrainHole::TerrainHoleTag, Value("")).asString();
+	this->terrainHoleTags = StrUtils::splitOn(
+		GameUtils::getKeyOrDefault(this->properties, TerrainHole::TerrainHoleTag, Value("")).asString(),
+		",",
+		false
+	);
 
 	this->addTag(TerrainObject::MapKey);
 
@@ -129,17 +134,18 @@ void TerrainObject::onEnterTransitionDidFinish()
 			return;
 		}
 		
-		if (!this->terrainHoleTag.empty())
+		Vec2 terrainCoords = GameUtils::getWorldCoords(this, false);
+		
+		for (const std::string terrainHoleTag : this->terrainHoleTags)
 		{
 			ObjectEvents::QueryObjects<TerrainHole>([&](TerrainHole* terrainHole)
 			{
 				Vec2 holeCoords = GameUtils::getWorldCoords(terrainHole, false);
-				Vec2 terrainCoords = GameUtils::getWorldCoords(this, false);
 				
 				std::vector<Vec2> holePoints = terrainHole->getPolylinePoints();
 				AlgoUtils::offsetPoints(holePoints, holeCoords - terrainCoords);
 				this->holes.push_back(holePoints);
-			}, this->terrainHoleTag);
+			}, terrainHoleTag);
 		}
 
 		this->segments = AlgoUtils::buildSegmentsFromPoints(this->polylinePoints);

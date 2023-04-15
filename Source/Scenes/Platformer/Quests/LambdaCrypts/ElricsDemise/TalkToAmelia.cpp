@@ -134,7 +134,7 @@ void TalkToAmelia::runCinematicSequence()
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_Bitten::create()
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_A_Bitten::create()
 				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Elric::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
@@ -160,7 +160,7 @@ void TalkToAmelia::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NothingCanBeDone::create(),
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_NothingCanBeDone::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
@@ -175,7 +175,7 @@ void TalkToAmelia::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_NoCure::create(),
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NoCure::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
@@ -190,7 +190,7 @@ void TalkToAmelia::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeKeyFromCorpse::create(),
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_SeeNebea::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
@@ -202,73 +202,6 @@ void TalkToAmelia::runCinematicSequence()
 			},
 			Voices::GetNextVoiceLong(),
 			false
-		));
-
-		if (this->gecky != nullptr)
-		{
-			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Gecky_Oh::create(),
-				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->gecky, false),
-					DialogueEvents::BuildPreviewNode(&this->amelia, true)
-				),
-				[=]()
-				{
-				},
-				Voices::GetNextVoiceShort(),
-				false
-			));
-		}
-		else
-		{
-			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_F_Guano_Brutal::create(),
-				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->guano, false),
-					DialogueEvents::BuildPreviewNode(&this->amelia, true)
-				),
-				[=]()
-				{
-				},
-				Voices::GetNextVoiceShort(),
-				false
-			));
-		}
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_G_HellCrystal::create()
-				->setStringReplacementVariables({ Strings::Items_Misc_Keys_HellGateCrystal::create(), Strings::Platformer_MapNames_DaemonsHallow_DaemonsHallow::create() }),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-				DialogueEvents::BuildPreviewNode(&this->amelia, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceLong(),
-			false
-		));
-
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_H_SkyMaster::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Right,
-				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-				DialogueEvents::BuildPreviewNode(&this->amelia, true)
-			),
-			[=]()
-			{
-				this->complete();
-			},
-			Voices::GetNextVoiceLong(),
-			true
 		));
 	});
 }

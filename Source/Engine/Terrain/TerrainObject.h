@@ -207,7 +207,7 @@ private:
 	bool hasBuiltTerrain = false;
 	bool isDynamic = false;
 	unsigned int terrainObjectId = 0;
-	std::string terrainHoleTag;
+	std::vector<std::string> terrainHoleTags;
 
 	cocos2d::CRect drawRect;
 	cocos2d::CRect boundsRect;

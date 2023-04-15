@@ -379,7 +379,6 @@ DeveloperScene::DeveloperScene()
 		// ** New helper? Would need a story rewrite to justify it. If anything, a repear to claim spirit souls, or some shit.
 		//		* Could also allow this helper to steal enemy abilities from enemy corpses (1 activate at a time)
 		//		* Ability would be registered to helper
-		// ** Tune hexus battle special cards
 
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
@@ -447,7 +446,8 @@ DeveloperScene::DeveloperScene()
 		// LC story mode picture invalid (jungle?)
 		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
 		// ** Another Evil Eye encounter
-		// interim quest Amelia => Princess Nebea (to explain hell crystal nonsense)
+		// ** interim quest Amelia => Princess Nebea (to explain hell crystal nonsense)
+		// ** Maybe a bit more glamour in obtaining hell crystal
 
 		/*
 		X ReanimatedPig			=>  1_x <Piggy,				fisub> 		=> Thick Hide / dmg decrease
@@ -462,8 +462,8 @@ DeveloperScene::DeveloperScene()
 		X Warlock				=>  3_x <WandSkeleton,		fmul/frndint> 	=> Enchantment / 50% damage increase (rounded)
 		X Hunter				=>  3_x <PoisonSpears,		ja>  		=> PoisonedArrows - either radiation or diseased copy
 
-		X [B] Lazarus			=>	3_x <Tombstone, 	fcmove> 		=> UnholyProtection (rename) / undying effect
-		X 						=>	3_x <GhostBolts,	fchs> 			=> Ghostbolts / reflectable spell (Copy FireBall I guess?) but make 1 per teammate (ie 2 lol)
+		X [B] Lazarus			=>	3_x <Tombstone, 		fcmove> 	=> UnholyProtection (rename) / undying effect
+		X 						=>	3_x <GhostBolts,		fchs> 		=> Ghostbolts / reflectable spell (Copy FireBall I guess?) but make 1 per teammate (ie 2 lol)
 		
 		X SkeletalPriestess		=>  4_x <Book,				jbe> 		=> Spell of Binding - Speed Decrease
 		X SkeletalKnight		=>  4_x <SwordGlowPurp,		jae>  		=> CursedBlade - Reduce damage

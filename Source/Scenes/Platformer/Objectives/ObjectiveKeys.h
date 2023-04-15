@@ -60,6 +60,7 @@ public:
 	static const std::string CVEnterLambdaCrypts;
 
 	static const std::string LCSeekAmelia;
+	static const std::string LCTalkToNebea;
 	static const std::string LCReturnToElric;
 	static const std::string LCEnterSecondCrypt;
 	static const std::string LCFindGems;

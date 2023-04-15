@@ -140,22 +140,48 @@ void Daze::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						std::string("fild dword ptr [esi]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushChance::create()) +
+						std::string("fld dword ptr [esi]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushRng::create()) +
 						std::string("fld dword ptr [edi]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentCompare::create()) +
 						std::string("fcompp\n") +
-						std::string("fld dword ptr [eax]\n") +
-						std::string("fld dword ptr [ebx]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDamageDealt::create()) +
+						std::string("fild dword ptr [ebx]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDazeDamage::create()) +
+						std::string("fild dword ptr [eax]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentF::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentB::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentConditonal::create()) +
 						std::string("fcmovbe st0, st1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopDamage::create()) +
 						std::string("fistp dword ptr [esi]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopStack::create()) +
 						std::string("fstp st(0)\n")
 						, // x64
-						std::string("fild dword ptr [rsi]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushChance::create()) +
+						std::string("fld dword ptr [rsi]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushRng::create()) +
 						std::string("fld dword ptr [rdi]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentCompare::create()) +
 						std::string("fcompp\n") +
-						std::string("fld dword ptr [rax]\n") +
-						std::string("fld dword ptr [rbx]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDamageDealt::create()) +
+						std::string("fild dword ptr [rbx]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDazeDamage::create()) +
+						std::string("fild dword ptr [rax]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentF::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentB::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentConditonal::create()) +
 						std::string("fcmovbe st0, st1\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopDamage::create()) +
 						std::string("fistp dword ptr [rsi]\n") +
+						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopStack::create()) +
 						std::string("fstp st(0)\n")
 					),
 				},
@@ -200,7 +226,7 @@ NO_OPTIMIZE void Daze::applyDaze()
 	dazeDamagePtr = &dazeDamage;
 	rng = RandomHelper::random_real(0.0f, 1.0f);
 	rngPtr = &rng;
-	chance = 0.01f;
+	chance = 0.75f;
 	chancePtr = &chance;
 
 	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();

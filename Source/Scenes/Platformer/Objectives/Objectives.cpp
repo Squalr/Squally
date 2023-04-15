@@ -153,6 +153,7 @@ void Objectives::InitMap()
 
 	// LC
 	Objectives::ObjectiveMap[ObjectiveKeys::LCSeekAmelia] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_SeekAmelia::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Amelia::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCTalkToNebea] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_TalkToNebea::create()->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_PrincessNebea::create(), Strings::Platformer_MapNames_LambdaCrypts_GraveFlower::create(), Strings::Platformer_MapNames_LambdaCrypts_LambdaCrypts::create() }); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::LCReturnToElric] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_ReturnToElric::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Elric::create()); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::LCEnterSecondCrypt] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_LesserCrypt::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::LCFindGems] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_FindGems::create(); }, priority++);

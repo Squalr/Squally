@@ -3,6 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
 
 using namespace cocos2d;
 
@@ -20,9 +21,16 @@ TerrainHole* TerrainHole::create(ValueMap& properties)
 
 TerrainHole::TerrainHole(ValueMap& properties) : super(properties)
 {
-	std::string terrainHoleTag = GameUtils::getKeyOrDefault(this->properties, TerrainHole::TerrainHoleTag, Value("")).asString();
+	std::vector<std::string> terrainHoleTags = StrUtils::splitOn(
+		GameUtils::getKeyOrDefault(this->properties, TerrainHole::TerrainHoleTag, Value("")).asString(),
+		",",
+		false
+	);
 
-	this->addTag(terrainHoleTag);
+	for (std::string& terrainHoleTag : terrainHoleTags)
+	{
+		this->addTag(terrainHoleTag);
+	}
 }
 
 TerrainHole::~TerrainHole()

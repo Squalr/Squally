@@ -3,6 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 #include "Scenes/Platformer/Quests/LambdaCrypts/ElricsDemise/TalkToAmelia.h"
 #include "Scenes/Platformer/Quests/LambdaCrypts/ElricsDemise/ElricsDemise.h"
+#include "Scenes/Platformer/Quests/LambdaCrypts/ElricsDemise/TalkToNebea.h"
 #include "Scenes/Platformer/Quests/LambdaCrypts/ElricsDemise/ElricsPlea.h"
 #include "Scenes/Platformer/Quests/LambdaCrypts/ElricsDemise/DefeatElric.h"
 
@@ -23,6 +24,7 @@ ElricsDemiseLine::ElricsDemiseLine() : super(ElricsDemiseLine::MapKeyQuestLine,
 	{
 		QuestData(ElricsPlea::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return ElricsPlea::create(owner, questLine); }),
 		QuestData(TalkToAmelia::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return TalkToAmelia::create(owner, questLine); }),
+		QuestData(TalkToNebea::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return TalkToNebea::create(owner, questLine); }),
 		QuestData(ElricsDemise::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return ElricsDemise::create(owner, questLine); }),
 		QuestData(DefeatElric::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return DefeatElric::create(owner, questLine); }),
 	})
