@@ -8,16 +8,16 @@ class QuestLine;
 class Scrappy;
 class Squally;
 
-class CraftCrystal : public QuestTask
+class CraftKey : public QuestTask
 {
 public:
-	static CraftCrystal* create(GameObject* owner, QuestLine* questLine);
+	static CraftKey* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
 
 protected:
-	CraftCrystal(GameObject* owner, QuestLine* questLine);
-	virtual ~CraftCrystal();
+	CraftKey(GameObject* owner, QuestLine* questLine);
+	virtual ~CraftKey();
 
 	void onLoad(QuestState questState) override;
 	void onActivate(bool isActiveThroughSkippable) override;

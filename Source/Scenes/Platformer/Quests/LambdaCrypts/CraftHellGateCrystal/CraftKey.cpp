@@ -1,4 +1,4 @@
-#include "CraftCrystal.h"
+#include "CraftKey.h"
 
 #include "cocos/2d/CCActionEase.h"
 #include "cocos/2d/CCActionInstant.h"
@@ -46,26 +46,26 @@
 
 using namespace cocos2d;
 
-const std::string CraftCrystal::MapKeyQuest = "craft-crystal";
+const std::string CraftKey::MapKeyQuest = "craft-key";
 
-CraftCrystal* CraftCrystal::create(GameObject* owner, QuestLine* questLine)
+CraftKey* CraftKey::create(GameObject* owner, QuestLine* questLine)
 {
-	CraftCrystal* instance = new CraftCrystal(owner, questLine);
+	CraftKey* instance = new CraftKey(owner, questLine);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CraftCrystal::CraftCrystal(GameObject* owner, QuestLine* questLine) : super(owner, questLine, CraftCrystal::MapKeyQuest, false)
+CraftKey::CraftKey(GameObject* owner, QuestLine* questLine) : super(owner, questLine, CraftKey::MapKeyQuest, false)
 {
 }
 
-CraftCrystal::~CraftCrystal()
+CraftKey::~CraftKey()
 {
 }
 
-void CraftCrystal::onLoad(QuestState questState)
+void CraftKey::onLoad(QuestState questState)
 {
 	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
@@ -88,23 +88,23 @@ void CraftCrystal::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void CraftCrystal::onActivate(bool isActiveThroughSkippable)
+void CraftKey::onActivate(bool isActiveThroughSkippable)
 {
 }
 
-void CraftCrystal::onComplete()
+void CraftKey::onComplete()
 {
 }
 
-void CraftCrystal::onSkipped()
+void CraftKey::onSkipped()
 {
 	this->removeAllListeners();
 }
 
-void CraftCrystal::runCinematicSequencePt1()
+void CraftKey::runCinematicSequencePt1()
 {
 }
 
-void CraftCrystal::runCinematicSequenceStrikeZone()
+void CraftKey::runCinematicSequenceStrikeZone()
 {
 }

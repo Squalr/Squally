@@ -1,7 +1,9 @@
 #include "CraftHellGateCrystalLine.h"
 
 #include "Engine/Quests/QuestTask.h"
-#include "Scenes/Platformer/Quests/LambdaCrypts/CraftHellGateCrystal/CraftCrystal.h"
+#include "Scenes/Platformer/Quests/LambdaCrypts/CraftHellGateCrystal/CraftKey.h"
+#include "Scenes/Platformer/Quests/LambdaCrypts/CraftHellGateCrystal/DefeatKingZul.h"
+#include "Scenes/Platformer/Quests/LambdaCrypts/CraftHellGateCrystal/OpenDemonPortal.h"
 
 using namespace cocos2d;
 
@@ -18,7 +20,9 @@ CraftHellGateCrystalLine* CraftHellGateCrystalLine::create()
 
 CraftHellGateCrystalLine::CraftHellGateCrystalLine() : super(CraftHellGateCrystalLine::MapKeyQuestLine,
 	{
-		QuestData(CraftCrystal::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return CraftCrystal::create(owner, questLine); }),
+		QuestData(DefeatKingZul::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return DefeatKingZul::create(owner, questLine); }),
+		QuestData(CraftKey::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return CraftKey::create(owner, questLine); }),
+		QuestData(OpenDemonPortal::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return OpenDemonPortal::create(owner, questLine); }),
 	})
 {
 }
