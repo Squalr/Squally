@@ -60,13 +60,11 @@ namespace MapResources
 	extern const std::string DaemonsHallow_Zone_1_0_a;
 	extern const std::string DaemonsHallow_Zone_1_1;
 	extern const std::string DaemonsHallow_Zone_1_1_a;
-	extern const std::string DaemonsHallow_Zone_1_2;
-	extern const std::string DaemonsHallow_Zone_1_3;
-	extern const std::string DaemonsHallow_Zone_1_4;
 	extern const std::string DaemonsHallow_Zone_2_0;
 	extern const std::string DaemonsHallow_Zone_2_1;
 	extern const std::string DaemonsHallow_Zone_2_2;
 	extern const std::string DaemonsHallow_Zone_2_3;
+	extern const std::string DaemonsHallow_Zone_2_4_idk;
 	extern const std::string DaemonsHallow_Zone_3_0;
 	extern const std::string DaemonsHallow_Zone_3_1;
 	extern const std::string DaemonsHallow_Zone_3_2;

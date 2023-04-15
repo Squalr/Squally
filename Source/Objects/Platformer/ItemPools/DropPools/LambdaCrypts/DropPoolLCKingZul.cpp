@@ -17,7 +17,7 @@
 
 using namespace cocos2d;
 
-const std::string DropPoolLCKingZul::PoolName = "cv-agnes";
+const std::string DropPoolLCKingZul::PoolName = "lc-king-zul";
 
 DropPoolLCKingZul* DropPoolLCKingZul::create(ValueMap& properties)
 {

@@ -83,6 +83,7 @@ namespace DecorResources
 	extern const std::string Crypts_Crypt4;
 	extern const std::string Crypts_CryptDoor1;
 	extern const std::string Crypts_CryptDoor2;
+	extern const std::string Crypts_CryptDoor3;
 	extern const std::string Crypts_Dirt1;
 	extern const std::string Crypts_FlowerBlack1;
 	extern const std::string Crypts_FlowerBlackBud1;
@@ -580,6 +581,7 @@ namespace DecorResources
 	extern const std::string Generic_Sword1;
 	extern const std::string Generic_Sword2;
 	extern const std::string Generic_ThroneBronze;
+	extern const std::string Generic_ThroneGreater;
 	extern const std::string Generic_ThroneMetal;
 	extern const std::string Generic_TownAlchemist;
 	extern const std::string Generic_TownChurch;

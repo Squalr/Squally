@@ -156,11 +156,11 @@ void Daze::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentB::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentConditonal::create()) +
-						std::string("fcmovbe st0, st1\n") +
+						std::string("fcmovbe st1\n") + // ideally this would be fcmovbe st0, st1 but asmtk doesn't allow this
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopDamage::create()) +
-						std::string("fistp dword ptr [esi]\n") +
+						std::string("fistp dword ptr [ebx]\n") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopStack::create()) +
-						std::string("fstp st(0)\n")
+						std::string("fstp st0\n")
 						, // x64
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushChance::create()) +
 						std::string("fld dword ptr [rsi]\n") +
@@ -178,11 +178,11 @@ void Daze::registerHackables()
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentB::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentConditonal::create()) +
-						std::string("fcmovbe st0, st1\n") +
+						std::string("fcmovbe st1\n") + // ideally this would be fcmovbe st0, st1 but asmtk doesn't allow this
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopDamage::create()) +
-						std::string("fistp dword ptr [rsi]\n") +
+						std::string("fistp dword ptr [rbx]\n") +
 						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopStack::create()) +
-						std::string("fstp st(0)\n")
+						std::string("fstp st0\n")
 					),
 				},
 				true

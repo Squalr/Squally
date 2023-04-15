@@ -557,10 +557,10 @@
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-b"/>
     <property name="components" value="enemy,agro"/>
-    <property name="drop-pool" value="lc-generic"/>
+    <property name="drop-pool" value="lc-king-zul"/>
    </properties>
   </object>
-  <object id="992" name="skeletal-knight" type="entity" x="1583.15" y="1312.23" width="128" height="128">
+  <object id="992" name="skeletal-priestess" type="entity" x="1583.15" y="1312.23" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-b"/>

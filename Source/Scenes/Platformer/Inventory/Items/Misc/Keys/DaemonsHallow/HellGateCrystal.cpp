@@ -40,7 +40,7 @@ LocalizedString* HellGateCrystal::getString()
 
 const std::string& HellGateCrystal::getIconResource()
 {
-	return ItemResources::Keys_KEY_1;
+	return ItemResources::Keys_HellGateCrystal;
 }
 
 const std::string& HellGateCrystal::getIdentifier()

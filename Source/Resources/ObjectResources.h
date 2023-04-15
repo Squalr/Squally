@@ -443,6 +443,7 @@ namespace ObjectResources
 	extern const std::string Doors_WoodStronghold_WOOD_FRONT;
 	extern const std::string Doors_WoodStronghold_WOOD_G;
 	extern const std::string Interactive_AlchemyLab_AlchemyLab;
+	extern const std::string Interactive_Anvil_AncientAnvil;
 	extern const std::string Interactive_Anvil_Anvil;
 	extern const std::string Interactive_Anvil_AnvilHammer;
 	extern const std::string Interactive_ArcaneBook;

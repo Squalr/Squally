@@ -212,6 +212,7 @@
 #include "Scenes/Platformer/Inventory/Items/Recipes/Potions/ManaPotionRecipe.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Potions/PotionRecipe.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Potions/IncrementHealthFlaskRecipe.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Special/HellCrystalPlans.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Transmutes/TransmuteCopperToIron.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Transmutes/TransmuteCopperToQuartzRecipe.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Transmutes/TransmuteQuartzToEmerald.h"

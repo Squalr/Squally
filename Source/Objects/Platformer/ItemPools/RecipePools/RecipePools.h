@@ -6,6 +6,7 @@
 #include "Objects/Platformer/ItemPools/RecipePools/DaemonsHallow/SmithingPoolDH.h"
 #include "Objects/Platformer/ItemPools/RecipePools/DataMines/AlchemyPoolDM.h"
 #include "Objects/Platformer/ItemPools/RecipePools/DataMines/SmithingPoolDM.h"
+#include "Objects/Platformer/ItemPools/RecipePools/DataMines/SmithingPoolHellCrystal.h"
 #include "Objects/Platformer/ItemPools/RecipePools/EndianForest/AlchemyPoolEF.h"
 #include "Objects/Platformer/ItemPools/RecipePools/EndianForest/SmithingPoolEF.h"
 #include "Objects/Platformer/ItemPools/RecipePools/LambdaCrypts/AlchemyPoolLC.h"

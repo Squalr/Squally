@@ -521,9 +521,6 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_2_2 (DH)", MapResources::DaemonsHallow_Zone_2_2));
 		mapList.push_back(this->buildDebugButton("Zone_2_1 (DH)", MapResources::DaemonsHallow_Zone_2_1));
 		mapList.push_back(this->buildDebugButton("Zone_2_0 (DH)", MapResources::DaemonsHallow_Zone_2_0));
-		mapList.push_back(this->buildDebugButton("Zone_1_4 (DH)", MapResources::DaemonsHallow_Zone_1_4));
-		mapList.push_back(this->buildDebugButton("Zone_1_3 (DH)", MapResources::DaemonsHallow_Zone_1_3));
-		mapList.push_back(this->buildDebugButton("Zone_1_2 (DH)", MapResources::DaemonsHallow_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (DH)", MapResources::DaemonsHallow_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0_a (DH)", MapResources::DaemonsHallow_Zone_1_0_a));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DH)", MapResources::DaemonsHallow_Zone_1_0));
