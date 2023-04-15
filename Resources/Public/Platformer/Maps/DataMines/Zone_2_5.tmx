@@ -248,6 +248,8 @@
   </object>
   <object id="879" name="ancient-anvil" type="object" x="2892.65" y="1000.39" width="235" height="148">
    <properties>
+    <property name="quest" value="craft-key"/>
+    <property name="quest-line" value="craft-hell-gate-crystal"/>
     <property name="recipe-pool" value="smithing-pool-hell-crystal"/>
    </properties>
   </object>

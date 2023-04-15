@@ -21,6 +21,7 @@
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Helpers/DataMines/Gecky.h"
 #include "Entities/Platformer/Npcs/Mages/Mabel.h"
+#include "Entities/Platformer/Npcs/Transition/Drak.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Camera/CameraStop.h"
@@ -67,6 +68,30 @@ CraftKey::~CraftKey()
 
 void CraftKey::onLoad(QuestState questState)
 {
+	ObjectEvents::WatchForObject<Drak>(this, [=](Drak* drak)
+	{
+		this->drak = drak;
+
+		this->drak->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+		{
+			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_LambdaCrypts_CraftHellGateCrystal_Drak_A_CraftCrystal::create()
+					->setStringReplacementVariables({ Strings::Items_Misc_Keys_HellGateCrystal::create(), Strings::Platformer_MapNames_LambdaCrypts_LambdaCrypts::create(), Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_KingZul::create() }),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Right,
+					DialogueEvents::BuildPreviewNode(&this->squally, false),
+					DialogueEvents::BuildPreviewNode(&this->drak, true)
+				),
+				[=]()
+				{
+				},
+				Voices::GetNextVoiceLong(),
+				false
+			));
+		});
+	}, Drak::MapKey);
+
 	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;

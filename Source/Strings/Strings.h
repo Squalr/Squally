@@ -35604,6 +35604,21 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent() = default;
 	};
 
+	class Platformer_Quests_LambdaCrypts_CraftHellGateCrystal_Drak_A_CraftCrystal : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_LambdaCrypts_CraftHellGateCrystal_Drak_A_CraftCrystal* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_CraftHellGateCrystal_Drak_A_CraftCrystal();
+		virtual ~Platformer_Quests_LambdaCrypts_CraftHellGateCrystal_Drak_A_CraftCrystal() = default;
+	};
+
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_A_Bitten : public LocalizedString
 	{
 	public:

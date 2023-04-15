@@ -2,6 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 
+class Drak;
 class Gecky;
 class Guano;
 class QuestLine;
@@ -30,6 +31,7 @@ private:
 	void runCinematicSequencePt1();
 	void runCinematicSequenceStrikeZone();
 
+	Drak* drak = nullptr;
 	Gecky* gecky = nullptr;
 	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
