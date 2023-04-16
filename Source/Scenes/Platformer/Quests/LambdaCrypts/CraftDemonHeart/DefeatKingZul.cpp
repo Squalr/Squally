@@ -83,7 +83,8 @@ void DefeatKingZul::onActivate(bool isActiveThroughSkippable)
 void DefeatKingZul::onComplete()
 {
 	Objectives::SetCurrentObjective(ObjectiveKeys::LCCraftDemonHeart);
-	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ HeartOfFire::create() }));
+	// Just give everything in case something went wrong / for debug use. These should be redundant with drop pool.
+	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ HeartOfFire::create(), HeartOfShadow::create(), AncientKey::create() }));
 	PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(HeartOfFire::create()));
 }
 

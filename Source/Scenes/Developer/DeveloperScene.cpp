@@ -377,8 +377,7 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ==================
 		// ** Traps: Organ gun, cannon, catapult, ballista, heaven hug (FPU acceptable, given that jmps are pretty much done)
 		// ** New helper? Would need a story rewrite to justify it. If anything, a repear to claim spirit souls, or some shit.
-		//		* Could also allow this helper to steal enemy abilities from enemy corpses (1 activate at a time)
-		//		* Ability would be registered to helper
+		//		* Ability would be registered to helper. Could also allow this helper to steal enemy abilities from enemy corpses (1 activate at a time)
 
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
@@ -446,8 +445,6 @@ DeveloperScene::DeveloperScene()
 		// LC story mode picture invalid (jungle?)
 		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
 		// ** Another Evil Eye encounter
-		// ** interim quest Amelia => Princess Nebea (to explain hell crystal nonsense)
-		// ** Maybe a bit more glamour in obtaining hell crystal
 
 		/*
 		X ReanimatedPig			=>  1_x <Piggy,				fisub> 		=> Thick Hide / dmg decrease
@@ -530,11 +527,12 @@ DeveloperScene::DeveloperScene()
 		// ** Needs hexus puzzles
 		// ** Needs hexus battles
 		// ** Tune hexus battle special cards
-		// ** Needs animals
 		// ** Needs enemy scripting according to notes on which instructions this zone covers
 		// ** 1_x should be the initial overworld + caves (Dragon, Ghost, Elemental, Golem)
 		// ** 2_x should be more caves connecting town to the 3_x maps (Shaman, Swordsman, Rogue)
+		//		Do we still want these?
 		// ** 3_x is all overworld (Tiger, Warrior, Grunt, Archer)
+		// Hide collectables better
 
 		/*
 		Surface:
@@ -810,12 +808,12 @@ DeveloperScene::DeveloperScene()
 
 	// DH
 	X Bee			DH 1_x
-	Crocodile		DH 1_x
-	Dinosaur		DH 2_x
-	Ladybug			DH 2_x
-	Lizard			DH 3_x
-	Snake			DH 3_x
-	Tucan			DH Town
+	X Ladybug		DH 1_x
+	X Dinosaur		DH 2_x
+	X Lizard		DH 2_x
+	X Snake			DH 3_x
+	X Crocodile		DH 3_x
+	X Tucan			DH Inn upstairs
 
 	// BP
 	Blowfish		BP	??

@@ -225,7 +225,7 @@
     <property name="reward-pool" value="dh-generic"/>
    </properties>
   </object>
-  <object id="797" name="caged-bat" type="object" x="494.793" y="953.308" width="196" height="112"/>
+  <object id="797" name="caged-tucan" type="object" x="494.793" y="953.308" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

@@ -85,6 +85,8 @@ void DefeatLazarus::onComplete()
 	Objectives::SetCurrentObjective(ObjectiveKeys::LCEnterGreaterCrypt);
 	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ HeartOfShadow::create() }));
 	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ AncientKey::create() }));
+	
+	// Just give everything in case something went wrong / for debug use. These should be redundant with drop pool.
 	PlatformerEvents::TriggerDiscoverItems(PlatformerEvents::ItemsDiscoveryArgs({ HeartOfShadow::create(), AncientKey::create() }));
 }
 

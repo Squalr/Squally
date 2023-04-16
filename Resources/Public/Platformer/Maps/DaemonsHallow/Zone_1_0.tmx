@@ -434,7 +434,7 @@
     <property name="tag" value="pressure-raised"/>
    </properties>
   </object>
-  <object id="942" name="lava-geyser" type="object" x="3313.47" y="1397.93" width="350" height="1000">
+  <object id="942" name="lava-geyser" type="object" x="3317.47" y="1401.93" width="350" height="1000">
    <properties>
     <property name="tag" value="pressure-raised"/>
    </properties>
@@ -445,7 +445,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="112" name="terrain -20" locked="1">
+ <objectgroup id="112" name="terrain -20">
   <properties>
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
