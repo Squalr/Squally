@@ -148,6 +148,9 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[PhoenixFeather::SaveKey] = [=]() { return (Item*)PhoenixFeather::create(); };
 	this->deserializers[Snowball::SaveKey] = [=]() { return (Item*)Snowball::create(); };
 
+	this->deserializers[HeartOfFire::SaveKey] = [=]() { return (Item*)HeartOfFire::create(); };
+	this->deserializers[HeartOfShadow::SaveKey] = [=]() { return (Item*)HeartOfShadow::create(); };
+
 	// Consumables
 	this->deserializers[HealthPotion::SaveKey] = [=]() { return (Item*)HealthPotion::create(); };
 	this->deserializers[IncrementHealthFlask::SaveKey] = [=]() { return (Item*)IncrementHealthFlask::create(); };
@@ -340,7 +343,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 
 	// Keys DH
 	this->deserializers[DemonKey::SaveKey] = [=]() { return (Item*)DemonKey::create(); };
-	this->deserializers[HellGateCrystal::SaveKey] = [=]() { return (Item*)HellGateCrystal::create(); };
+	this->deserializers[DemonHeart::SaveKey] = [=]() { return (Item*)DemonHeart::create(); };
 	this->deserializers[HellKey::SaveKey] = [=]() { return (Item*)HellKey::create(); };
 
 	// Keys VS

@@ -67,4 +67,6 @@ public:
 	static const std::string LCEnterFinalCrypt;
 	static const std::string LCCraftHellKey;
 	static const std::string LCOpenDemonPortal;
+
+	static const std::string DHExploreDaemonsHallow;
 };

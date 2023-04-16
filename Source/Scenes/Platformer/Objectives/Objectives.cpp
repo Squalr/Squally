@@ -158,11 +158,14 @@ void Objectives::InitMap()
 	Objectives::ObjectiveMap[ObjectiveKeys::LCEnterSecondCrypt] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_LesserCrypt::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::LCFindGems] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_FindGems::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::LCEnterFinalCrypt] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_GreaterCrypt::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCCraftHellKey] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_CraftHellKey::create()->setStringReplacementVariables(Strings::Items_Misc_Keys_HellKey::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCOpenDemonPortal] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_OpenDemonPortal::create()->setStringReplacementVariables(Strings::Platformer_MapNames_DataMines_DataMines::create()); }, priority++);
 
 	priority = 500;
 
-	// DM
-
+	// DH
+	Objectives::ObjectiveMap[ObjectiveKeys::DHExploreDaemonsHallow] =  Objective([](){ return Strings::Platformer_Objectives_DaemonsHallow_DH_Explore::create()->setStringReplacementVariables(Strings::Platformer_MapNames_DaemonsHallow_DaemonsHallow::create()); }, priority++);
+	
 	priority = 600;
 
 	// BP

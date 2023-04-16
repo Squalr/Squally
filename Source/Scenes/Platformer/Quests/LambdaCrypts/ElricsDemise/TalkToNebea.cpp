@@ -151,7 +151,7 @@ void TalkToNebea::runCinematicSequence()
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_B_ElricsMission::create()
-				->setStringReplacementVariables(Strings::Items_Misc_Keys_HellGateCrystal::create()),
+				->setStringReplacementVariables(Strings::Items_Misc_Keys_DemonHeart::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,

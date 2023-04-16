@@ -35,7 +35,7 @@ DropPoolLCKingZul::DropPoolLCKingZul(ValueMap& properties) : super(properties, D
 		SmithingPoolTier5::create(SampleMethod::Random, 1, 2),
 	})
 {
-	this->addItemToPool(ItemChance::create(HellGateCrystal::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(HeartOfFire::create(), ItemChance::Probability::Guaranteed));
 }
 
 DropPoolLCKingZul::~DropPoolLCKingZul()

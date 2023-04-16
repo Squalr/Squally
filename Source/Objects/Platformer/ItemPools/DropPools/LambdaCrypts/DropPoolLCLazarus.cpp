@@ -36,6 +36,7 @@ DropPoolLCLazarus::DropPoolLCLazarus(ValueMap& properties) : super(properties, D
 	})
 {
 	this->addItemToPool(ItemChance::create(AncientKey::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(HeartOfShadow::create(), ItemChance::Probability::Guaranteed));
 }
 
 DropPoolLCLazarus::~DropPoolLCLazarus()

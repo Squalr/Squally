@@ -5604,6 +5604,36 @@ namespace Strings
 		virtual ~Items_Crafting_Recipes_TransmuteWoodToCoal() = default;
 	};
 
+	class Items_Crafting_Special_HeartOfFire : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Special_HeartOfFire* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Special_HeartOfFire();
+		virtual ~Items_Crafting_Special_HeartOfFire() = default;
+	};
+
+	class Items_Crafting_Special_HeartOfShadow : public LocalizedString
+	{
+	public:
+		static Items_Crafting_Special_HeartOfShadow* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Special_HeartOfShadow();
+		virtual ~Items_Crafting_Special_HeartOfShadow() = default;
+	};
+
 	class Items_Crafting_Wood_DarkWood : public LocalizedString
 	{
 	public:
@@ -7824,6 +7854,21 @@ namespace Strings
 		virtual ~Items_Misc_Keys_CryptKey() = default;
 	};
 
+	class Items_Misc_Keys_DemonHeart : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_DemonHeart* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_DemonHeart();
+		virtual ~Items_Misc_Keys_DemonHeart() = default;
+	};
+
 	class Items_Misc_Keys_DemonKey : public LocalizedString
 	{
 	public:
@@ -7882,21 +7927,6 @@ namespace Strings
 	private:
 		Items_Misc_Keys_FrozenKey();
 		virtual ~Items_Misc_Keys_FrozenKey() = default;
-	};
-
-	class Items_Misc_Keys_HellGateCrystal : public LocalizedString
-	{
-	public:
-		static Items_Misc_Keys_HellGateCrystal* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Misc_Keys_HellGateCrystal();
-		virtual ~Items_Misc_Keys_HellGateCrystal() = default;
 	};
 
 	class Items_Misc_Keys_HellKey : public LocalizedString
@@ -32334,6 +32364,21 @@ namespace Strings
 		virtual ~Platformer_Objectives_CastleValgrind_CV_TakeArcaneBook() = default;
 	};
 
+	class Platformer_Objectives_DaemonsHallow_DH_Explore : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_DaemonsHallow_DH_Explore* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_DaemonsHallow_DH_Explore();
+		virtual ~Platformer_Objectives_DaemonsHallow_DH_Explore() = default;
+	};
+
 	class Platformer_Objectives_DataMines_DM_DeliverLetter : public LocalizedString
 	{
 	public:
@@ -32739,6 +32784,21 @@ namespace Strings
 		virtual ~Platformer_Objectives_EndianForest_EF_VisitQueen() = default;
 	};
 
+	class Platformer_Objectives_LambdaCrypts_LC_CraftHellKey : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_LambdaCrypts_LC_CraftHellKey* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_LambdaCrypts_LC_CraftHellKey();
+		virtual ~Platformer_Objectives_LambdaCrypts_LC_CraftHellKey() = default;
+	};
+
 	class Platformer_Objectives_LambdaCrypts_LC_FindGems : public LocalizedString
 	{
 	public:
@@ -32782,6 +32842,21 @@ namespace Strings
 	private:
 		Platformer_Objectives_LambdaCrypts_LC_LesserCrypt();
 		virtual ~Platformer_Objectives_LambdaCrypts_LC_LesserCrypt() = default;
+	};
+
+	class Platformer_Objectives_LambdaCrypts_LC_OpenDemonPortal : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_LambdaCrypts_LC_OpenDemonPortal* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_LambdaCrypts_LC_OpenDemonPortal();
+		virtual ~Platformer_Objectives_LambdaCrypts_LC_OpenDemonPortal() = default;
 	};
 
 	class Platformer_Objectives_LambdaCrypts_LC_ReturnToElric : public LocalizedString
@@ -35604,10 +35679,10 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_CraftHellGateCrystal_Drak_A_CraftCrystal : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_A_CraftDemonHeart : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_CraftHellGateCrystal_Drak_A_CraftCrystal* create();
+		static Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_A_CraftDemonHeart* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35615,8 +35690,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_CraftHellGateCrystal_Drak_A_CraftCrystal();
-		virtual ~Platformer_Quests_LambdaCrypts_CraftHellGateCrystal_Drak_A_CraftCrystal() = default;
+		Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_A_CraftDemonHeart();
+		virtual ~Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_A_CraftDemonHeart() = default;
 	};
 
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_A_Bitten : public LocalizedString
