@@ -56,7 +56,10 @@ void DefeatLazarus::onLoad(QuestState questState)
 	{
 		if (!this->lazarus->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 		{
-			this->complete();
+			this->defer([=]()
+			{
+				this->complete();
+			});
 		}
 	}
 

@@ -31,7 +31,7 @@ DemonHeartPlans::~DemonHeartPlans()
 
 std::vector<Item*> DemonHeartPlans::craft()
 {
-	return { HellKey::create() };
+	return { DemonHeart::create() };
 }
 
 std::vector<std::tuple<Item*, int>> DemonHeartPlans::getReagentsInternal()

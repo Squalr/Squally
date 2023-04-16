@@ -56,7 +56,10 @@ void DefeatKingZul::onLoad(QuestState questState)
 	{
 		if (!this->kingZul->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 		{
-			this->complete();
+			this->defer([=]()
+			{
+				this->complete();
+			});
 		}
 	}
 
@@ -79,7 +82,7 @@ void DefeatKingZul::onActivate(bool isActiveThroughSkippable)
 
 void DefeatKingZul::onComplete()
 {
-	Objectives::SetCurrentObjective(ObjectiveKeys::LCCraftHellKey);
+	Objectives::SetCurrentObjective(ObjectiveKeys::LCCraftDemonHeart);
 	PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(HeartOfFire::create()));
 }
 

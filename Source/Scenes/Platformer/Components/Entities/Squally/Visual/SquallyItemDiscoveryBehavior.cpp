@@ -107,7 +107,7 @@ void SquallyItemDiscoveryBehavior::discoverItems(std::vector<Item*> items, bool 
 			continue;
 		}
 
-		Vec2 position = Vec2((float(index) - float(itemCount) / 2.0f) * 72.0f, 0.0f);
+		Vec2 position = Vec2((float(index) - float(itemCount - 1) / 2.0f) * 72.0f, 0.0f);
 
 		// Create icon and glow if not already created
 		if (createdIcons <= iconIndex)

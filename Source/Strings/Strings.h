@@ -32784,10 +32784,10 @@ namespace Strings
 		virtual ~Platformer_Objectives_EndianForest_EF_VisitQueen() = default;
 	};
 
-	class Platformer_Objectives_LambdaCrypts_LC_CraftHellKey : public LocalizedString
+	class Platformer_Objectives_LambdaCrypts_LC_CraftDemonHeart : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_LambdaCrypts_LC_CraftHellKey* create();
+		static Platformer_Objectives_LambdaCrypts_LC_CraftDemonHeart* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32795,8 +32795,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Objectives_LambdaCrypts_LC_CraftHellKey();
-		virtual ~Platformer_Objectives_LambdaCrypts_LC_CraftHellKey() = default;
+		Platformer_Objectives_LambdaCrypts_LC_CraftDemonHeart();
+		virtual ~Platformer_Objectives_LambdaCrypts_LC_CraftDemonHeart() = default;
 	};
 
 	class Platformer_Objectives_LambdaCrypts_LC_FindGems : public LocalizedString

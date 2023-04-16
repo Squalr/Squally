@@ -158,7 +158,7 @@ void Objectives::InitMap()
 	Objectives::ObjectiveMap[ObjectiveKeys::LCEnterSecondCrypt] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_LesserCrypt::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::LCFindGems] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_FindGems::create(); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::LCEnterFinalCrypt] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_GreaterCrypt::create(); }, priority++);
-	Objectives::ObjectiveMap[ObjectiveKeys::LCCraftHellKey] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_CraftHellKey::create()->setStringReplacementVariables(Strings::Items_Misc_Keys_HellKey::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::LCCraftDemonHeart] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_CraftDemonHeart::create()->setStringReplacementVariables({ Strings::Platformer_MapNames_DataMines_Drammol::create(), Strings::Platformer_MapNames_DataMines_DataMines::create(), Strings::Items_Misc_Keys_DemonHeart::create() }); }, priority++);
 	Objectives::ObjectiveMap[ObjectiveKeys::LCOpenDemonPortal] =  Objective([](){ return Strings::Platformer_Objectives_LambdaCrypts_LC_OpenDemonPortal::create()->setStringReplacementVariables(Strings::Platformer_MapNames_DataMines_DataMines::create()); }, priority++);
 
 	priority = 500;

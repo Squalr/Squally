@@ -60,7 +60,7 @@ const std::string ObjectiveKeys::LCReturnToElric = "LC_RETURN_TO_ELRIC";
 const std::string ObjectiveKeys::LCEnterSecondCrypt = "LC_ENTER_SECOND_CRYPT";
 const std::string ObjectiveKeys::LCFindGems = "LC_FIND_GEMS";
 const std::string ObjectiveKeys::LCEnterFinalCrypt = "LC_ENTER_FINAL_CRYPT";
-const std::string ObjectiveKeys::LCCraftHellKey = "LC_CRAFT_HELL_KEY";
+const std::string ObjectiveKeys::LCCraftDemonHeart = "LC_CRAFT_HELL_KEY";
 const std::string ObjectiveKeys::LCOpenDemonPortal = "LC_OPEN_DEMON_PORTAL";
 
 const std::string ObjectiveKeys::DHExploreDaemonsHallow = "DH_EXPLORE_DAEMONS_HALLOW";
