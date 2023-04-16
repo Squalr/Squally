@@ -28,11 +28,15 @@ protected:
 private:
 	typedef GameComponent super;
 
-	void discoverItem(Item* item, bool cinematicHijack);
+	void discoverItems(std::vector<Item*> items, bool cinematicHijack);
 
 	cocos2d::Node* container = nullptr;
-	cocos2d::Node* itemNode = nullptr;
-	cocos2d::Sprite* glow = nullptr;
+	cocos2d::Node* glowNode = nullptr;
+	cocos2d::Node* iconsNode = nullptr;
+	std::vector<cocos2d::Sprite*> glows;
+	std::vector<cocos2d::Sprite*> icons;
 	Sound* discoverSound = nullptr;
 	Squally* squally = nullptr;
+
+	int createdIcons = 0;
 };

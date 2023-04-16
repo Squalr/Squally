@@ -19,6 +19,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -79,6 +80,7 @@ void DefeatLazarus::onActivate(bool isActiveThroughSkippable)
 void DefeatLazarus::onComplete()
 {
 	Objectives::SetCurrentObjective(ObjectiveKeys::LCEnterFinalCrypt);
+	PlatformerEvents::TriggerDiscoverItems(PlatformerEvents::ItemsDiscoveryArgs({ HeartOfShadow::create(), AncientKey::create() }));
 }
 
 void DefeatLazarus::onSkipped()

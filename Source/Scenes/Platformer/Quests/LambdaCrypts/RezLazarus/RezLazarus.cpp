@@ -242,6 +242,7 @@ void RezLazarus::onRezInteract()
 	Key* redGem = this->inventory->getItemOfType<MayanGemRedItem>();
 	Key* blueGem = this->inventory->getItemOfType<MayanGemBlueItem>();
 	Key* purpleGem = this->inventory->getItemOfType<MayanGemPurpleItem>();
+	std::vector<Item*> turnedInGems = {};
 
 	int turnedInGemCountOriginal = this->getQuestSaveStateOrDefault(RezLazarus::TurnedInGemCount, Value(0)).asInt();
 	int turnedInGemCount = turnedInGemCountOriginal;
@@ -251,24 +252,29 @@ void RezLazarus::onRezInteract()
 	
 	if (redGem != nullptr)
 	{
-		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(redGem));
+		turnedInGems.push_back(redGem);
 		inventory->tryRemove(redGem);
 		turnedInGemCount++;
 		this->saveQuestSaveState(RezLazarus::GemTurnedInRed, Value(true));
 	}
 	if (blueGem != nullptr)
 	{
-		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(blueGem));
+		turnedInGems.push_back(blueGem);
 		inventory->tryRemove(blueGem);
 		turnedInGemCount++;
 		this->saveQuestSaveState(RezLazarus::GemTurnedInBlue, Value(true));
 	}
 	if (purpleGem != nullptr)
 	{
-		PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(purpleGem));
+		turnedInGems.push_back(purpleGem);
 		inventory->tryRemove(purpleGem);
 		turnedInGemCount++;
 		this->saveQuestSaveState(RezLazarus::GemTurnedInPurple, Value(true));
+	}
+
+	if (turnedInGemCount > 0)
+	{
+		PlatformerEvents::TriggerDiscoverItems(PlatformerEvents::ItemsDiscoveryArgs(turnedInGems));
 	}
 
 	if (turnedInGemCount != turnedInGemCountOriginal)

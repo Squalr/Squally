@@ -28,6 +28,7 @@ const std::string PlatformerEvents::EventOpenSmithing = "EVENT_OPEN_SMITHING";
 const std::string PlatformerEvents::EventOpenDismantle = "EVENT_OPEN_Dismantle";
 const std::string PlatformerEvents::EventOpenItemInfo = "EVENT_OPEN_ITEM_INFO";
 const std::string PlatformerEvents::EventDiscoverItem = "EVENT_DISCOVER_ITEM";
+const std::string PlatformerEvents::EventDiscoverItems = "EVENT_DISCOVER_ITEMS";
 const std::string PlatformerEvents::EventGiveItems = "EVENT_GIVE_ITEM";
 const std::string PlatformerEvents::EventGiveItemsFromPool = "EVENT_GIVE_ITEMS_FROM_POOL";
 const std::string PlatformerEvents::EventGiveCurrency = "EVENT_GIVE_CURRENCY";
@@ -227,6 +228,14 @@ void PlatformerEvents::TriggerDiscoverItem(ItemDiscoveryArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventDiscoverItem,
+		&args
+	);
+}
+
+void PlatformerEvents::TriggerDiscoverItems(ItemsDiscoveryArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		PlatformerEvents::EventDiscoverItems,
 		&args
 	);
 }

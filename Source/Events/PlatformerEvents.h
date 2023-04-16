@@ -38,6 +38,7 @@ public:
 	static const std::string EventOpenDismantle;
 	static const std::string EventOpenItemInfo;
 	static const std::string EventDiscoverItem;
+	static const std::string EventDiscoverItems;
 	static const std::string EventGiveItemsFromPool;
 	static const std::string EventGiveItems;
 	static const std::string EventGiveCurrenciesFromPool;
@@ -191,6 +192,15 @@ public:
 			: item(item), cinematicHijack(cinematicHijack) { }
 	};
 
+	struct ItemsDiscoveryArgs
+	{
+		std::vector<Item*> items;
+		bool cinematicHijack = false;
+
+		ItemsDiscoveryArgs(std::vector<Item*> items, bool cinematicHijack = true)
+			: items(items), cinematicHijack(cinematicHijack) { }
+	};
+
 	struct GiveCurrenciesFromPoolArgs
 	{
 		CurrencyPool* pool = nullptr;
@@ -255,6 +265,7 @@ public:
 	static void TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args);
 	static void TriggerGiveItems(GiveItemsArgs args);
 	static void TriggerDiscoverItem(ItemDiscoveryArgs args);
+	static void TriggerDiscoverItems(ItemsDiscoveryArgs args);
 	static void TriggerGiveCurrenciesFromPool(GiveCurrenciesFromPoolArgs args);
 	static void TriggerGiveCurrency(GiveCurrencyArgs args);
 	static void TriggerAllowPause();
