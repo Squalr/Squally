@@ -559,7 +559,7 @@
     <property name="components" value="enemy,agro"/>
     <property name="drop-pool" value="lc-king-zul"/>
     <property name="quest" value="defeat-king-zul"/>
-    <property name="quest-line" value="craft-hell-gate-crystal"/>
+    <property name="quest-line" value="craft-demon-heart"/>
    </properties>
   </object>
   <object id="992" name="skeletal-priestess" type="entity" x="1583.15" y="1312.23" width="128" height="128">

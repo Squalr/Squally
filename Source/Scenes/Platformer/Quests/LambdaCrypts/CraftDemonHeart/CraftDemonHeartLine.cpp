@@ -7,7 +7,7 @@
 
 using namespace cocos2d;
 
-const std::string CraftDemonHeartLine::MapKeyQuestLine = "craft-hell-gate-crystal";
+const std::string CraftDemonHeartLine::MapKeyQuestLine = "craft-demon-heart";
 
 CraftDemonHeartLine* CraftDemonHeartLine::create()
 {

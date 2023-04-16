@@ -38,7 +38,8 @@ std::vector<std::tuple<Item*, int>> DemonHeartPlans::getReagentsInternal()
 {
 	return
 	{
-		{ DemonHeart::create(), 1 },
+		{ HeartOfFire::create(), 1 },
+		{ HeartOfShadow::create(), 1 },
 	};
 }
 

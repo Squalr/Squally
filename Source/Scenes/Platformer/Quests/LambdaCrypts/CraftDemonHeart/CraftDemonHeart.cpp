@@ -47,7 +47,7 @@
 
 using namespace cocos2d;
 
-const std::string CraftDemonHeart::MapKeyQuest = "craft-key";
+const std::string CraftDemonHeart::MapKeyQuest = "craft-demon-heart";
 
 CraftDemonHeart* CraftDemonHeart::create(GameObject* owner, QuestLine* questLine)
 {
@@ -87,7 +87,7 @@ void CraftDemonHeart::onLoad(QuestState questState)
 				{
 				},
 				Voices::GetNextVoiceLong(),
-				false
+				true
 			));
 		});
 	}, Drak::MapKey);
