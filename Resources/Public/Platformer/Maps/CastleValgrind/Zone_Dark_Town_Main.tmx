@@ -937,7 +937,7 @@
   </object>
   <object id="1059" name="caged-parrot" type="object" x="2939.15" y="2618.74" width="196" height="112"/>
  </objectgroup>
- <objectgroup id="42" name="objects fg" visible="0">
+ <objectgroup id="42" name="objects fg">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>

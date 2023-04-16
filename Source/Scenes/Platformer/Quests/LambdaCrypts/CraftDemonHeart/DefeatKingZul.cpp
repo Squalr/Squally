@@ -83,6 +83,7 @@ void DefeatKingZul::onActivate(bool isActiveThroughSkippable)
 void DefeatKingZul::onComplete()
 {
 	Objectives::SetCurrentObjective(ObjectiveKeys::LCCraftDemonHeart);
+	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ HeartOfFire::create() }));
 	PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(HeartOfFire::create()));
 }
 

@@ -62,9 +62,11 @@ public:
 	static const std::string LCSeekAmelia;
 	static const std::string LCTalkToNebea;
 	static const std::string LCReturnToElric;
-	static const std::string LCEnterSecondCrypt;
+	static const std::string LCEnterLesserCrypt;
+	static const std::string LCExploreLesserCrypt;
 	static const std::string LCFindGems;
-	static const std::string LCEnterFinalCrypt;
+	static const std::string LCEnterGreaterCrypt;
+	static const std::string LCExploreGreaterCrypt;
 	static const std::string LCCraftDemonHeart;
 	static const std::string LCOpenDemonPortal;
 

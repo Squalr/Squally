@@ -78,7 +78,7 @@ void DefeatElric::onActivate(bool isActiveThroughSkippable)
 
 void DefeatElric::onComplete()
 {
-	Objectives::SetCurrentObjective(ObjectiveKeys::LCEnterSecondCrypt);
+	Objectives::SetCurrentObjective(ObjectiveKeys::LCEnterLesserCrypt);
 }
 
 void DefeatElric::onSkipped()

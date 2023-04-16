@@ -84,7 +84,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="819" name="mines" type="terrain" x="1727.1" y="1006.73" width="288.171" height="905.818"/>
+  <object id="819" name="mines" type="terrain" x="1727.1" y="1006.73" width="348.171" height="905.818"/>
   <object id="835" name="mines" type="terrain" x="782.793" y="1004" width="299.747" height="1188"/>
   <object id="849" name="mines" type="terrain" x="-300.54" y="-182.909" width="329.747" height="2241.94"/>
   <object id="885" name="mines" type="terrain" x="3278.66" y="-81.5563">

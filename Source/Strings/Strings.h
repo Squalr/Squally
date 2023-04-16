@@ -32799,6 +32799,66 @@ namespace Strings
 		virtual ~Platformer_Objectives_LambdaCrypts_LC_CraftDemonHeart() = default;
 	};
 
+	class Platformer_Objectives_LambdaCrypts_LC_EnterGreaterCrypt : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_LambdaCrypts_LC_EnterGreaterCrypt* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_LambdaCrypts_LC_EnterGreaterCrypt();
+		virtual ~Platformer_Objectives_LambdaCrypts_LC_EnterGreaterCrypt() = default;
+	};
+
+	class Platformer_Objectives_LambdaCrypts_LC_EnterLesserCrypt : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_LambdaCrypts_LC_EnterLesserCrypt* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_LambdaCrypts_LC_EnterLesserCrypt();
+		virtual ~Platformer_Objectives_LambdaCrypts_LC_EnterLesserCrypt() = default;
+	};
+
+	class Platformer_Objectives_LambdaCrypts_LC_ExploreGreaterCrypt : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_LambdaCrypts_LC_ExploreGreaterCrypt* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_LambdaCrypts_LC_ExploreGreaterCrypt();
+		virtual ~Platformer_Objectives_LambdaCrypts_LC_ExploreGreaterCrypt() = default;
+	};
+
+	class Platformer_Objectives_LambdaCrypts_LC_ExploreLesserCrypt : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_LambdaCrypts_LC_ExploreLesserCrypt* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_LambdaCrypts_LC_ExploreLesserCrypt();
+		virtual ~Platformer_Objectives_LambdaCrypts_LC_ExploreLesserCrypt() = default;
+	};
+
 	class Platformer_Objectives_LambdaCrypts_LC_FindGems : public LocalizedString
 	{
 	public:
@@ -32812,36 +32872,6 @@ namespace Strings
 	private:
 		Platformer_Objectives_LambdaCrypts_LC_FindGems();
 		virtual ~Platformer_Objectives_LambdaCrypts_LC_FindGems() = default;
-	};
-
-	class Platformer_Objectives_LambdaCrypts_LC_GreaterCrypt : public LocalizedString
-	{
-	public:
-		static Platformer_Objectives_LambdaCrypts_LC_GreaterCrypt* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Objectives_LambdaCrypts_LC_GreaterCrypt();
-		virtual ~Platformer_Objectives_LambdaCrypts_LC_GreaterCrypt() = default;
-	};
-
-	class Platformer_Objectives_LambdaCrypts_LC_LesserCrypt : public LocalizedString
-	{
-	public:
-		static Platformer_Objectives_LambdaCrypts_LC_LesserCrypt* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Objectives_LambdaCrypts_LC_LesserCrypt();
-		virtual ~Platformer_Objectives_LambdaCrypts_LC_LesserCrypt() = default;
 	};
 
 	class Platformer_Objectives_LambdaCrypts_LC_OpenDemonPortal : public LocalizedString

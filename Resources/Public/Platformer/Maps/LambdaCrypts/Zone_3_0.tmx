@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="1488">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="1489">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -1697,6 +1697,11 @@
    <properties>
     <property name="components" value="friendly,disarmed,lc-puzzle-F"/>
     <property name="tag" value="hexus-bone-knight"/>
+   </properties>
+  </object>
+  <object id="1488" name="objective-trigger" type="object" x="3165.92" y="716.545" width="1228.15" height="1406.91">
+   <properties>
+    <property name="send-event" value="LC_EXPLORE_LESSER_CRYPT"/>
    </properties>
   </object>
  </objectgroup>

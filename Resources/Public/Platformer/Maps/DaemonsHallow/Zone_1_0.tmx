@@ -419,7 +419,7 @@
    <polygon points="-93.8626,-649.121 -69.6674,-470.813 55.6703,-406.723 176.277,-470.102 197.309,-649.796"/>
   </object>
  </objectgroup>
- <objectgroup id="133" name="decor fg -20" visible="0">
+ <objectgroup id="133" name="decor fg -20">
   <properties>
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
@@ -445,7 +445,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="112" name="terrain -20">
+ <objectgroup id="112" name="terrain -20" locked="1">
   <properties>
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
@@ -584,8 +584,8 @@
   <object id="953" name="obsidean" type="terrain" x="4673.43" y="5140.11">
    <polygon points="-498.828,-2723.26 -370.244,-1979.27 295.857,-1709.84 936.817,-1976.28 1048.59,-2731.7"/>
   </object>
-  <object id="954" name="obsidean" type="terrain" x="6355.61" y="5136.11">
-   <polygon points="-435,-2723.26 -322.869,-1979.27 258,-1709.84 816.946,-1976.28 914.413,-2731.7"/>
+  <object id="954" name="obsidean" type="terrain" x="6237.7" y="5136.11">
+   <polygon points="-491.091,-2723.26 -364.501,-1979.27 291.268,-1709.84 922.287,-1976.28 1032.32,-2731.7"/>
   </object>
   <object id="950" name="obsidean" type="terrain" x="2760" y="3055.67">
    <properties>
@@ -718,7 +718,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="146" name="decor -8 bg" visible="0">
+ <objectgroup id="146" name="decor -8 bg">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -766,7 +766,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="152" name="decor bg -6" visible="0">
+ <objectgroup id="152" name="decor bg -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>

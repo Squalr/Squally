@@ -57,9 +57,11 @@ const std::string ObjectiveKeys::CVEnterLambdaCrypts = "CV_ENTER_LAMBDA_CRYPTS";
 const std::string ObjectiveKeys::LCSeekAmelia = "LC_SEEK_AMELIA";
 const std::string ObjectiveKeys::LCTalkToNebea = "LC_TALK_TO_NEBEA";
 const std::string ObjectiveKeys::LCReturnToElric = "LC_RETURN_TO_ELRIC";
-const std::string ObjectiveKeys::LCEnterSecondCrypt = "LC_ENTER_SECOND_CRYPT";
+const std::string ObjectiveKeys::LCEnterLesserCrypt = "LC_ENTER_LESSER_CRYPT";
+const std::string ObjectiveKeys::LCExploreLesserCrypt = "LC_EXPLORE_LESSER_CRYPT";
 const std::string ObjectiveKeys::LCFindGems = "LC_FIND_GEMS";
-const std::string ObjectiveKeys::LCEnterFinalCrypt = "LC_ENTER_FINAL_CRYPT";
+const std::string ObjectiveKeys::LCEnterGreaterCrypt = "LC_ENTER_GREATER_CRYPT";
+const std::string ObjectiveKeys::LCExploreGreaterCrypt = "LC_EXPLORE_GREATER_CRYPT";
 const std::string ObjectiveKeys::LCCraftDemonHeart = "LC_CRAFT_HELL_KEY";
 const std::string ObjectiveKeys::LCOpenDemonPortal = "LC_OPEN_DEMON_PORTAL";
 
