@@ -217,7 +217,7 @@ void TalkToNebea::runCinematicSequence()
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_HellCrystalPurpose::create()
-				->setStringReplacementVariables(Strings::Platformer_MapNames_DaemonsHallow_DaemonsHallow::create()),
+				->setStringReplacementVariables(Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,

@@ -500,7 +500,7 @@ bool PlatformerMap::loadMapFromTmx(std::string mapResource, cocos_experimental::
 	{
 		mapResource = MapResources::EndianForest_Town_Main;
 	}
-	else if (StrUtils::contains(mapResource, "DaemonsHallow", true))
+	else if (StrUtils::contains(mapResource, "FirewallFissure", true))
 	{
 		mapResource = MapResources::EndianForest_Town_Main;
 	}

@@ -65,4 +65,4 @@ const std::string ObjectiveKeys::LCExploreGreaterCrypt = "LC_EXPLORE_GREATER_CRY
 const std::string ObjectiveKeys::LCCraftDemonHeart = "LC_CRAFT_HELL_KEY";
 const std::string ObjectiveKeys::LCOpenDemonPortal = "LC_OPEN_DEMON_PORTAL";
 
-const std::string ObjectiveKeys::DHExploreDaemonsHallow = "DH_EXPLORE_DAEMONS_HALLOW";
+const std::string ObjectiveKeys::DHExploreFirewallFissure = "DH_EXPLORE_DAEMONS_HALLOW";

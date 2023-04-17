@@ -507,25 +507,25 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (DH)", MapResources::DaemonsHallow_Mages_Warp));
-		mapList.push_back(this->buildDebugButton("Town Main (DH)", MapResources::DaemonsHallow_Town_Main));
-		mapList.push_back(this->buildDebugButton("Alch (DH)", MapResources::DaemonsHallow_Town_Alch));
-		mapList.push_back(this->buildDebugButton("Inn (DH)", MapResources::DaemonsHallow_Town_Inn));
-		mapList.push_back(this->buildDebugButton("Smith (DH)", MapResources::DaemonsHallow_Town_Smith));
-		mapList.push_back(this->buildDebugButton("Zone_3_1 (DH)", MapResources::DaemonsHallow_Zone_3_1));
-		mapList.push_back(this->buildDebugButton("Zone_3_0 (DH)", MapResources::DaemonsHallow_Zone_3_0));
-		mapList.push_back(this->buildDebugButton("Zone_2_3 (DH)", MapResources::DaemonsHallow_Zone_2_3));
-		mapList.push_back(this->buildDebugButton("Zone_2_2 (DH)", MapResources::DaemonsHallow_Zone_2_2));
-		mapList.push_back(this->buildDebugButton("Zone_2_1 (DH)", MapResources::DaemonsHallow_Zone_2_1));
-		mapList.push_back(this->buildDebugButton("Zone_2_0 (DH)", MapResources::DaemonsHallow_Zone_2_0));
-		mapList.push_back(this->buildDebugButton("Zone_1_0_a (DH)", MapResources::DaemonsHallow_Zone_1_0_a));
-		mapList.push_back(this->buildDebugButton("Zone_1_0 (DH)", MapResources::DaemonsHallow_Zone_1_0));
+		mapList.push_back(this->buildDebugButton("Warp Room (DH)", MapResources::FirewallFissure_Mages_Warp));
+		mapList.push_back(this->buildDebugButton("Town Main (DH)", MapResources::FirewallFissure_Town_Main));
+		mapList.push_back(this->buildDebugButton("Alch (DH)", MapResources::FirewallFissure_Town_Alch));
+		mapList.push_back(this->buildDebugButton("Inn (DH)", MapResources::FirewallFissure_Town_Inn));
+		mapList.push_back(this->buildDebugButton("Smith (DH)", MapResources::FirewallFissure_Town_Smith));
+		mapList.push_back(this->buildDebugButton("Zone_3_1 (DH)", MapResources::FirewallFissure_Zone_3_1));
+		mapList.push_back(this->buildDebugButton("Zone_3_0 (DH)", MapResources::FirewallFissure_Zone_3_0));
+		mapList.push_back(this->buildDebugButton("Zone_2_3 (DH)", MapResources::FirewallFissure_Zone_2_3));
+		mapList.push_back(this->buildDebugButton("Zone_2_2 (DH)", MapResources::FirewallFissure_Zone_2_2));
+		mapList.push_back(this->buildDebugButton("Zone_2_1 (DH)", MapResources::FirewallFissure_Zone_2_1));
+		mapList.push_back(this->buildDebugButton("Zone_2_0 (DH)", MapResources::FirewallFissure_Zone_2_0));
+		mapList.push_back(this->buildDebugButton("Zone_1_0_a (DH)", MapResources::FirewallFissure_Zone_1_0_a));
+		mapList.push_back(this->buildDebugButton("Zone_1_0 (DH)", MapResources::FirewallFissure_Zone_1_0));
 
 		// ================== TODO ================== 
 		// Traps: Fire bird, fire launcher, TNT barrel, mortar
 		// ** Implement hexus puzzles
 		// ** Add hexus battles
-		// ** Hide collectables better
+		// * Hide collectables better
 
 		/*
 		Surface:

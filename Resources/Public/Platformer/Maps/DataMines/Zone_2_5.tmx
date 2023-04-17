@@ -270,7 +270,7 @@
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="dm-generic"/>
     <property name="quest" value="boat-unlocked"/>
-    <property name="quest-line" value="boat-to-daemons"/>
+    <property name="quest-line" value="boat-to-firewall-fissure"/>
    </properties>
   </object>
   <object id="875" name="earth-golem" type="entity" x="1606.18" y="3108.61" width="128" height="128">

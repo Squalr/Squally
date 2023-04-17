@@ -41,5 +41,5 @@ Vec2 Igneus::getDialogueOffset()
 
 LocalizedString* Igneus::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Npcs_DaemonsHallow_Igneus::create();
+	return Strings::Platformer_Entities_Names_Npcs_FirewallFissure_Igneus::create();
 }

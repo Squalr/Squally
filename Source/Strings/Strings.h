@@ -28629,186 +28629,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_CastleValgrind_Wraith() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_DaemonsHallow_Asmodeus : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DaemonsHallow_Asmodeus* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DaemonsHallow_Asmodeus();
-		virtual ~Platformer_Entities_Names_Enemies_DaemonsHallow_Asmodeus() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_DaemonsHallow_DemonDragon : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DaemonsHallow_DemonDragon* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DaemonsHallow_DemonDragon();
-		virtual ~Platformer_Entities_Names_Enemies_DaemonsHallow_DemonDragon() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_DaemonsHallow_DemonGhost : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DaemonsHallow_DemonGhost* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DaemonsHallow_DemonGhost();
-		virtual ~Platformer_Entities_Names_Enemies_DaemonsHallow_DemonGhost() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_DaemonsHallow_DemonGrunt : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DaemonsHallow_DemonGrunt* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DaemonsHallow_DemonGrunt();
-		virtual ~Platformer_Entities_Names_Enemies_DaemonsHallow_DemonGrunt() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_DaemonsHallow_DemonRogue : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DaemonsHallow_DemonRogue* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DaemonsHallow_DemonRogue();
-		virtual ~Platformer_Entities_Names_Enemies_DaemonsHallow_DemonRogue() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_DaemonsHallow_DemonShaman : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DaemonsHallow_DemonShaman* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DaemonsHallow_DemonShaman();
-		virtual ~Platformer_Entities_Names_Enemies_DaemonsHallow_DemonShaman() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_DaemonsHallow_DemonSwordsman : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DaemonsHallow_DemonSwordsman* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DaemonsHallow_DemonSwordsman();
-		virtual ~Platformer_Entities_Names_Enemies_DaemonsHallow_DemonSwordsman() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_DaemonsHallow_DemonWarrior : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DaemonsHallow_DemonWarrior* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DaemonsHallow_DemonWarrior();
-		virtual ~Platformer_Entities_Names_Enemies_DaemonsHallow_DemonWarrior() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_DaemonsHallow_FireElemental : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DaemonsHallow_FireElemental* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DaemonsHallow_FireElemental();
-		virtual ~Platformer_Entities_Names_Enemies_DaemonsHallow_FireElemental() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_DaemonsHallow_FireTiger : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DaemonsHallow_FireTiger* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DaemonsHallow_FireTiger();
-		virtual ~Platformer_Entities_Names_Enemies_DaemonsHallow_FireTiger() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_DaemonsHallow_Krampus : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DaemonsHallow_Krampus* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DaemonsHallow_Krampus();
-		virtual ~Platformer_Entities_Names_Enemies_DaemonsHallow_Krampus() = default;
-	};
-
-	class Platformer_Entities_Names_Enemies_DaemonsHallow_LavaGolem : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_DaemonsHallow_LavaGolem* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_DaemonsHallow_LavaGolem();
-		virtual ~Platformer_Entities_Names_Enemies_DaemonsHallow_LavaGolem() = default;
-	};
-
 	class Platformer_Entities_Names_Enemies_DataMines_EarthElemental : public LocalizedString
 	{
 	public:
@@ -29182,6 +29002,186 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Enemies_EndianForest_Troll();
 		virtual ~Platformer_Entities_Names_Enemies_EndianForest_Troll() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_FirewallFissure_Asmodeus : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_FirewallFissure_Asmodeus* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_FirewallFissure_Asmodeus();
+		virtual ~Platformer_Entities_Names_Enemies_FirewallFissure_Asmodeus() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_FirewallFissure_DemonDragon : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_FirewallFissure_DemonDragon* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_FirewallFissure_DemonDragon();
+		virtual ~Platformer_Entities_Names_Enemies_FirewallFissure_DemonDragon() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_FirewallFissure_DemonGhost : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_FirewallFissure_DemonGhost* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_FirewallFissure_DemonGhost();
+		virtual ~Platformer_Entities_Names_Enemies_FirewallFissure_DemonGhost() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_FirewallFissure_DemonGrunt : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_FirewallFissure_DemonGrunt* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_FirewallFissure_DemonGrunt();
+		virtual ~Platformer_Entities_Names_Enemies_FirewallFissure_DemonGrunt() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_FirewallFissure_DemonRogue : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_FirewallFissure_DemonRogue* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_FirewallFissure_DemonRogue();
+		virtual ~Platformer_Entities_Names_Enemies_FirewallFissure_DemonRogue() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_FirewallFissure_DemonShaman : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_FirewallFissure_DemonShaman* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_FirewallFissure_DemonShaman();
+		virtual ~Platformer_Entities_Names_Enemies_FirewallFissure_DemonShaman() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_FirewallFissure_DemonSwordsman : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_FirewallFissure_DemonSwordsman* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_FirewallFissure_DemonSwordsman();
+		virtual ~Platformer_Entities_Names_Enemies_FirewallFissure_DemonSwordsman() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_FirewallFissure_DemonWarrior : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_FirewallFissure_DemonWarrior* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_FirewallFissure_DemonWarrior();
+		virtual ~Platformer_Entities_Names_Enemies_FirewallFissure_DemonWarrior() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_FirewallFissure_FireElemental : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_FirewallFissure_FireElemental* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_FirewallFissure_FireElemental();
+		virtual ~Platformer_Entities_Names_Enemies_FirewallFissure_FireElemental() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_FirewallFissure_FireTiger : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_FirewallFissure_FireTiger* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_FirewallFissure_FireTiger();
+		virtual ~Platformer_Entities_Names_Enemies_FirewallFissure_FireTiger() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_FirewallFissure_Krampus : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_FirewallFissure_Krampus* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_FirewallFissure_Krampus();
+		virtual ~Platformer_Entities_Names_Enemies_FirewallFissure_Krampus() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_FirewallFissure_LavaGolem : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_FirewallFissure_LavaGolem* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_FirewallFissure_LavaGolem();
+		virtual ~Platformer_Entities_Names_Enemies_FirewallFissure_LavaGolem() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_BoneFiend : public LocalizedString
@@ -29799,21 +29799,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Helpers_CastleValgrind_Knight() = default;
 	};
 
-	class Platformer_Entities_Names_Helpers_DaemonsHallow_CritterDemon : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Helpers_DaemonsHallow_CritterDemon* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Helpers_DaemonsHallow_CritterDemon();
-		virtual ~Platformer_Entities_Names_Helpers_DaemonsHallow_CritterDemon() = default;
-	};
-
 	class Platformer_Entities_Names_Helpers_DataMines_Gecky : public LocalizedString
 	{
 	public:
@@ -29857,6 +29842,21 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Helpers_EndianForest_Scrappy();
 		virtual ~Platformer_Entities_Names_Helpers_EndianForest_Scrappy() = default;
+	};
+
+	class Platformer_Entities_Names_Helpers_FirewallFissure_CritterDemon : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Helpers_FirewallFissure_CritterDemon* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Helpers_FirewallFissure_CritterDemon();
+		virtual ~Platformer_Entities_Names_Helpers_FirewallFissure_CritterDemon() = default;
 	};
 
 	class Platformer_Entities_Names_Helpers_LambdaCrypts_Ghost : public LocalizedString
@@ -30279,201 +30279,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_CastleValgrind_Zana() = default;
 	};
 
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Ash : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Ash* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Ash();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Ash() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Brine : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Brine* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Brine();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Brine() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Celeste : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Celeste* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Celeste();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Celeste() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Cindra : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Cindra* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Cindra();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Cindra() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Hades : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Hades* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Hades();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Hades() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Igneus : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Igneus* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Igneus();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Igneus() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Lucifer : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Lucifer* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Lucifer();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Lucifer() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Magnus : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Magnus* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Magnus();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Magnus() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Mittens : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Mittens* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Mittens();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Mittens() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Pan : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Pan* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Pan();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Pan() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Ragnis : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Ragnis* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Ragnis();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Ragnis() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Rusty : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Rusty* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Rusty();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Rusty() = default;
-	};
-
-	class Platformer_Entities_Names_Npcs_DaemonsHallow_Scaldor : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Npcs_DaemonsHallow_Scaldor* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Npcs_DaemonsHallow_Scaldor();
-		virtual ~Platformer_Entities_Names_Npcs_DaemonsHallow_Scaldor() = default;
-	};
-
 	class Platformer_Entities_Names_Npcs_DataMines_Alder : public LocalizedString
 	{
 	public:
@@ -30862,6 +30667,201 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Npcs_EndianForest_Toben();
 		virtual ~Platformer_Entities_Names_Npcs_EndianForest_Toben() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_FirewallFissure_Ash : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_FirewallFissure_Ash* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_FirewallFissure_Ash();
+		virtual ~Platformer_Entities_Names_Npcs_FirewallFissure_Ash() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_FirewallFissure_Brine : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_FirewallFissure_Brine* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_FirewallFissure_Brine();
+		virtual ~Platformer_Entities_Names_Npcs_FirewallFissure_Brine() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_FirewallFissure_Celeste : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_FirewallFissure_Celeste* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_FirewallFissure_Celeste();
+		virtual ~Platformer_Entities_Names_Npcs_FirewallFissure_Celeste() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_FirewallFissure_Cindra : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_FirewallFissure_Cindra* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_FirewallFissure_Cindra();
+		virtual ~Platformer_Entities_Names_Npcs_FirewallFissure_Cindra() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_FirewallFissure_Hades : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_FirewallFissure_Hades* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_FirewallFissure_Hades();
+		virtual ~Platformer_Entities_Names_Npcs_FirewallFissure_Hades() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_FirewallFissure_Igneus : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_FirewallFissure_Igneus* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_FirewallFissure_Igneus();
+		virtual ~Platformer_Entities_Names_Npcs_FirewallFissure_Igneus() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_FirewallFissure_Lucifer : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_FirewallFissure_Lucifer* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_FirewallFissure_Lucifer();
+		virtual ~Platformer_Entities_Names_Npcs_FirewallFissure_Lucifer() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_FirewallFissure_Magnus : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_FirewallFissure_Magnus* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_FirewallFissure_Magnus();
+		virtual ~Platformer_Entities_Names_Npcs_FirewallFissure_Magnus() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_FirewallFissure_Mittens : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_FirewallFissure_Mittens* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_FirewallFissure_Mittens();
+		virtual ~Platformer_Entities_Names_Npcs_FirewallFissure_Mittens() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_FirewallFissure_Pan : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_FirewallFissure_Pan* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_FirewallFissure_Pan();
+		virtual ~Platformer_Entities_Names_Npcs_FirewallFissure_Pan() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_FirewallFissure_Ragnis : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_FirewallFissure_Ragnis* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_FirewallFissure_Ragnis();
+		virtual ~Platformer_Entities_Names_Npcs_FirewallFissure_Ragnis() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_FirewallFissure_Rusty : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_FirewallFissure_Rusty* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_FirewallFissure_Rusty();
+		virtual ~Platformer_Entities_Names_Npcs_FirewallFissure_Rusty() = default;
+	};
+
+	class Platformer_Entities_Names_Npcs_FirewallFissure_Scaldor : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Npcs_FirewallFissure_Scaldor* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_FirewallFissure_Scaldor();
+		virtual ~Platformer_Entities_Names_Npcs_FirewallFissure_Scaldor() = default;
 	};
 
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Amelia : public LocalizedString
@@ -31779,36 +31779,6 @@ namespace Strings
 		virtual ~Platformer_MapNames_CastleValgrind_CastleValgrind() = default;
 	};
 
-	class Platformer_MapNames_DaemonsHallow_Brimstone : public LocalizedString
-	{
-	public:
-		static Platformer_MapNames_DaemonsHallow_Brimstone* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_MapNames_DaemonsHallow_Brimstone();
-		virtual ~Platformer_MapNames_DaemonsHallow_Brimstone() = default;
-	};
-
-	class Platformer_MapNames_DaemonsHallow_DaemonsHallow : public LocalizedString
-	{
-	public:
-		static Platformer_MapNames_DaemonsHallow_DaemonsHallow* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_MapNames_DaemonsHallow_DaemonsHallow();
-		virtual ~Platformer_MapNames_DaemonsHallow_DaemonsHallow() = default;
-	};
-
 	class Platformer_MapNames_DataMines_DataCove : public LocalizedString
 	{
 	public:
@@ -31957,6 +31927,36 @@ namespace Strings
 	private:
 		Platformer_MapNames_EndianForest_SullenForest();
 		virtual ~Platformer_MapNames_EndianForest_SullenForest() = default;
+	};
+
+	class Platformer_MapNames_FirewallFissure_Brimstone : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_FirewallFissure_Brimstone* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_FirewallFissure_Brimstone();
+		virtual ~Platformer_MapNames_FirewallFissure_Brimstone() = default;
+	};
+
+	class Platformer_MapNames_FirewallFissure_FirewallFissure : public LocalizedString
+	{
+	public:
+		static Platformer_MapNames_FirewallFissure_FirewallFissure* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_FirewallFissure_FirewallFissure();
+		virtual ~Platformer_MapNames_FirewallFissure_FirewallFissure() = default;
 	};
 
 	class Platformer_MapNames_LambdaCrypts_GraveFlower : public LocalizedString
@@ -32364,21 +32364,6 @@ namespace Strings
 		virtual ~Platformer_Objectives_CastleValgrind_CV_TakeArcaneBook() = default;
 	};
 
-	class Platformer_Objectives_DaemonsHallow_DH_Explore : public LocalizedString
-	{
-	public:
-		static Platformer_Objectives_DaemonsHallow_DH_Explore* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Objectives_DaemonsHallow_DH_Explore();
-		virtual ~Platformer_Objectives_DaemonsHallow_DH_Explore() = default;
-	};
-
 	class Platformer_Objectives_DataMines_DM_DeliverLetter : public LocalizedString
 	{
 	public:
@@ -32782,6 +32767,21 @@ namespace Strings
 	private:
 		Platformer_Objectives_EndianForest_EF_VisitQueen();
 		virtual ~Platformer_Objectives_EndianForest_EF_VisitQueen() = default;
+	};
+
+	class Platformer_Objectives_FirewallFissure_DH_Explore : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_FirewallFissure_DH_Explore* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_FirewallFissure_DH_Explore();
+		virtual ~Platformer_Objectives_FirewallFissure_DH_Explore() = default;
 	};
 
 	class Platformer_Objectives_LambdaCrypts_LC_CraftDemonHeart : public LocalizedString

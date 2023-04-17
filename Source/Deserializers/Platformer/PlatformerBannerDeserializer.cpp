@@ -56,8 +56,8 @@ PlatformerBannerDeserializer::PlatformerBannerDeserializer() : super()
 	this->deserializers["valley-ash"] = [=]() { return Strings::Platformer_MapNames_LambdaCrypts_ValleyOfAsh::create(); };
 
 	// DH
-	this->deserializers["daemons-hallow"] = [=]() { return Strings::Platformer_MapNames_DaemonsHallow_DaemonsHallow::create(); };
-	this->deserializers["brimstone"] = [=]() { return Strings::Platformer_MapNames_DaemonsHallow_Brimstone::create(); };
+	this->deserializers["firewall-fissure"] = [=]() { return Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create(); };
+	this->deserializers["brimstone"] = [=]() { return Strings::Platformer_MapNames_FirewallFissure_Brimstone::create(); };
 
 	// BP
 	this->deserializers["ballmer-peaks"] = [=]() { return Strings::Platformer_MapNames_BallmerPeaks_BallmerPeaks::create(); };

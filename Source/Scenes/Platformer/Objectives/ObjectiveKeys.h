@@ -70,5 +70,5 @@ public:
 	static const std::string LCCraftDemonHeart;
 	static const std::string LCOpenDemonPortal;
 
-	static const std::string DHExploreDaemonsHallow;
+	static const std::string DHExploreFirewallFissure;
 };

@@ -413,9 +413,9 @@ Sprite* SaveSelectMenu::getBackgroundForCurrentSaveProfile()
 	{
 		return Sprite::create(HexusResources::Menus_HexusFrameBallmerPeaks);
 	}
-	else if (StrUtils::contains(currentMap, "daemonshallow", ignoreCase))
+	else if (StrUtils::contains(currentMap, "firewallfissure", ignoreCase))
 	{
-		return Sprite::create(HexusResources::Menus_HexusFrameDaemonsHallow);
+		return Sprite::create(HexusResources::Menus_HexusFrameFirewallFissure);
 	}
 	else if (StrUtils::contains(currentMap, "lambdacrypts", ignoreCase))
 	{

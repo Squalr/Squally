@@ -41,5 +41,5 @@ Vec2 Krampus::getDialogueOffset()
 
 LocalizedString* Krampus::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Enemies_DaemonsHallow_Krampus::create();
+	return Strings::Platformer_Entities_Names_Enemies_FirewallFissure_Krampus::create();
 }

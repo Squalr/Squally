@@ -168,7 +168,7 @@ MiniMapObjectDeserializer::MiniMapObjectDeserializer() : super(MiniMapObjectDese
 	this->deserializers[Warp::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::WarpColor); };
 	this->deserializers[WarpGateBP::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::PortalColor); };
 	this->deserializers[WarpGateCV::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::PortalColor); };
-	this->deserializers[WarpGateDH::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::PortalColor); };
+	this->deserializers[WarpGateFF::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::PortalColor); };
 	this->deserializers[WarpGateDM::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::PortalColor); };
 	this->deserializers[WarpGateEF::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::PortalColor); };
 	this->deserializers[WarpGateLC::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::PortalColor); };

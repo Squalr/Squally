@@ -243,7 +243,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Warp::MapKey] = [=](ValueMap properties) { return (GameObject*)Warp::create(properties); };
 	this->deserializers[WarpGateBP::MapKey] = [=](ValueMap properties) { return (GameObject*)WarpGateBP::create(properties); };
 	this->deserializers[WarpGateCV::MapKey] = [=](ValueMap properties) { return (GameObject*)WarpGateCV::create(properties); };
-	this->deserializers[WarpGateDH::MapKey] = [=](ValueMap properties) { return (GameObject*)WarpGateDH::create(properties); };
+	this->deserializers[WarpGateFF::MapKey] = [=](ValueMap properties) { return (GameObject*)WarpGateFF::create(properties); };
 	this->deserializers[WarpGateDM::MapKey] = [=](ValueMap properties) { return (GameObject*)WarpGateDM::create(properties); };
 	this->deserializers[WarpGateEF::MapKey] = [=](ValueMap properties) { return (GameObject*)WarpGateEF::create(properties); };
 	this->deserializers[WarpGateLC::MapKey] = [=](ValueMap properties) { return (GameObject*)WarpGateLC::create(properties); };

@@ -6,7 +6,6 @@
 #include <string>
 
 const std::string IsometricMapResources::BallmerPeaks_Map0 = "Private/Isometric/Maps/BallmerPeaks/Map0.tmx";
-const std::string IsometricMapResources::DaemonsHallow_Map0 = "Private/Isometric/Maps/DaemonsHallow/Map0.tmx";
 const std::string IsometricMapResources::EndianForest_Map1 = "Private/Isometric/Maps/EndianForest/Map1.tmx";
 const std::string IsometricMapResources::EndianForest_Map10 = "Private/Isometric/Maps/EndianForest/Map10.tmx";
 const std::string IsometricMapResources::EndianForest_Map11 = "Private/Isometric/Maps/EndianForest/Map11.tmx";
@@ -31,6 +30,7 @@ const std::string IsometricMapResources::EndianForest_Map7 = "Private/Isometric/
 const std::string IsometricMapResources::EndianForest_Map8 = "Private/Isometric/Maps/EndianForest/Map8.tmx";
 const std::string IsometricMapResources::EndianForest_Map9 = "Private/Isometric/Maps/EndianForest/Map9.tmx";
 const std::string IsometricMapResources::EndianForest_MapEmpty = "Private/Isometric/Maps/EndianForest/MapEmpty.tmx";
+const std::string IsometricMapResources::FirewallFissure_Map0 = "Private/Isometric/Maps/FirewallFissure/Map0.tmx";
 const std::string IsometricMapResources::LevelSelectMap = "Private/Isometric/Maps/LevelSelectMap.tmx";
 const std::string IsometricMapResources::Overworld = "Private/Isometric/Maps/Overworld.tmx";
 const std::string IsometricMapResources::Sanctum = "Private/Isometric/Maps/Sanctum.tmx";

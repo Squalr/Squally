@@ -114,7 +114,7 @@ void OpenDemonPortal::onActivate(bool isActiveThroughSkippable)
 
 void OpenDemonPortal::onComplete()
 {
-	Objectives::SetCurrentObjective(ObjectiveKeys::DHExploreDaemonsHallow);
+	Objectives::SetCurrentObjective(ObjectiveKeys::DHExploreFirewallFissure);
 }
 
 void OpenDemonPortal::onSkipped()

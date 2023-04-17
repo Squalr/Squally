@@ -2,7 +2,7 @@
 #include "Scenes/Platformer/Quests/CastleValgrind/ArcaneBookLine/ArcaneBookLine.h"
 #include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/CureKingLine.h"
 #include "Scenes/Platformer/Quests/CastleValgrind/SkyShipToCastle/SkyShipToCastleLine.h"
-#include "Scenes/Platformer/Quests/DaemonsHallow/ReleasePressure/ReleasePressureLine.h"
+#include "Scenes/Platformer/Quests/FirewallFissure/ReleasePressure/ReleasePressureLine.h"
 #include "Scenes/Platformer/Quests/DataMines/DefeatRhinoman/DefeatRhinomanLine.h"
 #include "Scenes/Platformer/Quests/DataMines/RestorePower/RestorePowerLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/BusinessHours/BusinessHoursLine.h"

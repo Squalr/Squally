@@ -166,7 +166,7 @@ void Objectives::InitMap()
 	priority = 500;
 
 	// DH
-	Objectives::ObjectiveMap[ObjectiveKeys::DHExploreDaemonsHallow] =  Objective([](){ return Strings::Platformer_Objectives_DaemonsHallow_DH_Explore::create()->setStringReplacementVariables(Strings::Platformer_MapNames_DaemonsHallow_DaemonsHallow::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::DHExploreFirewallFissure] =  Objective([](){ return Strings::Platformer_Objectives_FirewallFissure_DH_Explore::create()->setStringReplacementVariables(Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create()); }, priority++);
 	
 	priority = 600;
 

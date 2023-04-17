@@ -99,9 +99,9 @@ namespace HexusResources
 	extern const std::string Menus_EnemyFrameHover;
 	extern const std::string Menus_HexusFrameBallmerPeaks;
 	extern const std::string Menus_HexusFrameCastleValgrind;
-	extern const std::string Menus_HexusFrameDaemonsHallow;
 	extern const std::string Menus_HexusFrameDataMines;
 	extern const std::string Menus_HexusFrameEndianForest;
+	extern const std::string Menus_HexusFrameFirewallFissure;
 	extern const std::string Menus_HexusFrameLambdaCrypts;
 	extern const std::string Menus_HexusFrameTraining;
 	extern const std::string Menus_HexusFrameUnderflowRuins;

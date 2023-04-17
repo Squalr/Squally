@@ -41,5 +41,5 @@ Vec2 Rusty::getDialogueOffset()
 
 LocalizedString* Rusty::getEntityName()
 {
-	return Strings::Platformer_Entities_Names_Npcs_DaemonsHallow_Rusty::create();
+	return Strings::Platformer_Entities_Names_Npcs_FirewallFissure_Rusty::create();
 }

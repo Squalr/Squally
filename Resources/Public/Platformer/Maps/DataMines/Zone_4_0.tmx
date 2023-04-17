@@ -45,7 +45,7 @@
    <properties>
     <property name="components" value="locked-portal"/>
     <property name="item-required" value="demon-heart"/>
-    <property name="map" value="DaemonsHallow/Zone_1_0"/>
+    <property name="map" value="FirewallFissure/Zone_1_0"/>
     <property name="quest" value="open-demon-portal"/>
     <property name="quest-line" value="craft-demon-heart"/>
     <property name="transition" value="hell-gate"/>
@@ -214,9 +214,9 @@
    <properties>
     <property name="components" value="friendly"/>
     <property name="flip-x" type="bool" value="false"/>
-    <property name="pocket-pool" value="dn-generic"/>
+    <property name="pocket-pool" value="dm-generic"/>
     <property name="quest" value="boat-unlocked"/>
-    <property name="quest-line" value="boat-to-daemons"/>
+    <property name="quest-line" value="boat-to-firewall-fissure"/>
    </properties>
   </object>
  </objectgroup>

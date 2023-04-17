@@ -317,9 +317,9 @@
     <property name="quest-line" value="restore-warp-gates"/>
    </properties>
   </object>
-  <object id="979" name="warp-gate-dh" type="object" x="4254.02" y="114.363" width="483" height="678">
+  <object id="979" name="warp-gate-ff" type="object" x="4254.02" y="114.363" width="483" height="678">
    <properties>
-    <property name="quest" value="power-warp-gate-dh"/>
+    <property name="quest" value="power-warp-gate-ff"/>
     <property name="quest-line" value="restore-warp-gates"/>
    </properties>
   </object>
@@ -629,8 +629,8 @@
   </object>
   <object id="1027" name="portal" type="object" x="4365.33" y="793.333" width="256" height="256">
    <properties>
-    <property name="map" value="DaemonsHallow/Mages_Warp"/>
-    <property name="quest" value="power-warp-gate-dh"/>
+    <property name="map" value="FirewallFissure/Mages_Warp"/>
+    <property name="quest" value="power-warp-gate-ff"/>
     <property name="quest-line" value="restore-warp-gates"/>
     <property name="transition" value="lc"/>
    </properties>
