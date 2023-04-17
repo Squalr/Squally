@@ -503,23 +503,23 @@ DeveloperScene::DeveloperScene()
 
 	// CHAPTER 6 - XMM* / More Jumps / Misc
 	{
-		ClickableTextNode* titleButton = this->buildTitleButton("Daemons' Hallow");
+		ClickableTextNode* titleButton = this->buildTitleButton("Firewall Fissure");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (DH)", MapResources::FirewallFissure_Mages_Warp));
-		mapList.push_back(this->buildDebugButton("Town Main (DH)", MapResources::FirewallFissure_Town_Main));
-		mapList.push_back(this->buildDebugButton("Alch (DH)", MapResources::FirewallFissure_Town_Alch));
-		mapList.push_back(this->buildDebugButton("Inn (DH)", MapResources::FirewallFissure_Town_Inn));
-		mapList.push_back(this->buildDebugButton("Smith (DH)", MapResources::FirewallFissure_Town_Smith));
-		mapList.push_back(this->buildDebugButton("Zone_3_1 (DH)", MapResources::FirewallFissure_Zone_3_1));
-		mapList.push_back(this->buildDebugButton("Zone_3_0 (DH)", MapResources::FirewallFissure_Zone_3_0));
-		mapList.push_back(this->buildDebugButton("Zone_2_3 (DH)", MapResources::FirewallFissure_Zone_2_3));
-		mapList.push_back(this->buildDebugButton("Zone_2_2 (DH)", MapResources::FirewallFissure_Zone_2_2));
-		mapList.push_back(this->buildDebugButton("Zone_2_1 (DH)", MapResources::FirewallFissure_Zone_2_1));
-		mapList.push_back(this->buildDebugButton("Zone_2_0 (DH)", MapResources::FirewallFissure_Zone_2_0));
-		mapList.push_back(this->buildDebugButton("Zone_1_0_a (DH)", MapResources::FirewallFissure_Zone_1_0_a));
-		mapList.push_back(this->buildDebugButton("Zone_1_0 (DH)", MapResources::FirewallFissure_Zone_1_0));
+		mapList.push_back(this->buildDebugButton("Warp Room (FF)", MapResources::FirewallFissure_Mages_Warp));
+		mapList.push_back(this->buildDebugButton("Town Main (FF)", MapResources::FirewallFissure_Town_Main));
+		mapList.push_back(this->buildDebugButton("Alch (FF)", MapResources::FirewallFissure_Town_Alch));
+		mapList.push_back(this->buildDebugButton("Inn (FF)", MapResources::FirewallFissure_Town_Inn));
+		mapList.push_back(this->buildDebugButton("Smith (FF)", MapResources::FirewallFissure_Town_Smith));
+		mapList.push_back(this->buildDebugButton("Zone_3_1 (FF)", MapResources::FirewallFissure_Zone_3_1));
+		mapList.push_back(this->buildDebugButton("Zone_3_0 (FF)", MapResources::FirewallFissure_Zone_3_0));
+		mapList.push_back(this->buildDebugButton("Zone_2_3 (FF)", MapResources::FirewallFissure_Zone_2_3));
+		mapList.push_back(this->buildDebugButton("Zone_2_2 (FF)", MapResources::FirewallFissure_Zone_2_2));
+		mapList.push_back(this->buildDebugButton("Zone_2_1 (FF)", MapResources::FirewallFissure_Zone_2_1));
+		mapList.push_back(this->buildDebugButton("Zone_2_0 (FF)", MapResources::FirewallFissure_Zone_2_0));
+		mapList.push_back(this->buildDebugButton("Zone_1_0_a (FF)", MapResources::FirewallFissure_Zone_1_0_a));
+		mapList.push_back(this->buildDebugButton("Zone_1_0 (FF)", MapResources::FirewallFissure_Zone_1_0));
 
 		// ================== TODO ================== 
 		// Traps: Fire bird, fire launcher, TNT barrel, mortar
@@ -671,7 +671,7 @@ DeveloperScene::DeveloperScene()
 	- EF => CV (blimp 2) - Finch
 	- CV => BP (blimp 3) - Irmik
 	- CV => LC (train) - Garin
-	- DM => DH (viking ship or smth) - Drak
+	- DM => FF (viking ship or smth) - Drak
 	- BP => BP (viking ship or smth) - <Any>
 
 	- Exterminator			=>  
@@ -705,7 +705,7 @@ DeveloperScene::DeveloperScene()
 	DM		//	Cypress
 	CV		//	Merlin
 	BP		//	Aster
-	DH		//	Igneus
+	FF		//	Igneus
 	LC		//	Necron
 	VS		//	Marcel
 
@@ -799,14 +799,14 @@ DeveloperScene::DeveloperScene()
 	X Wolf			LC 4_0_a
 	X Worm			LC 1_1_a
 
-	// DH
-	X Bee			DH 1_x
-	X Ladybug		DH 1_x
-	X Dinosaur		DH 2_x
-	X Lizard		DH 2_x
-	X Snake			DH 3_x
-	X Crocodile		DH 3_x
-	X Tucan			DH Inn upstairs
+	// FF
+	X Bee			FF 1_x
+	X Ladybug		FF 1_x
+	X Dinosaur		FF 2_x
+	X Lizard		FF 2_x
+	X Snake			FF 3_x
+	X Crocodile		FF 3_x
+	X Tucan			FF Inn upstairs
 
 	// BP
 	Blowfish		BP	??
@@ -829,7 +829,7 @@ DeveloperScene::DeveloperScene()
 	GOLD		- T3 - DM
 	MITHRIL		- T4 - DM
 	CRYSTAL		- T5 - BP
-	DEMONIC		- T6 - DH
+	DEMONIC		- T6 - FF
 	BONE		- T7 - LC
 	VOID		- T8 - VS
 
@@ -915,7 +915,7 @@ DeveloperScene::DeveloperScene()
 	Gold		- T3		DM	
 	Mithril		- T5		CV
 	Crystal		- T4		BP
-	Sulf		- T6		DH
+	Sulf		- T6		FF
 	Bone		- T7		LC
 	Obsidian	- T8		VS
 

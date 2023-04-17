@@ -43,7 +43,7 @@ RecipePoolDeserializer::RecipePoolDeserializer() : super(RecipePoolDeserializer:
 	this->deserializers[AlchemyPoolBP::PoolName] = [=](ValueMap properties) { return (GameObject*)AlchemyPoolBP::create(properties); };
 	this->deserializers[SmithingPoolBP::PoolName] = [=](ValueMap properties) { return (GameObject*)SmithingPoolBP::create(properties); };
 
-	// DH
+	// FF
 	this->deserializers[AlchemyPoolFF::PoolName] = [=](ValueMap properties) { return (GameObject*)AlchemyPoolFF::create(properties); };
 	this->deserializers[SmithingPoolFF::PoolName] = [=](ValueMap properties) { return (GameObject*)SmithingPoolFF::create(properties); };
 

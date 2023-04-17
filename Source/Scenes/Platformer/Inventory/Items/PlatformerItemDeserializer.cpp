@@ -341,7 +341,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[FrostKey::SaveKey] = [=]() { return (Item*)FrostKey::create(); };
 	this->deserializers[FrozenKey::SaveKey] = [=]() { return (Item*)FrozenKey::create(); };
 
-	// Keys DH
+	// Keys FF
 	this->deserializers[DemonKey::SaveKey] = [=]() { return (Item*)DemonKey::create(); };
 	this->deserializers[DemonHeart::SaveKey] = [=]() { return (Item*)DemonHeart::create(); };
 	this->deserializers[HellKey::SaveKey] = [=]() { return (Item*)HellKey::create(); };

@@ -55,7 +55,7 @@ PlatformerBannerDeserializer::PlatformerBannerDeserializer() : super()
 	this->deserializers["grave-flower"] = [=]() { return Strings::Platformer_MapNames_LambdaCrypts_GraveFlower::create(); };
 	this->deserializers["valley-ash"] = [=]() { return Strings::Platformer_MapNames_LambdaCrypts_ValleyOfAsh::create(); };
 
-	// DH
+	// FF
 	this->deserializers["firewall-fissure"] = [=]() { return Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create(); };
 	this->deserializers["brimstone"] = [=]() { return Strings::Platformer_MapNames_FirewallFissure_Brimstone::create(); };
 

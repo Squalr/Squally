@@ -165,8 +165,8 @@ void Objectives::InitMap()
 
 	priority = 500;
 
-	// DH
-	Objectives::ObjectiveMap[ObjectiveKeys::DHExploreFirewallFissure] =  Objective([](){ return Strings::Platformer_Objectives_FirewallFissure_DH_Explore::create()->setStringReplacementVariables(Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create()); }, priority++);
+	// FF
+	Objectives::ObjectiveMap[ObjectiveKeys::FFExploreFirewallFissure] =  Objective([](){ return Strings::Platformer_Objectives_FirewallFissure_FF_Explore::create()->setStringReplacementVariables(Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create()); }, priority++);
 	
 	priority = 600;
 

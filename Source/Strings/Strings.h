@@ -32769,10 +32769,10 @@ namespace Strings
 		virtual ~Platformer_Objectives_EndianForest_EF_VisitQueen() = default;
 	};
 
-	class Platformer_Objectives_FirewallFissure_DH_Explore : public LocalizedString
+	class Platformer_Objectives_FirewallFissure_FF_Explore : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_FirewallFissure_DH_Explore* create();
+		static Platformer_Objectives_FirewallFissure_FF_Explore* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32780,8 +32780,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Objectives_FirewallFissure_DH_Explore();
-		virtual ~Platformer_Objectives_FirewallFissure_DH_Explore() = default;
+		Platformer_Objectives_FirewallFissure_FF_Explore();
+		virtual ~Platformer_Objectives_FirewallFissure_FF_Explore() = default;
 	};
 
 	class Platformer_Objectives_LambdaCrypts_LC_CraftDemonHeart : public LocalizedString

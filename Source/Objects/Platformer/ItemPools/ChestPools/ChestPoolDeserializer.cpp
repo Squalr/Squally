@@ -59,7 +59,7 @@ ChestPoolDeserializer::ChestPoolDeserializer() : super(ChestPoolDeserializer::Ma
 	this->deserializers[ChestPoolLCGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolLCGeneric::create(properties); };
 	this->deserializers[ChestPoolLCRare::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolLCRare::create(properties); };
 
-	// DH pools
+	// FF pools
 	this->deserializers[ChestPoolFFGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolFFGeneric::create(properties); };
 	this->deserializers[ChestPoolFFRare::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolFFRare::create(properties); };
 

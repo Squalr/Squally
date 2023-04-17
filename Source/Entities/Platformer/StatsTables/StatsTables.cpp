@@ -270,7 +270,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Zelina::MapKey] = NpcStats;
 
 	/***********
-		DH
+		FF
 	************/
 
 	StatsTables::StatsTable[Asmodeus::MapKey] = StatsIncrements(Stats(165, 30, 315));

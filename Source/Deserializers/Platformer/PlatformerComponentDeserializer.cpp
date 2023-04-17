@@ -176,7 +176,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[Tier5LCHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier5LCHexusBehavior::create(owner); };
 	this->componentDeserializers[Tier6LCHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier6LCHexusBehavior::create(owner); };
 
-	// DH
+	// FF
 	this->componentDeserializers[FFPuzzleABehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)FFPuzzleABehavior::create(owner); };
 	this->componentDeserializers[FFPuzzleBBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)FFPuzzleBBehavior::create(owner); };
 	this->componentDeserializers[FFPuzzleCBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)FFPuzzleCBehavior::create(owner); };
@@ -315,7 +315,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[WaterElementalCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)WaterElementalCombatBehavior::create(owner); };
 	this->componentDeserializers[YetiCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)YetiCombatBehavior::create(owner); };
 
-	// DH
+	// FF
 	this->componentDeserializers[AsmodeusCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)AsmodeusCombatBehavior::create(owner); };
 	this->componentDeserializers[DemonArcherCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DemonArcherCombatBehavior::create(owner); };
 	this->componentDeserializers[DemonDragonCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DemonDragonCombatBehavior::create(owner); };
