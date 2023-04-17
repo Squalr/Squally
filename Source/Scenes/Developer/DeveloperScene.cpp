@@ -524,15 +524,9 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// Traps: Fire bird, fire launcher, TNT barrel, mortar
-		// ** Needs hexus puzzles
-		// ** Needs hexus battles
-		// ** Tune hexus battle special cards
-		// ** Needs enemy scripting according to notes on which instructions this zone covers
-		// ** 1_x should be the initial overworld + caves (Dragon, Ghost, Elemental, Golem)
-		// ** 2_x should be more caves connecting town to the 3_x maps (Shaman, Swordsman, Rogue)
-		//		Do we still want these?
-		// ** 3_x is all overworld (Tiger, Warrior, Grunt, Archer)
-		// Hide collectables better
+		// ** Implement hexus puzzles
+		// ** Add hexus battles
+		// ** Hide collectables better
 
 		/*
 		Surface:

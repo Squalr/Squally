@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1970">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1972">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -391,6 +391,17 @@
     <property name="direction" value="left"/>
     <property name="map" value="DaemonsHallow_Zone_1_1"/>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1970" name="hexus-shrine" type="object" x="4970.27" y="1933.59" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-lava-golem"/>
+   </properties>
+  </object>
+  <object id="1971" name="lava-golem" type="entity" x="4973.73" y="5202.4" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,dh-puzzle-D"/>
+    <property name="tag" value="hexus-lava-golem"/>
    </properties>
   </object>
  </objectgroup>

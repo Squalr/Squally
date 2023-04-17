@@ -418,7 +418,6 @@
     <property name="reward-pool" value="dh-generic"/>
    </properties>
   </object>
-  <object id="1964" name="caged-ladybug" type="object" x="1922" y="2252" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

@@ -92,6 +92,8 @@ StateOverride* DHPuzzleEBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOR),
 		},
 		// Enemy hand
 		std::vector<CardData*>

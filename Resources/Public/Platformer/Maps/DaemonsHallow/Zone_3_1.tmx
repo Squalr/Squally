@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="172" nextobjectid="989">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="172" nextobjectid="991">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -392,6 +392,17 @@
     <property name="map" value="DaemonsHallow/Zone_1_0"/>
     <property name="send-event" value="pressure-released"/>
     <property name="transition" value="pressure"/>
+   </properties>
+  </object>
+  <object id="989" name="hexus-shrine" type="object" x="2902.5" y="2069.6" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-fire-tiger"/>
+   </properties>
+  </object>
+  <object id="990" name="fire-tiger" type="entity" x="2921.96" y="6266.4" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,dh-puzzle-G"/>
+    <property name="tag" value="hexus-fire-tiger"/>
    </properties>
   </object>
  </objectgroup>
