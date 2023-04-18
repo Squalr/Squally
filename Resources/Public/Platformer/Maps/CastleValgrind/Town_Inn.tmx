@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="30" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="842">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="30" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="846">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -333,6 +333,21 @@
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
     <property name="travel-distance" type="float" value="192"/>
+   </properties>
+  </object>
+  <object id="843" name="gecky" type="entity" x="3331.19" y="937.38" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,recruitable"/>
+   </properties>
+  </object>
+  <object id="844" name="guano" type="entity" x="3002" y="938.62" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,recruitable"/>
+   </properties>
+  </object>
+  <object id="845" name="grim" type="entity" x="3650" y="940" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,recruitable"/>
    </properties>
   </object>
  </objectgroup>

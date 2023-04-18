@@ -80,6 +80,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 
 	// Helpers
 	this->componentDeserializers[GeckyBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)GeckyBehaviorGroup::create(owner); };
+	this->componentDeserializers[GrimBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)GrimBehaviorGroup::create(owner); };
 	this->componentDeserializers[GuanoBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)GuanoBehaviorGroup::create(owner); };
 	this->componentDeserializers[GuanoPetrifiedBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)GuanoPetrifiedBehaviorGroup::create(owner); };
 	this->componentDeserializers[ScrappyBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)ScrappyBehaviorGroup::create(owner); };

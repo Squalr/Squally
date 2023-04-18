@@ -35,6 +35,7 @@
 #include "Scenes/Platformer/Components/Entities/Helpers/Scrappy/Combat/ScrappyCombatBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Scrappy/ScrappyBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Gecky/GeckyBehaviorGroup.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/Grim/GrimBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Guano/GuanoBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/GuanoPetrified/GuanoPetrifiedBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Recruitable/RecruitableBehavior.h"

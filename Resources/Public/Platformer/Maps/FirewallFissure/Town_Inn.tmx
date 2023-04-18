@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="26" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="833">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="26" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="836">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -286,13 +286,28 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="833" name="gecky" type="entity" x="3076.14" y="939.753" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,recruitable"/>
+   </properties>
+  </object>
+  <object id="834" name="guano" type="entity" x="1838.49" y="941.221" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,recruitable"/>
+   </properties>
+  </object>
+  <object id="835" name="grim" type="entity" x="1157.44" y="941.15" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,recruitable"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="592.265" y="938.223" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="598.577" y="938.223" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>

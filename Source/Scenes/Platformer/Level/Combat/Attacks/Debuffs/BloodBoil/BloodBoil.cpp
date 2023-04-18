@@ -178,7 +178,7 @@ NO_OPTIMIZE void BloodBoil::applyBloodBoil()
 	ASM_MOV_REG_VAR(ZAX, currentDamageDealtLocalPtr);
 	ASM_MOV_REG_VAR(ZBX, fixedDamagePtr);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SCALDING_BLADE);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_BLOOD_BOIL);
 	ASM(movss xmm0, dword ptr [ZBX]);
 	ASM(movss dword ptr [ZAX], xmm0);
 	ASM_NOP16();

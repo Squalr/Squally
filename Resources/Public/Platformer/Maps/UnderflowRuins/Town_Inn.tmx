@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="838">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="841">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -308,6 +308,21 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="838" name="gecky" type="entity" x="4276.99" y="942.567" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,recruitable"/>
+   </properties>
+  </object>
+  <object id="839" name="guano" type="entity" x="3881.75" y="941.005" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,recruitable"/>
+   </properties>
+  </object>
+  <object id="840" name="grim" type="entity" x="2531.01" y="946.995" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,recruitable"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
