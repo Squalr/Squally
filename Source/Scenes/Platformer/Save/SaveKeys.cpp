@@ -20,6 +20,7 @@ const std::string SaveKeys::SaveKeySquallyLayerId = "SAVE_KEY_SQUALLY_LAYER_ID";
 const std::string SaveKeys::SaveKeyScrappyFound = "SAVE_KEY_Scrappy_FOUND"; // Don't fix casing, backwards compat
 const std::string SaveKeys::SaveKeyGuanoFound = "SAVE_KEY_GUANO_FOUND";
 const std::string SaveKeys::SaveKeyGeckyFound = "SAVE_KEY_GECKY_FOUND";
+const std::string SaveKeys::SaveKeyGrimFound = "SAVE_KEY_GRIM_FOUND";
 
 const std::string SaveKeys::SaveKeyHelperName = "SAVE_KEY_HELPER_NAME";
 const std::string SaveKeys::SaveKeyHelperHeath = "SAVE_KEY_HELPER_HEALTH";
@@ -36,6 +37,11 @@ const std::string SaveKeys::SaveKeyGeckyHealth = "SAVE_KEY_GECKY_HEALTH";
 const std::string SaveKeys::SaveKeyGeckyMana = "SAVE_KEY_GECKY_MANA";
 const std::string SaveKeys::SaveKeyGeckyEq = "SAVE_KEY_GECKY_EQ";
 const std::string SaveKeys::SaveKeyGeckyEqExperience = "SAVE_KEY_GECKY_EQ_EXPERIENCE";
+
+const std::string SaveKeys::SaveKeyGrimHealth = "SAVE_KEY_GRIM_HEALTH";
+const std::string SaveKeys::SaveKeyGrimMana = "SAVE_KEY_GRIM_MANA";
+const std::string SaveKeys::SaveKeyGrimEq = "SAVE_KEY_GRIM_EQ";
+const std::string SaveKeys::SaveKeyGrimEqExperience = "SAVE_KEY_GRIM_EQ_EXPERIENCE";
 
 const std::string SaveKeys::SaveKeyRespawnMap = "SAVE_KEY_RESPAWN_MAP";
 const std::string SaveKeys::SaveKeyRespawnObjectId = "SAVE_KEY_RESPAWN_OBJECT_ID";

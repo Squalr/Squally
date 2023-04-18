@@ -772,7 +772,7 @@ DeveloperScene::DeveloperScene()
 	// DM
 	X Bat			DM	Inn upstairs
 	X Bird			DM	1_1_a
-	X Turtle			DM	2_0
+	X Turtle		DM	2_0
 	X Raccoon		DM	2_3
 	X Rhino			DM	3_x
 	X Sheep			DM	Home Godiva
@@ -1066,8 +1066,9 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 			
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoFound, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGrimFound, Value(true));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));

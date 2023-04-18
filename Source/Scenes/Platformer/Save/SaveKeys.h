@@ -25,6 +25,7 @@ public:
 	static const std::string SaveKeyScrappyFound;
 	static const std::string SaveKeyGuanoFound;
 	static const std::string SaveKeyGeckyFound;
+	static const std::string SaveKeyGrimFound;
 
 	static const std::string SaveKeyHelperName;
 	static const std::string SaveKeyHelperHeath;
@@ -32,15 +33,20 @@ public:
 	static const std::string SaveKeyHasGivenDefaultItems;
 	static const std::string SaveKeyCrackProgress;
 
+	static const std::string SaveKeyGuanoHealth;
+	static const std::string SaveKeyGuanoMana;
+	static const std::string SaveKeyGuanoEq;
+	static const std::string SaveKeyGuanoEqExperience;
+
 	static const std::string SaveKeyGeckyHealth;
 	static const std::string SaveKeyGeckyMana;
 	static const std::string SaveKeyGeckyEq;
 	static const std::string SaveKeyGeckyEqExperience;
 
-	static const std::string SaveKeyGuanoHealth;
-	static const std::string SaveKeyGuanoMana;
-	static const std::string SaveKeyGuanoEq;
-	static const std::string SaveKeyGuanoEqExperience;
+	static const std::string SaveKeyGrimHealth;
+	static const std::string SaveKeyGrimMana;
+	static const std::string SaveKeyGrimEq;
+	static const std::string SaveKeyGrimEqExperience;
 
 	static const std::string SaveKeyRespawnMap;
 	static const std::string SaveKeyRespawnObjectId;

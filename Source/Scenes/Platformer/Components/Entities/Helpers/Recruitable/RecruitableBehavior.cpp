@@ -16,6 +16,7 @@
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Helpers/DataMines/Gecky.h"
+#include "Entities/Platformer/Helpers/CastleValgrind/Grim.h"
 #include "Entities/Platformer/Helpers/UnderflowRuins/GuanoPetrified.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -105,6 +106,10 @@ void RecruitableBehavior::updateStateForCurrentHelper(std::string currentHelperN
 		{
 			isHelperAvailable = false;
 		}
+		else if (helperName == Grim::MapKey && !SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGrimFound, Value(false)).asBool())
+		{
+			isHelperAvailable = false;
+		}
 
 		if (currentHelperName == helperName || !isHelperAvailable)
 		{
@@ -128,6 +133,10 @@ void RecruitableBehavior::updateStateForCurrentHelper(std::string currentHelperN
 		else if (helperName == Gecky::MapKey)
 		{
 			dialog = Strings::Platformer_Dialogue_Recruitable_GeckyRecruitable::create();
+		}
+		else if (helperName == Grim::MapKey)
+		{
+			dialog = Strings::Platformer_Dialogue_Recruitable_GrimRecruitable::create();
 		}
 
 		interactionBehavior->clearPretext();
