@@ -6,6 +6,7 @@
 #include "Scenes/Platformer/Components/Combat/Tutorials/IncrementHealthFlaskTutorialBehavior.h"
 #include "Scenes/Platformer/Components/Combat/Tutorials/TrainingHealTutorialBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Abilities/EntityPickPocketBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Abilities/EntitySoulBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Cinematic/MageCastBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Ally/EnemyBattleAllyBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Combat/AgroBehavior.h"

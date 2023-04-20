@@ -36,6 +36,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[EntityPetrificationBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)EntityPetrificationBehavior::create(owner); };
 	this->componentDeserializers[EntityPickPocketBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)EntityPickPocketBehavior::create(owner); };
 	this->componentDeserializers[EntityRunBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)EntityRunBehavior::create(owner); };
+	this->componentDeserializers[EntitySoulBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)EntitySoulBehavior::create(owner); };
 	this->componentDeserializers[DispelIllusionBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DispelIllusionBehavior::create(owner); };
 	this->componentDeserializers[FriendlyBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)FriendlyBehaviorGroup::create(owner); };
 	this->componentDeserializers[FirstIOUFound::MapKey] = [=](GameObject* owner) { return (GameComponent*)FirstIOUFound::create(owner); };

@@ -1076,6 +1076,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyEq, Value(8));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyEq, Value(7));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGrimEq, Value(10));
 			
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyRespawnMap, Value(mapResource));
 

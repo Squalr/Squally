@@ -31,6 +31,11 @@ void CursorSets::RegisterCursorSets()
 		Mouse::CursorSet(UIResources::Cursors_MouseIdle, UIResources::Cursors_Craft, UIResources::Cursors_Craft, UIResources::Cursors_Craft)
 	);
 
+	Mouse::getInstance()->registerCursorSet(
+		CursorSet::SoulHarvest,
+		Mouse::CursorSet(UIResources::Cursors_MouseIdle, UIResources::Cursors_Door, UIResources::Cursors_Door, UIResources::Cursors_Door)
+	);
+
 	CursorSets::SetActiveCursorSet(CursorSet::Default);
 }
 

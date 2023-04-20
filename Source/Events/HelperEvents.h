@@ -12,6 +12,7 @@ public:
 	static const std::string EventFindScrappy;
 	static const std::string EventRequestPickPocket;
 	static const std::string EventRequestRepair;
+	static const std::string EventRequestSoulHarvest;
 
 	struct RequestPickPocketArgs
 	{
@@ -39,7 +40,20 @@ public:
 		}
 	};
 
+	struct RequestSoulHarvestArgs
+	{
+		PlatformerEntity* target = nullptr;
+		std::function<void()> onSoulHarvested = nullptr;
+		std::string saveKeySoulHarvested;
+
+		RequestSoulHarvestArgs(PlatformerEntity* target, std::function<void()> onSoulHarvested, std::string saveKeySoulHarvested)
+			: target(target), onSoulHarvested(onSoulHarvested), saveKeySoulHarvested(saveKeySoulHarvested)
+		{
+		}
+	};
+
 	static void TriggerFindScrappy();
 	static void TriggerRequestPickPocket(RequestPickPocketArgs args);
 	static void TriggerRequestRepair(RequestRepairArgs args);
+	static void TriggerRequestSoulHarvest(RequestSoulHarvestArgs args);
 };
