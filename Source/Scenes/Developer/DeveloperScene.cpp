@@ -70,24 +70,26 @@ DeveloperScene::DeveloperScene()
 	}
 
 	/*
-	- Changing language does not update readonly scripts after they are loaded once
-	- CPU noises when turned on in DM
-	- Train noises in DM/CV
+	- ** FX for soul harvest
 	- * Can get stuck on roof of maps (see UR 3_1)
+	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+ (Fixed?)
+	- Sometimes hackable icon is below entity (Potentially fixed on 4/20/2023, blaze it)
+	- Changing language does not update readonly scripts after they are loaded once
+	- Add CPU noises when turned on in DM
+	- Add Train noises in DM/CV
 	- Sanity check card localization (due to art changes)
 	- Tune Alch / Card tier pools
-	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+
 	- Infinity symbol in hexus does not localize to arabic (and maybe others)
 	- Text navigation in editable assembly text is broken for arabic
+	- Text navigation is pretty bad in long scripts.
 	- Pacing behavior is broken for portal maps
 	- Techncially Squally respawns on object layer upon death, although usually this is not noticeable
 	- Chapter transitions can be more special
 	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles) (edit: repro inconsistent)
-	- Sometimes hackable icon is below entity
 	- Evil Eye chase scenes, cracks in simulation for story
 	- Hexus:
-		- Can pass after auto-loss
 		- * Reduce Hexus fights to 6 per chapter (ignoring VS) (6 * 7 = 42 fights)
+		- Can pass after auto-loss
 		- Rematch dialog does not load unless map is reloaded
 		- Win a hexus puzzle, next one will show massive row score deltas
 		- Leave button stuck visible after losing a puzzle
@@ -112,7 +114,7 @@ DeveloperScene::DeveloperScene()
 		- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
 	- Necron hitbox wrong in Mages guild (inconsistent?)
 	- "Quick-potion" capabilities
-	- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities)
+	- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie DH)
 
 	- Just get a few top down replacement maps in. Should be able to do this fairly seamlessly.
 		- Invisible helpers. Some way to pull helpers into combat
@@ -135,7 +137,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Inn (EF)", MapResources::EndianForest_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (EF)", MapResources::EndianForest_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Alch (EF)", MapResources::EndianForest_Town_Alch));
-		mapList.push_back(this->buildDebugButton("Balmer's Peak", MapResources::BallmerPeaks_Town_Main));
+		mapList.push_back(this->buildDebugButton("Ballmer's Peak", MapResources::BallmerPeaks_Town_Main));
 		mapList.push_back(this->buildDebugButton("Liana Back (EF)", MapResources::EndianForest_Town_Liana_Back));
 		mapList.push_back(this->buildDebugButton("Liana (EF)", MapResources::EndianForest_Town_Liana));
 		mapList.push_back(this->buildDebugButton("Ara (EF)", MapResources::EndianForest_Home_Ara));
@@ -377,7 +379,7 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ==================
 		// Traps: Organ gun, cannon, catapult, ballista, heaven hug (FPU acceptable, given that jmps are pretty much done)
-		
+
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
 		X Thug					1_x		=> jmp 			--			Heavy blade
