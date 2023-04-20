@@ -74,6 +74,7 @@ private:
 	void refreshParticleFx();
 	void createHackParticles();
 	void createHackCircle();
+	void moveUIToTopLayer();
 	HackButton* buildHackButton();
 
 	cocos2d::Node* hackParticlesNode = nullptr;

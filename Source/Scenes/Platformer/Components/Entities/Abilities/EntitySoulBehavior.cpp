@@ -11,6 +11,7 @@
 #include "Engine/Physics/EnginePhysicsTypes.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/UI/Mouse.h"
+#include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Helpers/CastleValgrind/Grim.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -43,8 +44,8 @@ EntitySoulBehavior* EntitySoulBehavior::create(GameObject* owner)
 
 EntitySoulBehavior::EntitySoulBehavior(GameObject* owner) : super(owner)
 {
-	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->soulHarvestIcon = Sprite::create(UIResources::Menus_Icons_AngelFigurine);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
 	this->soulHarvestIcon->setScale(0.75f);
 
@@ -106,6 +107,8 @@ void EntitySoulBehavior::onLoad()
 				CursorSets::SetActiveCursorSet(CursorSets::Default);
 			});
 		});
+
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->soulHarvestIcon));
 	});
 	
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)

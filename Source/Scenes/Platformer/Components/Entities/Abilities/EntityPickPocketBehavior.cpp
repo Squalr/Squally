@@ -108,6 +108,8 @@ void EntityPickPocketBehavior::onLoad()
 				CursorSets::SetActiveCursorSet(CursorSets::Default);
 			});
 		});
+
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->pickPocketIcon));
 	});
 	
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)

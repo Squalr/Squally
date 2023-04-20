@@ -65,6 +65,11 @@ void HackableObject::onEnterTransitionDidFinish()
 	super::onEnterTransitionDidFinish();
 
 	this->registerHackables();
+
+	this->defer([=]()
+	{
+		this->moveUIToTopLayer();
+	});
 }
 
 void HackableObject::initializeListeners()
@@ -87,16 +92,6 @@ void HackableObject::initializePositions()
 void HackableObject::update(float dt)
 {
 	super::update(dt);
-
-	if (!this->hasRelocatedUI && !this->hackableList.empty())
-	{	
-		// Move the UI elements to the top-most layer. Deferred until now as an optimization, as TriggerBindObjectToUI is expensive
-		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->uiElementsButton));
-		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->uiElementsRain));
-		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->uiElementsProgressBars));
-
-		this->hasRelocatedUI = true;
-	}
 
 	this->updateTimeRemainingBars();
 }
@@ -527,4 +522,16 @@ HackButton* HackableObject::buildHackButton()
 	});
 
 	return instance;
+}
+
+void HackableObject::moveUIToTopLayer()
+{
+	if (!this->hasRelocatedUI && !this->hackableList.empty())
+	{
+		// Move the UI elements to the top-most layer. Deferred until now as an optimization, as TriggerBindObjectToUI is expensive
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->uiElementsButton));
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->uiElementsRain));
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->uiElementsProgressBars));
+		this->hasRelocatedUI = true;
+	}
 }
