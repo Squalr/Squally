@@ -324,11 +324,12 @@ void TalkToPrincessDawn::runCinematicSequencePt1()
 			),
 			[=]()
 			{
-				 // Backwards compat, this field was added mid development, and we want to avoid Guano being inaccessible to old patches
+				// Backwards compat, this field was added mid development, and we want to avoid Guano being inaccessible to old patches
 				SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoFound, Value(true));
 				SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
 				this->squally->setState(StateKeys::CurrentHelper, Value(Gecky::MapKey));
 
+				// Despawn cinematic Gecky
 				if (this->gecky != nullptr)
 				{
 					this->gecky->despawn();

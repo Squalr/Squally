@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="30" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="846">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="846">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -169,7 +169,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="801" name="castle" type="terrain" x="2786" y="-44.7874" width="1118.67" height="1318.18">
+  <object id="801" name="castle" type="terrain" x="2786" y="-44.7874" width="1348.97" height="1318.18">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -221,7 +221,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="803" name="marble" type="terrain" x="-116.665" y="1066.61" width="4050.3" height="245.455"/>
+  <object id="803" name="marble" type="terrain" x="-116.665" y="1066.61" width="4292.72" height="245.455"/>
  </objectgroup>
  <objectgroup id="112" name="decor bg">
   <properties>

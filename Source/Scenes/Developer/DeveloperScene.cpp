@@ -376,9 +376,9 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (CV)", MapResources::CastleValgrind_Zone_1_0));
 
 		// ================== TODO ==================
-		// ** Traps: Organ gun, cannon, catapult, ballista, heaven hug (FPU acceptable, given that jmps are pretty much done)
-		// ** New helper? Would need a story rewrite to justify it. If anything, a repear to claim spirit souls, or some shit.
-		//		* Ability would be registered to helper. Could also allow this helper to steal enemy abilities from enemy corpses (1 activate at a time)
+		// Traps: Organ gun, cannon, catapult, ballista, heaven hug (FPU acceptable, given that jmps are pretty much done)
+		// ** Modify quests to grant Grim
+		// ** Require using Grim on all CV enemy corpses to increase soul count
 
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.

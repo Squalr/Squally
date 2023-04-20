@@ -48,7 +48,6 @@ namespace MapResources
 	extern const std::string CastleValgrind_Zone_Dark_Town_Main;
 	extern const std::string CastleValgrind_Zone_Dark_Town_Smith;
 	extern const std::string CastleValgrind_Zone_Dark_Town_Study;
-	extern const std::string DaemonsHallow_Mages_Warp;
 	extern const std::string DataMines_Combat_Caves;
 	extern const std::string DataMines_Home_Burch;
 	extern const std::string DataMines_Home_Cypress;

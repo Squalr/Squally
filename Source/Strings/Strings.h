@@ -31674,6 +31674,21 @@ namespace Strings
 		virtual ~Platformer_Help_HelpTotemGecky() = default;
 	};
 
+	class Platformer_Help_HelpTotemGrim : public LocalizedString
+	{
+	public:
+		static Platformer_Help_HelpTotemGrim* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Help_HelpTotemGrim();
+		virtual ~Platformer_Help_HelpTotemGrim() = default;
+	};
+
 	class Platformer_Help_HelpTotemGuano : public LocalizedString
 	{
 	public:
@@ -33517,6 +33532,66 @@ namespace Strings
 	private:
 		Platformer_Quests_CastleValgrind_CureKing_Agnes_B_StayingLong();
 		virtual ~Platformer_Quests_CastleValgrind_CureKing_Agnes_B_StayingLong() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Grim_A_HelpYou : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_Grim_A_HelpYou* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Grim_A_HelpYou();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Grim_A_HelpYou() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Grim_B_Translation : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_Grim_B_Translation* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Grim_B_Translation();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Grim_B_Translation() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Grim_C_Gecky_Later : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_Grim_C_Gecky_Later* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Grim_C_Gecky_Later();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Grim_C_Gecky_Later() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Grim_C_Guano_Later : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_CastleValgrind_CureKing_Grim_C_Guano_Later* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Grim_C_Guano_Later();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Grim_C_Guano_Later() = default;
 	};
 
 	class Platformer_Quests_CastleValgrind_CureKing_KingRedsong_A_ThankYou : public LocalizedString

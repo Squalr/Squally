@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="843">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="845">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -291,6 +291,11 @@
    </properties>
   </object>
   <object id="842" name="caged-panda" type="object" x="379.742" y="1084.07" width="196" height="112"/>
+  <object id="843" name="trigger" type="object" x="2569.56" y="-444.79" width="508.878" height="2353.58">
+   <properties>
+    <property name="send-event" value="meet-grim"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -311,12 +316,20 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
+  <object id="844" name="grim" type="entity" x="2500" y="1068" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,face-squally"/>
+    <property name="quest" value="meet-grim"/>
+    <property name="quest-line" value="cure-king"/>
+    <property name="tag" value="cinematic-grim"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer" opacity="0.9">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="1.1499999999999999"/>
+   <property name="zoom" type="float" value="1.15"/>
   </properties>
   <object id="523" name="squally" type="entity" x="2248.72" y="1067.79" width="128" height="128">
    <properties>
