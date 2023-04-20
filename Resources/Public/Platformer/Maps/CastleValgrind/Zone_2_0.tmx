@@ -88,7 +88,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="CastleValgrind/Combat_CastleWood"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,soul,agro"/>
     <property name="drop-pool" value="cv-generic"/>
    </properties>
   </object>

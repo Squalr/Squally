@@ -339,7 +339,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,soul,agro"/>
     <property name="drop-pool" value="cv-agnes"/>
     <property name="quest" value="defeat-agnes,talk-to-king-redsong"/>
     <property name="quest-line" value="cure-king"/>
@@ -350,7 +350,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,soul,agro"/>
     <property name="drop-pool" value="cv-generic"/>
    </properties>
   </object>

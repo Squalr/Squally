@@ -6,14 +6,18 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/HelperEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -50,13 +54,13 @@ GrimSoulHarvestBehavior::~GrimSoulHarvestBehavior()
 
 void GrimSoulHarvestBehavior::onLoad()
 {
-	this->addEventListener(EventListenerCustom::create(HelperEvents::EventRequestPickPocket, [=](EventCustom* eventCustom)
+	this->addEventListener(EventListenerCustom::create(HelperEvents::EventRequestSoulHarvest, [=](EventCustom* eventCustom)
 	{
-		HelperEvents::RequestPickPocketArgs* args = static_cast<HelperEvents::RequestPickPocketArgs*>(eventCustom->getData());
+		HelperEvents::RequestSoulHarvestArgs* args = static_cast<HelperEvents::RequestSoulHarvestArgs*>(eventCustom->getData());
 
-		if (args != nullptr && !this->isPickPocketing)
+		if (args != nullptr && !this->isSoulHarvesting)
 		{
-			this->tryPickPocket(args->target, args->pocketPool, args->onPickPocket, args->saveKeyPickPocketed);
+			this->trySoulHarvest(args->target, args->onSoulHarvested, args->saveKeySoulHarvested);
 		}
 	}));
 
@@ -67,46 +71,64 @@ void GrimSoulHarvestBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (this->isPickPocketing)
+	if (this->isSoulHarvesting)
 	{
 		// The target may be moving so keep updating to track it
 		this->entity->setState(StateKeys::PatrolDestinationX, Value(GameUtils::getWorldCoords(target).x));
 	}
 }
 
-void GrimSoulHarvestBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool* pocketPool, std::function<void()> onPickPocket, std::string pickPocketSaveKey)
+void GrimSoulHarvestBehavior::trySoulHarvest(PlatformerEntity* target, std::function<void()> onSoulHarvested, std::string pickPocketSaveKey)
 {
-	if (pocketPool == nullptr)
-	{
-		return;
-	}
-
 	if (this->entity->getRuntimeStateOrDefault(StateKeys::PatrolHijacked, Value(false)).asBool())
 	{
 		return;
 	}
 	
-	this->isPickPocketing = true;
+	this->isSoulHarvesting = true;
 	this->target = target;
 	this->entity->setState(StateKeys::PatrolHijacked, Value(true));
 	this->entity->setState(StateKeys::PatrolSourceX, Value(GameUtils::getWorldCoords(this->entity).x));
 	this->entity->setState(StateKeys::PatrolDestinationX, Value(GameUtils::getWorldCoords(target).x));
-	this->entity->setOpacity(192);
 
 	this->entity->listenForStateWriteOnce(StateKeys::PatrolDestinationReached, [=](Value value)
 	{
-		if (this->isPickPocketing)
+		if (this->isSoulHarvesting)
 		{
 			this->stopAllActions();
-			this->endPickPocket();
+			this->endSoulHarvest();
 
-			PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(pocketPool));
+			int baseHp = StatsTables::getBaseHealth(this->entity);
+			int baseMana = StatsTables::getBaseMana(this->entity);
+
+			this->entity->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
+			{
+				healthBehavior->addHealth(baseHp / 2);
+			});
+
+			this->entity->getComponent<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
+			{
+				manaBehavior->addMana(baseMana / 2);
+			});
+
+			ObjectEvents::QueryObjects<Squally>([&](Squally* squally)
+			{
+				squally->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
+				{
+					healthBehavior->addHealth(baseHp / 2);
+				});
+
+				squally->getComponent<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
+				{
+					manaBehavior->addMana(baseMana / 2);
+				});
+			});
 
 			target->saveObjectState(pickPocketSaveKey, Value(true));
 
-			if (onPickPocket != nullptr)
+			if (onSoulHarvested != nullptr)
 			{
-				onPickPocket();
+				onSoulHarvested();
 			}
 		}
 	});
@@ -115,9 +137,9 @@ void GrimSoulHarvestBehavior::tryPickPocket(PlatformerEntity* target, MinMaxPool
 		DelayTime::create(5.0f),
 		CallFunc::create([=]()
 		{
-			if (this->isPickPocketing)
+			if (this->isSoulHarvesting)
 			{
-				this->endPickPocket();
+				this->endSoulHarvest();
 			}
 		}),
 		nullptr
@@ -129,14 +151,13 @@ void GrimSoulHarvestBehavior::onDisable()
 	super::onDisable();
 }
 
-void GrimSoulHarvestBehavior::endPickPocket()
+void GrimSoulHarvestBehavior::endSoulHarvest()
 {
-	this->isPickPocketing = false;
+	this->isSoulHarvesting = false;
 	this->entity->clearState(StateKeys::PatrolHijacked);
 	this->entity->clearState(StateKeys::PatrolDestinationX);
 	this->entity->runAction(Sequence::create(
 		DelayTime::create(1.0f),
-		FadeTo::create(0.25f, 255),
 		nullptr
 	));
 }

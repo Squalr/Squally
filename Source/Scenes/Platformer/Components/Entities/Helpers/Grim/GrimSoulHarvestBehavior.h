@@ -23,10 +23,10 @@ protected:
 private:
 	typedef GameComponent super;
 
-	void tryPickPocket(PlatformerEntity* target, MinMaxPool* pocketPool, std::function<void()> onPickPocket, std::string pickPocketSaveKey);
-	void endPickPocket();
+	void trySoulHarvest(PlatformerEntity* target, std::function<void()> onSoulHarvested, std::string pickPocketSaveKey);
+	void endSoulHarvest();
 
 	PlatformerEntity* entity = nullptr;
 	PlatformerEntity* target = nullptr;
-	bool isPickPocketing = false;
+	bool isSoulHarvesting = false;
 };

@@ -305,7 +305,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value=""/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,soul,agro"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
@@ -314,7 +314,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,goblin-shaman,agro"/>
+    <property name="components" value="enemy,soul,goblin-shaman,agro"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>

@@ -277,7 +277,7 @@
   </properties>
   <object id="1162" name="bone-knight" type="entity" x="1591.33" y="1524.88" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,pacing"/>
+    <property name="components" value="enemy,soul,pacing"/>
    </properties>
   </object>
  </objectgroup>
@@ -849,7 +849,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-c"/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,soul,agro"/>
     <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>

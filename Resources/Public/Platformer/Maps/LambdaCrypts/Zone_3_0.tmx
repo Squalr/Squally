@@ -627,7 +627,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,soul,agro"/>
     <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>
@@ -2039,7 +2039,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-f"/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,soul,agro"/>
     <property name="drop-pool" value="lc-lazarus"/>
     <property name="quest" value="defeat-lazarus"/>
     <property name="quest-line" value="rez-lazarus"/>

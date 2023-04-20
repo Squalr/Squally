@@ -437,17 +437,17 @@
   </properties>
   <object id="1308" name="warlock" type="entity" x="721.91" y="1552.05" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,pacing"/>
+    <property name="components" value="enemy,soul,pacing"/>
    </properties>
   </object>
   <object id="1310" name="hunter" type="entity" x="206.289" y="1543.37" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,pacing"/>
+    <property name="components" value="enemy,soul,pacing"/>
    </properties>
   </object>
   <object id="1311" name="mystic" type="entity" x="3007.82" y="1548.59" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,pacing"/>
+    <property name="components" value="enemy,soul,pacing"/>
    </properties>
   </object>
  </objectgroup>
@@ -1121,7 +1121,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,agro"/>
+    <property name="components" value="enemy,soul,agro"/>
     <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>

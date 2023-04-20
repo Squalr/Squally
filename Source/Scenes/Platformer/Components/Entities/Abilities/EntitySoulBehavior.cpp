@@ -143,7 +143,7 @@ void EntitySoulBehavior::attemptSoulHarvest()
 
 bool EntitySoulBehavior::canSoulHarvest()
 {
-	return this->entity != nullptr && this->currentHelperName == Grim::MapKey && this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) && !this->wasSoulHarvested();
+	return this->entity != nullptr && this->currentHelperName == Grim::MapKey && !this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) && !this->wasSoulHarvested();
 }
 
 bool EntitySoulBehavior::wasSoulHarvested()
@@ -154,8 +154,6 @@ bool EntitySoulBehavior::wasSoulHarvested()
 void EntitySoulBehavior::onSoulHarvested()
 {
 	this->updateIconVisibility();
-
-	// TODO: Health and mana steal
 	
 	this->entity->getComponent<EntitySelectionBehavior>([=](EntitySelectionBehavior* selection)
 	{

@@ -279,7 +279,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,haunted,agro"/>
+    <property name="components" value="enemy,soul,haunted,agro"/>
     <property name="drop-pool" value="cv-generic"/>
     <property name="haunted-key" value="abomination"/>
     <property name="other-world" type="bool" value="false"/>

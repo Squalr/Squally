@@ -277,12 +277,12 @@
   </properties>
   <object id="1164" name="bone-fiend" type="entity" x="1612.7" y="1556.25" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,pacing"/>
+    <property name="components" value="enemy,soul,pacing"/>
    </properties>
   </object>
   <object id="1165" name="assassin" type="entity" x="2638.3" y="1543.08" width="128" height="128">
    <properties>
-    <property name="components" value="enemy,pacing"/>
+    <property name="components" value="enemy,soul,pacing"/>
    </properties>
   </object>
  </objectgroup>

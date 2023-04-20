@@ -13,6 +13,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/BallmerPeaks/Snowman.h"
+#include "Entities/Platformer/Helpers/CastleValgrind/Grim.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/DataMines/Gecky.h"
 #include "Entities/Platformer/Helpers/UnderflowRuins/GuanoPetrified.h"
@@ -1070,8 +1071,9 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGrimFound, Value(true));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Grim::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyEq, Value(8));

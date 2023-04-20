@@ -5,7 +5,6 @@
 #include "Entities/Platformer/PlatformerEnemy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/PlatformerFriendly.h"
-#include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"

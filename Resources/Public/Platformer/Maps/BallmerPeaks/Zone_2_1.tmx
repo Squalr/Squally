@@ -409,7 +409,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,agro,z-fade"/>
+    <property name="components" value="enemy,soul,agro,z-fade"/>
     <property name="drop-pool" value="bp-generic"/>
    </properties>
   </object>
