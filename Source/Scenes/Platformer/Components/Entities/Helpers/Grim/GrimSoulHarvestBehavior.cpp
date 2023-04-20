@@ -103,12 +103,12 @@ void GrimSoulHarvestBehavior::trySoulHarvest(PlatformerEntity* target, std::func
 
 			this->entity->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
 			{
-				healthBehavior->addHealth(baseHp / 2);
+				healthBehavior->addHealth(baseHp / 12);
 			});
 
 			this->entity->getComponent<EntityManaBehavior>([&](EntityManaBehavior* manaBehavior)
 			{
-				manaBehavior->addMana(baseMana / 2);
+				manaBehavior->addMana(baseMana / 4);
 			});
 
 			ObjectEvents::QueryObjects<Squally>([&](Squally* squally)
