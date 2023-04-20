@@ -36,7 +36,7 @@
 using namespace cocos2d;
 
 const std::string UnhauntCastle::MapKeyQuest = "unhaunt-castle";
-const std::string UnhauntCastle::SaveKeyUnhauntedCount = "SAVE_KEY_UNHAUNTED_COUNT";
+const std::string UnhauntCastle::SaveKeySoulHarvestedCount = "SAVE_KEY_SOUL_HARVESTED_COUNT";
 const std::string UnhauntCastle::SaveKeyPrefixUnhaunted = "SAVE_KEY_UNHAUNTED_";
 const int UnhauntCastle::MaxUnhauntCount = 5;
 
@@ -119,7 +119,7 @@ void UnhauntCastle::updateQuestVisuals()
 
 	this->mabel->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{
-		int currentCureCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
+		int currentCureCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeySoulHarvestedCount, Value(0)).asInt();
 
 		if (currentCureCount >= UnhauntCastle::MaxUnhauntCount)
 		{
@@ -191,7 +191,7 @@ void UnhauntCastle::setPreText()
 	{
 		this->mabel->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
-			int remaining = UnhauntCastle::MaxUnhauntCount - SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
+			int remaining = UnhauntCastle::MaxUnhauntCount - SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeySoulHarvestedCount, Value(0)).asInt();
 
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 				Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_Q_Remaining::create()

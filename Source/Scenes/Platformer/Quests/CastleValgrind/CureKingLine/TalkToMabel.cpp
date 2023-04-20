@@ -134,7 +134,7 @@ void TalkToMabel::onLoad(QuestState questState)
 	{
 		Objectives::SetCurrentObjective(ObjectiveKeys::CVEnterClock);
 	});
-	int currentCureCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt();
+	int currentCureCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeySoulHarvestedCount, Value(0)).asInt();
 
 	if (currentCureCount >= UnhauntCastle::MaxUnhauntCount)
 	{

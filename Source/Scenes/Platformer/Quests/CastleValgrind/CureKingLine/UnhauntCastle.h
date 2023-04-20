@@ -14,7 +14,7 @@ public:
 	static UnhauntCastle* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
-	static const std::string SaveKeyUnhauntedCount;
+	static const std::string SaveKeySoulHarvestedCount;
 	static const std::string SaveKeyPrefixUnhaunted;
 	static const int MaxUnhauntCount;
 

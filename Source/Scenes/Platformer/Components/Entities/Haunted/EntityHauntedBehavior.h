@@ -17,6 +17,7 @@ public:
 	static EntityHauntedBehavior* create(GameObject* owner);
 
 	bool isUnhaunted() const;
+	void onSoulHarvested();
 
 	static const std::string MapKey;
 
@@ -31,7 +32,7 @@ private:
 	typedef GameComponent super;
 
 	void unhaunt();
-
+	
 	PlatformerEnemy* ownerAsEnemy = nullptr;
 	PlatformerFriendly* ownerAsFriendly = nullptr;
 	bool isOtherWorld = false;

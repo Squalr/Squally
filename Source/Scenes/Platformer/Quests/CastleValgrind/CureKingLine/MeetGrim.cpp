@@ -220,5 +220,6 @@ void MeetGrim::runCinematicSequencePt4()
 	));
 
 	PlatformerEvents::TriggerCinematicRestore();
+	Objectives::SetCurrentObjective(ObjectiveKeys::CVDefeatSpirits);
 	this->complete();
 }

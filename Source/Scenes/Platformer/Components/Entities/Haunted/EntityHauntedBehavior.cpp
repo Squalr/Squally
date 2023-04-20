@@ -168,13 +168,16 @@ void EntityHauntedBehavior::unhaunt()
 	if (!isUnhaunted)
 	{
 		SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(true));
+	}
+}
 
-		int newUnhauntedCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeyUnhauntedCount, Value(0)).asInt() + 1;
-		SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeyUnhauntedCount, Value(newUnhauntedCount));
+void EntityHauntedBehavior::onSoulHarvested()
+{
+	int newSoulHarvestedCount = SaveManager::GetProfileDataOrDefault(UnhauntCastle::SaveKeySoulHarvestedCount, Value(0)).asInt() + 1;
+	SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeySoulHarvestedCount, Value(newSoulHarvestedCount));
 
-		if (newUnhauntedCount >= UnhauntCastle::MaxUnhauntCount)
-		{
-			Objectives::SetCurrentObjective(ObjectiveKeys::CVReturnToMabel);
-		}
+	if (newSoulHarvestedCount >= UnhauntCastle::MaxUnhauntCount)
+	{
+		Objectives::SetCurrentObjective(ObjectiveKeys::CVReturnToMabel);
 	}
 }

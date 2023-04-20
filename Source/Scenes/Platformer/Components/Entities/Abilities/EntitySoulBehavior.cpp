@@ -20,6 +20,7 @@
 #include "Objects/Platformer/ItemPools/ErrorPool.h"
 #include "Menus/CursorSets.h"
 #include "Scenes/Platformer/Components/Entities/EntitySelectionBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Haunted/EntityHauntedBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -160,6 +161,12 @@ void EntitySoulBehavior::onSoulHarvested()
 		selection->clearEntityClickCallbacks();
 		
 		this->refreshCursorState();
+	});
+
+	// Lazy way to update the quest. Correct way would be to fire an event, but I don't want to do that.
+	this->entity->getComponent<EntityHauntedBehavior>([=](EntityHauntedBehavior* entityHauntedBehavior)
+	{
+		entityHauntedBehavior->onSoulHarvested();
 	});
 }
 

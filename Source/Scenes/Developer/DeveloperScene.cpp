@@ -377,9 +377,7 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ==================
 		// Traps: Organ gun, cannon, catapult, ballista, heaven hug (FPU acceptable, given that jmps are pretty much done)
-		// ** Modify quests to grant Grim
-		// ** Require using Grim on all CV enemy corpses to increase soul count
-
+		
 		/*
 		See http://unixwiz.net/techtips/x86-jumps.html because its hard to condense names and capture flags on the same chart.
 		X Thug					1_x		=> jmp 			--			Heavy blade
