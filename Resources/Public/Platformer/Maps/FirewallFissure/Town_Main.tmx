@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1123">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1125">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -426,11 +426,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="887" name="spawn" type="object" x="7738.73" y="3202.41" width="128" height="128">
-   <properties>
-    <property name="transition" value="main-gate"/>
-   </properties>
-  </object>
   <object id="911" name="portal" type="object" x="7673.03" y="3072.15" width="256" height="256">
    <properties>
     <property name="map" value="FirewallFissure/Zone_1_0"/>
@@ -463,11 +458,6 @@
   <object id="1119" name="portal" type="object" x="377.258" y="3054.78" width="256" height="256">
    <properties>
     <property name="map" value="FirewallFissure/Zone_3_0"/>
-    <property name="transition" value="back-gate"/>
-   </properties>
-  </object>
-  <object id="1120" name="spawn" type="object" x="442.958" y="3185.04" width="128" height="128">
-   <properties>
     <property name="transition" value="back-gate"/>
    </properties>
   </object>
@@ -531,6 +521,16 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-B"/>
+   </properties>
+  </object>
+  <object id="1123" name="spawn" type="object" x="7738.73" y="3202.41" width="128" height="128">
+   <properties>
+    <property name="transition" value="main-gate"/>
+   </properties>
+  </object>
+  <object id="1124" name="spawn" type="object" x="442.958" y="3185.04" width="128" height="128">
+   <properties>
+    <property name="transition" value="back-gate"/>
    </properties>
   </object>
  </objectgroup>

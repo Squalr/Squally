@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1964">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1975">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value=""/>
-   <property name="music" value="heartbeat"/>
+   <property name="music" value="burden-of-time"/>
    <property name="rubber-band" type="int" value="19"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
@@ -71,6 +71,7 @@
  <objectgroup id="110" name="player_layer -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.85"/>
   </properties>
@@ -169,7 +170,7 @@
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="2468,737 2783.62,645.073 3904.89,594.76 4431.37,597.572 5758.59,203.035 6961.39,-72.3128 7735.52,-314.012 8274.73,-261.808 8269.04,128.881 7658.6,69.0824 6724.86,322.674 5004.72,785.372 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 2540.41,1846.57 2709.1,1917.32 3688.23,1916.08 4109.41,1976.8 4252.12,1975.54 4557.69,2097.02 4841.89,2096.19 4839.91,2332.64 2347.87,2330.62 2018.71,1333.49 1685.53,1147.1 686.106,1431.01 -452.248,1181.84 -434.152,-1680.45 142.021,-1679.9 168.02,737.709"/>
+   <polygon points="2468,737 2783.62,645.073 3904.89,594.76 4431.37,597.572 5758.59,203.035 6156.53,88.0548 6881.39,81.6872 6777.74,-283.854 6698.89,-734.965 6977.19,-1202.03 7181.8,-1823.98 7477.91,-1828.51 7320.67,-1203.96 7037.05,-703.724 7102.31,-261.406 8274.73,-261.808 8269.04,128.881 7606.6,41.0824 7358.48,44.3052 7239.05,288.412 6954.5,325.493 6724.86,322.674 5004.72,785.372 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 2540.41,1846.57 2709.1,1917.32 3688.23,1916.08 4109.41,1976.8 4252.12,1975.54 4557.69,2097.02 4841.89,2096.19 4839.91,2332.64 2347.87,2330.62 2018.71,1333.49 1685.53,1147.1 686.106,1431.01 -452.248,1181.84 -434.152,-1680.45 142.021,-1679.9 168.02,737.709"/>
   </object>
  </objectgroup>
  <objectgroup id="108" name="objects -4">
@@ -177,6 +178,13 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1971" name="edge-portal" type="object" x="7734.04" y="791.999" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="FirewallFissure/Zone_2_1"/>
+    <property name="transition" value="right-back"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="109" name="entities -4">
   <properties>
@@ -185,6 +193,28 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.5"/>
   </properties>
+  <object id="1964" name="lava-golem" type="entity" x="1611.21" y="2148.55" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-tag" value="group-b"/>
+    <property name="components" value="enemy,soul,agro,z-fade"/>
+    <property name="drop-pool" value="ff-generic"/>
+   </properties>
+  </object>
+  <object id="1965" name="lava-golem" type="entity" x="1618.37" y="1759.81" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-b"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="1974" name="hades" type="entity" x="7114.67" y="1150.67" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,ff-t2-hexus,pick-pocket"/>
+    <property name="pocket-pool" value="ff-generic"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="95" name="player_layer -4">
   <properties>
@@ -207,6 +237,19 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-front-A"/>
+   </properties>
+  </object>
+  <object id="1967" name="warp" type="object" x="6315.33" y="1370.67" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-C"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-C"/>
+   </properties>
+  </object>
+  <object id="1972" name="spawn" type="object" x="7440.67" y="1152.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="left-back"/>
    </properties>
   </object>
  </objectgroup>
@@ -239,6 +282,9 @@
   <object id="1960" name="obsidean" type="terrain" x="3629.33" y="2152">
    <polygon points="148,-2 -44,504 160,688 640,696 873,535 740.97,1.75758"/>
   </object>
+  <object id="1970" name="obsidean" type="terrain" x="6060.66" y="1632.67">
+   <polygon points="148,-2 -44,504 160,688 640,696 873,535 740.97,1.75758"/>
+  </object>
  </objectgroup>
  <objectgroup id="73" name="fireflies -3">
   <properties>
@@ -269,6 +315,9 @@
   <object id="1959" name="obsidean" type="terrain" x="3629.45" y="2171.7">
    <polygon points="212,-5 -18,310 80,696 766,708 906,366 664.97,-1.24242"/>
   </object>
+  <object id="1969" name="obsidean" type="terrain" x="6019.45" y="1647.03">
+   <polygon points="212,-5 -18,310 80,696 766,708 906,366 664.97,-1.24242"/>
+  </object>
  </objectgroup>
  <objectgroup id="72" name="fireflies -2">
   <properties>
@@ -297,6 +346,9 @@
    <polygon points="96,-1 -58,196 14,636 892,656 851,169 746.97,0.757576"/>
   </object>
   <object id="1958" name="obsidean" type="terrain" x="3629.21" y="2192.55">
+   <polygon points="96,-1 -58,196 14,636 892,656 851,169 746.97,0.757576"/>
+  </object>
+  <object id="1968" name="obsidean" type="terrain" x="6065.21" y="1661.88">
    <polygon points="96,-1 -58,196 14,636 892,656 851,169 746.97,0.757576"/>
   </object>
  </objectgroup>
@@ -350,18 +402,12 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1623" name="obsidean" type="terrain" x="-291.025" y="-569.394" width="8553.08" height="1116"/>
+  <object id="1623" name="obsidean" type="terrain" x="-291.025" y="-689.394" width="8553.08" height="1116"/>
   <object id="1875" name="obsidean" type="terrain" x="-108" y="1648">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="0,0 1652,-4 1944,16 2308,100 2720,260 3284,484 3921.11,565.192 4428,564 6608.51,518.944 8207.8,518.134 8208,1552 3948,1296 2801.04,535.248 2336.37,354.077 1792,292 907.833,303.378 260,544 225.53,1318.75 4,1312"/>
-  </object>
-  <object id="1876" name="obsidean" type="terrain" x="7308" y="28">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-   <polygon points="760,1736 -2041.38,1734.4 -2702.13,1808.95 -3000.02,1540.4 -3072.84,852.423 -3346.89,711.661 -3621.12,779.516 -4136.61,749.7 -4527.81,-65.7399 780.483,-66.8"/>
+   <polygon points="0,0 1652,-4 1944,16 2308,100 2720,260 3284,484 3921.11,565.192 4428,564 5475.97,542.346 5428.44,-970.756 5625.67,-2319.09 6176.51,-2417.06 6326.56,-1637.55 5834.95,-953.22 5939.17,25.6982 8271.8,42.134 8208,1552 3948,1296 2801.04,535.248 2336.37,354.077 1792,292 907.833,303.378 260,544 225.53,1318.75 4,1312"/>
   </object>
   <object id="1878" name="obsidean" type="terrain" x="567.25" y="2365.04">
    <polygon points="0,0 -119.25,368.659 298.125,792.618 1103.06,817.963 1539.24,711.947 1788.75,513.819 1634.04,-0.279287"/>
@@ -388,10 +434,10 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1880" name="edge-portal" type="object" x="7724.04" y="1700" width="199.918" height="488.002">
+  <object id="1880" name="edge-portal" type="object" x="7724.04" y="1208" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
-    <property name="map" value="FirewallFissure/Zone_1_2"/>
+    <property name="map" value="FirewallFissure/Zone_2_1"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
@@ -401,7 +447,7 @@
     <property name="transition" value="hole"/>
    </properties>
   </object>
-  <object id="1961" name="hexus-shrine" type="object" x="6234.5" y="1909.6" width="155" height="260">
+  <object id="1961" name="hexus-shrine" type="object" x="5066.5" y="1941.6" width="155" height="260">
    <properties>
     <property name="entity-tag" value="hexus-demon-rogue"/>
    </properties>
@@ -452,9 +498,9 @@
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="1881" name="spawn" type="object" x="7400" y="1972" width="128" height="128">
+  <object id="1881" name="spawn" type="object" x="7408" y="1560" width="128" height="128">
    <properties>
-    <property name="transition" value="left-top"/>
+    <property name="transition" value="left"/>
    </properties>
   </object>
   <object id="1898" name="warp" type="object" x="805.333" y="2111.39" width="256" height="256">
@@ -476,6 +522,14 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-A"/>
+   </properties>
+  </object>
+  <object id="1966" name="warp" type="object" x="6318.67" y="1420.67" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-C"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-C"/>
    </properties>
   </object>
  </objectgroup>

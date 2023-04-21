@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="163" nextobjectid="963">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="163" nextobjectid="966">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
-   <property name="map-banner" value=""/>
-   <property name="music" value="solace"/>
+   <property name="map-banner" value="firewall-fissure"/>
+   <property name="music" value="artrium"/>
    <property name="rubber-band" type="int" value="18"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
@@ -253,8 +253,8 @@
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="795" name="obsidean" type="terrain" x="5343.37" y="5066">
-   <polygon points="-913.913,-2736.26 -678.331,-1979.27 542.046,-1709.84 1716.35,-1976.28 1921.14,-2731.7"/>
+  <object id="795" name="obsidean" type="terrain" x="5430.31" y="5066">
+   <polygon points="-1000.85,-2736.26 -742.86,-1979.27 593.611,-1709.84 1879.63,-1976.28 2103.9,-2731.7"/>
   </object>
   <object id="933" name="caverns" type="terrain" x="562.545" y="4125.49">
    <polygon points="-1141.99,-3135.23 -1072.75,-2347.11 -879.616,-1409.68 645.319,-1100.18 2300.7,-1362.25 2339.22,-2407.64 2400.58,-3138.04"/>
@@ -272,6 +272,7 @@
   <object id="801" name="Generic/TownFence" type="decor" x="2396.93" y="35.5" width="538" height="948"/>
   <object id="802" name="Generic/TownFence" type="decor" x="-441" y="34" width="538" height="948"/>
   <object id="823" name="hell-gate" type="object" x="5703" y="1783" width="512" height="512"/>
+  <object id="964" name="caged-lizard" type="object" x="205.03" y="874.303" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="118" name="decor -20 fg">
   <properties>
@@ -280,90 +281,38 @@
   </properties>
   <object id="852" name="Generic/FancyGate1" type="decor" x="1448.86" y="168.6" width="538" height="816"/>
  </objectgroup>
- <objectgroup id="104" name="objects -20">
-  <properties>
-   <property name="depth" type="float" value="-1280"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="822" name="portal" type="object" x="5728.7" y="1910.48" width="450.603" height="423.038">
-   <properties>
-    <property name="map" value="DataMines/Zone_4_0"/>
-    <property name="transition" value="hell-gate"/>
-   </properties>
-  </object>
-  <object id="826" name="life-stone" type="object" x="5162.17" y="1902.5" width="146" height="423"/>
-  <object id="850" name="portal" type="object" x="1598.7" y="664.48" width="256" height="320">
-   <properties>
-    <property name="map" value="FirewallFissure/Town_Main"/>
-    <property name="transition" value="main-gate"/>
-   </properties>
-  </object>
-  <object id="956" name="portal" type="object" x="6666.22" y="1913.1" width="450.603" height="423.038">
-   <properties>
-    <property name="components" value="locked-portal"/>
-    <property name="item-required" value="missing-no"/>
-    <property name="locked-text-key" value=""/>
-    <property name="map" value="FirewallFissure/Zone_1_0"/>
-    <property name="send-event" value="pressure-released"/>
-    <property name="transition" value="pressure"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="105" name="player_layer -20">
-  <properties>
-   <property name="depth" type="float" value="-1280"/>
-   <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="0.25"/>
-  </properties>
-  <object id="824" name="spawn" type="object" x="5892" y="2200" width="128" height="128">
-   <properties>
-    <property name="transition" value="hell-gate"/>
-   </properties>
-  </object>
-  <object id="825" name="squally" type="entity" x="5539.03" y="2199.18" width="128" height="128">
-   <properties>
-    <property name="components" value="squally"/>
-   </properties>
-  </object>
-  <object id="844" name="warp" type="object" x="4657.67" y="2078.33" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-back-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-front-A"/>
-   </properties>
-  </object>
-  <object id="851" name="spawn" type="object" x="1660" y="852" width="128" height="128">
-   <properties>
-    <property name="transition" value="main-gate"/>
-   </properties>
-  </object>
-  <object id="955" name="spawn" type="object" x="4173.95" y="1511.3" width="128" height="128">
-   <properties>
-    <property name="quest" value="release-pressure"/>
-    <property name="quest-line" value="release-pressure"/>
-    <property name="transition" value="pressure"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="102" name="entities -20">
-  <properties>
-   <property name="depth" type="float" value="-1280"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="803" name="brine" type="entity" x="2290.42" y="854.545" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,brine-hexus,pick-pocket"/>
-    <property name="pocket-pool" value="ff-generic"/>
-   </properties>
-  </object>
- </objectgroup>
  <objectgroup id="95" name="lava -20">
   <properties>
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="787" name="lava" type="object" x="-1770.44" y="2391.36" width="12026.8" height="1024"/>
+ </objectgroup>
+ <objectgroup id="133" name="decor fg -20">
+  <properties>
+   <property name="depth" type="float" value="-1280"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="938" name="lava-geyser" type="object" x="4069.47" y="1991.93" width="350" height="400">
+   <properties>
+    <property name="tag" value="pressure-raised"/>
+   </properties>
+  </object>
+  <object id="940" name="lava-geyser" type="object" x="3689.47" y="1699.93" width="350" height="700">
+   <properties>
+    <property name="tag" value="pressure-raised"/>
+   </properties>
+  </object>
+  <object id="942" name="lava-geyser" type="object" x="3317.47" y="1401.93" width="350" height="1000">
+   <properties>
+    <property name="tag" value="pressure-raised"/>
+   </properties>
+  </object>
+  <object id="944" name="lava-geyser" type="object" x="2939.47" y="1098.93" width="350" height="1300">
+   <properties>
+    <property name="tag" value="pressure-raised"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="156" name="terrain mg -20">
   <properties>
@@ -419,37 +368,96 @@
    <polygon points="-93.8626,-649.121 -69.6674,-470.813 55.6703,-406.723 176.277,-470.102 197.309,-649.796"/>
   </object>
  </objectgroup>
- <objectgroup id="133" name="decor fg -20">
-  <properties>
-   <property name="depth" type="float" value="-1280"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="938" name="lava-geyser" type="object" x="4069.47" y="1991.93" width="350" height="400">
-   <properties>
-    <property name="tag" value="pressure-raised"/>
-   </properties>
-  </object>
-  <object id="940" name="lava-geyser" type="object" x="3689.47" y="1699.93" width="350" height="700">
-   <properties>
-    <property name="tag" value="pressure-raised"/>
-   </properties>
-  </object>
-  <object id="942" name="lava-geyser" type="object" x="3317.47" y="1401.93" width="350" height="1000">
-   <properties>
-    <property name="tag" value="pressure-raised"/>
-   </properties>
-  </object>
-  <object id="944" name="lava-geyser" type="object" x="2939.47" y="1098.93" width="350" height="1300">
-   <properties>
-    <property name="tag" value="pressure-raised"/>
-   </properties>
-  </object>
- </objectgroup>
  <objectgroup id="112" name="terrain -20">
   <properties>
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
+ </objectgroup>
+ <objectgroup id="104" name="objects -20">
+  <properties>
+   <property name="depth" type="float" value="-1280"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="822" name="portal" type="object" x="5728.7" y="1910.48" width="450.603" height="423.038">
+   <properties>
+    <property name="map" value="DataMines/Zone_4_0"/>
+    <property name="transition" value="hell-gate"/>
+   </properties>
+  </object>
+  <object id="826" name="life-stone" type="object" x="5162.17" y="1902.5" width="146" height="423"/>
+  <object id="850" name="portal" type="object" x="1598.7" y="664.48" width="256" height="320">
+   <properties>
+    <property name="map" value="FirewallFissure/Town_Main"/>
+    <property name="transition" value="main-gate"/>
+   </properties>
+  </object>
+  <object id="956" name="portal" type="object" x="6666.22" y="1913.1" width="450.603" height="423.038">
+   <properties>
+    <property name="components" value="locked-portal"/>
+    <property name="item-required" value="missing-no"/>
+    <property name="locked-text-key" value="none"/>
+    <property name="map" value="FirewallFissure/Zone_1_0"/>
+    <property name="send-event" value="pressure-released"/>
+    <property name="transition" value="pressure"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="102" name="entities -20">
+  <properties>
+   <property name="depth" type="float" value="-1280"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="803" name="brine" type="entity" x="2290.42" y="854.545" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,ff-t3-hexus,pick-pocket"/>
+    <property name="pocket-pool" value="ff-generic"/>
+   </properties>
+  </object>
+  <object id="965" name="ash" type="entity" x="6954.18" y="2208.73" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,ff-t1-hexus,pick-pocket"/>
+    <property name="pocket-pool" value="ff-generic"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="105" name="player_layer -20">
+  <properties>
+   <property name="depth" type="float" value="-1280"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="0.25"/>
+  </properties>
+  <object id="824" name="spawn" type="object" x="5892" y="2200" width="128" height="128">
+   <properties>
+    <property name="transition" value="hell-gate"/>
+   </properties>
+  </object>
+  <object id="825" name="squally" type="entity" x="5539.03" y="2199.18" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="844" name="warp" type="object" x="4657.67" y="2078.33" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-A"/>
+   </properties>
+  </object>
+  <object id="851" name="spawn" type="object" x="1660" y="852" width="128" height="128">
+   <properties>
+    <property name="transition" value="main-gate"/>
+   </properties>
+  </object>
+  <object id="955" name="spawn" type="object" x="4173.95" y="1511.3" width="128" height="128">
+   <properties>
+    <property name="quest" value="release-pressure"/>
+    <property name="quest-line" value="release-pressure"/>
+    <property name="transition" value="pressure"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="94" name="lava -19">
   <properties>
@@ -484,7 +492,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="145" name="decor bg -17">
+ <objectgroup id="145" name="decor bg -17" visible="0">
   <properties>
    <property name="depth" type="float" value="-1088"/>
    <property name="type" value="objects"/>
@@ -524,7 +532,7 @@
    <property name="depth" type="float" value="-1024"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="873" name="lava-fall" type="object" x="471.713" y="-878.34" width="371" height="3310.29"/>
+  <object id="873" name="lava-fall" type="object" x="659.592" y="-887.431" width="371" height="3310.29"/>
  </objectgroup>
  <objectgroup id="108" name="terrain -16">
   <properties>
@@ -619,6 +627,7 @@
  <objectgroup id="117" name="player_layer-13">
   <properties>
    <property name="depth" type="float" value="-832"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="0.25"/>
   </properties>
@@ -718,7 +727,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="146" name="decor -8 bg">
+ <objectgroup id="146" name="decor -8 bg" visible="0">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -766,7 +775,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="152" name="decor bg -6">
+ <objectgroup id="152" name="decor bg -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -893,6 +902,9 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="930" name="obsidean" type="terrain" x="2153.4" y="4812.4">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
    <polygon points="-183.631,-2372.3 -47.9522,-1700.61 124.403,-1570.82 358.119,-1716.54 400.846,-2372.68"/>
   </object>
  </objectgroup>
@@ -901,6 +913,9 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="929" name="obsidean" type="terrain" x="2128.84" y="5202">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
    <polygon points="-223.733,-2731.26 -58.4238,-1957.94 151.57,-1808.51 436.324,-1976.28 488.381,-2731.7"/>
   </object>
  </objectgroup>
@@ -909,6 +924,9 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="927" name="obsidean" type="terrain" x="2094.44" y="5229">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
    <polygon points="-245.854,-2731.26 -63.7926,-1957.94 165.498,-1808.51 476.419,-1976.28 533.259,-2731.7"/>
   </object>
  </objectgroup>
@@ -944,7 +962,7 @@
   </properties>
   <object id="931" name="portal" type="object" x="2153.33" y="2272" width="256" height="256">
    <properties>
-    <property name="map" value="FirewallFissure/Zone_1_1"/>
+    <property name="map" value="FirewallFissure/Zone_2_0"/>
     <property name="transition" value="hole"/>
    </properties>
   </object>

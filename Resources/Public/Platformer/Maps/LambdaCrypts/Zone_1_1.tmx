@@ -874,7 +874,7 @@
     <property name="flip-y" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="883" name="Forest/Webs2" type="decor" x="5267.17" y="789.167" width="159" height="375">
+  <object id="883" name="Forest/Webs2" type="decor" x="4816.17" y="790.167" width="159" height="375">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>

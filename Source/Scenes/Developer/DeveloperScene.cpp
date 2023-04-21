@@ -445,24 +445,26 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (LC)", MapResources::LambdaCrypts_Zone_1_0));
 
 		// ================== TODO ================== 
-		// LC story mode picture invalid (jungle?)
 		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
+		// * Make final 4_x maps less bad. Exit door should be placed more reasonably. Maybe gated behind boss kill.
+		// * Mage tower? Portal map?
 
 		/*
-		X ReanimatedPig			=>  1_x <Piggy,				fisub> 		=> Thick Hide / dmg decrease
-		X Zombie				=>  1_x <ZombieGrasp,		fild/fistp> => Zombie Grasp / raw damage dealt debuff
-		X Undead				=>  1_x <DeadGrasp,			fabs>		=> Dead Grasp / convert damage to healing
+		X Assassin				=>  1_x <ThrowingStar,		fiadd> 		=> Focus / add to damage
+		X BoneFiend				=>  1_x <AxeGlowPurp,		fdiv>  		=> CursedSwings debuff / reduce damage by 75% or something (int)
+		X Mystic				=>  1_x <VoodooZombie,		fimul> 		=> Hex / speed decrease
+		
+		X ReanimatedPig			=>  2_x <Piggy,				fisub> 		=> Thick Hide / dmg decrease
+		X Zombie				=>  2_x <ZombieGrasp,		fild/fistp> => Zombie Grasp / raw damage dealt debuff
+		X Undead				=>  2_x <DeadGrasp,			fabs>		=> Dead Grasp / convert damage to healing
 		X Zombie Elric			=> 	2_x 								=> Recycle (ZombieGrasp)
-		X Assassin				=>  2_x <ThrowingStar,		fiadd> 		=> Focus / add to damage
-		X BoneFiend				=>  2_x <AxeGlowPurp,		fdiv>  		=> CursedSwings debuff / reduce damage by 75% or something (int)
-		X Mystic				=>  2_x <VoodooZombie,		fimul> 		=> Hex / speed decrease
 
 		X BoneKnight			=>  3_x <ShieldGlowOrange,	fidiv> 		=> Shield Wall / constant 25% damage recv
 		X Warlock				=>  3_x <WandSkeleton,		fmul/frndint> 	=> Enchantment / 50% damage increase (rounded)
 		X Hunter				=>  3_x <PoisonSpears,		ja>  		=> PoisonedArrows - either radiation or diseased copy
 
 		X [B] Lazarus			=>	3_x <Tombstone, 		fcmove> 	=> UnholyProtection (rename) / undying effect
-		X 						=>	3_x <GhostBolts,		fchs> 		=> Ghostbolts / reflectable spell (Copy FireBall I guess?) but make 1 per teammate (ie 2 lol)
+		X [B] Lazarus			=>	3_x <GhostBolts,		fchs> 		=> Ghostbolts / reflectable spell (Copy FireBall I guess?) but make 1 per teammate (ie 2 lol)
 		
 		X SkeletalPriestess		=>  4_x <Book,				jbe> 		=> Spell of Binding - Speed Decrease
 		X SkeletalKnight		=>  4_x <SwordGlowPurp,		jae>  		=> CursedBlade - Reduce damage
@@ -497,7 +499,7 @@ DeveloperScene::DeveloperScene()
 		- Zelina				=> 3_x (H5)
 		- Roger					=> 4_x (H6)
 		- Vesuvius				=> Town_Alch
-		- [Zombie] Elric		=> ? Town_Main
+		- [Zombie] Elric		=> 2_x
 		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
@@ -526,9 +528,12 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ================== 
 		// Traps: Fire bird, fire launcher, TNT barrel, mortar
 		// ** Implement hexus puzzles
+		// ** Place entities
 		// ** Add hexus battles
 		// * Hide collectables better
 		// * Another Perceptron encounter?
+		// * Quest clears volcano smoke, allowing airship travel? From EF or CV?
+		// * Mage tower? Portal map?
 
 		/*
 		Surface:
@@ -559,13 +564,13 @@ DeveloperScene::DeveloperScene()
 		
 		- Ash			=> 1_x (H)
 		- Hades			=> 2_x (H)
+		- Brine			=> Town_Main (Exterior) (H)
+		- Mittens		=> Town_Main (H)
+		- Celeste		=> 3_x (barricade)(H?)
 		- Cindra		=> 3_x (barricade)(H?)
 		- Scaldor		=> 3_x (barricade)(H?)
 		- Magnus		=> 3_x (barricade)(H?)
-		- Mittens		=> 2_x (H)
-		- Celeste		=> 3_x (barricade)(H?)
 		- Lucifer		=> Town (H)
-		- Brine			=> Town_Main (Exterior) (H)
 		- Queen Elise	=> Town_Main
 		- Pan			=> Alch
 		- Ragnis		=> Smith
