@@ -89,7 +89,7 @@ void LavaEscape::onSkipped()
 void LavaEscape::runCinematicSequencePart1()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_FindElriel_Elriel_A_GratefulYouAreHere::create(), // TODO: Do you hear that?
+		Strings::Platformer_Quests_FirewallFissure_ReleasePressure_A_DoYouHearThat::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -100,7 +100,7 @@ void LavaEscape::runCinematicSequencePart1()
 		{
 			this->runCinematicSequencePart2();
 		},
-		Voices::GetNextVoiceMedium(),
+		Voices::GetNextVoiceQuestion(),
 		false
 	));
 }
@@ -128,13 +128,12 @@ void LavaEscape::runCinematicSequencePart2()
 void LavaEscape::runCinematicSequencePart3()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Ellipses::create(), // TODO: Seismic activity
+		Strings::Platformer_Quests_FirewallFissure_ReleasePressure_B_SeismicActivity::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
+			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->scrappy, true),
-			true
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 		),
 		[=]()
 		{
@@ -149,8 +148,21 @@ void LavaEscape::runCinematicSequencePart4()
 {
 	ObjectEvents::QueryObject<Lava>([=](Lava* lava)
 	{
+		const float phase1Time = 5.0f;
+		const float phase2Time = 5.0f;
+		const float phase3Time = 10.0f;
+		const float phase4Time = 20.0f;
+
+		const float phase1Speed = 100.0f;
+		const float phase2Speed = 125.0f;
+		const float phase3Speed = 150.0f;
+		const float phase4Speed = 200.0f;
+
 		lava->runAction(Sequence::create(
-			EaseSineIn::create(MoveBy::create(50.0f, Vec2(0.0f, 10000.0f))),
+			EaseSineIn::create(MoveBy::create(phase1Time, Vec2(0.0f, phase1Time * phase1Speed))),
+			MoveBy::create(phase2Time, Vec2(0.0f, phase2Time * phase2Speed)),
+			MoveBy::create(phase3Time, Vec2(0.0f, phase3Time * phase3Speed)),
+			MoveBy::create(phase4Time, Vec2(0.0f, phase4Time * phase4Speed)),
 			nullptr
 		));
 	}, LavaEscape::MapTagRisingLava);

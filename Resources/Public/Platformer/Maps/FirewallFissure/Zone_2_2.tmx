@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1973">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="28" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1977">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="837" name="magma" type="texture" x="-957.449" y="-1101.88" width="9917.1" height="5447.64"/>
+  <object id="837" name="magma" type="texture" x="-1797.45" y="-1101.88" width="7429.1" height="5447.64"/>
  </objectgroup>
  <objectgroup id="115" name="decor -8">
   <properties>
@@ -30,18 +30,12 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1934" name="obsidean" type="terrain" x="3314.89" y="1804.24">
-   <polygon points="111.74,-0.534154 -15.4303,25.4246 -67.5093,104.694 16.2954,339.722 958.248,346.405 1010.53,158.272 961.655,37.0323 869.439,0.404662"/>
-  </object>
  </objectgroup>
  <objectgroup id="114" name="terrain -7">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1932" name="obsidean" type="terrain" x="3543.84" y="1841.96">
-   <polygon points="63.2344,-0.534154 -38.2041,104.694 9.22169,339.722 587.553,350.405 560.547,90.2721 492.023,0.404662"/>
-  </object>
  </objectgroup>
  <objectgroup id="78" name="fireflies -8">
   <properties>
@@ -55,11 +49,11 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1913" name="obsidean" type="terrain" x="1712" y="304">
+  <object id="1913" name="obsidean" type="terrain" x="17.3333" y="-268.727">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="-59.914,1001.91 246.14,1070.41 658.793,1068.87 1424.64,874.515 1854.93,685.543 2406.27,676.204 2598.97,-74.3632 2693.39,-906.865 3215.92,-1185.02 3765.83,-1193.9 3071.86,-701.25 2919.94,28.287 2913.42,467.308 3183.62,461.073 4347.35,-91.1387 5402.46,-864.086 5974.59,-1460.96 6509.78,-1464.31 5728.99,-643.76 5020.72,-214.628 4323.13,381.02 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 3658.23,2091.24 5082.16,3525.6 4428.06,3506.62 3719.95,2691.79 2979.56,2204.36 2244.39,1661.19 2048.93,1771.8 1734.04,2076.44 1445.1,2541.32 832.23,3468.08 163.87,3450.62 1194.83,2028.96 1586.71,1605.49 1562.66,1385.24 1200.95,1405.81 89.0912,1357.17 -845.635,969.034 -1242.78,949.202 -2063.6,598.746 -2098.17,232.572 -1149.64,581.928 -445.965,882.377 -44.9617,237.08 -356.642,-449.175 -652.762,-762.36 -975.865,-971.133 -379.009,-962.014 -67.5072,-607.175 278.214,247.423"/>
+   <polygon points="-59.914,1001.91 246.14,1070.41 658.793,1068.87 1424.64,874.515 1854.93,685.543 2406.27,676.204 2598.97,-74.3632 2693.39,-906.865 3215.92,-1185.02 3765.83,-1193.9 3071.86,-701.25 2919.94,28.287 2913.42,467.308 3183.62,461.073 4347.35,-91.1387 4323.13,381.02 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 3658.23,2091.24 5082.16,3525.6 4428.06,3506.62 3719.95,2691.79 2979.56,2204.36 2244.39,1661.19 2048.93,1771.8 1734.04,2076.44 1445.1,2541.32 832.23,3468.08 163.87,3450.62 1194.83,2028.96 1586.71,1605.49 1562.66,1385.24 1200.95,1405.81 89.0912,1357.17 -445.965,882.377 -44.9617,237.08 -356.642,-449.175 -652.762,-762.36 -379.009,-962.014 -67.5072,-607.175 278.214,247.423"/>
   </object>
  </objectgroup>
  <objectgroup id="111" name="objects -6">
@@ -75,11 +69,6 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.85"/>
   </properties>
-  <object id="1951" name="spawn" type="object" x="3770" y="1733" width="128" height="128">
-   <properties>
-    <property name="transition" value="screaming-door"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="76" name="fireflies -6">
   <properties>
@@ -154,23 +143,14 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1944" name="obsidean" type="terrain" x="4779.46" y="1998" width="905.08" height="2448">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="67" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1882" name="obsidean" type="terrain" x="-65.0909" y="1540.97">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-   <polygon points="2478.76,686.803 2783.62,645.073 3904.89,594.76 4431.37,597.572 5758.59,203.035 6961.39,-72.3128 7735.52,-314.012 8274.73,-261.808 8269.04,128.881 7658.6,69.0824 6724.86,322.674 5004.72,785.372 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 2540.41,1846.57 2709.1,1917.32 3688.23,1916.08 4109.41,1976.8 4252.12,1975.54 4557.69,2097.02 4841.89,2096.19 4839.91,2332.64 2347.87,2330.62 2018.71,1333.49 1685.53,1147.1 686.106,1431.01 -452.248,1181.84 -434.152,-1680.45 142.021,-1679.9 168.02,737.709 2162.63,686.713"/>
+  <object id="1974" name="obsidean" type="terrain" x="-1000" y="2640">
+   <polygon points="385.686,792.618 1427.03,817.963 1991.32,711.947 2314.12,513.819 2309.06,-4.99182 2449.96,-642.476 2458.2,-996.501 2779.55,-1515.74 2790.01,-2024.82 2959.77,-2459.7 3228.32,-2916.36 3589.45,-3328.2 3118.27,-3321.44 2889.01,-2999.39 2731.91,-2658.4 2574.62,-2571.63 2397.64,-2869.12 2211.53,-3332.55 1807.61,-3318.42 2065.36,-2847.46 2526.14,-2042.5 2511.25,-1563.92 2247.43,-947.318 2203.55,-1122.07 1995.04,-1571.02 2129.34,-2104.29 1917.86,-2530.69 1731.34,-3026.33 1522.02,-3269.59 1156.6,-3263.06 1477.93,-2894.63 1630.82,-2502.81 1892.03,-2106.3 1714.98,-1545.37 1994.16,-960.178 1625.56,-610.995 1338.01,-607.72 1136.49,-699.806 529.487,-733.15"/>
   </object>
  </objectgroup>
  <objectgroup id="108" name="objects -4">
@@ -194,22 +174,6 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.5"/>
   </properties>
-  <object id="1957" name="warp" type="object" x="3914" y="1880" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-back-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-front-A"/>
-   </properties>
-  </object>
-  <object id="1965" name="warp" type="object" x="2127.29" y="1969.53" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-back-B"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-front-B"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="74" name="fireflies -4">
   <properties>
@@ -223,7 +187,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1893" name="lava" type="object" x="-1063.16" y="2335.9" width="9870.33" height="1024">
+  <object id="1893" name="lava" type="object" x="-1959.16" y="2335.9" width="7438.33" height="1024">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -234,12 +198,6 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1960" name="obsidean" type="terrain" x="3629.33" y="2152">
-   <polygon points="148,-2 -44,504 160,688 640,696 873,535 740.97,1.75758"/>
-  </object>
-  <object id="1968" name="obsidean" type="terrain" x="1820.89" y="2230.72">
-   <polygon points="148,-2 -44,504 160,688 640,696 873,535 740.97,1.75758"/>
-  </object>
  </objectgroup>
  <objectgroup id="73" name="fireflies -3">
   <properties>
@@ -253,7 +211,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1892" name="lava" type="object" x="-919.165" y="2363.9" width="9550.33" height="1024">
+  <object id="1892" name="lava" type="object" x="-1775.16" y="2363.9" width="7078.33" height="1024">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -264,12 +222,6 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1959" name="obsidean" type="terrain" x="3629.45" y="2171.7">
-   <polygon points="212,-5 -18,310 80,696 766,708 906,366 664.97,-1.24242"/>
-  </object>
-  <object id="1967" name="obsidean" type="terrain" x="1821.01" y="2250.42">
-   <polygon points="212,-5 -18,310 80,696 766,708 906,366 664.97,-1.24242"/>
-  </object>
  </objectgroup>
  <objectgroup id="72" name="fireflies -2">
   <properties>
@@ -283,7 +235,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1891" name="lava" type="object" x="-799.165" y="2385.9" width="9310.33" height="1024">
+  <object id="1891" name="lava" type="object" x="-1567.16" y="2385.9" width="6750.33" height="1024">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -294,12 +246,6 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1958" name="obsidean" type="terrain" x="3629.21" y="2192.55">
-   <polygon points="96,-1 -58,196 14,636 892,656 851,169 746.97,0.757576"/>
-  </object>
-  <object id="1966" name="obsidean" type="terrain" x="1820.77" y="2271.27">
-   <polygon points="96,-1 -58,196 14,636 892,656 851,169 746.97,0.757576"/>
-  </object>
  </objectgroup>
  <objectgroup id="71" name="fireflies -1">
   <properties>
@@ -325,7 +271,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1890" name="lava" type="object" x="-599.165" y="2412.9" width="8998.33" height="1024">
+  <object id="1890" name="lava" type="object" x="-1295.16" y="2412.9" width="6366.33" height="1024">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -345,18 +291,15 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1623" name="obsidean" type="terrain" x="-291.025" y="-569.394" width="8553.08" height="1116"/>
-  <object id="1876" name="obsidean" type="terrain" x="7308" y="28">
+  <object id="1623" name="obsidean" type="terrain" x="-835.025" y="-569.394" width="5769.08" height="1116"/>
+  <object id="1876" name="obsidean" type="terrain" x="3980" y="28">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="760,1736 -2041.38,1734.4 -2702.13,1808.95 -3000.02,1540.4 -3072.84,852.423 -3346.89,711.661 -3621.12,779.516 -4136.61,749.7 -4527.81,-65.7399 780.483,-66.8"/>
+   <polygon points="756.848,738.424 -387.658,537.358 -658.539,525.412 -1143.4,596.602 -1567.87,880.075 -2117.14,1216.22 -2696.07,1630.16 -3000.02,1540.4 -3072.84,852.423 -3346.89,711.661 -3621.12,779.516 -4136.61,749.7 -4527.81,-65.7399 780.483,-66.8"/>
   </object>
-  <object id="1878" name="obsidean" type="terrain" x="784.414" y="2898.37">
-   <polygon points="-780.369,-735.156 -773.835,11.8105 -154.274,368.659 385.686,792.618 1427.03,817.963 1991.32,711.947 2314.12,513.819 2309.06,-4.99182 2449.96,-642.476 2458.2,-996.501 2779.55,-1515.74 2790.01,-2024.82 2959.77,-2459.7 3228.32,-2916.36 3589.45,-3328.2 3118.27,-3321.44 2889.01,-2999.39 2731.91,-2658.4 2574.62,-2571.63 2397.64,-2869.12 2211.53,-3332.55 1807.61,-3318.42 2065.36,-2847.46 2526.14,-2042.5 2511.25,-1563.92 2247.43,-947.318 2203.55,-1122.07 1995.04,-1571.02 2129.34,-2104.29 1917.86,-2530.69 1731.34,-3026.33 1522.02,-3269.59 1156.6,-3263.06 1477.93,-2894.63 1630.82,-2502.81 1892.03,-2106.3 1714.98,-1545.37 1994.16,-960.178 1625.56,-610.995 1338.01,-607.72 1136.49,-699.806 529.487,-733.15"/>
-  </object>
-  <object id="1969" name="obsidean" type="terrain" x="3540.51" y="2182.24">
-   <polygon points="-241.411,0 -409.988,703.329 -404.927,1372.88 2933.52,1560.51 4093.51,1358.26 4757.06,980.266 4345.62,-0.532825"/>
+  <object id="1969" name="obsidean" type="terrain" x="212.51" y="2182.24">
+   <polygon points="-241.411,0 -409.988,703.329 -404.927,1372.88 2933.52,1560.51 4093.51,1358.26 4757.06,980.266 4345.62,-0.532825 3369.31,-657.914 2477.11,-660.091 1720.95,-385.047 1493.97,-377.27 799.611,-9.41071"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -380,20 +323,21 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1880" name="edge-portal" type="object" x="7724.04" y="1700" width="199.918" height="488.002">
+  <object id="1880" name="edge-portal" type="object" x="3369.25" y="1043.27" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="FirewallFissure/Zone_2_3"/>
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="1963" name="edge-portal" type="object" x="12.0982" y="1679.45" width="199.918" height="488.002">
+  <object id="1963" name="edge-portal" type="object" x="52.0982" y="1698.12" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="FirewallFissure/Zone_2_1"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
+  <object id="1976" name="life-stone" type="object" x="2769.42" y="1100.62" width="146" height="423"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -405,23 +349,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1961" name="demon-dragon" type="entity" x="1286.85" y="2022.82" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,soul,agro,z-fade"/>
-    <property name="drop-pool" value="ff-generic"/>
-   </properties>
-  </object>
-  <object id="1962" name="demon-dragon" type="entity" x="1270.01" y="1802.08" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
-  <object id="1970" name="demon-ghost" type="entity" x="6048.42" y="2054.37" width="128" height="128">
+  <object id="1970" name="demon-ghost" type="entity" x="1768.66" y="1673.52" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
@@ -430,7 +358,7 @@
     <property name="drop-pool" value="ff-generic"/>
    </properties>
   </object>
-  <object id="1971" name="demon-ghost" type="entity" x="6034.61" y="1809.39" width="128" height="128">
+  <object id="1971" name="demon-ghost" type="entity" x="1754.85" y="1428.54" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-b"/>
@@ -444,35 +372,19 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.5"/>
   </properties>
-  <object id="864" name="squally" type="entity" x="738.963" y="2029.21" width="128" height="128">
+  <object id="864" name="squally" type="entity" x="778.963" y="2047.88" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="1881" name="spawn" type="object" x="7382.34" y="2043.49" width="128" height="128">
+  <object id="1881" name="spawn" type="object" x="3027.55" y="1386.76" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="1952" name="spawn" type="object" x="359.003" y="2034.84" width="128" height="128">
+  <object id="1952" name="spawn" type="object" x="399.003" y="2053.51" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="1956" name="warp" type="object" x="3914" y="1954" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-front-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-back-A"/>
-   </properties>
-  </object>
-  <object id="1964" name="warp" type="object" x="2127.29" y="2037.65" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-front-B"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-back-B"/>
    </properties>
   </object>
  </objectgroup>
@@ -480,7 +392,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1877" name="lava" type="object" x="-471.165" y="2434.9" width="8758.33" height="1024">
+  <object id="1877" name="lava" type="object" x="-1063.16" y="2434.9" width="6022.33" height="1024">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>

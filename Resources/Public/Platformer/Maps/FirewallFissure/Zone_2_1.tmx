@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="58" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1977">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="46" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1979">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -164,7 +164,7 @@
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="2477.76,662.803 2783.62,645.073 3422.68,595.321 3710.41,591.938 3904.89,594.76 4431.37,597.572 4634.59,155.035 4750,-512.922 4685.39,-1232.31 4867.52,-1966.01 5170.73,-1929.81 5000.53,-1244.31 5079.43,-520.84 4982.6,185.082 4637.34,871.283 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 2540.41,1846.57 2709.1,1917.32 3688.23,1916.08 4109.41,1976.8 4252.12,1975.54 4557.69,2097.02 4841.89,2096.19 4839.91,2332.64 2347.87,2330.62 2018.71,1333.49 1685.53,1147.1 686.106,1431.01 -452.248,1181.84 -387.98,533.709 1673.11,542.757 2159.63,663.713"/>
+   <polygon points="2477.76,662.803 2783.62,645.073 3115.54,600.254 3289.04,599.963 3422.68,595.321 3710.41,591.938 3904.89,594.76 4431.37,597.572 4634.59,155.035 4750,-512.922 4685.39,-1232.31 4867.52,-1966.01 5170.73,-1929.81 5000.53,-1244.31 5079.43,-520.84 4982.6,185.082 4637.34,871.283 2874.86,921.355 2518.02,1069.12 2343.68,1285.57 2540.41,1846.57 2709.1,1917.32 3688.23,1916.08 4109.41,1976.8 4252.12,1975.54 4557.69,2097.02 4841.89,2096.19 4839.91,2332.64 2347.87,2330.62 2018.71,1333.49 1685.53,1147.1 686.106,1431.01 -452.248,1181.84 -387.98,533.709 1673.11,542.757 2159.63,663.713"/>
   </object>
  </objectgroup>
  <objectgroup id="108" name="objects -4">
@@ -187,7 +187,7 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.5"/>
   </properties>
-  <object id="1974" name="fire-elemental" type="entity" x="2956.54" y="2006.98" width="128" height="128">
+  <object id="1974" name="fire-elemental" type="entity" x="2568.54" y="1998.98" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
@@ -196,7 +196,7 @@
     <property name="drop-pool" value="ff-generic"/>
    </properties>
   </object>
-  <object id="1975" name="fire-elemental" type="entity" x="2939.7" y="1786.24" width="128" height="128">
+  <object id="1975" name="fire-elemental" type="entity" x="2551.7" y="1778.24" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-b"/>
@@ -372,7 +372,7 @@
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
-   <polygon points="760,1736 -1639.73,1656.63 -1646.86,1481.72 -1623.71,1364.93 -1289.12,1372.63 -1261.4,1216.68 -1208.11,1119.79 -1304.92,1037.31 -1265.06,905.066 -1433.71,838.224 -1599.26,745.124 -1783.3,849.941 -2020.92,910.874 -2249.85,803.521 -2301.89,941.672 -2414.56,1039.28 -2356.66,1182.6 -2357.17,1348.51 -1984.01,1354.59 -2003.65,1540.08 -2073.38,1734.4 -2702.13,1808.95 -3000.02,1540.4 -3072.84,852.423 -3346.89,711.661 -3621.12,779.516 -4136.61,749.7 -4527.81,-65.7399 780.483,-66.8"/>
+   <polygon points="760,1736 -1573.06,1656.63 -1646.86,1509 -1623.71,1364.93 -1289.12,1372.63 -1261.4,1216.68 -1208.11,1119.79 -1304.92,1037.31 -1265.06,905.066 -1433.71,838.224 -1599.26,745.124 -1783.3,849.941 -2020.92,910.874 -2249.85,803.521 -2301.89,941.672 -2414.56,1039.28 -2356.66,1182.6 -2357.17,1348.51 -1984.01,1354.59 -2000.62,1509.78 -2085.5,1637.43 -2714.25,1711.98 -3000.02,1540.4 -3072.84,852.423 -3346.89,711.661 -3621.12,779.516 -4136.61,749.7 -4527.81,-65.7399 780.483,-66.8"/>
   </object>
   <object id="1878" name="obsidean" type="terrain" x="272.414" y="2898.37">
    <properties>
@@ -405,7 +405,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1880" name="edge-portal" type="object" x="5520.04" y="1704" width="199.918" height="488.002">
+  <object id="1880" name="edge-portal" type="object" x="5686.71" y="1697.94" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="FirewallFissure/Zone_2_2"/>
@@ -446,6 +446,22 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1977" name="demon-dragon" type="entity" x="4183.81" y="2052.43" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,soul,agro,z-fade"/>
+    <property name="drop-pool" value="ff-generic"/>
+   </properties>
+  </object>
+  <object id="1978" name="demon-dragon" type="entity" x="4166.97" y="1831.69" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>
@@ -458,7 +474,7 @@
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="1881" name="spawn" type="object" x="5158.86" y="2041" width="128" height="128">
+  <object id="1881" name="spawn" type="object" x="5357.53" y="2054.94" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
    </properties>

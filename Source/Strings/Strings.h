@@ -35799,6 +35799,36 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent() = default;
 	};
 
+	class Platformer_Quests_FirewallFissure_ReleasePressure_A_DoYouHearThat : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_FirewallFissure_ReleasePressure_A_DoYouHearThat* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_ReleasePressure_A_DoYouHearThat();
+		virtual ~Platformer_Quests_FirewallFissure_ReleasePressure_A_DoYouHearThat() = default;
+	};
+
+	class Platformer_Quests_FirewallFissure_ReleasePressure_B_SeismicActivity : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_FirewallFissure_ReleasePressure_B_SeismicActivity* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_ReleasePressure_B_SeismicActivity();
+		virtual ~Platformer_Quests_FirewallFissure_ReleasePressure_B_SeismicActivity() = default;
+	};
+
 	class Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_A_CraftDemonHeart : public LocalizedString
 	{
 	public:
