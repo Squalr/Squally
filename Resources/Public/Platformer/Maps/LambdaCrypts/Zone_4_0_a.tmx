@@ -283,7 +283,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1133" name="evil-eye" type="entity" x="800" y="1569.9" width="128" height="128">
+  <object id="1133" name="perceptron" type="entity" x="800" y="1569.9" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>

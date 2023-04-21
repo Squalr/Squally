@@ -4,7 +4,7 @@
 
 class CameraStop;
 class CollisionObject;
-class EvilEye;
+class Perceptron;
 class Gecky;
 class Guano;
 class Mabel;
@@ -39,7 +39,7 @@ private:
 	void runCinematicSequencePt6();
 	void runCinematicSequencePt7();
 
-	EvilEye* evilEye = nullptr;
+	Perceptron* perceptron = nullptr;
 	Gecky* gecky = nullptr;
 	Guano* guano = nullptr;
 	Mabel* mabel = nullptr;

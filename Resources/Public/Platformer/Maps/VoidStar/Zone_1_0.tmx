@@ -150,7 +150,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="899" name="evil-eye" type="entity" x="2571" y="933.126" width="128" height="128">
+  <object id="899" name="perceptron" type="entity" x="2571" y="933.126" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="VoidStar/Combat_FinalBoss"/>

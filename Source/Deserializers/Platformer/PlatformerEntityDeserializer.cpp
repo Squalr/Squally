@@ -236,7 +236,7 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[Assassin::MapKey] = [=](ValueMap properties) { return (GameObject*)Assassin::deserialize(properties); };
 	this->deserializers[BoneKnight::MapKey] = [=](ValueMap properties) { return (GameObject*)BoneKnight::deserialize(properties); };
 	this->deserializers[DarkTiger::MapKey] = [=](ValueMap properties) { return (GameObject*)DarkTiger::deserialize(properties); };
-	this->deserializers[EvilEye::MapKey] = [=](ValueMap properties) { return (GameObject*)EvilEye::deserialize(properties); };
+	this->deserializers[Perceptron::MapKey] = [=](ValueMap properties) { return (GameObject*)Perceptron::deserialize(properties); };
 	this->deserializers[Exterminator::MapKey] = [=](ValueMap properties) { return (GameObject*)Exterminator::deserialize(properties); };
 	this->deserializers[Gargoyle::MapKey] = [=](ValueMap properties) { return (GameObject*)Gargoyle::deserialize(properties); };
 	this->deserializers[Shade::MapKey] = [=](ValueMap properties) { return (GameObject*)Shade::deserialize(properties); };

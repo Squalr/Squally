@@ -4,7 +4,7 @@
 
 class CameraStop;
 class CollisionObject;
-class EvilEye;
+class Perceptron;
 class Gecky;
 class Guano;
 class KingRedsong;
@@ -40,7 +40,7 @@ private:
 	void runCinematicSequencePt4();
 	void runCinematicSequencePt5();
 
-	EvilEye* evilEye = nullptr;
+	Perceptron* perceptron = nullptr;
 	Gecky* gecky = nullptr;
 	Guano* guano = nullptr;
 	KingRedsong* kingRedsong = nullptr;

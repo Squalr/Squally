@@ -2,7 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class EvilEye;
+class Perceptron;
 class Gecky;
 class Guano;
 class QuestLine;
@@ -33,7 +33,7 @@ private:
 	void runCinematicSequencePt1();
 	void runCinematicSequenceStrikeZone();
 
-	EvilEye* evilEye = nullptr;
+	Perceptron* perceptron = nullptr;
 	Gecky* gecky = nullptr;
 	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;

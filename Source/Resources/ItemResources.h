@@ -66,11 +66,11 @@ namespace ItemResources
 	extern const std::string Crafting_Alchemy_Plants_VoidFlower;
 	extern const std::string Crafting_Alchemy_Reagents_BlackBlood;
 	extern const std::string Crafting_Alchemy_Reagents_DemonSkull;
-	extern const std::string Crafting_Alchemy_Reagents_DreadEyeWings;
+	extern const std::string Crafting_Alchemy_Reagents_DemonWings;
+	extern const std::string Crafting_Alchemy_Reagents_DreadWings;
 	extern const std::string Crafting_Alchemy_Reagents_Egg;
 	extern const std::string Crafting_Alchemy_Reagents_Eggplant;
 	extern const std::string Crafting_Alchemy_Reagents_Ember;
-	extern const std::string Crafting_Alchemy_Reagents_EvilEyeWings;
 	extern const std::string Crafting_Alchemy_Reagents_Feather;
 	extern const std::string Crafting_Alchemy_Reagents_Honey;
 	extern const std::string Crafting_Alchemy_Reagents_InsectWings;

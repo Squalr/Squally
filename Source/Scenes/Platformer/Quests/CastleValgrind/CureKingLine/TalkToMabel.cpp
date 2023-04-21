@@ -14,7 +14,7 @@
 #include "Engine/Quests/QuestLine.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
+#include "Entities/Platformer/Enemies/VoidStar/Perceptron.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Helpers/DataMines/Gecky.h"
@@ -62,22 +62,22 @@ TalkToMabel::~TalkToMabel()
 
 void TalkToMabel::onLoad(QuestState questState)
 {
-	ObjectEvents::WatchForObject<EvilEye>(this, [=](EvilEye* evilEye)
+	ObjectEvents::WatchForObject<Perceptron>(this, [=](Perceptron* perceptron)
 	{
-		this->evilEye = evilEye;
+		this->perceptron = perceptron;
 		
 		if (questState == QuestState::Complete)
 		{
-			this->evilEye->despawn();
+			this->perceptron->despawn();
 		}
 		else
 		{
-			this->evilEye->getComponent<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
+			this->perceptron->getComponent<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
 			{
 				movementBehavior->setMoveAcceleration(EntityMovementBehavior::DefaultSprintAcceleration);
 			});
 		}
-	}, EvilEye::MapKey);
+	}, Perceptron::MapKey);
 
 	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
@@ -171,9 +171,9 @@ void TalkToMabel::onComplete()
 			this->cameraStop->disable();
 		}
 
-		if (this->evilEye != nullptr)
+		if (this->perceptron != nullptr)
 		{
-			this->evilEye->despawn();
+			this->perceptron->despawn();
 		}
 	}, 2);
 }
@@ -210,21 +210,21 @@ void TalkToMabel::runCinematicSequencePt1()
 				this->wall->setPhysicsFlagEnabled(false);
 			}
 
-			if (this->evilEye != nullptr)
+			if (this->perceptron != nullptr)
 			{
 				ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* exit)
 				{
-					this->evilEye->setState(StateKeys::CinematicHijacked, Value(true));
-					this->evilEye->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->evilEye).x));
-					this->evilEye->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(exit).x));
+					this->perceptron->setState(StateKeys::CinematicHijacked, Value(true));
+					this->perceptron->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->perceptron).x));
+					this->perceptron->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(exit).x));
 					
-					this->evilEye->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
+					this->perceptron->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
 					{
-						this->evilEye->runAction(Sequence::create(
+						this->perceptron->runAction(Sequence::create(
 							FadeTo::create(0.5f, 0),
 							CallFunc::create([=]()
 							{
-								this->evilEye->despawn();
+								this->perceptron->despawn();
 								this->runCinematicSequencePt2();
 							}),
 							nullptr

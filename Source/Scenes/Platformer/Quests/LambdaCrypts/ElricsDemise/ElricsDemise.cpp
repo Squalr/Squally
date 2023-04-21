@@ -16,7 +16,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
+#include "Entities/Platformer/Enemies/VoidStar/Perceptron.h"
 #include "Entities/Platformer/Npcs/LambdaCrypts/Elric.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/ZombieElric.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"

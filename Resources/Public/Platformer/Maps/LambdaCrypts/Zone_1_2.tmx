@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="1158">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="1168">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -288,7 +288,36 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="61" name="terrain -6">
+ <objectgroup id="78" name="terrain -6 bg">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1159" name="cave" type="terrain" x="-953.94" y="1616.59" width="6803.88" height="670.829"/>
+ </objectgroup>
+ <objectgroup id="79" name="entities -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1160" name="perceptron" type="entity" x="1039.03" y="1490.55" width="128" height="128">
+   <properties>
+    <property name="components" value="enemy"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="80" name="objects -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1165" name="cinematic-marker" type="object" x="5292" y="1504" width="64" height="64" rotation="180">
+   <properties>
+    <property name="tag" value="exit"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="61" name="terrain -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -417,7 +446,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="60" name="terrain -4">
+ <objectgroup id="60" name="terrain -4" visible="0">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -464,7 +493,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="59" name="terrain -2">
+ <objectgroup id="59" name="terrain -2" visible="0">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -537,6 +566,16 @@
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
     <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1164" name="trigger" type="object" x="2919.32" y="-21.1241" width="180.944" height="2460.43">
+   <properties>
+    <property name="tag" value="strike-zone"/>
+   </properties>
+  </object>
+  <object id="1167" name="trigger" type="object" x="3108.53" y="-472.995" width="118.944" height="2425.99">
+   <properties>
+    <property name="send-event" value="gauntlet-complete"/>
    </properties>
   </object>
  </objectgroup>
@@ -677,7 +716,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1135" name="cave" type="terrain" x="0" y="-66.6667">
-   <polygon points="5150.64,1743.92 5133.26,2676.71 -341.831,2665.12 -344.234,1766.47 4550.95,1746.38 4530.04,6.31647 5142.7,8.75094"/>
+   <polygon points="5150.64,1743.92 5133.26,2676.71 -341.831,2665.12 -344.234,1766.47 4550.95,1746.38 4541.84,988.032 4965.61,990.849 4937.19,464.614 4607.23,259.567 4530.04,6.31647 5142.7,8.75094"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -816,12 +855,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1154" name="metal-chest" type="object" x="2635.37" y="1558.36" width="128" height="128">
+  <object id="1154" name="metal-chest" type="object" x="3862.64" y="1558.36" width="128" height="128">
    <properties>
-    <property name="reward-pool" value="lc-gem-red"/>
+    <property name="reward-pool" value="lc-rare"/>
    </properties>
   </object>
-  <object id="1155" name="caged-chicken" type="object" x="3260.35" y="1572.79" width="196" height="112"/>
+  <object id="1155" name="caged-chicken" type="object" x="4657.32" y="812.184" width="196" height="112"/>
   <object id="1156" name="edge-portal" type="object" x="0.48358" y="1059.12" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="left"/>
@@ -829,10 +868,32 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="1157" name="stone-button" type="object" x="4135.91" y="1592.64" width="258.367" height="85.7283">
+  <object id="1157" name="stone-button" type="object" x="3238.94" y="1595.67" width="258.367" height="85.7283">
    <properties>
     <property name="save-key" value="LC_INTRO_CRYPT_PORTCULLUS"/>
     <property name="switch" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1161" name="trigger" type="object" x="1426.34" y="-20.2276" width="182.944" height="2460.43">
+   <properties>
+    <property name="tag" value="strike-zone"/>
+   </properties>
+  </object>
+  <object id="1162" name="trigger" type="object" x="1990.39" y="-22.8471" width="208.944" height="2460.43">
+   <properties>
+    <property name="tag" value="strike-zone"/>
+   </properties>
+  </object>
+  <object id="1163" name="trigger" type="object" x="2430.47" y="-18.9903" width="206.944" height="2460.43">
+   <properties>
+    <property name="tag" value="strike-zone"/>
+   </properties>
+  </object>
+  <object id="1166" name="trigger" type="object" x="984.528" y="-10.215" width="118.944" height="2460.43">
+   <properties>
+    <property name="quest" value="third-encounter"/>
+    <property name="quest-line" value="open-crypt"/>
+    <property name="send-event" value="gauntlet-start"/>
    </properties>
   </object>
  </objectgroup>

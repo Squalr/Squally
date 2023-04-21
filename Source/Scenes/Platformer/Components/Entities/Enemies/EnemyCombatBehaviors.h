@@ -95,6 +95,6 @@
 #include "Scenes/Platformer/Components/Entities/Enemies/Combat/UnderflowRuins/OsirisCombatBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Combat/UnderflowRuins/TigressCombatBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Combat/UnderflowRuins/TigerManCombatBehavior.h"
-#include "Scenes/Platformer/Components/Entities/Enemies/Combat/VoidStar/EvilEyeCombatBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Combat/VoidStar/PerceptronCombatBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Combat/VoidStar/ExterminatorCombatBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Combat/VoidStar/VoidDemonCombatBehavior.h"

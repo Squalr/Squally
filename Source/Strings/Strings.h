@@ -29649,21 +29649,6 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Enemies_VoidStar_DemonArcher() = default;
 	};
 
-	class Platformer_Entities_Names_Enemies_VoidStar_EvilEye : public LocalizedString
-	{
-	public:
-		static Platformer_Entities_Names_Enemies_VoidStar_EvilEye* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Entities_Names_Enemies_VoidStar_EvilEye();
-		virtual ~Platformer_Entities_Names_Enemies_VoidStar_EvilEye() = default;
-	};
-
 	class Platformer_Entities_Names_Enemies_VoidStar_Exterminator : public LocalizedString
 	{
 	public:
@@ -29707,6 +29692,21 @@ namespace Strings
 	private:
 		Platformer_Entities_Names_Enemies_VoidStar_LightningGolem();
 		virtual ~Platformer_Entities_Names_Enemies_VoidStar_LightningGolem() = default;
+	};
+
+	class Platformer_Entities_Names_Enemies_VoidStar_Perceptron : public LocalizedString
+	{
+	public:
+		static Platformer_Entities_Names_Enemies_VoidStar_Perceptron* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Enemies_VoidStar_Perceptron();
+		virtual ~Platformer_Entities_Names_Enemies_VoidStar_Perceptron() = default;
 	};
 
 	class Platformer_Entities_Names_Enemies_VoidStar_Shade : public LocalizedString
@@ -36054,10 +36054,10 @@ namespace Strings
 		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Guano_Brutal() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_EnterCrypts_EvilEye_A_FoundYou : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_EnterCrypts_Perceptron_A_FoundYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_EnterCrypts_EvilEye_A_FoundYou* create();
+		static Platformer_Quests_LambdaCrypts_EnterCrypts_Perceptron_A_FoundYou* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36065,8 +36065,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_EnterCrypts_EvilEye_A_FoundYou();
-		virtual ~Platformer_Quests_LambdaCrypts_EnterCrypts_EvilEye_A_FoundYou() = default;
+		Platformer_Quests_LambdaCrypts_EnterCrypts_Perceptron_A_FoundYou();
+		virtual ~Platformer_Quests_LambdaCrypts_EnterCrypts_Perceptron_A_FoundYou() = default;
 	};
 
 	class Platformer_Quests_LambdaCrypts_EnterCrypts_Scrappy_A_DangerDanger : public LocalizedString

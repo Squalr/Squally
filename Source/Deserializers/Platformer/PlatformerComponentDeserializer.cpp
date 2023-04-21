@@ -349,7 +349,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[ZombieElricCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ZombieElricCombatBehavior::create(owner); };
 
 	// VS
-	this->componentDeserializers[EvilEyeCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)EvilEyeCombatBehavior::create(owner); };
+	this->componentDeserializers[PerceptronCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)PerceptronCombatBehavior::create(owner); };
 	this->componentDeserializers[ExterminatorCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)ExterminatorCombatBehavior::create(owner); };
 	this->componentDeserializers[VoidDemonCombatBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)VoidDemonCombatBehavior::create(owner); };
 

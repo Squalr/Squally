@@ -355,7 +355,7 @@
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
-  <object id="825" name="evil-eye" type="entity" x="3705.48" y="1067.2" width="128" height="128">
+  <object id="825" name="perceptron" type="entity" x="3705.48" y="1067.2" width="128" height="128">
    <properties>
     <property name="components" value="friendly,haunted"/>
     <property name="other-world" type="bool" value="true"/>

@@ -16,7 +16,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Entities/Platformer/Enemies/VoidStar/EvilEye.h"
+#include "Entities/Platformer/Enemies/VoidStar/Perceptron.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Helpers/DataMines/Gecky.h"
@@ -74,22 +74,22 @@ EnterCrypts::~EnterCrypts()
 
 void EnterCrypts::onLoad(QuestState questState)
 {
-	ObjectEvents::WatchForObject<EvilEye>(this, [=](EvilEye* evilEye)
+	ObjectEvents::WatchForObject<Perceptron>(this, [=](Perceptron* perceptron)
 	{
-		this->evilEye = evilEye;
+		this->perceptron = perceptron;
 		
 		if (questState == QuestState::Complete)
 		{
-			this->evilEye->despawn();
+			this->perceptron->despawn();
 		}
 		else
 		{
-			this->evilEye->getComponent<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
+			this->perceptron->getComponent<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
 			{
 				movementBehavior->setMoveAcceleration(EntityMovementBehavior::DefaultRunAcceleration);
 			});
 		}
-	}, EvilEye::MapKey);
+	}, Perceptron::MapKey);
 
 	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
@@ -117,7 +117,7 @@ void EnterCrypts::onLoad(QuestState questState)
 		{
 			trigger->getCollision()->whenCollidesWith({ (int)PlatformerCollisionType::Player }, [=](CollisionData data)
 			{
-				if (GameUtils::getWorldCoords(this->squally).x > GameUtils::getWorldCoords(this->evilEye).x)
+				if (GameUtils::getWorldCoords(this->squally).x > GameUtils::getWorldCoords(this->perceptron).x)
 				{
 					this->runCinematicSequenceStrikeZone();
 				}
@@ -130,17 +130,17 @@ void EnterCrypts::onLoad(QuestState questState)
 
 void EnterCrypts::onActivate(bool isActiveThroughSkippable)
 {
-	this->listenForMapEventOnce("evil-eye", [=](ValueMap valueMap)
+	this->listenForMapEventOnce("gauntlet-start", [=](ValueMap valueMap)
 	{
 		this->runCinematicSequencePt1();
 
 		ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* exit)
 		{
-			if (this->evilEye != nullptr)
+			if (this->perceptron != nullptr)
 			{
-				this->evilEye->setState(StateKeys::CinematicHijacked, Value(true));
-				this->evilEye->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->evilEye).x));
-				this->evilEye->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(exit).x));
+				this->perceptron->setState(StateKeys::CinematicHijacked, Value(true));
+				this->perceptron->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->perceptron).x));
+				this->perceptron->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(exit).x));
 			}
 		}, "exit");
 	});
@@ -180,19 +180,19 @@ void EnterCrypts::runCinematicSequencePt1()
 
 void EnterCrypts::runCinematicSequenceStrikeZone()
 {
-	if (this->evilEye != nullptr)
+	if (this->perceptron != nullptr)
 	{
-		this->evilEye->clearState(StateKeys::CinematicHijacked);
-		this->evilEye->clearState(StateKeys::CinematicSourceX);
-		this->evilEye->clearState(StateKeys::CinematicDestinationX);
+		this->perceptron->clearState(StateKeys::CinematicHijacked);
+		this->perceptron->clearState(StateKeys::CinematicSourceX);
+		this->perceptron->clearState(StateKeys::CinematicDestinationX);
 	}
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_LambdaCrypts_EnterCrypts_EvilEye_A_FoundYou::create(), 
+		Strings::Platformer_Quests_LambdaCrypts_EnterCrypts_Perceptron_A_FoundYou::create(), 
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->evilEye, false),
+			DialogueEvents::BuildPreviewNode(&this->perceptron, false),
 			DialogueEvents::BuildPreviewNode(&this->squally, true)
 		),
 		[=]()

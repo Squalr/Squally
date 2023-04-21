@@ -3,7 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 
 class ArcaneBook;
-class EvilEye;
+class Perceptron;
 class Gecky;
 class Guano;
 class Mabel;

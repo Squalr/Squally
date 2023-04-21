@@ -294,13 +294,9 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1133" name="evil-eye" type="entity" x="1183.5" y="1545.8" width="128" height="128">
+  <object id="1133" name="perceptron" type="entity" x="1183.5" y="1545.8" width="128" height="128">
    <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
-    <property name="battle-tag" value="group-z"/>
     <property name="components" value="enemy"/>
-    <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>
  </objectgroup>
@@ -791,7 +787,7 @@
    <properties>
     <property name="quest" value="enter-crypts"/>
     <property name="quest-line" value="open-crypt"/>
-    <property name="send-event" value="evil-eye"/>
+    <property name="send-event" value="gauntlet-start"/>
    </properties>
   </object>
   <object id="1160" name="trigger" type="object" x="2196.04" y="-73.1878" width="118.944" height="2460.43">

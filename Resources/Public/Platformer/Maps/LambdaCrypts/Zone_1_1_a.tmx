@@ -207,60 +207,6 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="72" name="holes bg">
-  <properties>
-   <property name="depth" type="float" value="-512"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="968" name="terrain-hole" type="object" x="2245.21" y="862.151" width="312" height="312">
-   <properties>
-    <property name="components" value="z-fade"/>
-    <property name="hole-tag" value="hole-B"/>
-   </properties>
-  </object>
-  <object id="969" name="terrain-hole" type="object" x="1796.9" y="864.333" width="312" height="312">
-   <properties>
-    <property name="components" value="z-fade"/>
-    <property name="hole-tag" value="hole-B"/>
-   </properties>
-  </object>
-  <object id="970" name="terrain-hole" type="object" x="1302.46" y="877.608" width="312" height="312">
-   <properties>
-    <property name="components" value="z-fade"/>
-    <property name="hole-tag" value="hole-B"/>
-   </properties>
-  </object>
-  <object id="971" name="terrain-hole" type="object" x="2250.8" y="1303.74" width="312" height="312">
-   <properties>
-    <property name="components" value="z-fade"/>
-    <property name="hole-tag" value="hole-B"/>
-   </properties>
-  </object>
-  <object id="972" name="terrain-hole" type="object" x="1802.48" y="1305.92" width="312" height="312">
-   <properties>
-    <property name="components" value="z-fade"/>
-    <property name="hole-tag" value="hole-B"/>
-   </properties>
-  </object>
-  <object id="973" name="terrain-hole" type="object" x="1308.05" y="1319.19" width="312" height="312">
-   <properties>
-    <property name="components" value="z-fade"/>
-    <property name="hole-tag" value="hole-B"/>
-   </properties>
-  </object>
-  <object id="974" name="terrain-hole" type="object" x="855.873" y="874.098" width="312" height="312">
-   <properties>
-    <property name="components" value="z-fade"/>
-    <property name="hole-tag" value="hole-B"/>
-   </properties>
-  </object>
-  <object id="975" name="terrain-hole" type="object" x="861.473" y="1315.68" width="312" height="312">
-   <properties>
-    <property name="components" value="z-fade"/>
-    <property name="hole-tag" value="hole-B"/>
-   </properties>
-  </object>
- </objectgroup>
  <objectgroup id="69" name="terrain -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
@@ -283,15 +229,6 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1133" name="evil-eye" type="entity" x="800" y="1569.9" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
-    <property name="battle-tag" value="group-z"/>
-    <property name="components" value="enemy"/>
-    <property name="drop-pool" value="lc-generic"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="70" name="player_layer -8">
   <properties>
@@ -434,7 +371,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="60" name="terrain -4">
+ <objectgroup id="60" name="terrain -4" visible="0">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -481,7 +418,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="59" name="terrain -2">
+ <objectgroup id="59" name="terrain -2" visible="0">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -493,6 +430,60 @@
     <property name="fade-multiplier" type="float" value="0.25"/>
     <property name="hole-tag" value="hole-A"/>
     <property name="square-test" value=""/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="72" name="holes bg">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="968" name="terrain-hole" type="object" x="2245.21" y="862.151" width="312" height="312">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="hole-tag" value="hole-B"/>
+   </properties>
+  </object>
+  <object id="969" name="terrain-hole" type="object" x="1796.9" y="864.333" width="312" height="312">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="hole-tag" value="hole-B"/>
+   </properties>
+  </object>
+  <object id="970" name="terrain-hole" type="object" x="1302.46" y="877.608" width="312" height="312">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="hole-tag" value="hole-B"/>
+   </properties>
+  </object>
+  <object id="971" name="terrain-hole" type="object" x="2250.8" y="1303.74" width="312" height="312">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="hole-tag" value="hole-B"/>
+   </properties>
+  </object>
+  <object id="972" name="terrain-hole" type="object" x="1802.48" y="1305.92" width="312" height="312">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="hole-tag" value="hole-B"/>
+   </properties>
+  </object>
+  <object id="973" name="terrain-hole" type="object" x="1308.05" y="1319.19" width="312" height="312">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="hole-tag" value="hole-B"/>
+   </properties>
+  </object>
+  <object id="974" name="terrain-hole" type="object" x="855.873" y="874.098" width="312" height="312">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="hole-tag" value="hole-B"/>
+   </properties>
+  </object>
+  <object id="975" name="terrain-hole" type="object" x="861.473" y="1315.68" width="312" height="312">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="hole-tag" value="hole-B"/>
    </properties>
   </object>
  </objectgroup>

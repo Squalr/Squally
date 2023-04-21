@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="82" nextobjectid="1165">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="82" nextobjectid="1176">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -377,7 +377,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="895" name="cave" type="terrain" x="-194.91" y="1681.16" width="6381.82" height="931.689">
+  <object id="895" name="cave" type="terrain" x="-194.91" y="1681.16" width="7101.82" height="931.689">
    <properties>
     <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
@@ -423,6 +423,11 @@
     <property name="components" value="ally"/>
    </properties>
   </object>
+  <object id="1165" name="perceptron" type="entity" x="2468.85" y="1554.18" width="128" height="128">
+   <properties>
+    <property name="components" value="enemy"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="77" name="objects -8">
   <properties>
@@ -451,6 +456,11 @@
    <properties>
     <property name="components" value="friendly,disarmed,lc-puzzle-B"/>
     <property name="tag" value="hexus-bone-fiend"/>
+   </properties>
+  </object>
+  <object id="1174" name="cinematic-marker" type="object" x="6598.91" y="1572.24" width="64" height="64" rotation="180">
+   <properties>
+    <property name="tag" value="exit"/>
    </properties>
   </object>
  </objectgroup>
@@ -698,17 +708,10 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="66" name="holes" visible="0">
+ <objectgroup id="66" name="holes">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="857" name="terrain-hole" type="object" x="5247.87" y="832.718" width="312" height="312">
-   <properties>
-    <property name="components" value="z-fade"/>
-    <property name="fade-multiplier" type="float" value="0.25"/>
-    <property name="hole-tag" value="hole-A"/>
-   </properties>
-  </object>
   <object id="858" name="terrain-hole" type="object" x="4799.56" y="834.9" width="312" height="312">
    <properties>
     <property name="components" value="z-fade"/>
@@ -717,13 +720,6 @@
    </properties>
   </object>
   <object id="859" name="terrain-hole" type="object" x="4305.12" y="848.175" width="312" height="312">
-   <properties>
-    <property name="components" value="z-fade"/>
-    <property name="fade-multiplier" type="float" value="0.25"/>
-    <property name="hole-tag" value="hole-A"/>
-   </properties>
-  </object>
-  <object id="860" name="terrain-hole" type="object" x="5253.46" y="1274.3" width="312" height="312">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
@@ -777,6 +773,11 @@
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
     <property name="hole-tag" value="hole-A"/>
+   </properties>
+  </object>
+  <object id="1173" name="trigger" type="object" x="5169.01" y="-55.0556" width="118.944" height="2425.99">
+   <properties>
+    <property name="send-event" value="gauntlet-complete"/>
    </properties>
   </object>
  </objectgroup>
@@ -963,11 +964,18 @@
   <object id="1154" name="Generic/WoodCaveDoor1" type="decor" x="202.667" y="1716.5" width="388" height="403"/>
   <object id="1155" name="Generic/WoodCaveDoor1" type="decor" x="5668.52" y="1274.04" width="388" height="403"/>
  </objectgroup>
- <objectgroup id="21" name="terrain" visible="0">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="674" name="cave" type="terrain" x="1823.47" y="3680.45">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+   </properties>
+   <polygon points="-2032.69,-1541.73 -1028.96,-1544.14 -561.889,-1712.81 -263.297,-1979.97 4535.3,-1989.26 4548.13,5.605 -2009.54,37.798"/>
+  </object>
+  <object id="1175" name="cave" type="terrain" x="1823.47" y="3680.45">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
@@ -1041,15 +1049,47 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="1161" name="hexus-shrine" type="object" x="4601.05" y="1430.34" width="155" height="260">
+  <object id="1161" name="hexus-shrine" type="object" x="5355.72" y="1433.01" width="155" height="260">
    <properties>
     <property name="entity-tag" value="hexus-assassin"/>
    </properties>
   </object>
-  <object id="1162" name="assassin" type="entity" x="4664.51" y="3179.15" width="128" height="128">
+  <object id="1162" name="assassin" type="entity" x="5419.18" y="3181.82" width="128" height="128">
    <properties>
     <property name="components" value="friendly,disarmed,lc-puzzle-A"/>
     <property name="tag" value="hexus-assassin"/>
+   </properties>
+  </object>
+  <object id="1166" name="trigger" type="object" x="2910.22" y="-45.3665" width="203.792" height="2460.43">
+   <properties>
+    <property name="tag" value="strike-zone"/>
+   </properties>
+  </object>
+  <object id="1167" name="trigger" type="object" x="3479.92" y="-66.5786" width="231.065" height="2460.43">
+   <properties>
+    <property name="tag" value="strike-zone"/>
+   </properties>
+  </object>
+  <object id="1168" name="trigger" type="object" x="3964.35" y="-73.6695" width="203.792" height="2460.43">
+   <properties>
+    <property name="tag" value="strike-zone"/>
+   </properties>
+  </object>
+  <object id="1169" name="trigger" type="object" x="4411.8" y="-82.7605" width="197.732" height="2460.43">
+   <properties>
+    <property name="tag" value="strike-zone"/>
+   </properties>
+  </object>
+  <object id="1170" name="trigger" type="object" x="4886.83" y="-86.518" width="240.156" height="2460.43">
+   <properties>
+    <property name="tag" value="strike-zone"/>
+   </properties>
+  </object>
+  <object id="1172" name="trigger" type="object" x="2356.65" y="-53.4877" width="118.944" height="2460.43">
+   <properties>
+    <property name="quest" value="second-encounter"/>
+    <property name="quest-line" value="open-crypt"/>
+    <property name="send-event" value="gauntlet-start"/>
    </properties>
   </object>
  </objectgroup>
