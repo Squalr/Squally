@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="893">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="19" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="894">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -89,7 +89,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="892" name="brick-interior" type="texture" x="-42.9697" y="-54.7273" width="2264.73" height="1279.15"/>
+  <object id="892" name="brick-interior" type="texture" x="-114.242" y="-54.7273" width="2592" height="1279.15"/>
  </objectgroup>
  <objectgroup id="95" name="columns -0">
   <properties>
@@ -100,7 +100,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="770" name="Generic/Shelf1" type="decor" x="806.601" y="114.954" width="1135" height="753"/>
+  <object id="770" name="Generic/Shelf1" type="decor" x="1062.6" y="114.954" width="1135" height="753"/>
  </objectgroup>
  <objectgroup id="19" name="objects background">
   <properties>
@@ -112,7 +112,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="760" name="pan" type="entity" x="1421.5" y="850.554" width="128" height="167">
+  <object id="760" name="pan" type="entity" x="1677.5" y="850.554" width="128" height="167">
    <properties>
     <property name="components" value="shopkeeper,hexus-pan"/>
    </properties>
@@ -122,64 +122,65 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="769" name="Generic/Counter" type="decor" x="828.109" y="897.555" width="1080" height="167"/>
-  <object id="885" name="Generic/WoodDoor1" type="decor" x="344.879" y="681.939" width="366" height="384"/>
+  <object id="769" name="Generic/Counter" type="decor" x="1084.11" y="897.555" width="1080" height="167"/>
+  <object id="885" name="Lava/DoorVault" type="decor" x="168.758" y="656.242" width="261" height="408"/>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="890" name="wood" type="terrain" x="-96.9682" y="1066.18" width="2350.91" height="234.06"/>
-  <object id="891" name="wood" type="terrain" x="-42.1217" y="-253.394" width="2350.91" height="234.06"/>
+  <object id="890" name="wood" type="terrain" x="-110.665" y="1066.18" width="2620.61" height="234.06"/>
+  <object id="891" name="wood" type="terrain" x="-146.728" y="-253.394" width="2711.52" height="234.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="893" name="Lava/Window3" type="decor" x="555.167" y="601.076" width="400" height="297"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="694" name="portal" type="object" x="401.862" y="696.711" width="237.527" height="375.411">
+  <object id="694" name="portal" type="object" x="179.074" y="693.681" width="237.527" height="375.411">
    <properties>
     <property name="map" value="FirewallFissure/Town_Main"/>
     <property name="transition" value="alch"/>
    </properties>
   </object>
-  <object id="795" name="shop-item" type="object" x="1066.67" y="198" width="64" height="64">
+  <object id="795" name="shop-item" type="object" x="1322.67" y="198" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-alch-t6"/>
    </properties>
   </object>
-  <object id="796" name="shop-item" type="object" x="1360" y="198" width="64" height="64">
+  <object id="796" name="shop-item" type="object" x="1616" y="198" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-alch-t6"/>
    </properties>
   </object>
-  <object id="797" name="shop-item" type="object" x="1642" y="198" width="64" height="64">
+  <object id="797" name="shop-item" type="object" x="1898" y="198" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-alch-t6"/>
    </properties>
   </object>
-  <object id="798" name="shop-item" type="object" x="1067.53" y="482.246" width="64" height="64">
+  <object id="798" name="shop-item" type="object" x="1323.53" y="482.246" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-alch-t6"/>
    </properties>
   </object>
-  <object id="799" name="shop-item" type="object" x="1360" y="482.246" width="64" height="64">
+  <object id="799" name="shop-item" type="object" x="1616" y="482.246" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-alch-t6"/>
    </properties>
   </object>
-  <object id="800" name="shop-item" type="object" x="1642" y="482.246" width="64" height="64">
+  <object id="800" name="shop-item" type="object" x="1898" y="482.246" width="64" height="64">
    <properties>
     <property name="pool" value="shop-pool-alch-t6"/>
    </properties>
   </object>
-  <object id="801" name="shop-pool-alch-t6" type="object" x="404.409" y="310.893" width="64" height="64"/>
-  <object id="886" name="alchemy-lab" type="object" x="1793.68" y="670.939" width="381" height="393">
+  <object id="801" name="shop-pool-alch-t6" type="object" x="660.409" y="310.893" width="64" height="64"/>
+  <object id="886" name="alchemy-lab" type="object" x="2049.68" y="670.939" width="381" height="393">
    <properties>
     <property name="recipe-pool" value="alchemy-pool-ff"/>
    </properties>
@@ -201,12 +202,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="521.133" y="939.96" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="660.345" y="940.93" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="887" name="spawn-wood-door" type="object" x="461.648" y="941.2" width="128" height="128">
+  <object id="887" name="spawn-wood-door" type="object" x="238.86" y="938.17" width="128" height="128">
    <properties>
     <property name="transition" value="alch"/>
    </properties>

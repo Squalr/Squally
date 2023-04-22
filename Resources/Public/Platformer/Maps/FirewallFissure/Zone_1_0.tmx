@@ -410,8 +410,9 @@
   </properties>
   <object id="803" name="brine" type="entity" x="2290.42" y="854.545" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,ff-t3-hexus,pick-pocket"/>
+    <property name="components" value="friendly,ff-t3-hexus,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ff-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
   <object id="965" name="ash" type="entity" x="6954.18" y="2208.73" width="128" height="128">

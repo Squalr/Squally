@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="15" height="8" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="718">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="15" height="8" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="723">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -80,8 +80,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="484" name="Lava/Door4" type="decor" x="415.627" y="536.464" width="312" height="404"/>
-  <object id="698" name="Generic/Lamp2" type="decor" x="767.906" y="-71.9893" width="157" height="256"/>
+  <object id="484" name="Lava/Door3" type="decor" x="1262.28" y="534.643" width="312" height="404"/>
   <object id="713" name="Generic/Bed" type="decor" x="40.6666" y="811.391" width="339.213" height="127.347">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
@@ -89,20 +88,26 @@
   </object>
   <object id="715" name="Generic/Crate1" type="decor" x="1728.82" y="769.417" width="187" height="170"/>
   <object id="716" name="Generic/Crate2" type="decor" x="1786.5" y="653.667" width="127" height="117"/>
-  <object id="717" name="Generic/Bookshelf1" type="decor" x="869.833" y="331" width="727" height="608"/>
+  <object id="718" name="Lava/Window2" type="decor" x="763.555" y="524.45" width="260" height="247"/>
+  <object id="719" name="Lava/Window6" type="decor" x="802.563" y="91.143" width="212" height="211"/>
+ </objectgroup>
+ <objectgroup id="74" name="decor fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="694" name="portal" type="object" x="450.357" y="557.607" width="237.527" height="382.248">
+  <object id="694" name="portal" type="object" x="1297.01" y="555.786" width="237.527" height="382.248">
    <properties>
     <property name="map" value="FirewallFissure/Town_Main"/>
-    <property name="transition" value="home1"/>
+    <property name="transition" value="home2"/>
    </properties>
   </object>
-  <object id="702" name="camera-focus" type="object" x="508.445" y="633.888" width="128" height="128"/>
+  <object id="702" name="camera-focus" type="object" x="1355.1" y="632.067" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -114,9 +119,9 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="mittens" type="entity" x="1236.98" y="814.705" width="128" height="128">
+  <object id="692" name="hades" type="entity" x="534.163" y="811.063" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
+    <property name="components" value="friendly,ff-t4-hexus,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ff-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
@@ -132,9 +137,9 @@
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="711" name="spawn-wood-door" type="object" x="509.801" y="811.417" width="128" height="128">
+  <object id="711" name="spawn-wood-door" type="object" x="1356.46" y="809.596" width="128" height="128">
    <properties>
-    <property name="transition" value="home1"/>
+    <property name="transition" value="home2"/>
    </properties>
   </object>
  </objectgroup>
@@ -154,11 +159,13 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="32" name="decor +4">
+ <objectgroup id="32" name="decor +1">
   <properties>
-   <property name="depth" type="float" value="256"/>
+   <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="721" name="Generic/Lamp2" type="decor" x="1334.16" y="-41.0362" width="157" height="256"/>
+  <object id="722" name="Generic/Lamp2" type="decor" x="303.861" y="-46.0654" width="157" height="256"/>
  </objectgroup>
  <objectgroup id="33" name="decor +8">
   <properties>

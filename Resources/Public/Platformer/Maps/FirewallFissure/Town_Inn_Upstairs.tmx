@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="18" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="827">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="830">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -18,11 +18,18 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="798" name="wood" type="terrain" x="783.273" y="-300.001" width="1212.12" height="1581.82">
+  <object id="798" name="wood" type="terrain" x="527.273" y="-300.001" width="1212.12" height="1581.82">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup id="115" name="decor -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="829" name="Lava/Window6" type="decor" x="965.742" y="314.803" width="212" height="211"/>
  </objectgroup>
  <objectgroup id="99" name="stairs -5 (4)">
   <properties>
@@ -47,12 +54,12 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="816" name="wood" type="terrain" x="1057" y="-87.335" width="110" height="1366.67">
+  <object id="816" name="wood" type="terrain" x="801" y="-87.335" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="817" name="wood" type="terrain" x="1499.97" y="-71.335" width="110" height="1366.67">
+  <object id="817" name="wood" type="terrain" x="1243.97" y="-71.335" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -63,7 +70,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="806" name="wood" type="terrain" x="924.85" y="1068.27" width="748.3" height="139.455">
+  <object id="806" name="wood" type="terrain" x="668.85" y="1068.27" width="748.3" height="139.455">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -74,12 +81,12 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="814" name="wood" type="terrain" x="1055" y="-89.335" width="110" height="1366.67">
+  <object id="814" name="wood" type="terrain" x="799" y="-89.335" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="815" name="wood" type="terrain" x="1503" y="-71.335" width="110" height="1366.67">
+  <object id="815" name="wood" type="terrain" x="1247" y="-71.335" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -90,7 +97,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="805" name="wood" type="terrain" x="925.85" y="1064.27" width="748.3" height="139.455">
+  <object id="805" name="wood" type="terrain" x="669.85" y="1064.27" width="748.3" height="139.455">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -101,12 +108,12 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="812" name="wood" type="terrain" x="1058.33" y="-86.0017" width="110" height="1366.67">
+  <object id="812" name="wood" type="terrain" x="802.33" y="-86.0017" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="813" name="wood" type="terrain" x="1503" y="-68.6683" width="110" height="1366.67">
+  <object id="813" name="wood" type="terrain" x="1247" y="-68.6683" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -117,7 +124,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="803" name="wood" type="terrain" x="929.85" y="1058.27" width="748.3" height="139.455">
+  <object id="803" name="wood" type="terrain" x="673.85" y="1058.27" width="748.3" height="139.455">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -128,12 +135,12 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="810" name="wood" type="terrain" x="1054.33" y="-86.0017" width="110" height="1366.67">
+  <object id="810" name="wood" type="terrain" x="798.33" y="-86.0017" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="811" name="wood" type="terrain" x="1503.67" y="-72.6683" width="110" height="1366.67">
+  <object id="811" name="wood" type="terrain" x="1247.67" y="-72.6683" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -144,7 +151,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="802" name="wood" type="terrain" x="928.85" y="1057.27" width="748.3" height="139.455">
+  <object id="802" name="wood" type="terrain" x="672.85" y="1057.27" width="748.3" height="139.455">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -154,19 +161,19 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="799" name="brick-interior" type="texture" x="-113.514" y="-28.3039" width="1261.33" height="1209.09"/>
-  <object id="800" name="brick-interior" type="texture" x="1513.03" y="-19.6965" width="1118.67" height="1209.09"/>
+  <object id="799" name="brick-interior" type="texture" x="-260.423" y="-28.3039" width="1152.24" height="1209.09"/>
+  <object id="800" name="brick-interior" type="texture" x="1257.03" y="-19.6965" width="1118.67" height="1209.09"/>
  </objectgroup>
  <objectgroup id="95" name="columns -0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="808" name="wood" type="terrain" x="1126.67" y="-87.335" width="43.3333" height="1366.67">
+  <object id="808" name="wood" type="terrain" x="870.67" y="-87.335" width="43.3333" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="809" name="wood" type="terrain" x="1485.33" y="-75.335" width="43.3333" height="1366.67">
+  <object id="809" name="wood" type="terrain" x="1229.33" y="-75.335" width="43.3333" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -202,30 +209,32 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="801" name="wood" type="terrain" x="-64.424" y="1063.39" width="2717.27" height="245.455"/>
+  <object id="801" name="wood" type="terrain" x="-320.424" y="1063.39" width="2717.27" height="245.455"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="827" name="Lava/Window5" type="decor" x="259.42" y="528.207" width="317" height="231"/>
+  <object id="828" name="Lava/Window5" type="decor" x="1540.05" y="536.015" width="317" height="231"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="694" name="portal" type="object" x="1163.21" y="690.475" width="335.878" height="375.411">
+  <object id="694" name="portal" type="object" x="907.21" y="690.475" width="335.878" height="375.411">
    <properties>
     <property name="map" value="FirewallFissure/Town_Inn"/>
     <property name="transition" value="inn-upstairs"/>
    </properties>
   </object>
-  <object id="794" name="chest" type="object" x="1888" y="936" width="128" height="128">
+  <object id="794" name="chest" type="object" x="1632" y="936" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ff-generic"/>
    </properties>
   </object>
-  <object id="797" name="caged-tucan" type="object" x="494.793" y="953.308" width="196" height="112"/>
+  <object id="797" name="caged-tucan" type="object" x="238.793" y="953.308" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -243,12 +252,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="1090.6" y="929.802" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="834.6" y="929.802" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="807" name="spawn" type="object" x="1254.81" y="926.286" width="128" height="128">
+  <object id="807" name="spawn" type="object" x="998.81" y="926.286" width="128" height="128">
    <properties>
     <property name="transition" value="inn-upstairs"/>
    </properties>

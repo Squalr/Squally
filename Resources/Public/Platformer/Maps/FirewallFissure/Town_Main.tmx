@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1140">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1141">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -142,8 +142,12 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1095" name="Lava/TownSmith" type="decor" x="3005.7" y="1696.53" width="2054" height="1544"/>
-  <object id="1099" name="Lava/TownAlch" type="decor" x="6111.27" y="2124.98" width="1216" height="1099"/>
+  <object id="1095" name="Lava/TownSmith" type="decor" x="3005.7" y="1706.53" width="2054" height="1544"/>
+  <object id="1099" name="Lava/TownAlch" type="decor" x="6111.27" y="2124.98" width="1216" height="1099">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="1100" name="Lava/TownHome6" type="decor" x="1036.83" y="1739.33" width="981" height="1488"/>
  </objectgroup>
  <objectgroup id="74" name="decor -6 bg">
@@ -178,7 +182,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="984" name="solid" type="collision" x="975.666" y="895.361" width="97.0303" height="2367.58">
+  <object id="984" name="solid" type="collision" x="760.514" y="895.361" width="154.606" height="2367.58">
    <properties>
     <property name="mini-map-visible" type="bool" value="true"/>
    </properties>
@@ -194,7 +198,7 @@
     <property name="transition" value="smith"/>
    </properties>
   </object>
-  <object id="1113" name="portal" type="object" x="6785.39" y="2819.39" width="256" height="406">
+  <object id="1113" name="portal" type="object" x="6386.45" y="2713.42" width="256" height="512">
    <properties>
     <property name="map" value="FirewallFissure/Town_Alch"/>
     <property name="transition" value="alch"/>
@@ -213,10 +217,11 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1126" name="hades" type="entity" x="3405.33" y="3112" width="128" height="128">
+  <object id="1126" name="cindra" type="entity" x="3405.33" y="3112" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,ff-t4-hexus,pick-pocket"/>
+    <property name="components" value="friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ff-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
  </objectgroup>
@@ -248,7 +253,7 @@
     <property name="transition" value="smith"/>
    </properties>
   </object>
-  <object id="1112" name="spawn-wood-door" type="object" x="6848.06" y="3097.39" width="128" height="128">
+  <object id="1112" name="spawn-wood-door" type="object" x="6448.12" y="3101.42" width="128" height="128">
    <properties>
     <property name="transition" value="alch"/>
    </properties>
@@ -403,7 +408,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="63" name="decor bg">
+ <objectgroup id="63" name="decor bg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -420,7 +425,7 @@
   </properties>
   <object id="945" name="caverns" type="terrain" x="-200.306" y="3321.58" width="8422.18" height="1281.81"/>
  </objectgroup>
- <objectgroup id="22" name="decor midground">
+ <objectgroup id="22" name="decor midground" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -443,7 +448,7 @@
   <object id="1130" name="Lava/Poster1" type="decor" x="4969.32" y="3140.45" width="99" height="118"/>
   <object id="1131" name="Lava/PosterEmpty1" type="decor" x="4816.33" y="3145.33" width="99" height="118"/>
  </objectgroup>
- <objectgroup id="23" name="objects">
+ <objectgroup id="23" name="objects" visible="0">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -469,11 +474,6 @@
   <object id="1117" name="portal" type="object" x="1628.18" y="2845.33" width="256" height="479">
    <properties>
     <property name="map" value="FirewallFissure/Town_Home2"/>
-    <property name="transition" value="home2"/>
-   </properties>
-  </object>
-  <object id="1116" name="spawn-wood-door" type="object" x="1684.64" y="3196.33" width="128" height="128">
-   <properties>
     <property name="transition" value="home2"/>
    </properties>
   </object>
@@ -513,8 +513,9 @@
   </object>
   <object id="1092" name="celeste" type="entity" x="3034" y="3190" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pick-pocket"/>
+    <property name="components" value="friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ff-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
  </objectgroup>
@@ -558,6 +559,11 @@
   <object id="1127" name="spawn-wood-door" type="object" x="4011" y="3187" width="128" height="128">
    <properties>
     <property name="transition" value="inn"/>
+   </properties>
+  </object>
+  <object id="1140" name="spawn-wood-door" type="object" x="1684.64" y="3196.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="home2"/>
    </properties>
   </object>
  </objectgroup>
