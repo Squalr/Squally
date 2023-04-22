@@ -163,12 +163,37 @@ HackablePreview* Catapult::createDefaultPreview()
 	return CatapultGenericPreview::create();
 }
 
+void Catapult::setUsingBombs(bool isUsingBombs)
+{
+	this->isUsingBombs = isUsingBombs;
+
+	this->returnToIdle();
+}
+
+void Catapult::returnToIdle()
+{
+	this->catapultAnimations->clearAnimationPriority();
+	if (this->isUsingBombs)
+	{
+		this->catapultAnimations->playAnimation("IdleBomb");
+	}
+	else
+	{
+		this->catapultAnimations->playAnimation();
+	}
+}
 
 void Catapult::launchCatapult()
 {
 	this->currentCooldown = Catapult::InteractCooldown;
 	this->catapultAnimations->clearAnimationPriority();
-	this->catapultAnimations->playAnimation("Launch");
+
+	std::string anim = this->isUsingBombs ? "LaunchBomb" : "Launch";
+
+	this->catapultAnimations->playAnimation(anim, SmartAnimationNode::AnimationPlayMode::Callback, SmartAnimationNode::AnimParams(), [=]()
+	{
+		this->returnToIdle();
+	});
 
 	this->runAction(Sequence::create(
 		DelayTime::create(0.2f),
@@ -216,20 +241,25 @@ NO_OPTIMIZE cocos2d::Vec2 Catapult::applyLaunchPower(cocos2d::Vec2 baseSpeed)
 
 	// Prepare variables (initialize xmm0 with return value, xmm1 with loaded density)
 	ASM(push ZAX);
-	ASM_MOV_REG_PTR(ZAX, ySpeedPtr);
-	ASM(movss xmm0, dword ptr [ZAX]);
-	ASM_MOV_REG_PTR(ZAX, launchPowerPtr);
-	ASM(movss xmm1, dword ptr [ZAX]);
+	ASM(push ZBX);
+	ASM(push ZCX);
+	ASM_MOV_REG_PTR(ZCX, ySpeedPtr);
+	ASM(movss xmm0, dword ptr [ZCX]);
+	ASM_MOV_REG_PTR(ZBX, launchPowerPtr);
+	ASM(movss xmm1, dword ptr [ZBX]);
 	ASM_MOV_REG_PTR(ZAX, freeMemoryForUser);
 
+	// Note: Only ZAX exposed to user
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_APPLY_POWER);
 	ASM(mulss xmm0, xmm1);
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 	
 	// Copy from xmm0 to the output variable
-	ASM_MOV_REG_PTR(ZAX, launchPowerPtr);
-	ASM(movss dword ptr [ZAX], xmm0);
+	ASM(movss dword ptr [ZCX], xmm0);
+	
+	ASM(pop ZCX);
+	ASM(pop ZBX);
 	ASM(pop ZAX);
 
 	HACKABLES_STOP_SEARCH();

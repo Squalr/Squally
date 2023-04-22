@@ -58,6 +58,7 @@
  <objectgroup id="171" name="objects -36">
   <properties>
    <property name="depth" type="float" value="-2304"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="998" name="catapult" type="object" x="3272" y="1964" width="128" height="128"/>
@@ -65,6 +66,7 @@
  <objectgroup id="172" name="entities -36">
   <properties>
    <property name="depth" type="float" value="-2304"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="993" name="scaldor" type="entity" x="2969.88" y="1963.39" width="128" height="128">
@@ -394,6 +396,7 @@
  <objectgroup id="104" name="objects -20">
   <properties>
    <property name="depth" type="float" value="-1280"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="956" name="portal" type="object" x="6666.22" y="1913.1" width="450.603" height="423.038">
@@ -446,6 +449,7 @@
  <objectgroup id="102" name="entities -20">
   <properties>
    <property name="depth" type="float" value="-1280"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="995" name="magnus" type="entity" x="3618" y="2058" width="128" height="128">
@@ -620,6 +624,7 @@
  <objectgroup id="117" name="player_layer-13">
   <properties>
    <property name="depth" type="float" value="-832"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="0.25"/>
   </properties>
@@ -649,12 +654,14 @@
  <objectgroup id="103" name="objects -13">
   <properties>
    <property name="depth" type="float" value="-832"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
  <objectgroup id="162" name="entities -13">
   <properties>
    <property name="depth" type="float" value="-832"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="960" name="demon-warrior" type="entity" x="5105.21" y="2130.21" width="128" height="128">

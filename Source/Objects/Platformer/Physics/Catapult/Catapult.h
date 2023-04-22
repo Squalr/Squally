@@ -19,6 +19,7 @@ public:
 
 	static const std::string MapKey;
 
+	void setUsingBombs(bool isUsingBombs);
 	void launchCatapult();
 
 protected:
@@ -37,6 +38,7 @@ protected:
 private:
 	typedef InteractObject super;
 
+	void returnToIdle();
 	void launchBall();
 	cocos2d::Vec2 applyLaunchPower(cocos2d::Vec2 baseSpeed);
 
@@ -45,6 +47,7 @@ private:
 	bool interactionEnabled = false;
 	float currentCooldown = 0.0f;
 	float launchPower = 0.0f;
+	bool isUsingBombs = false;
 
 	static const float InteractCooldown;
 	static const float LaunchPowerDefault;

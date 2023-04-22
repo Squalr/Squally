@@ -530,13 +530,13 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ================== 
 		// Traps: Fire bird, fire launcher, TNT barrel, mortar
 		// ** Implement hexus puzzles
-		// ** Place entities
 		// ** Add hexus battles
 		// ** Quests
-		//	* Bring a bomb to someone on 3_0. They fasten to a balloon, which spawns another lava waterfall, raising lava level. Azmodeus flees. Pathway appears.
-		// * Hide collectables better
+		//	* Bring a bomb to someone on 3_1.
+		//	* Launch bomb into ceiling
+		//	* Spawns another lava waterfall, raising lava level. Most enemies die, Azmodeus flees. Pathway appears.
+		// 	* Quest clears volcano smoke, allowing airship travel? From EF or CV?
 		// * Another Perceptron encounter?
-		// * Quest clears volcano smoke, allowing airship travel? From EF or CV?
 		// * Mage tower? Portal map?
 
 		/*
@@ -566,19 +566,19 @@ DeveloperScene::DeveloperScene()
 
 		-----------------
 		
-		- Ash			=> 1_x (H1)
-		- Lucifer		=> 2_x (H2)
-		- Brine			=> Town_Main (Exterior) (H3)
-		- Hades			=> Town_Main (H4)
-		- Mittens		=> Town_Main
-		- Celeste		=> Town_Main
-		- Cindra		=> 3_x (barricade)(H?)
-		- Scaldor		=> 3_x (barricade)(H5)
-		- Magnus		=> 3_x (barricade)(H?)
-		- Queen Elise	=> Town_Main
-		- Pan			=> Alch
-		- Ragnis		=> Smith
-		- Thatcher		=> Inn
+		X Ash			=> 1_x (H1)
+		X Lucifer		=> 2_x (H2)
+		X Brine			=> Town_Main (Exterior) (H3)
+		X Hades			=> Town_Main (H4)
+		X Mittens		=> Town_Main
+		X Celeste		=> Town_Main
+		X Cindra		=> Town_Main
+		X Scaldor		=> 3_x (barricade)(H5)
+		X Magnus		=> 3_x (barricade)(H?)
+		X Queen Elise	=> Town_Main
+		X Pan			=> Alch
+		X Ragnis		=> Smith
+		X Thatcher		=> Inn
 		- Finch			? Zone 2_x Flight Master -- Start flight master quest?
 		*/
 
