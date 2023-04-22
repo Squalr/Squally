@@ -532,16 +532,6 @@ namespace DecorResources
 	extern const std::string Generic_Helmet1;
 	extern const std::string Generic_Helmet2;
 	extern const std::string Generic_HorseShoe1;
-	extern const std::string Generic_InsanityPoster1;
-	extern const std::string Generic_InsanityPoster10;
-	extern const std::string Generic_InsanityPoster2;
-	extern const std::string Generic_InsanityPoster3;
-	extern const std::string Generic_InsanityPoster4;
-	extern const std::string Generic_InsanityPoster5;
-	extern const std::string Generic_InsanityPoster6;
-	extern const std::string Generic_InsanityPoster7;
-	extern const std::string Generic_InsanityPoster8;
-	extern const std::string Generic_InsanityPoster9;
 	extern const std::string Generic_JailDoorHeavy;
 	extern const std::string Generic_JailGate;
 	extern const std::string Generic_JailGateSmall;
@@ -627,6 +617,9 @@ namespace DecorResources
 	extern const std::string Lava_Door4;
 	extern const std::string Lava_Door5;
 	extern const std::string Lava_Door6;
+	extern const std::string Lava_DoorInn;
+	extern const std::string Lava_DoorPrison;
+	extern const std::string Lava_DoorVault;
 	extern const std::string Lava_Formation1;
 	extern const std::string Lava_Formation10;
 	extern const std::string Lava_Formation11;
@@ -667,6 +660,7 @@ namespace DecorResources
 	extern const std::string Lava_Pillar5;
 	extern const std::string Lava_Pillar6;
 	extern const std::string Lava_Poster1;
+	extern const std::string Lava_PosterEmpty1;
 	extern const std::string Lava_Rack1;
 	extern const std::string Lava_Rack2;
 	extern const std::string Lava_RackSaddle1;
@@ -703,6 +697,12 @@ namespace DecorResources
 	extern const std::string Lava_WagonWheel1;
 	extern const std::string Lava_WarpTower;
 	extern const std::string Lava_WaterTrough1;
+	extern const std::string Lava_Window1;
+	extern const std::string Lava_Window2;
+	extern const std::string Lava_Window3;
+	extern const std::string Lava_Window4;
+	extern const std::string Lava_Window5;
+	extern const std::string Lava_Window6;
 	extern const std::string Mines_Background_Background1;
 	extern const std::string Mines_Background_Background2;
 	extern const std::string Mines_Background_Background3;

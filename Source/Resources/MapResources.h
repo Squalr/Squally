@@ -152,9 +152,10 @@ namespace MapResources
 	extern const std::string EndianForest_Zone_3_7;
 	extern const std::string EndianForest_Zone_3_Dev;
 	extern const std::string FirewallFissure_Combat_Lava;
-	extern const std::string FirewallFissure_Home_Swag;
 	extern const std::string FirewallFissure_Mages_Warp;
 	extern const std::string FirewallFissure_Town_Alch;
+	extern const std::string FirewallFissure_Town_Home1;
+	extern const std::string FirewallFissure_Town_Home2;
 	extern const std::string FirewallFissure_Town_Inn;
 	extern const std::string FirewallFissure_Town_Inn_Upstairs;
 	extern const std::string FirewallFissure_Town_Main;
