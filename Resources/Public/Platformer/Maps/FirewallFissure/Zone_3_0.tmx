@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="54" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="180" nextobjectid="1040">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="180" nextobjectid="1040">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -782,8 +782,8 @@
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="953" name="obsidean" type="terrain" x="3140.22" y="5003.39">
-   <polygon points="-498.828,-2723.26 -370.244,-1979.27 295.857,-1709.84 936.817,-1976.28 1048.59,-2731.7"/>
+  <object id="953" name="obsidean" type="terrain" x="3200.39" y="5003.39">
+   <polygon points="-559.002,-2723.26 -414.907,-1979.27 331.547,-1709.84 1049.83,-1976.28 1175.08,-2731.7"/>
   </object>
   <object id="954" name="obsidean" type="terrain" x="4822.4" y="4999.39">
    <polygon points="-435,-2723.26 -322.869,-1979.27 258,-1709.84 816.946,-1976.28 914.413,-2731.7"/>
@@ -800,7 +800,7 @@
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1037" name="demon-archer" type="entity" x="3499.81" y="2152.08" width="128" height="128">
+  <object id="1037" name="demon-archer" type="entity" x="3694.48" y="2150.75" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="FirewallFissure/Combat_Lava"/>
@@ -809,7 +809,7 @@
     <property name="drop-pool" value="ff-generic"/>
    </properties>
   </object>
-  <object id="1038" name="demon-archer" type="entity" x="3501.39" y="1907.65" width="128" height="128">
+  <object id="1038" name="demon-archer" type="entity" x="3696.06" y="1906.32" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-b"/>

@@ -573,7 +573,7 @@ DeveloperScene::DeveloperScene()
 		- Mittens		=> Town_Main
 		- Celeste		=> Town_Main
 		- Cindra		=> 3_x (barricade)(H?)
-		- Scaldor		=> 3_x (barricade)(H?)
+		- Scaldor		=> 3_x (barricade)(H5)
 		- Magnus		=> 3_x (barricade)(H?)
 		- Queen Elise	=> Town_Main
 		- Pan			=> Alch

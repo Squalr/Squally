@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Engine/Hackables/HackableObject.h"
+#include "Objects/Platformer/Interactables/InteractObject.h"
 
 namespace cocos2d
 {
@@ -8,10 +8,11 @@ namespace cocos2d
 }
 
 class AnimationPart;
-class SmartAnimationNode;
 class CollisionObject;
+class PlatformerEntity;
+class SmartAnimationNode;
 
-class Catapult : public HackableObject
+class Catapult : public InteractObject
 {
 public:
 	static Catapult* create(cocos2d::ValueMap& properties);
@@ -27,19 +28,19 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onInteract(PlatformerEntity* interactingEntity);
 	void update(float) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;
 	HackablePreview* createDefaultPreview() override;
 
 private:
-	typedef HackableObject super;
+	typedef InteractObject super;
 
 	void launchBall();
 	cocos2d::Vec2 applyLaunchPower(cocos2d::Vec2 baseSpeed);
 
 	SmartAnimationNode* catapultAnimations = nullptr;
-	CollisionObject* catapultCollision = nullptr;
 	AnimationPart* ballAnimationPart = nullptr;
 	bool interactionEnabled = false;
 	float currentCooldown = 0.0f;

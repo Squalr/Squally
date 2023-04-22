@@ -23169,6 +23169,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_Catapult_ApplyPower_ApplyPower() = default;
 	};
 
+	class Menus_Hacking_Objects_Catapult_ApplyPower_CommentHint : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_Catapult_ApplyPower_CommentHint* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_Catapult_ApplyPower_CommentHint();
+		virtual ~Menus_Hacking_Objects_Catapult_ApplyPower_CommentHint() = default;
+	};
+
 	class Menus_Hacking_Objects_Catapult_ApplyPower_RegisterEax : public LocalizedString
 	{
 	public:
