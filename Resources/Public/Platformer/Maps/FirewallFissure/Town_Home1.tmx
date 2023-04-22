@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="15" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="713">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="15" height="8" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="718">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -74,33 +74,35 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="712" name="wood" type="terrain" x="-170.998" y="1067.94" width="2290.3" height="234.06"/>
+  <object id="712" name="wood" type="terrain" x="-170.998" y="939.94" width="2290.3" height="234.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="484" name="Generic/WoodDoor" type="decor" x="450.222" y="755.502" width="238.499" height="312.248"/>
-  <object id="695" name="Generic/Bed" type="decor" x="1479.36" y="939.822" width="339.213" height="127.347"/>
-  <object id="696" name="Generic/Sack" type="decor" x="1101.67" y="921.411" width="162" height="145"/>
-  <object id="697" name="Generic/NightStand" type="decor" x="1264.64" y="880.337" width="215.403" height="184.472"/>
-  <object id="698" name="Generic/Lamp2" type="decor" x="767.906" y="56.0107" width="157" height="256"/>
-  <object id="699" name="Generic/BoardedWindow" type="decor" x="811.498" y="628" width="211.218" height="207.113"/>
-  <object id="709" name="Generic/BoardedWindow" type="decor" x="1398.53" y="628" width="211.218" height="207.113"/>
+  <object id="484" name="Lava/Door4" type="decor" x="415.627" y="536.464" width="312" height="404"/>
+  <object id="698" name="Generic/Lamp2" type="decor" x="767.906" y="-71.9893" width="157" height="256"/>
+  <object id="713" name="Generic/Bed" type="decor" x="40.6666" y="811.391" width="339.213" height="127.347">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="715" name="Generic/Crate1" type="decor" x="1728.82" y="769.417" width="187" height="170"/>
+  <object id="716" name="Generic/Crate2" type="decor" x="1786.5" y="653.667" width="127" height="117"/>
+  <object id="717" name="Generic/Bookshelf1" type="decor" x="869.833" y="331" width="727" height="608"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="694" name="portal" type="object" x="450.357" y="780.287" width="237.527" height="287.568">
+  <object id="694" name="portal" type="object" x="450.357" y="557.607" width="237.527" height="382.248">
    <properties>
-    <property name="map" value="EndianForest/Town_Main"/>
-    <property name="transition" value="shack"/>
+    <property name="map" value="FirewallFissure/Town_Main"/>
+    <property name="transition" value="home1"/>
    </properties>
   </object>
-  <object id="702" name="camera-focus" type="object" x="508.445" y="761.888" width="128" height="128"/>
-  <object id="710" name="caged-bear" type="object" x="110.606" y="954" width="196" height="112"/>
+  <object id="702" name="camera-focus" type="object" x="508.445" y="633.888" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -112,9 +114,9 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="gramps" type="entity" x="1025.14" y="938.218" width="128" height="128">
+  <object id="692" name="mittens" type="entity" x="1236.98" y="814.705" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,ef-t6-hexus"/>
+    <property name="components" value="friendly"/>
    </properties>
   </object>
  </objectgroup>
@@ -123,14 +125,14 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="802.8" y="938.223" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="802.8" y="810.223" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="711" name="spawn-wood-door" type="object" x="509.801" y="939.417" width="128" height="128">
+  <object id="711" name="spawn-wood-door" type="object" x="509.801" y="811.417" width="128" height="128">
    <properties>
-    <property name="transition" value="main"/>
+    <property name="transition" value="home1"/>
    </properties>
   </object>
  </objectgroup>

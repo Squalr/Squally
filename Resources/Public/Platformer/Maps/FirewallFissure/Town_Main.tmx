@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1125">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1140">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
-   <property name="map-banner" value="elbridge"/>
+   <property name="map-banner" value="brimstone"/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="17"/>
    <property name="show-cracks" type="bool" value="true"/>
@@ -135,6 +135,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1105" name="Generic/SignAlch" type="decor" x="5784" y="2391.5" width="523" height="265"/>
+  <object id="1137" name="Lava/WagonWheel1" type="decor" x="5798.79" y="3096.14" width="360" height="135"/>
  </objectgroup>
  <objectgroup id="96" name="decor -7">
   <properties>
@@ -212,6 +213,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1126" name="hades" type="entity" x="3405.33" y="3112" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,ff-t4-hexus,pick-pocket"/>
+    <property name="pocket-pool" value="ff-generic"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="88" name="player_layer -6">
   <properties>
@@ -380,15 +387,23 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1103" name="caverns" type="terrain" x="-560.423" y="3284.76" width="9154.18" height="1281.81"/>
+  <object id="1103" name="caverns" type="terrain" x="-560.423" y="3284.76" width="9154.18" height="1281.81">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="20" name="terrain 2">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1102" name="caverns" type="terrain" x="-371.757" y="3314.43" width="8790.18" height="1281.81"/>
+  <object id="1102" name="caverns" type="terrain" x="-371.757" y="3314.43" width="8790.18" height="1281.81">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="63" name="decor bg" visible="0">
+ <objectgroup id="63" name="decor bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -403,9 +418,9 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="945" name="caverns" type="terrain" x="-179.094" y="3321.58" width="8422.18" height="1281.81"/>
+  <object id="945" name="caverns" type="terrain" x="-200.306" y="3321.58" width="8422.18" height="1281.81"/>
  </objectgroup>
- <objectgroup id="22" name="decor midground" visible="0">
+ <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -415,11 +430,18 @@
     <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
   </object>
+  <object id="1128" name="Lava/RackSaddle1" type="decor" x="3335.59" y="3105.44" width="369" height="212"/>
+  <object id="1129" name="Lava/Rack1" type="decor" x="4750.98" y="3144.29" width="369" height="172"/>
+  <object id="1133" name="Lava/Skeleton2" type="decor" x="3946.88" y="2234.7" width="248" height="232"/>
+  <object id="1134" name="Lava/SkeletonPole1" type="decor" x="4519" y="3094.33" width="165" height="237"/>
+  <object id="1138" name="Lava/Skeleton1" type="decor" x="8031.73" y="3213.48" width="82" height="70"/>
  </objectgroup>
  <objectgroup id="87" name="decor midground 2">
   <properties>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1130" name="Lava/Poster1" type="decor" x="4969.32" y="3140.45" width="99" height="118"/>
+  <object id="1131" name="Lava/PosterEmpty1" type="decor" x="4816.33" y="3145.33" width="99" height="118"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
@@ -432,7 +454,12 @@
     <property name="transition" value="main-gate"/>
    </properties>
   </object>
-  <object id="913" name="life-stone" type="object" x="6298.03" y="2897.35" width="146" height="423"/>
+  <object id="913" name="life-stone" type="object" x="6840.45" y="2900.38" width="146" height="423">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+   </properties>
+  </object>
   <object id="1108" name="portal" type="object" x="3947.88" y="2974.33" width="256" height="338">
    <properties>
     <property name="map" value="FirewallFissure/Town_Inn"/>
@@ -443,11 +470,6 @@
    <properties>
     <property name="map" value="FirewallFissure/Town_Home2"/>
     <property name="transition" value="home2"/>
-   </properties>
-  </object>
-  <object id="1109" name="spawn-wood-door" type="object" x="4011" y="3187" width="128" height="128">
-   <properties>
-    <property name="transition" value="inn"/>
    </properties>
   </object>
   <object id="1116" name="spawn-wood-door" type="object" x="1684.64" y="3196.33" width="128" height="128">
@@ -461,7 +483,7 @@
     <property name="transition" value="back-gate"/>
    </properties>
   </object>
-  <object id="1121" name="hexus-shrine" type="object" x="4715.6" y="3064.02" width="155" height="260">
+  <object id="1121" name="hexus-shrine" type="object" x="2095.6" y="3064.02" width="155" height="260">
    <properties>
     <property name="entity-tag" value="hexus-demon-dragon"/>
    </properties>
@@ -483,13 +505,13 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="883" name="mittens" type="entity" x="5872.47" y="3197.09" width="128" height="128">
+  <object id="883" name="queen-elise" type="entity" x="6087.62" y="3191.03" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="ff-generic"/>
    </properties>
   </object>
-  <object id="1092" name="celeste" type="entity" x="3264" y="3200" width="128" height="128">
+  <object id="1092" name="celeste" type="entity" x="3034" y="3190" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="ff-generic"/>
@@ -500,7 +522,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="1.5"/>
+   <property name="zoom" type="float" value="1.25"/>
   </properties>
   <object id="523" name="squally" type="entity" x="7243.39" y="3190.98" width="128" height="128">
    <properties>
@@ -531,6 +553,11 @@
   <object id="1124" name="spawn" type="object" x="442.958" y="3185.04" width="128" height="128">
    <properties>
     <property name="transition" value="back-gate"/>
+   </properties>
+  </object>
+  <object id="1127" name="spawn-wood-door" type="object" x="4011" y="3187" width="128" height="128">
+   <properties>
+    <property name="transition" value="inn"/>
    </properties>
   </object>
  </objectgroup>
@@ -568,7 +595,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="33" name="decor 1024">
+ <objectgroup id="33" name="decor 1024" visible="0">
   <properties>
    <property name="depth" type="float" value="1024"/>
    <property name="type" value="objects"/>

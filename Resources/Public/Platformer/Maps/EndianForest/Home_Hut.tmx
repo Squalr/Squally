@@ -40,7 +40,6 @@
     <property name="flip-x" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="700" name="Generic/InsanityPoster5" type="decor" x="1430.45" y="325.182" width="298" height="330"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>

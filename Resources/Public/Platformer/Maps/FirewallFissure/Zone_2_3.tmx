@@ -117,7 +117,7 @@
     <property name="transition" value="pressure"/>
    </properties>
   </object>
-  <object id="1018" name="obsidean" type="terrain" x="1740" y="7980">
+  <object id="1018" name="obsidean" type="terrain" x="1740" y="8056">
    <polygon points="-93.8626,-649.121 -69.6674,-470.813 55.6703,-406.723 176.277,-470.102 197.309,-649.796"/>
   </object>
  </objectgroup>

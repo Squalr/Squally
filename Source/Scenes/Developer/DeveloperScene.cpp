@@ -562,15 +562,15 @@ DeveloperScene::DeveloperScene()
 
 		-----------------
 		
-		- Ash			=> 1_x (H)
-		- Hades			=> 2_x (H)
-		- Brine			=> Town_Main (Exterior) (H)
-		- Mittens		=> Town_Main (H)
-		- Celeste		=> 3_x (barricade)(H?)
+		- Ash			=> 1_x (H1)
+		- Lucifer		=> 2_x (H2)
+		- Brine			=> Town_Main (Exterior) (H3)
+		- Hades			=> Town_Main (H4)
+		- Mittens		=> Town_Main
+		- Celeste		=> Town_Main
 		- Cindra		=> 3_x (barricade)(H?)
 		- Scaldor		=> 3_x (barricade)(H?)
 		- Magnus		=> 3_x (barricade)(H?)
-		- Lucifer		=> Town (H)
 		- Queen Elise	=> Town_Main
 		- Pan			=> Alch
 		- Ragnis		=> Smith

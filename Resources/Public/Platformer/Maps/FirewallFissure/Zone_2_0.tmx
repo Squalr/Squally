@@ -209,7 +209,7 @@
     <property name="components" value="ally"/>
    </properties>
   </object>
-  <object id="1974" name="hades" type="entity" x="7114.67" y="1150.67" width="128" height="128">
+  <object id="1974" name="lucifer" type="entity" x="7114.67" y="1150.67" width="128" height="128">
    <properties>
     <property name="components" value="friendly,ff-t2-hexus,pick-pocket"/>
     <property name="pocket-pool" value="ff-generic"/>
