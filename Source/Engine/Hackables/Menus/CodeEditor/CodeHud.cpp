@@ -357,10 +357,7 @@ void CodeHud::buildRegisterWindow()
 		{
 			if (registerHint.pointerOffset == 0)
 			{
-				registerString = Strings::Common_Pointer::create()->setStringReplacementVariables(
-				{
-					HackableCode::registerToLocalizedString(registerHint.reg)
-				});
+				registerString = Strings::Common_Pointer::create()->setStringReplacementVariables(HackableCode::registerToLocalizedString(registerHint.reg));
 			}
 			else
 			{

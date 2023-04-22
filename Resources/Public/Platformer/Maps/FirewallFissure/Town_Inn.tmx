@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="28" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="839">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="28" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="839">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -176,8 +176,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="801" name="brick-interior" type="texture" x="3082" y="-44.7874" width="608.973" height="1318.18"/>
-  <object id="802" name="brick-interior" type="texture" x="-87.335" y="-43.09" width="2734.67" height="1318.18"/>
+  <object id="801" name="ship-dark" type="texture" x="3082" y="-44.7874" width="608.973" height="1318.18"/>
+  <object id="802" name="ship-dark" type="texture" x="-87.335" y="-43.09" width="2734.67" height="1318.18"/>
  </objectgroup>
  <objectgroup id="95" name="columns -0">
   <properties>

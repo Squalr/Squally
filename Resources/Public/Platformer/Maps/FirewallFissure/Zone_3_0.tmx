@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="178" nextobjectid="1036">
+<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="54" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="180" nextobjectid="1040">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -51,7 +51,7 @@
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="879" name="magma" type="terrain" x="-4456.11" y="-1059.25" width="6342.38" height="7024.79"/>
+  <object id="879" name="magma" type="terrain" x="-3609.46" y="-1059.25" width="5501.18" height="7024.79"/>
   <object id="1026" name="magma" type="terrain" x="2952.98" y="-1059.25" width="6524.81" height="7024.79"/>
  </objectgroup>
  <objectgroup id="130" name="lava -36">
@@ -59,7 +59,7 @@
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="864" name="lava" type="object" x="-4942.14" y="2267.61" width="15353" height="1024"/>
+  <object id="864" name="lava" type="object" x="-4095.49" y="2267.61" width="15353" height="1024"/>
  </objectgroup>
  <objectgroup id="162" name="terrain -36">
   <properties>
@@ -96,7 +96,7 @@
    <property name="depth" type="float" value="-2240"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="863" name="lava" type="object" x="-4836.14" y="2275.63" width="15139" height="1024"/>
+  <object id="863" name="lava" type="object" x="-3989.49" y="2275.63" width="15139" height="1024"/>
  </objectgroup>
  <objectgroup id="165" name="terrain -34">
   <properties>
@@ -121,7 +121,7 @@
    <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="862" name="lava" type="object" x="-4741.67" y="2282.98" width="14951" height="1024"/>
+  <object id="862" name="lava" type="object" x="-3895.02" y="2282.98" width="14951" height="1024"/>
  </objectgroup>
  <objectgroup id="140" name="decor bg -33">
   <properties>
@@ -135,7 +135,7 @@
    <property name="depth" type="float" value="-2112"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="861" name="lava" type="object" x="-4654.41" y="2290.16" width="14775" height="1024"/>
+  <object id="861" name="lava" type="object" x="-3807.76" y="2290.16" width="14775" height="1024"/>
  </objectgroup>
  <objectgroup id="167" name="terrain -32">
   <properties>
@@ -227,7 +227,7 @@
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="860" name="lava" type="object" x="-4554.38" y="2297.81" width="14575" height="1024"/>
+  <object id="860" name="lava" type="object" x="-3707.73" y="2297.81" width="14575" height="1024"/>
  </objectgroup>
  <objectgroup id="131" name="decor -32">
   <properties>
@@ -318,7 +318,7 @@
    <property name="depth" type="float" value="-1984"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="859" name="lava" type="object" x="-4453.44" y="2306.43" width="14373" height="1024"/>
+  <object id="859" name="lava" type="object" x="-3606.79" y="2306.43" width="14373" height="1024"/>
  </objectgroup>
  <objectgroup id="171" name="terrain -30">
   <properties>
@@ -401,7 +401,7 @@
    <property name="depth" type="float" value="-1920"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="858" name="lava" type="object" x="-4356.47" y="2314.46" width="14181" height="1024"/>
+  <object id="858" name="lava" type="object" x="-3509.82" y="2314.46" width="14181" height="1024"/>
  </objectgroup>
  <objectgroup id="173" name="terrain -29">
   <properties>
@@ -424,14 +424,14 @@
    <property name="depth" type="float" value="-1856"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="857" name="lava" type="object" x="-4265.55" y="2321.42" width="13997" height="1024"/>
+  <object id="857" name="lava" type="object" x="-3418.9" y="2321.42" width="13997" height="1024"/>
  </objectgroup>
  <objectgroup id="122" name="lava -28">
   <properties>
    <property name="depth" type="float" value="-1792"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="856" name="lava" type="object" x="-4178.88" y="2330.7" width="13823" height="1024"/>
+  <object id="856" name="lava" type="object" x="-3332.23" y="2330.7" width="13823" height="1024"/>
  </objectgroup>
  <objectgroup id="136" name="decor -28">
   <properties>
@@ -445,7 +445,7 @@
    <property name="depth" type="float" value="-1728"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="855" name="lava" type="object" x="-4083.41" y="2339.95" width="13631" height="1024"/>
+  <object id="855" name="lava" type="object" x="-3236.76" y="2339.95" width="13631" height="1024"/>
  </objectgroup>
  <objectgroup id="157" name="decor bg -26">
   <properties>
@@ -458,14 +458,14 @@
    <property name="depth" type="float" value="-1664"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="854" name="lava" type="object" x="-3974.62" y="2348.26" width="13413" height="1024"/>
+  <object id="854" name="lava" type="object" x="-3127.97" y="2348.26" width="13413" height="1024"/>
  </objectgroup>
  <objectgroup id="119" name="lava -25">
   <properties>
    <property name="depth" type="float" value="-1600"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="853" name="lava" type="object" x="-3881.8" y="2354.43" width="13225" height="1024"/>
+  <object id="853" name="lava" type="object" x="-3035.15" y="2354.43" width="13225" height="1024"/>
  </objectgroup>
  <objectgroup id="155" name="decor bg -24">
   <properties>
@@ -485,7 +485,7 @@
    <property name="depth" type="float" value="-1536"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="791" name="lava" type="object" x="-3760.28" y="2362.64" width="12985" height="1024"/>
+  <object id="791" name="lava" type="object" x="-2913.63" y="2362.64" width="12985" height="1024"/>
  </objectgroup>
  <objectgroup id="115" name="terrain -23">
   <properties>
@@ -498,7 +498,7 @@
    <property name="depth" type="float" value="-1472"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="790" name="lava" type="object" x="-3622.28" y="2370.14" width="12706" height="1024"/>
+  <object id="790" name="lava" type="object" x="-2775.63" y="2370.14" width="12706" height="1024"/>
  </objectgroup>
  <objectgroup id="151" name="decor bg -22">
   <properties>
@@ -518,7 +518,7 @@
    <property name="depth" type="float" value="-1408"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="789" name="lava" type="object" x="-3502.62" y="2377.1" width="12465.7" height="1024"/>
+  <object id="789" name="lava" type="object" x="-2655.97" y="2377.1" width="12465.7" height="1024"/>
  </objectgroup>
  <objectgroup id="113" name="terrain -21">
   <properties>
@@ -531,7 +531,7 @@
    <property name="depth" type="float" value="-1344"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="788" name="lava" type="object" x="-3402.38" y="2383.97" width="12244.5" height="1024"/>
+  <object id="788" name="lava" type="object" x="-2555.73" y="2383.97" width="12244.5" height="1024"/>
  </objectgroup>
  <objectgroup id="174" name="terrain -20 bg">
   <properties>
@@ -550,7 +550,7 @@
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="795" name="obsidean" type="terrain" x="2700.5" y="5066">
+  <object id="795" name="obsidean" type="terrain" x="2707.68" y="4909.42">
    <polygon points="-1202.61,-2736.26 -892.607,-1979.27 713.274,-1709.84 2258.53,-1976.28 2528.01,-2731.7"/>
   </object>
  </objectgroup>
@@ -559,12 +559,12 @@
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="796" name="Generic/TownFence" type="decor" x="4889.67" y="40.6209" width="538" height="948"/>
-  <object id="797" name="Generic/TownFence" type="decor" x="5348.2" y="39.3909" width="538" height="948"/>
+  <object id="796" name="Generic/TownFence" type="decor" x="4889.67" y="31.2983" width="538" height="948"/>
+  <object id="797" name="Generic/TownFence" type="decor" x="5348.2" y="30.0683" width="538" height="948"/>
   <object id="798" name="Generic/TownFence" type="decor" x="5847.5" y="39.3909" width="538" height="948"/>
   <object id="800" name="Generic/TownFence" type="decor" x="6775.29" y="44.5909" width="538" height="948"/>
   <object id="801" name="Generic/TownFence" type="decor" x="7251.84" y="44.5909" width="538" height="948"/>
-  <object id="802" name="Generic/TownFence" type="decor" x="4413.91" y="43.0909" width="538" height="948"/>
+  <object id="802" name="Generic/TownFence" type="decor" x="4413.91" y="33.7683" width="538" height="948"/>
   <object id="973" name="Generic/TownFence" type="decor" x="6321.42" y="44.2232" width="538" height="948"/>
  </objectgroup>
  <objectgroup id="118" name="decor -20 fg">
@@ -579,14 +579,13 @@
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="826" name="life-stone" type="object" x="2464" y="1902.5" width="146" height="423"/>
   <object id="850" name="portal" type="object" x="5747.46" y="673.571" width="256" height="320">
    <properties>
     <property name="map" value="FirewallFissure/Town_Main"/>
     <property name="transition" value="main-gate"/>
    </properties>
   </object>
-  <object id="1021" name="cart-lift" type="object" x="4739.88" y="1156.93" width="72" height="1060.45">
+  <object id="1021" name="cart-lift" type="object" x="4739.88" y="1156.93" width="72" height="936.626">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>
@@ -597,15 +596,16 @@
     <property name="transition" value="pathway"/>
    </properties>
   </object>
+  <object id="1039" name="life-stone" type="object" x="5026.51" y="565.487" width="146" height="423"/>
  </objectgroup>
- <objectgroup id="105" name="player_layer -20" visible="0">
+ <objectgroup id="105" name="player_layer -20">
   <properties>
    <property name="depth" type="float" value="-1280"/>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="0.25"/>
   </properties>
-  <object id="844" name="warp" type="object" x="3121.67" y="2078.33" width="256" height="256">
+  <object id="844" name="warp" type="object" x="2604.23" y="1918.56" width="256" height="256">
    <properties>
     <property name="from" value="bridge-back-A"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -629,29 +629,13 @@
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1032" name="demon-archer" type="entity" x="4181.21" y="2202.22" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="FirewallFissure/Combat_Lava"/>
-    <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,soul,agro"/>
-    <property name="drop-pool" value="ff-generic"/>
-   </properties>
-  </object>
-  <object id="1033" name="demon-archer" type="entity" x="4182.79" y="1957.79" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-b"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="95" name="lava -20">
   <properties>
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="787" name="lava" type="object" x="-3306.44" y="2391.36" width="12026.8" height="1024"/>
+  <object id="787" name="lava" type="object" x="-2459.79" y="2391.36" width="12026.8" height="1024"/>
  </objectgroup>
  <objectgroup id="156" name="terrain mg -20">
   <properties>
@@ -676,14 +660,14 @@
    <property name="depth" type="float" value="-1216"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="786" name="lava" type="object" x="-3210.26" y="2398.96" width="11822.5" height="1024"/>
+  <object id="786" name="lava" type="object" x="-2363.61" y="2398.96" width="11822.5" height="1024"/>
  </objectgroup>
  <objectgroup id="111" name="terrain -19">
   <properties>
    <property name="depth" type="float" value="-1216"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="841" name="obsidean" type="terrain" x="3130.36" y="2394.75" width="164.273" height="142.5"/>
+  <object id="841" name="obsidean" type="terrain" x="2659.84" y="2239.37" width="164.273" height="142.5"/>
  </objectgroup>
  <objectgroup id="143" name="decor -18">
   <properties>
@@ -696,7 +680,7 @@
    <property name="depth" type="float" value="-1152"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="785" name="lava" type="object" x="-3125.53" y="2406.75" width="11627.7" height="1024"/>
+  <object id="785" name="lava" type="object" x="-2278.88" y="2406.75" width="11627.7" height="1024"/>
  </objectgroup>
  <objectgroup id="110" name="terrain -18">
   <properties>
@@ -717,14 +701,14 @@
    <property name="depth" type="float" value="-1088"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="784" name="lava" type="object" x="-3046.26" y="2414.86" width="11426.9" height="1024"/>
+  <object id="784" name="lava" type="object" x="-2199.61" y="2414.86" width="11426.9" height="1024"/>
  </objectgroup>
  <objectgroup id="109" name="terrain -17">
   <properties>
    <property name="depth" type="float" value="-1088"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="839" name="obsidean" type="terrain" x="3049.11" y="2411.75" width="164.273" height="142.5"/>
+  <object id="839" name="obsidean" type="terrain" x="2753.51" y="2257.57" width="164.273" height="142.5"/>
  </objectgroup>
  <objectgroup id="144" name="decor -16 bg">
   <properties>
@@ -737,7 +721,7 @@
    <property name="depth" type="float" value="-1024"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="783" name="lava" type="object" x="-2970.35" y="2424.25" width="11237.1" height="1024"/>
+  <object id="783" name="lava" type="object" x="-2123.7" y="2424.25" width="11237.1" height="1024"/>
  </objectgroup>
  <objectgroup id="134" name="decor -16">
   <properties>
@@ -757,8 +741,8 @@
    <property name="depth" type="float" value="-960"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="782" name="lava" type="object" x="-2894.77" y="2432.03" width="11047.4" height="1024"/>
-  <object id="837" name="obsidean" type="terrain" x="2876.95" y="2426" width="164.273" height="142.5"/>
+  <object id="782" name="lava" type="object" x="-2048.12" y="2432.03" width="11047.4" height="1024"/>
+  <object id="837" name="obsidean" type="terrain" x="2884.13" y="2269.42" width="164.273" height="142.5"/>
  </objectgroup>
  <objectgroup id="107" name="terrain -15">
   <properties>
@@ -778,7 +762,7 @@
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="781" name="lava" type="object" x="-2831.7" y="2439.95" width="10865.7" height="1024"/>
+  <object id="781" name="lava" type="object" x="-1985.05" y="2439.95" width="10865.7" height="1024"/>
  </objectgroup>
  <objectgroup id="106" name="terrain -14">
   <properties>
@@ -791,44 +775,18 @@
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="780" name="lava" type="object" x="-2754.78" y="2448.35" width="10681" height="1024"/>
+  <object id="780" name="lava" type="object" x="-1908.13" y="2448.35" width="10681" height="1024"/>
  </objectgroup>
  <objectgroup id="71" name="terrain -13">
   <properties>
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="729" name="obsidean" type="terrain" x="3137.43" y="5140.11">
+  <object id="953" name="obsidean" type="terrain" x="3140.22" y="5003.39">
    <polygon points="-498.828,-2723.26 -370.244,-1979.27 295.857,-1709.84 936.817,-1976.28 1048.59,-2731.7"/>
   </object>
-  <object id="953" name="obsidean" type="terrain" x="3137.43" y="5140.11">
-   <polygon points="-498.828,-2723.26 -370.244,-1979.27 295.857,-1709.84 936.817,-1976.28 1048.59,-2731.7"/>
-  </object>
-  <object id="954" name="obsidean" type="terrain" x="4819.61" y="5136.11">
+  <object id="954" name="obsidean" type="terrain" x="4822.4" y="4999.39">
    <polygon points="-435,-2723.26 -322.869,-1979.27 258,-1709.84 816.946,-1976.28 914.413,-2731.7"/>
-  </object>
- </objectgroup>
- <objectgroup id="117" name="player_layer-13" visible="0">
-  <properties>
-   <property name="depth" type="float" value="-832"/>
-   <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="0.25"/>
-  </properties>
-  <object id="845" name="warp" type="object" x="2832.67" y="2157.33" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-front-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-back-A"/>
-   </properties>
-  </object>
-  <object id="847" name="warp" type="object" x="5290" y="2152" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-back-B"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-front-B"/>
-   </properties>
   </object>
  </objectgroup>
  <objectgroup id="72" name="decor -13">
@@ -842,6 +800,51 @@
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1037" name="demon-archer" type="entity" x="3499.81" y="2152.08" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="FirewallFissure/Combat_Lava"/>
+    <property name="battle-tag" value="group-b"/>
+    <property name="components" value="enemy,soul,agro"/>
+    <property name="drop-pool" value="ff-generic"/>
+   </properties>
+  </object>
+  <object id="1038" name="demon-archer" type="entity" x="3501.39" y="1907.65" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-b"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="179" name="entities -13">
+  <properties>
+   <property name="depth" type="float" value="-832"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="117" name="player_layer-13">
+  <properties>
+   <property name="depth" type="float" value="-832"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="0.25"/>
+  </properties>
+  <object id="845" name="warp" type="object" x="2841.04" y="2023.4" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-A"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-A"/>
+   </properties>
+  </object>
+  <object id="847" name="warp" type="object" x="5292.79" y="2015.28" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-back-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-front-B"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="142" name="decor bg -12">
   <properties>
@@ -854,21 +857,21 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="779" name="lava" type="object" x="-2658.77" y="2458.37" width="10479.7" height="1024"/>
+  <object id="779" name="lava" type="object" x="-1812.12" y="2458.37" width="10479.7" height="1024"/>
  </objectgroup>
  <objectgroup id="7912" name="terrain -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="817" name="obsidean" type="terrain" x="5324.69" y="2428.4" width="164.273" height="142.5"/>
+  <object id="817" name="obsidean" type="terrain" x="5321.42" y="2268.22" width="164.273" height="142.5"/>
  </objectgroup>
  <objectgroup id="86" name="lava -11">
   <properties>
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="778" name="lava" type="object" x="-2577.92" y="2464.07" width="10373.9" height="1024"/>
+  <object id="778" name="lava" type="object" x="-1731.27" y="2464.07" width="10373.9" height="1024"/>
  </objectgroup>
  <objectgroup id="7911" name="terrain -11">
   <properties>
@@ -887,21 +890,21 @@
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="777" name="lava" type="object" x="-2505.96" y="2470.66" width="10229" height="1024"/>
+  <object id="777" name="lava" type="object" x="-1659.31" y="2470.66" width="10229" height="1024"/>
  </objectgroup>
  <objectgroup id="791" name="terrain -10">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="815" name="obsidean" type="terrain" x="5274.94" y="2440.73" width="164.273" height="142.5"/>
+  <object id="815" name="obsidean" type="terrain" x="5271.67" y="2280.55" width="164.273" height="142.5"/>
  </objectgroup>
  <objectgroup id="84" name="lava -9">
   <properties>
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="776" name="lava" type="object" x="-2440.17" y="2479.32" width="10217.3" height="1024"/>
+  <object id="776" name="lava" type="object" x="-1593.52" y="2479.32" width="10217.3" height="1024"/>
  </objectgroup>
  <objectgroup id="781" name="terrain -9">
   <properties>
@@ -922,7 +925,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="775" name="lava" type="object" x="-2369.71" y="2486.78" width="9999" height="1024"/>
+  <object id="775" name="lava" type="object" x="-1523.06" y="2486.78" width="9999" height="1024"/>
  </objectgroup>
  <objectgroup id="135" name="decor -8">
   <properties>
@@ -936,7 +939,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="813" name="obsidean" type="terrain" x="5203.44" y="2456.82" width="164.273" height="142.5"/>
+  <object id="813" name="obsidean" type="terrain" x="5200.17" y="2296.64" width="164.273" height="142.5"/>
  </objectgroup>
  <objectgroup id="147" name="decor bg -7">
   <properties>
@@ -949,7 +952,7 @@
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="774" name="lava" type="object" x="-2285.88" y="2496.28" width="9817" height="1024"/>
+  <object id="774" name="lava" type="object" x="-1439.23" y="2496.28" width="9817" height="1024"/>
  </objectgroup>
  <objectgroup id="761" name="terrain -7">
   <properties>
@@ -970,14 +973,14 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="773" name="lava" type="object" x="-2199.83" y="2503.99" width="9627" height="1024"/>
+  <object id="773" name="lava" type="object" x="-1353.18" y="2503.99" width="9627" height="1024"/>
  </objectgroup>
  <objectgroup id="751" name="terrain -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="811" name="obsidean" type="terrain" x="5027.19" y="2464.65" width="164.273" height="142.5"/>
+  <object id="811" name="obsidean" type="terrain" x="5021.12" y="2333.12" width="164.273" height="142.5"/>
  </objectgroup>
  <objectgroup id="73" name="decor -6">
   <properties>
@@ -997,7 +1000,7 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="772" name="lava" type="object" x="-2111.17" y="2511.32" width="9587.93" height="1024"/>
+  <object id="772" name="lava" type="object" x="-1264.52" y="2511.32" width="9587.93" height="1024"/>
  </objectgroup>
  <objectgroup id="79" name="terrain -5">
   <properties>
@@ -1010,21 +1013,21 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="771" name="lava" type="object" x="-2025.75" y="2520.28" width="9345" height="1024"/>
+  <object id="771" name="lava" type="object" x="-1179.1" y="2520.28" width="9345" height="1024"/>
  </objectgroup>
  <objectgroup id="78" name="terrain -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="809" name="obsidean" type="terrain" x="5034.19" y="2481.53" width="164.273" height="142.5"/>
+  <object id="809" name="obsidean" type="terrain" x="5030.92" y="2321.35" width="164.273" height="142.5"/>
  </objectgroup>
  <objectgroup id="78" name="lava -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="770" name="lava" type="object" x="-1949.04" y="2528.62" width="9159" height="1024"/>
+  <object id="770" name="lava" type="object" x="-1102.39" y="2528.62" width="9159" height="1024"/>
  </objectgroup>
  <objectgroup id="77" name="terrain -3">
   <properties>
@@ -1043,34 +1046,34 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="769" name="lava" type="object" x="-1883.17" y="2535.99" width="8991.67" height="1024"/>
+  <object id="769" name="lava" type="object" x="-1036.52" y="2535.99" width="8991.67" height="1024"/>
  </objectgroup>
  <objectgroup id="76" name="terrain -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="806" name="obsidean" type="terrain" x="4950.22" y="2490.4" width="164.273" height="142.5"/>
+  <object id="806" name="obsidean" type="terrain" x="4946.95" y="2330.22" width="164.273" height="142.5"/>
  </objectgroup>
  <objectgroup id="76" name="lava -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="768" name="lava" type="object" x="-1811.5" y="2545.07" width="8815" height="1024"/>
+  <object id="768" name="lava" type="object" x="-964.854" y="2545.07" width="8815" height="1024"/>
  </objectgroup>
  <objectgroup id="75" name="terrain -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="819" name="obsidean" type="terrain" x="4814.01" y="2498.54" width="164.273" height="142.5"/>
+  <object id="819" name="obsidean" type="terrain" x="4807.94" y="2367.01" width="164.273" height="142.5"/>
  </objectgroup>
  <objectgroup id="67" name="lava bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="766" name="lava" type="object" x="-1743.5" y="2556.83" width="8647" height="1024"/>
+  <object id="766" name="lava" type="object" x="-896.854" y="2556.83" width="8647" height="1024"/>
  </objectgroup>
  <objectgroup id="68" name="decor bg">
   <properties>
@@ -1081,10 +1084,10 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="715" name="obsidean" type="terrain" x="991.388" y="5260">
+  <object id="715" name="obsidean" type="terrain" x="988.119" y="5099.82">
    <polygon points="-1248.33,-2733.26 -1063.76,-1979.27 850.04,-1709.84 2691.61,-1976.28 3012.74,-2731.7"/>
   </object>
-  <object id="792" name="obsidean" type="terrain" x="4874.91" y="5242.55">
+  <object id="792" name="obsidean" type="terrain" x="4871.64" y="5082.37">
    <polygon points="-564.707,-2723.26 -419.141,-1979.27 334.93,-1709.84 1060.54,-1976.28 1187.07,-2731.7"/>
   </object>
  </objectgroup>
@@ -1104,14 +1107,14 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1024" name="edge-portal" type="object" x="0.041" y="2038.67" width="199.918" height="488.002">
+  <object id="1024" name="edge-portal" type="object" x="-3.22804" y="1878.49" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>
     <property name="map" value="FirewallFissure/Zone_3_1"/>
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="1034" name="hexus-shrine" type="object" x="5518.5" y="2249.6" width="155" height="260">
+  <object id="1034" name="hexus-shrine" type="object" x="5515.23" y="2089.42" width="155" height="260">
    <properties>
     <property name="entity-tag" value="hexus-demon-archer"/>
    </properties>
@@ -1133,7 +1136,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1022" name="demon-grunt" type="entity" x="2021" y="2398.25" width="128" height="128">
+  <object id="1022" name="demon-grunt" type="entity" x="2017.73" y="2238.07" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="FirewallFissure/Combat_Lava"/>
@@ -1142,7 +1145,7 @@
     <property name="drop-pool" value="ff-generic"/>
    </properties>
   </object>
-  <object id="1023" name="demon-grunt" type="entity" x="2022.58" y="2153.82" width="128" height="128">
+  <object id="1023" name="demon-grunt" type="entity" x="2019.31" y="1993.64" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-c"/>
@@ -1155,7 +1158,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="848" name="warp" type="object" x="4774.33" y="2256.67" width="256" height="256">
+  <object id="848" name="warp" type="object" x="4771.06" y="2096.49" width="256" height="256">
    <properties>
     <property name="from" value="bridge-front-B"/>
     <property name="no-warp-camera" type="bool" value="true"/>
@@ -1163,7 +1166,7 @@
     <property name="to" value="bridge-back-B"/>
    </properties>
   </object>
-  <object id="1025" name="spawn" type="object" x="414.667" y="2406.67" width="128" height="128">
+  <object id="1025" name="spawn" type="object" x="411.398" y="2246.49" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
    </properties>
@@ -1173,7 +1176,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="718" name="lava" type="object" x="-1658" y="2593.32" width="8449" height="1024"/>
+  <object id="718" name="lava" type="object" x="-811.354" y="2593.32" width="8449" height="1024"/>
  </objectgroup>
  <objectgroup id="28" name="fireflies">
   <properties>
