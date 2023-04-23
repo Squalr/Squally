@@ -176,7 +176,7 @@ NO_OPTIMIZE void GhostBolt::setGhostBoltSpeed()
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS();
 
-	speedMultiplier *= -1.0f;
+	speedMultiplier = speedMultiplier * -1.0f;
 	
 	this->setSpeedMultiplier(Vec3(speedMultiplier, speedMultiplier, speedMultiplier));
 

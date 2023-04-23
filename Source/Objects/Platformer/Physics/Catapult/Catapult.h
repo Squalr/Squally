@@ -29,7 +29,7 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
-	void onInteract(PlatformerEntity* interactingEntity);
+	void onInteract(PlatformerEntity* interactingEntity) override;
 	void update(float) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;

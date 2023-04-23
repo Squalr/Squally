@@ -52,7 +52,7 @@
 #include "Scenes/Platformer/Inventory/Items/Crafting/PotionReagents/Mandrake.h"
 #include "Scenes/Platformer/Inventory/Items/Crafting/PotionReagents/RatTail.h"
 #include "Scenes/Platformer/Inventory/Items/Crafting/PotionReagents/SandRoot.h"
-#include "Scenes/Platformer/Inventory/Items/Crafting/PotionReagents/SnowBall.h"
+#include "Scenes/Platformer/Inventory/Items/Crafting/PotionReagents/Snowball.h"
 #include "Scenes/Platformer/Inventory/Items/Crafting/PotionReagents/VoidFlower.h"
 #include "Scenes/Platformer/Inventory/Items/Crafting/Special/HeartOfFire.h"
 #include "Scenes/Platformer/Inventory/Items/Crafting/Special/HeartOfShadow.h"
