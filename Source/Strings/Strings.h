@@ -4794,6 +4794,36 @@ namespace Strings
 		virtual ~Input_Tab() = default;
 	};
 
+	class Items_Consumables_Combat_SmallBomb : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Combat_SmallBomb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Combat_SmallBomb();
+		virtual ~Items_Consumables_Combat_SmallBomb() = default;
+	};
+
+	class Items_Consumables_Combat_SmallBombDescription : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Combat_SmallBombDescription* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Combat_SmallBombDescription();
+		virtual ~Items_Consumables_Combat_SmallBombDescription() = default;
+	};
+
 	class Items_Consumables_Health_GreaterHealthPotion : public LocalizedString
 	{
 	public:

@@ -585,7 +585,7 @@ DeveloperScene::DeveloperScene()
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
-	// CHAPTER 7 - SET
+	// CHAPTER 7 - SET (really? What a waste)
 	{
 		ClickableTextNode* titleButton = this->buildTitleButton("Ballmer Peaks");
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
