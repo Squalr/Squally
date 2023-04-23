@@ -10,7 +10,9 @@ namespace cocos2d
 class MinMaxPool;
 class PlatformerEntity;
 class PocketPoolDeserializer;
+class SmartAnimationSequenceNode;
 class Squally;
+class WorldSound;
 
 class EntitySoulBehavior : public GameComponent
 {
@@ -41,6 +43,9 @@ private:
 	PlatformerEntity* entity = nullptr;
 	Squally* squally = nullptr;
 	cocos2d::Sprite* soulHarvestIcon = nullptr;
+	SmartAnimationSequenceNode* soulHarvestFx = nullptr;
+	SmartAnimationSequenceNode* healFxSqually = nullptr;
+	WorldSound* soulHarvestSfx = nullptr;
 
 	std::string currentHelperName;
 

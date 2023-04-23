@@ -24,8 +24,8 @@ Snowman::Snowman(ValueMap& properties) : super(properties,
 	Snowman::MapKey,
 	EntityResources::Helpers_BallmerPeaks_Snowman_Animations,
 	EntityResources::Helpers_BallmerPeaks_Snowman_Emblem,
-	CSize(224.0f, 440.0f),
-	0.3f,
+	CSize(64.0f, 128.0f),
+	1.0f,
 	Vec2(0.0f, 0.0f))
 {
 }

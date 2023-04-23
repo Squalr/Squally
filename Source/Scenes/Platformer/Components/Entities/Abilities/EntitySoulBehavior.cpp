@@ -3,6 +3,7 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/Input.h"
@@ -10,6 +11,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EnginePhysicsTypes.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/UI/Mouse.h"
 #include "Engine/UI/UIBoundObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -26,6 +28,8 @@
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
+#include "Resources/SoundResources.h"
+#include "Resources/FXResources.h"
 #include "Resources/UIResources.h"
 
 using namespace cocos2d;
@@ -45,9 +49,14 @@ EntitySoulBehavior* EntitySoulBehavior::create(GameObject* owner)
 EntitySoulBehavior::EntitySoulBehavior(GameObject* owner) : super(owner)
 {
 	this->soulHarvestIcon = Sprite::create(UIResources::Menus_Icons_AngelFigurine);
+	this->soulHarvestFx = SmartAnimationSequenceNode::create();
+	this->healFxSqually = SmartAnimationSequenceNode::create();
+	this->soulHarvestSfx = WorldSound::create(SoundResources::Platformer_Spells_Curse1);
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
 	this->soulHarvestIcon->setScale(0.75f);
+	this->soulHarvestFx->setAnimationAnchor(Vec2(0.5f, 0.0f));
+	this->healFxSqually->setAnimationAnchor(Vec2(0.5f, 0.0f));
 
 	if (this->entity == nullptr)
 	{
@@ -56,6 +65,9 @@ EntitySoulBehavior::EntitySoulBehavior(GameObject* owner) : super(owner)
 
 	this->soulHarvestIcon->setVisible(false);
 
+	this->addChild(this->soulHarvestSfx);
+	this->addChild(this->soulHarvestFx);
+	this->addChild(this->healFxSqually);
 	this->addChild(this->soulHarvestIcon);
 }
 
@@ -158,6 +170,17 @@ bool EntitySoulBehavior::wasSoulHarvested()
 void EntitySoulBehavior::onSoulHarvested()
 {
 	this->updateIconVisibility();
+
+	this->soulHarvestFx->playAnimation(FXResources::Curse_Curse_0000, 0.05f, true);
+	this->soulHarvestSfx->play();
+
+	ObjectEvents::QueryObject<Squally>([=](Squally* squally)
+	{
+		// Jank, but should work since Squally should be on the same layer as the target entity
+		GameUtils::setWorldCoords3D(this->healFxSqually, GameUtils::getWorldCoords3D(squally));
+		this->healFxSqually->playAnimation(FXResources::Restore_Restore_0000, 0.05f, true);
+	}, Squally::MapKey);
+
 	
 	this->entity->getComponent<EntitySelectionBehavior>([=](EntitySelectionBehavior* selection)
 	{

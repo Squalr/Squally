@@ -70,17 +70,12 @@ DeveloperScene::DeveloperScene()
 	}
 
 	/*
-	- ** FX for soul harvest
 	- * Can get stuck on roof of maps (see UR 3_1)
 	- Shadow for Squally
-	- Lambda Crypts => Crypto Crypts?
-	- Finish Tier4+ pools. Deprecate "Crafting pools" ch4+ (Fixed?)
-	- Sometimes hackable icon is below entity (Potentially fixed on 4/20/2023, blaze it)
 	- Changing language does not update readonly scripts after they are loaded once
 	- Add CPU noises when turned on in DM
 	- Add Train noises in DM/CV
 	- Sanity check card localization (due to art changes)
-	- Tune Alch / Card tier pools
 	- Infinity symbol in hexus does not localize to arabic (and maybe others)
 	- Text navigation in editable assembly text is broken for arabic
 	- Text navigation is pretty bad in long scripts.
@@ -89,6 +84,8 @@ DeveloperScene::DeveloperScene()
 	- Chapter transitions can be more special
 	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles) (edit: repro inconsistent)
 	- Cracks in simulation for story
+	- Reduce walking in early chapters?
+	- Cut UR temple map in half?
 	- Hexus:
 		- * Reduce Hexus fights to 6 per chapter (ignoring VS) (6 * 7 = 42 fights)
 		- Can pass after auto-loss
@@ -1084,8 +1081,8 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGrimFound, Value(true));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Grim::MapKey));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Grim::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyEq, Value(8));

@@ -24,7 +24,7 @@ Grim::Grim(ValueMap& properties) : super(properties,
 	Grim::MapKey,
 	EntityResources::Helpers_CastleValgrind_Grim_Animations,
 	EntityResources::Helpers_CastleValgrind_Grim_Emblem,
-	CSize(224.0f, 440.0f),
+	CSize(64.0f, 128.0f),
 	1.0f,
 	Vec2(0.0f, 0.0f))
 {
