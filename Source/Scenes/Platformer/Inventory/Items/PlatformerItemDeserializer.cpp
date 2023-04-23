@@ -167,7 +167,13 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[DualElixir::SaveKey] = [=]() { return (Item*)DualElixir::create(); };
 
 	// Combat Consumables
+	this->deserializers[FragGrenade::SaveKey] = [=]() { return (Item*)FragGrenade::create(); };
+	this->deserializers[LargeBomb::SaveKey] = [=]() { return (Item*)LargeBomb::create(); };
+	this->deserializers[PepperBomb::SaveKey] = [=]() { return (Item*)PepperBomb::create(); };
+	this->deserializers[RubyBomb::SaveKey] = [=]() { return (Item*)RubyBomb::create(); };
 	this->deserializers[SmallBomb::SaveKey] = [=]() { return (Item*)SmallBomb::create(); };
+	this->deserializers[SpikedBomb::SaveKey] = [=]() { return (Item*)SpikedBomb::create(); };
+	this->deserializers[SteelBomb::SaveKey] = [=]() { return (Item*)SteelBomb::create(); };
 
 	// Axes
 	this->deserializers[BoneAxe::SaveKey] = [=]() { return (Item*)BoneAxe::create(); };

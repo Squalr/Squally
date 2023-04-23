@@ -59,7 +59,7 @@ LocalizedString* ThrowSmallBomb::getString()
 
 LocalizedString* ThrowSmallBomb::getDescription()
 {
-	return Strings::Items_Consumables_Combat_SmallBombDescription::create()
+	return Strings::Items_Consumables_Combat_BombDescription::create()
 		->setStringReplacementVariables({
 			ConstantString::create(std::to_string(SmallBomb::DamageMin)),
 			ConstantString::create(std::to_string(SmallBomb::DamageMax))

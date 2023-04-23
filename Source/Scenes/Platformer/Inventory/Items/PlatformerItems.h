@@ -1,7 +1,13 @@
 #pragma once
 
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCards.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Combat/FragGrenade/FragGrenade.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Combat/LargeBomb/LargeBomb.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Combat/PepperBomb/PepperBomb.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Combat/RubyBomb/RubyBomb.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Combat/SmallBomb/SmallBomb.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Combat/SpikedBomb/SpikedBomb.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Combat/SteelBomb/SteelBomb.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/GreaterHealthPotion/GreaterHealthPotion.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion/HealthPotion.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"

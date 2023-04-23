@@ -26,9 +26,9 @@ namespace ItemResources
 	extern const std::string Consumables_Combat_T1_SmallBomb;
 	extern const std::string Consumables_Combat_T2_SteelBomb;
 	extern const std::string Consumables_Combat_T3_LargeBomb;
-	extern const std::string Consumables_Combat_T4_ChiliPepperBomb;
-	extern const std::string Consumables_Combat_T5_SpikeBomb;
-	extern const std::string Consumables_Combat_T6_FragBomb;
+	extern const std::string Consumables_Combat_T4_PepperBomb;
+	extern const std::string Consumables_Combat_T5_SpikedBomb;
+	extern const std::string Consumables_Combat_T6_Frag;
 	extern const std::string Consumables_Combat_T7_RubyBomb;
 	extern const std::string Consumables_Potions_Deprecated_HealthPotion1;
 	extern const std::string Consumables_Potions_Deprecated_HealthPotion3;

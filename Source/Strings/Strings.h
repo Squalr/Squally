@@ -4794,6 +4794,81 @@ namespace Strings
 		virtual ~Input_Tab() = default;
 	};
 
+	class Items_Consumables_Combat_BombDescription : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Combat_BombDescription* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Combat_BombDescription();
+		virtual ~Items_Consumables_Combat_BombDescription() = default;
+	};
+
+	class Items_Consumables_Combat_FragGrenade : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Combat_FragGrenade* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Combat_FragGrenade();
+		virtual ~Items_Consumables_Combat_FragGrenade() = default;
+	};
+
+	class Items_Consumables_Combat_LargeBomb : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Combat_LargeBomb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Combat_LargeBomb();
+		virtual ~Items_Consumables_Combat_LargeBomb() = default;
+	};
+
+	class Items_Consumables_Combat_PepperBomb : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Combat_PepperBomb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Combat_PepperBomb();
+		virtual ~Items_Consumables_Combat_PepperBomb() = default;
+	};
+
+	class Items_Consumables_Combat_RubyBomb : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Combat_RubyBomb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Combat_RubyBomb();
+		virtual ~Items_Consumables_Combat_RubyBomb() = default;
+	};
+
 	class Items_Consumables_Combat_SmallBomb : public LocalizedString
 	{
 	public:
@@ -4809,10 +4884,10 @@ namespace Strings
 		virtual ~Items_Consumables_Combat_SmallBomb() = default;
 	};
 
-	class Items_Consumables_Combat_SmallBombDescription : public LocalizedString
+	class Items_Consumables_Combat_SpikedBomb : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Combat_SmallBombDescription* create();
+		static Items_Consumables_Combat_SpikedBomb* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4820,8 +4895,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Consumables_Combat_SmallBombDescription();
-		virtual ~Items_Consumables_Combat_SmallBombDescription() = default;
+		Items_Consumables_Combat_SpikedBomb();
+		virtual ~Items_Consumables_Combat_SpikedBomb() = default;
+	};
+
+	class Items_Consumables_Combat_SteelBomb : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Combat_SteelBomb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Combat_SteelBomb();
+		virtual ~Items_Consumables_Combat_SteelBomb() = default;
 	};
 
 	class Items_Consumables_Health_GreaterHealthPotion : public LocalizedString
