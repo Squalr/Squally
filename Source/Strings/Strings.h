@@ -32814,6 +32814,36 @@ namespace Strings
 		virtual ~Platformer_Objectives_EndianForest_EF_VisitQueen() = default;
 	};
 
+	class Platformer_Objectives_FirewallFissure_FF_DeliverBomb : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_FirewallFissure_FF_DeliverBomb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_FirewallFissure_FF_DeliverBomb();
+		virtual ~Platformer_Objectives_FirewallFissure_FF_DeliverBomb() = default;
+	};
+
+	class Platformer_Objectives_FirewallFissure_FF_EnterTown : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_FirewallFissure_FF_EnterTown* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_FirewallFissure_FF_EnterTown();
+		virtual ~Platformer_Objectives_FirewallFissure_FF_EnterTown() = default;
+	};
+
 	class Platformer_Objectives_FirewallFissure_FF_Explore : public LocalizedString
 	{
 	public:
@@ -32827,6 +32857,36 @@ namespace Strings
 	private:
 		Platformer_Objectives_FirewallFissure_FF_Explore();
 		virtual ~Platformer_Objectives_FirewallFissure_FF_Explore() = default;
+	};
+
+	class Platformer_Objectives_FirewallFissure_FF_FindAsmodeus : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_FirewallFissure_FF_FindAsmodeus* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_FirewallFissure_FF_FindAsmodeus();
+		virtual ~Platformer_Objectives_FirewallFissure_FF_FindAsmodeus() = default;
+	};
+
+	class Platformer_Objectives_FirewallFissure_FF_LaunchBomb : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_FirewallFissure_FF_LaunchBomb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_FirewallFissure_FF_LaunchBomb();
+		virtual ~Platformer_Objectives_FirewallFissure_FF_LaunchBomb() = default;
 	};
 
 	class Platformer_Objectives_LambdaCrypts_LC_CraftDemonHeart : public LocalizedString

@@ -71,4 +71,8 @@ public:
 	static const std::string LCOpenDemonPortal;
 
 	static const std::string FFExploreFirewallFissure;
+	static const std::string FFEnterTown;
+	static const std::string FFDeliverBomb;
+	static const std::string FFLaunchBomb;
+	static const std::string FFFindAsmodeus;
 };

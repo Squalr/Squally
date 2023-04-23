@@ -167,6 +167,10 @@ void Objectives::InitMap()
 
 	// FF
 	Objectives::ObjectiveMap[ObjectiveKeys::FFExploreFirewallFissure] =  Objective([](){ return Strings::Platformer_Objectives_FirewallFissure_FF_Explore::create()->setStringReplacementVariables(Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::FFEnterTown] =  Objective([](){ return Strings::Platformer_Objectives_FirewallFissure_FF_EnterTown::create()->setStringReplacementVariables({ Strings::Platformer_MapNames_FirewallFissure_Brimstone::create(), Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create()}); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::FFDeliverBomb] =  Objective([](){ return Strings::Platformer_Objectives_FirewallFissure_FF_DeliverBomb::create()->setStringReplacementVariables(Strings::Platformer_MapNames_FirewallFissure_Brimstone::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::FFLaunchBomb] =  Objective([](){ return Strings::Platformer_Objectives_FirewallFissure_FF_LaunchBomb::create()->setStringReplacementVariables(Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create()); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::FFFindAsmodeus] =  Objective([](){ return Strings::Platformer_Objectives_FirewallFissure_FF_FindAsmodeus::create()->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Enemies_FirewallFissure_Asmodeus::create(), Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create()}); }, priority++);
 	
 	priority = 600;
 

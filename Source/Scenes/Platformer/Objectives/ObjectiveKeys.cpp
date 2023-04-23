@@ -65,4 +65,8 @@ const std::string ObjectiveKeys::LCExploreGreaterCrypt = "LC_EXPLORE_GREATER_CRY
 const std::string ObjectiveKeys::LCCraftDemonHeart = "LC_CRAFT_HELL_KEY";
 const std::string ObjectiveKeys::LCOpenDemonPortal = "LC_OPEN_DEMON_PORTAL";
 
-const std::string ObjectiveKeys::FFExploreFirewallFissure = "FF_EXPLORE_DAEMONS_HALLOW";
+const std::string ObjectiveKeys::FFExploreFirewallFissure = "FF_EXPLORE_FIREWALL_FISSURE";
+const std::string ObjectiveKeys::FFEnterTown = "FF_ENTER_TOWN";
+const std::string ObjectiveKeys::FFDeliverBomb = "FF_DELIVER_BOMB";
+const std::string ObjectiveKeys::FFLaunchBomb = "FF_LAUNCH_BOMB";
+const std::string ObjectiveKeys::FFFindAsmodeus= "FF_FIND_ASMODEUS";
