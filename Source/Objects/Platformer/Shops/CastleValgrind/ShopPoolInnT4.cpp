@@ -6,7 +6,7 @@
 #include "Engine/Inventory/ItemChance.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier3/CardPoolTier3.h"
+#include "Objects/Platformer/ItemPools/Tiered/Tier4/CardPoolTier4.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 
 #include "Resources/UIResources.h"
@@ -26,7 +26,7 @@ ShopPoolInnT4* ShopPoolInnT4::create(ValueMap& properties)
 }
 
 ShopPoolInnT4::ShopPoolInnT4(ValueMap& properties) : super(properties, ShopPoolInnT4::PoolName,
-	{ CardPoolTier3::create(SampleMethod::Guarantee, 6, 6) })
+	{ CardPoolTier4::create(SampleMethod::Guarantee, 6, 6) })
 {
 }
 

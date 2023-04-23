@@ -26,12 +26,12 @@ ShopPoolSmithT6* ShopPoolSmithT6::create(ValueMap& properties)
 
 ShopPoolSmithT6::ShopPoolSmithT6(ValueMap& properties) : super(properties, ShopPoolSmithT6::PoolName, { })
 {
-	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Sapphire::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(DarkWood::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Bone::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Mithril::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Gold::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Sulfur::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolSmithT6::~ShopPoolSmithT6()

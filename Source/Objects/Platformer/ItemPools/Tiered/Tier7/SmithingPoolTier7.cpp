@@ -24,7 +24,7 @@ SmithingPoolTier7::SmithingPoolTier7(SampleMethod sampleMethod, int min, int max
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Reasonable));
 
 	// Phasing out
-	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Uncommon));
+	this->addItemToPool(ItemChance::create(DarkWood::create(), ItemChance::Probability::Uncommon));
 
 	/**************
 	 Metals
