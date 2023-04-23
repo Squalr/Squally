@@ -29,6 +29,6 @@ protected:
 
 private:
 	typedef Consumable super;
-
+	
 	Sound* outOfCombatSound = nullptr;
 };

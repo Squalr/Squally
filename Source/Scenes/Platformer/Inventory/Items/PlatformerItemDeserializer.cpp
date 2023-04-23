@@ -166,6 +166,9 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	// Special Consumables
 	this->deserializers[DualElixir::SaveKey] = [=]() { return (Item*)DualElixir::create(); };
 
+	// Combat Consumables
+	this->deserializers[SmallBomb::SaveKey] = [=]() { return (Item*)SmallBomb::create(); };
+
 	// Axes
 	this->deserializers[BoneAxe::SaveKey] = [=]() { return (Item*)BoneAxe::create(); };
 	this->deserializers[CopperAxe::SaveKey] = [=]() { return (Item*)CopperAxe::create(); };

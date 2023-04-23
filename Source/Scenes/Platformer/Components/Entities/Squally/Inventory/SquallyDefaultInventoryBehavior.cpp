@@ -97,6 +97,11 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 				entityInventoryBehavior->getInventory()->forceInsert(HealthPotion::create(), false);
 				entityInventoryBehavior->getInventory()->forceInsert(ManaPotion::create(), false);
 			}
+
+			for (int index = 0; index < 3; index++)
+			{
+				entityInventoryBehavior->getInventory()->forceInsert(SmallBomb::create(), false);
+			}
 			
 			for (int index = 0; index < 20; index++)
 			{

@@ -2,6 +2,8 @@
 
 #include "cocos/2d/CCActionInterval.h"
 
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -15,6 +17,7 @@
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ItemResources.h"
+#include "Resources/FXResources.h"
 #include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
@@ -31,10 +34,10 @@ ThrowSmallBomb* ThrowSmallBomb::create(Priority priority)
 }
 
 ThrowSmallBomb::ThrowSmallBomb(Priority priority)
-	: super(AttackType::Damage, ItemResources::Consumables_Combat_SmallBomb, priority, AbilityType::Physical, 10, 15, 0, 0.2f, 1.5f)
+	: super(AttackType::Damage, ItemResources::Consumables_Combat_T1_SmallBomb, priority, AbilityType::Physical, SmallBomb::DamageMin, SmallBomb::DamageMax, 0, 0.2f, 1.5f)
 {
 	this->throwSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_ItemThrow1);
-	this->explosionSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
+	this->explosionSound = WorldSound::create(SoundResources::Platformer_FX_Explosions_Explosion1);
 
 	this->addChild(this->throwSound);
 	this->addChild(this->explosionSound);
@@ -81,11 +84,11 @@ void ThrowSmallBomb::performAttack(PlatformerEntity* owner, std::vector<Platform
 
 	for (PlatformerEntity* next : targets)
 	{
-		ThrownObject* potion = ThrownObject::create(owner, next, false, this->getIconResource(), CSize(64.0f, 64.0f));
+		ThrownObject* bomb = ThrownObject::create(owner, next, false, this->getIconResource(), CSize(64.0f, 64.0f));
 		
-		potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionData collisionData)
+		bomb->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionData collisionData)
 		{
-			potion->disable(true);
+			bomb->disable(true);
 			
 			PlatformerEntity* entity = GameUtils::GetFirstParentOfType<PlatformerEntity>(collisionData.other, true);
 
@@ -95,21 +98,40 @@ void ThrowSmallBomb::performAttack(PlatformerEntity* owner, std::vector<Platform
 				this->explosionSound->play();
 				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, entity, damage, this->abilityType));
 			}
+			
+			SmartAnimationSequenceNode* explosionFx = SmartAnimationSequenceNode::create();
+
+			GameUtils::setWorldCoords3D(explosionFx, GameUtils::getWorldCoords3D(bomb));
+
+			ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
+				owner,
+				explosionFx,
+				SpawnMethod::TopMost,
+				PositionMode::Retain,
+				[&]()
+				{
+					explosionFx->playAnimation(FXResources::ExplosionAir_ExplosionAir_0000, 0.05f, true);
+				},
+				[&]()
+				{
+				}
+			));
 
 			return CollisionResult::DoNothing;
 		});
 
-		this->replaceOffhandWithProjectile(owner, potion);
+		this->replaceOffhandWithProjectile(owner, bomb);
 
 		next->getComponent<EntityProjectileTargetBehavior>([=](EntityProjectileTargetBehavior* behavior)
 		{
 			if (owner == next)
 			{
-				potion->launchTowardsTarget3D(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.75f, 0.0f));
+				// Self launch (aim above self)
+				bomb->launchTowardsTarget3D(behavior->getTarget(), Vec2(0.0f, 384.0f), 0.25f, Vec3(0.0f, 0.5f, 0.0f));
 			}
 			else
 			{
-				potion->launchTowardsTarget3D(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.75f, 0.75f, 0.75f));
+				bomb->launchTowardsTarget3D(behavior->getTarget(), Vec2::ZERO, 0.25f, Vec3(0.5f, 0.5f, 0.5f));
 			}
 		});
 	}

@@ -659,6 +659,7 @@ void TimelineEntry::performCast()
 			if (this->targets.empty() || this->entity == nullptr || this->currentCast == nullptr)
 			{
 				this->resetTimeline();
+				CombatEvents::TriggerResumeTimeline();
 				return;
 			}
 

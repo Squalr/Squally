@@ -57,7 +57,7 @@ LocalizedString* SmallBomb::getString()
 
 const std::string& SmallBomb::getIconResource()
 {
-	return ItemResources::Consumables_Combat_SmallBomb;
+	return ItemResources::Consumables_Combat_T1_SmallBomb;
 }
 
 const std::string& SmallBomb::getIdentifier()

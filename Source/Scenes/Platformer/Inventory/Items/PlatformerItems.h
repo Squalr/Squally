@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Scenes/Platformer/Inventory/Items/Collectables/HexusCards/HexusCards.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Combat/SmallBomb/SmallBomb.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/GreaterHealthPotion/GreaterHealthPotion.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion/HealthPotion.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"

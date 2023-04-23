@@ -17,7 +17,7 @@ public:
 	template<class T>
 	bool hasItemOfType()
 	{
-		for (auto next : this->items)
+		for (Item* next : this->items)
 		{
 			if (dynamic_cast<T*>(next) != nullptr)
 			{
@@ -35,7 +35,7 @@ public:
 	{
 		std::vector<T*> foundItems;
 
-		for (auto next : this->items)
+		for (Item* next : this->items)
 		{
 			if (dynamic_cast<T*>(next) != nullptr)
 			{
@@ -49,7 +49,7 @@ public:
 	template<class T>
 	T* getItemOfType()
 	{
-		for (auto next : this->items)
+		for (Item* next : this->items)
 		{
 			if (dynamic_cast<T*>(next) != nullptr)
 			{
