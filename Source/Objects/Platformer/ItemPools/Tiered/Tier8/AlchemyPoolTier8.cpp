@@ -18,10 +18,14 @@ AlchemyPoolTier8* AlchemyPoolTier8::create(SampleMethod sampleMethod, int min, i
 
 AlchemyPoolTier8::AlchemyPoolTier8(SampleMethod sampleMethod, int min, int max) : super(ValueMap(), "alchemy-pool-t8", sampleMethod, min, max)
 {
-	this->addItemToPool(ItemChance::create(DarkSeed::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(Honey::create(), ItemChance::Probability::Reasonable));
-	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Reasonable));
+	this->addItemToPool(ItemChance::create(VoidFlower::create(), ItemChance::Probability::VeryCommon));
+
+	// Phasing out
+	// this->addItemToPool(ItemChance::create(FrostBerries::create(), ItemChance::Probability::Uncommon)); // Excluded for lore
+	// this->addItemToPool(ItemChance::create(Snowball::create(), ItemChance::Probability::Uncommon)); // Excluded for lore
+
+	// Bomb
+	this->addItemToPool(ItemChance::create(Meteorite::create(), ItemChance::Probability::Common));
 }
 
 AlchemyPoolTier8::~AlchemyPoolTier8()
