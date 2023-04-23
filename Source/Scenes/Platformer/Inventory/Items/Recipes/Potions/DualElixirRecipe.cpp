@@ -31,15 +31,15 @@ DualElixirRecipe::~DualElixirRecipe()
 
 std::vector<Item*> DualElixirRecipe::craft()
 {
-	return { ManaPotion::create() };
+	return { DualElixir::create() };
 }
 
 std::vector<std::tuple<Item*, int>> DualElixirRecipe::getReagentsInternal()
 {
 	return
 	{
-		{ Clover::create(), 2 },
-		{ Feather::create(), 1 },
+		{ FrostBerries::create(), 2 },
+		{ Snowball::create(), 2 },
 	};
 }
 

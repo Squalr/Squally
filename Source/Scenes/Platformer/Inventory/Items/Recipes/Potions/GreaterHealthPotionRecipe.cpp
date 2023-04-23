@@ -31,7 +31,7 @@ GreaterHealthPotionRecipe::~GreaterHealthPotionRecipe()
 
 std::vector<Item*> GreaterHealthPotionRecipe::craft()
 {
-	return { HealthPotion::create() };
+	return { GreaterHealthPotion::create() };
 }
 
 std::vector<std::tuple<Item*, int>> GreaterHealthPotionRecipe::getReagentsInternal()
@@ -39,7 +39,7 @@ std::vector<std::tuple<Item*, int>> GreaterHealthPotionRecipe::getReagentsIntern
 	return
 	{
 		{ DarkSeed::create(), 2 },
-		{ Honey::create(), 1 },
+		{ SandRoot::create(), 2 },
 	};
 }
 

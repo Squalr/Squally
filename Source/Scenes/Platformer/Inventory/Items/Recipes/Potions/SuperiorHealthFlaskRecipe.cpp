@@ -31,15 +31,15 @@ SuperiorHealthFlaskRecipe::~SuperiorHealthFlaskRecipe()
 
 std::vector<Item*> SuperiorHealthFlaskRecipe::craft()
 {
-	return { HealthPotion::create() };
+	return { SuperiorHealthFlask::create() };
 }
 
 std::vector<std::tuple<Item*, int>> SuperiorHealthFlaskRecipe::getReagentsInternal()
 {
 	return
 	{
-		{ DarkSeed::create(), 2 },
-		{ Honey::create(), 1 },
+		{ BlackMushroom::create(), 2 },
+		{ Mandrake::create(), 2 },
 	};
 }
 

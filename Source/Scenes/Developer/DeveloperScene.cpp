@@ -104,6 +104,7 @@ DeveloperScene::DeveloperScene()
 		- Destroy all warp maps as a result (?) can still keep the zone portals for the return location
 	- Maybe hard code some rewards. It'd be nice to get SHL from the puzzle where you learn it.
 	- Seagulls should blink
+	- Infinite duration for combat item notifications
 	- Sky masters
 		- Find Finch to get to BP
 		- Find Irmik to get to BP peaks

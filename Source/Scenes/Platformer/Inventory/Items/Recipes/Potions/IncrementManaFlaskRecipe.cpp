@@ -38,9 +38,8 @@ std::vector<std::tuple<Item*, int>> IncrementManaFlaskRecipe::getReagentsInterna
 {
 	return
 	{
-		{ Clover::create(), 2 },
-		{ DarkSeed::create(), 2 },
-		{ Honey::create(), 1 },
+		{ Acorn::create(), 2 },
+		{ Honey::create(), 2 },
 	};
 }
 

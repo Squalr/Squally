@@ -31,15 +31,15 @@ SuperiorManaFlaskRecipe::~SuperiorManaFlaskRecipe()
 
 std::vector<Item*> SuperiorManaFlaskRecipe::craft()
 {
-	return { ManaPotion::create() };
+	return { SuperiorManaFlask::create() };
 }
 
 std::vector<std::tuple<Item*, int>> SuperiorManaFlaskRecipe::getReagentsInternal()
 {
 	return
 	{
-		{ Clover::create(), 2 },
-		{ Feather::create(), 1 },
+		{ BlackBlood::create(), 2 },
+		{ DemonRoot::create(), 2 },
 	};
 }
 

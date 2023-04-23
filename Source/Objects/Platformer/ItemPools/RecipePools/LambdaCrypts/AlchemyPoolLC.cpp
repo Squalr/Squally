@@ -24,9 +24,14 @@ AlchemyPoolLC::AlchemyPoolLC(ValueMap& properties) : super(properties, AlchemyPo
 	this->toggleDisableShuffle(true);
 
 	// Potions
-	this->addItemToPool(ItemChance::create(IncrementHealthFlaskRecipe::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(SuperiorHealthFlaskRecipe::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(GreaterHealthPotionRecipe::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(HealthPotionRecipe::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(IncrementHealthFlaskRecipe::create(), ItemChance::Probability::Guaranteed));
+
+	this->addItemToPool(ItemChance::create(GreaterManaPotionRecipe::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(ManaPotionRecipe::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(IncrementManaFlaskRecipe::create(), ItemChance::Probability::Guaranteed));
 
 	// Bombs
 	this->addItemToPool(ItemChance::create(SmallBombRecipe::create(), ItemChance::Probability::Guaranteed));

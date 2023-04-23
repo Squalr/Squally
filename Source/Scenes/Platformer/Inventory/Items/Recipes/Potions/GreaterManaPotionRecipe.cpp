@@ -31,15 +31,15 @@ GreaterManaPotionRecipe::~GreaterManaPotionRecipe()
 
 std::vector<Item*> GreaterManaPotionRecipe::craft()
 {
-	return { ManaPotion::create() };
+	return { GreaterManaPotion::create() };
 }
 
 std::vector<std::tuple<Item*, int>> GreaterManaPotionRecipe::getReagentsInternal()
 {
 	return
 	{
-		{ Clover::create(), 2 },
-		{ Feather::create(), 1 },
+		{ GoldWeed::create(), 2 },
+		{ RatTail::create(), 2 },
 	};
 }
 
