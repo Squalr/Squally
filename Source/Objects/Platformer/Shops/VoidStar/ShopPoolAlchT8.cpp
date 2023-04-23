@@ -28,10 +28,14 @@ ShopPoolAlchT8* ShopPoolAlchT8::create(ValueMap& properties)
 ShopPoolAlchT8::ShopPoolAlchT8(ValueMap& properties) : super(properties, ShopPoolAlchT8::PoolName,
 	{ })
 {
-	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(DarkSeed::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Honey::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Guaranteed));
+	// Should be phased out, but may as well keep a full shop
+	this->addItemToPool(ItemChance::create(BlackBlood::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(DemonRoot::create(), ItemChance::Probability::Guaranteed));
+
+	this->addItemToPool(ItemChance::create(FrostBerries::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Snowball::create(), ItemChance::Probability::Guaranteed));
+
+	this->addItemToPool(ItemChance::create(VoidFlower::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolAlchT8::~ShopPoolAlchT8()

@@ -28,10 +28,16 @@ ShopPoolAlchT4* ShopPoolAlchT4::create(ValueMap& properties)
 ShopPoolAlchT4::ShopPoolAlchT4(ValueMap& properties) : super(properties, ShopPoolAlchT4::PoolName,
 	{ })
 {
-	this->addItemToPool(ItemChance::create(Clover::create(), ItemChance::Probability::Guaranteed));
+	// Phasing out
 	this->addItemToPool(ItemChance::create(DarkSeed::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Honey::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(SandRoot::create(), ItemChance::Probability::Guaranteed));
+
+	this->addItemToPool(ItemChance::create(GoldWeed::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(RatTail::create(), ItemChance::Probability::Guaranteed));
+
+	// Phasing in
+	this->addItemToPool(ItemChance::create(BlackMushroom::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Mandrake::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolAlchT4::~ShopPoolAlchT4()
