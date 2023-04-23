@@ -31,15 +31,16 @@ SmallBombRecipe::~SmallBombRecipe()
 
 std::vector<Item*> SmallBombRecipe::craft()
 {
-	return { ManaPotion::create() };
+	return { SmallBomb::create() };
 }
 
 std::vector<std::tuple<Item*, int>> SmallBombRecipe::getReagentsInternal()
 {
 	return
 	{
-		{ Clover::create(), 2 },
-		{ Feather::create(), 1 },
+		{ Copper::create(), 1 },
+		{ Coal::create(), 2 },
+		{ Bamboo::create(), 2 },
 	};
 }
 
@@ -50,7 +51,7 @@ Item* SmallBombRecipe::clone()
 
 LocalizedString* SmallBombRecipe::getString()
 {
-	return Strings::Items_Consumables_Special_DualElixir::create();
+	return Strings::Items_Consumables_Combat_SmallBomb::create();
 }
 
 const std::string& SmallBombRecipe::getIconResource()
@@ -60,7 +61,7 @@ const std::string& SmallBombRecipe::getIconResource()
 
 std::string SmallBombRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Consumables_Potions_DualElixir;
+	return ItemResources::Consumables_Combat_T1_SmallBomb;
 }
 
 const std::string& SmallBombRecipe::getIdentifier()

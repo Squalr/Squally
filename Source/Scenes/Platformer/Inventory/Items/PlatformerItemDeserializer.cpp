@@ -378,16 +378,29 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	// Maps
 	this->deserializers[TempleMap::SaveKey] = [=]() { return (Item*)TempleMap::create(); };
 
-	// Potion Recipes
+	// Health Potion Recipes
 	this->deserializers[HealthPotionRecipe::SaveKey] = [=]() { return (Item*)HealthPotionRecipe::create(); };
 	this->deserializers[GreaterHealthPotionRecipe::SaveKey] = [=]() { return (Item*)GreaterHealthPotionRecipe::create(); };
 	this->deserializers[SuperiorHealthFlaskRecipe::SaveKey] = [=]() { return (Item*)SuperiorHealthFlaskRecipe::create(); };
 	this->deserializers[IncrementHealthFlaskRecipe::SaveKey] = [=]() { return (Item*)IncrementHealthFlaskRecipe::create(); };
+
+	// Mana Potion Recipes
 	this->deserializers[ManaPotionRecipe::SaveKey] = [=]() { return (Item*)ManaPotionRecipe::create(); };
 	this->deserializers[GreaterManaPotionRecipe::SaveKey] = [=]() { return (Item*)GreaterManaPotionRecipe::create(); };
 	this->deserializers[SuperiorManaFlaskRecipe::SaveKey] = [=]() { return (Item*)SuperiorManaFlaskRecipe::create(); };
 	this->deserializers[IncrementManaFlaskRecipe::SaveKey] = [=]() { return (Item*)IncrementManaFlaskRecipe::create(); };
+
+	// Special Potion Recipes
 	this->deserializers[DualElixirRecipe::SaveKey] = [=]() { return (Item*)DualElixirRecipe::create(); };
+
+	// Combat Consumable Recipes
+	this->deserializers[FragGrenadeRecipe::SaveKey] = [=]() { return (Item*)FragGrenadeRecipe::create(); };
+	this->deserializers[LargeBombRecipe::SaveKey] = [=]() { return (Item*)LargeBombRecipe::create(); };
+	this->deserializers[MeteoriteBombRecipe::SaveKey] = [=]() { return (Item*)MeteoriteBombRecipe::create(); };
+	this->deserializers[PepperBombRecipe::SaveKey] = [=]() { return (Item*)PepperBombRecipe::create(); };
+	this->deserializers[SmallBombRecipe::SaveKey] = [=]() { return (Item*)SmallBombRecipe::create(); };
+	this->deserializers[SpikedBombRecipe::SaveKey] = [=]() { return (Item*)SpikedBombRecipe::create(); };
+	this->deserializers[SteelBombRecipe::SaveKey] = [=]() { return (Item*)SteelBombRecipe::create(); };
 
 	// Transmute Recipes
 	this->deserializers[TransmuteCopperToIron::SaveKey] = [=]() { return (Item*)TransmuteCopperToIron::create(); };

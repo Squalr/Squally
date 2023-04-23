@@ -532,7 +532,7 @@ DeveloperScene::DeveloperScene()
 		// ** Implement hexus puzzles
 		// ** Add hexus battles
 		// ** Quests
-		//	* Bring a bomb to someone on 3_1.
+		//	* Craft a unique bomb, bring to Scaldor or someone on 3_1.
 		//	* Launch bomb into ceiling
 		//	* Spawns another lava waterfall, raising lava level. Most enemies die, Azmodeus flees. Pathway appears.
 		// 	* Quest clears volcano smoke, allowing airship travel? From EF or CV?
