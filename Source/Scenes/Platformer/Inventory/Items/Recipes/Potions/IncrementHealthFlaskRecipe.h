@@ -2,10 +2,10 @@
 
 #include "Scenes/Platformer/Inventory/Items/Recipes/Transmutes/TransmuteRecipe.h"
 
-class IncrementHealthFlaskRecipe : public TransmuteRecipe
+class IncrementManaFlaskRecipe : public TransmuteRecipe
 {
 public:
-	static IncrementHealthFlaskRecipe* create();
+	static IncrementManaFlaskRecipe* create();
 
 	std::vector<Item*> craft() override;
 	Item* clone() override;
@@ -17,8 +17,8 @@ public:
 	static const std::string SaveKey;
 
 protected:
-	IncrementHealthFlaskRecipe();
-	virtual ~IncrementHealthFlaskRecipe();
+	IncrementManaFlaskRecipe();
+	virtual ~IncrementManaFlaskRecipe();
 	
 	std::vector<std::tuple<Item*, int>> getReagentsInternal() override;
 

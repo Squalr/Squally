@@ -3,7 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 
 class Guano;
-class Olive;
+class QueenElise;
 class QuestLine;
 class Scrappy;
 class Squally;
@@ -42,7 +42,7 @@ private:
 	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
-	Olive* olive = nullptr;
+	QueenElise* queenElise = nullptr;
 
 	static const std::string MapEventTalkToQueenElise;
 };

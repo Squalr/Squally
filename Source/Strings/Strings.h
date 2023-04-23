@@ -4794,36 +4794,6 @@ namespace Strings
 		virtual ~Input_Tab() = default;
 	};
 
-	class Items_Consumables_Health_AddHealthFlask : public LocalizedString
-	{
-	public:
-		static Items_Consumables_Health_AddHealthFlask* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Consumables_Health_AddHealthFlask();
-		virtual ~Items_Consumables_Health_AddHealthFlask() = default;
-	};
-
-	class Items_Consumables_Health_AddHealthFlaskDescription : public LocalizedString
-	{
-	public:
-		static Items_Consumables_Health_AddHealthFlaskDescription* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Consumables_Health_AddHealthFlaskDescription();
-		virtual ~Items_Consumables_Health_AddHealthFlaskDescription() = default;
-	};
-
 	class Items_Consumables_Health_GreaterHealthPotion : public LocalizedString
 	{
 	public:
@@ -4914,10 +4884,10 @@ namespace Strings
 		virtual ~Items_Consumables_Health_IncrementHealthFlaskDescription() = default;
 	};
 
-	class Items_Consumables_Mana_AddManaFlask : public LocalizedString
+	class Items_Consumables_Health_SuperiorHealthFlask : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Mana_AddManaFlask* create();
+		static Items_Consumables_Health_SuperiorHealthFlask* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4925,14 +4895,14 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Consumables_Mana_AddManaFlask();
-		virtual ~Items_Consumables_Mana_AddManaFlask() = default;
+		Items_Consumables_Health_SuperiorHealthFlask();
+		virtual ~Items_Consumables_Health_SuperiorHealthFlask() = default;
 	};
 
-	class Items_Consumables_Mana_AddManaFlaskDescription : public LocalizedString
+	class Items_Consumables_Health_SuperiorHealthFlaskDescription : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Mana_AddManaFlaskDescription* create();
+		static Items_Consumables_Health_SuperiorHealthFlaskDescription* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4940,8 +4910,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Consumables_Mana_AddManaFlaskDescription();
-		virtual ~Items_Consumables_Mana_AddManaFlaskDescription() = default;
+		Items_Consumables_Health_SuperiorHealthFlaskDescription();
+		virtual ~Items_Consumables_Health_SuperiorHealthFlaskDescription() = default;
 	};
 
 	class Items_Consumables_Mana_GreaterManaPotion : public LocalizedString
@@ -5032,6 +5002,66 @@ namespace Strings
 	private:
 		Items_Consumables_Mana_ManaPotionDescription();
 		virtual ~Items_Consumables_Mana_ManaPotionDescription() = default;
+	};
+
+	class Items_Consumables_Mana_SuperiorManaFlask : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Mana_SuperiorManaFlask* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Mana_SuperiorManaFlask();
+		virtual ~Items_Consumables_Mana_SuperiorManaFlask() = default;
+	};
+
+	class Items_Consumables_Mana_SuperiorManaFlaskDescription : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Mana_SuperiorManaFlaskDescription* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Mana_SuperiorManaFlaskDescription();
+		virtual ~Items_Consumables_Mana_SuperiorManaFlaskDescription() = default;
+	};
+
+	class Items_Consumables_Special_DualElixir : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Special_DualElixir* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Special_DualElixir();
+		virtual ~Items_Consumables_Special_DualElixir() = default;
+	};
+
+	class Items_Consumables_Special_DualElixirDescription : public LocalizedString
+	{
+	public:
+		static Items_Consumables_Special_DualElixirDescription* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Special_DualElixirDescription();
+		virtual ~Items_Consumables_Special_DualElixirDescription() = default;
 	};
 
 	class Items_Consumables_Speed_SpeedPotion : public LocalizedString
@@ -7822,6 +7852,21 @@ namespace Strings
 	private:
 		Items_Misc_Keys_AncientKey();
 		virtual ~Items_Misc_Keys_AncientKey() = default;
+	};
+
+	class Items_Misc_Keys_BigBomb : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_BigBomb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_BigBomb();
+		virtual ~Items_Misc_Keys_BigBomb() = default;
 	};
 
 	class Items_Misc_Keys_BlueGem : public LocalizedString
@@ -23634,6 +23679,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_RegisterEdi() = default;
 	};
 
+	class Menus_Hacking_Objects_IncrementManaFlask_IncrementMana_IncrementMana : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_IncrementManaFlask_IncrementMana_IncrementMana* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_IncrementManaFlask_IncrementMana_IncrementMana();
+		virtual ~Menus_Hacking_Objects_IncrementManaFlask_IncrementMana_IncrementMana() = default;
+	};
+
+	class Menus_Hacking_Objects_IncrementManaFlask_IncrementMana_RegisterEdi : public LocalizedString
+	{
+	public:
+		static Menus_Hacking_Objects_IncrementManaFlask_IncrementMana_RegisterEdi* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_IncrementManaFlask_IncrementMana_RegisterEdi();
+		virtual ~Menus_Hacking_Objects_IncrementManaFlask_IncrementMana_RegisterEdi() = default;
+	};
+
 	class Menus_Hacking_Objects_KillingMachine_CommentCompare : public LocalizedString
 	{
 	public:
@@ -35872,6 +35947,66 @@ namespace Strings
 	private:
 		Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent();
 		virtual ~Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent() = default;
+	};
+
+	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_A_HowToLeaveVolcano : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_FirewallFissure_DefeatAsmodeus_A_HowToLeaveVolcano* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_DefeatAsmodeus_A_HowToLeaveVolcano();
+		virtual ~Platformer_Quests_FirewallFissure_DefeatAsmodeus_A_HowToLeaveVolcano() = default;
+	};
+
+	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_B_AsmodeusBlocking : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_FirewallFissure_DefeatAsmodeus_B_AsmodeusBlocking* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_DefeatAsmodeus_B_AsmodeusBlocking();
+		virtual ~Platformer_Quests_FirewallFissure_DefeatAsmodeus_B_AsmodeusBlocking() = default;
+	};
+
+	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_C_CraftABomb : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_FirewallFissure_DefeatAsmodeus_C_CraftABomb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_DefeatAsmodeus_C_CraftABomb();
+		virtual ~Platformer_Quests_FirewallFissure_DefeatAsmodeus_C_CraftABomb() = default;
+	};
+
+	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_D_GoToAlchLab : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_FirewallFissure_DefeatAsmodeus_D_GoToAlchLab* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_DefeatAsmodeus_D_GoToAlchLab();
+		virtual ~Platformer_Quests_FirewallFissure_DefeatAsmodeus_D_GoToAlchLab() = default;
 	};
 
 	class Platformer_Quests_FirewallFissure_ReleasePressure_A_DoYouHearThat : public LocalizedString

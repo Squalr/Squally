@@ -3,7 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 
 class QuestLine;
-class Krampus;
+class Asmodeus;
 class ScreamingDoor;
 class Squally;
 class WorldSound;
@@ -30,8 +30,8 @@ private:
 	void runCinematicSequencePt1();
 	void runCinematicSequencePt2();
 
-	Krampus* krampus = nullptr;
+	Asmodeus* asmodeus = nullptr;
 	Squally* squally = nullptr;
 
-	static const std::string MapEventEngageKrampus;
+	static const std::string MapEventEngageAsmodeus;
 };

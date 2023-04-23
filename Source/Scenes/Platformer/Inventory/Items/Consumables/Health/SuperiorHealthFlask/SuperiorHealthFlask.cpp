@@ -1,4 +1,4 @@
-#include "GreaterHealthPotion.h"
+#include "SuperiorHealthFlask.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
 #include "Engine/Sound/Sound.h"
@@ -15,12 +15,12 @@
 
 using namespace cocos2d;
 
-const std::string GreaterHealthPotion::SaveKey = "greater-health-potion";
-const float GreaterHealthPotion::HealPercentage = 1.0f;
+const std::string SuperiorHealthFlask::SaveKey = "superior-health-flask";
+const float SuperiorHealthFlask::HealPercentage = 1.0f;
 
-GreaterHealthPotion* GreaterHealthPotion::create()
+SuperiorHealthFlask* SuperiorHealthFlask::create()
 {
-	GreaterHealthPotion* instance = new GreaterHealthPotion();
+	SuperiorHealthFlask* instance = new SuperiorHealthFlask();
 
 	instance->autorelease();
 
@@ -28,28 +28,28 @@ GreaterHealthPotion* GreaterHealthPotion::create()
 }
 
 // Note: No rubber-banding, as these are to be considered a rare item
-GreaterHealthPotion::GreaterHealthPotion() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 27 }}), ItemMeta(20), true)
+SuperiorHealthFlask::SuperiorHealthFlask() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 45 }}), ItemMeta(20), true)
 {
 	this->outOfCombatSound = Sound::create(SoundResources::Platformer_FX_Potions_PotionDrink2);
 
 	this->addChild(this->outOfCombatSound);
 }
 
-GreaterHealthPotion::~GreaterHealthPotion()
+SuperiorHealthFlask::~SuperiorHealthFlask()
 {
 }
 
-void GreaterHealthPotion::useOutOfCombat(PlatformerEntity* target)
+void SuperiorHealthFlask::useOutOfCombat(PlatformerEntity* target)
 {
 	target->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
-		healthBehavior->setHealth(healthBehavior->getHealth() + int(float(healthBehavior->getMaxHealth()) * GreaterHealthPotion::HealPercentage));
+		healthBehavior->setHealth(healthBehavior->getHealth() + int(float(healthBehavior->getMaxHealth()) * SuperiorHealthFlask::HealPercentage));
 	});
 
 	this->outOfCombatSound->play();
 }
 
-bool GreaterHealthPotion::canUseOnTarget(PlatformerEntity* target)
+bool SuperiorHealthFlask::canUseOnTarget(PlatformerEntity* target)
 {
 	if (!target->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 	{
@@ -69,27 +69,27 @@ bool GreaterHealthPotion::canUseOnTarget(PlatformerEntity* target)
 	return canUse;
 }
 
-Item* GreaterHealthPotion::clone()
+Item* SuperiorHealthFlask::clone()
 {
-	return GreaterHealthPotion::create();
+	return SuperiorHealthFlask::create();
 }
 
-LocalizedString* GreaterHealthPotion::getString()
+LocalizedString* SuperiorHealthFlask::getString()
 {
-	return Strings::Items_Consumables_Health_GreaterHealthPotion::create();
+	return Strings::Items_Consumables_Health_SuperiorHealthFlask::create();
 }
 
-const std::string& GreaterHealthPotion::getIconResource()
+const std::string& SuperiorHealthFlask::getIconResource()
 {
-	return ItemResources::Consumables_Potions_HealthPotionGreater;
+	return ItemResources::Consumables_Potions_HealthFlaskSuperior;
 }
 
-const std::string& GreaterHealthPotion::getIdentifier()
+const std::string& SuperiorHealthFlask::getIdentifier()
 {
-	return GreaterHealthPotion::SaveKey;
+	return SuperiorHealthFlask::SaveKey;
 }
 
-PlatformerAttack* GreaterHealthPotion::createAssociatedAttack()
+PlatformerAttack* SuperiorHealthFlask::createAssociatedAttack()
 {
 	return ThrowHealthPotion::create(PlatformerAttack::Priority::Common);
 }

@@ -1,4 +1,4 @@
-#include "ThrowGreaterHealthPotion.h"
+#include "ThrowSuperiorManaFlask.h"
 
 #include "cocos/2d/CCActionInterval.h"
 
@@ -10,7 +10,7 @@
 #include "Events/CombatEvents.h"
 #include "Objects/Platformer/Combat/Projectiles/ThrownObject/ThrownObject.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityProjectileTargetBehavior.h"
-#include "Scenes/Platformer/Inventory/Items/Consumables/Health/HealthPotion/GreaterHealthPotion.h"
+#include "Scenes/Platformer/Inventory/Items/Consumables/Mana/SuperiorManaFlask/SuperiorManaFlask.h"
 #include "Scenes/Platformer/Level/Combat/Physics/CombatCollisionType.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -21,64 +21,62 @@
 
 using namespace cocos2d;
 
-ThrowGreaterHealthPotion* ThrowGreaterHealthPotion::create(Priority priority)
+ThrowSuperiorManaFlask* ThrowSuperiorManaFlask::create(Priority priority)
 {
-	ThrowGreaterHealthPotion* instance = new ThrowGreaterHealthPotion(priority);
+	ThrowSuperiorManaFlask* instance = new ThrowSuperiorManaFlask(priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-ThrowGreaterHealthPotion::ThrowGreaterHealthPotion(Priority priority)
-	: super(AttackType::Healing, ItemResources::Consumables_Potions_HealthPotionGreater, priority, AbilityType::Arcane, 10, 15, 0, 0.2f, 1.5f)
+ThrowSuperiorManaFlask::ThrowSuperiorManaFlask(Priority priority)
+	: super(AttackType::Healing, ItemResources::Consumables_Potions_ManaFlaskSuperior, priority, AbilityType::Arcane, 10, 15, 0, 0.2f, 1.5f)
 {
 	this->throwSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_ItemThrow1);
-	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
 
 	this->addChild(this->throwSound);
-	this->addChild(this->healSound);
 }
 
-ThrowGreaterHealthPotion::~ThrowGreaterHealthPotion()
+ThrowSuperiorManaFlask::~ThrowSuperiorManaFlask()
 {
 }
 
-PlatformerAttack* ThrowGreaterHealthPotion::cloneInternal()
+PlatformerAttack* ThrowSuperiorManaFlask::cloneInternal()
 {
-	return ThrowGreaterHealthPotion::create(this->priority);
+	return ThrowSuperiorManaFlask::create(this->priority);
 }
 
-LocalizedString* ThrowGreaterHealthPotion::getString()
+LocalizedString* ThrowSuperiorManaFlask::getString()
 {
-	return Strings::Items_Consumables_Health_HealthPotion::create();
+	return Strings::Items_Consumables_Mana_SuperiorManaFlask::create();
 }
 
-LocalizedString* ThrowGreaterHealthPotion::getDescription()
+LocalizedString* ThrowSuperiorManaFlask::getDescription()
 {
-	return Strings::Items_Consumables_Health_HealthPotionDescription::create()
-		->setStringReplacementVariables(ConstantString::create(std::to_string(int(GreaterHealthPotion::HealPercentage * 100.0f))));
+	return Strings::Items_Consumables_Mana_SuperiorManaFlaskDescription::create()
+		->setStringReplacementVariables(ConstantString::create(std::to_string(int(SuperiorManaFlask::RestorePercentage * 100.0f))));
 }
 
-std::string ThrowGreaterHealthPotion::getAttackAnimation()
+std::string ThrowSuperiorManaFlask::getAttackAnimation()
 {
 	return "ThrowItem";
 }
 
-void ThrowGreaterHealthPotion::onAttackTelegraphBegin()
+void ThrowSuperiorManaFlask::onAttackTelegraphBegin()
 {
 	super::onAttackTelegraphBegin();
 	
 	this->throwSound->play(false, this->attackDuration / 2.0f);
 }
 
-void ThrowGreaterHealthPotion::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
+void ThrowSuperiorManaFlask::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
 	super::performAttack(owner, targets);
-
+	
 	for (PlatformerEntity* next : targets)
 	{
-		ThrownObject* potion = ThrownObject::create(owner, next, false, this->getIconResource(), CSize(64.0f, 64.0f));
+		ThrownObject* potion = ThrownObject::create(owner, next, false, ItemResources::Consumables_Potions_ManaFlaskSuperior, CSize(64.0f, 64.0f));
 		
 		potion->whenCollidesWith({ (int)CombatCollisionType::EntityEnemy, (int)CombatCollisionType::EntityFriendly }, [=](CollisionData collisionData)
 		{
@@ -88,10 +86,9 @@ void ThrowGreaterHealthPotion::performAttack(PlatformerEntity* owner, std::vecto
 
 			if (entity != nullptr)
 			{
-				int healing = int(std::round(float(entity->getRuntimeStateOrDefaultInt(StateKeys::MaxHealth, 0))) * GreaterHealthPotion::HealPercentage);
-
-				this->healSound->play();
-				CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(owner, entity, healing, this->abilityType));
+				int restore = int(std::round(float(entity->getRuntimeStateOrDefaultInt(StateKeys::MaxMana, 0))) * SuperiorManaFlask::RestorePercentage);
+				
+				CombatEvents::TriggerManaRestore(CombatEvents::ManaRestoreOrDrainArgs(owner, entity, restore, this->abilityType));
 			}
 
 			return CollisionResult::DoNothing;
@@ -113,6 +110,6 @@ void ThrowGreaterHealthPotion::performAttack(PlatformerEntity* owner, std::vecto
 	}
 }
 
-void ThrowGreaterHealthPotion::onCleanup()
+void ThrowSuperiorManaFlask::onCleanup()
 {
 }

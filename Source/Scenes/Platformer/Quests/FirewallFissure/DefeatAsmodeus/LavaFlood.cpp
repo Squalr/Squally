@@ -26,7 +26,7 @@
 using namespace cocos2d;
 
 const std::string LavaFlood::MapKeyQuest = "lava-flood";
-const std::string LavaFlood::MapEventPowerRestored = "lava-flooded";
+const std::string LavaFlood::MapEventLavaFlooded = "lava-flooded";
 
 LavaFlood* LavaFlood::create(GameObject* owner, QuestLine* questLine)
 {
@@ -67,7 +67,7 @@ void LavaFlood::onLoad(QuestState questState)
 		this->applyLavaFlood();
 	}
 	
-	this->listenForMapEvent(LavaFlood::MapEventPowerRestored, [=](ValueMap)
+	this->listenForMapEvent(LavaFlood::MapEventLavaFlooded, [=](ValueMap)
 	{
 		Objectives::SetCurrentObjective(ObjectiveKeys::DMReturnToPrincessDawn);
 		this->complete();

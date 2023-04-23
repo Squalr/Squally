@@ -13,7 +13,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
 #include "Engine/Sound/WorldSound.h"
-#include "Entities/Platformer/Enemies/DataMines/Krampus.h"
+#include "Entities/Platformer/Enemies/FirewallFissure/Asmodeus.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
@@ -30,7 +30,7 @@
 using namespace cocos2d;
 
 const std::string DefeatAsmodeus::MapKeyQuest = "defeat-asmodeus";
-const std::string DefeatAsmodeus::MapEventEngageKrampus = "engage-asmodeus";
+const std::string DefeatAsmodeus::MapEventEngageAsmodeus = "engage-asmodeus";
 
 DefeatAsmodeus* DefeatAsmodeus::create(GameObject* owner, QuestLine* questLine)
 {
@@ -43,7 +43,7 @@ DefeatAsmodeus* DefeatAsmodeus::create(GameObject* owner, QuestLine* questLine)
 
 DefeatAsmodeus::DefeatAsmodeus(GameObject* owner, QuestLine* questLine) : super(owner, questLine, DefeatAsmodeus::MapKeyQuest, false)
 {
-	this->krampus = dynamic_cast<Krampus*>(owner);
+	this->asmodeus = dynamic_cast<Asmodeus*>(owner);
 }
 
 DefeatAsmodeus::~DefeatAsmodeus()
@@ -52,14 +52,14 @@ DefeatAsmodeus::~DefeatAsmodeus()
 
 void DefeatAsmodeus::onLoad(QuestState questState)
 {
-	if (this->krampus != nullptr)
+	if (this->asmodeus != nullptr)
 	{
-		if (!this->krampus->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+		if (!this->asmodeus->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 		{
 			this->complete();
 		}
 
-		this->krampus->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+		this->asmodeus->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 		{
 			if (!value.asBool())
 			{
@@ -76,9 +76,9 @@ void DefeatAsmodeus::onLoad(QuestState questState)
 
 void DefeatAsmodeus::onActivate(bool isActiveThroughSkippable)
 {
-	if (this->krampus != nullptr)
+	if (this->asmodeus != nullptr)
 	{
-		this->krampus->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+		this->asmodeus->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 		{
 			if (!value.asBool())
 			{
@@ -87,7 +87,7 @@ void DefeatAsmodeus::onActivate(bool isActiveThroughSkippable)
 		});
 	}
 
-	this->listenForMapEventOnce(DefeatAsmodeus::MapEventEngageKrampus, [=](ValueMap)
+	this->listenForMapEventOnce(DefeatAsmodeus::MapEventEngageAsmodeus, [=](ValueMap)
 	{
 		this->runCinematicSequencePt1();
 	});
@@ -107,17 +107,17 @@ void DefeatAsmodeus::runCinematicSequencePt1()
 {
 	PlatformerEvents::TriggerCinematicHijack();
 
-	this->krampus->getAnimations()->setFlippedX(true);
+	this->asmodeus->getAnimations()->setFlippedX(true);
 
-	this->krampus->runAction(Sequence::create(
+	this->asmodeus->runAction(Sequence::create(
 		CallFunc::create([=]()
 		{
 			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_DataMines_RestorePower_Krampus_A_Intruders::create(),
+				Strings::TODO::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->krampus, false),
+					DialogueEvents::BuildPreviewNode(&this->asmodeus, false),
 					DialogueEvents::BuildPreviewNode(&this->squally, true)
 				),
 				[=]()
@@ -134,5 +134,5 @@ void DefeatAsmodeus::runCinematicSequencePt1()
 
 void DefeatAsmodeus::runCinematicSequencePt2()
 {
-	PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(this->krampus, false));
+	PlatformerEvents::TriggerEngageEnemy(PlatformerEvents::EngageEnemyArgs(this->asmodeus, false));
 }

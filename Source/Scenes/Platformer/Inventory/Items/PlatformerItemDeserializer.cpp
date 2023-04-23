@@ -151,10 +151,20 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[HeartOfFire::SaveKey] = [=]() { return (Item*)HeartOfFire::create(); };
 	this->deserializers[HeartOfShadow::SaveKey] = [=]() { return (Item*)HeartOfShadow::create(); };
 
-	// Consumables
+	// Health Consumables
 	this->deserializers[HealthPotion::SaveKey] = [=]() { return (Item*)HealthPotion::create(); };
+	this->deserializers[GreaterHealthPotion::SaveKey] = [=]() { return (Item*)GreaterHealthPotion::create(); };
+	this->deserializers[SuperiorHealthFlask::SaveKey] = [=]() { return (Item*)SuperiorHealthFlask::create(); };
 	this->deserializers[IncrementHealthFlask::SaveKey] = [=]() { return (Item*)IncrementHealthFlask::create(); };
+
+	// Mana Consumables
 	this->deserializers[ManaPotion::SaveKey] = [=]() { return (Item*)ManaPotion::create(); };
+	this->deserializers[GreaterManaPotion::SaveKey] = [=]() { return (Item*)GreaterManaPotion::create(); };
+	this->deserializers[SuperiorManaFlask::SaveKey] = [=]() { return (Item*)SuperiorManaFlask::create(); };
+	this->deserializers[IncrementManaFlask::SaveKey] = [=]() { return (Item*)IncrementManaFlask::create(); };
+
+	// Special Consumables
+	this->deserializers[DualElixir::SaveKey] = [=]() { return (Item*)DualElixir::create(); };
 
 	// Axes
 	this->deserializers[BoneAxe::SaveKey] = [=]() { return (Item*)BoneAxe::create(); };
@@ -354,14 +364,24 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	// Maps
 	this->deserializers[TempleMap::SaveKey] = [=]() { return (Item*)TempleMap::create(); };
 
-	// Recipes
+	// Potion Recipes
 	this->deserializers[HealthPotionRecipe::SaveKey] = [=]() { return (Item*)HealthPotionRecipe::create(); };
-	this->deserializers[ManaPotionRecipe::SaveKey] = [=]() { return (Item*)ManaPotionRecipe::create(); };
+	this->deserializers[GreaterHealthPotionRecipe::SaveKey] = [=]() { return (Item*)GreaterHealthPotionRecipe::create(); };
+	this->deserializers[SuperiorHealthFlaskRecipe::SaveKey] = [=]() { return (Item*)SuperiorHealthFlaskRecipe::create(); };
 	this->deserializers[IncrementHealthFlaskRecipe::SaveKey] = [=]() { return (Item*)IncrementHealthFlaskRecipe::create(); };
+	this->deserializers[ManaPotionRecipe::SaveKey] = [=]() { return (Item*)ManaPotionRecipe::create(); };
+	this->deserializers[GreaterManaPotionRecipe::SaveKey] = [=]() { return (Item*)GreaterManaPotionRecipe::create(); };
+	this->deserializers[SuperiorManaFlaskRecipe::SaveKey] = [=]() { return (Item*)SuperiorManaFlaskRecipe::create(); };
+	this->deserializers[IncrementManaFlaskRecipe::SaveKey] = [=]() { return (Item*)IncrementManaFlaskRecipe::create(); };
+	this->deserializers[DualElixirRecipe::SaveKey] = [=]() { return (Item*)DualElixirRecipe::create(); };
+
+	// Transmute Recipes
 	this->deserializers[TransmuteCopperToIron::SaveKey] = [=]() { return (Item*)TransmuteCopperToIron::create(); };
 	this->deserializers[TransmuteCopperToQuartzRecipe::SaveKey] = [=]() { return (Item*)TransmuteCopperToQuartzRecipe::create(); };
 	this->deserializers[TransmuteQuartzToEmerald::SaveKey] = [=]() { return (Item*)TransmuteQuartzToEmerald::create(); };
 	this->deserializers[TransmuteWoodToCoalRecipe::SaveKey] = [=]() { return (Item*)TransmuteWoodToCoalRecipe::create(); };
+	
+	// Weapon Recipes
 	this->deserializers[BoneAxePlans::SaveKey] = [=]() { return (Item*)BoneAxePlans::create(); };
 	this->deserializers[CopperAxePlans::SaveKey] = [=]() { return (Item*)CopperAxePlans::create(); };
 	this->deserializers[CrystalAxePlans::SaveKey] = [=]() { return (Item*)CrystalAxePlans::create(); };

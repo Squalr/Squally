@@ -14,7 +14,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
-#include "Entities/Platformer/Npcs/DataMines/Olive.h"
+#include "Entities/Platformer/Npcs/FirewallFissure/QueenElise.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
@@ -23,7 +23,6 @@
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
-#include "Scenes/Platformer/Inventory/Items/Misc/Keys/DataMines/LetterForThePrincess.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -73,13 +72,13 @@ void TalkToQueenElise::onLoad(QuestState questState)
 		this->squally = squally;
 	}, Squally::MapKey);
 
-	ObjectEvents::WatchForObject<Olive>(this, [=](Olive* olive)
+	ObjectEvents::WatchForObject<QueenElise>(this, [=](QueenElise* queenElise)
 	{
-		this->olive = olive;
+		this->queenElise = queenElise;
 
 		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 		{
-			this->olive->watchForComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+			this->queenElise->watchForComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 			{
 				questBehavior->enableNewQuest();
 			});
@@ -103,11 +102,9 @@ void TalkToQueenElise::onComplete()
 {	
 	Objectives::SetCurrentObjective(ObjectiveKeys::DMDeliverLetter);
 
-	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ LetterForThePrincess::create() }));
-
-	if (this->olive != nullptr)
+	if (this->queenElise != nullptr)
 	{
-		this->olive->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+		this->queenElise->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 		{
 			questBehavior->disableAll();
 		});
@@ -124,18 +121,18 @@ void TalkToQueenElise::runCinematicSequencePt1()
 	PlatformerEvents::TriggerCinematicHijack();
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_Olive_A_OliveIntro::create(),
+		Strings::TODO::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
-			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->olive, true)
+			DialogueEvents::BuildPreviewNode(&this->queenElise, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 		),
 		[=]()
 		{
 			this->runCinematicSequencePt2();
 		},
-		Voices::GetNextVoiceMedium(),
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 		false
 	));
 }
@@ -148,7 +145,7 @@ void TalkToQueenElise::runCinematicSequencePt2()
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->olive, true)
+			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
 		),
 		[=]()
 		{
@@ -162,13 +159,13 @@ void TalkToQueenElise::runCinematicSequencePt2()
 void TalkToQueenElise::runCinematicSequencePt3()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_Olive_B_Power::create()
+		Strings::TODO::create()
 			->setStringReplacementVariables(Strings::Platformer_MapNames_DataMines_Drammol::create()),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->olive, true)
+			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
 		),
 		[=]()
 		{
@@ -182,12 +179,12 @@ void TalkToQueenElise::runCinematicSequencePt3()
 void TalkToQueenElise::runCinematicSequencePt4()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_Olive_C_SeenAnythingUnusual::create(),
+		Strings::TODO::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->olive, true)
+			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
 		),
 		[=]()
 		{
@@ -201,12 +198,12 @@ void TalkToQueenElise::runCinematicSequencePt4()
 void TalkToQueenElise::runCinematicSequencePt5()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_Olive_D_UnusualList::create(),
+		Strings::TODO::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->guano, false),
-			DialogueEvents::BuildPreviewNode(&this->olive, true)
+			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
 		),
 		[=]()
 		{
@@ -220,12 +217,12 @@ void TalkToQueenElise::runCinematicSequencePt5()
 void TalkToQueenElise::runCinematicSequencePt6()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_Olive_E_NothingExplainingOutage::create(),
+		Strings::TODO::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-			DialogueEvents::BuildPreviewNode(&this->olive, true)
+			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
 		),
 		[=]()
 		{
@@ -239,12 +236,12 @@ void TalkToQueenElise::runCinematicSequencePt6()
 void TalkToQueenElise::runCinematicSequencePt7()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_Olive_F_Request::create(),
+		Strings::TODO::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->olive, true)
+			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
 		),
 		[=]()
 		{
@@ -258,12 +255,12 @@ void TalkToQueenElise::runCinematicSequencePt7()
 void TalkToQueenElise::runCinematicSequencePt8()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_Olive_G_SureForAPrice::create(),
+		Strings::TODO::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->guano, false),
-			DialogueEvents::BuildPreviewNode(&this->olive, true)
+			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
 		),
 		[=]()
 		{
@@ -277,12 +274,12 @@ void TalkToQueenElise::runCinematicSequencePt8()
 void TalkToQueenElise::runCinematicSequencePt9()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_Olive_H_WeWillDoIt::create(),
+		Strings::TODO::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-			DialogueEvents::BuildPreviewNode(&this->olive, true)
+			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
 		),
 		[=]()
 		{
@@ -296,12 +293,12 @@ void TalkToQueenElise::runCinematicSequencePt9()
 void TalkToQueenElise::runCinematicSequencePt10()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_Olive_I_ThankYou::create(),
+		Strings::TODO::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-			DialogueEvents::BuildPreviewNode(&this->olive, true)
+			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
 		),
 		[=]()
 		{
@@ -315,12 +312,12 @@ void TalkToQueenElise::runCinematicSequencePt10()
 void TalkToQueenElise::runCinematicSequencePt11()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_DataMines_RestorePower_Olive_J_WasntJoking::create(),
+		Strings::TODO::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->guano, false),
-			DialogueEvents::BuildPreviewNode(&this->olive, true)
+			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
 		),
 		[=]()
 		{

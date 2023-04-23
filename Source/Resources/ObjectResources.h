@@ -783,6 +783,8 @@ namespace ObjectResources
 	extern const std::string Traps_Catapult_Animations;
 	extern const std::string Traps_Catapult_BALL;
 	extern const std::string Traps_Catapult_BALL2;
+	extern const std::string Traps_Catapult_BOMB;
+	extern const std::string Traps_Catapult_BOMB2;
 	extern const std::string Traps_Catapult_FURRY_BALL;
 	extern const std::string Traps_Catapult_HEAD_1;
 	extern const std::string Traps_Catapult_HEAD_2;

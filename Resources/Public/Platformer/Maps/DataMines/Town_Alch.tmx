@@ -202,7 +202,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="521.133" y="939.96" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="815.072" y="936.93" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>

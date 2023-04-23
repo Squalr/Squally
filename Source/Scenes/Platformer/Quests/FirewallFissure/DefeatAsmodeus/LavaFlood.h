@@ -31,5 +31,5 @@ private:
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 
-	static const std::string MapEventPowerRestored;
+	static const std::string MapEventLavaFlooded;
 };
