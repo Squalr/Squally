@@ -27,6 +27,12 @@ AlchemyPoolCV::AlchemyPoolCV(ValueMap& properties) : super(properties, AlchemyPo
 	this->addItemToPool(ItemChance::create(IncrementHealthFlaskRecipe::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(HealthPotionRecipe::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(ManaPotionRecipe::create(), ItemChance::Probability::Guaranteed));
+
+	// Bombs
+	this->addItemToPool(ItemChance::create(SmallBombRecipe::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(SteelBombRecipe::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(LargeBombRecipe::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(PepperBombRecipe::create(), ItemChance::Probability::Guaranteed));
 	
 	// Transmutes
 	this->addItemToPool(ItemChance::create(TransmuteWoodToCoalRecipe::create(), ItemChance::Probability::Guaranteed));
