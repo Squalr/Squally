@@ -71,13 +71,9 @@ ChestPoolPinata::ChestPoolPinata(ValueMap& properties) : super(
 	this->addItemToPool(ItemChance::create(PhoenixFeather::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(Honey::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(Feather::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(Eggplant::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(Egg::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(DemonSkull::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(BlackBlood::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(VoidFlower::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(SandRoot::create(), ItemChance::Probability::Common));
-	this->addItemToPool(ItemChance::create(PoisonMushroom::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(Mandrake::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(GoldWeed::create(), ItemChance::Probability::Common));
 	this->addItemToPool(ItemChance::create(FrostBerries::create(), ItemChance::Probability::Common));

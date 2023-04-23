@@ -110,7 +110,7 @@ void ThrowSpikedBomb::performAttack(PlatformerEntity* owner, std::vector<Platfor
 				PositionMode::Retain,
 				[&]()
 				{
-					explosionFx->playAnimation(FXResources::ExplosionAir_ExplosionAir_0000, 0.05f, true);
+					explosionFx->playAnimation(FXResources::ExplosionNormal_Explosion_0000, 0.05f, true);
 				},
 				[&]()
 				{

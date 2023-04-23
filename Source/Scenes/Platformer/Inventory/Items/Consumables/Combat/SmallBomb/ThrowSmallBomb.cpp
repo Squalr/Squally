@@ -110,7 +110,7 @@ void ThrowSmallBomb::performAttack(PlatformerEntity* owner, std::vector<Platform
 				PositionMode::Retain,
 				[&]()
 				{
-					explosionFx->playAnimation(FXResources::ExplosionAir_ExplosionAir_0000, 0.05f, true);
+					explosionFx->playAnimation(FXResources::ExplosionFlash_Rockets_01, 0.05f, true);
 				},
 				[&]()
 				{

@@ -110,7 +110,7 @@ void ThrowPepperBomb::performAttack(PlatformerEntity* owner, std::vector<Platfor
 				PositionMode::Retain,
 				[&]()
 				{
-					explosionFx->playAnimation(FXResources::ExplosionAir_ExplosionAir_0000, 0.05f, true);
+					explosionFx->playAnimation(FXResources::ExplosionMedium_ExplosionMedium_0000, 0.05f, true);
 				},
 				[&]()
 				{

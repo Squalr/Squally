@@ -57,7 +57,7 @@ LocalizedString* FragGrenade::getString()
 
 const std::string& FragGrenade::getIconResource()
 {
-	return ItemResources::Consumables_Combat_T6_Frag;
+	return ItemResources::Consumables_Combat_T6_FragGrenade;
 }
 
 const std::string& FragGrenade::getIdentifier()

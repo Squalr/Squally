@@ -34,7 +34,7 @@ ThrowFragGrenade* ThrowFragGrenade::create(Priority priority)
 }
 
 ThrowFragGrenade::ThrowFragGrenade(Priority priority)
-	: super(AttackType::Damage, ItemResources::Consumables_Combat_T6_Frag, priority, AbilityType::Physical, FragGrenade::DamageMin, FragGrenade::DamageMax, 0, 0.2f, 1.5f)
+	: super(AttackType::Damage, ItemResources::Consumables_Combat_T6_FragGrenade, priority, AbilityType::Physical, FragGrenade::DamageMin, FragGrenade::DamageMax, 0, 0.2f, 1.5f)
 {
 	this->throwSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_ItemThrow1);
 	this->explosionSound = WorldSound::create(SoundResources::Platformer_FX_Explosions_Explosion1);

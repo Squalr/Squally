@@ -129,24 +129,29 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[LightWood::SaveKey] = [=]() { return (Item*)LightWood::create(); };
 	this->deserializers[Wood::SaveKey] = [=]() { return (Item*)Wood::create(); };
 
+	this->deserializers[Acorn::SaveKey] = [=]() { return (Item*)Acorn::create(); };
+	this->deserializers[BlackBlood::SaveKey] = [=]() { return (Item*)BlackBlood::create(); };
+	this->deserializers[BlackMushroom::SaveKey] = [=]() { return (Item*)BlackMushroom::create(); };
 	this->deserializers[Clover::SaveKey] = [=]() { return (Item*)Clover::create(); };
 	this->deserializers[DarkSeed::SaveKey] = [=]() { return (Item*)DarkSeed::create(); };
 	this->deserializers[DemonRoot::SaveKey] = [=]() { return (Item*)DemonRoot::create(); };
+	this->deserializers[Feather::SaveKey] = [=]() { return (Item*)Feather::create(); };
 	this->deserializers[FrostBerries::SaveKey] = [=]() { return (Item*)FrostBerries::create(); };
 	this->deserializers[GoldWeed::SaveKey] = [=]() { return (Item*)GoldWeed::create(); };
+	this->deserializers[Honey::SaveKey] = [=]() { return (Item*)Honey::create(); };
 	this->deserializers[Mandrake::SaveKey] = [=]() { return (Item*)Mandrake::create(); };
-	this->deserializers[PoisonMushroom::SaveKey] = [=]() { return (Item*)PoisonMushroom::create(); };
+	this->deserializers[RatTail::SaveKey] = [=]() { return (Item*)RatTail::create(); };
 	this->deserializers[SandRoot::SaveKey] = [=]() { return (Item*)SandRoot::create(); };
+	this->deserializers[Snowball::SaveKey] = [=]() { return (Item*)Snowball::create(); };
 	this->deserializers[VoidFlower::SaveKey] = [=]() { return (Item*)VoidFlower::create(); };
 
-	this->deserializers[BlackBlood::SaveKey] = [=]() { return (Item*)BlackBlood::create(); };
-	this->deserializers[DemonSkull::SaveKey] = [=]() { return (Item*)DemonSkull::create(); };
-	this->deserializers[Egg::SaveKey] = [=]() { return (Item*)Egg::create(); };
-	this->deserializers[Eggplant::SaveKey] = [=]() { return (Item*)Eggplant::create(); };
-	this->deserializers[Feather::SaveKey] = [=]() { return (Item*)Feather::create(); };
-	this->deserializers[Honey::SaveKey] = [=]() { return (Item*)Honey::create(); };
+	this->deserializers[Bamboo::SaveKey] = [=]() { return (Item*)Bamboo::create(); };
+	this->deserializers[Meteorite::SaveKey] = [=]() { return (Item*)Meteorite::create(); };
+	this->deserializers[Pepper::SaveKey] = [=]() { return (Item*)Pepper::create(); };
 	this->deserializers[PhoenixFeather::SaveKey] = [=]() { return (Item*)PhoenixFeather::create(); };
-	this->deserializers[Snowball::SaveKey] = [=]() { return (Item*)Snowball::create(); };
+	this->deserializers[Stinger::SaveKey] = [=]() { return (Item*)Stinger::create(); };
+	this->deserializers[StrongChitin::SaveKey] = [=]() { return (Item*)StrongChitin::create(); };
+	this->deserializers[WeakChitin::SaveKey] = [=]() { return (Item*)WeakChitin::create(); };
 
 	this->deserializers[HeartOfFire::SaveKey] = [=]() { return (Item*)HeartOfFire::create(); };
 	this->deserializers[HeartOfShadow::SaveKey] = [=]() { return (Item*)HeartOfShadow::create(); };
@@ -170,7 +175,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[FragGrenade::SaveKey] = [=]() { return (Item*)FragGrenade::create(); };
 	this->deserializers[LargeBomb::SaveKey] = [=]() { return (Item*)LargeBomb::create(); };
 	this->deserializers[PepperBomb::SaveKey] = [=]() { return (Item*)PepperBomb::create(); };
-	this->deserializers[RubyBomb::SaveKey] = [=]() { return (Item*)RubyBomb::create(); };
+	this->deserializers[MeteoriteBomb::SaveKey] = [=]() { return (Item*)MeteoriteBomb::create(); };
 	this->deserializers[SmallBomb::SaveKey] = [=]() { return (Item*)SmallBomb::create(); };
 	this->deserializers[SpikedBomb::SaveKey] = [=]() { return (Item*)SpikedBomb::create(); };
 	this->deserializers[SteelBomb::SaveKey] = [=]() { return (Item*)SteelBomb::create(); };
