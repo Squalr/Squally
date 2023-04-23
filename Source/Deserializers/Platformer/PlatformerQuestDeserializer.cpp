@@ -61,6 +61,7 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	this->lineDeserializers[RezLazarusLine::MapKeyQuestLine] = [=]() { return (QuestLine*)RezLazarusLine::create(); };
 
 	// DAEMONS HALLOW QUESTS
+	this->lineDeserializers[DefeatAsmodeusLine::MapKeyQuestLine] = [=]() { return (QuestLine*)DefeatAsmodeusLine::create(); };
 	this->lineDeserializers[ReleasePressureLine::MapKeyQuestLine] = [=]() { return (QuestLine*)ReleasePressureLine::create(); };
 	
 	// BALLMER PEAKS QUESTS

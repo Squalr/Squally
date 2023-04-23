@@ -118,7 +118,8 @@
         "stop_token": "cpp",
         "charconv": "cpp",
         "*.tcc": "cpp",
-        "csignal": "cpp"
+        "csignal": "cpp",
+        "format": "cpp"
     },
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "C_Cpp.configurationWarnings": "Disabled",
