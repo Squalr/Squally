@@ -33114,6 +33114,21 @@ namespace Strings
 		virtual ~Platformer_Objectives_EndianForest_EF_VisitQueen() = default;
 	};
 
+	class Platformer_Objectives_FirewallFissure_FF_CraftBomb : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_FirewallFissure_FF_CraftBomb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_FirewallFissure_FF_CraftBomb();
+		virtual ~Platformer_Objectives_FirewallFissure_FF_CraftBomb() = default;
+	};
+
 	class Platformer_Objectives_FirewallFissure_FF_DeliverBomb : public LocalizedString
 	{
 	public:
@@ -36232,6 +36247,21 @@ namespace Strings
 	private:
 		Platformer_Quests_FirewallFissure_DefeatAsmodeus_D_GoToAlchLab();
 		virtual ~Platformer_Quests_FirewallFissure_DefeatAsmodeus_D_GoToAlchLab() = default;
+	};
+
+	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_E_Acknowledged : public LocalizedString
+	{
+	public:
+		static Platformer_Quests_FirewallFissure_DefeatAsmodeus_E_Acknowledged* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_DefeatAsmodeus_E_Acknowledged();
+		virtual ~Platformer_Quests_FirewallFissure_DefeatAsmodeus_E_Acknowledged() = default;
 	};
 
 	class Platformer_Quests_FirewallFissure_ReleasePressure_A_DoYouHearThat : public LocalizedString

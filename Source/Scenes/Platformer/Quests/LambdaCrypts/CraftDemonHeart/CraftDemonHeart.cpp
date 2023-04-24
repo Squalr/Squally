@@ -35,6 +35,7 @@
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Components/Objects/Illusions/DispelIllusionBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
@@ -115,21 +116,29 @@ void CraftDemonHeart::onLoad(QuestState questState)
 
 void CraftDemonHeart::onActivate(bool isActiveThroughSkippable)
 {
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventGiveItems, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::GiveItemsArgs* args = static_cast<PlatformerEvents::GiveItemsArgs*>(eventCustom->getData());
+
+		if (args != nullptr)
+		{
+			for (Item* item : args->items)
+			{
+				if (dynamic_cast<DemonHeart*>(item) != nullptr)
+				{
+					this->complete();
+				}
+			}
+		}
+	}));
 }
 
 void CraftDemonHeart::onComplete()
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::LCOpenDemonPortal);
 }
 
 void CraftDemonHeart::onSkipped()
 {
 	this->removeAllListeners();
-}
-
-void CraftDemonHeart::runCinematicSequencePt1()
-{
-}
-
-void CraftDemonHeart::runCinematicSequenceStrikeZone()
-{
 }

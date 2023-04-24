@@ -32,12 +32,6 @@ private:
 	void runCinematicSequencePt3();
 	void runCinematicSequencePt4();
 	void runCinematicSequencePt5();
-	void runCinematicSequencePt6();
-	void runCinematicSequencePt7();
-	void runCinematicSequencePt8();
-	void runCinematicSequencePt9();
-	void runCinematicSequencePt10();
-	void runCinematicSequencePt11();
 
 	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;

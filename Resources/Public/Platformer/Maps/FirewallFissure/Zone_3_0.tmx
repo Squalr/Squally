@@ -582,7 +582,7 @@
   <object id="850" name="portal" type="object" x="5747.46" y="673.571" width="256" height="320">
    <properties>
     <property name="map" value="FirewallFissure/Town_Main"/>
-    <property name="transition" value="main-gate"/>
+    <property name="transition" value="back-gate"/>
    </properties>
   </object>
   <object id="1021" name="cart-lift" type="object" x="4739.88" y="1156.93" width="72" height="936.626">
@@ -615,7 +615,7 @@
   </object>
   <object id="851" name="spawn" type="object" x="5808.76" y="861.091" width="128" height="128">
    <properties>
-    <property name="transition" value="main-gate"/>
+    <property name="transition" value="back-gate"/>
    </properties>
   </object>
   <object id="972" name="squally" type="entity" x="5312.7" y="862.453" width="128" height="128">

@@ -10,7 +10,7 @@
 
 using namespace cocos2d;
 
-const std::string HeliumBombRecipe::SaveKey = "big-bomb-recipe";
+const std::string HeliumBombRecipe::SaveKey = "helium-bomb-recipe";
 
 HeliumBombRecipe* HeliumBombRecipe::create()
 {

@@ -89,6 +89,7 @@ DeveloperScene::DeveloperScene()
 		- Shadow for Squally
 		- Add CPU noises when turned on in DM
 		- Add Train noises in DM/CV
+		- Sub-categories for alchemy lab
 		- Cracks in simulation for story
 		- Chapter transitions can be more special
 		- Icons on title screen buttons (at least options, to reduce pains of wrong language selection)

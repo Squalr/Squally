@@ -23,6 +23,7 @@
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -75,14 +76,6 @@ void TalkToQueenElise::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<QueenElise>(this, [=](QueenElise* queenElise)
 	{
 		this->queenElise = queenElise;
-
-		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
-		{
-			this->queenElise->watchForComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
-			{
-				questBehavior->enableNewQuest();
-			});
-		}
 	});
 
 	if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
@@ -100,15 +93,8 @@ void TalkToQueenElise::onActivate(bool isActiveThroughSkippable)
 
 void TalkToQueenElise::onComplete()
 {	
-	Objectives::SetCurrentObjective(ObjectiveKeys::DMDeliverLetter);
-
-	if (this->queenElise != nullptr)
-	{
-		this->queenElise->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
-		{
-			questBehavior->disableAll();
-		});
-	}
+	Objectives::SetCurrentObjective(ObjectiveKeys::FFCraftBomb);
+	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ UnstableConcoction::create(), UnstableElement::create() }));
 }
 
 void TalkToQueenElise::onSkipped()
@@ -121,7 +107,7 @@ void TalkToQueenElise::runCinematicSequencePt1()
 	PlatformerEvents::TriggerCinematicHijack();
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
+		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_A_HowToLeaveVolcano::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -140,18 +126,19 @@ void TalkToQueenElise::runCinematicSequencePt1()
 void TalkToQueenElise::runCinematicSequencePt2()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Ellipses::create(),
+		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_B_AsmodeusBlocking::create()
+			->setStringReplacementVariables(Strings::Platformer_Entities_Names_Enemies_FirewallFissure_Asmodeus::create()),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
+			DialogueEvents::BuildPreviewNode(&this->queenElise, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 		),
 		[=]()
 		{
 			this->runCinematicSequencePt3();
 		},
-		"",
+		Voices::GetNextVoiceLong(Voices::VoiceType::Human),
 		false
 	));
 }
@@ -159,19 +146,18 @@ void TalkToQueenElise::runCinematicSequencePt2()
 void TalkToQueenElise::runCinematicSequencePt3()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create()
-			->setStringReplacementVariables(Strings::Platformer_MapNames_DataMines_Drammol::create()),
+		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_C_CraftABomb::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Right,
-			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->queenElise, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 		),
 		[=]()
 		{
 			this->runCinematicSequencePt4();
 		},
-		Voices::GetNextVoiceMedium(),
+		Voices::GetNextVoiceLong(Voices::VoiceType::Human),
 		false
 	));
 }
@@ -179,18 +165,18 @@ void TalkToQueenElise::runCinematicSequencePt3()
 void TalkToQueenElise::runCinematicSequencePt4()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
+		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_D_GoToAlchLab::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Right,
-			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->queenElise, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 		),
 		[=]()
 		{
 			this->runCinematicSequencePt5();
 		},
-		Voices::GetNextVoiceMedium(),
+		Voices::GetNextVoiceLong(Voices::VoiceType::Human),
 		false
 	));
 }
@@ -198,132 +184,18 @@ void TalkToQueenElise::runCinematicSequencePt4()
 void TalkToQueenElise::runCinematicSequencePt5()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
-		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->guano, false),
-			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
-		),
-		[=]()
-		{
-			this->runCinematicSequencePt6();
-		},
-		Voices::GetNextVoiceMedium(),
-		false
-	));
-}
-
-void TalkToQueenElise::runCinematicSequencePt6()
-{
-	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
-		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
-		),
-		[=]()
-		{
-			this->runCinematicSequencePt7();
-		},
-		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
-		false
-	));
-}
-
-void TalkToQueenElise::runCinematicSequencePt7()
-{
-	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
+		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_E_Acknowledged::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
-			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
-		),
-		[=]()
-		{
-			this->runCinematicSequencePt8();
-		},
-		Voices::GetNextVoiceMedium(),
-		false
-	));
-}
-
-void TalkToQueenElise::runCinematicSequencePt8()
-{
-	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
-		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->guano, false),
-			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
-		),
-		[=]()
-		{
-			this->runCinematicSequencePt9();
-		},
-		Voices::GetNextVoiceMedium(),
-		false
-	));
-}
-
-void TalkToQueenElise::runCinematicSequencePt9()
-{
-	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
-		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
-		),
-		[=]()
-		{
-			this->runCinematicSequencePt10();
-		},
-		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
-		false
-	));
-}
-
-void TalkToQueenElise::runCinematicSequencePt10()
-{
-	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
-		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Right,
-			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
-		),
-		[=]()
-		{
-			this->runCinematicSequencePt11();
-		},
-		Voices::GetNextVoiceMedium(),
-		false
-	));
-}
-
-void TalkToQueenElise::runCinematicSequencePt11()
-{
-	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
-		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->guano, false),
-			DialogueEvents::BuildPreviewNode(&this->queenElise, true)
+			DialogueEvents::BuildPreviewNode(&this->queenElise, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
 		),
 		[=]()
 		{
 			this->complete();
 		},
-		Voices::GetNextVoiceMedium(),
+		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 		true
 	));
 }

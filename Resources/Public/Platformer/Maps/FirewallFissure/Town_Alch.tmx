@@ -182,6 +182,8 @@
   <object id="801" name="shop-pool-alch-t6" type="object" x="660.409" y="310.893" width="64" height="64"/>
   <object id="886" name="alchemy-lab" type="object" x="2049.68" y="670.939" width="381" height="393">
    <properties>
+    <property name="quest" value="craft-helium-bomb"/>
+    <property name="quest-line" value="defeat-asmodeus"/>
     <property name="recipe-pool" value="alchemy-pool-ff"/>
    </properties>
   </object>

@@ -28,9 +28,6 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequencePt1();
-	void runCinematicSequenceStrikeZone();
-
 	Drak* drak = nullptr;
 	Gecky* gecky = nullptr;
 	Guano* guano = nullptr;

@@ -368,7 +368,10 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	// Keys FF
 	this->deserializers[DemonKey::SaveKey] = [=]() { return (Item*)DemonKey::create(); };
 	this->deserializers[DemonHeart::SaveKey] = [=]() { return (Item*)DemonHeart::create(); };
+	this->deserializers[HeliumBomb::SaveKey] = [=]() { return (Item*)HeliumBomb::create(); };
 	this->deserializers[HellKey::SaveKey] = [=]() { return (Item*)HellKey::create(); };
+	this->deserializers[UnstableConcoction::SaveKey] = [=]() { return (Item*)UnstableConcoction::create(); };
+	this->deserializers[UnstableElement::SaveKey] = [=]() { return (Item*)UnstableElement::create(); };
 
 	// Keys VS
 	this->deserializers[MayanGemBlueItem::SaveKey] = [=]() { return (Item*)MayanGemBlueItem::create(); };
