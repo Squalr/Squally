@@ -3,6 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 #include "Scenes/Platformer/Quests/FirewallFissure/DefeatAsmodeus/CraftHeliumBomb.h"
 #include "Scenes/Platformer/Quests/FirewallFissure/DefeatAsmodeus/DefeatAsmodeus.h"
+#include "Scenes/Platformer/Quests/FirewallFissure/DefeatAsmodeus/DeliverBomb.h"
 #include "Scenes/Platformer/Quests/FirewallFissure/DefeatAsmodeus/LavaFlood.h"
 #include "Scenes/Platformer/Quests/FirewallFissure/DefeatAsmodeus/TalkToQueenElise.h"
 
@@ -22,7 +23,8 @@ DefeatAsmodeusLine* DefeatAsmodeusLine::create()
 DefeatAsmodeusLine::DefeatAsmodeusLine() : super(DefeatAsmodeusLine::MapKeyQuestLine, {
 	QuestData(TalkToQueenElise::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToQueenElise::create(owner, questLine); }),
 	QuestData(CraftHeliumBomb::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return CraftHeliumBomb::create(owner, questLine); }),
-	QuestData(LavaFlood::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return LavaFlood::create(owner, questLine); }),
+	QuestData(DeliverBomb::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return DeliverBomb::create(owner, questLine); }),
+	QuestData(LavaFlood::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return LavaFlood::create(owner, questLine); }),
 	QuestData(DefeatAsmodeus::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return DefeatAsmodeus::create(owner, questLine); }),
 })
 {

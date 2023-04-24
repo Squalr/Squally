@@ -92,6 +92,9 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			entityInventoryBehavior->getInventory()->forceInsert(HeartBand::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(DarkHeartBand::create(), false);
 
+			// Quest testing
+			entityInventoryBehavior->getInventory()->forceInsert(HeliumBomb::create(), false);
+
 			for (int index = 0; index < 7; index++)
 			{
 				entityInventoryBehavior->getInventory()->forceInsert(HealthPotion::create(), false);

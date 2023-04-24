@@ -69,7 +69,7 @@ void LavaFlood::onLoad(QuestState questState)
 	
 	this->listenForMapEvent(LavaFlood::MapEventLavaFlooded, [=](ValueMap)
 	{
-		Objectives::SetCurrentObjective(ObjectiveKeys::DMReturnToPrincessDawn);
+		Objectives::SetCurrentObjective(ObjectiveKeys::FFFindAsmodeus);
 		this->complete();
 	});
 }
