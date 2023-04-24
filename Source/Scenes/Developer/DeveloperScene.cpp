@@ -70,58 +70,67 @@ DeveloperScene::DeveloperScene()
 	}
 
 	/*
-	- * Can get stuck on roof of maps (see UR 3_1)
-	- Shadow for Squally
-	- Changing language does not update readonly scripts after they are loaded once
-	- Add CPU noises when turned on in DM
-	- Add Train noises in DM/CV
-	- Sanity check card localization (due to art changes)
-	- Infinity symbol in hexus does not localize to arabic (and maybe others)
-	- Text navigation in editable assembly text is broken for arabic
-	- Text navigation is pretty bad in long scripts.
-	- Pacing behavior is broken for portal maps
-	- Techncially Squally respawns on object layer upon death, although usually this is not noticeable
-	- Chapter transitions can be more special
-	- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles) (edit: repro inconsistent)
-	- Cracks in simulation for story
-	- Reduce walking in early chapters?
-	- Cut UR temple map in half?
+	- Mechanics:
+		- * Can get stuck on roof of maps (see UR 3_1)
+		- Changing language does not update readonly scripts after they are loaded once
+		- Infinity symbol in hexus does not localize to arabic (and maybe others)
+		- Text navigation in editable assembly text is broken for arabic
+		- Text navigation is pretty bad in long scripts.
+		- Pacing behavior is broken for portal maps
+		- Techncially Squally respawns on object layer upon death, although usually this is not noticeable
+		- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles) (edit: repro inconsistent)
+		- Camera harsh leaving camera targets (which?)
+		- Infinite duration for combat item notifications
+		- "Quick-potion" capabilities
+		- Necron hitbox wrong in Mages guild (inconsistent?)
+		- No interrupt if damage attack modified to heal
+
+	- Game Feel / Design / Lore:
+		- Shadow for Squally
+		- Add CPU noises when turned on in DM
+		- Add Train noises in DM/CV
+		- Cracks in simulation for story
+		- Chapter transitions can be more special
+		- Icons on title screen buttons (at least options, to reduce pains of wrong language selection)
+		- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
+		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
+		- Seagulls should blink
+		- Helpers
+			- Abilities unlocked at certain levels
+			- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
+	
+	- Level Design:
+		- Reduce walking in early chapters?
+		- Cut UR temple map in half?
+		- Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
+			- Destroy all warp maps as a result (?) can still keep the zone portals for the return location
+		- Sky masters
+			- Find Finch to get to BP
+			- Find Irmik to get to BP peaks
+		- Kill 2nd sky tower map?
+
 	- Hexus:
 		- * Reduce Hexus fights to 6 per chapter (ignoring VS) (6 * 7 = 42 fights)
+		- Sanity check card localization (due to art changes)
 		- Can pass after auto-loss
 		- Rematch dialog does not load unless map is reloaded
 		- Win a hexus puzzle, next one will show massive row score deltas
 		- Leave button stuck visible after losing a puzzle
-		- Enemy should pre-calc the best play when player has passed (hard)
-	- Camera harsh leaving camera targets (which?)
-	- Icons on title screen buttons (at least options, to reduce pains of wrong language selection)
-	- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
-	- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
-	- Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
-		- Destroy all warp maps as a result (?) can still keep the zone portals for the return location
-	- Maybe hard code some rewards. It'd be nice to get SHL from the puzzle where you learn it.
-	- Seagulls should blink
-	- Infinite duration for combat item notifications
-	- Sky masters
-		- Find Finch to get to BP
-		- Find Irmik to get to BP peaks
-	- Kill 2nd sky tower map?
-	- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
-	- No interrupt if damage attack modified to heal
-	- Eliminate 'collisionOffset' parameter entirely
-	- Helpers
-		- Abilities unlocked at certain levels
-		- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
-	- Necron hitbox wrong in Mages guild (inconsistent?)
-	- "Quick-potion" capabilities
-	- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie DH)
+			- Enemy should pre-calc the best play when player has passed (hard)
+		- Maybe hard code some rewards. It'd be nice to get SHL from the puzzle where you learn it.
+	
+	- Performance / Stability / Code quality:
+		- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie DH)
+		- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
+		- Eliminate 'collisionOffset' parameter entirely
 
-	- Just get a few top down replacement maps in. Should be able to do this fairly seamlessly.
-		- Invisible helpers. Some way to pull helpers into combat
-	- 3Q Perspective
-	- Reinstate Cipher with asm or something
-	- Reinstate ball roll game? Would need isometric squally, and some form of strategy element that isn't prone to trial-and-error.
-		- No good way to retrofit this into the game. Reviving the arcade concept could be fun.
+	- Mini-games
+		- Just get a few top down replacement maps in. Should be able to do this fairly seamlessly.
+			- Invisible helpers. Some way to pull helpers into combat
+		- 3Q Perspective
+		- Reinstate Cipher with asm or something
+		- Reinstate ball roll game? Would need isometric squally, and some form of strategy element that isn't prone to trial-and-error.
+			- No good way to retrofit this into the game. Reviving the arcade concept could be fun.
 	*/
 
 	// CHAPTER 1 - Mov/add/sub/inc/dec/div/mul + AND Puzzle

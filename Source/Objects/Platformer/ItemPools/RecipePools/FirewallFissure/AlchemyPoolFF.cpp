@@ -45,6 +45,9 @@ AlchemyPoolFF::AlchemyPoolFF(ValueMap& properties) : super(properties, AlchemyPo
 	this->addItemToPool(ItemChance::create(ManaPotionRecipe::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(IncrementManaFlaskRecipe::create(), ItemChance::Probability::Guaranteed));
 
+	// Special
+	this->addItemToPool(ItemChance::create(HeliumBombRecipe::create(), ItemChance::Probability::Guaranteed));
+
 	// Bombs
 	this->addItemToPool(ItemChance::create(SmallBombRecipe::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(SteelBombRecipe::create(), ItemChance::Probability::Guaranteed));

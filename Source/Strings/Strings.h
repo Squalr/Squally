@@ -8049,21 +8049,6 @@ namespace Strings
 		virtual ~Items_Misc_Keys_AncientKey() = default;
 	};
 
-	class Items_Misc_Keys_BigBomb : public LocalizedString
-	{
-	public:
-		static Items_Misc_Keys_BigBomb* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Misc_Keys_BigBomb();
-		virtual ~Items_Misc_Keys_BigBomb() = default;
-	};
-
 	class Items_Misc_Keys_BlueGem : public LocalizedString
 	{
 	public:
@@ -8167,6 +8152,21 @@ namespace Strings
 	private:
 		Items_Misc_Keys_FrozenKey();
 		virtual ~Items_Misc_Keys_FrozenKey() = default;
+	};
+
+	class Items_Misc_Keys_HeliumBomb : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_HeliumBomb* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_HeliumBomb();
+		virtual ~Items_Misc_Keys_HeliumBomb() = default;
 	};
 
 	class Items_Misc_Keys_HellKey : public LocalizedString
@@ -8347,6 +8347,36 @@ namespace Strings
 	private:
 		Items_Misc_Keys_TrainTicket();
 		virtual ~Items_Misc_Keys_TrainTicket() = default;
+	};
+
+	class Items_Misc_Keys_UnstableConcoction : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_UnstableConcoction* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_UnstableConcoction();
+		virtual ~Items_Misc_Keys_UnstableConcoction() = default;
+	};
+
+	class Items_Misc_Keys_UnstableElement : public LocalizedString
+	{
+	public:
+		static Items_Misc_Keys_UnstableElement* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Misc_Keys_UnstableElement();
+		virtual ~Items_Misc_Keys_UnstableElement() = default;
 	};
 
 	class Items_Misc_Maps_DungeonMap : public LocalizedString
