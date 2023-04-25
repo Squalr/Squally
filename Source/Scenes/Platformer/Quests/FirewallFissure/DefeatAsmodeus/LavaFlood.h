@@ -26,7 +26,7 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void applyLavaFlood();
+	void applyLavaFlood(bool isFlooded, bool animate);
 
 	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;

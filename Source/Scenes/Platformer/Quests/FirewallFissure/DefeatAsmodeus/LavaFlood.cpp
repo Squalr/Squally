@@ -70,7 +70,7 @@ void LavaFlood::onLoad(QuestState questState)
 
 	if (questState == QuestState::Complete)
 	{
-		this->applyLavaFlood();
+		this->applyLavaFlood(true, false);
 	}
 	
 	this->listenForMapEvent(LavaFlood::MapEventLavaFlooded, [=](ValueMap)
@@ -82,9 +82,25 @@ void LavaFlood::onLoad(QuestState questState)
 
 void LavaFlood::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
-	if (!isActiveThroughSkippable)
+	bool isFlooded = !isActiveThroughSkippable;
+	bool animate = isInitialActivation;
+
+	this->applyLavaFlood(isFlooded, animate);
+}
+
+void LavaFlood::onComplete()
+{
+}
+
+void LavaFlood::onSkipped()
+{
+}
+
+void LavaFlood::applyLavaFlood(bool isFlooded, bool animate)
+{
+	if (isFlooded)
 	{
-		float duration = isInitialActivation ? 0.0f : 2.0f;
+		float duration = animate ? 2.0f : 0.0f;
 		Vec2 delta = Vec2(0.0f, 144.0f);
 
 		ObjectEvents::QueryObjects<Lava>([=](Lava* lava)
@@ -119,23 +135,4 @@ void LavaFlood::onActivate(bool isActiveThroughSkippable, bool isInitialActivati
 			portal->disable();
 		}, "revealed-pathway");
 	}
-}
-
-void LavaFlood::onComplete()
-{
-	this->applyLavaFlood();
-}
-
-void LavaFlood::onSkipped()
-{
-}
-
-void LavaFlood::applyLavaFlood()
-{
-	/*
-	ObjectEvents::QueryObjects<Computer>([=](Computer* computer)
-	{
-		computer->turnOn();
-	}, Computer::MapKey);
-	*/
 }

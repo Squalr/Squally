@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="182" nextobjectid="1049">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="184" nextobjectid="1057">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -17,18 +17,31 @@
    <property name="depth" type="float" value="-2688"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1028" name="magma" type="texture" x="993.05" y="-1064.4" width="3453.9" height="7024.79"/>
+  <object id="1052" name="magma" type="texture" x="117.05" y="-280.395" width="4149.9" height="4240.79"/>
+ </objectgroup>
+ <objectgroup id="183" name="terrain -40">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1053" name="magma" type="texture" x="-4726.95" y="-1642.39" width="14517.9" height="7024.79"/>
+  <object id="1056" name="obsidean" type="terrain" x="2422.69" y="3172">
+   <properties>
+    <property name="tag" value="pressure-lowered"/>
+   </properties>
+   <polygon points="-468.178,-1219.23 -440.982,-1020.63 -347.495,-884.317 277.679,-763.938 879.253,-882.981 942.403,-1029.06 984.162,-1220.5"/>
+  </object>
  </objectgroup>
  <objectgroup id="176" name="terrain -38">
   <properties>
    <property name="depth" type="float" value="-2432"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1029" name="obsidean" type="terrain" x="2323.35" y="3209.02">
+  <object id="1029" name="obsidean" type="terrain" x="2087.23" y="3209.02">
    <properties>
     <property name="tag" value="pressure-lowered"/>
    </properties>
-   <polygon points="-128.272,-1219.23 -120.821,-1020.63 -95.2072,-884.317 76.0789,-763.938 240.9,-882.981 258.202,-1029.06 269.642,-1220.5"/>
+   <polygon points="-625.49,-1219.23 -589.156,-1020.63 -464.257,-884.317 370.982,-763.938 1174.69,-882.981 1259.06,-1029.06 1314.85,-1220.5"/>
   </object>
  </objectgroup>
  <objectgroup id="177" name="entities -38">
@@ -48,13 +61,24 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup id="182" name="decor -37">
+  <properties>
+   <property name="depth" type="float" value="-2368"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1049" name="Lava/DemonArch" type="decor" x="1463.5" y="1097" width="1920" height="904"/>
+ </objectgroup>
  <objectgroup id="138" name="bg">
   <properties>
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="879" name="magma" type="terrain" x="-3609.46" y="-1059.25" width="5501.18" height="7024.79"/>
-  <object id="1026" name="magma" type="terrain" x="2952.98" y="-1059.25" width="6524.81" height="7024.79"/>
+  <object id="1051" name="magma" type="terrain" x="1416" y="-1432">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="233.333,2664.73 531.509,2566.91 1000,2546 1625.94,2562.9 1838.12,2692.79 1882.45,2964.88 1832,6068 8072,6064 8056,360 960,-1000 -5016,352 -5024,6072 196,6068 156.515,2956.94"/>
+  </object>
  </objectgroup>
  <objectgroup id="130" name="lava -36">
   <properties>
