@@ -101,7 +101,7 @@ void TalkToNebea::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void TalkToNebea::onActivate(bool isActiveThroughSkippable)
+void TalkToNebea::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

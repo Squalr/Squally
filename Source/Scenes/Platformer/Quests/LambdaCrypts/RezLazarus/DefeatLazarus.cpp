@@ -69,7 +69,7 @@ void DefeatLazarus::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void DefeatLazarus::onActivate(bool isActiveThroughSkippable)
+void DefeatLazarus::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->lazarus->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 	{

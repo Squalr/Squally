@@ -80,7 +80,7 @@ void TalkToSarude::onLoad(QuestState questState)
 	}, TalkToSarude::QuestPortalTag);
 }
 
-void TalkToSarude::onActivate(bool isActiveThroughSkippable)
+void TalkToSarude::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->registerDialogue();
 }

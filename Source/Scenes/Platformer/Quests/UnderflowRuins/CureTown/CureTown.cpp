@@ -114,7 +114,7 @@ void CureTown::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void CureTown::onActivate(bool isActiveThroughSkippable)
+void CureTown::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

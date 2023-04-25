@@ -66,7 +66,7 @@ void TrollInTheDungeon::onLoad(QuestState questState)
 	}
 }
 
-void TrollInTheDungeon::onActivate(bool isActiveThroughSkippable)
+void TrollInTheDungeon::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* exitPortal)
 	{

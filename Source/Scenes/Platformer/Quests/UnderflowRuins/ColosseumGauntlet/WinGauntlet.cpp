@@ -129,7 +129,7 @@ void WinGauntlet::onLoad(QuestState questState)
 	}, GatlingGun::MapKey);
 }
 
-void WinGauntlet::onActivate(bool isActiveThroughSkippable)
+void WinGauntlet::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(WinGauntlet::MapEventBeginGauntlet, [=](ValueMap)
 	{

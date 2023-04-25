@@ -65,7 +65,7 @@ void TeachHackerMode::onLoad(QuestState questState)
 	}, Scrappy::MapKey);
 }
 
-void TeachHackerMode::onActivate(bool isActiveThroughSkippable)
+void TeachHackerMode::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(TeachHackerMode::MapKeyQuest, [=](ValueMap args)
 	{

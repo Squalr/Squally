@@ -93,7 +93,7 @@ void FightMedusa::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void FightMedusa::onActivate(bool isActiveThroughSkippable)
+void FightMedusa::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

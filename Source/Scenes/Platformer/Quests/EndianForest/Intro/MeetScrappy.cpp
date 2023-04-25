@@ -74,7 +74,7 @@ void MeetScrappy::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void MeetScrappy::onActivate(bool isActiveThroughSkippable)
+void MeetScrappy::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(MeetScrappy::MapKeyQuest, [=](ValueMap args)
 	{

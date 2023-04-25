@@ -74,7 +74,7 @@ void DefeatAsmodeus::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void DefeatAsmodeus::onActivate(bool isActiveThroughSkippable)
+void DefeatAsmodeus::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	if (this->asmodeus != nullptr)
 	{

@@ -76,7 +76,7 @@ void ReleasePressure::onLoad(QuestState questState)
 	}
 }
 
-void ReleasePressure::onActivate(bool isActiveThroughSkippable)
+void ReleasePressure::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(ReleasePressure::MapEventPressureReleased, [=](ValueMap)
 	{

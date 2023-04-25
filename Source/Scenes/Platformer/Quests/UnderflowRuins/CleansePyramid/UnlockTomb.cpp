@@ -56,7 +56,7 @@ void UnlockTomb::onLoad(QuestState questState)
 	}
 }
 
-void UnlockTomb::onActivate(bool isActiveThroughSkippable)
+void UnlockTomb::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

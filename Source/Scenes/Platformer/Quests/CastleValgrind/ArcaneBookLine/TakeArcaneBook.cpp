@@ -123,7 +123,7 @@ void TakeArcaneBook::onLoad(QuestState questState)
 	});
 }
 
-void TakeArcaneBook::onActivate(bool isActiveThroughSkippable)
+void TakeArcaneBook::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	Objectives::SetCurrentObjective(ObjectiveKeys::CVTakeArcaneBook);
 

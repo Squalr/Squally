@@ -85,7 +85,7 @@ void TalkToZeus::onLoad(QuestState questState)
 	}
 }
 
-void TalkToZeus::onActivate(bool isActiveThroughSkippable)
+void TalkToZeus::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

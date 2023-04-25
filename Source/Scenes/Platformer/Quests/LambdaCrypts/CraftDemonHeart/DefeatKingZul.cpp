@@ -69,7 +69,7 @@ void DefeatKingZul::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void DefeatKingZul::onActivate(bool isActiveThroughSkippable)
+void DefeatKingZul::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->kingZul->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 	{

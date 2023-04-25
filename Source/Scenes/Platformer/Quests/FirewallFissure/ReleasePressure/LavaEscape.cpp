@@ -65,7 +65,7 @@ void LavaEscape::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void LavaEscape::onActivate(bool isActiveThroughSkippable)
+void LavaEscape::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(LavaEscape::MapEventBeginLavaEvent, [=](ValueMap)
 	{

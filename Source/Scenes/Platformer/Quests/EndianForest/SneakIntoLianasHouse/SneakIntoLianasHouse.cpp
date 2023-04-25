@@ -37,7 +37,7 @@ void SneakIntoLianasHouse::onLoad(QuestState questState)
 	}
 }
 
-void SneakIntoLianasHouse::onActivate(bool isActiveThroughSkippable)
+void SneakIntoLianasHouse::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

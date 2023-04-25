@@ -97,7 +97,7 @@ void MeetGrim::onLoad(QuestState questState)
 	}, MeetGrim::MapTagCinematicGrim);
 }
 
-void MeetGrim::onActivate(bool isActiveThroughSkippable)
+void MeetGrim::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(MeetGrim::MapEventMeetGrim, [=](ValueMap)
 	{

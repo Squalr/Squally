@@ -59,7 +59,7 @@ void LockedThroneRoom::onLoad(QuestState questState)
 	}
 }
 
-void LockedThroneRoom::onActivate(bool isActiveThroughSkippable)
+void LockedThroneRoom::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

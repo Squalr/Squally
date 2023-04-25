@@ -133,12 +133,18 @@ void QuestTask::updateState()
 	{
 		if (this->questState == QuestState::Active)
 		{
-			this->onActivate(false);
+			this->onActivate(false, true);
 		}
 		else if (this->questState == QuestState::ActiveThroughSkippable)
 		{
-			this->onActivate(true);
+			this->onActivate(true, true);
 		}
+	}
+	
+	// Trigger activation again if going from active through skippable to normally active
+	if (previousState == QuestState::ActiveThroughSkippable && this->questState == QuestState::Active)
+	{
+		this->onActivate(false, false);
 	}
 
 	// Check if this quest was skipped

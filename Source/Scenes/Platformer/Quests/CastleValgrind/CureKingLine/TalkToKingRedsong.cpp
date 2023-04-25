@@ -124,7 +124,7 @@ void TalkToKingRedsong::onLoad(QuestState questState)
 	}, PrincessOpal::MapKey);
 }
 
-void TalkToKingRedsong::onActivate(bool isActiveThroughSkippable)
+void TalkToKingRedsong::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->runCinematicSequencePt1();
 

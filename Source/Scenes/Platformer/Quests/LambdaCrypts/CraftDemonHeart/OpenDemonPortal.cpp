@@ -108,7 +108,7 @@ void OpenDemonPortal::onLoad(QuestState questState)
 	}, HellGate::MapKey);
 }
 
-void OpenDemonPortal::onActivate(bool isActiveThroughSkippable)
+void OpenDemonPortal::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

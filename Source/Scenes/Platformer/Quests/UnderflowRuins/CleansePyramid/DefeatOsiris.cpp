@@ -95,7 +95,7 @@ void DefeatOsiris::onLoad(QuestState questState)
 	}, Sarcophagus::MapKey);
 }
 
-void DefeatOsiris::onActivate(bool isActiveThroughSkippable)
+void DefeatOsiris::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->osiris->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 	{

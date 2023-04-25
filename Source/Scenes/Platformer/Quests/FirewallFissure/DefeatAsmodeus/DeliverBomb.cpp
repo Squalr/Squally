@@ -136,7 +136,7 @@ void DeliverBomb::onLoad(QuestState questState)
 	});
 }
 
-void DeliverBomb::onActivate(bool isActiveThroughSkippable)
+void DeliverBomb::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 
@@ -277,6 +277,9 @@ void DeliverBomb::runCinematicSequencePt1()
 
 void DeliverBomb::runCinematicSequencePt2()
 {
+	// Complete immediately to start the lava flood animation
+	this->complete();
+
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_Scaldor_C_WeDidIt::create(),
 		DialogueEvents::DialogueVisualArgs(
@@ -288,7 +291,6 @@ void DeliverBomb::runCinematicSequencePt2()
 		[=]()
 		{
 			PlatformerEvents::TriggerCinematicRestore();
-			this->complete();
 		},
 		Voices::GetNextVoiceMedium(Voices::VoiceType::Human),
 		false

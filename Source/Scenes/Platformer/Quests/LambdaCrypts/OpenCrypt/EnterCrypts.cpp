@@ -128,7 +128,7 @@ void EnterCrypts::onLoad(QuestState questState)
 	}
 }
 
-void EnterCrypts::onActivate(bool isActiveThroughSkippable)
+void EnterCrypts::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce("gauntlet-start", [=](ValueMap valueMap)
 	{

@@ -94,7 +94,7 @@ void TalkToCleopatra::onLoad(QuestState questState)
 	}
 }
 
-void TalkToCleopatra::onActivate(bool isActiveThroughSkippable)
+void TalkToCleopatra::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

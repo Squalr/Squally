@@ -50,7 +50,7 @@ void SpotOrcGrunt::onLoad(QuestState questState)
 	}, Scrappy::MapKey);
 }
 
-void SpotOrcGrunt::onActivate(bool isActiveThroughSkippable)
+void SpotOrcGrunt::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(SpotOrcGrunt::MapKeyQuest, [=](ValueMap args)
 	{

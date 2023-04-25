@@ -98,7 +98,7 @@ void ReturnToQueen::onLoad(QuestState questState)
 	}
 }
 
-void ReturnToQueen::onActivate(bool isActiveThroughSkippable)
+void ReturnToQueen::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->runCinematicSequence();
 

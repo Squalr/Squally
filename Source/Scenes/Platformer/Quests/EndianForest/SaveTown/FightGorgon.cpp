@@ -172,7 +172,7 @@ void FightGorgon::onLoad(QuestState questState)
 	}, Ram::MapKey);
 }
 
-void FightGorgon::onActivate(bool isActiveThroughSkippable)
+void FightGorgon::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

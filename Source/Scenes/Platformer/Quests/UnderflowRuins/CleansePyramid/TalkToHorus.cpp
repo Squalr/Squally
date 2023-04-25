@@ -90,7 +90,7 @@ void TalkToHorus::onLoad(QuestState questState)
 	}
 }
 
-void TalkToHorus::onActivate(bool isActiveThroughSkippable)
+void TalkToHorus::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

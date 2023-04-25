@@ -60,7 +60,7 @@ void DefeatAgnes::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void DefeatAgnes::onActivate(bool isActiveThroughSkippable)
+void DefeatAgnes::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	if (this->agnes != nullptr)
 	{

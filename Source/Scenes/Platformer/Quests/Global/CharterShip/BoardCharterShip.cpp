@@ -63,7 +63,7 @@ void BoardCharterShip::onLoad(QuestState questState)
 	this->setReturnMap();
 }
 
-void BoardCharterShip::onActivate(bool isActiveThroughSkippable)
+void BoardCharterShip::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	if (this->portal != nullptr)
 	{

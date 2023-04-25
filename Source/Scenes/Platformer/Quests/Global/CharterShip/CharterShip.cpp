@@ -48,7 +48,7 @@ void CharterShip::onLoad(QuestState questState)
 	this->portal->setMapFile(returnMap);
 }
 
-void CharterShip::onActivate(bool isActiveThroughSkippable)
+void CharterShip::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

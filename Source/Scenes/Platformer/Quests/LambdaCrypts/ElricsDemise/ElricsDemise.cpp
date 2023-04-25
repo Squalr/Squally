@@ -110,7 +110,7 @@ void ElricsDemise::onLoad(QuestState questState)
 	}, ZombieElric::MapKey);
 }
 
-void ElricsDemise::onActivate(bool isActiveThroughSkippable)
+void ElricsDemise::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

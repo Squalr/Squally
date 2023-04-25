@@ -108,7 +108,7 @@ void ElricsPlea::onLoad(QuestState questState)
 	}, "cinematic-zombie");
 }
 
-void ElricsPlea::onActivate(bool isActiveThroughSkippable)
+void ElricsPlea::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(ElricsPlea::MapKeyQuest, [=](ValueMap)
 	{

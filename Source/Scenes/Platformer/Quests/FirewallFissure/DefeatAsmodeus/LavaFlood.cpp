@@ -17,6 +17,8 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Physics/Lifts/CartLift.h"
 #include "Objects/Platformer/Interactables/Computer/Computer.h"
+#include "Objects/Platformer/Liquids/Lava.h"
+#include "Objects/Platformer/Decor/LavaFall.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -74,8 +76,23 @@ void LavaFlood::onLoad(QuestState questState)
 	});
 }
 
-void LavaFlood::onActivate(bool isActiveThroughSkippable)
+void LavaFlood::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
+	if (!isActiveThroughSkippable)
+	{
+		float duration = isInitialActivation ? 0.0f : 2.0f;
+		Vec2 delta = Vec2(0.0f, 112.0f);
+
+		ObjectEvents::QueryObjects<Lava>([=](Lava* lava)
+		{
+			lava->runAction(EaseSineInOut::create(MoveBy::create(duration, delta)));
+		});
+
+		ObjectEvents::QueryObjects<LavaFall>([=](LavaFall* lavaFall)
+		{
+			lavaFall->runAction(EaseSineInOut::create(MoveBy::create(duration, delta)));
+		});
+	}
 }
 
 void LavaFlood::onComplete()

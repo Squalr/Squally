@@ -114,7 +114,7 @@ void GauntletIntroduction::onLoad(QuestState questState)
 	}
 }
 
-void GauntletIntroduction::onActivate(bool isActiveThroughSkippable)
+void GauntletIntroduction::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

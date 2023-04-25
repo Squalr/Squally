@@ -59,7 +59,7 @@ void WelcomeToMagesGuild::onLoad(QuestState questState)
 	}, Marcel::MapKey);
 }
 
-void WelcomeToMagesGuild::onActivate(bool isActiveThroughSkippable)
+void WelcomeToMagesGuild::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

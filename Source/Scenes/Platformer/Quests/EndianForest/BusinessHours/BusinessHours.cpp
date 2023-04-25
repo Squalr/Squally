@@ -73,7 +73,7 @@ void BusinessHours::onLoad(QuestState questState)
 	}
 }
 
-void BusinessHours::onActivate(bool isActiveThroughSkippable)
+void BusinessHours::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

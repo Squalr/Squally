@@ -71,7 +71,7 @@ void PowerWarpGateLC::onLoad(QuestState questState)
 	}
 }
 
-void PowerWarpGateLC::onActivate(bool isActiveThroughSkippable)
+void PowerWarpGateLC::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

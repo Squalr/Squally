@@ -114,7 +114,7 @@ void CraftDemonHeart::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void CraftDemonHeart::onActivate(bool isActiveThroughSkippable)
+void CraftDemonHeart::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventGiveItems, [=](EventCustom* eventCustom)
 	{

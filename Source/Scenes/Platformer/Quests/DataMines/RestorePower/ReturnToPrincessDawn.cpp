@@ -86,7 +86,7 @@ void ReturnToPrincessDawn::onLoad(QuestState questState)
 	}
 }
 
-void ReturnToPrincessDawn::onActivate(bool isActiveThroughSkippable)
+void ReturnToPrincessDawn::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

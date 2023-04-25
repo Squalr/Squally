@@ -95,7 +95,7 @@ void TalkToOlive::onLoad(QuestState questState)
 	}
 }
 
-void TalkToOlive::onActivate(bool isActiveThroughSkippable)
+void TalkToOlive::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

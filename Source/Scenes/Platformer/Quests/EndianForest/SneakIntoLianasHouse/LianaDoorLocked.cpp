@@ -50,7 +50,7 @@ void LianaDoorLocked::onLoad(QuestState questState)
 	}
 }
 
-void LianaDoorLocked::onActivate(bool isActiveThroughSkippable)
+void LianaDoorLocked::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

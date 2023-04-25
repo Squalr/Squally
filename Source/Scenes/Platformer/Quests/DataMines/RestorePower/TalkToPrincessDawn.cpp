@@ -111,7 +111,7 @@ void TalkToPrincessDawn::onLoad(QuestState questState)
 	}
 }
 
-void TalkToPrincessDawn::onActivate(bool isActiveThroughSkippable)
+void TalkToPrincessDawn::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

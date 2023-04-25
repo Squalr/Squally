@@ -80,7 +80,7 @@ void RescueFinch::onLoad(QuestState questState)
 	}, RescueFinch::TagCutscenePortal);
 }
 
-void RescueFinch::onActivate(bool isActiveThroughSkippable)
+void RescueFinch::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(RescueFinch::MapEventFinchRescued, [=](ValueMap)
 	{

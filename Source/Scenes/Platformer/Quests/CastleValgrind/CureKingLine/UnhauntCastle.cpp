@@ -85,7 +85,7 @@ void UnhauntCastle::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void UnhauntCastle::onActivate(bool isActiveThroughSkippable)
+void UnhauntCastle::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	// Defer just in case Mabel is not initialized yet
 	this->defer([=]()

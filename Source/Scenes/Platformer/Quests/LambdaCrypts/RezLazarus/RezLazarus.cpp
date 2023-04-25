@@ -142,7 +142,7 @@ void RezLazarus::onLoad(QuestState questState)
 	}
 }
 
-void RezLazarus::onActivate(bool isActiveThroughSkippable)
+void RezLazarus::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

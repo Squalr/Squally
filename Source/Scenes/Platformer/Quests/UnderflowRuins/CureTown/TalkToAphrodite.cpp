@@ -91,7 +91,7 @@ void TalkToAphrodite::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void TalkToAphrodite::onActivate(bool isActiveThroughSkippable)
+void TalkToAphrodite::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->runCinematicSequence();
 }

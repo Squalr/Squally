@@ -82,7 +82,7 @@ void TalkToQueen::onLoad(QuestState questState)
 	}
 }
 
-void TalkToQueen::onActivate(bool isActiveThroughSkippable)
+void TalkToQueen::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->runCinematicSequence();
 }

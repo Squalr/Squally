@@ -86,7 +86,7 @@ void PowerWarpGateEF::onLoad(QuestState questState)
 	}
 }
 
-void PowerWarpGateEF::onActivate(bool isActiveThroughSkippable)
+void PowerWarpGateEF::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

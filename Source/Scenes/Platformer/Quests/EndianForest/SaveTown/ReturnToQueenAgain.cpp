@@ -84,7 +84,7 @@ void ReturnToQueenAgain::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void ReturnToQueenAgain::onActivate(bool isActiveThroughSkippable)
+void ReturnToQueenAgain::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->runCinematicSequence();
 

@@ -83,7 +83,7 @@ void ObtainMirror::onLoad(QuestState questState)
 	}, Guano::MapKey);
 }
 
-void ObtainMirror::onActivate(bool isActiveThroughSkippable)
+void ObtainMirror::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(this->owner->getListenEvent(), [=](ValueMap args)
 	{

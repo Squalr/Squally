@@ -79,7 +79,7 @@
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="ff-generic"/>
-    <property name="quest" value="deliver-bomb"/>
+    <property name="quest" value="deliver-bomb,lava-flood"/>
     <property name="quest-line" value="defeat-asmodeus"/>
    </properties>
   </object>

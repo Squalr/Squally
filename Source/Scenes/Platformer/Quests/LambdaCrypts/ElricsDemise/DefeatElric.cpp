@@ -65,7 +65,7 @@ void DefeatElric::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void DefeatElric::onActivate(bool isActiveThroughSkippable)
+void DefeatElric::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->zombieElric->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
 	{

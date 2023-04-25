@@ -73,7 +73,7 @@ void WindSpellbook::onLoad(QuestState questState)
 	}, Marcel::MapKey);
 }
 
-void WindSpellbook::onActivate(bool isActiveThroughSkippable)
+void WindSpellbook::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->marcel->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{

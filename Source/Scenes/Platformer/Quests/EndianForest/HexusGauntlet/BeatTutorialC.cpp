@@ -77,7 +77,7 @@ void BeatTutorialC::onLoad(QuestState questState)
 	}, BeatTutorialC::QuestPortalTag);
 }
 
-void BeatTutorialC::onActivate(bool isActiveThroughSkippable)
+void BeatTutorialC::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

@@ -98,7 +98,7 @@ void TownExitBlocked::onLoad(QuestState questState)
 	}
 }
 
-void TownExitBlocked::onActivate(bool isActiveThroughSkippable)
+void TownExitBlocked::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

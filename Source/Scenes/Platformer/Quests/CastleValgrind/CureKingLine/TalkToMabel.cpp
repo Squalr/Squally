@@ -142,7 +142,7 @@ void TalkToMabel::onLoad(QuestState questState)
 	}
 }
 
-void TalkToMabel::onActivate(bool isActiveThroughSkippable)
+void TalkToMabel::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(TalkToMabel::MapEventMabelRevealed, [=](ValueMap valueMap)
 	{

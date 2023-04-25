@@ -89,7 +89,7 @@ void TalkToHera::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void TalkToHera::onActivate(bool isActiveThroughSkippable)
+void TalkToHera::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->runCinematicSequence();
 }

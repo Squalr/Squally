@@ -68,7 +68,7 @@ void WaterSpellbook::onLoad(QuestState questState)
 	}
 }
 
-void WaterSpellbook::onActivate(bool isActiveThroughSkippable)
+void WaterSpellbook::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->runCinematicSequence();
 }

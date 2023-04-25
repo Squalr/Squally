@@ -74,7 +74,7 @@ void DefeatKrampus::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void DefeatKrampus::onActivate(bool isActiveThroughSkippable)
+void DefeatKrampus::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	if (this->krampus != nullptr)
 	{

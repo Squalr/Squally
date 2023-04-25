@@ -108,7 +108,7 @@ void RepairRam::onLoad(QuestState questState)
 	});
 }
 
-void RepairRam::onActivate(bool isActiveThroughSkippable)
+void RepairRam::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

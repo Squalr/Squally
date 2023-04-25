@@ -137,7 +137,7 @@ void SkyShipUnlocked::onLoad(QuestState questState)
 	}
 }
 
-void SkyShipUnlocked::onActivate(bool isActiveThroughSkippable)
+void SkyShipUnlocked::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

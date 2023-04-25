@@ -111,7 +111,7 @@ void FinchRescued::onLoad(QuestState questState)
 	}
 }
 
-void FinchRescued::onActivate(bool isActiveThroughSkippable)
+void FinchRescued::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

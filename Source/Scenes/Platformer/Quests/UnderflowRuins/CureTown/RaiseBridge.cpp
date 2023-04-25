@@ -94,7 +94,7 @@ void RaiseBridge::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void RaiseBridge::onActivate(bool isActiveThroughSkippable)
+void RaiseBridge::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

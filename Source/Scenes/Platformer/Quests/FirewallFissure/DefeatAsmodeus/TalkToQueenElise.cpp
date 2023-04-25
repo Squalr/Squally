@@ -87,7 +87,7 @@ void TalkToQueenElise::onLoad(QuestState questState)
 	}
 }
 
-void TalkToQueenElise::onActivate(bool isActiveThroughSkippable)
+void TalkToQueenElise::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

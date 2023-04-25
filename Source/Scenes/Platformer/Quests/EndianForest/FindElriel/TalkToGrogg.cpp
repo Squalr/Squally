@@ -74,7 +74,7 @@ void TalkToGrogg::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void TalkToGrogg::onActivate(bool isActiveThroughSkippable)
+void TalkToGrogg::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(TalkToGrogg::MapKeyQuest, [=](ValueMap args)
 	{

@@ -110,7 +110,7 @@ void BancroftTrainAccess::onLoad(QuestState questState)
 	}
 }
 
-void BancroftTrainAccess::onActivate(bool isActiveThroughSkippable)
+void BancroftTrainAccess::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

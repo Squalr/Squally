@@ -101,7 +101,7 @@ void TalkToAmelia::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void TalkToAmelia::onActivate(bool isActiveThroughSkippable)
+void TalkToAmelia::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

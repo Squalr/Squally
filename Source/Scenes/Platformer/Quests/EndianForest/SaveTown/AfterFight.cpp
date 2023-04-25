@@ -94,7 +94,7 @@ void AfterFight::onLoad(QuestState questState)
 	}
 }
 
-void AfterFight::onActivate(bool isActiveThroughSkippable)
+void AfterFight::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->defer([=]()
 	{

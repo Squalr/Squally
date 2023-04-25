@@ -91,7 +91,7 @@ void RestorePower::onLoad(QuestState questState)
 	});
 }
 
-void RestorePower::onActivate(bool isActiveThroughSkippable)
+void RestorePower::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 

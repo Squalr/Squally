@@ -71,7 +71,7 @@ void CraftHeliumBomb::onLoad(QuestState questState)
 {
 }
 
-void CraftHeliumBomb::onActivate(bool isActiveThroughSkippable)
+void CraftHeliumBomb::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventGiveItems, [=](EventCustom* eventCustom)
 	{

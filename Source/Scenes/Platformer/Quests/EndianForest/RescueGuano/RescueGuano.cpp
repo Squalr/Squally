@@ -73,7 +73,7 @@ void RescueGuano::onLoad(QuestState questState)
 	}, Squally::MapKey);
 }
 
-void RescueGuano::onActivate(bool isActiveThroughSkippable)
+void RescueGuano::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(RescueGuano::EventMulDoorUnlocked, [=](ValueMap args)
 	{

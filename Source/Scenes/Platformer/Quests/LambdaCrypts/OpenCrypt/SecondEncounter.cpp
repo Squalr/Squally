@@ -118,7 +118,7 @@ void SecondEncounter::onLoad(QuestState questState)
 	}
 }
 
-void SecondEncounter::onActivate(bool isActiveThroughSkippable)
+void SecondEncounter::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce("gauntlet-start", [=](ValueMap valueMap)
 	{

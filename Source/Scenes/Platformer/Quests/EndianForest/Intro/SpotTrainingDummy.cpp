@@ -50,7 +50,7 @@ void SpotTrainingDummy::onLoad(QuestState questState)
 	}, Scrappy::MapKey);
 }
 
-void SpotTrainingDummy::onActivate(bool isActiveThroughSkippable)
+void SpotTrainingDummy::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 	this->listenForMapEventOnce(SpotTrainingDummy::MapKeyQuest, [=](ValueMap args)
 	{

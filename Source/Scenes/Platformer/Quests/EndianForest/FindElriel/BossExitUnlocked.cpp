@@ -64,7 +64,7 @@ void BossExitUnlocked::onLoad(QuestState questState)
 	}
 }
 
-void BossExitUnlocked::onActivate(bool isActiveThroughSkippable)
+void BossExitUnlocked::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
 }
 
