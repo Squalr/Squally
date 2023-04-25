@@ -181,7 +181,7 @@
   </properties>
   <object id="860" name="lava" type="object" x="-3018.38" y="2297.81" width="14575" height="1024"/>
  </objectgroup>
- <objectgroup id="131" name="decor -32" visible="0">
+ <objectgroup id="131" name="decor -32">
   <properties>
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>

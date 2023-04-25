@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="180" nextobjectid="1040">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="182" nextobjectid="1049">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -39,10 +39,12 @@
   <object id="1030" name="asmodeus" type="entity" x="2328.34" y="1860.12" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
+    <property name="battle-map" value="FirewallFissure/Combat_Lava"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="quest" value="lava-flood"/>
+    <property name="quest-line" value="defeat-asmodeus"/>
    </properties>
   </object>
  </objectgroup>
@@ -66,6 +68,11 @@
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1048" name="obsidean" type="terrain" x="2249.86" y="2012.75" width="164.273" height="142.5">
+   <properties>
+    <property name="tag" value="revealed-platform"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="132" name="decor -36">
   <properties>
@@ -103,6 +110,11 @@
    <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1047" name="obsidean" type="terrain" x="2226.53" y="2038.75" width="164.273" height="142.5">
+   <properties>
+    <property name="tag" value="revealed-platform"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="137" name="decor bg -34">
   <properties>
@@ -145,6 +157,11 @@
   <object id="989" name="obsidean" type="terrain" x="1878.5" y="5982.65">
    <polygon points="-726.278,-3723.06 -618.896,-2696.02 494.551,-2329.02 1565.97,-2691.95 1752.8,-3720.93"/>
   </object>
+  <object id="1046" name="obsidean" type="terrain" x="2182.53" y="2076.08" width="164.273" height="142.5">
+   <properties>
+    <property name="tag" value="revealed-platform"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="168" name="entities -32">
   <properties>
@@ -158,6 +175,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="991" name="demon-warrior" type="entity" x="2074.86" y="2133.47" width="128" height="128">
@@ -167,6 +185,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="992" name="demon-archer" type="entity" x="2560.37" y="2128.76" width="128" height="128">
@@ -176,6 +195,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="993" name="demon-rogue" type="entity" x="1723.7" y="2124.05" width="128" height="128">
@@ -185,6 +205,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="994" name="demon-shaman" type="entity" x="2869.11" y="2128.76" width="128" height="128">
@@ -194,6 +215,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="995" name="fire-tiger" type="entity" x="1480.94" y="2133.47" width="128" height="128">
@@ -203,6 +225,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="996" name="fire-tiger" type="entity" x="3123.65" y="2131.12" width="128" height="128">
@@ -212,6 +235,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
  </objectgroup>
@@ -258,6 +282,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="1002" name="demon-archer" type="entity" x="1602.17" y="2144.76" width="128" height="128">
@@ -267,6 +292,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="1003" name="demon-rogue" type="entity" x="1820.3" y="2140.05" width="128" height="128">
@@ -276,6 +302,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="1004" name="demon-shaman" type="entity" x="2965.71" y="2144.76" width="128" height="128">
@@ -285,6 +312,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="1005" name="fire-tiger" type="entity" x="2387.24" y="2157.73" width="128" height="128">
@@ -294,6 +322,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="1007" name="demon-rogue" type="entity" x="2657.78" y="2147.51" width="128" height="128">
@@ -303,6 +332,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
  </objectgroup>
@@ -328,6 +358,11 @@
   <object id="999" name="obsidean" type="terrain" x="1980.8" y="6014.65">
    <polygon points="-583.468,-3723.06 -497.2,-2696.02 397.306,-2329.02 1258.05,-2691.95 1408.14,-3720.93"/>
   </object>
+  <object id="1044" name="obsidean" type="terrain" x="2147.86" y="2098.08" width="164.273" height="142.5">
+   <properties>
+    <property name="tag" value="revealed-platform"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="172" name="entities -30">
   <properties>
@@ -341,6 +376,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="1010" name="demon-archer" type="entity" x="1640.01" y="2169.02" width="128" height="128">
@@ -350,6 +386,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="1011" name="demon-rogue" type="entity" x="2238.21" y="2169.02" width="128" height="128">
@@ -359,6 +396,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="1012" name="demon-shaman" type="entity" x="2028.62" y="2169.02" width="128" height="128">
@@ -368,6 +406,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="1015" name="demon-warrior" type="entity" x="2789.98" y="2169.02" width="128" height="128">
@@ -377,6 +416,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
   <object id="1017" name="demon-shaman" type="entity" x="2974.5" y="2169.02" width="128" height="128">
@@ -386,6 +426,7 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="orc-bomber,enemy,agro"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="tag" value="lava-killable"/>
    </properties>
   </object>
  </objectgroup>
@@ -426,6 +467,17 @@
   </properties>
   <object id="857" name="lava" type="object" x="-3418.9" y="2321.42" width="13997" height="1024"/>
  </objectgroup>
+ <objectgroup id="181" name="terrain -28">
+  <properties>
+   <property name="depth" type="float" value="-1792"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1043" name="obsidean" type="terrain" x="2101.86" y="2111.42" width="164.273" height="142.5">
+   <properties>
+    <property name="tag" value="revealed-platform"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="122" name="lava -28">
   <properties>
    <property name="depth" type="float" value="-1792"/>
@@ -453,6 +505,17 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
+ <objectgroup id="180" name="terrain -26">
+  <properties>
+   <property name="depth" type="float" value="-1664"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1042" name="obsidean" type="terrain" x="2030.53" y="2127.42" width="164.273" height="142.5">
+   <properties>
+    <property name="tag" value="revealed-platform"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="120" name="lava -26">
   <properties>
    <property name="depth" type="float" value="-1664"/>
@@ -479,6 +542,11 @@
    <property name="depth" type="float" value="-1536"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1041" name="obsidean" type="terrain" x="1937.86" y="2146.75" width="164.273" height="142.5">
+   <properties>
+    <property name="tag" value="revealed-platform"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="99" name="lava -24">
   <properties>
@@ -512,6 +580,11 @@
    <property name="depth" type="float" value="-1408"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1040" name="obsidean" type="terrain" x="1835.86" y="2158.75" width="164.273" height="142.5">
+   <properties>
+    <property name="tag" value="revealed-platform"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="97" name="lava -22">
   <properties>
@@ -590,9 +663,10 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="1031" name="portal" type="object" x="1800" y="2070.73" width="256" height="256">
+  <object id="1031" name="portal" type="object" x="1794" y="1916.73" width="256" height="256">
    <properties>
     <property name="map" value="FirewallFissure/Zone_3_2"/>
+    <property name="tag" value="revealed-pathway"/>
     <property name="transition" value="pathway"/>
    </properties>
   </object>
@@ -688,7 +762,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="145" name="decor bg -17" visible="0">
+ <objectgroup id="145" name="decor bg -17">
   <properties>
    <property name="depth" type="float" value="-1088"/>
    <property name="type" value="objects"/>
@@ -912,7 +986,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="146" name="decor -8 bg" visible="0">
+ <objectgroup id="146" name="decor -8 bg">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -960,7 +1034,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="152" name="decor bg -6" visible="0">
+ <objectgroup id="152" name="decor bg -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>

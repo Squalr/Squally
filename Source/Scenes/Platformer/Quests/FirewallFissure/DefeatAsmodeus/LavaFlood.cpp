@@ -10,11 +10,15 @@
 
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Terrain/TerrainObject.h"
 #include "Engine/Quests/QuestLine.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
+#include "Entities/Platformer/PlatformerEnemy.h"
+#include "Entities/Platformer/Enemies/FirewallFissure/Asmodeus.h"
 #include "Entities/Platformer/Npcs/DataMines/PrincessDawn.h"
 #include "Entities/Platformer/Squally/Squally.h"
+#include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Objects/Platformer/Physics/Lifts/CartLift.h"
 #include "Objects/Platformer/Interactables/Computer/Computer.h"
 #include "Objects/Platformer/Liquids/Lava.h"
@@ -81,7 +85,7 @@ void LavaFlood::onActivate(bool isActiveThroughSkippable, bool isInitialActivati
 	if (!isActiveThroughSkippable)
 	{
 		float duration = isInitialActivation ? 0.0f : 2.0f;
-		Vec2 delta = Vec2(0.0f, 112.0f);
+		Vec2 delta = Vec2(0.0f, 144.0f);
 
 		ObjectEvents::QueryObjects<Lava>([=](Lava* lava)
 		{
@@ -92,6 +96,28 @@ void LavaFlood::onActivate(bool isActiveThroughSkippable, bool isInitialActivati
 		{
 			lavaFall->runAction(EaseSineInOut::create(MoveBy::create(duration, delta)));
 		});
+
+		ObjectEvents::QueryObjects<PlatformerEnemy>([=](PlatformerEnemy* platformerEnemy)
+		{
+			platformerEnemy->despawn();
+		}, "lava-killable");
+
+		ObjectEvents::QueryObjects<Asmodeus>([=](Asmodeus* asmodeus)
+		{
+			asmodeus->despawn();
+		}, Asmodeus::MapKey);
+	}
+	else
+	{
+		ObjectEvents::QueryObjects<TerrainObject>([=](TerrainObject* terrainObject)
+		{
+			terrainObject->despawn();
+		}, "revealed-platform");
+
+		ObjectEvents::QueryObjects<Portal>([=](Portal* portal)
+		{
+			portal->disable();
+		}, "revealed-pathway");
 	}
 }
 

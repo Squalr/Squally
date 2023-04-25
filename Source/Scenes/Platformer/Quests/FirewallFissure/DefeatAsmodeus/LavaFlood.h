@@ -2,6 +2,7 @@
 
 #include "Engine/Quests/QuestTask.h"
 
+class Asmodeus;
 class Guano;
 class QuestLine;
 class Scrappy;
@@ -30,6 +31,7 @@ private:
 	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
+	Asmodeus* asmodeus = nullptr;
 
 	static const std::string MapEventLavaFlooded;
 };
