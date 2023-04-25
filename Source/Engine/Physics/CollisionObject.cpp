@@ -360,6 +360,16 @@ void CollisionObject::setVerticalDampening(float verticalDampening)
 	this->verticalDampening = MathUtils::clamp(verticalDampening, 0.0f, 1.0f);
 }
 
+float CollisionObject::getHorizontalDampening()
+{
+	return this->horizontalDampening;
+}
+
+float CollisionObject::getVerticalDampening()
+{
+	return this->verticalDampening;
+}
+
 const std::vector<cocos2d::Vec2>& CollisionObject::getPoints()
 {
 	return this->points;

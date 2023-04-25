@@ -2,8 +2,11 @@
 
 #include "Engine/Quests/QuestTask.h"
 
+class CameraTarget;
+class FloatingBomb;
 class Gecky;
 class Guano;
+class LavaFall;
 class Scaldor;
 class QuestLine;
 class Scrappy;
@@ -29,10 +32,16 @@ private:
 	typedef QuestTask super;
 
 	void runCinematicSequencePt1();
+	void runCinematicSequencePt2();
 
 	Guano* guano = nullptr;
 	Gecky* gecky = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 	Scaldor* scaldor = nullptr;
+	FloatingBomb* floatingBomb = nullptr;
+	Sound* explosionSound = nullptr;
+
+	CameraTarget* cinematicFocus = nullptr;
+	LavaFall* cinematicLavaFall = nullptr;
 };

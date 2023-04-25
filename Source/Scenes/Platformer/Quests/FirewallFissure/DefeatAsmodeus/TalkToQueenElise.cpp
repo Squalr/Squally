@@ -107,7 +107,7 @@ void TalkToQueenElise::runCinematicSequencePt1()
 	PlatformerEvents::TriggerCinematicHijack();
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_A_HowToLeaveVolcano::create(),
+		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_A_HowToLeaveVolcano::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,
@@ -126,7 +126,7 @@ void TalkToQueenElise::runCinematicSequencePt1()
 void TalkToQueenElise::runCinematicSequencePt2()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_B_AsmodeusBlocking::create()
+		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_B_AsmodeusBlocking::create()
 			->setStringReplacementVariables(Strings::Platformer_Entities_Names_Enemies_FirewallFissure_Asmodeus::create()),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
@@ -146,7 +146,7 @@ void TalkToQueenElise::runCinematicSequencePt2()
 void TalkToQueenElise::runCinematicSequencePt3()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_C_CraftABomb::create(),
+		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_C_CraftABomb::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
@@ -165,7 +165,7 @@ void TalkToQueenElise::runCinematicSequencePt3()
 void TalkToQueenElise::runCinematicSequencePt4()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_D_GoToAlchLab::create(),
+		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_D_GoToAlchLab::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
@@ -184,7 +184,7 @@ void TalkToQueenElise::runCinematicSequencePt4()
 void TalkToQueenElise::runCinematicSequencePt5()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_E_Acknowledged::create(),
+		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_E_Acknowledged::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Right,

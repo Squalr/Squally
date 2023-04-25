@@ -11,8 +11,10 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Inventory/Inventory.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Quests/QuestLine.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/DataMines/Gecky.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
@@ -20,7 +22,10 @@
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Camera/CameraTarget.h"
+#include "Objects/Platformer/Decor/LavaFall.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
+#include "Objects/Platformer/Traps/FloatingBomb/FloatingBomb.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
@@ -53,6 +58,9 @@ DeliverBomb* DeliverBomb::create(GameObject* owner, QuestLine* questLine)
 
 DeliverBomb::DeliverBomb(GameObject* owner, QuestLine* questLine) : super(owner, questLine, DeliverBomb::MapKeyQuest, false)
 {
+	this->explosionSound = Sound::create(SoundResources::Platformer_FX_Explosions_Explosion1);
+
+	this->addChild(this->explosionSound);
 }
 
 DeliverBomb::~DeliverBomb()
@@ -97,6 +105,35 @@ void DeliverBomb::onLoad(QuestState questState)
 			});
 		}
 	});
+
+	ObjectEvents::WatchForObject<CameraTarget>(this, [=](CameraTarget* cameraTarget)
+	{
+		this->cinematicFocus = cameraTarget;
+	}, "cinematic-geyser");
+
+	ObjectEvents::WatchForObject<LavaFall>(this, [=](LavaFall* cinematicLavaFall)
+	{
+		this->cinematicLavaFall = cinematicLavaFall;
+
+		if (questState != QuestState::Complete)
+		{
+			this->cinematicLavaFall->setOpacity(0);
+		}
+	}, "cinematic-lava-fall");
+	
+	CameraTarget* cinematicFocus = nullptr;
+	LavaFall* cinematicLavaFall = nullptr;
+
+	ObjectEvents::WatchForObject<FloatingBomb>(this, [=](FloatingBomb* floatingBomb)
+	{
+		this->floatingBomb = floatingBomb;
+
+		CollisionObject* bombCollision = this->floatingBomb->getCollision();
+		bombCollision->setGravity(Vec2(540.0f, 768.0f));
+		bombCollision->setHorizontalDampening(bombCollision->getVerticalDampening());
+		bombCollision->setPhysicsFlagEnabled(false);
+		this->floatingBomb->setOpacity(0);
+	});
 }
 
 void DeliverBomb::onActivate(bool isActiveThroughSkippable)
@@ -105,13 +142,26 @@ void DeliverBomb::onActivate(bool isActiveThroughSkippable)
 
 void DeliverBomb::onComplete()
 {	
-	Objectives::SetCurrentObjective(ObjectiveKeys::DMInvestigatePowerOutage);
+	Objectives::SetCurrentObjective(ObjectiveKeys::FFFindAsmodeus);
 
 	if (this->scaldor != nullptr)
 	{
 		this->scaldor->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 		{
 			questBehavior->disableAll();
+		});
+	}
+	
+	if (this->squally != nullptr)
+	{
+		this->squally->getComponent<EntityInventoryBehavior>([&](EntityInventoryBehavior* entityInventoryBehavior)
+		{
+			HeliumBomb* heliumBomb = entityInventoryBehavior->getInventory()->getItemOfType<HeliumBomb>();
+
+			if (heliumBomb != nullptr)
+			{
+				entityInventoryBehavior->getInventory()->tryRemove(heliumBomb);
+			}
 		});
 	}
 }
@@ -135,7 +185,7 @@ void DeliverBomb::runCinematicSequencePt1()
 			if (entityInventoryBehavior->getInventory()->hasItemOfType<HeliumBomb>())
 			{
 				interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-					Strings::TODO::create(),
+					Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_Scaldor_A_BombReady::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
 						DialogueBox::DialogueAlignment::Left,
@@ -146,30 +196,68 @@ void DeliverBomb::runCinematicSequencePt1()
 					{
 						PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(HeliumBomb::create()));
 					},
-					Voices::GetNextVoiceMedium(),
+					Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 					false
 				));
 
 				interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-					Strings::TODO::create(),
+					Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_Scaldor_B_Excellent::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
-						DialogueBox::DialogueAlignment::Left,
-						DialogueEvents::BuildPreviewNode(&this->guano, false),
-						DialogueEvents::BuildPreviewNode(&this->squally, true)
+						DialogueBox::DialogueAlignment::Right,
+						DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+						DialogueEvents::BuildPreviewNode(&this->scaldor, true)
 					),
 					[=]()
 					{
-						this->complete();
+						if (this->floatingBomb != nullptr && this->cinematicFocus != nullptr && this->cinematicLavaFall != nullptr)
+						{
+							PlatformerEvents::TriggerCinematicHijack();
+
+							this->floatingBomb->runAction(Sequence::create(
+								FadeTo::create(0.5f, 255),
+								CallFunc::create([=]()
+								{
+									PlatformerEvents::TriggerCinematicHijack();
+									this->floatingBomb->getCollision()->setPhysicsFlagEnabled(true);
+								}),
+								DelayTime::create(4.0f),
+								CallFunc::create([=]()
+								{
+									PlatformerEvents::TriggerCinematicHijack();
+									this->cinematicLavaFall->runAction(FadeTo::create(0.5f, 255));
+									this->explosionSound->play();
+									GameCamera::getInstance()->shakeCamera(0.5f, 12.0f, 1.5f);
+								}),
+								DelayTime::create(1.0f),
+								CallFunc::create([=]()
+								{
+									PlatformerEvents::TriggerCinematicHijack();
+									GameCamera::getInstance()->pushTarget(this->cinematicFocus->getTrackingData());
+								}),
+								DelayTime::create(4.0f),
+								CallFunc::create([=]()
+								{
+									GameCamera::getInstance()->popTarget();
+									this->runCinematicSequencePt2();
+								}),
+								nullptr
+							));
+						}
+						else
+						{
+							// Fail-safe
+							this->runCinematicSequencePt2();
+						}
 					},
-					Voices::GetNextVoiceShort(),
-					true
+					Voices::GetNextVoiceMedium(),
+					false
 				));
 			}
 			else
 			{
 				interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-					Strings::TODO::create(),
+					Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_Scaldor_A_CraftBombPls::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
 						DialogueBox::DialogueAlignment::Left,
@@ -179,10 +267,30 @@ void DeliverBomb::runCinematicSequencePt1()
 					[=]()
 					{
 					},
-					Voices::GetNextVoiceMedium(),
-					false
+					Voices::GetNextVoiceLong(),
+					true
 				));
 			}
 		});
 	});
+}
+
+void DeliverBomb::runCinematicSequencePt2()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_Scaldor_C_WeDidIt::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+			DialogueEvents::BuildPreviewNode(&this->scaldor, true)
+		),
+		[=]()
+		{
+			PlatformerEvents::TriggerCinematicRestore();
+			this->complete();
+		},
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Human),
+		false
+	));
 }

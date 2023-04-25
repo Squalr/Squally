@@ -96,6 +96,8 @@ public:
 	void setAccelerationY(float accelerationY);
 	void setHorizontalDampening(float horizontalDampening);
 	void setVerticalDampening(float verticalDampening);
+	float getHorizontalDampening();
+	float getVerticalDampening();
 	const std::set<CollisionObject*>& getCurrentCollisions();
 	bool hasCollisions();
 	bool isCollidingWith(CollisionObject* collisionObject);
