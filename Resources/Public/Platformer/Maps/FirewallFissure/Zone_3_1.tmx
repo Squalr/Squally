@@ -986,22 +986,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="986" name="fire-tiger" type="entity" x="6587.15" y="2234.7" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="FirewallFissure/Combat_Lava"/>
-    <property name="battle-tag" value="group-d"/>
-    <property name="components" value="enemy,soul,agro"/>
-    <property name="drop-pool" value="ff-generic"/>
-   </properties>
-  </object>
-  <object id="987" name="fire-tiger" type="entity" x="6576.79" y="1937.78" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-d"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

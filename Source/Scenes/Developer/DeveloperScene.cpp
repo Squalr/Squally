@@ -527,6 +527,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Home Mittens (FF)", MapResources::FirewallFissure_Town_Home1));
 		mapList.push_back(this->buildDebugButton("Home Hades (FF)", MapResources::FirewallFissure_Town_Home2));
 		mapList.push_back(this->buildDebugButton("Zone_3_Dev (FF)", MapResources::FirewallFissure_Zone_3_Dev));
+		mapList.push_back(this->buildDebugButton("Zone_3_2 (FF)", MapResources::FirewallFissure_Zone_3_2));
 		mapList.push_back(this->buildDebugButton("Zone_3_1 (FF)", MapResources::FirewallFissure_Zone_3_1));
 		mapList.push_back(this->buildDebugButton("Zone_3_0 (FF)", MapResources::FirewallFissure_Zone_3_0));
 		mapList.push_back(this->buildDebugButton("Zone_2_3 (FF)", MapResources::FirewallFissure_Zone_2_3));
@@ -539,11 +540,9 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ================== 
 		// Traps: Fire bird, fire launcher, TNT barrel, mortar
 		// ** Implement hexus puzzles
-		// ** Add hexus battles
+		// ** Add hexus battles (H6 missing)
 		// ** Quests
-		//	* Craft a unique bomb, bring to Scaldor or someone on 3_1.
-		//	* Launch bomb into ceiling
-		//	* Spawns another lava waterfall, raising lava level. Most enemies die, Azmodeus flees. Pathway appears.
+		//	* Some sort of reward or next step after killing Asmodeus
 		// 	* Quest clears volcano smoke, allowing airship travel? From EF or CV?
 		// * Another Perceptron encounter?
 		// * Mage tower? Portal map?
@@ -582,8 +581,8 @@ DeveloperScene::DeveloperScene()
 		X Mittens		=> Town_Main
 		X Celeste		=> Town_Main
 		X Cindra		=> Town_Main
-		X Scaldor		=> 3_x (barricade)(H5)
-		X Magnus		=> 3_x (barricade)(H?)
+		X Scaldor		=> 3_x (barricade)
+		X Magnus		=> 3_x (barricade)(H5)
 		X Queen Elise	=> Town_Main
 		X Pan			=> Alch
 		X Ragnis		=> Smith
