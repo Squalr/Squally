@@ -299,7 +299,7 @@
     <property name="quest-line" value="restore-warp-gates"/>
    </properties>
   </object>
-  <object id="972" name="warp-gate-bp" type="object" x="3000.8" y="110.515" width="483" height="678">
+  <object id="972" name="warp-gate-bp" type="object" x="4260.25" y="112.97" width="483" height="678">
    <properties>
     <property name="quest" value="power-warp-gate-bp"/>
     <property name="quest-line" value="restore-warp-gates"/>
@@ -317,7 +317,7 @@
     <property name="quest-line" value="restore-warp-gates"/>
    </properties>
   </object>
-  <object id="979" name="warp-gate-lc" type="object" x="4254.02" y="114.363" width="483" height="678">
+  <object id="979" name="warp-gate-lc" type="object" x="2995.02" y="115.363" width="483" height="678">
    <properties>
     <property name="quest" value="power-warp-gate-lc"/>
     <property name="quest-line" value="restore-warp-gates"/>
@@ -611,7 +611,7 @@
     <property name="transition" value="cv"/>
    </properties>
   </object>
-  <object id="1025" name="portal" type="object" x="3095.33" y="792" width="256" height="256">
+  <object id="1025" name="portal" type="object" x="4375.78" y="792.455" width="256" height="256">
    <properties>
     <property name="map" value="BallmerPeaks/Mages_Warp"/>
     <property name="quest" value="power-warp-gate-bp"/>
@@ -627,7 +627,7 @@
     <property name="transition" value="cv"/>
    </properties>
   </object>
-  <object id="1027" name="portal" type="object" x="4365.33" y="793.333" width="256" height="256">
+  <object id="1027" name="portal" type="object" x="3106.33" y="794.333" width="256" height="256">
    <properties>
     <property name="map" value="LambdaCrypts/Mages_Warp"/>
     <property name="quest" value="power-warp-gate-lc"/>
@@ -674,7 +674,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="2579.72" y="920.314" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="2165.05" y="922.981" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
@@ -702,7 +702,7 @@
     <property name="transition" value="dm"/>
    </properties>
   </object>
-  <object id="1032" name="spawn" type="object" x="3155" y="920" width="128" height="128">
+  <object id="1032" name="spawn" type="object" x="4435.45" y="920.455" width="128" height="128">
    <properties>
     <property name="map-banner" value="castle-valgrind"/>
     <property name="transition" value="bp"/>
@@ -714,7 +714,7 @@
     <property name="transition" value="dh"/>
    </properties>
   </object>
-  <object id="1034" name="spawn" type="object" x="4425.33" y="921.333" width="128" height="128">
+  <object id="1034" name="spawn" type="object" x="3166.33" y="922.333" width="128" height="128">
    <properties>
     <property name="map-banner" value="castle-valgrind"/>
     <property name="transition" value="lc"/>

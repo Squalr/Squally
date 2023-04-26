@@ -526,8 +526,9 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Smith (FF)", MapResources::FirewallFissure_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Home Mittens (FF)", MapResources::FirewallFissure_Town_Home1));
 		mapList.push_back(this->buildDebugButton("Home Hades (FF)", MapResources::FirewallFissure_Town_Home2));
-		mapList.push_back(this->buildDebugButton("Zone_3_Dev (FF)", MapResources::FirewallFissure_Zone_3_Dev));
+		mapList.push_back(this->buildDebugButton("Zone_3_3 (FF)", MapResources::FirewallFissure_Zone_3_3));
 		mapList.push_back(this->buildDebugButton("Zone_3_2 (FF)", MapResources::FirewallFissure_Zone_3_2));
+		mapList.push_back(this->buildDebugButton("Zone_3_1_Dev (FF)", MapResources::FirewallFissure_Zone_3_Dev));
 		mapList.push_back(this->buildDebugButton("Zone_3_1 (FF)", MapResources::FirewallFissure_Zone_3_1));
 		mapList.push_back(this->buildDebugButton("Zone_3_0 (FF)", MapResources::FirewallFissure_Zone_3_0));
 		mapList.push_back(this->buildDebugButton("Zone_2_3 (FF)", MapResources::FirewallFissure_Zone_2_3));
