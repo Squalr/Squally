@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="82" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="96" nextobjectid="1196">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="55" height="26" tilewidth="128" tileheight="128" infinite="0" nextlayerid="96" nextobjectid="1199">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -8,7 +8,7 @@
    <property name="map-banner" value=""/>
    <property name="music" value="solace"/>
    <property name="rubber-band" type="int" value="21"/>
-   <property name="show-cracks" type="bool" value="false"/>
+   <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
@@ -69,8 +69,8 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="941" name="ice" type="terrain" x="3452" y="-1536">
-   <polygon points="5183.19,5103.02 4402.21,4729.63 3654.41,5103.47 3386.25,6090.62 3410.56,7175.73 771.591,7191.22 673.38,5905.54 257.271,4524.09 1326.11,3249.95 1465.26,2221.25 809.05,1797.55 1652.56,1296.12 2467.82,1440.09 3349.94,1876.89 3687.3,2797.01 4447.57,3709.93 4942.49,3725.47 5375.75,3834.09 5583.44,4083.61 5713.64,4256.74 5957.01,4435.77 6310.58,4657.83 7128.74,4662.68 7126.22,5178.66"/>
+  <object id="941" name="ice" type="terrain" x="3460" y="-1528">
+   <polygon points="5183.19,5103.02 4402.21,4729.63 3654.41,5103.47 3386.25,6090.62 3410.56,7175.73 771.591,7191.22 673.38,5905.54 257.271,4524.09 1326.11,3249.95 1465.26,2221.25 809.05,1797.55 1372.56,1464.12 1971.82,1504.09 2853.94,1940.89 3191.3,2861.01 4447.57,3709.93 4942.49,3725.47 5375.75,3834.09 5583.44,4083.61 5713.64,4256.74 5957.01,4435.77 6310.58,4657.83 7128.74,4662.68 7126.22,5178.66"/>
   </object>
   <object id="1190" name="ice" type="terrain" x="1838.31" y="1597.48">
    <polygon points="194.088,709.689 4.71975,585.077 1.58599,482.97 36.9088,366.038 1033.25,365.854 1068.4,491.473 1038.1,625.966 885.267,704.678"/>
@@ -91,7 +91,7 @@
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1179" name="Snow/Background/Mountain2" type="decor" x="2612" y="1438" width="3144" height="1540" rotation="-15">
+  <object id="1179" name="Snow/Background/Mountain2" type="decor" x="7716" y="1150" width="3144" height="1540" rotation="15">
    <properties>
     <property name="repeat-x" type="bool" value="false"/>
    </properties>
@@ -340,7 +340,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="920" name="ice" type="terrain" x="-682.892" y="-899.65">
-   <polygon points="5548.03,3971.87 5419.05,3972.51 4361.18,4178.09 3753.27,4407.69 3457.91,4411.67 2837.38,4573.54 1724.92,4692.15 640.694,4594.85 638.777,3971.81 959.065,3921.79 1362.9,3877.08 1530.91,3812.6 3305.3,3805.72 3612.06,3826.53 4065.94,3484.89 4567.75,3078.09 5604.17,2341.43 6855.06,1872.63 7240.32,2593.83 7563.46,2597.64 7851.01,2838.67 8130.25,2838.3 8593.14,3086.57 9071.68,3085.14 9063.87,3440.53 7553.64,4088.74 5801.43,3970.44"/>
+   <polygon points="5548.03,3971.87 5419.05,3972.51 4361.18,4178.09 3753.27,4407.69 3457.91,4411.67 2837.38,4573.54 1724.92,4692.15 640.694,4594.85 638.777,3971.81 959.065,3921.79 1362.9,3877.08 1530.91,3812.6 3305.3,3805.72 3612.06,3826.53 4065.94,3484.89 4567.75,3078.09 5604.17,2341.43 6578.45,1871.8 6855.06,1872.63 7240.32,2593.83 7563.46,2597.64 7851.01,2838.67 8130.25,2838.3 8593.14,3086.57 9071.68,3085.14 9063.87,3440.53 7553.64,4088.74 5801.43,3970.44"/>
   </object>
   <object id="938" name="ice" type="terrain" x="2717.06" y="2091.99">
    <polygon points="78.8635,343.542 1.91777,283.221 0.644437,233.793 14.9971,177.189 419.84,177.1 434.121,237.909 421.813,303.014 359.71,341.116"/>
@@ -377,7 +377,7 @@
   <object id="1011" name="Snow/Snow5" type="decor" x="1255.83" y="2872.5" width="126" height="45"/>
   <object id="1012" name="Snow/Snow2" type="decor" x="1079.5" y="2893.5" width="66" height="19"/>
   <object id="1013" name="Snow/Snow2" type="decor" x="1087" y="2833.5" width="66" height="19"/>
-  <object id="1014" name="Snow/Snow10" type="decor" x="1507" y="2837.5" width="190" height="47"/>
+  <object id="1014" name="Snow/Snow10" type="decor" x="1557" y="2836.5" width="190" height="47"/>
   <object id="1016" name="Snow/Stone6" type="decor" x="1238.83" y="4262.5" width="410" height="207"/>
   <object id="1017" name="Snow/Snow12" type="decor" x="2643.06" y="2890.04" width="236" height="47" rotation="0.54666"/>
   <object id="1018" name="Snow/Snow5" type="decor" x="2925.53" y="2902.78" width="126" height="45" rotation="321.047"/>
@@ -457,7 +457,7 @@
     <property name="listen-event" value="3"/>
    </properties>
   </object>
-  <object id="1150" name="snowball" type="object" x="5297.69" y="589.345" width="682.419" height="663.462" rotation="339.416"/>
+  <object id="1150" name="snowball" type="object" x="9417.69" y="1749.35" width="682.419" height="663.462"/>
   <object id="1177" name="trigger" type="object" x="4735.09" y="3036" width="420.573" height="1174.67">
    <properties>
     <property name="send-event" value="4"/>
@@ -474,6 +474,19 @@
    <properties>
     <property name="map" value="BallmerPeaks/Mages_Warp"/>
     <property name="transition" value="warp-room"/>
+   </properties>
+  </object>
+  <object id="1196" name="cannon" type="object" x="5964" y="844" width="128" height="128"/>
+  <object id="1197" name="solid" type="collision" x="6174.56" y="-914.59" width="892.878" height="2833.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="1198" name="portal" type="object" x="7632" y="-496" width="256" height="256">
+   <properties>
+    <property name="map" value="VoidStar/Town_Main"/>
+    <property name="tag" value="sky-portal"/>
+    <property name="transition" value="sky-cannon"/>
    </properties>
   </object>
  </objectgroup>
@@ -493,7 +506,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="928" name="penguin-grunt" type="entity" x="7236.54" y="1810.37" width="128" height="128">
+  <object id="928" name="penguin-grunt" type="entity" x="7852.54" y="3618.37" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
@@ -502,7 +515,7 @@
     <property name="drop-pool" value="bp-generic"/>
    </properties>
   </object>
-  <object id="929" name="penguin-grunt" type="entity" x="6559.27" y="1564.63" width="128" height="128">
+  <object id="929" name="penguin-grunt" type="entity" x="7831.27" y="3368.63" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-c"/>

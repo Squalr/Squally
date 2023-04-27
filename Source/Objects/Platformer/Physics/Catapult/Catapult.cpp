@@ -45,7 +45,7 @@ Catapult* Catapult::create(ValueMap& properties)
 	return instance;
 }
 
-Catapult::Catapult(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, CSize(512, 320.0f))
+Catapult::Catapult(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, CSize(512.0f, 320.0f))
 {
 	this->catapultAnimations = SmartAnimationNode::create(ObjectResources::Traps_Catapult_Animations);
 	this->ballAnimationPart = this->catapultAnimations->getAnimationPart("BALL");
