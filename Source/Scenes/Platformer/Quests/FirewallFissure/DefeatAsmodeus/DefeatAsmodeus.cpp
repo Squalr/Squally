@@ -72,6 +72,16 @@ void DefeatAsmodeus::onLoad(QuestState questState)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
+
+	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* exitPortal)
+	{
+		this->exitPortal = exitPortal;
+
+		if (questState != QuestState::Complete)
+		{
+			this->exitPortal->disable();
+		}
+	}, "exit");
 }
 
 void DefeatAsmodeus::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
@@ -95,7 +105,12 @@ void DefeatAsmodeus::onActivate(bool isActiveThroughSkippable, bool isInitialAct
 
 void DefeatAsmodeus::onComplete()
 {
-	Objectives::SetCurrentObjective(ObjectiveKeys::DMSailToDrammol);
+	Objectives::SetCurrentObjective(ObjectiveKeys::FFAscendVolcano);
+
+	if (this->exitPortal != nullptr)
+	{
+		this->exitPortal->enable();
+	}
 }
 
 void DefeatAsmodeus::onSkipped()

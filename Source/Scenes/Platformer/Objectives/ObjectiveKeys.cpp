@@ -70,4 +70,5 @@ const std::string ObjectiveKeys::FFEnterTown = "FF_ENTER_TOWN";
 const std::string ObjectiveKeys::FFCraftBomb = "FF_CRAFT_BOMB";
 const std::string ObjectiveKeys::FFDeliverBomb = "FF_DELIVER_BOMB";
 const std::string ObjectiveKeys::FFLaunchBomb = "FF_LAUNCH_BOMB";
-const std::string ObjectiveKeys::FFFindAsmodeus= "FF_FIND_ASMODEUS";
+const std::string ObjectiveKeys::FFFindAsmodeus = "FF_FIND_ASMODEUS";
+const std::string ObjectiveKeys::FFAscendVolcano = "FF_ASCEND_VOLCANO";

@@ -541,9 +541,7 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ================== 
 		// Traps: Fire bird, fire launcher, TNT barrel, mortar
 		// ** Implement hexus puzzles
-		// ** Add hexus battles (H6 missing)
-		// ** Quests
-		//	* Some sort of reward or next step after killing Asmodeus
+		// * Some sort of reward or next step after killing Asmodeus
 		// * Another Perceptron encounter?
 		// * Mage tower? Portal map?
 
@@ -581,8 +579,8 @@ DeveloperScene::DeveloperScene()
 		X Mittens		=> Town_Main
 		X Celeste		=> Town_Main
 		X Cindra		=> Town_Main
-		X Scaldor		=> 3_x (barricade)
-		X Magnus		=> 3_x (barricade)(H5)
+		X Scaldor		=> 3_x (barricade) (H5)
+		X Magnus		=> 3_x (barricade) (H6)
 		X Queen Elise	=> Town_Main
 		X Pan			=> Alch
 		X Ragnis		=> Smith

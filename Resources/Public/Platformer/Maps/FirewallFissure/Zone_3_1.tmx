@@ -77,7 +77,7 @@
   </properties>
   <object id="993" name="scaldor" type="entity" x="2969.88" y="1963.39" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pick-pocket"/>
+    <property name="components" value="friendly,ff-t6-hexus,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ff-generic"/>
     <property name="quest" value="deliver-bomb,lava-flood"/>
     <property name="quest-line" value="defeat-asmodeus"/>

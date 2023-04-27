@@ -4,7 +4,7 @@
 
 class QuestLine;
 class Asmodeus;
-class ScreamingDoor;
+class Portal;
 class Squally;
 class WorldSound;
 
@@ -32,6 +32,7 @@ private:
 
 	Asmodeus* asmodeus = nullptr;
 	Squally* squally = nullptr;
+	Portal* exitPortal = nullptr;
 
 	static const std::string MapEventEngageAsmodeus;
 };

@@ -799,6 +799,8 @@
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy"/>
     <property name="drop-pool" value="ff-generic"/>
+    <property name="quest" value="defeat-asmodeus"/>
+    <property name="quest-line" value="defeat-asmodeus"/>
    </properties>
   </object>
   <object id="986" name="fire-tiger" type="entity" x="2551" y="1672.34" width="128" height="128">

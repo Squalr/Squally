@@ -33114,6 +33114,21 @@ namespace Strings
 		virtual ~Platformer_Objectives_EndianForest_EF_VisitQueen() = default;
 	};
 
+	class Platformer_Objectives_FirewallFissure_FF_AscendVolcano : public LocalizedString
+	{
+	public:
+		static Platformer_Objectives_FirewallFissure_FF_AscendVolcano* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_FirewallFissure_FF_AscendVolcano();
+		virtual ~Platformer_Objectives_FirewallFissure_FF_AscendVolcano() = default;
+	};
+
 	class Platformer_Objectives_FirewallFissure_FF_CraftBomb : public LocalizedString
 	{
 	public:

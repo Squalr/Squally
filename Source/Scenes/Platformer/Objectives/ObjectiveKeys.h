@@ -76,4 +76,5 @@ public:
 	static const std::string FFDeliverBomb;
 	static const std::string FFLaunchBomb;
 	static const std::string FFFindAsmodeus;
+	static const std::string FFAscendVolcano;
 };
