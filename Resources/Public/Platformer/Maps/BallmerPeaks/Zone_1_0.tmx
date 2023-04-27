@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="82" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="94" nextobjectid="1194">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="82" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="96" nextobjectid="1196">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -291,21 +291,37 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
+ <objectgroup id="95" name="terrain bg 4">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1195" name="ice" type="terrain" x="1147.66" y="1878">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="86.0189,1775.98 2.09178,1464.14 0.702909,1208.62 16.3579,916.001 457.936,915.541 473.511,1229.9 460.087,1566.47 392.349,1763.44"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="94" name="terrain bg 3">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1194" name="ice" type="terrain" x="1036.68" y="1904">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+   <polygon points="126.529,1775.98 3.0769,1464.14 1.03394,1208.62 24.0615,916.001 673.598,915.541 696.509,1229.9 676.763,1566.47 577.124,1763.44"/>
+  </object>
+ </objectgroup>
  <objectgroup id="92" name="terrain bg 2">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1184" name="ice" type="terrain" x="768.101" y="1920">
+  <object id="1184" name="ice" type="terrain" x="914.318" y="1920">
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="197.484,1775.98 4.80233,1464.14 1.61375,1208.62 37.5545,916.001 1051.33,915.541 1087.09,1229.9 1056.27,1566.47 900.757,1763.44"/>
-  </object>
-  <object id="1185" name="ice" type="terrain" x="992.431" y="1904">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="157.094,1775.98 3.82016,1464.14 1.2837,1208.62 29.8739,916.001 836.313,915.541 864.759,1229.9 840.243,1566.47 716.535,1763.44"/>
+   <polygon points="170.921,1775.98 4.1564,1464.14 1.39669,1208.62 32.5033,916.001 909.922,915.541 940.872,1229.9 914.198,1566.47 779.602,1763.44"/>
   </object>
  </objectgroup>
  <objectgroup id="91" name="terrain bg">
@@ -447,7 +463,7 @@
     <property name="send-event" value="4"/>
    </properties>
   </object>
-  <object id="1186" name="smoke" type="object" x="1320" y="2752" width="128" height="128"/>
+  <object id="1186" name="smoke" type="object" x="1328" y="2752.67" width="128" height="128"/>
   <object id="1192" name="portal" type="object" x="1256.85" y="2659.88" width="256" height="256">
    <properties>
     <property name="map" value="FirewallFissure/Zone_3_3"/>

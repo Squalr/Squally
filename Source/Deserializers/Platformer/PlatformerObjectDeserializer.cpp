@@ -219,6 +219,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Ship::MapKey] = [=](ValueMap properties) { return (GameObject*)Ship::create(properties); };
 	this->deserializers[ShipWheel::MapKey] = [=](ValueMap properties) { return (GameObject*)ShipWheel::create(properties); };
 	this->deserializers[SmeltingPot::MapKey] = [=](ValueMap properties) { return (GameObject*)SmeltingPot::create(properties); };
+	this->deserializers[Smoke::MapKey] = [=](ValueMap properties) { return (GameObject*)Smoke::create(properties); };
 	this->deserializers[SpawnPoolEF::MapKey] = [=](ValueMap properties) { return (GameObject*)SpawnPoolEF::create(properties); };
 	this->deserializers[SpawnPoolUR::MapKey] = [=](ValueMap properties) { return (GameObject*)SpawnPoolUR::create(properties); };
 	this->deserializers[SpikedBall::MapKey] = [=](ValueMap properties) { return (GameObject*)SpikedBall::create(properties); };

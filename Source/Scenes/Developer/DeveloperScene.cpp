@@ -544,7 +544,6 @@ DeveloperScene::DeveloperScene()
 		// ** Add hexus battles (H6 missing)
 		// ** Quests
 		//	* Some sort of reward or next step after killing Asmodeus
-		// 	* Quest clears volcano smoke, allowing airship travel? From EF or CV?
 		// * Another Perceptron encounter?
 		// * Mage tower? Portal map?
 
