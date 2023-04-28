@@ -452,7 +452,7 @@
     <property name="entity-tag" value="hexus-demon-rogue"/>
    </properties>
   </object>
-  <object id="1962" name="demon-rogue" type="entity" x="6237.96" y="5178.4" width="128" height="128">
+  <object id="1962" name="demon-rogue" type="entity" x="5149.96" y="5138.4" width="128" height="128">
    <properties>
     <property name="components" value="friendly,disarmed,ff-puzzle-C"/>
     <property name="tag" value="hexus-demon-rogue"/>

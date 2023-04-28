@@ -93,6 +93,9 @@ StateOverride* FFPuzzleBBehavior::getStateOverride()
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Steal),
+			CardList::getInstance()->cardListByName.at(CardKeys::Steal),
+			CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
+			CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -102,27 +105,41 @@ StateOverride* FFPuzzleBBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
+			 // Flip 4
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
+			 // Flip 2
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
 		},
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			
+			 // Flip 3
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex11),
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal14),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal12),
+			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex12),
 		}
 	);
 }

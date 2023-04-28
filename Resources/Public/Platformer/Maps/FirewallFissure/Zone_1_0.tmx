@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="163" nextobjectid="966">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="164" nextobjectid="973">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -408,7 +408,7 @@
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="803" name="brine" type="entity" x="2290.42" y="854.545" width="128" height="128">
+  <object id="803" name="brine" type="entity" x="2327.75" y="860.545" width="128" height="128">
    <properties>
     <property name="components" value="friendly,ff-t3-hexus,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ff-generic"/>
@@ -935,8 +935,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="715" name="obsidean" type="terrain" x="2976.1" y="5260">
-   <polygon points="-1062.41,-2733.26 -905.33,-1979.27 723.437,-1709.84 2290.73,-1976.28 2564.03,-2731.7"/>
+  <object id="715" name="obsidean" type="terrain" x="2350.48" y="5260">
+   <polygon points="-1321.64,-2733.26 -1126.23,-1979.27 899.955,-1709.84 2849.67,-1976.28 3189.65,-2731.7"/>
   </object>
   <object id="792" name="obsidean" type="terrain" x="6564.55" y="5468.05">
    <polygon points="-718.342,-2948.06 -533.173,-2142.65 426.052,-1850.98 1349.07,-2139.42 1510.03,-2957.2"/>
@@ -946,9 +946,14 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="741" name="Lava/Stone1" type="decor" x="2437.64" y="2378.46" width="165" height="120"/>
-  <object id="902" name="Lava/LavaPool1" type="decor" x="2752.17" y="2490.67" width="213" height="44"/>
+  <object id="902" name="Lava/LavaPool1" type="decor" x="2752.17" y="2496.67" width="213" height="44"/>
   <object id="926" name="Lava/Hole2" type="decor" x="1937" y="2434.67" width="541" height="100"/>
+ </objectgroup>
+ <objectgroup id="163" name="decor midground fg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="970" name="Lava/Stone1" type="decor" x="2437.64" y="2378.46" width="165" height="120"/>
  </objectgroup>
  <objectgroup id="57" name="objects back">
   <properties>
@@ -965,6 +970,17 @@
    <properties>
     <property name="map" value="FirewallFissure/Zone_2_0"/>
     <property name="transition" value="hole"/>
+   </properties>
+  </object>
+  <object id="971" name="hexus-shrine" type="object" x="1393.66" y="2269.35" width="155" height="260">
+   <properties>
+    <property name="entity-tag" value="hexus-demon-shaman"/>
+   </properties>
+  </object>
+  <object id="972" name="demon-shaman" type="entity" x="1437.12" y="4034.16" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,disarmed,ff-puzzle-B"/>
+    <property name="tag" value="hexus-demon-shaman"/>
    </properties>
   </object>
  </objectgroup>
