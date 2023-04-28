@@ -93,7 +93,7 @@ StateOverride* FFPuzzleFBehavior::getStateOverride()
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
-			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 		},
 		// Enemy hand
 		std::vector<CardData*>
