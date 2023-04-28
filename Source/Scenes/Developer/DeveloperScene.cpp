@@ -541,7 +541,6 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ================== 
 		// Traps: Fire bird, fire launcher, TNT barrel, mortar
 		// ** Implement hexus puzzles
-		// * Some sort of reward or next step after killing Asmodeus
 		// * Another Perceptron encounter?
 		// * Mage tower? Portal map?
 		// Remove wanted poster after Asmodeus dead. Maybe some Elise dialogue.
