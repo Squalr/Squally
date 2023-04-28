@@ -92,7 +92,6 @@ StateOverride* FFPuzzleEBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary5),
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
 		},
 		// Enemy hand
@@ -111,7 +110,6 @@ StateOverride* FFPuzzleEBehavior::getStateOverride()
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
