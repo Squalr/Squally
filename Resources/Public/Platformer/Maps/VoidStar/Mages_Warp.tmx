@@ -717,7 +717,7 @@
   <object id="1034" name="spawn" type="object" x="4425.33" y="921.333" width="128" height="128">
    <properties>
     <property name="map-banner" value="void-star"/>
-    <property name="transition" value="dh"/>
+    <property name="transition" value="ff"/>
    </properties>
   </object>
   <object id="1036" name="spawn" type="object" x="3827.37" y="921.272" width="128" height="128">

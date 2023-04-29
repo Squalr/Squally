@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="174" nextobjectid="1003">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="174" nextobjectid="1015">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -629,14 +629,57 @@
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="953" name="obsidean" type="terrain" x="4667.37" y="4988.59">
-   <polygon points="-498.828,-2723.26 -370.244,-1979.27 295.857,-1709.84 936.817,-1976.28 1048.59,-2731.7"/>
+  <object id="953" name="obsidean" type="terrain" x="4092.73" y="4988.59">
+   <polygon points="-772.191,-2723.26 -573.141,-1979.27 457.989,-1709.84 1450.2,-1976.28 1623.23,-2731.7"/>
   </object>
   <object id="954" name="obsidean" type="terrain" x="6178.7" y="3434.1">
    <polygon points="-264.148,-1177.56 -196.058,-855.851 156.667,-739.348 496.08,-854.558 555.265,-1181.21"/>
   </object>
   <object id="984" name="obsidean" type="terrain" x="6907.06" y="3272.36">
    <polygon points="-116.506,-1012.33 -86.4739,-735.762 69.1001,-635.605 218.802,-734.65 244.907,-1015.47"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="72" name="decor -13">
+  <properties>
+   <property name="depth" type="float" value="-832"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1009" name="Lava/WarpTower" type="decor" x="3372.5" y="33.5" width="979" height="2249"/>
+ </objectgroup>
+ <objectgroup id="103" name="objects -13">
+  <properties>
+   <property name="depth" type="float" value="-832"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1012" name="portal" type="object" x="3678" y="2012.66" width="256" height="256">
+   <properties>
+    <property name="map" value="FirewallFissure/Mages_Warp"/>
+    <property name="transition" value="warp-room"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="162" name="entities -13">
+  <properties>
+   <property name="depth" type="float" value="-832"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="960" name="demon-warrior" type="entity" x="5105.21" y="2130.21" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="FirewallFissure/Combat_Lava"/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="enemy,soul,agro"/>
+    <property name="drop-pool" value="ff-generic"/>
+   </properties>
+  </object>
+  <object id="961" name="demon-warrior" type="entity" x="5106.79" y="1885.78" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="117" name="player_layer-13">
@@ -662,40 +705,9 @@
     <property name="to" value="bridge-front-B"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="72" name="decor -13">
-  <properties>
-   <property name="depth" type="float" value="-832"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="103" name="objects -13">
-  <properties>
-   <property name="depth" type="float" value="-832"/>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="162" name="entities -13">
-  <properties>
-   <property name="depth" type="float" value="-832"/>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="960" name="demon-warrior" type="entity" x="5105.21" y="2130.21" width="128" height="128">
+  <object id="1014" name="spawn" type="object" x="3746.55" y="2139.02" width="128" height="128">
    <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="FirewallFissure/Combat_Lava"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,soul,agro"/>
-    <property name="drop-pool" value="ff-generic"/>
-   </properties>
-  </object>
-  <object id="961" name="demon-warrior" type="entity" x="5106.79" y="1885.78" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
+    <property name="transition" value="warp-room"/>
    </properties>
   </object>
  </objectgroup>
@@ -955,8 +967,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="792" name="obsidean" type="terrain" x="6558.49" y="5316.53">
-   <polygon points="-718.342,-2948.06 -533.173,-2142.65 426.052,-1850.98 1349.07,-2139.42 1510.03,-2957.2"/>
+  <object id="792" name="obsidean" type="terrain" x="6474.46" y="5316.53">
+   <polygon points="-758.315,-2948.06 -562.842,-2142.65 449.76,-1850.98 1424.14,-2139.42 1594.06,-2957.2"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -991,6 +1003,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.5"/>
   </properties>
   <object id="848" name="warp" type="object" x="6304.27" y="2105.15" width="256" height="256">
    <properties>

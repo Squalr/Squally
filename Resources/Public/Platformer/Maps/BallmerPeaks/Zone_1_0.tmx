@@ -96,7 +96,7 @@
     <property name="repeat-x" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="1189" name="Mines/WarpTower" type="decor" x="1889.29" y="-260.864" width="979" height="2249"/>
+  <object id="1189" name="Snow/WarpTower" type="decor" x="1889.29" y="-260.864" width="979" height="2249"/>
  </objectgroup>
  <objectgroup id="80" name="objects -4">
   <properties>

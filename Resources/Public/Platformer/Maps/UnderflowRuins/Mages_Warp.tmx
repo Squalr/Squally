@@ -720,7 +720,7 @@
   <object id="1033" name="spawn" type="object" x="3806.67" y="920" width="128" height="128">
    <properties>
     <property name="map-banner" value="underflow-ruins"/>
-    <property name="transition" value="dh"/>
+    <property name="transition" value="ff"/>
    </properties>
   </object>
   <object id="1034" name="spawn" type="object" x="3169.31" y="920.863" width="128" height="128">
