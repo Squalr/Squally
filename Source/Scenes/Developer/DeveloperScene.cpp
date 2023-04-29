@@ -118,7 +118,6 @@ DeveloperScene::DeveloperScene()
 		- Kill 2nd sky tower map?
 
 	- Hexus:
-		- * Reduce Hexus fights to 6 per chapter (ignoring VS) (6 * 7 = 42 fights)
 		- Sanity check card localization (due to art changes)
 		- Can pass after auto-loss
 		- Rematch dialog does not load unless map is reloaded

@@ -408,7 +408,7 @@
   </properties>
   <object id="1109" name="ajax" type="entity" x="1785.33" y="1433.33" width="128" height="128">
    <properties>
-    <property name="components" value="ur-t8-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="friendly,pick-pocket,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="quest" value="raise-bridge"/>

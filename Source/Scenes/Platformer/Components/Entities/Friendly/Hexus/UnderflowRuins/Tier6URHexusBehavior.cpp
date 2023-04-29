@@ -44,7 +44,7 @@ MinMaxPool* Tier6URHexusBehavior::generateReward()
 std::string Tier6URHexusBehavior::getWinLossSaveKey()
 {
 	// Backwards compatibility, use old string for save key
-	return "athena-hexus"; // Tier6URHexusBehavior::MapKey;
+	return "horus-hexus"; // Tier6URHexusBehavior::MapKey;
 }
 
 std::string Tier6URHexusBehavior::getBackgroundResource()
@@ -65,19 +65,19 @@ std::vector<CardData*> Tier6URHexusBehavior::generateDeck()
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 
-		CardList::getInstance()->cardListByName[CardKeys::Mov],
+		// CardList::getInstance()->cardListByName[CardKeys::Mov],
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
 		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
-		// CardList::getInstance()->cardListByName[CardKeys::Flip1],
-		CardList::getInstance()->cardListByName[CardKeys::Flip2],
+		CardList::getInstance()->cardListByName[CardKeys::Flip1],
+		// CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		CardList::getInstance()->cardListByName[CardKeys::Flip2],
 		// CardList::getInstance()->cardListByName[CardKeys::Addition],
-		// CardList::getInstance()->cardListByName[CardKeys::Addition],
+		CardList::getInstance()->cardListByName[CardKeys::Addition],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
-		// CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
+		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
 		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
-		// CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
-		CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
+		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
+		// CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
 		CardList::getInstance()->cardListByName[CardKeys::LogicalOr],
 	});
 }

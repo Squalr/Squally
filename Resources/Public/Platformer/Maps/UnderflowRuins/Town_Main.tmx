@@ -316,14 +316,14 @@
   </properties>
   <object id="1006" name="thor" type="entity" x="2337.94" y="988.67" width="128" height="128">
    <properties>
-    <property name="components" value="petrified,ur-t7-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="petrified,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
   <object id="1049" name="athena" type="entity" x="2904" y="988" width="128" height="128">
    <properties>
-    <property name="components" value="petrified,ur-t6-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="petrified,friendly,pick-pocket,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ur-generic"/>
     <property name="travel-distance" type="float" value="192"/>

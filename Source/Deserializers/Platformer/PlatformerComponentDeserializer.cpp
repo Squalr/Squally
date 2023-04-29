@@ -122,9 +122,6 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[Tier4URHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier4URHexusBehavior::create(owner); };
 	this->componentDeserializers[Tier5URHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier5URHexusBehavior::create(owner); };
 	this->componentDeserializers[Tier6URHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier6URHexusBehavior::create(owner); };
-	this->componentDeserializers[Tier7URHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier7URHexusBehavior::create(owner); };
-	this->componentDeserializers[Tier8URHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier8URHexusBehavior::create(owner); };
-	this->componentDeserializers[Tier9URHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier9URHexusBehavior::create(owner); };
 
 	// DM
 	this->componentDeserializers[DMPuzzleABehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DMPuzzleABehavior::create(owner); };
@@ -141,8 +138,6 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[Tier4DMHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier4DMHexusBehavior::create(owner); };
 	this->componentDeserializers[Tier5DMHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier5DMHexusBehavior::create(owner); };
 	this->componentDeserializers[Tier6DMHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier6DMHexusBehavior::create(owner); };
-	this->componentDeserializers[Tier7DMHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier7DMHexusBehavior::create(owner); };
-	this->componentDeserializers[Tier8DMHexusBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)Tier8DMHexusBehavior::create(owner); };
 
 	// CV
 	this->componentDeserializers[CVPuzzleABehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)CVPuzzleABehavior::create(owner); };
