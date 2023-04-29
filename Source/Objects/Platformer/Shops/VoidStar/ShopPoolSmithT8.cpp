@@ -31,7 +31,6 @@ ShopPoolSmithT8::ShopPoolSmithT8(ValueMap& properties) : super(properties, ShopP
 	this->addItemToPool(ItemChance::create(VoidCrystal::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Obsidian::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Bone::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(VoidCrystal::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolSmithT8::~ShopPoolSmithT8()

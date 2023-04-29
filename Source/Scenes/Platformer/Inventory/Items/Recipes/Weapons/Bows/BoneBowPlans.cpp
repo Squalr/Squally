@@ -38,9 +38,9 @@ std::vector<std::tuple<Item*, int>> BoneBowPlans::getReagentsInternal()
 {
 	return
 	{
-		{ DarkWood::create(), 8 },
 		{ Bone::create(), 12 },
 		{ Iron::create(), 4 },
+		{ DarkWood::create(), 8 },
 		{ Coal::create(), 4 },
 	};
 }

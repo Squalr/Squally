@@ -40,7 +40,7 @@ LocalizedString* VoidCrystal::getString()
 
 const std::string& VoidCrystal::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_VoidCrystal;
+	return ItemResources::Crafting_Smithing_T8_VoidCrystal;
 }
 
 const std::string& VoidCrystal::getIdentifier()

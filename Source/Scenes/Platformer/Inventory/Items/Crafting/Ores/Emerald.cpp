@@ -40,7 +40,7 @@ LocalizedString* Emerald::getString()
 
 const std::string& Emerald::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Emerald;
+	return ItemResources::Crafting_Smithing_T3_Emerald;
 }
 
 const std::string& Emerald::getIdentifier()

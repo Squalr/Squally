@@ -40,7 +40,7 @@ LocalizedString* Mithril::getString()
 
 const std::string& Mithril::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Mithril;
+	return ItemResources::Crafting_Smithing_T4_Mithril;
 }
 
 const std::string& Mithril::getIdentifier()

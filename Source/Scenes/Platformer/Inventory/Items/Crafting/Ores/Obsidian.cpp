@@ -40,7 +40,7 @@ LocalizedString* Obsidian::getString()
 
 const std::string& Obsidian::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Obsidian;
+	return ItemResources::Crafting_Smithing_T8_Obsidian;
 }
 
 const std::string& Obsidian::getIdentifier()

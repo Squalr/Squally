@@ -60,7 +60,7 @@ const std::string& TransmuteCopperToIron::getIconResource()
 
 std::string TransmuteCopperToIron::getCraftedItemIconResource()
 {
-	return ItemResources::Crafting_Smithing_Iron;
+	return ItemResources::Crafting_Smithing_T2_Iron;
 }
 
 const std::string& TransmuteCopperToIron::getIdentifier()

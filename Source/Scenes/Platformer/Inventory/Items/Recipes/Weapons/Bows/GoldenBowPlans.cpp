@@ -38,10 +38,10 @@ std::vector<std::tuple<Item*, int>> GoldenBowPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 6 },
-		{ Iron::create(), 4 },
-		{ Coal::create(), 4 },
 		{ Gold::create(), 4 },
+		{ Iron::create(), 4 },
+		{ Wood::create(), 6 },
+		{ Coal::create(), 4 },
 	};
 }
 

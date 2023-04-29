@@ -40,6 +40,7 @@ std::vector<std::tuple<Item*, int>> VoidWandPlans::getReagentsInternal()
 	{
 		{ VoidCrystal::create(), 6 },
 		{ Obsidian::create(), 4 },
+		{ Gold::create(), 4 },
 		{ Coal::create(), 8 },
 	};
 }

@@ -40,7 +40,7 @@ LocalizedString* Copper::getString()
 
 const std::string& Copper::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Copper;
+	return ItemResources::Crafting_Smithing_T1_Copper;
 }
 
 const std::string& Copper::getIdentifier()

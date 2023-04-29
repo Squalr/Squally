@@ -40,7 +40,7 @@ LocalizedString* Diamond::getString()
 
 const std::string& Diamond::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Diamond;
+	return ItemResources::Crafting_Smithing_T5_Diamond;
 }
 
 const std::string& Diamond::getIdentifier()

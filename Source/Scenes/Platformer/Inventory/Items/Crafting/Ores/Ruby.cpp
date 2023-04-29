@@ -40,7 +40,7 @@ LocalizedString* Ruby::getString()
 
 const std::string& Ruby::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Ruby;
+	return ItemResources::Crafting_Smithing_T6_Ruby;
 }
 
 const std::string& Ruby::getIdentifier()

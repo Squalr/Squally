@@ -60,7 +60,7 @@ const std::string& TransmuteQuartzToEmerald::getIconResource()
 
 std::string TransmuteQuartzToEmerald::getCraftedItemIconResource()
 {
-	return ItemResources::Crafting_Smithing_Emerald;
+	return ItemResources::Crafting_Smithing_T3_Emerald;
 }
 
 const std::string& TransmuteQuartzToEmerald::getIdentifier()

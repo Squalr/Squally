@@ -40,7 +40,7 @@ LocalizedString* Sulfur::getString()
 
 const std::string& Sulfur::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Sulfur;
+	return ItemResources::Crafting_Smithing_T6_Sulfur;
 }
 
 const std::string& Sulfur::getIdentifier()

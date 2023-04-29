@@ -40,7 +40,7 @@ LocalizedString* Gold::getString()
 
 const std::string& Gold::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Gold;
+	return ItemResources::Crafting_Smithing_T3_Gold;
 }
 
 const std::string& Gold::getIdentifier()

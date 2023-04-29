@@ -38,8 +38,9 @@ std::vector<std::tuple<Item*, int>> VoidSwordPlans::getReagentsInternal()
 {
 	return
 	{
+		{ VoidCrystal::create(), 4},
 		{ Obsidian::create(), 4 },
-		{ VoidCrystal::create(), 3 },
+		{ Gold::create(), 2 },
 		{ Coal::create(), 8 },
 	};
 }

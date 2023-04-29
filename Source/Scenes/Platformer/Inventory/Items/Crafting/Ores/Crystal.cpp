@@ -40,7 +40,7 @@ LocalizedString* Crystal::getString()
 
 const std::string& Crystal::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Crystal;
+	return ItemResources::Crafting_Smithing_T7_Crystal;
 }
 
 const std::string& Crystal::getIdentifier()

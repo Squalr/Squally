@@ -40,7 +40,7 @@ LocalizedString* Iron::getString()
 
 const std::string& Iron::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Iron;
+	return ItemResources::Crafting_Smithing_T2_Iron;
 }
 
 const std::string& Iron::getIdentifier()

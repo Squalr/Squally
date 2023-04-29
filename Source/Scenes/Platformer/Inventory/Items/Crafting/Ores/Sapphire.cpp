@@ -40,7 +40,7 @@ LocalizedString* Sapphire::getString()
 
 const std::string& Sapphire::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Sapphire;
+	return ItemResources::Crafting_Smithing_T4_Sapphire;
 }
 
 const std::string& Sapphire::getIdentifier()

@@ -40,7 +40,7 @@ LocalizedString* Quartz::getString()
 
 const std::string& Quartz::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_Quartz;
+	return ItemResources::Crafting_Smithing_T2_Quartz;
 }
 
 const std::string& Quartz::getIdentifier()
