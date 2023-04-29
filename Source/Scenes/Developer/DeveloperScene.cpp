@@ -89,6 +89,7 @@ DeveloperScene::DeveloperScene()
 		- Very early Perceptron encounter?
 		- Encounter in DM?
 		- Shadow for Squally
+		- Squally death anim improvement (and disable float hover)
 		- Add CPU noises when turned on in DM
 		- Add Train noises in DM/CV
 		- Sub-categories for alchemy lab
@@ -104,7 +105,8 @@ DeveloperScene::DeveloperScene()
 			- Nature (needs ability?)
 			- Shadow
 			- Frost
-			- Fire
+			- Fire (Possibly use to dispel firewall)
+			- VS special book
 		- Helpers
 			- Abilities unlocked at certain levels
 			- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
@@ -127,7 +129,7 @@ DeveloperScene::DeveloperScene()
 		- Maybe hard code some rewards. It'd be nice to get SHL from the puzzle where you learn it.
 	
 	- Performance / Stability / Code quality:
-		- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie DH)
+		- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
 		- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
 		- Eliminate 'collisionOffset' parameter entirely
 
@@ -201,6 +203,14 @@ DeveloperScene::DeveloperScene()
 		// - F	=> 3_0 (Ogre)
 		// - G	=> 3_1 (Cyclops)
 
+		// Puzzles:
+		// A				EF	2_0		orc-grunt
+		// B				EF	2_2		
+		// C				EF	2_4
+		// D				EF	2_6
+		// E				EF	3_0
+		// F				EF	3_1
+
 		// TODO:
 		// Overworld attacks (Troll / Cyclops swing)
 		// Troll Strength ability seems additive rather than absolute damage
@@ -256,7 +266,6 @@ DeveloperScene::DeveloperScene()
 		// - D	=> 2_3 (Minotaur)
 		// - E	=> 3_3 (Mummy Warrior)
 		// - F	=> 3_6 (Anubis Pup)
-		// - G	=> 3_7 (Mummy Priest)
 
 		// ================== TODO ================== 
 		// Despawn dead gauntlet vehicles
@@ -327,7 +336,6 @@ DeveloperScene::DeveloperScene()
 		// - D	=> 2_5 (Earth Golem)
 		// - E	=> 3_1 (Skeletal Warrior)
 		// - F	=> 3_4 (Skeletal Pirate)
-		// - G	=> 3_6 (Skeletal Necromancer)
 		
 		/*
 		X Tiki Golem			=> X 1_1 Push/Pop const buff (call of the ancients - outgoing AND incoming damage)
@@ -411,6 +419,14 @@ DeveloperScene::DeveloperScene()
 		X Jack					2_x		=> jns			SF			<Stab, Bloodletting RNG Per Tick>
 		X [B] Agnes				dark_t	=> jecxz		%ecx == 0	Bat Swarm <Bats, Bat Swarm RNG per tick to attack>
 
+		// Hexus puzzles:
+		// - A	=> 1_1 (Thug)
+		// - B	=> Town_Main (Reanimated Fighter)
+		// - C	=> Town_Study (Reaper)
+		// - D	=> 2_0_a (Wraith)
+		// - E	=> 2_1 (Abomination)
+		// - F	=> Town_Throne (Skeletal Baron)
+
 		- Garin					=> Town_Train
 		- Zana					=> 1_2 (X H_1)
 		- Gaunt					=> Main (X H_2)
@@ -467,23 +483,18 @@ DeveloperScene::DeveloperScene()
 		X Assassin				=>  1_x <ThrowingStar,		fiadd> 		=> Focus / add to damage
 		X BoneFiend				=>  1_x <AxeGlowPurp,		fdiv>  		=> CursedSwings debuff / reduce damage by 75% or something (int)
 		X Mystic				=>  1_x <VoodooZombie,		fimul> 		=> Hex / speed decrease
-		
 		X ReanimatedPig			=>  2_x <Piggy,				fisub> 		=> Thick Hide / dmg decrease
 		X Zombie				=>  2_x <ZombieGrasp,		fild/fistp> => Zombie Grasp / raw damage dealt debuff
 		X Undead				=>  2_x <DeadGrasp,			fabs>		=> Dead Grasp / convert damage to healing
 		X Zombie Elric			=> 	2_x 								=> Recycle (ZombieGrasp)
-
 		X BoneKnight			=>  3_x <ShieldGlowOrange,	fidiv> 		=> Shield Wall / constant 25% damage recv
 		X Warlock				=>  3_x <WandSkeleton,		fmul/frndint> 	=> Enchantment / 50% damage increase (rounded)
 		X Hunter				=>  3_x <PoisonSpears,		ja>  		=> PoisonedArrows - either radiation or diseased copy
-
 		X [B] Lazarus			=>	3_x <Tombstone, 		fcmove> 	=> UnholyProtection (rename) / undying effect
 		X [B] Lazarus			=>	3_x <GhostBolts,		fchs> 		=> Ghostbolts / reflectable spell (Copy FireBall I guess?) but make 1 per teammate (ie 2 lol)
-		
 		X SkeletalPriestess		=>  4_x <Book,				jbe> 		=> Spell of Binding - Speed Decrease
 		X SkeletalKnight		=>  4_x <SwordGlowPurp,		jae>  		=> CursedBlade - Reduce damage
 		X SkeletalCleaver		=>  4_x <SwordGlowYel,		jb> 		=> UnholyBlade - Damage to healing
-
 		X [B] KingZul			=>  4_x <Daze,			fcmovbe> 		=> Daze / chance to do less damage (use cool daze FX)
 
 		Avail for traps:
@@ -494,13 +505,13 @@ DeveloperScene::DeveloperScene()
 		- fldpi/fldz/fld1
 		- other fcmov{cc}
 
-		X hexus A => 1_1_a
-		X hexus B => 1_1
-		X hexus C => 2_0
-		X hexus D => Town_Main
-		X hexus E => Town_Main
-		X hexus F => 3_0
-		X hexus G => 4_1_a
+		// Hexus puzzles:
+		// - A	=> 1_1 (Bone fiend)
+		// - B	=> 2_0 (zombie)
+		// - C	=> Town_Main (Undead)
+		// - D	=> Town_Church (Reanimated Pig)
+		// - E	=> 3_0 (Bone Knight)
+		// - F	=> 4_0_a (Skeletal Priestess)
 		
 		- Ursula				=> 1_x (H1)
 		- Thion					=> Town_Main (H2)
@@ -574,6 +585,14 @@ DeveloperScene::DeveloperScene()
 		- SunShield
 
 		-----------------
+		
+		// Hexus puzzles:
+		// - A	=> 1_1 (Bone fiend)
+		// - B	=> 2_0 (zombie)
+		// - C	=> Town_Main (Undead)
+		// - D	=> Town_Church (Reanimated Pig)
+		// - E	=> 3_0 (Bone Knight)
+		// - F	=> 4_0_a (Skeletal Priestess)
 		
 		X Ash			=> 1_x (H1)
 		X Lucifer		=> 2_x (H2)
@@ -682,12 +701,16 @@ DeveloperScene::DeveloperScene()
 		// * Needs enemy scripting according to notes on which instructions this zone covers
 		// * Needs hexus puzzles
 		// * Potentially no mage tower? Final boss room is a portal room (maybe with bigger windows to see other worlds?)
-		// * 
+		// * Quest granting money and health manip
 
 		/*
+		Enemies
 		- Exterminator				=>  
 		- Void Demon				=>  
 		- [B] Perceptron			=>  
+
+		Available icons:
+		- ShovelGlowGreen
 		*/
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
@@ -702,26 +725,7 @@ DeveloperScene::DeveloperScene()
 	- DM => FF (viking ship or smth) - Drak
 	- BP => BP (viking ship or smth) - <Any>
 
-	Deprecated:
-	- Gargoyle				=>  
-	- LightningGolem		=>  
-	- Shade					=>  
-
-	Available icons:
-	- ShovelGlowGreen
-
-	- VS - LOOP / CALL / RET
-
 	======================
-
-	Puzzles:
-	A				EF	2_0		orc-grunt
-	B				EF	2_2		
-	C				EF	2_4_a
-	D				EF	2_4
-	E				EF	2_6
-	F				EF	3_0
-	G				EF	3_1
 
 	Level order / Mage
 	EF		//	Fraya? Mabel?

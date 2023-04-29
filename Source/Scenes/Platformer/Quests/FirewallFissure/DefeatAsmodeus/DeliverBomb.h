@@ -7,9 +7,10 @@ class FloatingBomb;
 class Gecky;
 class Guano;
 class LavaFall;
-class Scaldor;
 class QuestLine;
+class Scaldor;
 class Scrappy;
+class Sound;
 class Squally;
 
 class DeliverBomb : public QuestTask

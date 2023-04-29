@@ -647,7 +647,7 @@
   </object>
   <object id="1267" name="orc-warrior" type="entity" x="3460" y="6392" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,ef-puzzle-D"/>
+    <property name="components" value="friendly,disarmed,ef-puzzle-C"/>
     <property name="tag" value="hexus-orc-warrior"/>
    </properties>
   </object>

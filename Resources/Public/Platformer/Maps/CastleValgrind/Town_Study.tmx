@@ -330,7 +330,7 @@
   </object>
   <object id="877" name="reaper" type="entity" x="410.344" y="2040.65" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,cv-puzzle-F"/>
+    <property name="components" value="friendly,disarmed,cv-puzzle-C"/>
     <property name="tag" value="hexus-reaper"/>
    </properties>
   </object>

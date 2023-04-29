@@ -92,6 +92,9 @@ StateOverride* BPPuzzleBBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Flip4),
+			CardList::getInstance()->cardListByName.at(CardKeys::Flip3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Flip2),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -101,27 +104,47 @@ StateOverride* BPPuzzleBBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary13),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal8),
 		},
 		// Player hex cards
 		std::vector<CardData*>
 		{
-			
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex4),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary2),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex3),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex13),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
 		}
 	);
 }

@@ -327,7 +327,7 @@
   </object>
   <object id="716" name="ogre" type="entity" x="6215.64" y="5687.39" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,ef-puzzle-F"/>
+    <property name="components" value="friendly,disarmed,ef-puzzle-E"/>
     <property name="tag" value="hexus-ogre"/>
    </properties>
   </object>

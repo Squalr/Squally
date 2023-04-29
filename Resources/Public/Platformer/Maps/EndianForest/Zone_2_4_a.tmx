@@ -175,23 +175,12 @@
     <property name="reward-pool" value="ef-rare"/>
    </properties>
   </object>
-  <object id="995" name="hexus-shrine" type="object" x="701.781" y="1413.02" width="155" height="260">
-   <properties>
-    <property name="entity-tag" value="hexus-goblin-warrior-pig"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="970" name="goblin-warrior-pig" type="entity" x="714.219" y="2511.47" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,disarmed,ef-puzzle-C"/>
-    <property name="tag" value="hexus-goblin-warrior-pig"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

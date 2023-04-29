@@ -58,6 +58,10 @@ std::vector<CardData*> BPPuzzleFBehavior::generateDeck()
 
 StateOverride* BPPuzzleFBehavior::getStateOverride()
 {
+	// AND enemy 5
+	// Invert player 5
+	// OR 10 onto 5 => 15
+	// XOR 15 to enemy 15
 	return StateOverride::create(
 		// Player losses
 		1,
@@ -92,6 +96,10 @@ StateOverride* BPPuzzleFBehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalOr),
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalXor),
+			CardList::getInstance()->cardListByName.at(CardKeys::Inverse),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -105,22 +113,29 @@ StateOverride* BPPuzzleFBehavior::getStateOverride()
 		// Player decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal5),
 		},
 		// Player hex cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
 		},
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary9),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex8),
 		}
 	);
 }

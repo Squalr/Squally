@@ -341,7 +341,7 @@
   </object>
   <object id="947" name="abomination" type="entity" x="622.923" y="4768.75" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,cv-puzzle-C"/>
+    <property name="components" value="friendly,disarmed,cv-puzzle-E"/>
     <property name="tag" value="hexus-abomination"/>
    </properties>
   </object>

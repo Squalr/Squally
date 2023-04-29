@@ -9,6 +9,7 @@
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Maps/MapLayer.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/StrUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"

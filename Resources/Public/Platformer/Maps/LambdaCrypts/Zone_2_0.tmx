@@ -549,7 +549,7 @@
   </object>
   <object id="1059" name="zombie" type="entity" x="1390.11" y="3407.9" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,lc-puzzle-C"/>
+    <property name="components" value="friendly,disarmed,lc-puzzle-B"/>
     <property name="tag" value="hexus-zombie"/>
    </properties>
   </object>

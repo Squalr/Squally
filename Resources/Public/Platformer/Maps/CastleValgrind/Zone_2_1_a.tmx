@@ -144,17 +144,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="824" name="hexus-shrine" type="object" x="1086.59" y="929.795" width="155" height="260">
-   <properties>
-    <property name="entity-tag" value="hexus-vampire-lord"/>
-   </properties>
-  </object>
-  <object id="825" name="vampire-lord" type="entity" x="1086.52" y="2036.05" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,disarmed,cv-puzzle-E"/>
-    <property name="tag" value="hexus-vampire-lord"/>
-   </properties>
-  </object>
   <object id="826" name="edge-portal" type="object" x="-1.4939" y="708.794" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="left"/>

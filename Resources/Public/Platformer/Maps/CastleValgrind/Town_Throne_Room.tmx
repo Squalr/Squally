@@ -275,7 +275,7 @@
   </object>
   <object id="820" name="skeletal-baron" type="entity" x="1178.47" y="2037.13" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,cv-puzzle-G"/>
+    <property name="components" value="friendly,disarmed,cv-puzzle-F"/>
     <property name="tag" value="hexus-skeletal-baron"/>
    </properties>
   </object>

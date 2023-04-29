@@ -6,7 +6,7 @@
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Buffs/ShieldWall/CastShieldWall.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/CursedBlade/CastCursedBlade.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/BasicSlash/BasicSlash.h"
 
 #include "Resources/UIResources.h"
 

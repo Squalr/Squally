@@ -1695,7 +1695,7 @@
   </object>
   <object id="1486" name="bone-knight" type="entity" x="3175.73" y="4906.41" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,lc-puzzle-F"/>
+    <property name="components" value="friendly,disarmed,lc-puzzle-E"/>
     <property name="tag" value="hexus-bone-knight"/>
    </properties>
   </object>

@@ -348,7 +348,7 @@
   </object>
   <object id="856" name="reanimated-pig" type="entity" x="2698.18" y="2685.4" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,lc-puzzle-E"/>
+    <property name="components" value="friendly,disarmed,lc-puzzle-D"/>
     <property name="tag" value="hexus-reanimated-pig"/>
    </properties>
   </object>

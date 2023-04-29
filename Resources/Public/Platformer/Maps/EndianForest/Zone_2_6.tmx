@@ -545,7 +545,7 @@
   </object>
   <object id="1154" name="goblin-grunt-boar" type="entity" x="4608" y="7616" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,ef-puzzle-E"/>
+    <property name="components" value="friendly,disarmed,ef-puzzle-D"/>
     <property name="tag" value="hexus-goblin-grunt-boar"/>
    </properties>
   </object>

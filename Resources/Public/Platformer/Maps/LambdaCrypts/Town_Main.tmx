@@ -590,7 +590,7 @@
   </object>
   <object id="1102" name="undead" type="entity" x="5375.42" y="4287.33" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,lc-puzzle-D"/>
+    <property name="components" value="friendly,disarmed,lc-puzzle-C"/>
     <property name="tag" value="hexus-undead"/>
    </properties>
   </object>

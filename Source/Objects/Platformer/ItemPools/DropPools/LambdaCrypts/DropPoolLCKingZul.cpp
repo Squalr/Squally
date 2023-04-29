@@ -28,7 +28,7 @@ DropPoolLCKingZul* DropPoolLCKingZul::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolLCKingZul::DropPoolLCKingZul(ValueMap& properties) : super(properties, DropPoolLCKingZul::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolCVGeneric::create(properties),
+DropPoolLCKingZul::DropPoolLCKingZul(ValueMap& properties) : super(properties, DropPoolLCKingZul::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolLCGeneric::create(properties),
 	{
 		CardPoolTier5::create(SampleMethod::Random, 0, 1),
 		AlchemyPoolTier5::create(SampleMethod::Random, 1, 2),

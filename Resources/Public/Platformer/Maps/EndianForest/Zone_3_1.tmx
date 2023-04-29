@@ -287,7 +287,7 @@
   </properties>
   <object id="816" name="cyclops" type="entity" x="7685.33" y="5018.67" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,ef-puzzle-G"/>
+    <property name="components" value="friendly,disarmed,ef-puzzle-F"/>
     <property name="tag" value="hexus-cyclops"/>
    </properties>
   </object>

@@ -92,6 +92,9 @@ StateOverride* BPPuzzleABehavior::getStateOverride()
 		// Player hand
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+			CardList::getInstance()->cardListByName.at(CardKeys::Mov),
+			CardList::getInstance()->cardListByName.at(CardKeys::Mov),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -101,10 +104,14 @@ StateOverride* BPPuzzleABehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
+			
 		},
 		// Player decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal4),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal0),
 		},
 		// Player hex cards
 		std::vector<CardData*>
@@ -114,14 +121,21 @@ StateOverride* BPPuzzleABehavior::getStateOverride()
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
+			
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
+			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 		}
 	);
 }
