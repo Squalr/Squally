@@ -12,6 +12,13 @@ class Crack : public InteractObject
 public:
 	static Crack* create(cocos2d::ValueMap& properties);
 
+	enum class CrackSize
+	{
+		Small,
+		Medium,
+		Large,
+	};
+
 	static const std::string MapKey;
 	static const std::string MapPropertyCrackSize;
 
@@ -26,5 +33,5 @@ private:
 	typedef InteractObject super;
 
 	cocos2d::Sprite* crack = nullptr;
-	std::string crackSize;
+	CrackSize crackSize;
 };

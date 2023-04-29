@@ -40,19 +40,22 @@ Crack* Crack::create(ValueMap& properties)
 
 Crack::Crack(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, CSize(525.0f, 1193.0f))
 {
-	this->crackSize = GameUtils::getKeyOrDefault(this->properties, Crack::MapPropertyCrackSize, Value("")).asString();
+	std::string crackSizeStr = GameUtils::getKeyOrDefault(this->properties, Crack::MapPropertyCrackSize, Value("")).asString();
 
-	if (this->crackSize == "small")
+	if (crackSizeStr == "small")
 	{
 		this->crack = Sprite::create(ObjectResources::Interactive_Cracks_CrackSmallWhite);
+		this->crackSize = CrackSize::Small;
 	}
-	else if (this->crackSize == "medium")
+	else if (crackSizeStr == "medium")
 	{
 		this->crack = Sprite::create(ObjectResources::Interactive_Cracks_CrackMediumWhite);
+		this->crackSize = CrackSize::Medium;
 	}
-	else if (this->crackSize == "large")
+	else if (crackSizeStr == "large")
 	{
 		this->crack = Sprite::create(ObjectResources::Interactive_Cracks_CrackLargeWhite);
+		this->crackSize = CrackSize::Large;
 	}
 	
 	this->addChild(this->crack);
@@ -66,21 +69,43 @@ void Crack::initializePositions()
 {
 	super::initializePositions();
 
-	if (this->crackSize == "small")
+	switch(this->crackSize)
 	{
-		this->crack->setPosition(Vec2(96.0f, 0.0f));
-	}
-	else if (this->crackSize == "medium")
-	{
-		this->crack->setPosition(Vec2(96.0f, 0.0f));
-	}
-	else if (this->crackSize == "large")
-	{
-		this->crack->setPosition(Vec2(96.0f, 0.0f));
+		case CrackSize::Small:
+		{
+			this->crack->setPosition(Vec2(112.0f, 0.0f));
+			break;
+		}
+		case CrackSize::Medium:
+		{
+			this->crack->setPosition(Vec2(112.0f, 0.0f));
+			break;
+		}
+		case CrackSize::Large:
+		{
+			this->crack->setPosition(Vec2(112.0f, 0.0f));
+			break;
+		}
 	}
 }
 
 void Crack::onInteract(PlatformerEntity* interactingEntity)
 {
 	super::onInteract(interactingEntity);
+
+	switch(this->crackSize)
+	{
+		case CrackSize::Small:
+		{
+			break;
+		}
+		case CrackSize::Medium:
+		{
+			break;
+		}
+		case CrackSize::Large:
+		{
+			break;
+		}
+	}
 }
