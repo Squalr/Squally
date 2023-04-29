@@ -504,6 +504,9 @@ const std::string ObjectResources::Interactive_Computer_super_computer_body_ligh
 const std::string ObjectResources::Interactive_Computer_tape = "Private/Platformer/Objects/Interactive/Computer/tape.png";
 const std::string ObjectResources::Interactive_Computer_top_light_off = "Private/Platformer/Objects/Interactive/Computer/top_light_off.png";
 const std::string ObjectResources::Interactive_Computer_top_light_on = "Private/Platformer/Objects/Interactive/Computer/top_light_on.png";
+const std::string ObjectResources::Interactive_Cracks_CrackLargeWhite = "Private/Platformer/Objects/Interactive/Cracks/CrackLargeWhite.png";
+const std::string ObjectResources::Interactive_Cracks_CrackMediumWhite = "Private/Platformer/Objects/Interactive/Cracks/CrackMediumWhite.png";
+const std::string ObjectResources::Interactive_Cracks_CrackSmallWhite = "Private/Platformer/Objects/Interactive/Cracks/CrackSmallWhite.png";
 const std::string ObjectResources::Interactive_GatlingGun_Bullet = "Private/Platformer/Objects/Interactive/GatlingGun/Bullet.png";
 const std::string ObjectResources::Interactive_GatlingGun_GatlingGun = "Private/Platformer/Objects/Interactive/GatlingGun/GatlingGun.png";
 const std::string ObjectResources::Interactive_Help_ChatBubble = "Private/Platformer/Objects/Interactive/Help/ChatBubble.png";

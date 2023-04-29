@@ -505,6 +505,9 @@ namespace ObjectResources
 	extern const std::string Interactive_Computer_tape;
 	extern const std::string Interactive_Computer_top_light_off;
 	extern const std::string Interactive_Computer_top_light_on;
+	extern const std::string Interactive_Cracks_CrackLargeWhite;
+	extern const std::string Interactive_Cracks_CrackMediumWhite;
+	extern const std::string Interactive_Cracks_CrackSmallWhite;
 	extern const std::string Interactive_GatlingGun_Bullet;
 	extern const std::string Interactive_GatlingGun_GatlingGun;
 	extern const std::string Interactive_Help_ChatBubble;

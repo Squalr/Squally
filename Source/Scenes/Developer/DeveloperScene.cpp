@@ -96,6 +96,10 @@ DeveloperScene::DeveloperScene()
 		- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
 		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 		- Seagulls should blink
+		- Remaining spell books + abilities
+			- Shadow
+			- Frost
+			- Fire
 		- Helpers
 			- Abilities unlocked at certain levels
 			- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
@@ -677,6 +681,12 @@ DeveloperScene::DeveloperScene()
 		// Needs hexus puzzles
 		// No mage tower, final boss room is a portal room (maybe with bigger windows to see other worlds?)
 
+		/*
+		- Exterminator				=>  
+		- Void Demon				=>  
+		- [B] Perceptron			=>  
+		*/
+
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
@@ -689,9 +699,6 @@ DeveloperScene::DeveloperScene()
 	- DM => FF (viking ship or smth) - Drak
 	- BP => BP (viking ship or smth) - <Any>
 
-	- Exterminator			=>  
-	- VoidDemon				=>  
-
 	Deprecated:
 	- Gargoyle				=>  
 	- LightningGolem		=>  
@@ -701,7 +708,6 @@ DeveloperScene::DeveloperScene()
 	- ShovelGlowGreen
 
 	- VS - LOOP / CALL / RET
-		- [B] Perceptron			=>  
 
 	======================
 
@@ -756,11 +762,10 @@ DeveloperScene::DeveloperScene()
 	Lightning - UR
 	Holy - UR
 	Nature - Mines?
-	<none in castle>
+	Arcane - Castle
+	Shadow - Crypts
 	Fire - Daemons
 	Frost - Ballmer
-	Shadow - Crypts
-	Arcane - Void?
 
 	===== Animals ====
 
@@ -833,10 +838,7 @@ DeveloperScene::DeveloperScene()
 	Goat			BP	Town
 
 	Spell ideas:
-	- Call of the Dead (skele's attacking from portal under target) - https://www.gamedevmarket.net/asset/skeleton-warrior-mega-game-sprite-pack/
-	- Bat attack AoE (Ch4)
 	- Hot potato health decrease
-	- Blind (details tbd)
 
 	WOOD		- T0 - EF
 	COPPER		- T1 - EF
@@ -905,15 +907,14 @@ DeveloperScene::DeveloperScene()
 	Witch		-> T1.5
 	Wooden		-> T1
 
-
-	Archers		-> T6
 	Bone		-> T8
-	Frost		-> T5
 	Hunters		-> T1
 	Composite	-> T2
-	Ivory		-> T7
 	Olympus		-> T3
 	War			-> T4
+	Frost		-> T5
+	Archers		-> T6
+	Ivory		-> T7
 
 	// Gems
 	Quartz		- T2

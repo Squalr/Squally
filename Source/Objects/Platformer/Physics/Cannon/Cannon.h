@@ -51,7 +51,7 @@ private:
 	Portal* skyPortal = nullptr;
 	
 	bool isLaunching = false;
-	Vec2 currentMountOffset;
+	cocos2d::Vec2 currentMountOffset;
 
 	Squally* squally = nullptr;
 
