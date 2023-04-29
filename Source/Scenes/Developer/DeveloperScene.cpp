@@ -86,6 +86,8 @@ DeveloperScene::DeveloperScene()
 		- No interrupt if damage attack modified to heal
 
 	- Game Feel / Design / Lore:
+		- Very early Perceptron encounter?
+		- Encounter in DM?
 		- Shadow for Squally
 		- Add CPU noises when turned on in DM
 		- Add Train noises in DM/CV
@@ -96,7 +98,10 @@ DeveloperScene::DeveloperScene()
 		- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
 		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 		- Seagulls should blink
-		- Remaining spell books + abilities
+		- 2nd pass on all spells
+		- Overworld attacks for many enemies
+		- Remaining spellbooks + abilities
+			- Nature (needs ability?)
 			- Shadow
 			- Frost
 			- Fire
@@ -105,8 +110,6 @@ DeveloperScene::DeveloperScene()
 			- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
 	
 	- Level Design:
-		- Reduce walking in early chapters?
-		- Cut UR temple map in half?
 		- Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
 			- Destroy all warp maps as a result (?) can still keep the zone portals for the return location
 		- Sky masters
@@ -677,9 +680,10 @@ DeveloperScene::DeveloperScene()
 		// ================== TODO ================== 
 		// Likely just 1-2 interim maps before boss. Keep this zone really short.
 		// Traps: Laser
-		// Needs enemy scripting according to notes on which instructions this zone covers
-		// Needs hexus puzzles
-		// No mage tower, final boss room is a portal room (maybe with bigger windows to see other worlds?)
+		// * Needs enemy scripting according to notes on which instructions this zone covers
+		// * Needs hexus puzzles
+		// * Potentially no mage tower? Final boss room is a portal room (maybe with bigger windows to see other worlds?)
+		// * 
 
 		/*
 		- Exterminator				=>  
@@ -734,38 +738,21 @@ DeveloperScene::DeveloperScene()
 
 	------------------------
 
-	Lioness			Zone 1_x
-	LionMan			Zone 1_x
-	Tigress			Zone 1_x
-	TigerMan		Zone 1_x
+	X Lioness			Zone 1_x
+	X LionMan			Zone 1_x
+	X Tigress			Zone 1_x
+	X TigerMan		Zone 1_x
 
-	Medusa			Zone 2_x
-	Mermaid			Zone 2_x
-	Minotaur		Zone 2_x
+	X Medusa			Zone 2_x
+	X Mermaid			Zone 2_x
+	X Minotaur		Zone 2_x
 
-	Anubis pup		Zone 3_x
-	Anubis warrior	Zone 3_x
-	Mummy priest	Zone 3_x
-	Mummy warrior	Zone 3_x
+	X Anubis pup		Zone 3_x
+	X Anubis warrior	Zone 3_x
+	X Mummy priest	Zone 3_x
+	X Mummy warrior	Zone 3_x
 
-	Osiris			Zone 3_x (boss)
-
-	Omit these:
-	Alder			_dupe_
-	Cypress			_dupe_ Zone x_x (spellbook)
-	Sarude			_dupe_
-
-	====== SPELLBOOKS ======
-
-	Water - EF
-	Wind - EF
-	Lightning - UR
-	Holy - UR
-	Nature - Mines?
-	Arcane - Castle
-	Shadow - Crypts
-	Fire - Daemons
-	Frost - Ballmer
+	X Osiris			Zone 3_x (boss)
 
 	===== Animals ====
 

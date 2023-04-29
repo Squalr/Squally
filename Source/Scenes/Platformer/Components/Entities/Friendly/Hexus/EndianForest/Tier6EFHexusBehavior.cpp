@@ -44,7 +44,7 @@ MinMaxPool* Tier6EFHexusBehavior::generateReward()
 std::string Tier6EFHexusBehavior::getWinLossSaveKey()
 {
 	// Backwards compatibility, use old string for save key
-	return "gramps-hexus"; // Tier6EFHexusBehavior::MapKey;
+	return "ara-hexus"; // Tier6EFHexusBehavior::MapKey;
 }
 
 std::string Tier6EFHexusBehavior::getBackgroundResource()
@@ -61,10 +61,14 @@ std::vector<CardData*> Tier6EFHexusBehavior::generateDeck()
 		CardList::getInstance()->cardListByName[CardKeys::Binary0],
 		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
-		
+		CardList::getInstance()->cardListByName[CardKeys::Binary0],
+		CardList::getInstance()->cardListByName[CardKeys::Decimal0],
+		CardList::getInstance()->cardListByName[CardKeys::Hex0],
+
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
 		CardList::getInstance()->cardListByName[CardKeys::Addition],
 		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
+		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
 	});
 }
 

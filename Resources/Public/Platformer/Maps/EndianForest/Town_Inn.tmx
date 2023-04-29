@@ -288,7 +288,7 @@
   </properties>
   <object id="692" name="robin" type="entity" x="1872.1" y="930.785" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,ef-t5-hexus,pick-pocket"/>
+    <property name="components" value="friendly,ef-t4-hexus,pick-pocket"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>

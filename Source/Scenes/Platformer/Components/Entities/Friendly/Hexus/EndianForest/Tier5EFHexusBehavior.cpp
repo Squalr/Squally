@@ -44,7 +44,7 @@ MinMaxPool* Tier5EFHexusBehavior::generateReward()
 std::string Tier5EFHexusBehavior::getWinLossSaveKey()
 {
 	// Backwards compatibility, use old string for save key
-	return "robin-hexus"; // Tier5EFHexusBehavior::MapKey;
+	return "matu-hexus"; // Tier5EFHexusBehavior::MapKey;
 }
 
 std::string Tier5EFHexusBehavior::getBackgroundResource()
@@ -66,9 +66,9 @@ std::vector<CardData*> Tier5EFHexusBehavior::generateDeck()
 		CardList::getInstance()->cardListByName[CardKeys::Hex0],
 
 		CardList::getInstance()->cardListByName[CardKeys::Mov],
-		CardList::getInstance()->cardListByName[CardKeys::Mov],
 		CardList::getInstance()->cardListByName[CardKeys::Addition],
-		CardList::getInstance()->cardListByName[CardKeys::Addition],
+		CardList::getInstance()->cardListByName[CardKeys::ShiftLeft],
+		CardList::getInstance()->cardListByName[CardKeys::ShiftRight],
 	});
 }
 
