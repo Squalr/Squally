@@ -3,6 +3,8 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"

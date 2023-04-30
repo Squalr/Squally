@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -117,11 +119,15 @@ void Cauterize::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Cauterize_CommentAdd::create()) +
-						std::string("addss xmm0, dword ptr [edi]")
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Abilities_Cauterize_CommentAdd::create(),
+							ConstantString::create("addss xmm0, dword ptr [edi]")
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Cauterize_CommentAdd::create()) +
-						std::string("addss xmm0, dword ptr [rdi]")
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Abilities_Cauterize_CommentAdd::create(),
+							ConstantString::create("addss xmm0, dword ptr [rdi]")
+						})
 					),
 				},
 				true

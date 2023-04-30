@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
@@ -133,9 +135,13 @@ void Enrage::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Buffs_Enrage_ReduceEnrage::create(),
 						// x86
-						"mov dword ptr [esi], 0.0f"
+						ConcatString::create({
+							ConstantString::create("mov dword ptr [esi], 0.0f")
+						})
 						, // x64
-						"mov dword ptr [rsi], 0.0f"
+						ConcatString::create({
+							ConstantString::create("mov dword ptr [rsi], 0.0f")
+						})
 					)
 				}
 			)

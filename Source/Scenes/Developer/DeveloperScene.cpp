@@ -593,7 +593,7 @@ DeveloperScene::DeveloperScene()
 		// - D	=> Town_Church (Reanimated Pig)
 		// - E	=> 3_0 (Bone Knight)
 		// - F	=> 4_0_a (Skeletal Priestess)
-		
+
 		X Ash			=> 1_x (H1)
 		X Lucifer		=> 2_x (H2)
 		X Brine			=> Town_Main (Exterior) (H3)
@@ -641,7 +641,6 @@ DeveloperScene::DeveloperScene()
 		// ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
 		// ** 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
 		// ** 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
-		// ** Needs hexus puzzles
 		// ** Needs hexus battles
 		// ** Tune hexus battle special cards
 		// ** Needs animals
@@ -696,12 +695,10 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (VS)", MapResources::VoidStar_Zone_1_0));
 
 		// ================== TODO ================== 
-		// Likely just 1-2 interim maps before boss. Keep this zone really short.
 		// Traps: Laser
 		// * Needs enemy scripting according to notes on which instructions this zone covers
-		// * Needs hexus puzzles
-		// * Potentially no mage tower? Final boss room is a portal room (maybe with bigger windows to see other worlds?)
 		// * Quest granting money and health manip
+		// 		* Potentially no mage tower? Final boss room is a portal room (maybe with bigger windows to see other worlds?)
 
 		/*
 		Enemies

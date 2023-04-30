@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -130,29 +132,33 @@ void ShieldWall::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						std::string("fild dword ptr [ecx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentDiv::create()) + 
-						std::string("fidiv dword ptr [eax]\n") +
-						std::string("fistp dword ptr [ecx]\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
-						std::string("\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ShieldWall_CommentHint::create())
+						ConcatString::create({
+							ConstantString::create("fild dword ptr [ecx]\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create(),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create(),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentDiv::create(),
+							ConstantString::create("fidiv dword ptr [eax]\n"),
+							ConstantString::create("fistp dword ptr [ecx]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create(),
+							ConstantString::create("\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_ShieldWall_CommentHint::create()
+						})
 						, // x64
-						std::string("fild dword ptr [rcx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentDiv::create()) + 
-						std::string("fidiv dword ptr [rax]\n") +
-						std::string("fistp dword ptr [rcx]\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
-						std::string("\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ShieldWall_CommentHint::create())
+						ConcatString::create({
+							ConstantString::create("fild dword ptr [rcx]\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create(),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create(),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentDiv::create(),
+							ConstantString::create("fidiv dword ptr [rax]\n"),
+							ConstantString::create("fistp dword ptr [rcx]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create(),
+							ConstantString::create("\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_ShieldWall_CommentHint::create()
+						})
 					),
 				},
 				true

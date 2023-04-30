@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -111,17 +113,21 @@ void PactOfTheAncients::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						std::string("push 5\n") +
-						std::string("pop dword ptr [edx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint::create()) +
-						std::string("\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
+						ConcatString::create({
+							ConstantString::create("push 5\n"),
+							ConstantString::create("pop dword ptr [edx]\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint::create(),
+							ConstantString::create("\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()
+						})
 						, // x64
-						std::string("push 5\n") +
-						std::string("pop qword ptr [rdx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint::create()) +
-						std::string("\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
+						ConcatString::create({
+							ConstantString::create("push 5\n"),
+							ConstantString::create("pop qword ptr [rdx]\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint::create(),
+							ConstantString::create("\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()
+						})
 					),
 				},
 				true

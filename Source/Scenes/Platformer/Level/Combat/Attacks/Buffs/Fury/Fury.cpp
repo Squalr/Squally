@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -132,19 +134,23 @@ void Fury::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLea::create()) + 
-						"lea eax, [eax + ebx + 4]\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage::create()
-							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))) + 
-						"add dword ptr [eax], 20\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLea::create(),
+							ConstantString::create("lea eax, [eax + ebx + 4]\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax)),
+							ConstantString::create("add dword ptr [eax], 20\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLea::create()) + 
-						"lea rax, [rax + rbx + 4]\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage::create()
-							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))) + 
-						"add dword ptr [rax], 20\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLea::create(),
+							ConstantString::create("lea rax, [rax + rbx + 4]\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax)),
+							ConstantString::create("add dword ptr [rax], 20\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry::create()
+						})
 					),
 				},
 				true

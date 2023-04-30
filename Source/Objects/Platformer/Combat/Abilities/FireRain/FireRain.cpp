@@ -8,6 +8,8 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
@@ -119,21 +121,25 @@ void FireRain::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare::create()) +
-						"comiss xmm3, xmm4\n" +
-						"je skipCode\n" +
-						"mov eax, 1\n" +
-						"skipCode:\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentHint::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare::create(),
+							ConstantString::create("comiss xmm3, xmm4\n"),
+							ConstantString::create("je skipCode\n"),
+							ConstantString::create("mov eax, 1\n"),
+							ConstantString::create("skipCode:\n\n"),
+							Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare::create()) +
-						"comiss xmm3, xmm4\n" +
-						"je skipCode\n" +
-						"mov rax, 1\n" +
-						"skipCode:\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentHint::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()))
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare::create(),
+							ConstantString::create("comiss xmm3, xmm4\n"),
+							ConstantString::create("je skipCode\n"),
+							ConstantString::create("mov rax, 1\n"),
+							ConstantString::create("skipCode:\n\n"),
+							Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())
+						})
 					),
 				},
 				true

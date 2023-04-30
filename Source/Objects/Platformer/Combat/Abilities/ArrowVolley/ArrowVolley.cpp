@@ -8,6 +8,8 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
@@ -127,33 +129,37 @@ void ArrowVolley::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall::create()) +
-						std::string("call checkValue\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp::create()) +
-						std::string("jmp complete\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare::create()) +
-						std::string("checkValue:\n") +
-						std::string("cmp ebx, 1\n") +
-						std::string("cmove eax, ecx\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet::create()) +
-						std::string("ret\n\n") +
-						std::string("complete:\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create()))
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall::create(),
+							ConstantString::create("call checkValue\n"),
+							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp::create(),
+							ConstantString::create("jmp complete\n\n"),
+							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare::create(),
+							ConstantString::create("checkValue:\n"),
+							ConstantString::create("cmp ebx, 1\n"),
+							ConstantString::create("cmove eax, ecx\n"),
+							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet::create(),
+							ConstantString::create("ret\n\n"),
+							ConstantString::create("complete:\n\n"),
+							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall::create()) +
-						std::string("call checkValue\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp::create()) +
-						std::string("jmp complete\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare::create()) +
-						std::string("checkValue:\n") +
-						std::string("cmp rbx, 1\n") +
-						std::string("cmove rax, rcx\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet::create()) +
-						std::string("ret\n\n") +
-						std::string("complete:\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create()))
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall::create(),
+							ConstantString::create("call checkValue\n"),
+							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp::create(),
+							ConstantString::create("jmp complete\n\n"),
+							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare::create(),
+							ConstantString::create("checkValue:\n"),
+							ConstantString::create("cmp rbx, 1\n"),
+							ConstantString::create("cmove rax, rcx\n"),
+							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet::create(),
+							ConstantString::create("ret\n\n"),
+							ConstantString::create("complete:\n\n"),
+							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())
+						})
 					),
 				},
 				true

@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -125,23 +127,27 @@ void SeekingBlade::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						std::string("cmp ecx, 1\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
-						std::string("sete al\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint1::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() })) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint2::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
+						ConcatString::create({
+							ConstantString::create("cmp ecx, 1\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create(),
+							ConstantString::create("sete al\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint1::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() }),
+							Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint2::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())
+						})
 						, // x64
-						std::string("cmp rcx, 1\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
-						std::string("sete al\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint1::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() })) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint2::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()))
+						ConcatString::create({
+							ConstantString::create("cmp rcx, 1\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create(),
+							ConstantString::create("sete al\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint1::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() }),
+							Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint2::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())
+						})
 					),
 				},
 				true

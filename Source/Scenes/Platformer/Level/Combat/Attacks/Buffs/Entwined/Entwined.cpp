@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -110,15 +112,19 @@ void Entwined::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						std::string("mov edi, 0x05000000\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2::create()) +
-						std::string("bswap edi\n")
+						ConcatString::create({
+							ConstantString::create("mov edi, 0x05000000\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1::create(),
+							Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2::create(),
+							ConstantString::create("bswap edi\n")
+						})
 						, // x64
-						std::string("mov edi, 0x05000000\n") + // Intentionally 32-bit register
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2::create()) +
-						std::string("bswap edi\n")
+						ConcatString::create({
+							ConstantString::create("mov edi, 0x05000000\n"), // Intentionally 32-bit register
+							Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1::create(),
+							Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2::create(),
+							ConstantString::create("bswap edi\n")
+						})
 					),
 				},
 				true

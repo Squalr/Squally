@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -138,51 +140,55 @@ void Daze::registerHackables()
 				0.0f,
 				{
 					HackableCode::ReadOnlyScript(
-						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
-						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushChance::create()) +
-						std::string("fld dword ptr [esi]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushRng::create()) +
-						std::string("fld dword ptr [edi]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentCompare::create()) +
-						std::string("fcompp\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDamageDealt::create()) +
-						std::string("fild dword ptr [ebx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDazeDamage::create()) +
-						std::string("fild dword ptr [eax]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentF::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentB::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentConditonal::create()) +
-						std::string("fcmovbe st1\n") + // ideally this would be fcmovbe st0, st1 but asmtk doesn't allow this
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopDamage::create()) +
-						std::string("fistp dword ptr [ebx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopStack::create()) +
-						std::string("fstp st0\n")
+						ConcatString::create({
+							Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+							// x86
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushChance::create(),
+							ConstantString::create("fld dword ptr [esi]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushRng::create(),
+							ConstantString::create("fld dword ptr [edi]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentCompare::create(),
+							ConstantString::create("fcompp\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDamageDealt::create(),
+							ConstantString::create("fild dword ptr [ebx]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDazeDamage::create(),
+							ConstantString::create("fild dword ptr [eax]\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentF::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentB::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create(),
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentConditonal::create(),
+							ConstantString::create("fcmovbe st1\n"), // ideally this would be fcmovbe st0, st1 but asmtk doesn't allow this
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopDamage::create(),
+							ConstantString::create("fistp dword ptr [ebx]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopStack::create(),
+							ConstantString::create("fstp st0\n")
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushChance::create()) +
-						std::string("fld dword ptr [rsi]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushRng::create()) +
-						std::string("fld dword ptr [rdi]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentCompare::create()) +
-						std::string("fcompp\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDamageDealt::create()) +
-						std::string("fild dword ptr [rbx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDazeDamage::create()) +
-						std::string("fild dword ptr [rax]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentF::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentB::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentConditonal::create()) +
-						std::string("fcmovbe st1\n") + // ideally this would be fcmovbe st0, st1 but asmtk doesn't allow this
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopDamage::create()) +
-						std::string("fistp dword ptr [rbx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopStack::create()) +
-						std::string("fstp st0\n")
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushChance::create(),
+							ConstantString::create("fld dword ptr [rsi]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushRng::create(),
+							ConstantString::create("fld dword ptr [rdi]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentCompare::create(),
+							ConstantString::create("fcompp\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDamageDealt::create(),
+							ConstantString::create("fild dword ptr [rbx]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDazeDamage::create(),
+							ConstantString::create("fild dword ptr [rax]\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentF::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentB::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create(),
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentConditonal::create(),
+							ConstantString::create("fcmovbe st1\n"), // ideally this would be fcmovbe st0, st1 but asmtk doesn't allow this
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopDamage::create(),
+							ConstantString::create("fistp dword ptr [rbx]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPopStack::create(),
+							ConstantString::create("fstp st0\n")
+						})
 					),
 				},
 				true

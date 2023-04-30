@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -124,31 +126,35 @@ void Enchantment::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						std::string("fild dword ptr [esi]\n") +
-						std::string("fmul dword ptr [edi]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentRnd::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentInt::create()) +
-						std::string("frndint\n") +
-						std::string("fistp dword ptr [esi]\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
-						std::string("\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Enchantment_CommentHint::create())
+						ConcatString::create({
+							ConstantString::create("fild dword ptr [esi]\n"),
+							ConstantString::create("fmul dword ptr [edi]\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create(),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentRnd::create(),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentInt::create(),
+							ConstantString::create("frndint\n"),
+							ConstantString::create("fistp dword ptr [esi]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(), 
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create(),
+							ConstantString::create("\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_Enchantment_CommentHint::create()
+						})
 						, // x64
-						std::string("fild dword ptr [rsi]\n") +
-						std::string("fmul dword ptr [rdi]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentRnd::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentInt::create()) +
-						std::string("frndint\n") +
-						std::string("fistp dword ptr [rsi]\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
-						std::string("\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Enchantment_CommentHint::create())
+						ConcatString::create({
+							ConstantString::create("fild dword ptr [rsi]\n"),
+							ConstantString::create("fmul dword ptr [rdi]\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create(),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentRnd::create(),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentInt::create(),
+							ConstantString::create("frndint\n"),
+							ConstantString::create("fistp dword ptr [rsi]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(), 
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create(),
+							ConstantString::create("\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_Enchantment_CommentHint::create()
+						})
 					),
 				},
 				true

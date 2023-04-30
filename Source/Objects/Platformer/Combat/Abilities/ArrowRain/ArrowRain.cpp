@@ -8,6 +8,8 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
@@ -119,17 +121,21 @@ void ArrowRain::registerHackables()
 				0.0f,
 				{
 					HackableCode::ReadOnlyScript(
-						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
+							Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())) +
-						"cmp eax, 1\n"
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create(),
+							Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()),
+							ConstantString::create("cmp eax, 1\n")
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())) + 
-						"cmp rax, 1\n"
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare::create(),
+							Strings::Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()),
+							ConstantString::create("cmp rax, 1\n")
+						})
 					),
 				},
 				true

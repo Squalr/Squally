@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -120,27 +122,31 @@ void CallOfTheAncients::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterEdx::create(), ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)) })) + 
-						"push 30\n" +
-						"pop edx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create())
-						+ "\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterEdx::create(), ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)) }), 
+							ConstantString::create("push 30\n"),
+							ConstantString::create("pop edx\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()
+								->setStringReplacementVariables(ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt))), 
+							Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create(),
+							ConstantString::create("\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterRdx::create(), ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)) })) + 
-						"push 30\n" +
-						"pop rdx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create())
-						+ "\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterRdx::create(), ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)) }), 
+							ConstantString::create("push 30\n"),
+							ConstantString::create("pop rdx\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()
+								->setStringReplacementVariables(ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt))), 
+							Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create(),
+							ConstantString::create("\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful::create()
+						})
 					),
 				},
 				true

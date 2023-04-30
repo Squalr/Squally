@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantFloat.h"
@@ -131,28 +133,36 @@ void Haste::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"movss [esi], xmm3\n\n" + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss2::create())
+						ConcatString::create({
+							ConstantString::create("movss [esi], xmm3\n\n"), 
+							Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss1::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss2::create()
+						})
 						, // x64
-						"movss [rsi], xmm3\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss2::create())
+						ConcatString::create({
+							ConstantString::create("movss [rsi], xmm3\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss1::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss2::create()
+						})
 					),
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Buffs_Haste_ReduceHaste::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed::create()) +
-						"mov dword ptr [esi], 0.0f\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed::create(),
+							ConstantString::create("mov dword ptr [esi], 0.0f\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed::create()) +
-						"mov dword ptr [rsi], 0.0f\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed::create(),
+							ConstantString::create("mov dword ptr [rsi], 0.0f\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr::create()
+						})
 					)
 				},
 				true

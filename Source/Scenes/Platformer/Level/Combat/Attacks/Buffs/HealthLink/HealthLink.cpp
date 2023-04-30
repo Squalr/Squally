@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -110,18 +112,21 @@ void HealthLink::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShrBy1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentElaborate::create()) +
-						"shr edi, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentHint::create())
-						
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShr::create(),
+							Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShrBy1::create(),
+							Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentElaborate::create(),
+							ConstantString::create("shr edi, 1\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentHint::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShr::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShrBy1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentElaborate::create()) +
-						"shr rdi, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentHint::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShr::create(),
+							Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentShrBy1::create(),
+							Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentElaborate::create(),
+							ConstantString::create("shr rdi, 1\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_HealthLink_CommentHint::create()
+						})
 					),
 				},
 				true

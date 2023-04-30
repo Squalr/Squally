@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -112,11 +114,15 @@ void Rejuvination::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"rol edx, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_Hint::create())
+						ConcatString::create({
+							ConstantString::create("rol edx, 1\n\n"),
+							Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_Hint::create()
+						})
 						, // x64
-						"rol rdx, 1\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_Hint::create())
+						ConcatString::create({
+							ConstantString::create("rol rdx, 1\n\n"),
+							Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_Hint::create()
+						})
 					),
 				},
 				true

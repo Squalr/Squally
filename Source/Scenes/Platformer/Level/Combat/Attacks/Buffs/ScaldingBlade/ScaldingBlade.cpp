@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -129,23 +131,27 @@ void ScaldingBlade::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage::create()) +
-						std::string("movss xmm0, dword ptr [eax]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier::create()) +
-						std::string("movss xmm1, dword ptr [ebx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply::create()) +
-						std::string("mulss xmm0, xmm1\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore::create()) +
-						std::string("movss dword ptr [eax], xmm0\n")
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage::create(),
+							ConstantString::create("movss xmm0, dword ptr [eax]\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier::create(),
+							ConstantString::create("movss xmm1, dword ptr [ebx]\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply::create(),
+							ConstantString::create("mulss xmm0, xmm1\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore::create(),
+							ConstantString::create("movss dword ptr [eax], xmm0\n")
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage::create()) +
-						std::string("movss xmm0, dword ptr [rax]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier::create()) +
-						std::string("movss xmm1, dword ptr [rbx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply::create()) +
-						std::string("mulss xmm0, xmm1\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore::create()) +
-						std::string("movss dword ptr [rax], xmm0\n")
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage::create(),
+							ConstantString::create("movss xmm0, dword ptr [rax]\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier::create(),
+							ConstantString::create("movss xmm1, dword ptr [rbx]\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply::create(),
+							ConstantString::create("mulss xmm0, xmm1\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore::create(),
+							ConstantString::create("movss dword ptr [rax], xmm0\n")
+						})
 					),
 				},
 				true

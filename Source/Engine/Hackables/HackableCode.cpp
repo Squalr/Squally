@@ -107,7 +107,7 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hack
 		this->originalAssemblyString = (is32Bit) ? this->readOnlyScripts.front().scriptx86 : this->readOnlyScripts.front().scriptx64;
 	}
 	
-	this->assemblyString = this->originalAssemblyString;
+	this->assemblyString = this->originalAssemblyString == nullptr ? "" : this->originalAssemblyString->getString();
 
 	for (auto script : this->readOnlyScripts)
 	{
@@ -149,7 +149,7 @@ std::string HackableCode::getAssemblyString()
 	return this->assemblyString;
 }
 
-std::string HackableCode::getOriginalAssemblyString()
+LocalizedString* HackableCode::getOriginalAssemblyString()
 {
 	return this->originalAssemblyString;
 }

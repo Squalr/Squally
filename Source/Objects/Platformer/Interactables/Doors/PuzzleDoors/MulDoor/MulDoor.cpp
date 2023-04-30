@@ -8,6 +8,8 @@
 
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Objects/Platformer/Interactables/Doors/PuzzleDoors/MulDoor/MulDoorPreview.h"

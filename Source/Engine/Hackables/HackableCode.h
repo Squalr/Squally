@@ -190,11 +190,11 @@ public:
 	struct ReadOnlyScript
 	{
 		LocalizedString* title = nullptr;
-		std::string scriptx86;
-		std::string scriptx64;
+		LocalizedString* scriptx86 = nullptr;
+		LocalizedString* scriptx64 = nullptr;
 
 		ReadOnlyScript() { }
-		ReadOnlyScript(LocalizedString* title, std::string scriptx86, std::string scriptx64) : title(title), scriptx86(scriptx86), scriptx64(scriptx64) { }
+		ReadOnlyScript(LocalizedString* title, LocalizedString* scriptx86, LocalizedString* scriptx64) : title(title), scriptx86(scriptx86), scriptx64(scriptx64) { }
 	};
 
 	struct RegisterHintInfo
@@ -252,7 +252,7 @@ public:
 	HackableCode* clone(CodeInfoMap& hackableCodeInfoMap);
 	std::vector<ReadOnlyScript> getReadOnlyScripts();
 	std::string getAssemblyString();
-	std::string getOriginalAssemblyString();
+	LocalizedString* getOriginalAssemblyString();
 	void* getPointer() override;
 	int getOriginalLength();
 	bool applyCustomCode(std::string newAssembly);
@@ -281,7 +281,7 @@ private:
 	static std::string removeComments(const std::string& code);
 
 	std::string assemblyString;
-	std::string originalAssemblyString;
+	LocalizedString* originalAssemblyString;
 	void* codePointer = nullptr;
 	void* codeEndPointer = nullptr;
 	HackableCodeInfo hackableCodeInfo;

@@ -9,8 +9,11 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
+#include "Engine/Localization/ConcatString.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -131,17 +134,21 @@ void BlessingOfTheAncients::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						std::string("push dword ptr [ecx + 4]\n") +
-						std::string("pop dword ptr [ecx + 8]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint::create()) +
-						std::string("\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
+						ConcatString::create({
+							ConstantString::create("push dword ptr [ecx + 4]\n"),
+							ConstantString::create("pop dword ptr [ecx + 8]\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint::create(),
+							ConstantString::create("\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()
+						})
 						, // x64
-						std::string("push qword ptr [rcx + 4]\n") +
-						std::string("pop qword ptr [rcx + 8]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint::create()) +
-						std::string("\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
+						ConcatString::create({
+							ConstantString::create("push qword ptr [rcx + 4]\n"),
+							ConstantString::create("pop qword ptr [rcx + 8]\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint::create(),
+							ConstantString::create("\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()
+						})
 					),
 				},
 				true

@@ -47,7 +47,7 @@ std::string LocalizedString::getString()
 
 	int index = 1;
 
-	for (auto next : this->stringReplacementVariables)
+	for (LocalizedString* next : this->stringReplacementVariables)
 	{
 		if (next != nullptr)
 		{
@@ -90,10 +90,15 @@ LocalizedString* LocalizedString::setStringReplacementVariables(LocalizedString*
 	return this->setStringReplacementVariables(std::vector<LocalizedString*>({ stringReplacementVariables }));
 }
 
+std::vector<LocalizedString*> LocalizedString::getStringReplacementVariables()
+{
+	return this->stringReplacementVariables;
+}
+
 LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables)
 {
 	// Release old replacement varaibles
-	for (const auto& next : this->stringReplacementVariables)
+	for (LocalizedString* next : this->stringReplacementVariables)
 	{
 		if (next == nullptr)
 		{
@@ -126,7 +131,7 @@ LocalizedString* LocalizedString::setStringReplacementVariables(std::vector<Loca
 	this->stringReplacementVariables = stringReplacementVariables;
 
 	// Retain new replacement variables
-	for (auto next : this->stringReplacementVariables)
+	for (LocalizedString* next : this->stringReplacementVariables)
 	{
 		if (next == nullptr)
 		{
