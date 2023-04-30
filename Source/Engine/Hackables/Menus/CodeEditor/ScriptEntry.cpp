@@ -1,10 +1,8 @@
 #include "ScriptEntry.h"
 
-#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/2d/CCLayer.h"
 #include "cocos/2d/CCSprite.h"
 
-#include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -192,15 +190,18 @@ void ScriptEntry::initializeListeners()
 
 void ScriptEntry::bindToLocalizedScript(LocalizedString* localizedScript)
 {
-	this->boundScript = localizedScript;
-
-	if (this->isReadOnly && this->boundScript != nullptr)
+	if (this->boundScript != nullptr)
 	{
-		this->addGlobalEventListener(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
-		{
-			this->setScript(this->boundScript->getString());
-		}));
+		this->removeChild(this->boundScript);
 	}
+	
+	this->boundScript = localizedScript;
+	this->addChild(this->boundScript);
+}
+
+LocalizedString* ScriptEntry::getBoundLocalizedScript()
+{
+	return this->boundScript;
 }
 
 void ScriptEntry::toggleSelected(bool isSelected)

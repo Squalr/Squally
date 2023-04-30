@@ -18,6 +18,7 @@ public:
 	static ScriptEntry* create(LocalizedString* scriptName, std::string script, bool isReadOnly, std::function<void(ScriptEntry*)> onScriptEntryClick, std::function<void(ScriptEntry*)> onCopyClick, std::function<void(ScriptEntry*)> onDeleteClick);
 
 	void bindToLocalizedScript(LocalizedString* localizedScript);
+	LocalizedString* getBoundLocalizedScript();
 
 	void toggleSelected(bool isSelected);
 	void deleteScript();

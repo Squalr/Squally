@@ -4,7 +4,6 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventDispatcher.h"
 
-#include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Localization/Localization.h"
