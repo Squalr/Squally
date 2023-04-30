@@ -123,7 +123,7 @@ void CurseOfTheAncients::registerHackables()
 							Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue::create()
 								->setStringReplacementVariables(ConstantString::create(std::to_string(CurseOfTheAncients::DamageDelt))),
 							Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead::create(),
-							std::string("\n"),
+							ConstantString::create("\n"),
 							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()
 						})
 						, // x64
@@ -135,7 +135,7 @@ void CurseOfTheAncients::registerHackables()
 							Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue::create()
 								->setStringReplacementVariables(ConstantString::create(std::to_string(CurseOfTheAncients::DamageDelt))),
 							Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead::create(),
-							std::string("\n"),
+							ConstantString::create("\n"),
 							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()
 						})
 					),

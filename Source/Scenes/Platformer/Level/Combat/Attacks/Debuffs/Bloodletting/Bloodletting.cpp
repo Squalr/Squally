@@ -117,27 +117,31 @@ void Bloodletting::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng::create()) +
-						"test ebx, ebx\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJs::create()) +
-						"js bloodletting\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp::create()) +
-						"jmp skipCode\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage::create()) +
-						"bloodletting:\n" +
-						"mov edi, 5\n" + // Bloodletting::DamageAmount
-						"skipCode:\n\n"
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng::create(),
+							ConstantString::create("test ebx, ebx\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJs::create(),
+							ConstantString::create("js bloodletting\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp::create(),
+							ConstantString::create("jmp skipCode\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage::create(),
+							ConstantString::create("bloodletting:\n"),
+							ConstantString::create("mov edi, 5\n"), // Bloodletting::DamageAmount
+							ConstantString::create("skipCode:\n\n")
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng::create()) +
-						"test rbx, rbx\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJs::create()) +
-						"js bloodletting\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp::create()) +
-						"jmp skipCode\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage::create()) +
-						"bloodletting:\n" +
-						"mov rdi, 5\n" + // Bloodletting::DamageAmount
-						"skipCode:\n\n"
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng::create(),
+							ConstantString::create("test rbx, rbx\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJs::create(),
+							ConstantString::create("js bloodletting\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp::create(),
+							ConstantString::create("jmp skipCode\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage::create(),
+							ConstantString::create("bloodletting:\n"),
+							ConstantString::create("mov rdi, 5\n"), // Bloodletting::DamageAmount
+							ConstantString::create("skipCode:\n\n")
+						})
 					),
 				},
 				true

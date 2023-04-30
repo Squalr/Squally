@@ -114,27 +114,31 @@ void GhostBolt::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_ApplySpeed::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) +
-						std::string("fld1\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFchs::create()) +
-						std::string("fchs\n") +
-						std::string("fstp dword ptr [eax]\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
-						std::string("\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentHint::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create(),
+							ConstantString::create("fld1\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFchs::create(),
+							ConstantString::create("fchs\n"),
+							ConstantString::create("fstp dword ptr [eax]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create(),
+							ConstantString::create("\n\n"),
+							Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentHint::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) +
-						std::string("fld1\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFchs::create()) +
-						std::string("fchs\n") +
-						std::string("fstp dword ptr [rax]\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
-						std::string("\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentHint::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create(),
+							ConstantString::create("fld1\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFchs::create(),
+							ConstantString::create("fchs\n"),
+							ConstantString::create("fstp dword ptr [rax]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create(),
+							ConstantString::create("\n\n"),
+							Strings::Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentHint::create()
+						})
 					)
 				},
 				true

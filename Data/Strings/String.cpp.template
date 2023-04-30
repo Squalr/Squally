@@ -1,7 +1,7 @@
 
-	{{ClassName}}* {{ClassName}}::create()
+	LocalizedString* {{ClassName}}::create()
 	{
-		{{ClassName}}* instance = new {{ClassName}}();
+		LocalizedString* instance = new {{ClassName}}();
 
 		instance->autorelease();
 

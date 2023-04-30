@@ -9,6 +9,8 @@
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Hackables/HackableObject.h"
 #include "Engine/Hackables/Menus/HackablePreview.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Particles/SmartParticles.h"
 #include "Engine/Localization/ConstantString.h"
@@ -128,19 +130,23 @@ void Undying::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"cmp esi, ebx\n"
-						"cmovle esi, ebx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create())
+						ConcatString::create({
+							ConstantString::create("cmp esi, ebx\n"),
+							ConstantString::create("cmovle esi, ebx\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create()
+						})
 						, // x64
-						"cmp rsi, rbx\n"
-						"cmovle rsi, rbx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create())
+						ConcatString::create({
+							ConstantString::create("cmp rsi, rbx\n"),
+							ConstantString::create("cmovle rsi, rbx\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create()
+						})
 					),
 				},
 				true

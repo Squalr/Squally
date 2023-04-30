@@ -112,29 +112,33 @@ void Diseased::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeat::create()) +
-						"repeat:\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentDecreaseDamage::create()) +
-						"dec edx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentCompare::create()) +
-						"cmp edx, 5\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeatJump::create()) +
-						"jg repeat\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJg::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentG::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeat::create(),
+							ConstantString::create("repeat:\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentDecreaseDamage::create(),
+							ConstantString::create("dec edx\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentCompare::create(),
+							ConstantString::create("cmp edx, 5\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeatJump::create(),
+							ConstantString::create("jg repeat\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJg::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentG::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeat::create()) +
-						"repeat:\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentDecreaseDamage::create()) +
-						"dec rdx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentCompare::create()) +
-						"cmp rdx, 5\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeatJump::create()) +
-						"jg repeat\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJg::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentG::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeat::create(),
+							ConstantString::create("repeat:\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentDecreaseDamage::create(),
+							ConstantString::create("dec rdx\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentCompare::create(),
+							ConstantString::create("cmp rdx, 5\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeatJump::create(),
+							ConstantString::create("jg repeat\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJg::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentG::create()
+						})
 					),
 				},
 				true

@@ -127,23 +127,27 @@ void HeavyBlade::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentJmp::create()) + 
-						"jmp addDamage\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentSkippedCode::create()) + 
-						"sub ecx, 20\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels::create()) + 
-						"addDamage:\n" +
-						"add ecx, 3\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentJmp::create(),
+							ConstantString::create("jmp addDamage\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentSkippedCode::create(),
+							ConstantString::create("sub ecx, 20\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels::create(),
+							ConstantString::create("addDamage:\n"),
+							ConstantString::create("add ecx, 3\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentJmp::create()) + 
-						"jmp addDamage\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentSkippedCode::create()) + 
-						"sub rcx, 20\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels::create()) + 
-						"addDamage:\n" +
-						"add rcx, 3\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentJmp::create(),
+							ConstantString::create("jmp addDamage\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentSkippedCode::create(),
+							ConstantString::create("sub rcx, 20\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels::create(),
+							ConstantString::create("addDamage:\n"),
+							ConstantString::create("add rcx, 3\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()
+						})
 					),
 				},
 				true

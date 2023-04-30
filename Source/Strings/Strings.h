@@ -12,7 +12,7 @@ namespace Strings
 	class Cipher_Ascii : public LocalizedString
 	{
 	public:
-		static Cipher_Ascii* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27,7 +27,7 @@ namespace Strings
 	class Cipher_AsciiTable : public LocalizedString
 	{
 	public:
-		static Cipher_AsciiTable* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -42,7 +42,7 @@ namespace Strings
 	class Cipher_BasicOperators : public LocalizedString
 	{
 	public:
-		static Cipher_BasicOperators* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -57,7 +57,7 @@ namespace Strings
 	class Cipher_BinaryOperators : public LocalizedString
 	{
 	public:
-		static Cipher_BinaryOperators* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -72,7 +72,7 @@ namespace Strings
 	class Cipher_BonusItem : public LocalizedString
 	{
 	public:
-		static Cipher_BonusItem* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -87,7 +87,7 @@ namespace Strings
 	class Cipher_ChooseANewValue : public LocalizedString
 	{
 	public:
-		static Cipher_ChooseANewValue* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -102,7 +102,7 @@ namespace Strings
 	class Cipher_Cipher : public LocalizedString
 	{
 	public:
-		static Cipher_Cipher* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -117,7 +117,7 @@ namespace Strings
 	class Cipher_CipherCaps : public LocalizedString
 	{
 	public:
-		static Cipher_CipherCaps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -132,7 +132,7 @@ namespace Strings
 	class Cipher_Comparisons : public LocalizedString
 	{
 	public:
-		static Cipher_Comparisons* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -147,7 +147,7 @@ namespace Strings
 	class Cipher_Easy : public LocalizedString
 	{
 	public:
-		static Cipher_Easy* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -162,7 +162,7 @@ namespace Strings
 	class Cipher_EnterAValue : public LocalizedString
 	{
 	public:
-		static Cipher_EnterAValue* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -177,7 +177,7 @@ namespace Strings
 	class Cipher_Hard : public LocalizedString
 	{
 	public:
-		static Cipher_Hard* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -192,7 +192,7 @@ namespace Strings
 	class Cipher_Inputs : public LocalizedString
 	{
 	public:
-		static Cipher_Inputs* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -207,7 +207,7 @@ namespace Strings
 	class Cipher_Operations_ADD : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_ADD* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -222,7 +222,7 @@ namespace Strings
 	class Cipher_Operations_AND : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_AND* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -237,7 +237,7 @@ namespace Strings
 	class Cipher_Operations_BruteForce : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_BruteForce* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -252,7 +252,7 @@ namespace Strings
 	class Cipher_Operations_CSHL : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_CSHL* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -267,7 +267,7 @@ namespace Strings
 	class Cipher_Operations_CSHR : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_CSHR* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -282,7 +282,7 @@ namespace Strings
 	class Cipher_Operations_DIV : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_DIV* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -297,7 +297,7 @@ namespace Strings
 	class Cipher_Operations_INV : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_INV* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -312,7 +312,7 @@ namespace Strings
 	class Cipher_Operations_Immediate : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_Immediate* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -327,7 +327,7 @@ namespace Strings
 	class Cipher_Operations_MOD : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_MOD* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -342,7 +342,7 @@ namespace Strings
 	class Cipher_Operations_MOV : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_MOV* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -357,7 +357,7 @@ namespace Strings
 	class Cipher_Operations_MUL : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_MUL* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -372,7 +372,7 @@ namespace Strings
 	class Cipher_Operations_OR : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_OR* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -387,7 +387,7 @@ namespace Strings
 	class Cipher_Operations_SHL : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_SHL* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -402,7 +402,7 @@ namespace Strings
 	class Cipher_Operations_SHR : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_SHR* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -417,7 +417,7 @@ namespace Strings
 	class Cipher_Operations_SUB : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_SUB* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -432,7 +432,7 @@ namespace Strings
 	class Cipher_Operations_XOR : public LocalizedString
 	{
 	public:
-		static Cipher_Operations_XOR* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -447,7 +447,7 @@ namespace Strings
 	class Cipher_Outputs : public LocalizedString
 	{
 	public:
-		static Cipher_Outputs* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -462,7 +462,7 @@ namespace Strings
 	class Cipher_SelectAChapter : public LocalizedString
 	{
 	public:
-		static Cipher_SelectAChapter* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -477,7 +477,7 @@ namespace Strings
 	class Cipher_Special : public LocalizedString
 	{
 	public:
-		static Cipher_Special* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -492,7 +492,7 @@ namespace Strings
 	class Cipher_Test : public LocalizedString
 	{
 	public:
-		static Cipher_Test* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -507,7 +507,7 @@ namespace Strings
 	class Cipher_Tools : public LocalizedString
 	{
 	public:
-		static Cipher_Tools* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -522,7 +522,7 @@ namespace Strings
 	class Cipher_Tutorials_Addition_A_DisplayedAs : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_Addition_A_DisplayedAs* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -537,7 +537,7 @@ namespace Strings
 	class Cipher_Tutorials_Addition_B_ChangeDataType : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_Addition_B_ChangeDataType* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -552,7 +552,7 @@ namespace Strings
 	class Cipher_Tutorials_Addition_C_ConnectComponents : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_Addition_C_ConnectComponents* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -567,7 +567,7 @@ namespace Strings
 	class Cipher_Tutorials_Connect_A_ChestsLocked : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_Connect_A_ChestsLocked* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -582,7 +582,7 @@ namespace Strings
 	class Cipher_Tutorials_Connect_B_ThisOneIsEasy : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_Connect_B_ThisOneIsEasy* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -597,7 +597,7 @@ namespace Strings
 	class Cipher_Tutorials_Connect_C_Unlock : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_Connect_C_Unlock* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -612,7 +612,7 @@ namespace Strings
 	class Cipher_Tutorials_ExtraTokens_A_ExtraTokens : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_ExtraTokens_A_ExtraTokens* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -627,7 +627,7 @@ namespace Strings
 	class Cipher_Tutorials_Overflow_A_8BitNumbers : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_Overflow_A_8BitNumbers* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -642,7 +642,7 @@ namespace Strings
 	class Cipher_Tutorials_Overflow_B_PropertyOf8Bit : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_Overflow_B_PropertyOf8Bit* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -657,7 +657,7 @@ namespace Strings
 	class Cipher_Tutorials_ShiftLeft_A_ShiftLeft : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_ShiftLeft_A_ShiftLeft* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -672,7 +672,7 @@ namespace Strings
 	class Cipher_Tutorials_ShiftLeft_B_PropertyOfShl : public LocalizedString
 	{
 	public:
-		static Cipher_Tutorials_ShiftLeft_B_PropertyOfShl* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -687,7 +687,7 @@ namespace Strings
 	class Cipher_Unlock : public LocalizedString
 	{
 	public:
-		static Cipher_Unlock* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -702,7 +702,7 @@ namespace Strings
 	class Cipher_ValueEditor : public LocalizedString
 	{
 	public:
-		static Cipher_ValueEditor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -717,7 +717,7 @@ namespace Strings
 	class Common_Brackets : public LocalizedString
 	{
 	public:
-		static Common_Brackets* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -732,7 +732,7 @@ namespace Strings
 	class Common_Comment : public LocalizedString
 	{
 	public:
-		static Common_Comment* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -747,7 +747,7 @@ namespace Strings
 	class Common_CommentAsm : public LocalizedString
 	{
 	public:
-		static Common_CommentAsm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -762,7 +762,7 @@ namespace Strings
 	class Common_Concat : public LocalizedString
 	{
 	public:
-		static Common_Concat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -777,7 +777,7 @@ namespace Strings
 	class Common_ConcatSpaced : public LocalizedString
 	{
 	public:
-		static Common_ConcatSpaced* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -792,7 +792,7 @@ namespace Strings
 	class Common_Constant : public LocalizedString
 	{
 	public:
-		static Common_Constant* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -807,7 +807,7 @@ namespace Strings
 	class Common_ConstantNewline : public LocalizedString
 	{
 	public:
-		static Common_ConstantNewline* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -822,7 +822,7 @@ namespace Strings
 	class Common_ConstantNewlineNewline : public LocalizedString
 	{
 	public:
-		static Common_ConstantNewlineNewline* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -837,7 +837,7 @@ namespace Strings
 	class Common_ConstantTimes : public LocalizedString
 	{
 	public:
-		static Common_ConstantTimes* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -852,7 +852,7 @@ namespace Strings
 	class Common_Dash : public LocalizedString
 	{
 	public:
-		static Common_Dash* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -867,7 +867,7 @@ namespace Strings
 	class Common_Empty : public LocalizedString
 	{
 	public:
-		static Common_Empty* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -882,7 +882,7 @@ namespace Strings
 	class Common_Infinity : public LocalizedString
 	{
 	public:
-		static Common_Infinity* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -897,7 +897,7 @@ namespace Strings
 	class Common_MinusConstant : public LocalizedString
 	{
 	public:
-		static Common_MinusConstant* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -912,7 +912,7 @@ namespace Strings
 	class Common_MinusPointerOffset : public LocalizedString
 	{
 	public:
-		static Common_MinusPointerOffset* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -927,7 +927,7 @@ namespace Strings
 	class Common_NativeLanguage : public LocalizedString
 	{
 	public:
-		static Common_NativeLanguage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -942,7 +942,7 @@ namespace Strings
 	class Common_Newline : public LocalizedString
 	{
 	public:
-		static Common_Newline* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -957,7 +957,7 @@ namespace Strings
 	class Common_NewlineNewline : public LocalizedString
 	{
 	public:
-		static Common_NewlineNewline* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -972,7 +972,7 @@ namespace Strings
 	class Common_Parenthesis : public LocalizedString
 	{
 	public:
-		static Common_Parenthesis* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -987,7 +987,7 @@ namespace Strings
 	class Common_PlusConstant : public LocalizedString
 	{
 	public:
-		static Common_PlusConstant* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1002,7 +1002,7 @@ namespace Strings
 	class Common_PlusPointerOffset : public LocalizedString
 	{
 	public:
-		static Common_PlusPointerOffset* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1017,7 +1017,7 @@ namespace Strings
 	class Common_Pointer : public LocalizedString
 	{
 	public:
-		static Common_Pointer* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1032,7 +1032,7 @@ namespace Strings
 	class Common_Squally : public LocalizedString
 	{
 	public:
-		static Common_Squally* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1047,7 +1047,7 @@ namespace Strings
 	class Common_TimesConstant : public LocalizedString
 	{
 	public:
-		static Common_TimesConstant* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1062,7 +1062,7 @@ namespace Strings
 	class Common_Triconcat : public LocalizedString
 	{
 	public:
-		static Common_Triconcat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1077,7 +1077,7 @@ namespace Strings
 	class Common_TriconcatSpaced : public LocalizedString
 	{
 	public:
-		static Common_TriconcatSpaced* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1092,7 +1092,7 @@ namespace Strings
 	class Common_XArrowY : public LocalizedString
 	{
 	public:
-		static Common_XArrowY* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1107,7 +1107,7 @@ namespace Strings
 	class Common_XColonY : public LocalizedString
 	{
 	public:
-		static Common_XColonY* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1122,7 +1122,7 @@ namespace Strings
 	class Common_XColonYSpaced : public LocalizedString
 	{
 	public:
-		static Common_XColonYSpaced* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1137,7 +1137,7 @@ namespace Strings
 	class Common_XEqualsY : public LocalizedString
 	{
 	public:
-		static Common_XEqualsY* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1152,7 +1152,7 @@ namespace Strings
 	class Common_XOverY : public LocalizedString
 	{
 	public:
-		static Common_XOverY* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1167,7 +1167,7 @@ namespace Strings
 	class Common_XTimesY : public LocalizedString
 	{
 	public:
-		static Common_XTimesY* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1182,7 +1182,7 @@ namespace Strings
 	class Debugging_CameraX : public LocalizedString
 	{
 	public:
-		static Debugging_CameraX* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1197,7 +1197,7 @@ namespace Strings
 	class Debugging_CameraY : public LocalizedString
 	{
 	public:
-		static Debugging_CameraY* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1212,7 +1212,7 @@ namespace Strings
 	class Debugging_CameraZoom : public LocalizedString
 	{
 	public:
-		static Debugging_CameraZoom* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1227,7 +1227,7 @@ namespace Strings
 	class Hexus_Actions_ChooseRow : public LocalizedString
 	{
 	public:
-		static Hexus_Actions_ChooseRow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1242,7 +1242,7 @@ namespace Strings
 	class Hexus_Actions_ChooseSourceCard : public LocalizedString
 	{
 	public:
-		static Hexus_Actions_ChooseSourceCard* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1257,7 +1257,7 @@ namespace Strings
 	class Hexus_Actions_ChooseTargetCard : public LocalizedString
 	{
 	public:
-		static Hexus_Actions_ChooseTargetCard* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1272,7 +1272,7 @@ namespace Strings
 	class Hexus_AssemblyHelpText : public LocalizedString
 	{
 	public:
-		static Hexus_AssemblyHelpText* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1287,7 +1287,7 @@ namespace Strings
 	class Hexus_Banners_Challenge : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_Challenge* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1302,7 +1302,7 @@ namespace Strings
 	class Hexus_Banners_Defeat : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_Defeat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1317,7 +1317,7 @@ namespace Strings
 	class Hexus_Banners_Draw : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_Draw* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1332,7 +1332,7 @@ namespace Strings
 	class Hexus_Banners_FinalRound : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_FinalRound* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1347,7 +1347,7 @@ namespace Strings
 	class Hexus_Banners_LastStand : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_LastStand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1362,7 +1362,7 @@ namespace Strings
 	class Hexus_Banners_NextRound : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_NextRound* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1377,7 +1377,7 @@ namespace Strings
 	class Hexus_Banners_OpponentFirst : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_OpponentFirst* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1392,7 +1392,7 @@ namespace Strings
 	class Hexus_Banners_OpponentPassed : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_OpponentPassed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1407,7 +1407,7 @@ namespace Strings
 	class Hexus_Banners_OpponentRoundWin : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_OpponentRoundWin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1422,7 +1422,7 @@ namespace Strings
 	class Hexus_Banners_OpponentsTurn : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_OpponentsTurn* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1437,7 +1437,7 @@ namespace Strings
 	class Hexus_Banners_PlayerFirst : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_PlayerFirst* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1452,7 +1452,7 @@ namespace Strings
 	class Hexus_Banners_PlayerPassed : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_PlayerPassed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1467,7 +1467,7 @@ namespace Strings
 	class Hexus_Banners_PlayerRoundWin : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_PlayerRoundWin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1482,7 +1482,7 @@ namespace Strings
 	class Hexus_Banners_PlayerTurn : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_PlayerTurn* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1497,7 +1497,7 @@ namespace Strings
 	class Hexus_Banners_RemainingCardReplacements : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_RemainingCardReplacements* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1512,7 +1512,7 @@ namespace Strings
 	class Hexus_Banners_RoundStart : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_RoundStart* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1527,7 +1527,7 @@ namespace Strings
 	class Hexus_Banners_RoundTied : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_RoundTied* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1542,7 +1542,7 @@ namespace Strings
 	class Hexus_Banners_Victory : public LocalizedString
 	{
 	public:
-		static Hexus_Banners_Victory* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1557,7 +1557,7 @@ namespace Strings
 	class Hexus_BinCards : public LocalizedString
 	{
 	public:
-		static Hexus_BinCards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1572,7 +1572,7 @@ namespace Strings
 	class Hexus_BinHeader : public LocalizedString
 	{
 	public:
-		static Hexus_BinHeader* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1587,7 +1587,7 @@ namespace Strings
 	class Hexus_BinLabel : public LocalizedString
 	{
 	public:
-		static Hexus_BinLabel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1602,7 +1602,7 @@ namespace Strings
 	class Hexus_BinaryMax : public LocalizedString
 	{
 	public:
-		static Hexus_BinaryMax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1617,7 +1617,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Absorb : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Absorb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1632,7 +1632,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Addition : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Addition* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1647,7 +1647,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_BinDecHex : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_BinDecHex* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1662,7 +1662,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_BonusMoves : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_BonusMoves* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1677,7 +1677,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Clear : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Clear* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1692,7 +1692,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_DrawEffect : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_DrawEffect* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1707,7 +1707,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Flip1 : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Flip1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1722,7 +1722,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Flip2 : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Flip2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1737,7 +1737,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Flip3 : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Flip3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1752,7 +1752,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Flip4 : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Flip4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1767,7 +1767,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Greed : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Greed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1782,7 +1782,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Horde : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Horde* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1797,7 +1797,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Inverse : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Inverse* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1812,7 +1812,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_LogicalAnd : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_LogicalAnd* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1827,7 +1827,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_LogicalOr : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_LogicalOr* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1842,7 +1842,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_LogicalXor : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_LogicalXor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1857,7 +1857,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Mov : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Mov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1872,7 +1872,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_NoDestroyEffect : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_NoDestroyEffect* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1887,7 +1887,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Peek : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Peek* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1902,7 +1902,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Pop : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Pop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1917,7 +1917,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Push : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Push* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1932,7 +1932,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_ReturnAfterRound : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_ReturnAfterRound* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1947,7 +1947,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_ReturnToHand : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_ReturnToHand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1962,7 +1962,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_ShiftLeft : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_ShiftLeft* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1977,7 +1977,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_ShiftLeftCircular : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_ShiftLeftCircular* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -1992,7 +1992,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_ShiftRight : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_ShiftRight* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2007,7 +2007,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_ShiftRightCircular : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_ShiftRightCircular* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2022,7 +2022,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Steal : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Steal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2037,7 +2037,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_Subtract : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_Subtract* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2052,7 +2052,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_SuddenDeath : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_SuddenDeath* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2067,7 +2067,7 @@ namespace Strings
 	class Hexus_CardDescriptionsLong_TurnGainsEffect : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptionsLong_TurnGainsEffect* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2082,7 +2082,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Absorb : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Absorb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2097,7 +2097,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Addition : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Addition* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2112,7 +2112,7 @@ namespace Strings
 	class Hexus_CardDescriptions_BonusMoves : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_BonusMoves* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2127,7 +2127,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Clear : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Clear* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2142,7 +2142,7 @@ namespace Strings
 	class Hexus_CardDescriptions_DrawEffect : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_DrawEffect* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2157,7 +2157,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Flip1 : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Flip1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2172,7 +2172,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Flip2 : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Flip2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2187,7 +2187,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Flip3 : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Flip3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2202,7 +2202,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Flip4 : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Flip4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2217,7 +2217,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Greed : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Greed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2232,7 +2232,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Horde : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Horde* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2247,7 +2247,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Inverse : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Inverse* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2262,7 +2262,7 @@ namespace Strings
 	class Hexus_CardDescriptions_LogicalAnd : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_LogicalAnd* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2277,7 +2277,7 @@ namespace Strings
 	class Hexus_CardDescriptions_LogicalOr : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_LogicalOr* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2292,7 +2292,7 @@ namespace Strings
 	class Hexus_CardDescriptions_LogicalXor : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_LogicalXor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2307,7 +2307,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Mov : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Mov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2322,7 +2322,7 @@ namespace Strings
 	class Hexus_CardDescriptions_NoDestroyEffect : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_NoDestroyEffect* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2337,7 +2337,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Peek : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Peek* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2352,7 +2352,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Pop : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Pop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2367,7 +2367,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Push : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Push* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2382,7 +2382,7 @@ namespace Strings
 	class Hexus_CardDescriptions_ReturnAfterRound : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_ReturnAfterRound* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2397,7 +2397,7 @@ namespace Strings
 	class Hexus_CardDescriptions_ReturnToHand : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_ReturnToHand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2412,7 +2412,7 @@ namespace Strings
 	class Hexus_CardDescriptions_ShiftLeft : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_ShiftLeft* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2427,7 +2427,7 @@ namespace Strings
 	class Hexus_CardDescriptions_ShiftLeftCircular : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_ShiftLeftCircular* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2442,7 +2442,7 @@ namespace Strings
 	class Hexus_CardDescriptions_ShiftRight : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_ShiftRight* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2457,7 +2457,7 @@ namespace Strings
 	class Hexus_CardDescriptions_ShiftRightCircular : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_ShiftRightCircular* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2472,7 +2472,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Steal : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Steal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2487,7 +2487,7 @@ namespace Strings
 	class Hexus_CardDescriptions_Subtract : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_Subtract* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2502,7 +2502,7 @@ namespace Strings
 	class Hexus_CardDescriptions_SuddenDeath : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_SuddenDeath* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2517,7 +2517,7 @@ namespace Strings
 	class Hexus_CardDescriptions_TurnGainsEffect : public LocalizedString
 	{
 	public:
-		static Hexus_CardDescriptions_TurnGainsEffect* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2532,7 +2532,7 @@ namespace Strings
 	class Hexus_CardsInDeck : public LocalizedString
 	{
 	public:
-		static Hexus_CardsInDeck* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2547,7 +2547,7 @@ namespace Strings
 	class Hexus_CardsInStorage : public LocalizedString
 	{
 	public:
-		static Hexus_CardsInStorage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2562,7 +2562,7 @@ namespace Strings
 	class Hexus_CardsToPlayToolTip : public LocalizedString
 	{
 	public:
-		static Hexus_CardsToPlayToolTip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2577,7 +2577,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_ADD : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_ADD* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2592,7 +2592,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_AND : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_AND* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2607,7 +2607,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_BIN : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_BIN* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2622,7 +2622,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_CSHL : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_CSHL* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2637,7 +2637,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_CSHR : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_CSHR* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2652,7 +2652,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_DEC : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_DEC* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2667,7 +2667,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_DIV : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_DIV* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2682,7 +2682,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_ERR : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_ERR* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2697,7 +2697,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_FLIP1 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_FLIP1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2712,7 +2712,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_FLIP2 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_FLIP2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2727,7 +2727,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_FLIP3 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_FLIP3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2742,7 +2742,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_FLIP4 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_FLIP4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2757,7 +2757,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_HEX : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_HEX* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2772,7 +2772,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_MOD : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_MOD* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2787,7 +2787,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_MOV : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_MOV* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2802,7 +2802,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_MUL : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_MUL* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2817,7 +2817,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_NOT : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_NOT* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2832,7 +2832,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_OR : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_OR* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2847,7 +2847,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_POP : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_POP* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2862,7 +2862,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_PUSH : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_PUSH* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2877,7 +2877,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_ROL : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_ROL* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2892,7 +2892,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_ROR : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_ROR* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2907,7 +2907,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_SHL : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_SHL* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2922,7 +2922,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_SHR : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_SHR* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2937,7 +2937,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_SUB : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_SUB* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2952,7 +2952,7 @@ namespace Strings
 	class Hexus_Cards_Abbreviations_XOR : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Abbreviations_XOR* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2967,7 +2967,7 @@ namespace Strings
 	class Hexus_Cards_Absorb : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Absorb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2982,7 +2982,7 @@ namespace Strings
 	class Hexus_Cards_Addition : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Addition* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -2997,7 +2997,7 @@ namespace Strings
 	class Hexus_Cards_BinStorm : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_BinStorm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3012,7 +3012,7 @@ namespace Strings
 	class Hexus_Cards_Binary0 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3027,7 +3027,7 @@ namespace Strings
 	class Hexus_Cards_Binary1 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3042,7 +3042,7 @@ namespace Strings
 	class Hexus_Cards_Binary10 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary10* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3057,7 +3057,7 @@ namespace Strings
 	class Hexus_Cards_Binary11 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary11* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3072,7 +3072,7 @@ namespace Strings
 	class Hexus_Cards_Binary12 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary12* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3087,7 +3087,7 @@ namespace Strings
 	class Hexus_Cards_Binary13 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary13* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3102,7 +3102,7 @@ namespace Strings
 	class Hexus_Cards_Binary14 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary14* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3117,7 +3117,7 @@ namespace Strings
 	class Hexus_Cards_Binary15 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary15* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3132,7 +3132,7 @@ namespace Strings
 	class Hexus_Cards_Binary2 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3147,7 +3147,7 @@ namespace Strings
 	class Hexus_Cards_Binary3 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3162,7 +3162,7 @@ namespace Strings
 	class Hexus_Cards_Binary4 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3177,7 +3177,7 @@ namespace Strings
 	class Hexus_Cards_Binary5 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary5* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3192,7 +3192,7 @@ namespace Strings
 	class Hexus_Cards_Binary6 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary6* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3207,7 +3207,7 @@ namespace Strings
 	class Hexus_Cards_Binary7 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary7* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3222,7 +3222,7 @@ namespace Strings
 	class Hexus_Cards_Binary8 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary8* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3237,7 +3237,7 @@ namespace Strings
 	class Hexus_Cards_Binary9 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Binary9* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3252,7 +3252,7 @@ namespace Strings
 	class Hexus_Cards_Decimal0 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3267,7 +3267,7 @@ namespace Strings
 	class Hexus_Cards_Decimal1 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3282,7 +3282,7 @@ namespace Strings
 	class Hexus_Cards_Decimal10 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal10* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3297,7 +3297,7 @@ namespace Strings
 	class Hexus_Cards_Decimal11 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal11* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3312,7 +3312,7 @@ namespace Strings
 	class Hexus_Cards_Decimal12 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal12* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3327,7 +3327,7 @@ namespace Strings
 	class Hexus_Cards_Decimal13 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal13* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3342,7 +3342,7 @@ namespace Strings
 	class Hexus_Cards_Decimal14 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal14* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3357,7 +3357,7 @@ namespace Strings
 	class Hexus_Cards_Decimal15 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal15* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3372,7 +3372,7 @@ namespace Strings
 	class Hexus_Cards_Decimal2 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3387,7 +3387,7 @@ namespace Strings
 	class Hexus_Cards_Decimal3 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3402,7 +3402,7 @@ namespace Strings
 	class Hexus_Cards_Decimal4 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3417,7 +3417,7 @@ namespace Strings
 	class Hexus_Cards_Decimal5 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal5* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3432,7 +3432,7 @@ namespace Strings
 	class Hexus_Cards_Decimal6 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal6* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3447,7 +3447,7 @@ namespace Strings
 	class Hexus_Cards_Decimal7 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal7* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3462,7 +3462,7 @@ namespace Strings
 	class Hexus_Cards_Decimal8 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal8* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3477,7 +3477,7 @@ namespace Strings
 	class Hexus_Cards_Decimal9 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Decimal9* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3492,7 +3492,7 @@ namespace Strings
 	class Hexus_Cards_Effects_Overflow : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Effects_Overflow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3507,7 +3507,7 @@ namespace Strings
 	class Hexus_Cards_Effects_Underflow : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Effects_Underflow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3522,7 +3522,7 @@ namespace Strings
 	class Hexus_Cards_Flip1 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Flip1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3537,7 +3537,7 @@ namespace Strings
 	class Hexus_Cards_Flip2 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Flip2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3552,7 +3552,7 @@ namespace Strings
 	class Hexus_Cards_Flip3 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Flip3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3567,7 +3567,7 @@ namespace Strings
 	class Hexus_Cards_Flip4 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Flip4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3582,7 +3582,7 @@ namespace Strings
 	class Hexus_Cards_Greed : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Greed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3597,7 +3597,7 @@ namespace Strings
 	class Hexus_Cards_Hex0 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3612,7 +3612,7 @@ namespace Strings
 	class Hexus_Cards_Hex1 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3627,7 +3627,7 @@ namespace Strings
 	class Hexus_Cards_Hex10 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex10* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3642,7 +3642,7 @@ namespace Strings
 	class Hexus_Cards_Hex11 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex11* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3657,7 +3657,7 @@ namespace Strings
 	class Hexus_Cards_Hex12 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex12* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3672,7 +3672,7 @@ namespace Strings
 	class Hexus_Cards_Hex13 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex13* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3687,7 +3687,7 @@ namespace Strings
 	class Hexus_Cards_Hex14 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex14* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3702,7 +3702,7 @@ namespace Strings
 	class Hexus_Cards_Hex15 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex15* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3717,7 +3717,7 @@ namespace Strings
 	class Hexus_Cards_Hex2 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3732,7 +3732,7 @@ namespace Strings
 	class Hexus_Cards_Hex3 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3747,7 +3747,7 @@ namespace Strings
 	class Hexus_Cards_Hex4 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3762,7 +3762,7 @@ namespace Strings
 	class Hexus_Cards_Hex5 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex5* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3777,7 +3777,7 @@ namespace Strings
 	class Hexus_Cards_Hex6 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex6* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3792,7 +3792,7 @@ namespace Strings
 	class Hexus_Cards_Hex7 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex7* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3807,7 +3807,7 @@ namespace Strings
 	class Hexus_Cards_Hex8 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex8* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3822,7 +3822,7 @@ namespace Strings
 	class Hexus_Cards_Hex9 : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Hex9* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3837,7 +3837,7 @@ namespace Strings
 	class Hexus_Cards_Inverse : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Inverse* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3852,7 +3852,7 @@ namespace Strings
 	class Hexus_Cards_LogicalAnd : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_LogicalAnd* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3867,7 +3867,7 @@ namespace Strings
 	class Hexus_Cards_LogicalOr : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_LogicalOr* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3882,7 +3882,7 @@ namespace Strings
 	class Hexus_Cards_LogicalXor : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_LogicalXor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3897,7 +3897,7 @@ namespace Strings
 	class Hexus_Cards_Mov : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Mov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3912,7 +3912,7 @@ namespace Strings
 	class Hexus_Cards_Peek : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Peek* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3927,7 +3927,7 @@ namespace Strings
 	class Hexus_Cards_Pop : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Pop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3942,7 +3942,7 @@ namespace Strings
 	class Hexus_Cards_Push : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Push* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3957,7 +3957,7 @@ namespace Strings
 	class Hexus_Cards_ReturnToHand : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_ReturnToHand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3972,7 +3972,7 @@ namespace Strings
 	class Hexus_Cards_ShiftLeft : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_ShiftLeft* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -3987,7 +3987,7 @@ namespace Strings
 	class Hexus_Cards_ShiftLeftCircular : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_ShiftLeftCircular* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4002,7 +4002,7 @@ namespace Strings
 	class Hexus_Cards_ShiftRight : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_ShiftRight* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4017,7 +4017,7 @@ namespace Strings
 	class Hexus_Cards_ShiftRightCircular : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_ShiftRightCircular* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4032,7 +4032,7 @@ namespace Strings
 	class Hexus_Cards_Steal : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Steal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4047,7 +4047,7 @@ namespace Strings
 	class Hexus_Cards_Subtract : public LocalizedString
 	{
 	public:
-		static Hexus_Cards_Subtract* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4062,7 +4062,7 @@ namespace Strings
 	class Hexus_ClaimVictory : public LocalizedString
 	{
 	public:
-		static Hexus_ClaimVictory* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4077,7 +4077,7 @@ namespace Strings
 	class Hexus_DecCards : public LocalizedString
 	{
 	public:
-		static Hexus_DecCards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4092,7 +4092,7 @@ namespace Strings
 	class Hexus_DecHeader : public LocalizedString
 	{
 	public:
-		static Hexus_DecHeader* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4107,7 +4107,7 @@ namespace Strings
 	class Hexus_DecLabel : public LocalizedString
 	{
 	public:
-		static Hexus_DecLabel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4122,7 +4122,7 @@ namespace Strings
 	class Hexus_Done : public LocalizedString
 	{
 	public:
-		static Hexus_Done* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4137,7 +4137,7 @@ namespace Strings
 	class Hexus_DrawToolTip : public LocalizedString
 	{
 	public:
-		static Hexus_DrawToolTip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4152,7 +4152,7 @@ namespace Strings
 	class Hexus_HexCards : public LocalizedString
 	{
 	public:
-		static Hexus_HexCards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4167,7 +4167,7 @@ namespace Strings
 	class Hexus_HexHeader : public LocalizedString
 	{
 	public:
-		static Hexus_HexHeader* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4182,7 +4182,7 @@ namespace Strings
 	class Hexus_HexLabel : public LocalizedString
 	{
 	public:
-		static Hexus_HexLabel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4197,7 +4197,7 @@ namespace Strings
 	class Hexus_Hexus : public LocalizedString
 	{
 	public:
-		static Hexus_Hexus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4212,7 +4212,7 @@ namespace Strings
 	class Hexus_HexusPuzzles : public LocalizedString
 	{
 	public:
-		static Hexus_HexusPuzzles* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4227,7 +4227,7 @@ namespace Strings
 	class Hexus_LastStand : public LocalizedString
 	{
 	public:
-		static Hexus_LastStand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4242,7 +4242,7 @@ namespace Strings
 	class Hexus_ManageCards : public LocalizedString
 	{
 	public:
-		static Hexus_ManageCards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4257,7 +4257,7 @@ namespace Strings
 	class Hexus_Pass : public LocalizedString
 	{
 	public:
-		static Hexus_Pass* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4272,7 +4272,7 @@ namespace Strings
 	class Hexus_PurchaseConfirmation : public LocalizedString
 	{
 	public:
-		static Hexus_PurchaseConfirmation* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4287,7 +4287,7 @@ namespace Strings
 	class Hexus_SelectAChapter : public LocalizedString
 	{
 	public:
-		static Hexus_SelectAChapter* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4302,7 +4302,7 @@ namespace Strings
 	class Hexus_SelectOpponent : public LocalizedString
 	{
 	public:
-		static Hexus_SelectOpponent* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4317,7 +4317,7 @@ namespace Strings
 	class Hexus_Shop : public LocalizedString
 	{
 	public:
-		static Hexus_Shop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4332,7 +4332,7 @@ namespace Strings
 	class Hexus_SpecialCards : public LocalizedString
 	{
 	public:
-		static Hexus_SpecialCards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4347,7 +4347,7 @@ namespace Strings
 	class Hexus_StoreLabelBinary : public LocalizedString
 	{
 	public:
-		static Hexus_StoreLabelBinary* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4362,7 +4362,7 @@ namespace Strings
 	class Hexus_StoreLabelDecimal : public LocalizedString
 	{
 	public:
-		static Hexus_StoreLabelDecimal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4377,7 +4377,7 @@ namespace Strings
 	class Hexus_StoreLabelHex : public LocalizedString
 	{
 	public:
-		static Hexus_StoreLabelHex* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4392,7 +4392,7 @@ namespace Strings
 	class Hexus_StoreLabelSpecial : public LocalizedString
 	{
 	public:
-		static Hexus_StoreLabelSpecial* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4407,7 +4407,7 @@ namespace Strings
 	class Hexus_Tutorials_A_BinCards : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_A_BinCards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4422,7 +4422,7 @@ namespace Strings
 	class Hexus_Tutorials_A_DecCards : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_A_DecCards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4437,7 +4437,7 @@ namespace Strings
 	class Hexus_Tutorials_A_HandCards : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_A_HandCards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4452,7 +4452,7 @@ namespace Strings
 	class Hexus_Tutorials_A_HexCards : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_A_HexCards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4467,7 +4467,7 @@ namespace Strings
 	class Hexus_Tutorials_A_LossDisplay : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_A_LossDisplay* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4482,7 +4482,7 @@ namespace Strings
 	class Hexus_Tutorials_A_RowTotals : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_A_RowTotals* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4497,7 +4497,7 @@ namespace Strings
 	class Hexus_Tutorials_A_ScoreTotals : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_A_ScoreTotals* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4512,7 +4512,7 @@ namespace Strings
 	class Hexus_Tutorials_A_Victory : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_A_Victory* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4527,7 +4527,7 @@ namespace Strings
 	class Hexus_Tutorials_A_WinningRound : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_A_WinningRound* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4542,7 +4542,7 @@ namespace Strings
 	class Hexus_Tutorials_B_SaveCards : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_B_SaveCards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4557,7 +4557,7 @@ namespace Strings
 	class Hexus_Tutorials_B_ScoreLead : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_B_ScoreLead* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4572,7 +4572,7 @@ namespace Strings
 	class Hexus_Tutorials_B_UseLastStand : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_B_UseLastStand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4587,7 +4587,7 @@ namespace Strings
 	class Hexus_Tutorials_C_NotEnoughToWin : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_C_NotEnoughToWin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4602,7 +4602,7 @@ namespace Strings
 	class Hexus_Tutorials_C_OpponentLead : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_C_OpponentLead* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4617,7 +4617,7 @@ namespace Strings
 	class Hexus_Tutorials_C_UseSurrender : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_C_UseSurrender* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4632,7 +4632,7 @@ namespace Strings
 	class Hexus_Tutorials_D_UseMov : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_D_UseMov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4647,7 +4647,7 @@ namespace Strings
 	class Hexus_Tutorials_PuzzleB_A_4Bits : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_PuzzleB_A_4Bits* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4662,7 +4662,7 @@ namespace Strings
 	class Hexus_Tutorials_PuzzleB_B_Overflow : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_PuzzleB_B_Overflow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4677,7 +4677,7 @@ namespace Strings
 	class Hexus_Tutorials_PuzzleB_C_HelpMenu : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_PuzzleB_C_HelpMenu* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4692,7 +4692,7 @@ namespace Strings
 	class Hexus_Tutorials_PuzzleC_A_Overflow : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_PuzzleC_A_Overflow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4707,7 +4707,7 @@ namespace Strings
 	class Hexus_Tutorials_PuzzleD_A_Order : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_PuzzleD_A_Order* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4722,7 +4722,7 @@ namespace Strings
 	class Hexus_Tutorials_Sarude_ClaimWin : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_Sarude_ClaimWin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4737,7 +4737,7 @@ namespace Strings
 	class Hexus_Tutorials_Sarude_RealMatch : public LocalizedString
 	{
 	public:
-		static Hexus_Tutorials_Sarude_RealMatch* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4752,7 +4752,7 @@ namespace Strings
 	class Input_Shift : public LocalizedString
 	{
 	public:
-		static Input_Shift* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4767,7 +4767,7 @@ namespace Strings
 	class Input_Spacebar : public LocalizedString
 	{
 	public:
-		static Input_Spacebar* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4782,7 +4782,7 @@ namespace Strings
 	class Input_Tab : public LocalizedString
 	{
 	public:
-		static Input_Tab* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4797,7 +4797,7 @@ namespace Strings
 	class Items_Consumables_Combat_BombDescription : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Combat_BombDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4812,7 +4812,7 @@ namespace Strings
 	class Items_Consumables_Combat_FragGrenade : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Combat_FragGrenade* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4827,7 +4827,7 @@ namespace Strings
 	class Items_Consumables_Combat_LargeBomb : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Combat_LargeBomb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4842,7 +4842,7 @@ namespace Strings
 	class Items_Consumables_Combat_MeteoriteBomb : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Combat_MeteoriteBomb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4857,7 +4857,7 @@ namespace Strings
 	class Items_Consumables_Combat_PepperBomb : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Combat_PepperBomb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4872,7 +4872,7 @@ namespace Strings
 	class Items_Consumables_Combat_SmallBomb : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Combat_SmallBomb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4887,7 +4887,7 @@ namespace Strings
 	class Items_Consumables_Combat_SpikedBomb : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Combat_SpikedBomb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4902,7 +4902,7 @@ namespace Strings
 	class Items_Consumables_Combat_SteelBomb : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Combat_SteelBomb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4917,7 +4917,7 @@ namespace Strings
 	class Items_Consumables_Health_GreaterHealthPotion : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Health_GreaterHealthPotion* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4932,7 +4932,7 @@ namespace Strings
 	class Items_Consumables_Health_GreaterHealthPotionDescription : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Health_GreaterHealthPotionDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4947,7 +4947,7 @@ namespace Strings
 	class Items_Consumables_Health_HealthPotion : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Health_HealthPotion* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4962,7 +4962,7 @@ namespace Strings
 	class Items_Consumables_Health_HealthPotionDescription : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Health_HealthPotionDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4977,7 +4977,7 @@ namespace Strings
 	class Items_Consumables_Health_IncrementHealthFlask : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Health_IncrementHealthFlask* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -4992,7 +4992,7 @@ namespace Strings
 	class Items_Consumables_Health_IncrementHealthFlaskDescription : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Health_IncrementHealthFlaskDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5007,7 +5007,7 @@ namespace Strings
 	class Items_Consumables_Health_SuperiorHealthFlask : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Health_SuperiorHealthFlask* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5022,7 +5022,7 @@ namespace Strings
 	class Items_Consumables_Health_SuperiorHealthFlaskDescription : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Health_SuperiorHealthFlaskDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5037,7 +5037,7 @@ namespace Strings
 	class Items_Consumables_Mana_GreaterManaPotion : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Mana_GreaterManaPotion* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5052,7 +5052,7 @@ namespace Strings
 	class Items_Consumables_Mana_GreaterManaPotionDescription : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Mana_GreaterManaPotionDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5067,7 +5067,7 @@ namespace Strings
 	class Items_Consumables_Mana_IncrementManaFlask : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Mana_IncrementManaFlask* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5082,7 +5082,7 @@ namespace Strings
 	class Items_Consumables_Mana_IncrementManaFlaskDescription : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Mana_IncrementManaFlaskDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5097,7 +5097,7 @@ namespace Strings
 	class Items_Consumables_Mana_ManaPotion : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Mana_ManaPotion* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5112,7 +5112,7 @@ namespace Strings
 	class Items_Consumables_Mana_ManaPotionDescription : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Mana_ManaPotionDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5127,7 +5127,7 @@ namespace Strings
 	class Items_Consumables_Mana_SuperiorManaFlask : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Mana_SuperiorManaFlask* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5142,7 +5142,7 @@ namespace Strings
 	class Items_Consumables_Mana_SuperiorManaFlaskDescription : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Mana_SuperiorManaFlaskDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5157,7 +5157,7 @@ namespace Strings
 	class Items_Consumables_Special_DualElixir : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Special_DualElixir* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5172,7 +5172,7 @@ namespace Strings
 	class Items_Consumables_Special_DualElixirDescription : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Special_DualElixirDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5187,7 +5187,7 @@ namespace Strings
 	class Items_Consumables_Speed_SpeedPotion : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Speed_SpeedPotion* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5202,7 +5202,7 @@ namespace Strings
 	class Items_Consumables_Speed_SpeedPotionDescription : public LocalizedString
 	{
 	public:
-		static Items_Consumables_Speed_SpeedPotionDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5217,7 +5217,7 @@ namespace Strings
 	class Items_Crafting_BombReagents_Bamboo : public LocalizedString
 	{
 	public:
-		static Items_Crafting_BombReagents_Bamboo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5232,7 +5232,7 @@ namespace Strings
 	class Items_Crafting_BombReagents_Meteorite : public LocalizedString
 	{
 	public:
-		static Items_Crafting_BombReagents_Meteorite* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5247,7 +5247,7 @@ namespace Strings
 	class Items_Crafting_BombReagents_Pepper : public LocalizedString
 	{
 	public:
-		static Items_Crafting_BombReagents_Pepper* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5262,7 +5262,7 @@ namespace Strings
 	class Items_Crafting_BombReagents_PhoenixFeather : public LocalizedString
 	{
 	public:
-		static Items_Crafting_BombReagents_PhoenixFeather* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5277,7 +5277,7 @@ namespace Strings
 	class Items_Crafting_BombReagents_Stinger : public LocalizedString
 	{
 	public:
-		static Items_Crafting_BombReagents_Stinger* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5292,7 +5292,7 @@ namespace Strings
 	class Items_Crafting_BombReagents_StrongChitin : public LocalizedString
 	{
 	public:
-		static Items_Crafting_BombReagents_StrongChitin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5307,7 +5307,7 @@ namespace Strings
 	class Items_Crafting_BombReagents_WeakChitin : public LocalizedString
 	{
 	public:
-		static Items_Crafting_BombReagents_WeakChitin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5322,7 +5322,7 @@ namespace Strings
 	class Items_Crafting_Ore_Bone : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Bone* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5337,7 +5337,7 @@ namespace Strings
 	class Items_Crafting_Ore_Coal : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Coal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5352,7 +5352,7 @@ namespace Strings
 	class Items_Crafting_Ore_Copper : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Copper* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5367,7 +5367,7 @@ namespace Strings
 	class Items_Crafting_Ore_Crystal : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Crystal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5382,7 +5382,7 @@ namespace Strings
 	class Items_Crafting_Ore_Diamond : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Diamond* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5397,7 +5397,7 @@ namespace Strings
 	class Items_Crafting_Ore_Emerald : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Emerald* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5412,7 +5412,7 @@ namespace Strings
 	class Items_Crafting_Ore_Gold : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Gold* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5427,7 +5427,7 @@ namespace Strings
 	class Items_Crafting_Ore_Iron : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Iron* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5442,7 +5442,7 @@ namespace Strings
 	class Items_Crafting_Ore_Mithril : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Mithril* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5457,7 +5457,7 @@ namespace Strings
 	class Items_Crafting_Ore_Obsidian : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Obsidian* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5472,7 +5472,7 @@ namespace Strings
 	class Items_Crafting_Ore_Quartz : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Quartz* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5487,7 +5487,7 @@ namespace Strings
 	class Items_Crafting_Ore_Ruby : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Ruby* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5502,7 +5502,7 @@ namespace Strings
 	class Items_Crafting_Ore_Sapphire : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Sapphire* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5517,7 +5517,7 @@ namespace Strings
 	class Items_Crafting_Ore_Sulfur : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_Sulfur* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5532,7 +5532,7 @@ namespace Strings
 	class Items_Crafting_Ore_VoidCrystal : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Ore_VoidCrystal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5547,7 +5547,7 @@ namespace Strings
 	class Items_Crafting_PotionReagents_Acorn : public LocalizedString
 	{
 	public:
-		static Items_Crafting_PotionReagents_Acorn* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5562,7 +5562,7 @@ namespace Strings
 	class Items_Crafting_PotionReagents_BlackBlood : public LocalizedString
 	{
 	public:
-		static Items_Crafting_PotionReagents_BlackBlood* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5577,7 +5577,7 @@ namespace Strings
 	class Items_Crafting_PotionReagents_BlackMushroom : public LocalizedString
 	{
 	public:
-		static Items_Crafting_PotionReagents_BlackMushroom* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5592,7 +5592,7 @@ namespace Strings
 	class Items_Crafting_PotionReagents_Clover : public LocalizedString
 	{
 	public:
-		static Items_Crafting_PotionReagents_Clover* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5607,7 +5607,7 @@ namespace Strings
 	class Items_Crafting_PotionReagents_DarkSeed : public LocalizedString
 	{
 	public:
-		static Items_Crafting_PotionReagents_DarkSeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5622,7 +5622,7 @@ namespace Strings
 	class Items_Crafting_PotionReagents_DemonRoot : public LocalizedString
 	{
 	public:
-		static Items_Crafting_PotionReagents_DemonRoot* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5637,7 +5637,7 @@ namespace Strings
 	class Items_Crafting_PotionReagents_Feather : public LocalizedString
 	{
 	public:
-		static Items_Crafting_PotionReagents_Feather* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5652,7 +5652,7 @@ namespace Strings
 	class Items_Crafting_PotionReagents_FrostBerries : public LocalizedString
 	{
 	public:
-		static Items_Crafting_PotionReagents_FrostBerries* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5667,7 +5667,7 @@ namespace Strings
 	class Items_Crafting_PotionReagents_GoldWeed : public LocalizedString
 	{
 	public:
-		static Items_Crafting_PotionReagents_GoldWeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5682,7 +5682,7 @@ namespace Strings
 	class Items_Crafting_PotionReagents_Honey : public LocalizedString
 	{
 	public:
-		static Items_Crafting_PotionReagents_Honey* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5697,7 +5697,7 @@ namespace Strings
 	class Items_Crafting_PotionReagents_Mandrake : public LocalizedString
 	{
 	public:
-		static Items_Crafting_PotionReagents_Mandrake* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5712,7 +5712,7 @@ namespace Strings
 	class Items_Crafting_PotionReagents_RatTail : public LocalizedString
 	{
 	public:
-		static Items_Crafting_PotionReagents_RatTail* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5727,7 +5727,7 @@ namespace Strings
 	class Items_Crafting_PotionReagents_SandRoot : public LocalizedString
 	{
 	public:
-		static Items_Crafting_PotionReagents_SandRoot* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5742,7 +5742,7 @@ namespace Strings
 	class Items_Crafting_PotionReagents_Snowball : public LocalizedString
 	{
 	public:
-		static Items_Crafting_PotionReagents_Snowball* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5757,7 +5757,7 @@ namespace Strings
 	class Items_Crafting_PotionReagents_VoidFlower : public LocalizedString
 	{
 	public:
-		static Items_Crafting_PotionReagents_VoidFlower* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5772,7 +5772,7 @@ namespace Strings
 	class Items_Crafting_Recipes_TransmuteCopperToIron : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Recipes_TransmuteCopperToIron* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5787,7 +5787,7 @@ namespace Strings
 	class Items_Crafting_Recipes_TransmuteCopperToQuartz : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Recipes_TransmuteCopperToQuartz* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5802,7 +5802,7 @@ namespace Strings
 	class Items_Crafting_Recipes_TransmuteQuartzToEmerald : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Recipes_TransmuteQuartzToEmerald* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5817,7 +5817,7 @@ namespace Strings
 	class Items_Crafting_Recipes_TransmuteWoodToCoal : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Recipes_TransmuteWoodToCoal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5832,7 +5832,7 @@ namespace Strings
 	class Items_Crafting_Special_HeartOfFire : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Special_HeartOfFire* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5847,7 +5847,7 @@ namespace Strings
 	class Items_Crafting_Special_HeartOfShadow : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Special_HeartOfShadow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5862,7 +5862,7 @@ namespace Strings
 	class Items_Crafting_Wood_DarkWood : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Wood_DarkWood* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5877,7 +5877,7 @@ namespace Strings
 	class Items_Crafting_Wood_LightWood : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Wood_LightWood* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5892,7 +5892,7 @@ namespace Strings
 	class Items_Crafting_Wood_Wood : public LocalizedString
 	{
 	public:
-		static Items_Crafting_Wood_Wood* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5907,7 +5907,7 @@ namespace Strings
 	class Items_Currency_Gold : public LocalizedString
 	{
 	public:
-		static Items_Currency_Gold* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5922,7 +5922,7 @@ namespace Strings
 	class Items_Currency_IOU : public LocalizedString
 	{
 	public:
-		static Items_Currency_IOU* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5937,7 +5937,7 @@ namespace Strings
 	class Items_Currency_IOUs : public LocalizedString
 	{
 	public:
-		static Items_Currency_IOUs* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5952,7 +5952,7 @@ namespace Strings
 	class Items_Equipment_Gear_Earrings_AquaMarineEarrings : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Earrings_AquaMarineEarrings* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5967,7 +5967,7 @@ namespace Strings
 	class Items_Equipment_Gear_Earrings_CrystalEarrings : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Earrings_CrystalEarrings* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5982,7 +5982,7 @@ namespace Strings
 	class Items_Equipment_Gear_Earrings_EmeraldEarrings : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Earrings_EmeraldEarrings* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -5997,7 +5997,7 @@ namespace Strings
 	class Items_Equipment_Gear_Earrings_HeartEarrings : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Earrings_HeartEarrings* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6012,7 +6012,7 @@ namespace Strings
 	class Items_Equipment_Gear_Earrings_RoseEarrings : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Earrings_RoseEarrings* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6027,7 +6027,7 @@ namespace Strings
 	class Items_Equipment_Gear_Earrings_SapphireEarrings : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Earrings_SapphireEarrings* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6042,7 +6042,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_AcolytesCap : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_AcolytesCap* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6057,7 +6057,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_ArchersHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_ArchersHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6072,7 +6072,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_BarbedHelm : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_BarbedHelm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6087,7 +6087,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_BrocksHelm : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_BrocksHelm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6102,7 +6102,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_BucketHelm : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_BucketHelm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6117,7 +6117,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_ConchHelm : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_ConchHelm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6132,7 +6132,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_CopperHelm : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_CopperHelm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6147,7 +6147,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_CowboyHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_CowboyHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6162,7 +6162,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_DemonShell : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_DemonShell* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6177,7 +6177,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_DepressingWig : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_DepressingWig* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6192,7 +6192,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_DraksHelm : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_DraksHelm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6207,7 +6207,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_GardenersHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_GardenersHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6222,7 +6222,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_GoldenDungHelm : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_GoldenDungHelm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6237,7 +6237,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_GrandpasLuckyHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_GrandpasLuckyHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6252,7 +6252,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_GuardsHelmet : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_GuardsHelmet* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6267,7 +6267,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_GunnersHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_GunnersHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6282,7 +6282,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_JesterHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_JesterHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6297,7 +6297,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_JoustingHelmet : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_JoustingHelmet* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6312,7 +6312,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_LeatherCap : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_LeatherCap* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6327,7 +6327,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_MagesHatBlue : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_MagesHatBlue* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6342,7 +6342,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_MagesHatRed : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_MagesHatRed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6357,7 +6357,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_Monocle : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_Monocle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6372,7 +6372,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_NecrobatHelm : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_NecrobatHelm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6387,7 +6387,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_OldShoe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_OldShoe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6402,7 +6402,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_OrnateHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_OrnateHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6417,7 +6417,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_PirateHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_PirateHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6432,7 +6432,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_PriestHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_PriestHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6447,7 +6447,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_ReindeerHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_ReindeerHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6462,7 +6462,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_RoyalCrown : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_RoyalCrown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6477,7 +6477,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_SamuraiHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_SamuraiHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6492,7 +6492,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_SantaHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_SantaHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6507,7 +6507,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_ShamanTiara : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_ShamanTiara* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6522,7 +6522,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_SnailShell : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_SnailShell* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6537,7 +6537,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_SnailShellSpiked : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_SnailShellSpiked* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6552,7 +6552,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_SteelHelm : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_SteelHelm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6567,7 +6567,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_TheGoldenEagle : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_TheGoldenEagle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6582,7 +6582,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_TheldarsHelm : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_TheldarsHelm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6597,7 +6597,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_Tiara : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_Tiara* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6612,7 +6612,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_TigersBane : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_TigersBane* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6627,7 +6627,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_TopHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_TopHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6642,7 +6642,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_ToySoldierHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_ToySoldierHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6657,7 +6657,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_Turban : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_Turban* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6672,7 +6672,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_VikingHelmet : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_VikingHelmet* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6687,7 +6687,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_WarlocksHeaddress : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_WarlocksHeaddress* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6702,7 +6702,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_WitchesHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_WitchesHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6717,7 +6717,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_WizardsHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_WizardsHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6732,7 +6732,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_WizardsHatArcane : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_WizardsHatArcane* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6747,7 +6747,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_WizardsHatEarth : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_WizardsHatEarth* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6762,7 +6762,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_WizardsHatShadow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_WizardsHatShadow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6777,7 +6777,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_WizardsHatWater : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_WizardsHatWater* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6792,7 +6792,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_WolfHat : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_WolfHat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6807,7 +6807,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_WolfHatWhite : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_WolfHatWhite* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6822,7 +6822,7 @@ namespace Strings
 	class Items_Equipment_Gear_Hats_WoodenPikeHelm : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Hats_WoodenPikeHelm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6837,7 +6837,7 @@ namespace Strings
 	class Items_Equipment_Gear_Necklaces_AmethystNecklace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Necklaces_AmethystNecklace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6852,7 +6852,7 @@ namespace Strings
 	class Items_Equipment_Gear_Necklaces_AquaMarineNecklace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Necklaces_AquaMarineNecklace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6867,7 +6867,7 @@ namespace Strings
 	class Items_Equipment_Gear_Necklaces_EmeraldPendant : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Necklaces_EmeraldPendant* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6882,7 +6882,7 @@ namespace Strings
 	class Items_Equipment_Gear_Necklaces_GarnetNecklace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Necklaces_GarnetNecklace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6897,7 +6897,7 @@ namespace Strings
 	class Items_Equipment_Gear_Necklaces_GlowingPendant : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Necklaces_GlowingPendant* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6912,7 +6912,7 @@ namespace Strings
 	class Items_Equipment_Gear_Necklaces_HolyNecklace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Necklaces_HolyNecklace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6927,7 +6927,7 @@ namespace Strings
 	class Items_Equipment_Gear_Necklaces_MarineNecklace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Necklaces_MarineNecklace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6942,7 +6942,7 @@ namespace Strings
 	class Items_Equipment_Gear_Necklaces_SapphireNecklace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Necklaces_SapphireNecklace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6957,7 +6957,7 @@ namespace Strings
 	class Items_Equipment_Gear_Necklaces_TopazPendant : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Necklaces_TopazPendant* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6972,7 +6972,7 @@ namespace Strings
 	class Items_Equipment_Gear_Rings_DarkHeartBand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Rings_DarkHeartBand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -6987,7 +6987,7 @@ namespace Strings
 	class Items_Equipment_Gear_Rings_EmeraldBand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Rings_EmeraldBand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7002,7 +7002,7 @@ namespace Strings
 	class Items_Equipment_Gear_Rings_GarnetBand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Rings_GarnetBand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7017,7 +7017,7 @@ namespace Strings
 	class Items_Equipment_Gear_Rings_HeartBand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Rings_HeartBand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7032,7 +7032,7 @@ namespace Strings
 	class Items_Equipment_Gear_Rings_MarineBand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Rings_MarineBand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7047,7 +7047,7 @@ namespace Strings
 	class Items_Equipment_Gear_Rings_SapphireBand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Rings_SapphireBand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7062,7 +7062,7 @@ namespace Strings
 	class Items_Equipment_Gear_Rings_ShellBand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Rings_ShellBand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7077,7 +7077,7 @@ namespace Strings
 	class Items_Equipment_Gear_Rings_SkullBand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Rings_SkullBand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7092,7 +7092,7 @@ namespace Strings
 	class Items_Equipment_Gear_Rings_SoulBand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Gear_Rings_SoulBand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7107,7 +7107,7 @@ namespace Strings
 	class Items_Equipment_Offhands_Shields_WoodenShield : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Offhands_Shields_WoodenShield* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7122,7 +7122,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Axes_BoneAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_BoneAxe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7137,7 +7137,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Axes_CopperAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_CopperAxe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7152,7 +7152,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Axes_CrystalAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_CrystalAxe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7167,7 +7167,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Axes_DemonicAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_DemonicAxe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7182,7 +7182,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Axes_FrostAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_FrostAxe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7197,7 +7197,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Axes_GoldenAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_GoldenAxe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7212,7 +7212,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Axes_MithrilAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_MithrilAxe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7227,7 +7227,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Axes_Scythe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_Scythe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7242,7 +7242,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Axes_SteelAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_SteelAxe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7257,7 +7257,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Axes_VoidAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_VoidAxe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7272,7 +7272,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Axes_WoodenAxe : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Axes_WoodenAxe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7287,7 +7287,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Bows_BoneBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_BoneBow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7302,7 +7302,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Bows_CrystalBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_CrystalBow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7317,7 +7317,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Bows_DemonicBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_DemonicBow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7332,7 +7332,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Bows_GoldenBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_GoldenBow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7347,7 +7347,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Bows_HuntersBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_HuntersBow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7362,7 +7362,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Bows_IvyBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_IvyBow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7377,7 +7377,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Bows_SteelBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_SteelBow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7392,7 +7392,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Bows_VoidBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_VoidBow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7407,7 +7407,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Bows_WoodenBow : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Bows_WoodenBow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7422,7 +7422,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Maces_Bludgeon : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_Bludgeon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7437,7 +7437,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Maces_BoneHammer : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_BoneHammer* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7452,7 +7452,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Maces_CopperMallet : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_CopperMallet* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7467,7 +7467,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Maces_CrystalMace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_CrystalMace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7482,7 +7482,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Maces_DemonicMace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_DemonicMace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7497,7 +7497,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Maces_GoldenMace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_GoldenMace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7512,7 +7512,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Maces_MithrilMace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_MithrilMace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7527,7 +7527,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Maces_SteelMace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_SteelMace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7542,7 +7542,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Maces_Timmy : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_Timmy* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7557,7 +7557,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Maces_VoidMace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_VoidMace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7572,7 +7572,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Maces_WitchingMace : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_WitchingMace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7587,7 +7587,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Maces_WoodenClub : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Maces_WoodenClub* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7602,7 +7602,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Swords_AshenBlade : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_AshenBlade* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7617,7 +7617,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Swords_BoneSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_BoneSword* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7632,7 +7632,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Swords_CandySword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_CandySword* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7647,7 +7647,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Swords_CopperSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_CopperSword* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7662,7 +7662,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Swords_CrystalSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_CrystalSword* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7677,7 +7677,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Swords_DemonicSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_DemonicSword* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7692,7 +7692,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Swords_Dreadmourn : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_Dreadmourn* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7707,7 +7707,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Swords_FireSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_FireSword* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7722,7 +7722,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Swords_Frostbane : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_Frostbane* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7737,7 +7737,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Swords_GoldenSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_GoldenSword* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7752,7 +7752,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Swords_MithrilSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_MithrilSword* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7767,7 +7767,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Swords_SteelSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_SteelSword* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7782,7 +7782,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Swords_TheButcher : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_TheButcher* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7797,7 +7797,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Swords_VoidSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_VoidSword* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7812,7 +7812,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Swords_WoodenSword : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Swords_WoodenSword* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7827,7 +7827,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Wands_BoneWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_BoneWand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7842,7 +7842,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Wands_ChieftainsWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_ChieftainsWand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7857,7 +7857,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Wands_CrystalWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_CrystalWand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7872,7 +7872,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Wands_DemonicWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_DemonicWand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7887,7 +7887,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Wands_EmeraldWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_EmeraldWand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7902,7 +7902,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Wands_GoldenWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_GoldenWand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7917,7 +7917,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Wands_QuartzWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_QuartzWand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7932,7 +7932,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Wands_SapphireWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_SapphireWand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7947,7 +7947,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Wands_SerpentWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_SerpentWand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7962,7 +7962,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Wands_TaserRod : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_TaserRod* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7977,7 +7977,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Wands_VoidWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_VoidWand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -7992,7 +7992,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Wands_WitchesWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_WitchesWand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8007,7 +8007,7 @@ namespace Strings
 	class Items_Equipment_Weapons_Wands_WoodenWand : public LocalizedString
 	{
 	public:
-		static Items_Equipment_Weapons_Wands_WoodenWand* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8022,7 +8022,7 @@ namespace Strings
 	class Items_Error_MissingNo : public LocalizedString
 	{
 	public:
-		static Items_Error_MissingNo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8037,7 +8037,7 @@ namespace Strings
 	class Items_Misc_Keys_AncientKey : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_AncientKey* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8052,7 +8052,7 @@ namespace Strings
 	class Items_Misc_Keys_BlueGem : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_BlueGem* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8067,7 +8067,7 @@ namespace Strings
 	class Items_Misc_Keys_CryptKey : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_CryptKey* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8082,7 +8082,7 @@ namespace Strings
 	class Items_Misc_Keys_DemonHeart : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_DemonHeart* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8097,7 +8097,7 @@ namespace Strings
 	class Items_Misc_Keys_DemonKey : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_DemonKey* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8112,7 +8112,7 @@ namespace Strings
 	class Items_Misc_Keys_FountainRoomKey : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_FountainRoomKey* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8127,7 +8127,7 @@ namespace Strings
 	class Items_Misc_Keys_FrostKey : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_FrostKey* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8142,7 +8142,7 @@ namespace Strings
 	class Items_Misc_Keys_FrozenKey : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_FrozenKey* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8157,7 +8157,7 @@ namespace Strings
 	class Items_Misc_Keys_HeliumBomb : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_HeliumBomb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8172,7 +8172,7 @@ namespace Strings
 	class Items_Misc_Keys_HellKey : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_HellKey* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8187,7 +8187,7 @@ namespace Strings
 	class Items_Misc_Keys_IceKey : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_IceKey* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8202,7 +8202,7 @@ namespace Strings
 	class Items_Misc_Keys_LetterForThePrincess : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_LetterForThePrincess* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8217,7 +8217,7 @@ namespace Strings
 	class Items_Misc_Keys_MagesGuildPrisonKey : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_MagesGuildPrisonKey* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8232,7 +8232,7 @@ namespace Strings
 	class Items_Misc_Keys_MedusasMirror : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_MedusasMirror* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8247,7 +8247,7 @@ namespace Strings
 	class Items_Misc_Keys_MinesKey : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_MinesKey* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8262,7 +8262,7 @@ namespace Strings
 	class Items_Misc_Keys_PurpleGem : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_PurpleGem* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8277,7 +8277,7 @@ namespace Strings
 	class Items_Misc_Keys_RamWheel : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_RamWheel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8292,7 +8292,7 @@ namespace Strings
 	class Items_Misc_Keys_RedGem : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_RedGem* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8307,7 +8307,7 @@ namespace Strings
 	class Items_Misc_Keys_RustyKey : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_RustyKey* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8322,7 +8322,7 @@ namespace Strings
 	class Items_Misc_Keys_TownKey : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_TownKey* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8337,7 +8337,7 @@ namespace Strings
 	class Items_Misc_Keys_TrainTicket : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_TrainTicket* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8352,7 +8352,7 @@ namespace Strings
 	class Items_Misc_Keys_UnstableConcoction : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_UnstableConcoction* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8367,7 +8367,7 @@ namespace Strings
 	class Items_Misc_Keys_UnstableElement : public LocalizedString
 	{
 	public:
-		static Items_Misc_Keys_UnstableElement* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8382,7 +8382,7 @@ namespace Strings
 	class Items_Misc_Maps_DungeonMap : public LocalizedString
 	{
 	public:
-		static Items_Misc_Maps_DungeonMap* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8397,7 +8397,7 @@ namespace Strings
 	class Menus_Accept : public LocalizedString
 	{
 	public:
-		static Menus_Accept* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8412,7 +8412,7 @@ namespace Strings
 	class Menus_Apply : public LocalizedString
 	{
 	public:
-		static Menus_Apply* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8427,7 +8427,7 @@ namespace Strings
 	class Menus_ApplyChanges : public LocalizedString
 	{
 	public:
-		static Menus_ApplyChanges* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8442,7 +8442,7 @@ namespace Strings
 	class Menus_Back : public LocalizedString
 	{
 	public:
-		static Menus_Back* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8457,7 +8457,7 @@ namespace Strings
 	class Menus_Cancel : public LocalizedString
 	{
 	public:
-		static Menus_Cancel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8472,7 +8472,7 @@ namespace Strings
 	class Menus_Cards_Cards : public LocalizedString
 	{
 	public:
-		static Menus_Cards_Cards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8487,7 +8487,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Bat : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Bat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8502,7 +8502,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Bear : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Bear* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8517,7 +8517,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Beaver : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Beaver* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8532,7 +8532,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Bee : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Bee* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8547,7 +8547,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Bird : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Bird* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8562,7 +8562,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Blowfish : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Blowfish* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8577,7 +8577,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Bull : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Bull* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8592,7 +8592,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Bunny : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Bunny* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8607,7 +8607,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Cat : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Cat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8622,7 +8622,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Chicken : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Chicken* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8637,7 +8637,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Cow : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Cow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8652,7 +8652,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Crocodile : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Crocodile* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8667,7 +8667,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Dinosaur : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Dinosaur* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8682,7 +8682,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Dog : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Dog* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8697,7 +8697,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Duck : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Duck* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8712,7 +8712,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Fox : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Fox* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8727,7 +8727,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Giraffe : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Giraffe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8742,7 +8742,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Goat : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Goat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8757,7 +8757,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Hedgehog : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Hedgehog* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8772,7 +8772,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Hippo : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Hippo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8787,7 +8787,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Horse : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Horse* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8802,7 +8802,7 @@ namespace Strings
 	class Menus_Collectables_Animals_KillerWhale : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_KillerWhale* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8817,7 +8817,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Koala : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Koala* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8832,7 +8832,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Ladybug : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Ladybug* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8847,7 +8847,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Lion : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Lion* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8862,7 +8862,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Lizard : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Lizard* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8877,7 +8877,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Monkey : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Monkey* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8892,7 +8892,7 @@ namespace Strings
 	class Menus_Collectables_Animals_MountainLion : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_MountainLion* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8907,7 +8907,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Mouse : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Mouse* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8922,7 +8922,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Panda : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Panda* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8937,7 +8937,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Parrot : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Parrot* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8952,7 +8952,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Penguin : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Penguin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8967,7 +8967,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Pig : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Pig* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8982,7 +8982,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Raccoon : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Raccoon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -8997,7 +8997,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Reindeer : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Reindeer* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9012,7 +9012,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Rhino : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Rhino* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9027,7 +9027,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Sheep : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Sheep* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9042,7 +9042,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Skunk : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Skunk* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9057,7 +9057,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Snail : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Snail* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9072,7 +9072,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Snake : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Snake* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9087,7 +9087,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Squid : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Squid* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9102,7 +9102,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Squirrel : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Squirrel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9117,7 +9117,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Tiger : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Tiger* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9132,7 +9132,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Tucan : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Tucan* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9147,7 +9147,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Turtle : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Turtle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9162,7 +9162,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Whale : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Whale* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9177,7 +9177,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Wolf : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Wolf* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9192,7 +9192,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Worm : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Worm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9207,7 +9207,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Yeti : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Yeti* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9222,7 +9222,7 @@ namespace Strings
 	class Menus_Collectables_Animals_Zebra : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Animals_Zebra* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9237,7 +9237,7 @@ namespace Strings
 	class Menus_Collectables_Collectables : public LocalizedString
 	{
 	public:
-		static Menus_Collectables_Collectables* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9252,7 +9252,7 @@ namespace Strings
 	class Menus_ComingSoon : public LocalizedString
 	{
 	public:
-		static Menus_ComingSoon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9267,7 +9267,7 @@ namespace Strings
 	class Menus_Confirm : public LocalizedString
 	{
 	public:
-		static Menus_Confirm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9282,7 +9282,7 @@ namespace Strings
 	class Menus_Crafting_All : public LocalizedString
 	{
 	public:
-		static Menus_Crafting_All* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9297,7 +9297,7 @@ namespace Strings
 	class Menus_Crafting_Axes : public LocalizedString
 	{
 	public:
-		static Menus_Crafting_Axes* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9312,7 +9312,7 @@ namespace Strings
 	class Menus_Crafting_Bows : public LocalizedString
 	{
 	public:
-		static Menus_Crafting_Bows* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9327,7 +9327,7 @@ namespace Strings
 	class Menus_Crafting_Craftable : public LocalizedString
 	{
 	public:
-		static Menus_Crafting_Craftable* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9342,7 +9342,7 @@ namespace Strings
 	class Menus_Crafting_Crafting : public LocalizedString
 	{
 	public:
-		static Menus_Crafting_Crafting* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9357,7 +9357,7 @@ namespace Strings
 	class Menus_Crafting_Dismantle : public LocalizedString
 	{
 	public:
-		static Menus_Crafting_Dismantle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9372,7 +9372,7 @@ namespace Strings
 	class Menus_Crafting_Maces : public LocalizedString
 	{
 	public:
-		static Menus_Crafting_Maces* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9387,7 +9387,7 @@ namespace Strings
 	class Menus_Crafting_Potions : public LocalizedString
 	{
 	public:
-		static Menus_Crafting_Potions* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9402,7 +9402,7 @@ namespace Strings
 	class Menus_Crafting_Spears : public LocalizedString
 	{
 	public:
-		static Menus_Crafting_Spears* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9417,7 +9417,7 @@ namespace Strings
 	class Menus_Crafting_Swords : public LocalizedString
 	{
 	public:
-		static Menus_Crafting_Swords* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9432,7 +9432,7 @@ namespace Strings
 	class Menus_Crafting_Transmutes : public LocalizedString
 	{
 	public:
-		static Menus_Crafting_Transmutes* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9447,7 +9447,7 @@ namespace Strings
 	class Menus_Crafting_Wands : public LocalizedString
 	{
 	public:
-		static Menus_Crafting_Wands* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9462,7 +9462,7 @@ namespace Strings
 	class Menus_Credits_Developers : public LocalizedString
 	{
 	public:
-		static Menus_Credits_Developers* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9477,7 +9477,7 @@ namespace Strings
 	class Menus_Credits_MattTwitter : public LocalizedString
 	{
 	public:
-		static Menus_Credits_MattTwitter* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9492,7 +9492,7 @@ namespace Strings
 	class Menus_Credits_NateTwitter : public LocalizedString
 	{
 	public:
-		static Menus_Credits_NateTwitter* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9507,7 +9507,7 @@ namespace Strings
 	class Menus_Credits_ZacTwitter : public LocalizedString
 	{
 	public:
-		static Menus_Credits_ZacTwitter* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9522,7 +9522,7 @@ namespace Strings
 	class Menus_Demo : public LocalizedString
 	{
 	public:
-		static Menus_Demo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9537,7 +9537,7 @@ namespace Strings
 	class Menus_Developer_DeveloperMenu : public LocalizedString
 	{
 	public:
-		static Menus_Developer_DeveloperMenu* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9552,7 +9552,7 @@ namespace Strings
 	class Menus_Exit : public LocalizedString
 	{
 	public:
-		static Menus_Exit* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9567,7 +9567,7 @@ namespace Strings
 	class Menus_GotIt : public LocalizedString
 	{
 	public:
-		static Menus_GotIt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9582,7 +9582,7 @@ namespace Strings
 	class Menus_HackingTutorials : public LocalizedString
 	{
 	public:
-		static Menus_HackingTutorials* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9597,7 +9597,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ArrowRain_ArrowRain : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowRain_ArrowRain* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9612,7 +9612,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowRain_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9627,7 +9627,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowRain_CommentEval* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9642,7 +9642,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ArrowRain_CompareTeam : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowRain_CompareTeam* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9657,7 +9657,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowRain_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9672,7 +9672,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ArrowVolley_ArrowVolley : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowVolley_ArrowVolley* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9687,7 +9687,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9702,7 +9702,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9717,7 +9717,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9732,7 +9732,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9747,7 +9747,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9762,7 +9762,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ArrowVolley_CompareTeam : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowVolley_CompareTeam* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9777,7 +9777,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9792,7 +9792,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9807,7 +9807,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ArrowVolley_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9822,7 +9822,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_BatSwarm_BatSwarm : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_BatSwarm_BatSwarm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9837,7 +9837,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_BatSwarm_CommentApplyDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_BatSwarm_CommentApplyDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9852,7 +9852,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_BatSwarm_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_BatSwarm_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9867,7 +9867,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_BatSwarm_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_BatSwarm_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9882,7 +9882,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_BatSwarm_CompareTeam : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_BatSwarm_CompareTeam* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9897,7 +9897,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9912,7 +9912,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_BatSwarm_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9927,7 +9927,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Cauterize_Cauterize : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Cauterize_Cauterize* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9942,7 +9942,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Cauterize_CommentAdd : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Cauterize_CommentAdd* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9957,7 +9957,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9972,7 +9972,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -9987,7 +9987,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10002,7 +10002,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_FireRain_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_FireRain_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10017,7 +10017,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_FireRain_CompareTeam : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_FireRain_CompareTeam* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10032,7 +10032,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_FireRain_FireRain : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_FireRain_FireRain* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10047,7 +10047,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10062,7 +10062,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm4 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_FireRain_RegisterXmm4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10077,7 +10077,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_ApplySpeed : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_ApplySpeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10092,7 +10092,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentAlterSpeed : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentAlterSpeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10107,7 +10107,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentXmmLoading : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentXmmLoading* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10122,7 +10122,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_FireballClippy : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_FireballClippy* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10137,7 +10137,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10152,7 +10152,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_RegisterXmm0 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_RegisterXmm0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10167,7 +10167,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_RegisterXmm1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_RegisterXmm1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10182,7 +10182,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_StopFireball : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_StopFireball* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10197,7 +10197,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_FogOfWar_CommentElaborate : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_FogOfWar_CommentElaborate* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10212,7 +10212,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_FogOfWar_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_FogOfWar_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10227,7 +10227,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShl : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShl* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10242,7 +10242,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShlBy1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShlBy1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10257,7 +10257,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_FogOfWar_FogOfWar : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_FogOfWar_FogOfWar* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10272,7 +10272,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_FogOfWar_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_FogOfWar_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10287,7 +10287,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_GetProjectileAcceleration : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_GetProjectileAcceleration* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10302,7 +10302,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10317,7 +10317,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10332,7 +10332,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10347,7 +10347,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_GetProjectileAcceleration_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10362,7 +10362,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_GetProjectileVelocity : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_GetProjectileVelocity* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10377,7 +10377,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10392,7 +10392,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10407,7 +10407,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10422,7 +10422,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_GetProjectileVelocity_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10437,7 +10437,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_ApplySpeed : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_ApplySpeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10452,7 +10452,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10467,7 +10467,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_GhostBolt_ApplySpeed_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10482,7 +10482,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10497,7 +10497,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_InnerFire_InnerFire : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_InnerFire_InnerFire* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10512,7 +10512,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10527,7 +10527,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10542,7 +10542,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10557,7 +10557,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Regeneration_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10572,7 +10572,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Rejuvination_Hint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Rejuvination_Hint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10587,7 +10587,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Rejuvination_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Rejuvination_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10602,7 +10602,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Rejuvination_Rejuvination : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Rejuvination_Rejuvination* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10617,7 +10617,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_RockSlide_Hint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_RockSlide_Hint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10632,7 +10632,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_RockSlide_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_RockSlide_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10647,7 +10647,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_RockSlide_RockSlide : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_RockSlide_RockSlide* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10662,7 +10662,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_ApplySpeed : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_ApplySpeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10677,7 +10677,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_CommentSpeed : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_CommentSpeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10692,7 +10692,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10707,7 +10707,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterXmm0 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterXmm0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10722,7 +10722,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterXmm1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_RegisterXmm1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10737,7 +10737,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_ShadowBoltClippy : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_ShadowBoltClippy* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10752,7 +10752,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_StopShadowBolt : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_StopShadowBolt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10767,7 +10767,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ShadowBomb_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ShadowBomb_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10782,7 +10782,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_ShadowBomb_ShadowBomb : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_ShadowBomb_ShadowBomb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10797,7 +10797,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_TimeBomb_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_TimeBomb_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10812,7 +10812,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_TimeBomb_TimeBombTick : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_TimeBomb_TimeBombTick* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10827,7 +10827,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_ApplySpeed : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_ApplySpeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10842,7 +10842,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentAlterSpeed : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentAlterSpeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10857,7 +10857,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentXmmLoading : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentXmmLoading* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10872,7 +10872,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10887,7 +10887,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterXmm0 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterXmm0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10902,7 +10902,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterXmm1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_RegisterXmm1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10917,7 +10917,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_StopWaterball : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_StopWaterball* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10932,7 +10932,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_WaterballClippy : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_WaterballClippy* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10947,7 +10947,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_BlessingOfTheAncients* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10962,7 +10962,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10977,7 +10977,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx4 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -10992,7 +10992,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx8 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_RegisterEcx8* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11007,7 +11007,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Calcify_Calcify : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Calcify_Calcify* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11022,7 +11022,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Calcify_CommentDivide : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Calcify_CommentDivide* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11037,7 +11037,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11052,7 +11052,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDivisor : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDivisor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11067,7 +11067,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Calcify_CommentStore : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Calcify_CommentStore* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11082,7 +11082,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Calcify_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Calcify_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11097,7 +11097,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Calcify_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Calcify_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11112,7 +11112,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CallOfTheAncients* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11127,7 +11127,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11142,7 +11142,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11157,7 +11157,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11172,7 +11172,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_CallOfTheAncients_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_CallOfTheAncients_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11187,7 +11187,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11202,7 +11202,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentSkipped : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentSkipped* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11217,7 +11217,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_DefensiveStance_DefensiveStance : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_DefensiveStance_DefensiveStance* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11232,7 +11232,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_DefensiveStance_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_DefensiveStance_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11247,7 +11247,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Enchantment_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Enchantment_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11262,7 +11262,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Enchantment_Enchantment : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Enchantment_Enchantment* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11277,7 +11277,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11292,7 +11292,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Enchantment_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11307,7 +11307,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Enrage_Enrage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Enrage_Enrage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11322,7 +11322,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Enrage_EnrageClippy : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Enrage_EnrageClippy* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11337,7 +11337,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Enrage_ReduceEnrage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Enrage_ReduceEnrage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11352,7 +11352,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Enrage_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Enrage_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11367,7 +11367,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Enrage_RegisterXmm3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Enrage_RegisterXmm3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11382,7 +11382,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11397,7 +11397,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11412,7 +11412,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Entwined_Entwined : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Entwined_Entwined* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11427,7 +11427,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Entwined_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Entwined_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11442,7 +11442,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Focus_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Focus_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11457,7 +11457,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Focus_Focus : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Focus_Focus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11472,7 +11472,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Focus_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Focus_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11487,7 +11487,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Focus_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Focus_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11502,7 +11502,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Fortitude_CommentDamageReduce* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11517,7 +11517,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Fortitude_CommentIncreaseInstead* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11532,7 +11532,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Fortitude_CommentRegister* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11547,7 +11547,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Fortitude_CommentTryChanging* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11562,7 +11562,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Fortitude_Fortitude* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11577,7 +11577,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Fortitude_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11592,7 +11592,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Fury_Fury : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Fury_Fury* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11607,7 +11607,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11622,7 +11622,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Fury_HintLea : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Fury_HintLea* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11637,7 +11637,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11652,7 +11652,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Fury_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Fury_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11667,7 +11667,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Fury_RegisterEax8 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Fury_RegisterEax8* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11682,7 +11682,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Fury_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Fury_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11697,7 +11697,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11712,7 +11712,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Haste_Haste : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Haste_Haste* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11727,7 +11727,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Haste_HasteClippy : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Haste_HasteClippy* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11742,7 +11742,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Haste_ReduceHaste : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Haste_ReduceHaste* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11757,7 +11757,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Haste_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Haste_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11772,7 +11772,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Haste_RegisterXmm3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Haste_RegisterXmm3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11787,7 +11787,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_HealthLink_CommentElaborate : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_HealthLink_CommentElaborate* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11802,7 +11802,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_HealthLink_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_HealthLink_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11817,7 +11817,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_HealthLink_CommentShr : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_HealthLink_CommentShr* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11832,7 +11832,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_HealthLink_CommentShrBy1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_HealthLink_CommentShrBy1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11847,7 +11847,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_HealthLink_HealthLink : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_HealthLink_HealthLink* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11862,7 +11862,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_HealthLink_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11877,7 +11877,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentJmp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentJmp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11892,7 +11892,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11907,7 +11907,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentSkippedCode : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentSkippedCode* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11922,7 +11922,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_HeavyBlade_HeavyBlade : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_HeavyBlade_HeavyBlade* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11937,7 +11937,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_HeavyBlade_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_HeavyBlade_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11952,7 +11952,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Immortality_CommentApplyImmortality : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Immortality_CommentApplyImmortality* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11967,7 +11967,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Immortality_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Immortality_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11982,7 +11982,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Immortality_CommentElse : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Immortality_CommentElse* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -11997,7 +11997,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Immortality_CommentJump : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Immortality_CommentJump* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12012,7 +12012,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Immortality_Immortality : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Immortality_Immortality* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12027,7 +12027,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Immortality_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Immortality_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12042,7 +12042,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Inversion_CommentElaborate : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Inversion_CommentElaborate* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12057,7 +12057,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Inversion_CommentNeg : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Inversion_CommentNeg* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12072,7 +12072,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Inversion_Inversion : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Inversion_Inversion* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12087,7 +12087,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Inversion_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Inversion_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12102,7 +12102,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ManaLife_CommentExplainer : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ManaLife_CommentExplainer* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12117,7 +12117,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ManaLife_ManaLife : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ManaLife_ManaLife* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12132,7 +12132,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12147,7 +12147,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_PactOfTheAncients_PactOfTheAncients : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_PactOfTheAncients_PactOfTheAncients* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12162,7 +12162,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_PactOfTheAncients_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12177,7 +12177,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Parry_CommentParry : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Parry_CommentParry* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12192,7 +12192,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Parry_CommentSkipParry : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Parry_CommentSkipParry* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12207,7 +12207,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Parry_CommentTest : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Parry_CommentTest* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12222,7 +12222,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Parry_Parry : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Parry_Parry* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12237,7 +12237,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Parry_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Parry_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12252,7 +12252,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Reflect_CommentElaborate* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12267,7 +12267,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Reflect_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Reflect_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12282,7 +12282,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Reflect_CommentReflect : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Reflect_CommentReflect* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12297,7 +12297,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Reflect_CommentShr : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Reflect_CommentShr* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12312,7 +12312,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Reflect_CommentShrBy1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Reflect_CommentShrBy1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12327,7 +12327,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Reflect_Reflect : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Reflect_Reflect* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12342,7 +12342,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Reflect_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Reflect_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12357,7 +12357,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Reflect_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12372,7 +12372,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12387,7 +12387,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12402,7 +12402,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12417,7 +12417,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12432,7 +12432,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12447,7 +12447,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12462,7 +12462,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ScaldingBlade_ScaldingBlade : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ScaldingBlade_ScaldingBlade* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12477,7 +12477,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12492,7 +12492,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12507,7 +12507,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_SeekingBlade_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_SeekingBlade_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12522,7 +12522,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_SeekingBlade_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_SeekingBlade_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12537,7 +12537,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_SeekingBlade_SeekingBlade : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_SeekingBlade_SeekingBlade* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12552,7 +12552,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12567,7 +12567,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentConditionalMov : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentConditionalMov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12582,7 +12582,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentFinale : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentFinale* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12597,7 +12597,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12612,7 +12612,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMinDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMinDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12627,7 +12627,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12642,7 +12642,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12657,7 +12657,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_SharpenedBlade_SharpenedBlade : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_SharpenedBlade_SharpenedBlade* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12672,7 +12672,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ShieldWall_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ShieldWall_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12687,7 +12687,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12702,7 +12702,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ShieldWall_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12717,7 +12717,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ShieldWall_ShieldWall : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ShieldWall_ShieldWall* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12732,7 +12732,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12747,7 +12747,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12762,7 +12762,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12777,7 +12777,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12792,7 +12792,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12807,7 +12807,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_ReduceStoneSkin : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_StoneSkin_ReduceStoneSkin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12822,7 +12822,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12837,7 +12837,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12852,7 +12852,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_StoneSkin_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12867,7 +12867,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkin : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_StoneSkin_StoneSkin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12882,7 +12882,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12897,7 +12897,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12912,7 +12912,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Strength_CommentRegister : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Strength_CommentRegister* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12927,7 +12927,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Strength_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12942,7 +12942,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Strength_Strength : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Strength_Strength* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12957,7 +12957,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12972,7 +12972,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ThickHide_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -12987,7 +12987,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_ThickHide_ThickHide : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_ThickHide_ThickHide* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13002,7 +13002,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Undying_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Undying_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13017,7 +13017,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Undying_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Undying_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13032,7 +13032,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_Undying_Undying : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_Undying_Undying* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13047,7 +13047,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13062,7 +13062,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13077,7 +13077,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13092,7 +13092,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13107,7 +13107,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13122,7 +13122,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13137,7 +13137,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_UnholyProtection_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_UnholyProtection_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13152,7 +13152,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Buffs_UnholyProtection_UnholyProtection : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Buffs_UnholyProtection_UnholyProtection* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13167,7 +13167,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Blind_Blind : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Blind_Blind* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13182,7 +13182,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Blind_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Blind_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13197,7 +13197,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BloodBoil_BloodBoil : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BloodBoil_BloodBoil* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13212,7 +13212,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13227,7 +13227,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentRegister : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentRegister* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13242,7 +13242,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BloodBoil_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BloodBoil_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13257,7 +13257,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BloodBoil_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BloodBoil_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13272,7 +13272,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Bloodletting_Bloodletting : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Bloodletting_Bloodletting* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13287,7 +13287,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13302,7 +13302,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13317,7 +13317,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJs : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJs* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13332,7 +13332,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13347,7 +13347,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13362,7 +13362,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Bloodletting_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13377,7 +13377,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BrittleBones_BrittleBones : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BrittleBones_BrittleBones* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13392,7 +13392,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13407,7 +13407,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BrittleBones_Register : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BrittleBones_Register* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13422,7 +13422,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BrokenBlade_BrokenBlade : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BrokenBlade_BrokenBlade* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13437,7 +13437,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13452,7 +13452,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentConditionalMov : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentConditionalMov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13467,7 +13467,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentFinale : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentFinale* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13482,7 +13482,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13497,7 +13497,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentMaxDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BrokenBlade_CommentMaxDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13512,7 +13512,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BrokenBlade_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BrokenBlade_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13527,7 +13527,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_BrokenBlade_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_BrokenBlade_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13542,7 +13542,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Chance_Chance : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Chance_Chance* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13557,7 +13557,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Chance_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Chance_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13572,7 +13572,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Chance_CommentConditionalMov : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Chance_CommentConditionalMov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13587,7 +13587,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Chance_CommentFinale : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Chance_CommentFinale* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13602,7 +13602,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Chance_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Chance_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13617,7 +13617,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Chance_CommentMaxDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Chance_CommentMaxDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13632,7 +13632,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Chance_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Chance_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13647,7 +13647,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Chance_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Chance_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13662,7 +13662,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13677,7 +13677,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13692,7 +13692,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CurseOfTheAncients : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CurseOfTheAncients* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13707,7 +13707,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13722,7 +13722,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13737,7 +13737,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13752,7 +13752,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13767,7 +13767,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTongues : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CurseOfTongues* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13782,7 +13782,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13797,7 +13797,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13812,7 +13812,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterXmm3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CurseOfTongues_RegisterXmm3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13827,7 +13827,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13842,7 +13842,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13857,7 +13857,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentJump : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentJump* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13872,7 +13872,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeat : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentRepeat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13887,7 +13887,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentStoreDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentStoreDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13902,7 +13902,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSubtract : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSubtract* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13917,7 +13917,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSwapDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CommentSwapDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13932,7 +13932,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CursedBlade_CursedBlade : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedBlade_CursedBlade* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13947,7 +13947,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedBlade_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13962,7 +13962,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13977,7 +13977,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CursedSwings_CursedSwings : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedSwings_CursedSwings* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -13992,7 +13992,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14007,7 +14007,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14022,7 +14022,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Daze_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Daze_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14037,7 +14037,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Daze_CommentConditonal : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Daze_CommentConditonal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14052,7 +14052,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Daze_CommentPopDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Daze_CommentPopDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14067,7 +14067,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Daze_CommentPopStack : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Daze_CommentPopStack* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14082,7 +14082,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Daze_CommentPushChance : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Daze_CommentPushChance* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14097,7 +14097,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDamageDealt : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDamageDealt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14112,7 +14112,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDazeDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Daze_CommentPushDazeDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14127,7 +14127,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Daze_CommentPushRng : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Daze_CommentPushRng* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14142,7 +14142,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Daze_Daze : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Daze_Daze* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14157,7 +14157,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Daze_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Daze_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14172,7 +14172,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Daze_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Daze_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14187,7 +14187,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Daze_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Daze_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14202,7 +14202,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Daze_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Daze_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14217,7 +14217,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentAbs : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentAbs* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14232,7 +14232,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_DeadGrasp_DeadGrasp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_DeadGrasp_DeadGrasp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14247,7 +14247,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_DeadGrasp_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_DeadGrasp_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14262,7 +14262,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Diseased_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Diseased_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14277,7 +14277,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Diseased_CommentDecreaseDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Diseased_CommentDecreaseDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14292,7 +14292,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeat : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14307,7 +14307,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeatJump : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Diseased_CommentRepeatJump* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14322,7 +14322,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Diseased_Diseased : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Diseased_Diseased* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14337,7 +14337,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Diseased_Register : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Diseased_Register* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14352,7 +14352,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Enflame_CommentMask : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Enflame_CommentMask* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14367,7 +14367,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14382,7 +14382,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Enflame_Enflame : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Enflame_Enflame* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14397,7 +14397,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Enflame_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14412,7 +14412,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Fear_Fear : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Fear_Fear* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14427,7 +14427,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Fear_Hint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Fear_Hint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14442,7 +14442,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Fear_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14457,7 +14457,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Hex_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Hex_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14472,7 +14472,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Hex_Hex : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Hex_Hex* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14487,7 +14487,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Hex_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Hex_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14502,7 +14502,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Hex_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Hex_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14517,7 +14517,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Leech_CommentApplyDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Leech_CommentApplyDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14532,7 +14532,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Leech_CommentJz : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Leech_CommentJz* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14547,7 +14547,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Leech_CommentRng : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Leech_CommentRng* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14562,7 +14562,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Leech_Leech : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Leech_Leech* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14577,7 +14577,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Leech_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Leech_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14592,7 +14592,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Leech_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Leech_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14607,7 +14607,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14622,7 +14622,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14637,7 +14637,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14652,7 +14652,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14667,7 +14667,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_ManaDrain_ManaDrain : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_ManaDrain_ManaDrain* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14682,7 +14682,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14697,7 +14697,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14712,7 +14712,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_ManaDrain_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14727,7 +14727,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Manifest_CommentCompareDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Manifest_CommentCompareDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14742,7 +14742,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Manifest_CommentElseSkip : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Manifest_CommentElseSkip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14757,7 +14757,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Manifest_CommentJumpReduce : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Manifest_CommentJumpReduce* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14772,7 +14772,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Manifest_Manifest : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Manifest_Manifest* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14787,7 +14787,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Manifest_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Manifest_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14802,7 +14802,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Melt_CommentHint1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Melt_CommentHint1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14817,7 +14817,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Melt_CommentHint2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Melt_CommentHint2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14832,7 +14832,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Melt_Melt : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Melt_Melt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14847,7 +14847,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Melt_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Melt_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14862,7 +14862,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Melt_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Melt_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14877,7 +14877,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14892,7 +14892,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14907,7 +14907,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14922,7 +14922,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14937,7 +14937,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentRng : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentRng* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14952,7 +14952,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14967,7 +14967,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_PoisonedArrows : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_PoisonedArrows* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14982,7 +14982,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -14997,7 +14997,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15012,7 +15012,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15027,7 +15027,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15042,7 +15042,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15057,7 +15057,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentElse : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentElse* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15072,7 +15072,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentJump : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentJump* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15087,7 +15087,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushSpeed : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushSpeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15102,7 +15102,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushZero : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushZero* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15117,7 +15117,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Rabies_CommentSpeedDrain : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Rabies_CommentSpeedDrain* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15132,7 +15132,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Rabies_Rabies : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Rabies_Rabies* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15147,7 +15147,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15162,7 +15162,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15177,7 +15177,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Rabies_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15192,7 +15192,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15207,7 +15207,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15222,7 +15222,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15237,7 +15237,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15252,7 +15252,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Radiation_Radiation : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Radiation_Radiation* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15267,7 +15267,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Radiation_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Radiation_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15282,7 +15282,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Radiation_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Radiation_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15297,7 +15297,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15312,7 +15312,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentGain : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentGain* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15327,7 +15327,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15342,7 +15342,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15357,7 +15357,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_SiphonLife_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15372,7 +15372,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLife : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_SiphonLife_SiphonLife* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15387,7 +15387,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15402,7 +15402,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentHint1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentHint1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15417,7 +15417,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentHint2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentHint2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15432,7 +15432,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentNegateSpeed : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentNegateSpeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15447,7 +15447,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentPushSpeed : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentPushSpeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15462,7 +15462,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_SpellOfBinding_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_SpellOfBinding_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15477,7 +15477,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_SpellOfBinding_SpellOfBinding : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_SpellOfBinding_SpellOfBinding* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15492,7 +15492,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15507,7 +15507,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15522,7 +15522,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15537,7 +15537,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentNegate : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentNegate* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15552,7 +15552,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentPushDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentPushDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15567,7 +15567,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentSkip : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentSkip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15582,7 +15582,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_Register : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_Register* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15597,7 +15597,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_UnholyBlade_UnholyBlade : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_UnholyBlade_UnholyBlade* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15612,7 +15612,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15627,7 +15627,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Vampirism_CommentConvertToHealing : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Vampirism_CommentConvertToHealing* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15642,7 +15642,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15657,7 +15657,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Vampirism_CommentReflectDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Vampirism_CommentReflectDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15672,7 +15672,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15687,7 +15687,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Vampirism_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15702,7 +15702,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Vampirism_Vampirism : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Vampirism_Vampirism* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15717,7 +15717,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15732,7 +15732,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15747,7 +15747,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_Weakness_Weakness : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_Weakness_Weakness* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15762,7 +15762,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15777,7 +15777,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15792,7 +15792,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15807,7 +15807,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_ZombieGrasp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Debuffs_ZombieGrasp_ZombieGrasp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15822,7 +15822,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_DispelIllusion : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_DispelIllusion* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15837,7 +15837,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Bitwise_CommentBitwise : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Bitwise_CommentBitwise* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15852,7 +15852,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_CommentBreak : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_CommentBreak* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15867,7 +15867,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_CommentFloatPt1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_CommentFloatPt1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15882,7 +15882,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_CommentFloatPt2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_CommentFloatPt2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15897,7 +15897,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_CommentFloatPt3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_CommentFloatPt3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15912,7 +15912,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_CommentFloatPt4 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_CommentFloatPt4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15927,7 +15927,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_CommentSeeLexicon : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_CommentSeeLexicon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15942,7 +15942,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Common_CommentDword : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Common_CommentDword* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15957,7 +15957,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15972,7 +15972,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -15987,7 +15987,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Common_CommentPtr : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Common_CommentPtr* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16002,7 +16002,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Common_CommentQword : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Common_CommentQword* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16017,7 +16017,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentA : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentA* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16032,7 +16032,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentB : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentB* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16047,7 +16047,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentC : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentC* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16062,7 +16062,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentCmove : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentCmove* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16077,7 +16077,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentCmovg : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentCmovg* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16092,7 +16092,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16107,7 +16107,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentCmovl : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentCmovl* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16122,7 +16122,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16137,7 +16137,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentCmovne : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentCmovne* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16152,7 +16152,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentE : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentE* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16167,7 +16167,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16182,7 +16182,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentF : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentF* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16197,7 +16197,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentG : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentG* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16212,7 +16212,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentGe : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentGe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16227,7 +16227,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentJ : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentJ* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16242,7 +16242,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentJe : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentJe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16257,7 +16257,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentJecxz : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentJecxz* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16272,7 +16272,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentJg : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentJg* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16287,7 +16287,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentJge : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentJge* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16302,7 +16302,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentJl : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentJl* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16317,7 +16317,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentJle : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentJle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16332,7 +16332,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentJmp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentJmp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16347,7 +16347,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentJne : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentJne* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16362,7 +16362,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentJnz : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentJnz* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16377,7 +16377,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentJs : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentJs* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16392,7 +16392,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentJz : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentJz* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16407,7 +16407,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentL : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentL* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16422,7 +16422,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentLe : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentLe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16437,7 +16437,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentMov : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentMov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16452,7 +16452,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentNe : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentNe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16467,7 +16467,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentNz : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentNz* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16482,7 +16482,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentS : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentS* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16497,7 +16497,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentSet : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentSet* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16512,7 +16512,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Conditional_CommentZ : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Conditional_CommentZ* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16527,7 +16527,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CommentAbs : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentAbs* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16542,7 +16542,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CommentAdd : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentAdd* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16557,7 +16557,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CommentConvert : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentConvert* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16572,7 +16572,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CommentDiv : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentDiv* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16587,7 +16587,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CommentF : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentF* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16602,7 +16602,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CommentFchs : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentFchs* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16617,7 +16617,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CommentFiadd : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentFiadd* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16632,7 +16632,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CommentFld1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentFld1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16647,7 +16647,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CommentFldz : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentFldz* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16662,7 +16662,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CommentI : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentI* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16677,7 +16677,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CommentInt : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentInt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16692,7 +16692,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CommentMul : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentMul* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16707,7 +16707,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CommentR : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentR* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16722,7 +16722,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CommentRnd : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentRnd* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16737,7 +16737,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CommentSub : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CommentSub* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16752,7 +16752,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_FPU_CompEFlags : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_FPU_CompEFlags* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16767,7 +16767,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16782,7 +16782,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16797,7 +16797,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16812,7 +16812,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16827,7 +16827,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Stacks_CommentPush : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Stacks_CommentPush* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16842,7 +16842,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Vector_CommentMovss1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Vector_CommentMovss1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16857,7 +16857,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Generic_Vector_CommentMovss2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Generic_Vector_CommentMovss2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16872,7 +16872,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Squally_IsAlive : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Squally_IsAlive* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16887,7 +16887,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_Squally_IsSwimming : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_Squally_IsSwimming* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16902,7 +16902,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_TrainingDummy_AddHealth : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_TrainingDummy_AddHealth* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16917,7 +16917,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_TrainingDummy_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_TrainingDummy_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16932,7 +16932,7 @@ namespace Strings
 	class Menus_Hacking_Abilities_WeakMinded : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Abilities_WeakMinded* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16947,7 +16947,7 @@ namespace Strings
 	class Menus_Hacking_ClippyHelp_Abilities_CurseOfTongues_CurseOfTonguesScriptCopy : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_Abilities_CurseOfTongues_CurseOfTonguesScriptCopy* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16962,7 +16962,7 @@ namespace Strings
 	class Menus_Hacking_ClippyHelp_Abilities_IsAlive_IsAliveRetVal : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_Abilities_IsAlive_IsAliveRetVal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16977,7 +16977,7 @@ namespace Strings
 	class Menus_Hacking_ClippyHelp_Abilities_IsSwimming_IsSwimmingRetVal : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_Abilities_IsSwimming_IsSwimmingRetVal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -16992,7 +16992,7 @@ namespace Strings
 	class Menus_Hacking_ClippyHelp_Abilities_IsSwimming_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_Abilities_IsSwimming_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17007,7 +17007,7 @@ namespace Strings
 	class Menus_Hacking_ClippyHelp_Abilities_TrainingHeal_TrainingHealAdd : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_Abilities_TrainingHeal_TrainingHealAdd* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17022,7 +17022,7 @@ namespace Strings
 	class Menus_Hacking_ClippyHelp_Items_IncrementHealthFlask_IncrementHealthInc : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_Items_IncrementHealthFlask_IncrementHealthInc* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17037,7 +17037,7 @@ namespace Strings
 	class Menus_Hacking_ClippyHelp_Items_SpeedRune_SpeedGainMul : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_Items_SpeedRune_SpeedGainMul* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17052,7 +17052,7 @@ namespace Strings
 	class Menus_Hacking_ClippyHelp_Objects_DartGun_DartNop : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_Objects_DartGun_DartNop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17067,7 +17067,7 @@ namespace Strings
 	class Menus_Hacking_ClippyHelp_Objects_MechanicalFlail_MechanicalFlailMov : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_Objects_MechanicalFlail_MechanicalFlailMov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17082,7 +17082,7 @@ namespace Strings
 	class Menus_Hacking_ClippyHelp_Objects_PendulumBlade_PendulumBladeMov : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_Objects_PendulumBlade_PendulumBladeMov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17097,7 +17097,7 @@ namespace Strings
 	class Menus_Hacking_ClippyHelp_Objects_Wind_WindNop : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_ClippyHelp_Objects_Wind_WindNop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17112,7 +17112,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Address : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Address* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17127,7 +17127,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_AllocationEditor : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_AllocationEditor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17142,7 +17142,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Assembler : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Assembler* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17157,7 +17157,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_ByteCount : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_ByteCount* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17172,7 +17172,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_ByteOverflow : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_ByteOverflow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17187,7 +17187,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Bytes : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Bytes* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17202,7 +17202,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_ClickToEdit : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_ClickToEdit* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17217,7 +17217,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_CodeEditor : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_CodeEditor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17232,7 +17232,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_CompileErrors : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_CompileErrors* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17247,7 +17247,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_CompileSuccessful : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_CompileSuccessful* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17262,7 +17262,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_CopyScript : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_CopyScript* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17277,7 +17277,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_CreateNewScript : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_CreateNewScript* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17292,7 +17292,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_DeleteConfirmation : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_DeleteConfirmation* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17307,7 +17307,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_DeleteScript : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_DeleteScript* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17322,7 +17322,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Discord : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Discord* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17337,7 +17337,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Error : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Error* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17352,7 +17352,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_AlreadyInitialized : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_AlreadyInitialized* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17367,7 +17367,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_AmbiguousOperandSize : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_AmbiguousOperandSize* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17382,7 +17382,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_CodeTooLarge : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_CodeTooLarge* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17397,7 +17397,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_FeatureNotEnabled : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_FeatureNotEnabled* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17412,7 +17412,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidAddress : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidAddress* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17427,7 +17427,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidAddressIndex : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidAddressIndex* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17442,7 +17442,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidAddressScale : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidAddressScale* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17457,7 +17457,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidArchitecture : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidArchitecture* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17472,7 +17472,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidArgument : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidArgument* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17487,7 +17487,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidBroadcast : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidBroadcast* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17502,7 +17502,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidDisplacement : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidDisplacement* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17517,7 +17517,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidImmediateValue : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidImmediateValue* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17532,7 +17532,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidInstruction : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidInstruction* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17547,7 +17547,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidLabel : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidLabel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17562,7 +17562,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidLabelName : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidLabelName* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17577,7 +17577,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidLockPrefix : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidLockPrefix* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17592,7 +17592,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidMask : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidMask* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17607,7 +17607,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidOperandSize : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidOperandSize* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17622,7 +17622,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidOption : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidOption* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17637,7 +17637,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidParentLabel : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidParentLabel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17652,7 +17652,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidPrefixCombination : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidPrefixCombination* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17667,7 +17667,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidRegisterKind : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidRegisterKind* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17682,7 +17682,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidRegisterPhysicalId : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidRegisterPhysicalId* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17697,7 +17697,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidRegisterType : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidRegisterType* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17712,7 +17712,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidRegisterVirtualId : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidRegisterVirtualId* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17727,7 +17727,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidRelocationEntry : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidRelocationEntry* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17742,7 +17742,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidRepPrefix : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidRepPrefix* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17757,7 +17757,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidRexPrefix : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidRexPrefix* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17772,7 +17772,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidSegment : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidSegment* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17787,7 +17787,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidState : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidState* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17802,7 +17802,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidTypeInfo : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidTypeInfo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17817,7 +17817,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidUseDouble : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidUseDouble* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17832,7 +17832,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidUseOf64BitAddress : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidUseOf64BitAddress* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17847,7 +17847,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidUseOf64BitRegister : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidUseOf64BitRegister* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17862,7 +17862,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidUseOf80BitFloat : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidUseOf80BitFloat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17877,7 +17877,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidUseOf8BitRegister : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidUseOf8BitRegister* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17892,7 +17892,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidUseSingle : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidUseSingle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17907,7 +17907,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidXAquirePrefix : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidXAquirePrefix* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17922,7 +17922,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_InvalidXReleasePrefix : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_InvalidXReleasePrefix* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17937,7 +17937,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_LabelAlreadyBound : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_LabelAlreadyBound* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17952,7 +17952,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_LabelAlreadyDefined : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_LabelAlreadyDefined* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17967,7 +17967,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_LabelIndexOverflow : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_LabelIndexOverflow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17982,7 +17982,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_LabelNameTooLong : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_LabelNameTooLong* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -17997,7 +17997,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_NoCodeGenerated : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_NoCodeGenerated* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18012,7 +18012,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_NoHeapMemory : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_NoHeapMemory* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18027,7 +18027,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_NoPhysicalRegisters : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_NoPhysicalRegisters* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18042,7 +18042,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_NoVirtualMemory : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_NoVirtualMemory* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18057,7 +18057,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_NonLocalLabelCantHaveParent : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_NonLocalLabelCantHaveParent* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18072,7 +18072,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_NotConsecutiveRegisters : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_NotConsecutiveRegisters* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18087,7 +18087,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_NotInitialized : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_NotInitialized* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18102,7 +18102,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_Ok : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_Ok* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18117,7 +18117,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_OperandSizeMismatch : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_OperandSizeMismatch* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18132,7 +18132,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_OverlappedRegisters : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_OverlappedRegisters* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18147,7 +18147,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_OverlappingRegisterAndArgsRegister : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_OverlappingRegisterAndArgsRegister* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18162,7 +18162,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_RelocationIndexOverflow : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_RelocationIndexOverflow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18177,7 +18177,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_SlotOccupied : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_SlotOccupied* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18192,7 +18192,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Errors_UnknownError : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Errors_UnknownError* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18207,7 +18207,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_FunctionHeader : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_FunctionHeader* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18222,7 +18222,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_LineNumber : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_LineNumber* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18237,7 +18237,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_MyNewScript : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_MyNewScript* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18252,7 +18252,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_OriginalCode : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_OriginalCode* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18267,7 +18267,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Readonly : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Readonly* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18282,7 +18282,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18297,7 +18297,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterEbp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterEbp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18312,7 +18312,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18327,7 +18327,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18342,7 +18342,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18357,7 +18357,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18372,7 +18372,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterEip : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterEip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18387,7 +18387,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18402,7 +18402,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterEsp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterEsp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18417,7 +18417,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterR10 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterR10* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18432,7 +18432,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterR11 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterR11* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18447,7 +18447,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterR12 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterR12* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18462,7 +18462,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterR13 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterR13* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18477,7 +18477,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterR14 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterR14* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18492,7 +18492,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterR15 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterR15* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18507,7 +18507,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterR8 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterR8* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18522,7 +18522,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterR9 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterR9* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18537,7 +18537,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterRax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterRax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18552,7 +18552,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterRbp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterRbp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18567,7 +18567,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterRbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterRbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18582,7 +18582,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterRcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterRcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18597,7 +18597,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterRdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterRdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18612,7 +18612,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterRdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterRdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18627,7 +18627,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterRip : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterRip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18642,7 +18642,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterRsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterRsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18657,7 +18657,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterRsp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterRsp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18672,7 +18672,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterSt0 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterSt0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18687,7 +18687,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterSt1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterSt1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18702,7 +18702,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterSt2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterSt2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18717,7 +18717,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterSt3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterSt3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18732,7 +18732,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterSt4 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterSt4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18747,7 +18747,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterSt5 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterSt5* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18762,7 +18762,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterSt6 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterSt6* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18777,7 +18777,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterSt7 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterSt7* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18792,7 +18792,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterXmm0 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterXmm0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18807,7 +18807,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterXmm1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterXmm1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18822,7 +18822,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterXmm2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterXmm2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18837,7 +18837,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterXmm3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterXmm3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18852,7 +18852,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterXmm4 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterXmm4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18867,7 +18867,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterXmm5 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterXmm5* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18882,7 +18882,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterXmm6 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterXmm6* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18897,7 +18897,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_RegisterXmm7 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_RegisterXmm7* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18912,7 +18912,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Status : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Status* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18927,7 +18927,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_StatusHeader : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_StatusHeader* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18942,7 +18942,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Stuck : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Stuck* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18957,7 +18957,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_UnfilledBytes : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_UnfilledBytes* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18972,7 +18972,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_Unknown : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_Unknown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -18987,7 +18987,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_UnnamedScript : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_UnnamedScript* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19002,7 +19002,7 @@ namespace Strings
 	class Menus_Hacking_CodeEditor_YourScripts : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_CodeEditor_YourScripts* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19017,7 +19017,7 @@ namespace Strings
 	class Menus_Hacking_HackWarning : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_HackWarning* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19032,7 +19032,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_Add : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_Add* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19047,7 +19047,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_Dec : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_Dec* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19062,7 +19062,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_Div : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_Div* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19077,7 +19077,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_Inc : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_Inc* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19092,7 +19092,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_Jmp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_Jmp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19107,7 +19107,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_Mov : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_Mov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19122,7 +19122,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_Mul : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_Mul* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19137,7 +19137,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_Neg : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_Neg* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19152,7 +19152,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_OffsetNegative : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_OffsetNegative* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19167,7 +19167,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_OffsetPositive : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_OffsetPositive* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19182,7 +19182,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_Pop : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_Pop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19197,7 +19197,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_Ptr : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_Ptr* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19212,7 +19212,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_Push : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_Push* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19227,7 +19227,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19242,7 +19242,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterEbp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterEbp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19257,7 +19257,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19272,7 +19272,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19287,7 +19287,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19302,7 +19302,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19317,7 +19317,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterEip : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterEip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19332,7 +19332,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19347,7 +19347,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterEsp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterEsp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19362,7 +19362,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterRax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterRax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19377,7 +19377,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterRbp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterRbp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19392,7 +19392,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterRbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterRbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19407,7 +19407,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterRcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterRcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19422,7 +19422,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterRdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterRdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19437,7 +19437,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterRdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterRdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19452,7 +19452,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterRip : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterRip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19467,7 +19467,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterRsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterRsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19482,7 +19482,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_RegisterRsp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_RegisterRsp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19497,7 +19497,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Assembly_Sub : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Assembly_Sub* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19512,7 +19512,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Examples : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Examples* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19527,7 +19527,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Execute : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Execute* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19542,7 +19542,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Binary_And : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Binary_And* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19557,7 +19557,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Binary_Bswap : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Binary_Bswap* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19572,7 +19572,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Binary_Not : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Binary_Not* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19587,7 +19587,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Binary_Or : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Binary_Or* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19602,7 +19602,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Binary_Rcl : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Binary_Rcl* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19617,7 +19617,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Binary_Rcr : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Binary_Rcr* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19632,7 +19632,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Binary_Rol : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Binary_Rol* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19647,7 +19647,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Binary_Ror : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Binary_Ror* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19662,7 +19662,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Binary_Sal : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Binary_Sal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19677,7 +19677,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Binary_Sar : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Binary_Sar* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19692,7 +19692,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Binary_Shl : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Binary_Shl* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19707,7 +19707,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Binary_Shld : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Binary_Shld* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19722,7 +19722,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Binary_Shr : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Binary_Shr* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19737,7 +19737,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Binary_Shrd : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Binary_Shrd* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19752,7 +19752,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Binary_Xor : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Binary_Xor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19767,7 +19767,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Call : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Call* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19782,7 +19782,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Cmp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Cmp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19797,7 +19797,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Ja : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Ja* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19812,7 +19812,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Jae : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Jae* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19827,7 +19827,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Jb : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Jb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19842,7 +19842,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Je : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Je* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19857,7 +19857,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Jg : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Jg* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19872,7 +19872,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Jge : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Jge* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19887,7 +19887,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Jl : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Jl* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19902,7 +19902,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Jmp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Jmp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19917,7 +19917,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Jne : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Jne* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19932,7 +19932,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Jno : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Jno* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19947,7 +19947,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Jnp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Jnp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19962,7 +19962,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Jns : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Jns* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19977,7 +19977,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Jnz : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Jnz* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -19992,7 +19992,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Jo : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Jo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20007,7 +20007,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Jp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Jp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20022,7 +20022,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Js : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Js* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20037,7 +20037,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Jz : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Jz* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20052,7 +20052,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Loop : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Loop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20067,7 +20067,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Loopcc : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Loopcc* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20082,7 +20082,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Loope : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Loope* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20097,7 +20097,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Loopne : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Loopne* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20112,7 +20112,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Loopnz : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Loopnz* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20127,7 +20127,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Loopz : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Loopz* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20142,7 +20142,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Nop : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Nop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20157,7 +20157,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Ret : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Ret* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20172,7 +20172,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_ControlFlow_Test : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_ControlFlow_Test* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20187,7 +20187,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Data_Add : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Data_Add* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20202,7 +20202,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Data_Dec : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Data_Dec* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20217,7 +20217,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Data_Div : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Data_Div* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20232,7 +20232,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Data_Inc : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Data_Inc* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20247,7 +20247,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Data_Mov : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Data_Mov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20262,7 +20262,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Data_Mul : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Data_Mul* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20277,7 +20277,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Data_Neg : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Data_Neg* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20292,7 +20292,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Data_Pop : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Data_Pop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20307,7 +20307,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Data_Push : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Data_Push* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20322,7 +20322,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Data_Sub : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Data_Sub* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20337,7 +20337,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fabs : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fabs* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20352,7 +20352,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fadd : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fadd* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20367,7 +20367,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Faddp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Faddp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20382,7 +20382,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fchs : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fchs* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20397,7 +20397,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmovb : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmovb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20412,7 +20412,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmovbe : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmovbe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20427,7 +20427,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmove : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmove* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20442,7 +20442,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmovnb : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmovnb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20457,7 +20457,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmovnbe : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmovnbe* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20472,7 +20472,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmovne : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmovne* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20487,7 +20487,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmovnu : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmovnu* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20502,7 +20502,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmovu : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcmovu* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20517,7 +20517,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcom : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcom* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20532,7 +20532,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcomi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcomi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20547,7 +20547,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcomip : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcomip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20562,7 +20562,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcomp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcomp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20577,7 +20577,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcompp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fcompp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20592,7 +20592,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fdiv : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fdiv* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20607,7 +20607,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fdivp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fdivp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20622,7 +20622,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fdivr : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fdivr* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20637,7 +20637,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fdivrp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fdivrp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20652,7 +20652,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fiadd : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fiadd* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20667,7 +20667,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Ficom : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Ficom* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20682,7 +20682,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Ficomp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Ficomp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20697,7 +20697,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fild : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fild* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20712,7 +20712,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fimul : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fimul* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20727,7 +20727,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fist : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fist* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20742,7 +20742,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fistp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fistp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20757,7 +20757,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fisub : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fisub* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20772,7 +20772,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fisubr : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fisubr* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20787,7 +20787,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fld : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fld* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20802,7 +20802,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fld1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fld1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20817,7 +20817,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fldl2e : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fldl2e* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20832,7 +20832,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fldl2t : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fldl2t* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20847,7 +20847,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fldlg2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fldlg2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20862,7 +20862,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fldln2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fldln2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20877,7 +20877,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fldpi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fldpi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20892,7 +20892,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fldz : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fldz* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20907,7 +20907,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fmul : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fmul* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20922,7 +20922,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fmulp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fmulp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20937,7 +20937,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fnop : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fnop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20952,7 +20952,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Frndint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Frndint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20967,7 +20967,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fscale : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fscale* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20982,7 +20982,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsqrt : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsqrt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -20997,7 +20997,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fstp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fstp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21012,7 +21012,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsub : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsub* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21027,7 +21027,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsubp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsubp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21042,7 +21042,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsubr : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsubr* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21057,7 +21057,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsubrp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fsubrp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21072,7 +21072,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Ftst : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Ftst* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21087,7 +21087,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fucom : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fucom* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21102,7 +21102,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fucomi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fucomi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21117,7 +21117,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fucomip : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fucomip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21132,7 +21132,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fucomp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fucomp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21147,7 +21147,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fucompp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fucompp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21162,7 +21162,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fxam : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fxam* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21177,7 +21177,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fxch : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fxch* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21192,7 +21192,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fxtract : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_FloatingPoint_Fxtract* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21207,7 +21207,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Addps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Addps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21222,7 +21222,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Addss : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Addss* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21237,7 +21237,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Andnps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Andnps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21252,7 +21252,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Andps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Andps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21267,7 +21267,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Cmpps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Cmpps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21282,7 +21282,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Cmpss : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Cmpss* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21297,7 +21297,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Comiss : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Comiss* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21312,7 +21312,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Cvtpi2ps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Cvtpi2ps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21327,7 +21327,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Cvtps2pi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Cvtps2pi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21342,7 +21342,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Cvtsi2ss : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Cvtsi2ss* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21357,7 +21357,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Cvtss2si : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Cvtss2si* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21372,7 +21372,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Cvttps2pi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Cvttps2pi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21387,7 +21387,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Cvttss2si : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Cvttss2si* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21402,7 +21402,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Divps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Divps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21417,7 +21417,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Divss : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Divss* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21432,7 +21432,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Maxps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Maxps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21447,7 +21447,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Minps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Minps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21462,7 +21462,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Movaps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Movaps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21477,7 +21477,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Movhlps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Movhlps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21492,7 +21492,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Movhps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Movhps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21507,7 +21507,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Movlhps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Movlhps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21522,7 +21522,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Movmskps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Movmskps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21537,7 +21537,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Movss : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Movss* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21552,7 +21552,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Movups : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Movups* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21567,7 +21567,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Mulps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Mulps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21582,7 +21582,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Mulss : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Mulss* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21597,7 +21597,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Orps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Orps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21612,7 +21612,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Pavgb : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Pavgb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21627,7 +21627,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Pavgw : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Pavgw* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21642,7 +21642,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Pextrw : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Pextrw* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21657,7 +21657,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Pinsrw : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Pinsrw* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21672,7 +21672,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Pmaxsw : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Pmaxsw* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21687,7 +21687,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Pmaxub : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Pmaxub* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21702,7 +21702,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Pminsw : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Pminsw* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21717,7 +21717,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Pminub : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Pminub* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21732,7 +21732,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Pmovmskb : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Pmovmskb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21747,7 +21747,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Pmulhuw : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Pmulhuw* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21762,7 +21762,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Psadbw : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Psadbw* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21777,7 +21777,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Pshufw : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Pshufw* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21792,7 +21792,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Rcpps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Rcpps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21807,7 +21807,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Rcpss : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Rcpss* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21822,7 +21822,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Rsqrtps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Rsqrtps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21837,7 +21837,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Shufps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Shufps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21852,7 +21852,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Sqrtps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Sqrtps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21867,7 +21867,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Sqrtss : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Sqrtss* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21882,7 +21882,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Subps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Subps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21897,7 +21897,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Subss : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Subss* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21912,7 +21912,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Ucomiss : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Ucomiss* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21927,7 +21927,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Unpckhps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Unpckhps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21942,7 +21942,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Unpcklps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Unpcklps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21957,7 +21957,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Instructions_Vector_Xorps : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Instructions_Vector_Xorps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21972,7 +21972,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Lexicon : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Lexicon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -21987,7 +21987,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Memory : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Memory* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22002,7 +22002,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Binary_And_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Binary_And_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22017,7 +22017,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Binary_Bswap_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Binary_Bswap_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22032,7 +22032,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Binary_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Binary_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22047,7 +22047,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Binary_Not_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Binary_Not_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22062,7 +22062,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Binary_Or_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Binary_Or_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22077,7 +22077,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Binary_Shl_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Binary_Shl_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22092,7 +22092,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Binary_Shr_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Binary_Shr_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22107,7 +22107,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Binary_Title : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Binary_Title* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22122,7 +22122,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Binary_Xor_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Binary_Xor_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22137,7 +22137,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_ChapterSelect_ChooseAChapter : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_ChapterSelect_ChooseAChapter* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22152,7 +22152,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_ChapterSelect_ChooseAnOperation : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_ChapterSelect_ChooseAnOperation* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22167,7 +22167,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_ControlFlow_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_ControlFlow_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22182,7 +22182,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_ControlFlow_Nop_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_ControlFlow_Nop_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22197,7 +22197,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_ControlFlow_Title : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_ControlFlow_Title* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22212,7 +22212,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Add_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Add_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22227,7 +22227,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Dec_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Dec_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22242,7 +22242,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Dec_PointerHelp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Dec_PointerHelp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22257,7 +22257,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Div_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Div_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22272,7 +22272,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Div_IntroPt2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Div_IntroPt2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22287,7 +22287,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Div_IntroPt3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Div_IntroPt3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22302,7 +22302,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Inc_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Inc_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22317,7 +22317,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Inc_PointerHelp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Inc_PointerHelp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22332,7 +22332,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22347,7 +22347,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Lea_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Lea_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22362,7 +22362,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Mov_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Mov_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22377,7 +22377,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Mul_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Mul_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22392,7 +22392,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Neg_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Neg_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22407,7 +22407,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Neg_PointerHelp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Neg_PointerHelp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22422,7 +22422,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_OffsetHelp12 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_OffsetHelp12* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22437,7 +22437,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_OffsetHelp4 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_OffsetHelp4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22452,7 +22452,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_OffsetHelp8 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_OffsetHelp8* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22467,7 +22467,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_PointerHelp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_PointerHelp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22482,7 +22482,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Pop_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Pop_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22497,7 +22497,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Pop_PointerHelp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Pop_PointerHelp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22512,7 +22512,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Push_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Push_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22527,7 +22527,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Push_PointerHelp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Push_PointerHelp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22542,7 +22542,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Sub_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Sub_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22557,7 +22557,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Data_Title : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Data_Title* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22572,7 +22572,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_FloatingPoint_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22587,7 +22587,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_FloatingPoint_Title : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_FloatingPoint_Title* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22602,7 +22602,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Intro_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Intro_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22617,7 +22617,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Intro_Title : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Intro_Title* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22632,7 +22632,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Vector_Intro : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Vector_Intro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22647,7 +22647,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Pages_Vector_Title : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Pages_Vector_Title* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22662,7 +22662,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22677,7 +22677,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22692,7 +22692,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterEbp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterEbp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22707,7 +22707,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22722,7 +22722,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22737,7 +22737,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22752,7 +22752,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22767,7 +22767,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterEip : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterEip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22782,7 +22782,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22797,7 +22797,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterEsp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterEsp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22812,7 +22812,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterR10 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterR10* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22827,7 +22827,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterR11 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterR11* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22842,7 +22842,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterR12 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterR12* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22857,7 +22857,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterR13 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterR13* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22872,7 +22872,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterR14 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterR14* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22887,7 +22887,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterR15 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterR15* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22902,7 +22902,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterR8 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterR8* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22917,7 +22917,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterR9 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterR9* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22932,7 +22932,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterRax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterRax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22947,7 +22947,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterRbp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterRbp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22962,7 +22962,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterRbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterRbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22977,7 +22977,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterRcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterRcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -22992,7 +22992,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterRdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterRdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23007,7 +23007,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterRdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterRdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23022,7 +23022,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterRip : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterRip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23037,7 +23037,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterRsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterRsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23052,7 +23052,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterRsp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterRsp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23067,7 +23067,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterSt0 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterSt0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23082,7 +23082,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterSt1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterSt1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23097,7 +23097,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterSt2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterSt2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23112,7 +23112,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterSt3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterSt3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23127,7 +23127,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterSt4 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterSt4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23142,7 +23142,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterSt5 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterSt5* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23157,7 +23157,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterSt6 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterSt6* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23172,7 +23172,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterSt7 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterSt7* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23187,7 +23187,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterXmm0 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterXmm0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23202,7 +23202,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterXmm1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterXmm1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23217,7 +23217,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterXmm2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterXmm2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23232,7 +23232,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterXmm3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterXmm3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23247,7 +23247,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterXmm4 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterXmm4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23262,7 +23262,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterXmm5 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterXmm5* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23277,7 +23277,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterXmm6 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterXmm6* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23292,7 +23292,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Registers_RegisterXmm7 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Registers_RegisterXmm7* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23307,7 +23307,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Reset : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Reset* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23322,7 +23322,7 @@ namespace Strings
 	class Menus_Hacking_Lexicon_Stack : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Lexicon_Stack* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23337,7 +23337,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentBlizzardDown : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentBlizzardDown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23352,7 +23352,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentModify : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentModify* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23367,7 +23367,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23382,7 +23382,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23397,7 +23397,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_SetBlizzardSpeed : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_SetBlizzardSpeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23412,7 +23412,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_SetBlizzardSpeedDown : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_SetBlizzardSpeedDown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23427,7 +23427,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Catapult_ApplyPower_ApplyPower : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Catapult_ApplyPower_ApplyPower* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23442,7 +23442,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Catapult_ApplyPower_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Catapult_ApplyPower_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23457,7 +23457,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Catapult_ApplyPower_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Catapult_ApplyPower_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23472,7 +23472,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm0 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23487,7 +23487,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Catapult_ApplyPower_RegisterXmm1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23502,7 +23502,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Crusher_DetectPlayer_DetectPlayer : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Crusher_DetectPlayer_DetectPlayer* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23517,7 +23517,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Crusher_DetectPlayer_Hint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Crusher_DetectPlayer_Hint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23532,7 +23532,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23547,7 +23547,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23562,7 +23562,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Crusher_DetectPlayer_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23577,7 +23577,7 @@ namespace Strings
 	class Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_RegisterSt0 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_RegisterSt0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23592,7 +23592,7 @@ namespace Strings
 	class Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_UpdateCountDown : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_ElectricityBeam_UpdateCountDown_UpdateCountDown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23607,7 +23607,7 @@ namespace Strings
 	class Menus_Hacking_Objects_FireBird_UpdateTimer_CommentAddss : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_FireBird_UpdateTimer_CommentAddss* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23622,7 +23622,7 @@ namespace Strings
 	class Menus_Hacking_Objects_FireBird_UpdateTimer_CommentChangeTo : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_FireBird_UpdateTimer_CommentChangeTo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23637,7 +23637,7 @@ namespace Strings
 	class Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23652,7 +23652,7 @@ namespace Strings
 	class Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23667,7 +23667,7 @@ namespace Strings
 	class Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_FireBird_UpdateTimer_CommentSSEInstructionsPt3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23682,7 +23682,7 @@ namespace Strings
 	class Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23697,7 +23697,7 @@ namespace Strings
 	class Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm4 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_FireBird_UpdateTimer_RegisterXmm4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23712,7 +23712,7 @@ namespace Strings
 	class Menus_Hacking_Objects_FireBird_UpdateTimer_UpdateTimer : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_FireBird_UpdateTimer_UpdateTimer* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23727,7 +23727,7 @@ namespace Strings
 	class Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_FloatingObjects_GetDensity_GetDensity* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23742,7 +23742,7 @@ namespace Strings
 	class Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23757,7 +23757,7 @@ namespace Strings
 	class Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23772,7 +23772,7 @@ namespace Strings
 	class Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_FloatingObjects_GetDensity_RegisterXmm1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23787,7 +23787,7 @@ namespace Strings
 	class Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23802,7 +23802,7 @@ namespace Strings
 	class Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPop : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23817,7 +23817,7 @@ namespace Strings
 	class Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPush : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPush* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23832,7 +23832,7 @@ namespace Strings
 	class Menus_Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_HeavenHug_GetTravelHeight_GetTravelHeight* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23847,7 +23847,7 @@ namespace Strings
 	class Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23862,7 +23862,7 @@ namespace Strings
 	class Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_HeavenHug_GetTravelHeight_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23877,7 +23877,7 @@ namespace Strings
 	class Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_IncrementHealth : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_IncrementHealth* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23892,7 +23892,7 @@ namespace Strings
 	class Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_IncrementHealthFlask_IncrementHealth_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23907,7 +23907,7 @@ namespace Strings
 	class Menus_Hacking_Objects_IncrementManaFlask_IncrementMana_IncrementMana : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_IncrementManaFlask_IncrementMana_IncrementMana* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23922,7 +23922,7 @@ namespace Strings
 	class Menus_Hacking_Objects_IncrementManaFlask_IncrementMana_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_IncrementManaFlask_IncrementMana_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23937,7 +23937,7 @@ namespace Strings
 	class Menus_Hacking_Objects_KillingMachine_CommentCompare : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_KillingMachine_CommentCompare* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23952,7 +23952,7 @@ namespace Strings
 	class Menus_Hacking_Objects_KillingMachine_CommentCritChance : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_KillingMachine_CommentCritChance* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23967,7 +23967,7 @@ namespace Strings
 	class Menus_Hacking_Objects_KillingMachine_CommentCritChanceNegate : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_KillingMachine_CommentCritChanceNegate* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23982,7 +23982,7 @@ namespace Strings
 	class Menus_Hacking_Objects_KillingMachine_CommentHintCmove : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_KillingMachine_CommentHintCmove* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -23997,7 +23997,7 @@ namespace Strings
 	class Menus_Hacking_Objects_KillingMachine_CommentHintCmovne : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_KillingMachine_CommentHintCmovne* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24012,7 +24012,7 @@ namespace Strings
 	class Menus_Hacking_Objects_KillingMachine_CommentHintGeneric : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_KillingMachine_CommentHintGeneric* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24027,7 +24027,7 @@ namespace Strings
 	class Menus_Hacking_Objects_KillingMachine_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_KillingMachine_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24042,7 +24042,7 @@ namespace Strings
 	class Menus_Hacking_Objects_KillingMachine_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_KillingMachine_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24057,7 +24057,7 @@ namespace Strings
 	class Menus_Hacking_Objects_KillingMachine_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_KillingMachine_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24072,7 +24072,7 @@ namespace Strings
 	class Menus_Hacking_Objects_KillingMachine_TakeDamage : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_KillingMachine_TakeDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24087,7 +24087,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Laser_UpdateCountDown_RegisterSt0 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Laser_UpdateCountDown_RegisterSt0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24102,7 +24102,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Laser_UpdateCountDown_UpdateCountDown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24117,7 +24117,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MayanDoor_Combination1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MayanDoor_Combination1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24132,7 +24132,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MayanDoor_Combination2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MayanDoor_Combination2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24147,7 +24147,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MayanDoor_Combination3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MayanDoor_Combination3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24162,7 +24162,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MayanDoor_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MayanDoor_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24177,7 +24177,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24192,7 +24192,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24207,7 +24207,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_SetTargetAngle : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MechanicalFlail_SetTargetAngle_SetTargetAngle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24222,7 +24222,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24237,7 +24237,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24252,7 +24252,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24267,7 +24267,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24282,7 +24282,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24297,7 +24297,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24312,7 +24312,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm4 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_RegisterXmm4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24327,7 +24327,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MetalSpikes_UpdateTimer_UpdateTimer* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24342,7 +24342,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MineCart_IsMoving_IsMoving : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MineCart_IsMoving_IsMoving* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24357,7 +24357,7 @@ namespace Strings
 	class Menus_Hacking_Objects_MineCart_IsMoving_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_MineCart_IsMoving_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24372,7 +24372,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24387,7 +24387,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24402,7 +24402,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PendulumBlade_SetTargetAngle_SetTargetAngle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24417,7 +24417,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24432,7 +24432,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24447,7 +24447,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_SetTargetAngle : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PivotLauncher_SetTargetAngle_SetTargetAngle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24462,7 +24462,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24477,7 +24477,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm0 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24492,7 +24492,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_RegisterXmm1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24507,7 +24507,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_UpdateLaunchTimer : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PivotLauncher_UpdateLaunchTimer_UpdateLaunchTimer* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24522,7 +24522,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PuzzleDoor_Addition_Addition : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PuzzleDoor_Addition_Addition* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24537,7 +24537,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PuzzleDoor_Addition_CommentAdd* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24552,7 +24552,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PuzzleDoor_Addition_CommentElaboration : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PuzzleDoor_Addition_CommentElaboration* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24567,7 +24567,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PuzzleDoor_Addition_CommentTopNumber* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24582,7 +24582,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PuzzleDoor_Addition_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PuzzleDoor_Addition_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24597,7 +24597,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PuzzleDoor_Division_Division : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PuzzleDoor_Division_Division* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24612,7 +24612,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PuzzleDoor_Division_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PuzzleDoor_Division_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24627,7 +24627,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24642,7 +24642,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24657,7 +24657,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24672,7 +24672,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PuzzleDoor_Multiply_Multiply : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PuzzleDoor_Multiply_Multiply* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24687,7 +24687,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PuzzleDoor_Multiply_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PuzzleDoor_Multiply_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24702,7 +24702,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PuzzleDoor_Subtraction_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PuzzleDoor_Subtraction_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24717,7 +24717,7 @@ namespace Strings
 	class Menus_Hacking_Objects_PuzzleDoor_Subtraction_Subtraction : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_PuzzleDoor_Subtraction_Subtraction* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24732,7 +24732,7 @@ namespace Strings
 	class Menus_Hacking_Objects_RegisterRbpWarning : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_RegisterRbpWarning* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24747,7 +24747,7 @@ namespace Strings
 	class Menus_Hacking_Objects_RegisterRspWarning : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_RegisterRspWarning* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24762,7 +24762,7 @@ namespace Strings
 	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24777,7 +24777,7 @@ namespace Strings
 	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24792,7 +24792,7 @@ namespace Strings
 	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24807,7 +24807,7 @@ namespace Strings
 	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24822,7 +24822,7 @@ namespace Strings
 	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_MoveTowardsPlayer : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_MoveTowardsPlayer* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24837,7 +24837,7 @@ namespace Strings
 	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24852,7 +24852,7 @@ namespace Strings
 	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24867,7 +24867,7 @@ namespace Strings
 	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24882,7 +24882,7 @@ namespace Strings
 	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24897,7 +24897,7 @@ namespace Strings
 	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24912,7 +24912,7 @@ namespace Strings
 	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_CommentOptions* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24927,7 +24927,7 @@ namespace Strings
 	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_IncrementAnimationFrame* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24942,7 +24942,7 @@ namespace Strings
 	class Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_SpikedLog_IncrementAnimationFrame_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24957,7 +24957,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Wind_SetWindSpeed_CommentModify* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24972,7 +24972,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Wind_SetWindSpeed_CommentWindDown : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Wind_SetWindSpeed_CommentWindDown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -24987,7 +24987,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25002,7 +25002,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Wind_SetWindSpeed_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25017,7 +25017,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25032,7 +25032,7 @@ namespace Strings
 	class Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeedDown : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_Wind_SetWindSpeed_SetWindSpeedDown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25047,7 +25047,7 @@ namespace Strings
 	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25062,7 +25062,7 @@ namespace Strings
 	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25077,7 +25077,7 @@ namespace Strings
 	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25092,7 +25092,7 @@ namespace Strings
 	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25107,7 +25107,7 @@ namespace Strings
 	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25122,7 +25122,7 @@ namespace Strings
 	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_RegisterSt0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25137,7 +25137,7 @@ namespace Strings
 	class Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_UpdateTimer : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_UpdateTimer* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25152,7 +25152,7 @@ namespace Strings
 	class Menus_Hacking_RadialMenu_RequiresEq : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RadialMenu_RequiresEq* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25167,7 +25167,7 @@ namespace Strings
 	class Menus_Hacking_RegisterEax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25182,7 +25182,7 @@ namespace Strings
 	class Menus_Hacking_RegisterEbp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterEbp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25197,7 +25197,7 @@ namespace Strings
 	class Menus_Hacking_RegisterEbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25212,7 +25212,7 @@ namespace Strings
 	class Menus_Hacking_RegisterEcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25227,7 +25227,7 @@ namespace Strings
 	class Menus_Hacking_RegisterEdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25242,7 +25242,7 @@ namespace Strings
 	class Menus_Hacking_RegisterEdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25257,7 +25257,7 @@ namespace Strings
 	class Menus_Hacking_RegisterEip : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterEip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25272,7 +25272,7 @@ namespace Strings
 	class Menus_Hacking_RegisterEsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25287,7 +25287,7 @@ namespace Strings
 	class Menus_Hacking_RegisterEsp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterEsp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25302,7 +25302,7 @@ namespace Strings
 	class Menus_Hacking_RegisterR10 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterR10* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25317,7 +25317,7 @@ namespace Strings
 	class Menus_Hacking_RegisterR11 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterR11* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25332,7 +25332,7 @@ namespace Strings
 	class Menus_Hacking_RegisterR12 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterR12* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25347,7 +25347,7 @@ namespace Strings
 	class Menus_Hacking_RegisterR13 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterR13* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25362,7 +25362,7 @@ namespace Strings
 	class Menus_Hacking_RegisterR14 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterR14* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25377,7 +25377,7 @@ namespace Strings
 	class Menus_Hacking_RegisterR15 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterR15* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25392,7 +25392,7 @@ namespace Strings
 	class Menus_Hacking_RegisterR8 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterR8* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25407,7 +25407,7 @@ namespace Strings
 	class Menus_Hacking_RegisterR9 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterR9* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25422,7 +25422,7 @@ namespace Strings
 	class Menus_Hacking_RegisterRax : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterRax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25437,7 +25437,7 @@ namespace Strings
 	class Menus_Hacking_RegisterRbp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterRbp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25452,7 +25452,7 @@ namespace Strings
 	class Menus_Hacking_RegisterRbx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterRbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25467,7 +25467,7 @@ namespace Strings
 	class Menus_Hacking_RegisterRcx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterRcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25482,7 +25482,7 @@ namespace Strings
 	class Menus_Hacking_RegisterRdi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterRdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25497,7 +25497,7 @@ namespace Strings
 	class Menus_Hacking_RegisterRdx : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterRdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25512,7 +25512,7 @@ namespace Strings
 	class Menus_Hacking_RegisterRip : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterRip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25527,7 +25527,7 @@ namespace Strings
 	class Menus_Hacking_RegisterRsi : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterRsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25542,7 +25542,7 @@ namespace Strings
 	class Menus_Hacking_RegisterRsp : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterRsp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25557,7 +25557,7 @@ namespace Strings
 	class Menus_Hacking_RegisterSt0 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterSt0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25572,7 +25572,7 @@ namespace Strings
 	class Menus_Hacking_RegisterSt1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterSt1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25587,7 +25587,7 @@ namespace Strings
 	class Menus_Hacking_RegisterSt2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterSt2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25602,7 +25602,7 @@ namespace Strings
 	class Menus_Hacking_RegisterSt3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterSt3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25617,7 +25617,7 @@ namespace Strings
 	class Menus_Hacking_RegisterSt4 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterSt4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25632,7 +25632,7 @@ namespace Strings
 	class Menus_Hacking_RegisterSt5 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterSt5* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25647,7 +25647,7 @@ namespace Strings
 	class Menus_Hacking_RegisterSt6 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterSt6* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25662,7 +25662,7 @@ namespace Strings
 	class Menus_Hacking_RegisterSt7 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterSt7* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25677,7 +25677,7 @@ namespace Strings
 	class Menus_Hacking_RegisterXmm0 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterXmm0* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25692,7 +25692,7 @@ namespace Strings
 	class Menus_Hacking_RegisterXmm1 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterXmm1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25707,7 +25707,7 @@ namespace Strings
 	class Menus_Hacking_RegisterXmm2 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterXmm2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25722,7 +25722,7 @@ namespace Strings
 	class Menus_Hacking_RegisterXmm3 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterXmm3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25737,7 +25737,7 @@ namespace Strings
 	class Menus_Hacking_RegisterXmm4 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterXmm4* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25752,7 +25752,7 @@ namespace Strings
 	class Menus_Hacking_RegisterXmm5 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterXmm5* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25767,7 +25767,7 @@ namespace Strings
 	class Menus_Hacking_RegisterXmm6 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterXmm6* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25782,7 +25782,7 @@ namespace Strings
 	class Menus_Hacking_RegisterXmm7 : public LocalizedString
 	{
 	public:
-		static Menus_Hacking_RegisterXmm7* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25797,7 +25797,7 @@ namespace Strings
 	class Menus_Help : public LocalizedString
 	{
 	public:
-		static Menus_Help* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25812,7 +25812,7 @@ namespace Strings
 	class Menus_Inventory_All : public LocalizedString
 	{
 	public:
-		static Menus_Inventory_All* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25827,7 +25827,7 @@ namespace Strings
 	class Menus_Inventory_Consumables : public LocalizedString
 	{
 	public:
-		static Menus_Inventory_Consumables* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25842,7 +25842,7 @@ namespace Strings
 	class Menus_Inventory_Crafting : public LocalizedString
 	{
 	public:
-		static Menus_Inventory_Crafting* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25857,7 +25857,7 @@ namespace Strings
 	class Menus_Inventory_Equipment : public LocalizedString
 	{
 	public:
-		static Menus_Inventory_Equipment* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25872,7 +25872,7 @@ namespace Strings
 	class Menus_Inventory_Hexus : public LocalizedString
 	{
 	public:
-		static Menus_Inventory_Hexus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25887,7 +25887,7 @@ namespace Strings
 	class Menus_Inventory_Inventory : public LocalizedString
 	{
 	public:
-		static Menus_Inventory_Inventory* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25902,7 +25902,7 @@ namespace Strings
 	class Menus_Inventory_Item : public LocalizedString
 	{
 	public:
-		static Menus_Inventory_Item* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25917,7 +25917,7 @@ namespace Strings
 	class Menus_Inventory_Misc : public LocalizedString
 	{
 	public:
-		static Menus_Inventory_Misc* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25932,7 +25932,7 @@ namespace Strings
 	class Menus_Inventory_Take : public LocalizedString
 	{
 	public:
-		static Menus_Inventory_Take* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25947,7 +25947,7 @@ namespace Strings
 	class Menus_ItemPreview_Armor : public LocalizedString
 	{
 	public:
-		static Menus_ItemPreview_Armor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25962,7 +25962,7 @@ namespace Strings
 	class Menus_ItemPreview_Attack : public LocalizedString
 	{
 	public:
-		static Menus_ItemPreview_Attack* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25977,7 +25977,7 @@ namespace Strings
 	class Menus_ItemPreview_Damage : public LocalizedString
 	{
 	public:
-		static Menus_ItemPreview_Damage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -25992,7 +25992,7 @@ namespace Strings
 	class Menus_ItemPreview_Equip : public LocalizedString
 	{
 	public:
-		static Menus_ItemPreview_Equip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26007,7 +26007,7 @@ namespace Strings
 	class Menus_ItemPreview_Health : public LocalizedString
 	{
 	public:
-		static Menus_ItemPreview_Health* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26022,7 +26022,7 @@ namespace Strings
 	class Menus_ItemPreview_Mana : public LocalizedString
 	{
 	public:
-		static Menus_ItemPreview_Mana* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26037,7 +26037,7 @@ namespace Strings
 	class Menus_ItemPreview_Spacebar : public LocalizedString
 	{
 	public:
-		static Menus_ItemPreview_Spacebar* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26052,7 +26052,7 @@ namespace Strings
 	class Menus_ItemPreview_Speed : public LocalizedString
 	{
 	public:
-		static Menus_ItemPreview_Speed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26067,7 +26067,7 @@ namespace Strings
 	class Menus_ItemPreview_Unequip : public LocalizedString
 	{
 	public:
-		static Menus_ItemPreview_Unequip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26082,7 +26082,7 @@ namespace Strings
 	class Menus_ItemPreview_Use : public LocalizedString
 	{
 	public:
-		static Menus_ItemPreview_Use* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26097,7 +26097,7 @@ namespace Strings
 	class Menus_Leave : public LocalizedString
 	{
 	public:
-		static Menus_Leave* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26112,7 +26112,7 @@ namespace Strings
 	class Menus_Minigames : public LocalizedString
 	{
 	public:
-		static Menus_Minigames* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26127,7 +26127,7 @@ namespace Strings
 	class Menus_Music_AlexanderIvanov_AlexanderIvanov : public LocalizedString
 	{
 	public:
-		static Menus_Music_AlexanderIvanov_AlexanderIvanov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26142,7 +26142,7 @@ namespace Strings
 	class Menus_Music_AlexanderIvanov_Heartbeat : public LocalizedString
 	{
 	public:
-		static Menus_Music_AlexanderIvanov_Heartbeat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26157,7 +26157,7 @@ namespace Strings
 	class Menus_Music_AndreaBaroni_AndreaBaroni : public LocalizedString
 	{
 	public:
-		static Menus_Music_AndreaBaroni_AndreaBaroni* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26172,7 +26172,7 @@ namespace Strings
 	class Menus_Music_AndreaBaroni_BurdenOfTime : public LocalizedString
 	{
 	public:
-		static Menus_Music_AndreaBaroni_BurdenOfTime* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26187,7 +26187,7 @@ namespace Strings
 	class Menus_Music_Artist : public LocalizedString
 	{
 	public:
-		static Menus_Music_Artist* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26202,7 +26202,7 @@ namespace Strings
 	class Menus_Music_Blacksmith_Blacksmith : public LocalizedString
 	{
 	public:
-		static Menus_Music_Blacksmith_Blacksmith* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26217,7 +26217,7 @@ namespace Strings
 	class Menus_Music_Blacksmith_Medieval : public LocalizedString
 	{
 	public:
-		static Menus_Music_Blacksmith_Medieval* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26232,7 +26232,7 @@ namespace Strings
 	class Menus_Music_Blacksmith_Medieval2 : public LocalizedString
 	{
 	public:
-		static Menus_Music_Blacksmith_Medieval2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26247,7 +26247,7 @@ namespace Strings
 	class Menus_Music_GavinLuke_GavinLuke : public LocalizedString
 	{
 	public:
-		static Menus_Music_GavinLuke_GavinLuke* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26262,7 +26262,7 @@ namespace Strings
 	class Menus_Music_GavinLuke_Solace : public LocalizedString
 	{
 	public:
-		static Menus_Music_GavinLuke_Solace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26277,7 +26277,7 @@ namespace Strings
 	class Menus_Music_JakobLindhagen_Forgotten : public LocalizedString
 	{
 	public:
-		static Menus_Music_JakobLindhagen_Forgotten* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26292,7 +26292,7 @@ namespace Strings
 	class Menus_Music_JakobLindhagen_JakobLindhagen : public LocalizedString
 	{
 	public:
-		static Menus_Music_JakobLindhagen_JakobLindhagen* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26307,7 +26307,7 @@ namespace Strings
 	class Menus_Music_Lemmonias_Lemmonias : public LocalizedString
 	{
 	public:
-		static Menus_Music_Lemmonias_Lemmonias* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26322,7 +26322,7 @@ namespace Strings
 	class Menus_Music_Lemmonias_WWGTT : public LocalizedString
 	{
 	public:
-		static Menus_Music_Lemmonias_WWGTT* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26337,7 +26337,7 @@ namespace Strings
 	class Menus_Music_Nosbertus_Nosbertus : public LocalizedString
 	{
 	public:
-		static Menus_Music_Nosbertus_Nosbertus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26352,7 +26352,7 @@ namespace Strings
 	class Menus_Music_Nosbertus_TrickOrTreat : public LocalizedString
 	{
 	public:
-		static Menus_Music_Nosbertus_TrickOrTreat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26367,7 +26367,7 @@ namespace Strings
 	class Menus_Music_StrayGhost_StrayGhost : public LocalizedString
 	{
 	public:
-		static Menus_Music_StrayGhost_StrayGhost* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26382,7 +26382,7 @@ namespace Strings
 	class Menus_Music_StrayGhost_TwoStepsTooOftenAside : public LocalizedString
 	{
 	public:
-		static Menus_Music_StrayGhost_TwoStepsTooOftenAside* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26397,7 +26397,7 @@ namespace Strings
 	class Menus_Music_TheoAndPaul_LastMarch : public LocalizedString
 	{
 	public:
-		static Menus_Music_TheoAndPaul_LastMarch* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26412,7 +26412,7 @@ namespace Strings
 	class Menus_Music_TheoAndPaul_TheoAndPaul : public LocalizedString
 	{
 	public:
-		static Menus_Music_TheoAndPaul_TheoAndPaul* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26427,7 +26427,7 @@ namespace Strings
 	class Menus_Music_Track : public LocalizedString
 	{
 	public:
-		static Menus_Music_Track* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26442,7 +26442,7 @@ namespace Strings
 	class Menus_Music_Unknown_Atrium : public LocalizedString
 	{
 	public:
-		static Menus_Music_Unknown_Atrium* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26457,7 +26457,7 @@ namespace Strings
 	class Menus_Music_Unknown_Unknown : public LocalizedString
 	{
 	public:
-		static Menus_Music_Unknown_Unknown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26472,7 +26472,7 @@ namespace Strings
 	class Menus_Next : public LocalizedString
 	{
 	public:
-		static Menus_Next* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26487,7 +26487,7 @@ namespace Strings
 	class Menus_Notifications_CreatureRescued : public LocalizedString
 	{
 	public:
-		static Menus_Notifications_CreatureRescued* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26502,7 +26502,7 @@ namespace Strings
 	class Menus_Okay : public LocalizedString
 	{
 	public:
-		static Menus_Okay* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26517,7 +26517,7 @@ namespace Strings
 	class Menus_Options_FullScreen : public LocalizedString
 	{
 	public:
-		static Menus_Options_FullScreen* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26532,7 +26532,7 @@ namespace Strings
 	class Menus_Options_GeneralOptions : public LocalizedString
 	{
 	public:
-		static Menus_Options_GeneralOptions* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26547,7 +26547,7 @@ namespace Strings
 	class Menus_Options_GraphicEffects : public LocalizedString
 	{
 	public:
-		static Menus_Options_GraphicEffects* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26562,7 +26562,7 @@ namespace Strings
 	class Menus_Options_HighQuality : public LocalizedString
 	{
 	public:
-		static Menus_Options_HighQuality* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26577,7 +26577,7 @@ namespace Strings
 	class Menus_Options_Language : public LocalizedString
 	{
 	public:
-		static Menus_Options_Language* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26592,7 +26592,7 @@ namespace Strings
 	class Menus_Options_LowQuality : public LocalizedString
 	{
 	public:
-		static Menus_Options_LowQuality* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26607,7 +26607,7 @@ namespace Strings
 	class Menus_Options_Memes : public LocalizedString
 	{
 	public:
-		static Menus_Options_Memes* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26622,7 +26622,7 @@ namespace Strings
 	class Menus_Options_Options : public LocalizedString
 	{
 	public:
-		static Menus_Options_Options* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26637,7 +26637,7 @@ namespace Strings
 	class Menus_Options_Resolution1080x768 : public LocalizedString
 	{
 	public:
-		static Menus_Options_Resolution1080x768* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26652,7 +26652,7 @@ namespace Strings
 	class Menus_Options_Resolution1152x864 : public LocalizedString
 	{
 	public:
-		static Menus_Options_Resolution1152x864* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26667,7 +26667,7 @@ namespace Strings
 	class Menus_Options_Resolution1280x1024 : public LocalizedString
 	{
 	public:
-		static Menus_Options_Resolution1280x1024* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26682,7 +26682,7 @@ namespace Strings
 	class Menus_Options_Resolution1280x720 : public LocalizedString
 	{
 	public:
-		static Menus_Options_Resolution1280x720* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26697,7 +26697,7 @@ namespace Strings
 	class Menus_Options_Resolution1280x960 : public LocalizedString
 	{
 	public:
-		static Menus_Options_Resolution1280x960* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26712,7 +26712,7 @@ namespace Strings
 	class Menus_Options_Resolution1440x900 : public LocalizedString
 	{
 	public:
-		static Menus_Options_Resolution1440x900* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26727,7 +26727,7 @@ namespace Strings
 	class Menus_Options_Resolution1600x1024 : public LocalizedString
 	{
 	public:
-		static Menus_Options_Resolution1600x1024* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26742,7 +26742,7 @@ namespace Strings
 	class Menus_Options_Resolution1600x900 : public LocalizedString
 	{
 	public:
-		static Menus_Options_Resolution1600x900* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26757,7 +26757,7 @@ namespace Strings
 	class Menus_Options_Resolution1920x1080 : public LocalizedString
 	{
 	public:
-		static Menus_Options_Resolution1920x1080* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26772,7 +26772,7 @@ namespace Strings
 	class Menus_Options_Resolution2560x1440 : public LocalizedString
 	{
 	public:
-		static Menus_Options_Resolution2560x1440* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26787,7 +26787,7 @@ namespace Strings
 	class Menus_Options_Resolution3840x2160 : public LocalizedString
 	{
 	public:
-		static Menus_Options_Resolution3840x2160* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26802,7 +26802,7 @@ namespace Strings
 	class Menus_Options_VideoOptions : public LocalizedString
 	{
 	public:
-		static Menus_Options_VideoOptions* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26817,7 +26817,7 @@ namespace Strings
 	class Menus_Party_Party : public LocalizedString
 	{
 	public:
-		static Menus_Party_Party* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26832,7 +26832,7 @@ namespace Strings
 	class Menus_Party_Stuck : public LocalizedString
 	{
 	public:
-		static Menus_Party_Stuck* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26847,7 +26847,7 @@ namespace Strings
 	class Menus_Party_StuckConfirm : public LocalizedString
 	{
 	public:
-		static Menus_Party_StuckConfirm* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26862,7 +26862,7 @@ namespace Strings
 	class Menus_Pause_Cards : public LocalizedString
 	{
 	public:
-		static Menus_Pause_Cards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26877,7 +26877,7 @@ namespace Strings
 	class Menus_Pause_Collectables : public LocalizedString
 	{
 	public:
-		static Menus_Pause_Collectables* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26892,7 +26892,7 @@ namespace Strings
 	class Menus_Pause_Inventory : public LocalizedString
 	{
 	public:
-		static Menus_Pause_Inventory* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26907,7 +26907,7 @@ namespace Strings
 	class Menus_Pause_Map : public LocalizedString
 	{
 	public:
-		static Menus_Pause_Map* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26922,7 +26922,7 @@ namespace Strings
 	class Menus_Pause_Options : public LocalizedString
 	{
 	public:
-		static Menus_Pause_Options* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26937,7 +26937,7 @@ namespace Strings
 	class Menus_Pause_Party : public LocalizedString
 	{
 	public:
-		static Menus_Pause_Party* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26952,7 +26952,7 @@ namespace Strings
 	class Menus_Pause_Pause : public LocalizedString
 	{
 	public:
-		static Menus_Pause_Pause* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26967,7 +26967,7 @@ namespace Strings
 	class Menus_Pause_QuitToTitle : public LocalizedString
 	{
 	public:
-		static Menus_Pause_QuitToTitle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26982,7 +26982,7 @@ namespace Strings
 	class Menus_Pause_Resume : public LocalizedString
 	{
 	public:
-		static Menus_Pause_Resume* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -26997,7 +26997,7 @@ namespace Strings
 	class Menus_Reset : public LocalizedString
 	{
 	public:
-		static Menus_Reset* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27012,7 +27012,7 @@ namespace Strings
 	class Menus_Retry : public LocalizedString
 	{
 	public:
-		static Menus_Retry* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27027,7 +27027,7 @@ namespace Strings
 	class Menus_Return : public LocalizedString
 	{
 	public:
-		static Menus_Return* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27042,7 +27042,7 @@ namespace Strings
 	class Menus_SaveSelect_ConfirmDelete : public LocalizedString
 	{
 	public:
-		static Menus_SaveSelect_ConfirmDelete* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27057,7 +27057,7 @@ namespace Strings
 	class Menus_SaveSelect_ContinueGame : public LocalizedString
 	{
 	public:
-		static Menus_SaveSelect_ContinueGame* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27072,7 +27072,7 @@ namespace Strings
 	class Menus_SaveSelect_NewGame : public LocalizedString
 	{
 	public:
-		static Menus_SaveSelect_NewGame* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27087,7 +27087,7 @@ namespace Strings
 	class Menus_SaveSelect_SelectASave : public LocalizedString
 	{
 	public:
-		static Menus_SaveSelect_SelectASave* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27102,7 +27102,7 @@ namespace Strings
 	class Menus_StoryMode : public LocalizedString
 	{
 	public:
-		static Menus_StoryMode* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27117,7 +27117,7 @@ namespace Strings
 	class Menus_Submit : public LocalizedString
 	{
 	public:
-		static Menus_Submit* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27132,7 +27132,7 @@ namespace Strings
 	class Menus_TranslationEditor_CurrentTranslation : public LocalizedString
 	{
 	public:
-		static Menus_TranslationEditor_CurrentTranslation* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27147,7 +27147,7 @@ namespace Strings
 	class Menus_TranslationEditor_NewTranslation : public LocalizedString
 	{
 	public:
-		static Menus_TranslationEditor_NewTranslation* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27162,7 +27162,7 @@ namespace Strings
 	class Menus_TranslationEditor_OriginalTextInEnglish : public LocalizedString
 	{
 	public:
-		static Menus_TranslationEditor_OriginalTextInEnglish* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27177,7 +27177,7 @@ namespace Strings
 	class Menus_TranslationEditor_TranslationEditor : public LocalizedString
 	{
 	public:
-		static Menus_TranslationEditor_TranslationEditor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27192,7 +27192,7 @@ namespace Strings
 	class Menus_Tutorials : public LocalizedString
 	{
 	public:
-		static Menus_Tutorials* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27207,7 +27207,7 @@ namespace Strings
 	class Menus_Tutorials_AssemblyEditing_AssemblyEditing : public LocalizedString
 	{
 	public:
-		static Menus_Tutorials_AssemblyEditing_AssemblyEditing* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27222,7 +27222,7 @@ namespace Strings
 	class Menus_Tutorials_HexEditing_HexEditing : public LocalizedString
 	{
 	public:
-		static Menus_Tutorials_HexEditing_HexEditing* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27237,7 +27237,7 @@ namespace Strings
 	class Menus_Tutorials_HexEditing_TutorialStringSearch : public LocalizedString
 	{
 	public:
-		static Menus_Tutorials_HexEditing_TutorialStringSearch* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27252,7 +27252,7 @@ namespace Strings
 	class Menus_Tutorials_Home_Disclaimer : public LocalizedString
 	{
 	public:
-		static Menus_Tutorials_Home_Disclaimer* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27267,7 +27267,7 @@ namespace Strings
 	class Menus_Tutorials_Home_Home : public LocalizedString
 	{
 	public:
-		static Menus_Tutorials_Home_Home* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27282,7 +27282,7 @@ namespace Strings
 	class Menus_Tutorials_MemoryEditing_MemoryEditing : public LocalizedString
 	{
 	public:
-		static Menus_Tutorials_MemoryEditing_MemoryEditing* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27297,7 +27297,7 @@ namespace Strings
 	class Menus_Tutorials_Pointers_Pointers : public LocalizedString
 	{
 	public:
-		static Menus_Tutorials_Pointers_Pointers* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27312,7 +27312,7 @@ namespace Strings
 	class Platformer_Combat_Attack : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attack* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27327,7 +27327,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_Cleave : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_Cleave* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27342,7 +27342,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_CleaveDescription : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_CleaveDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27357,7 +27357,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_Condensation : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_Condensation* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27372,7 +27372,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_CondensationDescription : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_CondensationDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27387,7 +27387,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_DropTimeBomb : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_DropTimeBomb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27402,7 +27402,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_EnergyBolt : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_EnergyBolt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27417,7 +27417,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_EnergyBoltDescription : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_EnergyBoltDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27432,7 +27432,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_EnvelopingWinds : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_EnvelopingWinds* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27447,7 +27447,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_EnvelopingWindsDescription : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_EnvelopingWindsDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27462,7 +27462,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_Execute : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_Execute* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27477,7 +27477,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_ExecuteDescription : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_ExecuteDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27492,7 +27492,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_LightningStrike : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_LightningStrike* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27507,7 +27507,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_LightningStrikeDescription : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_LightningStrikeDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27522,7 +27522,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_MultiShot : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_MultiShot* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27537,7 +27537,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_MultiShotDescription : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_MultiShotDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27552,7 +27552,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_Pound : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_Pound* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27567,7 +27567,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_PoundDescription : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_PoundDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27582,7 +27582,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_Punch : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_Punch* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27597,7 +27597,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_Resurrect : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_Resurrect* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27612,7 +27612,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_ResurrectDescription : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_ResurrectDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27627,7 +27627,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_Shoot : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_Shoot* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27642,7 +27642,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_Slash : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_Slash* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27657,7 +27657,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_Smash : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_Smash* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27672,7 +27672,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_SmashDescription : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_SmashDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27687,7 +27687,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_ThrowFlamingWeapon : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_ThrowFlamingWeapon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27702,7 +27702,7 @@ namespace Strings
 	class Platformer_Combat_Attacks_ThrowWeapon : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Attacks_ThrowWeapon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27717,7 +27717,7 @@ namespace Strings
 	class Platformer_Combat_Blocked : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Blocked* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27732,7 +27732,7 @@ namespace Strings
 	class Platformer_Combat_Cast : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Cast* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27747,7 +27747,7 @@ namespace Strings
 	class Platformer_Combat_ChooseATarget : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_ChooseATarget* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27762,7 +27762,7 @@ namespace Strings
 	class Platformer_Combat_Cost : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Cost* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27777,7 +27777,7 @@ namespace Strings
 	class Platformer_Combat_Defeat : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Defeat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27792,7 +27792,7 @@ namespace Strings
 	class Platformer_Combat_Defend : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Defend* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27807,7 +27807,7 @@ namespace Strings
 	class Platformer_Combat_ExpGain : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_ExpGain* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27822,7 +27822,7 @@ namespace Strings
 	class Platformer_Combat_FirstStrike : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_FirstStrike* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27837,7 +27837,7 @@ namespace Strings
 	class Platformer_Combat_Interrupted : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Interrupted* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27852,7 +27852,7 @@ namespace Strings
 	class Platformer_Combat_Items : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Items* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27867,7 +27867,7 @@ namespace Strings
 	class Platformer_Combat_LevelUp : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_LevelUp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27882,7 +27882,7 @@ namespace Strings
 	class Platformer_Combat_Max : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Max* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27897,7 +27897,7 @@ namespace Strings
 	class Platformer_Combat_Min : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Min* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27912,7 +27912,7 @@ namespace Strings
 	class Platformer_Combat_Rewards : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Rewards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27927,7 +27927,7 @@ namespace Strings
 	class Platformer_Combat_Skills : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Skills* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27942,7 +27942,7 @@ namespace Strings
 	class Platformer_Combat_Spells : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Spells* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27957,7 +27957,7 @@ namespace Strings
 	class Platformer_Combat_Victory : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Victory* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27972,7 +27972,7 @@ namespace Strings
 	class Platformer_Combat_Wait : public LocalizedString
 	{
 	public:
-		static Platformer_Combat_Wait* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -27987,7 +27987,7 @@ namespace Strings
 	class Platformer_Cutscenes_IOU_FoundIOU : public LocalizedString
 	{
 	public:
-		static Platformer_Cutscenes_IOU_FoundIOU* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28002,7 +28002,7 @@ namespace Strings
 	class Platformer_Cutscenes_IOU_IOUDescription : public LocalizedString
 	{
 	public:
-		static Platformer_Cutscenes_IOU_IOUDescription* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28017,7 +28017,7 @@ namespace Strings
 	class Platformer_Cutscenes_PressEscToSkip : public LocalizedString
 	{
 	public:
-		static Platformer_Cutscenes_PressEscToSkip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28032,7 +28032,7 @@ namespace Strings
 	class Platformer_Dialogue_BattleCries_DieMortal : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_BattleCries_DieMortal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28047,7 +28047,7 @@ namespace Strings
 	class Platformer_Dialogue_Combat_Help_UseYourAbilities : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Combat_Help_UseYourAbilities* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28062,7 +28062,7 @@ namespace Strings
 	class Platformer_Dialogue_Goodbye : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Goodbye* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28077,7 +28077,7 @@ namespace Strings
 	class Platformer_Dialogue_Hexus_ADraw : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Hexus_ADraw* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28092,7 +28092,7 @@ namespace Strings
 	class Platformer_Dialogue_Hexus_ADrawZalgo : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Hexus_ADrawZalgo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28107,7 +28107,7 @@ namespace Strings
 	class Platformer_Dialogue_Hexus_BetterLuckNextTime : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Hexus_BetterLuckNextTime* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28122,7 +28122,7 @@ namespace Strings
 	class Platformer_Dialogue_Hexus_GoodGame : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Hexus_GoodGame* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28137,7 +28137,7 @@ namespace Strings
 	class Platformer_Dialogue_Hexus_GoodGameZalgo : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Hexus_GoodGameZalgo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28152,7 +28152,7 @@ namespace Strings
 	class Platformer_Dialogue_Hexus_HowAboutARematch : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Hexus_HowAboutARematch* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28167,7 +28167,7 @@ namespace Strings
 	class Platformer_Dialogue_Hexus_HowAboutARoundOfHexus : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Hexus_HowAboutARoundOfHexus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28182,7 +28182,7 @@ namespace Strings
 	class Platformer_Dialogue_Hexus_PuzzleForYouZalgo : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Hexus_PuzzleForYouZalgo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28197,7 +28197,7 @@ namespace Strings
 	class Platformer_Dialogue_Hexus_WeAcceptYourChallenge : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Hexus_WeAcceptYourChallenge* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28212,7 +28212,7 @@ namespace Strings
 	class Platformer_Dialogue_Hexus_WellPlayed : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Hexus_WellPlayed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28227,7 +28227,7 @@ namespace Strings
 	class Platformer_Dialogue_Recruitable_GeckyRecruitable : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Recruitable_GeckyRecruitable* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28242,7 +28242,7 @@ namespace Strings
 	class Platformer_Dialogue_Recruitable_GrimRecruitable : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Recruitable_GrimRecruitable* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28257,7 +28257,7 @@ namespace Strings
 	class Platformer_Dialogue_Recruitable_GuanoRecruitable : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Recruitable_GuanoRecruitable* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28272,7 +28272,7 @@ namespace Strings
 	class Platformer_Dialogue_Recruitable_RecruitableAccept : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Recruitable_RecruitableAccept* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28287,7 +28287,7 @@ namespace Strings
 	class Platformer_Dialogue_Recruitable_RecruitableChoose : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Recruitable_RecruitableChoose* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28302,7 +28302,7 @@ namespace Strings
 	class Platformer_Dialogue_Rewards_DoYouWantThisReward : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Rewards_DoYouWantThisReward* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28317,7 +28317,7 @@ namespace Strings
 	class Platformer_Dialogue_Shopkeepers_DoYouWantToBuy : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Shopkeepers_DoYouWantToBuy* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28332,7 +28332,7 @@ namespace Strings
 	class Platformer_Dialogue_Shopkeepers_HowDoIBuySomething : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Shopkeepers_HowDoIBuySomething* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28347,7 +28347,7 @@ namespace Strings
 	class Platformer_Dialogue_Shopkeepers_HowToBuySomething : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Shopkeepers_HowToBuySomething* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28362,7 +28362,7 @@ namespace Strings
 	class Platformer_Dialogue_Shopkeepers_Minos_LookinToDealDamage : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Shopkeepers_Minos_LookinToDealDamage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28377,7 +28377,7 @@ namespace Strings
 	class Platformer_Dialogue_Shopkeepers_Welcome : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Shopkeepers_Welcome* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28392,7 +28392,7 @@ namespace Strings
 	class Platformer_Dialogue_Transportation_AreWeThereYet : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Transportation_AreWeThereYet* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28407,7 +28407,7 @@ namespace Strings
 	class Platformer_Dialogue_Transportation_AreYouReady : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Transportation_AreYouReady* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28422,7 +28422,7 @@ namespace Strings
 	class Platformer_Dialogue_Transportation_IForgotSomething : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Transportation_IForgotSomething* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28437,7 +28437,7 @@ namespace Strings
 	class Platformer_Dialogue_Transportation_No : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Transportation_No* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28452,7 +28452,7 @@ namespace Strings
 	class Platformer_Dialogue_Transportation_Seriously : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Transportation_Seriously* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28467,7 +28467,7 @@ namespace Strings
 	class Platformer_Dialogue_Transportation_Yes : public LocalizedString
 	{
 	public:
-		static Platformer_Dialogue_Transportation_Yes* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28482,7 +28482,7 @@ namespace Strings
 	class Platformer_Ellipses : public LocalizedString
 	{
 	public:
-		static Platformer_Ellipses* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28497,7 +28497,7 @@ namespace Strings
 	class Platformer_Entities_EndianForest_Lycan_LetMeIntoTown : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_EndianForest_Lycan_LetMeIntoTown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28512,7 +28512,7 @@ namespace Strings
 	class Platformer_Entities_EndianForest_Lycan_NobodyAllowedIntoTown : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_EndianForest_Lycan_NobodyAllowedIntoTown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28527,7 +28527,7 @@ namespace Strings
 	class Platformer_Entities_Names_Critters_Bat : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Critters_Bat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28542,7 +28542,7 @@ namespace Strings
 	class Platformer_Entities_Names_Critters_Gull : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Critters_Gull* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28557,7 +28557,7 @@ namespace Strings
 	class Platformer_Entities_Names_Critters_Horse : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Critters_Horse* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28572,7 +28572,7 @@ namespace Strings
 	class Platformer_Entities_Names_Critters_Lion : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Critters_Lion* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28587,7 +28587,7 @@ namespace Strings
 	class Platformer_Entities_Names_Critters_Seagull : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Critters_Seagull* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28602,7 +28602,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_BallmerPeaks_Cryogen : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BallmerPeaks_Cryogen* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28617,7 +28617,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_BallmerPeaks_FrostFiend : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BallmerPeaks_FrostFiend* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28632,7 +28632,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_BallmerPeaks_GoblinElf : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BallmerPeaks_GoblinElf* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28647,7 +28647,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_BallmerPeaks_IceGolem : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BallmerPeaks_IceGolem* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28662,7 +28662,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_BallmerPeaks_PenguinGrunt : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BallmerPeaks_PenguinGrunt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28677,7 +28677,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_BallmerPeaks_PenguinWarrior : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BallmerPeaks_PenguinWarrior* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28692,7 +28692,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_BallmerPeaks_Santa : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BallmerPeaks_Santa* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28707,7 +28707,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_BallmerPeaks_SnowFiend : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BallmerPeaks_SnowFiend* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28722,7 +28722,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_BallmerPeaks_ToySoldierGoblin : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BallmerPeaks_ToySoldierGoblin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28737,7 +28737,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_BallmerPeaks_Viking : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BallmerPeaks_Viking* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28752,7 +28752,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_BallmerPeaks_WaterElemental : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BallmerPeaks_WaterElemental* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28767,7 +28767,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_BallmerPeaks_Yeti : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_BallmerPeaks_Yeti* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28782,7 +28782,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_CastleValgrind_Agnes : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_Agnes* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28797,7 +28797,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_CastleValgrind_Barbarian : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_Barbarian* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28812,7 +28812,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_CastleValgrind_Jack : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_Jack* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28827,7 +28827,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_CastleValgrind_ReanimatedFighter : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_ReanimatedFighter* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28842,7 +28842,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_CastleValgrind_Reaper : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_Reaper* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28857,7 +28857,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_CastleValgrind_Scarecrow : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_Scarecrow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28872,7 +28872,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalBaron : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_SkeletalBaron* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28887,7 +28887,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_CastleValgrind_Thug : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_Thug* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28902,7 +28902,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_CastleValgrind_VampireLord : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_VampireLord* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28917,7 +28917,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_CastleValgrind_Vampiress : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_Vampiress* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28932,7 +28932,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_CastleValgrind_Werewolf : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_Werewolf* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28947,7 +28947,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_CastleValgrind_Wraith : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_CastleValgrind_Wraith* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28962,7 +28962,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_DataMines_EarthElemental : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_DataMines_EarthElemental* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28977,7 +28977,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_DataMines_EarthGolem : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_DataMines_EarthGolem* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -28992,7 +28992,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_DataMines_ForestGolem : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_DataMines_ForestGolem* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29007,7 +29007,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_DataMines_Gorilla : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_DataMines_Gorilla* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29022,7 +29022,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_DataMines_Rhinoman : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_DataMines_Rhinoman* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29037,7 +29037,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_DataMines_Shaman : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_DataMines_Shaman* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29052,7 +29052,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_DataMines_SkeletalArcher : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_DataMines_SkeletalArcher* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29067,7 +29067,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_DataMines_SkeletalNecromancer : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_DataMines_SkeletalNecromancer* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29082,7 +29082,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_DataMines_SkeletalPirate : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_DataMines_SkeletalPirate* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29097,7 +29097,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_DataMines_SkeletalWarrior : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_DataMines_SkeletalWarrior* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29112,7 +29112,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_DataMines_TikiGolem : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_DataMines_TikiGolem* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29127,7 +29127,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_EndianForest_Centaur : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_EndianForest_Centaur* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29142,7 +29142,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_EndianForest_Cyclops : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_EndianForest_Cyclops* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29157,7 +29157,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_EndianForest_GoblinGruntBoar : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_EndianForest_GoblinGruntBoar* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29172,7 +29172,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_EndianForest_GoblinShaman : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_EndianForest_GoblinShaman* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29187,7 +29187,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_EndianForest_GoblinWarriorPig : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_EndianForest_GoblinWarriorPig* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29202,7 +29202,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_EndianForest_Gorgon : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_EndianForest_Gorgon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29217,7 +29217,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_EndianForest_KingGrogg : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_EndianForest_KingGrogg* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29232,7 +29232,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_EndianForest_Ogre : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_EndianForest_Ogre* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29247,7 +29247,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_EndianForest_OrcBomber : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_EndianForest_OrcBomber* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29262,7 +29262,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_EndianForest_OrcGrunt : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_EndianForest_OrcGrunt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29277,7 +29277,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_EndianForest_OrcSwordsman : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_EndianForest_OrcSwordsman* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29292,7 +29292,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_EndianForest_OrcWarrior : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_EndianForest_OrcWarrior* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29307,7 +29307,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_EndianForest_Orthrus : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_EndianForest_Orthrus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29322,7 +29322,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_EndianForest_Troll : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_EndianForest_Troll* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29337,7 +29337,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_FirewallFissure_Asmodeus : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_FirewallFissure_Asmodeus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29352,7 +29352,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_FirewallFissure_DemonDragon : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_FirewallFissure_DemonDragon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29367,7 +29367,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_FirewallFissure_DemonGhost : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_FirewallFissure_DemonGhost* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29382,7 +29382,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_FirewallFissure_DemonGrunt : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_FirewallFissure_DemonGrunt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29397,7 +29397,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_FirewallFissure_DemonRogue : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_FirewallFissure_DemonRogue* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29412,7 +29412,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_FirewallFissure_DemonShaman : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_FirewallFissure_DemonShaman* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29427,7 +29427,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_FirewallFissure_DemonSwordsman : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_FirewallFissure_DemonSwordsman* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29442,7 +29442,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_FirewallFissure_DemonWarrior : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_FirewallFissure_DemonWarrior* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29457,7 +29457,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_FirewallFissure_FireElemental : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_FirewallFissure_FireElemental* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29472,7 +29472,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_FirewallFissure_FireTiger : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_FirewallFissure_FireTiger* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29487,7 +29487,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_FirewallFissure_Krampus : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_FirewallFissure_Krampus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29502,7 +29502,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_FirewallFissure_LavaGolem : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_FirewallFissure_LavaGolem* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29517,7 +29517,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_BoneFiend : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_LambdaCrypts_BoneFiend* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29532,7 +29532,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_Hunter : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_LambdaCrypts_Hunter* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29547,7 +29547,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_KingZul : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_LambdaCrypts_KingZul* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29562,7 +29562,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_Lazarus : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_LambdaCrypts_Lazarus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29577,7 +29577,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_Mystic : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_LambdaCrypts_Mystic* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29592,7 +29592,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_ReanimatedPig : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_LambdaCrypts_ReanimatedPig* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29607,7 +29607,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalCleaver : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalCleaver* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29622,7 +29622,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalKnight : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalKnight* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29637,7 +29637,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalPriestess : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_LambdaCrypts_SkeletalPriestess* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29652,7 +29652,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_Undead : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_LambdaCrypts_Undead* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29667,7 +29667,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_Zombie : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_LambdaCrypts_Zombie* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29682,7 +29682,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_LambdaCrypts_ZombieElric : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_LambdaCrypts_ZombieElric* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29697,7 +29697,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_Misc_TrainingDummy : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_Misc_TrainingDummy* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29712,7 +29712,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_UnderflowRuins_AnubisPup : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_UnderflowRuins_AnubisPup* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29727,7 +29727,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_UnderflowRuins_AnubisWarrior : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_UnderflowRuins_AnubisWarrior* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29742,7 +29742,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_UnderflowRuins_LionMan : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_UnderflowRuins_LionMan* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29757,7 +29757,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_UnderflowRuins_Lioness : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_UnderflowRuins_Lioness* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29772,7 +29772,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_UnderflowRuins_Medusa : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_UnderflowRuins_Medusa* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29787,7 +29787,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_UnderflowRuins_Mermaid : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_UnderflowRuins_Mermaid* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29802,7 +29802,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_UnderflowRuins_Minotaur : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_UnderflowRuins_Minotaur* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29817,7 +29817,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_UnderflowRuins_MummyPriest : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_UnderflowRuins_MummyPriest* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29832,7 +29832,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_UnderflowRuins_MummyWarrior : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_UnderflowRuins_MummyWarrior* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29847,7 +29847,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_UnderflowRuins_Osiris : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_UnderflowRuins_Osiris* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29862,7 +29862,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_UnderflowRuins_TigerMan : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_UnderflowRuins_TigerMan* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29877,7 +29877,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_UnderflowRuins_Tigress : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_UnderflowRuins_Tigress* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29892,7 +29892,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_VoidStar_Abomination : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_VoidStar_Abomination* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29907,7 +29907,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_VoidStar_Assassin : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_VoidStar_Assassin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29922,7 +29922,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_VoidStar_BoneKnight : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_VoidStar_BoneKnight* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29937,7 +29937,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_VoidStar_DarkTiger : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_VoidStar_DarkTiger* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29952,7 +29952,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_VoidStar_DemonArcher : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_VoidStar_DemonArcher* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29967,7 +29967,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_VoidStar_Exterminator : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_VoidStar_Exterminator* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29982,7 +29982,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_VoidStar_Gargoyle : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_VoidStar_Gargoyle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -29997,7 +29997,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_VoidStar_LightningGolem : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_VoidStar_LightningGolem* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30012,7 +30012,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_VoidStar_Perceptron : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_VoidStar_Perceptron* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30027,7 +30027,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_VoidStar_Shade : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_VoidStar_Shade* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30042,7 +30042,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_VoidStar_VoidDemon : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_VoidStar_VoidDemon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30057,7 +30057,7 @@ namespace Strings
 	class Platformer_Entities_Names_Enemies_VoidStar_Warlock : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Enemies_VoidStar_Warlock* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30072,7 +30072,7 @@ namespace Strings
 	class Platformer_Entities_Names_Helpers_BallmerPeaks_Snowman : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Helpers_BallmerPeaks_Snowman* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30087,7 +30087,7 @@ namespace Strings
 	class Platformer_Entities_Names_Helpers_BallmerPeaks_YetiBaby : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Helpers_BallmerPeaks_YetiBaby* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30102,7 +30102,7 @@ namespace Strings
 	class Platformer_Entities_Names_Helpers_CastleValgrind_Grim : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Helpers_CastleValgrind_Grim* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30117,7 +30117,7 @@ namespace Strings
 	class Platformer_Entities_Names_Helpers_CastleValgrind_Knight : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Helpers_CastleValgrind_Knight* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30132,7 +30132,7 @@ namespace Strings
 	class Platformer_Entities_Names_Helpers_DataMines_Gecky : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Helpers_DataMines_Gecky* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30147,7 +30147,7 @@ namespace Strings
 	class Platformer_Entities_Names_Helpers_EndianForest_Guano : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Helpers_EndianForest_Guano* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30162,7 +30162,7 @@ namespace Strings
 	class Platformer_Entities_Names_Helpers_EndianForest_Scrappy : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Helpers_EndianForest_Scrappy* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30177,7 +30177,7 @@ namespace Strings
 	class Platformer_Entities_Names_Helpers_FirewallFissure_CritterDemon : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Helpers_FirewallFissure_CritterDemon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30192,7 +30192,7 @@ namespace Strings
 	class Platformer_Entities_Names_Helpers_LambdaCrypts_Ghost : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Helpers_LambdaCrypts_Ghost* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30207,7 +30207,7 @@ namespace Strings
 	class Platformer_Entities_Names_Helpers_UnderflowRuins_Mummy : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Helpers_UnderflowRuins_Mummy* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30222,7 +30222,7 @@ namespace Strings
 	class Platformer_Entities_Names_Helpers_VoidStar_Robot : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Helpers_VoidStar_Robot* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30237,7 +30237,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Aspen : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_Aspen* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30252,7 +30252,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Aster : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_Aster* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30267,7 +30267,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Bodom : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_Bodom* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30282,7 +30282,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Cookie : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_Cookie* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30297,7 +30297,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Cooper : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_Cooper* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30312,7 +30312,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Jingles : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_Jingles* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30327,7 +30327,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Juniper : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_Juniper* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30342,7 +30342,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Kringle : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_Kringle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30357,7 +30357,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Luna : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_Luna* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30372,7 +30372,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Nessie : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_Nessie* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30387,7 +30387,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_PrincessPepper : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_PrincessPepper* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30402,7 +30402,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Theldar : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_Theldar* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30417,7 +30417,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_BallmerPeaks_Tinsel : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_BallmerPeaks_Tinsel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30432,7 +30432,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_CastleValgrind_Gaunt : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_CastleValgrind_Gaunt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30447,7 +30447,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_CastleValgrind_KingRedsong : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_CastleValgrind_KingRedsong* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30462,7 +30462,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_CastleValgrind_Leopold : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_CastleValgrind_Leopold* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30477,7 +30477,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_CastleValgrind_Leroy : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_CastleValgrind_Leroy* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30492,7 +30492,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_CastleValgrind_Mabel : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_CastleValgrind_Mabel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30507,7 +30507,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_CastleValgrind_Merlin : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_CastleValgrind_Merlin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30522,7 +30522,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_CastleValgrind_PrincessOpal : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_CastleValgrind_PrincessOpal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30537,7 +30537,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_CastleValgrind_Raven : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_CastleValgrind_Raven* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30552,7 +30552,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_CastleValgrind_Rogas : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_CastleValgrind_Rogas* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30567,7 +30567,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_CastleValgrind_Thurstan : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_CastleValgrind_Thurstan* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30582,7 +30582,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_CastleValgrind_Tyracius : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_CastleValgrind_Tyracius* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30597,7 +30597,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_CastleValgrind_Zana : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_CastleValgrind_Zana* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30612,7 +30612,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_DataMines_Alder : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_DataMines_Alder* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30627,7 +30627,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_DataMines_Bonnie : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_DataMines_Bonnie* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30642,7 +30642,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_DataMines_Brock : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_DataMines_Brock* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30657,7 +30657,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_DataMines_Burch : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_DataMines_Burch* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30672,7 +30672,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_DataMines_Cypress : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_DataMines_Cypress* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30687,7 +30687,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_DataMines_Fraya : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_DataMines_Fraya* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30702,7 +30702,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_DataMines_Jasper : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_DataMines_Jasper* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30717,7 +30717,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_DataMines_Mildred : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_DataMines_Mildred* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30732,7 +30732,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_DataMines_Olive : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_DataMines_Olive* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30747,7 +30747,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_DataMines_PrincessDawn : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_DataMines_PrincessDawn* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30762,7 +30762,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_DataMines_Raka : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_DataMines_Raka* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30777,7 +30777,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_DataMines_Sarude : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_DataMines_Sarude* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30792,7 +30792,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_DataMines_Shen : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_DataMines_Shen* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30807,7 +30807,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_EndianForest_Ara : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_Ara* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30822,7 +30822,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_EndianForest_Bard : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_Bard* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30837,7 +30837,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_EndianForest_Chiron : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_Chiron* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30852,7 +30852,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_EndianForest_Elriel : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_Elriel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30867,7 +30867,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_EndianForest_Gramps : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_Gramps* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30882,7 +30882,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_EndianForest_Lycan : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_Lycan* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30897,7 +30897,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_EndianForest_Marcel : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_Marcel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30912,7 +30912,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_EndianForest_Matu : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_Matu* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30927,7 +30927,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_EndianForest_Minos : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_Minos* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30942,7 +30942,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_EndianForest_Polyphemus : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_Polyphemus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30957,7 +30957,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_EndianForest_QueenLiana : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_QueenLiana* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30972,7 +30972,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_EndianForest_Robin : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_Robin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -30987,7 +30987,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_EndianForest_Toben : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_EndianForest_Toben* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31002,7 +31002,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_FirewallFissure_Ash : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_FirewallFissure_Ash* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31017,7 +31017,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_FirewallFissure_Brine : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_FirewallFissure_Brine* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31032,7 +31032,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_FirewallFissure_Celeste : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_FirewallFissure_Celeste* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31047,7 +31047,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_FirewallFissure_Cindra : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_FirewallFissure_Cindra* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31062,7 +31062,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_FirewallFissure_Hades : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_FirewallFissure_Hades* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31077,7 +31077,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_FirewallFissure_Igneus : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_FirewallFissure_Igneus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31092,7 +31092,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_FirewallFissure_Lucifer : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_FirewallFissure_Lucifer* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31107,7 +31107,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_FirewallFissure_Magnus : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_FirewallFissure_Magnus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31122,7 +31122,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_FirewallFissure_Mittens : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_FirewallFissure_Mittens* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31137,7 +31137,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_FirewallFissure_Pan : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_FirewallFissure_Pan* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31152,7 +31152,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_FirewallFissure_Ragnis : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_FirewallFissure_Ragnis* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31167,7 +31167,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_FirewallFissure_Rusty : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_FirewallFissure_Rusty* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31182,7 +31182,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_FirewallFissure_Scaldor : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_FirewallFissure_Scaldor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31197,7 +31197,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Amelia : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_Amelia* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31212,7 +31212,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Azmus : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_Azmus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31227,7 +31227,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Elric : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_Elric* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31242,7 +31242,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Garrick : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_Garrick* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31257,7 +31257,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Johann : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_Johann* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31272,7 +31272,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Necron : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_Necron* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31287,7 +31287,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_PrincessNebea : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_PrincessNebea* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31302,7 +31302,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Roger : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_Roger* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31317,7 +31317,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Thion : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_Thion* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31332,7 +31332,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Ursula : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_Ursula* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31347,7 +31347,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Vesuvius : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_Vesuvius* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31362,7 +31362,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Viper : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_Viper* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31377,7 +31377,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_LambdaCrypts_Zelina : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_LambdaCrypts_Zelina* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31392,7 +31392,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_Transition_Blackbeard : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_Transition_Blackbeard* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31407,7 +31407,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_Transition_Drak : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_Transition_Drak* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31422,7 +31422,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_Transition_Dudly : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_Transition_Dudly* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31437,7 +31437,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_Transition_Finch : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_Transition_Finch* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31452,7 +31452,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_Transition_Garin : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_Transition_Garin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31467,7 +31467,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_Transition_Irmik : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_Transition_Irmik* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31482,7 +31482,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Ajax : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_UnderflowRuins_Ajax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31497,7 +31497,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Angel : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_UnderflowRuins_Angel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31512,7 +31512,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Aphrodite : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_UnderflowRuins_Aphrodite* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31527,7 +31527,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Ares : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_UnderflowRuins_Ares* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31542,7 +31542,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Athena : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_UnderflowRuins_Athena* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31557,7 +31557,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Cleopatra : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_UnderflowRuins_Cleopatra* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31572,7 +31572,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Geryon : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_UnderflowRuins_Geryon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31587,7 +31587,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Griffin : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_UnderflowRuins_Griffin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31602,7 +31602,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Hera : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_UnderflowRuins_Hera* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31617,7 +31617,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Horus : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_UnderflowRuins_Horus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31632,7 +31632,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Poseidon : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_UnderflowRuins_Poseidon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31647,7 +31647,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Rupert : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_UnderflowRuins_Rupert* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31662,7 +31662,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Thor : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_UnderflowRuins_Thor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31677,7 +31677,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_UnderflowRuins_Zeus : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_UnderflowRuins_Zeus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31692,7 +31692,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_VoidStar_Appolo : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_VoidStar_Appolo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31707,7 +31707,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_VoidStar_Atreus : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_VoidStar_Atreus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31722,7 +31722,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_VoidStar_Bancroft : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_VoidStar_Bancroft* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31737,7 +31737,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_VoidStar_Godiva : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_VoidStar_Godiva* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31752,7 +31752,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_VoidStar_Illia : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_VoidStar_Illia* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31767,7 +31767,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_VoidStar_Leon : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_VoidStar_Leon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31782,7 +31782,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_VoidStar_Mara : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_VoidStar_Mara* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31797,7 +31797,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_VoidStar_Piper : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_VoidStar_Piper* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31812,7 +31812,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_VoidStar_QueenElise : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_VoidStar_QueenElise* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31827,7 +31827,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_VoidStar_Radon : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_VoidStar_Radon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31842,7 +31842,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_VoidStar_Ralston : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_VoidStar_Ralston* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31857,7 +31857,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_VoidStar_Thatcher : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_VoidStar_Thatcher* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31872,7 +31872,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_VoidStar_Xenon : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_VoidStar_Xenon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31887,7 +31887,7 @@ namespace Strings
 	class Platformer_Entities_Names_Npcs_VoidStar_Ysara : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Npcs_VoidStar_Ysara* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31902,7 +31902,7 @@ namespace Strings
 	class Platformer_Entities_Names_Squally : public LocalizedString
 	{
 	public:
-		static Platformer_Entities_Names_Squally* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31917,7 +31917,7 @@ namespace Strings
 	class Platformer_Help_HelpTotemAttacking : public LocalizedString
 	{
 	public:
-		static Platformer_Help_HelpTotemAttacking* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31932,7 +31932,7 @@ namespace Strings
 	class Platformer_Help_HelpTotemColdWater : public LocalizedString
 	{
 	public:
-		static Platformer_Help_HelpTotemColdWater* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31947,7 +31947,7 @@ namespace Strings
 	class Platformer_Help_HelpTotemEndOfDemo : public LocalizedString
 	{
 	public:
-		static Platformer_Help_HelpTotemEndOfDemo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31962,7 +31962,7 @@ namespace Strings
 	class Platformer_Help_HelpTotemEquipment : public LocalizedString
 	{
 	public:
-		static Platformer_Help_HelpTotemEquipment* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31977,7 +31977,7 @@ namespace Strings
 	class Platformer_Help_HelpTotemGecky : public LocalizedString
 	{
 	public:
-		static Platformer_Help_HelpTotemGecky* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -31992,7 +31992,7 @@ namespace Strings
 	class Platformer_Help_HelpTotemGrim : public LocalizedString
 	{
 	public:
-		static Platformer_Help_HelpTotemGrim* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32007,7 +32007,7 @@ namespace Strings
 	class Platformer_Help_HelpTotemGuano : public LocalizedString
 	{
 	public:
-		static Platformer_Help_HelpTotemGuano* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32022,7 +32022,7 @@ namespace Strings
 	class Platformer_Help_HelpTotemHacking : public LocalizedString
 	{
 	public:
-		static Platformer_Help_HelpTotemHacking* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32037,7 +32037,7 @@ namespace Strings
 	class Platformer_Help_HelpTotemHexusCards : public LocalizedString
 	{
 	public:
-		static Platformer_Help_HelpTotemHexusCards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32052,7 +32052,7 @@ namespace Strings
 	class Platformer_Help_HelpTotemPotions : public LocalizedString
 	{
 	public:
-		static Platformer_Help_HelpTotemPotions* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32067,7 +32067,7 @@ namespace Strings
 	class Platformer_Help_HelpTotemSwimHack : public LocalizedString
 	{
 	public:
-		static Platformer_Help_HelpTotemSwimHack* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32082,7 +32082,7 @@ namespace Strings
 	class Platformer_MapNames_BallmerPeaks_BallmerPeaks : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_BallmerPeaks_BallmerPeaks* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32097,7 +32097,7 @@ namespace Strings
 	class Platformer_MapNames_BallmerPeaks_Workshop : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_BallmerPeaks_Workshop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32112,7 +32112,7 @@ namespace Strings
 	class Platformer_MapNames_CastleValgrind_CastleValgrind : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_CastleValgrind_CastleValgrind* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32127,7 +32127,7 @@ namespace Strings
 	class Platformer_MapNames_DataMines_DataCove : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_DataMines_DataCove* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32142,7 +32142,7 @@ namespace Strings
 	class Platformer_MapNames_DataMines_DataMines : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_DataMines_DataMines* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32157,7 +32157,7 @@ namespace Strings
 	class Platformer_MapNames_DataMines_Drammol : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_DataMines_Drammol* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32172,7 +32172,7 @@ namespace Strings
 	class Platformer_MapNames_EndianForest_Elbridge : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_EndianForest_Elbridge* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32187,7 +32187,7 @@ namespace Strings
 	class Platformer_MapNames_EndianForest_EndianForest : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_EndianForest_EndianForest* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32202,7 +32202,7 @@ namespace Strings
 	class Platformer_MapNames_EndianForest_FieldsOfStrife : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_EndianForest_FieldsOfStrife* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32217,7 +32217,7 @@ namespace Strings
 	class Platformer_MapNames_EndianForest_LimestoneTemple : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_EndianForest_LimestoneTemple* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32232,7 +32232,7 @@ namespace Strings
 	class Platformer_MapNames_EndianForest_MagesGuild : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_EndianForest_MagesGuild* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32247,7 +32247,7 @@ namespace Strings
 	class Platformer_MapNames_EndianForest_MagesPrison : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_EndianForest_MagesPrison* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32262,7 +32262,7 @@ namespace Strings
 	class Platformer_MapNames_EndianForest_SullenForest : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_EndianForest_SullenForest* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32277,7 +32277,7 @@ namespace Strings
 	class Platformer_MapNames_FirewallFissure_Brimstone : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_FirewallFissure_Brimstone* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32292,7 +32292,7 @@ namespace Strings
 	class Platformer_MapNames_FirewallFissure_FirewallFissure : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_FirewallFissure_FirewallFissure* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32307,7 +32307,7 @@ namespace Strings
 	class Platformer_MapNames_LambdaCrypts_GraveFlower : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_LambdaCrypts_GraveFlower* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32322,7 +32322,7 @@ namespace Strings
 	class Platformer_MapNames_LambdaCrypts_LambdaCrypts : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_LambdaCrypts_LambdaCrypts* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32337,7 +32337,7 @@ namespace Strings
 	class Platformer_MapNames_LambdaCrypts_ValleyOfAsh : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_LambdaCrypts_ValleyOfAsh* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32352,7 +32352,7 @@ namespace Strings
 	class Platformer_MapNames_PerilousSea_PerilousSea : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_PerilousSea_PerilousSea* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32367,7 +32367,7 @@ namespace Strings
 	class Platformer_MapNames_UnderflowRuins_Athens : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_UnderflowRuins_Athens* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32382,7 +32382,7 @@ namespace Strings
 	class Platformer_MapNames_UnderflowRuins_LionsCistern : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_UnderflowRuins_LionsCistern* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32397,7 +32397,7 @@ namespace Strings
 	class Platformer_MapNames_UnderflowRuins_PyramidPass : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_UnderflowRuins_PyramidPass* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32412,7 +32412,7 @@ namespace Strings
 	class Platformer_MapNames_UnderflowRuins_SkysReach : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_UnderflowRuins_SkysReach* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32427,7 +32427,7 @@ namespace Strings
 	class Platformer_MapNames_UnderflowRuins_UnderflowRuins : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_UnderflowRuins_UnderflowRuins* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32442,7 +32442,7 @@ namespace Strings
 	class Platformer_MapNames_VoidStar_VoidStar : public LocalizedString
 	{
 	public:
-		static Platformer_MapNames_VoidStar_VoidStar* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32457,7 +32457,7 @@ namespace Strings
 	class Platformer_Notifications_ItemCrafted : public LocalizedString
 	{
 	public:
-		static Platformer_Notifications_ItemCrafted* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32472,7 +32472,7 @@ namespace Strings
 	class Platformer_Notifications_ItemFound : public LocalizedString
 	{
 	public:
-		static Platformer_Notifications_ItemFound* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32487,7 +32487,7 @@ namespace Strings
 	class Platformer_Notifications_ItemWon : public LocalizedString
 	{
 	public:
-		static Platformer_Notifications_ItemWon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32502,7 +32502,7 @@ namespace Strings
 	class Platformer_Notifications_MaterialsRecovered : public LocalizedString
 	{
 	public:
-		static Platformer_Notifications_MaterialsRecovered* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32517,7 +32517,7 @@ namespace Strings
 	class Platformer_Notifications_Party_HelperJoinedParty : public LocalizedString
 	{
 	public:
-		static Platformer_Notifications_Party_HelperJoinedParty* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32532,7 +32532,7 @@ namespace Strings
 	class Platformer_Objectives_CastleValgrind_CV_DefeatAgnes : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_CastleValgrind_CV_DefeatAgnes* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32547,7 +32547,7 @@ namespace Strings
 	class Platformer_Objectives_CastleValgrind_CV_DefeatSpirits : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_CastleValgrind_CV_DefeatSpirits* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32562,7 +32562,7 @@ namespace Strings
 	class Platformer_Objectives_CastleValgrind_CV_EnterCastle : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_CastleValgrind_CV_EnterCastle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32577,7 +32577,7 @@ namespace Strings
 	class Platformer_Objectives_CastleValgrind_CV_EnterClock : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_CastleValgrind_CV_EnterClock* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32592,7 +32592,7 @@ namespace Strings
 	class Platformer_Objectives_CastleValgrind_CV_EnterLambdaCrypts : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_CastleValgrind_CV_EnterLambdaCrypts* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32607,7 +32607,7 @@ namespace Strings
 	class Platformer_Objectives_CastleValgrind_CV_ExploreDarkSide : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_CastleValgrind_CV_ExploreDarkSide* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32622,7 +32622,7 @@ namespace Strings
 	class Platformer_Objectives_CastleValgrind_CV_ExploreSecretTunnel : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_CastleValgrind_CV_ExploreSecretTunnel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32637,7 +32637,7 @@ namespace Strings
 	class Platformer_Objectives_CastleValgrind_CV_InvestigateCastle : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_CastleValgrind_CV_InvestigateCastle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32652,7 +32652,7 @@ namespace Strings
 	class Platformer_Objectives_CastleValgrind_CV_InvestigateClock : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_CastleValgrind_CV_InvestigateClock* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32667,7 +32667,7 @@ namespace Strings
 	class Platformer_Objectives_CastleValgrind_CV_RepairClock : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_CastleValgrind_CV_RepairClock* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32682,7 +32682,7 @@ namespace Strings
 	class Platformer_Objectives_CastleValgrind_CV_ReturnToMabel : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_CastleValgrind_CV_ReturnToMabel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32697,7 +32697,7 @@ namespace Strings
 	class Platformer_Objectives_CastleValgrind_CV_TakeArcaneBook : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_CastleValgrind_CV_TakeArcaneBook* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32712,7 +32712,7 @@ namespace Strings
 	class Platformer_Objectives_DataMines_DM_DeliverLetter : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_DataMines_DM_DeliverLetter* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32727,7 +32727,7 @@ namespace Strings
 	class Platformer_Objectives_DataMines_DM_InvestigatePowerOutage : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_DataMines_DM_InvestigatePowerOutage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32742,7 +32742,7 @@ namespace Strings
 	class Platformer_Objectives_DataMines_DM_ObtainTrainTicket : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_DataMines_DM_ObtainTrainTicket* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32757,7 +32757,7 @@ namespace Strings
 	class Platformer_Objectives_DataMines_DM_RestorePower : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_DataMines_DM_RestorePower* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32772,7 +32772,7 @@ namespace Strings
 	class Platformer_Objectives_DataMines_DM_ReturnToPrincessDawn : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_DataMines_DM_ReturnToPrincessDawn* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32787,7 +32787,7 @@ namespace Strings
 	class Platformer_Objectives_DataMines_DM_RideTrainToCastleValgrind : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_DataMines_DM_RideTrainToCastleValgrind* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32802,7 +32802,7 @@ namespace Strings
 	class Platformer_Objectives_DataMines_DM_SailToDrammol : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_DataMines_DM_SailToDrammol* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32817,7 +32817,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_Ambush : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_Ambush* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32832,7 +32832,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_BeatGauntlet : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_BeatGauntlet* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32847,7 +32847,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_BeatSarude : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_BeatSarude* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32862,7 +32862,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_ConfrontCommander : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_ConfrontCommander* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32877,7 +32877,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_ExploreMagesGuild : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_ExploreMagesGuild* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32892,7 +32892,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_ExplorePrison : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_ExplorePrison* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32907,7 +32907,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_FindAShip : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_FindAShip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32922,7 +32922,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_FindElriel : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_FindElriel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32937,7 +32937,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_HeadNorth : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_HeadNorth* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32952,7 +32952,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_HeadToTown : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_HeadToTown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32967,7 +32967,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_RepairRam : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_RepairRam* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32982,7 +32982,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_RescueGuano : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_RescueGuano* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -32997,7 +32997,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_ReturnToQueen : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_ReturnToQueen* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33012,7 +33012,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_ReturnToQueenAgain : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_ReturnToQueenAgain* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33027,7 +33027,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_SailForUR : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_SailForUR* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33042,7 +33042,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_SearchTemple : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_SearchTemple* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33057,7 +33057,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_SneakIntoTown : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_SneakIntoTown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33072,7 +33072,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_TalkToSarude : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_TalkToSarude* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33087,7 +33087,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_VisitMarcel : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_VisitMarcel* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33102,7 +33102,7 @@ namespace Strings
 	class Platformer_Objectives_EndianForest_EF_VisitQueen : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_EndianForest_EF_VisitQueen* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33117,7 +33117,7 @@ namespace Strings
 	class Platformer_Objectives_FirewallFissure_FF_AscendVolcano : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_FirewallFissure_FF_AscendVolcano* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33132,7 +33132,7 @@ namespace Strings
 	class Platformer_Objectives_FirewallFissure_FF_CraftBomb : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_FirewallFissure_FF_CraftBomb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33147,7 +33147,7 @@ namespace Strings
 	class Platformer_Objectives_FirewallFissure_FF_DeliverBomb : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_FirewallFissure_FF_DeliverBomb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33162,7 +33162,7 @@ namespace Strings
 	class Platformer_Objectives_FirewallFissure_FF_EnterTown : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_FirewallFissure_FF_EnterTown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33177,7 +33177,7 @@ namespace Strings
 	class Platformer_Objectives_FirewallFissure_FF_Explore : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_FirewallFissure_FF_Explore* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33192,7 +33192,7 @@ namespace Strings
 	class Platformer_Objectives_FirewallFissure_FF_FindAsmodeus : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_FirewallFissure_FF_FindAsmodeus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33207,7 +33207,7 @@ namespace Strings
 	class Platformer_Objectives_FirewallFissure_FF_LaunchBomb : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_FirewallFissure_FF_LaunchBomb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33222,7 +33222,7 @@ namespace Strings
 	class Platformer_Objectives_LambdaCrypts_LC_CraftDemonHeart : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_LambdaCrypts_LC_CraftDemonHeart* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33237,7 +33237,7 @@ namespace Strings
 	class Platformer_Objectives_LambdaCrypts_LC_EnterGreaterCrypt : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_LambdaCrypts_LC_EnterGreaterCrypt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33252,7 +33252,7 @@ namespace Strings
 	class Platformer_Objectives_LambdaCrypts_LC_EnterLesserCrypt : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_LambdaCrypts_LC_EnterLesserCrypt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33267,7 +33267,7 @@ namespace Strings
 	class Platformer_Objectives_LambdaCrypts_LC_ExploreGreaterCrypt : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_LambdaCrypts_LC_ExploreGreaterCrypt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33282,7 +33282,7 @@ namespace Strings
 	class Platformer_Objectives_LambdaCrypts_LC_ExploreLesserCrypt : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_LambdaCrypts_LC_ExploreLesserCrypt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33297,7 +33297,7 @@ namespace Strings
 	class Platformer_Objectives_LambdaCrypts_LC_FindGems : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_LambdaCrypts_LC_FindGems* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33312,7 +33312,7 @@ namespace Strings
 	class Platformer_Objectives_LambdaCrypts_LC_OpenDemonPortal : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_LambdaCrypts_LC_OpenDemonPortal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33327,7 +33327,7 @@ namespace Strings
 	class Platformer_Objectives_LambdaCrypts_LC_ReturnToElric : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_LambdaCrypts_LC_ReturnToElric* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33342,7 +33342,7 @@ namespace Strings
 	class Platformer_Objectives_LambdaCrypts_LC_SeekAmelia : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_LambdaCrypts_LC_SeekAmelia* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33357,7 +33357,7 @@ namespace Strings
 	class Platformer_Objectives_LambdaCrypts_LC_TalkToNebea : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_LambdaCrypts_LC_TalkToNebea* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33372,7 +33372,7 @@ namespace Strings
 	class Platformer_Objectives_Objective : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_Objective* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33387,7 +33387,7 @@ namespace Strings
 	class Platformer_Objectives_UnderflowRuins_UR_CrossBridge : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_UnderflowRuins_UR_CrossBridge* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33402,7 +33402,7 @@ namespace Strings
 	class Platformer_Objectives_UnderflowRuins_UR_CureTownspeople : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_UnderflowRuins_UR_CureTownspeople* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33417,7 +33417,7 @@ namespace Strings
 	class Platformer_Objectives_UnderflowRuins_UR_EnterTheMines : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_UnderflowRuins_UR_EnterTheMines* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33432,7 +33432,7 @@ namespace Strings
 	class Platformer_Objectives_UnderflowRuins_UR_ExploreFountain : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_UnderflowRuins_UR_ExploreFountain* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33447,7 +33447,7 @@ namespace Strings
 	class Platformer_Objectives_UnderflowRuins_UR_FindMineEntrance : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_UnderflowRuins_UR_FindMineEntrance* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33462,7 +33462,7 @@ namespace Strings
 	class Platformer_Objectives_UnderflowRuins_UR_HeadToTown : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_UnderflowRuins_UR_HeadToTown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33477,7 +33477,7 @@ namespace Strings
 	class Platformer_Objectives_UnderflowRuins_UR_LightTorches : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_UnderflowRuins_UR_LightTorches* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33492,7 +33492,7 @@ namespace Strings
 	class Platformer_Objectives_UnderflowRuins_UR_LookForSurvivors : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_UnderflowRuins_UR_LookForSurvivors* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33507,7 +33507,7 @@ namespace Strings
 	class Platformer_Objectives_UnderflowRuins_UR_ReturnToHera : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_UnderflowRuins_UR_ReturnToHera* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33522,7 +33522,7 @@ namespace Strings
 	class Platformer_Objectives_UnderflowRuins_UR_SearchCistern : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_UnderflowRuins_UR_SearchCistern* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33537,7 +33537,7 @@ namespace Strings
 	class Platformer_Objectives_UnderflowRuins_UR_SlayMedusa : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_UnderflowRuins_UR_SlayMedusa* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33552,7 +33552,7 @@ namespace Strings
 	class Platformer_Objectives_UnderflowRuins_UR_SolvePuzzle : public LocalizedString
 	{
 	public:
-		static Platformer_Objectives_UnderflowRuins_UR_SolvePuzzle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33567,7 +33567,7 @@ namespace Strings
 	class Platformer_Objects_Doors_Broken : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Doors_Broken* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33582,7 +33582,7 @@ namespace Strings
 	class Platformer_Objects_Doors_Closed : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Doors_Closed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33597,7 +33597,7 @@ namespace Strings
 	class Platformer_Objects_Doors_ClosedBusinessHours : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Doors_ClosedBusinessHours* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33612,7 +33612,7 @@ namespace Strings
 	class Platformer_Objects_Doors_Locked : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Doors_Locked* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33627,7 +33627,7 @@ namespace Strings
 	class Platformer_Objects_Doors_Repairable : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Doors_Repairable* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33642,7 +33642,7 @@ namespace Strings
 	class Platformer_Objects_Doors_Unlock : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Doors_Unlock* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33657,7 +33657,7 @@ namespace Strings
 	class Platformer_Objects_GlassCase_Clue : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_GlassCase_Clue* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33672,7 +33672,7 @@ namespace Strings
 	class Platformer_Objects_GlassCase_GlassCaseGrouped : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_GlassCase_GlassCaseGrouped* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33687,7 +33687,7 @@ namespace Strings
 	class Platformer_Objects_GlassCase_GlassCaseLocked : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_GlassCase_GlassCaseLocked* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33702,7 +33702,7 @@ namespace Strings
 	class Platformer_Objects_GlassCase_InspectItem : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_GlassCase_InspectItem* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33717,7 +33717,7 @@ namespace Strings
 	class Platformer_Objects_Interaction_Enter : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Interaction_Enter* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33732,7 +33732,7 @@ namespace Strings
 	class Platformer_Objects_Interaction_Open : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Interaction_Open* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33747,7 +33747,7 @@ namespace Strings
 	class Platformer_Objects_Interaction_OperationPop : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Interaction_OperationPop* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33762,7 +33762,7 @@ namespace Strings
 	class Platformer_Objects_Interaction_OperationPush : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Interaction_OperationPush* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33777,7 +33777,7 @@ namespace Strings
 	class Platformer_Objects_Interaction_Pull : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Interaction_Pull* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33792,7 +33792,7 @@ namespace Strings
 	class Platformer_Objects_Interaction_Push : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Interaction_Push* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33807,7 +33807,7 @@ namespace Strings
 	class Platformer_Objects_Warps_Back : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Warps_Back* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33822,7 +33822,7 @@ namespace Strings
 	class Platformer_Objects_Warps_Front : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Warps_Front* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33837,7 +33837,7 @@ namespace Strings
 	class Platformer_Objects_Warps_Middle : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Warps_Middle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33852,7 +33852,7 @@ namespace Strings
 	class Platformer_Objects_Warps_WhereTo : public LocalizedString
 	{
 	public:
-		static Platformer_Objects_Warps_WhereTo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33867,7 +33867,7 @@ namespace Strings
 	class Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToCastle : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToCastle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33882,7 +33882,7 @@ namespace Strings
 	class Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToPeaks : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_CanWeBoardToPeaks* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33897,7 +33897,7 @@ namespace Strings
 	class Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Yep : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_BallmerPeaks_SkyShipToPeaks_Irmik_Yep* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33912,7 +33912,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Agnes_A_Guests : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Agnes_A_Guests* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33927,7 +33927,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Agnes_B_StayingLong : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Agnes_B_StayingLong* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33942,7 +33942,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Grim_A_HelpYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Grim_A_HelpYou* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33957,7 +33957,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Grim_B_Translation : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Grim_B_Translation* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33972,7 +33972,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Grim_C_Gecky_Later : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Grim_C_Gecky_Later* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -33987,7 +33987,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Grim_C_Guano_Later : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Grim_C_Guano_Later* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34002,7 +34002,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_KingRedsong_A_ThankYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_KingRedsong_A_ThankYou* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34017,7 +34017,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_KingRedsong_B_TheWitch : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_KingRedsong_B_TheWitch* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34032,7 +34032,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_KingRedsong_C_Generic : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_KingRedsong_C_Generic* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34047,7 +34047,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_KingRedsong_C_GuanoFireGuards : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_KingRedsong_C_GuanoFireGuards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34062,7 +34062,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_KingRedsong_D_CanWeEnterCrypts : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_KingRedsong_D_CanWeEnterCrypts* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34077,7 +34077,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_KingRedsong_E_OfCourse : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_KingRedsong_E_OfCourse* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34092,7 +34092,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Mabel_A_Ack : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Mabel_A_Ack* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34107,7 +34107,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Mabel_B_TellMeYouSawThat : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Mabel_B_TellMeYouSawThat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34122,7 +34122,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Mabel_C_WentThroughTheClock : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Mabel_C_WentThroughTheClock* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34137,7 +34137,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Mabel_D_Gecky : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Mabel_D_Gecky* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34152,7 +34152,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Mabel_D_Guano : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Mabel_D_Guano* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34167,7 +34167,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Mabel_E_ClockSpecial : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Mabel_E_ClockSpecial* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34182,7 +34182,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Mabel_F_BrokenClock : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Mabel_F_BrokenClock* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34197,7 +34197,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Mabel_Q_Remaining : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Mabel_Q_Remaining* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34212,7 +34212,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Mabel_V_ThankYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Mabel_V_ThankYou* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34227,7 +34227,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_CureKing_Mabel_W_TakeArcaneBook : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_CureKing_Mabel_W_TakeArcaneBook* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34242,7 +34242,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToCastle : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToCastle* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34257,7 +34257,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToTown : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToTown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34272,7 +34272,7 @@ namespace Strings
 	class Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_Yep : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_Yep* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34287,7 +34287,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34302,7 +34302,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Bancroft_A_CanWeBoard : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Bancroft_A_CanWeBoard* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34317,7 +34317,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Bancroft_B_Nope : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Bancroft_B_Nope* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34332,7 +34332,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Bancroft_C_WhereCanWeGetOne : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Bancroft_C_WhereCanWeGetOne* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34347,7 +34347,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Bancroft_D_SoldOut : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Bancroft_D_SoldOut* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34362,7 +34362,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Bancroft_E_AnythingWeCanDo : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Bancroft_E_AnythingWeCanDo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34377,7 +34377,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Bancroft_F_AskQueen : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Bancroft_F_AskQueen* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34392,7 +34392,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Bancroft_Q_Yep : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Bancroft_Q_Yep* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34407,7 +34407,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Gecky_A_Hi : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Gecky_A_Hi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34422,7 +34422,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Krampus_A_Intruders : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Krampus_A_Intruders* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34437,7 +34437,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Olive_A_OliveIntro : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Olive_A_OliveIntro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34452,7 +34452,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Olive_B_Power : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Olive_B_Power* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34467,7 +34467,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Olive_C_SeenAnythingUnusual : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Olive_C_SeenAnythingUnusual* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34482,7 +34482,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Olive_D_UnusualList : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Olive_D_UnusualList* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34497,7 +34497,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Olive_E_NothingExplainingOutage : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Olive_E_NothingExplainingOutage* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34512,7 +34512,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Olive_F_Request : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Olive_F_Request* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34527,7 +34527,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Olive_G_SureForAPrice : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Olive_G_SureForAPrice* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34542,7 +34542,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Olive_H_WeWillDoIt : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Olive_H_WeWillDoIt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34557,7 +34557,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Olive_I_ThankYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Olive_I_ThankYou* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34572,7 +34572,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_Olive_J_WasntJoking : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_Olive_J_WasntJoking* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34587,7 +34587,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_A_LetterForYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_A_LetterForYou* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34602,7 +34602,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_B_ThankYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_B_ThankYou* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34617,7 +34617,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_C_CouldNotFindCause : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_C_CouldNotFindCause* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34632,7 +34632,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_D_WithoutPower : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_D_WithoutPower* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34647,7 +34647,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_E_InvestigateCause : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_E_InvestigateCause* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34662,7 +34662,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_F_Nope : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_F_Nope* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34677,7 +34677,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_G_OfCourse : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_G_OfCourse* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34692,7 +34692,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_H_TakeGecky : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_H_TakeGecky* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34707,7 +34707,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_I_Hi : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_I_Hi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34722,7 +34722,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_J_WelcomeToTheCrew : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_J_WelcomeToTheCrew* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34737,7 +34737,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_K_ImOut : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_K_ImOut* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34752,7 +34752,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_Q_PowerRestoredThankYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_Q_PowerRestoredThankYou* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34767,7 +34767,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_R_TakeTrainTicket : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_R_TakeTrainTicket* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34782,7 +34782,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_RestorePower_PrincessDawn_S_DontForgetBlacksmith : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_RestorePower_PrincessDawn_S_DontForgetBlacksmith* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34797,7 +34797,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_StackPuzzle_A_DoYouKnowHowToOpenDoor : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_StackPuzzle_A_DoYouKnowHowToOpenDoor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34812,7 +34812,7 @@ namespace Strings
 	class Platformer_Quests_DataMines_StackPuzzle_B_NumbersMatch : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_DataMines_StackPuzzle_B_NumbersMatch* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34827,7 +34827,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Bard_A_WhereAreDocks* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34842,7 +34842,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Bard_B_RightButTalkToQueen : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Bard_B_RightButTalkToQueen* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34857,7 +34857,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Chiron_A_CantLeaveTown : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Chiron_A_CantLeaveTown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34872,7 +34872,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Chiron_G_TempleDoor : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Chiron_G_TempleDoor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34887,7 +34887,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Elriel_A_GratefulYouAreHere : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Elriel_A_GratefulYouAreHere* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34902,7 +34902,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Elriel_B_AliveAndWell : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Elriel_B_AliveAndWell* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34917,7 +34917,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Elriel_C_MeetMeInTown : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Elriel_C_MeetMeInTown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34932,7 +34932,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Grogg_A_WhoDares : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Grogg_A_WhoDares* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34947,7 +34947,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Grogg_B_RescueElf : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Grogg_B_RescueElf* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34962,7 +34962,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Grogg_C_SpreadForcesThin : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Grogg_C_SpreadForcesThin* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34977,7 +34977,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Grogg_D_MarchesTowards : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Grogg_D_MarchesTowards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -34992,7 +34992,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Lianna_A_HowDoWeGetToTheRuins : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_A_HowDoWeGetToTheRuins* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35007,7 +35007,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Lianna_B_HowDareYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_B_HowDareYou* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35022,7 +35022,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Lianna_C_NobodyLeavesUntil : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_C_NobodyLeavesUntil* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35037,7 +35037,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Lianna_D_WhatIfWeHelp : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_D_WhatIfWeHelp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35052,7 +35052,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Lianna_E_YouWouldHelp : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_E_YouWouldHelp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35067,7 +35067,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Lianna_F_OrderMyGuards : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_F_OrderMyGuards* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35082,7 +35082,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Lianna_L_WhereIsOurReward : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_L_WhereIsOurReward* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35097,7 +35097,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Lianna_M_ThankYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_M_ThankYou* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35112,7 +35112,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Lianna_N_However : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_N_However* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35127,7 +35127,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Lianna_O_WhatDoYouMean : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_O_WhatDoYouMean* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35142,7 +35142,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Lianna_P_MoreOrcs : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_P_MoreOrcs* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35157,7 +35157,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Lianna_Q_NoChoice : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_Q_NoChoice* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35172,7 +35172,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Lianna_R_Ships : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_R_Ships* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35187,7 +35187,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Lianna_S_VisitShops : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lianna_S_VisitShops* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35202,7 +35202,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Lycan_A_Tired : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Lycan_A_Tired* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35217,7 +35217,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_FindElriel_Scrappy_A_LetsFindABoat : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_FindElriel_Scrappy_A_LetsFindABoat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35232,7 +35232,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_ComeToLearn : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_ComeToLearn* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35247,7 +35247,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_A_WelcomeToMagesGuild : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_A_WelcomeToMagesGuild* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35262,7 +35262,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_B_BroadcastedAndSent : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_B_BroadcastedAndSent* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35277,7 +35277,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Marcel_C_SpeakToSarude : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Marcel_C_SpeakToSarude* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35292,7 +35292,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_A_CallForHelp : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_A_CallForHelp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35307,7 +35307,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_B_DoYouRemember : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_B_DoYouRemember* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35322,7 +35322,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_C_IThoughtNot : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_C_IThoughtNot* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35337,7 +35337,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_D_YouNeedTraining : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_D_YouNeedTraining* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35352,7 +35352,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_E_ToBeginYouMustLearnHexus : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_E_ToBeginYouMustLearnHexus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35367,7 +35367,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_F_HexusIsAGameWhere : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_F_HexusIsAGameWhere* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35382,7 +35382,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_G_WhoeverMastersHexus : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_G_WhoeverMastersHexus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35397,7 +35397,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_H_PortalToGauntlet : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_H_PortalToGauntlet* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35412,7 +35412,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_K_IChallengeYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_K_IChallengeYou* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35427,7 +35427,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_M_ValliantEffort : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_M_ValliantEffort* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35442,7 +35442,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_M_WellDone : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_M_WellDone* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35457,7 +35457,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_N_WeBroughtYouHere : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_N_WeBroughtYouHere* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35472,7 +35472,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_O_CompleteYourTraining : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_O_CompleteYourTraining* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35487,7 +35487,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_P_LearnMoreOfTheseMonsters : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_P_LearnMoreOfTheseMonsters* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35502,7 +35502,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_ReadyToStart : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_ReadyToStart* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35517,7 +35517,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_WeAcceptYourChallengeSkip : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_Sarude_WeAcceptYourChallengeSkip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35532,7 +35532,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_HexusGauntlet_TeachMeHexus : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_HexusGauntlet_TeachMeHexus* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35547,7 +35547,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_Intro_A_YoureAlive : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_A_YoureAlive* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35562,7 +35562,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_Intro_B_DistressBeacon : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_B_DistressBeacon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35577,7 +35577,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_Intro_C_GetYouPatched : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_C_GetYouPatched* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35592,7 +35592,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_Intro_D_TrapAhead : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_D_TrapAhead* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35607,7 +35607,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_Intro_E_TrainingDummySpotted : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_E_TrainingDummySpotted* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35622,7 +35622,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_Intro_F_OrcGruntSpotted : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_F_OrcGruntSpotted* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35637,7 +35637,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_Intro_G_HackerModeCombat : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Intro_G_HackerModeCombat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35652,7 +35652,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_Misc_Jasper_A_Clever : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Misc_Jasper_A_Clever* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35667,7 +35667,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35682,7 +35682,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_RescueGuano_A_GetMeOutOfHere : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_RescueGuano_A_GetMeOutOfHere* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35697,7 +35697,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_RescueGuano_Alder_A_TrollInTheDungeon : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_RescueGuano_Alder_A_TrollInTheDungeon* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35712,7 +35712,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_RescueGuano_B_WhatGotMeInHere : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_RescueGuano_B_WhatGotMeInHere* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35727,7 +35727,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_RescueGuano_C_WeShouldHelpHim : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_RescueGuano_C_WeShouldHelpHim* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35742,7 +35742,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_RescueGuano_D_DoorTech : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_RescueGuano_D_DoorTech* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35757,7 +35757,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_RescueGuano_E_Freedom : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_RescueGuano_E_Freedom* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35772,7 +35772,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_RescueGuano_F_NotMuchOfAFighter : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_RescueGuano_F_NotMuchOfAFighter* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35787,7 +35787,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_RescueGuano_G_HelpYouFindThings : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_RescueGuano_G_HelpYouFindThings* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35802,7 +35802,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SailForRuins_BlackBeard_Aye : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SailForRuins_BlackBeard_Aye* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35817,7 +35817,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SailForRuins_BlackBeard_CanWeBoard : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SailForRuins_BlackBeard_CanWeBoard* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35832,7 +35832,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SailForRuins_BlackBeard_Nay : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SailForRuins_BlackBeard_Nay* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35847,7 +35847,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SaveTown_Ara_A_Illusion : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SaveTown_Ara_A_Illusion* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35862,7 +35862,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SaveTown_Ara_B_Hide : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SaveTown_Ara_B_Hide* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35877,7 +35877,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SaveTown_Ara_C_TakeItems : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SaveTown_Ara_C_TakeItems* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35892,7 +35892,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SaveTown_Ara_H_HelpUs : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SaveTown_Ara_H_HelpUs* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35907,7 +35907,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SaveTown_Ara_I_Nope : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SaveTown_Ara_I_Nope* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35922,7 +35922,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SaveTown_Gorgon_A_MeSmash : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SaveTown_Gorgon_A_MeSmash* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35937,7 +35937,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SaveTown_Return_A_CanWeLeave : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SaveTown_Return_A_CanWeLeave* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35952,7 +35952,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SaveTown_Return_B_Yes : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SaveTown_Return_B_Yes* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35967,7 +35967,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SaveTown_Sarude_A_YouMadeIt : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SaveTown_Sarude_A_YouMadeIt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35982,7 +35982,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SaveTown_Sarude_B_WhatsThePlan : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SaveTown_Sarude_B_WhatsThePlan* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -35997,7 +35997,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SaveTown_Sarude_C_Infiltrate : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SaveTown_Sarude_C_Infiltrate* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36012,7 +36012,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SaveTown_Sarude_D_GoNow : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SaveTown_Sarude_D_GoNow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36027,7 +36027,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SaveTown_Sarude_H_ThanksBruh : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SaveTown_Sarude_H_ThanksBruh* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36042,7 +36042,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SaveTown_Scrappy_A_RepairRam : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SaveTown_Scrappy_A_RepairRam* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36057,7 +36057,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36072,7 +36072,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36087,7 +36087,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Nope : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Nope* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36102,7 +36102,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Yep : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Yep* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36117,7 +36117,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_WaterSpellbook_Merlin_A_ThankYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_WaterSpellbook_Merlin_A_ThankYou* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36132,7 +36132,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_WaterSpellbook_Merlin_B_GraspPowers : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_WaterSpellbook_Merlin_B_GraspPowers* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36147,7 +36147,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_WaterSpellbook_Merlin_C_GrantBlessing : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_WaterSpellbook_Merlin_C_GrantBlessing* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36162,7 +36162,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_WaterSpellbook_Merlin_D_UseYourPowers : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_WaterSpellbook_Merlin_D_UseYourPowers* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36177,7 +36177,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_WindSpellbook_Marcel_A_GoodUse : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_WindSpellbook_Marcel_A_GoodUse* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36192,7 +36192,7 @@ namespace Strings
 	class Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36207,7 +36207,7 @@ namespace Strings
 	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_A_HowToLeaveVolcano : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_A_HowToLeaveVolcano* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36222,7 +36222,7 @@ namespace Strings
 	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_B_AsmodeusBlocking : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_B_AsmodeusBlocking* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36237,7 +36237,7 @@ namespace Strings
 	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_C_CraftABomb : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_C_CraftABomb* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36252,7 +36252,7 @@ namespace Strings
 	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_D_GoToAlchLab : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_D_GoToAlchLab* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36267,7 +36267,7 @@ namespace Strings
 	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_E_Acknowledged : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_E_Acknowledged* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36282,7 +36282,7 @@ namespace Strings
 	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_Scaldor_A_BombReady : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_FirewallFissure_DefeatAsmodeus_Scaldor_A_BombReady* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36297,7 +36297,7 @@ namespace Strings
 	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_Scaldor_A_CraftBombPls : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_FirewallFissure_DefeatAsmodeus_Scaldor_A_CraftBombPls* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36312,7 +36312,7 @@ namespace Strings
 	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_Scaldor_B_Excellent : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_FirewallFissure_DefeatAsmodeus_Scaldor_B_Excellent* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36327,7 +36327,7 @@ namespace Strings
 	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_Scaldor_C_WeDidIt : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_FirewallFissure_DefeatAsmodeus_Scaldor_C_WeDidIt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36342,7 +36342,7 @@ namespace Strings
 	class Platformer_Quests_FirewallFissure_ReleasePressure_A_DoYouHearThat : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_FirewallFissure_ReleasePressure_A_DoYouHearThat* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36357,7 +36357,7 @@ namespace Strings
 	class Platformer_Quests_FirewallFissure_ReleasePressure_B_SeismicActivity : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_FirewallFissure_ReleasePressure_B_SeismicActivity* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36372,7 +36372,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_A_CraftDemonHeart : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_A_CraftDemonHeart* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36387,7 +36387,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_A_Bitten : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_A_Bitten* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36402,7 +36402,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_NothingCanBeDone : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_B_NothingCanBeDone* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36417,7 +36417,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NoCure : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_C_NoCure* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36432,7 +36432,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_SeeNebea : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_SeeNebea* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36447,7 +36447,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_A_Travelers : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_A_Travelers* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36462,7 +36462,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_What : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_B_What* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36477,7 +36477,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_C_Bitten : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_C_Bitten* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36492,7 +36492,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_D_SeekHelp : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_D_SeekHelp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36507,7 +36507,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Gecky_Ok : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Gecky_Ok* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36522,7 +36522,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Guano_PickHisPockets : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_E_Guano_PickHisPockets* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36537,7 +36537,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_A_ElricIsDying : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_A_ElricIsDying* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36552,7 +36552,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_B_ElricsMission : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_B_ElricsMission* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36567,7 +36567,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_C_TakeKeyFromCorpse : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_C_TakeKeyFromCorpse* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36582,7 +36582,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_HellCrystalPurpose : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_HellCrystalPurpose* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36597,7 +36597,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Gecky_Oh : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Gecky_Oh* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36612,7 +36612,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Guano_Brutal : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Guano_Brutal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36627,7 +36627,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_EnterCrypts_Perceptron_A_FoundYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_EnterCrypts_Perceptron_A_FoundYou* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36642,7 +36642,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_EnterCrypts_Scrappy_A_DangerDanger : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_EnterCrypts_Scrappy_A_DangerDanger* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36657,7 +36657,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems1 : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36672,7 +36672,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems2 : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36687,7 +36687,7 @@ namespace Strings
 	class Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems3 : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems3* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36702,7 +36702,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_A_NewChallengersApproach : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_A_NewChallengersApproach* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36717,7 +36717,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_B_WellDone : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_B_WellDone* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36732,7 +36732,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_C_TakeThis : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_C_TakeThis* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36747,7 +36747,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_D_BestOfLuck : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_D_BestOfLuck* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36762,7 +36762,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt1 : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt1* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36777,7 +36777,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt2 : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt2* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36792,7 +36792,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Ajax_A_HeyCoolStatue : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Ajax_A_HeyCoolStatue* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36807,7 +36807,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Ajax_B_MoreStatues : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Ajax_B_MoreStatues* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36822,7 +36822,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Ajax_C_DarkMagic : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Ajax_C_DarkMagic* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36837,7 +36837,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Ajax_D_SearchForClues : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Ajax_D_SearchForClues* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36852,7 +36852,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Ajax_M_RaiseBridge : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Ajax_M_RaiseBridge* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36867,7 +36867,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Ajax_Y_RemainingTownspeople : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Ajax_Y_RemainingTownspeople* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36882,7 +36882,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Ajax_Z_SpeakToHera : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Ajax_Z_SpeakToHera* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36897,7 +36897,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_A_Greetings : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_A_Greetings* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36912,7 +36912,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_B_WhichWayToTown : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_B_WhichWayToTown* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36927,7 +36927,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_C_HeadThroughBack : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_C_HeadThroughBack* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36942,7 +36942,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_D_OneFavor : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_D_OneFavor* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36957,7 +36957,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_E_Charity : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_E_Charity* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36972,7 +36972,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_F_WhatDoYouAsk : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_F_WhatDoYouAsk* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -36987,7 +36987,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_G_TalkToAlch : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_G_TalkToAlch* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37002,7 +37002,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_H_WillDo : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_H_WillDo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37017,7 +37017,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_T_Shipments : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_T_Shipments* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37032,7 +37032,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Guano_A_OhNoImDead : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Guano_A_OhNoImDead* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37047,7 +37047,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Guano_B_WithAllTheStealing : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Guano_B_WithAllTheStealing* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37062,7 +37062,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Guano_C_YoureNotDead : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Guano_C_YoureNotDead* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37077,7 +37077,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Guano_D_OhOkay : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Guano_D_OhOkay* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37092,7 +37092,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_A_StayAway : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_A_StayAway* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37107,7 +37107,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_B_Oh : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_B_Oh* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37122,7 +37122,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_C_WhatHappened : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_C_WhatHappened* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37137,7 +37137,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_D_Medusa : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_D_Medusa* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37152,7 +37152,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_E_Slay : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_E_Slay* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37167,7 +37167,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_F_NotAChance : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_F_NotAChance* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37182,7 +37182,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_G_Yes : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_G_Yes* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37197,7 +37197,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_H_BetterOffInJail : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_H_BetterOffInJail* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37212,7 +37212,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_I_TakeThisKey : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_I_TakeThisKey* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37227,7 +37227,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_Q_PleaseCure : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_Q_PleaseCure* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37242,7 +37242,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_R_ThankYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_R_ThankYou* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37257,7 +37257,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_S_WhereAreYouHeaded : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_S_WhereAreYouHeaded* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37272,7 +37272,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_T_SkyCrack : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_T_SkyCrack* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37287,7 +37287,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_U_OnlyWay : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_U_OnlyWay* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37302,7 +37302,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_V_Bridge : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_V_Bridge* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37317,7 +37317,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Hera_W_BeforeYouGo : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Hera_W_BeforeYouGo* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37332,7 +37332,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Mesuda_A_Hiss : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Mesuda_A_Hiss* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37347,7 +37347,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Poseidon_A_DoYouKnowAnything : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Poseidon_A_DoYouKnowAnything* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37362,7 +37362,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Poseidon_B_FindMirror : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Poseidon_B_FindMirror* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37377,7 +37377,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Rupert_A_DoYouKnowAnything : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Rupert_A_DoYouKnowAnything* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37392,7 +37392,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Rupert_B_NothingIsReal : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Rupert_B_NothingIsReal* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37407,7 +37407,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Rupert_C_NotVeryUseful : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Rupert_C_NotVeryUseful* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37422,7 +37422,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Scrappy_A_Cursed : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Scrappy_A_Cursed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37437,7 +37437,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Scrappy_B_Immune : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Scrappy_B_Immune* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37452,7 +37452,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Scrappy_C_CarryOn : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Scrappy_C_CarryOn* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37467,7 +37467,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Scrappy_T_StillCursed : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Scrappy_T_StillCursed* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37482,7 +37482,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_BehindOnShipments : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Townspeople_BehindOnShipments* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37497,7 +37497,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Heart : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Heart* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37512,7 +37512,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Hooray : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Townspeople_Hooray* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37527,7 +37527,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImAlive : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImAlive* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37542,7 +37542,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImFree : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ImFree* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37557,7 +37557,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_InYourDebt : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Townspeople_InYourDebt* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37572,7 +37572,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ThankYou : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ThankYou* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37587,7 +37587,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Zeus_A_WhoGoesThere : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Zeus_A_WhoGoesThere* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37602,7 +37602,7 @@ namespace Strings
 	class Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_SayNoMore : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_SayNoMore* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37617,7 +37617,7 @@ namespace Strings
 	class Platformer_Quests_WarpGates_WarpGateDiscovered : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_WarpGates_WarpGateDiscovered* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37632,7 +37632,7 @@ namespace Strings
 	class Platformer_Quests_WarpGates_WarpGateIntro : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_WarpGates_WarpGateIntro* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37647,7 +37647,7 @@ namespace Strings
 	class Platformer_Quests_WarpGates_WhatIsThisPlace : public LocalizedString
 	{
 	public:
-		static Platformer_Quests_WarpGates_WhatIsThisPlace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37662,7 +37662,7 @@ namespace Strings
 	class Platformer_Spellbooks_SpellbookAcquired : public LocalizedString
 	{
 	public:
-		static Platformer_Spellbooks_SpellbookAcquired* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37677,7 +37677,7 @@ namespace Strings
 	class Platformer_Spellbooks_SpellbookFrost : public LocalizedString
 	{
 	public:
-		static Platformer_Spellbooks_SpellbookFrost* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37692,7 +37692,7 @@ namespace Strings
 	class Platformer_Spellbooks_SpellbookHoly : public LocalizedString
 	{
 	public:
-		static Platformer_Spellbooks_SpellbookHoly* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37707,7 +37707,7 @@ namespace Strings
 	class Platformer_Spellbooks_SpellbookLightning : public LocalizedString
 	{
 	public:
-		static Platformer_Spellbooks_SpellbookLightning* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37722,7 +37722,7 @@ namespace Strings
 	class Platformer_Spellbooks_SpellbookNature : public LocalizedString
 	{
 	public:
-		static Platformer_Spellbooks_SpellbookNature* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37737,7 +37737,7 @@ namespace Strings
 	class Platformer_Spellbooks_SpellbookOfArcane : public LocalizedString
 	{
 	public:
-		static Platformer_Spellbooks_SpellbookOfArcane* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37752,7 +37752,7 @@ namespace Strings
 	class Platformer_Spellbooks_SpellbookOfFire : public LocalizedString
 	{
 	public:
-		static Platformer_Spellbooks_SpellbookOfFire* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37767,7 +37767,7 @@ namespace Strings
 	class Platformer_Spellbooks_SpellbookOfWater : public LocalizedString
 	{
 	public:
-		static Platformer_Spellbooks_SpellbookOfWater* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37782,7 +37782,7 @@ namespace Strings
 	class Platformer_Spellbooks_SpellbookOfWind : public LocalizedString
 	{
 	public:
-		static Platformer_Spellbooks_SpellbookOfWind* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37797,7 +37797,7 @@ namespace Strings
 	class Platformer_Spellbooks_SpellbookShadow : public LocalizedString
 	{
 	public:
-		static Platformer_Spellbooks_SpellbookShadow* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37812,7 +37812,7 @@ namespace Strings
 	class Platformer_Spellbooks_SpellbookUndeath : public LocalizedString
 	{
 	public:
-		static Platformer_Spellbooks_SpellbookUndeath* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37827,7 +37827,7 @@ namespace Strings
 	class PointerTrace_Assembly_Add : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_Add* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37842,7 +37842,7 @@ namespace Strings
 	class PointerTrace_Assembly_Dec : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_Dec* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37857,7 +37857,7 @@ namespace Strings
 	class PointerTrace_Assembly_Div : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_Div* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37872,7 +37872,7 @@ namespace Strings
 	class PointerTrace_Assembly_Inc : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_Inc* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37887,7 +37887,7 @@ namespace Strings
 	class PointerTrace_Assembly_Jmp : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_Jmp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37902,7 +37902,7 @@ namespace Strings
 	class PointerTrace_Assembly_Mov : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_Mov* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37917,7 +37917,7 @@ namespace Strings
 	class PointerTrace_Assembly_Mul : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_Mul* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37932,7 +37932,7 @@ namespace Strings
 	class PointerTrace_Assembly_OffsetNegative : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_OffsetNegative* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37947,7 +37947,7 @@ namespace Strings
 	class PointerTrace_Assembly_OffsetPositive : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_OffsetPositive* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37962,7 +37962,7 @@ namespace Strings
 	class PointerTrace_Assembly_Ptr : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_Ptr* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37977,7 +37977,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterEax : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -37992,7 +37992,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterEbp : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterEbp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38007,7 +38007,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterEbx : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38022,7 +38022,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterEcx : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38037,7 +38037,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterEdi : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38052,7 +38052,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterEdx : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38067,7 +38067,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterEip : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterEip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38082,7 +38082,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterEsi : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38097,7 +38097,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterEsp : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterEsp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38112,7 +38112,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterRax : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterRax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38127,7 +38127,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterRbp : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterRbp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38142,7 +38142,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterRbx : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterRbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38157,7 +38157,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterRcx : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterRcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38172,7 +38172,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterRdi : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterRdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38187,7 +38187,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterRdx : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterRdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38202,7 +38202,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterRip : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterRip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38217,7 +38217,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterRsi : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterRsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38232,7 +38232,7 @@ namespace Strings
 	class PointerTrace_Assembly_RegisterRsp : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_RegisterRsp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38247,7 +38247,7 @@ namespace Strings
 	class PointerTrace_Assembly_Sub : public LocalizedString
 	{
 	public:
-		static PointerTrace_Assembly_Sub* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38262,7 +38262,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterEax : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterEax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38277,7 +38277,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterEbp : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterEbp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38292,7 +38292,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterEbx : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterEbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38307,7 +38307,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterEcx : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterEcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38322,7 +38322,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterEdi : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterEdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38337,7 +38337,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterEdx : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterEdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38352,7 +38352,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterEip : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterEip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38367,7 +38367,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterEsi : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterEsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38382,7 +38382,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterEsp : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterEsp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38397,7 +38397,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterRax : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterRax* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38412,7 +38412,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterRbp : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterRbp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38427,7 +38427,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterRbx : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterRbx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38442,7 +38442,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterRcx : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterRcx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38457,7 +38457,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterRdi : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterRdi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38472,7 +38472,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterRdx : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterRdx* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38487,7 +38487,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterRip : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterRip* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38502,7 +38502,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterRsi : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterRsi* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38517,7 +38517,7 @@ namespace Strings
 	class PointerTrace_Hud_RegisterRsp : public LocalizedString
 	{
 	public:
-		static PointerTrace_Hud_RegisterRsp* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38532,7 +38532,7 @@ namespace Strings
 	class PointerTrace_PointerTrace : public LocalizedString
 	{
 	public:
-		static PointerTrace_PointerTrace* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38547,7 +38547,7 @@ namespace Strings
 	class PointerTrace_Segfault : public LocalizedString
 	{
 	public:
-		static PointerTrace_Segfault* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38562,7 +38562,7 @@ namespace Strings
 	class PointerTrace_ShiftHint : public LocalizedString
 	{
 	public:
-		static PointerTrace_ShiftHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38577,7 +38577,7 @@ namespace Strings
 	class PointerTrace_TabHint : public LocalizedString
 	{
 	public:
-		static PointerTrace_TabHint* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38592,7 +38592,7 @@ namespace Strings
 	class PointerTrace_Victory : public LocalizedString
 	{
 	public:
-		static PointerTrace_Victory* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		
@@ -38607,7 +38607,7 @@ namespace Strings
 	class TODO : public LocalizedString
 	{
 	public:
-		static TODO* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		

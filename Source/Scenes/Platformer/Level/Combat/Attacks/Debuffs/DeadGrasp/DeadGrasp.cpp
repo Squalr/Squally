@@ -124,27 +124,31 @@ void DeadGrasp::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						std::string("fild dword ptr [esi]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentAbs::create()) +
-						std::string("fabs\n") +
-						std::string("fistp dword ptr [esi]\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
-						std::string("\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentAbs::create())
+						ConcatString::create({
+							ConstantString::create("fild dword ptr [esi]\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create(),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentAbs::create(),
+							ConstantString::create("fabs\n"),
+							ConstantString::create("fistp dword ptr [esi]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(), 
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create(),
+							ConstantString::create("\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentAbs::create()
+						})
 						, // x64
-						std::string("fild dword ptr [rsi]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentAbs::create()) +
-						std::string("fabs\n") +
-						std::string("fistp dword ptr [rsi]\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()) +
-						std::string("\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentAbs::create())
+						ConcatString::create({
+							ConstantString::create("fild dword ptr [rsi]\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create(),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentAbs::create(),
+							ConstantString::create("fabs\n"),
+							ConstantString::create("fistp dword ptr [rsi]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(), 
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create(),
+							ConstantString::create("\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_CommentAbs::create()
+						})
 					),
 				},
 				true

@@ -128,37 +128,41 @@ void UnholyProtection::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) +
-						std::string("fld1\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage::create()) +
-						std::string("fild dword ptr [eax]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) +
-						std::string("fldz\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create()) +
-						std::string("fcomip st1\n\n") + // ideally this would be fcomip st0, st1 but asmtk doesn't allow this
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional::create()) +
-						std::string("fcmove st1\n") + // ideally this would be fcmove st0, st1 but asmtk doesn't allow this
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore::create()) +
-						std::string("fistp dword ptr [eax]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop::create()) + 
-						std::string("fstp st0\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentHint::create())
-						, // x64 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()) +
-						std::string("fld1\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage::create()) +
-						std::string("fild dword ptr [rax]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) +
-						std::string("fldz\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create()) +
-						std::string("fcomip st1\n\n") + // ideally this would be fcomip st0, st1 but asmtk doesn't allow this
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional::create()) +
-						std::string("fcmove st1\n") + // ideally this would be fcmove st0, st1 but asmtk doesn't allow this
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore::create()) +
-						std::string("fistp dword ptr [rax]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop::create()) + 
-						std::string("fstp st0\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentHint::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create(),
+							ConstantString::create("fld1\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage::create(),
+							ConstantString::create("fild dword ptr [eax]\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create(),
+							ConstantString::create("fldz\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create(),
+							ConstantString::create("fcomip st1\n\n"), // ideally this would be fcomip st0, st1 but asmtk doesn't allow this
+							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional::create(),
+							ConstantString::create("fcmove st1\n"), // ideally this would be fcmove st0, st1 but asmtk doesn't allow this
+							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore::create(),
+							ConstantString::create("fistp dword ptr [eax]\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop::create(), 
+							ConstantString::create("fstp st0\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentHint::create()
+						})
+						, // x64
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create(),
+							ConstantString::create("fld1\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage::create(),
+							ConstantString::create("fild dword ptr [rax]\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create(),
+							ConstantString::create("fldz\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create(),
+							ConstantString::create("fcomip st1\n\n"), // ideally this would be fcomip st0, st1 but asmtk doesn't allow this
+							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional::create(),
+							ConstantString::create("fcmove st1\n"), // ideally this would be fcmove st0, st1 but asmtk doesn't allow this
+							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore::create(),
+							ConstantString::create("fistp dword ptr [rax]\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop::create(), 
+							ConstantString::create("fstp st0\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentHint::create()
+						})
 					),
 				},
 				true

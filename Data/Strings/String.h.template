@@ -2,7 +2,7 @@
 	class {{ClassName}} : public LocalizedString
 	{
 	public:
-		static {{ClassName}}* create();
+		static LocalizedString* create();
 		LocalizedString* clone() override;
 		std::string getStringIdentifier() override;
 		

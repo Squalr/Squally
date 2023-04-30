@@ -116,21 +116,25 @@ void Waterball::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_StopWaterball::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentXmmLoading::create()->
-							setStringReplacementVariables(Strings::Common_Brackets::create()->
-							setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentAlterSpeed::create()) + 
-						"mov dword ptr [eax], 0.0f\n"
-						"movss xmm1, dword ptr [eax]\n\n"
-						"mulps xmm0, xmm1"
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentXmmLoading::create()->
+								setStringReplacementVariables(Strings::Common_Brackets::create()->
+								setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())),
+							Strings::Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentAlterSpeed::create(),
+							ConstantString::create("mov dword ptr [eax], 0.0f\n"),
+							ConstantString::create("movss xmm1, dword ptr [eax]\n\n"),
+							ConstantString::create("mulps xmm0, xmm1")
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentXmmLoading::create()->
-							setStringReplacementVariables(Strings::Common_Brackets::create()->
-							setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentAlterSpeed::create()) + 
-						"mov dword ptr [rax], 0.0f\n"
-						"movss xmm1, dword ptr [rax]\n\n"
-						"mulps xmm0, xmm1"
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentXmmLoading::create()->
+								setStringReplacementVariables(Strings::Common_Brackets::create()->
+								setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())),
+							Strings::Menus_Hacking_Abilities_Abilities_Waterball_ApplySpeed_CommentAlterSpeed::create(),
+							ConstantString::create("mov dword ptr [rax], 0.0f\n"),
+							ConstantString::create("movss xmm1, dword ptr [rax]\n\n"),
+							ConstantString::create("mulps xmm0, xmm1")
+						})
 					)
 				}
 			)

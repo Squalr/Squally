@@ -128,19 +128,23 @@ void Strength::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::DamageIncrease)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead::create()) + 
-						"add ecx, 3\n"
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentRegister::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create()),
+							Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease::create()
+								->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::DamageIncrease))),
+							Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead::create(),
+							ConstantString::create("add ecx, 3\n")
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentRegister::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease::create()
-							->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::DamageIncrease)))) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead::create()) + 
-						"add rcx, 3\n"
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentRegister::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create()),
+							Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDamageIncrease::create()
+								->setStringReplacementVariables(ConstantString::create(std::to_string(Strength::DamageIncrease))),
+							Strings::Menus_Hacking_Abilities_Buffs_Strength_CommentDecreaseInstead::create(),
+							ConstantString::create("add rcx, 3\n")
+						})
 					),
 				},
 				true

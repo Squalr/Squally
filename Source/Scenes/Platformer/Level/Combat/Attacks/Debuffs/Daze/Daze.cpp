@@ -140,9 +140,9 @@ void Daze::registerHackables()
 				0.0f,
 				{
 					HackableCode::ReadOnlyScript(
-						ConcatString::create({
 							Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
-							// x86
+						// x86
+						ConcatString::create({
 							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushChance::create(),
 							ConstantString::create("fld dword ptr [esi]\n"),
 							Strings::Menus_Hacking_Abilities_Debuffs_Daze_CommentPushRng::create(),

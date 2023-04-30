@@ -132,25 +132,29 @@ void ThickHide::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"fild dword ptr [edx]\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentSub::create()) + 
-						"fisub dword ptr [ebx]\n" +
-						"fistp dword ptr [edx]\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create())
+						ConcatString::create({
+							ConstantString::create("fild dword ptr [edx]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create(),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create(),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentSub::create(),
+							ConstantString::create("fisub dword ptr [ebx]\n"),
+							ConstantString::create("fistp dword ptr [edx]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()
+						})
 						, // x64
-						"fild dword ptr [rdx]\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentSub::create()) + 
-						"fisub dword ptr [rbx]\n" +
-						"fistp dword ptr [rdx]\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create())
+						ConcatString::create({
+							ConstantString::create("fild dword ptr [rdx]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create(),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create(),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentSub::create(),
+							ConstantString::create("fisub dword ptr [rbx]\n"),
+							ConstantString::create("fistp dword ptr [rdx]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()
+						})
 					),
 				},
 				true

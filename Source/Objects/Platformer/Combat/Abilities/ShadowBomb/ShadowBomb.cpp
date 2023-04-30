@@ -105,9 +105,13 @@ void ShadowBomb::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"and eax, 15\n"
+						ConcatString::create({
+							ConstantString::create("and eax, 15\n")
+						})
 						, // x64
-						"and rax, 15\n"
+						ConcatString::create({
+							ConstantString::create("and rax, 15\n")
+						})
 					),
 				},
 				true

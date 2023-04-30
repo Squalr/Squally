@@ -119,11 +119,15 @@ void InnerFire::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg::create()) +
-						std::string("xchg ecx, edx\n")
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg::create(),
+							ConstantString::create("xchg ecx, edx\n")
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg::create()) +
-						std::string("xchg rcx, rdx\n")
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg::create(),
+							ConstantString::create("xchg rcx, rdx\n")
+						})
 					),
 				},
 				true

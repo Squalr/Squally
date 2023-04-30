@@ -112,11 +112,15 @@ void BrittleBones::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"and eax, 7\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead::create())
+						ConcatString::create({
+							ConstantString::create("and eax, 7\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead::create()
+						})
 						, // x64
-						"and rax, 7\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead::create())
+						ConcatString::create({
+							ConstantString::create("and rax, 7\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead::create()
+						})
 					),
 				},
 				true

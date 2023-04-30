@@ -127,35 +127,39 @@ void Immortality::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentCompare::create()) + 
-						std::string("cmp esi, 0\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentJump::create()) + 
-						std::string("je applyImmortality\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentElse::create()) + 
-						std::string("jmp skipCode\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentApplyImmortality::create()) + 
-						std::string("applyImmortality:\n") +
-						std::string("mov esi, 1\n\n") +
-						std::string("skipCode:\n\n)") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJe::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentCompare::create(),
+							ConstantString::create("cmp esi, 0\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentJump::create(),
+							ConstantString::create("je applyImmortality\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentElse::create(),
+							ConstantString::create("jmp skipCode\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentApplyImmortality::create(),
+							ConstantString::create("applyImmortality:\n"),
+							ConstantString::create("mov esi, 1\n\n"),
+							ConstantString::create("skipCode:\n\n)"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJe::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentCompare::create()) + 
-						std::string("cmp rsi, 0\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentJump::create()) + 
-						std::string("je applyImmortality\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentElse::create()) + 
-						std::string("jmp skipCode\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentApplyImmortality::create()) + 
-						std::string("applyImmortality:\n") +
-						std::string("mov rsi, 1\n\n") +
-						std::string("skipCode:\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJe::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentCompare::create(),
+							ConstantString::create("cmp rsi, 0\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentJump::create(),
+							ConstantString::create("je applyImmortality\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentElse::create(),
+							ConstantString::create("jmp skipCode\n\n"),
+							Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentApplyImmortality::create(),
+							ConstantString::create("applyImmortality:\n"),
+							ConstantString::create("mov rsi, 1\n\n"),
+							ConstantString::create("skipCode:\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJe::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()
+						})
 					),
 				},
 				true
