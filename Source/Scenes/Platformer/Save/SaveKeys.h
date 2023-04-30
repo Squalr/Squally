@@ -8,7 +8,6 @@ public:
 	static const std::string SaveKeyMap;
 	static const std::string SaveKeyCharterShipReturnMap;
 	static const std::string SaveKeyCurrentObjective;
-	static const std::string SaveKeyEventTriggeredPrefix;
 	static const std::string SaveKeySquallyRuneCooldowns;
 	static const std::string SaveKeySquallyHealth;
 	static const std::string SaveKeySquallyMana;
@@ -21,6 +20,9 @@ public:
 	static const std::string SaveKeySquallyInventory;
 	static const std::string SaveKeySquallyEquipment;
 	static const std::string SaveKeySquallyCurrencyInventory;
+	
+	static const std::string SaveKeyLastSelectedScriptIndexPrefix;
+	static const std::string SaveKeyScriptPrefix;
 
 	static const std::string SaveKeyScrappyFound;
 	static const std::string SaveKeyGuanoFound;

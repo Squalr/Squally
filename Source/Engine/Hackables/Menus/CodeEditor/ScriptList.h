@@ -55,8 +55,7 @@ private:
 
 	int readOnlyCount = 0;
 
-	static const std::string ScriptNameKey;
-	static const std::string ScriptKey;
-	static const std::string SaveKeyLastSelectedScriptIndexPrefix;
+	static const std::string SavePropertyKeyScriptName;
+	static const std::string SavePropertyKeyScriptKey;
 	static const int MaxScripts;
 };

@@ -12,6 +12,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/UIResources.h"
 
@@ -19,9 +20,8 @@
 
 using namespace cocos2d;
 
-const std::string ScriptList::ScriptNameKey = "SCRIPT_NAME";
-const std::string ScriptList::ScriptKey = "SCRIPT";
-const std::string ScriptList::SaveKeyLastSelectedScriptIndexPrefix = "SAVE_KEY_SCRIPT_INDEX_";
+const std::string ScriptList::SavePropertyKeyScriptName = "SCRIPT_NAME";
+const std::string ScriptList::SavePropertyKeyScriptKey = "SCRIPT";
 const int ScriptList::MaxScripts = 9;
 
 ScriptList* ScriptList::create(ConfirmationMenu* confirmationMenuRef, std::function<void(ScriptEntry*)> onScriptSelect)
@@ -226,14 +226,14 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 		this->scriptsNode->addChild(scriptEntry);
 	}
 
-	ValueVector savedScripts = SaveManager::GetProfileDataOrDefault(hackableCode->getHackableIdentifier(), Value(ValueVector())).asValueVector();
+	ValueVector savedScripts = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyScriptPrefix + hackableCode->getHackableIdentifier(), Value(ValueVector())).asValueVector();
 
 	// Add user scripts
-	for (auto savedScript : savedScripts)
+	for (Value& savedScript : savedScripts)
 	{
 		ValueMap attributes = savedScript.asValueMap();
-		const std::string scriptName = attributes[ScriptList::ScriptNameKey].asString();
-		const std::string script = attributes[ScriptList::ScriptKey].asString();
+		const std::string scriptName = attributes[ScriptList::SavePropertyKeyScriptName].asString();
+		const std::string script = attributes[ScriptList::SavePropertyKeyScriptKey].asString();
 
 		ScriptEntry* scriptEntry = ScriptEntry::create(
 			ConstantString::create(scriptName),
@@ -257,9 +257,9 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 	this->initializePositions();
 
 	// Try focusing the saved last selected script
-	if (SaveManager::HasProfileData(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier()))
+	if (SaveManager::HasProfileData(SaveKeys::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier()))
 	{
-		int activeScriptIndex = SaveManager::GetProfileDataOrDefault(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier(), Value(-1)).asInt();
+		int activeScriptIndex = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier(), Value(-1)).asInt();
 
 		if (activeScriptIndex >= 0 && activeScriptIndex < int(this->scripts.size()))
 		{
@@ -301,13 +301,13 @@ void ScriptList::saveScripts()
 
 		ValueMap attributes = ValueMap();
 
-		attributes[ScriptList::ScriptNameKey] = Value(script->getName()->getString());
-		attributes[ScriptList::ScriptKey] = Value(script->getScript());
+		attributes[ScriptList::SavePropertyKeyScriptName] = Value(script->getName()->getString());
+		attributes[ScriptList::SavePropertyKeyScriptKey] = Value(script->getScript());
 
 		scriptsToSave.push_back(Value(attributes));
 	}
 
-	SaveManager::SaveProfileData(this->hackableCode->getHackableIdentifier(), Value(scriptsToSave));
+	SaveManager::SaveProfileData(SaveKeys::SaveKeyScriptPrefix + this->hackableCode->getHackableIdentifier(), Value(scriptsToSave));
 }
 
 ScriptEntry* ScriptList::getActiveScript()
@@ -347,7 +347,7 @@ void ScriptList::setActiveScript(ScriptEntry* activeScript)
 		this->scripts[index]->toggleSelected(false);
 	}
 
-	SaveManager::SoftSaveProfileData(ScriptList::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier(), Value(activeScriptIndex));
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyLastSelectedScriptIndexPrefix + this->hackableCode->getHackableIdentifier(), Value(activeScriptIndex));
 
 	this->activeScript->toggleSelected(true);
 	this->onScriptSelect(this->activeScript);

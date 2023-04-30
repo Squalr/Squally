@@ -3,7 +3,6 @@
 const std::string SaveKeys::SaveKeyMap = "SAVE_KEY_MAP";
 const std::string SaveKeys::SaveKeyCharterShipReturnMap = "SAVE_KEY_CHARTER_SHIP_RETURN_MAP";
 const std::string SaveKeys::SaveKeyCurrentObjective = "SAVE_KEY_CURRENT_OBJECTIVE";
-const std::string SaveKeys::SaveKeyEventTriggeredPrefix = "SAVE_KEY_EVENT_TRIGGERED_";
 const std::string SaveKeys::SaveKeySquallyRuneCooldowns = "SAVE_KEY_SQUALLY_RUNE_COOLDOWNS";
 const std::string SaveKeys::SaveKeySquallyHealth = "SAVE_KEY_SQUALLY_HEALTH";
 const std::string SaveKeys::SaveKeySquallyMana = "SAVE_KEY_SQUALLY_MANA";
@@ -110,3 +109,5 @@ const std::string SaveKeys::SaveKeyCollectableAnimalWolf = "SAVE_KEY_ANIMAL_WOLF
 const std::string SaveKeys::SaveKeyCollectableAnimalWorm = "SAVE_KEY_ANIMAL_WORM";
 const std::string SaveKeys::SaveKeyCollectableAnimalYeti = "SAVE_KEY_ANIMAL_YETI";
 const std::string SaveKeys::SaveKeyCollectableAnimalZebra = "SAVE_KEY_ANIMAL_ZEBRA";
+const std::string SaveKeys::SaveKeyLastSelectedScriptIndexPrefix = "SAVE_KEY_SCRIPT_INDEX_";
+const std::string SaveKeys::SaveKeyScriptPrefix = ""; // "SAVE_KEY_SCRIPT_"; // Prefix is left empty for backwards compatibility, although it would be more correct to have one
