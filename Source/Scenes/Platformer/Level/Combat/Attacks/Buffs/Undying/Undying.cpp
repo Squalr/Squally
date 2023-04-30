@@ -133,19 +133,19 @@ void Undying::registerHackables()
 						ConcatString::create({
 							ConstantString::create("cmp esi, ebx\n"),
 							ConstantString::create("cmovle esi, ebx\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create())
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("cmp rsi, rbx\n"),
 							ConstantString::create("cmovle rsi, rbx\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create())
 						})
 					),
 				},

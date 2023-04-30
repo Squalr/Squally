@@ -114,12 +114,12 @@ void BrittleBones::registerHackables()
 						// x86
 						ConcatString::create({
 							ConstantString::create("and eax, 7\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead::create())
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("and rax, 7\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BrittleBones_CommentIncreaseInstead::create())
 						})
 					),
 				},

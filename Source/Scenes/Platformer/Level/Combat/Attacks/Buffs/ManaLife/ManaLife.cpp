@@ -102,11 +102,11 @@ void ManaLife::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_ManaLife_CommentExplainer::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ManaLife_CommentExplainer::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_ManaLife_CommentExplainer::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ManaLife_CommentExplainer::create())
 						})
 					),
 				},

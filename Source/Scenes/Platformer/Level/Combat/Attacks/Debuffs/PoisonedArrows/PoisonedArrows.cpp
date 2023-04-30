@@ -124,37 +124,37 @@ void PoisonedArrows::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng::create()),
 							ConstantString::create("fld dword ptr [ebx]\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst::create()),
 							ConstantString::create("fcomp dword ptr [ecx]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()),
 							ConstantString::create("fstsw ax\n"),
 							ConstantString::create("sahf\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip::create()),
 							ConstantString::create("ja skipPoisonedArrowsCode\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage::create()),
 							ConstantString::create("fild dword ptr [edi]\n"),
 							ConstantString::create("fistp dword ptr [esi]\n\n"),
 							ConstantString::create("skipPoisonedArrowsCode:\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng::create()),
 							ConstantString::create("fld dword ptr [ebx]\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst::create()),
 							ConstantString::create("fcomp dword ptr [ecx]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()),
 							ConstantString::create("fstsw ax\n"),
 							ConstantString::create("sahf\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip::create()),
 							ConstantString::create("ja skipPoisonedArrowsCode\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage::create()),
 							ConstantString::create("fild dword ptr [edi]\n"),
 							ConstantString::create("fistp dword ptr [esi]\n\n"),
 							ConstantString::create("skipPoisonedArrowsCode:\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint::create())
 						})
 					),
 				},

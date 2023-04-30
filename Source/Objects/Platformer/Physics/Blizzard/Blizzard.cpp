@@ -147,15 +147,15 @@ void Blizzard::registerHackables()
 						Strings::Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_SetBlizzardSpeedDown::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentBlizzardDown::create(),
-							Strings::Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentModify::create(),
+							COMMENT(Strings::Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentBlizzardDown::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentModify::create()),
 							ConstantString::create("mov dword ptr [eax], 0.0f\n"),
 							ConstantString::create("mov dword ptr [ebx], -1.0f\n")
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentBlizzardDown::create(),
-							Strings::Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentModify::create(),
+							COMMENT(Strings::Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentBlizzardDown::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_Blizzard_SetBlizzardSpeed_CommentModify::create()),
 							ConstantString::create("mov dword ptr [rax], 0.0f\n"),
 							ConstantString::create("mov dword ptr [rbx], -1.0f\n")
 						})

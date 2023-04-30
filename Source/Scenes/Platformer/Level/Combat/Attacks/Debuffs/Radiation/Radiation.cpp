@@ -114,39 +114,39 @@ void Radiation::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi)),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi))),
 							ConstantString::create("cmp esi, 0\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create()),
 							ConstantString::create("jnz radiation\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create()),
 							ConstantString::create("jmp skipCode\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create()),
 							ConstantString::create("mov edi, 5\n"), // Radiation::DamageAmount
 							ConstantString::create("radiation:\n"),
 							ConstantString::create("skipCode:\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJnz::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNz::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJnz::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNz::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi)),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi))),
 							ConstantString::create("cmp rsi, 0\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create()),
 							ConstantString::create("jnz radiation\n\n"),
 							ConstantString::create("jmp skipCode\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create()),
 							ConstantString::create("mov rdi, 5\n"), // Radiation::DamageAmount
 							ConstantString::create("radiation:\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create()),
 							ConstantString::create("skipCode:\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJnz::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNz::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJnz::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNz::create())
 						})
 					),
 				},

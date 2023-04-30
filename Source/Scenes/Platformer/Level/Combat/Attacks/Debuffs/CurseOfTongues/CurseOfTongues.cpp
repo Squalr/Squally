@@ -134,29 +134,29 @@ void CurseOfTongues::registerHackables()
 						Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_ReduceCurse::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
-								->setStringReplacementVariables({ ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1), ConstantFloat::create(CurseOfTongues::DefaultSpeed, 2) }),
-							Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
+								->setStringReplacementVariables({ ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1), ConstantFloat::create(CurseOfTongues::DefaultSpeed, 2) })),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create()),
 							ConstantString::create("mov dword ptr [esi], -0.5f\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create(),
-							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create(),
-							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create(),
-							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create(),
-							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create(),
-							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
-								->setStringReplacementVariables({ ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1), ConstantFloat::create(CurseOfTongues::DefaultSpeed, 2) }),
-							Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentSpeed::create()
+								->setStringReplacementVariables({ ConstantFloat::create(CurseOfTongues::DefaultHackSpeed, 1), ConstantFloat::create(CurseOfTongues::DefaultSpeed, 2) })),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTongues_CommentGainInstead::create()),
 							ConstantString::create("mov dword ptr [rsi], -0.5f\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create(),
-							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create(),
-							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create(),
-							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create(),
-							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create(),
-							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 						})
 					)
 				}

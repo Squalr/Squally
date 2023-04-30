@@ -79,18 +79,18 @@ void MulDoor::registerHackables()
 					HackableCode::ReadOnlyScript(Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul::create(),
-							Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create()),
-							Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration::create(),
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())),
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration::create()),
 							ConstantString::create("imul ecx, 1")
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul::create(),
-							Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create()),
-							Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration::create(),
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentIMul::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentTopNumber::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())),
+							COMMENT(Strings::Menus_Hacking_Objects_PuzzleDoor_Multiply_CommentElaboration::create()),
 							ConstantString::create("imul rcx, 1")
 						})
 					),

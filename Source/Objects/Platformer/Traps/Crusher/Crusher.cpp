@@ -170,15 +170,15 @@ void Crusher::registerHackables()
 						ConcatString::create({
 							ConstantString::create("and ecx, eax\n"),
 							ConstantString::create("and ecx, ebx\n\n"),
-							Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_Hint::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create())
+							COMMENT(Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create()))
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("and rcx, rax\n"),
 							ConstantString::create("and rcx, rbx\n\n"),
-							Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_Hint::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create())
+							COMMENT(Strings::Menus_Hacking_Objects_Crusher_DetectPlayer_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create()))
 						})
 					)
 				},

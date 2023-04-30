@@ -130,27 +130,27 @@ void DefensiveStance::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentCompare::create()),
 							ConstantString::create("cmp ecx, 5\n"),
 							ConstantString::create("jle doNothing\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentSkipped::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentSkipped::create()),
 							ConstantString::create("mov ecx, 1\n\n"),
 							ConstantString::create("doNothing:\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJle::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJle::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentCompare::create()),
 							ConstantString::create("cmp rcx, 5\n"),
 							ConstantString::create("jle doNothing\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentSkipped::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_DefensiveStance_CommentSkipped::create()),
 							ConstantString::create("mov rcx, 1\n\n"),
 							ConstantString::create("doNothing:\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJle::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJle::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create())
 						})
 					),
 				},

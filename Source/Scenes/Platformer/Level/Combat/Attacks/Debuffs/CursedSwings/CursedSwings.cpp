@@ -128,28 +128,28 @@ void CursedSwings::registerHackables()
 						// x86
 						ConcatString::create({
 							ConstantString::create("fild dword ptr [esi]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create(), 
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentDiv::create(), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentDiv::create()), 
 							ConstantString::create("fdiv dword ptr [edi]\n\n"),
 							ConstantString::create("fistp dword ptr [esi]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(), 
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()),
 							ConstantString::create("\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint::create())
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("fild dword ptr [rsi]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create(), 
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentDiv::create(), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentDiv::create()), 
 							ConstantString::create("fdiv dword ptr [rdi]\n\n"),
 							ConstantString::create("fistp dword ptr [rsi]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(), 
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()),
 							ConstantString::create("\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_CommentHint::create())
 						})
 					),
 				},

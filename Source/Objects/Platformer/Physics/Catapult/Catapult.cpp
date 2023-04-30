@@ -139,14 +139,14 @@ void Catapult::registerHackables()
 							ConstantString::create("mov dword ptr [eax], 0.5f\n"),
 							ConstantString::create("movss xmm1, dword ptr [eax]\n"),
 							ConstantString::create("mulss xmm0, xmm1\n\n"),
-							Strings::Menus_Hacking_Objects_Catapult_ApplyPower_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Objects_Catapult_ApplyPower_CommentHint::create())
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("mov dword ptr [rax], 0.5f\n"),
 							ConstantString::create("movss xmm1, dword ptr [rax]\n"),
 							ConstantString::create("mulss xmm0, xmm1\n\n"),
-							Strings::Menus_Hacking_Objects_Catapult_ApplyPower_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Objects_Catapult_ApplyPower_CommentHint::create())
 						})
 					),
 				},

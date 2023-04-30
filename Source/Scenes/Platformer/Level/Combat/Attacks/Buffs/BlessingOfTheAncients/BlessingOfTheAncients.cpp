@@ -137,17 +137,17 @@ void BlessingOfTheAncients::registerHackables()
 						ConcatString::create({
 							ConstantString::create("push dword ptr [ecx + 4]\n"),
 							ConstantString::create("pop dword ptr [ecx + 8]\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint::create()),
 							ConstantString::create("\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("push qword ptr [rcx + 4]\n"),
 							ConstantString::create("pop qword ptr [rcx + 8]\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_BlessingOfTheAncients_CommentHint::create()),
 							ConstantString::create("\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
 						})
 					),
 				},

@@ -114,15 +114,15 @@ void Entwined::registerHackables()
 						// x86
 						ConcatString::create({
 							ConstantString::create("mov edi, 0x05000000\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1::create(),
-							Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2::create()),
 							ConstantString::create("bswap edi\n")
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("mov edi, 0x05000000\n"), // Intentionally 32-bit register
-							Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1::create(),
-							Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Entwined_CommentHint2::create()),
 							ConstantString::create("bswap edi\n")
 						})
 					),

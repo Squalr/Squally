@@ -145,10 +145,10 @@ void KillingMachineDamageBehavior::onLoad()
 			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage1; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[1];
 			commandComment = ConcatString::create({
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovl::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentL::create()
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovl::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentL::create())
 			});
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			break;
@@ -161,10 +161,10 @@ void KillingMachineDamageBehavior::onLoad()
 			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage2; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[2];
 			commandComment = ConcatString::create({
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create()
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create())
 			});
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			break;
@@ -177,10 +177,10 @@ void KillingMachineDamageBehavior::onLoad()
 			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage3; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[3];
 			commandComment = ConcatString::create({
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmove::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmove::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create())
 			});
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintCmove::create();
 			setHintVariables = true;
@@ -194,10 +194,10 @@ void KillingMachineDamageBehavior::onLoad()
 			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage4; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[4];
 			commandComment = ConcatString::create({
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovne::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNe::create()
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovne::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNe::create())
 			});
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintCmovne::create();
 			setHintVariables = true;
@@ -212,10 +212,10 @@ void KillingMachineDamageBehavior::onLoad()
 			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage5; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[5];
 			commandComment = ConcatString::create({
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovg::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentG::create()
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovg::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentG::create())
 			});
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			probabilityReversed = true;
@@ -229,10 +229,10 @@ void KillingMachineDamageBehavior::onLoad()
 			functionPtr = []() { auto func = &KillingMachineDamageBehavior::compareDamage6; return (void*&)func; }();
 			machineAsmConstants = KillingMachineDamageBehavior::MachineAsmConstantsMap[6];
 			commandComment = ConcatString::create({
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
-				Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create()
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+				COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create())
 			});
 			hintStr = Strings::Menus_Hacking_Objects_KillingMachine_CommentHintGeneric::create();
 			probabilityReversed = true;
@@ -323,7 +323,7 @@ void KillingMachineDamageBehavior::onLoad()
 							ConstantString::create(" edi, esi\n\n"),
 							commandComment,
 							ConstantString::create("\n"),
-							hintStr
+							COMMENT(hintStr)
 						})
 						, // x64
 						ConcatString::create({
@@ -336,7 +336,7 @@ void KillingMachineDamageBehavior::onLoad()
 							ConstantString::create(" rdi, rsi\n\n"),
 							commandComment->clone(),
 							ConstantString::create("\n"),
-							hintStr->clone()
+							COMMENT(hintStr->clone())
 						})
 					),
 				},

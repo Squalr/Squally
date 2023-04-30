@@ -115,45 +115,45 @@ void Chance::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentMaxDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentMaxDamage::create()),
 							ConstantString::create("mov ebx, 3\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentCompare::create()),
 							ConstantString::create("cmp eax, ebx\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentConditionalMov::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentConditionalMov::create()),
 							ConstantString::create("cmovge eax, ebx\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create(),
-							Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentFinale::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentFinale::create())
 								->setStringReplacementVariables({
 									Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(),
 									Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create(),
 								}),
 							ConstantString::create("\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentHint::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentMaxDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentMaxDamage::create()),
 							ConstantString::create("mov rbx, 3\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentCompare::create()),
 							ConstantString::create("cmp rax, rbx\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentConditionalMov::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentConditionalMov::create()),
 							ConstantString::create("cmovge rax, rbx\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create(),
-							Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentFinale::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentFinale::create())
 								->setStringReplacementVariables({
 									Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(),
 									Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create(),
 								}),
 							ConstantString::create("\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentHint::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Chance_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()))
 						})
 					),
 				},

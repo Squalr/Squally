@@ -111,25 +111,25 @@ void MetalSpikes::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss::create(),
-							Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo::create(),
+							COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo::create()),
 							ConstantString::create("addss xmm2, xmm4\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create(),
-							Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1::create(),
-							Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2::create(),
-							Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3::create(),
-							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss::create(),
-							Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo::create(),
+							COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentAddss::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentChangeTo::create()),
 							ConstantString::create("addss xmm2, xmm4\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create(),
-							Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1::create(),
-							Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2::create(),
-							Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3::create(),
-							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt1::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt2::create()),
+							COMMENT(Strings::Menus_Hacking_Objects_MetalSpikes_UpdateTimer_CommentSSEInstructionsPt3::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 						})
 					)
 				},

@@ -132,31 +132,31 @@ void Parry::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentTest::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax)),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentTest::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))),
 							ConstantString::create("test eax, eax\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentSkipParry::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentSkipParry::create()),
 							ConstantString::create("jns skipCode\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentParry::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentParry::create()),
 							ConstantString::create("mov eax, 0\n"),
 							ConstantString::create("skipCode:\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJs::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentS::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJs::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentS::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentTest::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax)),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentTest::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))),
 							ConstantString::create("test rax, rax\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentSkipParry::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentSkipParry::create()),
 							ConstantString::create("jns skipCode\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentParry::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Parry_CommentParry::create()),
 							ConstantString::create("mov rax, 0\n"),
 							ConstantString::create("skipCode:\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJs::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentS::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJs::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentS::create())
 						})
 					)
 				},

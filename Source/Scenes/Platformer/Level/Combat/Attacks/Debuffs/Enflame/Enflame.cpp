@@ -115,13 +115,13 @@ void Enflame::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng::create()),
 							ConstantString::create("rdrand eax\n"),
 							ConstantString::create("and eax, 0xF\n")
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng::create()),
 							ConstantString::create("rdrand eax\n"),
 							ConstantString::create("and eax, 0xF\n")
 						})

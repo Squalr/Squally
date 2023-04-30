@@ -129,13 +129,13 @@ void BloodBoil::registerHackables()
 						ConcatString::create({
 							ConstantString::create("movss xmm0, dword ptr [ebx]\n"),
 							ConstantString::create("movss dword ptr [eax], xmm0\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentHint::create())
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("movss xmm0, dword ptr [rbx]\n"),
 							ConstantString::create("movss dword ptr [rax], xmm0\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_CommentHint::create())
 						})
 					),
 				},

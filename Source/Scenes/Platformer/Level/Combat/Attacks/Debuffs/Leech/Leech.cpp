@@ -119,31 +119,31 @@ void Leech::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentRng::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi)),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentRng::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi))),
 							ConstantString::create("cmp esi, 0\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentJz::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentJz::create()),
 							ConstantString::create("jz skipCode\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentApplyDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentApplyDamage::create()),
 							ConstantString::create("mov edi, 5\n"),
 							ConstantString::create("skipCode:\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJz::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentZ::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJz::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentZ::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentRng::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi)),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentRng::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi))),
 							ConstantString::create("cmp rsi, 0\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentJz::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentJz::create()),
 							ConstantString::create("jz skipCode\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentApplyDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Leech_CommentApplyDamage::create()),
 							ConstantString::create("mov rdi, 5\n"),
 							ConstantString::create("skipCode:\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJz::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentZ::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJz::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentZ::create())
 						})
 					),
 				},

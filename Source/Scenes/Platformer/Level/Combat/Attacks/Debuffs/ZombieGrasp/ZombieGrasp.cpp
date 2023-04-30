@@ -130,23 +130,23 @@ void ZombieGrasp::registerHackables()
 						ConcatString::create({
 							ConstantString::create("fild dword ptr [edx]\n"),
 							ConstantString::create("fistp dword ptr [ecx]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(), 
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()),
 							ConstantString::create("\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentHint::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx))
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentHint::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx)))
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("fild dword ptr [rdx]\n"),
 							ConstantString::create("fistp dword ptr [rcx]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(), 
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()),
 							ConstantString::create("\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentHint::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx))
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentHint::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx)))
 						})
 					),
 				},

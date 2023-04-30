@@ -127,26 +127,26 @@ void SpikedLogRailed::registerHackables()
 						// x86
 						ConcatString::create({
 							ConstantString::create("cmp ebx, 0\n\n"),
-							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft::create(),
+							COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft::create()),
 							ConstantString::create("cmovg eax, edi\n\n"),
-							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight::create(),
+							COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight::create()),
 							ConstantString::create("cmovl eax, esi\n\n"),
-							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert::create(),
+							COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert::create()),
 							ConstantString::create("imul eax, ecx\n\n"),
-							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())
+							COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("cmp rbx, 0\n\n"),
-							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft::create(),
+							COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft::create()),
 							ConstantString::create("cmovg rax, rdi\n\n"),
-							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight::create(),
+							COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight::create()),
 							ConstantString::create("cmovl rax, rsi\n\n"),
-							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert::create(),
+							COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert::create()),
 							ConstantString::create("imul rax, rcx\n\n"),
-							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())
+							COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()))
 						})
 					)
 				},

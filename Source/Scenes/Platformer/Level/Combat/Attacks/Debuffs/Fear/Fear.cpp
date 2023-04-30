@@ -113,12 +113,12 @@ void Fear::registerHackables()
 						// x86
 						ConcatString::create({
 							ConstantString::create("shr esi, 2\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Fear_Hint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Fear_CommentHint::create())
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("shr rsi, 2\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Fear_Hint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Fear_CommentHint::create())
 						})
 					),
 				}

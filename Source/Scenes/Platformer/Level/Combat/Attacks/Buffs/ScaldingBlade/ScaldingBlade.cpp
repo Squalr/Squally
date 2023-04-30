@@ -132,24 +132,24 @@ void ScaldingBlade::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage::create()),
 							ConstantString::create("movss xmm0, dword ptr [eax]\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier::create()),
 							ConstantString::create("movss xmm1, dword ptr [ebx]\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply::create()),
 							ConstantString::create("mulss xmm0, xmm1\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore::create()),
 							ConstantString::create("movss dword ptr [eax], xmm0\n")
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadDamage::create()),
 							ConstantString::create("movss xmm0, dword ptr [rax]\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentLoadMultiplier::create()),
 							ConstantString::create("movss xmm1, dword ptr [rbx]\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentMultiply::create()),
 							ConstantString::create("mulss xmm0, xmm1\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_ScaldingBlade_CommentStore::create()),
 							ConstantString::create("movss dword ptr [rax], xmm0\n")
 						})
 					),

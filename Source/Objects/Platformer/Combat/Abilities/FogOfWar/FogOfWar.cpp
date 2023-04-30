@@ -126,19 +126,19 @@ void FogOfWar::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShl::create(),
-							Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShlBy1::create(),
-							Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentElaborate::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShl::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShlBy1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentElaborate::create()),
 							ConstantString::create("shl edx, 1\n\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentHint::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShl::create(),
-							Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShlBy1::create(),
-							Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentElaborate::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShl::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentShlBy1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentElaborate::create()),
 							ConstantString::create("shl rdx, 1\n\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FogOfWar_CommentHint::create())
 						})
 					),
 				},

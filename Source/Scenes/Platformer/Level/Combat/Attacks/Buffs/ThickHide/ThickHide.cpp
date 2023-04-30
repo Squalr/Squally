@@ -134,26 +134,26 @@ void ThickHide::registerHackables()
 						// x86
 						ConcatString::create({
 							ConstantString::create("fild dword ptr [edx]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create(),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create(),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentSub::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentSub::create()),
 							ConstantString::create("fisub dword ptr [ebx]\n"),
 							ConstantString::create("fistp dword ptr [edx]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create())
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("fild dword ptr [rdx]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create(),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create(),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentSub::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentI::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentSub::create()),
 							ConstantString::create("fisub dword ptr [rbx]\n"),
 							ConstantString::create("fistp dword ptr [rdx]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create())
 						})
 					),
 				},

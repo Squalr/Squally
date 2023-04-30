@@ -122,23 +122,23 @@ void FireRain::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare::create()),
 							ConstantString::create("comiss xmm3, xmm4\n"),
 							ConstantString::create("je skipCode\n"),
 							ConstantString::create("mov eax, 1\n"),
 							ConstantString::create("skipCode:\n\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentHint::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentCompare::create()),
 							ConstantString::create("comiss xmm3, xmm4\n"),
 							ConstantString::create("je skipCode\n"),
 							ConstantString::create("mov rax, 1\n"),
 							ConstantString::create("skipCode:\n\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentHint::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_FireRain_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()))
 						})
 					),
 				},

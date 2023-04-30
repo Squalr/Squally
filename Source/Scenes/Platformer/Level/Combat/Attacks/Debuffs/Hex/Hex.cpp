@@ -134,28 +134,28 @@ void Hex::registerHackables()
 						// x86
 						ConcatString::create({
 							ConstantString::create("fld dword ptr [esi]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create(),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentMul::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentMul::create()),
 							ConstantString::create("fmul dword ptr [ebx]\n\n"),
 							ConstantString::create("fstp dword ptr [esi]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()),
 							ConstantString::create("\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Hex_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Hex_CommentHint::create())
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("fld dword ptr [esi]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create(),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentMul::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentMul::create()),
 							ConstantString::create("fmul dword ptr [ebx]\n\n"),
 							ConstantString::create("fstp dword ptr [esi]\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()),
 							ConstantString::create("\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Hex_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Hex_CommentHint::create())
 						})
 					)
 				},

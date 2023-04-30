@@ -133,14 +133,14 @@ void Inversion::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_Inversion_CommentNeg::create(),
-							Strings::Menus_Hacking_Abilities_Buffs_Inversion_CommentElaborate::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Inversion_CommentNeg::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Inversion_CommentElaborate::create()),
 							ConstantString::create("neg eax\n")
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_Inversion_CommentNeg::create(),
-							Strings::Menus_Hacking_Abilities_Buffs_Inversion_CommentElaborate::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Inversion_CommentNeg::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Inversion_CommentElaborate::create()),
 							ConstantString::create("neg rax\n")
 						})
 					),

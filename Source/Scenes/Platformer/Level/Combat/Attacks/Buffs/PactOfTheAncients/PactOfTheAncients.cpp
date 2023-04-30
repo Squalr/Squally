@@ -116,17 +116,17 @@ void PactOfTheAncients::registerHackables()
 						ConcatString::create({
 							ConstantString::create("push 5\n"),
 							ConstantString::create("pop dword ptr [edx]\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint::create()),
 							ConstantString::create("\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("push 5\n"),
 							ConstantString::create("pop qword ptr [rdx]\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_PactOfTheAncients_CommentHint::create()),
 							ConstantString::create("\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
 						})
 					),
 				},

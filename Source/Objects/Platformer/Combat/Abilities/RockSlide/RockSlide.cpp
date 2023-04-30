@@ -126,12 +126,12 @@ void RockSlide::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Abilities_RockSlide_Hint::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_RockSlide_CommentHint::create()),
 							ConstantString::create("ror edi, 1\n")
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Abilities_RockSlide_Hint::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_RockSlide_CommentHint::create()),
 							ConstantString::create("ror rdi, 1\n")
 						})
 					),

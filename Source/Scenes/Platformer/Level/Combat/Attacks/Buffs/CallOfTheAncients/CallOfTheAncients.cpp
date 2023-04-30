@@ -123,29 +123,29 @@ void CallOfTheAncients::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
-								->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterEdx::create(), ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)) }), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterEdx::create(), ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)) })), 
 							ConstantString::create("push 30\n"),
 							ConstantString::create("pop edx\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()
-								->setStringReplacementVariables(ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt))), 
-							Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()
+								->setStringReplacementVariables(ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)))), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create()),
 							ConstantString::create("\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
-								->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterRdx::create(), ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)) }), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stacks_CommentEquivalentOfMov::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_RegisterRdx::create(), ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)) })), 
 							ConstantString::create("push 30\n"),
 							ConstantString::create("pop rdx\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()
-								->setStringReplacementVariables(ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt))), 
-							Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDamageIncrease::create()
+								->setStringReplacementVariables(ConstantString::create(std::to_string(CallOfTheAncients::DamageDealt)))), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentDecreaseInstead::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconStack::create()),
 							ConstantString::create("\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_CallOfTheAncients_CommentCareful::create())
 						})
 					),
 				},

@@ -143,20 +143,20 @@ void StoneSkin::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()),
 							ConstantString::create("mov ecx, 3\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
-								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() }),
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() })),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero::create()),
 							ConstantString::create("idiv ecx\n")
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()),
 							ConstantString::create("mov rcx, 3\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
-								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() }),
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() })),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero::create()),
 							ConstantString::create("idiv rcx\n")
 						})
 					),
@@ -164,26 +164,26 @@ void StoneSkin::registerHackables()
 						Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_ReduceStoneSkin::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()),
 							ConstantString::create("; mov ecx, 3\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
-								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() }),
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() })),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero::create()),
 							ConstantString::create("; idiv ecx\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt1::create(),
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt2::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt2::create()),
 							ConstantString::create("imul eax, 0\n")
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivisor::create()),
 							ConstantString::create("; mov rcx, 3\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
-								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() }),
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivide::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() })),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentDivideByZero::create()),
 							ConstantString::create("; idiv rcx\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt1::create(),
-							Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt2::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_StoneSkin_CommentMultiplyPt2::create()),
 							ConstantString::create("imul rax, 0\n")
 						})
 					)

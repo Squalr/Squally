@@ -16,8 +16,7 @@
 #define QUOTE(str) #str
 #define EXPAND_AND_QUOTE(str) QUOTE(str)
 
-#define COMMENT(str) Strings::Common_ConstantNewline::create()->setStringReplacementVariables( \
-	Strings::Common_Comment::create()->setStringReplacementVariables(str))->getString()
+#define COMMENT(str) Strings::Common_Comment::create()->setStringReplacementVariables(str)
 
 #define CREATE_HACKABLES(funcName, codeInfoMap) HackableCode::create([]() { auto func = &funcName; return (void*&)func; }(), codeInfoMap);
 

@@ -129,39 +129,39 @@ void UnholyProtection::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()),
 							ConstantString::create("fld1\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage::create()),
 							ConstantString::create("fild dword ptr [eax]\n"),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()),
 							ConstantString::create("fldz\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create()),
 							ConstantString::create("fcomip st1\n\n"), // ideally this would be fcomip st0, st1 but asmtk doesn't allow this
-							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional::create()),
 							ConstantString::create("fcmove st1\n"), // ideally this would be fcmove st0, st1 but asmtk doesn't allow this
-							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore::create()),
 							ConstantString::create("fistp dword ptr [eax]\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop::create(), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop::create()), 
 							ConstantString::create("fstp st0\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentHint::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFld1::create()),
 							ConstantString::create("fld1\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPushDamage::create()),
 							ConstantString::create("fild dword ptr [rax]\n"),
-							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()),
 							ConstantString::create("fldz\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentCompare::create()),
 							ConstantString::create("fcomip st1\n\n"), // ideally this would be fcomip st0, st1 but asmtk doesn't allow this
-							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentConditional::create()),
 							ConstantString::create("fcmove st1\n"), // ideally this would be fcmove st0, st1 but asmtk doesn't allow this
-							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPopAndStore::create()),
 							ConstantString::create("fistp dword ptr [rax]\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop::create(), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentPop::create()), 
 							ConstantString::create("fstp st0\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_UnholyProtection_CommentHint::create())
 						})
 					),
 				},

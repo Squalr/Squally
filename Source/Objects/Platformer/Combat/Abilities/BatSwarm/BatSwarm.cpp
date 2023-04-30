@@ -126,33 +126,33 @@ void BatSwarm::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentCompare::create()),
 							ConstantString::create("jecxz skipCode\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentApplyDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentApplyDamage::create()),
 							ConstantString::create("mov eax, 1\n"),
 							ConstantString::create("skipCode:\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentHint::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx)),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentHint::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx))),
 							ConstantString::create("\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJecxz::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentEcx::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentZ::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJecxz::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentEcx::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentZ::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentCompare::create()),
 							ConstantString::create("jecxz skipCode\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentApplyDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentApplyDamage::create()),
 							ConstantString::create("mov rax, 1\n"),
 							ConstantString::create("skipCode:\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentHint::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax)),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentHint::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))),
 							ConstantString::create("\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJecxz::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentEcx::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentZ::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJecxz::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentEcx::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentZ::create())
 						})
 					),
 				},

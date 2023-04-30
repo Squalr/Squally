@@ -131,31 +131,31 @@ void HeavenHug::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPush::create(), 
+							COMMENT(Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPush::create()), 
 							ConstantString::create("fld dword ptr [eax]\n"),
-							Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPop::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zbx)), 
+							COMMENT(Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPop::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zbx))), 
 							ConstantString::create("fstp dword ptr [ebx]\n\n"),
-							Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentHint::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zbx)), 
+							COMMENT(Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentHint::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zbx))), 
 							ConstantString::create("\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(), 
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPush::create(), 
+							COMMENT(Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPush::create()), 
 							ConstantString::create("fld dword ptr [rax]\n"),
-							Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPop::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zbx)), 
+							COMMENT(Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentPop::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zbx))), 
 							ConstantString::create("fstp dword ptr [rbx]\n\n"),
-							Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentHint::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zbx)), 
+							COMMENT(Strings::Menus_Hacking_Objects_HeavenHug_GetTravelHeight_CommentHint::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zbx))), 
 							ConstantString::create("\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(), 
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()), 
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create())
 						})
 					)
 				},

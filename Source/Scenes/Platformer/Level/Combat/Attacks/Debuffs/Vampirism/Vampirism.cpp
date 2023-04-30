@@ -116,33 +116,33 @@ void Vampirism::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare::create()),
 							ConstantString::create("cmp edx, 0\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump::create()),
 							ConstantString::create("jl doNothing\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentConvertToHealing::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentConvertToHealing::create()),
 							ConstantString::create("mov ecx, edx\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentReflectDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentReflectDamage::create()),
 							ConstantString::create("imul edx, -1\n\n"),
 							ConstantString::create("doNothing:\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJl::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentL::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJl::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentL::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentCompare::create()),
 							ConstantString::create("cmp rdx, 0\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentJump::create()),
 							ConstantString::create("jl doNothing\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentConvertToHealing::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentConvertToHealing::create()),
 							ConstantString::create("mov rcx, rdx\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentReflectDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Vampirism_CommentReflectDamage::create()),
 							ConstantString::create("imul rdx, -1\n\n"),
 							ConstantString::create("doNothing:\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJl::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentL::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJl::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentL::create())
 						})
 					),
 				},

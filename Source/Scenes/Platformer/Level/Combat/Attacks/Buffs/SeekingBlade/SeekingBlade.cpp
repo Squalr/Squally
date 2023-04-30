@@ -129,24 +129,24 @@ void SeekingBlade::registerHackables()
 						// x86
 						ConcatString::create({
 							ConstantString::create("cmp ecx, 1\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()),
 							ConstantString::create("sete al\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint1::create()
-								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() }),
-							Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint2::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint1::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEcx::create() })),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint2::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("cmp rcx, 1\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()),
 							ConstantString::create("sete al\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint1::create()
-								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() }),
-							Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint2::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint1::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRcx::create() })),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SeekingBlade_CommentHint2::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()))
 						})
 					),
 				},

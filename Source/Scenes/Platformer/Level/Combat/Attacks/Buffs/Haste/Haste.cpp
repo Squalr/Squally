@@ -135,33 +135,33 @@ void Haste::registerHackables()
 						// x86
 						ConcatString::create({
 							ConstantString::create("movss [esi], xmm3\n\n"), 
-							Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss1::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss2::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss2::create())
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("movss [rsi], xmm3\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss1::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss2::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Vector_CommentMovss2::create())
 						})
 					),
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Abilities_Buffs_Haste_ReduceHaste::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed::create()),
 							ConstantString::create("mov dword ptr [esi], 0.0f\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Haste_CommentDecreaseSpeed::create()),
 							ConstantString::create("mov dword ptr [rsi], 0.0f\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentDword::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentPtr::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Common_CommentLexiconPtr::create())
 						})
 					)
 				},

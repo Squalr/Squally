@@ -135,21 +135,21 @@ void Fury::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLea::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_CommentHintLea::create()),
 							ConstantString::create("lea eax, [eax + ebx + 4]\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax)),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_CommentHintLeaDamage::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))),
 							ConstantString::create("add dword ptr [eax], 20\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_CommentHintDontWorry::create())
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLea::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_CommentHintLea::create()),
 							ConstantString::create("lea rax, [rax + rbx + 4]\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_Fury_HintLeaDamage::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax)),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_CommentHintLeaDamage::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))),
 							ConstantString::create("add dword ptr [rax], 20\n\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_Fury_HintDontWorry::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Fury_CommentHintDontWorry::create())
 						})
 					),
 				},

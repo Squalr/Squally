@@ -120,12 +120,12 @@ void InnerFire::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg::create()),
 							ConstantString::create("xchg ecx, edx\n")
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_InnerFire_CommentXchg::create()),
 							ConstantString::create("xchg rcx, rdx\n")
 						})
 					),

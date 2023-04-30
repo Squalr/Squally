@@ -118,26 +118,26 @@ void Bloodletting::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng::create()),
 							ConstantString::create("test ebx, ebx\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJs::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJs::create()),
 							ConstantString::create("js bloodletting\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp::create()),
 							ConstantString::create("jmp skipCode\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage::create()),
 							ConstantString::create("bloodletting:\n"),
 							ConstantString::create("mov edi, 5\n"), // Bloodletting::DamageAmount
 							ConstantString::create("skipCode:\n\n")
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentRng::create()),
 							ConstantString::create("test rbx, rbx\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJs::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJs::create()),
 							ConstantString::create("js bloodletting\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentJmp::create()),
 							ConstantString::create("jmp skipCode\n\n"),
-							Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage::create()),
 							ConstantString::create("bloodletting:\n"),
 							ConstantString::create("mov rdi, 5\n"), // Bloodletting::DamageAmount
 							ConstantString::create("skipCode:\n\n")

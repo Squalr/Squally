@@ -130,24 +130,24 @@ void Calcify::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDamage::create()),
 							ConstantString::create("movss xmm0, dword ptr [eax]\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDivisor::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDivisor::create()),
 							ConstantString::create("movss xmm1, dword ptr [ebx]\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentDivide::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentDivide::create()),
 							ConstantString::create("divss xmm0, xmm1\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentStore::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentStore::create()),
 							ConstantString::create("movss dword ptr [eax], xmm0\n")
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDamage::create()),
 							ConstantString::create("movss xmm0, dword ptr [rax]\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDivisor::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentLoadDivisor::create()),
 							ConstantString::create("movss xmm1, dword ptr [rbx]\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentDivide::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentDivide::create()),
 							ConstantString::create("divss xmm0, xmm1\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentStore::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Calcify_CommentStore::create()),
 							ConstantString::create("movss dword ptr [rax], xmm0\n")
 						})
 					),

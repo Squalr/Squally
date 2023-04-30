@@ -127,45 +127,45 @@ void SharpenedBlade::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMinDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMinDamage::create()),
 							ConstantString::create("mov ebx, 7\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCompare::create()),
 							ConstantString::create("cmp eax, ebx\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentConditionalMov::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentConditionalMov::create()),
 							ConstantString::create("cmovle eax, ebx\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create(),
-							Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentFinale::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentFinale::create()
 								->setStringReplacementVariables({
 									Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(),
 									Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create(),
-								}),
+								})),
 							ConstantString::create("\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentHint::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMinDamage::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentMinDamage::create()),
 							ConstantString::create("mov rbx, 7\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentCompare::create()),
 							ConstantString::create("cmp rax, rbx\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentConditionalMov::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentConditionalMov::create()),
 							ConstantString::create("cmovle rax, rbx\n\n"),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
-							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create(),
-							Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentFinale::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovle::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentFinale::create()
 								->setStringReplacementVariables({
-									Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(),
-									Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create(),
-								}),
+									Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(),
+									Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create(),
+								})),
 							ConstantString::create("\n"),
-							Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentHint::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())
+							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
 						})
 					),
 				},

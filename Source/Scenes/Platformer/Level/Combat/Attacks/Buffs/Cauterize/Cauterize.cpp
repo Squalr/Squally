@@ -120,12 +120,12 @@ void Cauterize::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Abilities_Cauterize_CommentAdd::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Cauterize_CommentAdd::create()),
 							ConstantString::create("addss xmm0, dword ptr [edi]")
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Abilities_Cauterize_CommentAdd::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Cauterize_CommentAdd::create()),
 							ConstantString::create("addss xmm0, dword ptr [rdi]")
 						})
 					),

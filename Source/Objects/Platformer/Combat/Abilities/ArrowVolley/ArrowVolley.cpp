@@ -130,35 +130,35 @@ void ArrowVolley::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall::create()),
 							ConstantString::create("call checkValue\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp::create()),
 							ConstantString::create("jmp complete\n\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare::create()),
 							ConstantString::create("checkValue:\n"),
 							ConstantString::create("cmp ebx, 1\n"),
 							ConstantString::create("cmove eax, ecx\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet::create()),
 							ConstantString::create("ret\n\n"),
 							ConstantString::create("complete:\n\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create())
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create()))
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCall::create()),
 							ConstantString::create("call checkValue\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentJmp::create()),
 							ConstantString::create("jmp complete\n\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentCompare::create()),
 							ConstantString::create("checkValue:\n"),
 							ConstantString::create("cmp rbx, 1\n"),
 							ConstantString::create("cmove rax, rcx\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet::create(),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentRet::create()),
 							ConstantString::create("ret\n\n"),
 							ConstantString::create("complete:\n\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create())
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ArrowVolley_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create()))
 						})
 					),
 				},
