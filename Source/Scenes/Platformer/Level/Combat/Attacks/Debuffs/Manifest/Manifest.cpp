@@ -124,33 +124,37 @@ void Manifest::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentCompareDamage::create()) + 
-						"cmp dword ptr [eax], 0\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentJumpReduce::create()) + 
-						"jne reduceDamage\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentElseSkip::create()) + 
-						"jmp skipCode\n\n" +
-						"reduceDamage:\n" +
-						"mov dword ptr [eax], 0\n\n" +
-						"skipCode:\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJne::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNe::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentCompareDamage::create(),
+							ConstantString::create("cmp dword ptr [eax], 0\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentJumpReduce::create(),
+							ConstantString::create("jne reduceDamage\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentElseSkip::create(),
+							ConstantString::create("jmp skipCode\n\n"),
+							ConstantString::create("reduceDamage:\n"),
+							ConstantString::create("mov dword ptr [eax], 0\n\n"),
+							ConstantString::create("skipCode:\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJne::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNe::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentCompareDamage::create()) + 
-						"cmp dword ptr [rax], 0\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentJumpReduce::create()) + 
-						"jne reduceDamage\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentElseSkip::create()) + 
-						"jmp skipCode\n" +
-						"reduceDamage:\n" +
-						"mov dword ptr [rax], 0\n\n" +
-						"skipCode:\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJne::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNe::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentCompareDamage::create(),
+							ConstantString::create("cmp dword ptr [rax], 0\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentJumpReduce::create(),
+							ConstantString::create("jne reduceDamage\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Manifest_CommentElseSkip::create(),
+							ConstantString::create("jmp skipCode\n"),
+							ConstantString::create("reduceDamage:\n"),
+							ConstantString::create("mov dword ptr [rax], 0\n\n"),
+							ConstantString::create("skipCode:\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJne::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNe::create()
+						})
 					)
 				},
 				true

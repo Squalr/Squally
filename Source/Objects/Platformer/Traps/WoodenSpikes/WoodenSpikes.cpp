@@ -7,6 +7,8 @@
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -106,21 +108,25 @@ void WoodenSpikes::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd::create()) + 
-						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry::create()) + 
-						"fadd dword ptr [ebx]\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1::create()) + 
-						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd::create(),
+							Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry::create(),
+							ConstantString::create("fadd dword ptr [ebx]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create(),
+							Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1::create(),
+							Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2::create(),
+							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd::create()) + 
-						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry::create()) + 
-						"fadd dword ptr [rbx]\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1::create()) + 
-						COMMENT(Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFadd::create(),
+							Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentDontWorry::create(),
+							ConstantString::create("fadd dword ptr [rbx]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create(),
+							Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt1::create(),
+							Strings::Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_CommentFPUInstructionsPt2::create(),
+							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()
+						})
 					)
 				},
 				true

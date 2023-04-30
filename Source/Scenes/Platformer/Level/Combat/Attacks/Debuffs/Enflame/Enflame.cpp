@@ -114,13 +114,17 @@ void Enflame::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng::create()) +
-						std::string("rdrand eax\n") +
-						std::string("and eax, 0xF\n")
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng::create(),
+							ConstantString::create("rdrand eax\n"),
+							ConstantString::create("and eax, 0xF\n")
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng::create()) +
-						std::string("rdrand eax\n") +
-						std::string("and eax, 0xF\n")
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng::create(),
+							ConstantString::create("rdrand eax\n"),
+							ConstantString::create("and eax, 0xF\n")
+						})
 					),
 				},
 				true

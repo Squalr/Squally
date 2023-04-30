@@ -1,10 +1,8 @@
 #include "ScriptList.h"
 
 #include "cocos/2d/CCSprite.h"
-#include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
-#include "Engine/Events/LocalizationEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
@@ -86,12 +84,6 @@ void ScriptList::initializePositions()
 void ScriptList::initializeListeners()
 {
 	super::initializeListeners();
-	
-	/*
-	this->addGlobalEventListener(EventListenerCustom::create(LocalizationEvents::LocaleChangeEvent, [=](EventCustom* args)
-	{
-		this->loadScripts();
-	}));*/
 
 	this->createNewScriptButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { this->addNewScript(); });
 }
@@ -217,14 +209,18 @@ void ScriptList::loadScripts(HackableCode* hackableCode)
 
 	for (HackableCode::ReadOnlyScript& readOnlyScript : readonlyScripts)
 	{
+		LocalizedString* script = (sizeof(void*) == 4) ? readOnlyScript.scriptx86 : readOnlyScript.scriptx64;
+
 		ScriptEntry* scriptEntry = ScriptEntry::create(
 			readOnlyScript.title == nullptr ? nullptr : readOnlyScript.title->clone(),
-			(sizeof(void*) == 4) ? readOnlyScript.scriptx86 : readOnlyScript.scriptx64,
+			script == nullptr ? "" : script->getString(),
 			true,
 			[=](ScriptEntry* entry) { this->onScriptEntryClick(entry); }, 
 			[=](ScriptEntry* entry) { this->onScriptEntryCopyClick(entry); }, 
 			nullptr
 		);
+
+		scriptEntry->bindToLocalizedScript(script->clone());
 
 		this->scripts.push_back(scriptEntry);
 		this->scriptsNode->addChild(scriptEntry);

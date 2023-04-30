@@ -13,9 +13,16 @@ ConcatString* ConcatString::create(std::vector<LocalizedString*> localizedString
 
 LocalizedString* ConcatString::clone()
 {
-	LocalizedString* clonedString = ConcatString::create(this->getStringReplacementVariables());
+	std::vector<LocalizedString*> clonedReplacementVariables = std::vector<LocalizedString*>();
+
+	for (LocalizedString* next : this->getStringReplacementVariables())
+	{
+		clonedReplacementVariables.push_back(next == nullptr ? next : next->clone());
+	}
+
+	LocalizedString* clonedString = ConcatString::create(clonedReplacementVariables);
 	
-	this->copyAttributesTo(clonedString);
+	clonedString->setOverrideLanguage(this->getOverrideLanguage());
 	
 	return clonedString;
 }

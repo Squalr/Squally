@@ -129,55 +129,59 @@ void SpellOfBinding::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) + 
-						std::string("fldz\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentPushSpeed::create()) + 
-						std::string("fld dword ptr [ebx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentCompare::create()) + 
-						std::string("fcompp\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) + 
-						std::string("fstsw ax\n") +
-						std::string("sahf\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentB::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) + 
-						std::string("jbe skipSpellOfBindingCode\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentNegateSpeed::create()) + 
-						std::string("fld dword ptr [ebx]\n") +
-						std::string("fchs\n") +
-						std::string("fstp dword ptr [ebx]\n") +
-						std::string("skipSpellOfBindingCode:\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentHint1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentHint2::create()) +
-						std::string("\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create(),
+							ConstantString::create("fldz\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentPushSpeed::create(),
+							ConstantString::create("fld dword ptr [ebx]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentCompare::create(),
+							ConstantString::create("fcompp\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create(),
+							ConstantString::create("fstsw ax\n"),
+							ConstantString::create("sahf\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentB::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create(),
+							ConstantString::create("jbe skipSpellOfBindingCode\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentNegateSpeed::create(),
+							ConstantString::create("fld dword ptr [ebx]\n"),
+							ConstantString::create("fchs\n"),
+							ConstantString::create("fstp dword ptr [ebx]\n"),
+							ConstantString::create("skipSpellOfBindingCode:\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentHint1::create(),
+							Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentHint2::create(),
+							ConstantString::create("\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) + 
-						std::string("fldz\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentPushSpeed::create()) + 
-						std::string("fld dword ptr [rbx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentCompare::create()) + 
-						std::string("fcompp\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) + 
-						std::string("fstsw ax\n") +
-						std::string("sahf\n") +	
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentB::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) + 
-						std::string("jbe skipSpellOfBindingCode\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentNegateSpeed::create()) + 
-						std::string("fld dword ptr [rbx]\n") +
-						std::string("fchs\n") +
-						std::string("fstp dword ptr [rbx]\n") +
-						std::string("skipSpellOfBindingCode:\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentHint1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentHint2::create()) +
-						std::string("\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create(),
+							ConstantString::create("fldz\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentPushSpeed::create(),
+							ConstantString::create("fld dword ptr [rbx]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentCompare::create(),
+							ConstantString::create("fcompp\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create(),
+							ConstantString::create("fstsw ax\n"),
+							ConstantString::create("sahf\n"),	
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentB::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create(),
+							ConstantString::create("jbe skipSpellOfBindingCode\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentNegateSpeed::create(),
+							ConstantString::create("fld dword ptr [rbx]\n"),
+							ConstantString::create("fchs\n"),
+							ConstantString::create("fstp dword ptr [rbx]\n"),
+							ConstantString::create("skipSpellOfBindingCode:\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentHint1::create(),
+							Strings::Menus_Hacking_Abilities_Debuffs_SpellOfBinding_CommentHint2::create(),
+							ConstantString::create("\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()
+						})
 					)
 				},
 				true

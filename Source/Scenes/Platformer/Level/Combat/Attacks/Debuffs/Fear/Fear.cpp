@@ -111,11 +111,15 @@ void Fear::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						"shr esi, 2\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Fear_Hint::create())
+						ConcatString::create({
+							ConstantString::create("shr esi, 2\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Fear_Hint::create()
+						})
 						, // x64
-						"shr rsi, 2\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Fear_Hint::create())
+						ConcatString::create({
+							ConstantString::create("shr rsi, 2\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Fear_Hint::create()
+						})
 					),
 				}
 			)

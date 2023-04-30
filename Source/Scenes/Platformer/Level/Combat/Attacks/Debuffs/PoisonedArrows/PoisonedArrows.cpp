@@ -123,35 +123,39 @@ void PoisonedArrows::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng::create()) +
-						std::string("fld dword ptr [ebx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst::create()) +
-						std::string("fcomp dword ptr [ecx]\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) +
-						std::string("fstsw ax\n") +
-						std::string("sahf\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip::create()) +
-						std::string("ja skipPoisonedArrowsCode\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage::create()) +
-						std::string("fild dword ptr [edi]\n") +
-						std::string("fistp dword ptr [esi]\n\n") +
-						std::string("skipPoisonedArrowsCode:\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng::create(),
+							ConstantString::create("fld dword ptr [ebx]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst::create(),
+							ConstantString::create("fcomp dword ptr [ecx]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create(),
+							ConstantString::create("fstsw ax\n"),
+							ConstantString::create("sahf\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip::create(),
+							ConstantString::create("ja skipPoisonedArrowsCode\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage::create(),
+							ConstantString::create("fild dword ptr [edi]\n"),
+							ConstantString::create("fistp dword ptr [esi]\n\n"),
+							ConstantString::create("skipPoisonedArrowsCode:\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng::create()) +
-						std::string("fld dword ptr [ebx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst::create()) +
-						std::string("fcomp dword ptr [ecx]\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) +
-						std::string("fstsw ax\n") +
-						std::string("sahf\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip::create()) +
-						std::string("ja skipPoisonedArrowsCode\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage::create()) +
-						std::string("fild dword ptr [edi]\n") +
-						std::string("fistp dword ptr [esi]\n\n") +
-						std::string("skipPoisonedArrowsCode:\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng::create(),
+							ConstantString::create("fld dword ptr [ebx]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst::create(),
+							ConstantString::create("fcomp dword ptr [ecx]\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create(),
+							ConstantString::create("fstsw ax\n"),
+							ConstantString::create("sahf\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip::create(),
+							ConstantString::create("ja skipPoisonedArrowsCode\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage::create(),
+							ConstantString::create("fild dword ptr [edi]\n"),
+							ConstantString::create("fistp dword ptr [esi]\n\n"),
+							ConstantString::create("skipPoisonedArrowsCode:\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint::create()
+						})
 					),
 				},
 				true

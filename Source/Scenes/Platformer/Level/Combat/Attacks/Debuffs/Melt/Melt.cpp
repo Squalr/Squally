@@ -126,23 +126,27 @@ void Melt::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						std::string("cmp edx, 1\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
-						std::string("setne al\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentHint1::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEdx::create() })) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentHint2::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
+						ConcatString::create({
+							ConstantString::create("cmp edx, 1\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create(),
+							ConstantString::create("setne al\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentHint1::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEdx::create() }),
+							Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentHint2::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())
+						})
 						, // x64
-						std::string("cmp rdx, 1\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()) +
-						std::string("setne al\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentHint1::create()
-							->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRdx::create() })) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentHint2::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()))
+						ConcatString::create({
+							ConstantString::create("cmp rdx, 1\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create(),
+							ConstantString::create("setne al\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentHint1::create()
+								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRdx::create() }),
+							Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentHint2::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())
+						})
 					),
 				},
 				true

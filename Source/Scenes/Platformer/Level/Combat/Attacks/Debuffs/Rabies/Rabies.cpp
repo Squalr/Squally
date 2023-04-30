@@ -135,65 +135,69 @@ void Rabies::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushSpeed::create()) +
-						"fld dword ptr [ecx]\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushZero::create()) +
-						"fldz\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare::create()) +
-						"fcompp\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CompEFlags::create()) +
-						"fstsw ax\n" +
-						"sahf\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentJump::create()) +
-						"jge reduceSpeed\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentElse::create()) +
-						"jmp skipCode\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentSpeedDrain::create()) + 
-						"reduceSpeed:\n" +
-						"mov dword ptr [esi], -0.5f\n\n" +
-						"skipCode:\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJge::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create()) +
-						"\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create(),
+							Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushSpeed::create(),
+							ConstantString::create("fld dword ptr [ecx]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushZero::create(),
+							ConstantString::create("fldz\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare::create(),
+							ConstantString::create("fcompp\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CompEFlags::create(),
+							ConstantString::create("fstsw ax\n"),
+							ConstantString::create("sahf\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentJump::create(),
+							ConstantString::create("jge reduceSpeed\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentElse::create(),
+							ConstantString::create("jmp skipCode\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentSpeedDrain::create(),
+							ConstantString::create("reduceSpeed:\n"),
+							ConstantString::create("mov dword ptr [esi], -0.5f\n\n"),
+							ConstantString::create("skipCode:\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJge::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create(),
+							ConstantString::create("\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create(),
+							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create(),
+							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create(),
+							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create(),
+							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create(),
+							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushSpeed::create()) +
-						"fld dword ptr [rcx]\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushZero::create()) +
-						"fldz\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare::create()) +
-						"fcompp\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CompEFlags::create()) +
-						"fstsw ax\n" +
-						"sahf\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentJump::create()) +
-						"jge reduceSpeed\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentElse::create()) +
-						"jmp skipCode\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentSpeedDrain::create()) + 
-						"reduceSpeed:\n" +
-						"mov dword ptr [rsi], -0.5f\n\n" +
-						"skipCode:\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJge::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create()) +
-						"\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()) + 
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create(),
+							Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushSpeed::create(),
+							ConstantString::create("fld dword ptr [rcx]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentPushZero::create(),
+							ConstantString::create("fldz\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentCompare::create(),
+							ConstantString::create("fcompp\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CompEFlags::create(),
+							ConstantString::create("fstsw ax\n"),
+							ConstantString::create("sahf\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentJump::create(),
+							ConstantString::create("jge reduceSpeed\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentElse::create(),
+							ConstantString::create("jmp skipCode\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Rabies_CommentSpeedDrain::create(),
+							ConstantString::create("reduceSpeed:\n"),
+							ConstantString::create("mov dword ptr [rsi], -0.5f\n\n"),
+							ConstantString::create("skipCode:\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJge::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create(),
+							ConstantString::create("\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create(),
+							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create(),
+							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create(),
+							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create(),
+							Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create(),
+							Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()
+						})
 					)
 				},
 				true

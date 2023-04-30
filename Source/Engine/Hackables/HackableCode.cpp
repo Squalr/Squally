@@ -6,6 +6,7 @@
 
 #include "Engine/Events/HackableEvents.h"
 #include "Engine/Hackables/GlobalHackAttributeContainer.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Utils/HackUtils.h"
 #include "Engine/Utils/LogUtils.h"
@@ -91,12 +92,12 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hack
 
 		this->readOnlyScripts.push_back(ReadOnlyScript(
 			Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
-			script,
-			script
+			ConstantString::create(script),
+			ConstantString::create(script)
 		));
 	}
 
-	for (auto script : hackableCodeInfo.readOnlyScripts)
+	for (HackableCode::ReadOnlyScript& script : hackableCodeInfo.readOnlyScripts)
 	{
 		this->readOnlyScripts.push_back(script);
 	}
@@ -109,11 +110,21 @@ HackableCode::HackableCode(void* codeStart, void* codeEnd, HackableCodeInfo hack
 	
 	this->assemblyString = this->originalAssemblyString == nullptr ? "" : this->originalAssemblyString->getString();
 
-	for (auto script : this->readOnlyScripts)
+	for (HackableCode::ReadOnlyScript& script : this->readOnlyScripts)
 	{
 		if (script.title != nullptr)
 		{
 			this->addChild(script.title);
+		}
+
+		if (script.scriptx86 != nullptr)
+		{
+			this->addChild(script.scriptx86);
+		}
+
+		if (script.scriptx64 != nullptr)
+		{
+			this->addChild(script.scriptx64);
 		}
 	}
 }

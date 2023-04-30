@@ -9,6 +9,8 @@
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Hackables/HackableCode.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Optimization/LazyNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Utils/GameUtils.h"
@@ -123,25 +125,29 @@ void SpikedLogRailed::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						std::string("cmp ebx, 0\n\n") +
-						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft::create()) +
-						std::string("cmovg eax, edi\n\n") +
-						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight::create()) +
-						std::string("cmovl eax, esi\n\n") +
-						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert::create()) +
-						std::string("imul eax, ecx\n\n") +
-						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
+						ConcatString::create({
+							ConstantString::create("cmp ebx, 0\n\n"),
+							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft::create(),
+							ConstantString::create("cmovg eax, edi\n\n"),
+							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight::create(),
+							ConstantString::create("cmovl eax, esi\n\n"),
+							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert::create(),
+							ConstantString::create("imul eax, ecx\n\n"),
+							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create())
+						})
 						, // x64
-						std::string("cmp rbx, 0\n\n") +
-						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft::create()) +
-						std::string("cmovg rax, rdi\n\n") +
-						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight::create()) +
-						std::string("cmovl rax, rsi\n\n") +
-						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert::create()) +
-						std::string("imul rax, rcx\n\n") +
-						COMMENT(Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()))
+						ConcatString::create({
+							ConstantString::create("cmp rbx, 0\n\n"),
+							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintLeft::create(),
+							ConstantString::create("cmovg rax, rdi\n\n"),
+							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintRight::create(),
+							ConstantString::create("cmovl rax, rsi\n\n"),
+							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHintInvert::create(),
+							ConstantString::create("imul rax, rcx\n\n"),
+							Strings::Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create())
+						})
 					)
 				},
 				true

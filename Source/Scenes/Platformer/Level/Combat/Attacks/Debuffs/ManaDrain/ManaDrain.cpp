@@ -122,33 +122,37 @@ void ManaDrain::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare::create()) +
-						"cmp ecx, 4\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create())) +
-						"cmovge esi, edx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale::create()) +
-						"\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create()))
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare::create(),
+							ConstantString::create("cmp ecx, 4\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create()),
+							ConstantString::create("cmovge esi, edx\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create(),
+							Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale::create(),
+							ConstantString::create("\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create())
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare::create()) +
-						"cmp rcx, 4\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create())) +
-						"cmovge rsi, rdx\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale::create()) +
-						"\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint::create()
-							->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsi::create()))
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentCompare::create(),
+							ConstantString::create("cmp rcx, 4\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentConditionalMov::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEsi::create()),
+							ConstantString::create("cmovge rsi, rdx\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentCmovge::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentC::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentMov::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create(),
+							Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentFinale::create(),
+							ConstantString::create("\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_ManaDrain_CommentHint::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRsi::create())
+						})
 					),
 				},
 				true

@@ -112,43 +112,47 @@ void UnholyBlade::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) +
-						std::string("fldz\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentPushDamage::create()) +
-						std::string("fild dword ptr [ebx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare::create()) +
-						std::string("fcompp\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) +
-						std::string("fstsw ax\n") +
-						std::string("sahf\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentSkip::create()) +
-						std::string("jb skipCode\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentNegate::create()) +
-						std::string("fild dword ptr [ebx]\n") +
-						std::string("fchs\n") +
-						std::string("fistp dword ptr [ebx]\n\n") +
-						std::string("skipCode:\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint2::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create(),
+							ConstantString::create("fldz\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentPushDamage::create(),
+							ConstantString::create("fild dword ptr [ebx]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare::create(),
+							ConstantString::create("fcompp\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create(),
+							ConstantString::create("fstsw ax\n"),
+							ConstantString::create("sahf\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentSkip::create(),
+							ConstantString::create("jb skipCode\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentNegate::create(),
+							ConstantString::create("fild dword ptr [ebx]\n"),
+							ConstantString::create("fchs\n"),
+							ConstantString::create("fistp dword ptr [ebx]\n\n"),
+							ConstantString::create("skipCode:\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint1::create(),
+							Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint2::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create()) +
-						std::string("fldz\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentPushDamage::create()) +
-						std::string("fild dword ptr [rbx]\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare::create()) +
-						std::string("fcompp\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()) +
-						std::string("fstsw ax\n") +
-						std::string("sahf\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentSkip::create()) +
-						std::string("jb skipCode\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentNegate::create()) +
-						std::string("fild dword ptr [rbx]\n") +
-						std::string("fchs\n") +
-						std::string("fistp dword ptr [rbx]\n\n") +
-						std::string("skipCode:\n\n") +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint1::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint2::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentFldz::create(),
+							ConstantString::create("fldz\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentPushDamage::create(),
+							ConstantString::create("fild dword ptr [rbx]\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentCompare::create(),
+							ConstantString::create("fcompp\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create(),
+							ConstantString::create("fstsw ax\n"),
+							ConstantString::create("sahf\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentSkip::create(),
+							ConstantString::create("jb skipCode\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentNegate::create(),
+							ConstantString::create("fild dword ptr [rbx]\n"),
+							ConstantString::create("fchs\n"),
+							ConstantString::create("fistp dword ptr [rbx]\n\n"),
+							ConstantString::create("skipCode:\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint1::create(),
+							Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_CommentHint2::create()
+						})
 					),
 				},
 				true

@@ -163,7 +163,7 @@ void LocalizedString::copyAttributesTo(LocalizedString* localizedString)
 
 	std::vector<LocalizedString*> stringReplacementVariables = std::vector<LocalizedString*>();
 
-	for (auto next : this->stringReplacementVariables)
+	for (LocalizedString* next : this->stringReplacementVariables)
 	{
 		stringReplacementVariables.push_back(next == nullptr ? nullptr : next->clone());
 	}

@@ -10,6 +10,8 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Input/Input.h"
+#include "Engine/Localization/ConcatString.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Optimization/LazyNode.h"
@@ -133,15 +135,19 @@ void Catapult::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_Objects_Catapult_ApplyPower_ApplyPower::create(),
 						// x86
-						std::string("mov dword ptr [eax], 0.5f\n") +
-						std::string("movss xmm1, dword ptr [eax]\n") +
-						std::string("mulss xmm0, xmm1\n\n") +
-						COMMENT(Strings::Menus_Hacking_Objects_Catapult_ApplyPower_CommentHint::create())
+						ConcatString::create({
+							ConstantString::create("mov dword ptr [eax], 0.5f\n"),
+							ConstantString::create("movss xmm1, dword ptr [eax]\n"),
+							ConstantString::create("mulss xmm0, xmm1\n\n"),
+							Strings::Menus_Hacking_Objects_Catapult_ApplyPower_CommentHint::create()
+						})
 						, // x64
-						std::string("mov dword ptr [rax], 0.5f\n") +
-						std::string("movss xmm1, dword ptr [rax]\n") +
-						std::string("mulss xmm0, xmm1\n\n") +
-						COMMENT(Strings::Menus_Hacking_Objects_Catapult_ApplyPower_CommentHint::create())
+						ConcatString::create({
+							ConstantString::create("mov dword ptr [rax], 0.5f\n"),
+							ConstantString::create("movss xmm1, dword ptr [rax]\n"),
+							ConstantString::create("mulss xmm0, xmm1\n\n"),
+							Strings::Menus_Hacking_Objects_Catapult_ApplyPower_CommentHint::create()
+						})
 					),
 				},
 				true

@@ -116,17 +116,21 @@ void SiphonLife::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentGain::create()) +
-						"inc edi\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain::create()) +
-						"dec esi\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentGain::create(),
+							ConstantString::create("inc edi\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain::create(),
+							ConstantString::create("dec esi\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentGain::create()) +
-						"inc rdi\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain::create()) +
-						"dec rsi\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentGain::create(),
+							ConstantString::create("inc rdi\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentDrain::create(),
+							ConstantString::create("dec rsi\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_SiphonLife_CommentReverse::create()
+						})
 					),
 				},
 				true

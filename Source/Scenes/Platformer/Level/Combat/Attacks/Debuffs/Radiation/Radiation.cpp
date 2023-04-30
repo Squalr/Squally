@@ -113,37 +113,41 @@ void Radiation::registerHackables()
 					HackableCode::ReadOnlyScript(
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()
-							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi))) +
-						"cmp esi, 0\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create()) +
-						"jnz radiation\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create()) +
-						"jmp skipCode\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create()) +
-						"mov edi, 5\n" + // Radiation::DamageAmount
-						"radiation:\n" +
-						"skipCode:\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJnz::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNz::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi)),
+							ConstantString::create("cmp esi, 0\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create(),
+							ConstantString::create("jnz radiation\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create(),
+							ConstantString::create("jmp skipCode\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create(),
+							ConstantString::create("mov edi, 5\n"), // Radiation::DamageAmount
+							ConstantString::create("radiation:\n"),
+							ConstantString::create("skipCode:\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJnz::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNz::create()
+						})
 						, // x64
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()
-							->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi))) +
-						"cmp rsi, 0\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create()) +
-						"jnz radiation\n\n" +
-						"jmp skipCode\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create()) +
-						"mov rdi, 5\n" + // Radiation::DamageAmount
-						"radiation:\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create()) +
-						"skipCode:\n\n" +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJnz::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()) +
-						COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNz::create())
+						ConcatString::create({
+							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentRng::create()
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zsi)),
+							ConstantString::create("cmp rsi, 0\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJnz::create(),
+							ConstantString::create("jnz radiation\n\n"),
+							ConstantString::create("jmp skipCode\n\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentApplyDamage::create(),
+							ConstantString::create("mov rdi, 5\n"), // Radiation::DamageAmount
+							ConstantString::create("radiation:\n"),
+							Strings::Menus_Hacking_Abilities_Debuffs_Radiation_CommentJmp::create(),
+							ConstantString::create("skipCode:\n\n"),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJnz::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create(),
+							Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentNz::create()
+						})
 					),
 				},
 				true
