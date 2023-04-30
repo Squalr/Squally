@@ -45,17 +45,19 @@ std::string LocalizedString::getString()
 {
 	std::string localizedString = this->getStringByLanguage(this->overrideLanguage != LanguageType::NONE ? this->overrideLanguage : Localization::getLanguage());
 
-	int index = 1;
-
-	for (LocalizedString* next : this->stringReplacementVariables)
+	// Reverse iterate to ensure that templates with more digits are processed first.
+	// For example, %s10 is processed before %s1. The reverse order would result in %s10 being treated as "{%s1}" + "0", which is wrong.
+	for (int index = int(this->stringReplacementVariables.size()); index >= 1; index--)
 	{
+		LocalizedString* next = stringReplacementVariables[index - 1];
+
 		if (next != nullptr)
 		{
-			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index++), next->getString());
+			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index), next->getString());
 		}
 		else
 		{
-			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index++), "");
+			localizedString = StrUtils::replaceAll(localizedString, "%s" + std::to_string(index), "");
 		}
 	}
 

@@ -314,11 +314,11 @@ void KillingMachineDamageBehavior::onLoad()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()),
 							ConstantString::create("cmp eax, "),
 							probabilityConstantStr,
 							ConstantString::create("\n\n"),
-							critChanceComment,
+							COMMENT(critChanceComment),
 							command,
 							ConstantString::create(" edi, esi\n\n"),
 							commandComment,
@@ -327,11 +327,11 @@ void KillingMachineDamageBehavior::onLoad()
 						})
 						, // x64
 						ConcatString::create({
-							Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create(),
+							COMMENT(Strings::Menus_Hacking_Objects_KillingMachine_CommentCompare::create()),
 							ConstantString::create("cmp eax, "), // eax usage intentional
 							probabilityConstantStr->clone(),
 							ConstantString::create("\n\n"),
-							critChanceComment->clone(),
+							COMMENT(critChanceComment->clone()),
 							command->clone(),
 							ConstantString::create(" rdi, rsi\n\n"),
 							commandComment->clone(),
