@@ -24,6 +24,8 @@ public:
 	static const std::string SaveKeyLastSelectedScriptIndexPrefix;
 	static const std::string SaveKeyScriptPrefix;
 
+	static const std::string SaveKeyQuickPotionUnlocked;
+
 	static const std::string SaveKeyScrappyFound;
 	static const std::string SaveKeyGuanoFound;
 	static const std::string SaveKeyGeckyFound;

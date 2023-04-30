@@ -72,8 +72,6 @@ DeveloperScene::DeveloperScene()
 	/*
 	- Mechanics:
 		- * Can get stuck on roof of maps (see UR 3_1)
-		- Changing language does not update readonly scripts after they are loaded once
-		- Infinity symbol in hexus does not localize to arabic (and maybe others)
 		- Text navigation in editable assembly text is broken for arabic
 		- Text navigation is pretty bad in long scripts.
 		- Pacing behavior is broken for portal maps
@@ -84,6 +82,10 @@ DeveloperScene::DeveloperScene()
 		- "Quick-potion" capabilities
 		- Necron hitbox wrong in Mages guild (inconsistent?)
 		- No interrupt if damage attack modified to heal
+
+	- Localization
+		- User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
+		- Infinity symbol in hexus does not localize to arabic (and maybe others)
 
 	- Game Feel / Design / Lore:
 		- Very early Perceptron encounter?
@@ -1058,6 +1060,8 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 
 			SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
 			SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
+
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyQuickPotionUnlocked, Value(true));
 
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookArcane, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFire, Value(true));

@@ -16,6 +16,8 @@ const std::string SaveKeys::SaveKeySquallyPositionY = "SAVE_KEY_SQUALLY_POSITION
 const std::string SaveKeys::SaveKeySquallyPositionZ = "SAVE_KEY_SQUALLY_POSITION_Z";
 const std::string SaveKeys::SaveKeySquallyLayerId = "SAVE_KEY_SQUALLY_LAYER_ID";
 
+const std::string SaveKeys::SaveKeyQuickPotionUnlocked = "SAVE_KEY_QUICK_POTION_UNLOCKED";
+
 const std::string SaveKeys::SaveKeyScrappyFound = "SAVE_KEY_Scrappy_FOUND"; // Don't fix casing, backwards compat
 const std::string SaveKeys::SaveKeyGuanoFound = "SAVE_KEY_GUANO_FOUND";
 const std::string SaveKeys::SaveKeyGeckyFound = "SAVE_KEY_GECKY_FOUND";

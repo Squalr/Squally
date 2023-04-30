@@ -11,6 +11,7 @@ class CinematicIndicator;
 class CurrencyDisplay;
 class ObjectiveDisplay;
 class PlatformerDialogueBox;
+class QuickPotion;
 class StatsBars;
 
 class GameHud : public Hud
@@ -32,6 +33,7 @@ private:
 
 	cocos2d::LayerColor* flashLayer = nullptr;
 	CurrencyDisplay* currencyDisplay = nullptr;
+	QuickPotion* quickPotion = nullptr;
 	ObjectiveDisplay* objectiveDisplay = nullptr;
 	StatsBars* statsBars = nullptr;
 	CinematicIndicator* cinematicIndicator = nullptr;
