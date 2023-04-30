@@ -374,7 +374,7 @@ void GameMap::moveObjectToElevateLayer(RelocateObjectArgs* args)
 		return;
 	}
 
-	for (auto layer : this->mapLayers)
+	for (MapLayer* layer : this->mapLayers)
 	{
 		if (layer->isElevateTarget())
 		{
@@ -385,7 +385,7 @@ void GameMap::moveObjectToElevateLayer(RelocateObjectArgs* args)
 
 void GameMap::hackerModeEnable()
 {
-	for (auto layer : this->mapLayers)
+	for (MapLayer* layer : this->mapLayers)
 	{
 		if (!layer->isHackable())
 		{
@@ -396,7 +396,7 @@ void GameMap::hackerModeEnable()
 
 void GameMap::hackerModeDisable()
 {
-	for (auto layer : this->mapLayers)
+	for (MapLayer* layer : this->mapLayers)
 	{
 		layer->setVisible(true);
 	}
@@ -404,7 +404,7 @@ void GameMap::hackerModeDisable()
 
 void GameMap::hackerModeLayerFade()
 {
-	for (auto layer : this->mapLayers)
+	for (MapLayer* layer : this->mapLayers)
 	{
 		if (layer->isHackable())
 		{
@@ -415,7 +415,7 @@ void GameMap::hackerModeLayerFade()
 
 void GameMap::hackerModeLayerUnfade()
 {
-	for (auto layer : this->mapLayers)
+	for (MapLayer* layer : this->mapLayers)
 	{
 		layer->setOpacity(255);
 	}

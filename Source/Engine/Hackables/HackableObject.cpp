@@ -65,11 +65,6 @@ void HackableObject::onEnterTransitionDidFinish()
 	super::onEnterTransitionDidFinish();
 
 	this->registerHackables();
-
-	this->defer([=]()
-	{
-		this->moveUIToTopLayer();
-	});
 }
 
 void HackableObject::initializeListeners()
@@ -148,6 +143,8 @@ void HackableObject::onHackerModeEnable()
 	{
 		this->hackButton->lazyGet()->setVisible(true);
 	}
+	
+	this->moveUIToTopLayer();
 }
 
 void HackableObject::onHackerModeDisable()

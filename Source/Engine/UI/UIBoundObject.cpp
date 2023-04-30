@@ -79,6 +79,9 @@ void UIBoundObject::scheduleUpdateTask()
         this->scheduleTarget = this;
     }
 
+    this->realCoords = UIBoundObject::getRealCoords(this);
+    this->realScale = UIBoundObject::getRealScale(this);
+    
     // Schedule the task on the original parent, that way if the original parent is disposed, update will not be called (avoiding a crash)
     this->scheduleTarget->schedule([=](float dt)
     {
