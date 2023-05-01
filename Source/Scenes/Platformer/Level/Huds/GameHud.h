@@ -9,6 +9,7 @@ namespace cocos2d
 
 class CinematicIndicator;
 class CurrencyDisplay;
+class HelpArrow;
 class ObjectiveDisplay;
 class PlatformerDialogueBox;
 class QuickPotion;
@@ -34,6 +35,8 @@ private:
 	cocos2d::LayerColor* flashLayer = nullptr;
 	CurrencyDisplay* currencyDisplay = nullptr;
 	QuickPotion* quickPotion = nullptr;
+	cocos2d::LayerColor* quickPotionFocusLayer = nullptr;
+	HelpArrow* helpArrowQuickPotion = nullptr;
 	ObjectiveDisplay* objectiveDisplay = nullptr;
 	StatsBars* statsBars = nullptr;
 	CinematicIndicator* cinematicIndicator = nullptr;

@@ -72,18 +72,17 @@ DeveloperScene::DeveloperScene()
 	/*
 	- Mechanics:
 		- * Can get stuck on roof of maps (see UR 3_1)
-		- Introduce quick-potion capability
-		- Text navigation in editable assembly text is broken for arabic
-		- Text navigation is pretty bad in long scripts.
-		- Pacing behavior is broken for portal maps
 		- Techncially Squally respawns on object layer upon death, although usually this is not noticeable
 		- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles) (edit: repro inconsistent)
-		- Camera harsh leaving camera targets (which?)
 		- Infinite duration for combat item notifications
-		- Necron hitbox wrong in Mages guild (inconsistent?)
-		- No interrupt if damage attack modified to heal
+		v Pacing behavior is broken for portal maps
+		v Camera harsh leaving camera targets (which?)
+		v Necron hitbox wrong in Mages guild (inconsistent?)
+		v No interrupt if damage attack modified to heal
 
-	- Localization
+	- Localization / Scripting
+		- Text navigation in editable assembly text is broken for arabic
+		- Text navigation is pretty bad in long scripts.
 		- User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
 		- Infinity symbol in hexus does not localize to arabic (and maybe others)
 
@@ -1061,7 +1060,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::DeleteAllProfileData(UNUSED_SAVE_PROFILE);
 			SaveManager::SetActiveSaveProfile(UNUSED_SAVE_PROFILE);
 
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyQuickPotionUnlocked, Value(true));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyQuickPotionUnlocked, Value(true));
 
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookArcane, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFire, Value(true));

@@ -10,6 +10,7 @@
 
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Localization/LocalizedLabel.h"
+#include "Engine/UI/Controls/HelpArrow.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
@@ -43,7 +44,11 @@ GameHud::GameHud()
 	this->statsBars = StatsBars::create();
 	this->cinematicIndicator = CinematicIndicator::create();
 	this->dialogueBox = PlatformerDialogueBox::create();
+	this->quickPotionFocusLayer = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
 	this->quickPotion = QuickPotion::create();
+	this->helpArrowQuickPotion = HelpArrow::create();
+
+	this->helpArrowQuickPotion->setRotation(90.0f);
 
 	this->statsBars->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->statsBars->setVisible(false);
@@ -54,7 +59,9 @@ GameHud::GameHud()
 	this->addChild(this->objectiveDisplay);
 	this->addChild(this->statsBars);
 	this->addChild(this->currencyDisplay);
+	this->addChild(this->quickPotionFocusLayer);
 	this->addChild(this->quickPotion);
+	this->addChild(this->helpArrowQuickPotion);
 	this->addChild(this->dialogueBox);
 	this->addChild(this->cinematicIndicator);
 }
@@ -83,6 +90,7 @@ void GameHud::initializePositions()
 	this->statsBars->setPosition(offset.x, visibleSize.height + offset.y);
 	this->currencyDisplay->setPosition(offset.x + quickPotionUnlocked ? 172.0f : 64.0f, visibleSize.height + offset.y - 96.0f);
 	this->quickPotion->setPosition(offset.x + 64.0f, visibleSize.height + offset.y - 128.0f);
+	this->helpArrowQuickPotion->setPosition(offset.x + 192.0f, visibleSize.height + offset.y - 128.0f);
 	this->dialogueBox->setPosition(Vec2(visibleSize.width / 2.0f, 192.0f));
 	this->cinematicIndicator->setPosition(48.0f, 48.0f);
 }
@@ -143,6 +151,37 @@ void GameHud::initializeListeners()
 				nullptr
 			), (args->repeatCount <= 0) ? 1 : args->repeatCount));
 		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventUnlockQuickPotion, [=](EventCustom* eventCustom)
+	{
+		bool quickPotionUnlocked = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyQuickPotionUnlocked, Value(false)).asBool();
+
+		if (quickPotionUnlocked)
+		{
+			return;
+		}
+
+		PlatformerEvents::TriggerCinematicHijack();
+		this->helpArrowQuickPotion->showPointer();
+		this->quickPotion->setVisible(true);
+		
+		this->quickPotionFocusLayer->runAction(Sequence::create(
+			FadeTo::create(0.25f, 192),
+			DelayTime::create(2.0f),
+			FadeTo::create(0.25f, 0),
+			CallFunc::create([=]()
+			{
+				this->helpArrowQuickPotion->hidePointer();
+				PlatformerEvents::TriggerCinematicRestore();
+			}),
+			nullptr
+		));
+
+		SaveManager::SaveProfileData(SaveKeys::SaveKeyQuickPotionUnlocked, Value(true));
+
+		// Re-initialize
+		this->initializePositions();
 	}));
 }
 
