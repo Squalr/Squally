@@ -27,6 +27,7 @@ const std::string PlatformerEvents::EventOpenAlchemy = "EVENT_OPEN_ALCHEMY";
 const std::string PlatformerEvents::EventOpenSmithing = "EVENT_OPEN_SMITHING";
 const std::string PlatformerEvents::EventOpenDismantle = "EVENT_OPEN_Dismantle";
 const std::string PlatformerEvents::EventOpenItemInfo = "EVENT_OPEN_ITEM_INFO";
+const std::string PlatformerEvents::EventOpenQuickPotion = "EVENT_OPEN_QUICK_POTION";
 const std::string PlatformerEvents::EventDiscoverItem = "EVENT_DISCOVER_ITEM";
 const std::string PlatformerEvents::EventDiscoverItems = "EVENT_DISCOVER_ITEMS";
 const std::string PlatformerEvents::EventGiveItems = "EVENT_GIVE_ITEM";
@@ -205,6 +206,13 @@ void PlatformerEvents::TriggerOpenItemInfo(ItemInfoArgs args)
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventOpenItemInfo,
 		&args
+	);
+}
+
+void PlatformerEvents::TriggerOpenQuickPotion()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		PlatformerEvents::EventOpenQuickPotion
 	);
 }
 

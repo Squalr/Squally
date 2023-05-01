@@ -91,5 +91,7 @@ private:
 	LazyNode<PlatformerPauseMenu>* platformerPauseMenu = nullptr;
 	MiniMap* miniMap = nullptr;
 
+	bool autoClosePauseMenu = false;
+
 	std::string transition;
 };

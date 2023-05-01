@@ -72,6 +72,7 @@ DeveloperScene::DeveloperScene()
 	/*
 	- Mechanics:
 		- * Can get stuck on roof of maps (see UR 3_1)
+		- Introduce quick-potion capability
 		- Text navigation in editable assembly text is broken for arabic
 		- Text navigation is pretty bad in long scripts.
 		- Pacing behavior is broken for portal maps
@@ -79,7 +80,6 @@ DeveloperScene::DeveloperScene()
 		- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles) (edit: repro inconsistent)
 		- Camera harsh leaving camera targets (which?)
 		- Infinite duration for combat item notifications
-		- "Quick-potion" capabilities
 		- Necron hitbox wrong in Mages guild (inconsistent?)
 		- No interrupt if damage attack modified to heal
 

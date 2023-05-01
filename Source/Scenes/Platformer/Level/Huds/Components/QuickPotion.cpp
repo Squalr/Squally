@@ -63,7 +63,8 @@ void QuickPotion::initializeListeners()
 
 	this->clickableNode->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
-
+		this->clickableNode->deselect();
+		PlatformerEvents::TriggerOpenQuickPotion();
 	});
 }
 

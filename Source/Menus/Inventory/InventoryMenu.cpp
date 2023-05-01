@@ -197,9 +197,20 @@ void InventoryMenu::open()
 	this->onFilterChange();
 }
 
+void InventoryMenu::openItemMenu()
+{
+	this->filterMenu->unfocus();
+	this->itemMenu->focus();
+}
+
 void InventoryMenu::setReturnClickCallback(std::function<void()> returnClickCallback)
 {
 	this->returnClickCallback = returnClickCallback;
+}
+
+FilterMenu* InventoryMenu::getFilterMenu()
+{
+	return this->filterMenu;
 }
 
 void InventoryMenu::performEquipmentAction(Item* item)

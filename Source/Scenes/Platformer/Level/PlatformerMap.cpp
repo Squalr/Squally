@@ -56,6 +56,9 @@
 #include "Menus/Crafting/BlacksmithingMenu.h"
 #include "Menus/Crafting/DismantleMenu.h"
 #include "Menus/CursorSets.h"
+#include "Menus/Inventory/FilterMenu/ConsumablesFilter.h"
+#include "Menus/Inventory/FilterMenu/FilterEntry.h"
+#include "Menus/Inventory/FilterMenu/FilterMenu.h"
 #include "Menus/Inventory/InventoryMenu.h"
 #include "Menus/Inventory/ItemInfoMenu.h"
 #include "Menus/Options/OptionsMenu.h"
@@ -260,6 +263,23 @@ void PlatformerMap::initializeListeners()
 		{
 			// GameUtils::focus(this);
 		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenQuickPotion, [=](EventCustom* eventCustom)
+	{
+		FilterMenu* filterMenu = this->inventoryMenu->lazyGet()->getFilterMenu();
+
+		filterMenu->getFilterByClass<ConsumablesFilter>([filterMenu](ConsumablesFilter* consumablesFilter)
+		{
+			filterMenu->setActiveFilter(consumablesFilter);
+		});
+
+		this->autoClosePauseMenu = true;
+		this->openPauseMenu(this);
+		this->inventoryMenu->lazyGet()->open();
+		this->inventoryMenu->lazyGet()->openItemMenu();
+		this->inventoryMenu->lazyGet()->setVisible(true);
+		GameUtils::focus(this->inventoryMenu->lazyGet());
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenAlchemy, [=](EventCustom* eventCustom)
@@ -738,6 +758,12 @@ InventoryMenu* PlatformerMap::buildInventoryMenu()
 		this->platformerPauseMenu->lazyGet()->setVisible(true);
 		instance->setVisible(false);
 		GameUtils::focus(this->platformerPauseMenu->lazyGet());
+
+		if (this->autoClosePauseMenu)
+		{
+			this->autoClosePauseMenu = false;
+			this->platformerPauseMenu->lazyGet()->close();
+		}
 	});
 
 	return instance;
