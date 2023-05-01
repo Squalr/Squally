@@ -143,7 +143,6 @@ DeveloperScene::DeveloperScene()
 		- Hexus:
 			- Sanity check card localization (due to art changes)
 			- Can pass after auto-loss
-			- Rematch dialog does not load unless map is reloaded (wontfix?)
 			- Win a hexus puzzle, next one will show massive row score deltas
 			- Leave button stuck visible after losing a puzzle
 				- Enemy should pre-calc the best play when player has passed (hard)
@@ -494,6 +493,7 @@ DeveloperScene::DeveloperScene()
 		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
 		// * Make final 4_x maps less bad. Exit door should be placed more reasonably. Maybe gated behind boss kill.
 		// * Mage tower? Portal map?
+		// * Perceptron is on the map with DM door just sitting there. Remove him? Or despawn him properly if there is an encounter.
 
 		/*
 		X Assassin				=>  1_x <ThrowingStar,		fiadd> 		=> Focus / add to damage

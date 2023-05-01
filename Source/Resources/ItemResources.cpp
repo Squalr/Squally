@@ -9,6 +9,7 @@ const std::string ItemResources::Collectables_Cards_CardBinary = "Private/Platfo
 const std::string ItemResources::Collectables_Cards_CardDecimal = "Private/Platformer/Items/Collectables/Cards/CardDecimal.png";
 const std::string ItemResources::Collectables_Cards_CardHex = "Private/Platformer/Items/Collectables/Cards/CardHex.png";
 const std::string ItemResources::Collectables_Cards_CardSpecial = "Private/Platformer/Items/Collectables/Cards/CardSpecial.png";
+const std::string ItemResources::Collectables_Cards_CardSpecialGrey = "Private/Platformer/Items/Collectables/Cards/CardSpecialGrey.png";
 const std::string ItemResources::Collectables_Currency_IOU = "Private/Platformer/Items/Collectables/Currency/IOU.png";
 const std::string ItemResources::Collectables_Currency_IOU10 = "Private/Platformer/Items/Collectables/Currency/IOU10.png";
 const std::string ItemResources::Collectables_Currency_IOU25 = "Private/Platformer/Items/Collectables/Currency/IOU25.png";

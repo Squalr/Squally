@@ -10,6 +10,7 @@ namespace ItemResources
 	extern const std::string Collectables_Cards_CardDecimal;
 	extern const std::string Collectables_Cards_CardHex;
 	extern const std::string Collectables_Cards_CardSpecial;
+	extern const std::string Collectables_Cards_CardSpecialGrey;
 	extern const std::string Collectables_Currency_IOU;
 	extern const std::string Collectables_Currency_IOU10;
 	extern const std::string Collectables_Currency_IOU25;
