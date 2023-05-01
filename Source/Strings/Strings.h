@@ -26154,6 +26154,36 @@ namespace Strings
 		virtual ~Menus_Music_AlexanderIvanov_Heartbeat() = default;
 	};
 
+	class Menus_Music_Alkis_Alkis : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_Alkis_Alkis();
+		virtual ~Menus_Music_Alkis_Alkis() = default;
+	};
+
+	class Menus_Music_Alkis_LittleFootsteps : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_Alkis_LittleFootsteps();
+		virtual ~Menus_Music_Alkis_LittleFootsteps() = default;
+	};
+
 	class Menus_Music_AndreaBaroni_AndreaBaroni : public LocalizedString
 	{
 	public:
@@ -26304,6 +26334,36 @@ namespace Strings
 		virtual ~Menus_Music_JakobLindhagen_JakobLindhagen() = default;
 	};
 
+	class Menus_Music_KrazyKartoons_CarnivalDream : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_KrazyKartoons_CarnivalDream();
+		virtual ~Menus_Music_KrazyKartoons_CarnivalDream() = default;
+	};
+
+	class Menus_Music_KrazyKartoons_KrazyKartoons : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_KrazyKartoons_KrazyKartoons();
+		virtual ~Menus_Music_KrazyKartoons_KrazyKartoons() = default;
+	};
+
 	class Menus_Music_Lemmonias_Lemmonias : public LocalizedString
 	{
 	public:
@@ -26362,36 +26422,6 @@ namespace Strings
 	private:
 		Menus_Music_Nosbertus_TrickOrTreat();
 		virtual ~Menus_Music_Nosbertus_TrickOrTreat() = default;
-	};
-
-	class Menus_Music_StrayGhost_StrayGhost : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Music_StrayGhost_StrayGhost();
-		virtual ~Menus_Music_StrayGhost_StrayGhost() = default;
-	};
-
-	class Menus_Music_StrayGhost_TwoStepsTooOftenAside : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Music_StrayGhost_TwoStepsTooOftenAside();
-		virtual ~Menus_Music_StrayGhost_TwoStepsTooOftenAside() = default;
 	};
 
 	class Menus_Music_TheoAndPaul_LastMarch : public LocalizedString
@@ -26467,6 +26497,36 @@ namespace Strings
 	private:
 		Menus_Music_Unknown_Unknown();
 		virtual ~Menus_Music_Unknown_Unknown() = default;
+	};
+
+	class Menus_Music_Warmstone_Artrium : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_Warmstone_Artrium();
+		virtual ~Menus_Music_Warmstone_Artrium() = default;
+	};
+
+	class Menus_Music_Warmstone_Warmstone : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_Warmstone_Warmstone();
+		virtual ~Menus_Music_Warmstone_Warmstone() = default;
 	};
 
 	class Menus_Next : public LocalizedString

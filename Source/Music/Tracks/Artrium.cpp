@@ -17,7 +17,7 @@ Artrium* Artrium::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-Artrium::Artrium(cocos2d::ValueMap& properties) : super(properties, MusicResources::Artrium, Strings::TODO::create(), Strings::TODO::create())
+Artrium::Artrium(cocos2d::ValueMap& properties) : super(properties, MusicResources::Artrium, Strings::Menus_Music_Warmstone_Artrium::create(), Strings::Menus_Music_Warmstone_Warmstone::create())
 {
 }
 

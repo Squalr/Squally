@@ -71,8 +71,8 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- Mechanics:
-		- * Can get stuck on roof of maps (see UR 3_1)
-		- Techncially Squally respawns on object layer upon death, although usually this is not noticeable
+		** Can get stuck on roof of maps (see UR 3_1)
+		* Techncially Squally respawns on object layer upon death, although usually this is not noticeable (How to fix? Linked spawn object? probably.)
 		- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles) (edit: repro inconsistent)
 		- Infinite duration for combat item notifications
 		v Pacing behavior is broken for portal maps
@@ -87,19 +87,20 @@ DeveloperScene::DeveloperScene()
 		- Infinity symbol in hexus does not localize to arabic (and maybe others)
 
 	- Game Feel / Design / Lore:
-		- Very early Perceptron encounter?
-		- Encounter in DM?
-		- Shadow for Squally
-		- Squally death anim improvement (and disable float hover)
+		** Credits
+		** Final Boss Fight
+		* Cracks in simulation for story
+		* Very early Perceptron encounter?
+			* Encounter in EF?
+			* Encounter in DM?
+		* Shadow for Squally
+		* Squally death anim improvement (and disable float hover. maybe for all entities, as IsAlive check)
 		- Add CPU noises when turned on in DM
 		- Add Train noises in DM/CV
 		- Sub-categories for alchemy lab
-		- Cracks in simulation for story
 		- Chapter transitions can be more special
 		- Icons on title screen buttons (at least options, to reduce pains of wrong language selection)
 		- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
-		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
-		- Seagulls should blink
 		- 2nd pass on all spells
 		- Overworld attacks for many enemies
 		- Remaining spellbooks + abilities
@@ -111,36 +112,41 @@ DeveloperScene::DeveloperScene()
 		- Helpers
 			- Abilities unlocked at certain levels
 			- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
+		v Seagulls should blink
 	
 	- Level Design:
-		- Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
-			- Destroy all warp maps as a result (?) can still keep the zone portals for the return location
-		- What to do with these now?
+		- ? Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
+			- ? Destroy all warp maps as a result (?) can still keep the zone portals for the return location
+		- ? What to do with these now?
 			- Sky masters
 				- Find Finch to get to BP
 				- Find Irmik to get to BP peaks
 			- Kill 2nd sky tower map?
 
-	- Hexus:
-		- Sanity check card localization (due to art changes)
-		- Can pass after auto-loss
-		- Rematch dialog does not load unless map is reloaded (wontfix?)
-		- Win a hexus puzzle, next one will show massive row score deltas
-		- Leave button stuck visible after losing a puzzle
-			- Enemy should pre-calc the best play when player has passed (hard)
-		- Maybe hard code some rewards. It'd be nice to get SHL from the puzzle where you learn it.
+	- Mini-Games:
+		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
+		- A few 3Q Perspective maps
+			- Invisible helpers. Some way to pull helpers into combat
+		- Cipher:
+			* Reinstate? What's the new play? Asm? Macro magic to avoid emulation (store state to a struct after each instruction).
+				- Probably like Hexus puzzles, with preset C++ classes rather than map-property defined.
+		- P-Trace:
+			* Reinstate? What's the new play? Can this be that circuit game I was thinking? Maybe can flip circuit switches to incentivize using brain
+			- isometric squally, and some form of strategy element that isn't prone to trial-and-error.
+				- Another play is to make these actual "maps" that you can pass through.
+			- Could make a mini-game in towns? Inns? Where? Maybe just one machine in a zone of my choosing? (I kinda prefer DM or CV)
+		- Hexus:
+			- Sanity check card localization (due to art changes)
+			- Can pass after auto-loss
+			- Rematch dialog does not load unless map is reloaded (wontfix?)
+			- Win a hexus puzzle, next one will show massive row score deltas
+			- Leave button stuck visible after losing a puzzle
+				- Enemy should pre-calc the best play when player has passed (hard)
+			- Maybe hard code some rewards. It'd be nice to get SHL from the puzzle where you learn it.
 	
 	- Performance / Stability / Code quality:
 		- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
 		- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
-
-	- Mini-games
-		- Just get a few top down replacement maps in. Should be able to do this fairly seamlessly.
-			- Invisible helpers. Some way to pull helpers into combat
-		- 3Q Perspective
-		- Reinstate Cipher with asm or something
-		- Reinstate ball roll game? Would need isometric squally, and some form of strategy element that isn't prone to trial-and-error.
-			- No good way to retrofit this into the game. Reviving the arcade concept could be fun.
 	*/
 
 	// CHAPTER 1 - Mov/add/sub/inc/dec/div/mul + AND Puzzle

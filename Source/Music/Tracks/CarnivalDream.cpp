@@ -17,7 +17,7 @@ CarnivalDream* CarnivalDream::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-CarnivalDream::CarnivalDream(cocos2d::ValueMap& properties) : super(properties, MusicResources::CarnivalDream, Strings::TODO::create(), Strings::TODO::create())
+CarnivalDream::CarnivalDream(cocos2d::ValueMap& properties) : super(properties, MusicResources::CarnivalDream, Strings::Menus_Music_KrazyKartoons_CarnivalDream::create(), Strings::Menus_Music_KrazyKartoons_KrazyKartoons::create())
 {
 }
 
