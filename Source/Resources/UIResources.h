@@ -532,9 +532,11 @@ namespace UIResources
 	extern const std::string Menus_OptionsMenu_IconChatBubble;
 	extern const std::string Menus_OptionsMenu_IconCogs;
 	extern const std::string Menus_OptionsMenu_IconCrown;
+	extern const std::string Menus_OptionsMenu_IconExit;
 	extern const std::string Menus_OptionsMenu_IconKey;
 	extern const std::string Menus_OptionsMenu_IconLightbulb;
 	extern const std::string Menus_OptionsMenu_IconShield;
+	extern const std::string Menus_OptionsMenu_IconStory;
 	extern const std::string Menus_OptionsMenu_IconTools;
 	extern const std::string Menus_OptionsMenu_IconTrophy;
 	extern const std::string Menus_OptionsMenu_IconWeapons;

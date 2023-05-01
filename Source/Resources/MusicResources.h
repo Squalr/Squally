@@ -19,6 +19,8 @@ namespace MusicResources
 	extern const std::string LastMarch;
 	extern const std::string Little_Footsteps;
 	extern const std::string Solace;
+	extern const std::string The_Gift__Melody_;
+	extern const std::string The_Gift;
 	extern const std::string TrickOrTreat;
 	extern const std::string WeWillGetThereTogether;
 };

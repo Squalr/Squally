@@ -18,5 +18,7 @@ const std::string MusicResources::Hexus2 = "Private/Music/Hexus2.ogg";
 const std::string MusicResources::LastMarch = "Private/Music/LastMarch.ogg";
 const std::string MusicResources::Little_Footsteps = "Private/Music/Little Footsteps.ogg";
 const std::string MusicResources::Solace = "Private/Music/Solace.ogg";
+const std::string MusicResources::The_Gift__Melody_ = "Private/Music/The Gift (Melody).ogg";
+const std::string MusicResources::The_Gift = "Private/Music/The Gift.ogg";
 const std::string MusicResources::TrickOrTreat = "Private/Music/TrickOrTreat.ogg";
 const std::string MusicResources::WeWillGetThereTogether = "Private/Music/WeWillGetThereTogether.ogg";

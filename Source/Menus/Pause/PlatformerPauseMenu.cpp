@@ -199,17 +199,8 @@ void PlatformerPauseMenu::setLexiconClickCallback(std::function<void()> lexiconC
 
 ClickableTextNode* PlatformerPauseMenu::buildButton(std::string spriteResource, std::string spriteResourceSelected, LocalizedString* text, bool isLeftAligned,  Vec2 offset)
 {
-	LocalizedLabel*	label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, text);
+	LocalizedLabel*	label = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H2, text, CSize(256.0f, 112.0f), isLeftAligned ? TextHAlignment::LEFT : TextHAlignment::RIGHT);
 	LocalizedLabel*	labelSelected = label->clone();
-
-	label->enableOutline(Color4B::BLACK, 2);
-	label->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
-	label->enableGlow(Color4B::BLACK);
-
-	labelSelected->enableOutline(Color4B::BLACK, 2);
-	labelSelected->setTextColor(Color4B::YELLOW);
-	labelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
-	labelSelected->enableGlow(Color4B::BLACK);
 
 	ClickableTextNode* button = ClickableTextNode::create(
 		label,
@@ -227,6 +218,15 @@ ClickableTextNode* PlatformerPauseMenu::buildButton(std::string spriteResource, 
 		label->setAnchorPoint(Vec2(1.0f, 0.5f));
 		labelSelected->setAnchorPoint(Vec2(1.0f, 0.5f));
 	}
+
+	label->enableOutline(Color4B::BLACK, 2);
+	label->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
+	label->enableGlow(Color4B::BLACK);
+
+	labelSelected->enableOutline(Color4B::BLACK, 2);
+	labelSelected->setTextColor(Color4B::YELLOW);
+	labelSelected->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
+	labelSelected->enableGlow(Color4B::BLACK);
 	
 	button->setTextOffset(offset);
 

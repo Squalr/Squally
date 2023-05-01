@@ -73,6 +73,8 @@ LocalizedLabel* LocalizedLabel::clone()
 
 	result->setAnchorPoint(this->getAnchorPoint());
 	result->setPosition(this->getPosition());
+	result->setDimensions(this->getDimensions().width, this->getDimensions().height);
+	result->setHorizontalAlignment(this->getHorizontalAlignment());
 
 	return result;
 }
@@ -236,6 +238,28 @@ std::string LocalizedLabel::getFont()
 	}
 }
 
+void LocalizedLabel::enableShadow(const Color4B& shadowColor, const CSize& offset, int blurRadius)
+{
+	super::enableShadow(shadowColor, offset, blurRadius);
+
+	this->onStringUpdate();
+
+}
+
+void LocalizedLabel::enableOutline(const Color4B& outlineColor, int outlineSize)
+{
+	super::enableOutline(outlineColor, outlineSize);
+	
+	this->onStringUpdate();
+}
+
+void LocalizedLabel::enableGlow(const Color4B& glowColor)
+{
+	super::enableGlow(glowColor);
+	
+	this->onStringUpdate();
+}
+
 void LocalizedLabel::onStringUpdate()
 {
 	// Save some state we wish to keep
@@ -256,7 +280,7 @@ void LocalizedLabel::onStringUpdate()
 	// Restore that state
 	if (outlineSize > 0)
 	{
-		this->enableOutline(outlineColor, outlineSize);
+		super::enableOutline(outlineColor, outlineSize);
 	}
 }
 

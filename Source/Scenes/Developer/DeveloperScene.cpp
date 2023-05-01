@@ -99,7 +99,6 @@ DeveloperScene::DeveloperScene()
 		- Add Train noises in DM/CV
 		- Sub-categories for alchemy lab
 		- Chapter transitions can be more special
-		- Icons on title screen buttons (at least options, to reduce pains of wrong language selection)
 		- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
 		- 2nd pass on all spells
 		- Overworld attacks for many enemies
@@ -114,6 +113,12 @@ DeveloperScene::DeveloperScene()
 			- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
 		v Seagulls should blink
 	
+	
+	- Music
+		- Good desert music (The Letter sucked)
+		- https://michelemclaughlin.com/pages/contact (Preserverence)
+		- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
+
 	- Level Design:
 		- ? Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
 			- ? Destroy all warp maps as a result (?) can still keep the zone portals for the return location
@@ -147,6 +152,10 @@ DeveloperScene::DeveloperScene()
 	- Performance / Stability / Code quality:
 		- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
 		- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
+	
+	- Polish!
+		- Enemy anims for getting hit
+		- Enemy anims for combat begin (temporarily pausing timeline)
 	*/
 
 	// CHAPTER 1 - Mov/add/sub/inc/dec/div/mul + AND Puzzle

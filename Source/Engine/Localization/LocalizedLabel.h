@@ -56,6 +56,10 @@ public:
 	bool decreaseFontSize();
 	float getFontSize();
 	std::string getFont();
+	
+    void enableShadow(const cocos2d::Color4B& shadowColor = cocos2d::Color4B::BLACK, const cocos2d::CSize& offset = cocos2d::CSize(2,-2), int blurRadius = 0) override;
+    void enableOutline(const cocos2d::Color4B& outlineColor, int outlineSize = -1) override;
+    void enableGlow(const cocos2d::Color4B& glowColor) override;
 
 protected:
 	LocalizedLabel(
