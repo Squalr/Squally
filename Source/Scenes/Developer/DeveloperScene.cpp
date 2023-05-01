@@ -115,15 +115,16 @@ DeveloperScene::DeveloperScene()
 	- Level Design:
 		- Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
 			- Destroy all warp maps as a result (?) can still keep the zone portals for the return location
-		- Sky masters
-			- Find Finch to get to BP
-			- Find Irmik to get to BP peaks
-		- Kill 2nd sky tower map?
+		- What to do with these now?
+			- Sky masters
+				- Find Finch to get to BP
+				- Find Irmik to get to BP peaks
+			- Kill 2nd sky tower map?
 
 	- Hexus:
 		- Sanity check card localization (due to art changes)
 		- Can pass after auto-loss
-		- Rematch dialog does not load unless map is reloaded
+		- Rematch dialog does not load unless map is reloaded (wontfix?)
 		- Win a hexus puzzle, next one will show massive row score deltas
 		- Leave button stuck visible after losing a puzzle
 			- Enemy should pre-calc the best play when player has passed (hard)
@@ -132,7 +133,6 @@ DeveloperScene::DeveloperScene()
 	- Performance / Stability / Code quality:
 		- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
 		- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
-		- Eliminate 'collisionOffset' parameter entirely
 
 	- Mini-games
 		- Just get a few top down replacement maps in. Should be able to do this fairly seamlessly.

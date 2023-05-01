@@ -25,8 +25,7 @@ Vampiress::Vampiress(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_CastleValgrind_Vampiress_Animations,
 	EntityResources::Enemies_CastleValgrind_Vampiress_Emblem,
 	CSize(96.0f, 236.0f),
-	0.9f,
-	Vec2(0.0f, 0.0f))
+	0.9f)
 {
 }
 

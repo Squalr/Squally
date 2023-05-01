@@ -25,8 +25,7 @@ Thug::Thug(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_CastleValgrind_Thug_Animations,
 	EntityResources::Enemies_CastleValgrind_Thug_Emblem,
 	CSize(256.0f, 248.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

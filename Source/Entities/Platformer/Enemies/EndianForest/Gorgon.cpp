@@ -24,8 +24,7 @@ Gorgon::Gorgon(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_EndianForest_Gorgon_Animations,
 	EntityResources::Enemies_EndianForest_Gorgon_Emblem,
 	CSize(512.0f, 512.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

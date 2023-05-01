@@ -25,8 +25,7 @@ SkeletalKnight::SkeletalKnight(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_LambdaCrypts_SkeletalKnight_Animations,
 	EntityResources::Enemies_LambdaCrypts_SkeletalKnight_Emblem,
 	CSize(212.0f, 280.0f),
-	0.8f,
-	Vec2(0.0f, 0.0f))
+	0.8f)
 {
 }
 

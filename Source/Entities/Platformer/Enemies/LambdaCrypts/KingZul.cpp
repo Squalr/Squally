@@ -25,8 +25,7 @@ KingZul::KingZul(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Animations,
 	EntityResources::Enemies_LambdaCrypts_KingZul_Emblem,
 	CSize(196.0f, 288.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

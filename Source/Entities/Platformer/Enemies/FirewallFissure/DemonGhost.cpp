@@ -25,8 +25,7 @@ DemonGhost::DemonGhost(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_FirewallFissure_DemonGhost_Animations,
 	EntityResources::Enemies_FirewallFissure_DemonGhost_Emblem,
 	CSize(256.0f, 320.0f),
-	0.7f,
-	Vec2(0.0f, 0.0f))
+	0.7f)
 {
 }
 

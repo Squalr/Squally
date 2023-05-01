@@ -25,8 +25,7 @@ Xenon::Xenon(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_VoidStar_Xenon_Animations,
 	EntityResources::Npcs_VoidStar_Xenon_Emblem,
 	CSize(112.0f, 160.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

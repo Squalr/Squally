@@ -25,8 +25,7 @@ Krampus::Krampus(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_DataMines_Krampus_Animations,
 	EntityResources::Enemies_DataMines_Krampus_Emblem,
 	CSize(396.0f, 412.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

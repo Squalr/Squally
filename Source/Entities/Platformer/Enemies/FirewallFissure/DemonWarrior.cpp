@@ -25,8 +25,7 @@ DemonWarrior::DemonWarrior(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_FirewallFissure_DemonWarrior_Animations,
 	EntityResources::Enemies_FirewallFissure_DemonWarrior_Emblem,
 	CSize(320.0f, 372.0f),
-	0.7f,
-	Vec2(0.0f, 0.0f))
+	0.7f)
 {
 }
 

@@ -38,7 +38,6 @@ PlatformerEntity::PlatformerEntity(
 	std::string emblemResource,
 	CSize size,
 	float scale, 
-	Vec2 collisionOffset,
 	float hoverHeight
 	) : super(properties)
 {
@@ -51,7 +50,6 @@ PlatformerEntity::PlatformerEntity(
 	this->entityName = entityName;
 	this->state = GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::PropertyState, Value("")).asString();
 	this->battleBehavior = entityName + "-combat," + GameUtils::getKeyOrDefault(this->properties, PlatformerEntity::PropertyBattleBehavior, Value("")).asString();
-	this->entityCollisionOffset = this->entityScale * collisionOffset;
 	this->entitySize = size * this->entityScale;
 	this->platformerEntityDeserializer = PlatformerEntityDeserializer::create();
 
@@ -63,7 +61,7 @@ PlatformerEntity::PlatformerEntity(
 	this->controlState = ControlState::Normal;
 	this->controlStateOverride = ControlState::None;
 
-	this->hackButtonOffset = Vec2(this->entityCollisionOffset.x, this->entityCollisionOffset.y + this->entitySize.height);
+	this->hackButtonOffset = Vec2(0.0f, this->entitySize.height);
 
 	this->animationNode->setScale(this->entityScale);
 	this->animationNode->playAnimation();
@@ -172,17 +170,11 @@ CSize PlatformerEntity::getEntitySize()
 	return this->entitySize;
 }
 
-Vec2 PlatformerEntity::getCollisionOffset()
-{
-	return this->entityCollisionOffset;
-}
-
 Vec2 PlatformerEntity::getEntityCenterPoint()
 {
-	Vec2 collisionOffset = this->isFlippedY() ? Vec2(this->getCollisionOffset().x, -this->getCollisionOffset().y) : this->getCollisionOffset();
 	Vec2 center = this->isFlippedY() ? Vec2(0.0f, this->getEntitySize().height / 2.0f) : Vec2(0.0f, this->getEntitySize().height / 2.0f);
 
-	return collisionOffset + center;
+	return center;
 }
 
 Vec2 PlatformerEntity::getEntityTopPoint()

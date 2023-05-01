@@ -276,8 +276,7 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 		Color4F::TRANSPARENT_WHITE
 	);
 
-	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
+	Vec2 offset = Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
 
 	this->entityCollision->setPosition(offset);
 	this->entityCollision->setName("Entity collision");
@@ -305,8 +304,7 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 		Color4F::ORANGE
 	);
 
-	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Vec2 offset = collisionOffset + Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
+	Vec2 offset = Vec2(0.0f, this->entity->getEntitySize().height / 2.0f);
 
 	this->movementCollision->setPosition(offset);
 	this->movementCollision->setName("Movement collision");
@@ -459,14 +457,13 @@ void EntityCollisionBehaviorBase::buildWallDetectors()
 		return CollisionResult::DoNothing;
 	});
 
-	Vec2 collisionOffset = this->entity->getCollisionOffset();
 	CSize entitySize = this->entity->getEntitySize();
 
 	// Padding
 	entitySize.width += 8.0f;
 
-	Vec2 offsetLeft = collisionOffset + Vec2(-entitySize.width / 2.0f + wallDetectorSize.width / 2.0f, entitySize.height / 2.0f);
-	Vec2 offsetRight = collisionOffset + Vec2(entitySize.width / 2.0f - wallDetectorSize.width / 2.0f, entitySize.height / 2.0f);
+	Vec2 offsetLeft = Vec2(-entitySize.width / 2.0f + wallDetectorSize.width / 2.0f, entitySize.height / 2.0f);
+	Vec2 offsetRight = Vec2(entitySize.width / 2.0f - wallDetectorSize.width / 2.0f, entitySize.height / 2.0f);
 
 	this->leftCollision->setPosition(offsetLeft);
 	this->rightCollision->setPosition(offsetRight);

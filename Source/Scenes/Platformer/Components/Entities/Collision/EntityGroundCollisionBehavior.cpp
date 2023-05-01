@@ -196,7 +196,7 @@ void EntityGroundCollisionBehavior::buildGroundCollisionDetector()
 		Color4F::GRAY
 	);
 	
-	this->groundCollision->setPosition(this->entity->getCollisionOffset() + Vec2(0.0f, EntityGroundCollisionBehavior::GroundCollisionOffset));
+	this->groundCollision->setPosition(Vec2(0.0f, EntityGroundCollisionBehavior::GroundCollisionOffset));
 
 	this->addChild(this->groundCollision);
 
@@ -235,8 +235,7 @@ void EntityGroundCollisionBehavior::buildCornerCollisionDetectors()
 		Color4F::GRAY
 	);
 
-	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Vec2 offset = collisionOffset + Vec2(this->detectorWidth / 2.0f,  EntityGroundCollisionBehavior::GroundCollisionOffset);
+	Vec2 offset = Vec2(this->detectorWidth / 2.0f,  EntityGroundCollisionBehavior::GroundCollisionOffset);
 
 	this->rightCornerCollision->setPosition(offset);
 	this->leftCornerCollision->setPosition(Vec2(-offset.x, offset.y));

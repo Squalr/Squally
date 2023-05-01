@@ -25,8 +25,7 @@ DemonSwordsman::DemonSwordsman(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_FirewallFissure_DemonSwordsman_Animations,
 	EntityResources::Enemies_FirewallFissure_DemonSwordsman_Emblem,
 	CSize(212.0f, 268.0f),
-	0.65f,
-	Vec2(0.0f, 0.0f))
+	0.65f)
 {
 }
 

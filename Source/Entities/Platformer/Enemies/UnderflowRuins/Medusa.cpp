@@ -25,8 +25,7 @@ Medusa::Medusa(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Animations,
 	EntityResources::Enemies_UnderflowRuins_Medusa_Emblem,
 	CSize(224.0f, 304.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

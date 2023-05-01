@@ -24,8 +24,7 @@ OrcGrunt::OrcGrunt(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Animations,
 	EntityResources::Enemies_EndianForest_OrcGrunt_Emblem,
 	CSize(256.0f, 218.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

@@ -25,8 +25,7 @@ LightningGolem::LightningGolem(ValueMap& properties) : super(properties,
 	EntityResources::Enemies__Deprecated_LightningGolem_Animations,
 	EntityResources::Enemies__Deprecated_LightningGolem_Emblem,
 	CSize(768.0f, 840.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

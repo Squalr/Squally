@@ -25,8 +25,7 @@ ZombieElric::ZombieElric(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_LambdaCrypts_ZombieElric_Animations,
 	EntityResources::Enemies_LambdaCrypts_ZombieElric_Emblem,
 	CSize(114.0f, 208.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

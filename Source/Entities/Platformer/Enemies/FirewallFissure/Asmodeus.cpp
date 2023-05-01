@@ -25,8 +25,7 @@ Asmodeus::Asmodeus(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_FirewallFissure_Asmodeus_Animations,
 	EntityResources::Enemies_FirewallFissure_Asmodeus_Emblem,
 	CSize(480.0f, 480.0f),
-	0.8f,
-	Vec2(0.0f, 0.0f))
+	0.8f)
 {
 }
 

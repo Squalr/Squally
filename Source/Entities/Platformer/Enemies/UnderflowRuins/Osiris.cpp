@@ -25,8 +25,7 @@ Osiris::Osiris(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Animations,
 	EntityResources::Enemies_UnderflowRuins_Osiris_Emblem,
 	CSize(324.0f, 316.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

@@ -25,8 +25,7 @@ KillingMachine6::KillingMachine6(ValueMap& properties) : super(properties,
 	EntityResources::Misc_UnderflowRuins_KillingMachine6_Animations,
 	EntityResources::Misc_UnderflowRuins_KillingMachine6_Emblem,
 	CSize(680.0f, 420.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 	this->animationNode->setScaleX(-this->animationNode->getScaleX());
 }

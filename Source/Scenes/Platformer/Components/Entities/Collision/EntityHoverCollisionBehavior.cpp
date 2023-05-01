@@ -180,8 +180,8 @@ CSize EntityHoverCollisionBehavior::getHoverSize(float progress)
 {
 	static const float UpwardsPadding = 40.0f;
 	static const float CrouchLowPoint = this->entity->getHoverHeight() / 3.0f;
-	static const float MinCrouch = this->entity->getCollisionOffset().y + CrouchLowPoint;
-	static const float MaxCrouch = this->entity->getCollisionOffset().y + this->entity->getHoverHeight();
+	static const float MinCrouch =  CrouchLowPoint;
+	static const float MaxCrouch =  this->entity->getHoverHeight();
 
 	float crouchHeight = MinCrouch + (MaxCrouch - MinCrouch) * progress;
 
@@ -201,14 +201,13 @@ void EntityHoverCollisionBehavior::positionHoverCollision(float progress)
 	// Upwards padding exists to help in collisions, as it will result in the "closest" points of a collision being near the bottom of the hover
 	static const float UpwardsPadding = 40.0f;
 	static const float CrouchLowPoint = this->entity->getHoverHeight() / 3.0f;
-	static const float MinCrouchGround = this->entity->getCollisionOffset().y - CrouchLowPoint + EntityGroundCollisionBehavior::GroundCollisionOffset - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
-	static const float MaxCrouchGround = this->entity->getCollisionOffset().y - this->entity->getHoverHeight() + EntityGroundCollisionBehavior::GroundCollisionOffset - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
-	static const float MinCrouchJump = this->entity->getCollisionOffset().y - CrouchLowPoint + EntityJumpCollisionBehavior::JumpCollisionOffset - EntityJumpCollisionBehavior::JumpCollisionHeight / 2.0f;
-	static const float MaxCrouchJump = this->entity->getCollisionOffset().y - this->entity->getHoverHeight() + EntityJumpCollisionBehavior::JumpCollisionOffset - EntityJumpCollisionBehavior::JumpCollisionHeight / 2.0f;
+	static const float MinCrouchGround =  -CrouchLowPoint + EntityGroundCollisionBehavior::GroundCollisionOffset - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
+	static const float MaxCrouchGround =  -this->entity->getHoverHeight() + EntityGroundCollisionBehavior::GroundCollisionOffset - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
+	static const float MinCrouchJump =  -CrouchLowPoint + EntityJumpCollisionBehavior::JumpCollisionOffset - EntityJumpCollisionBehavior::JumpCollisionHeight / 2.0f;
+	static const float MaxCrouchJump =  -this->entity->getHoverHeight() + EntityJumpCollisionBehavior::JumpCollisionOffset - EntityJumpCollisionBehavior::JumpCollisionHeight / 2.0f;
 
-	static const Vec2 CollisionOffset = this->entity->getCollisionOffset();
 	static const float OriginalHoverHeight = this->entity->getHoverHeight();
-	static const Vec2 Offset = CollisionOffset + Vec2(0.0f, -OriginalHoverHeight / 2.0f + UpwardsPadding);
+	static const Vec2 Offset = Vec2(0.0f, -OriginalHoverHeight / 2.0f + UpwardsPadding);
 
 	const CSize hoverSize = this->getHoverSize(progress);
 	const float hoverDelta = OriginalHoverHeight - hoverSize.height;
@@ -224,12 +223,12 @@ void EntityHoverCollisionBehavior::positionHoverCollision(float progress)
 
 	if (this->groundCollision != nullptr && this->groundCollision->getGroundCollision() != nullptr)
 	{
-		this->groundCollision->getGroundCollision()->setPosition(Vec2(this->entity->getCollisionOffset().x, crouchAdjustGroundY));
+		this->groundCollision->getGroundCollision()->setPosition(Vec2(0.0f, crouchAdjustGroundY));
 	}
 
 	if (this->jumpCollision != nullptr && this->jumpCollision->getJumpCollision() != nullptr)
 	{
-		this->jumpCollision->getJumpCollision()->setPosition(Vec2(this->entity->getCollisionOffset().x, crouchAdjustJumpY));
+		this->jumpCollision->getJumpCollision()->setPosition(Vec2(0.0f, crouchAdjustJumpY));
 	}
 	
 	// Reposition anti-gravity detectors
@@ -237,12 +236,12 @@ void EntityHoverCollisionBehavior::positionHoverCollision(float progress)
 
 	if (this->hoverAntiGravityCollisionDetector != nullptr)
 	{
-		this->hoverAntiGravityCollisionDetector->setPosition(Vec2(this->entity->getCollisionOffset().x,  crouchAdjustGroundY));
+		this->hoverAntiGravityCollisionDetector->setPosition(Vec2(0.0f,  crouchAdjustGroundY));
 	}
 
 	if (this->hoverAntiGravityCollisionDetector != nullptr)
 	{
-		this->hoverAntiGravityTopCollisionDetector->setPosition(Vec2(this->entity->getCollisionOffset().x,  crouchAdjustGroundY) + Vec2(0.0f, AntiGravityDetectorSize));
+		this->hoverAntiGravityTopCollisionDetector->setPosition(Vec2(0.0f,  crouchAdjustGroundY) + Vec2(0.0f, AntiGravityDetectorSize));
 	}
 }
 

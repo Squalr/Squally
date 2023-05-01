@@ -93,8 +93,7 @@ void EntityJumpCollisionBehavior::buildJumpCollisionDetector()
 		Color4F::YELLOW
 	);
 	
-	Vec2 collisionOffset = this->entity->getCollisionOffset();
-	Vec2 offset = collisionOffset + Vec2(0.0f, EntityJumpCollisionBehavior::JumpCollisionOffset);
+	Vec2 offset = Vec2(0.0f, EntityJumpCollisionBehavior::JumpCollisionOffset);
 
 	this->jumpCollision->setPosition(offset);
 	

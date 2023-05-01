@@ -25,8 +25,7 @@ DemonArcher::DemonArcher(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_FirewallFissure_DemonArcher_Animations,
 	EntityResources::Enemies_FirewallFissure_DemonArcher_Emblem,
 	CSize(196.0f, 348.0f),
-	0.65f,
-	Vec2(0.0f, 0.0f))
+	0.65f)
 {
 }
 

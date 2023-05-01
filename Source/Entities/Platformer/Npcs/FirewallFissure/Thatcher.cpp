@@ -25,8 +25,7 @@ Thatcher::Thatcher(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_FirewallFissure_Thatcher_Animations,
 	EntityResources::Npcs_FirewallFissure_Thatcher_Emblem,
 	CSize(112.0f, 160.0f),
-	0.9f,
-	Vec2(0.0f, 0.0f))
+	0.9f)
 {
 }
 

@@ -25,8 +25,7 @@ SkeletalArcher::SkeletalArcher(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_DataMines_SkeletalArcher_Animations,
 	EntityResources::Enemies_DataMines_SkeletalArcher_Emblem,
 	CSize(128.0f, 216.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

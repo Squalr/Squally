@@ -25,8 +25,7 @@ DemonDragon::DemonDragon(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_FirewallFissure_DemonDragon_Animations,
 	EntityResources::Enemies_FirewallFissure_DemonDragon_Emblem,
 	CSize(340.0f, 360.0f),
-	0.85f,
-	Vec2(0.0f, 0.0f))
+	0.85f)
 {
 }
 

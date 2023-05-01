@@ -25,8 +25,7 @@ DemonGrunt::DemonGrunt(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_FirewallFissure_DemonGrunt_Animations,
 	EntityResources::Enemies_FirewallFissure_DemonGrunt_Emblem,
 	CSize(312.0f, 372.0f),
-	0.7f,
-	Vec2(0.0f, 0.0f))
+	0.7f)
 {
 }
 

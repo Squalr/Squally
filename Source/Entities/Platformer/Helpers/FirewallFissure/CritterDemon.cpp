@@ -25,8 +25,7 @@ CritterDemon::CritterDemon(ValueMap& properties) : super(properties,
 	EntityResources::Helpers_FirewallFissure_CritterDemon_Animations,
 	EntityResources::Helpers_FirewallFissure_CritterDemon_Emblem,
 	CSize(188.0f, 160.0f),
-	0.7f,
-	Vec2(0.0f, 0.0f))
+	0.7f)
 {
 }
 

@@ -25,8 +25,7 @@ Barbarian::Barbarian(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_CastleValgrind_Barbarian_Animations,
 	EntityResources::Enemies_CastleValgrind_Barbarian_Emblem,
 	CSize(256.0f, 228.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

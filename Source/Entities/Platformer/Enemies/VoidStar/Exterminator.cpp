@@ -25,8 +25,7 @@ Exterminator::Exterminator(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_VoidStar_Exterminator_Animations,
 	EntityResources::Enemies_VoidStar_Exterminator_Emblem,
 	CSize(320.0f, 278.0f),
-	0.9f,
-	Vec2(0.0f, 0.0f))
+	0.9f)
 {
 }
 

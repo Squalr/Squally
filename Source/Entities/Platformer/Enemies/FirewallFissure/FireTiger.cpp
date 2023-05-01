@@ -25,8 +25,7 @@ FireTiger::FireTiger(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_FirewallFissure_FireTiger_Animations,
 	EntityResources::Enemies_FirewallFissure_FireTiger_Emblem,
 	CSize(256.0f, 320.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

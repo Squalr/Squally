@@ -21,8 +21,7 @@ IsometricBall* IsometricBall::deserialize(ValueMap& properties)
 
 IsometricBall::IsometricBall(ValueMap& properties) : super(properties,
 	IsometricEntityResources::SquallBall_Animations,
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

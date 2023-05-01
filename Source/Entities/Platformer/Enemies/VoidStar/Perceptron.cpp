@@ -25,8 +25,7 @@ Perceptron::Perceptron(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_VoidStar_Perceptron_Animations,
 	EntityResources::Enemies_VoidStar_Perceptron_Emblem,
 	CSize(720.0f, 840.0f),
-	0.6f,
-	Vec2(0.0f, 0.0f))
+	0.6f)
 {
 }
 

@@ -25,8 +25,7 @@ Shade::Shade(ValueMap& properties) : super(properties,
 	EntityResources::Enemies__Deprecated_Shade_Animations,
 	EntityResources::Enemies__Deprecated_Shade_Emblem,
 	CSize(284.0f, 256.0f),
-	1.0f,
-	Vec2(0.0f, 0.0f))
+	1.0f)
 {
 }
 

@@ -25,8 +25,7 @@ Dudly::Dudly(ValueMap& properties) : super(properties,
 	EntityResources::Npcs_Transition_Dudly_Animations,
 	EntityResources::Npcs_Transition_Dudly_Emblem,
 	CSize(112.0f, 160.0f),
-	0.9f,
-	Vec2(0.0f, 0.0f))
+	0.9f)
 {
 }
 

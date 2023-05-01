@@ -11,7 +11,6 @@ PlatformerFriendly::PlatformerFriendly(
 	std::string emblemResource,
 	CSize size, 
 	float scale,
-	Vec2 collisionOffset,
 	float hoverHeight
 	)
 	: super(
@@ -21,7 +20,6 @@ PlatformerFriendly::PlatformerFriendly(
 		emblemResource,
 		size,
 		scale,
-		collisionOffset,
 		hoverHeight
 	)
 {

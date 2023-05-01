@@ -25,8 +25,7 @@ Yeti::Yeti(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_BallmerPeaks_Yeti_Animations,
 	EntityResources::Enemies_BallmerPeaks_Yeti_Emblem,
 	CSize(380.0f, 572.0f),
-	1.0f,
-	Vec2(24.0f, 0.0f))
+	1.0f)
 {
 }
 

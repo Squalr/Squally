@@ -63,7 +63,7 @@ void AgroBehavior::initializePositions()
 
 	if (this->entity != nullptr)
 	{
-		Vec2 offset = this->entity->getCollisionOffset() + Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 64.0f);
+		Vec2 offset = Vec2(0.0f, this->entity->getEntitySize().height + this->entity->getHoverHeight() / 2.0f + 64.0f);
 
 		this->exclamation->setPosition(offset);
 	}

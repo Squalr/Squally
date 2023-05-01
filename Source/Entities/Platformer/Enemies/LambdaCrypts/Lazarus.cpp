@@ -25,8 +25,7 @@ Lazarus::Lazarus(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_LambdaCrypts_Lazarus_Animations,
 	EntityResources::Enemies_LambdaCrypts_Lazarus_Emblem,
 	CSize(196.0f, 320.0f),
-	0.9f,
-	Vec2(0.0f, 0.0f))
+	0.9f)
 {
 }
 

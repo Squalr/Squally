@@ -25,8 +25,7 @@ DemonShaman::DemonShaman(ValueMap& properties) : super(properties,
 	EntityResources::Enemies_FirewallFissure_DemonShaman_Animations,
 	EntityResources::Enemies_FirewallFissure_DemonShaman_Emblem,
 	CSize(212.0f, 280.0f),
-	0.65f,
-	Vec2(0.0f, 0.0f))
+	0.65f)
 {
 }
 

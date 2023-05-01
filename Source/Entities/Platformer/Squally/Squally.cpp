@@ -46,7 +46,6 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	EntityResources::Squally_Emblem,
 	CSize(128.0f, 128.0f),
 	Squally::SquallyScale,
-	Vec2(0.0f, 24.0f),
 	96.0f)
 {
 }
