@@ -107,7 +107,7 @@ void SquallyReceiveItemBehavior::onLoad()
 			{
 				std::vector<Currency*> currencies = args->pool->getRandomCurrencyFromPool();
 
-				for (auto currency : currencies)
+				for (Currency* currency : currencies)
 				{
 					if (currency == nullptr || currency->getCount() <= 0)
 					{

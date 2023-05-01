@@ -345,6 +345,9 @@ void ChoicesMenu::setSelectedEntry(TimelineEntry* selectedEntry)
 
 	this->attackMenu->buildAttackList(selectedEntry);
 	this->itemsMenu->buildItemList(selectedEntry);
+
+	// Reset to default attack
+	this->attackMenu->scrollTo(1);
 }
 
 void ChoicesMenu::track(PlatformerEntity* trackTarget)

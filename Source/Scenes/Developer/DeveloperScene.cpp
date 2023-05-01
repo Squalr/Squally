@@ -73,8 +73,6 @@ DeveloperScene::DeveloperScene()
 	- Mechanics:
 		** Can get stuck on roof of maps (see UR 3_1)
 		* Techncially Squally respawns on object layer upon death, although usually this is not noticeable (How to fix? Linked spawn object? probably.)
-		- Fix Squally default ability in combat. Sometimes it's a non-punch ability (ie bubbles) (edit: repro inconsistent)
-		- Infinite duration for combat item notifications
 		v Pacing behavior is broken for portal maps
 		v Camera harsh leaving camera targets (which?)
 		v Necron hitbox wrong in Mages guild (inconsistent?)

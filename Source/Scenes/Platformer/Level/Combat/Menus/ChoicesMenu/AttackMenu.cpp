@@ -68,7 +68,7 @@ void AttackMenu::buildAttackList(TimelineEntry* entry)
 		int index = 0;
 		int mana = entity->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0);
 
-		for (auto attack : attackBehavior->getAttacks())
+		for (PlatformerAttack* attack : attackBehavior->getAttacks())
 		{
 			int cost = attack->getSpecialCost();
 			LocalizedString* costString = (cost <= 0 ? nullptr : Strings::Platformer_Combat_Cost::create()->setStringReplacementVariables(ConstantString::create(std::to_string(cost))));

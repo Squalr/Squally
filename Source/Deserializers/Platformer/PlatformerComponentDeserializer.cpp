@@ -227,6 +227,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 
 	// Helpers
 	this->componentDeserializers[GeckyCombatBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)GeckyCombatBehaviorGroup::create(owner); };
+	this->componentDeserializers[GrimCombatBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)GrimCombatBehaviorGroup::create(owner); };
 	this->componentDeserializers[GuanoCombatBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)GuanoCombatBehaviorGroup::create(owner); };
 	this->componentDeserializers[GuanoPetrifiedCombatBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)GuanoPetrifiedCombatBehaviorGroup::create(owner); };
 	
