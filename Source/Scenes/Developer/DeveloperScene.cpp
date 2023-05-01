@@ -70,13 +70,12 @@ DeveloperScene::DeveloperScene()
 	}
 
 	/*
-	- Mechanics:
-		** Can get stuck on roof of maps (see UR 3_1)
-		* Techncially Squally respawns on object layer upon death, although usually this is not noticeable (How to fix? Linked spawn object? probably.)
+	- Misc Minor:
 		v Pacing behavior is broken for portal maps
 		v Camera harsh leaving camera targets (which?)
 		v Necron hitbox wrong in Mages guild (inconsistent?)
 		v No interrupt if damage attack modified to heal
+		v Seagulls should blink
 
 	- Localization / Scripting
 		- Text navigation in editable assembly text is broken for arabic
@@ -89,12 +88,17 @@ DeveloperScene::DeveloperScene()
 		** Final Boss Fight
 		* Cracks in simulation for story
 		* Very early Perceptron encounter?
-			* Encounter in EF?
-			* Encounter in DM?
-		* Shadow for Squally
-		* Squally death anim improvement (and disable float hover. maybe for all entities, as IsAlive check)
-		- Add CPU noises when turned on in DM
-		- Add Train noises in DM/CV
+			* Encounter in EF? Where?
+			* Add an encounter in DM 1_0 (Have Perceptron block the bridge path, require ducking behind debris to avoid death)
+		- Squally
+			** Can get stuck on roof of maps (see UR 3_1)
+			* Techncially Squally respawns on object layer upon death, although usually this is not noticeable (How to fix? Linked spawn object? probably.)
+			* Shadow for Squally
+			* Squally death anim improvement (and disable float hover. maybe for all entities, as IsAlive check)
+			- 
+		- SFX
+			- Add CPU noises when turned on in DM
+			- Add Train noises in DM/CV
 		- Sub-categories for alchemy lab
 		- Chapter transitions can be more special
 		- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
@@ -109,8 +113,6 @@ DeveloperScene::DeveloperScene()
 		- Helpers
 			- Abilities unlocked at certain levels
 			- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
-		v Seagulls should blink
-	
 	
 	- Music
 		- Good desert music (The Letter sucked)
@@ -149,6 +151,7 @@ DeveloperScene::DeveloperScene()
 	- Performance / Stability / Code quality:
 		- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
 		- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
+		- Crash reports probably are broken?
 	
 	- Polish!
 		- Enemy anims for getting hit

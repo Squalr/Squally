@@ -184,6 +184,10 @@ void SquallyShip::runShipSequence()
 			this->setMountDirection(MountBase::MountDirection::Left);
 			this->faceEntityTowardsDirection();
 			PlatformerEvents::TriggerCinematicHijack();
+			this->defer([=]()
+			{
+				GameCamera::getInstance()->setCameraPositionToTrackedTarget();
+			});
 			this->thrusterSound->play(true);
 			this->thrustAnimation->playAnimationRepeat(FXResources::SmokeFlameTrail_SmokeFlameTrail_0000, 0.05f);
 		}),
