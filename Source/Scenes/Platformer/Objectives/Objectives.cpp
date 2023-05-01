@@ -60,6 +60,21 @@ void Objectives::SetCurrentObjective(std::string objectiveKey)
 		int currentPriority = Objectives::ObjectiveMap[currentObjectiveKey].priority;
 		int newPriority = Objectives::ObjectiveMap[objectiveKey].priority;
 
+		// Fail safe unlocks for testing / backwards compatibility
+		if (newPriority >= 100)
+		{
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyQuickPotionUnlocked, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoFound, Value(true));
+		}
+		if (newPriority >= 300)
+		{
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
+		}
+		if (newPriority >= 400)
+		{
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGrimFound, Value(true));
+		}
+
 		// Prevent setting objective if the new objective has a lower prio
 		if (newPriority < currentPriority)
 		{

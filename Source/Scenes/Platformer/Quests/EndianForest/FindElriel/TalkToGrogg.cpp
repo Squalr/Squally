@@ -17,9 +17,11 @@
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Combat/AgroBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Combat/EnemyCombatEngageBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/EndianForest/KingGrogg/GroggOutOfCombatAttackBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+#include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
 
@@ -64,7 +66,23 @@ void TalkToGrogg::onLoad(QuestState questState)
 		
 		this->kingGrogg->watchForComponent<AgroBehavior>([&](AgroBehavior* agroBehavior)
 		{
-			agroBehavior->disable();
+			if (questState != QuestState::Complete)
+			{
+				agroBehavior->disable();
+			}
+			
+			agroBehavior->toggleWarnOnAgro(false);
+		});
+
+		this->listenForMapEventOnce("force-combat", [=](ValueMap args)
+		{
+			if (this->kingGrogg->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+			{
+				this->kingGrogg->getComponent<EnemyCombatEngageBehavior>([&](EnemyCombatEngageBehavior* engageBehavior)
+				{
+					engageBehavior->engageEnemy(false);
+				});
+			}
 		});
 	}, KingGrogg::MapKey);
 
@@ -170,7 +188,6 @@ void TalkToGrogg::runCinematicSequencePart4()
 			this->kingGrogg->watchForComponent<AgroBehavior>([&](AgroBehavior* agroBehavior)
 			{
 				agroBehavior->enable();
-				agroBehavior->toggleWarnOnAgro(false);
 				agroBehavior->setAgroRangeX(65535.0f);
 				agroBehavior->setAgroRangeY(65535.0f);
 			});

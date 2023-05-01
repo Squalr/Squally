@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="44" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="989">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="44" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="74" nextobjectid="990">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -129,6 +129,11 @@
   <object id="986" name="cinematic-marker" type="object" x="4936.36" y="1916.61" width="78.7879" height="88">
    <properties>
     <property name="tag" value="elriel-exit"/>
+   </properties>
+  </object>
+  <object id="989" name="trigger" type="object" x="3103" y="-34.53" width="206" height="1881.06">
+   <properties>
+    <property name="send-event" value="force-combat"/>
    </properties>
   </object>
  </objectgroup>
