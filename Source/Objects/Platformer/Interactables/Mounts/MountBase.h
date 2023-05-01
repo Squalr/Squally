@@ -39,6 +39,7 @@ protected:
 	void faceEntityTowardsDirection();
 	void moveMount(float dt);
 	
+	cocos2d::Node* rootNode = nullptr;
 	cocos2d::Node* frontNode = nullptr;
 	std::set<PlatformerEntity*> mountedEntities;
 	MountDirection mountDirection = MountDirection::Left;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="46" nextobjectid="634">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="46" nextobjectid="635">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -81,7 +81,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="489" name="blue-grass" type="terrain" x="-144.975" y="6922.1">
-   <polygon points="0,0 4788.16,-35.521 5400.2,-237.343 5693.15,-367.654 6132.87,-462.026 6844.59,-462.951 7099.46,-436.92 7200.29,-74.0982 7616.87,-39.5851 8661.56,0 8680.1,508.916 8513.14,1278.81 7103.57,1317.96 2615.16,1161.37 -37.0944,1017.83 0,378.425"/>
+   <polygon points="-561.762,-4490.32 64.778,-4482.17 56.8966,-19.6749 4788.16,-35.521 5400.2,-237.343 5693.15,-367.654 6132.87,-462.026 6844.59,-462.951 7099.46,-436.92 7200.29,-74.0982 7616.87,-39.5851 8661.56,0 8680.1,508.916 8513.14,1278.81 7103.57,1317.96 2615.16,1161.37 -565.094,1025.83"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
@@ -136,8 +136,14 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1"/>
   </properties>
-  <object id="523" name="squally-ship" type="object" x="4400" y="2089.48" width="78.7879" height="88"/>
+  <object id="523" name="squally-ship" type="object" x="5202" y="2071.48" width="128" height="128"/>
+  <object id="634" name="squally" type="entity" x="840" y="6734" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="27" name="terrain foreground">
   <properties>

@@ -66,7 +66,7 @@ void UIBoundObject::scheduleUpdateTask()
 {
     if (this->scheduleTarget != nullptr && !this->eventKey.empty())
     {
-        this->scheduleTarget->unschedule(eventKey);
+        this->scheduleTarget->unschedule(this->eventKey);
     }
 
     unsigned long long taskId = UIBoundObject::TaskId++;

@@ -34,11 +34,13 @@ const std::string MountBase::PropertySpeed = "speed";
 MountBase::MountBase(ValueMap& properties, CSize size, bool updateXOnly) : super(properties, InteractObject::InteractType::Input, size)
 {
 	this->updateXOnly = updateXOnly;
+	this->rootNode = Node::create();
 	this->reparentNode = Node::create();
 	this->frontNode = Node::create();
 	
-	this->addChild(this->reparentNode);
-	this->addChild(this->frontNode);
+	this->rootNode->addChild(this->reparentNode);
+	this->rootNode->addChild(this->frontNode);
+	this->addChild(this->rootNode);
 }
 
 MountBase::~MountBase()

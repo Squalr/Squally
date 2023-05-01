@@ -5,6 +5,7 @@
 class SaveKeys
 {
 public:
+	static const std::string SaveKeySquallyCrashed;
 	static const std::string SaveKeyMap;
 	static const std::string SaveKeyCharterShipReturnMap;
 	static const std::string SaveKeyCurrentObjective;
