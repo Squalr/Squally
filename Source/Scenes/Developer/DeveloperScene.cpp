@@ -81,7 +81,6 @@ DeveloperScene::DeveloperScene()
 		- Text navigation in editable assembly text is broken for arabic
 		- Text navigation is pretty bad in long scripts.
 		- User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
-		- Infinity symbol in hexus does not localize to arabic (and maybe others)
 
 	- Game Feel / Design / Lore:
 		** Credits
