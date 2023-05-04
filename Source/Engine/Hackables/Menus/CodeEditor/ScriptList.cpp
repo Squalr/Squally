@@ -103,7 +103,7 @@ ScriptEntry* ScriptList::addNewScript()
 		return nullptr;
 	}
 
-	LocalizedString* newScriptName = Strings::Common_ConcatSpaced::create();
+	LocalizedString* newScriptName = Strings::Common_ConcatSpacedBiDi::create();
 
 	newScriptName->setStringReplacementVariables(
 	{

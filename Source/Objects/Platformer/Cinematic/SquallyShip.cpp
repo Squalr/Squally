@@ -187,6 +187,8 @@ void SquallyShip::runShipSequence()
 			this->defer([=]()
 			{
 				GameCamera::getInstance()->setCameraPositionToTrackedTarget();
+				this->originalFollowSpeed = GameCamera::getInstance()->getCurrentTrackingData()->followSpeed;
+				GameCamera::getInstance()->getCurrentTrackingData()->followSpeed *= 2.5f;
 			});
 			this->thrusterSound->play(true);
 			this->thrustAnimation->playAnimationRepeat(FXResources::SmokeFlameTrail_SmokeFlameTrail_0000, 0.05f);
@@ -196,12 +198,12 @@ void SquallyShip::runShipSequence()
 		{
 			this->lightningStrike->playAnimation(FXResources::Lightning_Lightning_0000, 0.06f);
 			this->lightningSound->play();
+			this->rootNode->runAction(EaseSineIn::create(RotateTo::create(1.0f, -45.0f)));
 		}),
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
 			this->isFalling = true;
-			this->rootNode->runAction(EaseSineIn::create(RotateTo::create(2.0f, -45.0f)));
 			this->smokeAnimation->playAnimationRepeat(FXResources::SmokeWhisp_SmokeWhisp_0000, 0.06f);
 			this->shipFireAnimation->playAnimationRepeat(FXResources::FlameWhisp_FlameWhisp_0000, 0.065f, 1.25f, true);
 		}),
@@ -234,6 +236,7 @@ void SquallyShip::onCrash()
 	this->dismountAll();
 	this->hasCrashed = true;
 
+	GameCamera::getInstance()->getCurrentTrackingData()->followSpeed = this->originalFollowSpeed;
 	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyCrashed, Value(true));
 	SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionX);
 	SaveManager::SoftDeleteProfileData(SaveKeys::SaveKeySquallyPositionY);

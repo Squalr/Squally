@@ -774,6 +774,21 @@ namespace Strings
 		virtual ~Common_Concat() = default;
 	};
 
+	class Common_ConcatBiDi : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_ConcatBiDi();
+		virtual ~Common_ConcatBiDi() = default;
+	};
+
 	class Common_ConcatSpaced : public LocalizedString
 	{
 	public:
@@ -787,6 +802,21 @@ namespace Strings
 	private:
 		Common_ConcatSpaced();
 		virtual ~Common_ConcatSpaced() = default;
+	};
+
+	class Common_ConcatSpacedBiDi : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_ConcatSpacedBiDi();
+		virtual ~Common_ConcatSpacedBiDi() = default;
 	};
 
 	class Common_Constant : public LocalizedString
@@ -909,6 +939,21 @@ namespace Strings
 		virtual ~Common_MinusConstant() = default;
 	};
 
+	class Common_MinusConstantBiDi : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_MinusConstantBiDi();
+		virtual ~Common_MinusConstantBiDi() = default;
+	};
+
 	class Common_MinusPointerOffset : public LocalizedString
 	{
 	public:
@@ -999,6 +1044,21 @@ namespace Strings
 		virtual ~Common_PlusConstant() = default;
 	};
 
+	class Common_PlusConstantBiDi : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_PlusConstantBiDi();
+		virtual ~Common_PlusConstantBiDi() = default;
+	};
+
 	class Common_PlusPointerOffset : public LocalizedString
 	{
 	public:
@@ -1059,6 +1119,21 @@ namespace Strings
 		virtual ~Common_TimesConstant() = default;
 	};
 
+	class Common_TimesConstantBiDi : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_TimesConstantBiDi();
+		virtual ~Common_TimesConstantBiDi() = default;
+	};
+
 	class Common_Triconcat : public LocalizedString
 	{
 	public:
@@ -1072,6 +1147,21 @@ namespace Strings
 	private:
 		Common_Triconcat();
 		virtual ~Common_Triconcat() = default;
+	};
+
+	class Common_TriconcatBiDi : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_TriconcatBiDi();
+		virtual ~Common_TriconcatBiDi() = default;
 	};
 
 	class Common_TriconcatSpaced : public LocalizedString
@@ -1089,7 +1179,7 @@ namespace Strings
 		virtual ~Common_TriconcatSpaced() = default;
 	};
 
-	class Common_XArrowY : public LocalizedString
+	class Common_TriconcatSpacedBidi : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -1100,8 +1190,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Common_XArrowY();
-		virtual ~Common_XArrowY() = default;
+		Common_TriconcatSpacedBidi();
+		virtual ~Common_TriconcatSpacedBidi() = default;
 	};
 
 	class Common_XColonY : public LocalizedString
@@ -1119,6 +1209,21 @@ namespace Strings
 		virtual ~Common_XColonY() = default;
 	};
 
+	class Common_XColonYBiDi : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_XColonYBiDi();
+		virtual ~Common_XColonYBiDi() = default;
+	};
+
 	class Common_XColonYSpaced : public LocalizedString
 	{
 	public:
@@ -1132,6 +1237,21 @@ namespace Strings
 	private:
 		Common_XColonYSpaced();
 		virtual ~Common_XColonYSpaced() = default;
+	};
+
+	class Common_XColonYSpacedBiDi : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_XColonYSpacedBiDi();
+		virtual ~Common_XColonYSpacedBiDi() = default;
 	};
 
 	class Common_XEqualsY : public LocalizedString
@@ -1149,6 +1269,21 @@ namespace Strings
 		virtual ~Common_XEqualsY() = default;
 	};
 
+	class Common_XEqualsYBiDi : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_XEqualsYBiDi();
+		virtual ~Common_XEqualsYBiDi() = default;
+	};
+
 	class Common_XOverY : public LocalizedString
 	{
 	public:
@@ -1164,6 +1299,21 @@ namespace Strings
 		virtual ~Common_XOverY() = default;
 	};
 
+	class Common_XOverYBiDi : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_XOverYBiDi();
+		virtual ~Common_XOverYBiDi() = default;
+	};
+
 	class Common_XTimesY : public LocalizedString
 	{
 	public:
@@ -1177,6 +1327,21 @@ namespace Strings
 	private:
 		Common_XTimesY();
 		virtual ~Common_XTimesY() = default;
+	};
+
+	class Common_XTimesYBiDi : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Common_XTimesYBiDi();
+		virtual ~Common_XTimesYBiDi() = default;
 	};
 
 	class Debugging_CameraX : public LocalizedString
