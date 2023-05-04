@@ -116,9 +116,9 @@ void SquallyReceiveItemBehavior::onLoad()
 
 					NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 						args->messageOverride,
-						Strings::Common_Concat::create()->setStringReplacementVariables({
+						Strings::Common_ConcatBiDi::create()->setStringReplacementVariables({
 							currency->getString(),
-							Strings::Common_TimesConstant::create()->setStringReplacementVariables(ConstantString::create(std::to_string(currency->getCount())))
+							Strings::Common_TimesConstantBiDi::create()->setStringReplacementVariables(ConstantString::create(std::to_string(currency->getCount())))
 						}),
 						currency->getIconResource(),
 						SoundResources::Notifications_NotificationGood3,

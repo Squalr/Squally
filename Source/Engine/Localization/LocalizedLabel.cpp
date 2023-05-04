@@ -116,6 +116,13 @@ void LocalizedLabel::setStringReplacementVariables(std::vector<LocalizedString*>
 		this->localizedString->setStringReplacementVariables(stringReplacementVariables);
 	}
 }
+
+void LocalizedLabel::setUseBidirectionalLocalizationAlignment()
+{
+	this->autoLocalizedHorizontalAlignment = true;
+
+	this->setHorizontalAlignment(Localization::isCurrentLanguageLeftToRight() ? TextHAlignment::LEFT : TextHAlignment::RIGHT);
+}
 	
 void LocalizedLabel::setFontSize(FontSize fontSize)
 {
@@ -265,6 +272,11 @@ void LocalizedLabel::onStringUpdate()
 	// Save some state we wish to keep
 	int outlineSize = int(this->getOutlineSize());
 	Color4B outlineColor = Color4B(_effectColorF);
+
+	if (this->autoLocalizedHorizontalAlignment)
+	{
+		this->setHorizontalAlignment(Localization::isCurrentLanguageLeftToRight() ? TextHAlignment::RIGHT : TextHAlignment::LEFT);
+	}
 
 	this->cleanupState();
 	

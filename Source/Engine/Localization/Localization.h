@@ -10,6 +10,7 @@ public:
 	static void setLanguage(cocos2d::LanguageType languageType);
 	static std::string getLanguageCode();
 	static cocos2d::LanguageType getNativeLanguage();
+	static bool isCurrentLanguageLeftToRight();
 
 protected:
 	Localization();

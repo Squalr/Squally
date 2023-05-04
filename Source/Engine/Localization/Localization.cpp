@@ -63,6 +63,12 @@ LanguageType Localization::getNativeLanguage()
 	return Application::getInstance()->getCurrentLanguage();
 }
 
+bool Localization::isCurrentLanguageLeftToRight()
+{
+	// Arabic is the only right to left language supported currently
+	return Localization::getLanguage() != LanguageType::ARABIC;
+}
+
 std::string Localization::getLanguageCode()
 {
 	return Localization::languageTypeToLanguageCode(Localization::getLanguage());
