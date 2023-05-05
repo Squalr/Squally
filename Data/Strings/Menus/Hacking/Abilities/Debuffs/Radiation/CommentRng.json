@@ -1,5 +1,5 @@
 {
-    "ar": "تحقق مما إذا كان %s1 صفرا. يتم تعيين %s1 عشوائيا إلى 0 أو 1.",
+    "ar": ".تحقق مما إذا كان %s1 صفرا. يتم تعيين %s1 عشوائيا إلى 0 أو 1",
     "bg": "Проверете дали %s1 е нула. %s1 е произволно зададено на 0 или 1.",
     "cs": "Zkontrolujte, zda je %s1 nula. %s1 je náhodně nastavena na hodnotu 0 nebo 1.",
     "da": "Kontroller, om %s1 er nul. %s1 er tilfældigt indstillet til 0 eller 1.",

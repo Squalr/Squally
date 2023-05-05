@@ -1,5 +1,5 @@
 {
-    "ar": "ادفع سرعة المخطط الزمني إلى مكدس FPU ، وقم بإلغائه ، ثم أعده إلى الذاكرة.",
+    "ar": ".ادفع سرعة المخطط الزمني إلى مكدس FPU ، وقم بإلغائه ، ثم أعده إلى الذاكرة",
     "bg": "Натиснете скоростта на времевата линия върху стека на FPU, отхвърлете го, след което го върнете обратно в паметта.",
     "cs": "Zatlačte rychlost časové osy na zásobník FPU, negujte ji a poté ji vložte zpět do paměti.",
     "da": "Skub tidslinjehastigheden på FPU-stakken, negér den, og sæt den derefter tilbage i hukommelsen.",

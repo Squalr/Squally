@@ -1,5 +1,5 @@
 {
-    "ar": "ادفع رقما عشوائيا بين 0.0f و 100.0f على مكدس FPU.",
+    "ar": ".FPU ادفع رقما عشوائيا بين 0.0 و 100.0 على مكدس",
     "bg": "Натиснете произволно число между 0.0f и 100.0f върху FPU стека.",
     "cs": "Vložte náhodné číslo mezi 0.0f a 100.0f na zásobník FPU.",
     "da": "Skub tilfældigt tal mellem 0.0f og 100.0f på FPU-stakken.",
