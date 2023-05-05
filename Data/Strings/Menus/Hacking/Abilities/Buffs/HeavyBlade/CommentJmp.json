@@ -1,5 +1,5 @@
 {
-    "ar": "jmp = قفزة. يمكن استخدام هذا لتخطي التعليمات البرمجية.",
+    "ar": ".قفزة. يمكن استخدام هذا لتخطي التعليمات البرمجية = jmp",
     "bg": "jmp = скок. Това може да се използва за пропускане на код.",
     "cs": "jmp = skok. To lze použít k přeskočení kódu.",
     "da": "jmp = spring. Dette kan bruges til at springe over kode.",

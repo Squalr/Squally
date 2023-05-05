@@ -1,6 +1,6 @@
 {
-    "ar": "ادفع الرقم العشوائي إلى مكدس FPU.",
-    "bg": "Натиснете произволното число върху стека на FPU.",
+    "ar": ".FPU ادفع الرقم العشوائي إلى مكدس",
+    "bg": "Натиснете случайното число върху стека на FPU.",
     "cs": "Zasuňte náhodné číslo na zásobník FPU.",
     "da": "Skub det tilfældige tal på FPU-stakken.",
     "de": "Schieben Sie die Zufallszahl auf den FPU-Stack.",
@@ -23,7 +23,7 @@
     "ru": "Поместите случайное число в стек FPU.",
     "sv": "Tryck slumptalet på FPU-stacken.",
     "th": "ดันหมายเลขสุ่มลงบนสแต็ค FPU",
-    "tr": "Rasgele sayıyı FPU yığınına itin.",
+    "tr": "Rastgele sayıyı FPU yığınına itin.",
     "uk": "Натисніть випадкове число на стек FPU.",
     "vi": "Đẩy số ngẫu nhiên vào ngăn xếp FPU.",
     "zh-CN": "将随机数推送到 FPU 堆栈上。",

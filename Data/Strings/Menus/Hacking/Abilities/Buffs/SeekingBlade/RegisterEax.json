@@ -1,5 +1,5 @@
 {
-    "ar": "منطقية تشير إلى ما إذا كان سيتم تطبيق ضرر الضربة الحرجة أم لا. القيمة المنطقية هي نوع بيانات يمكن أن يكون خطأ (0) أو صوابا (1).",
+    "ar": ".(1) منطقية تشير إلى ما إذا كان سيتم تطبيق ضرر الضربة الحرجة أم لا. القيمة المنطقية هي نوع بيانات يمكن أن يكون خطأ (0) أو صوابا",
     "bg": "Булев, показващ дали да се приложи или не критични щети от удар. Булевият е тип данни, който може да бъде неверен (0) или верен (1).",
     "cs": "Logická hodnota, která označuje, zda má být použito poškození kritickým zásahem. Logická hodnota je datový typ, který může být false (0) nebo true (1).",
     "da": "En boolesk, der angiver, om der skal anvendes kritisk slagskade eller ej. En boolesk er en datatype, der kan være falsk (0) eller sand (1).",

@@ -1,5 +1,5 @@
 {
-    "ar": "رقم عشوائي بين -100 و 100.",
+    "ar": ".رقم عشوائي بين -100 و 100",
     "bg": "Случайно число между -100 и 100.",
     "cs": "Náhodné číslo mezi -100 a 100.",
     "da": "Et tilfældigt tal mellem -100 og 100.",
@@ -13,7 +13,7 @@
     "hu": "-100 és 100 közötti véletlen szám.",
     "it": "Un numero casuale compreso tra -100 e 100.",
     "ja": "-100 から 100 までの乱数。",
-    "ko": "-100에서 100 사이의 임의의 숫자입니다.",
+    "ko": "-100에서 100 사이의 난수입니다.",
     "nl": "Een willekeurig getal tussen -100 en 100.",
     "no": "Et tilfeldig tall mellom -100 og 100.",
     "pl": "Liczba losowa z zakresu od -100 do 100.",

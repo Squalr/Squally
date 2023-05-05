@@ -1,5 +1,5 @@
 {
-    "ar": "ستقسم تعليمات 'idiv' سجل %s1 على القيمة في %s2. يتم تخزين النتيجة في %s1.",
+    "ar": ".%s1 ستقسم تعليمات 'idiv' سجل %s1 على القيمة في %s2. يتم تخزين النتيجة في",
     "bg": "Инструкцията „idiv“ ще раздели регистъра %s1 на стойността в %s2. Резултатът се съхранява в %s1.",
     "cs": "Instrukce 'idiv' rozdělí registr %s1 hodnotou ve %s2. Výsledek je uložen ve formátu %s1.",
     "da": "Instruktionen 'idiv' deler %s1-registeret med værdien i %s2. Resultatet gemmes i %s1.",

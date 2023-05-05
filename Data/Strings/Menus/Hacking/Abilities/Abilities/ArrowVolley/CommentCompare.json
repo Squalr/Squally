@@ -1,5 +1,5 @@
 {
-    "ar": "يتحقق هذا القسم من التعليمات البرمجية مما إذا كان كل كيان في فريق اللاعب ، ويحدد الضرر إذا كان الأمر كذلك.",
+    "ar": ".يتحقق هذا القسم من التعليمات البرمجية مما إذا كان كل كيان في فريق اللاعب ، ويحدد الضرر إذا كان الأمر كذلك",
     "bg": "Този раздел с код проверява дали всеки субект е в отбора на играча и задава щетите, ако е така.",
     "cs": "Tato část kódu kontroluje, zda je každá entita v hráčově týmu, a pokud ano, nastavuje poškození.",
     "da": "Dette kodeafsnit kontrollerer, om hver enhed er på spillerens hold, og indstiller skaden, hvis det er tilfældet.",

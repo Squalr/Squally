@@ -1,5 +1,5 @@
 {
-    "ar": "لا يمكن تحميل القيم في تسجيلات xmm* مباشرة ، لذلك يتم تحميلها في %s1 أولاً.",
+    "ar": ".لا يمكن تحميل القيم في تسجيلات xmm* مباشرة ، لذلك يتم تحميلها في %s1 أولاً",
     "bg": "Стойностите не могат да бъдат заредени директно в xmm* регистрите, така че първо се зареждат в %s1.",
     "cs": "Hodnoty nelze načíst přímo do registrů xmm*, takže se nejprve načtou do %s1.",
     "da": "Værdier kan ikke indlæses i xmm*-registre direkte, så de indlæses først i %s1.",

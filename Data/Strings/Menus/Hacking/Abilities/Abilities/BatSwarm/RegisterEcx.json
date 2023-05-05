@@ -1,5 +1,5 @@
 {
-    "ar": "منطقية تشير إلى ما إذا كان الكيان موجودا في فريق العدو. القيمة المنطقية هي نوع بيانات يمكن أن يكون خطأ (0) أو صوابا (1).",
+    "ar": ".منطقية تشير إلى ما إذا كان الكيان موجودا في فريق العدو. القيمة المنطقية هي نوع بيانات يمكن أن يكون خطأ (0) أو صوابا (1)",
     "bg": "Булеви, показващ дали даден субект е в отбора на врага. Булевият е тип данни, който може да бъде неверен (0) или верен (1).",
     "cs": "Logická hodnota označující, zda je entita v nepřátelském týmu. Logická hodnota je datový typ, který může být false (0) nebo true (1).",
     "da": "En boolesk, der angiver, om en enhed er på fjendens hold. En boolesk er en datatype, der kan være falsk (0) eller sand (1).",

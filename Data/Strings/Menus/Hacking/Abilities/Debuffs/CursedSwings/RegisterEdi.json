@@ -1,8 +1,8 @@
 {
-    "ar": "مقسوم الضرر.",
+    "ar": ".قاسم الضرر",
     "bg": "Делител на щети.",
     "cs": "Dělitel poškození.",
-    "da": "Skadesdelingen.",
+    "da": "Skadesdeleren.",
     "de": "Der Schadensteiler.",
     "el": "Ο διαιρέτης ζημιών.",
     "en": "The damage divisor.",
@@ -15,7 +15,7 @@
     "ja": "ダメージ除数。",
     "ko": "피해 제수입니다.",
     "nl": "De schadedeler.",
-    "no": "Skaden divisor.",
+    "no": "Skadeskillet.",
     "pl": "Dzielnik uszkodzeń.",
     "pt": "O divisor de danos.",
     "pt-BR": "O divisor de danos.",
@@ -23,9 +23,9 @@
     "ru": "Делитель повреждений.",
     "sv": "Skadedelaren.",
     "th": "ตัวหารความเสียหาย",
-    "tr": "Hasar bölücü.",
+    "tr": "Hasar bölen.",
     "uk": "Дільник пошкоджень.",
-    "vi": "Ước số sát thương.",
+    "vi": "Số chia thiệt hại.",
     "zh-CN": "伤害除数。",
     "zh-TW": "傷害除數。"
 }

@@ -1,5 +1,5 @@
 {
-    "ar": "منطقي يشير إلى ما إذا كان الكيان في فريق اللاعب. يعتبر قيمة منطقية نوع بيانات يمكن أن يكون خطأ (0) أو صحيح (1).",
+    "ar": ".منطقي يشير إلى ما إذا كان الكيان في فريق اللاعب. يعتبر قيمة منطقية نوع بيانات يمكن أن يكون خطأ (0) أو صحيح (1)",
     "bg": "Булева, показваща дали дадено лице е в отбора на играча. Булевата е тип данни, който може да бъде невярна (0) или true (1).",
     "cs": "Logická hodnota označující, zda je entita v týmu hráče. Logická hodnota je datový typ, který může být false (0) nebo true (1).",
     "da": "En boolesk værdi, der angiver, om en enhed er på spillerens hold. En boolesk er en datatype, der kan være falsk (0) eller sand (1).",

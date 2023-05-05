@@ -1,5 +1,5 @@
 {
-    "el": "Ένας δείκτης για την ελεύθερη μνήμη.", 
+    "el": ".Ένας δείκτης για την ελεύθερη μνήμη", 
     "en": "A pointer to free memory.", 
     "vi": "Một con trỏ để bộ nhớ miễn phí.", 
     "it": "Un puntatore per liberare memoria.", 
