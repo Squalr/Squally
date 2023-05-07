@@ -50,6 +50,7 @@ void Localization::setLanguage(LanguageType languageType)
 		// Support for arabic removed due to poor cocos2d-x support https://github.com/cocos2d/cocos2d-x/issues/15321
 		languageType = LanguageType::ENGLISH;
 	}
+	
 	ConfigManager::setLanguage(Localization::languageTypeToLanguageCode(languageType));
 	ConfigManager::save();
 

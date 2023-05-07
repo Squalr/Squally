@@ -28,21 +28,24 @@ LanguageTab::LanguageTab()
 {
 	for (int index = (int)LanguageType::FIRST_LANGUAGE; index <= (int)LanguageType::LAST_LANGUAGE; index++)
 	{
-		LanguageType language = (LanguageType)index;
+		LanguageType languageType = (LanguageType)index;
+		
+		// Support for arabic removed due to poor cocos2d-x support https://github.com/cocos2d/cocos2d-x/issues/15321
+		if (languageType == LanguageType::ARABIC)
+		{
+			continue;
+		}
+
 		LocalizedString* nextString = Strings::Common_NativeLanguage::create();
 
-		nextString->setOverrideLanguage(language);
+		nextString->setOverrideLanguage(languageType);
 
 		ClickableTextNode* button = this->constructLanguageButton(nextString);
 
-		button->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { Localization::setLanguage(language); });
+		button->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { Localization::setLanguage(languageType); });
 
-		this->languageButtons.push_back(button);
-	}
-
-	for (auto next : this->languageButtons)
-	{
-		this->addChild(next);
+		this->languageButtons[languageType] = button;
+		this->addChild(button);
 	}
 }
 
@@ -66,17 +69,11 @@ void LanguageTab::initializeListeners()
 
 	for (int index = (int)LanguageType::FIRST_LANGUAGE; index <= (int)LanguageType::LAST_LANGUAGE; index++, buttonIndex++)
 	{
-		LanguageType language = (LanguageType)index;
+		LanguageType languageType = (LanguageType)index;
 
-		if (language == LanguageType::ARABIC)
+		if (this->languageButtons.find(languageType) != this->languageButtons.end())
 		{
-			// Support for arabic removed due to poor cocos2d-x support https://github.com/cocos2d/cocos2d-x/issues/15321
-			continue;
-		}
-
-		if (buttonIndex < int(this->languageButtons.size()))
-		{
-			this->languageButtons[buttonIndex]->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { Localization::setLanguage(language); });
+			this->languageButtons[languageType]->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { Localization::setLanguage(languageType); });
 		}
 	}
 }
@@ -89,12 +86,12 @@ void LanguageTab::initializePositions()
 	const Vec2 spacing = Vec2(224.0f, 56.0f);
 	int index = 0;
 
-	for (auto next : this->languageButtons)
+	for (const auto& next : this->languageButtons)
 	{
 		float x = (float)(index / 10) * spacing.x + offset.x;
 		float y = -(float)(index % 10) * spacing.y + offset.y;
 
-		next->setPosition(Vec2(x, y));
+		next.second->setPosition(Vec2(x, y));
 
 		index++;
 	}

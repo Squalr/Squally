@@ -2,6 +2,11 @@
 
 #include "Engine/SmartNode.h"
 
+namespace cocos2d
+{
+	enum class LanguageType;
+};
+
 class LocalizedString;
 class ClickableTextNode;
 
@@ -23,5 +28,5 @@ private:
 
 	ClickableTextNode* constructLanguageButton(LocalizedString* string);
 
-	std::vector<ClickableTextNode*> languageButtons;
+	std::map<cocos2d::LanguageType, ClickableTextNode*> languageButtons;
 };
