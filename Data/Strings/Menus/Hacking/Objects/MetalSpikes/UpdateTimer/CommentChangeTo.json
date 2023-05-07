@@ -1,5 +1,5 @@
 {
-    "ar": "لإيقاف المؤقت ، قم بتغيير هذا إلى 'subss' ، أو استخدم تعليمات 'nop'!",
+    "ar": "!'nop' لإيقاف المؤقت ، قم بتغيير هذا إلى 'subss' ، أو استخدم تعليمات",
     "bg": "За да спрете таймера, променете това на „subss“ или използвайте инструкция „nop“!",
     "cs": "Chcete-li zastavit časovač, změňte jej na „subss“ nebo použijte pokyn „nop“!",
     "da": "For at stoppe timeren skal du ændre dette til 'subss' eller bruge en 'nop' instruktion!",

@@ -25269,21 +25269,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_WoodenSpikes_UpdateTimer_UpdateTimer() = default;
 	};
 
-	class Menus_Hacking_RadialMenu_RequiresEq : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_RadialMenu_RequiresEq();
-		virtual ~Menus_Hacking_RadialMenu_RequiresEq() = default;
-	};
-
 	class Menus_Hacking_RegisterEax : public LocalizedString
 	{
 	public:

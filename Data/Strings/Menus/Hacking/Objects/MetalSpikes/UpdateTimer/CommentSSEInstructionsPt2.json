@@ -1,5 +1,5 @@
 {
-    "ar": "تُعرف التعليمات التي تعمل على سجلات 'xmm*' بإرشادات SSE.",
+    "ar": ".SSE تُعرف التعليمات التي تعمل على سجلات 'xmm*' بإرشادات",
     "bg": "Инструкциите, които работят на регистрите „xmm*“, са известни като инструкции за SSE.",
     "cs": "Pokyny, které fungují v registrech „xmm*“, se nazývají pokyny SSE.",
     "da": "Instruktioner, der fungerer i 'xmm*'-registre, kaldes SSE-instruktioner.",

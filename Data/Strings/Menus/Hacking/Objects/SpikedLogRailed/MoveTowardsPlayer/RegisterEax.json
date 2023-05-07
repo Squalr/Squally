@@ -1,5 +1,5 @@
 {
-    "ar": "الاتجاه الذي سيتحرك فيه الفخ. -1 = يسار، 1 = يمين، 0 = لا توجد حركة.",
+    "ar": ".الاتجاه الذي سيتحرك فيه الفخ. -1 = يسار، 1 = يمين، 0 = لا توجد حركة",
     "bg": "Посоката, в която капанът ще се движи. -1 = ляво, 1 = дясно, 0 = никакво движение.",
     "cs": "Směr, ve kterém se pasti bude pohybovat. -1 = vlevo, 1 = vpravo, 0 = žádný pohyb.",
     "da": "Den retning, hvor fælden vil bevæge sig. -1 = venstre, 1 = højre, 0 = ingen bevægelse.",

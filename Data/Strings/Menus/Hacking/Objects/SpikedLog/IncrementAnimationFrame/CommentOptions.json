@@ -1,5 +1,5 @@
 {
-    "ar": "لإيقاف المصيدة ، يمكنك استخدام تعليمات 'nop' أو 'mov %s1, _' حسنة التوقيت.",
+    "ar": ".لإيقاف المصيدة ، يمكنك استخدام تعليمات 'nop' أو 'mov %s1, _' حسنة التوقيت",
     "bg": "За да спрете капана, можете да използвате добре отметнато „nop“ или инструкция „mov %s1, _“.",
     "cs": "K zastavení pasti můžete použít dobře načasovanou instrukci 'nop' nebo 'mov %s1, _'.",
     "da": "For at stoppe fælden kan du bruge en tidsbestemt 'nop' eller en 'mov %s1, _' instruktion.",

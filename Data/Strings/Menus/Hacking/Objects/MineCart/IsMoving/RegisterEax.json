@@ -1,5 +1,5 @@
 {
-    "ar": "منطقي يشير إلى ما إذا كانت العربة يمكن أن تتحرك. 0 = توقف ، 1 = يتحرك.",
+    "ar": ".منطقي يشير إلى ما إذا كانت العربة يمكن أن تتحرك. 0 = توقف ، 1 = يتحرك",
     "bg": "Булийн, показващ дали количката може да се движи. 0 = спряно, 1 = преместване.",
     "cs": "Logická hodnota označující, zda se košík může pohybovat. 0 = zastaveno, 1 = pohyb.",
     "da": "En boolesk, der angiver, om vognen kan bevæge sig. 0 = stoppet, 1 = flytning.",
