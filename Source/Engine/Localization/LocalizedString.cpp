@@ -66,25 +66,12 @@ std::string LocalizedString::getString()
 
 cocos2d::LanguageType LocalizedString::getOverrideLanguage()
 {
-	if (this->remappedLanguages.find(Localization::getLanguage()) != this->remappedLanguages.end())
-	{
-		return this->remappedLanguages[Localization::getLanguage()];
-	}
-
 	return this->overrideLanguage;
 }
 
 void LocalizedString::setOverrideLanguage(cocos2d::LanguageType overrideLanguage)
 {
 	this->overrideLanguage = overrideLanguage;
-}
-
-LocalizedString* LocalizedString::setOverrideMap(std::map<cocos2d::LanguageType, cocos2d::LanguageType> remappedLanguages)
-{
-	this->remappedLanguages = remappedLanguages;
-
-	// Convenience
-	return this;
 }
 
 LocalizedString* LocalizedString::setStringReplacementVariables(LocalizedString* stringReplacementVariables)

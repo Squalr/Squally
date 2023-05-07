@@ -35709,6 +35709,21 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_TeachMeHexus() = default;
 	};
 
+	class Platformer_Quests_EndianForest_Intro_A_YoureAlive___Copy : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_Intro_A_YoureAlive___Copy();
+		virtual ~Platformer_Quests_EndianForest_Intro_A_YoureAlive___Copy() = default;
+	};
+
 	class Platformer_Quests_EndianForest_Intro_A_YoureAlive : public LocalizedString
 	{
 	public:

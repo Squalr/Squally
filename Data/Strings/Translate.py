@@ -15,25 +15,13 @@ from os.path import isfile, dirname, join, splitext, abspath, realpath, basename
 
 translator = Translator()
 
-# Arabic is the most infuriating language to localize on the planet
-def addAlmMarkers(input_string):
-    # Matches continuous runs of ASCII characters, excluding standalone spaces
-    ascii_runs = re.compile(r'([a-zA-Z0-9]+(?:\s+[a-zA-Z0-9]+)*)')
-    
-    def wrap_with_alm(match):
-        # Wraps the matched string with ALM markers
-        return "\u061C" + match.group(0) + "\u061C"
-    
-    output_string = ascii_runs.sub(wrap_with_alm, input_string)
-    return output_string
-
 def main():
     key_var_name = 'TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
     if not key_var_name in os.environ:
         raise Exception('Please set/export the environment variable: {}'.format(key_var_name))
         
     languages = [
-        'ar',
+        'ar', # Supported removed due to cocos2d-x Arabic bugs (https://github.com/cocos2d/cocos2d-x/issues/15321), but leaving this in case we fix it
         'bg',
         'cs',
         'da',
@@ -120,6 +108,7 @@ def main():
                 translation = key['text']
                 
                 translation = translation.replace('\"', '\\\"')
+                translation = translation.replace('\\\"', '\'')
 
                 if (language == "zh-Hans"):
                     language = 'zh-CN'
@@ -135,13 +124,6 @@ def main():
 
                 if (language == "nb"):
                     language = 'no'
-
-                if (language == "ar"):
-                    # arabic is annoying, just use Google for this. Google appears to be higher quality for ar.
-                    # translation = translator.translate(inputStr, src='en', dest='ar').text
-                    if translation.endswith(".") or translation.endswith("!"):
-                        translation = translation[-1] + translation[:-1]
-                    #translation = addAlmMarkers(translation)
                     
                 resultDict[language] = translation
 

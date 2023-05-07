@@ -1,5 +1,5 @@
 {
-    "ar": ".تلميح: تحدث النتيجة الحرجة فقط إذا كان الرقم العشوائي يساوي بالضبط ٪s1. حاول تغيير 'cmovne' إلى 'cmove' %s2 للتغيير إلى فرصة إصابة حرجة بنسبة",
+    "ar": ".تلميح: تحدث النتيجة الحرجة فقط إذا كان الرقم العشوائي يساوي بالضبط %s1. حاول تغيير 'cmovne' إلى 'cmove' %s2 للتغيير إلى فرصة إصابة حرجة بنسبة",
     "bg": "Съвет: Критично попадение възниква само ако случайното число е точно равно на %s1. Опитайте да промените 'cmovne' на 'cmove', за да промените на %s2% шанс за критично попадение.",
     "cs": "Tip: Ke kritickému zásahu dojde pouze v případě, že náhodné číslo je přesně rovno %s1. Zkuste změnit 'cmovne' na 'cmove' a změňte se na %s2% šanci na kritický zásah.",
     "da": "Tip: Et kritisk hit opstår kun, hvis det tilfældige tal er nøjagtigt lig med %s1. Prøv at ændre 'cmovne' til 'cmove' for at skifte til en %s2% kritisk hitchance.",

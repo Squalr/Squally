@@ -126,7 +126,7 @@ Card::Card(CardStyle cardStyle, CardData* data, bool isPlayerOwnedCard, bool rel
 	this->overflowLabel->setOpacity(0);
 	this->underflowLabel->setOpacity(0);
 
-	this->cardLabel->setAlignment(TextHAlignment::CENTER);
+	this->cardLabel->setHorizontalAlignment(TextHAlignment::CENTER);
 	this->cardLabel->setAnchorPoint(Vec2(0.5f, 1.0f));
 	this->cardLabel->enableOutline(Color4B::BLACK, 6);
 

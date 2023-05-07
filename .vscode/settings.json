@@ -119,7 +119,8 @@
         "charconv": "cpp",
         "*.tcc": "cpp",
         "csignal": "cpp",
-        "format": "cpp"
+        "format": "cpp",
+        "coroutine": "cpp"
     },
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "C_Cpp.configurationWarnings": "Disabled",

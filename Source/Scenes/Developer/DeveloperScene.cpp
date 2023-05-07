@@ -78,7 +78,6 @@ DeveloperScene::DeveloperScene()
 		v Seagulls should blink
 
 	- Localization / Scripting
-		- Text navigation in editable assembly text is broken for arabic
 		- Text navigation is pretty bad in long scripts.
 		- Multi-line comments in scripts can cause line counter to become disrupted
 		- Long scripts can fail to show blinking cursor sometimes (??)

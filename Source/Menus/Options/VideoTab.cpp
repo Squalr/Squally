@@ -33,7 +33,7 @@ VideoTab::VideoTab()
 	this->fullScreenLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::P, Strings::Menus_Options_FullScreen::create());
 
 	this->fullScreenLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->fullScreenLabel->setAlignment(TextHAlignment::LEFT);
+	this->fullScreenLabel->setHorizontalAlignment(TextHAlignment::LEFT);
 	this->fullScreenLabel->enableOutline(Color4B::BLACK, 2);
 
 	ClickableNode* uncheckedClickableNode = ClickableNode::create(UIResources::Menus_OptionsMenu_ToggleButtonOff, UIResources::Menus_OptionsMenu_ToggleButtonOffHover);

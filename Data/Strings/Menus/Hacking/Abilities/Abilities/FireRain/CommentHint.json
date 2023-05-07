@@ -1,5 +1,5 @@
 {
-    "ar": "!إذا كان '%s1' == 1 ، فإن فريقك تالف! قم بتعديل هذا لإلحاق الضرر بالأعداء بدلا من ذلك",
+    "ar": "إذا كان '%s1' == 1 ، فإن فريقك تالف! قم بتعديل هذا لإلحاق الضرر بالأعداء بدلا من ذلك!",
     "bg": "Ако '%s1' == 1, вашият екип е повреден! Променете това, за да навредите на враговете вместо това!",
     "cs": "Pokud '%s1' == 1, váš tým je poškozen! Upravte ji tak, aby místo toho poškodila nepřátele!",
     "da": "Hvis '%s1' == 1, er dit team beskadiget! Rediger dette for at skade fjenderne i stedet!",

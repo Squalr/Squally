@@ -32,13 +32,13 @@ DeckCardCountDisplay::DeckCardCountDisplay()
 
 	this->playerDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->playerDeckCardCountFrame->setContentSize(CSize(48.0f, 32.0f));
-	this->playerDeckCardCountLabel->setAlignment(TextHAlignment::CENTER);
+	this->playerDeckCardCountLabel->setHorizontalAlignment(TextHAlignment::CENTER);
 	this->playerDeckCardCountLabel->setVerticalAlignment(TextVAlignment::CENTER);
 	this->playerDeckCardCountLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	this->enemyDeckCardCountFrame->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->enemyDeckCardCountFrame->setContentSize(CSize(48.0f, 32.0f));
-	this->enemyDeckCardCountLabel->setAlignment(TextHAlignment::CENTER);
+	this->enemyDeckCardCountLabel->setHorizontalAlignment(TextHAlignment::CENTER);
 	this->enemyDeckCardCountLabel->setVerticalAlignment(TextVAlignment::CENTER);
 	this->enemyDeckCardCountLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 

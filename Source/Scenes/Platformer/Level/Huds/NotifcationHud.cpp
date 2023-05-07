@@ -59,7 +59,6 @@ NotificationHud::NotificationHud()
 
 	this->title->enableOutline(Color4B::BLACK, 2);
 	this->description->enableOutline(Color4B::BLACK, 2);
-	this->description->setUseBidirectionalLocalizationAlignment();
 
 	for (int index = 0; index < NotificationHud::SlotCount; index++)
 	{

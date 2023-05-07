@@ -1,6 +1,7 @@
 #include "LocalizedLabel.h"
 
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/2d/CCFontAtlasCache.h"
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCEventDispatcher.h"
 
@@ -8,6 +9,7 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Localization/Localization.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Engine/Utils/StrUtils.h"
 
 #include "Resources/FontResources.h"
 #include "Resources/UIResources.h"
@@ -115,13 +117,6 @@ void LocalizedLabel::setStringReplacementVariables(std::vector<LocalizedString*>
 	{
 		this->localizedString->setStringReplacementVariables(stringReplacementVariables);
 	}
-}
-
-void LocalizedLabel::setUseBidirectionalLocalizationAlignment()
-{
-	this->autoLocalizedHorizontalAlignment = true;
-
-	this->setHorizontalAlignment(Localization::isCurrentLanguageLeftToRight() ? TextHAlignment::LEFT : TextHAlignment::RIGHT);
 }
 	
 void LocalizedLabel::setFontSize(FontSize fontSize)
@@ -256,7 +251,7 @@ void LocalizedLabel::enableShadow(const Color4B& shadowColor, const CSize& offse
 void LocalizedLabel::enableOutline(const Color4B& outlineColor, int outlineSize)
 {
 	super::enableOutline(outlineColor, outlineSize);
-	
+
 	this->onStringUpdate();
 }
 
@@ -273,12 +268,16 @@ void LocalizedLabel::onStringUpdate()
 	int outlineSize = int(this->getOutlineSize());
 	Color4B outlineColor = Color4B(_effectColorF);
 
-	if (this->autoLocalizedHorizontalAlignment)
-	{
-		this->setHorizontalAlignment(Localization::isCurrentLanguageLeftToRight() ? TextHAlignment::RIGHT : TextHAlignment::LEFT);
-	}
-
 	this->cleanupState();
+	
+	if (this->_currentLabelType == Label::LabelType::STRING_TEXTURE)
+	{
+		if (_fontAtlas)
+		{
+			FontAtlasCache::releaseFontAtlas(_fontAtlas);
+			_fontAtlas = nullptr;
+		}
+	}
 	
 	this->initWithTTF(
 		this->localizedString == nullptr ? "" : this->localizedString->getString(),
@@ -429,7 +428,9 @@ std::string LocalizedLabel::getCodingFont()
 		}
 		case LanguageType::ARABIC:
 		{
-			return FontResources::Coding_Arabic_Ubuntu_Arabic_Bold;
+			return this->getMainFont();
+			// Busted due to cocos2d-x Arabic bugs
+			// return FontResources::Coding_Arabic_Ubuntu_Arabic_Bold;
 		}
 		case LanguageType::THAI:
 		{
@@ -445,70 +446,140 @@ std::string LocalizedLabel::getCodingFont()
 
 float LocalizedLabel::getFontSizeS1()
 {
-	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 140.0f : 128.0f;
+	float offset = 0.0f;
+
+	offset += (this->getFont() != FontResources::Coding_Arabic_Ubuntu_Arabic_Bold && this->getCurrentLanguage() == LanguageType::ARABIC) ? 8.0f : 0.0f;
+	offset += this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 12.0f : 0.0f;
+	
+	return 128.0f + offset;
 }
 
 float LocalizedLabel::getFontSizeS2()
 {
-	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 120.0f : 112.0f;
+	float offset = 0.0f;
+
+	offset += (this->getFont() != FontResources::Coding_Arabic_Ubuntu_Arabic_Bold && this->getCurrentLanguage() == LanguageType::ARABIC) ? 8.0f : 0.0f;
+	offset += this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 8.0f : 0.0f;
+	
+	return 112.0f + offset;
 }
 
 float LocalizedLabel::getFontSizeS3()
 {
-	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 104.0f : 96.0f;
+	float offset = 0.0f;
+
+	offset += (this->getFont() != FontResources::Coding_Arabic_Ubuntu_Arabic_Bold && this->getCurrentLanguage() == LanguageType::ARABIC) ? 8.0f : 0.0f;
+	offset += this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 8.0f : 0.0f;
+	
+	return 96.0f + offset;
 }
 
 float LocalizedLabel::getFontSizeM1()
 {
-	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 88.0f : 80.0f;
+	float offset = 0.0f;
+
+	offset += (this->getFont() != FontResources::Coding_Arabic_Ubuntu_Arabic_Bold && this->getCurrentLanguage() == LanguageType::ARABIC) ? 8.0f : 0.0f;
+	offset += this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 8.0f : 0.0f;
+	
+	return 80.0f + offset;
 }
 
 float LocalizedLabel::getFontSizeM2()
 {
-	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 72.0f : 64.0f;
+	float offset = 0.0f;
+
+	offset += (this->getFont() != FontResources::Coding_Arabic_Ubuntu_Arabic_Bold && this->getCurrentLanguage() == LanguageType::ARABIC) ? 8.0f : 0.0f;
+	offset += this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 8.0f : 0.0f;
+	
+	return 64.0f + offset;
 }
 
 float LocalizedLabel::getFontSizeM3()
 {
-	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 54.0f : 48.0f;
+	float offset = 0.0f;
+
+	offset += (this->getFont() != FontResources::Coding_Arabic_Ubuntu_Arabic_Bold && this->getCurrentLanguage() == LanguageType::ARABIC) ? 8.0f : 0.0f;
+	offset += this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 6.0f : 0.0f;
+	
+	return 48.0f + offset;
 }
 
 float LocalizedLabel::getFontSizeH1()
 {
-	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 36.0f : 32.0f;
+	float offset = 0.0f;
+
+	offset += (this->getFont() != FontResources::Coding_Arabic_Ubuntu_Arabic_Bold && this->getCurrentLanguage() == LanguageType::ARABIC) ? 8.0f : 0.0f;
+	offset += this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 4.0f : 0.0f;
+	
+	return 32.0f + offset;
 }
 
 float LocalizedLabel::getFontSizeH2()
 {
-	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 32.0f : 28.0f;
+	float offset = 0.0f;
+
+	offset += (this->getFont() != FontResources::Coding_Arabic_Ubuntu_Arabic_Bold && this->getCurrentLanguage() == LanguageType::ARABIC) ? 8.0f : 0.0f;
+	offset += this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 4.0f : 0.0f;
+
+	return  28.0f + offset;
 }
 
 float LocalizedLabel::getFontSizeH3()
 {
-	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 28.0f : 24.0f;
+	float offset = 0.0f;
+
+	offset += (this->getFont() != FontResources::Coding_Arabic_Ubuntu_Arabic_Bold && this->getCurrentLanguage() == LanguageType::ARABIC) ? 8.0f : 0.0f;
+	offset += this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 4.0f : 0.0f;
+	
+	return 24.0f + offset;
 }
 
 float LocalizedLabel::getFontSizeH4()
 {
-	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 24.0f : 22.0f;
+	float offset = 0.0f;
+
+	offset += (this->getFont() != FontResources::Coding_Arabic_Ubuntu_Arabic_Bold && this->getCurrentLanguage() == LanguageType::ARABIC) ? 8.0f : 0.0f;
+	offset += this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 2.0f : 0.0f;
+	
+	return 22.0f + offset;
 }
 
 float LocalizedLabel::getFontSizeP()
 {
-	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 24.0f : 20.0f;
+	float offset = 0.0f;
+
+	offset += (this->getFont() != FontResources::Coding_Arabic_Ubuntu_Arabic_Bold && this->getCurrentLanguage() == LanguageType::ARABIC) ? 4.0f : 0.0f;
+	offset += this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 4.0f : 0.0f;
+	
+	return 20.0f + offset;
 }
 
 float LocalizedLabel::getFontSizeSmall()
 {
-	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 20.0f : 16.0f;
+	float offset = 0.0f;
+
+	offset += (this->getFont() != FontResources::Coding_Arabic_Ubuntu_Arabic_Bold && this->getCurrentLanguage() == LanguageType::ARABIC) ? 8.0f : 0.0f;
+	offset += this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 4.0f : 0.0f;
+	
+	return 16.0f + offset;
 }
 
 float LocalizedLabel::getFontSizeTiny()
 {
-	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 16.0f : 12.0f;
+	float offset = 0.0f;
+
+	offset += (this->getFont() != FontResources::Coding_Arabic_Ubuntu_Arabic_Bold && this->getCurrentLanguage() == LanguageType::ARABIC) ? 8.0f : 0.0f;
+	offset += this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 4.0f : 0.0f;
+	
+	return 12.0f + offset;
 }
 
 float LocalizedLabel::getFontSizeMicro()
 {
-	return this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 12.0f : 8.0f;
+	float offset = 0.0f;
+
+	offset += (this->getFont() != FontResources::Coding_Arabic_Ubuntu_Arabic_Bold && this->getCurrentLanguage() == LanguageType::ARABIC) ? 8.0f : 0.0f;
+	offset += this->getFont() == FontResources::Coding_Standard_UbuntuMono_Bold ? 4.0f : 0.0f;
+	
+	return 8.0f + offset;
 }

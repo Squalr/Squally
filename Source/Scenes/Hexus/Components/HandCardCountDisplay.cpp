@@ -31,7 +31,7 @@ HandCardCountDisplay::HandCardCountDisplay()
 	this->playerHandCardCountFrame->setContentSize(CSize(80.0f, 32.0f));
 	this->playerHandCardCountStr = ConstantString::create("0");
 	this->playerHandCardCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, this->playerHandCardCountStr);
-	this->playerHandCardCountLabel->setAlignment(TextHAlignment::LEFT);
+	this->playerHandCardCountLabel->setHorizontalAlignment(TextHAlignment::LEFT);
 	this->playerHandCardCountLabel->setVerticalAlignment(TextVAlignment::CENTER);
 	this->playerHandCardCountLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 
@@ -41,7 +41,7 @@ HandCardCountDisplay::HandCardCountDisplay()
 	this->enemyHandCardCountFrame->setContentSize(CSize(80.0f, 32.0f));
 	this->enemyHandCardCountStr = ConstantString::create("0");
 	this->enemyHandCardCountLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H1, this->enemyHandCardCountStr);
-	this->enemyHandCardCountLabel->setAlignment(TextHAlignment::LEFT);
+	this->enemyHandCardCountLabel->setHorizontalAlignment(TextHAlignment::LEFT);
 	this->enemyHandCardCountLabel->setVerticalAlignment(TextVAlignment::CENTER);
 	this->enemyHandCardCountLabel->setAnchorPoint(Vec2(0.0f, 0.5f));
 

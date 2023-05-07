@@ -51,7 +51,6 @@ public:
 	void setLocalizedString(LocalizedString* localizedString);
 	void setStringReplacementVariables(LocalizedString* stringReplacementVariable);
 	void setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables);
-	void setUseBidirectionalLocalizationAlignment();
 	void setFontSize(FontSize fontSize);
 	bool increaseFontSize();
 	bool decreaseFontSize();
@@ -105,6 +104,4 @@ private:
 	LocalizedString* localizedString = nullptr;
 	FontStyle fontStyle = FontStyle::Main;
 	FontSize fontSize = FontSize::P;
-
-	bool autoLocalizedHorizontalAlignment = false;
 };

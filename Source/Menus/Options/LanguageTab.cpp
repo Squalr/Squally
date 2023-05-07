@@ -68,6 +68,12 @@ void LanguageTab::initializeListeners()
 	{
 		LanguageType language = (LanguageType)index;
 
+		if (language == LanguageType::ARABIC)
+		{
+			// Support for arabic removed due to poor cocos2d-x support https://github.com/cocos2d/cocos2d-x/issues/15321
+			continue;
+		}
+
 		if (buttonIndex < int(this->languageButtons.size()))
 		{
 			this->languageButtons[buttonIndex]->setMouseClickCallback([=](InputEvents::MouseEventArgs*) { Localization::setLanguage(language); });
