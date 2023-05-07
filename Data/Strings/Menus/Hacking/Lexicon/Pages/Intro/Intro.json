@@ -1,5 +1,5 @@
 {
-    "ar": "تستخدم لغة التجميع لتعديل البرنامج بعد أن تم تحويله إلى لغة الآلة. لهذا السبب ، يجب أن يصبح القراصنة الطموحين على دراية بلغة التجميع. ستكون هذه تومي المتربة دليلك من خلال تعليمات التجميع الأكثر شيوعًا إلى x86.",
+    "ar": ".x86 تستخدم لغة التجميع لتعديل البرنامج بعد أن تم تحويله إلى لغة الآلة. لهذا السبب ، يجب أن يصبح القراصنة الطموحين على دراية بلغة التجميع. ستكون هذه تومي المتربة دليلك من خلال تعليمات التجميع الأكثر شيوعًا إلى",
     "bg": "Езикът за сглобяване се използва за модифициране на програма, след като е компилирана на машинен език. Поради тази причина амбициозният хакер трябва да се запознае с асемблерния език. Този прашен том ще бъде вашето ръководство през най-често срещаните x86 инструкции за монтаж.",
     "cs": "Jazyk sestavení slouží k úpravě programu po jeho kompilaci do strojového jazyka. Z tohoto důvodu se musí začínající hacker seznámit s jazykem montáže. Tento zaprášený příběh bude vaším průvodcem nejběžnějším návodem k montáži x86.",
     "da": "Samlingssprog bruges til at ændre et program, efter at det er blevet kompileret til maskinens sprog. Af denne grund skal en håbende hacker blive fortrolig med monteringssprog. Denne støvede tome bliver din vejledning gennem de mest almindelige x86 monteringsanvisninger.",

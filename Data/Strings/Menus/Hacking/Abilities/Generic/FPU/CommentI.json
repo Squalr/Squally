@@ -1,5 +1,5 @@
 {
-    "ar": "i = يتم تخزين البيانات كعدد صحيح (أي 1 بدلا من 1.0f).",
+    "ar": ".يتم تخزين البيانات كعدد صحيح (أي 1 بدلا من 1.0f) = i",
     "bg": "i = данните се съхраняват като цяло число (т.е. 1 вместо 1.0f).",
     "cs": "i = data jsou uložena jako celé číslo (tj. 1 místo 1.0f).",
     "da": "i = dataene gemmes som et heltal (dvs. 1 i stedet for 1.0f).",

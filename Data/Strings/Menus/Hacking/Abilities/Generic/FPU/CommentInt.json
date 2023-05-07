@@ -1,5 +1,5 @@
 {
-    "ar": "int = عدد صحيح (أي يتم تقريب الرقم العشري إلى عدد صحيح كامل).",
+    "ar": ".عدد صحيح (أي يتم تقريب الرقم العشري إلى عدد صحيح كامل) = int",
     "bg": "int = цяло число (т.е. десетичното число се закръглява до цяло цяло число).",
     "cs": "int = celé číslo (tj. desetinné číslo je zaokrouhleno na celé celé číslo).",
     "da": "int = heltal (dvs. decimaltal er afrundet til hele heltal).",

@@ -1,5 +1,5 @@
 {
-    "ar": "يغطي هذا الفصل تعليمات المتجهات. تُستخدم إرشادات المتجه في معظم الأشياء ذات القيم العشرية ، مثل مواضع وسرعات الكائنات في اللعبة. يمكن استخدامها أيضًا لجعل البرامج أسرع عن طريق تعديل قيم متعددة بشكل متوازٍ.",
+    "ar": ".يغطي هذا الفصل تعليمات المتجهات. تُستخدم إرشادات المتجه في معظم الأشياء ذات القيم العشرية ، مثل مواضع وسرعات الكائنات في اللعبة. يمكن استخدامها أيضًا لجعل البرامج أسرع عن طريق تعديل قيم متعددة بشكل متوازٍ",
     "bg": "Тази глава обхваща векторни инструкции. Векторните инструкции се използват за повечето неща с десетични стойности, като позициите и скоростите на обектите в играта. Те могат да се използват и за по-бързото програмиране чрез паралелно модифициране на множество стойности.",
     "cs": "Tato kapitola obsahuje instrukce vektoru. Vektorové instrukce se používají u většiny věcí s desetinnými hodnotami, jako jsou pozice a rychlosti objektů ve hře. Mohou být také použity k urychlení programů úpravou více hodnot paralelně.",
     "da": "Dette kapitel beskriver vektorinstruktioner. Vector instruktioner bruges til de fleste ting med decimaltværdier, såsom positioner og hastigheder for objekter i et spil. De kan også bruges til at gøre programmer hurtigere ved at ændre flere værdier parallelt.",

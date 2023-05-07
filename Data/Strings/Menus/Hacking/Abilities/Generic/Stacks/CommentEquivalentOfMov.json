@@ -1,5 +1,5 @@
 {
-    "ar": "هذا الرمز يعادل 'mov %s1, %s2'.",
+    "ar": ".'mov %s1, %s2' هذا الرمز يعادل",
     "bg": "Този код е еквивалентен на 'mov %s1, %s2'.",
     "cs": "Tento kód je ekvivalentem 'mov %s1, %s2'.",
     "da": "Denne kode svarer til 'mov %s1, %s2'.",

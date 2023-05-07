@@ -1,5 +1,5 @@
 {
-    "ar": "mul = يضرب القيمة في أعلى مكدس FPU.",
+    "ar": "FPU يضرب القيمة في أعلى مكدس = mul",
     "bg": "mul = умножава стойността в горната част на стека на FPU.",
     "cs": "mul = vynásobí hodnotu na začátek zásobníku FPU.",
     "da": "mul = multiplicerer værdien til toppen af FPU-stakken.",

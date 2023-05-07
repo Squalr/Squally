@@ -1,5 +1,5 @@
 {
-    "ar": "لماذا هذا +4 بدلا من +1؟ وذلك لأن الأرقام التي يتم تعقبها هي أعداد صحيحة ، والتي تستهلك 4 بايت من الذاكرة.",
+    "ar": ".لماذا هذا +4 بدلا من +1؟ وذلك لأن الأرقام التي يتم تعقبها هي أعداد صحيحة ، والتي تستهلك 4 بايت من الذاكرة",
     "bg": "Защо това +4 вместо +1? Това е така, защото проследените числа са цели числа, които заемат 4 байта памет.",
     "cs": "Proč je tento +4 namísto +1? Důvodem je, že sledovaná čísla jsou celá čísla, která zabírají 4 bajty paměti.",
     "da": "Hvorfor er dette +4 i stedet for +1? Dette skyldes, at de tal, der spores, er heltal, der optager 4 bytes hukommelse.",

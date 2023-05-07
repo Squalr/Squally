@@ -15879,51 +15879,6 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Vampirism_Vampirism() = default;
 	};
 
-	class Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEcx : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEcx();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEcx() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEdx : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEdx();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Weakness_RegisterEdx() = default;
-	};
-
-	class Menus_Hacking_Abilities_Debuffs_Weakness_Weakness : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Hacking_Abilities_Debuffs_Weakness_Weakness();
-		virtual ~Menus_Hacking_Abilities_Debuffs_Weakness_Weakness() = default;
-	};
-
 	class Menus_Hacking_Abilities_Debuffs_ZombieGrasp_CommentHint : public LocalizedString
 	{
 	public:

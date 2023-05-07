@@ -1,5 +1,5 @@
 {
-    "ar": "xmm7: %s1",
+    "ar": "%s1 :xmm7",
     "bg": "xmm7: %s1",
     "cs": "xmm7: %s1",
     "da": "xmm7: %s1",

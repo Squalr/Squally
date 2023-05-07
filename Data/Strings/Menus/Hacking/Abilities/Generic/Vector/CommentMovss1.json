@@ -1,5 +1,5 @@
 {
-    "ar": "'movss' مشابه لـ 'mov'، إلا أنه يعمل على أرقام كسرية (الفاصلة العائمة).",
+    "ar": ".مشابه لـ 'mov'، إلا أنه يعمل على أرقام كسرية (الفاصلة العائمة) 'movss'",
     "bg": "'movss' е подобен на 'mov', с изключение на това, че действа на части (с плаваща запетая).",
     "cs": "'movss' je podobný 'mov', s výjimkou pracuje na zlomkové (plovoucí-bod) čísla.",
     "da": "'movss' svarer til 'mov', bortset fra at det fungerer på fraktioneret (floating-point) tal.",

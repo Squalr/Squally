@@ -1,5 +1,5 @@
 {
-    "ar": "DIV هي عملية تقسم رقمًا واحدًا إلى آخر. عند التعامل مع الأعداد الصحيحة السلبية المحتملة، يمكن استخدام IDIV بدلاً من ذلك.",
+    "ar": ".هي عملية تقسم رقمًا واحدًا إلى آخر. عند التعامل مع الأعداد الصحيحة السلبية المحتملة، يمكن استخدام IDIV بدلاً من ذلك DIV",
     "bg": "DIV е операция, която разделя един номер с друг. Когато се занимават с потенциално отрицателни цели числа, IDIV може да се използва вместо това.",
     "cs": "DIV je operace, která dělí jedno číslo jiným. Při jednání s potenciálně negativní celá čísla, IDIV lze použít místo.",
     "da": "DIV er en handling, der opdeler et tal med et andet. Når der beskæftiger sig med potentielt negative heltal, kan IDIV bruges i stedet.",

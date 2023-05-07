@@ -1,5 +1,5 @@
 {
-    "ar": "لماذا هذا +12 بدلا من +3؟ وذلك لأن الأرقام التي يتم تعقبها هي أعداد صحيحة ، والتي تستهلك 4 بايتات من الذاكرة لكل منها ، وبالتالي فإن ثلاثة من هذه الأرقام تجعل 12 بايت في المجموع.",
+    "ar": ".لماذا هذا +12 بدلا من +3؟ وذلك لأن الأرقام التي يتم تعقبها هي أعداد صحيحة ، والتي تستهلك 4 بايتات من الذاكرة لكل منها ، وبالتالي فإن ثلاثة من هذه الأرقام تجعل 12 بايت في المجموع",
     "bg": "Защо това +12 вместо +3? Това е така, защото проследените числа са цели числа, които заемат по 4 байта всяка памет, така че три от тях са общо 12 байта.",
     "cs": "Proč je tento +12 namísto +3? Důvodem je, že sledovaná čísla jsou celá čísla, která zabírají 4 bajty paměti, takže celkem tři z nich tvoří celkem 12 bajtů.",
     "da": "Hvorfor er dette +12 i stedet for +3? Dette skyldes, at de tal, der spores, er heltal, der optager 4 bytes hukommelse hver, så tre af disse giver 12 bytes i alt.",
