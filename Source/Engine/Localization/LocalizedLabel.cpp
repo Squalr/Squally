@@ -428,9 +428,7 @@ std::string LocalizedLabel::getCodingFont()
 		}
 		case LanguageType::ARABIC:
 		{
-			return this->getMainFont();
-			// Busted due to cocos2d-x Arabic bugs
-			// return FontResources::Coding_Arabic_Ubuntu_Arabic_Bold;
+			return FontResources::Coding_Arabic_Ubuntu_Arabic_Bold;
 		}
 		case LanguageType::THAI:
 		{

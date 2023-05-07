@@ -26,7 +26,9 @@ private:
 
 	void onEnter() override;
 	void update(float dt) override;
+	void onLocaleChange();
 	void initializePositions();
+	void initializeListeners();
 	cocos2d::CSize resize();
 
 	// This is a hacky fix to some weird scenario where the position changes when there is input in the textfield
