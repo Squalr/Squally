@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="4" height="8" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="944">
+ <objectgroup id="73" name="decor -12 bg">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="812" name="Generic/TownFence" type="decor" x="-693.273" y="-371.167" width="538" height="948"/>
+  <object id="814" name="Generic/TownFence" type="decor" x="334.287" y="-376.907" width="538" height="948"/>
+  <object id="815" name="Generic/TownFence" type="decor" x="-113.113" y="-364.817" width="538" height="948"/>
+  <object id="831" name="Generic/TownFence" type="decor" x="1343.87" y="-366.607" width="538" height="948"/>
+  <object id="832" name="Generic/TownFence" type="decor" x="896.477" y="-354.517" width="538" height="948"/>
+ </objectgroup>
+ <objectgroup id="74" name="decor -6 bg">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="787" name="Generic/TownFence" type="decor" x="755.827" y="-262.117" width="538" height="948"/>
+ </objectgroup>
+ <objectgroup id="70" name="terrain -6">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="943" name="frost" type="terrain" x="-748.545" y="686.727" width="2243.03" height="799.515"/>
+ </objectgroup>
+ <objectgroup id="69" name="decor -6">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="750" name="Snow/TownHome3" type="decor" x="-145.765" y="-432.857" width="1317" height="1120"/>
+ </objectgroup>
+ <objectgroup id="67" name="bridge -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="937" name="wood" type="terrain" x="129.818" y="686.243" width="347.03" height="295.515"/>
+ </objectgroup>
+ <objectgroup id="66" name="bridge -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="938" name="wood" type="terrain" x="131.818" y="694.243" width="347.03" height="295.515"/>
+ </objectgroup>
+ <objectgroup id="65" name="bridge -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="939" name="wood" type="terrain" x="130.485" y="706.243" width="347.03" height="295.515"/>
+ </objectgroup>
+ <objectgroup id="64" name="bridge -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="940" name="wood" type="terrain" x="129.152" y="719.576" width="347.03" height="295.515"/>
+ </objectgroup>
+ <objectgroup id="19" name="bridge -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="941" name="wood" type="terrain" x="130.485" y="731.576" width="347.03" height="295.515"/>
+ </objectgroup>
+ <objectgroup id="18" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="714" name="Generic/TownFence" type="decor" x="590.257" y="-154.277" width="538" height="948"/>
+  <object id="719" name="Generic/TownFence" type="decor" x="1048.79" y="-155.507" width="538" height="948"/>
+  <object id="895" name="Generic/TownFencePost" type="decor" x="470.927" y="-324.157" width="263" height="1118">
+   <properties>
+    <property name="flip-x" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="942" name="ice" type="terrain" x="-670.848" y="753.576" width="2027.88" height="799.515"/>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="894" name="lantern-gate" type="object" x="147.06" y="434.537" width="356" height="320">
+   <properties>
+    <property name="map" value="BallmerPeaks/Town_Inn"/>
+    <property name="transition" value="inn"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="883" name="aspen" type="entity" x="261.499" y="625.637" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pacing"/>
+    <property name="travel-distance" type="float" value="160"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

@@ -1,14 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="4" height="8" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1063">
- <objectgroup id="1" name="meta">
-  <properties>
-   <property name="background" value="WaterfallSky"/>
-   <property name="crack-color" value=""/>
-   <property name="gravity" value="-768"/>
-   <property name="show-cracks" type="bool" value="true"/>
-   <property name="type" value="meta"/>
-  </properties>
- </objectgroup>
  <objectgroup id="73" name="decor -12 bg">
   <properties>
    <property name="depth" type="float" value="-640"/>
@@ -59,13 +50,6 @@
     <property name="travel-distance" type="float" value="64"/>
    </properties>
   </object>
- </objectgroup>
- <objectgroup id="92" name="player_layer -12">
-  <properties>
-   <property name="depth" type="float" value="-640"/>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
  </objectgroup>
  <objectgroup id="96" name="water -11">
   <properties>
@@ -190,13 +174,6 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="88" name="player_layer -6">
-  <properties>
-   <property name="depth" type="float" value="-320"/>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
  <objectgroup id="67" name="bridge -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
@@ -252,44 +229,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="18" name="decor background">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="62" name="terrain 4">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="85" name="water -1">
-  <properties>
-   <property name="depth" type="float" value="-64"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
  <objectgroup id="86" name="dock terrain">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="84" name="water +1">
-  <properties>
-   <property name="depth" type="float" value="64"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="63" name="texture bg">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="57" name="terrain 3">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="20" name="terrain 2">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -300,78 +240,10 @@
   </properties>
   <object id="946" name="mines" type="terrain" x="-1012.91" y="823.1" width="2287.82" height="357.568"/>
  </objectgroup>
- <objectgroup id="22" name="decor midground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="87" name="decor midground 2">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="23" name="objects">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="42" name="no hack objects">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="24" name="entities">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="25" name="player_layer">
-  <properties>
-   <property name="is-hackable" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-   <property name="zoom" type="float" value="1.5"/>
-  </properties>
- </objectgroup>
- <objectgroup id="27" name="terrain foreground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
  <objectgroup id="28" name="fireflies">
   <properties>
    <property name="type" value="weather"/>
    <property name="weather" value="fireflies"/>
-  </properties>
- </objectgroup>
- <objectgroup id="29" name="decor_foreground">
-  <properties>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="30" name="objects_foreground">
-  <properties>
-   <property name="is-elevate-target" type="bool" value="true"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="31" name="rain">
-  <properties>
-   <property name="type" value="weather"/>
-   <property name="weather" value="rain"/>
-  </properties>
- </objectgroup>
- <objectgroup id="32" name="decor +8">
-  <properties>
-   <property name="depth" type="float" value="512"/>
-   <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="33" name="decor 1024">
-  <properties>
-   <property name="depth" type="float" value="1024"/>
-   <property name="type" value="objects"/>
   </properties>
  </objectgroup>
 </map>

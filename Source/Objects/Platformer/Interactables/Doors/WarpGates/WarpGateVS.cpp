@@ -20,7 +20,7 @@ WarpGateVS* WarpGateVS::create(ValueMap& properties)
 
 WarpGateVS::WarpGateVS(ValueMap& properties) : super(properties)
 {
-	PreviewMap* map = PreviewMap::create(MapResources::WarpGatePreviewMaps_EndianForest);
+	PreviewMap* map = PreviewMap::create(MapResources::WarpGatePreviewMaps_VoidStar);
 
 	map->setPositionX(-map->getMapSize().width / 2.0f);
 	map->setPositionY(-map->getMapSize().height / 2.0f);
