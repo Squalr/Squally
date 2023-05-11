@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="59" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1283">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="59" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1284">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="988" name="temple" type="terrain" x="-1330.82" y="-1558" width="10190.7" height="5588">
+  <object id="988" name="temple" type="terrain" x="-1336.15" y="-1558" width="10190.7" height="5588">
    <properties>
     <property name="hole-tag" value="hole-A"/>
    </properties>
@@ -545,7 +545,11 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="1251" name="life-stone" type="object" x="931.16" y="978.34" width="146" height="423"/>
+  <object id="1251" name="life-stone" type="object" x="931.16" y="978.34" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="1253" name="gatling-gun" type="object" x="2245.73" y="1680.77" width="1117" height="414">
    <properties>
     <property name="components" value="gatling-gun"/>
@@ -681,6 +685,11 @@
   <object id="1212" name="spawn" type="object" x="6896.21" y="1266.04" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1283" name="spawn" type="object" x="944" y="1269.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

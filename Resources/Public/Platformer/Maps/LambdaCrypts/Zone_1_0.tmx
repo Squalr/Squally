@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="82" nextobjectid="1165">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="82" nextobjectid="1166">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -810,7 +810,11 @@
     <property name="send-event" value="gauntlet-complete"/>
    </properties>
   </object>
-  <object id="1164" name="life-stone" type="object" x="846.186" y="1250.56" width="146" height="423"/>
+  <object id="1164" name="life-stone" type="object" x="846.186" y="1250.56" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -858,6 +862,11 @@
   <object id="1153" name="spawn" type="object" x="247.922" y="1556.94" width="128" height="128">
    <properties>
     <property name="transition" value="crypt"/>
+   </properties>
+  </object>
+  <object id="1165" name="spawn" type="object" x="856.606" y="1551.27" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="857">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="858">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -340,7 +340,11 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="806" name="life-stone" type="object" x="3686.28" y="1240.5" width="146" height="423"/>
+  <object id="806" name="life-stone" type="object" x="3686.28" y="1240.5" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -392,6 +396,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-A"/>
+   </properties>
+  </object>
+  <object id="857" name="spawn" type="object" x="3694" y="1526" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

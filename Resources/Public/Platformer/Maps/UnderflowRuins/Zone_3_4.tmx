@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="108" nextobjectid="1193">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="108" nextobjectid="1194">
  <properties>
   <property name="rubber-band" type="int" value="8"/>
  </properties>
@@ -465,6 +465,7 @@
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
   <object id="1181" name="vase" type="object" x="2891.5" y="2680" width="113" height="160">
@@ -522,6 +523,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="3-E"/>
+   </properties>
+  </object>
+  <object id="1193" name="spawn" type="object" x="1650.3" y="2713.21" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

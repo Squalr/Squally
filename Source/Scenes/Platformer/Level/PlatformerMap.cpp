@@ -336,7 +336,7 @@ void PlatformerMap::initializeListeners()
 			SaveManager::BatchSaveProfileData(
 				{
 					{ SaveKeys::SaveKeyRespawnMap, Value(this->mapResource) },
-					{ SaveKeys::SaveKeyRespawnObjectId, Value(args->objectIdentifier) },
+					{ SaveKeys::SaveKeySpawnOverride, Value(args->spawnIdentifier) },
 				}
 			);
 		}
@@ -570,9 +570,9 @@ void PlatformerMap::warpSquallyToRespawn()
 {
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
-		std::string savedObjectId = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyRespawnObjectId, Value("error-no-object-id")).asString();
+		std::string spawnTransition = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpawnOverride, Value("error-no-object-id")).asString();
 
-		PlatformerEvents::TriggerWarpObjectToObjectId(PlatformerEvents::WarpObjectToObjectIdArgs(squally, savedObjectId));
+		PlatformerEvents::TriggerSpawnToTransitionLocation(PlatformerEvents::TransitionArgs(spawnTransition));
 	}, Squally::MapKey);
 }
 

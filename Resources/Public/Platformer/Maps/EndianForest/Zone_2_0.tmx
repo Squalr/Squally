@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="87" nextobjectid="892">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="112" height="42" tilewidth="128" tileheight="128" infinite="0" nextlayerid="87" nextobjectid="894">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -422,10 +422,18 @@
     <property name="transition" value="right_alt"/>
    </properties>
   </object>
-  <object id="823" name="life-stone" type="object" x="4871.36" y="1627.53" width="146" height="423"/>
+  <object id="823" name="life-stone" type="object" x="4871.36" y="1627.53" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn-2"/>
+   </properties>
+  </object>
   <object id="824" name="solid-npc" type="collision" x="11585.5" y="1967.08" width="121.03" height="777.836"/>
   <object id="825" name="solid-npc" type="collision" x="12597.5" y="1967.08" width="121.03" height="777.836"/>
-  <object id="880" name="life-stone" type="object" x="1255" y="2134.5" width="146" height="423"/>
+  <object id="880" name="life-stone" type="object" x="1255" y="2134.5" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="890" name="hexus-shrine" type="object" x="12060.5" y="2336" width="155" height="260">
    <properties>
     <property name="entity-tag" value="hexus-orc-grunt"/>
@@ -520,6 +528,16 @@
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-F"/>
     <property name="zoom" type="float" value="1"/>
+   </properties>
+  </object>
+  <object id="892" name="spawn" type="object" x="1272" y="2422.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
+  <object id="893" name="spawn" type="object" x="4882.67" y="1917.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn-2"/>
    </properties>
   </object>
  </objectgroup>

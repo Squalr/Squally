@@ -54,7 +54,7 @@ public:
 	static const std::string SaveKeyGrimEqExperience;
 
 	static const std::string SaveKeyRespawnMap;
-	static const std::string SaveKeyRespawnObjectId;
+	static const std::string SaveKeySpawnOverride;
 
 	static const std::string SaveKeyLevelRubberband;
 	static const std::string SaveKeyLevelHideMiniMap;

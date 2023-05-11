@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1011">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1013">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -653,7 +653,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="754" name="castle" type="texture" x="948.788" y="1510.18" width="1738.18" height="1356"/>
+  <object id="754" name="castle" type="texture" x="956.788" y="1508.18" width="1738.18" height="1356"/>
   <object id="755" name="castle" type="texture" x="3359.33" y="1490" width="1831.94" height="1364"/>
   <object id="840" name="castle" type="texture" x="-1430.85" y="-154.606" width="1710.18" height="3012"/>
   <object id="841" name="castle" type="texture" x="5878.91" y="-716.303" width="1033.94" height="3604"/>
@@ -815,8 +815,16 @@
     <property name="send-event" value="CV_INVESTIGATE_CASTLE"/>
    </properties>
   </object>
-  <object id="1009" name="life-stone" type="object" x="2144.33" y="2308.5" width="146" height="423"/>
-  <object id="1010" name="life-stone" type="object" x="4754.27" y="2306.68" width="146" height="423"/>
+  <object id="1009" name="life-stone" type="object" x="2144.33" y="2308.5" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
+  <object id="1010" name="life-stone" type="object" x="4754.27" y="2306.68" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn-2"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -869,6 +877,11 @@
     <property name="flip-x" type="bool" value="true"/>
     <property name="haunted-key" value="reaper"/>
     <property name="other-world" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1012" name="spawn" type="object" x="4759.85" y="2599.42" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn-2"/>
    </properties>
   </object>
  </objectgroup>
@@ -944,6 +957,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="warp-3-B"/>
+   </properties>
+  </object>
+  <object id="1011" name="spawn" type="object" x="2153.33" y="2602.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

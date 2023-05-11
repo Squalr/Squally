@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="1074">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="81" height="72" tilewidth="128" tileheight="128" infinite="0" nextlayerid="100" nextobjectid="1076">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -821,7 +821,11 @@
     <property name="transition" value="town"/>
    </properties>
   </object>
-  <object id="913" name="life-stone" type="object" x="2311.97" y="5459.41" width="146" height="423"/>
+  <object id="913" name="life-stone" type="object" x="2311.97" y="5459.41" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="927" name="trigger" type="object" x="1311.85" y="4092.74" width="146" height="1829.06">
    <properties>
     <property name="quest" value="town-arrival"/>
@@ -942,6 +946,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-F"/>
+   </properties>
+  </object>
+  <object id="1075" name="spawn" type="object" x="2320" y="5750" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

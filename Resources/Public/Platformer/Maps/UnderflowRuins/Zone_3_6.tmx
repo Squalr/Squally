@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="107" nextobjectid="1191">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="107" nextobjectid="1192">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -467,6 +467,7 @@
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
   <object id="1178" name="vase" type="object" x="895.5" y="2720" width="113" height="160">
@@ -535,6 +536,11 @@
   <object id="1170" name="spawn" type="object" x="443.15" y="2753.94" width="128" height="128">
    <properties>
     <property name="transition" value="bottom-right-front"/>
+   </properties>
+  </object>
+  <object id="1191" name="spawn" type="object" x="2209.7" y="2750.79" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="52" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="1630">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="52" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="1631">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -584,7 +584,11 @@
     <property name="tag" value="cart-A"/>
    </properties>
   </object>
-  <object id="991" name="life-stone" type="object" x="3647.97" y="3015.77" width="146" height="423"/>
+  <object id="991" name="life-stone" type="object" x="3647.97" y="3015.77" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="996" name="mine-cart-lootable" type="object" x="5824.67" y="3250.85" width="240" height="184">
    <properties>
     <property name="color" value="brown"/>
@@ -706,6 +710,11 @@
     <property name="direction" value="left"/>
     <property name="link-tag" value="cart-B"/>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1630" name="spawn" type="object" x="3658.67" y="3309.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

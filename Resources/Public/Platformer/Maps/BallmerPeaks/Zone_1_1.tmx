@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="66" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="1041">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="66" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="1042">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -350,7 +350,11 @@
     <property name="chest-pool" value="bp-generic"/>
    </properties>
   </object>
-  <object id="986" name="life-stone" type="object" x="3251" y="3362.5" width="146" height="423"/>
+  <object id="986" name="life-stone" type="object" x="3251" y="3362.5" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="988" name="edge-portal" type="object" x="8240.04" y="3355.57" width="199.918" height="640.851">
    <properties>
     <property name="direction" value="right"/>
@@ -452,6 +456,11 @@
   <object id="1030" name="squally" type="entity" x="8094.67" y="3869.33" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="1041" name="spawn" type="object" x="3262.91" y="3660.73" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

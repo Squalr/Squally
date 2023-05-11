@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="41" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1980">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="41" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="97" nextobjectid="1981">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -330,7 +330,11 @@
     <property name="tag" value="cart-A"/>
    </properties>
   </object>
-  <object id="991" name="life-stone" type="object" x="1738.64" y="1223.77" width="146" height="423"/>
+  <object id="991" name="life-stone" type="object" x="1738.64" y="1223.77" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="1689" name="portal" type="object" x="348" y="1404" width="256" height="256">
    <properties>
     <property name="map" value="DataMines/Zone_3_7"/>
@@ -370,6 +374,11 @@
   <object id="1690" name="spawn" type="object" x="409.33" y="1534.03" width="128" height="128">
    <properties>
     <property name="transition" value="tiger-right"/>
+   </properties>
+  </object>
+  <object id="1980" name="spawn" type="object" x="1750" y="1530" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

@@ -16,7 +16,8 @@ public:
 	static LifeStone* create(cocos2d::ValueMap& properties);
 
 	static const std::string MapKey;
-
+	static const std::string MapPropertyTransition;
+	
 protected:
 	LifeStone(cocos2d::ValueMap& properties);
 	virtual ~LifeStone();
@@ -37,4 +38,5 @@ private:
 	SmartAnimationSequenceNode* healAnimation = nullptr;
 	WorldSound* healSound = nullptr;
 	bool isAnimating = false;
+	std::string spawnKey;
 };

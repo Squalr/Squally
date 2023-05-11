@@ -30,6 +30,7 @@
 using namespace cocos2d;
 
 const std::string LifeStone::MapKey = "life-stone";
+const std::string LifeStone::MapPropertyTransition = "transition";
 
 LifeStone* LifeStone::create(ValueMap& properties)
 {
@@ -45,6 +46,8 @@ LifeStone::LifeStone(ValueMap& properties) : super(properties, InteractObject::I
 	this->lifeStone = Sprite::create(ObjectResources::Interactive_LifeStone);
 	this->healAnimation = SmartAnimationSequenceNode::create();
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Heal4);
+
+	this->spawnKey = GameUtils::getKeyOrDefault(this->properties, LifeStone::MapPropertyTransition, Value(this->getUniqueIdentifier())).asString();
 
 	static bool RunOnce = true;
 
@@ -97,7 +100,7 @@ void LifeStone::onInteract(PlatformerEntity* interactingEntity)
 
 	this->runHealAnimation();
 
-	PlatformerEvents::TriggerSaveRespawn(PlatformerEvents::SaveRespawnArgs(this->getUniqueIdentifier()));
+	PlatformerEvents::TriggerSaveRespawn(PlatformerEvents::SaveRespawnArgs(this->spawnKey));
 	
 	ObjectEvents::QueryObject<Squally>([&](Squally* squally)
 	{

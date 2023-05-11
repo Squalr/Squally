@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="164" nextobjectid="973">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="164" nextobjectid="974">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -385,7 +385,11 @@
     <property name="transition" value="hell-gate"/>
    </properties>
   </object>
-  <object id="826" name="life-stone" type="object" x="5162.17" y="1902.5" width="146" height="423"/>
+  <object id="826" name="life-stone" type="object" x="5162.17" y="1902.5" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="850" name="portal" type="object" x="1598.7" y="664.48" width="256" height="320">
    <properties>
     <property name="map" value="FirewallFissure/Town_Main"/>
@@ -457,6 +461,11 @@
     <property name="quest" value="release-pressure"/>
     <property name="quest-line" value="release-pressure"/>
     <property name="transition" value="pressure"/>
+   </properties>
+  </object>
+  <object id="973" name="spawn" type="object" x="5172" y="2200" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

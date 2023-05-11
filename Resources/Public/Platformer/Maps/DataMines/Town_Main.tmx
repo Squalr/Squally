@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1125">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1126">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -965,7 +965,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="22" name="decor midground" visible="0">
+ <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -1048,6 +1048,7 @@
   <object id="1057" name="life-stone" type="object" x="6947" y="3540.5" width="146" height="423">
    <properties>
     <property name="components" value="z-fade"/>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
   <object id="1070" name="cinematic-marker" type="object" x="5712" y="1616" width="128" height="128">
@@ -1125,6 +1126,11 @@
    <properties>
     <property name="map-banner" value="drammol"/>
     <property name="transition" value="up"/>
+   </properties>
+  </object>
+  <object id="1125" name="spawn" type="object" x="6958" y="3830" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

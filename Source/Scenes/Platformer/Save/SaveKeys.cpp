@@ -46,7 +46,7 @@ const std::string SaveKeys::SaveKeyGrimEq = "SAVE_KEY_GRIM_EQ";
 const std::string SaveKeys::SaveKeyGrimEqExperience = "SAVE_KEY_GRIM_EQ_EXPERIENCE";
 
 const std::string SaveKeys::SaveKeyRespawnMap = "SAVE_KEY_RESPAWN_MAP";
-const std::string SaveKeys::SaveKeyRespawnObjectId = "SAVE_KEY_RESPAWN_OBJECT_ID";
+const std::string SaveKeys::SaveKeySpawnOverride = "SAVE_KEY_SPAWN_OVERRIDE";
 
 const std::string SaveKeys::SaveKeyLevelRubberband = "SAVE_KEY_LEVEL_RUBBERBAND";
 const std::string SaveKeys::SaveKeyLevelHideMiniMap = "SAVE_KEY_HIDE_MINIMAP";

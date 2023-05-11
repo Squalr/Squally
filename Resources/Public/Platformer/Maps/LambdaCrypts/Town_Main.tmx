@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="54" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="1103">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="1104">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -566,7 +566,11 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="623" name="life-stone" type="object" x="2726.36" y="2380.25" width="146" height="423"/>
+  <object id="623" name="life-stone" type="object" x="2726.36" y="2380.25" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="1065" name="solid" type="collision" x="1168.94" y="22.1356" width="192.909" height="2791.85">
    <properties>
     <property name="mini-map-visible" type="bool" value="true"/>
@@ -639,6 +643,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-back-B"/>
+   </properties>
+  </object>
+  <object id="1103" name="spawn" type="object" x="2736" y="2672" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="140" nextobjectid="1066">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="43" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="140" nextobjectid="1067">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
@@ -618,7 +618,11 @@
     <property name="tag" value="town-exit"/>
    </properties>
   </object>
-  <object id="1065" name="life-stone" type="object" x="4496.7" y="827.894" width="146" height="423"/>
+  <object id="1065" name="life-stone" type="object" x="4496.7" y="827.894" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
@@ -672,6 +676,11 @@
     <property name="relayer" type="bool" value="true"/>
     <property name="string" value="front"/>
     <property name="to" value="4-B,7-B"/>
+   </properties>
+  </object>
+  <object id="1066" name="spawn" type="object" x="4505.7" y="1117.82" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

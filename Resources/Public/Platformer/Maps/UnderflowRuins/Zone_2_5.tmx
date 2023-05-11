@@ -225,7 +225,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="113" name="water fg" visible="0">
+ <objectgroup id="113" name="water fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="1155">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="128" tileheight="128" infinite="0" nextlayerid="84" nextobjectid="1157">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -423,7 +423,11 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="934" name="life-stone" type="object" x="1668.09" y="5039.77" width="146" height="423"/>
+  <object id="934" name="life-stone" type="object" x="1668.09" y="5039.77" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="999" name="wind" type="object" x="166.547" y="3459.69" width="380" height="480">
    <properties>
     <property name="speed-x" type="float" value="0"/>
@@ -503,7 +507,11 @@
     <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
-  <object id="1062" name="life-stone" type="object" x="4821" y="1056.5" width="146" height="423"/>
+  <object id="1062" name="life-stone" type="object" x="4821" y="1056.5" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn-2"/>
+   </properties>
+  </object>
   <object id="1144" name="chest" type="object" x="7902" y="3758" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ef-generic"/>
@@ -584,6 +592,16 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="bridge-6-B"/>
+   </properties>
+  </object>
+  <object id="1155" name="spawn" type="object" x="4829.94" y="1345.09" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn-2"/>
+   </properties>
+  </object>
+  <object id="1156" name="spawn" type="object" x="1679.39" y="5328.85" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

@@ -239,9 +239,9 @@ public:
 
 	struct SaveRespawnArgs
 	{
-		std::string objectIdentifier;
+		std::string spawnIdentifier;
 
-		SaveRespawnArgs(std::string objectIdentifier) : objectIdentifier(objectIdentifier) { }
+		SaveRespawnArgs(std::string spawnIdentifier) : spawnIdentifier(spawnIdentifier) { }
 	};
 
 	static void TriggerSquallySpawned();

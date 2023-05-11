@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="1169">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="102" nextobjectid="1170">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -268,7 +268,11 @@
     <property name="transition" value="bottom-right"/>
    </properties>
   </object>
-  <object id="1150" name="life-stone" type="object" x="1557" y="924.5" width="146" height="423"/>
+  <object id="1150" name="life-stone" type="object" x="1557" y="924.5" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="1151" name="vase" type="object" x="1876.83" y="2771.52" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
@@ -343,6 +347,11 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="9-E"/>
+   </properties>
+  </object>
+  <object id="1169" name="spawn" type="object" x="1570" y="1212" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

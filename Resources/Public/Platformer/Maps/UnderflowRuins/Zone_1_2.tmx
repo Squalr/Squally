@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1193">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1194">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -482,7 +482,11 @@
    </properties>
   </object>
   <object id="1108" name="solid" type="collision" x="1116.08" y="1437.59" width="873.545" height="100.513"/>
-  <object id="1182" name="life-stone" type="object" x="2970.01" y="980.256" width="146" height="423"/>
+  <object id="1182" name="life-stone" type="object" x="2970.01" y="980.256" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="1185" name="edge-portal" type="object" x="4410.75" y="912.968" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
@@ -544,6 +548,11 @@
   <object id="1187" name="spawn" type="object" x="4164.16" y="1276.08" width="128" height="128">
    <properties>
     <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1193" name="spawn" type="object" x="2980" y="1273.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

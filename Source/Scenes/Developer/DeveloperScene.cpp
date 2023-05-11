@@ -96,7 +96,6 @@ DeveloperScene::DeveloperScene()
 			* Add an encounter in DM 1_0 (Have Perceptron block the bridge path, require ducking behind debris to avoid death)
 		- Squally
 			** Can get stuck on roof of maps (see UR 3_1)
-			* Techncially Squally respawns on object layer upon death, although usually this is not noticeable (How to fix? Linked spawn object? probably.)
 			* Shadow for Squally
 			* Squally death anim improvement (and disable float hover. maybe for all entities, as IsAlive check)
 			- 

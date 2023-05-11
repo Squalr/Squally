@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="44" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="878">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="44" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="116" nextobjectid="879">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -74,7 +74,11 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="828" name="life-stone" type="object" x="4036.57" y="994.652" width="146" height="423"/>
+  <object id="828" name="life-stone" type="object" x="4036.57" y="994.652" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="830" name="edge-portal" type="object" x="5420" y="768" width="200" height="640">
    <properties>
     <property name="direction" value="right"/>
@@ -132,6 +136,11 @@
    <properties>
     <property name="map-banner" value="lions-cistern"/>
     <property name="transition" value="rope"/>
+   </properties>
+  </object>
+  <object id="878" name="spawn" type="object" x="4051.52" y="1279.76" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

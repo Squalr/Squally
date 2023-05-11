@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="867">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="88" nextobjectid="868">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -383,7 +383,11 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="623" name="life-stone" type="object" x="4231.94" y="1612.25" width="146" height="423"/>
+  <object id="623" name="life-stone" type="object" x="4231.94" y="1612.25" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
   <object id="736" name="portal" type="object" x="252.889" y="1630.34" width="450.603" height="423.038">
    <properties>
     <property name="map" value="CastleValgrind/Zone_1_1"/>
@@ -448,6 +452,11 @@
   <object id="855" name="squally" type="entity" x="5057.8" y="1910.29" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="867" name="spawn" type="object" x="4244.61" y="1905.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

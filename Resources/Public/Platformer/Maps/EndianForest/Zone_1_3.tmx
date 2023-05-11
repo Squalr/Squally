@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="17" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="801">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="17" tilewidth="128" tileheight="128" infinite="0" nextlayerid="99" nextobjectid="803">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -253,7 +253,11 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="788" name="life-stone" type="object" x="1441.85" y="1013.53" width="146" height="423"/>
+  <object id="788" name="life-stone" type="object" x="1441.85" y="1013.53" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -289,6 +293,11 @@
   <object id="787" name="spawn" type="object" x="5044.95" y="1542.46" width="128" height="128">
    <properties>
     <property name="transition" value="town"/>
+   </properties>
+  </object>
+  <object id="802" name="spawn" type="object" x="1452" y="1300" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

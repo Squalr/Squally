@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="26" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1143">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="64" height="26" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1144">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -463,6 +463,7 @@
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
   <object id="1108" name="portal" type="object" x="3947.88" y="2206.33" width="256" height="338">
@@ -571,6 +572,11 @@
   <object id="1140" name="spawn-wood-door" type="object" x="1684.64" y="2428.33" width="128" height="128">
    <properties>
     <property name="transition" value="home2"/>
+   </properties>
+  </object>
+  <object id="1143" name="spawn" type="object" x="7002" y="2428" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>
