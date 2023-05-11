@@ -84,7 +84,8 @@ DeveloperScene::DeveloperScene()
 		- Should really expand scripting text editor
 			- Support click-to-place cursor
 		- User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
-		- Arabic punctuation for all hackable comments
+		v If ever re-instating Arabic, Ctrl+F all "ar": "! and "ar": ". strings to find places where punctuation was messed up and fix them
+		v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
 
 	- Game Feel / Design / Lore:
 		** Credits

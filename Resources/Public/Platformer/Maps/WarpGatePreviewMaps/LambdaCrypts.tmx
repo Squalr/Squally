@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="4" height="8" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1108">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="DarkForestSky"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value="grave-flower"/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="14"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="75" name="rocks">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="965" name="Crypts/Background/Background1" type="decor" x="-2094.6" y="-809.013" width="4809.6" height="2048">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="77" name="decor -x">
+  <properties>
+   <property name="depth" type="float" value="-1440"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="74" name="trees-far1">
+  <properties>
+   <property name="depth" type="float" value="-1080"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="966" name="Crypts/Background/Background3" type="decor" x="-1645.49" y="98.0767" width="3917.3" height="1774">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="86" name="terrain -x">
+  <properties>
+   <property name="depth" type="float" value="-1440"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="69" name="decor -14">
+  <properties>
+   <property name="depth" type="float" value="-896"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="71" name="terrain -13">
+  <properties>
+   <property name="depth" type="float" value="-832"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="72" name="decor -13">
+  <properties>
+   <property name="depth" type="float" value="-832"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="7912" name="bridge -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="876" name="shade-grass" type="terrain" x="-576" y="731.637" width="2000" height="1234.06"/>
+ </objectgroup>
+ <objectgroup id="94" name="decor -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1036" name="Generic/TownChurch" type="decor" x="-661.44" y="-1987.41" width="1863" height="2721"/>
+ </objectgroup>
+ <objectgroup id="116" name="entities -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1103" name="amelia" type="entity" x="220" y="606.667" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pacing"/>
+    <property name="travel-distance" type="float" value="160"/>
+   </properties>
+  </object>
+  <object id="1107" name="johann" type="entity" x="-50.6667" y="605.333" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pacing"/>
+    <property name="travel-distance" type="float" value="160"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="100" name="decor fg -12">
+  <properties>
+   <property name="depth" type="float" value="-768"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="7911" name="bridge -11">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="874" name="shade-grass" type="terrain" x="-576" y="747.637" width="2000" height="1234.06"/>
+ </objectgroup>
+ <objectgroup id="95" name="decor -11"/>
+ <objectgroup id="791" name="bridge -10">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1089" name="wood" type="terrain" x="139.21" y="735.637" width="293.58" height="78.06">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="113" name="terrain -10">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1092" name="shade-grass" type="terrain" x="-576" y="767.637" width="2000" height="1234.06"/>
+ </objectgroup>
+ <objectgroup id="92" name="decor -10">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="16" name="trees-mid">
+  <properties>
+   <property name="depth" type="float" value="-612"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="781" name="bridge -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1088" name="wood" type="terrain" x="137.21" y="749.637" width="293.58" height="78.06">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="111" name="terrain -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1090" name="shade-grass" type="terrain" x="-576" y="785.637" width="2000" height="1234.06"/>
+ </objectgroup>
+ <objectgroup id="91" name="decor -9">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="771" name="bridge -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1087" name="wood" type="terrain" x="136.88" y="770.637" width="293.58" height="78.06">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="112" name="terrain -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1091" name="shade-grass" type="terrain" x="-576" y="803.637" width="2000" height="1234.06"/>
+ </objectgroup>
+ <objectgroup id="117" name="entities -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1106" name="princess-nebea" type="entity" x="5.39833" y="677.171" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pacing"/>
+    <property name="travel-distance" type="float" value="160"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="90" name="decor -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="761" name="bridge -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1084" name="wood" type="terrain" x="136.21" y="787.637" width="293.58" height="78.06">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="98" name="terrain -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1085" name="shade-grass" type="terrain" x="-576" y="825.637" width="2000" height="1234.06"/>
+ </objectgroup>
+ <objectgroup id="81" name="decor -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="110" name="bridge -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1086" name="wood" type="terrain" x="137.21" y="805.637" width="293.58" height="78.06">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="751" name="terrain -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="855" name="shade-grass" type="terrain" x="-576" y="861.637" width="2000" height="1234.06"/>
+ </objectgroup>
+ <objectgroup id="108" name="decor -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="99" name="entities -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="87" name="bridge -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="96" name="decor -6 bg">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="73" name="decor -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1034" name="Generic/TownHome4" type="decor" x="855.81" y="-1158.41" width="1950" height="2019"/>
+ </objectgroup>
+ <objectgroup id="114" name="decor fg -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="97" name="objects -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="89" name="player_layer -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.5"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="88" name="decor -6 fg">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="79" name="bridge -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="84" name="decor -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="78" name="bridge -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="83" name="decor -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="77" name="bridge -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1031" name="shade-grass" type="terrain" x="-577.594" y="933.017" width="2022.18" height="1234.06"/>
+ </objectgroup>
+ <objectgroup id="82" name="decor -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="103" name="objects -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="115" name="entities -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="101" name="player_layer -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.5"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="76" name="bridge -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="85" name="decor -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="75" name="bridge -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="67" name="water bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="68" name="decor bg">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="20" name="terrain 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="754" name="shade-grass" type="terrain" x="-577.15" y="977.637" width="2014.18" height="1234.06"/>
+ </objectgroup>
+ <objectgroup id="76" name="terrain rails">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="57" name="objects back">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.5"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="66" name="water">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="28" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="31" name="rain">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="104" name="terrain + 1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1070" name="shade-grass" type="terrain" x="60.2" y="995.477" width="445.504" height="942.089">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="105" name="terrain +2">
+  <properties>
+   <property name="depth" type="float" value="128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1071" name="shade-grass" type="terrain" x="59.23" y="1022.77" width="445.504" height="942.089">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="106" name="terrain +3">
+  <properties>
+   <property name="depth" type="float" value="192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1072" name="shade-grass" type="terrain" x="57.28" y="1054.32" width="445.504" height="942.089">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="107" name="terrain +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1073" name="shade-grass" type="terrain" x="59.23" y="1088.41" width="445.504" height="942.089">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="32" name="decor +4">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="402" name="Forest/Foreground/ForegroundTree2" type="decor" x="-264.519" y="912.506" width="270" height="748"/>
+  <object id="404" name="Forest/Foreground/ForegroundTree2" type="decor" x="744.606" y="908.197" width="270" height="748"/>
+ </objectgroup>
+ <objectgroup id="33" name="decor +8">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="403" name="Forest/Foreground/ForegroundTree1" type="decor" x="410.38" y="880.567" width="242" height="738"/>
+ </objectgroup>
+</map>

@@ -56,8 +56,7 @@ void EntityPacingBehavior::initializePositions()
 
 void EntityPacingBehavior::onLoad()
 {
-	// Note: Not using getWorldCoords(), as this fails for PreviewMaps.
-	this->spawnPosition = this->entity->getPosition(); // GameUtils::getWorldCoords(this->entity, false);
+	this->spawnPosition = GameUtils::getWorldCoords(this->entity, false);
 
 	this->entity->watchForComponent<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
 	{
@@ -94,9 +93,9 @@ void EntityPacingBehavior::onDisable()
 void EntityPacingBehavior::assignDestination()
 {
 	float destinationX = 0.0f;
-	float currentX = this->entity->getPositionX();
+	float currentX = GameUtils::getWorldCoords(this->entity).x;
 
-	const int LoopsMax = 2048;
+	const int LoopsMax = 256;
 	int loopSafety = 0;
 
 	do
@@ -114,7 +113,9 @@ void EntityPacingBehavior::assignDestination()
 	// Leverage the cinematic movement code for enemy pacing, should work fine
 	if (!this->entity->getRuntimeStateOrDefault(StateKeys::PatrolHijacked, Value(false)).asBool())
 	{
-		this->entity->setState(StateKeys::PatrolSourceX, Value(GameUtils::getWorldCoords3D(this->entity).x));
+		Vec3 source = GameUtils::getWorldCoords3D(this->entity);
+
+		this->entity->setState(StateKeys::PatrolSourceX, Value(source.x));
 		this->entity->setState(StateKeys::PatrolDestinationX, Value(destinationX));
 	}
 

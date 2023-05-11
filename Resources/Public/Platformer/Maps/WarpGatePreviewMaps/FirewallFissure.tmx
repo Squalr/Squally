@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="4" height="8" tilewidth="128" tileheight="128" infinite="0" nextlayerid="101" nextobjectid="1144">
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="SkyDark"/>
+   <property name="crack-color" value=""/>
+   <property name="gravity" value="-768"/>
+   <property name="map-banner" value="brimstone"/>
+   <property name="music" value="solace"/>
+   <property name="rubber-band" type="int" value="17"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="8" name="bg">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1053" name="magma" type="texture" x="-1634.95" y="-2000.4" width="3669.9" height="3440.8"/>
+ </objectgroup>
+ <objectgroup id="95" name="decor -13">
+  <properties>
+   <property name="depth" type="float" value="-704"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1063" name="Generic/TownFence" type="decor" x="-742.87" y="-377.03" width="538" height="948"/>
+  <object id="1064" name="Generic/TownFence" type="decor" x="-1190.27" y="-364.94" width="538" height="948"/>
+  <object id="1065" name="Generic/TownFence" type="decor" x="260.06" y="-382.5" width="538" height="948"/>
+  <object id="1066" name="Generic/TownFence" type="decor" x="-275.34" y="-370.41" width="538" height="948"/>
+  <object id="1067" name="Generic/TownFence" type="decor" x="1079.62" y="-384.24" width="538" height="948"/>
+  <object id="1068" name="Generic/TownFence" type="decor" x="720.22" y="-372.15" width="538" height="948"/>
+ </objectgroup>
+ <objectgroup id="73" name="decor -12 bg">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="71" name="terrain -12">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="951" name="caverns" type="terrain" x="-800" y="536.25" width="2000" height="809.507">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="72" name="decor -12">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1060" name="Lava/TownHome3" type="decor" x="-443.2" y="-210.3" width="1281" height="754"/>
+  <object id="1061" name="Lava/TownHome2" type="decor" x="-1573.5" y="-246" width="1126" height="789"/>
+ </objectgroup>
+ <objectgroup id="91" name="objects -12">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="92" name="player_layer -12">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.5"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="79" name="bridge -11">
+  <properties>
+   <property name="depth" type="float" value="-640"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="78" name="bridge -10">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="77" name="bridge -9">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="76" name="bridge -8">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="75" name="bridge -7">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="98" name="terrain bg -7">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1098" name="caverns" type="terrain" x="-800" y="630.58" width="2000" height="784.84"/>
+ </objectgroup>
+ <objectgroup id="97" name="terrain -7">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1097" name="caverns" type="terrain" x="-800" y="665.58" width="2000" height="784.84"/>
+ </objectgroup>
+ <objectgroup id="99" name="decor bg -7">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="96" name="decor -7">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1095" name="Lava/TownSmith" type="decor" x="-834.3" y="-853.47" width="2054" height="1544"/>
+ </objectgroup>
+ <objectgroup id="74" name="decor -6 bg">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="81" name="terrain -6 bg">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="70" name="terrain -6">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1037" name="caverns" type="terrain" x="-800" y="677.1" width="2000" height="784.84"/>
+ </objectgroup>
+ <objectgroup id="69" name="decor -6">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="90" name="objects -6">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="94" name="entities -6">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="88" name="player_layer -6">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.5"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="67" name="bridge -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="66" name="bridge -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="65" name="bridge -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="64" name="bridge -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="19" name="bridge -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="18" name="decor background">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="100" name="decor bg 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="62" name="terrain 4">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="85" name="water -1">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="86" name="dock terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="93" name="water">
+  <properties>
+   <property name="depth" type="float" value="0"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="84" name="water +1">
+  <properties>
+   <property name="depth" type="float" value="64"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="57" name="terrain 3">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1103" name="caverns" type="terrain" x="-760" y="724.76" width="2000" height="1281.81">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="20" name="terrain 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1102" name="caverns" type="terrain" x="-760" y="754.43" width="2000" height="1281.81">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="63" name="decor bg" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1107" name="Lava/TownInn" type="decor" x="-654.5" y="-481.5" width="1709" height="1233">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="21" name="terrain">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="945" name="caverns" type="terrain" x="-760" y="761.58" width="2000" height="1281.81"/>
+ </objectgroup>
+ <objectgroup id="22" name="decor midground" visible="0">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1101" name="Lava/TownHome5" type="decor" x="-2961.5" y="-714" width="1283" height="1476">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.25"/>
+   </properties>
+  </object>
+  <object id="1128" name="Lava/RackSaddle1" type="decor" x="-504.41" y="545.44" width="369" height="212"/>
+  <object id="1129" name="Lava/Rack1" type="decor" x="910.98" y="584.29" width="369" height="172"/>
+  <object id="1133" name="Lava/Skeleton2" type="decor" x="106.88" y="-325.3" width="248" height="232"/>
+  <object id="1134" name="Lava/SkeletonPole1" type="decor" x="679" y="534.33" width="165" height="237"/>
+  <object id="1138" name="Lava/Skeleton1" type="decor" x="4191.73" y="653.48" width="82" height="70"/>
+ </objectgroup>
+ <objectgroup id="87" name="decor midground 2">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1130" name="Lava/Poster1" type="decor" x="1129.32" y="580.45" width="99" height="118"/>
+  <object id="1131" name="Lava/PosterEmpty1" type="decor" x="976.33" y="585.33" width="99" height="118"/>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="42" name="no hack objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="24" name="entities">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="883" name="queen-elise" type="entity" x="101.62" y="637.03" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pacing"/>
+    <property name="travel-distance" type="float" value="160"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="player_layer">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.25"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="27" name="terrain foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="28" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="29" name="decor_foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="30" name="objects_foreground">
+  <properties>
+   <property name="is-elevate-target" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="31" name="rain">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="rain"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="32" name="decor +3">
+  <properties>
+   <property name="depth" type="float" value="192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1143" name="lava-fall" type="object" x="326.5" y="-1095.14" width="371" height="3310.29"/>
+ </objectgroup>
+ <objectgroup id="33" name="decor 1024" visible="0">
+  <properties>
+   <property name="depth" type="float" value="1024"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="851" name="Generic/TownFence" type="decor" x="-3263.59" y="660.96" width="538" height="948"/>
+  <object id="852" name="Generic/TownFence" type="decor" x="-3710.99" y="673.05" width="538" height="948"/>
+  <object id="853" name="Generic/TownFence" type="decor" x="-2796.06" y="667.58" width="538" height="948"/>
+  <object id="860" name="Generic/TownFence" type="decor" x="3761.11" y="698.68" width="538" height="948"/>
+  <object id="861" name="Generic/TownFence" type="decor" x="3313.71" y="710.77" width="538" height="948"/>
+  <object id="862" name="Generic/TownFence" type="decor" x="4228.64" y="705.3" width="538" height="948"/>
+ </objectgroup>
+</map>
