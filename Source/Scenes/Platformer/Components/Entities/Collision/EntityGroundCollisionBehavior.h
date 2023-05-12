@@ -22,6 +22,7 @@ public:
 	cocos2d::Vec2 defaultPosition;
 
 	static const std::string MapKey;
+	static const float DropShadowPadding;
 	static const float DropShadowCollisionHeight;
 	static const float GroundCollisionPadding;
 	static const float GroundCollisionOffset;

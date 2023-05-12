@@ -115,8 +115,13 @@ public:
 	bool getCollisionFlagEnabled(int flagIndex = (int)EngineCollisionFlags::Default);
 	bool getCollisionEnabled();
 	unsigned int getUniverseId();
+	cocos2d::Vec2 getCachedWorldCoords();
+	cocos2d::Vec3 getCachedWorldCoords3D();
+	const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& getSegmentsRotated();
 
 	static std::vector<cocos2d::Vec2> createCircle(float radius, int segments = 24);
+	static std::vector<cocos2d::Vec2> createSegmentX(float width);
+	static std::vector<cocos2d::Vec2> createSegmentY(float height);
 	static std::vector<cocos2d::Vec2> createBox(cocos2d::CSize size);
 	static std::vector<cocos2d::Vec2> createCapsulePolygon(cocos2d::CSize size, float capsuleRadius = 8.0f);
 

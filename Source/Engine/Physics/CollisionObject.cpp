@@ -559,6 +559,22 @@ unsigned int CollisionObject::getUniverseId()
 	return this->universeId;
 }
 
+
+const std::vector<std::tuple<cocos2d::Vec2, cocos2d::Vec2>>& CollisionObject::getSegmentsRotated()
+{
+	return this->segmentsRotated;
+}
+
+cocos2d::Vec2 CollisionObject::getCachedWorldCoords()
+{
+	return this->cachedWorldCoords;
+}
+
+cocos2d::Vec3 CollisionObject::getCachedWorldCoords3D()
+{
+	return this->cachedWorldCoords3D;
+}
+
 std::vector<Vec2> CollisionObject::createCircle(float radius, int segments)
 {
 	std::vector<Vec2> points = std::vector<Vec2>();
@@ -574,6 +590,22 @@ std::vector<Vec2> CollisionObject::createCircle(float radius, int segments)
 	}
 
 	return points;
+}
+
+std::vector<cocos2d::Vec2> CollisionObject::createSegmentX(float width)
+{
+	return std::vector<Vec2>({
+		Vec2(-width / 2.0f, 0.0f),
+		Vec2(width / 2.0f, 0.0f),
+	});
+}
+
+std::vector<cocos2d::Vec2> CollisionObject::createSegmentY(float height)
+{
+	return std::vector<Vec2>({
+		Vec2(0.0f, -height / 2.0f),
+		Vec2(0.0f, height / 2.0f),
+	});
 }
 
 std::vector<Vec2> CollisionObject::createBox(CSize size)
@@ -813,7 +845,7 @@ void CollisionObject::RegisterCollisionObject(CollisionObject* collisionObject)
 		return;
 	}
 
-	for (auto next : collisionObject->collisionTypes)
+	for (CollisionType next : collisionObject->collisionTypes)
 	{
 		CollisionObject::CollisionObjects[next].push_back(collisionObject);
 	}
@@ -826,7 +858,7 @@ void CollisionObject::UnregisterCollisionObject(CollisionObject* collisionObject
 		return;
 	}
 
-	for (auto next : collisionObject->collisionTypes)
+	for (CollisionType next : collisionObject->collisionTypes)
 	{
 		CollisionObject::CollisionObjects[next].erase(
 			std::remove(
