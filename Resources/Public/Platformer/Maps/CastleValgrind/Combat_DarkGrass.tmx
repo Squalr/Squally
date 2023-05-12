@@ -59,9 +59,6 @@
    </properties>
   </object>
   <object id="553" name="dark-grass" type="terrain" x="1836.17" y="1782.68">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
   <object id="554" name="combat-spawn" type="object" x="1696.01" y="1581.05" width="64" height="64">
@@ -79,15 +76,11 @@
   </object>
   <object id="556" name="dark-grass" type="terrain" x="1450.36" y="1645.46">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-128"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
   <object id="557" name="dark-grass" type="terrain" x="260.91" y="1731.43">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
   <object id="558" name="combat-spawn" type="object" x="725.61" y="1468.66" width="64" height="64">
@@ -106,14 +99,12 @@
   </object>
   <object id="560" name="dark-grass" type="terrain" x="1897.84" y="1503.35">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
   <object id="561" name="dark-grass" type="terrain" x="482" y="1534">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>

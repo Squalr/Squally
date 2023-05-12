@@ -19,7 +19,6 @@
   </properties>
   <object id="564" name="temple-dark" type="terrain" x="-781.031" y="-415.903">
    <properties>
-    <property name="collision" value="none"/>
     <property name="hole-tag" value="hole-A"/>
     <property name="skip-surfaces" type="bool" value="true"/>
    </properties>
@@ -88,31 +87,26 @@
   </object>
   <object id="571" name="ruins-thick" type="terrain" x="323.167" y="1704" width="501.333" height="1050.67">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-64"/>
    </properties>
   </object>
   <object id="572" name="ruins-thick" type="terrain" x="559.333" y="1625.66" width="501.333" height="1198.67">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
   </object>
   <object id="573" name="ruins-thick" type="terrain" x="1552.36" y="1738.3" width="501.333" height="1050.67">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-64"/>
    </properties>
   </object>
   <object id="574" name="ruins-thick" type="terrain" x="1564.49" y="1552.18" width="501.333" height="1198.67">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
   </object>
   <object id="575" name="ruins-thick" type="terrain" x="1906.91" y="1646.12" width="501.333" height="1198.67">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-128"/>
    </properties>
   </object>

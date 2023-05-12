@@ -81,74 +81,61 @@
   </object>
   <object id="585" name="lava" type="object" x="-1133" y="1500.45" width="4950.16" height="1497.45">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-512"/>
    </properties>
   </object>
   <object id="586" name="lava" type="object" x="-996.012" y="1539.03" width="4650.04" height="1497.45">
    <properties>
-    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="587" name="lava" type="object" x="-885.879" y="1579.44" width="4378.38" height="1497.45">
    <properties>
-    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="602" name="lava-fall" type="object" x="1988.3" y="-1771.43" width="371" height="3310.29"/>
   <object id="588" name="lava" type="object" x="-779.114" y="1633.31" width="4128.75" height="1497.45">
    <properties>
-    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="589" name="lava" type="object" x="-643.589" y="1707.38" width="3864.43" height="1497.45">
    <properties>
-    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="591" name="obsidean" type="terrain" x="1915.82" y="1527.3">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
    <polygon points="0,0 451.643,-2.14915 454.576,984.588 247.923,1194.93 11.5314,984.311 21.5719,701.504 9.80068,480.529 11.1911,236.363"/>
   </object>
   <object id="593" name="lava" type="object" x="-508.063" y="1798.29" width="3548.72" height="1497.45">
    <properties>
-    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="594" name="lava" type="object" x="-348.1" y="1875.17" width="3269.72" height="1497.45">
    <properties>
-    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="595" name="obsidean" type="terrain" x="575.221" y="1535.4">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
   <object id="597" name="lava" type="object" x="-259.994" y="1959.24" width="3056.8" height="1497.45">
    <properties>
-    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="603" name="lava-fall" type="object" x="85.3804" y="-1433.93" width="371" height="3310.29"/>
   <object id="598" name="lava" type="object" x="-190.998" y="2043.31" width="2895.27" height="1497.45">
    <properties>
-    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="600" name="lava" type="object" x="-92.6326" y="2122.96" width="2733.74" height="1497.45">
    <properties>
-    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="601" name="obsidean" type="terrain" x="1482.3" y="1646.02">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-128"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>

@@ -2,6 +2,7 @@
 
 #include "Engine/Maps/GameObject.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityDisableMovementCollisionBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityDropTableBehavior.h"
@@ -33,6 +34,7 @@ EntityCombatBehaviorGroup::EntityCombatBehaviorGroup(GameObject* owner) : super(
 	EntityDropTableBehavior::create(owner),
 	EntityProjectileTargetBehavior::create(owner),
 	EntityDisableMovementCollisionBehavior::create(owner),
+	EntityGroundCollisionBehavior::create(owner),
 	EntitySelectionBehavior::create(owner),
 	EntityDialogueBehavior::create(owner),
 	EntityDeveloperBehavior::create(owner),

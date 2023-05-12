@@ -185,6 +185,11 @@ void EntityGroundCollisionBehavior::update(float dt)
 
 			if (result.isValid)
 			{
+				if (std::abs(result.slope) > M_PI / 2)
+				{
+					continue;
+				}
+
 				results.push_back(result);
 			}
 		}

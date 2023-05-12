@@ -51,31 +51,26 @@
   </object>
   <object id="571" name="ruins-gray-thick" type="terrain" x="323.167" y="1704" width="501.333" height="1050.67">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-64"/>
    </properties>
   </object>
   <object id="572" name="ruins-gray-thick" type="terrain" x="559.333" y="1608.66" width="501.333" height="1215.67">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
   </object>
   <object id="573" name="ruins-gray-thick" type="terrain" x="1552.36" y="1738.3" width="501.333" height="1050.67">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-64"/>
    </properties>
   </object>
   <object id="574" name="ruins-gray-thick" type="terrain" x="1564.49" y="1552.18" width="501.333" height="1198.67">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
   </object>
   <object id="575" name="ruins-gray-thick" type="terrain" x="1906.91" y="1619.12" width="501.333" height="1225.67">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-128"/>
    </properties>
   </object>
@@ -95,25 +90,21 @@
   </object>
   <object id="590" name="water" type="object" x="-327.65" y="1811.79" width="3251.3" height="904.42">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="2"/>
    </properties>
   </object>
   <object id="591" name="water" type="object" x="-499.65" y="1751.79" width="3579.3" height="904.42">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-96"/>
    </properties>
   </object>
   <object id="592" name="water" type="object" x="-599.65" y="1687.79" width="3767.3" height="904.42">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-160"/>
    </properties>
   </object>
   <object id="593" name="water" type="object" x="-687.65" y="1653.12" width="3967.3" height="904.42">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-288"/>
    </properties>
   </object>

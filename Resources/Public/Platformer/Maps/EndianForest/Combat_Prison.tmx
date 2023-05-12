@@ -179,7 +179,6 @@
   </properties>
   <object id="931" name="marble" type="terrain" x="-85.82" y="1631.64" width="4311.64" height="540.73">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" value="0"/>
    </properties>
   </object>
@@ -222,7 +221,6 @@
   </object>
   <object id="932" name="marble" type="terrain" x="156.18" y="1785.64" width="3563.64" height="1000.73">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" value="0"/>
    </properties>
   </object>

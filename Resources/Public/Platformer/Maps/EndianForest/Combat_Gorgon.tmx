@@ -100,15 +100,11 @@
   </object>
   <object id="556" name="dark-grass" type="terrain" x="1450.36" y="1645.46">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-64"/>
    </properties>
    <polygon points="0,0 1093.05,-2.14915 1079.1,444.874 1079.45,1142.16 600.014,1194.93 27.9076,984.311 31.5729,498.711"/>
   </object>
   <object id="557" name="dark-grass" type="terrain" x="260.91" y="1731.43">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
   <object id="558" name="combat-spawn" type="object" x="725.61" y="1468.66" width="64" height="64">
@@ -120,14 +116,12 @@
   </object>
   <object id="561" name="dark-grass" type="terrain" x="482" y="1534">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
   <object id="572" name="dark-grass" type="terrain" x="1596" y="1480">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-128"/>
    </properties>
    <polygon points="0,0 1057.05,-2.14915 1043.56,444.874 1043.9,1142.16 580.252,1194.93 26.9885,984.311 30.533,498.711"/>
@@ -197,7 +191,6 @@
   </object>
   <object id="589" name="dark-grass" type="terrain" x="1485.33" y="1410.67">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
    <polygon points="6.66667,32 93.333,-0.183511 1093.05,-2.14915 1079.1,444.874 1079.45,1142.16 600.014,1194.93 27.9076,984.311 31.5729,498.711 0.171407,111.849"/>

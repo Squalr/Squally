@@ -57,7 +57,6 @@
   </object>
   <object id="556" name="wood" type="terrain" x="1450.36" y="1645.46">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-128"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
@@ -78,14 +77,12 @@
   </object>
   <object id="560" name="wood" type="terrain" x="1897.84" y="1503.35">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
    <polygon points="0,0 1238.38,-2.14915 1246.42,984.588 679.792,1194.93 31.6183,984.311 59.1489,701.504 26.8729,480.529 30.6854,236.363"/>
   </object>
   <object id="561" name="wood" type="terrain" x="482" y="1534">
    <properties>
-    <property name="collision" value="none"/>
     <property name="depth" type="float" value="-256"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
@@ -106,9 +103,6 @@
    </properties>
   </object>
   <object id="585" name="wood" type="terrain" x="-187.696" y="1761.51" width="2895.27" height="1497.45">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
   </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
