@@ -96,9 +96,7 @@ DeveloperScene::DeveloperScene()
 			* Add an encounter in DM 1_0 (Have Perceptron block the bridge path, require ducking behind debris to avoid death)
 		- Squally
 			** Can get stuck on roof of maps (see UR 3_1)
-			* Shadow for Squally
 			* Squally death anim improvement (and disable float hover. maybe for all entities, as IsAlive check)
-			- 
 		- SFX
 			- Add CPU noises when turned on in DM
 			- Add Train noises in DM/CV

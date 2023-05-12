@@ -51,6 +51,7 @@ private:
 		cocos2d::Vec2 intersectionPoint;
 		float slope = 0.0f;
 		float dropDistance = 0.0f;
+		bool isValid = false;
 	};
 
 	CollisionObject* leftCornerCollision = nullptr;

@@ -151,6 +151,7 @@ void EntityGroundCollisionBehavior::update(float dt)
 						float yDelta = (groundDest.y - groundSource.y);
 						float slope = xDelta == 0.0f ? 1.0f : -(yDelta / xDelta);
 						
+						result.isValid = true;
 						result.slope = slope;
 						result.dropDistance = verticalDistance / EntityGroundCollisionBehavior::DropShadowCollisionHeight;
 						result.intersectionPoint = intersectionPoint;
@@ -180,7 +181,12 @@ void EntityGroundCollisionBehavior::update(float dt)
 
 		for (CollisionObject* candidateGround : dropShadowCollision->getCurrentCollisions())
 		{
-			results.push_back(tryCastShadow(dropShadowCollision, candidateGround));
+			DropShadowResult result = tryCastShadow(dropShadowCollision, candidateGround);
+
+			if (result.isValid)
+			{
+				results.push_back(result);
+			}
 		}
 	}
 
