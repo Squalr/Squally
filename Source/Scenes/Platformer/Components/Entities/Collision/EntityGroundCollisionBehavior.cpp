@@ -19,6 +19,7 @@
 using namespace cocos2d;
 
 const std::string EntityGroundCollisionBehavior::MapKey = "entity-ground-collisions";
+const int EntityGroundCollisionBehavior::DropShadowDetectorCount = 5;
 const float EntityGroundCollisionBehavior::DropShadowPadding = 32.0f;
 const float EntityGroundCollisionBehavior::DropShadowCollisionHeight = 512.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionPadding = -4.0f;
@@ -39,7 +40,7 @@ EntityGroundCollisionBehavior* EntityGroundCollisionBehavior::create(GameObject*
 EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
-	this->dropShadowCollision = nullptr;
+	this->dropShadowCollisions = std::vector<CollisionObject*>();
 	this->groundCollision = nullptr;
 	this->leftCornerCollision = nullptr;
 	this->rightCornerCollision = nullptr;
@@ -83,9 +84,12 @@ void EntityGroundCollisionBehavior::onDisable()
 {
 	super::onDisable();
 	
-	if (this->dropShadowCollision != nullptr)
+	for (CollisionObject* dropShadowCollision : this->dropShadowCollisions)
 	{
-		this->dropShadowCollision->setPhysicsFlagEnabled(false);
+		if (dropShadowCollision != nullptr)
+		{
+			dropShadowCollision->setPhysicsFlagEnabled(false);
+		}
 	}
 	
 	if (this->groundCollision != nullptr)
@@ -111,13 +115,13 @@ void EntityGroundCollisionBehavior::update(float dt)
 	CollisionObject* groundCollider = this->getGroundCollision();
 	Sprite* dropShadow = this->entity->getDropShadow();
 
-	float shadowDistanceNormalized = 0.0f;
-
-	auto tryCastShadow = [&](CollisionObject* candidateGround)
+	auto tryCastShadow = [&](CollisionObject* dropShadowCollision, CollisionObject* candidateGround)
 	{
+		DropShadowResult result;
+
 		if (candidateGround == nullptr)
 		{
-			return false;
+			return result;
 		}
 
 		const std::vector<Vec2>& points = candidateGround->getPoints();
@@ -128,10 +132,10 @@ void EntityGroundCollisionBehavior::update(float dt)
 			{
 				if (points.size() >= 2)
 				{
-					Vec2 dropShadowPosition = this->dropShadowCollision->getCachedWorldCoords();
+					Vec2 dropShadowPosition = dropShadowCollision->getCachedWorldCoords();
 					Vec2 groundPosition = candidateGround->getCachedWorldCoords();
-					Vec2 dropShadowSource = std::get<0>(this->dropShadowCollision->getSegmentsRotated()[0]);
-					Vec2 dropShadowDest = std::get<1>(this->dropShadowCollision->getSegmentsRotated()[0]);
+					Vec2 dropShadowSource = std::get<0>(dropShadowCollision->getSegmentsRotated()[0]);
+					Vec2 dropShadowDest = std::get<1>(dropShadowCollision->getSegmentsRotated()[0]);
 					Vec2 groundSource = std::get<0>(candidateGround->getSegmentsRotated()[0]);
 					Vec2 groundDest = std::get<1>(candidateGround->getSegmentsRotated()[0]);
 					std::tuple<Vec2, Vec2> dropShadowSegment = std::make_tuple(dropShadowPosition + dropShadowSource, dropShadowPosition + dropShadowDest);
@@ -143,21 +147,15 @@ void EntityGroundCollisionBehavior::update(float dt)
 
 						float verticalDistance = intersectionPoint.y - (dropShadowPosition.y + dropShadowSource.y);
 
-						shadowDistanceNormalized = verticalDistance / EntityGroundCollisionBehavior::DropShadowCollisionHeight;
-
 						float xDelta = (groundDest.x - groundSource.x);
 						float yDelta = (groundDest.y - groundSource.y);
 						float slope = xDelta == 0.0f ? 1.0f : -(yDelta / xDelta);
+						
+						result.slope = slope;
+						result.dropDistance = verticalDistance / EntityGroundCollisionBehavior::DropShadowCollisionHeight;
+						result.intersectionPoint = intersectionPoint;
 
-						dropShadow->setRotation(slope * 180.0f / float(M_PI));
-
-						const float VisualAdjustment = 8.0f;
-
-						// Adjust drop shadow Y to fall onto the segment below. Zero out the X since we want it centered.
-						GameUtils::setWorldCoords(dropShadow, Vec2(intersectionPoint.x, intersectionPoint.y - EntityGroundCollisionBehavior::DropShadowPadding + VisualAdjustment));
-						dropShadow->setPositionX(0.0f);
-
-						return true;
+						return result;
 					}
 				}
 				break;
@@ -168,29 +166,70 @@ void EntityGroundCollisionBehavior::update(float dt)
 			}
 		}
 
-		return false;
+		return result;
 	};
 
-	bool successfulShadowCast = false;
+	std::vector<DropShadowResult> results;
 
-	for (CollisionObject* candidateGround : groundCollider->getCurrentCollisions())
+	for (CollisionObject* dropShadowCollision : this->dropShadowCollisions)
 	{
-		if (tryCastShadow(candidateGround))
+		if (dropShadowCollision == nullptr)
 		{
-			this->currentGround = candidateGround;
-			successfulShadowCast = true;
-			break;
+			continue;
+		}
+
+		for (CollisionObject* candidateGround : dropShadowCollision->getCurrentCollisions())
+		{
+			results.push_back(tryCastShadow(dropShadowCollision, candidateGround));
 		}
 	}
 
-	// Couldn't cast a shadow successfully. Cast to the last known viable ground.
-	if (!successfulShadowCast)
+	int resultCount = (int)results.size();
+	float averageNormalizedDistance = 0.0f;
+	float averageSlope = 0.0f;
+	Vec2 centerIntersection = Vec2::ZERO;
+
+	if (resultCount > 0)
 	{
-		tryCastShadow(this->currentGround);
+		centerIntersection = resultCount % 2 == 1
+			? results[resultCount / 2].intersectionPoint
+			: ((results[resultCount / 2 - 1].intersectionPoint + results[resultCount / 2].intersectionPoint) / 2);
+
+		for (DropShadowResult& result : results)
+		{
+			averageNormalizedDistance += result.dropDistance / float(resultCount);
+			averageSlope += result.slope / float(resultCount);
+		}
 	}
 
-	dropShadow->setScale(shadowDistanceNormalized);
-	dropShadow->setOpacity((GLubyte)(shadowDistanceNormalized * 255.0f));
+	// Dead animations should cast larger shadows due to the corpse generally spreading over more area
+	const float DeathScalerSpeed = 3.0f;
+	const float MaxDeathScale = 1.75f;
+
+	if (!this->entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+	{
+		this->deathScaler = MathUtils::clamp(this->deathScaler + dt * DeathScalerSpeed, 1.0f, MaxDeathScale);
+	}
+	else
+	{
+		this->deathScaler = MathUtils::clamp(this->deathScaler - dt * DeathScalerSpeed, 1.0f, MaxDeathScale);
+	}
+
+	float massMultiplier = MathUtils::clamp(this->entity->getEntitySize().width / 128.0f, 1.0f, 4.0f);
+	const float DefaultScale = 0.33f;
+	float resultScale = MathUtils::clamp(averageNormalizedDistance * this->deathScaler * massMultiplier * DefaultScale, 0.0f, 1.0f);
+	float upScale = resultScale / DefaultScale;
+
+	dropShadow->setScale(resultScale);
+	dropShadow->setOpacity((GLubyte)(averageNormalizedDistance * 255.0f));
+	dropShadow->setRotation(averageSlope * 180.0f / float(M_PI));
+	
+	const float VisualAdjustment = 0.0f;
+	float shadowHeight = dropShadow->getContentSize().height;
+
+	// Adjust drop shadow Y to fall onto the segment below. Zero out the X since we want it centered.
+	GameUtils::setWorldCoords(dropShadow, Vec2(centerIntersection.x, centerIntersection.y - shadowHeight * upScale / 2.0f));
+	dropShadow->setPositionX(0.0f);
 }
 
 CollisionObject* EntityGroundCollisionBehavior::getGroundCollision()
@@ -286,26 +325,36 @@ bool EntityGroundCollisionBehavior::isStandingOnSomethingOtherThan(CollisionObje
 
 void EntityGroundCollisionBehavior::buildDropShadowCollisionDetector()
 {
-	if (this->dropShadowCollision != nullptr)
+	if (!this->dropShadowCollisions.empty())
 	{
 		return;
 	}
 
-	this->dropShadowCollision = CollisionObject::create(
-		CollisionObject::createSegmentY(EntityGroundCollisionBehavior::DropShadowCollisionHeight),
-		(int)PlatformerCollisionType::GroundDetector,
-		CollisionObject::Properties(false, false),
-		Color4F::GREEN
-	);
+	float countAsFloat = float(EntityGroundCollisionBehavior::DropShadowDetectorCount);
 
-	this->dropShadowCollision->setPosition(Vec2(0.0f, EntityGroundCollisionBehavior::DropShadowPadding - EntityGroundCollisionBehavior::DropShadowCollisionHeight / 2.0f));
-
-	this->addChild(this->dropShadowCollision);
-
-	this->dropShadowCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
+	for (int index = 0; index < EntityGroundCollisionBehavior::DropShadowDetectorCount; index++)
 	{
-		return CollisionResult::DoNothing;
-	});
+		CollisionObject* dropShadowCollision = CollisionObject::create(
+			CollisionObject::createSegmentY(EntityGroundCollisionBehavior::DropShadowCollisionHeight),
+			(int)PlatformerCollisionType::GroundDetector,
+			CollisionObject::Properties(false, false),
+			Color4F::GREEN
+		);
+		
+		float spacing = this->detectorWidth / countAsFloat;
+		float x = ((float)index - countAsFloat / 2.0f) * spacing + spacing / 2.0f;
+
+		dropShadowCollision->setPosition(Vec2(x, EntityGroundCollisionBehavior::DropShadowPadding - EntityGroundCollisionBehavior::DropShadowCollisionHeight / 2.0f));
+
+		this->addChild(dropShadowCollision);
+
+		dropShadowCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
+		{
+			return CollisionResult::DoNothing;
+		});
+
+		this->dropShadowCollisions.push_back(dropShadowCollision);
+	}
 }
 
 void EntityGroundCollisionBehavior::buildGroundCollisionDetector()

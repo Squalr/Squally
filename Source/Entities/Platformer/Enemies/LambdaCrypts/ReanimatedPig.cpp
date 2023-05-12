@@ -24,7 +24,7 @@ ReanimatedPig::ReanimatedPig(ValueMap& properties) : super(properties,
 	ReanimatedPig::MapKey,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Animations,
 	EntityResources::Enemies_LambdaCrypts_ReanimatedPig_Emblem,
-	CSize(256.0f, 240.0f),
+	CSize(212.0f, 240.0f),
 	0.8f)
 {
 }

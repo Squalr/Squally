@@ -543,9 +543,6 @@
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="729" name="stone-dark" type="terrain" x="4673.43" y="5140.11">
-   <polygon points="-498.828,-2723.26 -370.244,-1979.27 295.857,-1709.84 936.817,-1976.28 1048.59,-2731.7"/>
-  </object>
   <object id="953" name="stone-dark" type="terrain" x="3728.59" y="5140.11">
    <polygon points="-1769.99,-2723.26 -1313.73,-1979.27 1049.79,-1709.84 3324.1,-1976.28 3720.7,-2731.7"/>
   </object>

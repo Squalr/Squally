@@ -65,7 +65,7 @@ PlatformerEntity::PlatformerEntity(
 
 	this->hackButtonOffset = Vec2(0.0f, this->entitySize.height);
 
-	// this->dropShadow->setAnchorPoint(Vec2(0.5f, 0.5f));
+	this->dropShadow->setAnchorPoint(Vec2(0.5f, 0.5f));
 	this->dropShadow->setOpacity(0);
 
 	this->animationNode->setScale(this->entityScale);
