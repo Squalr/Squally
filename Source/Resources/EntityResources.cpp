@@ -5,6 +5,7 @@
 #include "EntityResources.h"
 #include <string>
 
+const std::string EntityResources::DropShadow = "Private/Platformer/Entities/DropShadow.png";
 const std::string EntityResources::Enemies_BallmerPeaks_Cryogen_Animations = "Private/Platformer/Entities/Enemies/BallmerPeaks/Cryogen/Animations.scml";
 const std::string EntityResources::Enemies_BallmerPeaks_Cryogen_BELT = "Private/Platformer/Entities/Enemies/BallmerPeaks/Cryogen/BELT.png";
 const std::string EntityResources::Enemies_BallmerPeaks_Cryogen_COVER = "Private/Platformer/Entities/Enemies/BallmerPeaks/Cryogen/COVER.png";

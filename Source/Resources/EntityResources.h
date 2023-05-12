@@ -6,6 +6,7 @@
 
 namespace EntityResources
 {
+	extern const std::string DropShadow;
 	extern const std::string Enemies_BallmerPeaks_Cryogen_Animations;
 	extern const std::string Enemies_BallmerPeaks_Cryogen_BELT;
 	extern const std::string Enemies_BallmerPeaks_Cryogen_COVER;

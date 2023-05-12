@@ -189,9 +189,9 @@ void CollisionObject::runPhysics(float dt)
 		return;
 	}
 
-	for (auto collisionType : this->collidesWithTypes)
+	for (CollisionType collisionType : this->collidesWithTypes)
 	{
-		for (auto collisionObject : CollisionObject::CollisionObjects[collisionType])
+		for (CollisionObject* collisionObject : CollisionObject::CollisionObjects[collisionType])
 		{
 			if (collisionObject->isDespawned())
 			{
@@ -207,7 +207,7 @@ void CollisionObject::runPhysics(float dt)
 				if (this->previousCollisions->find(collisionObject) == this->previousCollisions->end())
 				{
 					// Run new collision events
-					for (auto event : this->collisionStartEvents[collisionType])
+					for (CollisionEvent& event : this->collisionStartEvents[collisionType])
 					{
 						CollisionResult nextResult = event.collisionEvent(CollisionData(collisionObject, dt));
 
@@ -217,7 +217,7 @@ void CollisionObject::runPhysics(float dt)
 				else
 				{
 					// Run collision-sustain events
-					for (auto event : this->collisionSustainEvents[collisionType])
+					for (CollisionEvent& event : this->collisionSustainEvents[collisionType])
 					{
 						CollisionResult nextResult = event.collisionEvent(CollisionData(collisionObject, dt));
 
@@ -231,13 +231,13 @@ void CollisionObject::runPhysics(float dt)
 	}
 
 	// Run collision end events
-	for (auto collisionObject : *this->previousCollisions)
+	for (CollisionObject* collisionObject : *this->previousCollisions)
 	{
 		if (this->currentCollisions->find(collisionObject) == this->currentCollisions->end())
 		{
-			for (auto collisionType : collisionObject->getCollisionTypes())
+			for (CollisionType collisionType : collisionObject->getCollisionTypes())
 			{
-				for (auto event : this->collisionEndEvents[collisionType])
+				for (CollisionEvent& event : this->collisionEndEvents[collisionType])
 				{
 					event.collisionEvent(CollisionData(collisionObject, dt));
 				}

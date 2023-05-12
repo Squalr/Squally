@@ -22,6 +22,7 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 
+#include "Resources/EntityResources.h"
 #include "Resources/UIResources.h"
 #include "Resources/SoundResources.h"
 
@@ -43,6 +44,7 @@ PlatformerEntity::PlatformerEntity(
 {
 	this->floatNode = Node::create();
 	this->belowAnimationNode = Node::create();
+	this->dropShadow = Sprite::create(EntityResources::DropShadow);
 	this->animationNode = SmartAnimationNode::create(scmlResource);
 	this->entityScale = scale * GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyScale, Value(1.0f)).asFloat();
 	this->animationResource = scmlResource;
@@ -63,6 +65,9 @@ PlatformerEntity::PlatformerEntity(
 
 	this->hackButtonOffset = Vec2(0.0f, this->entitySize.height);
 
+	// this->dropShadow->setAnchorPoint(Vec2(0.5f, 0.0f));
+	this->dropShadow->setOpacity(0);
+
 	this->animationNode->setScale(this->entityScale);
 	this->animationNode->playAnimation();
 	
@@ -76,6 +81,7 @@ PlatformerEntity::PlatformerEntity(
 		this->setRotation(180.0f);
 	}
 
+	this->addChild(this->dropShadow);
 	this->floatNode->addChild(this->belowAnimationNode);
 	this->floatNode->addChild(this->animationNode);
 	this->addChild(this->platformerEntityDeserializer);
@@ -158,6 +164,11 @@ std::string PlatformerEntity::getBattleBehavior()
 Node* PlatformerEntity::getFloatNode()
 {
 	return this->floatNode;
+}
+
+cocos2d::Sprite* PlatformerEntity::getDropShadow()
+{
+	return this->dropShadow;
 }
 
 SmartAnimationNode* PlatformerEntity::getAnimations()

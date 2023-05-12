@@ -1114,6 +1114,7 @@ const std::string DecorResources::Snow_yellow_streamer_01 = "Private/Platformer/
 const std::string DecorResources::Snow_yellow_streamer_02 = "Private/Platformer/Decor/Snow/yellow_streamer_02.png";
 const std::string DecorResources::Snow_yellow_tree_Lights = "Private/Platformer/Decor/Snow/yellow_tree-Lights.png";
 const std::string DecorResources::Void_Background_Midground = "Private/Platformer/Decor/Void/Background/Midground.png";
+const std::string DecorResources::Void_Background_Void = "Private/Platformer/Decor/Void/Background/Void.png";
 const std::string DecorResources::Void_Chain1 = "Private/Platformer/Decor/Void/Chain1.png";
 const std::string DecorResources::Void_Galaxy1 = "Private/Platformer/Decor/Void/Galaxy1.png";
 const std::string DecorResources::Void_Gear1 = "Private/Platformer/Decor/Void/Gear1.png";

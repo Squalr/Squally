@@ -22,6 +22,7 @@ public:
 	cocos2d::Vec2 defaultPosition;
 
 	static const std::string MapKey;
+	static const float DropShadowCollisionHeight;
 	static const float GroundCollisionPadding;
 	static const float GroundCollisionOffset;
 	static const float GroundCollisionHeight;
@@ -34,18 +35,25 @@ protected:
 
 	void onLoad() override;
 	void onDisable() override;
+	void update(float dt) override;
 
 private:
 	typedef GameComponent super;
 
+	void buildDropShadowCollisionDetector();
 	void buildGroundCollisionDetector();
 	void buildCornerCollisionDetectors();
 
 	CollisionObject* leftCornerCollision = nullptr;
 	CollisionObject* rightCornerCollision = nullptr;
 	CollisionObject* groundCollision = nullptr;
+	CollisionObject* dropShadowCollision = nullptr;
 	PlatformerEntity* entity = nullptr;
 	EntityHoverCollisionBehavior* hoverCollisionBehavior = nullptr;
+
+	CollisionObject* currentGround = nullptr;
+	float dropShadowOpacity = 0.0f;
+	float dropShadowScale = 0.0f;
 
 	float detectorWidth = 0.0f;
 };

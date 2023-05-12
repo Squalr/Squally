@@ -23,6 +23,7 @@ public:
 	std::string getAnimationResource();
 	std::string getEmblemResource();
 	cocos2d::Node* getFloatNode();
+	cocos2d::Sprite* getDropShadow();
 	SmartAnimationNode* getAnimations();
 	cocos2d::CSize getEntitySize();
 	cocos2d::Vec2 getEntityCenterPoint();
@@ -71,6 +72,7 @@ protected:
 
 	cocos2d::Node* floatNode = nullptr;
 	cocos2d::Node* belowAnimationNode = nullptr;
+	cocos2d::Sprite* dropShadow = nullptr;
 	SmartAnimationNode* animationNode = nullptr;
 
 	static const std::string PropertyState;

@@ -1115,6 +1115,7 @@ namespace DecorResources
 	extern const std::string Snow_yellow_streamer_02;
 	extern const std::string Snow_yellow_tree_Lights;
 	extern const std::string Void_Background_Midground;
+	extern const std::string Void_Background_Void;
 	extern const std::string Void_Chain1;
 	extern const std::string Void_Galaxy1;
 	extern const std::string Void_Gear1;
