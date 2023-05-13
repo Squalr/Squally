@@ -85,9 +85,14 @@ void SquallyCollisionBehavior::onLoad()
 	// Self-query to wait for collision to be created
 	this->entity->watchForComponent<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* collisionBehavior)
 	{
-		this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
+		this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionData collisionData)
 		{	
-			return CollisionResult::CollideWithPhysics;
+			if (this->movementCollision->getVelocity().y  > 0.0f)
+			{
+				return CollisionResult::CollideWithPhysics;
+			}
+
+			return CollisionResult::DoNothing;
 		});
 
 		if (this->leftCollision != nullptr)

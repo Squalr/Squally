@@ -312,8 +312,13 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 	this->addChild(this->movementCollision);
 
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
-	{	
-		return CollisionResult::CollideWithPhysics;
+	{
+		if (this->movementCollision->getVelocity().y  > 0.0f)
+		{
+			return CollisionResult::CollideWithPhysics;
+		}
+
+		return CollisionResult::DoNothing;
 	});
 	
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
