@@ -41,7 +41,7 @@ using namespace cocos2d;
 const std::string Fortitude::FortitudeIdentifier = "fortitude";
 const std::string Fortitude::HackIdentifierFortitude = "fortitude";
 
-const int Fortitude::MaxMultiplier = 4;
+const int Fortitude::MaxMultiplier = 6;
 const int Fortitude::DamageReduction = 3; // Keep in sync with asm
 const float Fortitude::Duration = 16.0f;
 

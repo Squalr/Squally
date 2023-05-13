@@ -69,9 +69,11 @@ cocos2d::LanguageType LocalizedString::getOverrideLanguage()
 	return this->overrideLanguage;
 }
 
-void LocalizedString::setOverrideLanguage(cocos2d::LanguageType overrideLanguage)
+LocalizedString* LocalizedString::setOverrideLanguage(cocos2d::LanguageType overrideLanguage)
 {
 	this->overrideLanguage = overrideLanguage;
+
+	return this;
 }
 
 LocalizedString* LocalizedString::setStringReplacementVariables(LocalizedString* stringReplacementVariables)

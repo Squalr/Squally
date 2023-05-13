@@ -12,7 +12,7 @@ public:
 	virtual LocalizedString* clone() = 0;
 	std::string getString();
 	cocos2d::LanguageType getOverrideLanguage();
-	void setOverrideLanguage(cocos2d::LanguageType overrideLanguage);
+	LocalizedString* setOverrideLanguage(cocos2d::LanguageType overrideLanguage);
 	LocalizedString* setStringReplacementVariables(LocalizedString* stringReplacementVariable);
 	LocalizedString* setStringReplacementVariables(std::vector<LocalizedString*> stringReplacementVariables);
 	std::vector<LocalizedString*> getStringReplacementVariables();
