@@ -20,6 +20,7 @@ using namespace cocos2d;
 const float Squally::SquallyScale = 0.92f;
 const std::string Squally::MapKey = "squally";
 const std::string Squally::TeamTag = "squally-team";
+const float Squally::HoverHeight = 96.0f;
 
 Squally* Squally::create()
 {
@@ -46,7 +47,7 @@ Squally::Squally(ValueMap& properties) : super(properties,
 	EntityResources::Squally_Emblem,
 	CSize(128.0f, 128.0f),
 	Squally::SquallyScale,
-	96.0f)
+	Squally::HoverHeight)
 {
 }
 

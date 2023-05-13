@@ -358,7 +358,8 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,soul,agro,z-fade"/>
+    <property name="components" value="enemy,soul,agro,z-fade,entity-float"/>
+    <property name="death-sink-height" type="float" value="64"/>
     <property name="drop-pool" value="ff-generic"/>
    </properties>
   </object>

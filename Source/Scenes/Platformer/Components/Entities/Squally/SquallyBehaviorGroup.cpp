@@ -4,6 +4,7 @@
 #include "Scenes/Platformer/Components/Entities/EntityBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/HelperManagerBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Scrappy/ScrappyManagerBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Movement/EntityFloatBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Abilities/SquallyAbilityBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Camera/SquallyCameraFollowBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Collision/SquallyCollisionBehaviorGroup.h"
@@ -12,7 +13,6 @@
 #include "Scenes/Platformer/Components/Entities/Squally/Inventory/SquallyInventoryBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Inventory/SquallyReceiveItemBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Misc/SquallyStaticHelpBehavior.h"
-#include "Scenes/Platformer/Components/Entities/Squally/Movement/SquallyFloatBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Movement/SquallyMovementBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Movement/SquallyRespawnBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Stats/SquallyStatsBehaviorGroup.h"
@@ -33,6 +33,7 @@ SquallyBehaviorGroup* SquallyBehaviorGroup::create(GameObject* owner)
 
 SquallyBehaviorGroup::SquallyBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityBehaviorGroup::create(owner),
+	EntityFloatBehavior::create(owner),
 	SquallyAbilityBehaviorGroup::create(owner),
 	SquallyCameraFollowBehavior::create(owner),
 	SquallyCollisionBehaviorGroup::create(owner),
@@ -40,7 +41,6 @@ SquallyBehaviorGroup::SquallyBehaviorGroup(GameObject* owner) : super(owner, {
 	SquallyDefaultInventoryBehavior::create(owner),
 	SquallyHudTrackBehavior::create(owner),
 	SquallyReceiveItemBehavior::create(owner),
-	SquallyFloatBehavior::create(owner),
 	SquallyMovementBehavior::create(owner),
 	SquallyRespawnBehavior::create(owner),
 	SquallyStatsBehaviorGroup::create(owner),

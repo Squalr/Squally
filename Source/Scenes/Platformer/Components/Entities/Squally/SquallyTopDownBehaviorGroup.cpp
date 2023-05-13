@@ -12,7 +12,6 @@
 #include "Scenes/Platformer/Components/Entities/Squally/Inventory/SquallyInventoryBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Inventory/SquallyReceiveItemBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Misc/SquallyStaticHelpBehavior.h"
-#include "Scenes/Platformer/Components/Entities/Squally/Movement/SquallyFloatBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Movement/SquallyMovementBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Movement/SquallyRespawnBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Squally/Stats/SquallyStatsBehaviorGroup.h"
@@ -39,7 +38,6 @@ SquallyTopDownBehaviorGroup::SquallyTopDownBehaviorGroup(GameObject* owner) : su
 	SquallyInventoryBehavior::create(owner),
 	SquallyDefaultInventoryBehavior::create(owner),
 	SquallyHudTrackBehavior::create(owner),
-	SquallyFloatBehavior::create(owner),
 	SquallyMovementBehavior::create(owner),
 	SquallyRespawnBehavior::create(owner),
 	SquallyStatsBehaviorGroup::create(owner),

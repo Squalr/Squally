@@ -102,7 +102,14 @@ void EntityHoverCollisionBehavior::update(float dt)
 		}
 	});
 
-	if (autoCrouch || this->entity->getRuntimeStateOrDefaultFloat(StateKeys::MovementY, 0.0f) < 0.0f)
+	/*
+	if (!this->entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+	{
+		autoCrouch = false;
+	}*/
+
+	if (this->entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool() &&
+		(autoCrouch || this->entity->getRuntimeStateOrDefaultFloat(StateKeys::MovementY, 0.0f) < 0.0f))
 	{
 		this->crouch(dt);
 	}
