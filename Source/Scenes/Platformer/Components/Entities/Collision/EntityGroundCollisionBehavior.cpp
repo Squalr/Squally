@@ -226,7 +226,7 @@ void EntityGroundCollisionBehavior::update(float dt)
 		this->deathScaler = MathUtils::clamp(this->deathScaler - dt * DeathScalerSpeed, 1.0f, MaxDeathScale);
 	}
 
-	float massMultiplier = MathUtils::clamp(this->entity->getEntitySize().width / 128.0f, 1.0f, 4.0f);
+	float massMultiplier = MathUtils::clamp(this->entity->getEntitySize().width / 128.0f, 0.75f, 4.0f);
 	const float DefaultScale = 0.33f;
 	float resultScale = MathUtils::clamp(averageNormalizedDistance * this->deathScaler * massMultiplier * DefaultScale, 0.0f, 1.0f);
 	float upScale = resultScale / DefaultScale;

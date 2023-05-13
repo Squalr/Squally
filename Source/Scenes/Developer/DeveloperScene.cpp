@@ -97,6 +97,8 @@ DeveloperScene::DeveloperScene()
 		- Squally
 			** Can get stuck on roof of maps (see UR 3_1)
 			* Squally death anim improvement (and disable float hover. maybe for all entities, as IsAlive check)
+			v worried face on intro cinematic crash
+			v Potentially mask shadow based on number of colliders hit
 		- SFX
 			- Add CPU noises when turned on in DM
 			- Add Train noises in DM/CV

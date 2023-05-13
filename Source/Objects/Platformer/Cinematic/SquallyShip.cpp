@@ -198,12 +198,12 @@ void SquallyShip::runShipSequence()
 		{
 			this->lightningStrike->playAnimation(FXResources::Lightning_Lightning_0000, 0.06f);
 			this->lightningSound->play();
-			this->rootNode->runAction(EaseSineIn::create(RotateTo::create(1.0f, -45.0f)));
 		}),
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
 		{
 			this->isFalling = true;
+			this->rootNode->runAction(EaseSineIn::create(RotateTo::create(1.0f, -45.0f)));
 			this->smokeAnimation->playAnimationRepeat(FXResources::SmokeWhisp_SmokeWhisp_0000, 0.06f);
 			this->shipFireAnimation->playAnimationRepeat(FXResources::FlameWhisp_FlameWhisp_0000, 0.065f, 1.25f, true);
 		}),

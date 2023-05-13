@@ -69,7 +69,7 @@ bool EntityHeadCollisionBehavior::hasHeadCollisionWith(CollisionObject* collison
 
 	Node* currentCollisionGroup = collisonObject->getParent();
 
-	for (auto next : this->headCollision->getCurrentCollisions())
+	for (CollisionObject* next : this->headCollision->getCurrentCollisions())
 	{
 		if (next->getParent() != currentCollisionGroup)
 		{

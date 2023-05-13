@@ -152,6 +152,8 @@ void EntityPickPocketBehavior::onLoad()
 void EntityPickPocketBehavior::onDisable()
 {
 	super::onDisable();
+
+	this->updateIconVisibility();
 }
 
 void EntityPickPocketBehavior::attemptPickPocket()
@@ -172,7 +174,11 @@ void EntityPickPocketBehavior::attemptPickPocket()
 
 bool EntityPickPocketBehavior::canPickPocket()
 {
-	return this->entity != nullptr && this->currentHelperName == Guano::MapKey && this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) && !this->wasPickPocketed();
+	return this->entity != nullptr 
+		&& !this->isInvalidated()
+		&& this->currentHelperName == Guano::MapKey
+		&& this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true)
+		&& !this->wasPickPocketed();
 }
 
 bool EntityPickPocketBehavior::wasPickPocketed()
