@@ -90,7 +90,7 @@ DeveloperScene::DeveloperScene()
 	- Game Feel / Design / Lore:
 		** Credits
 		** Final Boss Fight
-		* Cracks in simulation for story
+		* Crack interaction cutscenes     
 		* Very early Perceptron encounter?
 			* Encounter in EF? Where?
 			* Add an encounter in DM 1_0 (Have Perceptron block the bridge path, require ducking behind debris to avoid death)

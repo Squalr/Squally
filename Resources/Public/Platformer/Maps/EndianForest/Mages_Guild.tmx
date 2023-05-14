@@ -14,7 +14,7 @@
  </objectgroup>
  <objectgroup id="2" name="music">
   <properties>
-   <property name="music" value="Music/Ambient/Forest.mp3"/>
+   <property name="music" value="solace"/>
    <property name="type" value="music"/>
   </properties>
  </objectgroup>

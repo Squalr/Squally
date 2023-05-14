@@ -36,7 +36,7 @@ Sound::Sound(ValueMap& properties, std::string soundResource) : super(properties
 {
 	if (soundResource.empty() && GameUtils::keyExists(this->properties, Sound::PropertyKeyResource))
 	{
-		this->setSoundResource("Resources/Private/Sounds/" + GameUtils::getKeyOrDefault(this->properties, Sound::PropertyKeyResource, Value("")).asString() + ".mp3");
+		this->setSoundResource("Resources/Private/Sounds/" + GameUtils::getKeyOrDefault(this->properties, Sound::PropertyKeyResource, Value("")).asString() + ".ogg");
 	}
 }
 
