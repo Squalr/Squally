@@ -35859,6 +35859,66 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis() = default;
 	};
 
+	class Platformer_Quests_EndianForest_PerceptronChase_A_DangerDanger : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_PerceptronChase_A_DangerDanger();
+		virtual ~Platformer_Quests_EndianForest_PerceptronChase_A_DangerDanger() = default;
+	};
+
+	class Platformer_Quests_EndianForest_PerceptronChase_B_FoundYou : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_PerceptronChase_B_FoundYou();
+		virtual ~Platformer_Quests_EndianForest_PerceptronChase_B_FoundYou() = default;
+	};
+
+	class Platformer_Quests_EndianForest_PerceptronChase_C_Whew : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_PerceptronChase_C_Whew();
+		virtual ~Platformer_Quests_EndianForest_PerceptronChase_C_Whew() = default;
+	};
+
+	class Platformer_Quests_EndianForest_PerceptronChase_D_JustRun : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_PerceptronChase_D_JustRun();
+		virtual ~Platformer_Quests_EndianForest_PerceptronChase_D_JustRun() = default;
+	};
+
 	class Platformer_Quests_EndianForest_RescueGuano_A_GetMeOutOfHere : public LocalizedString
 	{
 	public:

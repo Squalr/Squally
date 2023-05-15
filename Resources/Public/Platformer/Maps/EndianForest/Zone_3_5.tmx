@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="871">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="16" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="872">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Waterfall"/>
@@ -120,6 +120,13 @@
     <property name="reward-pool" value="ef-ram-wheel"/>
    </properties>
   </object>
+  <object id="871" name="edge-portal" type="object" x="672.768" y="-24.1832" width="718.1" height="174.184">
+   <properties>
+    <property name="direction" value="up"/>
+    <property name="map" value="EndianForest/Zone_3_4"/>
+    <property name="transition" value="up"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="24" name="entities">
   <properties>
@@ -147,13 +154,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="833" name="edge-portal" type="object" x="672.768" y="-24.1832" width="718.1" height="174.184">
-   <properties>
-    <property name="direction" value="up"/>
-    <property name="map" value="EndianForest/Zone_3_4"/>
-    <property name="transition" value="up"/>
-   </properties>
-  </object>
   <object id="842" name="Generic/Wheel1" type="decor" x="720.5" y="1024.17" width="135" height="79"/>
   <object id="843" name="Generic/Shield1" type="decor" x="1159.5" y="1013.5" width="140" height="76"/>
   <object id="844" name="Generic/Shield1" type="decor" x="510" y="1027.5" width="140" height="76"/>

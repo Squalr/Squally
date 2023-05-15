@@ -91,9 +91,7 @@ DeveloperScene::DeveloperScene()
 		** Credits
 		** Final Boss Fight
 		* Crack interaction cutscenes     
-		* Very early Perceptron encounter?
-			* Encounter in EF? Where?
-			* Add an encounter in DM 1_0 (Have Perceptron block the bridge path, require ducking behind debris to avoid death)
+		* Perceptron encounter in DM 1_0 (Have Perceptron block the bridge path, require ducking behind debris to avoid death)
 		- Squally
 			v worried face on intro cinematic crash
 			v Potentially mask shadow based on number of colliders hit

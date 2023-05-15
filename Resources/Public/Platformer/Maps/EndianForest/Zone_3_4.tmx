@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="76" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="892">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="76" height="34" tilewidth="128" tileheight="128" infinite="0" nextlayerid="78" nextobjectid="898">
  <objectgroup id="1" name="meta" visible="0">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -70,15 +70,19 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="744" name="dark-grass" type="terrain" x="1618.3" y="3068.27">
-   <polygon points="-1618.41,-858.315 -1623.12,-418.438 -547.133,-353.445 298.162,-268.979 852.222,16.9679 913.432,18.9216 923.422,-696.152 107.632,-883.086"/>
+   <polygon points="-1618.41,-858.315 -1623.12,-418.438 -547.133,-353.445 298.162,-268.979 852.222,16.9679 913.432,18.9216 946.17,-320.208 923.422,-696.152 107.632,-883.086"/>
   </object>
   <object id="775" name="dark-grass" type="terrain" x="4060" y="2738.84">
-   <polygon points="-1133.45,-1811.74 -1137.18,559.198 1511.19,564.988 1514.27,-1822.02"/>
+   <polygon points="-1133.45,-1811.74 -1151.88,-270.84 -1137.14,532.492 -1114.51,563.865 1468,564.97 1513.19,519.988 1514.27,-1822.02"/>
   </object>
   <object id="833" name="dark-grass" type="terrain" x="-60" y="3588" width="7719.88" height="968"/>
   <object id="834" name="dark-grass" type="terrain" x="8244" y="3576" width="1660" height="988"/>
-  <object id="835" name="dark-grass" type="terrain" x="6850" y="958" width="569.091" height="2136"/>
-  <object id="836" name="dark-grass" type="terrain" x="5954" y="956" width="460" height="2136"/>
+  <object id="892" name="dark-grass" type="terrain" x="7102" y="2762">
+   <polygon points="-1133.45,-1811.74 -1159.37,-575.996 -1147.18,329.198 -937.014,349.433 -687.106,329.851 -670.81,-569.012 -679.063,-1815.35"/>
+  </object>
+  <object id="895" name="dark-grass" type="terrain" x="8048" y="2772">
+   <polygon points="-1133.45,-1811.74 -1159.37,-575.996 -1147.18,329.198 -937.014,349.433 -687.106,329.851 -670.81,-569.012 -679.063,-1815.35"/>
+  </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -359,11 +363,8 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="824" name="dark-grass" type="terrain" x="7007.65" y="7455.62">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-   <polygon points="-238.478,-3803.58 -238.21,-2617.62 109.494,-2614.55 110.081,-3803.22 -79.2625,-3803.43"/>
+  <object id="897" name="dark-grass" type="terrain" x="7613.78" y="4385.15">
+   <polygon points="-827.213,-710.359 -854.129,-495.841 -837.232,129.074 -683.85,137.008 -501.463,129.33 -469.569,-487.102 -495.593,-711.775"/>
   </object>
  </objectgroup>
  <objectgroup id="28" name="fireflies">
@@ -388,6 +389,9 @@
   <object id="407" name="Forest/Foreground/ForegroundTree1" type="decor" x="9201.8" y="3620.26" width="242" height="738"/>
   <object id="409" name="Forest/Foreground/ForegroundTree1" type="decor" x="1027.57" y="3424.1" width="242" height="738"/>
   <object id="485" name="Forest/Foreground/ForegroundTree2" type="decor" x="5428.69" y="3711.61" width="270" height="748"/>
+  <object id="896" name="dark-grass" type="terrain" x="6360" y="5480">
+   <polygon points="-1133.45,-1811.74 -1159.37,-575.996 -1147.18,329.198 -937.014,349.433 -687.106,329.851 -670.81,-569.012 -679.063,-1815.35"/>
+  </object>
  </objectgroup>
  <objectgroup id="33" name="decor +8">
   <properties>
