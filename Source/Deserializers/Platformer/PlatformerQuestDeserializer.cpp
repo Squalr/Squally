@@ -49,6 +49,7 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	// DATA MINES QUESTS
 	this->lineDeserializers[DefeatRhinomanLine::MapKeyQuestLine] = [=]() { return (QuestLine*)DefeatRhinomanLine::create(); };
 	this->lineDeserializers[RestorePowerLine::MapKeyQuestLine] = [=]() { return (QuestLine*)RestorePowerLine::create(); };
+	this->lineDeserializers[MinesPerceptronEncounterLine::MapKeyQuestLine] = [=]() { return (QuestLine*)MinesPerceptronEncounterLine::create(); };
 
 	// CASTLE VALGRIND QUESTS
 	this->lineDeserializers[ArcaneBookLine::MapKeyQuestLine] = [=]() { return (QuestLine*)ArcaneBookLine::create(); };

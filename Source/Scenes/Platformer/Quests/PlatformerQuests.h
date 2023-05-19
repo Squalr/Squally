@@ -5,6 +5,7 @@
 #include "Scenes/Platformer/Quests/FirewallFissure/DefeatAsmodeus/DefeatAsmodeusLine.h"
 #include "Scenes/Platformer/Quests/FirewallFissure/ReleasePressure/ReleasePressureLine.h"
 #include "Scenes/Platformer/Quests/DataMines/DefeatRhinoman/DefeatRhinomanLine.h"
+#include "Scenes/Platformer/Quests/DataMines/MinesPerceptronEncounter/MinesPerceptronEncounterLine.h"
 #include "Scenes/Platformer/Quests/DataMines/RestorePower/RestorePowerLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/BusinessHours/BusinessHoursLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/FindElriel/FindElrielLine.h"
