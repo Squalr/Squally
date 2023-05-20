@@ -61,13 +61,6 @@ MinesPerceptronEncounter* MinesPerceptronEncounter::create(GameObject* owner, Qu
 
 MinesPerceptronEncounter::MinesPerceptronEncounter(GameObject* owner, QuestLine* questLine) : super(owner, questLine, MinesPerceptronEncounter::MapKeyQuest, false)
 {
-	this->lightningStrike = SmartAnimationSequenceNode::create();
-	this->lightningSound = Sound::create(SoundResources::Hexus_Attacks_Energy);
-
-	this->lightningStrike->setVisible(false);
-
-	this->addChild(this->lightningStrike);
-	this->addChild(this->lightningSound);
 }
 
 MinesPerceptronEncounter::~MinesPerceptronEncounter()
@@ -88,7 +81,7 @@ void MinesPerceptronEncounter::onLoad(QuestState questState)
 		{
 			this->perceptron->getComponent<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
 			{
-				movementBehavior->setMoveAcceleration(EntityMovementBehavior::DefaultRunAcceleration);
+				movementBehavior->setMoveAcceleration(EntityMovementBehavior::DefaultSprintAcceleration);
 			});
 		}
 	}, Perceptron::MapKey);
@@ -138,18 +131,30 @@ void MinesPerceptronEncounter::onSkipped()
 
 void MinesPerceptronEncounter::runCinematicSequencePt1()
 {
-	GameCamera::getInstance()->pushTarget(CameraTrackingData(this->cinematicCameraTarget));
+	if (this->perceptron == nullptr)
+	{
+		this->complete();
+		return;
+	}
 
-	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
-		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
-			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
-		),
-		[=]()
+	GameCamera::getInstance()->pushTarget(CameraTrackingData(this->perceptron, Vec2::ZERO, Vec2::ZERO, CameraTrackingData::CameraScrollType::Rectangle, CameraTrackingData::DefaultCameraFollowSpeed, 1.25f));
+
+	// Patrol is broken into two segements for cinematic reasons (halfPoint + exit)
+	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* halfPoint)
+	{
+		if (this->perceptron == nullptr)
 		{
+			this->complete();
+			return;
+		}
+
+		this->perceptron->setState(StateKeys::CinematicHijacked, Value(true));
+		this->perceptron->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->perceptron).x));
+		this->perceptron->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(halfPoint).x));
+
+		this->perceptron->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
+		{
+			// Continue to exit after half way point
 			ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* exit)
 			{
 				if (this->perceptron != nullptr)
@@ -157,23 +162,34 @@ void MinesPerceptronEncounter::runCinematicSequencePt1()
 					this->perceptron->setState(StateKeys::CinematicHijacked, Value(true));
 					this->perceptron->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->perceptron).x));
 					this->perceptron->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(exit).x));
+					
+					this->perceptron->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
+					{
+						this->runCinematicSequencePt2();
+					});
 				}
 			}, "exit");
-
-			this->perceptron->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
+			
+			// Adjust Squally to keep LoS once Perceptron patrols half way across hallway
+			ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* adjustment)
 			{
-				this->runCinematicSequencePt2();
-			});
-		},
-		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
-		true
-	));
-}
+				if (this->squally != nullptr)
+				{
+					this->squally->setState(StateKeys::CinematicHijacked, Value(true));
+					this->squally->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->perceptron).x));
+					this->squally->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(adjustment).x));
+					
+					this->squally->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
+					{
+						this->squally->getAnimations()->setFlippedX(true);
+					});
+				}
+			}, "adjustment");
+		});
+	}, "half-point");
 
-void MinesPerceptronEncounter::runCinematicSequencePt2()
-{
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_PerceptronChase_C_Whew::create(),
+		Strings::Platformer_Quests_DataMines_MinesPerceptronEncounter_A_StayHidden::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
@@ -182,46 +198,32 @@ void MinesPerceptronEncounter::runCinematicSequencePt2()
 		),
 		[=]()
 		{
-			this->complete();
 		},
-		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
-		true
+		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
+		false
 	));
 }
 
-void MinesPerceptronEncounter::runCinematicSequenceStrikeZone()
+void MinesPerceptronEncounter::runCinematicSequencePt2()
 {
 	if (this->perceptron != nullptr)
 	{
-		this->perceptron->clearState(StateKeys::CinematicHijacked);
-		this->perceptron->clearState(StateKeys::CinematicSourceX);
-		this->perceptron->clearState(StateKeys::CinematicDestinationX);
+		this->perceptron->despawn();
+		this->complete();
 	}
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_PerceptronChase_B_FoundYou::create(), 
+		Strings::Platformer_Quests_DataMines_MinesPerceptronEncounter_B_Wonder::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->perceptron, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 			DialogueEvents::BuildPreviewNode(&this->squally, true)
 		),
 		[=]()
 		{
-			if (this->squally != nullptr)
-			{
-				// Kill with forced map reload to reset the event
-				this->squally->getComponent<SquallyRespawnBehavior>([=](SquallyRespawnBehavior* respawnBehavior)
-				{
-					this->lightningStrike->setVisible(true);
-					this->lightningStrike->playAnimation(FXResources::Lightning_Lightning_0000, 0.06f);
-					GameUtils::setWorldCoords(this->lightningStrike, GameUtils::getWorldCoords(this->squally) + Vec2(0.0f, 392.0f));
-					this->lightningSound->play();
-					respawnBehavior->respawnWithMapReload();
-				});
-			}
 		},
 		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
-		true
+		false
 	));
 }

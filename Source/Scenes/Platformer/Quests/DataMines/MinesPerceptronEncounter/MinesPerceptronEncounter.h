@@ -34,15 +34,11 @@ private:
 
 	void runCinematicSequencePt1();
 	void runCinematicSequencePt2();
-	void runCinematicSequenceStrikeZone();
 
-	PlatformerEntity* cinematicKillTarget = nullptr;
 	Perceptron* perceptron = nullptr;
 	Gecky* gecky = nullptr;
 	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
-	SmartAnimationSequenceNode* lightningStrike = nullptr;
-	Sound* lightningSound = nullptr;
 	CameraTarget* cinematicCameraTarget = nullptr;
 };

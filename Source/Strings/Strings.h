@@ -34464,6 +34464,36 @@ namespace Strings
 		virtual ~Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass() = default;
 	};
 
+	class Platformer_Quests_DataMines_MinesPerceptronEncounter_A_StayHidden : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_MinesPerceptronEncounter_A_StayHidden();
+		virtual ~Platformer_Quests_DataMines_MinesPerceptronEncounter_A_StayHidden() = default;
+	};
+
+	class Platformer_Quests_DataMines_MinesPerceptronEncounter_B_Wonder : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_MinesPerceptronEncounter_B_Wonder();
+		virtual ~Platformer_Quests_DataMines_MinesPerceptronEncounter_B_Wonder() = default;
+	};
+
 	class Platformer_Quests_DataMines_RestorePower_Bancroft_A_CanWeBoard : public LocalizedString
 	{
 	public:

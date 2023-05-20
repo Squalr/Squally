@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="865">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="77" nextobjectid="868">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -45,6 +45,7 @@
     <property name="bridge-delta" type="float" value="-1024"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="0"/>
+    <property name="bridge-init-raised" type="bool" value="true"/>
     <property name="components" value="bridge"/>
    </properties>
   </object>
@@ -88,6 +89,11 @@
   <object id="864" name="cinematic-marker" type="object" x="1712" y="1344" width="128" height="128">
    <properties>
     <property name="tag" value="exit"/>
+   </properties>
+  </object>
+  <object id="867" name="cinematic-marker" type="object" x="2732" y="1282" width="128" height="128">
+   <properties>
+    <property name="tag" value="half-point"/>
    </properties>
   </object>
  </objectgroup>
@@ -174,7 +180,7 @@
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="816" name="Ruins/Walls5" type="decor" x="2232.1" y="817" width="386" height="778"/>
+  <object id="816" name="Ruins/Walls5" type="decor" x="2232.1" y="816" width="386" height="778"/>
   <object id="854" name="Ruins/Walls3" type="decor" x="5151.24" y="873.773" width="262" height="130">
    <properties>
     <property name="flip-y" type="bool" value="false"/>
@@ -372,6 +378,11 @@
   <object id="862" name="camera-target" type="object" x="3696" y="1128" width="128" height="128">
    <properties>
     <property name="tag" value="cinematic"/>
+   </properties>
+  </object>
+  <object id="865" name="cinematic-marker" type="object" x="2774" y="1424" width="128" height="128">
+   <properties>
+    <property name="tag" value="adjustment"/>
    </properties>
   </object>
  </objectgroup>
