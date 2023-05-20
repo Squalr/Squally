@@ -16,6 +16,7 @@ class CardsMenu;
 class Cipher;
 class CollectablesMenu;
 class ConfirmationHud;
+class CutscenesMenu;
 class DismantleMenu;
 class GameHud;
 class FadeHud;
@@ -69,6 +70,7 @@ private:
 	BlacksmithingMenu* buildBlacksmithingMenu();
 	DismantleMenu* buildDismantleMenu();
 	PlatformerPauseMenu* buildPlatformerPauseMenu();
+	CutscenesMenu* buildCutscenesMenu();
 
 	bool awaitingConfirmationEnd = false;
 
@@ -87,6 +89,7 @@ private:
 	LazyNode<AlchemyMenu>* alchemyMenu = nullptr;
 	LazyNode<BlacksmithingMenu>* blacksmithingMenu = nullptr;
 	LazyNode<DismantleMenu>* dismantleMenu = nullptr;
+	LazyNode<CutscenesMenu>* cutscenesMenu = nullptr;
 	FadeHud* fadeHud = nullptr;
 	LazyNode<PlatformerPauseMenu>* platformerPauseMenu = nullptr;
 	MiniMap* miniMap = nullptr;

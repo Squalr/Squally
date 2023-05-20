@@ -12,6 +12,7 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Menus/Cutscenes/CutscenesMenu.h"
 #include "Objects/Platformer/ItemPools/RecipePools/RecipePoolDeserializer.h"
 #include "Scenes/Platformer/Inventory/Items/Recipes/Recipe.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
@@ -97,14 +98,17 @@ void Crack::onInteract(PlatformerEntity* interactingEntity)
 	{
 		case CrackSize::Small:
 		{
+			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackSmall));
 			break;
 		}
 		case CrackSize::Medium:
 		{
+			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackMedium));
 			break;
 		}
 		case CrackSize::Large:
 		{
+			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackLarge));
 			break;
 		}
 	}

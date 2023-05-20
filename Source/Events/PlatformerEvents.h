@@ -14,6 +14,8 @@ class MinMaxPool;
 class PlatformerEntity;
 class PlatformerEnemy;
 
+enum class Cutscene;
+
 class PlatformerEvents
 {
 public:
@@ -58,6 +60,7 @@ public:
 	static const std::string EventFadeOut;
 	static const std::string EventObjectiveChanged;
 	static const std::string EventUnstuck;
+	static const std::string EventPlayCutscene;
 
 	struct TransitionArgs
 	{
@@ -244,6 +247,13 @@ public:
 		SaveRespawnArgs(std::string spawnIdentifier) : spawnIdentifier(spawnIdentifier) { }
 	};
 
+	struct CutsceneArgs
+	{
+		Cutscene cutscene;
+
+		CutsceneArgs(Cutscene cutscene) : cutscene(cutscene) { }
+	};
+
 	static void TriggerSquallySpawned();
 	static void TriggerSpawnToTransitionLocation(TransitionArgs args);
 	static void TriggerWarpObjectToLocation(WarpObjectToLocationArgs args);
@@ -285,4 +295,5 @@ public:
 	static void TriggerFadeOut();
 	static void TriggerObjectiveChanged();
 	static void TriggerUnstuck();
+	static void TriggerPlayCutscene(CutsceneArgs args);
 };

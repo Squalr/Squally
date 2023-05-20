@@ -88,10 +88,9 @@ DeveloperScene::DeveloperScene()
 		v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
 
 	- Game Feel / Design / Lore:
-		** Credits
 		** Final Boss Fight
-		* Crack interaction cutscenes     
-		* Perceptron encounter in DM 1_0(?) (Have Perceptron block the bridge path, require ducking behind debris to avoid death)
+		** Credits cutscene(?)
+		** Crack interaction cutscenes     
 		- Squally
 			v worried face on intro cinematic crash
 			v Potentially mask shadow based on number of colliders hit

@@ -48,6 +48,7 @@ const std::string PlatformerEvents::EventLoadRespawn = "EVENT_LOAD_RESPAWN";
 const std::string PlatformerEvents::EventFadeOut = "EVENT_FADE_OUT";
 const std::string PlatformerEvents::EventObjectiveChanged = "EVENT_OBJECTIVE_CHANGED";
 const std::string PlatformerEvents::EventUnstuck = "EVENT_UNSTUCK";
+const std::string PlatformerEvents::EventPlayCutscene = "EVENT_PLAY_CUTSCENE";
 
 void PlatformerEvents::TriggerSquallySpawned()
 {
@@ -363,5 +364,13 @@ void PlatformerEvents::TriggerUnstuck()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventUnstuck
+	);
+}
+
+void PlatformerEvents::TriggerPlayCutscene(CutsceneArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		PlatformerEvents::EventPlayCutscene,
+		&args
 	);
 }

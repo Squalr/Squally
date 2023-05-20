@@ -56,6 +56,7 @@
 #include "Menus/Crafting/BlacksmithingMenu.h"
 #include "Menus/Crafting/DismantleMenu.h"
 #include "Menus/CursorSets.h"
+#include "Menus/Cutscenes/CutscenesMenu.h"
 #include "Menus/Inventory/FilterMenu/ConsumablesFilter.h"
 #include "Menus/Inventory/FilterMenu/FilterEntry.h"
 #include "Menus/Inventory/FilterMenu/FilterMenu.h"
@@ -112,6 +113,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 	this->blacksmithingMenu = LazyNode<BlacksmithingMenu>::create(CC_CALLBACK_0(PlatformerMap::buildBlacksmithingMenu, this));
 	this->dismantleMenu = LazyNode<DismantleMenu>::create(CC_CALLBACK_0(PlatformerMap::buildDismantleMenu, this));
 	this->inventoryMenu = LazyNode<InventoryMenu>::create(CC_CALLBACK_0(PlatformerMap::buildInventoryMenu, this));
+	this->cutscenesMenu = LazyNode<CutscenesMenu>::create(CC_CALLBACK_0(PlatformerMap::buildCutscenesMenu, this));
 	this->canPause = true;
 	this->miniMap = MiniMap::create();
 
@@ -453,6 +455,21 @@ void PlatformerMap::initializeListeners()
 			this->itemInfoMenu->lazyGet()->setVisible(true);
 			
 			GameUtils::focus(this->itemInfoMenu->lazyGet());
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventPlayCutscene, [=](EventCustom* eventCustom)
+	{
+		PlatformerEvents::CutsceneArgs* args = static_cast<PlatformerEvents::CutsceneArgs*>(eventCustom->getData());
+
+		if (args != nullptr)
+		{
+			this->cutscenesMenu->lazyGet()->open(args->cutscene);
+			this->cutscenesMenu->lazyGet()->setVisible(true);
+
+			GameUtils::focus(this->cutscenesMenu->lazyGet());
+			GameUtils::resume(this->notificationHud);
+			GameUtils::resume(this->confirmationHud);
 		}
 	}));
 
@@ -868,6 +885,19 @@ PlatformerPauseMenu* PlatformerMap::buildPlatformerPauseMenu()
 		this->lexiconMenu->lazyGet()->setVisible(true);
 		this->lexiconMenu->lazyGet()->open();
 		GameUtils::focus(this->lexiconMenu->lazyGet());
+	});
+
+	return instance;
+}
+
+CutscenesMenu* PlatformerMap::buildCutscenesMenu()
+{
+	CutscenesMenu* instance = CutscenesMenu::create();
+	
+	instance->setReturnClickCallback([=]()
+	{
+		instance->setVisible(false);
+		GameUtils::focus(this);
 	});
 
 	return instance;
