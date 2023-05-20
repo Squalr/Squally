@@ -40,12 +40,12 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="856" name="mines" type="terrain" x="3662.02" y="-1434" width="211.356" height="2321.33">
+  <object id="856" name="mines" type="terrain" x="3666.02" y="-338" width="211.356" height="2321.33">
    <properties>
-    <property name="bridge-delta" type="float" value="-1024"/>
+    <property name="bridge-delta" type="float" value="1024"/>
     <property name="bridge-group" value="bridge-group-B"/>
     <property name="bridge-index" type="int" value="0"/>
-    <property name="bridge-init-raised" type="bool" value="true"/>
+    <property name="bridge-speed" type="float" value="3"/>
     <property name="components" value="bridge"/>
    </properties>
   </object>

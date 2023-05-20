@@ -137,7 +137,7 @@ void MinesPerceptronEncounter::runCinematicSequencePt1()
 		return;
 	}
 
-	GameCamera::getInstance()->pushTarget(CameraTrackingData(this->perceptron, Vec2::ZERO, Vec2::ZERO, CameraTrackingData::CameraScrollType::Rectangle, CameraTrackingData::DefaultCameraFollowSpeed, 1.25f));
+	GameCamera::getInstance()->pushTarget(CameraTrackingData(this->perceptron, Vec2(0.0f, 192.0f), Vec2::ZERO, CameraTrackingData::CameraScrollType::Rectangle, CameraTrackingData::DefaultCameraFollowSpeed, 1.5f));
 
 	// Patrol is broken into two segements for cinematic reasons (halfPoint + exit)
 	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* halfPoint)
@@ -154,6 +154,8 @@ void MinesPerceptronEncounter::runCinematicSequencePt1()
 
 		this->perceptron->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
 		{
+			this->broadcastMapEvent("bridge-group-B", ValueMap());
+
 			// Continue to exit after half way point
 			ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* exit)
 			{
@@ -208,6 +210,7 @@ void MinesPerceptronEncounter::runCinematicSequencePt2()
 {
 	if (this->perceptron != nullptr)
 	{
+		GameCamera::getInstance()->popTarget();
 		this->perceptron->despawn();
 		this->complete();
 	}
@@ -224,6 +227,6 @@ void MinesPerceptronEncounter::runCinematicSequencePt2()
 		{
 		},
 		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
-		false
+		true
 	));
 }

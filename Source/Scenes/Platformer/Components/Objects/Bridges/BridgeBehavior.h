@@ -21,7 +21,7 @@ protected:
 private:
 	typedef GameComponent super;
 
-	void raiseBridge(bool playAnims, bool playAudio);
+	void raiseBridge(bool isInit);
 
 	enum class AudioMode
 	{
@@ -46,6 +46,5 @@ private:
 	static const std::string PropertyDelta;
 	static const std::string PropertySpeed;
 	static const std::string PropertyAudioMode;
-	static const std::string PropertyInitRaised;
 	static const std::string SaveKeyRaised;
 };

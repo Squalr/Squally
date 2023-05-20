@@ -23,7 +23,6 @@ const std::string BridgeBehavior::PropertyBridgeIndex = "bridge-index";
 const std::string BridgeBehavior::PropertyDelta = "bridge-delta";
 const std::string BridgeBehavior::PropertySpeed = "bridge-speed";
 const std::string BridgeBehavior::PropertyAudioMode = "bridge-audio-mode";
-const std::string BridgeBehavior::PropertyInitRaised = "bridge-init-raised";
 const std::string BridgeBehavior::SaveKeyRaised = "SAVE_KEY_RAISED";
 const float BridgeBehavior::DefaultDelta = -512.0f;
 const float BridgeBehavior::DefaultSpeed = 0.25f;
@@ -45,7 +44,6 @@ BridgeBehavior::BridgeBehavior(GameObject* owner) : super(owner)
 	this->raiseSound = WorldSound::create(SoundResources::Platformer_FX_Woosh_WooshPulse1);
 	this->bridgeDelta = GameUtils::getKeyOrDefault(this->object->properties, BridgeBehavior::PropertyDelta, Value(BridgeBehavior::DefaultDelta)).asFloat();
 	this->bridgeSpeed = GameUtils::getKeyOrDefault(this->object->properties, BridgeBehavior::PropertySpeed, Value(BridgeBehavior::DefaultSpeed)).asFloat();
-	bool initRaised = GameUtils::getKeyOrDefault(this->object->properties, BridgeBehavior::PropertyInitRaised, Value(false)).asBool();
 
 	this->raiseSound->disableZDepth();
 
@@ -72,11 +70,6 @@ BridgeBehavior::BridgeBehavior(GameObject* owner) : super(owner)
 	{
 		this->group = GameUtils::getKeyOrDefault(this->object->properties, BridgeBehavior::PropertyGroup, Value("")).asString();
 		this->bridgeIndex = GameUtils::getKeyOrDefault(this->object->properties, BridgeBehavior::PropertyBridgeIndex, Value(0)).asInt();
-
-		if (initRaised)
-		{
-			this->raiseBridge(false, false);
-		}
 	}
 
 	this->addChild(this->raiseSound);
@@ -104,9 +97,9 @@ void BridgeBehavior::onLoad()
 	this->originalPosition = this->object->getPosition();
 	this->object->setPositionY(this->originalPosition.y + this->bridgeDelta);
 
-	this->object->listenForMapEventOnce(this->group, [=](ValueMap args)
+	this->object->listenForMapEvent(this->group, [=](ValueMap args)
 	{
-		this->raiseBridge(true, true);
+		this->raiseBridge(false);
 	});
 }
 
@@ -115,15 +108,19 @@ void BridgeBehavior::onDisable()
 	super::onDisable();
 }
 
-void BridgeBehavior::raiseBridge(bool playAnims, bool playAudio)
+void BridgeBehavior::raiseBridge(bool isInit)
 {
 	float delayPrev = this->bridgeSpeed * float(this->bridgeIndex) - this->bridgeSpeed / 2.0f;
 	float delay = this->bridgeSpeed * float(this->bridgeIndex + 1) - this->bridgeSpeed / 2.0f;
 
-	this->object->saveObjectState(BridgeBehavior::SaveKeyRaised, Value(true));
-	this->object->runAction(MoveTo::create(playAnims ? delay : 0.0f, originalPosition));
+	if (!isInit)
+	{
+		this->object->saveObjectState(BridgeBehavior::SaveKeyRaised, Value(true));
+	}
 
-	if (playAudio)
+	this->object->runAction(MoveTo::create(isInit ? 0.0f : delay, originalPosition));
+
+	if (!isInit)
 	{
 		switch(this->audioMode)
 		{
