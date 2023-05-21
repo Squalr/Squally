@@ -86,6 +86,7 @@ namespace MapResources
 	extern const std::string Dev_Cipher;
 	extern const std::string Dev_Collision;
 	extern const std::string Dev_Combat;
+	extern const std::string Dev_Cracks;
 	extern const std::string Dev_Items;
 	extern const std::string Dev_Pickpocket;
 	extern const std::string Dev_PositionBug;

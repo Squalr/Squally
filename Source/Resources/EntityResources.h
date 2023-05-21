@@ -221,7 +221,6 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_Abomination_caveman_leg_L_2;
 	extern const std::string Enemies_CastleValgrind_Abomination_caveman_leg_R_1;
 	extern const std::string Enemies_CastleValgrind_Abomination_caveman_leg_R_2;
-	extern const std::string Enemies_CastleValgrind_Abomination_caveman_shadow;
 	extern const std::string Enemies_CastleValgrind_Abomination_caveman_weapon;
 	extern const std::string Enemies_CastleValgrind_Agnes_Animations;
 	extern const std::string Enemies_CastleValgrind_Agnes_B_HAIR;
@@ -347,7 +346,6 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_SkeletalBaron_blackKnight_head;
 	extern const std::string Enemies_CastleValgrind_SkeletalBaron_blackKnight_leg_L;
 	extern const std::string Enemies_CastleValgrind_SkeletalBaron_blackKnight_leg_R;
-	extern const std::string Enemies_CastleValgrind_SkeletalBaron_blackKnight_shadow;
 	extern const std::string Enemies_CastleValgrind_SkeletalBaron_blackKnight_weapon;
 	extern const std::string Enemies_CastleValgrind_Thug_Animations;
 	extern const std::string Enemies_CastleValgrind_Thug_BELT;
@@ -441,7 +439,6 @@ namespace EntityResources
 	extern const std::string Enemies_CastleValgrind_Wraith_ghost_cape_R;
 	extern const std::string Enemies_CastleValgrind_Wraith_ghost_head_1;
 	extern const std::string Enemies_CastleValgrind_Wraith_ghost_head_2;
-	extern const std::string Enemies_CastleValgrind_Wraith_ghost_shadow;
 	extern const std::string Enemies_DataMines_EarthElemental_Animations;
 	extern const std::string Enemies_DataMines_EarthElemental_Emblem;
 	extern const std::string Enemies_DataMines_EarthElemental_HEAD;
@@ -610,7 +607,6 @@ namespace EntityResources
 	extern const std::string Enemies_DataMines_Shaman_priest_head_4;
 	extern const std::string Enemies_DataMines_Shaman_priest_scapula_L_4;
 	extern const std::string Enemies_DataMines_Shaman_priest_scapula_R_4;
-	extern const std::string Enemies_DataMines_Shaman_priest_shadow;
 	extern const std::string Enemies_DataMines_Shaman_priest_weapon_4;
 	extern const std::string Enemies_DataMines_SkeletalArcher_ARROW;
 	extern const std::string Enemies_DataMines_SkeletalArcher_Animations;
@@ -1413,7 +1409,6 @@ namespace EntityResources
 	extern const std::string Enemies_FirewallFissure_DemonDragon_magma_leg_R_1;
 	extern const std::string Enemies_FirewallFissure_DemonDragon_magma_leg_R_2;
 	extern const std::string Enemies_FirewallFissure_DemonDragon_magma_leg_R_3;
-	extern const std::string Enemies_FirewallFissure_DemonDragon_magma_shadow;
 	extern const std::string Enemies_FirewallFissure_DemonDragon_magma_tail;
 	extern const std::string Enemies_FirewallFissure_DemonDragon_magma_wing_L;
 	extern const std::string Enemies_FirewallFissure_DemonDragon_magma_wing_R;
@@ -1774,7 +1769,6 @@ namespace EntityResources
 	extern const std::string Enemies_LambdaCrypts_ReanimatedPig_pig_head_3;
 	extern const std::string Enemies_LambdaCrypts_ReanimatedPig_pig_leg_L;
 	extern const std::string Enemies_LambdaCrypts_ReanimatedPig_pig_leg_R;
-	extern const std::string Enemies_LambdaCrypts_ReanimatedPig_pig_shadow;
 	extern const std::string Enemies_LambdaCrypts_ReanimatedPig_pig_weapon;
 	extern const std::string Enemies_LambdaCrypts_SkeletalCleaver_Animations;
 	extern const std::string Enemies_LambdaCrypts_SkeletalCleaver_Emblem;
@@ -1823,7 +1817,6 @@ namespace EntityResources
 	extern const std::string Enemies_LambdaCrypts_Undead_zombie_head;
 	extern const std::string Enemies_LambdaCrypts_Undead_zombie_leg_L;
 	extern const std::string Enemies_LambdaCrypts_Undead_zombie_leg_R;
-	extern const std::string Enemies_LambdaCrypts_Undead_zombie_shadow;
 	extern const std::string Enemies_LambdaCrypts_Undead_zombie_weapon;
 	extern const std::string Enemies_LambdaCrypts_Warlock_Animations;
 	extern const std::string Enemies_LambdaCrypts_Warlock_CLOTH_1;
@@ -2251,7 +2244,6 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_Perceptron_Perceptron_head_1;
 	extern const std::string Enemies_VoidStar_Perceptron_Perceptron_head_2;
 	extern const std::string Enemies_VoidStar_Perceptron_Perceptron_head_3;
-	extern const std::string Enemies_VoidStar_Perceptron_Perceptron_shadow;
 	extern const std::string Enemies_VoidStar_Perceptron_R_ARM_1;
 	extern const std::string Enemies_VoidStar_Perceptron_R_ARM_2;
 	extern const std::string Enemies_VoidStar_Perceptron_R_LEG_1;

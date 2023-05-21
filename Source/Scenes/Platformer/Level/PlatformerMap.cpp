@@ -161,6 +161,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 	this->topMenuHud->addChild(this->lexiconMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
 	this->topMenuHud->addChild(this->partyMenu);
+	this->topMenuHud->addChild(this->cutscenesMenu);
 	this->confirmationMenuHud->addChild(this->confirmationHud);
 }
 

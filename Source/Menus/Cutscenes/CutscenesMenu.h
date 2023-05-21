@@ -10,6 +10,7 @@ namespace cocos2d
 
 class ClickableTextNode;
 class SmartAnimationSequenceNode;
+class Sound;
 
 enum class Cutscene
 {
@@ -38,8 +39,9 @@ protected:
 private:
 	typedef SmartNode super;
 
-	SmartAnimationSequenceNode* cutscene;
+	SmartAnimationSequenceNode* cutsceneAnimation = nullptr;
 	ClickableTextNode* returnButton = nullptr;
+	Sound* crackCutsceneChime = nullptr;
 
 	std::function<void()> returnClickCallback = nullptr;
 };

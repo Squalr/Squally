@@ -85,6 +85,7 @@ const std::string MapResources::Dev_Cages = "Public/Platformer/Maps/Dev/Cages.tm
 const std::string MapResources::Dev_Cipher = "Public/Platformer/Maps/Dev/Cipher.tmx";
 const std::string MapResources::Dev_Collision = "Public/Platformer/Maps/Dev/Collision.tmx";
 const std::string MapResources::Dev_Combat = "Public/Platformer/Maps/Dev/Combat.tmx";
+const std::string MapResources::Dev_Cracks = "Public/Platformer/Maps/Dev/Cracks.tmx";
 const std::string MapResources::Dev_Items = "Public/Platformer/Maps/Dev/Items.tmx";
 const std::string MapResources::Dev_Pickpocket = "Public/Platformer/Maps/Dev/Pickpocket.tmx";
 const std::string MapResources::Dev_PositionBug = "Public/Platformer/Maps/Dev/PositionBug.tmx";

@@ -54,6 +54,7 @@ DeveloperScene::DeveloperScene()
 		ScrollPane* scrollPane = this->buildScrollPane();
 
 		mapList.push_back(this->buildDebugButton("DBG Cages", MapResources::Dev_Cages));
+		mapList.push_back(this->buildDebugButton("DBG Cutscenes", MapResources::Dev_Cracks));
 		mapList.push_back(this->buildDebugButton("DBG Cipher", MapResources::Dev_Cipher));
 		mapList.push_back(this->buildDebugButton("DBG Quests", MapResources::Dev_Quests));
 		mapList.push_back(this->buildDebugButton("DBG Warp Depth", MapResources::Dev_WarpDepth));

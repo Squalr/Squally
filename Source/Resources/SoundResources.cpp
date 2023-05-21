@@ -72,6 +72,7 @@ const std::string SoundResources::Platformer_Combat_LevelUp = "Private/Sounds/Pl
 const std::string SoundResources::Platformer_Combat_LevelUp2 = "Private/Sounds/Platformer/Combat/LevelUp2.ogg";
 const std::string SoundResources::Platformer_Combat_LevelUp3 = "Private/Sounds/Platformer/Combat/LevelUp3.ogg";
 const std::string SoundResources::Platformer_Combat_Victory = "Private/Sounds/Platformer/Combat/Victory.ogg";
+const std::string SoundResources::Platformer_Cutscenes_CutsceneChime = "Private/Sounds/Platformer/Cutscenes/CutsceneChime.ogg";
 const std::string SoundResources::Platformer_Defense_Rebound1 = "Private/Sounds/Platformer/Defense/Rebound1.ogg";
 const std::string SoundResources::Platformer_Defense_Rebound2 = "Private/Sounds/Platformer/Defense/Rebound2.ogg";
 const std::string SoundResources::Platformer_Defense_Rebound3 = "Private/Sounds/Platformer/Defense/Rebound3.ogg";

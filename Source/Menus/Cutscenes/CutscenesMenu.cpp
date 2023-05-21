@@ -5,18 +5,20 @@
 #include "cocos/base/CCInputEvents.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/ClickableTextNode.h"
 #include "Engine/Localization/LocalizedLabel.h"
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Save/SaveManager.h"
+#include "Engine/Sound/Sound.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Scenes/Platformer/Save/Collectables.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 
-#include "Resources/ObjectResources.h"
+#include "Resources/CutsceneResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
@@ -35,6 +37,9 @@ CutscenesMenu* CutscenesMenu::create()
 
 CutscenesMenu::CutscenesMenu()
 {
+	this->cutsceneAnimation = SmartAnimationSequenceNode::create();
+	this->crackCutsceneChime = Sound::create(SoundResources::Platformer_Cutscenes_CutsceneChime);
+
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
 	LocalizedLabel*	returnLabelHover = returnLabel->clone();
 
@@ -51,8 +56,12 @@ CutscenesMenu::CutscenesMenu()
 		returnLabelHover,
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
+
+	this->returnButton->setVisible(false);
 	
+	this->addChild(this->cutsceneAnimation);
 	this->addChild(this->returnButton);
+	this->addChild(this->crackCutsceneChime);
 }
 
 CutscenesMenu::~CutscenesMenu()
@@ -70,6 +79,7 @@ void CutscenesMenu::initializePositions()
 
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
+	this->cutsceneAnimation->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 472.0f));
 }
 
@@ -108,4 +118,43 @@ void CutscenesMenu::setReturnClickCallback(std::function<void()> returnClickCall
 
 void CutscenesMenu::open(Cutscene cutscene)
 {
+	switch(cutscene)
+	{
+		case Cutscene::CrackSmall:
+		{
+			this->crackCutsceneChime->play();
+			this->cutsceneAnimation->playAnimation(CutsceneResources::CrackSmall_Cutscene_0000, 0.125f, true, [=]()
+			{
+				if (this->returnClickCallback != nullptr)
+				{
+					this->returnClickCallback();
+				}
+			});
+			break;
+		}
+		case Cutscene::CrackMedium:
+		{
+			this->crackCutsceneChime->play();
+			this->cutsceneAnimation->playAnimation(CutsceneResources::CrackMedium_Cutscene_0000, 0.125f, true, [=]()
+			{
+				if (this->returnClickCallback != nullptr)
+				{
+					this->returnClickCallback();
+				}
+			});
+			break;
+		}
+		case Cutscene::CrackLarge:
+		{
+			this->crackCutsceneChime->play();
+			this->cutsceneAnimation->playAnimation(CutsceneResources::CrackSmall_Cutscene_0000, 0.125f, true, [=]()
+			{
+				if (this->returnClickCallback != nullptr)
+				{
+					this->returnClickCallback();
+				}
+			});
+			break;
+		}
+	}
 }

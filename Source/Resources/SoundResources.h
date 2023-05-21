@@ -73,6 +73,7 @@ namespace SoundResources
 	extern const std::string Platformer_Combat_LevelUp2;
 	extern const std::string Platformer_Combat_LevelUp3;
 	extern const std::string Platformer_Combat_Victory;
+	extern const std::string Platformer_Cutscenes_CutsceneChime;
 	extern const std::string Platformer_Defense_Rebound1;
 	extern const std::string Platformer_Defense_Rebound2;
 	extern const std::string Platformer_Defense_Rebound3;
