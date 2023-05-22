@@ -210,7 +210,7 @@ void EnterCrypts::runCinematicSequenceStrikeZone()
 				});
 			}
 		},
-		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
+		Voices::GetNextVoiceShort(Voices::VoiceType::Ghost),
 		true
 	));
 }

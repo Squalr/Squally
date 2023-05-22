@@ -180,7 +180,7 @@ void ThirdEncounter::runCinematicSequenceStrikeZone()
 				});
 			}
 		},
-		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
+		Voices::GetNextVoiceShort(Voices::VoiceType::Ghost),
 		true
 	));
 }

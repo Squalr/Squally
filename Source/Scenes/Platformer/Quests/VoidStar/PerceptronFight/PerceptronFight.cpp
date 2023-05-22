@@ -166,17 +166,23 @@ void PerceptronFight::runCinematicSequenceStrikeZone()
 	}
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_PerceptronChase_B_FoundYou::create(), 
+		Strings::Platformer_Quests_VoidStar_PerceptronFight_A_You::create(), 
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->perceptron, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->perceptron, true)
 		),
 		[=]()
 		{
 			if (this->squally != nullptr)
 			{
+				this->lightningStrike->setVisible(true);
+				this->lightningStrike->playAnimation(FXResources::Lightning_Lightning_0000, 0.06f);
+				GameUtils::setWorldCoords(this->lightningStrike, GameUtils::getWorldCoords(this->squally) + Vec2(0.0f, 392.0f));
+				this->lightningSound->play();
+
+				/*
 				this->squally->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 				{
 					healthBehavior->kill();
@@ -185,15 +191,13 @@ void PerceptronFight::runCinematicSequenceStrikeZone()
 				// Kill with forced map reload to reset the event
 				this->squally->getComponent<SquallyRespawnBehavior>([=](SquallyRespawnBehavior* respawnBehavior)
 				{
-					this->lightningStrike->setVisible(true);
-					this->lightningStrike->playAnimation(FXResources::Lightning_Lightning_0000, 0.06f);
-					GameUtils::setWorldCoords(this->lightningStrike, GameUtils::getWorldCoords(this->squally) + Vec2(0.0f, 392.0f));
-					this->lightningSound->play();
 					respawnBehavior->respawnWithMapReload();
-				});
+				});*/
+
+				this->runCinematicSequencePt2();
 			}
 		},
-		Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Ghost),
 		true
 	));
 }
@@ -201,18 +205,18 @@ void PerceptronFight::runCinematicSequenceStrikeZone()
 void PerceptronFight::runCinematicSequencePt2()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_PerceptronChase_C_Whew::create(),
+		Strings::Platformer_Quests_VoidStar_PerceptronFight_B_No::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->perceptron, true)
 		),
 		[=]()
 		{
 			this->runCinematicSequencePt3();
 		},
-		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Ghost),
 		true
 	));
 }
@@ -220,18 +224,94 @@ void PerceptronFight::runCinematicSequencePt2()
 void PerceptronFight::runCinematicSequencePt3()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::Platformer_Quests_EndianForest_PerceptronChase_D_JustRun::create(),
+		Strings::Platformer_Quests_VoidStar_PerceptronFight_C_Risk::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
-			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-			DialogueEvents::BuildPreviewNode(&this->squally, true)
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->perceptron, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt4();
+		},
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Ghost),
+		true
+	));
+}
+
+void PerceptronFight::runCinematicSequencePt4()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_VoidStar_PerceptronFight_D_Reality::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->perceptron, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt5();
+		},
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Ghost),
+		true
+	));
+}
+
+void PerceptronFight::runCinematicSequencePt5()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_VoidStar_PerceptronFight_E_True::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt6();
+		},
+		Voices::GetNextVoiceLong(Voices::VoiceType::Droid),
+		true
+	));
+}
+
+void PerceptronFight::runCinematicSequencePt6()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_VoidStar_PerceptronFight_F_Free::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->perceptron, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt7();
+		},
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Ghost),
+		true
+	));
+}
+
+void PerceptronFight::runCinematicSequencePt7()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_VoidStar_PerceptronFight_G_YouWont::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Left,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->perceptron, true)
 		),
 		[=]()
 		{
 			this->complete();
 		},
-		Voices::GetNextVoiceLong(Voices::VoiceType::Droid),
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Ghost),
 		true
 	));
 }

@@ -35,6 +35,10 @@ private:
 	void runCinematicSequenceStrikeZone();
 	void runCinematicSequencePt2();
 	void runCinematicSequencePt3();
+	void runCinematicSequencePt4();
+	void runCinematicSequencePt5();
+	void runCinematicSequencePt6();
+	void runCinematicSequencePt7();
 
 	Perceptron* perceptron = nullptr;
 	Gecky* gecky = nullptr;
