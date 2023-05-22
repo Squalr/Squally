@@ -69,6 +69,7 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	// BALLMER PEAKS QUESTS
 	
 	// VOID STAR QUESTS
+	this->lineDeserializers[PerceptronFightLine::MapKeyQuestLine] = [=]() { return (QuestLine*)PerceptronFightLine::create(); };
 }
 
 PlatformerQuestDeserializer::~PlatformerQuestDeserializer()

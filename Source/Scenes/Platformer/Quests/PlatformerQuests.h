@@ -23,6 +23,7 @@
 #include "Scenes/Platformer/Quests/LambdaCrypts/ElricsDemise/ElricsDemiseLine.h"
 #include "Scenes/Platformer/Quests/LambdaCrypts/OpenCrypt/OpenCryptLine.h"
 #include "Scenes/Platformer/Quests/LambdaCrypts/RezLazarus/RezLazarusLine.h"
+#include "Scenes/Platformer/Quests/VoidStar/PerceptronFight/PerceptronFightLine.h"
 #include "Scenes/Platformer/Quests/Global/CharterShip/CharterShipLine.h"
 #include "Scenes/Platformer/Quests/Global/RestoreWarpGates/RestoreWarpGatesLine.h"
 #include "Scenes/Platformer/Quests/UnderflowRuins/CleansePyramid/CleansePyramidLine.h"

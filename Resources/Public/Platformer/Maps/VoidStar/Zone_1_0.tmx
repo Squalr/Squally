@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="24" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="901">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="24" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="902">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Laboratory"/>
@@ -139,6 +139,11 @@
     <property name="transition" value="void-door"/>
    </properties>
   </object>
+  <object id="901" name="trigger" type="object" x="1912.53" y="-290.875" width="118.944" height="1629.75">
+   <properties>
+    <property name="send-event" value="gauntlet-start"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -158,6 +163,8 @@
     <property name="components" value="enemy"/>
     <property name="drop-pool" value="vs-generic"/>
     <property name="flip-x" type="bool" value="true"/>
+    <property name="quest" value="perceptron-fight"/>
+    <property name="quest-line" value="perceptron-fight"/>
    </properties>
   </object>
  </objectgroup>
