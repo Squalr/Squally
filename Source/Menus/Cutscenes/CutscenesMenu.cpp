@@ -147,7 +147,7 @@ void CutscenesMenu::open(Cutscene cutscene)
 		case Cutscene::CrackLarge:
 		{
 			this->crackCutsceneChime->play();
-			this->cutsceneAnimation->playAnimation(CutsceneResources::CrackSmall_Cutscene_0000, 0.125f, true, [=]()
+			this->cutsceneAnimation->playAnimation(CutsceneResources::CrackLarge_Cutscene_0000, 0.125f, true, [=]()
 			{
 				if (this->returnClickCallback != nullptr)
 				{

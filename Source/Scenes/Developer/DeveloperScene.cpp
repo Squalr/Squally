@@ -91,7 +91,6 @@ DeveloperScene::DeveloperScene()
 	- Game Feel / Design / Lore:
 		** Final Boss Fight
 		** Credits cutscene(?)
-		** Crack interaction cutscenes     
 		- Squally
 			v worried face on intro cinematic crash
 			v Potentially mask shadow based on number of colliders hit
