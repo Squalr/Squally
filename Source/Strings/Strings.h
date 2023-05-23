@@ -37944,51 +37944,6 @@ namespace Strings
 		virtual ~Platformer_Quests_VoidStar_PerceptronFight_D_Reality() = default;
 	};
 
-	class Platformer_Quests_VoidStar_PerceptronFight_E_True : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_VoidStar_PerceptronFight_E_True();
-		virtual ~Platformer_Quests_VoidStar_PerceptronFight_E_True() = default;
-	};
-
-	class Platformer_Quests_VoidStar_PerceptronFight_F_Free : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_VoidStar_PerceptronFight_F_Free();
-		virtual ~Platformer_Quests_VoidStar_PerceptronFight_F_Free() = default;
-	};
-
-	class Platformer_Quests_VoidStar_PerceptronFight_G_YouWont : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_VoidStar_PerceptronFight_G_YouWont();
-		virtual ~Platformer_Quests_VoidStar_PerceptronFight_G_YouWont() = default;
-	};
-
 	class Platformer_Quests_WarpGates_WarpGateDiscovered : public LocalizedString
 	{
 	public:
