@@ -710,10 +710,10 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (VS)", MapResources::VoidStar_Zone_1_0));
 
 		// ================== TODO ================== 
-		// Traps: Laser
 		// * Needs enemy scripting according to notes on which instructions this zone covers
 		// * Quest granting money and health manip
 		// 		* Potentially no mage tower? Final boss room is a portal room (maybe with bigger windows to see other worlds?)
+		// Traps: Laser
 
 		/*
 		Enemies

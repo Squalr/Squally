@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="40" nextobjectid="604">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="40" nextobjectid="609">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -12,7 +12,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="37" name="terrain bg">
+ <objectgroup id="37" name="terrain bg" visible="0">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -79,26 +79,34 @@
     <property name="tag" value="arena-bottom"/>
    </properties>
   </object>
-  <object id="585" name="lava" type="object" x="-1133" y="1500.45" width="4950.16" height="1497.45">
+  <object id="585" name="lava" type="object" x="-1129.97" y="1548.93" width="4950.16" height="1497.45">
    <properties>
-    <property name="depth" type="float" value="-512"/>
+    <property name="depth" type="float" value="-320"/>
    </properties>
   </object>
-  <object id="586" name="lava" type="object" x="-996.012" y="1539.03" width="4650.04" height="1497.45">
+  <object id="586" name="lava" type="object" x="-991.648" y="1595.51" width="4650.04" height="1497.45">
    <properties>
+    <property name="depth" type="float" value="-224"/>
    </properties>
   </object>
-  <object id="587" name="lava" type="object" x="-885.879" y="1579.44" width="4378.38" height="1497.45">
+  <object id="587" name="lava" type="object" x="-882.849" y="1647.92" width="4378.38" height="1497.45">
    <properties>
+    <property name="depth" type="float" value="-192"/>
    </properties>
   </object>
-  <object id="602" name="lava-fall" type="object" x="1988.3" y="-1771.43" width="371" height="3310.29"/>
-  <object id="588" name="lava" type="object" x="-779.114" y="1633.31" width="4128.75" height="1497.45">
+  <object id="602" name="lava-fall" type="object" x="1279.21" y="-1819.91" width="371" height="3310.29">
    <properties>
+    <property name="depth" type="float" value="-320"/>
    </properties>
   </object>
-  <object id="589" name="lava" type="object" x="-643.589" y="1707.38" width="3864.43" height="1497.45">
+  <object id="588" name="lava" type="object" x="-774.75" y="1716.46" width="4128.75" height="1497.45">
    <properties>
+    <property name="depth" type="float" value="-96"/>
+   </properties>
+  </object>
+  <object id="589" name="lava" type="object" x="-647.225" y="1783.86" width="3864.43" height="1497.45">
+   <properties>
+    <property name="depth" type="float" value="-64"/>
    </properties>
   </object>
   <object id="591" name="obsidean" type="terrain" x="1915.82" y="1527.3">
@@ -107,38 +115,63 @@
    </properties>
    <polygon points="0,0 451.643,-2.14915 454.576,984.588 247.923,1194.93 11.5314,984.311 21.5719,701.504 9.80068,480.529 11.1911,236.363"/>
   </object>
-  <object id="593" name="lava" type="object" x="-508.063" y="1798.29" width="3548.72" height="1497.45">
+  <object id="593" name="lava" type="object" x="-505.033" y="1853.44" width="3548.72" height="1497.45">
    <properties>
+    <property name="depth" type="float" value="0"/>
    </properties>
   </object>
-  <object id="594" name="lava" type="object" x="-348.1" y="1875.17" width="3269.72" height="1497.45">
+  <object id="594" name="lava" type="object" x="-345.07" y="1928.99" width="3269.72" height="1497.45">
    <properties>
+    <property name="depth" type="float" value="64"/>
    </properties>
   </object>
-  <object id="595" name="obsidean" type="terrain" x="575.221" y="1535.4">
+  <object id="595" name="obsidean" type="terrain" x="580.554" y="1528.73">
    <properties>
     <property name="depth" type="float" value="-256"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
   </object>
-  <object id="597" name="lava" type="object" x="-259.994" y="1959.24" width="3056.8" height="1497.45">
+  <object id="597" name="lava" type="object" x="-256.964" y="2007.72" width="3056.8" height="1497.45">
    <properties>
+    <property name="depth" type="float" value="128"/>
    </properties>
   </object>
-  <object id="603" name="lava-fall" type="object" x="85.3804" y="-1433.93" width="371" height="3310.29"/>
-  <object id="598" name="lava" type="object" x="-190.998" y="2043.31" width="2895.27" height="1497.45">
+  <object id="598" name="lava" type="object" x="-187.968" y="2091.79" width="2895.27" height="1497.45">
    <properties>
+    <property name="depth" type="float" value="192"/>
    </properties>
   </object>
-  <object id="600" name="lava" type="object" x="-92.6326" y="2122.96" width="2733.74" height="1497.45">
+  <object id="600" name="lava" type="object" x="-89.6023" y="2171.44" width="2733.74" height="1497.45">
    <properties>
+    <property name="depth" type="float" value="64"/>
    </properties>
   </object>
-  <object id="601" name="obsidean" type="terrain" x="1482.3" y="1646.02">
+  <object id="601" name="obsidean" type="terrain" x="1482.3" y="1628.02">
    <properties>
     <property name="depth" type="float" value="-128"/>
    </properties>
    <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="604" name="obsidean" type="terrain" x="278.788" y="1769.7">
+   <properties>
+    <property name="depth" type="float" value="-32"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="606" name="lava-fall" type="object" x="72.0758" y="-1658.18" width="371" height="3310.29">
+   <properties>
+    <property name="depth" type="float" value="-192"/>
+   </properties>
+  </object>
+  <object id="607" name="lava" type="object" x="-1147.81" y="1490.67" width="4950.16" height="1497.45">
+   <properties>
+    <property name="depth" type="float" value="-384"/>
+   </properties>
+  </object>
+  <object id="608" name="lava" type="object" x="-1138.72" y="1439.15" width="4950.16" height="1497.45">
+   <properties>
+    <property name="depth" type="float" value="-448"/>
+   </properties>
   </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
@@ -153,7 +186,7 @@
   <object id="562" name="camera-target" type="object" x="920.606" y="1278" width="128" height="128">
    <properties>
     <property name="tag" value="player-camera-1"/>
-    <property name="zoom" type="float" value="1.1000000000000001"/>
+    <property name="zoom" type="float" value="1.1"/>
    </properties>
   </object>
   <object id="563" name="camera-target" type="object" x="1770" y="1272" width="128" height="128">
@@ -165,19 +198,19 @@
   <object id="564" name="camera-target" type="object" x="810" y="1398" width="128" height="128">
    <properties>
     <property name="tag" value="player-camera-0"/>
-    <property name="zoom" type="float" value="1.1499999999999999"/>
+    <property name="zoom" type="float" value="1.15"/>
    </properties>
   </object>
   <object id="565" name="camera-target" type="object" x="1592" y="1342" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-0"/>
-    <property name="zoom" type="float" value="1.1000000000000001"/>
+    <property name="zoom" type="float" value="1.1"/>
    </properties>
   </object>
   <object id="566" name="camera-target" type="object" x="1730" y="1442" width="128" height="128">
    <properties>
     <property name="tag" value="enemy-camera-2"/>
-    <property name="zoom" type="float" value="1.1499999999999999"/>
+    <property name="zoom" type="float" value="1.15"/>
    </properties>
   </object>
  </objectgroup>

@@ -109,7 +109,7 @@ void BloodBoil::registerHackables()
 				BloodBoil::HackIdentifierBloodBoil,
 				Strings::Menus_Hacking_Abilities_Debuffs_BloodBoil_BloodBoil::create(),
 				HackableBase::HackBarColor::Red,
-				UIResources::Menus_Icons_ShieldGlowBlue,
+				UIResources::Menus_Icons_SkullGlowRed,
 				LazyNode<HackablePreview>::create([=](){ return BloodBoilGenericPreview::create(); }),
 				{
 					{

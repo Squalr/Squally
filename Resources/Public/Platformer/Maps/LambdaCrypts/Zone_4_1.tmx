@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="26" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="1169">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="28" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="1171">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="976" name="stone-dark" type="texture" x="-1554.56" y="-1056.21" width="6435.96" height="4260.42">
+  <object id="976" name="stone-dark" type="texture" x="-1298.56" y="-1056.21" width="6435.96" height="4260.42">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -28,14 +28,14 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1149" name="torch" type="object" x="1825.61" y="1318.1" width="42" height="130"/>
+  <object id="1149" name="torch" type="object" x="2081.61" y="1318.1" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="74" name="terrain -10">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="978" name="stone-dark" type="terrain" x="-1413.59" y="-902.54" width="6126.8" height="4220.42">
+  <object id="978" name="stone-dark" type="terrain" x="-1157.59" y="-902.54" width="6126.8" height="4220.42">
    <properties>
     <property name="collision" value="none"/>
     <property name="hole-tag" value="hole-D"/>
@@ -47,89 +47,89 @@
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="901" name="Crypts/Skull1" type="decor" x="422.758" y="1000.42" width="66" height="44">
+  <object id="901" name="Crypts/Skull1" type="decor" x="678.758" y="1000.42" width="66" height="44">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="907" name="Crypts/Skull1" type="decor" x="482.088" y="1266.18" width="66" height="44">
+  <object id="907" name="Crypts/Skull1" type="decor" x="738.088" y="1266.18" width="66" height="44">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="912" name="Crypts/Skull1" type="decor" x="141.793" y="976.83" width="66" height="44">
+  <object id="912" name="Crypts/Skull1" type="decor" x="397.793" y="976.83" width="66" height="44">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="983" name="Castle/Cup1" type="decor" x="573.118" y="1153.39" width="23" height="41">
+  <object id="983" name="Castle/Cup1" type="decor" x="829.118" y="1153.39" width="23" height="41">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="984" name="Castle/Cup1" type="decor" x="729.458" y="1167.07" width="23" height="41">
+  <object id="984" name="Castle/Cup1" type="decor" x="985.458" y="1167.07" width="23" height="41">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="985" name="Castle/Cup1" type="decor" x="770.788" y="1157.07" width="23" height="41">
+  <object id="985" name="Castle/Cup1" type="decor" x="1026.79" y="1157.07" width="23" height="41">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1105" name="Crypts/Skull1" type="decor" x="1831.66" y="1141.33" width="66" height="44">
+  <object id="1105" name="Crypts/Skull1" type="decor" x="2087.66" y="1141.33" width="66" height="44">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
     <property name="flip-x" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="1106" name="Generic/Helmet1" type="decor" x="1949.99" y="1116.01" width="125" height="69">
+  <object id="1106" name="Generic/Helmet1" type="decor" x="2205.99" y="1116.01" width="125" height="69">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1111" name="Castle/Cup1" type="decor" x="730.716" y="1627.07" width="23" height="41">
+  <object id="1111" name="Castle/Cup1" type="decor" x="986.716" y="1627.07" width="23" height="41">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1112" name="Generic/Bone1" type="decor" x="1978.85" y="1620.07" width="59" height="32">
+  <object id="1112" name="Generic/Bone1" type="decor" x="2234.85" y="1620.07" width="59" height="32">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1114" name="Generic/Bone3" type="decor" x="1351.57" y="1552.65" width="111" height="94">
+  <object id="1114" name="Generic/Bone3" type="decor" x="1607.57" y="1552.65" width="111" height="94">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1116" name="Castle/Stone1" type="decor" x="970.723" y="1622.72" width="34" height="17">
+  <object id="1116" name="Castle/Stone1" type="decor" x="1226.72" y="1622.72" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1117" name="Castle/Stone2" type="decor" x="1061.88" y="1632.72" width="24" height="11">
+  <object id="1117" name="Castle/Stone2" type="decor" x="1317.88" y="1632.72" width="24" height="11">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1118" name="Forest/Webs1" type="decor" x="1826.01" y="1299.57" width="193" height="337">
+  <object id="1118" name="Forest/Webs1" type="decor" x="2082.01" y="1299.57" width="193" height="337">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
@@ -137,7 +137,7 @@
     <property name="flip-y" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="1119" name="Castle/Cup1" type="decor" x="669.948" y="1594.9" width="23" height="41">
+  <object id="1119" name="Castle/Cup1" type="decor" x="925.948" y="1594.9" width="23" height="41">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
@@ -155,25 +155,25 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="968" name="terrain-hole" type="object" x="523.998" y="868.212" width="312" height="312">
+  <object id="968" name="terrain-hole" type="object" x="779.998" y="868.212" width="312" height="312">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="hole-tag" value="hole-D"/>
    </properties>
   </object>
-  <object id="969" name="terrain-hole" type="object" x="1796.9" y="864.333" width="312" height="312">
+  <object id="969" name="terrain-hole" type="object" x="2052.9" y="864.333" width="312" height="312">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="hole-tag" value="hole-D"/>
    </properties>
   </object>
-  <object id="971" name="terrain-hole" type="object" x="529.588" y="1309.8" width="312" height="312">
+  <object id="971" name="terrain-hole" type="object" x="785.588" y="1309.8" width="312" height="312">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="hole-tag" value="hole-D"/>
    </properties>
   </object>
-  <object id="972" name="terrain-hole" type="object" x="1802.48" y="1305.92" width="312" height="312">
+  <object id="972" name="terrain-hole" type="object" x="2058.48" y="1305.92" width="312" height="312">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="hole-tag" value="hole-D"/>
@@ -185,7 +185,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="895" name="stone-dark" type="terrain" x="-425.577" y="1681.16" width="4371.15" height="931.689">
+  <object id="895" name="stone-dark" type="terrain" x="-169.577" y="1681.16" width="4371.15" height="931.689">
    <properties>
     <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
@@ -220,7 +220,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="849" name="stone-dark" type="terrain" x="-1241.95" y="-743.88" width="5806.8" height="4182.25">
+  <object id="849" name="stone-dark" type="terrain" x="-985.95" y="-743.88" width="5806.8" height="4182.25">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -234,7 +234,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="886" name="Forest/Webs4" type="decor" x="1969.44" y="1243.14" width="454" height="375">
+  <object id="886" name="Forest/Webs4" type="decor" x="2225.44" y="1243.14" width="454" height="375">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
@@ -242,43 +242,43 @@
     <property name="flip-y" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="1072" name="Crypts/Skull1" type="decor" x="2228.54" y="1130.18" width="66" height="44">
+  <object id="1072" name="Crypts/Skull1" type="decor" x="2484.54" y="1130.18" width="66" height="44">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1076" name="Castle/Cup1" type="decor" x="448.588" y="1615.73" width="23" height="41">
+  <object id="1076" name="Castle/Cup1" type="decor" x="704.588" y="1615.73" width="23" height="41">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1078" name="Castle/Cup1" type="decor" x="538.268" y="1619.4" width="23" height="41">
+  <object id="1078" name="Castle/Cup1" type="decor" x="794.268" y="1619.4" width="23" height="41">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1080" name="Generic/Bone2" type="decor" x="2087.39" y="1575.96" width="70" height="38">
+  <object id="1080" name="Generic/Bone2" type="decor" x="2343.39" y="1575.96" width="70" height="38">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1081" name="Generic/Bone3" type="decor" x="2212.54" y="1521.63" width="111" height="94">
+  <object id="1081" name="Generic/Bone3" type="decor" x="2468.54" y="1521.63" width="111" height="94">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1082" name="Generic/Helmet1" type="decor" x="2059.04" y="1106.3" width="125" height="69">
+  <object id="1082" name="Generic/Helmet1" type="decor" x="2315.04" y="1106.3" width="125" height="69">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1086" name="Forest/Webs2" type="decor" x="355.938" y="842.401" width="159" height="375">
+  <object id="1086" name="Forest/Webs2" type="decor" x="611.938" y="842.401" width="159" height="375">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
@@ -286,7 +286,7 @@
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1168" name="Generic/ThroneGreater" type="decor" x="953.121" y="656.393" width="718" height="806">
+  <object id="1168" name="Generic/ThroneGreater" type="decor" x="1209.12" y="656.393" width="718" height="806">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -297,7 +297,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="838" name="stone-dark" type="terrain" x="-1081.95" y="-583.88" width="5510.8" height="4142.25">
+  <object id="838" name="stone-dark" type="terrain" x="-825.95" y="-583.88" width="5510.8" height="4142.25">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -311,14 +311,14 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1088" name="Crypts/Skull1" type="decor" x="1570.54" y="1622.3" width="66" height="44">
+  <object id="1088" name="Crypts/Skull1" type="decor" x="1826.54" y="1622.3" width="66" height="44">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1090" name="Castle/Cup1" type="decor" x="2129.16" y="1577.17" width="23" height="41">
+  <object id="1090" name="Castle/Cup1" type="decor" x="2385.16" y="1577.17" width="23" height="41">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
@@ -336,7 +336,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="782" name="stone-dark" type="terrain" x="-905.85" y="-437.085" width="5150.43" height="4132.9">
+  <object id="782" name="stone-dark" type="terrain" x="-649.85" y="-437.085" width="5150.43" height="4132.9">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -350,49 +350,49 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="857" name="terrain-hole" type="object" x="335.748" y="896.112" width="312" height="312">
+  <object id="857" name="terrain-hole" type="object" x="591.748" y="896.112" width="312" height="312">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
     <property name="hole-tag" value="hole-X"/>
    </properties>
   </object>
-  <object id="858" name="terrain-hole" type="object" x="2028.89" y="853.567" width="312" height="312">
+  <object id="858" name="terrain-hole" type="object" x="2284.89" y="853.567" width="312" height="312">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
     <property name="hole-tag" value="hole-X"/>
    </properties>
   </object>
-  <object id="860" name="terrain-hole" type="object" x="341.338" y="1337.69" width="312" height="312">
+  <object id="860" name="terrain-hole" type="object" x="597.338" y="1337.69" width="312" height="312">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
     <property name="hole-tag" value="hole-X"/>
    </properties>
   </object>
-  <object id="861" name="terrain-hole" type="object" x="2034.48" y="1295.15" width="312" height="312">
+  <object id="861" name="terrain-hole" type="object" x="2290.48" y="1295.15" width="312" height="312">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
     <property name="hole-tag" value="hole-X"/>
    </properties>
   </object>
-  <object id="862" name="terrain-hole" type="object" x="867.858" y="638.42" width="890" height="1066">
+  <object id="862" name="terrain-hole" type="object" x="1123.86" y="638.42" width="890" height="1066">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
     <property name="hole-tag" value="hole-A"/>
    </properties>
   </object>
-  <object id="1162" name="terrain-hole" type="object" x="897.182" y="491.242" width="840" height="1066">
+  <object id="1162" name="terrain-hole" type="object" x="1153.18" y="491.242" width="840" height="1066">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
     <property name="hole-tag" value="hole-B"/>
    </properties>
   </object>
-  <object id="1163" name="terrain-hole" type="object" x="925.212" y="347.818" width="778" height="1066">
+  <object id="1163" name="terrain-hole" type="object" x="1181.21" y="347.818" width="778" height="1066">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.25"/>
@@ -405,31 +405,31 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="855" name="Crypts/Skull1" type="decor" x="565.878" y="1621.72" width="66" height="44">
+  <object id="855" name="Crypts/Skull1" type="decor" x="821.878" y="1621.72" width="66" height="44">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="856" name="Crypts/Skull1" type="decor" x="2227.66" y="1140.34" width="66" height="44">
+  <object id="856" name="Crypts/Skull1" type="decor" x="2483.66" y="1140.34" width="66" height="44">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="869" name="Castle/Cup1" type="decor" x="2177.5" y="1590.84" width="23" height="41">
+  <object id="869" name="Castle/Cup1" type="decor" x="2433.5" y="1590.84" width="23" height="41">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="870" name="Castle/Cup1" type="decor" x="2218.83" y="1580.84" width="23" height="41">
+  <object id="870" name="Castle/Cup1" type="decor" x="2474.83" y="1580.84" width="23" height="41">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="883" name="Forest/Webs2" type="decor" x="355.048" y="852.561" width="159" height="375">
+  <object id="883" name="Forest/Webs2" type="decor" x="611.048" y="852.561" width="159" height="375">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
@@ -437,13 +437,13 @@
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="962" name="Crypts/Skull1" type="decor" x="1934.35" y="1476.76" width="66" height="44">
+  <object id="962" name="Crypts/Skull1" type="decor" x="2190.35" y="1476.76" width="66" height="44">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="965" name="Crypts/Skull1" type="decor" x="166.959" y="1102.76" width="66" height="44">
+  <object id="965" name="Crypts/Skull1" type="decor" x="422.959" y="1102.76" width="66" height="44">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
@@ -456,14 +456,14 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1143" name="torch" type="object" x="1858.39" y="1187" width="42" height="130"/>
-  <object id="1158" name="torch" type="object" x="736.515" y="1201.85" width="42" height="130"/>
+  <object id="1143" name="torch" type="object" x="2114.39" y="1187" width="42" height="130"/>
+  <object id="1158" name="torch" type="object" x="992.515" y="1201.85" width="42" height="130"/>
  </objectgroup>
  <objectgroup id="68" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="893" name="stone-dark" type="terrain" x="2846.58" y="743.576">
+  <object id="893" name="stone-dark" type="terrain" x="3102.58" y="743.576">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -474,7 +474,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1154" name="Crypts/CryptDoor2" type="decor" x="2810" y="932.5" width="388" height="733">
+  <object id="1154" name="Crypts/CryptDoor2" type="decor" x="3066" y="932.5" width="388" height="733">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -484,39 +484,39 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1135" name="stone-dark" type="terrain" x="56.3098" y="-66.6667">
-   <polygon points="73.696,5.79374 67.2044,1749.71 3974.33,1743.92 3960.92,2676.71 -263.763,2665.12 -269.245,8.96591"/>
+  <object id="1135" name="stone-dark" type="terrain" x="312.31" y="-66.6667">
+   <polygon points="3974.33,1743.92 3960.92,2676.71 -415.763,2681.12 -425.245,1748.97"/>
   </object>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="877" name="Castle/Stone1" type="decor" x="2235.41" y="1696.5" width="34" height="17">
+  <object id="877" name="Castle/Stone1" type="decor" x="2491.41" y="1696.5" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="878" name="Castle/Stone2" type="decor" x="2813.59" y="1701.84" width="24" height="11">
+  <object id="878" name="Castle/Stone2" type="decor" x="3069.59" y="1701.84" width="24" height="11">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="879" name="Castle/Stone1" type="decor" x="2477.74" y="1710.5" width="34" height="17">
+  <object id="879" name="Castle/Stone1" type="decor" x="2733.74" y="1710.5" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="880" name="Castle/Stone2" type="decor" x="3082.92" y="1712.84" width="24" height="11">
+  <object id="880" name="Castle/Stone2" type="decor" x="3338.92" y="1712.84" width="24" height="11">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="881" name="Castle/Stone1" type="decor" x="3147.67" y="1699.5" width="34" height="17">
+  <object id="881" name="Castle/Stone1" type="decor" x="3403.67" y="1699.5" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
@@ -534,10 +534,22 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="721" name="portal" type="object" x="2876.27" y="1425.7" width="256" height="256">
+  <object id="721" name="portal" type="object" x="3132.27" y="1425.7" width="256" height="256">
    <properties>
     <property name="map" value="LambdaCrypts/Zone_4_0"/>
     <property name="transition" value="door"/>
+   </properties>
+  </object>
+  <object id="1169" name="edge-portal" type="object" x="-5.56529" y="1195.37" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="left"/>
+    <property name="map" value="LambdaCrypts/Zone_4_2"/>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1170" name="spawn" type="object" x="353.565" y="1552.63" width="128" height="128">
+   <properties>
+    <property name="transition" value="right"/>
    </properties>
   </object>
  </objectgroup>
@@ -551,7 +563,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="991" name="king-zul" type="entity" x="1439.57" y="1556.81" width="128" height="128">
+  <object id="991" name="king-zul" type="entity" x="1695.57" y="1556.81" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
@@ -562,14 +574,14 @@
     <property name="quest-line" value="craft-demon-heart"/>
    </properties>
   </object>
-  <object id="992" name="skeletal-priestess" type="entity" x="1583.15" y="1312.23" width="128" height="128">
+  <object id="992" name="skeletal-priestess" type="entity" x="1839.15" y="1312.23" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-b"/>
     <property name="components" value="ally"/>
    </properties>
   </object>
-  <object id="1152" name="skeletal-priestess" type="entity" x="1317.82" y="1293.58" width="128" height="128">
+  <object id="1152" name="skeletal-priestess" type="entity" x="1573.82" y="1293.58" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-b"/>
@@ -582,12 +594,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="779" name="spawn" type="object" x="2936.27" y="1557.7" width="128" height="128">
+  <object id="779" name="spawn" type="object" x="3192.27" y="1557.7" width="128" height="128">
    <properties>
     <property name="transition" value="door"/>
    </properties>
   </object>
-  <object id="839" name="squally" type="entity" x="2710.13" y="1551.96" width="128" height="128">
+  <object id="839" name="squally" type="entity" x="2966.13" y="1551.96" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
     <property name="fade-multiplier" type="float" value="0.25"/>

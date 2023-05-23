@@ -154,7 +154,7 @@
    <properties>
     <property name="components" value="locked-portal"/>
     <property name="item-required" value="crypt-key"/>
-    <property name="map" value="LambdaCrypts/Zone_4_0_a"/>
+    <property name="map" value="LambdaCrypts/Zone_4_2"/>
     <property name="mini-map-hidden" type="bool" value="false"/>
     <property name="transition" value="crypt-secret-entrance"/>
    </properties>
