@@ -23,9 +23,9 @@ DemonicBow* DemonicBow::create()
 
 DemonicBow::DemonicBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), BOW_DAMAGE_MIN(7), BOW_DAMAGE_MAX(7), ItemStats(
 	// Health
-	0,
+	2,
 	// Mana
-	5,
+	7,
 	// Attack
 	0,
 	// Magic Attack

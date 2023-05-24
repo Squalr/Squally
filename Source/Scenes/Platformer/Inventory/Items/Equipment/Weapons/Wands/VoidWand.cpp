@@ -25,7 +25,7 @@ VoidWand::VoidWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(
 	// Health
 	0,
 	// Mana
-	25,
+	27,
 	// Attack
 	0,
 	// Magic Attack

@@ -23,9 +23,9 @@ CopperMallet* CopperMallet::create()
 
 CopperMallet::CopperMallet() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), MACE_DAMAGE_MIN(2), MACE_DAMAGE_MAX(2), ItemStats(
 	// Health
-	3,
+	1,
 	// Mana
-	0,
+	1,
 	// Attack
 	0,
 	// Magic Attack

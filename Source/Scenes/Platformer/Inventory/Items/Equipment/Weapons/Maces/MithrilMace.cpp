@@ -23,9 +23,9 @@ MithrilMace* MithrilMace::create()
 
 MithrilMace::MithrilMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), MACE_DAMAGE_MIN(5), MACE_DAMAGE_MAX(5), ItemStats(
 	// Health
-	0,
+	4,
 	// Mana
-	0,
+	2,
 	// Attack
 	0,
 	// Magic Attack

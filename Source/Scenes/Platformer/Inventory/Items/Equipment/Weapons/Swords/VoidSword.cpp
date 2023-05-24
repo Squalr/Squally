@@ -23,9 +23,9 @@ VoidSword* VoidSword::create()
 
 VoidSword::VoidSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), SWORD_DAMAGE_MIN(9), SWORD_DAMAGE_MAX(9), ItemStats(
 	// Health
-	0,
+	5,
 	// Mana
-	0,
+	4,
 	// Attack
 	0,
 	// Magic Attack

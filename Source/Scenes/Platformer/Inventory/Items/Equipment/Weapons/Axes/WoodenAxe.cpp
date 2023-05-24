@@ -23,7 +23,7 @@ WoodenAxe* WoodenAxe::create()
 
 WoodenAxe::WoodenAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(1), AXE_DAMAGE_MAX(1), ItemStats(
 	// Health
-	0,
+	1,
 	// Mana
 	0,
 	// Attack

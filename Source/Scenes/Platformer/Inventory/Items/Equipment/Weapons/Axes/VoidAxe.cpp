@@ -23,9 +23,9 @@ VoidAxe* VoidAxe::create()
 
 VoidAxe::VoidAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 11 }}), AXE_DAMAGE_MIN(9), AXE_DAMAGE_MAX(9), ItemStats(
 	// Health
-	0,
+	4,
 	// Mana
-	0,
+	5,
 	// Attack
 	0,
 	// Magic Attack

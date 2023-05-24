@@ -23,9 +23,9 @@ BoneAxe* BoneAxe::create()
 
 BoneAxe::BoneAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(6), AXE_DAMAGE_MAX(6), ItemStats(
 	// Health
-	0,
+	3,
 	// Mana
-	0,
+	3,
 	// Attack
 	0,
 	// Magic Attack

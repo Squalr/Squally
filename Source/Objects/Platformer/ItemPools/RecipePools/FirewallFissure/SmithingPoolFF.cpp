@@ -52,7 +52,6 @@ SmithingPoolFF::SmithingPoolFF(ValueMap& properties) : super(properties, Smithin
 	this->addItemToPool(ItemChance::create(SteelMacePlans::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(SteelBowPlans::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(EmeraldWandPlans::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(GoldenWandPlans::create(), ItemChance::Probability::Guaranteed));
 	
 	this->addItemToPool(ItemChance::create(CopperSwordPlans::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(CopperAxePlans::create(), ItemChance::Probability::Guaranteed));

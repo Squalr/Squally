@@ -23,9 +23,9 @@ MithrilAxe* MithrilAxe::create()
 
 MithrilAxe::MithrilAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(5), AXE_DAMAGE_MAX(5), ItemStats(
 	// Health
-	0,
+	2,
 	// Mana
-	0,
+	3,
 	// Attack
 	0,
 	// Magic Attack

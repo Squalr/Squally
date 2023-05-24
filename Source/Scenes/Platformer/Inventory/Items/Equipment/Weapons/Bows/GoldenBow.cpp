@@ -23,7 +23,7 @@ GoldenBow* GoldenBow::create()
 
 GoldenBow::GoldenBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), BOW_DAMAGE_MIN(4), BOW_DAMAGE_MAX(4), ItemStats(
 	// Health
-	0,
+	1,
 	// Mana
 	4,
 	// Attack

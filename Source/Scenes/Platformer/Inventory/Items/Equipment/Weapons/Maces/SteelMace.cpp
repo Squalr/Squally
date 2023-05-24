@@ -23,9 +23,9 @@ SteelMace* SteelMace::create()
 
 SteelMace::SteelMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), MACE_DAMAGE_MIN(3), MACE_DAMAGE_MAX(3), ItemStats(
 	// Health
-	4,
+	3,
 	// Mana
-	0,
+	1,
 	// Attack
 	0,
 	// Magic Attack

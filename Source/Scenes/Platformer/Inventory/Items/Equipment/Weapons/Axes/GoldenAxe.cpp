@@ -23,9 +23,9 @@ GoldenAxe* GoldenAxe::create()
 
 GoldenAxe::GoldenAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(4), AXE_DAMAGE_MAX(4), ItemStats(
 	// Health
-	4,
+	2,
 	// Mana
-	0,
+	2,
 	// Attack
 	0,
 	// Magic Attack

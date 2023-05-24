@@ -25,7 +25,7 @@ SapphireWand::SapphireWand() : super(CurrencyInventory::create({{ IOU::getIOUIde
 	// Health
 	0,
 	// Mana
-	14,
+	15,
 	// Attack
 	0,
 	// Magic Attack

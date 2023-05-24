@@ -23,9 +23,9 @@ VoidBow* VoidBow::create()
 
 VoidBow::VoidBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), BOW_DAMAGE_MIN(9), BOW_DAMAGE_MAX(9), ItemStats(
 	// Health
-	0,
+	3,
 	// Mana
-	7,
+	9,
 	// Attack
 	0,
 	// Magic Attack

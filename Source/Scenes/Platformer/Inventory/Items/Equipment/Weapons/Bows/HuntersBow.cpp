@@ -23,7 +23,7 @@ HuntersBow* HuntersBow::create()
 
 HuntersBow::HuntersBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), BOW_DAMAGE_MIN(2), BOW_DAMAGE_MAX(2), ItemStats(
 	// Health
-	0,
+	1,
 	// Mana
 	2,
 	// Attack

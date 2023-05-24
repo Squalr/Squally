@@ -23,9 +23,9 @@ CopperSword* CopperSword::create()
 
 CopperSword::CopperSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), SWORD_DAMAGE_MIN(2), SWORD_DAMAGE_MAX(2), ItemStats(
 	// Health
-	2,
+	1,
 	// Mana
-	0,
+	1,
 	// Attack
 	0,
 	// Magic Attack

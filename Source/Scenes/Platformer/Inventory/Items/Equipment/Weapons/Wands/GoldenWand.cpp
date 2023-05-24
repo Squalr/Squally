@@ -25,7 +25,7 @@ GoldenWand::GoldenWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentif
 	// Health
 	0,
 	// Mana
-	10,
+	12,
 	// Attack
 	0,
 	// Magic Attack

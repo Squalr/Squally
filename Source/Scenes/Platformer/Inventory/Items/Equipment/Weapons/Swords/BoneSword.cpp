@@ -23,9 +23,9 @@ BoneSword* BoneSword::create()
 
 BoneSword::BoneSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 10 }}), SWORD_DAMAGE_MIN(6), SWORD_DAMAGE_MAX(6), ItemStats(
 	// Health
-	0,
+	3,
 	// Mana
-	0,
+	3,
 	// Attack
 	0,
 	// Magic Attack

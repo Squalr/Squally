@@ -23,9 +23,9 @@ CrystalSword* CrystalSword::create()
 
 CrystalSword::CrystalSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), SWORD_DAMAGE_MIN(8), SWORD_DAMAGE_MAX(8), ItemStats(
 	// Health
-	0,
+	4,
 	// Mana
-	0,
+	4,
 	// Attack
 	0,
 	// Magic Attack

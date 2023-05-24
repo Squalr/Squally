@@ -23,7 +23,7 @@ SteelBow* SteelBow::create()
 
 SteelBow::SteelBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), BOW_DAMAGE_MIN(3), BOW_DAMAGE_MAX(3), ItemStats(
 	// Health
-	0,
+	1,
 	// Mana
 	3,
 	// Attack

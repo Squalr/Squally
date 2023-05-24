@@ -23,9 +23,9 @@ BoneBow* BoneBow::create()
 
 BoneBow::BoneBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), BOW_DAMAGE_MIN(6), BOW_DAMAGE_MAX(6), ItemStats(
 	// Health
-	0,
+	2,
 	// Mana
-	5,
+	6,
 	// Attack
 	0,
 	// Magic Attack

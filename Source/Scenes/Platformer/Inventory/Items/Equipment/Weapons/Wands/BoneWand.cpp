@@ -25,7 +25,7 @@ BoneWand::BoneWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(
 	// Health
 	0,
 	// Mana
-	16,
+	18,
 	// Attack
 	0,
 	// Magic Attack

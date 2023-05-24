@@ -25,7 +25,7 @@ DemonicWand::DemonicWand() : super(CurrencyInventory::create({{ IOU::getIOUIdent
 	// Health
 	0,
 	// Mana
-	18,
+	21,
 	// Attack
 	0,
 	// Magic Attack

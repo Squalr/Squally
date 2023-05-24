@@ -21,11 +21,11 @@ DemonicAxe* DemonicAxe::create()
 	return instance;
 }
 
-DemonicAxe::DemonicAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(7), AXE_DAMAGE_MIN(7), ItemStats(
+DemonicAxe::DemonicAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(7), AXE_DAMAGE_MAX(7), ItemStats(
 	// Health
-	0,
+	3,
 	// Mana
-	0,
+	4,
 	// Attack
 	0,
 	// Magic Attack

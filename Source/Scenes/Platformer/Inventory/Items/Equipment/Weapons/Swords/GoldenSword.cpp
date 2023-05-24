@@ -23,9 +23,9 @@ GoldenSword* GoldenSword::create()
 
 GoldenSword::GoldenSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), SWORD_DAMAGE_MIN(4), SWORD_DAMAGE_MAX(4), ItemStats(
 	// Health
-	0,
+	2,
 	// Mana
-	0,
+	2,
 	// Attack
 	0,
 	// Magic Attack

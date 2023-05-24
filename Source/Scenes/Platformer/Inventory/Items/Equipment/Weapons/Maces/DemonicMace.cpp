@@ -23,9 +23,9 @@ DemonicMace* DemonicMace::create()
 
 DemonicMace::DemonicMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), MACE_DAMAGE_MIN(7), MACE_DAMAGE_MAX(7), ItemStats(
 	// Health
-	0,
+	6,
 	// Mana
-	0,
+	2,
 	// Attack
 	0,
 	// Magic Attack
