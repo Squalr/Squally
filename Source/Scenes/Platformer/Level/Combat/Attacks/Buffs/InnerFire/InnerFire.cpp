@@ -40,7 +40,7 @@ const std::string InnerFire::InnerFireIdentifier = "inner-fire";
 const float InnerFire::TimeBetweenTicks = 1.0f;
 const int InnerFire::HealTicks = 5;
 const float InnerFire::StartDelay = 0.15f;
-const int InnerFire::MaxHealing = 255;
+const int InnerFire::MaxHealing = 25;
 
 InnerFire* InnerFire::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -180,8 +180,11 @@ void InnerFire::runInnerFire()
 
 NO_OPTIMIZE void InnerFire::runRestoreTick()
 {
-	static volatile int healingSelf = 4;
-	static volatile int healingOther = -4;
+	static volatile int healingSelf = 0;
+	static volatile int healingOther = 0;
+
+	healingSelf = 4;
+	healingSelf = -4;
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZCX);

@@ -131,6 +131,7 @@ StateOverride* FFPuzzleDBehavior::getStateOverride()
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Hex10),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex5),
 		}
 	);
 }

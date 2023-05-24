@@ -89,7 +89,7 @@ void FireRain::update(float dt)
 
 Vec2 FireRain::getButtonOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(0.0f, -512.0f);
 }
 
 void FireRain::registerHackables()
