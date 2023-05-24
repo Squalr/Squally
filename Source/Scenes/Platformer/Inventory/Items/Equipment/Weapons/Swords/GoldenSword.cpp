@@ -21,7 +21,7 @@ GoldenSword* GoldenSword::create()
 	return instance;
 }
 
-GoldenSword::GoldenSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 10, 13, ItemStats(
+GoldenSword::GoldenSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), SWORD_DAMAGE_MIN(4), SWORD_DAMAGE_MAX(4), ItemStats(
 	// Health
 	0,
 	// Mana

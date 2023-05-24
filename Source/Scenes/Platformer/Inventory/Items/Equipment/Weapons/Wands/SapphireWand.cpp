@@ -21,7 +21,7 @@ SapphireWand* SapphireWand::create()
 	return instance;
 }
 
-SapphireWand::SapphireWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 9, 10, ItemStats(
+SapphireWand::SapphireWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), WAND_DAMAGE_MIN(5), WAND_DAMAGE_MAX(5), ItemStats(
 	// Health
 	0,
 	// Mana

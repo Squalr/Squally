@@ -21,7 +21,7 @@ GoldenWand* GoldenWand::create()
 	return instance;
 }
 
-GoldenWand::GoldenWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 7, 8, ItemStats(
+GoldenWand::GoldenWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), WAND_DAMAGE_MIN(4), WAND_DAMAGE_MAX(4), ItemStats(
 	// Health
 	0,
 	// Mana

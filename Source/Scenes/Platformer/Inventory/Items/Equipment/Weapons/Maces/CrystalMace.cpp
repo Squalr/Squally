@@ -21,7 +21,7 @@ CrystalMace* CrystalMace::create()
 	return instance;
 }
 
-CrystalMace::CrystalMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 56, 64, ItemStats(
+CrystalMace::CrystalMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), MACE_DAMAGE_MIN(8), MACE_DAMAGE_MAX(8), ItemStats(
 	// Health
 	0,
 	// Mana

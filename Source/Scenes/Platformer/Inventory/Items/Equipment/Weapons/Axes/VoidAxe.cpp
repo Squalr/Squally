@@ -21,7 +21,7 @@ VoidAxe* VoidAxe::create()
 	return instance;
 }
 
-VoidAxe::VoidAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 11 }}), 4, 7, ItemStats(
+VoidAxe::VoidAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 11 }}), AXE_DAMAGE_MIN(9), AXE_DAMAGE_MAX(9), ItemStats(
 	// Health
 	0,
 	// Mana

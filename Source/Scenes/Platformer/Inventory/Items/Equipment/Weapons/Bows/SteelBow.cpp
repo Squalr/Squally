@@ -21,7 +21,7 @@ SteelBow* SteelBow::create()
 	return instance;
 }
 
-SteelBow::SteelBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), 6, 8, ItemStats(
+SteelBow::SteelBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), BOW_DAMAGE_MIN(3), BOW_DAMAGE_MAX(3), ItemStats(
 	// Health
 	0,
 	// Mana

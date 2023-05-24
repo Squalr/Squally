@@ -21,7 +21,7 @@ BoneBow* BoneBow::create()
 	return instance;
 }
 
-BoneBow::BoneBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 48, 56, ItemStats(
+BoneBow::BoneBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), BOW_DAMAGE_MIN(6), BOW_DAMAGE_MAX(6), ItemStats(
 	// Health
 	0,
 	// Mana

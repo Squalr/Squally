@@ -21,7 +21,7 @@ DemonicMace* DemonicMace::create()
 	return instance;
 }
 
-DemonicMace::DemonicMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 32, 40, ItemStats(
+DemonicMace::DemonicMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), MACE_DAMAGE_MIN(7), MACE_DAMAGE_MAX(7), ItemStats(
 	// Health
 	0,
 	// Mana

@@ -21,7 +21,7 @@ WoodenSword* WoodenSword::create()
 	return instance;
 }
 
-WoodenSword::WoodenSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 9 }}), 4, 6, ItemStats(
+WoodenSword::WoodenSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 9 }}), SWORD_DAMAGE_MIN(1), SWORD_DAMAGE_MAX(1), ItemStats(
 	// Health
 	0,
 	// Mana

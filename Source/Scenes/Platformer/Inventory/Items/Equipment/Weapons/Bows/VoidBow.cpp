@@ -21,7 +21,7 @@ VoidBow* VoidBow::create()
 	return instance;
 }
 
-VoidBow::VoidBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), 6, 8, ItemStats(
+VoidBow::VoidBow() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 7 }}), BOW_DAMAGE_MIN(9), BOW_DAMAGE_MAX(9), ItemStats(
 	// Health
 	0,
 	// Mana

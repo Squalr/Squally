@@ -21,7 +21,7 @@ MithrilAxe* MithrilAxe::create()
 	return instance;
 }
 
-MithrilAxe::MithrilAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 14, 20, ItemStats(
+MithrilAxe::MithrilAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(5), AXE_DAMAGE_MAX(5), ItemStats(
 	// Health
 	0,
 	// Mana

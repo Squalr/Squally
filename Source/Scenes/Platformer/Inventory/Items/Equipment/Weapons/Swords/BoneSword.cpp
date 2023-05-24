@@ -21,7 +21,7 @@ BoneSword* BoneSword::create()
 	return instance;
 }
 
-BoneSword::BoneSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 10 }}), 8, 11, ItemStats(
+BoneSword::BoneSword() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 10 }}), SWORD_DAMAGE_MIN(6), SWORD_DAMAGE_MAX(6), ItemStats(
 	// Health
 	0,
 	// Mana

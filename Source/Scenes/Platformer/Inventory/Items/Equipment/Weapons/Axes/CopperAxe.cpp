@@ -21,7 +21,7 @@ CopperAxe* CopperAxe::create()
 	return instance;
 }
 
-CopperAxe::CopperAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 6, 10, ItemStats(
+CopperAxe::CopperAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(2), AXE_DAMAGE_MAX(2), ItemStats(
 	// Health
 	2,
 	// Mana

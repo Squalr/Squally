@@ -21,7 +21,7 @@ DemonicWand* DemonicWand::create()
 	return instance;
 }
 
-DemonicWand::DemonicWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 12, 16, ItemStats(
+DemonicWand::DemonicWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), WAND_DAMAGE_MIN(7), WAND_DAMAGE_MAX(7), ItemStats(
 	// Health
 	0,
 	// Mana

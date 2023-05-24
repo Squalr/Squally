@@ -21,7 +21,7 @@ CrystalAxe* CrystalAxe::create()
 	return instance;
 }
 
-CrystalAxe::CrystalAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 4, 7, ItemStats(
+CrystalAxe::CrystalAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(8), AXE_DAMAGE_MIN(8), ItemStats(
 	// Health
 	0,
 	// Mana

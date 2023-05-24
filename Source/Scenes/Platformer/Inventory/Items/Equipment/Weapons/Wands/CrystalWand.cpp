@@ -21,7 +21,7 @@ CrystalWand* CrystalWand::create()
 	return instance;
 }
 
-CrystalWand::CrystalWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 26, 32, ItemStats(
+CrystalWand::CrystalWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), WAND_DAMAGE_MIN(8), WAND_DAMAGE_MAX(8), ItemStats(
 	// Health
 	0,
 	// Mana

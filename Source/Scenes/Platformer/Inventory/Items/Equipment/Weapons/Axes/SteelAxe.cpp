@@ -21,7 +21,7 @@ SteelAxe* SteelAxe::create()
 	return instance;
 }
 
-SteelAxe::SteelAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 8, 12, ItemStats(
+SteelAxe::SteelAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(3), AXE_DAMAGE_MAX(3), ItemStats(
 	// Health
 	3,
 	// Mana

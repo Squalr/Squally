@@ -183,8 +183,8 @@ NO_OPTIMIZE void InnerFire::runRestoreTick()
 	static volatile int healingSelf = 0;
 	static volatile int healingOther = 0;
 
-	healingSelf = 4;
 	healingSelf = -4;
+	healingOther = 4;
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZCX);

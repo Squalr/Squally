@@ -337,11 +337,6 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="1976" name="life-stone" type="object" x="2769.42" y="1100.62" width="146" height="423">
-   <properties>
-    <property name="transition" value="lifestone-spawn"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -390,11 +385,6 @@
   <object id="1952" name="spawn" type="object" x="399.003" y="2053.51" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="1977" name="spawn" type="object" x="2781.09" y="1393.09" width="128" height="128">
-   <properties>
-    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

@@ -21,7 +21,7 @@ GoldenAxe* GoldenAxe::create()
 	return instance;
 }
 
-GoldenAxe::GoldenAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 10, 15, ItemStats(
+GoldenAxe::GoldenAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), AXE_DAMAGE_MIN(4), AXE_DAMAGE_MAX(4), ItemStats(
 	// Health
 	4,
 	// Mana

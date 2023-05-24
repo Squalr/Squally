@@ -21,7 +21,7 @@ SteelMace* SteelMace::create()
 	return instance;
 }
 
-SteelMace::SteelMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 9, 12, ItemStats(
+SteelMace::SteelMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), MACE_DAMAGE_MIN(3), MACE_DAMAGE_MAX(3), ItemStats(
 	// Health
 	4,
 	// Mana

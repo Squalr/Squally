@@ -21,7 +21,7 @@ CopperMallet* CopperMallet::create()
 	return instance;
 }
 
-CopperMallet::CopperMallet() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 7, 9, ItemStats(
+CopperMallet::CopperMallet() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), MACE_DAMAGE_MIN(2), MACE_DAMAGE_MAX(2), ItemStats(
 	// Health
 	3,
 	// Mana

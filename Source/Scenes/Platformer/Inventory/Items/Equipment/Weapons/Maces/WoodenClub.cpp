@@ -21,7 +21,7 @@ WoodenClub* WoodenClub::create()
 	return instance;
 }
 
-WoodenClub::WoodenClub() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 5, 7, ItemStats(
+WoodenClub::WoodenClub() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), MACE_DAMAGE_MIN(1), MACE_DAMAGE_MAX(1), ItemStats(
 	// Health
 	0,
 	// Mana
