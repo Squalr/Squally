@@ -6,7 +6,7 @@
    <property name="crack-color" value=""/>
    <property name="gravity" value="-768"/>
    <property name="map-banner" value="firewall-fissure"/>
-   <property name="music" value="artrium"/>
+   <property name="music" value="burden-of-time"/>
    <property name="rubber-band" type="int" value="18"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>

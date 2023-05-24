@@ -40,7 +40,7 @@ const std::string Cauterize::CauterizeIdentifier = "cauterize";
 const float Cauterize::TimeBetweenTicks = 1.0f;
 const int Cauterize::HealTicks = 6;
 const float Cauterize::StartDelay = 0.15f;
-const int Cauterize::MaxHealing = 255;
+const int Cauterize::MaxHealing = 25;
 
 Cauterize* Cauterize::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
@@ -101,8 +101,8 @@ void Cauterize::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Cauterize::CauterizeIdentifier,
 				Strings::Menus_Hacking_Abilities_Abilities_Cauterize_Cauterize::create(),
-				HackableBase::HackBarColor::Purple,
-				UIResources::Menus_Icons_ShieldGlowBlue,
+				HackableBase::HackBarColor::Red,
+				UIResources::Menus_Icons_BookSpellsFire,
 				LazyNode<HackablePreview>::create([=](){ return CauterizeGenericPreview::create(); }),
 				{
 					{
@@ -201,6 +201,7 @@ NO_OPTIMIZE void Cauterize::runRestoreTick()
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_CAUTERIZE);
 	ASM(addss xmm0, dword ptr [ZDI]); // Add healing gain (4.0f) to healing (0.0f)
+	ASM_NOP12();
 	HACKABLE_CODE_END();
 
 	ASM(movss dword ptr [ZAX], xmm0); // Store healing (4.0f) into healingGain

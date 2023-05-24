@@ -274,17 +274,17 @@ StatsTables::StatsTables()
 	************/
 
 	StatsTables::StatsTable[Asmodeus::MapKey] = StatsIncrements(Stats(165, 30, 315));
-	StatsTables::StatsTable[DemonArcher::MapKey] = StatsIncrements(Stats(73, 14, 133));
-	StatsTables::StatsTable[DemonDragon::MapKey] = StatsIncrements(Stats(72, 12, 131));
-	StatsTables::StatsTable[DemonGhost::MapKey] = StatsIncrements(Stats(70, 10, 129));
-	StatsTables::StatsTable[DemonGrunt::MapKey] = StatsIncrements(Stats(74, 8, 133));
-	StatsTables::StatsTable[DemonRogue::MapKey] = StatsIncrements(Stats(68, 8, 127));
-	StatsTables::StatsTable[DemonShaman::MapKey] = StatsIncrements(Stats(62, 20, 130));
-	StatsTables::StatsTable[DemonSwordsman::MapKey] = StatsIncrements(Stats(77, 8, 125));
+	StatsTables::StatsTable[DemonArcher::MapKey] = StatsIncrements(Stats(93, 14, 133));
+	StatsTables::StatsTable[DemonDragon::MapKey] = StatsIncrements(Stats(92, 12, 131));
+	StatsTables::StatsTable[DemonGhost::MapKey] = StatsIncrements(Stats(90, 10, 129));
+	StatsTables::StatsTable[DemonGrunt::MapKey] = StatsIncrements(Stats(94, 8, 133));
+	StatsTables::StatsTable[DemonRogue::MapKey] = StatsIncrements(Stats(88, 8, 127));
+	StatsTables::StatsTable[DemonShaman::MapKey] = StatsIncrements(Stats(82, 20, 130));
+	StatsTables::StatsTable[DemonSwordsman::MapKey] = StatsIncrements(Stats(97, 8, 125));
 	StatsTables::StatsTable[DemonWarrior::MapKey] = StatsIncrements(Stats(80, 8, 136));
-	StatsTables::StatsTable[FireElemental::MapKey] = StatsIncrements(Stats(69, 8, 127));
-	StatsTables::StatsTable[FireTiger::MapKey] = StatsIncrements(Stats(71, 8, 138));
-	StatsTables::StatsTable[LavaGolem::MapKey] = StatsIncrements(Stats(76, 6, 130));
+	StatsTables::StatsTable[FireElemental::MapKey] = StatsIncrements(Stats(89, 8, 127));
+	StatsTables::StatsTable[FireTiger::MapKey] = StatsIncrements(Stats(91, 8, 138));
+	StatsTables::StatsTable[LavaGolem::MapKey] = StatsIncrements(Stats(96, 6, 130));
 
 	StatsTables::StatsTable[Ash::MapKey] = NpcStats;
 	StatsTables::StatsTable[Brine::MapKey] = NpcStats;
@@ -307,16 +307,16 @@ StatsTables::StatsTables()
 	************/
 
 	StatsTables::StatsTable[Cryogen::MapKey] = StatsIncrements(Stats(248, 8, 420));
-	StatsTables::StatsTable[FrostFiend::MapKey] = StatsIncrements(Stats(86, 8, 136));
-	StatsTables::StatsTable[GoblinElf::MapKey] = StatsIncrements(Stats(80, 8, 130));
-	StatsTables::StatsTable[IceGolem::MapKey] = StatsIncrements(Stats(85, 8, 135));
-	StatsTables::StatsTable[PenguinGrunt::MapKey] = StatsIncrements(Stats(82, 8, 132));
-	StatsTables::StatsTable[PenguinWarrior::MapKey] = StatsIncrements(Stats(84, 8, 134));
+	StatsTables::StatsTable[FrostFiend::MapKey] = StatsIncrements(Stats(96, 8, 136));
+	StatsTables::StatsTable[GoblinElf::MapKey] = StatsIncrements(Stats(90, 8, 130));
+	StatsTables::StatsTable[IceGolem::MapKey] = StatsIncrements(Stats(95, 8, 135));
+	StatsTables::StatsTable[PenguinGrunt::MapKey] = StatsIncrements(Stats(92, 8, 132));
+	StatsTables::StatsTable[PenguinWarrior::MapKey] = StatsIncrements(Stats(94, 8, 134));
 	StatsTables::StatsTable[Santa::MapKey] = StatsIncrements(Stats(224, 8, 392));
-	StatsTables::StatsTable[SnowFiend::MapKey] = StatsIncrements(Stats(90, 8, 140));
-	StatsTables::StatsTable[ToySoldierGoblin::MapKey] = StatsIncrements(Stats(83, 8, 133));
-	StatsTables::StatsTable[WaterElemental::MapKey] = StatsIncrements(Stats(84, 8, 134));
-	StatsTables::StatsTable[Yeti::MapKey] = StatsIncrements(Stats(88, 8, 138));
+	StatsTables::StatsTable[SnowFiend::MapKey] = StatsIncrements(Stats(100, 8, 140));
+	StatsTables::StatsTable[ToySoldierGoblin::MapKey] = StatsIncrements(Stats(93, 8, 133));
+	StatsTables::StatsTable[WaterElemental::MapKey] = StatsIncrements(Stats(94, 8, 134));
+	StatsTables::StatsTable[Yeti::MapKey] = StatsIncrements(Stats(98, 8, 138));
 	
 	StatsTables::StatsTable[Viking::MapKey] = NpcStats;
 	StatsTables::StatsTable[Snowman::MapKey] = NpcStats;
