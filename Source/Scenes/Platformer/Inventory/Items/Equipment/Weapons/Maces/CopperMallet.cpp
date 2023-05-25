@@ -25,7 +25,7 @@ CopperMallet::CopperMallet() : super(CurrencyInventory::create({{ IOU::getIOUIde
 	// Health
 	1,
 	// Mana
-	1,
+	0,
 	// Attack
 	0,
 	// Magic Attack

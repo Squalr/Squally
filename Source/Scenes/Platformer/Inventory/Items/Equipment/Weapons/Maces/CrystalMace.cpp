@@ -23,9 +23,9 @@ CrystalMace* CrystalMace::create()
 
 CrystalMace::CrystalMace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), MACE_DAMAGE_MIN(8), MACE_DAMAGE_MAX(8), ItemStats(
 	// Health
-	7,
+	2,
 	// Mana
-	3,
+	2,
 	// Attack
 	0,
 	// Magic Attack

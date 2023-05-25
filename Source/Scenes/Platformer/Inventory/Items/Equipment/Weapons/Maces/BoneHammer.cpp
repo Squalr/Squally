@@ -23,9 +23,9 @@ BoneHammer* BoneHammer::create()
 
 BoneHammer::BoneHammer() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), MACE_DAMAGE_MIN(6), MACE_DAMAGE_MAX(6), ItemStats(
 	// Health
-	5,
-	// Mana
 	2,
+	// Mana
+	1,
 	// Attack
 	0,
 	// Magic Attack

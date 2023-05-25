@@ -113,6 +113,7 @@ DeveloperScene::DeveloperScene()
 			- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
 	
 	- Music
+		- Music player HUD broken?
 		- Good desert music (The Letter sucked)
 		- https://michelemclaughlin.com/pages/contact (Preserverence)
 		- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
