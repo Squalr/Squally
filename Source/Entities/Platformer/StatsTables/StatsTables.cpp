@@ -87,13 +87,13 @@ StatsTables::StatsTables()
 	// HELPERS
 	StatsTables::StatsTable[CritterDemon::MapKey] = StatsIncrements(Stats(14, 4, 48), increments);
 	StatsTables::StatsTable[Gecky::MapKey] = StatsIncrements(Stats(14, 4, 48), increments);
+	StatsTables::StatsTable[Grim::MapKey] = StatsIncrements(Stats(14, 4, 48), increments);
+	StatsTables::StatsTable[Ghost::MapKey] = StatsIncrements(Stats(14, 4, 48), increments);
 	StatsTables::StatsTable[Guano::MapKey] = StatsIncrements(Stats(14, 4, 48), increments);
 	StatsTables::StatsTable[GuanoPetrified::MapKey] = StatsIncrements(Stats(20, 0, 10000));
 	StatsTables::StatsTable[Robot::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
 	StatsTables::StatsTable[Snowman::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
 	StatsTables::StatsTable[YetiBaby::MapKey] = StatsIncrements(Stats(16, 8, 48), increments);
-	StatsTables::StatsTable[Ghost::MapKey] = NpcStats;
-	StatsTables::StatsTable[Grim::MapKey] = NpcStats;
 	
 	StatsTables::StatsTable[Scrappy::MapKey] = StatsIncrements(Stats(420, 666, 32));
 
