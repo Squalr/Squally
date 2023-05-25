@@ -825,7 +825,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="958" name="spawn" type="object" x="422.444" y="1684.73" width="128" height="128">
+  <object id="958" name="spawn" type="object" x="828.444" y="1654.73" width="128" height="128">
    <properties>
     <property name="transition" value="pathway"/>
    </properties>

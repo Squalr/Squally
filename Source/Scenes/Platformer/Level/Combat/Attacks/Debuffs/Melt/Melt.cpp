@@ -130,7 +130,8 @@ void Melt::registerHackables()
 							ConstantString::create("cmp edx, 1\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create()),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()),
-							ConstantString::create("setne al\n\n"),
+							ConstantString::create("setne al\n"),
+							ConstantString::create("neg eax\n\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentHint1::create()
 								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterEdx::create() })),
 							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentHint2::create()
@@ -141,7 +142,8 @@ void Melt::registerHackables()
 							ConstantString::create("cmp rdx, 1\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentSet::create()),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentE::create()),
-							ConstantString::create("setne al\n\n"),
+							ConstantString::create("setne al\n"),
+							ConstantString::create("neg rax\n\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentHint1::create()
 								->setStringReplacementVariables({ Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(), Strings::Menus_Hacking_Lexicon_Assembly_RegisterRdx::create() })),
 							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Melt_CommentHint2::create()
@@ -177,13 +179,11 @@ void Melt::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingArgs* dama
 
 NO_OPTIMIZE void Melt::applyMelt()
 {
-	static volatile int rng = 0;
+	static volatile int constZero = 0;
+	static volatile int multiplier = 0;
 	static volatile int currentDamageDealtLocal = 0;
-	static volatile int* currentDamageDealtLocalPtr = nullptr;
 
-	rng = RandomHelper::random_int(0, 1);
-	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
-	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	constZero = 0;
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZAX);
@@ -192,28 +192,24 @@ NO_OPTIMIZE void Melt::applyMelt()
 	ASM(mov ZAX, 0);
 	ASM(mov ZDX, 0);
 
-	ASM_MOV_REG_VAR(edx, rng);
+	ASM_MOV_REG_VAR(edx, constZero);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_MELT);
 	ASM(cmp ZDX, 1);
 	ASM(setne al);
+	ASM(neg ZAX)
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(rng, eax);
+	ASM_MOV_VAR_REG(multiplier, eax);
 
 	ASM(pop ZDX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS()
 
-	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value(
-		rng == 1
-		? (currentDamageDealtLocal / 3)
-		// Jank to allow hacked critical hits, so that this buff can be made into a positive force
-		// This value wouldn't be possible naturally.
-		: rng == 2
-			? (currentDamageDealtLocal * 3)
-			: currentDamageDealtLocal);
+	currentDamageDealtLocal = Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
+
+	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = currentDamageDealtLocal * multiplier;
 
 	HACKABLES_STOP_SEARCH();
 }

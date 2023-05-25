@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="174" nextobjectid="1015">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="174" nextobjectid="1016">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -37,8 +37,8 @@
   <object id="977" name="obsidean" type="terrain" x="3683.37" y="2849.26">
    <polygon points="-103.838,-767.616 -88.4849,-555.863 70.7071,-480.196 223.891,-555.024 250.602,-767.178"/>
   </object>
-  <object id="979" name="obsidean" type="terrain" x="2353.94" y="2836.48">
-   <polygon points="-103.838,-767.616 -88.4849,-555.863 70.7071,-480.196 223.891,-555.024 250.602,-767.178"/>
+  <object id="979" name="obsidean" type="terrain" x="2381.12" y="2851.15">
+   <polygon points="-132.353,-767.616 -112.784,-555.863 90.1241,-480.196 285.374,-555.024 319.42,-767.178"/>
   </object>
  </objectgroup>
  <objectgroup id="130" name="lava -36">
@@ -77,10 +77,16 @@
   </properties>
   <object id="993" name="scaldor" type="entity" x="2969.88" y="1963.39" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,ff-t6-hexus,pick-pocket,pacing"/>
+    <property name="components" value="friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ff-generic"/>
     <property name="quest" value="deliver-bomb,lava-flood"/>
     <property name="quest-line" value="defeat-asmodeus"/>
+   </properties>
+  </object>
+  <object id="1015" name="magnus" type="entity" x="3150.67" y="1960" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,ff-t6-hexus,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="ff-generic"/>
    </properties>
   </object>
  </objectgroup>
@@ -470,12 +476,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="995" name="magnus" type="entity" x="3618" y="2058" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,ff-t5-hexus,pick-pocket,pacing"/>
-    <property name="pocket-pool" value="ff-generic"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="95" name="lava -20">
   <properties>
@@ -535,7 +535,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="145" name="decor bg -17" visible="0">
+ <objectgroup id="145" name="decor bg -17">
   <properties>
    <property name="depth" type="float" value="-1088"/>
    <property name="type" value="objects"/>
@@ -644,7 +644,11 @@
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1009" name="Lava/WarpTower" type="decor" x="3372.5" y="33.5" width="979" height="2249"/>
+  <object id="1009" name="Lava/WarpTower" type="decor" x="3372.5" y="33.5" width="979" height="2249">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="103" name="objects -13">
   <properties>
@@ -777,7 +781,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="146" name="decor -8 bg" visible="0">
+ <objectgroup id="146" name="decor -8 bg">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -792,7 +796,7 @@
   </properties>
   <object id="775" name="lava" type="object" x="-833.708" y="2486.78" width="9999" height="1024"/>
  </objectgroup>
- <objectgroup id="135" name="decor -8" visible="0">
+ <objectgroup id="135" name="decor -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>

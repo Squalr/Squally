@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="184" nextobjectid="1058">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="184" nextobjectid="1059">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -726,6 +726,11 @@
     <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
+  <object id="1058" name="spawn" type="object" x="1860" y="2049.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="pathway"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="102" name="entities -20">
   <properties>
@@ -1015,7 +1020,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="146" name="decor -8 bg">
+ <objectgroup id="146" name="decor -8 bg" visible="0">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
