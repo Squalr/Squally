@@ -179,12 +179,11 @@ void SeekingBlade::onBeforeDamageDealt(CombatEvents::ModifiableDamageOrHealingAr
 NO_OPTIMIZE void SeekingBlade::applySeekingBlade()
 {
 	static volatile int rng = 0;
-	static volatile float currentDamageDealtLocal = 0;
-	static volatile float* currentDamageDealtLocalPtr = nullptr;
+	static volatile int multiplier = 0;
+	static volatile int currentDamageDealtLocal = 0;
 
-	rng = RandomHelper::random_int(0, 1);
-	currentDamageDealtLocal = (float)Buff::HackStateStorage[Buff::StateKeyDamageDealt].asInt();
-	currentDamageDealtLocalPtr = &currentDamageDealtLocal;
+	multiplier = 0;
+	rng = 1;
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZAX);
@@ -201,13 +200,13 @@ NO_OPTIMIZE void SeekingBlade::applySeekingBlade()
 	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(rng, eax);
+	ASM_MOV_VAR_REG(multiplier, eax);
 
 	ASM(pop ZCX);
 	ASM(pop ZAX);
 	ASM_POP_EFLAGS()
 
-	currentDamageDealtLocal = rng == 1 ? SeekingBlade::CritDamage : currentDamageDealtLocal;
+	currentDamageDealtLocal = SeekingBlade::CritDamage * multiplier;
 
 	Buff::HackStateStorage[Buff::StateKeyDamageDealt] = Value((int)currentDamageDealtLocal);
 
