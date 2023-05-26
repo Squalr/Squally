@@ -541,6 +541,7 @@ const std::string ObjectResources::Physics_CartLift_PlatformSpiked = "Private/Pl
 const std::string ObjectResources::Physics_CartLift_Rail = "Private/Platformer/Objects/Physics/CartLift/Rail.png";
 const std::string ObjectResources::Physics_CartLift_Stop = "Private/Platformer/Objects/Physics/CartLift/Stop.png";
 const std::string ObjectResources::Physics_CartStop_CartStop = "Private/Platformer/Objects/Physics/CartStop/CartStop.png";
+const std::string ObjectResources::Physics_LavaAxe_LavaAxe = "Private/Platformer/Objects/Physics/LavaAxe/LavaAxe.png";
 const std::string ObjectResources::Physics_MineElevator_MineElevatorBase = "Private/Platformer/Objects/Physics/MineElevator/MineElevatorBase.png";
 const std::string ObjectResources::Physics_MineElevator_MineElevatorGear = "Private/Platformer/Objects/Physics/MineElevator/MineElevatorGear.png";
 const std::string ObjectResources::Physics_MineElevator_MineElevatorGearShaft = "Private/Platformer/Objects/Physics/MineElevator/MineElevatorGearShaft.png";

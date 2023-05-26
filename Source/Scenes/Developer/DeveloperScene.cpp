@@ -80,6 +80,7 @@ DeveloperScene::DeveloperScene()
 
 	- Localization / Scripting
 		- Text navigation is pretty bad in long scripts.
+		- Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
 		- Multi-line comments in scripts can cause line counter to become disrupted
 		- Long scripts can fail to show blinking cursor sometimes (??)
 		- Should really expand scripting text editor
@@ -576,7 +577,6 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// Traps: Fire bird, fire launcher, TNT barrel, mortar
-		// Remove wanted poster after Asmodeus dead. Maybe some Elise dialogue.
 
 		/*
 		Surface:
@@ -593,7 +593,7 @@ DeveloperScene::DeveloperScene()
 			X DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 			=> Seeking Blade / Damage+ based on rng
 			X DemonWarrior			=>  3_X		<FlamingScroll,		setne> 			=> Melt / Damage- based on RNG
 			X FireTiger				=>  3_X		<Chains,			bswap> 			=> Entwined / Health Link
-			- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		call/ret?>		=> Searing Blade / Giant axe that falls counter-clockwise, redirectable?
+			- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		call/ret>		=> Searing Blade / Giant axe that falls counter-clockwise, redirectable
 
 		Avail for traps:
 		- Dice
@@ -606,12 +606,12 @@ DeveloperScene::DeveloperScene()
 		-----------------
 		
 		// Hexus puzzles:
-		// - A	=> 1_1 (Bone fiend)
-		// - B	=> 2_0 (zombie)
-		// - C	=> Town_Main (Undead)
-		// - D	=> Town_Church (Reanimated Pig)
-		// - E	=> 3_0 (Bone Knight)
-		// - F	=> 4_0_a (Skeletal Priestess)
+		// - A	=> 1_1 (xyz)
+		// - B	=> 1_1 (xyz)
+		// - C	=> 1_1 (xyz)
+		// - D	=> 1_1 (xyz)
+		// - E	=> 1_1 (xyz)
+		// - F	=> 1_1 (xyz)
 
 		X Ash			=> 1_x (H1)
 		X Lucifer		=> 2_x (H2)

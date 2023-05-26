@@ -42,7 +42,7 @@ const float FireRain::TimeBetweenTicks = 0.75f;
 const float FireRain::StartDelay = 0.25f;
 const std::string FireRain::StateKeyIsCasterOnEnemyTeam = "ANTI_OPTIMIZE_STATE_KEY_DAMAGE_TAKEN";
 
-const std::string FireRain::HackIdentifierFireRainTeamCompare = "bat-swarm-team";
+const std::string FireRain::HackIdentifierFireRainTeamCompare = "fire-rain-team";
 
 FireRain* FireRain::create(PlatformerEntity* caster, PlatformerEntity* target)
 {

@@ -10704,6 +10704,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_InnerFire_RegisterEdx() = default;
 	};
 
+	class Menus_Hacking_Abilities_Abilities_LavaAxe_LavaAxe : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_LavaAxe_LavaAxe();
+		virtual ~Menus_Hacking_Abilities_Abilities_LavaAxe_LavaAxe() = default;
+	};
+
+	class Menus_Hacking_Abilities_Abilities_LavaAxe_RegisterEax : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_LavaAxe_RegisterEax();
+		virtual ~Menus_Hacking_Abilities_Abilities_LavaAxe_RegisterEax() = default;
+	};
+
 	class Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration : public LocalizedString
 	{
 	public:

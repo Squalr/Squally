@@ -13,6 +13,7 @@ namespace CutsceneResources
 	extern const std::string CrackLarge_Cutscene_0004;
 	extern const std::string CrackLarge_Cutscene_0005;
 	extern const std::string CrackLarge_Cutscene_0006;
+	extern const std::string CrackLarge_Cutscene_0007;
 	extern const std::string CrackLarge_Cutscene_0008;
 	extern const std::string CrackLarge_Cutscene_0009;
 	extern const std::string CrackLarge_Cutscene_0010;
@@ -22,7 +23,6 @@ namespace CutsceneResources
 	extern const std::string CrackLarge_Cutscene_0014;
 	extern const std::string CrackLarge_Cutscene_0015;
 	extern const std::string CrackLarge_Cutscene_0016;
-	extern const std::string CrackLarge_Cutscene_007;
 	extern const std::string CrackMedium_Cutscene_0000;
 	extern const std::string CrackMedium_Cutscene_0001;
 	extern const std::string CrackMedium_Cutscene_0002;
