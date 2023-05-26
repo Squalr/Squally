@@ -36474,6 +36474,21 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_WindSpellbook_Marcel_B_Latent() = default;
 	};
 
+	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_Asmodeus_A_Burn : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_DefeatAsmodeus_Asmodeus_A_Burn();
+		virtual ~Platformer_Quests_FirewallFissure_DefeatAsmodeus_Asmodeus_A_Burn() = default;
+	};
+
 	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_A_HowToLeaveVolcano : public LocalizedString
 	{
 	public:

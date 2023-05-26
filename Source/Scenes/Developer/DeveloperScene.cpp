@@ -91,6 +91,9 @@ DeveloperScene::DeveloperScene()
 	- Game Feel / Design / Lore:
 		** Final Boss Fight
 		** Credits cutscene(?)
+		** Asmodeus boss fight
+			- Wanted poster
+			- Queen Elise text for post bomb / asmodeus maybe
 		- Squally
 			v worried face on intro cinematic crash
 			v Potentially mask shadow based on number of colliders hit

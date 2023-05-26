@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="44" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="162" nextobjectid="994">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="44" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="162" nextobjectid="995">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -779,6 +779,11 @@
     <property name="map" value="FirewallFissure/Zone_3_3"/>
     <property name="tag" value="exit"/>
     <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="994" name="trigger" type="object" x="3911" y="-162.53" width="146" height="1829.06">
+   <properties>
+    <property name="send-event" value="engage-asmodeus"/>
    </properties>
   </object>
  </objectgroup>

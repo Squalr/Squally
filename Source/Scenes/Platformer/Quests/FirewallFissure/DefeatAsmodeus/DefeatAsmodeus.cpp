@@ -128,12 +128,12 @@ void DefeatAsmodeus::runCinematicSequencePt1()
 		CallFunc::create([=]()
 		{
 			DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
+				Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_Asmodeus_A_Burn::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->asmodeus, false),
-					DialogueEvents::BuildPreviewNode(&this->squally, true)
+					DialogueBox::DialogueAlignment::Right,
+					DialogueEvents::BuildPreviewNode(&this->squally, false),
+					DialogueEvents::BuildPreviewNode(&this->asmodeus, true)
 				),
 				[=]()
 				{

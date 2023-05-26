@@ -35,7 +35,7 @@ Asmodeus::~Asmodeus()
 
 Vec2 Asmodeus::getDialogueOffset()
 {
-	return Vec2(0.0f, 0.0f);
+	return Vec2(0.0f, -64.0f);
 }
 
 LocalizedString* Asmodeus::getEntityName()
