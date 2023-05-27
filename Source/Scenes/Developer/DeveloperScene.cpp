@@ -593,7 +593,7 @@ DeveloperScene::DeveloperScene()
 			X DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 				=> Seeking Blade / Damage+ based on rng
 			X DemonWarrior			=>  3_X		<FlamingScroll,		setne> 				=> Melt / Damage- based on RNG
 			X FireTiger				=>  3_X		<Chains,			bswap> 				=> Entwined / Health Link
-			O [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		subss, call/ret>	=> Lava Axe / Giant axe that falls counter-clockwise, redirectable
+			X [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		subss, call/ret>	=> Lava Axe / Giant axe that falls counter-clockwise, redirectable
 
 		Avail for traps:
 		- Dice

@@ -96,7 +96,7 @@ void CastResurrection::onCleanup()
 
 bool CastResurrection::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
-	for (auto next : sameTeam)
+	for (PlatformerEntity* next : sameTeam)
 	{
 		if (!next->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 		{

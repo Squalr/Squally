@@ -10,7 +10,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Combat/Abilities/LavaAxe/LavaAxe.h"
-#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 
@@ -116,4 +116,58 @@ void CastLavaAxe::performAttack(PlatformerEntity* owner, std::vector<PlatformerE
 
 void CastLavaAxe::onCleanup()
 {
+}
+
+bool CastLavaAxe::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+{
+	bool worthUsing = true;
+
+	PlatformerEntity* strongestTeamMember = nullptr;
+	int highestHp = 0;
+	int highestCurrentHp = 0;
+
+	for (PlatformerEntity* next : sameTeam)
+	{
+		next->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* entityHealthBehavior)
+		{
+			if (entityHealthBehavior->getMaxHealth() > highestHp)
+			{
+				highestHp = entityHealthBehavior->getMaxHealth();
+				highestCurrentHp = entityHealthBehavior->getHealth();
+			}
+		});
+	}
+
+	float healthRatio = highestHp == 0 ? 1.0f : (float(highestCurrentHp) / float(highestHp));
+
+	if (healthRatio > 0.5f)
+	{
+		worthUsing = false;
+	}
+	else
+	{
+		CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
+		{
+			for (TimelineEntry* next : timeline->getEntries())
+			{
+				if (dynamic_cast<CastLavaAxe*>(next->getStagedCast()) != nullptr)
+				{
+					worthUsing = false;
+					break;
+				}
+			}
+		}));
+
+		ObjectEvents::QueryObject<LavaAxe>([&](LavaAxe*)
+		{
+			worthUsing = false;
+		});
+	}
+
+	return worthUsing;
+}
+
+float CastLavaAxe::getUseUtility(PlatformerEntity* caster, PlatformerEntity* target, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
+{
+	return 1.0;
 }
