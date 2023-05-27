@@ -2,6 +2,11 @@
 
 #include "Objects/Platformer/Combat/CombatObject.h"
 
+namespace cocos2d
+{
+	class Sprite;
+};
+
 class PlatformerAttack;
 class PlatformerEntity;
 class SmartAnimationSequenceNode;
@@ -11,18 +16,18 @@ class WorldSound;
 class LavaAxe : public CombatObject
 {
 public:
-	static LavaAxe* create(PlatformerEntity* caster, PlatformerEntity* target, std::function<void(int)> onImpact);
+	static LavaAxe* create(PlatformerEntity* caster, PlatformerEntity* target);
 
 	void runLavaAxe(TimelineEntry* target);
 
 	static const std::string HackIdentifierLavaAxe;
 	
 protected:
-	LavaAxe(PlatformerEntity* caster, PlatformerEntity* target, std::function<void(int)> onImpact);
+	LavaAxe(PlatformerEntity* caster, PlatformerEntity* target);
 	virtual ~LavaAxe();
 
 	void onEnter() override;
-	void update(float dt) override;
+	void elapse(float dt) override;
 	cocos2d::Vec2 getButtonOffset() override;
 	void registerHackables() override;
 	HackablePreview* createDefaultPreview() override;
@@ -30,9 +35,8 @@ protected:
 private:
 	typedef CombatObject super;
 
-	void dealDamage(TimelineEntry* target);
+	void rotateAxe(float dt);
 	
-	SmartAnimationSequenceNode* animationNode = nullptr;
+	cocos2d::Sprite* axe = nullptr;
 	WorldSound* impactSound = nullptr;
-	std::function<void(int)> onImpact = nullptr;
 };

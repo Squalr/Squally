@@ -589,11 +589,11 @@ DeveloperScene::DeveloperScene()
 			X DemonGhost			=>  2_X		<SkullLavaEyes,	xchg>		 	=> Inner Fire / Siphon HP tick
 			X FireElemental			=>  2_X		<FireBolts,		cmpss/comiss> 	=> Fire Rain / AoE damage
 		Surface 2?
-			X DemonArcher			=>  3_X		<CrossBow,			call/ret>		=> Arrow Volley / team compare damage
-			X DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 			=> Seeking Blade / Damage+ based on rng
-			X DemonWarrior			=>  3_X		<FlamingScroll,		setne> 			=> Melt / Damage- based on RNG
-			X FireTiger				=>  3_X		<Chains,			bswap> 			=> Entwined / Health Link
-			- [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		call/ret>		=> Searing Blade / Giant axe that falls counter-clockwise, redirectable
+			X DemonArcher			=>  3_X		<CrossBow,			call/ret>			=> Arrow Volley / team compare damage
+			X DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 				=> Seeking Blade / Damage+ based on rng
+			X DemonWarrior			=>  3_X		<FlamingScroll,		setne> 				=> Melt / Damage- based on RNG
+			X FireTiger				=>  3_X		<Chains,			bswap> 				=> Entwined / Health Link
+			O [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		subss, call/ret>	=> Lava Axe / Giant axe that falls counter-clockwise, redirectable
 
 		Avail for traps:
 		- Dice

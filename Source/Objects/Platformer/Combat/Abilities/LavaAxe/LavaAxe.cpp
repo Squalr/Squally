@@ -35,26 +35,27 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_SHADOW_BOMB 11
+#define LOCAL_FUNC_ID_LAVA_AXE 11
 
 const std::string LavaAxe::HackIdentifierLavaAxe = "lava-axe";
 
-LavaAxe* LavaAxe::create(PlatformerEntity* caster, PlatformerEntity* target, std::function<void(int)> onImpact)
+LavaAxe* LavaAxe::create(PlatformerEntity* caster, PlatformerEntity* target)
 {
-	LavaAxe* instance = new LavaAxe(caster, target, onImpact);
+	LavaAxe* instance = new LavaAxe(caster, target);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-LavaAxe::LavaAxe(PlatformerEntity* caster, PlatformerEntity* target, std::function<void(int)> onImpact) : super(caster, target, true)
+LavaAxe::LavaAxe(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, true)
 {
-	this->animationNode = SmartAnimationSequenceNode::create();
+	this->axe = Sprite::create(ObjectResources::Physics_LavaAxe_LavaAxe);
 	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_FireHit1);
-	this->onImpact = onImpact;
 
-	this->addChild(this->animationNode);
+	this->axe->setAnchorPoint(Vec2(0.5f, 0.0f));
+
+	this->addChild(this->axe);
 	this->addChild(this->impactSound);
 }
 
@@ -69,14 +70,49 @@ void LavaAxe::onEnter()
 	CombatEvents::TriggerHackableCombatCue();
 }
 
-void LavaAxe::update(float dt)
+void LavaAxe::elapse(float dt)
 {
-	super::update(dt);
+	super::elapse(dt);
+
+	this->rotateAxe(dt);
+
+	if (this->axe->getRotation() < -75.0f)
+	{
+		CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([=](Timeline* timeline)
+		{
+			for (TimelineEntry* next : timeline->getEntries())
+			{
+				if (next->isPlayerEntry())
+				{
+					CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, next->getEntity(), 2048, AbilityType::Fire, true));
+				}
+			}
+		}));
+		
+		this->disableUpdate();
+		this->despawn();
+	}
+	else if (this->axe->getRotation() > 75.0f)
+	{
+		CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([=](Timeline* timeline)
+		{
+			for (TimelineEntry* next : timeline->getEntries())
+			{
+				if (!next->isPlayerEntry())
+				{
+					CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, next->getEntity(), 2048, AbilityType::Fire, true));
+				}
+			}
+		}));
+
+		this->disableUpdate();
+		this->despawn();
+	}
 }
 
 Vec2 LavaAxe::getButtonOffset()
 {
-	return Vec2(0.0f, 96.0f);
+	return Vec2(0.0f, 0.0f);
 }
 
 void LavaAxe::registerHackables()
@@ -86,7 +122,7 @@ void LavaAxe::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_SHADOW_BOMB,
+			LOCAL_FUNC_ID_LAVA_AXE,
 			HackableCode::HackableCodeInfo(
 				LavaAxe::HackIdentifierLavaAxe,
 				Strings::Menus_Hacking_Abilities_Abilities_LavaAxe_LavaAxe::create(),
@@ -95,7 +131,7 @@ void LavaAxe::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return this->createDefaultPreview(); }),
 				{
 					{
-						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Abilities_LavaAxe_RegisterEax::create()
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Abilities_LavaAxe_RegisterEbx::create()
 					},
 				},
 				int(HackFlags::None),
@@ -106,11 +142,11 @@ void LavaAxe::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							ConstantString::create("and eax, 15\n")
+							ConstantString::create("subss xmm0, dword ptr [ebx]\n")
 						})
 						, // x64
 						ConcatString::create({
-							ConstantString::create("and rax, 15\n")
+							ConstantString::create("subss xmm0, dword ptr [rbx]\n")
 						})
 					),
 				},
@@ -119,7 +155,7 @@ void LavaAxe::registerHackables()
 		},
 	};
 
-	std::vector<HackableCode*> hackables = CREATE_HACKABLES(LavaAxe::dealDamage, codeInfoMap);
+	std::vector<HackableCode*> hackables = CREATE_HACKABLES(LavaAxe::rotateAxe, codeInfoMap);
 
 	for (HackableCode* next : hackables)
 	{
@@ -137,71 +173,45 @@ void LavaAxe::runLavaAxe(TimelineEntry* target)
 	std::vector<TimelineEvent*> timelineEvents = std::vector<TimelineEvent*>();
 	
 	Sprite* icon = Sprite::create(target->getEmblemResource());
-	Sprite* impactIcon = Sprite::create(UIResources::Menus_Icons_SpellImpactPurple);
+	Sprite* impactIcon = Sprite::create(UIResources::Menus_Icons_AxeGlowOrange);
 
 	icon->setFlippedX(true);
 	impactIcon->setPosition(icon->getContentSize().width / 2.0f, icon->getContentSize().height / 2.0f);
 	impactIcon->setScale(0.5f);
 
 	icon->addChild(impactIcon);
-
-	/*
-	this->animationNode->playAnimationAndReverseRepeat({ FXResources::LavaAxe_LavaAxe_0000, FXResources::LavaAxe_LavaAxe_0001 }, 0.05f, 0.0f, 0.05f);
-
-	timelineEvents.push_back(TimelineEvent::create(
-			target->getEntity(),
-			icon,
-			2.5f, [=]()
-		{
-			this->animationNode->playAnimation(FXResources::LavaAxe_LavaAxe_0000, 0.05f, true);
-			this->impactSound->play();
-			this->dealDamage(target);
-			int currentHealth = 0;
-			target->getEntity()->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
-			{
-				currentHealth = healthBehavior->getHealth();
-			});
-			onImpact(currentHealth - CombatObject::HackStateStorage[CombatObject::HackStorageKeyHealth].asInt());
-		})
-	);
-	CombatEvents::TriggerRegisterTimelineEventGroup(CombatEvents::RegisterTimelineEventGroupArgs(
-		TimelineEventGroup::create(timelineEvents, nullptr, target->getEntity(), [=]()
-		{
-			this->runAction(Sequence::create(
-				DelayTime::create(2.0f),
-				CallFunc::create([=]()
-				{
-					this->despawn();
-				}),
-				nullptr
-			));
-		})
-	));
-	*/
 }
 
-NO_OPTIMIZE void LavaAxe::dealDamage(TimelineEntry* target)
+NO_OPTIMIZE void LavaAxe::rotateAxe(float dt)
 {
-	static volatile int health = 0;
+	static volatile float rotation = 0;
+	static volatile float* rotationPtr = 0;
+	static volatile float rotationDelta = 0;
+	static volatile float* rotationDeltaPtr = nullptr;
 
-	target->getEntity()->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* healthBehavior)
-	{
-		health = healthBehavior->getHealth();
-	});
+	rotation = this->axe->getRotation();
+	rotationPtr = &rotation;
+	rotationDelta = 45.0f * dt;
+	rotationDeltaPtr = &rotationDelta;
 
 	ASM(push ZAX);
+	ASM(push ZBX);
 
-	ASM(MOV ZAX, 0);
-	ASM_MOV_REG_VAR(eax, health);
+	ASM_MOV_REG_VAR(ZAX, rotationPtr);
+	ASM_MOV_REG_VAR(ZBX, rotationDeltaPtr);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SHADOW_BOMB);
-	ASM(and ZAX, 15);
+	ASM(movss xmm0, dword ptr [ZAX]);
+
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_LAVA_AXE);
+	ASM(subss xmm0, dword ptr [ZBX]);
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(health, eax);
+	ASM(movss dword ptr [ZAX], xmm0);
+
+	ASM(pop ZBX);
 	ASM(pop ZAX);
 
-	CombatObject::HackStateStorage[CombatObject::HackStorageKeyHealth] = Value(health);
+	this->axe->setRotation(rotation);
 
 	HACKABLES_STOP_SEARCH();
 }

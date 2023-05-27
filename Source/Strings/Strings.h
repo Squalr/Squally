@@ -10719,7 +10719,7 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_LavaAxe_LavaAxe() = default;
 	};
 
-	class Menus_Hacking_Abilities_Abilities_LavaAxe_RegisterEax : public LocalizedString
+	class Menus_Hacking_Abilities_Abilities_LavaAxe_RegisterEbx : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -10730,8 +10730,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Hacking_Abilities_Abilities_LavaAxe_RegisterEax();
-		virtual ~Menus_Hacking_Abilities_Abilities_LavaAxe_RegisterEax() = default;
+		Menus_Hacking_Abilities_Abilities_LavaAxe_RegisterEbx();
+		virtual ~Menus_Hacking_Abilities_Abilities_LavaAxe_RegisterEbx() = default;
 	};
 
 	class Menus_Hacking_Abilities_Abilities_Regeneration_Regeneration : public LocalizedString

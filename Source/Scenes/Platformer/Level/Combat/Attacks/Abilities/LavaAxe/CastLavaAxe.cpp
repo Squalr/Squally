@@ -71,21 +71,35 @@ void CastLavaAxe::performAttack(PlatformerEntity* owner, std::vector<PlatformerE
 		this->castSound->play();
 		owner->getAnimations()->clearAnimationPriority();
 		owner->getAnimations()->playAnimation(this->getAttackAnimation());
-
-		for (PlatformerEntity* target : targets)
+		
+		ObjectEvents::QueryObject<CinematicMarker>([=](CinematicMarker* marker)
 		{
-			LavaAxe* lavaAxe = LavaAxe::create(owner, nullptr, [=](int damage)
-			{
-				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, damage, this->abilityType));
-			});
+			LavaAxe* lavaAxe = LavaAxe::create(owner, nullptr);
 
-			TimelineEntry* entry = timeline->getAssociatedEntry(target);
-			
 			ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
-				target,
+				marker,
 				lavaAxe,
 				SpawnMethod::Above,
-				PositionMode::Discard,
+				PositionMode::SetToOwner,
+				[&]()
+				{
+				},
+				[&]()
+				{
+				}
+			));
+		},
+		PlatformerAttack::TagArenaBottom,
+		[=]()
+		{
+			// TOP CENTER ARENA MARKER NOT FOUND!
+			LavaAxe* lavaAxe = LavaAxe::create(owner, nullptr);
+
+			ObjectEvents::TriggerObjectSpawn(RequestObjectSpawnArgs(
+				this,
+				lavaAxe,
+				SpawnMethod::Above,
+				PositionMode::SetToOwner,
 				[&]()
 				{
 				},
@@ -94,9 +108,9 @@ void CastLavaAxe::performAttack(PlatformerEntity* owner, std::vector<PlatformerE
 				}
 			));
 			
-			GameUtils::setWorldCoords3D(lavaAxe, GameUtils::getWorldCoords3D(target, false) + Vec3(0.0f, this->owner->getEntityTopPointRelative().y + 48.0f, 0.0f));
-			lavaAxe->runLavaAxe(entry);
-		}
+			// Fall back by spawning the arrow rain in a quasi reasonable spot.
+			lavaAxe->setPosition(lavaAxe->getPosition() + Vec2(-256.0f, 0.0f));
+		});
 	}));
 }
 
