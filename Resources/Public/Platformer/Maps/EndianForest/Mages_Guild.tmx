@@ -853,8 +853,8 @@
   </object>
   <object id="993" name="portal" type="object" x="4318" y="818" width="256" height="256">
    <properties>
-    <property name="map" value="EndianForest/Mages_Warp"/>
-    <property name="transition" value="warp-room"/>
+    <property name="map" value="Mages_Warp"/>
+    <property name="transition" value="ef"/>
    </properties>
   </object>
  </objectgroup>
@@ -905,7 +905,7 @@
   </object>
   <object id="992" name="spawn" type="object" x="4376" y="944" width="128" height="128">
    <properties>
-    <property name="transition" value="warp-room"/>
+    <property name="transition" value="ef"/>
    </properties>
   </object>
  </objectgroup>

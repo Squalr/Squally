@@ -271,8 +271,8 @@
   </object>
   <object id="819" name="portal" type="object" x="1322.3" y="1718.06" width="256" height="256">
    <properties>
-    <property name="map" value="DataMines/Mages_Warp"/>
-    <property name="transition" value="warp-room"/>
+    <property name="map" value="Mages_Warp"/>
+    <property name="transition" value="dm"/>
    </properties>
   </object>
  </objectgroup>
@@ -310,7 +310,7 @@
   </object>
   <object id="821" name="spawn" type="object" x="1386.67" y="1846.67" width="128" height="128">
    <properties>
-    <property name="transition" value="warp-room"/>
+    <property name="transition" value="dm"/>
    </properties>
   </object>
  </objectgroup>

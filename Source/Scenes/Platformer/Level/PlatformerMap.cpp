@@ -584,6 +584,11 @@ void PlatformerMap::openPauseMenu(cocos2d::Node* refocusTarget)
 	});
 }
 
+std::string& PlatformerMap::getTransition()
+{
+	return this->transition;
+}
+
 void PlatformerMap::warpSquallyToRespawn()
 {
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)

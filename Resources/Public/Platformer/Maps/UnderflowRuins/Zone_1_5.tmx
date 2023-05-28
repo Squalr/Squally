@@ -192,8 +192,8 @@
   </object>
   <object id="1097" name="portal" type="object" x="1684.12" y="1305.82" width="256" height="256">
    <properties>
-    <property name="map" value="UnderflowRuins/Mages_Warp"/>
-    <property name="transition" value="warp-room"/>
+    <property name="map" value="Mages_Warp"/>
+    <property name="transition" value="ur"/>
    </properties>
   </object>
  </objectgroup>
@@ -220,7 +220,7 @@
   </object>
   <object id="1070" name="spawn" type="object" x="1742.67" y="1433.27" width="128" height="128">
    <properties>
-    <property name="transition" value="warp-room"/>
+    <property name="transition" value="ur"/>
    </properties>
   </object>
   <object id="1072" name="spawn" type="object" x="2828" y="1434" width="128" height="128">

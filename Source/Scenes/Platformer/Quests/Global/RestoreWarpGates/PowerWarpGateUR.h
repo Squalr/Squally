@@ -27,8 +27,6 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void runCinematicSequence();
-
 	Portal* portal = nullptr;
 	Trigger* trigger = nullptr;
 	PlatformerEntity* mage = nullptr;

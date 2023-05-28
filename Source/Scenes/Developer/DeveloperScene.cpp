@@ -53,6 +53,7 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
+		mapList.push_back(this->buildDebugButton("Warp Room", MapResources::Mages_Warp));
 		mapList.push_back(this->buildDebugButton("DBG Cages", MapResources::Dev_Cages));
 		mapList.push_back(this->buildDebugButton("DBG Cutscenes", MapResources::Dev_Cracks));
 		mapList.push_back(this->buildDebugButton("DBG Cipher", MapResources::Dev_Cipher));
@@ -167,7 +168,6 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (EF)", MapResources::EndianForest_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("Boat EF => UR", MapResources::EndianForest_Ship_Main));
 		mapList.push_back(this->buildDebugButton("Docks (EF)", MapResources::EndianForest_Town_Docks));
 		mapList.push_back(this->buildDebugButton("Elbridge", MapResources::EndianForest_Town_Main));
@@ -242,7 +242,6 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (UR)", MapResources::UnderflowRuins_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("Cleopatra (UR)", MapResources::UnderflowRuins_Home_Cleopatra));
 		mapList.push_back(this->buildDebugButton("Zone_3_8 (UR) Pyramid Boss vv", MapResources::UnderflowRuins_Zone_3_8));
 		mapList.push_back(this->buildDebugButton("Zone_3_7 (UR) Pyramid -->", MapResources::UnderflowRuins_Zone_3_7));
@@ -303,7 +302,6 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (DM)", MapResources::DataMines_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("Alch (DM)", MapResources::DataMines_Town_Alch));
 		mapList.push_back(this->buildDebugButton("Inn (DM)", MapResources::DataMines_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (DM)", MapResources::DataMines_Town_Smith));
@@ -398,7 +396,6 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (CV)", MapResources::CastleValgrind_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("DARK DEBUG (CV)", MapResources::CastleValgrind_Zone_Dark_Debug));
 		mapList.push_back(this->buildDebugButton("Alch (CV)", MapResources::CastleValgrind_Town_Alch));
 		mapList.push_back(this->buildDebugButton("Inn (CV)", MapResources::CastleValgrind_Town_Inn));
@@ -473,7 +470,6 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (LC)", MapResources::LambdaCrypts_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("Alch (LC)", MapResources::LambdaCrypts_Town_Alch));
 		mapList.push_back(this->buildDebugButton("Inn (LC)", MapResources::LambdaCrypts_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (LC)", MapResources::LambdaCrypts_Town_Smith));
@@ -556,7 +552,6 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (FF)", MapResources::FirewallFissure_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("Town Main (FF)", MapResources::FirewallFissure_Town_Main));
 		mapList.push_back(this->buildDebugButton("Alch (FF)", MapResources::FirewallFissure_Town_Alch));
 		mapList.push_back(this->buildDebugButton("Inn (FF)", MapResources::FirewallFissure_Town_Inn));
@@ -589,11 +584,11 @@ DeveloperScene::DeveloperScene()
 			X DemonGhost			=>  2_X		<SkullLavaEyes,	xchg>		 	=> Inner Fire / Siphon HP tick
 			X FireElemental			=>  2_X		<FireBolts,		cmpss/comiss> 	=> Fire Rain / AoE damage
 		Surface 2?
-			X DemonArcher			=>  3_X		<CrossBow,			call/ret>			=> Arrow Volley / team compare damage
-			X DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 				=> Seeking Blade / Damage+ based on rng
-			X DemonWarrior			=>  3_X		<FlamingScroll,		setne> 				=> Melt / Damage- based on RNG
-			X FireTiger				=>  3_X		<Chains,			bswap> 				=> Entwined / Health Link
-			X [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		subss, call/ret>	=> Lava Axe / Giant axe that falls counter-clockwise, redirectable
+			X DemonArcher			=>  3_X		<CrossBow,			call/ret>	=> Arrow Volley / team compare damage
+			X DemonGrunt			=>  3_X		<DaggerGlowYellow,	sete> 		=> Seeking Blade / Damage+ based on rng
+			X DemonWarrior			=>  3_X		<FlamingScroll,		setne> 		=> Melt / Damage- based on RNG
+			X FireTiger				=>  3_X		<Chains,			bswap> 		=> Entwined / Health Link
+			X [B] Asmodeus			=> 	4_X		<AxeGlowOrange,		subss>		=> Lava Axe / Giant axe that falls counter-clockwise, redirectable
 
 		Avail for traps:
 		- Dice
@@ -638,7 +633,6 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (BP)", MapResources::BallmerPeaks_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("Alch (BP)", MapResources::BallmerPeaks_Town_Alch));
 		mapList.push_back(this->buildDebugButton("Inn (BP)", MapResources::BallmerPeaks_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (BP)", MapResources::BallmerPeaks_Town_Smith));
@@ -707,7 +701,6 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room (VS)", MapResources::VoidStar_Mages_Warp));
 		mapList.push_back(this->buildDebugButton("Alch (VS)", MapResources::VoidStar_Town_Alch));
 		mapList.push_back(this->buildDebugButton("Smith (VS)", MapResources::VoidStar_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (VS)", MapResources::VoidStar_Town_Main));

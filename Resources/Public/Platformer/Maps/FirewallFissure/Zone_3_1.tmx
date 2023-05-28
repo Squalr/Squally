@@ -658,8 +658,8 @@
   </properties>
   <object id="1012" name="portal" type="object" x="3678" y="2012.66" width="256" height="256">
    <properties>
-    <property name="map" value="FirewallFissure/Mages_Warp"/>
-    <property name="transition" value="warp-room"/>
+    <property name="map" value="Mages_Warp"/>
+    <property name="transition" value="ff"/>
    </properties>
   </object>
  </objectgroup>
@@ -711,7 +711,7 @@
   </object>
   <object id="1014" name="spawn" type="object" x="3746.55" y="2139.02" width="128" height="128">
    <properties>
-    <property name="transition" value="warp-room"/>
+    <property name="transition" value="ff"/>
    </properties>
   </object>
  </objectgroup>

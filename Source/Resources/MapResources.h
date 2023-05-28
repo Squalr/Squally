@@ -6,7 +6,6 @@
 
 namespace MapResources
 {
-	extern const std::string BallmerPeaks_Mages_Warp;
 	extern const std::string BallmerPeaks_Town_Alch;
 	extern const std::string BallmerPeaks_Town_Inn;
 	extern const std::string BallmerPeaks_Town_Main;
@@ -24,7 +23,6 @@ namespace MapResources
 	extern const std::string CastleValgrind_Combat_Castle;
 	extern const std::string CastleValgrind_Combat_CastleWood;
 	extern const std::string CastleValgrind_Combat_DarkGrass;
-	extern const std::string CastleValgrind_Mages_Warp;
 	extern const std::string CastleValgrind_Town_Alch;
 	extern const std::string CastleValgrind_Town_Inn;
 	extern const std::string CastleValgrind_Town_Inn_Upstairs;
@@ -54,7 +52,6 @@ namespace MapResources
 	extern const std::string DataMines_Home_Dawn;
 	extern const std::string DataMines_Home_Godiva;
 	extern const std::string DataMines_Home_Ralston;
-	extern const std::string DataMines_Mages_Warp;
 	extern const std::string DataMines_Town_Alch;
 	extern const std::string DataMines_Town_Inn;
 	extern const std::string DataMines_Town_Main;
@@ -112,7 +109,6 @@ namespace MapResources
 	extern const std::string EndianForest_Mages_Gauntlet_Entrance;
 	extern const std::string EndianForest_Mages_Guild;
 	extern const std::string EndianForest_Mages_Prison;
-	extern const std::string EndianForest_Mages_Warp;
 	extern const std::string EndianForest_Ship_Captain;
 	extern const std::string EndianForest_Ship_Hull;
 	extern const std::string EndianForest_Ship_Main;
@@ -153,7 +149,6 @@ namespace MapResources
 	extern const std::string EndianForest_Zone_3_7;
 	extern const std::string EndianForest_Zone_3_Dev;
 	extern const std::string FirewallFissure_Combat_Lava;
-	extern const std::string FirewallFissure_Mages_Warp;
 	extern const std::string FirewallFissure_Town_Alch;
 	extern const std::string FirewallFissure_Town_Home1;
 	extern const std::string FirewallFissure_Town_Home2;
@@ -178,7 +173,6 @@ namespace MapResources
 	extern const std::string LambdaCrypts_Combat_Crypts;
 	extern const std::string LambdaCrypts_Combat_CryptsDirt;
 	extern const std::string LambdaCrypts_Combat_Graveyard;
-	extern const std::string LambdaCrypts_Mages_Warp;
 	extern const std::string LambdaCrypts_Town_Alch;
 	extern const std::string LambdaCrypts_Town_Church;
 	extern const std::string LambdaCrypts_Town_Church_Upstairs;
@@ -200,6 +194,7 @@ namespace MapResources
 	extern const std::string LambdaCrypts_Zone_4_0_a;
 	extern const std::string LambdaCrypts_Zone_4_1;
 	extern const std::string LambdaCrypts_Zone_4_2;
+	extern const std::string Mages_Warp;
 	extern const std::string PerilousSea_Ship_Captain;
 	extern const std::string PerilousSea_Ship_Hull;
 	extern const std::string PerilousSea_Ship_Main;
@@ -221,7 +216,6 @@ namespace MapResources
 	extern const std::string UnderflowRuins_Home_Aphrodite;
 	extern const std::string UnderflowRuins_Home_Cleopatra;
 	extern const std::string UnderflowRuins_Home_Hera;
-	extern const std::string UnderflowRuins_Mages_Warp;
 	extern const std::string UnderflowRuins_Shoreline;
 	extern const std::string UnderflowRuins_Town_Alch;
 	extern const std::string UnderflowRuins_Town_Alch_Questless;
@@ -257,7 +251,6 @@ namespace MapResources
 	extern const std::string UnderflowRuins_Zone_3_7;
 	extern const std::string UnderflowRuins_Zone_3_8;
 	extern const std::string VoidStar_Combat_FinalBoss;
-	extern const std::string VoidStar_Mages_Warp;
 	extern const std::string VoidStar_Town_Alch;
 	extern const std::string VoidStar_Town_Main;
 	extern const std::string VoidStar_Town_Smith;

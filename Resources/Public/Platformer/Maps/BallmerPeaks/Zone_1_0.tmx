@@ -372,7 +372,6 @@
   <object id="1005" name="Snow/Snow8" type="decor" x="2195.5" y="2867.5" width="137" height="39"/>
   <object id="1006" name="Snow/Snow8" type="decor" x="2458.5" y="2868.5" width="137" height="39"/>
   <object id="1008" name="Snow/Tree1" type="decor" x="2443.33" y="4022.17" width="236" height="417"/>
-  <object id="1009" name="Snow/Tree1" type="decor" x="81.3333" y="2632.17" width="236" height="417"/>
   <object id="1010" name="Snow/Snow8" type="decor" x="925.5" y="2858.5" width="137" height="39"/>
   <object id="1011" name="Snow/Snow5" type="decor" x="1255.83" y="2872.5" width="126" height="45"/>
   <object id="1012" name="Snow/Snow2" type="decor" x="1079.5" y="2893.5" width="66" height="19"/>
@@ -480,8 +479,8 @@
   </object>
   <object id="1193" name="portal" type="object" x="2222" y="1790" width="256" height="256">
    <properties>
-    <property name="map" value="BallmerPeaks/Mages_Warp"/>
-    <property name="transition" value="warp-room"/>
+    <property name="map" value="Mages_Warp"/>
+    <property name="transition" value="bp"/>
    </properties>
   </object>
   <object id="1196" name="cannon" type="object" x="5964" y="844" width="128" height="128"/>
@@ -559,7 +558,7 @@
   </properties>
   <object id="922" name="spawn" type="object" x="2290.55" y="1916.36" width="128" height="128">
    <properties>
-    <property name="transition" value="warp-room"/>
+    <property name="transition" value="bp"/>
    </properties>
   </object>
   <object id="948" name="squally" type="entity" x="902.906" y="2773.81" width="128" height="128">

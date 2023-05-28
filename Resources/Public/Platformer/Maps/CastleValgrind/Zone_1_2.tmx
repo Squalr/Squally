@@ -246,8 +246,8 @@
   </properties>
   <object id="780" name="portal" type="object" x="2078.51" y="1610.58" width="450.603" height="423.038">
    <properties>
-    <property name="map" value="CastleValgrind/Mages_Warp"/>
-    <property name="transition" value="warp-room"/>
+    <property name="map" value="Mages_Warp"/>
+    <property name="transition" value="cv"/>
    </properties>
   </object>
   <object id="807" name="portal" type="object" x="4870.77" y="1651.96" width="237.527" height="375.411">
@@ -313,7 +313,7 @@
   </object>
   <object id="781" name="spawn-wood-door" type="object" x="2286.44" y="1901.56" width="128" height="128">
    <properties>
-    <property name="transition" value="warp-room"/>
+    <property name="transition" value="cv"/>
    </properties>
   </object>
   <object id="798" name="spawn" type="object" x="511.131" y="1904.78" width="128" height="128">

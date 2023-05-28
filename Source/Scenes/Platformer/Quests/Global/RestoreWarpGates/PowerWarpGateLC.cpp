@@ -2,11 +2,16 @@
 
 #include "cocos/2d/CCActionInstant.h"
 #include "cocos/2d/CCActionInterval.h"
+#include "cocos/base/CCEventCustom.h"
+#include "cocos/base/CCEventListenerCustom.h"
 
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Objects/Platformer/Switches/Trigger.h"
+#include "Scenes/Platformer/Level/PlatformerMap.h"
 
 #include "Strings/Strings.h"
 
@@ -48,26 +53,11 @@ void PowerWarpGateLC::onLoad(QuestState questState)
 		}
 	}
 
-	if (questState != QuestState::Complete)
+	PlatformerMap* map = GameUtils::GetFirstParentOfType<PlatformerMap>(this->owner);
+
+	if (map != nullptr && map->getTransition() == "lc")
 	{
-		if (this->mage != nullptr)
-		{
-			this->mage->setOpacity(0);
-
-			this->listenForMapEventOnce(PowerWarpGateLC::MapKeyQuest, [=](ValueMap)
-			{
-				this->mage->runAction(FadeTo::create(0.5f, 255));
-				this->complete();
-			});
-		}
-
-		if (this->trigger != nullptr)
-		{
-			this->listenForMapEventOnce(PowerWarpGateLC::MapKeyQuest, [=](ValueMap)
-			{
-				this->complete();
-			});
-		}
+		this->complete();
 	}
 }
 

@@ -36,6 +36,8 @@ class PlatformerMap : public MapBase
 public:
 	static PlatformerMap* create(std::string transition = "");
 	
+	std::string& getTransition();
+	
 	static const std::string TransitionRespawn;
 
 protected:
