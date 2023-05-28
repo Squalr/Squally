@@ -130,7 +130,12 @@ void Music::play(bool repeat, float startDelay)
 		{
 			this->stop();
 			super::play(repeat, startDelay);
-			SoundEvents::TriggerMusicPlayed(SoundEvents::MusicPlayedArgs(this));
+
+			// Delay a frame to ensure that music overlay is created
+			this->defer([=]()
+			{
+				SoundEvents::TriggerMusicPlayed(SoundEvents::MusicPlayedArgs(this));
+			});
 			break;
 		}
 		case sf::SoundSource::Status::Paused:
