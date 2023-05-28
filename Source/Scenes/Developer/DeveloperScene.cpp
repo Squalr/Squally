@@ -73,7 +73,6 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- Misc Minor:
-		v Pacing behavior is broken for portal maps
 		v Camera harsh leaving camera targets (which?)
 		v Necron hitbox wrong in Mages guild (inconsistent?)
 		v No interrupt if damage attack modified to heal
@@ -93,9 +92,10 @@ DeveloperScene::DeveloperScene()
 	- Game Feel / Design / Lore:
 		** Final Boss Fight
 		** Credits cutscene(?)
-		** Asmodeus boss fight
-			- Wanted poster
-			- Queen Elise text for post bomb / asmodeus maybe
+		** Missing LC warp gate
+		- Petrify warp gate preview for UR if quest is in progress
+		- FF Wanted poster should go away on Asmodeus death
+		- Queen Elise text for post bomb / Asmodeus maybe
 		- Squally
 			v worried face on intro cinematic crash
 			v Potentially mask shadow based on number of colliders hit

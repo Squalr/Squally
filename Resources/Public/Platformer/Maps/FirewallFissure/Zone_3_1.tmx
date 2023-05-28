@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="174" nextobjectid="1016">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="174" nextobjectid="1017">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -646,7 +646,8 @@
   </properties>
   <object id="1009" name="Lava/WarpTower" type="decor" x="3372.5" y="33.5" width="979" height="2249">
    <properties>
-    <property name="components" value="z-fade"/>
+    <property name="components" value="illusion,z-fade"/>
+    <property name="illusion-group" value="A"/>
    </properties>
   </object>
  </objectgroup>
@@ -658,8 +659,16 @@
   </properties>
   <object id="1012" name="portal" type="object" x="3678" y="2012.66" width="256" height="256">
    <properties>
+    <property name="components" value="illusion"/>
+    <property name="illusion-group" value="A"/>
     <property name="map" value="Mages_Warp"/>
     <property name="transition" value="ff"/>
+   </properties>
+  </object>
+  <object id="1016" name="magic-wall" type="object" x="3476.45" y="1481.5" width="679.102" height="781">
+   <properties>
+    <property name="components" value="dispel-illusion"/>
+    <property name="illusion-group" value="A"/>
    </properties>
   </object>
  </objectgroup>

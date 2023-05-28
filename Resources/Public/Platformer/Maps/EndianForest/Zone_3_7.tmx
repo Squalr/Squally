@@ -34,7 +34,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="69" name="decor -14" visible="0">
+ <objectgroup id="69" name="decor -14">
   <properties>
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
@@ -59,7 +59,7 @@
    <polygon points="-564.707,-2723.26 -419.141,-1979.27 334.93,-1709.84 1060.54,-1976.28 1187.07,-2731.7"/>
   </object>
  </objectgroup>
- <objectgroup id="72" name="decor -12" visible="0">
+ <objectgroup id="72" name="decor -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
@@ -115,7 +115,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="16" name="trees-mid" visible="0">
+ <objectgroup id="16" name="trees-mid">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
@@ -186,7 +186,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="73" name="decor -6" visible="0">
+ <objectgroup id="73" name="decor -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -271,7 +271,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="68" name="decor bg" visible="0">
+ <objectgroup id="68" name="decor bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -340,7 +340,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -433,7 +433,7 @@
    <property name="weather" value="rain"/>
   </properties>
  </objectgroup>
- <objectgroup id="32" name="decor +4" visible="0">
+ <objectgroup id="32" name="decor +4">
   <properties>
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>

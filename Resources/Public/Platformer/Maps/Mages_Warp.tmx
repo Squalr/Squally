@@ -584,7 +584,7 @@
     <property name="map" value="CastleValgrind/Zone_1_2"/>
     <property name="quest" value="power-warp-gate-cv"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="warp-room"/>
+    <property name="transition" value="cv"/>
    </properties>
   </object>
   <object id="1022" name="portal" type="object" x="1736" y="794" width="256" height="256">
@@ -637,7 +637,7 @@
   </object>
   <object id="1028" name="portal" type="object" x="4968.33" y="804.333" width="256" height="256">
    <properties>
-    <property name="map" value="VoidStar/Zone_1_3"/>
+    <property name="map" value="VoidStar/Town_Main"/>
     <property name="quest" value="power-warp-gate-vs"/>
     <property name="quest-line" value="restore-warp-gates"/>
     <property name="transition" value="vs"/>
