@@ -12,6 +12,7 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Enemies/FirewallFissure/Asmodeus.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -21,6 +22,7 @@
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -111,6 +113,8 @@ void DefeatAsmodeus::onComplete()
 	{
 		this->exitPortal->enable();
 	}
+
+	SaveManager::SaveProfileData(SaveKeys::SaveKeyCrackProgress, Value(2));
 }
 
 void DefeatAsmodeus::onSkipped()

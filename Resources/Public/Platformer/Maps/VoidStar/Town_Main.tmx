@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="79" nextobjectid="908">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="79" nextobjectid="909">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Void"/>
@@ -502,7 +502,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="2205.92" y="1915.62" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="2305.92" y="1925.62" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
@@ -530,6 +530,11 @@
   <object id="887" name="spawn" type="object" x="2624" y="1925.33" width="128" height="128">
    <properties>
     <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
+  <object id="908" name="spawn" type="object" x="2600" y="152" width="128" height="128">
+   <properties>
+    <property name="transition" value="sky-cannon"/>
    </properties>
   </object>
  </objectgroup>

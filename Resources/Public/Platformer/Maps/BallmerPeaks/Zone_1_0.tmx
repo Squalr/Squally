@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="55" height="26" tilewidth="128" tileheight="128" infinite="0" nextlayerid="96" nextobjectid="1201">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="55" height="26" tilewidth="128" tileheight="128" infinite="0" nextlayerid="96" nextobjectid="1202">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -73,6 +73,10 @@
    <polygon points="5183.19,5103.02 4402.21,4729.63 3654.41,5103.47 3386.25,6090.62 3410.56,7175.73 771.591,7191.22 673.38,5905.54 257.271,4524.09 1326.11,3249.95 1465.26,2221.25 809.05,1797.55 1372.56,1464.12 1971.82,1504.09 2853.94,1940.89 3191.3,2861.01 4447.57,3709.93 4942.49,3725.47 5375.75,3834.09 5583.44,4083.61 5713.64,4256.74 5957.01,4435.77 6310.58,4657.83 7128.74,4662.68 7126.22,5178.66"/>
   </object>
   <object id="1190" name="ice" type="terrain" x="1838.31" y="1597.48">
+   <properties>
+    <property name="components" value="illusion"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
    <polygon points="194.088,709.689 4.71975,585.077 1.58599,482.97 36.9088,366.038 1033.25,365.854 1068.4,491.473 1038.1,625.966 885.267,704.678"/>
   </object>
  </objectgroup>
@@ -96,7 +100,12 @@
     <property name="repeat-x" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="1189" name="Snow/WarpTower" type="decor" x="1889.29" y="-260.864" width="979" height="2249"/>
+  <object id="1189" name="Snow/WarpTower" type="decor" x="1889.29" y="-260.864" width="979" height="2249">
+   <properties>
+    <property name="components" value="illusion"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="80" name="objects -4">
   <properties>
@@ -199,6 +208,10 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1191" name="ice" type="terrain" x="2200.07" y="1721.48">
+   <properties>
+    <property name="components" value="illusion"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
    <polygon points="52.9519,522.05 1.28766,430.385 0.432699,355.274 10.0697,269.258 281.896,269.123 291.485,361.529 283.221,460.463 241.523,518.364"/>
   </object>
  </objectgroup>
@@ -224,6 +237,10 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1188" name="ice" type="terrain" x="2172.87" y="1693.94">
+   <properties>
+    <property name="components" value="illusion"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
    <polygon points="61.7729,628.379 1.50217,518.044 0.50478,427.635 11.7471,324.1 328.856,323.937 340.042,435.164 330.401,554.248 281.757,623.942"/>
   </object>
  </objectgroup>
@@ -479,6 +496,8 @@
   </object>
   <object id="1193" name="portal" type="object" x="2222" y="1790" width="256" height="256">
    <properties>
+    <property name="components" value="illusion"/>
+    <property name="illusion-group" value="A"/>
     <property name="map" value="Mages_Warp"/>
     <property name="transition" value="bp"/>
    </properties>
@@ -494,6 +513,12 @@
     <property name="map" value="VoidStar/Town_Main"/>
     <property name="tag" value="sky-portal"/>
     <property name="transition" value="sky-cannon"/>
+   </properties>
+  </object>
+  <object id="1201" name="magic-wall" type="object" x="2011.96" y="1267.08" width="679.102" height="781">
+   <properties>
+    <property name="components" value="dispel-illusion"/>
+    <property name="illusion-group" value="A"/>
    </properties>
   </object>
  </objectgroup>

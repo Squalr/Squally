@@ -11,6 +11,7 @@
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Quests/QuestLine.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Npcs/DataMines/PrincessDawn.h"
@@ -97,6 +98,7 @@ void RestorePower::onActivate(bool isActiveThroughSkippable, bool isInitialActiv
 
 void RestorePower::onComplete()
 {
+	SaveManager::SaveProfileData(SaveKeys::SaveKeyCrackProgress, Value(1));
 	this->powerOnComputers();
 }
 
