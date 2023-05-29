@@ -76,6 +76,39 @@ DeveloperScene::DeveloperScene()
 		** Final Boss Fight
 		** Credits cutscene(?)
 		** Missing LC warp gate
+		- Make LC final 4_x maps less bad.
+		- EF
+			- Overworld attacks (Troll / Cyclops swing)
+			- Troll Strength ability seems additive rather than absolute damage (is this a problem?)
+			- Hot potato debuff for swordsman (dec on target)
+		- UR
+			- Despawn dead gauntlet vehicles
+			- Add aura for undying that makes the effect obvious
+			- Guano warps to Squally on unpetrification, which looks like trash
+			- Reinstate water gun if we want it
+			- Show the electricity ON/OFF in Lions Cistern water visually somehow
+			- Overworld attacks
+		- DM
+			- Earth golem cast anim kinda shit
+			- Earth elem cast anim shit
+			- Double check green light defaults on DM xor puzzle
+			- Boat combat map for Krampus fight
+			- Rhinoman hovers off platform when dead in fight
+			- Train SFX
+			- Terrain in tent map has wrong corner connectors
+			- Nature spellbook, even if just for an ability? What ability?
+		* BP
+			- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
+			- ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
+			- ** 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
+			- ** 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
+			- ** Needs hexus battles
+			- ** Tune hexus battle special cards
+			- ** Needs animals
+			- ** Needs enemy scripting according to notes on which instructions this zone covers
+			- * Needs enemy scripting according to notes on which instructions this zone covers
+		- VS
+			- * Quest granting money and health manip (?)
 		- Squally
 			v worried face on intro cinematic crash
 			v Potentially mask shadow based on number of colliders hit
@@ -106,6 +139,8 @@ DeveloperScene::DeveloperScene()
 		- Enemy anims for getting hit
 		- Enemy anims for combat begin (temporarily pausing timeline)
 		- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
+			- Tiki anims still broken (bad Spriter implementation strikes again)
+			- Train anims broken (for same reason)
 		- Good desert music (The Letter sucked)
 		- https://michelemclaughlin.com/pages/contact (Preserverence)
 		- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
@@ -215,11 +250,6 @@ DeveloperScene::DeveloperScene()
 		// D				EF	2_6
 		// E				EF	3_0
 		// F				EF	3_1
-
-		// TODO:
-		// Overworld attacks (Troll / Cyclops swing)
-		// Troll Strength ability seems additive rather than absolute damage
-		// Hot potato debuff for swordsman (dec on target)
 	}
 
 	// CHAPTER 2 - Compare/CMOV/Neg/SHL/SHR + OR Puzzle
@@ -271,14 +301,6 @@ DeveloperScene::DeveloperScene()
 		// - E	=> 3_3 (Mummy Warrior)
 		// - F	=> 3_6 (Anubis Pup)
 
-		// ================== TODO ================== 
-		// Despawn dead gauntlet vehicles
-		// Add aura for undying that makes the effect obvious
-		// Guano warps to Squally on unpetrification, which looks like trash
-		// Reinstate water gun if we want it
-		// Show the electricity ON/OFF in Lions Cistern water visually somehow
-		// Overworld attacks
-
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 	}
 
@@ -318,19 +340,6 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_2 (DM)", MapResources::DataMines_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (DM)", MapResources::DataMines_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
-
-		// ================== TODO ==================
-		// Maybe hint to use 'or' on shadow bomb
-		// Earth golem cast anim kinda shit
-		// Earth elem cast anim shit
-		// Double check green light defaults on DM xor puzzle
-		// Boat combat map for Krampus fight
-		// Rhinoman hovers off platform when dead in fight
-		// Train SFX
-		// Terrain in tent map has wrong corner connectors
-		// Tiki anims still broken (bad Spriter implementation strikes again)
-		// Train anims broken (for same reason)
-		// Nature spellbook, even if just for an ability? What ability?
 
 		// Hexus puzzles:
 		// - A	=> 1_x (Tiki)
@@ -477,9 +486,6 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// Traps: floating bombs, guillotine, spiked pendulum, spiked rotators
-		// * Make final 4_x maps less bad. Exit door should be placed more reasonably. Maybe gated behind boss kill.
-		// * Mage tower? Portal map?
-		// * Perceptron is on the map with DM door just sitting there. Remove him? Or despawn him properly if there is an encounter.
 
 		/*
 		X Assassin				=>  1_x <ThrowingStar,		fiadd> 		=> Focus / add to damage
@@ -636,14 +642,6 @@ DeveloperScene::DeveloperScene()
 
 		// ================== TODO ================== 
 		// Traps: Icicle, bear trap (?), { cannon or catapult or portal } (to VS)
-		// Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
-		// ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
-		// ** 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
-		// ** 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
-		// ** Needs hexus battles
-		// ** Tune hexus battle special cards
-		// ** Needs animals
-		// ** Needs enemy scripting according to notes on which instructions this zone covers
 
 		/*
 		ASM Reference (General instructions) https://docs.oracle.com/cd/E26502_01/html/E28388/ennbz.html#eoizv
@@ -691,11 +689,6 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Smith (VS)", MapResources::VoidStar_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (VS)", MapResources::VoidStar_Town_Main));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (VS)", MapResources::VoidStar_Zone_1_0));
-
-		// ================== TODO ================== 
-		// * Needs enemy scripting according to notes on which instructions this zone covers
-		// * Quest granting money and health manip
-		// 		* Potentially no mage tower? Final boss room is a portal room (maybe with bigger windows to see other worlds?)
 		// Traps: Laser
 
 		/*

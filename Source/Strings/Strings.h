@@ -10959,6 +10959,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_ShadowBolt_ApplySpeed_StopShadowBolt() = default;
 	};
 
+	class Menus_Hacking_Abilities_Abilities_ShadowBomb_CommentHint : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_ShadowBomb_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Abilities_ShadowBomb_CommentHint() = default;
+	};
+
 	class Menus_Hacking_Abilities_Abilities_ShadowBomb_RegisterEax : public LocalizedString
 	{
 	public:

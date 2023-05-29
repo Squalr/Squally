@@ -106,11 +106,13 @@ void ShadowBomb::registerHackables()
 						Strings::Menus_Hacking_CodeEditor_OriginalCode::create(),
 						// x86
 						ConcatString::create({
-							ConstantString::create("and eax, 15\n")
+							ConstantString::create("and eax, 15\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ShadowBomb_CommentHint::create())
 						})
 						, // x64
 						ConcatString::create({
-							ConstantString::create("and rax, 15\n")
+							ConstantString::create("and rax, 15\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_ShadowBomb_CommentHint::create())
 						})
 					),
 				},
