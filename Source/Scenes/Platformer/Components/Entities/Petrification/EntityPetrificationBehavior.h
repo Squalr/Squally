@@ -50,4 +50,5 @@ private:
 
 	static const std::string SaveKeyCured;
 	static const std::string TagExit;
+	static const std::string PropertyUseSaveKey;
 };

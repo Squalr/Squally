@@ -37989,21 +37989,6 @@ namespace Strings
 		virtual ~Platformer_Quests_VoidStar_PerceptronFight_D_Reality() = default;
 	};
 
-	class Platformer_Quests_WarpGates_WarpGateDiscovered : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_WarpGates_WarpGateDiscovered();
-		virtual ~Platformer_Quests_WarpGates_WarpGateDiscovered() = default;
-	};
-
 	class Platformer_Quests_WarpGates_WarpGateIntro : public LocalizedString
 	{
 	public:

@@ -17,6 +17,8 @@ public:
 	static const std::string SaveKeyCuredCount;
 	static const std::string SaveKeyAjaxCured;
 	static const std::string SaveKeyGriffinCured;
+	static const std::string SaveKeyThorCured;
+	static const std::string SaveKeyAthenaCured;
 	static const int MaxCuredCount;
 
 protected:

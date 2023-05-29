@@ -72,28 +72,10 @@ DeveloperScene::DeveloperScene()
 	}
 
 	/*
-	- Misc Minor:
-		v Camera harsh leaving camera targets (which?)
-		v Necron hitbox wrong in Mages guild (inconsistent?)
-		v No interrupt if damage attack modified to heal
-		v Seagulls should blink
-
-	- Localization / Scripting
-		- Text navigation is pretty bad in long scripts.
-		- Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
-		- Multi-line comments in scripts can cause line counter to become disrupted
-		- Long scripts can fail to show blinking cursor sometimes (??)
-		- Should really expand scripting text editor
-			- Support click-to-place cursor
-		- User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
-		v If ever re-instating Arabic, Ctrl+F all "ar": "! and "ar": ". strings to find places where punctuation was messed up and fix them
-		v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
-
-	- Game Feel / Design / Lore:
+	- General:
 		** Final Boss Fight
 		** Credits cutscene(?)
 		** Missing LC warp gate
-		- Petrify warp gate preview for UR if quest is in progress
 		- FF Wanted poster should go away on Asmodeus death
 		- Queen Elise text for post bomb / Asmodeus maybe
 		- Squally
@@ -113,24 +95,39 @@ DeveloperScene::DeveloperScene()
 			- Frost
 			- Fire (Possibly use to dispel firewall)
 			- VS special book
-		- Helpers
-			- Abilities unlocked at certain levels
-			- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
-	
-	- Music
-		- Good desert music (The Letter sucked)
-		- https://michelemclaughlin.com/pages/contact (Preserverence)
-		- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
-
-	- Level Design:
-		- ? Mages guild accessible from all maps, but use the return portal. This incentivizes other travel (sky masters, boats)
-			- ? Destroy all warp maps as a result (?) can still keep the zone portals for the return location
 		- ? What to do with these now?
 			- Sky masters
 				- Find Finch to get to BP
 				- Find Irmik to get to BP peaks
 			- Kill 2nd sky tower map?
-
+			- Mages from old warp gate maps
+		- Helpers
+			- Abilities unlocked at certain levels
+			- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
+		- Enemy anims for getting hit
+		- Enemy anims for combat begin (temporarily pausing timeline)
+		- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
+		- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
+		- Crash reports probably are broken?
+		- Good desert music (The Letter sucked)
+		- https://michelemclaughlin.com/pages/contact (Preserverence)
+		- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
+		v Camera harsh leaving camera targets (which?)
+		v Necron hitbox wrong in Mages guild (inconsistent?)
+		v No interrupt if damage attack modified to heal
+		v Seagulls should blink
+	
+	- Localization / Scripting
+		- Text navigation is pretty bad in long scripts.
+		- Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
+		- Multi-line comments in scripts can cause line counter to become disrupted
+		- Long scripts can fail to show blinking cursor sometimes (??)
+		- Should really expand scripting text editor
+			- Support click-to-place cursor
+		- User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
+		v If ever re-instating Arabic, Ctrl+F all "ar": "! and "ar": ". strings to find places where punctuation was messed up and fix them
+		v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
+	
 	- Mini-Games:
 		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 		- A few 3Q Perspective maps
@@ -150,15 +147,6 @@ DeveloperScene::DeveloperScene()
 			- Leave button stuck visible after losing a puzzle
 				- Enemy should pre-calc the best play when player has passed (hard)
 			- Maybe hard code some rewards. It'd be nice to get SHL from the puzzle where you learn it.
-	
-	- Performance / Stability / Code quality:
-		- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
-		- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
-		- Crash reports probably are broken?
-	
-	- Polish!
-		- Enemy anims for getting hit
-		- Enemy anims for combat begin (temporarily pausing timeline)
 	*/
 
 	// CHAPTER 1 - Mov/add/sub/inc/dec/div/mul + AND Puzzle

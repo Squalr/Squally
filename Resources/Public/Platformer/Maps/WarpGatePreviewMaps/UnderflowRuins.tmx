@@ -96,8 +96,9 @@
   </properties>
   <object id="1061" name="athena" type="entity" x="283" y="572" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing"/>
+    <property name="components" value="petrified,friendly,pacing"/>
     <property name="flip-x" type="bool" value="true"/>
+    <property name="petrification-use-save-key" type="bool" value="true"/>
     <property name="travel-distance" type="float" value="64"/>
    </properties>
   </object>
@@ -169,7 +170,8 @@
   </properties>
   <object id="1006" name="thor" type="entity" x="119.94" y="602.67" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing"/>
+    <property name="components" value="petrified,friendly,pacing"/>
+    <property name="petrification-use-save-key" type="bool" value="true"/>
     <property name="travel-distance" type="float" value="64"/>
    </properties>
   </object>
