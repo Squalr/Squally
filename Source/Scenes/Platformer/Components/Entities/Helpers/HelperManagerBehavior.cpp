@@ -169,8 +169,14 @@ void HelperManagerBehavior::spawnHelper(std::string helperName, bool notify)
 	this->platformerEntityDeserializer->deserialize(&args);
 
 	this->entity->clearState(StateKeys::NotifyNewHelper);
-	this->entity->clearState(StateKeys::NewHelperSpawnX);
-	this->entity->clearState(StateKeys::NewHelperSpawnY);
+
+	// Hacky, but this keeps some state around to ensure that the new helper does not warp to Squally instantly when not desired
+	// Specific use case is Guano becoming unpetrified
+	this->defer([=]()
+	{
+		this->entity->clearState(StateKeys::NewHelperSpawnX);
+		this->entity->clearState(StateKeys::NewHelperSpawnY);
+	}, 2);
 }
 
 void HelperManagerBehavior::onDisable()

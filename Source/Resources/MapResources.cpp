@@ -225,6 +225,7 @@ const std::string MapResources::UnderflowRuins_Town_Main = "Public/Platformer/Ma
 const std::string MapResources::UnderflowRuins_Town_Smith = "Public/Platformer/Maps/UnderflowRuins/Town_Smith.tmx";
 const std::string MapResources::UnderflowRuins_Town_Smith_Questless = "Public/Platformer/Maps/UnderflowRuins/Town_Smith_Questless.tmx";
 const std::string MapResources::UnderflowRuins_Town_Well = "Public/Platformer/Maps/UnderflowRuins/Town_Well.tmx";
+const std::string MapResources::UnderflowRuins_Town_Well_Dev = "Public/Platformer/Maps/UnderflowRuins/Town_Well_Dev.tmx";
 const std::string MapResources::UnderflowRuins_Zone_1_0 = "Public/Platformer/Maps/UnderflowRuins/Zone_1_0.tmx";
 const std::string MapResources::UnderflowRuins_Zone_1_1 = "Public/Platformer/Maps/UnderflowRuins/Zone_1_1.tmx";
 const std::string MapResources::UnderflowRuins_Zone_1_2 = "Public/Platformer/Maps/UnderflowRuins/Zone_1_2.tmx";

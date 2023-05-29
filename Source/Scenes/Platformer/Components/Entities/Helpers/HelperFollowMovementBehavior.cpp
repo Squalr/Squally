@@ -102,7 +102,10 @@ void HelperFollowMovementBehavior::onLoad()
 
 	this->defer([=]()
 	{
-		this->warpToSqually();
+		if (this->squally != nullptr && !this->squally->hasRuntimeState(StateKeys::NewHelperSpawnX) && !this->squally->hasRuntimeState(StateKeys::NewHelperSpawnY))
+		{
+			this->warpToSqually();
+		}
 	});
 }
 

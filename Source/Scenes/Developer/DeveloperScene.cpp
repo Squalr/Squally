@@ -83,7 +83,6 @@ DeveloperScene::DeveloperScene()
 			- Hot potato debuff for swordsman (dec on target)
 		- UR
 			- Add aura for undying that makes the effect obvious
-			- Guano warps to Squally on unpetrification, which looks like trash
 			- Reinstate water gun if we want it
 			- Show the electricity ON/OFF in Lions Cistern water visually somehow
 			- Overworld attacks
@@ -275,6 +274,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_2_2 (UR) Pass", MapResources::UnderflowRuins_Zone_2_2));
 		mapList.push_back(this->buildDebugButton("Zone_2_1 (UR) Puzzle", MapResources::UnderflowRuins_Zone_2_1));
 		mapList.push_back(this->buildDebugButton("Zone_2_0 (UR) Entrance", MapResources::UnderflowRuins_Zone_2_0));
+		mapList.push_back(this->buildDebugButton("Well (UR) DEV", MapResources::UnderflowRuins_Town_Well_Dev));
 		mapList.push_back(this->buildDebugButton("Well (UR)", MapResources::UnderflowRuins_Town_Well));
 		mapList.push_back(this->buildDebugButton("Hera (UR)", MapResources::UnderflowRuins_Home_Hera));
 		mapList.push_back(this->buildDebugButton("Smith (UR)", MapResources::UnderflowRuins_Town_Smith));

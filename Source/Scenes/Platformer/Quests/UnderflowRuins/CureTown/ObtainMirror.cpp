@@ -102,9 +102,8 @@ void ObtainMirror::onSkipped()
 void ObtainMirror::runCinematicSequencePt1()
 {
 	// IMPORTANT: Add a redundant save now to prevent a timing issue where the user pauses and quits in the middle of this cinematic.
-	SaveManager::SaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
-
 	Objectives::SetCurrentObjective(ObjectiveKeys::URCureTownspeople);
+	SaveManager::SaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 	
 	if (this->inventory == nullptr)
 	{
