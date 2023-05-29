@@ -88,7 +88,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="833" name="Void/VoidDoor" type="decor" x="2793.08" y="722.903" width="1077" height="1064"/>
-  <object id="901" name="Castle/WarpTower" type="decor" x="541.833" y="-731.167" width="979" height="2249">
+  <object id="901" name="Void/WarpTower" type="decor" x="541.833" y="-731.167" width="979" height="2249">
    <properties>
     <property name="components" value="illusion"/>
     <property name="illusion-group" value="A"/>

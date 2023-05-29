@@ -51,7 +51,7 @@
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1069" name="Castle/WarpTower" type="decor" x="449.894" y="-415.409" width="979" height="2249"/>
+  <object id="1069" name="Crypts/WarpTower" type="decor" x="449.894" y="-415.409" width="979" height="2249"/>
  </objectgroup>
  <objectgroup id="71" name="terrain -13">
   <properties>
