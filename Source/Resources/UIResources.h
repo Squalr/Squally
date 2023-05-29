@@ -131,6 +131,7 @@ namespace UIResources
 	extern const std::string Menus_CraftingMenu_Anvil;
 	extern const std::string Menus_CraftingMenu_AnvilIcon;
 	extern const std::string Menus_CraftingMenu_AxeIcon;
+	extern const std::string Menus_CraftingMenu_BombIcon;
 	extern const std::string Menus_CraftingMenu_BowIcon;
 	extern const std::string Menus_CraftingMenu_CancelIcon;
 	extern const std::string Menus_CraftingMenu_CraftBarFill;

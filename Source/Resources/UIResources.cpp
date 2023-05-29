@@ -130,6 +130,7 @@ const std::string UIResources::Menus_CraftingMenu_AllIcon = "Private/UI/Menus/Cr
 const std::string UIResources::Menus_CraftingMenu_Anvil = "Private/UI/Menus/CraftingMenu/Anvil.png";
 const std::string UIResources::Menus_CraftingMenu_AnvilIcon = "Private/UI/Menus/CraftingMenu/AnvilIcon.png";
 const std::string UIResources::Menus_CraftingMenu_AxeIcon = "Private/UI/Menus/CraftingMenu/AxeIcon.png";
+const std::string UIResources::Menus_CraftingMenu_BombIcon = "Private/UI/Menus/CraftingMenu/BombIcon.png";
 const std::string UIResources::Menus_CraftingMenu_BowIcon = "Private/UI/Menus/CraftingMenu/BowIcon.png";
 const std::string UIResources::Menus_CraftingMenu_CancelIcon = "Private/UI/Menus/CraftingMenu/CancelIcon.png";
 const std::string UIResources::Menus_CraftingMenu_CraftBarFill = "Private/UI/Menus/CraftingMenu/CraftBarFill.png";

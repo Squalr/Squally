@@ -73,16 +73,12 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- General:
-		** Final Boss Fight
-		** Credits cutscene(?)
-		- Make LC final 4_x maps less bad.
 		- EF
 			- Many cast anims suck, since they were the some of the first anims ever made
 			- Troll Strength ability seems additive rather than absolute damage (is this a problem?)
 			- Hot potato debuff for swordsman (dec on target)
 		- UR
 			- Add aura for undying that makes the effect obvious
-			- Reinstate water gun if we want it
 			- Show the electricity ON/OFF in Lions Cistern water visually somehow
 		- DM
 			- Earth golem /elem cast anim kinda shit
@@ -91,6 +87,10 @@ DeveloperScene::DeveloperScene()
 			- Train SFX
 			- Terrain in tent map has wrong corner connectors
 			- Nature spellbook, even if just for an ability? What ability?
+		- LC
+			- Make LC final 4_x maps less bad.
+		- FF
+			- Flood should be instant post quest (it fills up on map load)
 		* BP
 			- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
 			- ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
@@ -103,17 +103,16 @@ DeveloperScene::DeveloperScene()
 			- * Needs enemy scripting according to notes on which instructions this zone covers
 		- VS
 			- * Quest granting money and health manip (?)
+			- ** Final Boss Fight + Credits (or clear ending)
 		- Squally
 			v worried face on intro cinematic crash
 			v Potentially mask shadow based on number of colliders hit
 		- SFX
 			- Add CPU noises when turned on in DM
 			- Add Train noises in DM/CV
-		- Sub-categories for alchemy lab
 		- Chapter transitions can be more special
 		- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
 		- 2nd pass on all spells
-		- FF flood should be instant post quest (it fills up on map load)
 		- Overworld attacks for many enemies
 		- Remaining spellbooks + abilities
 			- Nature (needs ability?)
@@ -121,11 +120,10 @@ DeveloperScene::DeveloperScene()
 			- Frost
 			- Fire (Possibly use to dispel firewall)
 			- VS special book
-		- ? What to do with these now?
-			- Sky masters
+		- Missing NPCs
+			- Sky masters (deprecated? Kill 2nd sky tower map?)
 				- Find Finch to get to BP
 				- Find Irmik to get to BP peaks
-			- Kill 2nd sky tower map?
 			- Mages from old warp gate maps
 		- Helpers
 			- Abilities unlocked at certain levels
@@ -135,9 +133,10 @@ DeveloperScene::DeveloperScene()
 		- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
 			- Tiki anims still broken (bad Spriter implementation strikes again)
 			- Train anims broken (for same reason)
-		- Good desert music (The Letter sucked)
-		- https://michelemclaughlin.com/pages/contact (Preserverence)
-		- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
+		- Music
+			- Good desert music (The Letter sucked)
+			- https://michelemclaughlin.com/pages/contact (Preserverence)
+			- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
 		v Camera harsh leaving camera targets (which?)
 		v Necron hitbox wrong in Mages guild (inconsistent?)
 		v No interrupt if damage attack modified to heal
@@ -287,6 +286,9 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Aphrodite (UR)", MapResources::UnderflowRuins_Home_Aphrodite));
 		mapList.push_back(this->buildDebugButton("Shoreline (UR)", MapResources::UnderflowRuins_Shoreline));
 		mapList.push_back(this->buildDebugButton("Docks (UR)", MapResources::UnderflowRuins_Town_Docks));
+
+		// Traps:
+		// - Reinstate water gun if we want it
 
 		// Hexus Puzzles:
 		// - A	=> 1_0 (Lioness)

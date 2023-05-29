@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scenes/Platformer/Inventory/Items/Recipes/Transmutes/TransmuteRecipe.h"
+#include "Scenes/Platformer/Inventory/Items/Recipes/Bombs/BombRecipe.h"
 
-class HeliumBombRecipe : public TransmuteRecipe
+class HeliumBombRecipe : public BombRecipe
 {
 public:
 	static HeliumBombRecipe* create();
@@ -23,5 +23,5 @@ protected:
 	std::vector<std::tuple<Item*, int>> getReagentsInternal() override;
 
 private:
-	typedef TransmuteRecipe super;
+	typedef BombRecipe super;
 };
