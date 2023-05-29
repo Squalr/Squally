@@ -445,7 +445,11 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1130" name="Lava/Poster1" type="decor" x="4969.32" y="2372.45" width="99" height="118"/>
+  <object id="1130" name="Lava/Poster1" type="decor" x="4969.32" y="2372.45" width="99" height="118">
+   <properties>
+    <property name="tag" value="wanted-poster"/>
+   </properties>
+  </object>
   <object id="1131" name="Lava/PosterEmpty1" type="decor" x="4816.33" y="2377.33" width="99" height="118"/>
  </objectgroup>
  <objectgroup id="23" name="objects">
@@ -511,11 +515,11 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="883" name="queen-elise" type="entity" x="6087.62" y="2423.03" width="128" height="128">
+  <object id="883" name="queen-elise" type="entity" x="6089.62" y="2427.03" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="ff-generic"/>
-    <property name="quest" value="talk-to-queen-elise"/>
+    <property name="quest" value="talk-to-queen-elise,queen-elise-interim,wanted-poster-gone"/>
     <property name="quest-line" value="defeat-asmodeus"/>
    </properties>
   </object>

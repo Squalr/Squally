@@ -52,6 +52,7 @@ void IllusionBehavior::onLoad()
 		return;
 	}
 
+	this->object->setVisible(false);
 	this->object->setOpacity(0);
 
 	if (this->portal != nullptr)
@@ -66,6 +67,8 @@ void IllusionBehavior::onLoad()
 		if (args != nullptr && args->group == this->group)
 		{
 			this->object->saveObjectState(IllusionBehavior::SaveKeyDispelled, Value(true));
+			this->object->setOpacity(0);
+			this->object->setVisible(true);
 			this->object->runAction(FadeTo::create(0.25f, 255));
 
 			if (this->portal != nullptr)

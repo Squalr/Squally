@@ -36594,6 +36594,36 @@ namespace Strings
 		virtual ~Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_E_Acknowledged() = default;
 	};
 
+	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_M_GoodWork : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_M_GoodWork();
+		virtual ~Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_M_GoodWork() = default;
+	};
+
+	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_N_Excellent : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_N_Excellent();
+		virtual ~Platformer_Quests_FirewallFissure_DefeatAsmodeus_QueenElise_N_Excellent() = default;
+	};
+
 	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_Scaldor_A_BombReady : public LocalizedString
 	{
 	public:

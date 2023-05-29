@@ -75,15 +75,15 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="993" name="scaldor" type="entity" x="2969.88" y="1963.39" width="128" height="128">
+  <object id="993" name="scaldor" type="entity" x="3615.21" y="1952.72" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pick-pocket,pacing"/>
+    <property name="components" value="friendly,pick-pocket"/>
     <property name="pocket-pool" value="ff-generic"/>
     <property name="quest" value="deliver-bomb,lava-flood"/>
     <property name="quest-line" value="defeat-asmodeus"/>
    </properties>
   </object>
-  <object id="1015" name="magnus" type="entity" x="3150.67" y="1960" width="128" height="128">
+  <object id="1015" name="magnus" type="entity" x="2878.67" y="1962.67" width="128" height="128">
    <properties>
     <property name="components" value="friendly,ff-t6-hexus,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ff-generic"/>
@@ -97,7 +97,7 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="0.5"/>
   </properties>
-  <object id="975" name="warp" type="object" x="2209.94" y="1832.48" width="256" height="256">
+  <object id="975" name="warp" type="object" x="2269.94" y="1832.48" width="256" height="256">
    <properties>
     <property name="from" value="bridge-back-C"/>
     <property name="no-warp-camera" type="bool" value="true"/>

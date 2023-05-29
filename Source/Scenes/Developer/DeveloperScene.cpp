@@ -76,8 +76,6 @@ DeveloperScene::DeveloperScene()
 		** Final Boss Fight
 		** Credits cutscene(?)
 		** Missing LC warp gate
-		- FF Wanted poster should go away on Asmodeus death
-		- Queen Elise text for post bomb / Asmodeus maybe
 		- Squally
 			v worried face on intro cinematic crash
 			v Potentially mask shadow based on number of colliders hit
@@ -88,6 +86,7 @@ DeveloperScene::DeveloperScene()
 		- Chapter transitions can be more special
 		- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
 		- 2nd pass on all spells
+		- FF flood should be instant post quest (it fills up on map load)
 		- Overworld attacks for many enemies
 		- Remaining spellbooks + abilities
 			- Nature (needs ability?)
@@ -107,8 +106,6 @@ DeveloperScene::DeveloperScene()
 		- Enemy anims for getting hit
 		- Enemy anims for combat begin (temporarily pausing timeline)
 		- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
-		- Mystery crash / ensures when waiting on victory screen (matrix letters task func)
-		- Crash reports probably are broken?
 		- Good desert music (The Letter sucked)
 		- https://michelemclaughlin.com/pages/contact (Preserverence)
 		- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
@@ -116,6 +113,8 @@ DeveloperScene::DeveloperScene()
 		v Necron hitbox wrong in Mages guild (inconsistent?)
 		v No interrupt if damage attack modified to heal
 		v Seagulls should blink
+		v Mystery crash / ensures when waiting on victory screen (matrix letters task func)
+		v Crash reports probably are broken (switch to new SendGrid)
 	
 	- Localization / Scripting
 		- Text navigation is pretty bad in long scripts.
