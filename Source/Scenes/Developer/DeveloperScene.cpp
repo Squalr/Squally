@@ -89,8 +89,6 @@ DeveloperScene::DeveloperScene()
 			- Nature spellbook, even if just for an ability? What ability?
 		- LC
 			- Make LC final 4_x maps less bad.
-		- FF
-			- Flood should be instant post quest (it fills up on map load)
 		* BP
 			- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
 			- ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
@@ -110,8 +108,11 @@ DeveloperScene::DeveloperScene()
 		- SFX
 			- Add CPU noises when turned on in DM
 			- Add Train noises in DM/CV
+		- Crafting / Economy
+			- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
+			- Descriptions for bombs and potions
+			- Price tuning (void crystal is $$$)
 		- Chapter transitions can be more special
-		- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
 		- 2nd pass on all spells
 		- Overworld attacks for many enemies
 		- Remaining spellbooks + abilities
