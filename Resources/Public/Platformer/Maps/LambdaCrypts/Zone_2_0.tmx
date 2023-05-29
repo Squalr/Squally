@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1068">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1076">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -51,6 +51,7 @@
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1069" name="Castle/WarpTower" type="decor" x="449.894" y="-415.409" width="979" height="2249"/>
  </objectgroup>
  <objectgroup id="71" name="terrain -13">
   <properties>
@@ -76,7 +77,14 @@
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="964" name="Crypts/RailingLong" type="decor" x="-1056.55" y="1481.15" width="6935.32" height="307">
+  <object id="964" name="Crypts/RailingLong" type="decor" x="1307.09" y="1481.15" width="4571.68" height="307">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.5"/>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1070" name="Crypts/RailingLong" type="decor" x="-1092.91" y="1481.15" width="1627.68" height="307">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.5"/>
@@ -245,7 +253,7 @@
   </object>
   <object id="946" name="Crypts/Grave1" type="decor" x="2019.62" y="1594.5" width="132" height="248"/>
   <object id="948" name="Crypts/Grave15" type="decor" x="2280.76" y="1662.35" width="158" height="181"/>
-  <object id="974" name="Crypts/Grave11" type="decor" x="977.918" y="1602.95" width="248" height="239"/>
+  <object id="974" name="Crypts/Grave11" type="decor" x="428.585" y="1604.28" width="248" height="239"/>
   <object id="990" name="Crypts/Statue6" type="decor" x="6305.32" y="1311.62" width="329" height="513">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
@@ -417,7 +425,7 @@
     <property name="fade-multiplier" type="float" value="0.5"/>
    </properties>
   </object>
-  <object id="910" name="Crypts/Grave7" type="decor" x="661.682" y="1592.46" width="529" height="289">
+  <object id="910" name="Crypts/Grave7" type="decor" x="4.34867" y="1593.79" width="529" height="289">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.5"/>
@@ -515,7 +523,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="848" name="Forest/Tree2" type="decor" x="7171.83" y="1367.47" width="679" height="712"/>
-  <object id="866" name="Crypts/Statue3" type="decor" x="594.811" y="1139.21" width="364" height="781">
+  <object id="866" name="Crypts/Statue3" type="decor" x="16.0231" y="1139.21" width="364" height="781">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.5"/>
@@ -533,7 +541,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="992" name="solid" type="collision" x="6625.1" y="-12.7939" width="171.617" height="1932.84"/>
-  <object id="993" name="solid" type="collision" x="788.125" y="-2.314" width="171.617" height="1932.84"/>
+  <object id="993" name="solid" type="collision" x="209.337" y="-2.314" width="171.617" height="1932.84"/>
   <object id="1029" name="portal" type="object" x="2731.98" y="1543.38" width="237.527" height="375.411">
    <properties>
     <property name="components" value="locked-portal"/>
@@ -542,7 +550,7 @@
     <property name="transition" value="greater-crypt"/>
    </properties>
   </object>
-  <object id="1058" name="hexus-shrine" type="object" x="1326.65" y="1659.09" width="155" height="260">
+  <object id="1058" name="hexus-shrine" type="object" x="1517.98" y="1658.09" width="155" height="260">
    <properties>
     <property name="entity-tag" value="hexus-zombie"/>
    </properties>
@@ -551,6 +559,12 @@
    <properties>
     <property name="components" value="friendly,disarmed,lc-puzzle-B"/>
     <property name="tag" value="hexus-zombie"/>
+   </properties>
+  </object>
+  <object id="1071" name="portal" type="object" x="735.426" y="1626.91" width="256" height="256">
+   <properties>
+    <property name="map" value="Mages_Warp"/>
+    <property name="transition" value="lc"/>
    </properties>
   </object>
  </objectgroup>
@@ -597,13 +611,25 @@
     <property name="transition" value="greater-crypt"/>
    </properties>
   </object>
+  <object id="1072" name="spawn" type="object" x="793.333" y="1753.33" width="128" height="128">
+   <properties>
+    <property name="transition" value="lc"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="88" name="decor -6 fg" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="877" name="Crypts/RailingLong" type="decor" x="-1052.97" y="1611.45" width="3168.68" height="307">
+  <object id="877" name="Crypts/RailingLong" type="decor" x="1101.03" y="1611.45" width="1014.68" height="307">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.5"/>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1073" name="Crypts/RailingLong" type="decor" x="-1068.97" y="1611.45" width="1746.68" height="307">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.5"/>
@@ -636,7 +662,19 @@
     <property name="fade-multiplier" type="float" value="0.5"/>
    </properties>
   </object>
+  <object id="1075" name="Crypts/Post1" type="decor" x="599.95" y="1620.28" width="127" height="301">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.5"/>
+   </properties>
+  </object>
   <object id="960" name="Crypts/Post2" type="decor" x="2510.08" y="1617.64" width="127" height="310">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.5"/>
+   </properties>
+  </object>
+  <object id="1074" name="Crypts/Post2" type="decor" x="1041.08" y="1609.64" width="127" height="310">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="0.5"/>
@@ -780,7 +818,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="107" name="decor bg">
+ <objectgroup id="107" name="decor bg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -817,7 +855,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="23" name="objects">
+ <objectgroup id="23" name="objects" visible="0">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>

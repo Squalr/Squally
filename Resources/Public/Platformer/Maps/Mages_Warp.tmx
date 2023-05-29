@@ -613,7 +613,7 @@
   </object>
   <object id="1025" name="portal" type="object" x="3015.33" y="804" width="256" height="256">
    <properties>
-    <property name="map" value="LambdaCrypts/Zone_1_3"/>
+    <property name="map" value="LambdaCrypts/Zone_2_0"/>
     <property name="quest" value="power-warp-gate-lc"/>
     <property name="quest-line" value="restore-warp-gates"/>
     <property name="transition" value="lc"/>

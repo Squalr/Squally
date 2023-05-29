@@ -75,7 +75,6 @@ DeveloperScene::DeveloperScene()
 	- General:
 		** Final Boss Fight
 		** Credits cutscene(?)
-		** Missing LC warp gate
 		- Make LC final 4_x maps less bad.
 		- EF
 			- Overworld attacks (Troll / Cyclops swing)
