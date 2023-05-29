@@ -77,11 +77,11 @@ DeveloperScene::DeveloperScene()
 		** Credits cutscene(?)
 		- Make LC final 4_x maps less bad.
 		- EF
+			- Many cast anims suck, since they were the some of the first anims ever made
 			- Overworld attacks (Troll / Cyclops swing)
 			- Troll Strength ability seems additive rather than absolute damage (is this a problem?)
 			- Hot potato debuff for swordsman (dec on target)
 		- UR
-			- Despawn dead gauntlet vehicles
 			- Add aura for undying that makes the effect obvious
 			- Guano warps to Squally on unpetrification, which looks like trash
 			- Reinstate water gun if we want it
@@ -283,7 +283,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Alch (DEV) (UR)", MapResources::UnderflowRuins_Town_Alch_Questless));
 		mapList.push_back(this->buildDebugButton("Town (UR)", MapResources::UnderflowRuins_Town_Main));
 		mapList.push_back(this->buildDebugButton("Zone_1_5 (UR)", MapResources::UnderflowRuins_Zone_1_5));
-		mapList.push_back(this->buildDebugButton("Zone_1_4 (UR)", MapResources::UnderflowRuins_Zone_1_4));
+		mapList.push_back(this->buildDebugButton("Zone_1_4 (UR) Gauntlet", MapResources::UnderflowRuins_Zone_1_4));
 		mapList.push_back(this->buildDebugButton("Zone_1_3 (UR)", MapResources::UnderflowRuins_Zone_1_3));
 		mapList.push_back(this->buildDebugButton("Zone_1_2 (UR)", MapResources::UnderflowRuins_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (UR)", MapResources::UnderflowRuins_Zone_1_1));
