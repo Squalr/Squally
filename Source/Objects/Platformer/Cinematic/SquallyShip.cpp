@@ -6,6 +6,8 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Animations/AnimationPart.h"
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Camera/CameraTrackingData.h"
 #include "Engine/Camera/GameCamera.h"
@@ -198,6 +200,15 @@ void SquallyShip::runShipSequence()
 		{
 			this->lightningStrike->playAnimation(FXResources::Lightning_Lightning_0000, 0.06f);
 			this->lightningSound->play();
+			
+			AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
+			
+			// Hacky way to show worried expression
+			if (mouth != nullptr)
+			{
+				mouth->setRotation(180.0f);
+				mouth->setOffset(Vec2(-34.0f, 16.0f));
+			}
 		}),
 		DelayTime::create(0.75f),
 		CallFunc::create([=]()
@@ -230,6 +241,14 @@ void SquallyShip::onCrash()
 	if (this->hasCrashed)
 	{
 		return;
+	}
+
+	AnimationPart* mouth = this->squally->getAnimations()->getAnimationPart("mouth");
+
+	if (mouth != nullptr)
+	{
+		mouth->reattachToTimeline();
+		mouth->setOffset(Vec2::ZERO);
 	}
 
 	this->rootNode->setRotation(0.0f);

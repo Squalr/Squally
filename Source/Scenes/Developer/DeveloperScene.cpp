@@ -98,7 +98,6 @@ DeveloperScene::DeveloperScene()
 			- * Quest granting money and health manip (?)
 			- ** Final Boss Fight + Credits (or clear ending)
 		- Squally
-			v worried face on intro cinematic crash
 			v Potentially mask shadow based on number of colliders hit
 		- SFX
 			- Add CPU noises when turned on in DM
