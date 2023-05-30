@@ -76,8 +76,6 @@ DeveloperScene::DeveloperScene()
 		- UR
 			- Add aura for undying that makes the effect obvious
 			- Show the electricity ON/OFF in Lions Cistern water visually somehow
-		- DM
-			- Double check green light defaults on DM xor puzzle
 		- LC
 			- Make LC final 4_x maps less bad.
 		* BP
@@ -95,6 +93,7 @@ DeveloperScene::DeveloperScene()
 			- ** Final Boss Fight + Credits (or clear ending)
 		- Squally
 			v Potentially mask shadow based on number of colliders hit
+		- Museum (maybe in warp gate) for animals? Can kill collectable menu maybe.
 		- Crafting / Economy
 			- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
 			- Descriptions for bombs and potions
@@ -125,7 +124,7 @@ DeveloperScene::DeveloperScene()
 			- Good desert music (The Letter sucked)
 			- https://michelemclaughlin.com/pages/contact (Preserverence)
 			- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
-		v Camera harsh leaving camera targets (which?)
+		v Camera harsh leaving camera targets (see FF cinematic)
 		v No interrupt if damage attack modified to heal
 		v Seagulls should blink
 		v Mystery crash / ensures when waiting on victory screen (matrix letters task func)

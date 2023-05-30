@@ -749,7 +749,7 @@
    <properties>
     <property name="color" value="green"/>
     <property name="interactable" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="false"/>
+    <property name="is-on" type="bool" value="true"/>
     <property name="is-one-use" type="bool" value="false"/>
     <property name="save-key" value="SAVE_KEY_XOR_GREEN_1"/>
    </properties>
