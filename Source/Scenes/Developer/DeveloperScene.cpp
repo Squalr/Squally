@@ -78,9 +78,6 @@ DeveloperScene::DeveloperScene()
 			- Show the electricity ON/OFF in Lions Cistern water visually somehow
 		- DM
 			- Double check green light defaults on DM xor puzzle
-			- Boat combat map for Krampus fight
-			- Terrain in tent map has wrong corner connectors
-			- Nature spellbook, even if just for an ability? What ability?
 		- LC
 			- Make LC final 4_x maps less bad.
 		* BP
@@ -98,9 +95,6 @@ DeveloperScene::DeveloperScene()
 			- ** Final Boss Fight + Credits (or clear ending)
 		- Squally
 			v Potentially mask shadow based on number of colliders hit
-		- SFX
-			- Add CPU noises when turned on in DM
-			- Add Train noises in DM/CV
 		- Crafting / Economy
 			- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
 			- Descriptions for bombs and potions
@@ -109,7 +103,7 @@ DeveloperScene::DeveloperScene()
 		- 2nd pass on all spells
 		- Overworld attacks for many enemies
 		- Remaining spellbooks + abilities
-			- Nature (needs ability?)
+			- Nature (needs ability? [DM])
 			- Shadow
 			- Frost
 			- Fire (Possibly use to dispel firewall)

@@ -87,7 +87,7 @@
   <object id="721" name="krampus" type="entity" x="1323.63" y="1274.85" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-map" value="PerilousSea/Combat_Ship_Interior"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy"/>
     <property name="drop-pool" value="dm-generic"/>
