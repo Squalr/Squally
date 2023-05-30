@@ -8,6 +8,7 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/BasicSlash/BasicSlash.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/DoubleSlash/DoubleSlash.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/Flurry/Flurry.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Debuffs/HotPotato/CastHotPotato.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
 
 #include "Resources/UIResources.h"
@@ -51,7 +52,8 @@ void OrcSwordsmanCombatBehavior::onLoad()
 	
 	this->entity->watchForComponent<EntityAttackBehavior>([=](EntityAttackBehavior* attackBehavior)
 	{
-		attackBehavior->registerAttack(DoubleSlash::create(3, 5, 0.5f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed, 0.1f));
+		attackBehavior->registerAttack(CastHotPotato::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Guaranteed));
+		attackBehavior->registerAttack(DoubleSlash::create(3, 5, 0.5f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common, 0.1f));
 		attackBehavior->registerAttack(BasicSlash::create(3, 5, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::IfNecessary));
 		
 		// attackBehavior->registerAttack(Flurry::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));

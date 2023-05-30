@@ -14739,6 +14739,66 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Hex_RegisterEsi() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_HotPotato_CommentDrain : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_HotPotato_CommentDrain();
+		virtual ~Menus_Hacking_Abilities_Debuffs_HotPotato_CommentDrain() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_HotPotato_CommentHint : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_HotPotato_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Debuffs_HotPotato_CommentHint() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_HotPotato_HotPotato : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_HotPotato_HotPotato();
+		virtual ~Menus_Hacking_Abilities_Debuffs_HotPotato_HotPotato() = default;
+	};
+
+	class Menus_Hacking_Abilities_Debuffs_HotPotato_RegisterEsi : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_HotPotato_RegisterEsi();
+		virtual ~Menus_Hacking_Abilities_Debuffs_HotPotato_RegisterEsi() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_Leech_CommentApplyDamage : public LocalizedString
 	{
 	public:

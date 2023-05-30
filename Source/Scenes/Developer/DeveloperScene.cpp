@@ -73,9 +73,6 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- General:
-		- EF
-			- Troll Strength ability seems additive rather than absolute damage (is this a problem?)
-			- Hot potato debuff for swordsman (dec on target)
 		- UR
 			- Add aura for undying that makes the effect obvious
 			- Show the electricity ON/OFF in Lions Cistern water visually somehow
