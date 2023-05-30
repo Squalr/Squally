@@ -531,6 +531,7 @@
   <object id="1891" name="computer" type="object" x="1383.33" y="1392" width="212" height="268">
    <properties>
     <property name="components" value="repairable"/>
+    <property name="computer-sfx" type="bool" value="true"/>
     <property name="computer-type" value="console"/>
     <property name="quest" value="restore-power"/>
     <property name="quest-line" value="restore-power"/>

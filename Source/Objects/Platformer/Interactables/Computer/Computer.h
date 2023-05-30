@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class SmartAnimationNode;
+class WorldSound;
 
 class Computer : public InteractObject
 {
@@ -31,6 +32,8 @@ private:
 	typedef InteractObject super;
 
 	SmartAnimationNode* animations = nullptr;
+	WorldSound* computerSfx = nullptr;
 
 	static const std::string PropertyComputerType;
+	static const std::string PropertyComputerSfx;
 };
