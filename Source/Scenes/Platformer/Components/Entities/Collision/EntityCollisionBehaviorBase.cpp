@@ -313,7 +313,7 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
 	{
-		if (this->movementCollision->getVelocity().y  < 0.0f)
+		if (this->movementCollision->getVelocity().y  < 0.0f || this->entity->controlState == PlatformerEntity::ControlState::Swimming)
 		{
 			return CollisionResult::CollideWithPhysics;
 		}
@@ -323,7 +323,7 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 	
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
 	{
-		if (this->movementCollision->getVelocity().y  > 0.0f)
+		if (this->movementCollision->getVelocity().y  > 0.0f || this->entity->controlState == PlatformerEntity::ControlState::Swimming)
 		{
 			return CollisionResult::CollideWithPhysics;
 		}

@@ -90,15 +90,16 @@ DeveloperScene::DeveloperScene()
 		- VS
 			- * Quest granting money and health manip (?)
 			- ** Final Boss Fight + Credits (or clear ending)
+		- Overworld attacks for many enemies
+		- Enemy anims for getting hit
+		- Enemy anims for combat begin (temporarily pausing timeline)
+		- 2nd pass on all spells
 		- Museum (maybe in warp gate) for animals? Can kill collectable menu maybe.
 		- Crafting / Economy
 			- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
 			- Descriptions for bombs and potions
 			- Price tuning (void crystal is $$$)
 		- Chapter transitions can be more special
-		- 2nd pass on all spells
-		- Overworld attacks for many enemies
-		- Can basically just swim through walls
 		- Remaining spellbooks + abilities
 			- Nature (needs ability? [DM])
 			- Shadow
@@ -113,8 +114,6 @@ DeveloperScene::DeveloperScene()
 		- Helpers
 			- Abilities unlocked at certain levels
 			- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
-		- Enemy anims for getting hit
-		- Enemy anims for combat begin (temporarily pausing timeline)
 		- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
 			- Tiki anims still broken (bad Spriter implementation strikes again)
 			- Train anims broken (for same reason)

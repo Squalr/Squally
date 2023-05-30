@@ -61,6 +61,8 @@ private:
 	WorldSound* submergeSound = nullptr;
 	WorldSound* emergeSound = nullptr;
 
+	bool isSwimming = false;
+
 	static const float WaterJumpVelocity;
 	static const float SwimVerticalDrag;
 	static const float StaticFriction;
