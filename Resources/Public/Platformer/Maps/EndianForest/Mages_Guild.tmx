@@ -338,7 +338,7 @@
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="825" name="necron" type="entity" x="2880.36" y="977.28" width="128" height="128">
+  <object id="825" name="necron" type="entity" x="2889.45" y="922.735" width="128" height="128">
    <properties>
     <property name="components" value="friendly"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -796,7 +796,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="907" name="marble" type="terrain" x="3494.27" y="-98.697" width="1317.52" height="245.879">
+  <object id="907" name="marble" type="terrain" x="3494.27" y="-98.697" width="2150.85" height="245.879">
    <properties>
     <property name="flip-y" type="bool" value="true"/>
    </properties>

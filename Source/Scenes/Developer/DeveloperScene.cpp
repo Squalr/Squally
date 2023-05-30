@@ -133,7 +133,6 @@ DeveloperScene::DeveloperScene()
 			- https://michelemclaughlin.com/pages/contact (Preserverence)
 			- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
 		v Camera harsh leaving camera targets (which?)
-		v Necron hitbox wrong in Mages guild (inconsistent?)
 		v No interrupt if damage attack modified to heal
 		v Seagulls should blink
 		v Mystery crash / ensures when waiting on victory screen (matrix letters task func)
