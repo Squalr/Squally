@@ -59,9 +59,9 @@ DryGrassTerrain::DryGrassTerrain(ValueMap& properties) : super(
 		// Right
 		Vec2::ZERO,
 		// TopLeft
-		Vec2::ZERO,
+		Vec2(0.0f, -12.0f),
 		// TopRight
-		Vec2::ZERO,
+		Vec2(0.0f, -12.0f),
 		// BottomLeft
 		Vec2::ZERO,
 		// BottomRight

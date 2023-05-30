@@ -28,13 +28,13 @@ protected:
 	void onBreak() override;
 
 	cocos2d::Node* cagedContentNode = nullptr;
+	CollisionObject* cageBottom = nullptr;
+	CollisionObject* cage = nullptr;
+	CollisionObject* cageTop = nullptr;
 
 private:
 	typedef BreakableBase super;
 
 	WorldSound* breakSound = nullptr;
 	SmartAnimationSequenceNode* explosion = nullptr;
-	CollisionObject* cageBottom = nullptr;
-	CollisionObject* cage = nullptr;
-	CollisionObject* cageTop = nullptr;
 };

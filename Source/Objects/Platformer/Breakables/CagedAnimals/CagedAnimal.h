@@ -35,4 +35,7 @@ private:
 	std::string saveKey;
 
 	bool alreadyCollected = false;
+	bool isMuseumDisplay = false;
+	
+	static const std::string PropertyIsMuseumDisplay;
 };

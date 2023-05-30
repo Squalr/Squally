@@ -73,21 +73,11 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- General:
-		- LC
-			- Make LC final 4_x maps less bad.
-		* BP
-			- Vertical town (maybe two sec  tions, one inaccessible at first to spread out NPCs)
-			- ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
-			- ** 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
-			- ** 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
-			- ** Needs hexus battles
-			- ** Tune hexus battle special cards
-			- ** Needs animals
-			- ** Needs enemy scripting according to notes on which instructions this zone covers
-			- * Needs enemy scripting according to notes on which instructions this zone covers
 		- VS
 			- * Quest granting money and health manip (?)
 			- ** Final Boss Fight + Credits (or clear ending)
+		- LC
+			- Make LC final 4_x maps less bad.
 		- Overworld attacks for many enemies
 		- Enemy anims for getting hit
 		- Enemy anims for combat begin (temporarily pausing timeline)
@@ -126,6 +116,16 @@ DeveloperScene::DeveloperScene()
 		- v Crash reports probably are broken (switch to new SendGrid)
 		- v Potentially mask entity shadows based on number of colliders hit
 		- ** Fucking 5x easter eggs
+		* BP
+			- Vertical town (maybe two sec  tions, one inaccessible at first to spread out NPCs)
+			- ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
+			- ** 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
+			- ** 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
+			- ** Needs hexus battles
+			- ** Tune hexus battle special cards
+			- ** Needs animals
+			- ** Needs enemy scripting according to notes on which instructions this zone covers
+			- * Needs enemy scripting according to notes on which instructions this zone covers
 	
 	- Localization / Scripting
 		- Lexicon is largely incomplete
