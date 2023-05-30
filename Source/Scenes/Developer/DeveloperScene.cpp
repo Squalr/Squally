@@ -75,7 +75,6 @@ DeveloperScene::DeveloperScene()
 	- General:
 		- UR
 			- Add aura for undying that makes the effect obvious
-			- Show the electricity ON/OFF in Lions Cistern water visually somehow
 		- LC
 			- Make LC final 4_x maps less bad.
 		* BP
@@ -91,8 +90,6 @@ DeveloperScene::DeveloperScene()
 		- VS
 			- * Quest granting money and health manip (?)
 			- ** Final Boss Fight + Credits (or clear ending)
-		- Squally
-			v Potentially mask shadow based on number of colliders hit
 		- Museum (maybe in warp gate) for animals? Can kill collectable menu maybe.
 		- Crafting / Economy
 			- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
@@ -101,6 +98,7 @@ DeveloperScene::DeveloperScene()
 		- Chapter transitions can be more special
 		- 2nd pass on all spells
 		- Overworld attacks for many enemies
+		- Can basically just swim through walls
 		- Remaining spellbooks + abilities
 			- Nature (needs ability? [DM])
 			- Shadow
@@ -124,11 +122,13 @@ DeveloperScene::DeveloperScene()
 			- Good desert music (The Letter sucked)
 			- https://michelemclaughlin.com/pages/contact (Preserverence)
 			- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
-		v Camera harsh leaving camera targets (see FF cinematic)
-		v No interrupt if damage attack modified to heal
-		v Seagulls should blink
-		v Mystery crash / ensures when waiting on victory screen (matrix letters task func)
-		v Crash reports probably are broken (switch to new SendGrid)
+		- v Camera harsh leaving camera targets (see FF cinematic)
+		- v No interrupt if damage attack modified to heal
+		- v Seagulls should blink
+		- v Mystery crash / ensures when waiting on victory screen (matrix letters task func)
+		- v Crash reports probably are broken (switch to new SendGrid)
+		- v Potentially mask entity shadows based on number of colliders hit
+		- ** Fucking 5x easter eggs
 	
 	- Localization / Scripting
 		- Lexicon is largely incomplete

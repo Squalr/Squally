@@ -9,6 +9,7 @@ namespace cocos2d
 
 class CollisionObject;
 class SmartAnimationSequenceNode;
+class WorldSound;
 
 class ElectricityBeam : public HackableObject
 {
@@ -39,6 +40,7 @@ private:
 	CollisionObject* electricityCollision = nullptr;
 	cocos2d::Sprite* ballLeft = nullptr;
 	cocos2d::Sprite* ballRight = nullptr;
+	WorldSound* electricitySfx = nullptr;
 
 	volatile float currentElectricityBeamCountDown = 0.0f;
 	volatile float maxElectricityBeamCountDown = 1.0f;

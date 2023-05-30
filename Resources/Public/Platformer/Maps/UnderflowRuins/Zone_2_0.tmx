@@ -86,10 +86,11 @@
     <property name="transition" value="right"/>
    </properties>
   </object>
-  <object id="877" name="lever" type="object" x="1046.16" y="516.166" width="177" height="205">
+  <object id="877" name="switch" type="object" x="1182.16" y="508.166" width="35" height="56">
    <properties>
+    <property name="is-global-save" type="bool" value="false"/>
+    <property name="is-one-use" type="bool" value="false"/>
     <property name="send-event" value="power-toggle"/>
-    <property name="time" type="float" value="8"/>
    </properties>
   </object>
  </objectgroup>
@@ -115,6 +116,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.15"/>
   </properties>
   <object id="523" name="squally" type="entity" x="632.012" y="587.96" width="128" height="128">
    <properties>

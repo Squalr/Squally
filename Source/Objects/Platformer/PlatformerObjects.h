@@ -158,6 +158,7 @@
 #include "Objects/Platformer/Switches/ObjectiveTrigger.h"
 #include "Objects/Platformer/Switches/StoneButton/StoneButton.h"
 #include "Objects/Platformer/Switches/Trigger.h"
+#include "Objects/Platformer/Switches/Switch/Switch.h"
 #include "Objects/Platformer/Transportation/Airship.h"
 #include "Objects/Platformer/Transportation/Ship.h"
 #include "Objects/Platformer/Transportation/Train.h"

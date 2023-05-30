@@ -231,6 +231,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[Stalactite::MapKey] = [=](ValueMap properties) { return (GameObject*)Stalactite::create(properties); };
 	this->deserializers[StoneButton::MapKey] = [=](ValueMap properties) { return (GameObject*)StoneButton::create(properties); };
 	this->deserializers[StoneStack::MapKey] = [=](ValueMap properties) { return (GameObject*)StoneStack::create(properties); };
+	this->deserializers[Switch::MapKey] = [=](ValueMap properties) { return (GameObject*)Switch::create(properties); };
 	this->deserializers[TerrainHole::MapKey] = [=](ValueMap properties) { return (GameObject*)TerrainHole::create(properties); };
 	this->deserializers[TempleDoor::MapKey] = [=](ValueMap properties) { return (GameObject*)TempleDoor::create(properties); };
 	this->deserializers[Tent::MapKey] = [=](ValueMap properties) { return (GameObject*)Tent::create(properties); };

@@ -583,6 +583,8 @@ namespace ObjectResources
 	extern const std::string Switches_MetalButton_MetalButtonTop;
 	extern const std::string Switches_StoneButton_StoneButtonBase;
 	extern const std::string Switches_StoneButton_StoneButtonTop;
+	extern const std::string Switches_Switch_SwitchOff;
+	extern const std::string Switches_Switch_SwitchOn;
 	extern const std::string Transportation_Airship1_Animations;
 	extern const std::string Transportation_Airship1_air_sack;
 	extern const std::string Transportation_Airship1_anchor;
