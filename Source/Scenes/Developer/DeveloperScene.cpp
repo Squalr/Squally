@@ -80,6 +80,7 @@ DeveloperScene::DeveloperScene()
 			- Double check green light defaults on DM xor puzzle
 			- Boat combat map for Krampus fight
 			- Train SFX
+			- Server room SFX
 			- Terrain in tent map has wrong corner connectors
 			- Nature spellbook, even if just for an ability? What ability?
 		- LC
@@ -139,6 +140,8 @@ DeveloperScene::DeveloperScene()
 		v Crash reports probably are broken (switch to new SendGrid)
 	
 	- Localization / Scripting
+		- Lexicon is largely incomplete
+			- Fill out descriptions without samples first
 		- Text navigation is pretty bad in long scripts.
 		- Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
 		- Multi-line comments in scripts can cause line counter to become disrupted

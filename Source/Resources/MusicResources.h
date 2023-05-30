@@ -6,6 +6,7 @@
 
 namespace MusicResources
 {
+	extern const std::string Ambient_Piano;
 	extern const std::string Ambient_Birds;
 	extern const std::string Ambient_Forest;
 	extern const std::string Ambient_Nature;
@@ -16,6 +17,7 @@ namespace MusicResources
 	extern const std::string HeartBeat;
 	extern const std::string Hexus1;
 	extern const std::string Hexus2;
+	extern const std::string Lacrimosa;
 	extern const std::string LastMarch;
 	extern const std::string Little_Footsteps;
 	extern const std::string Solace;

@@ -26,7 +26,7 @@ const std::string HelperFollowMovementBehavior::MapKey = "follow-movement";
 const std::string HelperFollowMovementBehavior::MapEventMoveToRest = "helper-move-to-rest";
 const std::string HelperFollowMovementBehavior::MapEventStopRest = "helper-stop-rest";
 const float HelperFollowMovementBehavior::StopFollowRangeX = 128.0f;
-const float HelperFollowMovementBehavior::TryJumpRangeY = 160.0f;
+const float HelperFollowMovementBehavior::TryJumpRangeY = 180.0f;
 const float HelperFollowMovementBehavior::ResetRangeX = 2048.0f;
 const float HelperFollowMovementBehavior::ResetRangeY = 1024.0f;
 
@@ -149,12 +149,11 @@ void HelperFollowMovementBehavior::update(float dt)
 	
 	squally->getComponent<EntityMountBehavior>([&](EntityMountBehavior* squallyMountBehavior)
 	{
-		if (squallyMountBehavior->isMounted())
+		if (squallyMountBehavior->isMounted()
+			&& squallyMountBehavior->getMountTarget() != nullptr
+			&& !squallyMountBehavior->getMountTarget()->isTargetMounted(this->entity))
 		{
-			if (squallyMountBehavior->isMounted() && squallyMountBehavior->getMountTarget() != nullptr)
-			{
-				squallyMountBehavior->getMountTarget()->mount(this->entity);
-			}
+			squallyMountBehavior->getMountTarget()->mount(this->entity);
 		}
 	});
 

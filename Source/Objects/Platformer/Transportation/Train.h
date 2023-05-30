@@ -4,6 +4,7 @@
 
 class CollisionObject;
 class SmartAnimationNode;
+class WorldSound;
 
 enum class LocomotiveSize
 {
@@ -54,6 +55,8 @@ private:
 	CollisionObject* bottomCollision = nullptr;
 	SmartAnimationNode* locomotive = nullptr;
 	std::vector<std::tuple<SmartAnimationNode*, float>> segments;
+	WorldSound* idleSfx = nullptr;
+	WorldSound* motionSfx = nullptr;
 
 	bool isIdling = false;
 	TrainColor color;

@@ -19,6 +19,7 @@ public:
 	virtual void dismount(PlatformerEntity* entity);
 	void dismountAll();
 	bool isMounted() const;
+	bool isTargetMounted(PlatformerEntity* entity) const;
 	void setMountDirection(MountDirection mountDirection);
 	void reverse();
 	void parseDirection();

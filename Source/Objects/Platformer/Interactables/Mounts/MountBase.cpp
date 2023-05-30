@@ -166,6 +166,11 @@ bool MountBase::isMounted() const
 	return this->mountedEntities.size() > 0;
 }
 
+bool MountBase::isTargetMounted(PlatformerEntity* entity) const
+{
+	return this->mountedEntities.find(entity) != this->mountedEntities.end();
+}
+
 void MountBase::setToMountPositionX()
 {
 	for (PlatformerEntity* mountedEntity : this->mountedEntities)
