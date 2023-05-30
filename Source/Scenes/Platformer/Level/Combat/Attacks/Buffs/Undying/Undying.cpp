@@ -177,6 +177,16 @@ void Undying::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* d
 
 	(*damageOrHealing->damageOrHealing) =  (damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - Buff::HackStateStorage[Undying::StateKeyUndyingNewHealth].asInt());
 	// *(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = Buff::HackStateStorage[Undying::StateKeyUndyingNewHealth].asInt();
+	
+	if ((*damageOrHealing->damageOrHealing) == 0)
+	{
+		this->spellAura->runAction(Sequence::create(
+			FadeTo::create(0.25f, 255),
+			DelayTime::create(0.5f),
+			FadeTo::create(0.25f, 0),
+			nullptr
+		));
+	}
 }
 
 void Undying::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
@@ -194,6 +204,16 @@ void Undying::onBeforeHealingTaken(CombatEvents::ModifiableDamageOrHealingArgs* 
 
 	(*damageOrHealing->damageOrHealing) =  (damageOrHealing->target->getRuntimeStateOrDefaultInt(StateKeys::Health, 0) - Buff::HackStateStorage[Undying::StateKeyUndyingNewHealth].asInt());
 	// *(int*)(GameUtils::getKeyOrDefault(Buff::HackStateStorage, Buff::StateKeyDamageOrHealingPtr, Value(nullptr)).asPointer()) = Buff::HackStateStorage[Undying::StateKeyUndyingNewHealth].asInt();
+
+	if ((*damageOrHealing->damageOrHealing) == 0)
+	{
+		this->spellAura->runAction(Sequence::create(
+			FadeTo::create(0.25f, 255),
+			DelayTime::create(0.5f),
+			FadeTo::create(0.25f, 0),
+			nullptr
+		));
+	}
 }
 
 NO_OPTIMIZE void Undying::applyUndying()

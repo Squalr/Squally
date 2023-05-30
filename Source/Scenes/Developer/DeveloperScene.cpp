@@ -73,8 +73,6 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- General:
-		- UR
-			- Add aura for undying that makes the effect obvious
 		- LC
 			- Make LC final 4_x maps less bad.
 		* BP
