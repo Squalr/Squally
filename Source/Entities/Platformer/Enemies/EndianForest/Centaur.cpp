@@ -21,8 +21,8 @@ Centaur* Centaur::deserialize(ValueMap& properties)
 
 Centaur::Centaur(ValueMap& properties) : super(properties,
 	Centaur::MapKey,
-	EntityResources::Enemies_EndianForest_Centaur_Animations,
-	EntityResources::Enemies_EndianForest_Centaur_Emblem,
+	EntityResources::Enemies__Deprecated_Centaur_Animations,
+	EntityResources::Enemies__Deprecated_Centaur_Emblem,
 	CSize(296.0f, 256.0f),
 	1.0f)
 {

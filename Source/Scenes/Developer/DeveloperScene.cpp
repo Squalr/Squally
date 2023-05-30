@@ -74,14 +74,12 @@ DeveloperScene::DeveloperScene()
 	/*
 	- General:
 		- EF
-			- Many cast anims suck, since they were the some of the first anims ever made
 			- Troll Strength ability seems additive rather than absolute damage (is this a problem?)
 			- Hot potato debuff for swordsman (dec on target)
 		- UR
 			- Add aura for undying that makes the effect obvious
 			- Show the electricity ON/OFF in Lions Cistern water visually somehow
 		- DM
-			- Earth golem /elem cast anim kinda shit
 			- Double check green light defaults on DM xor puzzle
 			- Boat combat map for Krampus fight
 			- Train SFX
@@ -90,7 +88,7 @@ DeveloperScene::DeveloperScene()
 		- LC
 			- Make LC final 4_x maps less bad.
 		* BP
-			- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
+			- Vertical town (maybe two sec  tions, one inaccessible at first to spread out NPCs)
 			- ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
 			- ** 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
 			- ** 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
