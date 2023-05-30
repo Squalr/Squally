@@ -4,6 +4,7 @@
 #include "Music/Tracks/BurdenOfTime.h"
 #include "Music/Tracks/CarnivalDream.h"
 #include "Music/Tracks/Heartbeat.h"
+#include "Music/Tracks/Lacrimosa.h"
 #include "Music/Tracks/LastMarch.h"
 #include "Music/Tracks/LittleFootsteps.h"
 #include "Music/Tracks/Medieval.h"

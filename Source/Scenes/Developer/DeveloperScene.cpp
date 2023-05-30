@@ -79,7 +79,6 @@ DeveloperScene::DeveloperScene()
 		- DM
 			- Double check green light defaults on DM xor puzzle
 			- Boat combat map for Krampus fight
-			- Train SFX
 			- Server room SFX
 			- Terrain in tent map has wrong corner connectors
 			- Nature spellbook, even if just for an ability? What ability?
