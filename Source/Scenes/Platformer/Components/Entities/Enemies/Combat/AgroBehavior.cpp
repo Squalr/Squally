@@ -128,6 +128,20 @@ void AgroBehavior::setAgroRangeY(float agroRange)
 	this->agroRangeY = agroRange;
 }
 
+bool AgroBehavior::isInMeleeRange(float meleeRange)
+{
+	Vec3 squallyPosition = GameUtils::getWorldCoords3D(this->squally);
+	Vec3 entityPosition = GameUtils::getWorldCoords3D(this->entity);
+
+	if (std::abs(squallyPosition.x - entityPosition.x) <= meleeRange &&
+		std::abs(squallyPosition.z - entityPosition.z) <= this->agroRangeZ)
+	{
+		return true;
+	}
+
+	return false;
+}
+
 void AgroBehavior::update(float dt)
 {
 	super::update(dt);

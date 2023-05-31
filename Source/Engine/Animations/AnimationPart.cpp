@@ -238,6 +238,11 @@ GLubyte AnimationPart::getOpacity() const
 	return 0;
 }
 
+CSize AnimationPart::getSpriteSize()
+{
+	return this->ghostSprite == nullptr ? CSize::ZERO : this->ghostSprite->getContentSize();
+}
+
 void AnimationPart::setVisible(bool visible)
 {
 	static const float ClearOverride = -1.0f;

@@ -913,7 +913,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="FirewallFissure/Combat_Lava"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,soul,agro"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="ff-generic"/>
    </properties>
   </object>
@@ -1249,7 +1249,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="FirewallFissure/Combat_Lava"/>
     <property name="battle-tag" value="group-c"/>
-    <property name="components" value="enemy,soul,agro"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="ff-generic"/>
    </properties>
   </object>

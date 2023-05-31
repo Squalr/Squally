@@ -25,6 +25,7 @@ public:
 	void toggleChaseOnAgro(bool chaseOnAgro);
 	void setAgroRangeX(float agroRange);
 	void setAgroRangeY(float agroRange);
+	bool isInMeleeRange(float meleeRange);
 
 	static const std::string MapKey;
 

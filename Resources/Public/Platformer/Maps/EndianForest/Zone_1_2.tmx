@@ -211,7 +211,7 @@
    <properties>
     <property name="battle-behavior" value="increment-health-tutorial,player-first-strike"/>
     <property name="battle-map" value="EndianForest/Combat_Intro"/>
-    <property name="components" value="enemy,soul,pacing,agro"/>
+    <property name="components" value="enemy,soul,pacing,agro,melee"/>
     <property name="drop-pool" value="ef-weak"/>
     <property name="send-event" value="event-door-open"/>
    </properties>

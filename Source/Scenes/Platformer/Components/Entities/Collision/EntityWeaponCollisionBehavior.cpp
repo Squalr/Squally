@@ -71,6 +71,7 @@ void EntityWeaponCollisionBehavior::disable()
 
 void EntityWeaponCollisionBehavior::setWeaponCollisionSize(CSize weaponCollisionSize)
 {
+	this->useExplicitWeaponSize = true;
 	this->weaponCollisionSize = weaponCollisionSize;
 }
 
@@ -87,6 +88,12 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType)
 	}
 	
 	AnimationPart* mainhand = this->entity->getAnimations()->getAnimationPart("mainhand");
+	CSize weaponSize = useExplicitWeaponSize ? this->weaponCollisionSize : mainhand->getSpriteSize();
+
+	if (weaponSize.width <= 0.0f || weaponSize.height <= 0.0f)
+	{
+		weaponSize = EntityWeaponCollisionBehavior::DefaultWeaponSize;
+	}
 
 	if (mainhand == nullptr)
 	{
@@ -99,7 +106,7 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType)
 	}
 
 	this->weaponCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(this->weaponCollisionSize, 8.0f),
+		CollisionObject::createCapsulePolygon(weaponSize, 8.0f),
 		(CollisionType)collisionType,
 		CollisionObject::Properties(false, false)
 	);

@@ -79,7 +79,6 @@ DeveloperScene::DeveloperScene()
 			- ** Final Boss Fight + Credits (or clear ending)
 		- LC
 			- Make LC final 4_x maps less bad.
-		- Overworld attacks for many enemies
 		- Enemy anims for getting hit
 		- Enemy anims for combat begin (temporarily pausing timeline)
 		- 2nd pass on all spells

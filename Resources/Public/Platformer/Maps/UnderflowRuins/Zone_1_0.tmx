@@ -355,7 +355,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Desert"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,soul,agro"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
@@ -573,7 +573,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="UnderflowRuins/Combat_Desert"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,soul,agro"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="ur-generic"/>
    </properties>
   </object>

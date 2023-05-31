@@ -30,6 +30,7 @@ private:
 
 	cocos2d::CSize weaponCollisionSize;
 	cocos2d::Vec2 weaponCollisionOffset;
+	bool useExplicitWeaponSize = false;
 
 	static const cocos2d::CSize DefaultWeaponSize;
 };

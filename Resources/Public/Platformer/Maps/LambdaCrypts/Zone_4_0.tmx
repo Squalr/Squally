@@ -564,7 +564,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-c"/>
-    <property name="components" value="enemy,soul,agro"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>
@@ -767,7 +767,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,soul,agro"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>
@@ -1171,7 +1171,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,soul,agro"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>
