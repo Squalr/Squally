@@ -62,7 +62,7 @@ void MeleeSwingOutOfCombatAttackBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (this->agroBehavior != nullptr && this->agroBehavior->hasAgro() && this->agroBehavior->isInMeleeRange(512.0f))
+	if (this->agroBehavior != nullptr && this->agroBehavior->hasAgro() && this->agroBehavior->isInMeleeRange(420.0f))
 	{
 		this->attack();
 	}
@@ -80,15 +80,15 @@ std::string MeleeSwingOutOfCombatAttackBehavior::getOutOfCombatAttackSound()
 
 float MeleeSwingOutOfCombatAttackBehavior::getOutOfCombatAttackOnset()
 {
-	return 0.6f;
+	return 0.25f;
 }
 
 float MeleeSwingOutOfCombatAttackBehavior::getOutOfCombatAttackSustain()
 {
-	return 1.25f;
+	return 2.25f;
 }
 
 float MeleeSwingOutOfCombatAttackBehavior::getOutOfCombatAttackCooldown()
 {
-	return 2.0f;
+	return 1.5f;
 }

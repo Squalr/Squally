@@ -101,7 +101,7 @@ void EntityWeaponCollisionBehavior::setWeaponCollisionOffset(Vec2 weaponCollisio
 	this->weaponCollisionOffset = weaponCollisionOffset;
 }
 
-void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType)
+void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType, bool buildOffhand)
 {
 	if (this->isInvalidated() || this->entity == nullptr || this->entity->getAnimations() == nullptr)
 	{
@@ -145,7 +145,7 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType)
 		mainhand->addTrackingObject(this->mainhandWeaponCollision);
 	}
 
-	if (offhand != nullptr)
+	if (offhand != nullptr && buildOffhand)
 	{
 		CSize weaponSize = useExplicitWeaponSize ? this->weaponCollisionSize : offhand->getSpriteSize();
 

@@ -56,7 +56,7 @@ void SquallyWeaponCollisionBehavior::onLoad()
 {
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventEquippedItemsChanged, [=](EventCustom*)
 	{
-		this->rebuildWeaponCollision((int)PlatformerCollisionType::PlayerWeapon);
+		this->rebuildWeaponCollision((int)PlatformerCollisionType::PlayerWeapon, false);
 	}));
 
 	this->defer([=]()
@@ -99,7 +99,7 @@ void SquallyWeaponCollisionBehavior::onWeaponChange()
 		}
 	});
 
-	this->rebuildWeaponCollision((int)PlatformerCollisionType::PlayerWeapon);
+	this->rebuildWeaponCollision((int)PlatformerCollisionType::PlayerWeapon, false);
 
 	if (this->mainhandWeaponCollision != nullptr)
 	{

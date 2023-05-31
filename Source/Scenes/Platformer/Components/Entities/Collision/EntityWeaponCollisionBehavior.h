@@ -19,7 +19,7 @@ protected:
 	void onDisable() override;
 	void setWeaponCollisionSize(cocos2d::CSize weaponCollisionSize);
 	void setWeaponCollisionOffset(cocos2d::Vec2 weaponCollisionOffset);
-	void rebuildWeaponCollision(int collisionType);
+	void rebuildWeaponCollision(int collisionType, bool buildOffhand);
 
 	CollisionObject* mainhandWeaponCollision = nullptr;
 	CollisionObject* offhandWeaponCollision = nullptr;

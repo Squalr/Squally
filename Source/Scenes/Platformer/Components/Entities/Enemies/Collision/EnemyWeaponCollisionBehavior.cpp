@@ -54,7 +54,7 @@ void EnemyWeaponCollisionBehavior::onLoad()
 	
 	this->defer([=]()
 	{
-		this->rebuildWeaponCollision((int)PlatformerCollisionType::EnemyWeapon);
+		this->rebuildWeaponCollision((int)PlatformerCollisionType::EnemyWeapon, true);
 	});
 }
 

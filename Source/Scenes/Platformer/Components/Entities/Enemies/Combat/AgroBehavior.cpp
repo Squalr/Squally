@@ -11,6 +11,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Projectiles/Projectile.h"
+#include "Scenes/Platformer/Components/Entities/Abilities/EntityOutOfCombatAttackBehavior.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/SoundResources.h"
@@ -155,6 +156,23 @@ void AgroBehavior::update(float dt)
 	if (this->initCooldown > 0.0f)
 	{
 		this->initCooldown -= dt;
+		return;
+	}
+
+	bool isAttacking = false;
+
+	this->entity->getComponent<EntityOutOfCombatAttackBehavior>([&](EntityOutOfCombatAttackBehavior* behavior)
+	{
+		if (behavior->isAttacking())
+		{
+			this->entity->clearState(StateKeys::PatrolSourceX);
+			this->entity->clearState(StateKeys::PatrolDestinationX);
+			isAttacking = true;
+		}
+	});
+
+	if (isAttacking)
+	{
 		return;
 	}
 

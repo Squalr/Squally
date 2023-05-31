@@ -15,6 +15,7 @@ class EntityOutOfCombatAttackBehavior : public GameComponent
 {
 public:
 	void attack();
+	bool isAttacking();
 	
 protected:
 	EntityOutOfCombatAttackBehavior(GameObject* owner);
@@ -53,6 +54,7 @@ private:
 	void tryPerformShootProjectile();
 
 	bool isPerformingOutOfCombatAttack = false;
+	bool isAnimatingAttack = false;
 	PlatformerEntity* entity = nullptr;
 	cocos2d::Sprite* outOfCombatAttackDebug = nullptr;
 };

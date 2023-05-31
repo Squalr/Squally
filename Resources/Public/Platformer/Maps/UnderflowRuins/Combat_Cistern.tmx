@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="37" nextobjectid="600">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="37" nextobjectid="600">
  <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
   <grid orientation="orthogonal" width="64" height="64"/>
   <image source="../TileMap.png" width="1536" height="640"/>
@@ -28,7 +28,7 @@
    <property name="type" value="objects"/>
    <property name="z-sort" type="bool" value="true"/>
   </properties>
-  <object id="554" name="combat-spawn" type="object" x="1768.67" y="1674.72" width="64" height="64">
+  <object id="554" name="combat-spawn" type="object" x="1940.67" y="1677.39" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-64"/>
     <property name="spawn-order" type="int" value="1"/>
@@ -59,29 +59,29 @@
     <property name="depth" type="float" value="-256"/>
    </properties>
   </object>
-  <object id="573" name="ruins-gray-thick" type="terrain" x="1552.36" y="1738.3" width="501.333" height="1050.67">
+  <object id="573" name="ruins-gray-thick" type="terrain" x="1470.54" y="1738.3" width="841.246" height="1050.67">
    <properties>
     <property name="depth" type="float" value="-64"/>
    </properties>
   </object>
-  <object id="574" name="ruins-gray-thick" type="terrain" x="1564.49" y="1552.18" width="501.333" height="1198.67">
+  <object id="574" name="ruins-gray-thick" type="terrain" x="1485.7" y="1552.18" width="827.115" height="1198.67">
    <properties>
     <property name="depth" type="float" value="-256"/>
    </properties>
   </object>
-  <object id="575" name="ruins-gray-thick" type="terrain" x="1906.91" y="1619.12" width="501.333" height="1225.67">
+  <object id="575" name="ruins-gray-thick" type="terrain" x="1764.49" y="1619.12" width="807.495" height="1225.67">
    <properties>
     <property name="depth" type="float" value="-128"/>
    </properties>
   </object>
-  <object id="576" name="combat-spawn" type="object" x="1778" y="1488" width="64" height="64">
+  <object id="576" name="combat-spawn" type="object" x="1950" y="1490.67" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-256"/>
     <property name="spawn-order" type="int" value="0"/>
     <property name="spawn-type" value="enemy"/>
    </properties>
   </object>
-  <object id="577" name="combat-spawn" type="object" x="2124.5" y="1555" width="64" height="64">
+  <object id="577" name="combat-spawn" type="object" x="2296.5" y="1557.67" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-128"/>
     <property name="spawn-order" type="int" value="2"/>
