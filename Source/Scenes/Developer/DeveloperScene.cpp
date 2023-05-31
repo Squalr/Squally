@@ -82,10 +82,8 @@ DeveloperScene::DeveloperScene()
 		- Enemy anims for getting hit
 		- Enemy anims for combat begin (temporarily pausing timeline)
 		- 2nd pass on all spells
-		- Museum (maybe in warp gate) for animals?
-			- Can kill collectable menu maybe.
-		- Crafting / Economy
-			- Descriptions for bombs and potions
+		- Museum polish pass (decor)
+		- Museum 50/50 reward (TBD)
 		- Chapter transitions can be more special
 		- Remaining spellbooks + abilities
 			- Nature (needs ability? [DM])
@@ -93,7 +91,7 @@ DeveloperScene::DeveloperScene()
 			- Frost
 			- Fire (Possibly use to dispel firewall)
 			- VS special book
-		- Missing mages from old warp gate maps
+		- Missing mage NPCs from old warp gate maps (can dump in museum, swapping with other npcs as needed)
 		- Helpers
 			- Abilities unlocked at certain levels
 			- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.

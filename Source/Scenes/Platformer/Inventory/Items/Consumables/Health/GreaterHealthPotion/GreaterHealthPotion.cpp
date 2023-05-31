@@ -1,6 +1,8 @@
 #include "GreaterHealthPotion.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
@@ -67,6 +69,12 @@ bool GreaterHealthPotion::canUseOnTarget(PlatformerEntity* target)
 	});
 	
 	return canUse;
+}
+
+LocalizedString* GreaterHealthPotion::getDescription()
+{
+	return Strings::Items_Consumables_Health_HealthPotionDescription::create()
+		->setStringReplacementVariables(ConstantString::create(std::to_string(int(GreaterHealthPotion::HealPercentage * 100.0f))));
 }
 
 Item* GreaterHealthPotion::clone()

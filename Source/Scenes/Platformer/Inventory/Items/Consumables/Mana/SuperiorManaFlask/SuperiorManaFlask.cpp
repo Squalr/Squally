@@ -1,6 +1,8 @@
 #include "SuperiorManaFlask.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
@@ -66,6 +68,12 @@ bool SuperiorManaFlask::canUseOnTarget(PlatformerEntity* target)
 	});
 	
 	return canUse;
+}
+
+LocalizedString* SuperiorManaFlask::getDescription()
+{
+	return Strings::Items_Consumables_Mana_SuperiorManaFlaskDescription::create()
+		->setStringReplacementVariables(ConstantString::create(std::to_string(int(SuperiorManaFlask::RestorePercentage * 100.0f))));
 }
 
 Item* SuperiorManaFlask::clone()

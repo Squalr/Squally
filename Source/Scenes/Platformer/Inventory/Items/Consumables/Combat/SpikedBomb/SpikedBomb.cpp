@@ -1,6 +1,8 @@
 #include "SpikedBomb.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
@@ -43,6 +45,15 @@ bool SpikedBomb::canUseOnTarget(PlatformerEntity* target)
 	}
 	
 	return true;
+}
+
+LocalizedString* SpikedBomb::getDescription()
+{
+	return Strings::Items_Consumables_Combat_BombDescription::create()
+		->setStringReplacementVariables({
+			ConstantString::create(std::to_string(SpikedBomb::DamageMin)),
+			ConstantString::create(std::to_string(SpikedBomb::DamageMax))
+		});
 }
 
 Item* SpikedBomb::clone()

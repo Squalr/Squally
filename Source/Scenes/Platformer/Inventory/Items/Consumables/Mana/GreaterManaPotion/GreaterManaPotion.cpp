@@ -1,6 +1,8 @@
 #include "GreaterManaPotion.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
@@ -66,6 +68,12 @@ bool GreaterManaPotion::canUseOnTarget(PlatformerEntity* target)
 	});
 	
 	return canUse;
+}
+
+LocalizedString* GreaterManaPotion::getDescription()
+{
+	return Strings::Items_Consumables_Mana_GreaterManaPotionDescription::create()
+		->setStringReplacementVariables(ConstantString::create(std::to_string(int(GreaterManaPotion::RestorePercentage * 100.0f))));
 }
 
 Item* GreaterManaPotion::clone()

@@ -64,18 +64,21 @@ PlatformerPauseMenu::PlatformerPauseMenu() : super(true)
 		Strings::Menus_Pause_Cards::create(),
 		false,
 		Vec2(-80.0f, 0.0f));
+	
+	/*
 	this->collectablesButton = this->buildButton(
 		UIResources::Menus_PauseMenu_CollectablesButton,
 		UIResources::Menus_PauseMenu_CollectablesButtonSelected,
 		Strings::Menus_Pause_Collectables::create(),
 		true,
-		Vec2(96.0f, 0.0f));
+		Vec2(96.0f, 0.0f));*/
+	
 	this->lexiconButton = this->buildButton(
 		UIResources::Menus_PauseMenu_LexiconButton,
 		UIResources::Menus_PauseMenu_LexiconButtonSelected,
 		Strings::Menus_Hacking_Lexicon_Lexicon::create(),
-		false,
-		Vec2(-80.0f, 0.0f));
+		true,
+		Vec2(80.0f, 0.0f));
 	
 	this->addChild(this->pauseWindow);
 	this->addChild(this->pauseLabel);
@@ -85,7 +88,7 @@ PlatformerPauseMenu::PlatformerPauseMenu() : super(true)
 	this->addChild(this->inventoryButton);
 	this->addChild(this->partyButton);
 	this->addChild(this->cardsButton);
-	this->addChild(this->collectablesButton);
+	// this->addChild(this->collectablesButton);
 	this->addChild(this->lexiconButton);
 	this->addChild(this->newButtonsNode);
 }
@@ -107,9 +110,9 @@ void PlatformerPauseMenu::initializePositions()
 	this->quitToTitleButton->setPosition(Vec2(visibleSize.width / 2.0f - 538.0f, visibleSize.height / 2.0f - 144.0f));
 	
 	this->partyButton->setPosition(Vec2(visibleSize.width / 2.0f + 80.0f, visibleSize.height / 2.0f + 312.0f));
-	this->cardsButton->setPosition(Vec2(visibleSize.width / 2.0f + 356.0f, visibleSize.height / 2.0f + 176.0f));
-	this->collectablesButton->setPosition(Vec2(visibleSize.width / 2.0f + 64.0f, visibleSize.height / 2.0f + 16.0f));
-	this->lexiconButton->setPosition(Vec2(visibleSize.width / 2.0f + 356.0f, visibleSize.height / 2.0f - 144.0f));
+	this->cardsButton->setPosition(Vec2(visibleSize.width / 2.0f + 320.0f, visibleSize.height / 2.0f + 80.0f));
+	// this->collectablesButton->setPosition(Vec2(visibleSize.width / 2.0f + 64.0f, visibleSize.height / 2.0f + 16.0f));
+	this->lexiconButton->setPosition(Vec2(visibleSize.width / 2.0f + 96.0f, visibleSize.height / 2.0f - 128.0f));
 }
 
 void PlatformerPauseMenu::initializeListeners()
@@ -140,13 +143,14 @@ void PlatformerPauseMenu::initializeListeners()
 		}
 	});
 	
+	/*
 	this->collectablesButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
 		if (this->collectablesClickCallback != nullptr)
 		{
 			this->collectablesClickCallback();
 		}
-	});
+	});*/
 
 	this->lexiconButton->setMouseClickCallback([=](InputEvents::MouseEventArgs*)
 	{
@@ -169,7 +173,7 @@ void PlatformerPauseMenu::disableCards()
 
 void PlatformerPauseMenu::disableCollectables()
 {
-	this->collectablesButton->disableInteraction(128);
+	// this->collectablesButton->disableInteraction(128);
 }
 
 void PlatformerPauseMenu::setInventoryClickCallback(std::function<void()> inventoryClickCallback)

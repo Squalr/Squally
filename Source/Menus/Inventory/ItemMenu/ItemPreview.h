@@ -3,6 +3,7 @@
 #include "Engine/SmartNode.h"
 
 class CardPreview;
+class Consumable;
 class ConstantString;
 class Equipable;
 class Hat;
@@ -43,6 +44,7 @@ private:
 	void setGenericStatline(Equipable* equipable);
 	void setWeaponStatline(Weapon* weapon);
 	void setHexusInfo(HexusCard* hexusCard);
+	void setConsumableInfo(Consumable* consumable);
 	
 	LocalizedLabel* createStatline();
 	void bindStatlineToIntRange(std::function<LocalizedString*()> prefixFunc, int min, int max);
@@ -54,6 +56,8 @@ private:
 	std::vector<LocalizedLabel*> statlines;
 	ConstantString* cardString = nullptr;
 	LocalizedLabel* cardLabel = nullptr;
+	ConstantString* consumableString = nullptr;
+	LocalizedLabel* consumableLabel = nullptr;
 	LocalizedLabel* useHint = nullptr;
 	LocalizedLabel* equipHint = nullptr;
 	LocalizedLabel* unequipHint = nullptr;

@@ -1,6 +1,8 @@
 #include "FragGrenade.h"
 
 #include "Engine/Inventory/CurrencyInventory.h"
+#include "Engine/Localization/ConstantString.h"
+#include "Engine/Localization/LocalizedString.h"
 #include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Inventory/Currencies/IOU.h"
@@ -48,6 +50,15 @@ bool FragGrenade::canUseOnTarget(PlatformerEntity* target)
 Item* FragGrenade::clone()
 {
 	return FragGrenade::create();
+}
+
+LocalizedString* FragGrenade::getDescription()
+{
+	return Strings::Items_Consumables_Combat_BombDescription::create()
+		->setStringReplacementVariables({
+			ConstantString::create(std::to_string(FragGrenade::DamageMin)),
+			ConstantString::create(std::to_string(FragGrenade::DamageMax))
+		});
 }
 
 LocalizedString* FragGrenade::getString()

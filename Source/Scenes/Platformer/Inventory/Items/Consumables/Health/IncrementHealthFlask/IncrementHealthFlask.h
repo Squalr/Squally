@@ -12,6 +12,7 @@ public:
 	
 	void useOutOfCombat(PlatformerEntity* target) override;
 	bool canUseOnTarget(PlatformerEntity* target) override;
+	virtual LocalizedString* getDescription();
 	Item* clone() override;
 	LocalizedString* getString() override;
 	const std::string& getIconResource() override;

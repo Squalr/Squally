@@ -75,6 +75,8 @@ ItemPreview::ItemPreview(bool showItemName, bool allowCardPreview)
 	this->itemName = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Common_Constant::create());
 	this->cardString = ConstantString::create("--");
 	this->cardLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Coding, LocalizedLabel::FontSize::H3, this->cardString);
+	this->consumableString = ConstantString::create("--");
+	this->consumableLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, this->consumableString, CSize(256.0f, 512.0f));
 	this->cardPreview = CardPreview::create();
 	
 	this->itemName->enableOutline(Color4B::BLACK, 2);
@@ -82,6 +84,8 @@ ItemPreview::ItemPreview(bool showItemName, bool allowCardPreview)
 	this->cardPreview->setVisible(false);
 	this->cardLabel->setVisible(false);
 	this->cardLabel->enableOutline(Color4B::BLACK, 3);
+	this->consumableLabel->setVisible(false);
+	this->consumableLabel->enableOutline(Color4B::BLACK, 3);
 
 	this->equipHint->enableOutline(Color4B::BLACK, 2);
 	this->equipHint->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -112,8 +116,9 @@ ItemPreview::ItemPreview(bool showItemName, bool allowCardPreview)
 		this->addChild(statline);
 	}
 	
-	this->addChild(cardLabel);
-	this->addChild(cardPreview);
+	this->addChild(this->cardLabel);
+	this->addChild(this->consumableLabel);
+	this->addChild(this->cardPreview);
 
 	this->preview(EquipHintMode::None, nullptr);
 }
@@ -148,6 +153,7 @@ void ItemPreview::initializePositions()
 	}
 	
 	this->cardLabel->setPosition(Vec2(-6.0f, -72.0f));
+	this->consumableLabel->setPosition(Vec2(-6.0f, -88.0f));
 }
 
 void ItemPreview::toggleShowItemName(bool showItemName)
@@ -221,6 +227,10 @@ void ItemPreview::preview(EquipHintMode equipHintMode, Item* item)
 	{
 		this->setGenericStatline(dynamic_cast<Equipable*>(item));
 	}
+	else if (dynamic_cast<Consumable*>(item) != nullptr)
+	{
+		this->setConsumableInfo(dynamic_cast<Consumable*>(item));
+	}
 }
 
 void ItemPreview::setGenericStatline(Equipable* equipable)
@@ -285,6 +295,20 @@ void ItemPreview::setHexusInfo(HexusCard* hexusCard)
 	}
 	
 	this->cardLabel->setVisible(true);
+}
+
+void ItemPreview::setConsumableInfo(Consumable* consumable)
+{
+	if (consumable != nullptr)
+	{
+		LocalizedString* description = consumable->getDescription();
+
+		if (description != nullptr)
+		{
+			this->consumableString->setString(description->getString());
+			this->consumableLabel->setVisible(true);
+		}
+	}
 }
 
 LocalizedLabel* ItemPreview::createStatline()
@@ -352,6 +376,7 @@ void ItemPreview::clearPreview()
 	this->previewNode->removeAllChildren();
 	this->cardLabel->setVisible(false);
 	this->cardPreview->setVisible(false);
+	this->consumableLabel->setVisible(false);
 
 	for (auto statline : this->statlines)
 	{
