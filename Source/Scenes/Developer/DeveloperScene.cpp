@@ -54,6 +54,7 @@ DeveloperScene::DeveloperScene()
 		ScrollPane* scrollPane = this->buildScrollPane();
 
 		mapList.push_back(this->buildDebugButton("Warp Room", MapResources::Mages_Warp));
+		mapList.push_back(this->buildDebugButton("Museum", MapResources::Museum));
 		mapList.push_back(this->buildDebugButton("DBG Cages", MapResources::Dev_Cages));
 		mapList.push_back(this->buildDebugButton("DBG Cutscenes", MapResources::Dev_Cracks));
 		mapList.push_back(this->buildDebugButton("DBG Cipher", MapResources::Dev_Cipher));
@@ -83,7 +84,7 @@ DeveloperScene::DeveloperScene()
 		- Enemy anims for combat begin (temporarily pausing timeline)
 		- 2nd pass on all spells
 		- Museum polish pass (decor)
-		- Museum 50/50 reward (TBD)
+		- Museum rewards (biome and 50/50 reward (TBD))
 		- Chapter transitions can be more special
 		- Remaining spellbooks + abilities
 			- Nature (needs ability? [DM])
@@ -91,7 +92,6 @@ DeveloperScene::DeveloperScene()
 			- Frost
 			- Fire (Possibly use to dispel firewall)
 			- VS special book
-		- Missing mage NPCs from old warp gate maps (can dump in museum, swapping with other npcs as needed)
 		- Helpers
 			- Abilities unlocked at certain levels
 			- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
@@ -104,10 +104,8 @@ DeveloperScene::DeveloperScene()
 			- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
 		- v Camera harsh leaving camera targets (see FF cinematic)
 		- v No interrupt if damage attack modified to heal
-		- v Seagulls should blink
 		- v Mystery crash / ensures when waiting on victory screen (matrix letters task func)
 		- v Crash reports probably are broken (switch to new SendGrid)
-		- v Potentially mask entity shadows based on number of colliders hit
 		- ** Fucking 5x easter eggs
 		* BP
 			- Vertical town (maybe two sec  tions, one inaccessible at first to spread out NPCs)

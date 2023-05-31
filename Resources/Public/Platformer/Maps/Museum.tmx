@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="166" nextobjectid="1231">
- <objectgroup id="1" name="meta" visible="0">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="166" nextobjectid="1237">
+ <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
    <property name="crack-color" value=""/>
@@ -12,199 +12,199 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="147" name="stairs -36" visible="0">
+ <objectgroup id="147" name="stairs -36">
   <properties>
    <property name="depth" type="float" value="-2240"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="148" name="objects -36" visible="0">
+ <objectgroup id="148" name="objects -36">
   <properties>
    <property name="depth" type="float" value="-2240"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="146" name="stairs -35" visible="0">
+ <objectgroup id="146" name="stairs -35">
   <properties>
    <property name="depth" type="float" value="-2176"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="145" name="stairs -34" visible="0">
+ <objectgroup id="145" name="stairs -34">
   <properties>
    <property name="depth" type="float" value="-2112"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="144" name="stairs -33" visible="0">
+ <objectgroup id="144" name="stairs -33">
   <properties>
    <property name="depth" type="float" value="-2048"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="143" name="stairs -32" visible="0">
+ <objectgroup id="143" name="stairs -32">
   <properties>
    <property name="depth" type="float" value="-1984"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="142" name="stairs -31" visible="0">
+ <objectgroup id="142" name="stairs -31">
   <properties>
    <property name="depth" type="float" value="-1920"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="141" name="stairs -30" visible="0">
+ <objectgroup id="141" name="stairs -30">
   <properties>
    <property name="depth" type="float" value="-1856"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="139" name="stairs -29" visible="0">
+ <objectgroup id="139" name="stairs -29">
   <properties>
    <property name="depth" type="float" value="-1792"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="138" name="stairs -28" visible="0">
+ <objectgroup id="138" name="stairs -28">
   <properties>
    <property name="depth" type="float" value="-1728"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="137" name="stairs -27 top" visible="0">
+ <objectgroup id="137" name="stairs -27 top">
   <properties>
    <property name="depth" type="float" value="-1664"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="136" name="stairs -26 top" visible="0">
+ <objectgroup id="136" name="stairs -26 top">
   <properties>
    <property name="depth" type="float" value="-1600"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="135" name="stairs -25 top" visible="0">
+ <objectgroup id="135" name="stairs -25 top">
   <properties>
    <property name="depth" type="float" value="-1536"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="134" name="stairs -24 top" visible="0">
+ <objectgroup id="134" name="stairs -24 top">
   <properties>
    <property name="depth" type="float" value="-1472"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="133" name="stairs -23 top" visible="0">
+ <objectgroup id="133" name="stairs -23 top">
   <properties>
    <property name="depth" type="float" value="-1408"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="132" name="stairs -22 top" visible="0">
+ <objectgroup id="132" name="stairs -22 top">
   <properties>
    <property name="depth" type="float" value="-1344"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="131" name="stairs -21 top" visible="0">
+ <objectgroup id="131" name="stairs -21 top">
   <properties>
    <property name="depth" type="float" value="-1280"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="130" name="stairs -20 top" visible="0">
+ <objectgroup id="130" name="stairs -20 top">
   <properties>
    <property name="depth" type="float" value="-1216"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="129" name="stairs -19 top" visible="0">
+ <objectgroup id="129" name="stairs -19 top">
   <properties>
    <property name="depth" type="float" value="-1152"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="128" name="stairs -18 top" visible="0">
+ <objectgroup id="128" name="stairs -18 top">
   <properties>
    <property name="depth" type="float" value="-1088"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="127" name="stairs -17 top" visible="0">
+ <objectgroup id="127" name="stairs -17 top">
   <properties>
    <property name="depth" type="float" value="-1024"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="126" name="stairs -16 top" visible="0">
+ <objectgroup id="126" name="stairs -16 top">
   <properties>
    <property name="depth" type="float" value="-960"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="118" name="stairs -15 top" visible="0">
+ <objectgroup id="118" name="stairs -15 top">
   <properties>
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="121" name="terrain -15" visible="0">
+ <objectgroup id="121" name="terrain -15">
   <properties>
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="117" name="stairs -14 top" visible="0">
+ <objectgroup id="117" name="stairs -14 top">
   <properties>
    <property name="depth" type="float" value="-832"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="116" name="stairs -13 top" visible="0">
+ <objectgroup id="116" name="stairs -13 top">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="119" name="pillar -12 top" visible="0">
+ <objectgroup id="119" name="pillar -12 top">
   <properties>
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="123" name="objects -12 top" visible="0">
+ <objectgroup id="123" name="objects -12 top">
   <properties>
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="97" name="stairs -12 top" visible="0">
+ <objectgroup id="97" name="stairs -12 top">
   <properties>
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="98" name="stairs -11 top" visible="0">
+ <objectgroup id="98" name="stairs -11 top">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="99" name="stairs -10 top" visible="0">
+ <objectgroup id="99" name="stairs -10 top">
   <properties>
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="100" name="terrain -10 top" visible="0">
+ <objectgroup id="100" name="terrain -10 top">
   <properties>
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="109" name="wall bg -12" visible="0">
+ <objectgroup id="109" name="wall bg -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
@@ -215,55 +215,55 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="157" name="decor -12" visible="0">
+ <objectgroup id="157" name="decor -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="107" name="stairs L -12" visible="0">
+ <objectgroup id="107" name="stairs L -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="108" name="objects -12" visible="0">
+ <objectgroup id="108" name="objects -12">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="106" name="stairs L -11" visible="0">
+ <objectgroup id="106" name="stairs L -11">
   <properties>
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="105" name="stairs L -10" visible="0">
+ <objectgroup id="105" name="stairs L -10">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="104" name="stairs L -9" visible="0">
+ <objectgroup id="104" name="stairs L -9">
   <properties>
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="103" name="stairs L -8" visible="0">
+ <objectgroup id="103" name="stairs L -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="102" name="stairs L -7" visible="0">
+ <objectgroup id="102" name="stairs L -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="115" name="stairs L -6" visible="0">
+ <objectgroup id="115" name="stairs L -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -365,13 +365,13 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="156" name="terrain bg -5" visible="0">
+ <objectgroup id="156" name="terrain bg -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="114" name="stairs L -5" visible="0">
+ <objectgroup id="114" name="stairs L -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
@@ -463,7 +463,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="113" name="stairs L -4" visible="0">
+ <objectgroup id="113" name="stairs L -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -555,7 +555,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="151" name="pillar -3" visible="0">
+ <objectgroup id="151" name="pillar -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -567,7 +567,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="112" name="stairs L -3" visible="0">
+ <objectgroup id="112" name="stairs L -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -659,7 +659,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="111" name="stairs L -2" visible="0">
+ <objectgroup id="111" name="stairs L -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -751,7 +751,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="110" name="stairs L -1" visible="0">
+ <objectgroup id="110" name="stairs L -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
@@ -843,47 +843,47 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="57" name="terrain -1" visible="0">
+ <objectgroup id="57" name="terrain -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="125" name="entities -1" visible="0">
+ <objectgroup id="125" name="entities -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="154" name="terrain bg" visible="0">
+ <objectgroup id="154" name="terrain bg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="21" name="terrain" visible="0">
+ <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="934" name="marble" type="terrain" x="-310.091" y="1048.76" width="6589.15" height="222"/>
  </objectgroup>
- <objectgroup id="22" name="decor midground" visible="0">
+ <objectgroup id="22" name="decor midground">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1081" name="portal" type="object" x="2935.64" y="796.242" width="256" height="256">
    <properties>
-    <property name="map" value="Warp_Gate"/>
+    <property name="map" value="Mages_Warp"/>
     <property name="transition" value="museum"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="42" name="no hack objects" visible="0">
+ <objectgroup id="42" name="no hack objects">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -893,14 +893,56 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1076" name="finch" type="entity" x="2612.18" y="921.485" width="128" height="128">
+  <object id="1076" name="finch" type="entity" x="2344.18" y="921.485" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="false"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="1230" name="irmik" type="entity" x="3368" y="928" width="128" height="128">
+  <object id="1230" name="irmik" type="entity" x="4948" y="922" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pick-pocket"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="pocket-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="1231" name="alder" type="entity" x="1068.45" y="922.182" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pick-pocket"/>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="pocket-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="1232" name="necron" type="entity" x="3654" y="924" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pick-pocket"/>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="pocket-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="1233" name="cypress" type="entity" x="438" y="922" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pick-pocket"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="pocket-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="1234" name="igneus" type="entity" x="4287.7" y="920" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pick-pocket"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="pocket-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="1235" name="jasper" type="entity" x="1709.7" y="919.273" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pick-pocket"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="pocket-pool" value="ef-generic"/>
+   </properties>
+  </object>
+  <object id="1236" name="piper" type="entity" x="5585.94" y="922.788" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -908,7 +950,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="25" name="player_layer" visible="0">
+ <objectgroup id="25" name="player_layer">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -924,13 +966,13 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="77" name="decor +1" visible="0">
+ <objectgroup id="77" name="decor +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="158" name="stairs +1" visible="0">
+ <objectgroup id="158" name="stairs +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
@@ -941,7 +983,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="159" name="stairs +2" visible="0">
+ <objectgroup id="159" name="stairs +2">
   <properties>
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
@@ -952,7 +994,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="160" name="stairs +3" visible="0">
+ <objectgroup id="160" name="stairs +3">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>

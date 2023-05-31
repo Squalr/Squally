@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="149" nextobjectid="994">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="149" nextobjectid="995">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -332,13 +332,14 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="948" name="marble" type="terrain" x="2466.88" y="1105.7" width="933.581" height="401.273"/>
+  <object id="994" name="solid" type="collision" x="2469.21" y="1098.03" width="933.581" height="203.273"/>
  </objectgroup>
  <objectgroup id="122" name="entities -15">
   <properties>
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="825" name="necron" type="entity" x="2889.45" y="922.735" width="128" height="128">
+  <object id="825" name="necron" type="entity" x="2887.45" y="870.735" width="128" height="128">
    <properties>
     <property name="components" value="friendly"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -429,7 +430,7 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="939" name="marble" type="terrain" x="2325.21" y="807.03" width="389.581" height="836.94">
+  <object id="939" name="marble" type="terrain" x="2327.21" y="813.03" width="389.581" height="836.94">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -492,7 +493,7 @@
    <property name="depth" type="float" value="-576"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="795" name="aster" type="entity" x="1440.58" y="33.5654" width="128" height="128">
+  <object id="795" name="jasper" type="entity" x="1438.58" y="55.5654" width="128" height="128">
    <properties>
     <property name="components" value="friendly"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -807,7 +808,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="842" name="jasper" type="entity" x="4110.41" y="153.778" width="128" height="128">
+  <object id="842" name="aster" type="entity" x="4110.41" y="153.778" width="128" height="128">
    <properties>
     <property name="components" value="jasper,friendly"/>
     <property name="flip-y" type="bool" value="true"/>

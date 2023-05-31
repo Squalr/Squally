@@ -510,6 +510,7 @@ const std::string DecorResources::Generic_Crate1 = "Private/Platformer/Decor/Gen
 const std::string DecorResources::Generic_Crate2 = "Private/Platformer/Decor/Generic/Crate2.png";
 const std::string DecorResources::Generic_DiningTable1 = "Private/Platformer/Decor/Generic/DiningTable1.png";
 const std::string DecorResources::Generic_DiningTableDark1 = "Private/Platformer/Decor/Generic/DiningTableDark1.png";
+const std::string DecorResources::Generic_DoorWarpGate = "Private/Platformer/Decor/Generic/DoorWarpGate.png";
 const std::string DecorResources::Generic_Drain = "Private/Platformer/Decor/Generic/Drain.png";
 const std::string DecorResources::Generic_FancyGate1 = "Private/Platformer/Decor/Generic/FancyGate1.png";
 const std::string DecorResources::Generic_FancyGate2 = "Private/Platformer/Decor/Generic/FancyGate2.png";
