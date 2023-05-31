@@ -85,7 +85,7 @@ float MeleeSwingOutOfCombatAttackBehavior::getOutOfCombatAttackOnset()
 
 float MeleeSwingOutOfCombatAttackBehavior::getOutOfCombatAttackSustain()
 {
-	return 0.85f;
+	return 1.25f;
 }
 
 float MeleeSwingOutOfCombatAttackBehavior::getOutOfCombatAttackCooldown()

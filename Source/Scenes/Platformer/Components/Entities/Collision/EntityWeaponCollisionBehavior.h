@@ -21,7 +21,8 @@ protected:
 	void setWeaponCollisionOffset(cocos2d::Vec2 weaponCollisionOffset);
 	void rebuildWeaponCollision(int collisionType);
 
-	CollisionObject* weaponCollision = nullptr;
+	CollisionObject* mainhandWeaponCollision = nullptr;
+	CollisionObject* offhandWeaponCollision = nullptr;
 
 private:
 	typedef GameComponent super;

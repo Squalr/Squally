@@ -43,30 +43,51 @@ void EntityWeaponCollisionBehavior::onDisable()
 {
 	super::onDisable();
 	
-	if (this->weaponCollision != nullptr)
+	if (this->mainhandWeaponCollision != nullptr)
 	{
-		this->weaponCollision->setPhysicsFlagEnabled(false);
+		this->mainhandWeaponCollision->setPhysicsFlagEnabled(false);
+	}
+	
+	if (this->offhandWeaponCollision != nullptr)
+	{
+		this->offhandWeaponCollision->setPhysicsFlagEnabled(false);
 	}
 }
 
 void EntityWeaponCollisionBehavior::enable()
 {
-	if (this->weaponCollision == nullptr || this->isInvalidated())
+	if (this->isInvalidated())
 	{
 		return;
 	}
 
-	this->weaponCollision->setPhysicsFlagEnabled(true);
+	if (this->mainhandWeaponCollision != nullptr)
+	{
+		this->mainhandWeaponCollision->setPhysicsFlagEnabled(true);
+	}
+
+	if (this->offhandWeaponCollision != nullptr)
+	{
+		this->offhandWeaponCollision->setPhysicsFlagEnabled(true);
+	}
 }
 
 void EntityWeaponCollisionBehavior::disable()
 {
-	if (this->weaponCollision == nullptr || this->isInvalidated())
+	if (this->isInvalidated())
 	{
 		return;
 	}
 	
-	this->weaponCollision->setPhysicsFlagEnabled(false);
+	if (this->mainhandWeaponCollision != nullptr)
+	{
+		this->mainhandWeaponCollision->setPhysicsFlagEnabled(false);
+	}
+	
+	if (this->offhandWeaponCollision != nullptr)
+	{
+		this->offhandWeaponCollision->setPhysicsFlagEnabled(false);
+	}
 }
 
 void EntityWeaponCollisionBehavior::setWeaponCollisionSize(CSize weaponCollisionSize)
@@ -88,34 +109,73 @@ void EntityWeaponCollisionBehavior::rebuildWeaponCollision(int collisionType)
 	}
 	
 	AnimationPart* mainhand = this->entity->getAnimations()->getAnimationPart("mainhand");
-	CSize weaponSize = useExplicitWeaponSize ? this->weaponCollisionSize : mainhand->getSpriteSize();
+	AnimationPart* offhand = this->entity->getAnimations()->getAnimationPart("offhand");
 
-	if (weaponSize.width <= 0.0f || weaponSize.height <= 0.0f)
+	if (mainhand != nullptr)
 	{
-		weaponSize = EntityWeaponCollisionBehavior::DefaultWeaponSize;
+		CSize weaponSize = useExplicitWeaponSize ? this->weaponCollisionSize : mainhand->getSpriteSize();
+
+		if (weaponSize.width <= 0.0f || weaponSize.height <= 0.0f)
+		{
+			weaponSize = EntityWeaponCollisionBehavior::DefaultWeaponSize;
+		}
+
+		if (mainhand == nullptr)
+		{
+			return;
+		}
+		
+		if (this->mainhandWeaponCollision != nullptr)
+		{
+			mainhand->removeTrackingObject(this->mainhandWeaponCollision);
+		}
+
+		this->mainhandWeaponCollision = CollisionObject::create(
+			CollisionObject::createCapsulePolygon(weaponSize, 8.0f),
+			(CollisionType)collisionType,
+			CollisionObject::Properties(false, false)
+		);
+
+		Vec2 weaponCollisionOffsetAdjusted = this->entity->getAnimations()->getFlippedX()
+			? Vec2(-this->weaponCollisionOffset.x, this->weaponCollisionOffset.y)
+			: this->weaponCollisionOffset;
+
+		this->mainhandWeaponCollision->setPosition(weaponCollisionOffsetAdjusted);
+		this->mainhandWeaponCollision->setPhysicsFlagEnabled(false);
+		mainhand->addTrackingObject(this->mainhandWeaponCollision);
 	}
 
-	if (mainhand == nullptr)
+	if (offhand != nullptr)
 	{
-		return;
+		CSize weaponSize = useExplicitWeaponSize ? this->weaponCollisionSize : offhand->getSpriteSize();
+
+		if (weaponSize.width <= 0.0f || weaponSize.height <= 0.0f)
+		{
+			weaponSize = EntityWeaponCollisionBehavior::DefaultWeaponSize;
+		}
+
+		if (offhand == nullptr)
+		{
+			return;
+		}
+		
+		if (this->offhandWeaponCollision != nullptr)
+		{
+			offhand->removeTrackingObject(this->offhandWeaponCollision);
+		}
+
+		this->offhandWeaponCollision = CollisionObject::create(
+			CollisionObject::createCapsulePolygon(weaponSize, 8.0f),
+			(CollisionType)collisionType,
+			CollisionObject::Properties(false, false)
+		);
+
+		Vec2 weaponCollisionOffsetAdjusted = this->entity->getAnimations()->getFlippedX()
+			? Vec2(-this->weaponCollisionOffset.x, this->weaponCollisionOffset.y)
+			: this->weaponCollisionOffset;
+
+		this->offhandWeaponCollision->setPosition(weaponCollisionOffsetAdjusted);
+		this->offhandWeaponCollision->setPhysicsFlagEnabled(false);
+		offhand->addTrackingObject(this->offhandWeaponCollision);
 	}
-	
-	if (this->weaponCollision != nullptr)
-	{
-		mainhand->removeTrackingObject(this->weaponCollision);
-	}
-
-	this->weaponCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(weaponSize, 8.0f),
-		(CollisionType)collisionType,
-		CollisionObject::Properties(false, false)
-	);
-
-	Vec2 weaponCollisionOffsetAdjusted = this->entity->getAnimations()->getFlippedX()
-		? Vec2(-this->weaponCollisionOffset.x, this->weaponCollisionOffset.y)
-		: this->weaponCollisionOffset;
-
-	this->weaponCollision->setPosition(weaponCollisionOffsetAdjusted);
-	this->weaponCollision->setPhysicsFlagEnabled(false);
-	mainhand->addTrackingObject(this->weaponCollision);
 }
