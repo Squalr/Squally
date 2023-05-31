@@ -22,7 +22,7 @@ CurrencyPoolBPGeneric* CurrencyPoolBPGeneric::create(ValueMap& properties)
 
 CurrencyPoolBPGeneric::CurrencyPoolBPGeneric(ValueMap& properties) : super(properties, CurrencyPoolBPGeneric::PoolName)
 {
-	this->addCurrencyToPool(CurrencyPool::CurrencyData((Currency*)IOU::create(), 7, 10));
+	this->addCurrencyToPool(CurrencyPool::CurrencyData((Currency*)IOU::create(), 7 * 2, 7 * 4));
 }
 
 CurrencyPoolBPGeneric::~CurrencyPoolBPGeneric()

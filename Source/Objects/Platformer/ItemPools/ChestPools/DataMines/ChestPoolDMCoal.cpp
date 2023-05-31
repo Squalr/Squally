@@ -4,7 +4,6 @@
 
 #include "Engine/Inventory/ItemChance.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier3/AlchemyPoolTier3.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier3/CardPoolTier3.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier3/SmithingPoolTier3.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier3/PotionPoolTier3.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"

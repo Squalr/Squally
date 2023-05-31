@@ -3,7 +3,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Inventory/ItemChance.h"
-#include "Objects/Platformer/ItemPools/CurrencyPools/FirewallFissure/CurrencyPoolFFGeneric.h"
+#include "Objects/Platformer/ItemPools/CurrencyPools/FirewallFissure/CurrencyPoolFFHexus.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier6/AlchemyPoolTier6.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier6/CardPoolTier6.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier6/SmithingPoolTier6.h"
@@ -22,7 +22,7 @@ HexusPoolFFGeneric* HexusPoolFFGeneric::create(ValueMap& properties)
 }
 
 HexusPoolFFGeneric::HexusPoolFFGeneric(ValueMap& properties) : super(properties, "hexus-pool-ff-generic", SampleMethod::Random, 1, 2,
-	{ AlchemyPoolTier6::create(SampleMethod::Random, 1, 1), SmithingPoolTier6::create(SampleMethod::Random, 1, 2) }, CurrencyPoolFFGeneric::create(properties))
+	{ CardPoolTier6::create() }, CurrencyPoolFFHexus::create(properties))
 {
 }
 

@@ -22,7 +22,7 @@ CurrencyPoolDMGeneric* CurrencyPoolDMGeneric::create(ValueMap& properties)
 
 CurrencyPoolDMGeneric::CurrencyPoolDMGeneric(ValueMap& properties) : super(properties, CurrencyPoolDMGeneric::PoolName)
 {
-	this->addCurrencyToPool(CurrencyPool::CurrencyData((Currency*)IOU::create(), 3, 5));
+	this->addCurrencyToPool(CurrencyPool::CurrencyData((Currency*)IOU::create(), 3 * 2, 3 * 4));
 }
 
 CurrencyPoolDMGeneric::~CurrencyPoolDMGeneric()

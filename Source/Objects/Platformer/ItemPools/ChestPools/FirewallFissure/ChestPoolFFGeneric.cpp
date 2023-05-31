@@ -4,7 +4,6 @@
 
 #include "Engine/Inventory/MergePool.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier6/AlchemyPoolTier6.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier6/CardPoolTier6.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier6/SmithingPoolTier6.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier6/PotionPoolTier6.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
@@ -25,7 +24,6 @@ ChestPoolFFGeneric* ChestPoolFFGeneric::create(ValueMap& properties)
 ChestPoolFFGeneric::ChestPoolFFGeneric(ValueMap& properties) : super(
 	properties, ChestPoolFFGeneric::PoolName, SampleMethod::Guarantee, 2, 3,
 	{
-		CardPoolTier6::create(SampleMethod::Random, 1, 1),
 		MergePool::create(SampleMethod::Random, 3, 5,
 		{
 			AlchemyPoolTier6::create(),

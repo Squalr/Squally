@@ -8,7 +8,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/CurrencyPools/FirewallFissure/CurrencyPoolFFGeneric.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier6/AlchemyPoolTier6.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier6/CardPoolTier6.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier6/SmithingPoolTier6.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier6/PotionPoolTier6.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
@@ -30,7 +29,6 @@ DropPoolFFGeneric* DropPoolFFGeneric::create(ValueMap& properties)
 
 DropPoolFFGeneric::DropPoolFFGeneric(ValueMap& properties) : super(properties, DropPoolFFGeneric::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolFFGeneric::create(properties),
 	{
-		CardPoolTier6::create(SampleMethod::Random, 0, 1),
 		AlchemyPoolTier6::create(SampleMethod::Random, 1, 2),
 		SmithingPoolTier6::create(SampleMethod::Random, 1, 2),
 		// PotionPoolTier6::create(SampleMethod::Random, 0, 1),

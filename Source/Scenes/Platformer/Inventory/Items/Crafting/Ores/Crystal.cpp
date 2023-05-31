@@ -20,7 +20,7 @@ Crystal* Crystal::create()
 	return instance;
 }
 
-Crystal::Crystal() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 16 }}), ItemMeta(20000))
+Crystal::Crystal() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 * 7 }}), ItemMeta(20000))
 {
 }
 

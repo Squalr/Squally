@@ -82,11 +82,10 @@ DeveloperScene::DeveloperScene()
 		- Enemy anims for getting hit
 		- Enemy anims for combat begin (temporarily pausing timeline)
 		- 2nd pass on all spells
-		- Museum (maybe in warp gate) for animals? Can kill collectable menu maybe.
+		- Museum (maybe in warp gate) for animals?
+			- Can kill collectable menu maybe.
 		- Crafting / Economy
-			- Maybe give IOUs instead of cards as a prize, force players to purchase cards from Inns
 			- Descriptions for bombs and potions
-			- Price tuning (void crystal is $$$)
 		- Chapter transitions can be more special
 		- Remaining spellbooks + abilities
 			- Nature (needs ability? [DM])
@@ -94,11 +93,7 @@ DeveloperScene::DeveloperScene()
 			- Frost
 			- Fire (Possibly use to dispel firewall)
 			- VS special book
-		- Missing NPCs
-			- Sky masters (deprecated? Kill 2nd sky tower map?)
-				- Find Finch to get to BP
-				- Find Irmik to get to BP peaks
-			- Mages from old warp gate maps
+		- Missing mages from old warp gate maps
 		- Helpers
 			- Abilities unlocked at certain levels
 			- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.

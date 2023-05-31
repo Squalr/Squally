@@ -3414,6 +3414,21 @@ namespace Strings
 		virtual ~Hexus_Cards_Binary9() = default;
 	};
 
+	class Hexus_Cards_BonusMoves : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Hexus_Cards_BonusMoves();
+		virtual ~Hexus_Cards_BonusMoves() = default;
+	};
+
 	class Hexus_Cards_Decimal0 : public LocalizedString
 	{
 	public:

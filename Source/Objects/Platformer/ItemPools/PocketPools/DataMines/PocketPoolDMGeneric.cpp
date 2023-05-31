@@ -8,7 +8,6 @@
 #include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier3/AlchemyPoolTier3.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier3/CardPoolTier3.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier3/SmithingPoolTier3.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier3/PotionPoolTier3.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
@@ -30,7 +29,6 @@ PocketPoolDMGeneric* PocketPoolDMGeneric::create(ValueMap& properties)
 
 PocketPoolDMGeneric::PocketPoolDMGeneric(ValueMap& properties) : super(properties, PocketPoolDMGeneric::PoolName, SampleMethod::Guarantee, 1, 1,
 	{
-		CardPoolTier3::create(SampleMethod::Random, 1, 1),
 		MergePool::create(SampleMethod::Guarantee, 1, 2,
 		{
 			AlchemyPoolTier3::create(),

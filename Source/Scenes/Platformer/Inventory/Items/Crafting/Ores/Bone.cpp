@@ -20,7 +20,7 @@ Bone* Bone::create()
 	return instance;
 }
 
-Bone::Bone() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 57 }}), ItemMeta(20000))
+Bone::Bone() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 8 * 5 }}), ItemMeta(20000))
 {
 }
 

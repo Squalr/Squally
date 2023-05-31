@@ -22,7 +22,7 @@ CurrencyPoolFFGeneric* CurrencyPoolFFGeneric::create(ValueMap& properties)
 
 CurrencyPoolFFGeneric::CurrencyPoolFFGeneric(ValueMap& properties) : super(properties, CurrencyPoolFFGeneric::PoolName)
 {
-	this->addCurrencyToPool(CurrencyPool::CurrencyData((Currency*)IOU::create(), 6, 9));
+	this->addCurrencyToPool(CurrencyPool::CurrencyData((Currency*)IOU::create(), 6 * 2, 6 * 4));
 }
 
 CurrencyPoolFFGeneric::~CurrencyPoolFFGeneric()

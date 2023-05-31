@@ -8,7 +8,6 @@
 #include "Engine/Utils/GameUtils.h"
 #include "Objects/Platformer/ItemPools/CurrencyPools/VoidStar/CurrencyPoolVSGeneric.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier8/AlchemyPoolTier8.h"
-#include "Objects/Platformer/ItemPools/Tiered/Tier8/CardPoolTier8.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier8/SmithingPoolTier8.h"
 #include "Objects/Platformer/ItemPools/Tiered/Tier8/PotionPoolTier8.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
@@ -30,7 +29,6 @@ DropPoolVSGeneric* DropPoolVSGeneric::create(ValueMap& properties)
 
 DropPoolVSGeneric::DropPoolVSGeneric(ValueMap& properties) : super(properties, DropPoolVSGeneric::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolVSGeneric::create(properties),
 	{
-		CardPoolTier8::create(SampleMethod::Random, 0, 1),
 		AlchemyPoolTier8::create(SampleMethod::Random, 1, 2),
 		SmithingPoolTier8::create(SampleMethod::Random, 1, 2),
 		// PotionPoolTier8::create(SampleMethod::Random, 0, 1),
