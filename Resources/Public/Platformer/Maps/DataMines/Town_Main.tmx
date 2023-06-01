@@ -484,7 +484,7 @@
    </properties>
   </object>
   <object id="1109" name="help-totem-repair" type="object" x="7044" y="3362" width="248" height="248"/>
-  <object id="1123" name="caged-bat" type="object" x="8013.97" y="2812.67" width="196" height="112"/>
+  <object id="1123" name="caged-tiger" type="object" x="8013.97" y="2812.67" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="142" name="entities -6">
   <properties>

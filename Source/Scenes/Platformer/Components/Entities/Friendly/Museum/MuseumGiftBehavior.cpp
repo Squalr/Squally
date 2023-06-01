@@ -305,7 +305,7 @@ void MuseumGiftBehavior::setPostTextDM()
 	bool hasNecessaryAnimals =
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalPanda, Value(false)).asBool() &&
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSkunk, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBat, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalTiger, Value(false)).asBool() &&
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBird, Value(false)).asBool() &&
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalTurtle, Value(false)).asBool() &&
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalRaccoon, Value(false)).asBool() &&
@@ -466,7 +466,7 @@ void MuseumGiftBehavior::setPostTextLC()
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWorm, Value(false)).asBool() &&
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalChicken, Value(false)).asBool() &&
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMountainLion, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalTiger, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBat, Value(false)).asBool() &&
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWolf, Value(false)).asBool();
 	
 	if (hasNecessaryAnimals)
@@ -620,8 +620,8 @@ void MuseumGiftBehavior::setPostTextBP()
 
 	bool hasNecessaryAnimals =
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBlowfish, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBunny, Value(false)).asBool() &&
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalKillerWhale, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBunny, Value(false)).asBool() &&
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalPenguin, Value(false)).asBool() &&
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalReindeer, Value(false)).asBool() &&
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalYeti, Value(false)).asBool() &&

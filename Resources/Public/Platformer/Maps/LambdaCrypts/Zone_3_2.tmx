@@ -1104,7 +1104,7 @@
     <property name="reward-pool" value="lc-gem-purple"/>
    </properties>
   </object>
-  <object id="1151" name="caged-tiger" type="object" x="3866.19" y="1566.77" width="196" height="112"/>
+  <object id="1151" name="caged-bat" type="object" x="3866.19" y="1566.77" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
