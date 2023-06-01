@@ -109,7 +109,7 @@ void ItemMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		if (!this->isFocused || this->visibleItems.empty())
+		if (!this->isFocused || this->visibleItems.empty() || args->isHandled())
 		{
 			return;
 		}
@@ -124,7 +124,7 @@ void ItemMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_RIGHT_ARROW, InputEvents::KeyCode::KEY_D, }, [=](InputEvents::KeyboardEventArgs* args)
 	{
-		if (!this->isFocused || this->visibleItems.empty())
+		if (!this->isFocused || this->visibleItems.empty() || args->isHandled())
 		{
 			return;
 		}

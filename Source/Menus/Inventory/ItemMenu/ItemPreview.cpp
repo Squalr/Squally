@@ -87,11 +87,11 @@ ItemPreview::ItemPreview(bool showItemName, bool allowCardPreview)
 	this->consumableLabel->setVisible(false);
 	this->consumableLabel->enableOutline(Color4B::BLACK, 3);
 
-	this->equipHint->enableOutline(Color4B::BLACK, 2);
+	this->equipHint->enableOutline(Color4B::BLACK, 3);
 	this->equipHint->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->unequipHint->enableOutline(Color4B::BLACK, 2);
+	this->unequipHint->enableOutline(Color4B::BLACK, 3);
 	this->unequipHint->setAnchorPoint(Vec2(0.0f, 0.5f));
-	this->useHint->enableOutline(Color4B::BLACK, 2);
+	this->useHint->enableOutline(Color4B::BLACK, 3);
 	this->useHint->setAnchorPoint(Vec2(0.0f, 0.5f));
 
 	for (int index = 0; index < ItemPreview::MaxStatlines; index++)

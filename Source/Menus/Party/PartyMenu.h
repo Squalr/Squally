@@ -67,6 +67,7 @@ private:
 	std::vector<StatsBars*> partyStatsBars;
 
 	int selectionIndex = 0;
+	bool isInSelectMode = false;
 
 	std::function<void(PlatformerEntity*)> onSelect = nullptr;
 	std::function<void()> onExit = nullptr;

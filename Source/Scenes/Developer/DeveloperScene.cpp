@@ -79,7 +79,6 @@ DeveloperScene::DeveloperScene()
 			- * Quest granting money and health manip (?)
 			- ** Final Boss Fight + Credits (or clear ending)
 		- Make LC final 4_x maps less bad.
-		- Potion auto use bug
 		- Museum polish pass (decor)
 		- Museum rewards (biome and 50/50 reward (TBD))
 		- Out of Combat Attacks:
@@ -108,7 +107,7 @@ DeveloperScene::DeveloperScene()
 		- v Enemy anims for combat begin (temporarily pausing timeline)
 		- v Chapter transitions can be more special 
 		- v Helper Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
-		- V Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
+		- v Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
 			- Tiki anims still broken (bad Spriter implementation strikes again)
 			- Train anims broken (for same reason)
 		* BP

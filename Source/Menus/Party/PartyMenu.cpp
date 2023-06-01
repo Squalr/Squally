@@ -189,6 +189,11 @@ void PartyMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_UP_ARROW, InputEvents::KeyCode::KEY_W }, [=](InputEvents::KeyboardEventArgs* args)
 	{
+		if (args == nullptr || args->isHandled())
+		{
+			return;
+		}
+
 		args->handle();
 		
 		this->trySelectPrevious();
@@ -196,6 +201,16 @@ void PartyMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_LEFT_ARROW, InputEvents::KeyCode::KEY_A }, [=](InputEvents::KeyboardEventArgs* args)
 	{
+		if (args == nullptr || args->isHandled())
+		{
+			return;
+		}
+
+		if (this->isInSelectMode)
+		{
+			this->onCancelClick();
+		}
+
 		args->handle();
 		
 		this->trySelectPrevious();
@@ -203,6 +218,11 @@ void PartyMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_RIGHT_ARROW, InputEvents::KeyCode::KEY_D }, [=](InputEvents::KeyboardEventArgs* args)
 	{
+		if (args == nullptr || args->isHandled())
+		{
+			return;
+		}
+
 		args->handle();
 		
 		this->trySelectNext();
@@ -210,6 +230,11 @@ void PartyMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_DOWN_ARROW, InputEvents::KeyCode::KEY_S }, [=](InputEvents::KeyboardEventArgs* args)
 	{
+		if (args == nullptr || args->isHandled())
+		{
+			return;
+		}
+
 		args->handle();
 
 		this->trySelectNext();
@@ -217,6 +242,11 @@ void PartyMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_SPACE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
+		if (args == nullptr || args->isHandled())
+		{
+			return;
+		}
+
 		if (!GameUtils::isVisible(this))
 		{
 			return;
@@ -229,6 +259,11 @@ void PartyMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_ESCAPE }, [=](InputEvents::KeyboardEventArgs* args)
 	{
+		if (args == nullptr || args->isHandled())
+		{
+			return;
+		}
+
 		if (GameUtils::getFocusedNode() != this)
 		{
 			return;
@@ -250,13 +285,14 @@ void PartyMenu::open()
 {
 	this->buildAllStats();
 
-	for (auto next : this->partyStatsBars)
+	for (StatsBars* next : this->partyStatsBars)
 	{
 		next->disableInteraction();
 		next->setClickCallback(nullptr);
 	}
 
 	// State for a normal open
+	this->isInSelectMode = false;
 	this->onSelect = nullptr;
 	this->onExit = nullptr;
 	this->cancelButton->setVisible(false);
@@ -272,7 +308,7 @@ void PartyMenu::openForSelection(std::string iconResource, int count, std::funct
 	this->countString->setString(std::to_string(count));
 	this->chooseTargetItemIcon->initWithFile(iconResource);
 
-	for (auto next : this->partyStatsBars)
+	for (StatsBars* next : this->partyStatsBars)
 	{
 		if (canSelect != nullptr && !canSelect(next->getStatsTarget()))
 		{
@@ -305,6 +341,7 @@ void PartyMenu::openForSelection(std::string iconResource, int count, std::funct
 	this->trySelectNext();
 
 	// State for a selection based open
+	this->isInSelectMode = true;
 	this->onSelect = onSelect;
 	this->onExit = onExit;
 	this->cancelButton->setVisible(true);

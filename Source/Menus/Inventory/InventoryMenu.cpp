@@ -143,12 +143,24 @@ void InventoryMenu::initializeListeners()
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_D, InputEvents::KeyCode::KEY_RIGHT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
+		if (args == nullptr || args->isHandled())
+		{
+			return;
+		}
+
+		args->handle();
 		this->filterMenu->unfocus();
 		this->itemMenu->focus();
 	});
 
 	this->whenKeyPressed({ InputEvents::KeyCode::KEY_A, InputEvents::KeyCode::KEY_LEFT_ARROW }, [=](InputEvents::KeyboardEventArgs* args)
 	{
+		if (args == nullptr || args->isHandled())
+		{
+			return;
+		}
+		
+		args->handle();
 		this->filterMenu->focus();
 		this->itemMenu->unfocus();
 	});
