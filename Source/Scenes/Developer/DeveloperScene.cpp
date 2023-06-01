@@ -79,8 +79,8 @@ DeveloperScene::DeveloperScene()
 			- * Quest granting money and health manip (?)
 			- ** Final Boss Fight + Credits (or clear ending)
 		- Make LC final 4_x maps less bad.
-		- Museum polish pass (decor)
 		- Potion auto use bug
+		- Museum polish pass (decor)
 		- Museum rewards (biome and 50/50 reward (TBD))
 		- Out of Combat Attacks:
 			- Skeletal archer out of combat

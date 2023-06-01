@@ -120,4 +120,12 @@ public:
 	static const std::string SaveKeyCollectableAnimalWorm;
 	static const std::string SaveKeyCollectableAnimalYeti;
 	static const std::string SaveKeyCollectableAnimalZebra;
+	
+	static const std::string SaveKeyItemAGiven;
+	static const std::string SaveKeyItemBGiven;
+	static const std::string SaveKeyItemCGiven;
+	static const std::string SaveKeyItemDGiven;
+	static const std::string SaveKeyItemEGiven;
+	static const std::string SaveKeyItemFGiven;
+	static const std::string SaveKeyItemGGiven;
 };

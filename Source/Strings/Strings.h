@@ -37179,6 +37179,51 @@ namespace Strings
 		virtual ~Platformer_Quests_LambdaCrypts_RezLazarus_Scrappy_A_MissingGems3() = default;
 	};
 
+	class Platformer_Quests_Museum_Generic_A_Missing : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_Museum_Generic_A_Missing();
+		virtual ~Platformer_Quests_Museum_Generic_A_Missing() = default;
+	};
+
+	class Platformer_Quests_Museum_Generic_B_TakeThis : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_Museum_Generic_B_TakeThis();
+		virtual ~Platformer_Quests_Museum_Generic_B_TakeThis() = default;
+	};
+
+	class Platformer_Quests_Museum_Generic_C_Thanks : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_Museum_Generic_C_Thanks();
+		virtual ~Platformer_Quests_Museum_Generic_C_Thanks() = default;
+	};
+
 	class Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_A_NewChallengersApproach : public LocalizedString
 	{
 	public:

@@ -114,3 +114,11 @@ const std::string SaveKeys::SaveKeyCollectableAnimalYeti = "SAVE_KEY_ANIMAL_YETI
 const std::string SaveKeys::SaveKeyCollectableAnimalZebra = "SAVE_KEY_ANIMAL_ZEBRA";
 const std::string SaveKeys::SaveKeyLastSelectedScriptIndexPrefix = "SAVE_KEY_SCRIPT_INDEX_";
 const std::string SaveKeys::SaveKeyScriptPrefix = ""; // "SAVE_KEY_SCRIPT_"; // Prefix is left empty for backwards compatibility, although it would be more correct to have one
+
+const std::string SaveKeys::SaveKeyItemAGiven = "MUSEUM_A_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemBGiven = "MUSEUM_B_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemCGiven = "MUSEUM_C_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemDGiven = "MUSEUM_D_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemEGiven = "MUSEUM_E_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemFGiven = "MUSEUM_F_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemGGiven = "MUSEUM_G_ITEM_GIVEN";

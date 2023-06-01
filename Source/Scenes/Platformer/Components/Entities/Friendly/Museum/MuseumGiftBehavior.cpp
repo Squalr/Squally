@@ -2,6 +2,7 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Localization/ConstantString.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
@@ -23,13 +24,6 @@
 using namespace cocos2d;
 
 const std::string MuseumGiftBehavior::MapKey = "museum-gift";
-const std::string MuseumGiftBehavior::SaveKeyItemAGiven = "MUSEUM_A_ITEM_GIVEN";
-const std::string MuseumGiftBehavior::SaveKeyItemBGiven = "MUSEUM_B_ITEM_GIVEN";
-const std::string MuseumGiftBehavior::SaveKeyItemCGiven = "MUSEUM_C_ITEM_GIVEN";
-const std::string MuseumGiftBehavior::SaveKeyItemDGiven = "MUSEUM_D_ITEM_GIVEN";
-const std::string MuseumGiftBehavior::SaveKeyItemEGiven = "MUSEUM_E_ITEM_GIVEN";
-const std::string MuseumGiftBehavior::SaveKeyItemFGiven = "MUSEUM_F_ITEM_GIVEN";
-const std::string MuseumGiftBehavior::SaveKeyItemGGiven = "MUSEUM_G_ITEM_GIVEN";
 const std::string MuseumGiftBehavior::PropertyMuseumZone = "museum-zone";
 
 MuseumGiftBehavior* MuseumGiftBehavior::create(GameObject* owner)
@@ -119,12 +113,12 @@ void MuseumGiftBehavior::setPostText()
 
 void MuseumGiftBehavior::setPostTextEF()
 {
-	if (this->entity->loadObjectStateOrDefault(MuseumGiftBehavior::SaveKeyItemAGiven, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemAGiven, Value(false)).asBool())
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
+				Strings::Platformer_Quests_Museum_Generic_C_Thanks::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -143,21 +137,23 @@ void MuseumGiftBehavior::setPostTextEF()
 		return;
 	}
 
-	bool hasNecessaryAnimals =
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCat, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDog, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalFox, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBear, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCow, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMonkey, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWhale, Value(false)).asBool();
+	int collectedAnimalCount =
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCat, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDog, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalFox, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBear, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCow, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMonkey, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWhale, Value(false)).asBool();
+	const int collectedAnimalCountMax = 7;
 	
-	if (hasNecessaryAnimals)
+	if (collectedAnimalCount < collectedAnimalCountMax)
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
+				Strings::Platformer_Quests_Museum_Generic_A_Missing::create()
+					->setStringReplacementVariables({ ConstantString::create(std::to_string(collectedAnimalCountMax - collectedAnimalCount)), Strings::Platformer_MapNames_EndianForest_EndianForest::create() }),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -179,7 +175,7 @@ void MuseumGiftBehavior::setPostTextEF()
 	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::TODO::create(),
+			Strings::Platformer_Quests_Museum_Generic_B_TakeThis::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -188,7 +184,9 @@ void MuseumGiftBehavior::setPostTextEF()
 			),
 			[=]()
 			{
-					this->setPostText();
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
+				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemAGiven, Value(true));
+				this->setPostText();
 			},
 			Voices::GetNextVoiceMedium(),
 			true
@@ -198,12 +196,12 @@ void MuseumGiftBehavior::setPostTextEF()
 
 void MuseumGiftBehavior::setPostTextUR()
 {
-	if (this->entity->loadObjectStateOrDefault(MuseumGiftBehavior::SaveKeyItemBGiven, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemBGiven, Value(false)).asBool())
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
+				Strings::Platformer_Quests_Museum_Generic_C_Thanks::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -222,22 +220,24 @@ void MuseumGiftBehavior::setPostTextUR()
 		return;
 	}
 
-	bool hasNecessaryAnimals =
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDuck, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSquid, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalHippo, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSnail, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMouse, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSquirrel, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalGiraffe, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalZebra, Value(false)).asBool();
+	int collectedAnimalCount =
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDuck, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSquid, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalHippo, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSnail, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMouse, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSquirrel, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalGiraffe, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalZebra, Value(false)).asBool();
+	const int collectedAnimalCountMax = 8;
 	
-	if (hasNecessaryAnimals)
+	if (collectedAnimalCount < collectedAnimalCountMax)
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
+				Strings::Platformer_Quests_Museum_Generic_A_Missing::create()
+					->setStringReplacementVariables({ ConstantString::create(std::to_string(collectedAnimalCountMax - collectedAnimalCount)), Strings::Platformer_MapNames_UnderflowRuins_UnderflowRuins::create() }),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -259,7 +259,7 @@ void MuseumGiftBehavior::setPostTextUR()
 	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::TODO::create(),
+			Strings::Platformer_Quests_Museum_Generic_B_TakeThis::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -268,7 +268,9 @@ void MuseumGiftBehavior::setPostTextUR()
 			),
 			[=]()
 			{
-					this->setPostText();
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
+				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemBGiven, Value(true));
+				this->setPostText();
 			},
 			Voices::GetNextVoiceMedium(),
 			true
@@ -278,12 +280,12 @@ void MuseumGiftBehavior::setPostTextUR()
 
 void MuseumGiftBehavior::setPostTextDM()
 {
-	if (this->entity->loadObjectStateOrDefault(MuseumGiftBehavior::SaveKeyItemCGiven, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemCGiven, Value(false)).asBool())
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
+				Strings::Platformer_Quests_Museum_Generic_C_Thanks::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -302,21 +304,23 @@ void MuseumGiftBehavior::setPostTextDM()
 		return;
 	}
 
-	bool hasNecessaryAnimals =
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalPanda, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSkunk, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalTiger, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBird, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalTurtle, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalRaccoon, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalRhino, Value(false)).asBool();
+	int collectedAnimalCount =
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalPanda, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSkunk, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalTiger, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBird, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalTurtle, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalRaccoon, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalRhino, Value(false)).asBool();
+	const int collectedAnimalCountMax = 7;
 	
-	if (hasNecessaryAnimals)
+	if (collectedAnimalCount < collectedAnimalCountMax)
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
+				Strings::Platformer_Quests_Museum_Generic_A_Missing::create()
+					->setStringReplacementVariables({ ConstantString::create(std::to_string(collectedAnimalCountMax - collectedAnimalCount)), Strings::Platformer_MapNames_DataMines_DataMines::create() }),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -338,7 +342,7 @@ void MuseumGiftBehavior::setPostTextDM()
 	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::TODO::create(),
+			Strings::Platformer_Quests_Museum_Generic_B_TakeThis::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -347,7 +351,9 @@ void MuseumGiftBehavior::setPostTextDM()
 			),
 			[=]()
 			{
-					this->setPostText();
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
+				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemCGiven, Value(true));
+				this->setPostText();
 			},
 			Voices::GetNextVoiceMedium(),
 			true
@@ -357,12 +363,12 @@ void MuseumGiftBehavior::setPostTextDM()
 
 void MuseumGiftBehavior::setPostTextCV()
 {
-	if (this->entity->loadObjectStateOrDefault(MuseumGiftBehavior::SaveKeyItemDGiven, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemDGiven, Value(false)).asBool())
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
+				Strings::Platformer_Quests_Museum_Generic_C_Thanks::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -381,21 +387,23 @@ void MuseumGiftBehavior::setPostTextCV()
 		return;
 	}
 
-	bool hasNecessaryAnimals =
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBeaver, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalKoala, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalHorse, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalHedgehog, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalPig, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalParrot, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSheep, Value(false)).asBool();
+	int collectedAnimalCount =
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBeaver, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalKoala, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalHorse, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalHedgehog, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalPig, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalParrot, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSheep, Value(false)).asBool();
+	const int collectedAnimalCountMax = 7;
 	
-	if (hasNecessaryAnimals)
+	if (collectedAnimalCount < collectedAnimalCountMax)
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
+				Strings::Platformer_Quests_Museum_Generic_A_Missing::create()
+					->setStringReplacementVariables({ ConstantString::create(std::to_string(collectedAnimalCountMax - collectedAnimalCount)), Strings::Platformer_MapNames_CastleValgrind_CastleValgrind::create() }),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -417,7 +425,7 @@ void MuseumGiftBehavior::setPostTextCV()
 	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::TODO::create(),
+			Strings::Platformer_Quests_Museum_Generic_B_TakeThis::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -426,7 +434,9 @@ void MuseumGiftBehavior::setPostTextCV()
 			),
 			[=]()
 			{
-					this->setPostText();
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
+				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemDGiven, Value(true));
+				this->setPostText();
 			},
 			Voices::GetNextVoiceMedium(),
 			true
@@ -436,12 +446,12 @@ void MuseumGiftBehavior::setPostTextCV()
 
 void MuseumGiftBehavior::setPostTextLC()
 {
-	if (this->entity->loadObjectStateOrDefault(MuseumGiftBehavior::SaveKeyItemDGiven, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemEGiven, Value(false)).asBool())
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
+				Strings::Platformer_Quests_Museum_Generic_C_Thanks::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -460,21 +470,23 @@ void MuseumGiftBehavior::setPostTextLC()
 		return;
 	}
 
-	bool hasNecessaryAnimals =
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalLion, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBull, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWorm, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalChicken, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMountainLion, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBat, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWolf, Value(false)).asBool();
+	int collectedAnimalCount =
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalLion, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBull, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWorm, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalChicken, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMountainLion, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBat, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWolf, Value(false)).asBool();
+	const int collectedAnimalCountMax = 7;
 	
-	if (hasNecessaryAnimals)
+	if (collectedAnimalCount < collectedAnimalCountMax)
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
+				Strings::Platformer_Quests_Museum_Generic_A_Missing::create()
+					->setStringReplacementVariables({ ConstantString::create(std::to_string(collectedAnimalCountMax - collectedAnimalCount)), Strings::Platformer_MapNames_LambdaCrypts_LambdaCrypts::create() }),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -496,7 +508,7 @@ void MuseumGiftBehavior::setPostTextLC()
 	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::TODO::create(),
+			Strings::Platformer_Quests_Museum_Generic_B_TakeThis::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -505,7 +517,9 @@ void MuseumGiftBehavior::setPostTextLC()
 			),
 			[=]()
 			{
-					this->setPostText();
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
+				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemEGiven, Value(true));
+				this->setPostText();
 			},
 			Voices::GetNextVoiceMedium(),
 			true
@@ -515,12 +529,12 @@ void MuseumGiftBehavior::setPostTextLC()
 
 void MuseumGiftBehavior::setPostTextFF()
 {
-	if (this->entity->loadObjectStateOrDefault(MuseumGiftBehavior::SaveKeyItemEGiven, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemFGiven, Value(false)).asBool())
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
+				Strings::Platformer_Quests_Museum_Generic_C_Thanks::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -539,21 +553,23 @@ void MuseumGiftBehavior::setPostTextFF()
 		return;
 	}
 
-	bool hasNecessaryAnimals =
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalTucan, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalLizard, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBee, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalLadybug, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDinosaur, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSnake, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCrocodile, Value(false)).asBool();
+	int collectedAnimalCount =
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalTucan, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalLizard, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBee, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalLadybug, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDinosaur, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSnake, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCrocodile, Value(false)).asBool();
+	const int collectedAnimalCountMax = 7;
 	
-	if (hasNecessaryAnimals)
+	if (collectedAnimalCount < collectedAnimalCountMax)
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
+				Strings::Platformer_Quests_Museum_Generic_A_Missing::create()
+					->setStringReplacementVariables({ ConstantString::create(std::to_string(collectedAnimalCountMax - collectedAnimalCount)), Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create() }),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -575,7 +591,7 @@ void MuseumGiftBehavior::setPostTextFF()
 	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::TODO::create(),
+			Strings::Platformer_Quests_Museum_Generic_B_TakeThis::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -584,7 +600,9 @@ void MuseumGiftBehavior::setPostTextFF()
 			),
 			[=]()
 			{
-					this->setPostText();
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
+				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemFGiven, Value(true));
+				this->setPostText();
 			},
 			Voices::GetNextVoiceMedium(),
 			true
@@ -594,12 +612,12 @@ void MuseumGiftBehavior::setPostTextFF()
 
 void MuseumGiftBehavior::setPostTextBP()
 {
-	if (this->entity->loadObjectStateOrDefault(MuseumGiftBehavior::SaveKeyItemFGiven, Value(false)).asBool())
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemGGiven, Value(false)).asBool())
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
+				Strings::Platformer_Quests_Museum_Generic_C_Thanks::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -618,21 +636,23 @@ void MuseumGiftBehavior::setPostTextBP()
 		return;
 	}
 
-	bool hasNecessaryAnimals =
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBlowfish, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalKillerWhale, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBunny, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalPenguin, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalReindeer, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalYeti, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalGoat, Value(false)).asBool();
+	int collectedAnimalCount =
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBlowfish, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalKillerWhale, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBunny, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalPenguin, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalReindeer, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalYeti, Value(false)).asBool() +
+		(int)SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalGoat, Value(false)).asBool();
+	const int collectedAnimalCountMax = 7;
 	
-	if (hasNecessaryAnimals)
+	if (collectedAnimalCount < collectedAnimalCountMax)
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
+				Strings::Platformer_Quests_Museum_Generic_A_Missing::create()
+					->setStringReplacementVariables({ ConstantString::create(std::to_string(collectedAnimalCountMax - collectedAnimalCount)), Strings::Platformer_MapNames_BallmerPeaks_BallmerPeaks::create() }),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -654,7 +674,7 @@ void MuseumGiftBehavior::setPostTextBP()
 	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::TODO::create(),
+			Strings::Platformer_Quests_Museum_Generic_B_TakeThis::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -663,7 +683,9 @@ void MuseumGiftBehavior::setPostTextBP()
 			),
 			[=]()
 			{
-					this->setPostText();
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
+				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemGGiven, Value(true));
+				this->setPostText();
 			},
 			Voices::GetNextVoiceMedium(),
 			true
