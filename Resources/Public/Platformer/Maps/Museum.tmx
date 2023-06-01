@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="166" nextobjectid="1238">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="48" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="174" nextobjectid="1295">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -257,37 +257,39 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
+ <objectgroup id="173" name="water -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1287" name="water" type="object" x="-387.167" y="827.424" width="6763" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="102" name="stairs L -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
+ <objectgroup id="172" name="water -7">
+  <properties>
+   <property name="depth" type="float" value="-448"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1286" name="water" type="object" x="-386.167" y="850.424" width="6763" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="115" name="stairs L -6">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1194" name="blue-grass" type="terrain" x="254" y="732.757" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1195" name="dry-grass" type="terrain" x="886" y="734.758" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1196" name="caverns" type="terrain" x="1526" y="724.757" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1197" name="dark-grass" type="terrain" x="2178" y="726.757" width="762" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
   <object id="1198" name="shade-grass" type="terrain" x="3196" y="736.757" width="778" height="690.485">
    <properties>
     <property name="collision" value="none"/>
@@ -303,10 +305,17 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1201" name="void" type="terrain" x="5394" y="732.757" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
+  <object id="1244" name="blue-grass" type="terrain" x="680" y="726">
+   <polygon points="82,6 88,64 14,128 -130.136,549.958 -1212.07,548.812 -1211.58,-392.262 -995.16,-603.02 -915.628,-395.548 -722.04,-395.453 -540.668,-143.965 -380.667,4.66667"/>
+  </object>
+  <object id="1265" name="dry-grass" type="terrain" x="1330.67" y="728">
+   <polygon points="90.7448,-84 108.557,120.667 127.624,266.674 110.034,464.667 63.3215,654.081 -165.695,710.625 -464.598,642.145 -466.651,461.372 -482.189,278.472 -467.078,98.5967 -439.832,6.66667 -217.326,1.37172 -166.684,-83.2656"/>
+  </object>
+  <object id="1280" name="caverns" type="terrain" x="1982.67" y="720">
+   <polygon points="76.0781,-28 108.557,120.667 127.624,266.674 110.034,464.667 63.3215,654.081 -165.695,710.625 -464.598,642.145 -466.651,461.372 -475.522,277.139 -467.078,98.5967 -457.465,-38.8667 -434.499,-140 -209.326,-137.295 -181.351,-35.2656"/>
+  </object>
+  <object id="1284" name="dark-grass" type="terrain" x="2771.33" y="816.667">
+   <polygon points="68.034,-1.333 37.3215,636.081 -191.695,692.625 -594.598,660.145 -589.522,-137.528 -271.326,-141.962 -138.018,-209.932 263.565,-208.404 264.437,-134.21 227.882,-114.312 168.384,-126.841 84.1185,-93.2821"/>
   </object>
  </objectgroup>
  <objectgroup id="165" name="objects -6">
@@ -329,27 +338,17 @@
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1206" name="caged-tiger" type="object" x="2328" y="616" width="196" height="112">
+  <object id="1208" name="caged-giraffe" type="object" x="908" y="622.667" width="196" height="112">
    <properties>
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1208" name="caged-squid" type="object" x="1044" y="616" width="196" height="112">
+  <object id="1218" name="caged-panda" type="object" x="1854.67" y="577.333" width="196" height="112">
    <properties>
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1210" name="caged-worm" type="object" x="2636" y="612" width="196" height="112">
-   <properties>
-    <property name="is-museum-display" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1218" name="caged-bat" type="object" x="1676" y="616" width="196" height="112">
-   <properties>
-    <property name="is-museum-display" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1226" name="caged-tucan" type="object" x="411.212" y="624.848" width="196" height="112">
+  <object id="1226" name="caged-cat" type="object" x="335.212" y="626.848" width="196" height="112">
    <properties>
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
@@ -364,6 +363,47 @@
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="1242" name="caged-dog" type="object" x="526" y="624" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1245" name="caged-monkey" type="object" x="-234.364" y="222.788" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1261" name="caged-zebra" type="object" x="1191.33" y="534.667" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1267" name="caged-rhino" type="object" x="1554" y="469.333" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1291" name="caged-parrot" type="object" x="2718" y="497.333" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1293" name="caged-sheep" type="object" x="2262" y="566.667" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="171" name="water -6">
+  <properties>
+   <property name="depth" type="float" value="-384"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1254" name="water" type="object" x="-385.667" y="871.424" width="6763" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="156" name="terrain bg -5">
   <properties>
@@ -376,26 +416,6 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1095" name="blue-grass" type="terrain" x="254.667" y="781.424" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1096" name="dry-grass" type="terrain" x="888" y="784.091" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1097" name="caverns" type="terrain" x="1526.67" y="773.424" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1098" name="dark-grass" type="terrain" x="2173.33" y="777.424" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
   <object id="1099" name="shade-grass" type="terrain" x="3458.67" y="782.757" width="512" height="690.485">
    <properties>
     <property name="collision" value="none"/>
@@ -411,7 +431,22 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1102" name="void" type="terrain" x="5393.33" y="776.091" width="512" height="690.485">
+  <object id="1271" name="dry-grass" type="terrain" x="1277.58" y="778.667">
+   <polygon points="29.1645,8 75.2167,126 78.7942,264.007 84.4568,410 33.6838,512.748 -154.955,563.958 -304.282,511.479 -302.223,414.706 -305.126,231.805 -303.321,123.93 -274.415,6.66667"/>
+  </object>
+  <object id="1283" name="caverns" type="terrain" x="1981.33" y="852">
+   <polygon points="76.0781,-28 108.557,120.667 127.624,266.674 110.034,464.667 63.3215,654.081 -165.695,710.625 -464.598,642.145 -466.651,461.372 -475.522,277.139 -467.078,98.5967 -457.465,-38.8667 -434.499,-140 -209.326,-137.295 -181.351,-35.2656"/>
+  </object>
+  <object id="1289" name="dark-grass" type="terrain" x="2612.61" y="772">
+   <polygon points="40.3437,8 104.048,126 108.997,264.007 116.83,410 46.5953,512.748 -214.352,563.958 -420.919,511.479 -418.069,414.706 -422.086,231.805 -419.589,123.93 -379.603,6.66667"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="170" name="water -5">
+  <properties>
+   <property name="depth" type="float" value="-320"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1253" name="water" type="object" x="-363" y="890.091" width="6711" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -422,17 +457,12 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1163" name="caged-blowfish" type="object" x="1043.33" y="673.333" width="196" height="112">
+  <object id="1163" name="caged-squirrel" type="object" x="1043.33" y="673.333" width="196" height="112">
    <properties>
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1168" name="caged-cow" type="object" x="1675.33" y="672" width="196" height="112">
-   <properties>
-    <property name="is-museum-display" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1173" name="caged-fox" type="object" x="2327.33" y="668" width="196" height="112">
+  <object id="1168" name="caged-skunk" type="object" x="1559.33" y="600" width="196" height="112">
    <properties>
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
@@ -447,11 +477,6 @@
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1219" name="caged-squirrel" type="object" x="412" y="676" width="196" height="112">
-   <properties>
-    <property name="is-museum-display" type="bool" value="true"/>
-   </properties>
-  </object>
   <object id="1223" name="caged-dinosaur" type="object" x="4260.67" y="676" width="196" height="112">
    <properties>
     <property name="is-museum-display" type="bool" value="true"/>
@@ -462,33 +487,28 @@
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="1282" name="caged-bat" type="object" x="1831.33" y="709.333" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1292" name="caged-hedgehog" type="object" x="2439.33" y="670.667" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1294" name="caged-beaver" type="object" x="2242" y="668" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="113" name="stairs L -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="940" name="caverns" type="terrain" x="1524.93" y="830.092" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
   <object id="1001" name="shade-grass" type="terrain" x="3458" y="828.757" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1014" name="dry-grass" type="terrain" x="883.564" y="831.758" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1018" name="blue-grass" type="terrain" x="252.777" y="834.122" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1052" name="dark-grass" type="terrain" x="2172.67" y="832.091" width="512" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -503,10 +523,8 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1064" name="void" type="terrain" x="5393" y="833.09" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
+  <object id="1246" name="blue-grass" type="terrain" x="634.364" y="829.485">
+   <polygon points="82,6 88,64 14,128 -130.136,549.958 -1212.07,548.812 -1238.85,-334.686 -1018.66,-316.76 -711.252,-91.2106 -529.273,-93.6103 -380.667,4.66667"/>
   </object>
  </objectgroup>
  <objectgroup id="161" name="objects -4">
@@ -514,22 +532,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1155" name="caged-bear" type="object" x="411" y="723" width="196" height="112">
-   <properties>
-    <property name="is-museum-display" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1162" name="caged-bull" type="object" x="1042" y="722.667" width="196" height="112">
-   <properties>
-    <property name="is-museum-display" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1167" name="caged-crocodile" type="object" x="1679" y="722" width="196" height="112">
-   <properties>
-    <property name="is-museum-display" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1172" name="caged-giraffe" type="object" x="2328.67" y="722.667" width="196" height="112">
+  <object id="1155" name="caged-fox" type="object" x="411" y="723" width="196" height="112">
    <properties>
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
@@ -554,6 +557,22 @@
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="1248" name="caged-cow" type="object" x="-88" y="620" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="169" name="water -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1252" name="water" type="object" x="-337.667" y="912.758" width="6655" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="151" name="pillar -3">
   <properties>
@@ -572,27 +591,12 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="938" name="caverns" type="terrain" x="1525.3" y="889.757" width="512" height="690.485">
+  <object id="938" name="caverns" type="terrain" x="1541.3" y="889.757" width="477.333" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="1000" name="shade-grass" type="terrain" x="3458.33" y="883.091" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1015" name="dry-grass" type="terrain" x="883.94" y="889.757" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1019" name="blue-grass" type="terrain" x="252.819" y="889.788" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1051" name="dark-grass" type="terrain" x="2173" y="886.424" width="512" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -607,10 +611,14 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1063" name="void" type="terrain" x="5393.33" y="887.424" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
+  <object id="1249" name="blue-grass" type="terrain" x="396.182" y="881.129">
+   <polygon points="32.7898,11.4452 98.1087,259.615 29.2225,580.291 -319.69,578.931 -387.704,267.268 -308.526,9.5377"/>
+  </object>
+  <object id="1276" name="dry-grass" type="terrain" x="1388.24" y="885.917">
+   <polygon points="31.1866,8.89959 59.9098,144.169 63.7353,297.694 69.7905,460.104 36.0192,570.406 -165.699,627.374 -327.886,570.477 -332.813,462.822 -317.382,257.871 -333.987,137.866 -293.442,7.41633"/>
+  </object>
+  <object id="1290" name="dark-grass" type="terrain" x="2598.6" y="842.667">
+   <polygon points="43.3382,8 111.771,126 117.087,264.007 125.502,410 50.0538,512.748 -230.262,563.958 -452.16,511.479 -449.1,414.706 -453.414,231.805 -450.732,123.93 -407.778,6.66667"/>
   </object>
  </objectgroup>
  <objectgroup id="162" name="objects -3">
@@ -618,17 +626,12 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1156" name="caged-beaver" type="object" x="414" y="779" width="196" height="112">
+  <object id="1156" name="caged-bear" type="object" x="152" y="777" width="196" height="112">
    <properties>
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1161" name="caged-bunny" type="object" x="1040.67" y="777.333" width="196" height="112">
-   <properties>
-    <property name="is-museum-display" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1171" name="caged-goat" type="object" x="2331.33" y="778.667" width="196" height="112">
+  <object id="1171" name="caged-koala" type="object" x="2426" y="741.334" width="196" height="112">
    <properties>
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
@@ -653,9 +656,35 @@
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1222" name="caged-lion" type="object" x="1680.67" y="782.667" width="196" height="112">
+  <object id="1222" name="caged-rhino" type="object" x="1790" y="781.334" width="196" height="112">
    <properties>
     <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1272" name="caged-mouse" type="object" x="1214.67" y="778.667" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1281" name="caged-raccoon" type="object" x="1572.67" y="778.667" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1288" name="caged-horse" type="object" x="2216.67" y="738.667" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="168" name="water -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1251" name="water" type="object" x="-302" y="936.758" width="6591" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -664,22 +693,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="937" name="caverns" type="terrain" x="1525.61" y="943.939" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
   <object id="999" name="shade-grass" type="terrain" x="3458.33" y="939.424" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1016" name="dry-grass" type="terrain" x="884.576" y="946.273" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1020" name="blue-grass" type="terrain" x="252.455" y="943.636" width="512" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -699,10 +713,8 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1062" name="void" type="terrain" x="5393.33" y="943.757" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
+  <object id="1279" name="dry-grass" type="terrain" x="1195.02" y="937.333">
+   <polygon points="44.2365,8 114.088,126 119.514,264.007 128.103,410 51.0913,512.748 -235.035,563.958 -461.533,511.479 -458.409,414.706 -462.813,231.805 -460.075,123.93 -416.231,6.66667"/>
   </object>
  </objectgroup>
  <objectgroup id="163" name="objects -2">
@@ -710,22 +722,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1157" name="caged-bee" type="object" x="413" y="831" width="196" height="112">
-   <properties>
-    <property name="is-museum-display" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1160" name="caged-cat" type="object" x="1041" y="836" width="196" height="112">
-   <properties>
-    <property name="is-museum-display" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1165" name="caged-dog" type="object" x="1676.67" y="833.333" width="196" height="112">
-   <properties>
-    <property name="is-museum-display" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1170" name="caged-zebra" type="object" x="2330" y="836" width="196" height="112">
+  <object id="1170" name="caged-pig" type="object" x="2330" y="836" width="196" height="112">
    <properties>
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
@@ -750,33 +747,39 @@
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
   </object>
+  <object id="1266" name="caged-snail" type="object" x="1022" y="834.667" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1277" name="caged-hippo" type="object" x="791.333" y="836" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="167" name="water -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1250" name="water" type="object" x="-265" y="968.758" width="6525" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="110" name="stairs L -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="936" name="caverns" type="terrain" x="1525.48" y="998.637" width="512" height="690.485">
+  <object id="936" name="caverns" type="terrain" x="1620.15" y="1014.64" width="313.333" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="998" name="shade-grass" type="terrain" x="3459" y="998.423" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1017" name="dry-grass" type="terrain" x="884.455" y="998.304" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1021" name="blue-grass" type="terrain" x="252" y="997.001" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1049" name="dark-grass" type="terrain" x="2173" y="1005.76" width="512" height="690.485">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -791,10 +794,11 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1061" name="void" type="terrain" x="5394" y="1002.75" width="512" height="690.485">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
+  <object id="1257" name="blue-grass" type="terrain" x="636.443" y="1009">
+   <polygon points="46.7448,8 182.557,128 208.291,222.007 181.367,414 53.9882,512.748 -248.362,563.958 -543.265,512.812 -706.651,420.039 -709.522,193.805 -594.411,75.9298 -439.832,6.66667"/>
+  </object>
+  <object id="1259" name="dry-grass" type="terrain" x="1378" y="1010">
+   <polygon points="46.7448,8 120.557,126 126.291,264.007 135.367,410 53.9882,512.748 -248.362,563.958 -543.265,512.812 -550.651,416.039 -527.522,231.805 -552.411,123.93 -439.832,6.66667"/>
   </object>
  </objectgroup>
  <objectgroup id="164" name="objects -1">
@@ -802,16 +806,6 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1159" name="caged-chicken" type="object" x="1043" y="885" width="196" height="112">
-   <properties>
-    <property name="is-museum-display" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1169" name="caged-hedgehog" type="object" x="2330" y="893.333" width="196" height="112">
-   <properties>
-    <property name="is-museum-display" type="bool" value="true"/>
-   </properties>
-  </object>
   <object id="1174" name="caged-ladybug" type="object" x="3621.5" y="887.333" width="196" height="112">
    <properties>
     <property name="is-museum-display" type="bool" value="true"/>
@@ -827,12 +821,7 @@
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1217" name="caged-pig" type="object" x="1682" y="890" width="196" height="112">
-   <properties>
-    <property name="is-museum-display" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="1221" name="caged-duck" type="object" x="412.667" y="882.545" width="196" height="112">
+  <object id="1217" name="caged-turtle" type="object" x="1682" y="902" width="196" height="112">
    <properties>
     <property name="is-museum-display" type="bool" value="true"/>
    </properties>
@@ -840,6 +829,32 @@
   <object id="1224" name="caged-reindeer" type="object" x="4915.33" y="896" width="196" height="112">
    <properties>
     <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1255" name="caged-squid" type="object" x="904" y="906" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1258" name="caged-whale" type="object" x="271.667" y="905.545" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="1260" name="caged-duck" type="object" x="1142" y="906" width="196" height="112">
+   <properties>
+    <property name="is-museum-display" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="166" name="water -1" visible="0">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1239" name="water" type="object" x="-231" y="996.758" width="6453" height="690.485">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -893,7 +908,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1076" name="finch" type="entity" x="2344.18" y="921.485" width="128" height="128">
+  <object id="1076" name="piper" type="entity" x="2653.51" y="918.818" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket,museum-gift"/>
     <property name="flip-x" type="bool" value="false"/>
@@ -909,7 +924,7 @@
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="1231" name="alder" type="entity" x="1068.45" y="922.182" width="128" height="128">
+  <object id="1231" name="alder" type="entity" x="1352.45" y="924.182" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket,museum-gift"/>
     <property name="flip-x" type="bool" value="false"/>
@@ -925,7 +940,7 @@
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="1233" name="cypress" type="entity" x="438" y="922" width="128" height="128">
+  <object id="1233" name="finch" type="entity" x="650.121" y="918.97" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket,museum-gift"/>
     <property name="flip-x" type="bool" value="true"/>
@@ -941,19 +956,11 @@
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="1235" name="jasper" type="entity" x="1709.7" y="919.273" width="128" height="128">
+  <object id="1235" name="jasper" type="entity" x="1941.7" y="917.94" width="128" height="128">
    <properties>
     <property name="components" value="friendly,pick-pocket,museum-gift"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="museum-zone" value="dm"/>
-    <property name="pocket-pool" value="ef-generic"/>
-   </properties>
-  </object>
-  <object id="1236" name="piper" type="entity" x="5585.94" y="922.788" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,pick-pocket"/>
-    <property name="flip-x" type="bool" value="true"/>
-    <property name="museum-zone" value="vs"/>
     <property name="pocket-pool" value="ef-generic"/>
    </properties>
   </object>
@@ -963,7 +970,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="2037.93" y="890.617" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="2705.93" y="919.95" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>

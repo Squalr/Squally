@@ -114,10 +114,6 @@ void MuseumGiftBehavior::setPostText()
 		{
 			this->setPostTextBP();
 		}
-		else if (this->museumZone == "vs")
-		{
-			this->setPostTextVS();
-		}
 	});
 }
 
@@ -149,12 +145,12 @@ void MuseumGiftBehavior::setPostTextEF()
 
 	bool hasNecessaryAnimals =
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCat, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWhale, Value(false)).asBool() &&
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDog, Value(false)).asBool() &&
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalFox, Value(false)).asBool() &&
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBear, Value(false)).asBool() &&
 		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCow, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMonkey, Value(false)).asBool();
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMonkey, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWhale, Value(false)).asBool();
 	
 	if (hasNecessaryAnimals)
 	{
@@ -227,13 +223,14 @@ void MuseumGiftBehavior::setPostTextUR()
 	}
 
 	bool hasNecessaryAnimals =
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCat, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWhale, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDog, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalFox, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBear, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCow, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMonkey, Value(false)).asBool();
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDuck, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSquid, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalHippo, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSnail, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMouse, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSquirrel, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalGiraffe, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalZebra, Value(false)).asBool();
 	
 	if (hasNecessaryAnimals)
 	{
@@ -306,13 +303,13 @@ void MuseumGiftBehavior::setPostTextDM()
 	}
 
 	bool hasNecessaryAnimals =
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCat, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWhale, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDog, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalFox, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBear, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCow, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMonkey, Value(false)).asBool();
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalPanda, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSkunk, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBat, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBird, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalTurtle, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalRaccoon, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalRhino, Value(false)).asBool();
 	
 	if (hasNecessaryAnimals)
 	{
@@ -385,13 +382,13 @@ void MuseumGiftBehavior::setPostTextCV()
 	}
 
 	bool hasNecessaryAnimals =
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCat, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWhale, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDog, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalFox, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBear, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCow, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMonkey, Value(false)).asBool();
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBeaver, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalKoala, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalHorse, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalHedgehog, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalPig, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalParrot, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSheep, Value(false)).asBool();
 	
 	if (hasNecessaryAnimals)
 	{
@@ -464,13 +461,13 @@ void MuseumGiftBehavior::setPostTextLC()
 	}
 
 	bool hasNecessaryAnimals =
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCat, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWhale, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDog, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalFox, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBear, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCow, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMonkey, Value(false)).asBool();
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalLion, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBull, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWorm, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalChicken, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMountainLion, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalTiger, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWolf, Value(false)).asBool();
 	
 	if (hasNecessaryAnimals)
 	{
@@ -543,13 +540,13 @@ void MuseumGiftBehavior::setPostTextFF()
 	}
 
 	bool hasNecessaryAnimals =
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCat, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWhale, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDog, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalFox, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBear, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCow, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMonkey, Value(false)).asBool();
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalTucan, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalLizard, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBee, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalLadybug, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDinosaur, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalSnake, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCrocodile, Value(false)).asBool();
 	
 	if (hasNecessaryAnimals)
 	{
@@ -622,13 +619,13 @@ void MuseumGiftBehavior::setPostTextBP()
 	}
 
 	bool hasNecessaryAnimals =
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCat, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWhale, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDog, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalFox, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBear, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCow, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMonkey, Value(false)).asBool();
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBlowfish, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBunny, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalKillerWhale, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalPenguin, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalReindeer, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalYeti, Value(false)).asBool() &&
+		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalGoat, Value(false)).asBool();
 	
 	if (hasNecessaryAnimals)
 	{
@@ -674,81 +671,3 @@ void MuseumGiftBehavior::setPostTextBP()
 	});
 }
 
-void MuseumGiftBehavior::setPostTextVS()
-{
-	if (this->entity->loadObjectStateOrDefault(MuseumGiftBehavior::SaveKeyItemGGiven, Value(false)).asBool())
-	{
-		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-		{
-			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
-				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->entity, false),
-					DialogueEvents::BuildPreviewNode(&this->squally, true)
-				),
-				[=]()
-				{
-					this->setPostText();
-				},
-				Voices::GetNextVoiceMedium(),
-				true
-			));
-		});
-
-		return;
-	}
-
-	bool hasNecessaryAnimals =
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCat, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalWhale, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalDog, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalFox, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalBear, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalCow, Value(false)).asBool() &&
-		SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCollectableAnimalMonkey, Value(false)).asBool();
-	
-	if (hasNecessaryAnimals)
-	{
-		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-		{
-			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::TODO::create(),
-				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Left,
-					DialogueEvents::BuildPreviewNode(&this->entity, false),
-					DialogueEvents::BuildPreviewNode(&this->squally, true)
-				),
-				[=]()
-				{
-					this->setPostText();
-				},
-				Voices::GetNextVoiceMedium(),
-				true
-			));
-		});
-
-		return;
-	}
-	
-	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-	{
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::TODO::create(),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->entity, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
-			),
-			[=]()
-			{
-					this->setPostText();
-			},
-			Voices::GetNextVoiceMedium(),
-			true
-		));
-	});
-}

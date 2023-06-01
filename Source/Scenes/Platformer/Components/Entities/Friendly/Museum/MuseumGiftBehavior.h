@@ -38,7 +38,6 @@ private:
 	void setPostTextFF();
 	void setPostTextLC();
 	void setPostTextBP();
-	void setPostTextVS();
 
 	PlatformerEntity* entity = nullptr;
 	Scrappy* scrappy = nullptr;

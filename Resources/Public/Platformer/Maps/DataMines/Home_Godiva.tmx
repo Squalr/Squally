@@ -100,7 +100,7 @@
     <property name="transition" value="godiva-top"/>
    </properties>
   </object>
-  <object id="846" name="caged-sheep" type="object" x="1402.8" y="880.066" width="196" height="112"/>
+  <object id="846" name="caged-panda" type="object" x="1402.8" y="880.066" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

@@ -290,7 +290,7 @@
     <property name="send-event" value="arcane-book-taken"/>
    </properties>
   </object>
-  <object id="842" name="caged-panda" type="object" x="379.742" y="1084.07" width="196" height="112"/>
+  <object id="842" name="caged-sheep" type="object" x="379.742" y="1084.07" width="196" height="112"/>
   <object id="843" name="trigger" type="object" x="2569.56" y="-444.79" width="508.878" height="2353.58">
    <properties>
     <property name="send-event" value="meet-grim"/>
