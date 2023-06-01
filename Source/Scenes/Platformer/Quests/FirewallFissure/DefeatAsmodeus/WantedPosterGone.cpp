@@ -112,6 +112,7 @@ void WantedPosterGone::setPostText()
 				),
 				[=]()
 				{
+					this->setPostText();
 				},
 				Voices::GetNextVoiceLong(),
 				true

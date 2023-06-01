@@ -670,7 +670,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,soul,agro,melee"/>
+    <property name="components" value="enemy,soul,agro,goblin-shaman-attack"/>
     <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>

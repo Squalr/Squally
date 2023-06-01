@@ -74,38 +74,43 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- General:
+		- ** Fucking 5x easter eggs
 		- VS
 			- * Quest granting money and health manip (?)
 			- ** Final Boss Fight + Credits (or clear ending)
-		- LC
-			- Make LC final 4_x maps less bad.
-		- Enemy anims for getting hit
-		- Enemy anims for combat begin (temporarily pausing timeline)
-		- 2nd pass on all spells
+		- Make LC final 4_x maps less bad.
 		- Museum polish pass (decor)
+		- Potion auto use bug
 		- Museum rewards (biome and 50/50 reward (TBD))
-		- Chapter transitions can be more special
+		- Out of Combat Attacks:
+			- Skeletal archer out of combat
+			- Abomination archer out of combat
+		- 2nd pass on spellbook spells for balance
 		- Remaining spellbooks + abilities
 			- Nature (needs ability? [DM])
 			- Shadow
 			- Frost
 			- Fire (Possibly use to dispel firewall)
-			- VS special book
+			- ? VS special book
 		- Helpers
 			- Abilities unlocked at certain levels
-			- Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
-		- Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
-			- Tiki anims still broken (bad Spriter implementation strikes again)
-			- Train anims broken (for same reason)
 		- Music
 			- Good desert music (The Letter sucked)
 			- https://michelemclaughlin.com/pages/contact (Preserverence)
 			- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
+		- v Minecart rolling sfx
 		- v Camera harsh leaving camera targets (see FF cinematic)
 		- v No interrupt if damage attack modified to heal
 		- v Mystery crash / ensures when waiting on victory screen (matrix letters task func)
 		- v Crash reports probably are broken (switch to new SendGrid)
-		- ** Fucking 5x easter eggs
+		- v Missing squally breath bubbles
+		- v Enemy anims for getting hit
+		- v Enemy anims for combat begin (temporarily pausing timeline)
+		- v Chapter transitions can be more special 
+		- v Helper Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
+		- V Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
+			- Tiki anims still broken (bad Spriter implementation strikes again)
+			- Train anims broken (for same reason)
 		* BP
 			- Vertical town (maybe two sec  tions, one inaccessible at first to spread out NPCs)
 			- ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
@@ -116,6 +121,14 @@ DeveloperScene::DeveloperScene()
 			- ** Needs animals
 			- ** Needs enemy scripting according to notes on which instructions this zone covers
 			- * Needs enemy scripting according to notes on which instructions this zone covers
+		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
+		- Hexus:
+			- Sanity check card localization (due to art changes)
+			- Can pass after auto-loss
+			- Win a hexus puzzle, next one will show massive row score deltas
+			- Leave button stuck visible after losing a puzzle
+				- Enemy should pre-calc the best play when player has passed (hard)
+			- Maybe hard code some rewards. It'd be nice to get SHL from the puzzle where you learn it.
 	
 	- Localization / Scripting
 		- Lexicon is largely incomplete
@@ -130,8 +143,7 @@ DeveloperScene::DeveloperScene()
 		v If ever re-instating Arabic, Ctrl+F all "ar": "! and "ar": ". strings to find places where punctuation was messed up and fix them
 		v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
 	
-	- Mini-Games:
-		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
+	- New Mini-Games:
 		- A few 3Q Perspective maps
 			- Invisible helpers. Some way to pull helpers into combat
 		- Cipher:
@@ -142,13 +154,6 @@ DeveloperScene::DeveloperScene()
 			- isometric squally, and some form of strategy element that isn't prone to trial-and-error.
 				- Another play is to make these actual "maps" that you can pass through.
 			- Could make a mini-game in towns? Inns? Where? Maybe just one machine in a zone of my choosing? (I kinda prefer DM or CV)
-		- Hexus:
-			- Sanity check card localization (due to art changes)
-			- Can pass after auto-loss
-			- Win a hexus puzzle, next one will show massive row score deltas
-			- Leave button stuck visible after losing a puzzle
-				- Enemy should pre-calc the best play when player has passed (hard)
-			- Maybe hard code some rewards. It'd be nice to get SHL from the puzzle where you learn it.
 	*/
 
 	// CHAPTER 1 - Mov/add/sub/inc/dec/div/mul + AND Puzzle

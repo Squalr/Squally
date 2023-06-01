@@ -212,6 +212,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[JasperBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)JasperBehavior::create(owner); };
 	this->componentDeserializers[LycanBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LycanBehavior::create(owner); };
 	this->componentDeserializers[GoblinShamanBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)GoblinShamanBehaviorGroup::create(owner); };
+	this->componentDeserializers[GoblinShamanOutOfCombatAttackBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)GoblinShamanOutOfCombatAttackBehavior::create(owner); };
 	this->componentDeserializers[KingGroggBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)KingGroggBehaviorGroup::create(owner); };
 	this->componentDeserializers[OrcBomberBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)OrcBomberBehaviorGroup::create(owner); };
 
@@ -222,6 +223,9 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	// Generic
 	this->componentDeserializers[MainhandThrowOutOfCombatAttackBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)MainhandThrowOutOfCombatAttackBehavior::create(owner); };
 	this->componentDeserializers[MeleeSwingOutOfCombatAttackBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)MeleeSwingOutOfCombatAttackBehavior::create(owner); };
+
+	// Museum
+	this->componentDeserializers[MuseumGiftBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)MuseumGiftBehavior::create(owner); };
 
 	/*********************
 		COMBAT / IN-COMBAT
