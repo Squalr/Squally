@@ -79,8 +79,6 @@ DeveloperScene::DeveloperScene()
 			- * Quest granting money and health manip (?)
 			- ** Final Boss Fight + Credits (or clear ending)
 		- Make LC final 4_x maps less bad.
-		- Museum polish pass (decor)
-		- Museum rewards (biome and 50/50 reward (TBD))
 		- Out of Combat Attacks:
 			- Skeletal archer out of combat
 			- Abomination archer out of combat
@@ -88,9 +86,8 @@ DeveloperScene::DeveloperScene()
 		- Remaining spellbooks + abilities
 			- Nature (needs ability? [DM])
 			- Shadow
-			- Frost
 			- Fire (Possibly use to dispel firewall)
-			- ? VS special book
+			- ? VS special quest spellbook?
 		- Helpers
 			- Abilities unlocked at certain levels
 		- Music
@@ -120,6 +117,7 @@ DeveloperScene::DeveloperScene()
 			- ** Needs animals
 			- ** Needs enemy scripting according to notes on which instructions this zone covers
 			- * Needs enemy scripting according to notes on which instructions this zone covers
+			- * Frost SpellBook
 		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 		- Hexus:
 			- Sanity check card localization (due to art changes)

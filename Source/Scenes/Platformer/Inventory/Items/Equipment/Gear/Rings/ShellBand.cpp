@@ -21,11 +21,12 @@ ShellBand* ShellBand::create()
 	return instance;
 }
 
-ShellBand::ShellBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 28 }}), ItemStats(
+// Tier 2
+ShellBand::ShellBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 35 }}), ItemStats(
 	// Health
 	2,
 	// Mana
-	2,
+	4,
 	// Attack
 	0,
 	// Magic Attack

@@ -321,13 +321,16 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[TopazPendant::SaveKey] = [=]() { return (Item*)TopazPendant::create(); };
 
 	// Rings
+	this->deserializers[BronzeRing::SaveKey] = [=]() { return (Item*)BronzeRing::create(); };
 	this->deserializers[DarkHeartBand::SaveKey] = [=]() { return (Item*)DarkHeartBand::create(); };
 	this->deserializers[EmeraldBand::SaveKey] = [=]() { return (Item*)EmeraldBand::create(); };
 	this->deserializers[GarnetBand::SaveKey] = [=]() { return (Item*)GarnetBand::create(); };
+	this->deserializers[GoldenRing::SaveKey] = [=]() { return (Item*)GoldenRing::create(); };
 	this->deserializers[HeartBand::SaveKey] = [=]() { return (Item*)HeartBand::create(); };
 	this->deserializers[MarineBand::SaveKey] = [=]() { return (Item*)MarineBand::create(); };
 	this->deserializers[SapphireBand::SaveKey] = [=]() { return (Item*)SapphireBand::create(); };
 	this->deserializers[ShellBand::SaveKey] = [=]() { return (Item*)ShellBand::create(); };
+	this->deserializers[SilverRing::SaveKey] = [=]() { return (Item*)SilverRing::create(); };
 	this->deserializers[SkullBand::SaveKey] = [=]() { return (Item*)SkullBand::create(); };
 	this->deserializers[SoulBand::SaveKey] = [=]() { return (Item*)SoulBand::create(); };
 

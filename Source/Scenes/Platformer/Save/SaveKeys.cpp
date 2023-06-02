@@ -122,3 +122,4 @@ const std::string SaveKeys::SaveKeyItemDGiven = "MUSEUM_D_ITEM_GIVEN";
 const std::string SaveKeys::SaveKeyItemEGiven = "MUSEUM_E_ITEM_GIVEN";
 const std::string SaveKeys::SaveKeyItemFGiven = "MUSEUM_F_ITEM_GIVEN";
 const std::string SaveKeys::SaveKeyItemGGiven = "MUSEUM_G_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemHGiven = "MUSEUM_H_ITEM_GIVEN";

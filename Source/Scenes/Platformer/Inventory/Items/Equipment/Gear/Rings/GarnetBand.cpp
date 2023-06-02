@@ -21,11 +21,12 @@ GarnetBand* GarnetBand::create()
 	return instance;
 }
 
-GarnetBand::GarnetBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 28 }}), ItemStats(
+// Tier 1
+GarnetBand::GarnetBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 25 }}), ItemStats(
 	// Health
-	2,
+	1,
 	// Mana
-	2,
+	3,
 	// Attack
 	0,
 	// Magic Attack

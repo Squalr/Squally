@@ -7149,6 +7149,21 @@ namespace Strings
 		virtual ~Items_Equipment_Gear_Necklaces_TopazPendant() = default;
 	};
 
+	class Items_Equipment_Gear_Rings_BronzeRing : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Rings_BronzeRing();
+		virtual ~Items_Equipment_Gear_Rings_BronzeRing() = default;
+	};
+
 	class Items_Equipment_Gear_Rings_DarkHeartBand : public LocalizedString
 	{
 	public:
@@ -7192,6 +7207,21 @@ namespace Strings
 	private:
 		Items_Equipment_Gear_Rings_GarnetBand();
 		virtual ~Items_Equipment_Gear_Rings_GarnetBand() = default;
+	};
+
+	class Items_Equipment_Gear_Rings_GoldenRing : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Rings_GoldenRing();
+		virtual ~Items_Equipment_Gear_Rings_GoldenRing() = default;
 	};
 
 	class Items_Equipment_Gear_Rings_HeartBand : public LocalizedString
@@ -7252,6 +7282,21 @@ namespace Strings
 	private:
 		Items_Equipment_Gear_Rings_ShellBand();
 		virtual ~Items_Equipment_Gear_Rings_ShellBand() = default;
+	};
+
+	class Items_Equipment_Gear_Rings_SilverRing : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Rings_SilverRing();
+		virtual ~Items_Equipment_Gear_Rings_SilverRing() = default;
 	};
 
 	class Items_Equipment_Gear_Rings_SkullBand : public LocalizedString
@@ -37222,6 +37267,21 @@ namespace Strings
 	private:
 		Platformer_Quests_Museum_Generic_C_Thanks();
 		virtual ~Platformer_Quests_Museum_Generic_C_Thanks() = default;
+	};
+
+	class Platformer_Quests_Museum_Generic_D_LastAnimal : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_Museum_Generic_D_LastAnimal();
+		virtual ~Platformer_Quests_Museum_Generic_D_LastAnimal() = default;
 	};
 
 	class Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_A_NewChallengersApproach : public LocalizedString

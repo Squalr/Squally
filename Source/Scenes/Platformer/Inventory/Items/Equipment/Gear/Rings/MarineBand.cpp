@@ -21,11 +21,12 @@ MarineBand* MarineBand::create()
 	return instance;
 }
 
-MarineBand::MarineBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 28 }}), ItemStats(
+// Tier 3
+MarineBand::MarineBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 45 }}), ItemStats(
 	// Health
-	2,
+	3,
 	// Mana
-	2,
+	5,
 	// Attack
 	0,
 	// Magic Attack

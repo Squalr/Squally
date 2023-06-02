@@ -21,11 +21,12 @@ EmeraldBand* EmeraldBand::create()
 	return instance;
 }
 
-EmeraldBand::EmeraldBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 28 }}), ItemStats(
+// Tier 4
+EmeraldBand::EmeraldBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 55 }}), ItemStats(
 	// Health
-	2,
+	4,
 	// Mana
-	2,
+	6,
 	// Attack
 	0,
 	// Magic Attack

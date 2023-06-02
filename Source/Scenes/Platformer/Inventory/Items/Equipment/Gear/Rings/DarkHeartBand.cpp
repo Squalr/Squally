@@ -21,11 +21,12 @@ DarkHeartBand* DarkHeartBand::create()
 	return instance;
 }
 
-DarkHeartBand::DarkHeartBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 28 }}), ItemStats(
+// Tier 8
+DarkHeartBand::DarkHeartBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 95 }}), ItemStats(
 	// Health
-	2,
+	8,
 	// Mana
-	2,
+	10,
 	// Attack
 	0,
 	// Magic Attack

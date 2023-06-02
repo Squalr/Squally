@@ -21,11 +21,12 @@ SoulBand* SoulBand::create()
 	return instance;
 }
 
-SoulBand::SoulBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 28 }}), ItemStats(
+// Tier 7
+SoulBand::SoulBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 85 }}), ItemStats(
 	// Health
-	2,
+	7,
 	// Mana
-	2,
+	9,
 	// Attack
 	0,
 	// Magic Attack

@@ -65,9 +65,6 @@ void MuseumGiftBehavior::onLoad()
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	// int collectedAnimalCount = Collectables::getCollectedAnimalCount();
-	// int collectedAnimalTotal = Collectables::getCollectedAnimalTotal();
-
 	this->setPostText();
 }
 
@@ -80,6 +77,44 @@ void MuseumGiftBehavior::setPostText()
 {
 	this->defer([=]()
 	{
+		int collectedAnimalCount = Collectables::getCollectedAnimalCount();
+		int collectedAnimalTotal = Collectables::getCollectedAnimalTotal();
+
+		if (collectedAnimalCount >= collectedAnimalTotal && !SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemHGiven, Value(false)).asBool())
+		{
+			bool hasGottenAllOtherItems = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemAGiven, Value(false)).asBool() &&
+				SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemBGiven, Value(false)).asBool() &&
+				SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemCGiven, Value(false)).asBool() &&
+				SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemDGiven, Value(false)).asBool() &&
+				SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemEGiven, Value(false)).asBool() &&
+				SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemFGiven, Value(false)).asBool() &&
+				SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemGGiven, Value(false)).asBool();
+
+			if (hasGottenAllOtherItems)
+			{
+				DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+					Strings::Platformer_Quests_Museum_Generic_D_LastAnimal::create(),
+					DialogueEvents::DialogueVisualArgs(
+						DialogueBox::DialogueDock::Bottom,
+						DialogueBox::DialogueAlignment::Left,
+						DialogueEvents::BuildPreviewNode(&this->entity, false),
+						DialogueEvents::BuildPreviewNode(&this->squally, true)
+					),
+					[=]()
+					{
+						PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ WoodenShield::create() }));
+						PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ DarkHeartBand::create() }));
+						SaveManager::SaveProfileData(SaveKeys::SaveKeyItemHGiven, Value(true));
+						this->setPostText();
+					},
+					Voices::GetNextVoiceMedium(),
+					true
+				));
+
+				return;
+			}
+		}
+		
 		if (this->museumZone == "ef")
 		{
 			this->setPostTextEF();
@@ -184,7 +219,7 @@ void MuseumGiftBehavior::setPostTextEF()
 			),
 			[=]()
 			{
-				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ GarnetBand::create() }));
 				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemAGiven, Value(true));
 				this->setPostText();
 			},
@@ -268,7 +303,7 @@ void MuseumGiftBehavior::setPostTextUR()
 			),
 			[=]()
 			{
-				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ ShellBand::create() }));
 				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemBGiven, Value(true));
 				this->setPostText();
 			},
@@ -351,7 +386,7 @@ void MuseumGiftBehavior::setPostTextDM()
 			),
 			[=]()
 			{
-				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ MarineBand::create() }));
 				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemCGiven, Value(true));
 				this->setPostText();
 			},
@@ -434,7 +469,7 @@ void MuseumGiftBehavior::setPostTextCV()
 			),
 			[=]()
 			{
-				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ EmeraldBand::create() }));
 				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemDGiven, Value(true));
 				this->setPostText();
 			},
@@ -517,7 +552,7 @@ void MuseumGiftBehavior::setPostTextLC()
 			),
 			[=]()
 			{
-				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SkullBand::create() }));
 				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemEGiven, Value(true));
 				this->setPostText();
 			},
@@ -600,7 +635,7 @@ void MuseumGiftBehavior::setPostTextFF()
 			),
 			[=]()
 			{
-				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ HeartBand::create() }));
 				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemFGiven, Value(true));
 				this->setPostText();
 			},
@@ -683,7 +718,7 @@ void MuseumGiftBehavior::setPostTextBP()
 			),
 			[=]()
 			{
-				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SoulBand::create() }));
 				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemGGiven, Value(true));
 				this->setPostText();
 			},

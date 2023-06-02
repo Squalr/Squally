@@ -21,11 +21,12 @@ SkullBand* SkullBand::create()
 	return instance;
 }
 
-SkullBand::SkullBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 28 }}), ItemStats(
+// Tier 5
+SkullBand::SkullBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 65 }}), ItemStats(
 	// Health
-	2,
+	5,
 	// Mana
-	2,
+	7,
 	// Attack
 	0,
 	// Magic Attack

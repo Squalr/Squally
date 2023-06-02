@@ -21,6 +21,7 @@ SapphireBand* SapphireBand::create()
 	return instance;
 }
 
+// Tier 0
 SapphireBand::SapphireBand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemStats(
 	// Health
 	0,
