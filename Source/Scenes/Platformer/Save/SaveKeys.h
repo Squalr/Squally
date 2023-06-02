@@ -129,4 +129,7 @@ public:
 	static const std::string SaveKeyItemFGiven;
 	static const std::string SaveKeyItemGGiven;
 	static const std::string SaveKeyItemHGiven;
+
+	static const std::string SaveKeyAsterItemGiven;
+
 };

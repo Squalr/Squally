@@ -93,7 +93,7 @@
   </properties>
   <object id="810" name="cypress" type="entity" x="658.183" y="937.33" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pick-pocket,pacing"/>
+    <property name="components" value="friendly,pick-pocket,pacing,cypress"/>
     <property name="pocket-pool" value="dm-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>

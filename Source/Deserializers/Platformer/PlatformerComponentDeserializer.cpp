@@ -209,7 +209,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 
 	// EF
 	this->componentDeserializers[AraBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)AraBehavior::create(owner); };
-	this->componentDeserializers[JasperBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)JasperBehavior::create(owner); };
+	this->componentDeserializers[AsterBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)AsterBehavior::create(owner); };
 	this->componentDeserializers[LycanBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LycanBehavior::create(owner); };
 	this->componentDeserializers[GoblinShamanBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)GoblinShamanBehaviorGroup::create(owner); };
 	this->componentDeserializers[GoblinShamanOutOfCombatAttackBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)GoblinShamanOutOfCombatAttackBehavior::create(owner); };
@@ -221,6 +221,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[RupertBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)RupertBehavior::create(owner); };
 
 	// DM
+	this->componentDeserializers[CypressBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)CypressBehavior::create(owner); };
 	this->componentDeserializers[SkeletalArcherOutOfCombatAttackBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)SkeletalArcherOutOfCombatAttackBehavior::create(owner); };
 
 	// CV

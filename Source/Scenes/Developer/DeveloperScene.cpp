@@ -118,7 +118,7 @@ DeveloperScene::DeveloperScene()
 			- Win a hexus puzzle, next one will show massive row score deltas
 			- Leave button stuck visible after losing a puzzle
 				- Enemy should pre-calc the best play when player has passed (hard)
-			- Maybe hard code some rewards. It'd be nice to get SHL from the puzzle where you learn it.
+			- Puzzle rewards sanity check. Do these give cards? It'd be nice to get SHL from the puzzle where you learn it.
 	
 	- Localization / Scripting
 		- Lexicon is largely incomplete
@@ -283,6 +283,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Town (DM)", MapResources::DataMines_Town_Main));
 		mapList.push_back(this->buildDebugButton("Town Train (DM)", MapResources::DataMines_Town_Train));
 		mapList.push_back(this->buildDebugButton("Home Dawn (DM)", MapResources::DataMines_Home_Dawn));
+		mapList.push_back(this->buildDebugButton("Home Cypress (DM)", MapResources::DataMines_Home_Cypress));
 		mapList.push_back(this->buildDebugButton("Home Godiva (DM)", MapResources::DataMines_Home_Godiva));
 		mapList.push_back(this->buildDebugButton("Home Burch (DM)", MapResources::DataMines_Home_Burch));
 		mapList.push_back(this->buildDebugButton("Ship Main (PS)", MapResources::PerilousSea_Ship_Main));
@@ -1024,7 +1025,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFrost, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookHoly, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookLightning, Value(true));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookNature, Value(true));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookNature, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookShadow, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));

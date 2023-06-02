@@ -1,7 +1,8 @@
-#include "JasperBehavior.h"
+#include "AsterBehavior.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
@@ -10,6 +11,7 @@
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
@@ -18,19 +20,18 @@
 
 using namespace cocos2d;
 
-const std::string JasperBehavior::MapKey = "jasper";
-const std::string JasperBehavior::SaveKeyItemGiven = "JASPER_ITEM_GIVEN";
+const std::string AsterBehavior::MapKey = "aster";
 
-JasperBehavior* JasperBehavior::create(GameObject* owner)
+AsterBehavior* AsterBehavior::create(GameObject* owner)
 {
-	JasperBehavior* instance = new JasperBehavior(owner);
+	AsterBehavior* instance = new AsterBehavior(owner);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-JasperBehavior::JasperBehavior(GameObject* owner) : super(owner)
+AsterBehavior::AsterBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
@@ -40,11 +41,11 @@ JasperBehavior::JasperBehavior(GameObject* owner) : super(owner)
 	}
 }
 
-JasperBehavior::~JasperBehavior()
+AsterBehavior::~AsterBehavior()
 {
 }
 
-void JasperBehavior::onLoad()
+void AsterBehavior::onLoad()
 {
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
@@ -56,7 +57,7 @@ void JasperBehavior::onLoad()
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	if (!this->entity->loadObjectStateOrDefault(JasperBehavior::SaveKeyItemGiven, Value(false)).asBool())
+	if (!SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyAsterItemGiven, Value(false)).asBool())
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
@@ -85,7 +86,7 @@ void JasperBehavior::onLoad()
 				[=]()
 				{
 					PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ SapphireBand::create() }));
-					this->entity->saveObjectState(JasperBehavior::SaveKeyItemGiven, Value(true));
+					SaveManager::SaveProfileData(SaveKeys::SaveKeyAsterItemGiven, Value(true));
 				},
 				Voices::GetNextVoiceMedium(),
 				true
@@ -94,7 +95,7 @@ void JasperBehavior::onLoad()
 	}
 }
 
-void JasperBehavior::onDisable()
+void AsterBehavior::onDisable()
 {
 	super::onDisable();
 }

@@ -810,7 +810,7 @@
   </properties>
   <object id="842" name="aster" type="entity" x="4110.41" y="153.778" width="128" height="128">
    <properties>
-    <property name="components" value="jasper,friendly"/>
+    <property name="components" value="aster,friendly"/>
     <property name="flip-y" type="bool" value="true"/>
    </properties>
   </object>
