@@ -11,17 +11,17 @@ class PlatformerEntity;
 class SmartAnimationSequenceNode;
 class WorldSound;
 
-class OverworldArrow : public Projectile
+class OverworldBoomerang : public Projectile
 {
 public:
-	static OverworldArrow* create(PlatformerEntity* owner, const std::string& spriteResource);
+	static OverworldBoomerang* create(PlatformerEntity* owner);
 
 	void runSpawnFX() override;
 	void runImpactFX() override;
 
 protected:
-	OverworldArrow(PlatformerEntity* owner, const std::string& spriteResource);
-	virtual ~OverworldArrow();
+	OverworldBoomerang(PlatformerEntity* owner);
+	virtual ~OverworldBoomerang();
 
 	void onEnter() override;
 
@@ -29,8 +29,8 @@ private:
 	typedef Projectile super;
 
 	PlatformerEntity* owner = nullptr;
-	cocos2d::Sprite* arrow = nullptr;
+	cocos2d::Sprite* boomerang = nullptr;
 	
-	WorldSound* arrowSfx = nullptr;
+	WorldSound* boomerangSfx = nullptr;
 	WorldSound* impactSfx = nullptr;
 };

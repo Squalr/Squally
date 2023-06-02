@@ -171,7 +171,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,soul,agro,melee"/>
+    <property name="components" value="enemy,soul,agro,abomination-attack"/>
     <property name="drop-pool" value="cv-generic"/>
     <property name="haunted-key" value="abomination"/>
     <property name="other-world" type="bool" value="false"/>
@@ -182,7 +182,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,soul,haunted,agro"/>
+    <property name="components" value="enemy,soul,haunted,agro,melee"/>
     <property name="drop-pool" value="cv-generic"/>
     <property name="haunted-key" value="vampire-lord"/>
     <property name="other-world" type="bool" value="false"/>
@@ -193,7 +193,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,soul,haunted,agro"/>
+    <property name="components" value="enemy,soul,haunted,agro,melee"/>
     <property name="drop-pool" value="cv-generic"/>
     <property name="haunted-key" value="wraith"/>
     <property name="other-world" type="bool" value="false"/>
@@ -204,7 +204,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,soul,haunted,agro"/>
+    <property name="components" value="enemy,soul,haunted,agro,melee"/>
     <property name="drop-pool" value="cv-generic"/>
     <property name="haunted-key" value="skeletal-baron"/>
     <property name="other-world" type="bool" value="false"/>
@@ -215,7 +215,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-c"/>
-    <property name="components" value="enemy,soul,haunted,agro"/>
+    <property name="components" value="enemy,soul,haunted,agro,melee"/>
     <property name="drop-pool" value="cv-generic"/>
     <property name="haunted-key" value="reaper"/>
     <property name="other-world" type="bool" value="false"/>
@@ -226,7 +226,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,soul,haunted,agro"/>
+    <property name="components" value="enemy,soul,haunted,agro,melee"/>
     <property name="drop-pool" value="cv-generic"/>
     <property name="haunted-key" value="vampiress"/>
     <property name="other-world" type="bool" value="false"/>
