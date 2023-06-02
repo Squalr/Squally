@@ -114,10 +114,9 @@ Projectile* SkeletalArcherOutOfCombatAttackBehavior::createProjectile()
 		return nullptr;
 	}
 
-	OverworldArrow* projectile = OverworldArrow::create(EntityResources::Enemies_DataMines_SkeletalArcher_ARROW);
+	OverworldArrow* projectile = OverworldArrow::create(this->skeletalArcher, EntityResources::Enemies_DataMines_SkeletalArcher_ARROW);
 	
 	projectile->setPosition3D(Vec3((this->skeletalArcher->isFlippedX() ? -276.0f : 276.0f), 144.0f, 0.0f));
-	
 	projectile->setMovementMode(Projectile::MovementMode::Kinematic);
 
 	return projectile;

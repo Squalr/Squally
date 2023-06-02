@@ -13,13 +13,13 @@ class WorldSound;
 class OverworldArrow : public Projectile
 {
 public:
-	static OverworldArrow* create(const std::string& spriteResource);
+	static OverworldArrow* create(PlatformerEntity* owner, const std::string& spriteResource);
 
 	void runSpawnFX() override;
 	void runImpactFX() override;
 
 protected:
-	OverworldArrow(const std::string& spriteResource);
+	OverworldArrow(PlatformerEntity* owner, const std::string& spriteResource);
 	virtual ~OverworldArrow();
 
 	void onEnter() override;
@@ -27,8 +27,9 @@ protected:
 private:
 	typedef Projectile super;
 
+	PlatformerEntity* owner = nullptr;
+	cocos2d::Sprite* arrow = nullptr;
+	
 	WorldSound* arrowSfx = nullptr;
 	WorldSound* impactSfx = nullptr;
-
-	cocos2d::Sprite* arrow = nullptr;
 };

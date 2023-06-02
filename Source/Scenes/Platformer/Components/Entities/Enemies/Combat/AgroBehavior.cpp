@@ -20,6 +20,7 @@
 using namespace cocos2d;
 
 const std::string AgroBehavior::MapKey = "agro";
+const std::string AgroBehavior::PropertyAgroRangeX = "agro-range-x";
 const float AgroBehavior::AgroRangeX = 720.0f;
 const float AgroBehavior::AgroRangeY = 512.0f;
 const float AgroBehavior::AgroRangeZ = 24.0f;
@@ -38,7 +39,7 @@ AgroBehavior::AgroBehavior(GameObject* owner) : super(owner)
 {
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->exclamation = Sprite::create(UIResources::Combat_Exclamation);
-	this->agroRangeX = AgroBehavior::AgroRangeX;
+	this->agroRangeX = GameUtils::getKeyOrDefault(owner->properties, AgroBehavior::PropertyAgroRangeX, Value(AgroBehavior::AgroRangeX)).asFloat();
 	this->agroRangeY = AgroBehavior::AgroRangeY;
 	this->agroRangeZ = AgroBehavior::AgroRangeZ;
 	this->agroBeep = WorldSound::create(SoundResources::Platformer_Entities_Generic_AgroBeep2);

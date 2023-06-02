@@ -60,4 +60,6 @@ private:
 	static const float AgroRangeY;
 	static const float AgroRangeZ;
 	static const float EngageCooldownMax;
+
+	static const std::string PropertyAgroRangeX;
 };

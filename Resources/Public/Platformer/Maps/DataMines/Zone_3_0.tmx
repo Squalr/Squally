@@ -350,8 +350,9 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="834" name="skeletal-archer" type="entity" x="1468.6" y="3304.12" width="128" height="128">
+  <object id="834" name="skeletal-archer" type="entity" x="2364.6" y="2112.12" width="128" height="128">
    <properties>
+    <property name="agro-range-x" type="float" value="1560"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>
@@ -359,7 +360,7 @@
     <property name="drop-pool" value="dm-generic"/>
    </properties>
   </object>
-  <object id="835" name="skeletal-archer" type="entity" x="1475.76" y="2915.39" width="128" height="128">
+  <object id="835" name="skeletal-archer" type="entity" x="2371.76" y="1723.39" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>
