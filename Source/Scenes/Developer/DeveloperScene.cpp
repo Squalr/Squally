@@ -78,6 +78,7 @@ DeveloperScene::DeveloperScene()
 		- * VS Quest granting money and health manip (?)
 		- ** VS Final Boss Fight + Credits (or clear ending)
 		- Make LC final 4_x maps less bad.
+		- King Zul anims are shit (attack, cast)
 		- 2nd pass on spellbook spells for balance
 		- Helper abilities unlocked at certain levels
 		- Nature spellbook + ability (DM)
@@ -88,7 +89,6 @@ DeveloperScene::DeveloperScene()
 			- Good desert music (The Letter sucked)
 			- https://michelemclaughlin.com/pages/contact (Preserverence)
 			- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
-		- v Minecart rolling sfx
 		- v Camera harsh leaving camera targets (see FF cinematic)
 		- v No interrupt if damage attack modified to heal
 		- v Mystery crash / ensures when waiting on victory screen (matrix letters task func)

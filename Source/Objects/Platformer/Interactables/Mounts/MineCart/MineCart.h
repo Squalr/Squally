@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class CollisionObject;
+class WorldSound;
 
 class MineCart : public MountBase
 {
@@ -25,6 +26,8 @@ protected:
 
 	void onEnter() override;
 	void update(float dt) override;
+	void onHackerModeEnable() override;
+	void pause() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
@@ -51,6 +54,7 @@ private:
 	cocos2d::Sprite* body = nullptr;
 	cocos2d::Sprite* wheelFront = nullptr;
 	cocos2d::Sprite* wheelBack = nullptr;
+	WorldSound* cartSfx = nullptr;
 
 	static const std::string PropertyColor;
 };

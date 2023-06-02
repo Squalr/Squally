@@ -353,6 +353,7 @@
   <object id="834" name="skeletal-archer" type="entity" x="2364.6" y="2112.12" width="128" height="128">
    <properties>
     <property name="agro-range-x" type="float" value="1560"/>
+    <property name="agro-range-y" type="float" value="224"/>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
     <property name="battle-tag" value="group-a"/>

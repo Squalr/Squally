@@ -261,6 +261,7 @@ const std::string SoundResources::Platformer_Objects_Machines_WoodMechanism3Unit
 const std::string SoundResources::Platformer_Objects_Machines_WoodMechanism4Units = "Private/Sounds/Platformer/Objects/Machines/WoodMechanism4Units.ogg";
 const std::string SoundResources::Platformer_Objects_Machines_WoodMechanism5Units = "Private/Sounds/Platformer/Objects/Machines/WoodMechanism5Units.ogg";
 const std::string SoundResources::Platformer_Objects_Machines_WoodMechanism6Units = "Private/Sounds/Platformer/Objects/Machines/WoodMechanism6Units.ogg";
+const std::string SoundResources::Platformer_Objects_Minecart_Wheels = "Private/Sounds/Platformer/Objects/Minecart/Wheels.ogg";
 const std::string SoundResources::Platformer_Objects_Misc_BowlingStrike1 = "Private/Sounds/Platformer/Objects/Misc/BowlingStrike1.ogg";
 const std::string SoundResources::Platformer_Objects_PotBreak_PotSmash1 = "Private/Sounds/Platformer/Objects/PotBreak/PotSmash1.ogg";
 const std::string SoundResources::Platformer_Objects_Statue_RockBreak1 = "Private/Sounds/Platformer/Objects/Statue/RockBreak1.ogg";

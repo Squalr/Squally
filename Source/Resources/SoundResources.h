@@ -262,6 +262,7 @@ namespace SoundResources
 	extern const std::string Platformer_Objects_Machines_WoodMechanism4Units;
 	extern const std::string Platformer_Objects_Machines_WoodMechanism5Units;
 	extern const std::string Platformer_Objects_Machines_WoodMechanism6Units;
+	extern const std::string Platformer_Objects_Minecart_Wheels;
 	extern const std::string Platformer_Objects_Misc_BowlingStrike1;
 	extern const std::string Platformer_Objects_PotBreak_PotSmash1;
 	extern const std::string Platformer_Objects_Statue_RockBreak1;

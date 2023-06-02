@@ -62,4 +62,5 @@ private:
 	static const float EngageCooldownMax;
 
 	static const std::string PropertyAgroRangeX;
+	static const std::string PropertyAgroRangeY;
 };
