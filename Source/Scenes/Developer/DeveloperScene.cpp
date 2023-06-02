@@ -75,21 +75,17 @@ DeveloperScene::DeveloperScene()
 	/*
 	- General:
 		- ** Fucking 5x easter eggs
-		- VS
-			- * Quest granting money and health manip (?)
-			- ** Final Boss Fight + Credits (or clear ending)
+		- * VS Quest granting money and health manip (?)
+		- ** VS Final Boss Fight + Credits (or clear ending)
 		- Make LC final 4_x maps less bad.
-		- Out of Combat Attacks:
-			- Skeletal archer out of combat
-			- Abomination archer out of combat
+		- Skeletal archer out of combat
+		- Abomination out of combat
 		- 2nd pass on spellbook spells for balance
-		- Remaining spellbooks + abilities
-			- Nature (needs ability? [DM])
-			- Shadow
-			- Fire (Possibly use to dispel firewall)
-			- ? VS special quest spellbook?
-		- Helpers
-			- Abilities unlocked at certain levels
+		- Helper abilities unlocked at certain levels
+		- Nature spellbook + ability (DM)
+		- Shadow spellbook + ability (LC)
+		- Fire spellbook + ability (FF) (Possibly use to dispel firewall)
+		- ? VS special quest spellbook?
 		- Music
 			- Good desert music (The Letter sucked)
 			- https://michelemclaughlin.com/pages/contact (Preserverence)

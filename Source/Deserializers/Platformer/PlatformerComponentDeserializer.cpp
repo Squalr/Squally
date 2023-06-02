@@ -220,6 +220,9 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[PoseidonBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)PoseidonBehavior::create(owner); };
 	this->componentDeserializers[RupertBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)RupertBehavior::create(owner); };
 
+	// DM
+	this->componentDeserializers[SkeletalArcherOutOfCombatAttackBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)SkeletalArcherOutOfCombatAttackBehavior::create(owner); };
+
 	// Generic
 	this->componentDeserializers[MainhandThrowOutOfCombatAttackBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)MainhandThrowOutOfCombatAttackBehavior::create(owner); };
 	this->componentDeserializers[MeleeSwingOutOfCombatAttackBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)MeleeSwingOutOfCombatAttackBehavior::create(owner); };

@@ -14,6 +14,7 @@
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/EndianForest/GoblinShaman/GoblinShamanOutOfCombatAttackBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/EndianForest/KingGrogg/KingGroggBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/EndianForest/OrcBomber/OrcBomberBehaviorGroup.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Overworld/DataMines/SkeletalArcherOutOfCombatAttackBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/Generic/MainhandThrow/MainhandThrowOutOfCombatAttackBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/Generic/MeleeSwing/MeleeSwingOutOfCombatAttackBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/UnderflowRuins/KillingMachine/KillingMachineBehaviorGroup.h"
