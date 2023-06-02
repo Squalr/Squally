@@ -12,6 +12,7 @@
 #include "Scenes/Platformer/Components/Entities/Enemies/Combat/AgroBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/EndianForest/GoblinShaman/GoblinShamanBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/EndianForest/GoblinShaman/GoblinShamanOutOfCombatAttackBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Enemies/Overworld/LambdaCrypts/KingZulMemeBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/EndianForest/KingGrogg/KingGroggBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/EndianForest/OrcBomber/OrcBomberBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/Enemies/Overworld/DataMines/SkeletalArcherOutOfCombatAttackBehavior.h"
