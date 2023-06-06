@@ -77,13 +77,13 @@ DeveloperScene::DeveloperScene()
 		- ** Fucking 5x easter eggs
 		- * VS Quest granting money and health manip (?)
 		- ** VS Final Boss Fight + Credits (or clear ending)
-		- Make LC final 4_x maps less bad.
-		- 2nd pass on spellbook spells for balance
-		- Helper abilities unlocked at certain levels
-		- Nature spellbook + ability (DM)
-		- Shadow spellbook + ability (LC)
-		- Fire spellbook + ability (FF) (Possibly use to dispel firewall)
-		- ? VS special quest spellbook?
+		- * Make LC final 4_x maps less bad.
+		- * 2nd pass on spellbook spells for balance
+			- Missing Nature (Thorn Shield / ??)
+			- Missing Shadow (Run from fight / ??)
+			- Missing Fire ()
+		- * Helper abilities unlocked at certain levels
+		- * ? VS special quest spellbook?
 		- Music
 			- Good desert music (The Letter sucked)
 			- https://michelemclaughlin.com/pages/contact (Preserverence)

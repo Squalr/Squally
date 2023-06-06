@@ -230,6 +230,9 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	// LC
 	this->componentDeserializers[KingZulMemeBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)KingZulMemeBehavior::create(owner); };
 
+	// FF
+	this->componentDeserializers[CindraBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)CindraBehavior::create(owner); };
+
 	// Generic
 	this->componentDeserializers[MainhandThrowOutOfCombatAttackBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)MainhandThrowOutOfCombatAttackBehavior::create(owner); };
 	this->componentDeserializers[MeleeSwingOutOfCombatAttackBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)MeleeSwingOutOfCombatAttackBehavior::create(owner); };

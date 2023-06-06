@@ -12,18 +12,23 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/Enemies/LambdaCrypts/Lazarus.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
+#include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
+#include "Resources/ItemResources.h"
 #include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
@@ -85,6 +90,15 @@ void DefeatLazarus::onComplete()
 	Objectives::SetCurrentObjective(ObjectiveKeys::LCEnterGreaterCrypt);
 	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ HeartOfShadow::create() }));
 	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ AncientKey::create() }));
+	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookShadow, Value(true));
+	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
+	
+	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
+		Strings::Platformer_Spellbooks_SpellbookAcquired::create(),
+		Strings::Platformer_Spellbooks_SpellbookShadow::create(),
+		ItemResources::Spellbooks_SpellBookShadow,
+		SoundResources::Notifications_NotificationGood1
+	));
 	
 	// Just give everything in case something went wrong / for debug use. These should be redundant with drop pool.
 	PlatformerEvents::TriggerDiscoverItems(PlatformerEvents::ItemsDiscoveryArgs({ HeartOfShadow::create(), AncientKey::create() }));

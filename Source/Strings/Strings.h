@@ -35199,6 +35199,51 @@ namespace Strings
 		virtual ~Platformer_Quests_DataMines_RestorePower_PrincessDawn_S_DontForgetBlacksmith() = default;
 	};
 
+	class Platformer_Quests_DataMines_Spellbook_Cypress_A_TraveledFar : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_Spellbook_Cypress_A_TraveledFar();
+		virtual ~Platformer_Quests_DataMines_Spellbook_Cypress_A_TraveledFar() = default;
+	};
+
+	class Platformer_Quests_DataMines_Spellbook_Cypress_B_TakeThis : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_Spellbook_Cypress_B_TakeThis();
+		virtual ~Platformer_Quests_DataMines_Spellbook_Cypress_B_TakeThis() = default;
+	};
+
+	class Platformer_Quests_DataMines_Spellbook_Cypress_C_BestOfLuck : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_Spellbook_Cypress_C_BestOfLuck();
+		virtual ~Platformer_Quests_DataMines_Spellbook_Cypress_C_BestOfLuck() = default;
+	};
+
 	class Platformer_Quests_DataMines_StackPuzzle_A_DoYouKnowHowToOpenDoor : public LocalizedString
 	{
 	public:
@@ -36892,6 +36937,51 @@ namespace Strings
 	private:
 		Platformer_Quests_FirewallFissure_ReleasePressure_B_SeismicActivity();
 		virtual ~Platformer_Quests_FirewallFissure_ReleasePressure_B_SeismicActivity() = default;
+	};
+
+	class Platformer_Quests_FirewallFissure_Spellbook_Cindra_A_Flame : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_Spellbook_Cindra_A_Flame();
+		virtual ~Platformer_Quests_FirewallFissure_Spellbook_Cindra_A_Flame() = default;
+	};
+
+	class Platformer_Quests_FirewallFissure_Spellbook_Cindra_B_TakeThis : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_Spellbook_Cindra_B_TakeThis();
+		virtual ~Platformer_Quests_FirewallFissure_Spellbook_Cindra_B_TakeThis() = default;
+	};
+
+	class Platformer_Quests_FirewallFissure_Spellbook_Cindra_C_BestOfLuck : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_Spellbook_Cindra_C_BestOfLuck();
+		virtual ~Platformer_Quests_FirewallFissure_Spellbook_Cindra_C_BestOfLuck() = default;
 	};
 
 	class Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_A_CraftDemonHeart : public LocalizedString

@@ -72,7 +72,7 @@ void CypressBehavior::setPostText()
 			if (!SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookNature, Value(false)).asBool())
 			{
 				interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-					Strings::TODO::create(),
+					Strings::Platformer_Quests_DataMines_Spellbook_Cypress_A_TraveledFar::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
 						DialogueBox::DialogueAlignment::Left,
@@ -86,7 +86,7 @@ void CypressBehavior::setPostText()
 					false
 				));
 				interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-					Strings::TODO::create(),
+					Strings::Platformer_Quests_DataMines_Spellbook_Cypress_B_TakeThis::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
 						DialogueBox::DialogueAlignment::Left,
@@ -113,7 +113,7 @@ void CypressBehavior::setPostText()
 			else
 			{
 				interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-					Strings::TODO::create(),
+					Strings::Platformer_Quests_DataMines_Spellbook_Cypress_C_BestOfLuck::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
 						DialogueBox::DialogueAlignment::Left,
