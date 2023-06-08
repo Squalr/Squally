@@ -114,7 +114,7 @@ void PlatformerAttack::execute(PlatformerEntity* owner, std::vector<PlatformerEn
 	{
 		manaBehavior->setMana(manaBehavior->getMana() - this->getSpecialCost());
 	});
-
+	
 	this->runAction(Sequence::create(
 		DelayTime::create(this->getAttackDuration()),
 		CallFunc::create([=]()
@@ -131,9 +131,9 @@ void PlatformerAttack::execute(PlatformerEntity* owner, std::vector<PlatformerEn
 		DelayTime::create(this->getRecoverDuration()),
 		CallFunc::create([=]()
 		{
-			if (onCastComplete != nullptr)
+			if (onRecoverComplete != nullptr)
 			{
-				onCastComplete();
+				onRecoverComplete();
 			}
 
 			this->onAttackEnd();
