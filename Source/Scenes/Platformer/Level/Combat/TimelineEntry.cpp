@@ -21,6 +21,7 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Buff.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/Discipline/Discipline.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityCombatBehaviorBase.h"
@@ -526,6 +527,11 @@ void TimelineEntry::stageCast(PlatformerAttack* attack)
 	}
 
 	this->currentCast = attack;
+
+	if (this->currentCast != nullptr)
+	{
+		attack->onAttackStaged();
+	}
 }
 
 std::vector<PlatformerEntity*> TimelineEntry::getStagedTargets()
@@ -719,10 +725,24 @@ void TimelineEntry::tryInterrupt()
 	}
 	else if (this->isCasting)
 	{
-		CombatEvents::TriggerCastInterrupt(CombatEvents::CastInterruptArgs(this->entity));
+		bool hasDiscipline = false;
 
-		this->setProgress(this->progress / 4.0f);
-		this->interruptBonus = 0.1f;
+		// Discipline is the only buff that allows ignoring interrupts, so we're just hacking in this one edge case
+		this->entity->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* buffBehavior)
+		{
+			buffBehavior->getBuff<Discipline>([&](Buff*)
+			{
+				hasDiscipline = true;
+			});
+		});
+
+		if (!hasDiscipline)
+		{
+			CombatEvents::TriggerCastInterrupt(CombatEvents::CastInterruptArgs(this->entity));
+
+			this->setProgress(this->progress / 4.0f);
+			this->interruptBonus = 0.1f;
+		}
 	}
 	
 	this->stageCast(nullptr);
@@ -757,7 +777,7 @@ void TimelineEntry::clearBuffTargets()
 {
 	this->overlayCircle->setOpacity(0);
 
-	for (auto next : this->targetIcons)
+	for (Sprite* next : this->targetIcons)
 	{
 		next->setVisible(false);
 	}
@@ -767,7 +787,7 @@ void TimelineEntry::addBuffTarget(std::string iconResource)
 {
 	this->overlayCircle->setOpacity(128);
 
-	for (auto next : this->targetIcons)
+	for (Sprite* next : this->targetIcons)
 	{
 		if (!next->isVisible())
 		{

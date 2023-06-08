@@ -349,9 +349,10 @@ void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
 	}
 
 	std::vector<PlatformerAttack*> attackList = attackingEntry->isPlayerEntry() ? attackBehavior->getNoCostAttacks() : attackBehavior->getAvailableAttacks();
+	std::vector<PlatformerAttack*> defensivesList = attackingEntry->isPlayerEntry() ? attackBehavior->getNoCostDefensives() : attackBehavior->getAvailableDefensives();
 	std::vector<Consumable*> consumablesList = attackingEntry->isPlayerEntry() ? std::vector<Consumable*>() : attackBehavior->getAvailableConsumables();
 	
-	for (auto next : consumablesList)
+	for (Consumable* next : consumablesList)
 	{
 		attackList.push_back(next->getAssociatedAttack(attackingEntity));
 	}
@@ -366,7 +367,15 @@ void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
 		return !next->isWorthUsing(attackingEntity, sameTeam, otherTeam);
 	}), attackList.end());
 
-	// Prioritize resurrection > healing > damage
+	// Filter usable defensives
+	defensivesList.erase(std::remove_if(defensivesList.begin(), defensivesList.end(),
+		[=](PlatformerAttack* next)
+	{
+		return !next->isWorthUsing(attackingEntity, sameTeam, otherTeam);
+	}), defensivesList.end());
+
+	// Prioritize defensive > resurrection > healing > damage
+	// this->trySelectDefensiveSkill(attackingEntry, attackList);
 	this->trySelectResurrectionSkill(attackingEntry, attackList);
 	this->trySelectHealingSkill(attackingEntry, attackList);
 	this->trySelectDamageSkill(attackingEntry, attackList);

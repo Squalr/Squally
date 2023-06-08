@@ -28194,7 +28194,7 @@ namespace Strings
 		virtual ~Platformer_Combat_Defeat() = default;
 	};
 
-	class Platformer_Combat_Defend : public LocalizedString
+	class Platformer_Combat_Defensives_Defend : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -28205,8 +28205,53 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Combat_Defend();
-		virtual ~Platformer_Combat_Defend() = default;
+		Platformer_Combat_Defensives_Defend();
+		virtual ~Platformer_Combat_Defensives_Defend() = default;
+	};
+
+	class Platformer_Combat_Defensives_DefendDescription : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Defensives_DefendDescription();
+		virtual ~Platformer_Combat_Defensives_DefendDescription() = default;
+	};
+
+	class Platformer_Combat_Defensives_Discipline : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Defensives_Discipline();
+		virtual ~Platformer_Combat_Defensives_Discipline() = default;
+	};
+
+	class Platformer_Combat_Defensives_DisciplineDescription : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Defensives_DisciplineDescription();
+		virtual ~Platformer_Combat_Defensives_DisciplineDescription() = default;
 	};
 
 	class Platformer_Combat_ExpGain : public LocalizedString

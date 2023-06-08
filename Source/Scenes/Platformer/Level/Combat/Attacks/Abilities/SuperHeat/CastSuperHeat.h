@@ -25,5 +25,5 @@ private:
 	
 	PlatformerAttack* cloneInternal() override;
 
-	WorldSound* lightningSound = nullptr;
+	WorldSound* superHeatSound = nullptr;
 };

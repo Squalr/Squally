@@ -16,8 +16,14 @@ public:
 	std::vector<PlatformerAttack*> getAttacks();
 	std::vector<PlatformerAttack*> getAvailableAttacks();
 	std::vector<PlatformerAttack*> getNoCostAttacks();
-	std::vector<Consumable*> getAvailableConsumables();
 	void registerAttack(PlatformerAttack* attack);
+
+	std::vector<PlatformerAttack*> getDefensives();
+	std::vector<PlatformerAttack*> getAvailableDefensives();
+	std::vector<PlatformerAttack*> getNoCostDefensives();
+	void registerDefensive(PlatformerAttack* defensive);
+
+	std::vector<Consumable*> getAvailableConsumables();
 	std::tuple<int, int> computeAttackRange();
 
 	static const float DefaultRecoverSpeed;
@@ -44,10 +50,12 @@ private:
 
 	PlatformerEntity* entity = nullptr;
 	cocos2d::Node* attacksNode = nullptr;
+	cocos2d::Node* defensivesNode = nullptr;
 	cocos2d::Node* consumablessNode = nullptr;
 
 	bool consumablesStale = true;
 
 	std::vector<PlatformerAttack*> registeredAttacks;
+	std::vector<PlatformerAttack*> registeredDefensives;
 	std::vector<Consumable*> registeredConsumables;
 };

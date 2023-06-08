@@ -79,13 +79,14 @@ DeveloperScene::DeveloperScene()
 		- * VS Quest granting money and health manip (?)
 		- * Make LC final 4_x maps less bad.
 		- * 2nd pass on spellbook spells for balance
-			- Missing Nature (Thorn Shield / ??)
+			- Missing Nature (?? Thorn Shield / ??)
 			- Missing Shadow (?? Run from fight / ?? Overworld Stealth [similar to swim])
 			- Missing Fire (SuperHeat  / ?? Dispel Firewall) -- quest to temporarily grant before EF boss? lol
 			- Missing Frost (?? / ??)
-			- Missing Arcane (?? / ?? illusion oops)
+			- Missing Arcane (Discipline / Dispel Illusion)
 		- * Helper abilities unlocked at certain levels
 		- Cyclops weapon ghost misplaced
+		- CombatAIHelper.cpp defensives
 		- Music
 			- Good desert music (The Letter sucked)
 			- https://philipwesley.com/contact/ (which?)

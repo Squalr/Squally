@@ -38,9 +38,9 @@ CastSuperHeat::CastSuperHeat(float attackDuration, float recoverDuration, Priori
 		TargetingType::Multi
 	)
 {
-	this->lightningSound = WorldSound::create(SoundResources::Platformer_Spells_FireHit1);
+	this->superHeatSound = WorldSound::create(SoundResources::Platformer_Spells_FireHit1);
 
-	this->addChild(this->lightningSound);
+	this->addChild(this->superHeatSound);
 }
 
 CastSuperHeat::~CastSuperHeat()
@@ -71,7 +71,7 @@ void CastSuperHeat::onAttackTelegraphBegin()
 {
 	super::onAttackTelegraphBegin();
 	
-	this->lightningSound->play(false, this->attackDuration);
+	this->superHeatSound->play(false, this->attackDuration);
 }
 
 void CastSuperHeat::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)

@@ -171,6 +171,7 @@ void Timeline::initializeListeners()
 		}
 	}));
 
+	/*
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::MenuStateArgs* args = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getData());
@@ -204,7 +205,7 @@ void Timeline::initializeListeners()
 				}
 			}
 		}
-	}));
+	}));*/
 }
 
 void Timeline::update(float dt)

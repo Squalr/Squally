@@ -119,7 +119,10 @@ void PlatformerAttack::execute(PlatformerEntity* owner, std::vector<PlatformerEn
 		DelayTime::create(this->getAttackDuration()),
 		CallFunc::create([=]()
 		{
-			onCastComplete();
+			if (onCastComplete != nullptr)
+			{
+				onCastComplete();
+			}
 			
 			// Damage/healing is applied at this stage. For projectiles, they are spawned here.
 			this->performAttack(owner, targets);
@@ -128,12 +131,19 @@ void PlatformerAttack::execute(PlatformerEntity* owner, std::vector<PlatformerEn
 		DelayTime::create(this->getRecoverDuration()),
 		CallFunc::create([=]()
 		{
-			onRecoverComplete();
+			if (onCastComplete != nullptr)
+			{
+				onCastComplete();
+			}
 
 			this->onAttackEnd();
 		}),
 		nullptr
 	));
+}
+
+void PlatformerAttack::onAttackStaged()
+{
 }
 
 void PlatformerAttack::onAttackTelegraphBegin()

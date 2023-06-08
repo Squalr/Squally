@@ -63,7 +63,7 @@
   </properties>
   <object id="1096" name="caverns" type="terrain" x="1197.15" y="1716.48" width="1163.63" height="1640">
    <properties>
-    <property name="components" value="illusion"/>
+    <property name="components" value="illusion-disabled"/>
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
