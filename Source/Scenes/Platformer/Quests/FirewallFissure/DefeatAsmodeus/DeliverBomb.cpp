@@ -194,7 +194,7 @@ void DeliverBomb::runCinematicSequencePt1()
 					),
 					[=]()
 					{
-						PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(HeliumBomb::create()));
+						PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(HeliumBomb::create(), false));
 					},
 					Voices::GetNextVoiceShort(Voices::VoiceType::Droid),
 					false

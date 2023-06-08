@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1126">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="78" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="144" nextobjectid="1127">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -485,6 +485,12 @@
   </object>
   <object id="1109" name="help-totem-repair" type="object" x="7044" y="3362" width="248" height="248"/>
   <object id="1123" name="caged-tiger" type="object" x="8013.97" y="2812.67" width="196" height="112"/>
+  <object id="1126" name="portal" type="object" x="5841" y="3440" width="256" height="192">
+   <properties>
+    <property name="map" value="DataMines/Home_Dawn"/>
+    <property name="transition" value="dawn"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="142" name="entities -6">
   <properties>

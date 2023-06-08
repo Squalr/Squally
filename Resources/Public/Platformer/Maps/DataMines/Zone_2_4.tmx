@@ -12,7 +12,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="58" name="tiled bg -8" visible="0">
+ <objectgroup id="58" name="tiled bg -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
@@ -45,7 +45,7 @@
   </properties>
   <object id="818" name="mines" type="terrain" x="1071.46" y="1896.67" width="758.413" height="412">
    <properties>
-    <property name="components" value="illusion"/>
+    <property name="components" value="illusion-disabled"/>
     <property name="illusion-group" value="A"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -77,7 +77,7 @@
   </properties>
   <object id="817" name="mines" type="terrain" x="978.13" y="1914" width="942.413" height="412">
    <properties>
-    <property name="components" value="illusion"/>
+    <property name="components" value="illusion-disabled"/>
     <property name="illusion-group" value="A"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -100,7 +100,7 @@
   </properties>
   <object id="811" name="mines" type="terrain" x="940.19" y="1927.94" width="1017.08" height="412">
    <properties>
-    <property name="components" value="illusion"/>
+    <property name="components" value="illusion-disabled"/>
     <property name="illusion-group" value="A"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -111,14 +111,14 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="63" name="objects -5" visible="0">
+ <objectgroup id="63" name="objects -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="840" name="Mines/WarpTower" type="decor" x="973.53" y="-301.348" width="979" height="2249">
    <properties>
-    <property name="components" value="illusion"/>
+    <property name="components" value="illusion-disabled"/>
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
@@ -144,7 +144,7 @@
   </properties>
   <object id="816" name="mines" type="terrain" x="979.63" y="1937.17" width="942.413" height="412">
    <properties>
-    <property name="components" value="illusion"/>
+    <property name="components" value="illusion-disabled"/>
     <property name="illusion-group" value="A"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -171,7 +171,7 @@
   </properties>
   <object id="815" name="mines" type="terrain" x="1069.46" y="1947" width="758.413" height="412">
    <properties>
-    <property name="components" value="illusion"/>
+    <property name="components" value="illusion-disabled"/>
     <property name="illusion-group" value="A"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -203,7 +203,7 @@
   </properties>
   <object id="814" name="mines" type="terrain" x="1194.79" y="1957" width="503.747" height="412">
    <properties>
-    <property name="components" value="illusion"/>
+    <property name="components" value="illusion-disabled"/>
     <property name="illusion-group" value="A"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -230,7 +230,7 @@
   </properties>
   <object id="812" name="mines" type="terrain" x="1263.43" y="1965.98" width="371.747" height="412">
    <properties>
-    <property name="components" value="illusion"/>
+    <property name="components" value="illusion-disabled"/>
     <property name="illusion-group" value="A"/>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -269,7 +269,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="23" name="objects" visible="0">
+ <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -290,15 +290,15 @@
   </object>
   <object id="819" name="portal" type="object" x="1322.3" y="1718.06" width="256" height="256">
    <properties>
-    <property name="components" value="illusion"/>
+    <property name="components" value="illusion-disabled"/>
     <property name="illusion-group" value="A"/>
     <property name="map" value="Mages_Warp"/>
     <property name="transition" value="dm"/>
    </properties>
   </object>
-  <object id="842" name="magic-wall" type="object" x="1139.24" y="1197.38" width="679.102" height="781">
+  <object id="842" name="magic-wall-disabled" type="object" x="1136.21" y="1197.38" width="679.102" height="781">
    <properties>
-    <property name="components" value="dispel-illusion"/>
+    <property name="components" value="dispel-illusion-disabled"/>
     <property name="illusion-group" value="A"/>
    </properties>
   </object>

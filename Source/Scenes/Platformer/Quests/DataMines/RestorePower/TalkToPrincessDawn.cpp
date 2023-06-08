@@ -172,7 +172,7 @@ void TalkToPrincessDawn::runCinematicSequencePt1()
 			),
 			[=]()
 			{
-				PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(LetterForThePrincess::create()));
+				PlatformerEvents::TriggerDiscoverItem(PlatformerEvents::ItemDiscoveryArgs(LetterForThePrincess::create(), false));
 			},
 			Voices::GetNextVoiceMedium(),
 			false
