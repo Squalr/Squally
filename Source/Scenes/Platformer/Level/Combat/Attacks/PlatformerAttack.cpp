@@ -142,10 +142,6 @@ void PlatformerAttack::execute(PlatformerEntity* owner, std::vector<PlatformerEn
 	));
 }
 
-void PlatformerAttack::onAttackStaged()
-{
-}
-
 void PlatformerAttack::onAttackTelegraphBegin()
 {
 }

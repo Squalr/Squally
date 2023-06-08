@@ -52,7 +52,6 @@ public:
 	int getSpecialCost();
 	AttackType getAttackType();
 	TargetingType getTargetingType();
-	virtual void onAttackStaged();
 	virtual void onAttackTelegraphBegin();
 	virtual void doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity* target);
 	virtual void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets);

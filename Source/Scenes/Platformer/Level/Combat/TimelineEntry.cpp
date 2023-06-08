@@ -528,9 +528,14 @@ void TimelineEntry::stageCast(PlatformerAttack* attack)
 
 	this->currentCast = attack;
 
-	if (this->currentCast != nullptr)
+	if (this->currentCast != nullptr && this->currentCast->getAttackType() == PlatformerAttack::AttackType::Defensive)
 	{
-		attack->onAttackStaged();
+		CombatEvents::TriggerPauseTimeline();
+
+		this->targets.clear();
+		this->targets.push_back(this->entity);
+
+		this->performCast();
 	}
 }
 
@@ -542,21 +547,6 @@ std::vector<PlatformerEntity*> TimelineEntry::getStagedTargets()
 PlatformerAttack* TimelineEntry::getStagedCast()
 {
 	return this->currentCast;
-}
-
-void TimelineEntry::defend()
-{
-	if (this->getEntity() == nullptr)
-	{
-		return;
-	}
-
-	this->isCasting = true;
-	
-	this->getEntity()->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
-	{
-		entityBuffBehavior->applyBuff(Defend::create(this->getEntity()));
-	});
 }
 
 float TimelineEntry::getProgress()
@@ -658,8 +648,10 @@ void TimelineEntry::performCast()
 
 	this->cameraFocusEntry();
 
+	bool instant = this->currentCast != nullptr && this->currentCast->getAttackType() == PlatformerAttack::AttackType::Defensive;
+
 	this->runAction(Sequence::create(
-		DelayTime::create(1.0f),
+		DelayTime::create(instant ? 0.0f : 1.0f),
 		CallFunc::create([=]()
 		{
 			if (this->targets.empty() || this->entity == nullptr || this->currentCast == nullptr)
@@ -686,8 +678,16 @@ void TimelineEntry::performCast()
 				},
 				[=]()
 				{
+					// Reset timeline for non-defensive casts only
+					bool resetTimeline = this->currentCast == nullptr || this->currentCast->getAttackType() != PlatformerAttack::AttackType::Defensive;
+
 					this->stageCast(nullptr);
-					this->resetTimeline();
+
+					if (resetTimeline)
+					{
+						this->resetTimeline();
+					}
+
 					CombatEvents::TriggerResumeTimeline();
 				}
 			);

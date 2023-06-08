@@ -7,18 +7,17 @@ class WorldSound;
 class CastDiscipline : public PlatformerAttack
 {
 public:
-	static CastDiscipline* create(Priority priority);
+	static CastDiscipline* create(float attackDuration, float recoverDuration, Priority priority);
 
 	LocalizedString* getString() override;
 	LocalizedString* getDescription() override;
 	std::string getAttackAnimation() override;
 
 protected:
-	CastDiscipline(Priority priority);
+	CastDiscipline(float attackDuration, float recoverDuration, Priority priority);
 	virtual ~CastDiscipline();
 
 	void performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets) override;
-	virtual void onAttackStaged() override;
 
 private:
 	typedef PlatformerAttack super;

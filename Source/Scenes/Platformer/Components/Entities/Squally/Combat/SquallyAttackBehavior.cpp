@@ -86,7 +86,7 @@ void SquallyAttackBehavior::onDisable()
 
 void SquallyAttackBehavior::loadSpellBookAttacks(EntityAttackBehavior* attackBehavior)
 {
-	attackBehavior->registerDefensive(CastDefend::create(PlatformerAttack::Priority::Uncommon));
+	attackBehavior->registerDefensive(CastDefend::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 
 	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookWater, Value(false)).asBool())
 	{
@@ -130,7 +130,7 @@ void SquallyAttackBehavior::loadSpellBookAttacks(EntityAttackBehavior* attackBeh
 
 	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookArcane, Value(false)).asBool())
 	{
-		attackBehavior->registerDefensive(CastDiscipline::create(PlatformerAttack::Priority::Uncommon));
+		attackBehavior->registerDefensive(CastDiscipline::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 }
 

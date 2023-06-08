@@ -28,7 +28,6 @@ public:
 	void stageCast(PlatformerAttack* attack);
 	std::vector<PlatformerEntity*> getStagedTargets();
 	PlatformerAttack* getStagedCast();
-	void defend();
 	float getProgress();
 	void setProgress(float progress);
 	void tryPerformActions();

@@ -15,26 +15,26 @@
 
 using namespace cocos2d;
 
-CastDefend* CastDefend::create(Priority priority)
+CastDefend* CastDefend::create(float attackDuration, float recoverDuration, Priority priority)
 {
-	CastDefend* instance = new CastDefend(priority);
+	CastDefend* instance = new CastDefend(attackDuration, recoverDuration, priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CastDefend::CastDefend(Priority priority)
+CastDefend::CastDefend(float attackDuration, float recoverDuration, Priority priority)
 	: super(
-		AttackType::Buff,
+		AttackType::Defensive,
 		UIResources::Menus_Icons_Shield,
 		priority,
 		AbilityType::Physical,
 		0,
 		0,
 		0,
-		0.0f,
-		0.0f,
+		attackDuration,
+		recoverDuration,
 		TargetingType::Self
 	)
 {
@@ -49,7 +49,7 @@ CastDefend::~CastDefend()
 
 PlatformerAttack* CastDefend::cloneInternal()
 {
-	return CastDefend::create(this->priority);
+	return CastDefend::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority);
 }
 
 LocalizedString* CastDefend::getString()
@@ -67,18 +67,11 @@ std::string CastDefend::getAttackAnimation()
 	return "AttackCast";
 }
 
-void CastDefend::onAttackStaged()
-{
-	super::onAttackStaged();
-	
-	this->defendSound->play(false, this->attackDuration);
-
-	this->execute(this->owner, {}, nullptr, nullptr);
-}
-
 void CastDefend::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
 	super::performAttack(owner, targets);
+	
+	this->defendSound->play(false, this->attackDuration);
 
 	owner->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{

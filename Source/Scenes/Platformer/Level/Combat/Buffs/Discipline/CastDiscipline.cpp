@@ -15,26 +15,26 @@
 
 using namespace cocos2d;
 
-CastDiscipline* CastDiscipline::create(Priority priority)
+CastDiscipline* CastDiscipline::create(float attackDuration, float recoverDuration, Priority priority)
 {
-	CastDiscipline* instance = new CastDiscipline(priority);
+	CastDiscipline* instance = new CastDiscipline(attackDuration, recoverDuration, priority);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-CastDiscipline::CastDiscipline(Priority priority)
+CastDiscipline::CastDiscipline(float attackDuration, float recoverDuration, Priority priority)
 	: super(
-		AttackType::Buff,
+		AttackType::Defensive,
 		UIResources::Menus_Icons_HeartPurple,
 		priority,
 		AbilityType::Arcane,
 		0,
 		0,
 		8,
-		0.0f,
-		0.0f,
+		attackDuration,
+		recoverDuration,
 		TargetingType::Self
 	)
 {
@@ -49,7 +49,7 @@ CastDiscipline::~CastDiscipline()
 
 PlatformerAttack* CastDiscipline::cloneInternal()
 {
-	return CastDiscipline::create(this->priority);
+	return CastDiscipline::create(this->getAttackDuration(), this->getRecoverDuration(), this->priority);
 }
 
 LocalizedString* CastDiscipline::getString()
@@ -67,18 +67,11 @@ std::string CastDiscipline::getAttackAnimation()
 	return "AttackCast";
 }
 
-void CastDiscipline::onAttackStaged()
-{
-	super::onAttackStaged();
-	
-	this->disciplineSound->play(false, this->attackDuration);
-
-	this->execute(this->owner, {}, nullptr, nullptr);
-}
-
 void CastDiscipline::performAttack(PlatformerEntity* owner, std::vector<PlatformerEntity*> targets)
 {
 	super::performAttack(owner, targets);
+	
+	this->disciplineSound->play(false, this->attackDuration);
 
 	owner->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
