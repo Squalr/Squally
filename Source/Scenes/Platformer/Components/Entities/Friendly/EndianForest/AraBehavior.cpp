@@ -3,12 +3,14 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Dialogue/DialogueOption.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
@@ -56,30 +58,27 @@ void AraBehavior::onLoad()
 
 	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
-		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-			Strings::Platformer_Quests_EndianForest_SaveTown_Ara_H_HelpUs::create(),
-			[=]()
-			{
-				DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-					Strings::Platformer_Quests_EndianForest_SaveTown_Ara_I_Nope::create(),
-					DialogueEvents::DialogueVisualArgs(
-						DialogueBox::DialogueDock::Bottom,
-						DialogueBox::DialogueAlignment::Left,
-						DialogueEvents::BuildPreviewNode(&this->entity, false),
-						DialogueEvents::BuildPreviewNode(&this->squally, true)
-					),
-					[=]()
-					{
-					},
-					Voices::GetNextVoiceShort(),
-					true
-				));
-			}),
-			0.5f
-		);
+		if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyArcaneHint, Value(false)).asBool())
+		{
+			return;
+		}
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_SaveTown_Ara_A_Illusion::create(),
+			Strings::Platformer_Quests_EndianForest_SaveTown_Ara_A_WhyHide::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->entity, false),
+				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceQuestion(Voices::VoiceType::Droid),
+			false
+		));
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_EndianForest_SaveTown_Ara_B_Illusion::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -108,7 +107,7 @@ void AraBehavior::onLoad()
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_SaveTown_Ara_B_Hide::create(),
+			Strings::Platformer_Quests_EndianForest_SaveTown_Ara_C_Hide::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -122,7 +121,7 @@ void AraBehavior::onLoad()
 			false
 		));
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_SaveTown_Ara_C_TakeItems::create(),
+			Strings::Platformer_Quests_EndianForest_SaveTown_Ara_D_TakeItems::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
@@ -131,6 +130,7 @@ void AraBehavior::onLoad()
 			),
 			[=]()
 			{
+				SaveManager::SaveProfileData(SaveKeys::SaveKeyTalkedToAra, Value(true));
 			},
 			Voices::GetNextVoiceMedium(),
 			false

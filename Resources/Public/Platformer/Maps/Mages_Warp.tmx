@@ -654,7 +654,7 @@
     <property name="map" value="DataMines/Zone_2_4"/>
     <property name="quest" value="power-warp-gate-dm"/>
     <property name="quest-line" value="restore-warp-gates"/>
-    <property name="transition" value="warp-room"/>
+    <property name="transition" value="dm"/>
    </properties>
   </object>
   <object id="1023" name="portal" type="object" x="364.242" y="796.879" width="256" height="256">

@@ -83,7 +83,7 @@ void DispelIllusionBehavior::registerHackables()
 		[=]()
 		{
 		},
-		int(HackFlags::None),
+		int(HackFlags::Arcane),
 		0.01f,
 		HackableBase::HackBarColor::Purple,
 		UIResources::Menus_Icons_Eye,

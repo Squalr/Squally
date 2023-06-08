@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="28" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="805">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="28" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="807">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -366,6 +366,17 @@
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
+  <object id="805" name="chest" type="object" x="2177.76" y="1922" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="ef-ram-wheel"/>
+   </properties>
+  </object>
+  <object id="806" name="trigger" type="object" x="2518.02" y="-193.53" width="356.678" height="3620.52">
+   <properties>
+    <property name="components" value="arcane-hint"/>
+    <property name="send-event" value="arcane-hint"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -377,7 +388,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="cyclops" type="entity" x="1857.82" y="1920.34" width="128" height="128">
+  <object id="692" name="cyclops" type="entity" x="1291.15" y="1923.37" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
@@ -386,7 +397,7 @@
     <property name="drop-pool" value="ef-generic"/>
    </properties>
   </object>
-  <object id="693" name="cyclops" type="entity" x="1857.4" y="1675.91" width="128" height="128">
+  <object id="693" name="cyclops" type="entity" x="1290.73" y="1678.94" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>

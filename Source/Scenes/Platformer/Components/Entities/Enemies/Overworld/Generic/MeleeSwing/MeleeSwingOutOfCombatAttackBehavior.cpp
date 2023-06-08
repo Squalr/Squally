@@ -62,7 +62,11 @@ void MeleeSwingOutOfCombatAttackBehavior::update(float dt)
 {
 	super::update(dt);
 
-	if (this->agroBehavior != nullptr && this->agroBehavior->hasAgro() && this->agroBehavior->isInMeleeRange(420.0f))
+	if (this->agroBehavior != nullptr
+		&& this->owner != nullptr
+		&& this->agroBehavior->hasAgro()
+		&& this->agroBehavior->isInMeleeRange(420.0f)
+		&& this->owner->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true))
 	{
 		this->attack();
 	}

@@ -75,17 +75,20 @@ DeveloperScene::DeveloperScene()
 	/*
 	- General:
 		- ** Fucking 5x easter eggs
-		- * VS Quest granting money and health manip (?)
 		- ** VS Final Boss Fight + Credits (or clear ending)
+		- * VS Quest granting money and health manip (?)
 		- * Make LC final 4_x maps less bad.
 		- * 2nd pass on spellbook spells for balance
 			- Missing Nature (Thorn Shield / ??)
-			- Missing Shadow (Run from fight / ??)
-			- Missing Fire ()
+			- Missing Shadow (?? Run from fight / ?? Overworld Stealth [similar to swim])
+			- Missing Fire (SuperHeat  / ?? Dispel Firewall) -- quest to temporarily grant before EF boss? lol
+			- Missing Frost (?? / ??)
+			- Missing Arcane (?? / ?? illusion oops)
 		- * Helper abilities unlocked at certain levels
-		- * ? VS special quest spellbook?
+		- Cyclops weapon ghost misplaced
 		- Music
 			- Good desert music (The Letter sucked)
+			- https://philipwesley.com/contact/ (which?)
 			- https://michelemclaughlin.com/pages/contact (Preserverence)
 			- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
 		- v Camera harsh leaving camera targets (see FF cinematic)
@@ -1020,13 +1023,13 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyQuickPotionUnlocked, Value(true));
 
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookArcane, Value(true));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFire, Value(true));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookArcane, Value(true));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFire, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFrost, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookHoly, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookLightning, Value(true));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookNature, Value(true));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookShadow, Value(true));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookShadow, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 			

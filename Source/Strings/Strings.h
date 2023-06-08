@@ -28059,6 +28059,36 @@ namespace Strings
 		virtual ~Platformer_Combat_Attacks_SmashDescription() = default;
 	};
 
+	class Platformer_Combat_Attacks_SuperHeat : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_SuperHeat();
+		virtual ~Platformer_Combat_Attacks_SuperHeat() = default;
+	};
+
+	class Platformer_Combat_Attacks_SuperHeatDescription : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_SuperHeatDescription();
+		virtual ~Platformer_Combat_Attacks_SuperHeatDescription() = default;
+	};
+
 	class Platformer_Combat_Attacks_ThrowFlamingWeapon : public LocalizedString
 	{
 	public:
@@ -36114,7 +36144,7 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_Intro_G_HackerModeCombat() = default;
 	};
 
-	class Platformer_Quests_EndianForest_Misc_Jasper_A_Clever : public LocalizedString
+	class Platformer_Quests_EndianForest_Misc_ArcaneMagic_A_Guarded : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36125,11 +36155,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_Misc_Jasper_A_Clever();
-		virtual ~Platformer_Quests_EndianForest_Misc_Jasper_A_Clever() = default;
+		Platformer_Quests_EndianForest_Misc_ArcaneMagic_A_Guarded();
+		virtual ~Platformer_Quests_EndianForest_Misc_ArcaneMagic_A_Guarded() = default;
 	};
 
-	class Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis : public LocalizedString
+	class Platformer_Quests_EndianForest_Misc_ArcaneMagic_B_ThoughtNot : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36140,8 +36170,38 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis();
-		virtual ~Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis() = default;
+		Platformer_Quests_EndianForest_Misc_ArcaneMagic_B_ThoughtNot();
+		virtual ~Platformer_Quests_EndianForest_Misc_ArcaneMagic_B_ThoughtNot() = default;
+	};
+
+	class Platformer_Quests_EndianForest_Misc_Aster_A_Clever : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_Misc_Aster_A_Clever();
+		virtual ~Platformer_Quests_EndianForest_Misc_Aster_A_Clever() = default;
+	};
+
+	class Platformer_Quests_EndianForest_Misc_Aster_B_TakeThis : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_Misc_Aster_B_TakeThis();
+		virtual ~Platformer_Quests_EndianForest_Misc_Aster_B_TakeThis() = default;
 	};
 
 	class Platformer_Quests_EndianForest_PerceptronChase_A_DangerDanger : public LocalizedString
@@ -36369,7 +36429,7 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_SailForRuins_BlackBeard_Nay() = default;
 	};
 
-	class Platformer_Quests_EndianForest_SaveTown_Ara_A_Illusion : public LocalizedString
+	class Platformer_Quests_EndianForest_SaveTown_Ara_A_WhyHide : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36380,11 +36440,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_SaveTown_Ara_A_Illusion();
-		virtual ~Platformer_Quests_EndianForest_SaveTown_Ara_A_Illusion() = default;
+		Platformer_Quests_EndianForest_SaveTown_Ara_A_WhyHide();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Ara_A_WhyHide() = default;
 	};
 
-	class Platformer_Quests_EndianForest_SaveTown_Ara_B_Hide : public LocalizedString
+	class Platformer_Quests_EndianForest_SaveTown_Ara_B_Illusion : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36395,11 +36455,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_SaveTown_Ara_B_Hide();
-		virtual ~Platformer_Quests_EndianForest_SaveTown_Ara_B_Hide() = default;
+		Platformer_Quests_EndianForest_SaveTown_Ara_B_Illusion();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Ara_B_Illusion() = default;
 	};
 
-	class Platformer_Quests_EndianForest_SaveTown_Ara_C_TakeItems : public LocalizedString
+	class Platformer_Quests_EndianForest_SaveTown_Ara_C_Hide : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36410,11 +36470,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_SaveTown_Ara_C_TakeItems();
-		virtual ~Platformer_Quests_EndianForest_SaveTown_Ara_C_TakeItems() = default;
+		Platformer_Quests_EndianForest_SaveTown_Ara_C_Hide();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Ara_C_Hide() = default;
 	};
 
-	class Platformer_Quests_EndianForest_SaveTown_Ara_H_HelpUs : public LocalizedString
+	class Platformer_Quests_EndianForest_SaveTown_Ara_D_TakeItems : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36425,23 +36485,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_SaveTown_Ara_H_HelpUs();
-		virtual ~Platformer_Quests_EndianForest_SaveTown_Ara_H_HelpUs() = default;
-	};
-
-	class Platformer_Quests_EndianForest_SaveTown_Ara_I_Nope : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_EndianForest_SaveTown_Ara_I_Nope();
-		virtual ~Platformer_Quests_EndianForest_SaveTown_Ara_I_Nope() = default;
+		Platformer_Quests_EndianForest_SaveTown_Ara_D_TakeItems();
+		virtual ~Platformer_Quests_EndianForest_SaveTown_Ara_D_TakeItems() = default;
 	};
 
 	class Platformer_Quests_EndianForest_SaveTown_Gorgon_A_MeSmash : public LocalizedString

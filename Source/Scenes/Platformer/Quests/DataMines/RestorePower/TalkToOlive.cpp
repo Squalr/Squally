@@ -148,7 +148,8 @@ void TalkToOlive::runCinematicSequencePt2()
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->olive, true)
+			DialogueEvents::BuildPreviewNode(&this->olive, true),
+			true
 		),
 		[=]()
 		{

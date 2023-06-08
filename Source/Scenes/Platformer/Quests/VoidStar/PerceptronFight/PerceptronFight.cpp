@@ -222,7 +222,8 @@ void PerceptronFight::runCinematicSequencePt4()
 			DialogueBox::DialogueDock::Bottom,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->perceptron, true)
+			DialogueEvents::BuildPreviewNode(&this->perceptron, true),
+			true
 		),
 		[=]()
 		{

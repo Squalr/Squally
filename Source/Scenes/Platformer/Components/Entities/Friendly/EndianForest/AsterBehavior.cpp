@@ -62,7 +62,7 @@ void AsterBehavior::onLoad()
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_Misc_Jasper_A_Clever::create(),
+				Strings::Platformer_Quests_EndianForest_Misc_Aster_A_Clever::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
@@ -76,7 +76,7 @@ void AsterBehavior::onLoad()
 				false
 			));
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_EndianForest_Misc_Jasper_B_TakeThis::create(),
+				Strings::Platformer_Quests_EndianForest_Misc_Aster_B_TakeThis::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
