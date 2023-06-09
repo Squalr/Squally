@@ -163,6 +163,7 @@ void ChoicesMenu::initializeListeners()
 					PlatformerEvents::TriggerAllowPause();
 
 					this->attackMenu->setVisible(false);
+					this->defendMenu->setVisible(false);
 					this->itemsMenu->setVisible(false);
 					this->choicesMenu->setVisible(true);
 					this->setVisible(true);
@@ -352,7 +353,7 @@ void ChoicesMenu::onAttackClick()
 
 void ChoicesMenu::onDefendClick()
 {
-	this->defendMenu->scrollTo(1);
+	this->defendMenu->scrollTo(0);
 
 	if (this->currentMenu == CombatEvents::MenuStateArgs::CurrentMenu::ActionSelect && this->choicesMenu->getIndex() == 2)
 	{

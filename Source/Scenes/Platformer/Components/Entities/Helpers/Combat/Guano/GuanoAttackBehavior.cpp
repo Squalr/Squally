@@ -5,8 +5,9 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
-#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/BasicSlashAxe/BasicSlashAxe.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Health/IncrementHealthFlask/IncrementHealthFlask.h"
+#include "Scenes/Platformer/Level/Combat/Attacks/Abilities/BasicSlashAxe/BasicSlashAxe.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/Defend/CastDefend.h"
 
 #include "Resources/UIResources.h"
 
@@ -50,6 +51,7 @@ void GuanoAttackBehavior::onLoad()
 		int maxAttack = std::get<1>(attackRange);
 
 		attackBehavior->registerAttack(BasicSlashAxe::create(minAttack, maxAttack, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
+		attackBehavior->registerDefensive(CastDefend::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
 }
 

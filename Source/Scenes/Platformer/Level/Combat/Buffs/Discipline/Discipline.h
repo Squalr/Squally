@@ -27,7 +27,7 @@ protected:
 private:
 	typedef Buff super;
 
-	void onDamageTakenOrCycle(bool isDamage);
+	void onCycle();
 
 	cocos2d::Sprite* disciplineEffect = nullptr;
 	int resetCount = 0;

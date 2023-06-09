@@ -38,24 +38,24 @@ Discipline::~Discipline()
 void Discipline::onEnter()
 {
 	super::onEnter();
+
+	this->disciplineEffect->setOpacity(0);
+	this->disciplineEffect->runAction(Sequence::create(
+		FadeTo::create(0.5f, 255),
+		DelayTime::create(0.25f),
+		FadeTo::create(0.5f, 0),
+		nullptr
+	));
 }
 
 void Discipline::initializePositions()
 {
 	super::initializePositions();
-
-	this->disciplineEffect->runAction(RepeatForever::create(Sequence::create(
-		ScaleTo::create(0.5f, 0.95f),
-		ScaleTo::create(0.5f, 1.0f),
-		nullptr
-	)));
 }
 
 void Discipline::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
-
-	this->onDamageTakenOrCycle(true);
 }
 
 void Discipline::onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset)
@@ -63,13 +63,13 @@ void Discipline::onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset)
 	super::onTimelineReset(timelineReset);
 
 	this->resetCount++;
-	this->onDamageTakenOrCycle(false);
+	this->onCycle();
 }
 
 
-void Discipline::onDamageTakenOrCycle(bool isDamage)
+void Discipline::onCycle()
 {
-	if (isDamage || this->resetCount >= 2)
+	if (this->resetCount >= 3)
 	{
 		this->removeBuff();
 	}

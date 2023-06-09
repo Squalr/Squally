@@ -171,7 +171,6 @@ void Timeline::initializeListeners()
 		}
 	}));
 
-	/*
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventChangeMenuState, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::MenuStateArgs* args = static_cast<CombatEvents::MenuStateArgs*>(eventCustom->getData());
@@ -180,6 +179,7 @@ void Timeline::initializeListeners()
 		{
 			this->timelineEntryAwaitingUserAction = args->entry;
 
+			/*
 			switch (args->currentMenu)
 			{
 				case CombatEvents::MenuStateArgs::CurrentMenu::DefendSelect:
@@ -203,9 +203,9 @@ void Timeline::initializeListeners()
 				{
 					break;
 				}
-			}
+			}*/
 		}
-	}));*/
+	}));
 }
 
 void Timeline::update(float dt)

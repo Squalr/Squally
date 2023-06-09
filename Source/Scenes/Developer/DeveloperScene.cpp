@@ -79,13 +79,11 @@ DeveloperScene::DeveloperScene()
 		- * VS Quest granting money and health manip (?)
 		- * Make LC final 4_x maps less bad.
 		- * 2nd pass on spellbook spells for balance
-			- Missing Nature (?? Thorn Shield / ??)
-			- Missing Shadow (?? Run from fight / ?? Overworld Stealth [similar to swim])
-			- Missing Fire (SuperHeat  / ?? Dispel Firewall) -- quest to temporarily grant before EF boss? lol
-			- Missing Frost (?? / ??)
-			- Missing Arcane (Discipline / Dispel Illusion)
+			- Missing Nature (Thorn Shield / ??)
+			- Missing Shadow (Run from fight / Overworld Stealth [similar to swim])
+			- Missing Fire -- Could have bomb spawn platforms that lead to a room where lava level can be raised. Cinda in that room.
+				- quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		- * Helper abilities unlocked at certain levels
-		- Cyclops weapon ghost misplaced
 		- CombatAIHelper.cpp defensives
 		- Music
 			- Good desert music (The Letter sucked)
@@ -114,7 +112,7 @@ DeveloperScene::DeveloperScene()
 			- ** Needs animals
 			- ** Needs enemy scripting according to notes on which instructions this zone covers
 			- * Needs enemy scripting according to notes on which instructions this zone covers
-			- * Frost SpellBook
+			- * Frost SpellBook (?? / ??)
 		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 		- Hexus:
 			- Sanity check card localization (due to art changes)
@@ -1024,7 +1022,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyQuickPotionUnlocked, Value(true));
 
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookArcane, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookArcane, Value(true));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFire, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFrost, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookHoly, Value(true));

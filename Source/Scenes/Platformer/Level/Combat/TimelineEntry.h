@@ -59,6 +59,13 @@ protected:
 private:
 	typedef SmartNode super;
 
+	enum class CastState
+	{
+		Ready,
+		AttackStaged,
+		DefensiveCasted,	
+	};
+
 	bool isPacifist();
 
 	void performCast();
@@ -83,6 +90,5 @@ private:
 	int spawnIndex = 0;
 	float interruptBonus = 0.0f;
 	float progress = 0.0f;
-	bool isCasting = false;
-	bool isBlocking = false;
+	CastState castState = CastState::Ready;
 };
