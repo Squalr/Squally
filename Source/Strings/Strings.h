@@ -28284,6 +28284,36 @@ namespace Strings
 		virtual ~Platformer_Combat_Defensives_ThornsDescription() = default;
 	};
 
+	class Platformer_Combat_Defensives_Vanish : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Defensives_Vanish();
+		virtual ~Platformer_Combat_Defensives_Vanish() = default;
+	};
+
+	class Platformer_Combat_Defensives_VanishDescription : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Defensives_VanishDescription();
+		virtual ~Platformer_Combat_Defensives_VanishDescription() = default;
+	};
+
 	class Platformer_Combat_ExpGain : public LocalizedString
 	{
 	public:

@@ -79,8 +79,8 @@ DeveloperScene::DeveloperScene()
 		- * VS Quest granting money and health manip (?)
 		- * Make LC final 4_x maps less bad.
 		- * 2nd pass on spellbook spells for balance
-			- Missing Nature (Thorn Shield / ??)
-			- Missing Shadow (Run from fight / Overworld Stealth [similar to swim])
+			- Missing Nature trap(s): ??
+			- Missing Shadow ability: Run from fight / Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)
 			- Missing Fire -- Could have bomb spawn platforms that lead to a room where lava level can be raised. Cindra in that room.
 				- quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		- * Helper abilities unlocked at certain levels
