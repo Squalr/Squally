@@ -56,20 +56,20 @@ void Discipline::initializePositions()
 void Discipline::onBeforeDamageTaken(CombatEvents::ModifiableDamageOrHealingArgs* damageOrHealing)
 {
 	super::onBeforeDamageTaken(damageOrHealing);
-}
-
-void Discipline::onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset)
-{
-	super::onTimelineReset(timelineReset);
 
 	this->resetCount++;
 	this->onCycle();
 }
 
+void Discipline::onTimelineReset(CombatEvents::TimelineResetArgs* timelineReset)
+{
+	super::onTimelineReset(timelineReset);
+}
+
 
 void Discipline::onCycle()
 {
-	if (this->resetCount >= 3)
+	if (this->resetCount >= 2)
 	{
 		this->removeBuff();
 	}

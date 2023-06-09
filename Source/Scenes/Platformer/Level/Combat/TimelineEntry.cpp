@@ -529,8 +529,8 @@ void TimelineEntry::stageCast(PlatformerAttack* attack)
 
 	this->currentCast = attack;
 
-	if (this->currentCast != nullptr
-		&& this->currentCast->getAttackType() == PlatformerAttack::AttackType::Defensive)
+	// Instant cast defensive skills
+	if (this->currentCast != nullptr && this->currentCast->getAttackType() == PlatformerAttack::AttackType::Defensive)
 	{
 		CombatEvents::TriggerPauseTimeline();
 
@@ -579,6 +579,7 @@ void TimelineEntry::addTimeWithoutActions(float dt)
 
 	this->setProgress(this->progress + (dt * (speed + this->interruptBonus) * TimelineEntry::BaseSpeedMultiplier));
 
+	// If time has moved the entity backwards, revert any staged casts
 	if (this->castState != CastState::Ready && speed < 0.0f && this->progress < TimelineEntry::CastPercentage)
 	{
 		this->stageCast(nullptr);
@@ -645,21 +646,29 @@ void TimelineEntry::tryPerformActions()
 	}
 }
 
+// This is called at 1.0f progress for attacks, but can be called at 0.75f progress for defensives
 void TimelineEntry::performCast()
 {
-	CombatEvents::TriggerRequestRetargetCorrection(CombatEvents::AIRequestArgs(this));
-
 	this->cameraFocusEntry();
 
-	bool isDefensive = this->currentCast != nullptr && this->currentCast->getAttackType() == PlatformerAttack::AttackType::Defensive;
-
-	if (this->castState == CastState::AttackStaged)
+	switch(this->castState)
 	{
-		this->castState = CastState::Ready;
+		case CastState::AttackStaged:
+		{
+			CombatEvents::TriggerRequestRetargetCorrection(CombatEvents::AIRequestArgs(this));
+			this->castState = CastState::Casting;
+			break;
+		}
+		default:
+		{
+			break;
+		}
 	}
 
+	CastState originalCastState = this->castState;
+
 	this->runAction(Sequence::create(
-		DelayTime::create(isDefensive ? 0.0f : 1.0f),
+		DelayTime::create(1.0f),
 		CallFunc::create([=]()
 		{
 			if (this->targets.empty() || this->entity == nullptr || this->currentCast == nullptr)
@@ -671,7 +680,6 @@ void TimelineEntry::performCast()
 
 			this->entity->getAnimations()->clearAnimationPriority();
 			this->entity->getAnimations()->playAnimation(this->currentCast->getAttackAnimation(), SmartAnimationNode::AnimationPlayMode::ReturnToIdle, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
-			
 
 			this->currentCast->execute(
 				this->entity,
@@ -686,12 +694,21 @@ void TimelineEntry::performCast()
 				},
 				[=]()
 				{
-					// Reset timeline for non-defensive casts only
-					this->stageCast(nullptr);
-
-					if (!isDefensive)
+					switch(originalCastState)
 					{
-						this->resetTimeline();
+						case CastState::DefensiveCasted:
+						{
+							this->castState = CastState::WaitingForReset;
+							this->stageCast(nullptr);
+							break;
+						}
+						case CastState::AttackStaged:
+						{
+							this->castState = CastState::WaitingForReset;
+							this->stageCast(nullptr);
+							this->resetTimeline();
+							break;
+						}
 					}
 
 					CombatEvents::TriggerResumeTimeline();
@@ -725,6 +742,9 @@ void TimelineEntry::tryInterrupt()
 
 		this->setProgress(this->progress / 2.0f);
 		this->interruptBonus = 0.1f;
+
+		CombatEvents::TriggerRefreshTimeline();
+		
 		this->castState = CastState::Ready;
 		this->stageCast(nullptr);
 	}
@@ -747,6 +767,8 @@ void TimelineEntry::tryInterrupt()
 
 			this->setProgress(this->progress / 4.0f);
 			this->interruptBonus = 0.1f;
+
+			CombatEvents::TriggerRefreshTimeline();
 
 			this->castState = CastState::Ready;
 			this->stageCast(nullptr);

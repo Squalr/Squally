@@ -22,6 +22,7 @@ const std::string CombatEvents::EventBuffRemoved = "EVENT_COMBAT_BUFF_REMOVED";
 const std::string CombatEvents::EventBuffTimeElapsed = "EVENT_COMBAT_BUFF_TIME_ELAPSED";
 const std::string CombatEvents::EventProjectileSpawned = "EVENT_PROJECTILE_SPAWNED";
 const std::string CombatEvents::EventEntityTimelineReset = "EVENT_COMBAT_TIMELINE_RESET";
+const std::string CombatEvents::EventRefreshTimeline = "EVENT_COMBAT_REFRESH_TIMELINE";
 const std::string CombatEvents::EventPauseTimeline = "EVENT_COMBAT_PAUSE_TIMELINE";
 const std::string CombatEvents::EventPauseTimelineCinematic = "EVENT_COMBAT_PAUSE_TIMELINE_CINEMATIC";
 const std::string CombatEvents::EventResumeTimeline = "EVENT_COMBAT_RESUME_TIMELINE";
@@ -140,6 +141,13 @@ void CombatEvents::TriggerRequestAIAction(AIRequestArgs args)
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventRequestAIAction,
 		&args
+	);
+}
+
+void CombatEvents::TriggerRefreshTimeline()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		CombatEvents::EventRefreshTimeline
 	);
 }
 

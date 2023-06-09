@@ -171,4 +171,10 @@ void DefendMenu::selectAttack(TimelineEntry* entry, PlatformerAttack* attack, in
 			break;
 		}
 	}
+
+	// Hacky fix -- a pause is inserted to handle the case where a defensive was staged, but a UI event unpaused the timeline.
+	if (entry != nullptr && entry->getStagedCast() != nullptr && entry->getStagedCast()->getAttackType() == PlatformerAttack::AttackType::Defensive)
+	{
+		CombatEvents::TriggerPauseTimeline();
+	}
 }

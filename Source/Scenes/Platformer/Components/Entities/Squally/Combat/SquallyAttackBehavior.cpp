@@ -22,6 +22,7 @@
 #include "Scenes/Platformer/Level/Combat/Attacks/Abilities/SuperHeat/CastSuperHeat.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/CastDefend.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Discipline/CastDiscipline.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/Thorns/CastThorns.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Axes/AxeCleave.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Axes/AxeSwing.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Bows/BowShoot.h"
@@ -110,7 +111,7 @@ void SquallyAttackBehavior::loadSpellBookAttacks(EntityAttackBehavior* attackBeh
 
 	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookNature, Value(false)).asBool())
 	{
-		
+		attackBehavior->registerDefensive(CastThorns::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 
 	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookFrost, Value(false)).asBool())

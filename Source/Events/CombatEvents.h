@@ -32,6 +32,7 @@ public:
 	static const std::string EventBuffTimeElapsed;
 	static const std::string EventProjectileSpawned;
 	static const std::string EventEntityTimelineReset;
+	static const std::string EventRefreshTimeline;
 	static const std::string EventPauseTimeline;
 	static const std::string EventPauseTimelineCinematic;
 	static const std::string EventResumeTimeline;
@@ -421,6 +422,7 @@ public:
 	static void TriggerSelectCastTarget(CastTargetsArgs args);
 	static void TriggerRequestRetargetCorrection(AIRequestArgs args);
 	static void TriggerRequestAIAction(AIRequestArgs args);
+	static void TriggerRefreshTimeline();
 	static void TriggerPauseTimeline();
 	static void TriggerPauseTimelineCinematic();
 	static void TriggerResumeTimeline();

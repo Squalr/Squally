@@ -17,6 +17,7 @@ namespace FXResources
 	extern const std::string Auras_RuneAura5;
 	extern const std::string Auras_RuneAura6;
 	extern const std::string Auras_StarAura;
+	extern const std::string Auras_ThornsAura;
 	extern const std::string Auras_TriAura;
 	extern const std::string Auras_WindAura;
 	extern const std::string CrossHatch_CrossHatch_0000;

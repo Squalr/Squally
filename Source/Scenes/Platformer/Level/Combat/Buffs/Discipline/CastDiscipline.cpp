@@ -32,7 +32,7 @@ CastDiscipline::CastDiscipline(float attackDuration, float recoverDuration, Prio
 		AbilityType::Arcane,
 		0,
 		0,
-		8,
+		5,
 		attackDuration,
 		recoverDuration,
 		TargetingType::Self

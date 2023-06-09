@@ -64,6 +64,8 @@ private:
 		Ready,
 		AttackStaged,
 		DefensiveCasted,	
+		Casting,
+		WaitingForReset,
 	};
 
 	bool isPacifist();

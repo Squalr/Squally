@@ -354,6 +354,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_ShieldHoly;
 	extern const std::string Menus_Icons_ShieldMagic;
 	extern const std::string Menus_Icons_ShieldSun;
+	extern const std::string Menus_Icons_ShieldThorned;
 	extern const std::string Menus_Icons_Shovel;
 	extern const std::string Menus_Icons_ShovelGlowGreen;
 	extern const std::string Menus_Icons_SilverBar;

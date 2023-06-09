@@ -123,6 +123,11 @@ void Timeline::initializeListeners()
 		CombatEvents::TriggerResumeTimeline();
 	}));
 
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRefreshTimeline, [=](EventCustom* eventCustom)
+	{
+		this->refreshTimelinePositions();
+	}));
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventEntityTimelineReset, [=](EventCustom* eventCustom)
 	{
 		this->refreshTimelinePositions();

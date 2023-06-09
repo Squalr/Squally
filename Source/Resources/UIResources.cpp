@@ -353,6 +353,7 @@ const std::string UIResources::Menus_Icons_ShieldGlowRed = "Private/UI/Menus/Ico
 const std::string UIResources::Menus_Icons_ShieldHoly = "Private/UI/Menus/Icons/ShieldHoly.png";
 const std::string UIResources::Menus_Icons_ShieldMagic = "Private/UI/Menus/Icons/ShieldMagic.png";
 const std::string UIResources::Menus_Icons_ShieldSun = "Private/UI/Menus/Icons/ShieldSun.png";
+const std::string UIResources::Menus_Icons_ShieldThorned = "Private/UI/Menus/Icons/ShieldThorned.png";
 const std::string UIResources::Menus_Icons_Shovel = "Private/UI/Menus/Icons/Shovel.png";
 const std::string UIResources::Menus_Icons_ShovelGlowGreen = "Private/UI/Menus/Icons/ShovelGlowGreen.png";
 const std::string UIResources::Menus_Icons_SilverBar = "Private/UI/Menus/Icons/SilverBar.png";

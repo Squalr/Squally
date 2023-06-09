@@ -81,7 +81,7 @@ DeveloperScene::DeveloperScene()
 		- * 2nd pass on spellbook spells for balance
 			- Missing Nature (Thorn Shield / ??)
 			- Missing Shadow (Run from fight / Overworld Stealth [similar to swim])
-			- Missing Fire -- Could have bomb spawn platforms that lead to a room where lava level can be raised. Cinda in that room.
+			- Missing Fire -- Could have bomb spawn platforms that lead to a room where lava level can be raised. Cindra in that room.
 				- quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		- * Helper abilities unlocked at certain levels
 		- CombatAIHelper.cpp defensives
@@ -1027,7 +1027,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFrost, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookHoly, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookLightning, Value(true));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookNature, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookNature, Value(true));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookShadow, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
