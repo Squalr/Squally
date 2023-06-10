@@ -210,7 +210,7 @@ void DeliverBomb::runCinematicSequencePt1()
 					),
 					[=]()
 					{
-						if (this->floatingBomb != nullptr && this->cinematicFocus != nullptr && this->cinematicLavaFall != nullptr)
+						if (this->floatingBomb != nullptr && this->cinematicLavaFall != nullptr)
 						{
 							PlatformerEvents::TriggerCinematicHijack();
 
@@ -219,6 +219,8 @@ void DeliverBomb::runCinematicSequencePt1()
 								CallFunc::create([=]()
 								{
 									PlatformerEvents::TriggerCinematicHijack();
+									GameCamera::getInstance()->pushTarget(CameraTrackingData(
+									this->floatingBomb->getCollision(), Vec2::ZERO, Vec2::ZERO, CameraTrackingData::CameraScrollType::Rectangle, CameraTrackingData::DefaultCameraFollowSpeed, 0.5f));
 									this->floatingBomb->getCollision()->setPhysicsFlagEnabled(true);
 								}),
 								DelayTime::create(4.0f),
@@ -228,12 +230,8 @@ void DeliverBomb::runCinematicSequencePt1()
 									this->cinematicLavaFall->runAction(FadeTo::create(0.5f, 255));
 									this->explosionSound->play();
 									GameCamera::getInstance()->shakeCamera(0.5f, 12.0f, 1.5f);
-								}),
-								DelayTime::create(1.0f),
-								CallFunc::create([=]()
-								{
-									PlatformerEvents::TriggerCinematicHijack();
-									GameCamera::getInstance()->pushTarget(this->cinematicFocus->getTrackingData());
+									this->owner->broadcastMapEvent("lava-flood", ValueMap());
+									this->complete();
 								}),
 								DelayTime::create(4.0f),
 								CallFunc::create([=]()
@@ -277,9 +275,6 @@ void DeliverBomb::runCinematicSequencePt1()
 
 void DeliverBomb::runCinematicSequencePt2()
 {
-	// Complete immediately to start the lava flood animation
-	this->complete();
-
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_FirewallFissure_DefeatAsmodeus_Scaldor_C_WeDidIt::create(),
 		DialogueEvents::DialogueVisualArgs(

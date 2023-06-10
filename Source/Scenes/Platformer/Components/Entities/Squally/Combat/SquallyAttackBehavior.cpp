@@ -23,6 +23,7 @@
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/CastDefend.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Discipline/CastDiscipline.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Thorns/CastThorns.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/Vanish/CastVanish.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Axes/AxeCleave.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Axes/AxeSwing.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/Weapons/Bows/BowShoot.h"
@@ -124,14 +125,14 @@ void SquallyAttackBehavior::loadSpellBookAttacks(EntityAttackBehavior* attackBeh
 		attackBehavior->registerAttack(CastSuperHeat::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 
-	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookShadow, Value(false)).asBool())
-	{
-		
-	}
-
 	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookArcane, Value(false)).asBool())
 	{
 		attackBehavior->registerDefensive(CastDiscipline::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
+	}
+
+	if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookShadow, Value(false)).asBool())
+	{
+		attackBehavior->registerDefensive(CastVanish::create(0.4f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Uncommon));
 	}
 }
 

@@ -217,13 +217,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1126" name="cindra" type="entity" x="3405.33" y="2344" width="128" height="128">
-   <properties>
-    <property name="components" value="cindra,friendly,pick-pocket,pacing"/>
-    <property name="pocket-pool" value="ff-generic"/>
-    <property name="travel-distance" type="float" value="192"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="88" name="player_layer -6">
   <properties>

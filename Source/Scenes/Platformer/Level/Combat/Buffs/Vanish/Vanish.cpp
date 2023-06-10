@@ -46,7 +46,8 @@ void Vanish::onEnter()
 		FadeTo::create(0.5f, 0),
 		CallFunc::create([=]()
 		{
-			// TODO: Fire the event
+			CombatEvents::TriggerBeforeReturnToMap(CombatEvents::BeforeReturnToMapArgs(true));
+			CombatEvents::TriggerReturnToMapRespawn();
 		}),
 		nullptr
 	));

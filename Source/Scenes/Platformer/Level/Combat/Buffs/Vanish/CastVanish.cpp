@@ -27,18 +27,18 @@ CastVanish* CastVanish::create(float attackDuration, float recoverDuration, Prio
 CastVanish::CastVanish(float attackDuration, float recoverDuration, Priority priority)
 	: super(
 		AttackType::Defensive,
-		UIResources::Menus_Icons_HeartPurple,
+		UIResources::Menus_Icons_BookSpellsDark,
 		priority,
 		AbilityType::Shadow,
 		0,
 		0,
-		5,
+		8,
 		attackDuration,
 		recoverDuration,
 		TargetingType::Self
 	)
 {
-	this->sfx = WorldSound::create(SoundResources::Platformer_Spells_FireHit1);
+	this->sfx = WorldSound::create(SoundResources::Platformer_Spells_Curse1);
 
 	this->addChild(this->sfx);
 }

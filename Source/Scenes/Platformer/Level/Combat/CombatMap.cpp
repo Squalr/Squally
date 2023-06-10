@@ -231,7 +231,7 @@ void CombatMap::initializeListeners()
 		{
 			if (args->playerVictory)
 			{
-				for (auto next : enemyData)
+				for (CombatMap::CombatData& next : enemyData)
 				{
 					GameObject::saveObjectState(next.identifier, EnemyHealthBehavior::SaveKeyIsDead, Value(true));
 				}

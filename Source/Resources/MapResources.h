@@ -166,6 +166,7 @@ namespace MapResources
 	extern const std::string FirewallFissure_Zone_3_1;
 	extern const std::string FirewallFissure_Zone_3_2;
 	extern const std::string FirewallFissure_Zone_3_3;
+	extern const std::string FirewallFissure_Zone_3_4;
 	extern const std::string FirewallFissure_Zone_3_Dev;
 	extern const std::string FirewallFissure__Deprecated_Zone_1_1;
 	extern const std::string FirewallFissure__Deprecated_Zone_1_1_a;

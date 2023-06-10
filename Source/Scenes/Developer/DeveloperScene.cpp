@@ -80,9 +80,8 @@ DeveloperScene::DeveloperScene()
 		- * Make LC final 4_x maps less bad.
 		- * 2nd pass on spellbook spells for balance
 			- Missing Nature trap(s): ??
-			- Missing Shadow ability: Run from fight / Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)
-			- Missing Fire -- Could have bomb spawn platforms that lead to a room where lava level can be raised. Cindra in that room.
-				- quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
+			- Missing Shadow ability: Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)
+			- Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		- * Helper abilities unlocked at certain levels
 		- CombatAIHelper.cpp defensives
 		- Music
@@ -520,7 +519,8 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Smith (FF)", MapResources::FirewallFissure_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Home Mittens (FF)", MapResources::FirewallFissure_Town_Home1));
 		mapList.push_back(this->buildDebugButton("Home Hades (FF)", MapResources::FirewallFissure_Town_Home2));
-		mapList.push_back(this->buildDebugButton("Zone_3_3 (FF)", MapResources::FirewallFissure_Zone_3_3));
+		mapList.push_back(this->buildDebugButton("Zone_3_4 (FF)", MapResources::FirewallFissure_Zone_3_4));
+		mapList.push_back(this->buildDebugButton("Zone_3_3 (FF) Azmodeus", MapResources::FirewallFissure_Zone_3_3));
 		mapList.push_back(this->buildDebugButton("Zone_3_2 (FF)", MapResources::FirewallFissure_Zone_3_2));
 		mapList.push_back(this->buildDebugButton("Zone_3_1_Dev (FF)", MapResources::FirewallFissure_Zone_3_Dev));
 		mapList.push_back(this->buildDebugButton("Zone_3_1 (FF)", MapResources::FirewallFissure_Zone_3_1));
@@ -1028,7 +1028,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookHoly, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookLightning, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookNature, Value(true));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookShadow, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookShadow, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWater, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 			

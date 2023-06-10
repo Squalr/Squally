@@ -69,7 +69,7 @@ void CindraBehavior::setPostText()
 	{
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
-			if (!SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookNature, Value(false)).asBool())
+			if (!SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookFire, Value(false)).asBool())
 			{
 				interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 					Strings::Platformer_Quests_FirewallFissure_Spellbook_Cindra_A_Flame::create(),

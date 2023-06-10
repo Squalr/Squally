@@ -165,6 +165,7 @@ const std::string MapResources::FirewallFissure_Zone_3_0 = "Public/Platformer/Ma
 const std::string MapResources::FirewallFissure_Zone_3_1 = "Public/Platformer/Maps/FirewallFissure/Zone_3_1.tmx";
 const std::string MapResources::FirewallFissure_Zone_3_2 = "Public/Platformer/Maps/FirewallFissure/Zone_3_2.tmx";
 const std::string MapResources::FirewallFissure_Zone_3_3 = "Public/Platformer/Maps/FirewallFissure/Zone_3_3.tmx";
+const std::string MapResources::FirewallFissure_Zone_3_4 = "Public/Platformer/Maps/FirewallFissure/Zone_3_4.tmx";
 const std::string MapResources::FirewallFissure_Zone_3_Dev = "Public/Platformer/Maps/FirewallFissure/Zone_3_Dev.tmx";
 const std::string MapResources::FirewallFissure__Deprecated_Zone_1_1 = "Public/Platformer/Maps/FirewallFissure/_Deprecated/Zone_1_1.tmx";
 const std::string MapResources::FirewallFissure__Deprecated_Zone_1_1_a = "Public/Platformer/Maps/FirewallFissure/_Deprecated/Zone_1_1_a.tmx";

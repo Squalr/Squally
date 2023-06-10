@@ -490,7 +490,7 @@
   <object id="1186" name="smoke" type="object" x="1328" y="2752.67" width="128" height="128"/>
   <object id="1192" name="portal" type="object" x="1256.85" y="2659.88" width="256" height="256">
    <properties>
-    <property name="map" value="FirewallFissure/Zone_3_3"/>
+    <property name="map" value="FirewallFissure/Zone_3_4"/>
     <property name="transition" value="main"/>
    </properties>
   </object>
