@@ -12,7 +12,10 @@
 #include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
+#include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
+#include "Scenes/Platformer/Level/Combat/TimelineEventGroup.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 using namespace cocos2d;
@@ -375,7 +378,7 @@ void CombatAIHelper::selectAttack(TimelineEntry* attackingEntry)
 	}), defensivesList.end());
 
 	// Prioritize defensive > resurrection > healing > damage
-	// this->trySelectDefensiveSkill(attackingEntry, attackList);
+	this->trySelectDefensiveSkill(attackingEntry, defensivesList);
 	this->trySelectResurrectionSkill(attackingEntry, attackList);
 	this->trySelectHealingSkill(attackingEntry, attackList);
 	this->trySelectDamageSkill(attackingEntry, attackList);
@@ -394,9 +397,65 @@ void CombatAIHelper::shuffleEntities()
 	std::shuffle(this->enemyEntities.begin(), this->enemyEntities.end(), g2);
 }
 
+void CombatAIHelper::trySelectDefensiveSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList)
+{
+	if (attackingEntry == nullptr || this->selectedAttack != nullptr)
+	{
+		return;
+	}
+
+	const std::vector<PlatformerEntity*>& otherTeam = !attackingEntry->isPlayerEntry() ? this->playerEntities : this->enemyEntities;
+	bool isWorthDefending = false;
+
+	// Iterate the enemy team to search for casts targeting ourselves
+	for (PlatformerEntity* next : otherTeam)
+	{
+		CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
+		{
+			TimelineEntry* casterEntry = timeline->getAssociatedEntry(next);
+			
+			// Check if the enemy is casting an ability that does direct damage
+			if (casterEntry == nullptr
+				|| casterEntry->getStagedCast() == nullptr
+				|| casterEntry->getStagedCast()->getAttackType() != PlatformerAttack::AttackType::Damage)
+			{
+				return;
+			}
+
+			// Check if we are the target of that direct damage
+			for (PlatformerEntity* nextTarget : casterEntry->getStagedTargets())
+			{
+				if (nextTarget == attackingEntry->getEntity())
+				{
+					isWorthDefending = true;
+					break;
+				}
+			}
+		}));
+
+		// Early exit if we are being attacked
+		if (isWorthDefending)
+		{
+			break;
+		}
+	}
+
+	if (!isWorthDefending)
+	{
+		return;
+	}
+
+	ProbabilityMap attackProbabilities = this->buildCumulativeProbabilityMap(attackList, [=](PlatformerAttack* attack)
+	{
+		return attack->getAttackType() == PlatformerAttack::AttackType::Defensive;
+	});
+
+	this->selectedAttack = attackProbabilities.getRandomAttack();
+}
+
 void CombatAIHelper::trySelectResurrectionSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList)
 {
-	if (this->selectedAttack != nullptr)
+	if (attackingEntry == nullptr || this->selectedAttack != nullptr)
 	{
 		return;
 	}
@@ -411,7 +470,7 @@ void CombatAIHelper::trySelectResurrectionSkill(TimelineEntry* attackingEntry, c
 
 void CombatAIHelper::trySelectHealingSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList)
 {
-	if (this->selectedAttack != nullptr)
+	if (attackingEntry == nullptr || this->selectedAttack != nullptr)
 	{
 		return;
 	}
@@ -426,7 +485,7 @@ void CombatAIHelper::trySelectHealingSkill(TimelineEntry* attackingEntry, const 
 
 void CombatAIHelper::trySelectDamageSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList)
 {
-	if (this->selectedAttack != nullptr)
+	if (attackingEntry == nullptr || this->selectedAttack != nullptr)
 	{
 		return;
 	}

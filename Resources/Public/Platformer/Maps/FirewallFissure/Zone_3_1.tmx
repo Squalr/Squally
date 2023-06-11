@@ -179,7 +179,7 @@
    <properties>
     <property name="components" value="friendly,ff-t6-hexus,pick-pocket,pacing"/>
     <property name="pocket-pool" value="ff-generic"/>
-    <property name="travel-distance" type="float" value="192"/>
+    <property name="travel-distance" type="float" value="64"/>
    </properties>
   </object>
  </objectgroup>

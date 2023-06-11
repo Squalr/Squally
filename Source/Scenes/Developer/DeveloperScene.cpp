@@ -77,18 +77,17 @@ DeveloperScene::DeveloperScene()
 		- ** Fucking 5x easter eggs
 		- ** VS Final Boss Fight + Credits (or clear ending)
 		- * VS Quest granting money and health manip (?)
-		- * Make LC final 4_x maps less bad.
-		- * 2nd pass on spellbook spells for balance
-			- Missing Nature trap(s): ??
-			- Missing Shadow ability: Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)
-			- Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
+		- * Missing Shadow ability: Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)
 		- * Helper abilities unlocked at certain levels
-		- CombatAIHelper.cpp defensives
+			- Guano: ??
+			- Gecky: ??
+			- Grim: ??
 		- Music
 			- Good desert music (The Letter sucked)
 			- https://philipwesley.com/contact/ (which?)
 			- https://michelemclaughlin.com/pages/contact (Preserverence)
 			- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
+		- V Make LC final 4_x maps less bad.
 		- v Camera harsh leaving camera targets (see FF cinematic)
 		- v No interrupt if damage attack modified to heal
 		- v Mystery crash / ensures when waiting on victory screen (matrix letters task func)
@@ -97,10 +96,10 @@ DeveloperScene::DeveloperScene()
 		- v Enemy anims for getting hit
 		- v Enemy anims for combat begin (temporarily pausing timeline)
 		- v Chapter transitions can be more special 
-		- v Helper Equipment? Would fucking blow for menuing, also unclear how this works with only 1 helper allowed at a time.
 		- v Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
 			- Tiki anims still broken (bad Spriter implementation strikes again)
 			- Train anims broken (for same reason)
+		- v Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		* BP
 			- Vertical town (maybe two sec  tions, one inaccessible at first to spread out NPCs)
 			- ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
@@ -309,6 +308,8 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_1_2 (DM)", MapResources::DataMines_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone_1_1 (DM)", MapResources::DataMines_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (DM)", MapResources::DataMines_Zone_1_0));
+
+		// * Traps: Missing Nature trap(s): ??
 
 		// Hexus puzzles:
 		// - A	=> 1_x (Tiki)

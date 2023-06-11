@@ -82,6 +82,7 @@ private:
 		}
 	};
 
+	void trySelectDefensiveSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList);
 	void trySelectResurrectionSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList);
 	void trySelectHealingSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList);
 	void trySelectDamageSkill(TimelineEntry* attackingEntry, const std::vector<PlatformerAttack*>& attackList);
