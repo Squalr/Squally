@@ -306,8 +306,6 @@ namespace ItemResources
 	extern const std::string Keys_RustyKey2;
 	extern const std::string Keys_SilverKey;
 	extern const std::string Maps_Map;
-	extern const std::string Misc_AdvancedBandage;
-	extern const std::string Misc_Bandage;
 	extern const std::string Misc_BoarSkin;
 	extern const std::string Misc_CaveRatSkin;
 	extern const std::string Misc_ExpScrollA;

@@ -6,7 +6,7 @@
 
 namespace ObjectResources
 {
-	extern const std::string Box;
+	extern const std::string Bandages_Bandage;
 	extern const std::string Breakables_CageBottom;
 	extern const std::string Breakables_CageSide;
 	extern const std::string Breakables_CageTallSideBottom;
@@ -573,7 +573,6 @@ namespace ObjectResources
 	extern const std::string Puzzles_Stack_Rope;
 	extern const std::string Puzzles_Stack_StackBlock;
 	extern const std::string Puzzles_Torch_Torch;
-	extern const std::string SLEEPING_BAG_FOR_PIG;
 	extern const std::string Switches_Lever_Animations;
 	extern const std::string Switches_Lever_Base;
 	extern const std::string Switches_Lever_Gear1;

@@ -5,7 +5,7 @@
 #include "ObjectResources.h"
 #include <string>
 
-const std::string ObjectResources::Box = "Private/Platformer/Objects/Box.png";
+const std::string ObjectResources::Bandages_Bandage = "Private/Platformer/Objects/Bandages/Bandage.png";
 const std::string ObjectResources::Breakables_CageBottom = "Private/Platformer/Objects/Breakables/CageBottom.png";
 const std::string ObjectResources::Breakables_CageSide = "Private/Platformer/Objects/Breakables/CageSide.png";
 const std::string ObjectResources::Breakables_CageTallSideBottom = "Private/Platformer/Objects/Breakables/CageTallSideBottom.png";
@@ -572,7 +572,6 @@ const std::string ObjectResources::Puzzles_Stack_RegisterBlock = "Private/Platfo
 const std::string ObjectResources::Puzzles_Stack_Rope = "Private/Platformer/Objects/Puzzles/Stack/Rope.png";
 const std::string ObjectResources::Puzzles_Stack_StackBlock = "Private/Platformer/Objects/Puzzles/Stack/StackBlock.png";
 const std::string ObjectResources::Puzzles_Torch_Torch = "Private/Platformer/Objects/Puzzles/Torch/Torch.png";
-const std::string ObjectResources::SLEEPING_BAG_FOR_PIG = "Private/Platformer/Objects/SLEEPING BAG FOR PIG.png";
 const std::string ObjectResources::Switches_Lever_Animations = "Private/Platformer/Objects/Switches/Lever/Animations.scml";
 const std::string ObjectResources::Switches_Lever_Base = "Private/Platformer/Objects/Switches/Lever/Base.png";
 const std::string ObjectResources::Switches_Lever_Gear1 = "Private/Platformer/Objects/Switches/Lever/Gear1.png";

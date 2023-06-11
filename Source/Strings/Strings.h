@@ -5094,6 +5094,36 @@ namespace Strings
 		virtual ~Items_Consumables_Combat_SteelBomb() = default;
 	};
 
+	class Items_Consumables_Health_Bandage : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Health_Bandage();
+		virtual ~Items_Consumables_Health_Bandage() = default;
+	};
+
+	class Items_Consumables_Health_BandageDescription : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Consumables_Health_BandageDescription();
+		virtual ~Items_Consumables_Health_BandageDescription() = default;
+	};
+
 	class Items_Consumables_Health_GreaterHealthPotion : public LocalizedString
 	{
 	public:

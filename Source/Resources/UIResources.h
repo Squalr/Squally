@@ -195,6 +195,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_AxeGlowYellow;
 	extern const std::string Menus_Icons_AxeMoon;
 	extern const std::string Menus_Icons_AxeSlash;
+	extern const std::string Menus_Icons_Bandage;
 	extern const std::string Menus_Icons_Banner;
 	extern const std::string Menus_Icons_BannerRed;
 	extern const std::string Menus_Icons_Bats;

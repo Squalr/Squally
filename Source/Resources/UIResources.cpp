@@ -194,6 +194,7 @@ const std::string UIResources::Menus_Icons_AxeGlowRed = "Private/UI/Menus/Icons/
 const std::string UIResources::Menus_Icons_AxeGlowYellow = "Private/UI/Menus/Icons/AxeGlowYellow.png";
 const std::string UIResources::Menus_Icons_AxeMoon = "Private/UI/Menus/Icons/AxeMoon.png";
 const std::string UIResources::Menus_Icons_AxeSlash = "Private/UI/Menus/Icons/AxeSlash.png";
+const std::string UIResources::Menus_Icons_Bandage = "Private/UI/Menus/Icons/Bandage.png";
 const std::string UIResources::Menus_Icons_Banner = "Private/UI/Menus/Icons/Banner.png";
 const std::string UIResources::Menus_Icons_BannerRed = "Private/UI/Menus/Icons/BannerRed.png";
 const std::string UIResources::Menus_Icons_Bats = "Private/UI/Menus/Icons/Bats.png";

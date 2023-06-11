@@ -67,7 +67,7 @@ LocalizedString* CastLifeSteal::getDescription()
 
 std::string CastLifeSteal::getAttackAnimation()
 {
-	return "AttackSlash";
+	return "Attack";
 }
 
 void CastLifeSteal::onAttackTelegraphBegin()
@@ -92,9 +92,10 @@ void CastLifeSteal::doDamageOrHealing(PlatformerEntity* owner, PlatformerEntity*
 	this->hitSound->play();
 
 	int damage = this->getRandomDamage();
+	int healing = damage;
 
 	CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(owner, target, damage, this->abilityType));
-	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(owner, owner, damage, this->abilityType));
+	CombatEvents::TriggerHealing(CombatEvents::DamageOrHealingArgs(owner, owner, healing, this->abilityType));
 
 	GameCamera::getInstance()->shakeCamera(0.2f, 12.0f, 0.3f);
 }
