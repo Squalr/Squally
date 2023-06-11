@@ -78,8 +78,7 @@ DeveloperScene::DeveloperScene()
 		- ** VS Final Boss Fight + Credits (or clear ending)
 		- * VS Quest granting money and health manip (?)
 		- * Helper abilities unlocked at certain levels
-			- Gecky: ??
-			- Grim: ??
+			- Gecky: ?? Medkit?
 		- Music
 			- Good desert music (The Letter sucked)
 			- https://philipwesley.com/contact/ (which?)
@@ -1035,10 +1034,10 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoFound, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGrimFound, Value(true));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Grim::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Grim::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyEq, Value(8));

@@ -27864,6 +27864,36 @@ namespace Strings
 		virtual ~Platformer_Combat_Attacks_ExecuteDescription() = default;
 	};
 
+	class Platformer_Combat_Attacks_LifeSteal : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_LifeSteal();
+		virtual ~Platformer_Combat_Attacks_LifeSteal() = default;
+	};
+
+	class Platformer_Combat_Attacks_LifeStealDescription : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Attacks_LifeStealDescription();
+		virtual ~Platformer_Combat_Attacks_LifeStealDescription() = default;
+	};
+
 	class Platformer_Combat_Attacks_LightningStrike : public LocalizedString
 	{
 	public:
