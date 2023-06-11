@@ -10,8 +10,10 @@
 #include "Entities/Platformer/PlatformerFriendly.h"
 #include "Events/CombatEvents.h"
 #include "Scenes/Platformer/Components/Entities/Combat/EntityAttackBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
 #include "Scenes/Platformer/Level/Combat/Attacks/PlatformerAttack.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEvent.h"
@@ -72,6 +74,27 @@ void CombatAIHelper::initializeListeners()
 		if (args != nullptr)
 		{
 			this->performRetargetCorrections(args->attackingEntry);
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventRequestRetargetReevaluation, [=](EventCustom* eventCustom)
+	{
+		CombatEvents::AIRequestArgs* args = static_cast<CombatEvents::AIRequestArgs*>(eventCustom->getData());
+
+		if (args != nullptr && args->attackingEntry != nullptr)
+		{
+			// Clear existing targets, as they are invalid if we have gotten this far
+			this->selectedTargets.clear();
+			
+			// Use AI to auto-choose attack and entity. Start by just trying to re-target.
+			this->selectTargets(args->attackingEntry);
+			
+			if (!this->selectedTargets.empty())
+			{
+				// Retarget successful
+				args->attackingEntry->stageTargets(this->selectedTargets);
+				return;
+			}
 		}
 	}));
 }
@@ -238,7 +261,7 @@ void CombatAIHelper::selectTargetSingle(TimelineEntry* attackingEntry)
 		case PlatformerAttack::AttackType::Healing:
 		case PlatformerAttack::AttackType::Resurrection:
 		{
-			for (auto next : sameTeam)
+			for (PlatformerEntity* next : sameTeam)
 			{
 				float utility = this->selectedAttack->getUseUtility(caster, next, sameTeam, otherTeam);
 
@@ -258,6 +281,18 @@ void CombatAIHelper::selectTargetSingle(TimelineEntry* attackingEntry)
 			for (PlatformerEntity* next : otherTeam)
 			{
 				float utility = this->selectedAttack->getUseUtility(caster, next, sameTeam, otherTeam);
+
+				// If the entity is using distract, increase the utility
+				next->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* buffBehavior)
+				{
+					buffBehavior->getBuff<Defend>([&](Defend* defend)
+					{
+						if (defend->isDistractActive())
+						{
+							utility *= 2.0f;
+						}
+					});
+				});
 
 				if (utility > bestUtility)
 				{

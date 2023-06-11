@@ -250,7 +250,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Mystic::MapKey] = StatsIncrements(Stats(58, 22, 110));
 	StatsTables::StatsTable[ReanimatedPig::MapKey] = StatsIncrements(Stats(55, 10, 105));
 	StatsTables::StatsTable[SkeletalCleaver::MapKey] = StatsIncrements(Stats(57, 8, 123));
-	StatsTables::StatsTable[SkeletalKnight::MapKey] = StatsIncrements(Stats(62, 10, 122));
+	StatsTables::StatsTable[SkeletalKnight::MapKey] = StatsIncrements(Stats(62, 0, 122));
 	StatsTables::StatsTable[SkeletalPriestess::MapKey] = StatsIncrements(Stats(56, 20, 125));
 	StatsTables::StatsTable[Warlock::MapKey] = StatsIncrements(Stats(62, 24, 113));
 

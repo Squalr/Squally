@@ -16,6 +16,7 @@ const std::string CombatEvents::EventSelectionChanged = "EVENT_COMBAT_SELECTION_
 const std::string CombatEvents::EventSelectCastTarget = "EVENT_COMBAT_SELECT_CAST_TARGET";
 const std::string CombatEvents::EventRequestAIAction = "EVENT_COMBAT_REQUEST_AI_ACTION";
 const std::string CombatEvents::EventRequestRetargetCorrection = "EVENT_COMBAT_REQUEST_RETARGET_CORRECTION";
+const std::string CombatEvents::EventRequestRetargetReevaluation = "EVENT_COMBAT_REQUEST_RETARGET_REEVALUATION";
 const std::string CombatEvents::EventRegisterTimelineEventGroup = "EVENT_REGISTER_TIMELINE_EVENT_GROUP";
 const std::string CombatEvents::EventBuffApplied = "EVENT_COMBAT_BUFF_APPLIED";
 const std::string CombatEvents::EventBuffRemoved = "EVENT_COMBAT_BUFF_REMOVED";
@@ -132,6 +133,14 @@ void CombatEvents::TriggerRequestRetargetCorrection(AIRequestArgs args)
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		CombatEvents::EventRequestRetargetCorrection,
+		&args
+	);
+}
+
+void CombatEvents::TriggerRequestRetargetReevalutation(AIRequestArgs args)
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		CombatEvents::EventRequestRetargetReevaluation,
 		&args
 	);
 }

@@ -28254,6 +28254,36 @@ namespace Strings
 		virtual ~Platformer_Combat_Defensives_DisciplineDescription() = default;
 	};
 
+	class Platformer_Combat_Defensives_Distract : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Defensives_Distract();
+		virtual ~Platformer_Combat_Defensives_Distract() = default;
+	};
+
+	class Platformer_Combat_Defensives_DistractDescription : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Combat_Defensives_DistractDescription();
+		virtual ~Platformer_Combat_Defensives_DistractDescription() = default;
+	};
+
 	class Platformer_Combat_Defensives_Thorns : public LocalizedString
 	{
 	public:

@@ -75,6 +75,6 @@ void CastDefend::performAttack(PlatformerEntity* owner, std::vector<PlatformerEn
 
 	owner->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
-		entityBuffBehavior->applyBuff(Defend::create(owner));
+		entityBuffBehavior->applyBuff(Defend::create(owner, false));
 	});
 }

@@ -14,19 +14,20 @@ using namespace cocos2d;
 
 const float Defend::DamageReduction = 0.5f;
 
-Defend* Defend::create(PlatformerEntity* caster)
+Defend* Defend::create(PlatformerEntity* caster, bool isDistractActiveParam)
 {
-	Defend* instance = new Defend(caster);
+	Defend* instance = new Defend(caster, isDistractActiveParam);
 
 	instance->autorelease();
 
 	return instance;
 }
 
-Defend::Defend(PlatformerEntity* caster)
+Defend::Defend(PlatformerEntity* caster, bool isDistractActiveParam)
 	: super(caster, caster, UIResources::Menus_Icons_Shield, AbilityType::Physical, BuffData("defend-skill"))
 {
 	this->defendEffect = Sprite::create(FXResources::Auras_DefendAura);
+	this->isDistractActiveParam = isDistractActiveParam;
 
 	this->addChild(this->defendEffect);
 }
@@ -77,4 +78,9 @@ void Defend::onDamageTakenOrCycle(bool isDamage)
 	{
 		this->removeBuff();
 	}
+}
+
+bool Defend::isDistractActive()
+{
+	return this->isDistractActiveParam;
 }

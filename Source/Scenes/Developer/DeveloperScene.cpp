@@ -77,9 +77,7 @@ DeveloperScene::DeveloperScene()
 		- ** Fucking 5x easter eggs
 		- ** VS Final Boss Fight + Credits (or clear ending)
 		- * VS Quest granting money and health manip (?)
-		- * Missing Shadow ability: Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)
 		- * Helper abilities unlocked at certain levels
-			- Guano: ??
 			- Gecky: ??
 			- Grim: ??
 		- Music
@@ -87,7 +85,8 @@ DeveloperScene::DeveloperScene()
 			- https://philipwesley.com/contact/ (which?)
 			- https://michelemclaughlin.com/pages/contact (Preserverence)
 			- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
-		- V Make LC final 4_x maps less bad.
+		- v Wontfix? Missing Shadow ability: Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)
+		- v Make LC final 4_x maps less bad.
 		- v Camera harsh leaving camera targets (see FF cinematic)
 		- v No interrupt if damage attack modified to heal
 		- v Mystery crash / ensures when waiting on victory screen (matrix letters task func)
@@ -1036,10 +1035,10 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoFound, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGrimFound, Value(true));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Grim::MapKey));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Grim::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyEq, Value(8));
