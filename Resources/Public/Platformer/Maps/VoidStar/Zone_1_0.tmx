@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="24" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="902">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="117" nextobjectid="919">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Laboratory"/>
@@ -78,12 +78,44 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="916" name="marble" type="terrain" x="2904.16" y="-144.303" width="1446.23" height="1764.36"/>
+ </objectgroup>
+ <objectgroup id="116" name="decor -1 bg">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="917" name="Void/Door1" type="decor" x="3214.68" y="654.303" width="645" height="388"/>
  </objectgroup>
  <objectgroup id="82" name="stairs -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="905" name="marble" type="terrain" x="-141.785" y="1038.97" width="4467.45" height="234.06"/>
+ </objectgroup>
+ <objectgroup id="114" name="decor -1 mg bg">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="908" name="Void/ComputerPillar1" type="decor" x="597.5" y="336.5" width="413" height="706"/>
+ </objectgroup>
+ <objectgroup id="113" name="decor -1 mg">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="904" name="Void/Computer1" type="decor" x="79.5" y="576.5" width="595" height="467"/>
+  <object id="912" name="Void/Cable1" type="decor" x="1451.5" y="-209" width="265" height="638"/>
+  <object id="918" name="Void/Computer3" type="decor" x="2202.5" y="645.288" width="572" height="395"/>
+ </objectgroup>
+ <objectgroup id="115" name="decor -1 mg fg">
+  <properties>
+   <property name="depth" type="float" value="-64"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="911" name="Void/Reactor1" type="decor" x="1142.5" y="340.5" width="691" height="698"/>
  </objectgroup>
  <objectgroup id="16" name="tiled bg">
   <properties>
@@ -120,7 +152,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="890" name="marble" type="terrain" x="-96.9682" y="1066.18" width="3311.57" height="234.06"/>
+  <object id="890" name="marble" type="terrain" x="-96.9682" y="1066.18" width="4285.39" height="234.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -144,6 +176,12 @@
     <property name="send-event" value="gauntlet-start"/>
    </properties>
   </object>
+  <object id="914" name="portal" type="object" x="3410.24" y="813.693" width="256" height="256">
+   <properties>
+    <property name="map" value="VoidStar/Zone_1_0"/>
+    <property name="transition" value="void-door"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -155,7 +193,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="899" name="perceptron" type="entity" x="2571" y="933.126" width="128" height="128">
+  <object id="899" name="perceptron" type="entity" x="2303" y="937.126" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="VoidStar/Combat_FinalBoss"/>
@@ -163,7 +201,7 @@
     <property name="components" value="enemy"/>
     <property name="drop-pool" value="vs-generic"/>
     <property name="flip-x" type="bool" value="true"/>
-    <property name="quest" value="perceptron-fight"/>
+    <property name="quest" value="perceptron-fight,perceptron-escape"/>
     <property name="quest-line" value="perceptron-fight"/>
    </properties>
   </object>
@@ -172,6 +210,7 @@
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1"/>
   </properties>
   <object id="523" name="squally" type="entity" x="633.44" y="936.556" width="128" height="128">
    <properties>

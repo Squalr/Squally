@@ -135,7 +135,7 @@ void PerceptronFight::runCinematicSequencePt1()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_VoidStar_PerceptronFight_A_You::create(), 
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->perceptron, true)
@@ -172,7 +172,7 @@ void PerceptronFight::runCinematicSequencePt1()
 			}
 		},
 		Voices::GetNextVoiceMedium(Voices::VoiceType::Ghost),
-		true
+		false
 	));
 }
 
@@ -181,7 +181,7 @@ void PerceptronFight::runCinematicSequencePt2()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_VoidStar_PerceptronFight_B_No::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->perceptron, true)
@@ -191,7 +191,7 @@ void PerceptronFight::runCinematicSequencePt2()
 			this->runCinematicSequencePt3();
 		},
 		Voices::GetNextVoiceShort(Voices::VoiceType::Ghost),
-		true
+		false
 	));
 }
 
@@ -200,7 +200,7 @@ void PerceptronFight::runCinematicSequencePt3()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_VoidStar_PerceptronFight_C_Risk::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->perceptron, true)
@@ -210,7 +210,7 @@ void PerceptronFight::runCinematicSequencePt3()
 			this->runCinematicSequencePt4();
 		},
 		Voices::GetNextVoiceMedium(Voices::VoiceType::Ghost),
-		true
+		false
 	));
 }
 
@@ -219,7 +219,7 @@ void PerceptronFight::runCinematicSequencePt4()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Ellipses::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->perceptron, true),
@@ -230,7 +230,7 @@ void PerceptronFight::runCinematicSequencePt4()
 			this->runCinematicSequencePt5();
 		},
 		"",
-		true
+		false
 	));
 }
 
@@ -239,7 +239,7 @@ void PerceptronFight::runCinematicSequencePt5()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_VoidStar_PerceptronFight_D_Reality::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->perceptron, true)
