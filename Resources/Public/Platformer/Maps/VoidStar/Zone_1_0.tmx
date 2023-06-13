@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="920">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="122" nextobjectid="963">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Laboratory"/>
@@ -42,8 +42,44 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="920" name="scifi" type="texture" x="-612.634" y="-646" width="6635.45" height="2794.06"/>
+ </objectgroup>
+ <objectgroup id="120" name="decor -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="927" name="Void/BgPanel1" type="decor" x="1068.55" y="391.955" width="614" height="459"/>
+  <object id="928" name="Void/BgPanel2" type="decor" x="-314.939" y="-198.227" width="614" height="459"/>
+  <object id="929" name="Void/BgPanel4" type="decor" x="473" y="-244.652" width="693" height="513"/>
+  <object id="930" name="Void/BgPanel8" type="decor" x="2941.48" y="243.106" width="1011" height="413"/>
+  <object id="931" name="Void/BgPanelElectric1" type="decor" x="2666.62" y="135.803" width="143" height="142"/>
+  <object id="932" name="Void/BgWindow2" type="decor" x="1832.29" y="125.318" width="672" height="485"/>
+  <object id="933" name="Void/BgHandle1" type="decor" x="-129.667" y="547.227" width="128" height="318"/>
+  <object id="934" name="Void/BgHandle2" type="decor" x="3950.67" y="255.909" width="128" height="571"/>
+  <object id="935" name="Void/BgPanel9" type="decor" x="1338.35" y="-153.47" width="388" height="408"/>
+  <object id="936" name="Void/BgPanel10" type="decor" x="2964.92" y="566.591" width="335" height="420"/>
+  <object id="937" name="Void/BgPanel11" type="decor" x="2544.5" y="337.03" width="380" height="408"/>
+  <object id="939" name="Void/BgPanel14" type="decor" x="1946" y="-360" width="495" height="402"/>
+  <object id="940" name="Void/BgLightBlue1" type="decor" x="2952" y="-270" width="135" height="472"/>
+  <object id="941" name="Void/BgLightGreen1" type="decor" x="3122.5" y="-274" width="135" height="472"/>
+  <object id="942" name="Void/BgLightOrange1" type="decor" x="3304.5" y="-272" width="135" height="472"/>
+  <object id="943" name="Void/BgLightRed1" type="decor" x="2105.74" y="619.333" width="135" height="472"/>
+  <object id="944" name="Void/BgLightYellow1" type="decor" x="2287.74" y="621.333" width="135" height="472"/>
+  <object id="945" name="Void/BgLadder1" type="decor" x="3424.5" y="830" width="364" height="570"/>
+  <object id="950" name="Void/BgPanel6" type="decor" x="2555.17" y="-414.667" width="252" height="460"/>
+  <object id="951" name="Void/BgWindow1" type="decor" x="186.03" y="442.924" width="672" height="261"/>
+  <object id="958" name="Void/BgPanel5" type="decor" x="3543.5" y="-145.5" width="313" height="295"/>
+  <object id="962" name="Void/BgVent2" type="decor" x="1763.5" y="687.5" width="237" height="437"/>
  </objectgroup>
  <objectgroup id="107" name="stairs -4">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="923" name="marble" type="terrain" x="-296.392" y="982.97" width="5642.78" height="234.06"/>
+ </objectgroup>
+ <objectgroup id="119" name="objects -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -60,13 +96,23 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="922" name="marble" type="terrain" x="-245.058" y="998.97" width="5553.45" height="234.06"/>
  </objectgroup>
  <objectgroup id="117" name="objects -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="919" name="robot-claw" type="object" x="817.818" y="1096.61" width="128" height="128"/>
+  <object id="946" name="robot-claw" type="object" x="3094" y="1092" width="128" height="128"/>
+  <object id="947" name="Void/ComputerPillar1" type="decor" x="714.5" y="293.167" width="413" height="706"/>
+  <object id="948" name="Void/Computer1" type="decor" x="196.5" y="533.167" width="595" height="467"/>
+ </objectgroup>
+ <objectgroup id="121" name="objects -3 fg">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="949" name="robot-claw" type="object" x="817.818" y="1096.61" width="128" height="128"/>
  </objectgroup>
  <objectgroup id="109" name="columns -2">
   <properties>
@@ -74,18 +120,27 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="83" name="stairs -2">
+ <objectgroup id="83" name="stairs -2" visible="0">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="921" name="marble" type="terrain" x="-209.058" y="1022.3" width="5476.78" height="234.06"/>
+ </objectgroup>
+ <objectgroup id="118" name="objects -2">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="924" name="Void/Computer3" type="decor" x="2167.7" y="629.53" width="572" height="395"/>
  </objectgroup>
  <objectgroup id="108" name="columns -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="916" name="marble" type="terrain" x="3876.88" y="-147.333" width="1446.23" height="1764.36"/>
+  <object id="916" name="scifi" type="texture" x="3876.88" y="-147.333" width="1446.23" height="1764.36"/>
+  <object id="961" name="Void/BgVent1" type="decor" x="4916" y="714" width="336" height="216"/>
  </objectgroup>
  <objectgroup id="116" name="decor -1 bg">
   <properties>
@@ -93,31 +148,34 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="917" name="Void/Door1" type="decor" x="4187.41" y="651.273" width="645" height="388"/>
+  <object id="952" name="Void/BgWarning1" type="decor" x="4367.53" y="-89.197" width="266" height="347"/>
+  <object id="954" name="Void/BgWarning3" type="decor" x="4291" y="288.5" width="412" height="318"/>
+  <object id="955" name="Void/BgWarning2" type="decor" x="4941" y="286.5" width="124" height="318"/>
+  <object id="956" name="Void/BgWarning2" type="decor" x="3948" y="289" width="124" height="318"/>
+  <object id="957" name="Void/BgPanel12" type="decor" x="4741" y="-123" width="478" height="378"/>
+  <object id="959" name="Void/BgWindow4" type="decor" x="3989" y="-49" width="234" height="258"/>
  </objectgroup>
- <objectgroup id="82" name="stairs -1">
+ <objectgroup id="82" name="stairs -1" visible="0">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="905" name="marble" type="terrain" x="-141.785" y="1038.97" width="5411.45" height="234.06"/>
+  <object id="905" name="marble" type="terrain" x="-165.785" y="1038.97" width="5394.78" height="234.06"/>
  </objectgroup>
  <objectgroup id="114" name="decor -1 mg bg">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="908" name="Void/ComputerPillar1" type="decor" x="597.5" y="336.5" width="413" height="706"/>
  </objectgroup>
  <objectgroup id="113" name="decor -1 mg">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="904" name="Void/Computer1" type="decor" x="79.5" y="576.5" width="595" height="467"/>
   <object id="912" name="Void/Cable1" type="decor" x="1451.5" y="-209" width="265" height="638"/>
-  <object id="918" name="Void/Computer3" type="decor" x="2202.5" y="645.288" width="572" height="395"/>
  </objectgroup>
- <objectgroup id="115" name="decor -1 mg fg">
+ <objectgroup id="115" name="decor -1 mg fg" visible="0">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
@@ -155,7 +213,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="21" name="terrain">
+ <objectgroup id="21" name="terrain" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>

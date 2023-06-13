@@ -32,6 +32,7 @@
 #include "Scenes/Platformer/Textures/RuinsGrayDarkTexture.h"
 #include "Scenes/Platformer/Textures/RuinsGrayTexture.h"
 #include "Scenes/Platformer/Textures/RuinsTexture.h"
+#include "Scenes/Platformer/Textures/ScifiTexture.h"
 #include "Scenes/Platformer/Textures/ShadeGrassTexture.h"
 #include "Scenes/Platformer/Textures/ShipAltTexture.h"
 #include "Scenes/Platformer/Textures/ShipDarkTexture.h"
@@ -95,6 +96,7 @@ PlatformerTextureDeserializer::PlatformerTextureDeserializer() : super(Platforme
 		PlatformerTextureDeserializer::Deserializers[RuinsGrayDarkTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayDarkTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[RuinsGrayTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[RuinsTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsTexture::create(properties); };
+		PlatformerTextureDeserializer::Deserializers[ScifiTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)ScifiTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[ShadeGrassTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)ShadeGrassTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[ShipAltTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)ShipAltTexture::create(properties); };
 		PlatformerTextureDeserializer::Deserializers[ShipDarkTexture::MapKey] = [=](ValueMap properties) { return (GameObject*)ShipDarkTexture::create(properties); };
