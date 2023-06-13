@@ -150,7 +150,8 @@ void PerceptronEscape::runCinematicSequencePt2()
 			this->perceptron->getAnimations()->clearAnimationPriority();
 			this->perceptron->getAnimations()->playAnimation("Escape", SmartAnimationNode::AnimationPlayMode::Callback, SmartAnimationNode::AnimParams(), [=]()
 			{
-				this->perceptron->getAnimations()->playAnimation("Dead_Escaped");
+				this->perceptron->getAnimations()->clearAnimationPriority();
+				this->perceptron->getAnimations()->playAnimation("Dead_Escaped", SmartAnimationNode::AnimationPlayMode::Repeat);
 			});
 			this->complete();
 		},

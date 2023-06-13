@@ -33,6 +33,7 @@
 #include "Objects/Platformer/Decor/MineWinch.h"
 #include "Objects/Platformer/Decor/PullyHorizontal.h"
 #include "Objects/Platformer/Decor/PullyVertical.h"
+#include "Objects/Platformer/Decor/RobotClaw.h"
 #include "Objects/Platformer/Decor/Smoke.h"
 #include "Objects/Platformer/Interactables/AlchemyLab/AlchemyLab.h"
 #include "Objects/Platformer/Interactables/Anvil/AncientAnvil.h"

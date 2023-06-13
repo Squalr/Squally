@@ -287,6 +287,16 @@ namespace ObjectResources
 	extern const std::string Decor_Pullies_Rope1;
 	extern const std::string Decor_Pullies_WheelDark;
 	extern const std::string Decor_Pullies_WheelLight;
+	extern const std::string Decor_RobotClaw_Animations;
+	extern const std::string Decor_RobotClaw_ClawLeft;
+	extern const std::string Decor_RobotClaw_ClawRight;
+	extern const std::string Decor_RobotClaw_Rock1;
+	extern const std::string Decor_RobotClaw_Rock2;
+	extern const std::string Decor_RobotClaw_Rock3;
+	extern const std::string Decor_RobotClaw_Rock4;
+	extern const std::string Decor_RobotClaw_Rock5;
+	extern const std::string Decor_RobotClaw_Rock6;
+	extern const std::string Decor_RobotClaw_Rope;
 	extern const std::string Decor_Torch_Torch;
 	extern const std::string Decor_Torch_TorchGlow;
 	extern const std::string Decor_Torch_TorchGlowBlue;

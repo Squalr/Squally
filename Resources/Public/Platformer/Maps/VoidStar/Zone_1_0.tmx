@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="117" nextobjectid="919">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="920">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Laboratory"/>
@@ -61,6 +61,13 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
+ <objectgroup id="117" name="objects -3">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="919" name="robot-claw" type="object" x="817.818" y="1096.61" width="128" height="128"/>
+ </objectgroup>
  <objectgroup id="109" name="columns -2">
   <properties>
    <property name="depth" type="float" value="-128"/>
@@ -78,21 +85,21 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="916" name="marble" type="terrain" x="2904.16" y="-144.303" width="1446.23" height="1764.36"/>
+  <object id="916" name="marble" type="terrain" x="3876.88" y="-147.333" width="1446.23" height="1764.36"/>
  </objectgroup>
  <objectgroup id="116" name="decor -1 bg">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="917" name="Void/Door1" type="decor" x="3214.68" y="654.303" width="645" height="388"/>
+  <object id="917" name="Void/Door1" type="decor" x="4187.41" y="651.273" width="645" height="388"/>
  </objectgroup>
  <objectgroup id="82" name="stairs -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="905" name="marble" type="terrain" x="-141.785" y="1038.97" width="4467.45" height="234.06"/>
+  <object id="905" name="marble" type="terrain" x="-141.785" y="1038.97" width="5411.45" height="234.06"/>
  </objectgroup>
  <objectgroup id="114" name="decor -1 mg bg">
   <properties>
@@ -152,7 +159,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="890" name="marble" type="terrain" x="-96.9682" y="1066.18" width="4285.39" height="234.06"/>
+  <object id="890" name="marble" type="terrain" x="-96.9682" y="1066.18" width="5269.39" height="234.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
@@ -171,12 +178,12 @@
     <property name="transition" value="void-door"/>
    </properties>
   </object>
-  <object id="901" name="trigger" type="object" x="1912.53" y="-290.875" width="118.944" height="1629.75">
+  <object id="901" name="trigger" type="object" x="2865.26" y="-277.784" width="118.944" height="1629.75">
    <properties>
     <property name="send-event" value="gauntlet-start"/>
    </properties>
   </object>
-  <object id="914" name="portal" type="object" x="3410.24" y="813.693" width="256" height="256">
+  <object id="914" name="portal" type="object" x="4382.97" y="810.663" width="256" height="256">
    <properties>
     <property name="map" value="VoidStar/Zone_1_0"/>
     <property name="transition" value="void-door"/>
@@ -193,7 +200,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="899" name="perceptron" type="entity" x="2303" y="937.126" width="128" height="128">
+  <object id="899" name="perceptron" type="entity" x="3383" y="941.126" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="VoidStar/Combat_FinalBoss"/>
