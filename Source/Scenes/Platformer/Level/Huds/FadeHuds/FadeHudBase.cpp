@@ -34,6 +34,11 @@ void FadeHudBase::fillSeams()
 	this->blackout->setOpacity(255);
 }
 
+void FadeHudBase::pause()
+{
+	// ignore
+}
+
 void FadeHudBase::buildBlackout()
 {
 	CSize visibleSize = Director::getInstance()->getVisibleSize();

@@ -10,6 +10,7 @@
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/PlatformerEvents.h"
+#include "Menus/Cutscenes/CutscenesMenu.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -77,4 +78,6 @@ void ReactorCore::initializePositions()
 void ReactorCore::onInteract(PlatformerEntity* interactingEntity)
 {
 	super::onInteract(interactingEntity);
+
+	PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::Credits));
 }

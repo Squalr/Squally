@@ -826,6 +826,8 @@ namespace FXResources
 	extern const std::string TorchFire_TorchFire_0009;
 	extern const std::string TorchFire_TorchFire_0010;
 	extern const std::string TorchFire_TorchFire_0011;
+	extern const std::string TvGlows_GlowLarge;
+	extern const std::string TvGlows_GlowSmall;
 	extern const std::string VoidBomb_VoidBomb_0000;
 	extern const std::string VoidBomb_VoidBomb_0001;
 	extern const std::string VoidBomb_VoidBomb_0002;

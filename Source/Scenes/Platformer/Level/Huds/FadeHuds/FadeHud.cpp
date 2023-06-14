@@ -10,6 +10,7 @@
 #include "Engine/Optimization/LazyNode.h"
 #include "Scenes/Platformer/Level/Huds/FadeHuds/NormalFadeHud.h"
 #include "Scenes/Platformer/Level/Huds/FadeHuds/TriangleFadeHud.h"
+#include "Scenes/Platformer/Level/Huds/FadeHuds/TvFadeHud.h"
 
 using namespace cocos2d;
 
@@ -28,6 +29,7 @@ FadeHud::FadeHud()
 {
 	this->normalFadeHud = LazyNode<NormalFadeHud>::create([](){ return NormalFadeHud::create(); });
 	this->triangleFadeHud = LazyNode<TriangleFadeHud>::create([](){ return TriangleFadeHud::create(); });
+	this->tvFadeHud = LazyNode<TvFadeHud>::create([](){ return TvFadeHud::create(); });
 	this->resetScreen = DrawNode::create();
 
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
@@ -36,11 +38,17 @@ FadeHud::FadeHud()
 
 	this->addChild(this->resetScreen);
 	this->addChild(this->normalFadeHud);
+	this->addChild(this->tvFadeHud);
 	this->addChild(this->triangleFadeHud);
 }
 
 FadeHud::~FadeHud()
 {
+}
+
+void FadeHud::pause()
+{
+	// ignore
 }
 
 void FadeHud::runAnim(FadeHudType fadeHudType)
@@ -57,6 +65,11 @@ void FadeHud::runAnim(FadeHudType fadeHudType)
 			this->triangleFadeHud->lazyGet()->runAnim();
 			break;
 		}
+		case FadeHudType::Tv:
+		{
+			this->tvFadeHud->lazyGet()->runAnim();
+			break;
+		}
 	}
 }
 
@@ -70,6 +83,11 @@ void FadeHud::resetAnims()
 	if (this->triangleFadeHud->isBuilt())
 	{
 		this->triangleFadeHud->lazyGet()->resetAnim();
+	}
+
+	if (this->tvFadeHud->isBuilt())
+	{
+		this->tvFadeHud->lazyGet()->resetAnim();
 	}
 
 	this->resetScreen->setOpacity(255);
