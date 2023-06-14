@@ -76,12 +76,13 @@ DeveloperScene::DeveloperScene()
 	- General:
 		- ** Fucking 5x easter eggs
 			- Secret mayan door combo
+			- Enter clock at a certain time + ? some action
+			- Something with perilous sea
 			- ?
 			- ?
-			- ?
-			- ?
-		- ** VS Final Boss Fight + Credits (or clear ending)
-		- ? VS Quest granting money and health manip (?)
+		- ** VS Final Boss Fight
+			- ? VS Quest granting money and health manip (?)
+		- ** Credits
 		- Music
 			- Good desert music (The Letter sucked)
 			- https://philipwesley.com/contact/ (which?)

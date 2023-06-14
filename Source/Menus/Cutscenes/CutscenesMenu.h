@@ -9,11 +9,15 @@ namespace cocos2d
 }
 
 class ClickableTextNode;
+class LabelStack;
+class LocalizedLabel;
+class LocalizedString;
 class SmartAnimationSequenceNode;
 class Sound;
 
 enum class Cutscene
 {
+	None,
 	CrackSmall,
 	CrackMedium,
 	CrackLarge,
@@ -33,15 +37,23 @@ protected:
 	virtual ~CutscenesMenu();
 
 	void onEnter() override;
+	void update(float dt) override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
 private:
 	typedef SmartNode super;
 
+	LocalizedLabel* buildHeader(LocalizedString* inText);
+	LocalizedLabel* buildEntry(LocalizedString* inText);
+
+	Cutscene currentCutscene = Cutscene::None;
+
 	SmartAnimationSequenceNode* cutsceneAnimation = nullptr;
 	ClickableTextNode* returnButton = nullptr;
 	Sound* crackCutsceneChime = nullptr;
 
 	std::function<void()> returnClickCallback = nullptr;
+	
+	LabelStack* credits = nullptr;
 };

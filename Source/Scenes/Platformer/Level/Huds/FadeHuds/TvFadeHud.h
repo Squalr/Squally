@@ -5,6 +5,7 @@
 namespace cocos2d
 {
 	class DrawNode;
+	class Sprite;
 }
 
 class TvFadeHud : public FadeHudBase
@@ -27,5 +28,7 @@ private:
 	void buildShapes();
 
 	cocos2d::DrawNode* upperRectangle = nullptr;
-	cocos2d::DrawNode* bottomRectangle= nullptr;
+	cocos2d::DrawNode* bottomRectangle = nullptr;
+	cocos2d::Sprite* glowSmall = nullptr;
+	cocos2d::Sprite* glowLarge = nullptr;
 };

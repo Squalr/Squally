@@ -7,6 +7,8 @@
 #include "cocos/2d/CCSprite.h"
 #include "cocos/base/CCDirector.h"
 
+#include "Resources/FXResources.h"
+
 using namespace cocos2d;
 
 TvFadeHud* TvFadeHud::create()
@@ -22,11 +24,18 @@ TvFadeHud::TvFadeHud()
 {
 	this->upperRectangle = DrawNode::create();
 	this->bottomRectangle = DrawNode::create();
+	this->glowSmall = Sprite::create(FXResources::TvGlows_GlowSmall);
+	this->glowLarge = Sprite::create(FXResources::TvGlows_GlowLarge);
 
 	this->buildShapes();
 
+	this->glowSmall->setOpacity(0);
+	this->glowLarge->setOpacity(0);
+
 	this->addChild(this->upperRectangle);
 	this->addChild(this->bottomRectangle);
+	this->addChild(this->glowSmall);
+	this->addChild(this->glowLarge);
 }
 
 TvFadeHud::~TvFadeHud()
@@ -37,22 +46,52 @@ void TvFadeHud::initializePositions()
 {
 	super::initializePositions();
 
+	CSize visibleSize = Director::getInstance()->getVisibleSize();
+
+	this->glowSmall->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->glowLarge->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+
 	this->resetAnim();
 }
 
 void TvFadeHud::runAnim()
 {
-	const float duration = 0.5f;
+	const float BlackDuration = 0.5f;
 
-	this->upperRectangle->runAction(MoveTo::create(duration, Vec2::ZERO));
-	this->bottomRectangle->runAction(MoveTo::create(duration, Vec2::ZERO));
+	this->glowSmall->setOpacity(0);
+	this->glowLarge->setOpacity(0);
+
+	this->upperRectangle->runAction(EaseSineIn::create(MoveTo::create(BlackDuration, Vec2::ZERO)));
+	this->bottomRectangle->runAction(EaseSineIn::create(MoveTo::create(BlackDuration, Vec2::ZERO)));
 
 	this->runAction(Sequence::create(
-		DelayTime::create(duration),
+		DelayTime::create(BlackDuration),
 		CallFunc::create([=]()
 		{
 			this->fillSeams();
 		}),
+		nullptr
+	));
+
+	const float GlowLargeOnsetDuration = 0.35f;
+	const float GlowLargeSustainDuration = 0.35f;
+	const float GlowLargeReleaseDuration = 0.15f;
+
+	this->glowLarge->runAction(Sequence::create(
+		DelayTime::create(GlowLargeOnsetDuration),
+		FadeTo::create(GlowLargeSustainDuration, 255),
+		FadeTo::create(GlowLargeReleaseDuration, 0),
+		nullptr
+	));
+
+	const float GlowSmallOnsetDuration = 0.5f;
+	const float GlowSmallSustainDuration = 0.25f;
+	const float GlowSmallReleaseDuration = 0.15f;
+
+	this->glowSmall->runAction(Sequence::create(
+		DelayTime::create(GlowSmallOnsetDuration),
+		FadeTo::create(GlowSmallSustainDuration, 255),
+		FadeTo::create(GlowSmallReleaseDuration, 0),
 		nullptr
 	));
 }
