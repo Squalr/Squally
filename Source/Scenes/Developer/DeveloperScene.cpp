@@ -661,6 +661,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Smith (VS)", MapResources::VoidStar_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Town (VS)", MapResources::VoidStar_Town_Main));
 		mapList.push_back(this->buildDebugButton("Zone_1_0 (VS)", MapResources::VoidStar_Zone_1_0));
+		mapList.push_back(this->buildDebugButton("Zone_1_1 (VS)", MapResources::VoidStar_Zone_1_1));
 		// Traps: Laser
 
 		/*

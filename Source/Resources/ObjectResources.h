@@ -287,9 +287,6 @@ namespace ObjectResources
 	extern const std::string Decor_Pullies_Rope1;
 	extern const std::string Decor_Pullies_WheelDark;
 	extern const std::string Decor_Pullies_WheelLight;
-	extern const std::string Decor_ReactorCore_Reactor;
-	extern const std::string Decor_ReactorCore_ReactorCase;
-	extern const std::string Decor_ReactorCore_ReactorPad;
 	extern const std::string Decor_RobotClaw_Animations;
 	extern const std::string Decor_RobotClaw_ClawLeft;
 	extern const std::string Decor_RobotClaw_ClawRight;
@@ -542,6 +539,9 @@ namespace ObjectResources
 	extern const std::string Interactive_MineCarts_FillGold;
 	extern const std::string Interactive_MineCarts_WheelBack;
 	extern const std::string Interactive_MineCarts_WheelFront;
+	extern const std::string Interactive_ReactorCore_Reactor;
+	extern const std::string Interactive_ReactorCore_ReactorCase;
+	extern const std::string Interactive_ReactorCore_ReactorPad;
 	extern const std::string Interactive_ShipWheel_Neck;
 	extern const std::string Interactive_ShipWheel_Wheel;
 	extern const std::string Interactive_SmeltingPot_SmeltingPot;

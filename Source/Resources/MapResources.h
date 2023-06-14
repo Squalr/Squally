@@ -260,6 +260,7 @@ namespace MapResources
 	extern const std::string VoidStar_Town_Main;
 	extern const std::string VoidStar_Town_Smith;
 	extern const std::string VoidStar_Zone_1_0;
+	extern const std::string VoidStar_Zone_1_1;
 	extern const std::string WarpGatePreviewMaps_BallmerPeaks;
 	extern const std::string WarpGatePreviewMaps_CastleValgrind;
 	extern const std::string WarpGatePreviewMaps_DataMines;

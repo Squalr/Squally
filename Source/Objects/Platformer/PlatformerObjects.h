@@ -103,6 +103,7 @@
 #include "Objects/Platformer/Interactables/Puzzles/LogicGate.h"
 #include "Objects/Platformer/Interactables/Puzzles/LogicPuzzleController.h"
 #include "Objects/Platformer/Interactables/Ram/Ram.h"
+#include "Objects/Platformer/Interactables/ReactorCore/ReactorCore.h"
 #include "Objects/Platformer/Interactables/Tent.h"
 #include "Objects/Platformer/Interactables/ShipWheel/ShipWheel.h"
 #include "Objects/Platformer/Interactables/SmeltingPot/SmeltingPot.h"

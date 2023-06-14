@@ -36,6 +36,7 @@
 #include "Scenes/Platformer/Terrain/RuinsGrayThickTerrain.h"
 #include "Scenes/Platformer/Terrain/RuinsTerrain.h"
 #include "Scenes/Platformer/Terrain/RuinsThickTerrain.h"
+#include "Scenes/Platformer/Terrain/ScifiTerrain.h"
 #include "Scenes/Platformer/Terrain/ShadeGrassTerrain.h"
 #include "Scenes/Platformer/Terrain/ShipAltTerrain.h"
 #include "Scenes/Platformer/Terrain/ShipTerrain.h"
@@ -95,6 +96,7 @@ PlatformerTerrainDeserializer::PlatformerTerrainDeserializer() : super(Platforme
 	this->deserializers[RuinsGrayThickTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsGrayThickTerrain::create(properties); };
 	this->deserializers[RuinsTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsTerrain::create(properties); };
 	this->deserializers[RuinsThickTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)RuinsThickTerrain::create(properties); };
+	this->deserializers[ScifiTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)ScifiTerrain::create(properties); };
 	this->deserializers[ShadeGrassTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)ShadeGrassTerrain::create(properties); };
 	this->deserializers[ShipAltTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)ShipAltTerrain::create(properties); };
 	this->deserializers[ShipTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)ShipTerrain::create(properties); };

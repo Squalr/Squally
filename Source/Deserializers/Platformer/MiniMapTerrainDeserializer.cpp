@@ -34,6 +34,7 @@
 #include "Scenes/Platformer/Terrain/RuinsGrayThickTerrain.h"
 #include "Scenes/Platformer/Terrain/RuinsTerrain.h"
 #include "Scenes/Platformer/Terrain/RuinsThickTerrain.h"
+#include "Scenes/Platformer/Terrain/ScifiTerrain.h"
 #include "Scenes/Platformer/Terrain/ShadeGrassTerrain.h"
 #include "Scenes/Platformer/Terrain/ShipAltTerrain.h"
 #include "Scenes/Platformer/Terrain/ShipTerrain.h"
@@ -88,6 +89,7 @@ MiniMapTerrainDeserializer::MiniMapTerrainDeserializer() : super(MiniMapTerrainD
 	this->deserializers[RuinsGrayThickTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, RuinsGrayThickTerrain::MiniMapColor); };
 	this->deserializers[RuinsTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, RuinsTerrain::MiniMapColor); };
 	this->deserializers[RuinsThickTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, RuinsThickTerrain::MiniMapColor); };
+	this->deserializers[ScifiTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, ScifiTerrain::MiniMapColor); };
 	this->deserializers[ShadeGrassTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, ShadeGrassTerrain::MiniMapColor); };
 	this->deserializers[ShipAltTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, ShipAltTerrain::MiniMapColor); };
 	this->deserializers[ShipTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, ShipTerrain::MiniMapColor); };

@@ -259,6 +259,7 @@ const std::string MapResources::VoidStar_Town_Alch = "Public/Platformer/Maps/Voi
 const std::string MapResources::VoidStar_Town_Main = "Public/Platformer/Maps/VoidStar/Town_Main.tmx";
 const std::string MapResources::VoidStar_Town_Smith = "Public/Platformer/Maps/VoidStar/Town_Smith.tmx";
 const std::string MapResources::VoidStar_Zone_1_0 = "Public/Platformer/Maps/VoidStar/Zone_1_0.tmx";
+const std::string MapResources::VoidStar_Zone_1_1 = "Public/Platformer/Maps/VoidStar/Zone_1_1.tmx";
 const std::string MapResources::WarpGatePreviewMaps_BallmerPeaks = "Public/Platformer/Maps/WarpGatePreviewMaps/BallmerPeaks.tmx";
 const std::string MapResources::WarpGatePreviewMaps_CastleValgrind = "Public/Platformer/Maps/WarpGatePreviewMaps/CastleValgrind.tmx";
 const std::string MapResources::WarpGatePreviewMaps_DataMines = "Public/Platformer/Maps/WarpGatePreviewMaps/DataMines.tmx";
