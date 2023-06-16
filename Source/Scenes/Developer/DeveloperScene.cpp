@@ -80,14 +80,13 @@ DeveloperScene::DeveloperScene()
 			- Something with perilous sea
 			- ?
 			- ?
-		- ** VS Final Boss Fight
-			- ? VS Quest granting money and health manip (?)
-		- ** Credits
+		- ** VS Final Boss Fight // ? VS Quest granting money and health manip (?)
 		- Music
 			- Good desert music (The Letter sucked)
-			- https://philipwesley.com/contact/ (which?)
-			- https://michelemclaughlin.com/pages/contact (Preserverence)
-			- https://www.instagram.com/strayghostofficial/?hl=en (Two Steps)
+			- [Awaiting response] https://usfourmusic.com/contact (The Storm Begins)
+			- [Awaiting response] https://philipwesley.com/contact/ (Far and Away / Racing Against the Sunset)
+			- [Awaiting response] https://michelemclaughlin.com/pages/contact (Preserverence)
+			- [Discussing] https://www.instagram.com/anthonybadensaggers (Two steps too often aside)
 		- v Wontfix? Missing Shadow ability: Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)
 		- v Make LC final 4_x maps less bad.
 		- v Camera harsh leaving camera targets (see FF cinematic)

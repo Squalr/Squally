@@ -26649,36 +26649,6 @@ namespace Strings
 		virtual ~Menus_Music_GavinLuke_Solace() = default;
 	};
 
-	class Menus_Music_JakobLindhagen_Forgotten : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Music_JakobLindhagen_Forgotten();
-		virtual ~Menus_Music_JakobLindhagen_Forgotten() = default;
-	};
-
-	class Menus_Music_JakobLindhagen_JakobLindhagen : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Music_JakobLindhagen_JakobLindhagen();
-		virtual ~Menus_Music_JakobLindhagen_JakobLindhagen() = default;
-	};
-
 	class Menus_Music_KrazyKartoons_CarnivalDream : public LocalizedString
 	{
 	public:
@@ -26769,6 +26739,81 @@ namespace Strings
 		virtual ~Menus_Music_Nosbertus_TrickOrTreat() = default;
 	};
 
+	class Menus_Music_PhilipWesley_FarAndAway : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_PhilipWesley_FarAndAway();
+		virtual ~Menus_Music_PhilipWesley_FarAndAway() = default;
+	};
+
+	class Menus_Music_PhilipWesley_PhilipWesley : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_PhilipWesley_PhilipWesley();
+		virtual ~Menus_Music_PhilipWesley_PhilipWesley() = default;
+	};
+
+	class Menus_Music_PhilipWesley_RaceAgainstTheSunset : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_PhilipWesley_RaceAgainstTheSunset();
+		virtual ~Menus_Music_PhilipWesley_RaceAgainstTheSunset() = default;
+	};
+
+	class Menus_Music_StrayGhost_StrayGhost : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_StrayGhost_StrayGhost();
+		virtual ~Menus_Music_StrayGhost_StrayGhost() = default;
+	};
+
+	class Menus_Music_StrayGhost_TwoSteps : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_StrayGhost_TwoSteps();
+		virtual ~Menus_Music_StrayGhost_TwoSteps() = default;
+	};
+
 	class Menus_Music_TheoAndPaul_LastMarch : public LocalizedString
 	{
 	public:
@@ -26812,36 +26857,6 @@ namespace Strings
 	private:
 		Menus_Music_Track();
 		virtual ~Menus_Music_Track() = default;
-	};
-
-	class Menus_Music_Unknown_Atrium : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Music_Unknown_Atrium();
-		virtual ~Menus_Music_Unknown_Atrium() = default;
-	};
-
-	class Menus_Music_Unknown_Unknown : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Menus_Music_Unknown_Unknown();
-		virtual ~Menus_Music_Unknown_Unknown() = default;
 	};
 
 	class Menus_Music_Warmstone_Artrium : public LocalizedString

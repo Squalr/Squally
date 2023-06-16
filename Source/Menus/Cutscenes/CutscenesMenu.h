@@ -52,6 +52,7 @@ private:
 	SmartAnimationSequenceNode* cutsceneAnimation = nullptr;
 	ClickableTextNode* returnButton = nullptr;
 	Sound* crackCutsceneChime = nullptr;
+	Sound* tvOffSfx = nullptr;
 
 	std::function<void()> returnClickCallback = nullptr;
 	

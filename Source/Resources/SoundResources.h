@@ -217,6 +217,7 @@ namespace SoundResources
 	extern const std::string Platformer_FX_ServerRoom;
 	extern const std::string Platformer_FX_Train_Idle;
 	extern const std::string Platformer_FX_Train_Moving;
+	extern const std::string Platformer_FX_TvOff;
 	extern const std::string Platformer_FX_Woosh_Woosh1;
 	extern const std::string Platformer_FX_Woosh_WooshBurning1;
 	extern const std::string Platformer_FX_Woosh_WooshBurning2;

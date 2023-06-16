@@ -216,6 +216,7 @@ const std::string SoundResources::Platformer_FX_Rumbles_StoneRumbleAndRumble1 = 
 const std::string SoundResources::Platformer_FX_ServerRoom = "Private/Sounds/Platformer/FX/ServerRoom.ogg";
 const std::string SoundResources::Platformer_FX_Train_Idle = "Private/Sounds/Platformer/FX/Train/Idle.ogg";
 const std::string SoundResources::Platformer_FX_Train_Moving = "Private/Sounds/Platformer/FX/Train/Moving.ogg";
+const std::string SoundResources::Platformer_FX_TvOff = "Private/Sounds/Platformer/FX/TvOff.ogg";
 const std::string SoundResources::Platformer_FX_Woosh_Woosh1 = "Private/Sounds/Platformer/FX/Woosh/Woosh1.ogg";
 const std::string SoundResources::Platformer_FX_Woosh_WooshBurning1 = "Private/Sounds/Platformer/FX/Woosh/WooshBurning1.ogg";
 const std::string SoundResources::Platformer_FX_Woosh_WooshBurning2 = "Private/Sounds/Platformer/FX/Woosh/WooshBurning2.ogg";

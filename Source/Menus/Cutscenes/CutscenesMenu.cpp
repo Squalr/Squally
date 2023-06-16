@@ -48,6 +48,7 @@ CutscenesMenu::CutscenesMenu()
 
 	this->cutsceneAnimation = SmartAnimationSequenceNode::create();
 	this->crackCutsceneChime = Sound::create(SoundResources::Platformer_Cutscenes_CutsceneChime);
+	this->tvOffSfx = Sound::create(SoundResources::Platformer_FX_TvOff);
 	this->credits = LabelStack::create(visibleSize, 32.0f);
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
@@ -72,8 +73,8 @@ CutscenesMenu::CutscenesMenu()
 	this->credits->insertNewline();
 	this->credits->insertNewline();
 	this->credits->insert(this->buildHeader(ConstantString::create("Programmers")));
+	this->credits->insert(this->buildEntry(ConstantString::create("Matthew Bucci")));
 	this->credits->insert(this->buildEntry(ConstantString::create("Nathaniel Lewis")));
-	this->credits->insert(this->buildEntry(ConstantString::create("Matt Bucci")));
 	this->credits->insertNewline();
 	this->credits->insertNewline();
 	this->credits->insert(this->buildHeader(ConstantString::create("Musicians")));
@@ -110,9 +111,45 @@ CutscenesMenu::CutscenesMenu()
 	this->credits->insert(this->buildEntry(ConstantString::create("tokegameart")));
 	this->credits->insertNewline();
 	this->credits->insertNewline();
-	this->credits->insert(this->buildHeader(ConstantString::create("Sound")));
+	this->credits->insert(this->buildHeader(ConstantString::create("Sound FX Artists")));
+	this->credits->insert(this->buildEntry(ConstantString::create("sonic-boom")));
+	this->credits->insert(this->buildEntry(ConstantString::create("TibaSound / TibaSFX")));
+	this->credits->insert(this->buildEntry(ConstantString::create("2MD")));
+	this->credits->insert(this->buildEntry(ConstantString::create("7s1audio")));
+	this->credits->insert(this->buildEntry(ConstantString::create("AetherFX")));
+	this->credits->insert(this->buildEntry(ConstantString::create("AlenaLT")));
+	this->credits->insert(this->buildEntry(ConstantString::create("Andy_Grey")));
+	this->credits->insert(this->buildEntry(ConstantString::create("APOLLONAS")));
+	this->credits->insert(this->buildEntry(ConstantString::create("applehillstudios")));
+	this->credits->insert(this->buildEntry(ConstantString::create("CapeAudio")));
+	this->credits->insert(this->buildEntry(ConstantString::create("coolFXworld")));
+	this->credits->insert(this->buildEntry(ConstantString::create("CreativeSoundEffects")));
+	this->credits->insert(this->buildEntry(ConstantString::create("Creatorium_sound_design")));
+	this->credits->insert(this->buildEntry(ConstantString::create("dauzkobza")));
+	this->credits->insert(this->buildEntry(ConstantString::create("dimashiko")));
+	this->credits->insert(this->buildEntry(ConstantString::create("GameAudioSource")));
 	this->credits->insert(this->buildEntry(ConstantString::create("Epic Stock Media")));
+	this->credits->insert(this->buildEntry(ConstantString::create("Eternal_Future_Productions")));
+	this->credits->insert(this->buildEntry(ConstantString::create("FxProSound")));
+	this->credits->insert(this->buildEntry(ConstantString::create("goodberry")));
+	this->credits->insert(this->buildEntry(ConstantString::create("Googleeman")));
+	this->credits->insert(this->buildEntry(ConstantString::create("HollywoodEdge")));
+	this->credits->insert(this->buildEntry(ConstantString::create("Ikosonik")));
+	this->credits->insert(this->buildEntry(ConstantString::create("kuksaudio")));
+	this->credits->insert(this->buildEntry(ConstantString::create("lake3sound")));
+	this->credits->insert(this->buildEntry(ConstantString::create("Mellau")));
+	this->credits->insert(this->buildEntry(ConstantString::create("MoonAudioProduction")));
+	this->credits->insert(this->buildEntry(ConstantString::create("prosoundfx")));
+	this->credits->insert(this->buildEntry(ConstantString::create("ProWaveAudio")));
+	this->credits->insert(this->buildEntry(ConstantString::create("RaptorMedia")));
+	this->credits->insert(this->buildEntry(ConstantString::create("Sound_effect")));
+	this->credits->insert(this->buildEntry(ConstantString::create("Sound_Guy")));
+	this->credits->insert(this->buildEntry(ConstantString::create("Sound-Ideas")));
 	this->credits->insert(this->buildEntry(ConstantString::create("soundsparkllc")));
+	this->credits->insert(this->buildEntry(ConstantString::create("StormwaveAudio")));
+	this->credits->insert(this->buildEntry(ConstantString::create("urbazon")));
+	this->credits->insertNewline();
+	this->credits->insertNewline();
 	this->credits->insertNewline();
 	this->credits->insertNewline();
 	this->credits->insert(this->buildHeader(ConstantString::create("Thank you for playing!")));
@@ -131,6 +168,7 @@ CutscenesMenu::CutscenesMenu()
 	this->addChild(this->cutsceneAnimation);
 	this->addChild(this->returnButton);
 	this->addChild(this->crackCutsceneChime);
+	this->addChild(this->tvOffSfx);
 	this->addChild(this->credits);
 }
 
@@ -251,6 +289,12 @@ void CutscenesMenu::open(Cutscene cutscene)
 			};
 
 			this->runAction(Sequence::create(
+				DelayTime::create(0.5f),
+				CallFunc::create([=]()
+				{
+					// Hacky, but TV fade FX is triggered in PlatformMap.cpp
+					this->tvOffSfx->play();
+				}),
 				DelayTime::create(10.0f),
 				CallFunc::create([=]()
 				{
