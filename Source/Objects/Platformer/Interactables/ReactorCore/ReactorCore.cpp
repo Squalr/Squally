@@ -7,10 +7,12 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/PlatformerEvents.h"
 #include "Menus/Cutscenes/CutscenesMenu.h"
+#include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -30,17 +32,22 @@ ReactorCore* ReactorCore::create(ValueMap& properties)
 	return instance;
 }
 
-ReactorCore::ReactorCore(ValueMap& properties) : super(properties, InteractObject::InteractType::Input, CSize(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
+ReactorCore::ReactorCore(ValueMap& properties) : super(properties, InteractObject::InteractType::None, CSize(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
 {
 	this->reactorSfx = WorldSound::create(); //SoundResources::Platformer_FX_ServerRoom
 	this->reactorCore = Sprite::create(ObjectResources::Interactive_ReactorCore_Reactor);
 	this->reactorPad = Sprite::create(ObjectResources::Interactive_ReactorCore_ReactorPad);
-	this->reactorCase = Sprite::create(ObjectResources::Interactive_ReactorCore_ReactorCase);
-
+	this->reactorCasePristine = Sprite::create(ObjectResources::Interactive_ReactorCore_ReactorCase);
+	this->reactorCaseCracked1 = Sprite::create(ObjectResources::Interactive_ReactorCore_ReactorCaseCracked1);
+	this->reactorCaseCracked2 = Sprite::create(ObjectResources::Interactive_ReactorCore_ReactorCaseCracked2);
+	this->reactorCaseCracked3 = Sprite::create(ObjectResources::Interactive_ReactorCore_ReactorCaseCracked3);
 	
 	this->contentNode->addChild(this->reactorCore);
 	this->contentNode->addChild(this->reactorPad);
-	this->contentNode->addChild(this->reactorCase);
+	this->contentNode->addChild(this->reactorCasePristine);
+	this->contentNode->addChild(this->reactorCaseCracked1);
+	this->contentNode->addChild(this->reactorCaseCracked2);
+	this->contentNode->addChild(this->reactorCaseCracked3);
 	this->addChild(this->reactorSfx);
 }
 
@@ -51,6 +58,18 @@ ReactorCore::~ReactorCore()
 void ReactorCore::onEnter()
 {
 	super::onEnter();
+
+	this->updateCracks();
+
+	this->interactCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionData collisionData)
+	{
+		this->crackedLevel++;
+		this->updateCracks();
+
+		// TODO: SFX
+
+		return CollisionResult::DoNothing;
+	});
 }
 
 void ReactorCore::initializePositions()
@@ -78,6 +97,42 @@ void ReactorCore::initializePositions()
 void ReactorCore::onInteract(PlatformerEntity* interactingEntity)
 {
 	super::onInteract(interactingEntity);
+}
 
-	PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::Credits));
+void ReactorCore::updateCracks()
+{
+	this->reactorCasePristine->setVisible(false);
+	this->reactorCaseCracked1->setVisible(false);
+	this->reactorCaseCracked2->setVisible(false);
+	this->reactorCaseCracked3->setVisible(false);
+
+	switch(this->crackedLevel)
+	{
+		case 0:
+		{
+			this->reactorCasePristine->setVisible(true);
+			break;
+		}
+		case 1:
+		{
+			this->reactorCaseCracked1->setVisible(true);
+			break;
+		}
+		case 2:
+		{
+			this->reactorCaseCracked2->setVisible(true);
+			break;
+		}
+		case 3:
+		{
+			this->reactorCaseCracked3->setVisible(true);
+			break;
+		}
+		default:
+		{
+			this->reactorCaseCracked3->setVisible(true);
+			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::Credits));
+			break;
+		}
+	}
 }

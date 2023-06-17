@@ -186,6 +186,7 @@ PlatformerObjectDeserializer::PlatformerObjectDeserializer() : super(PlatformerO
 	this->deserializers[ObjectiveTrigger::MapKey] = [=](ValueMap properties) { return (GameObject*)ObjectiveTrigger::create(properties); };
 	this->deserializers[OptionWarp::MapKey] = [=](ValueMap properties) { return (GameObject*)OptionWarp::create(properties); };
 	this->deserializers[PendulumBlade::MapKey] = [=](ValueMap properties) { return (GameObject*)PendulumBlade::create(properties); };
+	this->deserializers[PerceptronUnarmored::MapKey] = [=](ValueMap properties) { return (GameObject*)PerceptronUnarmored::create(properties); };
 	this->deserializers[Portal::MapKey] = [=](ValueMap properties) { return (GameObject*)Portal::create(properties); };
 	this->deserializers[PortalSpawn::MapKey] = [=](ValueMap properties) { return (GameObject*)PortalSpawn::create(properties); };
 	this->deserializers[PresentChest::MapKey] = [=](ValueMap properties) { return (GameObject*)PresentChest::create(properties); };

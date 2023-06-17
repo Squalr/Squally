@@ -2243,7 +2243,6 @@ const std::string EntityResources::Enemies_VoidStar_VoidDemon_shadowFiend_body_3
 const std::string EntityResources::Enemies_VoidStar_VoidDemon_shadowFiend_cape_L = "Private/Platformer/Entities/Enemies/VoidStar/VoidDemon/shadowFiend_cape_L.png";
 const std::string EntityResources::Enemies_VoidStar_VoidDemon_shadowFiend_cape_R = "Private/Platformer/Entities/Enemies/VoidStar/VoidDemon/shadowFiend_cape_R.png";
 const std::string EntityResources::Enemies_VoidStar_VoidDemon_shadowFiend_head = "Private/Platformer/Entities/Enemies/VoidStar/VoidDemon/shadowFiend_head.png";
-const std::string EntityResources::Enemies_VoidStar_VoidDemon_shadowFiend_shadow = "Private/Platformer/Entities/Enemies/VoidStar/VoidDemon/shadowFiend_shadow.png";
 const std::string EntityResources::Enemies__Deprecated_Centaur_Animations = "Private/Platformer/Entities/Enemies/_Deprecated/Centaur/Animations.scml";
 const std::string EntityResources::Enemies__Deprecated_Centaur_B_BACK_LEG_1 = "Private/Platformer/Entities/Enemies/_Deprecated/Centaur/B BACK LEG 1.png";
 const std::string EntityResources::Enemies__Deprecated_Centaur_B_BACK_LEG_2 = "Private/Platformer/Entities/Enemies/_Deprecated/Centaur/B BACK LEG 2.png";

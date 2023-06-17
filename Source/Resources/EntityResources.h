@@ -2244,7 +2244,6 @@ namespace EntityResources
 	extern const std::string Enemies_VoidStar_VoidDemon_shadowFiend_cape_L;
 	extern const std::string Enemies_VoidStar_VoidDemon_shadowFiend_cape_R;
 	extern const std::string Enemies_VoidStar_VoidDemon_shadowFiend_head;
-	extern const std::string Enemies_VoidStar_VoidDemon_shadowFiend_shadow;
 	extern const std::string Enemies__Deprecated_Centaur_Animations;
 	extern const std::string Enemies__Deprecated_Centaur_B_BACK_LEG_1;
 	extern const std::string Enemies__Deprecated_Centaur_B_BACK_LEG_2;

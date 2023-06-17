@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="34" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="122" nextobjectid="996">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="34" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="122" nextobjectid="997">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Laboratory"/>
@@ -234,6 +234,14 @@
    </properties>
   </object>
   <object id="995" name="reactor" type="object" x="3018.42" y="168.848" width="370" height="800"/>
+  <object id="996" name="perceptron-unarmored" type="object" x="2383" y="937.126" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly"/>
+    <property name="flip-x" type="bool" value="true"/>
+    <property name="quest" value="perceptron-finale"/>
+    <property name="quest-line" value="perceptron-fight"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -245,14 +253,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="899" name="perceptron-unarmored" type="entity" x="2383" y="937.126" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly"/>
-    <property name="flip-x" type="bool" value="true"/>
-    <property name="quest" value="perceptron-finale"/>
-    <property name="quest-line" value="perceptron-fight"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

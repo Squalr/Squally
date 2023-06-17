@@ -147,6 +147,7 @@ MiniMapObjectDeserializer::MiniMapObjectDeserializer() : super(MiniMapObjectDese
 	this->deserializers[OptionWarp::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::WarpColor); };
 	this->deserializers[Portal::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties, MiniMapObjectDeserializer::PortalColor); };
 	this->deserializers[PendulumBlade::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
+	this->deserializers[PerceptronUnarmored::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[Ram::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[ReactorCore::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };
 	this->deserializers[RegisterStone::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapObject::create(properties); };

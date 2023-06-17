@@ -27,8 +27,15 @@ protected:
 private:
 	typedef InteractObject super;
 
+	void updateCracks();
+
+	int crackedLevel = 0;
+
 	cocos2d::Sprite* reactorCore = nullptr;
 	cocos2d::Sprite* reactorPad = nullptr;
-	cocos2d::Sprite* reactorCase = nullptr;
+	cocos2d::Sprite* reactorCasePristine = nullptr;
+	cocos2d::Sprite* reactorCaseCracked1 = nullptr;
+	cocos2d::Sprite* reactorCaseCracked2 = nullptr;
+	cocos2d::Sprite* reactorCaseCracked3 = nullptr;
 	WorldSound* reactorSfx = nullptr;
 };

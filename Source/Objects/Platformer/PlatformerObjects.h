@@ -10,6 +10,7 @@
 #include "Objects/Platformer/Breakables/BreakableCage.h"
 #include "Objects/Platformer/Breakables/BreakableCageTall.h"
 #include "Objects/Platformer/Breakables/CagedAnimals/CagedAnimals.h"
+#include "Objects/Platformer/Breakables/PerceptronUnarmored.h"
 #include "Objects/Platformer/Breakables/Vase.h"
 #include "Objects/Platformer/Camera/CameraControl.h"
 #include "Objects/Platformer/Camera/CameraTarget.h"
