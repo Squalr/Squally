@@ -37,5 +37,7 @@ private:
 	cocos2d::Sprite* reactorCaseCracked1 = nullptr;
 	cocos2d::Sprite* reactorCaseCracked2 = nullptr;
 	cocos2d::Sprite* reactorCaseCracked3 = nullptr;
+	cocos2d::Sprite* reactorCaseCracked4 = nullptr;
 	WorldSound* reactorSfx = nullptr;
+	WorldSound* reactorHitSfx = nullptr;
 };

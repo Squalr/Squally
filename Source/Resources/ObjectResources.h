@@ -544,6 +544,7 @@ namespace ObjectResources
 	extern const std::string Interactive_ReactorCore_ReactorCaseCracked1;
 	extern const std::string Interactive_ReactorCore_ReactorCaseCracked2;
 	extern const std::string Interactive_ReactorCore_ReactorCaseCracked3;
+	extern const std::string Interactive_ReactorCore_ReactorCaseCracked4;
 	extern const std::string Interactive_ReactorCore_ReactorPad;
 	extern const std::string Interactive_ShipWheel_Neck;
 	extern const std::string Interactive_ShipWheel_Wheel;

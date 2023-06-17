@@ -35,12 +35,14 @@ ReactorCore* ReactorCore::create(ValueMap& properties)
 ReactorCore::ReactorCore(ValueMap& properties) : super(properties, InteractObject::InteractType::None, CSize(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()))
 {
 	this->reactorSfx = WorldSound::create(); //SoundResources::Platformer_FX_ServerRoom
+	this->reactorHitSfx = WorldSound::create(SoundResources::Platformer_Objects_PotBreak_PotSmash1);
 	this->reactorCore = Sprite::create(ObjectResources::Interactive_ReactorCore_Reactor);
 	this->reactorPad = Sprite::create(ObjectResources::Interactive_ReactorCore_ReactorPad);
 	this->reactorCasePristine = Sprite::create(ObjectResources::Interactive_ReactorCore_ReactorCase);
 	this->reactorCaseCracked1 = Sprite::create(ObjectResources::Interactive_ReactorCore_ReactorCaseCracked1);
 	this->reactorCaseCracked2 = Sprite::create(ObjectResources::Interactive_ReactorCore_ReactorCaseCracked2);
 	this->reactorCaseCracked3 = Sprite::create(ObjectResources::Interactive_ReactorCore_ReactorCaseCracked3);
+	this->reactorCaseCracked4 = Sprite::create(ObjectResources::Interactive_ReactorCore_ReactorCaseCracked4);
 	
 	this->contentNode->addChild(this->reactorCore);
 	this->contentNode->addChild(this->reactorPad);
@@ -48,7 +50,9 @@ ReactorCore::ReactorCore(ValueMap& properties) : super(properties, InteractObjec
 	this->contentNode->addChild(this->reactorCaseCracked1);
 	this->contentNode->addChild(this->reactorCaseCracked2);
 	this->contentNode->addChild(this->reactorCaseCracked3);
+	this->contentNode->addChild(this->reactorCaseCracked4);
 	this->addChild(this->reactorSfx);
+	this->addChild(this->reactorHitSfx);
 }
 
 ReactorCore::~ReactorCore()
@@ -63,10 +67,9 @@ void ReactorCore::onEnter()
 
 	this->interactCollision->whenCollidesWith({ (int)PlatformerCollisionType::PlayerWeapon }, [=](CollisionData collisionData)
 	{
+		this->reactorHitSfx->play();
 		this->crackedLevel++;
 		this->updateCracks();
-
-		// TODO: SFX
 
 		return CollisionResult::DoNothing;
 	});
@@ -105,6 +108,7 @@ void ReactorCore::updateCracks()
 	this->reactorCaseCracked1->setVisible(false);
 	this->reactorCaseCracked2->setVisible(false);
 	this->reactorCaseCracked3->setVisible(false);
+	this->reactorCaseCracked4->setVisible(false);
 
 	switch(this->crackedLevel)
 	{
@@ -130,7 +134,7 @@ void ReactorCore::updateCracks()
 		}
 		default:
 		{
-			this->reactorCaseCracked3->setVisible(true);
+			this->reactorCaseCracked4->setVisible(true);
 			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::Credits));
 			break;
 		}

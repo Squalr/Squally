@@ -543,6 +543,7 @@ const std::string ObjectResources::Interactive_ReactorCore_ReactorCase = "Privat
 const std::string ObjectResources::Interactive_ReactorCore_ReactorCaseCracked1 = "Private/Platformer/Objects/Interactive/ReactorCore/ReactorCaseCracked1.png";
 const std::string ObjectResources::Interactive_ReactorCore_ReactorCaseCracked2 = "Private/Platformer/Objects/Interactive/ReactorCore/ReactorCaseCracked2.png";
 const std::string ObjectResources::Interactive_ReactorCore_ReactorCaseCracked3 = "Private/Platformer/Objects/Interactive/ReactorCore/ReactorCaseCracked3.png";
+const std::string ObjectResources::Interactive_ReactorCore_ReactorCaseCracked4 = "Private/Platformer/Objects/Interactive/ReactorCore/ReactorCaseCracked4.png";
 const std::string ObjectResources::Interactive_ReactorCore_ReactorPad = "Private/Platformer/Objects/Interactive/ReactorCore/ReactorPad.png";
 const std::string ObjectResources::Interactive_ShipWheel_Neck = "Private/Platformer/Objects/Interactive/ShipWheel/Neck.png";
 const std::string ObjectResources::Interactive_ShipWheel_Wheel = "Private/Platformer/Objects/Interactive/ShipWheel/Wheel.png";
