@@ -34239,6 +34239,66 @@ namespace Strings
 		virtual ~Platformer_Objectives_UnderflowRuins_UR_SolvePuzzle() = default;
 	};
 
+	class Platformer_Objectives_VoidStar_VS_DestroyPerceptron : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_VoidStar_VS_DestroyPerceptron();
+		virtual ~Platformer_Objectives_VoidStar_VS_DestroyPerceptron() = default;
+	};
+
+	class Platformer_Objectives_VoidStar_VS_DestroyReactor : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_VoidStar_VS_DestroyReactor();
+		virtual ~Platformer_Objectives_VoidStar_VS_DestroyReactor() = default;
+	};
+
+	class Platformer_Objectives_VoidStar_VS_Explore : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_VoidStar_VS_Explore();
+		virtual ~Platformer_Objectives_VoidStar_VS_Explore() = default;
+	};
+
+	class Platformer_Objectives_VoidStar_VS_ExploreTheLab : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_VoidStar_VS_ExploreTheLab();
+		virtual ~Platformer_Objectives_VoidStar_VS_ExploreTheLab() = default;
+	};
+
 	class Platformer_Objects_Doors_Broken : public LocalizedString
 	{
 	public:

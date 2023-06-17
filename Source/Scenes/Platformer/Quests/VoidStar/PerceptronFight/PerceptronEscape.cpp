@@ -94,7 +94,7 @@ void PerceptronEscape::onActivate(bool isActiveThroughSkippable, bool isInitialA
 
 void PerceptronEscape::onComplete()
 {
-	Objectives::SetCurrentObjective(ObjectiveKeys::FFAscendVolcano);
+	Objectives::SetCurrentObjective(ObjectiveKeys::VSDestroyPerceptron);
 
 	if (this->exitPortal != nullptr)
 	{

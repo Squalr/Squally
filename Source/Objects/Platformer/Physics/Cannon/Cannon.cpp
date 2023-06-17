@@ -23,6 +23,8 @@
 #include "Objects/Platformer/Physics/Cannon/CannonBall.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
+#include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
+#include "Scenes/Platformer/Objectives/Objectives.h"
 
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
@@ -168,6 +170,7 @@ void Cannon::launchCannon()
 		CallFunc::create([=]()
 		{
 			PlatformerEvents::TriggerCinematicRestore();
+			Objectives::SetCurrentObjective(ObjectiveKeys::VSExplore);
 			this->skyPortal->loadMap();
 		}),
 		nullptr

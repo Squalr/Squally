@@ -115,6 +115,8 @@ void PerceptronFight::onLoad(QuestState questState)
 
 void PerceptronFight::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
+	Objectives::SetCurrentObjective(ObjectiveKeys::VSExploreLab);
+
 	this->listenForMapEventOnce("gauntlet-start", [=](ValueMap valueMap)
 	{
 		this->runCinematicSequencePt1();

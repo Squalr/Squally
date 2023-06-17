@@ -77,4 +77,9 @@ public:
 	static const std::string FFLaunchBomb;
 	static const std::string FFFindAsmodeus;
 	static const std::string FFAscendVolcano;
+	
+	static const std::string VSExplore;
+	static const std::string VSExploreLab;
+	static const std::string VSDestroyPerceptron;
+	static const std::string VSDestroyReactorCore;
 };

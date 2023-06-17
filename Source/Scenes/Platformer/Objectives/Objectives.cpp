@@ -192,8 +192,14 @@ void Objectives::InitMap()
 	priority = 600;
 
 	// BP
-
+	// Objectives::ObjectiveMap[ObjectiveKeys::TODO] =  Objective([](){ return Strings::TODO::create(); }, priority++);
+	
 	priority = 700;
 
 	// VS
+	Objectives::ObjectiveMap[ObjectiveKeys::VSExplore] =  Objective([](){ return Strings::Platformer_Objectives_VoidStar_VS_Explore::create()->setStringReplacementVariables({ Strings::Platformer_MapNames_VoidStar_VoidStar::create() }); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::VSExploreLab] =  Objective([](){ return Strings::Platformer_Objectives_VoidStar_VS_ExploreTheLab::create(); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::VSDestroyPerceptron] =  Objective([](){ return Strings::Platformer_Objectives_VoidStar_VS_DestroyPerceptron::create()->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Enemies_VoidStar_Perceptron::create() }); }, priority++);
+	Objectives::ObjectiveMap[ObjectiveKeys::VSDestroyReactorCore] =  Objective([](){ return Strings::Platformer_Objectives_VoidStar_VS_DestroyReactor::create(); }, priority++);
+	
 }

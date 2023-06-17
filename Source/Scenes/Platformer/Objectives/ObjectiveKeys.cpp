@@ -72,3 +72,8 @@ const std::string ObjectiveKeys::FFDeliverBomb = "FF_DELIVER_BOMB";
 const std::string ObjectiveKeys::FFLaunchBomb = "FF_LAUNCH_BOMB";
 const std::string ObjectiveKeys::FFFindAsmodeus = "FF_FIND_ASMODEUS";
 const std::string ObjectiveKeys::FFAscendVolcano = "FF_ASCEND_VOLCANO";
+
+const std::string ObjectiveKeys::VSExplore = "VS_EXPLORE";
+const std::string ObjectiveKeys::VSExploreLab = "VS_EXPLORE_LAB";
+const std::string ObjectiveKeys::VSDestroyPerceptron = "VS_DESTROY_PERCEPTRON";
+const std::string ObjectiveKeys::VSDestroyReactorCore = "VS_DESTROY_REACTOR_CORE";
