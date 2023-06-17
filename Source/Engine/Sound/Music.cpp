@@ -98,9 +98,9 @@ void Music::pushTrack(float delay)
 	MusicPlayer::getInstance()->pushTrack(this, delay);
 }
 
-void Music::popTrack()
+void Music::popTrack(bool unpauseNext)
 {
-	MusicPlayer::getInstance()->removeTrack(this->getSoundResource());
+	MusicPlayer::getInstance()->removeTrack(this->getSoundResource(), unpauseNext);
 }
 
 float Music::getConfigVolume()

@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Music/Tracks/AmbientPiano.h"
 #include "Music/Tracks/Artrium.h"
 #include "Music/Tracks/BurdenOfTime.h"
 #include "Music/Tracks/CarnivalDream.h"
@@ -8,6 +9,7 @@
 #include "Music/Tracks/Lacrimosa.h"
 #include "Music/Tracks/LastMarch.h"
 #include "Music/Tracks/LittleFootsteps.h"
+#include "Music/Tracks/Perseverance.h"
 #include "Music/Tracks/RaceAgainstTheSunset.h"
 #include "Music/Tracks/Medieval.h"
 #include "Music/Tracks/Medieval2.h"

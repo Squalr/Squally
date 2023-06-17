@@ -26709,6 +26709,36 @@ namespace Strings
 		virtual ~Menus_Music_Lemmonias_WWGTT() = default;
 	};
 
+	class Menus_Music_MicheleMcLaughlin_MicheleMcLaughlin : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_MicheleMcLaughlin_MicheleMcLaughlin();
+		virtual ~Menus_Music_MicheleMcLaughlin_MicheleMcLaughlin() = default;
+	};
+
+	class Menus_Music_MicheleMcLaughlin_Perseverance : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_MicheleMcLaughlin_Perseverance();
+		virtual ~Menus_Music_MicheleMcLaughlin_Perseverance() = default;
+	};
+
 	class Menus_Music_Nosbertus_Nosbertus : public LocalizedString
 	{
 	public:
@@ -26857,6 +26887,36 @@ namespace Strings
 	private:
 		Menus_Music_Track();
 		virtual ~Menus_Music_Track() = default;
+	};
+
+	class Menus_Music_VaanFomm_AmbientPiano : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_VaanFomm_AmbientPiano();
+		virtual ~Menus_Music_VaanFomm_AmbientPiano() = default;
+	};
+
+	class Menus_Music_VaanFomm_VaanFomm : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_VaanFomm_VaanFomm();
+		virtual ~Menus_Music_VaanFomm_VaanFomm() = default;
 	};
 
 	class Menus_Music_Warmstone_Artrium : public LocalizedString

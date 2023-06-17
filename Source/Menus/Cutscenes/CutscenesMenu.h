@@ -12,6 +12,7 @@ class ClickableTextNode;
 class LabelStack;
 class LocalizedLabel;
 class LocalizedString;
+class Music;
 class SmartAnimationSequenceNode;
 class Sound;
 
@@ -53,6 +54,7 @@ private:
 	ClickableTextNode* returnButton = nullptr;
 	Sound* crackCutsceneChime = nullptr;
 	Sound* tvOffSfx = nullptr;
+	Music* creditsMusic = nullptr;
 
 	std::function<void()> returnClickCallback = nullptr;
 	

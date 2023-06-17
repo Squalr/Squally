@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="122" nextobjectid="964">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="122" nextobjectid="966">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Laboratory"/>
@@ -273,6 +273,20 @@
   <object id="963" name="spawn" type="object" x="4446.67" y="940" width="128" height="128">
    <properties>
     <property name="transition" value="lab-door"/>
+   </properties>
+  </object>
+  <object id="964" name="void-demon" type="entity" x="3257.21" y="529.939" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
+  <object id="965" name="exterminator" type="entity" x="3463.27" y="526.909" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
    </properties>
   </object>
  </objectgroup>

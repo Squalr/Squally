@@ -17,6 +17,9 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/Sound.h"
+#include "Engine/Sound/Music.h"
+#include "Engine/Sound/MusicPlayer.h"
+#include "Music/Tracks/AmbientPiano.h"
 #include "Scenes/Title/TitleScreen.h"
 #include "Engine/UI/Controls/ScrollPane.h"
 #include "Engine/UI/Controls/LabelStack.h"
@@ -45,10 +48,12 @@ CutscenesMenu* CutscenesMenu::create()
 CutscenesMenu::CutscenesMenu()
 {
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
+	ValueMap EmptyProperties = ValueMap();
 
 	this->cutsceneAnimation = SmartAnimationSequenceNode::create();
 	this->crackCutsceneChime = Sound::create(SoundResources::Platformer_Cutscenes_CutsceneChime);
 	this->tvOffSfx = Sound::create(SoundResources::Platformer_FX_TvOff);
+	this->creditsMusic = AmbientPiano::create(EmptyProperties);
 	this->credits = LabelStack::create(visibleSize, 32.0f);
 
 	LocalizedLabel*	returnLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H3, Strings::Menus_Return::create());
@@ -62,7 +67,7 @@ CutscenesMenu::CutscenesMenu()
 	returnLabelHover->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
 	returnLabelHover->enableGlow(Color4B::ORANGE);
 
-	this->credits->insert(this->buildHeader(ConstantString::create("Lead Programmer")));
+	this->credits->insert(this->buildHeader(ConstantString::create("Lead Programmer & Game Designer")));
 	this->credits->insert(this->buildEntry(ConstantString::create("Zachary Canann")));
 	this->credits->insertNewline();
 	this->credits->insertNewline();
@@ -169,6 +174,7 @@ CutscenesMenu::CutscenesMenu()
 	this->addChild(this->returnButton);
 	this->addChild(this->crackCutsceneChime);
 	this->addChild(this->tvOffSfx);
+	this->addChild(this->creditsMusic);
 	this->addChild(this->credits);
 }
 
@@ -288,6 +294,18 @@ void CutscenesMenu::open(Cutscene cutscene)
 				NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
 			};
 
+			int failSafe = 256;
+			
+			while (MusicPlayer::getInstance()->getCurrentSong() != nullptr)
+			{
+				MusicPlayer::getInstance()->popTrack(false);
+
+				if (failSafe-- <= 0)
+				{
+					break;
+				}
+			}
+
 			this->runAction(Sequence::create(
 				DelayTime::create(0.5f),
 				CallFunc::create([=]()
@@ -295,7 +313,12 @@ void CutscenesMenu::open(Cutscene cutscene)
 					// Hacky, but TV fade FX is triggered in PlatformMap.cpp
 					this->tvOffSfx->play();
 				}),
-				DelayTime::create(10.0f),
+				DelayTime::create(2.0f),
+				CallFunc::create([=]()
+				{
+					this->creditsMusic->pushTrack(0.0f);
+				}),
+				DelayTime::create(60.0f),
 				CallFunc::create([=]()
 				{
 					this->returnButton->runAction(FadeTo::create(1.0f, 255));

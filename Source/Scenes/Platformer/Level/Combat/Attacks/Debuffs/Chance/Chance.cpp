@@ -38,8 +38,8 @@ using namespace cocos2d;
 
 #define LOCAL_FUNC_ID_CHANCE 1
 
-const std::string Chance::ChanceIdentifier = "broken-blade";
-const std::string Chance::HackIdentifierChance = "broken-blade";
+const std::string Chance::ChanceIdentifier = "chance";
+const std::string Chance::HackIdentifierChance = "chance";
 
 const int Chance::MaxMultiplier = 4;
 const float Chance::Duration = 12.0f;

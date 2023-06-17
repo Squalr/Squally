@@ -33,6 +33,7 @@ void TrackDeserializer::RegisterGlobalNode()
 
 TrackDeserializer::TrackDeserializer()
 {
+	this->deserializers[AmbientPiano::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)AmbientPiano::create(properties); };
 	this->deserializers[Artrium::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Artrium::create(properties); };
 	this->deserializers[BurdenOfTime::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)BurdenOfTime::create(properties); };
 	this->deserializers[CarnivalDream::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)CarnivalDream::create(properties); };
@@ -41,6 +42,7 @@ TrackDeserializer::TrackDeserializer()
 	this->deserializers[Lacrimosa::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Lacrimosa::create(properties); };
 	this->deserializers[LastMarch::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)LastMarch::create(properties); };
 	this->deserializers[LittleFootsteps::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)LittleFootsteps::create(properties); };
+	this->deserializers[Perseverance::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Perseverance::create(properties); };
 	this->deserializers[RaceAgainstTheSunset::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)RaceAgainstTheSunset::create(properties); };
 	this->deserializers[Medieval::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Medieval::create(properties); };
 	this->deserializers[Medieval2::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Medieval2::create(properties); };

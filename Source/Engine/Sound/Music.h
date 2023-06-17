@@ -11,7 +11,7 @@ public:
 	
 	void unfreeze() override;
 	void pushTrack(float delay = 0.5f);
-	void popTrack();
+	void popTrack(bool unpauseNext = true);
 
 	LocalizedString* cloneMusicName() const;
 	LocalizedString* cloneArtistName() const;
