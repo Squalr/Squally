@@ -70,6 +70,20 @@ void PerceptronFinale::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<PerceptronUnarmored>(this, [=](PerceptronUnarmored* perceptron)
 	{
 		this->perceptron = perceptron;
+
+		if (questState == QuestState::Complete)
+		{
+			this->perceptron->despawn();
+		}
+		else
+		{
+			this->listenForMapEventOnce("perceptron-dead", [=](ValueMap)
+			{
+				Objectives::SetCurrentObjective(ObjectiveKeys::VSDestroyReactorCore);
+				this->complete();
+			});
+		}
+
 	}, PerceptronUnarmored::MapKey);
 
 	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)

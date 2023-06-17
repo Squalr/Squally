@@ -11,7 +11,6 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
-
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/EntityResources.h"
@@ -76,4 +75,6 @@ void PerceptronUnarmored::onBreak()
 	this->perceptron->setVisible(false);
 	this->explosion->playAnimation(FXResources::ExplosionNormal_Explosion_0000, 0.035f, true);
 	this->breakSound->play();
+
+	this->broadcastMapEvent("perceptron-dead", ValueMap());
 }

@@ -81,6 +81,7 @@ DeveloperScene::DeveloperScene()
 			- ?
 			- ?
 		- ** VS ending blow
+		- Missing VS inn or helper swap (unless we add this as a quick-UI action)
 		- Music
 			- [Discussing Terms] https://usfourmusic.com/contact (The Storm Begins)
 			- [Discussing Terms] https://philipwesley.com/contact/ (Far and Away / Racing Against the Sunset)
