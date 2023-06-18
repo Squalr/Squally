@@ -28,7 +28,6 @@ private:
 	typedef QuestTask super;
 
 	void runCinematicSequencePt1();
-	void runCinematicSequencePt2();
 
 	Perceptron* perceptron = nullptr;
 	Squally* squally = nullptr;

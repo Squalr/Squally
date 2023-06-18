@@ -67,25 +67,6 @@ PerceptronFinale::~PerceptronFinale()
 
 void PerceptronFinale::onLoad(QuestState questState)
 {
-	ObjectEvents::WatchForObject<PerceptronUnarmored>(this, [=](PerceptronUnarmored* perceptron)
-	{
-		this->perceptron = perceptron;
-
-		if (questState == QuestState::Complete)
-		{
-			this->perceptron->despawn();
-		}
-		else
-		{
-			this->listenForMapEventOnce("perceptron-dead", [=](ValueMap)
-			{
-				Objectives::SetCurrentObjective(ObjectiveKeys::VSDestroyReactorCore);
-				this->complete();
-			});
-		}
-
-	}, PerceptronUnarmored::MapKey);
-
 	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
 	{
 		this->guano = guano;
@@ -128,7 +109,7 @@ void PerceptronFinale::onSkipped()
 void PerceptronFinale::runCinematicSequencePt1()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(), 
+		Strings::Platformer_Quests_VoidStar_PerceptronFight_W_Virus::create(), 
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
@@ -139,7 +120,7 @@ void PerceptronFinale::runCinematicSequencePt1()
 		{
 			this->runCinematicSequencePt2();
 		},
-		Voices::GetNextVoiceMedium(Voices::VoiceType::Ghost),
+		Voices::GetNextVoiceLong(Voices::VoiceType::Ghost),
 		false
 	));
 }
@@ -147,7 +128,7 @@ void PerceptronFinale::runCinematicSequencePt1()
 void PerceptronFinale::runCinematicSequencePt2()
 {
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
+		Strings::Platformer_Quests_VoidStar_PerceptronFight_X_FarWorse::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
@@ -156,8 +137,46 @@ void PerceptronFinale::runCinematicSequencePt2()
 		),
 		[=]()
 		{
+			this->runCinematicSequencePt3();
 		},
-		Voices::GetNextVoiceShort(Voices::VoiceType::Ghost),
+		Voices::GetNextVoiceLong(Voices::VoiceType::Ghost),
+		false
+	));
+}
+
+void PerceptronFinale::runCinematicSequencePt3()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_VoidStar_PerceptronFight_Y_True::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Squally::create()),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePt4();
+		},
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
+		false
+	));
+}
+void PerceptronFinale::runCinematicSequencePt4()
+{
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_VoidStar_PerceptronFight_Z_SetUsFree::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Top,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+		),
+		[=]()
+		{
+			this->complete();
+		},
+		Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
 		true
 	));
 }

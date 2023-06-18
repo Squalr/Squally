@@ -33,8 +33,9 @@ private:
 
 	void runCinematicSequencePt1();
 	void runCinematicSequencePt2();
+	void runCinematicSequencePt3();
+	void runCinematicSequencePt4();
 
-	PerceptronUnarmored* perceptron = nullptr;
 	Gecky* gecky = nullptr;
 	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;

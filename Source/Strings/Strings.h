@@ -38724,6 +38724,81 @@ namespace Strings
 		virtual ~Platformer_Quests_VoidStar_PerceptronFight_D_Reality() = default;
 	};
 
+	class Platformer_Quests_VoidStar_PerceptronFight_M_TheCore : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_VoidStar_PerceptronFight_M_TheCore();
+		virtual ~Platformer_Quests_VoidStar_PerceptronFight_M_TheCore() = default;
+	};
+
+	class Platformer_Quests_VoidStar_PerceptronFight_W_Virus : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_VoidStar_PerceptronFight_W_Virus();
+		virtual ~Platformer_Quests_VoidStar_PerceptronFight_W_Virus() = default;
+	};
+
+	class Platformer_Quests_VoidStar_PerceptronFight_X_FarWorse : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_VoidStar_PerceptronFight_X_FarWorse();
+		virtual ~Platformer_Quests_VoidStar_PerceptronFight_X_FarWorse() = default;
+	};
+
+	class Platformer_Quests_VoidStar_PerceptronFight_Y_True : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_VoidStar_PerceptronFight_Y_True();
+		virtual ~Platformer_Quests_VoidStar_PerceptronFight_Y_True() = default;
+	};
+
+	class Platformer_Quests_VoidStar_PerceptronFight_Z_SetUsFree : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_VoidStar_PerceptronFight_Z_SetUsFree();
+		virtual ~Platformer_Quests_VoidStar_PerceptronFight_Z_SetUsFree() = default;
+	};
+
 	class Platformer_Quests_WarpGates_WarpGateIntro : public LocalizedString
 	{
 	public:

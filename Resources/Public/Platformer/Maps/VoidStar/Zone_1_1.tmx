@@ -238,7 +238,7 @@
    <properties>
     <property name="components" value="friendly"/>
     <property name="flip-x" type="bool" value="true"/>
-    <property name="quest" value="perceptron-finale"/>
+    <property name="quest" value="perceptron-finale,perceptron-death"/>
     <property name="quest-line" value="perceptron-fight"/>
    </properties>
   </object>

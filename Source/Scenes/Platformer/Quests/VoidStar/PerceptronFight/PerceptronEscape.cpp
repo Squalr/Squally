@@ -119,26 +119,7 @@ void PerceptronEscape::runCinematicSequencePt1()
 	this->perceptron->getAnimations()->setFlippedX(false);
 
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
-		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Top,
-			DialogueBox::DialogueAlignment::Right,
-			DialogueEvents::BuildPreviewNode(&this->squally, false),
-			DialogueEvents::BuildPreviewNode(&this->perceptron, true)
-		),
-		[=]()
-		{
-			this->runCinematicSequencePt2();
-		},
-		Voices::GetNextVoiceShort(Voices::VoiceType::Demon),
-		false
-	));
-}
-
-void PerceptronEscape::runCinematicSequencePt2()
-{
-	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-		Strings::TODO::create(),
+		Strings::Platformer_Quests_VoidStar_PerceptronFight_M_TheCore::create(),
 		DialogueEvents::DialogueVisualArgs(
 			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
@@ -155,7 +136,7 @@ void PerceptronEscape::runCinematicSequencePt2()
 			});
 			this->complete();
 		},
-		Voices::GetNextVoiceShort(Voices::VoiceType::Demon),
+		Voices::GetNextVoiceShort(Voices::VoiceType::Ghost),
 		true
 	));
 }
