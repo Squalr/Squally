@@ -7,6 +7,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Animations/SmartAnimationSequenceNode.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
@@ -14,6 +15,7 @@
 #include "Menus/Cutscenes/CutscenesMenu.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
+#include "Resources/FXResources.h"
 #include "Resources/ObjectResources.h"
 #include "Resources/SoundResources.h"
 
@@ -43,6 +45,8 @@ ReactorCore::ReactorCore(ValueMap& properties) : super(properties, InteractObjec
 	this->reactorCaseCracked2 = Sprite::create(ObjectResources::Interactive_ReactorCore_ReactorCaseCracked2);
 	this->reactorCaseCracked3 = Sprite::create(ObjectResources::Interactive_ReactorCore_ReactorCaseCracked3);
 	this->reactorCaseCracked4 = Sprite::create(ObjectResources::Interactive_ReactorCore_ReactorCaseCracked4);
+	this->explosion = SmartAnimationSequenceNode::create();
+	this->breakSound = WorldSound::create(SoundResources::Platformer_FX_Explosions_Explosion1);
 	
 	this->contentNode->addChild(this->reactorCore);
 	this->contentNode->addChild(this->reactorPad);
@@ -53,6 +57,8 @@ ReactorCore::ReactorCore(ValueMap& properties) : super(properties, InteractObjec
 	this->contentNode->addChild(this->reactorCaseCracked4);
 	this->addChild(this->reactorSfx);
 	this->addChild(this->reactorHitSfx);
+	this->addChild(this->explosion);
+	this->addChild(this->breakSound);
 }
 
 ReactorCore::~ReactorCore()
@@ -134,8 +140,24 @@ void ReactorCore::updateCracks()
 		}
 		default:
 		{
-			this->reactorCaseCracked4->setVisible(true);
-			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::Credits));
+			if (!hasExploded)
+			{
+				this->reactorCaseCracked4->setVisible(true);
+				this->explosion->playAnimation(FXResources::ExplosionNormal_Explosion_0000, 0.035f, true);
+				this->breakSound->play();
+				this->reactorCore->runAction(FadeTo::create(0.25f, 0));
+
+				this->runAction(Sequence::create(
+					DelayTime::create(1.0f),
+					CallFunc::create([=]()
+					{
+						PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::Credits));
+					}),
+					nullptr
+				));
+			}
+
+			this->hasExploded = true;
 			break;
 		}
 	}

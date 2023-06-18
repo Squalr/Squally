@@ -83,7 +83,7 @@ DeveloperScene::DeveloperScene()
 		- Missing VS inn or helper swap (unless we add this as a quick-UI action)
 		- Explosion FX or sequence on reactor
 		- Music
-			- [Discussing Terms] https://usfourmusic.com/contact (The Storm Begins)
+			- [TODO] https://usfourmusic.com/contact (The Storm Begins)
 			- [Discussing Terms] https://philipwesley.com/contact/ (Far and Away / Racing Against the Sunset)
 			- [Discussing Terms] https://michelemclaughlin.com/pages/contact (Preserverence)
 			- [Discussing Terms] https://www.instagram.com/anthonybadensaggers (Two steps too often aside)

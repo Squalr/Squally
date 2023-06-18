@@ -30,6 +30,7 @@ private:
 	void updateCracks();
 
 	int crackedLevel = 0;
+	bool hasExploded = false;
 
 	cocos2d::Sprite* reactorCore = nullptr;
 	cocos2d::Sprite* reactorPad = nullptr;
@@ -40,4 +41,7 @@ private:
 	cocos2d::Sprite* reactorCaseCracked4 = nullptr;
 	WorldSound* reactorSfx = nullptr;
 	WorldSound* reactorHitSfx = nullptr;
+	
+	WorldSound* breakSound = nullptr;
+	SmartAnimationSequenceNode* explosion = nullptr;
 };

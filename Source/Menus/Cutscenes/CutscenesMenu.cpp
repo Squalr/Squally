@@ -323,7 +323,7 @@ void CutscenesMenu::open(Cutscene cutscene)
 				{
 					this->returnButton->runAction(FadeTo::create(1.0f, 255));
 				}),
-				DelayTime::create(30.0f),
+				DelayTime::create(45.0f),
 				CallFunc::create([=]()
 				{
 					NavigationEvents::LoadScene(NavigationEvents::LoadSceneArgs([=]() { return TitleScreen::getInstance(); }));
