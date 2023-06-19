@@ -5908,6 +5908,18 @@ namespace EntityResources
 	extern const std::string Npcs_UnderflowRuins_Zeus_R_ARM;
 	extern const std::string Npcs_UnderflowRuins_Zeus_R_HAND;
 	extern const std::string Npcs_UnderflowRuins_Zeus_R_LEG;
+	extern const std::string Npcs_VoidStar_Boron_Animations;
+	extern const std::string Npcs_VoidStar_Boron_BODY;
+	extern const std::string Npcs_VoidStar_Boron_Emblem;
+	extern const std::string Npcs_VoidStar_Boron_GROIN;
+	extern const std::string Npcs_VoidStar_Boron_L_ARM_1;
+	extern const std::string Npcs_VoidStar_Boron_L_ARM_2;
+	extern const std::string Npcs_VoidStar_Boron_L_LEG;
+	extern const std::string Npcs_VoidStar_Boron_R_ARM_1;
+	extern const std::string Npcs_VoidStar_Boron_R_ARM_2;
+	extern const std::string Npcs_VoidStar_Boron_R_LEG;
+	extern const std::string Npcs_VoidStar_Boron_WEAPON;
+	extern const std::string Npcs_VoidStar_Boron_head;
 	extern const std::string Npcs_VoidStar_Radon_Animations;
 	extern const std::string Npcs_VoidStar_Radon_BODY;
 	extern const std::string Npcs_VoidStar_Radon_Emblem;

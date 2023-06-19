@@ -344,6 +344,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Perceptron::MapKey] = StatsIncrements(Stats(999, 999, 1024));
 	StatsTables::StatsTable[VoidDemon::MapKey] = StatsIncrements(Stats(90, 64, 145));
 	
+	StatsTables::StatsTable[Boron::MapKey] = NpcStats;
 	StatsTables::StatsTable[Radon::MapKey] = NpcStats;
 	StatsTables::StatsTable[Xenon::MapKey] = NpcStats;
 

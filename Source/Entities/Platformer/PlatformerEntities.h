@@ -224,6 +224,7 @@
 #include "Npcs/UnderflowRuins/Rupert.h"
 #include "Npcs/UnderflowRuins/Thor.h"
 #include "Npcs/UnderflowRuins/Zeus.h"
+#include "Npcs/VoidStar/Boron.h"
 #include "Npcs/VoidStar/Radon.h"
 #include "Npcs/VoidStar/Xenon.h"
 #include "Special/KillingMachines/KillingMachine1.h"

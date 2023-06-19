@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="79" nextobjectid="909">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="79" nextobjectid="927">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="Void"/>
@@ -81,6 +81,9 @@
    </properties>
    <polygon points="-313.44,-2731.26 -232.644,-1979.27 185.903,-1709.84 588.652,-1976.28 658.882,-2731.7"/>
   </object>
+  <object id="921" name="void" type="terrain" x="5278.49" y="4247.09">
+   <polygon points="-313.44,-2731.26 -232.644,-1979.27 185.903,-1709.84 520.652,-1968.28 590.882,-2723.7 568.658,-3593.3 346.809,-4465.27 331.196,-4816.34 -17.8078,-4815.36 -36.2448,-4475.35 -280.8,-3590.02"/>
+  </object>
  </objectgroup>
  <objectgroup id="72" name="decor -13">
   <properties>
@@ -94,6 +97,8 @@
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
+  <object id="923" name="Generic/SignBarFlat" type="decor" x="5290" y="942" width="256" height="200"/>
+  <object id="924" name="Generic/WoodDoor" type="decor" x="5285.5" y="1191" width="273" height="370"/>
  </objectgroup>
  <objectgroup id="7912" name="bridge -12">
   <properties>
@@ -110,6 +115,11 @@
     <property name="collision" value="none"/>
     <property name="components" value="illusion"/>
     <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+  <object id="920" name="void" type="terrain" x="5250.63" y="1558.75" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -130,6 +140,11 @@
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
+  <object id="919" name="void" type="terrain" x="5308.33" y="1600.5" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="791" name="bridge -10">
   <properties>
@@ -146,6 +161,11 @@
     <property name="collision" value="none"/>
     <property name="components" value="illusion"/>
     <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+  <object id="918" name="void" type="terrain" x="5341.39" y="1638.83" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -172,6 +192,11 @@
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
+  <object id="917" name="void" type="terrain" x="5305.69" y="1682.15" width="367.383" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="771" name="bridge -8">
   <properties>
@@ -188,6 +213,11 @@
     <property name="collision" value="none"/>
     <property name="components" value="illusion"/>
     <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+  <object id="916" name="void" type="terrain" x="5242" y="1722.81" width="401.383" height="391">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -208,6 +238,11 @@
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
+  <object id="915" name="void" type="terrain" x="5183.63" y="1764.16" width="441.383" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="751" name="bridge -6">
   <properties>
@@ -224,6 +259,11 @@
     <property name="collision" value="none"/>
     <property name="components" value="illusion"/>
     <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+  <object id="914" name="void" type="terrain" x="5124.33" y="1804.84" width="402.717" height="391">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="875" name="void" type="terrain" x="74.2151" y="2337.04">
@@ -274,6 +314,11 @@
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
+  <object id="913" name="void" type="terrain" x="5063.69" y="1847.23" width="373.383" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="78" name="bridge -4">
   <properties>
@@ -292,6 +337,11 @@
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
+  <object id="912" name="void" type="terrain" x="5147.69" y="1890.74" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="77" name="bridge -3">
   <properties>
@@ -308,6 +358,11 @@
     <property name="collision" value="none"/>
     <property name="components" value="illusion"/>
     <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+  <object id="911" name="void" type="terrain" x="5219.39" y="1936.43" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
   <object id="868" name="void" type="terrain" x="70.1921" y="2339.08">
@@ -352,6 +407,11 @@
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
+  <object id="910" name="void" type="terrain" x="5269.39" y="1982.11" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="75" name="bridge -1">
   <properties>
@@ -368,6 +428,11 @@
     <property name="collision" value="none"/>
     <property name="components" value="illusion"/>
     <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+  <object id="909" name="void" type="terrain" x="5319.39" y="2024.83" width="346.05" height="391">
+   <properties>
+    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -485,6 +550,12 @@
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
+  <object id="926" name="portal" type="object" x="5359.88" y="1633.94" width="256" height="423.038">
+   <properties>
+    <property name="map" value="VoidStar/Town_Inn"/>
+    <property name="transition" value="inn"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -535,6 +606,11 @@
   <object id="908" name="spawn" type="object" x="2600" y="152" width="128" height="128">
    <properties>
     <property name="transition" value="sky-cannon"/>
+   </properties>
+  </object>
+  <object id="925" name="spawn-wood-door" type="object" x="5426.91" y="1926.91" width="128" height="128">
+   <properties>
+    <property name="transition" value="inn"/>
    </properties>
   </object>
  </objectgroup>

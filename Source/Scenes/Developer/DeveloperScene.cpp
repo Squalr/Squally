@@ -80,6 +80,8 @@ DeveloperScene::DeveloperScene()
 			- Perilous Sea (prop surf?)	=> The Golden Eagle (Special: Higher Jump)
 			- ? 						=> Tiger's Bane (Special: Faster Movement)
 			- ? 						=> Royal Crown (Special: Shop Discounts)
+			- ?							=> Ashen Blade
+			- ?							=> Frost Axe
 		- Missing VS inn or helper swap (unless we add this as a quick-UI action)
 		- Daze script too long
 		- Should add some sort of archery mini-game with jump shots or something in some town. Maybe DH.

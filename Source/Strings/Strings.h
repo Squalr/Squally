@@ -32409,6 +32409,21 @@ namespace Strings
 		virtual ~Platformer_Entities_Names_Npcs_VoidStar_Bancroft() = default;
 	};
 
+	class Platformer_Entities_Names_Npcs_VoidStar_Boron : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Entities_Names_Npcs_VoidStar_Boron();
+		virtual ~Platformer_Entities_Names_Npcs_VoidStar_Boron() = default;
+	};
+
 	class Platformer_Entities_Names_Npcs_VoidStar_Godiva : public LocalizedString
 	{
 	public:

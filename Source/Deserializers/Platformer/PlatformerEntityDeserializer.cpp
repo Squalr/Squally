@@ -37,6 +37,7 @@ PlatformerEntityDeserializer::PlatformerEntityDeserializer() : super(PlatformerE
 	this->deserializers[TrainingDummy::MapKey] = [=](ValueMap properties) { return (GameObject*)TrainingDummy::deserialize(properties); };
 	
 	// Npcs, helpers, and enemies
+	this->deserializers[Boron::MapKey] = [=](ValueMap properties) { return (GameObject*)Boron::deserialize(properties); };
 	this->deserializers[Cryogen::MapKey] = [=](ValueMap properties) { return (GameObject*)Cryogen::deserialize(properties); };
 	this->deserializers[FrostFiend::MapKey] = [=](ValueMap properties) { return (GameObject*)FrostFiend::deserialize(properties); };
 	this->deserializers[GoblinElf::MapKey] = [=](ValueMap properties) { return (GameObject*)GoblinElf::deserialize(properties); };

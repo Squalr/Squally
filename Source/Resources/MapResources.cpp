@@ -256,6 +256,7 @@ const std::string MapResources::UnderflowRuins_Zone_3_7 = "Public/Platformer/Map
 const std::string MapResources::UnderflowRuins_Zone_3_8 = "Public/Platformer/Maps/UnderflowRuins/Zone_3_8.tmx";
 const std::string MapResources::VoidStar_Combat_FinalBoss = "Public/Platformer/Maps/VoidStar/Combat_FinalBoss.tmx";
 const std::string MapResources::VoidStar_Town_Alch = "Public/Platformer/Maps/VoidStar/Town_Alch.tmx";
+const std::string MapResources::VoidStar_Town_Inn = "Public/Platformer/Maps/VoidStar/Town_Inn.tmx";
 const std::string MapResources::VoidStar_Town_Main = "Public/Platformer/Maps/VoidStar/Town_Main.tmx";
 const std::string MapResources::VoidStar_Town_Smith = "Public/Platformer/Maps/VoidStar/Town_Smith.tmx";
 const std::string MapResources::VoidStar_Zone_1_0 = "Public/Platformer/Maps/VoidStar/Zone_1_0.tmx";
