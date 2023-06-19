@@ -23,17 +23,17 @@ NecrobatHelm* NecrobatHelm::create()
 
 NecrobatHelm::NecrobatHelm() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
 	// Health
-	0,
+	ARCHER_HP(5),
 	// Mana
-	0,
+	ARCHER_MP(5),
 	// Attack
-	0,
+	ARCHER_ATTACK(5),
 	// Magic Attack
-	0,
+	ARCHER_MAGIC_ATTACK(5),
 	// Armor
-	0,
+	ARCHER_ARMOR(5),
 	// Speed
-	0.05f
+	ARCHER_SPEED(5)
 ))
 {
 }

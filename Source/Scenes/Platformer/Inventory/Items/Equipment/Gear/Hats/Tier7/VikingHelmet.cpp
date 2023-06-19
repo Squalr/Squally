@@ -23,17 +23,17 @@ VikingHelmet* VikingHelmet::create()
 
 VikingHelmet::VikingHelmet() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 17 }}), ItemStats(
 	// Health
-	0,
+	WARRIOR_HP(7),
 	// Mana
-	0,
+	WARRIOR_MP(7),
 	// Attack
-	0,
+	WARRIOR_ATTACK(7),
 	// Magic Attack
-	0,
+	WARRIOR_MAGIC_ATTACK(7),
 	// Armor
-	3,
+	WARRIOR_ARMOR(7),
 	// Speed
-	0.05f
+	WARRIOR_SPEED(7)
 ))
 {
 }

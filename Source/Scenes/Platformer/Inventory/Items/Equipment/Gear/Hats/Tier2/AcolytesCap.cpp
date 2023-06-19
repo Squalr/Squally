@@ -23,17 +23,17 @@ AcolytesCap* AcolytesCap::create()
 
 AcolytesCap::AcolytesCap() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemStats(
 	// Health
-	0,
+	MAGE_HP(2),
 	// Mana
-	3,
+	MAGE_MP(2),
 	// Attack
-	0,
+	MAGE_ATTACK(2),
 	// Magic Attack
-	3,
+	MAGE_MAGIC_ATTACK(2),
 	// Armor
-	1,
+	MAGE_ARMOR(2),
 	// Speed
-	0.05f
+	MAGE_SPEED(2)
 ))
 {
 }

@@ -23,17 +23,17 @@ WizardsHatWater* WizardsHatWater::create()
 
 WizardsHatWater::WizardsHatWater() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
 	// Health
-	0,
+	MAGE_HP(4),
 	// Mana
-	0,
+	MAGE_MP(4),
 	// Attack
-	0,
+	MAGE_ATTACK(4),
 	// Magic Attack
-	0,
+	MAGE_MAGIC_ATTACK(4),
 	// Armor
-	0,
+	MAGE_ARMOR(4),
 	// Speed
-	0.05f
+	MAGE_SPEED(4)
 ))
 {
 }

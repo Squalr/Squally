@@ -23,17 +23,17 @@ WizardsHatArcane* WizardsHatArcane::create()
 
 WizardsHatArcane::WizardsHatArcane() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
 	// Health
-	0,
+	MAGE_HP(7),
 	// Mana
-	0,
+	MAGE_MP(7),
 	// Attack
-	0,
+	MAGE_ATTACK(7),
 	// Magic Attack
-	0,
+	MAGE_MAGIC_ATTACK(7),
 	// Armor
-	0,
+	MAGE_ARMOR(7),
 	// Speed
-	0.05f
+	MAGE_SPEED(7)
 ))
 {
 }

@@ -23,17 +23,17 @@ LeatherCap* LeatherCap::create()
 
 LeatherCap::LeatherCap() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
 	// Health
-	0,
+	ARCHER_HP(4),
 	// Mana
-	0,
+	ARCHER_MP(4),
 	// Attack
-	0,
+	ARCHER_ATTACK(4),
 	// Magic Attack
-	0,
+	ARCHER_MAGIC_ATTACK(4),
 	// Armor
-	0,
+	ARCHER_ARMOR(4),
 	// Speed
-	0.05f
+	ARCHER_SPEED(4)
 ))
 {
 }

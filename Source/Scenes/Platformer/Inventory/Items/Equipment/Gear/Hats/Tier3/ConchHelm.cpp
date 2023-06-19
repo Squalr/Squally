@@ -23,17 +23,17 @@ ConchHelm* ConchHelm::create()
 
 ConchHelm::ConchHelm() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
 	// Health
-	0,
+	ARCHER_HP(3),
 	// Mana
-	0,
+	ARCHER_MP(3),
 	// Attack
-	0,
+	ARCHER_ATTACK(3),
 	// Magic Attack
-	0,
+	ARCHER_MAGIC_ATTACK(3),
 	// Armor
-	0,
+	ARCHER_ARMOR(3),
 	// Speed
-	0.05f
+	ARCHER_SPEED(3)
 ))
 {
 }

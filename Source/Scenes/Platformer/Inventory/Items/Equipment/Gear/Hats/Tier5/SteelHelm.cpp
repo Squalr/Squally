@@ -23,17 +23,17 @@ SteelHelm* SteelHelm::create()
 
 SteelHelm::SteelHelm() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
 	// Health
-	0,
+	WARRIOR_HP(5),
 	// Mana
-	0,
+	WARRIOR_MP(5),
 	// Attack
-	0,
+	WARRIOR_ATTACK(5),
 	// Magic Attack
-	0,
+	WARRIOR_MAGIC_ATTACK(5),
 	// Armor
-	0,
+	WARRIOR_ARMOR(5),
 	// Speed
-	0.05f
+	WARRIOR_SPEED(5)
 ))
 {
 }

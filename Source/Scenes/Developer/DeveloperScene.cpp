@@ -81,6 +81,7 @@ DeveloperScene::DeveloperScene()
 			- ? 						=> Tiger's Bane (Special: Faster Movement)
 			- ? 						=> Royal Crown (Special: Shop Discounts)
 		- Missing VS inn or helper swap (unless we add this as a quick-UI action)
+		- Daze script too long
 		- Should add some sort of archery mini-game with jump shots or something in some town. Maybe DH.
 		- Music
 			- [TODO] https://usfourmusic.com/contact (The Storm Begins)

@@ -23,17 +23,17 @@ WizardsHat* WizardsHat::create()
 
 WizardsHat::WizardsHat() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
 	// Health
-	0,
+	MAGE_HP(3),
 	// Mana
-	0,
+	MAGE_MP(3),
 	// Attack
-	0,
+	MAGE_ATTACK(3),
 	// Magic Attack
-	0,
+	MAGE_MAGIC_ATTACK(3),
 	// Armor
-	0,
+	MAGE_ARMOR(3),
 	// Speed
-	0.05f
+	MAGE_SPEED(3)
 ))
 {
 }

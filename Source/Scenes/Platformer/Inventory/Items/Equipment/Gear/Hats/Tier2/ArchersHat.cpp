@@ -23,17 +23,17 @@ ArchersHat* ArchersHat::create()
 
 ArchersHat::ArchersHat() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemStats(
 	// Health
-	2,
+	ARCHER_HP(2),
 	// Mana
-	2,
+	ARCHER_MP(2),
 	// Attack
-	1,
+	ARCHER_ATTACK(2),
 	// Magic Attack
-	1,
+	ARCHER_MAGIC_ATTACK(2),
 	// Armor
-	2,
+	ARCHER_ARMOR(2),
 	// Speed
-	0.05f
+	ARCHER_SPEED(2)
 ))
 {
 }

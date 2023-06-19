@@ -23,17 +23,17 @@ BarbedHelm* BarbedHelm::create()
 
 BarbedHelm::BarbedHelm() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
 	// Health
-	0,
+	WARRIOR_HP(6),
 	// Mana
-	0,
+	WARRIOR_MP(6),
 	// Attack
-	0,
+	WARRIOR_ATTACK(6),
 	// Magic Attack
-	0,
+	WARRIOR_MAGIC_ATTACK(6),
 	// Armor
-	0,
+	WARRIOR_ARMOR(6),
 	// Speed
-	0.05f
+	WARRIOR_SPEED(6)
 ))
 {
 }

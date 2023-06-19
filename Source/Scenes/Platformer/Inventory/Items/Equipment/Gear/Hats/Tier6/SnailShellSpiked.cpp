@@ -23,17 +23,17 @@ SnailShellSpiked* SnailShellSpiked::create()
 
 SnailShellSpiked::SnailShellSpiked() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
 	// Health
-	0,
+	ARCHER_HP(6),
 	// Mana
-	0,
+	ARCHER_MP(6),
 	// Attack
-	0,
+	ARCHER_ATTACK(6),
 	// Magic Attack
-	0,
+	ARCHER_MAGIC_ATTACK(6),
 	// Armor
-	0,
+	ARCHER_ARMOR(6),
 	// Speed
-	0.05f
+	ARCHER_SPEED(6)
 ))
 {
 }

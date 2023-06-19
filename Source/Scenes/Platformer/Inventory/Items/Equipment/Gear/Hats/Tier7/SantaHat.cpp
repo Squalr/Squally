@@ -23,17 +23,17 @@ SantaHat* SantaHat::create()
 
 SantaHat::SantaHat() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemStats(
 	// Health
-	0,
+	ARCHER_HP(7),
 	// Mana
-	0,
+	ARCHER_MP(7),
 	// Attack
-	0,
+	ARCHER_ATTACK(7),
 	// Magic Attack
-	0,
+	ARCHER_MAGIC_ATTACK(7),
 	// Armor
-	0,
+	ARCHER_ARMOR(7),
 	// Speed
-	0.05f
+	ARCHER_SPEED(7)
 ))
 {
 }
