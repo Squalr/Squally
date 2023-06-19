@@ -54,7 +54,7 @@ LocalizedString* ArchersHat::getString()
 
 const std::string& ArchersHat::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_ArchersHat;
+	return ItemResources::Equipment_Gear_Hats_Tier2_ArchersHat;
 }
 
 const std::string& ArchersHat::getIdentifier()

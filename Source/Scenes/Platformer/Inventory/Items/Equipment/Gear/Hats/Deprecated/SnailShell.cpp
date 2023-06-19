@@ -53,7 +53,7 @@ LocalizedString* SnailShell::getString()
 
 const std::string& SnailShell::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_SnailShell;
+	return ItemResources::Equipment_Gear_Hats__Deprecated_SnailShell;
 }
 
 const std::string& SnailShell::getIdentifier()

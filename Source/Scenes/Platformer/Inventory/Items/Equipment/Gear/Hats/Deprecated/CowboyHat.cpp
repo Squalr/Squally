@@ -53,7 +53,7 @@ LocalizedString* CowboyHat::getString()
 
 const std::string& CowboyHat::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_CowboyHat;
+	return ItemResources::Equipment_Gear_Hats__Deprecated_CowboyHat;
 }
 
 const std::string& CowboyHat::getIdentifier()

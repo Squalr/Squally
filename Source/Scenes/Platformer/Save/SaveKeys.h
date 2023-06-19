@@ -132,6 +132,12 @@ public:
 	static const std::string SaveKeyItemFGiven;
 	static const std::string SaveKeyItemGGiven;
 	static const std::string SaveKeyItemHGiven;
+	
+	static const std::string SaveKeyItemEE1Given;
+	static const std::string SaveKeyItemEE2Given;
+	static const std::string SaveKeyItemEE3Given;
+	static const std::string SaveKeyItemEE4Given;
+	static const std::string SaveKeyItemEE5Given;
 
 	static const std::string SaveKeyAsterItemGiven;
 

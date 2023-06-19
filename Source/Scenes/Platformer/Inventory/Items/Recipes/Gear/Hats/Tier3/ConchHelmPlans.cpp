@@ -60,7 +60,7 @@ const std::string& ConchHelmPlans::getIconResource()
 
 std::string ConchHelmPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_ConchHelm;
+	return ItemResources::Equipment_Gear_Hats_Tier3_ConchHelm;
 }
 
 const std::string& ConchHelmPlans::getIdentifier()

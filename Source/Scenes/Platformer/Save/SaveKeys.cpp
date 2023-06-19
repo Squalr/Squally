@@ -126,5 +126,11 @@ const std::string SaveKeys::SaveKeyItemEGiven = "MUSEUM_E_ITEM_GIVEN";
 const std::string SaveKeys::SaveKeyItemFGiven = "MUSEUM_F_ITEM_GIVEN";
 const std::string SaveKeys::SaveKeyItemGGiven = "MUSEUM_G_ITEM_GIVEN";
 const std::string SaveKeys::SaveKeyItemHGiven = "MUSEUM_H_ITEM_GIVEN";
+	
+const std::string SaveKeys::SaveKeyItemEE1Given = "EE_1_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemEE2Given = "EE_2_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemEE3Given = "EE_3_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemEE4Given = "EE_4_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyItemEE5Given = "EE_5_ITEM_GIVEN";
 
 const std::string SaveKeys::SaveKeyAsterItemGiven = "ASTER_ITEM_GIVEN";

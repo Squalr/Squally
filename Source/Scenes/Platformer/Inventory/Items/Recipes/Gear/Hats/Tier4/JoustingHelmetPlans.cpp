@@ -60,7 +60,7 @@ const std::string& JoustingHelmetPlans::getIconResource()
 
 std::string JoustingHelmetPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_JoustingHelmet;
+	return ItemResources::Equipment_Gear_Hats_Tier4_JoustingHelmet;
 }
 
 const std::string& JoustingHelmetPlans::getIdentifier()

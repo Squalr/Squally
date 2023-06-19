@@ -60,7 +60,7 @@ const std::string& ArchersHatPlans::getIconResource()
 
 std::string ArchersHatPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_ArchersHat;
+	return ItemResources::Equipment_Gear_Hats_Tier2_ArchersHat;
 }
 
 const std::string& ArchersHatPlans::getIdentifier()

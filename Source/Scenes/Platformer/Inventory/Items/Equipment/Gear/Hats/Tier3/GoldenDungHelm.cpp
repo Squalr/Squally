@@ -54,7 +54,7 @@ LocalizedString* GoldenDungHelm::getString()
 
 const std::string& GoldenDungHelm::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_GoldenDungHelm;
+	return ItemResources::Equipment_Gear_Hats_Tier3_GoldenDungHelm;
 }
 
 const std::string& GoldenDungHelm::getIdentifier()

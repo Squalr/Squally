@@ -60,7 +60,7 @@ const std::string& OldShoePlans::getIconResource()
 
 std::string OldShoePlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_OldShoe;
+	return ItemResources::Equipment_Gear_Hats_Tier1_OldShoe;
 }
 
 const std::string& OldShoePlans::getIdentifier()

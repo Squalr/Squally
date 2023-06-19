@@ -53,7 +53,7 @@ LocalizedString* TheldarsHelm::getString()
 
 const std::string& TheldarsHelm::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_TheldarsHelm;
+	return ItemResources::Equipment_Gear_Hats__Deprecated_TheldarsHelm;
 }
 
 const std::string& TheldarsHelm::getIdentifier()

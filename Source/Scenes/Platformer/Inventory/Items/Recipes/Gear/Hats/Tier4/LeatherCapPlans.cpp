@@ -60,7 +60,7 @@ const std::string& LeatherCapPlans::getIconResource()
 
 std::string LeatherCapPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_LeatherCap;
+	return ItemResources::Equipment_Gear_Hats_Tier4_LeatherCap;
 }
 
 const std::string& LeatherCapPlans::getIdentifier()

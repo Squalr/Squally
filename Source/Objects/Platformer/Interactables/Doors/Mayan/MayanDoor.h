@@ -47,6 +47,8 @@ private:
 
 	bool isUnlocking = false;
 	std::vector<RegisterStone*> registerStones;
+	std::vector<int> combination = std::vector<int>();
+	std::vector<int> combinationSecret = std::vector<int>({1, 2, 3, 4, 5, 6});
 	
 	cocos2d::Sprite* doorArrow = nullptr;
 	cocos2d::Sprite* doorFrame = nullptr;

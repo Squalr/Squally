@@ -54,7 +54,7 @@ LocalizedString* SnailShellSpiked::getString()
 
 const std::string& SnailShellSpiked::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_SnailShellSpiked;
+	return ItemResources::Equipment_Gear_Hats_Tier6_SnailShellSpiked;
 }
 
 const std::string& SnailShellSpiked::getIdentifier()

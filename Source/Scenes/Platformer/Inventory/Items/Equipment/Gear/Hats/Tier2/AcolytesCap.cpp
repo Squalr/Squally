@@ -54,7 +54,7 @@ LocalizedString* AcolytesCap::getString()
 
 const std::string& AcolytesCap::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_AcolytesCap;
+	return ItemResources::Equipment_Gear_Hats_Tier2_AcolytesCap;
 }
 
 const std::string& AcolytesCap::getIdentifier()

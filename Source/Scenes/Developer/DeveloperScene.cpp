@@ -74,14 +74,14 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- General:
-		- ** Fucking 5x easter eggs
-			- Secret mayan door combo
-			- Enter clock at a certain time + ? some action
-			- Something with perilous sea
-			- ?
-			- ?
+		- ** 5x EE
+			- Mayan Door 				=> Pirate Hat (Special: Bonus Drop Rates)
+			- Clock at 4:20 + (? tbd) 	=> Warlock's Headdress (Special: Longer Hack Durations)
+			- Perilous Sea (prop surf?)	=> The Golden Eagle (Special: Higher Jump)
+			- ? 						=> Tiger's Bane (Special: Faster Movement)
+			- ? 						=> Royal Crown (Special: Shop Discounts)
 		- Missing VS inn or helper swap (unless we add this as a quick-UI action)
-		- Explosion FX or sequence on reactor
+		- Should add some sort of archery mini-game with jump shots or something in some town. Maybe DH.
 		- Music
 			- [TODO] https://usfourmusic.com/contact (The Storm Begins)
 			- [Discussing Terms] https://philipwesley.com/contact/ (Far and Away / Racing Against the Sunset)
@@ -91,7 +91,6 @@ DeveloperScene::DeveloperScene()
 		- v Make LC final 4_x maps less bad.
 		- v Camera harsh leaving camera targets (see FF cinematic)
 		- v No interrupt if damage attack modified to heal
-		- v Mystery crash / ensures when waiting on victory screen (matrix letters task func)
 		- v Crash reports probably are broken (switch to new SendGrid)
 		- v Missing squally breath bubbles
 		- v Enemy anims for getting hit
@@ -118,7 +117,7 @@ DeveloperScene::DeveloperScene()
 			- Can pass after auto-loss
 			- Win a hexus puzzle, next one will show massive row score deltas
 			- Leave button stuck visible after losing a puzzle
-				- Enemy should pre-calc the best play when player has passed (hard)
+			- Enemy should pre-calc the best play when player has passed (hard)
 			- Puzzle rewards sanity check. Do these give cards? It'd be nice to get SHL from the puzzle where you learn it.
 	
 	- Localization / Scripting

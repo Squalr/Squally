@@ -59,7 +59,7 @@ const std::string& BucketHelmPlans::getIconResource()
 
 std::string BucketHelmPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_BucketHelm;
+	return ItemResources::Equipment_Gear_Hats_Tier1_BucketHelm;
 }
 
 const std::string& BucketHelmPlans::getIdentifier()

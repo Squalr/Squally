@@ -59,7 +59,7 @@ const std::string& GoldenDungHelmPlans::getIconResource()
 
 std::string GoldenDungHelmPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_GoldenDungHelm;
+	return ItemResources::Equipment_Gear_Hats_Tier3_GoldenDungHelm;
 }
 
 const std::string& GoldenDungHelmPlans::getIdentifier()

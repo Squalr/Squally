@@ -54,7 +54,7 @@ LocalizedString* LeatherCap::getString()
 
 const std::string& LeatherCap::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_LeatherCap;
+	return ItemResources::Equipment_Gear_Hats_Tier4_LeatherCap;
 }
 
 const std::string& LeatherCap::getIdentifier()

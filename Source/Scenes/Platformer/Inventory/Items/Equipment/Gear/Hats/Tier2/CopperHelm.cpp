@@ -54,7 +54,7 @@ LocalizedString* CopperHelm::getString()
 
 const std::string& CopperHelm::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_CopperHelm;
+	return ItemResources::Equipment_Gear_Hats_Tier2_CopperHelm;
 }
 
 const std::string& CopperHelm::getIdentifier()

@@ -53,7 +53,7 @@ LocalizedString* GardenersHat::getString()
 
 const std::string& GardenersHat::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_GardenersHat;
+	return ItemResources::Equipment_Gear_Hats__Deprecated_GardenersHat;
 }
 
 const std::string& GardenersHat::getIdentifier()

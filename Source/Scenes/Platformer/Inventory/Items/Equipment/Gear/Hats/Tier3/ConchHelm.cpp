@@ -54,7 +54,7 @@ LocalizedString* ConchHelm::getString()
 
 const std::string& ConchHelm::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_ConchHelm;
+	return ItemResources::Equipment_Gear_Hats_Tier3_ConchHelm;
 }
 
 const std::string& ConchHelm::getIdentifier()

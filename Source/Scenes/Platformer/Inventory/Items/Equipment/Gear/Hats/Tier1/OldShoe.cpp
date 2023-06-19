@@ -54,7 +54,7 @@ LocalizedString* OldShoe::getString()
 
 const std::string& OldShoe::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_OldShoe;
+	return ItemResources::Equipment_Gear_Hats_Tier1_OldShoe;
 }
 
 const std::string& OldShoe::getIdentifier()

@@ -60,7 +60,7 @@ const std::string& CopperHelmPlans::getIconResource()
 
 std::string CopperHelmPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_CopperHelm;
+	return ItemResources::Equipment_Gear_Hats_Tier2_CopperHelm;
 }
 
 const std::string& CopperHelmPlans::getIdentifier()

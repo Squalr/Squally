@@ -60,7 +60,7 @@ const std::string& SnailShellSpikedPlans::getIconResource()
 
 std::string SnailShellSpikedPlans::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_SnailShellSpiked;
+	return ItemResources::Equipment_Gear_Hats_Tier6_SnailShellSpiked;
 }
 
 const std::string& SnailShellSpikedPlans::getIdentifier()

@@ -54,7 +54,7 @@ LocalizedString* BucketHelm::getString()
 
 const std::string& BucketHelm::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_BucketHelm;
+	return ItemResources::Equipment_Gear_Hats_Tier1_BucketHelm;
 }
 
 const std::string& BucketHelm::getIdentifier()

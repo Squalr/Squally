@@ -54,7 +54,7 @@ LocalizedString* JoustingHelmet::getString()
 
 const std::string& JoustingHelmet::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Hats_JoustingHelmet;
+	return ItemResources::Equipment_Gear_Hats_Tier4_JoustingHelmet;
 }
 
 const std::string& JoustingHelmet::getIdentifier()
