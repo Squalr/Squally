@@ -337,7 +337,7 @@
   <object id="834" name="agnes" type="entity" x="3731.82" y="1066.52" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="cv-agnes"/>
@@ -348,7 +348,7 @@
   <object id="835" name="jack" type="entity" x="3534.02" y="1064.93" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="DataMines/Combat_Caves"/>
+    <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="cv-generic"/>

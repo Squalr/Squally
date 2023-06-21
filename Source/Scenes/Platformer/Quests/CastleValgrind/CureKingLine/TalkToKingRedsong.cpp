@@ -126,7 +126,11 @@ void TalkToKingRedsong::onLoad(QuestState questState)
 
 void TalkToKingRedsong::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
-	this->runCinematicSequencePt1();
+	// Defer 1 frame to ensure that dialogue cinematic hijack works
+	this->defer([=]()
+	{
+		this->runCinematicSequencePt1();
+	});
 
 	if (this->leroy != nullptr)
 	{

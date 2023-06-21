@@ -82,10 +82,11 @@ DeveloperScene::DeveloperScene()
 			- ? 						=> Royal Crown (Special: Shop Discounts)
 			- ?							=> Ashen Blade
 			- ?							=> Frost Axe
-		- Missing VS inn or helper swap (unless we add this as a quick-UI action)
 		- Daze script too long
 		- Should add some sort of archery mini-game with jump shots or something in some town. Maybe DH.
 		- Music
+			- Little Footsteps - Use it somewhere
+			- The Gift - Use it somewhere
 			- [TODO] https://usfourmusic.com/contact (The Storm Begins)
 			- [Discussing Terms] https://philipwesley.com/contact/ (Far and Away / Racing Against the Sunset)
 			- [Discussing Terms] https://michelemclaughlin.com/pages/contact (Preserverence)

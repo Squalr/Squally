@@ -47,6 +47,7 @@ TrackDeserializer::TrackDeserializer()
 	this->deserializers[Medieval::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Medieval::create(properties); };
 	this->deserializers[Medieval2::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Medieval2::create(properties); };
 	this->deserializers[Solace::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)Solace::create(properties); };
+	this->deserializers[TheGift::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)TheGift::create(properties); };
 	this->deserializers[TrickOrTreat::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)TrickOrTreat::create(properties); };
 	this->deserializers[TwoSteps::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)TwoSteps::create(properties); };
 	this->deserializers[WeWillGetThereTogether::TrackKey] = [=](cocos2d::ValueMap& properties) { return (Music*)WeWillGetThereTogether::create(properties); };

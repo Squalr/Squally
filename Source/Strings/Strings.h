@@ -26649,6 +26649,21 @@ namespace Strings
 		virtual ~Menus_Music_GavinLuke_Solace() = default;
 	};
 
+	class Menus_Music_GavinLuke_TheGift : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_GavinLuke_TheGift();
+		virtual ~Menus_Music_GavinLuke_TheGift() = default;
+	};
+
 	class Menus_Music_KrazyKartoons_CarnivalDream : public LocalizedString
 	{
 	public:
