@@ -300,7 +300,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1160" name="perceptron" type="entity" x="1047.03" y="1410.55" width="128" height="128">
+  <object id="1160" name="perceptron" type="entity" x="953.03" y="1408.55" width="128" height="128">
    <properties>
     <property name="components" value="enemy"/>
    </properties>
@@ -713,121 +713,121 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="877" name="Castle/Stone1" type="decor" x="3235.41" y="1617.83" width="34" height="17">
+  <object id="877" name="Castle/Stone1" type="decor" x="3235.91" y="1576.33" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="878" name="Castle/Stone2" type="decor" x="3813.59" y="1623.17" width="24" height="11">
+  <object id="878" name="Castle/Stone2" type="decor" x="3814.09" y="1581.67" width="24" height="11">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="879" name="Castle/Stone1" type="decor" x="3477.74" y="1631.83" width="34" height="17">
+  <object id="879" name="Castle/Stone1" type="decor" x="3478.24" y="1590.33" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="880" name="Castle/Stone2" type="decor" x="4082.92" y="1634.17" width="24" height="11">
+  <object id="880" name="Castle/Stone2" type="decor" x="4083.42" y="1592.67" width="24" height="11">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="881" name="Castle/Stone1" type="decor" x="4147.67" y="1620.83" width="34" height="17">
+  <object id="881" name="Castle/Stone1" type="decor" x="4148.17" y="1579.33" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1138" name="Castle/Stone2" type="decor" x="3060.24" y="1627.5" width="24" height="11">
+  <object id="1138" name="Castle/Stone2" type="decor" x="3060.74" y="1586" width="24" height="11">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1139" name="Castle/Stone1" type="decor" x="2455.06" y="1625.16" width="34" height="17">
+  <object id="1139" name="Castle/Stone1" type="decor" x="2455.56" y="1583.66" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1140" name="Castle/Stone2" type="decor" x="2790.91" y="1616.5" width="24" height="11">
+  <object id="1140" name="Castle/Stone2" type="decor" x="2791.41" y="1575" width="24" height="11">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1141" name="Castle/Stone1" type="decor" x="3124.99" y="1614.16" width="34" height="17">
+  <object id="1141" name="Castle/Stone1" type="decor" x="3125.49" y="1572.66" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1142" name="Castle/Stone1" type="decor" x="2212.73" y="1611.16" width="34" height="17">
+  <object id="1142" name="Castle/Stone1" type="decor" x="2213.23" y="1569.66" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1144" name="Castle/Stone2" type="decor" x="2021.33" y="1648.66" width="24" height="11">
+  <object id="1144" name="Castle/Stone2" type="decor" x="2021.83" y="1607.16" width="24" height="11">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1145" name="Castle/Stone1" type="decor" x="1416.15" y="1646.32" width="34" height="17">
+  <object id="1145" name="Castle/Stone1" type="decor" x="1416.65" y="1604.82" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1146" name="Castle/Stone2" type="decor" x="998.649" y="1641.99" width="24" height="11">
+  <object id="1146" name="Castle/Stone2" type="decor" x="999.149" y="1600.49" width="24" height="11">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1147" name="Castle/Stone1" type="decor" x="393.469" y="1639.65" width="34" height="17">
+  <object id="1147" name="Castle/Stone1" type="decor" x="393.969" y="1598.15" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1148" name="Castle/Stone2" type="decor" x="1752" y="1637.66" width="24" height="11">
+  <object id="1148" name="Castle/Stone2" type="decor" x="1752.5" y="1596.16" width="24" height="11">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1149" name="Castle/Stone1" type="decor" x="2086.08" y="1635.32" width="34" height="17">
+  <object id="1149" name="Castle/Stone1" type="decor" x="2086.58" y="1593.82" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1150" name="Castle/Stone1" type="decor" x="1173.82" y="1632.32" width="34" height="17">
+  <object id="1150" name="Castle/Stone1" type="decor" x="1174.32" y="1590.82" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1151" name="Castle/Stone2" type="decor" x="729.319" y="1630.99" width="24" height="11">
+  <object id="1151" name="Castle/Stone2" type="decor" x="729.819" y="1589.49" width="24" height="11">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1152" name="Castle/Stone1" type="decor" x="1063.4" y="1628.65" width="34" height="17">
+  <object id="1152" name="Castle/Stone1" type="decor" x="1063.9" y="1587.15" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>
    </properties>
   </object>
-  <object id="1153" name="Castle/Stone1" type="decor" x="151.139" y="1625.65" width="34" height="17">
+  <object id="1153" name="Castle/Stone1" type="decor" x="151.639" y="1584.15" width="34" height="17">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="fade-multiplier" type="float" value="1"/>

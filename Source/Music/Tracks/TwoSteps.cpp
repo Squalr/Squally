@@ -17,7 +17,7 @@ TwoSteps* TwoSteps::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-TwoSteps::TwoSteps(cocos2d::ValueMap& properties) : super(properties, MusicResources::HeartBeat, Strings::Menus_Music_StrayGhost_TwoSteps::create(), Strings::Menus_Music_StrayGhost_StrayGhost::create())
+TwoSteps::TwoSteps(cocos2d::ValueMap& properties) : super(properties, MusicResources::Two_Steps, Strings::Menus_Music_StrayGhost_TwoSteps::create(), Strings::Menus_Music_StrayGhost_StrayGhost::create())
 {
 }
 
