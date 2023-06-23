@@ -21,11 +21,11 @@ AshenBlade* AshenBlade::create()
 	return instance;
 }
 
-AshenBlade::AshenBlade() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), 48, 56, ItemStats(
+AshenBlade::AshenBlade() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), SWORD_DAMAGE_MIN(10), SWORD_DAMAGE_MAX(10), ItemStats(
 	// Health
-	0,
+	10,
 	// Mana
-	0,
+	10,
 	// Attack
 	0,
 	// Magic Attack
@@ -33,7 +33,7 @@ AshenBlade::AshenBlade() : super(CurrencyInventory::create({{ IOU::getIOUIdentif
 	// Armor
 	0,
 	// Speed
-	0.15f
+	0.25f
 ))
 {
 }
@@ -60,6 +60,11 @@ const std::string& AshenBlade::getIconResource()
 const std::string& AshenBlade::getIdentifier()
 {
 	return AshenBlade::SaveKey;
+}
+
+Vec2 AshenBlade::getDisplayOffset()
+{
+	return Vec2(0.0f, -12.0f);
 }
 
 Recipe* AshenBlade::getRecipe()

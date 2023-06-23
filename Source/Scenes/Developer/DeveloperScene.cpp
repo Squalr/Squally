@@ -75,12 +75,11 @@ DeveloperScene::DeveloperScene()
 	/*
 	- General:
 		- ** 5x EE
-			- Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
-			- Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
+			X Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
+			X Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
 			- Perilous Sea (prop surf?)	=> The Golden Eagle (Special: Higher Jump)
 			- DM, somewhere				=> Tiger's Bane (Special: Faster Movement)
 			- CV, throne room?			=> Royal Crown (Special: Shop Discounts)
-			- EF, somewhere				=> Ashen Blade (maybe mages guild reward)
 			- BP, somewhere				=> Frost Axe
 		- Fix terrain connectors for:
 			- Frost
@@ -124,10 +123,9 @@ DeveloperScene::DeveloperScene()
 		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 		- Hexus:
 			- Can pass after auto-loss
-			- Win a hexus puzzle, next one will show massive row score deltas
 			- Leave button stuck visible after losing a puzzle
 			- Enemy should pre-calc the best play when player has passed (hard)
-			- Puzzle rewards sanity check. Do these give cards? It'd be nice to get SHL from the puzzle where you learn it.
+			vv It'd be nice to get SHL from the puzzle where you learn it. I guess just tailored pools or something. May scrap this.
 	
 	- Localization / Scripting
 		- Lexicon is largely incomplete

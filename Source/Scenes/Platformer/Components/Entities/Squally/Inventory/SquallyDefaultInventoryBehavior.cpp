@@ -91,6 +91,12 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			entityInventoryBehavior->getInventory()->forceInsert(MagesGuildPrisonKey::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(HeartBand::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(DarkHeartBand::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(AshenBlade::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(PirateHat::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(TheGoldenEagle::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(TigersBane::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(WarlocksHeaddress::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(RoyalCrown::create(), false);
 
 			// Quest testing
 			entityInventoryBehavior->getInventory()->forceInsert(HeliumBomb::create(), false);

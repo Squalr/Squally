@@ -102,6 +102,7 @@ void MuseumGiftBehavior::setPostText()
 					),
 					[=]()
 					{
+						PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ AshenBlade::create() }));
 						PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ WoodenShield::create() }));
 						PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ DarkHeartBand::create() }));
 						SaveManager::SaveProfileData(SaveKeys::SaveKeyItemHGiven, Value(true));
