@@ -78,19 +78,27 @@ DeveloperScene::DeveloperScene()
 			- Mayan Door 				=> Pirate Hat (Special: Bonus Drop Rates)
 			- Clock at 4:20 + (? tbd) 	=> Warlock's Headdress (Special: Longer Hack Durations)
 			- Perilous Sea (prop surf?)	=> The Golden Eagle (Special: Higher Jump)
-			- ? 						=> Tiger's Bane (Special: Faster Movement)
-			- ? 						=> Royal Crown (Special: Shop Discounts)
-			- ?							=> Ashen Blade
-			- ?							=> Frost Axe
+			- DM, somewhere				=> Tiger's Bane (Special: Faster Movement)
+			- CV, throne room?			=> Royal Crown (Special: Shop Discounts)
+			- EF, somewhere				=> Ashen Blade
+			- BP, somewhere				=> Frost Axe
+		- Fix terrain connectors for:
+			- Shade grass
+			- Ice
+			- Dry grass
+			- Scifi (edges color)
+		v Maybe some storyline for introducing powers
+			v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
 		- Daze script too long
+		- More transmutes. Localization should just say X -> Y for name length.
+		- Consumeable descriptions wrong placement
 		- Should add some sort of archery mini-game with jump shots or something in some town. Maybe DH.
 		- Music
-			- Little Footsteps - Use it somewhere
 			- The Gift - Use it somewhere
-			- [TODO] https://usfourmusic.com/contact (The Storm Begins)
-			- [Discussing Terms] https://philipwesley.com/contact/ (Far and Away / Racing Against the Sunset)
-			- [Discussing Terms] https://michelemclaughlin.com/pages/contact (Preserverence)
-			- [Discussing Terms] https://www.instagram.com/anthonybadensaggers (Two steps too often aside)
+			- [Awaiting Response] https://usfourmusic.com/contact (The Storm Begins)
+			- [Awaiting Contract] https://philipwesley.com/contact/ (Far and Away / Racing Against the Sunset)
+			- [Awaiting Contract] https://michelemclaughlin.com/pages/contact (Preserverence)
+			- [Contract Signed] https://www.instagram.com/anthonybadensaggers (Two steps too often aside)
 		- v Wontfix? Missing Shadow ability: Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)
 		- v Make LC final 4_x maps less bad.
 		- v Camera harsh leaving camera targets (see FF cinematic)
@@ -117,7 +125,6 @@ DeveloperScene::DeveloperScene()
 			- * Frost SpellBook (?? / ??)
 		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 		- Hexus:
-			- Sanity check card localization (due to art changes)
 			- Can pass after auto-loss
 			- Win a hexus puzzle, next one will show massive row score deltas
 			- Leave button stuck visible after losing a puzzle
