@@ -80,17 +80,15 @@ DeveloperScene::DeveloperScene()
 			- Perilous Sea (prop surf?)	=> The Golden Eagle (Special: Higher Jump)
 			- DM, somewhere				=> Tiger's Bane (Special: Faster Movement)
 			- CV, throne room?			=> Royal Crown (Special: Shop Discounts)
-			- EF, somewhere				=> Ashen Blade
+			- EF, somewhere				=> Ashen Blade (maybe mages guild reward)
 			- BP, somewhere				=> Frost Axe
 		- Fix terrain connectors for:
-			- Shade grass
-			- Ice
-			- Dry grass
+			- Frost
 			- Scifi (edges color)
 		v Maybe some storyline for introducing powers
 			v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
 		- Daze script too long
-		- More transmutes. Localization should just say X -> Y for name length.
+		- More transmutes
 		- Consumeable descriptions wrong placement
 		- Should add some sort of archery mini-game with jump shots or something in some town. Maybe DH.
 		- Music

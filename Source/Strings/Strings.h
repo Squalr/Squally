@@ -5979,7 +5979,7 @@ namespace Strings
 		virtual ~Items_Crafting_PotionReagents_VoidFlower() = default;
 	};
 
-	class Items_Crafting_Recipes_TransmuteCopperToIron : public LocalizedString
+	class Items_Crafting_Recipes_TransmuteGeneric : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -5990,53 +5990,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Items_Crafting_Recipes_TransmuteCopperToIron();
-		virtual ~Items_Crafting_Recipes_TransmuteCopperToIron() = default;
-	};
-
-	class Items_Crafting_Recipes_TransmuteCopperToQuartz : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Crafting_Recipes_TransmuteCopperToQuartz();
-		virtual ~Items_Crafting_Recipes_TransmuteCopperToQuartz() = default;
-	};
-
-	class Items_Crafting_Recipes_TransmuteQuartzToEmerald : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Crafting_Recipes_TransmuteQuartzToEmerald();
-		virtual ~Items_Crafting_Recipes_TransmuteQuartzToEmerald() = default;
-	};
-
-	class Items_Crafting_Recipes_TransmuteWoodToCoal : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Crafting_Recipes_TransmuteWoodToCoal();
-		virtual ~Items_Crafting_Recipes_TransmuteWoodToCoal() = default;
+		Items_Crafting_Recipes_TransmuteGeneric();
+		virtual ~Items_Crafting_Recipes_TransmuteGeneric() = default;
 	};
 
 	class Items_Crafting_Special_HeartOfFire : public LocalizedString

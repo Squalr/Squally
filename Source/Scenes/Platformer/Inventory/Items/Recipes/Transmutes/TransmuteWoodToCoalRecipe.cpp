@@ -49,7 +49,10 @@ Item* TransmuteWoodToCoalRecipe::clone()
 
 LocalizedString* TransmuteWoodToCoalRecipe::getString()
 {
-	return Strings::Items_Crafting_Recipes_TransmuteWoodToCoal::create();
+	return Strings::Items_Crafting_Recipes_TransmuteGeneric::create()->setStringReplacementVariables({
+		Strings::Items_Crafting_Wood_Wood::create(),
+		Strings::Items_Crafting_Ore_Coal::create()
+	});
 }
 
 const std::string& TransmuteWoodToCoalRecipe::getIconResource()

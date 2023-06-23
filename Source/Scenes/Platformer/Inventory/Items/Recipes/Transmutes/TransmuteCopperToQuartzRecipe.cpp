@@ -50,7 +50,10 @@ Item* TransmuteCopperToQuartzRecipe::clone()
 
 LocalizedString* TransmuteCopperToQuartzRecipe::getString()
 {
-	return Strings::Items_Crafting_Recipes_TransmuteCopperToQuartz::create();
+	return Strings::Items_Crafting_Recipes_TransmuteGeneric::create()->setStringReplacementVariables({
+		Strings::Items_Crafting_Ore_Copper::create(),
+		Strings::Items_Crafting_Ore_Quartz::create()
+	});
 }
 
 const std::string& TransmuteCopperToQuartzRecipe::getIconResource()

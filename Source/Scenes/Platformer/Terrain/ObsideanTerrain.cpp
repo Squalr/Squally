@@ -61,7 +61,7 @@ ObsideanTerrain::ObsideanTerrain(ValueMap& properties) : super(
 		// TopLeft
 		Vec2(-20.0f, 0.0f),
 		// TopRight
-		Vec2(20.0f, 4.0f),
+		Vec2(20.0f, 2.0f),
 		// BottomLeft
 		Vec2::ZERO,
 		// BottomRight
