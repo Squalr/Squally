@@ -302,9 +302,9 @@ void MayanDoor::tryUnlock()
 		{
 			if (this->combination == this->combinationSecret)
 			{
-				if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemEE1Given, Value(false)).asBool())
+				if (!SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyItemEE1Given, Value(false)).asBool())
 				{
-					PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ ConchHelm::create() }));
+					PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ PirateHat::create() }));
 					SaveManager::SaveProfileData(SaveKeys::SaveKeyItemEE1Given, Value(true));
 				}
 			}

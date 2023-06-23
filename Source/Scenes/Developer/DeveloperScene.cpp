@@ -75,8 +75,8 @@ DeveloperScene::DeveloperScene()
 	/*
 	- General:
 		- ** 5x EE
-			- Mayan Door 				=> Pirate Hat (Special: Bonus Drop Rates)
-			- Clock at 4:20 + (? tbd) 	=> Warlock's Headdress (Special: Longer Hack Durations)
+			- Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
+			- Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
 			- Perilous Sea (prop surf?)	=> The Golden Eagle (Special: Higher Jump)
 			- DM, somewhere				=> Tiger's Bane (Special: Faster Movement)
 			- CV, throne room?			=> Royal Crown (Special: Shop Discounts)
@@ -85,12 +85,9 @@ DeveloperScene::DeveloperScene()
 		- Fix terrain connectors for:
 			- Frost
 			- Scifi (edges color)
-		v Maybe some storyline for introducing powers
-			v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
 		- Daze script too long
 		- More transmutes
 		- Consumeable descriptions wrong placement
-		- Should add some sort of archery mini-game with jump shots or something in some town. Maybe DH.
 		- Music
 			- The Gift - Use it somewhere
 			- [Awaiting Response] https://usfourmusic.com/contact (The Storm Begins)
@@ -98,6 +95,9 @@ DeveloperScene::DeveloperScene()
 			- [Awaiting Contract] https://michelemclaughlin.com/pages/contact (Preserverence)
 			- [Contract Signed] https://www.instagram.com/anthonybadensaggers (Two steps too often aside)
 		- v Wontfix? Missing Shadow ability: Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)
+		v Maybe some storyline for introducing powers
+			v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
+		v Should add some sort of archery mini-game with jump shots or something in some town. Maybe DH.
 		- v Make LC final 4_x maps less bad.
 		- v Camera harsh leaving camera targets (see FF cinematic)
 		- v No interrupt if damage attack modified to heal
@@ -1049,8 +1049,8 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGrimFound, Value(true));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Grim::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Grim::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySquallyEq, Value(8));

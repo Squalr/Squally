@@ -62,6 +62,10 @@ public:
 
 	static const std::string SaveKeyTalkedToAra;
 	static const std::string SaveKeyArcaneHint;
+
+	static const std::string SaveKeyClockMinutes;
+	static const std::string SaveKeyClockHours;
+	static const std::string SaveKeyClockTimes;
 	
 	static const std::string SaveKeySpellBookArcane;
 	static const std::string SaveKeySpellBookFire;
