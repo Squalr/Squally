@@ -78,7 +78,7 @@ void SpotTrainingDummy::runCinematicSequence()
 			{
 				this->scrappy->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 				{
-					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_E_TrainingDummySpotted::create(), Voices::GetNextVoiceMedium(Voices::VoiceType::Droid), 4.0f, [=]()
+					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_N_TrainingDummySpotted::create(), Voices::GetNextVoiceMedium(Voices::VoiceType::Droid), 4.0f, [=]()
 					{
 						interactionBehavior->getSpeechBubble()->hideDialogue();
 					});

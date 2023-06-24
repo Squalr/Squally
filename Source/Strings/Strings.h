@@ -36339,21 +36339,6 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_TeachMeHexus() = default;
 	};
 
-	class Platformer_Quests_EndianForest_Intro_A_YoureAlive___Copy : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_EndianForest_Intro_A_YoureAlive___Copy();
-		virtual ~Platformer_Quests_EndianForest_Intro_A_YoureAlive___Copy() = default;
-	};
-
 	class Platformer_Quests_EndianForest_Intro_A_YoureAlive : public LocalizedString
 	{
 	public:
@@ -36384,7 +36369,7 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_Intro_B_DistressBeacon() = default;
 	};
 
-	class Platformer_Quests_EndianForest_Intro_C_GetYouPatched : public LocalizedString
+	class Platformer_Quests_EndianForest_Intro_C_WhoYouAre : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36395,11 +36380,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_Intro_C_GetYouPatched();
-		virtual ~Platformer_Quests_EndianForest_Intro_C_GetYouPatched() = default;
+		Platformer_Quests_EndianForest_Intro_C_WhoYouAre();
+		virtual ~Platformer_Quests_EndianForest_Intro_C_WhoYouAre() = default;
 	};
 
-	class Platformer_Quests_EndianForest_Intro_D_TrapAhead : public LocalizedString
+	class Platformer_Quests_EndianForest_Intro_D_GetYouPatched : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36410,11 +36395,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_Intro_D_TrapAhead();
-		virtual ~Platformer_Quests_EndianForest_Intro_D_TrapAhead() = default;
+		Platformer_Quests_EndianForest_Intro_D_GetYouPatched();
+		virtual ~Platformer_Quests_EndianForest_Intro_D_GetYouPatched() = default;
 	};
 
-	class Platformer_Quests_EndianForest_Intro_E_TrainingDummySpotted : public LocalizedString
+	class Platformer_Quests_EndianForest_Intro_J_TrapAhead : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36425,11 +36410,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_Intro_E_TrainingDummySpotted();
-		virtual ~Platformer_Quests_EndianForest_Intro_E_TrainingDummySpotted() = default;
+		Platformer_Quests_EndianForest_Intro_J_TrapAhead();
+		virtual ~Platformer_Quests_EndianForest_Intro_J_TrapAhead() = default;
 	};
 
-	class Platformer_Quests_EndianForest_Intro_F_OrcGruntSpotted : public LocalizedString
+	class Platformer_Quests_EndianForest_Intro_N_TrainingDummySpotted : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36440,11 +36425,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_Intro_F_OrcGruntSpotted();
-		virtual ~Platformer_Quests_EndianForest_Intro_F_OrcGruntSpotted() = default;
+		Platformer_Quests_EndianForest_Intro_N_TrainingDummySpotted();
+		virtual ~Platformer_Quests_EndianForest_Intro_N_TrainingDummySpotted() = default;
 	};
 
-	class Platformer_Quests_EndianForest_Intro_G_HackerModeCombat : public LocalizedString
+	class Platformer_Quests_EndianForest_Intro_V_OrcGruntSpotted : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36455,8 +36440,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_Intro_G_HackerModeCombat();
-		virtual ~Platformer_Quests_EndianForest_Intro_G_HackerModeCombat() = default;
+		Platformer_Quests_EndianForest_Intro_V_OrcGruntSpotted();
+		virtual ~Platformer_Quests_EndianForest_Intro_V_OrcGruntSpotted() = default;
+	};
+
+	class Platformer_Quests_EndianForest_Intro_Z_HackerModeCombat : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_Intro_Z_HackerModeCombat();
+		virtual ~Platformer_Quests_EndianForest_Intro_Z_HackerModeCombat() = default;
 	};
 
 	class Platformer_Quests_EndianForest_Misc_ArcaneMagic_A_Guarded : public LocalizedString

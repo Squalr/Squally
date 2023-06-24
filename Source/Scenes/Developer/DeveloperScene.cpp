@@ -85,6 +85,7 @@ DeveloperScene::DeveloperScene()
 			- Frost
 			- Scifi (edges color)
 		- Daze script too long
+		- Lock warp room until UR or something
 		- More transmutes
 		- Consumeable descriptions wrong placement
 		- Jitter standing in place

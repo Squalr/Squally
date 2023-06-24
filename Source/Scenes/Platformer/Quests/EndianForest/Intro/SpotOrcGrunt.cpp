@@ -78,7 +78,7 @@ void SpotOrcGrunt::runCinematicSequence()
 			{
 				this->scrappy->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 				{
-					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_F_OrcGruntSpotted::create(), Voices::GetNextVoiceMedium(Voices::VoiceType::Droid), 4.0f, [=]()
+					interactionBehavior->getSpeechBubble()->runDialogue(Strings::Platformer_Quests_EndianForest_Intro_V_OrcGruntSpotted::create(), Voices::GetNextVoiceMedium(Voices::VoiceType::Droid), 4.0f, [=]()
 					{
 						interactionBehavior->getSpeechBubble()->hideDialogue();
 					});
