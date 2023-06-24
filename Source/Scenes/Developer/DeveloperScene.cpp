@@ -77,7 +77,7 @@ DeveloperScene::DeveloperScene()
 		- ** 5x EE
 			X Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
 			X Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
-			- Perilous Sea (prop surf?)	=> The Golden Eagle (Special: Higher Jump)
+			X Perilous Sea (tri m/l/r)	=> The Golden Eagle (Special: Higher Jump)
 			- DM, somewhere				=> Tiger's Bane (Special: Faster Movement)
 			- CV, throne room?			=> Royal Crown (Special: Shop Discounts)
 			- BP, somewhere				=> Frost Axe
@@ -263,6 +263,9 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Aphrodite (UR)", MapResources::UnderflowRuins_Home_Aphrodite));
 		mapList.push_back(this->buildDebugButton("Shoreline (UR)", MapResources::UnderflowRuins_Shoreline));
 		mapList.push_back(this->buildDebugButton("Docks (UR)", MapResources::UnderflowRuins_Town_Docks));
+		mapList.push_back(this->buildDebugButton("PS Lighthouse Top (UR)", MapResources::PerilousSea_Home_Lighthouse_Top));
+		mapList.push_back(this->buildDebugButton("PS Lighthouse (UR)", MapResources::PerilousSea_Home_Lighthouse));
+		mapList.push_back(this->buildDebugButton("PS (UR)", MapResources::PerilousSea_Zone_1_0));
 
 		// Traps:
 		// - Reinstate water gun if we want it

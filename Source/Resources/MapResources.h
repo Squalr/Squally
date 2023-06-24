@@ -199,11 +199,13 @@ namespace MapResources
 	extern const std::string Museum;
 	extern const std::string PerilousSea_Combat_Ship;
 	extern const std::string PerilousSea_Combat_Ship_Interior;
+	extern const std::string PerilousSea_Home_Lighthouse;
+	extern const std::string PerilousSea_Home_Lighthouse_Top;
 	extern const std::string PerilousSea_Ship_Captain;
 	extern const std::string PerilousSea_Ship_Hull;
 	extern const std::string PerilousSea_Ship_Main;
 	extern const std::string PerilousSea_Ship_Main_Forest;
-	extern const std::string PerilousSea_Zone_UR_1_0;
+	extern const std::string PerilousSea_Zone_1_0;
 	extern const std::string TileMap;
 	extern const std::string TileMap3Q;
 	extern const std::string TileMapIsometric;

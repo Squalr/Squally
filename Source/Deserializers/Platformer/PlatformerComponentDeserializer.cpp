@@ -218,6 +218,8 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[OrcBomberBehaviorGroup::MapKey] = [=](GameObject* owner) { return (GameComponent*)OrcBomberBehaviorGroup::create(owner); };
 
 	// UR
+	this->componentDeserializers[GullPuzzleBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)GullPuzzleBehavior::create(owner); };
+	this->componentDeserializers[LightHouseBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)LightHouseBehavior::create(owner); };
 	this->componentDeserializers[PoseidonBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)PoseidonBehavior::create(owner); };
 	this->componentDeserializers[RupertBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)RupertBehavior::create(owner); };
 

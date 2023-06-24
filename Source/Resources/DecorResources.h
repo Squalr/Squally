@@ -538,6 +538,8 @@ namespace DecorResources
 	extern const std::string Generic_Lamp2;
 	extern const std::string Generic_LesserMoonDoor;
 	extern const std::string Generic_LesserMoonDoorDark;
+	extern const std::string Generic_Lighthouse;
+	extern const std::string Generic_LighthouseDoor;
 	extern const std::string Generic_MoonDoor;
 	extern const std::string Generic_MoonDoorDark;
 	extern const std::string Generic_MoonDoorLocked;

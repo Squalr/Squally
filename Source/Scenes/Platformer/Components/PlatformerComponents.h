@@ -32,6 +32,8 @@
 #include "Scenes/Platformer/Components/Entities/Friendly/EndianForest/AsterBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/EndianForest/LycanBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/FirewallFissure/CindraBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/UnderflowRuins/GullPuzzleBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/UnderflowRuins/LightHouseBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/UnderflowRuins/PoseidonBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/UnderflowRuins/RupertBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/Hexus/HexusBehaviors.h"
