@@ -193,7 +193,7 @@ CSize EntityHoverCollisionBehavior::getHoverSize(float progress)
 	float crouchHeight = MinCrouch + (MaxCrouch - MinCrouch) * progress;
 
 	return CSize(
-		std::max(this->entity->getEntitySize().width - 8.0f, 16.0f),
+		std::max(this->entity->getEntitySize().width - 32.0f, 16.0f),
 		crouchHeight + UpwardsPadding
 	);
 }
@@ -313,7 +313,7 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 			return CollisionResult::CollideWithPhysics;
 		}*/
 
-		if (this->entityCollision != nullptr)
+		if (this->entityCollision != nullptr && this->hoverAntiGravityCollisionDetector)
 		{
 			Vec2 velocity = entityCollision->movementCollision->getVelocity();
 			Vec2 gravity = entityCollision->movementCollision->getGravity();

@@ -87,11 +87,11 @@ DeveloperScene::DeveloperScene()
 		- Daze script too long
 		- More transmutes
 		- Consumeable descriptions wrong placement
+		- Jitter standing in place
 		- Music
-			- The Gift - Use it somewhere
 			- [Awaiting Response] https://usfourmusic.com/contact (The Storm Begins)
 			- [Awaiting Contract] https://philipwesley.com/contact/ (Far and Away / Racing Against the Sunset)
-			- [Awaiting Contract] https://michelemclaughlin.com/pages/contact (Preserverence)
+			- [Contract Signed] https://michelemclaughlin.com/pages/contact (Preserverence)
 			- [Contract Signed] https://www.instagram.com/anthonybadensaggers (Two steps too often aside)
 		- v Wontfix? Missing Shadow ability: Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)
 		v Maybe some storyline for introducing powers

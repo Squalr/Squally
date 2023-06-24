@@ -7,7 +7,7 @@
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DesertSky"/>
-   <property name="music" value="trick-or-treat"/>
+   <property name="music" value="perseverance"/>
    <property name="show-cracks" type="bool" value="true"/>
    <property name="type" value="meta"/>
   </properties>

@@ -20,6 +20,7 @@ const std::string MusicResources::La_Nostra_Macerata = "Private/Music/La Nostra 
 const std::string MusicResources::Lacrimosa = "Private/Music/Lacrimosa.ogg";
 const std::string MusicResources::LastMarch = "Private/Music/LastMarch.ogg";
 const std::string MusicResources::Little_Footsteps = "Private/Music/Little Footsteps.ogg";
+const std::string MusicResources::Perseverance = "Private/Music/Perseverance.ogg";
 const std::string MusicResources::Solace = "Private/Music/Solace.ogg";
 const std::string MusicResources::The_Gift__Melody_ = "Private/Music/The Gift (Melody).ogg";
 const std::string MusicResources::TrickOrTreat = "Private/Music/TrickOrTreat.ogg";

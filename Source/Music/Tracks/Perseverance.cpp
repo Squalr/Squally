@@ -17,7 +17,7 @@ Perseverance* Perseverance::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-Perseverance::Perseverance(cocos2d::ValueMap& properties) : super(properties, MusicResources::TrickOrTreat, Strings::Menus_Music_MicheleMcLaughlin_Perseverance::create(), Strings::Menus_Music_MicheleMcLaughlin_MicheleMcLaughlin::create())
+Perseverance::Perseverance(cocos2d::ValueMap& properties) : super(properties, MusicResources::Perseverance, Strings::Menus_Music_MicheleMcLaughlin_Perseverance::create(), Strings::Menus_Music_MicheleMcLaughlin_MicheleMcLaughlin::create())
 {
 }
 
