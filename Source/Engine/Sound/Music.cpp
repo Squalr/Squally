@@ -134,7 +134,14 @@ void Music::play(bool repeat, float startDelay)
 			// Delay a frame to ensure that music overlay is created
 			this->defer([=]()
 			{
-				SoundEvents::TriggerMusicPlayed(SoundEvents::MusicPlayedArgs(this));
+				this->runAction(Sequence::create(
+					DelayTime::create(startDelay),
+					CallFunc::create([=]()
+					{
+						SoundEvents::TriggerMusicPlayed(SoundEvents::MusicPlayedArgs(this));
+					}),
+					nullptr
+				));
 			});
 			break;
 		}

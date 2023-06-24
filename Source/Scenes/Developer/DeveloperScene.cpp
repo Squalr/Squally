@@ -110,7 +110,7 @@ DeveloperScene::DeveloperScene()
 			- Train anims broken (for same reason)
 		- v Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		* BP
-			- Vertical town (maybe two sec  tions, one inaccessible at first to spread out NPCs)
+			- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
 			- ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
 			- ** 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
 			- ** 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
