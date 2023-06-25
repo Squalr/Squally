@@ -78,7 +78,7 @@ DeveloperScene::DeveloperScene()
 			X Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
 			X Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
 			X Perilous Sea (tri m/l/r)	=> The Golden Eagle (Special: Higher Jump)
-			- DM, somewhere				=> Tiger's Bane (Special: Faster Movement)
+			X Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
 			- CV, throne room?			=> Royal Crown (Special: Shop Discounts)
 			- BP, somewhere				=> Frost Axe
 		- Fix terrain connectors for:

@@ -54,7 +54,6 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	// CASTLE VALGRIND QUESTS
 	this->lineDeserializers[ArcaneBookLine::MapKeyQuestLine] = [=]() { return (QuestLine*)ArcaneBookLine::create(); };
 	this->lineDeserializers[CureKingLine::MapKeyQuestLine] = [=]() { return (QuestLine*)CureKingLine::create(); };
-	this->lineDeserializers[SkyShipToCastleLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SkyShipToCastleLine::create(); };
 	
 	// LAMBDA CRYPTS QUESTS
 	this->lineDeserializers[CraftDemonHeartLine::MapKeyQuestLine] = [=]() { return (QuestLine*)CraftDemonHeartLine::create(); };

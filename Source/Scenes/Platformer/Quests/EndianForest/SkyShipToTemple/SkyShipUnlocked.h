@@ -29,7 +29,7 @@ private:
 	void runNoSequence();
 	void runYesSequence();
 
-	PlatformerEntity* owner = nullptr;
+	PlatformerEntity* entity = nullptr;
 	Squally* squally = nullptr;
 	Portal* portal = nullptr;
 	bool isReturnTrip = false;

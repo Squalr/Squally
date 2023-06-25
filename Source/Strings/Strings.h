@@ -34959,51 +34959,6 @@ namespace Strings
 		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_W_TakeArcaneBook() = default;
 	};
 
-	class Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToCastle : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToCastle();
-		virtual ~Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToCastle() = default;
-	};
-
-	class Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToTown : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToTown();
-		virtual ~Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_CanWeBoardToTown() = default;
-	};
-
-	class Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_Yep : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_Yep();
-		virtual ~Platformer_Quests_CastleValgrind_SkyShipToCastle_Finch_Yep() = default;
-	};
-
 	class Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass : public LocalizedString
 	{
 	public:
@@ -36114,7 +36069,7 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_B_DoYouRemember() = default;
 	};
 
-	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_C_IThoughtNot : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_C_ShipAttacked : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36125,11 +36080,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_C_IThoughtNot();
-		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_C_IThoughtNot() = default;
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_C_ShipAttacked();
+		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_C_ShipAttacked() = default;
 	};
 
-	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_D_YouNeedTraining : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_D_OnlyYou : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36140,11 +36095,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_D_YouNeedTraining();
-		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_D_YouNeedTraining() = default;
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_D_OnlyYou();
+		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_D_OnlyYou() = default;
 	};
 
-	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_E_ToBeginYouMustLearnHexus : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_E_YouNeedTraining : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36155,11 +36110,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_E_ToBeginYouMustLearnHexus();
-		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_E_ToBeginYouMustLearnHexus() = default;
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_E_YouNeedTraining();
+		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_E_YouNeedTraining() = default;
 	};
 
-	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_F_HexusIsAGameWhere : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_F_ToBeginYouMustLearnHexus : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36170,11 +36125,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_F_HexusIsAGameWhere();
-		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_F_HexusIsAGameWhere() = default;
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_F_ToBeginYouMustLearnHexus();
+		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_F_ToBeginYouMustLearnHexus() = default;
 	};
 
-	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_G_WhoeverMastersHexus : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_G_HexusIsAGameWhere : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36185,11 +36140,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_G_WhoeverMastersHexus();
-		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_G_WhoeverMastersHexus() = default;
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_G_HexusIsAGameWhere();
+		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_G_HexusIsAGameWhere() = default;
 	};
 
-	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_H_PortalToGauntlet : public LocalizedString
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_H_WhoeverMastersHexus : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -36200,8 +36155,23 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_H_PortalToGauntlet();
-		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_H_PortalToGauntlet() = default;
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_H_WhoeverMastersHexus();
+		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_H_WhoeverMastersHexus() = default;
+	};
+
+	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_I_PortalToGauntlet : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_HexusGauntlet_Sarude_I_PortalToGauntlet();
+		virtual ~Platformer_Quests_EndianForest_HexusGauntlet_Sarude_I_PortalToGauntlet() = default;
 	};
 
 	class Platformer_Quests_EndianForest_HexusGauntlet_Sarude_K_IChallengeYou : public LocalizedString
@@ -36982,6 +36952,36 @@ namespace Strings
 	private:
 		Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Nope();
 		virtual ~Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Nope() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_W_SolvedBirdProblem : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_W_SolvedBirdProblem();
+		virtual ~Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_W_SolvedBirdProblem() = default;
+	};
+
+	class Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_X_LikedThoseBirds : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_X_LikedThoseBirds();
+		virtual ~Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_X_LikedThoseBirds() = default;
 	};
 
 	class Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_Yep : public LocalizedString

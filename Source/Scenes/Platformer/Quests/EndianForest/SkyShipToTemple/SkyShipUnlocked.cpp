@@ -46,11 +46,11 @@ SkyShipUnlocked* SkyShipUnlocked::create(GameObject* owner, QuestLine* questLine
 
 SkyShipUnlocked::SkyShipUnlocked(GameObject* owner, QuestLine* questLine) : super(owner, questLine, SkyShipUnlocked::MapKeyQuest, false)
 {
-	this->owner = dynamic_cast<PlatformerEntity*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
-	if (this->owner != nullptr)
+	if (this->entity != nullptr)
 	{
-		this->isReturnTrip = GameUtils::getKeyOrDefault(this->owner->properties, SkyShipUnlocked::PropertyIsReturnTrip, Value(false)).asBool();
+		this->isReturnTrip = GameUtils::getKeyOrDefault(this->entity->properties, SkyShipUnlocked::PropertyIsReturnTrip, Value(false)).asBool();
 	}
 }
 
@@ -89,15 +89,15 @@ void SkyShipUnlocked::onLoad(QuestState questState)
 
 	}, SkyShipUnlocked::QuestTagShipPortal);
 
-	if (this->owner != nullptr)
+	if (this->entity != nullptr)
 	{
 		if (questState == QuestState::None && this->isReturnTrip)
 		{
-			this->owner->despawn();
+			this->entity->despawn();
 		}
 		else
 		{
-			this->owner->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+			this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 			{
 				LocalizedString* text = nullptr;
 

@@ -1,7 +1,6 @@
 #pragma once
 #include "Scenes/Platformer/Quests/CastleValgrind/ArcaneBookLine/ArcaneBookLine.h"
 #include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/CureKingLine.h"
-#include "Scenes/Platformer/Quests/CastleValgrind/SkyShipToCastle/SkyShipToCastleLine.h"
 #include "Scenes/Platformer/Quests/FirewallFissure/DefeatAsmodeus/DefeatAsmodeusLine.h"
 #include "Scenes/Platformer/Quests/FirewallFissure/ReleasePressure/ReleasePressureLine.h"
 #include "Scenes/Platformer/Quests/DataMines/DefeatRhinoman/DefeatRhinomanLine.h"
