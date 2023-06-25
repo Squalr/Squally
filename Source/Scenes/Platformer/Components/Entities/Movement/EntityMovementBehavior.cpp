@@ -52,7 +52,7 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 	{
 		this->jumpSound = WorldSound::create(this->entity->getJumpSound());
 
-		for (auto next : this->entity->getSwimSounds())
+		for (std::string& next : this->entity->getSwimSounds())
 		{
 			WorldSound* swimSound = WorldSound::create(next);
 
@@ -64,7 +64,7 @@ EntityMovementBehavior::EntityMovementBehavior(GameObject* owner) : super(owner)
 			this->addChild(swimSound);
 		}
 
-		for (auto next : this->entity->getWalkSounds())
+		for (std::string& next : this->entity->getWalkSounds())
 		{
 			WorldSound* walkSound = WorldSound::create(next);
 
@@ -331,7 +331,7 @@ void EntityMovementBehavior::setJumpVelocity(float jumpVelocity)
 
 void EntityMovementBehavior::cancelWaterSfx()
 {
-	for (auto next : this->swimSounds)
+	for (WorldSound* next : this->swimSounds)
 	{
 		next->stop();
 	}

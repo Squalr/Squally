@@ -313,22 +313,7 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
 	{
-		if (this->movementCollision->getVelocity().y  < 0.0f || this->entity->controlState == PlatformerEntity::ControlState::Swimming)
-		{
-			return CollisionResult::CollideWithPhysics;
-		}
-
-		return CollisionResult::DoNothing;
-	});
-	
-	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
-	{
-		if (this->movementCollision->getVelocity().y  > 0.0f || this->entity->controlState == PlatformerEntity::ControlState::Swimming)
-		{
-			return CollisionResult::CollideWithPhysics;
-		}
-
-		return CollisionResult::DoNothing;
+		return CollisionResult::CollideWithPhysics;
 	});
 	
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
@@ -452,12 +437,12 @@ void EntityCollisionBehaviorBase::buildWallDetectors()
 		CollisionObject::Properties(false, false)
 	);
 
-	this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
+	this->leftCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
 	{	
 		return CollisionResult::DoNothing;
 	});
 
-	this->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
+	this->rightCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
 	{	
 		return CollisionResult::DoNothing;
 	});

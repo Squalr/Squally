@@ -405,7 +405,7 @@ void TerrainObject::buildCollision()
 		{
 			if (this->isTopCollisionFriendly(previousSegment, &segment, &nextSegment))
 			{
-				collisionObject = CollisionObject::create(shape, (CollisionType)EngineCollisionTypes::SolidRoof, CollisionObject::Properties(false, false));
+				collisionObject = CollisionObject::create(shape, (CollisionType)EngineCollisionTypes::Solid, CollisionObject::Properties(false, false));
 			}
 		}
 		else

@@ -640,8 +640,10 @@ Vec2 CollisionResolver::applyCorrection(CollisionObject* objectA, CollisionObjec
 		// objectA->velocity.x *= impactNormal.y;
 		// objectB->velocity.x *= impactNormal.y;
 
-		objectA->velocity.y *= impactNormal.x;
-		objectB->velocity.y *= impactNormal.x;
+		// While more realistic, enabling these can cause stickyness (ie velocity set to 0.0, thus collision never ends)
+		// May need to clamp impactNormal here to be non-zero.
+		// objectA->velocity.y *= impactNormal.x;
+		// objectB->velocity.y *= impactNormal.x;
 
 		objectA->setThisOrBindPosition(objectA->getThisOrBindPosition() + ((objectA->collisionProperties.isDynamic) ? correction3d : Vec3::ZERO));
 		objectB->setThisOrBindPosition(objectB->getThisOrBindPosition() + ((objectB->collisionProperties.isDynamic) ? correction3d : Vec3::ZERO));
