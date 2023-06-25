@@ -321,7 +321,7 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 		return CollisionResult::DoNothing;
 	});
 	
-	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
+	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::SolidRoof }, [=](CollisionData collisionData)
 	{
 		if (this->movementCollision->getVelocity().y  > 0.0f || this->entity->controlState == PlatformerEntity::ControlState::Swimming)
 		{

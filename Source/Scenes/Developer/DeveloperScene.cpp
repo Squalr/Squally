@@ -89,6 +89,7 @@ DeveloperScene::DeveloperScene()
 		- More transmutes
 		- Consumeable descriptions wrong placement
 		- Jitter standing in place
+		- Defend cast sfx
 		- Music
 			- [Awaiting Response] https://usfourmusic.com/contact (The Storm Begins)
 			- [Awaiting Contract] https://philipwesley.com/contact/ (Far and Away / Racing Against the Sunset)
@@ -104,7 +105,9 @@ DeveloperScene::DeveloperScene()
 		- v Crash reports probably are broken (switch to new SendGrid)
 		- v Missing squally breath bubbles
 		- v Enemy anims for getting hit
+		- v Enemy death sounds
 		- v Enemy anims for combat begin (temporarily pausing timeline)
+		- v Enemy combat begin sounds
 		- v Chapter transitions can be more special 
 		- v Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
 			- Tiki anims still broken (bad Spriter implementation strikes again)

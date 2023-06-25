@@ -419,7 +419,7 @@ bool CollisionObject::hasCollisionWith(CollisionObject* collisonObject)
 {
 	Node* currentCollisionGroup = collisonObject->getParent();
 
-	for (auto next : this->getCurrentCollisions())
+	for (CollisionObject* next : this->getCurrentCollisions())
 	{
 		if (next->getParent() != currentCollisionGroup)
 		{
@@ -451,7 +451,7 @@ bool CollisionObject::isCollidingWithSingleGroup()
 
 	Node* parent = nullptr;
 
-	for (auto next : *this->currentCollisions)
+	for (CollisionObject* next : *this->currentCollisions)
 	{
 		if (parent == nullptr)
 		{
@@ -519,7 +519,7 @@ void CollisionObject::unbind()
 
 void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
 {
-	for (auto collisionType : collisionTypes)
+	for (CollisionType collisionType : collisionTypes)
 	{
 		this->collidesWithTypes.insert(collisionType);
 		this->collisionStartEvents[collisionType].push_back(CollisionEvent(onCollision));
@@ -528,7 +528,7 @@ void CollisionObject::whenCollidesWith(std::vector<CollisionType> collisionTypes
 
 void CollisionObject::whileCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
 {
-	for (auto collisionType : collisionTypes)
+	for (CollisionType collisionType : collisionTypes)
 	{
 		this->collidesWithTypes.insert(collisionType);
 		this->collisionSustainEvents[collisionType].push_back(CollisionEvent(onCollision));
@@ -537,7 +537,7 @@ void CollisionObject::whileCollidesWith(std::vector<CollisionType> collisionType
 
 void CollisionObject::ifCollidesWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollision)
 {
-	for (auto collisionType : collisionTypes)
+	for (CollisionType collisionType : collisionTypes)
 	{
 		this->collidesWithTypes.insert(collisionType);
 		this->collisionStartEvents[collisionType].push_back(CollisionEvent(onCollision));
@@ -547,7 +547,7 @@ void CollisionObject::ifCollidesWith(std::vector<CollisionType> collisionTypes, 
 
 void CollisionObject::whenStopsCollidingWith(std::vector<CollisionType> collisionTypes, std::function<CollisionResult(CollisionData)> onCollisionEnd)
 {
-	for (auto collisionType : collisionTypes)
+	for (CollisionType collisionType : collisionTypes)
 	{
 		this->collidesWithTypes.insert(collisionType);
 		this->collisionEndEvents[collisionType].push_back(CollisionEvent(onCollisionEnd));
@@ -679,7 +679,7 @@ CollisionShape CollisionObject::determineShape()
 		int sameY = 0;
 		Vec2 prior = this->points.back();
 
-		for (auto point : this->points)
+		for (Vec2& point : this->points)
 		{
 			sameX += (point.x == prior.x ? 1 : 0);
 			sameY += (point.y == prior.y ? 1 : 0);
@@ -804,7 +804,7 @@ void CollisionObject::drawDebugConnectors()
 	const Vec2 cameraPos = GameCamera::getInstance()->getCameraPosition();
 	const Vec2 offset = cameraPos - HalfScreenSize;
 
-	for (auto next : this->pointsRotated)
+	for (Vec2& next : this->pointsRotated)
 	{
 		// Compute edge verticies in world coords
 		const Vec3 sourcePoint = this->cachedWorldCoords3D + Vec3(next.x, next.y, -this->collisionDepth);
