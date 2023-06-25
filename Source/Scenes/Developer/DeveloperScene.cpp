@@ -89,8 +89,14 @@ DeveloperScene::DeveloperScene()
 		- More transmutes
 		- Consumeable descriptions wrong placement
 		- Jitter standing in place
-		- EF Mara fun dialogue
-		- EF Gramps fun dialogue
+		- * Block isn't properly backtracking in timeline
+		- * Potion SFX should not be paused on potion menu
+		- * Pressing left on "select target" in combat should go back to prior menu, not base menu
+		- * EF perceptron chase 1 busted (movement broken, Perceptron should not spawn in visible from below)
+		- * EF Mara fun dialogue
+		- * EF Gramps fun dialogue
+		- * EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
+		- * UR Patrol also broken, great (for push into pit)
 		- Have Lycan give weapon, and Lianna give something else
 		- Defend cast sfx
 		- Music

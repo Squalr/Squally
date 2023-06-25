@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="997">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="18" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="81" nextobjectid="997">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -18,7 +18,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="991" name="temple-dark" type="terrain" x="-493.815" y="-274" width="3588.74" height="2676.24">
+  <object id="991" name="temple-dark" type="terrain" x="-471.027" y="-274" width="3309.95" height="2676.24">
    <properties>
     <property name="collision" value="none"/>
     <property name="hole-tag" value="hole-A"/>
@@ -31,7 +31,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="985" name="ruins-thick" type="terrain" x="969.773" y="1199.7" width="863.197" height="646.138">
+  <object id="985" name="ruins-thick" type="terrain" x="713.773" y="1199.7" width="863.197" height="646.138">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -42,18 +42,18 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="961" name="temple-door" type="object" x="1195.68" y="670.091" width="432" height="528">
+  <object id="961" name="temple-door" type="object" x="939.68" y="670.091" width="432" height="528">
    <properties>
     <property name="color" value="yellow-scarab"/>
     <property name="map" value=""/>
     <property name="transition" value=""/>
    </properties>
   </object>
-  <object id="975" name="torch" type="object" x="1978.25" y="1370.52" width="42" height="130"/>
-  <object id="976" name="torch" type="object" x="2474.25" y="1370.52" width="42" height="130"/>
-  <object id="977" name="torch" type="object" x="1847" y="1143" width="42" height="130"/>
-  <object id="978" name="Ruins/WindowTransparent" type="decor" x="2092.75" y="1065.02" width="313" height="381"/>
-  <object id="981" name="vase" type="object" x="1021.91" y="1039.29" width="113" height="160">
+  <object id="975" name="torch" type="object" x="1722.25" y="1370.52" width="42" height="130"/>
+  <object id="976" name="torch" type="object" x="2218.25" y="1370.52" width="42" height="130"/>
+  <object id="977" name="torch" type="object" x="1591" y="1143" width="42" height="130"/>
+  <object id="978" name="Ruins/WindowTransparent" type="decor" x="1836.75" y="1065.02" width="313" height="381"/>
+  <object id="981" name="vase" type="object" x="765.91" y="1039.29" width="113" height="160">
    <properties>
     <property name="color" value="blue"/>
     <property name="spawn-pool" value="spawn-pool-ef"/>
@@ -65,7 +65,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="994" name="terrain-hole" type="object" x="2164.42" y="1128.39" width="170" height="260.333">
+  <object id="994" name="terrain-hole" type="object" x="1908.42" y="1128.39" width="170" height="260.333">
    <properties>
     <property name="hole-tag" value="hole-A"/>
    </properties>
@@ -76,7 +76,7 @@
    <property name="depth" type="float" value="-312"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="990" name="ruins-thick" type="terrain" x="1186.69" y="1278.56" width="451.023" height="223.638">
+  <object id="990" name="ruins-thick" type="terrain" x="930.69" y="1278.56" width="451.023" height="223.638">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -87,7 +87,7 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="995" name="ruins-thick" type="terrain" x="1185.93" y="1352.91" width="451.023" height="223.638">
+  <object id="995" name="ruins-thick" type="terrain" x="929.93" y="1352.91" width="451.023" height="223.638">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -98,7 +98,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="988" name="ruins-thick" type="terrain" x="1186.46" y="1428.98" width="451.023" height="223.638">
+  <object id="988" name="ruins-thick" type="terrain" x="930.46" y="1428.98" width="451.023" height="223.638">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -109,7 +109,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="987" name="ruins-thick" type="terrain" x="1187.24" y="1517.66" width="451.023" height="223.638">
+  <object id="987" name="ruins-thick" type="terrain" x="931.24" y="1517.66" width="451.023" height="223.638">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -120,7 +120,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="986" name="ruins-thick" type="terrain" x="1187.53" y="1604.42" width="451.023" height="223.638">
+  <object id="986" name="ruins-thick" type="terrain" x="931.53" y="1604.42" width="451.023" height="223.638">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -130,7 +130,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="984" name="ruins-thick" type="terrain" x="-140.875" y="1673.06" width="2984.22" height="529.88">
+  <object id="984" name="ruins-thick" type="terrain" x="-166.572" y="1673.06" width="2753.92" height="529.88">
    <properties>
     <property name="top-only" type="bool" value="true"/>
    </properties>
@@ -146,36 +146,36 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="969" name="portal" type="object" x="1279.39" y="1408.12" width="256" height="256">
+  <object id="969" name="portal" type="object" x="1023.39" y="1408.12" width="256" height="256">
    <properties>
     <property name="map" value="UnderflowRuins/Zone_1_2"/>
     <property name="transition" value="treasure-room"/>
    </properties>
   </object>
-  <object id="973" name="vase" type="object" x="199.743" y="1513.21" width="113" height="160">
+  <object id="973" name="vase" type="object" x="183.743" y="1515.21" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
     <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
-  <object id="974" name="vase" type="object" x="2394.57" y="1510.63" width="113" height="160">
+  <object id="974" name="vase" type="object" x="2009.24" y="1514.63" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
     <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
-  <object id="979" name="vase" type="object" x="1801.5" y="1510" width="113" height="160">
+  <object id="979" name="vase" type="object" x="1545.5" y="1510" width="113" height="160">
    <properties>
     <property name="color" value="green"/>
     <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
-  <object id="993" name="egyptian-chest" type="object" x="2179.58" y="1547.67" width="128" height="128">
+  <object id="993" name="egyptian-chest" type="object" x="1794.25" y="1543.67" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ur-rare"/>
    </properties>
   </object>
-  <object id="996" name="hexus-shrine" type="object" x="440.822" y="1412.06" width="155" height="260">
+  <object id="996" name="hexus-shrine" type="object" x="424.822" y="1414.06" width="155" height="260">
    <properties>
     <property name="entity-tag" value="hexus-tiger-man"/>
    </properties>
@@ -186,7 +186,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="970" name="tiger-man" type="entity" x="510.887" y="2510.78" width="128" height="128">
+  <object id="970" name="tiger-man" type="entity" x="442.766" y="2535.02" width="128" height="128">
    <properties>
     <property name="components" value="friendly,disarmed,ur-puzzle-B"/>
     <property name="tag" value="hexus-tiger-man"/>
@@ -198,12 +198,12 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="935.292" y="1541.83" width="128" height="128">
+  <object id="523" name="squally" type="entity" x="679.292" y="1541.83" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="982" name="spawn" type="object" x="1346.36" y="1538.33" width="128" height="128">
+  <object id="982" name="spawn" type="object" x="1090.36" y="1538.33" width="128" height="128">
    <properties>
     <property name="transition" value="treasure-room"/>
    </properties>
