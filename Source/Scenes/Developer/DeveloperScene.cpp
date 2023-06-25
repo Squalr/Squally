@@ -96,7 +96,6 @@ DeveloperScene::DeveloperScene()
 		- * EF Mara fun dialogue
 		- * EF Gramps fun dialogue
 		- * EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
-		- * UR Patrol also broken, great (for push into pit)
 		- Have Lycan give weapon, and Lianna give something else
 		- Defend cast sfx
 		- Music

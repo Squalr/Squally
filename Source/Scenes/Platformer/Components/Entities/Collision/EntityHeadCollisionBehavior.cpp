@@ -45,7 +45,7 @@ void EntityHeadCollisionBehavior::onLoad()
 {
 	this->defer([=]()
 	{
-		// this->buildHeadCollisionDetector();
+		this->buildHeadCollisionDetector();
 		this->toggleQueryable(true);
 	});
 }
@@ -109,7 +109,7 @@ void EntityHeadCollisionBehavior::buildHeadCollisionDetector()
 	
 	this->addChild(this->headCollision);
 
-	this->headCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough }, [=](CollisionData collisionData)
+	this->headCollision->whenCollidesWith({ (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
 	{
 		return CollisionResult::DoNothing;
 	});

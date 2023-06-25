@@ -313,6 +313,13 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
 	{
+		// Edge case to prevent sticky collisions, where the impact normal constantly zeros out velocity.
+		// At the time of writing this, this is the sole reason this head collision exists.
+		if (this->headCollision != nullptr && this->headCollision->hasHeadCollisionWith(collisionData.other) && this->getVelocity().y <= 0.0f)
+		{
+			return CollisionResult::DoNothing;
+		}
+
 		return CollisionResult::CollideWithPhysics;
 	});
 	
