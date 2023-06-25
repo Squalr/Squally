@@ -20,7 +20,7 @@ Clover* Clover::create()
 	return instance;
 }
 
-Clover::Clover() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), ItemMeta(20000))
+Clover::Clover() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 3 }}), ItemMeta(20000))
 {
 }
 

@@ -20,7 +20,7 @@ Acorn* Acorn::create()
 	return instance;
 }
 
-Acorn::Acorn() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 9 }}), ItemMeta(20000))
+Acorn::Acorn() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 5 }}), ItemMeta(20000))
 {
 }
 

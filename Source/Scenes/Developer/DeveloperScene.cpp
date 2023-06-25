@@ -89,6 +89,9 @@ DeveloperScene::DeveloperScene()
 		- More transmutes
 		- Consumeable descriptions wrong placement
 		- Jitter standing in place
+		- EF Mara fun dialogue
+		- EF Gramps fun dialogue
+		- Have Lycan give weapon, and Lianna give something else
 		- Defend cast sfx
 		- Music
 			- [Awaiting Response] https://usfourmusic.com/contact (The Storm Begins)

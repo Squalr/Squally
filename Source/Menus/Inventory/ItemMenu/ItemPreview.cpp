@@ -86,6 +86,8 @@ ItemPreview::ItemPreview(bool showItemName, bool allowCardPreview)
 	this->cardLabel->enableOutline(Color4B::BLACK, 3);
 	this->consumableLabel->setVisible(false);
 	this->consumableLabel->enableOutline(Color4B::BLACK, 3);
+	this->consumableLabel->setVerticalAlignment(TextVAlignment::TOP);
+	this->consumableLabel->setAnchorPoint(Vec2(0.5f, 1.0f));
 
 	this->equipHint->enableOutline(Color4B::BLACK, 3);
 	this->equipHint->setAnchorPoint(Vec2(0.0f, 0.5f));
@@ -153,7 +155,7 @@ void ItemPreview::initializePositions()
 	}
 	
 	this->cardLabel->setPosition(Vec2(-6.0f, -72.0f));
-	this->consumableLabel->setPosition(Vec2(-6.0f, -88.0f));
+	this->consumableLabel->setPosition(Vec2(32.0f, -160.0f));
 }
 
 void ItemPreview::toggleShowItemName(bool showItemName)

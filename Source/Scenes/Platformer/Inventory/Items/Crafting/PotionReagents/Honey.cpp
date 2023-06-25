@@ -20,7 +20,7 @@ Honey* Honey::create()
 	return instance;
 }
 
-Honey::Honey() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 3 }}), ItemMeta(20000))
+Honey::Honey() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 4 }}), ItemMeta(20000))
 {
 }
 
