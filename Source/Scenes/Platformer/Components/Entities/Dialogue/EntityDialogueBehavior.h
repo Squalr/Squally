@@ -19,6 +19,7 @@ class EntityDialogueBehavior : public GameComponent
 public:
 	static EntityDialogueBehavior* create(GameObject* owner);
 
+	void addDefaultGoodbyeOption();
 	void enqueuePretext(DialogueEvents::DialogueOpenArgs pretext);
 	void clearPretext();
 	void setActiveDialogueSet(DialogueSet* dialogueSet, bool showDialogue = true);
@@ -43,7 +44,7 @@ protected:
 
 private:
 	typedef GameComponent super;
-
+	
 	void onInteract();
 	void showOptions();
 	bool hasDialogueOptions();

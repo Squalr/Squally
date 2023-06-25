@@ -44,6 +44,12 @@ DialogueOption* DialogueSet::addDialogueOption(DialogueOption* dialogueOption, f
 	return dialogueOption;
 }
 
+void DialogueSet::removeAllDialogueOptions()
+{
+	this->optionsNode->removeAllChildren();
+	this->dialogueOptions.clear();
+}
+
 void DialogueSet::removeDialogueOption(DialogueOption* dialogueOption)
 {
 	if (dialogueOption != nullptr)

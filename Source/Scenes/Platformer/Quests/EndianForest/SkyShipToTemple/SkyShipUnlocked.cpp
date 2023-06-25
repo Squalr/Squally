@@ -88,6 +88,8 @@ void SkyShipUnlocked::onLoad(QuestState questState)
 		}
 
 	}, SkyShipUnlocked::QuestTagShipPortal);
+	
+	this->canBoard = questState != QuestState::None;
 
 	if (this->entity != nullptr)
 	{
@@ -97,41 +99,12 @@ void SkyShipUnlocked::onLoad(QuestState questState)
 		}
 		else
 		{
-			this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+			this->refreshDialogueOptions();
+
+			// Seagull puzzle support
+			this->listenForMapEvent("refresh-dialogue", [=](ValueMap)
 			{
-				LocalizedString* text = nullptr;
-
-				if (this->isReturnTrip)
-				{
-					text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown::create();
-				}
-				else
-				{
-					text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple::create();
-				}
-
-				interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
-					text,
-					[=]()
-					{
-						switch(questState)
-						{
-							case QuestState::Active:
-							case QuestState::ActiveThroughSkippable:
-							case QuestState::Complete:
-							{
-								this->runYesSequence();
-								break;
-							}
-							case QuestState::None:
-							{
-								this->runNoSequence();
-								break;
-							}
-						}
-					}),
-					0.5f
-				);
+				this->refreshDialogueOptions();
 			});
 		}
 	}
@@ -147,6 +120,41 @@ void SkyShipUnlocked::onComplete()
 
 void SkyShipUnlocked::onSkipped()
 {
+}
+
+void SkyShipUnlocked::refreshDialogueOptions()
+{
+	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	{
+		LocalizedString* text = nullptr;
+
+		if (this->isReturnTrip)
+		{
+			text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTown::create();
+		}
+		else
+		{
+			text = Strings::Platformer_Quests_EndianForest_SkyShipToTemple_Dudly_CanWeBoardToTemple::create();
+		}
+
+		interactionBehavior->getMainDialogueSet()->removeAllDialogueOptions();
+		interactionBehavior->addDefaultGoodbyeOption();
+		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+			text,
+			[=]()
+			{
+				if (this->canBoard)
+				{
+					this->runYesSequence();
+				}
+				else
+				{
+					this->runNoSequence();
+				}
+			}),
+			0.5f
+		);
+	});
 }
 
 void SkyShipUnlocked::runNoSequence()

@@ -100,8 +100,7 @@ void EntityDialogueBehavior::onLoad()
 		return true;
 	});
 
-	this->mainDialogueSet->addDialogueOption(DialogueOption::create(Strings::Platformer_Dialogue_Goodbye::create(), nullptr, false), 0.01f);
-
+	this->addDefaultGoodbyeOption();
 	this->scheduleUpdate();
 }
 
@@ -118,6 +117,11 @@ void EntityDialogueBehavior::update(float dt)
 
 	// Update on a loop -- this is to catch the case where dialogue options are added to a dialogue set, which isn't caught otherwise.
 	this->updateInteractable();
+}
+
+void EntityDialogueBehavior::addDefaultGoodbyeOption()
+{
+	this->mainDialogueSet->addDialogueOption(DialogueOption::create(Strings::Platformer_Dialogue_Goodbye::create(), nullptr, false), 0.01f);
 }
 
 SpeechBubble* EntityDialogueBehavior::getSpeechBubble()

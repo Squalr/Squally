@@ -26,9 +26,11 @@ protected:
 private:
 	typedef QuestTask super;
 
+	void refreshDialogueOptions();
 	void runNoSequence();
 	void runYesSequence();
 
+	bool canBoard = false;
 	PlatformerEntity* entity = nullptr;
 	Squally* squally = nullptr;
 	Portal* portal = nullptr;

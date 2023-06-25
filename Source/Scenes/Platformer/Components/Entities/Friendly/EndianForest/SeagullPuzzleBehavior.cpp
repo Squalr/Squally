@@ -123,6 +123,12 @@ void SeagullPuzzleBehavior::onPuzzleSolved()
 							PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ TigersBane::create() }));
 							SaveManager::SaveProfileData(SaveKeys::SaveKeyItemEE4Given, Value(true));
 						}
+
+						// Defer to avoid disposing of dialgue options in the middle of the callback of one
+						this->defer([=]()
+						{
+							this->entity->broadcastMapEvent("refresh-dialogue", ValueMap());
+						});
 					},
 					Voices::GetNextVoiceMedium(),
 					true
