@@ -113,8 +113,9 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,soul,agro,melee"/>
+    <property name="components" value="enemy,soul,agro,melee,map-link"/>
     <property name="drop-pool" value="ef-generic"/>
+    <property name="link-key" value="ef-zone2-enemy1"/>
    </properties>
   </object>
   <object id="857" name="orc-grunt" type="entity" x="5672.79" y="1387.78" width="128" height="128">
@@ -290,13 +291,10 @@
   <object id="885" name="solid" type="collision" x="2880.49" y="482.416" width="97.0303" height="2072.31"/>
   <object id="891" name="chest" type="object" x="1457.98" y="1916.47" width="128" height="128">
    <properties>
-    <property name="data-type" value="decimal"/>
-    <property name="event" value="open-cipher"/>
-    <property name="inputs" value="27,143,88,62"/>
+    <property name="components" value="map-link"/>
+    <property name="link-key" value="ef-zone2-chest1"/>
     <property name="reward-pool" value="ef-generic"/>
-    <property name="rule" value="{i}-3"/>
-    <property name="tokens" value="+,1,-,3"/>
-    <property name="tutorial" value="extra-tokens"/>
+    <property name="send-event" value="ef-zone2-chest1"/>
    </properties>
   </object>
  </objectgroup>
@@ -385,13 +383,10 @@
   <object id="687" name="pendulum-blade" type="object" x="4428.65" y="4410.44" width="42.4242" height="220.97"/>
   <object id="778" name="chest" type="object" x="3738.73" y="1922.06" width="128" height="128">
    <properties>
-    <property name="data-type" value="decimal"/>
-    <property name="event" value="open-cipher"/>
-    <property name="inputs" value="27,143,88,62"/>
+    <property name="components" value="map-link"/>
+    <property name="link-key" value="ef-zone2-chest2"/>
     <property name="reward-pool" value="ef-generic"/>
-    <property name="rule" value="{i}-3"/>
-    <property name="tokens" value="+,1,-,3"/>
-    <property name="tutorial" value="extra-tokens"/>
+    <property name="send-event" value="ef-zone2-chest2"/>
    </properties>
   </object>
   <object id="780" name="edge-lantern-gate" type="object" x="-18.2424" y="2243.64" width="356" height="320">
