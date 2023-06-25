@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="106" nextobjectid="1053">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="111" nextobjectid="1067">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -207,8 +207,34 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
+  <object id="1062" name="blue-grass" type="terrain" x="5140" y="-132">
+   <polygon points="2330.14,-1651.77 2840.18,-1379.66 2833.07,-431.445 2798.27,72.3774 3764.8,82.8646 4656,-35.2916 5510.55,-8.03728 5658.38,-49.1401 6144.01,-45.179 7678.13,-23.451 7814.69,779.395 7633.48,1369.36 7541.06,1736.97 61.22,1704.73 -6.54789,295.393 46.2721,92.9397 155.468,-288.376 865.49,-459.922 1351.8,-0.690106 1582.57,-161.095 1747.66,-757.93 1941.17,-1483.74"/>
+  </object>
  </objectgroup>
- <objectgroup id="88" name="terrain -32 -1">
+ <objectgroup id="107" name="terrain -35">
+  <properties>
+   <property name="depth" type="float" value="-4288"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1055" name="blue-grass" type="terrain" x="7312" y="992">
+   <polygon points="-334.518,-421.607 -678.307,-426.688 -1003.54,-720.376 -1414.66,-928.777 -1976.22,-927.197 -1955.1,-1366.39 -1717.4,-1609.52 -1487.78,-3098.19 -2404.08,-3379.8 -3295.44,-3114.95 -3466.12,-1491.98 -3301.53,319.88 -424.36,313.63 -284.619,-285.314"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="108" name="objects -35">
+  <properties>
+   <property name="depth" type="float" value="-4288"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1056" name="chest" type="object" x="5584" y="-64" width="128" height="128">
+   <properties>
+    <property name="components" value="map-link"/>
+    <property name="link-key" value="ef-zone2-chest1"/>
+    <property name="reward-pool" value="ef-generic"/>
+    <property name="send-event" value="ef-zone2-chest1"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="88" name="terrain -34 -1">
   <properties>
    <property name="depth" type="float" value="-4096"/>
    <property name="type" value="objects"/>
@@ -220,15 +246,23 @@
    <polygon points="-976.387,767.414 -1000,-1528.93 -110.285,-1773.79 643.83,-1984.03 1291.54,-2152.11 6523.06,-2151.93 6520.88,757.705"/>
   </object>
  </objectgroup>
+ <objectgroup id="109" name="objects -33">
+  <properties>
+   <property name="depth" type="float" value="-4160"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1061" name="ship" type="object" x="5620.5" y="440" width="2375" height="1008">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="20" name="terrain -32">
   <properties>
    <property name="depth" type="float" value="-4096"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="893" name="blue-grass" type="terrain" x="-1989.44" y="2856.94">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
    <polygon points="1374.73,127.536 442.99,-331.723 -5.76369,-749.28 -11.5274,-1613.83 6128.3,-1622.32 6130.97,-719.051 4390.78,-721.802 4389.89,196.636 3533.03,219.084 2407.47,197.594"/>
   </object>
   <object id="976" name="ship-alt" type="terrain" x="4134.55" y="1279.88">
@@ -261,15 +295,41 @@
    <property name="depth" type="float" value="-4096"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="1065" name="bard" type="entity" x="414.788" y="1114.79" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pacing"/>
+   </properties>
+  </object>
+  <object id="1066" name="mara" type="entity" x="-1164" y="1111.76" width="128" height="128">
+   <properties>
+    <property name="components" value="friendly,pacing"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="86" name="objects -32 (ship)">
+ <objectgroup id="86" name="objects -32">
   <properties>
    <property name="depth" type="float" value="-4096"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="975" name="ship" type="object" x="5620.5" y="440" width="2375" height="1008">
+  <object id="1057" name="edge-lantern-gate" type="object" x="4102" y="308" width="356" height="320">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
+    <property name="map" value="EndianForest/Town_Main"/>
+    <property name="map-banner" value="sullen-forest"/>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1058" name="edge-lantern-gate" type="object" x="3734" y="308" width="356" height="320">
+   <properties>
+    <property name="flip-x" type="bool" value="false"/>
+    <property name="map" value="EndianForest/Town_Main"/>
+    <property name="map-banner" value="sullen-forest"/>
+    <property name="transition" value="left"/>
+   </properties>
+  </object>
+  <object id="1059" name="life-stone" type="object" x="5475" y="204.5" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>
@@ -340,7 +400,7 @@
    <polygon points="-1.14665,-1044.03 -2.29331,-2330.01 1219.19,-2342.27 1219.72,-1038.15"/>
   </object>
  </objectgroup>
- <objectgroup id="79" name="decor -25">
+ <objectgroup id="79" name="decor -25" visible="0">
   <properties>
    <property name="depth" type="float" value="-3200"/>
    <property name="type" value="objects"/>
@@ -364,7 +424,7 @@
   <object id="933" name="Generic/TownFence" type="decor" x="2235.18" y="1011.49" width="538" height="948"/>
   <object id="934" name="Generic/TownFence" type="decor" x="3150.11" y="1006.02" width="538" height="948"/>
  </objectgroup>
- <objectgroup id="85" name="forest -24">
+ <objectgroup id="85" name="forest -24" visible="0">
   <properties>
    <property name="depth" type="float" value="-3072"/>
    <property name="type" value="objects"/>
@@ -375,7 +435,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="84" name="forest -18">
+ <objectgroup id="84" name="forest -18" visible="0">
   <properties>
    <property name="depth" type="float" value="-2304"/>
    <property name="type" value="objects"/>
@@ -386,7 +446,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="82" name="forest -12">
+ <objectgroup id="82" name="forest -12" visible="0">
   <properties>
    <property name="depth" type="float" value="-1536"/>
    <property name="type" value="objects"/>
@@ -397,7 +457,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="83" name="forest -6">
+ <objectgroup id="83" name="forest -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-768"/>
    <property name="type" value="objects"/>
@@ -408,7 +468,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="102" name="objects -4">
+ <objectgroup id="102" name="objects -4" visible="0">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -421,7 +481,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="105" name="planks -3">
+ <objectgroup id="105" name="planks -3" visible="0">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
@@ -432,7 +492,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="104" name="planks -2">
+ <objectgroup id="104" name="planks -2" visible="0">
   <properties>
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
@@ -443,7 +503,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="103" name="planks -1">
+ <objectgroup id="103" name="planks -1" visible="0">
   <properties>
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
@@ -454,7 +514,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="58" name="terrain bg">
+ <objectgroup id="58" name="terrain bg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -464,7 +524,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="21" name="terrain">
+ <objectgroup id="21" name="terrain" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -472,17 +532,17 @@
    <polygon points="-1045.45,330.183 -575.57,330.835 -574.509,250.237 -486.431,247.88 -485.986,160.365 -386.46,159.647 -388.58,69.4123 -296.586,69.2726 -296.584,-20.8843 3566.48,-17.0065 3574.94,1874.69 -1045.69,1865.75"/>
   </object>
  </objectgroup>
- <objectgroup id="60" name="terrain +1">
+ <objectgroup id="60" name="terrain +1" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="22" name="decor midground">
+ <objectgroup id="22" name="decor midground" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="23" name="objects">
+ <objectgroup id="23" name="objects" visible="0">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>

@@ -197,7 +197,7 @@
     <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
-  <object id="949" name="portal" type="object" x="4254.67" y="1289.33" width="256" height="192">
+  <object id="949" name="portal" type="object" x="4374.67" y="1288" width="256" height="192">
    <properties>
     <property name="map" value="EndianForest/Zone_2_8"/>
     <property name="transition" value="back"/>
@@ -246,7 +246,7 @@
     <property name="transition" value="exit-A"/>
    </properties>
   </object>
-  <object id="950" name="spawn" type="object" x="4318.67" y="1418.67" width="128" height="128">
+  <object id="950" name="spawn" type="object" x="4438.67" y="1417.34" width="128" height="128">
    <properties>
     <property name="transition" value="back"/>
    </properties>

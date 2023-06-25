@@ -134,7 +134,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="95" name="terrain -11" visible="0">
+ <objectgroup id="95" name="terrain -11">
   <properties>
    <property name="depth" type="float" value="-704"/>
    <property name="type" value="objects"/>
@@ -173,7 +173,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="92" name="terrain -10" visible="0">
+ <objectgroup id="92" name="terrain -10">
   <properties>
    <property name="depth" type="float" value="-640"/>
    <property name="type" value="objects"/>
