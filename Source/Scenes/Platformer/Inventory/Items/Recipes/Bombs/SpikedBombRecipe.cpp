@@ -38,7 +38,7 @@ std::vector<std::tuple<Item*, int>> SpikedBombRecipe::getReagentsInternal()
 {
 	return
 	{
-		{ Bone::create(), 1 },
+		{ Bone::create(), 2 },
 		{ Stinger::create(), 2 },
 		{ Coal::create(), 4 },
 	};

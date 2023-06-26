@@ -35,7 +35,7 @@
 
 using namespace cocos2d;
 
-const float CraftingMenuBase::CraftDuration = 1.5f;
+const float CraftingMenuBase::DefaultCraftDuration = 1.5f;
 
 CraftingMenuBase::CraftingMenuBase(LocalizedString* titleString, LocalizedString* craftablesHeader)
 {
@@ -227,9 +227,9 @@ void CraftingMenuBase::update(float dt)
 
 	this->craftElapsedTime += dt;
 
-	this->craftProgress->setProgress(this->craftElapsedTime / CraftingMenuBase::CraftDuration);
+	this->craftProgress->setProgress(this->craftElapsedTime / this->getCraftDuration());
 
-	if (this->craftElapsedTime >= CraftingMenuBase::CraftDuration)
+	if (this->craftElapsedTime >= this->getCraftDuration())
 	{
 		this->craftItem();
 		this->stopCraft(false);
@@ -292,13 +292,13 @@ int CraftingMenuBase::getCraftCount(Recipe* recipe, Inventory* inventory)
 	const int MaxCraftCount = 1000;
 	int craftCount = MaxCraftCount;
 
-	for (auto reagent : reagents)
+	for (auto& reagent : reagents)
 	{
 		Item* next = std::get<0>(reagent);
 		int requiredCount = std::get<1>(reagent);
 		int existingCount = 0;
 
-		for (auto item : this->inventory->getItems())
+		for (Item* item : this->inventory->getItems())
 		{
 			if (item->getIdentifier() == next->getIdentifier())
 			{
@@ -379,11 +379,11 @@ void CraftingMenuBase::craftItem()
 	std::vector<Item*> craftedItems = recipe->craft();
 	std::vector<std::tuple<Item*, int>> reagents = recipe->getReagents();
 
-	for (auto reagent : reagents)
+	for (auto& reagent : reagents)
 	{
 		int foundCount = 0;
 
-		for (auto item : this->inventory->getItems())
+		for (Item* item : this->inventory->getItems())
 		{
 			if (item->getIdentifier() == std::get<0>(reagent)->getIdentifier())
 			{
@@ -417,6 +417,11 @@ void CraftingMenuBase::stopCraft(bool viaCancel)
 	}
 
 	this->onCraftEnd(viaCancel);
+}
+
+float CraftingMenuBase::getCraftDuration()
+{
+	return CraftingMenuBase::DefaultCraftDuration;
 }
 
 LocalizedString* CraftingMenuBase::getCraftString()

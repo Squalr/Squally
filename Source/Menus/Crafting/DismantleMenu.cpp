@@ -24,6 +24,8 @@
 
 using namespace cocos2d;
 
+const float DismantleMenu::DismantleDuration = 5.0f;
+
 DismantleMenu* DismantleMenu::create()
 {
 	DismantleMenu* instance = new DismantleMenu();
@@ -37,7 +39,7 @@ DismantleMenu::DismantleMenu() : super(Strings::Menus_Crafting_Dismantle::create
 {
 	this->smeltingPot = Sprite::create(UIResources::Menus_CraftingMenu_SmeltingPot);
 	this->icon = Sprite::create(UIResources::Menus_CraftingMenu_SmeltingIcon);
-	this->craftSound = Sound::create(SoundResources::Menus_Crafting_Blacksmithing);
+	this->craftSound = Sound::create(SoundResources::Menus_Crafting_Alchemy);
 	this->dismantledRecipiesNode = Node::create();
 
 	this->filterMenu->addFilter(AllEquipmentFilter::create());
@@ -103,22 +105,25 @@ void DismantleMenu::open(const std::vector<Item*>& recipes)
 void DismantleMenu::onCraftStart()
 {
 	this->craftSound->stop();
-	this->craftSound->play();
+	this->craftSound->play(true);
 }
 
 void DismantleMenu::onCraftEnd(bool viaCancel)
 {
-	if (viaCancel)
-	{
-		this->craftSound->stop();
-	}
-	else
+	this->craftSound->stop();
+
+	if (!viaCancel)
 	{
 		this->dismantleRecipes.erase(std::remove(this->dismantleRecipes.begin(), this->dismantleRecipes.end(), this->selectedRecipe), this->dismantleRecipes.end());
 
 		// Refresh UI with the dismantled item removed. Go directly to base class since we do not need to rebuild the dismantle recipe list.
 		super::open(this->dismantleRecipes);
 	}
+}
+
+float DismantleMenu::getCraftDuration()
+{
+	return DismantleMenu::DismantleDuration;
 }
 
 LocalizedString* DismantleMenu::getCraftString()

@@ -177,7 +177,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[SkeletalArcher::MapKey] = StatsIncrements(Stats(55, 12, 96));
 	StatsTables::StatsTable[SkeletalNecromancer::MapKey] = StatsIncrements(Stats(55, 12, 99));
 	StatsTables::StatsTable[SkeletalWarrior::MapKey] = StatsIncrements(Stats(55, 12, 98));
-	StatsTables::StatsTable[SkeletalPirate::MapKey] = StatsIncrements(Stats(56, 14, 97));
+	StatsTables::StatsTable[SkeletalPirate::MapKey] = StatsIncrements(Stats(56, 16, 97));
 	StatsTables::StatsTable[TikiGolem::MapKey] = StatsIncrements(Stats(60, 12, 80));
 	StatsTables::StatsTable[Krampus::MapKey] = StatsIncrements(Stats(224, 12, 260));
 

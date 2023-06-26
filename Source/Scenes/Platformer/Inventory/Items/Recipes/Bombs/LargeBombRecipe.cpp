@@ -38,7 +38,7 @@ std::vector<std::tuple<Item*, int>> LargeBombRecipe::getReagentsInternal()
 {
 	return
 	{
-		{ Gold::create(), 1 },
+		{ Gold::create(), 2 },
 		{ StrongChitin::create(), 3 },
 		{ Coal::create(), 2 },
 	};

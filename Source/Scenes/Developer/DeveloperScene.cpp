@@ -95,6 +95,7 @@ DeveloperScene::DeveloperScene()
 		- * EF perceptron chase 1 busted (movement broken [Fixed now?], Perceptron should not spawn in visible from below)
 		- * EF Mara fun dialogue
 		- * EF Gramps fun dialogue
+		- * EF Have Lycan give weapon, and Lianna give something else
 		- * EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- UR cistern Chest + Puzzle + Animal is overwhelming and lazy
 		- UR sky's reach color balance
@@ -103,9 +104,19 @@ DeveloperScene::DeveloperScene()
 		- UR Gauntlet - Pushers should patrol back then despawn.
 		- UR Gauntlet - Critical hit indicator (big explosion? maybe tiny explosion otherwise)
 		- UR Pyramid still fucking sucks. Cutting it in half helps a bit. Needs work. Maybe lightning.
+			- How about a giant circuit behind the main entrance, which needs to be connected via lighting various torches.
+				intent is to use different and/or logic gates (xor isn't taught yet) to connect it all.
 		- UR Guano falls through platforms.
 		- DM Rockslide fight is boring, should make this heal enemy (thus inverting == kill enemy)
-		- Have Lycan give weapon, and Lianna give something else
+		- DM Drak should ride ferry too
+		- DM Maybe allow combat from hitting helper, so that arrow matters
+		- DM Stalactite SFX
+		- DM push/pop movement SFX
+		- DM stack should remain as the answer once solved
+		- DM diamond doesn't make sense here. Can use it in BG, but maybe move diamond carts to the right zones
+		- Maybe a ladder on ship art to show the point of entry
+		- Mana flask description wrong in combat
+		- Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
 		- Defend cast sfx
 		- Music
 			- [Awaiting Response] https://usfourmusic.com/contact (The Storm Begins)

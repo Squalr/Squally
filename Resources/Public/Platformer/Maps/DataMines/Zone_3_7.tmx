@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="1891">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="1895">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -89,12 +89,24 @@
   </object>
   <object id="1863" name="ship" type="object" x="-247.09" y="692.844" width="2375" height="1008"/>
  </objectgroup>
+ <objectgroup id="113" name="terrain -9 fg">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
  <objectgroup id="104" name="water -8">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1865" name="water" type="object" x="-1109.86" y="1491.12" width="5928.45" height="1306.04"/>
+ </objectgroup>
+ <objectgroup id="112" name="terrain -8">
+  <properties>
+   <property name="depth" type="float" value="-512"/>
+   <property name="type" value="objects"/>
+  </properties>
  </objectgroup>
  <objectgroup id="103" name="water -7">
   <properties>
@@ -200,7 +212,7 @@
   <object id="1847" name="Mines/Plank3" type="decor" x="160.51" y="1769.66" width="53" height="366"/>
   <object id="1848" name="Mines/Plank1" type="decor" x="430.67" y="1784.33" width="54" height="374"/>
  </objectgroup>
- <objectgroup id="98" name="rails -7">
+ <objectgroup id="98" name="rails -7" visible="0">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
@@ -235,7 +247,7 @@
     <property name="reward-pool" value="dm-gold"/>
    </properties>
   </object>
-  <object id="1887" name="portal" type="object" x="762.67" y="1189.64" width="256" height="256">
+  <object id="1887" name="portal" type="object" x="1044" y="1180.31" width="256" height="256">
    <properties>
     <property name="map" value="PerilousSea/Ship_Main"/>
     <property name="quest" value="discover-charter-ship,board-charter-ship"/>
@@ -265,7 +277,7 @@
     <property name="to" value="bridge-front-B"/>
    </properties>
   </object>
-  <object id="1888" name="spawn" type="object" x="831.333" y="1319.33" width="128" height="128">
+  <object id="1888" name="spawn" type="object" x="1112.67" y="1310" width="128" height="128">
    <properties>
     <property name="map-banner" value="data-cove"/>
     <property name="transition" value="charter-ship"/>

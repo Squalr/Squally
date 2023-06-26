@@ -122,7 +122,8 @@ void CurseOfTheAncients::registerHackables()
 							ConstantString::create("pop ebx\n\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue::create()
 								->setStringReplacementVariables(ConstantString::create(std::to_string(CurseOfTheAncients::DamageDelt)))),
-							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_RegisterEax::create())),
 							ConstantString::create("\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
 						})
@@ -134,7 +135,8 @@ void CurseOfTheAncients::registerHackables()
 							ConstantString::create("pop rbx\n\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentDamageSetToValue::create()
 								->setStringReplacementVariables(ConstantString::create(std::to_string(CurseOfTheAncients::DamageDelt)))),
-							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_CurseOfTheAncients_CommentIncreaseInstead::create()
+								->setStringReplacementVariables(Strings::Menus_Hacking_RegisterRax::create())),
 							ConstantString::create("\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create())
 						})

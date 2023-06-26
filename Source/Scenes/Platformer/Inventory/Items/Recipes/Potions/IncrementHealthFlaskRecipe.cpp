@@ -38,8 +38,8 @@ std::vector<std::tuple<Item*, int>> IncrementHealthFlaskRecipe::getReagentsInter
 {
 	return
 	{
-		{ Clover::create(), 1 },
-		{ Feather::create(), 1 },
+		{ Clover::create(), 2 },
+		{ Feather::create(), 2 },
 		{ Honey::create(), 1 },
 	};
 }

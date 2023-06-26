@@ -40,6 +40,7 @@
  <objectgroup id="86" name="objects -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1610" name="cart-lift" type="object" x="4162" y="2123.5" width="72" height="1189"/>
@@ -47,6 +48,7 @@
  <objectgroup id="85" name="entities -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1625" name="skeletal-pirate" type="entity" x="3144.42" y="1988.37" width="128" height="128">
@@ -121,6 +123,7 @@
  <objectgroup id="63" name="objects -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1586" name="mines" type="terrain" x="4639.46" y="3408" width="343.08" height="276"/>
@@ -196,6 +199,7 @@
  <objectgroup id="83" name="objects -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
