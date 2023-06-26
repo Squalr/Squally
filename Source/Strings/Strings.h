@@ -38619,7 +38619,7 @@ namespace Strings
 		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Townspeople_ThankYou() = default;
 	};
 
-	class Platformer_Quests_UnderflowRuins_CureTown_Zeus_A_WhoGoesThere : public LocalizedString
+	class Platformer_Quests_UnderflowRuins_CureTown_Zeus_A_ExpectingYou : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -38630,11 +38630,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_UnderflowRuins_CureTown_Zeus_A_WhoGoesThere();
-		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Zeus_A_WhoGoesThere() = default;
+		Platformer_Quests_UnderflowRuins_CureTown_Zeus_A_ExpectingYou();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Zeus_A_ExpectingYou() = default;
 	};
 
-	class Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_SayNoMore : public LocalizedString
+	class Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_TimeRunningShort : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -38645,8 +38645,68 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_SayNoMore();
-		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_SayNoMore() = default;
+		Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_TimeRunningShort();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Zeus_B_TimeRunningShort() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Zeus_C_TheSkyCrack : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Zeus_C_TheSkyCrack();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Zeus_C_TheSkyCrack() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Zeus_D_EnoughTime : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Zeus_D_EnoughTime();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Zeus_D_EnoughTime() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Zeus_E_StopIt : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Zeus_E_StopIt();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Zeus_E_StopIt() = default;
+	};
+
+	class Platformer_Quests_UnderflowRuins_CureTown_Zeus_F_TakeSpellbook : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_UnderflowRuins_CureTown_Zeus_F_TakeSpellbook();
+		virtual ~Platformer_Quests_UnderflowRuins_CureTown_Zeus_F_TakeSpellbook() = default;
 	};
 
 	class Platformer_Quests_VoidStar_PerceptronFight_A_You : public LocalizedString

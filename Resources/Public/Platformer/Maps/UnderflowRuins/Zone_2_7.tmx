@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="34" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="864">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="34" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="123" nextobjectid="877">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BlueSky"/>
@@ -12,10 +12,92 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="16" name="tiled bg">
+ <objectgroup id="16" name="peaks far">
   <properties>
+   <property name="depth" type="float" value="-14000"/>
    <property name="type" value="objects"/>
   </properties>
+  <object id="868" name="Snow/Background/Mountain1" type="decor" x="6224" y="-904" width="8648" height="3828"/>
+ </objectgroup>
+ <objectgroup id="115" name="peaks">
+  <properties>
+   <property name="depth" type="float" value="-12800"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="869" name="Snow/Background/Mountain2" type="decor" x="-2153" y="-3282" width="12576" height="6160"/>
+ </objectgroup>
+ <objectgroup id="116" name="far-clouds">
+  <properties>
+   <property name="depth" type="float" value="-12000"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="870" name="Forest/Background/Clouds1" type="decor" x="-23765.5" y="-640" width="60896" height="3720">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="119" name="mountain clouds fg">
+  <properties>
+   <property name="depth" type="float" value="-11500"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="873" name="Forest/Background/MountainClouds2" type="decor" x="-352" y="782" width="7680" height="1392"/>
+ </objectgroup>
+ <objectgroup id="117" name="mountains bg">
+  <properties>
+   <property name="depth" type="float" value="-11000"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="871" name="Forest/Background/Mountains1" type="decor" x="-32245.5" y="638.5" width="71968" height="6400">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="118" name="mountains fg">
+  <properties>
+   <property name="depth" type="float" value="-10000"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="872" name="Forest/Background/Mountains2" type="decor" x="-32277.5" y="2366.5" width="71968" height="5120">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="120" name="trees bg">
+  <properties>
+   <property name="depth" type="float" value="-9000"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="874" name="Forest/Background/Trees1" type="decor" x="-32101.5" y="3614.5" width="71968" height="3072">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="121" name="trees mg">
+  <properties>
+   <property name="depth" type="float" value="-8000"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="875" name="Forest/Background/Trees2" type="decor" x="-32101.5" y="4126.5" width="71968" height="3440">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="122" name="trees fg">
+  <properties>
+   <property name="depth" type="float" value="-7000"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="876" name="Forest/Background/Trees3" type="decor" x="-32085.5" y="4734.5" width="71968" height="3360">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="113" name="decor -1">
   <properties>

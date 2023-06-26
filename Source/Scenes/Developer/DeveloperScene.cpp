@@ -92,10 +92,14 @@ DeveloperScene::DeveloperScene()
 		- * Block isn't properly backtracking in timeline
 		- * Potion SFX should not be paused on potion menu
 		- * Pressing left on "select target" in combat should go back to prior menu, not base menu
-		- * EF perceptron chase 1 busted (movement broken, Perceptron should not spawn in visible from below)
+		- * EF perceptron chase 1 busted (movement broken [Fixed now?], Perceptron should not spawn in visible from below)
 		- * EF Mara fun dialogue
 		- * EF Gramps fun dialogue
 		- * EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
+		- UR cistern Chest + Puzzle + Animal is overwhelming and lazy
+		- Bard floating in EF portal
+		- UR Gauntlet - Pushers should patrol back then despawn.
+		- UR Gauntlet - Critical hit indicator (big explosion? maybe tiny explosion otherwise)
 		- Have Lycan give weapon, and Lianna give something else
 		- Defend cast sfx
 		- Music

@@ -555,7 +555,7 @@
     <property name="components" value="gatling-gun"/>
    </properties>
   </object>
-  <object id="1261" name="trigger" type="object" x="4262.31" y="-420.174" width="136.939" height="2699.95">
+  <object id="1261" name="trigger" type="object" x="4262.31" y="-420.174" width="136.939" height="2112.07">
    <properties>
     <property name="send-event" value="talk-to-cleopatra"/>
    </properties>

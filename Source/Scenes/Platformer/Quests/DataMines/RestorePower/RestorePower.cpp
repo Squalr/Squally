@@ -98,7 +98,6 @@ void RestorePower::onActivate(bool isActiveThroughSkippable, bool isInitialActiv
 
 void RestorePower::onComplete()
 {
-	SaveManager::SaveProfileData(SaveKeys::SaveKeyCrackProgress, Value(1));
 	this->powerOnComputers();
 }
 

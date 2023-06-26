@@ -10,6 +10,7 @@
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Enemies/UnderflowRuins/Medusa.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
@@ -99,6 +100,8 @@ void FightMedusa::onActivate(bool isActiveThroughSkippable, bool isInitialActiva
 
 void FightMedusa::onComplete()
 {
+	int crackProgress = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyCrackProgress, Value(1)).asInt();
+	SaveManager::SaveProfileData(SaveKeys::SaveKeyCrackProgress, Value(std::max(crackProgress, 1)));
 	this->runCinematicSequencePart2();
 }
 

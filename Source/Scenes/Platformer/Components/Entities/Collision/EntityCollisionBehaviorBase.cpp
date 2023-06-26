@@ -313,9 +313,16 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
 	{
-		// Edge case to prevent sticky collisions, where the impact normal constantly zeros out velocity.
+		// Edge case to prevent sticky collisions with the roof, where the impact normal constantly zeros out velocity.
 		// At the time of writing this, this is the sole reason this head collision exists.
-		if (this->headCollision != nullptr && this->headCollision->hasHeadCollisionWith(collisionData.other) && this->getVelocity().y <= 0.0f)
+		if (this->headCollision != nullptr
+			/*
+			&& this->leftCollision != nullptr
+			&& this->rightCollision != nullptr
+			&& !this->rightCollision->hasCollisionWith(collisionData.other)
+			&& !this->leftCollision->hasCollisionWith(collisionData.other)*/
+			&& this->entity->controlState != PlatformerEntity::ControlState::Swimming
+			&& this->getVelocity().y <= 0.0f)
 		{
 			return CollisionResult::DoNothing;
 		}
