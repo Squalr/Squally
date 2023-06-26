@@ -123,6 +123,8 @@ DeveloperScene::DeveloperScene()
 		- CV PFX on unharvested souls
 		- CV secret tunnel feels unfinished
 		- CV rabies is tl;dr
+		- CV Grim always shows 0 level on story mode menu
+		- CV frienldy text on atrius (err no, whoever is in tunnel)
 		- Maybe a ladder on ship art to show the point of entry
 		- Mana flask description wrong in combat
 		- Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)

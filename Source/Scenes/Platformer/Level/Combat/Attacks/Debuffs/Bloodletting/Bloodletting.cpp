@@ -126,7 +126,7 @@ void Bloodletting::registerHackables()
 							ConstantString::create("jmp skipCode\n\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage::create()),
 							ConstantString::create("bloodletting:\n"),
-							ConstantString::create("mov edi, 5\n"), // Bloodletting::DamageAmount
+							ConstantString::create("mov edx, 5\n"), // Bloodletting::DamageAmount
 							ConstantString::create("skipCode:\n\n")
 						})
 						, // x64
@@ -139,7 +139,7 @@ void Bloodletting::registerHackables()
 							ConstantString::create("jmp skipCode\n\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_CommentApplyDamage::create()),
 							ConstantString::create("bloodletting:\n"),
-							ConstantString::create("mov rdi, 5\n"), // Bloodletting::DamageAmount
+							ConstantString::create("mov rdx, 5\n"), // Bloodletting::DamageAmount
 							ConstantString::create("skipCode:\n\n")
 						})
 					),
@@ -213,9 +213,10 @@ NO_OPTIMIZE void Bloodletting::runBloodlettingTick()
 	ASM(bloodletting:);
 	ASM(mov ZDX, 5); // Bloodletting::DamageAmount
 	ASM(bloodlettingSkip:);
+	ASM_NOP16();
 	HACKABLE_CODE_END();
 
-	ASM_MOV_VAR_REG(drainAmount, edi);
+	ASM_MOV_VAR_REG(drainAmount, edx);
 
 	ASM(pop ZDX);
 	ASM(pop ZBX);
