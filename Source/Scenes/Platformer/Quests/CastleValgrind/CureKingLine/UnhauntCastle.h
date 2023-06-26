@@ -4,6 +4,7 @@
 
 class Guano;
 class Mabel;
+class Portal;
 class QuestLine;
 class Scrappy;
 class Squally;
@@ -33,9 +34,12 @@ private:
 	void updateQuestVisuals();
 	void runCinematicSequence();
 	void setPreText();
+	void moveBookshelf(bool animate);
 
 	Guano* guano = nullptr;
 	Mabel* mabel = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
+	GameObject* bookshelf = nullptr;
+	Portal* secretDoorPortal = nullptr;
 };

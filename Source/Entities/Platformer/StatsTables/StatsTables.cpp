@@ -214,9 +214,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[Vampiress::MapKey] = StatsIncrements(Stats(46, 24, 118));
 	StatsTables::StatsTable[Undead::MapKey] = StatsIncrements(Stats(49, 6, 109));
 	StatsTables::StatsTable[Werewolf::MapKey] = StatsIncrements(Stats(52, 13, 115));
-	StatsTables::StatsTable[Wraith::MapKey] = StatsIncrements(Stats(46, 22, 116));
-	StatsTables::StatsTable[Zombie::MapKey] = StatsIncrements(Stats(50, 5, 110));
-	StatsTables::StatsTable[ZombieElric::MapKey] = StatsIncrements(Stats(75, 13, 140));
+	StatsTables::StatsTable[Wraith::MapKey] = StatsIncrements(Stats(64, 22, 116));
 	
 	StatsTables::StatsTable[Atreus::MapKey] = NpcStats;
 	StatsTables::StatsTable[Knight::MapKey] = NpcStats;
@@ -253,6 +251,8 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[SkeletalKnight::MapKey] = StatsIncrements(Stats(62, 10, 122));
 	StatsTables::StatsTable[SkeletalPriestess::MapKey] = StatsIncrements(Stats(56, 20, 125));
 	StatsTables::StatsTable[Warlock::MapKey] = StatsIncrements(Stats(62, 24, 113));
+	StatsTables::StatsTable[Zombie::MapKey] = StatsIncrements(Stats(50, 5, 110));
+	StatsTables::StatsTable[ZombieElric::MapKey] = StatsIncrements(Stats(75, 13, 140));
 
 	StatsTables::StatsTable[Amelia::MapKey] = NpcStats;
 	StatsTables::StatsTable[Azmus::MapKey] = NpcStats;

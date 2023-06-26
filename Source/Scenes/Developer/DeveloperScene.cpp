@@ -118,6 +118,11 @@ DeveloperScene::DeveloperScene()
 		- DM maybe get a whistle or something from Dawn to swap helpers at any time?
 		- DM Missing way to obtain hats (craftable?)
 		- CV Missing "what is this" text on crypt
+		- CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
+		- CV disable study Mabel dialogue interaction while hidden behind arcane
+		- CV PFX on unharvested souls
+		- CV secret tunnel feels unfinished
+		- CV rabies is tl;dr
 		- Maybe a ladder on ship art to show the point of entry
 		- Mana flask description wrong in combat
 		- Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)

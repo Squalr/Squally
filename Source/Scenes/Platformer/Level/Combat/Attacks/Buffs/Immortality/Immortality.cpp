@@ -137,7 +137,7 @@ void Immortality::registerHackables()
 							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_Immortality_CommentApplyImmortality::create()),
 							ConstantString::create("applyImmortality:\n"),
 							ConstantString::create("mov esi, 1\n\n"),
-							ConstantString::create("skipCode:\n\n)"),
+							ConstantString::create("skipCode:\n\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create()),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJe::create()),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),

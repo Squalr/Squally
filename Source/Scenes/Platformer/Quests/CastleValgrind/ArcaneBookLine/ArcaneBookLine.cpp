@@ -21,8 +21,7 @@ ArcaneBookLine* ArcaneBookLine::create()
 ArcaneBookLine::ArcaneBookLine() : super(ArcaneBookLine::MapKeyQuestLine,
 	{
 		QuestData(TakeArcaneBook::MapKeyQuest, false, [](GameObject* owner, QuestLine* questLine) { return TakeArcaneBook::create(owner, questLine); }),
-	},
-	(QuestLine*)CureKingLine::create(), UnhauntCastle::MapKeyQuest)
+	})
 {
 }
 

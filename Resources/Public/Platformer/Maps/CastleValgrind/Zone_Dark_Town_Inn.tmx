@@ -292,7 +292,7 @@
     <property name="components" value="ally"/>
    </properties>
   </object>
-  <object id="834" name="rogas" type="entity" x="1907.3" y="938.117" width="128" height="128">
+  <object id="834" name="rogas" type="entity" x="2097.3" y="942.117" width="128" height="128">
    <properties>
     <property name="components" value="friendly,haunted,pacing,pick-pocket"/>
     <property name="haunted-key" value="abomination"/>

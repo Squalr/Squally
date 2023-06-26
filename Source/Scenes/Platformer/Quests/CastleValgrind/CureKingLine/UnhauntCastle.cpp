@@ -22,6 +22,7 @@
 #include "Objects/Camera/CameraStop.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Haunted/EntityHauntedBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/UnderflowRuins/FountainRoomKey.h"
@@ -83,6 +84,26 @@ void UnhauntCastle::onLoad(QuestState questState)
 	{
 		this->squally = squally;
 	}, Squally::MapKey);
+
+	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
+	{
+		this->secretDoorPortal = portal;
+
+		if (questState != QuestState::None)
+		{
+			this->secretDoorPortal->unlock();
+		}
+	}, "secret-door");
+
+	ObjectEvents::WatchForObject<GameObject>(this, [=](GameObject* bookshelf)
+	{
+		this->bookshelf = bookshelf;
+
+		if (questState == QuestState::Complete)
+		{
+			this->moveBookshelf(false);
+		}
+	}, "secret-bookshelf");
 }
 
 void UnhauntCastle::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
@@ -99,10 +120,19 @@ void UnhauntCastle::onActivate(bool isActiveThroughSkippable, bool isInitialActi
 
 void UnhauntCastle::onComplete()
 {
+	this->moveBookshelf(true);
+
+	if (this->secretDoorPortal != nullptr)
+	{
+		this->secretDoorPortal->unlock();
+	}
+
 	this->mabel->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 	{
 		questBehavior->disableAll();
 	});
+
+	Objectives::SetCurrentObjective(ObjectiveKeys::CVExploreSecretTunnel);
 }
 
 void UnhauntCastle::onSkipped()
@@ -113,6 +143,13 @@ void UnhauntCastle::onSkipped()
 void UnhauntCastle::updateQuestVisuals()
 {
 	if (this->mabel == nullptr)
+	{
+		return;
+	}
+
+	bool isOtherWorld = GameUtils::getKeyOrDefault(this->mabel->properties, EntityHauntedBehavior::PropertyOtherWorld, Value(false)).asBool();
+
+	if (isOtherWorld)
 	{
 		return;
 	}
@@ -163,7 +200,53 @@ void UnhauntCastle::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_W_TakeArcaneBook::create(),
+			Strings::Platformer_Ellipses::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Left,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->mabel, true),
+				true
+			),
+			[=]()
+			{
+			},
+			"",
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_W_ThroneRoomBlocked::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->mabel, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceQuestion(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_X_SecretTunnels::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->mabel, true)
+			),
+			[=]()
+			{
+			},
+			Voices::GetNextVoiceMedium(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_Y_Perhaps::create(),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
@@ -174,7 +257,7 @@ void UnhauntCastle::runCinematicSequence()
 			{
 				this->complete();
 			},
-			Voices::GetNextVoiceShort(),
+			Voices::GetNextVoiceQuestion(),
 			true
 		));
 	});
@@ -211,4 +294,26 @@ void UnhauntCastle::setPreText()
 			));
 		});
 	});
+}
+
+void UnhauntCastle::moveBookshelf(bool animate)
+{
+	if (this->bookshelf == nullptr)
+	{
+		return;
+	}
+
+	Vec2 startPos = this->bookshelf->getPosition();
+
+	if (animate)
+	{
+		this->bookshelf->runAction(Sequence::create(
+			EaseSineInOut::create(MoveTo::create(1.0f, startPos + Vec2(512.0f, 0.0f))),
+			nullptr
+		));
+	}
+	else
+	{
+		this->bookshelf->setPositionX(startPos.x + 512.0f);
+	}
 }

@@ -7,7 +7,6 @@ class Perceptron;
 class Gecky;
 class Guano;
 class Mabel;
-class Portal;
 class QuestLine;
 class Scrappy;
 class Squally;
@@ -31,7 +30,6 @@ protected:
 private:
 	typedef QuestTask super;
 
-	void moveBookshelf(bool animate);
 	void runCinematicSequencePt1();
 
 	Gecky* gecky = nullptr;
@@ -40,6 +38,4 @@ private:
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 	ArcaneBook* arcaneBook = nullptr;
-	GameObject* bookshelf = nullptr;
-	Portal* secretDoorPortal = nullptr;
 };

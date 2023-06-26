@@ -33264,6 +33264,21 @@ namespace Strings
 		virtual ~Platformer_Objectives_CastleValgrind_CV_EnterLambdaCrypts() = default;
 	};
 
+	class Platformer_Objectives_CastleValgrind_CV_ExamineArcaneEnergy : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Objectives_CastleValgrind_CV_ExamineArcaneEnergy();
+		virtual ~Platformer_Objectives_CastleValgrind_CV_ExamineArcaneEnergy() = default;
+	};
+
 	class Platformer_Objectives_CastleValgrind_CV_ExploreDarkSide : public LocalizedString
 	{
 	public:
@@ -34944,7 +34959,7 @@ namespace Strings
 		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_V_ThankYou() = default;
 	};
 
-	class Platformer_Quests_CastleValgrind_CureKing_Mabel_W_TakeArcaneBook : public LocalizedString
+	class Platformer_Quests_CastleValgrind_CureKing_Mabel_W_ThroneRoomBlocked : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -34955,8 +34970,38 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_CastleValgrind_CureKing_Mabel_W_TakeArcaneBook();
-		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_W_TakeArcaneBook() = default;
+		Platformer_Quests_CastleValgrind_CureKing_Mabel_W_ThroneRoomBlocked();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_W_ThroneRoomBlocked() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Mabel_X_SecretTunnels : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Mabel_X_SecretTunnels();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_X_SecretTunnels() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Mabel_Y_Perhaps : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Mabel_Y_Perhaps();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_Y_Perhaps() = default;
 	};
 
 	class Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass : public LocalizedString

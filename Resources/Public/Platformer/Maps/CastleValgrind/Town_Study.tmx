@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="98" nextobjectid="878">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="40" height="10" tilewidth="128" tileheight="128" infinite="0" nextlayerid="98" nextobjectid="881">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -256,8 +256,16 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="817" name="Generic/Bookshelf1" type="decor" x="2582.78" y="588" width="727" height="608"/>
-  <object id="818" name="Generic/Bookshelf1" type="decor" x="166.513" y="587.658" width="727" height="608"/>
-  <object id="819" name="Generic/BookshelfGap" type="decor" x="3862" y="586.494" width="727" height="608">
+  <object id="878" name="Generic/BookshelfGap" type="decor" x="427.045" y="584.97" width="727" height="608"/>
+  <object id="879" name="arcane-book" type="object" x="723.485" y="930.625" width="128" height="128">
+   <properties>
+    <property name="quest" value="take-arcane-book"/>
+    <property name="quest-line" value="arcane-book"/>
+    <property name="reward-pool" value="arcane-book"/>
+    <property name="send-event" value="arcane-book-taken"/>
+   </properties>
+  </object>
+  <object id="880" name="Generic/Bookshelf1" type="decor" x="3861.72" y="585.833" width="727" height="608">
    <properties>
     <property name="tag" value="secret-bookshelf"/>
    </properties>
@@ -307,7 +315,7 @@
     <property name="tag" value="exit"/>
    </properties>
   </object>
-  <object id="832" name="portal" type="object" x="752.009" y="935.314" width="256" height="256">
+  <object id="832" name="portal" type="object" x="1222.68" y="939.314" width="256" height="256">
    <properties>
     <property name="components" value="locked-portal"/>
     <property name="locked-text-key" value="none"/>
@@ -315,15 +323,7 @@
     <property name="transition" value="debug"/>
    </properties>
   </object>
-  <object id="871" name="arcane-book" type="object" x="4158.44" y="932.149" width="128" height="128">
-   <properties>
-    <property name="quest" value="take-arcane-book"/>
-    <property name="quest-line" value="arcane-book"/>
-    <property name="reward-pool" value="arcane-book"/>
-    <property name="send-event" value="arcane-book-taken"/>
-   </properties>
-  </object>
-  <object id="876" name="hexus-shrine" type="object" x="999.64" y="934.385" width="155" height="260">
+  <object id="876" name="hexus-shrine" type="object" x="159.64" y="934.385" width="155" height="260">
    <properties>
     <property name="entity-tag" value="hexus-reaper"/>
    </properties>

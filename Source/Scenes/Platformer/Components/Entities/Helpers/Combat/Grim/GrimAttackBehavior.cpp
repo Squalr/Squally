@@ -50,8 +50,8 @@ void GrimAttackBehavior::onLoad()
 		int minAttack = std::get<0>(attackRange);
 		int maxAttack = std::get<1>(attackRange);
 
-		attackBehavior->registerAttack(BasicSlashAxe::create(minAttack, maxAttack, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 		attackBehavior->registerAttack(CastLifeSteal::create(minAttack, maxAttack, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
+		attackBehavior->registerAttack(BasicSlashAxe::create(minAttack, maxAttack, 0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 		attackBehavior->registerDefensive(CastDefend::create(0.7f, EntityAttackBehavior::DefaultRecoverSpeed, PlatformerAttack::Priority::Common));
 	});
 }

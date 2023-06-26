@@ -311,8 +311,8 @@
    <properties>
     <property name="components" value="friendly,haunted,pacing,pick-pocket"/>
     <property name="other-world" type="bool" value="true"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
+    <property name="quest" value="unhaunt-castle"/>
+    <property name="quest-line" value="cure-king"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>

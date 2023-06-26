@@ -59,11 +59,6 @@ void TakeArcaneBook::onLoad(QuestState questState)
 		this->guano = guano;
 	}, Guano::MapKey);
 
-	ObjectEvents::WatchForObject<GameObject>(this, [=](GameObject* bookshelf)
-	{
-		this->bookshelf = bookshelf;
-	}, "secret-bookshelf");
-
 	ObjectEvents::WatchForObject<Gecky>(this, [=](Gecky* gecky)
 	{
 		this->gecky = gecky;
@@ -84,42 +79,22 @@ void TakeArcaneBook::onLoad(QuestState questState)
 		this->mabel = mabel;
 	}, Mabel::MapKey);
 
-	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
-	{
-		this->secretDoorPortal = portal;
-
-		if (questState != QuestState::None)
-		{
-			this->secretDoorPortal->unlock();
-		}
-	}, "secret-door");
-
 	if (this->arcaneBook != nullptr)
 	{
 		if (questState == QuestState::None)
 		{
 			this->arcaneBook->disable();
 		}
-		else
-		{
-			this->moveBookshelf(false);
-		}
 	}
 
 	this->listenForMapEventOnce("arcane-book-taken", [=](ValueMap)
 	{
-		this->complete();
-		this->moveBookshelf(true);
-
-		if (this->secretDoorPortal != nullptr)
-		{
-			this->secretDoorPortal->unlock();
-		}
-
 		if (this->arcaneBook != nullptr)
 		{
 			this->arcaneBook->disable();
 		}
+		
+		this->complete();
 	});
 }
 
@@ -137,35 +112,12 @@ void TakeArcaneBook::onActivate(bool isActiveThroughSkippable, bool isInitialAct
 
 void TakeArcaneBook::onComplete()
 {
-	// An objective to check dark side?
-	// Objectives::SetCurrentObjective(ObjectiveKeys::CVTakeArcaneBook);
+	Objectives::SetCurrentObjective(ObjectiveKeys::CVExamineArcaneEnergy);
 }
 
 void TakeArcaneBook::onSkipped()
 {
 	this->removeAllListeners();
-}
-
-void TakeArcaneBook::moveBookshelf(bool animate)
-{
-	if (this->bookshelf == nullptr)
-	{
-		return;
-	}
-
-	Vec2 startPos = this->bookshelf->getPosition();
-
-	if (animate)
-	{
-		this->bookshelf->runAction(Sequence::create(
-			EaseSineInOut::create(MoveTo::create(1.0f, startPos + Vec2(512.0f, 0.0f))),
-			nullptr
-		));
-	}
-	else
-	{
-		this->bookshelf->setPositionX(startPos.x + 512.0f);
-	}
 }
 
 void TakeArcaneBook::runCinematicSequencePt1()

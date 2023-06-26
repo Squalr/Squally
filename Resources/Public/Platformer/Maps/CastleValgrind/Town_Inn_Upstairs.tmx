@@ -47,18 +47,18 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="816" name="ruins-gray-dark" type="terrain" x="801" y="-87.335" width="110" height="1366.67">
+  <object id="816" name="wood" type="terrain" x="801" y="-87.335" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="817" name="ruins-gray-dark" type="terrain" x="1243.97" y="-71.335" width="110" height="1366.67">
+  <object id="817" name="wood" type="terrain" x="1243.97" y="-71.335" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="107" name="stairs -4" visible="0">
+ <objectgroup id="107" name="stairs -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
@@ -74,12 +74,12 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="814" name="ruins-gray-dark" type="terrain" x="799" y="-89.335" width="110" height="1366.67">
+  <object id="814" name="wood" type="terrain" x="799" y="-89.335" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="815" name="ruins-gray-dark" type="terrain" x="1247" y="-71.335" width="110" height="1366.67">
+  <object id="815" name="wood" type="terrain" x="1247" y="-71.335" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -90,7 +90,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="805" name="ruins-gray" type="terrain" x="669.85" y="1064.27" width="748.3" height="139.455">
+  <object id="805" name="marble" type="terrain" x="669.85" y="1064.27" width="748.3" height="139.455">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -101,12 +101,12 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="812" name="ruins-gray-dark" type="terrain" x="802.333" y="-86.0017" width="110" height="1366.67">
+  <object id="812" name="wood" type="terrain" x="802.333" y="-86.0017" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="813" name="ruins-gray-dark" type="terrain" x="1247" y="-68.6683" width="110" height="1366.67">
+  <object id="813" name="wood" type="terrain" x="1247" y="-68.6683" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -117,7 +117,7 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="803" name="ruins-gray" type="terrain" x="673.85" y="1058.27" width="748.3" height="139.455">
+  <object id="803" name="marble" type="terrain" x="673.85" y="1058.27" width="748.3" height="139.455">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -128,12 +128,12 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="810" name="ruins-gray-dark" type="terrain" x="798.333" y="-86.0017" width="110" height="1366.67">
+  <object id="810" name="wood" type="terrain" x="798.333" y="-86.0017" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="811" name="ruins-gray-dark" type="terrain" x="1247.67" y="-72.6683" width="110" height="1366.67">
+  <object id="811" name="wood" type="terrain" x="1247.67" y="-72.6683" width="110" height="1366.67">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -144,7 +144,7 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="802" name="ruins-gray" type="terrain" x="672.85" y="1057.27" width="748.3" height="139.455">
+  <object id="802" name="marble" type="terrain" x="672.85" y="1057.27" width="748.3" height="139.455">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -195,7 +195,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="801" name="ruins-gray" type="terrain" x="-230.424" y="1063.39" width="2627.27" height="245.455"/>
+  <object id="801" name="marble" type="terrain" x="-230.424" y="1063.39" width="2627.27" height="245.455"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>

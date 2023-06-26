@@ -20,6 +20,8 @@ public:
 	void onSoulHarvested();
 
 	static const std::string MapKey;
+	static const std::string PropertyOtherWorld;
+	static const std::string PropertyHauntedKey;
 
 protected:
 	EntityHauntedBehavior(GameObject* owner);
@@ -37,7 +39,4 @@ private:
 	PlatformerFriendly* ownerAsFriendly = nullptr;
 	bool isOtherWorld = false;
 	std::string hauntedKey;
-
-	static const std::string PropertyOtherWorld;
-	static const std::string PropertyHauntedKey;
 };

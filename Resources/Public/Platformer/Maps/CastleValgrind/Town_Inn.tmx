@@ -324,7 +324,7 @@
     <property name="other-world" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="832" name="rogas" type="entity" x="1836.07" y="936.882" width="128" height="128">
+  <object id="832" name="rogas" type="entity" x="2061.4" y="938.215" width="128" height="128">
    <properties>
     <property name="components" value="cv-t4-hexus,friendly,haunted,pacing,pick-pocket"/>
     <property name="haunted-key" value="abomination"/>
