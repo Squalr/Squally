@@ -204,12 +204,12 @@ StatsTables::StatsTables()
 
 	StatsTables::StatsTable[Abomination::MapKey] = StatsIncrements(Stats(53, 8, 116));
 	StatsTables::StatsTable[Agnes::MapKey] = StatsIncrements(Stats(135, 20, 320));
-	StatsTables::StatsTable[Barbarian::MapKey] = StatsIncrements(Stats(55, 12, 95));
+	StatsTables::StatsTable[Barbarian::MapKey] = StatsIncrements(Stats(65, 12, 95));
 	StatsTables::StatsTable[Jack::MapKey] = StatsIncrements(Stats(85, 10, 160)); 
-	StatsTables::StatsTable[ReanimatedFighter::MapKey] = StatsIncrements(Stats(55, 10, 105));
+	StatsTables::StatsTable[ReanimatedFighter::MapKey] = StatsIncrements(Stats(68, 10, 105));
 	StatsTables::StatsTable[Reaper::MapKey] = StatsIncrements(Stats(15, 26, 125));
 	StatsTables::StatsTable[SkeletalBaron::MapKey] = StatsIncrements(Stats(84, 12, 130));
-	StatsTables::StatsTable[Thug::MapKey] = StatsIncrements(Stats(45, 4, 90));
+	StatsTables::StatsTable[Thug::MapKey] = StatsIncrements(Stats(48, 4, 90));
 	StatsTables::StatsTable[VampireLord::MapKey] = StatsIncrements(Stats(77, 8, 121));
 	StatsTables::StatsTable[Vampiress::MapKey] = StatsIncrements(Stats(46, 24, 118));
 	StatsTables::StatsTable[Undead::MapKey] = StatsIncrements(Stats(49, 6, 109));

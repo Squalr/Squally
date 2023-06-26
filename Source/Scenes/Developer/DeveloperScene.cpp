@@ -114,6 +114,10 @@ DeveloperScene::DeveloperScene()
 		- DM push/pop movement SFX
 		- DM stack should remain as the answer once solved
 		- DM diamond doesn't make sense here. Can use it in BG, but maybe move diamond carts to the right zones
+		- DM train NPCs fun dialogue
+		- DM maybe get a whistle or something from Dawn to swap helpers at any time?
+		- DM Missing way to obtain hats (craftable?)
+		- CV Missing "what is this" text on crypt
 		- Maybe a ladder on ship art to show the point of entry
 		- Mana flask description wrong in combat
 		- Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)

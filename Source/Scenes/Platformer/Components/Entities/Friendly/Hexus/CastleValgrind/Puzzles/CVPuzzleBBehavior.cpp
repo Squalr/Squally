@@ -59,7 +59,9 @@ std::vector<CardData*> CVPuzzleBBehavior::generateDeck()
 StateOverride* CVPuzzleBBehavior::getStateOverride()
 {
 	/*
-	- AND enemy b011
+	- SHR your own stuff
+	- AND a bunch of shit
+	- SHL again
 	*/
 	return StateOverride::create(
 		// Player losses
@@ -96,7 +98,9 @@ StateOverride* CVPuzzleBBehavior::getStateOverride()
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
+			CardList::getInstance()->cardListByName.at(CardKeys::LogicalAnd),
 			CardList::getInstance()->cardListByName.at(CardKeys::ShiftLeft),
+			CardList::getInstance()->cardListByName.at(CardKeys::ShiftRight),
 		},
 		// Enemy hand
 		std::vector<CardData*>
@@ -106,8 +110,8 @@ StateOverride* CVPuzzleBBehavior::getStateOverride()
 		// Player binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary3),
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
 		},
 		// Player decimal cards
 		std::vector<CardData*>
@@ -121,18 +125,20 @@ StateOverride* CVPuzzleBBehavior::getStateOverride()
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary10),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal9),
 		},
 		// Enemy hex cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Hex2),
+			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
+			CardList::getInstance()->cardListByName.at(CardKeys::Hex6),
+			CardList::getInstance()->cardListByName.at(CardKeys::Decimal7),
+			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 		}
 	);
 }
