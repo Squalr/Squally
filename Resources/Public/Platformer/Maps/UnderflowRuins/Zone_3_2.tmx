@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="46" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1163">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="46" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1163">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>

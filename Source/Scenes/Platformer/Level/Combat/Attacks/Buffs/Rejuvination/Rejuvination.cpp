@@ -116,12 +116,12 @@ void Rejuvination::registerHackables()
 						// x86
 						ConcatString::create({
 							ConstantString::create("rol edx, 1\n\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_CommentHint::create())
 						})
 						, // x64
 						ConcatString::create({
 							ConstantString::create("rol rdx, 1\n\n"),
-							Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_CommentHint::create()
+							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Rejuvination_CommentHint::create())
 						})
 					),
 				},

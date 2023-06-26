@@ -38,7 +38,7 @@ std::vector<std::tuple<Item*, int>> SteelBombRecipe::getReagentsInternal()
 {
 	return
 	{
-		{ Iron::create(), 1 },
+		{ Iron::create(), 2 },
 		{ WeakChitin::create(), 2 },
 		{ Coal::create(), 2 },
 	};

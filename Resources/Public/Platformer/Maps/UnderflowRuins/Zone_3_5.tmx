@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="1222">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="54" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="103" nextobjectid="1222">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -140,26 +140,6 @@
   <object id="1134" name="lever" type="object" x="4338.77" y="2642.95" width="177" height="205">
    <properties>
     <property name="send-event" value="bridge-group-B"/>
-   </properties>
-  </object>
-  <object id="1210" name="logic-torch" type="object" x="2579.11" y="967.94" width="101" height="111">
-   <properties>
-    <property name="color" value="blue"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="is-global-save" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="false"/>
-    <property name="is-one-use" type="bool" value="true"/>
-    <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_LEFT"/>
-   </properties>
-  </object>
-  <object id="1211" name="logic-torch" type="object" x="4259.29" y="1219.58" width="101" height="111">
-   <properties>
-    <property name="color" value="blue"/>
-    <property name="interactable" type="bool" value="true"/>
-    <property name="is-global-save" type="bool" value="true"/>
-    <property name="is-on" type="bool" value="false"/>
-    <property name="is-one-use" type="bool" value="true"/>
-    <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_RIGHT"/>
    </properties>
   </object>
  </objectgroup>

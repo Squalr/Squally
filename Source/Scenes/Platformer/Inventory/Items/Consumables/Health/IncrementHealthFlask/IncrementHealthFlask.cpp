@@ -72,7 +72,7 @@ bool IncrementHealthFlask::canUseOnTarget(PlatformerEntity* target)
 
 LocalizedString* IncrementHealthFlask::getDescription()
 {
-	return Strings::Items_Consumables_Health_HealthPotionDescription::create()
+	return Strings::Items_Consumables_Health_IncrementHealthFlaskDescription::create()
 		->setStringReplacementVariables({ ConstantString::create(std::to_string(int(IncrementHealthFlask::HealTicks))), ConstantString::create(std::to_string(int(IncrementHealthFlask::HealTicks))) });
 }
 

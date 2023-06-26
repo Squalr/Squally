@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="34" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="123" nextobjectid="877">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="34" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="125" nextobjectid="886">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BlueSky"/>
@@ -12,37 +12,59 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
+ <objectgroup id="124" name="mountain clouds bg">
+  <properties>
+   <property name="depth" type="float" value="-14500"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="885" name="Forest/Background/MountainClouds3" type="decor" x="4888" y="-2002" width="6016" height="1956"/>
+ </objectgroup>
  <objectgroup id="16" name="peaks far">
   <properties>
    <property name="depth" type="float" value="-14000"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="868" name="Snow/Background/Mountain1" type="decor" x="6224" y="-904" width="8648" height="3828"/>
+  <object id="868" name="Snow/Background/Mountain1" type="decor" x="6880" y="-1432" width="8648" height="3828"/>
  </objectgroup>
- <objectgroup id="115" name="peaks">
+ <objectgroup id="115" name="peaks" visible="0">
   <properties>
    <property name="depth" type="float" value="-12800"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="869" name="Snow/Background/Mountain2" type="decor" x="-2153" y="-3282" width="12576" height="6160"/>
  </objectgroup>
- <objectgroup id="116" name="far-clouds">
+ <objectgroup id="119" name="mountain clouds mg">
   <properties>
-   <property name="depth" type="float" value="-12000"/>
+   <property name="depth" type="float" value="-12500"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="870" name="Forest/Background/Clouds1" type="decor" x="-23765.5" y="-640" width="60896" height="3720">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
- <objectgroup id="119" name="mountain clouds fg">
+ <objectgroup id="123" name="mountain clouds fg">
   <properties>
    <property name="depth" type="float" value="-11500"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="873" name="Forest/Background/MountainClouds2" type="decor" x="-352" y="782" width="7680" height="1392"/>
+  <object id="883" name="Forest/Background/MountainClouds2" type="decor" x="7712" y="422" width="7680" height="1392">
+   <properties>
+    <property name="flip-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="884" name="Forest/Background/MountainClouds1" type="decor" x="944" y="-1770" width="4128" height="756">
+   <properties>
+    <property name="flip-x" type="bool" value="false"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="116" name="far-clouds" visible="0">
+  <properties>
+   <property name="depth" type="float" value="-12000"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="870" name="Forest/Background/Clouds1" type="decor" x="-18261.5" y="-576" width="60896" height="3720">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="117" name="mountains bg">
   <properties>

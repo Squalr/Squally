@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="108" nextobjectid="1194">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="108" nextobjectid="1198">
  <properties>
   <property name="rubber-band" type="int" value="8"/>
  </properties>
@@ -69,7 +69,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1176" name="caged-squirrel" type="object" x="1005" y="1224" width="196" height="112"/>
   <object id="1178" name="vase" type="object" x="1271.5" y="1176" width="113" height="160">
    <properties>
     <property name="color" value="yellow"/>
@@ -80,6 +79,16 @@
    <properties>
     <property name="color" value="yellow"/>
     <property name="spawn-pool" value="spawn-pool-ur"/>
+   </properties>
+  </object>
+  <object id="1197" name="logic-torch" type="object" x="1043.5" y="1225.5" width="101" height="111">
+   <properties>
+    <property name="color" value="blue"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="is-one-use" type="bool" value="true"/>
+    <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_LEFT"/>
    </properties>
   </object>
  </objectgroup>
@@ -249,6 +258,7 @@
     <property name="spawn-pool" value="spawn-pool-ur"/>
    </properties>
   </object>
+  <object id="1196" name="caged-squirrel" type="object" x="1007" y="1292" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="71" name="decor">
   <properties>
@@ -282,11 +292,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="966.5" y="1276.68" width="128" height="128">
-   <properties>
-    <property name="components" value="squally"/>
-   </properties>
-  </object>
   <object id="1032" name="warp" type="object" x="273.64" y="1144.97" width="256" height="256">
    <properties>
     <property name="from" value="3-A"/>
@@ -444,7 +449,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="96" name="objects +3">
+ <objectgroup id="96" name="objects +3" visible="0">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
@@ -528,6 +533,11 @@
   <object id="1193" name="spawn" type="object" x="1650.3" y="2713.21" width="128" height="128">
    <properties>
     <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
+  <object id="1195" name="squally" type="entity" x="1348" y="1438" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
    </properties>
   </object>
  </objectgroup>

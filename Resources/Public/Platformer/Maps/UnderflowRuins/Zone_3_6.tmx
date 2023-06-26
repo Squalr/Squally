@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="107" nextobjectid="1192">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="107" nextobjectid="1196">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -66,15 +66,20 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1176" name="chest" type="object" x="2775.15" y="1208.42" width="128" height="128">
-   <properties>
-    <property name="reward-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="1181" name="vase" type="object" x="2954.83" y="1176" width="113" height="160">
+  <object id="1181" name="vase" type="object" x="2996.16" y="1176" width="113" height="160">
    <properties>
     <property name="color" value="clay"/>
     <property name="spawn-pool" value="spawn-pool-ur"/>
+   </properties>
+  </object>
+  <object id="1194" name="logic-torch" type="object" x="2861.5" y="1225.83" width="101" height="111">
+   <properties>
+    <property name="color" value="blue"/>
+    <property name="interactable" type="bool" value="true"/>
+    <property name="is-global-save" type="bool" value="true"/>
+    <property name="is-on" type="bool" value="false"/>
+    <property name="is-one-use" type="bool" value="true"/>
+    <property name="save-key" value="SAVE_KEY_TEMPLE_BLUE_RIGHT"/>
    </properties>
   </object>
  </objectgroup>
@@ -243,6 +248,11 @@
     <property name="entity-tag" value="hexus-anubis-pup"/>
    </properties>
   </object>
+  <object id="1195" name="chest" type="object" x="2841.33" y="1276" width="128" height="128">
+   <properties>
+    <property name="reward-pool" value="ur-generic"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="decor">
   <properties>
@@ -282,11 +292,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="523" name="squally" type="entity" x="2758.5" y="1276.68" width="128" height="128">
-   <properties>
-    <property name="components" value="squally"/>
-   </properties>
-  </object>
   <object id="1032" name="warp" type="object" x="2065.64" y="1144.97" width="256" height="256">
    <properties>
     <property name="from" value="3-A"/>
@@ -438,7 +443,7 @@
   </object>
   <object id="1175" name="ruins-thick" type="terrain" x="-83.315" y="2880" width="3326.63" height="576"/>
  </objectgroup>
- <objectgroup id="96" name="objects +3">
+ <objectgroup id="96" name="objects +3" visible="0">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
@@ -541,6 +546,11 @@
   <object id="1191" name="spawn" type="object" x="2209.7" y="2750.79" width="128" height="128">
    <properties>
     <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
+  <object id="1193" name="squally" type="entity" x="3057.33" y="1433.33" width="128" height="128">
+   <properties>
+    <property name="components" value="squally"/>
    </properties>
   </object>
  </objectgroup>

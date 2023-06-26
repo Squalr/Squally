@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="863">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="76" nextobjectid="866">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -64,6 +64,11 @@
    </properties>
   </object>
   <object id="855" name="crusher" type="object" x="1393.05" y="807.622" width="341" height="782.937"/>
+  <object id="863" name="life-stone" type="object" x="927" y="1173.35" width="146" height="423">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="69" name="entities -4">
   <properties>
@@ -89,6 +94,11 @@
   <object id="828" name="spawn" type="object" x="375.067" y="1463.39" width="128" height="128">
    <properties>
     <property name="transition" value="right-back"/>
+   </properties>
+  </object>
+  <object id="865" name="spawn" type="object" x="934.72" y="1458.85" width="128" height="128">
+   <properties>
+    <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
  </objectgroup>

@@ -35,7 +35,7 @@ TikiGolem::~TikiGolem()
 
 Vec2 TikiGolem::getDialogueOffset()
 {
-	return Vec2(-32.0f, -128.0f);
+	return Vec2(-32.0f, -32.0f);
 }
 
 LocalizedString* TikiGolem::getEntityName()

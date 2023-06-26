@@ -72,7 +72,7 @@ bool IncrementManaFlask::canUseOnTarget(PlatformerEntity* target)
 
 LocalizedString* IncrementManaFlask::getDescription()
 {
-	return Strings::Items_Consumables_Mana_ManaPotionDescription::create()
+	return Strings::Items_Consumables_Mana_IncrementManaFlaskDescription::create()
 		->setStringReplacementVariables({ ConstantString::create(std::to_string(int(IncrementManaFlask::HealTicks))), ConstantString::create(std::to_string(int(IncrementManaFlask::HealTicks))) });
 }
 

@@ -127,13 +127,14 @@ StateOverride* DMPuzzleDBehavior::getStateOverride()
 		// Enemy binary cards
 		std::vector<CardData*>
 		{
-			CardList::getInstance()->cardListByName.at(CardKeys::Binary14),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary6),
+			CardList::getInstance()->cardListByName.at(CardKeys::Binary11),
 		},
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
 			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
-			CardList::getInstance()->cardListByName.at(CardKeys::Decimal14),
 			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
 		},
 		// Enemy hex cards

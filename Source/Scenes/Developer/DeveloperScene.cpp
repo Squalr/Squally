@@ -97,9 +97,14 @@ DeveloperScene::DeveloperScene()
 		- * EF Gramps fun dialogue
 		- * EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- UR cistern Chest + Puzzle + Animal is overwhelming and lazy
+		- UR sky's reach color balance
+		- UR - Entity shadow is altered by IsAlive, but petrified UR entities are technically dead
 		- Bard floating in EF portal
 		- UR Gauntlet - Pushers should patrol back then despawn.
 		- UR Gauntlet - Critical hit indicator (big explosion? maybe tiny explosion otherwise)
+		- UR Pyramid still fucking sucks. Cutting it in half helps a bit. Needs work. Maybe lightning.
+		- UR Guano falls through platforms.
+		- DM Rockslide fight is boring, should make this heal enemy (thus inverting == kill enemy)
 		- Have Lycan give weapon, and Lianna give something else
 		- Defend cast sfx
 		- Music
@@ -138,7 +143,7 @@ DeveloperScene::DeveloperScene()
 			- * Frost SpellBook (?? / ??)
 		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 		- Hexus:
-			- Can pass after auto-loss
+			- Can pass after auto-victory or loss (try it in a puzzle)
 			- Leave button stuck visible after losing a puzzle
 			- Enemy should pre-calc the best play when player has passed (hard)
 			vv It'd be nice to get SHL from the puzzle where you learn it. I guess just tailored pools or something. May scrap this.
