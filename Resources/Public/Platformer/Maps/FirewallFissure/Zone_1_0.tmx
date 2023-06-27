@@ -1008,7 +1008,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="FirewallFissure/Combat_Lava"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,soul,agro,melee"/>
+    <property name="components" value="enemy,soul,agro,goblin-shaman-attack"/>
     <property name="drop-pool" value="ff-generic"/>
    </properties>
   </object>

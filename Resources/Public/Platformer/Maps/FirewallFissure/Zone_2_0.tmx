@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1979">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1981">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -464,19 +464,19 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1865" name="lava-golem" type="entity" x="3500.42" y="2024.37" width="128" height="128">
+  <object id="1979" name="fire-elemental" type="entity" x="3486.6" y="2021.89" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
-    <property name="battle-tag" value="group-a"/>
+    <property name="battle-tag" value="group-b"/>
     <property name="components" value="enemy,soul,agro,z-fade"/>
     <property name="drop-pool" value="ff-generic"/>
    </properties>
   </object>
-  <object id="1866" name="lava-golem" type="entity" x="3507.58" y="1635.63" width="128" height="128">
+  <object id="1980" name="fire-elemental" type="entity" x="3485.76" y="1733.15" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
+    <property name="battle-tag" value="group-b"/>
     <property name="components" value="ally"/>
    </properties>
   </object>

@@ -13,6 +13,7 @@
 #include "Entities/Platformer/Helpers/CastleValgrind/Grim.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/Grim/GrimEqBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
@@ -58,6 +59,10 @@ void GrimHealthBehavior::onLoad()
 	
 	this->grim->watchForComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
+		// Hacky fix -- this data needs to be available to calculate max HP properly. Solving the data race would be a difficult refactor, not worth it.
+		this->grim->setState(StateKeys::Eq, SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGrimEq, Value(GrimEqBehavior::DefaultLevel)));
+		this->grim->setState(StateKeys::EqExperience, SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGrimEqExperience, Value(0)));
+
 		int health = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGrimHealth, Value(healthBehavior->getMaxHealth())).asInt();
 
 		healthBehavior->setHealth(health);

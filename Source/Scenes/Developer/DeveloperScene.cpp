@@ -112,6 +112,7 @@ DeveloperScene::DeveloperScene()
 		- DM Drak should ride ferry too
 		- DM Maybe allow combat from hitting helper, so that arrow matters
 		- DM Stalactite SFX
+		- DM can maybe show stalactite in a harmless way first (maybe even Scrappy callout for use ability when it matters)
 		- DM push/pop movement SFX
 		- DM stack should remain as the answer once solved
 		- DM diamond doesn't make sense here. Can use it in BG, but maybe move diamond carts to the right zones
@@ -128,13 +129,20 @@ DeveloperScene::DeveloperScene()
 		- CV friendly text on Elric after bitten dialogue
 		- LC poisoned arrows are tl;dr
 		- LC blue gem map feels empty. Traps?
+		- LC unholy blade tl;dr
+		- LC cursed blade tl;dr
+		- FF first girl friendly text
+		- FF cauterize should use a flame animation of sorts
+		- FF enflame should use a flame animation of sorts. Also position is wrong
+		- FF fire rain needs SFX
+		- Maybe update Drak text upon crafting demon heart
 		- Maybe a ladder on ship art to show the point of entry
 		- Mana flask description wrong in combat
 		- Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
 		- Defend cast sfx
 		- Music
 			- [Awaiting Response] https://usfourmusic.com/contact (The Storm Begins)
-			- [Awaiting Contract] https://philipwesley.com/contact/ (Far and Away / Racing Against the Sunset)
+			- [Contract Signed] https://philipwesley.com/contact/ (Far and Away / Racing Against the Sunset)
 			- [Contract Signed] https://michelemclaughlin.com/pages/contact (Preserverence)
 			- [Contract Signed] https://www.instagram.com/anthonybadensaggers (Two steps too often aside)
 		- v Wontfix? Missing Shadow ability: Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)

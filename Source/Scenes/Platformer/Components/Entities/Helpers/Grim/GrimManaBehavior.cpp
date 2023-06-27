@@ -8,6 +8,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/CastleValgrind/Grim.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/Grim/GrimEqBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
@@ -52,6 +53,10 @@ void GrimManaBehavior::onLoad()
 	
 	this->grim->watchForComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
+		// Hacky fix -- this data needs to be available to calculate max MP properly. Solving the data race would be a difficult refactor, not worth it.
+		this->grim->setState(StateKeys::Eq, SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGrimEq, Value(GrimEqBehavior::DefaultLevel)));
+		this->grim->setState(StateKeys::EqExperience, SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGrimEqExperience, Value(0)));
+
 		int mana = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGrimMana, Value(manaBehavior->getMaxMana())).asInt();
 
 		manaBehavior->setMana(mana);

@@ -284,7 +284,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[DemonWarrior::MapKey] = StatsIncrements(Stats(80, 8, 136));
 	StatsTables::StatsTable[FireElemental::MapKey] = StatsIncrements(Stats(89, 8, 127));
 	StatsTables::StatsTable[FireTiger::MapKey] = StatsIncrements(Stats(91, 8, 138));
-	StatsTables::StatsTable[LavaGolem::MapKey] = StatsIncrements(Stats(96, 11, 130));
+	StatsTables::StatsTable[LavaGolem::MapKey] = StatsIncrements(Stats(87, 11, 130));
 
 	StatsTables::StatsTable[Ash::MapKey] = NpcStats;
 	StatsTables::StatsTable[Brine::MapKey] = NpcStats;

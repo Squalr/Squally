@@ -10179,6 +10179,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Abilities_Cauterize_CommentAdd() = default;
 	};
 
+	class Menus_Hacking_Abilities_Abilities_Cauterize_CommentHint : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Abilities_Cauterize_CommentHint();
+		virtual ~Menus_Hacking_Abilities_Abilities_Cauterize_CommentHint() = default;
+	};
+
 	class Menus_Hacking_Abilities_Abilities_Cauterize_RegisterEax : public LocalizedString
 	{
 	public:
@@ -37642,6 +37657,21 @@ namespace Strings
 	private:
 		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_Guano_Brutal();
 		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_Guano_Brutal() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Guano_Brutal : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Guano_Brutal();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Guano_Brutal() = default;
 	};
 
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_HellCrystalPurpose : public LocalizedString

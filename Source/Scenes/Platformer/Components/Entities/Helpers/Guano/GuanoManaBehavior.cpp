@@ -8,6 +8,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/Guano/GuanoEqBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
@@ -52,6 +53,10 @@ void GuanoManaBehavior::onLoad()
 	
 	this->guano->watchForComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
+		// Hacky fix -- this data needs to be available to calculate max MP properly. Solving the data race would be a difficult refactor, not worth it.
+		this->guano->setState(StateKeys::Eq, SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGuanoEq, Value(1)));
+		this->guano->setState(StateKeys::EqExperience, SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGuanoEqExperience, Value(0)));
+
 		int mana = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGuanoMana, Value(manaBehavior->getMaxMana())).asInt();
 
 		manaBehavior->setMana(mana);

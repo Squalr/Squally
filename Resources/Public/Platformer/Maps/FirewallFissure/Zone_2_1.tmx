@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="43" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1982">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="43" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1985">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -18,6 +18,13 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="837" name="magma" type="texture" x="-1862.54" y="-1095.82" width="9917.1" height="5447.64"/>
+  <object id="1984" name="fire-elemental" type="entity" x="2078" y="1756" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-tag" value="group-a"/>
+    <property name="components" value="ally"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="115" name="decor -8">
   <properties>
@@ -187,19 +194,19 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="1.5"/>
   </properties>
-  <object id="1974" name="fire-elemental" type="entity" x="2184.54" y="1998.98" width="128" height="128">
+  <object id="1982" name="lava-golem" type="entity" x="2180.42" y="2013.03" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
-    <property name="battle-tag" value="group-b"/>
+    <property name="battle-tag" value="group-a"/>
     <property name="components" value="enemy,soul,agro,z-fade"/>
     <property name="drop-pool" value="ff-generic"/>
    </properties>
   </object>
-  <object id="1975" name="fire-elemental" type="entity" x="2167.7" y="1778.24" width="128" height="128">
+  <object id="1983" name="lava-golem" type="entity" x="2262.58" y="1750.97" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-b"/>
+    <property name="battle-tag" value="group-a"/>
     <property name="components" value="ally"/>
    </properties>
   </object>

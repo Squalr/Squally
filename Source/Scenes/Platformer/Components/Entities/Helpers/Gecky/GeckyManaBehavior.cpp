@@ -8,6 +8,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/DataMines/Gecky.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/Gecky/GeckyEqBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
@@ -52,6 +53,10 @@ void GeckyManaBehavior::onLoad()
 	
 	this->gecky->watchForComponent<EntityManaBehavior>([=](EntityManaBehavior* manaBehavior)
 	{
+		// Hacky fix -- this data needs to be available to calculate max MP properly. Solving the data race would be a difficult refactor, not worth it.
+		this->gecky->setState(StateKeys::Eq, SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyEq, Value(GeckyEqBehavior::DefaultLevel)));
+		this->gecky->setState(StateKeys::EqExperience, SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyEqExperience, Value(0)));
+
 		int mana = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyMana, Value(manaBehavior->getMaxMana())).asInt();
 
 		manaBehavior->setMana(mana);
