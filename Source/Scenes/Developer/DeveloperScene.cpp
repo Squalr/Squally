@@ -86,13 +86,15 @@ DeveloperScene::DeveloperScene()
 			- Scifi (edges color)
 		- Daze script too long
 		- Lock warp room until UR or something
-		- More transmutes
-		- Consumeable descriptions wrong placement
+		- More transmutes (perhaps custom UI to show a transmute wheel)
 		- Jitter standing in place
 		- Lightning ability VFX broken
+		- Card pricing is insanity
+		- Enveloping winds sucks, swap it with a teleport maybe
+		- Shadow spellbook to allow swapping helpers?
+			- Move the shadow spellbook somewhere better. Maybe even late CV.
 		- * Potion SFX should not be paused on potion menu
 		- * Pressing left on "select target" in combat should go back to prior menu, not base menu
-		- * EF perceptron chase 1 busted (movement broken [Fixed now?], Perceptron should not spawn in visible from below)
 		- * EF Mara fun dialogue
 		- * EF Gramps fun dialogue
 		- * EF Have Lycan give weapon, and Lianna give something else
@@ -135,6 +137,14 @@ DeveloperScene::DeveloperScene()
 		- FF cauterize should use a flame animation of sorts
 		- FF enflame should use a flame animation of sorts. Also position is wrong
 		- FF fire rain needs SFX
+		- FF lava escape needs screen shake, SFX
+		- FF lava escape -- what happens on return?
+		- FF MissingNo in pocket pools
+		- FF Lava flood quest broken fully, path already revealed
+		- FF puzzle in 3_2 (?) appears to be a duplicate
+		- FF lava raise TODOs
+		- FF post asmodeus door doesn't open until map reload
+		- Should show drowned corpses in lava instead of despawn
 		- Maybe update Drak text upon crafting demon heart
 		- Maybe a ladder on ship art to show the point of entry
 		- Mana flask description wrong in combat

@@ -857,7 +857,7 @@
   </object>
   <object id="983" name="portal" type="object" x="780.667" y="1513.33" width="256" height="256">
    <properties>
-    <property name="map" value="FirewallFissure/Zone_3_2"/>
+    <property name="map" value="FirewallFissure/Zone_3_0"/>
     <property name="transition" value="pathway"/>
    </properties>
   </object>

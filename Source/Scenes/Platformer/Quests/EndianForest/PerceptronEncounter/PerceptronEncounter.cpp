@@ -84,6 +84,7 @@ void PerceptronEncounter::onLoad(QuestState questState)
 		}
 		else
 		{
+			this->perceptron->setVisible(false);
 			this->perceptron->getComponent<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
 			{
 				movementBehavior->setMoveAcceleration(EntityMovementBehavior::DefaultRunAcceleration);
@@ -119,7 +120,11 @@ void PerceptronEncounter::onLoad(QuestState questState)
 		{
 			this->cinematicKillTarget->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 			{
-				healthBehavior->revive();
+				// Defer to let initial health behavior load properly
+				this->defer([=]()
+				{
+					healthBehavior->revive();
+				});
 			});
 		}
 	}, "cinematic-kill-target");
@@ -193,7 +198,7 @@ void PerceptronEncounter::update(float dt)
 			});
 		}
 
-		if (this->elapsedChaseTime > 12.0f)
+		if (this->elapsedChaseTime > 15.0f)
 		{
 			// Time's up. Success if in safe area, or have already snuck past Perceptron
 			if (this->isInSafeZone || squallyPos.x > perceptronPos.x)
@@ -250,6 +255,7 @@ void PerceptronEncounter::runCinematicSequencePt1()
 			{
 				if (this->perceptron != nullptr)
 				{
+					this->perceptron->setVisible(true);
 					this->perceptron->setState(StateKeys::CinematicHijacked, Value(true));
 					this->perceptron->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->perceptron).x));
 					this->perceptron->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(exit).x));
