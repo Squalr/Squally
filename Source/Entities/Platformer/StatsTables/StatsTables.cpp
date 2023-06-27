@@ -246,12 +246,12 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[KingZul::MapKey] = StatsIncrements(Stats(160, 18, 236));
 	StatsTables::StatsTable[Lazarus::MapKey] = StatsIncrements(Stats(124, 38, 214));
 	StatsTables::StatsTable[Mystic::MapKey] = StatsIncrements(Stats(72, 22, 110));
-	StatsTables::StatsTable[ReanimatedPig::MapKey] = StatsIncrements(Stats(55, 10, 105));
+	StatsTables::StatsTable[ReanimatedPig::MapKey] = StatsIncrements(Stats(75, 10, 105));
 	StatsTables::StatsTable[SkeletalCleaver::MapKey] = StatsIncrements(Stats(57, 8, 123));
 	StatsTables::StatsTable[SkeletalKnight::MapKey] = StatsIncrements(Stats(62, 10, 122));
 	StatsTables::StatsTable[SkeletalPriestess::MapKey] = StatsIncrements(Stats(56, 20, 125));
 	StatsTables::StatsTable[Warlock::MapKey] = StatsIncrements(Stats(62, 24, 113));
-	StatsTables::StatsTable[Zombie::MapKey] = StatsIncrements(Stats(50, 5, 110));
+	StatsTables::StatsTable[Zombie::MapKey] = StatsIncrements(Stats(78, 5, 110));
 	StatsTables::StatsTable[ZombieElric::MapKey] = StatsIncrements(Stats(75, 13, 140));
 
 	StatsTables::StatsTable[Amelia::MapKey] = NpcStats;

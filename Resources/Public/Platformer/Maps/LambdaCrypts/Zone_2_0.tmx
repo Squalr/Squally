@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1076">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="60" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1078">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="DarkForestSky"/>
@@ -51,7 +51,12 @@
    <property name="depth" type="float" value="-896"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1069" name="Crypts/WarpTower" type="decor" x="449.894" y="-415.409" width="979" height="2249"/>
+  <object id="1069" name="Crypts/WarpTower" type="decor" x="449.894" y="-415.409" width="979" height="2249">
+   <properties>
+    <property name="components" value="illusion"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="terrain -13">
   <properties>
@@ -561,8 +566,16 @@
     <property name="tag" value="hexus-zombie"/>
    </properties>
   </object>
-  <object id="1071" name="portal" type="object" x="735.426" y="1626.91" width="256" height="256">
+  <object id="1076" name="magic-wall" type="object" x="532.449" y="1101.5" width="679.102" height="781">
    <properties>
+    <property name="components" value="dispel-illusion"/>
+    <property name="illusion-group" value="A"/>
+   </properties>
+  </object>
+  <object id="1077" name="portal" type="object" x="735.426" y="1626.91" width="256" height="256">
+   <properties>
+    <property name="components" value="illusion"/>
+    <property name="illusion-group" value="A"/>
     <property name="map" value="Mages_Warp"/>
     <property name="transition" value="lc"/>
    </properties>
