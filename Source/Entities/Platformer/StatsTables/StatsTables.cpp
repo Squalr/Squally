@@ -252,7 +252,7 @@ StatsTables::StatsTables()
 	StatsTables::StatsTable[SkeletalPriestess::MapKey] = StatsIncrements(Stats(56, 20, 125));
 	StatsTables::StatsTable[Warlock::MapKey] = StatsIncrements(Stats(62, 24, 113));
 	StatsTables::StatsTable[Zombie::MapKey] = StatsIncrements(Stats(78, 5, 110));
-	StatsTables::StatsTable[ZombieElric::MapKey] = StatsIncrements(Stats(75, 13, 140));
+	StatsTables::StatsTable[ZombieElric::MapKey] = StatsIncrements(Stats(82, 13, 140));
 
 	StatsTables::StatsTable[Amelia::MapKey] = NpcStats;
 	StatsTables::StatsTable[Azmus::MapKey] = NpcStats;

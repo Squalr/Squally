@@ -37599,7 +37599,7 @@ namespace Strings
 		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_C_TakeKeyFromCorpse() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_HellCrystalPurpose : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_Gecky_Oh : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -37610,11 +37610,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_HellCrystalPurpose();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_HellCrystalPurpose() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_Gecky_Oh();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_Gecky_Oh() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Gecky_Oh : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_Grim_Souls : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -37625,11 +37625,11 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Gecky_Oh();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Gecky_Oh() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_Grim_Souls();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_Grim_Souls() = default;
 	};
 
-	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Guano_Brutal : public LocalizedString
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_Guano_Brutal : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -37640,8 +37640,38 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Guano_Brutal();
-		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Guano_Brutal() = default;
+		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_Guano_Brutal();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_Guano_Brutal() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_HellCrystalPurpose : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_HellCrystalPurpose();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_HellCrystalPurpose() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_F_LeadsToPeaks : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_F_LeadsToPeaks();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_F_LeadsToPeaks() = default;
 	};
 
 	class Platformer_Quests_LambdaCrypts_EnterCrypts_Perceptron_A_FoundYou : public LocalizedString

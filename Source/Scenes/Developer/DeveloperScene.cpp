@@ -97,6 +97,7 @@ DeveloperScene::DeveloperScene()
 		- * EF Gramps fun dialogue
 		- * EF Have Lycan give weapon, and Lianna give something else
 		- * EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
+		- * EF Should keep the portal around from 3_x <=> town
 		- UR cistern Chest + Puzzle + Animal is overwhelming and lazy
 		- UR sky's reach color balance
 		- UR - Entity shadow is altered by IsAlive, but petrified UR entities are technically dead

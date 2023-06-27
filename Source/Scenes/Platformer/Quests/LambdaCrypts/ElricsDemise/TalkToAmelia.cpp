@@ -115,7 +115,7 @@ void TalkToAmelia::onComplete()
 		});
 	}
 
-	Objectives::SetCurrentObjective(ObjectiveKeys::LCReturnToElric);
+	Objectives::SetCurrentObjective(ObjectiveKeys::LCTalkToNebea);
 }
 
 void TalkToAmelia::onSkipped()
@@ -190,7 +190,8 @@ void TalkToAmelia::runCinematicSequence()
 		));
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_SeeNebea::create(),
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_SeeNebea::create()
+				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Elric::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
@@ -199,9 +200,10 @@ void TalkToAmelia::runCinematicSequence()
 			),
 			[=]()
 			{
+				this->complete();
 			},
 			Voices::GetNextVoiceLong(),
-			false
+			true
 		));
 	});
 }

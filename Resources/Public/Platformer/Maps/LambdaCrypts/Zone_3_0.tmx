@@ -627,7 +627,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_Crypts"/>
     <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,soul,agro,melee"/>
+    <property name="components" value="enemy,soul,agro,skeletal-archer-attack"/>
     <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>

@@ -14,7 +14,8 @@
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Helpers/DataMines/Gecky.h"
-#include "Entities/Platformer/Npcs/LambdaCrypts/Amelia.h"
+#include "Entities/Platformer/Helpers/CastleValgrind/Grim.h"
+#include "Entities/Platformer/Npcs/LambdaCrypts/PrincessNebea.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
@@ -46,7 +47,7 @@ TalkToNebea* TalkToNebea::create(GameObject* owner, QuestLine* questLine)
 TalkToNebea::TalkToNebea(GameObject* owner, QuestLine* questLine) : super(owner, questLine, TalkToNebea::MapKeyQuest, false)
 {
 	this->guano = nullptr;
-	this->amelia = nullptr;
+	this->princessNebea = nullptr;
 	this->scrappy = nullptr;
 	this->squally = nullptr;
 }
@@ -67,33 +68,37 @@ void TalkToNebea::onLoad(QuestState questState)
 		this->guano = guano;
 	}, Guano::MapKey);
 
+	ObjectEvents::WatchForObject<Grim>(this, [=](Grim* grim)
+	{
+		this->grim = grim;
+	}, Grim::MapKey);
+
 	ObjectEvents::WatchForObject<Scrappy>(this, [=](Scrappy* scrappy)
 	{
 		this->scrappy = scrappy;
 	}, Scrappy::MapKey);
 
-	ObjectEvents::WatchForObject<Amelia>(this, [=](Amelia* amelia)
+	ObjectEvents::WatchForObject<PrincessNebea>(this, [=](PrincessNebea* princessNebea)
 	{
-		this->amelia = amelia;
+		this->princessNebea = princessNebea;
 		
 		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
 		{
-			this->amelia->clearState(StateKeys::PatrolSourceX);
-			this->amelia->clearState(StateKeys::PatrolDestinationX);
-			this->amelia->setState(StateKeys::PatrolHijacked, Value(true));
-			this->amelia->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+			this->princessNebea->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 			{
 				questBehavior->enableTurnIn();
 			});
 		}
 
-		// Await Helpers to be ready
-		this->defer([=]()
+		if (questState != QuestState::None && questState != QuestState::Complete)
 		{
-			this->runCinematicSequence();
-		}, 2);
-
-	}, Amelia::MapKey);
+			// Await Helpers to be ready
+			this->defer([=]()
+			{
+				this->runCinematicSequence();
+			}, 2);
+		}
+	}, PrincessNebea::MapKey);
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
@@ -107,9 +112,9 @@ void TalkToNebea::onActivate(bool isActiveThroughSkippable, bool isInitialActiva
 
 void TalkToNebea::onComplete()
 {
-	if (this->amelia != nullptr)
+	if (this->princessNebea != nullptr)
 	{
-		this->amelia->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
+		this->princessNebea->getComponent<EntityQuestVisualBehavior>([=](EntityQuestVisualBehavior* questBehavior)
 		{
 			questBehavior->disableAll();
 		});
@@ -125,12 +130,12 @@ void TalkToNebea::onSkipped()
 
 void TalkToNebea::runCinematicSequence()
 {
-	if (this->amelia == nullptr)
+	if (this->princessNebea == nullptr)
 	{
 		return;
 	}
 	
-	this->amelia->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	this->princessNebea->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
@@ -140,7 +145,7 @@ void TalkToNebea::runCinematicSequence()
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-				DialogueEvents::BuildPreviewNode(&this->amelia, true)
+				DialogueEvents::BuildPreviewNode(&this->princessNebea, true)
 			),
 			[=]()
 			{
@@ -156,7 +161,7 @@ void TalkToNebea::runCinematicSequence()
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-				DialogueEvents::BuildPreviewNode(&this->amelia, true)
+				DialogueEvents::BuildPreviewNode(&this->princessNebea, true)
 			),
 			[=]()
 			{
@@ -171,7 +176,7 @@ void TalkToNebea::runCinematicSequence()
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-				DialogueEvents::BuildPreviewNode(&this->amelia, true)
+				DialogueEvents::BuildPreviewNode(&this->princessNebea, true)
 			),
 			[=]()
 			{
@@ -183,12 +188,29 @@ void TalkToNebea::runCinematicSequence()
 		if (this->gecky != nullptr)
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Gecky_Oh::create(),
+				Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_Gecky_Oh::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
 					DialogueEvents::BuildPreviewNode(&this->gecky, false),
-					DialogueEvents::BuildPreviewNode(&this->amelia, true)
+					DialogueEvents::BuildPreviewNode(&this->princessNebea, true)
+				),
+				[=]()
+				{
+				},
+				Voices::GetNextVoiceShort(),
+				false
+			));
+		}
+		else if (this->grim != nullptr)
+		{
+			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_Grim_Souls::create(),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Left,
+					DialogueEvents::BuildPreviewNode(&this->grim, false),
+					DialogueEvents::BuildPreviewNode(&this->princessNebea, true)
 				),
 				[=]()
 				{
@@ -200,12 +222,12 @@ void TalkToNebea::runCinematicSequence()
 		else
 		{
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_Guano_Brutal::create(),
+				Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_Guano_Brutal::create(),
 				DialogueEvents::DialogueVisualArgs(
 					DialogueBox::DialogueDock::Bottom,
 					DialogueBox::DialogueAlignment::Left,
 					DialogueEvents::BuildPreviewNode(&this->guano, false),
-					DialogueEvents::BuildPreviewNode(&this->amelia, true)
+					DialogueEvents::BuildPreviewNode(&this->princessNebea, true)
 				),
 				[=]()
 				{
@@ -216,19 +238,41 @@ void TalkToNebea::runCinematicSequence()
 		}
 
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_D_HellCrystalPurpose::create()
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_E_HellCrystalPurpose::create()
 				->setStringReplacementVariables(Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
-				DialogueEvents::BuildPreviewNode(&this->amelia, true)
+				DialogueEvents::BuildPreviewNode(&this->princessNebea, true)
 			),
 			[=]()
 			{
 			},
 			Voices::GetNextVoiceLong(),
 			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_PrincessNebea_F_LeadsToPeaks::create()
+				->setStringReplacementVariables(
+				{
+					Strings::Platformer_MapNames_FirewallFissure_FirewallFissure::create(),
+					Strings::Platformer_MapNames_BallmerPeaks_BallmerPeaks::create(),
+					Strings::Items_Misc_Keys_DemonHeart::create()
+				}),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+			),
+			[=]()
+			{
+				this->complete();
+			},
+			Voices::GetNextVoiceLong(Voices::VoiceType::Droid),
+			true
 		));
 	});
 }

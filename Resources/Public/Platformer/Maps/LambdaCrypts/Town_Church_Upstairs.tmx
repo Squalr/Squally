@@ -316,9 +316,9 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="850" name="johann" type="entity" x="1939.87" y="940.324" width="128" height="128">
+  <object id="850" name="johann" type="entity" x="1651.87" y="936.324" width="128" height="128">
    <properties>
-    <property name="components" value="lc-t4-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="lc-t4-hexus,friendly,pick-pocket"/>
     <property name="pocket-pool" value="lc-generic"/>
    </properties>
   </object>
@@ -326,6 +326,8 @@
    <properties>
     <property name="components" value="friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="lc-generic"/>
+    <property name="quest" value="talk-to-nebea"/>
+    <property name="quest-line" value="elrics-demise"/>
    </properties>
   </object>
  </objectgroup>

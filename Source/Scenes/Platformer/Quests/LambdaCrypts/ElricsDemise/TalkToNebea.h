@@ -2,8 +2,9 @@
 
 #include "Engine/Quests/QuestTask.h"
 
-class Amelia;
+class PrincessNebea;
 class Gecky;
+class Grim;
 class Guano;
 class QuestLine;
 class Scrappy;
@@ -30,9 +31,10 @@ private:
 
 	void runCinematicSequence();
 
-	Amelia* amelia = nullptr;
+	PrincessNebea* princessNebea = nullptr;
 	Gecky* gecky = nullptr;
 	Guano* guano = nullptr;
+	Grim* grim = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 };
