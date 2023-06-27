@@ -241,7 +241,7 @@ StatsTables::StatsTables()
 	
 	StatsTables::StatsTable[Assassin::MapKey] = StatsIncrements(Stats(49, 8, 118));
 	StatsTables::StatsTable[BoneKnight::MapKey] = StatsIncrements(Stats(54, 12, 121));
-	StatsTables::StatsTable[BoneFiend::MapKey] = StatsIncrements(Stats(52, 8, 119));
+	StatsTables::StatsTable[BoneFiend::MapKey] = StatsIncrements(Stats(70, 8, 119));
 	StatsTables::StatsTable[Hunter::MapKey] = StatsIncrements(Stats(55, 14, 117));
 	StatsTables::StatsTable[KingZul::MapKey] = StatsIncrements(Stats(160, 18, 236));
 	StatsTables::StatsTable[Lazarus::MapKey] = StatsIncrements(Stats(124, 38, 214));

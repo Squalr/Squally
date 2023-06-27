@@ -294,7 +294,7 @@
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1133" name="perceptron" type="entity" x="1183.5" y="1545.8" width="128" height="128">
+  <object id="1133" name="perceptron" type="entity" x="1049.5" y="1541.8" width="128" height="128">
    <properties>
     <property name="components" value="enemy"/>
    </properties>

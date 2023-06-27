@@ -208,7 +208,7 @@
     <property name="recipe-pool" value="smithing-pool-cv"/>
    </properties>
   </object>
-  <object id="813" name="portal" type="object" x="1378.11" y="807.422" width="256" height="256">
+  <object id="813" name="portal" type="object" x="420.11" y="811.422" width="256" height="256">
    <properties>
     <property name="components" value="locked-portal"/>
     <property name="locked-text-key" value="none"/>
@@ -216,7 +216,7 @@
     <property name="transition" value="debug"/>
    </properties>
   </object>
-  <object id="814" name="smelting-pot" type="object" x="1583" y="896.5" width="170" height="167">
+  <object id="814" name="smelting-pot" type="object" x="1435" y="894.5" width="170" height="167">
    <properties>
     <property name="components" value="haunted-link"/>
     <property name="linked-tag" value="vampire-lord"/>

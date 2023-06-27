@@ -412,7 +412,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="LambdaCrypts/Combat_CryptsDirt"/>
     <property name="battle-tag" value="group-c"/>
-    <property name="components" value="enemy,soul,agro,melee"/>
+    <property name="components" value="enemy,soul,agro,goblin-shaman-attack"/>
     <property name="drop-pool" value="lc-generic"/>
    </properties>
   </object>

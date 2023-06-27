@@ -19,11 +19,13 @@
 #include "Engine/UI/SmartClippingNode.h"
 #include "Entities/Platformer/Helpers/EndianForest/Guano.h"
 #include "Entities/Platformer/Helpers/DataMines/Gecky.h"
+#include "Entities/Platformer/Helpers/CastleValgrind/Grim.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Menus/Confirmation/ConfirmationMenu.h"
 #include "Menus/MenuBackground.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/Gecky/GeckyEqBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Helpers/Grim/GrimEqBehavior.h"
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Save/Collectables.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -260,6 +262,10 @@ Node* SaveSelectMenu::buildSaveGameContent(int profileId)
 		else if (helperName == Gecky::MapKey)
 		{
 			helperEq = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyEq, Value(GeckyEqBehavior::DefaultLevel)).asInt();
+		}
+		else if (helperName == Grim::MapKey)
+		{
+			helperEq = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGrimEq, Value(GrimEqBehavior::DefaultLevel)).asInt();
 		}
 
 		ObjectDeserializer::ObjectDeserializationRequestArgs args = ObjectDeserializer::ObjectDeserializationRequestArgs(

@@ -173,7 +173,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="789" name="Castle/RailingLong" type="decor" x="2819.72" y="1718.03" width="1283.23" height="307">
+  <object id="789" name="Castle/RailingLong" type="decor" x="2290.39" y="1721.36" width="1283.23" height="307">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -183,7 +183,7 @@
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="791" name="gate" type="object" x="4079.17" y="1604.18" width="450.603" height="423.038">
+  <object id="791" name="gate" type="object" x="1845.4" y="1605.39" width="450.603" height="423.038">
    <properties>
     <property name="map" value="CastleValgrind/Zone_1_3"/>
     <property name="transition" value="castle-gate"/>
@@ -215,10 +215,10 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="715" name="dark-grass" type="terrain" x="2259.3" y="8610.09">
+  <object id="715" name="dark-grass" type="terrain" x="2259.3" y="8607.06">
    <polygon points="-2404.83,-6579.47 -2009.83,-4771.35 419.864,-4150.61 2877.8,-4764.14 3221.14,-6585.21"/>
   </object>
-  <object id="794" name="Castle/WarpTower" type="decor" x="1859.02" y="-216.592" width="979" height="2249">
+  <object id="794" name="Castle/WarpTower" type="decor" x="3543.02" y="-225.319" width="979" height="2249">
    <properties>
     <property name="components" value="illusion"/>
     <property name="illusion-group" value="A"/>
@@ -249,7 +249,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="780" name="portal" type="object" x="2078.51" y="1610.58" width="450.603" height="423.038">
+  <object id="780" name="portal" type="object" x="3753.18" y="1601.85" width="450.603" height="423.038">
    <properties>
     <property name="components" value="illusion"/>
     <property name="illusion-group" value="A"/>
@@ -265,7 +265,7 @@
     <property name="transition" value="crypt"/>
    </properties>
   </object>
-  <object id="811" name="magic-wall" type="object" x="2008.45" y="1251.5" width="679.102" height="781">
+  <object id="811" name="magic-wall" type="object" x="3692.45" y="1242.77" width="679.102" height="781">
    <properties>
     <property name="components" value="dispel-illusion"/>
     <property name="illusion-group" value="A"/>
@@ -324,7 +324,7 @@
     <property name="transition" value="castle-gate"/>
    </properties>
   </object>
-  <object id="781" name="spawn-wood-door" type="object" x="2286.44" y="1901.56" width="128" height="128">
+  <object id="781" name="spawn-wood-door" type="object" x="3925.11" y="1897.5" width="128" height="128">
    <properties>
     <property name="transition" value="cv"/>
    </properties>

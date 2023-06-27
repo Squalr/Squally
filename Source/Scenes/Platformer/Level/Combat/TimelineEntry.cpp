@@ -134,17 +134,6 @@ void TimelineEntry::initializeListeners()
 {
 	super::initializeListeners();
 
-	/*
-	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventCastBlocked, [=](EventCustom* eventCustom)
-	{
-		CombatEvents::CastBlockedArgs* args = static_cast<CombatEvents::CastBlockedArgs*>(eventCustom->getData());
-
-		if (args != nullptr && args->target == this->entity)
-		{
-			this->isBlocking = true;
-		}
-	}));*/
-
 	this->addEventListenerIgnorePause(EventListenerCustom::create(CombatEvents::EventDamage, [=](EventCustom* eventCustom)
 	{
 		CombatEvents::DamageOrHealingArgs* args = static_cast<CombatEvents::DamageOrHealingArgs*>(eventCustom->getData());
@@ -513,6 +502,7 @@ void TimelineEntry::stageTargets(std::vector<PlatformerEntity*> targets)
 		}));
 	}
 }
+#pragma optimize("", off)
 
 void TimelineEntry::stageCast(PlatformerAttack* attack)
 {
@@ -698,7 +688,6 @@ void TimelineEntry::performCast()
 					{
 						case CastState::DefensiveCasted:
 						{
-							this->castState = CastState::WaitingForReset;
 							this->stageCast(nullptr);
 							break;
 						}
@@ -763,7 +752,8 @@ void TimelineEntry::tryInterrupt()
 
 		if (!hasDiscipline)
 		{
-			CombatEvents::TriggerCastInterrupt(CombatEvents::CastInterruptArgs(this->entity));
+			// Not required, since defend abilities will trigger block instead
+			// CombatEvents::TriggerCastInterrupt(CombatEvents::CastInterruptArgs(this->entity));
 
 			this->setProgress(this->progress / 4.0f);
 			this->interruptBonus = 0.1f;
