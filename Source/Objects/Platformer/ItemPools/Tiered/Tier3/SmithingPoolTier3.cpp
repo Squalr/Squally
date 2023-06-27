@@ -38,11 +38,10 @@ SmithingPoolTier3::SmithingPoolTier3(SampleMethod sampleMethod, int min, int max
 	/**************
 	 Gems
 	**************/
-	this->addItemToPool(ItemChance::create(Sapphire::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Rare));
 
 	// Phasing out
-	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Legendary));
-	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Artifact));
+	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Legendary));
 }
 
 SmithingPoolTier3::~SmithingPoolTier3()

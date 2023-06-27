@@ -27,20 +27,20 @@ SmithingPoolTier4::SmithingPoolTier4(SampleMethod sampleMethod, int min, int max
 	/**************
 	 Metals
 	**************/
-	this->addItemToPool(ItemChance::create(Gold::create(), ItemChance::Probability::Uncommon));
+	this->addItemToPool(ItemChance::create(Mithril::create(), ItemChance::Probability::Uncommon));
 
 	// Phasing out
-	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Epic));
+	this->addItemToPool(ItemChance::create(Gold::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Epic));
 
 	/**************
 	 Gems
 	**************/
-	this->addItemToPool(ItemChance::create(Diamond::create(), ItemChance::Probability::Rare));
+	this->addItemToPool(ItemChance::create(Sapphire::create(), ItemChance::Probability::Rare));
 
 	// Phasing out
-	this->addItemToPool(ItemChance::create(Sapphire::create(), ItemChance::Probability::Legendary));
-	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Artifact));
+	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Legendary));
+	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Artifact));
 }
 
 SmithingPoolTier4::~SmithingPoolTier4()

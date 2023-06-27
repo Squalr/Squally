@@ -29,20 +29,14 @@ SmithingPoolTier7::SmithingPoolTier7(SampleMethod sampleMethod, int min, int max
 	/**************
 	 Metals
 	**************/
-	this->addItemToPool(ItemChance::create(Obsidian::create(), ItemChance::Probability::Uncommon));
-
-	// Phasing out
-	this->addItemToPool(ItemChance::create(Bone::create(), ItemChance::Probability::Rare));
-	this->addItemToPool(ItemChance::create(Mithril::create(), ItemChance::Probability::Epic));
+	this->addItemToPool(ItemChance::create(Crystal::create(), ItemChance::Probability::Uncommon));
 
 	/**************
 	 Gems
 	**************/
-	this->addItemToPool(ItemChance::create(VoidCrystal::create(), ItemChance::Probability::Rare));
-
 	// Phasing out
-	this->addItemToPool(ItemChance::create(Sulfur::create(), ItemChance::Probability::Legendary));
-	this->addItemToPool(ItemChance::create(Ruby::create(), ItemChance::Probability::Artifact));
+	this->addItemToPool(ItemChance::create(Ruby::create(), ItemChance::Probability::Legendary));
+	this->addItemToPool(ItemChance::create(Diamond::create(), ItemChance::Probability::Artifact));
 }
 
 SmithingPoolTier7::~SmithingPoolTier7()

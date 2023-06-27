@@ -89,6 +89,7 @@ DeveloperScene::DeveloperScene()
 		- More transmutes
 		- Consumeable descriptions wrong placement
 		- Jitter standing in place
+		- Lightning ability VFX broken
 		- * Potion SFX should not be paused on potion menu
 		- * Pressing left on "select target" in combat should go back to prior menu, not base menu
 		- * EF perceptron chase 1 busted (movement broken [Fixed now?], Perceptron should not spawn in visible from below)
@@ -122,8 +123,7 @@ DeveloperScene::DeveloperScene()
 		- CV PFX on unharvested souls
 		- CV secret tunnel feels unfinished
 		- CV rabies is tl;dr
-		- CV frienldy text on atrius (err no, whoever is in tunnel)
-		- CV uhhh where is the Mithril?
+		- CV friendly text on atrius (err no, whoever is in tunnel)
 		- Maybe a ladder on ship art to show the point of entry
 		- Mana flask description wrong in combat
 		- Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
