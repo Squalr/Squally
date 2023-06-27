@@ -126,6 +126,8 @@ DeveloperScene::DeveloperScene()
 		- CV rabies is tl;dr
 		- CV friendly text on atrius (err no, whoever is in tunnel)
 		- CV friendly text on Elric after bitten dialogue
+		- LC poisoned arrows are tl;dr
+		- LC blue gem map feels empty. Traps?
 		- Maybe a ladder on ship art to show the point of entry
 		- Mana flask description wrong in combat
 		- Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)

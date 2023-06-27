@@ -102,7 +102,7 @@ void UnholyBlade::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return UnholyBladeGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdx, Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_Register::create(),
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_UnholyBlade_Register::create(), true
 					},
 				},
 				int(HackFlags::None),

@@ -61,7 +61,7 @@ void GhostBoltSpeedPreview::onEnter()
 		))
 	);
 
-	this->ghostbolt->playAnimationRepeat(FXResources::FireBall_FireBall_0000, 0.085f);
+	this->ghostbolt->playAnimationRepeat(FXResources::GhostBolt_GhostBolt_0000, 0.085f);
 }
 
 void GhostBoltSpeedPreview::initializePositions()

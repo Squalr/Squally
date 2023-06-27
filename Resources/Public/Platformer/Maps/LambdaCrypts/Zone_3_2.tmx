@@ -1099,12 +1099,12 @@
     <property name="transition" value="middle-room"/>
    </properties>
   </object>
-  <object id="1150" name="metal-chest" type="object" x="419.33" y="1552.65" width="128" height="128">
+  <object id="1150" name="metal-chest" type="object" x="3743.57" y="1555.68" width="128" height="128">
    <properties>
     <property name="reward-pool" value="lc-gem-purple"/>
    </properties>
   </object>
-  <object id="1151" name="caged-bat" type="object" x="3866.19" y="1566.77" width="196" height="112"/>
+  <object id="1151" name="caged-bat" type="object" x="535.887" y="1566.77" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
