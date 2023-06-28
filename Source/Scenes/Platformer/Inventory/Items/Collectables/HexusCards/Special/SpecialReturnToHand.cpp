@@ -21,7 +21,7 @@ SpecialReturnToHand* SpecialReturnToHand::create()
 	return instance;
 }
 
-SpecialReturnToHand::SpecialReturnToHand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemMeta(3, 3))
+SpecialReturnToHand::SpecialReturnToHand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 14 }}), ItemMeta(3, 3))
 {
 }
 

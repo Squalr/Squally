@@ -21,7 +21,7 @@ SpecialPush* SpecialPush::create()
 	return instance;
 }
 
-SpecialPush::SpecialPush() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemMeta(3, 3))
+SpecialPush::SpecialPush() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 19 }}), ItemMeta(3, 3))
 {
 }
 

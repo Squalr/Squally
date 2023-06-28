@@ -88,12 +88,12 @@ DeveloperScene::DeveloperScene()
 		- More transmutes (perhaps custom UI to show a transmute wheel)
 		- Jitter standing in place
 		- Lightning ability VFX broken
-		- Card pricing is insanity
 		- Enveloping winds sucks, swap it with a teleport back to Mage's Guild maybe.
 		- Shadow spellbook to allow swapping helpers? Shadow portal on ground?
 			- Move the shadow spellbook somewhere better. Maybe even late CV.
 		- Potion SFX should not be paused on potion menu
 		- Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
+		- Maybe bubble can do additional +4 mp over 4 ticks
 		- EF Mara fun dialogue
 		- EF Gramps fun dialogue
 		- EF Have Lycan give weapon, and Lianna give something else
