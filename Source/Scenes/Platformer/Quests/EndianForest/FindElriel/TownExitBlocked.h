@@ -5,6 +5,7 @@
 class Bard;
 class CollisionObject;
 class Chiron;
+class Mara;
 class Portal;
 class Squally;
 class QuestLine;
@@ -32,8 +33,10 @@ private:
 
 	void attachChironBehavior();
 	void attachBardBehavior();
+	void attachMaraBehavior();
 
 	Bard* bard = nullptr;
+	Mara* mara = nullptr;
 	Chiron* chiron = nullptr;
 	Squally* squally = nullptr;
 	CollisionObject* chironCollision = nullptr;

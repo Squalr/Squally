@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="816">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="68" height="44" tilewidth="128" tileheight="128" infinite="0" nextlayerid="75" nextobjectid="817">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -59,7 +59,7 @@
    <properties>
     <property name="collision" value="none"/>
    </properties>
-   <polygon points="-839.09,-11523.6 -808.687,-7661.01 3091.04,-7649.65 3098.99,-9388 1674.96,-9384 1670.88,-11513.9"/>
+   <polygon points="-839.09,-11523.6 -920.421,-9497.37 -808.687,-7661.01 3091.04,-7649.65 3159.6,-9357.7 3014.12,-9388.13 1756.78,-9390.06 1674.42,-9664.01 1655.43,-10091.3 1671.01,-10409.5 1670.88,-11513.9"/>
   </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
@@ -345,6 +345,11 @@
   <object id="815" name="spawn" type="object" x="6524" y="1378" width="128" height="128">
    <properties>
     <property name="transition" value="lifestone-spawn"/>
+   </properties>
+  </object>
+  <object id="816" name="spawn" type="object" x="5272" y="2398.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="mage-portal"/>
    </properties>
   </object>
  </objectgroup>

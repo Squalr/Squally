@@ -94,11 +94,12 @@ DeveloperScene::DeveloperScene()
 		- Potion SFX should not be paused on potion menu
 		- Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
 		- Maybe bubble can do additional +4 mp over 4 ticks
+		--------------
 		- EF Mara fun dialogue
 		- EF Gramps fun dialogue
 		- EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
-		- * EF Should keep the portal around from 3_x <=> town
 		- Bard floating in EF portal
+		--------------
 		- UR cistern Chest + Puzzle + Animal is overwhelming and lazy
 		- UR sky's reach color balance
 		- UR - Entity shadow is altered by IsAlive, but petrified UR entities are technically dead
@@ -108,6 +109,7 @@ DeveloperScene::DeveloperScene()
 			- How about a giant circuit behind the main entrance, which needs to be connected via lighting various torches.
 				intent is to use different and/or logic gates (xor isn't taught yet) to connect it all.
 		- UR Guano falls through platforms.
+		--------------
 		- DM Rockslide fight is boring, should make this heal enemy (thus inverting == kill enemy)
 		- DM Maybe allow combat from hitting helper, so that arrow matters
 		- DM Stalactite SFX
@@ -118,6 +120,8 @@ DeveloperScene::DeveloperScene()
 		- DM train NPCs fun dialogue
 		- DM maybe get a whistle or something from Dawn to swap helpers at any time?
 		- DM Missing way to obtain hats (craftable?)
+		- DM Maybe a ladder on ship art to show the point of entry
+		--------------
 		- CV Missing "what is this" text on crypt
 		- CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
 		- CV disable study Mabel dialogue interaction while hidden behind arcane
@@ -126,12 +130,14 @@ DeveloperScene::DeveloperScene()
 		- CV rabies is tl;dr
 		- CV friendly text on atrius (err no, whoever is in tunnel)
 		- CV friendly text on Elric after bitten dialogue
+		- Final crack art is ass (Where is this again?)
+		--------------
 		- ** LC poisoned arrows are tl;dr
 		- LC blue gem map feels empty. Traps?
 		- ** LC unholy blade tl;dr
 		- ** LC cursed blade tl;dr
 		- LC Daze script too long
-		- Final crack art is ass
+		--------------
 		- FF first girl friendly text
 		- FF cauterize should use a flame animation of sorts
 		- FF enflame should use a flame animation of sorts. Also position is wrong
@@ -143,9 +149,9 @@ DeveloperScene::DeveloperScene()
 		- FF puzzle in 3_2 (?) appears to be a duplicate
 		- FF lava raise TODOs
 		- FF post asmodeus door doesn't open until map reload
-		- Should show drowned corpses in lava instead of despawn
-		- Maybe update Drak text upon crafting demon heart
-		- Maybe a ladder on ship art to show the point of entry
+		- FF Should show drowned corpses in lava instead of despawn
+		- FF Maybe update Drak text upon crafting demon heart
+		--------------
 		- Mana flask description wrong in combat
 		- Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
 		- Defend cast sfx

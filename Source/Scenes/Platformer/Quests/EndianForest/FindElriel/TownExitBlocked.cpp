@@ -14,6 +14,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Entities/Platformer/Npcs/EndianForest/Bard.h"
 #include "Entities/Platformer/Npcs/EndianForest/Chiron.h"
+#include "Entities/Platformer/Npcs/EndianForest/Mara.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
@@ -85,9 +86,13 @@ void TownExitBlocked::onLoad(QuestState questState)
 		ObjectEvents::WatchForObject<Bard>(this, [=](Bard* bard)
 		{
 			this->bard = bard;
-
 			this->attachBardBehavior();
+		}, Bard::MapKey);
 
+		ObjectEvents::WatchForObject<Mara>(this, [=](Mara* mara)
+		{
+			this->mara = mara;
+			this->attachMaraBehavior();
 		}, Bard::MapKey);
 
 		ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
@@ -162,6 +167,39 @@ void TownExitBlocked::attachBardBehavior()
 						DialogueBox::DialogueAlignment::Right,
 						DialogueEvents::BuildPreviewNode(&this->squally, false),
 						DialogueEvents::BuildPreviewNode(&this->bard, true)
+					),
+					[=]()
+					{
+						Objectives::SetCurrentObjective(ObjectiveKeys::EFVisitQueen);
+					},
+					Voices::GetNextVoiceLong()
+				));
+			}),
+			1.0f
+		);
+	});
+}
+
+void TownExitBlocked::attachMaraBehavior()
+{
+	if (mara == nullptr)
+	{
+		return;
+	}
+
+	this->mara->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	{
+		interactionBehavior->getMainDialogueSet()->addDialogueOption(DialogueOption::create(
+			Strings::Platformer_Quests_EndianForest_FindElriel_Mara_A_WhereAreDocks::create(),
+			[=]()
+			{
+				DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+					Strings::Platformer_Quests_EndianForest_FindElriel_Mara_B_RightButTalkToQueen::create(),
+					DialogueEvents::DialogueVisualArgs(
+						DialogueBox::DialogueDock::Bottom,
+						DialogueBox::DialogueAlignment::Right,
+						DialogueEvents::BuildPreviewNode(&this->squally, false),
+						DialogueEvents::BuildPreviewNode(&this->mara, true)
 					),
 					[=]()
 					{
