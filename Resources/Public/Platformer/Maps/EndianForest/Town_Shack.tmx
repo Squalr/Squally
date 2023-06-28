@@ -100,7 +100,6 @@
    </properties>
   </object>
   <object id="702" name="camera-focus" type="object" x="508.445" y="761.888" width="128" height="128"/>
-  <object id="710" name="caged-bear" type="object" x="110.606" y="954" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

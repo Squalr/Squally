@@ -45,7 +45,8 @@ Airship::Airship(ValueMap& properties) : super(properties)
 
 	this->directionLeft = GameUtils::getKeyOrDefault(this->properties, Airship::PropertyDirection, Value(false)).asString() == "left";
 	this->speed = (this->directionLeft ? -1.0f : 1.0f) * std::abs(GameUtils::getKeyOrDefault(this->properties, Airship::PropertySpeed, Value(this->speed)).asFloat());
-	this->animations->setFlippedX(this->speed < 0.0f);
+	
+	this->animations->setFlippedX(this->speed == 0.0f ? !this->directionLeft : this->speed < 0.0f);
 	
 	this->addChild(this->animations);
 }
