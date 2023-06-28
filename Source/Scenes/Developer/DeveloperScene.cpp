@@ -81,85 +81,78 @@ DeveloperScene::DeveloperScene()
 		- CV, throne room?			=> Royal Crown (Special: Shop Discounts)
 
 	- General:
-		- Fix terrain connectors for:
-			- Frost
-			- Scifi (edges color)
-		- Lock warp room until UR. Could also think about forcing entering warp gates. Kinda hard.
-		- More transmutes (perhaps custom UI to show a transmute wheel)
-		- Jitter standing in place
-		- Lightning ability VFX broken
-		- Enveloping winds sucks, swap it with a teleport back to Mage's Guild maybe.
-		- Shadow spellbook to allow swapping helpers? Shadow portal on ground?
-			- Move the shadow spellbook somewhere better. Maybe even late CV.
-		- Potion SFX should not be paused on potion menu
-		- Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
-		- Maybe bubble can do additional +4 mp over 4 ticks
+		- v EF Mara/Bard fun dialogue
+		- v EF Gramps fun dialogue
+		- v EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
+		- v Bard floating in EF portal
 		--------------
-		- EF Mara fun dialogue
-		- EF Gramps fun dialogue
-		- EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
-		- Bard floating in EF portal
-		--------------
-		- UR cistern Chest + Puzzle + Animal is overwhelming and lazy
-		- UR sky's reach color balance
-		- UR - Entity shadow is altered by IsAlive, but petrified UR entities are technically dead
-		- UR Gauntlet - Pushers should patrol back then despawn.
-		- UR Gauntlet - Critical hit indicator (big explosion? maybe tiny explosion otherwise)
+		- * UR cistern Chest + Puzzle + Animal is overwhelming and lazy
+		- * UR sky's reach color balance
+		- * UR - Entity shadow is altered by IsAlive, but petrified UR entities are technically dead
+		- ** UR Gauntlet - Pushers should patrol back then despawn.
+		- ** UR Gauntlet - Critical hit indicator (big explosion? maybe tiny explosion otherwise)
 		- ** UR Pyramid still fucking sucks. Cutting it in half helps a bit. Needs work. Maybe lightning.
 			- How about a giant circuit behind the main entrance, which needs to be connected via lighting various torches.
 				intent is to use different and/or logic gates (xor isn't taught yet) to connect it all.
-		- UR Guano falls through platforms.
+		- * UR Guano falls through platforms.
 		--------------
-		- DM Rockslide fight is boring, should make this heal enemy (thus inverting == kill enemy)
-		- DM Maybe allow combat from hitting helper, so that arrow matters
-		- DM Stalactite SFX
-		- DM can maybe show stalactite in a harmless way first (maybe even Scrappy callout for use ability when it matters)
-		- DM push/pop movement SFX
-		- DM stack should remain as the answer once solved
-		- DM diamond doesn't make sense here. Can use it in BG, but maybe move diamond carts to the right zones
-		- DM train NPCs fun dialogue
-		- DM maybe get a whistle or something from Dawn to swap helpers at any time?
-		- DM Missing way to obtain hats (craftable?)
-		- DM Maybe a ladder on ship art to show the point of entry
+		- ** DM Rockslide fight is boring, should make this heal enemy (thus inverting == kill enemy)
+		- * DM Maybe allow combat from hitting helper, so that arrow matters
+		- * DM Stalactite SFX
+		- * DM can maybe show stalactite in a harmless way first (maybe even Scrappy callout for use ability when it matters)
+		- * DM push/pop movement SFX
+		- * DM stack should remain as the answer once solved
+		- * DM diamond doesn't make sense here. Can use it in BG, but maybe move diamond carts to the right zones
+		- v DM train NPCs fun dialogue
+		- v DM Missing way to obtain hats (craftable?)
+		- v DM Maybe a ladder on ship art to show the point of entry
 		--------------
-		- CV Missing "what is this" text on crypt
-		- CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
-		- CV disable study Mabel dialogue interaction while hidden behind arcane
-		- CV PFX on unharvested souls
-		- CV secret tunnel feels unfinished
-		- CV rabies is tl;dr
-		- CV friendly text on atrius (err no, whoever is in tunnel)
-		- CV friendly text on Elric after bitten dialogue
-		- Final crack art is ass (Where is this again?)
+		- ** Final crack art is ass (Where is this again? not CV?)
+		- ** CV rabies is tl;dr
+		- * CV Missing "what is this" text on crypt guard
+		- * CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
+		- * CV disable study Mabel dialogue interaction while hidden behind arcane
+		- * CV PFX on unharvested souls
+		- * CV secret tunnel feels unfinished
+		- v CV friendly text on atrius (err no, whoever is in tunnel)
+		- v CV friendly text on Elric after bitten dialogue
 		--------------
 		- ** LC poisoned arrows are tl;dr
-		- LC blue gem map feels empty. Traps?
 		- ** LC unholy blade tl;dr
 		- ** LC cursed blade tl;dr
-		- LC Daze script too long
+		- ** LC Daze script too long
+		- LC blue gem map feels empty. Traps?
 		--------------
-		- FF first girl friendly text
-		- FF cauterize should use a flame animation of sorts
-		- FF enflame should use a flame animation of sorts. Also position is wrong
-		- FF fire rain needs SFX
-		- FF lava escape needs screen shake, SFX
-		- FF lava escape -- what happens on return?
-		- FF MissingNo in pocket pools
-		- FF Lava flood quest broken fully, path already revealed
-		- FF puzzle in 3_2 (?) appears to be a duplicate
-		- FF lava raise TODOs
-		- FF post asmodeus door doesn't open until map reload
-		- FF Should show drowned corpses in lava instead of despawn
-		- FF Maybe update Drak text upon crafting demon heart
+		- ** FF lava escape needs screen shake, SFX
+		- ** FF lava escape -- what happens on return?
+		- ** FF MissingNo in pocket pools
+		- ** FF Lava flood quest broken fully, path already revealed
+		- ** FF puzzle in 3_2 (?) appears to be a duplicate
+		- ** FF lava raise TODOs
+		- ** FF post asmodeus door doesn't open until map reload
+		- * FF cauterize should use a flame animation of sorts
+		- * FF enflame should use a flame animation of sorts. Also position is wrong
+		- * FF fire rain needs SFX
+		- * FF Should show drowned corpses in lava instead of despawn
+		- v FF first girl friendly text
+		- v FF Maybe update Drak text upon crafting demon heart
 		--------------
-		- Mana flask description wrong in combat
-		- Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
-		- Defend cast sfx
-		- Music
-			- [Awaiting Response] https://usfourmusic.com/contact (The Storm Begins)
-			- [Contract Signed] https://philipwesley.com/contact/ (Far and Away / Racing Against the Sunset)
-			- [Contract Signed] https://michelemclaughlin.com/pages/contact (Preserverence)
-			- [Contract Signed] https://www.instagram.com/anthonybadensaggers (Two steps too often aside)
+		- ** Defend cast sfx
+		- ** Mana flask description wrong in combat
+		- ** Jitter standing in place
+		- ** Lightning ability VFX broken
+		- * Wind Spellbook => teleport back to Mage's Guild ability, I guess.
+			- * Lock warp room until wind spellbook. Could also think about forcing entering warp gates. Kinda hard.
+		- * Potion SFX should not be paused on potion menu
+		- * Maybe bubble can do additional +4 mp over 4 ticks
+		- * Shadow spellbook to allow swapping helpers? Shadow portal on ground?
+		- * Move the shadow spellbook somewhere better. Maybe even late CV.
+		- * Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
+		- * Fix terrain connectors for Frost
+		- * Fix terrain connectors for Scifi (edges color)
+		- * Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
+		- v More transmutes (perhaps custom UI to show a transmute wheel)
+		- v More passes on music. Probably need more overworld. Far and Away / Sunset once I get access.
 		- v Wontfix? Missing Shadow ability: Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)
 		v Maybe some storyline for introducing powers
 			v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
@@ -195,7 +188,7 @@ DeveloperScene::DeveloperScene()
 			- Can pass after auto-victory or loss (try it in a puzzle)
 			- Leave button stuck visible after losing a puzzle
 			- Enemy should pre-calc the best play when player has passed (hard)
-			vv It'd be nice to get SHL from the puzzle where you learn it. I guess just tailored pools or something. May scrap this.
+			- vv It'd be nice to get SHL from the puzzle where you learn it. I guess just tailored pools or something. May scrap this.
 	
 	- Localization / Scripting
 		- Lexicon is largely incomplete
