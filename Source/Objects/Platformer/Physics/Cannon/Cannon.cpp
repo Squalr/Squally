@@ -108,7 +108,7 @@ void Cannon::onInteract(PlatformerEntity* interactingEntity)
 	}
 }
 
-Vec2 Cannon::getReparentPosition()
+Vec2 Cannon::getReparentPosition(PlatformerEntity* entity)
 {
 	return this->currentMountOffset;
 }

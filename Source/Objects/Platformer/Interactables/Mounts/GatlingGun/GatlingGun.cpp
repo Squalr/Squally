@@ -102,7 +102,7 @@ SmartAnimationNode* GatlingGun::getAnimations() const
 	return this->animations;
 }
 
-Vec2 GatlingGun::getReparentPosition()
+Vec2 GatlingGun::getReparentPosition(PlatformerEntity* entity)
 {
 	return Vec2(-160.0f, 32.0f);
 }

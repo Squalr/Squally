@@ -214,7 +214,7 @@ NO_OPTIMIZE void MineCart::updateCanMove()
 }
 END_NO_OPTIMIZE
 
-Vec2 MineCart::getReparentPosition()
+Vec2 MineCart::getReparentPosition(PlatformerEntity* entity)
 {
 	return Vec2(0.0f, 32.0f);
 }

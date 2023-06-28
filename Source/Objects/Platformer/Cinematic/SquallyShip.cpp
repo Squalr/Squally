@@ -172,7 +172,7 @@ void SquallyShip::initializeListeners()
 	});
 }
 
-Vec2 SquallyShip::getReparentPosition()
+Vec2 SquallyShip::getReparentPosition(PlatformerEntity* entity)
 {
 	return Vec2(0.0f, -56.0f);
 }

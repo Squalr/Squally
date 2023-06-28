@@ -52,7 +52,7 @@ Node* MountBase::getReparentNode()
 	return this->reparentNode;
 }
 
-Vec2 MountBase::getReparentPosition()
+Vec2 MountBase::getReparentPosition(PlatformerEntity* entity)
 {
 	return Vec2::ZERO;
 }
@@ -177,7 +177,7 @@ void MountBase::setToMountPositionX()
 	{
 		if (mountedEntity == nullptr)
 		{
-			mountedEntity->setPositionX(this->getReparentPosition().x);
+			mountedEntity->setPositionX(this->getReparentPosition(mountedEntity).x);
 		}
 	}
 }
@@ -188,7 +188,7 @@ void MountBase::setToMountPosition()
 	{
 		if (mountedEntity != nullptr)
 		{
-			mountedEntity->setPosition(this->getReparentPosition());
+			mountedEntity->setPosition(this->getReparentPosition(mountedEntity));
 		}
 	}
 }

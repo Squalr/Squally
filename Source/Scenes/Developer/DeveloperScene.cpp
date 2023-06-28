@@ -73,45 +73,43 @@ DeveloperScene::DeveloperScene()
 	}
 
 	/*
+	- 5x EE:
+		X Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
+		X Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
+		X Perilous Sea (tri m/l/r)	=> The Golden Eagle (Special: Higher Jump)
+		X Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
+		- CV, throne room?			=> Royal Crown (Special: Shop Discounts)
+
 	- General:
-		- ** 5x EE
-			X Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
-			X Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
-			X Perilous Sea (tri m/l/r)	=> The Golden Eagle (Special: Higher Jump)
-			X Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
-			- CV, throne room?			=> Royal Crown (Special: Shop Discounts)
-			- BP, somewhere				=> Frost Axe
 		- Fix terrain connectors for:
 			- Frost
 			- Scifi (edges color)
-		- Daze script too long
-		- Lock warp room until UR or something
+		- Lock warp room until UR. Could also think about forcing entering warp gates. Kinda hard.
 		- More transmutes (perhaps custom UI to show a transmute wheel)
 		- Jitter standing in place
 		- Lightning ability VFX broken
 		- Card pricing is insanity
-		- Enveloping winds sucks, swap it with a teleport maybe
-		- Shadow spellbook to allow swapping helpers?
+		- Enveloping winds sucks, swap it with a teleport back to Mage's Guild maybe.
+		- Shadow spellbook to allow swapping helpers? Shadow portal on ground?
 			- Move the shadow spellbook somewhere better. Maybe even late CV.
-		- * Potion SFX should not be paused on potion menu
-		- * Pressing left on "select target" in combat should go back to prior menu, not base menu
-		- * EF Mara fun dialogue
-		- * EF Gramps fun dialogue
-		- * EF Have Lycan give weapon, and Lianna give something else
-		- * EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
+		- Potion SFX should not be paused on potion menu
+		- Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
+		- EF Mara fun dialogue
+		- EF Gramps fun dialogue
+		- EF Have Lycan give weapon, and Lianna give something else
+		- EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- * EF Should keep the portal around from 3_x <=> town
+		- Bard floating in EF portal
 		- UR cistern Chest + Puzzle + Animal is overwhelming and lazy
 		- UR sky's reach color balance
 		- UR - Entity shadow is altered by IsAlive, but petrified UR entities are technically dead
-		- Bard floating in EF portal
 		- UR Gauntlet - Pushers should patrol back then despawn.
 		- UR Gauntlet - Critical hit indicator (big explosion? maybe tiny explosion otherwise)
-		- UR Pyramid still fucking sucks. Cutting it in half helps a bit. Needs work. Maybe lightning.
+		- ** UR Pyramid still fucking sucks. Cutting it in half helps a bit. Needs work. Maybe lightning.
 			- How about a giant circuit behind the main entrance, which needs to be connected via lighting various torches.
 				intent is to use different and/or logic gates (xor isn't taught yet) to connect it all.
 		- UR Guano falls through platforms.
 		- DM Rockslide fight is boring, should make this heal enemy (thus inverting == kill enemy)
-		- DM Drak should ride ferry too
 		- DM Maybe allow combat from hitting helper, so that arrow matters
 		- DM Stalactite SFX
 		- DM can maybe show stalactite in a harmless way first (maybe even Scrappy callout for use ability when it matters)
@@ -129,10 +127,12 @@ DeveloperScene::DeveloperScene()
 		- CV rabies is tl;dr
 		- CV friendly text on atrius (err no, whoever is in tunnel)
 		- CV friendly text on Elric after bitten dialogue
-		- LC poisoned arrows are tl;dr
+		- ** LC poisoned arrows are tl;dr
 		- LC blue gem map feels empty. Traps?
-		- LC unholy blade tl;dr
-		- LC cursed blade tl;dr
+		- ** LC unholy blade tl;dr
+		- ** LC cursed blade tl;dr
+		- LC Daze script too long
+		- Final crack art is ass
 		- FF first girl friendly text
 		- FF cauterize should use a flame animation of sorts
 		- FF enflame should use a flame animation of sorts. Also position is wrong
@@ -184,6 +184,7 @@ DeveloperScene::DeveloperScene()
 			- ** Needs enemy scripting according to notes on which instructions this zone covers
 			- * Needs enemy scripting according to notes on which instructions this zone covers
 			- * Frost SpellBook (?? / ??)
+			- BP, somewhere				=> Frost Axe
 		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 		- Hexus:
 			- Can pass after auto-victory or loss (try it in a puzzle)

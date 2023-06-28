@@ -32,7 +32,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	void onInteract(PlatformerEntity* interactingEntity) override;
-	cocos2d::Vec2 getReparentPosition() override;
+	cocos2d::Vec2 getReparentPosition(PlatformerEntity* entity) override;
 	void update(float) override;
 
 private:

@@ -35,7 +35,7 @@ protected:
 	void registerHackables() override;
 	HackablePreview* createDefaultPreview() override;
 	
-	cocos2d::Vec2 getReparentPosition() override;
+	cocos2d::Vec2 getReparentPosition(PlatformerEntity* entity) override;
 
 private:
 	typedef MountBase super;

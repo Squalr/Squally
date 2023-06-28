@@ -277,7 +277,7 @@ void Train::dismount(PlatformerEntity* entity)
 	this->isMoving = false;
 }
 
-Vec2 Train::getReparentPosition()
+Vec2 Train::getReparentPosition(PlatformerEntity* entity)
 {
 	return Vec2(0.0f, 1920.0f);
 }

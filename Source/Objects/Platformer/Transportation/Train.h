@@ -39,7 +39,7 @@ protected:
 	void initializePositions() override;
 	void initializeListeners() override;
 	
-	cocos2d::Vec2 getReparentPosition() override;
+	cocos2d::Vec2 getReparentPosition(PlatformerEntity* entity) override;
 
 private:
 	typedef MountBase super;
