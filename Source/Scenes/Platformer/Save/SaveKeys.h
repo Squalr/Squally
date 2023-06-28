@@ -144,5 +144,5 @@ public:
 	static const std::string SaveKeyItemEE5Given;
 
 	static const std::string SaveKeyAsterItemGiven;
-
+	static const std::string SaveKeyLycanItemGiven;
 };

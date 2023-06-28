@@ -3,6 +3,7 @@
 #include "Engine/Components/GameComponent.h"
 
 class PlatformerEntity;
+class RewardPoolLycan;
 class Scrappy;
 class Squally;
 
@@ -22,6 +23,8 @@ protected:
 
 private:
 	typedef GameComponent super;
+
+	RewardPoolLycan* rewardPool = nullptr;
 
 	PlatformerEntity* entity = nullptr;
 	Scrappy* scrappy = nullptr;

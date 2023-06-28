@@ -13,7 +13,6 @@ const std::string ObjectiveKeys::EFVisitQueen = "EF_VISIT_QUEEN";
 const std::string ObjectiveKeys::EFFindElriel = "EF_FIND_ELRIEL";
 const std::string ObjectiveKeys::EFSearchTemple = "EF_SEARCH_TEMPLE";
 const std::string ObjectiveKeys::EFReturnToQueen = "EF_RETURN_TO_QUEEN";
-const std::string ObjectiveKeys::EFVisitMarcel = "EF_VISIT_MARCEL";
 const std::string ObjectiveKeys::EFHeadNorth = "EF_HEAD_NORTH";
 const std::string ObjectiveKeys::EFAmbush = "EF_AMBUSH";
 const std::string ObjectiveKeys::EFRepairRam = "EF_REPAIR_RAM";

@@ -96,7 +96,6 @@ DeveloperScene::DeveloperScene()
 		- Maybe bubble can do additional +4 mp over 4 ticks
 		- EF Mara fun dialogue
 		- EF Gramps fun dialogue
-		- EF Have Lycan give weapon, and Lianna give something else
 		- EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- * EF Should keep the portal around from 3_x <=> town
 		- Bard floating in EF portal
@@ -1113,9 +1112,9 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoFound, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGrimFound, Value(true));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
-			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
+			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Grim::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));
 

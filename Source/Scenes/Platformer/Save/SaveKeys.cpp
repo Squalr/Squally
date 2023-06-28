@@ -138,3 +138,4 @@ const std::string SaveKeys::SaveKeyItemEE4Given = "EE_4_ITEM_GIVEN";
 const std::string SaveKeys::SaveKeyItemEE5Given = "EE_5_ITEM_GIVEN";
 
 const std::string SaveKeys::SaveKeyAsterItemGiven = "ASTER_ITEM_GIVEN";
+const std::string SaveKeys::SaveKeyLycanItemGiven = "LYCAN_ITEM_GIVEN";

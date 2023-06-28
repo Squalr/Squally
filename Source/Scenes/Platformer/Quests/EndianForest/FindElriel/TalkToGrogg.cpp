@@ -74,6 +74,17 @@ void TalkToGrogg::onLoad(QuestState questState)
 			agroBehavior->toggleWarnOnAgro(false);
 		});
 
+		if (this->kingGrogg->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+		{
+			this->kingGrogg->listenForStateWrite(StateKeys::IsAlive, [=](Value isAlive)
+			{
+				if (!isAlive.asBool())
+				{
+					this->complete();
+				}
+			});
+		}
+
 		this->listenForMapEventOnce("force-combat", [=](ValueMap args)
 		{
 			if (this->kingGrogg->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
@@ -96,7 +107,10 @@ void TalkToGrogg::onActivate(bool isActiveThroughSkippable, bool isInitialActiva
 {
 	this->listenForMapEventOnce(TalkToGrogg::MapKeyQuest, [=](ValueMap args)
 	{
-		this->runCinematicSequencePart1();
+		if (this->getQuestState() != QuestState::Complete)
+		{
+			this->runCinematicSequencePart1();
+		}
 	});
 }
 

@@ -17,7 +17,6 @@
 #include "Scenes/Platformer/Quests/EndianForest/SkyShipToTemple/SkyShipToTempleLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/SneakIntoLianasHouse/SneakIntoLianasHouseLine.h"
 #include "Scenes/Platformer/Quests/EndianForest/WaterSpellbook/WaterSpellbookLine.h"
-#include "Scenes/Platformer/Quests/EndianForest/WindSpellbook/WindSpellbookLine.h"
 #include "Scenes/Platformer/Quests/LambdaCrypts/CraftDemonHeart/CraftDemonHeartLine.h"
 #include "Scenes/Platformer/Quests/LambdaCrypts/ElricsDemise/ElricsDemiseLine.h"
 #include "Scenes/Platformer/Quests/LambdaCrypts/OpenCrypt/OpenCryptLine.h"

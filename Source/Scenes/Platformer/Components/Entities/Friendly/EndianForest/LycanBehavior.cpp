@@ -2,14 +2,17 @@
 
 #include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Events/ObjectEvents.h"
+#include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/ItemPools/DropPools/EndianForest/RewardPoolLycan.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Dialogue/DialogueSet.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 
 #include "Resources/HexusResources.h"
 #include "Resources/SoundResources.h"
@@ -36,6 +39,14 @@ LycanBehavior::LycanBehavior(GameObject* owner) : super(owner)
 	if (this->entity == nullptr)
 	{
 		this->invalidate();
+	}
+	else
+	{
+		ValueMap props = ValueMap();
+		
+		this->rewardPool = RewardPoolLycan::create(props);
+
+		this->addChild(this->rewardPool);
 	}
 }
 
@@ -74,6 +85,26 @@ void LycanBehavior::onLoad()
 			Voices::GetNextVoiceShort(),
 			false
 		));
+		
+		if (!SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLycanItemGiven, Value(false)).asBool())
+		{
+			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_EndianForest_FindElriel_Lycan_B_TakeThis::create(),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Left,
+					DialogueEvents::BuildPreviewNode(&this->entity, false),
+					DialogueEvents::BuildPreviewNode(&this->squally, true)
+				),
+				[=]()
+				{
+					PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->rewardPool));
+					SaveManager::SaveProfileData(SaveKeys::SaveKeyLycanItemGiven, Value(true));
+				},
+				Voices::GetNextVoiceMedium(),
+				true
+			));
+		}
 	});
 }
 

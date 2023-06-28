@@ -18,7 +18,6 @@ public:
 	static const std::string EFFindElriel;
 	static const std::string EFSearchTemple;
 	static const std::string EFReturnToQueen;
-	static const std::string EFVisitMarcel;
 	static const std::string EFHeadNorth;
 	static const std::string EFAmbush;
 	static const std::string EFRepairRam;
