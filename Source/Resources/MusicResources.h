@@ -14,6 +14,7 @@ namespace MusicResources
 	extern const std::string Artrium;
 	extern const std::string BurdenOfTime;
 	extern const std::string CarnivalDream;
+	extern const std::string Far_and_Away;
 	extern const std::string HeartBeat;
 	extern const std::string Hexus1;
 	extern const std::string Hexus2;
@@ -22,6 +23,7 @@ namespace MusicResources
 	extern const std::string LastMarch;
 	extern const std::string Little_Footsteps;
 	extern const std::string Perseverance;
+	extern const std::string Racing_Against_the_Sunset;
 	extern const std::string Solace;
 	extern const std::string The_Gift__Melody_;
 	extern const std::string TrickOrTreat;

@@ -39,12 +39,14 @@ private:
 	Squally* squally = nullptr;
 	Cleopatra* cleopatra = nullptr;
 	CinematicMarker* guardTeleportMarker = nullptr;
-	CinematicMarker* guardDestinationMarker = nullptr;
+	CinematicMarker* guardArriveMarker = nullptr;
+	CinematicMarker* guardLeaveMarker = nullptr;
 	CinematicMarker* squallyDestinationMarker = nullptr;
 
 	static const std::string TagGuard;
 	static const std::string TagGuardTeleport;
-	static const std::string TagGuardDestination;
+	static const std::string TagGuardArrive;
+	static const std::string TagGuardLeave;
 	static const std::string TagSquallyDestination;
 	static const std::string MapEventBeginGauntlet;
 };

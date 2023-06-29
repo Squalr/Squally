@@ -42,7 +42,8 @@ using namespace cocos2d;
 const std::string GauntletIntroduction::MapKeyQuest = "gauntlet-introduction";
 const std::string GauntletIntroduction::TagGuard = "guard";
 const std::string GauntletIntroduction::TagGuardTeleport = "guard-teleport";
-const std::string GauntletIntroduction::TagGuardDestination = "guard-destination";
+const std::string GauntletIntroduction::TagGuardArrive = "guard-arrive";
+const std::string GauntletIntroduction::TagGuardLeave = "guard-leave";
 const std::string GauntletIntroduction::TagSquallyDestination = "squally-destination";
 const std::string GauntletIntroduction::MapEventBeginGauntlet = "begin-gauntlet";
 
@@ -95,10 +96,15 @@ void GauntletIntroduction::onLoad(QuestState questState)
 		this->guardTeleportMarker = guardTeleportMarker;
 	}, GauntletIntroduction::TagGuardTeleport);
 
-	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* guardDestinationMarker)
+	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* guardArriveMarker)
 	{
-		this->guardDestinationMarker = guardDestinationMarker;
-	}, GauntletIntroduction::TagGuardDestination);
+		this->guardArriveMarker = guardArriveMarker;
+	}, GauntletIntroduction::TagGuardArrive);
+
+	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* guardLeaveMarker)
+	{
+		this->guardLeaveMarker = guardLeaveMarker;
+	}, GauntletIntroduction::TagGuardLeave);
 
 	ObjectEvents::WatchForObject<CinematicMarker>(this, [=](CinematicMarker* squallyDestinationMarker)
 	{
@@ -162,7 +168,7 @@ void GauntletIntroduction::runCinematicSequencePt2()
 
 		PlatformerEvents::TriggerWarpObjectToLocation(PlatformerEvents::WarpObjectToLocationArgs(guard, warpPosition, false));
 		guard->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(guard).x));
-		guard->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(guardDestinationMarker).x + float(index) * 128.0f));
+		guard->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(this->guardArriveMarker).x + float(index) * 128.0f));
 
 		guard->getComponent<EntityMovementBehavior>([=](EntityMovementBehavior* movementBehavior)
 		{
@@ -195,6 +201,19 @@ void GauntletIntroduction::runCinematicSequencePt3()
 		{
 			PlatformerEvents::TriggerCinematicRestore();
 			this->broadcastMapEvent(GauntletIntroduction::MapEventBeginGauntlet, ValueMap());
+
+			for (PlatformerEntity* guard : this->guards)
+			{
+				if (guard != nullptr)
+				{
+					guard->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(guard).x));
+					guard->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(this->guardLeaveMarker).x));
+					guard->listenForStateWriteOnce(StateKeys::CinematicDestinationReached, [=](Value value)
+					{
+						guard->despawn();
+					});
+				}
+			}
 		}),
 		nullptr
 	));

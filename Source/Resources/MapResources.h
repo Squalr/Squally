@@ -113,7 +113,6 @@ namespace MapResources
 	extern const std::string EndianForest_Ship_Hull;
 	extern const std::string EndianForest_Ship_Main;
 	extern const std::string EndianForest_SkyDock_1;
-	extern const std::string EndianForest_SkyDock_2;
 	extern const std::string EndianForest_Town_Alch;
 	extern const std::string EndianForest_Town_Docks;
 	extern const std::string EndianForest_Town_Inn;

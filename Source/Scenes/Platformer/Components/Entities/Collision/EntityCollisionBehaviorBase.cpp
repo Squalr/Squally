@@ -289,6 +289,9 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 	});
 }
 
+#pragma optimize("", off)
+
+
 void EntityCollisionBehaviorBase::buildMovementCollision()
 {
 	if (this->movementCollision != nullptr || this->isInvalidated())
@@ -313,16 +316,18 @@ void EntityCollisionBehaviorBase::buildMovementCollision()
 
 	this->movementCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid }, [=](CollisionData collisionData)
 	{
+		float velocityY = this->getVelocity().y;
+
 		// Edge case to prevent sticky collisions with the roof, where the impact normal constantly zeros out velocity.
 		// At the time of writing this, this is the sole reason this head collision exists.
 		if (this->headCollision != nullptr
-			/*
-			&& this->leftCollision != nullptr
+			&& headCollision->hasHeadCollisionWith(collisionData.other)
+			/* && this->leftCollision != nullptr
 			&& this->rightCollision != nullptr
 			&& !this->rightCollision->hasCollisionWith(collisionData.other)
 			&& !this->leftCollision->hasCollisionWith(collisionData.other)*/
 			&& this->entity->controlState != PlatformerEntity::ControlState::Swimming
-			&& this->getVelocity().y <= 0.0f)
+			&& velocityY <= 0.0f)
 		{
 			return CollisionResult::DoNothing;
 		}

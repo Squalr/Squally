@@ -17,7 +17,7 @@ FarAndAway* FarAndAway::create(cocos2d::ValueMap& properties)
 	return instance;
 }
 
-FarAndAway::FarAndAway(cocos2d::ValueMap& properties) : super(properties, MusicResources::TrickOrTreat, Strings::Menus_Music_PhilipWesley_FarAndAway::create(), Strings::Menus_Music_PhilipWesley_PhilipWesley::create())
+FarAndAway::FarAndAway(cocos2d::ValueMap& properties) : super(properties, MusicResources::Far_and_Away, Strings::Menus_Music_PhilipWesley_FarAndAway::create(), Strings::Menus_Music_PhilipWesley_PhilipWesley::create())
 {
 }
 

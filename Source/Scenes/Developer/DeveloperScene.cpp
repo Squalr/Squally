@@ -89,7 +89,6 @@ DeveloperScene::DeveloperScene()
 		- * UR cistern Chest + Puzzle + Animal is overwhelming and lazy
 		- * UR sky's reach color balance
 		- * UR - Entity shadow is altered by IsAlive, but petrified UR entities are technically dead
-		- ** UR Gauntlet - Pushers should patrol back then despawn.
 		- ** UR Gauntlet - Critical hit indicator (big explosion? maybe tiny explosion otherwise)
 		- ** UR Pyramid still fucking sucks. Cutting it in half helps a bit. Needs work. Maybe lightning.
 			- How about a giant circuit behind the main entrance, which needs to be connected via lighting various torches.

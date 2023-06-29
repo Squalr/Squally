@@ -17,7 +17,7 @@ RaceAgainstTheSunset* RaceAgainstTheSunset::create(cocos2d::ValueMap& properties
 	return instance;
 }
 
-RaceAgainstTheSunset::RaceAgainstTheSunset(cocos2d::ValueMap& properties) : super(properties, MusicResources::TrickOrTreat, Strings::Menus_Music_PhilipWesley_RaceAgainstTheSunset::create(), Strings::Menus_Music_PhilipWesley_PhilipWesley::create())
+RaceAgainstTheSunset::RaceAgainstTheSunset(cocos2d::ValueMap& properties) : super(properties, MusicResources::Racing_Against_the_Sunset, Strings::Menus_Music_PhilipWesley_RaceAgainstTheSunset::create(), Strings::Menus_Music_PhilipWesley_PhilipWesley::create())
 {
 }
 

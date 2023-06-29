@@ -502,7 +502,6 @@ void TimelineEntry::stageTargets(std::vector<PlatformerEntity*> targets)
 		}));
 	}
 }
-#pragma optimize("", off)
 
 void TimelineEntry::stageCast(PlatformerAttack* attack)
 {
