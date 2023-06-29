@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="46" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1163">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="46" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="104" nextobjectid="1168">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -12,7 +12,7 @@
    <property name="type" value="meta"/>
   </properties>
  </objectgroup>
- <objectgroup id="18" name="bg -6">
+ <objectgroup id="18" name="bg -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
@@ -35,11 +35,6 @@
   <object id="967" name="torch" type="object" x="3624.94" y="763.935" width="42" height="130"/>
   <object id="968" name="torch" type="object" x="410.506" y="807.388" width="42" height="130"/>
   <object id="969" name="torch" type="object" x="5219.61" y="802.515" width="42" height="130"/>
-  <object id="1151" name="Generic/Vent" type="decor" x="2067.5" y="2310.5" width="305" height="307">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="103" name="terrain -6 bg bg">
   <properties>
@@ -81,7 +76,6 @@
     <property name="top-only" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1114" name="ruins-thick" type="terrain" x="1966.02" y="2696.61" width="2642.75" height="576"/>
  </objectgroup>
  <objectgroup id="94" name="objects -6">
   <properties>
@@ -89,13 +83,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1113" name="temple-door" type="object" x="2678.88" y="2168.25" width="432" height="528">
-   <properties>
-    <property name="color" value="yellow"/>
-    <property name="map" value="UnderflowRuins/Zone_3_5"/>
-    <property name="transition" value="bottom-center"/>
-   </properties>
-  </object>
   <object id="1128" name="logic-torch" type="object" x="2038.13" y="1175.71" width="101" height="111">
    <properties>
     <property name="color" value="red"/>
@@ -110,7 +97,7 @@
     <property name="is-on" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1130" name="metal-chest" type="object" x="4301.15" y="2564.97" width="128" height="128">
+  <object id="1130" name="metal-chest" type="object" x="3317.15" y="626.97" width="128" height="128">
    <properties>
     <property name="reward-pool" value="ur-rare"/>
    </properties>
@@ -129,14 +116,7 @@
     <property name="transition" value="center-right"/>
    </properties>
   </object>
-  <object id="1148" name="caged-mouse" type="object" x="4052" y="2586" width="196" height="112"/>
-  <object id="1152" name="wind" type="object" x="2022.67" y="2220" width="380" height="400">
-   <properties>
-    <property name="listen-event" value="activate-wind"/>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="1"/>
-   </properties>
-  </object>
+  <object id="1148" name="caged-mouse" type="object" x="2322" y="648" width="196" height="112"/>
   <object id="1155" name="terrain-hole" type="object" x="850.161" y="718.109" width="170" height="260.333">
    <properties>
     <property name="hole-tag" value="hole-A"/>
@@ -145,20 +125,6 @@
   <object id="1156" name="terrain-hole" type="object" x="4261.06" y="740.379" width="170" height="260.333">
    <properties>
     <property name="hole-tag" value="hole-A"/>
-   </properties>
-  </object>
-  <object id="1161" name="wind" type="object" x="2022.67" y="1820" width="380" height="400">
-   <properties>
-    <property name="listen-event" value="activate-wind"/>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="1"/>
-   </properties>
-  </object>
-  <object id="1162" name="wind" type="object" x="2022.67" y="1420" width="380" height="400">
-   <properties>
-    <property name="listen-event" value="activate-wind"/>
-    <property name="speed-x" type="float" value="0"/>
-    <property name="speed-y" type="float" value="1"/>
    </properties>
   </object>
  </objectgroup>
@@ -179,11 +145,6 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="6-C"/>
-   </properties>
-  </object>
-  <object id="1122" name="spawn" type="object" x="2837" y="2566.18" width="128" height="128">
-   <properties>
-    <property name="transition" value="bottom-center"/>
    </properties>
   </object>
   <object id="1135" name="spawn" type="object" x="2357.21" y="1160.24" width="128" height="128">
@@ -219,13 +180,12 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="73" name="terrain -3" locked="1">
+ <objectgroup id="73" name="terrain -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1029" name="ruins-thick" type="terrain" x="1892.69" y="1336" width="2076.63" height="566.909"/>
-  <object id="1111" name="ruins-thick" type="terrain" x="-90.1635" y="2850.3" width="6118.63" height="576"/>
  </objectgroup>
  <objectgroup id="98" name="objects -3">
   <properties>
@@ -233,18 +193,14 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1118" name="edge-portal" type="object" x="0.041" y="2360" width="199.918" height="488.002">
+  <object id="1165" name="solid" type="collision" x="1760.56" y="-482.59" width="126.878" height="1821.18">
    <properties>
-    <property name="direction" value="left"/>
-    <property name="map" value="UnderflowRuins/Zone_3_3"/>
-    <property name="transition" value="bottom-left"/>
+    <property name="mini-map-visible" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1119" name="edge-portal" type="object" x="5687.04" y="2364" width="199.918" height="488.002">
+  <object id="1166" name="solid" type="collision" x="3966.56" y="-480.59" width="126.878" height="1821.18">
    <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="UnderflowRuins/Zone_3_7"/>
-    <property name="transition" value="bottom-right"/>
+    <property name="mini-map-visible" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -276,16 +232,6 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="9-C"/>
-   </properties>
-  </object>
-  <object id="1120" name="spawn" type="object" x="5378.79" y="2721.33" width="128" height="128">
-   <properties>
-    <property name="transition" value="bottom-left"/>
-   </properties>
-  </object>
-  <object id="1121" name="spawn" type="object" x="450.667" y="2721.94" width="128" height="128">
-   <properties>
-    <property name="transition" value="bottom-right"/>
    </properties>
   </object>
  </objectgroup>
@@ -321,7 +267,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="58" name="terrain bg">
+ <objectgroup id="58" name="terrain bg" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
@@ -417,7 +363,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="21" name="terrain">
+ <objectgroup id="21" name="terrain" visible="0">
   <properties>
    <property name="type" value="objects"/>
   </properties>

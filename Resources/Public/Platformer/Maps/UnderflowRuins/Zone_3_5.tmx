@@ -17,7 +17,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="988" name="temple-dark" type="terrain" x="-565.82" y="-854" width="7875.63" height="4884">
+  <object id="988" name="temple-dark" type="terrain" x="-565.82" y="-854" width="7875.63" height="3356">
    <properties>
     <property name="collision" value="none"/>
     <property name="hole-tag" value="hole-A"/>
@@ -32,7 +32,7 @@
   </properties>
   <object id="961" name="Ruins/WindowTransparent" type="decor" x="285.08" y="651.318" width="313" height="381"/>
   <object id="1218" name="Ruins/WindowTransparent" type="decor" x="2537.08" y="663.318" width="313" height="381"/>
-  <object id="1220" name="Ruins/WindowTransparent" type="decor" x="4013.08" y="691.318" width="313" height="381"/>
+  <object id="1220" name="Ruins/WindowTransparent" type="decor" x="3975.08" y="707.318" width="313" height="381"/>
   <object id="962" name="Ruins/WindowTransparent" type="decor" x="6080.11" y="689.015" width="313" height="381"/>
   <object id="967" name="torch" type="object" x="4648.94" y="795.935" width="42" height="130"/>
   <object id="968" name="torch" type="object" x="922.506" y="807.388" width="42" height="130"/>
@@ -108,9 +108,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1029" name="ruins-thick" type="terrain" x="2404.69" y="1080" width="791.66" height="566.909"/>
-  <object id="1111" name="ruins-thick" type="terrain" x="3721.84" y="2850.3" width="3866.63" height="912"/>
   <object id="1127" name="ruins-thick" type="terrain" x="3713.69" y="1330" width="874.63" height="566.909"/>
-  <object id="1176" name="ruins-thick" type="terrain" x="-710.163" y="2850.3" width="3874.63" height="912"/>
  </objectgroup>
  <objectgroup id="98" name="objects -3">
   <properties>
@@ -118,30 +116,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1118" name="edge-portal" type="object" x="0.041" y="2364" width="199.918" height="488.002">
-   <properties>
-    <property name="direction" value="left"/>
-    <property name="map" value="UnderflowRuins/Zone_3_4"/>
-    <property name="transition" value="bottom-left"/>
-   </properties>
-  </object>
-  <object id="1119" name="edge-portal" type="object" x="6707.04" y="2364" width="199.918" height="488.002">
-   <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="UnderflowRuins/Zone_3_6"/>
-    <property name="transition" value="bottom-right"/>
-   </properties>
-  </object>
-  <object id="1133" name="lever" type="object" x="2383.38" y="2642.11" width="177" height="205">
-   <properties>
-    <property name="send-event" value="bridge-group-A"/>
-   </properties>
-  </object>
-  <object id="1134" name="lever" type="object" x="4338.77" y="2642.95" width="177" height="205">
-   <properties>
-    <property name="send-event" value="bridge-group-B"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="100" name="entities -3">
   <properties>
@@ -149,45 +123,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1158" name="lion-man" type="entity" x="1759.99" y="2720.77" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="UnderflowRuins/Combat_Pyramid"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="enemy,soul,agro,melee"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="1159" name="tiger-man" type="entity" x="1603.43" y="2406.13" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
-  <object id="1205" name="tigress" type="entity" x="4764.28" y="2719.32" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="UnderflowRuins/Combat_Pyramid"/>
-    <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,soul,agro,melee"/>
-    <property name="drop-pool" value="ur-generic"/>
-   </properties>
-  </object>
-  <object id="1206" name="lioness" type="entity" x="4771.72" y="2384.68" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-b"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
-  <object id="1221" name="lioness" type="entity" x="1908" y="2416" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="74" name="player_layer -3">
   <properties>
@@ -210,16 +145,6 @@
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="to" value="3-B"/>
-   </properties>
-  </object>
-  <object id="1120" name="spawn" type="object" x="6270.79" y="2719.33" width="128" height="128">
-   <properties>
-    <property name="transition" value="bottom-left"/>
-   </properties>
-  </object>
-  <object id="1121" name="spawn" type="object" x="450.667" y="2717.94" width="128" height="128">
-   <properties>
-    <property name="transition" value="bottom-right"/>
    </properties>
   </object>
  </objectgroup>
@@ -717,8 +642,6 @@
     <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="1172" name="ruins-thick" type="terrain" x="2854.68" y="3192" width="3426.63" height="576"/>
-  <object id="1185" name="ruins-thick" type="terrain" x="6283.29" y="2972.55" width="2120.93" height="576"/>
  </objectgroup>
  <objectgroup id="102" name="terrain fg">
   <properties>
@@ -774,19 +697,6 @@
     <property name="components" value="bridge"/>
    </properties>
   </object>
-  <object id="1174" name="edge-portal" type="object" x="6708.04" y="2478" width="199.918" height="488.002">
-   <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="UnderflowRuins/Zone_3_6"/>
-    <property name="transition" value="bottom-right-front"/>
-   </properties>
-  </object>
-  <object id="1186" name="portal" type="object" x="3327.66" y="2843.47" width="256.687" height="349.061">
-   <properties>
-    <property name="map" value="UnderflowRuins/Zone_3_2"/>
-    <property name="transition" value="bottom-center"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="71" name="decor">
   <properties>
@@ -831,49 +741,24 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="1175" name="spawn" type="object" x="6354" y="2843" width="128" height="128">
-   <properties>
-    <property name="transition" value="bottom-left-front"/>
-   </properties>
-  </object>
-  <object id="1187" name="spawn" type="object" x="3385.33" y="3064.67" width="128" height="128">
-   <properties>
-    <property name="transition" value="bottom-center"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="78" name="bridge +0">
   <properties>
    <property name="depth" type="float" value="0"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1180" name="ruins-thick" type="terrain" x="3315.15" y="3231.09" width="288" height="276">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="79" name="bridge +1">
   <properties>
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1181" name="ruins-thick" type="terrain" x="3314.48" y="3270.45" width="288" height="279.273">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="80" name="bridge +2">
   <properties>
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1183" name="ruins-thick" type="terrain" x="3316.48" y="3313.08" width="288" height="278.03">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="101" name="terrain +3 bg">
   <properties>

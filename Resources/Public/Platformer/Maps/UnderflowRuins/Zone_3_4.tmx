@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="108" nextobjectid="1198">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="16" tilewidth="128" tileheight="128" infinite="0" nextlayerid="108" nextobjectid="1200">
  <properties>
   <property name="rubber-band" type="int" value="8"/>
  </properties>
@@ -155,48 +155,6 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1019" name="ruins-thick" type="terrain" x="2822.57" y="1440" width="96" height="340">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1020" name="ruins-thick" type="terrain" x="2704.05" y="1440" width="96" height="340">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1021" name="ruins-thick" type="terrain" x="2581.48" y="1440" width="96" height="340">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1022" name="ruins-thick" type="terrain" x="2461.62" y="1440" width="96" height="340">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1023" name="ruins-thick" type="terrain" x="2339.43" y="1440" width="96" height="340">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1024" name="ruins-thick" type="terrain" x="2217.24" y="1440" width="96" height="340">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
-  <object id="1025" name="ruins-thick" type="terrain" x="2099.52" y="1440" width="96" height="340">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="mini-map-hidden" type="bool" value="false"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
@@ -208,57 +166,23 @@
     <property name="fade-multiplier" type="float" value="0.25"/>
    </properties>
   </object>
-  <object id="1028" name="ruins-thick" type="terrain" x="2919.18" y="1404" width="1652.45" height="1872">
-   <properties>
-    <property name="components" value="z-fade"/>
-    <property name="fade-multiplier" type="float" value="0.25"/>
-    <property name="top-only" type="bool" value="true"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="104" name="terrain fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1166" name="ruins-thick" type="terrain" x="2099.05" y="2712" width="2130.27" height="576">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="23" name="objects">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1084" name="edge-portal" type="object" x="3895.04" y="915.999" width="199.918" height="488.002">
-   <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="UnderflowRuins/Zone_3_5"/>
-    <property name="transition" value="right"/>
-   </properties>
-  </object>
-  <object id="1110" name="solid" type="collision" x="2073.23" y="1437.74" width="873.545" height="100.513"/>
-  <object id="1167" name="edge-portal" type="object" x="3888.04" y="2216" width="199.918" height="488.002">
-   <properties>
-    <property name="direction" value="right"/>
-    <property name="map" value="UnderflowRuins/Zone_3_5"/>
-    <property name="transition" value="bottom-right"/>
-   </properties>
-  </object>
-  <object id="1177" name="vase" type="object" x="3044.47" y="1244.55" width="113" height="160">
-   <properties>
-    <property name="color" value="yellow"/>
-    <property name="spawn-pool" value="spawn-pool-ur"/>
-   </properties>
-  </object>
-  <object id="1180" name="vase" type="object" x="3055.5" y="2552" width="113" height="160">
-   <properties>
-    <property name="color" value="blue"/>
-    <property name="spawn-pool" value="spawn-pool-ur"/>
-   </properties>
-  </object>
   <object id="1196" name="caged-squirrel" type="object" x="1007" y="1292" width="196" height="112"/>
+  <object id="1198" name="solid" type="collision" x="2099.23" y="-417.257" width="126.878" height="1821.18">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="71" name="decor">
   <properties>
@@ -308,11 +232,6 @@
     <property name="to" value="6-B"/>
    </properties>
   </object>
-  <object id="1087" name="spawn" type="object" x="3585.33" y="1277.33" width="128" height="128">
-   <properties>
-    <property name="transition" value="left"/>
-   </properties>
-  </object>
   <object id="1150" name="warp" type="object" x="657.333" y="1149.33" width="256" height="256">
    <properties>
     <property name="from" value="3-C"/>
@@ -329,19 +248,6 @@
     <property name="to" value="6-D"/>
    </properties>
   </object>
-  <object id="1165" name="warp" type="object" x="2254.67" y="2456" width="256" height="256">
-   <properties>
-    <property name="from" value="3-E"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="6-E"/>
-   </properties>
-  </object>
-  <object id="1168" name="spawn" type="object" x="3461.33" y="2580" width="128" height="128">
-   <properties>
-    <property name="transition" value="bottom-left"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="99" name="bridge +0">
   <properties>
@@ -355,12 +261,6 @@
    </properties>
   </object>
   <object id="1130" name="ruins-thick" type="terrain" x="1741.33" y="1437.33" width="288" height="340">
-   <properties>
-    <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="1163" name="ruins-thick" type="terrain" x="2240.88" y="2741.8" width="288" height="340">
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
@@ -384,11 +284,6 @@
     <property name="components" value="z-fade"/>
    </properties>
   </object>
-  <object id="1162" name="ruins-thick" type="terrain" x="2240.71" y="2777.14" width="288" height="340">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="90" name="bridge +2">
   <properties>
@@ -405,11 +300,6 @@
    <properties>
     <property name="collision" value="none"/>
     <property name="components" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="1161" name="ruins-thick" type="terrain" x="2240.05" y="2813.3" width="288" height="340">
-   <properties>
-    <property name="collision" value="none"/>
    </properties>
   </object>
  </objectgroup>
@@ -430,7 +320,6 @@
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1186" name="ruins-thick" type="terrain" x="776.685" y="2840" width="3054.63" height="576"/>
  </objectgroup>
  <objectgroup id="76" name="terrain +3">
   <properties>
@@ -449,7 +338,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="96" name="objects +3" visible="0">
+ <objectgroup id="96" name="objects +3">
   <properties>
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
@@ -460,33 +349,9 @@
     <property name="transition" value="center"/>
    </properties>
   </object>
-  <object id="1147" name="portal" type="object" x="963.414" y="2489.71" width="256.687" height="349.061">
+  <object id="1199" name="solid" type="collision" x="2216.56" y="-254.59" width="126.878" height="1821.18">
    <properties>
-    <property name="map" value="UnderflowRuins/Zone_3_3"/>
-    <property name="transition" value="bottom-center"/>
-   </properties>
-  </object>
-  <object id="1173" name="life-stone" type="object" x="1639" y="2430.5" width="146" height="423">
-   <properties>
-    <property name="components" value="z-fade"/>
-    <property name="fade-multiplier" type="float" value="0.25"/>
-    <property name="transition" value="lifestone-spawn"/>
-   </properties>
-  </object>
-  <object id="1181" name="vase" type="object" x="2891.5" y="2680" width="113" height="160">
-   <properties>
-    <property name="color" value="brown"/>
-    <property name="components" value="z-fade"/>
-    <property name="fade-multiplier" type="float" value="0.25"/>
-    <property name="spawn-pool" value="spawn-pool-ur"/>
-   </properties>
-  </object>
-  <object id="1182" name="vase" type="object" x="3044.5" y="2680" width="113" height="160">
-   <properties>
-    <property name="color" value="brown"/>
-    <property name="components" value="z-fade"/>
-    <property name="fade-multiplier" type="float" value="0.25"/>
-    <property name="spawn-pool" value="spawn-pool-ur"/>
+    <property name="mini-map-visible" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -517,24 +382,6 @@
     <property name="to" value="3-B"/>
    </properties>
   </object>
-  <object id="1146" name="spawn" type="object" x="1026" y="2712" width="128" height="128">
-   <properties>
-    <property name="transition" value="bottom-center"/>
-   </properties>
-  </object>
-  <object id="1164" name="warp" type="object" x="2253.52" y="2580.36" width="256" height="256">
-   <properties>
-    <property name="from" value="6-E"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="3-E"/>
-   </properties>
-  </object>
-  <object id="1193" name="spawn" type="object" x="1650.3" y="2713.21" width="128" height="128">
-   <properties>
-    <property name="transition" value="lifestone-spawn"/>
-   </properties>
-  </object>
   <object id="1195" name="squally" type="entity" x="1348" y="1438" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
@@ -551,11 +398,6 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1135" name="ruins-thick" type="terrain" x="948.667" y="2880" width="288" height="276">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="82" name="bridge +5">
   <properties>
@@ -567,11 +409,6 @@
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="1136" name="ruins-thick" type="terrain" x="950" y="2919.7" width="288" height="279.273">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="83" name="bridge +6">
   <properties>
@@ -579,11 +416,6 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1057" name="ruins-thick" type="terrain" x="952.48" y="1698.03" width="288" height="278.03">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1137" name="ruins-thick" type="terrain" x="950" y="2961.65" width="288" height="278.03">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -600,16 +432,6 @@
    </properties>
   </object>
   <object id="1063" name="ruins-thick" type="terrain" x="1289.17" y="1676" width="98" height="1704.85">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1138" name="ruins-thick" type="terrain" x="808.085" y="2948.57" width="98" height="547.634">
-   <properties>
-    <property name="collision" value="none"/>
-   </properties>
-  </object>
-  <object id="1139" name="ruins-thick" type="terrain" x="1289.91" y="2954.57" width="98" height="529.092">
    <properties>
     <property name="collision" value="none"/>
    </properties>

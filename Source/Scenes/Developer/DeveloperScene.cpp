@@ -86,11 +86,9 @@ DeveloperScene::DeveloperScene()
 		- v EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- v Bard floating in EF portal
 		--------------
-		- ** UR Pyramid still fucking sucks. Cutting it in half helps a bit. Needs work. Maybe lightning.
-			- How about a giant circuit behind the main entrance, which needs to be connected via lighting various torches.
-				intent is to use different and/or logic gates (xor isn't taught yet) to connect it all.
 		- v UR cistern Chest + Puzzle + Animal is overwhelming and lazy
 		- v UR sky's reach color balance
+		- v UR Pyramid fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		--------------
 		- ** DM Rockslide fight is boring, should make this heal enemy (thus inverting == kill enemy)
 		- * DM Maybe allow combat from hitting helper, so that arrow matters
