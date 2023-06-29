@@ -2,6 +2,7 @@
 
 #include "Objects/Platformer/Projectiles/Projectile.h"
 
+class SmartAnimationSequenceNode;
 class WorldSound;
 
 namespace cocos2d
@@ -15,6 +16,7 @@ public:
 	static Shell* create();
 
 	void runSpawnFX() override;
+	void runImpactFX(bool isCrit);
 
 protected:
 	Shell();
@@ -27,4 +29,5 @@ private:
 
 	WorldSound* shootSfx = nullptr;
 	cocos2d::Sprite* shell = nullptr;
+	SmartAnimationSequenceNode* damageFx = nullptr;
 };

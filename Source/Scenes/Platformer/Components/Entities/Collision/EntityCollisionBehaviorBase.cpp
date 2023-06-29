@@ -289,9 +289,6 @@ void EntityCollisionBehaviorBase::buildEntityCollision()
 	});
 }
 
-#pragma optimize("", off)
-
-
 void EntityCollisionBehaviorBase::buildMovementCollision()
 {
 	if (this->movementCollision != nullptr || this->isInvalidated())

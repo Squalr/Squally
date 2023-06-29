@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="59" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1285">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="59" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="110" nextobjectid="1286">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -550,11 +550,6 @@
     <property name="transition" value="lifestone-spawn"/>
    </properties>
   </object>
-  <object id="1253" name="gatling-gun" type="object" x="2245.73" y="1680.77" width="1117" height="414">
-   <properties>
-    <property name="components" value="gatling-gun"/>
-   </properties>
-  </object>
   <object id="1261" name="trigger" type="object" x="4262.31" y="-420.174" width="136.939" height="2112.07">
    <properties>
     <property name="send-event" value="talk-to-cleopatra"/>
@@ -668,6 +663,17 @@
     <property name="components" value="friendly"/>
     <property name="flip-x" type="bool" value="false"/>
     <property name="tag" value="guard"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="109" name="objects fg">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1285" name="gatling-gun" type="object" x="2245.73" y="1680.77" width="1117" height="414">
+   <properties>
+    <property name="components" value="gatling-gun"/>
    </properties>
   </object>
  </objectgroup>

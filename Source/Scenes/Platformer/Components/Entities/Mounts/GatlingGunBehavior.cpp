@@ -231,12 +231,26 @@ void GatlingGunBehavior::decorateProjectile(Projectile* projectile)
 
 		if (target != nullptr)
 		{
-			target->getComponent<KillingMachineHealthBehavior>([target](KillingMachineHealthBehavior* healthBehavior)
+			target->getComponent<KillingMachineHealthBehavior>([projectile, target](KillingMachineHealthBehavior* healthBehavior)
 			{
-				target->getComponent<KillingMachineDamageBehavior>([target, healthBehavior](KillingMachineDamageBehavior* damageBehavior)
+				if (!healthBehavior->isAlive())
+				{
+					return CollisionResult::DoNothing;
+				}
+
+				target->getComponent<KillingMachineDamageBehavior>([projectile, target, healthBehavior](KillingMachineDamageBehavior* damageBehavior)
 				{
 					int damage = damageBehavior->compare();
 					healthBehavior->addHealth(-damage);
+			
+					Shell* shell = static_cast<Shell*>(projectile);
+
+					if (shell != nullptr)
+					{
+						bool wasCrit = damage >= KillingMachineDamageBehavior::CritDamage;
+
+						shell->runImpactFX(wasCrit);
+					}
 				});
 			});
 		}

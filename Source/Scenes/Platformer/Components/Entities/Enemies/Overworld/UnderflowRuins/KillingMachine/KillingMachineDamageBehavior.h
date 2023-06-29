@@ -28,6 +28,9 @@ public:
 	static const std::string HackIdentifierKillingMachineCompare5;
 	static const std::string HackIdentifierKillingMachineCompare6;
 
+	static const int DefaultDamage;
+	static const int CritDamage;
+
 protected:
 	KillingMachineDamageBehavior(GameObject* owner);
 	virtual ~KillingMachineDamageBehavior();
@@ -62,7 +65,4 @@ private:
 	static const std::string PropertyMachineId;
 	static cocos2d::Value DamageStorageAntiOptimize;
 	static std::map<int, MachineAsmConstants> MachineAsmConstantsMap;
-
-	static const int DefaultDamage;
-	static const int CritDamage;
 };

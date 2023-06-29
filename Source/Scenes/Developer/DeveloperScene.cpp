@@ -86,7 +86,6 @@ DeveloperScene::DeveloperScene()
 		- v EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- v Bard floating in EF portal
 		--------------
-		- ** UR Gauntlet - Critical hit indicator (big explosion? maybe tiny explosion otherwise)
 		- ** UR Pyramid still fucking sucks. Cutting it in half helps a bit. Needs work. Maybe lightning.
 			- How about a giant circuit behind the main entrance, which needs to be connected via lighting various torches.
 				intent is to use different and/or logic gates (xor isn't taught yet) to connect it all.
