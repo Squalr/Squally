@@ -11,6 +11,7 @@
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityHoverCollisionBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Petrification/EntityPetrificationBehavior.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -42,8 +43,6 @@ EntityGroundCollisionBehavior::EntityGroundCollisionBehavior(GameObject* owner) 
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->dropShadowCollisions = std::vector<CollisionObject*>();
 	this->groundCollision = nullptr;
-	this->leftCornerCollision = nullptr;
-	this->rightCornerCollision = nullptr;
 	this->detectorWidth = 0.0f;
 	this->hoverCollisionBehavior = nullptr;
 
@@ -74,7 +73,6 @@ void EntityGroundCollisionBehavior::onLoad()
 	{
 		this->buildDropShadowCollisionDetector();
 		this->buildGroundCollisionDetector();
-		// this->buildCornerCollisionDetectors();
 		this->toggleQueryable(true);
 		this->scheduleUpdate();
 	});
@@ -95,16 +93,6 @@ void EntityGroundCollisionBehavior::onDisable()
 	if (this->groundCollision != nullptr)
 	{
 		this->groundCollision->setPhysicsFlagEnabled(false);
-	}
-	
-	if (this->leftCornerCollision != nullptr)
-	{
-		this->leftCornerCollision->setPhysicsFlagEnabled(false);
-	}
-	
-	if (this->rightCornerCollision != nullptr)
-	{
-		this->rightCornerCollision->setPhysicsFlagEnabled(false);
 	}
 }
 
@@ -217,7 +205,15 @@ void EntityGroundCollisionBehavior::update(float dt)
 	const float DeathScalerSpeed = 3.0f;
 	const float MaxDeathScale = 1.75f;
 
-	if (!this->entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+	// An exception for petrified entities, which are also marked as dead as a shitty hack
+	bool isPetrified = false;
+
+	this->entity->getComponent<EntityPetrificationBehavior>([&](EntityPetrificationBehavior* behavior)
+	{
+		isPetrified = !behavior->isCured();
+	});
+
+	if (!isPetrified && !this->entity->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 	{
 		this->deathScaler = MathUtils::clamp(this->deathScaler + dt * DeathScalerSpeed, 1.0f, MaxDeathScale);
 	}
@@ -265,16 +261,6 @@ void EntityGroundCollisionBehavior::onCollideWithGround()
 bool EntityGroundCollisionBehavior::isOnGround()
 {
 	return this->groundCollision == nullptr ? false : this->groundCollision->hasCollisions();
-}
-
-bool EntityGroundCollisionBehavior::hasLeftCornerCollision()
-{
-	return this->leftCornerCollision == nullptr ? false : this->leftCornerCollision->hasCollisions();
-}
-
-bool EntityGroundCollisionBehavior::hasRightCornerCollision()
-{
-	return this->rightCornerCollision == nullptr ? false : this->rightCornerCollision->hasCollisions();
 }
 
 bool EntityGroundCollisionBehavior::isStandingOn(CollisionObject* collisonObject)
@@ -392,52 +378,6 @@ void EntityGroundCollisionBehavior::buildGroundCollisionDetector()
 	{
 		this->onCollideWithGround();
 		
-		return CollisionResult::DoNothing;
-	});
-}
-
-void EntityGroundCollisionBehavior::buildCornerCollisionDetectors()
-{
-	if (this->rightCornerCollision != nullptr || this->leftCornerCollision != nullptr)
-	{
-		return;
-	}
-
-	const float Buffer = 4;
-
-	this->rightCornerCollision = CollisionObject::create(
-		CollisionObject::createBox(
-			CSize(EntityGroundCollisionBehavior::CornerCollisionWidth, EntityGroundCollisionBehavior::GroundCollisionHeight + Buffer)
-		),
-		(int)PlatformerCollisionType::GroundDetector,
-		CollisionObject::Properties(false, false),
-		Color4F::GRAY
-	);
-
-	this->leftCornerCollision = CollisionObject::create(
-		CollisionObject::createBox(
-			CSize(EntityGroundCollisionBehavior::CornerCollisionWidth, EntityGroundCollisionBehavior::GroundCollisionHeight + Buffer)
-		),
-		(int)PlatformerCollisionType::GroundDetector,
-		CollisionObject::Properties(false, false),
-		Color4F::GRAY
-	);
-
-	Vec2 offset = Vec2(this->detectorWidth / 2.0f,  EntityGroundCollisionBehavior::GroundCollisionOffset);
-
-	this->rightCornerCollision->setPosition(offset);
-	this->leftCornerCollision->setPosition(Vec2(-offset.x, offset.y));
-	
-	this->addChild(this->rightCornerCollision);
-	this->addChild(this->leftCornerCollision);
-
-	this->leftCornerCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
-	{
-		return CollisionResult::DoNothing;
-	});
-
-	this->rightCornerCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
-	{
 		return CollisionResult::DoNothing;
 	});
 }

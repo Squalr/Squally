@@ -14,8 +14,6 @@ public:
 	CollisionObject* getGroundCollision();
 	void onCollideWithGround();
 	bool isOnGround();
-	bool hasLeftCornerCollision();
-	bool hasRightCornerCollision();
 	bool isStandingOn(CollisionObject* collisonObject);
 	bool isStandingOnSomethingOtherThan(CollisionObject* collisonObject);
 	
@@ -44,7 +42,6 @@ private:
 
 	void buildDropShadowCollisionDetector();
 	void buildGroundCollisionDetector();
-	void buildCornerCollisionDetectors();
 
 	struct DropShadowResult
 	{
@@ -54,8 +51,6 @@ private:
 		bool isValid = false;
 	};
 
-	CollisionObject* leftCornerCollision = nullptr;
-	CollisionObject* rightCornerCollision = nullptr;
 	CollisionObject* groundCollision = nullptr;
 	std::vector<CollisionObject*> dropShadowCollisions;
 	PlatformerEntity* entity = nullptr;
