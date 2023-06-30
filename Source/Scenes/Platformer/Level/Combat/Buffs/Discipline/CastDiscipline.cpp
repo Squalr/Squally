@@ -38,7 +38,7 @@ CastDiscipline::CastDiscipline(float attackDuration, float recoverDuration, Prio
 		TargetingType::Self
 	)
 {
-	this->disciplineSound = WorldSound::create(SoundResources::Platformer_Spells_FireHit1);
+	this->disciplineSound = WorldSound::create(SoundResources::Platformer_Defense_Rebound2);
 
 	this->addChild(this->disciplineSound);
 }
@@ -71,7 +71,7 @@ void CastDiscipline::performAttack(PlatformerEntity* owner, std::vector<Platform
 {
 	super::performAttack(owner, targets);
 	
-	this->disciplineSound->play(false, this->attackDuration);
+	this->disciplineSound->play(false, 0.0f);
 
 	owner->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{

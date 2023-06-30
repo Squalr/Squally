@@ -29,6 +29,15 @@ public:
 	void stop(float disableUpdateAfter = 0.0f);
 	bool isActive();
 	void accelerate(float duration);
+	
+    const cocos2d::Color4F& getStartColor() const;
+    void setStartColor(const cocos2d::Color4F& color);
+    const cocos2d::Color4F& getStartColorVar() const;
+    void setStartColorVar(const cocos2d::Color4F& color);
+    const cocos2d::Color4F& getEndColor() const;
+    void setEndColor(const cocos2d::Color4F& color);
+    const cocos2d::Color4F& getEndColorVar() const;
+    void setEndColorVar(const cocos2d::Color4F& color);
 
 	void setTotalParticles(int totalParticles);
 	void setPosVar(cocos2d::Vec2 posVar);

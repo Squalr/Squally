@@ -38,7 +38,7 @@ CastDefend::CastDefend(float attackDuration, float recoverDuration, Priority pri
 		TargetingType::Self
 	)
 {
-	this->defendSound = WorldSound::create(SoundResources::Platformer_Spells_FireHit1);
+	this->defendSound = WorldSound::create(SoundResources::Platformer_Defense_Rebound2);
 
 	this->addChild(this->defendSound);
 }
@@ -71,7 +71,7 @@ void CastDefend::performAttack(PlatformerEntity* owner, std::vector<PlatformerEn
 {
 	super::performAttack(owner, targets);
 	
-	this->defendSound->play(false, this->attackDuration);
+	this->defendSound->play(false, 0.0f);
 
 	owner->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{

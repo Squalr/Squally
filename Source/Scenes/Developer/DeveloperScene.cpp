@@ -90,24 +90,23 @@ DeveloperScene::DeveloperScene()
 		- v UR sky's reach color balance
 		- v UR Pyramid fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		--------------
-		- ** DM Rockslide fight is boring, should make this heal enemy (thus inverting == kill enemy)
-		- * DM Maybe allow combat from hitting helper, so that arrow matters
-		- * DM Stalactite SFX
-		- * DM can maybe show stalactite in a harmless way first (maybe even Scrappy callout for use ability when it matters)
-		- * DM push/pop movement SFX
-		- * DM stack should remain as the answer once solved
-		- * DM diamond doesn't make sense here. Can use it in BG, but maybe move diamond carts to the right zones
+		- v DM Rockslide fight is boring, should make this heal enemy (thus inverting == kill enemy)
+		- v DM Maybe allow combat from hitting helper, so that arrow matters
+		- v DM Stalactite SFX
+		- v DM can maybe show stalactite in a harmless way first (maybe even Scrappy callout for use ability when it matters)
+		- v DM diamond doesn't make sense here. Can use it in BG, but maybe move diamond carts to the right zones
+		- v DM push/pop movement SFX
+		- v DM stack should remain as the answer once solved
 		- v DM train NPCs fun dialogue
 		- v DM Missing way to obtain hats (craftable?)
 		- v DM Maybe a ladder on ship art to show the point of entry
 		--------------
 		- ** Final crack art is ass (Where is this again? not CV?)
 		- ** CV rabies is tl;dr
-		- * CV Missing "what is this" text on crypt guard
-		- * CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
 		- * CV disable study Mabel dialogue interaction while hidden behind arcane
-		- * CV PFX on unharvested souls
 		- * CV secret tunnel feels unfinished
+		- v CV Missing "what is this" text on crypt guard
+		- v CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
 		- v CV friendly text on atrius (err no, whoever is in tunnel)
 		- v CV friendly text on Elric after bitten dialogue
 		--------------
@@ -131,7 +130,6 @@ DeveloperScene::DeveloperScene()
 		- v FF first girl friendly text
 		- v FF Maybe update Drak text upon crafting demon heart
 		--------------
-		- ** Defend cast sfx
 		- ** Mana flask description wrong in combat
 		- ** Jitter standing in place
 		- ** Lightning ability VFX broken
@@ -148,9 +146,10 @@ DeveloperScene::DeveloperScene()
 		- v More transmutes (perhaps custom UI to show a transmute wheel)
 		- v More passes on music. Probably need more overworld. Far and Away / Sunset once I get access.
 		- v Wontfix? Missing Shadow ability: Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)
-		v Maybe some storyline for introducing powers
-			v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
-		v Should add some sort of archery mini-game with jump shots or something in some town. Maybe DH.
+		- v Maybe some storyline for introducing powers
+			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
+		- v Should add some sort of archery mini-game with jump shots or something in some town. Maybe DH.
+		- v Shine FX is great and should be used
 		- v Make LC final 4_x maps less bad.
 		- v Camera harsh leaving camera targets (see FF cinematic)
 		- v No interrupt if damage attack modified to heal
@@ -183,6 +182,8 @@ DeveloperScene::DeveloperScene()
 			- Leave button stuck visible after losing a puzzle
 			- Enemy should pre-calc the best play when player has passed (hard)
 			- vv It'd be nice to get SHL from the puzzle where you learn it. I guess just tailored pools or something. May scrap this.
+		- Shitty SFX
+			- All defend variants
 	
 	- Localization / Scripting
 		- Lexicon is largely incomplete

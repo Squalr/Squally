@@ -11,6 +11,7 @@ class MinMaxPool;
 class PlatformerEntity;
 class PocketPoolDeserializer;
 class SmartAnimationSequenceNode;
+class SmartParticles;
 class Squally;
 class WorldSound;
 
@@ -43,6 +44,7 @@ private:
 	PlatformerEntity* entity = nullptr;
 	Squally* squally = nullptr;
 	cocos2d::Sprite* soulHarvestIcon = nullptr;
+	SmartParticles* soulFx = nullptr;
 	SmartAnimationSequenceNode* soulHarvestFx = nullptr;
 	SmartAnimationSequenceNode* healFxSqually = nullptr;
 	WorldSound* soulHarvestSfx = nullptr;

@@ -8,6 +8,7 @@
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/Input/Input.h"
 #include "Engine/Inventory/MinMaxPool.h"
+#include "Engine/Particles/SmartParticles.h"
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EnginePhysicsTypes.h"
 #include "Engine/Save/SaveManager.h"
@@ -28,6 +29,7 @@
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
+#include "Resources/ParticleResources.h"
 #include "Resources/SoundResources.h"
 #include "Resources/FXResources.h"
 #include "Resources/UIResources.h"
@@ -49,11 +51,14 @@ EntitySoulBehavior* EntitySoulBehavior::create(GameObject* owner)
 EntitySoulBehavior::EntitySoulBehavior(GameObject* owner) : super(owner)
 {
 	this->soulHarvestIcon = Sprite::create(UIResources::Menus_Icons_AngelFigurine);
+	this->soulFx = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->soulHarvestFx = SmartAnimationSequenceNode::create();
 	this->healFxSqually = SmartAnimationSequenceNode::create();
 	this->soulHarvestSfx = WorldSound::create(SoundResources::Platformer_Spells_Curse1);
 	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 
+	this->soulFx->setStartColor(Color4F::PURPLE);
+	this->soulFx->setEndColor(Color4F(0.5f, 0.0f, 0.5f, 0.0f));
 	this->soulHarvestIcon->setScale(0.75f);
 	this->soulHarvestFx->setAnimationAnchor(Vec2(0.5f, 0.0f));
 	this->healFxSqually->setAnimationAnchor(Vec2(0.5f, 0.0f));
@@ -63,9 +68,8 @@ EntitySoulBehavior::EntitySoulBehavior(GameObject* owner) : super(owner)
 		this->invalidate();
 	}
 
-	this->soulHarvestIcon->setVisible(false);
-
 	this->addChild(this->soulHarvestSfx);
+	this->addChild(this->soulFx);
 	this->addChild(this->soulHarvestFx);
 	this->addChild(this->healFxSqually);
 	this->addChild(this->soulHarvestIcon);
@@ -79,11 +83,13 @@ void EntitySoulBehavior::initializePositions()
 {
 	super::initializePositions();
 
+	// this->soulFx->setPositionY(this->entity->getEntityBottomPointRelative().y);
 	this->soulHarvestIcon->setPosition(Vec2(0.0f, -32.0f));
 }
 
 void EntitySoulBehavior::onLoad()
 {
+
 	this->defer([=]()
 	{
 		if (this->entity->getComponent<EntitySelectionBehavior>() == nullptr)
@@ -127,12 +133,12 @@ void EntitySoulBehavior::onLoad()
 	{
 		this->squally = squally;
 		this->currentHelperName = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
-		this->soulHarvestIcon->setVisible(this->canSoulHarvest());
+			this->updateIconVisibility();
 
 		this->squally->listenForStateWrite(StateKeys::CurrentHelper, [=](Value value)
 		{
 			this->currentHelperName = value.asString();
-			this->soulHarvestIcon->setVisible(this->canSoulHarvest());
+			this->updateIconVisibility();
 		});
 	}, Squally::MapKey);
 }
@@ -198,6 +204,15 @@ void EntitySoulBehavior::onSoulHarvested()
 
 void EntitySoulBehavior::updateIconVisibility()
 {
+	if (this->canSoulHarvest())
+	{
+		this->soulFx->start();
+	}
+	else
+	{
+		this->soulFx->stop();
+	}
+
 	this->soulHarvestIcon->setVisible(this->canSoulHarvest());
 }
 

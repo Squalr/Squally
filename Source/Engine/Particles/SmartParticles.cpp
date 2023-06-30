@@ -29,6 +29,8 @@ SmartParticles::SmartParticles(std::string particleResource, CullInfo cullInfo) 
 	this->cullInfo = cullInfo;
 	this->boundsRect = CRect(Vec2::ZERO, this->cullInfo.size);
 
+	this->setCascadeColorEnabled(true);
+	this->cullContainer->setCascadeColorEnabled(true);
 	this->setContentSize(this->cullInfo.size);
 
 	if (!cullInfo.cull)
@@ -212,6 +214,46 @@ void SmartParticles::accelerate(float duration)
 	{
 		this->particles->update(step);
 	}
+}
+
+const Color4F& SmartParticles::getStartColor() const
+{
+	return this->particles->getStartColor();
+}
+
+void SmartParticles::setStartColor(const Color4F& color)
+{
+	this->particles->setStartColor(color);
+}
+
+const Color4F& SmartParticles::getStartColorVar() const
+{
+	return this->particles->getStartColorVar();
+}
+
+void SmartParticles::setStartColorVar(const Color4F& color)
+{
+	this->particles->setStartColorVar(color);
+}
+
+const Color4F& SmartParticles::getEndColor() const
+{
+	return this->particles->getEndColor();
+}
+
+void SmartParticles::setEndColor(const Color4F& color)
+{
+	this->particles->setEndColor(color);
+}
+
+const Color4F& SmartParticles::getEndColorVar() const
+{
+	return this->particles->getEndColorVar();
+}
+
+void SmartParticles::setEndColorVar(const Color4F& color)
+{
+	this->particles->setEndColorVar(color);
 }
 
 void SmartParticles::setTotalParticles(int totalParticles)

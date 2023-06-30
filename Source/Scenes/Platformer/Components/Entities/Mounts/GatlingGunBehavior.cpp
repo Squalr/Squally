@@ -235,7 +235,7 @@ void GatlingGunBehavior::decorateProjectile(Projectile* projectile)
 			{
 				if (!healthBehavior->isAlive())
 				{
-					return CollisionResult::DoNothing;
+					return;
 				}
 
 				target->getComponent<KillingMachineDamageBehavior>([projectile, target, healthBehavior](KillingMachineDamageBehavior* damageBehavior)
