@@ -92,6 +92,8 @@ void EntitySoulBehavior::onLoad()
 
 	this->defer([=]()
 	{
+		this->updateIconVisibility();
+		
 		if (this->entity->getComponent<EntitySelectionBehavior>() == nullptr)
 		{
 			this->entity->attachComponent(EntitySelectionBehavior::create(this->entity));

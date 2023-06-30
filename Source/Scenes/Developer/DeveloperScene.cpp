@@ -103,7 +103,6 @@ DeveloperScene::DeveloperScene()
 		--------------
 		- ** Final crack art is ass (Where is this again? not CV?)
 		- ** CV rabies is tl;dr
-		- * CV disable study Mabel dialogue interaction while hidden behind arcane
 		- * CV secret tunnel feels unfinished
 		- v CV Missing "what is this" text on crypt guard
 		- v CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin

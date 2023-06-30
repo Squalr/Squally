@@ -350,7 +350,8 @@ void TalkToMabel::runCinematicSequencePt6()
 	if (this->guano != nullptr)
 	{
 		DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_F_BrokenClock::create(),
+			Strings::Platformer_Quests_CastleValgrind_CureKing_Mabel_F_BrokenClock::create()
+				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_DataMines_Gecky::create()),
 			DialogueEvents::DialogueVisualArgs(
 				DialogueBox::DialogueDock::Bottom,
 				DialogueBox::DialogueAlignment::Right,

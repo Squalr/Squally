@@ -88,6 +88,8 @@ void RepairableBehavior::onLoad()
 
 	this->defer([=]()
 	{
+		this->updateIconVisibility();
+
 		if (this->interactObject->getComponent<ObjectSelectionBehavior>() == nullptr)
 		{
 			this->interactObject->attachComponent(ObjectSelectionBehavior::create(this->interactObject));
@@ -125,12 +127,12 @@ void RepairableBehavior::onLoad()
 	{
 		this->squally = squally;
 		this->currentHelperName = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
-		this->repairIcon->setVisible(this->canRepair());
+		this->updateIconVisibility();
 
 		this->squally->listenForStateWrite(StateKeys::CurrentHelper, [=](Value value)
 		{
 			this->currentHelperName = value.asString();
-			this->repairIcon->setVisible(this->canRepair());
+			this->updateIconVisibility();
 		});
 	}, Squally::MapKey);
 

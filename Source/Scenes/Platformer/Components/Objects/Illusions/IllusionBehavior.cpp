@@ -8,8 +8,10 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 
 using namespace cocos2d;
 
@@ -29,6 +31,7 @@ IllusionBehavior* IllusionBehavior::create(GameObject* owner)
 IllusionBehavior::IllusionBehavior(GameObject* owner) : super(owner)
 {
 	this->portal = dynamic_cast<Portal*>(owner);
+	this->entity = dynamic_cast<PlatformerEntity*>(owner);
 	this->object = owner;
 
 	if (this->object == nullptr)
@@ -60,6 +63,15 @@ void IllusionBehavior::onLoad()
 		this->portal->disable();
 	}
 
+	if (this->entity != nullptr)
+	{
+		// Killing the hidden entity is good for hiding all functionality
+		this->entity->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+		{
+			healthBehavior->kill();
+		});
+	}
+
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventDispelIllusion, [=](EventCustom* eventCustom)
 	{
 		PlatformerEvents::DispelIllusionArgs* args = static_cast<PlatformerEvents::DispelIllusionArgs*>(eventCustom->getData());
@@ -74,6 +86,14 @@ void IllusionBehavior::onLoad()
 			if (this->portal != nullptr)
 			{
 				this->portal->enable();
+			}
+
+			if (this->entity != nullptr)
+			{
+				this->entity->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+				{
+					healthBehavior->revive();
+				});
 			}
 		}
 	}));

@@ -54,8 +54,6 @@ EntityPickPocketBehavior::EntityPickPocketBehavior(GameObject* owner) : super(ow
 		this->invalidate();
 	}
 
-	this->pickPocketIcon->setVisible(false);
-
 	this->addChild(this->pocketPoolDeserializer);
 	this->addChild(this->pickPocketIcon);
 }
@@ -75,6 +73,8 @@ void EntityPickPocketBehavior::onLoad()
 {
 	this->defer([=]()
 	{
+		this->updateIconVisibility();
+		
 		if (this->entity->getComponent<EntitySelectionBehavior>() == nullptr)
 		{
 			this->entity->attachComponent(EntitySelectionBehavior::create(this->entity));
@@ -116,12 +116,12 @@ void EntityPickPocketBehavior::onLoad()
 	{
 		this->squally = squally;
 		this->currentHelperName = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyHelperName, Value("")).asString();
-		this->pickPocketIcon->setVisible(this->canPickPocket());
+		this->updateIconVisibility();
 
 		this->squally->listenForStateWrite(StateKeys::CurrentHelper, [=](Value value)
 		{
 			this->currentHelperName = value.asString();
-			this->pickPocketIcon->setVisible(this->canPickPocket());
+			this->updateIconVisibility();
 		});
 	}, Squally::MapKey);
 
