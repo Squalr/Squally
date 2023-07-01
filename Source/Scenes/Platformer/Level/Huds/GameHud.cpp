@@ -215,7 +215,7 @@ void GameHud::initializeListeners()
 					false
 				));
 			}),
-			DelayTime::create(0.5f),
+			DelayTime::create(1.0f),
 			FadeTo::create(0.25f, 0),
 			CallFunc::create([=]()
 			{

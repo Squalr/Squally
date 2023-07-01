@@ -150,7 +150,7 @@ void WindSpellbook::runCinematicSequencePart1()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_T_MoreOrcs::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->marcel, false),
 			DialogueEvents::BuildPreviewNode(&this->squally, true)
@@ -170,7 +170,7 @@ void WindSpellbook::runCinematicSequencePart2()
 		Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_U_SquallyCallUpon::create()
 			->setStringReplacementVariables(Strings::Common_Squally::create()),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->marcel, false),
 			DialogueEvents::BuildPreviewNode(&this->squally, true)
@@ -189,7 +189,7 @@ void WindSpellbook::runCinematicSequencePart3()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_V_NoChoice::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->marcel, false),
 			DialogueEvents::BuildPreviewNode(&this->guano, true)
@@ -208,7 +208,7 @@ void WindSpellbook::runCinematicSequencePart4()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_W_Ships::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
@@ -227,7 +227,7 @@ void WindSpellbook::runCinematicSequencePart5()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_X_VisitShops::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
@@ -258,7 +258,7 @@ void WindSpellbook::runCinematicSequencePart6()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_Y_WindSpellbook::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->marcel, false),
 			DialogueEvents::BuildPreviewNode(&this->squally, true)
@@ -268,6 +268,7 @@ void WindSpellbook::runCinematicSequencePart6()
 			// Ensure he remains hijacked so that he continue his cinematic walk
 			this->marcel->setState(StateKeys::CinematicHijacked, Value(true));
 			this->complete();
+			PlatformerEvents::TriggerShowMiniMap();
 		},
 		Voices::GetNextVoiceMedium(),
 		true

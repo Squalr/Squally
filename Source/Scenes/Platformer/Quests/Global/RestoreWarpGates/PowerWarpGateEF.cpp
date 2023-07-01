@@ -59,7 +59,8 @@ void PowerWarpGateEF::onLoad(QuestState questState)
 		}
 		else
 		{
-			this->portal->lock(false);
+			// Actually just always keep EF unlocked since it's the first zone
+			this->portal->unlock(false);
 		}
 	}
 

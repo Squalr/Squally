@@ -128,6 +128,9 @@ void ReturnToQueen::runCinematicSequence()
 	{
 		return;
 	}
+
+	// Ideally this would be on interact, but no good place to hook into atm
+	PlatformerEvents::TriggerHideMiniMap();
 	
 	this->queenLiana->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
@@ -135,7 +138,7 @@ void ReturnToQueen::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_L_WhereIsOurReward::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->guano, false),
 				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
@@ -151,7 +154,7 @@ void ReturnToQueen::runCinematicSequence()
 			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_M_ThankYou::create()
 				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
 				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
@@ -168,7 +171,7 @@ void ReturnToQueen::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_N_WhatTheHeck::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->guano, false),
 				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
@@ -183,7 +186,7 @@ void ReturnToQueen::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_O_WearItOfCourse::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->guano, false),
 				DialogueEvents::BuildPreviewNode(&this->queenLiana, true)
@@ -216,7 +219,7 @@ void ReturnToQueen::setPostText()
 			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 				Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_Z_VisitShopsReminder::create(),
 				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueDock::Top,
 					DialogueBox::DialogueAlignment::Left,
 					DialogueEvents::BuildPreviewNode(&this->queenLiana, false),
 					DialogueEvents::BuildPreviewNode(&this->squally, true)

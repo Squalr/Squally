@@ -38,6 +38,7 @@ PlatformerQuestDeserializer::PlatformerQuestDeserializer() : super()
 	this->lineDeserializers[SaveTownLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SaveTownLine::create(); };
 	this->lineDeserializers[SkyShipToTempleLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SkyShipToTempleLine::create(); };
 	this->lineDeserializers[SneakIntoLianasHouseLine::MapKeyQuestLine] = [=]() { return (QuestLine*)SneakIntoLianasHouseLine::create(); };
+	this->lineDeserializers[MagesWarpLockLine::MapKeyQuestLine] = [=]() { return (QuestLine*)MagesWarpLockLine::create(); };
 	this->lineDeserializers[WaterSpellbookLine::MapKeyQuestLine] = [=]() { return (QuestLine*)WaterSpellbookLine::create(); };
 
 	// UNDERFLOW RUINS QUESTS

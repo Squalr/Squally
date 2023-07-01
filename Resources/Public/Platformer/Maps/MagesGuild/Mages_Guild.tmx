@@ -855,6 +855,8 @@
   <object id="993" name="portal" type="object" x="4318" y="818" width="256" height="256">
    <properties>
     <property name="map" value="MagesGuild/Mages_Warp"/>
+    <property name="quest" value="mages-warp-lock"/>
+    <property name="quest-line" value="mages-warp-lock"/>
     <property name="transition" value="ef"/>
    </properties>
   </object>
