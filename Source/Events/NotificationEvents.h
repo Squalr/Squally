@@ -18,9 +18,10 @@ public:
 		LocalizedString* title = nullptr;
 		LocalizedString* description = nullptr;
 		std::string soundResource;
+		bool showBackground = true;
 
-		NotificationTakeoverArgs(LocalizedString* title, LocalizedString* description, std::string soundResource)
-			: title(title), description(description), soundResource(soundResource)
+		NotificationTakeoverArgs(LocalizedString* title, LocalizedString* description, std::string soundResource, bool showBackground = true)
+			: title(title), description(description), soundResource(soundResource), showBackground(showBackground)
 		{
 		}
 	};

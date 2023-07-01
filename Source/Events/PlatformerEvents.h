@@ -41,6 +41,8 @@ public:
 	static const std::string EventOpenItemInfo;
 	static const std::string EventOpenQuickPotion;
 	static const std::string EventUnlockQuickPotion;
+	static const std::string EventOpenQuickWarp;
+	static const std::string EventUnlockQuickWarp;
 	static const std::string EventDiscoverItem;
 	static const std::string EventDiscoverItems;
 	static const std::string EventGiveItemsFromPool;
@@ -274,8 +276,10 @@ public:
 	static void TriggerOpenSmithing(CraftingOpenArgs args);
 	static void TriggerOpenDismantle(CraftingOpenArgs args);
 	static void TriggerOpenItemInfo(ItemInfoArgs args);
-	static void TriggerUnlockQuickPotion();
 	static void TriggerOpenQuickPotion();
+	static void TriggerUnlockQuickPotion();
+	static void TriggerOpenQuickWarp();
+	static void TriggerUnlockQuickWarp();
 	static void TriggerGiveItemsFromPool(GiveItemsFromPoolArgs args);
 	static void TriggerGiveItems(GiveItemsArgs args);
 	static void TriggerDiscoverItem(ItemDiscoveryArgs args);

@@ -33,7 +33,7 @@ protected:
 private:
 	typedef Hud super;
 
-	void showNotificationTakeover(LocalizedString* title, LocalizedString* description, std::string soundResource);
+	void showNotificationTakeover(LocalizedString* title, LocalizedString* description, std::string soundResource, bool showBackground);
 	void pushNotification(LocalizedString* title, LocalizedString* description, std::string iconResource, std::string soundResource, bool keepOpen);
 	void closeNotificationMenu();
 

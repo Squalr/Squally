@@ -133,6 +133,7 @@ DeveloperScene::DeveloperScene()
 		- ** Lightning ability VFX broken
 		- * Wind Spellbook => teleport back to Mage's Guild ability, I guess. Probably throw them in the museum, honestly
 			- * Lock warp room until wind spellbook. Could also think about forcing entering warp gates. Kinda hard.
+			- * Alternatively can remove 3_x portal, force use of warp but idk
 		- * Shadow spellbook to allow swapping helpers? Shadow portal on ground?
 		- * Move the shadow spellbook somewhere better. Maybe even late CV.
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)

@@ -129,6 +129,8 @@ void WindSpellbook::onComplete()
 		ItemResources::Spellbooks_SpellBookWind,
 		SoundResources::Notifications_NotificationGood1
 	));
+
+	PlatformerEvents::TriggerUnlockQuickWarp();
 }
 
 void WindSpellbook::onSkipped()

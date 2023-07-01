@@ -14,14 +14,20 @@
 #include "Engine/Save/SaveManager.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 #include "Events/PlatformerEvents.h"
+#include "Events/NotificationEvents.h"
 #include "Menus/Dialogue/PlatformerDialogueBox.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Level/Huds/Components/CinematicIndicator.h"
 #include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/ObjectiveDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/QuickPotion.h"
+#include "Scenes/Platformer/Level/Huds/Components/QuickWarp.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
+
+#include "Resources/SoundResources.h"
+
+#include "Strings/Strings.h"
 
 using namespace cocos2d;
 
@@ -46,14 +52,16 @@ GameHud::GameHud()
 	this->dialogueBox = PlatformerDialogueBox::create();
 	this->quickPotionFocusLayer = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
 	this->quickPotion = QuickPotion::create();
-	this->helpArrowQuickPotion = HelpArrow::create();
+	this->quickWarp = QuickWarp::create();
+	this->helpArrow = HelpArrow::create();
 
-	this->helpArrowQuickPotion->setRotation(90.0f);
+	this->helpArrow->setRotation(90.0f);
 
 	this->statsBars->setAnchorPoint(Vec2(0.0f, 0.5f));
 	this->statsBars->setVisible(false);
 	this->currencyDisplay->setVisible(false);
 	this->quickPotion->setVisible(false);
+	this->quickWarp->setVisible(false);
 
 	this->addChild(this->flashLayer);
 	this->addChild(this->objectiveDisplay);
@@ -61,7 +69,8 @@ GameHud::GameHud()
 	this->addChild(this->currencyDisplay);
 	this->addChild(this->quickPotionFocusLayer);
 	this->addChild(this->quickPotion);
-	this->addChild(this->helpArrowQuickPotion);
+	this->addChild(this->quickWarp);
+	this->addChild(this->helpArrow);
 	this->addChild(this->dialogueBox);
 	this->addChild(this->cinematicIndicator);
 }
@@ -84,13 +93,35 @@ void GameHud::initializePositions()
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
 	static const Vec2 offset = Vec2(24.0f, -96.0f);
+	static const float Spacing = 128.0f;
+
 	bool quickPotionUnlocked = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyQuickPotionUnlocked, Value(false)).asBool();
 
 	this->objectiveDisplay->setPosition(visibleSize.width - 48.0f, visibleSize.height - 24.0f);
 	this->statsBars->setPosition(offset.x, visibleSize.height + offset.y);
 	this->currencyDisplay->setPosition(offset.x + quickPotionUnlocked ? 172.0f : 64.0f, visibleSize.height + offset.y - 96.0f);
-	this->quickPotion->setPosition(offset.x + 64.0f, visibleSize.height + offset.y - 128.0f);
-	this->helpArrowQuickPotion->setPosition(offset.x + 192.0f, visibleSize.height + offset.y - 128.0f);
+	this->quickPotion->setPosition(offset.x + 64.0f, visibleSize.height + offset.y - 128.0f - Spacing * 0.0f);
+	this->quickWarp->setPosition(offset.x + 64.0f, visibleSize.height + offset.y - 128.0f - Spacing * 1.0f);
+
+	switch(this->helpArrowTarget)
+	{
+		case HelpArrowTarget::QuickPotion:
+		{
+			this->helpArrow->setPosition(offset.x + 192.0f, visibleSize.height + offset.y - 128.0f - Spacing * 0.0f);
+			break;
+		}
+		case HelpArrowTarget::QuickWarp:
+		{
+			this->helpArrow->setPosition(offset.x + 192.0f, visibleSize.height + offset.y - 128.0f - Spacing * 1.0f);
+			break;
+		}
+		case HelpArrowTarget::FollowerSwap:
+		{
+			this->helpArrow->setPosition(offset.x + 192.0f, visibleSize.height + offset.y - 128.0f - Spacing * 2.0f);
+			break;
+		}
+	}
+
 	this->dialogueBox->setPosition(Vec2(visibleSize.width / 2.0f, 192.0f));
 	this->cinematicIndicator->setPosition(48.0f, 48.0f);
 }
@@ -118,6 +149,9 @@ void GameHud::initializeListeners()
 
 			bool quickPotionUnlocked = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyQuickPotionUnlocked, Value(false)).asBool();
 			this->quickPotion->setVisible(quickPotionUnlocked);
+			
+			bool quickWarpUnlocked = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookWind, Value(false)).asBool();
+			this->quickWarp->setVisible(quickWarpUnlocked);
 		}
 	}));
 
@@ -162,8 +196,12 @@ void GameHud::initializeListeners()
 			return;
 		}
 
+		// Re-initialize positions
+		this->helpArrowTarget = HelpArrowTarget::QuickPotion;
+		this->initializePositions();
+
 		PlatformerEvents::TriggerCinematicHijack();
-		this->helpArrowQuickPotion->showPointer();
+		this->helpArrow->showPointer();
 		this->quickPotion->setVisible(true);
 		
 		this->quickPotionFocusLayer->runAction(Sequence::create(
@@ -172,13 +210,49 @@ void GameHud::initializeListeners()
 			FadeTo::create(0.25f, 0),
 			CallFunc::create([=]()
 			{
-				this->helpArrowQuickPotion->hidePointer();
+				this->helpArrow->hidePointer();
 				PlatformerEvents::TriggerCinematicRestore();
 			}),
 			nullptr
 		));
 
 		SaveManager::SaveProfileData(SaveKeys::SaveKeyQuickPotionUnlocked, Value(true));
+
+		// Re-initialize
+		this->initializePositions();
+	}));
+	
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventUnlockQuickWarp, [=](EventCustom* eventCustom)
+	{
+		// Re-initialize positions
+		this->helpArrowTarget = HelpArrowTarget::QuickWarp;
+		this->initializePositions();
+
+		PlatformerEvents::TriggerCinematicHijack();
+		this->helpArrow->showPointer();
+		this->quickPotion->setVisible(true);
+		
+		this->quickPotionFocusLayer->runAction(Sequence::create(
+			FadeTo::create(0.25f, 192),
+			CallFunc::create([=]()
+			{
+				NotificationEvents::TriggerNotificationTakeover(NotificationEvents::NotificationTakeoverArgs(
+					Strings::Platformer_Spellbooks_SpellbookOfWind::create(),
+					Strings::Platformer_Spellbooks_SpellbookOfWindExplainer::create()
+						->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_MagesGuild::create()),
+					SoundResources::Notifications_NotificationGood1,
+					false
+				));
+			}),
+			DelayTime::create(1.0f),
+			FadeTo::create(0.25f, 0),
+			CallFunc::create([=]()
+			{
+				this->helpArrow->hidePointer();
+				PlatformerEvents::TriggerCinematicRestore();
+			}),
+			nullptr
+		));
 
 		// Re-initialize
 		this->initializePositions();

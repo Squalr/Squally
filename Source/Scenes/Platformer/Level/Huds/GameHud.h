@@ -13,6 +13,7 @@ class HelpArrow;
 class ObjectiveDisplay;
 class PlatformerDialogueBox;
 class QuickPotion;
+class QuickWarp;
 class StatsBars;
 
 class GameHud : public Hud
@@ -32,13 +33,23 @@ protected:
 private:
 	typedef Hud super;
 
+	enum class HelpArrowTarget
+	{
+		QuickPotion,
+		QuickWarp,
+		FollowerSwap,
+	};
+
 	cocos2d::LayerColor* flashLayer = nullptr;
 	CurrencyDisplay* currencyDisplay = nullptr;
 	QuickPotion* quickPotion = nullptr;
+	QuickWarp* quickWarp = nullptr;
 	cocos2d::LayerColor* quickPotionFocusLayer = nullptr;
-	HelpArrow* helpArrowQuickPotion = nullptr;
+	HelpArrow* helpArrow = nullptr;
 	ObjectiveDisplay* objectiveDisplay = nullptr;
 	StatsBars* statsBars = nullptr;
 	CinematicIndicator* cinematicIndicator = nullptr;
 	PlatformerDialogueBox* dialogueBox = nullptr;
+
+	HelpArrowTarget helpArrowTarget = HelpArrowTarget::QuickPotion;
 };

@@ -39174,6 +39174,21 @@ namespace Strings
 		virtual ~Platformer_Spellbooks_SpellbookOfWind() = default;
 	};
 
+	class Platformer_Spellbooks_SpellbookOfWindExplainer : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Spellbooks_SpellbookOfWindExplainer();
+		virtual ~Platformer_Spellbooks_SpellbookOfWindExplainer() = default;
+	};
+
 	class Platformer_Spellbooks_SpellbookShadow : public LocalizedString
 	{
 	public:

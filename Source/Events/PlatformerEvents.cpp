@@ -29,6 +29,8 @@ const std::string PlatformerEvents::EventOpenDismantle = "EVENT_OPEN_Dismantle";
 const std::string PlatformerEvents::EventOpenItemInfo = "EVENT_OPEN_ITEM_INFO";
 const std::string PlatformerEvents::EventOpenQuickPotion = "EVENT_OPEN_QUICK_POTION";
 const std::string PlatformerEvents::EventUnlockQuickPotion = "EVENT_UNLOCK_QUICK_POTION";
+const std::string PlatformerEvents::EventOpenQuickWarp = "EVENT_OPEN_QUICK_WARP";
+const std::string PlatformerEvents::EventUnlockQuickWarp = "EVENT_UNLOCK_QUICK_WARP";
 const std::string PlatformerEvents::EventDiscoverItem = "EVENT_DISCOVER_ITEM";
 const std::string PlatformerEvents::EventDiscoverItems = "EVENT_DISCOVER_ITEMS";
 const std::string PlatformerEvents::EventGiveItems = "EVENT_GIVE_ITEM";
@@ -222,6 +224,20 @@ void PlatformerEvents::TriggerUnlockQuickPotion()
 {
 	Director::getInstance()->getEventDispatcher()->dispatchEvent(
 		PlatformerEvents::EventUnlockQuickPotion
+	);
+}
+
+void PlatformerEvents::TriggerOpenQuickWarp()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		PlatformerEvents::EventOpenQuickWarp
+	);
+}
+
+void PlatformerEvents::TriggerUnlockQuickWarp()
+{
+	Director::getInstance()->getEventDispatcher()->dispatchEvent(
+		PlatformerEvents::EventUnlockQuickWarp
 	);
 }
 
