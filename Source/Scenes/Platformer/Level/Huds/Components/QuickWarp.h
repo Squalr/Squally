@@ -12,6 +12,7 @@ namespace cocos2d
 class ClickableNode;
 class Inventory;
 class PlatformerEntity;
+class Portal;
 class Sound;
 
 class QuickWarp : public SmartNode
@@ -30,6 +31,7 @@ protected:
 private:
 	typedef SmartNode super;
 
+	Portal* internalPortal = nullptr;
 	Inventory* inventory = nullptr;
 	PlatformerEntity* target = nullptr;
 	ClickableNode* clickableNode = nullptr;

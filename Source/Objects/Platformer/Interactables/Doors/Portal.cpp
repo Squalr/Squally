@@ -29,7 +29,9 @@ const std::string Portal::SaveKeyListenEventTriggered = "SAVE_KEY_LISTEN_EVENT_T
 
 Portal* Portal::create(ValueMap& properties)
 {
-	Portal* instance = new Portal(properties, CSize(properties.at(GameObject::MapKeyWidth).asFloat(), properties.at(GameObject::MapKeyHeight).asFloat()));
+	float width = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat();
+	float height = GameUtils::getKeyOrDefault(properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat();
+	Portal* instance = new Portal(properties, CSize(width, height));
 
 	instance->autorelease();
 
@@ -97,6 +99,11 @@ void Portal::onInteract(PlatformerEntity* interactingEntity)
 void Portal::setMapFile(std::string mapFile)
 {
 	this->mapFile = mapFile;
+}
+
+void Portal::setTransiton(std::string transition)
+{
+	this->transition = transition;
 }
 
 void Portal::loadMap()
