@@ -68,13 +68,6 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 	{
 		SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHasGivenDefaultItems, Value(true));
 
-		// Because the save key was patched in later, we need this code here until.... let's say June 2020
-		// Alternatively, we can add logic to detect exceeding the max unique on cards, as those are the only items given
-		if (!entityInventoryBehavior->getInventory()->getItems().empty() || !entityInventoryBehavior->getEquipmentInventory()->getItems().empty())
-		{
-			return;
-		}
-
 		// It is safe to add items to the player's inventory here for testing purposes, without fear of accidentally shipping this code live
 		if (DeveloperModeController::IsDeveloperBuild && SquallyDefaultInventoryBehavior::GiveDeveloperItems)
 		{
@@ -97,6 +90,9 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			entityInventoryBehavior->getInventory()->forceInsert(TigersBane::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WarlocksHeaddress::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(RoyalCrown::create(), false);
+
+			entityInventoryBehavior->getInventory()->forceInsert(SuperiorManaFlask::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(IncrementManaFlask::create(), false);
 
 			// Quest testing
 			entityInventoryBehavior->getInventory()->forceInsert(HeliumBomb::create(), false);
@@ -138,6 +134,7 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			});
 		}
 
+		// Starting hexus deck
 		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary0::create(), false);
 		entityInventoryBehavior->getInventory()->forceInsert(Binary0::create(), false);
 		entityInventoryBehavior->getEquipmentInventory()->forceInsert(Binary1::create(), false);

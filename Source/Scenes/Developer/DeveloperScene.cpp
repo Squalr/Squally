@@ -78,7 +78,7 @@ DeveloperScene::DeveloperScene()
 		X Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
 		X Perilous Sea (tri m/l/r)	=> The Golden Eagle (Special: Higher Jump)
 		X Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
-		- CV, throne room?			=> Royal Crown (Special: Shop Discounts)
+		- ** CV, throne room?		=> Royal Crown (Special: Shop Discounts)
 
 	- General:
 		- v EF Mara/Bard fun dialogue
@@ -101,7 +101,6 @@ DeveloperScene::DeveloperScene()
 		- v DM Missing way to obtain hats (craftable?)
 		- v DM Maybe a ladder on ship art to show the point of entry
 		--------------
-		- ** Final crack art is ass (Where is this again? not CV?)
 		- ** CV rabies is tl;dr
 		- * CV secret tunnel feels unfinished
 		- v CV Missing "what is this" text on crypt guard
@@ -113,8 +112,9 @@ DeveloperScene::DeveloperScene()
 		- ** LC unholy blade tl;dr
 		- ** LC cursed blade tl;dr
 		- ** LC Daze script too long
-		- LC blue gem map feels empty. Traps?
+		- v LC blue gem map feels empty. Traps?
 		--------------
+		- ** Final crack art is ass
 		- ** FF lava escape needs screen shake, SFX
 		- ** FF lava escape -- what happens on return?
 		- ** FF MissingNo in pocket pools
@@ -129,19 +129,18 @@ DeveloperScene::DeveloperScene()
 		- v FF first girl friendly text
 		- v FF Maybe update Drak text upon crafting demon heart
 		--------------
-		- ** Mana flask description wrong in combat
 		- ** Jitter standing in place
 		- ** Lightning ability VFX broken
-		- * Wind Spellbook => teleport back to Mage's Guild ability, I guess.
+		- * Wind Spellbook => teleport back to Mage's Guild ability, I guess. Probably throw them in the museum, honestly
 			- * Lock warp room until wind spellbook. Could also think about forcing entering warp gates. Kinda hard.
-		- * Potion SFX should not be paused on potion menu
-		- * Maybe bubble can do additional +4 mp over 4 ticks
 		- * Shadow spellbook to allow swapping helpers? Shadow portal on ground?
 		- * Move the shadow spellbook somewhere better. Maybe even late CV.
-		- * Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
-		- * Fix terrain connectors for Frost
-		- * Fix terrain connectors for Scifi (edges color)
-		- * Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
+		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
+		- v Fix terrain connectors for Frost
+		- v Fix terrain connectors for Scifi (edges color)
+		- v Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
+		- v Potion SFX should not be paused on potion menu
+		- v Maybe bubble can do additional +4 mp over 4 ticks
 		- v More transmutes (perhaps custom UI to show a transmute wheel)
 		- v More passes on music. Probably need more overworld. Far and Away / Sunset once I get access.
 		- v Wontfix? Missing Shadow ability: Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)

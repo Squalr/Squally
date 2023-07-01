@@ -55,7 +55,7 @@ LocalizedString* ThrowIncrementManaFlask::getString()
 
 LocalizedString* ThrowIncrementManaFlask::getDescription()
 {
-	return Strings::Items_Consumables_Mana_ManaPotionDescription::create()
+	return Strings::Items_Consumables_Mana_IncrementManaFlaskDescription::create()
 		->setStringReplacementVariables({ ConstantString::create(std::to_string(int(IncrementManaFlask::HealTicks))), ConstantString::create(std::to_string(int(IncrementManaFlask::HealTicks))) });
 }
 
