@@ -102,7 +102,7 @@ DeveloperScene::DeveloperScene()
 		- v DM Maybe a ladder on ship art to show the point of entry
 		--------------
 		- ** CV rabies is tl;dr
-		- * CV secret tunnel feels unfinished
+		- v CV secret tunnel feels unfinished
 		- v CV Missing "what is this" text on crypt guard
 		- v CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
 		- v CV friendly text on atrius (err no, whoever is in tunnel)
@@ -115,25 +115,24 @@ DeveloperScene::DeveloperScene()
 		- v LC blue gem map feels empty. Traps?
 		--------------
 		- ** Final crack art is ass
-		- ** FF lava escape needs screen shake, SFX
-		- ** FF lava escape -- what happens on return?
-		- ** FF MissingNo in pocket pools
 		- ** FF Lava flood quest broken fully, path already revealed
 		- ** FF puzzle in 3_2 (?) appears to be a duplicate
 		- ** FF lava raise TODOs
-		- ** FF post asmodeus door doesn't open until map reload
-		- * FF cauterize should use a flame animation of sorts
-		- * FF enflame should use a flame animation of sorts. Also position is wrong
-		- * FF fire rain needs SFX
-		- * FF Should show drowned corpses in lava instead of despawn
+		- * FF lava escape -- what happens on return?
+		- * FF post asmodeus door doesn't open until map reload
+		- v FF lava escape needs screen shake, SFX
+		- v FF cauterize should use a flame animation of sorts
+		- v FF enflame should use a flame animation of sorts. Also position is wrong
+		- v FF fire rain needs SFX
+		- v FF Should show drowned corpses in lava instead of despawn
 		- v FF first girl friendly text
 		- v FF Maybe update Drak text upon crafting demon heart
 		--------------
 		- ** Jitter standing in place
-		- ** Lightning ability VFX broken
-		- * quick warp FX
-		- * Shadow spellbook to allow swapping helpers? Shadow portal on ground?
+		- * Lightning ability VFX broken
 		- * Move the shadow spellbook somewhere better. Maybe even late CV.
+		- * Shadow spellbook to allow swapping helpers? Shadow portal on ground?
+		- v quick warp FX
 		- v should warn not enough money when buying something cant afford
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
 		- v Fix terrain connectors for Frost
