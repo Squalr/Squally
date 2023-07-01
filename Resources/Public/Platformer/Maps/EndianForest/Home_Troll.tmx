@@ -184,7 +184,7 @@
   </object>
   <object id="752" name="portal" type="object" x="896.667" y="961.333" width="320" height="320">
    <properties>
-    <property name="map" value="EndianForest/Mages_Prison"/>
+    <property name="map" value="MagesGuild/Mages_Prison"/>
     <property name="transition" value="troll"/>
    </properties>
   </object>

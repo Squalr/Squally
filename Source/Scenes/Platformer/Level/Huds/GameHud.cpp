@@ -209,8 +209,8 @@ void GameHud::initializeListeners()
 			CallFunc::create([=]()
 			{
 				NotificationEvents::TriggerNotificationTakeover(NotificationEvents::NotificationTakeoverArgs(
-					Strings::Platformer_Help_HelpTotemPotionsExplainerTitle::create(),
-					Strings::Platformer_Help_HelpTotemPotionsExplainerLong::create(),
+					Strings::Menus_Hud_QuickPotion_QuickPotionExplainerTitle::create(),
+					Strings::Menus_Hud_QuickPotion_QuickPotionExplainer::create(),
 					"",
 					false
 				));
@@ -246,8 +246,8 @@ void GameHud::initializeListeners()
 			CallFunc::create([=]()
 			{
 				NotificationEvents::TriggerNotificationTakeover(NotificationEvents::NotificationTakeoverArgs(
-					Strings::Platformer_Spellbooks_SpellbookOfWind::create(),
-					Strings::Platformer_Spellbooks_SpellbookOfWindExplainer::create()
+					Strings::Menus_Hud_QuickWarp_QuickWarpTitle::create(),
+					Strings::Menus_Hud_QuickWarp_QuickWarpExplainer::create()
 						->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_MagesGuild::create()),
 					SoundResources::Notifications_NotificationGood1,
 					false

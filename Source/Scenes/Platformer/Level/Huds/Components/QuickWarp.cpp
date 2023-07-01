@@ -13,6 +13,7 @@
 #include "Engine/Utils/MathUtils.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Entities/Platformer/PlatformerEntity.h"
+#include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityRuneBehavior.h"
 
@@ -64,6 +65,39 @@ void QuickWarp::initializeListeners()
 	this->clickableNode->setMouseClickCallback([=](InputEvents::MouseEventArgs* args)
 	{
 		this->clickableNode->deselect();
-		PlatformerEvents::TriggerOpenQuickWarp();
+		
+		if (true)
+		{
+			NotificationEvents::TriggerConfirmation(NotificationEvents::ConfirmationArgs(
+				Strings::Menus_Hud_QuickWarp_AreYouSureMagesGuild::create()
+					->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_MagesGuild::create()),
+				[=]()
+				{
+					PlatformerEvents::TriggerOpenQuickWarp();
+
+					return true;
+				},
+				[=]()
+				{
+					return false;
+				}
+			));
+		}
+		else
+		{
+			NotificationEvents::TriggerConfirmation(NotificationEvents::ConfirmationArgs(
+				Strings::Menus_Hud_QuickWarp_AreYouSureMagesGuild::create(),
+				[=]()
+				{
+					PlatformerEvents::TriggerOpenQuickWarp();
+
+					return true;
+				},
+				[=]()
+				{
+					return false;
+				}
+			));
+		}
 	});
 }

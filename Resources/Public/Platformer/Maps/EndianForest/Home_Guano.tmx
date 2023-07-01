@@ -156,7 +156,7 @@
   </properties>
   <object id="721" name="mul-door" type="object" x="696.666" y="493.167" width="696" height="775">
    <properties>
-    <property name="map" value="EndianForest/Mages_Prison"/>
+    <property name="map" value="MagesGuild/Mages_Prison"/>
     <property name="transition" value="cell"/>
     <property name="unlocked" type="bool" value="true"/>
    </properties>

@@ -142,7 +142,7 @@
   </object>
   <object id="655" name="portal" type="object" x="5192.18" y="2593.16" width="226.759" height="216.791">
    <properties>
-    <property name="map" value="Museum"/>
+    <property name="map" value="MagesGuild/Museum"/>
     <property name="transition" value="museum"/>
    </properties>
   </object>

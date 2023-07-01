@@ -53,8 +53,8 @@ DeveloperScene::DeveloperScene()
 		std::vector<ClickableTextNode*> mapList = std::vector<ClickableTextNode*>();
 		ScrollPane* scrollPane = this->buildScrollPane();
 
-		mapList.push_back(this->buildDebugButton("Warp Room", MapResources::Mages_Warp));
-		mapList.push_back(this->buildDebugButton("Museum", MapResources::Museum));
+		mapList.push_back(this->buildDebugButton("Warp Room", MapResources::MagesGuild_Mages_Warp));
+		mapList.push_back(this->buildDebugButton("Museum", MapResources::MagesGuild_Museum));
 		mapList.push_back(this->buildDebugButton("DBG Cages", MapResources::Dev_Cages));
 		mapList.push_back(this->buildDebugButton("DBG Cutscenes", MapResources::Dev_Cracks));
 		mapList.push_back(this->buildDebugButton("DBG Cipher", MapResources::Dev_Cipher));
@@ -251,13 +251,13 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone 1_1 (EF)", MapResources::EndianForest_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone 1_0 (EF)", MapResources::EndianForest_Zone_1_0));
 		mapList.push_back(this->buildDebugButton("Guano's Cell", MapResources::EndianForest_Home_Guano));
-		mapList.push_back(this->buildDebugButton("Mage's Prison", MapResources::EndianForest_Mages_Prison));
-		mapList.push_back(this->buildDebugButton("Mage's Guild",MapResources::EndianForest_Mages_Guild));
-		mapList.push_back(this->buildDebugButton("Mage's Gauntlet", MapResources::EndianForest_Mages_Gauntlet_Entrance));
-		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #1", MapResources::EndianForest_Mages_Gauntlet_1));
-		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #2", MapResources::EndianForest_Mages_Gauntlet_2));
-		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #3", MapResources::EndianForest_Mages_Gauntlet_3));
-		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #4", MapResources::EndianForest_Mages_Gauntlet_4));
+		mapList.push_back(this->buildDebugButton("Mage's Prison", MapResources::MagesGuild_Mages_Prison));
+		mapList.push_back(this->buildDebugButton("Mage's Guild",MapResources::MagesGuild_Mages_Guild));
+		mapList.push_back(this->buildDebugButton("Mage's Gauntlet", MapResources::MagesGuild_Mages_Gauntlet_Entrance));
+		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #1", MapResources::MagesGuild_Mages_Gauntlet_1));
+		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #2", MapResources::MagesGuild_Mages_Gauntlet_2));
+		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #3", MapResources::MagesGuild_Mages_Gauntlet_3));
+		mapList.push_back(this->buildDebugButton("Mage's Gauntlet #4", MapResources::MagesGuild_Mages_Gauntlet_4));
 
 		this->chapterDebugInfoList.push_back(ChapterDebugInfo(titleButton, mapList, scrollPane));
 

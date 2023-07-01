@@ -26094,6 +26094,96 @@ namespace Strings
 		virtual ~Menus_Help() = default;
 	};
 
+	class Menus_Hud_QuickPotion_QuickPotionExplainer : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hud_QuickPotion_QuickPotionExplainer();
+		virtual ~Menus_Hud_QuickPotion_QuickPotionExplainer() = default;
+	};
+
+	class Menus_Hud_QuickPotion_QuickPotionExplainerTitle : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hud_QuickPotion_QuickPotionExplainerTitle();
+		virtual ~Menus_Hud_QuickPotion_QuickPotionExplainerTitle() = default;
+	};
+
+	class Menus_Hud_QuickWarp_AreYouSureMagesGuild : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hud_QuickWarp_AreYouSureMagesGuild();
+		virtual ~Menus_Hud_QuickWarp_AreYouSureMagesGuild() = default;
+	};
+
+	class Menus_Hud_QuickWarp_AreYouSureReturn : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hud_QuickWarp_AreYouSureReturn();
+		virtual ~Menus_Hud_QuickWarp_AreYouSureReturn() = default;
+	};
+
+	class Menus_Hud_QuickWarp_QuickWarpExplainer : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hud_QuickWarp_QuickWarpExplainer();
+		virtual ~Menus_Hud_QuickWarp_QuickWarpExplainer() = default;
+	};
+
+	class Menus_Hud_QuickWarp_QuickWarpTitle : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hud_QuickWarp_QuickWarpTitle();
+		virtual ~Menus_Hud_QuickWarp_QuickWarpTitle() = default;
+	};
+
 	class Menus_Inventory_All : public LocalizedString
 	{
 	public:
@@ -32739,36 +32829,6 @@ namespace Strings
 		virtual ~Platformer_Help_HelpTotemPotions() = default;
 	};
 
-	class Platformer_Help_HelpTotemPotionsExplainerLong : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Help_HelpTotemPotionsExplainerLong();
-		virtual ~Platformer_Help_HelpTotemPotionsExplainerLong() = default;
-	};
-
-	class Platformer_Help_HelpTotemPotionsExplainerTitle : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Help_HelpTotemPotionsExplainerTitle();
-		virtual ~Platformer_Help_HelpTotemPotionsExplainerTitle() = default;
-	};
-
 	class Platformer_Help_HelpTotemSwimHack : public LocalizedString
 	{
 	public:
@@ -39202,21 +39262,6 @@ namespace Strings
 	private:
 		Platformer_Spellbooks_SpellbookOfWind();
 		virtual ~Platformer_Spellbooks_SpellbookOfWind() = default;
-	};
-
-	class Platformer_Spellbooks_SpellbookOfWindExplainer : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_Spellbooks_SpellbookOfWindExplainer();
-		virtual ~Platformer_Spellbooks_SpellbookOfWindExplainer() = default;
 	};
 
 	class Platformer_Spellbooks_SpellbookShadow : public LocalizedString

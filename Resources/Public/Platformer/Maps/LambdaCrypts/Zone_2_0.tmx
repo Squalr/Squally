@@ -576,7 +576,7 @@
    <properties>
     <property name="components" value="illusion"/>
     <property name="illusion-group" value="A"/>
-    <property name="map" value="Mages_Warp"/>
+    <property name="map" value="MagesGuild/Mages_Warp"/>
     <property name="transition" value="lc"/>
    </properties>
   </object>
