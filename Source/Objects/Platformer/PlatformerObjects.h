@@ -44,6 +44,7 @@
 #include "Objects/Platformer/Interactables/Chests/CipherChest.h"
 #include "Objects/Platformer/Interactables/Chests/EgyptianChest.h"
 #include "Objects/Platformer/Interactables/Chests/GlassDisplays/GlassDisplayItem.h"
+#include "Objects/Platformer/Interactables/Chests/GlassDisplays/GlassDisplaySpellbookShadow.h"
 #include "Objects/Platformer/Interactables/Chests/MetalChest.h"
 #include "Objects/Platformer/Interactables/Chests/MineCartLootable.h"
 #include "Objects/Platformer/Interactables/Chests/PresentChest.h"
