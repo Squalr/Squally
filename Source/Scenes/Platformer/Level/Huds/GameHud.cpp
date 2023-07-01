@@ -206,7 +206,16 @@ void GameHud::initializeListeners()
 		
 		this->quickPotionFocusLayer->runAction(Sequence::create(
 			FadeTo::create(0.25f, 192),
-			DelayTime::create(2.0f),
+			CallFunc::create([=]()
+			{
+				NotificationEvents::TriggerNotificationTakeover(NotificationEvents::NotificationTakeoverArgs(
+					Strings::Platformer_Help_HelpTotemPotionsExplainerTitle::create(),
+					Strings::Platformer_Help_HelpTotemPotionsExplainerLong::create(),
+					"",
+					false
+				));
+			}),
+			DelayTime::create(0.5f),
 			FadeTo::create(0.25f, 0),
 			CallFunc::create([=]()
 			{

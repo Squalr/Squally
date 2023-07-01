@@ -32739,6 +32739,36 @@ namespace Strings
 		virtual ~Platformer_Help_HelpTotemPotions() = default;
 	};
 
+	class Platformer_Help_HelpTotemPotionsExplainerLong : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Help_HelpTotemPotionsExplainerLong();
+		virtual ~Platformer_Help_HelpTotemPotionsExplainerLong() = default;
+	};
+
+	class Platformer_Help_HelpTotemPotionsExplainerTitle : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Help_HelpTotemPotionsExplainerTitle();
+		virtual ~Platformer_Help_HelpTotemPotionsExplainerTitle() = default;
+	};
+
 	class Platformer_Help_HelpTotemSwimHack : public LocalizedString
 	{
 	public:
