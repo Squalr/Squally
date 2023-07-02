@@ -4,10 +4,12 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/InventoryEvents.h"
+#include "Engine/Events/ObjectEvents.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/MinMaxPool.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
+#include "Entities/Platformer/Enemies/CastleValgrind/Agnes.h"
 #include "Events/DialogueEvents.h"
 #include "Events/HexusEvents.h"
 #include "Events/NotificationEvents.h"
@@ -52,7 +54,27 @@ void GlassDisplaySpellbookShadow::onEnter()
 {
 	super::onEnter();
 
-	// TODO: Listen for death of bosses and open
+	this->lock(false);
+
+	ObjectEvents::WatchForObject<Agnes>(this, [=](Agnes* agnes)
+	{
+		if (!agnes->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+		{
+			this->unlock(false);
+			this->openDisplay(true);
+		}
+		else
+		{
+			agnes->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
+			{
+				if (!value.asBool())
+				{
+					this->unlock(false);
+					this->openDisplay(true);
+				}
+			});
+		}
+	}, Agnes::MapKey);
 }
 
 void GlassDisplaySpellbookShadow::initializeListeners()
@@ -75,7 +97,7 @@ bool GlassDisplaySpellbookShadow::tryOpen()
 void GlassDisplaySpellbookShadow::unlockAndGiveItems()
 {
 	this->open(true);
-
+	
 	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
 	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
 	

@@ -90,15 +90,6 @@ void DefeatLazarus::onComplete()
 	Objectives::SetCurrentObjective(ObjectiveKeys::LCEnterGreaterCrypt);
 	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ HeartOfShadow::create() }));
 	PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ AncientKey::create() }));
-	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookShadow, Value(true));
-	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
-	
-	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
-		Strings::Platformer_Spellbooks_SpellbookAcquired::create(),
-		Strings::Platformer_Spellbooks_SpellbookShadow::create(),
-		ItemResources::Spellbooks_SpellBookShadow,
-		SoundResources::Notifications_NotificationGood1
-	));
 	
 	// Just give everything in case something went wrong / for debug use. These should be redundant with drop pool.
 	PlatformerEvents::TriggerDiscoverItems(PlatformerEvents::ItemsDiscoveryArgs({ HeartOfShadow::create(), AncientKey::create() }));

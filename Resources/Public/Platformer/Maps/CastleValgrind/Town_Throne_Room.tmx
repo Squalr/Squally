@@ -321,15 +321,13 @@
   </object>
   <object id="832" name="king-redsong-slime" type="entity" x="4385.41" y="1067.6" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
+    <property name="components" value="friendly,pacing"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
   <object id="833" name="leroy" type="entity" x="4017.95" y="1063.85" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,pacing,pick-pocket"/>
-    <property name="pocket-pool" value="cv-generic"/>
+    <property name="components" value="friendly,pacing"/>
     <property name="quest" value=""/>
     <property name="quest-line" value=""/>
     <property name="travel-distance" type="float" value="192"/>

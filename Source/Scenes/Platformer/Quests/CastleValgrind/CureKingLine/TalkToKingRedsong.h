@@ -10,6 +10,7 @@ class Guano;
 class KingRedsong;
 class KingRedsongSlime;
 class Leroy;
+class PlatformerEntity;
 class PrincessOpal;
 class QuestLine;
 class Scrappy;
@@ -39,6 +40,9 @@ private:
 	void runCinematicSequencePt3();
 	void runCinematicSequencePt4();
 	void runCinematicSequencePt5();
+
+	void cinematicDespawn(PlatformerEntity* entity);
+	void cinematicRespawn(PlatformerEntity* entity);
 
 	Perceptron* perceptron = nullptr;
 	Gecky* gecky = nullptr;

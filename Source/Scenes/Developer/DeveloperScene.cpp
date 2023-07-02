@@ -130,8 +130,7 @@ DeveloperScene::DeveloperScene()
 		--------------
 		- ** Jitter standing in place
 		- * Lightning ability VFX broken
-		- * Move the shadow spellbook somewhere better. Maybe even late CV.
-			- * Shadow spellbook to allow swapping helpers? Shadow portal on ground?
+		- * Shadow spellbook to allow swapping helpers? Shadow portal on ground?
 		- v quick warp FX
 		- v should warn not enough money when buying something cant afford
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)

@@ -80,7 +80,10 @@ void DefeatAgnes::onActivate(bool isActiveThroughSkippable, bool isInitialActiva
 
 	this->listenForMapEventOnce(DefeatAgnes::MapEventEngageAgnes, [=](ValueMap)
 	{
-		this->runCinematicSequencePt1();
+		if (this->agnes->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
+		{
+			this->runCinematicSequencePt1();
+		}
 	});
 }
 

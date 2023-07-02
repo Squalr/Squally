@@ -28,6 +28,7 @@
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityMovementBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/CastleValgrind/CryptKey.h"
@@ -89,7 +90,7 @@ void TalkToKingRedsong::onLoad(QuestState questState)
 
 		if (questState == QuestState::None)
 		{
-			this->kingRedsong->setOpacity(0);
+			this->cinematicDespawn(this->kingRedsong);
 		}
 	}, KingRedsong::MapKey);
 
@@ -99,7 +100,7 @@ void TalkToKingRedsong::onLoad(QuestState questState)
 		
 		if (questState != QuestState::None)
 		{
-			this->kingRedsongSlime->setOpacity(0);
+			this->cinematicDespawn(this->kingRedsongSlime);
 		}
 	}, KingRedsongSlime::MapKey);
 
@@ -109,7 +110,7 @@ void TalkToKingRedsong::onLoad(QuestState questState)
 		
 		if (questState != QuestState::None)
 		{
-			this->leroy->setOpacity(0);
+			this->cinematicDespawn(this->leroy);
 		}
 	}, Leroy::MapKey);
 
@@ -119,7 +120,7 @@ void TalkToKingRedsong::onLoad(QuestState questState)
 
 		if (questState == QuestState::None)
 		{
-			this->princessOpal->setOpacity(0);
+			this->cinematicDespawn(this->princessOpal);
 		}
 	}, PrincessOpal::MapKey);
 }
@@ -134,22 +135,22 @@ void TalkToKingRedsong::onActivate(bool isActiveThroughSkippable, bool isInitial
 
 	if (this->leroy != nullptr)
 	{
-		this->leroy->setOpacity(0);
+		this->cinematicDespawn(this->leroy);
 	}
 
 	if (this->kingRedsongSlime != nullptr)
 	{
-		this->kingRedsongSlime->setOpacity(0);
+		this->cinematicDespawn(this->kingRedsongSlime);
 	}
 
 	if (this->princessOpal != nullptr)
 	{
-		this->princessOpal->setOpacity(255);
+		this->cinematicRespawn(this->princessOpal);
 	}
 
 	if (this->kingRedsong != nullptr)
 	{
-		this->kingRedsong->setOpacity(255);
+		this->cinematicRespawn(this->kingRedsong);
 	}
 }
 
@@ -282,4 +283,32 @@ void TalkToKingRedsong::runCinematicSequencePt5()
 		Voices::GetNextVoiceMedium(),
 		true
 	));
+}
+
+void TalkToKingRedsong::cinematicDespawn(PlatformerEntity* entity)
+{
+	if (entity == nullptr)
+	{
+		return;
+	}
+
+	entity->setOpacity(0);
+	entity->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	{
+		healthBehavior->kill();
+	});
+}
+
+void TalkToKingRedsong::cinematicRespawn(PlatformerEntity* entity)
+{
+	if (entity == nullptr)
+	{
+		return;
+	}
+
+	entity->setOpacity(255);
+	entity->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+	{
+		healthBehavior->revive();
+	});
 }
