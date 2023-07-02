@@ -72,6 +72,10 @@ void LavaFlood::onLoad(QuestState questState)
 	{
 		this->applyLavaFlood(true, false);
 	}
+	else
+	{
+		this->applyLavaFlood(false, false);
+	}
 	
 	this->listenForMapEventOnce(LavaFlood::MapEventLavaFlooded, [=](ValueMap)
 	{
