@@ -1229,7 +1229,7 @@
   </object>
   <object id="1035" name="demon-archer" type="entity" x="5521.96" y="5518.4" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,ff-puzzle-F"/>
+    <property name="components" value="friendly,disarmed,ff-puzzle-E"/>
     <property name="tag" value="hexus-demon-archer"/>
    </properties>
   </object>

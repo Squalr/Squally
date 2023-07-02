@@ -433,7 +433,7 @@
   </object>
   <object id="1971" name="lava-golem" type="entity" x="4077.73" y="5202.4" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,ff-puzzle-D"/>
+    <property name="components" value="friendly,disarmed,ff-puzzle-C"/>
     <property name="tag" value="hexus-lava-golem"/>
    </properties>
   </object>

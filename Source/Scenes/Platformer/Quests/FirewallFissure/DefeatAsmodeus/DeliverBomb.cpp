@@ -34,6 +34,7 @@
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
+#include "Scenes/Platformer/Quests/FirewallFissure/DefeatAsmodeus/LavaFlood.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -230,7 +231,8 @@ void DeliverBomb::runCinematicSequencePt1()
 									this->cinematicLavaFall->runAction(FadeTo::create(0.5f, 255));
 									this->explosionSound->play();
 									GameCamera::getInstance()->shakeCamera(0.5f, 12.0f, 1.5f);
-									this->owner->broadcastMapEvent("lava-flood", ValueMap());
+									this->owner->broadcastMapEvent("lava-flood", ValueMap()); // Event to make platforms fall
+									this->owner->broadcastMapEvent(LavaFlood::MapEventLavaFlooded, ValueMap());
 									this->complete();
 								}),
 								DelayTime::create(4.0f),

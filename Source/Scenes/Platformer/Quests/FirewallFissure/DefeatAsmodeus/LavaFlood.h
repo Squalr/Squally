@@ -14,6 +14,8 @@ public:
 	static LavaFlood* create(GameObject* owner, QuestLine* questLine);
 
 	static const std::string MapKeyQuest;
+	static const std::string MapEventLavaFlooded;
+	
 protected:
 	LavaFlood(GameObject* owner, QuestLine* questLine);
 	virtual ~LavaFlood();
@@ -32,6 +34,4 @@ private:
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 	Asmodeus* asmodeus = nullptr;
-
-	static const std::string MapEventLavaFlooded;
 };

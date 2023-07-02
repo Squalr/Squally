@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="28" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1978">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="28" height="28" tilewidth="128" tileheight="128" infinite="0" nextlayerid="118" nextobjectid="1979">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -385,6 +385,13 @@
   <object id="1952" name="spawn" type="object" x="399.003" y="2053.51" width="128" height="128">
    <properties>
     <property name="transition" value="right"/>
+   </properties>
+  </object>
+  <object id="1978" name="cindra" type="entity" x="2704" y="1392" width="128" height="128">
+   <properties>
+    <property name="components" value="cindra,friendly,pick-pocket,pacing"/>
+    <property name="pocket-pool" value="ff-generic"/>
+    <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
  </objectgroup>

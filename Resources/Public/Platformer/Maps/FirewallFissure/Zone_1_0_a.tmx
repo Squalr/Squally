@@ -714,17 +714,6 @@
     <property name="reward-pool" value="ff-generic"/>
    </properties>
   </object>
-  <object id="969" name="hexus-shrine" type="object" x="950.512" y="2317.47" width="155" height="260">
-   <properties>
-    <property name="entity-tag" value="hexus-demon-swordsman"/>
-   </properties>
-  </object>
-  <object id="970" name="demon-swordsman" type="entity" x="993.972" y="4082.28" width="128" height="128">
-   <properties>
-    <property name="components" value="friendly,disarmed,ff-puzzle-A"/>
-    <property name="tag" value="hexus-demon-swordsman"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

@@ -988,7 +988,7 @@
   </object>
   <object id="972" name="demon-shaman" type="entity" x="1437.12" y="4034.16" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,disarmed,ff-puzzle-B"/>
+    <property name="components" value="friendly,disarmed,ff-puzzle-A"/>
     <property name="tag" value="hexus-demon-shaman"/>
    </properties>
   </object>

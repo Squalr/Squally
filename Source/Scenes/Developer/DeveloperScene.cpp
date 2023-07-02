@@ -114,11 +114,10 @@ DeveloperScene::DeveloperScene()
 		- ** LC Daze script too long
 		- v LC blue gem map feels empty. Traps?
 		--------------
+		- ** FF lava escape -- what happens on return? Should Fire Spellbook be required for lava escape, to slow the lava?
 		- ** Final crack art is ass
 		- ** FF Lava flood quest broken fully, path already revealed
-		- ** FF puzzle in 3_2 (?) appears to be a duplicate
 		- ** FF lava raise TODOs
-		- * FF lava escape -- what happens on return?
 		- * FF post asmodeus door doesn't open until map reload
 		- v FF lava escape needs screen shake, SFX
 		- v FF cauterize should use a flame animation of sorts
