@@ -475,20 +475,27 @@ void PlatformerMap::initializeListeners()
 
 		if (args != nullptr)
 		{
-			this->cutscenesMenu->lazyGet()->open(args->cutscene);
-			this->cutscenesMenu->lazyGet()->setVisible(true);
-			
-			// For credits, simply do a cinematic hijack (no pause). Other cutscenes cause a pause.
-			if (args->cutscene == Cutscene::Credits)
+			if (args->primeCache)
 			{
-				PlatformerEvents::TriggerCinematicHijack();
-				this->fadeHud->runAnim(FadeHud::FadeHudType::Tv);
+				this->cutscenesMenu->lazyGet()->primeCache(args->cutscene);
 			}
 			else
 			{
-				GameUtils::focus(this->cutscenesMenu->lazyGet());
-				GameUtils::resume(this->notificationHud);
-				GameUtils::resume(this->confirmationHud);
+				this->cutscenesMenu->lazyGet()->open(args->cutscene);
+				this->cutscenesMenu->lazyGet()->setVisible(true);
+				
+				// For credits, simply do a cinematic hijack (no pause). Other cutscenes cause a pause.
+				if (args->cutscene == Cutscene::Credits)
+				{
+					PlatformerEvents::TriggerCinematicHijack();
+					this->fadeHud->runAnim(FadeHud::FadeHudType::Tv);
+				}
+				else
+				{
+					GameUtils::focus(this->cutscenesMenu->lazyGet());
+					GameUtils::resume(this->notificationHud);
+					GameUtils::resume(this->confirmationHud);
+				}
 			}
 		}
 	}));

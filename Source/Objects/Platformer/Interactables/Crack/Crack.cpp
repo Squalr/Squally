@@ -66,6 +66,31 @@ Crack::~Crack()
 {
 }
 
+void Crack::onEnterTransitionDidFinish()
+{
+	super::onEnterTransitionDidFinish();
+
+	// Prime cache for the corresponding cutscene
+	switch(this->crackSize)
+	{
+		case CrackSize::Small:
+		{
+			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackSmall, true));
+			break;
+		}
+		case CrackSize::Medium:
+		{
+			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackMedium, true));
+			break;
+		}
+		case CrackSize::Large:
+		{
+			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackLarge, true));
+			break;
+		}
+	}
+}
+
 void Crack::initializePositions()
 {
 	super::initializePositions();
@@ -98,17 +123,17 @@ void Crack::onInteract(PlatformerEntity* interactingEntity)
 	{
 		case CrackSize::Small:
 		{
-			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackSmall));
+			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackSmall, false));
 			break;
 		}
 		case CrackSize::Medium:
 		{
-			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackMedium));
+			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackMedium, false));
 			break;
 		}
 		case CrackSize::Large:
 		{
-			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackLarge));
+			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackLarge, false));
 			break;
 		}
 	}

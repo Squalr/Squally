@@ -32,6 +32,7 @@ public:
 
 	void setReturnClickCallback(std::function<void()> returnClickCallback);
 	void open(Cutscene cutscene);
+	void primeCache(Cutscene cutscene);
 
 protected:
 	CutscenesMenu();

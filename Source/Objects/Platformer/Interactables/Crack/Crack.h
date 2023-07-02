@@ -26,6 +26,7 @@ protected:
 	Crack(cocos2d::ValueMap& properties);
 	virtual ~Crack();
 
+	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void onInteract(PlatformerEntity* interactingEntity) override;
 

@@ -253,8 +253,9 @@ public:
 	struct CutsceneArgs
 	{
 		Cutscene cutscene;
+		bool primeCache = false;
 
-		CutsceneArgs(Cutscene cutscene) : cutscene(cutscene) { }
+		CutsceneArgs(Cutscene cutscene, bool primeCache) : cutscene(cutscene), primeCache(primeCache) { }
 	};
 
 	static void TriggerSquallySpawned();

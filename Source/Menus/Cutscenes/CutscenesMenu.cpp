@@ -245,6 +245,28 @@ void CutscenesMenu::setReturnClickCallback(std::function<void()> returnClickCall
 	this->returnClickCallback = returnClickCallback;
 }
 
+void CutscenesMenu::primeCache(Cutscene cutscene)
+{
+	switch(cutscene)
+	{
+		case Cutscene::CrackSmall:
+		{
+			SmartAnimationSequenceNode::PrimeCache(CutsceneResources::CrackSmall_Cutscene_0000);
+			break;
+		}
+		case Cutscene::CrackMedium:
+		{
+			SmartAnimationSequenceNode::PrimeCache(CutsceneResources::CrackMedium_Cutscene_0000);
+			break;
+		}
+		case Cutscene::CrackLarge:
+		{
+			SmartAnimationSequenceNode::PrimeCache(CutsceneResources::CrackLarge_Cutscene_0000);
+			break;
+		}
+	}
+}
+
 void CutscenesMenu::open(Cutscene cutscene)
 {
 	this->currentCutscene = cutscene;

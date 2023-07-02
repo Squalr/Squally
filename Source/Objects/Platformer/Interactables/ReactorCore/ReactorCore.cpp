@@ -151,7 +151,7 @@ void ReactorCore::updateCracks()
 					DelayTime::create(1.0f),
 					CallFunc::create([=]()
 					{
-						PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::Credits));
+						PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::Credits, false));
 					}),
 					nullptr
 				));

@@ -74,10 +74,10 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- 5x EE:
-		X Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
-		X Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
-		X Perilous Sea (tri m/l/r)	=> The Golden Eagle (Special: Higher Jump)
-		X Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
+		- X Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
+		- X Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
+		- X Perilous Sea (tri m/l/r)	=> The Golden Eagle (Special: Higher Jump)
+		- X Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
 		- ** CV, throne room?		=> Royal Crown (Special: Shop Discounts)
 
 	- General:
@@ -116,7 +116,6 @@ DeveloperScene::DeveloperScene()
 		--------------
 		- ** FF Fire Spellbook be required for lava escape, to slow the lava
 		- ** Final crack art is ass
-			- * Cracks should prime cache
 		- * FF post asmodeus door doesn't open until map reload
 		- v FF lava escape needs screen shake, SFX
 		- v FF cauterize should use a flame animation of sorts
@@ -126,8 +125,8 @@ DeveloperScene::DeveloperScene()
 		- v FF first girl friendly text
 		- v FF Maybe update Drak text upon crafting demon heart
 		--------------
-		- ** Jitter standing in place
 		- * Lightning ability VFX broken
+		- v Jitter standing in place
 		- v quick swap FX
 		- v quick warp FX
 		- v should warn not enough money when buying something cant afford
