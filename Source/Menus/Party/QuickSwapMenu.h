@@ -14,6 +14,7 @@ class ClickableTextNode;
 class ConstantString;
 class LocalizedLabel;
 class PlatformerEntity;
+class Squally;
 
 class QuickSwapMenu : public SmartNode
 {
@@ -27,6 +28,7 @@ protected:
 	QuickSwapMenu();
 	virtual ~QuickSwapMenu();
 	
+	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 
@@ -34,6 +36,8 @@ private:
 	typedef SmartNode super;
 
 	void onReturnClick();
+
+	ClickableTextNode* createHelperButton(std::string helperNameStr, std::string helperEmblem, LocalizedString* helperName);
 
 	cocos2d::LayerColor* backdrop = nullptr;
 	cocos2d::Sprite* window = nullptr;
@@ -47,4 +51,6 @@ private:
 
 	std::function<void(PlatformerEntity*)> onSelect = nullptr;
 	std::function<void()> returnClickCallback = nullptr;
+
+	Squally* squally = nullptr;
 };
