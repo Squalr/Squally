@@ -64,6 +64,7 @@
 #include "Menus/Inventory/ItemInfoMenu.h"
 #include "Menus/Options/OptionsMenu.h"
 #include "Menus/Party/PartyMenu.h"
+#include "Menus/Party/QuickSwapMenu.h"
 #include "Menus/Pause/PlatformerPauseMenu.h"
 #include "Scenes/Cipher/Cipher.h"
 #include "Scenes/Hexus/HelpMenus/HelpMenu.h"
@@ -109,6 +110,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 	this->lexiconMenu = LazyNode<Lexicon>::create(CC_CALLBACK_0(PlatformerMap::buildLexicon, this));
 	this->cardsMenu = LazyNode<CardsMenu>::create(CC_CALLBACK_0(PlatformerMap::buildCardsMenu, this));
 	this->partyMenu = LazyNode<PartyMenu>::create(CC_CALLBACK_0(PlatformerMap::buildPartyMenu, this));
+	this->quickSwapMenu = LazyNode<QuickSwapMenu>::create(CC_CALLBACK_0(PlatformerMap::buildQuickSwapMenu, this));
 	this->alchemyMenu = LazyNode<AlchemyMenu>::create(CC_CALLBACK_0(PlatformerMap::buildAlchemyMenu, this));
 	this->blacksmithingMenu = LazyNode<BlacksmithingMenu>::create(CC_CALLBACK_0(PlatformerMap::buildBlacksmithingMenu, this));
 	this->dismantleMenu = LazyNode<DismantleMenu>::create(CC_CALLBACK_0(PlatformerMap::buildDismantleMenu, this));
@@ -161,6 +163,7 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 	this->topMenuHud->addChild(this->lexiconMenu);
 	this->topMenuHud->addChild(this->inventoryMenu);
 	this->topMenuHud->addChild(this->partyMenu);
+	this->topMenuHud->addChild(this->quickSwapMenu);
 	this->topMenuHud->addChild(this->cutscenesMenu);
 	this->confirmationMenuHud->addChild(this->confirmationHud);
 }
@@ -283,6 +286,13 @@ void PlatformerMap::initializeListeners()
 		this->inventoryMenu->lazyGet()->openItemMenu();
 		this->inventoryMenu->lazyGet()->setVisible(true);
 		GameUtils::focus(this->inventoryMenu->lazyGet());
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenQuickSwap, [=](EventCustom* eventCustom)
+	{
+		this->quickSwapMenu->lazyGet()->open();
+		this->quickSwapMenu->lazyGet()->setVisible(true);
+		GameUtils::focus(this->quickSwapMenu->lazyGet());
 	}));
 
 	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventOpenAlchemy, [=](EventCustom* eventCustom)
@@ -488,6 +498,7 @@ void PlatformerMap::initializeListeners()
 		if (!this->canPause
 			|| (this->platformerPauseMenu->isBuilt() && GameUtils::isFocused(this->platformerPauseMenu->lazyGet()))
 			|| (this->partyMenu->isBuilt() && GameUtils::isFocused(this->partyMenu->lazyGet()))
+			|| (this->quickSwapMenu->isBuilt() && GameUtils::isFocused(this->quickSwapMenu->lazyGet()))
 			|| (this->optionsMenu->isBuilt() && GameUtils::isFocused(this->optionsMenu->lazyGet()))
 			|| (this->codeHud->isBuilt() && GameUtils::isFocused(this->codeHud->lazyGet()))
 			|| (this->radialMenu->isBuilt() && GameUtils::isFocused(this->radialMenu->lazyGet()))
@@ -776,6 +787,19 @@ PartyMenu* PlatformerMap::buildPartyMenu()
 		this->platformerPauseMenu->lazyGet()->setVisible(true);
 		instance->setVisible(false);
 		GameUtils::focus(this->platformerPauseMenu->lazyGet());
+	});
+
+	return instance;
+}
+
+QuickSwapMenu* PlatformerMap::buildQuickSwapMenu()
+{
+	QuickSwapMenu* instance = QuickSwapMenu::create();
+
+	instance->setReturnClickCallback([=]()
+	{
+		instance->setVisible(false);
+		GameUtils::focus(this);
 	});
 
 	return instance;

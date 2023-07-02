@@ -126,6 +126,4 @@ void QuickWarp::initializeListeners()
 			));
 		}
 	});
-
-	// PlatformerEvents::TriggerOpenQuickWarp();
 }

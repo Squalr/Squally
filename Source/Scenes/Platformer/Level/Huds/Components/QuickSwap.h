@@ -15,14 +15,14 @@ class PlatformerEntity;
 class Portal;
 class Sound;
 
-class QuickWarp : public SmartNode
+class QuickSwap : public SmartNode
 {
 public:
-	static QuickWarp* create();
+	static QuickSwap* create();
 
 protected:
-	QuickWarp();
-	virtual ~QuickWarp();
+	QuickSwap();
+	virtual ~QuickSwap();
 
 	void onEnter() override;
 	void initializePositions() override;
@@ -31,7 +31,6 @@ protected:
 private:
 	typedef SmartNode super;
 
-	Portal* internalPortal = nullptr;
 	PlatformerEntity* target = nullptr;
 	ClickableNode* clickableNode = nullptr;
 };

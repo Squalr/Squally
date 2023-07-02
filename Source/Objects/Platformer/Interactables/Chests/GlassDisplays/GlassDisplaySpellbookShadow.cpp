@@ -107,4 +107,6 @@ void GlassDisplaySpellbookShadow::unlockAndGiveItems()
 		ItemResources::Spellbooks_SpellBookShadow,
 		SoundResources::Notifications_NotificationGood1
 	));
+
+	PlatformerEvents::TriggerUnlockQuickSwap();
 }

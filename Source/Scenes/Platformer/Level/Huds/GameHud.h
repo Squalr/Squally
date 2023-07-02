@@ -13,6 +13,7 @@ class HelpArrow;
 class ObjectiveDisplay;
 class PlatformerDialogueBox;
 class QuickPotion;
+class QuickSwap;
 class QuickWarp;
 class StatsBars;
 
@@ -37,14 +38,15 @@ private:
 	{
 		QuickPotion,
 		QuickWarp,
-		FollowerSwap,
+		QuickSwap,
 	};
 
 	cocos2d::LayerColor* flashLayer = nullptr;
 	CurrencyDisplay* currencyDisplay = nullptr;
 	QuickPotion* quickPotion = nullptr;
 	QuickWarp* quickWarp = nullptr;
-	cocos2d::LayerColor* quickPotionFocusLayer = nullptr;
+	QuickSwap* quickSwap = nullptr;
+	cocos2d::LayerColor* backdrop = nullptr;
 	HelpArrow* helpArrow = nullptr;
 	ObjectiveDisplay* objectiveDisplay = nullptr;
 	StatsBars* statsBars = nullptr;

@@ -24,11 +24,12 @@ class HelpMenu;
 class Hexus;
 class InventoryMenu;
 class ItemInfoMenu;
-class Lexicon;
-class PlatformerPauseMenu;
 template <class T> class LazyNode;
+class Lexicon;
 class NotificationHud;
+class PlatformerPauseMenu;
 class PartyMenu;
+class QuickSwapMenu;
 class MiniMap;
 
 class PlatformerMap : public MapBase
@@ -67,6 +68,7 @@ private:
 	ItemInfoMenu* buildItemInfoMenu();
 	CardsMenu* buildCardsMenu();
 	PartyMenu* buildPartyMenu();
+	QuickSwapMenu* buildQuickSwapMenu();
 	InventoryMenu* buildInventoryMenu();
 	AlchemyMenu* buildAlchemyMenu();
 	BlacksmithingMenu* buildBlacksmithingMenu();
@@ -87,6 +89,7 @@ private:
 	LazyNode<ItemInfoMenu>* itemInfoMenu = nullptr;
 	LazyNode<CardsMenu>* cardsMenu = nullptr;
 	LazyNode<PartyMenu>* partyMenu = nullptr;
+	LazyNode<QuickSwapMenu>* quickSwapMenu = nullptr;
 	LazyNode<InventoryMenu>* inventoryMenu = nullptr;
 	LazyNode<AlchemyMenu>* alchemyMenu = nullptr;
 	LazyNode<BlacksmithingMenu>* blacksmithingMenu = nullptr;

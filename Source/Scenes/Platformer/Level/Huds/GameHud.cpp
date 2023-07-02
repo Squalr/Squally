@@ -21,6 +21,7 @@
 #include "Scenes/Platformer/Level/Huds/Components/CurrencyDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/ObjectiveDisplay.h"
 #include "Scenes/Platformer/Level/Huds/Components/QuickPotion.h"
+#include "Scenes/Platformer/Level/Huds/Components/QuickSwap.h"
 #include "Scenes/Platformer/Level/Huds/Components/QuickWarp.h"
 #include "Scenes/Platformer/Level/Huds/Components/StatsBars.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -50,9 +51,10 @@ GameHud::GameHud()
 	this->statsBars = StatsBars::create();
 	this->cinematicIndicator = CinematicIndicator::create();
 	this->dialogueBox = PlatformerDialogueBox::create();
-	this->quickPotionFocusLayer = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
+	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 0), visibleSize.width, visibleSize.height);
 	this->quickPotion = QuickPotion::create();
 	this->quickWarp = QuickWarp::create();
+	this->quickSwap = QuickSwap::create();
 	this->helpArrow = HelpArrow::create();
 
 	this->helpArrow->setRotation(90.0f);
@@ -62,14 +64,16 @@ GameHud::GameHud()
 	this->currencyDisplay->setVisible(false);
 	this->quickPotion->setVisible(false);
 	this->quickWarp->setVisible(false);
+	this->quickSwap->setVisible(false);
 
 	this->addChild(this->flashLayer);
 	this->addChild(this->objectiveDisplay);
 	this->addChild(this->statsBars);
 	this->addChild(this->currencyDisplay);
-	this->addChild(this->quickPotionFocusLayer);
+	this->addChild(this->backdrop);
 	this->addChild(this->quickPotion);
 	this->addChild(this->quickWarp);
+	this->addChild(this->quickSwap);
 	this->addChild(this->helpArrow);
 	this->addChild(this->dialogueBox);
 	this->addChild(this->cinematicIndicator);
@@ -102,6 +106,7 @@ void GameHud::initializePositions()
 	this->currencyDisplay->setPosition(offset.x + quickPotionUnlocked ? 172.0f : 64.0f, visibleSize.height + offset.y - 96.0f);
 	this->quickPotion->setPosition(offset.x + 64.0f, visibleSize.height + offset.y - 128.0f - Spacing * 0.0f);
 	this->quickWarp->setPosition(offset.x + 64.0f, visibleSize.height + offset.y - 128.0f - Spacing * 1.0f);
+	this->quickSwap->setPosition(offset.x + 64.0f, visibleSize.height + offset.y - 128.0f - Spacing * 2.0f);
 
 	switch(this->helpArrowTarget)
 	{
@@ -115,7 +120,7 @@ void GameHud::initializePositions()
 			this->helpArrow->setPosition(offset.x + 192.0f, visibleSize.height + offset.y - 128.0f - Spacing * 1.0f);
 			break;
 		}
-		case HelpArrowTarget::FollowerSwap:
+		case HelpArrowTarget::QuickSwap:
 		{
 			this->helpArrow->setPosition(offset.x + 192.0f, visibleSize.height + offset.y - 128.0f - Spacing * 2.0f);
 			break;
@@ -152,6 +157,9 @@ void GameHud::initializeListeners()
 			
 			bool quickWarpUnlocked = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookWind, Value(false)).asBool();
 			this->quickWarp->setVisible(quickWarpUnlocked);
+			
+			bool quickSwapUnlocked = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookShadow, Value(false)).asBool();
+			this->quickSwap->setVisible(quickSwapUnlocked);
 		}
 	}));
 
@@ -204,7 +212,7 @@ void GameHud::initializeListeners()
 		this->helpArrow->showPointer();
 		this->quickPotion->setVisible(true);
 		
-		this->quickPotionFocusLayer->runAction(Sequence::create(
+		this->backdrop->runAction(Sequence::create(
 			FadeTo::create(0.25f, 192),
 			CallFunc::create([=]()
 			{
@@ -239,9 +247,9 @@ void GameHud::initializeListeners()
 
 		PlatformerEvents::TriggerCinematicHijack();
 		this->helpArrow->showPointer();
-		this->quickPotion->setVisible(true);
+		this->quickWarp->setVisible(true);
 		
-		this->quickPotionFocusLayer->runAction(Sequence::create(
+		this->backdrop->runAction(Sequence::create(
 			FadeTo::create(0.25f, 192),
 			CallFunc::create([=]()
 			{
@@ -249,6 +257,41 @@ void GameHud::initializeListeners()
 					Strings::Menus_Hud_QuickWarp_QuickWarpTitle::create(),
 					Strings::Menus_Hud_QuickWarp_QuickWarpExplainer::create()
 						->setStringReplacementVariables(Strings::Platformer_MapNames_EndianForest_MagesGuild::create()),
+					SoundResources::Notifications_NotificationGood1,
+					false
+				));
+			}),
+			DelayTime::create(1.0f),
+			FadeTo::create(0.25f, 0),
+			CallFunc::create([=]()
+			{
+				this->helpArrow->hidePointer();
+				PlatformerEvents::TriggerCinematicRestore();
+			}),
+			nullptr
+		));
+
+		// Re-initialize
+		this->initializePositions();
+	}));
+	
+	this->addEventListenerIgnorePause(EventListenerCustom::create(PlatformerEvents::EventUnlockQuickSwap, [=](EventCustom* eventCustom)
+	{
+		// Re-initialize positions
+		this->helpArrowTarget = HelpArrowTarget::QuickSwap;
+		this->initializePositions();
+
+		PlatformerEvents::TriggerCinematicHijack();
+		this->helpArrow->showPointer();
+		this->quickSwap->setVisible(true);
+		
+		this->backdrop->runAction(Sequence::create(
+			FadeTo::create(0.25f, 192),
+			CallFunc::create([=]()
+			{
+				NotificationEvents::TriggerNotificationTakeover(NotificationEvents::NotificationTakeoverArgs(
+					Strings::TODO::create(),
+					Strings::TODO::create(),
 					SoundResources::Notifications_NotificationGood1,
 					false
 				));
