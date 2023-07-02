@@ -9,6 +9,7 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Animations/SmartAnimationNode.h"
+#include "Engine/Camera/GameCamera.h"
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
@@ -118,6 +119,7 @@ void LavaEscape::runCinematicSequencePart2()
 		),
 		[=]()
 		{
+			GameCamera::getInstance()->shakeCamera(0.25f, 8.0f, 65535.0f);
 			this->runCinematicSequencePart3();
 		},
 		"",

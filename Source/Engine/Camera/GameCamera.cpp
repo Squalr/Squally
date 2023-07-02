@@ -7,11 +7,13 @@
 #include "cocos/2d/CCDrawNode.h"
 #include "cocos/2d/CCNode.h"
 #include "cocos/base/CCDirector.h"
+#include "cocos/base/CCEventCustom.h"
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCInputEvents.h"
 #include "cocos/base/CCScheduler.h"
 
 #include "Engine/DeveloperMode/DeveloperModeController.h"
+#include "Engine/Events/HackableEvents.h"
 #include "Engine/Events/SceneEvents.h"
 #include "Engine/Input/ClickableNode.h"
 #include "Engine/GlobalDirector.h"
@@ -145,6 +147,22 @@ void GameCamera::initializeListeners()
 		float delta = args->scrollDelta.y * 64.0f;
 		this->setCameraDistance(this->getCameraDistance() + delta);
 	});
+	
+	// Hack: These should already be added due to SmartNode inheritence? I don't care enough to investigate, just adding listeners again.
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
+	{
+		HackToggleArgs* args = static_cast<HackToggleArgs*>(eventCustom->getData());
+
+		if (args != nullptr)
+		{
+			this->onHackerModeEnable();
+		}
+	}));
+
+	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
+	{
+		this->onHackerModeDisable();
+	}));
 }
 
 void GameCamera::update(float dt)
@@ -354,6 +372,12 @@ void GameCamera::shakeCamera(float magnitude, float shakesPerSecond, float durat
 
 	Director::getInstance()->getScheduler()->schedule([=](float dt)
 	{
+		if (this->hackermodeEnabled)
+		{
+			Camera::getDefaultCamera()->setRotation(0.0f);
+			return;
+		}
+
 		elapsed += dt;
 
 		if (++elapsedTicks < ticks)
