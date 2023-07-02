@@ -114,6 +114,7 @@
 #include "Objects/Platformer/Interactables/Spawns/WoodDoorSpawn.h"
 #include "Objects/Platformer/Liquids/Acid.h"
 #include "Objects/Platformer/Liquids/Lava.h"
+#include "Objects/Platformer/Liquids/RisingLava.h"
 #include "Objects/Platformer/Liquids/Water.h"
 #include "Objects/Platformer/MiniMap/MiniMapObject.h"
 #include "Objects/Platformer/MiniMap/MiniMapRelocator.h"

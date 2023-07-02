@@ -18,7 +18,7 @@
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
-#include "Objects/Platformer/Liquids/Lava.h"
+#include "Objects/Platformer/Liquids/RisingLava.h"
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
@@ -146,24 +146,8 @@ void LavaEscape::runCinematicSequencePart3()
 
 void LavaEscape::runCinematicSequencePart4()
 {
-	ObjectEvents::QueryObject<Lava>([=](Lava* lava)
+	ObjectEvents::QueryObject<RisingLava>([=](RisingLava* lava)
 	{
-		const float phase1Time = 5.0f;
-		const float phase2Time = 5.0f;
-		const float phase3Time = 10.0f;
-		const float phase4Time = 20.0f;
-
-		const float phase1Speed = 100.0f;
-		const float phase2Speed = 125.0f;
-		const float phase3Speed = 150.0f;
-		const float phase4Speed = 200.0f;
-
-		lava->runAction(Sequence::create(
-			EaseSineIn::create(MoveBy::create(phase1Time, Vec2(0.0f, phase1Time * phase1Speed))),
-			MoveBy::create(phase2Time, Vec2(0.0f, phase2Time * phase2Speed)),
-			MoveBy::create(phase3Time, Vec2(0.0f, phase3Time * phase3Speed)),
-			MoveBy::create(phase4Time, Vec2(0.0f, phase4Time * phase4Speed)),
-			nullptr
-		));
+		lava->activate();
 	}, LavaEscape::MapTagRisingLava);
 }

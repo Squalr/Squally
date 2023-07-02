@@ -166,7 +166,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1009" name="lava" type="object" x="-371.165" y="7480" width="3470.33" height="2800">
+  <object id="1009" name="rising-lava" type="object" x="-371.165" y="7480" width="3470.33" height="880">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="tag" value="rising-lava"/>

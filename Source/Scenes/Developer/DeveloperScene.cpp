@@ -114,8 +114,8 @@ DeveloperScene::DeveloperScene()
 		- ** LC Daze script too long
 		- v LC blue gem map feels empty. Traps?
 		--------------
-		- ** FF Fire Spellbook be required for lava escape, to slow the lava
 		- ** Final crack art is ass
+		- * FF Rising Lava TODOs
 		- v FF lava escape needs screen shake, SFX
 		- v FF cauterize should use a flame animation of sorts
 		- v FF enflame should use a flame animation of sorts. Also position is wrong
