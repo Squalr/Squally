@@ -128,6 +128,7 @@ DeveloperScene::DeveloperScene()
 		--------------
 		- ** Jitter standing in place
 		- * Lightning ability VFX broken
+		- v quick swap FX
 		- v quick warp FX
 		- v should warn not enough money when buying something cant afford
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)

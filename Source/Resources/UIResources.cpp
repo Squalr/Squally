@@ -381,6 +381,7 @@ const std::string UIResources::Menus_Icons_Stab = "Private/UI/Menus/Icons/Stab.p
 const std::string UIResources::Menus_Icons_Star = "Private/UI/Menus/Icons/Star.png";
 const std::string UIResources::Menus_Icons_Stars = "Private/UI/Menus/Icons/Stars.png";
 const std::string UIResources::Menus_Icons_Strength = "Private/UI/Menus/Icons/Strength.png";
+const std::string UIResources::Menus_Icons_SummonIcon = "Private/UI/Menus/Icons/SummonIcon.png";
 const std::string UIResources::Menus_Icons_Sword = "Private/UI/Menus/Icons/Sword.png";
 const std::string UIResources::Menus_Icons_SwordAlt = "Private/UI/Menus/Icons/SwordAlt.png";
 const std::string UIResources::Menus_Icons_SwordBroken = "Private/UI/Menus/Icons/SwordBroken.png";

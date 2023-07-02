@@ -45,7 +45,7 @@ QuickSwap* QuickSwap::create()
 QuickSwap::QuickSwap()
 {
 	this->clickableNode = ClickableNode::create(UIResources::HUD_FrameSquare, UIResources::HUD_FrameSquareSelected);
-	Sprite* icon = Sprite::create(UIResources::Menus_Icons_Clones);
+	Sprite* icon = Sprite::create(UIResources::Menus_Icons_SummonIcon);
 
 	this->clickableNode->addChild(icon);
 	this->addChild(this->clickableNode);

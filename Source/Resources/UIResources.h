@@ -382,6 +382,7 @@ namespace UIResources
 	extern const std::string Menus_Icons_Star;
 	extern const std::string Menus_Icons_Stars;
 	extern const std::string Menus_Icons_Strength;
+	extern const std::string Menus_Icons_SummonIcon;
 	extern const std::string Menus_Icons_Sword;
 	extern const std::string Menus_Icons_SwordAlt;
 	extern const std::string Menus_Icons_SwordBroken;

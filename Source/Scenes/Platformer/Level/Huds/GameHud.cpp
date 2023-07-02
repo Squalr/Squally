@@ -290,8 +290,8 @@ void GameHud::initializeListeners()
 			CallFunc::create([=]()
 			{
 				NotificationEvents::TriggerNotificationTakeover(NotificationEvents::NotificationTakeoverArgs(
-					Strings::TODO::create(),
-					Strings::TODO::create(),
+					Strings::Menus_Hud_QuickSwap_QuickSwapTitle::create(),
+					Strings::Menus_Hud_QuickSwap_QuickSwapExplainer::create(),
 					SoundResources::Notifications_NotificationGood1,
 					false
 				));
