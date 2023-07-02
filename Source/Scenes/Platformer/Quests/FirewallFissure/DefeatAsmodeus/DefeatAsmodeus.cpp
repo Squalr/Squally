@@ -79,7 +79,7 @@ void DefeatAsmodeus::onLoad(QuestState questState)
 	{
 		this->exitPortal = exitPortal;
 
-		if (questState != QuestState::Complete)
+		if (questState != QuestState::Complete && this->asmodeus->getRuntimeStateOrDefault(StateKeys::IsAlive, Value(true)).asBool())
 		{
 			this->exitPortal->disable();
 		}

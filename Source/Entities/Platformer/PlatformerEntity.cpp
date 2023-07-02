@@ -183,9 +183,9 @@ CSize PlatformerEntity::getEntitySize()
 
 Vec2 PlatformerEntity::getEntityCenterPoint()
 {
-	Vec2 center = this->isFlippedY() ? Vec2(0.0f, this->getEntitySize().height / 2.0f) : Vec2(0.0f, this->getEntitySize().height / 2.0f);
+	float centerPoint = this->getEntitySize().height / 2.0f;
 
-	return center;
+	return Vec2(0.0f, centerPoint);
 }
 
 Vec2 PlatformerEntity::getEntityTopPoint()
@@ -206,12 +206,16 @@ Vec2 PlatformerEntity::getEntityBottomPoint()
 
 Vec2 PlatformerEntity::getEntityTopPointRelative()
 {
-	return Vec2(0.0f, (this->isFlippedY() ? -this->getEntitySize().height / 2.0f : this->getEntitySize().height / 2.0f));
+	float topPoint = this->getEntitySize().height / 2.0f;
+
+	return Vec2(0.0f, this->isFlippedY() ? -topPoint : topPoint);
 }
 
 Vec2 PlatformerEntity::getEntityBottomPointRelative()
 {
-	return Vec2(0.0f, (this->isFlippedY() ? this->getEntitySize().height / 2.0f + this->getHoverHeight() : (-this->getEntitySize().height / 2.0f - this->getHoverHeight())));
+	float bottomPoint = -this->getEntitySize().height / 2.0f - this->getHoverHeight();
+
+	return Vec2(0.0f, this->isFlippedY() ? -bottomPoint : bottomPoint);
 }
 
 float PlatformerEntity::getHoverHeight()

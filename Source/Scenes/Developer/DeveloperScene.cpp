@@ -116,7 +116,6 @@ DeveloperScene::DeveloperScene()
 		--------------
 		- ** FF Fire Spellbook be required for lava escape, to slow the lava
 		- ** Final crack art is ass
-		- * FF post asmodeus door doesn't open until map reload
 		- v FF lava escape needs screen shake, SFX
 		- v FF cauterize should use a flame animation of sorts
 		- v FF enflame should use a flame animation of sorts. Also position is wrong
@@ -125,7 +124,6 @@ DeveloperScene::DeveloperScene()
 		- v FF first girl friendly text
 		- v FF Maybe update Drak text upon crafting demon heart
 		--------------
-		- * Lightning ability VFX broken
 		- v Jitter standing in place
 		- v quick swap FX
 		- v quick warp FX
@@ -192,13 +190,13 @@ DeveloperScene::DeveloperScene()
 		v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
 	
 	- New Mini-Games:
-		- A few 3Q Perspective maps
+		- v A few 3Q Perspective maps
 			- Invisible helpers. Some way to pull helpers into combat
-		- Cipher:
+		- v Cipher:
 			* Reinstate? What's the new play? Asm? Macro magic to avoid emulation (store state to a struct after each instruction).
 				- Probably like Hexus puzzles, with preset C++ classes rather than map-property defined.
-		- P-Trace:
-			* Reinstate? What's the new play? Can this be that circuit game I was thinking? Maybe can flip circuit switches to incentivize using brain
+		- v P-Trace:
+			- Reinstate? What's the new play? Can this be that circuit game I was thinking? Maybe can flip circuit switches to incentivize using brain
 			- isometric squally, and some form of strategy element that isn't prone to trial-and-error.
 				- Another play is to make these actual "maps" that you can pass through.
 			- Could make a mini-game in towns? Inns? Where? Maybe just one machine in a zone of my choosing? (I kinda prefer DM or CV)
