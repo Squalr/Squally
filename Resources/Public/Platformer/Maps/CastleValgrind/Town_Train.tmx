@@ -273,11 +273,11 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="847" name="garin" type="entity" x="2232.15" y="1533.79" width="128" height="128">
+  <object id="847" name="garin" type="entity" x="1842.15" y="1531.79" width="128" height="128">
    <properties>
-    <property name="components" value="garin-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="garin,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="cv-generic"/>
-    <property name="travel-distance" type="float" value="192"/>
+    <property name="travel-distance" type="float" value="128"/>
    </properties>
   </object>
  </objectgroup>
@@ -305,7 +305,7 @@
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="854" name="spawn" type="object" x="1633.25" y="1564.44" width="128" height="128">
+  <object id="854" name="spawn" type="object" x="1599.25" y="1534.44" width="128" height="128">
    <properties>
     <property name="transition" value="train"/>
    </properties>

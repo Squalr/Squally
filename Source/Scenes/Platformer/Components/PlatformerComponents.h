@@ -24,6 +24,7 @@
 #include "Scenes/Platformer/Components/Entities/Enemies/EnemyCombatBehaviors.h"
 #include "Scenes/Platformer/Components/Entities/EntityBehaviorGroup.h"
 #include "Scenes/Platformer/Components/Entities/EntitySelectionBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/CastleValgrind/GarinBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/Critters/BirdBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/DataMines/CypressBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/DataMines/RakaBehavior.h"

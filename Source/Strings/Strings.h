@@ -35184,6 +35184,21 @@ namespace Strings
 		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_Y_Perhaps() = default;
 	};
 
+	class Platformer_Quests_CastleValgrind_Gossip_Garin_A_Train : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_Gossip_Garin_A_Train();
+		virtual ~Platformer_Quests_CastleValgrind_Gossip_Garin_A_Train() = default;
+	};
+
 	class Platformer_Quests_DataMines_DefeatRhinoman_A_YouShallNotPass : public LocalizedString
 	{
 	public:

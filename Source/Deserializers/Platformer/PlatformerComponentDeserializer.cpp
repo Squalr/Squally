@@ -232,7 +232,8 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 
 	// CV
 	this->componentDeserializers[AbominationOutOfCombatAttackBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)AbominationOutOfCombatAttackBehavior::create(owner); };
-
+	this->componentDeserializers[GarinBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)GarinBehavior::create(owner); };
+	
 	// LC
 	this->componentDeserializers[KingZulMemeBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)KingZulMemeBehavior::create(owner); };
 

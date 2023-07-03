@@ -89,10 +89,7 @@ DeveloperScene::DeveloperScene()
 		- v UR sky's reach color balance
 		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		--------------
-		- v DM Missing way to obtain hats (craftable?)
-		--------------
 		- ** CV rabies is tl;dr
-		- v CV train NPCs fun dialogue
 		- v CV secret tunnel feels unfinished
 		- v CV Missing "what is this" text on crypt guard
 		- v CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
@@ -141,6 +138,7 @@ DeveloperScene::DeveloperScene()
 		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
 	
 	- General:
+		- v Missing way to obtain hats (craftable for UR+?)
 		- v Jitter standing in place
 		- v quick swap FX
 		- v quick warp FX
