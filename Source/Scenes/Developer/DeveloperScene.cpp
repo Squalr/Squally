@@ -89,10 +89,10 @@ DeveloperScene::DeveloperScene()
 		- v UR sky's reach color balance
 		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		--------------
-		- v DM train NPCs fun dialogue
 		- v DM Missing way to obtain hats (craftable?)
 		--------------
 		- ** CV rabies is tl;dr
+		- v CV train NPCs fun dialogue
 		- v CV secret tunnel feels unfinished
 		- v CV Missing "what is this" text on crypt guard
 		- v CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin

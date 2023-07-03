@@ -5,6 +5,7 @@
 class Gecky;
 class Guano;
 class Bancroft;
+class Mildred;
 class QuestLine;
 class Scrappy;
 class Squally;
@@ -29,6 +30,8 @@ protected:
 private:
 	typedef QuestTask super;
 
+	void setMildredText();
+
 	void runCinematicSequenceAccessBlockedPt1();
 	void runCinematicSequenceAccessBlockedPt2();
 	void runCinematicSequenceAccessBlockedPt3();
@@ -41,6 +44,7 @@ private:
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 	Bancroft* bancroft = nullptr;
+	Mildred* mildred = nullptr;
 	Warp* warp = nullptr;
 
 	static const std::string TagTrainWarp;

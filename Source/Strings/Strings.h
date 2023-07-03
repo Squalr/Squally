@@ -35364,6 +35364,36 @@ namespace Strings
 		virtual ~Platformer_Quests_DataMines_RestorePower_Krampus_A_Intruders() = default;
 	};
 
+	class Platformer_Quests_DataMines_RestorePower_Mildred_A_CastleHaunted : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Mildred_A_CastleHaunted();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Mildred_A_CastleHaunted() = default;
+	};
+
+	class Platformer_Quests_DataMines_RestorePower_Mildred_S_BraveHero : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_DataMines_RestorePower_Mildred_S_BraveHero();
+		virtual ~Platformer_Quests_DataMines_RestorePower_Mildred_S_BraveHero() = default;
+	};
+
 	class Platformer_Quests_DataMines_RestorePower_Olive_A_OliveIntro : public LocalizedString
 	{
 	public:
