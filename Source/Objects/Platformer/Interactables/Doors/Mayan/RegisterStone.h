@@ -18,6 +18,7 @@ public:
 	void runFx();
 	int getValue();
 	int getCorrectValue();
+	void setValue(int value);
 
 	static const std::string MapKey;
 
@@ -35,7 +36,6 @@ private:
 
 	void runAnimationIn(int newValue);
 	void runAnimationOut();
-	void setValue(int value);
 	ConstantString* buildRegisterString();
 
 	WorldSound* pushSfx = nullptr;

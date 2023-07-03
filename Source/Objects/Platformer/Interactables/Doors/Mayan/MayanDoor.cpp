@@ -18,6 +18,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Objects/Platformer/Interactables/Doors/Mayan/RegisterStone.h"
+#include "Objects/Platformer/Interactables/Doors/Mayan/StoneStack.h"
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
@@ -109,11 +110,9 @@ void MayanDoor::onEnterTransitionDidFinish()
 {
 	super::onEnterTransitionDidFinish();
 	
-	if (this->isLocked)
-	{
-		this->discoverStones();
-	}
-	else
+	this->discoverStones();
+
+	if (!this->isLocked)
 	{
 		this->broadcastMapEvent(MayanDoor::MapEventLockInteraction, ValueMap());
 	}
@@ -165,35 +164,75 @@ void MayanDoor::initializeListeners()
 
 void MayanDoor::discoverStones()
 {
+	bool isUnlocked = this->loadObjectStateOrDefault(MayanDoor::SaveKeyUnlocked, Value(!this->isLocked)).asBool();
+
 	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
+
+		if (isUnlocked)
+		{
+			stone->setValue(stone->getCorrectValue());
+		}
 	}, "eax");
 
 	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
+
+		if (isUnlocked)
+		{
+			stone->setValue(stone->getCorrectValue());
+		}
 	}, "ebx");
 
 	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
+
+		if (isUnlocked)
+		{
+			stone->setValue(stone->getCorrectValue());
+		}
 	}, "ecx");
 
 	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
+
+		if (isUnlocked)
+		{
+			stone->setValue(stone->getCorrectValue());
+		}
 	}, "edx");
 
 	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
+
+		if (isUnlocked)
+		{
+			stone->setValue(stone->getCorrectValue());
+		}
 	}, "edi");
 
 	ObjectEvents::QueryObject<RegisterStone>([=](RegisterStone* stone)
 	{
 		this->registerStones.push_back(stone);
+
+		if (isUnlocked)
+		{
+			stone->setValue(stone->getCorrectValue());
+		}
 	}, "esi");
+
+	ObjectEvents::QueryObject<StoneStack>([=](StoneStack* stoneStack)
+	{
+		if (isUnlocked)
+		{
+			stoneStack->setVisible(false);
+		}
+	});
 }
 
 void MayanDoor::tryUnlock()

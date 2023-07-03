@@ -89,7 +89,6 @@ DeveloperScene::DeveloperScene()
 		- v UR sky's reach color balance
 		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		--------------
-		- v DM stack should remain as the answer once solved
 		- v DM train NPCs fun dialogue
 		- v DM Missing way to obtain hats (craftable?)
 		--------------
