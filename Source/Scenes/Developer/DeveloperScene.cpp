@@ -89,9 +89,7 @@ DeveloperScene::DeveloperScene()
 		- v UR sky's reach color balance
 		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		--------------
-		- v DM Rockslide fight is boring, should make this heal enemy (thus inverting == kill enemy)
 		- v DM Maybe allow combat from hitting helper, so that arrow matters
-		- v DM can maybe show stalactite in a harmless way first (maybe even Scrappy callout for use ability when it matters)
 		- v DM stack should remain as the answer once solved
 		- v DM train NPCs fun dialogue
 		- v DM Missing way to obtain hats (craftable?)
@@ -109,6 +107,14 @@ DeveloperScene::DeveloperScene()
 		- ** LC Daze script too long
 		- v LC blue gem map feels empty. Traps?
 		--------------
+		- ** Final crack art is ass
+		- v FF cauterize should use a flame animation of sorts
+		- v FF enflame should use a flame animation of sorts. Also position is wrong
+		- v FF fire rain needs SFX
+		- v FF Should show drowned corpses in lava instead of despawn
+		- v FF first girl friendly text
+		- v FF Maybe update Drak text upon crafting demon heart
+		--------------
 		* BP
 			- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
 			- ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
@@ -122,15 +128,6 @@ DeveloperScene::DeveloperScene()
 			- * Frost SpellBook (?? / ??)
 			- BP, somewhere				=> Frost Axe
 		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
-		--------------
-		- ** Final crack art is ass
-		- v FF lava escape needs screen shake, SFX
-		- v FF cauterize should use a flame animation of sorts
-		- v FF enflame should use a flame animation of sorts. Also position is wrong
-		- v FF fire rain needs SFX
-		- v FF Should show drowned corpses in lava instead of despawn
-		- v FF first girl friendly text
-		- v FF Maybe update Drak text upon crafting demon heart
 		--------------
 		
 	- Localization / Scripting:

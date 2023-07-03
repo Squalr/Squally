@@ -148,7 +148,7 @@ void Enflame::runEnflame()
 
 	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
 	{
-		Sprite* icon = Sprite::create(UIResources::Menus_Icons_BloodGoblet);
+		Sprite* icon = Sprite::create(UIResources::Menus_Icons_Fire);
 
 		icon->setScale(0.5f);
 

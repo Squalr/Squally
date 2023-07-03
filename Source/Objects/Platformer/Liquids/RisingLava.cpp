@@ -110,7 +110,7 @@ void RisingLava::registerHackables()
 				UIResources::Menus_Icons_Fire,
 				LazyNode<HackablePreview>::create([=](){ return RisingLavaGenericPreview::create(); }),
 				{
-					{ HackableCode::Register::zdx, Strings::Menus_Hacking_Objects_RisingLava_RegisterEdx::create() }
+					{ HackableCode::Register::zdx, Strings::Menus_Hacking_Objects_RisingLava_RegisterEdx::create(), true }
 				},
 				int(HackFlags::Fire),
 				3.0f,
