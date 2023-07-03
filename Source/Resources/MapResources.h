@@ -99,6 +99,7 @@ namespace MapResources
 	extern const std::string EndianForest_Combat_Temple;
 	extern const std::string EndianForest_Combat_TempleBoss;
 	extern const std::string EndianForest_Home_Ara;
+	extern const std::string EndianForest_Home_Gramps;
 	extern const std::string EndianForest_Home_Guano;
 	extern const std::string EndianForest_Home_Hut;
 	extern const std::string EndianForest_Home_Troll;
@@ -114,7 +115,6 @@ namespace MapResources
 	extern const std::string EndianForest_Town_Liana_Back;
 	extern const std::string EndianForest_Town_Liana_Entrance;
 	extern const std::string EndianForest_Town_Main;
-	extern const std::string EndianForest_Town_Shack;
 	extern const std::string EndianForest_Town_Smith;
 	extern const std::string EndianForest_Zone_1_0;
 	extern const std::string EndianForest_Zone_1_1;

@@ -488,7 +488,7 @@
   </object>
   <object id="695" name="portal" type="object" x="5743.92" y="5754.61" width="256.687" height="378.085">
    <properties>
-    <property name="map" value="EndianForest/Town_Shack"/>
+    <property name="map" value="EndianForest/Home_Gramps"/>
     <property name="transition" value="main"/>
    </properties>
   </object>

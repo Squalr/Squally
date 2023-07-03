@@ -93,7 +93,7 @@ void TownExitBlocked::onLoad(QuestState questState)
 		{
 			this->mara = mara;
 			this->attachMaraBehavior();
-		}, Bard::MapKey);
+		}, Mara::MapKey);
 
 		ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)
 		{

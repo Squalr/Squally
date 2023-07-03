@@ -36804,6 +36804,21 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_Misc_Aster_B_TakeThis() = default;
 	};
 
+	class Platformer_Quests_EndianForest_Misc_Gramps_A_StayOffRoof : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_Misc_Gramps_A_StayOffRoof();
+		virtual ~Platformer_Quests_EndianForest_Misc_Gramps_A_StayOffRoof() = default;
+	};
+
 	class Platformer_Quests_EndianForest_PerceptronChase_A_DangerDanger : public LocalizedString
 	{
 	public:

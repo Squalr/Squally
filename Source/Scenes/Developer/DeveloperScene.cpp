@@ -74,17 +74,17 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- 5x EE:
-		- X Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
-		- X Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
-		- X Perilous Sea (tri m/l/r)	=> The Golden Eagle (Special: Higher Jump)
-		- X Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
-		- ** CV, throne room?		=> Royal Crown (Special: Shop Discounts)
+		- * Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
+		- * Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
+		- * Perilous Sea (tri m/l/r)	=> The Golden Eagle (Special: Higher Jump)
+		- * Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
+		- ** CV, throne room?			=> Royal Crown (Special: Shop Discounts)
 
-	- General:
-		- v EF Mara/Bard fun dialogue
-		- v EF Gramps fun dialogue
+	- Maps:
+		- v EF Mara/Bard fun dialogue (post docks)
 		- v EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- v Bard floating in EF portal
+		- vv Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		--------------
 		- v UR cistern Chest + Puzzle + Animal is overwhelming and lazy
 		- v UR sky's reach color balance
@@ -114,6 +114,20 @@ DeveloperScene::DeveloperScene()
 		- ** LC Daze script too long
 		- v LC blue gem map feels empty. Traps?
 		--------------
+		* BP
+			- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
+			- ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
+			- ** 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
+			- ** 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
+			- ** Needs hexus battles
+			- ** Tune hexus battle special cards
+			- ** Needs animals
+			- ** Needs enemy scripting according to notes on which instructions this zone covers
+			- * Needs enemy scripting according to notes on which instructions this zone covers
+			- * Frost SpellBook (?? / ??)
+			- BP, somewhere				=> Frost Axe
+		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
+		--------------
 		- ** Final crack art is ass
 		- v FF lava escape needs screen shake, SFX
 		- v FF cauterize should use a flame animation of sorts
@@ -123,6 +137,20 @@ DeveloperScene::DeveloperScene()
 		- v FF first girl friendly text
 		- v FF Maybe update Drak text upon crafting demon heart
 		--------------
+		
+	- Localization / Scripting:
+		- + Lexicon is largely incomplete
+			- + Fill out descriptions without samples first
+		- + Text navigation is pretty bad in long scripts.
+		- + Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
+		- + Multi-line comments in scripts can cause line counter to become disrupted
+		- + Should really expand scripting text editor
+			- + Support click-to-place cursor
+		- User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
+		- v If ever re-instating Arabic, Ctrl+F all "ar": "! and "ar": ". strings to find places where punctuation was messed up and fix them
+		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
+	
+	- General:
 		- v Jitter standing in place
 		- v quick swap FX
 		- v quick warp FX
@@ -151,44 +179,17 @@ DeveloperScene::DeveloperScene()
 		- v Enemy combat begin sounds
 		- v Chapter transitions can be more special 
 		- v Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
-			- Tiki anims still broken (bad Spriter implementation strikes again)
-			- Train anims broken (for same reason)
-		- v Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
-		* BP
-			- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
-			- ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
-			- ** 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
-			- ** 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
-			- ** Needs hexus battles
-			- ** Tune hexus battle special cards
-			- ** Needs animals
-			- ** Needs enemy scripting according to notes on which instructions this zone covers
-			- * Needs enemy scripting according to notes on which instructions this zone covers
-			- * Frost SpellBook (?? / ??)
-			- BP, somewhere				=> Frost Axe
-		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
+			- v Tiki anims still broken (bad Spriter implementation strikes again)
+			- v Train anims broken (for same reason)
+		- Shitty SFX
+			- v All defend variants
+	
+	- Mini-Games:
 		- Hexus:
 			- Can pass after auto-victory or loss (try it in a puzzle)
 			- Leave button stuck visible after losing a puzzle
 			- Enemy should pre-calc the best play when player has passed (hard)
-			- vv It'd be nice to get SHL from the puzzle where you learn it. I guess just tailored pools or something. May scrap this.
-		- Shitty SFX
-			- All defend variants
-	
-	- Localization / Scripting
-		- Lexicon is largely incomplete
-			- Fill out descriptions without samples first
-		- Text navigation is pretty bad in long scripts.
-		- Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
-		- Multi-line comments in scripts can cause line counter to become disrupted
-		- Long scripts can fail to show blinking cursor sometimes (??)
-		- Should really expand scripting text editor
-			- Support click-to-place cursor
-		- User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
-		v If ever re-instating Arabic, Ctrl+F all "ar": "! and "ar": ". strings to find places where punctuation was messed up and fix them
-		v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
-	
-	- New Mini-Games:
+			- v It'd be nice to get SHL from the puzzle where you learn it. I guess just tailored pools or something. May scrap this.
 		- v A few 3Q Perspective maps
 			- Invisible helpers. Some way to pull helpers into combat
 		- v Cipher:
@@ -213,7 +214,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Inn (EF)", MapResources::EndianForest_Town_Inn));
 		mapList.push_back(this->buildDebugButton("Smith (EF)", MapResources::EndianForest_Town_Smith));
 		mapList.push_back(this->buildDebugButton("Alch (EF)", MapResources::EndianForest_Town_Alch));
-		mapList.push_back(this->buildDebugButton("Ballmer's Peak", MapResources::BallmerPeaks_Town_Main));
+		mapList.push_back(this->buildDebugButton("Gramps (EF)", MapResources::EndianForest_Home_Gramps));
 		mapList.push_back(this->buildDebugButton("Liana Back (EF)", MapResources::EndianForest_Town_Liana_Back));
 		mapList.push_back(this->buildDebugButton("Liana (EF)", MapResources::EndianForest_Town_Liana));
 		mapList.push_back(this->buildDebugButton("Ara (EF)", MapResources::EndianForest_Home_Ara));
