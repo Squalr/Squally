@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="52" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="1901">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="52" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="1902">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -225,7 +225,7 @@
     <property name="reward-pool" value="dm-coal"/>
    </properties>
   </object>
-  <object id="1887" name="portal" type="object" x="4197.34" y="1190.37" width="256" height="256">
+  <object id="1887" name="portal" type="object" x="4357.34" y="1190.37" width="256" height="256">
    <properties>
     <property name="map" value="PerilousSea/Ship_Main"/>
     <property name="quest" value="board-charter-ship"/>
@@ -260,7 +260,7 @@
     <property name="to" value="bridge-front-B"/>
    </properties>
   </object>
-  <object id="1888" name="spawn" type="object" x="4266" y="1320.06" width="128" height="128">
+  <object id="1888" name="spawn" type="object" x="4426" y="1320.06" width="128" height="128">
    <properties>
     <property name="transition" value="charter-ship"/>
    </properties>
@@ -520,15 +520,7 @@
    </properties>
   </object>
   <object id="1734" name="solid" type="collision" x="3477.94" y="553.818" width="127.03" height="1952.97"/>
-  <object id="1872" name="warp" type="object" x="2655.51" y="1358.06" width="256" height="256">
-   <properties>
-    <property name="from" value="bridge-front-B"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="to" value="bridge-back-B"/>
-   </properties>
-  </object>
-  <object id="1891" name="computer" type="object" x="1383.33" y="1392" width="212" height="268">
+  <object id="1891" name="computer" type="object" x="1384.66" y="1378.67" width="212" height="268">
    <properties>
     <property name="components" value="repairable"/>
     <property name="computer-sfx" type="bool" value="true"/>
@@ -538,32 +530,32 @@
     <property name="send-event" value="power-restored"/>
    </properties>
   </object>
-  <object id="1894" name="computer" type="object" x="1599.27" y="1393.58" width="192" height="268">
+  <object id="1894" name="computer" type="object" x="1600.6" y="1380.25" width="192" height="268">
    <properties>
     <property name="computer-type" value="small_computer_one"/>
    </properties>
   </object>
-  <object id="1895" name="computer" type="object" x="2183.33" y="1390" width="192" height="268">
+  <object id="1895" name="computer" type="object" x="2184.66" y="1376.67" width="192" height="268">
    <properties>
     <property name="computer-type" value="small_computer_two"/>
    </properties>
   </object>
-  <object id="1896" name="computer" type="object" x="740.667" y="1241.33" width="420" height="420">
+  <object id="1896" name="computer" type="object" x="742" y="1228" width="420" height="420">
    <properties>
     <property name="computer-type" value="super_computer_dark"/>
    </properties>
   </object>
-  <object id="1898" name="computer" type="object" x="1190" y="1392.67" width="192" height="268">
+  <object id="1898" name="computer" type="object" x="1191.33" y="1379.34" width="192" height="268">
    <properties>
     <property name="computer-type" value="large_computer_one"/>
    </properties>
   </object>
-  <object id="1899" name="computer" type="object" x="1794.67" y="1395.33" width="192" height="268">
+  <object id="1899" name="computer" type="object" x="1796" y="1382" width="192" height="268">
    <properties>
     <property name="computer-type" value="large_computer_two"/>
    </properties>
   </object>
-  <object id="1900" name="computer" type="object" x="1988" y="1395.33" width="192" height="268">
+  <object id="1900" name="computer" type="object" x="1989.33" y="1382" width="192" height="268">
    <properties>
     <property name="computer-type" value="large_computer_three"/>
    </properties>
@@ -594,6 +586,14 @@
   <object id="1698" name="spawn" type="object" x="350.489" y="1520" width="128" height="128">
    <properties>
     <property name="transition" value="docks"/>
+   </properties>
+  </object>
+  <object id="1901" name="warp" type="object" x="2655.51" y="1358.06" width="256" height="256">
+   <properties>
+    <property name="from" value="bridge-front-B"/>
+    <property name="no-warp-camera" type="bool" value="true"/>
+    <property name="relayer" type="bool" value="true"/>
+    <property name="to" value="bridge-back-B"/>
    </properties>
   </object>
  </objectgroup>

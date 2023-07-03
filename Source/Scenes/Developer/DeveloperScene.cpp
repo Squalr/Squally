@@ -78,7 +78,7 @@ DeveloperScene::DeveloperScene()
 		- * Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
 		- * Perilous Sea (tri m/l/r)	=> The Golden Eagle (Special: Higher Jump)
 		- * Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
-		- ** CV, throne room?			=> Royal Crown (Special: Shop Discounts)
+		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Maps:
 		- v EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
@@ -97,7 +97,6 @@ DeveloperScene::DeveloperScene()
 		- v DM stack should remain as the answer once solved
 		- v DM train NPCs fun dialogue
 		- v DM Missing way to obtain hats (craftable?)
-		- v DM Maybe a ladder on ship art to show the point of entry
 		--------------
 		- ** CV rabies is tl;dr
 		- v CV secret tunnel feels unfinished
