@@ -56,6 +56,7 @@ GameHud::GameHud()
 	this->quickWarp = QuickWarp::create();
 	this->quickSwap = QuickSwap::create();
 	this->helpArrow = HelpArrow::create();
+	this->enableHackerModeEvents = true;
 
 	this->helpArrow->setRotation(90.0f);
 
@@ -152,14 +153,7 @@ void GameHud::initializeListeners()
 			this->statsBars->setVisible(true);
 			this->currencyDisplay->setVisible(true);
 
-			bool quickPotionUnlocked = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyQuickPotionUnlocked, Value(false)).asBool();
-			this->quickPotion->setVisible(quickPotionUnlocked);
-			
-			bool quickWarpUnlocked = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookWind, Value(false)).asBool();
-			this->quickWarp->setVisible(quickWarpUnlocked);
-			
-			bool quickSwapUnlocked = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookShadow, Value(false)).asBool();
-			this->quickSwap->setVisible(quickSwapUnlocked);
+			this->refreshButtonVisibility();
 		}
 	}));
 
@@ -311,7 +305,35 @@ void GameHud::initializeListeners()
 	}));
 }
 
+void GameHud::onHackerModeEnable()
+{
+	super::onHackerModeEnable();
+
+	this->quickPotion->setVisible(false);
+	this->quickWarp->setVisible(false);
+	this->quickSwap->setVisible(false);
+}
+
+void GameHud::onHackerModeDisable()
+{
+	super::onHackerModeDisable();
+
+	this->refreshButtonVisibility();
+}
+
 void GameHud::update(float dt)
 {
 	super::update(dt);
+}
+
+void GameHud::refreshButtonVisibility()
+{
+	bool quickPotionUnlocked = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyQuickPotionUnlocked, Value(false)).asBool();
+	this->quickPotion->setVisible(quickPotionUnlocked);
+
+	bool quickWarpUnlocked = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookWind, Value(false)).asBool();
+	this->quickWarp->setVisible(quickWarpUnlocked);
+
+	bool quickSwapUnlocked = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookShadow, Value(false)).asBool();
+	this->quickSwap->setVisible(quickSwapUnlocked);
 }

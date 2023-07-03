@@ -29,10 +29,14 @@ protected:
 	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
+	void onHackerModeEnable() override;
+	void onHackerModeDisable() override;
 	void update(float dt) override;
 
 private:
 	typedef Hud super;
+
+	void refreshButtonVisibility();
 
 	enum class HelpArrowTarget
 	{

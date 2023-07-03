@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="82" nextobjectid="1022">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="82" nextobjectid="1035">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyYellow"/>
@@ -164,9 +164,10 @@
  </objectgroup>
  <objectgroup id="80" name="objects fg">
   <properties>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1009" name="rising-lava" type="object" x="-371.165" y="7480" width="3470.33" height="880">
+  <object id="1009" name="rising-lava" type="object" x="-355.165" y="7526.91" width="3262.33" height="1184">
    <properties>
     <property name="components" value="z-fade"/>
     <property name="tag" value="rising-lava"/>

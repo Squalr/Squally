@@ -219,7 +219,7 @@ void HackableObject::updateTimeRemainingBars()
 	{
 		if (index < hackableCount)
 		{
-			auto next = this->trackedHackables[index];
+			HackableBase* next = this->trackedHackables[index];
 
 			this->timeRemainingBars[index]->setVisible(true);
 			this->timeRemainingIcons[index]->setVisible(true);
@@ -346,7 +346,7 @@ void HackableObject::registerCode(HackableCode* hackableCode, bool refreshCooldo
 		return;
 	}
 
-	for (auto next : this->codeList)
+	for (HackableCode* next : this->codeList)
 	{
 		if (next->getPointer() == hackableCode->getPointer())
 		{

@@ -25059,6 +25059,36 @@ namespace Strings
 		virtual ~Menus_Hacking_Objects_RegisterRspWarning() = default;
 	};
 
+	class Menus_Hacking_Objects_RisingLava_RegisterEdx : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_RisingLava_RegisterEdx();
+		virtual ~Menus_Hacking_Objects_RisingLava_RegisterEdx() = default;
+	};
+
+	class Menus_Hacking_Objects_RisingLava_RisingLava : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Objects_RisingLava_RisingLava();
+		virtual ~Menus_Hacking_Objects_RisingLava_RisingLava() = default;
+	};
+
 	class Menus_Hacking_Objects_SpikedLogRailed_MoveTowardsPlayer_CommentHint : public LocalizedString
 	{
 	public:
@@ -37552,6 +37582,21 @@ namespace Strings
 	private:
 		Platformer_Quests_FirewallFissure_ReleasePressure_B_SeismicActivity();
 		virtual ~Platformer_Quests_FirewallFissure_ReleasePressure_B_SeismicActivity() = default;
+	};
+
+	class Platformer_Quests_FirewallFissure_ReleasePressure_C_Abilities : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_ReleasePressure_C_Abilities();
+		virtual ~Platformer_Quests_FirewallFissure_ReleasePressure_C_Abilities() = default;
 	};
 
 	class Platformer_Quests_FirewallFissure_Spellbook_Cindra_A_Flame : public LocalizedString

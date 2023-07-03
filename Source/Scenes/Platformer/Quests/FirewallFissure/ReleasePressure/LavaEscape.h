@@ -29,6 +29,7 @@ private:
 	void runCinematicSequencePart2();
 	void runCinematicSequencePart3();
 	void runCinematicSequencePart4();
+	void runCinematicSequencePart5();
 
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;

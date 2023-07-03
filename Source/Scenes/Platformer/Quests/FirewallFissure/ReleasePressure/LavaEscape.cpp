@@ -148,6 +148,25 @@ void LavaEscape::runCinematicSequencePart3()
 
 void LavaEscape::runCinematicSequencePart4()
 {
+	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
+		Strings::Platformer_Quests_FirewallFissure_ReleasePressure_C_Abilities::create(),
+		DialogueEvents::DialogueVisualArgs(
+			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueAlignment::Right,
+			DialogueEvents::BuildPreviewNode(&this->squally, false),
+			DialogueEvents::BuildPreviewNode(&this->scrappy, true)
+		),
+		[=]()
+		{
+			this->runCinematicSequencePart5();
+		},
+		Voices::GetNextVoiceMedium(),
+		true
+	));
+}
+
+void LavaEscape::runCinematicSequencePart5()
+{
 	ObjectEvents::QueryObject<RisingLava>([=](RisingLava* lava)
 	{
 		lava->activate();

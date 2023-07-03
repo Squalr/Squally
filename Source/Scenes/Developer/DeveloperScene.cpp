@@ -115,7 +115,6 @@ DeveloperScene::DeveloperScene()
 		- v LC blue gem map feels empty. Traps?
 		--------------
 		- ** Final crack art is ass
-		- * FF Rising Lava TODOs
 		- v FF lava escape needs screen shake, SFX
 		- v FF cauterize should use a flame animation of sorts
 		- v FF enflame should use a flame animation of sorts. Also position is wrong
@@ -1085,7 +1084,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyQuickPotionUnlocked, Value(true));
 
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookArcane, Value(true));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFire, Value(true));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFire, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookFrost, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookHoly, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeySpellBookLightning, Value(true));

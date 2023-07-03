@@ -61,6 +61,7 @@ GameCamera::GameCamera()
 	this->debugScrollHitbox = ClickableNode::create();
 	this->hud->setLocalZOrder(9999);
 	this->hud->setVisible(false);
+	this->enableHackerModeEvents = true;
 
 	this->debugCameraLabelX->setStringReplacementVariables(this->debugCameraStringX);
 	this->debugCameraLabelY->setStringReplacementVariables(this->debugCameraStringY);
@@ -147,22 +148,6 @@ void GameCamera::initializeListeners()
 		float delta = args->scrollDelta.y * 64.0f;
 		this->setCameraDistance(this->getCameraDistance() + delta);
 	});
-	
-	// Hack: These should already be added due to SmartNode inheritence? I don't care enough to investigate, just adding listeners again.
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeEnable, [=](EventCustom* eventCustom)
-	{
-		HackToggleArgs* args = static_cast<HackToggleArgs*>(eventCustom->getData());
-
-		if (args != nullptr)
-		{
-			this->onHackerModeEnable();
-		}
-	}));
-
-	this->addEventListenerIgnorePause(EventListenerCustom::create(HackableEvents::EventHackerModeDisable, [=](EventCustom* eventCustom)
-	{
-		this->onHackerModeDisable();
-	}));
 }
 
 void GameCamera::update(float dt)

@@ -24,7 +24,7 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_SWING 1
+#define LOCAL_FUNC_ID_RAISE 1
 
 const std::string RisingLava::MapKey = "rising-lava";
 const std::string RisingLava::HackIdentifierRisingLava = "rising-lava";
@@ -42,12 +42,12 @@ RisingLava* RisingLava::create(ValueMap& properties)
 
 RisingLava::RisingLava(ValueMap& properties) : super(properties)
 {
-	ValueMap propertiesClone = properties;
-
 	this->lavaSize = CSize(
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyWidth, Value(0.0f)).asFloat(),
 		GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat()
 	);
+
+	ValueMap propertiesClone = properties;
 
 	// Modify properties in such a way as to retain the lava position as seen in the map file
 	propertiesClone[GameObject::MapKeyXPosition] = Value(-lavaSize.width / 2.0f);
@@ -102,16 +102,15 @@ void RisingLava::registerHackables()
 	HackableCode::CodeInfoMap codeInfoMap =
 	{
 		{
-			LOCAL_FUNC_ID_SWING,
+			LOCAL_FUNC_ID_RAISE,
 			HackableCode::HackableCodeInfo(
 				RisingLava::HackIdentifierRisingLava,
-				Strings::TODO::create(),
+				Strings::Menus_Hacking_Objects_RisingLava_RisingLava::create(),
 				HackableBase::HackBarColor::Red,
 				UIResources::Menus_Icons_Fire,
 				LazyNode<HackablePreview>::create([=](){ return RisingLavaGenericPreview::create(); }),
 				{
-					{ HackableCode::Register::zsi, Strings::TODO::create() },
-					{ HackableCode::Register::zdx, Strings::TODO::create() }
+					{ HackableCode::Register::zdx, Strings::Menus_Hacking_Objects_RisingLava_RegisterEdx::create() }
 				},
 				int(HackFlags::Fire),
 				3.0f,
@@ -154,7 +153,7 @@ NO_OPTIMIZE void RisingLava::raiseLava(float dt)
 
 	ASM(fld dword ptr [ZSI]);
 
-	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_SWING);
+	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RAISE);
 	ASM(fadd dword ptr [ZDX]);
 	ASM_NOP2();
 	HACKABLE_CODE_END();
