@@ -93,7 +93,6 @@ DeveloperScene::DeveloperScene()
 		- v CV secret tunnel feels unfinished
 		- v CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
 		- v CV friendly text on atrius (err no, whoever is in tunnel)
-		- v CV friendly text on Elric after bitten dialogue
 		--------------
 		- ** LC poisoned arrows are tl;dr
 		- ** LC unholy blade tl;dr

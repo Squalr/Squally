@@ -95,6 +95,11 @@ void ElricsPlea::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<Elric>(this, [=](Elric* elric)
 	{
 		this->elric = elric;
+
+		if (questState == QuestState::Complete)
+		{
+			this->setPostText();
+		}
 	}, Elric::MapKey);
 
 	ObjectEvents::WatchForObject<Zombie>(this, [=](Zombie* zombie)
@@ -119,11 +124,43 @@ void ElricsPlea::onActivate(bool isActiveThroughSkippable, bool isInitialActivat
 void ElricsPlea::onComplete()
 {
 	Objectives::SetCurrentObjective(ObjectiveKeys::LCSeekAmelia);
+	
+	this->setPostText();
 }
 
 void ElricsPlea::onSkipped()
 {
 	this->removeAllListeners();
+}
+void ElricsPlea::setPostText()
+{
+	if (this->elric == nullptr)
+	{
+		return;
+	}
+
+	this->elric->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	{
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_X_NotFeelingWell::create()
+				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_LambdaCrypts_Amelia::create()),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->squally, false),
+				DialogueEvents::BuildPreviewNode(&this->elric, true)
+			),
+			[=]()
+			{
+				this->defer([=]()
+				{
+					this->setPostText();
+				});
+			},
+			Voices::GetNextVoiceLong(),
+			true
+		));
+	});
 }
 
 void ElricsPlea::runCinematicSequencePt1()

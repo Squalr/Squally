@@ -30,6 +30,8 @@ protected:
 private:
 	typedef QuestTask super;
 
+	void setPostText();
+
 	void runCinematicSequencePt1();
 	void runCinematicSequencePt2();
 	void runCinematicSequencePt3();
