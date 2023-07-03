@@ -11,6 +11,7 @@ namespace cocos2d
 
 class ConstantString;
 class LocalizedLabel;
+class WorldSound;
 
 class StoneStack : public GameObject
 {
@@ -43,6 +44,7 @@ private:
 	std::vector<int> pushList;
 	std::vector<ConstantString*> valueStrings;
 
+	WorldSound* popSfx = nullptr;
 	cocos2d::Sprite* animatedStone = nullptr;
 	ConstantString* animatedString = nullptr;
 

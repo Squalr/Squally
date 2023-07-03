@@ -22,8 +22,6 @@ public:
 	void push(unsigned long long value);
 	unsigned long long pop();
 
-	void show();
-
 protected:
 	StackBlock();
 	virtual ~StackBlock();

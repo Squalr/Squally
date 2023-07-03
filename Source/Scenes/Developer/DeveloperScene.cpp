@@ -92,7 +92,6 @@ DeveloperScene::DeveloperScene()
 		- v DM Rockslide fight is boring, should make this heal enemy (thus inverting == kill enemy)
 		- v DM Maybe allow combat from hitting helper, so that arrow matters
 		- v DM can maybe show stalactite in a harmless way first (maybe even Scrappy callout for use ability when it matters)
-		- v DM push/pop movement SFX
 		- v DM stack should remain as the answer once solved
 		- v DM train NPCs fun dialogue
 		- v DM Missing way to obtain hats (craftable?)

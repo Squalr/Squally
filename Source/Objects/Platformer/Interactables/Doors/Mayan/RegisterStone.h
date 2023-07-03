@@ -38,6 +38,7 @@ private:
 	void setValue(int value);
 	ConstantString* buildRegisterString();
 
+	WorldSound* pushSfx = nullptr;
 	InteractObject* pushInteract = nullptr;
 	std::string registerStr;
 	int value = 0;
