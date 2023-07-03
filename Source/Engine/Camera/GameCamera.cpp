@@ -139,6 +139,8 @@ void GameCamera::initializeListeners()
 			this->setMapBounds(CRect(Vec2::ZERO, visibleSize));
 			this->resetCamera();
 			this->clearTargets();
+
+			this->getScheduler()->unschedule(GameCamera::SchedulerKeyCameraShake, this);
 		}
 	));
 
