@@ -87,11 +87,10 @@ DeveloperScene::DeveloperScene()
 		--------------
 		- v UR cistern Chest + Puzzle + Animal is overwhelming and lazy
 		- v UR sky's reach color balance
-		- v UR Pyramid fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
+		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		--------------
 		- v DM Rockslide fight is boring, should make this heal enemy (thus inverting == kill enemy)
 		- v DM Maybe allow combat from hitting helper, so that arrow matters
-		- v DM Stalactite SFX
 		- v DM can maybe show stalactite in a harmless way first (maybe even Scrappy callout for use ability when it matters)
 		- v DM diamond doesn't make sense here. Can use it in BG, but maybe move diamond carts to the right zones
 		- v DM push/pop movement SFX

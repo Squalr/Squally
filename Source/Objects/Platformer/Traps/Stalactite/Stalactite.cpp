@@ -9,12 +9,14 @@
 #include "Engine/Localization/LocalizedString.h"
 #include "Engine/Hackables/HackableCode.h"
 #include "Engine/Physics/CollisionObject.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 
 #include "Resources/ObjectResources.h"
+#include "Resources/SoundResources.h"
 #include "Resources/UIResources.h"
 
 #include "Strings/Strings.h"
@@ -38,8 +40,12 @@ Stalactite::Stalactite(ValueMap& properties) : super(properties)
 {
 	this->sprite = Sprite::create(ObjectResources::Traps_Stalactite_Stalactite);
 	this->collision = CollisionObject::create(CollisionObject::createBox(CSize(40.0f, 112.0f)), (CollisionType)PlatformerCollisionType::Damage, CollisionObject::Properties(false, true));
+	this->rumbleSound = WorldSound::create(SoundResources::Platformer_Objects_Stalactite_RockFall1);
+	this->fallSound = WorldSound::create(SoundResources::Platformer_Objects_Stalactite_RockFall2);
 
 	this->collision->addChild(this->sprite);
+	this->collision->addChild(this->rumbleSound);
+	this->collision->addChild(this->fallSound);
 	this->addChild(this->collision);
 }
 
@@ -71,9 +77,8 @@ void Stalactite::initializeListeners()
 		const float RumbleTime = 1.0f;
 		const int Rumbles = int(std::round((RumbleTime - RotationSpeed) / RotationSpeed)) / 2;
 
-		// TODO: Add shaking sound.
-		// this->rumbleSound->play(); 
-
+		this->rumbleSound->play();
+		
 		this->runAction(Sequence::create(
 			EaseSineInOut::create(RotateTo::create(HalfRotationSpeed, RotationAngle)),
 			Repeat::create(Sequence::create(
@@ -85,7 +90,7 @@ void Stalactite::initializeListeners()
 			CallFunc::create([=]()
 			{
 				this->isFalling = true;
-
+				this->fallSound->play();
 			}),
 			nullptr
 		));
