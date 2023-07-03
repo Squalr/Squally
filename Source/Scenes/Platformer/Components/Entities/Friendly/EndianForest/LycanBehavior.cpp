@@ -70,21 +70,44 @@ void LycanBehavior::onLoad()
 
 	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
-		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-			Strings::Platformer_Quests_EndianForest_FindElriel_Lycan_A_Tired::create()
-				->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
-			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
-				DialogueBox::DialogueAlignment::Left,
-				DialogueEvents::BuildPreviewNode(&this->entity, false),
-				DialogueEvents::BuildPreviewNode(&this->squally, true)
-			),
-			[=]()
-			{
-			},
-			Voices::GetNextVoiceShort(),
-			false
-		));
+		// Save key for wind spellbook is a good proxy for whether or not Elriel was rescued. Just use that flag since it's easier to access.
+		if (!SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeySpellBookWind, Value(false)).asBool())
+		{
+			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_EndianForest_FindElriel_Lycan_A_Tired::create()
+					->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Left,
+					DialogueEvents::BuildPreviewNode(&this->entity, false),
+					DialogueEvents::BuildPreviewNode(&this->squally, true)
+				),
+				[=]()
+				{
+				},
+				Voices::GetNextVoiceShort(),
+				false
+			));
+		}
+		else
+		{
+			// Elriel saved, add in some post completion dialogue
+			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_EndianForest_FindElriel_Lycan_X_GossipDone::create()
+					->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_EndianForest_Elriel::create()),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Left,
+					DialogueEvents::BuildPreviewNode(&this->entity, false),
+					DialogueEvents::BuildPreviewNode(&this->squally, true)
+				),
+				[=]()
+				{
+				},
+				Voices::GetNextVoiceShort(),
+				false
+			));
+		}
 		
 		if (!SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLycanItemGiven, Value(false)).asBool())
 		{

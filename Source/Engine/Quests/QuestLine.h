@@ -39,7 +39,7 @@ public:
 	LocalizedString* getQuestLineName();
 	LocalizedString* getQuestLineObjective(std::string questTask);
 	bool isComplete();
-	bool isCompleteUpTo(std::string questTask);
+	bool isCompleteUpToInclusive(std::string questTask);
 	QuestLine* getPrereq() const;
 	std::string getPrereqTask() const;
 	virtual QuestLine* clone() = 0;

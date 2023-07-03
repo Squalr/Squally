@@ -36249,6 +36249,21 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_FindElriel_Lycan_B_TakeThis() = default;
 	};
 
+	class Platformer_Quests_EndianForest_FindElriel_Lycan_X_GossipDone : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Lycan_X_GossipDone();
+		virtual ~Platformer_Quests_EndianForest_FindElriel_Lycan_X_GossipDone() = default;
+	};
+
 	class Platformer_Quests_EndianForest_FindElriel_Mara_A_WhereAreDocks : public LocalizedString
 	{
 	public:
@@ -36277,6 +36292,51 @@ namespace Strings
 	private:
 		Platformer_Quests_EndianForest_FindElriel_Mara_B_RightButTalkToQueen();
 		virtual ~Platformer_Quests_EndianForest_FindElriel_Mara_B_RightButTalkToQueen() = default;
+	};
+
+	class Platformer_Quests_EndianForest_FindElriel_Mara_S_GossipFindElriel : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Mara_S_GossipFindElriel();
+		virtual ~Platformer_Quests_EndianForest_FindElriel_Mara_S_GossipFindElriel() = default;
+	};
+
+	class Platformer_Quests_EndianForest_FindElriel_Mara_T_GossipFoundElriel : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Mara_T_GossipFoundElriel();
+		virtual ~Platformer_Quests_EndianForest_FindElriel_Mara_T_GossipFoundElriel() = default;
+	};
+
+	class Platformer_Quests_EndianForest_FindElriel_Mara_X_GossipBlacksmiths : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_EndianForest_FindElriel_Mara_X_GossipBlacksmiths();
+		virtual ~Platformer_Quests_EndianForest_FindElriel_Mara_X_GossipBlacksmiths() = default;
 	};
 
 	class Platformer_Quests_EndianForest_FindElriel_Scrappy_A_LetsFindABoat : public LocalizedString

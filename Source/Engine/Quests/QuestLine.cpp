@@ -48,7 +48,7 @@ const std::vector<QuestLine::QuestMeta> QuestLine::getQuests()
 	std::string currentQuestTask = Quests::getCurrentQuestTaskForLine(this->questLine);
 	bool hasEncounteredActive = false;
 	bool activeThroughSkippable = false;
-	bool prereqComplete = this->prereq == nullptr ? true : this->prereq->isCompleteUpTo(this->prereqTask);
+	bool prereqComplete = this->prereq == nullptr ? true : this->prereq->isCompleteUpToInclusive(this->prereqTask);
 
 	if (currentQuestTask.empty() && !this->quests.empty())
 	{
@@ -78,7 +78,7 @@ const std::vector<QuestLine::QuestMeta> QuestLine::getQuests()
 		}
 	}
 	
-	for (auto next : this->quests)
+	for (QuestData& next : this->quests)
 	{
 		bool isActive = prereqComplete && (activeThroughSkippable || next.questTask == currentQuestTask);
 		bool isComplete = prereqComplete && !isActive && !hasEncounteredActive;
@@ -120,7 +120,7 @@ bool QuestLine::isComplete()
 	return questMeta.back().isComplete;
 }
 
-bool QuestLine::isCompleteUpTo(std::string questTask)
+bool QuestLine::isCompleteUpToInclusive(std::string questTask)
 {
 	if (questTask.empty())
 	{
@@ -129,7 +129,7 @@ bool QuestLine::isCompleteUpTo(std::string questTask)
 
 	const std::vector<QuestMeta> questMeta = this->getQuests();
 
-	for (auto next : questMeta)
+	for (const QuestMeta& next : questMeta)
 	{
 		if (next.isComplete && next.questTask == questTask)
 		{

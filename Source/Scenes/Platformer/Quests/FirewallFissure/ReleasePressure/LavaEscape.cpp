@@ -13,7 +13,7 @@
 #include "Engine/Dialogue/SpeechBubble.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Events/QuestEvents.h"
-#include "Engine/Sound/WorldSound.h"
+#include "Engine/Sound/Sound.h"
 #include "Entities/Platformer/Helpers/EndianForest/Scrappy.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Events/DialogueEvents.h"
@@ -47,6 +47,9 @@ LavaEscape* LavaEscape::create(GameObject* owner, QuestLine* questLine)
 
 LavaEscape::LavaEscape(GameObject* owner, QuestLine* questLine) : super(owner, questLine, LavaEscape::MapKeyQuest, false)
 {
+	this->quakeSound = Sound::create(SoundResources::Platformer_FX_Rumbles_RumbleLooped1);
+
+	this->addChild(this->quakeSound);
 }
 
 LavaEscape::~LavaEscape()
@@ -119,6 +122,7 @@ void LavaEscape::runCinematicSequencePart2()
 		),
 		[=]()
 		{
+			this->quakeSound->play(true);
 			GameCamera::getInstance()->shakeCamera(0.25f, 8.0f, 65535.0f);
 			this->runCinematicSequencePart3();
 		},

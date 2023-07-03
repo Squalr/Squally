@@ -4,6 +4,7 @@
 
 class QuestLine;
 class Scrappy;
+class Sound;
 class Squally;
 
 class LavaEscape : public QuestTask
@@ -32,6 +33,7 @@ private:
 	void runCinematicSequencePart5();
 
 	Scrappy* scrappy = nullptr;
+	Sound* quakeSound = nullptr;
 	Squally* squally = nullptr;
 
 	static const std::string MapEventBeginLavaEvent;

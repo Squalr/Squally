@@ -81,7 +81,6 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room?			=> Royal Crown (Special: Shop Discounts)
 
 	- Maps:
-		- v EF Mara/Bard fun dialogue (post docks)
 		- v EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- v Bard floating in EF portal
 		- vv Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
@@ -585,7 +584,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone_3_1_Dev (FF)", MapResources::FirewallFissure_Zone_3_Dev));
 		mapList.push_back(this->buildDebugButton("Zone_3_1 (FF)", MapResources::FirewallFissure_Zone_3_1));
 		mapList.push_back(this->buildDebugButton("Zone_3_0 (FF)", MapResources::FirewallFissure_Zone_3_0));
-		mapList.push_back(this->buildDebugButton("Zone_2_3 (FF)", MapResources::FirewallFissure_Zone_2_3));
+		mapList.push_back(this->buildDebugButton("Zone_2_3 (FF) Lava Escape", MapResources::FirewallFissure_Zone_2_3));
 		mapList.push_back(this->buildDebugButton("Zone_2_2 (FF)", MapResources::FirewallFissure_Zone_2_2));
 		mapList.push_back(this->buildDebugButton("Zone_2_1 (FF)", MapResources::FirewallFissure_Zone_2_1));
 		mapList.push_back(this->buildDebugButton("Zone_2_0 (FF)", MapResources::FirewallFissure_Zone_2_0));
