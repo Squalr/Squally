@@ -137,4 +137,6 @@ void Crack::onInteract(PlatformerEntity* interactingEntity)
 			break;
 		}
 	}
+
+	this->setInteractType(InteractType::None);
 }
