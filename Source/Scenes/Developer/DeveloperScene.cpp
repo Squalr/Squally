@@ -91,7 +91,6 @@ DeveloperScene::DeveloperScene()
 		--------------
 		- ** CV rabies is tl;dr
 		- v CV secret tunnel feels unfinished
-		- v CV Missing "what is this" text on crypt guard
 		- v CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
 		- v CV friendly text on atrius (err no, whoever is in tunnel)
 		- v CV friendly text on Elric after bitten dialogue

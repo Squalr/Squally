@@ -1,6 +1,7 @@
 #include "CureKingLine.h"
 
 #include "Engine/Quests/QuestTask.h"
+#include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/CryptGuard.h"
 #include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/DefeatAgnes.h"
 #include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/MeetGrim.h"
 #include "Scenes/Platformer/Quests/CastleValgrind/CureKingLine/TalkToKingRedsong.h"
@@ -23,6 +24,7 @@ CureKingLine* CureKingLine::create()
 
 CureKingLine::CureKingLine() : super(CureKingLine::MapKeyQuestLine,
 	{
+		QuestData(CryptGuard::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return CryptGuard::create(owner, questLine); }),
 		QuestData(TalkToMabel::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return TalkToMabel::create(owner, questLine); }),
 		QuestData(MeetGrim::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return MeetGrim::create(owner, questLine); }),
 		QuestData(UnhauntCastle::MapKeyQuest, true, [](GameObject* owner, QuestLine* questLine) { return UnhauntCastle::create(owner, questLine); }),

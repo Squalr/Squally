@@ -35184,6 +35184,51 @@ namespace Strings
 		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_Y_Perhaps() = default;
 	};
 
+	class Platformer_Quests_CastleValgrind_CureKing_Zana_A_WhatIsThisPlace : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Zana_A_WhatIsThisPlace();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Zana_A_WhatIsThisPlace() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Zana_B_AncientCrypt : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Zana_B_AncientCrypt();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Zana_B_AncientCrypt() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Zana_C_Locked : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Zana_C_Locked();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Zana_C_Locked() = default;
+	};
+
 	class Platformer_Quests_CastleValgrind_Gossip_Garin_A_Train : public LocalizedString
 	{
 	public:

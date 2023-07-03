@@ -160,7 +160,7 @@ void TownExitBlocked::attachChironBehavior()
 
 void TownExitBlocked::attachBardBehavior()
 {
-	if (bard == nullptr)
+	if (this->bard == nullptr)
 	{
 		return;
 	}

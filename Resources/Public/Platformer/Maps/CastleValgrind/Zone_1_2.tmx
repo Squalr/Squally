@@ -262,6 +262,7 @@
     <property name="components" value="locked-portal"/>
     <property name="item-required" value="crypt-key"/>
     <property name="map" value="LambdaCrypts/Zone_1_0"/>
+    <property name="tag" value="crypt-door"/>
     <property name="transition" value="crypt"/>
    </properties>
   </object>
@@ -303,8 +304,8 @@
     <property name="components" value="cv-t1-hexus,friendly,pick-pocket"/>
     <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
+    <property name="quest" value="crypt-guard"/>
+    <property name="quest-line" value="cure-king"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>
