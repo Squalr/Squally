@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="1896">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="36" height="18" tilewidth="128" tileheight="128" infinite="0" nextlayerid="115" nextobjectid="1897">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -50,22 +50,9 @@
  <objectgroup id="102" name="objects -9">
   <properties>
    <property name="depth" type="float" value="-576"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1856" name="mine-cart-lootable" type="object" x="1142" y="1200" width="240" height="184">
-   <properties>
-    <property name="color" value="blue"/>
-    <property name="fill" value="diamond"/>
-    <property name="reward-pool" value="dm-diamond"/>
-   </properties>
-  </object>
-  <object id="1857" name="mine-cart-lootable" type="object" x="1560" y="1199" width="240" height="184">
-   <properties>
-    <property name="color" value="blue"/>
-    <property name="fill" value="diamond"/>
-    <property name="reward-pool" value="dm-diamond"/>
-   </properties>
-  </object>
   <object id="1859" name="mine-cart-lootable" type="object" x="2441" y="1199.5" width="240" height="184">
    <properties>
     <property name="color" value="blue"/>
@@ -83,11 +70,18 @@
   <object id="1861" name="mine-cart-lootable" type="object" x="630" y="1200" width="240" height="184">
    <properties>
     <property name="color" value="brown"/>
-    <property name="fill" value="gold"/>
-    <property name="reward-pool" value="dm-gold"/>
+    <property name="fill" value="coal"/>
+    <property name="reward-pool" value="dm-coal"/>
    </properties>
   </object>
-  <object id="1863" name="ship" type="object" x="-128" y="692.844" width="2375" height="1008"/>
+ </objectgroup>
+ <objectgroup id="114" name="objects -9 fg">
+  <properties>
+   <property name="depth" type="float" value="-576"/>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1896" name="ship" type="object" x="-128" y="692.844" width="2375" height="1008"/>
  </objectgroup>
  <objectgroup id="113" name="terrain -9 fg">
   <properties>
@@ -212,7 +206,7 @@
   <object id="1847" name="Mines/Plank3" type="decor" x="160.51" y="1769.66" width="53" height="366"/>
   <object id="1848" name="Mines/Plank1" type="decor" x="430.67" y="1784.33" width="54" height="374"/>
  </objectgroup>
- <objectgroup id="98" name="rails -7" visible="0">
+ <objectgroup id="98" name="rails -7" locked="1">
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
@@ -222,6 +216,7 @@
  <objectgroup id="86" name="objects -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="1735" name="solid" type="collision" x="319.21" y="353.818" width="165.091" height="1752.97"/>
@@ -236,7 +231,7 @@
   <object id="1852" name="mine-cart-lootable" type="object" x="1250.84" y="1265" width="240" height="184">
    <properties>
     <property name="color" value="blue"/>
-    <property name="fill" value="gold"/>
+    <property name="fill" value="diamond"/>
     <property name="reward-pool" value="dm-diamond"/>
    </properties>
   </object>
@@ -259,6 +254,7 @@
  <objectgroup id="85" name="entities -7">
   <properties>
    <property name="depth" type="float" value="-448"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
@@ -318,12 +314,14 @@
  <objectgroup id="92" name="objects -5 bg bg">
   <properties>
    <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
  <objectgroup id="91" name="objects -5 bg">
   <properties>
    <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
@@ -367,6 +365,7 @@
  <objectgroup id="63" name="objects -5">
   <properties>
    <property name="depth" type="float" value="-320"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
@@ -471,12 +470,14 @@
  <objectgroup id="83" name="objects -1">
   <properties>
    <property name="depth" type="float" value="-64"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
  <objectgroup id="96" name="objects -1 bg">
   <properties>
    <property name="depth" type="float" value="-64"/>
+   <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
