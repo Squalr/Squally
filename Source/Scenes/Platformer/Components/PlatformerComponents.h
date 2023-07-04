@@ -27,6 +27,7 @@
 #include "Scenes/Platformer/Components/Entities/Friendly/CastleValgrind/GarinBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/Critters/BirdBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/DataMines/CypressBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Friendly/DataMines/DrakBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/DataMines/RakaBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/EndianForest/AraBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Friendly/EndianForest/ArcaneHintBehavior.h"

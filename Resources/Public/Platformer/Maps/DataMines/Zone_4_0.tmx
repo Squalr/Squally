@@ -212,7 +212,7 @@
   </properties>
   <object id="851" name="drak" type="entity" x="3369.39" y="888.485" width="128" height="128">
    <properties>
-    <property name="components" value="friendly"/>
+    <property name="components" value="friendly,drak"/>
     <property name="flip-x" type="bool" value="false"/>
     <property name="pocket-pool" value="dm-generic"/>
     <property name="quest" value="boat-unlocked"/>

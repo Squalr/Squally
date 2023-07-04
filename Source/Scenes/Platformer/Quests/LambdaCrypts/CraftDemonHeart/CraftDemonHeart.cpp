@@ -39,6 +39,7 @@
 #include "Scenes/Platformer/Level/Physics/PlatformerPhysicsTypes.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
+#include "Scenes/Platformer/Quests/LambdaCrypts/CraftDemonHeart/OpenDemonPortal.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/FXResources.h"
@@ -72,25 +73,8 @@ void CraftDemonHeart::onLoad(QuestState questState)
 	ObjectEvents::WatchForObject<Drak>(this, [=](Drak* drak)
 	{
 		this->drak = drak;
-
-		this->drak->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
-		{
-			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
-				Strings::Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_A_CraftDemonHeart::create()
-					->setStringReplacementVariables({ Strings::Items_Misc_Keys_DemonHeart::create(), Strings::Platformer_MapNames_LambdaCrypts_LambdaCrypts::create(), Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_KingZul::create() }),
-				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Bottom,
-					DialogueBox::DialogueAlignment::Right,
-					DialogueEvents::BuildPreviewNode(&this->squally, false),
-					DialogueEvents::BuildPreviewNode(&this->drak, true)
-				),
-				[=]()
-				{
-				},
-				Voices::GetNextVoiceLong(),
-				true
-			));
-		});
+		
+		this->setDrakText();
 	}, Drak::MapKey);
 
 	ObjectEvents::WatchForObject<Guano>(this, [=](Guano* guano)
@@ -136,9 +120,78 @@ void CraftDemonHeart::onActivate(bool isActiveThroughSkippable, bool isInitialAc
 void CraftDemonHeart::onComplete()
 {
 	Objectives::SetCurrentObjective(ObjectiveKeys::LCOpenDemonPortal);
+
+	this->setDrakText();
 }
 
 void CraftDemonHeart::onSkipped()
 {
 	this->removeAllListeners();
+}
+
+void CraftDemonHeart::setDrakText()
+{
+	if (this->drak == nullptr)
+	{
+		return;
+	}
+
+	this->drak->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+	{
+		interactionBehavior->clearPretext();
+
+		if (this->questLine->isCompleteUpToInclusive(OpenDemonPortal::MapKeyQuest))
+		{
+			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_C_HopIn::create(),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Right,
+					DialogueEvents::BuildPreviewNode(&this->squally, false),
+					DialogueEvents::BuildPreviewNode(&this->drak, true)
+				),
+				[=]()
+				{
+				},
+				Voices::GetNextVoiceLong(),
+				true
+			));
+		}
+		else if (this->getQuestState() == QuestState::Complete)
+		{
+			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_B_DemonHeartCrafted::create()
+					->setStringReplacementVariables(Strings::Items_Misc_Keys_DemonHeart::create()),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Right,
+					DialogueEvents::BuildPreviewNode(&this->squally, false),
+					DialogueEvents::BuildPreviewNode(&this->drak, true)
+				),
+				[=]()
+				{
+				},
+				Voices::GetNextVoiceLong(),
+				true
+			));
+		}
+		else
+		{
+			interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+				Strings::Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_A_CraftDemonHeart::create()
+					->setStringReplacementVariables({ Strings::Items_Misc_Keys_DemonHeart::create(), Strings::Platformer_MapNames_LambdaCrypts_LambdaCrypts::create(), Strings::Platformer_Entities_Names_Enemies_LambdaCrypts_KingZul::create() }),
+				DialogueEvents::DialogueVisualArgs(
+					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueAlignment::Right,
+					DialogueEvents::BuildPreviewNode(&this->squally, false),
+					DialogueEvents::BuildPreviewNode(&this->drak, true)
+				),
+				[=]()
+				{
+				},
+				Voices::GetNextVoiceLong(),
+				true
+			));
+		}
+	});
 }

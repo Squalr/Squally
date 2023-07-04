@@ -99,8 +99,7 @@ DeveloperScene::DeveloperScene()
 		- ** LC Daze script too long
 		- v LC blue gem map feels empty. Traps?
 		--------------
-		- ** Final crack art is ass
-		- + FF Maybe update Drak text upon crafting demon heart
+		- ** FF Final crack art is ass
 		--------------
 		* BP
 			- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)

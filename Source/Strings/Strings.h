@@ -37929,6 +37929,51 @@ namespace Strings
 		virtual ~Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_A_CraftDemonHeart() = default;
 	};
 
+	class Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_B_DemonHeartCrafted : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_B_DemonHeartCrafted();
+		virtual ~Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_B_DemonHeartCrafted() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_C_HopIn : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_C_HopIn();
+		virtual ~Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_C_HopIn() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_S_Return : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_S_Return();
+		virtual ~Platformer_Quests_LambdaCrypts_CraftDemonHeart_Drak_S_Return() = default;
+	};
+
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_A_Bitten : public LocalizedString
 	{
 	public:

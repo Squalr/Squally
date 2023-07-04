@@ -28,6 +28,8 @@ protected:
 private:
 	typedef QuestTask super;
 
+	void setDrakText();
+
 	Drak* drak = nullptr;
 	Gecky* gecky = nullptr;
 	Guano* guano = nullptr;

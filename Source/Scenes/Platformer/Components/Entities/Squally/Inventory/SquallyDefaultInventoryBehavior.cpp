@@ -90,6 +90,9 @@ void SquallyDefaultInventoryBehavior::giveDefaultItems()
 			entityInventoryBehavior->getInventory()->forceInsert(TigersBane::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(WarlocksHeaddress::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(RoyalCrown::create(), false);
+			
+			entityInventoryBehavior->getInventory()->forceInsert(HeartOfFire::create(), false);
+			entityInventoryBehavior->getInventory()->forceInsert(HeartOfShadow::create(), false);
 
 			entityInventoryBehavior->getInventory()->forceInsert(SuperiorManaFlask::create(), false);
 			entityInventoryBehavior->getInventory()->forceInsert(IncrementManaFlask::create(), false);
