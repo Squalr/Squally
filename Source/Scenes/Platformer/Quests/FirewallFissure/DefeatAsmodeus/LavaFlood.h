@@ -34,4 +34,6 @@ private:
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;
 	Asmodeus* asmodeus = nullptr;
+
+	static const float LavaDeltaY;
 };

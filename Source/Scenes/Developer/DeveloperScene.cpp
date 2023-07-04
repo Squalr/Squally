@@ -100,7 +100,6 @@ DeveloperScene::DeveloperScene()
 		- v LC blue gem map feels empty. Traps?
 		--------------
 		- ** Final crack art is ass
-		- + FF Should show drowned corpses in lava instead of despawn
 		- + FF Maybe update Drak text upon crafting demon heart
 		--------------
 		* BP

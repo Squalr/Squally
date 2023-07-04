@@ -94,6 +94,7 @@
   </properties>
   <object id="1048" name="obsidean" type="terrain" x="2249.86" y="2012.75" width="164.273" height="142.5">
    <properties>
+    <property name="collision" value="none"/>
     <property name="tag" value="revealed-platform"/>
    </properties>
   </object>
@@ -136,6 +137,7 @@
   </properties>
   <object id="1047" name="obsidean" type="terrain" x="2226.53" y="2038.75" width="164.273" height="142.5">
    <properties>
+    <property name="collision" value="none"/>
     <property name="tag" value="revealed-platform"/>
    </properties>
   </object>
@@ -183,6 +185,7 @@
   </object>
   <object id="1046" name="obsidean" type="terrain" x="2182.53" y="2076.08" width="164.273" height="142.5">
    <properties>
+    <property name="collision" value="none"/>
     <property name="tag" value="revealed-platform"/>
    </properties>
   </object>
@@ -384,6 +387,7 @@
   </object>
   <object id="1044" name="obsidean" type="terrain" x="2147.86" y="2098.08" width="164.273" height="142.5">
    <properties>
+    <property name="collision" value="none"/>
     <property name="tag" value="revealed-platform"/>
    </properties>
   </object>
@@ -498,6 +502,7 @@
   </properties>
   <object id="1043" name="obsidean" type="terrain" x="2101.86" y="2111.42" width="164.273" height="142.5">
    <properties>
+    <property name="collision" value="none"/>
     <property name="tag" value="revealed-platform"/>
    </properties>
   </object>
@@ -536,6 +541,7 @@
   </properties>
   <object id="1042" name="obsidean" type="terrain" x="2030.53" y="2127.42" width="164.273" height="142.5">
    <properties>
+    <property name="collision" value="none"/>
     <property name="tag" value="revealed-platform"/>
    </properties>
   </object>
@@ -568,6 +574,7 @@
   </properties>
   <object id="1041" name="obsidean" type="terrain" x="1937.86" y="2146.75" width="164.273" height="142.5">
    <properties>
+    <property name="collision" value="none"/>
     <property name="tag" value="revealed-platform"/>
    </properties>
   </object>
@@ -606,6 +613,7 @@
   </properties>
   <object id="1040" name="obsidean" type="terrain" x="1835.86" y="2158.75" width="164.273" height="142.5">
    <properties>
+    <property name="collision" value="none"/>
     <property name="tag" value="revealed-platform"/>
    </properties>
   </object>
@@ -1020,7 +1028,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="146" name="decor -8 bg" visible="0">
+ <objectgroup id="146" name="decor -8 bg">
   <properties>
    <property name="depth" type="float" value="-512"/>
    <property name="type" value="objects"/>

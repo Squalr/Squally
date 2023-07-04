@@ -8,6 +8,7 @@
 #include "cocos/base/CCEventListenerCustom.h"
 #include "cocos/base/CCValue.h"
 
+#include "Engine/Animations/SmartAnimationNode.h"
 #include "Engine/Camera/GameCamera.h"
 #include "Engine/Events/ObjectEvents.h"
 #include "Engine/Terrain/TerrainObject.h"
@@ -23,6 +24,7 @@
 #include "Objects/Platformer/Interactables/Computer/Computer.h"
 #include "Objects/Platformer/Liquids/Lava.h"
 #include "Objects/Platformer/Decor/LavaFall.h"
+#include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -33,6 +35,7 @@ using namespace cocos2d;
 
 const std::string LavaFlood::MapKeyQuest = "lava-flood";
 const std::string LavaFlood::MapEventLavaFlooded = "lava-flooded";
+const float LavaFlood::LavaDeltaY = 144.0f;
 
 LavaFlood* LavaFlood::create(GameObject* owner, QuestLine* questLine)
 {
@@ -104,7 +107,7 @@ void LavaFlood::applyLavaFlood(bool isFlooded, bool animate)
 	if (isFlooded)
 	{
 		float duration = animate ? 2.0f : 0.0f;
-		Vec2 delta = Vec2(0.0f, 144.0f);
+		Vec2 delta = Vec2(0.0f, LavaFlood::LavaDeltaY);
 
 		ObjectEvents::QueryObjects<Lava>([=](Lava* lava)
 		{
@@ -118,7 +121,11 @@ void LavaFlood::applyLavaFlood(bool isFlooded, bool animate)
 
 		ObjectEvents::QueryObjects<PlatformerEnemy>([=](PlatformerEnemy* platformerEnemy)
 		{
-			platformerEnemy->despawn();
+			platformerEnemy->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
+			{
+				healthBehavior->kill(false);
+			});
+			platformerEnemy->getAnimations()->setPositionY(platformerEnemy->getAnimations()->getPositionY() + LavaFlood::LavaDeltaY - 64.0f);
 		}, "lava-killable");
 
 		ObjectEvents::QueryObjects<Asmodeus>([=](Asmodeus* asmodeus)
