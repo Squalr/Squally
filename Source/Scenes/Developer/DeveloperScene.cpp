@@ -98,8 +98,10 @@ DeveloperScene::DeveloperScene()
 		- ** LC cursed blade tl;dr
 		- ** LC Daze script too long
 		- v LC blue gem map feels empty. Traps?
+		- v Make LC final 4_x maps less bad.
 		--------------
 		- ** FF Final crack art is ass
+		- v Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
 		--------------
 		* BP
 			- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
@@ -127,40 +129,40 @@ DeveloperScene::DeveloperScene()
 		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
 	
 	- General:
+		- v Maybe some storyline for introducing powers
+			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
+		- v Missing squally breath bubbles
 		- v Missing way to obtain hats (craftable for UR+?)
+		- v No interrupt if damage attack modified to heal
+		- v Maybe bubble can do additional +4 mp over 4 ticks
 		- v Jitter standing in place
 		- v quick swap FX
 		- v quick warp FX
+		- v Fix terrain connectors for Frost
+		- v Fix terrain connectors for Scifi (edges color)
 		- v should warn not enough money when buying something cant afford
 		- v Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
-		- v Fix terrain connectors for Frost
-		- v Fix terrain connectors for Scifi (edges color)
 		- v Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
 		- v Potion SFX should not be paused on potion menu
-		- v Maybe bubble can do additional +4 mp over 4 ticks
 		- v More transmutes (perhaps custom UI to show a transmute wheel)
-		- v More passes on music. Probably need more overworld. Far and Away / Sunset once I get access.
-		- v Wontfix? Missing Shadow ability: Overworld Stealth [similar to swim], could be used to enter further into 2nd crypt)
-		- v Maybe some storyline for introducing powers
-			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
-		- v Should add some sort of archery mini-game with jump shots or something in some town. Maybe DH.
-		- v Shine FX is great and should be used
-		- v Make LC final 4_x maps less bad.
+		- v Shine FX is great and should be used (Elaborate, context missing...)
 		- v Camera harsh leaving camera targets (see FF cinematic)
-		- v No interrupt if damage attack modified to heal
+		- v (Maybe) Chapter transitions can be more special 
 		- v Crash reports probably are broken (switch to new SendGrid)
-		- v Missing squally breath bubbles
+		- v Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
+			- v Tiki anims still broken (bad Spriter implementation strikes again)
+			- v Train anims broken (for same reason)
+	
+	- Large asset updates:
 		- v Enemy anims for getting hit
 		- v Enemy death sounds
 		- v Enemy anims for combat begin (temporarily pausing timeline)
 		- v Enemy combat begin sounds
-		- v Chapter transitions can be more special 
-		- v Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
-			- v Tiki anims still broken (bad Spriter implementation strikes again)
-			- v Train anims broken (for same reason)
-		- Shitty SFX
+		- v SFX pass
 			- v All defend variants
+		- v Unique icons for all spells
+		- v More passes on music. Probably need more overworld. Far and Away / Sunset once I get access.
 	
 	- Mini-Games:
 		- Hexus:
