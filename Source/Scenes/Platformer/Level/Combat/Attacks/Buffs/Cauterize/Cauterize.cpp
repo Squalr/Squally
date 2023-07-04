@@ -55,8 +55,8 @@ Cauterize::Cauterize(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, UIResources::Menus_Icons_BookSpellsFire, AbilityType::Nature, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create();
-	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
-	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
+	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_SpellHit1);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_FireHitSoft1);
 	
 	this->healEffect->setAnimationAnchor(Vec2(0.5f, 0.0f));
 
@@ -162,7 +162,7 @@ void Cauterize::runCauterize()
 			{
 				if (!this->healEffect->isPlayingAnimation())
 				{
-					this->healEffect->playAnimation(FXResources::Restore_Restore_0000, 0.05f);
+					this->healEffect->playAnimation(FXResources::FireBurst_FireBurst_0000, 0.05f, true);
 				}
 				
 				this->runRestoreTick();

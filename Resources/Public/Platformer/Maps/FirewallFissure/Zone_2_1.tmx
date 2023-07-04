@@ -462,7 +462,7 @@
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="DataMines/Combat_Caves"/>
-    <property name="battle-tag" value="group-a"/>
+    <property name="battle-tag" value="group-b"/>
     <property name="components" value="enemy,soul,agro,z-fade"/>
     <property name="drop-pool" value="ff-generic"/>
    </properties>
@@ -470,7 +470,7 @@
   <object id="1978" name="demon-dragon" type="entity" x="3782.97" y="1831.69" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
+    <property name="battle-tag" value="group-b"/>
     <property name="components" value="ally"/>
    </properties>
   </object>

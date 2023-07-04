@@ -55,6 +55,9 @@ FireRain* FireRain::create(PlatformerEntity* caster, PlatformerEntity* target)
 
 FireRain::FireRain(PlatformerEntity* caster, PlatformerEntity* target) : super(caster, target, true)
 {
+	this->impactSfxA = WorldSound::create(SoundResources::Platformer_Spells_FireArrow1);
+	this->impactSfxB = WorldSound::create(SoundResources::Platformer_Spells_FireArrow1);
+
 	for (int index = 0; index < 8; index++)
 	{
 		ValueMap valueMap;
@@ -65,6 +68,9 @@ FireRain::FireRain(PlatformerEntity* caster, PlatformerEntity* target) : super(c
 
 		this->addChild(meteor);
 	}
+
+	this->addChild(this->impactSfxA);
+	this->addChild(this->impactSfxB);
 }
 
 FireRain::~FireRain()
@@ -170,8 +176,6 @@ void FireRain::runFireRain()
 
 		icon->setScale(0.5f);
 
-		this->meteorPool[index]->playAnimation(FXResources::FireBomb_FireBomb_0000, 0.05f, true);
-
 		timelineEvents.push_back(TimelineEvent::create(
 				this->caster,
 				icon,
@@ -239,6 +243,19 @@ void FireRain::damageOtherTeam()
 				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, next->getEntity(), std::abs(FireRain::Damage), AbilityType::Passive, true));
 			}
 		}
+
+		static bool Alternate = false;
+
+		if (Alternate)
+		{
+			this->impactSfxA->play();
+		}
+		else
+		{
+			this->impactSfxB->play();
+		}
+
+		Alternate = !Alternate;
 	}));
 }
 

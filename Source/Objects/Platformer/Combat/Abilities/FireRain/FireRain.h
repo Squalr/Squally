@@ -40,6 +40,8 @@ private:
 
 	std::vector<SmartAnimationSequenceNode*> meteorPool;
 	std::vector<float> meteorCooldowns;
+	WorldSound* impactSfxA = nullptr;
+	WorldSound* impactSfxB = nullptr;
 
 	static const std::string StateKeyIsCasterOnEnemyTeam;
 };

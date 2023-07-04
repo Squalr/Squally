@@ -630,6 +630,7 @@ const std::string ObjectResources::Transportation_Airship2_sand_bag = "Private/P
 const std::string ObjectResources::Transportation_Airship2_upper_deck = "Private/Platformer/Objects/Transportation/Airship2/upper_deck.png";
 const std::string ObjectResources::Transportation_Ship_Animations = "Private/Platformer/Objects/Transportation/Ship/Animations.scml";
 const std::string ObjectResources::Transportation_Ship_Hull = "Private/Platformer/Objects/Transportation/Ship/Hull.png";
+const std::string ObjectResources::Transportation_Ship_Ladder = "Private/Platformer/Objects/Transportation/Ship/Ladder.png";
 const std::string ObjectResources::Transportation_Ship_Mast1 = "Private/Platformer/Objects/Transportation/Ship/Mast1.png";
 const std::string ObjectResources::Transportation_Ship_Mast2 = "Private/Platformer/Objects/Transportation/Ship/Mast2.png";
 const std::string ObjectResources::Transportation_Ship_Rope1 = "Private/Platformer/Objects/Transportation/Ship/Rope1.png";

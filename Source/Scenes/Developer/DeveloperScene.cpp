@@ -74,10 +74,10 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- 5x EE:
-		- * Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
-		- * Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
-		- * Perilous Sea (tri m/l/r)	=> The Golden Eagle (Special: Higher Jump)
-		- * Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
+		- + Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
+		- + Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
+		- + Perilous Sea (tri m/l/r)	=> The Golden Eagle (Special: Higher Jump)
+		- + Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Maps:
@@ -90,7 +90,7 @@ DeveloperScene::DeveloperScene()
 		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		--------------
 		- ** CV rabies is tl;dr
-		- + CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
+		- v CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
 		- v CV secret tunnel feels unfinished
 		--------------
 		- ** LC poisoned arrows are tl;dr
@@ -100,9 +100,6 @@ DeveloperScene::DeveloperScene()
 		- v LC blue gem map feels empty. Traps?
 		--------------
 		- ** Final crack art is ass
-		- + FF cauterize should use a flame animation of sorts
-		- + FF enflame should use a flame animation of sorts. Also position is wrong
-		- + FF fire rain needs SFX
 		- + FF Should show drowned corpses in lava instead of despawn
 		- + FF first girl friendly text
 		- + FF Maybe update Drak text upon crafting demon heart

@@ -631,6 +631,7 @@ namespace ObjectResources
 	extern const std::string Transportation_Airship2_upper_deck;
 	extern const std::string Transportation_Ship_Animations;
 	extern const std::string Transportation_Ship_Hull;
+	extern const std::string Transportation_Ship_Ladder;
 	extern const std::string Transportation_Ship_Mast1;
 	extern const std::string Transportation_Ship_Mast2;
 	extern const std::string Transportation_Ship_Rope1;

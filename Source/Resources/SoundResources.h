@@ -364,14 +364,14 @@ namespace SoundResources
 	extern const std::string Platformer_Spells_ElectricZap1;
 	extern const std::string Platformer_Spells_FireArrow1;
 	extern const std::string Platformer_Spells_FireHit1;
+	extern const std::string Platformer_Spells_FireHit2;
 	extern const std::string Platformer_Spells_FireHit3;
 	extern const std::string Platformer_Spells_FireHit4;
 	extern const std::string Platformer_Spells_FireHit5;
 	extern const std::string Platformer_Spells_FireHit6;
 	extern const std::string Platformer_Spells_FireHit7;
-	extern const std::string Platformer_Spells_FireHit8;
-	extern const std::string Platformer_Spells_FireHitShoft2;
 	extern const std::string Platformer_Spells_FireHitSoft1;
+	extern const std::string Platformer_Spells_FireHitSoft2;
 	extern const std::string Platformer_Spells_Fireball1;
 	extern const std::string Platformer_Spells_Fireball2;
 	extern const std::string Platformer_Spells_Heal1;

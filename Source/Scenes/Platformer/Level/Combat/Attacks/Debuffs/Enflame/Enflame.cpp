@@ -51,12 +51,12 @@ Enflame* Enflame::create(PlatformerEntity* caster, PlatformerEntity* target)
 }
 
 Enflame::Enflame(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Fire, AbilityType::Shadow, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_Fire, AbilityType::Fire, BuffData())
 {
-	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
+	this->healEffect = SmartAnimationSequenceNode::create();
 	this->healAmount = Enflame::DamageAmount;
-	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
-	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Ding1);
+	this->impactSound = WorldSound::create(SoundResources::Platformer_Spells_SpellHit2);
+	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_FireHitSoft2);
 
 	this->addChild(this->healEffect);
 	this->addChild(this->impactSound);
@@ -159,7 +159,7 @@ void Enflame::runEnflame()
 			{
 				if (!this->healEffect->isPlayingAnimation())
 				{
-					this->healEffect->playAnimation(FXResources::Heal_Heal_0000, 0.05f);
+					this->healEffect->playAnimation(FXResources::FireSummon_FireSummon_0000, 0.05f, true);
 				}
 				
 				this->runEnflameTick();
