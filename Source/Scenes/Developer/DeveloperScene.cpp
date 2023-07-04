@@ -101,7 +101,6 @@ DeveloperScene::DeveloperScene()
 		--------------
 		- ** Final crack art is ass
 		- + FF Should show drowned corpses in lava instead of despawn
-		- + FF first girl friendly text
 		- + FF Maybe update Drak text upon crafting demon heart
 		--------------
 		* BP

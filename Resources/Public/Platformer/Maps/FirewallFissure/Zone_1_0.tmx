@@ -422,7 +422,10 @@
   <object id="965" name="ash" type="entity" x="6954.18" y="2208.73" width="128" height="128">
    <properties>
     <property name="components" value="friendly,ff-t1-hexus,pick-pocket"/>
+    <property name="flip-x" type="bool" value="true"/>
     <property name="pocket-pool" value="ff-generic"/>
+    <property name="quest" value="welcome-to-ff"/>
+    <property name="quest-line" value="release-pressure"/>
    </properties>
   </object>
  </objectgroup>
@@ -634,7 +637,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="117" name="player_layer-13">
+ <objectgroup id="117" name="player_layer-13" visible="0">
   <properties>
    <property name="depth" type="float" value="-832"/>
    <property name="is-hackable" type="bool" value="true"/>

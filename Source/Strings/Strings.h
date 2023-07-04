@@ -37584,6 +37584,66 @@ namespace Strings
 		virtual ~Platformer_Quests_EndianForest_WaterSpellbook_Merlin_D_UseYourPowers() = default;
 	};
 
+	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_Ash_A_WhatAreYouDoingHere : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_DefeatAsmodeus_Ash_A_WhatAreYouDoingHere();
+		virtual ~Platformer_Quests_FirewallFissure_DefeatAsmodeus_Ash_A_WhatAreYouDoingHere() = default;
+	};
+
+	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_Ash_B_FirewallFissure : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_DefeatAsmodeus_Ash_B_FirewallFissure();
+		virtual ~Platformer_Quests_FirewallFissure_DefeatAsmodeus_Ash_B_FirewallFissure() = default;
+	};
+
+	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_Ash_C_TownToLeft : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_DefeatAsmodeus_Ash_C_TownToLeft();
+		virtual ~Platformer_Quests_FirewallFissure_DefeatAsmodeus_Ash_C_TownToLeft() = default;
+	};
+
+	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_Ash_S_StudyPortal : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_FirewallFissure_DefeatAsmodeus_Ash_S_StudyPortal();
+		virtual ~Platformer_Quests_FirewallFissure_DefeatAsmodeus_Ash_S_StudyPortal() = default;
+	};
+
 	class Platformer_Quests_FirewallFissure_DefeatAsmodeus_Asmodeus_A_Burn : public LocalizedString
 	{
 	public:
