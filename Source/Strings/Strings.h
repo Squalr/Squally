@@ -35184,6 +35184,51 @@ namespace Strings
 		virtual ~Platformer_Quests_CastleValgrind_CureKing_Mabel_Y_Perhaps() = default;
 	};
 
+	class Platformer_Quests_CastleValgrind_CureKing_Tyracius_A_WhatAreYouDoingHere : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Tyracius_A_WhatAreYouDoingHere();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Tyracius_A_WhatAreYouDoingHere() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Tyracius_B_Coward : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Tyracius_B_Coward();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Tyracius_B_Coward() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Tyracius_S_StayHidden : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Tyracius_S_StayHidden();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Tyracius_S_StayHidden() = default;
+	};
+
 	class Platformer_Quests_CastleValgrind_CureKing_Zana_A_WhatIsThisPlace : public LocalizedString
 	{
 	public:

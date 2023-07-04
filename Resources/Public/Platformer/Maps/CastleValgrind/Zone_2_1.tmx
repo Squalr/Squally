@@ -360,8 +360,8 @@
    <properties>
     <property name="components" value="cv-t6-hexus,friendly,pacing,pick-pocket"/>
     <property name="pocket-pool" value="cv-generic"/>
-    <property name="quest" value=""/>
-    <property name="quest-line" value=""/>
+    <property name="quest" value="outside-throne-room"/>
+    <property name="quest-line" value="cure-king"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
   </object>

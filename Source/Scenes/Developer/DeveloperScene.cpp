@@ -90,9 +90,8 @@ DeveloperScene::DeveloperScene()
 		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		--------------
 		- ** CV rabies is tl;dr
+		- + CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
 		- v CV secret tunnel feels unfinished
-		- v CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
-		- v CV friendly text on atrius (err no, whoever is in tunnel)
 		--------------
 		- ** LC poisoned arrows are tl;dr
 		- ** LC unholy blade tl;dr
@@ -101,12 +100,12 @@ DeveloperScene::DeveloperScene()
 		- v LC blue gem map feels empty. Traps?
 		--------------
 		- ** Final crack art is ass
-		- v FF cauterize should use a flame animation of sorts
-		- v FF enflame should use a flame animation of sorts. Also position is wrong
-		- v FF fire rain needs SFX
-		- v FF Should show drowned corpses in lava instead of despawn
-		- v FF first girl friendly text
-		- v FF Maybe update Drak text upon crafting demon heart
+		- + FF cauterize should use a flame animation of sorts
+		- + FF enflame should use a flame animation of sorts. Also position is wrong
+		- + FF fire rain needs SFX
+		- + FF Should show drowned corpses in lava instead of despawn
+		- + FF first girl friendly text
+		- + FF Maybe update Drak text upon crafting demon heart
 		--------------
 		* BP
 			- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
@@ -120,8 +119,6 @@ DeveloperScene::DeveloperScene()
 			- * Needs enemy scripting according to notes on which instructions this zone covers
 			- * Frost SpellBook (?? / ??)
 			- BP, somewhere				=> Frost Axe
-		- Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
-		--------------
 		
 	- Localization / Scripting:
 		- + Lexicon is largely incomplete
@@ -141,6 +138,7 @@ DeveloperScene::DeveloperScene()
 		- v quick swap FX
 		- v quick warp FX
 		- v should warn not enough money when buying something cant afford
+		- v Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
 		- v Fix terrain connectors for Frost
 		- v Fix terrain connectors for Scifi (edges color)
