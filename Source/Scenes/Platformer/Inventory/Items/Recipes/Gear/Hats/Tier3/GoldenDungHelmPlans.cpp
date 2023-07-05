@@ -38,7 +38,7 @@ std::vector<std::tuple<Item*, int>> GoldenDungHelmPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Gold::create(), 6 },
+		{ Gold::create(), 3 },
 	};
 }
 

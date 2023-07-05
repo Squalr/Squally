@@ -38,8 +38,9 @@ std::vector<std::tuple<Item*, int>> PriestHatPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Bone::create(), 2 },
+		{ GoldWeed::create(), 2 },
+		{ BlackMushroom::create(), 3 },
 	};
 }
 

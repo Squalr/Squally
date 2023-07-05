@@ -22,6 +22,10 @@ AlchemyPoolFF::AlchemyPoolFF(ValueMap& properties) : super(properties, AlchemyPo
 {
 	// Allows for stability in item ordering
 	this->toggleDisableShuffle(true);
+	
+	this->addItemToPool(ItemChance::create(BarbedHelmPlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(SnailShellSpikedPlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(WizardsHatShadowPlans::create(), ItemChance::Probability::Guaranteed));
 
 	// Potions
 	this->addItemToPool(ItemChance::create(SuperiorHealthFlaskRecipe::create(), ItemChance::Probability::Guaranteed));

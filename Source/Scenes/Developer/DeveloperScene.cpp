@@ -81,27 +81,27 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Maps:
-		- v EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- v Bard floating in EF portal
+		- vv EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- vv Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		--------------
 		- v UR cistern Chest + Puzzle + Animal is overwhelming and lazy
 		- v UR sky's reach color balance
-		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
+		- vv UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		--------------
 		- ** CV rabies is tl;dr
 		- v CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
-		- v CV secret tunnel feels unfinished
+		- vv CV secret tunnel feels unfinished
 		--------------
 		- ** LC poisoned arrows are tl;dr
 		- ** LC unholy blade tl;dr
 		- ** LC cursed blade tl;dr
 		- ** LC Daze script too long
-		- v LC blue gem map feels empty. Traps?
-		- v Make LC final 4_x maps less bad.
+		- vv LC blue gem map feels empty. Traps?
+		- vv Make LC final 4_x maps less bad.
 		--------------
 		- ** FF Final crack art is ass
-		- v Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
+		- vv Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
 		--------------
 		* BP
 			- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
@@ -132,7 +132,6 @@ DeveloperScene::DeveloperScene()
 		- v Maybe some storyline for introducing powers
 			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
 		- v Missing squally breath bubbles
-		- v Missing way to obtain hats (craftable for UR+?)
 		- v No interrupt if damage attack modified to heal
 		- v Maybe bubble can do additional +4 mp over 4 ticks
 		- v Jitter standing in place

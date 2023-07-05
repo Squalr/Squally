@@ -241,6 +241,7 @@ void ItemPreview::setGenericStatline(Equipable* equipable)
 
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Armor::create(); }, itemStats.armorBonus);
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Attack::create(); }, itemStats.attackBonus);
+	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_MagicAttack::create(); }, itemStats.magicAttackBonus);
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Health::create(); }, itemStats.healthBonus);
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Mana::create(); }, itemStats.manaBonus);
 	this->bindStatlineToNonZeroFloat([](){ return Strings::Menus_ItemPreview_Speed::create(); }, itemStats.speedBonus);
@@ -253,6 +254,7 @@ void ItemPreview::setWeaponStatline(Weapon* weapon)
 	this->bindStatlineToIntRange([](){ return Strings::Menus_ItemPreview_Damage::create(); }, weapon->getMinAttack(), weapon->getMaxAttack());
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Armor::create(); }, itemStats.armorBonus);
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Attack::create(); }, itemStats.attackBonus);
+	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_MagicAttack::create(); }, itemStats.magicAttackBonus);
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Health::create(); }, itemStats.healthBonus);
 	this->bindStatlineToNonZeroInt([](){ return Strings::Menus_ItemPreview_Mana::create(); }, itemStats.manaBonus);
 	this->bindStatlineToNonZeroFloat([](){ return Strings::Menus_ItemPreview_Speed::create(); }, itemStats.speedBonus);

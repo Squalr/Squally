@@ -38,8 +38,8 @@ std::vector<std::tuple<Item*, int>> ConchHelmPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Gold::create(), 2 },
+		{ StrongChitin::create(), 2 },
 	};
 }
 

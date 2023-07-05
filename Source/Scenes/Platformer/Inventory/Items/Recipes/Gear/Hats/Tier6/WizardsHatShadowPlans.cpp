@@ -38,8 +38,9 @@ std::vector<std::tuple<Item*, int>> WizardsHatShadowPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Sulfur::create(), 2 },
+		{ DemonRoot::create(), 2 },
+		{ BlackBlood::create(), 2 },
 	};
 }
 

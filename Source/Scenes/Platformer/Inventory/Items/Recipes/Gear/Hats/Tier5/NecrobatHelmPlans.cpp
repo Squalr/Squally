@@ -38,8 +38,9 @@ std::vector<std::tuple<Item*, int>> NecrobatHelmPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Bone::create(), 2 },
+		{ Stinger::create(), 2 },
+		{ Mandrake::create(), 1 },
 	};
 }
 

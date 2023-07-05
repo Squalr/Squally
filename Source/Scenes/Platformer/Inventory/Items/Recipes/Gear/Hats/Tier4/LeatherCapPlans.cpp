@@ -38,8 +38,8 @@ std::vector<std::tuple<Item*, int>> LeatherCapPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Mithril::create(), 2 },
+		{ RatTail::create(), 3 },
 	};
 }
 

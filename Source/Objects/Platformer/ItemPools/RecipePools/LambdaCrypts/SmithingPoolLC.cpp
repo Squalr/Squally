@@ -22,6 +22,10 @@ SmithingPoolLC::SmithingPoolLC(ValueMap& properties) : super(properties, Smithin
 {
 	// Allows for stability in item ordering
 	this->toggleDisableShuffle(true);
+
+	this->addItemToPool(ItemChance::create(NecrobatHelmPlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(PriestHatPlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(SteelHelmPlans::create(), ItemChance::Probability::Guaranteed));
 	
 	this->addItemToPool(ItemChance::create(BoneSwordPlans::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(BoneAxePlans::create(), ItemChance::Probability::Guaranteed));

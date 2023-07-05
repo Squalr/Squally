@@ -38,8 +38,10 @@ std::vector<std::tuple<Item*, int>> SantaHatPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Meteorite::create(), 2 },
+		{ FrostBerries::create(), 2 },
+		{ Snowball::create(), 1 },
+		{ PhoenixFeather::create(), 2 },
 	};
 }
 

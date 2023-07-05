@@ -38,8 +38,10 @@ std::vector<std::tuple<Item*, int>> SnailShellSpikedPlans::getReagentsInternal()
 {
 	return
 	{
-		{ Wood::create(), 2 },
-		{ Iron::create(), 4 },
+		{ Sulfur::create(), 2 },
+		{ Stinger::create(), 2 },
+		{ StrongChitin::create(), 1 },
+		{ WeakChitin::create(), 1 },
 	};
 }
 
