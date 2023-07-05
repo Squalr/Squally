@@ -169,7 +169,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="890" name="scifi" type="terrain" x="-101.574" y="1066.18" width="1994" height="234.06"/>
+  <object id="890" name="scifi" type="terrain" x="-101.574" y="1066.18" width="1994" height="549.212"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>

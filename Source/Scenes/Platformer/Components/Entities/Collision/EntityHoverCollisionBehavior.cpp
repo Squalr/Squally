@@ -174,9 +174,9 @@ void EntityHoverCollisionBehavior::rebuildHoverCrouchCollision()
 CSize EntityHoverCollisionBehavior::getHoverSize(float progress)
 {
 	static const float UpwardsPadding = 40.0f;
-	static const float CrouchLowPoint = this->entity->getHoverHeight() / 3.0f;
-	static const float MinCrouch =  CrouchLowPoint;
-	static const float MaxCrouch =  this->entity->getHoverHeight();
+	static const float CrouchLowPoint = 2.0f;
+	static const float MinCrouch = CrouchLowPoint;
+	static const float MaxCrouch = this->entity->getHoverHeight();
 
 	float crouchHeight = MinCrouch + (MaxCrouch - MinCrouch) * progress;
 
@@ -193,14 +193,12 @@ void EntityHoverCollisionBehavior::positionHoverCollision(float progress)
 		return;
 	}
 
-	// Upwards padding exists to help in collisions, as it will result in the "closest" points of a collision being near the bottom of the hover
-	static const float UpwardsPadding = 22.0f;
-	static const float CrouchLowPoint = this->entity->getHoverHeight() / 3.0f;
-	static const float MinCrouchGround =  -CrouchLowPoint + EntityGroundCollisionBehavior::GroundCollisionOffset - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
-	static const float MaxCrouchGround =  -this->entity->getHoverHeight() + EntityGroundCollisionBehavior::GroundCollisionOffset - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
+	static const float CrouchLowPoint = 2.0f;
+	static const float MinCrouchGround = -CrouchLowPoint + EntityGroundCollisionBehavior::GroundCollisionOffset - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
+	static const float MaxCrouchGround = -this->entity->getHoverHeight() + EntityGroundCollisionBehavior::GroundCollisionOffset - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
 
 	static const float OriginalHoverHeight = this->entity->getHoverHeight();
-	static const Vec2 Offset = Vec2(0.0f, -OriginalHoverHeight / 2.0f + UpwardsPadding);
+	static const Vec2 Offset = Vec2(0.0f, -OriginalHoverHeight / 2.0f);
 
 	const CSize hoverSize = this->getHoverSize(progress);
 	const float hoverDelta = OriginalHoverHeight - hoverSize.height;
@@ -253,11 +251,6 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 			|| this->entityCollision->movementCollision == nullptr
 			|| this->groundCollision->getGroundCollision() == nullptr
 			|| this->entity->controlState == PlatformerEntity::ControlState::Swimming)
-		{
-			return CollisionResult::DoNothing;
-		}
-
-		if (this->groundCollision->isStandingOnSomethingOtherThan(collisionData.other))
 		{
 			return CollisionResult::DoNothing;
 		}

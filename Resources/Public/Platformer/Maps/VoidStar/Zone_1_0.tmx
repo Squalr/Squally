@@ -77,7 +77,11 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="923" name="scifi" type="terrain" x="-296.392" y="982.97" width="5642.78" height="234.06"/>
+  <object id="923" name="scifi" type="terrain" x="-296.392" y="982.97" width="5642.78" height="234.06">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="119" name="objects -4">
   <properties>
@@ -217,7 +221,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="890" name="scifi" type="terrain" x="-96.9682" y="1066.18" width="5269.39" height="234.06"/>
+  <object id="890" name="scifi" type="terrain" x="-96.9682" y="1066.18" width="5269.39" height="564.363"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>

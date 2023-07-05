@@ -55,7 +55,11 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="923" name="scifi" type="terrain" x="-316.15" y="982.97" width="5918.54" height="234.06"/>
+  <object id="923" name="scifi" type="terrain" x="-316.15" y="982.97" width="5918.54" height="234.06">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="119" name="objects -4">
   <properties>
@@ -74,7 +78,11 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="922" name="scifi" type="terrain" x="-267.846" y="998.97" width="5832.24" height="234.06"/>
+  <object id="922" name="scifi" type="terrain" x="-267.846" y="998.97" width="5832.24" height="234.06">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="117" name="objects -3">
   <properties>
@@ -102,7 +110,11 @@
    <property name="depth" type="float" value="-128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="921" name="scifi" type="terrain" x="-228.816" y="1022.3" width="5752.54" height="234.06"/>
+  <object id="921" name="scifi" type="terrain" x="-228.816" y="1022.3" width="5752.54" height="234.06">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="118" name="objects -2">
   <properties>
@@ -160,7 +172,11 @@
    <property name="depth" type="float" value="-64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="905" name="scifi" type="terrain" x="-167.361" y="1038.97" width="5652.36" height="234.06"/>
+  <object id="905" name="scifi" type="terrain" x="-167.361" y="1038.97" width="5652.36" height="234.06">
+   <properties>
+    <property name="collision" value="none"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="114" name="decor -1 mg bg">
   <properties>
@@ -215,7 +231,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="890" name="scifi" type="terrain" x="-101.574" y="1066.18" width="5530" height="234.06"/>
+  <object id="890" name="scifi" type="terrain" x="-101.574" y="1066.18" width="5530" height="674.06"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
