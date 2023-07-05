@@ -4,7 +4,6 @@
 #include "Scenes/Platformer/Components/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityHeadCollisionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityHoverCollisionBehavior.h"
-#include "Scenes/Platformer/Components/Entities/Collision/EntityJumpCollisionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityWeaponCollisionBehavior.h"
 
 using namespace cocos2d;
@@ -23,7 +22,6 @@ EntityCollisionBehaviorGroup* EntityCollisionBehaviorGroup::create(GameObject* o
 EntityCollisionBehaviorGroup::EntityCollisionBehaviorGroup(GameObject* owner) : super(owner, {
 	EntityGroundCollisionBehavior::create(owner),
 	EntityHeadCollisionBehavior::create(owner),
-	EntityJumpCollisionBehavior::create(owner),
 	EntityHoverCollisionBehavior::create(owner),
 	})
 {

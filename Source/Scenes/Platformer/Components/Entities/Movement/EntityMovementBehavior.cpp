@@ -11,7 +11,6 @@
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
-#include "Scenes/Platformer/Components/Entities/Collision/EntityJumpCollisionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityGroundCollisionBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Collision/EntityCollisionBehaviorBase.h"
 #include "Scenes/Platformer/State/StateKeys.h"
@@ -96,11 +95,6 @@ void EntityMovementBehavior::onLoad()
 		this->groundCollision = groundCollision;
 	});
 
-	this->entity->watchForComponent<EntityJumpCollisionBehavior>([=](EntityJumpCollisionBehavior* jumpBehavior)
-	{
-		this->jumpBehavior = jumpBehavior;
-	});
-
 	this->scheduleUpdate();
 }
 
@@ -152,7 +146,7 @@ void EntityMovementBehavior::update(float dt)
 
 	Vec2 velocity = this->getVelocity();
 
-	bool canJump = this->jumpBehavior == nullptr ? false : this->jumpBehavior->canJump();
+	bool canJump = this->groundCollision != nullptr && this->groundCollision->isOnGround();
 	PlatformerEntity::ControlState controlState = this->entity->getControlState();
 
 	switch (controlState)

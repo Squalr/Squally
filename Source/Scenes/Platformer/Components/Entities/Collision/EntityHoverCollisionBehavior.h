@@ -5,7 +5,6 @@
 class CollisionObject;
 class EntityCollisionBehaviorBase;
 class EntityGroundCollisionBehavior;
-class EntityJumpCollisionBehavior;
 class PlatformerEntity;
 
 class EntityHoverCollisionBehavior : public GameComponent
@@ -32,17 +31,13 @@ private:
 	cocos2d::CSize getHoverSize(float progress = 1.0f);
 	void positionHoverCollision(float progress = 1.0f);
 
-	void buildHoverAntiGravityCollision();
 	void buildHoverCollision();
 
 	float crouchProgress = 0.0f;
 
 	PlatformerEntity* entity = nullptr;
 	CollisionObject* hoverCollision = nullptr;
-	CollisionObject* hoverAntiGravityCollisionDetector = nullptr;
-	CollisionObject* hoverAntiGravityTopCollisionDetector = nullptr;
 
 	EntityCollisionBehaviorBase* entityCollision = nullptr;
 	EntityGroundCollisionBehavior* groundCollision = nullptr;
-	EntityJumpCollisionBehavior* jumpCollision = nullptr;
 };

@@ -48,23 +48,22 @@ enum class PlatformerCollisionType
 	EnemyWeapon			= 1 << 10,
 	// Entity augmentation
 	GroundDetector		= 1 << 11,
-	JumpDetector		= 1 << 12,
-	HeadDetector		= 1 << 13,
-	WallDetector		= 1 << 14,
-	Hover				= 1 << 15,
-	Force				= 1 << 16,
+	HeadDetector		= 1 << 12,
+	WallDetector		= 1 << 13,
+	Hover				= 1 << 14,
+	Force				= 1 << 15,
 	// Triggers & Walls
-	Trigger				= 1 << 17,
-	SolidPlayerOnly		= 1 << 18,
-	SolidNpcOnly		= 1 << 19,
+	Trigger				= 1 << 16,
+	SolidPlayerOnly		= 1 << 17,
+	SolidNpcOnly		= 1 << 18,
 	// Environment
-	Water				= 1 << 20,
-	Damage				= 1 << 21,
+	Water				= 1 << 19,
+	Damage				= 1 << 20,
 	// Objects
-	Breakable			= 1 << 22,
-	Collectable			= 1 << 23,
-	Cinematic			= 1 << 24,
-	CartStop			= 1 << 25,
+	Breakable			= 1 << 21,
+	Collectable			= 1 << 22,
+	Cinematic			= 1 << 23,
+	CartStop			= 1 << 24,
 	
 	// WARNING: Max is 27  due to 28-31 reserved by engine
 	

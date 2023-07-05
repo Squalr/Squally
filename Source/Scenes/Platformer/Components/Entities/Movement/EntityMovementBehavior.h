@@ -5,7 +5,6 @@
 
 class EntityCollisionBehaviorBase;
 class EntityGroundCollisionBehavior;
-class EntityJumpCollisionBehavior;
 class PlatformerEntity;
 class WorldSound;
 
@@ -58,7 +57,6 @@ private:
 	
 	EntityCollisionBehaviorBase* entityCollision = nullptr;
 	EntityGroundCollisionBehavior* groundCollision = nullptr;
-	EntityJumpCollisionBehavior* jumpBehavior = nullptr;
 
 	int swimSoundIndex = 0;
 	int walkSoundIndex = 0;

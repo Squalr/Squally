@@ -131,12 +131,10 @@ DeveloperScene::DeveloperScene()
 	- General:
 		- v Maybe some storyline for introducing powers
 			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
-		- v Missing squally breath bubbles
 		- v No interrupt if damage attack modified to heal
 		- v Jitter standing in place
 		- v quick swap FX
 		- v quick warp FX
-		- v Fix terrain connectors for Frost
 		- v Fix terrain connectors for Scifi (edges color)
 		- v should warn not enough money when buying something cant afford
 		- v Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
@@ -144,13 +142,7 @@ DeveloperScene::DeveloperScene()
 		- v Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
 		- v Potion SFX should not be paused on potion menu
 		- v More transmutes (perhaps custom UI to show a transmute wheel)
-		- v Shine FX is great and should be used (Elaborate, context missing...)
-		- v Camera harsh leaving camera targets (see FF cinematic)
-		- v (Maybe) Chapter transitions can be more special 
 		- v Crash reports probably are broken (switch to new SendGrid)
-		- v Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
-			- v Tiki anims still broken (bad Spriter implementation strikes again)
-			- v Train anims broken (for same reason)
 	
 	- Large asset updates:
 		- v Enemy anims for getting hit
@@ -161,6 +153,18 @@ DeveloperScene::DeveloperScene()
 			- v All defend variants
 		- v Unique icons for all spells
 		- v More passes on music. Probably need more overworld. Far and Away / Sunset once I get access.
+
+	- Very Low prio:
+		- vv Fix terrain connectors
+			- Frost
+			- Marble [Dark too]
+			- Jungle [Dark too]
+		- vv Camera harsh leaving camera targets (see FF cinematic)
+		- vv (Maybe) Chapter transitions can be more special 
+		- vv Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
+			- vv Tiki anims still broken (bad Spriter implementation strikes again)
+			- vv Train anims broken (for same reason)
+		- vv Missing squally breath bubbles
 	
 	- Mini-Games:
 		- Hexus:
