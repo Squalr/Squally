@@ -62,8 +62,10 @@ LocalizedString* CastCondensation::getString()
 
 LocalizedString* CastCondensation::getDescription()
 {
-	return Strings::Platformer_Combat_Attacks_CondensationDescription::create()
-		->setStringReplacementVariables(ConstantString::create(std::to_string(int(CastCondensation::ManaGain))));
+	return Strings::Platformer_Combat_Attacks_CondensationDescription::create()->setStringReplacementVariables({
+		ConstantString::create(std::to_string(int(CastCondensation::ManaGain))),
+		ConstantString::create(std::to_string(int(Condensation::Ticks))),
+	});
 }
 
 std::string CastCondensation::getAttackAnimation()

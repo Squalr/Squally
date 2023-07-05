@@ -3,7 +3,9 @@
 #include "Scenes/Platformer/Level/Combat/Buffs/Buff.h"
 
 class PlatformerEntity;
+class SmartAnimationSequenceNode;
 class SmartParticles;
+class WorldSound;
 
 class Condensation : public Buff
 {
@@ -11,6 +13,9 @@ public:
 	static Condensation* create(PlatformerEntity* caster, PlatformerEntity* target);
 	
 	static const std::string CondensationIdentifier;
+	static const float TimeBetweenTicks;
+	static const int Ticks;
+	static const float StartDelay;
 
 protected:
 	Condensation(PlatformerEntity* caster, PlatformerEntity* target);
@@ -22,9 +27,7 @@ protected:
 private:
 	typedef Buff super;
 
-	void applyCondensation();
-	
 	SmartParticles* spellEffect = nullptr;
-	
-	static const float Duration;
+	SmartAnimationSequenceNode* restoreEffect = nullptr;
+	WorldSound* restoreSound = nullptr;
 };

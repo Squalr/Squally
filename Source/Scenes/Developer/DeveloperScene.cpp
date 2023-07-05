@@ -133,7 +133,6 @@ DeveloperScene::DeveloperScene()
 			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
 		- v Missing squally breath bubbles
 		- v No interrupt if damage attack modified to heal
-		- v Maybe bubble can do additional +4 mp over 4 ticks
 		- v Jitter standing in place
 		- v quick swap FX
 		- v quick warp FX
