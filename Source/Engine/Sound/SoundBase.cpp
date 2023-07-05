@@ -188,7 +188,12 @@ void SoundBase::setCustomMultiplier(float customMultiplier)
 
 void SoundBase::setSoundResource(std::string soundResource)
 {
-	this->soundResource = soundResource;
+	if (this->soundResource != soundResource)
+	{
+		// Invalidate existing sound
+		this->soundId = -1;
+		this->soundResource = soundResource;
+	}
 }
 
 std::string SoundBase::getSoundResource() const

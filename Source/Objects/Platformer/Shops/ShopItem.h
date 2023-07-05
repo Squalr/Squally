@@ -9,6 +9,7 @@ namespace cocos2d
 
 class ClickableNode;
 class ConstantString;
+class CurrencyInventory;
 class LocalizedLabel;
 class ItemPreview;
 class Item;
@@ -28,6 +29,7 @@ protected:
 	ShopItem(cocos2d::ValueMap& properties);
 	virtual ~ShopItem();
 	
+	void onEnter() override;
 	void onEnterTransitionDidFinish() override;
 	void initializePositions() override;
 	void initializeListeners() override;
@@ -35,8 +37,11 @@ protected:
 private:
 	typedef GameObject super;
 
+	bool canSellItem();
 	void sellItem();
 	void removeShopItem();
+
+	CurrencyInventory* playerCurrencyInventory;
 
 	cocos2d::Node* activationNode = nullptr;
 	cocos2d::Node* itemNode = nullptr;

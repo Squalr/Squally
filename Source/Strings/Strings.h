@@ -29199,6 +29199,36 @@ namespace Strings
 		virtual ~Platformer_Dialogue_Shopkeepers_HowToBuySomething() = default;
 	};
 
+	class Platformer_Dialogue_Shopkeepers_InsufficientFundsDescription : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Shopkeepers_InsufficientFundsDescription();
+		virtual ~Platformer_Dialogue_Shopkeepers_InsufficientFundsDescription() = default;
+	};
+
+	class Platformer_Dialogue_Shopkeepers_InsufficientFundsTitle : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Dialogue_Shopkeepers_InsufficientFundsTitle();
+		virtual ~Platformer_Dialogue_Shopkeepers_InsufficientFundsTitle() = default;
+	};
+
 	class Platformer_Dialogue_Shopkeepers_Minos_LookinToDealDamage : public LocalizedString
 	{
 	public:
