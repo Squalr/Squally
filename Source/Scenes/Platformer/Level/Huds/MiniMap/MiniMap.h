@@ -36,6 +36,7 @@ protected:
 	
 	void onHackerModeEnable() override;
 	void onHackerModeDisable() override;
+	void onEnter() override;
 	void initializePositions() override;
 	void initializeListeners() override;
 	void update(float dt) override;
@@ -55,13 +56,11 @@ protected:
 private:
 	typedef Hud super;
 
-	bool hasRequiredItem();
 	void initializeMapData();
 	void positionMiniMap();
 	void positionEntityIcons();
 
 	Squally* squally = nullptr;
-	Inventory* squallyInventory = nullptr;
 	MiniGameMap* squallyMap = nullptr;
 	cocos2d::Node* contentNode = nullptr;
 
@@ -70,7 +69,6 @@ private:
 	std::map<MiniMapObject*, float> miniMapObjects;
 	
 	bool isShown = false;
-	std::string requiredItemKey;
 
 	static const float MiniMapScale;
 	static const cocos2d::CSize MiniMapSize;

@@ -51,7 +51,6 @@ const std::string SaveKeys::SaveKeySpawnOverride = "SAVE_KEY_SPAWN_OVERRIDE";
 
 const std::string SaveKeys::SaveKeyLevelRubberband = "SAVE_KEY_LEVEL_RUBBERBAND";
 const std::string SaveKeys::SaveKeyLevelHideMiniMap = "SAVE_KEY_HIDE_MINIMAP";
-const std::string SaveKeys::SaveKeyLevelMiniMapRequiredItem = "SAVE_KEY_MINIMAP_REQUIRED_ITEM";
 
 const std::string SaveKeys::SaveKeyTalkedToAra = "SAVE_KEY_TALKED_TO_ARA";
 const std::string SaveKeys::SaveKeyArcaneHint = "SAVE_KEY_ARCANE_HINT";

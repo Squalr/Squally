@@ -53,7 +53,6 @@ MiniMap::MiniMap()
 	this->contentNode = Node::create();
 	this->mapClip = SmartClippingNode::create(this->mapNode, MiniMap::MiniMapSize);
 	this->background = DrawNode::create();
-	this->requiredItemKey = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelMiniMapRequiredItem, Value("")).asString();
 
 	this->background->drawSolidRect(-Vec2(MiniMap::MiniMapSize) / 2.0f, Vec2(MiniMap::MiniMapSize) / 2.0f, Color4F(0, 0, 0, 0.5f));
 	
@@ -92,6 +91,13 @@ void MiniMap::onHackerModeDisable()
 	super::onHackerModeEnable();
 
 	this->rootNode->setVisible(true);
+}
+
+void MiniMap::onEnter()
+{
+	super::onEnter();
+
+	this->show();
 }
 
 void MiniMap::initializePositions()
@@ -227,33 +233,15 @@ void MiniMap::initializeMapData()
 {
 	bool hideMiniMap = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool();
 
-	if (!this->requiredItemKey.empty() && !hideMiniMap)
+	if (hideMiniMap)
 	{
-		this->show();
+		this->hide();
 	}
 
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
 	{
 		this->squally = squally;
 		this->squallyMap = GameUtils::GetFirstParentOfType<MiniGameMap>(this->squally);
-		
-		this->squally->watchForComponent<EntityInventoryBehavior>([=](EntityInventoryBehavior* entityInventoryBehavior)
-		{
-			this->squallyInventory = entityInventoryBehavior->getInventory();
-
-			this->addEventListenerIgnorePause(EventListenerCustom::create(InventoryEvents::EventInventoryInstanceChangedPrefix + this->squallyInventory->getSaveKey(), [=](EventCustom* eventCustom)
-			{
-				if (this->hasRequiredItem())
-				{
-					this->show();
-				}
-			}));
-
-			if (this->hasRequiredItem())
-			{
-				this->show();
-			}
-		});
 	}, Squally::MapKey);
 
 	GameUtils::getChildrenOfType<MiniMapTerrainObject>(this->map, [=](MiniMapTerrainObject* terrainObject)
@@ -276,28 +264,11 @@ void MiniMap::initializeMapData()
 
 	if (this->map != nullptr)
 	{
-		for (auto next : this->map->getMapLayers())
+		for (MapLayer* next : this->map->getMapLayers())
 		{
 			next->setPositionZ(0.0f);
 		}
 	}
-}
-
-bool MiniMap::hasRequiredItem()
-{
-	bool hideMiniMap = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyLevelHideMiniMap, Value(false)).asBool();
-
-	if (hideMiniMap || this->squallyInventory == nullptr)
-	{
-		return false;
-	}
-
-	if (this->requiredItemKey.empty() || this->squallyInventory->hasItemOfName(this->requiredItemKey))
-	{
-		return true;
-	}
-
-	return false;
 }
 
 void MiniMap::addLayerDeserializer(LayerDeserializer* layerDeserializer)
@@ -308,7 +279,7 @@ void MiniMap::addLayerDeserializer(LayerDeserializer* layerDeserializer)
 
 void MiniMap::addLayerDeserializers(std::vector<LayerDeserializer*> layerDeserializers)
 {
-	for (auto next : layerDeserializers)
+	for (LayerDeserializer* next : layerDeserializers)
 	{
 		this->addChild(next);
 		this->layerDeserializers.push_back(next);
@@ -333,7 +304,7 @@ void MiniMap::positionMiniMap()
 
 	float squallyDepth = GameUtils::getDepthUntil<MiniGameMap>(this->squally);
 	
-	for (auto next : this->miniMapTerrainObjects)
+	for (auto& next : this->miniMapTerrainObjects)
 	{
 		MiniMapTerrainObject* terrain = next.first;
 		float depth = next.second;
@@ -341,7 +312,7 @@ void MiniMap::positionMiniMap()
 		terrain->setVisible(std::abs(depth - squallyDepth) <= CollisionObject::CollisionZThreshold);
 	}
 
-	for (auto next : this->miniMapObjects)
+	for (auto& next : this->miniMapObjects)
 	{
 		MiniMapObject* object = next.first;
 		float depth = next.second;

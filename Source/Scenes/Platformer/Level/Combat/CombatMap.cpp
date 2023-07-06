@@ -14,7 +14,6 @@
 #include "Deserializers/Platformer/PlatformerDecorDeserializer.h"
 #include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
 #include "Deserializers/Platformer/PlatformerHideMiniMapDeserializer.h"
-#include "Deserializers/Platformer/PlatformerMiniMapRequiredItemDeserializer.h"
 #include "Deserializers/Platformer/PlatformerObjectDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Deserializers/Platformer/PlatformerRubberbandingDeserializer.h"

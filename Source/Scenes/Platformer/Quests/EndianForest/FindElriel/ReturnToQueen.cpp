@@ -128,12 +128,14 @@ void ReturnToQueen::runCinematicSequence()
 	{
 		return;
 	}
-
-	// Ideally this would be on interact, but no good place to hook into atm
-	PlatformerEvents::TriggerHideMiniMap();
 	
 	this->queenLiana->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
+		interactionBehavior->addInteractCallback([=]()
+		{
+			PlatformerEvents::TriggerHideMiniMap();
+		});
+
 		// Pre-text chain
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_L_WhereIsOurReward::create(),
@@ -164,7 +166,7 @@ void ReturnToQueen::runCinematicSequence()
 				PlatformerEvents::TriggerGiveItemsFromPool(PlatformerEvents::GiveItemsFromPoolArgs(this->rewardPool));
 				this->complete();
 			},
-			Voices::GetNextVoiceShort(),
+			Voices::GetNextVoiceMedium(),
 			false
 		));
 

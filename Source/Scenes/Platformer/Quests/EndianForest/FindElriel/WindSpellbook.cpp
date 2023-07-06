@@ -146,6 +146,8 @@ void WindSpellbook::runCinematicSequencePart1()
 		this->marcel->setState(StateKeys::CinematicSourceX, Value(GameUtils::getWorldCoords(this->marcel).x));
 		this->marcel->setState(StateKeys::CinematicDestinationX, Value(GameUtils::getWorldCoords(this->marcelArrive).x));
 	}
+
+	PlatformerEvents::TriggerHideMiniMap();
 	
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_EndianForest_FindElriel_Lianna_T_MoreOrcs::create(),

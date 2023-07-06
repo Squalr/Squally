@@ -13,7 +13,6 @@
 #include "Deserializers/Platformer/PlatformerDecorDeserializer.h"
 #include "Deserializers/Platformer/PlatformerEntityDeserializer.h"
 #include "Deserializers/Platformer/PlatformerHideMiniMapDeserializer.h"
-#include "Deserializers/Platformer/PlatformerMiniMapRequiredItemDeserializer.h"
 #include "Deserializers/Platformer/PlatformerObjectDeserializer.h"
 #include "Deserializers/Platformer/PlatformerQuestDeserializer.h"
 #include "Deserializers/Platformer/PlatformerRubberbandingDeserializer.h"
@@ -129,7 +128,6 @@ PlatformerMap::PlatformerMap(std::string transition) : super(true)
 				PlatformerBannerDeserializer::create(),
 				PlatformerRubberbandingDeserializer::create(),
 				PlatformerHideMiniMapDeserializer::create(),
-				PlatformerMiniMapRequiredItemDeserializer::create(),
 			}),
 			ObjectLayerDeserializer::create({
 				{ CollisionDeserializer::MapKeyTypeCollision, CollisionDeserializer::create({ (PropertyDeserializer*)PlatformerComponentDeserializer::create(), (PropertyDeserializer*)PlatformerQuestDeserializer::create() }) },

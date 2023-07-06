@@ -166,6 +166,11 @@ void EntityDialogueBehavior::onInteract()
 		return;
 	}
 
+	for (std::function<void()>& next : this->interactCallbacks)
+	{
+		next();
+	}
+
 	this->progressDialogue();
 }
 
@@ -207,6 +212,11 @@ void EntityDialogueBehavior::removeDialogueSet(DialogueSet* dialogueSet)
 {
 	this->dialogueSets.erase(std::find(this->dialogueSets.begin(), this->dialogueSets.end(), dialogueSet));
 	this->dialogueSetNode->removeChild(dialogueSet);
+}
+
+void EntityDialogueBehavior::addInteractCallback(std::function<void()> interactCallback)
+{
+	this->interactCallbacks.push_back(interactCallback);
 }
 
 DialogueSet* EntityDialogueBehavior::getMainDialogueSet()

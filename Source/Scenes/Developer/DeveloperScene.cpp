@@ -82,6 +82,12 @@ DeveloperScene::DeveloperScene()
 
 	- Maps:
 		- v Bard floating in EF portal
+		- v EF SHL puzzle in temple should show the beneficial case too
+		- v EF FPU warning on Grogg fireball
+		- v EF Guano shadow hovering on temple map combat (boss)
+		- v EF temple top bg no longer reflects state of EF buildings
+		- v EF copper axe seems too high damage
+		- v EF Orc Swordsman missing cast anim
 		- vv EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- vv Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		--------------
@@ -129,10 +135,13 @@ DeveloperScene::DeveloperScene()
 		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
 	
 	- General:
+		- v Increase hover collision size, and put it inside Squally a bit. This will help prevent falling through top only collision when walking horizontally (ie temple exterior stairs in EF)
 		- v Maybe some storyline for introducing powers
 			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
 				- In fact, can use this as a way to force escaping the ship.
-		- v No interrupt if damage attack modified to heal
+		- v Guano Bell should play a bell above him
+		- v Wand energy bolt literally does an attack anim and nothing
+		- v No interrupt if damage attack modified to heal (test with Strength)
 		- v quick swap FX
 		- v quick warp FX
 		- v Can hacker mode during dialogue, allowing for "control during hacker mode" glitch
@@ -168,6 +177,7 @@ DeveloperScene::DeveloperScene()
 	- Mini-Games:
 		- Hexus:
 			- Can pass after auto-victory or loss (try it in a puzzle)
+			- Can sneak in last-stand after placing your turn cards
 			- Leave button stuck visible after losing a puzzle
 			- Enemy should pre-calc the best play when player has passed (hard)
 			- v It'd be nice to get SHL from the puzzle where you learn it. I guess just tailored pools or something. May scrap this.

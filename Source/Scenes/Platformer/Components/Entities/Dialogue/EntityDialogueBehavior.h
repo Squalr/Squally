@@ -25,6 +25,7 @@ public:
 	void setActiveDialogueSet(DialogueSet* dialogueSet, bool showDialogue = true);
 	void addDialogueSet(DialogueSet* dialogueSet);
 	void removeDialogueSet(DialogueSet* dialogueSet);
+	void addInteractCallback(std::function<void()> interactCallback);
 	void enableInteraction();
 	void disableInteraction();
 	DialogueSet* getMainDialogueSet();
@@ -52,6 +53,7 @@ private:
 	LocalizedString* getOptionString(int index, LocalizedString* optionText);
 	SpeechBubble* buildSpeechBubble();
 
+	std::vector<std::function<void()>> interactCallbacks;
 	PlatformerEntity* entity = nullptr;
 	Scrappy* scrappy = nullptr;
 	LazyNode<SpeechBubble>* speechBubble = nullptr;

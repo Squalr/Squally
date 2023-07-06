@@ -59,7 +59,6 @@ public:
 
 	static const std::string SaveKeyLevelRubberband;
 	static const std::string SaveKeyLevelHideMiniMap;
-	static const std::string SaveKeyLevelMiniMapRequiredItem;
 
 	static const std::string SaveKeyTalkedToAra;
 	static const std::string SaveKeyArcaneHint;
