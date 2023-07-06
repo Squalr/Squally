@@ -27,8 +27,8 @@ const std::string HelperFollowMovementBehavior::MapEventMoveToRest = "helper-mov
 const std::string HelperFollowMovementBehavior::MapEventStopRest = "helper-stop-rest";
 const float HelperFollowMovementBehavior::StopFollowRangeX = 128.0f;
 const float HelperFollowMovementBehavior::TryJumpRangeY = 180.0f;
-const float HelperFollowMovementBehavior::ResetRangeX = 2048.0f;
-const float HelperFollowMovementBehavior::ResetRangeY = 1024.0f;
+const float HelperFollowMovementBehavior::ResetRangeX = 1536.0f;
+const float HelperFollowMovementBehavior::ResetRangeY = 768.0f;
 
 HelperFollowMovementBehavior* HelperFollowMovementBehavior::create(GameObject* owner)
 {

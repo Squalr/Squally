@@ -131,6 +131,7 @@ DeveloperScene::DeveloperScene()
 	- General:
 		- v Maybe some storyline for introducing powers
 			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
+				- In fact, can use this as a way to force escaping the ship.
 		- v No interrupt if damage attack modified to heal
 		- v quick swap FX
 		- v quick warp FX

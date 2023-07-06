@@ -6,6 +6,7 @@
 #include "Engine/Physics/CollisionObject.h"
 #include "Engine/Physics/EnginePhysicsTypes.h"
 #include "Engine/Terrain/TerrainObject.h"
+#include "Engine/Utils/AlgoUtils.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Engine/Utils/MathUtils.h"
 #include "Entities/Platformer/PlatformerEntity.h"
@@ -260,7 +261,41 @@ void EntityGroundCollisionBehavior::onCollideWithGround()
 
 bool EntityGroundCollisionBehavior::isOnGround()
 {
-	return this->groundCollision == nullptr ? false : this->groundCollision->hasCollisions();
+	if (this->groundCollision == nullptr || !this->groundCollision->hasCollisions())
+	{
+		return false;
+	}
+
+	static const float ToleranceDegrees = 10.0f;
+
+	// Now check the normal angles of each thing the ground collider is hitting to make sure they actually are reasonable.
+	for (CollisionObject* next : this->groundCollision->getCurrentCollisions())
+	{
+		// For non-segments (which are very rare shapes), we can't really check normals, so just say we're on the ground.
+		if (next->getShape() != CollisionShape::Segment || (int)next->getPoints().size() < 2)
+		{
+			return true;
+		}
+
+		Vec2 delta = next->getPoints()[0] - next->getPoints()[1];
+
+		if (delta.x == 0.0f && delta.y == 0.0f)
+		{
+			continue;
+		}
+
+		// Absolute value the deltas to force the first quadrant of unit circle (ie in the 0.0f to 90.0f range)
+		float angle = std::atan2(std::abs(delta.y), std::abs(delta.x));
+		float angleDegrees = angle * (180.0f / float(M_PI));
+
+		// The slope is considered ground if within the tolerance
+		if (angleDegrees < 90.0f - ToleranceDegrees)
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 bool EntityGroundCollisionBehavior::isStandingOn(CollisionObject* collisonObject)
