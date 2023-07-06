@@ -31,8 +31,6 @@ private:
 
 	void applyStrength();
 	
-	static volatile int currentDamageDealt;
-	
 	SmartParticles* spellEffect = nullptr;
 	cocos2d::Sprite* spellAura = nullptr;
 	
