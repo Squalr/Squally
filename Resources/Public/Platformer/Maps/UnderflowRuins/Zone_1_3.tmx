@@ -224,13 +224,11 @@
   <object id="1174" name="ruins-thick" type="terrain" x="661.356" y="1296.13" width="288" height="340">
    <properties>
     <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1217" name="ruins-thick" type="terrain" x="2126.51" y="1289.67" width="288" height="340">
    <properties>
     <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1219" name="ruins-thick" type="terrain" x="3241.62" y="1293.91" width="288" height="340">
@@ -248,13 +246,11 @@
   <object id="1173" name="ruins-thick" type="terrain" x="660.727" y="1313.66" width="288" height="340">
    <properties>
     <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1216" name="ruins-thick" type="terrain" x="2125.88" y="1307.2" width="288" height="340">
    <properties>
     <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
    </properties>
   </object>
   <object id="1218" name="ruins-thick" type="terrain" x="3240.99" y="1311.44" width="288" height="340">
@@ -288,11 +284,7 @@
    <property name="depth" type="float" value="-192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1172" name="ruins-thick" type="terrain" x="423.356" y="1326.5" width="1229" height="340">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
+  <object id="1172" name="ruins-thick" type="terrain" x="423.356" y="1326.5" width="1229" height="340"/>
   <object id="1197" name="ruins-thick" type="terrain" x="2030.25" y="1327.67" width="1579.88" height="1313.66"/>
  </objectgroup>
  <objectgroup id="100" name="terrain -3 fg">
@@ -385,7 +377,6 @@
   <object id="1123" name="ruins-thick" type="terrain" x="1323" y="1339.16" width="288" height="340">
    <properties>
     <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>
@@ -397,7 +388,6 @@
   <object id="1122" name="ruins-thick" type="terrain" x="1322" y="1365.28" width="288" height="340">
    <properties>
     <property name="collision" value="none"/>
-    <property name="components" value="z-fade"/>
    </properties>
   </object>
  </objectgroup>

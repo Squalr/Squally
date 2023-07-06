@@ -771,7 +771,7 @@
    <property name="depth" type="float" value="128"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="917" name="water" type="object" x="-525.314" y="2323.75" width="5902.75" height="1781.35">
+  <object id="917" name="water" type="object" x="-521.314" y="2229.75" width="5902.75" height="1781.35">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
@@ -782,7 +782,7 @@
    <property name="depth" type="float" value="192"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="916" name="water" type="object" x="-343.254" y="2338.41" width="5526.75" height="1745.35">
+  <object id="916" name="water" type="object" x="-335.254" y="2270.41" width="5526.75" height="1745.35">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>
@@ -793,7 +793,7 @@
    <property name="depth" type="float" value="256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="915" name="water" type="object" x="-144.345" y="2316.6" width="5142.75" height="1693.35">
+  <object id="915" name="water" type="object" x="-156.345" y="2316.6" width="5142.75" height="1693.35">
    <properties>
     <property name="disable-physics" type="bool" value="true"/>
    </properties>

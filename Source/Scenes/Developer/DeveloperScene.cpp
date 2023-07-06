@@ -88,9 +88,17 @@ DeveloperScene::DeveloperScene()
 		- v EF temple top bg no longer reflects state of EF buildings
 		- v EF copper axe seems too high damage
 		- v EF Orc Swordsman missing cast anim
+		- v EF no ram rolling sfx
+		- v EF maybe bust out new song for Orthrus & Gorgon
 		- vv EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- vv Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		--------------
+		- v UR arrow rain impact SFX
+		- v UR broken blade SFX is stupid
+		- v UR The Gift is a deeply unfitting track for the gauntlet. Maybe push a new song when it starts.
+		- v UR probably want impact SFX for gauntlet hit/crit
+		- v UR maybe get rid of "warp to x layer" in town, and just stagger them
+		- v UR cistern lightning hitboxes are actually a bit too forgiving
 		- v UR cistern Chest + Puzzle + Animal is overwhelming and lazy
 		- v UR sky's reach color balance
 		- vv UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
@@ -135,6 +143,7 @@ DeveloperScene::DeveloperScene()
 		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
 	
 	- General:
+		- v New hover height is creating pop up on spawn. Not sure best fix.
 		- v Increase hover collision size, and put it inside Squally a bit. This will help prevent falling through top only collision when walking horizontally (ie temple exterior stairs in EF)
 		- v Maybe some storyline for introducing powers
 			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.

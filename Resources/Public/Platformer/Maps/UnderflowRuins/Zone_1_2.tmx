@@ -38,7 +38,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="1161" name="ruins-thick" type="terrain" x="-505.891" y="-144.695" width="1107.85" height="3381.18"/>
-  <object id="1190" name="ruins-thick" type="terrain" x="3739.2" y="-176.009" width="1015.1" height="3381.18"/>
+  <object id="1190" name="ruins-thick" type="terrain" x="3739.2" y="-176.009" width="1375.1" height="3381.18"/>
  </objectgroup>
  <objectgroup id="75" name="terrain -6">
   <properties>
