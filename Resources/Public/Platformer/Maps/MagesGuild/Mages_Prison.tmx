@@ -376,7 +376,7 @@
   </object>
   <object id="796" name="mul-door" type="object" x="7680.45" y="287.594" width="696" height="775">
    <properties>
-    <property name="map" value="EndianForest/Home_Guano"/>
+    <property name="map" value="MagesGuild/Home_Guano"/>
     <property name="quest" value="rescue-guano"/>
     <property name="quest-line" value="rescue-guano"/>
     <property name="send-event" value="mul-door-unlocked"/>
@@ -405,7 +405,7 @@
   </object>
   <object id="958" name="portal" type="object" x="2814.57" y="739.294" width="320" height="320">
    <properties>
-    <property name="map" value="EndianForest/Home_Troll"/>
+    <property name="map" value="MagesGuild/Home_Troll"/>
     <property name="transition" value="troll"/>
    </properties>
   </object>

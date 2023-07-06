@@ -104,7 +104,7 @@ void GameHud::initializePositions()
 
 	this->objectiveDisplay->setPosition(visibleSize.width - 48.0f, visibleSize.height - 24.0f);
 	this->statsBars->setPosition(offset.x, visibleSize.height + offset.y);
-	this->currencyDisplay->setPosition(offset.x + quickPotionUnlocked ? 172.0f : 64.0f, visibleSize.height + offset.y - 96.0f);
+	this->currencyDisplay->setPosition(offset.x + (quickPotionUnlocked ? 172.0f : 40.0f), visibleSize.height + offset.y - 96.0f);
 	this->quickPotion->setPosition(offset.x + 64.0f, visibleSize.height + offset.y - 128.0f - Spacing * 0.0f);
 	this->quickWarp->setPosition(offset.x + 64.0f, visibleSize.height + offset.y - 128.0f - Spacing * 1.0f);
 	this->quickSwap->setPosition(offset.x + 64.0f, visibleSize.height + offset.y - 128.0f - Spacing * 2.0f);

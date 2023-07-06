@@ -134,6 +134,7 @@ DeveloperScene::DeveloperScene()
 		- v No interrupt if damage attack modified to heal
 		- v quick swap FX
 		- v quick warp FX
+		- v Can hacker mode during dialogue, allowing for "control during hacker mode" glitch
 		- v Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
 		- v Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)

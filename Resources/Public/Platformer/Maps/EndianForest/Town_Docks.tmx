@@ -469,7 +469,11 @@
     <property name="transition" value="docks"/>
    </properties>
   </object>
-  <object id="717" name="solid" type="collision" x="3891.32" y="914.15" width="126.878" height="778.756"/>
+  <object id="717" name="solid" type="collision" x="3891.32" y="-319.183" width="126.878" height="2012.09">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="785" name="portal" type="object" x="3059.88" y="1435.64" width="256" height="256">
    <properties>
     <property name="map" value="PerilousSea/Ship_Main_Forest"/>

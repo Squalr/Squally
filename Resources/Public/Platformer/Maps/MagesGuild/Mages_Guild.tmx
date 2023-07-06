@@ -819,7 +819,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="905" name="marble" type="terrain" x="-101" y="1073" width="5580" height="222"/>
+  <object id="905" name="marble" type="terrain" x="-101" y="1073" width="5580" height="414"/>
  </objectgroup>
  <objectgroup id="22" name="decor midground">
   <properties>
