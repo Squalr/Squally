@@ -101,6 +101,7 @@ DeveloperScene::DeveloperScene()
 		- v UR cistern lightning hitboxes are actually a bit too forgiving
 		- v UR cistern Chest + Puzzle + Animal is overwhelming and lazy
 		- v UR sky's reach color balance
+		- v UR guano break from petrification needs sfx
 		- vv UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		--------------
 		- ** CV rabies is tl;dr

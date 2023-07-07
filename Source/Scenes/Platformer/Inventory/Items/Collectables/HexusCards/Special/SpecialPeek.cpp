@@ -51,5 +51,5 @@ const std::string& SpecialPeek::getIdentifier()
 
 std::string SpecialPeek::getCardKey()
 {
-	return CardKeys::Steal;
+	return CardKeys::Peek;
 }
