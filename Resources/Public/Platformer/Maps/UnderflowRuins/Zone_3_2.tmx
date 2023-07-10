@@ -97,11 +97,6 @@
     <property name="is-on" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="1130" name="metal-chest" type="object" x="3317.15" y="626.97" width="128" height="128">
-   <properties>
-    <property name="reward-pool" value="ur-rare"/>
-   </properties>
-  </object>
   <object id="1133" name="temple-door" type="object" x="2216" y="762" width="432" height="528">
    <properties>
     <property name="color" value="yellow"/>

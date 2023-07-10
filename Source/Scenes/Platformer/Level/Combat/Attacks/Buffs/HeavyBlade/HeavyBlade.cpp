@@ -134,8 +134,7 @@ void HeavyBlade::registerHackables()
 							ConstantString::create("sub ecx, 20\n\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels::create()),
 							ConstantString::create("addDamage:\n"),
-							ConstantString::create("add ecx, 3\n\n"),
-							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create())
+							ConstantString::create("add ecx, 3\n"),
 						})
 						, // x64
 						ConcatString::create({
@@ -145,8 +144,7 @@ void HeavyBlade::registerHackables()
 							ConstantString::create("sub rcx, 20\n\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_HeavyBlade_CommentLabels::create()),
 							ConstantString::create("addDamage:\n"),
-							ConstantString::create("add rcx, 3\n\n"),
-							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJmp::create())
+							ConstantString::create("add rcx, 3\n"),
 						})
 					),
 				},

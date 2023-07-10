@@ -55,7 +55,7 @@ CurseOfTheAncients* CurseOfTheAncients::create(PlatformerEntity* caster, Platfor
 }
 
 CurseOfTheAncients::CurseOfTheAncients(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_RunePurple, AbilityType::Physical, BuffData(CurseOfTheAncients::Duration, CurseOfTheAncients::CurseOfTheAncientsIdentifier))
+	: super(caster, target, UIResources::Menus_Icons_RunePurple, AbilityType::Shadow, BuffData(CurseOfTheAncients::Duration, CurseOfTheAncients::CurseOfTheAncientsIdentifier))
 {
 	this->spellEffect = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 

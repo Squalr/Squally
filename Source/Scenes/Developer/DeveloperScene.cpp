@@ -104,6 +104,12 @@ DeveloperScene::DeveloperScene()
 		- v UR guano break from petrification needs sfx
 		- vv UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		--------------
+		- DM sanity check rejuvination description. Seems to mention an OR that doesn't exist
+		- DM sanity check restoration description. Seems to mention an OR that doesn't exist
+		- DM good loot inside arcane house?
+		- DM blind comment explaining xor, xor
+		- DM stalactite death can be weird sometimes (ie on demo stalactite immediately after mounting)
+		--------------
 		- ** CV rabies is tl;dr
 		- v CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
 		- vv CV secret tunnel feels unfinished
@@ -149,11 +155,13 @@ DeveloperScene::DeveloperScene()
 		- v Maybe some storyline for introducing powers
 			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
 				- In fact, can use this as a way to force escaping the ship.
+		- v No lightning VFX if it kills the enemy (probably because buff is removed)
 		- v Guano Bell should play a bell above him
 		- v Wand energy bolt literally does an attack anim and nothing
 		- v No interrupt if damage attack modified to heal (test with Strength)
 		- v quick swap FX
 		- v quick warp FX
+		- v maybe stat deltas on equipment in craft menu
 		- v Can hacker mode during dialogue, allowing for "control during hacker mode" glitch
 		- v Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)

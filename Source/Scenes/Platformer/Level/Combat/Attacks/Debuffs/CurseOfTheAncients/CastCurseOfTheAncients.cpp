@@ -28,7 +28,7 @@ CastCurseOfTheAncients* CastCurseOfTheAncients::create(float attackDuration, flo
 }
 
 CastCurseOfTheAncients::CastCurseOfTheAncients(float attackDuration, float recoverDuration, Priority priority)
-	: super(AttackType::Debuff, UIResources::Menus_Icons_RunePurple, priority, AbilityType::Physical, 0, 0, 5, attackDuration, recoverDuration)
+	: super(AttackType::Debuff, UIResources::Menus_Icons_RunePurple, priority, AbilityType::Shadow, 0, 0, 5, attackDuration, recoverDuration)
 {
 	this->castSound = WorldSound::create(SoundResources::Platformer_Spells_Heal5);
 	
