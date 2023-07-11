@@ -309,7 +309,7 @@
   </properties>
   <object id="835" name="mabel" type="entity" x="2837.84" y="1067.1" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,haunted,pacing,pick-pocket"/>
+    <property name="components" value="friendly,haunted,pacing"/>
     <property name="other-world" type="bool" value="true"/>
     <property name="quest" value="unhaunt-castle"/>
     <property name="quest-line" value="cure-king"/>

@@ -51,12 +51,12 @@ PlatformerAttack* ThrowGreaterHealthPotion::cloneInternal()
 
 LocalizedString* ThrowGreaterHealthPotion::getString()
 {
-	return Strings::Items_Consumables_Health_HealthPotion::create();
+	return Strings::Items_Consumables_Health_GreaterHealthPotion::create();
 }
 
 LocalizedString* ThrowGreaterHealthPotion::getDescription()
 {
-	return Strings::Items_Consumables_Health_HealthPotionDescription::create()
+	return Strings::Items_Consumables_Health_GreaterHealthPotionDescription::create()
 		->setStringReplacementVariables(ConstantString::create(std::to_string(int(GreaterHealthPotion::HealPercentage * 100.0f))));
 }
 

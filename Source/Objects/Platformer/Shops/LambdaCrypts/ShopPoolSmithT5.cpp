@@ -26,12 +26,17 @@ ShopPoolSmithT5* ShopPoolSmithT5::create(ValueMap& properties)
 
 ShopPoolSmithT5::ShopPoolSmithT5(ValueMap& properties) : super(properties, ShopPoolSmithT5::PoolName, { })
 {
+	// Phasing in
+	this->addItemToPool(ItemChance::create(Bone::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Diamond::create(), ItemChance::Probability::Guaranteed));
+	
+	// Phasing out
+	this->addItemToPool(ItemChance::create(Mithril::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Sapphire::create(), ItemChance::Probability::Guaranteed));
+
+	// Universal
 	this->addItemToPool(ItemChance::create(DarkWood::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Mithril::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Gold::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Ruby::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolSmithT5::~ShopPoolSmithT5()

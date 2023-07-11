@@ -31,7 +31,7 @@ ThrowSuperiorHealthFlask* ThrowSuperiorHealthFlask::create(Priority priority)
 }
 
 ThrowSuperiorHealthFlask::ThrowSuperiorHealthFlask(Priority priority)
-	: super(AttackType::Healing, ItemResources::Consumables_Potions_HealthPotionGreater, priority, AbilityType::Arcane, 10, 15, 0, 0.2f, 1.5f)
+	: super(AttackType::Healing, ItemResources::Consumables_Potions_HealthFlaskSuperior, priority, AbilityType::Arcane, 10, 15, 0, 0.2f, 1.5f)
 {
 	this->throwSound = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_ItemThrow1);
 	this->healSound = WorldSound::create(SoundResources::Platformer_Spells_Heal2);
@@ -51,12 +51,12 @@ PlatformerAttack* ThrowSuperiorHealthFlask::cloneInternal()
 
 LocalizedString* ThrowSuperiorHealthFlask::getString()
 {
-	return Strings::Items_Consumables_Health_HealthPotion::create();
+	return Strings::Items_Consumables_Health_SuperiorHealthFlask::create();
 }
 
 LocalizedString* ThrowSuperiorHealthFlask::getDescription()
 {
-	return Strings::Items_Consumables_Health_HealthPotionDescription::create()
+	return Strings::Items_Consumables_Health_SuperiorHealthFlaskDescription::create()
 		->setStringReplacementVariables(ConstantString::create(std::to_string(int(SuperiorHealthFlask::HealPercentage * 100.0f))));
 }
 

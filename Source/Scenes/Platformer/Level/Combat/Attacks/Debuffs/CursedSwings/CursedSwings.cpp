@@ -113,10 +113,10 @@ void CursedSwings::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return CursedSwingsGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEdi::create()
+						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEdi::create(), true
 					},
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEsi::create()
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_CursedSwings_RegisterEsi::create(), true
 					}
 				},
 				int(HackFlags::None),

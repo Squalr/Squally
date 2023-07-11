@@ -26,12 +26,17 @@ ShopPoolSmithT7* ShopPoolSmithT7::create(ValueMap& properties)
 
 ShopPoolSmithT7::ShopPoolSmithT7(ValueMap& properties) : super(properties, ShopPoolSmithT7::PoolName, { })
 {
-	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Guaranteed));
+	// Phasing in
+	this->addItemToPool(ItemChance::create(Crystal::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Diamond::create(), ItemChance::Probability::Guaranteed)); // Just including to fill slots
+	
+	// Phasing out
+	this->addItemToPool(ItemChance::create(Sulfur::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Ruby::create(), ItemChance::Probability::Guaranteed));
+
+	// Universal
 	this->addItemToPool(ItemChance::create(DarkWood::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Obsidian::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Bone::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Mithril::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(VoidCrystal::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolSmithT7::~ShopPoolSmithT7()

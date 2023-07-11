@@ -107,6 +107,7 @@ DeveloperScene::DeveloperScene()
 		- DM sanity check rejuvination description. Seems to mention an OR that doesn't exist
 		- DM sanity check restoration description. Seems to mention an OR that doesn't exist
 		- DM good loot inside arcane house?
+		- DM binary puzzle sfx plays at wrong time
 		- DM blind comment explaining xor, xor
 		- DM stalactite death can be weird sometimes (ie on demo stalactite immediately after mounting)
 		--------------
@@ -118,6 +119,8 @@ DeveloperScene::DeveloperScene()
 		- ** LC unholy blade tl;dr
 		- ** LC cursed blade tl;dr
 		- ** LC Daze script too long
+		- v Cursed Swings wrong VFX color (see Hex.cpp)
+		- v Strange pop on Reanimated Pig death anim
 		- vv LC blue gem map feels empty. Traps?
 		- vv Make LC final 4_x maps less bad.
 		--------------
@@ -150,6 +153,7 @@ DeveloperScene::DeveloperScene()
 		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
 	
 	- General:
+		- v Z check for pick-pocketing
 		- v New hover height is creating pop up on spawn. Not sure best fix.
 		- v Increase hover collision size, and put it inside Squally a bit. This will help prevent falling through top only collision when walking horizontally (ie temple exterior stairs in EF)
 		- v Maybe some storyline for introducing powers
