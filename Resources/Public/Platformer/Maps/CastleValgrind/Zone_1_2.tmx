@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="812">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="42" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="814">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -173,7 +173,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="789" name="Castle/RailingLong" type="decor" x="2290.39" y="1721.36" width="1283.23" height="307">
+  <object id="789" name="Castle/RailingLong" type="decor" x="3199.48" y="1721.36" width="374.139" height="307">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -183,13 +183,13 @@
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="791" name="gate" type="object" x="1845.4" y="1605.39" width="450.603" height="423.038">
+  <object id="791" name="gate" type="object" x="2753.02" y="1604.86" width="450.603" height="423.038">
    <properties>
     <property name="map" value="CastleValgrind/Zone_1_3"/>
     <property name="transition" value="castle-gate"/>
    </properties>
   </object>
-  <object id="793" name="Castle/RailingLong" type="decor" x="808" y="1720" width="1049.78" height="307">
+  <object id="793" name="Castle/RailingLong" type="decor" x="808" y="1720" width="1952.81" height="307">
    <properties>
     <property name="repeat-x" type="bool" value="true"/>
    </properties>
@@ -272,6 +272,18 @@
     <property name="illusion-group" value="A"/>
    </properties>
   </object>
+  <object id="812" name="Crypts/Post2" type="decor" x="4450.11" y="1713" width="127" height="310">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.5"/>
+   </properties>
+  </object>
+  <object id="813" name="Crypts/Post3" type="decor" x="3509.55" y="1717.74" width="127" height="305">
+   <properties>
+    <property name="components" value="z-fade"/>
+    <property name="fade-multiplier" type="float" value="0.5"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>
@@ -283,22 +295,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="reanimated-fighter" type="entity" x="3289.01" y="1902.63" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="thug,enemy,agro"/>
-    <property name="drop-pool" value="cv-generic"/>
-   </properties>
-  </object>
-  <object id="808" name="reanimated-fighter" type="entity" x="3290.27" y="1432.32" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-tag" value="group-a"/>
-    <property name="components" value="ally"/>
-   </properties>
-  </object>
   <object id="809" name="zana" type="entity" x="4669.33" y="1901.33" width="128" height="128">
    <properties>
     <property name="components" value="cv-t1-hexus,friendly,pick-pocket"/>
@@ -320,7 +316,7 @@
     <property name="components" value="squally"/>
    </properties>
   </object>
-  <object id="650" name="spawn" type="object" x="4236.35" y="1900.17" width="128" height="128">
+  <object id="650" name="spawn" type="object" x="2914.68" y="1894.17" width="128" height="128">
    <properties>
     <property name="transition" value="castle-gate"/>
    </properties>

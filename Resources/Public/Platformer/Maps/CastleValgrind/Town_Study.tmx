@@ -296,6 +296,8 @@
    <properties>
     <property name="components" value="dispel-illusion"/>
     <property name="illusion-group" value="A"/>
+    <property name="quest" value="reveal-mabel"/>
+    <property name="quest-line" value="cure-king"/>
     <property name="send-event" value="mabel-revealed"/>
    </properties>
   </object>

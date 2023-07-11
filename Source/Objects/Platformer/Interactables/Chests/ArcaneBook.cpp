@@ -5,6 +5,7 @@
 #include "Engine/Save/SaveManager.h"
 #include "Events/NotificationEvents.h"
 #include "Events/PlatformerEvents.h"
+#include "Scenes/Platformer/Hackables/HackFlags.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -54,6 +55,7 @@ bool ArcaneBook::tryOpen()
 	this->open(true);
 	
 	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookArcane, Value(true));
+	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
 	Objectives::SetCurrentObjective(ObjectiveKeys::CVExploreSecretTunnel);
 	
 	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(

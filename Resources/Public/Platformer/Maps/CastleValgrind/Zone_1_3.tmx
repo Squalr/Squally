@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="34" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="806">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="30" height="32" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="808">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="WaterfallSky"/>
@@ -299,7 +299,7 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="692" name="barbarian" type="entity" x="2250.78" y="1899.24" width="128" height="128">
+  <object id="806" name="reanimated-fighter" type="entity" x="2231.37" y="1897.16" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="EndianForest/Combat_DarkGrass"/>
@@ -308,7 +308,7 @@
     <property name="drop-pool" value="cv-generic"/>
    </properties>
   </object>
-  <object id="799" name="reanimated-fighter" type="entity" x="2234.61" y="1505.14" width="128" height="128">
+  <object id="807" name="reanimated-fighter" type="entity" x="2232.63" y="1426.85" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-a"/>

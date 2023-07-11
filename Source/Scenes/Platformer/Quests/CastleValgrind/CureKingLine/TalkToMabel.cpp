@@ -145,10 +145,10 @@ void TalkToMabel::onLoad(QuestState questState)
 
 void TalkToMabel::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
-	this->listenForMapEventOnce(TalkToMabel::MapEventMabelRevealed, [=](ValueMap valueMap)
+	if (!isActiveThroughSkippable)
 	{
 		this->runCinematicSequencePt1();
-	});
+	}
 }
 
 void TalkToMabel::onComplete()
@@ -248,6 +248,7 @@ void TalkToMabel::runCinematicSequencePt2()
 	if (this->mabel != nullptr)
 	{
 		this->mabel->getAnimations()->clearAnimationPriority();
+		this->mabel->getAnimations()->setFlippedX(true);
 	}
 	
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
