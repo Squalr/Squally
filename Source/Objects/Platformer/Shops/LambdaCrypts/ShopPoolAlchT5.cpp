@@ -28,16 +28,14 @@ ShopPoolAlchT5* ShopPoolAlchT5::create(ValueMap& properties)
 ShopPoolAlchT5::ShopPoolAlchT5(ValueMap& properties) : super(properties, ShopPoolAlchT5::PoolName,
 	{ })
 {
+	this->addItemToPool(ItemChance::create(BlackMushroom::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Mandrake::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Stinger::create(), ItemChance::Probability::Guaranteed));
+
 	// Phasing out
 	this->addItemToPool(ItemChance::create(GoldWeed::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(RatTail::create(), ItemChance::Probability::Guaranteed));
-
-	this->addItemToPool(ItemChance::create(BlackMushroom::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Mandrake::create(), ItemChance::Probability::Guaranteed));
-
-	// Phasing in
-	this->addItemToPool(ItemChance::create(BlackBlood::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(DemonRoot::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Pepper::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolAlchT5::~ShopPoolAlchT5()

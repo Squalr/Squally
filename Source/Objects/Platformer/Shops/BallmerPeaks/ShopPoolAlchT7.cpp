@@ -27,16 +27,14 @@ ShopPoolAlchT7* ShopPoolAlchT7::create(ValueMap& properties)
 ShopPoolAlchT7::ShopPoolAlchT7(ValueMap& properties) : super(properties, ShopPoolAlchT7::PoolName,
 	{ })
 {
-	// Should be phased out, but may as well keep a full shop
-	this->addItemToPool(ItemChance::create(BlackMushroom::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Mandrake::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(FrostBerries::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Snowball::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Meteorite::create(), ItemChance::Probability::Guaranteed));
 
 	// Phasing out
 	this->addItemToPool(ItemChance::create(BlackBlood::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(DemonRoot::create(), ItemChance::Probability::Guaranteed));
-
-	this->addItemToPool(ItemChance::create(FrostBerries::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Snowball::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(PhoenixFeather::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolAlchT7::~ShopPoolAlchT7()

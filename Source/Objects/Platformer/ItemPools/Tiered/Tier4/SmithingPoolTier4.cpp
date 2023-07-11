@@ -40,7 +40,7 @@ SmithingPoolTier4::SmithingPoolTier4(SampleMethod sampleMethod, int min, int max
 
 	// Phasing out
 	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Legendary));
-	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Artifact));
+	this->addItemToPool(ItemChance::create(Silver::create(), ItemChance::Probability::Artifact));
 }
 
 SmithingPoolTier4::~SmithingPoolTier4()
