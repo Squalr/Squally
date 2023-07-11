@@ -198,12 +198,14 @@ NO_OPTIMIZE void Bloodletting::runBloodlettingTick()
 	static volatile int rng = 0;
 
 	drainAmount = 0;
-	rng = RandomHelper::random_int(-100, 100);
+	rng = RandomHelper::random_int(-25, 100);
 
 	ASM_PUSH_EFLAGS()
 	ASM(push ZBX);
 	ASM(push ZDX);
 
+	ASM(mov ZBX, 0);
+	ASM(mov ZDX, 0);
 	ASM_MOV_REG_VAR(ebx, rng);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_RADIATION);

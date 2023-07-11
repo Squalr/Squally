@@ -18,7 +18,7 @@
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="798" name="castle-dark" type="terrain" x="527.273" y="-300.001" width="1212.12" height="1581.82">
+  <object id="798" name="ruins-gray-dark" type="terrain" x="527.273" y="-300.001" width="1212.12" height="1581.82">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -154,12 +154,12 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="799" name="castle-dark" type="terrain" x="-63.5145" y="-28.3039" width="975.332" height="1209.09">
+  <object id="799" name="ruins-gray-dark" type="terrain" x="-63.5145" y="-28.3039" width="975.332" height="1209.09">
    <properties>
     <property name="collision" value="none"/>
    </properties>
   </object>
-  <object id="800" name="castle-dark" type="terrain" x="1249.03" y="-19.6965" width="1126.67" height="1209.09">
+  <object id="800" name="ruins-gray-dark" type="terrain" x="1249.03" y="-19.6965" width="1126.67" height="1209.09">
    <properties>
     <property name="collision" value="none"/>
    </properties>

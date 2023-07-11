@@ -16,6 +16,7 @@ protected:
 	virtual ~ManaLife();
 
 	void onEnter() override;
+	void update(float dt) override;
 	void initializePositions() override;
 	void registerHackables() override;
 

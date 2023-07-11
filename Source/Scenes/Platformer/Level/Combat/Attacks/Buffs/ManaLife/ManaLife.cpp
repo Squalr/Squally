@@ -66,6 +66,15 @@ ManaLife::~ManaLife()
 void ManaLife::onEnter()
 {
 	super::onEnter();
+
+	this->scheduleUpdate();
+}
+
+void ManaLife::update(float dt)
+{
+	super::update(dt);
+
+	this->applyManaLife();
 }
 
 void ManaLife::initializePositions()
@@ -159,7 +168,7 @@ NO_OPTIMIZE void ManaLife::applyManaLife()
 
 	HACKABLES_STOP_SEARCH();
 
-	if (this->owner->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0) <= 0)
+	if (this->owner->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) && this->owner->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0) <= 0)
 	{
 		this->owner->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 		{

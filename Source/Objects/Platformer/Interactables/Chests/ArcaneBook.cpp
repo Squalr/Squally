@@ -56,7 +56,7 @@ bool ArcaneBook::tryOpen()
 	
 	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookArcane, Value(true));
 	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
-	Objectives::SetCurrentObjective(ObjectiveKeys::CVExploreSecretTunnel);
+	Objectives::SetCurrentObjective(ObjectiveKeys::CVExamineArcaneEnergy);
 	
 	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
 		Strings::Platformer_Spellbooks_SpellbookAcquired::create(),

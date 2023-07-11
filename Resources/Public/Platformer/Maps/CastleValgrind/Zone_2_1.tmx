@@ -253,13 +253,13 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="956" name="wood" type="texture" x="2413.08" y="-261.289" width="1475.93" height="1149.84"/>
+  <object id="956" name="wood" type="texture" x="2505.08" y="-261.289" width="1383.93" height="1149.84"/>
  </objectgroup>
  <objectgroup id="81" name="columns -0">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="955" name="wood" type="terrain" x="2374.57" y="-265.516" width="51.823" height="1248">
+  <object id="955" name="wood" type="terrain" x="2466.57" y="-269.516" width="51.823" height="1248">
    <properties>
     <property name="collision" value="none"/>
    </properties>
@@ -295,7 +295,7 @@
   <object id="922" name="wood" type="terrain" x="1892.99" y="2991.53" width="2176.05" height="112"/>
   <object id="924" name="wood" type="terrain" x="-88.9143" y="3969.11" width="3849.82" height="234.06"/>
   <object id="925" name="wood" type="terrain" x="-99.1214" y="3044.48" width="1488.56" height="141.181"/>
-  <object id="926" name="wood" type="terrain" x="2275.91" y="876.614" width="1437.72" height="141.181"/>
+  <object id="926" name="wood" type="terrain" x="2171.91" y="876.614" width="1541.72" height="141.181"/>
   <object id="927" name="wood" type="terrain" x="1151.43" y="1425.03" width="420" height="112"/>
   <object id="928" name="wood" type="terrain" x="1029.42" y="1556.01" width="420" height="112"/>
   <object id="929" name="wood" type="terrain" x="-53.4599" y="1680.66" width="1342.42" height="112"/>

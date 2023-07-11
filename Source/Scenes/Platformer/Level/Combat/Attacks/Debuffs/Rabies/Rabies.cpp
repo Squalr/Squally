@@ -158,13 +158,7 @@ void Rabies::registerHackables()
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJge::create()),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create()),
-							ConstantString::create("\n\n"),
-							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
-							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()),
-							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()),
-							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()),
-							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()),
-							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+							ConstantString::create("\n"),
 						})
 						, // x64
 						ConcatString::create({
@@ -190,13 +184,7 @@ void Rabies::registerHackables()
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJge::create()),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentGe::create()),
-							ConstantString::create("\n\n"),
-							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
-							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()),
-							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()),
-							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()),
-							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()),
-							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
+							ConstantString::create("\n"),
 						})
 					)
 				},
