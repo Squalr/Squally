@@ -26,10 +26,13 @@ ShopPoolSmithT1* ShopPoolSmithT1::create(ValueMap& properties)
 
 ShopPoolSmithT1::ShopPoolSmithT1(ValueMap& properties) : super(properties, ShopPoolSmithT1::PoolName, { })
 {
-	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Guaranteed));
+	// Phasing out
 	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Quartz::create(), ItemChance::Probability::Guaranteed));
+
+	// Universal
+	this->addItemToPool(ItemChance::create(Wood::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolSmithT1::~ShopPoolSmithT1()

@@ -63,7 +63,7 @@ const std::string& TransmuteCopperToQuartzRecipe::getIconResource()
 
 std::string TransmuteCopperToQuartzRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Crafting_Smithing_T2_Quartz;
+	return ItemResources::Crafting_Smithing_T1_Quartz;
 }
 
 const std::string& TransmuteCopperToQuartzRecipe::getIdentifier()

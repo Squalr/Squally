@@ -100,9 +100,7 @@ namespace MapResources
 	extern const std::string EndianForest_Combat_TempleBoss;
 	extern const std::string EndianForest_Home_Ara;
 	extern const std::string EndianForest_Home_Gramps;
-	extern const std::string EndianForest_Home_Guano;
 	extern const std::string EndianForest_Home_Hut;
-	extern const std::string EndianForest_Home_Troll;
 	extern const std::string EndianForest_Ship_Captain;
 	extern const std::string EndianForest_Ship_Hull;
 	extern const std::string EndianForest_Ship_Main;
@@ -187,6 +185,8 @@ namespace MapResources
 	extern const std::string LambdaCrypts_Zone_4_0_a;
 	extern const std::string LambdaCrypts_Zone_4_1;
 	extern const std::string LambdaCrypts_Zone_4_2;
+	extern const std::string MagesGuild_Home_Guano;
+	extern const std::string MagesGuild_Home_Troll;
 	extern const std::string MagesGuild_Mages_Gauntlet_1;
 	extern const std::string MagesGuild_Mages_Gauntlet_2;
 	extern const std::string MagesGuild_Mages_Gauntlet_3;

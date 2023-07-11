@@ -26,12 +26,17 @@ ShopPoolSmithT4* ShopPoolSmithT4::create(ValueMap& properties)
 
 ShopPoolSmithT4::ShopPoolSmithT4(ValueMap& properties) : super(properties, ShopPoolSmithT4::PoolName, { })
 {
+	// Phasing in
+	this->addItemToPool(ItemChance::create(Mithril::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Sapphire::create(), ItemChance::Probability::Guaranteed));
+	
+	// Phasing out
+	this->addItemToPool(ItemChance::create(Gold::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Emerald::create(), ItemChance::Probability::Guaranteed));
+
+	// Universal
 	this->addItemToPool(ItemChance::create(DarkWood::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Gold::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Iron::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Copper::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Diamond::create(), ItemChance::Probability::Guaranteed));
 }
 
 ShopPoolSmithT4::~ShopPoolSmithT4()

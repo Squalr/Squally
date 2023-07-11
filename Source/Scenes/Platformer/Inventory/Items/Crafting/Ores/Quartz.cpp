@@ -20,7 +20,7 @@ Quartz* Quartz::create()
 	return instance;
 }
 
-Quartz::Quartz() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 12 * 3 }}), ItemMeta(20000))
+Quartz::Quartz() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 12 * 1 }}), ItemMeta(20000))
 {
 }
 
@@ -40,7 +40,7 @@ LocalizedString* Quartz::getString()
 
 const std::string& Quartz::getIconResource()
 {
-	return ItemResources::Crafting_Smithing_T2_Quartz;
+	return ItemResources::Crafting_Smithing_T1_Quartz;
 }
 
 const std::string& Quartz::getIdentifier()

@@ -109,10 +109,10 @@ namespace ItemResources
 	extern const std::string Crafting_Smithing_HeartOfFire;
 	extern const std::string Crafting_Smithing_HeartOfShadow;
 	extern const std::string Crafting_Smithing_MysteryElement;
-	extern const std::string Crafting_Smithing_Silver;
 	extern const std::string Crafting_Smithing_T1_Copper;
+	extern const std::string Crafting_Smithing_T1_Quartz;
 	extern const std::string Crafting_Smithing_T2_Iron;
-	extern const std::string Crafting_Smithing_T2_Quartz;
+	extern const std::string Crafting_Smithing_T2_Silver;
 	extern const std::string Crafting_Smithing_T3_Emerald;
 	extern const std::string Crafting_Smithing_T3_Gold;
 	extern const std::string Crafting_Smithing_T4_Mithril;
@@ -275,9 +275,9 @@ namespace ItemResources
 	extern const std::string Equipment_Weapons_Wands_CrystalWand;
 	extern const std::string Equipment_Weapons_Wands_DemonicWand;
 	extern const std::string Equipment_Weapons_Wands_EmeraldWand;
-	extern const std::string Equipment_Weapons_Wands_GoldenWand;
 	extern const std::string Equipment_Weapons_Wands_QuartzWand;
 	extern const std::string Equipment_Weapons_Wands_SapphireWand;
+	extern const std::string Equipment_Weapons_Wands_SilverWand;
 	extern const std::string Equipment_Weapons_Wands_VoidWand;
 	extern const std::string Equipment_Weapons_Wands_WoodenWand;
 	extern const std::string Error_MissingNo;

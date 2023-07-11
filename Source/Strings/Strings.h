@@ -5724,6 +5724,21 @@ namespace Strings
 		virtual ~Items_Crafting_Ore_Sapphire() = default;
 	};
 
+	class Items_Crafting_Ore_Silver : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Crafting_Ore_Silver();
+		virtual ~Items_Crafting_Ore_Silver() = default;
+	};
+
 	class Items_Crafting_Ore_Sulfur : public LocalizedString
 	{
 	public:
@@ -8109,21 +8124,6 @@ namespace Strings
 		virtual ~Items_Equipment_Weapons_Wands_EmeraldWand() = default;
 	};
 
-	class Items_Equipment_Weapons_Wands_GoldenWand : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Equipment_Weapons_Wands_GoldenWand();
-		virtual ~Items_Equipment_Weapons_Wands_GoldenWand() = default;
-	};
-
 	class Items_Equipment_Weapons_Wands_QuartzWand : public LocalizedString
 	{
 	public:
@@ -8167,6 +8167,21 @@ namespace Strings
 	private:
 		Items_Equipment_Weapons_Wands_SerpentWand();
 		virtual ~Items_Equipment_Weapons_Wands_SerpentWand() = default;
+	};
+
+	class Items_Equipment_Weapons_Wands_SilverWand : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Weapons_Wands_SilverWand();
+		virtual ~Items_Equipment_Weapons_Wands_SilverWand() = default;
 	};
 
 	class Items_Equipment_Weapons_Wands_TaserRod : public LocalizedString

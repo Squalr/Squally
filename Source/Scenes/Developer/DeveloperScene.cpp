@@ -110,7 +110,7 @@ DeveloperScene::DeveloperScene()
 		- DM blind comment explaining xor, xor
 		- DM stalactite death can be weird sometimes (ie on demo stalactite immediately after mounting)
 		--------------
-		- ** CV rabies is tl;dr
+		- ** CV rabies is tl;dr (do I care anymore? I shortened it a bit and it's easy to figure out)
 		- v CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
 		- vv CV secret tunnel feels unfinished
 		--------------
@@ -251,7 +251,7 @@ DeveloperScene::DeveloperScene()
 		mapList.push_back(this->buildDebugButton("Zone 1_2 (EF)", MapResources::EndianForest_Zone_1_2));
 		mapList.push_back(this->buildDebugButton("Zone 1_1 (EF)", MapResources::EndianForest_Zone_1_1));
 		mapList.push_back(this->buildDebugButton("Zone 1_0 (EF)", MapResources::EndianForest_Zone_1_0));
-		mapList.push_back(this->buildDebugButton("Guano's Cell", MapResources::EndianForest_Home_Guano));
+		mapList.push_back(this->buildDebugButton("Guano's Cell", MapResources::MagesGuild_Home_Guano));
 		mapList.push_back(this->buildDebugButton("Mage's Prison", MapResources::MagesGuild_Mages_Prison));
 		mapList.push_back(this->buildDebugButton("Mage's Guild",MapResources::MagesGuild_Mages_Guild));
 		mapList.push_back(this->buildDebugButton("Mage's Gauntlet", MapResources::MagesGuild_Mages_Gauntlet_Entrance));

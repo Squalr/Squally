@@ -243,10 +243,10 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[CrystalWand::SaveKey] = [=]() { return (Item*)CrystalWand::create(); };
 	this->deserializers[DemonicWand::SaveKey] = [=]() { return (Item*)DemonicWand::create(); };
 	this->deserializers[EmeraldWand::SaveKey] = [=]() { return (Item*)EmeraldWand::create(); };
-	this->deserializers[GoldenWand::SaveKey] = [=]() { return (Item*)GoldenWand::create(); };
 	this->deserializers[QuartzWand::SaveKey] = [=]() { return (Item*)QuartzWand::create(); };
 	this->deserializers[SapphireWand::SaveKey] = [=]() { return (Item*)SapphireWand::create(); };
 	this->deserializers[SerpentWand::SaveKey] = [=]() { return (Item*)SerpentWand::create(); };
+	this->deserializers[SilverWand::SaveKey] = [=]() { return (Item*)SilverWand::create(); };
 	this->deserializers[TaserRod::SaveKey] = [=]() { return (Item*)TaserRod::create(); };
 	this->deserializers[VoidWand::SaveKey] = [=]() { return (Item*)VoidWand::create(); };
 	this->deserializers[WitchesWand::SaveKey] = [=]() { return (Item*)WitchesWand::create(); };
@@ -467,10 +467,10 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[CrystalWandPlans::SaveKey] = [=]() { return (Item*)CrystalWandPlans::create(); };
 	this->deserializers[DemonicWandPlans::SaveKey] = [=]() { return (Item*)DemonicWandPlans::create(); };
 	this->deserializers[EmeraldWandPlans::SaveKey] = [=]() { return (Item*)EmeraldWandPlans::create(); };
-	this->deserializers[GoldenWandPlans::SaveKey] = [=]() { return (Item*)GoldenWandPlans::create(); };
 	this->deserializers[QuartzWandPlans::SaveKey] = [=]() { return (Item*)QuartzWandPlans::create(); };
 	this->deserializers[SapphireWandPlans::SaveKey] = [=]() { return (Item*)SapphireWandPlans::create(); };
 	this->deserializers[SerpentWandPlans::SaveKey] = [=]() { return (Item*)SerpentWandPlans::create(); };
+	this->deserializers[SilverWandPlans::SaveKey] = [=]() { return (Item*)SilverWandPlans::create(); };
 	this->deserializers[TaserRodPlans::SaveKey] = [=]() { return (Item*)TaserRodPlans::create(); };
 	this->deserializers[VoidWandPlans::SaveKey] = [=]() { return (Item*)VoidWandPlans::create(); };
 	this->deserializers[WoodenWandPlans::SaveKey] = [=]() { return (Item*)WoodenWandPlans::create(); };

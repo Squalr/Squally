@@ -21,11 +21,11 @@ EmeraldWand* EmeraldWand::create()
 	return instance;
 }
 
-EmeraldWand::EmeraldWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), WAND_DAMAGE_MIN(3), WAND_DAMAGE_MAX(3), ItemStats(
+EmeraldWand::EmeraldWand() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 2 }}), WAND_DAMAGE_MIN(4), WAND_DAMAGE_MAX(4), ItemStats(
 	// Health
 	0,
 	// Mana
-	9,
+	12,
 	// Attack
 	0,
 	// Magic Attack
