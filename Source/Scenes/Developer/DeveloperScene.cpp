@@ -82,7 +82,6 @@ DeveloperScene::DeveloperScene()
 
 	- Maps:
 		- v Bard floating in EF portal
-		- v EF FPU warning on Grogg fireball
 		- v EF Guano shadow hovering on temple map combat (boss)
 		- v EF temple top bg no longer reflects state of EF buildings
 		- v EF copper axe seems too high damage
@@ -160,6 +159,7 @@ DeveloperScene::DeveloperScene()
 		- ** Dog shit stat timing bug is back
 		- ** Infinite salvage bug
 		- v Terrain cull popping
+		- v Can equip infinite rings?
 		- v Maybe HP pots in combat should self-target initally?
 		- v Z check for pick-pocketing
 		- v Can probably use silver in more places

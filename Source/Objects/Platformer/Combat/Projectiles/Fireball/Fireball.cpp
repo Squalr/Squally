@@ -122,8 +122,14 @@ void Fireball::registerHackables()
 								setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))),
 							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentAlterSpeed::create()),
 							ConstantString::create("mov dword ptr [eax], 0.0f\n"),
-							ConstantString::create("movss xmm1, dword ptr [eax]\n\n"),
-							ConstantString::create("mulps xmm0, xmm1")
+							ConstantString::create("movss xmm1, dword ptr [eax]\n"),
+							ConstantString::create("mulps xmm0, xmm1\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 						})
 						, // x64
 						ConcatString::create({
@@ -132,8 +138,14 @@ void Fireball::registerHackables()
 								setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))),
 							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_Fireball_ApplySpeed_CommentAlterSpeed::create()),
 							ConstantString::create("mov dword ptr [rax], 0.0f\n"),
-							ConstantString::create("movss xmm1, dword ptr [rax]\n\n"),
-							ConstantString::create("mulps xmm0, xmm1")
+							ConstantString::create("movss xmm1, dword ptr [rax]\n"),
+							ConstantString::create("mulps xmm0, xmm1\n\n"),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt1::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt2::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt3::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentFloatPt4::create()),
+							COMMENT(Strings::Menus_Hacking_Abilities_Generic_CommentBreak::create())
 						})
 					)
 				}

@@ -24,7 +24,10 @@
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Consumables/Consumable.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Earrings/Earring.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Hat.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Necklaces/Necklace.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Rings/Ring.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Offhands/Offhand.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Weapons/Weapon.h"
 #include "Scenes/Platformer/Save/SaveKeys.h"
@@ -267,7 +270,19 @@ void InventoryMenu::equipItem(Item* item)
 	{
 		equippedItem = this->equipmentInventory->getOffhand();
 	}
-	
+	else if (dynamic_cast<Ring*>(item))
+	{
+		equippedItem = this->equipmentInventory->getRing();
+	}
+	else if (dynamic_cast<Earring*>(item))
+	{
+		equippedItem = this->equipmentInventory->getEarring();
+	}
+	else if (dynamic_cast<Necklace*>(item))
+	{
+		equippedItem = this->equipmentInventory->getNecklace();
+	}
+		
 	this->inventory->tryTransact(this->equipmentInventory, item, equippedItem, [=](Item* item, Item* otherItem)
 	{
 		// Success equipping item. Adjust final position if equipping an item without a swap
