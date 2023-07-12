@@ -114,7 +114,7 @@ bool PreviewMap::loadMap(std::string mapResource)
 	}
 
 	this->mapResource = mapResource;
-	this->map = GameMap::deserialize(this->mapResource, GameMap::parse(this->mapResource), this->layerDeserializers, true);
+	this->map = GameMap::deserialize(this->mapResource, GameMap::parse(this->mapResource), this->layerDeserializers, true, true);
 
 	CollisionObject::UniverseId = previousUniverseId;
 	

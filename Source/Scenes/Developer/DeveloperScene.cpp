@@ -81,12 +81,10 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Maps:
-		- v Bard floating in EF portal
 		- v EF Guano shadow hovering on temple map combat (boss)
 		- v EF temple top bg no longer reflects state of EF buildings
 		- v EF copper axe seems too high damage
 		- v EF Orc Swordsman missing cast anim
-		- v EF no ram rolling sfx
 		- v EF maybe bust out new song for Orthrus & Gorgon
 		- vv EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- vv Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
@@ -142,24 +140,11 @@ DeveloperScene::DeveloperScene()
 			- * Needs enemy scripting according to notes on which instructions this zone covers
 			- * Frost SpellBook (?? / ??)
 			- BP, somewhere				=> Frost Axe
-		
-	- Localization / Scripting:
-		- + Lexicon is largely incomplete
-			- + Fill out descriptions without samples first
-		- + Text navigation is pretty bad in long scripts.
-		- + Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
-		- + Multi-line comments in scripts can cause line counter to become disrupted
-		- + Should really expand scripting text editor
-			- + Support click-to-place cursor
-		- User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
-		- v If ever re-instating Arabic, Ctrl+F all "ar": "! and "ar": ". strings to find places where punctuation was messed up and fix them
-		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
 	
 	- General:
 		- ** Dog shit stat timing bug is back
 		- ** Infinite salvage bug
 		- v Terrain cull popping
-		- v Can equip infinite rings?
 		- v Maybe HP pots in combat should self-target initally?
 		- v Z check for pick-pocketing
 		- v Can probably use silver in more places
@@ -182,6 +167,17 @@ DeveloperScene::DeveloperScene()
 		- v Potion SFX should not be paused on potion menu
 		- v More transmutes (perhaps custom UI to show a transmute wheel)
 		- v Crash reports probably are broken (switch to new SendGrid)
+		
+	- Localization / Scripting:
+		- + Lexicon is largely incomplete
+			- + Fill out descriptions without samples first
+		- + Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
+		- + Multi-line comments in scripts can cause line counter to become disrupted
+		- + Should really expand scripting text editor
+			- + Support click-to-place cursor
+		- User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
+		- v If ever re-instating Arabic, Ctrl+F all "ar": "! and "ar": ". strings to find places where punctuation was messed up and fix them
+		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
 	
 	- Large asset updates:
 		- v Enemy anims for getting hit
