@@ -39,6 +39,14 @@ void SoundBase::onEnter()
 	this->scheduleUpdate();
 }
 
+void SoundBase::pause()
+{
+	if (!this->ignorePause)
+	{
+		super::pause();
+	}
+}
+
 void SoundBase::update(float dt)
 {
 	super::update(dt);
@@ -179,6 +187,11 @@ void SoundBase::stopAndFadeOut(std::function<void()> onFadeOutCallback, bool has
 			break;
 		}
 	}
+}
+
+void SoundBase::toggleIgnorePause(bool ignorePause)
+{
+	this->ignorePause = ignorePause;
 }
 
 void SoundBase::setCustomMultiplier(float customMultiplier)

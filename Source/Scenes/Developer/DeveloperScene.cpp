@@ -157,6 +157,8 @@ DeveloperScene::DeveloperScene()
 		- v Guano Bell should play a bell above him
 		- v Wand energy bolt literally does an attack anim and nothing
 		- v No interrupt if damage attack modified to heal (test with Strength)
+		- v Despawn cracks on interact? Or something
+		- v Shadow cast needs y sorting
 		- v quick swap FX
 		- v quick warp FX
 		- v maybe stat deltas on equipment in craft menu
@@ -164,7 +166,6 @@ DeveloperScene::DeveloperScene()
 		- v Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
 		- v Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
-		- v Potion SFX should not be paused on potion menu
 		- v More transmutes (perhaps custom UI to show a transmute wheel)
 		- v Crash reports probably are broken (switch to new SendGrid)
 		

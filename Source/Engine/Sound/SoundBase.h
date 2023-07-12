@@ -16,6 +16,7 @@ public:
 	virtual void freeze(); // careful, pause is a cocos function
 	virtual void stop();
 	virtual void stopAndFadeOut(std::function<void()> onFadeOutCallback = nullptr, bool hasPriority = false);
+	void toggleIgnorePause(bool ignorePause);
 
 	void setCustomMultiplier(float customMultiplier);
 	virtual void setSoundResource(std::string soundResource);
@@ -28,6 +29,7 @@ protected:
 	virtual ~SoundBase();
 
 	void onEnter() override;
+	void pause() override;
 	void update(float dt) override;
 	virtual float getConfigVolume() = 0;
 	void updateVolume();
@@ -49,6 +51,8 @@ protected:
 	
 private:
 	typedef GameObject super;
+
+	bool ignorePause = false;
 
 	static const std::string KeyScheduleFadeOutAudio;
 };

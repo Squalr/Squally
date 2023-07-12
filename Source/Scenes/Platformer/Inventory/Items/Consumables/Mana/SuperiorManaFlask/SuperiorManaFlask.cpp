@@ -33,6 +33,8 @@ SuperiorManaFlask::SuperiorManaFlask() : super(CurrencyInventory::create({{ IOU:
 {
 	this->outOfCombatSound = Sound::create(SoundResources::Platformer_FX_Potions_PotionDrink2);
 
+	this->outOfCombatSound->toggleIgnorePause(true);
+
 	this->addChild(this->outOfCombatSound);
 }
 
