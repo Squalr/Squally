@@ -129,8 +129,10 @@ StateOverride* FFPuzzleBBehavior::getStateOverride()
 		// Enemy decimal cards
 		std::vector<CardData*>
 		{
+			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 			CardList::getInstance()->cardListByName.at(CardKeys::Decimal15),
 			CardList::getInstance()->cardListByName.at(CardKeys::Decimal14),
+			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),
 			CardList::getInstance()->cardListByName.at(CardKeys::Decimal13),
 			CardList::getInstance()->cardListByName.at(CardKeys::Decimal12),
 			CardList::getInstance()->cardListByName.at(CardKeys::Absorb),

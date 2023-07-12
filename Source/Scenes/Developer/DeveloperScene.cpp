@@ -153,7 +153,9 @@ DeveloperScene::DeveloperScene()
 		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
 	
 	- General:
+		- ** Dog shit stat timing bug is back
 		- v Z check for pick-pocketing
+		- v Can probably use silver in more places
 		- v New hover height is creating pop up on spawn. Not sure best fix.
 		- v Increase hover collision size, and put it inside Squally a bit. This will help prevent falling through top only collision when walking horizontally (ie temple exterior stairs in EF)
 		- v Maybe some storyline for introducing powers

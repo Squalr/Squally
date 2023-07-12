@@ -98,7 +98,7 @@ void GlassDisplaySpellbookShadow::unlockAndGiveItems()
 {
 	this->open(true);
 	
-	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookWind, Value(true));
+	SaveManager::SaveProfileData(SaveKeys::SaveKeySpellBookShadow, Value(true));
 	HackableObject::SetHackFlags(HackFlagUtils::GetCurrentHackFlags());
 	
 	NotificationEvents::TriggerNotification(NotificationEvents::NotificationArgs(
