@@ -39,7 +39,7 @@ std::vector<std::tuple<Item*, int>> DemonicWandPlans::getReagentsInternal()
 	return
 	{
 		{ Ruby::create(), 2 },
-		{ Sulfur::create(), 8 },
+		{ Sulfur::create(), 6 },
 		{ Iron::create(), 2 },
 		{ Coal::create(), 8 },
 	};

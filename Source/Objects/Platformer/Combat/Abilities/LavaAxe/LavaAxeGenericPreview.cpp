@@ -22,7 +22,7 @@ LavaAxeGenericPreview::LavaAxeGenericPreview()
 {
 	this->axe = Sprite::create(ObjectResources::Physics_LavaAxe_LavaAxe);
 
-	this->axe->setScale(0.05f);
+	this->axe->setScale(0.2f);
 
 	this->previewNode->addChild(this->axe);
 }

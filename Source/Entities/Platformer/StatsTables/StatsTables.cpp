@@ -340,9 +340,9 @@ StatsTables::StatsTables()
 		VS
 	************/
 	
-	StatsTables::StatsTable[Exterminator::MapKey] = StatsIncrements(Stats(95, 32, 140));
-	StatsTables::StatsTable[Perceptron::MapKey] = StatsIncrements(Stats(999, 999, 1024));
-	StatsTables::StatsTable[VoidDemon::MapKey] = StatsIncrements(Stats(90, 64, 145));
+	StatsTables::StatsTable[Exterminator::MapKey] = StatsIncrements(Stats(96, 32, 140));
+	StatsTables::StatsTable[Perceptron::MapKey] = StatsIncrements(Stats(2048, 1024, 1024));
+	StatsTables::StatsTable[VoidDemon::MapKey] = StatsIncrements(Stats(128, 64, 145));
 	
 	StatsTables::StatsTable[Boron::MapKey] = NpcStats;
 	StatsTables::StatsTable[Radon::MapKey] = NpcStats;

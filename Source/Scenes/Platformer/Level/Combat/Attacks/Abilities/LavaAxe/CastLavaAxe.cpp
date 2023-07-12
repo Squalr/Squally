@@ -121,47 +121,22 @@ void CastLavaAxe::onCleanup()
 bool CastLavaAxe::isWorthUsing(PlatformerEntity* caster, const std::vector<PlatformerEntity*>& sameTeam, const std::vector<PlatformerEntity*>& otherTeam)
 {
 	bool worthUsing = true;
+	float healthRatio = 1.0f;
 
-	PlatformerEntity* strongestTeamMember = nullptr;
-	int highestHp = 0;
-	int highestCurrentHp = 0;
-
-	for (PlatformerEntity* next : sameTeam)
+	if (caster != nullptr)
 	{
-		next->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* entityHealthBehavior)
+		caster->getComponent<EntityHealthBehavior>([&](EntityHealthBehavior* entityHealthBehavior)
 		{
-			if (entityHealthBehavior->getMaxHealth() > highestHp)
-			{
-				highestHp = entityHealthBehavior->getMaxHealth();
-				highestCurrentHp = entityHealthBehavior->getHealth();
-			}
+			int maxHp = entityHealthBehavior->getMaxHealth();
+			int currentHp = entityHealthBehavior->getHealth();
+			
+			healthRatio = maxHp == 0 ? 1.0f : (float(currentHp) / float(maxHp));
 		});
 	}
 
-	float healthRatio = highestHp == 0 ? 1.0f : (float(highestCurrentHp) / float(highestHp));
-
-	if (healthRatio > 0.5f)
+	if (healthRatio > 0.75f)
 	{
 		worthUsing = false;
-	}
-	else
-	{
-		CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([&](Timeline* timeline)
-		{
-			for (TimelineEntry* next : timeline->getEntries())
-			{
-				if (dynamic_cast<CastLavaAxe*>(next->getStagedCast()) != nullptr)
-				{
-					worthUsing = false;
-					break;
-				}
-			}
-		}));
-
-		ObjectEvents::QueryObject<LavaAxe>([&](LavaAxe*)
-		{
-			worthUsing = false;
-		});
 	}
 
 	return worthUsing;

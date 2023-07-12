@@ -82,7 +82,6 @@ DeveloperScene::DeveloperScene()
 
 	- Maps:
 		- v Bard floating in EF portal
-		- v EF SHL puzzle in temple should show the beneficial case too
 		- v EF FPU warning on Grogg fireball
 		- v EF Guano shadow hovering on temple map combat (boss)
 		- v EF temple top bg no longer reflects state of EF buildings
@@ -125,7 +124,12 @@ DeveloperScene::DeveloperScene()
 		- vv Make LC final 4_x maps less bad.
 		--------------
 		- ** FF Final crack art is ass
+		- * Delivering bomb doesn't clear quest turn-in indicator
+		- vv FF Asmodeus crowd should animate
+		- vv FF Lava axe needs SFX
+		- vv FF Archer shot is wrong
 		- vv Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
+		- vv FF give demon grunt (scalding blade user) an add potion?
 		--------------
 		* BP
 			- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
@@ -154,6 +158,9 @@ DeveloperScene::DeveloperScene()
 	
 	- General:
 		- ** Dog shit stat timing bug is back
+		- ** Infinite salvage bug
+		- v Terrain cull popping
+		- v Maybe HP pots in combat should self-target initally?
 		- v Z check for pick-pocketing
 		- v Can probably use silver in more places
 		- v New hover height is creating pop up on spawn. Not sure best fix.

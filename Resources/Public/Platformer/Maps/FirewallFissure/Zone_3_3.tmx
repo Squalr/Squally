@@ -832,7 +832,7 @@
     <property name="components" value="ally"/>
    </properties>
   </object>
-  <object id="993" name="demon-warrior" type="entity" x="4629.94" y="911.758" width="128" height="128">
+  <object id="993" name="demon-grunt" type="entity" x="4629.94" y="911.758" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-b"/>
