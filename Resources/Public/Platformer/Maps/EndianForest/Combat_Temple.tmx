@@ -78,7 +78,7 @@
     <property name="spawn-type" value="player"/>
    </properties>
   </object>
-  <object id="558" name="combat-spawn" type="object" x="750.11" y="1559.16" width="64" height="64">
+  <object id="558" name="combat-spawn" type="object" x="749.86" y="1561.66" width="64" height="64">
    <properties>
     <property name="depth" type="float" value="-256"/>
     <property name="spawn-order" type="int" value="1"/>
