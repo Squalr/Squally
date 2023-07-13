@@ -26,6 +26,8 @@ Music* Music::clone()
 		this->musicName != nullptr ? this->musicName->clone() : nullptr,
 		this->artistName != nullptr ? this->artistName->clone() : nullptr);
 
+	clone->soundId = this->soundId;
+	clone->soundRef = this->soundRef;
 	clone->autorelease();
 
 	return clone;

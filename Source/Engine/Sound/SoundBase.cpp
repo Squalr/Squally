@@ -20,7 +20,7 @@
 using namespace cocos2d;
 using namespace cocos_experimental;
 
-const int SoundBase::InvalidSoundId = -1;;
+const int SoundBase::InvalidSoundId = -1;
 const std::string SoundBase::KeyScheduleFadeOutAudio = "SCHEDULE_KEY_FADE_OUT_AUDIO";
 
 SoundBase::SoundBase(ValueMap& properties, std::string soundResource) : super(properties)

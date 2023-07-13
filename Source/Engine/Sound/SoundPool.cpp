@@ -52,7 +52,7 @@ SoundPool::~SoundPool()
 
 int SoundPool::validateSoundId(SoundChannel soundChannel, int soundId, sf::Sound*& outSound)
 {
-	SoundChannelData* soundChannelData = getChannelData(soundChannel);
+	SoundChannelData* soundChannelData = this->getChannelData(soundChannel);
 
 	if (soundChannelData->assignedSoundIds.find(outSound) != soundChannelData->assignedSoundIds.end()
 		&& soundChannelData->assignedSoundIds[outSound] == soundId)
@@ -61,14 +61,14 @@ int SoundPool::validateSoundId(SoundChannel soundChannel, int soundId, sf::Sound
 	}
 
 	outSound = nullptr;
-	return -1;
+	return SoundBase::InvalidSoundId;
 }
 
 int SoundPool::allocSound(SoundChannel soundChannel, const std::string& soundResource, sf::Sound*& outSound)
 {
 	static int SoundId = 1;
 
-	SoundChannelData* soundChannelData = getChannelData(soundChannel);
+	SoundChannelData* soundChannelData = this->getChannelData(soundChannel);
 	
 	for (int index = 0; index < soundChannelData->maxConcurrentSounds; index++)
 	{
@@ -92,7 +92,7 @@ int SoundPool::allocSound(SoundChannel soundChannel, const std::string& soundRes
 
 bool SoundPool::allocSoundInternal(SoundChannel soundChannel, const std::string& soundResource, int index)
 {
-	SoundChannelData* soundChannelData = getChannelData(soundChannel);
+	SoundChannelData* soundChannelData = this->getChannelData(soundChannel);
 
 	switch (soundChannelData->sounds[index]->getStatus())
 	{

@@ -81,7 +81,6 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Maps:
-		- v UR The Gift is a deeply unfitting track for the gauntlet. Maybe push a new song when it starts.
 		- v UR cistern lightning hitboxes are actually a bit too forgiving
 		- v UR cistern Chest + Puzzle + Animal is overwhelming and lazy
 		- v UR sky's reach color balance
