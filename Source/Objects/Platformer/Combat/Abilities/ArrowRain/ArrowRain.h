@@ -40,6 +40,8 @@ private:
 
 	std::vector<cocos2d::Sprite*> arrowPool;
 	std::vector<float> arrowCooldowns;
+	WorldSound* impactSfxA = nullptr;
+	WorldSound* impactSfxB = nullptr;
 
 	std::string arrowResource;
 	static const std::string StateKeyIsCasterOnEnemyTeam;

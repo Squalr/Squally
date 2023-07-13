@@ -81,10 +81,6 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Maps:
-		- vv EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
-		- vv Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
-		--------------
-		- v UR arrow rain impact SFX
 		- v UR broken blade SFX is stupid
 		- v UR The Gift is a deeply unfitting track for the gauntlet. Maybe push a new song when it starts.
 		- v UR probably want impact SFX for gauntlet hit/crit
@@ -155,13 +151,16 @@ DeveloperScene::DeveloperScene()
 		- v Shadow cast needs y sorting
 		- v quick swap FX
 		- v quick warp FX
+		- v need more hit sounds, we use HitSoft1 everywhere
 		- v maybe stat deltas on equipment in craft menu
 		- v Can hacker mode during dialogue, allowing for "control during hacker mode" glitch
 		- v Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
+			- v If we keep them -- EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
 		- v Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
 		- v More transmutes (perhaps custom UI to show a transmute wheel)
 		- v Crash reports probably are broken (switch to new SendGrid)
+		- vv Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		
 	- Localization / Scripting:
 		- + Lexicon is largely incomplete

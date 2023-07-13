@@ -55,6 +55,8 @@ ArrowRain* ArrowRain::create(PlatformerEntity* caster, PlatformerEntity* target,
 
 ArrowRain::ArrowRain(PlatformerEntity* caster, PlatformerEntity* target, std::string arrowResource) : super(caster, target, true)
 {
+	this->impactSfxA = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
+	this->impactSfxB = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
 	this->arrowResource = arrowResource;
 
 	for (int index = 0; index < 8; index++)
@@ -70,6 +72,9 @@ ArrowRain::ArrowRain(PlatformerEntity* caster, PlatformerEntity* target, std::st
 
 		this->addChild(arrow);
 	}
+
+	this->addChild(this->impactSfxA);
+	this->addChild(this->impactSfxB);
 }
 
 ArrowRain::~ArrowRain()
@@ -232,6 +237,19 @@ void ArrowRain::damageOtherTeam()
 				CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->caster, next->getEntity(), std::abs(ArrowRain::Damage), AbilityType::Passive, true));
 			}
 		}
+
+		static bool Alternate = false;
+
+		if (Alternate)
+		{
+			this->impactSfxA->play();
+		}
+		else
+		{
+			this->impactSfxB->play();
+		}
+
+		Alternate = !Alternate;
 	}));
 }
 
