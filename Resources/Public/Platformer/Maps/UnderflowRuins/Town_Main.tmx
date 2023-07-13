@@ -79,23 +79,24 @@
   <properties>
    <property name="depth" type="float" value="-448"/>
    <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.35"/>
   </properties>
-  <object id="1012" name="option-warp" type="object" x="1593.67" y="773.166" width="256" height="256">
+  <object id="1012" name="warp" type="object" x="1593.67" y="773.166" width="256" height="256">
    <properties>
     <property name="from" value="7-A"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="string" value="back"/>
-    <property name="to" value="1-A,4-A"/>
+    <property name="to" value="4-A"/>
    </properties>
   </object>
-  <object id="1018" name="option-warp" type="object" x="3584" y="772.5" width="256" height="256">
+  <object id="1018" name="warp" type="object" x="3584" y="772.5" width="256" height="256">
    <properties>
     <property name="from" value="7-B"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="string" value="back"/>
-    <property name="to" value="1-B,4-B"/>
+    <property name="to" value="4-B"/>
    </properties>
   </object>
   <object id="1025" name="spawn" type="object" x="2414.67" y="902" width="128" height="128">
@@ -140,7 +141,7 @@
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="968" name="ruins-gray-thick" type="terrain" x="-277.33" y="1055.89" width="6056.39" height="968"/>
+  <object id="968" name="ruins-gray-thick" type="terrain" x="-277.33" y="1057.89" width="6056.39" height="968"/>
  </objectgroup>
  <objectgroup id="128" name="entities -6">
   <properties>
@@ -265,21 +266,9 @@
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1015" name="Generic/BlueRug" type="decor" x="1561.5" y="1105.83" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="1021" name="Generic/BlueRug" type="decor" x="3549.03" y="1104.32" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="1033" name="Generic/BlueRug" type="decor" x="2522" y="1106.83" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
+  <object id="1015" name="Generic/BlueRug" type="decor" x="1561.5" y="1105.83" width="332" height="21"/>
+  <object id="1021" name="Generic/BlueRug" type="decor" x="3549.03" y="1104.32" width="332" height="21"/>
+  <object id="1033" name="Generic/BlueRug" type="decor" x="2522" y="1106.83" width="332" height="21"/>
   <object id="1037" name="Generic/RedRug" type="decor" x="1105" y="1104.5" width="332" height="21">
    <properties>
     <property name="components" value="z-fade"/>
@@ -330,27 +319,28 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="132" name="player_layer -4" visible="0">
+ <objectgroup id="132" name="player_layer -4">
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.25"/>
   </properties>
-  <object id="1013" name="option-warp" type="object" x="1596.33" y="857.166" width="256" height="256">
+  <object id="1013" name="warp" type="object" x="1596.33" y="857.166" width="256" height="256">
    <properties>
     <property name="from" value="4-A"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="string" value="middle"/>
-    <property name="to" value="1-A,7-A"/>
+    <property name="to" value="7-A"/>
    </properties>
   </object>
-  <object id="1020" name="option-warp" type="object" x="3584.33" y="857.333" width="256" height="256">
+  <object id="1020" name="warp" type="object" x="3584.33" y="857.333" width="256" height="256">
    <properties>
     <property name="from" value="4-B"/>
     <property name="no-warp-camera" type="bool" value="true"/>
     <property name="relayer" type="bool" value="true"/>
     <property name="string" value="middle"/>
-    <property name="to" value="1-B,7-B"/>
+    <property name="to" value="7-B"/>
    </properties>
   </object>
   <object id="1028" name="spawn" type="object" x="1208" y="989" width="128" height="128">
@@ -544,21 +534,7 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="1014" name="Generic/BlueRug" type="decor" x="1558.83" y="1240.5" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="1023" name="Generic/BlueRug" type="decor" x="3547.03" y="1238.98" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
-  <object id="1032" name="Generic/BlueRug" type="decor" x="2521.33" y="1238.17" width="332" height="21">
-   <properties>
-    <property name="components" value="z-fade"/>
-   </properties>
-  </object>
+  <object id="1032" name="Generic/BlueRug" type="decor" x="2521.33" y="1238.17" width="332" height="21"/>
   <object id="1057" name="Generic/RedRug" type="decor" x="5131" y="1240.5" width="332" height="21">
    <properties>
     <property name="components" value="z-fade"/>
@@ -658,24 +634,6 @@
    <properties>
     <property name="map-banner" value="athens"/>
     <property name="transition" value="left"/>
-   </properties>
-  </object>
-  <object id="1042" name="option-warp" type="object" x="1595" y="993.833" width="256" height="256">
-   <properties>
-    <property name="from" value="1-A"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="string" value="front"/>
-    <property name="to" value="4-A,7-A"/>
-   </properties>
-  </object>
-  <object id="1043" name="option-warp" type="object" x="3584.33" y="993.333" width="256" height="256">
-   <properties>
-    <property name="from" value="1-B"/>
-    <property name="no-warp-camera" type="bool" value="true"/>
-    <property name="relayer" type="bool" value="true"/>
-    <property name="string" value="front"/>
-    <property name="to" value="4-B,7-B"/>
    </properties>
   </object>
   <object id="1066" name="spawn" type="object" x="4505.7" y="1117.82" width="128" height="128">
