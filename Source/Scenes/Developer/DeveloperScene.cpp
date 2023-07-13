@@ -123,10 +123,11 @@ DeveloperScene::DeveloperScene()
 		- ** FF Final crack art is ass
 		- * Delivering bomb doesn't clear quest turn-in indicator
 		- vv FF Asmodeus crowd should animate
-		- vv FF Lava axe needs SFX
+		- vv FF Lava Axe ability needs SFX
 		- vv FF Archer shot is wrong
 		- vv Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
 		- vv FF give demon grunt (scalding blade user) an add potion?
+		- vv FF Strange level design. After bomb, should be able to loop around to boss. Maybe keep the raised bridge, but as a warp location instead.
 		--------------
 		* BP
 			- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
@@ -142,14 +143,12 @@ DeveloperScene::DeveloperScene()
 			- BP, somewhere				=> Frost Axe
 	
 	- General:
-		- ** Dog shit stat timing bug is back
-		- ** Infinite salvage bug
+		- ** Stat timing bug is back
 		- v Terrain cull popping
 		- v Maybe HP pots in combat should self-target initally?
 		- v Z check for pick-pocketing
 		- v Can probably use silver in more places
-		- v New hover height is creating pop up on spawn. Not sure best fix.
-		- v Increase hover collision size, and put it inside Squally a bit. This will help prevent falling through top only collision when walking horizontally (ie temple exterior stairs in EF)
+		- v Decrease hover height (move up into Squally more) to fix popping up on spawn, prevent falling through top only collision when walking horizontally (ie temple exterior stairs in EF)
 		- v Maybe some storyline for introducing powers
 			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
 				- In fact, can use this as a way to force escaping the ship.

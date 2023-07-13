@@ -32,6 +32,8 @@ public:
 	void focus();
 	void unfocus();
 	bool hasFocus();
+	void lock();
+	void unlock();
 
 	static const cocos2d::Vec2 DefaultPreviewOffset;
 	static const cocos2d::Vec3 DefaultTextOffset;
@@ -64,6 +66,7 @@ private:
 	std::map<Item*, ItemEntry*> itemEntryMapping;
 	std::vector<ItemEntry*> visibleItems;
 	int selectedItemIndex = 0;
+	bool isLocked = false;
 	bool isFocused = false;
 
 	static const float LabelSpacing;

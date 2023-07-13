@@ -359,6 +359,8 @@ void CraftingMenuBase::startCraft()
 	}
 
 	this->isCrafting = true;
+	this->filterMenu->lock();
+	this->itemMenu->lock();
 	this->craftElapsedTime = 0.0f;
 	this->cancelIcon->setVisible(true);
 	this->craftIconNode->setVisible(false);
@@ -406,6 +408,8 @@ void CraftingMenuBase::craftItem()
 void CraftingMenuBase::stopCraft(bool viaCancel)
 {
 	this->isCrafting = false;
+	this->filterMenu->unlock();
+	this->itemMenu->unlock();
 
 	this->cancelIcon->setVisible(false);
 	this->craftIconNode->setVisible(true);

@@ -254,10 +254,19 @@ bool ItemMenu::hasFocus()
 {
 	return this->isFocused;
 }
+void ItemMenu::lock()
+{
+	this->isLocked = true;
+}
+
+void ItemMenu::unlock()
+{
+	this->isLocked = false;
+}
 
 void ItemMenu::scrollInventoryUp()
 {
-	if (!this->isFocused)
+	if (!this->isFocused || this->isLocked)
 	{
 		return;
 	}
@@ -269,7 +278,7 @@ void ItemMenu::scrollInventoryUp()
 
 void ItemMenu::scrollInventoryDown()
 {
-	if (!this->isFocused)
+	if (!this->isFocused || this->isLocked)
 	{
 		return;
 	}

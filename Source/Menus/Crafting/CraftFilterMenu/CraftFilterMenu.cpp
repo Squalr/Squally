@@ -98,6 +98,14 @@ void CraftFilterMenu::unfocus()
 	this->selectedFilterRowInactive->setVisible(true);
 }
 
+void CraftFilterMenu::lock()
+{
+}
+
+void CraftFilterMenu::unlock()
+{
+}
+
 CraftFilterEntry* CraftFilterMenu::getActiveFilter()
 {
 	return this->filters[this->filterSelectionIndex];
@@ -105,7 +113,7 @@ CraftFilterEntry* CraftFilterMenu::getActiveFilter()
 
 void CraftFilterMenu::scrollFilterUp()
 {
-	if (!this->isFocused)
+	if (!this->isFocused || this->isLocked)
 	{
 		return;
 	}
@@ -122,7 +130,7 @@ void CraftFilterMenu::scrollFilterUp()
 
 void CraftFilterMenu::scrollFilterDown()
 {
-	if (!this->isFocused)
+	if (!this->isFocused || this->isLocked)
 	{
 		return;
 	}
