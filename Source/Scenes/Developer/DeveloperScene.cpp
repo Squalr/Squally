@@ -81,7 +81,6 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Maps:
-		- v UR broken blade SFX is stupid
 		- v UR The Gift is a deeply unfitting track for the gauntlet. Maybe push a new song when it starts.
 		- v UR probably want impact SFX for gauntlet hit/crit
 		- v UR maybe get rid of "warp to x layer" in town, and just stagger them

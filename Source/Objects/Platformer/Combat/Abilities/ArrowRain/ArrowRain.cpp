@@ -55,8 +55,8 @@ ArrowRain* ArrowRain::create(PlatformerEntity* caster, PlatformerEntity* target,
 
 ArrowRain::ArrowRain(PlatformerEntity* caster, PlatformerEntity* target, std::string arrowResource) : super(caster, target, true)
 {
-	this->impactSfxA = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
-	this->impactSfxB = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
+	this->impactSfxA = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitCrumple1);
+	this->impactSfxB = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitCrumple2);
 	this->arrowResource = arrowResource;
 
 	for (int index = 0; index < 8; index++)
