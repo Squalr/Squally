@@ -10,7 +10,7 @@
 #include "Music/Tracks/LastMarch.h"
 #include "Music/Tracks/LittleFootsteps.h"
 #include "Music/Tracks/Perseverance.h"
-#include "Music/Tracks/RaceAgainstTheSunset.h"
+#include "Music/Tracks/RacingAgainstTheSunset.h"
 #include "Music/Tracks/Medieval.h"
 #include "Music/Tracks/Medieval2.h"
 #include "Music/Tracks/Solace.h"

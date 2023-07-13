@@ -81,8 +81,6 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Maps:
-		- v EF Orc Swordsman missing cast anim
-		- v EF maybe bust out new song for Orthrus & Gorgon
 		- vv EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- vv Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		--------------

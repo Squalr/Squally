@@ -26964,7 +26964,7 @@ namespace Strings
 		virtual ~Menus_Music_PhilipWesley_PhilipWesley() = default;
 	};
 
-	class Menus_Music_PhilipWesley_RaceAgainstTheSunset : public LocalizedString
+	class Menus_Music_PhilipWesley_RacingAgainstTheSunset : public LocalizedString
 	{
 	public:
 		static LocalizedString* create();
@@ -26975,8 +26975,8 @@ namespace Strings
 		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
 		
 	private:
-		Menus_Music_PhilipWesley_RaceAgainstTheSunset();
-		virtual ~Menus_Music_PhilipWesley_RaceAgainstTheSunset() = default;
+		Menus_Music_PhilipWesley_RacingAgainstTheSunset();
+		virtual ~Menus_Music_PhilipWesley_RacingAgainstTheSunset() = default;
 	};
 
 	class Menus_Music_StrayGhost_StrayGhost : public LocalizedString
