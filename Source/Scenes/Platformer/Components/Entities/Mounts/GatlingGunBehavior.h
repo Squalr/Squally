@@ -33,11 +33,7 @@ protected:
 	virtual cocos2d::Vec2 getProjectileSpawnOffset();
 	virtual float getProjectileLifetime();
 
-	WorldSound* attackSound = nullptr;
-
 protected:
-	virtual std::string getOutOfCombatAttackAnimation();
-	virtual std::string getOutOfCombatAttackSound();
 	virtual float getOutOfCombatAttackOnset();
 	virtual float getOutOfCombatAttackSustain();
 	virtual float getOutOfCombatAttackCooldown();

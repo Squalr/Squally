@@ -53,7 +53,7 @@ Cannon::Cannon(ValueMap& properties) : super(properties, CSize(320.0f, 224.0f))
 {
 	this->cannonAnimations = SmartAnimationNode::create(ObjectResources::Traps_Cannon_Animations);
 	this->ballAnimationPart = this->cannonAnimations->getAnimationPart("BALL");
-	this->shootSound = WorldSound::create(SoundResources::Platformer_FX_Explosions_Explosion1);
+	this->shootSound = WorldSound::create(SoundResources::Platformer_FX_Explosions_ExplosionReverb1);
 	this->currentMountOffset = Vec2(156.0f, 188.0f);
 
 	float height = GameUtils::getKeyOrDefault(this->properties, GameObject::MapKeyHeight, Value(0.0f)).asFloat();

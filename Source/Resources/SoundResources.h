@@ -206,6 +206,9 @@ namespace SoundResources
 	extern const std::string Platformer_Environment_Swim3;
 	extern const std::string Platformer_FX_Explosions_Crash1;
 	extern const std::string Platformer_FX_Explosions_Explosion1;
+	extern const std::string Platformer_FX_Explosions_ExplosionReverb1;
+	extern const std::string Platformer_FX_Explosions_ExplosionSoft1;
+	extern const std::string Platformer_FX_Explosions_ExplosionSoftReverb1;
 	extern const std::string Platformer_FX_Fire_Fire1;
 	extern const std::string Platformer_FX_Fire_FireSizzle1;
 	extern const std::string Platformer_FX_Fire_LowFlame1;

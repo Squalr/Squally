@@ -32,11 +32,15 @@ Shell* Shell::create()
 Shell::Shell() : super(nullptr, CollisionObject::createCapsulePolygon(CSize(48.0f, 48.0f)), (int)PlatformerCollisionType::PlayerWeapon, false)
 {
 	this->shell = Sprite::create(ObjectResources::Interactive_GatlingGun_Bullet);
-	this->shootSfx = WorldSound::create(SoundResources::Platformer_Spells_ElectricZap1);
+	this->shootSfx = WorldSound::create(SoundResources::Platformer_FX_Explosions_ExplosionSoftReverb1);
+	this->hitSfx = WorldSound::create(SoundResources::Platformer_FX_Explosions_ExplosionSoft1);
+	this->critSfx = WorldSound::create(SoundResources::Platformer_FX_Explosions_Explosion1);
 	this->damageFx = SmartAnimationSequenceNode::create();
 
 	this->contentNode->addChild(this->shell);
 	this->postFXNode->addChild(this->shootSfx);
+	this->postFXNode->addChild(this->hitSfx);
+	this->postFXNode->addChild(this->critSfx);
 	this->postFXNode->addChild(this->damageFx);
 }
 
@@ -65,10 +69,12 @@ void Shell::runImpactFX(bool isCrit)
 
 	if (isCrit)
 	{
+		this->critSfx->play();
 		this->damageFx->playAnimation(FXResources::ExplosionNormal_Explosion_0000, 0.035f, true);
 	}
 	else
 	{
+		this->hitSfx->play();
 		this->damageFx->playAnimation(FXResources::FireBurst_FireBurst_0000, 0.035f, true);
 	}
 }

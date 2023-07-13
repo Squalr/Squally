@@ -82,7 +82,6 @@ DeveloperScene::DeveloperScene()
 
 	- Maps:
 		- v UR The Gift is a deeply unfitting track for the gauntlet. Maybe push a new song when it starts.
-		- v UR probably want impact SFX for gauntlet hit/crit
 		- v UR maybe get rid of "warp to x layer" in town, and just stagger them
 		- v UR cistern lightning hitboxes are actually a bit too forgiving
 		- v UR cistern Chest + Puzzle + Animal is overwhelming and lazy

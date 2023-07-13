@@ -28,6 +28,8 @@ private:
 	typedef Projectile super;
 
 	WorldSound* shootSfx = nullptr;
+	WorldSound* hitSfx = nullptr;
+	WorldSound* critSfx = nullptr;
 	cocos2d::Sprite* shell = nullptr;
 	SmartAnimationSequenceNode* damageFx = nullptr;
 };
