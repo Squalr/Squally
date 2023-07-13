@@ -34,6 +34,7 @@ const std::string SkyShipUnlocked::MapKeyQuest = "sky-ship-unlocked";
 const std::string SkyShipUnlocked::QuestTagShipPortal = "sky-ship-portal-temple";
 const std::string SkyShipUnlocked::PropertyIsReturnTrip = "is-return-trip";
 const std::string SkyShipUnlocked::QuestTagTempleAirship = "temple-airship";
+const std::string SkyShipUnlocked::QuestTagTempleAirshipBg = "temple-airship-bg";
 
 SkyShipUnlocked* SkyShipUnlocked::create(GameObject* owner, QuestLine* questLine)
 {
@@ -71,6 +72,13 @@ void SkyShipUnlocked::onLoad(QuestState questState)
 		{
 			airship->despawn();
 		}, SkyShipUnlocked::QuestTagTempleAirship);
+	}
+	else
+	{
+		ObjectEvents::WatchForObject<Airship>(this, [=](Airship* airship)
+		{
+			airship->despawn();
+		}, SkyShipUnlocked::QuestTagTempleAirshipBg);
 	}
 
 	ObjectEvents::WatchForObject<Portal>(this, [=](Portal* portal)

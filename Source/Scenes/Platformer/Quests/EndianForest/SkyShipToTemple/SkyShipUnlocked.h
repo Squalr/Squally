@@ -39,4 +39,5 @@ private:
 	static const std::string PropertyIsReturnTrip;
 	static const std::string QuestTagShipPortal;
 	static const std::string QuestTagTempleAirship;
+	static const std::string QuestTagTempleAirshipBg;
 };

@@ -81,7 +81,6 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Maps:
-		- v EF temple top bg no longer reflects state of EF buildings
 		- v EF copper axe seems too high damage
 		- v EF Orc Swordsman missing cast anim
 		- v EF maybe bust out new song for Orthrus & Gorgon
