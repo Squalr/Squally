@@ -7,9 +7,12 @@ namespace sf
 	class Sound;
 }
 
+enum class SoundChannel;
+
 class SoundBase : public GameObject
 {
 public:
+	virtual void allocSound();
 	virtual void play(bool repeat = false, float startDelay = 0.0f);
 	virtual void unfreeze(); // careful, unpause is a cocos function
 	bool isPlaying();
@@ -31,6 +34,7 @@ protected:
 	void onEnter() override;
 	void pause() override;
 	void update(float dt) override;
+	virtual SoundChannel getSoundChannel();
 	virtual float getConfigVolume() = 0;
 	void updateVolume();
 	void setVolumeOverride(float volume);
@@ -44,7 +48,6 @@ protected:
 	bool enableCameraDistanceFade = false;
 	bool hasVolumeOverride = false;
 	bool isFading = false;
-	bool destroyOnFadeOut = false;
 	std::function<void()> onFadeOutCallback = nullptr;
 	sf::Sound* soundRef = nullptr;
 	int soundId = -1;

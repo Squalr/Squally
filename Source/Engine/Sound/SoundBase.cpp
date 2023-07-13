@@ -92,6 +92,16 @@ void SoundBase::update(float dt)
 	}
 }
 
+void SoundBase::allocSound()
+{
+	this->soundId = SoundPool::getInstance()->validateSoundId(this->getSoundChannel(), this->soundId, this->soundRef);
+	
+	if (this->soundRef == nullptr)
+	{
+		this->soundId = SoundPool::getInstance()->allocSound(this->getSoundChannel(), this->getSoundResource(), this->soundRef);
+	}
+}
+
 void SoundBase::play(bool repeat, float startDelay)
 {
 	if (this->soundResource.empty())
@@ -107,13 +117,7 @@ void SoundBase::play(bool repeat, float startDelay)
 		CallFunc::create([=]()
 		{
 			this->stop();
-
-			this->soundId = SoundPool::getInstance()->validateSoundId(soundId, soundRef);
-			
-			if (this->soundRef == nullptr)
-			{
-				this->soundId = SoundPool::getInstance()->allocSound(this->getSoundResource(), this->soundRef);
-			}
+			this->allocSound();
 			
 			if (this->soundRef != nullptr)
 			{
@@ -212,6 +216,11 @@ void SoundBase::setSoundResource(std::string soundResource)
 std::string SoundBase::getSoundResource() const
 {
 	return this->soundResource;
+}
+
+SoundChannel SoundBase::getSoundChannel()
+{
+	return SoundChannel::Sound;
 }
 
 void SoundBase::updateVolume()

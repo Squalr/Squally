@@ -21,6 +21,7 @@
 #include "Events/PlatformerEvents.h"
 #include "Objects/Platformer/Cinematic/CinematicMarker.h"
 #include "Objects/Platformer/Interactables/Doors/Portal.h"
+#include "Objects/Platformer/Interactables/Mounts/GatlingGun/GatlingGun.h"
 #include "Scenes/Platformer/Components/Entities/Dialogue/EntityDialogueBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityMovementBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Visual/EntityQuestVisualBehavior.h"
@@ -81,6 +82,11 @@ void GauntletIntroduction::onLoad(QuestState questState)
 		this->squally = squally;
 	}, Squally::MapKey);
 
+	ObjectEvents::WatchForObject<GatlingGun>(this, [=](GatlingGun* gatlingGun)
+	{
+		this->gatlingGun = gatlingGun;
+	}, GatlingGun::MapKey);
+
 	ObjectEvents::WatchForObject<Cleopatra>(this, [=](Cleopatra* cleopatra)
 	{
 		this->cleopatra = cleopatra;
@@ -135,6 +141,11 @@ void GauntletIntroduction::onSkipped()
 
 void GauntletIntroduction::runCinematicSequencePt1()
 {
+	if (this->gatlingGun != nullptr)
+	{
+		this->gatlingGun->playGauntletTrack();
+	}
+
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_UnderflowRuins_CleansePyramid_ColosseumGauntlet_Cleopatra_A_NewChallengersApproach::create(),
 		DialogueEvents::DialogueVisualArgs(

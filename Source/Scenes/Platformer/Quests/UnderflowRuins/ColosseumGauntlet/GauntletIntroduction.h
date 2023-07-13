@@ -3,6 +3,7 @@
 #include "Engine/Quests/QuestTask.h"
 
 class CinematicMarker;
+class GatlingGun;
 class Guano;
 class PlatformerEntity;
 class QuestLine;
@@ -34,6 +35,7 @@ private:
 	void runCinematicSequencePt3();
 
 	std::vector<PlatformerEntity*> guards;
+	GatlingGun* gatlingGun = nullptr;
 	Guano* guano = nullptr;
 	Scrappy* scrappy = nullptr;
 	Squally* squally = nullptr;

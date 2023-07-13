@@ -12,7 +12,9 @@
 
 using namespace cocos2d;
 
+// Not necessarily simultaneously playing, but amount of data loaded at once
 const int SoundPool::MaxConcurrentSounds = 64;
+const int SoundPool::MaxConcurrentMusic = 3;
 SoundPool* SoundPool::Instance = nullptr;
 
 void SoundPool::RegisterGlobalNode()
@@ -39,33 +41,21 @@ SoundPool* SoundPool::getInstance()
 
 SoundPool::SoundPool()
 {
-	this->buffers = std::vector<sf::SoundBuffer*>();
-	this->sounds = std::vector<sf::Sound*>();
-
-	for (int index = 0; index < MaxConcurrentSounds; index++)
-	{
-		sf::SoundBuffer* buffer = new sf::SoundBuffer();
-		sf::Sound* sound = new sf::Sound();
-
-		sound->setBuffer(*buffer);
-		
-		this->buffers.push_back(buffer);
-		this->sounds.push_back(sound);
-	}
+	this->initializeChannel(SoundChannel::Sound, SoundPool::MaxConcurrentSounds);
+	this->initializeChannel(SoundChannel::Music, SoundPool::MaxConcurrentMusic);
 }
 
 SoundPool::~SoundPool()
 {
-	for (int index = 0; index < MaxConcurrentSounds; index++)
-	{
-		delete(this->buffers[index]);
-		delete(this->sounds[index]);
-	}
+	this->destroyChannels();
 }
 
-int SoundPool::validateSoundId(int soundId, sf::Sound*& outSound)
+int SoundPool::validateSoundId(SoundChannel soundChannel, int soundId, sf::Sound*& outSound)
 {
-	if (assignedSoundIds.find(outSound) != assignedSoundIds.end() && assignedSoundIds[outSound] == soundId)
+	SoundChannelData* soundChannelData = getChannelData(soundChannel);
+
+	if (soundChannelData->assignedSoundIds.find(outSound) != soundChannelData->assignedSoundIds.end()
+		&& soundChannelData->assignedSoundIds[outSound] == soundId)
 	{
 		return soundId;
 	}
@@ -74,45 +64,48 @@ int SoundPool::validateSoundId(int soundId, sf::Sound*& outSound)
 	return -1;
 }
 
-int SoundPool::allocSound(const std::string& soundResource, sf::Sound*& outSound)
+int SoundPool::allocSound(SoundChannel soundChannel, const std::string& soundResource, sf::Sound*& outSound)
 {
 	static int SoundId = 1;
-	static int CachedSearchIndex = 0;
+
+	SoundChannelData* soundChannelData = getChannelData(soundChannel);
 	
-	for (int index = 0; index < MaxConcurrentSounds; index++)
+	for (int index = 0; index < soundChannelData->maxConcurrentSounds; index++)
 	{
 		// Map the index from [0 .. max) to [[previous + 1 .. max) [0 .. previous)]
 		// This allows us to start iterating from our previously allocated sound index as a heuristic
-		int searchIndex = MathUtils::wrappingNormalize(CachedSearchIndex + index + 1, 0, MaxConcurrentSounds - 1);
+		int searchIndex = MathUtils::wrappingNormalize(soundChannelData->cachedSearchIndex + index + 1, 0, soundChannelData->maxConcurrentSounds - 1);
 
-		if (this->allocSoundInternal(soundResource, searchIndex))
+		if (this->allocSoundInternal(soundChannel, soundResource, searchIndex))
 		{
-			CachedSearchIndex = searchIndex;
-			outSound = this->sounds[searchIndex];
-			this->assignedSoundIds[outSound] = SoundId++;
-			return this->assignedSoundIds[outSound];
+			soundChannelData->cachedSearchIndex = searchIndex;
+			outSound = soundChannelData->sounds[searchIndex];
+			soundChannelData->assignedSoundIds[outSound] = SoundId++;
+			return soundChannelData->assignedSoundIds[outSound];
 		}
 	}
 
 	outSound = nullptr;
-	this->assignedSoundIds[outSound] = SoundBase::InvalidSoundId;
+	soundChannelData->assignedSoundIds[outSound] = SoundBase::InvalidSoundId;
 	return SoundBase::InvalidSoundId;
 }
 
-bool SoundPool::allocSoundInternal(const std::string& soundResource, int index)
+bool SoundPool::allocSoundInternal(SoundChannel soundChannel, const std::string& soundResource, int index)
 {
-	switch (this->sounds[index]->getStatus())
+	SoundChannelData* soundChannelData = getChannelData(soundChannel);
+
+	switch (soundChannelData->sounds[index]->getStatus())
 	{
 		case sf::SoundSource::Status::Stopped:
 		{
 			std::string fullPath = FileUtils::getInstance()->fullPathForFilename(soundResource);
 
-			if (!this->buffers[index]->loadFromFile(fullPath))
+			if (!soundChannelData->buffers[index]->loadFromFile(fullPath))
 			{
 				LogUtils::logError("Failed to load sound: " + fullPath);
 			}
 
-			this->sounds[index]->setBuffer(*this->buffers[index]);
+			soundChannelData->sounds[index]->setBuffer(*soundChannelData->buffers[index]);
 			return true;
 		}
 		default:
@@ -121,5 +114,48 @@ bool SoundPool::allocSoundInternal(const std::string& soundResource, int index)
 		{
 			return false;
 		}
+	}
+}
+
+SoundChannelData* SoundPool::getChannelData(SoundChannel soundChannel)
+{
+	return soundChannelData[soundChannel];
+}
+
+void SoundPool::initializeChannel(SoundChannel soundChannel, int capacity)
+{
+	SoundChannelData* channelData = new SoundChannelData(capacity);
+
+	for (int index = 0; index < channelData->maxConcurrentSounds; index++)
+	{
+		sf::SoundBuffer* buffer = new sf::SoundBuffer();
+		sf::Sound* sound = new sf::Sound();
+
+		sound->setBuffer(*buffer);
+		
+		channelData->buffers.push_back(buffer);
+		channelData->sounds.push_back(sound);
+	}
+
+	soundChannelData.insert({ soundChannel, channelData });
+}
+
+void SoundPool::destroyChannels()
+{
+	for (const auto& next : this->soundChannelData)
+	{
+		SoundChannelData* channelData = next.second;
+
+		for (int index = 0; index < int(channelData->buffers.size()); index++)
+		{
+			delete(channelData->buffers[index]);
+		}
+		
+		for (int index = 0; index < int(channelData->sounds.size()); index++)
+		{
+			delete(channelData->sounds[index]);
+		}
+
+		delete(channelData);
 	}
 }

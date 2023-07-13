@@ -7,6 +7,7 @@ namespace cocos2d
 	class Sprite;
 }
 
+class Music;
 class SmartAnimationNode;
 
 class GatlingGun : public MountBase
@@ -17,6 +18,9 @@ public:
 	void mount(PlatformerEntity* interactingEntity) override;
 	void dismount(PlatformerEntity* entity) override;
 	SmartAnimationNode* getAnimations() const;
+
+	void playGauntletTrack();
+	void stopGauntletTrack();
 
 	static const std::string MapKey;
 
@@ -38,6 +42,7 @@ private:
 
 	SmartAnimationNode* animations = nullptr;
 	cocos2d::Sprite* body = nullptr;
+	Music* gauntletMusic = nullptr;
 
 	static const std::string PropertyColor;
 };

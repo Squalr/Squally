@@ -293,6 +293,7 @@ void WinGauntlet::runCinematicSequencePt7()
 {
 	if (this->gatlingGun != nullptr && this->squally != nullptr)
 	{
+		this->gatlingGun->stopGauntletTrack();
 		this->gatlingGun->disable();
 		this->gatlingGun->dismountAll();
 		PlatformerEvents::TriggerCinematicRestore();

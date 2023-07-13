@@ -23,6 +23,7 @@ protected:
 	void initializeListeners() override;
 	void pause() override;
 	void play(bool repeat = true, float startDelay = 0.0f) override;
+	SoundChannel getSoundChannel() override;
 	float getConfigVolume() override;
 
 private:

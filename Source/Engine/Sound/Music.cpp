@@ -103,6 +103,11 @@ void Music::popTrack(bool unpauseNext)
 	MusicPlayer::getInstance()->removeTrack(this->getSoundResource(), unpauseNext);
 }
 
+SoundChannel Music::getSoundChannel()
+{
+	return SoundChannel::Music;
+}
+
 float Music::getConfigVolume()
 {
 	return ConfigManager::getMusicVolume();
@@ -110,12 +115,7 @@ float Music::getConfigVolume()
 
 void Music::play(bool repeat, float startDelay)
 {
-	this->soundId = SoundPool::getInstance()->validateSoundId(soundId, soundRef);
-
-	if (this->soundRef == nullptr)
-	{
-		this->soundId = SoundPool::getInstance()->allocSound(this->getSoundResource(), this->soundRef);
-	}
+	this->allocSound();
 	
 	if (this->soundRef == nullptr)
 	{
