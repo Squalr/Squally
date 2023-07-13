@@ -14,7 +14,7 @@ using namespace cocos2d;
 
 // Not necessarily simultaneously playing, but amount of data loaded at once
 const int SoundPool::MaxConcurrentSounds = 64;
-const int SoundPool::MaxConcurrentMusic = 3;
+const int SoundPool::MaxConcurrentMusic = 8;
 SoundPool* SoundPool::Instance = nullptr;
 
 void SoundPool::RegisterGlobalNode()
