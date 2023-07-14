@@ -26,8 +26,6 @@ public:
 	static const float GroundCollisionPadding;
 	static const float GroundCollisionOffset;
 	static const float GroundCollisionHeight;
-	static const float GroundCollisionRadius;
-	static const float CornerCollisionWidth;
 
 protected:
 	EntityGroundCollisionBehavior(GameObject* owner);

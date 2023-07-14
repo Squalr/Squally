@@ -40,4 +40,6 @@ private:
 
 	EntityCollisionBehaviorBase* entityCollision = nullptr;
 	EntityGroundCollisionBehavior* groundCollision = nullptr;
+
+	static const float HoverSpeed;
 };

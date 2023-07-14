@@ -15,6 +15,7 @@
 using namespace cocos2d;
 
 const std::string EntityHoverCollisionBehavior::MapKey = "entity-movement-collisions";
+const float EntityHoverCollisionBehavior::HoverSpeed = 128.0f;
 
 EntityHoverCollisionBehavior* EntityHoverCollisionBehavior::create(GameObject* owner)
 {
@@ -58,6 +59,7 @@ void EntityHoverCollisionBehavior::onLoad()
 	this->defer([=]()
 	{
 		this->buildHoverCollision();
+		this->rebuildHoverCrouchCollision();
 		this->positionHoverCollision();
 		this->toggleQueryable(true);
 		
@@ -198,7 +200,7 @@ void EntityHoverCollisionBehavior::positionHoverCollision(float progress)
 	static const float MaxCrouchGround = -this->entity->getHoverHeight() + EntityGroundCollisionBehavior::GroundCollisionOffset - EntityGroundCollisionBehavior::GroundCollisionHeight / 2.0f;
 
 	static const float OriginalHoverHeight = this->entity->getHoverHeight();
-	static const Vec2 Offset = Vec2(0.0f, -OriginalHoverHeight / 2.0f);
+	static const Vec2 Offset = Vec2(0.0f, -OriginalHoverHeight / 2.0f + EntityGroundCollisionBehavior::GroundCollisionHeight);
 
 	const CSize hoverSize = this->getHoverSize(progress);
 	const float hoverDelta = OriginalHoverHeight - hoverSize.height;
@@ -243,7 +245,6 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 	
 	this->hoverCollision->whileCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::SolidPlayerOnly }, [=](CollisionData collisionData)
 	{
-		static const float HoverSpeed = 128.0f;
 		static const float MinSpeed = 0.0f;
 
 		if (this->groundCollision == nullptr
@@ -259,12 +260,11 @@ void EntityHoverCollisionBehavior::buildHoverCollision()
 		{
 			Vec2 velocity = entityCollision->movementCollision->getVelocity();
 			Vec2 gravity = entityCollision->movementCollision->getGravity();
-			float speedBoost = HoverSpeed;
 
 			velocity.y = velocity.y <= MinSpeed ? MinSpeed : velocity.y;
 
 			// Apply hover speed
-			entityCollision->movementCollision->setVelocity(velocity + (Vec2(0.0f, speedBoost) - gravity) * collisionData.dt);
+			entityCollision->movementCollision->setVelocity(velocity + (Vec2(0.0f, EntityHoverCollisionBehavior::HoverSpeed) - gravity) * collisionData.dt);
 		}
 
 		return CollisionResult::DoNothing;

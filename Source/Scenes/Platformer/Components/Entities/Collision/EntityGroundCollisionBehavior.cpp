@@ -26,9 +26,7 @@ const float EntityGroundCollisionBehavior::DropShadowPadding = 32.0f;
 const float EntityGroundCollisionBehavior::DropShadowCollisionHeight = 512.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionPadding = -4.0f;
 const float EntityGroundCollisionBehavior::GroundCollisionOffset = 0.0f;
-const float EntityGroundCollisionBehavior::GroundCollisionHeight = 64.0f;
-const float EntityGroundCollisionBehavior::GroundCollisionRadius = 8.0f;
-const float EntityGroundCollisionBehavior::CornerCollisionWidth = 32.0f;
+const float EntityGroundCollisionBehavior::GroundCollisionHeight = 32.0f;
 
 EntityGroundCollisionBehavior* EntityGroundCollisionBehavior::create(GameObject* owner)
 {
@@ -397,7 +395,7 @@ void EntityGroundCollisionBehavior::buildGroundCollisionDetector()
 	}
 
 	this->groundCollision = CollisionObject::create(
-		CollisionObject::createCapsulePolygon(
+		CollisionObject::createBox(
 			CSize(this->detectorWidth, EntityGroundCollisionBehavior::GroundCollisionHeight)
 		),
 		(int)PlatformerCollisionType::GroundDetector,
@@ -412,7 +410,7 @@ void EntityGroundCollisionBehavior::buildGroundCollisionDetector()
 	this->groundCollision->whenCollidesWith({ (int)PlatformerCollisionType::Solid, (int)PlatformerCollisionType::PassThrough, (int)PlatformerCollisionType::Physics }, [=](CollisionData collisionData)
 	{
 		this->onCollideWithGround();
-		
+
 		return CollisionResult::DoNothing;
 	});
 }
