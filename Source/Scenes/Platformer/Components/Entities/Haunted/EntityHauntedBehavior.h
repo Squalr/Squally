@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class InteractObject;
+class LocalizedString;
 class PlatformerEnemy;
 class PlatformerFriendly;
 
@@ -34,6 +35,7 @@ private:
 	typedef GameComponent super;
 
 	void unhaunt();
+	LocalizedString* getNextSpeechBubbleText();
 	
 	PlatformerEnemy* ownerAsEnemy = nullptr;
 	PlatformerFriendly* ownerAsFriendly = nullptr;

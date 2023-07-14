@@ -84,7 +84,6 @@ DeveloperScene::DeveloperScene()
 		- vv DM good loot inside arcane house? scrap arcane house? stupid ass game design
 		--------------
 		- ** CV rabies is tl;dr (do I care anymore? I shortened it a bit and it's easy to figure out)
-		- v CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
 		- vv CV 2_x maps feels unfinished
 		--------------
 		- ** LC poisoned arrows are tl;dr
@@ -124,7 +123,7 @@ DeveloperScene::DeveloperScene()
 		- ** Stat timing bug is back
 		- v Terrain cull popping
 		- v Maybe HP pots in combat should self-target initally?
-		- v Z check for pick-pocketing
+		- v Z check for pick-pocketing, repairs, soul harvest
 		- v Can probably use silver in more places
 		- v Maybe some storyline for introducing powers
 			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.

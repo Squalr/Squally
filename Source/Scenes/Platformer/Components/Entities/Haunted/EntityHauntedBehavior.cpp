@@ -110,6 +110,17 @@ void EntityHauntedBehavior::onLoad()
 				if (!isUnhaunted)
 				{
 					this->ownerAsFriendly->getAnimations()->playAnimation("Cower", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
+					
+					this->ownerAsFriendly->listenForMapEventOnce(this->ownerAsFriendly->getEntityKey(), [=](ValueMap)
+					{
+						this->ownerAsFriendly->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+						{
+							interactionBehavior->getSpeechBubble()->runDialogue(
+								this->getNextSpeechBubbleText(),
+								Voices::GetNextVoiceShort(Voices::VoiceType::Human)
+							);
+						});
+					});
 				}
 			});
 		}
@@ -168,6 +179,40 @@ void EntityHauntedBehavior::unhaunt()
 	if (!isUnhaunted)
 	{
 		SaveManager::SoftSaveProfileData(UnhauntCastle::SaveKeyPrefixUnhaunted + this->hauntedKey, Value(true));
+	}
+}
+
+LocalizedString* EntityHauntedBehavior::getNextSpeechBubbleText()
+{
+	static int NextIndex = -1;
+
+	switch(++NextIndex % 6)
+	{
+		default:
+		case 0:
+		{
+			return Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_A_Help::create();
+		}
+		case 1:
+		{
+			return Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_B_GoAway::create();
+		}
+		case 2:
+		{
+			return Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_C_Ack::create();
+		}
+		case 3:
+		{
+			return Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_D_LeaveAlone::create();
+		}
+		case 4:
+		{
+			return Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_E_NoPls::create();
+		}
+		case 5:
+		{
+			return Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_F_Begone::create();
+		}
 	}
 }
 

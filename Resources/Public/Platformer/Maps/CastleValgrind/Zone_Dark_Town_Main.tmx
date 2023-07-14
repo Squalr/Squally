@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="112" nextobjectid="1060">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="1063">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -535,6 +535,17 @@
   <object id="951" name="solid" type="collision" x="4594.24" y="-778.675" width="204.194" height="2360.26"/>
   <object id="952" name="solid" type="collision" x="1349.9" y="-856.13" width="204.194" height="2360.26"/>
  </objectgroup>
+ <objectgroup id="112" name="objects -3 fg">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1062" name="trigger" type="object" x="2311.5" y="281.09" width="1557" height="1097.82">
+   <properties>
+    <property name="send-event" value="leon"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="100" name="entities -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
@@ -950,6 +961,16 @@
   <object id="1056" name="objective-trigger" type="object" x="4833.56" y="1511.21" width="1564.88" height="1289.58">
    <properties>
     <property name="send-event" value="CV_DEFEAT_SPIRITS"/>
+   </properties>
+  </object>
+  <object id="1060" name="trigger" type="object" x="1188.11" y="1642" width="1669" height="1097.82">
+   <properties>
+    <property name="send-event" value="gaunt"/>
+   </properties>
+  </object>
+  <object id="1061" name="trigger" type="object" x="3762.77" y="1632.91" width="1581" height="1097.82">
+   <properties>
+    <property name="send-event" value="atreus"/>
    </properties>
   </object>
  </objectgroup>

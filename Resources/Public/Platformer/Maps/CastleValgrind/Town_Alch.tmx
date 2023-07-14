@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="897">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="899">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -208,6 +208,17 @@
     <property name="locked-text-key" value="none"/>
     <property name="map" value="CastleValgrind/Zone_Dark_Town_Alch"/>
     <property name="transition" value="debug"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="113" name="objects fg">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="898" name="trigger" type="object" x="496.773" y="-24.6676" width="1865.79" height="1097.82">
+   <properties>
+    <property name="send-event" value="leopold"/>
    </properties>
   </object>
  </objectgroup>

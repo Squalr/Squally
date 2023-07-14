@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="113" nextobjectid="815">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="816">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -220,6 +220,17 @@
    <properties>
     <property name="components" value="haunted-link"/>
     <property name="linked-tag" value="vampire-lord"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="113" name="objects fg">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="815" name="trigger" type="object" x="-24.4995" y="-34.91" width="1963" height="1097.82">
+   <properties>
+    <property name="send-event" value="thurstan"/>
    </properties>
   </object>
  </objectgroup>

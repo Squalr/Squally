@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="109" nextobjectid="1013">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="50" height="22" tilewidth="128" tileheight="128" infinite="0" nextlayerid="111" nextobjectid="1016">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -427,6 +427,17 @@
   <object id="951" name="solid" type="collision" x="4594.24" y="-778.675" width="204.194" height="2360.26"/>
   <object id="952" name="solid" type="collision" x="1349.9" y="-856.13" width="204.194" height="2360.26"/>
  </objectgroup>
+ <objectgroup id="110" name="objects -3 fg">
+  <properties>
+   <property name="depth" type="float" value="-192"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1015" name="trigger" type="object" x="2311.5" y="281.09" width="1557" height="1097.82">
+   <properties>
+    <property name="send-event" value="leon"/>
+   </properties>
+  </object>
+ </objectgroup>
  <objectgroup id="100" name="entities -3">
   <properties>
    <property name="depth" type="float" value="-192"/>
@@ -823,6 +834,22 @@
   <object id="1010" name="life-stone" type="object" x="4754.27" y="2306.68" width="146" height="423">
    <properties>
     <property name="transition" value="lifestone-spawn-2"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="109" name="objects fg">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="1013" name="trigger" type="object" x="1076.59" y="1650" width="1482.7" height="1097.82">
+   <properties>
+    <property name="send-event" value="gaunt"/>
+   </properties>
+  </object>
+  <object id="1014" name="trigger" type="object" x="3494.77" y="1640.91" width="1555.42" height="1097.82">
+   <properties>
+    <property name="send-event" value="atreus"/>
    </properties>
   </object>
  </objectgroup>
