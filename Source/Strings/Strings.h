@@ -13479,6 +13479,21 @@ namespace Strings
 		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_Blind() = default;
 	};
 
+	class Menus_Hacking_Abilities_Debuffs_Blind_CommentXor : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Hacking_Abilities_Debuffs_Blind_CommentXor();
+		virtual ~Menus_Hacking_Abilities_Debuffs_Blind_CommentXor() = default;
+	};
+
 	class Menus_Hacking_Abilities_Debuffs_Blind_RegisterEsi : public LocalizedString
 	{
 	public:
