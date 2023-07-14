@@ -91,7 +91,6 @@ DeveloperScene::DeveloperScene()
 		- ** LC unholy blade tl;dr
 		- ** LC cursed blade tl;dr
 		- ** LC Daze script too long
-		- v Cursed Swings wrong VFX color (see Hex.cpp)
 		- v Strange pop on Reanimated Pig death anim
 		- vv LC blue gem map feels empty. Traps?
 		- vv Make LC final 4_x maps less bad.
