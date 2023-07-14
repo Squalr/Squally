@@ -48,13 +48,13 @@ public:
 
 	static const std::string CVEnterCastle;
 	static const std::string CVInvestigateCastle;
+	static const std::string CVTakeArcaneBook;
 	static const std::string CVExamineArcaneEnergy;
 	static const std::string CVRepairClock;
 	static const std::string CVEnterClock;
 	static const std::string CVExploreDarkSide;
 	static const std::string CVDefeatSpirits;
 	static const std::string CVReturnToMabel;
-	static const std::string CVTakeArcaneBook;
 	static const std::string CVExploreSecretTunnel;
 	static const std::string CVDefeatAgnes;
 	static const std::string CVEnterLambdaCrypts;

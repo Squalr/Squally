@@ -85,6 +85,7 @@ DeveloperScene::DeveloperScene()
 		--------------
 		- ** CV rabies is tl;dr (do I care anymore? I shortened it a bit and it's easy to figure out)
 		- vv CV 2_x maps feels unfinished
+		- vv CV maybe unhaunted speech bubbles, or dialogue in light world
 		--------------
 		- ** LC poisoned arrows are tl;dr
 		- ** LC unholy blade tl;dr

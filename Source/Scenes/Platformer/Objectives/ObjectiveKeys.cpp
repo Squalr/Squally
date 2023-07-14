@@ -43,13 +43,13 @@ const std::string ObjectiveKeys::DMRideTrainToCastleValgrind = "DM_RIDE_TRAIN_TO
 
 const std::string ObjectiveKeys::CVEnterCastle = "CV_ENTER_CASTLE";
 const std::string ObjectiveKeys::CVInvestigateCastle = "CV_INVESTIGATE_CASTLE";
+const std::string ObjectiveKeys::CVTakeArcaneBook = "CV_TAKE_ARCANE_BOOK";
 const std::string ObjectiveKeys::CVExamineArcaneEnergy = "CV_EXAMINE_ARCANE_ENERGY";
 const std::string ObjectiveKeys::CVRepairClock = "CV_REPAIR_CLOCK";
 const std::string ObjectiveKeys::CVEnterClock = "CV_ENTER_CLOCK";
 const std::string ObjectiveKeys::CVExploreDarkSide = "CV_EXPLORE_DARK_SIDE";
 const std::string ObjectiveKeys::CVDefeatSpirits = "CV_DEFEAT_SPIRITS";
 const std::string ObjectiveKeys::CVReturnToMabel = "CV_RETURN_TO_MABEL";
-const std::string ObjectiveKeys::CVTakeArcaneBook = "CV_TAKE_ARCANE_BOOK";
 const std::string ObjectiveKeys::CVExploreSecretTunnel = "CV_EXPLORE_SECRET_TUNNEL";
 const std::string ObjectiveKeys::CVDefeatAgnes = "CV_DEFEAT_AGNES";
 const std::string ObjectiveKeys::CVEnterLambdaCrypts = "CV_ENTER_LAMBDA_CRYPTS";
