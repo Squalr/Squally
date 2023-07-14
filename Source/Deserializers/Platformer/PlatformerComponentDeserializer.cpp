@@ -240,6 +240,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 
 	// FF
 	this->componentDeserializers[CindraBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)CindraBehavior::create(owner); };
+	this->componentDeserializers[DemonArcherOutOfCombatAttackBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DemonArcherOutOfCombatAttackBehavior::create(owner); };
 
 	// Generic
 	this->componentDeserializers[MainhandThrowOutOfCombatAttackBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)MainhandThrowOutOfCombatAttackBehavior::create(owner); };

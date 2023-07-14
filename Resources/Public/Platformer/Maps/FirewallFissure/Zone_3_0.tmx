@@ -921,7 +921,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="FirewallFissure/Combat_Lava"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,soul,agro,melee"/>
+    <property name="components" value="enemy,soul,agro,demon-archer-attack"/>
     <property name="drop-pool" value="ff-generic"/>
    </properties>
   </object>
@@ -1076,7 +1076,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="152" name="decor bg -6">
+ <objectgroup id="152" name="decor bg -6" visible="0">
   <properties>
    <property name="depth" type="float" value="-384"/>
    <property name="type" value="objects"/>
