@@ -24,11 +24,11 @@
    <property name="depth" type="float" value="-14000"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="868" name="Snow/Background/Mountain1" type="decor" x="6880" y="-1432" width="8648" height="3828"/>
+  <object id="868" name="Snow/Background/Mountain1" type="decor" x="6992" y="-872" width="8648" height="3828"/>
  </objectgroup>
- <objectgroup id="115" name="peaks" visible="0">
+ <objectgroup id="115" name="peaks">
   <properties>
-   <property name="depth" type="float" value="-12800"/>
+   <property name="depth" type="float" value="-13000"/>
    <property name="type" value="objects"/>
   </properties>
   <object id="869" name="Snow/Background/Mountain2" type="decor" x="-2153" y="-3282" width="12576" height="6160"/>
@@ -44,7 +44,7 @@
    <property name="depth" type="float" value="-11500"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="883" name="Forest/Background/MountainClouds2" type="decor" x="7712" y="422" width="7680" height="1392">
+  <object id="883" name="Forest/Background/MountainClouds2" type="decor" x="7816" y="-1954" width="7680" height="1392">
    <properties>
     <property name="flip-x" type="bool" value="true"/>
    </properties>
@@ -52,17 +52,6 @@
   <object id="884" name="Forest/Background/MountainClouds1" type="decor" x="944" y="-1770" width="4128" height="756">
    <properties>
     <property name="flip-x" type="bool" value="false"/>
-   </properties>
-  </object>
- </objectgroup>
- <objectgroup id="116" name="far-clouds" visible="0">
-  <properties>
-   <property name="depth" type="float" value="-12000"/>
-   <property name="type" value="objects"/>
-  </properties>
-  <object id="870" name="Forest/Background/Clouds1" type="decor" x="-18261.5" y="-576" width="60896" height="3720">
-   <properties>
-    <property name="repeat-x" type="bool" value="true"/>
    </properties>
   </object>
  </objectgroup>
@@ -121,30 +110,23 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="113" name="decor -1">
+ <objectgroup id="116" name="far-clouds">
   <properties>
-   <property name="depth" type="float" value="-64"/>
+   <property name="depth" type="float" value="-2000"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="836" name="Generic/Background/Cloud1" type="decor" x="3540.47" y="751.61" width="690" height="500"/>
-  <object id="837" name="Generic/Background/Cloud2" type="decor" x="2250.88" y="867.576" width="570" height="271"/>
-  <object id="838" name="Generic/Background/Cloud3" type="decor" x="2929.79" y="973.227" width="390" height="137"/>
-  <object id="839" name="Generic/Background/Cloud4" type="decor" x="3757.24" y="1020.77" width="614" height="122"/>
-  <object id="840" name="Generic/Background/Cloud6" type="decor" x="2951.18" y="945.303" width="1539" height="251"/>
-  <object id="841" name="Generic/Background/Cloud5" type="decor" x="2005.36" y="938.773" width="864" height="177"/>
-  <object id="842" name="Generic/Background/Cloud7" type="decor" x="1800.32" y="889.652" width="1159" height="372"/>
-  <object id="843" name="Generic/Background/Cloud8" type="decor" x="2644.32" y="786.182" width="761" height="387"/>
-  <object id="844" name="Generic/Background/Cloud9" type="decor" x="3204.77" y="721.348" width="637" height="481"/>
-  <object id="861" name="Generic/Background/Cloud1" type="decor" x="1059.79" y="726" width="690" height="500"/>
-  <object id="862" name="Generic/Background/Cloud4" type="decor" x="1276.56" y="995.16" width="614" height="122"/>
-  <object id="863" name="Generic/Background/Cloud6" type="decor" x="470.5" y="919.693" width="1539" height="251"/>
+  <object id="870" name="Forest/Background/Clouds1" type="decor" x="-16085.5" y="-752" width="36832" height="3720">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="21" name="terrain">
   <properties>
    <property name="type" value="objects"/>
   </properties>
   <object id="807" name="ruins-gray-thick" type="terrain" x="637.638" y="1065.94" width="3691.33" height="234.06"/>
-  <object id="856" name="ruins-gray-thick" type="terrain" x="3080.34" y="956.97" width="331.33" height="343.06"/>
+  <object id="856" name="ruins-gray-thick" type="terrain" x="3080.34" y="958.97" width="331.33" height="343.06"/>
  </objectgroup>
  <objectgroup id="114" name="decor">
   <properties>
@@ -244,7 +226,7 @@
    <property name="depth" type="float" value="64"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="823" name="Generic/Background/Cloud1" type="decor" x="2034.41" y="772.822" width="690" height="500">
+  <object id="823" name="Generic/Background/Cloud1" type="decor" x="2036.41" y="876.822" width="690" height="500">
    <properties>
     <property name="components" value="z-fade"/>
    </properties>

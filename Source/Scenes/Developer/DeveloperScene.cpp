@@ -81,12 +81,6 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Maps:
-		- v UR cistern lightning hitboxes are actually a bit too forgiving
-		- v UR cistern Chest + Puzzle + Animal is overwhelming and lazy
-		- v UR sky's reach color balance
-		- v UR guano break from petrification needs sfx
-		- vv UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
-		--------------
 		- DM sanity check rejuvination description. Seems to mention an OR that doesn't exist
 		- DM sanity check restoration description. Seems to mention an OR that doesn't exist
 		- DM good loot inside arcane house?
@@ -130,6 +124,7 @@ DeveloperScene::DeveloperScene()
 			- BP, somewhere				=> Frost Axe
 	
 	- General:
+		- vv UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		- ** Stat timing bug is back
 		- v Terrain cull popping
 		- v Maybe HP pots in combat should self-target initally?
@@ -1106,7 +1101,7 @@ ClickableTextNode* DeveloperScene::buildDebugButton(std::string displayName, std
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGeckyFound, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGrimFound, Value(true));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Guano::MapKey));
-			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(GuanoPetrified::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Gecky::MapKey));
 			// SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyHelperName, Value(Grim::MapKey));
 			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyScrappyFound, Value(true));

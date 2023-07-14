@@ -60,7 +60,7 @@
     <property name="transition" value="hull"/>
    </properties>
   </object>
-  <object id="705" name="caged-duck" type="object" x="1535.85" y="1548.38" width="196" height="112"/>
+  <object id="705" name="caged-zebra" type="object" x="1535.85" y="1548.38" width="196" height="112"/>
   <object id="718" name="solid" type="collision" x="-165.233" y="1776.74" width="3482.46" height="189.017"/>
  </objectgroup>
  <objectgroup id="24" name="entities">

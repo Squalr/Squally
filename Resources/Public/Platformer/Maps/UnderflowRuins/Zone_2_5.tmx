@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="133" nextobjectid="975">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="32" height="20" tilewidth="128" tileheight="128" infinite="0" nextlayerid="133" nextobjectid="982">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value=""/>
@@ -137,17 +137,25 @@
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="835" name="ruins-gray-thick" type="terrain" x="-71.9936" y="1197.82" width="875.084" height="652.241"/>
   <object id="891" name="ruins-gray-thick" type="terrain" x="-184.238" y="2248.61" width="4717.93" height="654.787"/>
   <object id="894" name="ruins-gray-thick" type="terrain" x="1533.4" y="1198.06" width="1369.93" height="1048.12"/>
-  <object id="955" name="ruins-gray-thick" type="terrain" x="3590.92" y="1197.82" width="1080.17" height="297.696"/>
+  <object id="979" name="ruins-gray-thick" type="terrain" x="1903.03" y="1590.91">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+   <polygon points="-941.869,-1578.63 -947.751,263.108 -3111.07,261.234 -3110.7,-383.519 -1170.87,-377.21 -1168.82,-1586.45"/>
+  </object>
+  <object id="981" name="ruins-gray-thick" type="terrain" x="4644.42" y="1591.82">
+   <properties>
+    <property name="components" value="z-fade"/>
+   </properties>
+   <polygon points="-941.869,-1578.63 -940.849,-390.82 215.057,-391.588 216.231,-495.537 389.343,-493.443 387.99,-576.808 848.9,-580.504 850.99,261.911 -1171.95,263.257 -1168.82,-1586.45"/>
+  </object>
  </objectgroup>
  <objectgroup id="124" name="terrain fg">
   <properties>
    <property name="type" value="objects"/>
   </properties>
-  <object id="915" name="ruins-gray-thick" type="terrain" x="726.55" y="-35.9994" width="237.082" height="1891.88"/>
-  <object id="916" name="ruins-gray-thick" type="terrain" x="3472.85" y="6.12061" width="237.082" height="1849.27"/>
  </objectgroup>
  <objectgroup id="22" name="decor">
   <properties>

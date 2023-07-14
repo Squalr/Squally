@@ -137,7 +137,7 @@ void ObtainMirror::runCinematicSequencePt2()
 		ropedMovementBehavior->detach();
 	});
 
-	GuanoUnpetrifySoundBehavior* unpetrifySfxBehavior = GuanoUnpetrifySoundBehavior::create(this->guano);
+	GuanoUnpetrifySoundBehavior* unpetrifySfxBehavior = GuanoUnpetrifySoundBehavior::create(this->guanoPetrified);
 
 	this->guanoPetrified->attachComponent(unpetrifySfxBehavior);
 

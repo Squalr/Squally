@@ -67,14 +67,14 @@ void PlatformerDecorObject::onHackerModeEnable()
 {
 	super::onHackerModeEnable();
 
-	this->setVisible(false);
+	this->sprite->setVisible(false);
 }
 
 void PlatformerDecorObject::onHackerModeDisable()
 {
 	super::onHackerModeDisable();
 
-	this->setVisible(true);
+	this->sprite->setVisible(true);
 }
 
 void PlatformerDecorObject::runBounce()

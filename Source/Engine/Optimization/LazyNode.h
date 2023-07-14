@@ -49,7 +49,7 @@ private:
 	typedef cocos2d::Node super;
 	
 	// Hide methods that we do not want available
-	using super::setVisible;
+	// using super::setVisible;
 	using super::setOpacity;
 	using super::setPosition;
 	using super::setPositionX;
@@ -60,7 +60,7 @@ private:
 	using super::setAnchorPoint;
 	using super::setRotation;
 	using super::setContentSize;
-	using super::isVisible;
+	// using super::isVisible;
 	using super::getOpacity;
 	using super::getPosition;
 	using super::getPositionX;
