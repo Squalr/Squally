@@ -89,7 +89,7 @@ void LogicGate::onEnable(bool isInit, bool isInstant)
 {
 	super::onEnable(isInit, isInstant);
 
-	if (!isInit)
+	if (!isInit && !isInstant)
 	{
 		this->openSound->play();
 	}
@@ -99,6 +99,11 @@ void LogicGate::onEnable(bool isInit, bool isInstant)
 
 void LogicGate::onDisable(bool isInit, bool isInstant)
 {
+	if (!isInit && !isInstant)
+	{
+		this->openSound->play();
+	}
+
 	this->runGateAnim(isInstant);
 }
 

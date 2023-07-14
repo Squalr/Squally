@@ -81,16 +81,13 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Maps:
-		- DM sanity check rejuvination description. Seems to mention an OR that doesn't exist
-		- DM sanity check restoration description. Seems to mention an OR that doesn't exist
-		- DM good loot inside arcane house?
-		- DM binary puzzle sfx plays at wrong time
-		- DM blind comment explaining xor, xor
-		- DM stalactite death can be weird sometimes (ie on demo stalactite immediately after mounting)
+		- vv DM good loot inside arcane house? scrap arcane house? stupid ass game design
+		- vv DM blind comment explaining xor, xor
+		- vv DM stalactite death can be weird sometimes (ie on demo stalactite immediately after mounting)
 		--------------
 		- ** CV rabies is tl;dr (do I care anymore? I shortened it a bit and it's easy to figure out)
 		- v CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
-		- vv CV secret tunnel feels unfinished
+		- vv CV 2_x maps feels unfinished
 		--------------
 		- ** LC poisoned arrows are tl;dr
 		- ** LC unholy blade tl;dr
@@ -124,6 +121,7 @@ DeveloperScene::DeveloperScene()
 			- BP, somewhere				=> Frost Axe
 	
 	- General:
+		- vv DM binary puzzle area is shitty imo
 		- vv UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		- ** Stat timing bug is back
 		- v Terrain cull popping
