@@ -7,14 +7,17 @@
 #include "cocos/base/CCValue.h"
 
 #include "Engine/Events/SaveEvents.h"
+#include "Engine/Events/SceneEvents.h"
 #include "Engine/Inventory/Inventory.h"
 #include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Entities/Platformer/Squally/Squally.h"
 #include "Entities/Platformer/StatsTables/StatsTables.h"
 #include "Events/PlatformerEvents.h"
+#include "Objects/Platformer/Interactables/Mounts/MountBase.h"
 #include "Scenes/Platformer/Components/Entities/Helpers/HelperManagerBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Inventory/EntityInventoryBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Movement/EntityMountBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityHealthBehavior.h"
 #include "Scenes/Platformer/Inventory/EquipmentInventory.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Equipable.h"
@@ -53,6 +56,11 @@ SquallyRespawnBehavior::~SquallyRespawnBehavior()
 
 void SquallyRespawnBehavior::onLoad()
 {
+	this->addEventListenerIgnorePause(EventListenerCustom::create(SceneEvents::EventBeforeSceneChange, [=](EventCustom* eventCustom)
+	{
+		this->respawnLocked = true;
+	}));
+
 	if (this->squally != nullptr)
 	{
 		this->squally->listenForStateWrite(StateKeys::IsAlive, [=](Value value)
@@ -82,7 +90,7 @@ void SquallyRespawnBehavior::onDisable()
 
 void SquallyRespawnBehavior::respawn(float duration)
 {
-	if (this->isRespawning)
+	if (this->isRespawning || this->respawnLocked)
 	{
 		return;
 	}
@@ -128,6 +136,21 @@ void SquallyRespawnBehavior::respawnWithMapReload(float delay)
 
 void SquallyRespawnBehavior::doRespawn()
 {
+	if (this->respawnLocked)
+	{
+		return;
+	}
+	
+	this->squally->getComponent<EntityMountBehavior>([=](EntityMountBehavior* mountBehavior)
+	{
+		MountBase* mount = mountBehavior->getMountTarget();
+		
+		if (mount)
+		{
+			mount->dismountAll();
+		}
+	});
+
 	this->squally->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
 	{
 		healthBehavior->revive();

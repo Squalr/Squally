@@ -82,7 +82,6 @@ DeveloperScene::DeveloperScene()
 
 	- Maps:
 		- vv DM good loot inside arcane house? scrap arcane house? stupid ass game design
-		- vv DM stalactite death can be weird sometimes (ie on demo stalactite immediately after mounting)
 		--------------
 		- ** CV rabies is tl;dr (do I care anymore? I shortened it a bit and it's easy to figure out)
 		- v CV triggers to show textboxes above haunted npcs complaining about ghosts or somethin
