@@ -95,7 +95,6 @@ DeveloperScene::DeveloperScene()
 		- vv Make LC final 4_x maps less bad.
 		--------------
 		- ** FF Final crack art is ass
-		- * Delivering bomb doesn't clear quest turn-in indicator
 		- vv FF Asmodeus crowd should animate
 		- vv FF Lava Axe ability needs SFX
 		- vv Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.

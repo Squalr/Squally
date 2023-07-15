@@ -1069,7 +1069,7 @@ void TerrainObject::optimizationHideOffscreenTerrain()
 	}
 
 	// A little padding otherwise surface textures will pop into existence, as they can hang outside terrain bounds
-	static const CSize Padding = CSize(1024.0f, 1024.0f);
+	static const CSize Padding = CSize(1536.0f, 1536.0f);
 	static const Vec3 PaddingVec = Vec3(Padding.width, Padding.height, 0.0f);
 	static const CRect CameraRect = CRect(Vec2::ZERO, Director::getInstance()->getVisibleSize());
 

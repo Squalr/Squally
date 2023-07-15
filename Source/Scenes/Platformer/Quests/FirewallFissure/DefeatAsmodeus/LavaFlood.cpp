@@ -71,7 +71,7 @@ void LavaFlood::onLoad(QuestState questState)
 		this->squally = squally;
 	}, Squally::MapKey);
 
-	if (questState == QuestState::Complete)
+	if (questState == QuestState::Active || questState == QuestState::Complete)
 	{
 		this->applyLavaFlood(true, false);
 	}
@@ -82,20 +82,16 @@ void LavaFlood::onLoad(QuestState questState)
 	
 	this->listenForMapEventOnce(LavaFlood::MapEventLavaFlooded, [=](ValueMap)
 	{
-		Objectives::SetCurrentObjective(ObjectiveKeys::FFFindAsmodeus);
-		this->complete();
+		this->applyLavaFlood(true, true);
 	});
 }
 
 void LavaFlood::onActivate(bool isActiveThroughSkippable, bool isInitialActivation)
 {
-	bool isFlooded = !isActiveThroughSkippable;
-	bool animate = isInitialActivation;
 }
 
 void LavaFlood::onComplete()
 {
-	this->applyLavaFlood(true, true);
 }
 
 void LavaFlood::onSkipped()
