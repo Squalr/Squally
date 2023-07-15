@@ -227,6 +227,7 @@ PlatformerComponentDeserializer::PlatformerComponentDeserializer() : super()
 	this->componentDeserializers[RupertBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)RupertBehavior::create(owner); };
 
 	// DM
+	this->componentDeserializers[BurchBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)BurchBehavior::create(owner); };
 	this->componentDeserializers[CypressBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)CypressBehavior::create(owner); };
 	this->componentDeserializers[DrakBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)DrakBehavior::create(owner); };
 	this->componentDeserializers[SkeletalArcherOutOfCombatAttackBehavior::MapKey] = [=](GameObject* owner) { return (GameComponent*)SkeletalArcherOutOfCombatAttackBehavior::create(owner); };

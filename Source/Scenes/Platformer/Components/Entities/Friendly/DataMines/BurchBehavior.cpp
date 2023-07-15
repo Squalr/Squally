@@ -70,6 +70,8 @@ void BurchBehavior::onLoad()
 		{
 			this->refreshPreText();
 		});
+
+		this->refreshPreText();
 	});
 }
 
@@ -96,9 +98,9 @@ void BurchBehavior::refreshPreText()
 					Strings::Platformer_Quests_DataMines_Misc_Burch_C_Entitled::create(),
 					DialogueEvents::DialogueVisualArgs(
 						DialogueBox::DialogueDock::Bottom,
-						DialogueBox::DialogueAlignment::Left,
-						DialogueEvents::BuildPreviewNode(&this->entity, false),
-						DialogueEvents::BuildPreviewNode(&this->squally, true)
+						DialogueBox::DialogueAlignment::Right,
+						DialogueEvents::BuildPreviewNode(&this->squally, false),
+						DialogueEvents::BuildPreviewNode(&this->entity, true)
 					),
 					[=]()
 					{
@@ -125,6 +127,12 @@ void BurchBehavior::refreshPreText()
 						[=]()
 						{
 							this->entity->saveObjectState(BurchBehavior::SaveKeyAskedPermission, Value(true));
+
+							this->defer([=]()
+							{
+								interactionBehavior->getMainDialogueSet()->removeDialogueOption(this->dialogueOption);
+								this->dialogueOption = nullptr;
+							});
 						},
 						Voices::GetNextVoiceLong(),
 						true

@@ -97,7 +97,7 @@
   </properties>
   <object id="810" name="burch" type="entity" x="1442.11" y="939.909" width="128" height="128">
    <properties>
-    <property name="components" value="dm-t3-hexus,friendly,pick-pocket,pacing"/>
+    <property name="components" value="burch,dm-t3-hexus,friendly,pick-pocket,pacing"/>
     <property name="pocket-pool" value="dm-generic"/>
     <property name="travel-distance" type="float" value="192"/>
    </properties>
