@@ -71,9 +71,9 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="869" name="caged-hedgehog" type="object" x="364.795" y="1567.28" width="196" height="112"/>
-  <object id="901" name="chest" type="object" x="1963.26" y="2714.12" width="128" height="128">
+  <object id="901" name="metal-chest" type="object" x="2419.26" y="3718.12" width="128" height="128">
    <properties>
-    <property name="reward-pool" value="cv-generic"/>
+    <property name="reward-pool" value="cv-rare"/>
    </properties>
   </object>
  </objectgroup>

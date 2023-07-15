@@ -81,10 +81,6 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Maps:
-		- v CV rabies is tl;dr (do I care anymore? I shortened it a bit and it's easy to figure out)
-		- v CV 2_x maps feels unfinished
-		- v CV maybe unhaunted speech bubbles, or dialogue in light world
-		--------------
 		- v LC poisoned arrows are tl;dr
 		- v LC unholy blade tl;dr
 		- v LC cursed blade tl;dr
@@ -100,8 +96,9 @@ DeveloperScene::DeveloperScene()
 	
 	- General:
 		- ** Stat timing bug is back
-		- vv DM binary puzzle area is shitty imo
-		- vv UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
+		- v CV 2_x maps feels unfinished
+		- v DM binary puzzle area is shitty imo
+		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		- v Maybe HP pots in combat should self-target initally?
 		- v Can probably use Silver for more craft recipes
 		- v Maybe some storyline for introducing powers

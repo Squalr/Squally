@@ -35,7 +35,8 @@ private:
 	typedef GameComponent super;
 
 	void unhaunt();
-	LocalizedString* getNextSpeechBubbleText();
+	LocalizedString* getNextHauntedSpeechBubbleText();
+	LocalizedString* getNextUnhauntedSpeechBubbleText();
 	
 	PlatformerEnemy* ownerAsEnemy = nullptr;
 	PlatformerFriendly* ownerAsFriendly = nullptr;

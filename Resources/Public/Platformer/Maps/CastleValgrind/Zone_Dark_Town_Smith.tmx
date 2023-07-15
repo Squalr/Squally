@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="818">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="17" height="9" tilewidth="128" tileheight="128" infinite="0" nextlayerid="114" nextobjectid="819">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="IndoorHouse"/>
@@ -156,7 +156,7 @@
     <property name="recipe-pool" value="smithing-pool-cv"/>
    </properties>
   </object>
-  <object id="815" name="portal" type="object" x="1347.34" y="807.374" width="256" height="256">
+  <object id="815" name="portal" type="object" x="423.34" y="813.374" width="256" height="256">
    <properties>
     <property name="components" value="locked-portal"/>
     <property name="locked-text-key" value="none"/>
@@ -164,8 +164,14 @@
     <property name="transition" value="debug"/>
    </properties>
   </object>
+  <object id="818" name="smelting-pot" type="object" x="1443" y="897.5" width="170" height="167">
+   <properties>
+    <property name="components" value="haunted-link"/>
+    <property name="linked-tag" value="vampire-lord"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="113" name="objects fg">
+ <objectgroup id="113" name="objects fg" visible="0">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>

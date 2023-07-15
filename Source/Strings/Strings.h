@@ -35364,6 +35364,96 @@ namespace Strings
 		virtual ~Platformer_Quests_CastleValgrind_CureKing_Misc_F_Begone() = default;
 	};
 
+	class Platformer_Quests_CastleValgrind_CureKing_Misc_H_Hero : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Misc_H_Hero();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Misc_H_Hero() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Misc_I_ThankYou : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Misc_I_ThankYou();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Misc_I_ThankYou() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Misc_J_Savior : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Misc_J_Savior();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Misc_J_Savior() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Misc_K_Thx : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Misc_K_Thx();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Misc_K_Thx() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Misc_L_Grateful : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Misc_L_Grateful();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Misc_L_Grateful() = default;
+	};
+
+	class Platformer_Quests_CastleValgrind_CureKing_Misc_M_Appreciated : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_CastleValgrind_CureKing_Misc_M_Appreciated();
+		virtual ~Platformer_Quests_CastleValgrind_CureKing_Misc_M_Appreciated() = default;
+	};
+
 	class Platformer_Quests_CastleValgrind_CureKing_Tyracius_A_WhatAreYouDoingHere : public LocalizedString
 	{
 	public:

@@ -212,7 +212,7 @@
    <properties>
     <property name="components" value="locked-portal"/>
     <property name="locked-text-key" value="none"/>
-    <property name="map" value="CastleValgrind/Town_Smith"/>
+    <property name="map" value="CastleValgrind/Zone_Dark_Town_Smith"/>
     <property name="transition" value="debug"/>
    </properties>
   </object>
@@ -223,7 +223,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="113" name="objects fg">
+ <objectgroup id="113" name="objects fg" visible="0">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>

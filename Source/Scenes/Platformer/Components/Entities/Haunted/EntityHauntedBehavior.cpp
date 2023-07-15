@@ -111,14 +111,35 @@ void EntityHauntedBehavior::onLoad()
 				{
 					this->ownerAsFriendly->getAnimations()->playAnimation("Cower", SmartAnimationNode::AnimationPlayMode::Repeat, SmartAnimationNode::AnimParams(1.0f, 0.5f, true));
 					
+					if (!this->isOtherWorld)
+					{
+						this->ownerAsFriendly->listenForMapEventOnce(this->ownerAsFriendly->getEntityKey(), [=](ValueMap)
+						{
+							this->ownerAsFriendly->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
+							{
+								interactionBehavior->getSpeechBubble()->runDialogue(
+									this->getNextHauntedSpeechBubbleText(),
+									Voices::GetNextVoiceShort(Voices::VoiceType::Human)
+								);
+							});
+						});
+					}
+				}
+				else if (isUnhaunted && !this->isOtherWorld)
+				{
 					this->ownerAsFriendly->listenForMapEventOnce(this->ownerAsFriendly->getEntityKey(), [=](ValueMap)
 					{
 						this->ownerAsFriendly->getComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 						{
-							interactionBehavior->getSpeechBubble()->runDialogue(
-								this->getNextSpeechBubbleText(),
-								Voices::GetNextVoiceShort(Voices::VoiceType::Human)
-							);
+							LocalizedString* dialog = this->getNextUnhauntedSpeechBubbleText();
+
+							if (dialog != nullptr)
+							{
+								interactionBehavior->getSpeechBubble()->runDialogue(
+									dialog,
+									Voices::GetNextVoiceShort(Voices::VoiceType::Human)
+								);
+							}
 						});
 					});
 				}
@@ -182,7 +203,7 @@ void EntityHauntedBehavior::unhaunt()
 	}
 }
 
-LocalizedString* EntityHauntedBehavior::getNextSpeechBubbleText()
+LocalizedString* EntityHauntedBehavior::getNextHauntedSpeechBubbleText()
 {
 	static int NextIndex = -1;
 
@@ -212,6 +233,48 @@ LocalizedString* EntityHauntedBehavior::getNextSpeechBubbleText()
 		case 5:
 		{
 			return Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_F_Begone::create();
+		}
+	}
+}
+
+LocalizedString* EntityHauntedBehavior::getNextUnhauntedSpeechBubbleText()
+{
+	static int NextIndex = -1;
+	static std::string HasThanked = "SAVE_KEY_THANKED";
+
+	if (this->ownerAsFriendly != nullptr && this->ownerAsFriendly->loadObjectStateOrDefault(HasThanked, Value(false)).asBool())
+	{
+		return nullptr;
+	}
+
+	this->ownerAsFriendly->saveObjectState(HasThanked, Value(true));
+
+	switch(++NextIndex % 6)
+	{
+		default:
+		case 0:
+		{
+			return Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_H_Hero::create();
+		}
+		case 1:
+		{
+			return Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_I_ThankYou::create();
+		}
+		case 2:
+		{
+			return Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_J_Savior::create();
+		}
+		case 3:
+		{
+			return Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_K_Thx::create();
+		}
+		case 4:
+		{
+			return Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_L_Grateful::create();
+		}
+		case 5:
+		{
+			return Strings::Platformer_Quests_CastleValgrind_CureKing_Misc_M_Appreciated::create();
 		}
 	}
 }
