@@ -81,6 +81,7 @@
   <object id="840" name="metal-chest" type="object" x="417.362" y="934.52" width="128" height="128">
    <properties>
     <property name="reward-pool" value="dm-rare"/>
+    <property name="send-event" value="chest-opened"/>
    </properties>
   </object>
  </objectgroup>

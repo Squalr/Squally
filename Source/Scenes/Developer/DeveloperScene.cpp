@@ -74,32 +74,29 @@ DeveloperScene::DeveloperScene()
 
 	/*
 	- 5x EE:
-		- + Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
-		- + Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
-		- + Perilous Sea (tri m/l/r)	=> The Golden Eagle (Special: Higher Jump)
-		- + Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
+		- * Mayan Door (000/666)		=> Pirate Hat (Special: Bonus Drop Rates)
+		- * Clock 069/420		 		=> Warlock's Headdress (Special: Longer Hack Durations -- ie swim)
+		- * Perilous Sea (tri m/l/r)	=> The Golden Eagle (Special: Higher Jump)
+		- * Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- Maps:
-		- vv DM good loot inside arcane house? scrap arcane house? stupid ass game design
+		- v CV rabies is tl;dr (do I care anymore? I shortened it a bit and it's easy to figure out)
+		- v CV 2_x maps feels unfinished
+		- v CV maybe unhaunted speech bubbles, or dialogue in light world
 		--------------
-		- vv CV rabies is tl;dr (do I care anymore? I shortened it a bit and it's easy to figure out)
-		- vv CV 2_x maps feels unfinished
-		- vv CV maybe unhaunted speech bubbles, or dialogue in light world
-		--------------
-		- vv LC poisoned arrows are tl;dr
-		- vv LC unholy blade tl;dr
-		- vv LC cursed blade tl;dr
-		- vv LC Daze script too long
-		- vv LC blue gem map feels empty. Traps?
-		- vv Make LC final 4_x maps less bad.
+		- v LC poisoned arrows are tl;dr
+		- v LC unholy blade tl;dr
+		- v LC cursed blade tl;dr
+		- v LC Daze script too long
+		- v LC blue gem map feels empty. Traps?
+		- v Make LC final 4_x maps less bad.
 		--------------
 		- ** FF Final crack art is ass
-		- vv FF Asmodeus crowd should animate
-		- vv FF Lava Axe ability needs SFX
-		- vv Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
-		- vv FF give demon grunt (scalding blade user) an add potion?
-		- vv FF Strange level design. After bomb, should be able to loop around to boss. Maybe keep the raised bridge, but as a warp location instead.
+		- v FF Strange level design. After bomb, should be able to loop around to boss. Maybe keep the raised bridge, but as a warp location instead.
+		- v FF Asmodeus crowd should animate
+		- v FF Lava Axe ability needs SFX
+		- v FF give demon grunt (scalding blade user) an add potion?
 	
 	- General:
 		- ** Stat timing bug is back
@@ -110,6 +107,8 @@ DeveloperScene::DeveloperScene()
 		- v Maybe some storyline for introducing powers
 			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
 				- In fact, can use this as a way to force escaping the ship.
+		- v Could scrap hack button, and instead show [1] button keys (ideally with art), and sort them by distance to squally
+			- v could click OR press the button to activate
 		- v DistractVfx.h also needs sfx
 		- v Wand energy bolt literally does an attack anim and nothing
 		- v No interrupt if damage attack modified to heal (test with Strength)
@@ -126,31 +125,32 @@ DeveloperScene::DeveloperScene()
 		- v More transmutes (perhaps custom UI to show a transmute wheel)
 			- v or just scrap transmutes, and add the ability to sell shit
 		- v Crash reports probably are broken (switch to new SendGrid)
+		- v Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
 		- vv Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		
 	- Localization / Scripting:
-		- + Lexicon is largely incomplete
-			- + Fill out descriptions without samples first
-		- + Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
-		- + Multi-line comments in scripts can cause line counter to become disrupted
-		- + Should really expand scripting text editor
-			- + Support click-to-place cursor
-		- User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
+		- * Lexicon is largely incomplete
+			- * Fill out descriptions without samples first
+		- * Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
+		- * Multi-line comments in scripts can cause line counter to become disrupted
+		- * Should really expand scripting text editor
+			- * Support click-to-place cursor
+		- v User-made script titles can go TOFU upon language change. Wontfix? Save original language, and reset to current if the user clears the title?
 		- v If ever re-instating Arabic, Ctrl+F all "ar": "! and "ar": ". strings to find places where punctuation was messed up and fix them
 		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
 	
 	- * BP Zone
-		- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
-		- ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
-		- ** 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
-		- ** 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
-		- ** Needs hexus battles
-		- ** Tune hexus battle special cards
-		- ** Needs animals
-		- ** Needs enemy scripting according to notes on which instructions this zone covers
+		- * Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
+		- * 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
+		- * 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
+		- * 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
+		- * Needs hexus battles
+		- * Tune hexus battle special cards
+		- * Needs animals
+		- * Needs enemy scripting according to notes on which instructions this zone covers
 		- * Needs enemy scripting according to notes on which instructions this zone covers
 		- * Frost SpellBook (?? / ??)
-		- BP, somewhere				=> Frost Axe
+		- * BP, somewhere				=> Frost Axe
 		
 	- Large asset updates:
 		- v Enemy anims for getting hit
@@ -163,23 +163,23 @@ DeveloperScene::DeveloperScene()
 		- v More passes on music. Probably need more overworld. Far and Away / Sunset once I get access.
 
 	- Very Low prio:
-		- vv Fix terrain connectors
-			- Frost
-			- Marble [Dark too]
-			- Jungle [Dark too]
-		- vv Camera harsh leaving camera targets (see FF cinematic)
-		- vv (Maybe) Chapter transitions can be more special 
-		- vv Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
-			- vv Tiki anims still broken (bad Spriter implementation strikes again)
-			- vv Train anims broken (for same reason)
-		- vv Missing squally breath bubbles
+		- v Fix terrain connectors
+			- v Frost
+			- v Marble [Dark too]
+			- v Jungle [Dark too]
+		- v Camera harsh leaving camera targets (see FF cinematic)
+		- v (Maybe) Chapter transitions can be more special 
+		- v Please god new anim system would be soo cool perf wise (especially on maps with a large number of entities, ie FF)
+			- v Tiki anims still broken (bad Spriter implementation strikes again)
+			- v Train anims broken (for same reason)
+		- v Missing squally breath bubbles
 	
 	- Mini-Games:
 		- Hexus:
 			- Can pass after auto-victory or loss (try it in a puzzle)
 			- Can sneak in last-stand after placing your turn cards
 			- Leave button stuck visible after losing a puzzle
-			- Enemy should pre-calc the best play when player has passed (hard)
+			- Enemy should pre-calc the best play when player has passed (hard, wontfix?)
 			- v It'd be nice to get SHL from the puzzle where you learn it. I guess just tailored pools or something. May scrap this.
 		- v A few 3Q Perspective maps
 			- Invisible helpers. Some way to pull helpers into combat

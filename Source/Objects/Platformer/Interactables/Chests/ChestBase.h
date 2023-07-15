@@ -7,6 +7,7 @@ class MinMaxPool;
 class ChestBase : public InteractObject
 {
 public:
+	bool isOpen();
 
 protected:
 	ChestBase(cocos2d::ValueMap& properties, cocos2d::CSize interactSize);
@@ -18,7 +19,6 @@ protected:
 
 	virtual bool tryOpen();
 	virtual void unlockAndGiveItems();
-	bool isOpen();
 	void open(bool doSave);
 	void close();
 
