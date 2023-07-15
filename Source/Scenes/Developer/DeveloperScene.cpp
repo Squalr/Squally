@@ -122,7 +122,6 @@ DeveloperScene::DeveloperScene()
 		- v FF/DM(?) overworld archer attack SetPosition doesn't actually do anything as far as I can tell (see Demon Archer)
 		- v need more hit sounds, we use HitSoft1 everywhere
 		- v maybe stat deltas on equipment in craft menu
-		- v Can hacker mode during dialogue, allowing for "control during hacker mode" glitch
 		- v Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 			- v If we keep them -- EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)

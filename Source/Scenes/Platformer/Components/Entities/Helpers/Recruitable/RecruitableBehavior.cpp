@@ -195,6 +195,7 @@ void RecruitableBehavior::updateStateForCurrentHelper(std::string currentHelperN
 			"",
 			true,
 			false,
+			false,
 			callbacks,
 			[=](){ return true; }
 		));

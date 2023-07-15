@@ -19,7 +19,8 @@ protected:
 	void initializeListeners() override;
 	void onTypeWriterEffectComplete() override;
 
-	void runDialogue(LocalizedString* localizedString, DialogueBox::DialogueDock dialogueDock, DialogueBox::DialogueAlignment dialogueAlignment, std::function<void()> onDialogueClose, bool allowSpace, bool unhijack);
+	void runDialogue(LocalizedString* localizedString, DialogueBox::DialogueDock dialogueDock, DialogueBox::DialogueAlignment dialogueAlignment,
+		std::function<void()> onDialogueClose, bool allowSpace, bool unhijack, bool allowHackerMode);
 	void hideDialogue() override;
 
 private:
@@ -41,6 +42,7 @@ private:
 	bool isDialogueFocused = false;
 	bool allowSpace = false;
 	bool unhijack = true;
+	bool allowHackerMode = false;
 
 	static const cocos2d::Color4F SpeakerBackgroundColor;
 	static const float TextWidth;

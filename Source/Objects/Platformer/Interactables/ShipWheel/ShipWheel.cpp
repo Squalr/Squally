@@ -117,6 +117,7 @@ void ShipWheel::showCharterShipOptions()
 		"",
 		true,
 		false,
+		false,
 		callbacks,
 		[=](){ return true; }
 	));

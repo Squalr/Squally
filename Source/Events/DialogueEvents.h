@@ -51,11 +51,12 @@ public:
 		std::string soundResource;
 		bool unhijack = false;
 		bool allowSpace = false;
+		bool allowHackerMode = false;
 		std::vector<std::function<bool()>> inputOptions;
 		std::function<bool()> inputCancel = nullptr;
 
-		DialogueOpenArgs(LocalizedString* dialogue, DialogueVisualArgs visualArgs, std::function<void()> onDialogueClose, std::string soundResource, bool unhijack = true, bool allowSpace = true, std::vector<std::function<bool()>> inputOptions = { }, std::function<bool()> inputCancel = nullptr)
-			: dialogue(dialogue), visualArgs(visualArgs), onDialogueClose(onDialogueClose), soundResource(soundResource), unhijack(unhijack), allowSpace(allowSpace), inputOptions(inputOptions), inputCancel(inputCancel)
+		DialogueOpenArgs(LocalizedString* dialogue, DialogueVisualArgs visualArgs, std::function<void()> onDialogueClose, std::string soundResource, bool unhijack = true, bool allowSpace = true, bool allowHackerMode = false, std::vector<std::function<bool()>> inputOptions = { }, std::function<bool()> inputCancel = nullptr)
+			: dialogue(dialogue), visualArgs(visualArgs), onDialogueClose(onDialogueClose), soundResource(soundResource), unhijack(unhijack), allowSpace(allowSpace), allowHackerMode(allowHackerMode), inputOptions(inputOptions), inputCancel(inputCancel)
 		{
 		}
 	};

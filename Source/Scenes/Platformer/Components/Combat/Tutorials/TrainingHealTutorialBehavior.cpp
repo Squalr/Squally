@@ -123,7 +123,10 @@ void TrainingHealTutorialBehavior::runTutorial()
 						CombatEvents::TriggerResumeTimelineCinematic();
 						HackableEvents::TriggerAllowHackerMode();
 					},
-					Voices::GetNextVoiceMedium(Voices::VoiceType::Droid)
+					Voices::GetNextVoiceMedium(Voices::VoiceType::Droid),
+					true,
+					true,
+					true
 				));
 			}),
 			nullptr

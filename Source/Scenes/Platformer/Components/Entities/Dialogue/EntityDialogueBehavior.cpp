@@ -280,6 +280,7 @@ void EntityDialogueBehavior::showOptions()
 		"",
 		true,
 		false,
+		false,
 		callbacks
 	));
 }
