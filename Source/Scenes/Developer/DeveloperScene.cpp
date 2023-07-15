@@ -115,7 +115,6 @@ DeveloperScene::DeveloperScene()
 		- v Wand energy bolt literally does an attack anim and nothing
 		- v No interrupt if damage attack modified to heal (test with Strength)
 		- v Despawn cracks on interact? Or something
-		- v Shadow cast needs y sorting
 		- v quick swap FX
 		- v quick warp FX
 		- v FF/DM(?) overworld archer attack SetPosition doesn't actually do anything as far as I can tell (see Demon Archer)
@@ -126,6 +125,7 @@ DeveloperScene::DeveloperScene()
 		- v Pressing left on "select target" in combat should go back to prior menu, not base menu (inconsistent?)
 		- v Auto leave potion menu if everyone is maxed (but only if maxed from healing, not initially maxed)
 		- v More transmutes (perhaps custom UI to show a transmute wheel)
+			- v or just scrap transmutes, and add the ability to sell shit
 		- v Crash reports probably are broken (switch to new SendGrid)
 		- vv Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
 		

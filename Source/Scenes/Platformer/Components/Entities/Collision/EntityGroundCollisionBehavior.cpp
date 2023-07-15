@@ -159,6 +159,7 @@ void EntityGroundCollisionBehavior::update(float dt)
 
 	std::vector<DropShadowResult> results;
 
+	// Algorithm is to iterate over each drop shadow line, take the highest valid point of all of their collisions, then average their angle
 	for (CollisionObject* dropShadowCollision : this->dropShadowCollisions)
 	{
 		if (dropShadowCollision == nullptr)
@@ -166,19 +167,29 @@ void EntityGroundCollisionBehavior::update(float dt)
 			continue;
 		}
 
+		DropShadowResult acceptedResult;
+
 		for (CollisionObject* candidateGround : dropShadowCollision->getCurrentCollisions())
 		{
-			DropShadowResult result = tryCastShadow(dropShadowCollision, candidateGround);
+			DropShadowResult nextResult = tryCastShadow(dropShadowCollision, candidateGround);
 
-			if (result.isValid)
+			if (nextResult.isValid)
 			{
-				if (std::abs(result.slope) > M_PI / 2)
+				if (std::abs(nextResult.slope) > M_PI / 2)
 				{
 					continue;
 				}
 
-				results.push_back(result);
+				if (!acceptedResult.isValid || nextResult.intersectionPoint.y > acceptedResult.intersectionPoint.y)
+				{
+					acceptedResult = nextResult;
+				}
 			}
+		}
+
+		if (acceptedResult.isValid)
+		{
+			results.push_back(acceptedResult);
 		}
 	}
 
