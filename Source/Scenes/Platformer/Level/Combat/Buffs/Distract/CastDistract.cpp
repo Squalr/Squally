@@ -7,6 +7,7 @@
 #include "Scenes/Platformer/Components/Entities/Combat/EntityBuffBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Stats/EntityManaBehavior.h"
 #include "Scenes/Platformer/Level/Combat/Buffs/Defend/Defend.h"
+#include "Scenes/Platformer/Level/Combat/Buffs/Distract/DistractVfx.h"
 #include "Scenes/Platformer/Level/Combat/Timeline.h"
 #include "Scenes/Platformer/Level/Combat/TimelineEntry.h"
 
@@ -78,6 +79,7 @@ void CastDistract::performAttack(PlatformerEntity* owner, std::vector<Platformer
 	owner->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 	{
 		entityBuffBehavior->applyBuff(Defend::create(owner, true));
+		entityBuffBehavior->applyBuff(DistractVfx::create(owner, owner));
 		
 		CombatEvents::TriggerQueryTimeline(CombatEvents::QueryTimelineArgs([=](Timeline* timeline)
 		{

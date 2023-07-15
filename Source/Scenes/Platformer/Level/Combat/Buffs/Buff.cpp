@@ -64,7 +64,10 @@ void Buff::initializePositions()
 {
 	super::initializePositions();
 	
-	this->iconContainer->setPositionY(this->owner->getEntitySize().height / 2.0f + 32.0f);
+	if (this->owner != nullptr)
+	{
+		this->iconContainer->setPositionY(this->owner->getEntitySize().height / 2.0f + 32.0f);
+	}
 }
 
 void Buff::initializeListeners()

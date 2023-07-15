@@ -9,8 +9,6 @@
 
 using namespace cocos2d;
 
-#define LOCAL_FUNC_ID_UNDYING 1
-
 const std::string LightningStrike::LightningStrikeIdentifier = "lightning-strike";
 const float LightningStrike::Duration = 5.0f;
 

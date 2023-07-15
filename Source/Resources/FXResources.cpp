@@ -19,6 +19,7 @@ const std::string FXResources::Auras_StarAura = "Private/Platformer/FX/Auras/Sta
 const std::string FXResources::Auras_ThornsAura = "Private/Platformer/FX/Auras/ThornsAura.png";
 const std::string FXResources::Auras_TriAura = "Private/Platformer/FX/Auras/TriAura.png";
 const std::string FXResources::Auras_WindAura = "Private/Platformer/FX/Auras/WindAura.png";
+const std::string FXResources::Bell_Bell = "Private/Platformer/FX/Bell/Bell.png";
 const std::string FXResources::CrossHatch_CrossHatch_0000 = "Private/Platformer/FX/CrossHatch/CrossHatch_0000.png";
 const std::string FXResources::CrossHatch_CrossHatch_0001 = "Private/Platformer/FX/CrossHatch/CrossHatch_0001.png";
 const std::string FXResources::CrossHatch_CrossHatch_0002 = "Private/Platformer/FX/CrossHatch/CrossHatch_0002.png";

@@ -111,7 +111,7 @@ DeveloperScene::DeveloperScene()
 		- v Maybe some storyline for introducing powers
 			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.
 				- In fact, can use this as a way to force escaping the ship.
-		- v Guano Bell should play a bell above him
+		- v DistractVfx.h also needs sfx
 		- v Wand energy bolt literally does an attack anim and nothing
 		- v No interrupt if damage attack modified to heal (test with Strength)
 		- v Despawn cracks on interact? Or something
