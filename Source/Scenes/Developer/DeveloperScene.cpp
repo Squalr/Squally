@@ -83,14 +83,14 @@ DeveloperScene::DeveloperScene()
 	- Maps:
 		- vv DM good loot inside arcane house? scrap arcane house? stupid ass game design
 		--------------
-		- ** CV rabies is tl;dr (do I care anymore? I shortened it a bit and it's easy to figure out)
+		- vv CV rabies is tl;dr (do I care anymore? I shortened it a bit and it's easy to figure out)
 		- vv CV 2_x maps feels unfinished
 		- vv CV maybe unhaunted speech bubbles, or dialogue in light world
 		--------------
-		- ** LC poisoned arrows are tl;dr
-		- ** LC unholy blade tl;dr
-		- ** LC cursed blade tl;dr
-		- ** LC Daze script too long
+		- vv LC poisoned arrows are tl;dr
+		- vv LC unholy blade tl;dr
+		- vv LC cursed blade tl;dr
+		- vv LC Daze script too long
 		- vv LC blue gem map feels empty. Traps?
 		- vv Make LC final 4_x maps less bad.
 		--------------
@@ -98,29 +98,14 @@ DeveloperScene::DeveloperScene()
 		- * Delivering bomb doesn't clear quest turn-in indicator
 		- vv FF Asmodeus crowd should animate
 		- vv FF Lava Axe ability needs SFX
-		- vv FF Archer shot is wrong
 		- vv Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
 		- vv FF give demon grunt (scalding blade user) an add potion?
 		- vv FF Strange level design. After bomb, should be able to loop around to boss. Maybe keep the raised bridge, but as a warp location instead.
-		--------------
-		* BP
-			- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
-			- ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
-			- ** 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
-			- ** 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
-			- ** Needs hexus battles
-			- ** Tune hexus battle special cards
-			- ** Needs animals
-			- ** Needs enemy scripting according to notes on which instructions this zone covers
-			- * Needs enemy scripting according to notes on which instructions this zone covers
-			- * Frost SpellBook (?? / ??)
-			- BP, somewhere				=> Frost Axe
 	
 	- General:
+		- ** Stat timing bug is back
 		- vv DM binary puzzle area is shitty imo
 		- vv UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
-		- ** Stat timing bug is back
-		- v Terrain cull popping
 		- v Maybe HP pots in combat should self-target initally?
 		- v Z check for pick-pocketing, repairs, soul harvest
 		- v Can probably use silver in more places
@@ -135,6 +120,7 @@ DeveloperScene::DeveloperScene()
 		- v Shadow cast needs y sorting
 		- v quick swap FX
 		- v quick warp FX
+		- v FF/DM(?) overworld archer attack SetPosition doesn't actually do anything as far as I can tell (see Demon Archer)
 		- v need more hit sounds, we use HitSoft1 everywhere
 		- v maybe stat deltas on equipment in craft menu
 		- v Can hacker mode during dialogue, allowing for "control during hacker mode" glitch
@@ -157,6 +143,19 @@ DeveloperScene::DeveloperScene()
 		- v If ever re-instating Arabic, Ctrl+F all "ar": "! and "ar": ". strings to find places where punctuation was messed up and fix them
 		- v If ever re-instating Arabic, probably force English for scripting. Mixing RTL and LTR language is awful. Or use Arabic romanization.
 	
+	- * BP Zone
+		- Vertical town (maybe two sections, one inaccessible at first to spread out NPCs)
+		- ** 1_x typical EF style outdoors leading to town (viking, penguin grunt, penguin warrior, frost fiend (technically in 3_x))
+		- ** 2_x for some frost caverns (ice golem, water elemental, yeti) => cryogen
+		- ** 3_x for blizzard environment? (goblin elf, toy soldier goblin, snow fiend) => santa => sky cannon
+		- ** Needs hexus battles
+		- ** Tune hexus battle special cards
+		- ** Needs animals
+		- ** Needs enemy scripting according to notes on which instructions this zone covers
+		- * Needs enemy scripting according to notes on which instructions this zone covers
+		- * Frost SpellBook (?? / ??)
+		- BP, somewhere				=> Frost Axe
+		
 	- Large asset updates:
 		- v Enemy anims for getting hit
 		- v Enemy death sounds
