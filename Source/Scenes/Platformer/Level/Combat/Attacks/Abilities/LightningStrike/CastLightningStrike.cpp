@@ -80,11 +80,11 @@ void CastLightningStrike::performAttack(PlatformerEntity* owner, std::vector<Pla
 
 	for (PlatformerEntity* next : targets)
 	{
-		CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->owner, next, this->getRandomDamage(), this->abilityType));
-
 		next->getComponent<EntityBuffBehavior>([=](EntityBuffBehavior* entityBuffBehavior)
 		{
 			entityBuffBehavior->applyBuff(LightningStrike::create(owner, next));
 		});
+
+		CombatEvents::TriggerDamage(CombatEvents::DamageOrHealingArgs(this->owner, next, this->getRandomDamage(), this->abilityType));
 	}
 }
