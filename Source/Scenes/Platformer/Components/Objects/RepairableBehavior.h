@@ -16,7 +16,7 @@ class RepairableBehavior : public GameComponent
 public:
 	static RepairableBehavior* create(GameObject* owner);
 	
-	bool canRepair();
+	bool canRepair(bool checkZ);
 	bool wasRepaired();
 
 	static const std::string MapKey;

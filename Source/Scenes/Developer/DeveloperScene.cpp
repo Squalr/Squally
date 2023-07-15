@@ -107,7 +107,6 @@ DeveloperScene::DeveloperScene()
 		- vv DM binary puzzle area is shitty imo
 		- vv UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		- v Maybe HP pots in combat should self-target initally?
-		- v Z check for pick-pocketing, repairs, soul harvest
 		- v Can probably use Silver for more craft recipes
 		- v Maybe some storyline for introducing powers
 			- v Some hack abilities like "warp to this location" could be cool. Would need to be a specific landmark available in hack mode.

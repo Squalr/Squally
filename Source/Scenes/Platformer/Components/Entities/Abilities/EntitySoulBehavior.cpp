@@ -109,7 +109,7 @@ void EntitySoulBehavior::onLoad()
 			selectionBehavior->setClickModifier(InputEvents::KeyCode::KEY_SHIFT);
 			selectionBehavior->setClickableCallback([=]()
 			{
-				return this->canSoulHarvest();
+				return this->canSoulHarvest(true);
 			});
 			selectionBehavior->setEntityClickCallbacks([=]()
 			{
@@ -117,7 +117,7 @@ void EntitySoulBehavior::onLoad()
 			},
 			[=]()
 			{
-				if (this->currentHelperName == Grim::MapKey && this->canSoulHarvest())
+				if (this->currentHelperName == Grim::MapKey && this->canSoulHarvest(true))
 				{
 					CursorSets::SetActiveCursorSet(CursorSets::SoulHarvest);
 				}
@@ -152,7 +152,7 @@ void EntitySoulBehavior::onDisable()
 
 void EntitySoulBehavior::attemptSoulHarvest()
 {
-	if (this->canSoulHarvest())
+	if (this->canSoulHarvest(true))
 	{
 		HelperEvents::TriggerRequestSoulHarvest(HelperEvents::RequestSoulHarvestArgs(
 			this->entity,
@@ -165,9 +165,27 @@ void EntitySoulBehavior::attemptSoulHarvest()
 	}
 }
 
-bool EntitySoulBehavior::canSoulHarvest()
+bool EntitySoulBehavior::canSoulHarvest(bool checkZ)
 {
-	return this->entity != nullptr && this->currentHelperName == Grim::MapKey && !this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true) && !this->wasSoulHarvested();
+	bool isHelperZAligned = true;
+
+	if (checkZ)
+	{
+		ObjectEvents::QueryObjects<PlatformerHelper>([&](PlatformerHelper* helper)
+		{
+			if (std::abs(GameUtils::getDepth(helper) - GameUtils::getDepth(entity)) > 16.0f)
+			{
+				isHelperZAligned = false;
+			}
+		}, Squally::TeamTag);
+	}
+	
+	return this->entity != nullptr
+		&& !this->isInvalidated()
+		&& this->currentHelperName == Grim::MapKey
+		&& isHelperZAligned
+		&& !this->entity->getRuntimeStateOrDefaultBool(StateKeys::IsAlive, true)
+		&& !this->wasSoulHarvested();
 }
 
 bool EntitySoulBehavior::wasSoulHarvested()
@@ -206,7 +224,7 @@ void EntitySoulBehavior::onSoulHarvested()
 
 void EntitySoulBehavior::updateIconVisibility()
 {
-	if (this->canSoulHarvest())
+	if (this->canSoulHarvest(false))
 	{
 		this->soulFx->start();
 	}
@@ -215,7 +233,7 @@ void EntitySoulBehavior::updateIconVisibility()
 		this->soulFx->stop();
 	}
 
-	this->soulHarvestIcon->setVisible(this->canSoulHarvest());
+	this->soulHarvestIcon->setVisible(this->canSoulHarvest(false));
 }
 
 void EntitySoulBehavior::refreshCursorState()
@@ -233,7 +251,7 @@ void EntitySoulBehavior::refreshCursorState()
 			{
 				selection->getOwner()->getComponent<EntitySoulBehavior>([](EntitySoulBehavior* pickPocketBehavior)
 				{
-					if (pickPocketBehavior->canSoulHarvest())
+					if (pickPocketBehavior->canSoulHarvest(true))
 					{
 						CursorSets::SetActiveCursorSet(CursorSets::SoulHarvest);
 					}

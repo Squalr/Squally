@@ -20,7 +20,7 @@ class EntitySoulBehavior : public GameComponent
 public:
 	static EntitySoulBehavior* create(GameObject* owner);
 	
-	bool canSoulHarvest();
+	bool canSoulHarvest(bool checkZ);
 	bool wasSoulHarvested();
 
 	static const std::string MapKey;
