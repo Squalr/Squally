@@ -19,6 +19,6 @@ std::string Wand::getWeaponAttackSound()
 
 std::string Wand::getWeaponImpactSound()
 {
-	return SoundResources::Platformer_Physical_Impact_HitSoft1;
+	return SoundResources::Platformer_Physical_Impact_HitSoft2;
 }
 

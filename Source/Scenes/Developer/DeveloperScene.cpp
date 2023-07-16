@@ -81,10 +81,8 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- General:
-		- * DistractVfx.h also needs sfx
 		- v FF Strange level design. After bomb, should be able to loop around to boss. Maybe keep the raised bridge, but as a warp location instead.
 		- v FF Asmodeus crowd should animate
-		- v FF Lava Axe ability needs SFX
 		- v FF give demon grunt (scalding blade user) an add potion?
 		- v FF/DM(?) overworld archer attack SetPosition doesn't actually do anything as far as I can tell (see Demon Archer)
 		- v LC blue gem map feels empty. Traps?
@@ -155,7 +153,6 @@ DeveloperScene::DeveloperScene()
 		- v Enemy combat begin sounds
 		- v SFX pass
 			- v All defend variants
-			- v need more hit sounds, we use HitSoft1 everywhere
 		- v Unique icons for all spells
 		- v More passes on music. Probably need more overworld. Far and Away / Sunset once I get access.
 

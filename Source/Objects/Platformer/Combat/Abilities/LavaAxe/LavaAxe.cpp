@@ -89,6 +89,7 @@ void LavaAxe::elapse(float dt)
 			}
 		}));
 		
+		this->impactSound->play();
 		this->disableUpdate();
 		this->despawn();
 	}
@@ -104,7 +105,8 @@ void LavaAxe::elapse(float dt)
 				}
 			}
 		}));
-
+		
+		this->impactSound->play();
 		this->disableUpdate();
 		this->despawn();
 	}

@@ -5,6 +5,7 @@
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Swords/WoodenSwordPlans.h"
 
 #include "Resources/ItemResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
 
@@ -40,6 +41,11 @@ WoodenSword::WoodenSword() : super(CurrencyInventory::create({{ IOU::getIOUIdent
 
 WoodenSword::~WoodenSword()
 {
+}
+
+std::string WoodenSword::getWeaponImpactSound()
+{
+	return SoundResources::Platformer_Physical_Impact_HitWood1;
 }
 
 Item* WoodenSword::clone()

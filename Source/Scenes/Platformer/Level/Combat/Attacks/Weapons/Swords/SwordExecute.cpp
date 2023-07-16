@@ -37,7 +37,7 @@ SwordExecute::SwordExecute(int damageMin, int damageMax, float attackDuration, f
 	)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingBlade2);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitHeavy1);
 
 	this->setDamageMultiplier(SwordExecute::DamageMultiplier);
 

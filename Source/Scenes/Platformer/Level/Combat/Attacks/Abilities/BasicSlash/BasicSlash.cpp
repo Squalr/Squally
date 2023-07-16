@@ -24,7 +24,7 @@ BasicSlash::BasicSlash(int damageMin, int damageMax, float attackDuration, float
 	: super(AttackType::Damage, UIResources::Menus_Icons_SwordSlash, priority, AbilityType::Physical, damageMin, damageMax, 0, attackDuration, recoverDuration)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingBlade1);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitHeavy1);
 
 	this->addChild(this->slashSound);
 	this->addChild(this->hitSound);

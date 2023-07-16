@@ -5,6 +5,7 @@
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Axes/WoodenAxePlans.h"
 
 #include "Resources/ItemResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
 
@@ -40,6 +41,11 @@ WoodenAxe::WoodenAxe() : super(CurrencyInventory::create({{ IOU::getIOUIdentifie
 
 WoodenAxe::~WoodenAxe()
 {
+}
+
+std::string WoodenAxe::getWeaponImpactSound()
+{
+	return SoundResources::Platformer_Physical_Impact_HitWood1;
 }
 
 Item* WoodenAxe::clone()

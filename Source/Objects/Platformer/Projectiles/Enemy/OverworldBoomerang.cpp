@@ -35,8 +35,8 @@ OverworldBoomerang::OverworldBoomerang(PlatformerEntity* owner) : super(nullptr,
 {
 	this->owner = owner;
 	this->boomerang = Sprite::create(EntityResources::Enemies_CastleValgrind_Abomination_caveman_weapon);
-	this->boomerangSfx = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_WeaponThrow3);
-	this->impactSfx = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
+	this->boomerangSfx = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_Woosh3);
+	this->impactSfx = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft4);
 
 	this->boomerang->setScale(0.6f);
 

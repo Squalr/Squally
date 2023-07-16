@@ -5,6 +5,7 @@
 #include "Scenes/Platformer/Inventory/Items/Recipes/Weapons/Maces/WoodenClubPlans.h"
 
 #include "Resources/ItemResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
 
@@ -40,6 +41,11 @@ WoodenClub::WoodenClub() : super(CurrencyInventory::create({{ IOU::getIOUIdentif
 
 WoodenClub::~WoodenClub()
 {
+}
+
+std::string WoodenClub::getWeaponImpactSound()
+{
+	return SoundResources::Platformer_Physical_Impact_HitWood2;
 }
 
 Item* WoodenClub::clone()

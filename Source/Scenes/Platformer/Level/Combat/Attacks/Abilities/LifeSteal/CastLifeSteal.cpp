@@ -37,7 +37,7 @@ CastLifeSteal::CastLifeSteal(int damageMin, int damageMax, float attackDuration,
 	)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingBlade2);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitHollow2);
 
 	this->setDamageMultiplier(CastLifeSteal::DamageMultiplier);
 

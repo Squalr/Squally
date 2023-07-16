@@ -36,7 +36,7 @@ WandEnergyBolt::WandEnergyBolt(int damageMin, int damageMax, float attackDuratio
 	)
 {
 	this->slashSound = WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingWeakHybrid2);
-	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
+	this->hitSound = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitHeavy1);
 
 	this->setDamageMultiplier(WandEnergyBolt::DamageMultiplier);
 

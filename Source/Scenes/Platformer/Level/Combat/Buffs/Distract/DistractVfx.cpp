@@ -7,9 +7,11 @@
 #include "cocos/2d/CCSprite.h"
 
 #include "Engine/Animations/SmartAnimationSequenceNode.h"
+#include "Engine/Sound/WorldSound.h"
 #include "Entities/Platformer/PlatformerEntity.h"
 
 #include "Resources/FXResources.h"
+#include "Resources/SoundResources.h"
 
 #include "Strings/Strings.h"
 
@@ -31,10 +33,12 @@ DistractVfx::DistractVfx(PlatformerEntity* caster, PlatformerEntity* target)
 	: super(caster, target, "", AbilityType::Physical, BuffData(DistractVfx::Duration))
 {
 	this->bell = Sprite::create(FXResources::Bell_Bell);
+	this->bellSfx = WorldSound::create(SoundResources::Hand_Bell1);
 
 	this->bell->setScale(0.75f);
 
 	this->addChild(this->bell);
+	this->addChild(this->bellSfx);
 }
 
 DistractVfx::~DistractVfx()
@@ -45,8 +49,22 @@ void DistractVfx::onEnter()
 {
 	super::onEnter();
 
+	this->applyDistractVfx();
+}
+
+void DistractVfx::initializePositions()
+{
+	super::initializePositions();
+
+	this->bell->setPositionY(this->owner->getEntityTopPointRelative().y + 64.0f);
+}
+
+void DistractVfx::applyDistractVfx()
+{
 	const float RotationSpeed = 0.15f;
 	const float RotationDelta = 30.0f;
+
+	this->bellSfx->play();
 
 	this->bell->runAction(Sequence::create(
 		RotateTo::create(RotationSpeed / 2.0f, RotationDelta / 2.0f),
@@ -60,11 +78,4 @@ void DistractVfx::onEnter()
 		}),
 		nullptr
 	));
-}
-
-void DistractVfx::initializePositions()
-{
-	super::initializePositions();
-
-	this->bell->setPositionY(this->owner->getEntityTopPointRelative().y + 64.0f);
 }

@@ -8,6 +8,7 @@ namespace cocos2d
 }
 
 class PlatformerEntity;
+class WorldSound;
 
 class DistractVfx : public Buff
 {
@@ -29,6 +30,7 @@ private:
 	void applyDistractVfx();
 	
 	cocos2d::Sprite* bell = nullptr;
+	WorldSound* bellSfx = nullptr;
 	
 	static const float Duration;
 };

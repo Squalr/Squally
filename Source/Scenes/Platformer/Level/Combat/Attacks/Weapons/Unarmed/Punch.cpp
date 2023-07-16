@@ -33,7 +33,7 @@ Punch::Punch(int damageMin, int damageMax, float attackDuration, float recoverDu
 		recoverDuration
 	)
 {
-	this->punchSound = WorldSound::create(SoundResources::Platformer_Physical_Punches_Punch7);
+	this->punchSound = WorldSound::create(SoundResources::Platformer_Physical_Punches_Punch1);
 
 	this->addChild(this->punchSound);
 }

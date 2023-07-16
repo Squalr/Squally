@@ -14,11 +14,11 @@ Bow::~Bow()
 
 std::string Bow::getWeaponAttackSound()
 {
-	return SoundResources::Platformer_Physical_Projectiles_WeaponThrow2;
+	return SoundResources::Platformer_Physical_Projectiles_Woosh4;
 }
 
 std::string Bow::getWeaponImpactSound()
 {
-	return SoundResources::Platformer_Physical_Impact_HitSoft1;
+	return SoundResources::Platformer_Physical_Impact_HitSoft5;
 }
 

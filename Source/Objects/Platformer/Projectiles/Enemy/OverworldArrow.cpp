@@ -34,8 +34,8 @@ OverworldArrow::OverworldArrow(PlatformerEntity* owner, const std::string& sprit
 {
 	this->owner = owner;
 	this->arrow = Sprite::create(spriteResource);
-	this->arrowSfx = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_WeaponThrow3);
-	this->impactSfx = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1);
+	this->arrowSfx = WorldSound::create(SoundResources::Platformer_Physical_Projectiles_Woosh3);
+	this->impactSfx = WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft3);
 
 	this->rotation = rotation;
 

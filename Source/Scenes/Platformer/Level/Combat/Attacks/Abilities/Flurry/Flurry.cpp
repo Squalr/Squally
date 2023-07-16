@@ -47,7 +47,7 @@ Flurry::Flurry(float attackDuration, float recoverDuration, Priority priority)
 			case 2: { this->slashSounds.push_back(WorldSound::create(SoundResources::Platformer_Physical_Swings_SwingBlade3)); }
 		}
 		
-		this->hitSounds.push_back(WorldSound::create(SoundResources::Platformer_Physical_Impact_HitSoft1));
+		this->hitSounds.push_back(WorldSound::create(SoundResources::Platformer_Physical_Impact_HitHeavy1));
 	}
 
 	for (auto next : this->slashSounds)

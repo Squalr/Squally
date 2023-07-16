@@ -78,7 +78,7 @@ std::string MainhandThrowOutOfCombatAttackBehavior::getOutOfCombatAttackAnimatio
 
 std::string MainhandThrowOutOfCombatAttackBehavior::getOutOfCombatAttackSound()
 {
-	return SoundResources::Platformer_Physical_Projectiles_WeaponThrow5;
+	return SoundResources::Platformer_Physical_Projectiles_Woosh5;
 }
 
 float MainhandThrowOutOfCombatAttackBehavior::getOutOfCombatAttackOnset()
