@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="174" nextobjectid="1047">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="62" height="36" tilewidth="128" tileheight="128" infinite="0" nextlayerid="174" nextobjectid="1049">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="SkyDark"/>
@@ -25,7 +25,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="964" name="Lava/CrossDecal" type="decor" x="3675.34" y="1819.15" width="128" height="128"/>
-  <object id="1043" name="Mines/CaveDoor3" type="decor" x="7530.67" y="1777.33" width="376" height="332"/>
+  <object id="1043" name="Mines/CaveDoor3" type="decor" x="6368.67" y="1765.33" width="376" height="332"/>
  </objectgroup>
  <objectgroup id="163" name="terrain -36">
   <properties>
@@ -153,7 +153,7 @@
    <property name="type" value="objects"/>
   </properties>
   <object id="998" name="floating-bomb" type="object" x="3672" y="1703.39" width="128" height="128"/>
-  <object id="1044" name="portal" type="object" x="7590.67" y="1853.33" width="256" height="256">
+  <object id="1044" name="portal" type="object" x="6428.67" y="1841.33" width="256" height="256">
    <properties>
     <property name="map" value="FirewallFissure/Zone_3_2"/>
     <property name="transition" value="bomb-door"/>
@@ -203,13 +203,25 @@
     <property name="transition" value="dev"/>
    </properties>
   </object>
-  <object id="1045" name="spawn" type="object" x="7653.79" y="1981.7" width="128" height="128">
+  <object id="1045" name="spawn" type="object" x="6491.79" y="1969.7" width="128" height="128">
    <properties>
     <property name="transition" value="bomb-door"/>
    </properties>
   </object>
+  <object id="1047" name="edge-portal" type="object" x="7732.62" y="1612" width="199.918" height="488.002">
+   <properties>
+    <property name="direction" value="right"/>
+    <property name="map" value="FirewallFissure/Zone_3_0"/>
+    <property name="transition" value="right-back"/>
+   </properties>
+  </object>
+  <object id="1048" name="spawn" type="object" x="7383.47" y="1979.97" width="128" height="128">
+   <properties>
+    <property name="transition" value="left-back"/>
+   </properties>
+  </object>
  </objectgroup>
- <objectgroup id="154" name="decor bg -35">
+ <objectgroup id="154" name="decor bg -35" visible="0">
   <properties>
    <property name="depth" type="float" value="-2240"/>
    <property name="type" value="objects"/>
@@ -297,7 +309,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="159" name="decor bg -31">
+ <objectgroup id="159" name="decor bg -31" visible="0">
   <properties>
    <property name="depth" type="float" value="-1984"/>
    <property name="type" value="objects"/>
@@ -443,7 +455,7 @@
   </properties>
   <object id="790" name="lava" type="object" x="-2086.28" y="2370.14" width="12706" height="1024"/>
  </objectgroup>
- <objectgroup id="151" name="decor bg -22">
+ <objectgroup id="151" name="decor bg -22" visible="0">
   <properties>
    <property name="depth" type="float" value="-1472"/>
    <property name="type" value="objects"/>
@@ -957,7 +969,7 @@
   </properties>
   <object id="963" name="Lava/Formation15" type="decor" x="1367.5" y="1916.5" width="1801" height="757"/>
  </objectgroup>
- <objectgroup id="150" name="decor bg -5">
+ <objectgroup id="150" name="decor bg -5" visible="0">
   <properties>
    <property name="depth" type="float" value="-320"/>
    <property name="type" value="objects"/>
@@ -1102,7 +1114,7 @@
    <property name="type" value="objects"/>
   </properties>
  </objectgroup>
- <objectgroup id="25" name="player_layer">
+ <objectgroup id="25" name="player_layer" visible="0">
   <properties>
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
@@ -1116,7 +1128,7 @@
     <property name="to" value="bridge-back-B"/>
    </properties>
   </object>
-  <object id="957" name="edge-portal" type="object" x="7724" y="1880.06" width="199.918" height="488.002">
+  <object id="957" name="edge-portal" type="object" x="7724" y="1882.06" width="199.918" height="488.002">
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="FirewallFissure/Zone_3_0"/>

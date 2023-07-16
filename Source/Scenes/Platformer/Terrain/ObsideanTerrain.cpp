@@ -10,8 +10,8 @@
 using namespace cocos2d;
 
 const std::string ObsideanTerrain::MapKey = "obsidean";
-const Color4B ObsideanTerrain::FillColor = Color4B(11, 30, 39, 255);
-const Color4B ObsideanTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
+const Color4B ObsideanTerrain::FillColor = Color4B(87, 15, 22, 255);
+const Color4B ObsideanTerrain::MiniMapColor = Color4B(87, 15, 22, 255);
 
 ObsideanTerrain* ObsideanTerrain::create(ValueMap& properties)
 {

@@ -10,8 +10,8 @@
 using namespace cocos2d;
 
 const std::string MagmaTerrain::MapKey = "magma";
-const Color4B MagmaTerrain::FillColor = Color4B(11, 30, 39, 255);
-const Color4B MagmaTerrain::MiniMapColor = Color4B(11, 30, 39, 255);
+const Color4B MagmaTerrain::FillColor = Color4B(87, 15, 22, 255);
+const Color4B MagmaTerrain::MiniMapColor = Color4B(87, 15, 22, 255);
 
 MagmaTerrain* MagmaTerrain::create(ValueMap& properties)
 {

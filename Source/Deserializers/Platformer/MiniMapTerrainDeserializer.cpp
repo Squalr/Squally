@@ -11,8 +11,8 @@
 #include "Scenes/Platformer/Terrain/ArabicTerrain.h"
 #include "Scenes/Platformer/Terrain/BlueGrassTerrain.h"
 #include "Scenes/Platformer/Terrain/CastleTerrain.h"
-#include "Scenes/Platformer/Terrain/CatacombsTerrain.h"
 #include "Scenes/Platformer/Terrain/CavernsTerrain.h"
+#include "Scenes/Platformer/Terrain/CatacombsTerrain.h"
 #include "Scenes/Platformer/Terrain/CaveTerrain.h"
 #include "Scenes/Platformer/Terrain/DarkGrassTerrain.h"
 #include "Scenes/Platformer/Terrain/DryGrassTerrain.h"
@@ -23,11 +23,13 @@
 #include "Scenes/Platformer/Terrain/JungleTerrain.h"
 #include "Scenes/Platformer/Terrain/LavaTerrain.h"
 #include "Scenes/Platformer/Terrain/LeafTerrain.h"
+#include "Scenes/Platformer/Terrain/MagmaTerrain.h"
 #include "Scenes/Platformer/Terrain/MarbleDarkTerrain.h"
 #include "Scenes/Platformer/Terrain/MarbleGrassTerrain.h"
 #include "Scenes/Platformer/Terrain/MarbleTerrain.h"
 #include "Scenes/Platformer/Terrain/MinesTerrain.h"
 #include "Scenes/Platformer/Terrain/MiniMapTerrain.h"
+#include "Scenes/Platformer/Terrain/ObsideanTerrain.h"
 #include "Scenes/Platformer/Terrain/RailsTerrain.h"
 #include "Scenes/Platformer/Terrain/RuinsGrayDarkTerrain.h"
 #include "Scenes/Platformer/Terrain/RuinsGrayTerrain.h"
@@ -45,6 +47,9 @@
 #include "Scenes/Platformer/Terrain/TempleTerrain.h"
 #include "Scenes/Platformer/Terrain/TrailTerrain.h"
 #include "Scenes/Platformer/Terrain/WoodTerrain.h"
+#include "Scenes/Platformer/Terrain/WoodBlackFillTerrain.h"
+#include "Scenes/Platformer/Terrain/VinesTerrain.h"
+#include "Scenes/Platformer/Terrain/VoidTerrain.h"
 
 using namespace cocos2d;
 
@@ -62,7 +67,7 @@ MiniMapTerrainDeserializer* MiniMapTerrainDeserializer::create()
 MiniMapTerrainDeserializer::MiniMapTerrainDeserializer() : super(MiniMapTerrainDeserializer::MapKeyTypeTerrain)
 {
 	this->deserializers = std::map<std::string, std::function<GameObject*(ValueMap)>>();
-	
+
 	this->deserializers[ArabicDarkTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, ArabicDarkTerrain::MiniMapColor); };
 	this->deserializers[ArabicTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, ArabicTerrain::MiniMapColor); };
 	this->deserializers[BlueGrassTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, BlueGrassTerrain::MiniMapColor); };
@@ -79,10 +84,12 @@ MiniMapTerrainDeserializer::MiniMapTerrainDeserializer() : super(MiniMapTerrainD
 	this->deserializers[JungleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, JungleTerrain::MiniMapColor); };
 	this->deserializers[LavaTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, LavaTerrain::MiniMapColor); };
 	this->deserializers[LeafTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, LeafTerrain::MiniMapColor); };
+	this->deserializers[MagmaTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, MagmaTerrain::MiniMapColor); };
 	this->deserializers[MarbleDarkTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, MarbleDarkTerrain::MiniMapColor); };
 	this->deserializers[MarbleGrassTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, MarbleGrassTerrain::MiniMapColor); };
 	this->deserializers[MarbleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, MarbleTerrain::MiniMapColor); };
 	this->deserializers[MinesTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, MinesTerrain::MiniMapColor); };
+	this->deserializers[ObsideanTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, ObsideanTerrain::MiniMapColor); };
 	this->deserializers[RailsTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, RailsTerrain::MiniMapColor); };
 	this->deserializers[RuinsGrayDarkTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, RuinsGrayDarkTerrain::MiniMapColor); };
 	this->deserializers[RuinsGrayTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, RuinsGrayTerrain::MiniMapColor); };
@@ -100,6 +107,9 @@ MiniMapTerrainDeserializer::MiniMapTerrainDeserializer() : super(MiniMapTerrainD
 	this->deserializers[TempleTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, TempleTerrain::MiniMapColor); };
 	this->deserializers[TrailTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, TrailTerrain::MiniMapColor); };
 	this->deserializers[WoodTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, WoodTerrain::MiniMapColor); };
+	this->deserializers[WoodBlackFillTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, WoodBlackFillTerrain::MiniMapColor); };
+	// this->deserializers[VinesTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, VinesTerrain::MiniMapColor); };
+	this->deserializers[VoidTerrain::MapKey] = [=](ValueMap properties) { return (GameObject*)MiniMapTerrain::create(properties, VoidTerrain::MiniMapColor); };
 }
 
 MiniMapTerrainDeserializer::~MiniMapTerrainDeserializer()
