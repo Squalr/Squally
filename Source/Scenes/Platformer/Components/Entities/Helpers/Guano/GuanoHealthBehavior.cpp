@@ -66,11 +66,11 @@ void GuanoHealthBehavior::onLoad()
 		int health = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGuanoHealth, Value(healthBehavior->getMaxHealth())).asInt();
 
 		healthBehavior->setHealth(health);
-	});
 
-	this->guano->listenForStateWrite(StateKeys::Health, [=](Value value)
-	{
-		this->saveState();
+		this->guano->listenForStateWrite(StateKeys::Health, [=](Value value)
+		{
+			this->saveState();
+		});
 	});
 }
 
@@ -81,5 +81,7 @@ void GuanoHealthBehavior::onDisable()
 
 void GuanoHealthBehavior::saveState()
 {
-	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoHealth, this->guano->getRuntimeStateOrDefault(StateKeys::Health, Value(0)));
+	Value newHealth = this->guano->getRuntimeStateOrDefault(StateKeys::Health, Value(0));
+
+	SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyGuanoHealth, newHealth);
 }

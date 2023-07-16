@@ -66,11 +66,11 @@ void GrimHealthBehavior::onLoad()
 		int health = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGrimHealth, Value(healthBehavior->getMaxHealth())).asInt();
 
 		healthBehavior->setHealth(health);
-	});
 
-	this->grim->listenForStateWrite(StateKeys::Health, [=](Value value)
-	{
-		this->saveState();
+		this->grim->listenForStateWrite(StateKeys::Health, [=](Value value)
+		{
+			this->saveState();
+		});
 	});
 }
 

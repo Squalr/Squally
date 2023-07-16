@@ -80,20 +80,18 @@ DeveloperScene::DeveloperScene()
 		- * Sky Tower (tri l/r/m)		=> Tiger's Bane (Special: Faster Movement)
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
-	- Maps:
-		- v LC poisoned arrows are tl;dr
-		- v LC unholy blade tl;dr
-		- v LC cursed blade tl;dr
-		- v LC Daze script too long
-		--------------
+	- General:
+		- * DistractVfx.h also needs sfx
 		- v FF Strange level design. After bomb, should be able to loop around to boss. Maybe keep the raised bridge, but as a warp location instead.
 		- v FF Asmodeus crowd should animate
 		- v FF Lava Axe ability needs SFX
 		- v FF give demon grunt (scalding blade user) an add potion?
-	
-	- General:
-		- ** Stat timing bug is back
+		- v FF/DM(?) overworld archer attack SetPosition doesn't actually do anything as far as I can tell (see Demon Archer)
 		- v LC blue gem map feels empty. Traps?
+		- v LC poisoned arrows are tl;dr
+		- v LC unholy blade tl;dr
+		- v LC cursed blade tl;dr
+		- v LC Daze script too long
 		- v Make LC final 4_x maps less bad.
 		- v CV 2_x maps feels unfinished
 		- v DM binary puzzle area is shitty imo
@@ -105,14 +103,11 @@ DeveloperScene::DeveloperScene()
 				- In fact, can use this as a way to force escaping the ship.
 		- v Could scrap hack button, and instead show [1] button keys (ideally with art), and sort them by distance to squally
 			- v could click OR press the button to activate
-		- v DistractVfx.h also needs sfx
 		- v Wand energy bolt literally does an attack anim and nothing
 		- v No interrupt if damage attack modified to heal (test with Strength)
 		- v Despawn cracks on interact? Or something
 		- v quick swap FX
 		- v quick warp FX
-		- v FF/DM(?) overworld archer attack SetPosition doesn't actually do anything as far as I can tell (see Demon Archer)
-		- v need more hit sounds, we use HitSoft1 everywhere
 		- v maybe stat deltas on equipment in craft menu
 		- v Something feels off about torch puzzles. Colors? Give control over top and bottom? Hard to say, but rework it.
 			- v If we keep them -- EF no offscreen lantern for binary puzzle. Maybe put some lanterns in the BG across a bridge
@@ -122,7 +117,13 @@ DeveloperScene::DeveloperScene()
 			- v or just scrap transmutes, and add the ability to sell shit
 		- v Crash reports probably are broken (switch to new SendGrid)
 		- v Should add some sort of archery mini-game with jump shots or something in some town. Maybe FF.
-		- vv Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
+		- v EF Quest to temporarily grant before EF boss? never made sense that we could refelct that fire-ball...
+		- v Hexus:
+			- v Can pass after auto-victory or loss (try it in a puzzle)
+			- v Can sneak in last-stand after placing your turn cards
+			- v Leave button stuck visible after losing a puzzle
+			- v Enemy should pre-calc the best play when player has passed (hard, wontfix?)
+			- v It'd be nice to get SHL from the puzzle where you learn it. I guess just tailored pools or something. May scrap this.
 		
 	- Localization / Scripting:
 		- * Lexicon is largely incomplete
@@ -154,6 +155,7 @@ DeveloperScene::DeveloperScene()
 		- v Enemy combat begin sounds
 		- v SFX pass
 			- v All defend variants
+			- v need more hit sounds, we use HitSoft1 everywhere
 		- v Unique icons for all spells
 		- v More passes on music. Probably need more overworld. Far and Away / Sunset once I get access.
 
@@ -169,13 +171,7 @@ DeveloperScene::DeveloperScene()
 			- v Train anims broken (for same reason)
 		- v Missing squally breath bubbles
 	
-	- Mini-Games:
-		- Hexus:
-			- Can pass after auto-victory or loss (try it in a puzzle)
-			- Can sneak in last-stand after placing your turn cards
-			- Leave button stuck visible after losing a puzzle
-			- Enemy should pre-calc the best play when player has passed (hard, wontfix?)
-			- v It'd be nice to get SHL from the puzzle where you learn it. I guess just tailored pools or something. May scrap this.
+	- New Content:
 		- v A few 3Q Perspective maps
 			- Invisible helpers. Some way to pull helpers into combat
 		- v Cipher:

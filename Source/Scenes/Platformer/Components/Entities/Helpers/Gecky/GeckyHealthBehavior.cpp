@@ -66,11 +66,11 @@ void GeckyHealthBehavior::onLoad()
 		int health = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyHealth, Value(healthBehavior->getMaxHealth())).asInt();
 
 		healthBehavior->setHealth(health);
-	});
 
-	this->gecky->listenForStateWrite(StateKeys::Health, [=](Value value)
-	{
-		this->saveState();
+		this->gecky->listenForStateWrite(StateKeys::Health, [=](Value value)
+		{
+			this->saveState();
+		});
 	});
 }
 

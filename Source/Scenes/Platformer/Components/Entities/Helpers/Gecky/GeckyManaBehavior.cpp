@@ -60,11 +60,11 @@ void GeckyManaBehavior::onLoad()
 		int mana = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGeckyMana, Value(manaBehavior->getMaxMana())).asInt();
 
 		manaBehavior->setMana(mana);
-	});
 
-	this->gecky->listenForStateWrite(StateKeys::Mana, [=](Value value)
-	{
-		this->saveState();
+		this->gecky->listenForStateWrite(StateKeys::Mana, [=](Value value)
+		{
+			this->saveState();
+		});
 	});
 }
 

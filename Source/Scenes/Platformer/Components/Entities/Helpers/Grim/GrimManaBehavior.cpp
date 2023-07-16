@@ -60,11 +60,11 @@ void GrimManaBehavior::onLoad()
 		int mana = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGrimMana, Value(manaBehavior->getMaxMana())).asInt();
 
 		manaBehavior->setMana(mana);
-	});
 
-	this->grim->listenForStateWrite(StateKeys::Mana, [=](Value value)
-	{
-		this->saveState();
+		this->grim->listenForStateWrite(StateKeys::Mana, [=](Value value)
+		{
+			this->saveState();
+		});
 	});
 }
 

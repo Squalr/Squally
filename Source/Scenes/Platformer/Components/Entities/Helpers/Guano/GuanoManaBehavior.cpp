@@ -60,11 +60,11 @@ void GuanoManaBehavior::onLoad()
 		int mana = SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyGuanoMana, Value(manaBehavior->getMaxMana())).asInt();
 
 		manaBehavior->setMana(mana);
-	});
 
-	this->guano->listenForStateWrite(StateKeys::Mana, [=](Value value)
-	{
-		this->saveState();
+		this->guano->listenForStateWrite(StateKeys::Mana, [=](Value value)
+		{
+			this->saveState();
+		});
 	});
 }
 
