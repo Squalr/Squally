@@ -9,6 +9,7 @@
 #include "Engine/Events/NavigationEvents.h"
 #include "Engine/Inventory/Item.h"
 #include "Engine/Inventory/MinMaxPool.h"
+#include "Engine/Save/SaveManager.h"
 #include "Engine/Utils/GameUtils.h"
 #include "Events/DialogueEvents.h"
 #include "Events/PlatformerEvents.h"
@@ -18,6 +19,7 @@
 #include "Scenes/Platformer/Level/PlatformerMap.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
+#include "Scenes/Platformer/Save/SaveKeys.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
 #include "Resources/ObjectResources.h"
@@ -71,21 +73,43 @@ void Crack::onEnterTransitionDidFinish()
 	super::onEnterTransitionDidFinish();
 
 	// Prime cache for the corresponding cutscene
+	// NOTE: does not actually play the cutscene. Event is poorly named, we're just priming with a parameter.
 	switch(this->crackSize)
 	{
 		case CrackSize::Small:
 		{
-			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackSmall, true));
+			if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyViewCrackSmall, Value(false)).asBool())
+			{
+				this->disable();
+			}
+			else
+			{
+				PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackSmall, true));
+			}
 			break;
 		}
 		case CrackSize::Medium:
 		{
-			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackMedium, true));
+			if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyViewCrackMedium, Value(false)).asBool())
+			{
+				this->disable();
+			}
+			else
+			{
+				PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackMedium, true));
+			}
 			break;
 		}
 		case CrackSize::Large:
 		{
-			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackLarge, true));
+			if (SaveManager::GetProfileDataOrDefault(SaveKeys::SaveKeyViewCrackLarge, Value(false)).asBool())
+			{
+				this->disable();
+			}
+			else
+			{
+				PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackLarge, true));
+			}
 			break;
 		}
 	}
@@ -123,16 +147,19 @@ void Crack::onInteract(PlatformerEntity* interactingEntity)
 	{
 		case CrackSize::Small:
 		{
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyViewCrackSmall, Value(true));
 			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackSmall, false));
 			break;
 		}
 		case CrackSize::Medium:
 		{
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyViewCrackMedium, Value(true));
 			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackMedium, false));
 			break;
 		}
 		case CrackSize::Large:
 		{
+			SaveManager::SoftSaveProfileData(SaveKeys::SaveKeyViewCrackLarge, Value(true));
 			PlatformerEvents::TriggerPlayCutscene(PlatformerEvents::CutsceneArgs(Cutscene::CrackLarge, false));
 			break;
 		}

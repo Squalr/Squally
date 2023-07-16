@@ -85,10 +85,7 @@ DeveloperScene::DeveloperScene()
 		- v LC unholy blade tl;dr
 		- v LC cursed blade tl;dr
 		- v LC Daze script too long
-		- v LC blue gem map feels empty. Traps?
-		- v Make LC final 4_x maps less bad.
 		--------------
-		- ** FF Final crack art is ass
 		- v FF Strange level design. After bomb, should be able to loop around to boss. Maybe keep the raised bridge, but as a warp location instead.
 		- v FF Asmodeus crowd should animate
 		- v FF Lava Axe ability needs SFX
@@ -96,6 +93,8 @@ DeveloperScene::DeveloperScene()
 	
 	- General:
 		- ** Stat timing bug is back
+		- v LC blue gem map feels empty. Traps?
+		- v Make LC final 4_x maps less bad.
 		- v CV 2_x maps feels unfinished
 		- v DM binary puzzle area is shitty imo
 		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
@@ -145,9 +144,8 @@ DeveloperScene::DeveloperScene()
 		- * Tune hexus battle special cards
 		- * Needs animals
 		- * Needs enemy scripting according to notes on which instructions this zone covers
-		- * Needs enemy scripting according to notes on which instructions this zone covers
 		- * Frost SpellBook (?? / ??)
-		- * BP, somewhere				=> Frost Axe
+		- * BP, somewhere				=> Frost Axe unused item
 		
 	- Large asset updates:
 		- v Enemy anims for getting hit

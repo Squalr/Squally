@@ -66,6 +66,10 @@ public:
 	static const std::string SaveKeyClockMinutes;
 	static const std::string SaveKeyClockHours;
 	static const std::string SaveKeyClockTimes;
+
+	static const std::string SaveKeyViewCrackSmall;
+	static const std::string SaveKeyViewCrackMedium;
+	static const std::string SaveKeyViewCrackLarge;
 	
 	static const std::string SaveKeySpellBookArcane;
 	static const std::string SaveKeySpellBookFire;

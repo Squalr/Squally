@@ -59,6 +59,10 @@ const std::string SaveKeys::SaveKeyClockMinutes = "SAVE_KEY_CLOCK_SECONDS";
 const std::string SaveKeys::SaveKeyClockHours = "SAVE_KEY_CLOCK_HOURS";
 const std::string SaveKeys::SaveKeyClockTimes = "SAVE_KEY_CLOCK_TIMES";
 
+const std::string SaveKeys::SaveKeyViewCrackSmall = "SAVE_KEY_VIEW_CRACK_SMALL";
+const std::string SaveKeys::SaveKeyViewCrackMedium = "SAVE_KEY_VIEW_CRACK_MEDIUM";
+const std::string SaveKeys::SaveKeyViewCrackLarge = "SAVE_KEY_VIEW_CRACK_LARGE";
+
 const std::string SaveKeys::SaveKeySpellBookArcane = "SAVE_KEY_SPELLBOOK_ARCANE";
 const std::string SaveKeys::SaveKeySpellBookFire = "SAVE_KEY_SPELLBOOK_FIRE";
 const std::string SaveKeys::SaveKeySpellBookFrost = "SAVE_KEY_SPELLBOOK_FROST";
