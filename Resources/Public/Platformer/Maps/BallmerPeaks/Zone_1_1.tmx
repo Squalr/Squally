@@ -883,9 +883,9 @@
     <property name="components" value="friendly,pacing"/>
    </properties>
   </object>
-  <object id="1314" name="penguin-warrior" type="entity" x="6865.07" y="3713.86" width="128" height="128">
+  <object id="1314" name="penguin-warrior" type="entity" x="6866.07" y="3881.86" width="128" height="128">
    <properties>
-    <property name="components" value="friendly,killable"/>
+    <property name="components" value="friendly,killable,agro"/>
    </properties>
   </object>
  </objectgroup>
