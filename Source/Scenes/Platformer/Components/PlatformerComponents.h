@@ -60,6 +60,7 @@
 #include "Scenes/Platformer/Components/Entities/Mounts/GatlingGunBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityFloatBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityNoGravityBehavior.h"
+#include "Scenes/Platformer/Components/Entities/Movement/EntityKillableBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityPacingBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Movement/EntityRunBehavior.h"
 #include "Scenes/Platformer/Components/Entities/Petrification/EntityPetrificationBehavior.h"

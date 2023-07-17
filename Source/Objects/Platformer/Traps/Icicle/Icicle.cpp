@@ -49,7 +49,6 @@ Icicle::Icicle(ValueMap& properties) : super(properties)
 	{
 		this->sprite->setScale(size.height / imageSize.height);
 	}
-	
 
 	this->collision->addChild(this->sprite);
 	this->addChild(this->collision);
@@ -75,7 +74,7 @@ void Icicle::initializeListeners()
 		const float RotationAngle = 2.5f;
 		const float RotationSpeed = 0.05f;
 		const float HalfRotationSpeed = RotationSpeed / 2.0f;
-		const float RumbleTime = 1.5f;
+		const float RumbleTime = 0.5f;
 		const int Rumbles = int(std::round((RumbleTime - RotationSpeed) / RotationSpeed)) / 2;
 
 		// TODO: Add icicle shaking sound.
@@ -92,7 +91,6 @@ void Icicle::initializeListeners()
 			CallFunc::create([=]()
 			{
 				this->isFalling = true;
-
 			}),
 			nullptr
 		));
@@ -157,14 +155,15 @@ HackablePreview* Icicle::createDefaultPreview()
 
 NO_OPTIMIZE void Icicle::applyGravity(float dt)
 {
-	static const float Speed = -768.0f;
+	static const float Acceleration = 1.3f;
+	static const float Speed = 768.0f;
 
 	if (!this->isFalling)
 	{
 		return;
 	}
 
-	this->setPositionY(this->getPositionY() + Speed * dt);
+	this->setPositionY(this->getPositionY() + -pow(Speed, Acceleration) * dt);
 
 	/*
 	volatile static float* freeMemoryForUser = new float[16];
