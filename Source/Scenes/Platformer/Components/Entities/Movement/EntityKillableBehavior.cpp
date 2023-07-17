@@ -41,12 +41,11 @@ EntityKillableBehavior::~EntityKillableBehavior()
 {
 }
 
-// TODO: Fix when hitting a penguin with gravity enabled on Ballmerpeaks 1_1
 void EntityKillableBehavior::onLoad()
 {
 	this->entity->watchForComponent<EntityCollisionBehaviorBase>([=](EntityCollisionBehaviorBase* behavior)
 	{
-		behavior->movementCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::Damage }, [=](CollisionData collisionData)
+		behavior->entityCollision->whenCollidesWith({ (CollisionType)PlatformerCollisionType::Damage }, [=](CollisionData collisionData)
         {
             this->entity->getComponent<EntityHealthBehavior>([=](EntityHealthBehavior* healthBehavior)
             {
