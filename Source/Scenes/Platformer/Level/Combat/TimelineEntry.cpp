@@ -697,6 +697,10 @@ void TimelineEntry::performCast()
 							this->resetTimeline();
 							break;
 						}
+						default:
+						{
+							break;
+						}
 					}
 
 					CombatEvents::TriggerResumeTimeline();
