@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="20" height="24" tilewidth="128" tileheight="128" infinite="0" nextlayerid="38" nextobjectid="613">
+ <properties>
+  <property name="show-cracks" type="bool" value="true"/>
+ </properties>
+ <tileset firstgid="1" name="TileMap" tilewidth="128" tileheight="128" tilecount="60" columns="12">
+  <grid orientation="orthogonal" width="64" height="64"/>
+  <image source="../TileMap.png" width="1536" height="640"/>
+ </tileset>
+ <objectgroup id="1" name="meta">
+  <properties>
+   <property name="background" value="BrightSky"/>
+   <property name="music" value="perseverance"/>
+   <property name="show-cracks" type="bool" value="true"/>
+   <property name="type" value="meta"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="3" name="decor -4096">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="5" name="decor -3072">
+  <properties>
+   <property name="depth" type="float" value="-3072"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="462" name="Generic/Background/Cloud12" type="decor" x="45" y="341.61" width="1062" height="409"/>
+ </objectgroup>
+ <objectgroup id="35" name="decor -2560">
+  <properties>
+   <property name="depth" type="float" value="-2560"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="7" name="decor -2304">
+  <properties>
+   <property name="depth" type="float" value="-2304"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="489" name="Snow/Background/Hills2" type="decor" x="-3406.09" y="1958.01" width="10000" height="1265">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="568" name="Generic/Background/Cloud10" type="decor" x="131.712" y="881.409" width="800.212" height="297.788"/>
+ </objectgroup>
+ <objectgroup id="8" name="decor -2048">
+  <properties>
+   <property name="depth" type="float" value="-2048"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="490" name="Snow/Background/Mountains1" type="decor" x="-3386.24" y="2137.39" width="10000" height="1240">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="569" name="Generic/Background/Cloud11" type="decor" x="1708.85" y="695.348" width="773.212" height="260.818"/>
+ </objectgroup>
+ <objectgroup id="9" name="decor -1792">
+  <properties>
+   <property name="depth" type="float" value="-1792"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="491" name="Snow/Background/Mountains1" type="decor" x="-3383.03" y="2319.8" width="10000" height="1272">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="10" name="background bluesky">
+  <properties>
+   <property name="background" value="BlueSky"/>
+   <property name="type" value="background"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="14" name="decor -2">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="21" name="all entities and terrain (same layer for z sorting)">
+  <properties>
+   <property name="is-hackable" type="bool" value="true"/>
+   <property name="type" value="objects"/>
+   <property name="z-sort" type="bool" value="true"/>
+  </properties>
+  <object id="518" name="combat-spawn" type="object" x="2101.27" y="1718" width="64" height="64">
+   <properties>
+    <property name="spawn-order" type="int" value="2"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="553" name="ice" type="terrain" x="1836.17" y="1782.68">
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="554" name="combat-spawn" type="object" x="1697.34" y="1579.72" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-128"/>
+    <property name="spawn-order" type="int" value="0"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="555" name="combat-spawn" type="object" x="476.067" y="1666.37" width="64" height="64">
+   <properties>
+    <property name="spawn-order" type="int" value="0"/>
+    <property name="spawn-type" value="player"/>
+   </properties>
+  </object>
+  <object id="556" name="ice" type="terrain" x="1450.36" y="1645.46">
+   <properties>
+    <property name="depth" type="float" value="-128"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="557" name="ice" type="terrain" x="260.91" y="1731.43">
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="558" name="combat-spawn" type="object" x="725.61" y="1468.66" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-256"/>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="player"/>
+   </properties>
+  </object>
+  <object id="559" name="combat-spawn" type="object" x="2136.28" y="1438.01" width="64" height="64">
+   <properties>
+    <property name="depth" type="float" value="-256"/>
+    <property name="spawn-order" type="int" value="1"/>
+    <property name="spawn-type" value="enemy"/>
+   </properties>
+  </object>
+  <object id="560" name="ice" type="terrain" x="1897.84" y="1503.35">
+   <properties>
+    <property name="depth" type="float" value="-256"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="561" name="ice" type="terrain" x="476.667" y="1536.67">
+   <properties>
+    <property name="depth" type="float" value="-256"/>
+   </properties>
+   <polygon points="0,0 505.051,-2.14915 474.962,221.363 498.603,444.874 462.067,715.667 474.962,1005.8 277.24,1194.93 12.8949,984.311 45.1322,698.474 25.7898,483.559 73.0711,303.03"/>
+  </object>
+  <object id="572" name="cinematic-marker" type="object" x="1288" y="1208.25" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-center"/>
+   </properties>
+  </object>
+  <object id="573" name="cinematic-marker" type="object" x="1292.55" y="893.638" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-top"/>
+   </properties>
+  </object>
+  <object id="574" name="cinematic-marker" type="object" x="1283.21" y="1678.97" width="78.7879" height="88">
+   <properties>
+    <property name="tag" value="arena-bottom"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="36" name="decor -256">
+  <properties>
+   <property name="depth" type="float" value="-256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="598" name="Snow/red_streamer_01" type="decor" x="1954.5" y="1529.83" width="410" height="101.5">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="602" name="Snow/white_streamer_01" type="decor" x="484.697" y="1557.74" width="492" height="101.5">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="612" name="Snow/stocking_02" type="decor" x="887.333" y="1536.67" width="92" height="132"/>
+ </objectgroup>
+ <objectgroup id="37" name="decor -128">
+  <properties>
+   <property name="depth" type="float" value="-128"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="610" name="Snow/red_streamer_01" type="decor" x="1501.33" y="1667.72" width="410" height="101.5">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="23" name="objects">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="551" name="camera-focus" type="object" x="1255.58" y="1280.12" width="128" height="128">
+   <properties>
+    <property name="zoom" type="float" value="1.25"/>
+   </properties>
+  </object>
+  <object id="562" name="camera-target" type="object" x="1022.61" y="1294" width="128" height="128">
+   <properties>
+    <property name="tag" value="player-camera-1"/>
+    <property name="zoom" type="float" value="1.1"/>
+   </properties>
+  </object>
+  <object id="563" name="camera-target" type="object" x="1582" y="1310" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-1"/>
+    <property name="zoom" type="float" value="1.05"/>
+   </properties>
+  </object>
+  <object id="564" name="camera-target" type="object" x="912" y="1414" width="128" height="128">
+   <properties>
+    <property name="tag" value="player-camera-0"/>
+    <property name="zoom" type="float" value="1.15"/>
+   </properties>
+  </object>
+  <object id="565" name="camera-target" type="object" x="1404" y="1380" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-0"/>
+    <property name="zoom" type="float" value="1.1"/>
+   </properties>
+  </object>
+  <object id="566" name="camera-target" type="object" x="1542" y="1480" width="128" height="128">
+   <properties>
+    <property name="tag" value="enemy-camera-2"/>
+    <property name="zoom" type="float" value="1.15"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="24" name="fireflies">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="fireflies"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="25" name="decor_foreground">
+  <properties>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="589" name="Snow/Snow5" type="decor" x="302.667" y="1707.5" width="126" height="45"/>
+  <object id="603" name="Snow/white_streamer_01" type="decor" x="269.833" y="1756.67" width="492" height="101.5">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="607" name="Snow/red_streamer_01" type="decor" x="1886.67" y="1803.06" width="410" height="101.5">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="608" name="Snow/reef_01" type="decor" x="445.333" y="1801.72" width="140" height="158">
+   <properties>
+    <property name="repeat-x" type="bool" value="false"/>
+   </properties>
+  </object>
+  <object id="611" name="Snow/stocking_01" type="decor" x="647.333" y="1737" width="116" height="150"/>
+ </objectgroup>
+ <objectgroup id="26" name="snow">
+  <properties>
+   <property name="type" value="weather"/>
+   <property name="weather" value="snow"/>
+  </properties>
+ </objectgroup>
+ <objectgroup id="27" name="decor +4" visible="0">
+  <properties>
+   <property name="depth" type="float" value="256"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="402" name="Snow/Tree1" type="decor" x="1912.97" y="1543.64" width="270" height="748"/>
+  <object id="593" name="Snow/star_light_yellow_on" type="decor" x="-743.439" y="785.136" width="4315" height="173">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup id="28" name="decor +8" visible="0">
+  <properties>
+   <property name="depth" type="float" value="512"/>
+   <property name="type" value="objects"/>
+  </properties>
+  <object id="374" name="Snow/Tree1" type="decor" x="883.7" y="1526.61" width="242" height="738"/>
+  <object id="405" name="Snow/Tree1" type="decor" x="1226.85" y="1585.64" width="242" height="738"/>
+  <object id="463" name="Snow/white_streamer_01" type="decor" x="-248.39" y="1767.61" width="3192" height="306">
+   <properties>
+    <property name="repeat-x" type="bool" value="true"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="66" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="92" nextobjectid="1340">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="66" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="92" nextobjectid="1342">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -118,7 +118,7 @@
   <object id="1005" name="penguin-grunt" type="entity" x="4687.21" y="3282.22" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-map" value="BallmerPeaks/Combat_Snow"/>
     <property name="battle-tag" value="group-c"/>
     <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="bp-generic"/>
@@ -865,7 +865,7 @@
   <object id="979" name="penguin-warrior" type="entity" x="4099.93" y="3715.87" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="EndianForest/Combat_BlueGrass"/>
+    <property name="battle-map" value="BallmerPeaks/Combat_Snow"/>
     <property name="battle-tag" value="group-b"/>
     <property name="components" value="enemy,soul,agro,melee"/>
     <property name="drop-pool" value="bp-generic"/>
@@ -886,6 +886,15 @@
   <object id="1314" name="penguin-warrior" type="entity" x="6866.07" y="3881.86" width="128" height="128">
    <properties>
     <property name="components" value="friendly,killable,agro"/>
+   </properties>
+  </object>
+  <object id="1341" name="penguin-warrior" type="entity" x="7632" y="3832" width="128" height="128">
+   <properties>
+    <property name="battle-behavior" value=""/>
+    <property name="battle-map" value="BallmerPeaks/Combat_Snow"/>
+    <property name="battle-tag" value="group-b"/>
+    <property name="components" value="enemy,soul,agro,melee"/>
+    <property name="drop-pool" value="bp-generic"/>
    </properties>
   </object>
  </objectgroup>
