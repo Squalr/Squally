@@ -1,4 +1,5 @@
-# Copyright 2019 Squalr
+# Copyright 2023 Squalr. Inc.
+
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
 
 # Squally executable
@@ -18,10 +19,12 @@ add_executable(${PROJECT_NAME}
 # Fetches and compiles SFML from source in a cross-platform way. Technology is great sometimes.
 include(FetchContent)
 set(BUILD_SHARED_LIBS OFF)
+
+# SFML
 FetchContent_Declare(
- SFML
- GIT_REPOSITORY https://github.com/SFML/SFML.git
- GIT_TAG 2.5.1
+    SFML
+    GIT_REPOSITORY https://github.com/SFML/SFML.git
+    GIT_TAG 2.5.1
 )
 FetchContent_MakeAvailable(SFML)
 
@@ -58,7 +61,6 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     # sfml-window
     # sfml-system
 
-    # vcpkg resources
     tinyxml2::tinyxml2
 
     # internal dependencies
