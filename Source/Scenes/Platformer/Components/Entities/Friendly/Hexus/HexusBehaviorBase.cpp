@@ -205,6 +205,8 @@ void HexusBehaviorBase::rebuildDialogue()
 		return;
 	}
 
+	this->iconNode->setVisible(true);
+
 	this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 	{
 		if (this->dialogueChoiceOverride != nullptr)
@@ -253,6 +255,7 @@ void HexusBehaviorBase::removeFromDialogue()
 		this->entity->watchForComponent<EntityDialogueBehavior>([=](EntityDialogueBehavior* interactionBehavior)
 		{
 			interactionBehavior->getMainDialogueSet()->removeDialogueOption(this->hexusOption);
+			this->iconNode->setVisible(false);
 		});
 	}
 }
@@ -290,7 +293,7 @@ void HexusBehaviorBase::onWin()
 	this->removeFromDialogue();
 	this->rebuildDialogue();
 
-	for (auto callback : this->winCallbacks)
+	for (std::function<void()>& callback : this->winCallbacks)
 	{
 		callback();
 	}
