@@ -25,7 +25,7 @@ protected:
 	void initializePositions() override;
 	void onCraftStart() override;
 	void onCraftEnd(bool viaCancel) override;
-	virtual float getCraftDuration();
+	float getCraftDuration() override;
 	LocalizedString* getCraftString() override;
 
 private:

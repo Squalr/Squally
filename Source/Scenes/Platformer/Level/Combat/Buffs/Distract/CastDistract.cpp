@@ -62,7 +62,7 @@ LocalizedString* CastDistract::getString()
 
 LocalizedString* CastDistract::getDescription()
 {
-	return Strings::Platformer_Combat_Defensives_DistractDescription::create()->setStringReplacementVariables({ Strings::Platformer_Entities_Names_Helpers_EndianForest_Guano::create() });
+	return Strings::Platformer_Combat_Defensives_DistractDescription::create()->setStringReplacementVariables(Strings::Platformer_Entities_Names_Helpers_EndianForest_Guano::create());
 }
 
 std::string CastDistract::getAttackAnimation()

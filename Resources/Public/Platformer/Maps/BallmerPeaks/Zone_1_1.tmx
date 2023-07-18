@@ -888,15 +888,6 @@
     <property name="components" value="friendly,killable,agro"/>
    </properties>
   </object>
-  <object id="1341" name="penguin-warrior" type="entity" x="7632" y="3832" width="128" height="128">
-   <properties>
-    <property name="battle-behavior" value=""/>
-    <property name="battle-map" value="BallmerPeaks/Combat_Snow"/>
-    <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,soul,agro,melee"/>
-    <property name="drop-pool" value="bp-generic"/>
-   </properties>
-  </object>
  </objectgroup>
  <objectgroup id="25" name="player_layer">
   <properties>

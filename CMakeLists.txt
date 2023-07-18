@@ -1,38 +1,19 @@
-# Copyright 2019 Squalr
+# Copyright 2023 Squalr. Inc.
+
 cmake_minimum_required(VERSION 3.12 FATAL_ERROR)
-project(Squally VERSION 1.1.5 LANGUAGES C CXX)
+project(Squally VERSION 1.2.0 LANGUAGES C CXX)
 set(CMAKE_OSX_DEPLOYMENT_TARGET 10.10)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
-# Enable if we ever decide to use IWYU
-# find_program(IWYU_PATH NAMES include-what-you-use iwyu)
-# if(IWYU_PATH)
-    # set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE ${IWYU_PATH})
-    # set(CMAKE_C_INCLUDE_WHAT_YOU_USE ${IWYU_PATH})
-# endif()
-
-# External dependencies
-find_package(tinyxml2 REQUIRED)
 find_package(SteamWorks REQUIRED)
 
-if(UNIX)
-find_package(OpenGL REQUIRED)
-find_package(GLEW REQUIRED)
-find_package(OpenSSL REQUIRED)
-endif()
-
 ###############################################################################
-# Dependency Fixing
 ###############################################################################
 
-# Fix tinyxml2 relwithdebinfo configuration (chooses debug instead of release
-# for relwithdebinfo)
-set_target_properties(tinyxml2::tinyxml2 PROPERTIES
-    MAP_IMPORTED_CONFIG_RELWITHDEBINFO RELEASE
-)
-
-###############################################################################
-###############################################################################
+# Fix tinyxml2 relwithdebinfo configuration (chooses debug instead of release for relwithdebinfo)
+# set_target_properties(tinyxml2::tinyxml2 PROPERTIES
+#     MAP_IMPORTED_CONFIG_RELWITHDEBINFO RELEASE
+# )
 
 # Bundled Dependencies
 add_subdirectory(${PROJECT_SOURCE_DIR}/cocos2d)

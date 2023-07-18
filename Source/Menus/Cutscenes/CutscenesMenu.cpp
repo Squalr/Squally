@@ -273,6 +273,10 @@ void CutscenesMenu::primeCache(Cutscene cutscene)
 			SmartAnimationSequenceNode::PrimeCache(CutsceneResources::CrackLarge_Cutscene_0000);
 			break;
 		}
+		default:
+		{
+			break;
+		}
 	}
 }
 
@@ -362,6 +366,10 @@ void CutscenesMenu::open(Cutscene cutscene)
 				nullptr
 			));
 			this->credits->setVisible(true);
+			break;
+		}
+		default:
+		{
 			break;
 		}
 	}
