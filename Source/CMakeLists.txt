@@ -156,6 +156,18 @@ add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
         $<TARGET_FILE_DIR:${PROJECT_NAME}>
 )
 
+# Windows DLLs
+if(${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+    add_custom_command(TARGET Squally POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${PROJECT_SOURCE_DIR}/build/_deps/zlib-build/zlibd.dll"
+        "${PROJECT_SOURCE_DIR}/build/bin/")
+    add_custom_command(TARGET Squally POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${PROJECT_SOURCE_DIR}/build/_deps/sfml-src/extlibs/bin/x86/openal32.dll"
+        "${PROJECT_SOURCE_DIR}/build/bin/")
+endif()
+
 # Copy game resources. On windows this is stupidly slow, so please manually call CopyResources.py instead.
 if(NOT ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
     add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
