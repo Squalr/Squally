@@ -228,12 +228,6 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup id="24" name="fireflies">
-  <properties>
-   <property name="type" value="weather"/>
-   <property name="weather" value="fireflies"/>
-  </properties>
- </objectgroup>
  <objectgroup id="25" name="decor_foreground">
   <properties>
    <property name="type" value="objects"/>

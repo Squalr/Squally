@@ -2,7 +2,6 @@
 
 import argparse
 import base64
-from googletrans import Translator
 import json
 import os
 import re
@@ -13,7 +12,6 @@ from os import listdir
 from os import path
 from os.path import isfile, dirname, join, splitext, abspath, realpath, basename, relpath
 
-translator = Translator()
 
 def main():
     key_var_name = 'TRANSLATOR_TEXT_SUBSCRIPTION_KEY'

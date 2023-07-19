@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="66" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="92" nextobjectid="1342">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="66" height="40" tilewidth="128" tileheight="128" infinite="0" nextlayerid="92" nextobjectid="1343">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -94,7 +94,7 @@
    <properties>
     <property name="direction" value="right"/>
     <property name="map" value="BallmerPeaks/Zone_1_2"/>
-    <property name="transition" value="right"/>
+    <property name="transition" value="left-2"/>
    </properties>
   </object>
  </objectgroup>
@@ -148,6 +148,11 @@
     <property name="zoom" type="float" value="1"/>
    </properties>
   </object>
+  <object id="1342" name="spawn" type="object" x="8050" y="1356.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="right-2"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="83" name="player_layer -4">
   <properties>
@@ -155,11 +160,6 @@
    <property name="type" value="objects"/>
    <property name="zoom" type="float" value="2"/>
   </properties>
-  <object id="925" name="spawn" type="object" x="7946.18" y="3851.03" width="128" height="128">
-   <properties>
-    <property name="transition" value="sky-tower"/>
-   </properties>
-  </object>
   <object id="968" name="warp" type="object" x="1357.39" y="3455.88" width="256" height="256">
    <properties>
     <property name="from" value="bridge-back-A"/>
@@ -348,11 +348,6 @@
    <property name="is-hackable" type="bool" value="true"/>
    <property name="type" value="objects"/>
   </properties>
-  <object id="983" name="chest" type="object" x="2298.73" y="3660.92" width="128" height="128">
-   <properties>
-    <property name="chest-pool" value="bp-generic"/>
-   </properties>
-  </object>
   <object id="986" name="life-stone" type="object" x="3244.27" y="3414.92" width="146" height="423">
    <properties>
     <property name="transition" value="lifestone-spawn"/>
@@ -915,9 +910,9 @@
     <property name="zoom" type="float" value="1"/>
    </properties>
   </object>
-  <object id="987" name="spawn" type="object" x="7803.52" y="3859.15" width="128" height="128">
+  <object id="987" name="spawn" type="object" x="7939.88" y="3853.09" width="128" height="128">
    <properties>
-    <property name="transition" value="left"/>
+    <property name="transition" value="right"/>
    </properties>
   </object>
   <object id="1041" name="spawn" type="object" x="3259.88" y="3706.18" width="128" height="128">
@@ -949,12 +944,6 @@
  <objectgroup id="69" name="water">
   <properties>
    <property name="type" value="objects"/>
-  </properties>
- </objectgroup>
- <objectgroup id="28" name="fireflies">
-  <properties>
-   <property name="type" value="weather"/>
-   <property name="weather" value="fireflies"/>
   </properties>
  </objectgroup>
  <objectgroup id="68" name="decor_foreground +1">
