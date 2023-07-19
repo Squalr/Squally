@@ -20,7 +20,7 @@ Meteorite* Meteorite::create()
 	return instance;
 }
 
-Meteorite::Meteorite() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 43 }}), ItemMeta(20000))
+Meteorite::Meteorite() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 21 }}), ItemMeta(20000))
 {
 }
 

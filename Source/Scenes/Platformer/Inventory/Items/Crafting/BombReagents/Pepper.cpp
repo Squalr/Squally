@@ -20,7 +20,7 @@ Pepper* Pepper::create()
 	return instance;
 }
 
-Pepper::Pepper() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 43 }}), ItemMeta(20000))
+Pepper::Pepper() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 12 }}), ItemMeta(20000))
 {
 }
 

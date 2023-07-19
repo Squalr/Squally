@@ -20,7 +20,7 @@ StrongChitin* StrongChitin::create()
 	return instance;
 }
 
-StrongChitin::StrongChitin() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 43 }}), ItemMeta(20000))
+StrongChitin::StrongChitin() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 9 }}), ItemMeta(20000))
 {
 }
 

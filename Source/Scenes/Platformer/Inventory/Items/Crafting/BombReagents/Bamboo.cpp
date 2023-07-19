@@ -20,7 +20,7 @@ Bamboo* Bamboo::create()
 	return instance;
 }
 
-Bamboo::Bamboo() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 43 }}), ItemMeta(20000))
+Bamboo::Bamboo() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 3 }}), ItemMeta(20000))
 {
 }
 

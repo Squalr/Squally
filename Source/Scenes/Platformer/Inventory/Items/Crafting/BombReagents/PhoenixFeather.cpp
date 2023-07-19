@@ -20,7 +20,7 @@ PhoenixFeather* PhoenixFeather::create()
 	return instance;
 }
 
-PhoenixFeather::PhoenixFeather() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 43 }}), ItemMeta(20000))
+PhoenixFeather::PhoenixFeather() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 18 }}), ItemMeta(20000))
 {
 }
 

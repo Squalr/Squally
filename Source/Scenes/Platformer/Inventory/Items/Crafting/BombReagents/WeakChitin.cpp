@@ -20,7 +20,7 @@ WeakChitin* WeakChitin::create()
 	return instance;
 }
 
-WeakChitin::WeakChitin() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 43 }}), ItemMeta(20000))
+WeakChitin::WeakChitin() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 6 }}), ItemMeta(20000))
 {
 }
 

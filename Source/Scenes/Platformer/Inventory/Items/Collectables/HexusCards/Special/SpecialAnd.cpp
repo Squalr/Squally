@@ -21,7 +21,7 @@ SpecialAnd* SpecialAnd::create()
 	return instance;
 }
 
-SpecialAnd::SpecialAnd() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 27 }}), ItemMeta(3, 3))
+SpecialAnd::SpecialAnd() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemMeta(3, 3))
 {
 }
 
