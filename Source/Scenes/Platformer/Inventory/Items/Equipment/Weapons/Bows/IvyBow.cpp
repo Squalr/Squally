@@ -64,7 +64,7 @@ const std::string& IvyBow::getIdentifier()
 
 Vec2 IvyBow::getDisplayOffset()
 {
-	return Vec2(0.0f, -24.0f);
+	return Vec2(-10.0f, -66.0f);
 }
 
 Recipe* IvyBow::getRecipe()

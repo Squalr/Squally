@@ -27,12 +27,14 @@ DropPoolCVAgnes* DropPoolCVAgnes::create(ValueMap& properties)
 	return instance;
 }
 
-DropPoolCVAgnes::DropPoolCVAgnes(ValueMap& properties) : super(properties, DropPoolCVAgnes::PoolName, SampleMethod::Random, 1, 2, CurrencyPoolCVGeneric::create(properties),
+DropPoolCVAgnes::DropPoolCVAgnes(ValueMap& properties) : super(properties, DropPoolCVAgnes::PoolName, SampleMethod::Random, 3, 4, CurrencyPoolCVGeneric::create(properties),
 	{
 		AlchemyPoolTier4::create(SampleMethod::Random, 1, 2),
 		SmithingPoolTier4::create(SampleMethod::Random, 1, 2),
 	})
 {
+	this->addItemToPool(ItemChance::create(Mithril::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(Mithril::create(), ItemChance::Probability::Guaranteed));
 }
 
 DropPoolCVAgnes::~DropPoolCVAgnes()

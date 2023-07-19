@@ -51,7 +51,7 @@ Bloodletting* Bloodletting::create(PlatformerEntity* caster, PlatformerEntity* t
 }
 
 Bloodletting::Bloodletting(PlatformerEntity* caster, PlatformerEntity* target)
-	: super(caster, target, UIResources::Menus_Icons_Stab, AbilityType::Shadow, BuffData())
+	: super(caster, target, UIResources::Menus_Icons_Stab, AbilityType::Physical, BuffData())
 {
 	this->healEffect = SmartAnimationSequenceNode::create(FXResources::Heal_Heal_0000);
 	this->healAmount = Bloodletting::DamageAmount;
@@ -99,7 +99,7 @@ void Bloodletting::registerHackables()
 			HackableCode::HackableCodeInfo(
 				Bloodletting::BloodlettingIdentifier,
 				Strings::Menus_Hacking_Abilities_Debuffs_Bloodletting_Bloodletting::create(),
-				HackableBase::HackBarColor::Yellow,
+				HackableBase::HackBarColor::Red,
 				UIResources::Menus_Icons_Stab,
 				LazyNode<HackablePreview>::create([=](){ return BloodlettingGenericPreview::create(); }),
 				{
@@ -165,7 +165,7 @@ void Bloodletting::runBloodletting()
 
 	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
 	{
-		Sprite* icon = Sprite::create(UIResources::Menus_Icons_BloodGoblet);
+		Sprite* icon = Sprite::create(UIResources::Menus_Icons_Stab);
 
 		icon->setScale(0.5f);
 

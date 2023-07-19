@@ -81,6 +81,9 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- General:
+		- ** Soul harvest needs emblem glow
+		- ** CV leech ability comments mention radition, icon wong
+		- ** CV some indicator of remaining souls
 		- v FF Asmodeus crowd should animate
 		- v FF give demon grunt (scalding blade user) an add potion?
 		- v FF/DM(?) overworld archer attack SetPosition doesn't actually do anything as far as I can tell (see Demon Archer)
@@ -91,8 +94,11 @@ DeveloperScene::DeveloperScene()
 		- v LC Daze script too long
 		- v Make LC final 4_x maps less bad.
 		- v CV 2_x maps feels unfinished
+		- v CV diseased pfx color not yellow
+		- v CV Mabel should look at Perceptron the entire patrol, or cower until he is gone
+		- v CV smelting pot broken in haunted map? seems weird. Actually I think a bug on deactivated behavior.
 		- v DM binary puzzle area is shitty imo
-		- v support for default dialogue at top of screen (see Aphrodite, Hera, Horus)
+		- v support for default dialogue at top of screen (see Aphrodite, Hera, Horus, Burch, Dawn)
 		- v UR guano still cursed scrappy wasn't loaded for dialogue
 		- v broken blade shouldn't have pfx I think
 		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
@@ -105,8 +111,6 @@ DeveloperScene::DeveloperScene()
 		- v Could scrap hack button, and instead show [1] button keys (ideally with art), and sort them by distance to squally
 			- v could click OR press the button to activate
 		- v Wand energy bolt literally does an attack anim and nothing
-		- v No interrupt if damage attack modified to heal (test with Strength)
-		- v Despawn cracks on interact? Or something
 		- v quick swap FX
 		- v quick warp FX
 		- v maybe stat deltas on equipment in craft menu
