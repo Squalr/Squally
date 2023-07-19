@@ -21,7 +21,7 @@ SpecialPop* SpecialPop::create()
 	return instance;
 }
 
-SpecialPop::SpecialPop() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemMeta(3, 3))
+SpecialPop::SpecialPop() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 9 }}), ItemMeta(3, 3))
 {
 }
 

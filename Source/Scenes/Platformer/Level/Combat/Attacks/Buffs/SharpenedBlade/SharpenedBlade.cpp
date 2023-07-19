@@ -160,12 +160,12 @@ void SharpenedBlade::registerHackables()
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentLe::create()),
 							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentFinale::create()
 								->setStringReplacementVariables({
-									Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create(),
-									Strings::Menus_Hacking_Lexicon_Assembly_RegisterEbx::create(),
+									Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create(),
+									Strings::Menus_Hacking_Lexicon_Assembly_RegisterRbx::create(),
 								})),
 							ConstantString::create("\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Buffs_SharpenedBlade_CommentHint::create()
-								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterEax::create()))
+								->setStringReplacementVariables(Strings::Menus_Hacking_Lexicon_Assembly_RegisterRax::create()))
 						})
 					),
 				},

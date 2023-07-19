@@ -147,7 +147,7 @@ void BatSwarm::registerHackables()
 							ConstantString::create("mov rax, 1\n"),
 							ConstantString::create("skipCode:\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Abilities_BatSwarm_CommentHint::create()
-								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zax))),
+								->setStringReplacementVariables(HackableCode::registerToLocalizedString(HackableCode::Register::zcx))),
 							ConstantString::create("\n\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJecxz::create()),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Conditional_CommentJ::create()),
@@ -263,7 +263,9 @@ NO_OPTIMIZE void BatSwarm::compareTeam(TimelineEntry* entry)
 	ASM(push ZAX);
 	ASM(push ZCX);
 
-	ASM_MOV_REG_VAR(ZCX, isOnEnemyTeamLocal);
+	ASM(mov ZAX, 0);
+	ASM(mov ZCX, 0);
+	ASM_MOV_REG_VAR(ecx, isOnEnemyTeamLocal);
 
 	HACKABLE_CODE_BEGIN(LOCAL_FUNC_ID_COMPARE_TEAM);
 	ASM(jecxz skipCodeBatSwarm);

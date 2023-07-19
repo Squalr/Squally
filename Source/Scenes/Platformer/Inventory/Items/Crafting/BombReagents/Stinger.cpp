@@ -20,7 +20,7 @@ Stinger* Stinger::create()
 	return instance;
 }
 
-Stinger::Stinger() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 43 }}), ItemMeta(20000))
+Stinger::Stinger() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemMeta(20000))
 {
 }
 

@@ -93,6 +93,10 @@ LocalizedString* CardData::getCardTypeString()
 		{
 			return Strings::Common_Empty::create();
 		}
+		case CardData::CardType::Special_PEEK:
+		{
+			return Strings::Hexus_Cards_Abbreviations_Peek::create();
+		}
 		case CardData::CardType::Special_FLIP1:
 		{
 			return Strings::Hexus_Cards_Abbreviations_FLIP1::create();
@@ -131,7 +135,6 @@ LocalizedString* CardData::getCardTypeString()
 		case CardData::CardType::Special_RETURN_TO_HAND:
 		case CardData::CardType::Special_STEAL:
 		case CardData::CardType::Special_BONUS_MOVES:
-		case CardData::CardType::Special_PEEK:
 		{
 			return Strings::Common_Empty::create();
 		}

@@ -31,7 +31,7 @@ ItemInfoMenu::ItemInfoMenu()
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
 	this->itemWindow = Sprite::create(UIResources::Menus_PauseMenu_PauseMenu);
 	this->itemPreview = ItemPreview::create(true, true);
-	this->itemLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Inventory_Item::create());
+	this->titleLabel = LocalizedLabel::create(LocalizedLabel::FontStyle::Main, LocalizedLabel::FontSize::H1, Strings::Menus_Inventory_Item::create());
 	this->closeButton = ClickableNode::create(UIResources::Menus_PauseMenu_CloseButton, UIResources::Menus_PauseMenu_CloseButtonSelected);
 	this->backdrop = LayerColor::create(Color4B(0, 0, 0, 196), visibleSize.width, visibleSize.height);
 
@@ -69,13 +69,13 @@ ItemInfoMenu::ItemInfoMenu()
 		UIResources::Menus_Buttons_WoodButton,
 		UIResources::Menus_Buttons_WoodButtonSelected);
 
-	this->itemLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
-	this->itemLabel->enableGlow(Color4B::BLACK);
+	this->titleLabel->enableShadow(Color4B::BLACK, CSize(-2.0f, -2.0f), 2);
+	this->titleLabel->enableGlow(Color4B::BLACK);
 	
 	this->addChild(this->backdrop);
 	this->addChild(this->itemWindow);
 	this->addChild(this->itemPreview);
-	this->addChild(this->itemLabel);
+	this->addChild(this->titleLabel);
 	this->addChild(this->closeButton);
 	this->addChild(this->takeItemButton);
 	this->addChild(this->returnButton);
@@ -93,7 +93,7 @@ void ItemInfoMenu::onEnter()
 	float duration = 0.25f;
 
 	GameUtils::fadeInObject(this->itemWindow, delay, duration);
-	GameUtils::fadeInObject(this->itemLabel, delay, duration);
+	GameUtils::fadeInObject(this->titleLabel, delay, duration);
 	GameUtils::fadeInObject(this->closeButton, delay, duration);
 	GameUtils::fadeInObject(this->takeItemButton, delay, duration);
 	GameUtils::fadeInObject(this->returnButton, delay, duration);
@@ -105,11 +105,11 @@ void ItemInfoMenu::initializePositions()
 
 	CSize visibleSize = Director::getInstance()->getVisibleSize();
 
-	this->itemWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	this->itemPreview->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 192.0f));
-	this->itemLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
 	this->closeButton->setPosition(Vec2(visibleSize.width / 2.0f + 292.0f, visibleSize.height / 2.0f + 376.0f));
-	this->takeItemButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 320.0f + 128.0f));
+	this->titleLabel->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 380.0f));
+	this->itemPreview->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f + 224.0f));
+	this->itemWindow->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	this->takeItemButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 320.0f + 112.0f));
 	this->returnButton->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f - 320.0f));
 }
 

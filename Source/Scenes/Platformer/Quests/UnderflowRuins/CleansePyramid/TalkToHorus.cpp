@@ -119,7 +119,7 @@ void TalkToHorus::runCinematicSequencePt1()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt1::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
 				DialogueEvents::BuildPreviewNode(&this->horus, true)
@@ -134,7 +134,7 @@ void TalkToHorus::runCinematicSequencePt1()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CleansePyramid_Horus_A_TorchHintPt2::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
 				DialogueEvents::BuildPreviewNode(&this->horus, true)
