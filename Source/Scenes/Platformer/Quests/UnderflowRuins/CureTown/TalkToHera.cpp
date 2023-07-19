@@ -122,7 +122,7 @@ void TalkToHera::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_A_StayAway::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
 				DialogueEvents::BuildPreviewNode(&this->hera, true)
@@ -150,7 +150,7 @@ void TalkToHera::runCinematicSequence()
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_B_Oh::create()
 				->setStringReplacementVariables(Strings::Platformer_MapNames_UnderflowRuins_Athens::create()),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
 				DialogueEvents::BuildPreviewNode(&this->hera, true)
@@ -165,7 +165,7 @@ void TalkToHera::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_C_WhatHappened::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->hera, true)
@@ -180,7 +180,7 @@ void TalkToHera::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_D_Medusa::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->hera, true)
@@ -195,7 +195,7 @@ void TalkToHera::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_E_Slay::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->hera, true)
@@ -210,7 +210,7 @@ void TalkToHera::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_F_NotAChance::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->guano, false),
 				DialogueEvents::BuildPreviewNode(&this->hera, true)
@@ -225,7 +225,7 @@ void TalkToHera::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_G_Yes::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->hera, true)
@@ -240,7 +240,7 @@ void TalkToHera::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_H_BetterOffInJail::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->guano, false),
 				DialogueEvents::BuildPreviewNode(&this->scrappy, true)
@@ -255,7 +255,7 @@ void TalkToHera::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Hera_I_TakeThisKey::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
 				DialogueEvents::BuildPreviewNode(&this->hera, true)

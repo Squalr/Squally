@@ -129,7 +129,7 @@ void TalkToAphrodite::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_A_Greetings::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->squally, false),
 				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
@@ -145,7 +145,7 @@ void TalkToAphrodite::runCinematicSequence()
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_B_WhichWayToTown::create()
 				->setStringReplacementVariables(Strings::Platformer_MapNames_UnderflowRuins_Athens::create()),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
@@ -160,7 +160,7 @@ void TalkToAphrodite::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_C_HeadThroughBack::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
@@ -175,7 +175,7 @@ void TalkToAphrodite::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_D_OneFavor::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
@@ -190,7 +190,7 @@ void TalkToAphrodite::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_E_Charity::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->guano, false),
 				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
@@ -205,7 +205,7 @@ void TalkToAphrodite::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_F_WhatDoYouAsk::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
@@ -220,7 +220,7 @@ void TalkToAphrodite::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_G_TalkToAlch::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Right,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
@@ -236,7 +236,7 @@ void TalkToAphrodite::runCinematicSequence()
 		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
 			Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_H_WillDo::create(),
 			DialogueEvents::DialogueVisualArgs(
-				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueDock::Top,
 				DialogueBox::DialogueAlignment::Left,
 				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 				DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
@@ -262,14 +262,14 @@ void TalkToAphrodite::runShipmentsComplete()
 				Strings::Platformer_Quests_UnderflowRuins_CureTown_Aphrodite_T_Shipments::create()
 					->setStringReplacementVariables(Strings::Platformer_Entities_Names_Npcs_UnderflowRuins_Griffin::create()),
 				DialogueEvents::DialogueVisualArgs(
-					DialogueBox::DialogueDock::Bottom,
+					DialogueBox::DialogueDock::Top,
 					DialogueBox::DialogueAlignment::Right,
 					DialogueEvents::BuildPreviewNode(&this->squally, false),
 					DialogueEvents::BuildPreviewNode(&this->aphrodite, true)
 				),
 				[=]()
 				{
-					PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ GarnetBand::create() }));
+					PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ AquaMarineEarrings::create() }));
 					this->aphrodite->saveObjectState(TalkToAphrodite::SaveKeyItemGiven, Value(true));
 				},
 				Voices::GetNextVoiceMedium(),

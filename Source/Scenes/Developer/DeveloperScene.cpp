@@ -92,7 +92,11 @@ DeveloperScene::DeveloperScene()
 		- v Make LC final 4_x maps less bad.
 		- v CV 2_x maps feels unfinished
 		- v DM binary puzzle area is shitty imo
+		- v support for default dialogue at top of screen (see Aphrodite, Hera, Horus)
+		- v UR guano still cursed scrappy wasn't loaded for dialogue
+		- v broken blade shouldn't have pfx I think
 		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
+		- v UR town could use another mg/fg warp. Maybe where lifstone is
 		- v Maybe HP pots in combat should self-target initally?
 		- v Can probably use Silver for more craft recipes
 		- v Maybe some storyline for introducing powers
@@ -125,6 +129,8 @@ DeveloperScene::DeveloperScene()
 	- Localization / Scripting:
 		- * Lexicon is largely incomplete
 			- * Fill out descriptions without samples first
+		- add examples are half broken (highlighting)
+		- push example doesn't refresh highlighting on click
 		- * Arrow keys in large scripts should auto-scroll if cursor goes out of visible text range
 		- * Multi-line comments in scripts can cause line counter to become disrupted
 		- * Should really expand scripting text editor
