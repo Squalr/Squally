@@ -122,8 +122,8 @@ void Enflame::registerHackables()
 						, // x64
 						ConcatString::create({
 							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_Enflame_CommentRng::create()),
-							ConstantString::create("rdrand eax\n"),
-							ConstantString::create("and eax, 0xF\n")
+							ConstantString::create("rdrand rax\n"),
+							ConstantString::create("and rax, 0xF\n")
 						})
 					),
 				},

@@ -146,11 +146,11 @@ void Hex::registerHackables()
 						})
 						, // x64
 						ConcatString::create({
-							ConstantString::create("fld dword ptr [esi]\n\n"),
+							ConstantString::create("fld dword ptr [rsi]\n\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentF::create()),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentMul::create()),
-							ConstantString::create("fmul dword ptr [ebx]\n\n"),
-							ConstantString::create("fstp dword ptr [esi]\n\n"),
+							ConstantString::create("fmul dword ptr [rbx]\n\n"),
+							ConstantString::create("fstp dword ptr [rsi]\n\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalance::create()),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPush::create()),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_Stack_CommentStackBalanceFPUPop::create()),

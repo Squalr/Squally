@@ -277,8 +277,8 @@ NO_OPTIMIZE void FireRain::compareTeam(TimelineEntry* entry)
 	ASM(push ZCX);
 
 	ASM(mov ZAX, 0);
-	ASM_MOV_REG_VAR(ebx, isOnEnemyTeamLocalPtr);
-	ASM_MOV_REG_VAR(ecx, constZeroPtr);
+	ASM_MOV_REG_VAR(ZBX, isOnEnemyTeamLocalPtr);
+	ASM_MOV_REG_VAR(ZCX, constZeroPtr);
 
 	ASM(movss xmm3, dword ptr [ZBX]);
 	ASM(movss xmm4, dword ptr [ZCX]);

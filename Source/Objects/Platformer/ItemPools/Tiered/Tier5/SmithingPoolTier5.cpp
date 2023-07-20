@@ -21,13 +21,15 @@ SmithingPoolTier5::SmithingPoolTier5(SampleMethod sampleMethod, int min, int max
 	/**************
 	 Misc
 	**************/
-	this->addItemToPool(ItemChance::create(DarkWood::create(), ItemChance::Probability::Common));
+	this->addItemToPool(ItemChance::create(DarkWood::create(), ItemChance::Probability::Uncommon)); // Lowered rate due to limited uses
 	this->addItemToPool(ItemChance::create(Coal::create(), ItemChance::Probability::Reasonable));
 
 	/**************
 	 Metals
 	**************/
-	this->addItemToPool(ItemChance::create(Bone::create(), ItemChance::Probability::Uncommon));
+	// Higher drop rate than normal, with two separate rolls, since 2x more are required for crafts
+	this->addItemToPool(ItemChance::create(Bone::create(), ItemChance::Probability::Reasonable));
+	this->addItemToPool(ItemChance::create(Bone::create(), ItemChance::Probability::Reasonable));
 
 	// Phasing out
 	this->addItemToPool(ItemChance::create(Mithril::create(), ItemChance::Probability::Rare));

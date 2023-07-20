@@ -64,7 +64,7 @@ const std::string& BoneBow::getIdentifier()
 
 Vec2 BoneBow::getDisplayOffset()
 {
-	return Vec2(0.0f, -24.0f);
+	return Vec2(-10.0f, -66.0f);
 }
 
 Recipe* BoneBow::getRecipe()
