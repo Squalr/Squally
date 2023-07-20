@@ -50,6 +50,8 @@ EntitySoulBehavior* EntitySoulBehavior::create(GameObject* owner)
 
 EntitySoulBehavior::EntitySoulBehavior(GameObject* owner) : super(owner)
 {
+	this->soulHarvestContainer = Node::create();
+	this->soulHarvestGlow = Sprite::create(UIResources::HUD_EmblemGlow);
 	this->soulHarvestIcon = Sprite::create(UIResources::Menus_Icons_AngelFigurine);
 	this->soulFx = SmartParticles::create(ParticleResources::Platformer_Combat_Abilities_Speed);
 	this->soulHarvestFx = SmartAnimationSequenceNode::create();
@@ -59,6 +61,7 @@ EntitySoulBehavior::EntitySoulBehavior(GameObject* owner) : super(owner)
 
 	this->soulFx->setStartColor(Color4F::PURPLE);
 	this->soulFx->setEndColor(Color4F(0.5f, 0.0f, 0.5f, 0.0f));
+	this->soulHarvestGlow->setScale(0.75f);
 	this->soulHarvestIcon->setScale(0.75f);
 	this->soulHarvestFx->setAnimationAnchor(Vec2(0.5f, 0.0f));
 	this->healFxSqually->setAnimationAnchor(Vec2(0.5f, 0.0f));
@@ -68,11 +71,13 @@ EntitySoulBehavior::EntitySoulBehavior(GameObject* owner) : super(owner)
 		this->invalidate();
 	}
 
+	this->soulHarvestContainer->addChild(this->soulHarvestGlow);
+	this->soulHarvestContainer->addChild(this->soulHarvestIcon);
 	this->addChild(this->soulHarvestSfx);
 	this->addChild(this->soulFx);
 	this->addChild(this->soulHarvestFx);
 	this->addChild(this->healFxSqually);
-	this->addChild(this->soulHarvestIcon);
+	this->addChild(this->soulHarvestContainer);
 }
 
 EntitySoulBehavior::~EntitySoulBehavior()
@@ -84,7 +89,7 @@ void EntitySoulBehavior::initializePositions()
 	super::initializePositions();
 
 	// this->soulFx->setPositionY(this->entity->getEntityBottomPointRelative().y);
-	this->soulHarvestIcon->setPosition(Vec2(0.0f, -32.0f));
+	this->soulHarvestContainer->setPosition(Vec2(0.0f, -32.0f));
 }
 
 void EntitySoulBehavior::onLoad()
@@ -128,7 +133,7 @@ void EntitySoulBehavior::onLoad()
 			});
 		});
 
-		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->soulHarvestIcon));
+		ObjectEvents::TriggerBindObjectToUI(RelocateObjectArgs(this->soulHarvestContainer));
 	});
 	
 	ObjectEvents::WatchForObject<Squally>(this, [=](Squally* squally)
@@ -233,7 +238,7 @@ void EntitySoulBehavior::updateIconVisibility()
 		this->soulFx->stop();
 	}
 
-	this->soulHarvestIcon->setVisible(this->canSoulHarvest(false));
+	this->soulHarvestContainer->setVisible(this->canSoulHarvest(false));
 }
 
 void EntitySoulBehavior::refreshCursorState()

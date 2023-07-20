@@ -81,8 +81,6 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- General:
-		- ** Soul harvest needs emblem glow
-		- ** CV leech ability comments mention radition, icon wong
 		- ** CV some indicator of remaining souls
 		- v FF Asmodeus crowd should animate
 		- v FF give demon grunt (scalding blade user) an add potion?

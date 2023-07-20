@@ -43,6 +43,8 @@ private:
 
 	PlatformerEntity* entity = nullptr;
 	Squally* squally = nullptr;
+	cocos2d::Node* soulHarvestContainer = nullptr;
+	cocos2d::Sprite* soulHarvestGlow = nullptr;
 	cocos2d::Sprite* soulHarvestIcon = nullptr;
 	SmartParticles* soulFx = nullptr;
 	SmartAnimationSequenceNode* soulHarvestFx = nullptr;
