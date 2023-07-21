@@ -83,6 +83,7 @@ CutscenesMenu::CutscenesMenu()
 	this->credits->insertNewline();
 	this->credits->insertNewline();
 	this->credits->insert(this->buildHeader(ConstantString::create("Musicians")));
+	this->credits->insert(this->buildEntry(Strings::Menus_Music_StrayGhost_AnthonyBadenSaggers::create()));
 	this->credits->insert(this->buildEntry(Strings::Menus_Music_AlexanderIvanov_AlexanderIvanov::create()));
 	this->credits->insert(this->buildEntry(Strings::Menus_Music_Alkis_Alkis::create()));
 	this->credits->insert(this->buildEntry(Strings::Menus_Music_AndreaBaroni_AndreaBaroni::create()));

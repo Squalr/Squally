@@ -1031,7 +1031,7 @@
     <property name="drop-pool" value="ff-generic"/>
    </properties>
   </object>
-  <object id="962" name="demon-shaman" type="entity" x="3074.35" y="2221.88" width="128" height="128">
+  <object id="962" name="demon-swordsman" type="entity" x="3074.35" y="2221.88" width="128" height="128">
    <properties>
     <property name="battle-behavior" value=""/>
     <property name="battle-tag" value="group-c"/>

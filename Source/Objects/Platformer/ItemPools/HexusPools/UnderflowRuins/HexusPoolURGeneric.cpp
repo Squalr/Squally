@@ -21,7 +21,7 @@ HexusPoolURGeneric* HexusPoolURGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-HexusPoolURGeneric::HexusPoolURGeneric(ValueMap& properties) : super(properties, "hexus-pool-ur-generic", SampleMethod::Random, 1, 2,
+HexusPoolURGeneric::HexusPoolURGeneric(ValueMap& properties) : super(properties, "hexus-pool-ur-generic", SampleMethod::Guarantee, 2, 2,
 	{ CardPoolTier2::create() }, CurrencyPoolURHexus::create(properties))
 {
 }

@@ -95,7 +95,11 @@
     <property name="send-event" value="bridge-group-A"/>
    </properties>
   </object>
-  <object id="873" name="solid" type="collision" x="8683.48" y="-256.155" width="97.0303" height="2072.31"/>
+  <object id="873" name="solid" type="collision" x="8683.48" y="-256.155" width="97.0303" height="2072.31">
+   <properties>
+    <property name="mini-map-visible" type="bool" value="true"/>
+   </properties>
+  </object>
   <object id="874" name="solid" type="collision" x="1075.73" y="-66.458" width="97.0303" height="2072.31"/>
   <object id="895" name="crack" type="object" x="6767.8" y="788.348" width="525" height="1193">
    <properties>

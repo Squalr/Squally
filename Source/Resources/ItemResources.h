@@ -150,9 +150,9 @@ namespace ItemResources
 	extern const std::string Equipment_Gear_Hats_Tier4_JoustingHelmet;
 	extern const std::string Equipment_Gear_Hats_Tier4_LeatherCap;
 	extern const std::string Equipment_Gear_Hats_Tier4_WizardsHatWater;
+	extern const std::string Equipment_Gear_Hats_Tier5_MithrilHelm;
 	extern const std::string Equipment_Gear_Hats_Tier5_NecrobatHelm;
 	extern const std::string Equipment_Gear_Hats_Tier5_PriestHat;
-	extern const std::string Equipment_Gear_Hats_Tier5_SteelHelm;
 	extern const std::string Equipment_Gear_Hats_Tier6_BarbedHelm;
 	extern const std::string Equipment_Gear_Hats_Tier6_SnailShellSpiked;
 	extern const std::string Equipment_Gear_Hats_Tier6_WizardsHatShadow;

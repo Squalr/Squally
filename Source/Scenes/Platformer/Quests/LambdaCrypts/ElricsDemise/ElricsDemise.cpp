@@ -93,7 +93,7 @@ void ElricsDemise::onLoad(QuestState questState)
 	{
 		this->elric = elric;
 
-		if (questState == QuestState::Active || questState == QuestState::ActiveThroughSkippable)
+		if (questState != QuestState::None)
 		{
 			this->elric->despawn();
 		}
@@ -103,7 +103,7 @@ void ElricsDemise::onLoad(QuestState questState)
 	{
 		this->zombieElric = zombieElric;
 
-		if (questState != QuestState::Active && questState != QuestState::ActiveThroughSkippable)
+		if (questState == QuestState::None)
 		{
 			this->zombieElric->despawn();
 		}

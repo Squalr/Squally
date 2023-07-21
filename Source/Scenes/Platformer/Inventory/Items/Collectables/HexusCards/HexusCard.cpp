@@ -14,5 +14,5 @@ HexusCard::~HexusCard()
 
 int HexusCard::TuneCost(int attack)
 {
-    return 4 + int(std::round(double(attack) * 2.5));
+    return 3 + int(std::round(double(attack) * 1.0));
 }

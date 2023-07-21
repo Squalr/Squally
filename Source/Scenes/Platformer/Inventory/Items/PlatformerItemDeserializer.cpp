@@ -274,6 +274,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[LeatherCap::SaveKey] = [=]() { return (Item*)LeatherCap::create(); };
 	this->deserializers[MagesHatBlue::SaveKey] = [=]() { return (Item*)MagesHatBlue::create(); };
 	this->deserializers[MagesHatRed::SaveKey] = [=]() { return (Item*)MagesHatRed::create(); };
+	this->deserializers[MithrilHelm::SaveKey] = [=]() { return (Item*)MithrilHelm::create(); };
 	this->deserializers[Monocle::SaveKey] = [=]() { return (Item*)Monocle::create(); };
 	this->deserializers[NecrobatHelm::SaveKey] = [=]() { return (Item*)NecrobatHelm::create(); };
 	this->deserializers[OldShoe::SaveKey] = [=]() { return (Item*)OldShoe::create(); };
@@ -287,7 +288,6 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[ShamanTiara::SaveKey] = [=]() { return (Item*)ShamanTiara::create(); };
 	this->deserializers[SnailShell::SaveKey] = [=]() { return (Item*)SnailShell::create(); };
 	this->deserializers[SnailShellSpiked::SaveKey] = [=]() { return (Item*)SnailShellSpiked::create(); };
-	this->deserializers[SteelHelm::SaveKey] = [=]() { return (Item*)SteelHelm::create(); };
 	this->deserializers[TheGoldenEagle::SaveKey] = [=]() { return (Item*)TheGoldenEagle::create(); };
 	this->deserializers[TheldarsHelm::SaveKey] = [=]() { return (Item*)TheldarsHelm::create(); };
 	this->deserializers[Tiara::SaveKey] = [=]() { return (Item*)Tiara::create(); };

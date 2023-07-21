@@ -21,7 +21,7 @@ HexusPoolFFGeneric* HexusPoolFFGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-HexusPoolFFGeneric::HexusPoolFFGeneric(ValueMap& properties) : super(properties, "hexus-pool-ff-generic", SampleMethod::Random, 1, 2,
+HexusPoolFFGeneric::HexusPoolFFGeneric(ValueMap& properties) : super(properties, "hexus-pool-ff-generic", SampleMethod::Guarantee, 2, 2,
 	{ CardPoolTier6::create() }, CurrencyPoolFFHexus::create(properties))
 {
 }

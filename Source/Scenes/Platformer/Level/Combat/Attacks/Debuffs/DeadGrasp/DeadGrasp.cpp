@@ -114,7 +114,7 @@ void DeadGrasp::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return DeadGraspGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_RegisterEsi::create()
+						HackableCode::Register::zsi, Strings::Menus_Hacking_Abilities_Debuffs_DeadGrasp_RegisterEsi::create(), true
 					}
 				},
 				int(HackFlags::None),

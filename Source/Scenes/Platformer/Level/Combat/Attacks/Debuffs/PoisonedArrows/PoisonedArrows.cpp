@@ -107,7 +107,7 @@ void PoisonedArrows::registerHackables()
 						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEbx::create(),
 					},
 					{
-						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEcx::create(),
+						HackableCode::Register::zcx, Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEcx::create(), true
 					},
 					{
 						HackableCode::Register::zdi, Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_RegisterEdi::create(), true
@@ -142,17 +142,17 @@ void PoisonedArrows::registerHackables()
 						, // x64
 						ConcatString::create({
 							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadRng::create()),
-							ConstantString::create("fld dword ptr [ebx]\n"),
+							ConstantString::create("fld dword ptr [rbx]\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentLoadConst::create()),
-							ConstantString::create("fcomp dword ptr [ecx]\n\n"),
+							ConstantString::create("fcomp dword ptr [rcx]\n\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Generic_FPU_CommentConvert::create()),
 							ConstantString::create("fstsw ax\n"),
 							ConstantString::create("sahf\n\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentSkip::create()),
 							ConstantString::create("ja skipPoisonedArrowsCode\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentApplyDamage::create()),
-							ConstantString::create("fild dword ptr [edi]\n"),
-							ConstantString::create("fistp dword ptr [esi]\n\n"),
+							ConstantString::create("fild dword ptr [rdi]\n"),
+							ConstantString::create("fistp dword ptr [rsi]\n\n"),
 							ConstantString::create("skipPoisonedArrowsCode:\n\n"),
 							COMMENT(Strings::Menus_Hacking_Abilities_Debuffs_PoisonedArrows_CommentHint::create())
 						})
@@ -179,7 +179,7 @@ void PoisonedArrows::runPoisonedArrows()
 
 	for (int healIndex = 0; healIndex < this->healAmount; healIndex++)
 	{
-		Sprite* icon = Sprite::create(UIResources::Menus_Icons_BloodGoblet);
+		Sprite* icon = Sprite::create(UIResources::Menus_Icons_PoisonSpears);
 
 		icon->setScale(0.5f);
 
