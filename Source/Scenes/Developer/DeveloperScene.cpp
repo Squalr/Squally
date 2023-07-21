@@ -108,7 +108,7 @@ DeveloperScene::DeveloperScene()
 		- v CV diseased pfx color not yellow
 		- v CV Mabel should look at Perceptron the entire patrol, or cower until he is gone
 		- v CV smelting pot broken in haunted map? seems weird. Actually I think a bug on deactivated behavior.
-		- v CV make hats craftable, figure out something else for Ara  aa
+		- v CV make hats craftable, figure out something else for Ara
 		- v DM show collision on ship map mini-map
 		- v DM binary puzzle area is shitty imo
 		- v support for default dialogue at top of screen (see Aphrodite, Hera, Horus, Burch, Dawn, Amelia)
@@ -117,7 +117,6 @@ DeveloperScene::DeveloperScene()
 		- v broken blade shouldn't have pfx I think
 		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		- v UR town could use another mg/fg warp. Maybe where lifstone is
-		- v UR show mini-map inside inn...
 		- * UR mana drain on Petrified Guano !?!
 		- v EF hot potato icon should be hot potato
 		- v EF first Marcel dialogue can show empty characters
