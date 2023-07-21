@@ -85,7 +85,6 @@ DeveloperScene::DeveloperScene()
 		- v EF move potion hint to 2_x maps
 		- v FF Asmodeus crowd should animate
 		- v FF enemy shadows wrong in 1st combat map
-		- v FF 1_x need more scalding blade enemies, because easy to juggle the 1x paired with the cauterize enemy
 		- v FF give demon grunt (scalding blade user) an add potion?
 		- v FF/DM(?) overworld archer attack SetPosition doesn't actually do anything as far as I can tell (see Demon Archer)
 		- v FF blood boil PFX are also yellow...
