@@ -82,10 +82,8 @@ DeveloperScene::DeveloperScene()
 
 	- General:
 		- v scrolling down passed end in script editor cycles back to top
-		- * calcify just entirely wrong about register, missing ptr
 		- * uhh Elric respawned alive after 1st crypt
 		- * Steel Helm => Mithril helm (tint a lil more blue)
-		- v Reduce coal cost on all bombs to be 2
 		- v EF move potion hint to 2_x maps
 		- v FF Asmodeus crowd should animate
 		- v FF enemy shadows wrong in 1st combat map

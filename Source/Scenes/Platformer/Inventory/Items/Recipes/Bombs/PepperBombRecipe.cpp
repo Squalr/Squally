@@ -40,7 +40,7 @@ std::vector<std::tuple<Item*, int>> PepperBombRecipe::getReagentsInternal()
 	{
 		{ Mithril::create(), 2 },
 		{ Pepper::create(), 2 },
-		{ Coal::create(), 3 },
+		{ Coal::create(), 2 },
 	};
 }
 
