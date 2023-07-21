@@ -21,7 +21,7 @@ HexusPoolBPGeneric* HexusPoolBPGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-HexusPoolBPGeneric::HexusPoolBPGeneric(ValueMap& properties) : super(properties, "hexus-pool-bp-generic", SampleMethod::Random, 1, 2,
+HexusPoolBPGeneric::HexusPoolBPGeneric(ValueMap& properties) : super(properties, "hexus-pool-bp-generic", SampleMethod::Guarantee, 2, 2,
 	{ CardPoolTier7::create() }, CurrencyPoolBPHexus::create(properties))
 {
 }

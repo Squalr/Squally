@@ -6549,6 +6549,21 @@ namespace Strings
 		virtual ~Items_Equipment_Gear_Hats_MagesHatRed() = default;
 	};
 
+	class Items_Equipment_Gear_Hats_MithrilHelm : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Hats_MithrilHelm();
+		virtual ~Items_Equipment_Gear_Hats_MithrilHelm() = default;
+	};
+
 	class Items_Equipment_Gear_Hats_Monocle : public LocalizedString
 	{
 	public:
@@ -6742,21 +6757,6 @@ namespace Strings
 	private:
 		Items_Equipment_Gear_Hats_SnailShellSpiked();
 		virtual ~Items_Equipment_Gear_Hats_SnailShellSpiked() = default;
-	};
-
-	class Items_Equipment_Gear_Hats_SteelHelm : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Equipment_Gear_Hats_SteelHelm();
-		virtual ~Items_Equipment_Gear_Hats_SteelHelm() = default;
 	};
 
 	class Items_Equipment_Gear_Hats_TheGoldenEagle : public LocalizedString

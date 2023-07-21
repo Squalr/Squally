@@ -23,8 +23,8 @@ SmithingPoolBP::SmithingPoolBP(ValueMap& properties) : super(properties, Smithin
 	// Allows for stability in item ordering
 	this->toggleDisableShuffle(true);
 
-	this->addItemToPool(ItemChance::create(SantaHatPlans::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(VikingHelmetPlans::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(SantaHatPlans::create(), ItemChance::Probability::Guaranteed));
 	this->addItemToPool(ItemChance::create(WizardsHatArcanePlans::create(), ItemChance::Probability::Guaranteed));
 	
 	this->addItemToPool(ItemChance::create(CrystalSwordPlans::create(), ItemChance::Probability::Guaranteed));

@@ -82,7 +82,6 @@ DeveloperScene::DeveloperScene()
 
 	- General:
 		- v scrolling down passed end in script editor cycles back to top
-		- * Steel Helm => Mithril helm (tint a lil more blue)
 		- v EF move potion hint to 2_x maps
 		- v FF Asmodeus crowd should animate
 		- v FF enemy shadows wrong in 1st combat map

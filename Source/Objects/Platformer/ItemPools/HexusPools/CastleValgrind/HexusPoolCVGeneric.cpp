@@ -21,7 +21,7 @@ HexusPoolCVGeneric* HexusPoolCVGeneric::create(ValueMap& properties)
 	return instance;
 }
 
-HexusPoolCVGeneric::HexusPoolCVGeneric(ValueMap& properties) : super(properties, "hexus-pool-cv-generic", SampleMethod::Random, 1, 2,
+HexusPoolCVGeneric::HexusPoolCVGeneric(ValueMap& properties) : super(properties, "hexus-pool-cv-generic", SampleMethod::Guarantee, 2, 2,
 	{ CardPoolTier4::create() }, CurrencyPoolCVHexus::create(properties))
 {
 }
