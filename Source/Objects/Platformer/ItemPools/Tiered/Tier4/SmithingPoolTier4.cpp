@@ -27,7 +27,7 @@ SmithingPoolTier4::SmithingPoolTier4(SampleMethod sampleMethod, int min, int max
 	/**************
 	 Metals
 	**************/
-	this->addItemToPool(ItemChance::create(Mithril::create(), ItemChance::Probability::Uncommon));
+	this->addItemToPool(ItemChance::create(Mithril::create(), ItemChance::Probability::Reasonable)); // Upped drop rate based on play-testing
 
 	// Phasing out
 	this->addItemToPool(ItemChance::create(Gold::create(), ItemChance::Probability::Rare));
