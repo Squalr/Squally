@@ -27024,6 +27024,21 @@ namespace Strings
 		virtual ~Menus_Music_PhilipWesley_RacingAgainstTheSunset() = default;
 	};
 
+	class Menus_Music_StrayGhost_AnthonyBadenSaggers : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Menus_Music_StrayGhost_AnthonyBadenSaggers();
+		virtual ~Menus_Music_StrayGhost_AnthonyBadenSaggers() = default;
+	};
+
 	class Menus_Music_StrayGhost_StrayGhost : public LocalizedString
 	{
 	public:

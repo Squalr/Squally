@@ -82,9 +82,6 @@ DeveloperScene::DeveloperScene()
 
 	- General:
 		- v scrolling down passed end in script editor cycles back to top
-		- * LC dead grasp RSI needs to be a ptr
-		- * FF lava axe needs to be ptr
-		- * stray ghost credits
 		- * calcify just entirely wrong about register, missing ptr
 		- * uhh Elric respawned alive after 1st crypt
 		- * Steel Helm => Mithril helm (tint a lil more blue)

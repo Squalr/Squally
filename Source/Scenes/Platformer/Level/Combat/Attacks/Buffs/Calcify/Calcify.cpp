@@ -119,8 +119,11 @@ void Calcify::registerHackables()
 				LazyNode<HackablePreview>::create([=](){ return CalcifyGenericPreview::create(); }),
 				{
 					{
-						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Calcify_RegisterEax::create()
-					}
+						HackableCode::Register::zax, Strings::Menus_Hacking_Abilities_Buffs_Calcify_RegisterEax::create(), true
+					},
+					{
+						HackableCode::Register::zbx, Strings::Menus_Hacking_Abilities_Buffs_Calcify_RegisterEbx::create(), true
+					},
 				},
 				int(HackFlags::None),
 				this->getRemainingDuration(),
