@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="1051">
+<map version="1.8" tiledversion="1.8.4" orientation="orthogonal" renderorder="right-down" width="72" height="64" tilewidth="128" tileheight="128" infinite="0" nextlayerid="89" nextobjectid="1053">
  <objectgroup id="1" name="meta">
   <properties>
    <property name="background" value="BrightSky"/>
@@ -260,11 +260,6 @@
   <object id="925" name="spawn" type="object" x="8568" y="3084" width="128" height="128">
    <properties>
     <property name="transition" value="left-top"/>
-   </properties>
-  </object>
-  <object id="938" name="spawn" type="object" x="8732" y="5412" width="128" height="128">
-   <properties>
-    <property name="transition" value="left-bottom"/>
    </properties>
   </object>
  </objectgroup>
@@ -615,6 +610,11 @@
   <object id="1050" name="squally" type="entity" x="212" y="6144" width="128" height="128">
    <properties>
     <property name="components" value="squally"/>
+   </properties>
+  </object>
+  <object id="1052" name="spawn" type="object" x="8793.58" y="5402.67" width="128" height="128">
+   <properties>
+    <property name="transition" value="left-bottom"/>
    </properties>
   </object>
  </objectgroup>
