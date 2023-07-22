@@ -59,7 +59,7 @@ const std::string& TopazPendantRecipe::getIconResource()
 
 std::string TopazPendantRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Necklaces_TopazPendant;
+	return ItemResources::Equipment_Gear_Necklaces_T1_TopazPendant;
 }
 
 const std::string& TopazPendantRecipe::getIdentifier()

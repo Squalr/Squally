@@ -59,7 +59,7 @@ const std::string& GlowingPendantRecipe::getIconResource()
 
 std::string GlowingPendantRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Necklaces_GlowingPendant;
+	return ItemResources::Equipment_Gear_Necklaces__Deprecated_GlowingPendant;
 }
 
 const std::string& GlowingPendantRecipe::getIdentifier()

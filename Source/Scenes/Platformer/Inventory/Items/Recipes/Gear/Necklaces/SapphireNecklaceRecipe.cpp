@@ -59,7 +59,7 @@ const std::string& SapphireNecklaceRecipe::getIconResource()
 
 std::string SapphireNecklaceRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Necklaces_SapphireNecklace;
+	return ItemResources::Equipment_Gear_Necklaces_T4_SapphireNecklace;
 }
 
 const std::string& SapphireNecklaceRecipe::getIdentifier()

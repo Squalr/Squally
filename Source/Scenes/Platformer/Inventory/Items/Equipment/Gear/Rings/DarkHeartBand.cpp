@@ -55,7 +55,7 @@ LocalizedString* DarkHeartBand::getString()
 
 const std::string& DarkHeartBand::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_DarkHeartBand;
+	return ItemResources::Equipment_Gear_Rings_T8_DarkHeartBand;
 }
 
 const std::string& DarkHeartBand::getIdentifier()

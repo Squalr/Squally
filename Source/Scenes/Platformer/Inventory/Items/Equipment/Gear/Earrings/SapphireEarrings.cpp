@@ -25,7 +25,7 @@ SapphireEarrings::SapphireEarrings() : super(CurrencyInventory::create({{ IOU::g
 	// Health
 	0,
 	// Mana
-	2,
+	4,
 	// Attack
 	0,
 	// Magic Attack
@@ -33,7 +33,7 @@ SapphireEarrings::SapphireEarrings() : super(CurrencyInventory::create({{ IOU::g
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.02f
 ))
 {
 }
@@ -54,7 +54,7 @@ LocalizedString* SapphireEarrings::getString()
 
 const std::string& SapphireEarrings::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Earrings_SapphireEarrings;
+	return ItemResources::Equipment_Gear_Earrings_T4_SapphireEarrings;
 }
 
 const std::string& SapphireEarrings::getIdentifier()

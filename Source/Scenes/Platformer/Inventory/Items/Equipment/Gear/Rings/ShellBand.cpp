@@ -55,7 +55,7 @@ LocalizedString* ShellBand::getString()
 
 const std::string& ShellBand::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_ShellBand;
+	return ItemResources::Equipment_Gear_Rings_T2_ShellBand;
 }
 
 const std::string& ShellBand::getIdentifier()

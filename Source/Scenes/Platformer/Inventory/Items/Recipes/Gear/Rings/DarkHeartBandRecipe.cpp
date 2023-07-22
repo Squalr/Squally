@@ -59,7 +59,7 @@ const std::string& DarkHeartBandRecipe::getIconResource()
 
 std::string DarkHeartBandRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_DarkHeartBand;
+	return ItemResources::Equipment_Gear_Rings_T8_DarkHeartBand;
 }
 
 const std::string& DarkHeartBandRecipe::getIdentifier()

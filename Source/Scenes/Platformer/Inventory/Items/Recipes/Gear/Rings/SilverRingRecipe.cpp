@@ -59,7 +59,7 @@ const std::string& SilverRingRecipe::getIconResource()
 
 std::string SilverRingRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_SilverRing;
+	return ItemResources::Equipment_Gear_Rings__Deprecated_T1_SilverRing;
 }
 
 const std::string& SilverRingRecipe::getIdentifier()

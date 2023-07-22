@@ -81,8 +81,10 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- General:
+		- v Homes for:
+			- Emerald necklace (DM - Krampus drop? idk)
+			- Ruby necklace (FF)
 		- v scrolling down passed end in script editor cycles back to top
-		- v EF move potion hint to 2_x maps
 		- v FF Asmodeus crowd should animate
 		- v FF enemy shadows wrong in 1st combat map
 		- v FF give demon grunt (scalding blade user) an add potion?
@@ -90,20 +92,16 @@ DeveloperScene::DeveloperScene()
 		- v FF blood boil PFX are also yellow...
 		- v FF melt ability yellow => red PFX
 		- v FF maybe move mage tower to 1_x area eh?
-		- v LC pig disappears on death anim
-		- v LC terrain connectors in 3_x maps are offset baddly
+		- v LC terrain connectors in 3_x maps are offset baddly (which map?)
 		- v LC blue gem map feels empty. Traps?
 		- v LC zombie grasp hint is just the answer...
 		- v LC enchantment buff color wrong (yellow)
 		- v LC Daze script too long / needs hint
 		- v LC move 3_x critter from side room to layer with skeletal knight (theres big empty space to left)
 		- v Make LC final 4_x maps less bad.
-		- v LC "Lambda crypts" not capitalized in str
 		- v LC change dialogue for npc outside of crypts if has key
 		- v CV some indicator of remaining souls
 		- v CV 2_x maps feels unfinished
-		- v CV shouldnt smaller ghosts have overworld shadowbolt
-		- v CV leech ability wrong icon (blood gobby)
 		- v CV diseased pfx color not yellow
 		- v CV Mabel should look at Perceptron the entire patrol, or cower until he is gone
 		- v CV smelting pot broken in haunted map? seems weird. Actually I think a bug on deactivated behavior.
@@ -116,7 +114,6 @@ DeveloperScene::DeveloperScene()
 		- v broken blade shouldn't have pfx I think
 		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		- v UR town could use another mg/fg warp. Maybe where lifstone is
-		- * UR mana drain on Petrified Guano !?!
 		- v EF hot potato icon should be hot potato
 		- v EF first Marcel dialogue can show empty characters
 		- v Maybe HP pots in combat should self-target initally?

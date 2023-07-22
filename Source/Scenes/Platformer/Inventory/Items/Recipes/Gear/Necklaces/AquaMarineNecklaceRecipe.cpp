@@ -59,7 +59,7 @@ const std::string& AquaMarineNecklaceRecipe::getIconResource()
 
 std::string AquaMarineNecklaceRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Necklaces_AquaMarineNecklace;
+	return ItemResources::Equipment_Gear_Necklaces_T2_AquaMarineNecklace;
 }
 
 const std::string& AquaMarineNecklaceRecipe::getIdentifier()

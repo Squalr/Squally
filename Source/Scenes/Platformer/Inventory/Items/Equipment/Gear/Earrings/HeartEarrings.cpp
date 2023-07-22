@@ -23,9 +23,9 @@ HeartEarrings* HeartEarrings::create()
 
 HeartEarrings::HeartEarrings() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 23 }}), ItemStats(
 	// Health
-	0,
-	// Mana
 	2,
+	// Mana
+	6,
 	// Attack
 	0,
 	// Magic Attack
@@ -33,7 +33,7 @@ HeartEarrings::HeartEarrings() : super(CurrencyInventory::create({{ IOU::getIOUI
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.03f
 ))
 {
 }
@@ -54,7 +54,7 @@ LocalizedString* HeartEarrings::getString()
 
 const std::string& HeartEarrings::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Earrings_HeartEarrings;
+	return ItemResources::Equipment_Gear_Earrings_T6_HeartEarrings;
 }
 
 const std::string& HeartEarrings::getIdentifier()

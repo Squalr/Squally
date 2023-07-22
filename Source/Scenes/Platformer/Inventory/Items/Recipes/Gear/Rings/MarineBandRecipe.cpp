@@ -59,7 +59,7 @@ const std::string& MarineBandRecipe::getIconResource()
 
 std::string MarineBandRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_MarineBand;
+	return ItemResources::Equipment_Gear_Rings_T4_MarineBand;
 }
 
 const std::string& MarineBandRecipe::getIdentifier()

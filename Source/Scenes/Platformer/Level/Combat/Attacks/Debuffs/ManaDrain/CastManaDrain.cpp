@@ -116,7 +116,7 @@ float CastManaDrain::getUseUtility(PlatformerEntity* caster, PlatformerEntity* t
 	bool isPacifist = target->getRuntimeStateOrDefaultBool(StateKeys::IsPacifist, false);
 	float mana = float(target->getRuntimeStateOrDefaultInt(StateKeys::Mana, 0));
 	float maxMana = float(target->getRuntimeStateOrDefaultInt(StateKeys::MaxMana, 0));
-	float utility = (!isAlive || isPacifist) ? 0.0f : (mana / (maxMana <= 0.0f ? 1.0f : maxMana));
+	float utility = (!isAlive || isPacifist) ? -1.0f : (mana / (maxMana <= 0.0f ? 1.0f : maxMana));
 
 	target->getComponent<EntityBuffBehavior>([&](EntityBuffBehavior* entityBuffBehavior)
 	{

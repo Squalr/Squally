@@ -59,7 +59,7 @@ const std::string& SoulBandRecipe::getIconResource()
 
 std::string SoulBandRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_SoulBand;
+	return ItemResources::Equipment_Gear_Rings_T7_SoulBand;
 }
 
 const std::string& SoulBandRecipe::getIdentifier()

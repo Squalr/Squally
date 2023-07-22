@@ -55,7 +55,7 @@ LocalizedString* SilverRing::getString()
 
 const std::string& SilverRing::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_SilverRing;
+	return ItemResources::Equipment_Gear_Rings__Deprecated_T1_SilverRing;
 }
 
 const std::string& SilverRing::getIdentifier()

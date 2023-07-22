@@ -23,6 +23,7 @@
 #include "Scenes/Platformer/Dialogue/Voices.h"
 #include "Scenes/Platformer/Objectives/ObjectiveKeys.h"
 #include "Scenes/Platformer/Objectives/Objectives.h"
+#include "Scenes/Platformer/Inventory/Items/PlatformerItems.h"
 #include "Scenes/Platformer/Inventory/Items/Misc/Keys/LambdaCrypts/RustyKey.h"
 #include "Scenes/Platformer/State/StateKeys.h"
 
@@ -200,9 +201,25 @@ void TalkToAmelia::runCinematicSequence()
 			),
 			[=]()
 			{
-				this->complete();
 			},
 			Voices::GetNextVoiceLong(),
+			false
+		));
+
+		interactionBehavior->enqueuePretext(DialogueEvents::DialogueOpenArgs(
+			Strings::Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeThis::create(),
+			DialogueEvents::DialogueVisualArgs(
+				DialogueBox::DialogueDock::Bottom,
+				DialogueBox::DialogueAlignment::Right,
+				DialogueEvents::BuildPreviewNode(&this->scrappy, false),
+				DialogueEvents::BuildPreviewNode(&this->amelia, true)
+			),
+			[=]()
+			{
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ HolyNecklace::create() }));
+				this->complete();
+			},
+			Voices::GetNextVoiceMedium(),
 			true
 		));
 	});

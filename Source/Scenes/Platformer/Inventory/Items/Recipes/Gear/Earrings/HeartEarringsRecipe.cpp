@@ -60,7 +60,7 @@ const std::string& HeartEarringsRecipe::getIconResource()
 
 std::string HeartEarringsRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Earrings_HeartEarrings;
+	return ItemResources::Equipment_Gear_Earrings_T6_HeartEarrings;
 }
 
 const std::string& HeartEarringsRecipe::getIdentifier()

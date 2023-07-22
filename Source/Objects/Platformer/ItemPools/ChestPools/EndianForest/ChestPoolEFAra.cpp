@@ -19,13 +19,11 @@ ChestPoolEFAra* ChestPoolEFAra::create(ValueMap& properties)
 }
 
 ChestPoolEFAra::ChestPoolEFAra(ValueMap& properties) : super(
-	properties, ChestPoolEFAra::PoolName, SampleMethod::Guarantee, 3, 3,
+	properties, ChestPoolEFAra::PoolName, SampleMethod::Guarantee, 1, 1,
 	{
 	})
 {
-	this->addItemToPool(ItemChance::create(JoustingHelmet::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(Monocle::create(), ItemChance::Probability::Guaranteed));
-	this->addItemToPool(ItemChance::create(LeatherCap::create(), ItemChance::Probability::Guaranteed));
+	this->addItemToPool(ItemChance::create(SapphireNecklace::create(), ItemChance::Probability::Guaranteed));
 }
 
 ChestPoolEFAra::~ChestPoolEFAra()

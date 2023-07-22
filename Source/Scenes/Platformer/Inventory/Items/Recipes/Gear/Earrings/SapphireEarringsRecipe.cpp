@@ -60,7 +60,7 @@ const std::string& SapphireEarringsRecipe::getIconResource()
 
 std::string SapphireEarringsRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Earrings_SapphireEarrings;
+	return ItemResources::Equipment_Gear_Earrings_T4_SapphireEarrings;
 }
 
 const std::string& SapphireEarringsRecipe::getIdentifier()

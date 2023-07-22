@@ -60,7 +60,7 @@ const std::string& HeartBandRecipe::getIconResource()
 
 std::string HeartBandRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_HeartBand;
+	return ItemResources::Equipment_Gear_Rings_T6_HeartBand;
 }
 
 const std::string& HeartBandRecipe::getIdentifier()

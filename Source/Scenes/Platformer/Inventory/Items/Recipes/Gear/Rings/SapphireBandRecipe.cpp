@@ -59,7 +59,7 @@ const std::string& SapphireBandRecipe::getIconResource()
 
 std::string SapphireBandRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_SapphireBand;
+	return ItemResources::Equipment_Gear_Rings_T0_SapphireBand;
 }
 
 const std::string& SapphireBandRecipe::getIdentifier()

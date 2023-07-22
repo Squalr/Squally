@@ -75,6 +75,7 @@
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Necklaces/HolyNecklace.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Necklaces/MarineNecklace.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Necklaces/Necklace.h"
+#include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Necklaces/RubyNecklace.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Necklaces/SapphireNecklace.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Necklaces/TopazPendant.h"
 #include "Scenes/Platformer/Inventory/Items/Equipment/Gear/Hats/Deprecated/BrocksHelm.h"

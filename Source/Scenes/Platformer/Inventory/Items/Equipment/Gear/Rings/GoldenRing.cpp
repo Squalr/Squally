@@ -55,7 +55,7 @@ LocalizedString* GoldenRing::getString()
 
 const std::string& GoldenRing::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_GoldenRing;
+	return ItemResources::Equipment_Gear_Rings__Deprecated_T2_GoldenRing;
 }
 
 const std::string& GoldenRing::getIdentifier()

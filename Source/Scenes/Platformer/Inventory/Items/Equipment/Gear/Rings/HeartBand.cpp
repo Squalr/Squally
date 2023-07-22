@@ -55,7 +55,7 @@ LocalizedString* HeartBand::getString()
 
 const std::string& HeartBand::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_HeartBand;
+	return ItemResources::Equipment_Gear_Rings_T6_HeartBand;
 }
 
 const std::string& HeartBand::getIdentifier()

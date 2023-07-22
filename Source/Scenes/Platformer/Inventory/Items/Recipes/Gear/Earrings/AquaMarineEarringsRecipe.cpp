@@ -59,7 +59,7 @@ const std::string& AquaMarineEarringsRecipe::getIconResource()
 
 std::string AquaMarineEarringsRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Earrings_AquaMarineEarrings;
+	return ItemResources::Equipment_Gear_Earrings_T2_AquaMarineEarrings;
 }
 
 const std::string& AquaMarineEarringsRecipe::getIdentifier()

@@ -33,7 +33,7 @@ AquaMarineEarrings::AquaMarineEarrings() : super(CurrencyInventory::create({{ IO
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.0f
 ))
 {
 }
@@ -54,7 +54,7 @@ LocalizedString* AquaMarineEarrings::getString()
 
 const std::string& AquaMarineEarrings::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Earrings_AquaMarineEarrings;
+	return ItemResources::Equipment_Gear_Earrings_T2_AquaMarineEarrings;
 }
 
 const std::string& AquaMarineEarrings::getIdentifier()

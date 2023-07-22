@@ -168,7 +168,7 @@ void Leech::runLeech()
 
 	for (int tickIndex = 0; tickIndex < Leech::TickCount; tickIndex++)
 	{
-		Sprite* icon = Sprite::create(UIResources::Menus_Icons_BloodGoblet);
+		Sprite* icon = Sprite::create(UIResources::Menus_Icons_SwordGlowBlue);
 
 		icon->setScale(0.5f);
 

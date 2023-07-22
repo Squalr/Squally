@@ -317,6 +317,7 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[GlowingPendant::SaveKey] = [=]() { return (Item*)GlowingPendant::create(); };
 	this->deserializers[HolyNecklace::SaveKey] = [=]() { return (Item*)HolyNecklace::create(); };
 	this->deserializers[MarineNecklace::SaveKey] = [=]() { return (Item*)MarineNecklace::create(); };
+	this->deserializers[RubyNecklace::SaveKey] = [=]() { return (Item*)RubyNecklace::create(); };
 	this->deserializers[SapphireNecklace::SaveKey] = [=]() { return (Item*)SapphireNecklace::create(); };
 	this->deserializers[TopazPendant::SaveKey] = [=]() { return (Item*)TopazPendant::create(); };
 

@@ -59,7 +59,7 @@ const std::string& AmethystNecklaceRecipe::getIconResource()
 
 std::string AmethystNecklaceRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Necklaces_AmethystNecklace;
+	return ItemResources::Equipment_Gear_Necklaces_T7_AmethystNecklace;
 }
 
 const std::string& AmethystNecklaceRecipe::getIdentifier()

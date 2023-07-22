@@ -55,7 +55,7 @@ LocalizedString* SoulBand::getString()
 
 const std::string& SoulBand::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_SoulBand;
+	return ItemResources::Equipment_Gear_Rings_T7_SoulBand;
 }
 
 const std::string& SoulBand::getIdentifier()

@@ -55,7 +55,7 @@ LocalizedString* GarnetBand::getString()
 
 const std::string& GarnetBand::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_GarnetBand;
+	return ItemResources::Equipment_Gear_Rings_T1_GarnetBand;
 }
 
 const std::string& GarnetBand::getIdentifier()

@@ -23,9 +23,9 @@ RoseEarrings* RoseEarrings::create()
 
 RoseEarrings::RoseEarrings() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 23 }}), ItemStats(
 	// Health
-	0,
+	1,
 	// Mana
-	2,
+	5,
 	// Attack
 	0,
 	// Magic Attack
@@ -33,7 +33,7 @@ RoseEarrings::RoseEarrings() : super(CurrencyInventory::create({{ IOU::getIOUIde
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.025f
 ))
 {
 }
@@ -54,7 +54,7 @@ LocalizedString* RoseEarrings::getString()
 
 const std::string& RoseEarrings::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Earrings_RoseEarrings;
+	return ItemResources::Equipment_Gear_Earrings_T5_RoseEarrings;
 }
 
 const std::string& RoseEarrings::getIdentifier()

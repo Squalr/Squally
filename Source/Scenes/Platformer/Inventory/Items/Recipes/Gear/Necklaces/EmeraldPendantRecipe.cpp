@@ -59,7 +59,7 @@ const std::string& EmeraldPendantRecipe::getIconResource()
 
 std::string EmeraldPendantRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Necklaces_EmeraldPendant;
+	return ItemResources::Equipment_Gear_Necklaces_T3_EmeraldPendant;
 }
 
 const std::string& EmeraldPendantRecipe::getIdentifier()
