@@ -104,7 +104,6 @@
     <property name="spawn-pool" value="spawn-pool-ef"/>
    </properties>
   </object>
-  <object id="979" name="help-totem-potions" type="object" x="1048.73" y="1924.48" width="248" height="248"/>
   <object id="980" name="trigger" type="object" x="2195" y="-26.53" width="146" height="1829.06">
    <properties>
     <property name="send-event" value="talk-to-grogg"/>

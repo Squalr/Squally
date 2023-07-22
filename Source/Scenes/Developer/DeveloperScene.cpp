@@ -81,18 +81,25 @@ DeveloperScene::DeveloperScene()
 		- ** CV, throne room? or wat	=> Royal Crown (Special: Shop Discounts)
 
 	- General:
-		- ** Soul harvest needs emblem glow
-		- ** CV leech ability comments mention radition, icon wong
-		- ** CV some indicator of remaining souls
+		- v Homes for:
+			- Emerald necklace (DM - Krampus drop? idk)
+			- Ruby necklace (FF)
+		- v scrolling down passed end in script editor cycles back to top
 		- v FF Asmodeus crowd should animate
 		- v FF give demon grunt (scalding blade user) an add potion?
 		- v FF/DM(?) overworld archer attack SetPosition doesn't actually do anything as far as I can tell (see Demon Archer)
+		- v FF blood boil PFX are also yellow...
+		- v FF melt ability yellow => red PFX
+		- v FF maybe move mage tower to 1_x area eh?
+		- v LC terrain connectors in 3_x maps are offset baddly (which map?)
 		- v LC blue gem map feels empty. Traps?
 		- v LC poisoned arrows are tl;dr
 		- v LC unholy blade tl;dr
 		- v LC cursed blade tl;dr
 		- v LC Daze script too long
 		- v Make LC final 4_x maps less bad.
+		- v LC change dialogue for npc outside of crypts if has key
+		- v CV some indicator of remaining souls
 		- v CV 2_x maps feels unfinished
 		- v CV diseased pfx color not yellow
 		- v CV Mabel should look at Perceptron the entire patrol, or cower until he is gone
@@ -103,6 +110,8 @@ DeveloperScene::DeveloperScene()
 		- v broken blade shouldn't have pfx I think
 		- v UR Pyramid [still] fucking sucks. Circuit puzzle? Wind puzzles? Anything, please. Lightning?
 		- v UR town could use another mg/fg warp. Maybe where lifstone is
+		- v EF hot potato icon should be hot potato
+		- v EF first Marcel dialogue can show empty characters
 		- v Maybe HP pots in combat should self-target initally?
 		- v Can probably use Silver for more craft recipes
 		- v Maybe some storyline for introducing powers

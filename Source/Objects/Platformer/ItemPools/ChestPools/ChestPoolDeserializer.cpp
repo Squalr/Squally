@@ -40,6 +40,7 @@ ChestPoolDeserializer::ChestPoolDeserializer() : super(ChestPoolDeserializer::Ma
 	// UR pools
 	this->deserializers[ChestPoolURGeneric::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolURGeneric::create(properties); };
 	this->deserializers[ChestPoolURMirror::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolURMirror::create(properties); };
+	this->deserializers[ChestPoolURMedusa::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolURMedusa::create(properties); };
 	this->deserializers[ChestPoolURRare::PoolName] = [=](ValueMap properties) { return (GameObject*)ChestPoolURRare::create(properties); };
 
 	// DM pools

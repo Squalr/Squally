@@ -60,7 +60,7 @@ const std::string& RoseEarringsRecipe::getIconResource()
 
 std::string RoseEarringsRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Earrings_RoseEarrings;
+	return ItemResources::Equipment_Gear_Earrings_T5_RoseEarrings;
 }
 
 const std::string& RoseEarringsRecipe::getIdentifier()

@@ -59,7 +59,7 @@ const std::string& BronzeRingRecipe::getIconResource()
 
 std::string BronzeRingRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_BronzeRing;
+	return ItemResources::Equipment_Gear_Rings__Deprecated_T0_BronzeRing;
 }
 
 const std::string& BronzeRingRecipe::getIdentifier()

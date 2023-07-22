@@ -7074,21 +7074,6 @@ namespace Strings
 		virtual ~Items_Equipment_Gear_Necklaces_EmeraldPendant() = default;
 	};
 
-	class Items_Equipment_Gear_Necklaces_GarnetNecklace : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Items_Equipment_Gear_Necklaces_GarnetNecklace();
-		virtual ~Items_Equipment_Gear_Necklaces_GarnetNecklace() = default;
-	};
-
 	class Items_Equipment_Gear_Necklaces_GlowingPendant : public LocalizedString
 	{
 	public:
@@ -7132,6 +7117,21 @@ namespace Strings
 	private:
 		Items_Equipment_Gear_Necklaces_MarineNecklace();
 		virtual ~Items_Equipment_Gear_Necklaces_MarineNecklace() = default;
+	};
+
+	class Items_Equipment_Gear_Necklaces_RubyNecklace : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Items_Equipment_Gear_Necklaces_RubyNecklace();
+		virtual ~Items_Equipment_Gear_Necklaces_RubyNecklace() = default;
 	};
 
 	class Items_Equipment_Gear_Necklaces_SapphireNecklace : public LocalizedString
@@ -38392,6 +38392,21 @@ namespace Strings
 	private:
 		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_SeeNebea();
 		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_D_SeeNebea() = default;
+	};
+
+	class Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeThis : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeThis();
+		virtual ~Platformer_Quests_LambdaCrypts_ElricsDemise_Amelia_E_TakeThis() = default;
 	};
 
 	class Platformer_Quests_LambdaCrypts_ElricsDemise_Elric_A_Travelers : public LocalizedString

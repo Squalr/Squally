@@ -984,7 +984,7 @@
     <property name="battle-behavior" value=""/>
     <property name="battle-map" value="CastleValgrind/Combat_Castle"/>
     <property name="battle-tag" value="group-b"/>
-    <property name="components" value="enemy,soul,haunted,agro,melee"/>
+    <property name="components" value="enemy,soul,haunted,agro,goblin-shaman-attack"/>
     <property name="drop-pool" value="cv-generic"/>
     <property name="haunted-key" value="wraith"/>
     <property name="other-world" type="bool" value="false"/>

@@ -54,7 +54,7 @@ LocalizedString* MarineNecklace::getString()
 
 const std::string& MarineNecklace::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Necklaces_MarineNecklace;
+	return ItemResources::Equipment_Gear_Necklaces__Deprecated_MarineNecklace;
 }
 
 const std::string& MarineNecklace::getIdentifier()

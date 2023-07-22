@@ -272,7 +272,7 @@
   </object>
   <object id="944" name="metal-chest" type="object" x="3712.73" y="1068.12" width="128" height="128">
    <properties>
-    <property name="reward-pool" value="ur-rare"/>
+    <property name="reward-pool" value="ur-medusa"/>
    </properties>
   </object>
   <object id="954" name="caged-duck" type="object" x="3638" y="2137.33" width="196" height="112"/>

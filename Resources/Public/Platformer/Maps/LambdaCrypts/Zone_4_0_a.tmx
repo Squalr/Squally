@@ -807,7 +807,6 @@
     <property name="transition" value="left"/>
    </properties>
   </object>
-  <object id="1159" name="caged-wolf" type="object" x="1308.06" y="1568.24" width="196" height="112"/>
  </objectgroup>
  <objectgroup id="42" name="no hack objects">
   <properties>

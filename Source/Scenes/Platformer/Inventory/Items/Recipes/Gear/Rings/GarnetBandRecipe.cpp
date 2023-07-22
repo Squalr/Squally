@@ -59,7 +59,7 @@ const std::string& GarnetBandRecipe::getIconResource()
 
 std::string GarnetBandRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_GarnetBand;
+	return ItemResources::Equipment_Gear_Rings_T1_GarnetBand;
 }
 
 const std::string& GarnetBandRecipe::getIdentifier()

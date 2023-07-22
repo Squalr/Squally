@@ -25,6 +25,7 @@
 #include "Objects/Platformer/ItemPools/ChestPools/Special/ChestPoolDisplayOr.h"
 #include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolURGeneric.h"
 #include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolURMirror.h"
+#include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolURMedusa.h"
 #include "Objects/Platformer/ItemPools/ChestPools/UnderflowRuins/ChestPoolURRare.h"
 #include "Objects/Platformer/ItemPools/ChestPools/VoidStar/ChestPoolVSGeneric.h"
 #include "Objects/Platformer/ItemPools/ChestPools/VoidStar/ChestPoolVSRare.h"

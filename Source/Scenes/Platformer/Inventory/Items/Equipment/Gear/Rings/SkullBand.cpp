@@ -55,7 +55,7 @@ LocalizedString* SkullBand::getString()
 
 const std::string& SkullBand::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_SkullBand;
+	return ItemResources::Equipment_Gear_Rings_T5_SkullBand;
 }
 
 const std::string& SkullBand::getIdentifier()

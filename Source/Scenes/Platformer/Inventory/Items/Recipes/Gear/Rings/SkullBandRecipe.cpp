@@ -59,7 +59,7 @@ const std::string& SkullBandRecipe::getIconResource()
 
 std::string SkullBandRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_SkullBand;
+	return ItemResources::Equipment_Gear_Rings_T5_SkullBand;
 }
 
 const std::string& SkullBandRecipe::getIdentifier()

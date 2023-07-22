@@ -59,7 +59,7 @@ const std::string& GoldenRingRecipe::getIconResource()
 
 std::string GoldenRingRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_GoldenRing;
+	return ItemResources::Equipment_Gear_Rings__Deprecated_T2_GoldenRing;
 }
 
 const std::string& GoldenRingRecipe::getIdentifier()

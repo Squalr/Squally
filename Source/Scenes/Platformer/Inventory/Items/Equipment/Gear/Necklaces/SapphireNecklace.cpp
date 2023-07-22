@@ -23,17 +23,17 @@ SapphireNecklace* SapphireNecklace::create()
 
 SapphireNecklace::SapphireNecklace() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 15 }}), ItemStats(
 	// Health
-	2,
+	4,
 	// Mana
-	2,
+	0,
 	// Attack
-	1,
+	0,
 	// Magic Attack
-	1,
+	0,
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.02f
 ))
 {
 }
@@ -54,7 +54,7 @@ LocalizedString* SapphireNecklace::getString()
 
 const std::string& SapphireNecklace::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Necklaces_SapphireNecklace;
+	return ItemResources::Equipment_Gear_Necklaces_T4_SapphireNecklace;
 }
 
 const std::string& SapphireNecklace::getIdentifier()

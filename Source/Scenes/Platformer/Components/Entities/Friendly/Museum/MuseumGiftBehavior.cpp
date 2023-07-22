@@ -103,7 +103,7 @@ void MuseumGiftBehavior::setPostText()
 					[=]()
 					{
 						PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ AshenBlade::create() }));
-						PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ WoodenShield::create() }));
+						PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ AmethystNecklace::create() }));
 						PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ DarkHeartBand::create() }));
 						SaveManager::SaveProfileData(SaveKeys::SaveKeyItemHGiven, Value(true));
 						this->setPostText();
@@ -387,7 +387,7 @@ void MuseumGiftBehavior::setPostTextDM()
 			),
 			[=]()
 			{
-				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ MarineBand::create() }));
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ EmeraldBand::create() }));
 				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemCGiven, Value(true));
 				this->setPostText();
 			},
@@ -470,7 +470,7 @@ void MuseumGiftBehavior::setPostTextCV()
 			),
 			[=]()
 			{
-				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ EmeraldBand::create() }));
+				PlatformerEvents::TriggerGiveItems(PlatformerEvents::GiveItemsArgs({ MarineBand::create() }));
 				SaveManager::SaveProfileData(SaveKeys::SaveKeyItemDGiven, Value(true));
 				this->setPostText();
 			},

@@ -59,7 +59,7 @@ const std::string& EmeraldBandRecipe::getIconResource()
 
 std::string EmeraldBandRecipe::getCraftedItemIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_EmeraldBand;
+	return ItemResources::Equipment_Gear_Rings_T3_EmeraldBand;
 }
 
 const std::string& EmeraldBandRecipe::getIdentifier()

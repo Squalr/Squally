@@ -23,9 +23,9 @@ CrystalEarrings* CrystalEarrings::create()
 
 CrystalEarrings::CrystalEarrings() : super(CurrencyInventory::create({{ IOU::getIOUIdentifier(), 23 }}), ItemStats(
 	// Health
-	0,
+	3,
 	// Mana
-	2,
+	7,
 	// Attack
 	0,
 	// Magic Attack
@@ -33,7 +33,7 @@ CrystalEarrings::CrystalEarrings() : super(CurrencyInventory::create({{ IOU::get
 	// Armor
 	0,
 	// Speed
-	0.05f
+	0.035f
 ))
 {
 }
@@ -54,7 +54,7 @@ LocalizedString* CrystalEarrings::getString()
 
 const std::string& CrystalEarrings::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Earrings_CrystalEarrings;
+	return ItemResources::Equipment_Gear_Earrings_T7_CrystalEarrings;
 }
 
 const std::string& CrystalEarrings::getIdentifier()

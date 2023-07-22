@@ -55,7 +55,7 @@ LocalizedString* BronzeRing::getString()
 
 const std::string& BronzeRing::getIconResource()
 {
-	return ItemResources::Equipment_Gear_Rings_BronzeRing;
+	return ItemResources::Equipment_Gear_Rings__Deprecated_T0_BronzeRing;
 }
 
 const std::string& BronzeRing::getIdentifier()
