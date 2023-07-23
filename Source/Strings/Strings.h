@@ -33264,21 +33264,6 @@ namespace Strings
 		virtual ~Platformer_MapNames_FirewallFissure_FirewallFissure() = default;
 	};
 
-	class Platformer_MapNames_LambdaCrypts_GraveFlower : public LocalizedString
-	{
-	public:
-		static LocalizedString* create();
-		LocalizedString* clone() override;
-		std::string getStringIdentifier() override;
-		
-	protected:
-		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
-		
-	private:
-		Platformer_MapNames_LambdaCrypts_GraveFlower();
-		virtual ~Platformer_MapNames_LambdaCrypts_GraveFlower() = default;
-	};
-
 	class Platformer_MapNames_LambdaCrypts_LambdaCrypts : public LocalizedString
 	{
 	public:
@@ -33292,6 +33277,21 @@ namespace Strings
 	private:
 		Platformer_MapNames_LambdaCrypts_LambdaCrypts();
 		virtual ~Platformer_MapNames_LambdaCrypts_LambdaCrypts() = default;
+	};
+
+	class Platformer_MapNames_LambdaCrypts_RavensRest : public LocalizedString
+	{
+	public:
+		static LocalizedString* create();
+		LocalizedString* clone() override;
+		std::string getStringIdentifier() override;
+		
+	protected:
+		std::string getStringByLanguage(cocos2d::LanguageType languageType) override;
+		
+	private:
+		Platformer_MapNames_LambdaCrypts_RavensRest();
+		virtual ~Platformer_MapNames_LambdaCrypts_RavensRest() = default;
 	};
 
 	class Platformer_MapNames_LambdaCrypts_ValleyOfAsh : public LocalizedString

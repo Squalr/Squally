@@ -128,6 +128,7 @@ void ObtainMirror::runCinematicSequencePt2()
 		return;
 	}
 	
+	PlatformerEvents::TriggerHideMiniMap();
 	PlatformerEvents::TriggerCinematicHijack();
 
 	this->doBehaviorAttach = true;
@@ -175,7 +176,7 @@ void ObtainMirror::runCinematicSequencePt3()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_UnderflowRuins_CureTown_Guano_A_OhNoImDead::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->guano, true)
@@ -194,7 +195,7 @@ void ObtainMirror::runCinematicSequencePt4()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_UnderflowRuins_CureTown_Guano_B_WithAllTheStealing::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->squally, false),
 			DialogueEvents::BuildPreviewNode(&this->guano, true)
@@ -213,7 +214,7 @@ void ObtainMirror::runCinematicSequencePt5()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_UnderflowRuins_CureTown_Guano_C_YoureNotDead::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Left,
 			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 			DialogueEvents::BuildPreviewNode(&this->guano, true)
@@ -232,13 +233,14 @@ void ObtainMirror::runCinematicSequencePt6()
 	DialogueEvents::TriggerOpenDialogue(DialogueEvents::DialogueOpenArgs(
 		Strings::Platformer_Quests_UnderflowRuins_CureTown_Guano_D_OhOkay::create(),
 		DialogueEvents::DialogueVisualArgs(
-			DialogueBox::DialogueDock::Bottom,
+			DialogueBox::DialogueDock::Top,
 			DialogueBox::DialogueAlignment::Right,
 			DialogueEvents::BuildPreviewNode(&this->scrappy, false),
 			DialogueEvents::BuildPreviewNode(&this->guano, true)
 		),
 		[=]()
 		{
+			PlatformerEvents::TriggerShowMiniMap();
 		},
 		Voices::GetNextVoiceShort(),
 		true

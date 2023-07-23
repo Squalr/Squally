@@ -138,6 +138,7 @@
   <properties>
    <property name="depth" type="float" value="-256"/>
    <property name="type" value="objects"/>
+   <property name="zoom" type="float" value="1.75"/>
   </properties>
   <object id="823" name="spawn" type="object" x="4664.69" y="1462.88" width="128" height="128">
    <properties>

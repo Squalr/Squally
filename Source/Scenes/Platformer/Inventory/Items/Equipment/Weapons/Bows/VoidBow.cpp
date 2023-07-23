@@ -64,7 +64,7 @@ const std::string& VoidBow::getIdentifier()
 
 Vec2 VoidBow::getDisplayOffset()
 {
-	return Vec2(0.0f, -24.0f);
+	return Vec2(-4.0f, -68.0f);
 }
 
 Recipe* VoidBow::getRecipe()

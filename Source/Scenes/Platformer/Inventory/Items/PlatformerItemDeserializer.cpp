@@ -190,7 +190,6 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[MithrilAxe::SaveKey] = [=]() { return (Item*)MithrilAxe::create(); };
 	this->deserializers[Scythe::SaveKey] = [=]() { return (Item*)Scythe::create(); };
 	this->deserializers[SteelAxe::SaveKey] = [=]() { return (Item*)SteelAxe::create(); };
-	this->deserializers[Scythe::SaveKey] = [=]() { return (Item*)Scythe::create(); };
 	this->deserializers[VoidAxe::SaveKey] = [=]() { return (Item*)VoidAxe::create(); };
 	this->deserializers[WoodenAxe::SaveKey] = [=]() { return (Item*)WoodenAxe::create(); };
 
@@ -210,7 +209,6 @@ PlatformerItemDeserializer::PlatformerItemDeserializer()
 	this->deserializers[BoneHammer::SaveKey] = [=]() { return (Item*)BoneHammer::create(); };
 	this->deserializers[CopperMallet::SaveKey] = [=]() { return (Item*)CopperMallet::create(); };
 	this->deserializers[CrystalMace::SaveKey] = [=]() { return (Item*)CrystalMace::create(); };
-	this->deserializers[CopperMallet::SaveKey] = [=]() { return (Item*)CopperMallet::create(); };
 	this->deserializers[DemonicMace::SaveKey] = [=]() { return (Item*)DemonicMace::create(); };
 	this->deserializers[GoldenMace::SaveKey] = [=]() { return (Item*)GoldenMace::create(); };
 	this->deserializers[MithrilMace::SaveKey] = [=]() { return (Item*)MithrilMace::create(); };
